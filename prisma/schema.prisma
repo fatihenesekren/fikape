@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -10,4 +5,410 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// KATEGORİ SİSTEMİ — Evrensel, hiyerarşik
+// Araç → Otomobil → SUV
+// Beyaz Eşya → Klima
+// Elektronik → Laptop
+// ─────────────────────────────────────────────
+
+model Category {
+  id               Int        @id @default(autoincrement())
+  slug             String     @unique
+  name             String
+  parentId         Int?
+  parent           Category?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children         Category[] @relation("CategoryTree")
+
+  // Her kategoriye özgü ürün özellikleri (JSON şema)
+  // Araç: { fuel_type, segment, body_type, engine_cc }
+  // Klima: { btu, energy_class, inverter }
+  // Laptop: { cpu, ram_gb, screen_inch }
+  attributeSchema  Json       @default("{}")
+
+  // Her kategoriye özgü yorum soruları (JSON şema)
+  // Araç EV: [{ key: "real_range_km", label: "Gerçek menzil (km)", type: "number" }]
+  // Klima: [{ key: "real_kwh_month", label: "Aylık kWh tüketimi", type: "number" }]
+  reviewFormSchema Json       @default("[]")
+
+  isActive         Boolean    @default(true)
+  sortOrder        Int        @default(0)
+  createdAt        DateTime   @default(now())
+
+  products         Product[]
+
+  @@map("categories")
+}
+
+// ─────────────────────────────────────────────
+// MARKA & MODEL — Tüm kategoriler için ortak
+// ─────────────────────────────────────────────
+
+model Brand {
+  id        Int       @id @default(autoincrement())
+  slug      String    @unique
+  name      String
+  logoUrl   String?
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+
+  models    Model[]
+  products  Product[]
+
+  @@map("brands")
+}
+
+model Model {
+  id        Int       @id @default(autoincrement())
+  brandId   Int
+  brand     Brand     @relation(fields: [brandId], references: [id])
+  slug      String    @unique
+  name      String
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+
+  products  Product[]
+
+  @@map("models")
+}
+
+// ─────────────────────────────────────────────
+// ÜRÜN KATALOGU — Evrensel
+// Araç, klima, laptop hepsi buraya girer
+// ─────────────────────────────────────────────
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id])
+  brandId     Int
+  brand       Brand    @relation(fields: [brandId], references: [id])
+  modelId     Int
+  model       Model    @relation(fields: [modelId], references: [id])
+
+  slug        String   @unique
+  name        String
+  year        Int?
+
+  // Kategoriye özgü özellikler — category.attributeSchema'ya göre dolar
+  // Araç: { "fuel_type": "EV", "segment": "C", "body_type": "sedan", "ev_range_km": 480 }
+  // Klima: { "btu": 12000, "energy_class": "A+++", "inverter": true }
+  attributes Json     @default("{}")
+
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userProducts    UserProduct[]
+  reviews         Review[]
+
+  @@map("products")
+}
+
+// ─────────────────────────────────────────────
+// KULLANICI — 4 kademeli güven sistemi
+// ─────────────────────────────────────────────
+
+model User {
+  id              Int      @id @default(autoincrement())
+  email           String   @unique
+  passwordHash    String
+
+  // Kişisel bilgiler — minimum tutulur (KVKK)
+  displayName     String?
+  avatarUrl       String?
+
+  // 0: Anonim  1: E-posta doğrulamalı  2: Beyan edilen sahip  3: Doğrulanmış sahip
+  trustLevel      Int      @default(1)
+
+  emailVerifiedAt DateTime?
+
+  // Fake review tespiti için — kullanıcıya gösterilmez
+  deviceFingerprint String?
+
+  isBanned        Boolean  @default(false)
+  banReason       String?
+  bannedAt        DateTime?
+
+  // KVKK: hesap silme talebi
+  deletionRequestedAt DateTime?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  userProducts        UserProduct[]
+  reviews             Review[]
+  reviewVerifications ReviewVerification[]
+  reviewFlags         ReviewFlag[]
+  helpfulVotes        ReviewHelpfulVote[]
+  consentLogs         ConsentLog[]
+  dataDeletionRequests DataDeletionRequest[]
+
+  @@map("users")
+}
+
+// ─────────────────────────────────────────────
+// GARAJ — Kullanıcı-Ürün ilişkisi
+// "Bu ürüne sahibim / kullandım"
+// ─────────────────────────────────────────────
+
+model UserProduct {
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  user            User     @relation(fields: [userId], references: [id])
+  productId       Int
+  product         Product  @relation(fields: [productId], references: [id])
+
+  // Araç için: km bilgisi
+  // Genel: sahiplik süresi
+  ownershipStatus OwnershipStatus @default(CURRENT)
+  purchaseYear    Int?
+  ownershipMonths Int?
+
+  // Araç için km, diğer ürünler için kullanım miktarı (opsiyonel)
+  usageAmount     Int?
+  usageUnit       String?  // "km", "saat", "yıkama_sayisi" vb.
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  reviews         Review[]
+
+  @@unique([userId, productId])
+  @@map("user_products")
+}
+
+enum OwnershipStatus {
+  CURRENT   // Hâlâ kullanıyor
+  PAST      // Daha önce kullandı
+}
+
+// ─────────────────────────────────────────────
+// YORUM — Evrensel çekirdek
+// ─────────────────────────────────────────────
+
+model Review {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+  productId     Int
+  product       Product  @relation(fields: [productId], references: [id])
+  userProductId Int?
+  userProduct   UserProduct? @relation(fields: [userProductId], references: [id])
+
+  // Temel puanlar — tüm kategorilerde ortak (1-5)
+  scoreValue    Float    // Fiyat / Para değeri
+  scoreQuality  Float    // Kalite / Dayanıklılık
+  scoreSupport  Float    // Servis / Destek
+  scoreOverall  Float    // Genel memnuniyet
+
+  // Kısa metin — zorunlu
+  summaryText   String   @db.VarChar(500)
+
+  // Uzun metin — opsiyonel
+  detailText    String?  @db.Text
+
+  // "Tekrar alır mısınız?"
+  wouldBuyAgain Boolean?
+
+  // Kullanım süresi yorumu yazarken
+  ownershipMonthsAtReview Int?
+
+  // Kategoriye özgü veriler — category.reviewFormSchema'ya göre dolar
+  // Araç EV: { "real_range_km": 380, "monthly_charge_cost": 850, "score_charging": 4.0 }
+  // Araç ICE: { "real_fuel_per_100km": 7.2, "has_lpg": true }
+  // Klima: { "real_kwh_month": 90, "noise_level": "quiet" }
+  // Laptop: { "real_battery_hours": 6.5, "throttle_issue": false }
+  extendedData  Json     @default("{}")
+
+  // Güven skoru — 0-100, okuyucuya gösterilmez, sıralamada kullanılır
+  trustScore    Int      @default(35)
+
+  // Moderasyon
+  status        ReviewStatus @default(PENDING)
+  publishedAt   DateTime?
+  rejectedAt    DateTime?
+  rejectionReason String?
+
+  // Periyodik güncelleme (TrueDelta modeli)
+  isUpdate      Boolean  @default(false)
+  parentReviewId Int?
+  parentReview  Review?  @relation("ReviewUpdates", fields: [parentReviewId], references: [id])
+  updates       Review[] @relation("ReviewUpdates")
+
+  nextReminderAt DateTime? // 3 ayda bir güncelleme hatırlatması
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  verification  ReviewVerification?
+  flags         ReviewFlag[]
+  helpfulVotes  ReviewHelpfulVote[]
+
+  @@map("reviews")
+}
+
+enum ReviewStatus {
+  PENDING    // Moderasyon bekliyor
+  PUBLISHED  // Yayında
+  REJECTED   // Reddedildi
+  HIDDEN     // Gizlendi (flag sonrası)
+}
+
+// ─────────────────────────────────────────────
+// DOĞRULAMA — Katmanlı sinyal sistemi
+// KVKK: Belge saklanmaz, sadece sonuç tutulur
+// ─────────────────────────────────────────────
+
+model ReviewVerification {
+  id          Int      @id @default(autoincrement())
+  reviewId    Int      @unique
+  review      Review   @relation(fields: [reviewId], references: [id])
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+
+  // Doğrulama tipi
+  verificationType VerificationType
+
+  // AI analiz sonuçları
+  aiConfidenceScore Float?   // 0-1 arası
+  plateHash         String?  // Plaka değil, hash'i (araçlar için)
+  modelMatchScore   Float?   // AI'nin model tanıma skoru
+
+  // EXIF verisi
+  photoExifDate     DateTime? // Fotoğrafın çekilme tarihi
+
+  // Mantık kontrol sonuçları
+  logicChecks       Json     @default("{}")
+  // { "model_year_ok": true, "km_plausible": true, "exif_recent": true }
+
+  // Sonuç
+  isVerified        Boolean  @default(false)
+  verifiedAt        DateTime?
+
+  // KVKK: Belge yüklendiyse anında silinir
+  documentDeletedAt DateTime?
+
+  createdAt   DateTime @default(now())
+
+  @@map("review_verifications")
+}
+
+enum VerificationType {
+  PHOTO_WITH_PLATE    // Araç: plaka görünür fotoğraf
+  PHOTO_WITH_PRODUCT  // Diğer: ürün etiketi görünür fotoğraf
+  INVOICE             // Sıfır ürün faturası
+  INSURANCE_POLICY    // Trafik sigortası (araç, ikinci el)
+  SELF_DECLARED       // Beyan — belge yok
+}
+
+// ─────────────────────────────────────────────
+// TOPLULUK RAPORLAMA
+// ─────────────────────────────────────────────
+
+model ReviewFlag {
+  id          Int        @id @default(autoincrement())
+  reviewId    Int
+  review      Review     @relation(fields: [reviewId], references: [id])
+  reporterId  Int
+  reporter    User       @relation(fields: [reporterId], references: [id])
+
+  reason      FlagReason
+  description String?    @db.VarChar(300)
+
+  status      FlagStatus @default(PENDING)
+  resolvedAt  DateTime?
+  resolvedBy  Int?       // Admin user id
+
+  createdAt   DateTime   @default(now())
+
+  @@unique([reviewId, reporterId])
+  @@map("review_flags")
+}
+
+enum FlagReason {
+  FAKE_REVIEW       // Sahte yorum
+  SPAM              // Spam
+  OFFENSIVE         // Hakaret / uygunsuz içerik
+  PERSONAL_DATA     // Kişisel veri içeriyor
+  WRONG_PRODUCT     // Yanlış ürün yorumu
+  OTHER
+}
+
+enum FlagStatus {
+  PENDING    // İnceleme bekliyor
+  DISMISSED  // Reddedildi (yorum temiz)
+  ACTIONED   // İşlem yapıldı (yorum kaldırıldı/düzenlendi)
+}
+
+// ─────────────────────────────────────────────
+// FAYDALANDI OYU
+// ─────────────────────────────────────────────
+
+model ReviewHelpfulVote {
+  id        Int     @id @default(autoincrement())
+  reviewId  Int
+  review    Review  @relation(fields: [reviewId], references: [id])
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+  isHelpful Boolean // true = faydalı, false = faydasız
+
+  createdAt DateTime @default(now())
+
+  @@unique([reviewId, userId])
+  @@map("review_helpful_votes")
+}
+
+// ─────────────────────────────────────────────
+// KVKK UYUM TABLOLARI
+// ─────────────────────────────────────────────
+
+// Kullanıcının ne zaman, neyi onayladığı
+model ConsentLog {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+
+  consentType ConsentType
+  isGranted   Boolean
+  ipAddress   String?
+  userAgent   String?
+
+  createdAt   DateTime @default(now())
+
+  @@map("consent_logs")
+}
+
+enum ConsentType {
+  PRIVACY_POLICY      // Gizlilik politikası
+  TERMS_OF_SERVICE    // Kullanım koşulları
+  MARKETING_EMAIL     // Pazarlama e-postası
+  ANALYTICS_COOKIES   // Analitik çerezler
+}
+
+// "Verilerimi sil" talepleri
+model DataDeletionRequest {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+
+  reason      String?  @db.VarChar(500)
+  status      DeletionStatus @default(PENDING)
+
+  requestedAt DateTime @default(now())
+  // KVKK: 30 gün içinde tamamlanmalı
+  dueAt       DateTime
+  completedAt DateTime?
+  completedBy Int?
+
+  @@map("data_deletion_requests")
+}
+
+enum DeletionStatus {
+  PENDING     // Bekliyor
+  IN_PROGRESS // İşleniyor
+  COMPLETED   // Tamamlandı
+  REJECTED    // Reddedildi (geçerli sebep yok)
 }
