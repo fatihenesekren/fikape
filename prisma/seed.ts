@@ -118,48 +118,61 @@ async function main() {
 
   const products = [
     // EV — Togg T10X
-    { slug: "togg-t10x-2023", name: "Togg T10X 2023", year: 2023, modelId: modelT10X.id, brandId: togg.id,
+    { slug: "togg-t10x-2023", name: "Togg T10X 2023", year: 2023, trimName: "Uzun Menzil",
+      modelId: modelT10X.id, brandId: togg.id,
       attributes: { fuel_type: "EV", segment: "C", body_type: "suv", ev_range_km: 523, power_hp: 200 } },
-    { slug: "togg-t10x-2024", name: "Togg T10X 2024", year: 2024, modelId: modelT10X.id, brandId: togg.id,
+    { slug: "togg-t10x-2024", name: "Togg T10X 2024", year: 2024, trimName: "Uzun Menzil",
+      modelId: modelT10X.id, brandId: togg.id,
       attributes: { fuel_type: "EV", segment: "C", body_type: "suv", ev_range_km: 523, power_hp: 200 } },
 
     // EV — Togg T10F
-    { slug: "togg-t10f-2024", name: "Togg T10F 2024", year: 2024, modelId: modelT10F.id, brandId: togg.id,
+    { slug: "togg-t10f-2024", name: "Togg T10F 2024", year: 2024, trimName: "Standart Menzil",
+      modelId: modelT10F.id, brandId: togg.id,
       attributes: { fuel_type: "EV", segment: "C", body_type: "sedan", ev_range_km: 480, power_hp: 200 } },
 
     // EV — Tesla Model Y
-    { slug: "tesla-model-y-2023", name: "Tesla Model Y 2023", year: 2023, modelId: modelModelY.id, brandId: tesla.id,
+    { slug: "tesla-model-y-2023", name: "Tesla Model Y 2023", year: 2023, trimName: "Long Range AWD",
+      modelId: modelModelY.id, brandId: tesla.id,
       attributes: { fuel_type: "EV", segment: "D", body_type: "suv", ev_range_km: 533, power_hp: 299 } },
-    { slug: "tesla-model-y-2024", name: "Tesla Model Y 2024", year: 2024, modelId: modelModelY.id, brandId: tesla.id,
+    { slug: "tesla-model-y-2024", name: "Tesla Model Y 2024", year: 2024, trimName: "Long Range RWD",
+      modelId: modelModelY.id, brandId: tesla.id,
       attributes: { fuel_type: "EV", segment: "D", body_type: "suv", ev_range_km: 533, power_hp: 299 } },
 
     // C Segment — Fiat Egea Sedan
-    { slug: "fiat-egea-sedan-2020", name: "Fiat Egea Sedan 2020", year: 2020, modelId: modelEgea.id, brandId: fiat.id,
+    { slug: "fiat-egea-sedan-2020", name: "Fiat Egea Sedan 2020", year: 2020, trimName: "Urban",
+      modelId: modelEgea.id, brandId: fiat.id,
       attributes: { fuel_type: "GASOLINE", segment: "C", body_type: "sedan", engine_cc: 1368, power_hp: 95 } },
-    { slug: "fiat-egea-sedan-2022", name: "Fiat Egea Sedan 2022", year: 2022, modelId: modelEgea.id, brandId: fiat.id,
+    { slug: "fiat-egea-sedan-2022", name: "Fiat Egea Sedan 2022", year: 2022, trimName: "Urban",
+      modelId: modelEgea.id, brandId: fiat.id,
       attributes: { fuel_type: "GASOLINE", segment: "C", body_type: "sedan", engine_cc: 1368, power_hp: 95 } },
-    { slug: "fiat-egea-sedan-2024", name: "Fiat Egea Sedan 2024", year: 2024, modelId: modelEgea.id, brandId: fiat.id,
+    { slug: "fiat-egea-sedan-2024", name: "Fiat Egea Sedan 2024", year: 2024, trimName: "Lounge",
+      modelId: modelEgea.id, brandId: fiat.id,
       attributes: { fuel_type: "GASOLINE", segment: "C", body_type: "sedan", engine_cc: 1368, power_hp: 95 } },
 
     // B Segment — Renault Clio
-    { slug: "renault-clio-2021", name: "Renault Clio 2021", year: 2021, modelId: modelClio.id, brandId: renault.id,
+    { slug: "renault-clio-2021", name: "Renault Clio 2021", year: 2021, trimName: "Touch",
+      modelId: modelClio.id, brandId: renault.id,
       attributes: { fuel_type: "GASOLINE", segment: "B", body_type: "hatchback", engine_cc: 999, power_hp: 90 } },
-    { slug: "renault-clio-2023", name: "Renault Clio 2023", year: 2023, modelId: modelClio.id, brandId: renault.id,
+    { slug: "renault-clio-2023", name: "Renault Clio 2023", year: 2023, trimName: "Techno",
+      modelId: modelClio.id, brandId: renault.id,
       attributes: { fuel_type: "GASOLINE", segment: "B", body_type: "hatchback", engine_cc: 999, power_hp: 90 } },
-    { slug: "renault-clio-hybrid-2023", name: "Renault Clio Hybrid 2023", year: 2023, modelId: modelClio.id, brandId: renault.id,
+    { slug: "renault-clio-hybrid-2023", name: "Renault Clio Hybrid 2023", year: 2023, trimName: "E-Tech Techno",
+      modelId: modelClio.id, brandId: renault.id,
       attributes: { fuel_type: "HYBRID", segment: "B", body_type: "hatchback", engine_cc: 1598, power_hp: 145 } },
 
     // SUV — Dacia Duster
-    { slug: "dacia-duster-2021", name: "Dacia Duster 2021", year: 2021, modelId: modelDuster.id, brandId: dacia.id,
+    { slug: "dacia-duster-2021", name: "Dacia Duster 2021", year: 2021, trimName: "Comfort",
+      modelId: modelDuster.id, brandId: dacia.id,
       attributes: { fuel_type: "GASOLINE", segment: "SUV", body_type: "suv", engine_cc: 999, power_hp: 90 } },
-    { slug: "dacia-duster-2024", name: "Dacia Duster 2024", year: 2024, modelId: modelDuster.id, brandId: dacia.id,
+    { slug: "dacia-duster-2024", name: "Dacia Duster 2024", year: 2024, trimName: "Extreme",
+      modelId: modelDuster.id, brandId: dacia.id,
       attributes: { fuel_type: "GASOLINE", segment: "SUV", body_type: "suv", engine_cc: 999, power_hp: 90 } },
   ];
 
   for (const p of products) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: {},
+      update: { trimName: p.trimName },
       create: { ...p, categoryId: catOtomobil.id },
     });
   }

@@ -91,6 +91,7 @@ model Product {
   slug        String   @unique
   name        String
   year        Int?
+  trimName    String?  // Örn: "Easy", "Urban", "GR Sport", "Long Range"
 
   // Kategoriye özgü özellikler — category.attributeSchema'ya göre dolar
   // Araç: { "fuel_type": "EV", "segment": "C", "body_type": "sedan", "ev_range_km": 480 }
@@ -198,11 +199,11 @@ model Review {
   userProductId Int?
   userProduct   UserProduct? @relation(fields: [userProductId], references: [id])
 
-  // Temel puanlar — tüm kategorilerde ortak (1-5)
-  scoreValue    Float    // Fiyat / Para değeri
-  scoreQuality  Float    // Kalite / Dayanıklılık
-  scoreSupport  Float    // Servis / Destek
-  scoreOverall  Float    // Genel memnuniyet
+  // FI·KA·PE puanları — tüm kategorilerde ortak (1-5)
+  scoreFiyat      Float  // FI — Fiyat / Para değeri
+  scoreKalite     Float  // KA — Kalite / Dayanıklılık
+  scorePerformans Float  // PE — Performans / Kullanım deneyimi
+  scoreOverall    Float  // Genel memnuniyet (FI×0.30 + KA×0.35 + PE×0.35)
 
   // Kısa metin — zorunlu
   summaryText   String   @db.VarChar(500)
