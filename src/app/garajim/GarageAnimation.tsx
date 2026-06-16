@@ -101,13 +101,13 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
         }
         @keyframes garageDoor {
           0%, 7%    { transform: translateY(0); }
-          16%, 63%  { transform: translateY(-100%); }
-          78%, 100% { transform: translateY(0); }
+          16%, 81%  { transform: translateY(-100%); }
+          93%, 100% { transform: translateY(0); }
         }
         @keyframes garageLight {
           0%, 14%  { opacity: 0; }
-          20%, 60% { opacity: 1; }
-          68%, 100%{ opacity: 0; }
+          20%, 79% { opacity: 1; }
+          90%, 100%{ opacity: 0; }
         }
         @keyframes lampGlow {
           0%, 100% { opacity: 0.65; }
@@ -135,7 +135,7 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
 
         {/* Ay */}
         <div style={{
-          position:"absolute", right:54, top:16, width:36, height:36, borderRadius:"50%",
+          position:"absolute", left:28, top:12, width:36, height:36, borderRadius:"50%",
           background:"radial-gradient(circle at 38% 38%,#f8f0c8,#d4b860)",
           animation:"moonPulse 4s ease-in-out infinite",
         }}>
@@ -190,7 +190,7 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
           }}>
             <span style={{ color:"white", fontWeight:900, fontSize:22, fontFamily:"Arial,sans-serif", lineHeight:1 }}>P</span>
           </div>
-          <div style={{ position:"absolute", left:-36, top:42, width:2, height:28, background:"#555" }}/>
+          <div style={{ position:"absolute", left:-36, top:42, width:2, height:70, background:"#555" }}/>
 
           {/* Çatı */}
           <div style={{ position:"absolute", top:-14, left:-12, right:-12, height:20, background:"#424242", borderRadius:"5px 5px 0 0" }}/>
