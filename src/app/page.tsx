@@ -135,7 +135,7 @@ export default async function Home({
             <span style={{ color: "#F0997B" }}>Pe</span>rformans
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            Gerçek sahiplerden gerçek deneyimler
+            Gerçek kullanıcılar, gerçek deneyimler
           </p>
         </div>
       </section>
@@ -223,6 +223,35 @@ export default async function Home({
               <div className="text-xs text-gray-500 leading-relaxed">{desc}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Alt banner — CTA */}
+      <section className="bg-[#111] text-white mt-4">
+        <div className="max-w-7xl mx-auto px-4 py-14 text-center">
+          <div className="flex items-center justify-center gap-1 text-3xl font-black tracking-tight mb-3 select-none">
+            <span style={{ color: "#85B7EB" }}>fi</span>
+            <span className="text-gray-600 font-light">·</span>
+            <span style={{ color: "#97C459" }}>ka</span>
+            <span className="text-gray-600 font-light">·</span>
+            <span style={{ color: "#F0997B" }}>pe</span>
+          </div>
+          <p className="text-gray-400 text-sm mb-1">
+            <span style={{ color: "#85B7EB" }}>Fiyat</span>
+            {" · "}
+            <span style={{ color: "#97C459" }}>Kalite</span>
+            {" · "}
+            <span style={{ color: "#F0997B" }}>Performans</span>
+          </p>
+          <p className="text-gray-500 text-sm mb-8">
+            Gerçek kullanıcılar, gerçek deneyimler.
+          </p>
+          <a
+            href="/yorum-yaz"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-sm text-[#111] bg-white hover:bg-gray-100 transition-colors"
+          >
+            Deneyimini paylaş →
+          </a>
         </div>
       </section>
     </>

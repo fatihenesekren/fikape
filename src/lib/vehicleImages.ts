@@ -19,7 +19,7 @@ export async function getVehicleImageUrl(slug: string): Promise<string | null> {
   try {
     const res = await fetch(
       `https://en.wikipedia.org/api/rest_v1/page/summary/${page}`,
-      { next: { revalidate: 86400 } } // 24 saat önbellek
+      { next: { revalidate: 86400 }, signal: AbortSignal.timeout(3000) }
     );
     if (!res.ok) return null;
     const data = (await res.json()) as { thumbnail?: { source: string } };

@@ -8,7 +8,7 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 export const metadata: Metadata = {
   title: "fikape — Gerçek Kullanıcı Yorumları",
   description:
-    "Fiyat · Kalite · Performans. Araçlar için gerçek sahip deneyimleri.",
+    "Fiyat · Kalite · Performans. Gerçek kullanıcılar, gerçek deneyimler.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="text-gray-600 font-light">·</span>
               <span style={{ color: "#993C1D" }}>pe</span>
             </div>
-            <p>FIyat · KAlite · PErformans — Gerçek kullanıcılar, gerçek deneyimler.</p>
+            <p>Fiyat · Kalite · Performans — Gerçek kullanıcılar, gerçek deneyimler.</p>
             <p>© {new Date().getFullYear()} fikape.com · Tüm hakları saklıdır.</p>
           </div>
         </footer>
