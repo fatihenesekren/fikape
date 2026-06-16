@@ -1,0 +1,70 @@
+// Türkçe küfür/hakaret listesi
+const PROFANITY = [
+  "orospu", "orospuçocuğu", "sikiş", "sikik", "götveren", "ibne",
+  "oç", "oğlum oç", "piç", "bok ye", "bok gibi", "kahpe", "fahişe",
+  "amk", "amına", "amcık", "göt", "götvur", "orospu evladı",
+];
+
+// Spam pattern'ları
+const SPAM_PATTERNS = [
+  /(.)\1{9,}/,              // Aynı harf 10+ kez: "aaaaaaaaaa"
+  /^[\s\W\d]+$/,           // Sadece boşluk/noktalama/rakam
+  /https?:\/\//i,           // URL
+  /www\./i,                 // URL
+  /(.{1,10})\1{4,}/,       // Kısa tekrar bloğu: "aşk aşk aşk aşk aşk"
+];
+
+export interface ValidationResult {
+  ok: boolean;
+  error: string | null;
+}
+
+export function validateSummary(text: string): ValidationResult {
+  const t = text.trim();
+
+  if (!t) return err("Kısa özet zorunludur.");
+  if (t.length < 20) return err(`En az 20 karakter yazın. (${t.length}/20)`);
+  if (t.length > 500) return err("En fazla 500 karakter yazabilirsiniz.");
+
+  return checkContent(t);
+}
+
+export function validateDetail(text: string): ValidationResult {
+  const t = text.trim();
+
+  if (!t) return ok(); // opsiyonel alan
+  if (t.length < 50) return err(`Detaylı yorum en az 50 karakter olmalıdır. (${t.length}/50)`);
+
+  return checkContent(t);
+}
+
+function checkContent(t: string): ValidationResult {
+  // URL kontrolü
+  for (const pattern of SPAM_PATTERNS) {
+    if (pattern.test(t)) {
+      if (/https?:\/\//i.test(t) || /www\./i.test(t)) {
+        return err("Link paylaşımına izin verilmemektedir.");
+      }
+      return err("Lütfen anlamlı bir metin yazın.");
+    }
+  }
+
+  // Harf oranı — metnin en az %40'ı harf olmalı
+  const letters = (t.match(/[a-züğışöçA-ZÜĞİŞÖÇ]/g) ?? []).length;
+  if (t.length > 15 && letters / t.length < 0.4) {
+    return err("Lütfen anlamlı bir metin yazın.");
+  }
+
+  // Küfür / hakaret kontrolü
+  const lower = t.toLowerCase().replace(/[^a-züğışöç\s]/gi, " ");
+  for (const word of PROFANITY) {
+    if (lower.includes(word)) {
+      return err("Hakaret veya uygunsuz ifade tespit edildi.");
+    }
+  }
+
+  return ok();
+}
+
+function ok(): ValidationResult  { return { ok: true,  error: null }; }
+function err(e: string): ValidationResult { return { ok: false, error: e }; }

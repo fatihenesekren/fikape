@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
+import { validateSummary, validateDetail } from "@/lib/reviewValidation";
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -12,11 +13,20 @@ export async function POST(req: Request) {
     summaryText, detailText, wouldBuyAgain, ownershipMonths,
   } = await req.json();
 
-  if (!productSlug || !summaryText?.trim()) {
-    return NextResponse.json({ error: "Araç ve özet zorunludur." }, { status: 400 });
+  if (!productSlug) {
+    return NextResponse.json({ error: "Araç zorunludur." }, { status: 400 });
   }
   if ([scoreFiyat, scoreKalite, scorePerformans].some((s) => s < 1 || s > 10)) {
     return NextResponse.json({ error: "Puanlar 1-10 arasında olmalıdır." }, { status: 400 });
+  }
+
+  const summaryCheck = validateSummary(summaryText ?? "");
+  if (!summaryCheck.ok) {
+    return NextResponse.json({ error: summaryCheck.error }, { status: 400 });
+  }
+  const detailCheck = validateDetail(detailText ?? "");
+  if (!detailCheck.ok) {
+    return NextResponse.json({ error: detailCheck.error }, { status: 400 });
   }
 
   const product = await prisma.product.findUnique({ where: { slug: productSlug } });

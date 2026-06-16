@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
+import { validateSummary, validateDetail } from "@/lib/reviewValidation";
 
 const FUEL_LABELS: Record<string, string> = {
   EV: "⚡ Elektrik", HYBRID: "🔋 Hibrit",
@@ -29,6 +30,20 @@ interface Product {
 interface Props {
   products: Product[];
   defaultSlug?: string;
+}
+
+function FieldFeedback({ error, ok }: { error: string | null; ok: boolean }) {
+  if (!error && !ok) return null;
+  if (ok) return (
+    <p className="text-xs text-green-600 flex items-center gap-1">
+      <span>✓</span> Görünüyor güzel!
+    </p>
+  );
+  return (
+    <p className="text-xs text-red-500 flex items-center gap-1">
+      <span>⚠</span> {error}
+    </p>
+  );
 }
 
 function ScoreSelector({
@@ -110,7 +125,9 @@ export function ReviewForm({ products, defaultSlug }: Props) {
   const [scoreKalite,    setScoreKalite]    = useState(0);
   const [scorePerformans,setScorePerformans]= useState(0);
   const [summaryText,    setSummaryText]    = useState("");
+  const [summaryTouched, setSummaryTouched] = useState(false);
   const [detailText,     setDetailText]     = useState("");
+  const [detailTouched,  setDetailTouched]  = useState(false);
   const [wouldBuyAgain,  setWouldBuyAgain]  = useState<boolean | null>(null);
   const [ownershipMonths,setOwnershipMonths]= useState("");
   const [error,          setError]          = useState("");
@@ -121,13 +138,25 @@ export function ReviewForm({ products, defaultSlug }: Props) {
     ? calcOverall({ scoreFiyat, scoreKalite, scorePerformans })
     : null;
 
+  const summaryValidation = validateSummary(summaryText);
+  const detailValidation  = validateDetail(detailText);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
     if (!productSlug) { setError("Lütfen bir araç seçin."); return; }
     if (!scoresComplete) { setError("Lütfen tüm FI·KA·PE puanlarını verin."); return; }
-    if (!summaryText.trim()) { setError("Lütfen kısa bir özet yazın."); return; }
+    if (!summaryValidation.ok) {
+      setSummaryTouched(true);
+      setError(summaryValidation.error!);
+      return;
+    }
+    if (!detailValidation.ok) {
+      setDetailTouched(true);
+      setError(detailValidation.error!);
+      return;
+    }
 
     setLoading(true);
     const res = await fetch("/api/reviews", {
@@ -292,16 +321,26 @@ export function ReviewForm({ products, defaultSlug }: Props) {
       <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-3">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide">Kısa Özet</h2>
-          <span className="text-xs text-gray-400">{summaryText.length}/500</span>
+          <span className={`text-xs ${summaryText.length >= 480 ? "text-orange-400" : "text-gray-400"}`}>
+            {summaryText.length}/500
+          </span>
         </div>
         <textarea
           value={summaryText}
           onChange={(e) => setSummaryText(e.target.value.slice(0, 500))}
+          onBlur={() => setSummaryTouched(true)}
           rows={3}
-          required
           placeholder="Bu aracı tek cümleyle özetleyin..."
-          className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 resize-none"
+          className="w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none resize-none transition-colors"
+          style={{
+            borderColor: summaryTouched
+              ? summaryValidation.ok ? "#86efac" : "#fca5a5"
+              : "#e5e7eb",
+          }}
         />
+        {summaryTouched && (
+          <FieldFeedback error={summaryValidation.error} ok={summaryValidation.ok} />
+        )}
       </div>
 
       {/* Detay */}
@@ -312,10 +351,19 @@ export function ReviewForm({ products, defaultSlug }: Props) {
         <textarea
           value={detailText}
           onChange={(e) => setDetailText(e.target.value)}
+          onBlur={() => { if (detailText.trim()) setDetailTouched(true); }}
           rows={5}
           placeholder="Araçla ilgili detaylı deneyimlerinizi paylaşın..."
-          className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 resize-none"
+          className="w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none resize-none transition-colors"
+          style={{
+            borderColor: detailTouched
+              ? detailValidation.ok ? "#86efac" : "#fca5a5"
+              : "#e5e7eb",
+          }}
         />
+        {detailTouched && (
+          <FieldFeedback error={detailValidation.error} ok={detailValidation.ok} />
+        )}
       </div>
 
       {/* Ek bilgiler */}
