@@ -3,7 +3,7 @@ const WIKI_PAGE: Record<string, string> = {
   "togg-t10x":     "Togg_T10X",
   "togg-t10f":     "Togg_T10F",
   "tesla-model-y": "Tesla_Model_Y",
-  "fiat-egea":     "Fiat_Tipo",
+  "fiat-egea":     "Fiat_Egea",
   "renault-clio":  "Renault_Clio",
   "dacia-duster":  "Dacia_Duster",
 };

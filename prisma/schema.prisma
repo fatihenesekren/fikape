@@ -92,6 +92,7 @@ model Product {
   name        String
   year        Int?
   trimName    String?  // Örn: "Easy", "Urban", "GR Sport", "Long Range"
+  imageUrl    String?  // Manuel kurasyon — boşsa Wikipedia fallback kullanılır
 
   // Kategoriye özgü özellikler — category.attributeSchema'ya göre dolar
   // Araç: { "fuel_type": "EV", "segment": "C", "body_type": "sedan", "ev_range_km": 480 }

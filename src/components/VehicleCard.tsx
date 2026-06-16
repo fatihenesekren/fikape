@@ -7,6 +7,10 @@ const FUEL_LABELS: Record<string, string> = {
   HYBRID: "Hibrit", LPG: "LPG",
 };
 
+const FUEL_ICONS: Record<string, string> = {
+  EV: "⚡", HYBRID: "🔋", GASOLINE: "⛽", DIESEL: "⛽", LPG: "⛽",
+};
+
 const FUEL_COLORS: Record<string, { bg: string; text: string }> = {
   EV:       { bg: "#C0DD97", text: "#27500A" },
   GASOLINE: { bg: "#D3D1C7", text: "#444441" },
@@ -15,41 +19,59 @@ const FUEL_COLORS: Record<string, { bg: string; text: string }> = {
   LPG:      { bg: "#F4C0D1", text: "#4B1528" },
 };
 
+const BODY_LABELS: Record<string, string> = {
+  suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
+  mpv: "MPV", coupe: "Coupe", cabrio: "Cabrio",
+};
+
 const BODY_ICONS: Record<string, string> = {
   suv: "🚙", sedan: "🚗", hatchback: "🚗", mpv: "🚐", coupe: "🏎", cabrio: "🏎",
 };
 
-interface Props {
+export interface Variant {
   slug: string;
+  year: number | null;
+  trimName: string | null;
+  fuelType: string;
+}
+
+interface Props {
+  primarySlug: string;
   brandName: string;
   modelName: string;
-  trimName?: string | null;
-  year: number | null;
   attributes: Record<string, unknown>;
   scores: FikapeScores | null;
-  reviewCount: number;
+  totalReviews: number;
   imageUrl?: string | null;
+  variants: Variant[];
 }
 
 export function VehicleCard({
-  slug, brandName, modelName, trimName, year, attributes,
-  scores, reviewCount, imageUrl,
+  primarySlug, brandName, modelName, attributes,
+  scores, totalReviews, imageUrl, variants,
 }: Props) {
-  const fuelType = String(attributes.fuel_type ?? "");
+  const primaryFuelType = String(attributes.fuel_type ?? "");
   const bodyType = String(attributes.body_type ?? "sedan");
-  const fuelLabel = FUEL_LABELS[fuelType] ?? fuelType;
-  const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
+  const bodyLabel = BODY_LABELS[bodyType] ?? bodyType;
   const bodyIcon = BODY_ICONS[bodyType] ?? "🚗";
+  const placeholderBg = primaryFuelType === "EV" ? "#0f2027" : "#1a1a2e";
 
-  const placeholderBg = fuelType === "EV"
-    ? "#0f2027"
-    : "#1a1a2e";
+  const uniqueFuels = [...new Set(variants.map((v) => v.fuelType).filter(Boolean))];
+  const hasMultipleFuels = uniqueFuels.length > 1;
+  const fuelColor = FUEL_COLORS[primaryFuelType] ?? FUEL_COLORS.GASOLINE;
+
+  // Fotoğrafa tıklayınca açılacak varyantın etiketi
+  const primaryVariant = variants.find((v) => v.slug === primarySlug) ?? variants[0];
+  const primaryLabel = [primaryVariant?.trimName, primaryVariant?.year]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
-    <Link href={`/araclar/${slug}`} className="block group">
-      <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+    <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
 
-        {/* Görsel alanı */}
+      <Link href={`/araclar/${primarySlug}`} className="block group">
+
+        {/* Görsel */}
         <div
           className="relative w-full h-44 flex items-center justify-center overflow-hidden"
           style={{ background: placeholderBg }}
@@ -62,47 +84,52 @@ export function VehicleCard({
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
-            <span className="text-5xl opacity-20 select-none">
-              {bodyIcon}
+            <span className="text-5xl opacity-20 select-none">{bodyIcon}</span>
+          )}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+
+          {/* Sol üst — yakıt tipi */}
+          {hasMultipleFuels ? (
+            <span className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-black/50 text-white backdrop-blur-sm">
+              {uniqueFuels.length} yakıt tipi
+            </span>
+          ) : (
+            <span
+              className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10"
+              style={{ background: fuelColor.bg, color: fuelColor.text }}
+            >
+              {FUEL_ICONS[primaryFuelType]} {FUEL_LABELS[primaryFuelType] ?? primaryFuelType}
             </span>
           )}
 
-          {/* Gradient overlay — rozet okunabilirliği için */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-          {/* Yakıt rozeti */}
-          <span
-            className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10"
-            style={{ background: fuelColor.bg, color: fuelColor.text }}
-          >
-            {fuelType === "EV" && "⚡ "}{fuelLabel}
+          {/* Sağ üst — kasa tipi */}
+          <span className="absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-black/50 text-white backdrop-blur-sm">
+            {bodyLabel}
           </span>
 
-          {/* Yorum sayısı */}
-          {reviewCount > 0 && (
+          {/* Sol alt — tıklayınca açılacak varyant */}
+          {primaryLabel && (
+            <span className="absolute bottom-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-black/60 text-white">
+              {primaryLabel}
+            </span>
+          )}
+
+          {/* Sağ alt — toplam yorum */}
+          {totalReviews > 0 && (
             <span className="absolute bottom-3 right-3 text-xs font-medium px-2 py-0.5 rounded-full bg-black/60 text-white z-10">
-              {reviewCount} yorum
+              {totalReviews} yorum
             </span>
           )}
         </div>
 
         {/* Kart gövdesi */}
-        <div className="p-4">
+        <div className="px-4 pt-4 pb-3">
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">
             {brandName}
           </div>
-          <div className="text-base font-bold text-gray-900 leading-tight">
+          <div className="text-base font-bold text-gray-900 leading-tight mb-3">
             {modelName}
-          </div>
-          <div className="flex items-center gap-1.5 mt-0.5 mb-3">
-            {trimName && (
-              <span className="text-xs font-medium text-gray-500 bg-gray-50 px-1.5 py-0.5 rounded">
-                {trimName}
-              </span>
-            )}
-            {year && (
-              <span className="text-xs text-gray-400">{year}</span>
-            )}
           </div>
 
           {scores ? (
@@ -113,7 +140,45 @@ export function VehicleCard({
             </div>
           )}
         </div>
-      </div>
-    </Link>
+      </Link>
+
+      {/* Varyant chip'leri */}
+      {variants.length > 0 && (
+        <div className="px-4 pb-4 flex flex-wrap gap-1.5">
+          {variants.map((v) => {
+            const fc = FUEL_COLORS[v.fuelType] ?? FUEL_COLORS.GASOLINE;
+            const icon = FUEL_ICONS[v.fuelType] ?? "";
+            const label = [v.trimName, v.year].filter(Boolean).join(" · ");
+            const isPrimary = v.slug === primarySlug;
+
+            return (
+              <Link
+                key={v.slug}
+                href={`/araclar/${v.slug}`}
+                title={isPrimary ? "Kart tıklamasıyla açılan varyant" : undefined}
+                className="text-xs px-2.5 py-1 rounded-lg border transition-all hover:opacity-80"
+                style={
+                  isPrimary
+                    ? {
+                        background: fc.bg,
+                        color: fc.text,
+                        borderColor: "transparent",
+                        fontWeight: 700,
+                      }
+                    : {
+                        background: "#fff",
+                        color: fc.text,
+                        borderColor: fc.bg,
+                        fontWeight: 500,
+                      }
+                }
+              >
+                {icon} {label}
+              </Link>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }

@@ -43,10 +43,8 @@ export default async function VehicleDetailPage({
 
   if (!product) notFound();
 
-  const [imageUrl, attrs] = await Promise.all([
-    getVehicleImageUrl(slug),
-    Promise.resolve(product.attributes as Record<string, unknown>),
-  ]);
+  const attrs = product.attributes as Record<string, unknown>;
+  const imageUrl = product.imageUrl ?? await getVehicleImageUrl(slug);
   const fuelType = String(attrs.fuel_type ?? "");
   const bodyType = String(attrs.body_type ?? "sedan");
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
