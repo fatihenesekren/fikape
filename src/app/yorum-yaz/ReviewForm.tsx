@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { calcOverall, FIKAPE } from "@/lib/fikape";
+import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
 
 interface Product {
   slug: string;
@@ -24,40 +24,64 @@ function ScoreSelector({
   label: string; short: string; color: string; bg: string;
   value: number; onChange: (v: number) => void;
 }) {
-  const LABELS = ["", "Çok Kötü", "Kötü", "Orta", "İyi", "Mükemmel"];
+  const [hovered, setHovered] = useState(0);
+  const active = hovered || value;
+
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
+      {/* Başlık + büyük skor */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-bold w-8 h-8 rounded-lg flex items-center justify-center"
-            style={{ background: bg, color }}>
+          <span
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-black"
+            style={{ background: bg, color }}
+          >
             {short}
           </span>
           <span className="text-sm font-semibold text-gray-700">{label}</span>
         </div>
-        {value > 0 && (
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full"
-            style={{ background: bg, color }}>
-            {LABELS[value]}
-          </span>
-        )}
+
+        <div className="flex items-baseline gap-1.5 min-w-[90px] justify-end">
+          {active > 0 ? (
+            <>
+              <span className="text-3xl font-black leading-none" style={{ color }}>
+                {active}
+              </span>
+              <span className="text-xs font-medium" style={{ color }}>
+                {SCORE_LABELS[active]}
+              </span>
+            </>
+          ) : (
+            <span className="text-xs text-gray-300">Puan ver</span>
+          )}
+        </div>
       </div>
-      <div className="flex gap-2">
-        {[1, 2, 3, 4, 5].map((n) => (
+
+      {/* Segment track */}
+      <div className="flex gap-1">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
           <button
             key={n}
             type="button"
             onClick={() => onChange(n)}
-            className="flex-1 h-10 rounded-xl text-sm font-bold border-2 transition-all"
-            style={
-              value === n
-                ? { background: color, borderColor: color, color: "#fff" }
-                : value > 0 && n < value
-                ? { background: bg, borderColor: "transparent", color }
-                : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#9ca3af" }
-            }
+            onMouseEnter={() => setHovered(n)}
+            onMouseLeave={() => setHovered(0)}
+            className="flex-1 flex flex-col items-center gap-1 group"
           >
-            {n}
+            <div
+              className="w-full h-7 rounded-md transition-all duration-100"
+              style={
+                n <= active
+                  ? { background: color, opacity: 0.6 + (n / active) * 0.4 }
+                  : { background: "#f0f0f0" }
+              }
+            />
+            <span
+              className="text-[10px] font-bold transition-colors"
+              style={n <= active ? { color } : { color: "#d1d5db" }}
+            >
+              {n}
+            </span>
           </button>
         ))}
       </div>
@@ -164,7 +188,7 @@ export function ReviewForm({ products, defaultSlug }: Props) {
           {overall !== null && (
             <div className="text-right">
               <span className="text-2xl font-black text-gray-900">{overall.toFixed(1)}</span>
-              <span className="text-xs text-gray-400 ml-1">/ 5</span>
+              <span className="text-xs text-gray-400 ml-1">/ 10</span>
             </div>
           )}
         </div>

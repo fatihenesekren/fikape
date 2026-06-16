@@ -17,7 +17,7 @@ export function FikapeScore({ scores, variant = "chips", reviewCount }: Props) {
             {reviewCount != null ? `${reviewCount} yorum` : ""}
           </span>
           <span className="text-2xl font-black">
-            {overall.toFixed(1)}<span className="text-sm font-normal text-gray-400">/5</span>
+            {overall.toFixed(1)}<span className="text-sm font-normal text-gray-400">/10</span>
           </span>
         </div>
         {FIKAPE.map(({ key, short, label, color }) => {
@@ -28,7 +28,7 @@ export function FikapeScore({ scores, variant = "chips", reviewCount }: Props) {
               <div className="flex-1 h-2 rounded-full bg-gray-100 overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all"
-                  style={{ width: `${(val / 5) * 100}%`, background: color }}
+                  style={{ width: `${(val / 10) * 100}%`, background: color }}
                 />
               </div>
               <span className="text-xs font-bold w-6 text-right" style={{ color }}>{val.toFixed(1)}</span>

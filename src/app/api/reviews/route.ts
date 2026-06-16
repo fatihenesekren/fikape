@@ -15,8 +15,8 @@ export async function POST(req: Request) {
   if (!productSlug || !summaryText?.trim()) {
     return NextResponse.json({ error: "Araç ve özet zorunludur." }, { status: 400 });
   }
-  if ([scoreFiyat, scoreKalite, scorePerformans].some((s) => s < 1 || s > 5)) {
-    return NextResponse.json({ error: "Puanlar 1-5 arasında olmalıdır." }, { status: 400 });
+  if ([scoreFiyat, scoreKalite, scorePerformans].some((s) => s < 1 || s > 10)) {
+    return NextResponse.json({ error: "Puanlar 1-10 arasında olmalıdır." }, { status: 400 });
   }
 
   const product = await prisma.product.findUnique({ where: { slug: productSlug } });

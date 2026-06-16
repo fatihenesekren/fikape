@@ -1,3 +1,8 @@
+export const SCORE_LABELS: Record<number, string> = {
+  1: "Berbat", 2: "Çok Kötü", 3: "Kötü", 4: "Vasat", 5: "Orta",
+  6: "Fena Değil", 7: "İyi", 8: "Çok İyi", 9: "Mükemmel", 10: "Harika!",
+};
+
 export interface FikapeScores {
   scoreFiyat:      number;
   scoreKalite:     number;
