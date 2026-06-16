@@ -4,11 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
 import { validateSummary, validateDetail } from "@/lib/reviewValidation";
-
-const FUEL_LABELS: Record<string, string> = {
-  EV: "⚡ Elektrik", HYBRID: "🔋 Hibrit",
-  GASOLINE: "⛽ Benzin", DIESEL: "🛢 Dizel", LPG: "🔵 LPG",
-};
+import { FUEL_ICONS, FUEL_LABELS, FUEL_COLORS } from "@/lib/fuel";
 
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
@@ -266,11 +262,14 @@ export function ReviewForm({ products, defaultSlug }: Props) {
                 <p className="text-xs text-gray-400">{selectedProduct.year}</p>
               )}
               <div className="flex flex-wrap gap-1 mt-1">
-                {selectedProduct.fuelType && FUEL_LABELS[selectedProduct.fuelType] && (
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-200 text-gray-600">
-                    {FUEL_LABELS[selectedProduct.fuelType]}
-                  </span>
-                )}
+                {selectedProduct.fuelType && FUEL_LABELS[selectedProduct.fuelType] && (() => {
+                  const fc = FUEL_COLORS[selectedProduct.fuelType!] ?? { bg: "#e5e7eb", text: "#374151" };
+                  return (
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>
+                      {FUEL_ICONS[selectedProduct.fuelType!]} {FUEL_LABELS[selectedProduct.fuelType!]}
+                    </span>
+                  );
+                })()}
                 {selectedProduct.bodyType && BODY_LABELS[selectedProduct.bodyType] && (
                   <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-200 text-gray-600">
                     {BODY_LABELS[selectedProduct.bodyType]}

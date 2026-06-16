@@ -1,23 +1,7 @@
 import Link from "next/link";
 import { FikapeScore } from "@/components/FikapeScore";
 import type { FikapeScores } from "@/lib/fikape";
-
-const FUEL_LABELS: Record<string, string> = {
-  EV: "Elektrikli", GASOLINE: "Benzin", DIESEL: "Dizel",
-  HYBRID: "Hibrit", LPG: "LPG",
-};
-
-const FUEL_ICONS: Record<string, string> = {
-  EV: "⚡", HYBRID: "🔋", GASOLINE: "⛽", DIESEL: "⛽", LPG: "⛽",
-};
-
-const FUEL_COLORS: Record<string, { bg: string; text: string }> = {
-  EV:       { bg: "#C0DD97", text: "#27500A" },
-  GASOLINE: { bg: "#D3D1C7", text: "#444441" },
-  DIESEL:   { bg: "#FAC775", text: "#412402" },
-  HYBRID:   { bg: "#B5D4F4", text: "#0C447C" },
-  LPG:      { bg: "#F4C0D1", text: "#4B1528" },
-};
+import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",

@@ -2,14 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
-
-const FUEL_FILTERS = [
-  { key: "hepsi",    label: "Tüm Araçlar" },
-  { key: "EV",       label: "⚡ Elektrikli" },
-  { key: "HYBRID",   label: "🔋 Hibrit" },
-  { key: "GASOLINE", label: "🔥 Benzin" },
-  { key: "DIESEL",   label: "🛢️ Dizel" },
-];
+import { FUEL_FILTERS } from "@/lib/fuel";
 
 export default async function Home({
   searchParams,
