@@ -1,74 +1,99 @@
 "use client";
 
 export function GarageAnimation({ userName }: { userName: string }) {
+  const stars: [number, number, number][] = [
+    [32,12,2],[80,6,2],[145,18,2.5],[210,9,1.5],[275,22,2],[340,7,2.5],
+    [410,16,2],[470,25,2.5],[530,11,2],[600,20,2.5],[640,8,1.5],
+    [60,35,1.5],[170,38,2],[290,30,1.5],[420,42,1.5],[560,36,2],[620,28,1.5],
+    [100,48,1.5],[250,50,2],[400,45,1.5],[550,52,1.5],[15,28,1.5],[500,40,1.5],
+  ];
+
   return (
     <>
       <style>{`
         @keyframes garageDoor {
           0%, 7%    { transform: translateY(0); }
-          16%, 56%  { transform: translateY(-100%); }
-          65%, 100% { transform: translateY(0); }
+          16%, 63%  { transform: translateY(-100%); }
+          78%, 100% { transform: translateY(0); }
         }
         @keyframes carMove {
-          0%, 7%   { transform: translateX(0);     opacity: 0; }
-          11%      { transform: translateX(-20px);  opacity: 1; }
-          24%      { transform: translateX(-460px); opacity: 1; }
-          29%      { transform: translateX(-520px); opacity: 0; }
-          100%     { transform: translateX(-520px); opacity: 0; }
+          0%, 7%   { transform: translateX(660px); opacity: 0; }
+          11%      { transform: translateX(600px); opacity: 1; }
+          25%      { transform: translateX(95px);  opacity: 1; }
+          31%      { transform: translateX(55px);  opacity: 0; }
+          100%     { transform: translateX(55px);  opacity: 0; }
         }
         @keyframes motoMove {
-          0%, 29%  { transform: translateX(0);     opacity: 0; }
-          33%      { transform: translateX(-20px);  opacity: 1; }
-          46%      { transform: translateX(-460px); opacity: 1; }
-          51%      { transform: translateX(-520px); opacity: 0; }
-          100%     { transform: translateX(-520px); opacity: 0; }
+          0%, 31%  { transform: translateX(660px); opacity: 0; }
+          35%      { transform: translateX(600px); opacity: 1; }
+          49%      { transform: translateX(95px);  opacity: 1; }
+          55%      { transform: translateX(55px);  opacity: 0; }
+          100%     { transform: translateX(55px);  opacity: 0; }
         }
         @keyframes scooterMove {
-          0%, 51%  { transform: translateX(0);     opacity: 0; }
-          55%      { transform: translateX(-20px);  opacity: 1; }
-          68%      { transform: translateX(-460px); opacity: 1; }
-          73%      { transform: translateX(-520px); opacity: 0; }
-          100%     { transform: translateX(-520px); opacity: 0; }
+          0%, 55%  { transform: translateX(660px); opacity: 0; }
+          59%      { transform: translateX(600px); opacity: 1; }
+          73%      { transform: translateX(95px);  opacity: 1; }
+          79%      { transform: translateX(55px);  opacity: 0; }
+          100%     { transform: translateX(55px);  opacity: 0; }
         }
         @keyframes nameFade {
           0%, 9%   { opacity: 1; }
-          13%, 73% { opacity: 0.3; }
-          79%, 100%{ opacity: 1; }
+          13%, 79% { opacity: 0.28; }
+          85%, 100%{ opacity: 1; }
+        }
+        @keyframes moonPulse {
+          0%, 100% { box-shadow: 0 0 12px rgba(210,180,90,0.6), 0 0 28px rgba(210,180,90,0.2); }
+          50%      { box-shadow: 0 0 20px rgba(210,180,90,0.9), 0 0 40px rgba(210,180,90,0.35); }
         }
       `}</style>
 
       <div
         className="relative w-full rounded-2xl overflow-hidden mb-6 select-none"
-        style={{ height: 200, background: "linear-gradient(180deg,#0d1117 0%,#1a1a2e 100%)" }}
+        style={{ height: 210, background: "linear-gradient(180deg, #111827 0%, #1e2d4a 100%)" }}
       >
         {/* Yıldızlar */}
-        {([
-          [32,12],[80,6],[145,18],[210,9],[275,22],[340,7],[410,16],
-          [470,25],[530,11],[600,20],[60,35],[170,38],[290,30],[420,42],
-          [560,36],[620,28],[100,48],[250,50],[400,45],[550,52],
-        ] as [number,number][]).map(([x,y],i) => (
+        {stars.map(([x,y,r],i) => (
           <div key={i} style={{
-            position:"absolute", left:x, top:y, width:2, height:2,
-            borderRadius:"50%", background:"white", opacity:0.3+(i%3)*0.15
+            position:"absolute", left:x, top:y,
+            width:r*2, height:r*2, borderRadius:"50%",
+            background:"white",
+            opacity: 0.55 + (i % 4) * 0.12,
+            boxShadow: i % 4 === 0 ? `0 0 ${r*3}px rgba(255,255,255,0.8)` : undefined,
           }}/>
         ))}
 
-        {/* Yol */}
-        <div style={{ position:"absolute", bottom:0, left:0, right:0, height:52, background:"#252525" }}>
+        {/* Ay */}
+        <div style={{
+          position:"absolute", right:58, top:18,
+          width:36, height:36, borderRadius:"50%",
+          background:"radial-gradient(circle at 38% 38%, #f8f0c8, #d4b860)",
+          animation:"moonPulse 4s ease-in-out infinite",
+        }}>
+          {/* Hilal gölgesi */}
           <div style={{
-            position:"absolute", top:"42%", left:0, right:0, height:3,
-            backgroundImage:"repeating-linear-gradient(to right,#484848 0px,#484848 24px,transparent 24px,transparent 52px)"
+            position:"absolute", right:-5, top:6,
+            width:30, height:26, borderRadius:"50%",
+            background:"#1a2540",
+          }}/>
+        </div>
+
+        {/* Yol */}
+        <div style={{ position:"absolute", bottom:0, left:0, right:0, height:54, background:"#222" }}>
+          <div style={{
+            position:"absolute", top:"40%", left:0, right:0, height:3,
+            backgroundImage:"repeating-linear-gradient(to right, #444 0px, #444 26px, transparent 26px, transparent 54px)"
           }}/>
         </div>
 
         {/* Garaj yapısı */}
-        <div style={{ position:"absolute", left:36, bottom:52, width:126, height:112 }}>
+        <div style={{ position:"absolute", left:36, bottom:54, width:126, height:112 }}>
           {/* Çatı */}
-          <div style={{ position:"absolute", top:-13, left:-10, right:-10, height:19, background:"#484848", borderRadius:"5px 5px 0 0" }}/>
+          <div style={{ position:"absolute", top:-14, left:-12, right:-12, height:20, background:"#484848", borderRadius:"5px 5px 0 0" }}/>
           {/* Duvar */}
           <div style={{ position:"absolute", top:6, left:0, right:0, bottom:0, background:"#363636" }}/>
           {/* Pencere */}
-          <div style={{ position:"absolute", top:16, right:8, width:26, height:20, background:"#7ab4d8", opacity:0.45, borderRadius:2 }}/>
+          <div style={{ position:"absolute", top:16, right:8, width:26, height:20, background:"#7ab4d8", opacity:0.5, borderRadius:2 }}/>
           <div style={{ position:"absolute", top:16, right:21, width:1, height:20, background:"#5a90b0", opacity:0.5 }}/>
           <div style={{ position:"absolute", top:26, right:8, width:26, height:1, background:"#5a90b0", opacity:0.5 }}/>
           {/* Kapı çerçevesi */}
@@ -83,38 +108,63 @@ export function GarageAnimation({ userName }: { userName: string }) {
                   background: i%2===0 ? "#5e5e5e" : "#545454"
                 }}/>
               ))}
-              {/* Tutamaç */}
-              <div style={{ position:"absolute", left:"50%", top:38, transform:"translateX(-50%)", width:12, height:5, background:"#888", borderRadius:3 }}/>
             </div>
           </div>
         </div>
 
-        {/* Kullanıcı adı etiketi */}
+        {/* Kullanıcı adı */}
         <div style={{
-          position:"absolute", right:22, bottom:66, textAlign:"right",
+          position:"absolute", right:22, bottom:70, textAlign:"right",
           animation:"nameFade 9s infinite"
         }}>
-          <div style={{ color:"white", fontWeight:700, fontSize:13, fontFamily:"sans-serif", letterSpacing:-0.3 }}>
+          <div style={{ color:"white", fontWeight:700, fontSize:13, fontFamily:"sans-serif" }}>
             {userName}
           </div>
-          <div style={{ color:"#555", fontSize:10, fontFamily:"sans-serif", marginTop:2 }}>
+          <div style={{ color:"#556", fontSize:10, fontFamily:"sans-serif", marginTop:2 }}>
             garaja gidiyor →
           </div>
         </div>
 
-        {/* ARABA 🚗 */}
-        <div style={{ position:"absolute", right:14, bottom:51, animation:"carMove 9s infinite" }}>
-          <div style={{ fontSize:30, transform:"scaleX(-1)", lineHeight:1 }}>🚗</div>
+        {/* ARABA — FI mavi */}
+        <div style={{ position:"absolute", bottom:54, left:0, animation:"carMove 9s infinite" }}>
+          <div style={{ position:"relative" }}>
+            <span style={{
+              fontSize:30, display:"block", transform:"scaleX(-1)", lineHeight:1,
+              filter:"drop-shadow(0 0 7px #3a7cc4) drop-shadow(0 2px 4px rgba(58,124,196,0.5))"
+            }}>🚗</span>
+            <span style={{
+              position:"absolute", bottom:-11, left:"50%", transform:"translateX(-50%)",
+              fontSize:8, fontWeight:800, color:"#85B7EB", fontFamily:"monospace", letterSpacing:1
+            }}>FI</span>
+          </div>
         </div>
 
-        {/* MOTOSİKLET 🏍️ */}
-        <div style={{ position:"absolute", right:14, bottom:53, animation:"motoMove 9s infinite" }}>
-          <div style={{ fontSize:27, transform:"scaleX(-1)", lineHeight:1 }}>🏍️</div>
+        {/* MOTOSİKLET — KA yeşil */}
+        <div style={{ position:"absolute", bottom:56, left:0, animation:"motoMove 9s infinite" }}>
+          <div style={{ position:"relative" }}>
+            <span style={{
+              fontSize:27, display:"block", transform:"scaleX(-1)", lineHeight:1,
+              filter:"drop-shadow(0 0 7px #3a7a1a) drop-shadow(0 2px 4px rgba(58,122,26,0.5))"
+            }}>🏍️</span>
+            <span style={{
+              position:"absolute", bottom:-11, left:"50%", transform:"translateX(-50%)",
+              fontSize:8, fontWeight:800, color:"#97C459", fontFamily:"monospace", letterSpacing:1
+            }}>KA</span>
+          </div>
         </div>
 
-        {/* SCOOTER 🛵 */}
-        <div style={{ position:"absolute", right:14, bottom:53, animation:"scooterMove 9s infinite" }}>
-          <div style={{ fontSize:25, transform:"scaleX(-1)", lineHeight:1 }}>🛵</div>
+        {/* SCOOTER — PE kırmızı */}
+        <div style={{ position:"absolute", bottom:56, left:0, animation:"scooterMove 9s infinite" }}>
+          <div style={{ position:"relative" }}>
+            <span style={{
+              fontSize:25, display:"block", transform:"scaleX(-1)", lineHeight:1,
+              filter:"drop-shadow(0 0 7px #a03828) drop-shadow(0 2px 4px rgba(160,56,40,0.5))"
+            }}>🛵</span>
+            <span style={{
+              position:"absolute", bottom:-11, left:"50%", transform:"translateX(-50%)",
+              fontSize:8, fontWeight:800, color:"#F0997B", fontFamily:"monospace", letterSpacing:1
+            }}>PE</span>
+          </div>
         </div>
       </div>
     </>
