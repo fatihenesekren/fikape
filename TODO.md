@@ -31,15 +31,6 @@ Kural tabanlı Katman 1 geçtikten sonra asenkron Claude kontrolü.
 
 ## 🟡 Önemli / Yakın Vadeli
 
-### Yorum Gönderildi Sayfası
-`/araclar/[slug]?yorum=gonderildi` parametresini yakalayıp başarı mesajı göster.
-
-### Araç Detay Sayfası — Yorum Listesi
-Şu an yorum yoksa boş sayfa. Yayındaki yorumlar (`status: PUBLISHED`) listelenmeli.
-- Ortalama FI·KA·PE puanları (bar chart)
-- Yorum kartları: kullanıcı adı, tarih, özet, detay, ek bilgiler
-- "Faydalı" butonu
-
 ### E-posta Doğrulama
 Kayıt sonrası doğrulama maili → `trustLevel` 1→2.
 - Resend veya Nodemailer
@@ -88,3 +79,6 @@ Basit liste: PENDING yorumlar → Onayla / Reddet.
 - [x] `src/lib/fikape.ts` — FikapeScores, FIKAPE sabiti, calcOverall
 - [x] `src/lib/reviewValidation.ts` — kural tabanlı içerik denetimi
 - [x] `scripts/seed-images.ts` — Wikipedia URL'lerini DB'ye yazar
+- [x] Admin moderasyon paneli (`/admin/yorumlar`) — onayla / reddet
+- [x] Yorum gönderildi başarı banner'ı (`?yorum=gonderildi`)
+- [x] Araç detay sayfası yorum listesi (PUBLISHED yorumlar görünür)
