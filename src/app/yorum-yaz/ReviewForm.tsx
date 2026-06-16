@@ -427,7 +427,7 @@ export function ReviewForm({ products, defaultSlug }: Props) {
         {/* Sahiplik süresi */}
         <div className="space-y-3">
           <p className="text-base font-semibold text-gray-800">
-            Ne kadar süredir bu araçtasınız?
+            Aracınızı ne kadar süredir kullanıyorsunuz?
           </p>
           <div className="flex flex-wrap gap-2">
             {OWNERSHIP_SLOTS.map((slot) => {
@@ -454,7 +454,7 @@ export function ReviewForm({ products, defaultSlug }: Props) {
         {/* Kullanım tipi */}
         <div className="space-y-3">
           <p className="text-base font-semibold text-gray-800">
-            Ağırlıklı kullanımınız nedir?
+            Aracınızı çoğunlukla nerede kullanıyorsunuz?
           </p>
           <div className="flex gap-2">
             {USAGE_OPTS.map((opt) => {
