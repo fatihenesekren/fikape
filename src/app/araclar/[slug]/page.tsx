@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ReviewCard } from "@/components/ReviewCard";
@@ -7,6 +8,36 @@ import { calcOverall } from "@/lib/fikape";
 import { getVehicleImageUrl } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await prisma.product.findUnique({
+    where: { slug },
+    include: { brand: true, model: true },
+  });
+  if (!product) return {};
+
+  const attrs = product.attributes as Record<string, unknown>;
+  const fuelType = String(attrs.fuel_type ?? "");
+  const fuelLabel = FUEL_LABELS[fuelType] ?? "";
+  const name = `${product.brand.name} ${product.model.name}${product.year ? ` ${product.year}` : ""}`;
+  const title = `${name} Kullanıcı Yorumları`;
+  const description = `${name}${fuelLabel ? ` (${fuelLabel})` : ""} hakkında gerçek kullanıcı yorumları ve fi·ka·pe puanları. Fiyat, kalite ve performans değerlendirmeleri.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: product.imageUrl ? [{ url: product.imageUrl }] : [],
+    },
+  };
+}
 
 const BODY_LABELS: Record<string, string> = {
   sedan: "Sedan", suv: "SUV", hatchback: "Hatchback",

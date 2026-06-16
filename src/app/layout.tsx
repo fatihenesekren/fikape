@@ -8,9 +8,22 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 
 export const metadata: Metadata = {
-  title: "fikape — Gerçek Kullanıcı Yorumları",
+  title: {
+    default: "fikape — Gerçek Araç Yorumları",
+    template: "%s | fikape",
+  },
   description:
-    "Fiyat · Kalite · Performans. Gerçek kullanıcılar, gerçek deneyimler.",
+    "Türkiye'nin araç yorum platformu. Fiyat, Kalite ve Performans puanlarıyla gerçek kullanıcı deneyimleri.",
+  metadataBase: new URL("https://fikape-e4t7.vercel.app"),
+  openGraph: {
+    siteName: "fikape",
+    locale: "tr_TR",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
