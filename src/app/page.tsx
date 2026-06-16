@@ -244,7 +244,7 @@ export default async function Home({
             <span style={{ color: "#F0997B" }}>Performans</span>
           </p>
           <p className="text-gray-500 text-sm mb-8">
-            Gerçek kullanıcılar, gerçek deneyimler.
+            Gerçek kullanıcılar, gerçek deneyimler
           </p>
           <a
             href="/yorum-yaz"

@@ -1,21 +1,24 @@
 export interface FikapeScores {
-  scoreFiyat: number;
-  scoreKalite: number;
+  scoreFiyat:      number;
+  scoreKalite:     number;
   scorePerformans: number;
-  scoreOverall?: number;
-}
-
-// FI×0.30 + KA×0.35 + PE×0.35
-export function calcOverall(scores: Omit<FikapeScores, "scoreOverall">): number {
-  return (
-    scores.scoreFiyat * 0.3 +
-    scores.scoreKalite * 0.35 +
-    scores.scorePerformans * 0.35
-  );
+  scoreOverall?:   number;
 }
 
 export const FIKAPE = [
-  { key: "scoreFiyat",      short: "FI", label: "Fiyat",      color: "#0C447C", sub: "#185FA5", bg: "#E6F1FB" },
-  { key: "scoreKalite",     short: "KA", label: "Kalite",     color: "#27500A", sub: "#3B6D11", bg: "#EAF3DE" },
-  { key: "scorePerformans", short: "PE", label: "Performans", color: "#712B13", sub: "#993C1D", bg: "#FAECE7" },
+  { key: "scoreFiyat",      short: "Fİ", label: "Fiyat",      color: "#0C447C", bg: "#E6F1FB", sub: "#4A80B5", weight: 0.30 },
+  { key: "scoreKalite",     short: "KA", label: "Kalite",     color: "#27500A", bg: "#EAF3DE", sub: "#5A8A3A", weight: 0.35 },
+  { key: "scorePerformans", short: "PE", label: "Performans", color: "#712B13", bg: "#FAECE7", sub: "#A05030", weight: 0.35 },
 ] as const;
+
+export function calcOverall({
+  scoreFiyat,
+  scoreKalite,
+  scorePerformans,
+}: {
+  scoreFiyat: number;
+  scoreKalite: number;
+  scorePerformans: number;
+}): number {
+  return scoreFiyat * 0.30 + scoreKalite * 0.35 + scorePerformans * 0.35;
+}
