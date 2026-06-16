@@ -31,10 +31,13 @@ const FUEL_COLORS: Record<string, { bg: string; text: string }> = {
 
 export default async function VehicleDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ yorum?: string }>;
 }) {
   const { slug } = await params;
+  const { yorum } = await searchParams;
 
   const product = await prisma.product.findUnique({
     where: { slug },
@@ -172,6 +175,18 @@ export default async function VehicleDetailPage({
           </div>
         </div>
       </div>
+
+      {/* Yorum gönderildi banner */}
+      {yorum === "gonderildi" && (
+        <div className="bg-green-50 border-b border-green-100">
+          <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-3">
+            <span className="text-green-600 text-lg">✓</span>
+            <p className="text-sm font-semibold text-green-800">
+              Yorumunuz alındı — inceleme sonrası yayınlanacak.
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Ana içerik */}
       <div className="max-w-5xl mx-auto px-4 py-8">
