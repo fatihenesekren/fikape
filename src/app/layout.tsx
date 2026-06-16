@@ -43,18 +43,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
 
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 flex flex-col">{children}</main>
 
-        <footer className="border-t border-gray-100 py-8 mt-16">
-          <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 space-y-1">
-            <div className="flex items-center justify-center gap-0.5 font-black text-base mb-2">
-              <span style={{ color: "#185FA5" }}>fi</span>
-              <span className="text-gray-600 font-light">·</span>
-              <span style={{ color: "#3B6D11" }}>ka</span>
-              <span className="text-gray-600 font-light">·</span>
-              <span style={{ color: "#993C1D" }}>pe</span>
-            </div>
-            <p>Fiyat · Kalite · Performans — Gerçek kullanıcılar, gerçek deneyimler.</p>
+        <footer className="border-t border-gray-100 py-5">
+          <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400">
             <p>© {new Date().getFullYear()} fikape.com · Tüm hakları saklıdır.</p>
           </div>
         </footer>
