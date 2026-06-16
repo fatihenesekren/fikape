@@ -17,6 +17,12 @@ export function AuthNav() {
         >
           🚗 Garajım
         </Link>
+        <Link
+          href="/profil"
+          className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50 transition-colors hidden sm:block"
+        >
+          {session.user.name ?? "Profil"}
+        </Link>
         <button
           onClick={() => signOut({ callbackUrl: "/" })}
           className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50 transition-colors"
