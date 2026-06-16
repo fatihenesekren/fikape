@@ -72,7 +72,7 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
   ];
 
   const trees: [number, number][] = [
-    [140,1],[210,0.85],[285,1.05],[355,0.9],[420,1.1],
+    [140,1],[210,0.88],[285,1.08],[355,0.92],[420,1.14],
   ];
 
   return (
@@ -155,7 +155,7 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
         {trees.map(([x,scale],i) => (
           <div key={i} style={{
             position:"absolute", left:x, bottom:54,
-            fontSize:Math.round(28*scale), lineHeight:1,
+            fontSize:Math.round(36*scale), lineHeight:1,
             filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.5))"
           }}>🌲</div>
         ))}
@@ -177,20 +177,23 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
           }}/>
         </div>
 
+        {/* P Park Levhası — garajın solunda, yoldan yukarı */}
+        <div style={{ position:"absolute", right:196, bottom:54 }}>
+          <div style={{ position:"absolute", left:11, bottom:0, width:2, height:30, background:"#555" }}/>
+          <div style={{
+            position:"absolute", bottom:30, left:0,
+            width:24, height:24, borderRadius:4,
+            background:"#1a56aa", border:"2px solid #4a90e2",
+            display:"flex", alignItems:"center", justifyContent:"center",
+            boxShadow:"0 0 10px rgba(26,86,170,0.6)",
+          }}>
+            <span style={{ color:"white", fontWeight:900, fontSize:15, fontFamily:"Arial,sans-serif", lineHeight:1 }}>P</span>
+          </div>
+        </div>
+
         {/* GARAJ — sağda */}
         <div style={{ position:"absolute", right:36, bottom:54, width:126, height:112 }}>
 
-          {/* P Park Levhası — garajın SOLUNDA */}
-          <div style={{
-            position:"absolute", left:-52, top:8,
-            width:34, height:34, borderRadius:5,
-            background:"#1a56aa", border:"3px solid #4a90e2",
-            display:"flex", alignItems:"center", justifyContent:"center",
-            boxShadow:"0 0 12px rgba(26,86,170,0.7), 0 0 24px rgba(26,86,170,0.3)",
-          }}>
-            <span style={{ color:"white", fontWeight:900, fontSize:22, fontFamily:"Arial,sans-serif", lineHeight:1 }}>P</span>
-          </div>
-          <div style={{ position:"absolute", left:-36, top:42, width:2, height:70, background:"#555" }}/>
 
           {/* Çatı */}
           <div style={{ position:"absolute", top:-14, left:-12, right:-12, height:20, background:"#424242", borderRadius:"5px 5px 0 0" }}/>
