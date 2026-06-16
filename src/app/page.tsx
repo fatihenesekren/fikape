@@ -7,9 +7,9 @@ import { FUEL_FILTERS } from "@/lib/fuel";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ yakit?: string }>;
+  searchParams: Promise<{ yakit?: string; dogrulama?: string }>;
 }) {
-  const { yakit } = await searchParams;
+  const { yakit, dogrulama } = await searchParams;
   const fuelFilter = yakit && yakit !== "hepsi" ? yakit : undefined;
 
   // Tüm aktif ürünleri çek (filtre uygulanmış)
@@ -112,6 +112,22 @@ export default async function Home({
 
   return (
     <>
+      {/* Doğrulama sonuç banner'ı */}
+      {dogrulama === "tamam" && (
+        <div className="bg-green-50 border-b border-green-100">
+          <div className="max-w-7xl mx-auto px-4 py-3 text-sm font-semibold text-green-800">
+            ✓ E-posta adresiniz doğrulandı. Hesabınız aktif!
+          </div>
+        </div>
+      )}
+      {dogrulama === "gecersiz" && (
+        <div className="bg-red-50 border-b border-red-100">
+          <div className="max-w-7xl mx-auto px-4 py-3 text-sm font-semibold text-red-700">
+            Doğrulama linki geçersiz veya süresi dolmuş. Yeni link için giriş yapın.
+          </div>
+        </div>
+      )}
+
       {/* Hero */}
       <section className="bg-[#111] text-white">
         <div className="max-w-7xl mx-auto px-4 py-16 text-center">

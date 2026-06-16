@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { createVerificationToken } from "@/lib/emailToken";
+import { sendVerificationEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
   const { email, password, displayName } = await req.json();
@@ -18,7 +20,7 @@ export async function POST(req: Request) {
   }
 
   const passwordHash = await bcrypt.hash(password, 12);
-  await prisma.user.create({
+  const user = await prisma.user.create({
     data: {
       email,
       passwordHash,
@@ -32,6 +34,14 @@ export async function POST(req: Request) {
       },
     },
   });
+
+  // E-posta doğrulama linki gönder (hata olsa da kayıt başarılı sayılır)
+  try {
+    const token = createVerificationToken(user.id);
+    await sendVerificationEmail(email, token);
+  } catch (err) {
+    console.error("Verification email failed:", err);
+  }
 
   return NextResponse.json({ ok: true }, { status: 201 });
 }

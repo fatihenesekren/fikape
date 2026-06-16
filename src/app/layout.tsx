@@ -3,6 +3,9 @@ import { Geist } from "next/font/google";
 import Link from "next/link";
 import { SessionProvider } from "@/components/SessionProvider";
 import { AuthNav } from "@/components/AuthNav";
+import { VerificationBanner } from "@/components/VerificationBanner";
+import { auth } from "@/auth";
+import { prisma } from "@/lib/prisma";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
@@ -26,7 +29,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await auth();
+  let unverifiedEmail: string | null = null;
+
+  if (session?.user?.id) {
+    const user = await prisma.user.findUnique({
+      where: { id: Number(session.user.id) },
+      select: { email: true, emailVerifiedAt: true },
+    });
+    if (user && !user.emailVerifiedAt) {
+      unverifiedEmail = user.email;
+    }
+  }
+
   return (
     <html lang="tr" className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[--background]">
@@ -44,6 +60,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <AuthNav />
           </div>
         </header>
+
+        {unverifiedEmail && <VerificationBanner email={unverifiedEmail} />}
 
         <main className="flex-1 flex flex-col">{children}</main>
 
