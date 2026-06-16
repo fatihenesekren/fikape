@@ -3,40 +3,69 @@ import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_FILTERS } from "@/lib/fuel";
+import Link from "next/link";
+
+export const dynamic = "force-dynamic";
+
+const CATEGORY_FILTERS = [
+  { key: "hepsi",      label: "Tümü",          icon: "🔍" },
+  { key: "otomobil",   label: "Araba",          icon: "🚗" },
+  { key: "motosiklet", label: "Motosiklet",     icon: "🏍️" },
+  { key: "e-scooter",  label: "E-Scooter",      icon: "⚡" },
+  { key: "karavan",    label: "Karavan",         icon: "🏕️" },
+  { key: "kamyonet",   label: "Kamyonet",        icon: "🛻" },
+] as const;
+
+const CATEGORY_ICONS: Record<string, string> = {
+  otomobil:   "🚗",
+  motosiklet: "🏍️",
+  "e-scooter":"⚡",
+  karavan:    "🏕️",
+  kamyonet:   "🛻",
+};
 
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ yakit?: string; dogrulama?: string }>;
+  searchParams: Promise<{ kategori?: string; yakit?: string; dogrulama?: string }>;
 }) {
-  const { yakit, dogrulama } = await searchParams;
+  const { kategori, yakit, dogrulama } = await searchParams;
+  const catFilter  = kategori && kategori !== "hepsi" ? kategori : undefined;
   const fuelFilter = yakit && yakit !== "hepsi" ? yakit : undefined;
 
-  // Tüm aktif ürünleri çek (filtre uygulanmış)
+  // ── Trend Araçlar (en çok görüntülenen 8) ──────────────────
+  const trendProducts = await prisma.product.findMany({
+    where: { isActive: true, viewCount: { gt: 0 } },
+    include: { brand: true, model: true, category: true },
+    orderBy: { viewCount: "desc" },
+    take: 8,
+  });
+
+  // ── Ürün listesi ───────────────────────────────────────────
   const products = await prisma.product.findMany({
     where: {
       isActive: true,
-      ...(fuelFilter
+      ...(catFilter  ? { category: { slug: catFilter } } : {}),
+      ...(fuelFilter && (!catFilter || catFilter === "otomobil")
         ? { attributes: { path: ["fuel_type"], equals: fuelFilter } }
         : {}),
     },
     include: {
       brand: true,
       model: true,
+      category: true,
       _count: { select: { reviews: { where: { status: "PUBLISHED" } } } },
     },
     orderBy: [{ brand: { name: "asc" } }, { year: "desc" }],
   });
 
-  // Yayınlanan yorumların ürün bazlı ortalama puanları
+  // Puan ortalamaları
   const scoreAggs = await prisma.review.groupBy({
     by: ["productId"],
     where: { status: "PUBLISHED" },
     _avg: {
-      scoreFiyat: true,
-      scoreKalite: true,
-      scorePerformans: true,
-      scoreOverall: true,
+      scoreFiyat: true, scoreKalite: true,
+      scorePerformans: true, scoreOverall: true,
     },
     _count: { id: true },
   });
@@ -56,7 +85,7 @@ export default async function Home({
     ])
   );
 
-  // Ürünleri model bazında grupla (yıl desc sıralı)
+  // Model bazında grupla
   type Product = (typeof products)[number];
   const modelGroups = new Map<number, Product[]>();
   for (const p of products) {
@@ -65,14 +94,11 @@ export default async function Home({
     modelGroups.set(p.modelId, group);
   }
 
-  // Her model grubu için kart verisi hesapla
   const modelCards = Array.from(modelGroups.values()).map((variants) => {
-    const sorted = [...variants].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
+    const sorted  = [...variants].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
     const primary = sorted[0];
 
-    // Ağırlıklı ortalama puan (inceleme sayısına göre)
-    let totalReviews = 0;
-    let wFiyat = 0, wKalite = 0, wPerformans = 0, wOverall = 0;
+    let totalReviews = 0, wFiyat = 0, wKalite = 0, wPerformans = 0, wOverall = 0;
     for (const v of variants) {
       const entry = scoreMap.get(v.id);
       if (entry && entry.count > 0) {
@@ -85,34 +111,24 @@ export default async function Home({
     }
 
     const modelScores: FikapeScores | null = totalReviews > 0
-      ? {
-          scoreFiyat:      wFiyat      / totalReviews,
-          scoreKalite:     wKalite     / totalReviews,
-          scorePerformans: wPerformans / totalReviews,
-          scoreOverall:    wOverall    / totalReviews,
-        }
+      ? { scoreFiyat: wFiyat / totalReviews, scoreKalite: wKalite / totalReviews,
+          scorePerformans: wPerformans / totalReviews, scoreOverall: wOverall / totalReviews }
       : null;
 
-    // DB'den imageUrl — boşsa Wikipedia'ya düşeceğiz
     const dbImageUrl = sorted.find((v) => v.imageUrl)?.imageUrl ?? null;
-
     return { primary, sorted, totalReviews, modelScores, dbImageUrl };
   });
 
-  // Sadece DB imageUrl'i olmayan modeller için Wikipedia çağır
-  const slugsNeedingWiki = modelCards
-    .filter((m) => !m.dbImageUrl)
-    .map((m) => m.primary.slug);
+  const slugsNeedingWiki = modelCards.filter((m) => !m.dbImageUrl).map((m) => m.primary.slug);
+  const wikiUrls = slugsNeedingWiki.length > 0 ? await getVehicleImageUrls(slugsNeedingWiki) : {};
 
-  const wikiUrls = slugsNeedingWiki.length > 0
-    ? await getVehicleImageUrls(slugsNeedingWiki)
-    : {};
-
-  const activeFilter = yakit ?? "hepsi";
+  const activeCategory = kategori ?? "hepsi";
+  const activeFuel     = yakit ?? "hepsi";
+  const showFuelFilter = !catFilter || catFilter === "otomobil";
 
   return (
     <>
-      {/* Doğrulama sonuç banner'ı */}
+      {/* Doğrulama banner */}
       {dogrulama === "tamam" && (
         <div className="bg-green-50 border-b border-green-100">
           <div className="max-w-7xl mx-auto px-4 py-3 text-sm font-semibold text-green-800">
@@ -149,31 +165,90 @@ export default async function Home({
         </div>
       </section>
 
-      {/* Filtre */}
+      {/* Kategori filtresi */}
       <section className="border-b border-gray-100 bg-white sticky top-14 z-40">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex gap-2 overflow-x-auto py-3 scrollbar-none">
-            {FUEL_FILTERS.map((f) => {
-              const isActive = activeFilter === f.key;
-              const url = f.key === "hepsi" ? "/" : `/?yakit=${f.key}`;
+            {CATEGORY_FILTERS.map((f) => {
+              const isActive = activeCategory === f.key;
+              const url = f.key === "hepsi" ? "/" : `/?kategori=${f.key}`;
               return (
                 <a
                   key={f.key}
                   href={url}
-                  className="shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors"
+                  className="shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors flex items-center gap-1.5"
                   style={
                     isActive
                       ? { background: "#111", color: "#fff", borderColor: "#111" }
                       : { background: "#fff", color: "#555", borderColor: "#e5e7eb" }
                   }
                 >
-                  {f.label}
+                  <span>{f.icon}</span>
+                  <span>{f.label}</span>
                 </a>
               );
             })}
           </div>
+
+          {/* Yakıt filtresi — sadece Araba kategorisinde */}
+          {showFuelFilter && (
+            <div className="flex gap-2 overflow-x-auto pb-3 scrollbar-none">
+              {FUEL_FILTERS.map((f) => {
+                const isActive = activeFuel === f.key;
+                const base = catFilter ? `/?kategori=${catFilter}` : "/";
+                const url  = f.key === "hepsi" ? base : `${base}&yakit=${f.key}`;
+                return (
+                  <a
+                    key={f.key}
+                    href={url}
+                    className="shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors"
+                    style={
+                      isActive
+                        ? { background: "#374151", color: "#fff", borderColor: "#374151" }
+                        : { background: "#f9fafb", color: "#6b7280", borderColor: "#e5e7eb" }
+                    }
+                  >
+                    {f.label}
+                  </a>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
+
+      {/* Trend bölümü */}
+      {!catFilter && trendProducts.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 pt-8 pb-2">
+          <h2 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <span className="text-base">🔥</span> Trend
+          </h2>
+          <div className="flex gap-3 overflow-x-auto scrollbar-none pb-2">
+            {trendProducts.map((p) => {
+              const catSlug = p.category?.slug ?? "otomobil";
+              const icon    = CATEGORY_ICONS[catSlug] ?? "🚗";
+              return (
+                <Link
+                  key={p.id}
+                  href={`/araclar/${p.slug}`}
+                  className="shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-100 bg-white hover:border-gray-300 transition-colors"
+                >
+                  <span className="text-lg">{icon}</span>
+                  <div>
+                    <div className="text-xs font-semibold text-gray-900 whitespace-nowrap">
+                      {p.brand.name} {p.model.name}
+                    </div>
+                    <div className="text-xs text-gray-400">{p.year}</div>
+                  </div>
+                  <div className="ml-1 text-xs text-gray-300 font-medium">
+                    {p.viewCount.toLocaleString("tr-TR")} görüntülenme
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* Araç listesi */}
       <section className="max-w-7xl mx-auto px-4 py-8">
@@ -191,8 +266,9 @@ export default async function Home({
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {modelCards.map(({ primary, sorted, totalReviews, modelScores, dbImageUrl }) => {
               const imageUrl = dbImageUrl ?? wikiUrls[primary.slug] ?? null;
+              const catSlug  = primary.category?.slug ?? "otomobil";
+              const catIcon  = CATEGORY_ICONS[catSlug] ?? "🚗";
 
-              // Varyant chip'leri: aynı modelin tüm yıl/paket kombinasyonları
               const variantChips = sorted.map((v) => ({
                 slug:     v.slug,
                 year:     v.year,
@@ -201,17 +277,24 @@ export default async function Home({
               }));
 
               return (
-                <VehicleCard
-                  key={primary.modelId}
-                  primarySlug={primary.slug}
-                  brandName={primary.brand.name}
-                  modelName={primary.model.name}
-                  attributes={primary.attributes as Record<string, unknown>}
-                  scores={modelScores}
-                  totalReviews={totalReviews}
-                  imageUrl={imageUrl}
-                  variants={variantChips}
-                />
+                <div key={primary.modelId} className="relative">
+                  {/* Kategori rozeti */}
+                  {activeCategory === "hepsi" && (
+                    <div className="absolute top-2 left-2 z-10 text-sm bg-white/80 backdrop-blur-sm rounded-full px-2 py-0.5 border border-gray-100 pointer-events-none">
+                      {catIcon}
+                    </div>
+                  )}
+                  <VehicleCard
+                    primarySlug={primary.slug}
+                    brandName={primary.brand.name}
+                    modelName={primary.model.name}
+                    attributes={primary.attributes as Record<string, unknown>}
+                    scores={modelScores}
+                    totalReviews={totalReviews}
+                    imageUrl={imageUrl}
+                    variants={variantChips}
+                  />
+                </div>
               );
             })}
           </div>
@@ -235,7 +318,7 @@ export default async function Home({
         </div>
       </section>
 
-      {/* Alt banner — CTA */}
+      {/* Alt banner */}
       <section className="bg-[#111] text-white mt-4">
         <div className="max-w-7xl mx-auto px-4 py-14 text-center">
           <div className="flex items-center justify-center gap-1 text-3xl font-black tracking-tight mb-3 select-none">
@@ -245,15 +328,8 @@ export default async function Home({
             <span className="text-gray-600 font-light">·</span>
             <span style={{ color: "#F0997B" }}>pe</span>
           </div>
-          <p className="text-gray-400 text-sm mb-1">
-            <span style={{ color: "#85B7EB" }}>Fiyat</span>
-            {" · "}
-            <span style={{ color: "#97C459" }}>Kalite</span>
-            {" · "}
-            <span style={{ color: "#F0997B" }}>Performans</span>
-          </p>
-          <p className="text-gray-500 text-sm mb-8">
-            Gerçek kullanıcılar, gerçek deneyimler
+          <p className="text-gray-400 text-sm mb-8">
+            Araba, motosiklet, e-scooter, karavan, kamyonet — gerçek kullanıcı yorumları
           </p>
           <a
             href="/yorum-yaz"

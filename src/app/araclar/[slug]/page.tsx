@@ -67,6 +67,10 @@ export default async function VehicleDetailPage({
       include: { brand: true, model: true, category: true },
     }),
     auth(),
+    prisma.product.updateMany({
+      where: { slug },
+      data: { viewCount: { increment: 1 } },
+    }).catch(() => {}),
   ]);
 
   if (!product) notFound();
