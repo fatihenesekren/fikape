@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Link from "next/link";
+import { SessionProvider } from "@/components/SessionProvider";
+import { AuthNav } from "@/components/AuthNav";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
@@ -15,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="tr" className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[--background]">
+        <SessionProvider>
         <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-0.5 text-xl font-black tracking-tight select-none">
@@ -25,21 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span style={{ color: "#993C1D" }}>pe</span>
             </Link>
 
-            <nav className="flex items-center gap-1">
-              <Link
-                href="/araclar"
-                className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50 transition-colors"
-              >
-                Araçlar
-              </Link>
-              <Link
-                href="/yorum-yaz"
-                className="px-3 py-1.5 text-sm font-semibold text-white rounded-md transition-colors"
-                style={{ background: "#111" }}
-              >
-                Yorum Yaz
-              </Link>
-            </nav>
+            <AuthNav />
           </div>
         </header>
 
@@ -50,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <p>© {new Date().getFullYear()} fikape.com · Tüm hakları saklıdır.</p>
           </div>
         </footer>
+        </SessionProvider>
       </body>
     </html>
   );

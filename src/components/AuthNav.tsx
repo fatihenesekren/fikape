@@ -1,0 +1,51 @@
+"use client";
+
+import { useSession, signOut } from "next-auth/react";
+import Link from "next/link";
+
+export function AuthNav() {
+  const { data: session, status } = useSession();
+
+  if (status === "loading") return null;
+
+  if (session) {
+    return (
+      <div className="flex items-center gap-2">
+        <span className="text-sm text-gray-500 hidden sm:block">
+          {session.user.name ?? session.user.email}
+        </span>
+        <button
+          onClick={() => signOut({ callbackUrl: "/" })}
+          className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50 transition-colors"
+        >
+          Çıkış
+        </button>
+        <Link
+          href="/yorum-yaz"
+          className="px-3 py-1.5 text-sm font-semibold text-white rounded-md transition-colors"
+          style={{ background: "#111" }}
+        >
+          Yorum Yaz
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-1">
+      <Link
+        href="/giris"
+        className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50 transition-colors"
+      >
+        Giriş yap
+      </Link>
+      <Link
+        href="/kayit"
+        className="px-3 py-1.5 text-sm font-semibold text-white rounded-md transition-colors"
+        style={{ background: "#111" }}
+      >
+        Kayıt ol
+      </Link>
+    </div>
+  );
+}
