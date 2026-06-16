@@ -5,6 +5,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { calcOverall } from "@/lib/fikape";
+import { GarageAnimation } from "./GarageAnimation";
 
 export const metadata: Metadata = { title: "Garajım" };
 
@@ -18,6 +19,13 @@ export default async function GarajimPage() {
   if (!session?.user?.id) redirect("/giris");
 
   const userId = Number(session.user.id);
+
+  const currentUser = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { displayName: true, email: true },
+  });
+
+  const userName = currentUser?.displayName || currentUser?.email?.split("@")[0] || "Sürücü";
 
   const userProducts = await prisma.userProduct.findMany({
     where: { userId },
@@ -36,6 +44,8 @@ export default async function GarajimPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
+      <GarageAnimation userName={userName} />
+
       <div className="mb-8">
         <h1 className="text-2xl font-black text-gray-900">Garajım</h1>
         <p className="text-sm text-gray-500 mt-1">
