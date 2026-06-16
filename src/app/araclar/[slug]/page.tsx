@@ -2,8 +2,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ReviewCard } from "@/components/ReviewCard";
+import { GarageButton } from "./GarageButton";
 import { calcOverall } from "@/lib/fikape";
 import { getVehicleImageUrl } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
@@ -59,10 +61,13 @@ export default async function VehicleDetailPage({
   const { slug } = await params;
   const { yorum } = await searchParams;
 
-  const product = await prisma.product.findUnique({
-    where: { slug },
-    include: { brand: true, model: true, category: true },
-  });
+  const [product, session] = await Promise.all([
+    prisma.product.findUnique({
+      where: { slug },
+      include: { brand: true, model: true, category: true },
+    }),
+    auth(),
+  ]);
 
   if (!product) notFound();
 
@@ -71,6 +76,13 @@ export default async function VehicleDetailPage({
   const fuelType = String(attrs.fuel_type ?? "");
   const bodyType = String(attrs.body_type ?? "sedan");
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
+
+  const userId = session?.user?.id ? Number(session.user.id) : null;
+  const inGarage = userId
+    ? !!(await prisma.userProduct.findUnique({
+        where: { userId_productId: { userId, productId: product.id } },
+      }))
+    : false;
 
   // Ort. puanlar
   const agg = await prisma.review.aggregate({
@@ -273,6 +285,17 @@ export default async function VehicleDetailPage({
                 >
                   Yorum Yaz →
                 </Link>
+
+                {userId ? (
+                  <GarageButton productId={product.id} initialInGarage={inGarage} />
+                ) : (
+                  <Link
+                    href="/giris"
+                    className="mt-3 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold border-2 border-gray-200 text-gray-500 transition-colors hover:border-gray-300"
+                  >
+                    🚗 Bu araç benim
+                  </Link>
+                )}
               </div>
 
               {/* Teknik özellikler */}

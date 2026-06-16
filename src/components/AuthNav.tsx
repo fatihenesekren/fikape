@@ -11,9 +11,12 @@ export function AuthNav() {
   if (session) {
     return (
       <div className="flex items-center gap-2">
-        <span className="text-sm text-gray-500 hidden sm:block">
-          {session.user.name ?? session.user.email}
-        </span>
+        <Link
+          href="/garajim"
+          className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50 transition-colors hidden sm:block"
+        >
+          🚗 Garajım
+        </Link>
         <button
           onClick={() => signOut({ callbackUrl: "/" })}
           className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50 transition-colors"
