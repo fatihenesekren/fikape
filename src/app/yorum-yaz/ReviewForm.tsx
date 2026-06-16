@@ -32,6 +32,29 @@ interface Props {
   defaultSlug?: string;
 }
 
+const OWNERSHIP_SLOTS = [
+  { key: "new",    label: "Yeni aldım",  months: 2  },
+  { key: "mid",    label: "3–12 ay",     months: 6  },
+  { key: "one3",   label: "1–3 yıl",     months: 24 },
+  { key: "three5", label: "3–5 yıl",     months: 48 },
+  { key: "five",   label: "5 yıl+",      months: 72 },
+];
+const OWNERSHIP_MONTHS: Record<string, number> = Object.fromEntries(
+  OWNERSHIP_SLOTS.map((s) => [s.key, s.months])
+);
+
+const RECOMMEND_OPTS = [
+  { value: "yes",   icon: "👍", label: "Evet, kesinlikle" },
+  { value: "maybe", icon: "🤷", label: "Kararsızım"       },
+  { value: "no",    icon: "👎", label: "Hayır"            },
+] as const;
+
+const USAGE_OPTS = [
+  { value: "city",    icon: "🏙️", label: "Şehir içi"      },
+  { value: "highway", icon: "🛣️", label: "Şehirlerarası"  },
+  { value: "mixed",   icon: "🔀", label: "Karma"           },
+] as const;
+
 function FieldFeedback({ error, ok }: { error: string | null; ok: boolean }) {
   if (!error && !ok) return null;
   if (ok) return (
@@ -128,8 +151,9 @@ export function ReviewForm({ products, defaultSlug }: Props) {
   const [summaryTouched, setSummaryTouched] = useState(false);
   const [detailText,     setDetailText]     = useState("");
   const [detailTouched,  setDetailTouched]  = useState(false);
-  const [wouldBuyAgain,  setWouldBuyAgain]  = useState<boolean | null>(null);
-  const [ownershipMonths,setOwnershipMonths]= useState("");
+  const [wouldRecommend, setWouldRecommend] = useState<"yes" | "maybe" | "no" | null>(null);
+  const [ownershipSlot,  setOwnershipSlot]  = useState<string>("");
+  const [usageType,      setUsageType]      = useState<string>("");
   const [error,          setError]          = useState("");
   const [loading,        setLoading]        = useState(false);
 
@@ -164,8 +188,10 @@ export function ReviewForm({ products, defaultSlug }: Props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         productSlug, scoreFiyat, scoreKalite, scorePerformans,
-        summaryText, detailText, wouldBuyAgain,
-        ownershipMonths: ownershipMonths || null,
+        summaryText, detailText,
+        wouldBuyAgain: wouldRecommend === "yes" ? true : wouldRecommend === "no" ? false : null,
+        ownershipMonths: OWNERSHIP_MONTHS[ownershipSlot] ?? null,
+        usageType: usageType || null,
       }),
     });
 
@@ -367,47 +393,90 @@ export function ReviewForm({ products, defaultSlug }: Props) {
       </div>
 
       {/* Ek bilgiler */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-5">
+      <div className="bg-white rounded-2xl border border-gray-100 p-6 space-y-7">
         <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide">Ek Bilgiler</h2>
 
-        <div className="space-y-2">
-          <label className="text-xs font-semibold text-gray-500">Tekrar alır mıydınız?</label>
+        {/* Tavsiye */}
+        <div className="space-y-3">
+          <p className="text-base font-semibold text-gray-800">
+            Bu aracı bir arkadaşınıza tavsiye eder misiniz?
+          </p>
           <div className="flex gap-2">
-            {([
-              { value: true,  label: "Evet, kesinlikle" },
-              { value: false, label: "Hayır" },
-              { value: null,  label: "Emin değilim" },
-            ] as const).map((opt) => (
-              <button
-                key={String(opt.value)}
-                type="button"
-                onClick={() => setWouldBuyAgain(opt.value)}
-                className="flex-1 py-2 rounded-xl text-xs font-semibold border-2 transition-all"
-                style={
-                  wouldBuyAgain === opt.value
-                    ? { background: "#111", borderColor: "#111", color: "#fff" }
-                    : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
-                }
-              >
-                {opt.label}
-              </button>
-            ))}
+            {RECOMMEND_OPTS.map((opt) => {
+              const selected = wouldRecommend === opt.value;
+              return (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => setWouldRecommend(opt.value)}
+                  className="flex-1 py-3 rounded-xl font-semibold border-2 transition-all flex flex-col items-center gap-1"
+                  style={
+                    selected
+                      ? { background: "#111", borderColor: "#111", color: "#fff" }
+                      : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
+                  }
+                >
+                  <span className="text-xl">{opt.icon}</span>
+                  <span className="text-xs">{opt.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        <div className="space-y-1">
-          <label className="text-xs font-semibold text-gray-500">
-            Bu aracı kaç aydır kullanıyorsunuz?
-          </label>
-          <input
-            type="number"
-            min={1}
-            max={240}
-            value={ownershipMonths}
-            onChange={(e) => setOwnershipMonths(e.target.value)}
-            placeholder="Örn: 18"
-            className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
-          />
+        {/* Sahiplik süresi */}
+        <div className="space-y-3">
+          <p className="text-base font-semibold text-gray-800">
+            Ne kadar süredir bu araçtasınız?
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {OWNERSHIP_SLOTS.map((slot) => {
+              const selected = ownershipSlot === slot.key;
+              return (
+                <button
+                  key={slot.key}
+                  type="button"
+                  onClick={() => setOwnershipSlot(slot.key)}
+                  className="px-4 py-2.5 rounded-xl text-sm font-semibold border-2 transition-all"
+                  style={
+                    selected
+                      ? { background: "#111", borderColor: "#111", color: "#fff" }
+                      : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
+                  }
+                >
+                  {slot.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Kullanım tipi */}
+        <div className="space-y-3">
+          <p className="text-base font-semibold text-gray-800">
+            Ağırlıklı kullanımınız nedir?
+          </p>
+          <div className="flex gap-2">
+            {USAGE_OPTS.map((opt) => {
+              const selected = usageType === opt.value;
+              return (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => setUsageType(opt.value)}
+                  className="flex-1 py-3 rounded-xl font-semibold border-2 transition-all flex flex-col items-center gap-1"
+                  style={
+                    selected
+                      ? { background: "#111", borderColor: "#111", color: "#fff" }
+                      : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
+                  }
+                >
+                  <span className="text-xl">{opt.icon}</span>
+                  <span className="text-xs">{opt.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 

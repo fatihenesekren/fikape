@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 
   const {
     productSlug, scoreFiyat, scoreKalite, scorePerformans,
-    summaryText, detailText, wouldBuyAgain, ownershipMonths,
+    summaryText, detailText, wouldBuyAgain, ownershipMonths, usageType,
   } = await req.json();
 
   if (!productSlug) {
@@ -46,7 +46,8 @@ export async function POST(req: Request) {
       summaryText:              summaryText.trim(),
       detailText:               detailText?.trim() || null,
       wouldBuyAgain:            wouldBuyAgain ?? null,
-      ownershipMonthsAtReview:  ownershipMonths ? parseInt(ownershipMonths) : null,
+      ownershipMonthsAtReview:  ownershipMonths ? Number(ownershipMonths) : null,
+      extendedData:             usageType ? { usage_type: usageType } : undefined,
       status:                   "PENDING",
     },
   });
