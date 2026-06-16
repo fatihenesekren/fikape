@@ -229,17 +229,9 @@ export function ReviewForm({ products, defaultSlug }: Props) {
 
       {/* FI·KA·PE Puanlama */}
       <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-5">
-        <div className="flex items-center justify-between">
-          <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide">
-            fi·ka·pe Puanı
-          </h2>
-          {overall !== null && (
-            <div className="text-right">
-              <span className="text-2xl font-black text-gray-900">{overall.toFixed(1)}</span>
-              <span className="text-xs text-gray-400 ml-1">/ 10</span>
-            </div>
-          )}
-        </div>
+        <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide">
+          fi·ka·pe Puanı
+        </h2>
 
         {FIKAPE.map(({ key, short, label, color, bg }) => (
           <ScoreSelector
@@ -258,6 +250,42 @@ export function ReviewForm({ products, defaultSlug }: Props) {
             }
           />
         ))}
+
+        {/* Genel skor — 3 boyut seçilince açılır */}
+        {overall !== null && (() => {
+          const o = overall;
+          const style =
+            o >= 9 ? { color: "#14532d", bg: "#dcfce7" } :
+            o >= 7 ? { color: "#0C447C", bg: "#dbeafe" } :
+            o >= 5 ? { color: "#9a3412", bg: "#ffedd5" } :
+                     { color: "#991b1b", bg: "#fee2e2" };
+          return (
+            <div
+              className="rounded-2xl px-6 py-5 text-center space-y-3 transition-all"
+              style={{ background: style.bg }}
+            >
+              <p className="text-xs font-bold uppercase tracking-widest opacity-60"
+                style={{ color: style.color }}>
+                fi·ka·pe puanı
+              </p>
+              <p className="text-7xl font-black leading-none tabular-nums"
+                style={{ color: style.color }}>
+                {o.toFixed(1)}
+              </p>
+              {/* Progress bar */}
+              <div className="w-full max-w-xs mx-auto h-1.5 rounded-full overflow-hidden"
+                style={{ background: `${style.color}22` }}>
+                <div
+                  className="h-full rounded-full transition-all duration-500"
+                  style={{ width: `${(o / 10) * 100}%`, background: style.color }}
+                />
+              </div>
+              <p className="text-sm font-semibold" style={{ color: style.color }}>
+                {SCORE_LABELS[Math.round(o)]}
+              </p>
+            </div>
+          );
+        })()}
       </div>
 
       {/* Özet */}
