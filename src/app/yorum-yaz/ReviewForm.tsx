@@ -4,6 +4,16 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
 
+const FUEL_LABELS: Record<string, string> = {
+  EV: "⚡ Elektrik", HYBRID: "🔋 Hibrit",
+  GASOLINE: "⛽ Benzin", DIESEL: "🛢 Dizel", LPG: "🔵 LPG",
+};
+
+const BODY_LABELS: Record<string, string> = {
+  suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
+  mpv: "MPV", pickup: "Pick-up", coupe: "Coupe",
+};
+
 interface Product {
   slug: string;
   name: string;
@@ -11,6 +21,9 @@ interface Product {
   modelName: string;
   trimName: string | null;
   year: number | null;
+  imageUrl: string | null;
+  fuelType: string | null;
+  bodyType: string | null;
 }
 
 interface Props {
@@ -170,12 +183,47 @@ export function ReviewForm({ products, defaultSlug }: Props) {
             </option>
           ))}
         </select>
+
         {selectedProduct && (
-          <p className="text-xs text-gray-400">
-            {selectedProduct.brandName} {selectedProduct.modelName}
-            {selectedProduct.trimName && ` · ${selectedProduct.trimName}`}
-            {selectedProduct.year && ` · ${selectedProduct.year}`}
-          </p>
+          <div className="flex gap-3 items-center mt-1 p-3 rounded-xl bg-gray-50 border border-gray-100">
+            {/* Fotoğraf */}
+            <div className="w-24 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0 flex items-center justify-center">
+              {selectedProduct.imageUrl ? (
+                <img
+                  src={selectedProduct.imageUrl}
+                  alt={selectedProduct.modelName}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <span className="text-2xl">🚗</span>
+              )}
+            </div>
+
+            {/* Bilgiler */}
+            <div className="flex-1 min-w-0 space-y-1">
+              <p className="text-sm font-bold text-gray-900 leading-tight">
+                {selectedProduct.brandName} {selectedProduct.modelName}
+                {selectedProduct.trimName && (
+                  <span className="font-normal text-gray-500"> · {selectedProduct.trimName}</span>
+                )}
+              </p>
+              {selectedProduct.year && (
+                <p className="text-xs text-gray-400">{selectedProduct.year}</p>
+              )}
+              <div className="flex flex-wrap gap-1 mt-1">
+                {selectedProduct.fuelType && FUEL_LABELS[selectedProduct.fuelType] && (
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-200 text-gray-600">
+                    {FUEL_LABELS[selectedProduct.fuelType]}
+                  </span>
+                )}
+                {selectedProduct.bodyType && BODY_LABELS[selectedProduct.bodyType] && (
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-200 text-gray-600">
+                    {BODY_LABELS[selectedProduct.bodyType]}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
         )}
       </div>
 
