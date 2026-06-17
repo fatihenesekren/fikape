@@ -56,7 +56,7 @@ export async function HeroSection() {
               <span style={{ color: "#85B7EB" }}>Fiyat</span>,{" "}
               <span style={{ color: "#97C459" }}>Kalite</span> ve{" "}
               <span style={{ color: "#F0997B" }}>Performans</span>{" "}
-              puanlarıyla gerçek sahip deneyimleri.
+              puanlarıyla gerçek kullanıcı deneyimleri.
             </p>
 
             {/* Arama kutusu */}
