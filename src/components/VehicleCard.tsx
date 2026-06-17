@@ -58,8 +58,6 @@ export function VehicleCard({
   const typeLabel = bodyLabel ?? CATEGORY_LABELS[categorySlug] ?? categorySlug;
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
 
-  const variantLabel = [trimName, year].filter(Boolean).join(" · ");
-
   return (
     <Link
       href={`/araclar/${slug}`}
@@ -91,13 +89,6 @@ export function VehicleCard({
           {FUEL_ICONS[fuelType]} {FUEL_LABELS[fuelType] ?? fuelType}
         </span>
 
-        {/* Sol alt — trim · yıl */}
-        {variantLabel && (
-          <span className="absolute bottom-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-black/60 text-white">
-            {variantLabel}
-          </span>
-        )}
-
         {/* Sağ alt — toplam yorum */}
         {totalReviews > 0 && (
           <span className="absolute bottom-3 right-3 text-xs font-medium px-2 py-0.5 rounded-full bg-black/60 text-white z-10">
@@ -125,10 +116,14 @@ export function VehicleCard({
         <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">
           {brandName}
         </div>
-        <div className="text-base font-bold text-gray-900 leading-tight mb-0.5">
+        <div className="text-base font-bold text-gray-900 leading-tight">
+          {year && <span className="text-gray-400 font-medium mr-1">{year}</span>}
           {modelName}
         </div>
-        <div className="text-xs text-gray-400 mb-3">{typeLabel}</div>
+        {trimName && (
+          <div className="text-sm text-gray-600 font-medium mt-0.5">{trimName}</div>
+        )}
+        <div className="text-xs text-gray-400 mt-0.5 mb-3">{typeLabel}</div>
 
         {scores ? (
           <FikapeScore scores={scores} variant="chips" />
