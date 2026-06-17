@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { VehicleCard } from "@/components/VehicleCard";
@@ -14,39 +15,46 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { q } = await searchParams;
   return {
-    title: q ? `"${q}" için arama sonuçları` : "Araç Ara",
+    title: q ? `"${q}" için arama sonuçları — fikape` : "Araç Ara — fikape",
     robots: { index: false },
   };
 }
 
-export default async function AramaPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ q?: string }>;
-}) {
-  const { q } = await searchParams;
-  const query = q?.trim() ?? "";
+function normalize(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/ş/g, "s")
+    .replace(/ç/g, "c")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ö/g, "o")
+    .replace(/ı/g, "i")
+    .replace(/İ/g, "i");
+}
 
-  const products = query.length >= 2
-    ? await prisma.product.findMany({
-        where: {
-          isActive: true,
-          OR: [
-            { name:     { contains: query, mode: "insensitive" } },
-            { trimName: { contains: query, mode: "insensitive" } },
-            { brand:    { name: { contains: query, mode: "insensitive" } } },
-            { model:    { name: { contains: query, mode: "insensitive" } } },
-          ],
-        },
-        include: {
-          brand: true,
-          model: true,
-          category: true,
-          _count: { select: { reviews: { where: { status: "PUBLISHED" } } } },
-        },
-        orderBy: [{ brand: { name: "asc" } }, { year: "desc" }],
-      })
-    : [];
+async function SearchResults({ query }: { query: string }) {
+  const allProducts = await prisma.product.findMany({
+    where: { isActive: true },
+    include: {
+      brand: true,
+      model: true,
+      category: true,
+      _count: { select: { reviews: { where: { status: "PUBLISHED" } } } },
+    },
+    orderBy: [{ brand: { name: "asc" } }, { year: "desc" }],
+  });
+
+  type ProductItem = typeof allProducts[number];
+
+  const nq = normalize(query);
+  const products: ProductItem[] = query.length >= 2
+    ? allProducts.filter((p) =>
+        normalize(p.name).includes(nq) ||
+        normalize(p.brand.name).includes(nq) ||
+        normalize(p.model.name).includes(nq) ||
+        (p.trimName ? normalize(p.trimName).includes(nq) : false)
+      )
+    : allProducts;
 
   // Puan ortalamaları
   const productIds = products.map((p) => p.id);
@@ -55,8 +63,10 @@ export default async function AramaPage({
         by: ["productId"],
         where: { status: "PUBLISHED", productId: { in: productIds } },
         _avg: {
-          scoreFiyat: true, scoreKalite: true,
-          scorePerformans: true, scoreOverall: true,
+          scoreFiyat: true,
+          scoreKalite: true,
+          scorePerformans: true,
+          scoreOverall: true,
         },
         _count: { id: true },
       })
@@ -77,9 +87,8 @@ export default async function AramaPage({
     ])
   );
 
-  // Model bazında grupla (ana sayfayla aynı mantık)
-  type Product = (typeof products)[number];
-  const modelGroups = new Map<number, Product[]>();
+  // Model bazında grupla
+  const modelGroups = new Map<number, ProductItem[]>();
   for (const p of products) {
     const group = modelGroups.get(p.modelId) ?? [];
     group.push(p);
@@ -103,36 +112,112 @@ export default async function AramaPage({
     }
 
     const modelScores: FikapeScores | null = totalReviews > 0
-      ? { scoreFiyat: wFiyat / totalReviews, scoreKalite: wKalite / totalReviews,
-          scorePerformans: wPerformans / totalReviews, scoreOverall: wOverall / totalReviews }
+      ? {
+          scoreFiyat:      wFiyat      / totalReviews,
+          scoreKalite:     wKalite     / totalReviews,
+          scorePerformans: wPerformans / totalReviews,
+          scoreOverall:    wOverall    / totalReviews,
+        }
       : null;
 
     const dbImageUrl = sorted.find((v) => v.imageUrl)?.imageUrl ?? null;
     return { primary, sorted, totalReviews, modelScores, dbImageUrl };
   });
 
+  // Wikipedia görselleri — sadece DB'de olmayan kartlar için
   const slugsNeedingWiki = modelCards.filter((m) => !m.dbImageUrl).map((m) => m.primary.slug);
   const wikiUrls = slugsNeedingWiki.length > 0 ? await getVehicleImageUrls(slugsNeedingWiki) : {};
 
+  if (query.length >= 2 && modelCards.length === 0) {
+    return (
+      <div className="text-center py-20 text-gray-400">
+        <p className="text-5xl mb-4">🔍</p>
+        <p className="font-semibold text-gray-700 text-lg mb-1">Sonuç bulunamadı</p>
+        <p className="text-sm mb-6">
+          &ldquo;{query}&rdquo; ile eşleşen araç yok.{" "}
+          <Link href="/arama" className="underline text-gray-900 hover:text-gray-600 transition-colors">
+            Tümünü gör
+          </Link>
+        </p>
+        <Link
+          href={`/oner?brandName=${encodeURIComponent(query)}`}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
+          style={{ background: "#111" }}
+        >
+          <span>+</span> Bu aracı öner
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <p className="text-sm text-gray-400 mb-5">
+        {query.length >= 2
+          ? `${modelCards.length} model bulundu`
+          : `${modelCards.length} araç`}
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {modelCards.map(({ primary, sorted, totalReviews, modelScores, dbImageUrl }) => {
+          const imageUrl = dbImageUrl ?? wikiUrls[primary.slug] ?? null;
+          const variantChips = sorted.map((v) => ({
+            slug:     v.slug,
+            year:     v.year,
+            trimName: v.trimName,
+            fuelType: String((v.attributes as Record<string, unknown>).fuel_type ?? ""),
+          }));
+
+          return (
+            <VehicleCard
+              key={primary.modelId}
+              primarySlug={primary.slug}
+              brandName={primary.brand.name}
+              modelName={primary.model.name}
+              attributes={primary.attributes as Record<string, unknown>}
+              scores={modelScores}
+              totalReviews={totalReviews}
+              imageUrl={imageUrl}
+              variants={variantChips}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+function SearchResultsSkeleton() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      {Array.from({ length: 8 }).map((_, i) => (
+        <div key={i} className="rounded-2xl border border-gray-100 bg-white overflow-hidden animate-pulse">
+          <div className="h-40 bg-gray-100" />
+          <div className="p-4 space-y-2">
+            <div className="h-3 w-1/3 bg-gray-100 rounded" />
+            <div className="h-4 w-2/3 bg-gray-100 rounded" />
+            <div className="h-3 w-full bg-gray-100 rounded mt-3" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default async function AramaPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
+  const query = q?.trim() ?? "";
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-
       {/* Başlık */}
       <div className="mb-6">
-        {query ? (
-          <>
-            <h1 className="text-xl font-bold text-gray-900">
-              &ldquo;{query}&rdquo; için sonuçlar
-            </h1>
-            <p className="text-sm text-gray-400 mt-0.5">
-              {modelCards.length > 0
-                ? `${modelCards.length} model bulundu`
-                : "Sonuç bulunamadı"}
-            </p>
-          </>
-        ) : (
-          <h1 className="text-xl font-bold text-gray-900">Araç Ara</h1>
-        )}
+        <h1 className="text-xl font-bold text-gray-900">
+          {query ? <>&ldquo;{query}&rdquo; için sonuçlar</> : "Tüm Araçlar"}
+        </h1>
       </div>
 
       {/* Arama kutusu */}
@@ -142,7 +227,7 @@ export default async function AramaPage({
             name="q"
             type="search"
             defaultValue={query}
-            placeholder="Araç, marka veya model ara..."
+            placeholder="Marka, model veya araç adı ara..."
             autoFocus={!query}
             className="w-full pl-10 pr-24 py-3 rounded-2xl border border-gray-200 bg-white text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors"
           />
@@ -161,73 +246,15 @@ export default async function AramaPage({
             Ara
           </button>
         </div>
+        {query.length > 0 && query.length < 2 && (
+          <p className="text-xs text-gray-400 mt-2 pl-1">En az 2 karakter gir.</p>
+        )}
       </form>
 
-      {/* Sonuç yok */}
-      {query.length >= 2 && modelCards.length === 0 && (
-        <div className="text-center py-16 text-gray-400">
-          <p className="text-4xl mb-4">🔍</p>
-          <p className="font-semibold text-gray-600 text-lg mb-1">Sonuç bulunamadı</p>
-          <p className="text-sm mb-6">
-            &ldquo;{query}&rdquo; ile eşleşen araç yok.{" "}
-            <Link href="/" className="underline text-gray-900 hover:text-gray-600 transition-colors">
-              Tüm araçlara göz at
-            </Link>
-          </p>
-          <Link
-            href={`/oner?brandName=${encodeURIComponent(query)}`}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
-            style={{ background: "#111" }}
-          >
-            <span>+</span>
-            Bu aracı öner
-          </Link>
-        </div>
-      )}
-
-      {/* Kısa sorgu uyarısı */}
-      {query.length > 0 && query.length < 2 && (
-        <p className="text-sm text-gray-400">En az 2 karakter gir.</p>
-      )}
-
-      {/* Boş sayfa */}
-      {!query && (
-        <div className="text-center py-16 text-gray-400">
-          <p className="text-4xl mb-4">🚗</p>
-          <p className="text-sm">Marka, model veya araç adı yazarak arama yap.</p>
-        </div>
-      )}
-
-      {/* Sonuç kartları */}
-      {modelCards.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {modelCards.map(({ primary, sorted, totalReviews, modelScores, dbImageUrl }) => {
-            const imageUrl = dbImageUrl ?? wikiUrls[primary.slug] ?? null;
-
-            const variantChips = sorted.map((v) => ({
-              slug:     v.slug,
-              year:     v.year,
-              trimName: v.trimName,
-              fuelType: String((v.attributes as Record<string, unknown>).fuel_type ?? ""),
-            }));
-
-            return (
-              <VehicleCard
-                key={primary.modelId}
-                primarySlug={primary.slug}
-                brandName={primary.brand.name}
-                modelName={primary.model.name}
-                attributes={primary.attributes as Record<string, unknown>}
-                scores={modelScores}
-                totalReviews={totalReviews}
-                imageUrl={imageUrl}
-                variants={variantChips}
-              />
-            );
-          })}
-        </div>
-      )}
-
+      {/* Sonuçlar — Suspense ile Wikipedia fetch izole */}
+      <Suspense fallback={<SearchResultsSkeleton />}>
+        <SearchResults query={query} />
+      </Suspense>
     </div>
   );
 }

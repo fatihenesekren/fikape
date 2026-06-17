@@ -8,8 +8,8 @@ export function SearchBar() {
   const pathname = usePathname();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Ana sayfada hero'nun kendi search kutusu var — başlıkta tekrar gösterme
-  if (pathname === "/") return null;
+  // Ana sayfada hero'nun, arama sayfasında sayfanın kendi search kutusu var
+  if (pathname === "/" || pathname === "/arama") return null;
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -48,7 +48,7 @@ export function SearchIcon() {
   const router   = useRouter();
   const pathname = usePathname();
 
-  if (pathname === "/") return null;
+  if (pathname === "/" || pathname === "/arama") return null;
 
   return (
     <button
