@@ -126,6 +126,12 @@ export default async function Home({
   const activeFuel     = yakit ?? "hepsi";
   const showFuelFilter = !catFilter || catFilter === "otomobil";
 
+  // Stats for hero
+  const [totalModels, totalReviews] = await Promise.all([
+    prisma.model.count({ where: { products: { some: { isActive: true } } } }),
+    prisma.review.count({ where: { status: "PUBLISHED" } }),
+  ]);
+
   return (
     <>
       {/* Doğrulama banner */}
@@ -145,23 +151,92 @@ export default async function Home({
       )}
 
       {/* Hero */}
-      <section className="bg-[#111] text-white">
-        <div className="max-w-7xl mx-auto px-4 py-16 text-center">
-          <div className="flex items-center justify-center gap-1 text-5xl font-black tracking-tight mb-4 select-none">
-            <span style={{ color: "#85B7EB" }}>fi</span>
-            <span className="text-gray-600 font-light">·</span>
-            <span style={{ color: "#97C459" }}>ka</span>
-            <span className="text-gray-600 font-light">·</span>
-            <span style={{ color: "#F0997B" }}>pe</span>
+      <section className="bg-[#111] text-white overflow-hidden">
+        <div className="max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center relative">
+
+          {/* Soft glow accent */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-20"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 40% at 50% 0%, #3b6fd4 0%, transparent 70%)",
+            }}
+          />
+
+          {/* Wordmark */}
+          <div className="relative flex items-center justify-center gap-0.5 text-sm font-bold tracking-widest uppercase text-gray-500 mb-6 select-none">
+            <span style={{ color: "#85B7EB" }}>FI</span>
+            <span className="text-gray-700 font-light mx-1">·</span>
+            <span style={{ color: "#97C459" }}>KA</span>
+            <span className="text-gray-700 font-light mx-1">·</span>
+            <span style={{ color: "#F0997B" }}>PE</span>
           </div>
-          <p className="text-gray-400 text-lg max-w-md mx-auto leading-relaxed">
-            <span style={{ color: "#85B7EB" }}>Fi</span>yat ·{" "}
-            <span style={{ color: "#97C459" }}>Ka</span>lite ·{" "}
-            <span style={{ color: "#F0997B" }}>Pe</span>rformans
+
+          {/* Headline */}
+          <h1 className="relative text-4xl sm:text-5xl font-black leading-tight tracking-tight mb-4">
+            Aracını aldın mı?{" "}
+            <span
+              className="block sm:inline"
+              style={{
+                background: "linear-gradient(90deg, #85B7EB, #97C459, #F0997B)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Anlat.
+            </span>
+          </h1>
+
+          {/* Sub */}
+          <p className="relative text-gray-400 text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+            Türkiye&apos;nin araç yorum platformu.{" "}
+            <span style={{ color: "#85B7EB" }}>Fiyat</span>,{" "}
+            <span style={{ color: "#97C459" }}>Kalite</span> ve{" "}
+            <span style={{ color: "#F0997B" }}>Performans</span>{" "}
+            puanlarıyla gerçek kullanıcı deneyimleri.
           </p>
-          <p className="text-gray-500 text-sm mt-2">
-            Gerçek kullanıcılar, gerçek deneyimler
-          </p>
+
+          {/* Search bar */}
+          <form
+            action="/arama"
+            method="GET"
+            className="relative flex items-center max-w-xl mx-auto mb-8"
+          >
+            <input
+              name="q"
+              type="search"
+              placeholder="Toyota Corolla, Honda CB500, Vespa GTS..."
+              className="w-full pl-5 pr-32 py-3.5 rounded-2xl bg-white/10 border border-white/15 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-white/30 focus:bg-white/15 transition-all"
+            />
+            <button
+              type="submit"
+              className="absolute right-2 px-4 py-2 rounded-xl text-sm font-bold text-[#111] bg-white hover:bg-gray-100 transition-colors"
+            >
+              Araç Ara
+            </button>
+          </form>
+
+          {/* Stats */}
+          <div className="relative flex items-center justify-center gap-2 text-sm text-gray-500 flex-wrap">
+            <span>
+              <span className="font-bold text-gray-300">{totalModels}</span> araç modeli
+            </span>
+            <span className="text-gray-700">·</span>
+            <span>
+              <span className="font-bold text-gray-300">{totalReviews}</span> yorum
+            </span>
+            <span className="text-gray-700">·</span>
+            <span>5 kategori</span>
+            <span className="text-gray-700">·</span>
+            <a
+              href="/yorum-yaz"
+              className="font-semibold text-white underline underline-offset-2 decoration-gray-600 hover:decoration-white transition-colors"
+            >
+              Sen de yaz →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -318,25 +393,29 @@ export default async function Home({
         </div>
       </section>
 
-      {/* Alt banner */}
+      {/* Alt CTA */}
       <section className="bg-[#111] text-white mt-4">
         <div className="max-w-7xl mx-auto px-4 py-14 text-center">
-          <div className="flex items-center justify-center gap-1 text-3xl font-black tracking-tight mb-3 select-none">
-            <span style={{ color: "#85B7EB" }}>fi</span>
-            <span className="text-gray-600 font-light">·</span>
-            <span style={{ color: "#97C459" }}>ka</span>
-            <span className="text-gray-600 font-light">·</span>
-            <span style={{ color: "#F0997B" }}>pe</span>
-          </div>
-          <p className="text-gray-400 text-sm mb-8">
-            Araba, motosiklet, e-scooter, karavan, kamyonet — gerçek kullanıcı yorumları
+          <p className="text-gray-300 text-lg font-bold mb-2">
+            Aracın hakkında ne düşünüyorsun?
           </p>
-          <a
-            href="/yorum-yaz"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-sm text-[#111] bg-white hover:bg-gray-100 transition-colors"
-          >
-            Deneyimini paylaş →
-          </a>
+          <p className="text-gray-500 text-sm mb-8">
+            Yorumun bir sonraki alıcının kararını değiştirebilir.
+          </p>
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <a
+              href="/yorum-yaz"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-sm text-[#111] bg-white hover:bg-gray-100 transition-colors"
+            >
+              Yorum Yaz →
+            </a>
+            <a
+              href="/oner"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm text-white border border-white/20 hover:border-white/40 transition-colors"
+            >
+              Araç Öner
+            </a>
+          </div>
         </div>
       </section>
     </>
