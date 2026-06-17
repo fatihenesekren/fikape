@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   description:
     "Türkiye'nin araç yorum platformu. Fiyat, Kalite ve Performans puanlarıyla gerçek kullanıcı deneyimleri.",
-  metadataBase: new URL("https://fikape-e4t7.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? process.env.AUTH_URL ?? "https://fikape-e4t7.vercel.app"),
   openGraph: {
     siteName: "fikape",
     locale: "tr_TR",
