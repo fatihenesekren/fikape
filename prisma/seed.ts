@@ -1,8 +1,12 @@
+import "dotenv/config";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 const prisma = new PrismaClient({ adapter } as any);
+
+const IMG = (file: string) =>
+  `https://commons.wikimedia.org/wiki/Special:FilePath/${file}`;
 
 async function main() {
   console.log("🌱 Seed başlıyor...");
@@ -228,42 +232,55 @@ async function main() {
 
   const carProducts = [
     { slug: "togg-t10x-2023", name: "Togg T10X 2023", year: 2023, trimName: "Uzun Menzil",
+      imageUrl: IMG("Togg_T10X_Grey.jpg"),
       modelId: modelT10X.id, brandId: togg.id,
       attributes: { fuel_type: "EV", segment: "C", body_type: "suv", ev_range_km: 523, power_hp: 200 } },
     { slug: "togg-t10x-2024", name: "Togg T10X 2024", year: 2024, trimName: "Uzun Menzil",
+      imageUrl: IMG("Togg_T10X.jpg"),
       modelId: modelT10X.id, brandId: togg.id,
       attributes: { fuel_type: "EV", segment: "C", body_type: "suv", ev_range_km: 523, power_hp: 200 } },
     { slug: "togg-t10f-2024", name: "Togg T10F 2024", year: 2024, trimName: "Standart Menzil",
+      imageUrl: IMG("Togg_T10F_IAA_2025_DSC_1675.jpg"),
       modelId: modelT10F.id, brandId: togg.id,
       attributes: { fuel_type: "EV", segment: "C", body_type: "sedan", ev_range_km: 480, power_hp: 200 } },
     { slug: "tesla-model-y-2023", name: "Tesla Model Y 2023", year: 2023, trimName: "Long Range AWD",
+      imageUrl: IMG("Tesla_Model_Y_front_passenger_side_view.jpg"),
       modelId: modelModelY.id, brandId: tesla.id,
       attributes: { fuel_type: "EV", segment: "D", body_type: "suv", ev_range_km: 533, power_hp: 299 } },
     { slug: "tesla-model-y-2024", name: "Tesla Model Y 2024", year: 2024, trimName: "Long Range RWD",
+      imageUrl: IMG("Tesla_Model_Y_Dual_Motor_Solid_Black_(3).jpg"),
       modelId: modelModelY.id, brandId: tesla.id,
       attributes: { fuel_type: "EV", segment: "D", body_type: "suv", ev_range_km: 533, power_hp: 299 } },
     { slug: "fiat-egea-sedan-2020", name: "Fiat Egea Sedan 2020", year: 2020, trimName: "Urban",
+      imageUrl: IMG("2019_Fiat_Tipo_1.6_Easy.jpg"),
       modelId: modelEgea.id, brandId: fiat.id,
       attributes: { fuel_type: "GASOLINE", segment: "C", body_type: "sedan", engine_cc: 1368, power_hp: 95 } },
     { slug: "fiat-egea-sedan-2022", name: "Fiat Egea Sedan 2022", year: 2022, trimName: "Urban",
+      imageUrl: IMG("Fiat_Tipo_1.4_Sedan_(49182414416).jpg"),
       modelId: modelEgea.id, brandId: fiat.id,
       attributes: { fuel_type: "GASOLINE", segment: "C", body_type: "sedan", engine_cc: 1368, power_hp: 95 } },
     { slug: "fiat-egea-sedan-2024", name: "Fiat Egea Sedan 2024", year: 2024, trimName: "Lounge",
+      imageUrl: IMG("Fiat_Tipo_1.4_Sedan_(49182414416).jpg"),
       modelId: modelEgea.id, brandId: fiat.id,
       attributes: { fuel_type: "GASOLINE", segment: "C", body_type: "sedan", engine_cc: 1368, power_hp: 95 } },
     { slug: "renault-clio-2021", name: "Renault Clio 2021", year: 2021, trimName: "Touch",
+      imageUrl: IMG("Renault_Clio_V_1X7A0309.jpg"),
       modelId: modelClio.id, brandId: renault.id,
       attributes: { fuel_type: "GASOLINE", segment: "B", body_type: "hatchback", engine_cc: 999, power_hp: 90 } },
     { slug: "renault-clio-2023", name: "Renault Clio 2023", year: 2023, trimName: "Techno",
+      imageUrl: IMG("Renault_Clio_V_1X7A0392.jpg"),
       modelId: modelClio.id, brandId: renault.id,
       attributes: { fuel_type: "GASOLINE", segment: "B", body_type: "hatchback", engine_cc: 999, power_hp: 90 } },
     { slug: "renault-clio-hybrid-2023", name: "Renault Clio Hybrid 2023", year: 2023, trimName: "E-Tech",
+      imageUrl: IMG("Renault_Clio_V_1X7A0392.jpg"),
       modelId: modelClio.id, brandId: renault.id,
       attributes: { fuel_type: "HYBRID", segment: "B", body_type: "hatchback", engine_cc: 1598, power_hp: 145 } },
     { slug: "dacia-duster-2021", name: "Dacia Duster 2021", year: 2021, trimName: "Comfort",
+      imageUrl: IMG("Dacia_Duster_II_Facelift_IAA_2021_1X7A0132.jpg"),
       modelId: modelDuster.id, brandId: dacia.id,
       attributes: { fuel_type: "GASOLINE", segment: "SUV", body_type: "suv", engine_cc: 999, power_hp: 90 } },
     { slug: "dacia-duster-2024", name: "Dacia Duster 2024", year: 2024, trimName: "Extreme",
+      imageUrl: IMG("2023_Dacia_Duster_front.png"),
       modelId: modelDuster.id, brandId: dacia.id,
       attributes: { fuel_type: "GASOLINE", segment: "SUV", body_type: "suv", engine_cc: 999, power_hp: 90 } },
   ];
@@ -271,7 +288,7 @@ async function main() {
   for (const p of carProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: { trimName: p.trimName },
+      update: { trimName: p.trimName, imageUrl: p.imageUrl },
       create: { ...p, categoryId: catOtomobil.id },
     });
   }
@@ -282,24 +299,31 @@ async function main() {
 
   const motoProducts = [
     { slug: "honda-cb500f-2023", name: "Honda CB500F 2023", year: 2023, trimName: null,
+      imageUrl: IMG("2021_Honda_CB500F.jpg"),
       modelId: modelCB500F.id, brandId: honda.id,
       attributes: { fuel_type: "GASOLINE", moto_type: "naked", engine_cc: 471, power_hp: 47 } },
     { slug: "honda-nc750x-2023", name: "Honda NC750X 2023", year: 2023, trimName: "DCT",
+      imageUrl: IMG("2021_Honda_NC750X_(DCT).jpg"),
       modelId: modelNC750X.id, brandId: honda.id,
       attributes: { fuel_type: "GASOLINE", moto_type: "adventure", engine_cc: 745, power_hp: 58 } },
     { slug: "yamaha-mt07-2023", name: "Yamaha MT-07 2023", year: 2023, trimName: null,
+      imageUrl: IMG("2021_Black_Yamaha_MT-07.jpg"),
       modelId: modelMT07.id, brandId: yamaha.id,
       attributes: { fuel_type: "GASOLINE", moto_type: "naked", engine_cc: 689, power_hp: 73 } },
     { slug: "yamaha-tracer-9-gt-2023", name: "Yamaha Tracer 9 GT 2023", year: 2023, trimName: "GT+",
+      imageUrl: IMG("2022_Yamaha_Tracer9_GT.jpg"),
       modelId: modelTracer9.id, brandId: yamaha.id,
       attributes: { fuel_type: "GASOLINE", moto_type: "touring", engine_cc: 889, power_hp: 119 } },
     { slug: "kawasaki-z650-2023", name: "Kawasaki Z650 2023", year: 2023, trimName: null,
+      imageUrl: IMG("Kawasaki_Z650_schwarz_2020.jpg"),
       modelId: modelZ650.id, brandId: kawasaki.id,
       attributes: { fuel_type: "GASOLINE", moto_type: "naked", engine_cc: 649, power_hp: 68 } },
     { slug: "kawasaki-ninja-400-2023", name: "Kawasaki Ninja 400 2023", year: 2023, trimName: null,
+      imageUrl: IMG("Kawasaki_Ninja_400_KRT_Edition_(facelift_model)_right_side.jpg"),
       modelId: modelNinja400.id, brandId: kawasaki.id,
       attributes: { fuel_type: "GASOLINE", moto_type: "sport", engine_cc: 399, power_hp: 45 } },
     { slug: "zero-sr-s-2024", name: "Zero SR/S 2024", year: 2024, trimName: "Premium",
+      imageUrl: IMG("Zero_SRS_Detail.jpg"),
       modelId: modelZeroSRS.id, brandId: zeromotorcycles.id,
       attributes: { fuel_type: "EV", moto_type: "elektrikli", ev_range_km: 259, power_hp: 110 } },
   ];
@@ -307,7 +331,7 @@ async function main() {
   for (const p of motoProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: {},
+      update: { imageUrl: p.imageUrl },
       create: { ...p, categoryId: catMotosiklet.id },
     });
   }
@@ -318,12 +342,15 @@ async function main() {
 
   const escooterProducts = [
     { slug: "xiaomi-mi-4-pro-2023", name: "Xiaomi Mi Electric Scooter 4 Pro 2023", year: 2023, trimName: null,
+      imageUrl: IMG("Xiaomi_Pro_2.jpg"),
       modelId: modelXiaomi4Pro.id, brandId: xiaomi.id,
       attributes: { scooter_type: "e-scooter", motor_watt: 700, range_km: 55, max_speed_kmh: 25, battery_wh: 446 } },
     { slug: "niu-kqi3-max-2023", name: "NIU KQi3 Max 2023", year: 2023, trimName: null,
+      imageUrl: IMG("Elektrische-tretroller.jpg"),
       modelId: modelNiuKqi3.id, brandId: niu.id,
       attributes: { scooter_type: "e-scooter", motor_watt: 700, range_km: 80, max_speed_kmh: 35, battery_wh: 608 } },
     { slug: "segway-ninebot-max-g30-2022", name: "Segway Ninebot Max G30 2022", year: 2022, trimName: "G30P",
+      imageUrl: IMG("Xiaomi_Essential-1S.jpg"),
       modelId: modelNinebot.id, brandId: segway.id,
       attributes: { scooter_type: "e-scooter", motor_watt: 350, range_km: 65, max_speed_kmh: 25, battery_wh: 551 } },
   ];
@@ -331,7 +358,7 @@ async function main() {
   for (const p of escooterProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: {},
+      update: { imageUrl: p.imageUrl },
       create: { ...p, categoryId: catEscooter.id },
     });
   }
@@ -342,12 +369,15 @@ async function main() {
 
   const karavanProducts = [
     { slug: "knaus-sport-400-lk-2023", name: "Knaus Sport 400 LK 2023", year: 2023, trimName: null,
+      imageUrl: IMG("Knaus_Ski_I_PMS14.jpg"),
       modelId: modelKnausSport.id, brandId: knaus.id,
       attributes: { karavan_type: "cekme", berth: 4, length_cm: 735, tow_weight_kg: 1290 } },
     { slug: "adria-altea-432-px-2023", name: "Adria Altea 432 PX 2023", year: 2023, trimName: null,
+      imageUrl: IMG("Adria_Altea_390_PS_r.jpg"),
       modelId: modelAdriaAltea.id, brandId: adria.id,
       attributes: { karavan_type: "cekme", berth: 4, length_cm: 780, tow_weight_kg: 1350 } },
     { slug: "kiral-k350-2023", name: "Kıral Karavan K350 2023", year: 2023, trimName: null,
+      imageUrl: IMG("Wohnwagen.jpg"),
       modelId: modelKiralK350.id, brandId: kiralkaravan.id,
       attributes: { karavan_type: "cekme", berth: 4, length_cm: 700, tow_weight_kg: 1100 } },
   ];
@@ -355,7 +385,7 @@ async function main() {
   for (const p of karavanProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: {},
+      update: { imageUrl: p.imageUrl },
       create: { ...p, categoryId: catKaravan.id },
     });
   }
@@ -366,24 +396,31 @@ async function main() {
 
   const kamyonetProducts = [
     { slug: "ford-ranger-2023", name: "Ford Ranger 2023", year: 2023, trimName: "Wildtrak",
+      imageUrl: IMG("2023_Ford_Ranger_Wildtrak_EcoBlue_4x4_Auto.jpg"),
       modelId: modelRanger.id, brandId: ford.id,
       attributes: { fuel_type: "DIESEL", body_type: "pickup", payload_kg: 1030, engine_cc: 2000, power_hp: 170, four_wd: true } },
     { slug: "ford-ranger-2024", name: "Ford Ranger 2024", year: 2024, trimName: "Raptor",
+      imageUrl: IMG("2023_Ford_Ranger_Raptor_Ecoboost_Auto.jpg"),
       modelId: modelRanger.id, brandId: ford.id,
       attributes: { fuel_type: "DIESEL", body_type: "pickup", payload_kg: 925, engine_cc: 3000, power_hp: 240, four_wd: true } },
     { slug: "ford-transit-custom-2023", name: "Ford Transit Custom 2023", year: 2023, trimName: "Trend",
+      imageUrl: IMG("Ford_Transit_Custom_(2023)_1X7A1645.jpg"),
       modelId: modelTransit.id, brandId: ford.id,
       attributes: { fuel_type: "DIESEL", body_type: "van", payload_kg: 1186, engine_cc: 2000, power_hp: 136, four_wd: false } },
     { slug: "toyota-hilux-2023", name: "Toyota Hilux 2023", year: 2023, trimName: "Adventure",
+      imageUrl: IMG("2023_Toyota_Hilux_Champ_2.4_Diesel_LWB.jpg"),
       modelId: modelHilux.id, brandId: toyota.id,
       attributes: { fuel_type: "DIESEL", body_type: "pickup", payload_kg: 1080, engine_cc: 2755, power_hp: 204, four_wd: true } },
     { slug: "vw-amarok-2023", name: "Volkswagen Amarok 2023", year: 2023, trimName: "PanAmericana",
+      imageUrl: IMG("Volkswagen_Amarok_Mk2_Caflisch_Auto_Zuerich_2023_1X7A1440.jpg"),
       modelId: modelAmarok.id, brandId: volkswagen.id,
       attributes: { fuel_type: "DIESEL", body_type: "pickup", payload_kg: 1160, engine_cc: 3000, power_hp: 240, four_wd: true } },
     { slug: "isuzu-d-max-2023", name: "Isuzu D-Max 2023", year: 2023, trimName: "V-Cross",
+      imageUrl: IMG("2023_Isuzu_D-Max_V-Cross_4-Door_3.0_Ddi_M.jpg"),
       modelId: modelDMax.id, brandId: isuzu.id,
       attributes: { fuel_type: "DIESEL", body_type: "pickup", payload_kg: 1105, engine_cc: 1898, power_hp: 164, four_wd: true } },
     { slug: "mitsubishi-l200-2023", name: "Mitsubishi L200 2023", year: 2023, trimName: "Athlete",
+      imageUrl: IMG("Mitsubishi_L200_4WD.JPG"),
       modelId: modelL200.id, brandId: mitsubishi.id,
       attributes: { fuel_type: "DIESEL", body_type: "pickup", payload_kg: 1100, engine_cc: 2268, power_hp: 150, four_wd: true } },
   ];
@@ -391,7 +428,7 @@ async function main() {
   for (const p of kamyonetProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: {},
+      update: { trimName: p.trimName, imageUrl: p.imageUrl },
       create: { ...p, categoryId: catKamyonet.id },
     });
   }
