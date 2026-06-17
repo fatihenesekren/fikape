@@ -260,7 +260,7 @@ async function main() {
       modelId: modelEgea.id, brandId: fiat.id,
       attributes: { fuel_type: "GASOLINE", segment: "C", body_type: "sedan", engine_cc: 1368, power_hp: 95 } },
     { slug: "fiat-egea-sedan-2024", name: "Fiat Egea Sedan 2024", year: 2024, trimName: "Lounge",
-      imageUrl: IMG("Fiat_Tipo_1.4_Sedan_(49182414416).jpg"),
+      imageUrl: IMG("Fiat_Tipo_Sedan_Facelift_Leonberg_2022_1X7A0412.jpg"),
       modelId: modelEgea.id, brandId: fiat.id,
       attributes: { fuel_type: "GASOLINE", segment: "C", body_type: "sedan", engine_cc: 1368, power_hp: 95 } },
     { slug: "renault-clio-2021", name: "Renault Clio 2021", year: 2021, trimName: "Touch",
@@ -272,7 +272,7 @@ async function main() {
       modelId: modelClio.id, brandId: renault.id,
       attributes: { fuel_type: "GASOLINE", segment: "B", body_type: "hatchback", engine_cc: 999, power_hp: 90 } },
     { slug: "renault-clio-hybrid-2023", name: "Renault Clio Hybrid 2023", year: 2023, trimName: "E-Tech",
-      imageUrl: IMG("Renault_Clio_V_1X7A0392.jpg"),
+      imageUrl: IMG("2023_Renault_Clio_RS_Line_E-Tech_Hybrid.jpg"),
       modelId: modelClio.id, brandId: renault.id,
       attributes: { fuel_type: "HYBRID", segment: "B", body_type: "hatchback", engine_cc: 1598, power_hp: 145 } },
     { slug: "dacia-duster-2021", name: "Dacia Duster 2021", year: 2021, trimName: "Comfort",
@@ -315,7 +315,7 @@ async function main() {
       modelId: modelTracer9.id, brandId: yamaha.id,
       attributes: { fuel_type: "GASOLINE", moto_type: "touring", engine_cc: 889, power_hp: 119 } },
     { slug: "kawasaki-z650-2023", name: "Kawasaki Z650 2023", year: 2023, trimName: null,
-      imageUrl: IMG("Kawasaki_Z650_schwarz_2020.jpg"),
+      imageUrl: IMG("Kawasaki_Z_650_MY_2017.jpg"),
       modelId: modelZ650.id, brandId: kawasaki.id,
       attributes: { fuel_type: "GASOLINE", moto_type: "naked", engine_cc: 649, power_hp: 68 } },
     { slug: "kawasaki-ninja-400-2023", name: "Kawasaki Ninja 400 2023", year: 2023, trimName: null,
@@ -323,7 +323,7 @@ async function main() {
       modelId: modelNinja400.id, brandId: kawasaki.id,
       attributes: { fuel_type: "GASOLINE", moto_type: "sport", engine_cc: 399, power_hp: 45 } },
     { slug: "zero-sr-s-2024", name: "Zero SR/S 2024", year: 2024, trimName: "Premium",
-      imageUrl: IMG("Zero_SRS_Detail.jpg"),
+      imageUrl: null, // Commons'ta tam araç görseli yok — admin panelinden yüklenecek
       modelId: modelZeroSRS.id, brandId: zeromotorcycles.id,
       attributes: { fuel_type: "EV", moto_type: "elektrikli", ev_range_km: 259, power_hp: 110 } },
   ];
@@ -342,15 +342,15 @@ async function main() {
 
   const escooterProducts = [
     { slug: "xiaomi-mi-4-pro-2023", name: "Xiaomi Mi Electric Scooter 4 Pro 2023", year: 2023, trimName: null,
-      imageUrl: IMG("Xiaomi_Pro_2.jpg"),
+      imageUrl: null, // Commons'ta 4 Pro görseli yok — admin panelinden yüklenecek
       modelId: modelXiaomi4Pro.id, brandId: xiaomi.id,
       attributes: { scooter_type: "e-scooter", motor_watt: 700, range_km: 55, max_speed_kmh: 25, battery_wh: 446 } },
     { slug: "niu-kqi3-max-2023", name: "NIU KQi3 Max 2023", year: 2023, trimName: null,
-      imageUrl: IMG("Elektrische-tretroller.jpg"),
+      imageUrl: null, // Commons'ta KQi3 görseli yok — admin panelinden yüklenecek
       modelId: modelNiuKqi3.id, brandId: niu.id,
       attributes: { scooter_type: "e-scooter", motor_watt: 700, range_km: 80, max_speed_kmh: 35, battery_wh: 608 } },
     { slug: "segway-ninebot-max-g30-2022", name: "Segway Ninebot Max G30 2022", year: 2022, trimName: "G30P",
-      imageUrl: IMG("Xiaomi_Essential-1S.jpg"),
+      imageUrl: null, // Commons'ta Ninebot Max görseli yok — admin panelinden yüklenecek
       modelId: modelNinebot.id, brandId: segway.id,
       attributes: { scooter_type: "e-scooter", motor_watt: 350, range_km: 65, max_speed_kmh: 25, battery_wh: 551 } },
   ];
@@ -377,7 +377,7 @@ async function main() {
       modelId: modelAdriaAltea.id, brandId: adria.id,
       attributes: { karavan_type: "cekme", berth: 4, length_cm: 780, tow_weight_kg: 1350 } },
     { slug: "kiral-k350-2023", name: "Kıral Karavan K350 2023", year: 2023, trimName: null,
-      imageUrl: IMG("Wohnwagen.jpg"),
+      imageUrl: null, // Commons'ta Kıral Karavan görseli yok — admin panelinden yüklenecek
       modelId: modelKiralK350.id, brandId: kiralkaravan.id,
       attributes: { karavan_type: "cekme", berth: 4, length_cm: 700, tow_weight_kg: 1100 } },
   ];
@@ -408,7 +408,7 @@ async function main() {
       modelId: modelTransit.id, brandId: ford.id,
       attributes: { fuel_type: "DIESEL", body_type: "van", payload_kg: 1186, engine_cc: 2000, power_hp: 136, four_wd: false } },
     { slug: "toyota-hilux-2023", name: "Toyota Hilux 2023", year: 2023, trimName: "Adventure",
-      imageUrl: IMG("2023_Toyota_Hilux_Champ_2.4_Diesel_LWB.jpg"),
+      imageUrl: IMG("Toyota_HiLux_GR_Sport_1X7A7281.jpg"),
       modelId: modelHilux.id, brandId: toyota.id,
       attributes: { fuel_type: "DIESEL", body_type: "pickup", payload_kg: 1080, engine_cc: 2755, power_hp: 204, four_wd: true } },
     { slug: "vw-amarok-2023", name: "Volkswagen Amarok 2023", year: 2023, trimName: "PanAmericana",
@@ -420,7 +420,7 @@ async function main() {
       modelId: modelDMax.id, brandId: isuzu.id,
       attributes: { fuel_type: "DIESEL", body_type: "pickup", payload_kg: 1105, engine_cc: 1898, power_hp: 164, four_wd: true } },
     { slug: "mitsubishi-l200-2023", name: "Mitsubishi L200 2023", year: 2023, trimName: "Athlete",
-      imageUrl: IMG("Mitsubishi_L200_4WD.JPG"),
+      imageUrl: IMG("Mitsubishi_L200,_GIMS_2019,_Le_Grand-Saconnex_(GIMS0722).jpg"),
       modelId: modelL200.id, brandId: mitsubishi.id,
       attributes: { fuel_type: "DIESEL", body_type: "pickup", payload_kg: 1100, engine_cc: 2268, power_hp: 150, four_wd: true } },
   ];
