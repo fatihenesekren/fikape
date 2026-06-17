@@ -153,7 +153,7 @@ async function main() {
     togg, tesla, fiat, renault, dacia,
     honda, yamaha, kawasaki, zeromotorcycles,
     xiaomi, niu, segway,
-    knaus, adria, kiralkaravan,
+    knaus, adria, hobby,
     ford, toyota, volkswagen, isuzu, mitsubishi,
   ] = await Promise.all([
     // Mevcut
@@ -172,9 +172,9 @@ async function main() {
     prisma.brand.upsert({ where: { slug: "niu" },    update: {}, create: { slug: "niu",    name: "NIU" } }),
     prisma.brand.upsert({ where: { slug: "segway" }, update: {}, create: { slug: "segway", name: "Segway" } }),
     // Karavan
-    prisma.brand.upsert({ where: { slug: "knaus" },        update: {}, create: { slug: "knaus",        name: "Knaus" } }),
-    prisma.brand.upsert({ where: { slug: "adria" },        update: {}, create: { slug: "adria",        name: "Adria" } }),
-    prisma.brand.upsert({ where: { slug: "kiral-karavan" },update: {}, create: { slug: "kiral-karavan",name: "Kıral Karavan" } }),
+    prisma.brand.upsert({ where: { slug: "knaus" }, update: {}, create: { slug: "knaus", name: "Knaus" } }),
+    prisma.brand.upsert({ where: { slug: "adria" }, update: {}, create: { slug: "adria", name: "Adria" } }),
+    prisma.brand.upsert({ where: { slug: "hobby" }, update: {}, create: { slug: "hobby", name: "Hobby" } }),
     // Kamyonet
     prisma.brand.upsert({ where: { slug: "ford" },       update: {}, create: { slug: "ford",       name: "Ford" } }),
     prisma.brand.upsert({ where: { slug: "toyota" },     update: {}, create: { slug: "toyota",     name: "Toyota" } }),
@@ -214,7 +214,7 @@ async function main() {
   // Karavan
   const modelKnausSport = await prisma.model.upsert({ where: { slug: "knaus-sport-400" },      update: {}, create: { slug: "knaus-sport-400",      name: "Sport 400 LK",  brandId: knaus.id } });
   const modelAdriaAltea = await prisma.model.upsert({ where: { slug: "adria-altea-432" },      update: {}, create: { slug: "adria-altea-432",      name: "Altea 432 PX",  brandId: adria.id } });
-  const modelKiralK350  = await prisma.model.upsert({ where: { slug: "kiral-karavan-k350" },   update: {}, create: { slug: "kiral-karavan-k350",   name: "K350",          brandId: kiralkaravan.id } });
+  const modelHobbyPremium = await prisma.model.upsert({ where: { slug: "hobby-premium-650" }, update: {}, create: { slug: "hobby-premium-650", name: "Premium 650 UFe", brandId: hobby.id } });
 
   // Kamyonet
   const modelRanger     = await prisma.model.upsert({ where: { slug: "ford-ranger" },         update: {}, create: { slug: "ford-ranger",         name: "Ranger",        brandId: ford.id } });
@@ -376,10 +376,10 @@ async function main() {
       imageUrl: IMG("Adria_Altea_390_PS_r.jpg"),
       modelId: modelAdriaAltea.id, brandId: adria.id,
       attributes: { karavan_type: "cekme", berth: 4, length_cm: 780, tow_weight_kg: 1350 } },
-    { slug: "kiral-k350-2023", name: "Kıral Karavan K350 2023", year: 2023, trimName: null,
-      imageUrl: null, // Commons'ta Kıral Karavan görseli yok — admin panelinden yüklenecek
-      modelId: modelKiralK350.id, brandId: kiralkaravan.id,
-      attributes: { karavan_type: "cekme", berth: 4, length_cm: 700, tow_weight_kg: 1100 } },
+    { slug: "hobby-premium-650-ufe-2023", name: "Hobby Premium 650 UFe 2023", year: 2023, trimName: null,
+      imageUrl: IMG("Hobby_Premium_650_UFe_(2)_ACC_Berlin_2017.JPG"),
+      modelId: modelHobbyPremium.id, brandId: hobby.id,
+      attributes: { karavan_type: "cekme", berth: 4, length_cm: 820, tow_weight_kg: 1600 } },
   ];
 
   for (const p of karavanProducts) {
@@ -461,7 +461,7 @@ async function main() {
   console.log("   Kategoriler : 6");
   console.log("   Markalar    : 20");
   console.log("   Modeller    : 29");
-  console.log("   Ürünler     : 13 araba + 7 motosiklet + 3 e-scooter + 3 karavan + 7 kamyonet = 33");
+  console.log("   Ürünler     : 13 araba + 7 motosiklet + 3 e-scooter + 3 karavan + 7 kamyonet = 33 (Kıral→Hobby)");
 }
 
 main()
