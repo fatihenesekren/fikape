@@ -6,7 +6,7 @@ import type { FikapeScores } from "@/lib/fikape";
 const CATEGORY_ICONS: Record<string, string> = {
   otomobil:    "🚗",
   motosiklet:  "🏍️",
-  "e-scooter": "⚡",
+  "e-scooter": "🔋",
   karavan:     "🏕️",
   kamyonet:    "🛻",
 };

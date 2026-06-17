@@ -25,7 +25,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 const CATEGORY_ICONS: Record<string, string> = {
   otomobil:    "🚗",
   motosiklet:  "🏍️",
-  "e-scooter": "⚡",
+  "e-scooter": "🔋",
   karavan:     "🏕️",
   kamyonet:    "🛻",
 };
