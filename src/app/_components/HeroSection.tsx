@@ -34,18 +34,9 @@ export async function HeroSection() {
           {/* ── SOL: Metin + Arama ── */}
           <div>
 
-            {/* Küçük wordmark */}
-            <div className="flex items-center gap-0.5 text-xs font-bold tracking-widest uppercase mb-7 select-none">
-              <span style={{ color: "#85B7EB" }}>Fİ</span>
-              <span className="text-gray-700 font-light mx-1">·</span>
-              <span style={{ color: "#97C459" }}>KA</span>
-              <span className="text-gray-700 font-light mx-1">·</span>
-              <span style={{ color: "#F0997B" }}>PE</span>
-            </div>
-
             {/* Ana başlık */}
             <h1 className="text-4xl sm:text-5xl font-black leading-[1.1] tracking-tight mb-5">
-              Aracını aldın mı?{" "}
+              Aldın. Kullandın.{" "}
               <span
                 style={{
                   background:
@@ -61,7 +52,7 @@ export async function HeroSection() {
 
             {/* Alt başlık */}
             <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-sm">
-              Türkiye&apos;nin araç yorum platformu.{" "}
+              Kullanan bilir —{" "}
               <span style={{ color: "#85B7EB" }}>Fiyat</span>,{" "}
               <span style={{ color: "#97C459" }}>Kalite</span> ve{" "}
               <span style={{ color: "#F0997B" }}>Performans</span>{" "}
