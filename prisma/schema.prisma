@@ -149,6 +149,7 @@ model User {
   helpfulVotes        ReviewHelpfulVote[]
   consentLogs         ConsentLog[]
   dataDeletionRequests DataDeletionRequest[]
+  vehicleSuggestions  VehicleSuggestion[]
 
   @@map("users")
 }
@@ -415,4 +416,37 @@ enum DeletionStatus {
   IN_PROGRESS // İşleniyor
   COMPLETED   // Tamamlandı
   REJECTED    // Reddedildi (geçerli sebep yok)
+}
+
+// ─────────────────────────────────────────────
+// ARAÇ ÖNERİSİ — Kullanıcı tarafından gönderilen
+// ─────────────────────────────────────────────
+
+model VehicleSuggestion {
+  id           Int      @id @default(autoincrement())
+  userId       Int?
+  user         User?    @relation(fields: [userId], references: [id])
+
+  brandName    String
+  modelName    String
+  year         Int?
+  categorySlug String
+  fuelType     String?
+  trimName     String?
+  notes        String?  @db.VarChar(500)
+
+  status       SuggestionStatus @default(PENDING)
+  adminNote    String?
+
+  createdAt    DateTime @default(now())
+  reviewedAt   DateTime?
+  reviewedBy   Int?
+
+  @@map("vehicle_suggestions")
+}
+
+enum SuggestionStatus {
+  PENDING
+  APPROVED
+  REJECTED
 }

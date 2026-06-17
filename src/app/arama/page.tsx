@@ -168,12 +168,20 @@ export default async function AramaPage({
         <div className="text-center py-16 text-gray-400">
           <p className="text-4xl mb-4">🔍</p>
           <p className="font-semibold text-gray-600 text-lg mb-1">Sonuç bulunamadı</p>
-          <p className="text-sm">
+          <p className="text-sm mb-6">
             &ldquo;{query}&rdquo; ile eşleşen araç yok.{" "}
             <Link href="/" className="underline text-gray-900 hover:text-gray-600 transition-colors">
               Tüm araçlara göz at
             </Link>
           </p>
+          <Link
+            href={`/oner?brandName=${encodeURIComponent(query)}`}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
+            style={{ background: "#111" }}
+          >
+            <span>+</span>
+            Bu aracı öner
+          </Link>
         </div>
       )}
 

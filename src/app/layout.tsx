@@ -73,6 +73,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <footer className="border-t border-gray-100 py-6">
           <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 space-y-2">
             <div className="flex items-center justify-center gap-4">
+              <Link href="/oner" className="hover:text-gray-600 transition-colors">Araç Öner</Link>
+              <span>·</span>
               <Link href="/gizlilik" className="hover:text-gray-600 transition-colors">Gizlilik Politikası</Link>
               <span>·</span>
               <Link href="/kullanim-kosullari" className="hover:text-gray-600 transition-colors">Kullanım Koşulları</Link>
