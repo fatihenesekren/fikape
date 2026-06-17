@@ -173,6 +173,7 @@ async function SearchResults({ query }: { query: string }) {
               primarySlug={primary.slug}
               brandName={primary.brand.name}
               modelName={primary.model.name}
+              categorySlug={primary.category?.slug ?? "otomobil"}
               attributes={primary.attributes as Record<string, unknown>}
               scores={modelScores}
               totalReviews={totalReviews}

@@ -153,6 +153,7 @@ export async function ProductGrid({ catFilter, fuelFilter, activeCategory }: Pro
                 primarySlug={primary.slug}
                 brandName={primary.brand.name}
                 modelName={primary.model.name}
+                categorySlug={catSlug}
                 attributes={primary.attributes as Record<string, unknown>}
                 scores={modelScores}
                 totalReviews={totalReviews}

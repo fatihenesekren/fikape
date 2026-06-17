@@ -5,11 +5,29 @@ import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
-  mpv: "MPV", coupe: "Coupe", cabrio: "Cabrio",
+  mpv: "MPV", coupe: "Coupé", cabrio: "Cabrio",
+  van: "Van", pickup: "Pickup",
 };
 
 const BODY_ICONS: Record<string, string> = {
-  suv: "🚙", sedan: "🚗", hatchback: "🚗", mpv: "🚐", coupe: "🏎", cabrio: "🏎",
+  suv: "🚙", sedan: "🚗", hatchback: "🚗", mpv: "🚐",
+  coupe: "🏎", cabrio: "🏎", van: "🚐", pickup: "🛻",
+};
+
+const CATEGORY_LABELS: Record<string, string> = {
+  otomobil:    "Otomobil",
+  motosiklet:  "Motosiklet",
+  "e-scooter": "E-Scooter",
+  karavan:     "Karavan",
+  kamyonet:    "Kamyonet",
+};
+
+const CATEGORY_ICONS: Record<string, string> = {
+  otomobil:    "🚗",
+  motosiklet:  "🏍️",
+  "e-scooter": "⚡",
+  karavan:     "🏕️",
+  kamyonet:    "🛻",
 };
 
 export interface Variant {
@@ -23,6 +41,7 @@ interface Props {
   primarySlug: string;
   brandName: string;
   modelName: string;
+  categorySlug: string;
   attributes: Record<string, unknown>;
   scores: FikapeScores | null;
   totalReviews: number;
@@ -31,14 +50,19 @@ interface Props {
 }
 
 export function VehicleCard({
-  primarySlug, brandName, modelName, attributes,
-  scores, totalReviews, imageUrl, variants,
+  primarySlug, brandName, modelName, categorySlug,
+  attributes, scores, totalReviews, imageUrl, variants,
 }: Props) {
   const primaryFuelType = String(attributes.fuel_type ?? "");
-  const bodyType = String(attributes.body_type ?? "sedan");
-  const bodyLabel = BODY_LABELS[bodyType] ?? bodyType;
-  const bodyIcon = BODY_ICONS[bodyType] ?? "🚗";
+  const bodyType = String(attributes.body_type ?? "");
+  const bodyLabel = BODY_LABELS[bodyType];
+  const placeholderIcon = bodyLabel
+    ? (BODY_ICONS[bodyType] ?? "🚗")
+    : (CATEGORY_ICONS[categorySlug] ?? "🚗");
   const placeholderBg = primaryFuelType === "EV" ? "#0f2027" : "#1a1a2e";
+
+  // Kart gövdesinde gösterilecek tip etiketi: kasa tipi biliniyorsa onu, yoksa kategori adı
+  const typeLabel = bodyLabel ?? CATEGORY_LABELS[categorySlug] ?? categorySlug;
 
   const uniqueFuels = [...new Set(variants.map((v) => v.fuelType).filter(Boolean))];
   const hasMultipleFuels = uniqueFuels.length > 1;
@@ -68,7 +92,7 @@ export function VehicleCard({
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
-            <span className="text-5xl opacity-20 select-none">{bodyIcon}</span>
+            <span className="text-5xl opacity-20 select-none">{placeholderIcon}</span>
           )}
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
@@ -86,11 +110,6 @@ export function VehicleCard({
               {FUEL_ICONS[primaryFuelType]} {FUEL_LABELS[primaryFuelType] ?? primaryFuelType}
             </span>
           )}
-
-          {/* Sağ üst — kasa tipi */}
-          <span className="absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-black/50 text-white backdrop-blur-sm">
-            {bodyLabel}
-          </span>
 
           {/* Sol alt — tıklayınca açılacak varyant */}
           {primaryLabel && (
@@ -112,9 +131,10 @@ export function VehicleCard({
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">
             {brandName}
           </div>
-          <div className="text-base font-bold text-gray-900 leading-tight mb-3">
+          <div className="text-base font-bold text-gray-900 leading-tight mb-1">
             {modelName}
           </div>
+          <div className="text-xs text-gray-400 mb-3">{typeLabel}</div>
 
           {scores ? (
             <FikapeScore scores={scores} variant="chips" />
