@@ -4,6 +4,9 @@ import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { validateSummary, validateDetail } from "@/lib/reviewValidation";
 
+const RATE_LIMIT_COUNT = 5;
+const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
+
 export async function POST(req: Request) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
@@ -29,10 +32,34 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: detailCheck.error }, { status: 400 });
   }
 
-  const product = await prisma.product.findUnique({ where: { slug: productSlug } });
+  const userId = parseInt(session.user.id);
+
+  const [product, user, recentCount] = await Promise.all([
+    prisma.product.findUnique({ where: { slug: productSlug }, select: { id: true } }),
+    prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true } }),
+    prisma.review.count({
+      where: {
+        userId,
+        createdAt: { gte: new Date(Date.now() - RATE_LIMIT_WINDOW_MS) },
+      },
+    }),
+  ]);
+
   if (!product) return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
 
-  const userId = parseInt(session.user.id);
+  if (!user?.emailVerifiedAt) {
+    return NextResponse.json(
+      { error: "Yorum yazmak için e-posta adresinizi doğrulamanız gerekiyor." },
+      { status: 403 }
+    );
+  }
+
+  if (recentCount >= RATE_LIMIT_COUNT) {
+    return NextResponse.json(
+      { error: "Günlük yorum limitine ulaştınız. 24 saat sonra tekrar deneyebilirsiniz." },
+      { status: 429 }
+    );
+  }
 
   const existing = await prisma.review.findFirst({
     where: {
@@ -59,12 +86,12 @@ export async function POST(req: Request) {
       scoreKalite,
       scorePerformans,
       scoreOverall,
-      summaryText:              summaryText.trim(),
-      detailText:               detailText?.trim() || null,
-      wouldBuyAgain:            wouldBuyAgain ?? null,
-      ownershipMonthsAtReview:  ownershipMonths ? Number(ownershipMonths) : null,
-      extendedData:             extendedData && Object.keys(extendedData).length ? extendedData : undefined,
-      status:                   "PENDING",
+      summaryText:             summaryText.trim(),
+      detailText:              detailText?.trim() || null,
+      wouldBuyAgain:           wouldBuyAgain ?? null,
+      ownershipMonthsAtReview: ownershipMonths ? Number(ownershipMonths) : null,
+      extendedData:            extendedData && Object.keys(extendedData).length ? extendedData : undefined,
+      status:                  "PENDING",
     },
   });
 

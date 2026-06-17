@@ -18,14 +18,18 @@ export default async function YorumYazPage({
   const { arac } = await searchParams;
   const userId = parseInt(session.user.id);
 
-  // Kullanıcının mevcut yorumları — formda araç seçilince uyarı göstermek için
-  const existingReviews = await prisma.review.findMany({
-    where: {
-      userId,
-      status: { in: ["PENDING", "PUBLISHED"] },
-    },
-    select: { product: { select: { slug: true } } },
-  });
+  const [dbUser, existingReviews] = await Promise.all([
+    prisma.user.findUnique({
+      where: { id: userId },
+      select: { emailVerifiedAt: true },
+    }),
+    prisma.review.findMany({
+      where: { userId, status: { in: ["PENDING", "PUBLISHED"] } },
+      select: { product: { select: { slug: true } } },
+    }),
+  ]);
+
+  const emailVerified = !!dbUser?.emailVerifiedAt;
   const reviewedSlugs = existingReviews.map((r) => r.product.slug);
 
   const products = await prisma.product.findMany({
@@ -67,6 +71,26 @@ export default async function YorumYazPage({
       categorySlug: p.category?.slug ?? null,
     };
   });
+
+  if (!emailVerified) {
+    return (
+      <div className="max-w-lg mx-auto px-4 py-16 text-center">
+        <div className="text-4xl mb-4">✉️</div>
+        <h1 className="text-xl font-bold text-gray-900 mb-2">E-posta doğrulaması gerekiyor</h1>
+        <p className="text-sm text-gray-500 leading-relaxed mb-6">
+          Yorum yazmak için hesabınızı doğrulamanız gerekiyor.
+          Kayıt sırasında gönderilen e-postayı kontrol edin.
+        </p>
+        <a
+          href="/profil"
+          className="inline-block px-5 py-2.5 rounded-xl text-sm font-semibold text-white"
+          style={{ background: "#111" }}
+        >
+          Profil sayfasına git →
+        </a>
+      </div>
+    );
+  }
 
   return <ReviewForm products={mapped} defaultSlug={arac} reviewedSlugs={reviewedSlugs} />;
 }
