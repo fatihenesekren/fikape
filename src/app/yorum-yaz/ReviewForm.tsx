@@ -27,6 +27,7 @@ interface Product {
 interface Props {
   products: Product[];
   defaultSlug?: string;
+  reviewedSlugs?: string[];
 }
 
 const OWNERSHIP_SLOTS = [
@@ -302,7 +303,7 @@ function ScoreSelector({ label, short, color, bg, value, onChange }: {
   );
 }
 
-export function ReviewForm({ products, defaultSlug }: Props) {
+export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props) {
   const router = useRouter();
 
   const [productSlug,     setProductSlug]     = useState(defaultSlug ?? "");
@@ -333,6 +334,7 @@ export function ReviewForm({ products, defaultSlug }: Props) {
   const [loading, setLoading] = useState(false);
 
   const selectedProduct = products.find((p) => p.slug === productSlug);
+  const alreadyReviewed = productSlug ? reviewedSlugs.includes(productSlug) : false;
   const fuelType    = selectedProduct?.fuelType ?? null;
   const catSlug     = selectedProduct?.categorySlug ?? null;
   const isEscooter  = catSlug === "e-scooter";
@@ -350,6 +352,7 @@ export function ReviewForm({ products, defaultSlug }: Props) {
     setError("");
 
     if (!productSlug)     { setError("Lütfen bir araç seçin."); return; }
+    if (alreadyReviewed)  { setError("Bu araç için zaten bir yorumun var."); return; }
     if (!scoresComplete)  { setError("Lütfen tüm FI·KA·PE puanlarını verin."); return; }
     if (!summaryValidation.ok) { setSummaryTouched(true); setError(summaryValidation.error!); return; }
     if (!detailValidation.ok)  { setDetailTouched(true);  setError(detailValidation.error!);  return; }
@@ -419,6 +422,13 @@ export function ReviewForm({ products, defaultSlug }: Props) {
             </option>
           ))}
         </select>
+
+        {alreadyReviewed && (
+          <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-amber-50 border border-amber-100 text-sm text-amber-800">
+            <span>⚠</span>
+            <span>Bu araç için zaten bir yorumun var. Her araç için tek yorum yazılabilir.</span>
+          </div>
+        )}
 
         {selectedProduct && (
           <div className="flex gap-3 items-center p-3 rounded-xl bg-gray-50 border border-gray-100">
@@ -611,7 +621,7 @@ export function ReviewForm({ products, defaultSlug }: Props) {
 
       <button
         type="submit"
-        disabled={loading}
+        disabled={loading || alreadyReviewed}
         className="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-colors disabled:opacity-60"
         style={{ background: "#111" }}
       >

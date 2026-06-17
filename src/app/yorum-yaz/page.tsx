@@ -16,6 +16,17 @@ export default async function YorumYazPage({
   }
 
   const { arac } = await searchParams;
+  const userId = parseInt(session.user.id);
+
+  // Kullanıcının mevcut yorumları — formda araç seçilince uyarı göstermek için
+  const existingReviews = await prisma.review.findMany({
+    where: {
+      userId,
+      status: { in: ["PENDING", "PUBLISHED"] },
+    },
+    select: { product: { select: { slug: true } } },
+  });
+  const reviewedSlugs = existingReviews.map((r) => r.product.slug);
 
   const products = await prisma.product.findMany({
     where: { isActive: true },
@@ -57,5 +68,5 @@ export default async function YorumYazPage({
     };
   });
 
-  return <ReviewForm products={mapped} defaultSlug={arac} />;
+  return <ReviewForm products={mapped} defaultSlug={arac} reviewedSlugs={reviewedSlugs} />;
 }

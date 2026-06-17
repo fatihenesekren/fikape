@@ -33,6 +33,22 @@ export async function POST(req: Request) {
   if (!product) return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
 
   const userId = parseInt(session.user.id);
+
+  const existing = await prisma.review.findFirst({
+    where: {
+      userId,
+      productId: product.id,
+      status: { in: ["PENDING", "PUBLISHED"] },
+    },
+    select: { id: true },
+  });
+  if (existing) {
+    return NextResponse.json(
+      { error: "Bu araç için zaten bir yorumun var. Her araç için tek yorum yazılabilir." },
+      { status: 409 }
+    );
+  }
+
   const scoreOverall = calcOverall({ scoreFiyat, scoreKalite, scorePerformans });
 
   const review = await prisma.review.create({
