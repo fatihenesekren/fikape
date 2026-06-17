@@ -1,0 +1,44 @@
+import { redirect } from "next/navigation";
+import { auth } from "@/auth";
+import { prisma } from "@/lib/prisma";
+import { ImageManager } from "./ImageManager";
+
+export const metadata = { title: "Araç Görselleri — Admin" };
+
+export default async function AdminAraclarPage() {
+  const session = await auth();
+  if (!session || Number(session.user.trustLevel) < 5) redirect("/");
+
+  const products = await prisma.product.findMany({
+    include: { brand: true, model: true, category: true },
+    orderBy: [{ category: { name: "asc" } }, { brand: { name: "asc" } }, { year: "desc" }],
+  });
+
+  const mapped = products.map((p) => ({
+    slug:     p.slug,
+    name:     `${p.brand.name} ${p.model.name}${p.trimName ? ` ${p.trimName}` : ""}${p.year ? ` ${p.year}` : ""} — ${p.category?.name ?? ""}`,
+    imageUrl: p.imageUrl,
+  }));
+
+  const missing = mapped.filter((p) => !p.imageUrl).length;
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-10">
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-gray-900 mb-1">Araç Görselleri</h1>
+        <p className="text-sm text-gray-500">
+          {mapped.length} araç — {missing > 0 ? (
+            <span className="text-orange-600 font-semibold">{missing} görselsiz</span>
+          ) : (
+            <span className="text-green-600 font-semibold">tümü tamamlanmış</span>
+          )}
+        </p>
+        <p className="text-xs text-gray-400 mt-2">
+          URL: doğrudan Wikipedia Commons, basın kit veya Vercel Blob URL. Dosya: yüklenip otomatik blob'a kaydedilir.
+        </p>
+      </div>
+
+      <ImageManager products={mapped} />
+    </div>
+  );
+}

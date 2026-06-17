@@ -44,10 +44,8 @@ async function SearchResults({ query }: { query: string }) {
     orderBy: [{ brand: { name: "asc" } }, { year: "desc" }],
   });
 
-  type ProductItem = typeof allProducts[number];
-
   const nq = normalize(query);
-  const products: ProductItem[] = query.length >= 2
+  const products = query.length >= 2
     ? allProducts.filter((p) =>
         normalize(p.name).includes(nq) ||
         normalize(p.brand.name).includes(nq) ||
@@ -87,48 +85,11 @@ async function SearchResults({ query }: { query: string }) {
     ])
   );
 
-  // Model bazında grupla
-  const modelGroups = new Map<number, ProductItem[]>();
-  for (const p of products) {
-    const group = modelGroups.get(p.modelId) ?? [];
-    group.push(p);
-    modelGroups.set(p.modelId, group);
-  }
-
-  const modelCards = Array.from(modelGroups.values()).map((variants) => {
-    const sorted  = [...variants].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
-    const primary = sorted[0];
-
-    let totalReviews = 0, wFiyat = 0, wKalite = 0, wPerformans = 0, wOverall = 0;
-    for (const v of variants) {
-      const entry = scoreMap.get(v.id);
-      if (entry && entry.count > 0) {
-        totalReviews += entry.count;
-        wFiyat       += entry.scores.scoreFiyat      * entry.count;
-        wKalite      += entry.scores.scoreKalite     * entry.count;
-        wPerformans  += entry.scores.scorePerformans * entry.count;
-        wOverall     += (entry.scores.scoreOverall ?? 0) * entry.count;
-      }
-    }
-
-    const modelScores: FikapeScores | null = totalReviews > 0
-      ? {
-          scoreFiyat:      wFiyat      / totalReviews,
-          scoreKalite:     wKalite     / totalReviews,
-          scorePerformans: wPerformans / totalReviews,
-          scoreOverall:    wOverall    / totalReviews,
-        }
-      : null;
-
-    const dbImageUrl = sorted.find((v) => v.imageUrl)?.imageUrl ?? null;
-    return { primary, sorted, totalReviews, modelScores, dbImageUrl };
-  });
-
-  // Wikipedia görselleri — sadece DB'de olmayan kartlar için
-  const slugsNeedingWiki = modelCards.filter((m) => !m.dbImageUrl).map((m) => m.primary.slug);
+  // Wikipedia görselleri — sadece DB'de olmayan ürünler için
+  const slugsNeedingWiki = products.filter((p) => !p.imageUrl).map((p) => p.slug);
   const wikiUrls = slugsNeedingWiki.length > 0 ? await getVehicleImageUrls(slugsNeedingWiki) : {};
 
-  if (query.length >= 2 && modelCards.length === 0) {
+  if (query.length >= 2 && products.length === 0) {
     return (
       <div className="text-center py-20 text-gray-400">
         <p className="text-5xl mb-4">🔍</p>
@@ -154,31 +115,30 @@ async function SearchResults({ query }: { query: string }) {
     <>
       <p className="text-sm text-gray-400 mb-5">
         {query.length >= 2
-          ? `${modelCards.length} model bulundu`
-          : `${modelCards.length} araç`}
+          ? `${products.length} araç bulundu`
+          : `${products.length} araç`}
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {modelCards.map(({ primary, sorted, totalReviews, modelScores, dbImageUrl }) => {
-          const imageUrl = dbImageUrl ?? wikiUrls[primary.slug] ?? null;
-          const variantChips = sorted.map((v) => ({
-            slug:     v.slug,
-            year:     v.year,
-            trimName: v.trimName,
-            fuelType: String((v.attributes as Record<string, unknown>).fuel_type ?? ""),
-          }));
+        {products.map((product) => {
+          const attrs    = product.attributes as Record<string, unknown>;
+          const catSlug  = product.category?.slug ?? "otomobil";
+          const score    = scoreMap.get(product.id);
+          const imageUrl = product.imageUrl ?? wikiUrls[product.slug] ?? null;
 
           return (
             <VehicleCard
-              key={primary.modelId}
-              primarySlug={primary.slug}
-              brandName={primary.brand.name}
-              modelName={primary.model.name}
-              categorySlug={primary.category?.slug ?? "otomobil"}
-              attributes={primary.attributes as Record<string, unknown>}
-              scores={modelScores}
-              totalReviews={totalReviews}
+              key={product.id}
+              slug={product.slug}
+              brandName={product.brand.name}
+              modelName={product.model.name}
+              trimName={product.trimName ?? null}
+              year={product.year ?? null}
+              categorySlug={catSlug}
+              fuelType={String(attrs.fuel_type ?? "")}
+              bodyType={String(attrs.body_type ?? "")}
+              scores={score?.scores ?? null}
+              totalReviews={score?.count ?? 0}
               imageUrl={imageUrl}
-              variants={variantChips}
             />
           );
         })}
