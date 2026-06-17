@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SessionProvider } from "@/components/SessionProvider";
 import { AuthNav } from "@/components/AuthNav";
 import { VerificationBanner } from "@/components/VerificationBanner";
+import { SearchBar, SearchIcon } from "@/components/SearchBar";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import "./globals.css";
@@ -57,7 +58,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <span style={{ color: "#993C1D" }}>pe</span>
             </Link>
 
-            <AuthNav />
+            <SearchBar />
+            <div className="flex items-center gap-1">
+              <SearchIcon />
+              <AuthNav />
+            </div>
           </div>
         </header>
 
