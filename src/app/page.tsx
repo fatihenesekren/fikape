@@ -35,9 +35,9 @@ export default async function Home({
 
   // ── Trend Araçlar (en çok görüntülenen 8) ──────────────────
   const trendProducts = await prisma.product.findMany({
-    where: { isActive: true, viewCount: { gt: 0 } },
+    where: { isActive: true, weeklyViewCount: { gt: 0 } },
     include: { brand: true, model: true, category: true },
-    orderBy: { viewCount: "desc" },
+    orderBy: { weeklyViewCount: "desc" },
     take: 8,
   });
 
@@ -241,7 +241,7 @@ export default async function Home({
                     <div className="text-xs text-gray-400">{p.year}</div>
                   </div>
                   <div className="ml-1 text-xs text-gray-300 font-medium">
-                    {p.viewCount.toLocaleString("tr-TR")} görüntülenme
+                    {p.weeklyViewCount.toLocaleString("tr-TR")} bu hafta
                   </div>
                 </Link>
               );

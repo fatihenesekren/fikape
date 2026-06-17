@@ -69,7 +69,7 @@ export default async function VehicleDetailPage({
     auth(),
     prisma.product.updateMany({
       where: { slug },
-      data: { viewCount: { increment: 1 } },
+      data: { viewCount: { increment: 1 }, weeklyViewCount: { increment: 1 } },
     }).catch(() => {}),
   ]);
 

@@ -440,20 +440,20 @@ async function main() {
   // ─────────────────────────────────────────────
 
   const trendData = [
-    { slug: "togg-t10x-2024",           viewCount: 2840 },
-    { slug: "ford-ranger-2024",          viewCount: 2210 },
-    { slug: "yamaha-mt07-2023",          viewCount: 1870 },
-    { slug: "tesla-model-y-2024",        viewCount: 1650 },
-    { slug: "xiaomi-mi-4-pro-2023",      viewCount: 1420 },
-    { slug: "toyota-hilux-2023",         viewCount: 1380 },
-    { slug: "kawasaki-ninja-400-2023",   viewCount: 1200 },
-    { slug: "dacia-duster-2024",         viewCount: 1090 },
-    { slug: "knaus-sport-400-lk-2023",   viewCount:  880 },
-    { slug: "zero-sr-s-2024",            viewCount:  760 },
+    { slug: "togg-t10x-2024",           viewCount: 2840, weeklyViewCount: 312 },
+    { slug: "ford-ranger-2024",          viewCount: 2210, weeklyViewCount: 247 },
+    { slug: "yamaha-mt07-2023",          viewCount: 1870, weeklyViewCount: 198 },
+    { slug: "tesla-model-y-2024",        viewCount: 1650, weeklyViewCount: 183 },
+    { slug: "xiaomi-mi-4-pro-2023",      viewCount: 1420, weeklyViewCount: 154 },
+    { slug: "toyota-hilux-2023",         viewCount: 1380, weeklyViewCount: 141 },
+    { slug: "kawasaki-ninja-400-2023",   viewCount: 1200, weeklyViewCount: 128 },
+    { slug: "dacia-duster-2024",         viewCount: 1090, weeklyViewCount: 117 },
+    { slug: "knaus-sport-400-lk-2023",   viewCount:  880, weeklyViewCount:  89 },
+    { slug: "zero-sr-s-2024",            viewCount:  760, weeklyViewCount:  74 },
   ];
 
-  for (const { slug, viewCount } of trendData) {
-    await prisma.product.update({ where: { slug }, data: { viewCount } });
+  for (const { slug, viewCount, weeklyViewCount } of trendData) {
+    await prisma.product.update({ where: { slug }, data: { viewCount, weeklyViewCount } });
   }
 
   console.log("✓ Trend viewCount'lar set edildi");
