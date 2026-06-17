@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 
   const {
     productSlug, scoreFiyat, scoreKalite, scorePerformans,
-    summaryText, detailText, wouldBuyAgain, ownershipMonths, usageType,
+    summaryText, detailText, wouldBuyAgain, ownershipMonths, extendedData,
   } = await req.json();
 
   if (!productSlug) {
@@ -47,7 +47,7 @@ export async function POST(req: Request) {
       detailText:               detailText?.trim() || null,
       wouldBuyAgain:            wouldBuyAgain ?? null,
       ownershipMonthsAtReview:  ownershipMonths ? Number(ownershipMonths) : null,
-      extendedData:             usageType ? { usage_type: usageType } : undefined,
+      extendedData:             extendedData && Object.keys(extendedData).length ? extendedData : undefined,
       status:                   "PENDING",
     },
   });

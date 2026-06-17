@@ -26,6 +26,7 @@ export default async function YorumYazPage({
       year: true,
       imageUrl: true,
       attributes: true,
+      category: { select: { slug: true } },
       model: {
         select: {
           name: true,
@@ -43,15 +44,16 @@ export default async function YorumYazPage({
   const mapped = products.map((p) => {
     const attrs = p.attributes as Record<string, unknown>;
     return {
-      slug:      p.slug,
-      name:      p.name,
-      brandName: p.model.brand.name,
-      modelName: p.model.name,
-      trimName:  p.trimName ?? null,
-      year:      p.year ?? null,
-      imageUrl:  p.imageUrl ?? null,
-      fuelType:  (attrs.fuel_type as string | undefined) ?? null,
-      bodyType:  (attrs.body_type as string | undefined) ?? null,
+      slug:         p.slug,
+      name:         p.name,
+      brandName:    p.model.brand.name,
+      modelName:    p.model.name,
+      trimName:     p.trimName ?? null,
+      year:         p.year ?? null,
+      imageUrl:     p.imageUrl ?? null,
+      fuelType:     (attrs.fuel_type as string | undefined) ?? null,
+      bodyType:     (attrs.body_type as string | undefined) ?? null,
+      categorySlug: p.category?.slug ?? null,
     };
   });
 
