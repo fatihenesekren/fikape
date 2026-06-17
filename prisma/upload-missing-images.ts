@@ -15,25 +15,10 @@ import { put } from "@vercel/blob";
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 const prisma = new PrismaClient({ adapter } as any);
 
-// ─── Kaynak URL'leri buraya yaz (agent sonuçlarından) ───────────────────────
+// Yeni ürün görseli eklemek için buraya { slug, sourceUrl } ekle ve script'i çalıştır.
 const IMAGES: { slug: string; sourceUrl: string }[] = [
-  {
-    slug: "zero-sr-s-2024",
-    sourceUrl: "https://images.prismic.io/zero-cms-disco/ZxInyIF3NbkBXtFK_SRS_B.png?auto=format,compress",
-  },
-  {
-    slug: "xiaomi-mi-4-pro-2023",
-    sourceUrl: "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-scooter-4-pro/dbcffb9256e5460e64bc32a22671ed10.jpg",
-  },
-  {
-    slug: "niu-kqi3-max-2023",
-    sourceUrl: "https://shop.niu.com/cdn/shop/products/1500.jpg",
-  },
-  {
-    slug: "segway-ninebot-max-g30-2022",
-    sourceUrl: "https://segway.com/cdn/shop/products/MAX_G30LP_white_1.jpg",
-  },
-  // kiral-k350-2023: Web varlığı yok — /admin/araclar panelinden manuel yüklenecek
+  // Tüm mevcut ürünler yüklendi (2026-06-18).
+  // kiral-k350-2023: /admin/araclar panelinden manuel yüklenecek.
 ];
 
 async function main() {
@@ -56,7 +41,14 @@ async function main() {
       continue;
     }
 
-    const contentType = res.headers.get("content-type") ?? "image/jpeg";
+    let contentType = res.headers.get("content-type") ?? "image/jpeg";
+    // Bazı sunucular application/octet-stream döndürür — URL'den uzantıyı çıkar
+    if (contentType.startsWith("application/octet-stream") || contentType.startsWith("text/")) {
+      const urlPath = new URL(sourceUrl).pathname.toLowerCase();
+      if (urlPath.endsWith(".png")) contentType = "image/png";
+      else if (urlPath.endsWith(".webp")) contentType = "image/webp";
+      else contentType = "image/jpeg";
+    }
     const allowed = ["image/jpeg", "image/png", "image/webp", "image/avif"];
     if (!allowed.some((t) => contentType.startsWith(t))) {
       console.error(`HATA — Desteklenmeyen içerik tipi: ${contentType}`);
