@@ -3,10 +3,10 @@ import { FikapeScore } from "@/components/FikapeScore";
 
 const POPULAR_SEARCHES = [
   "Toyota Corolla",
-  "Honda CB500F",
-  "Vespa GTS 300",
   "Ford Ranger",
-  "BMW R1250GS",
+  "Tesla Model Y",
+  "Yamaha MT-07",
+  "Vespa GTS",
 ];
 
 export async function HeroSection() {
@@ -122,8 +122,6 @@ export async function HeroSection() {
                   </span>
                 </>
               )}
-              <span className="text-gray-700">·</span>
-              <span>5 kategori</span>
               <span className="text-gray-700">·</span>
               <a
                 href="/yorum-yaz"

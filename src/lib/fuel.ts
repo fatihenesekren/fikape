@@ -23,7 +23,7 @@ export const FUEL_COLORS: Record<string, { bg: string; text: string }> = {
 };
 
 export const FUEL_FILTERS = [
-  { key: "hepsi",    label: "Tüm Araçlar" },
+  { key: "hepsi",    label: "Tüm Yakıtlar" },
   { key: "EV",       label: `${FUEL_ICONS.EV} Elektrikli` },
   { key: "HYBRID",   label: `${FUEL_ICONS.HYBRID} Hibrit` },
   { key: "GASOLINE", label: `${FUEL_ICONS.GASOLINE} Benzin` },
