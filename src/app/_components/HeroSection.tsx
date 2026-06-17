@@ -17,7 +17,7 @@ export async function HeroSection() {
 
   return (
     <section className="bg-[#111] text-white overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 py-14 sm:py-20 relative">
+      <div className="max-w-7xl mx-auto px-4 py-14 sm:py-20 relative">
 
         {/* Glow — sol tarafta, başlığın arkasında */}
         <div
@@ -29,7 +29,7 @@ export async function HeroSection() {
           }}
         />
 
-        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="relative grid grid-cols-1 md:grid-cols-[1fr_320px] gap-10 lg:gap-20 items-center">
 
           {/* ── SOL: Metin + Arama ── */}
           <div>

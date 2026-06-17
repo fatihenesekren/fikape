@@ -1,11 +1,15 @@
 "use client";
 
 import { useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export function SearchBar() {
-  const router = useRouter();
+  const router   = useRouter();
+  const pathname = usePathname();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Ana sayfada hero'nun kendi search kutusu var — başlıkta tekrar gösterme
+  if (pathname === "/") return null;
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -41,7 +45,11 @@ export function SearchBar() {
 
 /* Mobil için sadece ikon — header'da yer kaplamaması için */
 export function SearchIcon() {
-  const router = useRouter();
+  const router   = useRouter();
+  const pathname = usePathname();
+
+  if (pathname === "/") return null;
+
   return (
     <button
       onClick={() => router.push("/arama")}
