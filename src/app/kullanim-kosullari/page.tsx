@@ -35,7 +35,7 @@ export default function KullanimKosullariPage() {
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mb-3">2. Hizmetin Tanımı</h2>
           <p>
-            fikape.com, araç sahiplerinin Fiyat (FI), Kalite (KA) ve Performans (PE) başlıkları
+            fikape.com, araç kullanıcılarının Fiyat (FI), Kalite (KA) ve Performans (PE) başlıkları
             altında yapılandırılmış yorum ve puan paylaşabildiği bağımsız bir tüketici platformudur.
             Platform herhangi bir marka, bayi veya üretici ile ticari ilişki içinde değildir.
           </p>

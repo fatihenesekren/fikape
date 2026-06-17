@@ -209,7 +209,7 @@ export async function HeroSection() {
 
                 <p className="text-xs text-gray-600 text-center leading-relaxed mb-5">
                   Her araç için 3 boyutlu puanlama.<br />
-                  Gerçek sahiplerden gerçek veriler.
+                  Gerçek kullanıcılardan gerçek veriler.
                 </p>
 
                 <div className="text-center">
