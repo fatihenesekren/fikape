@@ -16,22 +16,17 @@ const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 const prisma = new PrismaClient({ adapter } as any);
 
 // Yeni ürün görseli eklemek için buraya { slug, sourceUrl } ekle ve script'i çalıştır.
-const IMAGES: { slug: string; sourceUrl: string }[] = [
-  {
-    slug: "zero-sr-s-2024",
-    sourceUrl: "https://images.prismic.io/zero-cms-disco/ZxInyIF3NbkBXtFK_SRS_B.png?auto=format,compress",
-  },
+const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean }[] = [
+  // Görsel kalitesi iyileştirme — beyaz/şeffaf arka planlı resmi ürün fotoğrafları
   {
     slug: "xiaomi-mi-4-pro-2023",
-    sourceUrl: "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-scooter-4-pro/dbcffb9256e5460e64bc32a22671ed10.jpg",
-  },
-  {
-    slug: "niu-kqi3-max-2023",
-    sourceUrl: "https://shop.niu.com/cdn/shop/products/1500.jpg",
+    sourceUrl: "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-scooter-4-pro/59eb9d76eab18d889498033943533535.jpg",
+    overwrite: true,
   },
   {
     slug: "segway-ninebot-max-g30-2022",
-    sourceUrl: "https://segway.com/cdn/shop/products/MAX_G30LP_white_1.jpg",
+    sourceUrl: "https://www.segway.la/cdn/shop/products/ninebot-kickscooter-max-g30p-by-segway-3947337_grande.png?v=1774548313",
+    overwrite: true,
   },
 ];
 
@@ -42,7 +37,7 @@ async function main() {
 
   console.log(`\n${IMAGES.length} görsel yüklenecek...\n`);
 
-  for (const { slug, sourceUrl } of IMAGES) {
+  for (const { slug, sourceUrl, overwrite } of IMAGES) {
     process.stdout.write(`[${slug}] İndiriliyor... `);
 
     const res = await fetch(sourceUrl, {
@@ -80,6 +75,7 @@ async function main() {
       access: "public",
       addRandomSuffix: false,
       contentType,
+      ...(overwrite ? { allowOverwrite: true } : {}),
     });
 
     await prisma.product.update({
