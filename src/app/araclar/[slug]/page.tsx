@@ -143,48 +143,75 @@ export default async function VehicleDetailPage({
   const specsRaw: ({ label: string; value: string } | null)[] = (() => {
     if (categorySlug === "e-scooter") {
       return [
-        scooterType ? { label: "Tip",          value: scooterType === "e-scooter" ? "E-Scooter" : scooterType } : null,
-        attrs.motor_watt   ? { label: "Motor Gücü",   value: `${attrs.motor_watt} W` }      : null,
-        attrs.range_km     ? { label: "Menzil",       value: `${attrs.range_km} km` }        : null,
-        attrs.max_speed_kmh ? { label: "Maks. Hız",   value: `${attrs.max_speed_kmh} km/s` } : null,
-        attrs.battery_wh   ? { label: "Batarya",      value: `${attrs.battery_wh} Wh` }     : null,
+        attrs.motor_watt    ? { label: "Motor Gücü",  value: `${attrs.motor_watt} W` }          : null,
+        attrs.range_km      ? { label: "Menzil",      value: `${attrs.range_km} km` }            : null,
+        attrs.max_speed_kmh ? { label: "Maks. Hız",  value: `${attrs.max_speed_kmh} km/s` }     : null,
+        attrs.battery_wh    ? { label: "Batarya",     value: `${attrs.battery_wh} Wh` }          : null,
+        attrs.weight_kg     ? { label: "Ağırlık",     value: `${attrs.weight_kg} kg` }           : null,
+        attrs.charge_hours  ? { label: "Şarj Süresi", value: `~${attrs.charge_hours} saat` }     : null,
+        attrs.ip_rating     ? { label: "Su Geçirmezlik", value: String(attrs.ip_rating) }        : null,
+        attrs.max_load_kg   ? { label: "Maks. Yük",   value: `${attrs.max_load_kg} kg` }         : null,
+        attrs.tire_inch     ? { label: "Lastik",       value: `${attrs.tire_inch}"` }             : null,
       ];
     }
     if (categorySlug === "motosiklet") {
       return [
-        fuelType ? { label: "Yakıt",  value: FUEL_LABELS[fuelType] ?? fuelType } : null,
-        motoType ? { label: "Tip",    value: MOTO_TYPE_LABELS[motoType] ?? motoType } : null,
-        attrs.engine_cc ? { label: "Motor",    value: `${attrs.engine_cc} cc` }    : null,
-        attrs.power_hp  ? { label: "Güç",      value: `${attrs.power_hp} HP` }     : null,
-        attrs.ev_range_km ? { label: "Menzil", value: `${attrs.ev_range_km} km (WLTP)` } : null,
+        fuelType            ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType } : null,
+        motoType            ? { label: "Tip",          value: MOTO_TYPE_LABELS[motoType] ?? motoType } : null,
+        attrs.engine_cc     ? { label: "Motor",        value: `${attrs.engine_cc} cc` }           : null,
+        attrs.power_hp      ? { label: "Güç",          value: `${attrs.power_hp} HP` }            : null,
+        attrs.torque_nm     ? { label: "Tork",         value: `${attrs.torque_nm} Nm` }           : null,
+        attrs.gearbox       ? { label: "Şanzıman",     value: `${attrs.gearbox} vites` }          : null,
+        attrs.abs != null   ? { label: "ABS",          value: attrs.abs ? "Var" : "Yok" }         : null,
+        attrs.tank_l        ? { label: "Depo",         value: `${attrs.tank_l} L` }               : null,
+        attrs.weight_kg     ? { label: "Ağırlık",      value: `${attrs.weight_kg} kg` }           : null,
+        attrs.seat_height_mm ? { label: "Sele Yüks.", value: `${attrs.seat_height_mm} mm` }       : null,
+        attrs.ev_range_km   ? { label: "Menzil",       value: `${attrs.ev_range_km} km (WLTP)` }  : null,
       ];
     }
     if (categorySlug === "karavan") {
       return [
-        karavanType ? { label: "Tip",             value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
-        attrs.berth        ? { label: "Yatak",        value: `${attrs.berth} kişi` }         : null,
-        attrs.length_cm    ? { label: "Uzunluk",      value: `${attrs.length_cm} cm` }       : null,
-        attrs.tow_weight_kg ? { label: "Çekme Ağ.", value: `${attrs.tow_weight_kg} kg` }    : null,
+        karavanType         ? { label: "Tip",          value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
+        attrs.berth         ? { label: "Yatak Kap.",   value: `${attrs.berth} kişi` }             : null,
+        attrs.length_cm     ? { label: "Uzunluk",      value: `${attrs.length_cm} cm` }           : null,
+        attrs.width_cm      ? { label: "Genişlik",     value: `${attrs.width_cm} cm` }            : null,
+        attrs.total_weight_kg ? { label: "Toplam Ağ.", value: `${attrs.total_weight_kg} kg` }     : null,
+        attrs.tow_weight_kg ? { label: "Çekme Ağ.",   value: `${attrs.tow_weight_kg} kg` }        : null,
+        attrs.has_bathroom != null ? { label: "Banyo", value: attrs.has_bathroom ? "Var" : "Yok" } : null,
+        attrs.has_kitchen  != null ? { label: "Mutfak", value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
+        attrs.has_ac       != null ? { label: "Klima", value: attrs.has_ac        ? "Var" : "Yok" } : null,
       ];
     }
     if (categorySlug === "kamyonet") {
       return [
-        fuelType  ? { label: "Yakıt",      value: FUEL_LABELS[fuelType] ?? fuelType }       : null,
-        bodyType  ? { label: "Kasa",       value: BODY_LABELS[bodyType] ?? bodyType }        : null,
-        attrs.engine_cc   ? { label: "Motor",      value: `${attrs.engine_cc} cc` }          : null,
-        attrs.power_hp    ? { label: "Güç",        value: `${attrs.power_hp} HP` }           : null,
-        attrs.payload_kg  ? { label: "Yük Kap.",   value: `${attrs.payload_kg} kg` }        : null,
-        attrs.four_wd != null ? { label: "4x4",   value: attrs.four_wd ? "Var" : "Yok" }   : null,
+        fuelType            ? { label: "Yakıt",        value: FUEL_LABELS[fuelType] ?? fuelType } : null,
+        bodyType            ? { label: "Kasa",         value: BODY_LABELS[bodyType] ?? bodyType }  : null,
+        attrs.engine_cc     ? { label: "Motor",        value: `${attrs.engine_cc} cc` }            : null,
+        attrs.power_hp      ? { label: "Güç",          value: `${attrs.power_hp} HP` }             : null,
+        attrs.torque_nm     ? { label: "Tork",         value: `${attrs.torque_nm} Nm` }            : null,
+        attrs.four_wd != null ? { label: "4x4",        value: attrs.four_wd ? "Var" : "Yok" }      : null,
+        attrs.payload_kg    ? { label: "Yük Kap.",     value: `${attrs.payload_kg} kg` }           : null,
+        attrs.tow_capacity_kg ? { label: "Çekme Kap.", value: `${attrs.tow_capacity_kg} kg` }      : null,
+        attrs.tank_l        ? { label: "Yakıt Dep.",   value: `${attrs.tank_l} L` }                : null,
       ];
     }
     // otomobil (default)
     return [
-      fuelType  ? { label: "Yakıt",   value: FUEL_LABELS[fuelType] ?? fuelType }              : null,
-      bodyType  ? { label: "Kasa",    value: BODY_LABELS[bodyType] ?? bodyType }               : null,
-      attrs.segment   ? { label: "Segment", value: `${attrs.segment} Segment` }               : null,
-      attrs.engine_cc ? { label: "Motor",   value: `${attrs.engine_cc} cc` }                  : null,
-      attrs.power_hp  ? { label: "Güç",     value: `${attrs.power_hp} HP` }                   : null,
-      attrs.ev_range_km ? { label: "Menzil", value: `${attrs.ev_range_km} km (WLTP)` }        : null,
+      fuelType            ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType }    : null,
+      bodyType            ? { label: "Kasa",        value: BODY_LABELS[bodyType] ?? bodyType }     : null,
+      attrs.segment       ? { label: "Segment",     value: `${attrs.segment} Segment` }            : null,
+      attrs.drivetrain    ? { label: "Çekiş",       value: String(attrs.drivetrain) }              : null,
+      attrs.transmission  ? { label: "Vites",       value: String(attrs.transmission) }            : null,
+      attrs.engine_cc     ? { label: "Motor",       value: `${attrs.engine_cc} cc` }              : null,
+      attrs.power_hp      ? { label: "Güç",         value: `${attrs.power_hp} HP` }               : null,
+      attrs.torque_nm     ? { label: "Tork",        value: `${attrs.torque_nm} Nm` }              : null,
+      attrs.zero_to_100   ? { label: "0–100 km/s",  value: `${attrs.zero_to_100} sn` }            : null,
+      attrs.top_speed_kmh ? { label: "Azami Hız",   value: `${attrs.top_speed_kmh} km/s` }        : null,
+      attrs.ev_range_km   ? { label: "Menzil",      value: `${attrs.ev_range_km} km (WLTP)` }     : null,
+      attrs.battery_kwh   ? { label: "Batarya",     value: `${attrs.battery_kwh} kWh` }           : null,
+      attrs.tank_l        ? { label: "Yakıt Dep.",  value: `${attrs.tank_l} L` }                  : null,
+      attrs.boot_l        ? { label: "Bagaj",       value: `${attrs.boot_l} L` }                  : null,
+      attrs.weight_kg     ? { label: "Ağırlık",     value: `${attrs.weight_kg} kg` }              : null,
     ];
   })();
   const specs = specsRaw.filter(Boolean) as { label: string; value: string }[];
