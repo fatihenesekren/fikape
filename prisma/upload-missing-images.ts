@@ -19,9 +19,9 @@ const prisma = new PrismaClient({ adapter } as any);
 const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean }[] = [
   // Beyaz arkaplan ürün fotoğrafları — MediaMarkt/üretici resmi görselleri
   {
-    // MediaMarkt TR — beyaz arkaplan, PNG (önceki koyu stüdyo fotoğrafı değiştirildi)
+    // Xiaomi resmi CDN — beyaz arkaplan, PNG
     slug: "xiaomi-mi-4-pro-2023",
-    sourceUrl: "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_93905010/fee_786_587_png",
+    sourceUrl: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1666838244.98981922.png",
     overwrite: true,
   },
 ];
