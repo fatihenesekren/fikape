@@ -17,15 +17,11 @@ const prisma = new PrismaClient({ adapter } as any);
 
 // Yeni ürün görseli eklemek için buraya { slug, sourceUrl } ekle ve script'i çalıştır.
 const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean }[] = [
-  // Görsel kalitesi iyileştirme — beyaz/şeffaf arka planlı resmi ürün fotoğrafları
+  // Beyaz arkaplan ürün fotoğrafları — MediaMarkt/üretici resmi görselleri
   {
+    // MediaMarkt TR — beyaz arkaplan, PNG (önceki koyu stüdyo fotoğrafı değiştirildi)
     slug: "xiaomi-mi-4-pro-2023",
-    sourceUrl: "https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-scooter-4-pro/59eb9d76eab18d889498033943533535.jpg",
-    overwrite: true,
-  },
-  {
-    slug: "segway-ninebot-max-g30-2022",
-    sourceUrl: "https://www.segway.la/cdn/shop/products/ninebot-kickscooter-max-g30p-by-segway-3947337_grande.png?v=1774548313",
+    sourceUrl: "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_93905010/fee_786_587_png",
     overwrite: true,
   },
 ];

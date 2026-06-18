@@ -247,7 +247,10 @@ export default async function VehicleDetailPage({
 
           <div className="flex flex-col sm:flex-row sm:items-end gap-6">
             {/* İkon */}
-            <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shrink-0 overflow-hidden" style={{ background: "rgba(255,255,255,0.08)" }}>
+            <div
+              className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shrink-0 overflow-hidden"
+              style={{ background: categorySlug === "e-scooter" ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.08)" }}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               {imageUrl
                 ? <img

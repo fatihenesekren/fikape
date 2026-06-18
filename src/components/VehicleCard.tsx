@@ -53,7 +53,8 @@ export function VehicleCard({
   const placeholderIcon = bodyLabel
     ? (BODY_ICONS[bodyType] ?? "🚗")
     : (CATEGORY_ICONS[categorySlug] ?? "🚗");
-  const placeholderBg = fuelType === "EV" ? "#0f2027" : "#1a1a2e";
+  const isScooter = categorySlug === "e-scooter";
+  const placeholderBg = isScooter ? "#f5f5f5" : fuelType === "EV" ? "#0f2027" : "#1a1a2e";
 
   const typeLabel = bodyLabel ?? CATEGORY_LABELS[categorySlug] ?? categorySlug;
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
@@ -83,7 +84,9 @@ export function VehicleCard({
           <span className="text-5xl opacity-20 select-none">{placeholderIcon}</span>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+        {!isScooter && (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+        )}
 
         {/* Sol üst — yakıt tipi */}
         <span
@@ -100,8 +103,8 @@ export function VehicleCard({
           </span>
         )}
 
-        {/* Plaka blur — araç görsellerinin alt bölgesi */}
-        {imageUrl && (
+        {/* Plaka blur — sadece kara araçlarında (e-scooter'da plaka yok) */}
+        {imageUrl && !isScooter && (
           <div
             className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
             style={{
