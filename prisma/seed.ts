@@ -288,7 +288,7 @@ async function main() {
   for (const p of carProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: { trimName: p.trimName, imageUrl: p.imageUrl },
+      update: { trimName: p.trimName, ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}) },
       create: { ...p, categoryId: catOtomobil.id },
     });
   }
@@ -331,7 +331,7 @@ async function main() {
   for (const p of motoProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: { imageUrl: p.imageUrl },
+      update: { ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}) },
       create: { ...p, categoryId: catMotosiklet.id },
     });
   }
@@ -358,7 +358,7 @@ async function main() {
   for (const p of escooterProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: { imageUrl: p.imageUrl },
+      update: { ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}) },
       create: { ...p, categoryId: catEscooter.id },
     });
   }
@@ -385,7 +385,7 @@ async function main() {
   for (const p of karavanProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: { imageUrl: p.imageUrl },
+      update: { ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}) },
       create: { ...p, categoryId: catKaravan.id },
     });
   }
@@ -428,7 +428,7 @@ async function main() {
   for (const p of kamyonetProducts) {
     await prisma.product.upsert({
       where: { slug: p.slug },
-      update: { trimName: p.trimName, imageUrl: p.imageUrl },
+      update: { trimName: p.trimName, ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}) },
       create: { ...p, categoryId: catKamyonet.id },
     });
   }
