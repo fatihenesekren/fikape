@@ -2,11 +2,11 @@ import { getHeroStats, getTopRatedProduct } from "@/lib/dataCache";
 import { FikapeScore } from "@/components/FikapeScore";
 
 const POPULAR_SEARCHES = [
-  "Toyota Corolla",
-  "Ford Ranger",
+  "Fiat Egea",
   "Tesla Model Y",
+  "Ford Ranger",
   "Yamaha MT-07",
-  "Vespa GTS",
+  "Togg T10X",
 ];
 
 export async function HeroSection() {
@@ -84,7 +84,6 @@ export async function HeroSection() {
 
             {/* Popüler aramalar */}
             <div className="flex flex-wrap gap-2 mb-8">
-              <span className="text-xs text-gray-600 self-center">Örnek:</span>
               {POPULAR_SEARCHES.map((q) => (
                 <a
                   key={q}
@@ -113,13 +112,6 @@ export async function HeroSection() {
                   </span>
                 </>
               )}
-              <span className="text-gray-700">·</span>
-              <a
-                href="/yorum-yaz"
-                className="font-semibold text-white underline underline-offset-2 decoration-gray-700 hover:decoration-gray-400 transition-colors"
-              >
-                Sen de yaz →
-              </a>
             </div>
           </div>
 
