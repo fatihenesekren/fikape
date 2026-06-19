@@ -42,16 +42,12 @@ interface Props {
   scores: FikapeScores | null;
   totalReviews: number;
   imageUrl?: string | null;
-  niyetScore?: number;
-  niyetLabel?: string;
-  isTopNiyet?: boolean;
 }
 
 export function VehicleCard({
   slug, brandName, modelName, trimName, year,
   categorySlug, fuelType, bodyType,
   scores, totalReviews, imageUrl,
-  niyetScore, niyetLabel, isTopNiyet,
 }: Props) {
   const bodyLabel = BODY_LABELS[bodyType];
   const placeholderIcon = bodyLabel
@@ -100,13 +96,6 @@ export function VehicleCard({
           {FUEL_ICONS[fuelType]} {FUEL_LABELS[fuelType] ?? fuelType}
         </span>
 
-        {/* Sağ üst — "En uygun" rozeti (niyet aktifken) */}
-        {isTopNiyet && (
-          <span className="absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-amber-100 text-amber-800">
-            En uygun
-          </span>
-        )}
-
         {/* Sağ alt — toplam yorum */}
         {totalReviews > 0 && (
           <span className="absolute bottom-3 right-3 text-xs font-medium px-2 py-0.5 rounded-full bg-black/60 text-white z-10">
@@ -143,22 +132,7 @@ export function VehicleCard({
         )}
         <div className="text-xs text-gray-400 mt-0.5 mb-3">{typeLabel}</div>
 
-        {niyetScore != null ? (
-          <div className="mt-1">
-            <div className="flex items-center gap-2 mb-1">
-              <div className="flex-1 h-1.5 rounded-full bg-gray-100 overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-all"
-                  style={{ width: `${Math.round(niyetScore * 10)}%`, background: '#378ADD' }}
-                />
-              </div>
-              <span className="text-sm font-bold text-gray-900 tabular-nums">
-                {niyetScore.toFixed(1)}
-              </span>
-            </div>
-            <p className="text-xs text-gray-400">{niyetLabel}</p>
-          </div>
-        ) : scores ? (
+        {scores ? (
           <FikapeScore scores={scores} variant="chips" />
         ) : (
           <div className="flex items-center justify-center h-14 rounded-xl border-2 border-dashed border-gray-100 text-xs text-gray-400">

@@ -26,16 +26,14 @@ const CATEGORY_ICONS: Record<string, string> = {
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ kategori?: string; yakit?: string; dogrulama?: string; niyet?: string }>;
+  searchParams: Promise<{ kategori?: string; yakit?: string; dogrulama?: string }>;
 }) {
-  const { kategori, yakit, dogrulama, niyet } = await searchParams;
-  const catFilter      = kategori && kategori !== "hepsi" ? kategori : undefined;
-  const fuelFilter     = yakit    && yakit    !== "hepsi" ? yakit    : undefined;
-  const niyetFilter    = niyet ?? undefined;
+  const { kategori, yakit, dogrulama } = await searchParams;
+  const catFilter   = kategori && kategori !== "hepsi" ? kategori : undefined;
+  const fuelFilter  = yakit    && yakit    !== "hepsi" ? yakit    : undefined;
   const activeCategory = kategori ?? "hepsi";
   const activeFuel     = yakit    ?? "hepsi";
   const showFuelFilter = catFilter === "otomobil";
-  const niyetDismissUrl = catFilter ? `/?kategori=${catFilter}` : '/';
 
   // Trend — sadece filtre yokken, haftalık görüntülemesi olanlar
   const trendProducts = !catFilter
@@ -75,8 +73,7 @@ export default async function Home({
           <div className="flex gap-2 overflow-x-auto py-3 scrollbar-none">
             {CATEGORY_FILTERS.map((f) => {
               const isActive = activeCategory === f.key;
-              const base = f.key === "hepsi" ? "/" : `/?kategori=${f.key}`;
-              const url  = niyetFilter ? `${base}${base.includes('?') ? '&' : '?'}niyet=${niyetFilter}` : base;
+              const url = f.key === "hepsi" ? "/" : `/?kategori=${f.key}`;
               return (
                 <a
                   key={f.key}
@@ -93,19 +90,6 @@ export default async function Home({
                 </a>
               );
             })}
-
-            {/* Yeni Araç chip — niyet aktifken */}
-            {niyetFilter && (
-              <div className="shrink-0 flex items-center border-l border-gray-200 pl-2 ml-1">
-                <a
-                  href={niyetDismissUrl}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors"
-                  style={{ background: "#EBF4FF", color: "#1a4a6e" }}
-                >
-                  Yeni Araç <span className="ml-0.5 opacity-60">×</span>
-                </a>
-              </div>
-            )}
           </div>
 
           {showFuelFilter && (
@@ -175,7 +159,6 @@ export default async function Home({
           catFilter={catFilter}
           fuelFilter={fuelFilter}
           activeCategory={activeCategory}
-          niyetFilter={niyetFilter}
         />
       </Suspense>
 

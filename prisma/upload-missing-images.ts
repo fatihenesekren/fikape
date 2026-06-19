@@ -16,12 +16,13 @@ const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 const prisma = new PrismaClient({ adapter } as any);
 
 // Yeni ürün görseli eklemek için buraya { slug, sourceUrl } ekle ve script'i çalıştır.
-const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean; referer?: string }[] = [
+const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean }[] = [
+  // Beyaz arkaplan ürün fotoğrafları — MediaMarkt/üretici resmi görselleri
   {
+    // Xiaomi resmi CDN — beyaz arkaplan, PNG
     slug: "xiaomi-mi-4-pro-2023",
-    sourceUrl: "https://resim.epey.com/939216/b_xiaomi-4-pro-2nd-gen-3.png",
+    sourceUrl: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1666838244.98981922.png",
     overwrite: true,
-    referer: "https://www.epey.com/",
   },
 ];
 
@@ -32,14 +33,11 @@ async function main() {
 
   console.log(`\n${IMAGES.length} görsel yüklenecek...\n`);
 
-  for (const { slug, sourceUrl, overwrite, referer } of IMAGES) {
+  for (const { slug, sourceUrl, overwrite } of IMAGES) {
     process.stdout.write(`[${slug}] İndiriliyor... `);
 
     const res = await fetch(sourceUrl, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-        ...(referer ? { "Referer": referer } : {}),
-      },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; fikape-bot/1.0)" },
       signal: AbortSignal.timeout(10_000),
     });
 
