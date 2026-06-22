@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
+import { NiyetKarti } from "./NiyetKarti";
+import { decodeQuiz, calcQuizScore, CAT_TO_SLUG, type ReviewExtData } from "@/lib/quiz";
 import type { FikapeScores } from "@/lib/fikape";
 
 const CATEGORY_ICONS: Record<string, string> = {
@@ -12,23 +14,35 @@ const CATEGORY_ICONS: Record<string, string> = {
 };
 
 interface Props {
-  catFilter?: string;
-  fuelFilter?: string;
+  catFilter?:     string;
+  fuelFilter?:    string;
   activeCategory: string;
+  quizParam?:     string;
 }
 
-export async function ProductGrid({ catFilter, fuelFilter, activeCategory }: Props) {
+export async function ProductGrid({
+  catFilter,
+  fuelFilter,
+  activeCategory,
+  quizParam,
+}: Props) {
+  const quizAnswers = quizParam ? decodeQuiz(quizParam) : null;
+
+  // Hard category filter: quiz cat takes precedence over filter bar if it provides a slug
+  const quizCatSlug = quizAnswers ? CAT_TO_SLUG[quizAnswers.cat] : undefined;
+  const effectiveCat = quizCatSlug ?? catFilter;
+
   const products = await prisma.product.findMany({
     where: {
       isActive: true,
-      ...(catFilter ? { category: { slug: catFilter } } : {}),
-      ...(fuelFilter && (!catFilter || catFilter === "otomobil")
+      ...(effectiveCat ? { category: { slug: effectiveCat } } : {}),
+      ...(fuelFilter && (!effectiveCat || effectiveCat === "otomobil")
         ? { attributes: { path: ["fuel_type"], equals: fuelFilter } }
         : {}),
     },
     include: {
-      brand: true,
-      model: true,
+      brand:    true,
+      model:    true,
       category: true,
       _count: { select: { reviews: { where: { status: "PUBLISHED" } } } },
     },
@@ -39,10 +53,10 @@ export async function ProductGrid({ catFilter, fuelFilter, activeCategory }: Pro
     by: ["productId"],
     where: { status: "PUBLISHED" },
     _avg: {
-      scoreFiyat: true,
-      scoreKalite: true,
+      scoreFiyat:      true,
+      scoreKalite:     true,
       scorePerformans: true,
-      scoreOverall: true,
+      scoreOverall:    true,
     },
     _count: { id: true },
   });
@@ -59,10 +73,39 @@ export async function ProductGrid({ catFilter, fuelFilter, activeCategory }: Pro
         } as FikapeScores,
         count: agg._count.id,
       },
-    ])
+    ]),
   );
 
-  // Wikipedia fallback — yalnızca imageUrl olmayan ürünler için
+  // Review extendedData — only fetched for otomobil quiz (usage_type, maintenance_cost)
+  const extDataMap = new Map<number, ReviewExtData[]>();
+  if (quizAnswers?.cat === "oto") {
+    const reviewsExt = await prisma.review.findMany({
+      where:  { status: "PUBLISHED" },
+      select: { productId: true, extendedData: true },
+    });
+    for (const r of reviewsExt) {
+      const arr = extDataMap.get(r.productId) ?? [];
+      arr.push(r.extendedData as ReviewExtData);
+      extDataMap.set(r.productId, arr);
+    }
+  }
+
+  // Quiz scoring + JS sort (overrides Prisma orderBy)
+  if (quizAnswers) {
+    products.sort((a, b) => {
+      const sa = scoreMap.get(a.id);
+      const sb = scoreMap.get(b.id);
+      // Products without any reviews go last
+      if (!sa && !sb) return 0;
+      if (!sa) return 1;
+      if (!sb) return -1;
+      const scoreA = calcQuizScore(sa.scores, extDataMap.get(a.id) ?? [], quizAnswers).score;
+      const scoreB = calcQuizScore(sb.scores, extDataMap.get(b.id) ?? [], quizAnswers).score;
+      return scoreB - scoreA;
+    });
+  }
+
+  // Wikipedia fallback — only for products missing imageUrl
   const slugsNeedingWiki = products.filter((p) => !p.imageUrl).map((p) => p.slug);
   const wikiUrls = slugsNeedingWiki.length > 0
     ? await getVehicleImageUrls(slugsNeedingWiki)
@@ -78,6 +121,8 @@ export async function ProductGrid({ catFilter, fuelFilter, activeCategory }: Pro
     );
   }
 
+  const showCatIcon = activeCategory === "hepsi" && !quizAnswers;
+
   return (
     <section className="max-w-7xl mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
@@ -87,16 +132,23 @@ export async function ProductGrid({ catFilter, fuelFilter, activeCategory }: Pro
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+
+        {/* NiyetKarti — col-span-full, always first */}
+        <NiyetKarti
+          quizAnswers={quizAnswers}
+          preCatSlug={catFilter ?? null}
+        />
+
         {products.map((product) => {
-          const attrs    = product.attributes as Record<string, unknown>;
-          const catSlug  = product.category?.slug ?? "otomobil";
-          const catIcon  = CATEGORY_ICONS[catSlug] ?? "🚗";
-          const score    = scoreMap.get(product.id);
+          const attrs   = product.attributes as Record<string, unknown>;
+          const catSlug = product.category?.slug ?? "otomobil";
+          const catIcon = CATEGORY_ICONS[catSlug] ?? "🚗";
+          const score   = scoreMap.get(product.id);
           const imageUrl = product.imageUrl ?? wikiUrls[product.slug] ?? null;
 
           return (
             <div key={product.id} className="relative">
-              {activeCategory === "hepsi" && (
+              {showCatIcon && (
                 <div className="absolute top-2 left-2 z-20 text-sm bg-white/80 backdrop-blur-sm rounded-full px-2 py-0.5 border border-gray-100 pointer-events-none">
                   {catIcon}
                 </div>

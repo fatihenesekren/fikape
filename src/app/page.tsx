@@ -5,6 +5,7 @@ import { HeroSection } from "./_components/HeroSection";
 import { ProductGrid } from "./_components/ProductGrid";
 import { CardGridSkeleton } from "./_components/CardGridSkeleton";
 import { RecentReviews } from "./_components/RecentReviews";
+import { decodeQuiz, CAT_TO_SLUG } from "@/lib/quiz";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -26,11 +27,12 @@ const CATEGORY_ICONS: Record<string, string> = {
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ kategori?: string; yakit?: string; dogrulama?: string }>;
+  searchParams: Promise<{ kategori?: string; yakit?: string; dogrulama?: string; quiz?: string }>;
 }) {
-  const { kategori, yakit, dogrulama } = await searchParams;
-  const catFilter   = kategori && kategori !== "hepsi" ? kategori : undefined;
-  const fuelFilter  = yakit    && yakit    !== "hepsi" ? yakit    : undefined;
+  const { kategori, yakit, dogrulama, quiz } = await searchParams;
+  const catFilter      = kategori && kategori !== "hepsi" ? kategori : undefined;
+  const fuelFilter     = yakit    && yakit    !== "hepsi" ? yakit    : undefined;
+  const quizParam      = quiz ?? undefined;
   const activeCategory = kategori ?? "hepsi";
   const activeFuel     = yakit    ?? "hepsi";
   const showFuelFilter = catFilter === "otomobil";
@@ -71,8 +73,26 @@ export default async function Home({
         <div className="max-w-7xl mx-auto px-4">
 
           <div className="flex gap-2 overflow-x-auto py-3 scrollbar-none">
+            {/* Quiz chip — görünür olduğunda kategori chiplerinden önce */}
+            {quizParam && (() => {
+              const qa = decodeQuiz(quizParam);
+              if (!qa) return null;
+              const catSlug  = CAT_TO_SLUG[qa.cat];
+              const clearUrl = catSlug ? `/?kategori=${catSlug}` : "/";
+              return (
+                <a
+                  href={clearUrl}
+                  className="shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold border flex items-center gap-1.5"
+                  style={{ background: "#111", color: "#fff", borderColor: "#111" }}
+                >
+                  <span>🎯</span>
+                  <span>Araç Bul</span>
+                  <span className="opacity-60 ml-0.5">✕</span>
+                </a>
+              );
+            })()}
             {CATEGORY_FILTERS.map((f) => {
-              const isActive = activeCategory === f.key;
+              const isActive = activeCategory === f.key && !quizParam;
               const url = f.key === "hepsi" ? "/" : `/?kategori=${f.key}`;
               return (
                 <a
@@ -159,6 +179,7 @@ export default async function Home({
           catFilter={catFilter}
           fuelFilter={fuelFilter}
           activeCategory={activeCategory}
+          quizParam={quizParam}
         />
       </Suspense>
 
