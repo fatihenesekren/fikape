@@ -38,19 +38,12 @@ function GirisForm() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-56px)] flex items-center justify-center px-4 py-16 bg-gray-50">
+    <div className="min-h-[calc(100vh-56px)] flex items-center justify-center px-4 py-8 bg-gray-50">
       <div className="w-full max-w-sm">
 
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-0.5 text-2xl font-black tracking-tight select-none mb-4">
-            <span style={{ color: "#185FA5" }}>fi</span>
-            <span className="text-gray-300 font-light">·</span>
-            <span style={{ color: "#3B6D11" }}>ka</span>
-            <span className="text-gray-300 font-light">·</span>
-            <span style={{ color: "#993C1D" }}>pe</span>
-          </Link>
-          <h1 className="text-xl font-bold text-gray-900">Giriş yap</h1>
-          <p className="text-sm text-gray-500 mt-1">Deneyimini paylaşmak için giriş yap</p>
+          <h1 className="text-xl font-bold text-gray-900">Tekrar hoş geldin</h1>
+          <p className="text-sm text-gray-500 mt-1">fikape hesabına giriş yap</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
@@ -94,7 +87,7 @@ function GirisForm() {
             className="w-full py-2.5 rounded-xl text-sm font-semibold text-white transition-colors disabled:opacity-60"
             style={{ background: "#111" }}
           >
-            {loading ? "Giriş yapılıyor..." : "Giriş yap"}
+            {loading ? "Giriş yapılıyor..." : "Devam et"}
           </button>
         </form>
 
