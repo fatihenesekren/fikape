@@ -60,17 +60,16 @@ export default function OnerPage() {
   if (!session) {
     return (
       <div className="max-w-xl mx-auto px-4 py-20 text-center">
-        <p className="text-4xl mb-4">🔒</p>
-        <h1 className="text-xl font-bold text-gray-900 mb-2">Giriş Gerekiyor</h1>
-        <p className="text-sm text-gray-500 mb-6">
-          Araç önerisi yapabilmek için hesabına giriş yapman gerekiyor.
+        <p className="text-2xl mb-6 opacity-40">🔒</p>
+        <p className="text-base font-semibold text-gray-900 mb-6 leading-relaxed">
+          Araç önerisi yapabilmek için<br />hesabına giriş yapman gerekiyor.
         </p>
         <Link
           href="/giris?callbackUrl=/oner"
           className="inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
           style={{ background: "#111" }}
         >
-          Giriş Yap
+          Giriş yap
         </Link>
       </div>
     );
