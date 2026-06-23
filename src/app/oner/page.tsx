@@ -59,18 +59,33 @@ export default function OnerPage() {
 
   if (!session) {
     return (
-      <div className="max-w-xl mx-auto px-4 py-20 text-center">
-        <p className="text-2xl mb-6 opacity-40">🔒</p>
-        <p className="text-base font-semibold text-gray-900 mb-6 leading-relaxed">
-          Araç önerisi yapabilmek için<br />hesabına giriş yapman gerekiyor.
-        </p>
-        <Link
-          href="/giris?callbackUrl=/oner"
-          className="inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
-          style={{ background: "#111" }}
-        >
-          Giriş yap
-        </Link>
+      <div className="max-w-sm mx-auto px-4 py-16">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+          <h1 className="text-xl font-black text-gray-900 mb-2 flex items-center gap-2">
+            <span className="text-base">🔒</span> Araç Öner
+          </h1>
+          <p className="text-sm text-gray-500 mb-5 leading-relaxed">
+            Listede olmayan bir aracı önerin, ekibimiz inceleyip kataloğa eklesin.
+          </p>
+          <p className="text-xs text-gray-400 mb-5">
+            Öneri göndermek için hesabına giriş yapman gerekiyor.
+          </p>
+          <div className="flex gap-2">
+            <Link
+              href="/giris?callbackUrl=/oner"
+              className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white text-center transition-colors"
+              style={{ background: "#111" }}
+            >
+              Giriş yap
+            </Link>
+            <Link
+              href="/kayit"
+              className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-gray-700 text-center border border-gray-200 hover:bg-gray-50 transition-colors"
+            >
+              Kayıt ol →
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
