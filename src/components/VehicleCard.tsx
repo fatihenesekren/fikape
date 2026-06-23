@@ -74,11 +74,7 @@ export function VehicleCard({
           <img
             src={imageUrl}
             alt={`${brandName} ${modelName}${trimName ? ` ${trimName}` : ""}`}
-            className={`absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-300 ${
-              categorySlug === "e-scooter" || categorySlug === "motosiklet"
-                ? "object-contain p-2"
-                : "object-cover"
-            }`}
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
           <span className="text-5xl opacity-20 select-none">{placeholderIcon}</span>
