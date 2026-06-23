@@ -123,12 +123,6 @@ export async function ProductGrid({
 
   const showCatIcon = activeCategory === "hepsi" && !quizAnswers;
 
-  const gridCols =
-    products.length === 1 ? "grid-cols-1" :
-    products.length === 2 ? "grid-cols-1 sm:grid-cols-2" :
-    products.length === 3 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" :
-    "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
-
   return (
     <section className="max-w-7xl mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
@@ -137,7 +131,7 @@ export async function ProductGrid({
         </h2>
       </div>
 
-      <div className={`grid ${gridCols} gap-4`}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
         {/* NiyetKarti — col-span-full, always first */}
         <NiyetKarti
