@@ -16,7 +16,7 @@ export async function RecentReviews() {
   if (reviews.length === 0) return null;
 
   return (
-    <section className="max-w-7xl mx-auto px-4 pt-6 pb-2">
+    <section className="w-full max-w-7xl mx-auto px-4 pt-6 pb-2">
       <h2 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-2">
         <span>💬</span> Son Yorumlar
       </h2>

@@ -140,7 +140,7 @@ export default async function Home({
 
       {/* ── Trend şeridi (filtre yokken) ── */}
       {!catFilter && trendProducts.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 pt-8 pb-2">
+        <section className="w-full max-w-7xl mx-auto px-4 pt-8 pb-2">
           <h2 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-2">
             <span className="text-base">🔥</span> Trend
           </h2>
@@ -184,7 +184,7 @@ export default async function Home({
       </Suspense>
 
       {/* ── FI·KA·PE açıklama ── */}
-      <section className="max-w-7xl mx-auto px-4 pb-8">
+      <section className="w-full max-w-7xl mx-auto px-4 pb-8">
         <div className="rounded-2xl border border-gray-100 bg-white p-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
           {[
             {
