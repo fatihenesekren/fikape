@@ -111,6 +111,12 @@ async function SearchResults({ query }: { query: string }) {
     );
   }
 
+  const gridCols =
+    products.length === 1 ? "grid-cols-1" :
+    products.length === 2 ? "grid-cols-1 sm:grid-cols-2" :
+    products.length === 3 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" :
+    "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
+
   return (
     <>
       <p className="text-sm text-gray-400 mb-5">
@@ -118,7 +124,7 @@ async function SearchResults({ query }: { query: string }) {
           ? `${products.length} araç bulundu`
           : `${products.length} araç`}
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className={`grid ${gridCols} gap-4`}>
         {products.map((product) => {
           const attrs    = product.attributes as Record<string, unknown>;
           const catSlug  = product.category?.slug ?? "otomobil";
