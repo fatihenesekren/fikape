@@ -66,7 +66,7 @@ export function VehicleCard({
     >
       {/* Görsel */}
       <div
-        className="relative w-full h-44 flex items-center justify-center overflow-hidden"
+        className="relative w-full h-44 flex items-center justify-center overflow-hidden border-b border-gray-100"
         style={{ background: placeholderBg }}
       >
         {imageUrl ? (
@@ -74,7 +74,9 @@ export function VehicleCard({
           <img
             src={imageUrl}
             alt={`${brandName} ${modelName}${trimName ? ` ${trimName}` : ""}`}
-            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className={`absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-300 ${
+              isScooter ? "object-contain p-2" : "object-cover"
+            }`}
           />
         ) : (
           <span className="text-5xl opacity-20 select-none">{placeholderIcon}</span>
