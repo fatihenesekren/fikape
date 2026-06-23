@@ -76,7 +76,7 @@ export function VehicleCard({
             alt={`${brandName} ${modelName}${trimName ? ` ${trimName}` : ""}`}
             className={`absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-300 ${
               categorySlug === "e-scooter" || categorySlug === "motosiklet"
-                ? "object-contain p-4"
+                ? "object-contain p-2"
                 : "object-cover"
             }`}
           />
