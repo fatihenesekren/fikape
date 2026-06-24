@@ -59,8 +59,8 @@ export default function OnerPage() {
 
   if (!session) {
     return (
-      <div className="min-h-[calc(100vh-56px)] flex items-center justify-center px-4 bg-gray-50">
-        <div className="w-full max-w-sm bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+      <div className="py-20 flex justify-center px-4 bg-gray-50">
+        <div className="w-full max-w-[480px] bg-white rounded-2xl border border-gray-100 shadow-sm p-7">
           <h1 className="flex items-center gap-2 text-lg font-bold text-gray-900 mb-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400" aria-hidden="true">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
