@@ -6,6 +6,7 @@ import { auth } from "@/auth";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ReviewCard } from "@/components/ReviewCard";
 import { GarageButton } from "./GarageButton";
+import { PhotoSlider } from "./PhotoSlider";
 import { calcOverall } from "@/lib/fikape";
 import { getVehicleImageUrl } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
@@ -78,7 +79,16 @@ export default async function VehicleDetailPage({
   const [product, session] = await Promise.all([
     prisma.product.findUnique({
       where: { slug },
-      include: { brand: true, model: true, category: true },
+      include: {
+        brand: true,
+        model: true,
+        category: true,
+        photos: {
+          where: { status: "APPROVED" },
+          orderBy: { order: "asc" },
+          select: { url: true },
+        },
+      },
     }),
     auth(),
     prisma.product.updateMany({
@@ -92,6 +102,12 @@ export default async function VehicleDetailPage({
   const attrs = product.attributes as Record<string, unknown>;
   const categorySlug = product.category?.slug ?? "";
   const imageUrl = product.imageUrl ?? await getVehicleImageUrl(slug);
+
+  // Slider için: kapak fotosu + kullanıcı fotoları
+  const sliderPhotos: string[] = [
+    ...(imageUrl ? [imageUrl] : []),
+    ...product.photos.map((p) => p.url),
+  ];
   const fuelType = String(attrs.fuel_type ?? "");
   const bodyType = attrs.body_type ? String(attrs.body_type) : null;
   const motoType = attrs.moto_type ? String(attrs.moto_type) : null;
@@ -317,6 +333,12 @@ export default async function VehicleDetailPage({
           </div>
         </div>
       </div>
+
+      {/* Fotoğraf slider */}
+      <PhotoSlider
+        photos={sliderPhotos}
+        alt={`${product.brand.name} ${product.model.name}`}
+      />
 
       {/* Yorum gönderildi banner */}
       {yorum === "gonderildi" && (
