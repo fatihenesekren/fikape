@@ -1,16 +1,16 @@
 import { NextResponse } from "next/server";
-import makesData from "@/data/makes.json";
+import vehiclesData from "@/data/vehicles.json";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const category = searchParams.get("category") ?? "otomobil";
 
-  const list = makesData[category as keyof typeof makesData] ?? makesData.otomobil;
+  const list = vehiclesData[category as keyof typeof vehiclesData] ?? vehiclesData.otomobil;
 
-  // Eski format ile uyumluluk: { make_id, make_display }
-  const makes = list.map((name) => ({
-    make_id: name.toLowerCase().replace(/[^a-z0-9]/g, "-"),
-    make_display: name,
+  // { make_id, make_display } formatı (geriye dönük uyumluluk)
+  const makes = list.map((m) => ({
+    make_id: m.make.toLowerCase().replace(/[^a-z0-9]/g, "-"),
+    make_display: m.make,
   }));
 
   return NextResponse.json({ makes });
