@@ -15,6 +15,8 @@ type Suggestion = {
   adminNote: string | null;
   createdAt: string;
   user: { displayName: string | null; email: string } | null;
+  hasReview: boolean;
+  photoCount: number;
 };
 
 const FUEL_LABELS: Record<string, string> = {
@@ -152,6 +154,20 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                     Kullanıcı: {s.user.displayName ?? s.user.email}
                   </p>
                 )}
+                {/* Yorum / fotoğraf rozetleri */}
+                <div className="flex gap-2 mb-2">
+                  {s.hasReview && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+                      💬 Yorum var
+                    </span>
+                  )}
+                  {s.photoCount > 0 && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-purple-50 text-purple-700 border border-purple-100">
+                      📷 {s.photoCount} fotoğraf
+                    </span>
+                  )}
+                </div>
+
                 {s.notes && (
                   <p className="text-sm text-gray-600 bg-gray-50 rounded-xl px-3 py-2 border border-gray-100">
                     &ldquo;{s.notes}&rdquo;

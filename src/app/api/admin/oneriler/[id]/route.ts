@@ -1,21 +1,17 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { calcOverall } from "@/lib/fikape";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// POST /api/admin/oneriler/[id]
-// body: { action: "APPROVED" | "REJECTED", adminNote?: string }
-// On APPROVED: optionally body.slug — admin can override the auto-generated slug
 export async function POST(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
-  if (!session?.user) {
-    return NextResponse.json({ error: "Yetkisiz" }, { status: 401 });
-  }
+  if (!session?.user) return NextResponse.json({ error: "Yetkisiz" }, { status: 401 });
 
   const adminUser = await prisma.user.findUnique({
     where: { id: Number(session.user.id) },
@@ -41,9 +37,7 @@ export async function POST(
   const suggestion = await prisma.vehicleSuggestion.findUnique({
     where: { id: suggestionId },
   });
-  if (!suggestion) {
-    return NextResponse.json({ error: "Öneri bulunamadı" }, { status: 404 });
-  }
+  if (!suggestion) return NextResponse.json({ error: "Öneri bulunamadı" }, { status: 404 });
   if (suggestion.status !== "PENDING") {
     return NextResponse.json({ error: "Bu öneri zaten işleme alındı" }, { status: 409 });
   }
@@ -61,48 +55,18 @@ export async function POST(
     return NextResponse.json({ ok: true, action: "REJECTED" });
   }
 
-  // ── ONAYLAMA: Brand + Model + Product oluştur ──
+  // ── ONAYLAMA ──
   const brandSlug = slugify(suggestion.brandName);
   const modelSlug = slugify(`${suggestion.brandName}-${suggestion.modelName}`);
   const productSlug =
     customSlug?.trim() ||
-    slugify(
-      [
-        suggestion.brandName,
-        suggestion.modelName,
-        suggestion.trimName,
-        suggestion.year,
-      ]
-        .filter(Boolean)
-        .join("-")
-    );
+    slugify([suggestion.brandName, suggestion.modelName, suggestion.trimName, suggestion.year].filter(Boolean).join("-"));
 
-  // Kategori bul
-  const category = await prisma.category.findUnique({
-    where: { slug: suggestion.categorySlug },
-  });
+  const category = await prisma.category.findUnique({ where: { slug: suggestion.categorySlug } });
   if (!category) {
-    return NextResponse.json(
-      { error: `Kategori bulunamadı: ${suggestion.categorySlug}` },
-      { status: 422 }
-    );
+    return NextResponse.json({ error: `Kategori bulunamadı: ${suggestion.categorySlug}` }, { status: 422 });
   }
 
-  // Brand — upsert
-  const brand = await prisma.brand.upsert({
-    where: { slug: brandSlug },
-    update: {},
-    create: { slug: brandSlug, name: suggestion.brandName },
-  });
-
-  // Model — upsert
-  const model = await prisma.model.upsert({
-    where: { slug: modelSlug },
-    update: {},
-    create: { slug: modelSlug, name: suggestion.modelName, brandId: brand.id },
-  });
-
-  // Slug çakışması kontrolü
   const existingProduct = await prisma.product.findUnique({ where: { slug: productSlug } });
   if (existingProduct) {
     return NextResponse.json(
@@ -111,23 +75,85 @@ export async function POST(
     );
   }
 
+  // Brand & Model — upsert
+  const brand = await prisma.brand.upsert({
+    where: { slug: brandSlug },
+    update: {},
+    create: { slug: brandSlug, name: suggestion.brandName },
+  });
+  const model = await prisma.model.upsert({
+    where: { slug: modelSlug },
+    update: {},
+    create: { slug: modelSlug, name: suggestion.modelName, brandId: brand.id },
+  });
+
+  // Wikipedia'dan kapak fotosu
+  const imageUrl = await fetchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
+
   const attributes: Record<string, string> = {};
   if (suggestion.fuelType) attributes.fuel_type = suggestion.fuelType;
 
+  // Product oluştur
   const product = await prisma.product.create({
     data: {
       slug: productSlug,
       name: `${suggestion.brandName} ${suggestion.modelName}${suggestion.trimName ? ` ${suggestion.trimName}` : ""}`,
       year: suggestion.year ?? null,
       trimName: suggestion.trimName ?? null,
-      attributes: attributes as Parameters<typeof prisma.product.create>[0]["data"]["attributes"],
+      attributes,
       categoryId: category.id,
       brandId: brand.id,
       modelId: model.id,
       isActive: true,
+      imageUrl: imageUrl ?? null,
     },
   });
 
+  // Review oluştur (eğer reviewData varsa)
+  const reviewData = suggestion.reviewData as {
+    scoreFiyat: number;
+    scoreKalite: number;
+    scorePerformans: number;
+    summaryText: string;
+  } | null;
+
+  if (reviewData && suggestion.userId) {
+    const fi = Number(reviewData.scoreFiyat) * 2;
+    const ka = Number(reviewData.scoreKalite) * 2;
+    const pe = Number(reviewData.scorePerformans) * 2;
+    const overall = calcOverall({ scoreFiyat: fi, scoreKalite: ka, scorePerformans: pe });
+
+    await prisma.review.create({
+      data: {
+        userId: suggestion.userId,
+        productId: product.id,
+        scoreFiyat: fi,
+        scoreKalite: ka,
+        scorePerformans: pe,
+        scoreOverall: overall,
+        summaryText: String(reviewData.summaryText).slice(0, 500),
+        status: "PUBLISHED",
+        publishedAt: new Date(),
+        trustScore: 35,
+      },
+    });
+  }
+
+  // ProductPhoto kayıtları oluştur (fotoğraf varsa)
+  const photoUrls: string[] = Array.isArray(suggestion.photoUrls) ? suggestion.photoUrls : [];
+  if (photoUrls.length > 0) {
+    await prisma.productPhoto.createMany({
+      data: photoUrls.map((url, idx) => ({
+        productId: product.id,
+        uploadedByUserId: suggestion.userId ?? null,
+        url,
+        status: "APPROVED" as const,
+        order: idx,
+      })),
+    });
+  }
+
+  // Öneriyi onayla
   await prisma.vehicleSuggestion.update({
     where: { id: suggestionId },
     data: {
@@ -141,8 +167,32 @@ export async function POST(
   return NextResponse.json({ ok: true, action: "APPROVED", productId: product.id, slug: product.slug });
 }
 
+async function fetchWikipediaImage(brand: string, model: string, year: number | null): Promise<string | null> {
+  try {
+    const query = `${brand} ${model}${year ? ` ${year}` : ""} automobile`;
+    const searchRes = await fetch(
+      `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&srlimit=1&format=json&origin=*`,
+      { signal: AbortSignal.timeout(4000) }
+    );
+    if (!searchRes.ok) return null;
+    const searchData = await searchRes.json();
+    const title: string | undefined = searchData.query?.search?.[0]?.title;
+    if (!title) return null;
+
+    const summaryRes = await fetch(
+      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`,
+      { signal: AbortSignal.timeout(4000) }
+    );
+    if (!summaryRes.ok) return null;
+    const summaryData = await summaryRes.json();
+    return summaryData.thumbnail?.source ?? null;
+  } catch {
+    return null;
+  }
+}
+
 function slugify(text: string): string {
-  return text
+  return String(text)
     .toLowerCase()
     .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
     .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")

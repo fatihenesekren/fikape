@@ -41,6 +41,8 @@ export default async function AdminOnerilerPage() {
     adminNote: s.adminNote,
     createdAt: s.createdAt.toISOString(),
     user: s.user ? { displayName: s.user.displayName, email: s.user.email } : null,
+    hasReview: !!s.reviewData,
+    photoCount: Array.isArray(s.photoUrls) ? s.photoUrls.length : 0,
   }));
 
   const pendingCount = serialized.filter((s) => s.status === "PENDING").length;
