@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>fikape — Mimari & Takvim</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #111; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 20px; }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 2px solid #f0f0f0; }
+  .tab { padding: 8px 18px; font-size: 13px; font-weight: 600; border: none; background: none; cursor: pointer; color: #888; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.15s; }
+  .tab.active { color: #111; border-bottom-color: #111; }
+  .tab:hover:not(.active) { color: #444; }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .arch-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .arch-col { display: flex; flex-direction: column; gap: 8px; }
+  .arch-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #999; margin-bottom: 4px; margin-top: 12px; }
+
+  .node { border-radius: 10px; padding: 10px 12px; border: 1.5px solid #e8e8e8; background: #fafafa; }
+  .node-title { font-size: 12px; font-weight: 700; color: #111; margin-bottom: 2px; }
+  .node-sub { font-size: 11px; color: #777; line-height: 1.4; }
+  .node.done { border-color: #c8e6c9; background: #f1f8e9; }
+  .node.done .node-title { color: #2e7d32; }
+  .node.wip { border-color: #ffe082; background: #fffde7; }
+  .node.wip .node-title { color: #b45309; }
+  .node.core { border-color: #bbdefb; background: #e3f2fd; }
+  .node.core .node-title { color: #0C447C; }
+
+  .badge { display: inline-block; font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 20px; margin-left: 4px; vertical-align: middle; }
+  .badge.done { background: #c8e6c9; color: #1b5e20; }
+  .badge.todo { background: #e0e0e0; color: #666; }
+
+  .arrow-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; color: #ccc; font-size: 18px; }
+  .arrow-label { font-size: 10px; color: #bbb; font-weight: 500; }
+
+  .legend { display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #666; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+  .stat-box { border: 1.5px solid #e8e8e8; border-radius: 10px; padding: 12px; text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 900; color: #111; }
+  .stat-label { font-size: 10px; color: #999; margin-top: 2px; }
+  .stat-box.fi { border-color: #bbdefb; }
+  .stat-box.fi .stat-num { color: #0C447C; }
+  .stat-box.ka { border-color: #c8e6c9; }
+  .stat-box.ka .stat-num { color: #27500A; }
+  .stat-box.pe { border-color: #ffccbc; }
+  .stat-box.pe .stat-num { color: #712B13; }
+
+  .month-row { display: grid; grid-template-columns: 90px 1fr; gap: 0; align-items: stretch; border-bottom: 1px solid #f3f3f3; min-height: 52px; }
+  .month-label { font-size: 11px; font-weight: 700; color: #bbb; padding: 14px 12px 14px 0; display: flex; align-items: flex-start; }
+  .month-label.current { color: #0C447C; }
+  .month-tasks { display: flex; flex-direction: column; gap: 5px; padding: 10px 0; }
+  .task-bar { display: flex; align-items: center; gap: 8px; }
+  .task-pill { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .task-pill.done { background: #e8f5e9; color: #2e7d32; }
+  .task-pill.active { background: #e3f2fd; color: #0C447C; }
+  .task-pill.planned { background: #f5f5f5; color: #888; border: 1px solid #e0e0e0; }
+  .task-pill.risk { background: #fff3e0; color: #e65100; }
+  .task-note { font-size: 10px; color: #bbb; }
+
+  .now-marker { display: flex; align-items: center; gap: 8px; margin: 12px 0; }
+  .now-line { flex: 1; height: 1px; background: #0C447C; }
+  .now-dot { width: 8px; height: 8px; border-radius: 50%; background: #0C447C; }
+  .now-text { font-size: 10px; font-weight: 700; color: #0C447C; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="tabs">
+    <button class="tab active" onclick="show('arch', this)">Mimari Harita</button>
+    <button class="tab" onclick="show('timeline', this)">Proje Takvimi</button>
+  </div>
+
+  <!-- MİMARİ -->
+  <div id="arch" class="panel active">
+
+    <div class="stats-row">
+      <div class="stat-box fi"><div class="stat-num">9</div><div class="stat-label">Tamamlanan özellik</div></div>
+      <div class="stat-box ka"><div class="stat-num">33</div><div class="stat-label">Araç modeli</div></div>
+      <div class="stat-box pe"><div class="stat-num">5</div><div class="stat-label">Kategori</div></div>
+      <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">Backlog maddesi</div></div>
+    </div>
+
+    <div class="arch-label">Kullanıcı Arayüzü (Next.js App Router)</div>
+    <div class="arch-grid">
+      <div class="arch-col">
+        <div class="node done">
+          <div class="node-title">Ana Sayfa <span class="badge done">✓</span></div>
+          <div class="node-sub">HeroSection · ProductGrid · Suspense · RecentReviews</div>
+        </div>
+        <div class="node done">
+          <div class="node-title">Araç Detay <span class="badge done">✓</span></div>
+          <div class="node-sub">/araclar/[slug] · viewCount · Reviews</div>
+        </div>
+        <div class="node done">
+          <div class="node-title">Arama <span class="badge done">✓</span></div>
+          <div class="node-sub">/arama · ILIKE · model gruplama</div>
+        </div>
+      </div>
+      <div class="arch-col">
+        <div class="node done">
+          <div class="node-title">Auth <span class="badge done">✓</span></div>
+          <div class="node-sub">NextAuth v5 · Kayıt · Giriş · E-posta doğrulama</div>
+        </div>
+        <div class="node done">
+          <div class="node-title">Profil & Garaj <span class="badge done">✓</span></div>
+          <div class="node-sub">/profil · /garajim · GarageAnimation</div>
+        </div>
+        <div class="node done">
+          <div class="node-title">Yorum Sistemi <span class="badge done">✓</span></div>
+          <div class="node-sub">FI·KA·PE puanı · Moderasyon · Flag · Helpful</div>
+        </div>
+      </div>
+      <div class="arch-col">
+        <div class="node done">
+          <div class="node-title">Admin Paneli <span class="badge done">✓</span></div>
+          <div class="node-sub">/admin/yorumlar · /admin/oneriler · trustLevel 5</div>
+        </div>
+        <div class="node done">
+          <div class="node-title">Araç Öneri Akışı <span class="badge done">✓</span></div>
+          <div class="node-sub">/oner · API · Onay/Red · Brand+Model oluştur</div>
+        </div>
+        <div class="node done">
+          <div class="node-title">KVKK Sayfaları <span class="badge done">✓</span></div>
+          <div class="node-sub">/gizlilik · /kullanim-kosullari</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow-row">
+      <span>↕</span><span class="arrow-label">Server Components / API Routes / Prisma ORM</span><span>↕</span>
+    </div>
+
+    <div class="arch-label">API Katmanı</div>
+    <div class="arch-grid">
+      <div class="arch-col">
+        <div class="node core">
+          <div class="node-title">dataCache.ts</div>
+          <div class="node-sub">unstable_cache · Hero stats · Top-rated · 1sa TTL</div>
+        </div>
+      </div>
+      <div class="arch-col">
+        <div class="node core">
+          <div class="node-title">Vercel Cron</div>
+          <div class="node-sub">Her Pzt 03:00 · weeklyViewCount sıfırla</div>
+        </div>
+      </div>
+      <div class="arch-col">
+        <div class="node core">
+          <div class="node-title">Resend Email</div>
+          <div class="node-sub">E-posta doğrulama · HMAC token · Lazy init</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow-row">
+      <span>↕</span><span class="arrow-label">Prisma v7.8 · pg adapter · pgbouncer:6543</span><span>↕</span>
+    </div>
+
+    <div class="arch-label">Altyapı & Veri</div>
+    <div class="arch-grid">
+      <div class="arch-col">
+        <div class="node core">
+          <div class="node-title">Supabase PostgreSQL</div>
+          <div class="node-sub">12 tablo · 5 enum · JSON attributes</div>
+        </div>
+      </div>
+      <div class="arch-col">
+        <div class="node core">
+          <div class="node-title">Vercel</div>
+          <div class="node-sub">Deploy · Edge · Cron · ENV vars</div>
+        </div>
+      </div>
+      <div class="arch-col">
+        <div class="node wip">
+          <div class="node-title">Domain <span class="badge todo">bekliyor</span></div>
+          <div class="node-sub">fikape.com → Vercel DNS bağlantısı</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#e8f5e9;border:1.5px solid #c8e6c9"></div> Tamamlandı</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e3f2fd;border:1.5px solid #bbdefb"></div> Çekirdek altyapı</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#fffde7;border:1.5px solid #ffe082"></div> Bekliyor / Planlı</div>
+    </div>
+  </div>
+
+  <!-- TAKVİM -->
+  <div id="timeline" class="panel">
+    <div class="month-row">
+      <div class="month-label">Nis 2026</div>
+      <div class="month-tasks">
+        <div class="task-bar"><span class="task-pill done">✓ Deploy & Vercel canlı</span></div>
+        <div class="task-bar"><span class="task-pill done">✓ Auth sistemi (NextAuth v5)</span></div>
+        <div class="task-bar"><span class="task-pill done">✓ Çok kategorili platform</span></div>
+      </div>
+    </div>
+    <div class="month-row">
+      <div class="month-label">May 2026</div>
+      <div class="month-tasks">
+        <div class="task-bar"><span class="task-pill done">✓ Garaj & Profil sayfaları</span></div>
+        <div class="task-bar"><span class="task-pill done">✓ Yorum sistemi & Admin moderasyon</span></div>
+        <div class="task-bar"><span class="task-pill done">✓ 33 araç seed verisi + Wikimedia fotoğraflar</span></div>
+        <div class="task-bar"><span class="task-pill done">✓ KVKK sayfaları</span></div>
+      </div>
+    </div>
+    <div class="month-row">
+      <div class="month-label">Haz 2026</div>
+      <div class="month-tasks">
+        <div class="task-bar"><span class="task-pill done">✓ Haftalık trend sistemi (Vercel Cron)</span></div>
+        <div class="task-bar"><span class="task-pill done">✓ Arama özelliği</span></div>
+        <div class="task-bar"><span class="task-pill done">✓ Araç öneri akışı (kullanıcı → admin onay)</span></div>
+        <div class="task-bar"><span class="task-pill done">✓ Hero yeniden yapılandırma + Mimari refactor</span></div>
+      </div>
+    </div>
+    <div class="now-marker">
+      <div class="now-dot"></div>
+      <div class="now-line"></div>
+      <div class="now-text">Haziran 2026 — Şu an buradayız</div>
+      <div class="now-line"></div>
+      <div class="now-dot"></div>
+    </div>
+    <div class="month-row">
+      <div class="month-label current">Tem 2026</div>
+      <div class="month-tasks">
+        <div class="task-bar"><span class="task-pill active">→ Domain bağlama (fikape.com)</span><span class="task-note">DNS + SSL</span></div>
+        <div class="task-bar"><span class="task-pill active">→ Türkiye'ye özgü yorum soruları</span><span class="task-note">LPG, servis, yol koşulları</span></div>
+        <div class="task-bar"><span class="task-pill planned">Periyodik güncelleme emaili</span><span class="task-note">3 ay hatırlatma (Resend)</span></div>
+      </div>
+    </div>
+    <div class="month-row">
+      <div class="month-label">Ağu 2026</div>
+      <div class="month-tasks">
+        <div class="task-bar"><span class="task-pill planned">AI Moderasyon Katman 2</span><span class="task-note">Claude Haiku · asenkron · maliyet izle</span></div>
+        <div class="task-bar"><span class="task-pill planned">İlk gerçek kullanıcı yorumları</span><span class="task-note">Hedef: 10 araç, 30+ yorum</span></div>
+        <div class="task-bar"><span class="task-pill planned">Doğrulanmış sahip rozeti</span><span class="task-note">trustLevel 3 akışı</span></div>
+      </div>
+    </div>
+    <div class="month-row">
+      <div class="month-label">Eyl 2026</div>
+      <div class="month-tasks">
+        <div class="task-bar"><span class="task-pill planned">SEO içerik büyütme</span><span class="task-note">Uzun kuyruk araç sayfaları</span></div>
+        <div class="task-bar"><span class="task-pill planned">Türkiye'ye özgü kategoriler</span><span class="task-note">İkinci el · Sıfır ayrımı</span></div>
+        <div class="task-bar"><span class="task-pill risk">Gelir modeli değerlendirme</span><span class="task-note">Reklamsız kalıp kalmama kararı</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+function show(id, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>

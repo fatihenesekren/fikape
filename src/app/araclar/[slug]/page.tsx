@@ -7,7 +7,7 @@ import { FikapeScore } from "@/components/FikapeScore";
 import { ReviewCard } from "@/components/ReviewCard";
 import { GarageButton } from "./GarageButton";
 import { PhotoSlider } from "./PhotoSlider";
-import { SpecAccordion } from "./SpecAccordion";
+import { TabView } from "./TabView";
 import { calcOverall } from "@/lib/fikape";
 import { getVehicleImageUrl } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
@@ -111,7 +111,6 @@ export default async function VehicleDetailPage({
   const fuelType = String(attrs.fuel_type ?? "");
   const bodyType = attrs.body_type ? String(attrs.body_type) : null;
   const motoType = attrs.moto_type ? String(attrs.moto_type) : null;
-  const scooterType = attrs.scooter_type ? String(attrs.scooter_type) : null;
   const karavanType = attrs.karavan_type ? String(attrs.karavan_type) : null;
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
 
@@ -155,122 +154,174 @@ export default async function VehicleDetailPage({
 
   // ── Spec strip — kategori bazlı 5 öne çıkan özellik ──
   type SpecItem = { label: string; value: string };
+
   const heroSpecsRaw: (SpecItem | null)[] = (() => {
     if (categorySlug === "e-scooter") return [
-      attrs.motor_watt    ? { label: "Motor",      value: `${attrs.motor_watt} W` }          : null,
-      attrs.range_km      ? { label: "Menzil",     value: `${attrs.range_km} km` }            : null,
-      attrs.max_speed_kmh ? { label: "Maks. Hız",  value: `${attrs.max_speed_kmh} km/s` }    : null,
-      attrs.battery_wh    ? { label: "Batarya",    value: `${attrs.battery_wh} Wh` }          : null,
-      attrs.weight_kg     ? { label: "Ağırlık",    value: `${attrs.weight_kg} kg` }           : null,
+      attrs.motor_watt     ? { label: "Motor",      value: `${attrs.motor_watt} W` }         : null,
+      attrs.range_km       ? { label: "Menzil",     value: `${attrs.range_km} km` }           : null,
+      attrs.max_speed_kmh  ? { label: "Maks. Hız",  value: `${attrs.max_speed_kmh} km/s` }   : null,
+      attrs.battery_wh     ? { label: "Batarya",    value: `${attrs.battery_wh} Wh` }         : null,
+      attrs.weight_kg      ? { label: "Ağırlık",    value: `${attrs.weight_kg} kg` }          : null,
     ];
     if (categorySlug === "motosiklet") return [
-      attrs.engine_cc     ? { label: "Motor",      value: `${attrs.engine_cc} cc` }           : (attrs.ev_range_km ? { label: "Menzil", value: `${attrs.ev_range_km} km` } : null),
-      attrs.power_hp      ? { label: "Güç",        value: `${attrs.power_hp} HP` }            : null,
-      attrs.torque_nm     ? { label: "Tork",       value: `${attrs.torque_nm} Nm` }           : null,
-      attrs.seat_height_mm ? { label: "Sele Yüks.", value: `${attrs.seat_height_mm} mm` }    : null,
-      attrs.tank_l        ? { label: "Depo",       value: `${attrs.tank_l} L` }               : null,
+      attrs.engine_cc      ? { label: "Motor",      value: `${attrs.engine_cc} cc` }          : (attrs.ev_range_km ? { label: "Menzil", value: `${attrs.ev_range_km} km` } : null),
+      attrs.power_hp       ? { label: "Güç",        value: `${attrs.power_hp} HP` }           : null,
+      attrs.torque_nm      ? { label: "Tork",       value: `${attrs.torque_nm} Nm` }          : null,
+      attrs.seat_height_mm ? { label: "Sele Yüks.", value: `${attrs.seat_height_mm} mm` }     : null,
+      attrs.tank_l         ? { label: "Depo",       value: `${attrs.tank_l} L` }              : null,
     ];
     if (categorySlug === "karavan") return [
-      attrs.berth           ? { label: "Yatak Kap.",  value: `${attrs.berth} kişi` }          : null,
-      attrs.length_cm       ? { label: "Uzunluk",     value: `${attrs.length_cm} cm` }        : null,
-      attrs.total_weight_kg ? { label: "Toplam Ağ.",  value: `${attrs.total_weight_kg} kg` }  : null,
+      attrs.berth            ? { label: "Yatak Kap.", value: `${attrs.berth} kişi` }          : null,
+      attrs.length_cm        ? { label: "Uzunluk",    value: `${attrs.length_cm} cm` }        : null,
+      attrs.total_weight_kg  ? { label: "Toplam Ağ.", value: `${attrs.total_weight_kg} kg` }  : null,
       attrs.has_bathroom != null ? { label: "Banyo",  value: attrs.has_bathroom ? "Var" : "Yok" } : null,
       attrs.has_kitchen  != null ? { label: "Mutfak", value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
     ];
     if (categorySlug === "kamyonet") return [
-      attrs.power_hp        ? { label: "Güç",        value: `${attrs.power_hp} HP` }          : null,
-      attrs.payload_kg      ? { label: "Yük Kap.",   value: `${attrs.payload_kg} kg` }        : null,
-      attrs.torque_nm       ? { label: "Tork",       value: `${attrs.torque_nm} Nm` }         : null,
-      attrs.tow_capacity_kg ? { label: "Çekme Kap.", value: `${attrs.tow_capacity_kg} kg` }  : null,
-      attrs.four_wd != null ? { label: "4×4",        value: attrs.four_wd ? "Var" : "Yok" }   : null,
+      attrs.power_hp         ? { label: "Güç",        value: `${attrs.power_hp} HP` }         : null,
+      attrs.payload_kg       ? { label: "Yük Kap.",   value: `${attrs.payload_kg} kg` }       : null,
+      attrs.torque_nm        ? { label: "Tork",       value: `${attrs.torque_nm} Nm` }        : null,
+      attrs.tow_capacity_kg  ? { label: "Çekme Kap.", value: `${attrs.tow_capacity_kg} kg` }  : null,
+      attrs.four_wd != null  ? { label: "4×4",        value: attrs.four_wd ? "Var" : "Yok" }  : null,
     ];
-    // otomobil (default)
     return [
-      attrs.engine_cc   ? { label: "Motor",     value: `${attrs.engine_cc} cc` }              : (attrs.battery_kwh ? { label: "Batarya", value: `${attrs.battery_kwh} kWh` } : null),
-      attrs.power_hp    ? { label: "Güç",       value: `${attrs.power_hp} HP` }               : null,
-      attrs.zero_to_100 ? { label: "0–100",     value: `${attrs.zero_to_100} sn` }            : null,
-      attrs.transmission ? { label: "Vites",    value: String(attrs.transmission) }            : null,
-      attrs.ev_range_km ? { label: "Menzil",    value: `${attrs.ev_range_km} km` }            : (attrs.tank_l ? { label: "Yakıt Dep.", value: `${attrs.tank_l} L` } : null),
+      attrs.engine_cc    ? { label: "Motor",     value: `${attrs.engine_cc} cc` }             : (attrs.battery_kwh ? { label: "Batarya", value: `${attrs.battery_kwh} kWh` } : null),
+      attrs.power_hp     ? { label: "Güç",       value: `${attrs.power_hp} HP` }              : null,
+      attrs.zero_to_100  ? { label: "0–100",     value: `${attrs.zero_to_100} sn` }           : null,
+      attrs.transmission ? { label: "Vites",     value: String(attrs.transmission) }           : null,
+      attrs.ev_range_km  ? { label: "Menzil",    value: `${attrs.ev_range_km} km` }           : (attrs.tank_l ? { label: "Yakıt Dep.", value: `${attrs.tank_l} L` } : null),
     ];
   })();
   const heroSpecs = heroSpecsRaw.filter(Boolean) as SpecItem[];
 
-  // ── Accordion specs — tüm teknik özellikler ──
+  // ── Tab: Teknik Özellikler (tam liste) ──
   const specsRaw: (SpecItem | null)[] = (() => {
-    if (categorySlug === "e-scooter") {
-      return [
-        attrs.motor_watt    ? { label: "Motor Gücü",      value: `${attrs.motor_watt} W` }        : null,
-        attrs.range_km      ? { label: "Menzil",          value: `${attrs.range_km} km` }          : null,
-        attrs.max_speed_kmh ? { label: "Maks. Hız",       value: `${attrs.max_speed_kmh} km/s` }  : null,
-        attrs.battery_wh    ? { label: "Batarya",         value: `${attrs.battery_wh} Wh` }        : null,
-        attrs.weight_kg     ? { label: "Ağırlık",         value: `${attrs.weight_kg} kg` }         : null,
-        attrs.charge_hours  ? { label: "Şarj Süresi",     value: `~${attrs.charge_hours} saat` }   : null,
-        attrs.ip_rating     ? { label: "Su Geçirmezlik",  value: String(attrs.ip_rating) }         : null,
-        attrs.max_load_kg   ? { label: "Maks. Yük",       value: `${attrs.max_load_kg} kg` }       : null,
-        attrs.tire_inch     ? { label: "Lastik",          value: `${attrs.tire_inch}"` }            : null,
-      ];
-    }
-    if (categorySlug === "motosiklet") {
-      return [
-        fuelType             ? { label: "Yakıt",          value: FUEL_LABELS[fuelType] ?? fuelType } : null,
-        motoType             ? { label: "Tip",            value: MOTO_TYPE_LABELS[motoType] ?? motoType } : null,
-        attrs.engine_cc      ? { label: "Motor",          value: `${attrs.engine_cc} cc` }          : null,
-        attrs.power_hp       ? { label: "Güç",            value: `${attrs.power_hp} HP` }           : null,
-        attrs.torque_nm      ? { label: "Tork",           value: `${attrs.torque_nm} Nm` }          : null,
-        attrs.gearbox        ? { label: "Şanzıman",       value: `${attrs.gearbox} vites` }         : null,
-        attrs.abs != null    ? { label: "ABS",            value: attrs.abs ? "Var" : "Yok" }        : null,
-        attrs.tank_l         ? { label: "Depo",           value: `${attrs.tank_l} L` }              : null,
-        attrs.weight_kg      ? { label: "Ağırlık",        value: `${attrs.weight_kg} kg` }          : null,
-        attrs.seat_height_mm ? { label: "Sele Yüks.",     value: `${attrs.seat_height_mm} mm` }     : null,
-        attrs.ev_range_km    ? { label: "Menzil",         value: `${attrs.ev_range_km} km (WLTP)` } : null,
-      ];
-    }
-    if (categorySlug === "karavan") {
-      return [
-        karavanType           ? { label: "Tip",           value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
-        attrs.berth           ? { label: "Yatak Kap.",    value: `${attrs.berth} kişi` }            : null,
-        attrs.length_cm       ? { label: "Uzunluk",       value: `${attrs.length_cm} cm` }          : null,
-        attrs.width_cm        ? { label: "Genişlik",      value: `${attrs.width_cm} cm` }           : null,
-        attrs.total_weight_kg ? { label: "Toplam Ağ.",   value: `${attrs.total_weight_kg} kg` }     : null,
-        attrs.tow_weight_kg   ? { label: "Çekme Ağ.",    value: `${attrs.tow_weight_kg} kg` }       : null,
-        attrs.has_bathroom != null ? { label: "Banyo",   value: attrs.has_bathroom ? "Var" : "Yok" } : null,
-        attrs.has_kitchen  != null ? { label: "Mutfak",  value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
-        attrs.has_ac       != null ? { label: "Klima",   value: attrs.has_ac       ? "Var" : "Yok" } : null,
-      ];
-    }
-    if (categorySlug === "kamyonet") {
-      return [
-        fuelType              ? { label: "Yakıt",         value: FUEL_LABELS[fuelType] ?? fuelType } : null,
-        bodyType              ? { label: "Kasa",          value: BODY_LABELS[bodyType] ?? bodyType } : null,
-        attrs.engine_cc       ? { label: "Motor",         value: `${attrs.engine_cc} cc` }           : null,
-        attrs.power_hp        ? { label: "Güç",           value: `${attrs.power_hp} HP` }            : null,
-        attrs.torque_nm       ? { label: "Tork",          value: `${attrs.torque_nm} Nm` }           : null,
-        attrs.four_wd != null ? { label: "4×4",           value: attrs.four_wd ? "Var" : "Yok" }     : null,
-        attrs.payload_kg      ? { label: "Yük Kap.",      value: `${attrs.payload_kg} kg` }          : null,
-        attrs.tow_capacity_kg ? { label: "Çekme Kap.",    value: `${attrs.tow_capacity_kg} kg` }     : null,
-        attrs.tank_l          ? { label: "Yakıt Dep.",    value: `${attrs.tank_l} L` }               : null,
-      ];
-    }
-    // otomobil (default)
+    if (categorySlug === "e-scooter") return [
+      attrs.motor_watt    ? { label: "Motor Gücü",     value: `${attrs.motor_watt} W` }       : null,
+      attrs.range_km      ? { label: "Menzil",         value: `${attrs.range_km} km` }         : null,
+      attrs.max_speed_kmh ? { label: "Maks. Hız",      value: `${attrs.max_speed_kmh} km/s` } : null,
+      attrs.battery_wh    ? { label: "Batarya",        value: `${attrs.battery_wh} Wh` }       : null,
+      attrs.weight_kg     ? { label: "Ağırlık",        value: `${attrs.weight_kg} kg` }        : null,
+      attrs.charge_hours  ? { label: "Şarj Süresi",    value: `~${attrs.charge_hours} saat` }  : null,
+      attrs.ip_rating     ? { label: "Su Geçirmezlik", value: String(attrs.ip_rating) }        : null,
+      attrs.max_load_kg   ? { label: "Maks. Yük",      value: `${attrs.max_load_kg} kg` }      : null,
+      attrs.tire_inch     ? { label: "Lastik",         value: `${attrs.tire_inch}"` }           : null,
+    ];
+    if (categorySlug === "motosiklet") return [
+      fuelType              ? { label: "Yakıt",        value: FUEL_LABELS[fuelType] ?? fuelType } : null,
+      motoType              ? { label: "Tip",          value: MOTO_TYPE_LABELS[motoType] ?? motoType } : null,
+      attrs.engine_cc       ? { label: "Motor",        value: `${attrs.engine_cc} cc` }        : null,
+      attrs.power_hp        ? { label: "Güç",          value: `${attrs.power_hp} HP` }         : null,
+      attrs.torque_nm       ? { label: "Tork",         value: `${attrs.torque_nm} Nm` }        : null,
+      attrs.gearbox         ? { label: "Şanzıman",     value: `${attrs.gearbox} vites` }       : null,
+      attrs.abs != null     ? { label: "ABS",          value: attrs.abs ? "Var" : "Yok" }      : null,
+      attrs.tank_l          ? { label: "Depo",         value: `${attrs.tank_l} L` }            : null,
+      attrs.weight_kg       ? { label: "Ağırlık",      value: `${attrs.weight_kg} kg` }        : null,
+      attrs.seat_height_mm  ? { label: "Sele Yüks.",   value: `${attrs.seat_height_mm} mm` }   : null,
+      attrs.ev_range_km     ? { label: "Menzil",       value: `${attrs.ev_range_km} km (WLTP)` } : null,
+    ];
+    if (categorySlug === "karavan") return [
+      karavanType            ? { label: "Tip",         value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
+      attrs.berth            ? { label: "Yatak Kap.",  value: `${attrs.berth} kişi` }          : null,
+      attrs.length_cm        ? { label: "Uzunluk",     value: `${attrs.length_cm} cm` }        : null,
+      attrs.width_cm         ? { label: "Genişlik",    value: `${attrs.width_cm} cm` }         : null,
+      attrs.total_weight_kg  ? { label: "Toplam Ağ.",  value: `${attrs.total_weight_kg} kg` }  : null,
+      attrs.tow_weight_kg    ? { label: "Çekme Ağ.",   value: `${attrs.tow_weight_kg} kg` }    : null,
+      attrs.has_bathroom != null ? { label: "Banyo",   value: attrs.has_bathroom ? "Var" : "Yok" } : null,
+      attrs.has_kitchen  != null ? { label: "Mutfak",  value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
+      attrs.has_ac       != null ? { label: "Klima",   value: attrs.has_ac       ? "Var" : "Yok" } : null,
+    ];
+    if (categorySlug === "kamyonet") return [
+      fuelType               ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType } : null,
+      bodyType               ? { label: "Kasa",        value: BODY_LABELS[bodyType] ?? bodyType } : null,
+      attrs.engine_cc        ? { label: "Motor",       value: `${attrs.engine_cc} cc` }        : null,
+      attrs.power_hp         ? { label: "Güç",         value: `${attrs.power_hp} HP` }         : null,
+      attrs.torque_nm        ? { label: "Tork",        value: `${attrs.torque_nm} Nm` }        : null,
+      attrs.four_wd != null  ? { label: "4×4",         value: attrs.four_wd ? "Var" : "Yok" }  : null,
+      attrs.payload_kg       ? { label: "Yük Kap.",    value: `${attrs.payload_kg} kg` }       : null,
+      attrs.tow_capacity_kg  ? { label: "Çekme Kap.",  value: `${attrs.tow_capacity_kg} kg` }  : null,
+      attrs.tank_l           ? { label: "Yakıt Dep.",  value: `${attrs.tank_l} L` }            : null,
+    ];
     return [
-      fuelType             ? { label: "Yakıt",            value: FUEL_LABELS[fuelType] ?? fuelType } : null,
-      bodyType             ? { label: "Kasa",             value: BODY_LABELS[bodyType] ?? bodyType } : null,
-      attrs.segment        ? { label: "Segment",          value: `${attrs.segment} Segment` }        : null,
-      attrs.drivetrain     ? { label: "Çekiş",            value: String(attrs.drivetrain) }          : null,
-      attrs.transmission   ? { label: "Vites",            value: String(attrs.transmission) }        : null,
-      attrs.engine_cc      ? { label: "Motor",            value: `${attrs.engine_cc} cc` }           : null,
-      attrs.power_hp       ? { label: "Güç",              value: `${attrs.power_hp} HP` }            : null,
-      attrs.torque_nm      ? { label: "Tork",             value: `${attrs.torque_nm} Nm` }           : null,
-      attrs.zero_to_100    ? { label: "0–100 km/s",       value: `${attrs.zero_to_100} sn` }         : null,
-      attrs.top_speed_kmh  ? { label: "Azami Hız",        value: `${attrs.top_speed_kmh} km/s` }     : null,
-      attrs.ev_range_km    ? { label: "Menzil",           value: `${attrs.ev_range_km} km (WLTP)` }  : null,
-      attrs.battery_kwh    ? { label: "Batarya",          value: `${attrs.battery_kwh} kWh` }        : null,
-      attrs.tank_l         ? { label: "Yakıt Dep.",       value: `${attrs.tank_l} L` }               : null,
-      attrs.boot_l         ? { label: "Bagaj",            value: `${attrs.boot_l} L` }               : null,
-      attrs.weight_kg      ? { label: "Ağırlık",          value: `${attrs.weight_kg} kg` }           : null,
+      fuelType             ? { label: "Yakıt",         value: FUEL_LABELS[fuelType] ?? fuelType } : null,
+      bodyType             ? { label: "Kasa",          value: BODY_LABELS[bodyType] ?? bodyType } : null,
+      attrs.segment        ? { label: "Segment",       value: `${attrs.segment} Segment` }     : null,
+      attrs.drivetrain     ? { label: "Çekiş",         value: String(attrs.drivetrain) }        : null,
+      attrs.transmission   ? { label: "Vites",         value: String(attrs.transmission) }      : null,
+      attrs.engine_cc      ? { label: "Motor",         value: `${attrs.engine_cc} cc` }         : null,
+      attrs.power_hp       ? { label: "Güç",           value: `${attrs.power_hp} HP` }          : null,
+      attrs.torque_nm      ? { label: "Tork",          value: `${attrs.torque_nm} Nm` }         : null,
+      attrs.zero_to_100    ? { label: "0–100 km/s",    value: `${attrs.zero_to_100} sn` }       : null,
+      attrs.top_speed_kmh  ? { label: "Azami Hız",     value: `${attrs.top_speed_kmh} km/s` }   : null,
+      attrs.ev_range_km    ? { label: "Menzil",        value: `${attrs.ev_range_km} km (WLTP)` } : null,
+      attrs.battery_kwh    ? { label: "Batarya",       value: `${attrs.battery_kwh} kWh` }      : null,
+      attrs.tank_l         ? { label: "Yakıt Dep.",    value: `${attrs.tank_l} L` }             : null,
+      attrs.boot_l         ? { label: "Bagaj",         value: `${attrs.boot_l} L` }             : null,
+      attrs.weight_kg      ? { label: "Ağırlık",       value: `${attrs.weight_kg} kg` }         : null,
     ];
   })();
   const specs = specsRaw.filter(Boolean) as SpecItem[];
+
+  // ── Tab içerikleri (server render) ──
+  const reviewsContent = reviews.length === 0 ? (
+    <div className="p-10 text-center space-y-3">
+      <div className="text-3xl">✍️</div>
+      <p className="font-semibold text-gray-800">Bu araç için ilk yorumu sen yaz</p>
+      <p className="text-sm text-gray-400">Gerçek deneyimini paylaş, diğer kullanıcılara yol göster.</p>
+      <Link
+        href={`/yorum-yaz?arac=${slug}`}
+        className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white"
+        style={{ background: "#111" }}
+      >
+        Yorum Yaz →
+      </Link>
+    </div>
+  ) : (
+    <div className="divide-y divide-gray-50">
+      {reviews.map((r) => (
+        <div key={r.id} className="px-5 py-1">
+          <ReviewCard
+            displayName={r.user.displayName}
+            trustLevel={r.user.trustLevel}
+            ownershipMonths={r.ownershipMonthsAtReview}
+            scoreFiyat={r.scoreFiyat}
+            scoreKalite={r.scoreKalite}
+            scorePerformans={r.scorePerformans}
+            summaryText={r.summaryText}
+            detailText={r.detailText}
+            wouldBuyAgain={r.wouldBuyAgain}
+            createdAt={r.createdAt}
+          />
+        </div>
+      ))}
+    </div>
+  );
+
+  const left = specs.filter((_, i) => i % 2 === 0);
+  const right = specs.filter((_, i) => i % 2 === 1);
+
+  const specsContent = specs.length === 0 ? (
+    <p className="p-6 text-sm text-gray-400 text-center">Teknik özellik bulunamadı.</p>
+  ) : (
+    <div className="grid grid-cols-2 divide-x divide-gray-50">
+      <div className="px-5 py-2">
+        {left.map(({ label, value }) => (
+          <div key={label} className="flex justify-between items-baseline py-2.5 border-b border-gray-50 text-sm last:border-b-0">
+            <span className="text-gray-400">{label}</span>
+            <span className="font-semibold text-gray-800 text-right ml-4">{value}</span>
+          </div>
+        ))}
+      </div>
+      <div className="px-5 py-2">
+        {right.map(({ label, value }) => (
+          <div key={label} className="flex justify-between items-baseline py-2.5 border-b border-gray-50 text-sm last:border-b-0">
+            <span className="text-gray-400">{label}</span>
+            <span className="font-semibold text-gray-800 text-right ml-4">{value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -398,76 +449,52 @@ export default async function VehicleDetailPage({
       {/* ── Ana içerik ── */}
       <div className="max-w-5xl mx-auto px-4 py-8 space-y-4">
 
-        {/* Skor + butonlar */}
-        <div className="bg-white border border-gray-100 rounded-2xl p-5">
-          {scores ? (
+        {/* Puan varken: score kartı + butonlar */}
+        {scores ? (
+          <div className="bg-white border border-gray-100 rounded-2xl p-5">
             <FikapeScore scores={scores} variant="bars" reviewCount={reviewCount} />
-          ) : (
-            <p className="text-sm text-gray-400 text-center py-3">Puanlar yorumlarla oluşur</p>
-          )}
-          <div className="flex gap-2 mt-4">
-            <Link
-              href={`/yorum-yaz?arac=${slug}`}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
-              style={{ background: "#111" }}
-            >
-              Yorum Yaz →
-            </Link>
+            <div className="flex gap-2 mt-4">
+              <Link
+                href={`/yorum-yaz?arac=${slug}`}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
+                style={{ background: "#111" }}
+              >
+                Yorum Yaz →
+              </Link>
+              {userId ? (
+                <GarageButton productId={product.id} initialInGarage={inGarage} />
+              ) : (
+                <Link
+                  href="/giris"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold border-2 border-gray-200 text-gray-500 hover:border-gray-300 transition-colors"
+                >
+                  🚗 Bu araç benim
+                </Link>
+              )}
+            </div>
+          </div>
+        ) : (
+          /* Puan yokken: sadece "Bu araç benim" */
+          <div className="flex justify-end">
             {userId ? (
               <GarageButton productId={product.id} initialInGarage={inGarage} />
             ) : (
               <Link
                 href="/giris"
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold border-2 border-gray-200 text-gray-500 transition-colors hover:border-gray-300"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors bg-white"
               >
                 🚗 Bu araç benim
               </Link>
             )}
           </div>
-        </div>
+        )}
 
-        {/* Yorumlar */}
-        <div className="space-y-4">
-          <h2 className="text-base font-bold text-gray-900">
-            {reviewCount > 0 ? `${reviewCount} Kullanıcı Yorumu` : "Henüz yorum yok"}
-          </h2>
-
-          {reviews.length === 0 ? (
-            <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-10 text-center space-y-3">
-              <div className="text-3xl">✍️</div>
-              <p className="font-semibold text-gray-800">Bu araç için ilk yorumu sen yaz</p>
-              <p className="text-sm text-gray-400">
-                Gerçek deneyimini paylaş, diğer kullanıcılara yol göster.
-              </p>
-              <Link
-                href={`/yorum-yaz?arac=${slug}`}
-                className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
-                style={{ background: "#111" }}
-              >
-                Yorum Yaz →
-              </Link>
-            </div>
-          ) : (
-            reviews.map((r) => (
-              <ReviewCard
-                key={r.id}
-                displayName={r.user.displayName}
-                trustLevel={r.user.trustLevel}
-                ownershipMonths={r.ownershipMonthsAtReview}
-                scoreFiyat={r.scoreFiyat}
-                scoreKalite={r.scoreKalite}
-                scorePerformans={r.scorePerformans}
-                summaryText={r.summaryText}
-                detailText={r.detailText}
-                wouldBuyAgain={r.wouldBuyAgain}
-                createdAt={r.createdAt}
-              />
-            ))
-          )}
-        </div>
-
-        {/* Teknik özellikler accordion */}
-        <SpecAccordion specs={specs} />
+        {/* Tab: Yorumlar / Teknik Özellikler */}
+        <TabView
+          reviewCount={reviewCount}
+          reviewsContent={reviewsContent}
+          specsContent={specsContent}
+        />
 
       </div>
     </>
