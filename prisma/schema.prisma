@@ -107,6 +107,7 @@ model Product {
 
   userProducts    UserProduct[]
   reviews         Review[]
+  photos          ProductPhoto[]
 
   @@map("products")
 }
@@ -150,6 +151,7 @@ model User {
   consentLogs         ConsentLog[]
   dataDeletionRequests DataDeletionRequest[]
   vehicleSuggestions  VehicleSuggestion[]
+  productPhotos       ProductPhoto[]        @relation("UserProductPhotos")
 
   @@map("users")
 }
@@ -251,6 +253,7 @@ model Review {
   verification  ReviewVerification?
   flags         ReviewFlag[]
   helpfulVotes  ReviewHelpfulVote[]
+  photos        ProductPhoto[]
 
   @@map("reviews")
 }
@@ -435,6 +438,15 @@ model VehicleSuggestion {
   trimName     String?
   notes        String?  @db.VarChar(500)
 
+  // CarQuery'den seçilen ham veri
+  carQueryData Json?
+
+  // Kullanıcının aynı anda yazdığı bekleyen yorum verisi
+  reviewData   Json?
+
+  // Yorum sırasında yüklenen fotoğraflar (Vercel Blob URL'leri)
+  photoUrls    String[] @default([])
+
   status       SuggestionStatus @default(PENDING)
   adminNote    String?
 
@@ -446,6 +458,34 @@ model VehicleSuggestion {
 }
 
 enum SuggestionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// ─────────────────────────────────────────────
+// ÜRÜN FOTOĞRAFLARI — Kullanıcı yüklemeli
+// ─────────────────────────────────────────────
+
+model ProductPhoto {
+  id               Int         @id @default(autoincrement())
+  productId        Int
+  product          Product     @relation(fields: [productId], references: [id])
+  uploadedByUserId Int?
+  uploadedBy       User?       @relation("UserProductPhotos", fields: [uploadedByUserId], references: [id])
+  reviewId         Int?
+  review           Review?     @relation(fields: [reviewId], references: [id])
+
+  url              String
+  status           PhotoStatus @default(PENDING)
+  order            Int         @default(0)
+
+  createdAt        DateTime    @default(now())
+
+  @@map("product_photos")
+}
+
+enum PhotoStatus {
   PENDING
   APPROVED
   REJECTED
