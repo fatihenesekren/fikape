@@ -1,22 +1,17 @@
 import { NextResponse } from "next/server";
+import makesData from "@/data/makes.json";
 
-const CQ = "https://www.carqueryapi.com/api/0.3/";
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const category = searchParams.get("category") ?? "otomobil";
 
-export async function GET() {
-  try {
-    const res = await fetch(`${CQ}?cmd=getMakes`, { next: { revalidate: 86400 } });
-    if (!res.ok) return NextResponse.json({ makes: [] });
+  const list = makesData[category as keyof typeof makesData] ?? makesData.otomobil;
 
-    // CarQuery yanıtı bazen ";{...}" şeklinde gelir — parse öncesi temizle
-    const text = await res.text();
-    const json = text.trim().replace(/^[^[{]*/, "");
-    const data = JSON.parse(json);
+  // Eski format ile uyumluluk: { make_id, make_display }
+  const makes = list.map((name) => ({
+    make_id: name.toLowerCase().replace(/[^a-z0-9]/g, "-"),
+    make_display: name,
+  }));
 
-    const makes: { make_id: string; make_display: string; make_country: string }[] =
-      data.Makes ?? [];
-
-    return NextResponse.json({ makes });
-  } catch {
-    return NextResponse.json({ makes: [] });
-  }
+  return NextResponse.json({ makes });
 }

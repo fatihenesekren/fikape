@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import vehiclesData from "@/data/vehicles.json";
 
 const CATEGORIES = [
   { value: "otomobil",   label: "Otomobil" },
@@ -11,26 +12,6 @@ const CATEGORIES = [
   { value: "karavan",    label: "Karavan" },
   { value: "kamyonet",   label: "Kamyonet" },
 ] as const;
-
-// CarQuery kullanan kategoriler
-const CQ_CATEGORIES = new Set(["otomobil", "motosiklet", "kamyonet"]);
-
-// Statik marka listeleri
-const STATIC_BRANDS: Record<string, string[]> = {
-  "e-scooter": [
-    "Xiaomi", "Segway", "Ninebot", "Kaabo", "Dualtron", "Niu", "Inokim",
-    "Vsett", "Kugoo", "Zero", "Pure Electric", "Levy", "Turboant", "Gotrax",
-    "Joyor", "Hiboy", "Apollo", "Emove", "Fluid", "Unagi", "Bird", "Lime",
-    "Navee", "Cecotec", "Laotie",
-  ].sort(),
-  karavan: [
-    "Adria", "Bailey", "Bürstner", "Caravelair", "Coachman", "Dethleffs",
-    "Elnagh", "Eriba", "Eura Mobil", "Fendt", "Fleurette", "Frankia",
-    "Globecar", "Hobby", "Hymer", "Knaus", "LMC", "Laika", "Mc Louis",
-    "Niesmann+Bischoff", "Pilote", "Rapido", "Rime", "Roller Team",
-    "Sunlight", "Swift", "Tabbert", "Trigano", "Weinsberg",
-  ].sort(),
-};
 
 const FUEL_TYPES: Record<string, { value: string; label: string }[]> = {
   otomobil: [
@@ -58,109 +39,54 @@ const SCORE_LABELS: Record<number, string> = {
   1: "Çok kötü", 2: "Kötü", 3: "Orta", 4: "İyi", 5: "Çok iyi",
 };
 
-type Make = { make_id: string; make_display: string };
-type CarModel = { model_name: string };
+type CategoryKey = keyof typeof vehiclesData;
 
 export default function OnerPage() {
   const { data: session, status } = useSession();
 
-  // ── Kategori ──
-  const [categorySlug, setCategorySlug] = useState("otomobil");
-  const useCarQuery = CQ_CATEGORIES.has(categorySlug);
+  const [categorySlug, setCategorySlug] = useState<CategoryKey>("otomobil");
+  const [selectedMake, setSelectedMake] = useState("");
+  const [selectedModel, setSelectedModel] = useState("");
+  const [customModel, setCustomModel] = useState("");
 
-  // ── CarQuery state (otomobil / moto / kamyonet) ──
-  const [allMakes, setAllMakes] = useState<Make[]>([]);
-  const [makesLoading, setMakesLoading] = useState(false);
-  const [brandInput, setBrandInput] = useState("");
-  const [selectedMake, setSelectedMake] = useState<Make | null>(null);
-  const [showMakes, setShowMakes] = useState(false);
-
-  const [models, setModels] = useState<CarModel[]>([]);
-  const [modelsLoading, setModelsLoading] = useState(false);
-  const [modelInput, setModelInput] = useState("");
-  const [selectedModel, setSelectedModel] = useState<CarModel | null>(null);
-  const [showModels, setShowModels] = useState(false);
-
-  // ── Statik marka state (e-scooter / karavan) ──
-  const [staticBrand, setStaticBrand] = useState("");
-  const [staticModel, setStaticModel] = useState("");
-
-  // ── Ortak alanlar ──
   const [year, setYear] = useState("");
   const [fuelType, setFuelType] = useState("");
   const [trimName, setTrimName] = useState("");
   const [notes, setNotes] = useState("");
 
-  // ── Yorum ──
   const [addReview, setAddReview] = useState(false);
   const [scoreFiyat, setScoreFiyat] = useState(0);
   const [scoreKalite, setScoreKalite] = useState(0);
   const [scorePerformans, setScorePerformans] = useState(0);
   const [summaryText, setSummaryText] = useState("");
 
-  // ── Fotoğraf ──
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoUrls, setPhotoUrls] = useState<string[]>([]);
   const [uploadingPhotos, setUploadingPhotos] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  // ── Genel ──
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Tüm markaları mount'ta bir kez yükle
-  useEffect(() => {
-    if (allMakes.length > 0) return;
-    setMakesLoading(true);
-    fetch("/api/carquery/makes")
-      .then((r) => r.json())
-      .then((d) => setAllMakes(d.makes ?? []))
-      .finally(() => setMakesLoading(false));
-  }, [allMakes.length]);
+  const makes = vehiclesData[categorySlug] ?? [];
+  const makeEntry = makes.find((m) => m.make === selectedMake);
+  const models = makeEntry?.models ?? [];
 
-  // Marka seçilince modelleri yükle (CarQuery)
-  useEffect(() => {
-    if (!selectedMake) { setModels([]); return; }
-    setModelsLoading(true);
-    fetch(`/api/carquery/models?make=${encodeURIComponent(selectedMake.make_id)}`)
-      .then((r) => r.json())
-      .then((d) => setModels(d.models ?? []))
-      .finally(() => setModelsLoading(false));
-  }, [selectedMake]);
+  const isOther = selectedModel === "Diğer";
 
-  // Kategori değişince alanları sıfırla
   function handleCategoryChange(val: string) {
-    setCategorySlug(val);
+    setCategorySlug(val as CategoryKey);
+    setSelectedMake("");
+    setSelectedModel("");
+    setCustomModel("");
     setFuelType("");
-    setBrandInput(""); setSelectedMake(null);
-    setModelInput(""); setSelectedModel(null);
-    setStaticBrand(""); setStaticModel("");
-    setModels([]);
   }
 
-  // Marka client-side filtrele
-  const filteredMakes = brandInput.length >= 1
-    ? allMakes.filter((m) => m.make_display.toLowerCase().startsWith(brandInput.toLowerCase())).slice(0, 20)
-    : [];
-
-  // Model client-side filtrele
-  const filteredModels = modelInput
-    ? models.filter((m) => m.model_name.toLowerCase().includes(modelInput.toLowerCase()))
-    : models;
-
-  function selectMake(make: Make) {
-    setSelectedMake(make);
-    setBrandInput(make.make_display);
-    setShowMakes(false);
-    setSelectedModel(null);
-    setModelInput("");
-  }
-
-  function selectModel(model: CarModel) {
-    setSelectedModel(model);
-    setModelInput(model.model_name);
-    setShowModels(false);
+  function handleMakeChange(val: string) {
+    setSelectedMake(val);
+    setSelectedModel("");
+    setCustomModel("");
   }
 
   async function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -191,9 +117,7 @@ export default function OnerPage() {
   }
 
   function resetForm() {
-    setBrandInput(""); setSelectedMake(null);
-    setModelInput(""); setSelectedModel(null);
-    setStaticBrand(""); setStaticModel("");
+    setSelectedMake(""); setSelectedModel(""); setCustomModel("");
     setYear(""); setFuelType(""); setTrimName(""); setNotes("");
     setAddReview(false); setScoreFiyat(0); setScoreKalite(0); setScorePerformans(0); setSummaryText("");
     setPhotos([]); setPhotoUrls([]);
@@ -203,15 +127,11 @@ export default function OnerPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const brandName = useCarQuery ? selectedMake?.make_display : staticBrand;
-    const modelName = useCarQuery ? selectedModel?.model_name : staticModel;
+    const brandName = selectedMake === "Diğer / Bulamadım" ? customModel : selectedMake;
+    const modelName = isOther ? customModel.trim() : selectedModel;
 
-    if (!brandName || !modelName?.trim()) {
-      setError("Lütfen marka ve model girin.");
-      return;
-    }
-    if (useCarQuery && !selectedMake) {
-      setError("Lütfen listeden bir marka seçin.");
+    if (!brandName || !modelName) {
+      setError("Lütfen marka ve model seçin.");
       return;
     }
     if (addReview && (!scoreFiyat || !scoreKalite || !scorePerformans)) {
@@ -223,15 +143,13 @@ export default function OnerPage() {
     try {
       const body = {
         brandName,
-        modelName: modelName.trim(),
+        modelName,
         year,
         categorySlug,
         fuelType,
         trimName,
         notes,
-        carQueryData: useCarQuery && selectedMake
-          ? { make_id: selectedMake.make_id, make_display: selectedMake.make_display, model_name: selectedModel?.model_name }
-          : null,
+        carQueryData: null,
         reviewData: addReview ? { scoreFiyat, scoreKalite, scorePerformans, summaryText } : null,
         photoUrls,
       };
@@ -288,14 +206,12 @@ export default function OnerPage() {
   }
 
   if (done) {
-    const brandName = useCarQuery ? selectedMake?.make_display : staticBrand;
-    const modelName = useCarQuery ? selectedModel?.model_name : staticModel;
     return (
       <div className="max-w-xl mx-auto px-4 py-20 text-center">
         <p className="text-5xl mb-4">✅</p>
         <h1 className="text-xl font-bold text-gray-900 mb-2">Öneriniz Alındı!</h1>
         <p className="text-sm text-gray-500 mb-6">
-          {brandName} {modelName} önerinizi inceleyeceğiz. Onaylandığında size bildirim gönderilecek.
+          {selectedMake} {isOther ? customModel : selectedModel} önerinizi inceleyeceğiz.
         </p>
         <div className="flex items-center justify-center gap-3">
           <button onClick={resetForm} className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors">
@@ -310,7 +226,6 @@ export default function OnerPage() {
   }
 
   const fuelOptions = FUEL_TYPES[categorySlug] ?? [];
-  const staticBrands = STATIC_BRANDS[categorySlug] ?? [];
 
   return (
     <div className="max-w-[480px] mx-auto px-4 py-10">
@@ -321,7 +236,7 @@ export default function OnerPage() {
 
       <form onSubmit={handleSubmit} className="space-y-5">
 
-        {/* ── Kategori (önce seç) ── */}
+        {/* ── Araç Tipi ── */}
         <div>
           <label className="block text-xs font-semibold text-gray-700 mb-1">
             Araç Tipi <span className="text-red-500">*</span>
@@ -338,114 +253,48 @@ export default function OnerPage() {
         </div>
 
         {/* ── Marka ── */}
-        {useCarQuery ? (
-          <div className="relative">
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
-              Marka <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              value={brandInput}
-              onChange={(e) => {
-                setBrandInput(e.target.value);
-                setSelectedMake(null);
-                setSelectedModel(null);
-                setModelInput("");
-                setShowMakes(true);
-              }}
-              onFocus={() => { if (filteredMakes.length) setShowMakes(true); }}
-              onBlur={() => setTimeout(() => setShowMakes(false), 150)}
-              placeholder={makesLoading ? "Yükleniyor..." : "ör. Toyota, BMW, Renault..."}
-              disabled={makesLoading}
-              className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors disabled:bg-gray-50 disabled:text-gray-400"
-            />
-            {showMakes && filteredMakes.length > 0 && (
-              <ul className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-xl shadow-lg max-h-48 overflow-y-auto">
-                {filteredMakes.map((m) => (
-                  <li
-                    key={m.make_id}
-                    onMouseDown={() => selectMake(m)}
-                    className="px-3 py-2 text-sm hover:bg-gray-50 cursor-pointer"
-                  >
-                    {m.make_display}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ) : (
-          <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
-              Marka <span className="text-red-500">*</span>
-            </label>
-            <select
-              value={staticBrand}
-              onChange={(e) => setStaticBrand(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors bg-white"
-            >
-              <option value="">— Marka seçin —</option>
-              {staticBrands.map((b) => (
-                <option key={b} value={b}>{b}</option>
-              ))}
-              <option value="__diger__">Listede yok (diğer)</option>
-            </select>
-            {staticBrand === "__diger__" && (
-              <input
-                type="text"
-                placeholder="Marka adını yazın"
-                className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
-                onChange={(e) => setStaticBrand(e.target.value)}
-              />
-            )}
-          </div>
-        )}
+        <div>
+          <label className="block text-xs font-semibold text-gray-700 mb-1">
+            Marka <span className="text-red-500">*</span>
+          </label>
+          <select
+            value={selectedMake}
+            onChange={(e) => handleMakeChange(e.target.value)}
+            className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors bg-white"
+          >
+            <option value="">— Marka seçin —</option>
+            {makes.map((m) => (
+              <option key={m.make} value={m.make}>{m.make}</option>
+            ))}
+          </select>
+        </div>
 
         {/* ── Model ── */}
-        {useCarQuery ? (
-          <div className="relative">
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
-              Model <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              value={modelInput}
-              onChange={(e) => {
-                setModelInput(e.target.value);
-                setSelectedModel(null);
-                setShowModels(true);
-              }}
-              onFocus={() => { if (models.length) setShowModels(true); }}
-              onBlur={() => setTimeout(() => setShowModels(false), 150)}
-              placeholder={selectedMake ? (modelsLoading ? "Yükleniyor..." : "Model seçin veya yazın") : "Önce marka seçin"}
-              disabled={!selectedMake || modelsLoading}
-              className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors disabled:bg-gray-50 disabled:text-gray-400"
-            />
-            {showModels && filteredModels.length > 0 && (
-              <ul className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-xl shadow-lg max-h-48 overflow-y-auto">
-                {filteredModels.map((m) => (
-                  <li
-                    key={m.model_name}
-                    onMouseDown={() => selectModel(m)}
-                    className="px-3 py-2 text-sm hover:bg-gray-50 cursor-pointer"
-                  >
-                    {m.model_name}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ) : (
+        {selectedMake && (
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">
               Model <span className="text-red-500">*</span>
             </label>
-            <input
-              type="text"
-              value={staticModel}
-              onChange={(e) => setStaticModel(e.target.value)}
-              placeholder="ör. Mi 4 Pro, Travelstar 700..."
-              className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
-            />
+            <select
+              value={selectedModel}
+              onChange={(e) => { setSelectedModel(e.target.value); setCustomModel(""); }}
+              className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors bg-white"
+            >
+              <option value="">— Model seçin —</option>
+              {models.map((m) => (
+                <option key={m} value={m}>{m}</option>
+              ))}
+            </select>
+            {isOther && (
+              <input
+                type="text"
+                value={customModel}
+                onChange={(e) => setCustomModel(e.target.value)}
+                placeholder="Model adını yazın"
+                className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
+                autoFocus
+              />
+            )}
           </div>
         )}
 
