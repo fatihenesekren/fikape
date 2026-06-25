@@ -32,7 +32,7 @@ async function main() {
       parentId: catAraclar.id, sortOrder: 1,
       attributeSchema: {
         fuel_type: { type: "enum", values: ["GASOLINE", "DIESEL", "LPG", "HYBRID", "EV"], label: "Yakıt Tipi" },
-        segment:   { type: "enum", values: ["A", "B", "C", "D", "E", "SUV"], label: "Segment" },
+        segment:   { type: "enum", values: ["A", "B", "C", "D", "E", "F"], label: "Segment" },
         body_type: { type: "enum", values: ["sedan", "hatchback", "suv", "mpv", "coupe", "cabrio"], label: "Kasa Tipi" },
         engine_cc: { type: "number", label: "Motor Hacmi (cc)", nullable: true },
         power_hp:  { type: "number", label: "Güç (HP)", nullable: true },
