@@ -8,13 +8,19 @@ export async function GET(req: Request) {
 
   if (!make) return NextResponse.json({ models: [] });
 
-  const res = await fetch(`${CQ}?cmd=getModels&make=${encodeURIComponent(make)}`, {
-    next: { revalidate: 86400 },
-  });
-  if (!res.ok) return NextResponse.json({ models: [] });
+  try {
+    const res = await fetch(`${CQ}?cmd=getModels&make=${encodeURIComponent(make)}`, {
+      next: { revalidate: 86400 },
+    });
+    if (!res.ok) return NextResponse.json({ models: [] });
 
-  const data = await res.json();
-  const models: { model_name: string; model_make_id: string }[] = data.Models ?? [];
+    const text = await res.text();
+    const json = text.trim().replace(/^[^[{]*/, "");
+    const data = JSON.parse(json);
+    const models: { model_name: string; model_make_id: string }[] = data.Models ?? [];
 
-  return NextResponse.json({ models });
+    return NextResponse.json({ models });
+  } catch {
+    return NextResponse.json({ models: [] });
+  }
 }
