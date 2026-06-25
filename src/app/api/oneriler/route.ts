@@ -15,7 +15,10 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const { brandName, modelName, year, categorySlug, fuelType, trimName, notes } = body;
+  const {
+    brandName, modelName, year, categorySlug, fuelType, trimName, notes,
+    carQueryData, reviewData, photoUrls,
+  } = body;
 
   if (!brandName?.trim() || !modelName?.trim()) {
     return NextResponse.json({ error: "Marka ve model zorunludur" }, { status: 400 });
@@ -25,6 +28,18 @@ export async function POST(req: Request) {
   }
   if (fuelType && !VALID_FUEL_TYPES.includes(fuelType)) {
     return NextResponse.json({ error: "Geçersiz yakıt tipi" }, { status: 400 });
+  }
+
+  // reviewData validasyon
+  if (reviewData) {
+    const { scoreFiyat, scoreKalite, scorePerformans, summaryText } = reviewData;
+    const scores = [scoreFiyat, scoreKalite, scorePerformans];
+    if (scores.some((s) => !s || s < 1 || s > 5)) {
+      return NextResponse.json({ error: "Geçersiz puan değerleri" }, { status: 400 });
+    }
+    if (!summaryText?.trim() || summaryText.trim().length < 10) {
+      return NextResponse.json({ error: "Yorum en az 10 karakter olmalı" }, { status: 400 });
+    }
   }
 
   const userId = Number(session.user.id);
@@ -45,6 +60,10 @@ export async function POST(req: Request) {
     );
   }
 
+  const safePhotoUrls = Array.isArray(photoUrls)
+    ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 5)
+    : [];
+
   const suggestion = await prisma.vehicleSuggestion.create({
     data: {
       userId,
@@ -55,6 +74,9 @@ export async function POST(req: Request) {
       fuelType: fuelType || null,
       trimName: trimName?.trim() || null,
       notes: notes?.trim() || null,
+      carQueryData: carQueryData ?? undefined,
+      reviewData: reviewData ?? undefined,
+      photoUrls: safePhotoUrls,
     },
   });
 
