@@ -167,21 +167,21 @@ export default async function VehicleDetailPage({
       attrs.engine_cc      ? { label: "Motor",      value: `${attrs.engine_cc} cc` }          : (attrs.ev_range_km ? { label: "Menzil", value: `${attrs.ev_range_km} km` } : null),
       attrs.power_hp       ? { label: "Güç",        value: `${attrs.power_hp} HP` }           : null,
       attrs.torque_nm      ? { label: "Tork",       value: `${attrs.torque_nm} Nm` }          : null,
-      attrs.seat_height_mm ? { label: "Sele Yüks.", value: `${attrs.seat_height_mm} mm` }     : null,
+      attrs.seat_height_mm ? { label: "Sele Yüksekliği", value: `${attrs.seat_height_mm} mm` } : null,
       attrs.tank_l         ? { label: "Depo",       value: `${attrs.tank_l} L` }              : null,
     ];
     if (categorySlug === "karavan") return [
-      attrs.berth            ? { label: "Yatak Kap.", value: `${attrs.berth} kişi` }          : null,
-      attrs.length_cm        ? { label: "Uzunluk",    value: `${attrs.length_cm} cm` }        : null,
-      attrs.total_weight_kg  ? { label: "Toplam Ağ.", value: `${attrs.total_weight_kg} kg` }  : null,
+      attrs.berth            ? { label: "Yatak Kapasitesi", value: `${attrs.berth} kişi` }       : null,
+      attrs.length_cm        ? { label: "Uzunluk",         value: `${attrs.length_cm} cm` }     : null,
+      attrs.total_weight_kg  ? { label: "Toplam Ağırlık",  value: `${attrs.total_weight_kg} kg` } : null,
       attrs.has_bathroom != null ? { label: "Banyo",  value: attrs.has_bathroom ? "Var" : "Yok" } : null,
       attrs.has_kitchen  != null ? { label: "Mutfak", value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
     ];
     if (categorySlug === "kamyonet") return [
-      attrs.power_hp         ? { label: "Güç",        value: `${attrs.power_hp} HP` }         : null,
-      attrs.payload_kg       ? { label: "Yük Kap.",   value: `${attrs.payload_kg} kg` }       : null,
-      attrs.torque_nm        ? { label: "Tork",       value: `${attrs.torque_nm} Nm` }        : null,
-      attrs.tow_capacity_kg  ? { label: "Çekme Kap.", value: `${attrs.tow_capacity_kg} kg` }  : null,
+      attrs.power_hp         ? { label: "Güç",              value: `${attrs.power_hp} HP` }        : null,
+      attrs.payload_kg       ? { label: "Yük Kapasitesi",   value: `${attrs.payload_kg} kg` }      : null,
+      attrs.torque_nm        ? { label: "Tork",             value: `${attrs.torque_nm} Nm` }       : null,
+      attrs.tow_capacity_kg  ? { label: "Çekme Kapasitesi", value: `${attrs.tow_capacity_kg} kg` } : null,
       attrs.four_wd != null  ? { label: "4×4",        value: attrs.four_wd ? "Var" : "Yok" }  : null,
     ];
     return [
@@ -189,7 +189,7 @@ export default async function VehicleDetailPage({
       attrs.power_hp     ? { label: "Güç",       value: `${attrs.power_hp} HP` }              : null,
       attrs.zero_to_100  ? { label: "0–100",     value: `${attrs.zero_to_100} sn` }           : null,
       attrs.transmission ? { label: "Vites",     value: String(attrs.transmission) }           : null,
-      attrs.ev_range_km  ? { label: "Menzil",    value: `${attrs.ev_range_km} km` }           : (attrs.tank_l ? { label: "Yakıt Dep.", value: `${attrs.tank_l} L` } : null),
+      attrs.ev_range_km  ? { label: "Menzil",    value: `${attrs.ev_range_km} km` }           : (attrs.tank_l ? { label: "Yakıt Deposu", value: `${attrs.tank_l} L` } : null),
     ];
   })();
   const heroSpecs = heroSpecsRaw.filter(Boolean) as SpecItem[];
