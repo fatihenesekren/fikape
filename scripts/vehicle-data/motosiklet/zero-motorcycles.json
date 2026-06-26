@@ -1,0 +1,11 @@
+{
+  "make": "Zero Motorcycles",
+  "models": [
+    { "name": "S / SR (Elektrik Naked)", "versions": ["Elektrik ZF7.2 46 CV S", "Elektrik ZF14.4 82 CV SR", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "SR/F (2019-)", "versions": ["Elektrik ZF14.4 110 CV", "Diğer"], "trims": ["Standart", "Premium", "Diğer"] },
+    { "name": "SR/S (2020-)", "versions": ["Elektrik ZF14.4 110 CV Sport Tourer", "Diğer"], "trims": ["Standart", "Premium", "Diğer"] },
+    { "name": "FX / FXE (Dual Sport / Supermoto)", "versions": ["Elektrik ZF7.2 46 CV FX", "Elektrik ZF7.2 46 CV FXE Supermoto", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "DS / DSR/X (Dual Sport / Adventure)", "versions": ["Elektrik ZF14.4 82 CV DS", "Elektrik ZF14.4 100 CV DSR/X", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

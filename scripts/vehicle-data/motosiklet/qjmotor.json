@@ -1,0 +1,9 @@
+{
+  "make": "QJMotor",
+  "models": [
+    { "name": "SRT 250 / SRK 400 (Naked)", "versions": ["249cc 26 CV SRT", "400cc 42 CV SRK", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "SRK 600 / SRT 600 (Naked/Sport)", "versions": ["600cc 75 CV SRK Naked", "600cc 75 CV SRT Sport", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Advent 650 (Adventure)", "versions": ["649cc 60 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

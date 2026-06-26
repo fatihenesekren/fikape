@@ -1,0 +1,9 @@
+{
+  "make": "Sur-Ron",
+  "models": [
+    { "name": "Light Bee X (2019-)", "versions": ["Elektrik 6 kW 50 eşd.", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Ultra Bee (2022-)", "versions": ["Elektrik 10 kW 125 eşd.", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Storm Bee (2021-)", "versions": ["Elektrik 22.5 kW Enduro", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

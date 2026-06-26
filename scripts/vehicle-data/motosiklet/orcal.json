@@ -1,0 +1,8 @@
+{
+  "make": "Orcal",
+  "models": [
+    { "name": "Astor 125", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Sprint 125", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

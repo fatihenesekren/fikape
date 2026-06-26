@@ -1,0 +1,10 @@
+{
+  "make": "Brixton",
+  "models": [
+    { "name": "Rayburn 125", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Cromwell 125 / 250", "versions": ["125cc 11 CV", "250cc 26 CV", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
+    { "name": "Felsberg 125 / 250", "versions": ["125cc 11 CV", "250cc 26 CV", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
+    { "name": "Cromwell 1200", "versions": ["1200cc 77 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

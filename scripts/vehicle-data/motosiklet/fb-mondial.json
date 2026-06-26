@@ -1,0 +1,9 @@
+{
+  "make": "FB Mondial",
+  "models": [
+    { "name": "HPS 125 / 300", "versions": ["125cc 15 CV", "300cc 26 CV", "Diğer"], "trims": ["Standart", "Evo", "Diğer"] },
+    { "name": "SMX 125 (Supermoto)", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Piega 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

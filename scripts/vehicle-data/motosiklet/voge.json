@@ -1,0 +1,10 @@
+{
+  "make": "Voge",
+  "models": [
+    { "name": "300AC / 300RR (2020-)", "versions": ["292cc 29 CV 300AC Adventure", "292cc 35 CV 300RR Naked", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "500AC / 500AC S (2021-)", "versions": ["494cc 47 CV 500AC", "494cc 47 CV 500AC S", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
+    { "name": "500DS (Dual Sport)", "versions": ["494cc 47 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "650AC / 650DS (2022-)", "versions": ["649cc 71 CV 650AC", "649cc 71 CV 650DS", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

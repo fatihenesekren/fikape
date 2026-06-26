@@ -1,0 +1,9 @@
+{
+  "make": "Küba Motor",
+  "models": [
+    { "name": "Scooter 50 / 100 / 125", "versions": ["50cc", "100cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Motosiklet 100 / 125", "versions": ["100cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Cross / Enduro 125", "versions": ["125cc 2T", "125cc 4T", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

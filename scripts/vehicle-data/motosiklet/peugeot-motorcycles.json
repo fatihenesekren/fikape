@@ -1,0 +1,11 @@
+{
+  "make": "Peugeot Motorcycles",
+  "models": [
+    { "name": "Django 125 / 150", "versions": ["125cc 11 CV", "150cc 12 CV", "Diğer"], "trims": ["Active", "Allure", "Evasion", "Diğer"] },
+    { "name": "Speedfight 125", "versions": ["125cc 11 CV 4T", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Tweet 125 / 150", "versions": ["125cc 11 CV", "150cc 12 CV", "Diğer"], "trims": ["Standart", "Evo", "Diğer"] },
+    { "name": "Kisbee 50 / 100", "versions": ["50cc 3 CV", "100cc 6 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Metropolis 400 (3 Tekerlekli)", "versions": ["400cc 32 CV", "Diğer"], "trims": ["Standart", "RS", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

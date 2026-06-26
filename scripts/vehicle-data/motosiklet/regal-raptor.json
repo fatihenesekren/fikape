@@ -1,0 +1,10 @@
+{
+  "make": "Regal Raptor",
+  "models": [
+    { "name": "DD350E (Cruiser)", "versions": ["350cc 25 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "DD350F Daytona (Cruiser Sport)", "versions": ["350cc 25 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Spyder 350 (Sport)", "versions": ["350cc 25 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Bobber 350", "versions": ["350cc 25 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

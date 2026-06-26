@@ -1,0 +1,8 @@
+{
+  "make": "Asya",
+  "models": [
+    { "name": "AS 100 / 125 Motosiklet", "versions": ["100cc 6 CV", "125cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "AS 50 / 125 Scooter", "versions": ["50cc 3.5 CV", "125cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

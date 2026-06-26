@@ -1,0 +1,9 @@
+{
+  "make": "Mash",
+  "models": [
+    { "name": "Seventy / Black Seven 125", "versions": ["125cc 11 CV Seventy", "125cc 11 CV Black Seven", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Five Hundred 400", "versions": ["400cc 26 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Roadstar 650", "versions": ["649cc 34 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

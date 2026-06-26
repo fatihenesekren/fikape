@@ -8377,6 +8377,172 @@
       ]
     },
     {
+      "make": "Arora",
+      "models": [
+        {
+          "name": "Scooter 50 / 100 / 125",
+          "versions": [
+            "50cc 3.7 CV",
+            "100cc 5.5 CV",
+            "125cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Motosiklet 100 / 125",
+          "versions": [
+            "100cc 6 CV",
+            "125cc 8.5 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cross / Enduro 125",
+          "versions": [
+            "125cc 9 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Asya",
+      "models": [
+        {
+          "name": "AS 100 / 125 Motosiklet",
+          "versions": [
+            "100cc 6 CV",
+            "125cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 50 / 125 Scooter",
+          "versions": [
+            "50cc 3.5 CV",
+            "125cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Bajaj",
+      "models": [
+        {
+          "name": "Pulsar 125 / 150 / 160",
+          "versions": [
+            "125cc 12 CV",
+            "150cc 14 CV",
+            "160cc NS 17 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar 180 / 200 / 220",
+          "versions": [
+            "180cc 17 CV",
+            "200 NS 24 CV",
+            "220F 21 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "F",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar RS 200",
+          "versions": [
+            "200cc 24.5 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dominar 250 / 400",
+          "versions": [
+            "250cc 27 CV",
+            "400cc 40 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Avenger 160 / 220",
+          "versions": [
+            "160cc 15 CV Street",
+            "220cc 19 CV Cruise",
+            "220cc 19 CV Street",
+            "Diğer"
+          ],
+          "trims": [
+            "Street",
+            "Cruise",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Benelli",
       "models": [
         {
@@ -8521,6 +8687,44 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Bimota",
+      "models": [
+        {
+          "name": "KB4 (2021-)",
+          "versions": [
+            "1043cc 140 CV Kawasaki",
+            "KB4RC 140 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "RC",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tesi H2 (2020-)",
+          "versions": [
+            "998cc SC 210 CV Kawasaki H2",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -8758,6 +8962,169 @@
       ]
     },
     {
+      "make": "Brixton",
+      "models": [
+        {
+          "name": "Rayburn 125",
+          "versions": [
+            "125cc 11 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cromwell 125 / 250",
+          "versions": [
+            "125cc 11 CV",
+            "250cc 26 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Felsberg 125 / 250",
+          "versions": [
+            "125cc 11 CV",
+            "250cc 26 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cromwell 1200",
+          "versions": [
+            "1200cc 77 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Buell",
+      "models": [
+        {
+          "name": "XB9S Lightning / XB12R Firebolt (2002-2009)",
+          "versions": [
+            "984cc 92 CV XB9S",
+            "1203cc 101 CV XB12R",
+            "1203cc 101 CV XB12Ss",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "1125R / 1125CR (2008-2009)",
+          "versions": [
+            "1125cc 146 CV 1125R",
+            "1125cc 146 CV 1125CR",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hammerhead 1190 (2023-)",
+          "versions": [
+            "1190cc 185 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Super Cruiser 1190 (2023-)",
+          "versions": [
+            "1190cc 185 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Çağ",
+      "models": [
+        {
+          "name": "Motosiklet 50 / 70 / 100 / 125",
+          "versions": [
+            "50cc",
+            "70cc",
+            "100cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Scooter 50 / 125",
+          "versions": [
+            "50cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "CF Moto",
       "models": [
         {
@@ -8842,6 +9209,42 @@
           "trims": [
             "Sport",
             "Touring",
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Colove",
+      "models": [
+        {
+          "name": "450X (2022-)",
+          "versions": [
+            "450cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "500X (2023-)",
+          "versions": [
+            "500cc 55 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -9099,6 +9502,169 @@
       ]
     },
     {
+      "make": "Energica",
+      "models": [
+        {
+          "name": "Ego (2014-)",
+          "versions": [
+            "Elektrik 107 kW 145 CV",
+            "Ego+ 107 kW",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Eva Ribelle (2019-)",
+          "versions": [
+            "Elektrik 107 kW 145 CV",
+            "Eva Ribelle RS",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Experia (2022-)",
+          "versions": [
+            "Elektrik 107 kW 145 CV 22.5kWh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Fantic",
+      "models": [
+        {
+          "name": "Caballero 125",
+          "versions": [
+            "125cc 15 CV",
+            "Scrambler 125",
+            "Flat Track 125",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Deluxe",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Caballero 250 / 500",
+          "versions": [
+            "249cc 27 CV",
+            "449cc 38 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Rally",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XMF 125 (Enduro)",
+          "versions": [
+            "125cc 15 CV 2T",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Volt 125 (Elektrik)",
+          "versions": [
+            "Elektrik 11 kW 125 eşdeğer",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "FB Mondial",
+      "models": [
+        {
+          "name": "HPS 125 / 300",
+          "versions": [
+            "125cc 15 CV",
+            "300cc 26 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Evo",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SMX 125 (Supermoto)",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Piega 125",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Gas Gas",
       "models": [
         {
@@ -9336,6 +9902,56 @@
           "trims": [
             "Standart",
             "Special",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Hero MotoCorp",
+      "models": [
+        {
+          "name": "Xpulse 200 (2019-)",
+          "versions": [
+            "200cc 18.8 CV 4V",
+            "200cc 18.4 CV 2V",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "4V",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Xtreme 160R (2020-)",
+          "versions": [
+            "163cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Stealth",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mavrick 440 (2024-)",
+          "versions": [
+            "440cc 27 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -9778,6 +10394,94 @@
       ]
     },
     {
+      "make": "Jawa",
+      "models": [
+        {
+          "name": "42 (2018-)",
+          "versions": [
+            "334cc 30 CV",
+            "42 FJ (Bobber)",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "2.1",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Perak (2019-)",
+          "versions": [
+            "334cc 30 CV Bobber",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "350 OHC (2022-)",
+          "versions": [
+            "349cc 30.6 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Kanuni",
+      "models": [
+        {
+          "name": "Motosiklet 50 / 100 / 125",
+          "versions": [
+            "50cc",
+            "100cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Scooter 50 / 125",
+          "versions": [
+            "50cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Kawasaki",
       "models": [
         {
@@ -10003,6 +10707,67 @@
       ]
     },
     {
+      "make": "Keeway",
+      "models": [
+        {
+          "name": "Superlight 125 / 200",
+          "versions": [
+            "125cc 11 CV",
+            "200cc 17 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K-Light 125 / 250V (Cruiser)",
+          "versions": [
+            "125cc 11 CV",
+            "249cc 17 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Vieste 125 / 300 (Scooter)",
+          "versions": [
+            "125cc 11 CV",
+            "300cc 26 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TX 125 (Naked)",
+          "versions": [
+            "125cc 11 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "KTM",
       "models": [
         {
@@ -10129,6 +10894,57 @@
       ]
     },
     {
+      "make": "Küba Motor",
+      "models": [
+        {
+          "name": "Scooter 50 / 100 / 125",
+          "versions": [
+            "50cc",
+            "100cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Motosiklet 100 / 125",
+          "versions": [
+            "100cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cross / Enduro 125",
+          "versions": [
+            "125cc 2T",
+            "125cc 4T",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "KYMCO",
       "models": [
         {
@@ -10187,6 +11003,137 @@
           "trims": [
             "Standart",
             "S",
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Lifan",
+      "models": [
+        {
+          "name": "KP Mini 150",
+          "versions": [
+            "150cc 13.5 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KPM 150 (Sport)",
+          "versions": [
+            "150cc 14 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SR220 (Adventure)",
+          "versions": [
+            "220cc 19 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Mash",
+      "models": [
+        {
+          "name": "Seventy / Black Seven 125",
+          "versions": [
+            "125cc 11 CV Seventy",
+            "125cc 11 CV Black Seven",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Five Hundred 400",
+          "versions": [
+            "400cc 26 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Roadstar 650",
+          "versions": [
+            "649cc 34 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Mondial (TR)",
+      "models": [
+        {
+          "name": "125 Retro / Classic",
+          "versions": [
+            "125cc 11 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "250 Retro / Classic",
+          "versions": [
+            "250cc 21 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -10260,6 +11207,104 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Moto Morini",
+      "models": [
+        {
+          "name": "X-Cape 650 (2021-)",
+          "versions": [
+            "649cc 60 CV",
+            "X-Cape+ 649cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Seiemmezzo (2022-)",
+          "versions": [
+            "649cc 60 CV SCR",
+            "649cc 60 CV STR",
+            "Diğer"
+          ],
+          "trims": [
+            "SCR (Café Racer)",
+            "STR (Tracker)",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Milano (2023-)",
+          "versions": [
+            "649cc 60 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Motron",
+      "models": [
+        {
+          "name": "Cubertino (Elektrik Scooter)",
+          "versions": [
+            "Elektrik 4 kW 50 eşdeğer",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X-Pace (Elektrik)",
+          "versions": [
+            "Elektrik 4 kW 50 eşdeğer",
+            "Elektrik 11 kW 125 eşdeğer",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Unplugged (Elektrik Moped)",
+          "versions": [
+            "Elektrik 4 kW 50 eşdeğer",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -10340,6 +11385,169 @@
       ]
     },
     {
+      "make": "Norton",
+      "models": [
+        {
+          "name": "Commando 961 (2012-)",
+          "versions": [
+            "961cc 79 CV Sport",
+            "961cc 79 CV Cafe Racer",
+            "961cc 79 CV SE",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport",
+            "Cafe Racer",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V4CR (2023-)",
+          "versions": [
+            "1200cc 185 CV V4",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V4SV (2023-)",
+          "versions": [
+            "1200cc 200 CV V4",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Orcal",
+      "models": [
+        {
+          "name": "Astor 125",
+          "versions": [
+            "125cc 11 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sprint 125",
+          "versions": [
+            "125cc 11 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Peugeot Motorcycles",
+      "models": [
+        {
+          "name": "Django 125 / 150",
+          "versions": [
+            "125cc 11 CV",
+            "150cc 12 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Active",
+            "Allure",
+            "Evasion",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Speedfight 125",
+          "versions": [
+            "125cc 11 CV 4T",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tweet 125 / 150",
+          "versions": [
+            "125cc 11 CV",
+            "150cc 12 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Evo",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Kisbee 50 / 100",
+          "versions": [
+            "50cc 3 CV",
+            "100cc 6 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Metropolis 400 (3 Tekerlekli)",
+          "versions": [
+            "400cc 32 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Piaggio",
       "models": [
         {
@@ -10389,6 +11597,174 @@
             "Standart",
             "S",
             "Iget",
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "QJMotor",
+      "models": [
+        {
+          "name": "SRT 250 / SRK 400 (Naked)",
+          "versions": [
+            "249cc 26 CV SRT",
+            "400cc 42 CV SRK",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SRK 600 / SRT 600 (Naked/Sport)",
+          "versions": [
+            "600cc 75 CV SRK Naked",
+            "600cc 75 CV SRT Sport",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Advent 650 (Adventure)",
+          "versions": [
+            "649cc 60 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Regal Raptor",
+      "models": [
+        {
+          "name": "DD350E (Cruiser)",
+          "versions": [
+            "350cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DD350F Daytona (Cruiser Sport)",
+          "versions": [
+            "350cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Spyder 350 (Sport)",
+          "versions": [
+            "350cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bobber 350",
+          "versions": [
+            "350cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Rieju",
+      "models": [
+        {
+          "name": "MR 300 Racing / Pro (Enduro 2T)",
+          "versions": [
+            "293cc 2T Racing",
+            "293cc 2T Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Racing",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "MRX 50 / 125 (Motocross)",
+          "versions": [
+            "50cc 2T",
+            "125cc 2T",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Century 125 (Retro)",
+          "versions": [
+            "125cc 11 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Marathon 500 (Adventure)",
+          "versions": [
+            "450cc 35 CV 4T",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -10526,6 +11902,177 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Silence",
+      "models": [
+        {
+          "name": "S01 (2019-)",
+          "versions": [
+            "Elektrik 11 kW 125 eşd. 6.9kWh",
+            "Elektrik 11 kW S01+ 8.1kWh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "+",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Stark Future",
+      "models": [
+        {
+          "name": "Varg (2023-)",
+          "versions": [
+            "Elektrik 80 kW 110 CV Motocross",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Varg EX (2024-)",
+          "versions": [
+            "Elektrik 80 kW 110 CV Enduro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Super Soco",
+      "models": [
+        {
+          "name": "TC / TC Max (Elektrik Naked)",
+          "versions": [
+            "Elektrik 3 kW TC 50 eşd.",
+            "Elektrik 3.7 kW TC Max 50 eşd.",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TS / TS Street Hunter (Elektrik Naked)",
+          "versions": [
+            "Elektrik 3.7 kW TS",
+            "Elektrik 5 kW TS Hunter 125 eşd.",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Street Hunter",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CUx (Elektrik Scooter)",
+          "versions": [
+            "Elektrik 3 kW 50 eşd.",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CPx (Elektrik Scooter)",
+          "versions": [
+            "Elektrik 5 kW 125 eşd.",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Sur-Ron",
+      "models": [
+        {
+          "name": "Light Bee X (2019-)",
+          "versions": [
+            "Elektrik 6 kW 50 eşd.",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ultra Bee (2022-)",
+          "versions": [
+            "Elektrik 10 kW 125 eşd.",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Storm Bee (2021-)",
+          "versions": [
+            "Elektrik 22.5 kW Enduro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -10910,6 +12457,131 @@
       ]
     },
     {
+      "make": "TVS",
+      "models": [
+        {
+          "name": "Apache RTR 200 4V (2016-)",
+          "versions": [
+            "197cc 20.8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Race Edition",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Apache RR 310 (2017-)",
+          "versions": [
+            "312cc 34 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ronin 225 (2022-)",
+          "versions": [
+            "225cc 20.4 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Ümit Motor",
+      "models": [
+        {
+          "name": "Motosiklet 50 / 70 / 100 / 125",
+          "versions": [
+            "50cc",
+            "70cc",
+            "100cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Scooter 50 / 125",
+          "versions": [
+            "50cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Ural",
+      "models": [
+        {
+          "name": "Gear Up (Sepetli / Sidecar)",
+          "versions": [
+            "749cc 41 CV 2WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Camouflage",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CT (Solo)",
+          "versions": [
+            "749cc 41 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Vespa",
       "models": [
         {
@@ -10986,6 +12658,68 @@
           "trims": [
             "Standart",
             "X",
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Voge",
+      "models": [
+        {
+          "name": "300AC / 300RR (2020-)",
+          "versions": [
+            "292cc 29 CV 300AC Adventure",
+            "292cc 35 CV 300RR Naked",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "500AC / 500AC S (2021-)",
+          "versions": [
+            "494cc 47 CV 500AC",
+            "494cc 47 CV 500AC S",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "500DS (Dual Sport)",
+          "versions": [
+            "494cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "650AC / 650DS (2022-)",
+          "versions": [
+            "649cc 71 CV 650AC",
+            "649cc 71 CV 650DS",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -11259,6 +12993,141 @@
           "trims": [
             "Standart",
             "Tech Max",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Zero Motorcycles",
+      "models": [
+        {
+          "name": "S / SR (Elektrik Naked)",
+          "versions": [
+            "Elektrik ZF7.2 46 CV S",
+            "Elektrik ZF14.4 82 CV SR",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SR/F (2019-)",
+          "versions": [
+            "Elektrik ZF14.4 110 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Premium",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SR/S (2020-)",
+          "versions": [
+            "Elektrik ZF14.4 110 CV Sport Tourer",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Premium",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "FX / FXE (Dual Sport / Supermoto)",
+          "versions": [
+            "Elektrik ZF7.2 46 CV FX",
+            "Elektrik ZF7.2 46 CV FXE Supermoto",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DS / DSR/X (Dual Sport / Adventure)",
+          "versions": [
+            "Elektrik ZF14.4 82 CV DS",
+            "Elektrik ZF14.4 100 CV DSR/X",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Zontes",
+      "models": [
+        {
+          "name": "Z125 / ZT125-U (Naked)",
+          "versions": [
+            "125cc 14.5 CV Z125",
+            "125cc 14.5 CV ZT125-U",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Z250 / ZT250-N (Naked)",
+          "versions": [
+            "249cc 30 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ZT310-R / ZT310-X (Sport/Adventure)",
+          "versions": [
+            "312cc 35 CV ZT310-R",
+            "312cc 35 CV ZT310-X",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ZT350-T / ZT350-ADV (Retro/Adventure)",
+          "versions": [
+            "350cc 38 CV ZT350-T Retro",
+            "350cc 38 CV ZT350-ADV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },

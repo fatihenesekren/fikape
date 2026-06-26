@@ -1,0 +1,10 @@
+{
+  "make": "Super Soco",
+  "models": [
+    { "name": "TC / TC Max (Elektrik Naked)", "versions": ["Elektrik 3 kW TC 50 eşd.", "Elektrik 3.7 kW TC Max 50 eşd.", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "TS / TS Street Hunter (Elektrik Naked)", "versions": ["Elektrik 3.7 kW TS", "Elektrik 5 kW TS Hunter 125 eşd.", "Diğer"], "trims": ["Standart", "Street Hunter", "Diğer"] },
+    { "name": "CUx (Elektrik Scooter)", "versions": ["Elektrik 3 kW 50 eşd.", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "CPx (Elektrik Scooter)", "versions": ["Elektrik 5 kW 125 eşd.", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "make": "Buell",
+  "models": [
+    { "name": "XB9S Lightning / XB12R Firebolt (2002-2009)", "versions": ["984cc 92 CV XB9S", "1203cc 101 CV XB12R", "1203cc 101 CV XB12Ss", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "1125R / 1125CR (2008-2009)", "versions": ["1125cc 146 CV 1125R", "1125cc 146 CV 1125CR", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Hammerhead 1190 (2023-)", "versions": ["1190cc 185 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Super Cruiser 1190 (2023-)", "versions": ["1190cc 185 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

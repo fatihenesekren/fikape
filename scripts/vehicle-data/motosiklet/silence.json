@@ -1,0 +1,7 @@
+{
+  "make": "Silence",
+  "models": [
+    { "name": "S01 (2019-)", "versions": ["Elektrik 11 kW 125 eşd. 6.9kWh", "Elektrik 11 kW S01+ 8.1kWh", "Diğer"], "trims": ["Standart", "+", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

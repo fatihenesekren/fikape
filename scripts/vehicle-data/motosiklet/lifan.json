@@ -1,0 +1,9 @@
+{
+  "make": "Lifan",
+  "models": [
+    { "name": "KP Mini 150", "versions": ["150cc 13.5 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "KPM 150 (Sport)", "versions": ["150cc 14 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "SR220 (Adventure)", "versions": ["220cc 19 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

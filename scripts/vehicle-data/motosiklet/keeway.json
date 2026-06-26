@@ -1,0 +1,10 @@
+{
+  "make": "Keeway",
+  "models": [
+    { "name": "Superlight 125 / 200", "versions": ["125cc 11 CV", "200cc 17 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "K-Light 125 / 250V (Cruiser)", "versions": ["125cc 11 CV", "249cc 17 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Vieste 125 / 300 (Scooter)", "versions": ["125cc 11 CV", "300cc 26 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "TX 125 (Naked)", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

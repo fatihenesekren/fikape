@@ -1,0 +1,9 @@
+{
+  "make": "Motron",
+  "models": [
+    { "name": "Cubertino (Elektrik Scooter)", "versions": ["Elektrik 4 kW 50 eşdeğer", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "X-Pace (Elektrik)", "versions": ["Elektrik 4 kW 50 eşdeğer", "Elektrik 11 kW 125 eşdeğer", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Unplugged (Elektrik Moped)", "versions": ["Elektrik 4 kW 50 eşdeğer", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

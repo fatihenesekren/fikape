@@ -1,0 +1,10 @@
+{
+  "make": "Rieju",
+  "models": [
+    { "name": "MR 300 Racing / Pro (Enduro 2T)", "versions": ["293cc 2T Racing", "293cc 2T Pro", "Diğer"], "trims": ["Racing", "Pro", "Diğer"] },
+    { "name": "MRX 50 / 125 (Motocross)", "versions": ["50cc 2T", "125cc 2T", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Century 125 (Retro)", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Marathon 500 (Adventure)", "versions": ["450cc 35 CV 4T", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

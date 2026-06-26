@@ -1,0 +1,9 @@
+{
+  "make": "Jawa",
+  "models": [
+    { "name": "42 (2018-)", "versions": ["334cc 30 CV", "42 FJ (Bobber)", "Diğer"], "trims": ["Standart", "2.1", "Diğer"] },
+    { "name": "Perak (2019-)", "versions": ["334cc 30 CV Bobber", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "350 OHC (2022-)", "versions": ["349cc 30.6 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

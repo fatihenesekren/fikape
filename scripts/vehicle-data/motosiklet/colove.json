@@ -1,0 +1,8 @@
+{
+  "make": "Colove",
+  "models": [
+    { "name": "450X (2022-)", "versions": ["450cc 47 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "500X (2023-)", "versions": ["500cc 55 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

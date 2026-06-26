@@ -1,0 +1,8 @@
+{
+  "make": "Ural",
+  "models": [
+    { "name": "Gear Up (Sepetli / Sidecar)", "versions": ["749cc 41 CV 2WD", "Diğer"], "trims": ["Standart", "Camouflage", "Diğer"] },
+    { "name": "CT (Solo)", "versions": ["749cc 41 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

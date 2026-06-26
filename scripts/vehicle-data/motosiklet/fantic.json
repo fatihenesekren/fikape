@@ -1,0 +1,10 @@
+{
+  "make": "Fantic",
+  "models": [
+    { "name": "Caballero 125", "versions": ["125cc 15 CV", "Scrambler 125", "Flat Track 125", "Diğer"], "trims": ["Standart", "Deluxe", "Diğer"] },
+    { "name": "Caballero 250 / 500", "versions": ["249cc 27 CV", "449cc 38 CV", "Diğer"], "trims": ["Standart", "Rally", "Diğer"] },
+    { "name": "XMF 125 (Enduro)", "versions": ["125cc 15 CV 2T", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Volt 125 (Elektrik)", "versions": ["Elektrik 11 kW 125 eşdeğer", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "make": "Zontes",
+  "models": [
+    { "name": "Z125 / ZT125-U (Naked)", "versions": ["125cc 14.5 CV Z125", "125cc 14.5 CV ZT125-U", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Z250 / ZT250-N (Naked)", "versions": ["249cc 30 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ZT310-R / ZT310-X (Sport/Adventure)", "versions": ["312cc 35 CV ZT310-R", "312cc 35 CV ZT310-X", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ZT350-T / ZT350-ADV (Retro/Adventure)", "versions": ["350cc 38 CV ZT350-T Retro", "350cc 38 CV ZT350-ADV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

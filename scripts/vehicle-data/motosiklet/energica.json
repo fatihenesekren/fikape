@@ -1,0 +1,9 @@
+{
+  "make": "Energica",
+  "models": [
+    { "name": "Ego (2014-)", "versions": ["Elektrik 107 kW 145 CV", "Ego+ 107 kW", "Diğer"], "trims": ["Standart", "RS", "Diğer"] },
+    { "name": "Eva Ribelle (2019-)", "versions": ["Elektrik 107 kW 145 CV", "Eva Ribelle RS", "Diğer"], "trims": ["Standart", "RS", "Diğer"] },
+    { "name": "Experia (2022-)", "versions": ["Elektrik 107 kW 145 CV 22.5kWh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

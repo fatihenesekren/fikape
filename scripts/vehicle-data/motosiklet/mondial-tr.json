@@ -1,0 +1,8 @@
+{
+  "make": "Mondial (TR)",
+  "models": [
+    { "name": "125 Retro / Classic", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "250 Retro / Classic", "versions": ["250cc 21 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}
