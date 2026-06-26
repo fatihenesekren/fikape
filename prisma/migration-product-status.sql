@@ -8,3 +8,6 @@ ALTER TABLE products
 
 ALTER TABLE vehicle_suggestions
   ADD COLUMN "productId" INTEGER REFERENCES products(id) ON DELETE SET NULL;
+
+ALTER TABLE vehicle_suggestions
+  ADD COLUMN IF NOT EXISTS "photoUrls" TEXT[] NOT NULL DEFAULT '{}';
