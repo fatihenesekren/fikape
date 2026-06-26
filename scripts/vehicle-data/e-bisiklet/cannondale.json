@@ -1,0 +1,10 @@
+{
+  "make": "Cannondale",
+  "models": [
+    { "name": "Neo 1 / 2 / 3 (Şehir, 2019-)", "versions": ["250W Bosch 25 km/h Neo 1", "250W Bosch 25 km/h Neo 2", "250W Bosch 25 km/h Neo 3", "Diğer"], "trims": ["1", "2", "3", "Diğer"] },
+    { "name": "Synapse Neo (Yol, 2020-)", "versions": ["250W Fazua 25 km/h", "Diğer"], "trims": ["1", "2", "3", "Diğer"] },
+    { "name": "Tesoro Neo (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h", "Diğer"], "trims": ["X 1", "X 2", "X 3", "Diğer"] },
+    { "name": "Moterra Neo (MTB, 2019-)", "versions": ["250W Bosch 25 km/h", "Diğer"], "trims": ["1", "2", "3", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

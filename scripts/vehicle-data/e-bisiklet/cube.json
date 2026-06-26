@@ -1,0 +1,11 @@
+{
+  "make": "Cube",
+  "models": [
+    { "name": "Stereo Hybrid (E-MTB, 2018-)", "versions": ["250W Bosch CX 25 km/h 625Wh", "250W Bosch CX 25 km/h 750Wh", "Diğer"], "trims": ["120", "140", "160", "Pro", "SL", "Diğer"] },
+    { "name": "Reaction Hybrid (E-MTB Hardtail, 2018-)", "versions": ["250W Bosch CX 25 km/h 500Wh", "250W Bosch CX 25 km/h 625Wh", "Diğer"], "trims": ["Performance", "Pro", "SL", "Diğer"] },
+    { "name": "Kathmandu Hybrid (Trekking, 2018-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["Pro", "SL", "One", "Diğer"] },
+    { "name": "Nuride Hybrid (Şehir, 2020-)", "versions": ["250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["Pro", "One", "Allroad", "Diğer"] },
+    { "name": "Agree Hybrid (Yol, 2021-)", "versions": ["250W Fazua 25 km/h", "Diğer"], "trims": ["Pro", "SL", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

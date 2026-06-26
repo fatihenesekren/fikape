@@ -1,0 +1,10 @@
+{
+  "make": "Heybike",
+  "models": [
+    { "name": "Cityrun (Şehir, 2021-)", "versions": ["250W 25 km/h 36V 10.4Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Ranger (Fat Tire, 2021-)", "versions": ["500W 32 km/h 48V 12.5Ah", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
+    { "name": "Hauler (Kargo, 2022-)", "versions": ["750W 32 km/h 48V 15Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Mars (Fat Tire Katlanabilir, 2022-)", "versions": ["500W 32 km/h 48V 12.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "make": "Fiido",
+  "models": [
+    { "name": "D11 (Katlanabilir Şehir, 2020-)", "versions": ["250W 25 km/h 36V 10.4Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "D21 (Katlanabilir Trekking, 2022-)", "versions": ["250W 25 km/h 36V 11.6Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "M1 Pro (Fat Tire MTB, 2021-)", "versions": ["500W 40 km/h 48V 12.8Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Beast (Fat Tire, 2022-)", "versions": ["750W 45 km/h 48V 17.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

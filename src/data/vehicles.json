@@ -16592,6 +16592,2291 @@
       ]
     }
   ],
+  "e-bisiklet": [
+    {
+      "make": "ADO",
+      "models": [
+        {
+          "name": "A20 (Katlanabilir Şehir)",
+          "versions": [
+            "250W 25 km/h 36V 10.4Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "A26 (Katlanabilir)",
+          "versions": [
+            "250W 25 km/h 36V 12.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "D30 (Şehir)",
+          "versions": [
+            "250W 25 km/h 36V 14.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "ANCHEER",
+      "models": [
+        {
+          "name": "Elektrikli Dağ Bisikleti 26\"",
+          "versions": [
+            "250W 25 km/h 36V 8Ah",
+            "350W 32 km/h 36V 10Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Katlanabilir Elektrikli",
+          "versions": [
+            "250W 25 km/h 36V 8Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Aventon",
+      "models": [
+        {
+          "name": "Pace 350 / 500 (Şehir)",
+          "versions": [
+            "350W 32 km/h",
+            "500W 32 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Aventure (Fat-Tire)",
+          "versions": [
+            "750W 32 km/h 48V 15Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Soltera (Yol)",
+          "versions": [
+            "250W 32 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Level (Şehir Konfor)",
+          "versions": [
+            "500W 32 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Step-Through",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Bafang",
+      "models": [
+        {
+          "name": "G340 (Şehir, 2020-)",
+          "versions": [
+            "250W Mid-Drive 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "G330 (Trekking, 2020-)",
+          "versions": [
+            "250W Mid-Drive 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "BBSHD / BBS02 (Motor Kit)",
+          "versions": [
+            "750W BBSHD",
+            "500W BBS02B",
+            "250W BBS01B",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Brompton Electric",
+      "models": [
+        {
+          "name": "Electric P Line (2022-)",
+          "versions": [
+            "250W 25 km/h 300Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Urban",
+            "Explore",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Electric C Line (2019-2022)",
+          "versions": [
+            "250W 25 km/h 300Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Cannondale",
+      "models": [
+        {
+          "name": "Neo 1 / 2 / 3 (Şehir, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h Neo 1",
+            "250W Bosch 25 km/h Neo 2",
+            "250W Bosch 25 km/h Neo 3",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Synapse Neo (Yol, 2020-)",
+          "versions": [
+            "250W Fazua 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tesoro Neo (Trekking, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "X 1",
+            "X 2",
+            "X 3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Moterra Neo (MTB, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Centurion",
+      "models": [
+        {
+          "name": "No Pogo E (E-MTB Full-Sus, 2020-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 750Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "2000",
+            "4000",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Numinis E (Trekking, 2020-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "500",
+            "800",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "City Speed (Speed Pedelec, 2021-)",
+          "versions": [
+            "250W Bosch 45 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Cowboy",
+      "models": [
+        {
+          "name": "Cowboy 4 / 4ST (2021-)",
+          "versions": [
+            "250W 25 km/h 360Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "4",
+            "4ST (Step-Through)",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cowboy Cruiser (2022-)",
+          "versions": [
+            "250W 25 km/h 360Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cowboy Cross (2023-)",
+          "versions": [
+            "250W 25 km/h 360Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Cube",
+      "models": [
+        {
+          "name": "Stereo Hybrid (E-MTB, 2018-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 750Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "120",
+            "140",
+            "160",
+            "Pro",
+            "SL",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Reaction Hybrid (E-MTB Hardtail, 2018-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 500Wh",
+            "250W Bosch CX 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Performance",
+            "Pro",
+            "SL",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Kathmandu Hybrid (Trekking, 2018-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "SL",
+            "One",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Nuride Hybrid (Şehir, 2020-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "One",
+            "Allroad",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Agree Hybrid (Yol, 2021-)",
+          "versions": [
+            "250W Fazua 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "SL",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Decathlon",
+      "models": [
+        {
+          "name": "Riverside 500E / 900E (Şehir/Trekking)",
+          "versions": [
+            "250W 25 km/h 36V 11.6Ah",
+            "250W 25 km/h 36V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "500E",
+            "900E",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Rockrider E-ST 100 / 900 (E-MTB)",
+          "versions": [
+            "250W 25 km/h 36V 10.4Ah",
+            "250W 25 km/h 36V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "E-ST 100",
+            "E-ST 900",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Elops Speed 900E (Speed Pedelec)",
+          "versions": [
+            "250W 45 km/h 36V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Diğer",
+      "models": [
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Eleglide",
+      "models": [
+        {
+          "name": "T1 / T1 Plus (Trekking)",
+          "versions": [
+            "250W 25 km/h 36V 12.5Ah T1",
+            "250W 25 km/h 36V 12.5Ah T1 Plus",
+            "Diğer"
+          ],
+          "trims": [
+            "T1",
+            "T1 Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M1 / M1 Plus (E-MTB)",
+          "versions": [
+            "250W 25 km/h 36V 7.5Ah M1",
+            "250W 25 km/h 36V 12.5Ah M1 Plus",
+            "Diğer"
+          ],
+          "trims": [
+            "M1",
+            "M1 Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F1 (Fat Tire)",
+          "versions": [
+            "250W 25 km/h 36V 12.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Citycrosser (Şehir)",
+          "versions": [
+            "250W 25 km/h 36V 10Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Engwe",
+      "models": [
+        {
+          "name": "Engine Pro (Fat Tire, 2021-)",
+          "versions": [
+            "750W 45 km/h 48V 16Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "EP-2 Pro (Fat Tire Katlanabilir, 2021-)",
+          "versions": [
+            "750W 45 km/h 48V 13Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C20 Pro (Katlanabilir Şehir, 2022-)",
+          "versions": [
+            "250W 25 km/h 36V 19.2Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M20 (Katlanabilir, 2022-)",
+          "versions": [
+            "250W 25 km/h 48V 13Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "T14 (Katlanabilir Kompakt, 2023-)",
+          "versions": [
+            "250W 25 km/h 48V 10Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Eskute",
+      "models": [
+        {
+          "name": "Polluno (Şehir, 2021-)",
+          "versions": [
+            "250W 25 km/h 36V 14.4Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Netuno (Trekking, 2021-)",
+          "versions": [
+            "250W 25 km/h 36V 14.4Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Wayfarer (Katlanabilir, 2022-)",
+          "versions": [
+            "250W 25 km/h 36V 10Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Fiido",
+      "models": [
+        {
+          "name": "D11 (Katlanabilir Şehir, 2020-)",
+          "versions": [
+            "250W 25 km/h 36V 10.4Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "D21 (Katlanabilir Trekking, 2022-)",
+          "versions": [
+            "250W 25 km/h 36V 11.6Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M1 Pro (Fat Tire MTB, 2021-)",
+          "versions": [
+            "500W 40 km/h 48V 12.8Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Beast (Fat Tire, 2022-)",
+          "versions": [
+            "750W 45 km/h 48V 17.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Flyer",
+      "models": [
+        {
+          "name": "Goroc (E-MTB, 2019-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 750Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "2",
+            "4",
+            "6",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Upstreet (Trekking, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "3",
+            "5",
+            "7",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Gotour (Şehir, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "2",
+            "4",
+            "6",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Gazelle",
+      "models": [
+        {
+          "name": "Ultimate T10 (Trekking, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Medeo T9 (Trekking, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Paris (Şehir, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "C7 HMB",
+            "C380 HMB",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Giant",
+      "models": [
+        {
+          "name": "Trance X Advanced E+ (E-MTB, 2020-)",
+          "versions": [
+            "250W SyncDrive Pro2 25 km/h 625Wh",
+            "250W SyncDrive Pro2 25 km/h 800Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "0 Pro",
+            "1 Pro",
+            "2 Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Fathom E+ (E-MTB Hardtail, 2019-)",
+          "versions": [
+            "250W SyncDrive Sport 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Explore E+ (Trekking, 2019-)",
+          "versions": [
+            "250W SyncDrive Sport 25 km/h 500Wh",
+            "250W SyncDrive Sport 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1 GTS",
+            "2 GTS",
+            "3 GTS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Fastroad E+ (Şehir, 2019-)",
+          "versions": [
+            "250W SyncDrive Sport 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1 Pro",
+            "2 Pro",
+            "EX Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Liv Avail Advanced E+ (Yol, 2021-)",
+          "versions": [
+            "250W SyncDrive 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "GoCycle",
+      "models": [
+        {
+          "name": "G4 / G4i (2021-)",
+          "versions": [
+            "250W 25 km/h 375Wh G4",
+            "250W 25 km/h 375Wh G4i",
+            "Diğer"
+          ],
+          "trims": [
+            "G4",
+            "G4i",
+            "G4i Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GX / GXi (2019-)",
+          "versions": [
+            "250W 25 km/h 300Wh GX",
+            "250W 25 km/h 300Wh GXi",
+            "Diğer"
+          ],
+          "trims": [
+            "GX",
+            "GXi",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GS (2020-)",
+          "versions": [
+            "250W 25 km/h 300Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Gogobest",
+      "models": [
+        {
+          "name": "GF600 (Fat Tire MTB)",
+          "versions": [
+            "500W 40 km/h 48V 13Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GF700 (Fat Tire MTB)",
+          "versions": [
+            "750W 45 km/h 48V 17.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Haibike",
+      "models": [
+        {
+          "name": "AllMtn (E-MTB Tam Süspansiyonlu, 2019-)",
+          "versions": [
+            "250W Yamaha PW-X3 25 km/h 630Wh",
+            "250W Bosch CX 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Nduro (E-Enduro, 2021-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 750Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "HardNine / HardSeven (Hardtail, 2019-)",
+          "versions": [
+            "250W Yamaha PW-X3 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "3",
+            "5",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Trekking (Trekking, 2019-)",
+          "versions": [
+            "250W Yamaha PW-TE 25 km/h 500Wh",
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "3",
+            "5",
+            "7",
+            "9",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Heybike",
+      "models": [
+        {
+          "name": "Cityrun (Şehir, 2021-)",
+          "versions": [
+            "250W 25 km/h 36V 10.4Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ranger (Fat Tire, 2021-)",
+          "versions": [
+            "500W 32 km/h 48V 12.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hauler (Kargo, 2022-)",
+          "versions": [
+            "750W 32 km/h 48V 15Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mars (Fat Tire Katlanabilir, 2022-)",
+          "versions": [
+            "500W 32 km/h 48V 12.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Himo",
+      "models": [
+        {
+          "name": "C26 (Şehir, 2021-)",
+          "versions": [
+            "250W 25 km/h 36V 14.4Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Z20 (Katlanabilir, 2020-)",
+          "versions": [
+            "250W 25 km/h 36V 10Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "T1 (Trekking, 2022-)",
+          "versions": [
+            "250W 25 km/h 36V 14.4Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Kalkhoff",
+      "models": [
+        {
+          "name": "Endeavour (Trekking, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1 Advance",
+            "3 Advance",
+            "5 Advance",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Endeavour Advance+ (Trekking, 2021-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Image (Şehir, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1 Advance",
+            "3 Advance",
+            "5 Advance",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "KTM Bikes",
+      "models": [
+        {
+          "name": "Macina Chacana (E-MTB, 2019-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 750Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "292",
+            "694",
+            "797",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Macina Kapoho (E-Enduro, 2021-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 750Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "7973",
+            "7974",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Macina Tour (Trekking, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "P",
+            "PT",
+            "P610",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Macina Style (Şehir, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "P",
+            "PT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Lankeleisi",
+      "models": [
+        {
+          "name": "G650 (Fat Tire, 2021-)",
+          "versions": [
+            "1000W 45 km/h 48V 20Ah Çift Motor",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X-Time (Fat Tire MTB, 2022-)",
+          "versions": [
+            "1000W 45 km/h 48V 17.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Lectric",
+      "models": [
+        {
+          "name": "XP 3.0 (Katlanabilir, 2022-)",
+          "versions": [
+            "500W 32 km/h 48V 9.6Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Step-Through",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XPedition (Kargo, 2022-)",
+          "versions": [
+            "500W 32 km/h 48V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XP Lite (Katlanabilir Hafif, 2021-)",
+          "versions": [
+            "300W 25 km/h 36V 7.8Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Merida",
+      "models": [
+        {
+          "name": "eBIG.NINE (E-MTB Hardtail, 2019-)",
+          "versions": [
+            "250W Shimano Steps E8000 25 km/h 504Wh",
+            "250W Shimano Steps E8000 25 km/h 630Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "400",
+            "600",
+            "800",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "eBIG.TRAIL (E-MTB Full-Sus, 2020-)",
+          "versions": [
+            "250W Shimano Steps 25 km/h 630Wh",
+            "250W Bosch CX 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "400",
+            "700",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "eSPRESSO (Trekking, 2019-)",
+          "versions": [
+            "250W Shimano Steps 25 km/h 504Wh",
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "400 EQ",
+            "600 EQ",
+            "700",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "eONE-SIXTY (E-Enduro, 2021-)",
+          "versions": [
+            "250W Shimano Steps EP8 25 km/h 630Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "700",
+            "900",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Orbea",
+      "models": [
+        {
+          "name": "Wild (E-MTB Full-Sus, 2020-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 630Wh",
+            "250W Bosch CX 25 km/h 750Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "M10",
+            "M20",
+            "M30",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Urrun (E-MTB Hardtail, 2022-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "10",
+            "30",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Gain (Yol E-Bisiklet, 2019-)",
+          "versions": [
+            "250W Fazua 25 km/h 250Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "D30",
+            "D20",
+            "D10",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Keram (Trekking, 2021-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "10",
+            "20",
+            "30",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Rad Power Bikes",
+      "models": [
+        {
+          "name": "RadRover (Fat Tire, 2018-)",
+          "versions": [
+            "750W 32 km/h 48V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "6 Plus",
+            "Step-Thru",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RadRunner (Çok Amaçlı, 2019-)",
+          "versions": [
+            "750W 32 km/h 48V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Plus",
+            "3 Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RadWagon (Kargo, 2018-)",
+          "versions": [
+            "750W 32 km/h 48V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "4",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RadCity (Şehir, 2018-)",
+          "versions": [
+            "750W 32 km/h 48V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "5 Plus",
+            "Step-Thru 5 Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RadMission (Şehir Hafif, 2021-)",
+          "versions": [
+            "500W 32 km/h 48V 10.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Riese & Müller",
+      "models": [
+        {
+          "name": "Charger (Trekking, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 625Wh",
+            "250W Bosch 25 km/h 1000Wh Çift Bat.",
+            "Diğer"
+          ],
+          "trims": [
+            "3",
+            "4",
+            "GT Rohloff",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Supercharger (Speed Pedelec, 2019-)",
+          "versions": [
+            "250W Bosch 45 km/h 500Wh",
+            "250W Bosch 45 km/h 1000Wh Çift Bat.",
+            "Diğer"
+          ],
+          "trims": [
+            "GT Touring",
+            "GT Rohloff",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Delite (E-MTB Trekking, 2019-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 1000Wh Çift Bat.",
+            "Diğer"
+          ],
+          "trims": [
+            "14",
+            "Mountain",
+            "Rohloff",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Packster (Kargo, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "40",
+            "60",
+            "70",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Scott",
+      "models": [
+        {
+          "name": "Ransom eRIDE (E-MTB Full-Sus, 2020-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 750Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "900 Tuned",
+            "910",
+            "920",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Aspect eRIDE (E-MTB Hardtail, 2019-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "920",
+            "930",
+            "950",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sub Cross eRIDE (Trekking, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "10",
+            "20",
+            "30",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E-Silence (Yol, 2020-)",
+          "versions": [
+            "250W Fazua 25 km/h 250Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "10",
+            "20",
+            "30",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Specialized",
+      "models": [
+        {
+          "name": "Turbo Levo (E-MTB Full-Sus, 2019-)",
+          "versions": [
+            "250W Specialized SL 1.1 25 km/h 320Wh",
+            "250W Specialized SL 1.2 25 km/h 320Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Comp Carbon",
+            "Expert Carbon",
+            "S-Works",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Turbo Levo HT (E-MTB Hardtail, 2020-)",
+          "versions": [
+            "250W Specialized SL 25 km/h 320Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Comp",
+            "Expert",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Turbo Vado (Trekking, 2019-)",
+          "versions": [
+            "250W Specialized SL 1.1 25 km/h 320Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "3.0 IGH",
+            "4.0 IGH",
+            "5.0 IGH EQ",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Turbo Como (Şehir, 2019-)",
+          "versions": [
+            "250W Specialized SL 1.1 25 km/h 320Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "3.0",
+            "4.0",
+            "5.0 IGH EQ",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Turbo Creo (Yol, 2019-)",
+          "versions": [
+            "250W Specialized SL 1.1 25 km/h 320Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Comp E5",
+            "Expert",
+            "S-Works",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Stromer",
+      "models": [
+        {
+          "name": "ST2 (Speed Pedelec, 2014-)",
+          "versions": [
+            "250W SYNO Drive 45 km/h 983Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ST3 (Speed Pedelec, 2018-)",
+          "versions": [
+            "250W SYNO Drive II 45 km/h 983Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pinion",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ST5 (Speed Pedelec, 2020-)",
+          "versions": [
+            "250W SYNO Drive II 45 km/h 983Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Super73",
+      "models": [
+        {
+          "name": "S2 (2020-)",
+          "versions": [
+            "750W 45 km/h 960Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R Brooklyn (2021-)",
+          "versions": [
+            "750W 45 km/h 960Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ZX (Giriş Segment, 2021-)",
+          "versions": [
+            "500W 32 km/h 614Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RX (Adventure, 2020-)",
+          "versions": [
+            "750W 45 km/h 1008Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Tenways",
+      "models": [
+        {
+          "name": "CGO600 Pro (Şehir, 2022-)",
+          "versions": [
+            "250W 25 km/h 360Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CGO800S (Şehir Premium, 2022-)",
+          "versions": [
+            "250W 25 km/h 360Wh Shimano Alfine",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AGO T (Trekking, 2023-)",
+          "versions": [
+            "250W 25 km/h 360Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Tern",
+      "models": [
+        {
+          "name": "GSD (Kargo, 2018-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 500Wh",
+            "250W Bosch CX 25 km/h 1000Wh Çift Bat.",
+            "Diğer"
+          ],
+          "trims": [
+            "R14",
+            "S10",
+            "S00",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "HSD (Kompakt Kargo, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "P9",
+            "S11",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NBD (Şehir, 2021-)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "S8i",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Trek",
+      "models": [
+        {
+          "name": "Rail (E-Enduro, 2020-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 750Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "7",
+            "8",
+            "9.7",
+            "9.8",
+            "9.9 XX1 AXS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Powerfly (E-MTB Hardtail, 2019-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 500Wh",
+            "250W Bosch CX 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "4",
+            "5",
+            "7",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Allant+ (Trekking/Şehir, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "5",
+            "7",
+            "7S",
+            "8S",
+            "9S",
+            "9.9S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Domane+ (Yol, 2019-)",
+          "versions": [
+            "250W Fazua 25 km/h 250Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "ALT",
+            "LT",
+            "HP",
+            "SLT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Verve+ (Şehir Konfor, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "VanMoof",
+      "models": [
+        {
+          "name": "S5 / A5 (2022-)",
+          "versions": [
+            "250W 25 km/h 360Wh S5",
+            "250W 25 km/h 360Wh A5 Step-Through",
+            "Diğer"
+          ],
+          "trims": [
+            "S5",
+            "A5",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S3 / X3 (2020-2022)",
+          "versions": [
+            "250W 25 km/h 504Wh S3",
+            "250W 25 km/h 504Wh X3",
+            "Diğer"
+          ],
+          "trims": [
+            "S3",
+            "X3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Winora",
+      "models": [
+        {
+          "name": "Yakun (E-MTB, 2021-)",
+          "versions": [
+            "250W Yamaha PW-X3 25 km/h 630Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Yucatan (Trekking, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "10",
+            "12",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sinus (Şehir, 2019-)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "F8",
+            "R8",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Xiaomi",
+      "models": [
+        {
+          "name": "Electric Bicycle 1S (2022-)",
+          "versions": [
+            "250W 25 km/h 36V 7.65Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "QiCycle (Yol/Şehir)",
+          "versions": [
+            "250W 25 km/h 36V 6.4Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    }
+  ],
   "karavan": [
     {
       "make": "Adria",

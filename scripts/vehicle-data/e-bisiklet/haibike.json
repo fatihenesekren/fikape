@@ -1,0 +1,10 @@
+{
+  "make": "Haibike",
+  "models": [
+    { "name": "AllMtn (E-MTB Tam Süspansiyonlu, 2019-)", "versions": ["250W Yamaha PW-X3 25 km/h 630Wh", "250W Bosch CX 25 km/h 625Wh", "Diğer"], "trims": ["1", "2", "3", "4", "5", "Diğer"] },
+    { "name": "Nduro (E-Enduro, 2021-)", "versions": ["250W Bosch CX 25 km/h 625Wh", "250W Bosch CX 25 km/h 750Wh", "Diğer"], "trims": ["1", "2", "3", "Diğer"] },
+    { "name": "HardNine / HardSeven (Hardtail, 2019-)", "versions": ["250W Yamaha PW-X3 25 km/h 500Wh", "Diğer"], "trims": ["1", "3", "5", "Diğer"] },
+    { "name": "Trekking (Trekking, 2019-)", "versions": ["250W Yamaha PW-TE 25 km/h 500Wh", "250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["3", "5", "7", "9", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

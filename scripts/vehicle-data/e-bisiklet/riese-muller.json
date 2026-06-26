@@ -1,0 +1,10 @@
+{
+  "make": "Riese & Müller",
+  "models": [
+    { "name": "Charger (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h 625Wh", "250W Bosch 25 km/h 1000Wh Çift Bat.", "Diğer"], "trims": ["3", "4", "GT Rohloff", "Diğer"] },
+    { "name": "Supercharger (Speed Pedelec, 2019-)", "versions": ["250W Bosch 45 km/h 500Wh", "250W Bosch 45 km/h 1000Wh Çift Bat.", "Diğer"], "trims": ["GT Touring", "GT Rohloff", "Diğer"] },
+    { "name": "Delite (E-MTB Trekking, 2019-)", "versions": ["250W Bosch CX 25 km/h 625Wh", "250W Bosch CX 25 km/h 1000Wh Çift Bat.", "Diğer"], "trims": ["14", "Mountain", "Rohloff", "Diğer"] },
+    { "name": "Packster (Kargo, 2019-)", "versions": ["250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["40", "60", "70", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

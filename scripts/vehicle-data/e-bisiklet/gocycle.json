@@ -1,0 +1,9 @@
+{
+  "make": "GoCycle",
+  "models": [
+    { "name": "G4 / G4i (2021-)", "versions": ["250W 25 km/h 375Wh G4", "250W 25 km/h 375Wh G4i", "Diğer"], "trims": ["G4", "G4i", "G4i Plus", "Diğer"] },
+    { "name": "GX / GXi (2019-)", "versions": ["250W 25 km/h 300Wh GX", "250W 25 km/h 300Wh GXi", "Diğer"], "trims": ["GX", "GXi", "Diğer"] },
+    { "name": "GS (2020-)", "versions": ["250W 25 km/h 300Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

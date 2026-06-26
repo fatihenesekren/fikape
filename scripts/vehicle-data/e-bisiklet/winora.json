@@ -1,0 +1,9 @@
+{
+  "make": "Winora",
+  "models": [
+    { "name": "Yakun (E-MTB, 2021-)", "versions": ["250W Yamaha PW-X3 25 km/h 630Wh", "Diğer"], "trims": ["1", "2", "Diğer"] },
+    { "name": "Yucatan (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["10", "12", "Diğer"] },
+    { "name": "Sinus (Şehir, 2019-)", "versions": ["250W Bosch 25 km/h 400Wh", "Diğer"], "trims": ["F8", "R8", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "make": "Specialized",
+  "models": [
+    { "name": "Turbo Levo (E-MTB Full-Sus, 2019-)", "versions": ["250W Specialized SL 1.1 25 km/h 320Wh", "250W Specialized SL 1.2 25 km/h 320Wh", "Diğer"], "trims": ["Comp Carbon", "Expert Carbon", "S-Works", "Diğer"] },
+    { "name": "Turbo Levo HT (E-MTB Hardtail, 2020-)", "versions": ["250W Specialized SL 25 km/h 320Wh", "Diğer"], "trims": ["Comp", "Expert", "Diğer"] },
+    { "name": "Turbo Vado (Trekking, 2019-)", "versions": ["250W Specialized SL 1.1 25 km/h 320Wh", "Diğer"], "trims": ["3.0 IGH", "4.0 IGH", "5.0 IGH EQ", "Diğer"] },
+    { "name": "Turbo Como (Şehir, 2019-)", "versions": ["250W Specialized SL 1.1 25 km/h 320Wh", "Diğer"], "trims": ["3.0", "4.0", "5.0 IGH EQ", "Diğer"] },
+    { "name": "Turbo Creo (Yol, 2019-)", "versions": ["250W Specialized SL 1.1 25 km/h 320Wh", "Diğer"], "trims": ["Comp E5", "Expert", "S-Works", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

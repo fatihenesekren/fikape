@@ -1,0 +1,10 @@
+{
+  "make": "Aventon",
+  "models": [
+    { "name": "Pace 350 / 500 (Şehir)", "versions": ["350W 32 km/h", "500W 32 km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Aventure (Fat-Tire)", "versions": ["750W 32 km/h 48V 15Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Soltera (Yol)", "versions": ["250W 32 km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Level (Şehir Konfor)", "versions": ["500W 32 km/h", "Diğer"], "trims": ["Standart", "Step-Through", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

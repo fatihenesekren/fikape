@@ -1,0 +1,8 @@
+{
+  "make": "VanMoof",
+  "models": [
+    { "name": "S5 / A5 (2022-)", "versions": ["250W 25 km/h 360Wh S5", "250W 25 km/h 360Wh A5 Step-Through", "Diğer"], "trims": ["S5", "A5", "Diğer"] },
+    { "name": "S3 / X3 (2020-2022)", "versions": ["250W 25 km/h 504Wh S3", "250W 25 km/h 504Wh X3", "Diğer"], "trims": ["S3", "X3", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

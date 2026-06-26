@@ -1,0 +1,9 @@
+{
+  "make": "Decathlon",
+  "models": [
+    { "name": "Riverside 500E / 900E (Şehir/Trekking)", "versions": ["250W 25 km/h 36V 11.6Ah", "250W 25 km/h 36V 14Ah", "Diğer"], "trims": ["500E", "900E", "Diğer"] },
+    { "name": "Rockrider E-ST 100 / 900 (E-MTB)", "versions": ["250W 25 km/h 36V 10.4Ah", "250W 25 km/h 36V 14Ah", "Diğer"], "trims": ["E-ST 100", "E-ST 900", "Diğer"] },
+    { "name": "Elops Speed 900E (Speed Pedelec)", "versions": ["250W 45 km/h 36V 14Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

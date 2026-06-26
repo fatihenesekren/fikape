@@ -1,0 +1,9 @@
+{
+  "make": "Tenways",
+  "models": [
+    { "name": "CGO600 Pro (Şehir, 2022-)", "versions": ["250W 25 km/h 360Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "CGO800S (Şehir Premium, 2022-)", "versions": ["250W 25 km/h 360Wh Shimano Alfine", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "AGO T (Trekking, 2023-)", "versions": ["250W 25 km/h 360Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

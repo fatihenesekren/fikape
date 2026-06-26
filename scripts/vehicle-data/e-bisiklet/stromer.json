@@ -1,0 +1,9 @@
+{
+  "make": "Stromer",
+  "models": [
+    { "name": "ST2 (Speed Pedelec, 2014-)", "versions": ["250W SYNO Drive 45 km/h 983Wh", "Diğer"], "trims": ["Standart", "Sport", "Diğer"] },
+    { "name": "ST3 (Speed Pedelec, 2018-)", "versions": ["250W SYNO Drive II 45 km/h 983Wh", "Diğer"], "trims": ["Standart", "Pinion", "Diğer"] },
+    { "name": "ST5 (Speed Pedelec, 2020-)", "versions": ["250W SYNO Drive II 45 km/h 983Wh", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

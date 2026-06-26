@@ -1,0 +1,9 @@
+{
+  "make": "Flyer",
+  "models": [
+    { "name": "Goroc (E-MTB, 2019-)", "versions": ["250W Bosch CX 25 km/h 625Wh", "250W Bosch CX 25 km/h 750Wh", "Diğer"], "trims": ["2", "4", "6", "Diğer"] },
+    { "name": "Upstreet (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["3", "5", "7", "Diğer"] },
+    { "name": "Gotour (Şehir, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["2", "4", "6", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

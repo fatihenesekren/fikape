@@ -1,0 +1,10 @@
+{
+  "make": "Eleglide",
+  "models": [
+    { "name": "T1 / T1 Plus (Trekking)", "versions": ["250W 25 km/h 36V 12.5Ah T1", "250W 25 km/h 36V 12.5Ah T1 Plus", "Diğer"], "trims": ["T1", "T1 Plus", "Diğer"] },
+    { "name": "M1 / M1 Plus (E-MTB)", "versions": ["250W 25 km/h 36V 7.5Ah M1", "250W 25 km/h 36V 12.5Ah M1 Plus", "Diğer"], "trims": ["M1", "M1 Plus", "Diğer"] },
+    { "name": "F1 (Fat Tire)", "versions": ["250W 25 km/h 36V 12.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Citycrosser (Şehir)", "versions": ["250W 25 km/h 36V 10Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

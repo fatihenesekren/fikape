@@ -1,0 +1,9 @@
+{
+  "make": "Gazelle",
+  "models": [
+    { "name": "Ultimate T10 (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Medeo T9 (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h 400Wh", "250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Paris (Şehir, 2019-)", "versions": ["250W Bosch 25 km/h 400Wh", "Diğer"], "trims": ["C7 HMB", "C380 HMB", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

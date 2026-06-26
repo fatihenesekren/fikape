@@ -1,0 +1,11 @@
+{
+  "make": "Trek",
+  "models": [
+    { "name": "Rail (E-Enduro, 2020-)", "versions": ["250W Bosch CX 25 km/h 625Wh", "250W Bosch CX 25 km/h 750Wh", "Diğer"], "trims": ["7", "8", "9.7", "9.8", "9.9 XX1 AXS", "Diğer"] },
+    { "name": "Powerfly (E-MTB Hardtail, 2019-)", "versions": ["250W Bosch CX 25 km/h 500Wh", "250W Bosch CX 25 km/h 625Wh", "Diğer"], "trims": ["4", "5", "7", "Diğer"] },
+    { "name": "Allant+ (Trekking/Şehir, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["5", "7", "7S", "8S", "9S", "9.9S", "Diğer"] },
+    { "name": "Domane+ (Yol, 2019-)", "versions": ["250W Fazua 25 km/h 250Wh", "Diğer"], "trims": ["ALT", "LT", "HP", "SLT", "Diğer"] },
+    { "name": "Verve+ (Şehir Konfor, 2019-)", "versions": ["250W Bosch 25 km/h 400Wh", "250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["1", "2", "3", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

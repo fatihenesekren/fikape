@@ -1,0 +1,9 @@
+{
+  "make": "Bafang",
+  "models": [
+    { "name": "G340 (Şehir, 2020-)", "versions": ["250W Mid-Drive 25 km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "G330 (Trekking, 2020-)", "versions": ["250W Mid-Drive 25 km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "BBSHD / BBS02 (Motor Kit)", "versions": ["750W BBSHD", "500W BBS02B", "250W BBS01B", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

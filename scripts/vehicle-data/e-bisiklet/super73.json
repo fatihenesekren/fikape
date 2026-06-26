@@ -1,0 +1,10 @@
+{
+  "make": "Super73",
+  "models": [
+    { "name": "S2 (2020-)", "versions": ["750W 45 km/h 960Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "R Brooklyn (2021-)", "versions": ["750W 45 km/h 960Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ZX (Giriş Segment, 2021-)", "versions": ["500W 32 km/h 614Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "RX (Adventure, 2020-)", "versions": ["750W 45 km/h 1008Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

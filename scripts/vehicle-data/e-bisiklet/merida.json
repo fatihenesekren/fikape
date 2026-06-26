@@ -1,0 +1,10 @@
+{
+  "make": "Merida",
+  "models": [
+    { "name": "eBIG.NINE (E-MTB Hardtail, 2019-)", "versions": ["250W Shimano Steps E8000 25 km/h 504Wh", "250W Shimano Steps E8000 25 km/h 630Wh", "Diğer"], "trims": ["400", "600", "800", "Diğer"] },
+    { "name": "eBIG.TRAIL (E-MTB Full-Sus, 2020-)", "versions": ["250W Shimano Steps 25 km/h 630Wh", "250W Bosch CX 25 km/h 625Wh", "Diğer"], "trims": ["400", "700", "Diğer"] },
+    { "name": "eSPRESSO (Trekking, 2019-)", "versions": ["250W Shimano Steps 25 km/h 504Wh", "250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["400 EQ", "600 EQ", "700", "Diğer"] },
+    { "name": "eONE-SIXTY (E-Enduro, 2021-)", "versions": ["250W Shimano Steps EP8 25 km/h 630Wh", "Diğer"], "trims": ["700", "900", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

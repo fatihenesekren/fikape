@@ -1,0 +1,11 @@
+{
+  "make": "Rad Power Bikes",
+  "models": [
+    { "name": "RadRover (Fat Tire, 2018-)", "versions": ["750W 32 km/h 48V 14Ah", "Diğer"], "trims": ["6 Plus", "Step-Thru", "Diğer"] },
+    { "name": "RadRunner (Çok Amaçlı, 2019-)", "versions": ["750W 32 km/h 48V 14Ah", "Diğer"], "trims": ["Plus", "3 Plus", "Diğer"] },
+    { "name": "RadWagon (Kargo, 2018-)", "versions": ["750W 32 km/h 48V 14Ah", "Diğer"], "trims": ["4", "Diğer"] },
+    { "name": "RadCity (Şehir, 2018-)", "versions": ["750W 32 km/h 48V 14Ah", "Diğer"], "trims": ["5 Plus", "Step-Thru 5 Plus", "Diğer"] },
+    { "name": "RadMission (Şehir Hafif, 2021-)", "versions": ["500W 32 km/h 48V 10.5Ah", "Diğer"], "trims": ["1", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

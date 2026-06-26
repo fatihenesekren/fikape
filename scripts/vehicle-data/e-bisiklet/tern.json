@@ -1,0 +1,9 @@
+{
+  "make": "Tern",
+  "models": [
+    { "name": "GSD (Kargo, 2018-)", "versions": ["250W Bosch CX 25 km/h 500Wh", "250W Bosch CX 25 km/h 1000Wh Çift Bat.", "Diğer"], "trims": ["R14", "S10", "S00", "Diğer"] },
+    { "name": "HSD (Kompakt Kargo, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["P9", "S11", "Diğer"] },
+    { "name": "NBD (Şehir, 2021-)", "versions": ["250W Bosch 25 km/h 400Wh", "Diğer"], "trims": ["S8i", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

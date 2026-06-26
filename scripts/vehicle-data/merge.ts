@@ -8,7 +8,7 @@ import path from "path";
 const base = path.join(process.cwd(), "scripts", "vehicle-data");
 const out  = path.join(process.cwd(), "src", "data", "vehicles.json");
 
-const categories = ["otomobil", "motosiklet", "kamyonet", "e-scooter", "karavan"] as const;
+const categories = ["otomobil", "motosiklet", "kamyonet", "e-scooter", "e-bisiklet", "karavan"] as const;
 
 const result: Record<string, unknown[]> = {};
 

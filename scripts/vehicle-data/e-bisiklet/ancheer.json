@@ -1,0 +1,8 @@
+{
+  "make": "ANCHEER",
+  "models": [
+    { "name": "Elektrikli Dağ Bisikleti 26\"", "versions": ["250W 25 km/h 36V 8Ah", "350W 32 km/h 36V 10Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Katlanabilir Elektrikli", "versions": ["250W 25 km/h 36V 8Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "make": "Eskute",
+  "models": [
+    { "name": "Polluno (Şehir, 2021-)", "versions": ["250W 25 km/h 36V 14.4Ah", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
+    { "name": "Netuno (Trekking, 2021-)", "versions": ["250W 25 km/h 36V 14.4Ah", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
+    { "name": "Wayfarer (Katlanabilir, 2022-)", "versions": ["250W 25 km/h 36V 10Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

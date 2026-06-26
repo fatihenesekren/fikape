@@ -1,0 +1,9 @@
+{
+  "make": "Kalkhoff",
+  "models": [
+    { "name": "Endeavour (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["1 Advance", "3 Advance", "5 Advance", "Diğer"] },
+    { "name": "Endeavour Advance+ (Trekking, 2021-)", "versions": ["250W Bosch CX 25 km/h 625Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Image (Şehir, 2019-)", "versions": ["250W Bosch 25 km/h 400Wh", "250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["1 Advance", "3 Advance", "5 Advance", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

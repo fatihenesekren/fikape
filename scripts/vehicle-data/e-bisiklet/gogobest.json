@@ -1,0 +1,8 @@
+{
+  "make": "Gogobest",
+  "models": [
+    { "name": "GF600 (Fat Tire MTB)", "versions": ["500W 40 km/h 48V 13Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GF700 (Fat Tire MTB)", "versions": ["750W 45 km/h 48V 17.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

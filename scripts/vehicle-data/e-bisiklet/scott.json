@@ -1,0 +1,10 @@
+{
+  "make": "Scott",
+  "models": [
+    { "name": "Ransom eRIDE (E-MTB Full-Sus, 2020-)", "versions": ["250W Bosch CX 25 km/h 625Wh", "250W Bosch CX 25 km/h 750Wh", "Diğer"], "trims": ["900 Tuned", "910", "920", "Diğer"] },
+    { "name": "Aspect eRIDE (E-MTB Hardtail, 2019-)", "versions": ["250W Bosch CX 25 km/h 500Wh", "Diğer"], "trims": ["920", "930", "950", "Diğer"] },
+    { "name": "Sub Cross eRIDE (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["10", "20", "30", "Diğer"] },
+    { "name": "E-Silence (Yol, 2020-)", "versions": ["250W Fazua 25 km/h 250Wh", "Diğer"], "trims": ["10", "20", "30", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}
