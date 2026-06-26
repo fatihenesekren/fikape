@@ -5236,7 +5236,114 @@
           ]
         },
         {
-          "name": "Golf",
+          "name": "Golf 4 (1997–2004)",
+          "versions": [
+            "1.4 16V 75",
+            "1.6 8V 100",
+            "1.6 16V 105",
+            "1.8 T 150",
+            "1.8 T 180",
+            "2.0 8V 115",
+            "1.9 TDI 90",
+            "1.9 TDI 100",
+            "1.9 TDI 110",
+            "1.9 TDI 130",
+            "GTI 1.8 T 150",
+            "GTI 1.8 T 180",
+            "V5 170",
+            "V6 4Motion",
+            "Diğer"
+          ],
+          "trims": [
+            "Trendline",
+            "Comfortline",
+            "Highline",
+            "GTI",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Golf 5 (2003–2008)",
+          "versions": [
+            "1.4 16V 80",
+            "1.6 FSI 115",
+            "2.0 FSI 150",
+            "1.4 TSI 122",
+            "1.4 TSI 140",
+            "2.0 TSI 200",
+            "1.9 TDI 90",
+            "1.9 TDI 105",
+            "2.0 TDI 140",
+            "GTI 2.0 TSI 200",
+            "GT Sport 1.4 TSI 170",
+            "Diğer"
+          ],
+          "trims": [
+            "Trendline",
+            "Comfortline",
+            "Highline",
+            "GTI",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Golf 6 (2008–2012)",
+          "versions": [
+            "1.2 TSI 85",
+            "1.2 TSI 105",
+            "1.4 TSI 122",
+            "1.4 TSI 160",
+            "2.0 TSI 210",
+            "1.6 TDI 105",
+            "2.0 TDI 110",
+            "2.0 TDI 140",
+            "GTI 2.0 TSI 210",
+            "GTD 2.0 TDI 170",
+            "Diğer"
+          ],
+          "trims": [
+            "Trendline",
+            "Comfortline",
+            "Highline",
+            "GTI",
+            "GTD",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Golf 7 (2012–2020)",
+          "versions": [
+            "1.0 TSI 85",
+            "1.0 TSI 115",
+            "1.2 TSI 86",
+            "1.2 TSI 105",
+            "1.4 TSI 125",
+            "1.4 TSI 150",
+            "2.0 TSI 220",
+            "1.6 TDI 90",
+            "1.6 TDI 105",
+            "2.0 TDI 110",
+            "2.0 TDI 150",
+            "GTI 2.0 TSI 220",
+            "GTI Performance 2.0 TSI 245",
+            "GTD 2.0 TDI 184",
+            "GTE 1.4 eHybrid 204",
+            "R 2.0 TSI 300 4Motion",
+            "Diğer"
+          ],
+          "trims": [
+            "Trendline",
+            "Comfortline",
+            "Highline",
+            "GTI",
+            "GTD",
+            "GTE",
+            "R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Golf 8 (2020–)",
           "versions": [
             "1.0 eTSI 110",
             "1.5 eTSI 130",
@@ -5245,17 +5352,12 @@
             "2.0 TDI 150",
             "1.4 eHybrid 204",
             "1.4 GTE eHybrid 245",
-            "GTI 2.0 TSI 245",
-            "Golf R 2.0 TSI 320 4Motion",
             "Diğer"
           ],
           "trims": [
             "Life",
             "Style",
             "R-Line",
-            "GTI",
-            "GTI Clubsport",
-            "R",
             "Diğer"
           ]
         },
