@@ -143,7 +143,38 @@ async function main() {
     },
   });
 
-  console.log("✓ Kategoriler oluşturuldu (6 kategori)");
+  const catEbisiklet = await prisma.category.upsert({
+    where: { slug: "e-bisiklet" },
+    update: {},
+    create: {
+      slug: "e-bisiklet", name: "E-Bisiklet",
+      parentId: catAraclar.id, sortOrder: 6,
+      attributeSchema: {
+        bike_type:     { type: "enum", values: ["sehir", "mtb", "yol", "kargo", "katlanabilir"], label: "Bisiklet Tipi" },
+        motor_type:    { type: "enum", values: ["mid-drive", "hub-drive"], label: "Motor Tipi" },
+        pedelec_class: { type: "enum", values: ["standard-25", "speed-45"], label: "Pedelec Sınıfı" },
+        motor_watt:    { type: "number", label: "Motor Gücü (W)" },
+        battery_wh:    { type: "number", label: "Batarya Kapasitesi (Wh)" },
+        range_km:      { type: "number", label: "İlan Edilen Menzil (km)" },
+        max_speed_kmh: { type: "number", label: "Maks. Hız (km/h)" },
+        weight_kg:     { type: "number", label: "Ağırlık (kg)" },
+      },
+      reviewFormSchema: [
+        { key: "real_range_km",       label: "Gerçek menzil (km)",                  type: "number" },
+        { key: "motor_type_exp",      label: "Motor tipi",                           type: "enum", options: ["mid-drive", "hub-drive", "diger"] },
+        { key: "pedelec_class_exp",   label: "Pedelec sınıfı",                       type: "enum", options: ["standard-25", "speed-45"] },
+        { key: "usage_type",          label: "Kullanım tipi",                        type: "enum", options: ["sehir", "mtb", "yol", "kargo"] },
+        { key: "score_handling",      label: "Sürüş hissi (1-5)",                   type: "rating" },
+        { key: "score_battery",       label: "Batarya performansı (1-5)",            type: "rating" },
+        { key: "score_build_quality", label: "Yapı kalitesi (1-5)",                  type: "rating" },
+        { key: "score_app",           label: "Uygulama / yazılım (1-5)",             type: "rating" },
+        { key: "winter_range_ok",     label: "Kışın menzil düşüşü",                 type: "enum", options: ["minimal", "fark-edilir", "ciddi"] },
+        { key: "charge_time_hours",   label: "Şarj süresi (saat)",                  type: "number" },
+      ],
+    },
+  });
+
+  console.log("✓ Kategoriler oluşturuldu (7 kategori)");
 
   // ─────────────────────────────────────────────
   // MARKALAR
@@ -185,6 +216,15 @@ async function main() {
 
   console.log("✓ Markalar oluşturuldu (20 marka)");
 
+  // E-Bisiklet markaları
+  const [trek, specialized, giant, cube, engwe] = await Promise.all([
+    prisma.brand.upsert({ where: { slug: "trek" },        update: {}, create: { slug: "trek",        name: "Trek" } }),
+    prisma.brand.upsert({ where: { slug: "specialized" }, update: {}, create: { slug: "specialized", name: "Specialized" } }),
+    prisma.brand.upsert({ where: { slug: "giant" },       update: {}, create: { slug: "giant",       name: "Giant" } }),
+    prisma.brand.upsert({ where: { slug: "cube" },        update: {}, create: { slug: "cube",        name: "Cube" } }),
+    prisma.brand.upsert({ where: { slug: "engwe" },       update: {}, create: { slug: "engwe",       name: "Engwe" } }),
+  ]);
+
   // ─────────────────────────────────────────────
   // MODELLER
   // ─────────────────────────────────────────────
@@ -224,7 +264,14 @@ async function main() {
   const modelDMax       = await prisma.model.upsert({ where: { slug: "isuzu-d-max" },         update: {}, create: { slug: "isuzu-d-max",         name: "D-Max",         brandId: isuzu.id } });
   const modelL200       = await prisma.model.upsert({ where: { slug: "mitsubishi-l200" },     update: {}, create: { slug: "mitsubishi-l200",     name: "L200",          brandId: mitsubishi.id } });
 
-  console.log("✓ Modeller oluşturuldu (29 model)");
+  // E-Bisiklet modeller
+  const modelTrekAllant7      = await prisma.model.upsert({ where: { slug: "trek-allant-7" },           update: {}, create: { slug: "trek-allant-7",           name: "Allant+ 7",          brandId: trek.id } });
+  const modelTurboVado        = await prisma.model.upsert({ where: { slug: "specialized-turbo-vado" },  update: {}, create: { slug: "specialized-turbo-vado",  name: "Turbo Vado",         brandId: specialized.id } });
+  const modelGiantExplore     = await prisma.model.upsert({ where: { slug: "giant-explore-e-plus-3" },  update: {}, create: { slug: "giant-explore-e-plus-3",  name: "Explore E+ 3 GTS",  brandId: giant.id } });
+  const modelCubeKathmandu    = await prisma.model.upsert({ where: { slug: "cube-kathmandu-hybrid" },   update: {}, create: { slug: "cube-kathmandu-hybrid",   name: "Kathmandu Hybrid Pro 500", brandId: cube.id } });
+  const modelEngweEnginePro   = await prisma.model.upsert({ where: { slug: "engwe-engine-pro" },        update: {}, create: { slug: "engwe-engine-pro",        name: "Engine Pro",         brandId: engwe.id } });
+
+  console.log("✓ Modeller oluşturuldu (34 model)");
 
   // ─────────────────────────────────────────────
   // ÜRÜNLER — Otomobil
@@ -447,6 +494,41 @@ async function main() {
     });
   }
 
+  // ─────────────────────────────────────────────
+  // ÜRÜNLER — E-Bisiklet
+  // ─────────────────────────────────────────────
+
+  const ebisikletProducts = [
+    { slug: "trek-allant-7-2023", name: "Trek Allant+ 7 2023", year: 2023, trimName: null,
+      imageUrl: null, modelId: modelTrekAllant7.id, brandId: trek.id,
+      attributes: { bike_type: "sehir", motor_type: "hub-drive", pedelec_class: "standard-25",
+        motor_watt: 250, battery_wh: 625, range_km: 120, max_speed_kmh: 25, weight_kg: 22.8 } },
+    { slug: "specialized-turbo-vado-5-2023", name: "Specialized Turbo Vado 5.0 IGH EQ 2023", year: 2023, trimName: "5.0 IGH EQ",
+      imageUrl: null, modelId: modelTurboVado.id, brandId: specialized.id,
+      attributes: { bike_type: "sehir", motor_type: "mid-drive", pedelec_class: "standard-25",
+        motor_watt: 250, battery_wh: 320, range_km: 100, max_speed_kmh: 25, weight_kg: 18.2 } },
+    { slug: "giant-explore-e-plus-3-2023", name: "Giant Explore E+ 3 GTS 2023", year: 2023, trimName: "3 GTS",
+      imageUrl: null, modelId: modelGiantExplore.id, brandId: giant.id,
+      attributes: { bike_type: "sehir", motor_type: "mid-drive", pedelec_class: "standard-25",
+        motor_watt: 250, battery_wh: 500, range_km: 100, max_speed_kmh: 25, weight_kg: 24.5 } },
+    { slug: "cube-kathmandu-hybrid-pro-2023", name: "Cube Kathmandu Hybrid Pro 500 2023", year: 2023, trimName: "Pro 500",
+      imageUrl: null, modelId: modelCubeKathmandu.id, brandId: cube.id,
+      attributes: { bike_type: "sehir", motor_type: "mid-drive", pedelec_class: "standard-25",
+        motor_watt: 250, battery_wh: 500, range_km: 110, max_speed_kmh: 25, weight_kg: 25.0 } },
+    { slug: "engwe-engine-pro-2023", name: "Engwe Engine Pro 2023", year: 2023, trimName: null,
+      imageUrl: null, modelId: modelEngweEnginePro.id, brandId: engwe.id,
+      attributes: { bike_type: "mtb", motor_type: "hub-drive", pedelec_class: "speed-45",
+        motor_watt: 750, battery_wh: 768, range_km: 120, max_speed_kmh: 45, weight_kg: 35.0 } },
+  ];
+
+  for (const p of ebisikletProducts) {
+    await prisma.product.upsert({
+      where: { slug: p.slug },
+      update: { attributes: p.attributes, ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}) },
+      create: { ...p, categoryId: catEbisiklet.id },
+    });
+  }
+
   console.log("✓ Ürünler oluşturuldu");
 
   // ─────────────────────────────────────────────
@@ -472,10 +554,10 @@ async function main() {
 
   console.log("✓ Trend viewCount'lar set edildi");
   console.log("\n🎉 Seed tamamlandı!");
-  console.log("   Kategoriler : 6");
-  console.log("   Markalar    : 20");
-  console.log("   Modeller    : 29");
-  console.log("   Ürünler     : 13 araba + 7 motosiklet + 3 e-scooter + 3 karavan + 7 kamyonet = 33 (Kıral→Hobby)");
+  console.log("   Kategoriler : 7");
+  console.log("   Markalar    : 25");
+  console.log("   Modeller    : 34");
+  console.log("   Ürünler     : 13 araba + 7 motosiklet + 3 e-scooter + 3 karavan + 7 kamyonet + 5 e-bisiklet = 38");
 }
 
 main()
