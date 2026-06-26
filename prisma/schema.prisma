@@ -99,6 +99,7 @@ model Product {
   // Klima: { "btu": 12000, "energy_class": "A+++", "inverter": true }
   attributes Json     @default("{}")
 
+  status      ProductStatus @default(ACTIVE)
   isActive    Boolean  @default(true)
   viewCount       Int      @default(0)
   weeklyViewCount Int      @default(0)
@@ -108,6 +109,7 @@ model Product {
   userProducts    UserProduct[]
   reviews         Review[]
   photos          ProductPhoto[]
+  suggestions     VehicleSuggestion[]
 
   @@map("products")
 }
@@ -185,6 +187,12 @@ model UserProduct {
 
   @@unique([userId, productId])
   @@map("user_products")
+}
+
+enum ProductStatus {
+  PENDING
+  ACTIVE
+  REJECTED
 }
 
 enum OwnershipStatus {
@@ -441,7 +449,11 @@ model VehicleSuggestion {
   // CarQuery'den seçilen ham veri
   carQueryData Json?
 
-  // Kullanıcının aynı anda yazdığı bekleyen yorum verisi
+  // Öneri kabul edildiğinde oluşturulan ürün (PENDING → ACTIVE)
+  productId    Int?
+  product      Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  // Kullanıcının aynı anda yazdığı bekleyen yorum verisi (legacy)
   reviewData   Json?
 
   // Yorum sırasında yüklenen fotoğraflar (Vercel Blob URL'leri)

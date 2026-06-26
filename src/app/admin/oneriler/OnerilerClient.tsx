@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 type Suggestion = {
   id: number;
@@ -15,8 +16,9 @@ type Suggestion = {
   adminNote: string | null;
   createdAt: string;
   user: { displayName: string | null; email: string } | null;
-  hasReview: boolean;
-  photoCount: number;
+  productId: number | null;
+  productSlug: string | null;
+  productStatus: string | null;
 };
 
 const FUEL_LABELS: Record<string, string> = {
@@ -25,22 +27,22 @@ const FUEL_LABELS: Record<string, string> = {
 };
 
 const CAT_LABELS: Record<string, string> = {
-  otomobil: "Otomobil", motosiklet: "Motosiklet",
-  "e-scooter": "E-Scooter", karavan: "Karavan", kamyonet: "Kamyonet",
+  otomobil: "Otomobil", motosiklet: "Motosiklet", "e-scooter": "E-Scooter",
+  "e-bisiklet": "E-Bisiklet", karavan: "Karavan", kamyonet: "Kamyonet",
 };
 
 export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Suggestion[] }) {
   const [suggestions, setSuggestions] = useState(initialSuggestions);
-  const [filter, setFilter] = useState<"PENDING" | "APPROVED" | "REJECTED">("PENDING");
+  const [filter, setFilter]   = useState<"PENDING" | "APPROVED" | "REJECTED">("PENDING");
   const [loading, setLoading] = useState<number | null>(null);
-  const [modal, setModal] = useState<{ suggestion: Suggestion; action: "APPROVED" | "REJECTED" } | null>(null);
-  const [adminNote, setAdminNote] = useState("");
+  const [modal, setModal]     = useState<{ suggestion: Suggestion; action: "APPROVED" | "REJECTED" } | null>(null);
+  const [adminNote, setAdminNote]   = useState("");
   const [customSlug, setCustomSlug] = useState("");
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg]     = useState<string | null>(null);
 
   const visible = suggestions.filter((s) => s.status === filter);
   const counts = {
-    PENDING: suggestions.filter((s) => s.status === "PENDING").length,
+    PENDING:  suggestions.filter((s) => s.status === "PENDING").length,
     APPROVED: suggestions.filter((s) => s.status === "APPROVED").length,
     REJECTED: suggestions.filter((s) => s.status === "REJECTED").length,
   };
@@ -60,18 +62,15 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
         }),
       });
       const data = await res.json();
-      if (!res.ok) {
-        setErrorMsg(data.error ?? "Bir hata oluştu");
-        return;
-      }
+      if (!res.ok) { setErrorMsg(data.error ?? "Bir hata oluştu"); return; }
       setSuggestions((prev) =>
         prev.map((s) =>
-          s.id === modal.suggestion.id ? { ...s, status: modal.action, adminNote: adminNote || null } : s
+          s.id === modal.suggestion.id
+            ? { ...s, status: modal.action, adminNote: adminNote || null }
+            : s
         )
       );
-      setModal(null);
-      setAdminNote("");
-      setCustomSlug("");
+      setModal(null); setAdminNote(""); setCustomSlug("");
     } catch {
       setErrorMsg("Bir hata oluştu");
     } finally {
@@ -80,40 +79,38 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
   }
 
   function openModal(suggestion: Suggestion, action: "APPROVED" | "REJECTED") {
-    setErrorMsg(null);
-    setAdminNote("");
-    // Auto-suggest slug
-    const parts = [suggestion.brandName, suggestion.modelName, suggestion.trimName, suggestion.year]
-      .filter(Boolean).join("-")
-      .toLowerCase()
-      .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
-      .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
-      .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-    setCustomSlug(parts);
+    setErrorMsg(null); setAdminNote("");
+    // Legacy akış için slug öner (productId yoksa)
+    if (!suggestion.productId) {
+      const parts = [suggestion.brandName, suggestion.modelName, suggestion.trimName, suggestion.year]
+        .filter(Boolean).join("-").toLowerCase()
+        .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
+        .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
+        .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      setCustomSlug(parts);
+    } else {
+      setCustomSlug("");
+    }
     setModal({ suggestion, action });
   }
 
   return (
     <div>
-      {/* Sekme filtreleri */}
+      {/* Sekmeler */}
       <div className="flex gap-2 mb-6 border-b border-gray-100 pb-4">
         {(["PENDING", "APPROVED", "REJECTED"] as const).map((tab) => (
           <button
             key={tab}
             onClick={() => setFilter(tab)}
             className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
-              filter === tab
-                ? "bg-gray-900 text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              filter === tab ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >
             {tab === "PENDING" ? "Bekleyen" : tab === "APPROVED" ? "Onaylanan" : "Reddedilen"}
             {counts[tab] > 0 && (
               <span className={`ml-1.5 px-1.5 py-0.5 rounded-full text-xs ${
                 filter === tab ? "bg-white/20" : "bg-gray-300 text-gray-700"
-              }`}>
-                {counts[tab]}
-              </span>
+              }`}>{counts[tab]}</span>
             )}
           </button>
         ))}
@@ -144,29 +141,34 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                 <div className="flex items-center gap-2 flex-wrap text-xs text-gray-400 mb-2">
                   <span>{CAT_LABELS[s.categorySlug] ?? s.categorySlug}</span>
                   {s.fuelType && <><span>·</span><span>{FUEL_LABELS[s.fuelType] ?? s.fuelType}</span></>}
-                  <span>·</span>
-                  <span>#{s.id}</span>
-                  <span>·</span>
-                  <span>{new Date(s.createdAt).toLocaleDateString("tr-TR")}</span>
+                  <span>·</span><span>#{s.id}</span>
+                  <span>·</span><span>{new Date(s.createdAt).toLocaleDateString("tr-TR")}</span>
                 </div>
                 {s.user && (
                   <p className="text-xs text-gray-400 mb-2">
                     Kullanıcı: {s.user.displayName ?? s.user.email}
                   </p>
                 )}
-                {/* Yorum / fotoğraf rozetleri */}
-                <div className="flex gap-2 mb-2">
-                  {s.hasReview && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
-                      💬 Yorum var
-                    </span>
-                  )}
-                  {s.photoCount > 0 && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-purple-50 text-purple-700 border border-purple-100">
-                      📷 {s.photoCount} fotoğraf
-                    </span>
-                  )}
-                </div>
+
+                {/* Pending ürün linki */}
+                {s.productSlug && (
+                  <div className="mb-2">
+                    <Link
+                      href={`/araclar/${s.productSlug}`}
+                      target="_blank"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 hover:underline"
+                    >
+                      🔗 /araclar/{s.productSlug}
+                      <span className={`ml-1 px-1.5 py-0.5 rounded-full text-xs font-semibold ${
+                        s.productStatus === "ACTIVE" ? "bg-green-100 text-green-700" :
+                        s.productStatus === "REJECTED" ? "bg-red-100 text-red-700" :
+                        "bg-orange-100 text-orange-700"
+                      }`}>
+                        {s.productStatus ?? "PENDING"}
+                      </span>
+                    </Link>
+                  </div>
+                )}
 
                 {s.notes && (
                   <p className="text-sm text-gray-600 bg-gray-50 rounded-xl px-3 py-2 border border-gray-100">
@@ -196,16 +198,11 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                   </button>
                 </div>
               )}
-
               {s.status === "APPROVED" && (
-                <span className="shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
-                  Onaylandı
-                </span>
+                <span className="shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">Onaylandı</span>
               )}
               {s.status === "REJECTED" && (
-                <span className="shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700">
-                  Reddedildi
-                </span>
+                <span className="shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700">Reddedildi</span>
               )}
             </div>
           </div>
@@ -224,7 +221,17 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
               {modal.suggestion.year ? ` (${modal.suggestion.year})` : ""}
             </p>
 
-            {modal.action === "APPROVED" && (
+            {/* Yeni akış: ürün zaten var, slug input gereksiz */}
+            {modal.action === "APPROVED" && modal.suggestion.productSlug && (
+              <div className="mb-4 px-3 py-2.5 rounded-xl bg-green-50 border border-green-100 text-sm text-green-700">
+                Araç zaten oluşturuldu: <strong>/araclar/{modal.suggestion.productSlug}</strong>
+                <br />
+                <span className="text-xs text-green-600">Onaylamak ürünü aktif hale getirir ve bekleyen yorumları yayınlar.</span>
+              </div>
+            )}
+
+            {/* Legacy akış: slug input */}
+            {modal.action === "APPROVED" && !modal.suggestion.productSlug && (
               <div className="mb-4">
                 <label className="block text-xs font-semibold text-gray-700 mb-1">
                   Ürün Slug <span className="text-gray-400 font-normal">(URL&apos;de kullanılır)</span>
@@ -233,7 +240,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                   type="text"
                   value={customSlug}
                   onChange={(e) => setCustomSlug(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono focus:outline-none focus:border-gray-400 transition-colors"
+                  className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono focus:outline-none focus:border-gray-400"
                 />
                 <p className="text-xs text-gray-400 mt-1">
                   fikape.com/araclar/<strong>{customSlug || "..."}</strong>
@@ -250,7 +257,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                 onChange={(e) => setAdminNote(e.target.value)}
                 rows={2}
                 placeholder={modal.action === "REJECTED" ? "Neden reddedildi?" : "Eklemek istediğin not..."}
-                className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors resize-none"
+                className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 resize-none"
               />
             </div>
 
@@ -263,7 +270,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
             <div className="flex gap-2 justify-end">
               <button
                 onClick={() => { setModal(null); setErrorMsg(null); }}
-                className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors"
+                className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50"
               >
                 İptal
               </button>
@@ -274,7 +281,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                   modal.action === "APPROVED" ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"
                 }`}
               >
-                {loading ? "İşleniyor..." : modal.action === "APPROVED" ? "Onayla & Ekle" : "Reddet"}
+                {loading ? "İşleniyor..." : modal.action === "APPROVED" ? "Onayla" : "Reddet"}
               </button>
             </div>
           </div>

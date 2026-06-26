@@ -33,7 +33,13 @@ export default async function YorumYazPage({
   const reviewedSlugs = existingReviews.map((r) => r.product.slug);
 
   const products = await prisma.product.findMany({
-    where: { isActive: true },
+    where: {
+      OR: [
+        { isActive: true },
+        // PENDING ürün: öneri akışından gelen slug ile doğrudan yorum yazılabilir
+        ...(arac ? [{ slug: arac, status: "PENDING" as const }] : []),
+      ],
+    },
     select: {
       slug: true,
       name: true,

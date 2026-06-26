@@ -42,20 +42,47 @@ export async function POST(
     return NextResponse.json({ error: "Bu öneri zaten işleme alındı" }, { status: 409 });
   }
 
+  // ── REDDETME ──
   if (action === "REJECTED") {
+    if (suggestion.productId) {
+      // Yeni akış: PENDING ürünü ve bağlı yorumları reddet
+      await prisma.review.updateMany({
+        where: { productId: suggestion.productId },
+        data: { status: "REJECTED", rejectedAt: new Date(), rejectionReason: adminNote ?? "Araç önerisi reddedildi" },
+      });
+      await prisma.product.update({
+        where: { id: suggestion.productId },
+        data: { status: "REJECTED" },
+      });
+    }
     await prisma.vehicleSuggestion.update({
       where: { id: suggestionId },
-      data: {
-        status: "REJECTED",
-        adminNote: adminNote ?? null,
-        reviewedAt: new Date(),
-        reviewedBy: Number(session.user.id),
-      },
+      data: { status: "REJECTED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: Number(session.user.id) },
     });
     return NextResponse.json({ ok: true, action: "REJECTED" });
   }
 
   // ── ONAYLAMA ──
+
+  // Yeni akış: PENDING ürün zaten oluşturulmuş
+  if (suggestion.productId) {
+    await prisma.product.update({
+      where: { id: suggestion.productId },
+      data: { status: "ACTIVE", isActive: true },
+    });
+    // Bekleyen yorumları yayınla
+    await prisma.review.updateMany({
+      where: { productId: suggestion.productId, status: "PENDING" },
+      data: { status: "PUBLISHED", publishedAt: new Date() },
+    });
+    await prisma.vehicleSuggestion.update({
+      where: { id: suggestionId },
+      data: { status: "APPROVED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: Number(session.user.id) },
+    });
+    return NextResponse.json({ ok: true, action: "APPROVED", productId: suggestion.productId });
+  }
+
+  // Legacy akış: productId yok, eski yöntemle ürün oluştur
   const brandSlug = slugify(suggestion.brandName);
   const modelSlug = slugify(`${suggestion.brandName}-${suggestion.modelName}`);
   const productSlug =
@@ -75,7 +102,6 @@ export async function POST(
     );
   }
 
-  // Brand & Model — upsert
   const brand = await prisma.brand.upsert({
     where: { slug: brandSlug },
     update: {},
@@ -87,13 +113,10 @@ export async function POST(
     create: { slug: modelSlug, name: suggestion.modelName, brandId: brand.id },
   });
 
-  // Wikipedia'dan kapak fotosu
   const imageUrl = await fetchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
-
   const attributes: Record<string, string> = {};
   if (suggestion.fuelType) attributes.fuel_type = suggestion.fuelType;
 
-  // Product oluştur
   const product = await prisma.product.create({
     data: {
       slug: productSlug,
@@ -104,64 +127,46 @@ export async function POST(
       categoryId: category.id,
       brandId: brand.id,
       modelId: model.id,
+      status: "ACTIVE",
       isActive: true,
       imageUrl: imageUrl ?? null,
     },
   });
 
-  // Review oluştur (eğer reviewData varsa)
+  // Legacy reviewData
   const reviewData = suggestion.reviewData as {
-    scoreFiyat: number;
-    scoreKalite: number;
-    scorePerformans: number;
-    summaryText: string;
+    scoreFiyat: number; scoreKalite: number; scorePerformans: number; summaryText: string;
   } | null;
 
   if (reviewData && suggestion.userId) {
     const fi = Number(reviewData.scoreFiyat) * 2;
     const ka = Number(reviewData.scoreKalite) * 2;
     const pe = Number(reviewData.scorePerformans) * 2;
-    const overall = calcOverall({ scoreFiyat: fi, scoreKalite: ka, scorePerformans: pe });
-
     await prisma.review.create({
       data: {
-        userId: suggestion.userId,
-        productId: product.id,
-        scoreFiyat: fi,
-        scoreKalite: ka,
-        scorePerformans: pe,
-        scoreOverall: overall,
+        userId: suggestion.userId, productId: product.id,
+        scoreFiyat: fi, scoreKalite: ka, scorePerformans: pe,
+        scoreOverall: calcOverall({ scoreFiyat: fi, scoreKalite: ka, scorePerformans: pe }),
         summaryText: String(reviewData.summaryText).slice(0, 500),
-        status: "PUBLISHED",
-        publishedAt: new Date(),
-        trustScore: 35,
+        status: "PUBLISHED", publishedAt: new Date(), trustScore: 35,
       },
     });
   }
 
-  // ProductPhoto kayıtları oluştur (fotoğraf varsa)
   const photoUrls: string[] = Array.isArray(suggestion.photoUrls) ? suggestion.photoUrls : [];
   if (photoUrls.length > 0) {
     await prisma.productPhoto.createMany({
       data: photoUrls.map((url, idx) => ({
         productId: product.id,
         uploadedByUserId: suggestion.userId ?? null,
-        url,
-        status: "APPROVED" as const,
-        order: idx,
+        url, status: "APPROVED" as const, order: idx,
       })),
     });
   }
 
-  // Öneriyi onayla
   await prisma.vehicleSuggestion.update({
     where: { id: suggestionId },
-    data: {
-      status: "APPROVED",
-      adminNote: adminNote ?? null,
-      reviewedAt: new Date(),
-      reviewedBy: Number(session.user.id),
-    },
+    data: { status: "APPROVED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: Number(session.user.id) },
   });
 
   return NextResponse.json({ ok: true, action: "APPROVED", productId: product.id, slug: product.slug });
@@ -178,7 +183,6 @@ async function fetchWikipediaImage(brand: string, model: string, year: number | 
     const searchData = await searchRes.json();
     const title: string | undefined = searchData.query?.search?.[0]?.title;
     if (!title) return null;
-
     const summaryRes = await fetch(
       `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`,
       { signal: AbortSignal.timeout(4000) }
@@ -192,10 +196,8 @@ async function fetchWikipediaImage(brand: string, model: string, year: number | 
 }
 
 function slugify(text: string): string {
-  return String(text)
-    .toLowerCase()
+  return String(text).toLowerCase()
     .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
     .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
