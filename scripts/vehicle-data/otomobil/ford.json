@@ -2,17 +2,52 @@
   "make": "Ford",
   "models": [
     {
-      "name": "Fiesta",
-      "versions": ["1.0 EcoBoost 95", "1.0 EcoBoost 125", "1.0 EcoBoost ST-Line 140", "1.5 TDCi 85", "1.5 TDCi 120", "ST 1.5 EcoBoost 200", "Diğer"],
+      "name": "Fiesta (2001-2008)",
+      "versions": ["1.25 75", "1.25 86", "1.4 80", "1.6 100", "1.4 TDCi 68", "1.6 TDCi 90", "ST 2.0 150", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Ghia", "Sport", "ST", "Diğer"]
+    },
+    {
+      "name": "Fiesta (2008-2017)",
+      "versions": ["1.0 EcoBoost 65", "1.0 EcoBoost 80", "1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.25 82", "1.4 96", "1.6 120", "1.4 TDCi 70", "1.6 TDCi 90", "1.6 TDCi 95", "ST 1.6 EcoBoost 182", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Titanium", "ST-Line", "ST", "Diğer"]
+    },
+    {
+      "name": "Fiesta (2017-2023)",
+      "versions": ["1.0 EcoBoost 85", "1.0 EcoBoost 95", "1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.5 TDCi 85", "1.5 TDCi 120", "ST 1.5 EcoBoost 200", "Diğer"],
       "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "ST", "Diğer"]
     },
     {
-      "name": "Focus",
+      "name": "Focus (1998-2004)",
+      "versions": ["1.4 75", "1.6 100", "1.8 115", "2.0 130", "1.8 TDCi 100", "2.0 TDCi 115", "RS 2.0T 215", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Ghia", "RS", "Diğer"]
+    },
+    {
+      "name": "Focus (2004-2011)",
+      "versions": ["1.4 80", "1.6 100", "1.6 115", "1.8 125", "2.0 145", "1.6 TDCi 90", "1.6 TDCi 110", "1.8 TDCi 115", "2.0 TDCi 136", "ST 2.5T 225", "RS 2.5T 305", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Ghia", "Titanium", "ST", "RS", "Diğer"]
+    },
+    {
+      "name": "Focus (2011-2018)",
+      "versions": ["1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.5 EcoBoost 150", "2.0 EcoBoost 250", "1.5 TDCi 95", "1.5 TDCi 120", "2.0 TDCi 150", "ST 2.0 EcoBoost 250", "RS 2.3 EcoBoost 350", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Titanium", "ST-Line", "Active", "ST", "RS", "Diğer"]
+    },
+    {
+      "name": "Focus (2018-)",
       "versions": ["1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.5 EcoBoost 150", "1.5 EcoBoost 182", "1.5 EcoBlue 95", "1.5 EcoBlue 120", "2.3 EcoBoost ST 280", "Diğer"],
       "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "Active", "ST", "Diğer"]
     },
     {
-      "name": "Mondeo",
+      "name": "Mondeo (2000-2007)",
+      "versions": ["1.8 125", "2.0 145", "2.5 V6 170", "2.0 TDCi 115", "2.0 TDCi 130", "ST220 2.5 V6 226", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Ghia", "ST220", "Diğer"]
+    },
+    {
+      "name": "Mondeo (2007-2014)",
+      "versions": ["1.6 EcoBoost 160", "2.0 145", "2.5T 220", "1.8 TDCi 125", "2.0 TDCi 140", "2.0 TDCi 163", "ST 2.5T 220", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Titanium", "ST-Line", "ST", "Diğer"]
+    },
+    {
+      "name": "Mondeo (2014-2022)",
       "versions": ["1.5 EcoBoost 160", "2.0 EcoBlue 150", "2.0 EcoBlue 190", "2.0 Hybrid 187", "Diğer"],
       "trims": ["Trend", "Titanium", "ST-Line", "Vignale", "Diğer"]
     },
@@ -65,6 +100,11 @@
       "name": "Tourneo Connect",
       "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "PHEV 150", "Diğer"],
       "trims": ["Trend", "Titanium", "Active", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

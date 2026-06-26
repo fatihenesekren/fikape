@@ -12,12 +12,37 @@
       "trims": ["Progressive", "AMG Line", "Diğer"]
     },
     {
-      "name": "C Serisi",
+      "name": "C Serisi W203 (2000-2007)",
+      "versions": ["C 180 Kompressor 143", "C 200 Kompressor 163", "C 230 Kompressor 192", "C 200 CDI 122", "C 220 CDI 143", "C 220 CDI 150", "C 270 CDI 170", "C 320 231", "AMG C 32 354", "AMG C 55 367", "Diğer"],
+      "trims": ["Classic", "Elegance", "Avantgarde", "AMG", "Diğer"]
+    },
+    {
+      "name": "C Serisi W204 (2007-2014)",
+      "versions": ["C 180 156", "C 200 184", "C 250 204", "C 300 231", "C 180 CDI 120", "C 200 CDI 136", "C 220 CDI 170", "C 250 CDI 204", "AMG C 63 457", "AMG C 63 507", "Diğer"],
+      "trims": ["Classic", "Elegance", "Avantgarde", "AMG Line", "AMG C 63", "Diğer"]
+    },
+    {
+      "name": "C Serisi W205 (2014-2021)",
+      "versions": ["C 180 156", "C 200 184", "C 250 211", "C 300 258", "C 180d 116", "C 200d 136", "C 220d 170", "C 250d 204", "C 300 e PHEV 320", "AMG C 43 4MATIC 390", "AMG C 63 476", "AMG C 63 S 510", "Diğer"],
+      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG C 43", "AMG C 63", "Diğer"]
+    },
+    {
+      "name": "C Serisi W206 (2021-)",
       "versions": ["C 180 170", "C 200 204", "C 300 258", "C 300 e PHEV 313 4MATIC", "C 220d 197", "C 300d 265", "AMG C 43 4MATIC 408", "AMG C 63 S e Performance 680", "Diğer"],
       "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG C 43", "AMG C 63 S", "Diğer"]
     },
     {
-      "name": "E Serisi",
+      "name": "E Serisi W211 (2002-2009)",
+      "versions": ["E 200 163", "E 240 177", "E 280 231", "E 350 272", "E 200 CDI 136", "E 220 CDI 150", "E 270 CDI 177", "E 320 CDI 211", "E 400 CDI 260", "AMG E 55 476", "Diğer"],
+      "trims": ["Classic", "Elegance", "Avantgarde", "AMG", "Diğer"]
+    },
+    {
+      "name": "E Serisi W212 (2009-2016)",
+      "versions": ["E 200 184", "E 250 204", "E 300 252", "E 350 252", "E 200 CDI 136", "E 220 CDI 170", "E 250 CDI 204", "E 350 CDI 265", "E 400 Hybrid 306", "AMG E 63 525", "AMG E 63 S 585", "Diğer"],
+      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG E 63", "Diğer"]
+    },
+    {
+      "name": "E Serisi W213 (2016-)",
       "versions": ["E 200 204", "E 300 258 4MATIC", "E 300 e PHEV 313", "E 220d 197", "E 300d 265", "AMG E 53 4MATIC+ 435", "Diğer"],
       "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG E 53", "Diğer"]
     },
@@ -90,6 +115,11 @@
       "name": "SL",
       "versions": ["SL 43 381", "SL 55 4MATIC+ 476", "SL 63 4MATIC+ 585", "Diğer"],
       "trims": ["AMG Line", "Premium", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

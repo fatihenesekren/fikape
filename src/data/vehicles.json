@@ -94,7 +94,78 @@
           ]
         },
         {
-          "name": "A3",
+          "name": "A3 (1996-2003)",
+          "versions": [
+            "1.6 102",
+            "1.8 125",
+            "1.8T 150",
+            "1.8T 180",
+            "1.9 TDI 90",
+            "1.9 TDI 100",
+            "1.9 TDI 130",
+            "S3 1.8T 210",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sport",
+            "S3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "A3 (2003-2012)",
+          "versions": [
+            "1.4 TFSI 125",
+            "1.6 102",
+            "1.8T 160",
+            "2.0 TFSI 200",
+            "1.6 TDI 105",
+            "1.9 TDI 105",
+            "2.0 TDI 140",
+            "2.0 TDI 170",
+            "S3 2.0T 265",
+            "Diğer"
+          ],
+          "trims": [
+            "Attraction",
+            "Ambition",
+            "Sport",
+            "S line",
+            "S3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "A3 (2012-2020)",
+          "versions": [
+            "1.0 TFSI 115",
+            "1.2 TFSI 105",
+            "1.4 TFSI 122",
+            "1.4 TFSI 150",
+            "1.8 TFSI 180",
+            "2.0 TFSI 190",
+            "1.6 TDI 105",
+            "1.6 TDI 110",
+            "2.0 TDI 150",
+            "2.0 TDI 184",
+            "40 TFSI e PHEV 204",
+            "S3 2.0T 300",
+            "S3 2.0T 310",
+            "RS3 2.5 TFSI 367",
+            "Diğer"
+          ],
+          "trims": [
+            "Attraction",
+            "Sport",
+            "S line",
+            "S3",
+            "RS 3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "A3 (2020-)",
           "versions": [
             "1.0 TFSI 110",
             "1.5 TFSI 150",
@@ -117,7 +188,60 @@
           ]
         },
         {
-          "name": "A4",
+          "name": "A4 (2000-2008)",
+          "versions": [
+            "1.6 102",
+            "1.8T 150",
+            "1.8T 163",
+            "1.8T 190",
+            "2.0 130",
+            "2.0 TFSI 200",
+            "2.4 170",
+            "3.2 255",
+            "1.9 TDI 115",
+            "1.9 TDI 130",
+            "2.0 TDI 140",
+            "2.5 TDI 163",
+            "S4 4.2 V8 344",
+            "Diğer"
+          ],
+          "trims": [
+            "Attraction",
+            "Ambition",
+            "Sport",
+            "S line",
+            "S4",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "A4 (2008-2016)",
+          "versions": [
+            "1.8 TFSI 120",
+            "1.8 TFSI 160",
+            "2.0 TFSI 180",
+            "2.0 TFSI 211",
+            "3.0 TFSI 272 quattro",
+            "2.0 TDI 120",
+            "2.0 TDI 143",
+            "2.0 TDI 150",
+            "2.0 TDI 177",
+            "3.0 TDI 204",
+            "3.0 TDI 245",
+            "S4 3.0 333",
+            "Diğer"
+          ],
+          "trims": [
+            "Attraction",
+            "Ambition",
+            "Sport",
+            "S line",
+            "S4",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "A4 (2016-)",
           "versions": [
             "2.0 TFSI 150",
             "2.0 TFSI 190",
@@ -359,6 +483,15 @@
             "Performance",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -366,7 +499,48 @@
       "make": "BMW",
       "models": [
         {
-          "name": "1 Serisi",
+          "name": "1 Serisi (2004-2011)",
+          "versions": [
+            "116i",
+            "118i",
+            "120i",
+            "130i",
+            "116d",
+            "118d",
+            "120d",
+            "M135i",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sport",
+            "M Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "1 Serisi (2011-2019)",
+          "versions": [
+            "116i",
+            "118i",
+            "120i",
+            "125i",
+            "116d",
+            "118d",
+            "120d",
+            "125d",
+            "M140i",
+            "Diğer"
+          ],
+          "trims": [
+            "Advantage",
+            "Sport Line",
+            "M Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "1 Serisi (2019-)",
           "versions": [
             "116i",
             "118i",
@@ -405,7 +579,87 @@
           ]
         },
         {
-          "name": "3 Serisi",
+          "name": "3 Serisi (1998-2005)",
+          "versions": [
+            "316i",
+            "318i",
+            "320i",
+            "323i",
+            "325i",
+            "328i",
+            "330i",
+            "318d",
+            "320d",
+            "330d",
+            "M3 3.2",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "Sport",
+            "M Sport",
+            "M3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "3 Serisi (2005-2012)",
+          "versions": [
+            "316i",
+            "318i",
+            "320i",
+            "325i",
+            "330i",
+            "335i",
+            "318d",
+            "320d",
+            "325d",
+            "330d",
+            "335d",
+            "M3 4.0 V8",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "Sport",
+            "M Sport",
+            "M3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "3 Serisi (2012-2018)",
+          "versions": [
+            "316i",
+            "318i",
+            "320i",
+            "328i",
+            "330i",
+            "340i",
+            "316d",
+            "318d",
+            "320d",
+            "325d",
+            "330d",
+            "320i xDrive",
+            "320d xDrive",
+            "M3",
+            "Diğer"
+          ],
+          "trims": [
+            "Advantage",
+            "Sport Line",
+            "Luxury",
+            "M Sport",
+            "M3",
+            "M3 Competition",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "3 Serisi (2018-)",
           "versions": [
             "318i",
             "320i",
@@ -451,7 +705,57 @@
           ]
         },
         {
-          "name": "5 Serisi",
+          "name": "5 Serisi (2003-2010)",
+          "versions": [
+            "520i",
+            "523i",
+            "525i",
+            "530i",
+            "535i",
+            "520d",
+            "525d",
+            "530d",
+            "535d",
+            "M5 V10",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "Sport",
+            "M Sport",
+            "M5",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "5 Serisi (2010-2017)",
+          "versions": [
+            "520i",
+            "523i",
+            "528i",
+            "530i",
+            "535i",
+            "518d",
+            "520d",
+            "525d",
+            "530d",
+            "535d",
+            "M5",
+            "M5 Competition",
+            "Diğer"
+          ],
+          "trims": [
+            "Advantage",
+            "Sport Line",
+            "Luxury",
+            "M Sport",
+            "M5",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "5 Serisi (2017-)",
           "versions": [
             "520i",
             "530i",
@@ -740,6 +1044,15 @@
           "trims": [
             "Sport Line",
             "M Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -1441,11 +1754,58 @@
       "make": "Ford",
       "models": [
         {
-          "name": "Fiesta",
+          "name": "Fiesta (2001-2008)",
           "versions": [
-            "1.0 EcoBoost 95",
+            "1.25 75",
+            "1.25 86",
+            "1.4 80",
+            "1.6 100",
+            "1.4 TDCi 68",
+            "1.6 TDCi 90",
+            "ST 2.0 150",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiente",
+            "Trend",
+            "Ghia",
+            "Sport",
+            "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Fiesta (2008-2017)",
+          "versions": [
+            "1.0 EcoBoost 65",
+            "1.0 EcoBoost 80",
+            "1.0 EcoBoost 100",
             "1.0 EcoBoost 125",
-            "1.0 EcoBoost ST-Line 140",
+            "1.25 82",
+            "1.4 96",
+            "1.6 120",
+            "1.4 TDCi 70",
+            "1.6 TDCi 90",
+            "1.6 TDCi 95",
+            "ST 1.6 EcoBoost 182",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiente",
+            "Trend",
+            "Titanium",
+            "ST-Line",
+            "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Fiesta (2017-2023)",
+          "versions": [
+            "1.0 EcoBoost 85",
+            "1.0 EcoBoost 95",
+            "1.0 EcoBoost 100",
+            "1.0 EcoBoost 125",
             "1.5 TDCi 85",
             "1.5 TDCi 120",
             "ST 1.5 EcoBoost 200",
@@ -1461,7 +1821,78 @@
           ]
         },
         {
-          "name": "Focus",
+          "name": "Focus (1998-2004)",
+          "versions": [
+            "1.4 75",
+            "1.6 100",
+            "1.8 115",
+            "2.0 130",
+            "1.8 TDCi 100",
+            "2.0 TDCi 115",
+            "RS 2.0T 215",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiente",
+            "Trend",
+            "Ghia",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Focus (2004-2011)",
+          "versions": [
+            "1.4 80",
+            "1.6 100",
+            "1.6 115",
+            "1.8 125",
+            "2.0 145",
+            "1.6 TDCi 90",
+            "1.6 TDCi 110",
+            "1.8 TDCi 115",
+            "2.0 TDCi 136",
+            "ST 2.5T 225",
+            "RS 2.5T 305",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiente",
+            "Trend",
+            "Ghia",
+            "Titanium",
+            "ST",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Focus (2011-2018)",
+          "versions": [
+            "1.0 EcoBoost 100",
+            "1.0 EcoBoost 125",
+            "1.5 EcoBoost 150",
+            "2.0 EcoBoost 250",
+            "1.5 TDCi 95",
+            "1.5 TDCi 120",
+            "2.0 TDCi 150",
+            "ST 2.0 EcoBoost 250",
+            "RS 2.3 EcoBoost 350",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiente",
+            "Trend",
+            "Titanium",
+            "ST-Line",
+            "Active",
+            "ST",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Focus (2018-)",
           "versions": [
             "1.0 EcoBoost 100",
             "1.0 EcoBoost 125",
@@ -1483,7 +1914,47 @@
           ]
         },
         {
-          "name": "Mondeo",
+          "name": "Mondeo (2000-2007)",
+          "versions": [
+            "1.8 125",
+            "2.0 145",
+            "2.5 V6 170",
+            "2.0 TDCi 115",
+            "2.0 TDCi 130",
+            "ST220 2.5 V6 226",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiente",
+            "Trend",
+            "Ghia",
+            "ST220",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mondeo (2007-2014)",
+          "versions": [
+            "1.6 EcoBoost 160",
+            "2.0 145",
+            "2.5T 220",
+            "1.8 TDCi 125",
+            "2.0 TDCi 140",
+            "2.0 TDCi 163",
+            "ST 2.5T 220",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiente",
+            "Trend",
+            "Titanium",
+            "ST-Line",
+            "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mondeo (2014-2022)",
           "versions": [
             "1.5 EcoBoost 160",
             "2.0 EcoBlue 150",
@@ -1668,6 +2139,15 @@
             "Trend",
             "Titanium",
             "Active",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -2941,7 +3421,80 @@
           ]
         },
         {
-          "name": "C Serisi",
+          "name": "C Serisi W203 (2000-2007)",
+          "versions": [
+            "C 180 Kompressor 143",
+            "C 200 Kompressor 163",
+            "C 230 Kompressor 192",
+            "C 200 CDI 122",
+            "C 220 CDI 143",
+            "C 220 CDI 150",
+            "C 270 CDI 170",
+            "C 320 231",
+            "AMG C 32 354",
+            "AMG C 55 367",
+            "Diğer"
+          ],
+          "trims": [
+            "Classic",
+            "Elegance",
+            "Avantgarde",
+            "AMG",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C Serisi W204 (2007-2014)",
+          "versions": [
+            "C 180 156",
+            "C 200 184",
+            "C 250 204",
+            "C 300 231",
+            "C 180 CDI 120",
+            "C 200 CDI 136",
+            "C 220 CDI 170",
+            "C 250 CDI 204",
+            "AMG C 63 457",
+            "AMG C 63 507",
+            "Diğer"
+          ],
+          "trims": [
+            "Classic",
+            "Elegance",
+            "Avantgarde",
+            "AMG Line",
+            "AMG C 63",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C Serisi W205 (2014-2021)",
+          "versions": [
+            "C 180 156",
+            "C 200 184",
+            "C 250 211",
+            "C 300 258",
+            "C 180d 116",
+            "C 200d 136",
+            "C 220d 170",
+            "C 250d 204",
+            "C 300 e PHEV 320",
+            "AMG C 43 4MATIC 390",
+            "AMG C 63 476",
+            "AMG C 63 S 510",
+            "Diğer"
+          ],
+          "trims": [
+            "Avantgarde",
+            "Exclusive",
+            "AMG Line",
+            "AMG C 43",
+            "AMG C 63",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C Serisi W206 (2021-)",
           "versions": [
             "C 180 170",
             "C 200 204",
@@ -2963,7 +3516,54 @@
           ]
         },
         {
-          "name": "E Serisi",
+          "name": "E Serisi W211 (2002-2009)",
+          "versions": [
+            "E 200 163",
+            "E 240 177",
+            "E 280 231",
+            "E 350 272",
+            "E 200 CDI 136",
+            "E 220 CDI 150",
+            "E 270 CDI 177",
+            "E 320 CDI 211",
+            "E 400 CDI 260",
+            "AMG E 55 476",
+            "Diğer"
+          ],
+          "trims": [
+            "Classic",
+            "Elegance",
+            "Avantgarde",
+            "AMG",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E Serisi W212 (2009-2016)",
+          "versions": [
+            "E 200 184",
+            "E 250 204",
+            "E 300 252",
+            "E 350 252",
+            "E 200 CDI 136",
+            "E 220 CDI 170",
+            "E 250 CDI 204",
+            "E 350 CDI 265",
+            "E 400 Hybrid 306",
+            "AMG E 63 525",
+            "AMG E 63 S 585",
+            "Diğer"
+          ],
+          "trims": [
+            "Avantgarde",
+            "Exclusive",
+            "AMG Line",
+            "AMG E 63",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E Serisi W213 (2016-)",
           "versions": [
             "E 200 204",
             "E 300 258 4MATIC",
@@ -3217,6 +3817,15 @@
           "trims": [
             "AMG Line",
             "Premium",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -3656,7 +4265,70 @@
       "make": "Opel",
       "models": [
         {
-          "name": "Corsa",
+          "name": "Corsa C (2000-2006)",
+          "versions": [
+            "1.0 12V 58",
+            "1.0 12V 65",
+            "1.2 16V 75",
+            "1.4 16V 90",
+            "1.8 16V 125",
+            "1.3 CDTi 70",
+            "1.7 DTI 75",
+            "1.7 DTI 100",
+            "Diğer"
+          ],
+          "trims": [
+            "Essentia",
+            "Comfort",
+            "Edition",
+            "Sport",
+            "GSi",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Corsa D (2006-2014)",
+          "versions": [
+            "1.0 12V 65",
+            "1.2 16V 80",
+            "1.4 16V 90",
+            "1.6 Turbo OPC 192",
+            "1.0 CDTI 75",
+            "1.3 CDTi 75",
+            "1.3 CDTi 95",
+            "Diğer"
+          ],
+          "trims": [
+            "Essentia",
+            "Enjoy",
+            "Edition",
+            "Sport",
+            "OPC",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Corsa E (2014-2019)",
+          "versions": [
+            "1.0 T 90",
+            "1.0 T 115",
+            "1.2 70",
+            "1.4 90",
+            "1.6 OPC 207",
+            "1.3 CDTi 75",
+            "1.3 CDTi 95",
+            "Diğer"
+          ],
+          "trims": [
+            "Essentia",
+            "Edition",
+            "Innovation",
+            "OPC",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Corsa F (2019-)",
           "versions": [
             "1.2 75",
             "1.2 T 100",
@@ -3686,7 +4358,101 @@
           ]
         },
         {
-          "name": "Astra",
+          "name": "Astra G (1998-2004)",
+          "versions": [
+            "1.2 65",
+            "1.4 90",
+            "1.6 75",
+            "1.6 100",
+            "1.8 116",
+            "2.0 16V OPC 200",
+            "1.7 DTI 75",
+            "2.0 DTI 101",
+            "1.7 CDTi 80",
+            "2.2 DTI 125",
+            "Diğer"
+          ],
+          "trims": [
+            "Essentia",
+            "Comfort",
+            "Edition",
+            "Sport",
+            "OPC",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Astra H (2004-2009)",
+          "versions": [
+            "1.4 90",
+            "1.6 105",
+            "1.6 115",
+            "1.8 140",
+            "2.0T OPC 240",
+            "1.3 CDTi 90",
+            "1.7 CDTi 100",
+            "1.7 CDTi 125",
+            "2.0 CDTi 120",
+            "2.0 CDTi 150",
+            "Diğer"
+          ],
+          "trims": [
+            "Essentia",
+            "Enjoy",
+            "Edition",
+            "Sport",
+            "OPC",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Astra J (2009-2015)",
+          "versions": [
+            "1.4 T 100",
+            "1.4 T 120",
+            "1.4 T 140",
+            "1.6 115",
+            "1.6T 170",
+            "2.0 OPC 280",
+            "1.3 CDTi 95",
+            "1.7 CDTi 110",
+            "1.7 CDTi 130",
+            "2.0 CDTi 130",
+            "2.0 CDTi 160",
+            "Diğer"
+          ],
+          "trims": [
+            "Essentia",
+            "Enjoy",
+            "Edition",
+            "Sport",
+            "OPC",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Astra K (2015-2021)",
+          "versions": [
+            "1.0 T 105",
+            "1.2 T 110",
+            "1.4 T 125",
+            "1.4 T 150",
+            "1.6 CDTI 110",
+            "1.6 CDTI 136",
+            "OPC 2.0T 280",
+            "Diğer"
+          ],
+          "trims": [
+            "Essentia",
+            "Edition",
+            "Innovation",
+            "Business",
+            "OPC",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Astra L (2021-)",
           "versions": [
             "1.2 T 110",
             "1.2 T 130",
@@ -3812,6 +4578,15 @@
             "Edition",
             "GS Line",
             "Ultimate",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -4106,7 +4881,72 @@
       "make": "Renault",
       "models": [
         {
-          "name": "Clio",
+          "name": "Clio 2 (1998-2005)",
+          "versions": [
+            "1.2 58",
+            "1.2 75",
+            "1.4 98",
+            "1.6 107",
+            "1.5 dCi 65",
+            "1.5 dCi 80",
+            "RS 2.0 172",
+            "RS 2.0 182",
+            "Diğer"
+          ],
+          "trims": [
+            "Authentique",
+            "Expression",
+            "Privilege",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Clio 3 (2005-2012)",
+          "versions": [
+            "1.2 16V 75",
+            "1.2 TCe 101",
+            "1.4 16V 98",
+            "1.6 16V 112",
+            "1.5 dCi 70",
+            "1.5 dCi 85",
+            "1.5 dCi 105",
+            "RS 2.0 197",
+            "RS 2.0 200",
+            "Diğer"
+          ],
+          "trims": [
+            "Authentique",
+            "Expression",
+            "Privilege",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Clio 4 (2012-2019)",
+          "versions": [
+            "0.9 TCe 75",
+            "0.9 TCe 90",
+            "1.2 TCe 120",
+            "1.5 dCi 75",
+            "1.5 dCi 90",
+            "1.5 dCi 110",
+            "RS 1.6T 200",
+            "RS 1.6T 220",
+            "Diğer"
+          ],
+          "trims": [
+            "Expression",
+            "Joy",
+            "Zen",
+            "Intens",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Clio 5 (2019-)",
           "versions": [
             "1.0 SCe 65",
             "1.0 TCe 90",
@@ -4126,7 +4966,51 @@
           ]
         },
         {
-          "name": "Megane",
+          "name": "Megane 2 (2002-2008)",
+          "versions": [
+            "1.4 16V 98",
+            "1.6 16V 112",
+            "2.0 16V 135",
+            "1.5 dCi 80",
+            "1.5 dCi 100",
+            "1.5 dCi 106",
+            "2.0T RS 225",
+            "Diğer"
+          ],
+          "trims": [
+            "Authentique",
+            "Expression",
+            "Privilege",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Megane 3 (2008-2016)",
+          "versions": [
+            "1.2 TCe 115",
+            "1.4 TCe 130",
+            "1.6 16V 110",
+            "2.0T 180",
+            "2.0T 190",
+            "1.5 dCi 90",
+            "1.5 dCi 105",
+            "1.5 dCi 110",
+            "RS 2.0T 250",
+            "RS 2.0T 265",
+            "Diğer"
+          ],
+          "trims": [
+            "Expression",
+            "Joy",
+            "Zen",
+            "Intens",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Megane 4 (2016-)",
           "versions": [
             "1.3 TCe 115",
             "1.3 TCe 140",
@@ -4300,6 +5184,15 @@
             "Iconic",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -4436,7 +5329,83 @@
           ]
         },
         {
-          "name": "Octavia",
+          "name": "Octavia (1996-2004)",
+          "versions": [
+            "1.4 60",
+            "1.6 75",
+            "1.6 102",
+            "1.8T 150",
+            "1.8T 180",
+            "2.0 115",
+            "1.9 TDI 90",
+            "1.9 TDI 100",
+            "1.9 TDI 110",
+            "1.9 TDI 130",
+            "RS 1.8T 180",
+            "Diğer"
+          ],
+          "trims": [
+            "Classic",
+            "Comfort",
+            "Elegance",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Octavia (2004-2013)",
+          "versions": [
+            "1.4 80",
+            "1.6 102",
+            "1.8 TFSI 160",
+            "2.0 TFSI 200",
+            "1.6 TDI 105",
+            "2.0 TDI 110",
+            "2.0 TDI 140",
+            "RS 2.0T 200",
+            "RS 2.0T 230",
+            "RS TDI 170",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiente",
+            "Ambition",
+            "Elegance",
+            "Scout",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Octavia (2013-2020)",
+          "versions": [
+            "1.0 TSI 115",
+            "1.2 TSI 86",
+            "1.2 TSI 105",
+            "1.4 TSI 140",
+            "1.4 TSI 150",
+            "1.8 TSI 180",
+            "2.0 TSI 220",
+            "1.6 TDI 90",
+            "1.6 TDI 105",
+            "1.6 TDI 115",
+            "2.0 TDI 110",
+            "2.0 TDI 150",
+            "RS 2.0T 220",
+            "RS 2.0T 230",
+            "Diğer"
+          ],
+          "trims": [
+            "Active",
+            "Ambition",
+            "Style",
+            "Scout",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Octavia (2020-)",
           "versions": [
             "1.0 TSI 110",
             "1.5 TSI 150",
@@ -4560,6 +5529,15 @@
             "Loft",
             "Lodge",
             "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -4984,6 +5962,88 @@
       "make": "Toyota",
       "models": [
         {
+          "name": "Corolla (2001-2007)",
+          "versions": [
+            "1.4 VVT-i 97",
+            "1.6 VVT-i 110",
+            "1.8 VVT-i 135",
+            "2.0 D-4D 90",
+            "2.0 D-4D 116",
+            "T-Sport 1.8 192",
+            "Diğer"
+          ],
+          "trims": [
+            "Terra",
+            "Aura",
+            "Sol",
+            "T-Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Corolla (2007-2013)",
+          "versions": [
+            "1.4 VVT-i 97",
+            "1.6 VVT-i 124",
+            "1.8 VVT-i 132",
+            "2.0 D-4D 126",
+            "Diğer"
+          ],
+          "trims": [
+            "Terra",
+            "Aura",
+            "Sol",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Corolla (2013-2019)",
+          "versions": [
+            "1.2 Turbo 116",
+            "1.4 D-4D 90",
+            "1.6 132",
+            "Diğer"
+          ],
+          "trims": [
+            "Comfort",
+            "Dream",
+            "Flame",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Corolla (2019-)",
+          "versions": [
+            "1.2 Turbo 116",
+            "1.8 Hybrid 122",
+            "2.0 Hybrid 196",
+            "GR Sport 2.0 Hybrid 196",
+            "Diğer"
+          ],
+          "trims": [
+            "Comfort",
+            "Dream",
+            "Flame",
+            "GR Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Corolla Cross",
+          "versions": [
+            "1.8 Hybrid 122 FWD",
+            "2.0 Hybrid 197 AWD",
+            "Diğer"
+          ],
+          "trims": [
+            "Comfort",
+            "Dream",
+            "Flame",
+            "GR Sport",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Yaris",
           "versions": [
             "1.0 VVT-i 72",
@@ -5011,38 +6071,6 @@
           ],
           "trims": [
             "Fire",
-            "Dream",
-            "Flame",
-            "GR Sport",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Corolla",
-          "versions": [
-            "1.2 Turbo 116",
-            "1.8 Hybrid 122",
-            "2.0 Hybrid 196",
-            "GR Sport 2.0 Hybrid 196",
-            "Diğer"
-          ],
-          "trims": [
-            "Comfort",
-            "Dream",
-            "Flame",
-            "GR Sport",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Corolla Cross",
-          "versions": [
-            "1.8 Hybrid 122 FWD",
-            "2.0 Hybrid 197 AWD",
-            "Diğer"
-          ],
-          "trims": [
-            "Comfort",
             "Dream",
             "Flame",
             "GR Sport",
@@ -5205,6 +6233,15 @@
             "Pulse",
             "Air",
             "GR Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }

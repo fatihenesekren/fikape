@@ -2,6 +2,31 @@
   "make": "Toyota",
   "models": [
     {
+      "name": "Corolla (2001-2007)",
+      "versions": ["1.4 VVT-i 97", "1.6 VVT-i 110", "1.8 VVT-i 135", "2.0 D-4D 90", "2.0 D-4D 116", "T-Sport 1.8 192", "Diğer"],
+      "trims": ["Terra", "Aura", "Sol", "T-Sport", "Diğer"]
+    },
+    {
+      "name": "Corolla (2007-2013)",
+      "versions": ["1.4 VVT-i 97", "1.6 VVT-i 124", "1.8 VVT-i 132", "2.0 D-4D 126", "Diğer"],
+      "trims": ["Terra", "Aura", "Sol", "Diğer"]
+    },
+    {
+      "name": "Corolla (2013-2019)",
+      "versions": ["1.2 Turbo 116", "1.4 D-4D 90", "1.6 132", "Diğer"],
+      "trims": ["Comfort", "Dream", "Flame", "Diğer"]
+    },
+    {
+      "name": "Corolla (2019-)",
+      "versions": ["1.2 Turbo 116", "1.8 Hybrid 122", "2.0 Hybrid 196", "GR Sport 2.0 Hybrid 196", "Diğer"],
+      "trims": ["Comfort", "Dream", "Flame", "GR Sport", "Diğer"]
+    },
+    {
+      "name": "Corolla Cross",
+      "versions": ["1.8 Hybrid 122 FWD", "2.0 Hybrid 197 AWD", "Diğer"],
+      "trims": ["Comfort", "Dream", "Flame", "GR Sport", "Diğer"]
+    },
+    {
       "name": "Yaris",
       "versions": ["1.0 VVT-i 72", "1.5 Dynamic Force 125 Hybrid", "1.5 GR Sport Hybrid 130", "GR Yaris 1.6 Turbo 272 AWD", "Diğer"],
       "trims": ["Fire", "Dream", "Flame", "GR Sport", "GR Yaris", "Diğer"]
@@ -10,16 +35,6 @@
       "name": "Yaris Cross",
       "versions": ["1.5 Hybrid 116 FWD", "1.5 Hybrid 130 AWD", "GR Sport Hybrid 130", "Diğer"],
       "trims": ["Fire", "Dream", "Flame", "GR Sport", "Diğer"]
-    },
-    {
-      "name": "Corolla",
-      "versions": ["1.2 Turbo 116", "1.8 Hybrid 122", "2.0 Hybrid 196", "GR Sport 2.0 Hybrid 196", "Diğer"],
-      "trims": ["Comfort", "Dream", "Flame", "GR Sport", "Diğer"]
-    },
-    {
-      "name": "Corolla Cross",
-      "versions": ["1.8 Hybrid 122 FWD", "2.0 Hybrid 197 AWD", "Diğer"],
-      "trims": ["Comfort", "Dream", "Flame", "GR Sport", "Diğer"]
     },
     {
       "name": "Camry",
@@ -75,6 +90,11 @@
       "name": "Aygo X",
       "versions": ["1.0 VVT-i 72", "Diğer"],
       "trims": ["Active", "Pulse", "Air", "GR Sport", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

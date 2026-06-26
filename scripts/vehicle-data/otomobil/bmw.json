@@ -2,7 +2,17 @@
   "make": "BMW",
   "models": [
     {
-      "name": "1 Serisi",
+      "name": "1 Serisi (2004-2011)",
+      "versions": ["116i", "118i", "120i", "130i", "116d", "118d", "120d", "M135i", "Diğer"],
+      "trims": ["Standart", "Sport", "M Sport", "Diğer"]
+    },
+    {
+      "name": "1 Serisi (2011-2019)",
+      "versions": ["116i", "118i", "120i", "125i", "116d", "118d", "120d", "125d", "M140i", "Diğer"],
+      "trims": ["Advantage", "Sport Line", "M Sport", "Diğer"]
+    },
+    {
+      "name": "1 Serisi (2019-)",
       "versions": ["116i", "118i", "120i", "118d", "120d", "M135i xDrive", "Diğer"],
       "trims": ["Advantage", "Sport Line", "M Sport", "M135i", "Diğer"]
     },
@@ -12,7 +22,22 @@
       "trims": ["Sport Line", "M Sport", "M240i", "M2", "Diğer"]
     },
     {
-      "name": "3 Serisi",
+      "name": "3 Serisi (1998-2005)",
+      "versions": ["316i", "318i", "320i", "323i", "325i", "328i", "330i", "318d", "320d", "330d", "M3 3.2", "Diğer"],
+      "trims": ["Standart", "SE", "Sport", "M Sport", "M3", "Diğer"]
+    },
+    {
+      "name": "3 Serisi (2005-2012)",
+      "versions": ["316i", "318i", "320i", "325i", "330i", "335i", "318d", "320d", "325d", "330d", "335d", "M3 4.0 V8", "Diğer"],
+      "trims": ["Standart", "SE", "Sport", "M Sport", "M3", "Diğer"]
+    },
+    {
+      "name": "3 Serisi (2012-2018)",
+      "versions": ["316i", "318i", "320i", "328i", "330i", "340i", "316d", "318d", "320d", "325d", "330d", "320i xDrive", "320d xDrive", "M3", "Diğer"],
+      "trims": ["Advantage", "Sport Line", "Luxury", "M Sport", "M3", "M3 Competition", "Diğer"]
+    },
+    {
+      "name": "3 Serisi (2018-)",
       "versions": ["318i", "320i", "330i", "318d", "320d", "330d", "330e PHEV", "M340i xDrive", "M3", "Diğer"],
       "trims": ["Advantage", "Sport Line", "M Sport", "M340i", "M3", "M3 Competition", "Diğer"]
     },
@@ -22,7 +47,17 @@
       "trims": ["Sport Line", "M Sport", "M440i", "M4", "M4 Competition", "Diğer"]
     },
     {
-      "name": "5 Serisi",
+      "name": "5 Serisi (2003-2010)",
+      "versions": ["520i", "523i", "525i", "530i", "535i", "520d", "525d", "530d", "535d", "M5 V10", "Diğer"],
+      "trims": ["Standart", "SE", "Sport", "M Sport", "M5", "Diğer"]
+    },
+    {
+      "name": "5 Serisi (2010-2017)",
+      "versions": ["520i", "523i", "528i", "530i", "535i", "518d", "520d", "525d", "530d", "535d", "M5", "M5 Competition", "Diğer"],
+      "trims": ["Advantage", "Sport Line", "Luxury", "M Sport", "M5", "Diğer"]
+    },
+    {
+      "name": "5 Serisi (2017-)",
       "versions": ["520i", "530i", "520d", "530d", "545e xDrive PHEV", "M550i xDrive", "M5", "Diğer"],
       "trims": ["Sport Line", "M Sport", "M550i", "M5", "M5 Competition", "Diğer"]
     },
@@ -105,6 +140,11 @@
       "name": "iX3",
       "versions": ["Impressive", "Diğer"],
       "trims": ["Sport Line", "M Sport", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

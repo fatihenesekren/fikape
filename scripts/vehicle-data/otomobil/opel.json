@@ -2,7 +2,22 @@
   "make": "Opel",
   "models": [
     {
-      "name": "Corsa",
+      "name": "Corsa C (2000-2006)",
+      "versions": ["1.0 12V 58", "1.0 12V 65", "1.2 16V 75", "1.4 16V 90", "1.8 16V 125", "1.3 CDTi 70", "1.7 DTI 75", "1.7 DTI 100", "Diğer"],
+      "trims": ["Essentia", "Comfort", "Edition", "Sport", "GSi", "Diğer"]
+    },
+    {
+      "name": "Corsa D (2006-2014)",
+      "versions": ["1.0 12V 65", "1.2 16V 80", "1.4 16V 90", "1.6 Turbo OPC 192", "1.0 CDTI 75", "1.3 CDTi 75", "1.3 CDTi 95", "Diğer"],
+      "trims": ["Essentia", "Enjoy", "Edition", "Sport", "OPC", "Diğer"]
+    },
+    {
+      "name": "Corsa E (2014-2019)",
+      "versions": ["1.0 T 90", "1.0 T 115", "1.2 70", "1.4 90", "1.6 OPC 207", "1.3 CDTi 75", "1.3 CDTi 95", "Diğer"],
+      "trims": ["Essentia", "Edition", "Innovation", "OPC", "Diğer"]
+    },
+    {
+      "name": "Corsa F (2019-)",
       "versions": ["1.2 75", "1.2 T 100", "1.2 T 130", "1.5D 102", "Diğer"],
       "trims": ["Essentia", "Edition", "GS Line", "Ultimate", "Diğer"]
     },
@@ -12,7 +27,27 @@
       "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
     },
     {
-      "name": "Astra",
+      "name": "Astra G (1998-2004)",
+      "versions": ["1.2 65", "1.4 90", "1.6 75", "1.6 100", "1.8 116", "2.0 16V OPC 200", "1.7 DTI 75", "2.0 DTI 101", "1.7 CDTi 80", "2.2 DTI 125", "Diğer"],
+      "trims": ["Essentia", "Comfort", "Edition", "Sport", "OPC", "Diğer"]
+    },
+    {
+      "name": "Astra H (2004-2009)",
+      "versions": ["1.4 90", "1.6 105", "1.6 115", "1.8 140", "2.0T OPC 240", "1.3 CDTi 90", "1.7 CDTi 100", "1.7 CDTi 125", "2.0 CDTi 120", "2.0 CDTi 150", "Diğer"],
+      "trims": ["Essentia", "Enjoy", "Edition", "Sport", "OPC", "Diğer"]
+    },
+    {
+      "name": "Astra J (2009-2015)",
+      "versions": ["1.4 T 100", "1.4 T 120", "1.4 T 140", "1.6 115", "1.6T 170", "2.0 OPC 280", "1.3 CDTi 95", "1.7 CDTi 110", "1.7 CDTi 130", "2.0 CDTi 130", "2.0 CDTi 160", "Diğer"],
+      "trims": ["Essentia", "Enjoy", "Edition", "Sport", "OPC", "Diğer"]
+    },
+    {
+      "name": "Astra K (2015-2021)",
+      "versions": ["1.0 T 105", "1.2 T 110", "1.4 T 125", "1.4 T 150", "1.6 CDTI 110", "1.6 CDTI 136", "OPC 2.0T 280", "Diğer"],
+      "trims": ["Essentia", "Edition", "Innovation", "Business", "OPC", "Diğer"]
+    },
+    {
+      "name": "Astra L (2021-)",
       "versions": ["1.2 T 110", "1.2 T 130", "1.5D 110", "1.5D 130", "Plug-in Hybrid 180", "Plug-in Hybrid 225 AWD", "Diğer"],
       "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
     },
@@ -50,6 +85,11 @@
       "name": "Combo Life",
       "versions": ["1.2 T 110", "1.5D 100", "1.5D 130", "Diğer"],
       "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

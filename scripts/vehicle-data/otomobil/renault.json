@@ -2,12 +2,37 @@
   "make": "Renault",
   "models": [
     {
-      "name": "Clio",
+      "name": "Clio 2 (1998-2005)",
+      "versions": ["1.2 58", "1.2 75", "1.4 98", "1.6 107", "1.5 dCi 65", "1.5 dCi 80", "RS 2.0 172", "RS 2.0 182", "Diğer"],
+      "trims": ["Authentique", "Expression", "Privilege", "RS", "Diğer"]
+    },
+    {
+      "name": "Clio 3 (2005-2012)",
+      "versions": ["1.2 16V 75", "1.2 TCe 101", "1.4 16V 98", "1.6 16V 112", "1.5 dCi 70", "1.5 dCi 85", "1.5 dCi 105", "RS 2.0 197", "RS 2.0 200", "Diğer"],
+      "trims": ["Authentique", "Expression", "Privilege", "RS", "Diğer"]
+    },
+    {
+      "name": "Clio 4 (2012-2019)",
+      "versions": ["0.9 TCe 75", "0.9 TCe 90", "1.2 TCe 120", "1.5 dCi 75", "1.5 dCi 90", "1.5 dCi 110", "RS 1.6T 200", "RS 1.6T 220", "Diğer"],
+      "trims": ["Expression", "Joy", "Zen", "Intens", "RS", "Diğer"]
+    },
+    {
+      "name": "Clio 5 (2019-)",
       "versions": ["1.0 SCe 65", "1.0 TCe 90", "1.0 TCe 100 ECO-G LPG", "1.6 E-Tech Hybrid 145", "1.5 dCi 85", "Diğer"],
       "trims": ["Joy", "Touch", "Zen", "Intens", "RS Line", "R.S.", "Diğer"]
     },
     {
-      "name": "Megane",
+      "name": "Megane 2 (2002-2008)",
+      "versions": ["1.4 16V 98", "1.6 16V 112", "2.0 16V 135", "1.5 dCi 80", "1.5 dCi 100", "1.5 dCi 106", "2.0T RS 225", "Diğer"],
+      "trims": ["Authentique", "Expression", "Privilege", "RS", "Diğer"]
+    },
+    {
+      "name": "Megane 3 (2008-2016)",
+      "versions": ["1.2 TCe 115", "1.4 TCe 130", "1.6 16V 110", "2.0T 180", "2.0T 190", "1.5 dCi 90", "1.5 dCi 105", "1.5 dCi 110", "RS 2.0T 250", "RS 2.0T 265", "Diğer"],
+      "trims": ["Expression", "Joy", "Zen", "Intens", "RS", "Diğer"]
+    },
+    {
+      "name": "Megane 4 (2016-)",
       "versions": ["1.3 TCe 115", "1.3 TCe 140", "1.3 TCe 160", "1.5 dCi 115", "1.8 RS 280", "Diğer"],
       "trims": ["Joy", "Touch", "Zen", "Intens", "RS Line", "R.S.", "Diğer"]
     },
@@ -60,6 +85,11 @@
       "name": "Scenic E-Tech",
       "versions": ["EV60 170 60kWh", "EV87 220 87kWh", "Diğer"],
       "trims": ["Comfort", "Techno", "Iconic", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }
