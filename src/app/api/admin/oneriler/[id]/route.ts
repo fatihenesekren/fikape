@@ -24,10 +24,11 @@ export async function POST(
   const { id } = await params;
   const suggestionId = Number(id);
   const body = await req.json();
-  const { action, adminNote, customSlug } = body as {
+  const { action, adminNote, customSlug, attributes: incomingAttrs } = body as {
     action: "APPROVED" | "REJECTED";
     adminNote?: string;
     customSlug?: string;
+    attributes?: Record<string, string>;
   };
 
   if (action !== "APPROVED" && action !== "REJECTED") {
@@ -66,9 +67,44 @@ export async function POST(
 
   // Yeni akış: PENDING ürün zaten oluşturulmuş
   if (suggestion.productId) {
+    const existingProduct = await prisma.product.findUnique({
+      where: { id: suggestion.productId },
+      select: { attributes: true, imageUrl: true, photos: { where: { status: "APPROVED" }, take: 1 } },
+    });
+    const mergedAttrs: Record<string, unknown> = {
+      ...(typeof existingProduct?.attributes === "object" && existingProduct.attributes !== null
+        ? existingProduct.attributes as Record<string, unknown>
+        : {}),
+      ...(incomingAttrs ?? {}),
+    };
+
+    // Wikipedia fallback: fotoğraf yoksa otomatik çek
+    const hasPhoto = existingProduct?.imageUrl || (existingProduct?.photos?.length ?? 0) > 0;
+    const wikiImage = hasPhoto
+      ? null
+      : await fetchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
+
+    // Kullanıcının önerdiği fotoğrafları ProductPhoto'ya ekle
+    const suggestionPhotos: string[] = Array.isArray(suggestion.photoUrls) ? suggestion.photoUrls : [];
+    if (suggestionPhotos.length > 0) {
+      await prisma.productPhoto.createMany({
+        data: suggestionPhotos.map((url, idx) => ({
+          productId: suggestion.productId!,
+          uploadedByUserId: suggestion.userId ?? null,
+          url, status: "APPROVED" as const, order: idx,
+        })),
+        skipDuplicates: true,
+      });
+    }
+
     await prisma.product.update({
       where: { id: suggestion.productId },
-      data: { status: "ACTIVE", isActive: true },
+      data: {
+        status: "ACTIVE",
+        isActive: true,
+        attributes: mergedAttrs as Parameters<typeof prisma.product.update>[0]["data"]["attributes"],
+        ...(wikiImage ? { imageUrl: wikiImage } : {}),
+      },
     });
     // Bekleyen yorumları yayınla
     await prisma.review.updateMany({
@@ -116,6 +152,7 @@ export async function POST(
   const imageUrl = await fetchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
   const attributes: Record<string, string> = {};
   if (suggestion.fuelType) attributes.fuel_type = suggestion.fuelType;
+  Object.assign(attributes, incomingAttrs ?? {});
 
   const product = await prisma.product.create({
     data: {

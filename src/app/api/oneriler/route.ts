@@ -18,13 +18,14 @@ function slugify(text: string): string {
 }
 
 export async function POST(req: Request) {
+  try {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Giriş gerekiyor" }, { status: 401 });
   }
 
   const body = await req.json();
-  const { brandName, modelName, year, categorySlug, fuelType, trimName, notes } = body;
+  const { brandName, modelName, year, categorySlug, fuelType, trimName, notes, photoUrls } = body;
 
   if (!brandName?.trim() || !modelName?.trim()) {
     return NextResponse.json({ error: "Marka ve model zorunludur" }, { status: 400 });
@@ -121,9 +122,14 @@ export async function POST(req: Request) {
       fuelType:  fuelType || null,
       trimName:  trimName?.trim() || null,
       notes:     notes?.trim() || null,
+      photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 3) : [],
       productId: product.id,
     },
   });
 
   return NextResponse.json({ slug: product.slug }, { status: 201 });
+  } catch (err) {
+    console.error("[POST /api/oneriler]", err);
+    return NextResponse.json({ error: "Sunucu hatası oluştu, lütfen tekrar deneyin" }, { status: 500 });
+  }
 }

@@ -65,7 +65,7 @@ export function ReviewCard({
 
         <div className="text-right shrink-0">
           <div className="text-xl font-black text-gray-900">
-            {overall.toFixed(1)}<span className="text-xs font-normal text-gray-400">/5</span>
+            {overall.toFixed(1)}<span className="text-xs font-normal text-gray-400">/10</span>
           </div>
           <div className="text-[10px] text-gray-400 mt-0.5">
             {createdAt.toLocaleDateString("tr-TR", { month: "short", year: "numeric" })}
