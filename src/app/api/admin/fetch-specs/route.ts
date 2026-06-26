@@ -236,10 +236,11 @@ function extractBootFromText(text: string): string | null {
 
 function extractWeightFromText(text: string): string | null {
   const patterns = [
-    /(?:kerb|curb)\s+weight\s+(?:of\s+|is\s+)?([\d,]+)\s*kg/i,
+    // "Curb weight: 1,415–1,770 kg" veya "Kerb weight: 1,490 kg"
+    /(?:kerb|curb)\s+weight[:\s]+(?:of\s+)?([\d,]+)/i,
     /([\d,]+)\s*kg\s+(?:kerb|curb)/i,
     /weighs?\s+([\d,]+)\s*kg/i,
-    /(?:unladen|empty)\s+weight\s+(?:of\s+)?([\d,]+)\s*kg/i,
+    /(?:unladen|empty)\s+weight[:\s]+([\d,]+)/i,
   ];
   for (const p of patterns) {
     const m = text.match(p);
@@ -326,18 +327,21 @@ async function fetchWikipediaSpecs(
     if (!merged.boot_l) { const v = extractBootFromText(s0text); if (v) merged.boot_l = v; }
     if (!merged.weight_kg) { const v = extractWeightFromText(s0text); if (v) merged.weight_kg = v; }
 
-    // Hâlâ boşsa section 1'i dene (genellikle "First generation" açıklaması)
+    // Hâlâ boşsa section 1 ve 2'yi dene
     if (!merged.weight_kg || !merged.boot_l) {
-      try {
-        const s1res = await fetch(
-          `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&section=1&format=json&origin=*`,
-          { signal: AbortSignal.timeout(4000) }
-        );
-        const s1data = await s1res.json();
-        const s1text = stripHtml(s1data.parse?.text?.["*"] ?? "");
-        if (!merged.boot_l) { const v = extractBootFromText(s1text); if (v) merged.boot_l = v; }
-        if (!merged.weight_kg) { const v = extractWeightFromText(s1text); if (v) merged.weight_kg = v; }
-      } catch { /* geç */ }
+      for (const sec of ["1", "2"]) {
+        if (merged.weight_kg && merged.boot_l) break;
+        try {
+          const res = await fetch(
+            `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&section=${sec}&format=json&origin=*`,
+            { signal: AbortSignal.timeout(4000) }
+          );
+          const data = await res.json();
+          const text = stripHtml(data.parse?.text?.["*"] ?? "");
+          if (!merged.boot_l) { const v = extractBootFromText(text); if (v) merged.boot_l = v; }
+          if (!merged.weight_kg) { const v = extractWeightFromText(text); if (v) merged.weight_kg = v; }
+        } catch { /* geç */ }
+      }
     }
   }
 
