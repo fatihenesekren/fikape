@@ -473,10 +473,32 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                   <p className="text-xs text-gray-400 mb-2 animate-pulse">🔍 CarQuery&apos;den veriler çekiliyor...</p>
                 )}
                 {!fetchingSpecs && specSource && (
-                  <p className="text-xs text-green-600 mb-2">✓ {specSource} — alanlar otomatik dolduruldu, kontrol edip düzenleyebilirsin.</p>
+                  <div className="mb-2 flex flex-wrap items-center gap-3">
+                    <p className="text-xs text-green-600">✓ {specSource} — alanlar otomatik dolduruldu.</p>
+                    {(!attrs.weight_kg || !attrs.boot_l) && (
+                      <a
+                        href={`https://www.auto-data.net/en/search?q=${encodeURIComponent(`${modal.suggestion.brandName} ${modal.suggestion.modelName}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-blue-600 hover:underline"
+                      >
+                        🔗 Ağırlık/Bagaj için ara →
+                      </a>
+                    )}
+                  </div>
                 )}
                 {!fetchingSpecs && !specSource && modal.suggestion.categorySlug === "otomobil" && (
-                  <p className="text-xs text-gray-400 mb-2">CarQuery&apos;de bu araç için veri bulunamadı, manuel doldur.</p>
+                  <div className="mb-2 flex flex-wrap items-center gap-3">
+                    <p className="text-xs text-gray-400">Otomatik veri bulunamadı.</p>
+                    <a
+                      href={`https://www.auto-data.net/en/search?q=${encodeURIComponent(`${modal.suggestion.brandName} ${modal.suggestion.modelName}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-blue-600 hover:underline"
+                    >
+                      🔗 auto-data.net&apos;te ara →
+                    </a>
+                  </div>
                 )}
                 <SpecForm
                   categorySlug={modal.suggestion.categorySlug}

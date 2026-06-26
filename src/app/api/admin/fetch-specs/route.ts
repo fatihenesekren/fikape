@@ -214,6 +214,36 @@ function parseSpecTable(
   return specs;
 }
 
+// ── Wikipedia: madde metninden ağırlık / bagaj çıkar ────────────────────────
+
+function extractBootFromText(text: string): string | null {
+  const patterns = [
+    /boot\s+(?:space\s+)?(?:capacity\s+)?(?:of\s+)?([\d,]+)\s*(?:l|litre|liter)/i,
+    /([\d,]+)\s*(?:l|litre|liter)[- ]boot/i,
+    /luggage\s+(?:space\s+)?(?:of\s+)?([\d,]+)\s*(?:l|litre|liter)/i,
+    /cargo\s+(?:volume\s+)?(?:of\s+)?([\d,]+)\s*(?:l|litre|liter)/i,
+  ];
+  for (const p of patterns) {
+    const m = text.match(p);
+    if (m) { const n = m[1].replace(/,/g, ""); if (+n > 50 && +n < 5000) return n; }
+  }
+  return null;
+}
+
+function extractWeightFromText(text: string): string | null {
+  const patterns = [
+    /(?:kerb|curb)\s+weight\s+(?:of\s+|is\s+)?([\d,]+)\s*kg/i,
+    /([\d,]+)\s*kg\s+(?:kerb|curb)/i,
+    /weighs?\s+([\d,]+)\s*kg/i,
+    /(?:unladen|empty)\s+weight\s+(?:of\s+)?([\d,]+)\s*kg/i,
+  ];
+  for (const p of patterns) {
+    const m = text.match(p);
+    if (m) { const n = m[1].replace(/,/g, ""); if (+n > 500 && +n < 10000) return n; }
+  }
+  return null;
+}
+
 // ── Wikipedia: section 0 infobox (kasa, predecessor vs.) ───────────────────
 
 function parseInfoboxSpecs(html: string): Record<string, string> {
@@ -282,7 +312,31 @@ async function fetchWikipediaSpecs(
     if (Object.keys(tableSpecs).length >= 2) break;
   }
 
-  return { ...infoSpecs, ...tableSpecs };
+  const merged = { ...infoSpecs, ...tableSpecs };
+
+  // Ağırlık / bagaj hâlâ boşsa madde metnini tara
+  if (!merged.weight_kg || !merged.boot_l) {
+    // section 0 zaten çekildi — ondan dene
+    const s0text = stripHtml(section0Html);
+    if (!merged.boot_l) { const v = extractBootFromText(s0text); if (v) merged.boot_l = v; }
+    if (!merged.weight_kg) { const v = extractWeightFromText(s0text); if (v) merged.weight_kg = v; }
+
+    // Hâlâ boşsa section 1'i dene (genellikle "First generation" açıklaması)
+    if (!merged.weight_kg || !merged.boot_l) {
+      try {
+        const s1res = await fetch(
+          `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&section=1&format=json&origin=*`,
+          { signal: AbortSignal.timeout(4000) }
+        );
+        const s1data = await s1res.json();
+        const s1text = stripHtml(s1data.parse?.text?.["*"] ?? "");
+        if (!merged.boot_l) { const v = extractBootFromText(s1text); if (v) merged.boot_l = v; }
+        if (!merged.weight_kg) { const v = extractWeightFromText(s1text); if (v) merged.weight_kg = v; }
+      } catch { /* geç */ }
+    }
+  }
+
+  return merged;
 }
 
 // ── CarQuery ──────────────────────────────────────────────────────────────────
