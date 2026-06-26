@@ -52,6 +52,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (token.id) {
         session.user.id         = token.id as string;
         session.user.trustLevel = token.trustLevel as number;
+        session.user.name       = (token.name as string) ?? session.user.email;
       }
       return session;
     },
