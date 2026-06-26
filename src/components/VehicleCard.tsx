@@ -15,19 +15,21 @@ const BODY_ICONS: Record<string, string> = {
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
-  otomobil:    "Otomobil",
-  motosiklet:  "Motosiklet",
-  "e-scooter": "E-Scooter",
-  karavan:     "Karavan",
-  kamyonet:    "Kamyonet",
+  otomobil:     "Otomobil",
+  motosiklet:   "Motosiklet",
+  "e-scooter":  "E-Scooter",
+  "e-bisiklet": "E-Bisiklet",
+  karavan:      "Karavan",
+  kamyonet:     "Kamyonet",
 };
 
 const CATEGORY_ICONS: Record<string, string> = {
-  otomobil:    "🚗",
-  motosiklet:  "🏍️",
-  "e-scooter": "🔋",
-  karavan:     "🏕️",
-  kamyonet:    "🛻",
+  otomobil:     "🚗",
+  motosiklet:   "🏍️",
+  "e-scooter":  "🔋",
+  "e-bisiklet": "🚴",
+  karavan:      "🏕️",
+  kamyonet:     "🛻",
 };
 
 interface Props {
@@ -53,7 +55,7 @@ export function VehicleCard({
   const placeholderIcon = bodyLabel
     ? (BODY_ICONS[bodyType] ?? "🚗")
     : (CATEGORY_ICONS[categorySlug] ?? "🚗");
-  const isScooter = categorySlug === "e-scooter";
+  const isScooter = categorySlug === "e-scooter" || categorySlug === "e-bisiklet";
   const placeholderBg = isScooter ? "#f5f5f5" : fuelType === "EV" ? "#0f2027" : "#1a1a2e";
 
   const typeLabel = bodyLabel ?? CATEGORY_LABELS[categorySlug] ?? categorySlug;

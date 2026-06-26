@@ -63,7 +63,19 @@ const KARAVAN_TYPE_LABELS: Record<string, string> = {
 };
 
 const CATEGORY_FALLBACK_ICONS: Record<string, string> = {
-  otomobil: "🚗", motosiklet: "🏍️", "e-scooter": "🛴", karavan: "🏕️", kamyonet: "🛻",
+  otomobil: "🚗", motosiklet: "🏍️", "e-scooter": "🛴", "e-bisiklet": "🚴", karavan: "🏕️", kamyonet: "🛻",
+};
+
+const BIKE_TYPE_LABELS: Record<string, string> = {
+  sehir: "Şehir", mtb: "MTB", yol: "Yol", kargo: "Kargo", katlanabilir: "Katlanabilir",
+};
+
+const MOTOR_TYPE_LABELS: Record<string, string> = {
+  "mid-drive": "Mid-Drive", "hub-drive": "Hub-Drive",
+};
+
+const PEDELEC_LABELS: Record<string, string> = {
+  "standard-25": "25 km/h Standart", "speed-45": "45 km/h Speed",
 };
 
 export default async function VehicleDetailPage({
@@ -112,6 +124,9 @@ export default async function VehicleDetailPage({
   const bodyType = attrs.body_type ? String(attrs.body_type) : null;
   const motoType = attrs.moto_type ? String(attrs.moto_type) : null;
   const karavanType = attrs.karavan_type ? String(attrs.karavan_type) : null;
+  const bikeType = attrs.bike_type ? String(attrs.bike_type) : null;
+  const motorType = attrs.motor_type ? String(attrs.motor_type) : null;
+  const pedelecClass = attrs.pedelec_class ? String(attrs.pedelec_class) : null;
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
 
   const userId = session?.user?.id ? Number(session.user.id) : null;
@@ -156,6 +171,13 @@ export default async function VehicleDetailPage({
   type SpecItem = { label: string; value: string };
 
   const heroSpecsRaw: (SpecItem | null)[] = (() => {
+    if (categorySlug === "e-bisiklet") return [
+      attrs.motor_type    ? { label: "Motor Tipi",  value: MOTOR_TYPE_LABELS[String(attrs.motor_type)] ?? String(attrs.motor_type) } : null,
+      attrs.motor_watt    ? { label: "Motor Gücü",  value: `${attrs.motor_watt} W` }   : null,
+      attrs.battery_wh    ? { label: "Batarya",     value: `${attrs.battery_wh} Wh` }  : null,
+      attrs.range_km      ? { label: "Menzil",      value: `${attrs.range_km} km` }    : null,
+      attrs.weight_kg     ? { label: "Ağırlık",     value: `${attrs.weight_kg} kg` }   : null,
+    ];
     if (categorySlug === "e-scooter") return [
       attrs.motor_watt     ? { label: "Motor",      value: `${attrs.motor_watt} W` }         : null,
       attrs.range_km       ? { label: "Menzil",     value: `${attrs.range_km} km` }           : null,
@@ -196,6 +218,16 @@ export default async function VehicleDetailPage({
 
   // ── Tab: Teknik Özellikler (tam liste) ──
   const specsRaw: (SpecItem | null)[] = (() => {
+    if (categorySlug === "e-bisiklet") return [
+      bikeType              ? { label: "Bisiklet Tipi",  value: BIKE_TYPE_LABELS[bikeType] ?? bikeType }            : null,
+      motorType             ? { label: "Motor Tipi",     value: MOTOR_TYPE_LABELS[motorType] ?? motorType }          : null,
+      pedelecClass          ? { label: "Pedelec Sınıfı", value: PEDELEC_LABELS[pedelecClass] ?? pedelecClass }       : null,
+      attrs.motor_watt      ? { label: "Motor Gücü",     value: `${attrs.motor_watt} W` }                           : null,
+      attrs.battery_wh      ? { label: "Batarya",        value: `${attrs.battery_wh} Wh` }                          : null,
+      attrs.range_km        ? { label: "Menzil",         value: `${attrs.range_km} km` }                            : null,
+      attrs.max_speed_kmh   ? { label: "Maks. Hız",      value: `${attrs.max_speed_kmh} km/s` }                     : null,
+      attrs.weight_kg       ? { label: "Ağırlık",        value: `${attrs.weight_kg} kg` }                           : null,
+    ];
     if (categorySlug === "e-scooter") return [
       attrs.motor_watt    ? { label: "Motor Gücü",     value: `${attrs.motor_watt} W` }       : null,
       attrs.range_km      ? { label: "Menzil",         value: `${attrs.range_km} km` }         : null,
@@ -353,14 +385,14 @@ export default async function VehicleDetailPage({
           <div className="flex flex-col sm:flex-row sm:items-end gap-6">
             <div
               className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shrink-0 overflow-hidden"
-              style={{ background: categorySlug === "e-scooter" ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.08)" }}
+              style={{ background: categorySlug === "e-scooter" || categorySlug === "e-bisiklet" ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.08)" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               {imageUrl
                 ? <img
                     src={imageUrl}
                     alt=""
-                    className={`w-full h-full ${categorySlug === "e-scooter" || categorySlug === "motosiklet" ? "object-contain p-1.5" : "object-cover"}`}
+                    className={`w-full h-full ${categorySlug === "e-scooter" || categorySlug === "motosiklet" || categorySlug === "e-bisiklet" ? "object-contain p-1.5" : "object-cover"}`}
                   />
                 : (bodyType ? BODY_ICONS[bodyType] : null) ?? CATEGORY_FALLBACK_ICONS[categorySlug] ?? "🚗"
               }
@@ -396,6 +428,16 @@ export default async function VehicleDetailPage({
                 {karavanType && (
                   <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-white/10 text-gray-300">
                     {KARAVAN_TYPE_LABELS[karavanType] ?? karavanType}
+                  </span>
+                )}
+                {bikeType && (
+                  <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-white/10 text-gray-300">
+                    {BIKE_TYPE_LABELS[bikeType] ?? bikeType}
+                  </span>
+                )}
+                {pedelecClass && (
+                  <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-white/10 text-gray-300">
+                    {PEDELEC_LABELS[pedelecClass] ?? pedelecClass}
                   </span>
                 )}
                 {attrs.segment != null && (

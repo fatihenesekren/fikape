@@ -11,17 +11,18 @@ import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 const CATEGORY_FILTERS = [
-  { key: "hepsi",      label: "Tümü",      icon: "🔍" },
-  { key: "otomobil",   label: "Araba",      icon: "🚗" },
-  { key: "motosiklet", label: "Motosiklet", icon: "🏍️" },
-  { key: "e-scooter",  label: "E-Scooter",  icon: "⚡" },
-  { key: "karavan",    label: "Karavan",    icon: "🏕️" },
-  { key: "kamyonet",   label: "Kamyonet",   icon: "🛻" },
+  { key: "hepsi",       label: "Tümü",       icon: "🔍" },
+  { key: "otomobil",    label: "Araba",       icon: "🚗" },
+  { key: "motosiklet",  label: "Motosiklet",  icon: "🏍️" },
+  { key: "e-scooter",   label: "E-Scooter",   icon: "⚡" },
+  { key: "e-bisiklet",  label: "E-Bisiklet",  icon: "🚴" },
+  { key: "karavan",     label: "Karavan",     icon: "🏕️" },
+  { key: "kamyonet",    label: "Kamyonet",    icon: "🛻" },
 ] as const;
 
 const CATEGORY_ICONS: Record<string, string> = {
   otomobil: "🚗", motosiklet: "🏍️", "e-scooter": "⚡",
-  karavan: "🏕️", kamyonet: "🛻",
+  "e-bisiklet": "🚴", karavan: "🏕️", kamyonet: "🛻",
 };
 
 export default async function Home({
