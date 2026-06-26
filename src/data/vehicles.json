@@ -6108,68 +6108,6 @@
       ]
     },
     {
-      "make": "RAM",
-      "models": [
-        {
-          "name": "1500 (2009-2018)",
-          "versions": [
-            "5.7 V8 HEMI 395",
-            "3.0 EcoDiesel 240",
-            "Diğer"
-          ],
-          "trims": [
-            "Tradesman",
-            "SLT",
-            "Laramie",
-            "Limited",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "1500 (2019-)",
-          "versions": [
-            "5.7 V8 HEMI 395",
-            "5.7 V8 HEMI eTorque 400",
-            "3.0 EcoDiesel 260",
-            "TRX 6.2 SC 712",
-            "Diğer"
-          ],
-          "trims": [
-            "Tradesman",
-            "Big Horn",
-            "Laramie",
-            "Rebel",
-            "Longhorn",
-            "Limited",
-            "TRX",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "1500 Classic (2019-)",
-          "versions": [
-            "5.7 V8 HEMI 395",
-            "Diğer"
-          ],
-          "trims": [
-            "Tradesman",
-            "SLT",
-            "Laramie",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Diğer",
-          "versions": [
-            "Diğer"
-          ],
-          "trims": [
-            "Diğer"
-          ]
-        }
-      ]
-    },
-    {
       "make": "Renault",
       "models": [
         {
@@ -12317,6 +12255,68 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "RAM",
+      "models": [
+        {
+          "name": "1500 (2009-2018)",
+          "versions": [
+            "5.7 V8 HEMI 395",
+            "3.0 EcoDiesel 240",
+            "Diğer"
+          ],
+          "trims": [
+            "Tradesman",
+            "SLT",
+            "Laramie",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "1500 (2019-)",
+          "versions": [
+            "5.7 V8 HEMI 395",
+            "5.7 V8 HEMI eTorque 400",
+            "3.0 EcoDiesel 260",
+            "TRX 6.2 SC 712",
+            "Diğer"
+          ],
+          "trims": [
+            "Tradesman",
+            "Big Horn",
+            "Laramie",
+            "Rebel",
+            "Longhorn",
+            "Limited",
+            "TRX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "1500 Classic (2019-)",
+          "versions": [
+            "5.7 V8 HEMI 395",
+            "Diğer"
+          ],
+          "trims": [
+            "Tradesman",
+            "SLT",
+            "Laramie",
             "Diğer"
           ]
         },
