@@ -1,0 +1,9 @@
+{
+  "make": "Inmotion",
+  "models": [
+    { "name": "S1 / S1F (2020-)", "versions": ["500W 30 km/s S1", "500W 30 km/s S1F Katlanabilir", "Diğer"], "trims": ["Standart", "F (Katlanabilir)", "Diğer"] },
+    { "name": "L9 (2021-)", "versions": ["900W 45 km/s", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Climber / Air Pro (2023-)", "versions": ["500W 35 km/s Air Pro", "800W 40 km/s Climber", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

@@ -15491,6 +15491,160 @@
       ]
     },
     {
+      "make": "Gotrax",
+      "models": [
+        {
+          "name": "GXL V2 (2019-)",
+          "versions": [
+            "250W 25 km/s",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "G4 / G5 / G6 (2021-)",
+          "versions": [
+            "500W 40 km/s G4",
+            "500W 45 km/s G5",
+            "500W 48 km/s G6",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Rival / Apex (2022-)",
+          "versions": [
+            "350W 32 km/s Rival",
+            "500W 40 km/s Apex",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Hiboy",
+      "models": [
+        {
+          "name": "S2 / S2 Pro / S2 Max (2020-)",
+          "versions": [
+            "350W 25 km/s S2",
+            "350W 30 km/s S2 Pro",
+            "500W 35 km/s S2 Max",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Max",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KS4 / KS4 Pro (2021-)",
+          "versions": [
+            "500W 38 km/s KS4",
+            "500W 42 km/s KS4 Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NEX / MAX Pro (2022-)",
+          "versions": [
+            "800W 45 km/s NEX",
+            "800W 48 km/s MAX Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Inmotion",
+      "models": [
+        {
+          "name": "S1 / S1F (2020-)",
+          "versions": [
+            "500W 30 km/s S1",
+            "500W 30 km/s S1F Katlanabilir",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "F (Katlanabilir)",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "L9 (2021-)",
+          "versions": [
+            "900W 45 km/s",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Climber / Air Pro (2023-)",
+          "versions": [
+            "500W 35 km/s Air Pro",
+            "800W 40 km/s Climber",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Inokim",
       "models": [
         {
@@ -15797,6 +15951,76 @@
       ]
     },
     {
+      "make": "Ninebot",
+      "models": [
+        {
+          "name": "ES1 / ES2 / ES4 (2018-)",
+          "versions": [
+            "250W 20 km/s ES1",
+            "300W 25 km/s ES2",
+            "300W+200W 30 km/s ES4",
+            "Diğer"
+          ],
+          "trims": [
+            "ES1",
+            "ES2",
+            "ES4",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F2 / F2 Plus / F2 Pro (2022-)",
+          "versions": [
+            "300W 25 km/s F2",
+            "300W 25 km/s F2 Plus",
+            "450W 30 km/s F2 Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "F2",
+            "F2 Plus",
+            "F2 Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "G30 / G30 Max (2019-)",
+          "versions": [
+            "350W 30 km/s G30",
+            "350W 30 km/s G30 Max",
+            "Diğer"
+          ],
+          "trims": [
+            "G30",
+            "G30 Max",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "D28 / D38 / D40 (2021-)",
+          "versions": [
+            "300W 25 km/s D28",
+            "350W 25 km/s D38",
+            "450W 30 km/s D40",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Niu",
       "models": [
         {
@@ -15874,6 +16098,58 @@
       ]
     },
     {
+      "make": "Okai",
+      "models": [
+        {
+          "name": "Neon / Neon Pro (2021-)",
+          "versions": [
+            "350W 25 km/s Neon",
+            "500W 30 km/s Neon Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Spark / Spark Pro (2022-)",
+          "versions": [
+            "500W 30 km/s Spark",
+            "700W 35 km/s Spark Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ES400 / ES400B (Paylaşımlı)",
+          "versions": [
+            "500W 25 km/s ES400",
+            "700W 25 km/s ES400B",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Pure Electric",
       "models": [
         {
@@ -15906,6 +16182,59 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Razor",
+      "models": [
+        {
+          "name": "E100 / E200 / E300 (2003-)",
+          "versions": [
+            "100W 16 km/s E100",
+            "200W 19 km/s E200",
+            "250W 22 km/s E300",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S (Koltuklu)",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Power Core E90 / E100 (2016-)",
+          "versions": [
+            "90W 16 km/s E90",
+            "100W 16 km/s E100",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E Prime / E Prime Air (2019-)",
+          "versions": [
+            "250W 24 km/s E Prime",
+            "300W 24 km/s E Prime Air",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Air",
             "Diğer"
           ]
         },
@@ -16174,6 +16503,59 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Yadea",
+      "models": [
+        {
+          "name": "C1S / C1 Pro (2021-)",
+          "versions": [
+            "500W 35 km/s C1S",
+            "700W 40 km/s C1 Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "G5 Pro / G6 (2022-)",
+          "versions": [
+            "500W 35 km/s G5 Pro",
+            "800W 45 km/s G6",
+            "Diğer"
+          ],
+          "trims": [
+            "G5 Pro",
+            "G6",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KS6 Pro / KS6 Max (2023-)",
+          "versions": [
+            "500W 30 km/s KS6 Pro",
+            "700W 35 km/s KS6 Max",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "Max",
             "Diğer"
           ]
         },

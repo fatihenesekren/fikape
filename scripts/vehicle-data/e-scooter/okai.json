@@ -1,0 +1,9 @@
+{
+  "make": "Okai",
+  "models": [
+    { "name": "Neon / Neon Pro (2021-)", "versions": ["350W 25 km/s Neon", "500W 30 km/s Neon Pro", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
+    { "name": "Spark / Spark Pro (2022-)", "versions": ["500W 30 km/s Spark", "700W 35 km/s Spark Pro", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
+    { "name": "ES400 / ES400B (Paylaşımlı)", "versions": ["500W 25 km/s ES400", "700W 25 km/s ES400B", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

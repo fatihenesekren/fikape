@@ -1,0 +1,10 @@
+{
+  "make": "Ninebot",
+  "models": [
+    { "name": "ES1 / ES2 / ES4 (2018-)", "versions": ["250W 20 km/s ES1", "300W 25 km/s ES2", "300W+200W 30 km/s ES4", "Diğer"], "trims": ["ES1", "ES2", "ES4", "Diğer"] },
+    { "name": "F2 / F2 Plus / F2 Pro (2022-)", "versions": ["300W 25 km/s F2", "300W 25 km/s F2 Plus", "450W 30 km/s F2 Pro", "Diğer"], "trims": ["F2", "F2 Plus", "F2 Pro", "Diğer"] },
+    { "name": "G30 / G30 Max (2019-)", "versions": ["350W 30 km/s G30", "350W 30 km/s G30 Max", "Diğer"], "trims": ["G30", "G30 Max", "Diğer"] },
+    { "name": "D28 / D38 / D40 (2021-)", "versions": ["300W 25 km/s D28", "350W 25 km/s D38", "450W 30 km/s D40", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

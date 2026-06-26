@@ -1,0 +1,9 @@
+{
+  "make": "Gotrax",
+  "models": [
+    { "name": "GXL V2 (2019-)", "versions": ["250W 25 km/s", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "G4 / G5 / G6 (2021-)", "versions": ["500W 40 km/s G4", "500W 45 km/s G5", "500W 48 km/s G6", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Rival / Apex (2022-)", "versions": ["350W 32 km/s Rival", "500W 40 km/s Apex", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

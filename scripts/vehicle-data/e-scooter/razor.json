@@ -1,0 +1,9 @@
+{
+  "make": "Razor",
+  "models": [
+    { "name": "E100 / E200 / E300 (2003-)", "versions": ["100W 16 km/s E100", "200W 19 km/s E200", "250W 22 km/s E300", "Diğer"], "trims": ["Standart", "S (Koltuklu)", "Diğer"] },
+    { "name": "Power Core E90 / E100 (2016-)", "versions": ["90W 16 km/s E90", "100W 16 km/s E100", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "E Prime / E Prime Air (2019-)", "versions": ["250W 24 km/s E Prime", "300W 24 km/s E Prime Air", "Diğer"], "trims": ["Standart", "Air", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

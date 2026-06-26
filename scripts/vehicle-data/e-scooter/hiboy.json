@@ -1,0 +1,9 @@
+{
+  "make": "Hiboy",
+  "models": [
+    { "name": "S2 / S2 Pro / S2 Max (2020-)", "versions": ["350W 25 km/s S2", "350W 30 km/s S2 Pro", "500W 35 km/s S2 Max", "Diğer"], "trims": ["Standart", "Pro", "Max", "Diğer"] },
+    { "name": "KS4 / KS4 Pro (2021-)", "versions": ["500W 38 km/s KS4", "500W 42 km/s KS4 Pro", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
+    { "name": "NEX / MAX Pro (2022-)", "versions": ["800W 45 km/s NEX", "800W 48 km/s MAX Pro", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}
