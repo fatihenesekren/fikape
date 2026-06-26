@@ -3,8 +3,6 @@ import { auth } from "@/auth";
 
 export const runtime = "nodejs";
 
-// ── Yardımcı dönüşümler ────────────────────────────────────────────────────
-
 function normalize(s: string) {
   return s.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
@@ -18,230 +16,244 @@ function slugifyMake(name: string) {
 }
 
 function mapDrivetrain(d: string) {
-  const l = d.toLowerCase();
+  const l = (d ?? "").toLowerCase();
   if (l.includes("front") || l === "fwd") return "FWD";
   if (l.includes("rear") || l === "rwd") return "RWD";
-  if (l.includes("all") || l.includes("awd") || l.includes("4wd")) return "AWD";
-  return d.toUpperCase();
+  if (l.includes("all") || l.includes("awd") || l.includes("4wd") || l.includes("4x4")) return "AWD";
+  return "";
 }
 
 function mapTransmission(t: string) {
-  const l = t.toLowerCase();
+  const l = (t ?? "").toLowerCase();
   if (l.includes("auto")) return "Otomatik";
-  if (l.includes("manual")) return "Manuel";
+  if (l.includes("manual") || l.includes("manuel")) return "Manuel";
   if (l.includes("cvt")) return "CVT";
-  return t;
+  return "";
 }
 
 function mapBodyType(b: string) {
-  const l = b.toLowerCase();
-  if (l.includes("suv") || l.includes("crossover")) return "suv";
+  const l = (b ?? "").toLowerCase();
+  if (l.includes("suv") || l.includes("crossover") || l.includes("cuv")) return "suv";
   if (l.includes("sedan") || l.includes("saloon")) return "sedan";
   if (l.includes("hatch")) return "hatchback";
-  if (l.includes("mpv") || (l.includes("van") && !l.includes("mini"))) return "mpv";
+  if (l.includes("mpv") || l.includes("minivan")) return "mpv";
   if (l.includes("coupe")) return "coupe";
-  if (l.includes("cabrio") || l.includes("convert")) return "cabrio";
+  if (l.includes("cabrio") || l.includes("convert") || l.includes("roadster")) return "cabrio";
   if (l.includes("pickup")) return "pickup";
-  return l;
+  if (l.includes("van") || l.includes("kombi")) return "van";
+  return "";
 }
 
-type CarQueryTrim = Record<string, string>;
+function stripHtml(s: string) {
+  return s
+    .replace(/<br\s*\/?>/gi, " | ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
-// ── CarQuery: tüm trims çek, model adıyla filtrele ─────────────────────────
+function firstNumber(s: string): string | null {
+  const m = s.match(/[\d]+/);
+  return m ? m[0] : null;
+}
+
+// ── CarQuery ─────────────────────────────────────────────────────────────────
+
+type CQTrim = Record<string, string>;
 
 async function fetchCarQuery(
-  brand: string, model: string, year: string | null, trimName: string | null
-): Promise<Record<string, string>> {
-  const makeSlug = slugifyMake(brand);
+  brand: string, model: string, year: string | null, trimHint: string | null
+): Promise<{ specs: Record<string, string>; found: boolean }> {
+  const makeSlug  = slugifyMake(brand);
   const modelNorm = normalize(model);
 
-  const urls = [
-    // 1. Make + Year (en kısıtlı)
-    year ? `https://www.carqueryapi.com/api/0.3/?callback=fn&cmd=getTrims&make=${makeSlug}&year=${year}` : null,
-    // 2. Make only (yıl filtresi olmadan)
+  // Her iki URL'yi paralel dene
+  const urls: string[] = [
+    `https://www.carqueryapi.com/api/0.3/?callback=fn&cmd=getTrims&make=${makeSlug}${year ? `&year=${year}` : ""}`,
     `https://www.carqueryapi.com/api/0.3/?callback=fn&cmd=getTrims&make=${makeSlug}`,
-  ].filter(Boolean) as string[];
+  ];
+
+  let bestTrims: CQTrim[] = [];
 
   for (const url of urls) {
-    let raw: string;
+    let raw = "";
     try {
-      const res = await fetch(url, { next: { revalidate: 86400 } });
+      const res = await fetch(url, { signal: AbortSignal.timeout(5000), next: { revalidate: 86400 } });
       raw = await res.text();
     } catch { continue; }
 
     const jsonStr = raw.replace(/^[a-zA-Z_$][\w$]*\s*\(/, "").replace(/\);\s*$/, "").replace(/\)\s*$/, "");
-    let data: { Trims?: CarQueryTrim[] };
+    let data: { Trims?: CQTrim[] } = {};
     try { data = JSON.parse(jsonStr); } catch { continue; }
 
-    const trims = (data.Trims ?? []).filter((t) =>
-      normalize(t.model_name ?? "").includes(modelNorm) ||
-      modelNorm.includes(normalize(t.model_name ?? ""))
-    );
-    if (trims.length === 0) continue;
+    const all = data.Trims ?? [];
+    const filtered = all.filter((t) => {
+      const mn = normalize(t.model_name ?? "");
+      return mn.includes(modelNorm) || modelNorm.includes(mn);
+    });
 
-    // trimName varsa o trim'i tercih et
-    let best = trims[0];
-    if (trimName) {
-      const tnorm = normalize(trimName);
-      const matched = trims.find((t) => normalize(t.model_trim ?? "").includes(tnorm.slice(0, 6)));
-      if (matched) best = matched;
-    }
-
-    const specs: Record<string, string> = {};
-    if (best.model_engine_cc)        specs.engine_cc     = String(Math.round(Number(best.model_engine_cc)));
-    if (best.model_engine_power_ps)  specs.power_hp      = String(Math.round(Number(best.model_engine_power_ps)));
-    if (best.model_engine_torque_nm) specs.torque_nm     = String(Math.round(Number(best.model_engine_torque_nm)));
-    if (best.model_0_to_100_kph)     specs.zero_to_100   = best.model_0_to_100_kph;
-    if (best.model_top_speed_kph)    specs.top_speed_kmh = best.model_top_speed_kph;
-    if (best.model_weight_kg)        specs.weight_kg     = String(Math.round(Number(best.model_weight_kg)));
-    if (best.model_fuel_cap_l)       specs.tank_l        = String(Math.round(Number(best.model_fuel_cap_l)));
-    if (best.model_drive)            specs.drivetrain    = mapDrivetrain(best.model_drive);
-    if (best.model_transmission_type) specs.transmission = mapTransmission(best.model_transmission_type);
-    if (best.model_body)             specs.body_type     = mapBodyType(best.model_body);
-
-    if (Object.keys(specs).length > 0) return specs;
+    if (filtered.length > 0) { bestTrims = filtered; break; }
   }
-  return {};
+
+  if (bestTrims.length === 0) return { specs: {}, found: false };
+
+  let best = bestTrims[0];
+  if (trimHint) {
+    const tnorm = normalize(trimHint).slice(0, 8);
+    const m = bestTrims.find((t) => normalize(t.model_trim ?? "").includes(tnorm));
+    if (m) best = m;
+  }
+
+  const specs: Record<string, string> = {};
+  if (best.model_engine_cc)         specs.engine_cc     = String(Math.round(+best.model_engine_cc));
+  if (best.model_engine_power_ps)   specs.power_hp      = String(Math.round(+best.model_engine_power_ps));
+  if (best.model_engine_torque_nm)  specs.torque_nm     = String(Math.round(+best.model_engine_torque_nm));
+  if (best.model_0_to_100_kph)      specs.zero_to_100   = best.model_0_to_100_kph;
+  if (best.model_top_speed_kph)     specs.top_speed_kmh = best.model_top_speed_kph;
+  if (best.model_weight_kg)         specs.weight_kg     = String(Math.round(+best.model_weight_kg));
+  if (best.model_fuel_cap_l)        specs.tank_l        = String(Math.round(+best.model_fuel_cap_l));
+  if (best.model_drive)             { const v = mapDrivetrain(best.model_drive); if (v) specs.drivetrain = v; }
+  if (best.model_transmission_type) { const v = mapTransmission(best.model_transmission_type); if (v) specs.transmission = v; }
+  if (best.model_body)              { const v = mapBodyType(best.model_body); if (v) specs.body_type = v; }
+
+  return { specs, found: Object.keys(specs).length > 0 };
 }
 
-// ── Wikipedia infobox fallback ─────────────────────────────────────────────
-
-function parseWikiValue(raw: string): string {
-  // {{convert|1,598|cc|...}} → 1598
-  raw = raw.replace(/\{\{convert\|([0-9,\.]+)\|([^|{}]+)[^}]*\}\}/gi, (_, v, unit) =>
-    v.replace(/,/g, "") + " " + unit.trim()
-  );
-  // [[Link|Text]] veya [[Link]] → Text veya Link
-  raw = raw.replace(/\[\[(?:[^\]|]*\|)?([^\]]+)\]\]/g, "$1");
-  // <br> → pipe
-  raw = raw.replace(/<br\s*\/?>/gi, " | ");
-  // HTML tagları
-  raw = raw.replace(/<[^>]+>/g, "");
-  // {{...}} temizle
-  raw = raw.replace(/\{\{[^}]*\}\}/g, "");
-  // Fazla boşluk
-  raw = raw.replace(/\s+/g, " ").trim();
-  return raw;
-}
-
-function extractNumber(s: string): string | null {
-  const m = s.match(/[\d,]+\.?\d*/);
-  return m ? m[0].replace(/,/g, "") : null;
-}
+// ── Wikipedia HTML infobox parser ─────────────────────────────────────────
 
 async function fetchWikipediaSpecs(
-  brand: string, model: string, year: string | null, trimHint: string | null
+  brand: string, model: string, trimHint: string | null
 ): Promise<Record<string, string>> {
   // 1. Makale başlığını bul
-  const query = `${brand} ${model} automobile`;
-  let title: string;
+  let title = "";
   try {
     const sr = await fetch(
-      `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&srlimit=1&format=json&origin=*`,
-      { signal: AbortSignal.timeout(4000) }
+      `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(`${brand} ${model} automobile`)}&srlimit=3&format=json&origin=*`,
+      { signal: AbortSignal.timeout(5000) }
     );
     const sd = await sr.json();
-    title = sd.query?.search?.[0]?.title;
+    // Araç adını içeren ilk sonucu seç
+    const modelNorm = normalize(model);
+    const hit = (sd.query?.search ?? []).find(
+      (r: { title: string }) => normalize(r.title).includes(modelNorm)
+    );
+    title = hit?.title ?? sd.query?.search?.[0]?.title ?? "";
     if (!title) return {};
   } catch { return {}; }
 
-  // 2. Wikitext çek
-  let wikitext: string;
+  // 2. Sadece section 0 (lead + infobox) HTML'ini çek
+  let html = "";
   try {
-    const wr = await fetch(
-      `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=revisions&rvprop=content&format=json&origin=*`,
-      { signal: AbortSignal.timeout(6000) }
+    const pr = await fetch(
+      `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&section=0&format=json&origin=*`,
+      { signal: AbortSignal.timeout(7000) }
     );
-    const wd = await wr.json();
-    const pages = wd.query?.pages ?? {};
-    const page = Object.values(pages)[0] as { revisions?: { "*": string }[] };
-    wikitext = page?.revisions?.[0]?.["*"] ?? "";
-    if (!wikitext) return {};
+    const pd = await pr.json();
+    html = pd.parse?.text?.["*"] ?? "";
+    if (!html) return {};
   } catch { return {}; }
 
-  // 3. Infobox alanlarını çıkar
-  const infoMatch = wikitext.match(/\{\{Infobox automobile([\s\S]*?)^\}\}/m);
-  const infoRaw = infoMatch?.[1] ?? wikitext;
+  // 3. Infobox tablosunu bul ve satırları çıkar
+  const tableMatch = html.match(/<table[^>]*class="[^"]*infobox[^"]*"[^>]*>([\s\S]*?)<\/table>/i);
+  if (!tableMatch) return {};
 
-  const fieldRe = /^\|\s*([\w_]+)\s*=\s*(.+?)(?=^\||\{\{|\}\})/gm;
+  const rows = [...tableMatch[1].matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
   const fields: Record<string, string> = {};
-  let m: RegExpExecArray | null;
-  while ((m = fieldRe.exec(infoRaw)) !== null) {
-    fields[m[1].trim().toLowerCase()] = parseWikiValue(m[2]);
+  for (const row of rows) {
+    const thRaw = row[1].match(/<th[^>]*>([\s\S]*?)<\/th>/i)?.[1] ?? "";
+    const tdRaw = row[1].match(/<td[^>]*>([\s\S]*?)<\/td>/i)?.[1] ?? "";
+    const th = stripHtml(thRaw).toLowerCase();
+    const td = stripHtml(tdRaw);
+    if (th && td) fields[th] = td;
   }
 
   const specs: Record<string, string> = {};
 
   // Kasa tipi
-  const cls = fields.class ?? fields.body_style ?? "";
-  if (cls) specs.body_type = mapBodyType(cls.split("|")[0].trim());
-
-  // Motor (cc)
-  const eng = fields.engine ?? "";
-  if (eng) {
-    // Önce trimHint ile eşleşen satırı bul, yoksa ilkini kullan
-    const lines = eng.split("|");
-    const engineLine = trimHint
-      ? (lines.find((l) => l.toLowerCase().includes(trimHint.toLowerCase().split(" ")[0])) ?? lines[0])
-      : lines[0];
-    const ccMatch = engineLine.match(/(\d[\d,]*)\s*(?:cc|cm³|cm3)/i);
-    if (ccMatch) specs.engine_cc = ccMatch[1].replace(/,/g, "");
-    // Litreden cc hesapla
-    else {
-      const lMatch = engineLine.match(/(\d+\.\d+)\s*[Ll]/);
-      if (lMatch) specs.engine_cc = String(Math.round(parseFloat(lMatch[1]) * 1000));
-    }
+  const clsRaw = fields["class"] ?? fields["body style"] ?? fields["type"] ?? "";
+  if (clsRaw) {
+    const v = mapBodyType(clsRaw.split("|")[0]);
+    if (v) specs.body_type = v;
   }
 
-  // Güç (HP/PS)
-  const pwr = fields.power ?? "";
-  if (pwr) {
-    const lines = pwr.split("|");
-    const line = trimHint
-      ? (lines.find((l) => l.toLowerCase().includes(trimHint.toLowerCase().split(" ")[0])) ?? lines[0])
-      : lines[0];
-    const psMatch = line.match(/(\d+)\s*(?:PS|hp|cv|kW)/i);
-    if (psMatch) specs.power_hp = psMatch[1];
-    else {
-      const n = extractNumber(line);
-      if (n) specs.power_hp = n;
+  // Motor cc
+  const engRaw = fields["engine"] ?? fields["engines"] ?? "";
+  if (engRaw) {
+    // Trim'e uyan satırı seç
+    const lines = engRaw.split("|");
+    const engLine = (trimHint && lines.find((l) => l.toLowerCase().includes(
+      trimHint.toLowerCase().split(" ")[0].replace(/[^a-z0-9]/gi, "").slice(0, 4)
+    ))) ?? lines[0];
+
+    const ccMatch = engLine.match(/(\d[\d,]*)\s*(?:cc|cm³)/i);
+    if (ccMatch) {
+      specs.engine_cc = ccMatch[1].replace(/,/g, "");
+    } else {
+      const lMatch = engLine.match(/(\d+\.?\d*)\s*[Ll](?:\s|$)/);
+      if (lMatch) specs.engine_cc = String(Math.round(parseFloat(lMatch[1]) * 1000));
+    }
+    // HP / PS
+    const hpMatch = engLine.match(/(\d+)\s*(?:hp|PS|cv|bhp|kW)/i);
+    if (hpMatch) specs.power_hp = hpMatch[1];
+  }
+
+  // Güç (ayrı field varsa)
+  if (!specs.power_hp) {
+    const pwrRaw = fields["power"] ?? fields["power output"] ?? "";
+    if (pwrRaw) {
+      const lines = pwrRaw.split("|");
+      const line = lines[0];
+      const m = line.match(/(\d+)\s*(?:hp|PS|cv|bhp)/i);
+      if (m) specs.power_hp = m[1];
+      else { const n = firstNumber(line); if (n) specs.power_hp = n; }
     }
   }
 
   // Tork
-  const trq = fields.torque ?? "";
-  if (trq) {
-    const lines = trq.split("|");
-    const line = lines[0];
-    const nmMatch = line.match(/(\d+)\s*(?:N·?m|Nm)/i);
-    if (nmMatch) specs.torque_nm = nmMatch[1];
-    else {
-      const n = extractNumber(line);
-      if (n) specs.torque_nm = n;
-    }
+  const trqRaw = fields["torque"] ?? "";
+  if (trqRaw) {
+    const line = trqRaw.split("|")[0];
+    const m = line.match(/(\d+)\s*(?:N·?m|Nm)/i);
+    if (m) specs.torque_nm = m[1];
+    else { const n = firstNumber(line); if (n) specs.torque_nm = n; }
   }
 
   // Vites
-  const tx = fields.transmission ?? "";
-  if (tx) {
-    const lines = tx.split("|");
-    const line = lines[0];
-    specs.transmission = mapTransmission(line);
+  const txRaw = fields["transmission"] ?? fields["gearbox"] ?? "";
+  if (txRaw) {
+    const v = mapTransmission(txRaw.split("|")[0]);
+    if (v) specs.transmission = v;
+  }
+
+  // Çekiş
+  const drRaw = fields["drive"] ?? fields["drivetrain"] ?? fields["drive wheels"] ?? "";
+  if (drRaw) {
+    const v = mapDrivetrain(drRaw.split("|")[0]);
+    if (v) specs.drivetrain = v;
   }
 
   // Ağırlık
-  const wt = fields.weight ?? fields.curb_weight ?? "";
-  if (wt) {
-    const n = extractNumber(wt.split("|")[0]);
-    if (n) specs.weight_kg = n;
+  const wtRaw = fields["curb weight"] ?? fields["weight"] ?? fields["kerb weight"] ?? "";
+  if (wtRaw) {
+    const line = wtRaw.split("|")[0];
+    // "1,490 kg" veya "1490 kg" veya "1490–1700 kg" → ilk sayıyı al
+    const m = line.match(/([\d,]+)\s*kg/i);
+    if (m) specs.weight_kg = m[1].replace(/,/g, "");
+    else { const n = firstNumber(line); if (n) specs.weight_kg = n; }
   }
 
-  // Uzunluk/Genişlik/Yükseklik (opsiyonel ekstra bilgi, alanlarımızda yok — yorum satırı)
+  // Yakıt deposu
+  const tankRaw = fields["fuel capacity"] ?? fields["fuel tank"] ?? "";
+  if (tankRaw) {
+    const m = tankRaw.match(/([\d.]+)\s*(?:L|litres?)/i);
+    if (m) specs.tank_l = m[1];
+    else { const n = firstNumber(tankRaw); if (n) specs.tank_l = n; }
+  }
 
   return specs;
 }
 
-// ── Ana GET handler ────────────────────────────────────────────────────────
+// ── Ana GET handler ──────────────────────────────────────────────────────────
 
 export async function GET(req: Request) {
   const session = await auth();
@@ -255,18 +267,19 @@ export async function GET(req: Request) {
 
   if (!brand || !model) return NextResponse.json({ specs: {} });
 
-  // 1. CarQuery dene
-  const cqSpecs = await fetchCarQuery(brand, model, year, trimName);
-  if (Object.keys(cqSpecs).length >= 3) {
-    return NextResponse.json({ specs: cqSpecs, source: "CarQuery" });
-  }
+  // CarQuery ve Wikipedia'yı paralel dene
+  const [cqResult, wikiSpecs] = await Promise.all([
+    fetchCarQuery(brand, model, year, trimName),
+    fetchWikipediaSpecs(brand, model, trimName),
+  ]);
 
-  // 2. Wikipedia infobox fallback
-  const wikiSpecs = await fetchWikipediaSpecs(brand, model, year, trimName);
-  const merged = { ...cqSpecs, ...wikiSpecs };
+  // Önce CarQuery verisi (genellikle sayısal olarak daha doğru), üstüne Wikipedia'yı birleştir
+  const merged: Record<string, string> = { ...wikiSpecs, ...cqResult.specs };
 
   if (Object.keys(merged).length === 0) {
     return NextResponse.json({ specs: {}, source: null });
   }
-  return NextResponse.json({ specs: merged, source: "Wikipedia" });
+
+  const source = cqResult.found ? "CarQuery" : Object.keys(wikiSpecs).length > 0 ? "Wikipedia" : null;
+  return NextResponse.json({ specs: merged, source });
 }
