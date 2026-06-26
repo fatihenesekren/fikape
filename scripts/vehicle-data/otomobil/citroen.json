@@ -27,9 +27,19 @@
       "trims": ["Feel", "Shine", "Max", "Diğer"]
     },
     {
+      "name": "C5 Aircross",
+      "versions": ["1.2 PureTech 130", "1.6 PureTech 180", "Plug-in Hybrid 225", "Diğer"],
+      "trims": ["Feel", "Shine", "Max", "Diğer"]
+    },
+    {
       "name": "C5 X",
       "versions": ["1.2 PureTech 130", "1.6 PureTech 180", "Plug-in Hybrid 225", "Diğer"],
       "trims": ["Feel", "Shine", "Max", "Diğer"]
+    },
+    {
+      "name": "ë-C3",
+      "versions": ["113 44kWh", "Diğer"],
+      "trims": ["You!", "Max", "Diğer"]
     },
     {
       "name": "ë-C4",
@@ -42,9 +52,19 @@
       "trims": ["Feel", "Shine", "Max", "Diğer"]
     },
     {
+      "name": "ë-Berlingo",
+      "versions": ["136 50kWh", "Diğer"],
+      "trims": ["Feel", "Shine", "Max", "Diğer"]
+    },
+    {
       "name": "SpaceTourer",
       "versions": ["1.5 BlueHDi 100", "1.5 BlueHDi 130", "2.0 BlueHDi 150", "2.0 BlueHDi 180", "Diğer"],
       "trims": ["Feel", "Shine", "Business", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }
