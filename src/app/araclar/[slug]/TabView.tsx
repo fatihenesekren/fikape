@@ -6,15 +6,16 @@ interface Props {
   reviewCount: number;
   reviewsContent: React.ReactNode;
   specsContent: React.ReactNode;
+  actionButton?: React.ReactNode;
 }
 
-export function TabView({ reviewCount, reviewsContent, specsContent }: Props) {
+export function TabView({ reviewCount, reviewsContent, specsContent, actionButton }: Props) {
   const [tab, setTab] = useState<"yorumlar" | "teknik">("yorumlar");
 
   return (
     <div>
       {/* Tab başlıkları */}
-      <div className="flex border-b border-gray-100 bg-white rounded-t-2xl px-1">
+      <div className="flex items-center border-b border-gray-100 bg-white rounded-t-2xl px-1">
         <button
           onClick={() => setTab("yorumlar")}
           className={`px-5 py-3.5 text-sm font-medium transition-colors border-b-2 -mb-px ${
@@ -38,16 +39,22 @@ export function TabView({ reviewCount, reviewsContent, specsContent }: Props) {
         >
           Teknik Özellikler
         </button>
+
+        {actionButton && (
+          <div className="ml-auto pr-3">
+            {actionButton}
+          </div>
+        )}
       </div>
 
-      {/* Tab içerikleri */}
+      {/* Tab içerikleri — min-height ile yükseklik sabit */}
       {tab === "yorumlar" && (
-        <div className="bg-white border border-t-0 border-gray-100 rounded-b-2xl">
+        <div className="bg-white border border-t-0 border-gray-100 rounded-b-2xl min-h-[320px]">
           {reviewsContent}
         </div>
       )}
       {tab === "teknik" && (
-        <div className="bg-white border border-t-0 border-gray-100 rounded-b-2xl">
+        <div className="bg-white border border-t-0 border-gray-100 rounded-b-2xl min-h-[320px]">
           {specsContent}
         </div>
       )}

@@ -335,18 +335,18 @@ export default async function VehicleDetailPage({
   const specsContent = specs.length === 0 ? (
     <p className="p-6 text-sm text-gray-400 text-center">Teknik özellik bulunamadı.</p>
   ) : (
-    <div className="grid grid-cols-2 divide-x divide-gray-50">
-      <div className="px-5 py-2">
+    <div className="grid grid-cols-2 divide-x divide-gray-100">
+      <div className="px-6 py-5">
         {left.map(({ label, value }) => (
-          <div key={label} className="flex justify-between items-baseline py-2.5 border-b border-gray-50 text-sm last:border-b-0">
+          <div key={label} className="flex justify-between items-baseline py-3.5 border-b border-gray-50 text-sm last:border-b-0">
             <span className="text-gray-400">{label}</span>
             <span className="font-semibold text-gray-800 text-right ml-4">{value}</span>
           </div>
         ))}
       </div>
-      <div className="px-5 py-2">
+      <div className="px-6 py-5">
         {right.map(({ label, value }) => (
-          <div key={label} className="flex justify-between items-baseline py-2.5 border-b border-gray-50 text-sm last:border-b-0">
+          <div key={label} className="flex justify-between items-baseline py-3.5 border-b border-gray-50 text-sm last:border-b-0">
             <span className="text-gray-400">{label}</span>
             <span className="font-semibold text-gray-800 text-right ml-4">{value}</span>
           </div>
@@ -491,51 +491,39 @@ export default async function VehicleDetailPage({
       {/* ── Ana içerik ── */}
       <div className="max-w-5xl mx-auto px-4 py-8 space-y-4">
 
-        {/* Puan varken: score kartı + butonlar */}
-        {scores ? (
+        {/* Puan varken: score kartı + Yorum Yaz butonu */}
+        {scores && (
           <div className="bg-white border border-gray-100 rounded-2xl p-5">
             <FikapeScore scores={scores} variant="bars" reviewCount={reviewCount} />
-            <div className="flex gap-2 mt-4">
+            <div className="mt-4">
               <Link
                 href={`/yorum-yaz?arac=${slug}`}
-                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
+                className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
                 style={{ background: "#111" }}
               >
                 Yorum Yaz →
               </Link>
-              {userId ? (
-                <GarageButton productId={product.id} initialInGarage={inGarage} />
-              ) : (
-                <Link
-                  href="/giris"
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold border-2 border-gray-200 text-gray-500 hover:border-gray-300 transition-colors"
-                >
-                  🚗 Bu araç benim
-                </Link>
-              )}
             </div>
-          </div>
-        ) : (
-          /* Puan yokken: sadece "Bu araç benim" */
-          <div className="flex justify-end">
-            {userId ? (
-              <GarageButton productId={product.id} initialInGarage={inGarage} />
-            ) : (
-              <Link
-                href="/giris"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors bg-white"
-              >
-                🚗 Bu araç benim
-              </Link>
-            )}
           </div>
         )}
 
-        {/* Tab: Yorumlar / Teknik Özellikler */}
+        {/* Tab: Yorumlar / Teknik Özellikler — "Bu araç benim" tab bar'da sağda */}
         <TabView
           reviewCount={reviewCount}
           reviewsContent={reviewsContent}
           specsContent={specsContent}
+          actionButton={
+            userId ? (
+              <GarageButton productId={product.id} initialInGarage={inGarage} />
+            ) : (
+              <Link
+                href="/giris"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium border border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors bg-white"
+              >
+                🚗 Bu araç benim
+              </Link>
+            )
+          }
         />
 
       </div>
