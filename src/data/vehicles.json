@@ -16704,6 +16704,87 @@
       ]
     },
     {
+      "make": "Airstream",
+      "models": [
+        {
+          "name": "Bambi (2000-)",
+          "versions": [
+            "16 ft",
+            "19 ft",
+            "20 ft",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Flying Cloud (2000-)",
+          "versions": [
+            "23 ft",
+            "25 ft",
+            "27 ft",
+            "30 ft",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Bunk",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "International / Globetrotter (2000-)",
+          "versions": [
+            "25 ft",
+            "27 ft",
+            "30 ft",
+            "Diğer"
+          ],
+          "trims": [
+            "International",
+            "Globetrotter",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Classic (2000-)",
+          "versions": [
+            "30 ft",
+            "33 ft",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Interstate / Atlas (Motorhome, 2010-)",
+          "versions": [
+            "Interstate 24GT",
+            "Interstate 24X",
+            "Atlas 24",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Bailey",
       "models": [
         {
@@ -16829,6 +16910,87 @@
       ]
     },
     {
+      "make": "Carado",
+      "models": [
+        {
+          "name": "T Serisi (Yarı Entegre, 2005-)",
+          "versions": [
+            "T 132",
+            "T 135",
+            "T 337",
+            "T 447",
+            "T 600",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Edition",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "A Serisi (Alkoven, 2005-)",
+          "versions": [
+            "A 361",
+            "A 461",
+            "A 362",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V Serisi (Van / Kampervan, 2010-)",
+          "versions": [
+            "V 132",
+            "V 600",
+            "V 601",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "I Serisi (Entegre, 2010-)",
+          "versions": [
+            "I 132",
+            "I 447",
+            "I 600",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C Serisi (Kampervan Kompakt, 2018-)",
+          "versions": [
+            "C 338",
+            "C 231",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Caravelair",
       "models": [
         {
@@ -16862,6 +17024,141 @@
           "versions": [
             "2 Kişilik",
             "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Carthago",
+      "models": [
+        {
+          "name": "c-tourer T (Yarı Entegre, 2000-)",
+          "versions": [
+            "c-tourer T 143 H",
+            "c-tourer T 145 H",
+            "c-tourer T 147 H",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "c-tourer I (Entegre, 2000-)",
+          "versions": [
+            "c-tourer I 143 QB",
+            "c-tourer I 144 QB",
+            "c-tourer I 150 QB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Chic e-line (Entegre, 2015-)",
+          "versions": [
+            "Chic e-line I 55 QB",
+            "Chic e-line I 60 QB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "liner-for-two (2010-)",
+          "versions": [
+            "liner-for-two 50 L",
+            "liner-for-two 55 L",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Chausson",
+      "models": [
+        {
+          "name": "Welcome (2000-)",
+          "versions": [
+            "Welcome 500",
+            "Welcome 510",
+            "Welcome 610",
+            "Welcome 718",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Premium",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Flash (2010-)",
+          "versions": [
+            "Flash 510",
+            "Flash 514",
+            "Flash 610",
+            "Flash 630",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S-Line (2015-)",
+          "versions": [
+            "S-Line 510",
+            "S-Line 514",
+            "S-Line 630",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Titanium (2018-)",
+          "versions": [
+            "Titanium 510",
+            "Titanium 627 GA",
+            "Titanium 640",
             "Diğer"
           ],
           "trims": [
@@ -16941,6 +17238,71 @@
           "versions": [
             "4 Kişilik",
             "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Concorde",
+      "models": [
+        {
+          "name": "Credo (Yarı Entegre, 2000-)",
+          "versions": [
+            "Credo 791 RL",
+            "Credo 841 RB",
+            "Credo 791 M",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Carver (Entegre, 2005-)",
+          "versions": [
+            "Carver 841 L",
+            "Carver 891 L",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Liner (2000-)",
+          "versions": [
+            "Liner 1090 G",
+            "Liner 1090 RL",
+            "Liner Plus",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Centurion (Ultra Lüks, 2010-)",
+          "versions": [
+            "Centurion 1200",
+            "Centurion 1400",
             "Diğer"
           ],
           "trims": [
@@ -17134,6 +17496,71 @@
       ]
     },
     {
+      "make": "Eura Mobil",
+      "models": [
+        {
+          "name": "Profila RS (Yarı Entegre, 2000-)",
+          "versions": [
+            "Profila RS 676 HB",
+            "Profila RS 695 QB",
+            "Profila RS 720 QB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Activa One (Yarı Entegre, 2010-)",
+          "versions": [
+            "Activa One 650 HS",
+            "Activa One 690 HB",
+            "Activa One 720 QB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Integra Line (Entegre, 2005-)",
+          "versions": [
+            "Integra Line 690 QB",
+            "Integra Line 720 QB",
+            "Integra Line 730 QB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Terrestra (Off-Road, 2020-)",
+          "versions": [
+            "Terrestra 680 HB",
+            "Terrestra 695 HB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
       "make": "Fendt",
       "models": [
         {
@@ -17183,6 +17610,112 @@
             "2 Kişilik",
             "4 Kişilik",
             "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Forster",
+      "models": [
+        {
+          "name": "T Serisi (Çekme Karavan, 2000-)",
+          "versions": [
+            "T 600 UB",
+            "T 600 HB",
+            "T 655 EB",
+            "T 740 UB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F Serisi (Motorhome Yarı Entegre, 2005-)",
+          "versions": [
+            "F 600 EB",
+            "F 680 EB",
+            "F 699 EB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Frankia",
+      "models": [
+        {
+          "name": "I Serisi (Entegre, 2000-)",
+          "versions": [
+            "I 6800 BD",
+            "I 7400 QD",
+            "I 7900 GD",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M Serisi (Entegre Geniş, 2005-)",
+          "versions": [
+            "M 7400 QD",
+            "M 7900 GD",
+            "M 8000 BD",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Platinum (2015-)",
+          "versions": [
+            "Platinum 7900 GD",
+            "Platinum 8500 QD",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Neo (2020-)",
+          "versions": [
+            "Neo 6800 BD",
+            "Neo 7400 QD",
             "Diğer"
           ],
           "trims": [
@@ -17947,6 +18480,85 @@
           "trims": [
             "Standart",
             "Suite",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Winnebago",
+      "models": [
+        {
+          "name": "Travato / Era (Van Dönüşüm, 2015-)",
+          "versions": [
+            "Travato 59G",
+            "Travato 59K",
+            "Era 70A",
+            "Era 70M",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Minnie / Micro Minnie (Çekme Karavan, 2000-)",
+          "versions": [
+            "Micro Minnie 1700BH",
+            "Minnie 2201DS",
+            "Minnie 2500RL",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "View / Navion (C Sınıfı, 2005-)",
+          "versions": [
+            "View 24D",
+            "View 24V",
+            "Navion 24V",
+            "Navion 24J",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Intent / Forza (A Sınıfı, 2015-)",
+          "versions": [
+            "Intent 26M",
+            "Intent 30R",
+            "Forza 38F",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Revel (4x4 Kampervan, 2018-)",
+          "versions": [
+            "Revel 44E",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },

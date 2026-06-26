@@ -1,0 +1,10 @@
+{
+  "make": "Carthago",
+  "models": [
+    { "name": "c-tourer T (Yarı Entegre, 2000-)", "versions": ["c-tourer T 143 H", "c-tourer T 145 H", "c-tourer T 147 H", "Diğer"], "trims": ["Standart", "Plus", "Diğer"] },
+    { "name": "c-tourer I (Entegre, 2000-)", "versions": ["c-tourer I 143 QB", "c-tourer I 144 QB", "c-tourer I 150 QB", "Diğer"], "trims": ["Standart", "Plus", "Diğer"] },
+    { "name": "Chic e-line (Entegre, 2015-)", "versions": ["Chic e-line I 55 QB", "Chic e-line I 60 QB", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "liner-for-two (2010-)", "versions": ["liner-for-two 50 L", "liner-for-two 55 L", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

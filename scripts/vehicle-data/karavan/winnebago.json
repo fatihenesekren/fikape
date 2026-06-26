@@ -1,0 +1,11 @@
+{
+  "make": "Winnebago",
+  "models": [
+    { "name": "Travato / Era (Van Dönüşüm, 2015-)", "versions": ["Travato 59G", "Travato 59K", "Era 70A", "Era 70M", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Minnie / Micro Minnie (Çekme Karavan, 2000-)", "versions": ["Micro Minnie 1700BH", "Minnie 2201DS", "Minnie 2500RL", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "View / Navion (C Sınıfı, 2005-)", "versions": ["View 24D", "View 24V", "Navion 24V", "Navion 24J", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Intent / Forza (A Sınıfı, 2015-)", "versions": ["Intent 26M", "Intent 30R", "Forza 38F", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Revel (4x4 Kampervan, 2018-)", "versions": ["Revel 44E", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

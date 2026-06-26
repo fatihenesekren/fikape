@@ -1,0 +1,10 @@
+{
+  "make": "Frankia",
+  "models": [
+    { "name": "I Serisi (Entegre, 2000-)", "versions": ["I 6800 BD", "I 7400 QD", "I 7900 GD", "Diğer"], "trims": ["Standart", "Plus", "Diğer"] },
+    { "name": "M Serisi (Entegre Geniş, 2005-)", "versions": ["M 7400 QD", "M 7900 GD", "M 8000 BD", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Platinum (2015-)", "versions": ["Platinum 7900 GD", "Platinum 8500 QD", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Neo (2020-)", "versions": ["Neo 6800 BD", "Neo 7400 QD", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "make": "Eura Mobil",
+  "models": [
+    { "name": "Profila RS (Yarı Entegre, 2000-)", "versions": ["Profila RS 676 HB", "Profila RS 695 QB", "Profila RS 720 QB", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Activa One (Yarı Entegre, 2010-)", "versions": ["Activa One 650 HS", "Activa One 690 HB", "Activa One 720 QB", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Integra Line (Entegre, 2005-)", "versions": ["Integra Line 690 QB", "Integra Line 720 QB", "Integra Line 730 QB", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Terrestra (Off-Road, 2020-)", "versions": ["Terrestra 680 HB", "Terrestra 695 HB", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "make": "Forster",
+  "models": [
+    { "name": "T Serisi (Çekme Karavan, 2000-)", "versions": ["T 600 UB", "T 600 HB", "T 655 EB", "T 740 UB", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "F Serisi (Motorhome Yarı Entegre, 2005-)", "versions": ["F 600 EB", "F 680 EB", "F 699 EB", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

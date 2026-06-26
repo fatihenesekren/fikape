@@ -1,0 +1,11 @@
+{
+  "make": "Carado",
+  "models": [
+    { "name": "T Serisi (Yarı Entegre, 2005-)", "versions": ["T 132", "T 135", "T 337", "T 447", "T 600", "Diğer"], "trims": ["Standart", "Edition", "Diğer"] },
+    { "name": "A Serisi (Alkoven, 2005-)", "versions": ["A 361", "A 461", "A 362", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "V Serisi (Van / Kampervan, 2010-)", "versions": ["V 132", "V 600", "V 601", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "I Serisi (Entegre, 2010-)", "versions": ["I 132", "I 447", "I 600", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "C Serisi (Kampervan Kompakt, 2018-)", "versions": ["C 338", "C 231", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}

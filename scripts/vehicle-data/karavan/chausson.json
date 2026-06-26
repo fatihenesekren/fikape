@@ -1,0 +1,10 @@
+{
+  "make": "Chausson",
+  "models": [
+    { "name": "Welcome (2000-)", "versions": ["Welcome 500", "Welcome 510", "Welcome 610", "Welcome 718", "Diğer"], "trims": ["Standart", "Premium", "Diğer"] },
+    { "name": "Flash (2010-)", "versions": ["Flash 510", "Flash 514", "Flash 610", "Flash 630", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "S-Line (2015-)", "versions": ["S-Line 510", "S-Line 514", "S-Line 630", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Titanium (2018-)", "versions": ["Titanium 510", "Titanium 627 GA", "Titanium 640", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+  ]
+}
