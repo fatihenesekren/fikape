@@ -1,8 +1,11 @@
 {
   "make": "Coachman",
   "models": [
+    { "name": "Vision", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Acadia", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Innovation", "Diğer"] },
     { "name": "Laser", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Pastiche", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Pastiche", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "VIP", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

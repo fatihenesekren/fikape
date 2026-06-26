@@ -3,6 +3,7 @@
   "models": [
     { "name": "Premio", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Life", "Plus", "Diğer"] },
     { "name": "Averso", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "GT", "Diğer"] },
-    { "name": "Lyseo", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "TD", "HD", "Diğer"] }
+    { "name": "Lyseo", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "TD", "HD", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

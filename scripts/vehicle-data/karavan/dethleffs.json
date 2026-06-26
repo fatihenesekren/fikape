@@ -1,8 +1,11 @@
 {
   "make": "Dethleffs",
   "models": [
+    { "name": "Coco", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Trend", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Camper", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Lifestyle", "Diğer"] },
     { "name": "Beduin", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Nomad", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Nomad", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

@@ -1,6 +1,7 @@
 {
   "make": "Roller Team",
   "models": [
-    { "name": "Livingstone", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Livingstone", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

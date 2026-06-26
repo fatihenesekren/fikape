@@ -1,7 +1,10 @@
 {
   "make": "Globecar",
   "models": [
+    { "name": "Campscout", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Quadro", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Summit", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Prime", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Prime", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

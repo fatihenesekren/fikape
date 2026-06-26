@@ -4,6 +4,7 @@
     { "name": "Sport", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Fun Edition", "Diğer"] },
     { "name": "Südwind", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Edition 60", "Diğer"] },
     { "name": "Starclass", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Sky TI", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Sky TI", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

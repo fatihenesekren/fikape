@@ -2,6 +2,10 @@
   "make": "Hymer",
   "models": [
     { "name": "Nova", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Suite", "GL", "Diğer"] },
-    { "name": "Tramp", "versions": ["Van", "S 4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Tramp", "versions": ["Van", "S 4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "B-Klasse", "versions": ["SL", "DL", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ML-T", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "S-Klasse", "versions": ["SL", "DL", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

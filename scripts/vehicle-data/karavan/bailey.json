@@ -1,8 +1,10 @@
 {
   "make": "Bailey",
   "models": [
+    { "name": "Discovery", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Unicorn", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Exclusive", "Diğer"] },
     { "name": "Pegasus", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Grande", "Diğer"] },
-    { "name": "Alicanto", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Grande", "Diğer"] }
+    { "name": "Alicanto", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Grande", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

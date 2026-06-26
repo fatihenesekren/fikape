@@ -1,6 +1,10 @@
 {
   "make": "Sunlight",
   "models": [
-    { "name": "T67", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "A (Alkoven)", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "C (Yarı Entegre)", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "T67 (Tam Entegre)", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "V (Van)", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
