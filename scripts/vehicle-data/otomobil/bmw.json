@@ -1,0 +1,110 @@
+{
+  "make": "BMW",
+  "models": [
+    {
+      "name": "1 Serisi",
+      "versions": ["116i", "118i", "120i", "118d", "120d", "M135i xDrive", "Diğer"],
+      "trims": ["Advantage", "Sport Line", "M Sport", "M135i", "Diğer"]
+    },
+    {
+      "name": "2 Serisi",
+      "versions": ["218i Gran Coupé", "220i Coupé", "230i", "218d Gran Coupé", "220d", "M240i xDrive", "M2 Coupé", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "M240i", "M2", "Diğer"]
+    },
+    {
+      "name": "3 Serisi",
+      "versions": ["318i", "320i", "330i", "318d", "320d", "330d", "330e PHEV", "M340i xDrive", "M3", "Diğer"],
+      "trims": ["Advantage", "Sport Line", "M Sport", "M340i", "M3", "M3 Competition", "Diğer"]
+    },
+    {
+      "name": "4 Serisi",
+      "versions": ["418i Gran Coupé", "420i Coupé", "430i", "418d Gran Coupé", "420d", "M440i xDrive", "M4 Coupé", "M4 Competition", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "M440i", "M4", "M4 Competition", "Diğer"]
+    },
+    {
+      "name": "5 Serisi",
+      "versions": ["520i", "530i", "520d", "530d", "545e xDrive PHEV", "M550i xDrive", "M5", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "M550i", "M5", "M5 Competition", "Diğer"]
+    },
+    {
+      "name": "7 Serisi",
+      "versions": ["730i", "740i", "750i xDrive", "730d", "740d xDrive", "745e xDrive PHEV", "760i xDrive", "M760i xDrive", "Diğer"],
+      "trims": ["Standart", "M Sport", "Individual", "L", "Diğer"]
+    },
+    {
+      "name": "X1",
+      "versions": ["sDrive18i", "xDrive23i", "xDrive25i", "sDrive18d", "xDrive20d", "xDrive25e PHEV", "Diğer"],
+      "trims": ["Advantage", "Sport Line", "M Sport", "xLine", "Diğer"]
+    },
+    {
+      "name": "X2",
+      "versions": ["sDrive18i", "xDrive20i", "sDrive18d", "xDrive20d", "M35i xDrive", "Diğer"],
+      "trims": ["Sport", "M Sport", "M Sport X", "M35i", "Diğer"]
+    },
+    {
+      "name": "X3",
+      "versions": ["xDrive20i", "xDrive30i", "xDrive20d", "xDrive30d", "xDrive30e PHEV", "M40i", "X3 M", "X3 M Competition", "Diğer"],
+      "trims": ["Advantage", "Sport Line", "M Sport", "xLine", "M40i", "X3 M", "Diğer"]
+    },
+    {
+      "name": "X4",
+      "versions": ["xDrive20i", "xDrive30i", "xDrive20d", "xDrive30d", "M40i", "X4 M", "X4 M Competition", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "M40i", "X4 M", "Diğer"]
+    },
+    {
+      "name": "X5",
+      "versions": ["xDrive40i", "xDrive30d", "xDrive40d", "xDrive45e PHEV", "M50i", "X5 M", "X5 M Competition", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "xLine", "M50i", "X5 M", "Diğer"]
+    },
+    {
+      "name": "X6",
+      "versions": ["xDrive30i", "xDrive40i", "xDrive30d", "xDrive40d", "M50i", "X6 M", "X6 M Competition", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "M50i", "X6 M", "Diğer"]
+    },
+    {
+      "name": "X7",
+      "versions": ["xDrive40i", "xDrive30d", "xDrive40d", "M60i", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "xLine", "M60i", "Diğer"]
+    },
+    {
+      "name": "Z4",
+      "versions": ["sDrive20i 197", "sDrive30i 258", "M40i 340", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "M40i", "Diğer"]
+    },
+    {
+      "name": "i3",
+      "versions": ["i3 120Ah", "i3s 120Ah", "i3 REx 120Ah", "Diğer"],
+      "trims": ["Standart", "Sport", "Diğer"]
+    },
+    {
+      "name": "i4",
+      "versions": ["eDrive35", "eDrive40", "M50 xDrive", "Diğer"],
+      "trims": ["Sport", "M Sport", "M50", "Diğer"]
+    },
+    {
+      "name": "i5",
+      "versions": ["eDrive40", "xDrive40", "M60 xDrive", "Diğer"],
+      "trims": ["M Sport", "M60", "Diğer"]
+    },
+    {
+      "name": "i7",
+      "versions": ["eDrive60", "xDrive60", "M70 xDrive", "Diğer"],
+      "trims": ["Standart", "M Sport", "M70", "Diğer"]
+    },
+    {
+      "name": "iX",
+      "versions": ["xDrive40", "xDrive50", "M60 xDrive", "Diğer"],
+      "trims": ["Sport", "M Sport", "M60", "Diğer"]
+    },
+    {
+      "name": "iX1",
+      "versions": ["xDrive30", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "xLine", "Diğer"]
+    },
+    {
+      "name": "iX3",
+      "versions": ["Impressive", "Diğer"],
+      "trims": ["Sport Line", "M Sport", "Diğer"]
+    }
+  ]
+}

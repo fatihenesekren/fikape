@@ -1,0 +1,18 @@
+{
+  "make": "BMW",
+  "models": [
+    { "name": "S 1000 RR", "versions": ["210 CV 1000cc", "M Package", "Diğer"], "trims": ["Standart", "M Package", "Diğer"] },
+    { "name": "S 1000 R", "versions": ["165 CV 1000cc", "M Package", "Diğer"], "trims": ["Standart", "M Package", "Diğer"] },
+    { "name": "S 1000 XR", "versions": ["165 CV 1000cc", "M Package", "Diğer"], "trims": ["Standart", "M Package", "Diğer"] },
+    { "name": "M 1000 RR", "versions": ["212 CV 1000cc", "Competition", "Diğer"], "trims": ["Standart", "Competition", "Diğer"] },
+    { "name": "R 1250 GS", "versions": ["136 CV 1254cc", "Adventure", "Trophy", "Diğer"], "trims": ["Standart", "Adventure", "TE", "40 Years", "Diğer"] },
+    { "name": "R 1250 RT", "versions": ["136 CV 1254cc", "Diğer"], "trims": ["Standart", "SE", "Diğer"] },
+    { "name": "F 900 R", "versions": ["105 CV 895cc", "Diğer"], "trims": ["Standart", "A2", "Diğer"] },
+    { "name": "F 900 XR", "versions": ["105 CV 895cc", "Diğer"], "trims": ["Standart", "A2", "Diğer"] },
+    { "name": "F 850 GS", "versions": ["95 CV 853cc", "Adventure", "Diğer"], "trims": ["Standart", "Adventure", "Diğer"] },
+    { "name": "G 310 R", "versions": ["34 CV 313cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "G 310 GS", "versions": ["34 CV 313cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "C 400 X", "versions": ["34 CV 350cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "CE 04", "versions": ["42 CV Elektrikli", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

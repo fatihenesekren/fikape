@@ -1,0 +1,95 @@
+{
+  "make": "Mercedes-Benz",
+  "models": [
+    {
+      "name": "A Serisi",
+      "versions": ["A 180 136", "A 200 163", "A 220 190 4MATIC", "A 180d 116", "A 200d 150", "A 250 e PHEV 218", "AMG A 35 4MATIC 306", "AMG A 45 S 4MATIC+ 421", "Diğer"],
+      "trims": ["Progressive", "AMG Line", "AMG A 35", "AMG A 45 S", "Diğer"]
+    },
+    {
+      "name": "B Serisi",
+      "versions": ["B 180 136", "B 200 163", "B 220 4MATIC 190", "B 180d 116", "B 200d 150", "Diğer"],
+      "trims": ["Progressive", "AMG Line", "Diğer"]
+    },
+    {
+      "name": "C Serisi",
+      "versions": ["C 180 170", "C 200 204", "C 300 258", "C 300 e PHEV 313 4MATIC", "C 220d 197", "C 300d 265", "AMG C 43 4MATIC 408", "AMG C 63 S e Performance 680", "Diğer"],
+      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG C 43", "AMG C 63 S", "Diğer"]
+    },
+    {
+      "name": "E Serisi",
+      "versions": ["E 200 204", "E 300 258 4MATIC", "E 300 e PHEV 313", "E 220d 197", "E 300d 265", "AMG E 53 4MATIC+ 435", "Diğer"],
+      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG E 53", "Diğer"]
+    },
+    {
+      "name": "S Serisi",
+      "versions": ["S 400d 330 4MATIC", "S 450d 367 4MATIC", "S 500 435 4MATIC", "S 580 e PHEV 510 4MATIC", "Maybach S 580 4MATIC", "AMG S 63 E PERFORMANCE 802", "Diğer"],
+      "trims": ["Exclusive", "Luxury", "Maybach", "AMG S 63", "Diğer"]
+    },
+    {
+      "name": "CLA",
+      "versions": ["CLA 180 136", "CLA 200 163", "CLA 220 190 4MATIC", "CLA 180d 116", "CLA 200d 150", "CLA 250 e PHEV 218", "AMG CLA 35 4MATIC 306", "AMG CLA 45 S 4MATIC+ 421", "Diğer"],
+      "trims": ["Progressive", "AMG Line", "AMG CLA 35", "AMG CLA 45 S", "Diğer"]
+    },
+    {
+      "name": "GLA",
+      "versions": ["GLA 180 136", "GLA 200 163", "GLA 220 4MATIC 190", "GLA 180d 116", "GLA 200d 150", "GLA 250 e PHEV 218", "AMG GLA 35 4MATIC 306", "AMG GLA 45 S 4MATIC+ 421", "Diğer"],
+      "trims": ["Progressive", "AMG Line", "AMG GLA 35", "AMG GLA 45 S", "Diğer"]
+    },
+    {
+      "name": "GLB",
+      "versions": ["GLB 180 136", "GLB 200 163", "GLB 200d 150", "GLB 220d 190 4MATIC", "AMG GLB 35 4MATIC 306", "Diğer"],
+      "trims": ["Progressive", "AMG Line", "AMG GLB 35", "Diğer"]
+    },
+    {
+      "name": "GLC",
+      "versions": ["GLC 200 204", "GLC 300 258 4MATIC", "GLC 300 e PHEV 313 4MATIC", "GLC 220d 197 4MATIC", "GLC 300d 270 4MATIC", "AMG GLC 43 4MATIC 408", "AMG GLC 63 S e Performance 680", "Diğer"],
+      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG GLC 43", "AMG GLC 63 S", "Diğer"]
+    },
+    {
+      "name": "GLE",
+      "versions": ["GLE 300d 245 4MATIC", "GLE 350d 272 4MATIC", "GLE 450 367 4MATIC", "GLE 350 e PHEV 333 4MATIC", "AMG GLE 53 4MATIC+ 435", "Diğer"],
+      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG GLE 53", "Diğer"]
+    },
+    {
+      "name": "GLS",
+      "versions": ["GLS 400d 330 4MATIC", "GLS 450d 367 4MATIC", "GLS 600 Maybach 550 4MATIC", "AMG GLS 63 4MATIC+ 630", "Diğer"],
+      "trims": ["Exclusive", "Maybach", "AMG GLS 63", "Diğer"]
+    },
+    {
+      "name": "G Serisi",
+      "versions": ["G 400d 330 4MATIC", "G 500 422 4MATIC", "AMG G 63 585 4MATIC", "Diğer"],
+      "trims": ["Professional", "Exclusive", "AMG G 63", "Diğer"]
+    },
+    {
+      "name": "EQA",
+      "versions": ["EQA 250 190 66.5kWh", "EQA 250+ 190 70.5kWh", "EQA 300 4MATIC 228", "EQA 350 4MATIC 292", "Diğer"],
+      "trims": ["Progressive", "AMG Line", "Diğer"]
+    },
+    {
+      "name": "EQB",
+      "versions": ["EQB 250 190 66.5kWh", "EQB 300 4MATIC 228", "EQB 350 4MATIC 292", "Diğer"],
+      "trims": ["Progressive", "AMG Line", "Diğer"]
+    },
+    {
+      "name": "EQE",
+      "versions": ["EQE 300 245 90.6kWh", "EQE 350 292 90.6kWh", "EQE 350+ 292 96.1kWh", "EQE 500 4MATIC 408", "AMG EQE 53 4MATIC+ 687", "Diğer"],
+      "trims": ["Progressive", "AMG Line", "AMG EQE 53", "Diğer"]
+    },
+    {
+      "name": "EQS",
+      "versions": ["EQS 450+ 333 108.4kWh", "EQS 500 4MATIC 449", "AMG EQS 53 4MATIC+ 761", "Diğer"],
+      "trims": ["Progressive", "Luxury", "Maybach EQS 680", "AMG EQS 53", "Diğer"]
+    },
+    {
+      "name": "AMG GT",
+      "versions": ["AMG GT 43 476 4MATIC+", "AMG GT 53 530 4MATIC+", "AMG GT 63 4MATIC+", "AMG GT 55 4MATIC+", "Diğer"],
+      "trims": ["4-Kapı Coupe", "Roadster", "Diğer"]
+    },
+    {
+      "name": "SL",
+      "versions": ["SL 43 381", "SL 55 4MATIC+ 476", "SL 63 4MATIC+ 585", "Diğer"],
+      "trims": ["AMG Line", "Premium", "Diğer"]
+    }
+  ]
+}

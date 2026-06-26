@@ -1,0 +1,10 @@
+{
+  "make": "Moto Guzzi",
+  "models": [
+    { "name": "V7", "versions": ["850cc 65 CV", "Stone 850cc", "Special 850cc", "Diğer"], "trims": ["Stone", "Special", "Milano", "Centenario", "Diğer"] },
+    { "name": "V85 TT", "versions": ["853cc 80 CV", "Travel Pack", "Diğer"], "trims": ["Standart", "Travel", "Evocative Graphics", "Diğer"] },
+    { "name": "V9", "versions": ["853cc 65 CV Bobber", "853cc 65 CV Roamer", "Diğer"], "trims": ["Bobber", "Roamer", "Diğer"] },
+    { "name": "V100 Mandello", "versions": ["1042cc 115 CV", "S 115 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
+    { "name": "Stelvio", "versions": ["1042cc 115 CV", "PFF 115 CV", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

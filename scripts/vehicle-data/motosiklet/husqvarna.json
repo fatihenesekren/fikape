@@ -1,0 +1,11 @@
+{
+  "make": "Husqvarna",
+  "models": [
+    { "name": "Svartpilen 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Svartpilen 401", "versions": ["373cc 44 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Svartpilen 701", "versions": ["693cc 75 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Vitpilen 401", "versions": ["373cc 44 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Vitpilen 701", "versions": ["693cc 75 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Norden 901", "versions": ["889cc 105 CV", "Expedition", "Diğer"], "trims": ["Standart", "Expedition", "Diğer"] }
+  ]
+}

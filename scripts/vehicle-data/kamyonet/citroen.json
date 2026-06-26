@@ -1,0 +1,9 @@
+{
+  "make": "Citroën",
+  "models": [
+    { "name": "Berlingo", "versions": ["1.2 PureTech 110", "1.5 BlueHDi 100", "1.5 BlueHDi 130", "ë-Berlingo Electric 136", "Diğer"], "trims": ["Feel", "Shine", "Max", "Diğer"] },
+    { "name": "Jumpy", "versions": ["1.5 BlueHDi 100", "2.0 BlueHDi 120", "2.0 BlueHDi 145", "ë-Jumpy Electric", "Diğer"], "trims": ["Feel", "Shine", "Business", "Diğer"] },
+    { "name": "SpaceTourer", "versions": ["1.5 BlueHDi 100", "1.5 BlueHDi 130", "2.0 BlueHDi 150", "Diğer"], "trims": ["Feel", "Shine", "Business", "Diğer"] },
+    { "name": "Jumper", "versions": ["2.2 BlueHDi 120", "2.2 BlueHDi 140", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

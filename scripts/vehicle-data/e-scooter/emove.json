@@ -1,0 +1,7 @@
+{
+  "make": "Emove",
+  "models": [
+    { "name": "Cruiser", "versions": ["1600W 30Ah 45km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Touring", "versions": ["500W 20Ah 35km/h", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

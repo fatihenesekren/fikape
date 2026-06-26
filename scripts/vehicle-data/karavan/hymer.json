@@ -1,0 +1,7 @@
+{
+  "make": "Hymer",
+  "models": [
+    { "name": "Nova", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Suite", "GL", "Diğer"] },
+    { "name": "Tramp", "versions": ["Van", "S 4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

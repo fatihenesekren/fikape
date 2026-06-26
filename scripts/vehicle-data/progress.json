@@ -1,0 +1,52 @@
+{
+  "otomobil": {
+    "total": 40,
+    "completed": [],
+    "remaining": [
+      "alfa-romeo","audi","bmw","byd","citroen","cupra","dacia","ds",
+      "fiat","ford","honda","hyundai","jaguar","jeep","kia","land-rover",
+      "lexus","maserati","mazda","mercedes-benz","mg","mini","mitsubishi",
+      "nissan","opel","peugeot","porsche","renault","seat","skoda","smart",
+      "subaru","suzuki","tesla","togg","toyota","volkswagen","volvo","diger"
+    ]
+  },
+  "motosiklet": {
+    "total": 21,
+    "completed": [],
+    "remaining": [
+      "aprilia","benelli","beta","bmw","cf-moto","ducati","gas-gas",
+      "harley-davidson","honda","husqvarna","indian","kawasaki","ktm",
+      "kymco","moto-guzzi","mv-agusta","piaggio","royal-enfield","sherco",
+      "suzuki","sym","triumph","vespa","yamaha","diger"
+    ]
+  },
+  "kamyonet": {
+    "total": 19,
+    "completed": [],
+    "remaining": [
+      "citroen","dacia","fiat","ford","honda","hyundai","isuzu","iveco",
+      "kia","man","maxus","mercedes-benz","mitsubishi","nissan","opel",
+      "peugeot","renault","toyota","volkswagen","diger"
+    ]
+  },
+  "e-scooter": {
+    "total": 14,
+    "completed": [],
+    "remaining": [
+      "xiaomi","segway","kaabo","dualtron","niu","inokim","vsett","kugoo",
+      "zero","pure-electric","apollo","emove","navee","laotie","diger"
+    ]
+  },
+  "karavan": {
+    "total": 23,
+    "completed": [],
+    "remaining": [
+      "adria","bailey","burstner","caravelair","coachman","dethleffs",
+      "elnagh","eriba","fendt","globecar","hobby","hymer","knaus","lmc",
+      "laika","mc-louis","pilote","rapido","roller-team","sunlight","swift",
+      "tabbert","weinsberg","diger"
+    ]
+  },
+  "lastUpdated": "2026-06-26",
+  "mergeReady": false
+}

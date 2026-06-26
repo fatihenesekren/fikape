@@ -1,0 +1,7 @@
+{
+  "make": "Mitsubishi",
+  "models": [
+    { "name": "L200", "versions": ["2.2 Di-D 154 4WD", "2.4 MIVEC 181 4WD", "Diğer"], "trims": ["Invite", "Inform", "Intense", "Diğer"] },
+    { "name": "Canter", "versions": ["3.0 4P10 130", "3.0 4P10 150", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

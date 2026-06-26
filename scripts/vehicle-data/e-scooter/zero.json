@@ -1,0 +1,7 @@
+{
+  "make": "Zero",
+  "models": [
+    { "name": "10X", "versions": ["1600W 20Ah 40km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "11X", "versions": ["2800W Çift 35Ah 55km/h", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

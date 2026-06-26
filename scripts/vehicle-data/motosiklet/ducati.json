@@ -1,0 +1,13 @@
+{
+  "make": "Ducati",
+  "models": [
+    { "name": "Panigale V2", "versions": ["155 CV 955cc", "Bayliss 1st 155 CV", "Diğer"], "trims": ["Standart", "Bayliss", "Diğer"] },
+    { "name": "Panigale V4", "versions": ["215 CV 1103cc", "S 215 CV", "R 240 CV", "SP 215 CV", "Diğer"], "trims": ["Standart", "S", "R", "SP", "Diğer"] },
+    { "name": "Monster", "versions": ["111 CV 937cc", "Monster+ 111 CV", "Diğer"], "trims": ["Standart", "Plus", "Diğer"] },
+    { "name": "Multistrada V4", "versions": ["170 CV 1158cc", "S 170 CV", "Rally 170 CV", "Diğer"], "trims": ["Standart", "S", "S Sport", "Rally", "Diğer"] },
+    { "name": "Diavel", "versions": ["168 CV 1262cc", "Diavel V4 168 CV", "Diğer"], "trims": ["Standart", "Carbon", "Diğer"] },
+    { "name": "Scrambler", "versions": ["803 73 CV", "1100 86 CV", "Nightshift 73 CV", "Diğer"], "trims": ["Icon", "Full Throttle", "Nightshift", "Urban Motard", "Diğer"] },
+    { "name": "Hypermotard", "versions": ["950 SP 114 CV", "Diğer"], "trims": ["Standart", "SP", "Diğer"] },
+    { "name": "Streetfighter V4", "versions": ["208 CV 1103cc", "S 208 CV", "SP 220 CV", "Diğer"], "trims": ["Standart", "S", "SP", "Diğer"] }
+  ]
+}

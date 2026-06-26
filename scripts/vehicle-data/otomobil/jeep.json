@@ -1,0 +1,45 @@
+{
+  "make": "Jeep",
+  "models": [
+    {
+      "name": "Renegade",
+      "versions": ["1.0 T3 120", "1.3 T4 150 FWD", "1.3 T4 190 AWD", "4xe PHEV 240 AWD", "1.6 Multijet 130", "Diğer"],
+      "trims": ["Sport", "Longitude", "Limited", "Trailhawk", "Upland", "Diğer"]
+    },
+    {
+      "name": "Compass",
+      "versions": ["1.3 T4 130 FWD", "1.3 T4 150 FWD", "1.3 T4 240 AWD", "4xe PHEV 240 AWD", "1.6 Multijet 130", "2.0 Multijet 140 AWD", "Diğer"],
+      "trims": ["Sport", "Longitude", "Limited", "Trailhawk", "Diğer"]
+    },
+    {
+      "name": "Avenger",
+      "versions": ["1.2 T3 100", "1.2 T3 130", "EV 156 54kWh", "Diğer"],
+      "trims": ["Longitude", "Altitude", "Summit", "Diğer"]
+    },
+    {
+      "name": "Cherokee",
+      "versions": ["2.0 Multijet 140 AWD", "2.0 GME 270 AWD", "Diğer"],
+      "trims": ["Sport", "Longitude", "Limited", "Trailhawk", "Diğer"]
+    },
+    {
+      "name": "Grand Cherokee",
+      "versions": ["3.6 V6 290 AWD", "5.7 V8 360 AWD", "4xe PHEV 375 AWD", "Trailhawk 3.6 V6", "Diğer"],
+      "trims": ["Laredo", "Limited", "Overland", "Summit", "Trailhawk", "Diğer"]
+    },
+    {
+      "name": "Wrangler",
+      "versions": ["2.0 T 272 Sahara", "3.6 V6 285 Sport", "4xe PHEV 380", "Rubicon 2.0 T", "Diğer"],
+      "trims": ["Sport", "Sahara", "Rubicon", "Unlimited", "Diğer"]
+    },
+    {
+      "name": "Gladiator",
+      "versions": ["3.6 V6 285 4WD", "3.0 V6 EcoDiesel 260 4WD", "Diğer"],
+      "trims": ["Sport", "Overland", "Rubicon", "Mojave", "Diğer"]
+    },
+    {
+      "name": "Commander",
+      "versions": ["1.3 T4 185 FWD", "1.3 T4 240 AWD", "4xe PHEV 240 AWD", "Diğer"],
+      "trims": ["Sport", "Longitude", "Limited", "Overland", "Diğer"]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "make": "Skoda",
+  "models": [
+    {
+      "name": "Fabia",
+      "versions": ["1.0 MPI 65", "1.0 TSI 95", "1.0 TSI 110", "1.5 TSI 150", "Diğer"],
+      "trims": ["Active", "Ambition", "Style", "Monte Carlo", "Diğer"]
+    },
+    {
+      "name": "Rapid",
+      "versions": ["1.0 TSI 95", "1.0 TSI 115", "1.5 TSI 150", "Diğer"],
+      "trims": ["Active", "Ambition", "Style", "Diğer"]
+    },
+    {
+      "name": "Octavia",
+      "versions": ["1.0 TSI 110", "1.5 TSI 150", "2.0 TSI 190", "2.0 TDI 115", "2.0 TDI 150", "1.4 TSI iV PHEV 204", "RS 2.0 TSI 245", "RS 2.0 TDI 200", "Diğer"],
+      "trims": ["Active", "Ambition", "Style", "Scout", "RS", "Diğer"]
+    },
+    {
+      "name": "Superb",
+      "versions": ["1.5 TSI 150 ACT", "2.0 TSI 272 4x4", "2.0 TDI 150", "2.0 TDI 190 4x4", "1.4 TSI iV PHEV 218", "Diğer"],
+      "trims": ["Ambition", "Style", "L&K", "Scout", "Sportline", "Diğer"]
+    },
+    {
+      "name": "Scala",
+      "versions": ["1.0 TSI 115", "1.5 TSI 150", "Diğer"],
+      "trims": ["Active", "Ambition", "Style", "Monte Carlo", "Diğer"]
+    },
+    {
+      "name": "Kamiq",
+      "versions": ["1.0 TSI 95", "1.0 TSI 110", "1.5 TSI 150", "Diğer"],
+      "trims": ["Active", "Ambition", "Style", "Monte Carlo", "Diğer"]
+    },
+    {
+      "name": "Karoq",
+      "versions": ["1.0 TSI 115", "1.5 TSI 150 ACT", "2.0 TSI 190 4x4", "2.0 TDI 115", "2.0 TDI 150 4x4", "Diğer"],
+      "trims": ["Active", "Ambition", "Style", "Scout", "Sportline", "Diğer"]
+    },
+    {
+      "name": "Kodiaq",
+      "versions": ["1.5 TSI 150", "2.0 TSI 190 4x4", "2.0 TSI 265 4x4 RS", "2.0 TDI 150 4x4", "2.0 TDI 200 4x4", "Diğer"],
+      "trims": ["Ambition", "Style", "L&K", "Scout", "Sportline", "RS", "Diğer"]
+    },
+    {
+      "name": "Enyaq",
+      "versions": ["iV 60 179 60kWh", "iV 80 204 82kWh", "iV 80x 265 82kWh AWD", "RS 299 82kWh AWD", "Diğer"],
+      "trims": ["Suite", "Loft", "Lodge", "RS", "Diğer"]
+    }
+  ]
+}

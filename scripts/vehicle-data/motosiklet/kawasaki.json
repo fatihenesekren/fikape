@@ -1,0 +1,17 @@
+{
+  "make": "Kawasaki",
+  "models": [
+    { "name": "Ninja 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "KRT Edition", "Diğer"] },
+    { "name": "Ninja 400", "versions": ["400cc 45 CV", "ABS", "Diğer"], "trims": ["Standart", "KRT Edition", "Diğer"] },
+    { "name": "Ninja 650", "versions": ["650cc 68 CV", "Diğer"], "trims": ["Standart", "KRT Edition", "Diğer"] },
+    { "name": "Ninja ZX-6R", "versions": ["636cc 130 CV", "636 ABS", "Diğer"], "trims": ["Standart", "KRT Edition", "Diğer"] },
+    { "name": "Ninja ZX-10R", "versions": ["998cc 203 CV", "SE 203 CV", "RR 214 CV", "Diğer"], "trims": ["Standart", "SE", "KRT Edition", "Diğer"] },
+    { "name": "Z400", "versions": ["400cc 45 CV", "ABS", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Z650", "versions": ["650cc 68 CV", "RS 650cc", "Diğer"], "trims": ["Standart", "RS", "Diğer"] },
+    { "name": "Z900", "versions": ["900cc 125 CV", "RS 126 CV", "Diğer"], "trims": ["Standart", "RS", "Diğer"] },
+    { "name": "Versys 650", "versions": ["650cc 68 CV", "LT 650cc", "Diğer"], "trims": ["Standart", "LT", "Diğer"] },
+    { "name": "Versys 1000", "versions": ["1000cc 120 CV", "SE 120 CV", "Diğer"], "trims": ["Standart", "SE", "Grand Tourer", "Diğer"] },
+    { "name": "Vulcan S", "versions": ["650cc 61 CV", "ABS", "Diğer"], "trims": ["Standart", "Café", "Diğer"] },
+    { "name": "W800", "versions": ["800cc 52 CV", "Café", "Street", "Diğer"], "trims": ["Standart", "Café", "Street", "Diğer"] }
+  ]
+}

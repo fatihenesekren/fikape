@@ -1,0 +1,50 @@
+{
+  "make": "Lexus",
+  "models": [
+    {
+      "name": "IS",
+      "versions": ["IS 300h 223 Hybrid", "IS 300 245 AWD", "Diğer"],
+      "trims": ["Business", "Prestige", "F Sport", "Diğer"]
+    },
+    {
+      "name": "ES",
+      "versions": ["ES 300h 218 Hybrid", "Diğer"],
+      "trims": ["Business", "Prestige", "F Sport", "Executive", "Diğer"]
+    },
+    {
+      "name": "LS",
+      "versions": ["LS 500h 359 AWD Hybrid", "Diğer"],
+      "trims": ["Premium", "F Sport", "Executive", "Diğer"]
+    },
+    {
+      "name": "LC",
+      "versions": ["LC 500 5.0 V8 477", "LC 500h 3.5 Hybrid 359", "Diğer"],
+      "trims": ["Standart", "Sport+", "Diğer"]
+    },
+    {
+      "name": "UX",
+      "versions": ["UX 250h 184 Hybrid FWD", "UX 250h 184 Hybrid AWD", "UX 300e 204 EV", "Diğer"],
+      "trims": ["Business", "Prestige", "F Sport", "Diğer"]
+    },
+    {
+      "name": "NX",
+      "versions": ["NX 350h 243 Hybrid FWD", "NX 350h 243 Hybrid AWD", "NX 450h+ 309 PHEV AWD", "NX 350 275 AWD", "Diğer"],
+      "trims": ["Business", "Prestige", "F Sport", "Overtrail", "Diğer"]
+    },
+    {
+      "name": "RX",
+      "versions": ["RX 350h 246 Hybrid FWD", "RX 350h 246 Hybrid AWD", "RX 500h F Sport 371 AWD", "RX 450h+ PHEV AWD", "Diğer"],
+      "trims": ["Business", "Prestige", "F Sport", "Luxury", "Diğer"]
+    },
+    {
+      "name": "GX",
+      "versions": ["GX 460 4.6 V8 296 AWD", "Diğer"],
+      "trims": ["Premium", "Luxury", "Diğer"]
+    },
+    {
+      "name": "LX",
+      "versions": ["LX 500d 3.3 304 AWD", "LX 600 3.5 416 AWD", "Diğer"],
+      "trims": ["Standart", "Sport+", "F Sport", "Diğer"]
+    }
+  ]
+}

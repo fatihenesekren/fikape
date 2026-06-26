@@ -1,0 +1,15 @@
+{
+  "make": "KTM",
+  "models": [
+    { "name": "125 Duke", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "390 Duke", "versions": ["390cc 44 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "790 Duke", "versions": ["799cc 95 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "890 Duke", "versions": ["889cc 121 CV", "R 121 CV", "Diğer"], "trims": ["Standart", "R", "Diğer"] },
+    { "name": "1290 Super Duke R", "versions": ["1301cc 180 CV", "EVO 180 CV", "Diğer"], "trims": ["Standart", "EVO", "Diğer"] },
+    { "name": "125 RC", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "390 RC", "versions": ["390cc 44 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Adventure 390", "versions": ["390cc 44 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Adventure 890", "versions": ["889cc 105 CV", "R 105 CV", "Diğer"], "trims": ["Standart", "R", "Rally", "Diğer"] },
+    { "name": "Adventure 1290", "versions": ["1301cc 160 CV", "S 160 CV", "R 160 CV", "Diğer"], "trims": ["Standart", "S", "R", "Diğer"] }
+  ]
+}

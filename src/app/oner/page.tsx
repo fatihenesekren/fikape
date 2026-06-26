@@ -48,10 +48,13 @@ export default function OnerPage() {
   const [selectedMake, setSelectedMake] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [customModel, setCustomModel] = useState("");
+  const [selectedVersion, setSelectedVersion] = useState("");
+  const [customVersion, setCustomVersion] = useState("");
+  const [selectedTrim, setSelectedTrim] = useState("");
+  const [customTrim, setCustomTrim] = useState("");
 
   const [year, setYear] = useState("");
   const [fuelType, setFuelType] = useState("");
-  const [trimName, setTrimName] = useState("");
   const [notes, setNotes] = useState("");
 
   const [addReview, setAddReview] = useState(false);
@@ -71,22 +74,34 @@ export default function OnerPage() {
 
   const makes = vehiclesData[categorySlug] ?? [];
   const makeEntry = makes.find((m) => m.make === selectedMake);
-  const models = makeEntry?.models ?? [];
+  const models = (makeEntry?.models ?? []) as { name: string; versions: string[]; trims: string[] }[];
+  const modelEntry = models.find((m) => m.name === selectedModel);
+  const versions = modelEntry?.versions ?? [];
+  const trims = modelEntry?.trims ?? [];
 
-  const isOther = selectedModel === "Diğer";
+  const isOtherModel = selectedModel === "Diğer";
+  const isOtherVersion = selectedVersion === "Diğer";
+  const isOtherTrim = selectedTrim === "Diğer";
 
   function handleCategoryChange(val: string) {
     setCategorySlug(val as CategoryKey);
-    setSelectedMake("");
-    setSelectedModel("");
-    setCustomModel("");
+    setSelectedMake(""); setSelectedModel(""); setCustomModel("");
+    setSelectedVersion(""); setCustomVersion("");
+    setSelectedTrim(""); setCustomTrim("");
     setFuelType("");
   }
 
   function handleMakeChange(val: string) {
     setSelectedMake(val);
-    setSelectedModel("");
-    setCustomModel("");
+    setSelectedModel(""); setCustomModel("");
+    setSelectedVersion(""); setCustomVersion("");
+    setSelectedTrim(""); setCustomTrim("");
+  }
+
+  function handleModelChange(val: string) {
+    setSelectedModel(val);
+    setSelectedVersion(""); setCustomVersion("");
+    setSelectedTrim(""); setCustomTrim("");
   }
 
   async function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -118,7 +133,9 @@ export default function OnerPage() {
 
   function resetForm() {
     setSelectedMake(""); setSelectedModel(""); setCustomModel("");
-    setYear(""); setFuelType(""); setTrimName(""); setNotes("");
+    setSelectedVersion(""); setCustomVersion("");
+    setSelectedTrim(""); setCustomTrim("");
+    setYear(""); setFuelType(""); setNotes("");
     setAddReview(false); setScoreFiyat(0); setScoreKalite(0); setScorePerformans(0); setSummaryText("");
     setPhotos([]); setPhotoUrls([]);
     setDone(false);
@@ -128,7 +145,9 @@ export default function OnerPage() {
     e.preventDefault();
 
     const brandName = selectedMake === "Diğer / Bulamadım" ? customModel : selectedMake;
-    const modelName = isOther ? customModel.trim() : selectedModel;
+    const modelName = isOtherModel ? customModel.trim() : selectedModel;
+    const versionFinal = isOtherVersion ? customVersion.trim() : selectedVersion;
+    const trimFinal = isOtherTrim ? customTrim.trim() : selectedTrim;
 
     if (!brandName || !modelName) {
       setError("Lütfen marka ve model seçin.");
@@ -141,6 +160,7 @@ export default function OnerPage() {
     setError(null);
     setSubmitting(true);
     try {
+      const trimName = [versionFinal, trimFinal].filter(Boolean).join(" – ") || "";
       const body = {
         brandName,
         modelName,
@@ -211,7 +231,7 @@ export default function OnerPage() {
         <p className="text-5xl mb-4">✅</p>
         <h1 className="text-xl font-bold text-gray-900 mb-2">Öneriniz Alındı!</h1>
         <p className="text-sm text-gray-500 mb-6">
-          {selectedMake} {isOther ? customModel : selectedModel} önerinizi inceleyeceğiz.
+          {selectedMake} {isOtherModel ? customModel : selectedModel} önerinizi inceleyeceğiz.
         </p>
         <div className="flex items-center justify-center gap-3">
           <button onClick={resetForm} className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors">
@@ -277,20 +297,70 @@ export default function OnerPage() {
             </label>
             <select
               value={selectedModel}
-              onChange={(e) => { setSelectedModel(e.target.value); setCustomModel(""); }}
+              onChange={(e) => handleModelChange(e.target.value)}
               className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors bg-white"
             >
               <option value="">— Model seçin —</option>
               {models.map((m) => (
-                <option key={m} value={m}>{m}</option>
+                <option key={m.name} value={m.name}>{m.name}</option>
               ))}
             </select>
-            {isOther && (
+            {isOtherModel && (
               <input
                 type="text"
                 value={customModel}
                 onChange={(e) => setCustomModel(e.target.value)}
                 placeholder="Model adını yazın"
+                className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
+                autoFocus
+              />
+            )}
+          </div>
+        )}
+
+        {/* ── Versiyon ── */}
+        {selectedModel && !isOtherModel && versions.length > 0 && (
+          <div>
+            <label className="block text-xs font-semibold text-gray-700 mb-1">Versiyon</label>
+            <select
+              value={selectedVersion}
+              onChange={(e) => { setSelectedVersion(e.target.value); setCustomVersion(""); setSelectedTrim(""); setCustomTrim(""); }}
+              className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors bg-white"
+            >
+              <option value="">— Seçin (opsiyonel) —</option>
+              {versions.map((v) => <option key={v} value={v}>{v}</option>)}
+            </select>
+            {isOtherVersion && (
+              <input
+                type="text"
+                value={customVersion}
+                onChange={(e) => setCustomVersion(e.target.value)}
+                placeholder="Versiyon bilgisi yazın"
+                className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
+                autoFocus
+              />
+            )}
+          </div>
+        )}
+
+        {/* ── Donanım ── */}
+        {selectedModel && !isOtherModel && trims.length > 0 && (
+          <div>
+            <label className="block text-xs font-semibold text-gray-700 mb-1">Donanım Paketi</label>
+            <select
+              value={selectedTrim}
+              onChange={(e) => { setSelectedTrim(e.target.value); setCustomTrim(""); }}
+              className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors bg-white"
+            >
+              <option value="">— Seçin (opsiyonel) —</option>
+              {trims.map((t) => <option key={t} value={t}>{t}</option>)}
+            </select>
+            {isOtherTrim && (
+              <input
+                type="text"
+                value={customTrim}
+                onChange={(e) => setCustomTrim(e.target.value)}
+                placeholder="Donanım paketi yazın"
                 className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
                 autoFocus
               />
@@ -326,19 +396,6 @@ export default function OnerPage() {
           )}
         </div>
 
-        {/* ── Versiyon ── */}
-        <div>
-          <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Versiyon / Donanım <span className="text-gray-400 font-normal">(opsiyonel)</span>
-          </label>
-          <input
-            type="text"
-            value={trimName}
-            onChange={(e) => setTrimName(e.target.value)}
-            placeholder="ör. Comfort, GR Sport, Long Range"
-            className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
-          />
-        </div>
 
         {/* ── Not ── */}
         <div>

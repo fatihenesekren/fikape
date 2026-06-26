@@ -1,0 +1,50 @@
+{
+  "make": "Mazda",
+  "models": [
+    {
+      "name": "2",
+      "versions": ["e-SKYACTIV-G 1.5 90", "1.5 SKYACTIV-G 90", "1.5 SKYACTIV-D 105", "Diğer"],
+      "trims": ["Pure", "Attraction", "Centre-Line", "Exclusive-Line", "Diğer"]
+    },
+    {
+      "name": "3",
+      "versions": ["e-SKYACTIV-G 1.5 122", "e-SKYACTIV-G 2.0 150", "e-SKYACTIV-X 2.0 186", "e-SKYACTIV-D 1.8 116", "Diğer"],
+      "trims": ["Pure", "Attraction", "Centre-Line", "Exclusive-Line", "Diğer"]
+    },
+    {
+      "name": "6",
+      "versions": ["e-SKYACTIV-G 2.0 145", "e-SKYACTIV-G 2.5 194", "e-SKYACTIV-D 2.2 184", "Diğer"],
+      "trims": ["Centre-Line", "Exclusive-Line", "Sports-Line", "Diğer"]
+    },
+    {
+      "name": "CX-3",
+      "versions": ["e-SKYACTIV-G 2.0 121 FWD", "e-SKYACTIV-G 2.0 121 AWD", "Diğer"],
+      "trims": ["Centre-Line", "Exclusive-Line", "Diğer"]
+    },
+    {
+      "name": "CX-30",
+      "versions": ["e-SKYACTIV-G 2.0 122 FWD", "e-SKYACTIV-G 2.0 150 AWD", "e-SKYACTIV-X 2.0 186 AWD", "e-SKYACTIV-D 1.8 116 FWD", "Diğer"],
+      "trims": ["Centre-Line", "Exclusive-Line", "Sports-Line", "Homura", "Diğer"]
+    },
+    {
+      "name": "CX-5",
+      "versions": ["e-SKYACTIV-G 2.0 165 FWD", "e-SKYACTIV-G 2.5 194 AWD", "e-SKYACTIV-D 2.2 150 FWD", "e-SKYACTIV-D 2.2 184 AWD", "Diğer"],
+      "trims": ["Centre-Line", "Exclusive-Line", "Sports-Line", "Newground", "Diğer"]
+    },
+    {
+      "name": "CX-60",
+      "versions": ["e-SKYACTIV-X 2.5 327 PHEV AWD", "e-SKYACTIV-D 3.3 249 AWD", "e-SKYACTIV-D 3.3 254 AWD", "Diğer"],
+      "trims": ["Exclusive-Line", "Homura", "Takumi", "Diğer"]
+    },
+    {
+      "name": "MX-5",
+      "versions": ["1.5 SKYACTIV-G 132", "2.0 SKYACTIV-G 184", "Diğer"],
+      "trims": ["Roadster", "RF", "Sport Venture", "Homura", "Diğer"]
+    },
+    {
+      "name": "MX-30",
+      "versions": ["e-SKYACTIV-G R-EV 170 PHEV", "EV 145 35.5kWh", "Diğer"],
+      "trims": ["Prime-Line", "Exclusive-Line", "Diğer"]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "make": "Land Rover",
+  "models": [
+    {
+      "name": "Defender",
+      "versions": ["P300 2.0 300 AWD", "P400 3.0 400 AWD", "P400e PHEV 404 AWD", "D200 2.0 200 AWD", "D300 3.0 300 AWD", "D350 3.0 350 AWD", "V8 525 AWD", "Diğer"],
+      "trims": ["S", "SE", "HSE", "X-Dynamic", "X", "Diğer"]
+    },
+    {
+      "name": "Discovery",
+      "versions": ["P300 2.0 300 AWD", "P360e PHEV 360 AWD", "D250 2.0 249 AWD", "D300 3.0 300 AWD", "D350 3.0 350 AWD", "Diğer"],
+      "trims": ["S", "SE", "HSE", "R-Dynamic S", "Metropolitan Edition", "Diğer"]
+    },
+    {
+      "name": "Discovery Sport",
+      "versions": ["P200 2.0 200 AWD", "P250 2.0 249 AWD", "P300e PHEV 309 AWD", "D150 2.0 150 AWD", "D165 2.0 163 AWD", "D200 2.0 204 AWD", "Diğer"],
+      "trims": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
+    },
+    {
+      "name": "Range Rover",
+      "versions": ["P400 3.0 400 AWD", "P530 4.4 530 AWD", "P440e PHEV 440 AWD", "P510e PHEV 510 AWD", "D300 3.0 300 AWD", "D350 3.0 350 AWD", "Diğer"],
+      "trims": ["SE", "HSE", "Autobiography", "SV", "Diğer"]
+    },
+    {
+      "name": "Range Rover Sport",
+      "versions": ["P360 3.0 360 AWD", "P400 3.0 400 AWD", "P530 4.4 530 AWD", "P460e PHEV 460 AWD", "D250 2.0 249 AWD", "D300 3.0 300 AWD", "D350 3.0 350 AWD", "Diğer"],
+      "trims": ["S", "SE", "HSE", "Dynamic HSE", "Autobiography", "Diğer"]
+    },
+    {
+      "name": "Range Rover Evoque",
+      "versions": ["P200 2.0 200 AWD", "P250 2.0 249 AWD", "P300 2.0 300 AWD", "P300e PHEV 309 AWD", "D150 2.0 150 AWD", "D165 2.0 163 AWD", "D200 2.0 204 AWD", "Diğer"],
+      "trims": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
+    },
+    {
+      "name": "Range Rover Velar",
+      "versions": ["P250 2.0 249 AWD", "P380 3.0 380 AWD", "P400e PHEV 404 AWD", "D200 2.0 204 AWD", "D300 3.0 300 AWD", "Diğer"],
+      "trims": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
+    }
+  ]
+}

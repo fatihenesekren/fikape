@@ -1,0 +1,9 @@
+{
+  "make": "Peugeot",
+  "models": [
+    { "name": "Partner", "versions": ["1.2 PureTech 110", "1.5 BlueHDi 100", "1.5 BlueHDi 130", "e-Partner Electric 136", "Diğer"], "trims": ["Active", "Asphalt", "GT", "Diğer"] },
+    { "name": "Expert", "versions": ["1.5 BlueHDi 100", "2.0 BlueHDi 120", "2.0 BlueHDi 145", "e-Expert Electric", "Diğer"], "trims": ["Active", "Asphalt", "GT", "Diğer"] },
+    { "name": "Traveller", "versions": ["1.5 BlueHDi 100", "2.0 BlueHDi 150", "2.0 BlueHDi 180", "Diğer"], "trims": ["Active", "Allure", "GT", "Diğer"] },
+    { "name": "Boxer", "versions": ["2.0 BlueHDi 110", "2.0 BlueHDi 130", "2.2 BlueHDi 140", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "make": "BYD",
+  "models": [
+    {
+      "name": "Atto 3",
+      "versions": ["Standard Range 204 60.5kWh", "Extended Range 204 72.8kWh", "Diğer"],
+      "trims": ["Design", "Excellence", "Diğer"]
+    },
+    {
+      "name": "Dolphin",
+      "versions": ["Standard Range 95 44.9kWh", "Extended Range 177 60.4kWh", "Diğer"],
+      "trims": ["Comfort", "Design", "Excellence", "Diğer"]
+    },
+    {
+      "name": "Han",
+      "versions": ["EV RWD 517 85.4kWh", "EV AWD 517 85.4kWh", "DM-i PHEV", "Diğer"],
+      "trims": ["Standart", "Premium", "Diğer"]
+    },
+    {
+      "name": "Seal",
+      "versions": ["RWD 313 82.56kWh", "AWD 390 82.56kWh", "Performance AWD 523", "Diğer"],
+      "trims": ["Design", "Excellence", "Diğer"]
+    },
+    {
+      "name": "Seagull",
+      "versions": ["Standard Range 75 38kWh", "Extended Range 75 55kWh", "Diğer"],
+      "trims": ["Active", "Comfort", "Diğer"]
+    },
+    {
+      "name": "Tang",
+      "versions": ["EV AWD 476 108.8kWh", "DM-i AWD PHEV", "Diğer"],
+      "trims": ["Premium", "Excellence", "Diğer"]
+    }
+  ]
+}

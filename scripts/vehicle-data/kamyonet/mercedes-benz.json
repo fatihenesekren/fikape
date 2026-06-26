@@ -1,0 +1,9 @@
+{
+  "make": "Mercedes-Benz",
+  "models": [
+    { "name": "Citan", "versions": ["1.3 TCe 95", "1.3 TCe 102", "1.5 CDI 95", "eCitan Electric", "Diğer"], "trims": ["Base", "Progressive", "Diğer"] },
+    { "name": "Vito", "versions": ["1.7 CDI 116", "1.7 CDI 136", "2.0 CDI 163", "eVito Electric", "Diğer"], "trims": ["Base", "Tourer", "Tourer Pro", "Diğer"] },
+    { "name": "V-Serisi", "versions": ["V 220d", "V 250d", "V 300d", "EQV 204 Electric", "Diğer"], "trims": ["Base", "Avantgarde", "Exclusive", "Diğer"] },
+    { "name": "Sprinter", "versions": ["2.0 CDI 114", "2.0 CDI 143", "2.0 CDI 170", "eSprinter Electric", "Diğer"], "trims": ["Base", "Progressive", "Premium", "Diğer"] }
+  ]
+}

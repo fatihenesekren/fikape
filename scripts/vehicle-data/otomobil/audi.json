@@ -1,0 +1,85 @@
+{
+  "make": "Audi",
+  "models": [
+    {
+      "name": "A1",
+      "versions": ["1.0 TFSI 95", "1.5 TFSI 150", "2.0 TFSI 207 S1", "Diğer"],
+      "trims": ["Advanced", "S line", "Edition One", "Diğer"]
+    },
+    {
+      "name": "A3",
+      "versions": ["1.0 TFSI 110", "1.5 TFSI 150", "2.0 TFSI 150", "2.0 TFSI 190", "2.0 TDI 116", "2.0 TDI 150", "40 TFSI e PHEV 204", "S3 2.0 TFSI 310", "RS3 2.5 TFSI 400", "Diğer"],
+      "trims": ["Advanced", "Sport", "S line", "S3", "RS 3", "Diğer"]
+    },
+    {
+      "name": "A4",
+      "versions": ["2.0 TFSI 150", "2.0 TFSI 190", "2.0 TDI 136", "2.0 TDI 150", "3.0 TDI 286 quattro", "S4 3.0 TFSI 354", "Diğer"],
+      "trims": ["Advanced", "Sport", "S line", "S4", "Diğer"]
+    },
+    {
+      "name": "A5",
+      "versions": ["2.0 TFSI 150", "2.0 TFSI 190", "2.0 TDI 136", "2.0 TDI 150", "3.0 TDI 286 quattro", "S5 3.0 TFSI 354", "Diğer"],
+      "trims": ["Advanced", "Sport", "S line", "S5", "Diğer"]
+    },
+    {
+      "name": "A6",
+      "versions": ["2.0 TFSI MHEV 204", "3.0 TDI 286 quattro", "55 TFSI quattro 340", "TFSI e PHEV 299", "S6 3.0 TDI 349", "RS6 4.0 TFSI 630", "Diğer"],
+      "trims": ["Advanced", "Sport", "S line", "S6", "RS 6", "Diğer"]
+    },
+    {
+      "name": "A7",
+      "versions": ["55 TFSI quattro 340", "3.0 TDI 286 quattro", "TFSI e PHEV 299", "S7 3.0 TDI 349", "RS7 4.0 TFSI 630", "Diğer"],
+      "trims": ["Sport", "S line", "S7", "RS 7", "Diğer"]
+    },
+    {
+      "name": "A8",
+      "versions": ["55 TFSI quattro 340", "60 TFSI e quattro PHEV", "3.0 TDI 286 quattro", "S8 4.0 TFSI 571", "Diğer"],
+      "trims": ["Luxury", "Sport", "L", "S8", "Diğer"]
+    },
+    {
+      "name": "Q2",
+      "versions": ["1.0 TFSI 116", "1.5 TFSI 150", "2.0 TDI 116", "SQ2 2.0 TFSI 300", "Diğer"],
+      "trims": ["Advanced", "Sport", "S line", "Edition One", "Diğer"]
+    },
+    {
+      "name": "Q3",
+      "versions": ["1.5 TFSI 150", "2.0 TFSI 190", "2.0 TFSI 230 quattro", "2.0 TDI 136", "2.0 TDI 150", "RSQ3 2.5 TFSI 400", "Diğer"],
+      "trims": ["Advanced", "Sport", "S line", "RSQ3", "Diğer"]
+    },
+    {
+      "name": "Q5",
+      "versions": ["2.0 TFSI 204 quattro", "2.0 TFSI 245 quattro", "2.0 TDI 163 quattro", "3.0 TDI 286 quattro", "TFSI e PHEV 299", "SQ5 3.0 TDI 347", "Diğer"],
+      "trims": ["Advanced", "Sport", "S line", "SQ5", "Diğer"]
+    },
+    {
+      "name": "Q7",
+      "versions": ["55 TFSI quattro 340", "3.0 TDI 286 quattro", "SQ7 4.0 TDI 435", "Diğer"],
+      "trims": ["Advanced", "Sport", "S line", "SQ7", "Diğer"]
+    },
+    {
+      "name": "Q8",
+      "versions": ["55 TFSI quattro 340", "3.0 TDI 286 quattro", "SQ8 4.0 TDI 435", "RSQ8 4.0 TFSI 600", "Diğer"],
+      "trims": ["Sport", "S line", "SQ8", "RSQ8", "Diğer"]
+    },
+    {
+      "name": "e-tron",
+      "versions": ["50 quattro 313", "55 quattro 408", "S 503 quattro", "Sportback 50 quattro", "Sportback 55 quattro", "Diğer"],
+      "trims": ["Advanced", "Sport", "S", "Edition One", "Diğer"]
+    },
+    {
+      "name": "e-tron GT",
+      "versions": ["e-tron GT 476", "RS e-tron GT 598", "RS e-tron GT Performance 646", "Diğer"],
+      "trims": ["Standart", "RS", "Diğer"]
+    },
+    {
+      "name": "TT",
+      "versions": ["45 TFSI 245", "TTS 2.0 TFSI 300", "TTRS 2.5 TFSI 400", "Diğer"],
+      "trims": ["Coupe", "Roadster", "TTS", "TT RS", "Diğer"]
+    },
+    {
+      "name": "R8",
+      "versions": ["5.2 V10 570", "5.2 V10 Plus 610", "5.2 V10 Performance 620", "Diğer"],
+      "trims": ["Coupe", "Spyder", "Performance", "Diğer"]
+    }
+  ]
+}

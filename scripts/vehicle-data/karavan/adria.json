@@ -1,0 +1,10 @@
+{
+  "make": "Adria",
+  "models": [
+    { "name": "Altea", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Çift Eksen", "Diğer"], "trims": ["Standart", "Action", "Diğer"] },
+    { "name": "Adora", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Aviva", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Sonic", "versions": ["Van", "Axess", "Plus", "Diğer"], "trims": ["SL", "SLX", "Diğer"] },
+    { "name": "Matrix", "versions": ["Van", "Diğer"], "trims": ["Standart", "M", "Supreme", "Diğer"] }
+  ]
+}

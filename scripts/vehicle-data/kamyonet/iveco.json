@@ -1,0 +1,7 @@
+{
+  "make": "Iveco",
+  "models": [
+    { "name": "Daily", "versions": ["2.3 HPT 116", "2.3 HPT 136", "3.0 HPT 160", "3.0 HPT 180", "eDaily Electric", "Diğer"], "trims": ["Standart", "Business", "Diğer"] },
+    { "name": "Eurocargo", "versions": ["3.9 Tector 170", "6.7 Tector 220", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

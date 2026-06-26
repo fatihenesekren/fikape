@@ -1,0 +1,12 @@
+{
+  "make": "Royal Enfield",
+  "models": [
+    { "name": "Meteor 350", "versions": ["350cc 20 CV", "Diğer"], "trims": ["Fireball", "Stellar", "Supernova", "Diğer"] },
+    { "name": "Classic 350", "versions": ["350cc 20 CV", "Diğer"], "trims": ["Dark", "Halcyon", "Chrome", "Signals", "Diğer"] },
+    { "name": "Bullet 350", "versions": ["350cc 20 CV", "Diğer"], "trims": ["Standart", "Military", "Diğer"] },
+    { "name": "Himalayan", "versions": ["411cc 24 CV", "450cc 40 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Interceptor 650", "versions": ["648cc 47 CV", "Diğer"], "trims": ["Standart", "Chrome", "Diğer"] },
+    { "name": "Continental GT 650", "versions": ["648cc 47 CV", "Diğer"], "trims": ["Standart", "Chrome", "Diğer"] },
+    { "name": "Hunter 350", "versions": ["350cc 20 CV", "Diğer"], "trims": ["Dapper", "Metro", "Rebel", "Diğer"] }
+  ]
+}

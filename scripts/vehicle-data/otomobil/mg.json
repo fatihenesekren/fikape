@@ -1,0 +1,45 @@
+{
+  "make": "MG",
+  "models": [
+    {
+      "name": "3",
+      "versions": ["1.5 VTi-tech 106", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Diğer"]
+    },
+    {
+      "name": "4",
+      "versions": ["Standard 170 51kWh", "Long Range 204 64kWh", "Trophy AWD 435 64kWh", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Trophy", "Diğer"]
+    },
+    {
+      "name": "5",
+      "versions": ["Standard Range 130 50.3kWh", "Long Range 156 61.1kWh", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Diğer"]
+    },
+    {
+      "name": "ZS",
+      "versions": ["1.5 VTi-tech 106", "1.5 T-GDI 163", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Diğer"]
+    },
+    {
+      "name": "ZS EV",
+      "versions": ["Standard Range 130 51kWh", "Long Range 156 70kWh", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Diğer"]
+    },
+    {
+      "name": "HS",
+      "versions": ["1.5 T 162", "2.0 T 224 AWD", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Diğer"]
+    },
+    {
+      "name": "HS PHEV",
+      "versions": ["1.5 T PHEV 258 AWD", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Diğer"]
+    },
+    {
+      "name": "Marvel R",
+      "versions": ["RWD 180 70kWh", "AWD 288 70kWh", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Diğer"]
+    }
+  ]
+}

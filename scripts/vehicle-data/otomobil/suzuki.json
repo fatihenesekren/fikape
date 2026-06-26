@@ -1,0 +1,45 @@
+{
+  "make": "Suzuki",
+  "models": [
+    {
+      "name": "Alto",
+      "versions": ["1.0 68", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Swift",
+      "versions": ["1.0 Boosterjet 111 MHEV", "1.2 Dualjet 83 MHEV", "1.4 Boosterjet 129", "Sport 1.4 Boosterjet 129", "Diğer"],
+      "trims": ["GL", "GLX", "Sport", "Diğer"]
+    },
+    {
+      "name": "Baleno",
+      "versions": ["1.2 Dualjet 90 MHEV", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Ignis",
+      "versions": ["1.2 Dualjet 83 MHEV AWD", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Vitara",
+      "versions": ["1.0 Boosterjet 111 FWD", "1.4 Boosterjet 129 FWD", "1.4 Boosterjet 129 AWD", "1.5 MHEV 102 FWD", "Diğer"],
+      "trims": ["GL", "GLX", "S", "Diğer"]
+    },
+    {
+      "name": "SX4 S-Cross",
+      "versions": ["1.0 Boosterjet 111 FWD", "1.4 Boosterjet 129 AWD", "1.5 MHEV 102 FWD", "Diğer"],
+      "trims": ["GL", "GLX", "S", "Diğer"]
+    },
+    {
+      "name": "Across",
+      "versions": ["2.5 PHEV AWD 306", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Swace",
+      "versions": ["1.8 Hybrid 122", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    }
+  ]
+}

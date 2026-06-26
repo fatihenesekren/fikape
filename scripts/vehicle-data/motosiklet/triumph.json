@@ -1,0 +1,16 @@
+{
+  "make": "Triumph",
+  "models": [
+    { "name": "Bonneville T100", "versions": ["900cc 65 CV", "Diğer"], "trims": ["Standart", "Black", "Diğer"] },
+    { "name": "Bonneville T120", "versions": ["1200cc 80 CV", "Black 80 CV", "Diğer"], "trims": ["Standart", "Black", "Diğer"] },
+    { "name": "Thruxton RS", "versions": ["1200cc 105 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Speed Twin", "versions": ["900cc 65 CV", "1200 104 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Tiger 660", "versions": ["660cc 81 CV", "Sport", "Diğer"], "trims": ["Standart", "Sport", "Diğer"] },
+    { "name": "Tiger 900", "versions": ["900cc 95 CV", "GT 95 CV", "Rally 95 CV", "Diğer"], "trims": ["Standart", "GT", "GT Pro", "Rally", "Rally Pro", "Diğer"] },
+    { "name": "Tiger 1200", "versions": ["1160cc 150 CV", "GT Pro 150 CV", "Rally Pro 150 CV", "Diğer"], "trims": ["GT Explorer", "GT Pro", "Rally Explorer", "Rally Pro", "Diğer"] },
+    { "name": "Trident 660", "versions": ["660cc 81 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Street Triple", "versions": ["765cc 130 CV", "S 120 CV", "R 130 CV", "RS 130 CV", "Diğer"], "trims": ["S", "R", "RS", "Moto2 Edition", "Diğer"] },
+    { "name": "Speed Triple", "versions": ["1160cc 180 CV", "RS 180 CV", "Diğer"], "trims": ["Standart", "RS", "Diğer"] },
+    { "name": "Rocket 3", "versions": ["2458cc 167 CV", "GT 167 CV", "R 167 CV", "Diğer"], "trims": ["Standart", "GT", "R", "Diğer"] }
+  ]
+}

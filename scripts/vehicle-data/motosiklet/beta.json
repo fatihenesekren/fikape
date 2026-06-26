@@ -1,0 +1,8 @@
+{
+  "make": "Beta",
+  "models": [
+    { "name": "RR Enduro", "versions": ["125cc", "200cc", "250cc", "300cc", "350cc", "390cc", "430cc", "480cc", "Diğer"], "trims": ["2T", "4T", "Racing", "Diğer"] },
+    { "name": "RR Motard", "versions": ["125cc", "200cc", "250cc", "300cc", "Diğer"], "trims": ["Standart", "Racing", "Diğer"] },
+    { "name": "Xtrainer", "versions": ["300cc 2T", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

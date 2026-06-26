@@ -1,0 +1,8 @@
+{
+  "make": "Laotie",
+  "models": [
+    { "name": "TI30", "versions": ["1200W Çift 30Ah 65km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ES18", "versions": ["3200W Çift 35Ah 80km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "SC11", "versions": ["500W 13Ah 35km/h", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

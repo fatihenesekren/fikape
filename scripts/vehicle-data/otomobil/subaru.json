@@ -1,0 +1,45 @@
+{
+  "make": "Subaru",
+  "models": [
+    {
+      "name": "Impreza",
+      "versions": ["2.0i 156 AWD", "2.0i Sport 156 AWD", "Diğer"],
+      "trims": ["Pure", "Comfort", "Sport", "Diğer"]
+    },
+    {
+      "name": "Legacy",
+      "versions": ["2.5i 175 AWD", "3.6R 256 AWD", "Diğer"],
+      "trims": ["Comfort", "Sport", "Limited", "Diğer"]
+    },
+    {
+      "name": "Forester",
+      "versions": ["2.0i 156 AWD", "2.0i e-Boxer 150 AWD Hybrid", "2.0XT 240 AWD", "Diğer"],
+      "trims": ["Pure", "Comfort", "Sport", "X-Break", "Diğer"]
+    },
+    {
+      "name": "Outback",
+      "versions": ["2.5i 175 AWD", "2.5i XT 260 AWD", "Diğer"],
+      "trims": ["Comfort", "Sport", "Limited", "Outdoor", "Diğer"]
+    },
+    {
+      "name": "XV",
+      "versions": ["2.0i 156 AWD", "2.0i e-Boxer 150 AWD Hybrid", "Diğer"],
+      "trims": ["Pure", "Comfort", "Sport", "Diğer"]
+    },
+    {
+      "name": "BRZ",
+      "versions": ["2.4 Turbo 228", "Diğer"],
+      "trims": ["Standart", "Sport", "Diğer"]
+    },
+    {
+      "name": "WRX",
+      "versions": ["2.4 Turbo 271 AWD", "STI 2.5 Turbo 301 AWD", "Diğer"],
+      "trims": ["Standart", "Sport", "STI", "Diğer"]
+    },
+    {
+      "name": "Solterra",
+      "versions": ["AWD 218 71.4kWh", "Diğer"],
+      "trims": ["Comfort", "Sport", "Diğer"]
+    }
+  ]
+}

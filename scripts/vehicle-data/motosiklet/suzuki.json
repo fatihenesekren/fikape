@@ -1,0 +1,14 @@
+{
+  "make": "Suzuki",
+  "models": [
+    { "name": "GSX-R125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GSX-R600", "versions": ["600cc 120 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GSX-R750", "versions": ["750cc 150 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GSX-R1000", "versions": ["999cc 202 CV", "R 202 CV", "Diğer"], "trims": ["Standart", "R", "Diğer"] },
+    { "name": "GSX-S750", "versions": ["750cc 114 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GSX-S1000", "versions": ["999cc 152 CV", "GT 152 CV", "GX 152 CV", "Diğer"], "trims": ["Standart", "GT", "GX", "Diğer"] },
+    { "name": "V-Strom 650", "versions": ["650cc 71 CV", "XT 71 CV", "Diğer"], "trims": ["Standart", "XT", "Diğer"] },
+    { "name": "V-Strom 1050", "versions": ["1037cc 107 CV", "XT 107 CV", "DE 107 CV", "Diğer"], "trims": ["Standart", "XT", "DE", "Diğer"] },
+    { "name": "Burgman 400", "versions": ["400cc 31 CV", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

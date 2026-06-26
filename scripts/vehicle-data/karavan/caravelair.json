@@ -1,0 +1,7 @@
+{
+  "make": "Caravelair",
+  "models": [
+    { "name": "Antares", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Style", "Luxe", "Diğer"] },
+    { "name": "Armonia", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Style", "Diğer"] }
+  ]
+}

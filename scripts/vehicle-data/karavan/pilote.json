@@ -1,0 +1,7 @@
+{
+  "make": "Pilote",
+  "models": [
+    { "name": "Pacific", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Galaxy", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

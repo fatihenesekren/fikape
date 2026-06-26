@@ -1,0 +1,85 @@
+{
+  "make": "Volkswagen",
+  "models": [
+    {
+      "name": "Polo",
+      "versions": ["1.0 MPI 65", "1.0 TSI 95", "1.0 TSI 110", "1.5 TSI 130", "2.0 TDI 95", "GTI 2.0 TSI 207", "Diğer"],
+      "trims": ["Trendline", "Comfortline", "Highline", "Life", "Style", "R-Line", "GTI", "Diğer"]
+    },
+    {
+      "name": "Golf",
+      "versions": ["1.0 eTSI 110", "1.5 eTSI 130", "1.5 eTSI 150", "2.0 TDI 115", "2.0 TDI 150", "1.4 eHybrid 204", "1.4 GTE eHybrid 245", "GTI 2.0 TSI 245", "Golf R 2.0 TSI 320 4Motion", "Diğer"],
+      "trims": ["Life", "Style", "R-Line", "GTI", "GTI Clubsport", "R", "Diğer"]
+    },
+    {
+      "name": "Golf GTI",
+      "versions": ["2.0 TSI 245", "Clubsport 2.0 TSI 300", "Diğer"],
+      "trims": ["GTI", "GTI Clubsport", "GTI Clubsport 45", "Diğer"]
+    },
+    {
+      "name": "Golf R",
+      "versions": ["2.0 TSI 320 4Motion", "Diğer"],
+      "trims": ["Standart", "20 Years", "Diğer"]
+    },
+    {
+      "name": "Passat",
+      "versions": ["1.5 eTSI 150 DSG", "2.0 TDI 150 DSG", "2.0 TDI 200 4Motion", "eHybrid 204 DSG", "Diğer"],
+      "trims": ["Life", "Business", "Elegance", "R-Line", "Diğer"]
+    },
+    {
+      "name": "Arteon",
+      "versions": ["1.5 TSI 150", "2.0 TSI 190", "2.0 TDI 150", "2.0 TDI 200 4Motion", "eHybrid 218 DSG", "R 2.0 TSI 320 4Motion", "Diğer"],
+      "trims": ["Elegance", "R-Line", "Shooting Brake", "R", "Diğer"]
+    },
+    {
+      "name": "T-Cross",
+      "versions": ["1.0 TSI 95", "1.0 TSI 110", "1.5 TSI 150", "Diğer"],
+      "trims": ["Life", "Style", "R-Line", "Diğer"]
+    },
+    {
+      "name": "T-Roc",
+      "versions": ["1.0 TSI 110", "1.5 TSI 150", "2.0 TSI 190 4Motion", "2.0 TDI 115", "2.0 TDI 150 4Motion", "R 2.0 TSI 300 4Motion", "Diğer"],
+      "trims": ["Life", "Style", "R-Line", "Cabriolet", "R", "Diğer"]
+    },
+    {
+      "name": "Tiguan",
+      "versions": ["1.5 eTSI 130", "1.5 eTSI 150", "2.0 TSI 190 4Motion", "2.0 TDI 115", "2.0 TDI 150 4Motion", "eHybrid 272 4Motion", "R 2.0 TSI 333 4Motion", "Diğer"],
+      "trims": ["Life", "Style", "Elegance", "R-Line", "R", "Diğer"]
+    },
+    {
+      "name": "Touareg",
+      "versions": ["3.0 V6 TSI 340 4Motion", "3.0 V6 TDI 231 4Motion", "3.0 V6 TDI 286 4Motion", "eHybrid 462 4Motion", "R eHybrid 462 4Motion", "Diğer"],
+      "trims": ["Elegance", "R-Line", "R", "Diğer"]
+    },
+    {
+      "name": "ID.3",
+      "versions": ["Pro 58kWh 204", "Pro S 77kWh 204", "Pro Performance 77kWh 204", "GTX 4Motion 340 77kWh", "Diğer"],
+      "trims": ["Pure", "Business", "Style", "GTX", "Diğer"]
+    },
+    {
+      "name": "ID.4",
+      "versions": ["Pure 52kWh 170", "Pro 77kWh 204", "Pro 4Motion 77kWh 195", "GTX 4Motion 77kWh 299", "Diğer"],
+      "trims": ["Pure", "Life", "Style", "GTX", "Diğer"]
+    },
+    {
+      "name": "ID.5",
+      "versions": ["Pro 77kWh 204", "Pro Performance 77kWh 204", "GTX 4Motion 77kWh 299", "Diğer"],
+      "trims": ["Life", "Style", "GTX", "Diğer"]
+    },
+    {
+      "name": "ID.7",
+      "versions": ["Pro 77kWh 286", "Pro S 86kWh 286", "GTX 4Motion 86kWh 340", "Diğer"],
+      "trims": ["Pro", "Style", "GTX", "Diğer"]
+    },
+    {
+      "name": "Amarok",
+      "versions": ["2.0 TDI 170 4Motion", "3.0 TDI 240 4Motion", "3.0 V6 TDI 272 4Motion", "V8 3.0 V6 TDI 237 4Motion", "Diğer"],
+      "trims": ["Life", "Style", "Aventura", "PanAmericana", "Diğer"]
+    },
+    {
+      "name": "Caddy",
+      "versions": ["1.5 TSI 114", "2.0 TDI 102", "2.0 TDI 122", "eHybrid 204", "Diğer"],
+      "trims": ["Life", "Style", "California", "Diğer"]
+    }
+  ]
+}

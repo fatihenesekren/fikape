@@ -1,0 +1,35 @@
+{
+  "make": "Maserati",
+  "models": [
+    {
+      "name": "Ghibli",
+      "versions": ["2.0 Hybrid 330", "3.0 V6 350", "3.0 V6 430 Q4 AWD", "Trofeo 3.8 V8 580", "Diğer"],
+      "trims": ["Modena", "GT", "Trofeo", "Diğer"]
+    },
+    {
+      "name": "Levante",
+      "versions": ["2.0 Hybrid 330", "3.0 V6 350", "3.0 V6 430 Q4 AWD", "Trofeo 3.8 V8 580", "Diğer"],
+      "trims": ["Modena", "GT", "Trofeo", "Diğer"]
+    },
+    {
+      "name": "GranTurismo",
+      "versions": ["Folgore EV AWD 761", "Modena 3.0 V6 490", "Trofeo 3.0 V6 550", "Diğer"],
+      "trims": ["Modena", "Trofeo", "Folgore", "Diğer"]
+    },
+    {
+      "name": "GranCabrio",
+      "versions": ["Folgore EV AWD 761", "Modena 3.0 V6 490", "Trofeo 3.0 V6 550", "Diğer"],
+      "trims": ["Modena", "Trofeo", "Folgore", "Diğer"]
+    },
+    {
+      "name": "Grecale",
+      "versions": ["2.0 Hybrid 300", "MHEV 330", "GT 3.0 V6 530", "Folgore EV 557", "Diğer"],
+      "trims": ["GT", "Modena", "Trofeo", "Folgore", "Diğer"]
+    },
+    {
+      "name": "MC20",
+      "versions": ["3.0 Nettuno V6 630 Coupé", "3.0 Nettuno V6 630 Cielo", "Folgore EV AWD 761", "Diğer"],
+      "trims": ["Coupé", "Cielo", "Folgore", "Diğer"]
+    }
+  ]
+}

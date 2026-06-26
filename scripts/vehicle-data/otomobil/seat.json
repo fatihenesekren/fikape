@@ -1,0 +1,30 @@
+{
+  "make": "SEAT",
+  "models": [
+    {
+      "name": "Ibiza",
+      "versions": ["1.0 MPI 80", "1.0 TSI 95", "1.0 TSI 110", "1.5 TSI 150", "Diğer"],
+      "trims": ["Reference", "Style", "FR", "Xcellence", "Diğer"]
+    },
+    {
+      "name": "Leon",
+      "versions": ["1.0 eTSI 110", "1.5 TSI 130", "1.5 eTSI 150", "2.0 TDI 115", "2.0 TDI 150", "1.4 e-Hybrid 204 DSG", "1.4 e-Hybrid 245 DSG", "Cupra 2.0 TSI 300", "Diğer"],
+      "trims": ["Reference", "Style", "FR", "Xcellence", "Cupra", "Diğer"]
+    },
+    {
+      "name": "Arona",
+      "versions": ["1.0 TSI 95", "1.0 TSI 110", "1.5 TSI 150", "1.0 eTSI 110", "Diğer"],
+      "trims": ["Reference", "Style", "FR", "Xcellence", "Diğer"]
+    },
+    {
+      "name": "Ateca",
+      "versions": ["1.0 TSI 115", "1.5 TSI 150", "2.0 TDI 115", "2.0 TDI 150", "2.0 TSI 190 4Drive", "Cupra 2.0 TSI 300", "Diğer"],
+      "trims": ["Reference", "Style", "FR", "Xcellence", "Cupra", "Diğer"]
+    },
+    {
+      "name": "Tarraco",
+      "versions": ["1.5 TSI 150", "2.0 TDI 150", "2.0 TDI 190 4Drive", "2.0 TSI 190 4Drive", "Diğer"],
+      "trims": ["Style", "FR", "Xcellence", "Diğer"]
+    }
+  ]
+}

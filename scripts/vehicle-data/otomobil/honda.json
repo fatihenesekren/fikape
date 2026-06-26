@@ -1,0 +1,40 @@
+{
+  "make": "Honda",
+  "models": [
+    {
+      "name": "Civic",
+      "versions": ["1.0 VTEC Turbo 126", "1.5 VTEC Turbo 182", "2.0 i-MMD e:HEV 184", "2.0 VTEC Turbo Type R 329", "Diğer"],
+      "trims": ["Elegance", "Executive", "Sport", "Advance", "Type R", "Diğer"]
+    },
+    {
+      "name": "Jazz",
+      "versions": ["1.5 i-MMD e:HEV 109", "Diğer"],
+      "trims": ["Elegance", "Advance", "Crosstar", "Diğer"]
+    },
+    {
+      "name": "HR-V",
+      "versions": ["1.5 i-MMD e:HEV 131", "Diğer"],
+      "trims": ["Elegance", "Advance", "Sport", "Diğer"]
+    },
+    {
+      "name": "CR-V",
+      "versions": ["1.5 VTEC Turbo 193 4WD", "2.0 i-MMD e:HEV 184 FWD", "2.0 i-MMD e:HEV 184 AWD", "PHEV AWD 184", "Diğer"],
+      "trims": ["Elegance", "Advance", "Advance Sport", "Diğer"]
+    },
+    {
+      "name": "e",
+      "versions": ["136 28.5kWh", "154 28.5kWh Advance", "Diğer"],
+      "trims": ["Standart", "Advance", "Diğer"]
+    },
+    {
+      "name": "ZR-V",
+      "versions": ["2.0 i-MMD e:HEV 184", "Diğer"],
+      "trims": ["Elegance", "Advance", "Diğer"]
+    },
+    {
+      "name": "Accord",
+      "versions": ["2.0 i-MMD e:HEV 207", "Diğer"],
+      "trims": ["Elegance", "Executive", "Diğer"]
+    }
+  ]
+}

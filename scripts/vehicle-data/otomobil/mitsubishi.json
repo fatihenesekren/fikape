@@ -1,0 +1,35 @@
+{
+  "make": "Mitsubishi",
+  "models": [
+    {
+      "name": "ASX",
+      "versions": ["1.0 T 120", "1.3 T 140", "2.0 MIVEC 150", "Diğer"],
+      "trims": ["Inform", "Instyle", "Intense", "Diğer"]
+    },
+    {
+      "name": "Eclipse Cross",
+      "versions": ["1.5 T 163 FWD", "1.5 T 163 AWD", "2.4 PHEV AWD 188", "Diğer"],
+      "trims": ["Inform", "Instyle", "Intense", "Diğer"]
+    },
+    {
+      "name": "Outlander",
+      "versions": ["2.0 MIVEC 150 FWD", "2.0 MIVEC 150 AWD", "2.2 Di-D 150 AWD", "Diğer"],
+      "trims": ["Inform", "Instyle", "Intense", "Diğer"]
+    },
+    {
+      "name": "Outlander PHEV",
+      "versions": ["2.4 PHEV 224 AWD", "2.4 PHEV 300 AWD", "Diğer"],
+      "trims": ["Inform", "Instyle", "Intense", "Diğer"]
+    },
+    {
+      "name": "L200",
+      "versions": ["2.2 Di-D 154 4WD", "2.4 MIVEC 181 4WD", "Diğer"],
+      "trims": ["Invite", "Inform", "Intense", "Diğer"]
+    },
+    {
+      "name": "Colt",
+      "versions": ["1.0 T 96", "1.3 T 130 MHEV", "Diğer"],
+      "trims": ["Intense", "Diğer"]
+    }
+  ]
+}

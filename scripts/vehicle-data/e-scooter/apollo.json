@@ -1,0 +1,11 @@
+{
+  "make": "Apollo",
+  "models": [
+    { "name": "Air", "versions": ["500W 16Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "City Pro", "versions": ["500W 36Ah 45km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Ghost", "versions": ["1000W Çift 52Ah 55km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Phantom", "versions": ["2400W Çift 52Ah 65km/h", "V3 2400W", "Diğer"], "trims": ["Standart", "V3", "Diğer"] },
+    { "name": "Pro", "versions": ["1000W 34Ah 45km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Explore", "versions": ["1200W Çift 52Ah 55km/h", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

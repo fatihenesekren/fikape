@@ -1,0 +1,7 @@
+{
+  "make": "Globecar",
+  "models": [
+    { "name": "Summit", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Prime", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

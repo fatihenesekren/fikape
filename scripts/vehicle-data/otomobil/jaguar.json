@@ -1,0 +1,35 @@
+{
+  "make": "Jaguar",
+  "models": [
+    {
+      "name": "E-Pace",
+      "versions": ["P200 2.0 200", "P250 2.0 250", "P300 2.0 300 AWD", "D150 2.0 150 AWD", "D180 2.0 180 AWD", "Diğer"],
+      "trims": ["S", "SE", "R-Dynamic S", "R-Dynamic SE", "Diğer"]
+    },
+    {
+      "name": "F-Pace",
+      "versions": ["P250 2.0 250", "P300 2.0 300 AWD", "P400e PHEV 404 AWD", "D200 2.0 204 AWD", "D300 3.0 300 AWD", "SVR 5.0 550", "Diğer"],
+      "trims": ["S", "SE", "R-Dynamic S", "R-Dynamic SE", "SVR", "Diğer"]
+    },
+    {
+      "name": "F-Type",
+      "versions": ["2.0 300", "3.0 V6 380 AWD", "5.0 V8 450 AWD", "5.0 V8 R 575 AWD", "SVR 5.0 567", "Diğer"],
+      "trims": ["Coupe", "Convertible", "R", "SVR", "Diğer"]
+    },
+    {
+      "name": "I-Pace",
+      "versions": ["EV400 AWD 400 90kWh", "Diğer"],
+      "trims": ["S", "SE", "HSE", "Black", "Diğer"]
+    },
+    {
+      "name": "XE",
+      "versions": ["P250 2.0 250", "D180 2.0 180 AWD", "Diğer"],
+      "trims": ["S", "SE", "R-Dynamic S", "Diğer"]
+    },
+    {
+      "name": "XF",
+      "versions": ["P250 2.0 250", "P300 2.0 300 AWD", "D200 2.0 204 AWD", "D300 3.0 300 AWD", "Diğer"],
+      "trims": ["S", "SE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
+    }
+  ]
+}

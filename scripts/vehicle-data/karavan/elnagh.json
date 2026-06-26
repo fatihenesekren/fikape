@@ -1,0 +1,7 @@
+{
+  "make": "Elnagh",
+  "models": [
+    { "name": "Baron", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Marlin", "versions": ["4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

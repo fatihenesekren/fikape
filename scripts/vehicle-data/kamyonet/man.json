@@ -1,0 +1,7 @@
+{
+  "make": "MAN",
+  "models": [
+    { "name": "TGE", "versions": ["2.0 TDI 102", "2.0 TDI 140", "2.0 TDI 177", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "TGL", "versions": ["4.6 D0836 150", "4.6 D0836 180", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

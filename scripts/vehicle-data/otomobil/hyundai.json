@@ -1,0 +1,60 @@
+{
+  "make": "Hyundai",
+  "models": [
+    {
+      "name": "i10",
+      "versions": ["1.0 MPI 67", "1.0 T-GDI 100", "Diğer"],
+      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+    },
+    {
+      "name": "i20",
+      "versions": ["1.0 T-GDI 100", "1.0 T-GDI 120", "1.2 MPI 84", "N Line 1.0 T-GDI 120", "N 1.6 T-GDI 204", "Diğer"],
+      "trims": ["Level 2", "Level 3", "N Line", "N", "Diğer"]
+    },
+    {
+      "name": "i30",
+      "versions": ["1.0 T-GDI 120", "1.5 T-GDI 160 MHEV", "1.6 CRDi 115", "1.6 CRDi 136", "N Line 1.5 T-GDI 160", "Diğer"],
+      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+    },
+    {
+      "name": "i30 N",
+      "versions": ["2.0 T-GDI 280", "2.0 T-GDI 300 Performance", "Diğer"],
+      "trims": ["Standart", "Performance", "Diğer"]
+    },
+    {
+      "name": "Bayon",
+      "versions": ["1.0 T-GDI 100 MHEV", "1.0 T-GDI 120 MHEV", "1.2 MPI 84", "Diğer"],
+      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+    },
+    {
+      "name": "Tucson",
+      "versions": ["1.6 T-GDI 150", "1.6 T-GDI 180 AWD", "1.6 CRDi 115", "1.6 CRDi 136", "PHEV 265 AWD", "HEV 230", "Diğer"],
+      "trims": ["Level 2", "Level 3", "N Line", "N Line Premium", "Diğer"]
+    },
+    {
+      "name": "Santa Fe",
+      "versions": ["2.0 CRDi 186 AWD", "2.2 CRDi 200 AWD", "PHEV 265 AWD", "HEV 230 AWD", "Diğer"],
+      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+    },
+    {
+      "name": "Kona",
+      "versions": ["1.0 T-GDI 120", "1.6 T-GDI 198 AWD", "HEV 141", "Diğer"],
+      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+    },
+    {
+      "name": "Kona Electric",
+      "versions": ["Standard Range 136 48.6kWh", "Long Range 218 65.4kWh", "Diğer"],
+      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+    },
+    {
+      "name": "Ioniq 5",
+      "versions": ["Standard Range RWD 125kW 58kWh", "Long Range RWD 160kW 77.4kWh", "Long Range AWD 225kW 77.4kWh", "N AWD 478 84kWh", "Diğer"],
+      "trims": ["Level 2", "Level 3", "N Line", "N", "Diğer"]
+    },
+    {
+      "name": "Ioniq 6",
+      "versions": ["Standard Range RWD 151", "Long Range RWD 229", "Long Range AWD 325", "Diğer"],
+      "trims": ["Level 2", "Level 3", "Diğer"]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "make": "Opel",
+  "models": [
+    { "name": "Combo", "versions": ["1.2 T 110", "1.5 D 100", "1.5 D 130", "e-Combo Electric", "Diğer"], "trims": ["Edition", "GS Line", "Diğer"] },
+    { "name": "Vivaro", "versions": ["1.5D 100", "1.5D 120", "2.0D 145", "2.0D 180", "Vivaro-e Electric", "Diğer"], "trims": ["Edition", "Diğer"] },
+    { "name": "Movano", "versions": ["2.2D 120", "2.2D 140", "2.2D 165", "Movano-e Electric", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

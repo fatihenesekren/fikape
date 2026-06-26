@@ -1,0 +1,9 @@
+{
+  "make": "SYM",
+  "models": [
+    { "name": "Jet 14", "versions": ["50cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Jet X", "versions": ["125cc", "150cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Cruisym 300", "versions": ["300cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ADX 125", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

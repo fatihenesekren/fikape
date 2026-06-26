@@ -1,0 +1,20 @@
+{
+  "make": "Yamaha",
+  "models": [
+    { "name": "YZF-R3", "versions": ["321cc 42 CV", "Diğer"], "trims": ["Standart", "WorldGP 60th Anniversary", "Diğer"] },
+    { "name": "YZF-R7", "versions": ["689cc 73 CV", "World GP 60th", "Diğer"], "trims": ["Standart", "World GP 60th", "Diğer"] },
+    { "name": "YZF-R1", "versions": ["998cc 200 CV", "M 200 CV", "Diğer"], "trims": ["Standart", "M", "Diğer"] },
+    { "name": "MT-03", "versions": ["321cc 42 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "MT-07", "versions": ["689cc 73 CV", "Diğer"], "trims": ["Standart", "Tech Max", "Diğer"] },
+    { "name": "MT-09", "versions": ["889cc 119 CV", "SP 119 CV", "Diğer"], "trims": ["Standart", "SP", "Diğer"] },
+    { "name": "MT-10", "versions": ["998cc 166 CV", "SP 166 CV", "Diğer"], "trims": ["Standart", "SP", "Diğer"] },
+    { "name": "Tracer 7", "versions": ["689cc 73 CV", "GT 73 CV", "Diğer"], "trims": ["Standart", "GT", "GT+", "Diğer"] },
+    { "name": "Tracer 9", "versions": ["889cc 119 CV", "GT 119 CV", "Diğer"], "trims": ["Standart", "GT", "GT+", "Diğer"] },
+    { "name": "Tenere 700", "versions": ["689cc 73 CV", "World Raid", "Diğer"], "trims": ["Standart", "World Raid", "Explore", "Diğer"] },
+    { "name": "XSR 700", "versions": ["689cc 73 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "XSR 900", "versions": ["889cc 119 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "NMAX 125", "versions": ["125cc 15 CV", "Connected", "Diğer"], "trims": ["Standart", "Connected", "Diğer"] },
+    { "name": "XMAX 300", "versions": ["300cc 28 CV", "Tech Max", "Diğer"], "trims": ["Standart", "Tech Max", "Diğer"] },
+    { "name": "TMAX 560", "versions": ["560cc 47 CV", "Tech Max", "Diğer"], "trims": ["Standart", "Tech Max", "Diğer"] }
+  ]
+}

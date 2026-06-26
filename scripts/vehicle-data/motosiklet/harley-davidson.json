@@ -1,0 +1,13 @@
+{
+  "make": "Harley-Davidson",
+  "models": [
+    { "name": "Sportster S", "versions": ["1252cc 121 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Iron 883", "versions": ["883cc 50 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Iron 1200", "versions": ["1202cc 68 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Fat Boy", "versions": ["114ci 1746cc 93 CV", "Diğer"], "trims": ["Standart", "114", "30th Anniversary", "Diğer"] },
+    { "name": "Fat Bob", "versions": ["114ci 1746cc 93 CV", "Diğer"], "trims": ["Standart", "114", "Diğer"] },
+    { "name": "Road King", "versions": ["107ci 1745cc", "Special 114ci", "Diğer"], "trims": ["Standart", "Special", "Diğer"] },
+    { "name": "Street Glide", "versions": ["107ci 1745cc", "Special 114ci", "Diğer"], "trims": ["Standart", "Special", "Diğer"] },
+    { "name": "Pan America", "versions": ["1252cc 150 CV", "Special 150 CV", "Diğer"], "trims": ["Standart", "Special", "Diğer"] }
+  ]
+}

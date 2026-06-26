@@ -1,0 +1,40 @@
+{
+  "make": "Nissan",
+  "models": [
+    {
+      "name": "Micra",
+      "versions": ["1.0 IG-T 100", "1.0 IG-T 117 Tekna", "Diğer"],
+      "trims": ["Visia", "Acenta", "N-Sport", "N-Design", "Tekna", "Diğer"]
+    },
+    {
+      "name": "Juke",
+      "versions": ["1.0 DIG-T 114", "1.6 Hybrid 143", "Diğer"],
+      "trims": ["Visia", "Acenta", "N-Sport", "Tekna", "Diğer"]
+    },
+    {
+      "name": "Qashqai",
+      "versions": ["1.3 MHEV 140", "1.3 MHEV 158", "1.3 e-POWER 140", "1.3 e-POWER 158", "Diğer"],
+      "trims": ["Visia", "Acenta", "N-Sport", "N-Connecta", "Tekna", "Tekna+", "Diğer"]
+    },
+    {
+      "name": "X-Trail",
+      "versions": ["1.5 e-POWER 204 FWD", "1.5 e-POWER 213 4WD", "Diğer"],
+      "trims": ["Visia", "Acenta", "N-Sport", "N-Connecta", "Tekna", "Diğer"]
+    },
+    {
+      "name": "Leaf",
+      "versions": ["40kWh 150", "62kWh e+ 217", "Diğer"],
+      "trims": ["Visia", "Acenta", "N-Sport", "Tekna", "Diğer"]
+    },
+    {
+      "name": "Ariya",
+      "versions": ["FWD 63kWh 218", "FWD 87kWh 242", "AWD 87kWh 306", "AWD e-4ORCE 87kWh 394", "Diğer"],
+      "trims": ["Advance", "Advance+", "Evolve", "Evolve+", "Diğer"]
+    },
+    {
+      "name": "Note",
+      "versions": ["e-POWER 116", "e-POWER AWD 158", "Diğer"],
+      "trims": ["Visia", "Acenta", "Tekna", "Diğer"]
+    }
+  ]
+}

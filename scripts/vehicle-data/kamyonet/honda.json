@@ -1,0 +1,6 @@
+{
+  "make": "Honda",
+  "models": [
+    { "name": "Ridgeline", "versions": ["3.5 V6 280 AWD", "Diğer"], "trims": ["Sport", "RTL", "RTL-E", "Black Edition", "Diğer"] }
+  ]
+}

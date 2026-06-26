@@ -1,0 +1,55 @@
+{
+  "make": "Opel",
+  "models": [
+    {
+      "name": "Corsa",
+      "versions": ["1.2 75", "1.2 T 100", "1.2 T 130", "1.5D 102", "Diğer"],
+      "trims": ["Essentia", "Edition", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Corsa-e",
+      "versions": ["136 50kWh", "Diğer"],
+      "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Astra",
+      "versions": ["1.2 T 110", "1.2 T 130", "1.5D 110", "1.5D 130", "Plug-in Hybrid 180", "Plug-in Hybrid 225 AWD", "Diğer"],
+      "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Astra Sports Tourer",
+      "versions": ["1.2 T 110", "1.2 T 130", "1.5D 110", "1.5D 130", "Plug-in Hybrid 180", "Plug-in Hybrid 225 AWD", "Diğer"],
+      "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Mokka",
+      "versions": ["1.2 T 100", "1.2 T 130", "1.5D 110", "Diğer"],
+      "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Mokka-e",
+      "versions": ["136 50kWh", "Diğer"],
+      "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Crossland",
+      "versions": ["1.2 83", "1.2 T 110", "1.2 T 130", "1.5D 110", "Diğer"],
+      "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Grandland",
+      "versions": ["1.2 T 130", "1.5D 130", "Plug-in Hybrid 225 AWD", "Plug-in Hybrid 300 AWD", "EV 213", "Diğer"],
+      "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Insignia",
+      "versions": ["1.5 T 165", "2.0 T 200", "2.0 T 260 AWD", "2.0 CDTI 170", "2.0 CDTI 210 AWD", "Diğer"],
+      "trims": ["Edition", "Business Elegance", "GS Line", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "Combo Life",
+      "versions": ["1.2 T 110", "1.5D 100", "1.5D 130", "Diğer"],
+      "trims": ["Edition", "GS Line", "Ultimate", "Diğer"]
+    }
+  ]
+}

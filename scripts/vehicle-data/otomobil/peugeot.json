@@ -1,0 +1,50 @@
+{
+  "make": "Peugeot",
+  "models": [
+    {
+      "name": "208",
+      "versions": ["1.2 PureTech 75", "1.2 PureTech 100", "1.2 PureTech 130", "1.5 BlueHDi 100", "Diğer"],
+      "trims": ["Active", "Allure", "GT", "Diğer"]
+    },
+    {
+      "name": "e-208",
+      "versions": ["136 50kWh", "115 50kWh", "Diğer"],
+      "trims": ["Active", "Allure", "GT", "Diğer"]
+    },
+    {
+      "name": "308",
+      "versions": ["1.2 PureTech 110", "1.2 PureTech 130", "1.5 BlueHDi 130", "1.6 Hybrid 180", "1.6 Hybrid4 360 AWD", "Diğer"],
+      "trims": ["Active", "Allure", "GT", "Diğer"]
+    },
+    {
+      "name": "408",
+      "versions": ["1.2 PureTech 130", "1.6 Hybrid 180", "1.6 Hybrid4 300 AWD", "Diğer"],
+      "trims": ["Allure", "GT", "Diğer"]
+    },
+    {
+      "name": "508",
+      "versions": ["1.5 BlueHDi 130", "1.6 PureTech 180", "1.6 PureTech 225", "Hybrid 225", "Hybrid4 360 AWD", "Diğer"],
+      "trims": ["Allure", "GT", "Diğer"]
+    },
+    {
+      "name": "2008",
+      "versions": ["1.2 PureTech 100", "1.2 PureTech 130", "1.5 BlueHDi 100", "1.5 BlueHDi 130", "Diğer"],
+      "trims": ["Active", "Allure", "GT", "Diğer"]
+    },
+    {
+      "name": "e-2008",
+      "versions": ["136 50kWh", "Diğer"],
+      "trims": ["Active", "Allure", "GT", "Diğer"]
+    },
+    {
+      "name": "3008",
+      "versions": ["1.2 PureTech 130", "1.5 BlueHDi 130", "1.6 Hybrid 136", "1.6 Hybrid4 300 AWD", "EV 73kWh 210", "EV 98kWh 230", "Diğer"],
+      "trims": ["Active", "Allure", "GT", "Diğer"]
+    },
+    {
+      "name": "5008",
+      "versions": ["1.2 PureTech 130", "1.5 BlueHDi 130", "1.6 Hybrid 136", "EV 73kWh 210", "EV 98kWh 230", "Diğer"],
+      "trims": ["Active", "Allure", "GT", "Diğer"]
+    }
+  ]
+}

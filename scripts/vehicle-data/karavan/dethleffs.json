@@ -1,0 +1,8 @@
+{
+  "make": "Dethleffs",
+  "models": [
+    { "name": "Camper", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Lifestyle", "Diğer"] },
+    { "name": "Beduin", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Nomad", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

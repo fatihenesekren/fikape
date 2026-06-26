@@ -1,0 +1,25 @@
+{
+  "make": "Smart",
+  "models": [
+    {
+      "name": "#1",
+      "versions": ["Pure RWD 272 66kWh", "Pro+ RWD 272 66kWh", "Premium AWD 428 66kWh", "Brabus AWD 428 66kWh", "Diğer"],
+      "trims": ["Pure", "Pro", "Pro+", "Premium", "Brabus", "Diğer"]
+    },
+    {
+      "name": "#3",
+      "versions": ["Pro+ RWD 272 66kWh", "Premium AWD 315 66kWh", "Brabus AWD 428 66kWh", "Diğer"],
+      "trims": ["Pro", "Pro+", "Premium", "Brabus", "Diğer"]
+    },
+    {
+      "name": "Fortwo",
+      "versions": ["1.0 71", "0.9 Turbo 90", "0.9 Brabus Turbo 109", "EV 17.6kWh 82", "Diğer"],
+      "trims": ["Pure", "Passion", "Prime", "Brabus", "Cabrio", "Diğer"]
+    },
+    {
+      "name": "Forfour",
+      "versions": ["1.0 71", "0.9 Turbo 90", "0.9 Brabus Turbo 109", "EV 17.6kWh 82", "Diğer"],
+      "trims": ["Pure", "Passion", "Prime", "Brabus", "Diğer"]
+    }
+  ]
+}

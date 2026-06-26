@@ -1,0 +1,30 @@
+{
+  "make": "Tesla",
+  "models": [
+    {
+      "name": "Model 3",
+      "versions": ["Standard Range RWD 283", "Long Range AWD 358", "Performance AWD 513", "Highland RWD 325", "Highland Long Range AWD 366", "Diğer"],
+      "trims": ["Standart", "Long Range", "Performance", "Diğer"]
+    },
+    {
+      "name": "Model S",
+      "versions": ["Long Range AWD 670", "Plaid AWD 1020", "Diğer"],
+      "trims": ["Long Range", "Plaid", "Diğer"]
+    },
+    {
+      "name": "Model X",
+      "versions": ["Long Range AWD 670", "Plaid AWD 1020", "Diğer"],
+      "trims": ["Long Range", "Plaid", "Diğer"]
+    },
+    {
+      "name": "Model Y",
+      "versions": ["Standard Range RWD 283", "Long Range AWD 533", "Performance AWD 534", "Juniper RWD 340", "Juniper Long Range AWD 507", "Diğer"],
+      "trims": ["Standart", "Long Range", "Performance", "Diğer"]
+    },
+    {
+      "name": "Cybertruck",
+      "versions": ["RWD 335", "AWD 600", "Cyberbeast AWD 845", "Diğer"],
+      "trims": ["Foundation Series", "Standart", "Diğer"]
+    }
+  ]
+}

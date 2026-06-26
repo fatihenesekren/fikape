@@ -1,0 +1,40 @@
+{
+  "make": "Dacia",
+  "models": [
+    {
+      "name": "Sandero",
+      "versions": ["SCe 65", "TCe 90", "TCe 100 ECO-G LPG", "Diğer"],
+      "trims": ["Essential", "Expression", "Extreme", "Diğer"]
+    },
+    {
+      "name": "Sandero Stepway",
+      "versions": ["TCe 90", "TCe 100 ECO-G LPG", "TCe 110", "Diğer"],
+      "trims": ["Essential", "Expression", "Extreme", "Diğer"]
+    },
+    {
+      "name": "Logan",
+      "versions": ["SCe 65", "TCe 90", "TCe 100 ECO-G LPG", "Diğer"],
+      "trims": ["Essential", "Expression", "Extreme", "Diğer"]
+    },
+    {
+      "name": "Duster",
+      "versions": ["TCe 100 2WD", "TCe 130 4WD", "TCe 150 4WD", "1.5 dCi 115 4WD", "Diğer"],
+      "trims": ["Essential", "Expression", "Extreme", "Journey", "Diğer"]
+    },
+    {
+      "name": "Jogger",
+      "versions": ["TCe 110 5 Koltuk", "TCe 110 7 Koltuk", "TCe 100 ECO-G LPG", "Diğer"],
+      "trims": ["Essential", "Expression", "Extreme", "Diğer"]
+    },
+    {
+      "name": "Spring",
+      "versions": ["Electric 45", "Electric 65", "Extreme 65", "Diğer"],
+      "trims": ["Essential", "Expression", "Extreme", "Diğer"]
+    },
+    {
+      "name": "Bigster",
+      "versions": ["TCe 130 2WD", "Full Hybrid 155 2WD", "Diğer"],
+      "trims": ["Expression", "Extreme", "Journey", "Diğer"]
+    }
+  ]
+}

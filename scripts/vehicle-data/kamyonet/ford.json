@@ -1,0 +1,11 @@
+{
+  "make": "Ford",
+  "models": [
+    { "name": "Transit Connect", "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "Diğer"], "trims": ["Trend", "Limited", "Active", "Diğer"] },
+    { "name": "Transit Custom", "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "PHEV 126", "Diğer"], "trims": ["Trend", "Limited", "Trail", "Sport", "Diğer"] },
+    { "name": "Transit", "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "2.0 EcoBlue 185", "Electric", "Diğer"], "trims": ["Trend", "Limited", "Trail", "Diğer"] },
+    { "name": "Ranger", "versions": ["2.0 EcoBlue 130 4x2", "2.0 EcoBlue 150 4x2", "2.0 EcoBlue 170 4x4", "2.0 Bi-Turbo 213 4x4", "3.0 V6 240 4x4", "Raptor 3.0 V6 288", "Diğer"], "trims": ["XL", "XLT", "Limited", "Wildtrak", "Raptor", "Diğer"] },
+    { "name": "Tourneo Connect", "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "PHEV 150", "Diğer"], "trims": ["Trend", "Titanium", "Active", "Diğer"] },
+    { "name": "Courier", "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "Diğer"], "trims": ["Trend", "Limited", "Diğer"] }
+  ]
+}

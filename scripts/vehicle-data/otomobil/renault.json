@@ -1,0 +1,65 @@
+{
+  "make": "Renault",
+  "models": [
+    {
+      "name": "Clio",
+      "versions": ["1.0 SCe 65", "1.0 TCe 90", "1.0 TCe 100 ECO-G LPG", "1.6 E-Tech Hybrid 145", "1.5 dCi 85", "Diğer"],
+      "trims": ["Joy", "Touch", "Zen", "Intens", "RS Line", "R.S.", "Diğer"]
+    },
+    {
+      "name": "Megane",
+      "versions": ["1.3 TCe 115", "1.3 TCe 140", "1.3 TCe 160", "1.5 dCi 115", "1.8 RS 280", "Diğer"],
+      "trims": ["Joy", "Touch", "Zen", "Intens", "RS Line", "R.S.", "Diğer"]
+    },
+    {
+      "name": "Taliant",
+      "versions": ["1.0 SCe 65", "1.0 TCe 90", "1.0 TCe 100 ECO-G LPG", "Diğer"],
+      "trims": ["Joy", "Touch", "Zen", "Intens", "Diğer"]
+    },
+    {
+      "name": "Captur",
+      "versions": ["1.0 TCe 90", "1.0 TCe 100 ECO-G LPG", "1.3 TCe 140", "1.3 TCe 155", "E-Tech Hybrid 145", "E-Tech Plug-in 160", "Diğer"],
+      "trims": ["Joy", "Touch", "Zen", "Intens", "RS Line", "Diğer"]
+    },
+    {
+      "name": "Kadjar",
+      "versions": ["1.3 TCe 140", "1.5 dCi 115", "1.7 dCi 150 AWD", "Diğer"],
+      "trims": ["Touch", "Zen", "Intens", "Diğer"]
+    },
+    {
+      "name": "Koleos",
+      "versions": ["1.3 TCe 160 FWD", "1.7 dCi 150 AWD", "2.0 dCi 175 AWD", "Diğer"],
+      "trims": ["Zen", "Intens", "Initiale Paris", "Diğer"]
+    },
+    {
+      "name": "Arkana",
+      "versions": ["1.3 TCe 140", "E-Tech Hybrid 145", "Diğer"],
+      "trims": ["Zen", "Intens", "RS Line", "Diğer"]
+    },
+    {
+      "name": "Austral",
+      "versions": ["1.2 TCe 130 MHEV", "1.2 TCe 160 MHEV", "E-Tech Full Hybrid 200", "E-Tech Plug-in 300 AWD", "Diğer"],
+      "trims": ["Zen", "Techno", "Esprit Alpine", "Iconic", "Diğer"]
+    },
+    {
+      "name": "Espace",
+      "versions": ["1.2 TCe 130 MHEV", "E-Tech Full Hybrid 200", "Diğer"],
+      "trims": ["Techno", "Esprit Alpine", "Iconic", "Diğer"]
+    },
+    {
+      "name": "Zoe",
+      "versions": ["R110 108 52kWh", "R135 135 52kWh", "Diğer"],
+      "trims": ["Life", "Zen", "Intens", "Iconic", "Diğer"]
+    },
+    {
+      "name": "Megane E-Tech",
+      "versions": ["EV40 130 40kWh", "EV60 220 60kWh", "EV60 Optimum Charge 220", "Diğer"],
+      "trims": ["Life", "Zen", "Intens", "Iconic", "Diğer"]
+    },
+    {
+      "name": "Scenic E-Tech",
+      "versions": ["EV60 170 60kWh", "EV87 220 87kWh", "Diğer"],
+      "trims": ["Comfort", "Techno", "Iconic", "Diğer"]
+    }
+  ]
+}

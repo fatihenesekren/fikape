@@ -1,0 +1,12 @@
+{
+  "make": "Dualtron",
+  "models": [
+    { "name": "Mini", "versions": ["600W 10.5Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Compact", "versions": ["1200W Çift 13Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Eagle", "versions": ["1600W Çift 28.9Ah", "Pro 1600W", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
+    { "name": "Thunder", "versions": ["5400W Çift 35Ah", "2 5400W", "Diğer"], "trims": ["Standart", "2", "Diğer"] },
+    { "name": "Storm", "versions": ["6640W Çift 48Ah", "X 6640W", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
+    { "name": "Ultra", "versions": ["6720W Çift 100Ah", "2 6720W", "Diğer"], "trims": ["Standart", "2", "Diğer"] },
+    { "name": "X2", "versions": ["8300W Çift 72Ah", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

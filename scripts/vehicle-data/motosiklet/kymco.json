@@ -1,0 +1,10 @@
+{
+  "make": "KYMCO",
+  "models": [
+    { "name": "AK 550", "versions": ["550cc 52 CV", "Diğer"], "trims": ["Standart", "Premium", "Diğer"] },
+    { "name": "Downtown 350", "versions": ["350cc 29 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Xciting S 400", "versions": ["400cc 40 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Agility 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "City", "RS", "Diğer"] },
+    { "name": "Like 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] }
+  ]
+}

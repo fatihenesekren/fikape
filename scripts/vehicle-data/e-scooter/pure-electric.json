@@ -1,0 +1,8 @@
+{
+  "make": "Pure Electric",
+  "models": [
+    { "name": "Air Pro", "versions": ["500W 14.4Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Advance", "versions": ["500W 10Ah 35km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Flex", "versions": ["500W 14.4Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

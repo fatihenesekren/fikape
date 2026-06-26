@@ -1,0 +1,60 @@
+{
+  "make": "Kia",
+  "models": [
+    {
+      "name": "Picanto",
+      "versions": ["1.0 MPI 67", "1.0 T-GDI 100", "1.2 MPI 84", "Diğer"],
+      "trims": ["Concept", "Comfort", "GT Line", "X-Line", "Diğer"]
+    },
+    {
+      "name": "Rio",
+      "versions": ["1.0 T-GDI 100", "1.0 T-GDI 120", "1.4 MPI 100", "Diğer"],
+      "trims": ["Concept", "Comfort", "GT Line", "Diğer"]
+    },
+    {
+      "name": "Ceed",
+      "versions": ["1.0 T-GDI 120", "1.4 T-GDI 140", "1.5 T-GDI 160", "1.6 CRDi 115", "1.6 CRDi 136", "Diğer"],
+      "trims": ["Concept", "Comfort", "GT Line", "Diğer"]
+    },
+    {
+      "name": "ProCeed",
+      "versions": ["1.4 T-GDI 140", "1.5 T-GDI 160", "1.6 CRDi 136", "GT 1.6 T-GDI 204", "Diğer"],
+      "trims": ["Concept", "Comfort", "GT Line", "GT", "Diğer"]
+    },
+    {
+      "name": "Stinger",
+      "versions": ["2.0 T-GDI 255 AWD", "3.3 V6 T-GDI 370 AWD", "Diğer"],
+      "trims": ["Standart", "GT", "GT Sport", "Diğer"]
+    },
+    {
+      "name": "Sportage",
+      "versions": ["1.6 T-GDI 150 FWD", "1.6 T-GDI 180 AWD", "1.6 CRDi 115", "1.6 CRDi 136 AWD", "PHEV 265 AWD", "HEV 230 AWD", "Diğer"],
+      "trims": ["Concept", "Comfort", "GT Line", "GT Line Premium", "X-Line", "Diğer"]
+    },
+    {
+      "name": "Sorento",
+      "versions": ["2.5 T-GDI 277 AWD", "2.2 CRDi 200 AWD", "PHEV 265 AWD", "HEV 230 AWD", "Diğer"],
+      "trims": ["Concept", "Comfort", "GT Line", "GT Line Premium", "Diğer"]
+    },
+    {
+      "name": "Niro",
+      "versions": ["HEV 141", "PHEV 183", "Diğer"],
+      "trims": ["Concept", "Comfort", "GT Line", "Diğer"]
+    },
+    {
+      "name": "Niro EV",
+      "versions": ["204 64.8kWh", "Diğer"],
+      "trims": ["Comfort", "GT Line", "Diğer"]
+    },
+    {
+      "name": "EV6",
+      "versions": ["Standard Range RWD 170 58kWh", "Long Range RWD 228 77.4kWh", "Long Range AWD 325 77.4kWh", "GT AWD 585 77.4kWh", "Diğer"],
+      "trims": ["Light", "Air", "Earth", "Wind", "GT", "Diğer"]
+    },
+    {
+      "name": "EV9",
+      "versions": ["Standard Range RWD 150 76.1kWh", "Long Range RWD 204 99.8kWh", "Long Range AWD 283 99.8kWh", "GT AWD 501", "Diğer"],
+      "trims": ["Air", "Earth", "GT Line", "GT", "Diğer"]
+    }
+  ]
+}

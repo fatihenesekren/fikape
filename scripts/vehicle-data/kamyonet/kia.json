@@ -1,0 +1,8 @@
+{
+  "make": "Kia",
+  "models": [
+    { "name": "Bongo", "versions": ["2.5 CRDi 133", "Electric", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "K2500", "versions": ["2.5 CRDi 133", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Carens", "versions": ["1.4 T-GDI 140", "1.6 CRDi 136", "Diğer"], "trims": ["Concept", "Comfort", "Diğer"] }
+  ]
+}

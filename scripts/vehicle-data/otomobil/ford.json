@@ -1,0 +1,70 @@
+{
+  "make": "Ford",
+  "models": [
+    {
+      "name": "Fiesta",
+      "versions": ["1.0 EcoBoost 95", "1.0 EcoBoost 125", "1.0 EcoBoost ST-Line 140", "1.5 TDCi 85", "1.5 TDCi 120", "ST 1.5 EcoBoost 200", "Diğer"],
+      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "ST", "Diğer"]
+    },
+    {
+      "name": "Focus",
+      "versions": ["1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.5 EcoBoost 150", "1.5 EcoBoost 182", "1.5 EcoBlue 95", "1.5 EcoBlue 120", "2.3 EcoBoost ST 280", "Diğer"],
+      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "Active", "ST", "Diğer"]
+    },
+    {
+      "name": "Mondeo",
+      "versions": ["1.5 EcoBoost 160", "2.0 EcoBlue 150", "2.0 EcoBlue 190", "2.0 Hybrid 187", "Diğer"],
+      "trims": ["Trend", "Titanium", "ST-Line", "Vignale", "Diğer"]
+    },
+    {
+      "name": "Mustang",
+      "versions": ["2.3 EcoBoost 290", "2.3 EcoBoost 310", "5.0 V8 450", "5.0 V8 Mach 1 460", "5.2 V8 GT500 760", "Diğer"],
+      "trims": ["Fastback", "Convertible", "GT", "Mach 1", "Shelby GT350", "Shelby GT500", "Diğer"]
+    },
+    {
+      "name": "Mustang Mach-E",
+      "versions": ["Standard Range RWD 290", "Extended Range RWD 294", "Extended Range AWD 351", "GT AWD 487", "Diğer"],
+      "trims": ["Select", "Premium", "California Route 1", "GT", "Diğer"]
+    },
+    {
+      "name": "Puma",
+      "versions": ["1.0 EcoBoost 95", "1.0 EcoBoost 125", "1.0 EcoBoost 155 MHEV", "1.5 EcoBlue 120", "ST 1.5 EcoBoost 200", "Diğer"],
+      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "ST-Line X", "ST", "Diğer"]
+    },
+    {
+      "name": "Kuga",
+      "versions": ["1.5 EcoBoost 120", "1.5 EcoBoost 150", "2.0 EcoBlue 120", "2.0 EcoBlue 150", "2.5 FHEV 190", "2.5 PHEV 225", "Diğer"],
+      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "ST-Line X", "Vignale", "Diğer"]
+    },
+    {
+      "name": "EcoSport",
+      "versions": ["1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.5 TDCi 100", "Diğer"],
+      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "Diğer"]
+    },
+    {
+      "name": "Explorer",
+      "versions": ["3.0 EcoBoost 457 PHEV", "Diğer"],
+      "trims": ["ST-Line", "Platinum", "Diğer"]
+    },
+    {
+      "name": "Ranger",
+      "versions": ["2.0 EcoBlue 130 4x2", "2.0 EcoBlue 150 4x2", "2.0 EcoBlue 170 4x4", "2.0 Bi-Turbo 213 4x4", "3.0 V6 240 4x4", "Raptor 3.0 V6 288", "Diğer"],
+      "trims": ["XL", "XLT", "Limited", "Wildtrak", "Raptor", "Diğer"]
+    },
+    {
+      "name": "Transit Connect",
+      "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "Diğer"],
+      "trims": ["Trend", "Limited", "Diğer"]
+    },
+    {
+      "name": "Transit Custom",
+      "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "PHEV 126", "Diğer"],
+      "trims": ["Trend", "Limited", "Sport", "Diğer"]
+    },
+    {
+      "name": "Tourneo Connect",
+      "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "PHEV 150", "Diğer"],
+      "trims": ["Trend", "Titanium", "Active", "Diğer"]
+    }
+  ]
+}

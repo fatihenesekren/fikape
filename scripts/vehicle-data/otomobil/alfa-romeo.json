@@ -1,0 +1,25 @@
+{
+  "make": "Alfa Romeo",
+  "models": [
+    {
+      "name": "Giulia",
+      "versions": ["2.0 Turbo 200 RWD", "2.0 Turbo 280 AWD", "2.9 V6 Biturbo 510 Quadrifoglio", "Diğer"],
+      "trims": ["Sprint", "Ti", "Veloce", "Super", "Quadrifoglio", "Diğer"]
+    },
+    {
+      "name": "Giulietta",
+      "versions": ["1.4 TB 120", "1.4 TB 150", "1.6 JTDM 120", "2.0 JTDM 150", "1.750 TB 240 QV", "Diğer"],
+      "trims": ["Progression", "Distinctive", "Sprint", "Veloce", "QV", "Diğer"]
+    },
+    {
+      "name": "Stelvio",
+      "versions": ["2.0 Turbo 200 RWD", "2.0 Turbo 280 AWD", "2.9 V6 Biturbo 510 Quadrifoglio", "Diğer"],
+      "trims": ["Sprint", "Ti", "Veloce", "Super", "Quadrifoglio", "Diğer"]
+    },
+    {
+      "name": "Tonale",
+      "versions": ["1.5 T4 130 MHEV FWD", "1.5 T4 160 MHEV FWD", "1.6 MHEV 130 FWD", "PHEV Q4 280 AWD", "Diğer"],
+      "trims": ["Sprint", "Ti", "Veloce", "Edizione Speciale", "Diğer"]
+    }
+  ]
+}

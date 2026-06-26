@@ -1,0 +1,25 @@
+{
+  "make": "DS",
+  "models": [
+    {
+      "name": "DS 3",
+      "versions": ["1.2 PureTech 100", "1.2 PureTech 130", "E-Tense 100kW 136", "E-Tense 115kW 156", "Diğer"],
+      "trims": ["So Chic", "Grand Chic", "Performance Line", "Rivoli", "Diğer"]
+    },
+    {
+      "name": "DS 4",
+      "versions": ["1.2 PureTech 130", "1.5 BlueHDi 130", "1.6 PureTech 225", "E-Tense 225 FWD", "E-Tense 300 AWD", "Diğer"],
+      "trims": ["So Chic", "Grand Chic", "Performance Line", "Rivoli", "Diğer"]
+    },
+    {
+      "name": "DS 7",
+      "versions": ["1.5 BlueHDi 130", "1.6 PureTech 180", "E-Tense 4x4 300", "E-Tense 4x4 360", "Diğer"],
+      "trims": ["So Chic", "Grand Chic", "Performance Line", "Rivoli", "Diğer"]
+    },
+    {
+      "name": "DS 9",
+      "versions": ["1.6 PureTech 180", "E-Tense FWD 225", "E-Tense 4x4 360", "Diğer"],
+      "trims": ["So Chic", "Grand Chic", "Rivoli", "Diğer"]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "make": "Hobby",
+  "models": [
+    { "name": "De Luxe", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Edition", "Diğer"] },
+    { "name": "Excellent", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "On Tour", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Premium", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Prestige", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "make": "Volkswagen",
+  "models": [
+    { "name": "Caddy", "versions": ["1.5 TSI 114", "2.0 TDI 102", "2.0 TDI 122", "eHybrid 204", "Diğer"], "trims": ["Life", "Style", "California", "Diğer"] },
+    { "name": "Transporter", "versions": ["2.0 TDI 110", "2.0 TDI 150", "2.0 TSI 150", "Diğer"], "trims": ["Standart", "Comfortline", "Highline", "Diğer"] },
+    { "name": "Caravelle", "versions": ["2.0 TDI 110", "2.0 TDI 150", "Diğer"], "trims": ["Comfortline", "Highline", "Diğer"] },
+    { "name": "Multivan", "versions": ["1.5 TSI eHybrid 218", "2.0 TDI 150", "Diğer"], "trims": ["Life", "Style", "Style Long", "Diğer"] },
+    { "name": "Crafter", "versions": ["2.0 TDI 102", "2.0 TDI 140", "2.0 TDI 177", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Amarok", "versions": ["2.0 TDI 170 4Motion", "3.0 TDI 240 4Motion", "3.0 V6 TDI 272 4Motion", "Diğer"], "trims": ["Life", "Style", "Aventura", "PanAmericana", "Diğer"] }
+  ]
+}

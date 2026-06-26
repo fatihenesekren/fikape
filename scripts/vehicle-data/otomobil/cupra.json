@@ -1,0 +1,30 @@
+{
+  "make": "Cupra",
+  "models": [
+    {
+      "name": "Born",
+      "versions": ["58kWh 204", "77kWh 231", "77kWh 286 AWD", "Diğer"],
+      "trims": ["Standart", "V2H", "Diğer"]
+    },
+    {
+      "name": "Formentor",
+      "versions": ["1.0 TSI 110", "1.5 TSI 150", "2.0 TSI 190", "2.0 TSI 300 4Drive", "1.4 e-Hybrid 204", "1.4 e-Hybrid 245", "Diğer"],
+      "trims": ["Standart", "VZ", "VZ5", "Diğer"]
+    },
+    {
+      "name": "Leon",
+      "versions": ["1.0 TSI 110", "1.5 TSI 150", "2.0 TSI 190", "2.0 TSI 300 4Drive", "1.4 e-Hybrid 204", "1.4 e-Hybrid 245", "Diğer"],
+      "trims": ["Standart", "VZ", "Diğer"]
+    },
+    {
+      "name": "Tavascan",
+      "versions": ["77kWh RWD 286", "77kWh AWD 340", "Diğer"],
+      "trims": ["Standart", "VZ", "Diğer"]
+    },
+    {
+      "name": "Terramar",
+      "versions": ["1.5 TSI 150", "1.5 e-Hybrid 204", "2.0 TDI 150", "Diğer"],
+      "trims": ["Standart", "VZ", "Diğer"]
+    }
+  ]
+}

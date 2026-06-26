@@ -1,0 +1,55 @@
+{
+  "make": "Volvo",
+  "models": [
+    {
+      "name": "S60",
+      "versions": ["B3 163", "B4 197", "B4 AWD 211", "B5 AWD 250", "T8 AWD PHEV 455", "Diğer"],
+      "trims": ["Momentum", "R-Design", "Inscription", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "S90",
+      "versions": ["B5 250", "B5 AWD 250", "B6 AWD 300", "T8 AWD PHEV 455", "Diğer"],
+      "trims": ["Momentum", "Inscription", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "V60",
+      "versions": ["B3 163", "B4 197", "B4 AWD 211", "B5 AWD 250", "T8 AWD PHEV 455", "Diğer"],
+      "trims": ["Momentum", "R-Design", "Inscription", "Ultimate", "Cross Country", "Diğer"]
+    },
+    {
+      "name": "V90",
+      "versions": ["B5 250", "B5 AWD 250", "B6 AWD 300", "T8 AWD PHEV 455", "Diğer"],
+      "trims": ["Momentum", "Inscription", "Ultimate", "Cross Country", "Diğer"]
+    },
+    {
+      "name": "XC40",
+      "versions": ["B3 163", "B4 197", "B4 AWD 211", "B5 AWD 250", "T5 AWD PHEV 262", "Recharge EV RWD 252", "Recharge EV AWD 408", "Diğer"],
+      "trims": ["Momentum", "R-Design", "Inscription", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "XC60",
+      "versions": ["B4 197", "B4 AWD 211", "B5 AWD 250", "B6 AWD 300", "T6 AWD PHEV 340", "T8 AWD PHEV 455", "Diğer"],
+      "trims": ["Momentum", "R-Design", "Inscription", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "XC90",
+      "versions": ["B5 AWD 250", "B6 AWD 300", "T8 AWD PHEV 455", "T8 AWD PHEV Ultra 455", "Diğer"],
+      "trims": ["Momentum", "R-Design", "Inscription", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "C40 Recharge",
+      "versions": ["RWD 231 69kWh", "AWD 408 82kWh", "Diğer"],
+      "trims": ["Core", "Plus", "Ultimate", "Diğer"]
+    },
+    {
+      "name": "EX30",
+      "versions": ["Single Motor Extended Range 272 69kWh", "Twin Motor Performance 428 69kWh", "Diğer"],
+      "trims": ["Core", "Plus", "Ultra", "Diğer"]
+    },
+    {
+      "name": "EX90",
+      "versions": ["Twin Motor 517 111kWh", "Twin Motor Performance 680 111kWh", "Diğer"],
+      "trims": ["Core", "Plus", "Ultra", "Diğer"]
+    }
+  ]
+}

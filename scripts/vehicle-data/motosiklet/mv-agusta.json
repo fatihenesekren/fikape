@@ -1,0 +1,10 @@
+{
+  "make": "MV Agusta",
+  "models": [
+    { "name": "F3 800", "versions": ["800cc 148 CV", "RC 155 CV", "Diğer"], "trims": ["Standart", "RC", "Ago", "Diğer"] },
+    { "name": "Brutale 800", "versions": ["800cc 140 CV", "RR 148 CV", "Dragster 800", "Diğer"], "trims": ["Standart", "RR", "Diğer"] },
+    { "name": "Brutale 1000", "versions": ["998cc 208 CV", "RR 208 CV", "Serie Oro 212 CV", "Diğer"], "trims": ["Standart", "RR", "Serie Oro", "Diğer"] },
+    { "name": "Turismo Veloce", "versions": ["800cc 110 CV", "Lusso SCS", "Diğer"], "trims": ["Standart", "Lusso", "Diğer"] },
+    { "name": "Superveloce", "versions": ["800cc 148 CV", "Alpine", "Diğer"], "trims": ["Standart", "Alpine", "Diğer"] }
+  ]
+}

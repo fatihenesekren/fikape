@@ -1,0 +1,40 @@
+{
+  "make": "Porsche",
+  "models": [
+    {
+      "name": "911",
+      "versions": ["Carrera 3.0 385", "Carrera S 3.0 450", "Carrera 4S 3.0 450 AWD", "Carrera GTS 3.0 480", "Turbo 3.8 580 AWD", "Turbo S 3.8 650 AWD", "GT3 4.0 510", "Diğer"],
+      "trims": ["Coupe", "Cabriolet", "Targa 4", "Targa 4S", "Diğer"]
+    },
+    {
+      "name": "718 Cayman",
+      "versions": ["2.0 300", "2.0 S 350", "2.5 GTS 4.0 400", "GT4 4.0 420", "GT4 RS 4.0 500", "718 Cayman E-Performance", "Diğer"],
+      "trims": ["Standart", "S", "GTS", "GT4", "GT4 RS", "Diğer"]
+    },
+    {
+      "name": "718 Boxster",
+      "versions": ["2.0 300", "2.0 S 350", "2.5 GTS 4.0 400", "Spyder 4.0 420", "718 Boxster E-Performance", "Diğer"],
+      "trims": ["Standart", "S", "GTS", "Spyder", "Diğer"]
+    },
+    {
+      "name": "Taycan",
+      "versions": ["RWD 408 93.4kWh", "4S AWD 490 93.4kWh", "GTS AWD 517 105kWh", "Turbo AWD 680 105kWh", "Turbo S AWD 761 105kWh", "Diğer"],
+      "trims": ["Standart", "Sport Turismo", "Cross Turismo", "Diğer"]
+    },
+    {
+      "name": "Macan",
+      "versions": ["Macan EV 408 100kWh", "Macan 4 EV 516 100kWh", "Macan Turbo EV 639 100kWh", "2.0 245", "2.0 S 261", "3.0 GTS 380", "Diğer"],
+      "trims": ["Standart", "S", "GTS", "Turbo", "Diğer"]
+    },
+    {
+      "name": "Cayenne",
+      "versions": ["3.0 V6 353", "3.0 S 440", "4.0 GTS V8 460", "Turbo 4.0 V8 550", "Turbo S E-Hybrid 693", "E-Hybrid 462", "Diğer"],
+      "trims": ["Standart", "Coupe", "S", "GTS", "Turbo", "Turbo S E-Hybrid", "Diğer"]
+    },
+    {
+      "name": "Panamera",
+      "versions": ["2.9 V6 330", "2.9 S 440", "4.0 GTS 480", "Turbo 4.0 V8 550", "Turbo S E-Hybrid 700", "4 E-Hybrid 462", "Diğer"],
+      "trims": ["Standart", "Sport Turismo", "Executive", "Turbo S E-Hybrid", "Diğer"]
+    }
+  ]
+}
