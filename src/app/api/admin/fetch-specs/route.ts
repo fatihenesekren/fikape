@@ -182,7 +182,11 @@ function parseSpecTable(
   }
 
   const acc = get(["0–100", "0-100", "acceleration", "0 to 100"]);
-  if (acc) { const n = extractNumber(acc); if (n) specs.zero_to_100 = n; }
+  if (acc) {
+    // Avrupa ondalık virgülü: "8,2 s" → "8.2"
+    const n = extractNumber(acc.replace(/(\d),(\d)/g, "$1.$2"));
+    if (n) specs.zero_to_100 = n;
+  }
 
   const spd = get(["top speed", "maximum speed", "max speed", "max. speed"]);
   if (spd) { const n = extractNumber(spd); if (n && +n > 80) specs.top_speed_kmh = n; }
