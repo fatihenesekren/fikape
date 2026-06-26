@@ -57,13 +57,32 @@ export async function POST(req: Request) {
     );
   }
 
-  // Aynı PENDING ürün var mı? (başka bir kullanıcı önermişse)
+  // Aynı PENDING ürün var mı? (başka bir kullanıcı önermişse veya önceki hatalı submit)
   const pendingProduct = await prisma.product.findFirst({
     where: { slug: baseSlug, status: "PENDING" },
-    select: { slug: true },
+    select: { id: true, slug: true },
   });
   if (pendingProduct) {
-    // Ürün zaten oluşturulmuş, doğrudan yorum formuna yönlendir
+    // Öneri kaydı yoksa oluştur (önceki submit'te product oluştu ama öneri kaydedilemediyse)
+    const existing = await prisma.vehicleSuggestion.findFirst({
+      where: { productId: pendingProduct.id, userId },
+    });
+    if (!existing) {
+      await prisma.vehicleSuggestion.create({
+        data: {
+          userId,
+          brandName: brandName.trim(),
+          modelName: modelName.trim(),
+          year:      year ? Number(year) : null,
+          categorySlug,
+          fuelType:  fuelType || null,
+          trimName:  trimName?.trim() || null,
+          notes:     notes?.trim() || null,
+          photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 3) : [],
+          productId: pendingProduct.id,
+        },
+      });
+    }
     return NextResponse.json({ slug: pendingProduct.slug }, { status: 200 });
   }
 
