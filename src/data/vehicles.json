@@ -12109,6 +12109,15 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -12213,6 +12222,15 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -12238,6 +12256,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -12293,6 +12320,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -12362,6 +12398,15 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -12425,6 +12470,15 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -12463,6 +12517,15 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -12499,6 +12562,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -12569,6 +12641,15 @@
             "GT Pro",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -12605,6 +12686,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -12647,6 +12737,21 @@
           ]
         },
         {
+          "name": "Ninebot F2",
+          "versions": [
+            "350W 7.5Ah 25km/h",
+            "F2 Plus 350W",
+            "F2 Pro 350W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Plus",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Ninebot F40",
           "versions": [
             "350W 14.4Ah 40km/h",
@@ -12671,6 +12776,17 @@
           ]
         },
         {
+          "name": "Ninebot Max G2",
+          "versions": [
+            "450W 15.3Ah 25km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Ninebot Max G65",
           "versions": [
             "700W 22Ah 65km/h",
@@ -12678,6 +12794,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -12729,12 +12854,32 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
     {
       "make": "Xiaomi",
       "models": [
+        {
+          "name": "Mi Electric Scooter Essential",
+          "versions": [
+            "250W 5.1Ah 20km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
         {
           "name": "Mi 1S",
           "versions": [
@@ -12780,6 +12925,17 @@
           ]
         },
         {
+          "name": "Mi 4 Lite",
+          "versions": [
+            "300W 5.2Ah 20km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Mi 4 Pro",
           "versions": [
             "300W 11.6Ah 25km/h",
@@ -12798,6 +12954,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -12825,6 +12990,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }

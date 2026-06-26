@@ -5,6 +5,7 @@
     { "name": "Mantis 10", "versions": ["1000W Çift Motor 24Ah", "Pro 2400W", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
     { "name": "Wolf King", "versions": ["2400W Çift Motor 35Ah", "GT 2400W", "Diğer"], "trims": ["Standart", "GT", "GT Pro", "Diğer"] },
     { "name": "Wolf Warrior", "versions": ["5400W Çift Motor 60Ah", "11+ 2400W", "Diğer"], "trims": ["Standart", "11+", "Diğer"] },
-    { "name": "Skywalker 10", "versions": ["500W 13Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Skywalker 10", "versions": ["500W 13Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

@@ -1,11 +1,14 @@
 {
   "make": "Xiaomi",
   "models": [
+    { "name": "Mi Electric Scooter Essential", "versions": ["250W 5.1Ah 20km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Mi 1S", "versions": ["300W 7.65Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Mi Pro 2", "versions": ["300W 12.4Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Mi 3", "versions": ["300W 7.65Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Mi 4", "versions": ["300W 7.65Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Mi 4 Lite", "versions": ["300W 5.2Ah 20km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Mi 4 Pro", "versions": ["300W 11.6Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Mi 4 Ultra", "versions": ["500W 15.3Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Mi 4 Ultra", "versions": ["500W 15.3Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

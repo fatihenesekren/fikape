@@ -3,6 +3,7 @@
   "models": [
     { "name": "N40", "versions": ["350W 10.4Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "N65", "versions": ["500W 17.5Ah 35km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "S65", "versions": ["500W 17.5Ah 40km/h", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "S65", "versions": ["500W 17.5Ah 40km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

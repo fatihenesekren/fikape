@@ -5,6 +5,7 @@
     { "name": "KQi2", "versions": ["300W 8.68Ah 25km/h", "Diğer"], "trims": ["Pro", "Diğer"] },
     { "name": "KQi3", "versions": ["300W 13.4Ah 25km/h", "Pro Max 700W", "Diğer"], "trims": ["Sport", "Pro", "Max", "Diğer"] },
     { "name": "UQi", "versions": ["1500W 30Ah", "GT 2000W", "Diğer"], "trims": ["Standart", "GT", "Diğer"] },
-    { "name": "MQi", "versions": ["1500W 48Ah", "GT Pro 3000W", "Diğer"], "trims": ["Standart", "GT", "GT Pro", "Diğer"] }
+    { "name": "MQi", "versions": ["1500W 48Ah", "GT Pro 3000W", "Diğer"], "trims": ["Standart", "GT", "GT Pro", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

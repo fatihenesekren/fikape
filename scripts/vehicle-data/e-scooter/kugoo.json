@@ -5,6 +5,7 @@
     { "name": "S3", "versions": ["350W 10Ah 35km/h", "Pro 350W", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
     { "name": "G-Booster", "versions": ["2000W Çift 23Ah 70km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "G2 Pro", "versions": ["500W 26Ah 45km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "M4 Pro", "versions": ["1200W 24Ah 50km/h", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "M4 Pro", "versions": ["1200W 24Ah 50km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
