@@ -6,11 +6,12 @@ import { decodeQuiz, calcQuizScore, CAT_TO_SLUG, type ReviewExtData } from "@/li
 import type { FikapeScores } from "@/lib/fikape";
 
 const CATEGORY_ICONS: Record<string, string> = {
-  otomobil:    "🚗",
-  motosiklet:  "🏍️",
-  "e-scooter": "🔋",
-  karavan:     "🏕️",
-  kamyonet:    "🛻",
+  otomobil:     "🚗",
+  motosiklet:   "🏍️",
+  "e-scooter":  "🔋",
+  "e-bisiklet": "🚴",
+  karavan:      "🏕️",
+  kamyonet:     "🛻",
 };
 
 interface Props {
@@ -162,6 +163,7 @@ export async function ProductGrid({
                 categorySlug={catSlug}
                 fuelType={String(attrs.fuel_type ?? "")}
                 bodyType={String(attrs.body_type ?? "")}
+                motorType={attrs.motor_type ? String(attrs.motor_type) : null}
                 scores={score?.scores ?? null}
                 totalReviews={score?.count ?? 0}
                 imageUrl={imageUrl}

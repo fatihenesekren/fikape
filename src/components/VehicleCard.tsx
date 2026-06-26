@@ -41,6 +41,7 @@ interface Props {
   categorySlug: string;
   fuelType: string;
   bodyType: string;
+  motorType?: string | null;
   scores: FikapeScores | null;
   totalReviews: number;
   imageUrl?: string | null;
@@ -48,7 +49,7 @@ interface Props {
 
 export function VehicleCard({
   slug, brandName, modelName, trimName, year,
-  categorySlug, fuelType, bodyType,
+  categorySlug, fuelType, bodyType, motorType,
   scores, totalReviews, imageUrl,
 }: Props) {
   const bodyLabel = BODY_LABELS[bodyType];
@@ -88,13 +89,21 @@ export function VehicleCard({
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
         )}
 
-        {/* Sol üst — yakıt tipi */}
-        <span
-          className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10"
-          style={{ background: fuelColor.bg, color: fuelColor.text }}
-        >
-          {FUEL_ICONS[fuelType]} {FUEL_LABELS[fuelType] ?? fuelType}
-        </span>
+        {/* Sol üst — yakıt tipi (e-bisiklet için motor tipi göster) */}
+        {categorySlug === "e-bisiklet" ? (
+          motorType && (
+            <span className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-white/90 text-gray-700">
+              {motorType === "mid-drive" ? "Mid-Drive" : "Hub-Drive"}
+            </span>
+          )
+        ) : (
+          <span
+            className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10"
+            style={{ background: fuelColor.bg, color: fuelColor.text }}
+          >
+            {FUEL_ICONS[fuelType]} {FUEL_LABELS[fuelType] ?? fuelType}
+          </span>
+        )}
 
         {/* Sağ alt — toplam yorum */}
         {totalReviews > 0 && (
