@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 export function EditName({ current }: { current: string }) {
@@ -9,7 +8,6 @@ export function EditName({ current }: { current: string }) {
   const [value, setValue] = useState(current);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const router = useRouter();
   const { update } = useSession();
 
   async function save() {
@@ -29,7 +27,6 @@ export function EditName({ current }: { current: string }) {
     await update();
     setEditing(false);
     setLoading(false);
-    router.refresh();
   }
 
   if (!editing) {
