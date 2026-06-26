@@ -1,0 +1,25 @@
+{
+  "make": "BYD",
+  "models": [
+    {
+      "name": "T3 (2020-)",
+      "versions": ["Elektrik 70 CV 35.5kWh", "Elektrik 100 CV 45.1kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "M3 EV (2021-)",
+      "versions": ["Elektrik 122 CV 45kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "ETM6 (2022-)",
+      "versions": ["Elektrik 150 CV 60kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

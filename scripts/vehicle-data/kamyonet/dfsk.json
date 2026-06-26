@@ -1,0 +1,25 @@
+{
+  "make": "DFSK",
+  "models": [
+    {
+      "name": "Glory Van (2019-)",
+      "versions": ["1.5 T 143 Benzin", "1.5 T 143 LPG", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "EC35 EV (2021-)",
+      "versions": ["Elektrik 60 CV 35kWh", "Elektrik 60 CV 42kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "EC31 EV (2022-)",
+      "versions": ["Elektrik 41 CV 25kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

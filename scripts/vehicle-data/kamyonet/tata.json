@@ -1,0 +1,25 @@
+{
+  "make": "Tata",
+  "models": [
+    {
+      "name": "Super Ace (2012-)",
+      "versions": ["1.4 DiCOR 70 Dizel", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Xenon (2007-2019)",
+      "versions": ["2.2 DICOR 140 4WD", "Diğer"],
+      "trims": ["Standart", "XT", "Diğer"]
+    },
+    {
+      "name": "Ace EV (2022-)",
+      "versions": ["Elektrik 40 CV 21.3kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

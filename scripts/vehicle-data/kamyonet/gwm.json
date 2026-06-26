@@ -1,0 +1,20 @@
+{
+  "make": "GWM",
+  "models": [
+    {
+      "name": "Cannon (2020-)",
+      "versions": ["2.0T 163 4WD", "2.0T 218 4WD", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Off-Road", "Diğer"]
+    },
+    {
+      "name": "Cannon Alpha EV (2023-)",
+      "versions": ["Elektrik 326 CV AWD", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

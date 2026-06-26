@@ -1,0 +1,25 @@
+{
+  "make": "Fuso",
+  "models": [
+    {
+      "name": "Canter (2000-)",
+      "versions": ["3.0 4P10 130", "3.0 4P10 150", "3.0 4P10 170", "Diğer"],
+      "trims": ["Standart", "Wide", "Diğer"]
+    },
+    {
+      "name": "eCanter (2017-)",
+      "versions": ["Elektrik 135 CV 82.8kWh", "Elektrik 180 CV 138kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Fighter (2000-)",
+      "versions": ["4.9 6M60 220", "4.9 6M60 260", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

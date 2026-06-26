@@ -1,0 +1,20 @@
+{
+  "make": "BMC",
+  "models": [
+    {
+      "name": "Professional (2000-)",
+      "versions": ["2.5 TD 90", "2.5 TD 115", "2.8 TD 130", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Fenix (2018-)",
+      "versions": ["2.2 D 130", "2.2 D 160", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

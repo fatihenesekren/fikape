@@ -1,0 +1,15 @@
+{
+  "make": "Ineos",
+  "models": [
+    {
+      "name": "Grenadier Quartermaster (2023-)",
+      "versions": ["3.0 B58 286 Benzin 4WD", "3.0 B57 249 Dizel 4WD", "Diğer"],
+      "trims": ["Utility", "Trialmaster", "Fieldmaster", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

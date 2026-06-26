@@ -1,0 +1,35 @@
+{
+  "make": "Karsan",
+  "models": [
+    {
+      "name": "Jest (2014-)",
+      "versions": ["1.3 MultiJet 95 Dizel", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "e-Jest (2019-)",
+      "versions": ["Elektrik 90 CV 85kWh", "Elektrik 90 CV 120kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Atak (2014-)",
+      "versions": ["2.3 MultiJet 130 Dizel", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "e-Atak (2021-)",
+      "versions": ["Elektrik 150 CV 120kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "J8 (2018-)",
+      "versions": ["2.0 CRDi 170 Dizel", "e-J8 Elektrik 240 CV", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

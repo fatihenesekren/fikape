@@ -1,0 +1,25 @@
+{
+  "make": "Foton",
+  "models": [
+    {
+      "name": "Gratour (2015-)",
+      "versions": ["1.3 LPG 82", "1.5 Benzin 95", "EV Elektrik", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "View (2010-)",
+      "versions": ["2.4 Dizel 95", "2.4 Dizel 115", "Diğer"],
+      "trims": ["Standart", "CS2", "Diğer"]
+    },
+    {
+      "name": "Aumark (2015-)",
+      "versions": ["2.8 Cummins 130", "3.8 Cummins 160", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

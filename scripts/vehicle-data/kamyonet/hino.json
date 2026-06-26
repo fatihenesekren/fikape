@@ -1,0 +1,25 @@
+{
+  "make": "Hino",
+  "models": [
+    {
+      "name": "300 Serisi (2003-)",
+      "versions": ["4.0 N04C 130", "4.0 N04C 150", "4.0 N04C 175", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "500 Serisi (2003-)",
+      "versions": ["7.7 J08E 260", "7.7 J08E 300", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "700 Serisi (2003-)",
+      "versions": ["12.9 A09C 380", "12.9 A09C 460", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}
