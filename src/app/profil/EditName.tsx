@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export function EditName({ current }: { current: string }) {
   const [editing, setEditing] = useState(false);
@@ -9,6 +10,7 @@ export function EditName({ current }: { current: string }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+  const { update } = useSession();
 
   async function save() {
     setLoading(true);
@@ -24,6 +26,7 @@ export function EditName({ current }: { current: string }) {
       setLoading(false);
       return;
     }
+    await update();
     setEditing(false);
     setLoading(false);
     router.refresh();

@@ -34,10 +34,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/giris",
   },
   callbacks: {
-    jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
       if (user) {
         token.id         = user.id;
         token.trustLevel = (user as { trustLevel?: number }).trustLevel ?? 1;
+      }
+      if (trigger === "update" && token.id) {
+        const dbUser = await prisma.user.findUnique({
+          where: { id: Number(token.id) },
+          select: { displayName: true, email: true },
+        });
+        if (dbUser) token.name = dbUser.displayName ?? dbUser.email;
       }
       return token;
     },
