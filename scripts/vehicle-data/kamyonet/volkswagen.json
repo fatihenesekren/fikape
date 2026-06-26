@@ -1,11 +1,16 @@
 {
   "make": "Volkswagen",
   "models": [
-    { "name": "Caddy", "versions": ["1.5 TSI 114", "2.0 TDI 102", "2.0 TDI 122", "eHybrid 204", "Diğer"], "trims": ["Life", "Style", "California", "Diğer"] },
-    { "name": "Transporter", "versions": ["2.0 TDI 110", "2.0 TDI 150", "2.0 TSI 150", "Diğer"], "trims": ["Standart", "Comfortline", "Highline", "Diğer"] },
+    { "name": "Caddy (2004-2020)", "versions": ["1.6 TDI 102", "2.0 TDI 110", "2.0 TDI 150", "1.2 TSI 105", "Diğer"], "trims": ["Base", "Trendline", "Comfortline", "Diğer"] },
+    { "name": "Caddy (2020-)", "versions": ["1.5 TSI 114", "2.0 TDI 102", "2.0 TDI 122", "eHybrid 204", "Diğer"], "trims": ["Life", "Style", "California", "Diğer"] },
+    { "name": "Transporter T4 (1990-2003)", "versions": ["1.9 TD 68", "2.4 D 78", "2.5 TDI 88", "2.5 TDI 102", "Diğer"], "trims": ["Base", "Caravelle", "Diğer"] },
+    { "name": "Transporter T5 (2003-2015)", "versions": ["1.9 TDI 85", "2.0 TDI 102", "2.0 TDI 140", "2.5 TDI 130", "Diğer"], "trims": ["Base", "Comfortline", "Highline", "Diğer"] },
+    { "name": "Transporter T6 (2015-)", "versions": ["2.0 TDI 110", "2.0 TDI 150", "2.0 TSI 150", "Diğer"], "trims": ["Standart", "Comfortline", "Highline", "Diğer"] },
     { "name": "Caravelle", "versions": ["2.0 TDI 110", "2.0 TDI 150", "Diğer"], "trims": ["Comfortline", "Highline", "Diğer"] },
     { "name": "Multivan", "versions": ["1.5 TSI eHybrid 218", "2.0 TDI 150", "Diğer"], "trims": ["Life", "Style", "Style Long", "Diğer"] },
     { "name": "Crafter", "versions": ["2.0 TDI 102", "2.0 TDI 140", "2.0 TDI 177", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Amarok", "versions": ["2.0 TDI 170 4Motion", "3.0 TDI 240 4Motion", "3.0 V6 TDI 272 4Motion", "Diğer"], "trims": ["Life", "Style", "Aventura", "PanAmericana", "Diğer"] }
+    { "name": "Amarok (2010-2022)", "versions": ["2.0 TDI 140 4Motion", "2.0 BiTDI 180 4Motion", "3.0 TDI 204 4Motion", "Diğer"], "trims": ["Trendline", "Comfortline", "Highline", "Canyon", "Aventura", "Diğer"] },
+    { "name": "Amarok (2022-)", "versions": ["2.0 TDI 170 4Motion", "3.0 TDI 240 4Motion", "3.0 V6 TDI 272 4Motion", "Diğer"], "trims": ["Life", "Style", "Aventura", "PanAmericana", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

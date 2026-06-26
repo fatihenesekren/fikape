@@ -1,9 +1,13 @@
 {
   "make": "Peugeot",
   "models": [
-    { "name": "Partner", "versions": ["1.2 PureTech 110", "1.5 BlueHDi 100", "1.5 BlueHDi 130", "e-Partner Electric 136", "Diğer"], "trims": ["Active", "Asphalt", "GT", "Diğer"] },
-    { "name": "Expert", "versions": ["1.5 BlueHDi 100", "2.0 BlueHDi 120", "2.0 BlueHDi 145", "e-Expert Electric", "Diğer"], "trims": ["Active", "Asphalt", "GT", "Diğer"] },
+    { "name": "Partner (2000-2008)", "versions": ["1.4i 75", "1.6i 90", "1.6 HDi 75", "1.6 HDi 90", "Diğer"], "trims": ["Base", "Diğer"] },
+    { "name": "Partner (2008-2018)", "versions": ["1.6 VTi 98", "1.6 HDi 75", "1.6 HDi 90", "1.6 HDi 115", "Diğer"], "trims": ["Base", "Tepee", "Diğer"] },
+    { "name": "Partner (2018-)", "versions": ["1.2 PureTech 110", "1.5 BlueHDi 100", "1.5 BlueHDi 130", "e-Partner Electric 136", "Diğer"], "trims": ["Active", "Asphalt", "GT", "Diğer"] },
+    { "name": "Expert (2004-2016)", "versions": ["1.6 HDi 90", "2.0 HDi 120", "2.0 HDi 163", "Diğer"], "trims": ["Base", "Diğer"] },
+    { "name": "Expert (2016-)", "versions": ["1.5 BlueHDi 100", "2.0 BlueHDi 120", "2.0 BlueHDi 145", "e-Expert Electric", "Diğer"], "trims": ["Active", "Asphalt", "GT", "Diğer"] },
     { "name": "Traveller", "versions": ["1.5 BlueHDi 100", "2.0 BlueHDi 150", "2.0 BlueHDi 180", "Diğer"], "trims": ["Active", "Allure", "GT", "Diğer"] },
-    { "name": "Boxer", "versions": ["2.0 BlueHDi 110", "2.0 BlueHDi 130", "2.2 BlueHDi 140", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Boxer", "versions": ["2.0 BlueHDi 110", "2.0 BlueHDi 130", "2.2 BlueHDi 140", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

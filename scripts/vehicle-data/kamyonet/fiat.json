@@ -1,9 +1,12 @@
 {
   "make": "Fiat",
   "models": [
-    { "name": "Doblo", "versions": ["1.2 MultiJet 95", "1.6 MultiJet 120", "1.3 MultiJet 85", "e-Doblo Electric", "Diğer"], "trims": ["Pop", "Lounge", "Business", "Diğer"] },
     { "name": "Fiorino", "versions": ["1.3 MultiJet 80", "1.4 Fire 77", "Diğer"], "trims": ["Pop", "Adventure", "Qubo", "Diğer"] },
+    { "name": "Doblo (2001-2015)", "versions": ["1.3 MultiJet 85", "1.6 MultiJet 105", "1.9 MultiJet 120", "1.4 Fire 77", "Diğer"], "trims": ["Base", "Cargo", "Diğer"] },
+    { "name": "Doblo (2015-)", "versions": ["1.2 MultiJet 95", "1.6 MultiJet 120", "e-Doblo Electric", "Diğer"], "trims": ["Pop", "Lounge", "Business", "Diğer"] },
+    { "name": "Scudo (2004-2016)", "versions": ["1.6 MultiJet 90", "2.0 MultiJet 130", "2.0 MultiJet 163", "Diğer"], "trims": ["Base", "Diğer"] },
     { "name": "Talento", "versions": ["1.6 Turbo 120", "2.0 Turbo 145", "Diğer"], "trims": ["Base", "SX", "Diğer"] },
-    { "name": "Ducato", "versions": ["2.2 MultiJet 120", "2.2 MultiJet 140", "2.2 MultiJet 160", "e-Ducato Electric", "Diğer"], "trims": ["Standart", "Business", "Diğer"] }
+    { "name": "Ducato", "versions": ["2.2 MultiJet 120", "2.2 MultiJet 140", "2.2 MultiJet 160", "e-Ducato Electric", "Diğer"], "trims": ["Standart", "Business", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

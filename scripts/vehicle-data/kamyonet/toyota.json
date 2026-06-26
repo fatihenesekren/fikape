@@ -1,9 +1,12 @@
 {
   "make": "Toyota",
   "models": [
-    { "name": "Hilux", "versions": ["2.4 D-4D 150 4WD", "2.8 D-4D 204 4WD", "Diğer"], "trims": ["Country", "Comfort", "Executive", "GR Sport", "Diğer"] },
+    { "name": "Hilux (2000-2005)", "versions": ["2.5 D-4D 102 4WD", "3.0 D-4D 163 4WD", "Diğer"], "trims": ["Country", "Comfort", "Diğer"] },
+    { "name": "Hilux (2005-2015)", "versions": ["2.5 D-4D 120 4WD", "3.0 D-4D 171 4WD", "Diğer"], "trims": ["Country", "Comfort", "Executive", "Diğer"] },
+    { "name": "Hilux (2015-)", "versions": ["2.4 D-4D 150 4WD", "2.8 D-4D 204 4WD", "Diğer"], "trims": ["Country", "Comfort", "Executive", "GR Sport", "Diğer"] },
     { "name": "Proace City", "versions": ["1.2 PureTech 110", "1.5 BlueHDi 100", "1.5 BlueHDi 130", "Proace City Electric", "Diğer"], "trims": ["Active", "Comfort", "Executive", "Diğer"] },
     { "name": "Proace", "versions": ["1.5 D-4D 120", "2.0 D-4D 150", "2.0 D-4D 180", "Proace Electric", "Diğer"], "trims": ["Active", "Comfort", "Executive", "Diğer"] },
-    { "name": "Land Cruiser Pickup", "versions": ["4.5 V8 D-4D 195 4WD", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "Land Cruiser Pickup", "versions": ["4.5 V8 D-4D 195 4WD", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

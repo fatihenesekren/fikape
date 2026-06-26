@@ -1,11 +1,16 @@
 {
   "make": "Ford",
   "models": [
-    { "name": "Transit Connect", "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "Diğer"], "trims": ["Trend", "Limited", "Active", "Diğer"] },
-    { "name": "Transit Custom", "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "PHEV 126", "Diğer"], "trims": ["Trend", "Limited", "Trail", "Sport", "Diğer"] },
-    { "name": "Transit", "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "2.0 EcoBlue 185", "Electric", "Diğer"], "trims": ["Trend", "Limited", "Trail", "Diğer"] },
-    { "name": "Ranger", "versions": ["2.0 EcoBlue 130 4x2", "2.0 EcoBlue 150 4x2", "2.0 EcoBlue 170 4x4", "2.0 Bi-Turbo 213 4x4", "3.0 V6 240 4x4", "Raptor 3.0 V6 288", "Diğer"], "trims": ["XL", "XLT", "Limited", "Wildtrak", "Raptor", "Diğer"] },
+    { "name": "Courier", "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "Diğer"], "trims": ["Trend", "Limited", "Diğer"] },
+    { "name": "Transit Connect (2002-2013)", "versions": ["1.8 Di 75", "1.8 TDCi 90", "1.8 TDCi 110", "Diğer"], "trims": ["Base", "Diğer"] },
+    { "name": "Transit Connect (2013-)", "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "Diğer"], "trims": ["Trend", "Limited", "Active", "Diğer"] },
     { "name": "Tourneo Connect", "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "PHEV 150", "Diğer"], "trims": ["Trend", "Titanium", "Active", "Diğer"] },
-    { "name": "Courier", "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "Diğer"], "trims": ["Trend", "Limited", "Diğer"] }
+    { "name": "Transit Custom", "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "PHEV 126", "Diğer"], "trims": ["Trend", "Limited", "Trail", "Sport", "Diğer"] },
+    { "name": "Transit (2000-2014)", "versions": ["2.0 TDCi 85", "2.2 TDCi 100", "2.2 TDCi 125", "2.2 TDCi 155", "Diğer"], "trims": ["Base", "Trend", "Diğer"] },
+    { "name": "Transit (2014-)", "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "2.0 EcoBlue 185", "Electric", "Diğer"], "trims": ["Trend", "Limited", "Trail", "Diğer"] },
+    { "name": "Ranger (2000-2011)", "versions": ["2.5 TDCi 143 4WD", "3.0 TDCi 156 4WD", "Diğer"], "trims": ["Base", "XL", "XLT", "Diğer"] },
+    { "name": "Ranger (2011-2022)", "versions": ["2.2 TDCi 125 4WD", "2.2 TDCi 160 4WD", "3.2 TDCi 200 4WD", "Diğer"], "trims": ["XL", "XLT", "Limited", "Wildtrak", "Raptor", "Diğer"] },
+    { "name": "Ranger (2022-)", "versions": ["2.0 EcoBlue 130 4x2", "2.0 EcoBlue 150 4x2", "2.0 EcoBlue 170 4x4", "2.0 Bi-Turbo 213 4x4", "3.0 V6 240 4x4", "Raptor 3.0 V6 288", "Diğer"], "trims": ["XL", "XLT", "Limited", "Wildtrak", "Raptor", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

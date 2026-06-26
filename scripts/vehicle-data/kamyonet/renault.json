@@ -1,9 +1,15 @@
 {
   "make": "Renault",
   "models": [
-    { "name": "Kangoo", "versions": ["1.3 TCe 100", "1.3 TCe 130", "1.5 dCi 95", "E-Tech Electric 90", "Diğer"], "trims": ["Comfort", "Equilibre", "Techno", "Diğer"] },
-    { "name": "Trafic", "versions": ["2.0 dCi 120", "2.0 dCi 150", "Diğer"], "trims": ["Comfort", "Sport", "SpaceClass", "Diğer"] },
-    { "name": "Master", "versions": ["2.3 dCi 110", "2.3 dCi 135", "2.3 dCi 150", "Diğer"], "trims": ["Comfort", "Sport", "Diğer"] },
-    { "name": "Alaskan", "versions": ["2.3 dCi 160 4WD", "2.3 dCi 190 4WD", "Diğer"], "trims": ["Comfort", "Intens", "Diğer"] }
+    { "name": "Kangoo (1997-2007)", "versions": ["1.4i 75", "1.6i 95", "1.5 dCi 65", "1.5 dCi 80", "Diğer"], "trims": ["Base", "Diğer"] },
+    { "name": "Kangoo (2008-2021)", "versions": ["1.5 dCi 75", "1.5 dCi 90", "1.5 dCi 110", "Diğer"], "trims": ["Confort", "Expression", "Diğer"] },
+    { "name": "Kangoo (2021-)", "versions": ["1.3 TCe 100", "1.3 TCe 130", "1.5 dCi 95", "E-Tech Electric 90", "Diğer"], "trims": ["Comfort", "Equilibre", "Techno", "Diğer"] },
+    { "name": "Express (2021-)", "versions": ["1.3 TCe 100", "1.5 dCi 95", "Diğer"], "trims": ["Comfort", "Diğer"] },
+    { "name": "Trafic (2001-2014)", "versions": ["2.0 dCi 90", "2.0 dCi 115", "2.5 dCi 145", "Diğer"], "trims": ["Base", "Diğer"] },
+    { "name": "Trafic (2014-)", "versions": ["2.0 dCi 120", "2.0 dCi 150", "Diğer"], "trims": ["Comfort", "Sport", "SpaceClass", "Diğer"] },
+    { "name": "Master (2000-2010)", "versions": ["2.5 dCi 100", "2.5 dCi 120", "Diğer"], "trims": ["Base", "Diğer"] },
+    { "name": "Master (2010-)", "versions": ["2.3 dCi 110", "2.3 dCi 135", "2.3 dCi 150", "Diğer"], "trims": ["Comfort", "Sport", "Diğer"] },
+    { "name": "Alaskan", "versions": ["2.3 dCi 160 4WD", "2.3 dCi 190 4WD", "Diğer"], "trims": ["Comfort", "Intens", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

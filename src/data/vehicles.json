@@ -10467,7 +10467,23 @@
       "make": "Citroën",
       "models": [
         {
-          "name": "Berlingo",
+          "name": "Berlingo (2000-2018)",
+          "versions": [
+            "1.4i 75",
+            "1.6i 90",
+            "1.6 HDi 75",
+            "1.6 HDi 90",
+            "1.6 HDi 115",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Multispace",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Berlingo (2018-)",
           "versions": [
             "1.2 PureTech 110",
             "1.5 BlueHDi 100",
@@ -10483,7 +10499,32 @@
           ]
         },
         {
-          "name": "Jumpy",
+          "name": "Nemo",
+          "versions": [
+            "1.3 HDi 75",
+            "1.4i 73",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Jumpy (2000-2016)",
+          "versions": [
+            "1.6 HDi 90",
+            "2.0 HDi 120",
+            "2.0 HDi 163",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Jumpy (2016-)",
           "versions": [
             "1.5 BlueHDi 100",
             "2.0 BlueHDi 120",
@@ -10524,6 +10565,15 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -10531,7 +10581,7 @@
       "make": "Dacia",
       "models": [
         {
-          "name": "Dokker",
+          "name": "Dokker (2012-2021)",
           "versions": [
             "1.6 SCe 102",
             "1.5 dCi 75",
@@ -10542,6 +10592,19 @@
             "Access",
             "Ambiance",
             "Stepway",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Express (2021-)",
+          "versions": [
+            "1.3 TCe 100",
+            "1.5 dCi 95",
+            "Diğer"
+          ],
+          "trims": [
+            "Essential",
+            "Comfort",
             "Diğer"
           ]
         },
@@ -10557,6 +10620,15 @@
             "Essential",
             "Expression",
             "Extreme",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -10580,11 +10652,39 @@
       "make": "Fiat",
       "models": [
         {
-          "name": "Doblo",
+          "name": "Fiorino",
+          "versions": [
+            "1.3 MultiJet 80",
+            "1.4 Fire 77",
+            "Diğer"
+          ],
+          "trims": [
+            "Pop",
+            "Adventure",
+            "Qubo",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Doblo (2001-2015)",
+          "versions": [
+            "1.3 MultiJet 85",
+            "1.6 MultiJet 105",
+            "1.9 MultiJet 120",
+            "1.4 Fire 77",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Cargo",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Doblo (2015-)",
           "versions": [
             "1.2 MultiJet 95",
             "1.6 MultiJet 120",
-            "1.3 MultiJet 85",
             "e-Doblo Electric",
             "Diğer"
           ],
@@ -10596,16 +10696,15 @@
           ]
         },
         {
-          "name": "Fiorino",
+          "name": "Scudo (2004-2016)",
           "versions": [
-            "1.3 MultiJet 80",
-            "1.4 Fire 77",
+            "1.6 MultiJet 90",
+            "2.0 MultiJet 130",
+            "2.0 MultiJet 163",
             "Diğer"
           ],
           "trims": [
-            "Pop",
-            "Adventure",
-            "Qubo",
+            "Base",
             "Diğer"
           ]
         },
@@ -10636,6 +10735,15 @@
             "Business",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -10643,7 +10751,33 @@
       "make": "Ford",
       "models": [
         {
-          "name": "Transit Connect",
+          "name": "Courier",
+          "versions": [
+            "1.0 EcoBoost 100",
+            "1.5 EcoBlue 100",
+            "Diğer"
+          ],
+          "trims": [
+            "Trend",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Transit Connect (2002-2013)",
+          "versions": [
+            "1.8 Di 75",
+            "1.8 TDCi 90",
+            "1.8 TDCi 110",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Transit Connect (2013-)",
           "versions": [
             "1.0 EcoBoost 100",
             "1.5 EcoBlue 100",
@@ -10653,6 +10787,22 @@
           "trims": [
             "Trend",
             "Limited",
+            "Active",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tourneo Connect",
+          "versions": [
+            "1.0 EcoBoost 100",
+            "1.5 EcoBlue 100",
+            "1.5 EcoBlue 120",
+            "PHEV 150",
+            "Diğer"
+          ],
+          "trims": [
+            "Trend",
+            "Titanium",
             "Active",
             "Diğer"
           ]
@@ -10675,7 +10825,22 @@
           ]
         },
         {
-          "name": "Transit",
+          "name": "Transit (2000-2014)",
+          "versions": [
+            "2.0 TDCi 85",
+            "2.2 TDCi 100",
+            "2.2 TDCi 125",
+            "2.2 TDCi 155",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Trend",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Transit (2014-)",
           "versions": [
             "2.0 EcoBlue 105",
             "2.0 EcoBlue 130",
@@ -10692,7 +10857,38 @@
           ]
         },
         {
-          "name": "Ranger",
+          "name": "Ranger (2000-2011)",
+          "versions": [
+            "2.5 TDCi 143 4WD",
+            "3.0 TDCi 156 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "XL",
+            "XLT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ranger (2011-2022)",
+          "versions": [
+            "2.2 TDCi 125 4WD",
+            "2.2 TDCi 160 4WD",
+            "3.2 TDCi 200 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "XL",
+            "XLT",
+            "Limited",
+            "Wildtrak",
+            "Raptor",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ranger (2022-)",
           "versions": [
             "2.0 EcoBlue 130 4x2",
             "2.0 EcoBlue 150 4x2",
@@ -10712,31 +10908,11 @@
           ]
         },
         {
-          "name": "Tourneo Connect",
+          "name": "Diğer",
           "versions": [
-            "1.0 EcoBoost 100",
-            "1.5 EcoBlue 100",
-            "1.5 EcoBlue 120",
-            "PHEV 150",
             "Diğer"
           ],
           "trims": [
-            "Trend",
-            "Titanium",
-            "Active",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Courier",
-          "versions": [
-            "1.0 EcoBoost 100",
-            "1.5 EcoBlue 100",
-            "Diğer"
-          ],
-          "trims": [
-            "Trend",
-            "Limited",
             "Diğer"
           ]
         }
@@ -11028,7 +11204,34 @@
           ]
         },
         {
-          "name": "Vito",
+          "name": "Vito (W638) (1996-2003)",
+          "versions": [
+            "2.2 CDI 102",
+            "2.2 CDI 122",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Vito (W639) (2003-2014)",
+          "versions": [
+            "2.2 CDI 109",
+            "2.2 CDI 116",
+            "2.2 CDI 150",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Mixto",
+            "Tourer",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Vito (W447) (2014-)",
           "versions": [
             "1.7 CDI 116",
             "1.7 CDI 136",
@@ -11060,7 +11263,32 @@
           ]
         },
         {
-          "name": "Sprinter",
+          "name": "Sprinter (W901-905) (1995-2006)",
+          "versions": [
+            "2.2 CDI 109",
+            "2.9 TDI 129",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sprinter (W906) (2006-2018)",
+          "versions": [
+            "2.1 CDI 109",
+            "2.1 CDI 129",
+            "2.1 CDI 150",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sprinter (W907) (2018-)",
           "versions": [
             "2.0 CDI 114",
             "2.0 CDI 143",
@@ -11074,6 +11302,15 @@
             "Premium",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -11081,7 +11318,20 @@
       "make": "Mitsubishi",
       "models": [
         {
-          "name": "L200",
+          "name": "L200 (2000-2015)",
+          "versions": [
+            "2.5 Di-D 136 4WD",
+            "2.5 Di-D 178 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Invite",
+            "Intense",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "L200 (2015-)",
           "versions": [
             "2.2 Di-D 154 4WD",
             "2.4 MIVEC 181 4WD",
@@ -11095,6 +11345,17 @@
           ]
         },
         {
+          "name": "L300 (1986-2005)",
+          "versions": [
+            "2.5 TD 99",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Canter",
           "versions": [
             "3.0 4P10 130",
@@ -11103,6 +11364,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -11171,7 +11441,20 @@
       "make": "Opel",
       "models": [
         {
-          "name": "Combo",
+          "name": "Combo (2001-2011)",
+          "versions": [
+            "1.3 CDTI 70",
+            "1.3 CDTI 90",
+            "1.7 CDTI 100",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Combo (2018-)",
           "versions": [
             "1.2 T 110",
             "1.5 D 100",
@@ -11186,7 +11469,20 @@
           ]
         },
         {
-          "name": "Vivaro",
+          "name": "Vivaro (A) (2001-2014)",
+          "versions": [
+            "1.9 DTI 80",
+            "1.9 CDTI 100",
+            "2.0 CDTI 120",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Vivaro (B/C) (2014-)",
           "versions": [
             "1.5D 100",
             "1.5D 120",
@@ -11213,6 +11509,15 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -11220,7 +11525,36 @@
       "make": "Peugeot",
       "models": [
         {
-          "name": "Partner",
+          "name": "Partner (2000-2008)",
+          "versions": [
+            "1.4i 75",
+            "1.6i 90",
+            "1.6 HDi 75",
+            "1.6 HDi 90",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Partner (2008-2018)",
+          "versions": [
+            "1.6 VTi 98",
+            "1.6 HDi 75",
+            "1.6 HDi 90",
+            "1.6 HDi 115",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Tepee",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Partner (2018-)",
           "versions": [
             "1.2 PureTech 110",
             "1.5 BlueHDi 100",
@@ -11236,7 +11570,20 @@
           ]
         },
         {
-          "name": "Expert",
+          "name": "Expert (2004-2016)",
+          "versions": [
+            "1.6 HDi 90",
+            "2.0 HDi 120",
+            "2.0 HDi 163",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Expert (2016-)",
           "versions": [
             "1.5 BlueHDi 100",
             "2.0 BlueHDi 120",
@@ -11278,6 +11625,15 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -11285,7 +11641,35 @@
       "make": "Renault",
       "models": [
         {
-          "name": "Kangoo",
+          "name": "Kangoo (1997-2007)",
+          "versions": [
+            "1.4i 75",
+            "1.6i 95",
+            "1.5 dCi 65",
+            "1.5 dCi 80",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Kangoo (2008-2021)",
+          "versions": [
+            "1.5 dCi 75",
+            "1.5 dCi 90",
+            "1.5 dCi 110",
+            "Diğer"
+          ],
+          "trims": [
+            "Confort",
+            "Expression",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Kangoo (2021-)",
           "versions": [
             "1.3 TCe 100",
             "1.3 TCe 130",
@@ -11301,7 +11685,32 @@
           ]
         },
         {
-          "name": "Trafic",
+          "name": "Express (2021-)",
+          "versions": [
+            "1.3 TCe 100",
+            "1.5 dCi 95",
+            "Diğer"
+          ],
+          "trims": [
+            "Comfort",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Trafic (2001-2014)",
+          "versions": [
+            "2.0 dCi 90",
+            "2.0 dCi 115",
+            "2.5 dCi 145",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Trafic (2014-)",
           "versions": [
             "2.0 dCi 120",
             "2.0 dCi 150",
@@ -11315,7 +11724,19 @@
           ]
         },
         {
-          "name": "Master",
+          "name": "Master (2000-2010)",
+          "versions": [
+            "2.5 dCi 100",
+            "2.5 dCi 120",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Master (2010-)",
           "versions": [
             "2.3 dCi 110",
             "2.3 dCi 135",
@@ -11340,6 +11761,15 @@
             "Intens",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -11347,7 +11777,34 @@
       "make": "Toyota",
       "models": [
         {
-          "name": "Hilux",
+          "name": "Hilux (2000-2005)",
+          "versions": [
+            "2.5 D-4D 102 4WD",
+            "3.0 D-4D 163 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Country",
+            "Comfort",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hilux (2005-2015)",
+          "versions": [
+            "2.5 D-4D 120 4WD",
+            "3.0 D-4D 171 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Country",
+            "Comfort",
+            "Executive",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hilux (2015-)",
           "versions": [
             "2.4 D-4D 150 4WD",
             "2.8 D-4D 204 4WD",
@@ -11403,6 +11860,15 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
         }
       ]
     },
@@ -11410,7 +11876,23 @@
       "make": "Volkswagen",
       "models": [
         {
-          "name": "Caddy",
+          "name": "Caddy (2004-2020)",
+          "versions": [
+            "1.6 TDI 102",
+            "2.0 TDI 110",
+            "2.0 TDI 150",
+            "1.2 TSI 105",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Trendline",
+            "Comfortline",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Caddy (2020-)",
           "versions": [
             "1.5 TSI 114",
             "2.0 TDI 102",
@@ -11426,7 +11908,38 @@
           ]
         },
         {
-          "name": "Transporter",
+          "name": "Transporter T4 (1990-2003)",
+          "versions": [
+            "1.9 TD 68",
+            "2.4 D 78",
+            "2.5 TDI 88",
+            "2.5 TDI 102",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Caravelle",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Transporter T5 (2003-2015)",
+          "versions": [
+            "1.9 TDI 85",
+            "2.0 TDI 102",
+            "2.0 TDI 140",
+            "2.5 TDI 130",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Comfortline",
+            "Highline",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Transporter T6 (2015-)",
           "versions": [
             "2.0 TDI 110",
             "2.0 TDI 150",
@@ -11481,7 +11994,24 @@
           ]
         },
         {
-          "name": "Amarok",
+          "name": "Amarok (2010-2022)",
+          "versions": [
+            "2.0 TDI 140 4Motion",
+            "2.0 BiTDI 180 4Motion",
+            "3.0 TDI 204 4Motion",
+            "Diğer"
+          ],
+          "trims": [
+            "Trendline",
+            "Comfortline",
+            "Highline",
+            "Canyon",
+            "Aventura",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Amarok (2022-)",
           "versions": [
             "2.0 TDI 170 4Motion",
             "3.0 TDI 240 4Motion",
@@ -11493,6 +12023,15 @@
             "Style",
             "Aventura",
             "PanAmericana",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
