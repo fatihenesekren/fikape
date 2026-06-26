@@ -296,8 +296,9 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
 
   return (
     <div>
-      {/* Sekmeler */}
-      <div className="flex gap-2 mb-6 border-b border-gray-100 pb-4">
+      {/* Sekmeler + Cache temizle */}
+      <div className="flex items-center justify-between gap-2 mb-6 border-b border-gray-100 pb-4">
+        <div className="flex gap-2">
         {(["PENDING", "APPROVED", "REJECTED"] as const).map((tab) => (
           <button
             key={tab}
@@ -314,6 +315,16 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
             )}
           </button>
         ))}
+        </div>
+        <button
+          onClick={async () => {
+            await fetch("/api/admin/revalidate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ tag: "hero" }) });
+            alert("Hero cache temizlendi.");
+          }}
+          className="text-xs text-gray-400 hover:text-gray-600 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors"
+        >
+          Cache Temizle
+        </button>
       </div>
 
       {visible.length === 0 && (
