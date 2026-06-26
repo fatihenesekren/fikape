@@ -150,6 +150,7 @@ export async function POST(req: Request) {
   return NextResponse.json({ slug: product.slug }, { status: 201 });
   } catch (err) {
     console.error("[POST /api/oneriler]", err);
-    return NextResponse.json({ error: "Sunucu hatası oluştu, lütfen tekrar deneyin" }, { status: 500 });
+    const msg = err instanceof Error ? err.message : String(err);
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
