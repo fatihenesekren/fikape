@@ -1,13 +1,18 @@
 {
   "make": "Aprilia",
   "models": [
+    { "name": "SR 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Race", "Diğer"] },
+    { "name": "SR 160", "versions": ["160cc 11 CV", "Diğer"], "trims": ["Standart", "Race", "Diğer"] },
+    { "name": "RS4 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "RS 660", "versions": ["100 CV 659cc", "Extrema 100 CV", "Diğer"], "trims": ["Standart", "Extrema", "Diğer"] },
     { "name": "Tuono 660", "versions": ["95 CV 659cc", "Factory 95 CV", "Diğer"], "trims": ["Standart", "Factory", "Diğer"] },
+    { "name": "Tuareg 660", "versions": ["80 CV 659cc", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "RSV4", "versions": ["RSV4 1100 217 CV", "RSV4 Factory 1100 217 CV", "RSV4 RR 1100", "Diğer"], "trims": ["Standart", "Factory", "RR", "Diğer"] },
     { "name": "Tuono V4", "versions": ["1100 175 CV", "1100 Factory 175 CV", "Diğer"], "trims": ["Standart", "Factory", "Diğer"] },
     { "name": "Shiver", "versions": ["900 95 CV", "Diğer"], "trims": ["Standart", "E-Ride", "Diğer"] },
     { "name": "Dorsoduro", "versions": ["900 95 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "SX 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "RX 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "RX 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

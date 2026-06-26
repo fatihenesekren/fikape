@@ -2,13 +2,17 @@
   "make": "Suzuki",
   "models": [
     { "name": "GSX-R125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "GSX-R600", "versions": ["600cc 120 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "GSX-R750", "versions": ["750cc 150 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "GSX-R1000", "versions": ["999cc 202 CV", "R 202 CV", "Diğer"], "trims": ["Standart", "R", "Diğer"] },
+    { "name": "GSX-R600 (1997-2017)", "versions": ["600cc 120 CV", "K-serisi", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GSX-R750 (2000-2018)", "versions": ["750cc 150 CV", "K-serisi", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GSX-R1000 (2001-)", "versions": ["999cc 183 CV (K1-K6)", "999cc 185 CV (K7-K8)", "999cc 202 CV (2017-)", "R 202 CV", "Diğer"], "trims": ["Standart", "R", "Diğer"] },
     { "name": "GSX-S750", "versions": ["750cc 114 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "GSX-S1000", "versions": ["999cc 152 CV", "GT 152 CV", "GX 152 CV", "Diğer"], "trims": ["Standart", "GT", "GX", "Diğer"] },
-    { "name": "V-Strom 650", "versions": ["650cc 71 CV", "XT 71 CV", "Diğer"], "trims": ["Standart", "XT", "Diğer"] },
-    { "name": "V-Strom 1050", "versions": ["1037cc 107 CV", "XT 107 CV", "DE 107 CV", "Diğer"], "trims": ["Standart", "XT", "DE", "Diğer"] },
-    { "name": "Burgman 400", "versions": ["400cc 31 CV", "Diğer"], "trims": ["Standart", "Diğer"] }
+    { "name": "SV 650 (1999-)", "versions": ["645cc 73 CV", "S 73 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
+    { "name": "Bandit 600 / 1200 (2000-2009)", "versions": ["600cc 78 CV", "1200cc 98 CV", "S versiyon", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
+    { "name": "Bandit 1250 (2007-2018)", "versions": ["1255cc 99 CV", "S 99 CV", "F ABS", "Diğer"], "trims": ["Standart", "S", "F", "Diğer"] },
+    { "name": "V-Strom 650 (2004-)", "versions": ["650cc 71 CV", "XT 71 CV", "Diğer"], "trims": ["Standart", "XT", "Diğer"] },
+    { "name": "V-Strom 1000 / 1050 (2002-)", "versions": ["996cc 99 CV V-Strom 1000", "1037cc 107 CV V-Strom 1050", "XT 107 CV", "DE 107 CV", "Diğer"], "trims": ["Standart", "XT", "DE", "Diğer"] },
+    { "name": "Burgman 400", "versions": ["400cc 31 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

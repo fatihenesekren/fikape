@@ -7409,6 +7409,41 @@
       "make": "Aprilia",
       "models": [
         {
+          "name": "SR 125",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Race",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SR 160",
+          "versions": [
+            "160cc 11 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Race",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RS4 125",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "RS 660",
           "versions": [
             "100 CV 659cc",
@@ -7431,6 +7466,17 @@
           "trims": [
             "Standart",
             "Factory",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tuareg 660",
+          "versions": [
+            "80 CV 659cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -7504,6 +7550,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -7715,7 +7770,25 @@
           ]
         },
         {
-          "name": "R 1250 GS",
+          "name": "R 1200 GS (2004-2018)",
+          "versions": [
+            "105 CV 1170cc",
+            "Adventure 105 CV",
+            "LC 125 CV",
+            "LC Adventure 125 CV",
+            "Rallye 125 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Adventure",
+            "TE",
+            "Rallye",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1250 GS (2018-)",
           "versions": [
             "136 CV 1254cc",
             "Adventure",
@@ -7739,6 +7812,43 @@
           "trims": [
             "Standart",
             "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 800 GS (2008-2018)",
+          "versions": [
+            "85 CV 798cc",
+            "Adventure 85 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Adventure",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 800 R (2009-2019)",
+          "versions": [
+            "90 CV 798cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 850 GS (2018-)",
+          "versions": [
+            "95 CV 853cc",
+            "Adventure",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Adventure",
             "Diğer"
           ]
         },
@@ -7767,19 +7877,6 @@
           ]
         },
         {
-          "name": "F 850 GS",
-          "versions": [
-            "95 CV 853cc",
-            "Adventure",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Adventure",
-            "Diğer"
-          ]
-        },
-        {
           "name": "G 310 R",
           "versions": [
             "34 CV 313cc",
@@ -7802,6 +7899,20 @@
           ]
         },
         {
+          "name": "K 1600 GT/GTL",
+          "versions": [
+            "160 CV 1649cc GT",
+            "160 CV 1649cc GTL",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "Exclusive",
+            "Diğer"
+          ]
+        },
+        {
           "name": "C 400 X",
           "versions": [
             "34 CV 350cc",
@@ -7820,6 +7931,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -7933,7 +8053,56 @@
       "make": "Ducati",
       "models": [
         {
-          "name": "Panigale V2",
+          "name": "848 / 1098 / 1198 (2007-2013)",
+          "versions": [
+            "848 134 CV",
+            "1098 160 CV",
+            "1098 S 160 CV",
+            "1198 170 CV",
+            "1198 S 170 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "SP",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "1199 Panigale (2012-2014)",
+          "versions": [
+            "195 CV 1199cc",
+            "S 195 CV",
+            "R 205 CV",
+            "Tricolore",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "1299 Panigale (2015-2018)",
+          "versions": [
+            "205 CV 1285cc",
+            "S 205 CV",
+            "R 220 CV",
+            "Superleggera",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Panigale V2 (2020-)",
           "versions": [
             "155 CV 955cc",
             "Bayliss 1st 155 CV",
@@ -7946,7 +8115,7 @@
           ]
         },
         {
-          "name": "Panigale V4",
+          "name": "Panigale V4 (2018-)",
           "versions": [
             "215 CV 1103cc",
             "S 215 CV",
@@ -7963,7 +8132,34 @@
           ]
         },
         {
-          "name": "Monster",
+          "name": "Monster 696 / 796 (2008-2015)",
+          "versions": [
+            "696cc 80 CV",
+            "796cc 87 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Monster 821 / 1200 (2014-2020)",
+          "versions": [
+            "821cc 109 CV",
+            "1200cc 150 CV",
+            "1200 S 150 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Monster (2021-)",
           "versions": [
             "111 CV 937cc",
             "Monster+ 111 CV",
@@ -7976,7 +8172,24 @@
           ]
         },
         {
-          "name": "Multistrada V4",
+          "name": "Multistrada 950 / 1200 / 1260 (2010-2021)",
+          "versions": [
+            "950cc 113 CV",
+            "1200cc 160 CV",
+            "1260cc 158 CV",
+            "1260 S",
+            "1260 Enduro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Enduro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Multistrada V4 (2021-)",
           "versions": [
             "170 CV 1158cc",
             "S 170 CV",
@@ -7988,6 +8201,33 @@
             "S",
             "S Sport",
             "Rally",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hypermotard 796 / 821 / 939 (2007-2018)",
+          "versions": [
+            "796cc 81 CV",
+            "821cc 110 CV",
+            "939cc 113 CV",
+            "SP",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SP",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hypermotard (2019-)",
+          "versions": [
+            "950 SP 114 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SP",
             "Diğer"
           ]
         },
@@ -8021,18 +8261,6 @@
           ]
         },
         {
-          "name": "Hypermotard",
-          "versions": [
-            "950 SP 114 CV",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "SP",
-            "Diğer"
-          ]
-        },
-        {
           "name": "Streetfighter V4",
           "versions": [
             "208 CV 1103cc",
@@ -8044,6 +8272,15 @@
             "Standart",
             "S",
             "SP",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -8114,17 +8351,6 @@
       "make": "Harley-Davidson",
       "models": [
         {
-          "name": "Sportster S",
-          "versions": [
-            "1252cc 121 CV",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
           "name": "Iron 883",
           "versions": [
             "883cc 50 CV",
@@ -8147,8 +8373,32 @@
           ]
         },
         {
+          "name": "Forty-Eight",
+          "versions": [
+            "1202cc 68 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Special",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sportster S",
+          "versions": [
+            "1252cc 121 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Fat Boy",
           "versions": [
+            "107ci 1745cc",
             "114ci 1746cc 93 CV",
             "Diğer"
           ],
@@ -8162,12 +8412,64 @@
         {
           "name": "Fat Bob",
           "versions": [
+            "107ci 1745cc",
             "114ci 1746cc 93 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "114",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Softail Slim",
+          "versions": [
+            "107ci 1745cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Breakout",
+          "versions": [
+            "114ci 1746cc",
+            "117ci 1923cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Heritage Classic",
+          "versions": [
+            "107ci 1745cc",
+            "114ci 1746cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "114",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Low Rider",
+          "versions": [
+            "107ci 1745cc",
+            "S 117ci 1923cc",
+            "ST 117ci 1923cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "ST",
             "Diğer"
           ]
         },
@@ -8189,11 +8491,26 @@
           "versions": [
             "107ci 1745cc",
             "Special 114ci",
+            "ST 117ci",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Special",
+            "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Electra Glide",
+          "versions": [
+            "107ci 1745cc",
+            "Ultra Limited 114ci",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Ultra Limited",
             "Diğer"
           ]
         },
@@ -8207,6 +8524,15 @@
           "trims": [
             "Standart",
             "Special",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -8251,6 +8577,20 @@
           ]
         },
         {
+          "name": "CBR 600 RR (2003-2020)",
+          "versions": [
+            "120 CV 599cc",
+            "ABS",
+            "C-ABS",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
           "name": "CBR 650 R",
           "versions": [
             "650cc 95 CV",
@@ -8263,11 +8603,39 @@
           ]
         },
         {
-          "name": "CBR 1000 RR-R",
+          "name": "CBR 900 / 954 RR (2000-2003)",
+          "versions": [
+            "929cc 152 CV",
+            "954cc 152 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CBR 1000 RR Fireblade (2004-2019)",
+          "versions": [
+            "172 CV 999cc",
+            "ABS",
+            "SP 192 CV",
+            "SP2",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "SP",
+            "SP2",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CBR 1000 RR-R (2020-)",
           "versions": [
             "217 CV 1000cc",
             "SP 217 CV",
-            "Fireblade 217 CV",
             "Diğer"
           ],
           "trims": [
@@ -8289,6 +8657,19 @@
           ]
         },
         {
+          "name": "CB 400 (1992-2009)",
+          "versions": [
+            "400cc 53 CV VTEC",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Spec II",
+            "Spec III",
+            "Diğer"
+          ]
+        },
+        {
           "name": "CB 500 F",
           "versions": [
             "500cc 47 CV",
@@ -8306,6 +8687,18 @@
           "versions": [
             "500cc 47 CV",
             "ABS",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CB 600 F Hornet (1998-2013)",
+          "versions": [
+            "102 CV 599cc",
             "Diğer"
           ],
           "trims": [
@@ -8353,6 +8746,19 @@
           ]
         },
         {
+          "name": "VFR 800 (1998-2013)",
+          "versions": [
+            "110 CV 782cc",
+            "ABS",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
           "name": "X-ADV",
           "versions": [
             "750cc 58 CV DCT",
@@ -8375,7 +8781,7 @@
           ]
         },
         {
-          "name": "Africa Twin",
+          "name": "Africa Twin (2016-)",
           "versions": [
             "1100cc 102 CV",
             "Adventure Sports",
@@ -8397,6 +8803,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -8566,7 +8981,21 @@
           ]
         },
         {
-          "name": "Ninja 400",
+          "name": "Ninja 300 / 400 (2012-2022)",
+          "versions": [
+            "296cc 39 CV",
+            "400cc 45 CV",
+            "ABS",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "KRT Edition",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ninja 400 (2023-)",
           "versions": [
             "400cc 45 CV",
             "ABS",
@@ -8579,8 +9008,9 @@
           ]
         },
         {
-          "name": "Ninja 650",
+          "name": "Ninja 650 / ER-6f (2006-)",
           "versions": [
+            "649cc 61 CV ER-6f",
             "650cc 68 CV",
             "Diğer"
           ],
@@ -8591,7 +9021,18 @@
           ]
         },
         {
-          "name": "Ninja ZX-6R",
+          "name": "Ninja ZX-6R (2000-2006)",
+          "versions": [
+            "636cc 116 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ninja ZX-6R (2007-)",
           "versions": [
             "636cc 130 CV",
             "636 ABS",
@@ -8631,15 +9072,29 @@
           ]
         },
         {
-          "name": "Z650",
+          "name": "Z650 / ER-6n (2006-)",
           "versions": [
-            "650cc 68 CV",
+            "649cc 61 CV ER-6n",
+            "650cc 68 CV Z650",
             "RS 650cc",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Z750 (2004-2012)",
+          "versions": [
+            "750cc 106 CV",
+            "Z750 R",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
             "Diğer"
           ]
         },
@@ -8653,6 +9108,19 @@
           "trims": [
             "Standart",
             "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Z1000 (2003-2020)",
+          "versions": [
+            "953cc 141 CV",
+            "SX Touring",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SX",
             "Diğer"
           ]
         },
@@ -8708,6 +9176,15 @@
             "Standart",
             "Café",
             "Street",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -9257,9 +9734,10 @@
           ]
         },
         {
-          "name": "GSX-R600",
+          "name": "GSX-R600 (1997-2017)",
           "versions": [
             "600cc 120 CV",
+            "K-serisi",
             "Diğer"
           ],
           "trims": [
@@ -9268,9 +9746,10 @@
           ]
         },
         {
-          "name": "GSX-R750",
+          "name": "GSX-R750 (2000-2018)",
           "versions": [
             "750cc 150 CV",
+            "K-serisi",
             "Diğer"
           ],
           "trims": [
@@ -9279,9 +9758,11 @@
           ]
         },
         {
-          "name": "GSX-R1000",
+          "name": "GSX-R1000 (2001-)",
           "versions": [
-            "999cc 202 CV",
+            "999cc 183 CV (K1-K6)",
+            "999cc 185 CV (K7-K8)",
+            "999cc 202 CV (2017-)",
             "R 202 CV",
             "Diğer"
           ],
@@ -9318,7 +9799,49 @@
           ]
         },
         {
-          "name": "V-Strom 650",
+          "name": "SV 650 (1999-)",
+          "versions": [
+            "645cc 73 CV",
+            "S 73 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bandit 600 / 1200 (2000-2009)",
+          "versions": [
+            "600cc 78 CV",
+            "1200cc 98 CV",
+            "S versiyon",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bandit 1250 (2007-2018)",
+          "versions": [
+            "1255cc 99 CV",
+            "S 99 CV",
+            "F ABS",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "F",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V-Strom 650 (2004-)",
           "versions": [
             "650cc 71 CV",
             "XT 71 CV",
@@ -9331,9 +9854,10 @@
           ]
         },
         {
-          "name": "V-Strom 1050",
+          "name": "V-Strom 1000 / 1050 (2002-)",
           "versions": [
-            "1037cc 107 CV",
+            "996cc 99 CV V-Strom 1000",
+            "1037cc 107 CV V-Strom 1050",
             "XT 107 CV",
             "DE 107 CV",
             "Diğer"
@@ -9353,6 +9877,15 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -9662,6 +10195,20 @@
           ]
         },
         {
+          "name": "YZF-R6 (2003-2020)",
+          "versions": [
+            "120 CV 600cc",
+            "R-LE",
+            "Race",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R-LE",
+            "Diğer"
+          ]
+        },
+        {
           "name": "YZF-R7",
           "versions": [
             "689cc 73 CV",
@@ -9675,7 +10222,21 @@
           ]
         },
         {
-          "name": "YZF-R1",
+          "name": "YZF-R1 (2004-2014)",
+          "versions": [
+            "998cc 182 CV",
+            "SP",
+            "LE",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SP",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "YZF-R1 (2015-)",
           "versions": [
             "998cc 200 CV",
             "M 200 CV",
@@ -9733,6 +10294,56 @@
           "trims": [
             "Standart",
             "SP",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "FZS 600 Fazer (1998-2003)",
+          "versions": [
+            "600cc 95 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "FZ6 / FZ6 Fazer (2004-2010)",
+          "versions": [
+            "600cc 98 CV",
+            "S2 98 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S2",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XJ6 / Diversion (2009-2015)",
+          "versions": [
+            "600cc 78 CV",
+            "F 78 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "F",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "FZ1 Fazer (2006-2015)",
+          "versions": [
+            "998cc 150 CV",
+            "S 150 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
             "Diğer"
           ]
         },
@@ -9836,6 +10447,15 @@
           "trims": [
             "Standart",
             "Tech Max",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
