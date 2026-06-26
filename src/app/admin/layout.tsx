@@ -14,8 +14,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   if (!adminUser || adminUser.trustLevel < 5) redirect("/");
 
   const [pendingReviews, pendingSuggestions] = await Promise.all([
-    prisma.review.count({ where: { status: "PENDING" } }),
-    prisma.vehicleSuggestion.count({ where: { status: "PENDING" } }),
+    prisma.review.count({ where: { status: "PENDING" } }).catch(() => 0),
+    prisma.vehicleSuggestion.count({ where: { status: "PENDING" } }).catch(() => 0),
   ]);
 
   const navItems = [
