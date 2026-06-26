@@ -226,6 +226,8 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
   const [customSlug, setCustomSlug] = useState("");
   const [attrs, setAttrs]     = useState<Record<string, string>>({});
   const [errorMsg, setErrorMsg]     = useState<string | null>(null);
+  const [fetchingSpecs, setFetchingSpecs] = useState(false);
+  const [specSource, setSpecSource]       = useState<string | null>(null);
 
   const visible = suggestions.filter((s) => s.status === filter);
   const counts = {
@@ -275,8 +277,8 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
     }
   }
 
-  function openModal(suggestion: Suggestion, action: "APPROVED" | "REJECTED") {
-    setErrorMsg(null); setAdminNote(""); setAttrs({});
+  async function openModal(suggestion: Suggestion, action: "APPROVED" | "REJECTED") {
+    setErrorMsg(null); setAdminNote(""); setSpecSource(null);
     if (!suggestion.productId) {
       const parts = [suggestion.brandName, suggestion.modelName, suggestion.trimName, suggestion.year]
         .filter(Boolean).join("-").toLowerCase()
@@ -287,11 +289,29 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
     } else {
       setCustomSlug("");
     }
-    // fuelType varsa attrs'e pre-fill et
-    if (action === "APPROVED" && suggestion.fuelType) {
-      setAttrs({ fuel_type: suggestion.fuelType });
-    }
+
+    const base: Record<string, string> = suggestion.fuelType ? { fuel_type: suggestion.fuelType } : {};
+    setAttrs(base);
     setModal({ suggestion, action });
+
+    if (action === "APPROVED" && suggestion.categorySlug === "otomobil") {
+      setFetchingSpecs(true);
+      try {
+        const params = new URLSearchParams({
+          brand: suggestion.brandName,
+          model: suggestion.modelName,
+          ...(suggestion.year ? { year: String(suggestion.year) } : {}),
+          ...(suggestion.trimName ? { trim: suggestion.trimName } : {}),
+        });
+        const res  = await fetch(`/api/admin/fetch-specs?${params}`);
+        const data = await res.json();
+        if (data.specs && Object.keys(data.specs).length > 0) {
+          setAttrs((prev) => ({ ...data.specs, ...prev })); // öneri verileri (fuel_type) üste çıksın
+          setSpecSource(data.source ?? "CarQuery");
+        }
+      } catch { /* sessizce geç */ }
+      finally { setFetchingSpecs(false); }
+    }
   }
 
   return (
@@ -448,11 +468,22 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
 
             {/* Teknik özellik formu — sadece APPROVED'da */}
             {modal.action === "APPROVED" && (
-              <SpecForm
-                categorySlug={modal.suggestion.categorySlug}
-                attrs={attrs}
-                onChange={handleAttrChange}
-              />
+              <>
+                {fetchingSpecs && (
+                  <p className="text-xs text-gray-400 mb-2 animate-pulse">🔍 CarQuery&apos;den veriler çekiliyor...</p>
+                )}
+                {!fetchingSpecs && specSource && (
+                  <p className="text-xs text-green-600 mb-2">✓ {specSource} — alanlar otomatik dolduruldu, kontrol edip düzenleyebilirsin.</p>
+                )}
+                {!fetchingSpecs && !specSource && modal.suggestion.categorySlug === "otomobil" && (
+                  <p className="text-xs text-gray-400 mb-2">CarQuery&apos;de bu araç için veri bulunamadı, manuel doldur.</p>
+                )}
+                <SpecForm
+                  categorySlug={modal.suggestion.categorySlug}
+                  attrs={attrs}
+                  onChange={handleAttrChange}
+                />
+              </>
             )}
 
             <div className="mb-4">
