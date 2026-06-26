@@ -1,0 +1,30 @@
+{
+  "make": "Abarth",
+  "models": [
+    {
+      "name": "500 / 595 (2008-2023)",
+      "versions": ["1.4 T-Jet 135", "1.4 T-Jet 160", "1.4 T-Jet 180", "595 Competizione 180", "695 Biposto 190", "Diğer"],
+      "trims": ["Standart", "Turismo", "Competizione", "695", "Diğer"]
+    },
+    {
+      "name": "500e (2023-)",
+      "versions": ["Elektrik 155 CV", "Scorpionissima 155 CV", "Diğer"],
+      "trims": ["Standart", "Turismo", "Scorpionissima", "Diğer"]
+    },
+    {
+      "name": "124 Spider (2016-2019)",
+      "versions": ["1.4 MultiAir 170", "Heritage 170", "Diğer"],
+      "trims": ["Standart", "Heritage", "Diğer"]
+    },
+    {
+      "name": "Punto (2010-2012)",
+      "versions": ["1.4 MultiAir 163", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

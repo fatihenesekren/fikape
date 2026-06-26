@@ -1,0 +1,35 @@
+{
+  "make": "Infiniti",
+  "models": [
+    {
+      "name": "Q30 / QX30 (2016-2019)",
+      "versions": ["1.6T 122", "1.6T 136", "2.0T 211", "2.2d 170", "Diğer"],
+      "trims": ["Pure", "Luxe", "Sport", "Diğer"]
+    },
+    {
+      "name": "Q50 (2013-2019)",
+      "versions": ["2.0T 211", "3.0T 300", "3.0T 400", "2.2d 170", "Hybrid 359", "Diğer"],
+      "trims": ["Pure", "Luxe", "Premium", "Sport", "Red Sport", "Diğer"]
+    },
+    {
+      "name": "Q60 (2017-2019)",
+      "versions": ["2.0T 211", "3.0T 300", "3.0T 400 Red Sport", "Diğer"],
+      "trims": ["Pure", "Luxe", "Red Sport 400", "Diğer"]
+    },
+    {
+      "name": "Q70 (2014-2019)",
+      "versions": ["2.5 Hybrid 364", "3.7 V6 333", "Diğer"],
+      "trims": ["Pure", "Luxe", "Premium", "Diğer"]
+    },
+    {
+      "name": "QX70 / FX (2003-2017)",
+      "versions": ["3.7 V6 320", "3.0d V6 238", "Diğer"],
+      "trims": ["Standart", "S", "Sport", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

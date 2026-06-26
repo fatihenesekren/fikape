@@ -1,0 +1,20 @@
+{
+  "make": "Jaecoo",
+  "models": [
+    {
+      "name": "Jaecoo 7 (2023-)",
+      "versions": ["1.6T 147 2WD", "1.6T 147 4WD", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Supreme", "Diğer"]
+    },
+    {
+      "name": "Jaecoo 8 (2024-)",
+      "versions": ["2.0T 197 2WD", "2.0T 197 4WD", "PHEV 265", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Supreme", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

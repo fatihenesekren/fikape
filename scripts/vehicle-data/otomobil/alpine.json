@@ -1,0 +1,20 @@
+{
+  "make": "Alpine",
+  "models": [
+    {
+      "name": "A110 (2017-)",
+      "versions": ["1.8 Turbo 252", "1.8 Turbo 300 S", "1.8 Turbo 300 GT4", "Diğer"],
+      "trims": ["Pure", "Légende", "S", "GT", "Color Edition", "Diğer"]
+    },
+    {
+      "name": "A290 (2024-)",
+      "versions": ["Elektrik 180 CV", "Elektrik 220 CV GTS", "Diğer"],
+      "trims": ["Standart", "GTS", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

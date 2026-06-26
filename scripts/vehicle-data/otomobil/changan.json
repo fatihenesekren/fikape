@@ -1,0 +1,30 @@
+{
+  "make": "Changan",
+  "models": [
+    {
+      "name": "CS55 Plus (2022-)",
+      "versions": ["1.5T TGDI 156 2WD", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Flagship", "Diğer"]
+    },
+    {
+      "name": "UNI-K (2021-)",
+      "versions": ["2.0T 233 2WD", "2.0T 233 4WD", "iDD PHEV 330", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Flagship", "Diğer"]
+    },
+    {
+      "name": "UNI-V (2022-)",
+      "versions": ["1.5T TGDI 138", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Diğer"]
+    },
+    {
+      "name": "Deepal S7 (2024-)",
+      "versions": ["Elektrik 218 CV", "EREV 1.5T + Elektrik 330 CV", "Diğer"],
+      "trims": ["Standart", "Plus", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

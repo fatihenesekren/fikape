@@ -1,0 +1,45 @@
+{
+  "make": "Genesis",
+  "models": [
+    {
+      "name": "G70 (2017-)",
+      "versions": ["2.0T 252", "3.3T 370", "2.2d 210", "Diğer"],
+      "trims": ["Standart", "Sport", "Sport+", "Diğer"]
+    },
+    {
+      "name": "G80 (2021-)",
+      "versions": ["2.5T 304", "3.5T 375", "Diğer"],
+      "trims": ["Standart", "Luxury", "Sport", "Diğer"]
+    },
+    {
+      "name": "Electrified G80 (2021-)",
+      "versions": ["Elektrik 365 CV 4WD", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "G90 (2022-)",
+      "versions": ["3.5T 380", "3.5T e-SC 420", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "GV70 (2021-)",
+      "versions": ["2.5T 304", "3.5T 380", "2.2d 210", "Diğer"],
+      "trims": ["Standart", "Luxury", "Sport", "Diğer"]
+    },
+    {
+      "name": "Electrified GV70 (2022-)",
+      "versions": ["Elektrik 360 CV AWD", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "GV80 (2020-)",
+      "versions": ["2.5T 304", "3.5T 380", "3.0d 278", "Diğer"],
+      "trims": ["Standart", "Luxury", "Sport", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

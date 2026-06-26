@@ -1,0 +1,25 @@
+{
+  "make": "Dodge",
+  "models": [
+    {
+      "name": "Charger (2011-2023)",
+      "versions": ["3.6 V6 292", "5.7 V8 HEMI 370", "6.4 V8 HEMI 485 Scat Pack", "6.2 SC V8 717 Hellcat", "Diğer"],
+      "trims": ["SXT", "GT", "R/T", "Scat Pack", "Hellcat", "Diğer"]
+    },
+    {
+      "name": "Challenger (2008-2023)",
+      "versions": ["3.6 V6 306", "5.7 V8 HEMI 375", "6.4 V8 HEMI 485 Scat Pack", "6.2 SC V8 717 Hellcat", "6.2 SC V8 807 Demon", "Diğer"],
+      "trims": ["SXT", "GT", "R/T", "Scat Pack", "Hellcat", "Demon", "Diğer"]
+    },
+    {
+      "name": "Durango (2011-)",
+      "versions": ["3.6 V6 292", "5.7 V8 HEMI 360", "6.4 V8 HEMI 485 SRT", "Diğer"],
+      "trims": ["SXT", "GT", "R/T", "Citadel", "SRT", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

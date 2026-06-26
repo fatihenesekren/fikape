@@ -1,0 +1,20 @@
+{
+  "make": "Ora",
+  "models": [
+    {
+      "name": "Funky Cat / Good Cat (2022-)",
+      "versions": ["Elektrik 171 CV 48kWh", "Elektrik 171 CV 63kWh", "GT 204 CV 63kWh", "Diğer"],
+      "trims": ["Standart", "GT", "GT Ultra", "Diğer"]
+    },
+    {
+      "name": "Lightning Cat (2023-)",
+      "versions": ["Elektrik 400 CV AWD", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

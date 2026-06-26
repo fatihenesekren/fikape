@@ -1,0 +1,20 @@
+{
+  "make": "Omoda",
+  "models": [
+    {
+      "name": "Omoda 5 (2022-)",
+      "versions": ["1.6T 150 2WD", "1.6T 150 AWD", "PHEV 197", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Supreme", "Diğer"]
+    },
+    {
+      "name": "Omoda 7 (2024-)",
+      "versions": ["1.5T TGDI 181 2WD", "1.5T TGDI 181 AWD", "PHEV 265", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Supreme", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}
