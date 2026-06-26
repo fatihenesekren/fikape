@@ -230,7 +230,13 @@ function parseInfoboxSpecs(html: string): Record<string, string> {
   }
 
   const cls = fields["class"] ?? fields["body style"] ?? fields["type"] ?? "";
-  if (cls) { const v = mapBodyType(cls.split("|")[0]); if (v) specs.body_type = v; }
+  if (cls) {
+    const v = mapBodyType(cls.split("|")[0]);
+    if (v) specs.body_type = v;
+    // "(C)" → C Segment, "(D)" → D Segment, vs.
+    const seg = cls.match(/\(([A-E])\)/);
+    if (seg) specs.segment = seg[1];
+  }
 
   const dr = fields["drive"] ?? fields["drivetrain"] ?? "";
   if (dr) { const v = mapDrivetrain(dr.split("|")[0]); if (v) specs.drivetrain = v; }
