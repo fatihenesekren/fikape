@@ -104,6 +104,29 @@ const WINTER_RANGE_OPTS = [
   { value: "severe",     label: "Çok fazla kayıp" },
 ] as const;
 
+const EBIKE_USAGE_OPTS = [
+  { value: "sehir", icon: "🏙️", label: "Şehir" },
+  { value: "mtb",   icon: "🏔️", label: "MTB" },
+  { value: "yol",   icon: "🛣️", label: "Yol" },
+  { value: "kargo", icon: "📦", label: "Kargo" },
+] as const;
+
+const EBIKE_MOTOR_OPTS = [
+  { value: "mid-drive", label: "Mid-Drive" },
+  { value: "hub-drive", label: "Hub-Drive" },
+] as const;
+
+const EBIKE_PEDELEC_OPTS = [
+  { value: "standard-25", label: "25 km/h Standart" },
+  { value: "speed-45",    label: "45 km/h Speed" },
+] as const;
+
+const EBIKE_WINTER_OPTS = [
+  { value: "minimal",     label: "Az etkileniyor" },
+  { value: "fark-edilir", label: "Belirgin kayıp" },
+  { value: "ciddi",       label: "Çok fazla kayıp" },
+] as const;
+
 function ChipGroup<T extends string>({
   opts, value, onChange, cols,
 }: {
@@ -330,6 +353,12 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   const [chargingAccess,   setChargingAccess]   = useState("");
   const [winterRange,      setWinterRange]      = useState("");
 
+  const [ebikeMotorType,    setEbikeMotorType]    = useState("");
+  const [ebikePedelecClass, setEbikePedelecClass] = useState("");
+  const [ebikeRealRangeKm,  setEbikeRealRangeKm]  = useState("");
+  const [ebikeWinterRange,  setEbikeWinterRange]  = useState("");
+  const [ebikeChargeHours,  setEbikeChargeHours]  = useState("");
+
   const [error,   setError]   = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -338,6 +367,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   const fuelType    = selectedProduct?.fuelType ?? null;
   const catSlug     = selectedProduct?.categorySlug ?? null;
   const isEscooter  = catSlug === "e-scooter";
+  const isEbisiklet = catSlug === "e-bisiklet";
   const isEV        = fuelType === "EV" || isEscooter;
   const isCombustion = !isEV && ["GASOLINE", "DIESEL", "HYBRID"].includes(fuelType ?? "");
   const isGasoline  = fuelType === "GASOLINE";
@@ -371,6 +401,13 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
       if (homeCharging !== null) extended.home_charging = homeCharging;
       if (!isEscooter && chargingAccess) extended.charging_access = chargingAccess;
       if (winterRange)    extended.winter_range       = winterRange;
+    }
+    if (isEbisiklet) {
+      if (ebikeMotorType)    extended.motor_type_exp    = ebikeMotorType;
+      if (ebikePedelecClass) extended.pedelec_class_exp = ebikePedelecClass;
+      if (ebikeRealRangeKm)  extended.real_range_km     = Number(ebikeRealRangeKm);
+      if (ebikeWinterRange)  extended.winter_range_ok   = ebikeWinterRange;
+      if (ebikeChargeHours)  extended.charge_time_hours = Number(ebikeChargeHours);
     }
 
     setLoading(true);
@@ -551,7 +588,10 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         </SubQuestion>
 
         <SubQuestion label="Çoğunlukla nerede kullanıyorsunuz?">
-          <IconChipGroup opts={USAGE_OPTS} value={usageType} onChange={setUsageType} />
+          {isEbisiklet
+            ? <IconChipGroup opts={EBIKE_USAGE_OPTS} value={usageType} onChange={setUsageType} />
+            : <IconChipGroup opts={USAGE_OPTS} value={usageType} onChange={setUsageType} />
+          }
         </SubQuestion>
 
         <SubQuestion label="Bu aracı bir arkadaşınıza tavsiye eder misiniz?">
@@ -593,6 +633,45 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                 <ChipGroup opts={LPG_OPTS} value={lpgStatus} onChange={setLpgStatus} />
               </SubQuestion>
             )}
+          </>
+        )}
+
+        {isEbisiklet && (
+          <>
+            <SubQuestion label="Motor tipi">
+              <ChipGroup opts={EBIKE_MOTOR_OPTS} value={ebikeMotorType} onChange={setEbikeMotorType} />
+            </SubQuestion>
+
+            <SubQuestion label="Pedelec sınıfı">
+              <ChipGroup opts={EBIKE_PEDELEC_OPTS} value={ebikePedelecClass} onChange={setEbikePedelecClass} />
+            </SubQuestion>
+
+            <SubQuestion label="Gerçek menzil (km)" hint="opsiyonel">
+              <input
+                type="number"
+                min={0}
+                value={ebikeRealRangeKm}
+                onChange={(e) => setEbikeRealRangeKm(e.target.value)}
+                placeholder="örn. 45"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
+              />
+            </SubQuestion>
+
+            <SubQuestion label="Kışın menzil kaybı">
+              <ChipGroup opts={EBIKE_WINTER_OPTS} value={ebikeWinterRange} onChange={setEbikeWinterRange} />
+            </SubQuestion>
+
+            <SubQuestion label="Tam şarj süresi (saat)" hint="opsiyonel">
+              <input
+                type="number"
+                min={0}
+                step={0.5}
+                value={ebikeChargeHours}
+                onChange={(e) => setEbikeChargeHours(e.target.value)}
+                placeholder="örn. 4"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
+              />
+            </SubQuestion>
           </>
         )}
 
