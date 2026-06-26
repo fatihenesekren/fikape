@@ -17,11 +17,29 @@ const prisma = new PrismaClient({ adapter } as any);
 
 // Yeni ürün görseli eklemek için buraya { slug, sourceUrl } ekle ve script'i çalıştır.
 const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean }[] = [
-  // Beyaz arkaplan ürün fotoğrafları — MediaMarkt/üretici resmi görselleri
   {
-    // Xiaomi resmi CDN — beyaz arkaplan, PNG
-    slug: "xiaomi-mi-4-pro-2023",
-    sourceUrl: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1666838244.98981922.png",
+    slug: "trek-allant-7-2023",
+    sourceUrl: "https://electricbikereview.com/wp-content/assets/2020/03/trek-allant-plus-7.jpg",
+    overwrite: true,
+  },
+  {
+    slug: "specialized-turbo-vado-5-2023",
+    sourceUrl: "https://cyclelimited.com/cdn/shop/files/JCO_3976_2560x2560.jpg?v=1730393478",
+    overwrite: true,
+  },
+  {
+    slug: "giant-explore-e-plus-3-2023",
+    sourceUrl: "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Ch_800%2Cq_90%2Cw_800/yc14hxxfmdui7mehomll/MY23ExploreEplus3DD_ColorASpaceGrey.jpg",
+    overwrite: true,
+  },
+  {
+    slug: "cube-kathmandu-hybrid-pro-2023",
+    sourceUrl: "https://file.cube.eu/azwesc1xfg346/media/57/4a/67/1754323511/synqup_112202_360I_00.jpg",
+    overwrite: true,
+  },
+  {
+    slug: "engwe-engine-pro-2023",
+    sourceUrl: "https://us.engwe.com/cdn/shop/files/6_8245e44e-74ec-4927-9c2d-14c92a424f52.jpg?v=1715078347&width=1214",
     overwrite: true,
   },
 ];
