@@ -18,20 +18,12 @@ const prisma = new PrismaClient({ adapter } as any);
 
 // Yeni ürün görseli eklemek için buraya { slug, sourceUrl } ekle ve script'i çalıştır.
 const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean }[] = [
-  // Wikimedia Commons — 429 nedeniyle başarısız olanlar
-  { slug: "kawasaki-ninja-400-2023",  overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Kawasaki_Ninja_400_KRT_Edition_(facelift_model)_right_side.jpg" },
-  { slug: "kawasaki-z650-2023",       overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Kawasaki_Z_650_MY_2017.jpg" },
-  { slug: "knaus-sport-400-lk-2023",  overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Knaus_Ski_I_PMS14.jpg" },
-  { slug: "mitsubishi-l200-2023",     overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Mitsubishi_L200,_GIMS_2019,_Le_Grand-Saconnex_(GIMS0722).jpg" },
-  { slug: "renault-clio-2021",        overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_Clio_V_1X7A0309.jpg" },
-  { slug: "renault-clio-2023",        overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_Clio_V_1X7A0392.jpg" },
-  { slug: "tesla-model-y-2023",       overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Tesla_Model_Y_front_passenger_side_view.jpg" },
-  { slug: "tesla-model-y-2024",       overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Tesla_Model_Y_Dual_Motor_Solid_Black_(3).jpg" },
-  { slug: "togg-t10f-2024",           overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Togg_T10F_IAA_2025_DSC_1675.jpg" },
-  { slug: "togg-t10x-2023",           overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Togg_T10X_Grey.jpg" },
-  { slug: "toyota-hilux-2023",        overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Toyota_HiLux_GR_Sport_1X7A7281.jpg" },
-  { slug: "vw-amarok-2023",           overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Volkswagen_Amarok_Mk2_Caflisch_Auto_Zuerich_2023_1X7A1440.jpg" },
-  { slug: "yamaha-mt07-2023",         overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/2021_Black_Yamaha_MT-07.jpg" },
+  // Wikimedia Commons — kalan 5
+  { slug: "togg-t10f-2024",    overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Togg_T10F_IAA_2025_DSC_1675.jpg" },
+  { slug: "togg-t10x-2023",    overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Togg_T10X_Grey.jpg" },
+  { slug: "toyota-hilux-2023", overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Toyota_HiLux_GR_Sport_1X7A7281.jpg" },
+  { slug: "vw-amarok-2023",    overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Volkswagen_Amarok_Mk2_Caflisch_Auto_Zuerich_2023_1X7A1440.jpg" },
+  { slug: "yamaha-mt07-2023",  overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/2021_Black_Yamaha_MT-07.jpg" },
 ];
 
 function resolveWikimediaUrl(sourceUrl: string): string {
