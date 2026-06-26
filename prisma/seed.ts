@@ -78,9 +78,9 @@ async function main() {
 
   const catEscooter = await prisma.category.upsert({
     where: { slug: "e-scooter" },
-    update: {},
+    update: { name: "E-Scooter" },
     create: {
-      slug: "e-scooter", name: "E-Scooter / E-Bisiklet",
+      slug: "e-scooter", name: "E-Scooter",
       parentId: catAraclar.id, sortOrder: 3,
       attributeSchema: {
         scooter_type: { type: "enum", values: ["e-scooter", "e-bisiklet"], label: "Tip" },

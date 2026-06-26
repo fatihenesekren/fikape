@@ -23,6 +23,12 @@ const CATEGORY_LABELS: Record<string, string> = {
   kamyonet:     "Kamyonet",
 };
 
+const KARAVAN_TYPE_LABELS: Record<string, string> = {
+  cekme:       "Çekme",
+  motorlu:     "Motorlu",
+  "kamper-van": "Kamper-Van",
+};
+
 const CATEGORY_ICONS: Record<string, string> = {
   otomobil:     "🚗",
   motosiklet:   "🏍️",
@@ -42,6 +48,8 @@ interface Props {
   fuelType: string;
   bodyType: string;
   motorType?: string | null;
+  karavanType?: string | null;
+  motorWatt?: number | null;
   scores: FikapeScores | null;
   totalReviews: number;
   imageUrl?: string | null;
@@ -49,7 +57,7 @@ interface Props {
 
 export function VehicleCard({
   slug, brandName, modelName, trimName, year,
-  categorySlug, fuelType, bodyType, motorType,
+  categorySlug, fuelType, bodyType, motorType, karavanType, motorWatt,
   scores, totalReviews, imageUrl,
 }: Props) {
   const bodyLabel = BODY_LABELS[bodyType];
@@ -89,21 +97,33 @@ export function VehicleCard({
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
         )}
 
-        {/* Sol üst — yakıt tipi (e-bisiklet için motor tipi göster) */}
+        {/* Sol üst rozet — kategori bazlı */}
         {categorySlug === "e-bisiklet" ? (
           motorType && (
             <span className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-white/90 text-gray-700">
               {motorType === "mid-drive" ? "Mid-Drive" : "Hub-Drive"}
             </span>
           )
-        ) : (
+        ) : categorySlug === "karavan" ? (
+          karavanType && (
+            <span className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-white/90 text-gray-700">
+              {KARAVAN_TYPE_LABELS[karavanType] ?? karavanType}
+            </span>
+          )
+        ) : categorySlug === "e-scooter" ? (
+          motorWatt != null && (
+            <span className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10 bg-white/90 text-gray-700">
+              {motorWatt}W
+            </span>
+          )
+        ) : fuelType ? (
           <span
             className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10"
             style={{ background: fuelColor.bg, color: fuelColor.text }}
           >
             {FUEL_ICONS[fuelType]} {FUEL_LABELS[fuelType] ?? fuelType}
           </span>
-        )}
+        ) : null}
 
         {/* Sağ alt — toplam yorum */}
         {totalReviews > 0 && (

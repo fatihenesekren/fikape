@@ -150,7 +150,7 @@ export async function ProductGrid({
           return (
             <div key={product.id} className="relative">
               {showCatIcon && (
-                <div className="absolute top-2 left-2 z-20 text-sm bg-white/80 backdrop-blur-sm rounded-full px-2 py-0.5 border border-gray-100 pointer-events-none">
+                <div className="absolute top-2 right-2 z-20 text-sm bg-white/80 backdrop-blur-sm rounded-full px-2 py-0.5 border border-gray-100 pointer-events-none">
                   {catIcon}
                 </div>
               )}
@@ -164,6 +164,8 @@ export async function ProductGrid({
                 fuelType={String(attrs.fuel_type ?? "")}
                 bodyType={String(attrs.body_type ?? "")}
                 motorType={attrs.motor_type ? String(attrs.motor_type) : null}
+                karavanType={attrs.karavan_type ? String(attrs.karavan_type) : null}
+                motorWatt={attrs.motor_watt != null ? Number(attrs.motor_watt) : null}
                 scores={score?.scores ?? null}
                 totalReviews={score?.count ?? 0}
                 imageUrl={imageUrl}
