@@ -112,12 +112,16 @@ function parseSpecTable(
   const rows = [...tableMatch[1].matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
   if (rows.length < 2) return {};
 
-  // 1. Header satırı → sütun başlıkları
-  const headerRow = rows[0][1];
-  const headers = [...headerRow.matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gi)]
-    .map((m) => stripHtml(m[1]));
-
-  if (headers.length < 2) return {};
+  // 1. İlk ≥2 hücreli satırı sütun başlığı olarak al
+  // ("Characteristics" gibi colspan'lı grup başlıklarını atla)
+  let headerRowIdx = -1;
+  let headers: string[] = [];
+  for (let i = 0; i < rows.length; i++) {
+    const cells = [...rows[i][1].matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gi)]
+      .map((m) => stripHtml(m[1]));
+    if (cells.length >= 2) { headers = cells; headerRowIdx = i; break; }
+  }
+  if (headerRowIdx === -1 || headers.length < 2) return {};
 
   // 2. trimHint ile en iyi sütunu bul
   let colIdx = 1; // default: ilk veri sütunu
@@ -136,7 +140,7 @@ function parseSpecTable(
 
   // 3. Veri satırlarını parse et
   const rowMap: Record<string, string> = {};
-  for (let i = 1; i < rows.length; i++) {
+  for (let i = headerRowIdx + 1; i < rows.length; i++) {
     const cells = [...rows[i][1].matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gi)]
       .map((m) => stripHtml(m[1]));
     if (cells.length < 2) continue;
@@ -194,7 +198,7 @@ function parseSpecTable(
   const wt = get(["curb weight", "kerb weight", "weight", "mass"]);
   if (wt) {
     const m = wt.match(/([\d,]+)\s*kg/i);
-    if (m) specs.weight_kg = m[1].replace(/,/g, "");
+    if (m) { const n = m[1].replace(/,/g, ""); if (+n > 500) specs.weight_kg = n; }
     else { const n = extractNumber(wt); if (n && +n > 500) specs.weight_kg = n; }
   }
 
@@ -264,8 +268,9 @@ function parseInfoboxSpecs(html: string): Record<string, string> {
     const v = mapBodyType(cls.split("|")[0]);
     if (v) specs.body_type = v;
     // "(C)" → C Segment, "(D)" → D Segment, vs.
-    const seg = cls.match(/\(([A-E])\)/);
-    if (seg) specs.segment = seg[1];
+    // "(C)" veya "(C segment)" veya "C-Segment" formatlarını yakala
+    const seg = cls.match(/\b([A-E])\s*[-–]?\s*(?:segment|class|seg)?\b/i);
+    if (seg) specs.segment = seg[1].toUpperCase();
   }
 
   const dr = fields["drive"] ?? fields["drivetrain"] ?? "";
