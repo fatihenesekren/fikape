@@ -11,3 +11,17 @@ ALTER TABLE vehicle_suggestions
 
 ALTER TABLE vehicle_suggestions
   ADD COLUMN IF NOT EXISTS "photoUrls" TEXT[] NOT NULL DEFAULT '{}';
+
+CREATE TYPE "SuggestionStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED');
+
+ALTER TABLE vehicle_suggestions
+  ADD COLUMN IF NOT EXISTS "status" "SuggestionStatus" NOT NULL DEFAULT 'PENDING';
+
+ALTER TABLE vehicle_suggestions
+  ADD COLUMN IF NOT EXISTS "adminNote" TEXT;
+
+ALTER TABLE vehicle_suggestions
+  ADD COLUMN IF NOT EXISTS "reviewedAt" TIMESTAMP(3);
+
+ALTER TABLE vehicle_suggestions
+  ADD COLUMN IF NOT EXISTS "reviewedBy" INTEGER;
