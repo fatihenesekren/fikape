@@ -5,9 +5,9 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ReviewCard } from "@/components/ReviewCard";
-import { GarageButton } from "./GarageButton";
 import { PhotoSlider } from "./PhotoSlider";
 import { TabView } from "./TabView";
+import { OwnershipCard } from "./OwnershipCard";
 import { calcOverall } from "@/lib/fikape";
 import { getVehicleImageUrl } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
@@ -130,11 +130,14 @@ export default async function VehicleDetailPage({
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
 
   const userId = session?.user?.id ? Number(session.user.id) : null;
-  const inGarage = userId
-    ? !!(await prisma.userProduct.findUnique({
-        where: { userId_productId: { userId, productId: product.id } },
-      }))
-    : false;
+  const [inGarage, garageCount] = await Promise.all([
+    userId
+      ? prisma.userProduct.findUnique({
+          where: { userId_productId: { userId, productId: product.id } },
+        }).then(Boolean)
+      : Promise.resolve(false),
+    prisma.userProduct.count({ where: { productId: product.id } }),
+  ]);
 
   const agg = await prisma.review.aggregate({
     where: { productId: product.id, status: "PUBLISHED" },
@@ -445,6 +448,11 @@ export default async function VehicleDetailPage({
                     {String(attrs.segment)} Segment
                   </span>
                 )}
+                {garageCount > 0 && (
+                  <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-white/10 text-gray-300">
+                    🚗 {garageCount} kişinin garajında
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -491,6 +499,14 @@ export default async function VehicleDetailPage({
       {/* ── Ana içerik ── */}
       <div className="max-w-5xl mx-auto px-4 py-8 space-y-4">
 
+        {/* Sahiplik kartı */}
+        <OwnershipCard
+          productId={product.id}
+          initialInGarage={inGarage as boolean}
+          garageCount={garageCount}
+          isLoggedIn={!!userId}
+        />
+
         {/* Puan varken: score kartı + Yorum Yaz butonu */}
         {scores && (
           <div className="bg-white border border-gray-100 rounded-2xl p-5">
@@ -507,23 +523,11 @@ export default async function VehicleDetailPage({
           </div>
         )}
 
-        {/* Tab: Yorumlar / Teknik Özellikler — "Bu araç benim" tab bar'da sağda */}
+        {/* Tab: Yorumlar / Teknik Özellikler */}
         <TabView
           reviewCount={reviewCount}
           reviewsContent={reviewsContent}
           specsContent={specsContent}
-          actionButton={
-            userId ? (
-              <GarageButton productId={product.id} initialInGarage={inGarage} />
-            ) : (
-              <Link
-                href="/giris"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium border border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors bg-white"
-              >
-                🚗 Bu araç benim
-              </Link>
-            )
-          }
         />
 
       </div>

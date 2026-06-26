@@ -6,10 +6,9 @@ interface Props {
   reviewCount: number;
   reviewsContent: React.ReactNode;
   specsContent: React.ReactNode;
-  actionButton?: React.ReactNode;
 }
 
-export function TabView({ reviewCount, reviewsContent, specsContent, actionButton }: Props) {
+export function TabView({ reviewCount, reviewsContent, specsContent }: Props) {
   const [tab, setTab] = useState<"yorumlar" | "teknik">("yorumlar");
 
   return (
@@ -40,11 +39,6 @@ export function TabView({ reviewCount, reviewsContent, specsContent, actionButto
           Teknik Özellikler
         </button>
 
-        {actionButton && (
-          <div className="ml-auto pr-3">
-            {actionButton}
-          </div>
-        )}
       </div>
 
       {/* Tab içerikleri — min-height ile yükseklik sabit */}
