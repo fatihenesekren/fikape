@@ -6,11 +6,12 @@ import Link from "next/link";
 import vehiclesData from "@/data/vehicles.json";
 
 const CATEGORIES = [
-  { value: "otomobil",   label: "Otomobil" },
-  { value: "motosiklet", label: "Motosiklet" },
-  { value: "e-scooter",  label: "E-Scooter" },
-  { value: "karavan",    label: "Karavan" },
-  { value: "kamyonet",   label: "Kamyonet" },
+  { value: "otomobil",    label: "Otomobil" },
+  { value: "motosiklet",  label: "Motosiklet" },
+  { value: "e-scooter",   label: "E-Scooter" },
+  { value: "e-bisiklet",  label: "E-Bisiklet" },
+  { value: "karavan",     label: "Karavan" },
+  { value: "kamyonet",    label: "Kamyonet" },
 ] as const;
 
 const FUEL_TYPES: Record<string, { value: string; label: string }[]> = {
