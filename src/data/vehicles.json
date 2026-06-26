@@ -1224,12 +1224,14 @@
           "versions": [
             "1.2 PureTech 130",
             "1.6 PureTech 180",
+            "1.5 BlueHDi 130",
             "Plug-in Hybrid 225",
             "Diğer"
           ],
           "trims": [
             "Feel",
             "Shine",
+            "Shine Bold",
             "Max",
             "Diğer"
           ]
