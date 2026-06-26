@@ -13377,21 +13377,6 @@
           ]
         },
         {
-          "name": "Duster",
-          "versions": [
-            "TCe 100 2WD",
-            "TCe 130 4WD",
-            "1.5 dCi 115 4WD",
-            "Diğer"
-          ],
-          "trims": [
-            "Essential",
-            "Expression",
-            "Extreme",
-            "Diğer"
-          ]
-        },
-        {
           "name": "Diğer",
           "versions": [
             "Diğer"
