@@ -24,7 +24,7 @@ export function EditName({ current }: { current: string }) {
       setLoading(false);
       return;
     }
-    await update();
+    await update({ name: value });
     setEditing(false);
     setLoading(false);
   }

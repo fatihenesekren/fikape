@@ -34,17 +34,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/giris",
   },
   callbacks: {
-    async jwt({ token, user, trigger }) {
+    async jwt({ token, user, trigger, session }) {
       if (user) {
         token.id         = user.id;
         token.trustLevel = (user as { trustLevel?: number }).trustLevel ?? 1;
       }
-      if (trigger === "update" && token.id) {
-        const dbUser = await prisma.user.findUnique({
-          where: { id: Number(token.id) },
-          select: { displayName: true, email: true },
-        });
-        if (dbUser) token.name = dbUser.displayName ?? dbUser.email;
+      if (trigger === "update") {
+        // update({ name: "..." }) ile gelen veriyi doğrudan kullan
+        if ((session as { name?: string })?.name) {
+          token.name = (session as { name: string }).name;
+        } else if (token.id) {
+          const dbUser = await prisma.user.findUnique({
+            where: { id: Number(token.id) },
+            select: { displayName: true, email: true },
+          });
+          if (dbUser) token.name = dbUser.displayName ?? dbUser.email;
+        }
       }
       return token;
     },
