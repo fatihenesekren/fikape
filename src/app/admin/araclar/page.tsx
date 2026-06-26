@@ -1,13 +1,9 @@
-import { redirect } from "next/navigation";
-import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ImageManager } from "./ImageManager";
 
 export const metadata = { title: "Araç Görselleri — Admin" };
 
 export default async function AdminAraclarPage() {
-  const session = await auth();
-  if (!session || Number(session.user.trustLevel) < 5) redirect("/");
 
   const products = await prisma.product.findMany({
     include: { brand: true, model: true, category: true },
@@ -23,7 +19,7 @@ export default async function AdminAraclarPage() {
   const missing = mapped.filter((p) => !p.imageUrl).length;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
+    <div className="px-8 py-10 max-w-4xl">
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-1">Araç Görselleri</h1>
         <p className="text-sm text-gray-500">

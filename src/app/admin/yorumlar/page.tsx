@@ -1,16 +1,9 @@
-import { redirect } from "next/navigation";
-import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ModerationClient } from "./ModerationClient";
 
 export const metadata = { title: "Moderasyon — fikape admin" };
 
 export default async function ModerationPage() {
-  const session = await auth();
-  if (!session || (session.user.trustLevel as number) < 5) {
-    redirect("/");
-  }
-
   const reviews = await prisma.review.findMany({
     where: { status: "PENDING" },
     select: {
@@ -42,9 +35,9 @@ export default async function ModerationPage() {
   }));
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
+    <div className="px-8 py-10 max-w-2xl">
       <div className="mb-8">
-        <h1 className="text-2xl font-black text-gray-900">Moderasyon</h1>
+        <h1 className="text-2xl font-black text-gray-900">Yorumlar</h1>
         <p className="text-sm text-gray-500 mt-1">
           {reviews.length > 0
             ? `${reviews.length} yorum onay bekliyor`
