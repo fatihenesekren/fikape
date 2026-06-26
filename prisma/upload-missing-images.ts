@@ -18,11 +18,12 @@ const prisma = new PrismaClient({ adapter } as any);
 
 // Yeni ürün görseli eklemek için buraya { slug, sourceUrl } ekle ve script'i çalıştır.
 const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean }[] = [
-  // Wikimedia Commons — kalan 5
+  // Thumb URL ile çalışıyor
+  { slug: "togg-t10x-2023", overwrite: true, sourceUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Togg_T10X_Grey.jpg/1280px-Togg_T10X_Grey.jpg" },
+  { slug: "vw-amarok-2023",  overwrite: true, sourceUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Volkswagen_Amarok_Mk2_Caflisch_Auto_Zuerich_2023_1X7A1440.jpg/1280px-Volkswagen_Amarok_Mk2_Caflisch_Auto_Zuerich_2023_1X7A1440.jpg" },
+  // Hâlâ rate-limited — bir sonraki oturumda denenecek
   { slug: "togg-t10f-2024",    overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Togg_T10F_IAA_2025_DSC_1675.jpg" },
-  { slug: "togg-t10x-2023",    overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Togg_T10X_Grey.jpg" },
   { slug: "toyota-hilux-2023", overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Toyota_HiLux_GR_Sport_1X7A7281.jpg" },
-  { slug: "vw-amarok-2023",    overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Volkswagen_Amarok_Mk2_Caflisch_Auto_Zuerich_2023_1X7A1440.jpg" },
   { slug: "yamaha-mt07-2023",  overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/2021_Black_Yamaha_MT-07.jpg" },
 ];
 
