@@ -8,6 +8,7 @@
  * BLOB_READ_WRITE_TOKEN: Vercel Dashboard → Storage → Blob → Token
  */
 import "dotenv/config";
+import { createHash } from "crypto";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { put } from "@vercel/blob";
@@ -17,32 +18,33 @@ const prisma = new PrismaClient({ adapter } as any);
 
 // Yeni ürün görseli eklemek için buraya { slug, sourceUrl } ekle ve script'i çalıştır.
 const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean }[] = [
-  {
-    slug: "trek-allant-7-2023",
-    sourceUrl: "https://electricbikereview.com/wp-content/assets/2020/03/trek-allant-plus-7.jpg",
-    overwrite: true,
-  },
-  {
-    slug: "specialized-turbo-vado-5-2023",
-    sourceUrl: "https://cyclelimited.com/cdn/shop/files/JCO_3976_2560x2560.jpg?v=1730393478",
-    overwrite: true,
-  },
-  {
-    slug: "giant-explore-e-plus-3-2023",
-    sourceUrl: "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Ch_800%2Cq_90%2Cw_800/yc14hxxfmdui7mehomll/MY23ExploreEplus3DD_ColorASpaceGrey.jpg",
-    overwrite: true,
-  },
-  {
-    slug: "cube-kathmandu-hybrid-pro-2023",
-    sourceUrl: "https://file.cube.eu/azwesc1xfg346/media/57/4a/67/1754323511/synqup_112202_360I_00.jpg",
-    overwrite: true,
-  },
-  {
-    slug: "engwe-engine-pro-2023",
-    sourceUrl: "https://us.engwe.com/cdn/shop/files/6_8245e44e-74ec-4927-9c2d-14c92a424f52.jpg?v=1715078347&width=1214",
-    overwrite: true,
-  },
+  // Wikimedia Commons — 429 nedeniyle başarısız olanlar
+  { slug: "kawasaki-ninja-400-2023",  overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Kawasaki_Ninja_400_KRT_Edition_(facelift_model)_right_side.jpg" },
+  { slug: "kawasaki-z650-2023",       overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Kawasaki_Z_650_MY_2017.jpg" },
+  { slug: "knaus-sport-400-lk-2023",  overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Knaus_Ski_I_PMS14.jpg" },
+  { slug: "mitsubishi-l200-2023",     overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Mitsubishi_L200,_GIMS_2019,_Le_Grand-Saconnex_(GIMS0722).jpg" },
+  { slug: "renault-clio-2021",        overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_Clio_V_1X7A0309.jpg" },
+  { slug: "renault-clio-2023",        overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_Clio_V_1X7A0392.jpg" },
+  { slug: "tesla-model-y-2023",       overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Tesla_Model_Y_front_passenger_side_view.jpg" },
+  { slug: "tesla-model-y-2024",       overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Tesla_Model_Y_Dual_Motor_Solid_Black_(3).jpg" },
+  { slug: "togg-t10f-2024",           overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Togg_T10F_IAA_2025_DSC_1675.jpg" },
+  { slug: "togg-t10x-2023",           overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Togg_T10X_Grey.jpg" },
+  { slug: "toyota-hilux-2023",        overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Toyota_HiLux_GR_Sport_1X7A7281.jpg" },
+  { slug: "vw-amarok-2023",           overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Volkswagen_Amarok_Mk2_Caflisch_Auto_Zuerich_2023_1X7A1440.jpg" },
+  { slug: "yamaha-mt07-2023",         overwrite: true, sourceUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/2021_Black_Yamaha_MT-07.jpg" },
 ];
+
+function resolveWikimediaUrl(sourceUrl: string): string {
+  // Special:FilePath → upload.wikimedia.org/wikipedia/commons/X/XY/Filename
+  // MD5(filename) hash ile doğrudan CDN URL hesaplanır — API çağrısı yok
+  const match = sourceUrl.match(/Special:FilePath\/(.+)$/);
+  if (!match) return sourceUrl;
+  const filename = decodeURIComponent(match[1]).replace(/ /g, "_");
+  const hash = createHash("md5").update(filename).digest("hex");
+  const a = hash[0];
+  const ab = hash.slice(0, 2);
+  return `https://upload.wikimedia.org/wikipedia/commons/${a}/${ab}/${encodeURIComponent(filename)}`;
+}
 
 async function main() {
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
@@ -52,9 +54,15 @@ async function main() {
   console.log(`\n${IMAGES.length} görsel yüklenecek...\n`);
 
   for (const { slug, sourceUrl, overwrite } of IMAGES) {
+    await new Promise((r) => setTimeout(r, 3000));
     process.stdout.write(`[${slug}] İndiriliyor... `);
 
-    const res = await fetch(sourceUrl, {
+    // Wikimedia Special:FilePath → doğrudan CDN URL (MD5 hash, API yok)
+    const resolvedUrl = sourceUrl.includes("Special:FilePath")
+      ? resolveWikimediaUrl(sourceUrl)
+      : sourceUrl;
+
+    const res = await fetch(resolvedUrl, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; fikape-bot/1.0)" },
       signal: AbortSignal.timeout(10_000),
     });
