@@ -4,30 +4,118 @@
       "make": "Alfa Romeo",
       "models": [
         {
-          "name": "Giulia",
+          "name": "147 (2000-2010)",
           "versions": [
-            "2.0 Turbo 200 RWD",
-            "2.0 Turbo 280 AWD",
-            "2.9 V6 Biturbo 510 Quadrifoglio",
+            "1.6 Twin Spark 105",
+            "1.6 Twin Spark 120",
+            "2.0 Twin Spark 150",
+            "1.9 JTD 100",
+            "1.9 JTD 115",
+            "1.9 JTD 120",
+            "1.9 JTDm 140",
+            "GTA 3.2 V6 250",
             "Diğer"
           ],
           "trims": [
-            "Sprint",
-            "Ti",
-            "Veloce",
-            "Super",
-            "Quadrifoglio",
+            "Progression",
+            "Distinctive",
+            "Lusso",
+            "GTA",
             "Diğer"
           ]
         },
         {
-          "name": "Giulietta",
+          "name": "156 (1997-2006)",
+          "versions": [
+            "1.6 Twin Spark 120",
+            "1.8 Twin Spark 144",
+            "2.0 Twin Spark 155",
+            "2.5 V6 192",
+            "1.9 JTD 105",
+            "1.9 JTD 115",
+            "1.9 JTD 140",
+            "2.4 JTD 140",
+            "2.4 JTD 175",
+            "GTA 3.2 V6 250",
+            "Diğer"
+          ],
+          "trims": [
+            "Progression",
+            "Distinctive",
+            "Lusso",
+            "Sportwagon",
+            "GTA",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "159 (2005-2011)",
+          "versions": [
+            "1.8 Twin Spark 140",
+            "1.9 JTS 160",
+            "2.2 JTS 185",
+            "3.2 V6 260",
+            "1.9 JTDm 120",
+            "1.9 JTDm 150",
+            "2.0 JTDm 136",
+            "2.4 JTDm 200",
+            "Diğer"
+          ],
+          "trims": [
+            "Progression",
+            "Distinctive",
+            "Lusso",
+            "Sportwagon",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "MiTo (2008-2018)",
+          "versions": [
+            "1.4 78",
+            "1.4 TB 120",
+            "1.4 TB 135",
+            "1.4 MultiAir 105",
+            "1.4 MultiAir 140",
+            "1.3 JTDM 85",
+            "1.3 JTDM 95",
+            "1.6 JTDM 120",
+            "QV 1.4 TB 170",
+            "Diğer"
+          ],
+          "trims": [
+            "Progression",
+            "Distinctive",
+            "Veloce",
+            "QV",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Brera / Spider (2006-2010)",
+          "versions": [
+            "2.2 JTS 185",
+            "3.2 V6 260 Q4",
+            "2.4 JTDm 200",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Giulietta (2010-2020)",
           "versions": [
             "1.4 TB 120",
             "1.4 TB 150",
+            "1.75 TB 235",
+            "1.6 JTDM 105",
             "1.6 JTDM 120",
             "2.0 JTDM 150",
-            "1.750 TB 240 QV",
+            "2.0 JTDM 175",
+            "QV 1.750 TB 240",
             "Diğer"
           ],
           "trims": [
@@ -40,7 +128,7 @@
           ]
         },
         {
-          "name": "Stelvio",
+          "name": "Giulia (2016-)",
           "versions": [
             "2.0 Turbo 200 RWD",
             "2.0 Turbo 280 AWD",
@@ -57,7 +145,24 @@
           ]
         },
         {
-          "name": "Tonale",
+          "name": "Stelvio (2017-)",
+          "versions": [
+            "2.0 Turbo 200 RWD",
+            "2.0 Turbo 280 AWD",
+            "2.9 V6 Biturbo 510 Quadrifoglio",
+            "Diğer"
+          ],
+          "trims": [
+            "Sprint",
+            "Ti",
+            "Veloce",
+            "Super",
+            "Quadrifoglio",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tonale (2022-)",
           "versions": [
             "1.5 T4 130 MHEV FWD",
             "1.5 T4 160 MHEV FWD",
@@ -70,6 +175,15 @@
             "Ti",
             "Veloce",
             "Edizione Speciale",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -1416,7 +1530,91 @@
       "make": "Dacia",
       "models": [
         {
-          "name": "Sandero",
+          "name": "Logan (2004-2012)",
+          "versions": [
+            "1.4 MPI 75",
+            "1.6 MPI 90",
+            "1.5 dCi 65",
+            "1.5 dCi 70",
+            "1.5 dCi 85",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiance",
+            "Laureate",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Logan (2012-2020)",
+          "versions": [
+            "0.9 TCe 90",
+            "1.0 SCe 75",
+            "1.6 MPI 85",
+            "1.5 dCi 75",
+            "1.5 dCi 90",
+            "Diğer"
+          ],
+          "trims": [
+            "Access",
+            "Ambiance",
+            "Laureate",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Logan (2020-)",
+          "versions": [
+            "SCe 65",
+            "TCe 90",
+            "TCe 100 ECO-G LPG",
+            "Diğer"
+          ],
+          "trims": [
+            "Essential",
+            "Expression",
+            "Extreme",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sandero (2008-2012)",
+          "versions": [
+            "1.4 MPI 75",
+            "1.6 MPI 90",
+            "1.5 dCi 70",
+            "1.5 dCi 85",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiance",
+            "Laureate",
+            "Stepway",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sandero (2012-2020)",
+          "versions": [
+            "0.9 TCe 90",
+            "1.0 SCe 75",
+            "1.6 MPI 85",
+            "1.5 dCi 75",
+            "1.5 dCi 90",
+            "RS 1.6 T 115",
+            "Diğer"
+          ],
+          "trims": [
+            "Access",
+            "Ambiance",
+            "Laureate",
+            "Stepway",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sandero (2020-)",
           "versions": [
             "SCe 65",
             "TCe 90",
@@ -1446,22 +1644,24 @@
           ]
         },
         {
-          "name": "Logan",
+          "name": "Duster (2010-2017)",
           "versions": [
-            "SCe 65",
-            "TCe 90",
-            "TCe 100 ECO-G LPG",
+            "1.6 MPI 105 2WD",
+            "1.6 MPI 105 4WD",
+            "2.0 MPI 135 4WD",
+            "1.5 dCi 90 2WD",
+            "1.5 dCi 105 4WD",
             "Diğer"
           ],
           "trims": [
-            "Essential",
-            "Expression",
-            "Extreme",
+            "Ambiance",
+            "Laureate",
+            "Prestige",
             "Diğer"
           ]
         },
         {
-          "name": "Duster",
+          "name": "Duster (2017-)",
           "versions": [
             "TCe 100 2WD",
             "TCe 130 4WD",
@@ -1518,6 +1718,15 @@
             "Expression",
             "Extreme",
             "Journey",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -1613,12 +1822,166 @@
       "make": "Fiat",
       "models": [
         {
-          "name": "500",
+          "name": "Albea (2002-2012)",
+          "versions": [
+            "1.2 60",
+            "1.4 77",
+            "1.6 103",
+            "1.3 Multijet 70",
+            "1.9 JTD 80",
+            "Diğer"
+          ],
+          "trims": [
+            "Active",
+            "Dynamic",
+            "ELX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Palio (2000-2012)",
+          "versions": [
+            "1.2 60",
+            "1.4 77",
+            "1.6 100",
+            "1.3 Multijet 70",
+            "1.9 JTD 80",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "EL",
+            "ELX",
+            "HLX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Stilo (2001-2007)",
+          "versions": [
+            "1.2 80",
+            "1.6 103",
+            "1.8 133",
+            "2.4 Abarth 170",
+            "1.9 JTD 80",
+            "1.9 JTD 100",
+            "1.9 JTD 115",
+            "Diğer"
+          ],
+          "trims": [
+            "Active",
+            "Dynamic",
+            "Abarth",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bravo (2007-2014)",
+          "versions": [
+            "1.4 90",
+            "1.4 T-Jet 120",
+            "1.4 T-Jet 150",
+            "1.6 Multijet 105",
+            "1.6 Multijet 120",
+            "1.9 Multijet 150",
+            "2.0 Multijet 165",
+            "Diğer"
+          ],
+          "trims": [
+            "Active",
+            "Dynamic",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Linea (2007-2015)",
+          "versions": [
+            "1.4 77",
+            "1.4 T-Jet 120",
+            "1.3 Multijet 90",
+            "1.6 Multijet 105",
+            "Diğer"
+          ],
+          "trims": [
+            "Active",
+            "Dynamic",
+            "Emotion",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tipo (2015-)",
+          "versions": [
+            "1.4 95",
+            "1.4 T-Jet 120",
+            "1.6 Multijet 120",
+            "Diğer"
+          ],
+          "trims": [
+            "Pop",
+            "Lounge",
+            "S-Design",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Egea (2015-)",
+          "versions": [
+            "1.4 Fire 95",
+            "1.6 E-Torq 110",
+            "1.3 Multijet 95",
+            "1.6 Multijet 120",
+            "Diğer"
+          ],
+          "trims": [
+            "Easy",
+            "Urban",
+            "Lounge",
+            "Cross",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Egea Cross (2020-)",
+          "versions": [
+            "1.4 Fire 95",
+            "1.6 E-Torq 110",
+            "1.3 Multijet 95",
+            "Diğer"
+          ],
+          "trims": [
+            "Easy",
+            "Urban",
+            "Lounge",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Egea Wagon (2017-)",
+          "versions": [
+            "1.4 Fire 95",
+            "1.6 E-Torq 110",
+            "1.3 Multijet 95",
+            "1.6 Multijet 120",
+            "Diğer"
+          ],
+          "trims": [
+            "Easy",
+            "Urban",
+            "Lounge",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "500 (2007-)",
           "versions": [
             "1.0 Mild Hybrid 70",
             "1.2 69",
             "1.4 100",
             "0.9 TwinAir 85",
+            "Abarth 1.4 T-Jet 135",
+            "Abarth 1.4 T-Jet 160",
             "Diğer"
           ],
           "trims": [
@@ -1626,11 +1989,12 @@
             "Lounge",
             "Dolcevita",
             "Sport",
+            "Abarth",
             "Diğer"
           ]
         },
         {
-          "name": "500e",
+          "name": "500e (2020-)",
           "versions": [
             "87kW 118 42kWh",
             "70kW 95 24kWh Cabrio",
@@ -1644,7 +2008,7 @@
           ]
         },
         {
-          "name": "500X",
+          "name": "500X (2014-)",
           "versions": [
             "1.0 T3 120",
             "1.3 T4 150",
@@ -1660,86 +2024,11 @@
           ]
         },
         {
-          "name": "Egea",
-          "versions": [
-            "1.4 Fire 95",
-            "1.6 E-Torq 110",
-            "1.3 Multijet 95",
-            "1.6 Multijet 120",
-            "Diğer"
-          ],
-          "trims": [
-            "Easy",
-            "Urban",
-            "Lounge",
-            "Cross",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Egea Cross",
-          "versions": [
-            "1.4 Fire 95",
-            "1.6 E-Torq 110",
-            "1.3 Multijet 95",
-            "Diğer"
-          ],
-          "trims": [
-            "Easy",
-            "Urban",
-            "Lounge",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Egea Wagon",
-          "versions": [
-            "1.4 Fire 95",
-            "1.6 E-Torq 110",
-            "1.3 Multijet 95",
-            "1.6 Multijet 120",
-            "Diğer"
-          ],
-          "trims": [
-            "Easy",
-            "Urban",
-            "Lounge",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Tipo",
-          "versions": [
-            "1.4 95",
-            "1.4 T-Jet 120",
-            "1.6 Multijet 120",
-            "Diğer"
-          ],
-          "trims": [
-            "Pop",
-            "Lounge",
-            "S-Design",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Doblo",
-          "versions": [
-            "1.4 95",
-            "1.3 Multijet 95",
-            "Diğer"
-          ],
-          "trims": [
-            "Pop",
-            "Lounge",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Panda",
+          "name": "Panda (2003-)",
           "versions": [
             "1.0 Mild Hybrid 70",
             "0.9 TwinAir 85",
+            "1.2 69",
             "1.3 Multijet 80",
             "Diğer"
           ],
@@ -1747,6 +2036,29 @@
             "Pop",
             "City Cross",
             "Cross",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Doblo (2001-)",
+          "versions": [
+            "1.4 95",
+            "1.3 Multijet 95",
+            "1.6 Multijet 105",
+            "Diğer"
+          ],
+          "trims": [
+            "Pop",
+            "Lounge",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -2159,7 +2471,77 @@
       "make": "Honda",
       "models": [
         {
-          "name": "Civic",
+          "name": "Civic (2001-2006)",
+          "versions": [
+            "1.4 iS 90",
+            "1.6 iS 110",
+            "1.7 CTDi 100",
+            "2.0 Type R 200",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "ES",
+            "SE",
+            "Type R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Civic (2006-2012)",
+          "versions": [
+            "1.4 i-DSI 83",
+            "1.8 i-VTEC 140",
+            "2.0 i-VTEC 201",
+            "2.2 i-CTDi 140",
+            "Type R 2.0 201",
+            "Diğer"
+          ],
+          "trims": [
+            "Comfort",
+            "Sport",
+            "Executive",
+            "Type R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Civic (2012-2017)",
+          "versions": [
+            "1.4 i-VTEC 100",
+            "1.6 i-DTEC 120",
+            "1.8 i-VTEC 142",
+            "2.0 Type R 280",
+            "Diğer"
+          ],
+          "trims": [
+            "Comfort",
+            "Elegance",
+            "Executive",
+            "Type R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Civic (2017-2022)",
+          "versions": [
+            "1.0 VTEC Turbo 126",
+            "1.5 VTEC Turbo 182",
+            "1.6 i-DTEC 120",
+            "Type R 2.0 320",
+            "Diğer"
+          ],
+          "trims": [
+            "Elegance",
+            "Executive",
+            "Sport",
+            "Prestige",
+            "Type R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Civic (2022-)",
           "versions": [
             "1.0 VTEC Turbo 126",
             "1.5 VTEC Turbo 182",
@@ -2219,19 +2601,6 @@
           ]
         },
         {
-          "name": "e",
-          "versions": [
-            "136 28.5kWh",
-            "154 28.5kWh Advance",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Advance",
-            "Diğer"
-          ]
-        },
-        {
           "name": "ZR-V",
           "versions": [
             "2.0 i-MMD e:HEV 184",
@@ -2252,6 +2621,28 @@
           "trims": [
             "Elegance",
             "Executive",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "e",
+          "versions": [
+            "136 28.5kWh",
+            "154 28.5kWh Advance",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Advance",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -2699,7 +3090,38 @@
           ]
         },
         {
-          "name": "Rio",
+          "name": "Rio (2005-2011)",
+          "versions": [
+            "1.4 MPI 97",
+            "1.6 MPI 110",
+            "1.5 CRDi 110",
+            "Diğer"
+          ],
+          "trims": [
+            "EX",
+            "LX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Rio (2011-2017)",
+          "versions": [
+            "1.2 MPI 85",
+            "1.4 MPI 107",
+            "1.6 MPI 138",
+            "1.4 CRDi 90",
+            "1.1 CRDi 75",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Style",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Rio (2017-)",
           "versions": [
             "1.0 T-GDI 100",
             "1.0 T-GDI 120",
@@ -2714,7 +3136,45 @@
           ]
         },
         {
-          "name": "Ceed",
+          "name": "Ceed (2006-2012)",
+          "versions": [
+            "1.4 MPI 90",
+            "1.6 MPI 122",
+            "2.0 MPI 143",
+            "1.6 CRDi 90",
+            "1.6 CRDi 115",
+            "2.0 CRDi 140",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ceed (2012-2018)",
+          "versions": [
+            "1.0 T-GDI 100",
+            "1.4 T-GDI 140",
+            "1.6 GDI 135",
+            "1.6 T-GDI 204 GT",
+            "1.4 CRDi 90",
+            "1.6 CRDi 110",
+            "1.6 CRDi 136",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "GT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ceed (2018-)",
           "versions": [
             "1.0 T-GDI 120",
             "1.4 T-GDI 140",
@@ -2762,7 +3222,57 @@
           ]
         },
         {
-          "name": "Sportage",
+          "name": "Sportage (2004-2010)",
+          "versions": [
+            "2.0 MPI 141 2WD",
+            "2.0 MPI 141 AWD",
+            "2.0 CRDi 140 AWD",
+            "Diğer"
+          ],
+          "trims": [
+            "EX",
+            "LX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sportage (2010-2016)",
+          "versions": [
+            "1.6 GDI 135 2WD",
+            "2.0 MPI 163 2WD",
+            "2.0 MPI 163 AWD",
+            "1.7 CRDi 115 2WD",
+            "2.0 CRDi 136 AWD",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sportage (2016-2021)",
+          "versions": [
+            "1.6 T-GDI 132 2WD",
+            "2.0 MPI 163 2WD",
+            "2.0 MPI 163 AWD",
+            "1.6 CRDi 115 2WD",
+            "1.6 CRDi 136 AWD",
+            "2.0 CRDi 185 AWD GT Line",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "GT Line",
+            "GT Line Premium",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sportage (2021-)",
           "versions": [
             "1.6 T-GDI 150 FWD",
             "1.6 T-GDI 180 AWD",
@@ -2856,6 +3366,15 @@
             "Earth",
             "GT Line",
             "GT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }
@@ -4150,7 +4669,39 @@
       "make": "Nissan",
       "models": [
         {
-          "name": "Micra",
+          "name": "Micra (2003-2010)",
+          "versions": [
+            "1.0 65",
+            "1.2 80",
+            "1.4 88",
+            "1.5 dCi 65",
+            "1.5 dCi 86",
+            "Diğer"
+          ],
+          "trims": [
+            "Visia",
+            "Acenta",
+            "Tekna",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Micra (2010-2017)",
+          "versions": [
+            "1.2 80",
+            "1.2 DIG-S 98",
+            "1.5 dCi 90",
+            "Diğer"
+          ],
+          "trims": [
+            "Visia",
+            "Acenta",
+            "Tekna",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Micra (2017-)",
           "versions": [
             "1.0 IG-T 100",
             "1.0 IG-T 117 Tekna",
@@ -4181,7 +4732,43 @@
           ]
         },
         {
-          "name": "Qashqai",
+          "name": "Qashqai (2006-2013)",
+          "versions": [
+            "1.6 115 2WD",
+            "2.0 141 2WD",
+            "2.0 141 AWD",
+            "1.5 dCi 106 2WD",
+            "2.0 dCi 150 AWD",
+            "Diğer"
+          ],
+          "trims": [
+            "Visia",
+            "Acenta",
+            "Tekna",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Qashqai (2013-2021)",
+          "versions": [
+            "1.2 DIG-T 115",
+            "1.3 DIG-T 140",
+            "1.3 DIG-T 160",
+            "1.5 dCi 110",
+            "1.6 dCi 130",
+            "Diğer"
+          ],
+          "trims": [
+            "Visia",
+            "Acenta",
+            "N-Connecta",
+            "Tekna",
+            "Tekna+",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Qashqai (2021-)",
           "versions": [
             "1.3 MHEV 140",
             "1.3 MHEV 158",
@@ -4258,6 +4845,15 @@
             "Visia",
             "Acenta",
             "Tekna",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
             "Diğer"
           ]
         }

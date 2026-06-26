@@ -7,12 +7,32 @@
       "trims": ["Concept", "Comfort", "GT Line", "X-Line", "Diğer"]
     },
     {
-      "name": "Rio",
+      "name": "Rio (2005-2011)",
+      "versions": ["1.4 MPI 97", "1.6 MPI 110", "1.5 CRDi 110", "Diğer"],
+      "trims": ["EX", "LX", "Diğer"]
+    },
+    {
+      "name": "Rio (2011-2017)",
+      "versions": ["1.2 MPI 85", "1.4 MPI 107", "1.6 MPI 138", "1.4 CRDi 90", "1.1 CRDi 75", "Diğer"],
+      "trims": ["Cool", "Comfort", "Style", "Diğer"]
+    },
+    {
+      "name": "Rio (2017-)",
       "versions": ["1.0 T-GDI 100", "1.0 T-GDI 120", "1.4 MPI 100", "Diğer"],
       "trims": ["Concept", "Comfort", "GT Line", "Diğer"]
     },
     {
-      "name": "Ceed",
+      "name": "Ceed (2006-2012)",
+      "versions": ["1.4 MPI 90", "1.6 MPI 122", "2.0 MPI 143", "1.6 CRDi 90", "1.6 CRDi 115", "2.0 CRDi 140", "Diğer"],
+      "trims": ["Cool", "Comfort", "Spirit", "Diğer"]
+    },
+    {
+      "name": "Ceed (2012-2018)",
+      "versions": ["1.0 T-GDI 100", "1.4 T-GDI 140", "1.6 GDI 135", "1.6 T-GDI 204 GT", "1.4 CRDi 90", "1.6 CRDi 110", "1.6 CRDi 136", "Diğer"],
+      "trims": ["Cool", "Comfort", "Spirit", "GT", "Diğer"]
+    },
+    {
+      "name": "Ceed (2018-)",
       "versions": ["1.0 T-GDI 120", "1.4 T-GDI 140", "1.5 T-GDI 160", "1.6 CRDi 115", "1.6 CRDi 136", "Diğer"],
       "trims": ["Concept", "Comfort", "GT Line", "Diğer"]
     },
@@ -27,7 +47,22 @@
       "trims": ["Standart", "GT", "GT Sport", "Diğer"]
     },
     {
-      "name": "Sportage",
+      "name": "Sportage (2004-2010)",
+      "versions": ["2.0 MPI 141 2WD", "2.0 MPI 141 AWD", "2.0 CRDi 140 AWD", "Diğer"],
+      "trims": ["EX", "LX", "Diğer"]
+    },
+    {
+      "name": "Sportage (2010-2016)",
+      "versions": ["1.6 GDI 135 2WD", "2.0 MPI 163 2WD", "2.0 MPI 163 AWD", "1.7 CRDi 115 2WD", "2.0 CRDi 136 AWD", "Diğer"],
+      "trims": ["Cool", "Comfort", "Spirit", "Diğer"]
+    },
+    {
+      "name": "Sportage (2016-2021)",
+      "versions": ["1.6 T-GDI 132 2WD", "2.0 MPI 163 2WD", "2.0 MPI 163 AWD", "1.6 CRDi 115 2WD", "1.6 CRDi 136 AWD", "2.0 CRDi 185 AWD GT Line", "Diğer"],
+      "trims": ["Cool", "Comfort", "GT Line", "GT Line Premium", "Diğer"]
+    },
+    {
+      "name": "Sportage (2021-)",
       "versions": ["1.6 T-GDI 150 FWD", "1.6 T-GDI 180 AWD", "1.6 CRDi 115", "1.6 CRDi 136 AWD", "PHEV 265 AWD", "HEV 230 AWD", "Diğer"],
       "trims": ["Concept", "Comfort", "GT Line", "GT Line Premium", "X-Line", "Diğer"]
     },
@@ -55,6 +90,11 @@
       "name": "EV9",
       "versions": ["Standard Range RWD 150 76.1kWh", "Long Range RWD 204 99.8kWh", "Long Range AWD 283 99.8kWh", "GT AWD 501", "Diğer"],
       "trims": ["Air", "Earth", "GT Line", "GT", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

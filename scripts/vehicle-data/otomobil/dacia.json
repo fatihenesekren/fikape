@@ -2,7 +2,32 @@
   "make": "Dacia",
   "models": [
     {
-      "name": "Sandero",
+      "name": "Logan (2004-2012)",
+      "versions": ["1.4 MPI 75", "1.6 MPI 90", "1.5 dCi 65", "1.5 dCi 70", "1.5 dCi 85", "Diğer"],
+      "trims": ["Ambiance", "Laureate", "Diğer"]
+    },
+    {
+      "name": "Logan (2012-2020)",
+      "versions": ["0.9 TCe 90", "1.0 SCe 75", "1.6 MPI 85", "1.5 dCi 75", "1.5 dCi 90", "Diğer"],
+      "trims": ["Access", "Ambiance", "Laureate", "Diğer"]
+    },
+    {
+      "name": "Logan (2020-)",
+      "versions": ["SCe 65", "TCe 90", "TCe 100 ECO-G LPG", "Diğer"],
+      "trims": ["Essential", "Expression", "Extreme", "Diğer"]
+    },
+    {
+      "name": "Sandero (2008-2012)",
+      "versions": ["1.4 MPI 75", "1.6 MPI 90", "1.5 dCi 70", "1.5 dCi 85", "Diğer"],
+      "trims": ["Ambiance", "Laureate", "Stepway", "Diğer"]
+    },
+    {
+      "name": "Sandero (2012-2020)",
+      "versions": ["0.9 TCe 90", "1.0 SCe 75", "1.6 MPI 85", "1.5 dCi 75", "1.5 dCi 90", "RS 1.6 T 115", "Diğer"],
+      "trims": ["Access", "Ambiance", "Laureate", "Stepway", "RS", "Diğer"]
+    },
+    {
+      "name": "Sandero (2020-)",
       "versions": ["SCe 65", "TCe 90", "TCe 100 ECO-G LPG", "Diğer"],
       "trims": ["Essential", "Expression", "Extreme", "Diğer"]
     },
@@ -12,12 +37,12 @@
       "trims": ["Essential", "Expression", "Extreme", "Diğer"]
     },
     {
-      "name": "Logan",
-      "versions": ["SCe 65", "TCe 90", "TCe 100 ECO-G LPG", "Diğer"],
-      "trims": ["Essential", "Expression", "Extreme", "Diğer"]
+      "name": "Duster (2010-2017)",
+      "versions": ["1.6 MPI 105 2WD", "1.6 MPI 105 4WD", "2.0 MPI 135 4WD", "1.5 dCi 90 2WD", "1.5 dCi 105 4WD", "Diğer"],
+      "trims": ["Ambiance", "Laureate", "Prestige", "Diğer"]
     },
     {
-      "name": "Duster",
+      "name": "Duster (2017-)",
       "versions": ["TCe 100 2WD", "TCe 130 4WD", "TCe 150 4WD", "1.5 dCi 115 4WD", "Diğer"],
       "trims": ["Essential", "Expression", "Extreme", "Journey", "Diğer"]
     },
@@ -35,6 +60,11 @@
       "name": "Bigster",
       "versions": ["TCe 130 2WD", "Full Hybrid 155 2WD", "Diğer"],
       "trims": ["Expression", "Extreme", "Journey", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

@@ -2,7 +2,27 @@
   "make": "Honda",
   "models": [
     {
-      "name": "Civic",
+      "name": "Civic (2001-2006)",
+      "versions": ["1.4 iS 90", "1.6 iS 110", "1.7 CTDi 100", "2.0 Type R 200", "Diğer"],
+      "trims": ["S", "ES", "SE", "Type R", "Diğer"]
+    },
+    {
+      "name": "Civic (2006-2012)",
+      "versions": ["1.4 i-DSI 83", "1.8 i-VTEC 140", "2.0 i-VTEC 201", "2.2 i-CTDi 140", "Type R 2.0 201", "Diğer"],
+      "trims": ["Comfort", "Sport", "Executive", "Type R", "Diğer"]
+    },
+    {
+      "name": "Civic (2012-2017)",
+      "versions": ["1.4 i-VTEC 100", "1.6 i-DTEC 120", "1.8 i-VTEC 142", "2.0 Type R 280", "Diğer"],
+      "trims": ["Comfort", "Elegance", "Executive", "Type R", "Diğer"]
+    },
+    {
+      "name": "Civic (2017-2022)",
+      "versions": ["1.0 VTEC Turbo 126", "1.5 VTEC Turbo 182", "1.6 i-DTEC 120", "Type R 2.0 320", "Diğer"],
+      "trims": ["Elegance", "Executive", "Sport", "Prestige", "Type R", "Diğer"]
+    },
+    {
+      "name": "Civic (2022-)",
       "versions": ["1.0 VTEC Turbo 126", "1.5 VTEC Turbo 182", "2.0 i-MMD e:HEV 184", "2.0 VTEC Turbo Type R 329", "Diğer"],
       "trims": ["Elegance", "Executive", "Sport", "Advance", "Type R", "Diğer"]
     },
@@ -22,11 +42,6 @@
       "trims": ["Elegance", "Advance", "Advance Sport", "Diğer"]
     },
     {
-      "name": "e",
-      "versions": ["136 28.5kWh", "154 28.5kWh Advance", "Diğer"],
-      "trims": ["Standart", "Advance", "Diğer"]
-    },
-    {
       "name": "ZR-V",
       "versions": ["2.0 i-MMD e:HEV 184", "Diğer"],
       "trims": ["Elegance", "Advance", "Diğer"]
@@ -35,6 +50,16 @@
       "name": "Accord",
       "versions": ["2.0 i-MMD e:HEV 207", "Diğer"],
       "trims": ["Elegance", "Executive", "Diğer"]
+    },
+    {
+      "name": "e",
+      "versions": ["136 28.5kWh", "154 28.5kWh Advance", "Diğer"],
+      "trims": ["Standart", "Advance", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }
