@@ -78,9 +78,8 @@ export async function POST(
       ...(incomingAttrs ?? {}),
     };
 
-    // Wikipedia fallback: fotoğraf yoksa otomatik çek
-    const hasPhoto = existingProduct?.imageUrl || (existingProduct?.photos?.length ?? 0) > 0;
-    const wikiImage = hasPhoto
+    // Wikipedia: imageUrl yoksa otomatik çek (kullanıcı fotoğraflarından bağımsız)
+    const wikiImage = existingProduct?.imageUrl
       ? null
       : await fetchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
 
