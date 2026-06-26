@@ -1,0 +1,25 @@
+{
+  "make": "Haval",
+  "models": [
+    {
+      "name": "Jolion (2021-)",
+      "versions": ["1.5T GDIT 143 2WD", "1.5T GDIT 143 HEV", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Supreme", "Diğer"]
+    },
+    {
+      "name": "H6 (2021-)",
+      "versions": ["2.0T GDIT 201 2WD", "2.0T GDIT 201 4WD", "HEV 243", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Supreme", "Diğer"]
+    },
+    {
+      "name": "H9 (2021-)",
+      "versions": ["2.0T 218 4WD", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Supreme", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

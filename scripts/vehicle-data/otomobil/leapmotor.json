@@ -1,0 +1,20 @@
+{
+  "make": "Leapmotor",
+  "models": [
+    {
+      "name": "T03 (2024-)",
+      "versions": ["Elektrik 95 CV 37.3kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "C10 (2024-)",
+      "versions": ["Elektrik 218 CV FWD 69.9kWh", "EREV 158 CV 28.4kWh", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}

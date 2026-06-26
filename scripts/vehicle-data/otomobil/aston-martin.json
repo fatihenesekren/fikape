@@ -1,0 +1,35 @@
+{
+  "make": "Aston Martin",
+  "models": [
+    {
+      "name": "DB9 (2004-2016)",
+      "versions": ["6.0 V12 470", "6.0 V12 510 GT", "Volante 6.0 V12", "Diğer"],
+      "trims": ["Standart", "GT", "Carbon Edition", "Diğer"]
+    },
+    {
+      "name": "DB11 (2016-)",
+      "versions": ["4.0 V8 510", "5.2 V12 630", "Volante 4.0 V8 510", "Diğer"],
+      "trims": ["Standart", "AMR", "Diğer"]
+    },
+    {
+      "name": "Vantage (2018-)",
+      "versions": ["4.0 V8 510", "4.0 V8 535 F1 Edition", "4.0 V8 665 AMR", "Roadster 4.0 V8 503", "Diğer"],
+      "trims": ["Standart", "F1 Edition", "AMR", "Diğer"]
+    },
+    {
+      "name": "DBS Superleggera (2018-)",
+      "versions": ["5.2 V12 725", "5.2 V12 760 770", "Volante 5.2 V12 725", "Diğer"],
+      "trims": ["Standart", "Superleggera", "770 Ultimate", "Diğer"]
+    },
+    {
+      "name": "DBX (2020-)",
+      "versions": ["4.0 V8 550", "DBX707 4.0 V8 707", "Diğer"],
+      "trims": ["Standart", "707", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
+  ]
+}
