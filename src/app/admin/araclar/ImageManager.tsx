@@ -31,7 +31,8 @@ export function ImageManager({ products }: { products: Product[] }) {
       const res = await fetch(`/api/admin/products/${slug}/image`, { method: "POST", body: form });
       const data = await parseJson(res);
       if (!res.ok) throw new Error(data.error ?? `HTTP ${res.status}`);
-      setStates((s) => ({ ...s, [slug]: { loading: false, url: data.imageUrl, error: null } }));
+      const busted = `${data.imageUrl}?t=${Date.now()}`;
+      setStates((s) => ({ ...s, [slug]: { loading: false, url: busted, error: null } }));
       setUrlInputs((u) => ({ ...u, [slug]: data.imageUrl }));
     } catch (e) {
       setStates((s) => ({ ...s, [slug]: { ...s[slug], loading: false, error: String(e) } }));
