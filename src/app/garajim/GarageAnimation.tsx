@@ -399,6 +399,24 @@ function DayAnimation() {
           <div style={{ position:"absolute", bottom:8, right:4, width:3, height:12, background:"#7a5230" }}/>
         </div>
 
+        {/* İkinci sokak lambası (sağ) */}
+        <div style={{ position:"absolute", left:534, bottom:54 }}>
+          <div style={{ position:"absolute", bottom:0, left:3, width:3, height:68, background:"#7a7a7a" }}/>
+          <div style={{ position:"absolute", bottom:66, left:3, width:22, height:3, background:"#7a7a7a" }}/>
+          <div style={{ position:"absolute", bottom:62, left:16, width:14, height:7, background:"#999", borderRadius:"2px 2px 0 0" }}/>
+        </div>
+
+        {/* İkinci bank (sağ lamba yanı) */}
+        <div style={{ position:"absolute", left:564, bottom:54 }}>
+          <div style={{ position:"absolute", bottom:8, left:0, width:36, height:5, background:"#8b6340", borderRadius:1 }}/>
+          <div style={{ position:"absolute", bottom:16, left:2, width:32, height:4, background:"#a0754e", borderRadius:1 }}/>
+          <div style={{ position:"absolute", bottom:0, left:2, width:4, height:8, background:"#7a5230", borderRadius:1 }}/>
+          <div style={{ position:"absolute", bottom:0, left:16, width:4, height:8, background:"#7a5230", borderRadius:1 }}/>
+          <div style={{ position:"absolute", bottom:0, right:2, width:4, height:8, background:"#7a5230", borderRadius:1 }}/>
+          <div style={{ position:"absolute", bottom:8, left:4, width:3, height:12, background:"#7a5230" }}/>
+          <div style={{ position:"absolute", bottom:8, right:4, width:3, height:12, background:"#7a5230" }}/>
+        </div>
+
         {/* 🌳 Sağ kenarda */}
         <div style={{ position:"absolute", right:6, bottom:54, fontSize:34, lineHeight:1, filter:"drop-shadow(0 2px 3px rgba(0,0,0,0.12))" }}>🌳</div>
 
