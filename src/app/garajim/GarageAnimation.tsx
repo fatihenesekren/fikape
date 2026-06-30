@@ -121,7 +121,7 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
 
       <div
         className="relative w-full rounded-2xl overflow-hidden mb-6 select-none"
-        style={{ height:215, background:"linear-gradient(180deg,#0f1923 0%,#1c2d4a 100%)" }}
+        style={{ height:185, background:"linear-gradient(180deg,#0f1923 0%,#1c2d4a 100%)" }}
       >
         {/* Yıldızlar */}
         {stars.map(([x,y,r],i) => (
@@ -143,19 +143,19 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
         </div>
 
         {/* Yol */}
-        <div style={{ position:"absolute", bottom:0, left:0, right:0, height:54, background:"#1e1e1e" }}>
+        <div style={{ position:"absolute", bottom:0, left:0, right:0, height:40, background:"#1e1e1e" }}>
           <div style={{
             position:"absolute", top:"40%", left:0, right:0, height:3,
             backgroundImage:"repeating-linear-gradient(to right,#3a3a3a 0px,#3a3a3a 26px,transparent 26px,transparent 54px)"
           }}/>
         </div>
-        <div style={{ position:"absolute", bottom:54, left:0, right:0, height:2, background:"#2a3a20" }}/>
+        <div style={{ position:"absolute", bottom:40, left:0, right:0, height:2, background:"#2a3a20" }}/>
 
         {/* Ağaçlar */}
         {trees.map(([x,scale],i) => (
           <div key={i} style={{
-            position:"absolute", left:x, bottom:54,
-            fontSize:Math.round(36*scale), lineHeight:1,
+            position:"absolute", left:x, bottom:40,
+            fontSize:Math.round(30*scale), lineHeight:1,
             filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.5))"
           }}>🌲</div>
         ))}
@@ -166,7 +166,7 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
           <div style={{ position:"absolute", bottom:66, left:3, width:22, height:3, background:"#5a5a5a" }}/>
           <div style={{ position:"absolute", bottom:62, left:16, width:14, height:7, background:"#888", borderRadius:"2px 2px 0 0" }}/>
           <div style={{
-            position:"absolute", bottom:54, left:12, width:22, height:22,
+            position:"absolute", bottom:40, left:12, width:22, height:22,
             background:"rgba(255,225,90,0.3)", borderRadius:"50%",
             filter:"blur(6px)", animation:"lampGlow 3s ease-in-out infinite",
           }}/>
@@ -192,7 +192,7 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
         </div>
 
         {/* GARAJ — sağda */}
-        <div style={{ position:"absolute", right:36, bottom:54, width:126, height:112 }}>
+        <div style={{ position:"absolute", right:36, bottom:40, width:126, height:112 }}>
 
 
           {/* Çatı */}
@@ -226,17 +226,17 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
         </div>
 
         {/* ARABA — FI mavisi */}
-        <div style={{ position:"absolute", bottom:54, left:0, animation:"carMove 9s infinite" }}>
+        <div style={{ position:"absolute", bottom:40, left:0, animation:"carMove 9s infinite" }}>
           <Car />
         </div>
 
         {/* MOTOSİKLET — KA yeşili */}
-        <div style={{ position:"absolute", bottom:54, left:0, animation:"motoMove 9s infinite" }}>
+        <div style={{ position:"absolute", bottom:40, left:0, animation:"motoMove 9s infinite" }}>
           <Motorcycle />
         </div>
 
         {/* SCOOTER — PE kırmızısı */}
-        <div style={{ position:"absolute", bottom:54, left:0, animation:"scooterMove 9s infinite" }}>
+        <div style={{ position:"absolute", bottom:40, left:0, animation:"scooterMove 9s infinite" }}>
           <Scooter />
         </div>
       </div>

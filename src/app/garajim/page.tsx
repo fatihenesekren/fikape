@@ -84,7 +84,7 @@ export default async function GarajimPage() {
               >
                 {/* Araç fotoğrafı */}
                 <div
-                  className="w-20 h-16 rounded-xl overflow-hidden shrink-0 flex items-center justify-center text-2xl"
+                  className="w-24 h-20 rounded-xl overflow-hidden shrink-0 flex items-center justify-center text-2xl"
                   style={{ background: fuelType === "EV" ? "#0d1117" : "#f3f4f6" }}
                 >
                   {product.imageUrl ? (
