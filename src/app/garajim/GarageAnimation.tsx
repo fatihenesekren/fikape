@@ -155,30 +155,30 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
         {trees.map(([x,scale],i) => (
           <div key={i} style={{
             position:"absolute", left:x, bottom:40,
-            fontSize:Math.round(30*scale), lineHeight:1,
+            fontSize:Math.round(36*scale), lineHeight:1,
             filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.5))"
           }}>🌲</div>
         ))}
 
         {/* Sokak lambası */}
-        <div style={{ position:"absolute", left:90, bottom:54 }}>
+        <div style={{ position:"absolute", left:90, bottom:40 }}>
           <div style={{ position:"absolute", bottom:0, left:3, width:3, height:68, background:"#5a5a5a" }}/>
           <div style={{ position:"absolute", bottom:66, left:3, width:22, height:3, background:"#5a5a5a" }}/>
           <div style={{ position:"absolute", bottom:62, left:16, width:14, height:7, background:"#888", borderRadius:"2px 2px 0 0" }}/>
           <div style={{
-            position:"absolute", bottom:40, left:12, width:22, height:22,
+            position:"absolute", bottom:54, left:12, width:22, height:22,
             background:"rgba(255,225,90,0.3)", borderRadius:"50%",
             filter:"blur(6px)", animation:"lampGlow 3s ease-in-out infinite",
           }}/>
           <div style={{
-            position:"absolute", bottom:40, left:6, width:30, height:24,
+            position:"absolute", bottom:54, left:6, width:30, height:24,
             background:"rgba(255,210,60,0.07)",
             clipPath:"polygon(25% 0%,75% 0%,100% 100%,0% 100%)",
           }}/>
         </div>
 
         {/* P Park Levhası — garajın solunda, yoldan yukarı */}
-        <div style={{ position:"absolute", right:196, bottom:54 }}>
+        <div style={{ position:"absolute", right:196, bottom:40 }}>
           <div style={{ position:"absolute", left:11, bottom:0, width:2, height:30, background:"#555" }}/>
           <div style={{
             position:"absolute", bottom:30, left:0,
