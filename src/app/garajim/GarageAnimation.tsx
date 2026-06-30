@@ -57,23 +57,23 @@ function NightAnimation() {
         @keyframes nCarMove {
           0%, 7%   { transform: translateX(-70px);  opacity: 0; }
           11%      { transform: translateX(10px);   opacity: 1; }
-          25%      { transform: translateX(490px);  opacity: 1; }
-          31%      { transform: translateX(560px);  opacity: 0; }
-          100%     { transform: translateX(560px);  opacity: 0; }
+          27%      { transform: translateX(680px);  opacity: 1; }
+          31%      { transform: translateX(750px);  opacity: 0; }
+          100%     { transform: translateX(750px);  opacity: 0; }
         }
         @keyframes nMotoMove {
           0%, 31%  { transform: translateX(-70px);  opacity: 0; }
           35%      { transform: translateX(10px);   opacity: 1; }
-          49%      { transform: translateX(490px);  opacity: 1; }
-          55%      { transform: translateX(560px);  opacity: 0; }
-          100%     { transform: translateX(560px);  opacity: 0; }
+          51%      { transform: translateX(680px);  opacity: 1; }
+          55%      { transform: translateX(750px);  opacity: 0; }
+          100%     { transform: translateX(750px);  opacity: 0; }
         }
         @keyframes nScooterMove {
           0%, 55%  { transform: translateX(-70px);  opacity: 0; }
           59%      { transform: translateX(10px);   opacity: 1; }
-          73%      { transform: translateX(490px);  opacity: 1; }
-          79%      { transform: translateX(560px);  opacity: 0; }
-          100%     { transform: translateX(560px);  opacity: 0; }
+          75%      { transform: translateX(680px);  opacity: 1; }
+          79%      { transform: translateX(750px);  opacity: 0; }
+          100%     { transform: translateX(750px);  opacity: 0; }
         }
         @keyframes nGarageDoor {
           0%, 7%    { transform: translateY(0); }
@@ -226,22 +226,22 @@ function DayAnimation() {
         @keyframes dCarExit {
           0%, 3%   { transform: translateX(0);    opacity: 0; }
           7%       { transform: translateX(5px);  opacity: 1; }
-          30%      { transform: translateX(455px);opacity: 1; }
-          35%      { transform: translateX(515px);opacity: 0; }
-          100%     { transform: translateX(515px);opacity: 0; }
+          32%      { transform: translateX(545px);opacity: 1; }
+          35%      { transform: translateX(590px);opacity: 0; }
+          100%     { transform: translateX(590px);opacity: 0; }
         }
         @keyframes dMotoExit {
           0%, 37%  { transform: translateX(0);    opacity: 0; }
           41%      { transform: translateX(5px);  opacity: 1; }
-          63%      { transform: translateX(455px);opacity: 1; }
-          68%      { transform: translateX(515px);opacity: 0; }
-          100%     { transform: translateX(515px);opacity: 0; }
+          65%      { transform: translateX(545px);opacity: 1; }
+          68%      { transform: translateX(590px);opacity: 0; }
+          100%     { transform: translateX(590px);opacity: 0; }
         }
         @keyframes dScooterExit {
           0%, 70%  { transform: translateX(0);    opacity: 0; }
           74%      { transform: translateX(5px);  opacity: 1; }
-          95%      { transform: translateX(455px);opacity: 1; }
-          100%     { transform: translateX(515px);opacity: 0; }
+          97%      { transform: translateX(545px);opacity: 1; }
+          100%     { transform: translateX(590px);opacity: 0; }
         }
         @keyframes dGarageDoor {
           0%, 5%    { transform: translateY(0); }
