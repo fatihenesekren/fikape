@@ -43,6 +43,7 @@ export async function POST(
     const blob = await put(`product-images/${slug}.${ext}`, file, {
       access: "public",
       addRandomSuffix: false,
+      allowOverwrite: true,
     });
 
     await prisma.product.update({
