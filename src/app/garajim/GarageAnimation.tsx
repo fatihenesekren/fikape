@@ -160,6 +160,18 @@ function NightAnimation() {
         <div style={{ position:"absolute", left:268, bottom:54, fontSize:33, lineHeight:1, filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.5))" }}>🌲</div>
         <div style={{ position:"absolute", left:335, bottom:54, fontSize:36, lineHeight:1, filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.5))" }}>🌲</div>
 
+        {/* İkinci sokak lambası */}
+        <div style={{ position:"absolute", left:408, bottom:54 }}>
+          <div style={{ position:"absolute", bottom:0, left:3, width:3, height:68, background:"#5a5a5a" }}/>
+          <div style={{ position:"absolute", bottom:66, left:3, width:22, height:3, background:"#5a5a5a" }}/>
+          <div style={{ position:"absolute", bottom:62, left:16, width:14, height:7, background:"#888", borderRadius:"2px 2px 0 0" }}/>
+          <div style={{ position:"absolute", bottom:54, left:12, width:22, height:22, background:"rgba(255,225,90,0.3)", borderRadius:"50%", filter:"blur(6px)", animation:"nLampGlow 3s ease-in-out infinite" }}/>
+          <div style={{ position:"absolute", bottom:54, left:6, width:30, height:24, background:"rgba(255,210,60,0.07)", clipPath:"polygon(25% 0%,75% 0%,100% 100%,0% 100%)" }}/>
+        </div>
+
+        {/* 🌲 Lamba ile P tabelası arasında */}
+        <div style={{ position:"absolute", left:478, bottom:54, fontSize:35, lineHeight:1, filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.5))" }}>🌲</div>
+
         {/* P Park Levhası */}
         <div style={{ position:"absolute", right:196, bottom:54 }}>
           <div style={{ position:"absolute", left:11, bottom:0, width:2, height:30, background:"#555" }}/>
