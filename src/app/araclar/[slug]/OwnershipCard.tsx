@@ -39,13 +39,6 @@ export function OwnershipCard({ productId, initialInGarage, garageCount, isLogge
 
       <div className="flex-1 min-w-0">
         <p className="text-sm font-semibold text-gray-900">Bu aracı kullanıyor musun?</p>
-        <p className="text-xs text-gray-400 mt-0.5">
-          {garageCount > 0 ? (
-            <>Garajına ekle, deneyimini paylaş —{" "}
-              <span className="text-gray-600 font-medium">{garageCount} kişinin garajında</span>
-            </>
-          ) : "Garajına ekle ve deneyimini paylaş"}
-        </p>
       </div>
 
       {isLoggedIn ? (
