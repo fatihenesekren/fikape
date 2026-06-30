@@ -17,14 +17,20 @@ export function ImageManager({ products }: { products: Product[] }) {
   );
   const fileRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
+  async function parseJson(res: Response) {
+    const text = await res.text();
+    if (!text) return {};
+    try { return JSON.parse(text); } catch { return { error: `Sunucu yanıtı okunamadı (${res.status})` }; }
+  }
+
   async function uploadFile(slug: string, file: File) {
     setStates((s) => ({ ...s, [slug]: { ...s[slug], loading: true, error: null } }));
     const form = new FormData();
     form.append("image", file);
     try {
       const res = await fetch(`/api/admin/products/${slug}/image`, { method: "POST", body: form });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Hata");
+      const data = await parseJson(res);
+      if (!res.ok) throw new Error(data.error ?? `HTTP ${res.status}`);
       setStates((s) => ({ ...s, [slug]: { loading: false, url: data.imageUrl, error: null } }));
       setUrlInputs((u) => ({ ...u, [slug]: data.imageUrl }));
     } catch (e) {
@@ -42,8 +48,8 @@ export function ImageManager({ products }: { products: Product[] }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ imageUrl }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Hata");
+      const data = await parseJson(res);
+      if (!res.ok) throw new Error(data.error ?? `HTTP ${res.status}`);
       setStates((s) => ({ ...s, [slug]: { loading: false, url: data.imageUrl, error: null } }));
     } catch (e) {
       setStates((s) => ({ ...s, [slug]: { ...s[slug], loading: false, error: String(e) } }));
