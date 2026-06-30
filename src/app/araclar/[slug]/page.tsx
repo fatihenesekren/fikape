@@ -62,6 +62,8 @@ const KARAVAN_TYPE_LABELS: Record<string, string> = {
   cekme: "Çekme Karavan", motorlu: "Motorlu Karavan",
 };
 
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
 const CATEGORY_FALLBACK_ICONS: Record<string, string> = {
   otomobil: "🚗", motosiklet: "🏍️", "e-scooter": "🛴", "e-bisiklet": "🚴", karavan: "🏕️", kamyonet: "🛻",
 };
@@ -213,7 +215,7 @@ export default async function VehicleDetailPage({
       attrs.engine_cc    ? { label: "Motor",     value: `${attrs.engine_cc} cc` }             : (attrs.battery_kwh ? { label: "Batarya", value: `${attrs.battery_kwh} kWh` } : null),
       attrs.power_hp     ? { label: "Güç",       value: `${attrs.power_hp} HP` }              : null,
       attrs.zero_to_100  ? { label: "0–100",     value: `${attrs.zero_to_100} sn` }           : null,
-      attrs.transmission ? { label: "Vites",     value: String(attrs.transmission) }           : null,
+      attrs.transmission ? { label: "Vites",     value: capitalize(String(attrs.transmission)) }           : null,
       attrs.ev_range_km  ? { label: "Menzil",    value: `${attrs.ev_range_km} km` }           : (attrs.tank_l ? { label: "Yakıt Deposu", value: `${attrs.tank_l} L` } : null),
     ];
   })();
@@ -281,8 +283,8 @@ export default async function VehicleDetailPage({
       fuelType             ? { label: "Yakıt",         value: FUEL_LABELS[fuelType] ?? fuelType } : null,
       bodyType             ? { label: "Kasa",          value: BODY_LABELS[bodyType] ?? bodyType } : null,
       attrs.segment        ? { label: "Segment",       value: `${attrs.segment} Segment` }     : null,
-      attrs.drivetrain     ? { label: "Çekiş",         value: String(attrs.drivetrain) }        : null,
-      attrs.transmission   ? { label: "Vites",         value: String(attrs.transmission) }      : null,
+      attrs.drivetrain     ? { label: "Çekiş",         value: capitalize(String(attrs.drivetrain)) }        : null,
+      attrs.transmission   ? { label: "Vites",         value: capitalize(String(attrs.transmission)) }      : null,
       attrs.engine_cc      ? { label: "Motor",         value: `${attrs.engine_cc} cc` }         : null,
       attrs.power_hp       ? { label: "Güç",           value: `${attrs.power_hp} HP` }          : null,
       attrs.torque_nm      ? { label: "Tork",          value: `${attrs.torque_nm} Nm` }         : null,
