@@ -57,34 +57,35 @@ export async function PATCH(
   req: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const session = await auth();
-  if (!session || Number(session.user.trustLevel) < 5) {
-    return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
-  }
-
-  const { slug } = await params;
-
-  let body: { imageUrl?: string };
   try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: "Geçersiz istek gövdesi." }, { status: 400 });
-  }
+    const session = await auth();
+    if (!session || Number(session.user.trustLevel) < 5) {
+      return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
+    }
 
-  const { imageUrl } = body;
+    const { slug } = await params;
 
-  if (!imageUrl || !imageUrl.startsWith("http")) {
-    return NextResponse.json({ error: "Geçerli bir URL girin." }, { status: 400 });
-  }
+    let body: { imageUrl?: string };
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ error: "Geçersiz istek gövdesi." }, { status: 400 });
+    }
 
-  try {
+    const { imageUrl } = body;
+
+    if (!imageUrl || !imageUrl.startsWith("http")) {
+      return NextResponse.json({ error: "Geçerli bir URL girin." }, { status: 400 });
+    }
+
     await prisma.product.update({
       where: { slug },
       data: { imageUrl },
     });
-  } catch {
-    return NextResponse.json({ error: `Araç bulunamadı veya DB hatası: ${slug}` }, { status: 500 });
-  }
 
-  return NextResponse.json({ ok: true, imageUrl });
+    return NextResponse.json({ ok: true, imageUrl });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    return NextResponse.json({ error: msg }, { status: 500 });
+  }
 }
