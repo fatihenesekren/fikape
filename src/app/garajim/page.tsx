@@ -43,7 +43,7 @@ export default async function GarajimPage() {
   });
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
+    <div className="max-w-3xl w-full mx-auto px-4 py-10">
       <GarageAnimation userName={userName} />
 
       <div className="mb-8">
