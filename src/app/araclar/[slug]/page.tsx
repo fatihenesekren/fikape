@@ -198,11 +198,11 @@ export default async function VehicleDetailPage({
       attrs.tank_l         ? { label: "Depo",       value: `${attrs.tank_l} L` }              : null,
     ];
     if (categorySlug === "karavan") return [
+      karavanType            ? { label: "Tip",             value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
       attrs.berth            ? { label: "Yatak Kapasitesi", value: `${attrs.berth} kişi` }       : null,
-      attrs.length_cm        ? { label: "Uzunluk",         value: `${attrs.length_cm} cm` }     : null,
+      attrs.length_cm        ? { label: "Uzunluk",         value: `${attrs.length_cm} cm` }      : null,
+      attrs.height_cm        ? { label: "İç Yükseklik",    value: `${attrs.height_cm} cm` }      : null,
       attrs.total_weight_kg  ? { label: "Toplam Ağırlık",  value: `${attrs.total_weight_kg} kg` } : null,
-      attrs.has_bathroom != null ? { label: "Banyo",  value: attrs.has_bathroom ? "Var" : "Yok" } : null,
-      attrs.has_kitchen  != null ? { label: "Mutfak", value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
     ];
     if (categorySlug === "kamyonet") return [
       attrs.power_hp         ? { label: "Güç",              value: `${attrs.power_hp} HP` }        : null,
@@ -258,15 +258,19 @@ export default async function VehicleDetailPage({
       attrs.ev_range_km     ? { label: "Menzil",       value: `${attrs.ev_range_km} km (WLTP)` } : null,
     ];
     if (categorySlug === "karavan") return [
-      karavanType            ? { label: "Tip",         value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
-      attrs.berth            ? { label: "Yatak Kap.",  value: `${attrs.berth} kişi` }          : null,
-      attrs.length_cm        ? { label: "Uzunluk",     value: `${attrs.length_cm} cm` }        : null,
-      attrs.width_cm         ? { label: "Genişlik",    value: `${attrs.width_cm} cm` }         : null,
-      attrs.total_weight_kg  ? { label: "Toplam Ağ.",  value: `${attrs.total_weight_kg} kg` }  : null,
-      attrs.tow_weight_kg    ? { label: "Çekme Ağ.",   value: `${attrs.tow_weight_kg} kg` }    : null,
-      attrs.has_bathroom != null ? { label: "Banyo",   value: attrs.has_bathroom ? "Var" : "Yok" } : null,
-      attrs.has_kitchen  != null ? { label: "Mutfak",  value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
-      attrs.has_ac       != null ? { label: "Klima",   value: attrs.has_ac       ? "Var" : "Yok" } : null,
+      karavanType                ? { label: "Tip",           value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
+      attrs.berth                ? { label: "Yatak Kap.",    value: `${attrs.berth} kişi` }           : null,
+      attrs.length_cm            ? { label: "Uzunluk",       value: `${attrs.length_cm} cm` }         : null,
+      attrs.width_cm             ? { label: "Genişlik",      value: `${attrs.width_cm} cm` }          : null,
+      attrs.height_cm            ? { label: "İç Yükseklik",  value: `${attrs.height_cm} cm` }         : null,
+      attrs.total_weight_kg      ? { label: "Toplam Ağ.",    value: `${attrs.total_weight_kg} kg` }   : null,
+      attrs.tow_weight_kg        ? { label: "Çekme Ağ.",     value: `${attrs.tow_weight_kg} kg` }     : null,
+      attrs.water_tank_l         ? { label: "Taze Su Tankı", value: `${attrs.water_tank_l} L` }       : null,
+      attrs.heating_type         ? { label: "Isıtma",        value: capitalize(String(attrs.heating_type)) } : null,
+      attrs.has_bathroom != null ? { label: "Banyo",         value: attrs.has_bathroom ? "Var" : "Yok" } : null,
+      attrs.has_shower   != null ? { label: "Duş",           value: attrs.has_shower   ? "Var" : "Yok" } : null,
+      attrs.has_kitchen  != null ? { label: "Mutfak",        value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
+      attrs.has_ac       != null ? { label: "Klima",         value: attrs.has_ac       ? "Var" : "Yok" } : null,
     ];
     if (categorySlug === "kamyonet") return [
       fuelType               ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType } : null,

@@ -435,15 +435,18 @@ async function main() {
     { slug: "knaus-beaufort-2023", name: "Knaus Beaufort 2023", year: 2023, trimName: null,
       imageUrl: BLOB("knaus-sport-400-lk-2023.jpg"), modelId: modelKnausSport.id, brandId: knaus.id,
       attributes: { karavan_type: "motorlu", berth: 4, length_cm: 799, width_cm: 232,
-        total_weight_kg: 4250, has_bathroom: true, has_kitchen: true, has_ac: true } },
+        total_weight_kg: 4250, has_bathroom: true, has_shower: true, has_kitchen: true, has_ac: true,
+        heating_type: "gaz" } },
     { slug: "adria-altea-432-px-2023", name: "Adria Altea 432 PX 2023", year: 2023, trimName: null,
       imageUrl: BLOB("adria-altea-432-px-2023.jpg"), modelId: modelAdriaAltea.id, brandId: adria.id,
       attributes: { karavan_type: "cekme", berth: 4, length_cm: 780, tow_weight_kg: 1350,
-        width_cm: 230, total_weight_kg: 1500, has_bathroom: true, has_kitchen: true, has_ac: false } },
+        width_cm: 230, total_weight_kg: 1500, has_bathroom: true, has_shower: true, has_kitchen: true,
+        has_ac: false, heating_type: "gaz" } },
     { slug: "hobby-premium-650-ufe-2023", name: "Hobby Premium 650 UFe 2023", year: 2023, trimName: null,
       imageUrl: BLOB("hobby-premium-650-ufe-2023.jpg"), modelId: modelHobbyPremium.id, brandId: hobby.id,
       attributes: { karavan_type: "cekme", berth: 4, length_cm: 820, tow_weight_kg: 1600,
-        width_cm: 250, total_weight_kg: 1800, has_bathroom: true, has_kitchen: true, has_ac: true } },
+        width_cm: 250, total_weight_kg: 1800, has_bathroom: true, has_shower: true, has_kitchen: true,
+        has_ac: true, heating_type: "gaz", height_cm: 195, water_tank_l: 47 } },
   ];
 
   for (const p of karavanProducts) {
