@@ -63,16 +63,28 @@ export async function PATCH(
   }
 
   const { slug } = await params;
-  const { imageUrl } = await req.json() as { imageUrl: string };
+
+  let body: { imageUrl?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Geçersiz istek gövdesi." }, { status: 400 });
+  }
+
+  const { imageUrl } = body;
 
   if (!imageUrl || !imageUrl.startsWith("http")) {
     return NextResponse.json({ error: "Geçerli bir URL girin." }, { status: 400 });
   }
 
-  await prisma.product.update({
-    where: { slug },
-    data: { imageUrl },
-  });
+  try {
+    await prisma.product.update({
+      where: { slug },
+      data: { imageUrl },
+    });
+  } catch {
+    return NextResponse.json({ error: `Araç bulunamadı veya DB hatası: ${slug}` }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true, imageUrl });
 }
