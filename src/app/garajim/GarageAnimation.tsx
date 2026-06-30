@@ -226,22 +226,22 @@ function DayAnimation() {
         @keyframes dCarExit {
           0%, 3%   { transform: translateX(0);    opacity: 0; }
           7%       { transform: translateX(5px);  opacity: 1; }
-          32%      { transform: translateX(545px);opacity: 1; }
-          35%      { transform: translateX(590px);opacity: 0; }
-          100%     { transform: translateX(590px);opacity: 0; }
+          33%      { transform: translateX(620px);opacity: 1; }
+          36%      { transform: translateX(650px);opacity: 0; }
+          100%     { transform: translateX(650px);opacity: 0; }
         }
         @keyframes dMotoExit {
           0%, 37%  { transform: translateX(0);    opacity: 0; }
           41%      { transform: translateX(5px);  opacity: 1; }
-          65%      { transform: translateX(545px);opacity: 1; }
-          68%      { transform: translateX(590px);opacity: 0; }
-          100%     { transform: translateX(590px);opacity: 0; }
+          66%      { transform: translateX(620px);opacity: 1; }
+          69%      { transform: translateX(650px);opacity: 0; }
+          100%     { transform: translateX(650px);opacity: 0; }
         }
         @keyframes dScooterExit {
           0%, 70%  { transform: translateX(0);    opacity: 0; }
           74%      { transform: translateX(5px);  opacity: 1; }
-          97%      { transform: translateX(545px);opacity: 1; }
-          100%     { transform: translateX(590px);opacity: 0; }
+          98%      { transform: translateX(620px);opacity: 1; }
+          100%     { transform: translateX(650px);opacity: 0; }
         }
         @keyframes dGarageDoor {
           0%, 5%    { transform: translateY(0); }
