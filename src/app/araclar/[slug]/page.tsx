@@ -12,6 +12,7 @@ import { calcOverall } from "@/lib/fikape";
 import { getVehicleImageUrl } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
+import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
 
 export async function generateMetadata({
   params,
@@ -154,6 +155,14 @@ export default async function VehicleDetailPage({
     },
     _count: { id: true },
   });
+
+  const soldReasonData = await prisma.userProduct.groupBy({
+    by: ["soldReason"],
+    where: { productId: product.id, ownershipStatus: "PAST", soldReason: { not: null } },
+    _count: { soldReason: true },
+    orderBy: { _count: { soldReason: "desc" } },
+  });
+  const soldTotal = soldReasonData.reduce((s, d) => s + d._count.soldReason, 0);
 
   const reviewCount = agg._count.id;
   const scores: FikapeScores | null =
@@ -333,6 +342,35 @@ export default async function VehicleDetailPage({
     </div>
   ) : (
     <div className="divide-y divide-gray-50">
+      {/* Satış nedenleri özeti — min 5 veri */}
+      {soldTotal >= 5 && (
+        <div className="px-5 py-4 space-y-3">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">
+            Neden sattılar? <span className="font-normal normal-case">({soldTotal} kişi)</span>
+          </p>
+          <div className="space-y-2">
+            {soldReasonData.map((d) => {
+              const pct = Math.round((d._count.soldReason / soldTotal) * 100);
+              const label = SOLD_REASON_LABEL[d.soldReason ?? ""] ?? d.soldReason;
+              return (
+                <div key={d.soldReason} className="space-y-1">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-gray-600 font-medium">{label}</span>
+                    <span className="text-gray-400">{pct}%</span>
+                  </div>
+                  <div className="h-1.5 rounded-full bg-gray-100 overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-gray-400"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {reviews.map((r) => (
         <div key={r.id} className="px-5 py-1">
           <ReviewCard
