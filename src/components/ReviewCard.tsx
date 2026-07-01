@@ -2,6 +2,7 @@ import { FikapeScore } from "@/components/FikapeScore";
 import { calcOverall } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
 import { TRUST_BADGES } from "@/lib/trustBadge";
+import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
 
 interface ScoreVersion {
   version: number;
@@ -23,6 +24,8 @@ interface Props {
   editedAt?: Date | null;
   editCount?: number | null;
   versions?: ScoreVersion[];
+  ownershipStatus?: string | null;
+  soldReason?: string | null;
   extendedData?: Record<string, unknown> | null;
 }
 
@@ -40,6 +43,8 @@ export function ReviewCard({
   editedAt,
   editCount,
   versions,
+  ownershipStatus,
+  soldReason,
   extendedData,
 }: Props) {
   const scores = { scoreFiyat, scoreKalite, scorePerformans };
@@ -74,6 +79,14 @@ export function ReviewCard({
                 >
                   {badge.icon && <span>{badge.icon}</span>}
                   {badge.label}
+                </span>
+              )}
+              {ownershipStatus === "PAST" && (
+                <span
+                  className="text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1"
+                  style={{ background: "#f3f4f6", color: "#6b7280" }}
+                >
+                  {soldReason ? `Satıldı · ${SOLD_REASON_LABEL[soldReason] ?? soldReason}` : "Eski Sahip"}
                 </span>
               )}
               {ownershipMonths != null && (
