@@ -117,9 +117,9 @@ export default async function VehicleDetailPage({
   const categorySlug = product.category?.slug ?? "";
   const imageUrl = product.imageUrl ?? await getVehicleImageUrl(slug);
 
-  const sliderPhotos: string[] = [
-    ...(imageUrl ? [imageUrl] : []),
-    ...product.photos.map((p) => p.url),
+  const sliderPhotos = [
+    ...(imageUrl ? [{ url: imageUrl }] : []),
+    ...product.photos.map((p) => ({ url: p.url, label: "Kullanıcı fotoğrafı" })),
   ];
 
   const fuelType = String(attrs.fuel_type ?? "");

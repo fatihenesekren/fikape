@@ -2,18 +2,23 @@
 
 import { useState } from "react";
 
+interface Photo {
+  url: string;
+  label?: string; // örn. "Kullanıcı fotoğrafı"
+}
+
 interface Props {
-  photos: string[];
+  photos: Photo[];
   alt: string;
 }
 
-function SliderFrame({ src, alt }: { src: string; alt: string }) {
+function SliderFrame({ photo, alt, index }: { photo: Photo; alt: string; index: number }) {
   return (
     <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden">
       {/* Blur arka plan */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={src}
+        src={photo.url}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
@@ -22,10 +27,16 @@ function SliderFrame({ src, alt }: { src: string; alt: string }) {
       {/* Asıl fotoğraf */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={src}
-        alt={alt}
+        src={photo.url}
+        alt={index === 0 ? alt : `${alt} fotoğraf ${index + 1}`}
         className="relative w-full h-full object-contain"
       />
+      {/* Kaynak badge */}
+      {photo.label && (
+        <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-black/50 text-white text-xs font-medium z-10">
+          📸 {photo.label}
+        </div>
+      )}
     </div>
   );
 }
@@ -39,7 +50,7 @@ export function PhotoSlider({ photos, alt }: Props) {
     return (
       <div className="w-full bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 py-4">
-          <SliderFrame src={photos[0]} alt={alt} />
+          <SliderFrame photo={photos[0]} alt={alt} index={0} />
         </div>
       </div>
     );
@@ -47,12 +58,14 @@ export function PhotoSlider({ photos, alt }: Props) {
 
   const prev = () => setCurrent((c) => (c - 1 + photos.length) % photos.length);
   const next = () => setCurrent((c) => (c + 1) % photos.length);
+  const showThumbs = photos.length >= 3;
 
   return (
     <div className="w-full bg-gray-50 border-b border-gray-100">
-      <div className="max-w-5xl mx-auto px-4 py-4">
+      <div className="max-w-5xl mx-auto px-4 py-4 space-y-3">
+        {/* Ana kare */}
         <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden group">
-          {photos.map((src, i) => (
+          {photos.map((photo, i) => (
             <div
               key={i}
               className={`absolute inset-0 transition-opacity duration-300 ${
@@ -62,7 +75,7 @@ export function PhotoSlider({ photos, alt }: Props) {
               {/* Blur arka plan */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={src}
+                src={photo.url}
                 alt=""
                 aria-hidden="true"
                 className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
@@ -71,10 +84,16 @@ export function PhotoSlider({ photos, alt }: Props) {
               {/* Asıl fotoğraf */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={src}
+                src={photo.url}
                 alt={i === 0 ? alt : `${alt} fotoğraf ${i + 1}`}
                 className="relative w-full h-full object-contain"
               />
+              {/* Kaynak badge */}
+              {photo.label && (
+                <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-black/50 text-white text-xs font-medium z-10">
+                  📸 {photo.label}
+                </div>
+              )}
             </div>
           ))}
 
@@ -106,21 +125,45 @@ export function PhotoSlider({ photos, alt }: Props) {
           </div>
         </div>
 
-        {/* Dot indikatörler */}
-        <div className="flex justify-center gap-1.5 mt-3">
-          {photos.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              aria-label={`Fotoğraf ${i + 1}`}
-              className={`rounded-full transition-all ${
-                i === current
-                  ? "w-5 h-1.5 bg-gray-700"
-                  : "w-1.5 h-1.5 bg-gray-300 hover:bg-gray-400"
-              }`}
-            />
-          ))}
-        </div>
+        {/* Thumbnail şeridi (3+ fotoğraf) veya dot indikatörler */}
+        {showThumbs ? (
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+            {photos.map((photo, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                aria-label={`Fotoğraf ${i + 1}`}
+                className={`relative shrink-0 w-16 h-12 rounded-lg overflow-hidden transition-all ${
+                  i === current
+                    ? "ring-2 ring-gray-700 ring-offset-1"
+                    : "opacity-60 hover:opacity-90"
+                }`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={photo.url}
+                  alt={`Fotoğraf ${i + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div className="flex justify-center gap-1.5">
+            {photos.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                aria-label={`Fotoğraf ${i + 1}`}
+                className={`rounded-full transition-all ${
+                  i === current
+                    ? "w-5 h-1.5 bg-gray-700"
+                    : "w-1.5 h-1.5 bg-gray-300 hover:bg-gray-400"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
