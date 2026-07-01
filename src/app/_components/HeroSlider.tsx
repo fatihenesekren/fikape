@@ -19,6 +19,8 @@ type TopProduct = {
 };
 
 const CARD_W = 288; // w-72 = 18rem = 288px
+const INTERVAL_MS = 5000;
+const TRANSITION = "transform 700ms cubic-bezier(0.4, 0, 0.2, 1)";
 
 export function HeroSlider({ products }: { products: TopProduct[] }) {
   const total = products.length + 1; // slide 0 = nasıl çalışır
@@ -26,17 +28,24 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
 
   useEffect(() => {
     if (total <= 1) return;
-    const id = setInterval(() => setActive((i) => (i + 1) % total), 3500);
+    const id = setInterval(() => setActive((i) => (i + 1) % total), INTERVAL_MS);
     return () => clearInterval(id);
   }, [total]);
 
   return (
     <div className="flex flex-col items-center gap-3">
-      {/* Slider track */}
-      <div className="overflow-hidden w-72 rounded-2xl">
+      {/*
+        overflow-x: clip → kartları yatayda keser (slider)
+        overflow-y: visible → badge (-top-3.5) ve shadow dikeyde görünür kalır
+        padding-top: 20px → -top-3.5 (14px) için nefes alanı
+      */}
+      <div
+        className="w-72"
+        style={{ overflowX: "clip", overflowY: "visible", paddingTop: "20px" }}
+      >
         <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${active * CARD_W}px)` }}
+          className="flex"
+          style={{ transition: TRANSITION, transform: `translateX(-${active * CARD_W}px)` }}
         >
           {/* Slide 0: Nasıl Çalışır */}
           <div
@@ -130,16 +139,18 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
 
       {/* Nokta göstergesi */}
       {total > 1 && (
-        <div className="flex gap-1.5">
+        <div className="flex gap-1.5 items-center">
           {Array.from({ length: total }).map((_, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
               aria-label={`Slide ${i + 1}`}
-              className="rounded-full transition-all duration-300"
+              className="rounded-full transition-all"
               style={{
-                width:  i === active ? "20px" : "6px",
-                height: "6px",
+                transitionDuration: "400ms",
+                transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+                width:      i === active ? "20px" : "6px",
+                height:     "6px",
                 background: i === active ? "white" : "rgba(255,255,255,0.25)",
               }}
             />
