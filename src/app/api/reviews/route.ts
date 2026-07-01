@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   const {
     productSlug, scoreFiyat, scoreKalite, scorePerformans,
     summaryText, detailText, wouldBuyAgain, ownershipMonths, extendedData,
-    pros, cons,
+    pros, cons, photoUrls,
   } = await req.json();
 
   if (!productSlug) {
@@ -106,6 +106,21 @@ export async function POST(req: Request) {
       status:                  "PENDING",
     },
   });
+
+  // Fotoğraflar varsa ProductPhoto kaydı oluştur (PENDING — admin onaylar)
+  const urls: string[] = Array.isArray(photoUrls) ? photoUrls.slice(0, 3) : [];
+  if (urls.length > 0) {
+    await prisma.productPhoto.createMany({
+      data: urls.map((url, idx) => ({
+        productId: product.id,
+        uploadedByUserId: userId,
+        reviewId: review.id,
+        url,
+        status: "PENDING",
+        order: idx,
+      })),
+    });
+  }
 
   return NextResponse.json({ ok: true, reviewId: review.id }, { status: 201 });
 }

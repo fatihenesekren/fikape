@@ -447,6 +447,8 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   const [cons, setCons] = useState<string[]>([]);
   const [detailText,    setDetailText]    = useState("");
   const [detailTouched, setDetailTouched] = useState(false);
+  const [photoUrls,     setPhotoUrls]     = useState<string[]>([]);
+  const [photoUploading, setPhotoUploading] = useState(false);
 
   const [wouldRecommend,   setWouldRecommend]   = useState<"yes" | "maybe" | "no" | null>(null);
   const [ownershipSlot,    setOwnershipSlot]    = useState("");
@@ -550,6 +552,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         detailText,
         pros,
         cons,
+        photoUrls: photoUrls.length ? photoUrls : undefined,
         wouldBuyAgain:   wouldRecommend === "yes" ? true : wouldRecommend === "no" ? false : null,
         ownershipMonths: OWNERSHIP_MONTHS[ownershipSlot] ?? null,
         extendedData:    Object.keys(extended).length ? extended : undefined,
@@ -736,6 +739,69 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
             style={{ borderColor: detailTouched ? (detailValidation.ok ? "#86efac" : "#fca5a5") : "#e5e7eb" }}
           />
           {detailTouched && <FieldFeedback error={detailValidation.error} ok={detailValidation.ok} />}
+        </div>
+
+        {/* Fotoğraf yükleme */}
+        <div className="space-y-3 pt-1">
+          <p className="text-sm font-semibold text-gray-800">
+            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 3)</span>
+          </p>
+
+          {photoUrls.length > 0 && (
+            <div className="flex gap-2 flex-wrap">
+              {photoUrls.map((url, idx) => (
+                <div key={url} className="relative w-20 h-20 rounded-xl overflow-hidden bg-gray-100 shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={url} alt={`Fotoğraf ${idx + 1}`} className="w-full h-full object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => setPhotoUrls((prev) => prev.filter((u) => u !== url))}
+                    className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/60 text-white flex items-center justify-center text-xs leading-none hover:bg-black/80"
+                    aria-label="Fotoğrafı kaldır"
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {photoUrls.length < 3 && (
+            <label className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed text-sm font-semibold cursor-pointer transition-colors ${photoUploading ? "border-gray-200 text-gray-300" : "border-gray-300 text-gray-500 hover:border-gray-400 hover:text-gray-700"}`}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              {photoUploading ? "Yükleniyor..." : `Fotoğraf seç (${photoUrls.length}/3)`}
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                multiple
+                className="sr-only"
+                disabled={photoUploading}
+                onChange={async (e) => {
+                  const files = Array.from(e.target.files ?? []);
+                  const remaining = 3 - photoUrls.length;
+                  const toUpload = files.slice(0, remaining);
+                  setPhotoUploading(true);
+                  for (const file of toUpload) {
+                    const fd = new FormData();
+                    fd.append("file", file);
+                    const res = await fetch("/api/uploads/review-photo", { method: "POST", body: fd });
+                    if (res.ok) {
+                      const { url } = await res.json() as { url: string };
+                      setPhotoUrls((prev) => [...prev, url]);
+                    }
+                  }
+                  setPhotoUploading(false);
+                  e.target.value = "";
+                }}
+              />
+            </label>
+          )}
+          <p className="text-xs text-amber-600 font-medium">Fotoğraftaki plaka ve yüzleri yüklemeden önce kapatın (KVKK).</p>
+          <p className="text-xs text-gray-400">JPEG, PNG veya WebP · maks. 5 MB · moderasyon onayından sonra yayınlanır</p>
         </div>
       </SectionCard>
 

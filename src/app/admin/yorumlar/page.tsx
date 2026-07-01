@@ -10,6 +10,7 @@ export default async function ModerationPage() {
       id: true,
       summaryText: true,
       detailText: true,
+      extendedData: true,
       scoreFiyat: true,
       scoreKalite: true,
       scorePerformans: true,
@@ -25,6 +26,7 @@ export default async function ModerationPage() {
           model: { select: { name: true, brand: { select: { name: true } } } },
         },
       },
+      photos: { select: { id: true, url: true }, orderBy: { order: "asc" } },
     },
     orderBy: { createdAt: "asc" },
   });

@@ -16,10 +16,33 @@ export async function PATCH(
   const { action, reason } = await req.json() as { action: "approve" | "reject"; reason?: string };
 
   if (action === "approve") {
-    await prisma.review.update({
+    const review = await prisma.review.findUnique({
       where: { id: reviewId },
-      data: { status: "PUBLISHED", publishedAt: new Date() },
+      select: {
+        userId: true,
+        photos: { where: { status: "PENDING" }, select: { id: true } },
+      },
     });
+
+    const hasPhotos = (review?.photos.length ?? 0) > 0;
+
+    await prisma.$transaction([
+      prisma.review.update({
+        where: { id: reviewId },
+        data: { status: "PUBLISHED", publishedAt: new Date() },
+      }),
+      prisma.productPhoto.updateMany({
+        where: { reviewId, status: "PENDING" },
+        data: { status: "APPROVED" },
+      }),
+      // Fotoğrafı olan kullanıcıyı Level 2 → 3'e yükselt
+      ...(hasPhotos && review?.userId
+        ? [prisma.user.updateMany({
+            where: { id: review.userId, trustLevel: 2 },
+            data: { trustLevel: 3 },
+          })]
+        : []),
+    ]);
     return NextResponse.json({ ok: true, status: "PUBLISHED" });
   }
 
