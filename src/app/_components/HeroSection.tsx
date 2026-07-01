@@ -1,5 +1,5 @@
-import { getHeroStats, getTopRatedProduct } from "@/lib/dataCache";
-import { FikapeScore } from "@/components/FikapeScore";
+import { getHeroStats, getTopRatedProducts } from "@/lib/dataCache";
+import { HeroSlider } from "./HeroSlider";
 
 const POPULAR_SEARCHES = [
   "Fiat Egea",
@@ -10,9 +10,9 @@ const POPULAR_SEARCHES = [
 ];
 
 export async function HeroSection() {
-  const [stats, topRated] = await Promise.all([
+  const [stats, topRatedProducts] = await Promise.all([
     getHeroStats(),
-    getTopRatedProduct(),
+    getTopRatedProducts(),
   ]);
 
   return (
@@ -115,105 +115,9 @@ export async function HeroSection() {
             </div>
           </div>
 
-          {/* ── SAĞ: Puan kartı (sadece desktop) ── */}
+          {/* ── SAĞ: Slider (sadece desktop) ── */}
           <div className="hidden md:flex justify-center items-center">
-            {topRated ? (
-              /* Gerçek en yüksek puanlı araç */
-              <div className="bg-white rounded-2xl shadow-2xl p-5 w-72 relative">
-                <div
-                  className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap"
-                  style={{ background: "#FCD34D", color: "#78350F" }}
-                >
-                  ⭐ En yüksek puan
-                </div>
-
-                {topRated.imageUrl && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={topRated.imageUrl}
-                    alt={`${topRated.brandName} ${topRated.modelName}`}
-                    className="w-full h-36 object-cover rounded-xl mb-4"
-                  />
-                )}
-
-                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">
-                  {topRated.brandName}
-                </div>
-                <div className="text-base font-bold text-gray-900 mb-3">
-                  {topRated.modelName}
-                  {topRated.year && (
-                    <span className="text-gray-400 font-normal ml-1.5">
-                      · {topRated.year}
-                    </span>
-                  )}
-                </div>
-
-                <FikapeScore scores={topRated.scores} variant="chips" />
-
-                <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-xs text-gray-400">
-                    {topRated.reviewCount} kullanıcı yorumu
-                  </span>
-                  <a
-                    href={`/araclar/${topRated.slug}`}
-                    className="text-xs font-semibold text-gray-900 hover:text-gray-500 transition-colors"
-                  >
-                    İncele →
-                  </a>
-                </div>
-              </div>
-            ) : (
-              /* Konsept kartı — henüz yorum yok */
-              <div
-                className="rounded-2xl p-6 w-72"
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.09)",
-                }}
-              >
-                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6 text-center">
-                  Nasıl Çalışır?
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  {[
-                    { short: "Fİ", label: "Fiyat", color: "#85B7EB", width: "72%" },
-                    { short: "KA", label: "Kalite", color: "#97C459", width: "85%" },
-                    { short: "PE", label: "Performans", color: "#F0997B", width: "78%" },
-                  ].map(({ short, label, color, width }) => (
-                    <div key={short} className="flex items-center gap-3">
-                      <span
-                        className="text-xs font-black shrink-0 w-5 text-right"
-                        style={{ color }}
-                      >
-                        {short}
-                      </span>
-                      <span className="text-xs text-gray-500 w-20 shrink-0">{label}</span>
-                      <div className="flex-1 h-1.5 rounded-full overflow-hidden bg-white/10">
-                        <div
-                          className="h-full rounded-full"
-                          style={{ width, background: color, opacity: 0.75 }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="text-xs text-gray-600 text-center leading-relaxed mb-5">
-                  Her araç için 3 boyutlu puanlama.<br />
-                  Gerçek kullanıcılardan gerçek veriler.
-                </p>
-
-                <div className="text-center">
-                  <a
-                    href="/yorum-yaz"
-                    className="inline-block text-xs font-bold px-4 py-2 rounded-xl border border-white/12 text-gray-400 hover:text-white hover:border-white/25 transition-colors"
-                  >
-                    İlk yorumu sen yaz →
-                  </a>
-                </div>
-              </div>
-            )}
+            <HeroSlider products={topRatedProducts} />
           </div>
 
         </div>

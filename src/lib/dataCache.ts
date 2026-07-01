@@ -13,7 +13,7 @@ export const getHeroStats = unstable_cache(
   { revalidate: 3600 }
 );
 
-export const getTopRatedProduct = unstable_cache(
+export const getTopRatedProducts = unstable_cache(
   async () => {
     const topAgg = await prisma.review.groupBy({
       by: ["productId"],
@@ -26,31 +26,50 @@ export const getTopRatedProduct = unstable_cache(
       },
       _count: { id: true },
       orderBy: { _avg: { scoreOverall: "desc" } },
-      take: 1,
+      take: 3,
     });
 
-    if (!topAgg.length || !topAgg[0]._avg.scoreOverall) return null;
+    if (!topAgg.length) return [];
 
-    const product = await prisma.product.findUnique({
-      where: { id: topAgg[0].productId },
+    const products = await prisma.product.findMany({
+      where: { id: { in: topAgg.map((a) => a.productId) } },
       include: { brand: true, model: true },
     });
-    if (!product) return null;
 
-    return {
-      slug: product.slug,
-      brandName: product.brand.name,
-      modelName: product.model.name,
-      imageUrl: product.imageUrl ?? null,
-      year: product.year ?? null,
-      reviewCount: topAgg[0]._count.id,
-      scores: {
-        scoreFiyat: topAgg[0]._avg.scoreFiyat ?? 0,
-        scoreKalite: topAgg[0]._avg.scoreKalite ?? 0,
-        scorePerformans: topAgg[0]._avg.scorePerformans ?? 0,
-        scoreOverall: topAgg[0]._avg.scoreOverall ?? 0,
-      },
-    };
+    return topAgg
+      .filter((a) => a._avg.scoreOverall)
+      .map((a) => {
+        const p = products.find((pr) => pr.id === a.productId);
+        if (!p) return null;
+        return {
+          slug: p.slug,
+          brandName: p.brand.name,
+          modelName: p.model.name,
+          imageUrl: p.imageUrl ?? null,
+          year: p.year ?? null,
+          reviewCount: a._count.id,
+          scores: {
+            scoreFiyat: a._avg.scoreFiyat ?? 0,
+            scoreKalite: a._avg.scoreKalite ?? 0,
+            scorePerformans: a._avg.scorePerformans ?? 0,
+            scoreOverall: a._avg.scoreOverall ?? 0,
+          },
+        };
+      })
+      .filter(Boolean) as Array<{
+        slug: string;
+        brandName: string;
+        modelName: string;
+        imageUrl: string | null;
+        year: number | null;
+        reviewCount: number;
+        scores: {
+          scoreFiyat: number;
+          scoreKalite: number;
+          scorePerformans: number;
+          scoreOverall: number;
+        };
+      }>;
   },
   ["hero-top-rated"],
   { revalidate: 3600 }
