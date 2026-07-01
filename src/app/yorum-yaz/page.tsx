@@ -8,14 +8,34 @@ export const metadata = { title: "Yorum Yaz — fikape" };
 export default async function YorumYazPage({
   searchParams,
 }: {
-  searchParams: Promise<{ arac?: string }>;
+  searchParams: Promise<{ arac?: string; onay?: string }>;
 }) {
   const session = await auth();
   if (!session) {
     redirect("/giris?callbackUrl=/yorum-yaz");
   }
 
-  const { arac } = await searchParams;
+  const { arac, onay } = await searchParams;
+
+  if (onay === "bekliyor") {
+    return (
+      <div className="max-w-lg mx-auto px-4 py-20 text-center space-y-4">
+        <div className="text-5xl">🕐</div>
+        <h1 className="text-xl font-black text-gray-900">Talebiniz alındı!</h1>
+        <p className="text-sm text-gray-500 leading-relaxed">
+          Araç öneriniz ve yorumunuz incelemeye alındı.
+          Onaylandıktan sonra yayınlanacak ve size bildirim gönderilecek.
+        </p>
+        <a
+          href="/"
+          className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white"
+          style={{ background: "#111" }}
+        >
+          Ana sayfaya dön →
+        </a>
+      </div>
+    );
+  }
   const userId = parseInt(session.user.id);
 
   const [dbUser, existingReviews] = await Promise.all([

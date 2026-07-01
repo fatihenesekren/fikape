@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
 import { validateSummary, validateDetail } from "@/lib/reviewValidation";
@@ -23,6 +23,25 @@ interface Product {
   bodyType: string | null;
   categorySlug: string | null;
 }
+
+const CATEGORY_OPTS = [
+  { value: "otomobil",   label: "Otomobil" },
+  { value: "motosiklet", label: "Motosiklet" },
+  { value: "e-scooter",  label: "E-Scooter" },
+  { value: "e-bisiklet", label: "E-Bisiklet" },
+  { value: "karavan",    label: "Karavan" },
+  { value: "kamyonet",   label: "Kamyonet" },
+] as const;
+
+const FUEL_OPTS = [
+  { value: "",        label: "— Yakıt tipi —" },
+  { value: "GASOLINE",label: "Benzin" },
+  { value: "DIESEL",  label: "Dizel" },
+  { value: "EV",      label: "Elektrikli" },
+  { value: "HYBRID",  label: "Hibrit" },
+  { value: "PHEV",    label: "PHEV" },
+  { value: "LPG",     label: "LPG" },
+];
 
 interface Props {
   products: Product[];
@@ -329,7 +348,76 @@ function ScoreSelector({ label, short, color, bg, value, onChange }: {
 export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props) {
   const router = useRouter();
 
-  const [productSlug,     setProductSlug]     = useState(defaultSlug ?? "");
+  // ── Araç seçim modu ──────────────────────────────────────────────────────
+  type SelectMode = "search" | "suggest";
+  const [selectMode,    setSelectMode]    = useState<SelectMode>("search");
+  const [searchQuery,   setSearchQuery]   = useState("");
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [dropdownOpen,  setDropdownOpen]  = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  // Seçili mevcut ürün
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(
+    defaultSlug ? (products.find((p) => p.slug === defaultSlug) ?? null) : null
+  );
+
+  // Yeni araç önerisi
+  const [suggestBrand,    setSuggestBrand]    = useState("");
+  const [suggestModel,    setSuggestModel]    = useState("");
+  const [suggestYear,     setSuggestYear]     = useState("");
+  const [suggestTrim,     setSuggestTrim]     = useState("");
+  const [suggestFuel,     setSuggestFuel]     = useState("");
+  const [suggestCategory, setSuggestCategory] = useState("otomobil");
+
+  // Debounced arama
+  useEffect(() => {
+    if (searchQuery.length < 2) { setSearchResults([]); return; }
+    const t = setTimeout(async () => {
+      setSearchLoading(true);
+      try {
+        const res = await fetch(`/api/search/products?q=${encodeURIComponent(searchQuery)}`);
+        if (res.ok) setSearchResults(await res.json());
+      } finally {
+        setSearchLoading(false);
+      }
+    }, 300);
+    return () => clearTimeout(t);
+  }, [searchQuery]);
+
+  // Dışarı tıklayınca dropdown kapansın
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
+  function handleSelectProduct(p: Product) {
+    setSelectedProduct(p);
+    setSearchQuery(`${p.brandName} ${p.modelName}${p.trimName ? ` · ${p.trimName}` : ""}${p.year ? ` (${p.year})` : ""}`);
+    setDropdownOpen(false);
+  }
+
+  function handleSuggestMode() {
+    // Arama metninden marka/model tahmini
+    const parts = searchQuery.trim().split(/\s+/);
+    if (parts.length >= 1) setSuggestBrand(parts[0]);
+    if (parts.length >= 2) setSuggestModel(parts.slice(1).join(" "));
+    setSelectMode("suggest");
+    setDropdownOpen(false);
+  }
+
+  function handleBackToSearch() {
+    setSelectMode("search");
+    setSelectedProduct(null);
+  }
+
+  // Uyumluluk: productSlug türetilir
+  const productSlug = selectedProduct?.slug ?? "";
   const [scoreFiyat,      setScoreFiyat]      = useState(0);
   const [scoreKalite,     setScoreKalite]     = useState(0);
   const [scorePerformans, setScorePerformans] = useState(0);
@@ -362,10 +450,9 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   const [error,   setError]   = useState("");
   const [loading, setLoading] = useState(false);
 
-  const selectedProduct = products.find((p) => p.slug === productSlug);
   const alreadyReviewed = productSlug ? reviewedSlugs.includes(productSlug) : false;
-  const fuelType    = selectedProduct?.fuelType ?? null;
-  const catSlug     = selectedProduct?.categorySlug ?? null;
+  const fuelType    = selectMode === "suggest" ? (suggestFuel || null) : (selectedProduct?.fuelType ?? null);
+  const catSlug     = selectMode === "suggest" ? suggestCategory : (selectedProduct?.categorySlug ?? null);
   const isEscooter  = catSlug === "e-scooter";
   const isEbisiklet = catSlug === "e-bisiklet";
   const isEV        = fuelType === "EV" || isEscooter;
@@ -381,9 +468,14 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
     e.preventDefault();
     setError("");
 
-    if (!productSlug)     { setError("Lütfen bir araç seçin."); return; }
-    if (alreadyReviewed)  { setError("Bu araç için zaten bir yorumun var."); return; }
-    if (!scoresComplete)  { setError("Lütfen tüm FI·KA·PE puanlarını verin."); return; }
+    const isSuggest = selectMode === "suggest";
+
+    if (!isSuggest && !productSlug) { setError("Lütfen bir araç seçin veya öneride bulunun."); return; }
+    if (!isSuggest && alreadyReviewed) { setError("Bu araç için zaten bir yorumun var."); return; }
+    if (isSuggest && (!suggestBrand.trim() || !suggestModel.trim())) {
+      setError("Marka ve model zorunludur."); return;
+    }
+    if (!scoresComplete)       { setError("Lütfen tüm FI·KA·PE puanlarını verin."); return; }
     if (!summaryValidation.ok) { setSummaryTouched(true); setError(summaryValidation.error!); return; }
     if (!detailValidation.ok)  { setDetailTouched(true);  setError(detailValidation.error!);  return; }
 
@@ -410,23 +502,51 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
       if (ebikeChargeHours)  extended.charge_time_hours = Number(ebikeChargeHours);
     }
 
-    setLoading(true);
-    const res = await fetch("/api/reviews", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        productSlug, scoreFiyat, scoreKalite, scorePerformans,
-        summaryText, detailText,
-        wouldBuyAgain:       wouldRecommend === "yes" ? true : wouldRecommend === "no" ? false : null,
-        ownershipMonths:     OWNERSHIP_MONTHS[ownershipSlot] ?? null,
-        extendedData:        Object.keys(extended).length ? extended : undefined,
-      }),
-    });
+    const commonReviewPayload = {
+      scoreFiyat, scoreKalite, scorePerformans,
+      summaryText, detailText,
+      wouldBuyAgain:   wouldRecommend === "yes" ? true : wouldRecommend === "no" ? false : null,
+      ownershipMonths: OWNERSHIP_MONTHS[ownershipSlot] ?? null,
+      extendedData:    Object.keys(extended).length ? extended : undefined,
+    };
 
-    const data = await res.json();
-    setLoading(false);
-    if (!res.ok) { setError(data.error ?? "Bir hata oluştu."); return; }
-    router.push(`/araclar/${productSlug}?yorum=gonderildi`);
+    setLoading(true);
+
+    if (isSuggest) {
+      const res = await fetch("/api/vehicle-suggest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          brandName:    suggestBrand.trim(),
+          modelName:    suggestModel.trim(),
+          year:         suggestYear ? Number(suggestYear) : undefined,
+          trimName:     suggestTrim.trim() || undefined,
+          fuelType:     suggestFuel || undefined,
+          categorySlug: suggestCategory,
+          ...commonReviewPayload,
+        }),
+      });
+      const data = await res.json();
+      setLoading(false);
+      if (res.status === 409 && data.existingSlug) {
+        setError("Bu araç zaten katalogda mevcut. Lütfen arama kutusundan seçin.");
+        setSelectMode("search");
+        setSearchQuery(`${suggestBrand} ${suggestModel}`);
+        return;
+      }
+      if (!res.ok) { setError(data.error ?? "Bir hata oluştu."); return; }
+      router.push("/yorum-yaz?onay=bekliyor");
+    } else {
+      const res = await fetch("/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productSlug, ...commonReviewPayload }),
+      });
+      const data = await res.json();
+      setLoading(false);
+      if (!res.ok) { setError(data.error ?? "Bir hata oluştu."); return; }
+      router.push(`/araclar/${productSlug}?yorum=gonderildi`);
+    }
   }
 
   return (
@@ -445,21 +565,148 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
       {/* 1 — Araç */}
       <SectionCard step={1} title="Araç" badge="required">
-        <select
-          value={productSlug}
-          onChange={(e) => setProductSlug(e.target.value)}
-          className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
-        >
-          <option value="">— Araç seçin —</option>
-          {products.map((p) => (
-            <option key={p.slug} value={p.slug}>
-              {p.brandName} {p.modelName}
-              {p.trimName ? ` · ${p.trimName}` : ""}
-              {p.year ? ` (${p.year})` : ""}
-            </option>
-          ))}
-        </select>
 
+        {/* ── Arama modu ── */}
+        {selectMode === "search" && (
+          <div ref={searchRef} className="relative">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => { setSearchQuery(e.target.value); setSelectedProduct(null); setDropdownOpen(true); }}
+              onFocus={() => { if (searchQuery.length >= 2) setDropdownOpen(true); }}
+              placeholder="Araç ara... örn: Clio, Yaris, Megane"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
+            />
+
+            {dropdownOpen && searchQuery.length >= 2 && (
+              <div className="absolute z-20 mt-1 w-full bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+                {searchLoading && (
+                  <div className="px-4 py-3 text-sm text-gray-400">Aranıyor...</div>
+                )}
+                {!searchLoading && searchResults.length === 0 && (
+                  <div className="px-4 py-3 text-sm text-gray-400">Sonuç bulunamadı.</div>
+                )}
+                {!searchLoading && searchResults.map((p) => {
+                  const fc = p.fuelType ? (FUEL_COLORS[p.fuelType] ?? null) : null;
+                  return (
+                    <button
+                      key={p.slug}
+                      type="button"
+                      onMouseDown={() => handleSelectProduct(p)}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-left transition-colors border-b border-gray-50 last:border-0"
+                    >
+                      <div className="w-10 h-8 rounded-md bg-gray-100 shrink-0 overflow-hidden flex items-center justify-center">
+                        {p.imageUrl
+                          ? <img src={p.imageUrl} alt={p.modelName} className="w-full h-full object-cover" />
+                          : <span className="text-base">🚗</span>}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-gray-900 truncate">
+                          {p.brandName} {p.modelName}
+                          {p.trimName && <span className="font-normal text-gray-400"> · {p.trimName}</span>}
+                        </p>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          {p.year && <span className="text-xs text-gray-400">{p.year}</span>}
+                          {fc && <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>{FUEL_ICONS[p.fuelType!]} {FUEL_LABELS[p.fuelType!]}</span>}
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+                <button
+                  type="button"
+                  onMouseDown={handleSuggestMode}
+                  className="w-full px-4 py-3 text-sm font-semibold text-left text-blue-600 hover:bg-blue-50 transition-colors border-t border-gray-100"
+                >
+                  + &ldquo;{searchQuery}&rdquo; sistemde yok — siz ekleyin
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ── Suggest modu ── */}
+        {selectMode === "suggest" && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold text-gray-700">Araç bilgilerini girin</p>
+              <button type="button" onClick={handleBackToSearch} className="text-xs text-gray-400 hover:text-gray-700 transition-colors">
+                ← Aramaya dön
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Marka *</label>
+                <input
+                  type="text"
+                  value={suggestBrand}
+                  onChange={(e) => setSuggestBrand(e.target.value)}
+                  placeholder="örn: Renault"
+                  className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Model *</label>
+                <input
+                  type="text"
+                  value={suggestModel}
+                  onChange={(e) => setSuggestModel(e.target.value)}
+                  placeholder="örn: Clio"
+                  className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Yıl</label>
+                <input
+                  type="number"
+                  value={suggestYear}
+                  onChange={(e) => setSuggestYear(e.target.value)}
+                  placeholder="örn: 2021"
+                  min={1980}
+                  max={new Date().getFullYear() + 1}
+                  className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Donanım</label>
+                <input
+                  type="text"
+                  value={suggestTrim}
+                  onChange={(e) => setSuggestTrim(e.target.value)}
+                  placeholder="örn: Zen, GR Sport"
+                  className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Yakıt</label>
+                <select
+                  value={suggestFuel}
+                  onChange={(e) => setSuggestFuel(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
+                >
+                  {FUEL_OPTS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Kategori *</label>
+                <select
+                  value={suggestCategory}
+                  onChange={(e) => setSuggestCategory(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
+                >
+                  {CATEGORY_OPTS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <div className="px-3 py-2.5 rounded-xl bg-blue-50 border border-blue-100 text-xs text-blue-700 leading-relaxed">
+              Araç öneriniz ve yorumunuz birlikte incelemeye alınacak. Onaylandıktan sonra yayınlanır.
+            </div>
+          </div>
+        )}
+
+        {/* ── Seçili araç kartı ── */}
         {alreadyReviewed && (
           <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-amber-50 border border-amber-100 text-sm text-amber-800">
             <span>⚠</span>
@@ -467,7 +714,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
           </div>
         )}
 
-        {selectedProduct && (
+        {selectedProduct && selectMode === "search" && (
           <div className="flex gap-3 items-center p-3 rounded-xl bg-gray-50 border border-gray-100">
             <div className="w-24 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0 flex items-center justify-center">
               {selectedProduct.imageUrl
