@@ -29,6 +29,9 @@ export default async function UpdateReviewPage({
       wouldBuyAgain: true,
       extendedData: true,
       publishedAt: true,
+      scoreFiyat: true,
+      scoreKalite: true,
+      scorePerformans: true,
       product: {
         select: {
           slug: true,
@@ -77,6 +80,9 @@ export default async function UpdateReviewPage({
         initialCons={initialCons}
         initialDetailText={review.detailText ?? ""}
         initialWouldBuyAgain={review.wouldBuyAgain}
+        initialScoreFiyat={review.scoreFiyat}
+        initialScoreKalite={review.scoreKalite}
+        initialScorePerformans={review.scorePerformans}
       />
     </div>
   );

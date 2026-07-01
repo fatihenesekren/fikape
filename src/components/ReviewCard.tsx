@@ -3,6 +3,12 @@ import { calcOverall } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
 import { TRUST_BADGES } from "@/lib/trustBadge";
 
+interface ScoreVersion {
+  version: number;
+  scoreOverall: number | null;
+  createdAt: Date;
+}
+
 interface Props {
   displayName: string | null;
   trustLevel: number;
@@ -16,6 +22,7 @@ interface Props {
   createdAt: Date;
   editedAt?: Date | null;
   editCount?: number | null;
+  versions?: ScoreVersion[];
   extendedData?: Record<string, unknown> | null;
 }
 
@@ -32,6 +39,7 @@ export function ReviewCard({
   createdAt,
   editedAt,
   editCount,
+  versions,
   extendedData,
 }: Props) {
   const scores = { scoreFiyat, scoreKalite, scorePerformans };
@@ -41,6 +49,10 @@ export function ReviewCard({
   const pros = (extendedData?.pros as string[] | undefined) ?? [];
   const cons = (extendedData?.cons as string[] | undefined) ?? [];
   const hasChips = pros.length > 0 || cons.length > 0;
+
+  // Skor trend: en az 2 versiyonu olan, scoreOverall dolu versiyonlar
+  const scoredVersions = (versions ?? []).filter((v) => v.scoreOverall != null);
+  const showTrend = scoredVersions.length >= 2;
 
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-5 space-y-4">
@@ -84,6 +96,34 @@ export function ReviewCard({
           </div>
         </div>
       </div>
+
+      {/* Skor geçmişi trendi */}
+      {showTrend && (
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-[10px] text-gray-400 font-medium">Skor geçmişi:</span>
+          {scoredVersions.map((v, i) => {
+            const isLast = i === scoredVersions.length - 1;
+            const prev = i > 0 ? scoredVersions[i - 1].scoreOverall! : null;
+            const cur = v.scoreOverall!;
+            const delta = prev != null ? cur - prev : 0;
+            const color = prev == null ? "#6b7280" : delta > 0 ? "#16a34a" : delta < 0 ? "#dc2626" : "#6b7280";
+            return (
+              <span key={v.version} className="flex items-center gap-1">
+                {i > 0 && <span className="text-gray-300 text-[10px]">→</span>}
+                <span
+                  className="text-[11px] font-bold tabular-nums"
+                  style={{ color: isLast ? "#111" : color }}
+                  title={v.createdAt instanceof Date
+                    ? v.createdAt.toLocaleDateString("tr-TR", { month: "short", year: "numeric" })
+                    : ""}
+                >
+                  {cur.toFixed(1)}
+                </span>
+              </span>
+            );
+          })}
+        </div>
+      )}
 
       {/* FI·KA·PE chip'leri */}
       <FikapeScore scores={scores} variant="chips" />

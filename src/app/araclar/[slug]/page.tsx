@@ -191,6 +191,10 @@ export default async function VehicleDetailPage({
       editCount: true,
       extendedData: true,
       user: { select: { displayName: true, trustLevel: true } },
+      versions: {
+        select: { version: true, scoreOverall: true, createdAt: true },
+        orderBy: { version: "asc" },
+      },
     },
     orderBy: { publishedAt: "desc" },
     take: 20,
@@ -387,6 +391,7 @@ export default async function VehicleDetailPage({
             createdAt={r.createdAt}
             editedAt={r.editedAt}
             editCount={r.editCount}
+            versions={r.versions}
             extendedData={r.extendedData as Record<string, unknown> | null}
           />
         </div>

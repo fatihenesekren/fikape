@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { validateDetailShort } from "@/lib/reviewValidation";
+import { calcOverall } from "@/lib/fikape";
 
 export async function PATCH(
   req: Request,
@@ -16,7 +17,8 @@ export async function PATCH(
   const reviewId = parseInt(id);
   const userId = parseInt(session.user.id);
 
-  const { pros, cons, detailText, wouldBuyAgain, triggerSource } = await req.json();
+  const { pros, cons, detailText, wouldBuyAgain, triggerSource,
+          scoreFiyat, scoreKalite, scorePerformans } = await req.json();
 
   const prosArr: string[] = Array.isArray(pros) ? pros : [];
   const consArr: string[] = Array.isArray(cons) ? cons : [];
@@ -32,9 +34,18 @@ export async function PATCH(
     return NextResponse.json({ error: detailCheck.error }, { status: 400 });
   }
 
+  const hasScores =
+    typeof scoreFiyat === "number" &&
+    typeof scoreKalite === "number" &&
+    typeof scorePerformans === "number" &&
+    [scoreFiyat, scoreKalite, scorePerformans].every((s) => s >= 1 && s <= 10);
+
   const review = await prisma.review.findUnique({
     where: { id: reviewId },
-    select: { userId: true, status: true, extendedData: true, editCount: true },
+    select: {
+      userId: true, status: true, extendedData: true, editCount: true,
+      scoreFiyat: true, scoreKalite: true, scorePerformans: true,
+    },
   });
 
   if (!review) return NextResponse.json({ error: "Yorum bulunamadı." }, { status: 404 });
@@ -48,26 +59,39 @@ export async function PATCH(
   const newVersion = review.editCount + 1;
   const source = triggerSource === "REMINDER_3M" ? "REMINDER_3M" : "MANUAL";
 
+  const newFiyat      = hasScores ? (scoreFiyat as number)      : review.scoreFiyat;
+  const newKalite     = hasScores ? (scoreKalite as number)     : review.scoreKalite;
+  const newPerformans = hasScores ? (scorePerformans as number) : review.scorePerformans;
+  const newOverall    = calcOverall({ scoreFiyat: newFiyat, scoreKalite: newKalite, scorePerformans: newPerformans });
+
   await prisma.$transaction([
     prisma.review.update({
       where: { id: reviewId },
       data: {
-        extendedData:  updatedExtended,
-        detailText:    detailText?.trim() || null,
-        wouldBuyAgain: wouldBuyAgain ?? null,
-        editedAt:      new Date(),
-        editCount:     newVersion,
+        extendedData:    updatedExtended,
+        detailText:      detailText?.trim() || null,
+        wouldBuyAgain:   wouldBuyAgain ?? null,
+        scoreFiyat:      newFiyat,
+        scoreKalite:     newKalite,
+        scorePerformans: newPerformans,
+        scoreOverall:    newOverall,
+        editedAt:        new Date(),
+        editCount:       newVersion,
       },
     }),
     prisma.reviewVersion.create({
       data: {
         reviewId,
-        version:       newVersion,
-        pros:          prosArr,
-        cons:          consArr,
-        detailText:    detailText?.trim() || null,
-        wouldBuyAgain: wouldBuyAgain ?? null,
-        triggerSource: source,
+        version:         newVersion,
+        pros:            prosArr,
+        cons:            consArr,
+        detailText:      detailText?.trim() || null,
+        wouldBuyAgain:   wouldBuyAgain ?? null,
+        scoreFiyat:      newFiyat,
+        scoreKalite:     newKalite,
+        scorePerformans: newPerformans,
+        scoreOverall:    newOverall,
+        triggerSource:   source,
       },
     }),
   ]);

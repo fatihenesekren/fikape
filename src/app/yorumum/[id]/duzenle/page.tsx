@@ -28,6 +28,9 @@ export default async function EditReviewPage({
       detailText: true,
       wouldBuyAgain: true,
       extendedData: true,
+      scoreFiyat: true,
+      scoreKalite: true,
+      scorePerformans: true,
       product: {
         select: {
           slug: true,
@@ -59,7 +62,7 @@ export default async function EditReviewPage({
         </p>
         <h1 className="text-2xl font-black text-gray-900">{vehicleName}</h1>
         <p className="text-sm text-gray-400 mt-1">
-          Puanlar değişmez — sadece artılar/eksiler ve metin güncellenebilir.
+          Puanları, artı/eksileri ve metni güncelleyebilirsin.
         </p>
       </div>
 
@@ -71,6 +74,9 @@ export default async function EditReviewPage({
         initialCons={initialCons}
         initialDetailText={review.detailText ?? ""}
         initialWouldBuyAgain={review.wouldBuyAgain}
+        initialScoreFiyat={review.scoreFiyat}
+        initialScoreKalite={review.scoreKalite}
+        initialScorePerformans={review.scorePerformans}
       />
     </div>
   );

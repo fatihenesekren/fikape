@@ -82,6 +82,36 @@ function ProConChipSelector({
   );
 }
 
+function ScoreRow({
+  label, value, onChange,
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-semibold text-gray-700">{label}</span>
+        <span className="text-sm font-black text-gray-900">{value.toFixed(1)}</span>
+      </div>
+      <input
+        type="range"
+        min={1}
+        max={10}
+        step={0.5}
+        value={value}
+        onChange={(e) => onChange(parseFloat(e.target.value))}
+        className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
+        style={{ accentColor: "#111" }}
+      />
+      <div className="flex justify-between text-[10px] text-gray-300 font-medium">
+        <span>1</span><span>5</span><span>10</span>
+      </div>
+    </div>
+  );
+}
+
 interface Props {
   reviewId: number;
   productSlug: string;
@@ -90,6 +120,9 @@ interface Props {
   initialCons: string[];
   initialDetailText: string;
   initialWouldBuyAgain: boolean | null;
+  initialScoreFiyat: number;
+  initialScoreKalite: number;
+  initialScorePerformans: number;
 }
 
 export function EditReviewForm({
@@ -100,32 +133,33 @@ export function EditReviewForm({
   initialCons,
   initialDetailText,
   initialWouldBuyAgain,
+  initialScoreFiyat,
+  initialScoreKalite,
+  initialScorePerformans,
 }: Props) {
   const router = useRouter();
   const [pros, setPros] = useState<string[]>(initialPros);
   const [cons, setCons] = useState<string[]>(initialCons);
   const [detailText, setDetailText] = useState(initialDetailText);
   const [wouldBuyAgain, setWouldBuyAgain] = useState<boolean | null>(initialWouldBuyAgain);
+  const [scoreFiyat, setScoreFiyat] = useState(initialScoreFiyat);
+  const [scoreKalite, setScoreKalite] = useState(initialScoreKalite);
+  const [scorePerformans, setScorePerformans] = useState(initialScorePerformans);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [detailTouched, setDetailTouched] = useState(false);
 
   const detailValidation = validateDetailShort(detailText);
-
-  function togglePro(key: string) {
-    setPros((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
-    );
-  }
-  function toggleCon(key: string) {
-    setCons((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
-    );
-  }
-
   const prosError = pros.length < 1 ? "En az 1 artı seçin." : pros.length > 3 ? "En fazla 3 artı seçebilirsiniz." : null;
   const consError = cons.length < 1 ? "En az 1 eksi seçin." : cons.length > 3 ? "En fazla 3 eksi seçebilirsiniz." : null;
   const canSubmit = !prosError && !consError && detailValidation.ok;
+
+  function togglePro(key: string) {
+    setPros((prev) => prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]);
+  }
+  function toggleCon(key: string) {
+    setCons((prev) => prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]);
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -136,7 +170,11 @@ export function EditReviewForm({
     const res = await fetch(`/api/reviews/${reviewId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pros, cons, detailText, wouldBuyAgain, triggerSource: "MANUAL" }),
+      body: JSON.stringify({
+        pros, cons, detailText, wouldBuyAgain,
+        scoreFiyat, scoreKalite, scorePerformans,
+        triggerSource: "MANUAL",
+      }),
     });
 
     if (res.ok) {
@@ -151,16 +189,18 @@ export function EditReviewForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* FI·KA·PE Puanlar */}
+      <div className="bg-white border border-gray-100 rounded-2xl p-5 space-y-4">
+        <p className="text-sm font-bold text-gray-900">FI·KA·PE Puanlar</p>
+        <ScoreRow label="Fiyat"      value={scoreFiyat}      onChange={setScoreFiyat} />
+        <ScoreRow label="Kalite"     value={scoreKalite}     onChange={setScoreKalite} />
+        <ScoreRow label="Performans" value={scorePerformans} onChange={setScorePerformans} />
+      </div>
+
       {/* Artılar & Eksiler */}
       <div className="bg-white border border-gray-100 rounded-2xl p-5 space-y-3">
         <p className="text-sm font-bold text-gray-900">Artılar & Eksiler</p>
-        <ProConChipSelector
-          chips={chips}
-          pros={pros}
-          cons={cons}
-          onTogglePro={togglePro}
-          onToggleCon={toggleCon}
-        />
+        <ProConChipSelector chips={chips} pros={pros} cons={cons} onTogglePro={togglePro} onToggleCon={toggleCon} />
         {(prosError || consError) && (
           <p className="text-xs text-red-500">{prosError ?? consError}</p>
         )}
@@ -216,9 +256,7 @@ export function EditReviewForm({
         </div>
       </div>
 
-      {error && (
-        <p className="text-sm text-red-500 text-center">{error}</p>
-      )}
+      {error && <p className="text-sm text-red-500 text-center">{error}</p>}
 
       <div className="flex gap-3">
         <button

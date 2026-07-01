@@ -281,6 +281,10 @@ model ReviewVersion {
   cons          Json            @default("[]")
   detailText    String?
   wouldBuyAgain Boolean?
+  scoreFiyat    Float?
+  scoreKalite   Float?
+  scorePerformans Float?
+  scoreOverall  Float?
   triggerSource VersionTrigger
   createdAt     DateTime        @default(now())
 
