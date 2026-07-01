@@ -47,6 +47,47 @@ export async function sendReminderEmail({
   });
 }
 
+export async function sendUpdateReminderEmail({
+  to, displayName, vehicleName, updateUrl,
+}: {
+  to: string;
+  displayName: string | null;
+  vehicleName: string;
+  updateUrl: string;
+}) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const name = displayName ?? "Merhaba";
+
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: `${vehicleName} — yorumunu güncelleme zamanı mı?`,
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
+        ${LOGO}
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
+          ${name}, ${vehicleName} hâlâ nasıl?
+        </h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 16px">
+          Bu aracı kullanmaya devam ettiğini görüyoruz. Yazdığın yorumdan bu yana
+          deneyimin değişti mi?
+        </p>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
+          Yorumunu güncellemek sadece birkaç dakika alır —
+          değişen bir şey olmadıysa "Görüşüm değişmedi" diyebilirsin.
+        </p>
+        <a href="${updateUrl}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
+          Yorumu güncelle →
+        </a>
+        <p style="color:#aaa;font-size:12px;margin-top:32px;line-height:1.6">
+          Bu hatırlatmayı almak istemiyorsan hesap ayarlarından bildirim tercihlerini güncelleyebilirsin.
+          <br>© ${new Date().getFullYear()} fikape.com
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendVerificationEmail(email: string, token: string) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const url = `${BASE_URL}/api/auth/verify-email?token=${token}`;
