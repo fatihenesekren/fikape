@@ -3,8 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
-import { validateSummary, validateDetail } from "@/lib/reviewValidation";
+import { validateDetailShort } from "@/lib/reviewValidation";
 import { FUEL_ICONS, FUEL_LABELS, FUEL_COLORS } from "@/lib/fuel";
+import { getChipsForCategory, type Chip } from "@/lib/chips";
 
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
@@ -23,7 +24,6 @@ interface Product {
   bodyType: string | null;
   categorySlug: string | null;
 }
-
 
 interface Props {
   products: Product[];
@@ -52,20 +52,6 @@ const USAGE_OPTS = [
   { value: "city",    icon: "🏙️", label: "Şehir içi" },
   { value: "highway", icon: "🛣️", label: "Şehirlerarası" },
   { value: "mixed",   icon: "🔀", label: "Karma" },
-] as const;
-
-const MAINTENANCE_OPTS = [
-  { value: "affordable",    label: "Uygun" },
-  { value: "okay",          label: "Orta" },
-  { value: "expensive",     label: "Pahalı" },
-  { value: "very_expensive",label: "Çok pahalı" },
-] as const;
-
-const SERVICE_OPTS = [
-  { value: "happy",        label: "Memnunum" },
-  { value: "resolved",     label: "Sorunlu ama çözüldü" },
-  { value: "disappointed", label: "Hayal kırıklığı" },
-  { value: "never",        label: "Servise gitmedim" },
 ] as const;
 
 const ROAD_OPTS = [
@@ -327,6 +313,85 @@ function ScoreSelector({ label, short, color, bg, value, onChange }: {
   );
 }
 
+function ProConChipSelector({ chips, pros, cons, onTogglePro, onToggleCon }: {
+  chips: Chip[];
+  pros: string[];
+  cons: string[];
+  onTogglePro: (key: string) => void;
+  onToggleCon: (key: string) => void;
+}) {
+  const proAtMax = pros.length >= 3;
+  const conAtMax = cons.length >= 3;
+
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      {/* Artılar */}
+      <div className="space-y-2">
+        <p className="text-xs font-bold flex items-center justify-between" style={{ color: "#16a34a" }}>
+          <span>+ Artılar</span>
+          <span className="text-gray-400 font-normal">{pros.length}/3</span>
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {chips.map((c) => {
+            const isPro = pros.includes(c.key);
+            const isCon = cons.includes(c.key);
+            const blocked = isCon || (proAtMax && !isPro);
+            return (
+              <button
+                key={`pro-${c.key}`}
+                type="button"
+                onClick={() => !blocked && onTogglePro(c.key)}
+                className="px-2.5 py-1 rounded-full text-xs font-semibold border transition-all"
+                style={
+                  isPro
+                    ? { background: "#dcfce7", borderColor: "#86efac", color: "#16a34a" }
+                    : blocked
+                    ? { background: "#f9fafb", borderColor: "#e5e7eb", color: "#d1d5db", cursor: "default" }
+                    : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
+                }
+              >
+                {c.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Eksiler */}
+      <div className="space-y-2">
+        <p className="text-xs font-bold flex items-center justify-between" style={{ color: "#dc2626" }}>
+          <span>− Eksiler</span>
+          <span className="text-gray-400 font-normal">{cons.length}/3</span>
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {chips.map((c) => {
+            const isCon = cons.includes(c.key);
+            const isPro = pros.includes(c.key);
+            const blocked = isPro || (conAtMax && !isCon);
+            return (
+              <button
+                key={`con-${c.key}`}
+                type="button"
+                onClick={() => !blocked && onToggleCon(c.key)}
+                className="px-2.5 py-1 rounded-full text-xs font-semibold border transition-all"
+                style={
+                  isCon
+                    ? { background: "#fee2e2", borderColor: "#fca5a5", color: "#dc2626" }
+                    : blocked
+                    ? { background: "#f9fafb", borderColor: "#e5e7eb", color: "#d1d5db", cursor: "default" }
+                    : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
+                }
+              >
+                {c.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props) {
   const router = useRouter();
 
@@ -377,17 +442,15 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   const [scoreFiyat,      setScoreFiyat]      = useState(0);
   const [scoreKalite,     setScoreKalite]     = useState(0);
   const [scorePerformans, setScorePerformans] = useState(0);
-  const [summaryText,     setSummaryText]     = useState("");
-  const [summaryTouched,  setSummaryTouched]  = useState(false);
-  const [detailText,      setDetailText]      = useState("");
-  const [detailTouched,   setDetailTouched]   = useState(false);
+
+  const [pros, setPros] = useState<string[]>([]);
+  const [cons, setCons] = useState<string[]>([]);
+  const [detailText,    setDetailText]    = useState("");
+  const [detailTouched, setDetailTouched] = useState(false);
 
   const [wouldRecommend,   setWouldRecommend]   = useState<"yes" | "maybe" | "no" | null>(null);
   const [ownershipSlot,    setOwnershipSlot]    = useState("");
   const [usageType,        setUsageType]        = useState("");
-
-  const [maintenanceCost,  setMaintenanceCost]  = useState("");
-  const [serviceExp,       setServiceExp]       = useState("");
 
   const [roadDurability,   setRoadDurability]   = useState("");
   const [fuelConsumption,  setFuelConsumption]  = useState("");
@@ -406,6 +469,33 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   const [error,   setError]   = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Chip listesini seçili araca göre hesapla
+  const chips = getChipsForCategory(selectedProduct?.categorySlug ?? null);
+
+  // Araç değişince chip seçimlerini sıfırla
+  useEffect(() => {
+    setPros([]);
+    setCons([]);
+  }, [selectedProduct?.slug]);
+
+  function togglePro(key: string) {
+    setPros((prev) => {
+      if (prev.includes(key)) return prev.filter((k) => k !== key);
+      if (prev.length >= 3) return prev;
+      return [...prev, key];
+    });
+    setCons((prev) => prev.filter((k) => k !== key));
+  }
+
+  function toggleCon(key: string) {
+    setCons((prev) => {
+      if (prev.includes(key)) return prev.filter((k) => k !== key);
+      if (prev.length >= 3) return prev;
+      return [...prev, key];
+    });
+    setPros((prev) => prev.filter((k) => k !== key));
+  }
+
   const alreadyReviewed = productSlug ? reviewedSlugs.includes(productSlug) : false;
   const fuelType    = selectedProduct?.fuelType ?? null;
   const catSlug     = selectedProduct?.categorySlug ?? null;
@@ -417,8 +507,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
   const scoresComplete = scoreFiyat > 0 && scoreKalite > 0 && scorePerformans > 0;
   const overall = scoresComplete ? calcOverall({ scoreFiyat, scoreKalite, scorePerformans }) : null;
-  const summaryValidation = validateSummary(summaryText);
-  const detailValidation  = validateDetail(detailText);
+  const detailValidation = validateDetailShort(detailText);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -426,24 +515,23 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
     if (!productSlug)    { setError("Lütfen bir araç seçin."); return; }
     if (alreadyReviewed) { setError("Bu araç için zaten bir yorumun var."); return; }
-    if (!scoresComplete)       { setError("Lütfen tüm FI·KA·PE puanlarını verin."); return; }
-    if (!summaryValidation.ok) { setSummaryTouched(true); setError(summaryValidation.error!); return; }
-    if (!detailValidation.ok)  { setDetailTouched(true);  setError(detailValidation.error!);  return; }
+    if (!scoresComplete) { setError("Lütfen tüm FI·KA·PE puanlarını verin."); return; }
+    if (pros.length < 1) { setError("En az 1 artı seçin."); return; }
+    if (cons.length < 1) { setError("En az 1 eksi seçin."); return; }
+    if (!detailValidation.ok) { setDetailTouched(true); setError(detailValidation.error!); return; }
 
     const extended: Record<string, unknown> = {};
-    if (usageType)       extended.usage_type        = usageType;
-    if (maintenanceCost) extended.maintenance_cost  = maintenanceCost;
-    if (serviceExp)      extended.service_exp       = serviceExp;
-    if (roadDurability)  extended.road_durability   = roadDurability;
+    if (usageType)      extended.usage_type      = usageType;
+    if (roadDurability) extended.road_durability = roadDurability;
     if (isCombustion) {
       if (fuelConsumption) extended.fuel_consumption = fuelConsumption;
       if (isGasoline && lpgStatus) extended.lpg_status = lpgStatus;
     }
     if (isEV) {
-      if (evRange)               extended.ev_range         = evRange;
-      if (homeCharging !== null) extended.home_charging    = homeCharging;
+      if (evRange)               extended.ev_range      = evRange;
+      if (homeCharging !== null) extended.home_charging = homeCharging;
       if (!isEscooter && chargingAccess) extended.charging_access = chargingAccess;
-      if (winterRange)           extended.winter_range     = winterRange;
+      if (winterRange)           extended.winter_range  = winterRange;
     }
     if (isEbisiklet) {
       if (ebikeMotorType)    extended.motor_type_exp    = ebikeMotorType;
@@ -459,7 +547,9 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         productSlug, scoreFiyat, scoreKalite, scorePerformans,
-        summaryText, detailText,
+        detailText,
+        pros,
+        cons,
         wouldBuyAgain:   wouldRecommend === "yes" ? true : wouldRecommend === "no" ? false : null,
         ownershipMonths: OWNERSHIP_MONTHS[ownershipSlot] ?? null,
         extendedData:    Object.keys(extended).length ? extended : undefined,
@@ -544,7 +634,6 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
             )}
         </div>
 
-        {/* ── Seçili araç kartı ── */}
         {alreadyReviewed && (
           <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-amber-50 border border-amber-100 text-sm text-amber-800">
             <span>⚠</span>
@@ -614,37 +703,35 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         })()}
       </SectionCard>
 
-      {/* 3 — Yorumun */}
-      <SectionCard step={3} title="Yorumun" badge="required">
-        <div className="space-y-3">
+      {/* 3 — Artılar & Eksiler */}
+      <SectionCard step={3} title="Artılar & Eksiler" badge="required">
+        <p className="text-xs text-gray-400 -mt-2">
+          Her kategoriden en az 1, en fazla 3 seçin.
+        </p>
+
+        <ProConChipSelector
+          chips={chips}
+          pros={pros}
+          cons={cons}
+          onTogglePro={togglePro}
+          onToggleCon={toggleCon}
+        />
+
+        <div className="space-y-3 pt-1">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold text-gray-800">Kısa özet</p>
-            <span className={`text-xs ${summaryText.length >= 480 ? "text-orange-400" : "text-gray-400"}`}>
-              {summaryText.length}/500
+            <p className="text-sm font-semibold text-gray-800">
+              Yorumun <span className="text-gray-400 font-normal">(opsiyonel)</span>
+            </p>
+            <span className={`text-xs ${detailText.length >= 260 ? "text-orange-400" : "text-gray-400"}`}>
+              {detailText.length}/280
             </span>
           </div>
           <textarea
-            value={summaryText}
-            onChange={(e) => setSummaryText(e.target.value.slice(0, 500))}
-            onBlur={() => setSummaryTouched(true)}
-            rows={3}
-            placeholder="Bu aracı tek cümleyle özetleyin..."
-            className="w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none resize-none transition-colors"
-            style={{ borderColor: summaryTouched ? (summaryValidation.ok ? "#86efac" : "#fca5a5") : "#e5e7eb" }}
-          />
-          {summaryTouched && <FieldFeedback error={summaryValidation.error} ok={summaryValidation.ok} />}
-        </div>
-
-        <div className="space-y-3">
-          <p className="text-sm font-semibold text-gray-800">
-            Detaylı yorum <span className="text-gray-400 font-normal">(opsiyonel)</span>
-          </p>
-          <textarea
             value={detailText}
-            onChange={(e) => setDetailText(e.target.value)}
+            onChange={(e) => setDetailText(e.target.value.slice(0, 280))}
             onBlur={() => { if (detailText.trim()) setDetailTouched(true); }}
-            rows={5}
-            placeholder="Araçla ilgili detaylı deneyimlerinizi paylaşın..."
+            rows={4}
+            placeholder="Deneyimini birkaç cümleyle anlat..."
             className="w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none resize-none transition-colors"
             style={{ borderColor: detailTouched ? (detailValidation.ok ? "#86efac" : "#fca5a5") : "#e5e7eb" }}
           />
@@ -684,21 +771,8 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         </SubQuestion>
       </SectionCard>
 
-      {/* 5 — Maliyet & Servis */}
-      <SectionCard step={5} title="Maliyet & Servis" badge="optional">
-        <SubQuestion label="Bakım ve yedek parça maliyeti nasıl?">
-          <ChipGroup opts={MAINTENANCE_OPTS} value={maintenanceCost} onChange={setMaintenanceCost} />
-        </SubQuestion>
-
-        {!isEscooter && (
-          <SubQuestion label="Yetkili servis deneyiminiz nasıl?">
-            <ChipGroup opts={SERVICE_OPTS} value={serviceExp} onChange={setServiceExp} />
-          </SubQuestion>
-        )}
-      </SectionCard>
-
-      {/* 6 — Türkiye'ye Özel */}
-      <SectionCard step={6} title="Türkiye'ye özel" badge="conditional">
+      {/* 5 — Türkiye'ye Özel */}
+      <SectionCard step={5} title="Türkiye'ye özel" badge="conditional">
         <p className="text-xs text-gray-400 -mt-2">
           Araç tipine göre sorular otomatik değişir. Hepsi opsiyoneldir.
         </p>

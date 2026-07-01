@@ -1,5 +1,6 @@
 import { FikapeScore } from "@/components/FikapeScore";
 import { calcOverall } from "@/lib/fikape";
+import { CHIP_LABEL } from "@/lib/chips";
 
 const TRUST_BADGES: Record<number, { label: string; style: React.CSSProperties }> = {
   3: { label: "Doğrulanmış Sahip",     style: { background: "#EAF3DE", color: "#27500A" } },
@@ -18,6 +19,7 @@ interface Props {
   detailText: string | null;
   wouldBuyAgain: boolean | null;
   createdAt: Date;
+  extendedData?: Record<string, unknown> | null;
 }
 
 export function ReviewCard({
@@ -31,10 +33,15 @@ export function ReviewCard({
   detailText,
   wouldBuyAgain,
   createdAt,
+  extendedData,
 }: Props) {
   const scores = { scoreFiyat, scoreKalite, scorePerformans };
   const overall = calcOverall(scores);
   const badge = TRUST_BADGES[trustLevel];
+
+  const pros = (extendedData?.pros as string[] | undefined) ?? [];
+  const cons = (extendedData?.cons as string[] | undefined) ?? [];
+  const hasChips = pros.length > 0 || cons.length > 0;
 
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-5 space-y-4">
@@ -76,13 +83,53 @@ export function ReviewCard({
       {/* FI·KA·PE chip'leri */}
       <FikapeScore scores={scores} variant="chips" />
 
+      {/* Artılar & Eksiler */}
+      {hasChips && (
+        <div className="space-y-2">
+          {pros.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {pros.map((key) => (
+                <span
+                  key={key}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold"
+                  style={{ background: "#dcfce7", color: "#16a34a" }}
+                >
+                  <span>+</span>
+                  {CHIP_LABEL[key] ?? key}
+                </span>
+              ))}
+            </div>
+          )}
+          {cons.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {cons.map((key) => (
+                <span
+                  key={key}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold"
+                  style={{ background: "#fee2e2", color: "#dc2626" }}
+                >
+                  <span>−</span>
+                  {CHIP_LABEL[key] ?? key}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Yorum metni */}
-      <div>
-        <p className="text-sm font-semibold text-gray-900 leading-snug">{summaryText}</p>
-        {detailText && (
-          <p className="text-sm text-gray-500 mt-2 leading-relaxed">{detailText}</p>
-        )}
-      </div>
+      {(summaryText || detailText) && (
+        <div>
+          {summaryText && (
+            <p className="text-sm font-semibold text-gray-900 leading-snug">{summaryText}</p>
+          )}
+          {detailText && (
+            <p className={`text-sm text-gray-500 leading-relaxed ${summaryText ? "mt-2" : ""}`}>
+              {detailText}
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Tekrar alır mı */}
       {wouldBuyAgain != null && (

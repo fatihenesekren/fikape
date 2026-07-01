@@ -165,7 +165,17 @@ export default async function VehicleDetailPage({
 
   const reviews = await prisma.review.findMany({
     where: { productId: product.id, status: "PUBLISHED" },
-    include: {
+    select: {
+      id: true,
+      scoreFiyat: true,
+      scoreKalite: true,
+      scorePerformans: true,
+      summaryText: true,
+      detailText: true,
+      wouldBuyAgain: true,
+      ownershipMonthsAtReview: true,
+      createdAt: true,
+      extendedData: true,
       user: { select: { displayName: true, trustLevel: true } },
     },
     orderBy: { publishedAt: "desc" },
@@ -332,6 +342,7 @@ export default async function VehicleDetailPage({
             detailText={r.detailText}
             wouldBuyAgain={r.wouldBuyAgain}
             createdAt={r.createdAt}
+            extendedData={r.extendedData as Record<string, unknown> | null}
           />
         </div>
       ))}

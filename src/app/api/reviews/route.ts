@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
-import { validateSummary, validateDetail } from "@/lib/reviewValidation";
+import { validateDetailShort } from "@/lib/reviewValidation";
 
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
@@ -14,6 +14,7 @@ export async function POST(req: Request) {
   const {
     productSlug, scoreFiyat, scoreKalite, scorePerformans,
     summaryText, detailText, wouldBuyAgain, ownershipMonths, extendedData,
+    pros, cons,
   } = await req.json();
 
   if (!productSlug) {
@@ -23,11 +24,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Puanlar 1-10 arasında olmalıdır." }, { status: 400 });
   }
 
-  const summaryCheck = validateSummary(summaryText ?? "");
-  if (!summaryCheck.ok) {
-    return NextResponse.json({ error: summaryCheck.error }, { status: 400 });
+  const prosArr: string[] = Array.isArray(pros) ? pros : [];
+  const consArr: string[] = Array.isArray(cons) ? cons : [];
+  if (prosArr.length < 1 || prosArr.length > 3) {
+    return NextResponse.json({ error: "En az 1, en fazla 3 artı seçin." }, { status: 400 });
   }
-  const detailCheck = validateDetail(detailText ?? "");
+  if (consArr.length < 1 || consArr.length > 3) {
+    return NextResponse.json({ error: "En az 1, en fazla 3 eksi seçin." }, { status: 400 });
+  }
+
+  const detailCheck = validateDetailShort(detailText ?? "");
   if (!detailCheck.ok) {
     return NextResponse.json({ error: detailCheck.error }, { status: 400 });
   }
@@ -78,6 +84,12 @@ export async function POST(req: Request) {
 
   const scoreOverall = calcOverall({ scoreFiyat, scoreKalite, scorePerformans });
 
+  const mergedExtended = {
+    ...(extendedData && Object.keys(extendedData).length ? extendedData : {}),
+    pros: prosArr,
+    cons: consArr,
+  };
+
   const review = await prisma.review.create({
     data: {
       userId,
@@ -86,11 +98,11 @@ export async function POST(req: Request) {
       scoreKalite,
       scorePerformans,
       scoreOverall,
-      summaryText:             summaryText.trim(),
+      summaryText:             summaryText?.trim() ?? "",
       detailText:              detailText?.trim() || null,
       wouldBuyAgain:           wouldBuyAgain ?? null,
       ownershipMonthsAtReview: ownershipMonths ? Number(ownershipMonths) : null,
-      extendedData:            extendedData && Object.keys(extendedData).length ? extendedData : undefined,
+      extendedData:            mergedExtended,
       status:                  "PENDING",
     },
   });

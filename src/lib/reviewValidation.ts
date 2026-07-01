@@ -38,6 +38,16 @@ export function validateDetail(text: string): ValidationResult {
   return checkContent(t);
 }
 
+export function validateDetailShort(text: string): ValidationResult {
+  const t = text.trim();
+
+  if (!t) return ok();
+  if (t.length < 20) return err(`En az 20 karakter yazın. (${t.length}/20)`);
+  if (t.length > 280) return err("En fazla 280 karakter yazabilirsiniz.");
+
+  return checkContent(t);
+}
+
 function checkContent(t: string): ValidationResult {
   // URL kontrolü
   for (const pattern of SPAM_PATTERNS) {
