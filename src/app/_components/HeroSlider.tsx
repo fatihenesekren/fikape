@@ -96,13 +96,20 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
           </div>
 
           {/* Slides 1-3: Ürün kartları */}
-          {products.map((p) => (
+          {products.map((p, idx) => {
+            const badges = [
+              { label: "🥇 En yüksek puan", bg: "#FCD34D", color: "#78350F" },
+              { label: "🥈 2. en yüksek",   bg: "#E5E7EB", color: "#374151" },
+              { label: "🥉 3. en yüksek",   bg: "#FDDCBB", color: "#7C3A0E" },
+            ];
+            const badge = badges[idx] ?? badges[0];
+            return (
             <div key={p.slug} className="w-72 shrink-0 bg-white rounded-2xl shadow-2xl p-5 relative">
               <div
                 className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap"
-                style={{ background: "#FCD34D", color: "#78350F" }}
+                style={{ background: badge.bg, color: badge.color }}
               >
-                ⭐ En yüksek puan
+                {badge.label}
               </div>
 
               {p.imageUrl && (
@@ -136,7 +143,8 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
                 </a>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
