@@ -18,6 +18,7 @@ export async function GET(req: Request) {
   // Garajına araç ekleyeli 84-91 gün olan kullanıcılar
   const candidates = await prisma.userProduct.findMany({
     where: {
+      ownershipStatus: "CURRENT",
       createdAt: { gte: from, lte: to },
       user: {
         isBanned: false,

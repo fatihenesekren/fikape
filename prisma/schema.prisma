@@ -173,6 +173,8 @@ model UserProduct {
   // Araç için: km bilgisi
   // Genel: sahiplik süresi
   ownershipStatus OwnershipStatus @default(CURRENT)
+  soldAt          DateTime?
+  soldReason      String?
   purchaseYear    Int?
   ownershipMonths Int?
 

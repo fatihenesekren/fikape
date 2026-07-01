@@ -44,7 +44,7 @@ export default async function ProfilPage() {
     orderBy: { createdAt: "desc" },
   });
 
-  const garageCount = await prisma.userProduct.count({ where: { userId } });
+  const garageCount = await prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } });
 
   const trust = TRUST_LABELS[user.trustLevel] ?? TRUST_LABELS[1];
 

@@ -132,14 +132,17 @@ export default async function VehicleDetailPage({
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
 
   const userId = session?.user?.id ? Number(session.user.id) : null;
-  const [inGarage, garageCount] = await Promise.all([
+  const [userGarageEntry, garageCount] = await Promise.all([
     userId
       ? prisma.userProduct.findUnique({
           where: { userId_productId: { userId, productId: product.id } },
-        }).then(Boolean)
-      : Promise.resolve(false),
-    prisma.userProduct.count({ where: { productId: product.id } }),
+          select: { ownershipStatus: true, soldReason: true },
+        })
+      : null,
+    prisma.userProduct.count({ where: { productId: product.id, ownershipStatus: "CURRENT" } }),
   ]);
+  const inGarage = userGarageEntry?.ownershipStatus === "CURRENT";
+  const isSold   = userGarageEntry?.ownershipStatus === "PAST";
 
   const agg = await prisma.review.aggregate({
     where: { productId: product.id, status: "PUBLISHED" },
@@ -519,7 +522,9 @@ export default async function VehicleDetailPage({
         {/* Sahiplik kartı */}
         <OwnershipCard
           productId={product.id}
-          initialInGarage={inGarage as boolean}
+          initialInGarage={inGarage}
+          initialIsSold={isSold}
+          initialSoldReason={userGarageEntry?.soldReason ?? null}
           garageCount={garageCount}
           isLoggedIn={!!userId}
         />
