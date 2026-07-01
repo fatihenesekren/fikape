@@ -7,6 +7,7 @@ import { EditName } from "./EditName";
 import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { TRUST_PROFILE } from "@/lib/trustBadge";
+import { DeleteReviewButton } from "./DeleteReviewButton";
 
 export const metadata: Metadata = { title: "Profilim" };
 
@@ -94,11 +95,16 @@ export default async function ProfilPage() {
             <div className="text-xs text-gray-400 mt-0.5">Garajdaki araç</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-black text-gray-900">
-              {reviews.length > 0
-                ? (reviews.reduce((s, r) => s + calcOverall(r), 0) / reviews.length).toFixed(1)
-                : "—"}
-            </div>
+            {(() => {
+              const published = reviews.filter((r) => r.status === "PUBLISHED");
+              return (
+                <div className="text-2xl font-black text-gray-900">
+                  {published.length > 0
+                    ? (published.reduce((s, r) => s + calcOverall(r), 0) / published.length).toFixed(1)
+                    : "—"}
+                </div>
+              );
+            })()}
             <div className="text-xs text-gray-400 mt-0.5">Ort. fi·ka·pe</div>
           </div>
         </div>
@@ -137,10 +143,11 @@ export default async function ProfilPage() {
               const overall = calcOverall(r).toFixed(1);
 
               const statusMap = {
-                PUBLISHED: { label: "Yayında",  color: "#27500A", bg: "#EAF3DE" },
+                PUBLISHED: { label: "Yayında",    color: "#27500A", bg: "#EAF3DE" },
                 PENDING:   { label: "İncelemede", color: "#712B13", bg: "#FAECE7" },
-                REJECTED:  { label: "Reddedildi", color: "#555",   bg: "#f3f4f6" },
-                HIDDEN:    { label: "Gizlendi",   color: "#555",   bg: "#f3f4f6" },
+                REJECTED:  { label: "Reddedildi", color: "#555",    bg: "#f3f4f6" },
+                HIDDEN:    { label: "Gizlendi",   color: "#555",    bg: "#f3f4f6" },
+                DELETED:   { label: "Silindi",    color: "#555",    bg: "#f3f4f6" },
               };
               const st = statusMap[r.status] ?? statusMap.PENDING;
 
@@ -178,13 +185,14 @@ export default async function ProfilPage() {
                   </Link>
 
                   {r.status === "PUBLISHED" && (
-                    <div className="pt-2 border-t border-gray-50">
+                    <div className="pt-2 border-t border-gray-50 flex items-center gap-4">
                       <Link
                         href={`/yorumum/${r.id}/duzenle`}
                         className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
                       >
                         ✎ Düzenle
                       </Link>
+                      <DeleteReviewButton reviewId={r.id} />
                     </div>
                   )}
                 </div>

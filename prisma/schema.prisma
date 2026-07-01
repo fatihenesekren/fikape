@@ -276,6 +276,7 @@ enum ReviewStatus {
   PUBLISHED  // Yayında
   REJECTED   // Reddedildi
   HIDDEN     // Gizlendi (flag sonrası)
+  DELETED    // Kullanıcı tarafından silindi (soft delete)
 }
 
 // ─────────────────────────────────────────────

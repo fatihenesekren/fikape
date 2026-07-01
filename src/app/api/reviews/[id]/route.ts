@@ -59,3 +59,33 @@ export async function PATCH(
 
   return NextResponse.json({ ok: true });
 }
+
+export async function DELETE(
+  _req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const session = await auth();
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
+  }
+
+  const { id } = await params;
+  const reviewId = parseInt(id);
+  const userId = parseInt(session.user.id);
+
+  const review = await prisma.review.findUnique({
+    where: { id: reviewId },
+    select: { userId: true, status: true },
+  });
+
+  if (!review) return NextResponse.json({ error: "Yorum bulunamadı." }, { status: 404 });
+  if (review.userId !== userId) return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
+  if (review.status === "DELETED") return NextResponse.json({ ok: true });
+
+  await prisma.review.update({
+    where: { id: reviewId },
+    data: { status: "DELETED" },
+  });
+
+  return NextResponse.json({ ok: true });
+}
