@@ -1,12 +1,7 @@
 import { FikapeScore } from "@/components/FikapeScore";
 import { calcOverall } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
-
-const TRUST_BADGES: Record<number, { label: string; style: React.CSSProperties }> = {
-  3: { label: "Doğrulanmış Sahip",     style: { background: "#EAF3DE", color: "#27500A" } },
-  2: { label: "Beyan Edilen Sahip",    style: { background: "#E6F1FB", color: "#0C447C" } },
-  1: { label: "E-posta Doğrulamalı",   style: { background: "#F1EFE8", color: "#444441" } },
-};
+import { TRUST_BADGES } from "@/lib/trustBadge";
 
 interface Props {
   displayName: string | null;
@@ -19,6 +14,7 @@ interface Props {
   detailText: string | null;
   wouldBuyAgain: boolean | null;
   createdAt: Date;
+  editedAt?: Date | null;
   extendedData?: Record<string, unknown> | null;
 }
 
@@ -33,11 +29,12 @@ export function ReviewCard({
   detailText,
   wouldBuyAgain,
   createdAt,
+  editedAt,
   extendedData,
 }: Props) {
   const scores = { scoreFiyat, scoreKalite, scorePerformans };
   const overall = calcOverall(scores);
-  const badge = TRUST_BADGES[trustLevel];
+  const badge = TRUST_BADGES[trustLevel] ?? null;
 
   const pros = (extendedData?.pros as string[] | undefined) ?? [];
   const cons = (extendedData?.cons as string[] | undefined) ?? [];
@@ -57,7 +54,11 @@ export function ReviewCard({
             </div>
             <div className="flex items-center gap-2 mt-0.5 flex-wrap">
               {badge && (
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={badge.style}>
+                <span
+                  className="text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1"
+                  style={{ background: badge.bg, color: badge.color }}
+                >
+                  {badge.icon && <span>{badge.icon}</span>}
                   {badge.label}
                 </span>
               )}
@@ -75,7 +76,9 @@ export function ReviewCard({
             {overall.toFixed(1)}<span className="text-xs font-normal text-gray-400">/10</span>
           </div>
           <div className="text-[10px] text-gray-400 mt-0.5">
-            {createdAt.toLocaleDateString("tr-TR", { month: "short", year: "numeric" })}
+            {editedAt
+              ? `Güncellendi · ${editedAt.toLocaleDateString("tr-TR", { month: "short", year: "numeric" })}`
+              : createdAt.toLocaleDateString("tr-TR", { month: "short", year: "numeric" })}
           </div>
         </div>
       </div>

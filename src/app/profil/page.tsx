@@ -6,16 +6,9 @@ import { prisma } from "@/lib/prisma";
 import { EditName } from "./EditName";
 import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
+import { TRUST_PROFILE } from "@/lib/trustBadge";
 
 export const metadata: Metadata = { title: "Profilim" };
-
-const TRUST_LABELS: Record<number, { label: string; color: string; bg: string }> = {
-  1: { label: "Üye",          color: "#555",    bg: "#f3f4f6" },
-  2: { label: "Doğrulanmış",  color: "#0C447C", bg: "#E6F1FB" },
-  3: { label: "Araç Sahibi",  color: "#27500A", bg: "#EAF3DE" },
-  4: { label: "Güvenilir",    color: "#712B13", bg: "#FAECE7" },
-  5: { label: "Admin",        color: "#fff",    bg: "#111"    },
-};
 
 export default async function ProfilPage() {
   const session = await auth();
@@ -46,7 +39,7 @@ export default async function ProfilPage() {
 
   const garageCount = await prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } });
 
-  const trust = TRUST_LABELS[user.trustLevel] ?? TRUST_LABELS[1];
+  const trust = TRUST_PROFILE[user.trustLevel] ?? TRUST_PROFILE[1];
 
   const joinedAt = new Intl.DateTimeFormat("tr-TR", {
     year: "numeric", month: "long",
@@ -63,9 +56,10 @@ export default async function ProfilPage() {
             <div className="text-sm text-gray-500">{user.email}</div>
             <div className="flex flex-wrap gap-2 items-center">
               <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full"
+                className="text-xs font-bold px-2.5 py-1 rounded-full inline-flex items-center gap-1"
                 style={{ background: trust.bg, color: trust.color }}
               >
+                {trust.icon && <span>{trust.icon}</span>}
                 {trust.label}
               </span>
               {!user.emailVerifiedAt && (
@@ -151,12 +145,11 @@ export default async function ProfilPage() {
               const st = statusMap[r.status] ?? statusMap.PENDING;
 
               return (
-                <Link
-                  key={r.id}
-                  href={`/araclar/${r.product.slug}`}
-                  className="block bg-white border border-gray-100 rounded-2xl p-4 hover:border-gray-200 transition-colors"
-                >
-                  <div className="flex items-start justify-between gap-3">
+                <div key={r.id} className="bg-white border border-gray-100 rounded-2xl p-4 space-y-3">
+                  <Link
+                    href={`/araclar/${r.product.slug}`}
+                    className="flex items-start justify-between gap-3 hover:opacity-80 transition-opacity"
+                  >
                     <div className="flex-1 min-w-0">
                       <div className="text-xs text-gray-400 mb-0.5">
                         {r.product.brand.name}
@@ -182,8 +175,19 @@ export default async function ProfilPage() {
                         {st.label}
                       </span>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+
+                  {r.status === "PUBLISHED" && (
+                    <div className="pt-2 border-t border-gray-50">
+                      <Link
+                        href={`/yorumum/${r.id}/duzenle`}
+                        className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
+                      >
+                        ✎ Düzenle
+                      </Link>
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>

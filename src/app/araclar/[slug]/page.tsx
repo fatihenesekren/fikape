@@ -178,6 +178,7 @@ export default async function VehicleDetailPage({
       wouldBuyAgain: true,
       ownershipMonthsAtReview: true,
       createdAt: true,
+      editedAt: true,
       extendedData: true,
       user: { select: { displayName: true, trustLevel: true } },
     },
@@ -345,6 +346,7 @@ export default async function VehicleDetailPage({
             detailText={r.detailText}
             wouldBuyAgain={r.wouldBuyAgain}
             createdAt={r.createdAt}
+            editedAt={r.editedAt}
             extendedData={r.extendedData as Record<string, unknown> | null}
           />
         </div>

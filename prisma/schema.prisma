@@ -257,6 +257,9 @@ model Review {
 
   nextReminderAt DateTime? // 3 ayda bir güncelleme hatırlatması
 
+  editedAt      DateTime?
+  editCount     Int      @default(0)
+
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
