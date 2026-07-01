@@ -136,7 +136,7 @@ export function EditReviewForm({
     const res = await fetch(`/api/reviews/${reviewId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pros, cons, detailText, wouldBuyAgain }),
+      body: JSON.stringify({ pros, cons, detailText, wouldBuyAgain, triggerSource: "MANUAL" }),
     });
 
     if (res.ok) {

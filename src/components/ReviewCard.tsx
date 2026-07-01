@@ -15,6 +15,7 @@ interface Props {
   wouldBuyAgain: boolean | null;
   createdAt: Date;
   editedAt?: Date | null;
+  editCount?: number | null;
   extendedData?: Record<string, unknown> | null;
 }
 
@@ -30,6 +31,7 @@ export function ReviewCard({
   wouldBuyAgain,
   createdAt,
   editedAt,
+  editCount,
   extendedData,
 }: Props) {
   const scores = { scoreFiyat, scoreKalite, scorePerformans };
@@ -77,7 +79,7 @@ export function ReviewCard({
           </div>
           <div className="text-[10px] text-gray-400 mt-0.5">
             {editedAt
-              ? `Güncellendi · ${editedAt.toLocaleDateString("tr-TR", { month: "short", year: "numeric" })}`
+              ? `v${editCount ?? 1} · ${editedAt.toLocaleDateString("tr-TR", { month: "short", year: "numeric" })}`
               : createdAt.toLocaleDateString("tr-TR", { month: "short", year: "numeric" })}
           </div>
         </div>

@@ -267,8 +267,30 @@ model Review {
   flags         ReviewFlag[]
   helpfulVotes  ReviewHelpfulVote[]
   photos        ProductPhoto[]
+  versions      ReviewVersion[]
 
   @@map("reviews")
+}
+
+model ReviewVersion {
+  id            Int             @id @default(autoincrement())
+  reviewId      Int
+  review        Review          @relation(fields: [reviewId], references: [id])
+  version       Int
+  pros          Json            @default("[]")
+  cons          Json            @default("[]")
+  detailText    String?
+  wouldBuyAgain Boolean?
+  triggerSource VersionTrigger
+  createdAt     DateTime        @default(now())
+
+  @@unique([reviewId, version])
+  @@map("review_versions")
+}
+
+enum VersionTrigger {
+  MANUAL       // Kullanıcı manuel düzenledi
+  REMINDER_3M  // 3 aylık hatırlatma emaili üzerinden
 }
 
 enum ReviewStatus {

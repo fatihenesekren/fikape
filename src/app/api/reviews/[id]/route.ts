@@ -16,7 +16,7 @@ export async function PATCH(
   const reviewId = parseInt(id);
   const userId = parseInt(session.user.id);
 
-  const { pros, cons, detailText, wouldBuyAgain } = await req.json();
+  const { pros, cons, detailText, wouldBuyAgain, triggerSource } = await req.json();
 
   const prosArr: string[] = Array.isArray(pros) ? pros : [];
   const consArr: string[] = Array.isArray(cons) ? cons : [];
@@ -45,17 +45,32 @@ export async function PATCH(
 
   const existing = (review.extendedData as Record<string, unknown>) ?? {};
   const updatedExtended = { ...existing, pros: prosArr, cons: consArr };
+  const newVersion = review.editCount + 1;
+  const source = triggerSource === "REMINDER_3M" ? "REMINDER_3M" : "MANUAL";
 
-  await prisma.review.update({
-    where: { id: reviewId },
-    data: {
-      extendedData: updatedExtended,
-      detailText:   detailText?.trim() || null,
-      wouldBuyAgain: wouldBuyAgain ?? null,
-      editedAt:     new Date(),
-      editCount:    review.editCount + 1,
-    },
-  });
+  await prisma.$transaction([
+    prisma.review.update({
+      where: { id: reviewId },
+      data: {
+        extendedData:  updatedExtended,
+        detailText:    detailText?.trim() || null,
+        wouldBuyAgain: wouldBuyAgain ?? null,
+        editedAt:      new Date(),
+        editCount:     newVersion,
+      },
+    }),
+    prisma.reviewVersion.create({
+      data: {
+        reviewId,
+        version:       newVersion,
+        pros:          prosArr,
+        cons:          consArr,
+        detailText:    detailText?.trim() || null,
+        wouldBuyAgain: wouldBuyAgain ?? null,
+        triggerSource: source,
+      },
+    }),
+  ]);
 
   return NextResponse.json({ ok: true });
 }
