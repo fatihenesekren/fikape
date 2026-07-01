@@ -13,6 +13,7 @@ import { getVehicleImageUrl } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
+import { ScoreTrendChart } from "./ScoreTrendChart";
 
 export async function generateMetadata({
   params,
@@ -163,6 +164,41 @@ export default async function VehicleDetailPage({
     orderBy: { _count: { soldReason: "desc" } },
   });
   const soldTotal = soldReasonData.reduce((s, d) => s + d._count.soldReason, 0);
+
+  // ── Skor trendi — tüm yorum + versiyon olayları ──
+  const trendRaw = await prisma.review.findMany({
+    where: { productId: product.id, status: "PUBLISHED", publishedAt: { not: null } },
+    select: {
+      scoreOverall: true,
+      publishedAt: true,
+      versions: {
+        select: { scoreOverall: true, createdAt: true },
+        where: { scoreOverall: { not: null } },
+      },
+    },
+  });
+
+  type MonthlyScore = { month: string; avg: number; count: number };
+  const byMonth = new Map<string, number[]>();
+  for (const r of trendRaw) {
+    if (r.publishedAt && r.scoreOverall) {
+      const k = `${r.publishedAt.getFullYear()}-${String(r.publishedAt.getMonth() + 1).padStart(2, "0")}`;
+      byMonth.set(k, [...(byMonth.get(k) ?? []), r.scoreOverall]);
+    }
+    for (const v of r.versions) {
+      if (v.scoreOverall) {
+        const k = `${v.createdAt.getFullYear()}-${String(v.createdAt.getMonth() + 1).padStart(2, "0")}`;
+        byMonth.set(k, [...(byMonth.get(k) ?? []), v.scoreOverall]);
+      }
+    }
+  }
+  const trendPoints: MonthlyScore[] = [...byMonth.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([month, scores]) => ({
+      month,
+      avg: Math.round((scores.reduce((s, n) => s + n, 0) / scores.length) * 10) / 10,
+      count: scores.length,
+    }));
 
   const reviewCount = agg._count.id;
   const scores: FikapeScores | null =
@@ -348,6 +384,11 @@ export default async function VehicleDetailPage({
     </div>
   ) : (
     <div className="divide-y divide-gray-50">
+      {/* Skor trendi — min 2 aylık veri */}
+      {trendPoints.length >= 2 && (
+        <ScoreTrendChart points={trendPoints} />
+      )}
+
       {/* Satış nedenleri özeti — min 5 veri */}
       {soldTotal >= 5 && (
         <div className="px-5 py-4 space-y-3">
