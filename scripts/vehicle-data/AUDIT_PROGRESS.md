@@ -135,9 +135,9 @@
 
 | Marka | Durum | Not |
 |---|---|---|
-| beta | ⬜ Bekliyor | |
-| sherco | ⬜ Bekliyor | |
-| rieju | ⬜ Bekliyor | |
+| beta | ✅ Tamamlandı | **Evo (Trial) kategorisi tamamen eksikti** — Beta'nın Trial/Enduro/Street üç ana ailesinden biri, dosyada sadece RR Enduro/Motard/Xtrainer vardı, eklendi. |
+| sherco | ✅ Tamamlandı | **ST (Trial) kategorisi tamamen eksikti** — dosyada sadece Enduro/Supermoto vardı, eklendi. |
+| rieju | ✅ Tamamlandı | MRT 125 (naked/enduro) eksikti, eklendi. Dosya zaten görece kapsamlıydı. |
 | fantic | ⬜ Bekliyor | |
 | jawa | ⬜ Bekliyor | |
 | ural | ⬜ Bekliyor | |

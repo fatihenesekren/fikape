@@ -16960,6 +16960,20 @@
           ]
         },
         {
+          "name": "Evo (Trial)",
+          "versions": [
+            "125cc 2T",
+            "250cc 2T",
+            "300cc 2T",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Factory",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -22394,6 +22408,17 @@
           ]
         },
         {
+          "name": "MRT 125 (Naked/Enduro)",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -22637,6 +22662,21 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ST (Trial)",
+          "versions": [
+            "125cc",
+            "250cc",
+            "300cc",
+            "Factory",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Factory",
             "Diğer"
           ]
         },

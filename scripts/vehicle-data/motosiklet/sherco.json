@@ -4,6 +4,7 @@
     { "name": "SE Enduro", "versions": ["125cc 2T", "250cc 2T", "300cc 2T", "Diğer"], "trims": ["Factory", "Racing", "Diğer"] },
     { "name": "SEF Enduro", "versions": ["250cc 4T", "300cc 4T", "450cc 4T", "Diğer"], "trims": ["Factory", "Racing", "Diğer"] },
     { "name": "SM", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ST (Trial)", "versions": ["125cc", "250cc", "300cc", "Factory", "Diğer"], "trims": ["Standart", "Factory", "Diğer"] },
     {
       "name": "Diğer",
       "versions": ["Diğer"],

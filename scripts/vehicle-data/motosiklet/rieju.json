@@ -5,6 +5,7 @@
     { "name": "MRX 50 / 125 (Motocross)", "versions": ["50cc 2T", "125cc 2T", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Century 125 (Retro)", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Marathon 500 (Adventure)", "versions": ["450cc 35 CV 4T", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "MRT 125 (Naked/Enduro)", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
