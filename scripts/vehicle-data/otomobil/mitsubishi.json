@@ -2,7 +2,62 @@
   "make": "Mitsubishi",
   "models": [
     {
-      "name": "ASX",
+      "name": "Colt (1996-2004)",
+      "versions": ["1.3 75", "1.6 90", "1.8 GTi 122", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Colt (2004-2012)",
+      "versions": ["1.1 75", "1.3 95", "1.5 109", "Diğer"],
+      "trims": ["Invite", "Inform", "Intense", "Diğer"]
+    },
+    {
+      "name": "Colt (2023-)",
+      "versions": ["1.0 T 96", "1.3 T 130 MHEV", "Diğer"],
+      "trims": ["Intense", "Diğer"]
+    },
+    {
+      "name": "Space Star",
+      "versions": ["1.3 82", "1.6 90", "Diğer"],
+      "trims": ["Comfort", "Elegance", "Diğer"]
+    },
+    {
+      "name": "Carisma",
+      "versions": ["1.6 90", "1.8 116", "1.9 TD 90", "1.9 DI-D 102", "Diğer"],
+      "trims": ["Comfort", "Elegance", "Diğer"]
+    },
+    {
+      "name": "Lancer (1988-2000)",
+      "versions": ["1.3 75", "1.6 90", "1.8 GTi 135", "1.8 TD 75", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Lancer (2000-2007)",
+      "versions": ["1.3 82", "1.6 98", "2.0 135", "2.0 Di-D 121", "Diğer"],
+      "trims": ["GL", "GLX", "Invite", "Diğer"]
+    },
+    {
+      "name": "Lancer (2007-2017)",
+      "versions": ["1.5 109", "1.8 143", "2.0 150", "Ralliart 2.0T 241 AWD", "Diğer"],
+      "trims": ["Invite", "Instyle", "Intense", "Ralliart", "Diğer"]
+    },
+    {
+      "name": "Galant",
+      "versions": ["1.8 90", "2.0 115", "2.0 TD 82", "2.5 V6 170", "Diğer"],
+      "trims": ["GLS", "GLXi", "Diğer"]
+    },
+    {
+      "name": "ASX (2010-2016)",
+      "versions": ["1.6 117", "1.8 DI-D 150 4WD", "Diğer"],
+      "trims": ["Invite", "Inform", "Intense", "Diğer"]
+    },
+    {
+      "name": "ASX (2016-2023)",
+      "versions": ["1.6 117", "2.0 150 4WD", "Diğer"],
+      "trims": ["Inform", "Instyle", "Intense", "Diğer"]
+    },
+    {
+      "name": "ASX (2023-)",
       "versions": ["1.0 T 120", "1.3 T 140", "2.0 MIVEC 150", "Diğer"],
       "trims": ["Inform", "Instyle", "Intense", "Diğer"]
     },
@@ -10,6 +65,16 @@
       "name": "Eclipse Cross",
       "versions": ["1.5 T 163 FWD", "1.5 T 163 AWD", "2.4 PHEV AWD 188", "Diğer"],
       "trims": ["Inform", "Instyle", "Intense", "Diğer"]
+    },
+    {
+      "name": "Space Wagon",
+      "versions": ["1.8 90", "2.0 116", "2.4 150", "2.0 TD 82", "Diğer"],
+      "trims": ["GLXi", "Comfort", "Diğer"]
+    },
+    {
+      "name": "Grandis",
+      "versions": ["2.0 136", "2.4 165", "2.0 Di-D 140", "Diğer"],
+      "trims": ["Comfort", "Instyle", "Diğer"]
     },
     {
       "name": "Outlander",
@@ -22,14 +87,34 @@
       "trims": ["Inform", "Instyle", "Intense", "Diğer"]
     },
     {
-      "name": "L200",
-      "versions": ["2.2 Di-D 154 4WD", "2.4 MIVEC 181 4WD", "Diğer"],
+      "name": "Pajero (1991-1999)",
+      "versions": ["2.4 GLX 98", "3.0 V6 143", "2.5 TD 99", "Diğer"],
+      "trims": ["GL", "GLS", "GLX", "Diğer"]
+    },
+    {
+      "name": "Pajero (1999-2006)",
+      "versions": ["3.0 V6 173", "3.2 Di-D 160", "3.5 V6 202", "Diğer"],
+      "trims": ["GL", "GLS", "Instyle", "Diğer"]
+    },
+    {
+      "name": "Pajero (2006-2021)",
+      "versions": ["3.0 V6 178", "3.2 Di-D 200", "Diğer"],
+      "trims": ["Invite", "Instyle", "Intense", "Diğer"]
+    },
+    {
+      "name": "L200 (1996-2006)",
+      "versions": ["2.5 TD 99", "2.8 TD 125", "Diğer"],
+      "trims": ["GL", "GLS", "Diğer"]
+    },
+    {
+      "name": "L200 (2006-2015)",
+      "versions": ["2.5 Di-D 136 4WD", "2.5 Di-D 178 4WD", "Diğer"],
       "trims": ["Invite", "Inform", "Intense", "Diğer"]
     },
     {
-      "name": "Colt",
-      "versions": ["1.0 T 96", "1.3 T 130 MHEV", "Diğer"],
-      "trims": ["Intense", "Diğer"]
+      "name": "L200 (2015-)",
+      "versions": ["2.2 Di-D 154 4WD", "2.4 MIVEC 181 4WD", "Diğer"],
+      "trims": ["Invite", "Inform", "Intense", "Diğer"]
     },
     {
       "name": "Diğer",

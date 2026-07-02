@@ -2,6 +2,51 @@
   "make": "Jaguar",
   "models": [
     {
+      "name": "XJ (1994-2003)",
+      "versions": ["3.2 219", "4.0 245", "4.0 Supercharged 370", "Diğer"],
+      "trims": ["Executive", "Sport", "Sovereign", "Diğer"]
+    },
+    {
+      "name": "XJ (2003-2009)",
+      "versions": ["3.5 V8 262", "4.2 V8 300", "4.2 V8 Supercharged 400", "2.7 TDVI 207", "Diğer"],
+      "trims": ["Executive", "Sovereign", "Super V8", "Diğer"]
+    },
+    {
+      "name": "XJ (2009-2019)",
+      "versions": ["3.0 V6 240", "5.0 V8 385", "5.0 V8 Supercharged 550", "3.0 TDV6 275", "Diğer"],
+      "trims": ["Luxury", "Premium Luxury", "Portfolio", "Autobiography", "Diğer"]
+    },
+    {
+      "name": "XK",
+      "versions": ["4.0 V8 290", "4.2 V8 300", "4.2 V8 Supercharged 400", "5.0 V8 385", "5.0 V8 Supercharged 510", "Diğer"],
+      "trims": ["Coupe", "Convertible", "XKR", "Diğer"]
+    },
+    {
+      "name": "X-Type",
+      "versions": ["2.0 130", "2.5 V6 196 AWD", "3.0 V6 231 AWD", "2.0d 130", "2.2d 155", "Diğer"],
+      "trims": ["Classic", "Sport", "SE", "Diğer"]
+    },
+    {
+      "name": "S-Type",
+      "versions": ["3.0 V6 240", "4.2 V8 300", "2.5 V6 200", "2.7 TD 207", "Diğer"],
+      "trims": ["Classic", "SE", "Sport", "Diğer"]
+    },
+    {
+      "name": "XE",
+      "versions": ["P250 2.0 250", "D180 2.0 180 AWD", "Diğer"],
+      "trims": ["S", "SE", "R-Dynamic S", "Diğer"]
+    },
+    {
+      "name": "XF (2007-2015)",
+      "versions": ["2.0 240", "3.0 V6 240", "5.0 V8 385", "2.2 D 200", "3.0 D 275", "Diğer"],
+      "trims": ["Luxury", "Premium Luxury", "Portfolio", "R-Sport", "Diğer"]
+    },
+    {
+      "name": "XF (2015-)",
+      "versions": ["P250 2.0 250", "P300 2.0 300 AWD", "D200 2.0 204 AWD", "D300 3.0 300 AWD", "Diğer"],
+      "trims": ["S", "SE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
+    },
+    {
       "name": "E-Pace",
       "versions": ["P200 2.0 200", "P250 2.0 250", "P300 2.0 300 AWD", "D150 2.0 150 AWD", "D180 2.0 180 AWD", "Diğer"],
       "trims": ["S", "SE", "R-Dynamic S", "R-Dynamic SE", "Diğer"]
@@ -20,16 +65,6 @@
       "name": "I-Pace",
       "versions": ["EV400 AWD 400 90kWh", "Diğer"],
       "trims": ["S", "SE", "HSE", "Black", "Diğer"]
-    },
-    {
-      "name": "XE",
-      "versions": ["P250 2.0 250", "D180 2.0 180 AWD", "Diğer"],
-      "trims": ["S", "SE", "R-Dynamic S", "Diğer"]
-    },
-    {
-      "name": "XF",
-      "versions": ["P250 2.0 250", "P300 2.0 300 AWD", "D200 2.0 204 AWD", "D300 3.0 300 AWD", "Diğer"],
-      "trims": ["S", "SE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
     },
     {
       "name": "Diğer",

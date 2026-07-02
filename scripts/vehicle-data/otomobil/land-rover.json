@@ -2,12 +2,37 @@
   "make": "Land Rover",
   "models": [
     {
-      "name": "Defender",
+      "name": "Defender (1983-2016)",
+      "versions": ["2.5 TD 111", "300 Tdi 111", "Td5 122", "V8 134", "Diğer"],
+      "trims": ["90", "110", "130", "County", "Diğer"]
+    },
+    {
+      "name": "Defender (2020-)",
       "versions": ["P300 2.0 300 AWD", "P400 3.0 400 AWD", "P400e PHEV 404 AWD", "D200 2.0 200 AWD", "D300 3.0 300 AWD", "D350 3.0 350 AWD", "V8 525 AWD", "Diğer"],
       "trims": ["S", "SE", "HSE", "X-Dynamic", "X", "Diğer"]
     },
     {
-      "name": "Discovery",
+      "name": "Discovery (1989-1998)",
+      "versions": ["3.5 V8 136", "2.5 TDi 113", "300 Tdi 111", "Diğer"],
+      "trims": ["S", "SE", "Diğer"]
+    },
+    {
+      "name": "Discovery (1998-2004)",
+      "versions": ["4.0 V8 182", "2.5 TD5 138", "Diğer"],
+      "trims": ["S", "GS", "ES", "Diğer"]
+    },
+    {
+      "name": "Discovery (2004-2009)",
+      "versions": ["4.4 V8 295", "2.7 TDV6 190", "Diğer"],
+      "trims": ["S", "SE", "HSE", "Diğer"]
+    },
+    {
+      "name": "Discovery (2009-2016)",
+      "versions": ["5.0 V8 375", "3.0 SDV6 256", "Diğer"],
+      "trims": ["S", "XS", "HSE", "HSE Luxury", "Diğer"]
+    },
+    {
+      "name": "Discovery (2017-)",
       "versions": ["P300 2.0 300 AWD", "P360e PHEV 360 AWD", "D250 2.0 249 AWD", "D300 3.0 300 AWD", "D350 3.0 350 AWD", "Diğer"],
       "trims": ["S", "SE", "HSE", "R-Dynamic S", "Metropolitan Edition", "Diğer"]
     },
@@ -17,17 +42,57 @@
       "trims": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
     },
     {
-      "name": "Range Rover",
+      "name": "Freelander (1997-2006)",
+      "versions": ["1.8 117", "2.5 V6 177", "2.0 TD4 112", "Diğer"],
+      "trims": ["S", "GS", "ES", "Diğer"]
+    },
+    {
+      "name": "Freelander 2 (2006-2014)",
+      "versions": ["3.2 233", "2.2 TD4 150", "2.2 SD4 190", "Diğer"],
+      "trims": ["S", "GS", "XS", "HSE", "Diğer"]
+    },
+    {
+      "name": "Range Rover (1994-2002)",
+      "versions": ["4.0 V8 190", "4.6 V8 225", "2.5 DSE 136", "Diğer"],
+      "trims": ["SE", "HSE", "Vogue", "Diğer"]
+    },
+    {
+      "name": "Range Rover (2002-2012)",
+      "versions": ["4.4 V8 286", "4.2 V8 Supercharged 396", "3.0 TD6 177", "3.6 TDV8 272", "Diğer"],
+      "trims": ["SE", "Vogue", "Autobiography", "Diğer"]
+    },
+    {
+      "name": "Range Rover (2012-2022)",
+      "versions": ["3.0 SDV6 258", "4.4 SDV8 339", "5.0 V8 Supercharged 510", "3.0 TDV6 258", "Diğer"],
+      "trims": ["Vogue", "Vogue SE", "Autobiography", "SVAutobiography", "Diğer"]
+    },
+    {
+      "name": "Range Rover (2022-)",
       "versions": ["P400 3.0 400 AWD", "P530 4.4 530 AWD", "P440e PHEV 440 AWD", "P510e PHEV 510 AWD", "D300 3.0 300 AWD", "D350 3.0 350 AWD", "Diğer"],
       "trims": ["SE", "HSE", "Autobiography", "SV", "Diğer"]
     },
     {
-      "name": "Range Rover Sport",
+      "name": "Range Rover Sport (2005-2013)",
+      "versions": ["4.4 V8 306", "4.2 V8 Supercharged 390", "2.7 TDV6 190", "3.6 TDV8 272", "Diğer"],
+      "trims": ["S", "SE", "HSE", "Autobiography", "Diğer"]
+    },
+    {
+      "name": "Range Rover Sport (2013-2022)",
+      "versions": ["3.0 SDV6 292", "5.0 V8 Supercharged 510", "3.0 TDV6 258", "Diğer"],
+      "trims": ["SE", "HSE", "Autobiography", "SVR", "Diğer"]
+    },
+    {
+      "name": "Range Rover Sport (2022-)",
       "versions": ["P360 3.0 360 AWD", "P400 3.0 400 AWD", "P530 4.4 530 AWD", "P460e PHEV 460 AWD", "D250 2.0 249 AWD", "D300 3.0 300 AWD", "D350 3.0 350 AWD", "Diğer"],
       "trims": ["S", "SE", "HSE", "Dynamic HSE", "Autobiography", "Diğer"]
     },
     {
-      "name": "Range Rover Evoque",
+      "name": "Range Rover Evoque (2011-2018)",
+      "versions": ["2.0 Si4 240", "2.2 eD4 150", "2.2 SD4 190", "Diğer"],
+      "trims": ["Pure", "SE", "HSE", "Dynamic", "Diğer"]
+    },
+    {
+      "name": "Range Rover Evoque (2019-)",
       "versions": ["P200 2.0 200 AWD", "P250 2.0 249 AWD", "P300 2.0 300 AWD", "P300e PHEV 309 AWD", "D150 2.0 150 AWD", "D165 2.0 163 AWD", "D200 2.0 204 AWD", "Diğer"],
       "trims": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
     },

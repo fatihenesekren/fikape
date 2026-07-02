@@ -47,10 +47,10 @@
 | mini | ✅ Tamamlandı | Cooper, Cabrio, Clubman, Countryman tek girişten gerçek nesillere bölündü (Cooper 4 nesle: R50/R56/F56/güncel; Cabrio 2 nesle: R57/F57; Clubman 2 nesle: R55/F54; Countryman 3 nesle: R60/F60/güncel). Paceman/Coupe/Roadster (niş, üretimi durmuş modeller) zaten sağlıklıydı, dokunulmadı. Orijinal klasik Mini (1959-2000, İngiliz üretimi, RHD) kapsam dışı bırakıldı — Türkiye ikinci el pazarında pratik olarak yok. |
 | jeep | ✅ Tamamlandı | Cherokee, Grand Cherokee, Wrangler tek girişten gerçek nesillere bölündü — Türkiye'de özellikle klasik XJ Cherokee ve WJ/WK Grand Cherokee çok yaygın off-road SUV'lar. Cherokee 4 nesle (XJ/KJ/KK/KL), Grand Cherokee 5 nesle (ZJ/WJ/WK/WK2/WL), Wrangler 4 nesle (YJ/TJ/JK/JL) bölündü. Patriot (2007-2017) tamamen eksikti, eklendi. Renegade/Compass/Avenger/Gladiator/Commander zaten sağlıklıydı. |
 | subaru | ✅ Tamamlandı | Aynı desen — çoğu model tek girişten ibaretti. Impreza 5 nesle bölündü (WRX/STI dahil), Legacy 6 nesle, Forester 5 nesle, XV 2 nesle, BRZ 2 nesle. Outback için eski nesiller (1996-2009) tek genel girişle düşük güvenle eklendi. WRX/Solterra zaten sağlıklıydı. |
-| mitsubishi | ⬜ Bekliyor | (sıradaki) |
-| land-rover | ⬜ Bekliyor | |
-| jaguar | ⬜ Bekliyor | |
-| lexus | ⬜ Bekliyor | |
+| mitsubishi | ✅ Tamamlandı | En büyük eksiklik: **Pajero tamamen eksikti** (Türkiye'de çok popüler off-roader), 3 nesille eklendi. Lancer tamamen eksikti, 3 nesille eklendi. Carisma, Galant, Space Wagon, Grandis tamamen eksik nameplate'ler olarak eklendi. Colt tek girişten 3 nesle bölündü (1996-2004 klasik hatchback, 2004-2012, 2023- reborn). ASX ve L200 gerçek nesillere bölündü. |
+| land-rover | ✅ Tamamlandı | Aynı desen — Defender/Discovery/Range Rover/Range Rover Sport/Range Rover Evoque tek girişten ibaretti. Klasik Defender (1983-2016) eklendi. Discovery 4 nesle bölündü (1989-2016 + güncel). Range Rover 4 nesle, Range Rover Sport 3 nesle, Evoque 2 nesle bölündü. **Freelander tamamen eksikti** (Türkiye'de çok yaygın kompakt SUV), 2 nesille eklendi. |
+| jaguar | ✅ Tamamlandı | XF tek girişten 2 nesle bölündü. Tamamen eksik nameplate'ler eklendi: XJ (bayrak gemisi sedan, 3 nesil), XK (spor coupe/cabrio), X-Type (Mondeo tabanlı, yaygın), S-Type (orta-üst segment sedan). E-Pace/F-Pace/F-Type/I-Pace/XE zaten sağlıklıydı. |
+| lexus | ⬜ Bekliyor | (sıradaki) |
 | alfa-romeo | ⬜ Bekliyor | |
 | ds | ⬜ Bekliyor | |
 | cupra | ⬜ Bekliyor | |

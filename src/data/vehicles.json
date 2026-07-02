@@ -5593,6 +5593,153 @@
       "make": "Jaguar",
       "models": [
         {
+          "name": "XJ (1994-2003)",
+          "versions": [
+            "3.2 219",
+            "4.0 245",
+            "4.0 Supercharged 370",
+            "Diğer"
+          ],
+          "trims": [
+            "Executive",
+            "Sport",
+            "Sovereign",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XJ (2003-2009)",
+          "versions": [
+            "3.5 V8 262",
+            "4.2 V8 300",
+            "4.2 V8 Supercharged 400",
+            "2.7 TDVI 207",
+            "Diğer"
+          ],
+          "trims": [
+            "Executive",
+            "Sovereign",
+            "Super V8",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XJ (2009-2019)",
+          "versions": [
+            "3.0 V6 240",
+            "5.0 V8 385",
+            "5.0 V8 Supercharged 550",
+            "3.0 TDV6 275",
+            "Diğer"
+          ],
+          "trims": [
+            "Luxury",
+            "Premium Luxury",
+            "Portfolio",
+            "Autobiography",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XK",
+          "versions": [
+            "4.0 V8 290",
+            "4.2 V8 300",
+            "4.2 V8 Supercharged 400",
+            "5.0 V8 385",
+            "5.0 V8 Supercharged 510",
+            "Diğer"
+          ],
+          "trims": [
+            "Coupe",
+            "Convertible",
+            "XKR",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X-Type",
+          "versions": [
+            "2.0 130",
+            "2.5 V6 196 AWD",
+            "3.0 V6 231 AWD",
+            "2.0d 130",
+            "2.2d 155",
+            "Diğer"
+          ],
+          "trims": [
+            "Classic",
+            "Sport",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S-Type",
+          "versions": [
+            "3.0 V6 240",
+            "4.2 V8 300",
+            "2.5 V6 200",
+            "2.7 TD 207",
+            "Diğer"
+          ],
+          "trims": [
+            "Classic",
+            "SE",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XE",
+          "versions": [
+            "P250 2.0 250",
+            "D180 2.0 180 AWD",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "R-Dynamic S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XF (2007-2015)",
+          "versions": [
+            "2.0 240",
+            "3.0 V6 240",
+            "5.0 V8 385",
+            "2.2 D 200",
+            "3.0 D 275",
+            "Diğer"
+          ],
+          "trims": [
+            "Luxury",
+            "Premium Luxury",
+            "Portfolio",
+            "R-Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XF (2015-)",
+          "versions": [
+            "P250 2.0 250",
+            "P300 2.0 300 AWD",
+            "D200 2.0 204 AWD",
+            "D300 3.0 300 AWD",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "R-Dynamic S",
+            "R-Dynamic HSE",
+            "Diğer"
+          ]
+        },
+        {
           "name": "E-Pace",
           "versions": [
             "P200 2.0 200",
@@ -5659,37 +5806,6 @@
             "SE",
             "HSE",
             "Black",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "XE",
-          "versions": [
-            "P250 2.0 250",
-            "D180 2.0 180 AWD",
-            "Diğer"
-          ],
-          "trims": [
-            "S",
-            "SE",
-            "R-Dynamic S",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "XF",
-          "versions": [
-            "P250 2.0 250",
-            "P300 2.0 300 AWD",
-            "D200 2.0 204 AWD",
-            "D300 3.0 300 AWD",
-            "Diğer"
-          ],
-          "trims": [
-            "S",
-            "SE",
-            "R-Dynamic S",
-            "R-Dynamic HSE",
             "Diğer"
           ]
         },
@@ -6622,7 +6738,24 @@
       "make": "Land Rover",
       "models": [
         {
-          "name": "Defender",
+          "name": "Defender (1983-2016)",
+          "versions": [
+            "2.5 TD 111",
+            "300 Tdi 111",
+            "Td5 122",
+            "V8 134",
+            "Diğer"
+          ],
+          "trims": [
+            "90",
+            "110",
+            "130",
+            "County",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Defender (2020-)",
           "versions": [
             "P300 2.0 300 AWD",
             "P400 3.0 400 AWD",
@@ -6643,7 +6776,64 @@
           ]
         },
         {
-          "name": "Discovery",
+          "name": "Discovery (1989-1998)",
+          "versions": [
+            "3.5 V8 136",
+            "2.5 TDi 113",
+            "300 Tdi 111",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Discovery (1998-2004)",
+          "versions": [
+            "4.0 V8 182",
+            "2.5 TD5 138",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "GS",
+            "ES",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Discovery (2004-2009)",
+          "versions": [
+            "4.4 V8 295",
+            "2.7 TDV6 190",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "HSE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Discovery (2009-2016)",
+          "versions": [
+            "5.0 V8 375",
+            "3.0 SDV6 256",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "XS",
+            "HSE",
+            "HSE Luxury",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Discovery (2017-)",
           "versions": [
             "P300 2.0 300 AWD",
             "P360e PHEV 360 AWD",
@@ -6682,7 +6872,86 @@
           ]
         },
         {
-          "name": "Range Rover",
+          "name": "Freelander (1997-2006)",
+          "versions": [
+            "1.8 117",
+            "2.5 V6 177",
+            "2.0 TD4 112",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "GS",
+            "ES",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Freelander 2 (2006-2014)",
+          "versions": [
+            "3.2 233",
+            "2.2 TD4 150",
+            "2.2 SD4 190",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "GS",
+            "XS",
+            "HSE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Range Rover (1994-2002)",
+          "versions": [
+            "4.0 V8 190",
+            "4.6 V8 225",
+            "2.5 DSE 136",
+            "Diğer"
+          ],
+          "trims": [
+            "SE",
+            "HSE",
+            "Vogue",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Range Rover (2002-2012)",
+          "versions": [
+            "4.4 V8 286",
+            "4.2 V8 Supercharged 396",
+            "3.0 TD6 177",
+            "3.6 TDV8 272",
+            "Diğer"
+          ],
+          "trims": [
+            "SE",
+            "Vogue",
+            "Autobiography",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Range Rover (2012-2022)",
+          "versions": [
+            "3.0 SDV6 258",
+            "4.4 SDV8 339",
+            "5.0 V8 Supercharged 510",
+            "3.0 TDV6 258",
+            "Diğer"
+          ],
+          "trims": [
+            "Vogue",
+            "Vogue SE",
+            "Autobiography",
+            "SVAutobiography",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Range Rover (2022-)",
           "versions": [
             "P400 3.0 400 AWD",
             "P530 4.4 530 AWD",
@@ -6701,7 +6970,40 @@
           ]
         },
         {
-          "name": "Range Rover Sport",
+          "name": "Range Rover Sport (2005-2013)",
+          "versions": [
+            "4.4 V8 306",
+            "4.2 V8 Supercharged 390",
+            "2.7 TDV6 190",
+            "3.6 TDV8 272",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "HSE",
+            "Autobiography",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Range Rover Sport (2013-2022)",
+          "versions": [
+            "3.0 SDV6 292",
+            "5.0 V8 Supercharged 510",
+            "3.0 TDV6 258",
+            "Diğer"
+          ],
+          "trims": [
+            "SE",
+            "HSE",
+            "Autobiography",
+            "SVR",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Range Rover Sport (2022-)",
           "versions": [
             "P360 3.0 360 AWD",
             "P400 3.0 400 AWD",
@@ -6722,7 +7024,23 @@
           ]
         },
         {
-          "name": "Range Rover Evoque",
+          "name": "Range Rover Evoque (2011-2018)",
+          "versions": [
+            "2.0 Si4 240",
+            "2.2 eD4 150",
+            "2.2 SD4 190",
+            "Diğer"
+          ],
+          "trims": [
+            "Pure",
+            "SE",
+            "HSE",
+            "Dynamic",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Range Rover Evoque (2019-)",
           "versions": [
             "P200 2.0 200 AWD",
             "P250 2.0 249 AWD",
@@ -8855,7 +9173,167 @@
       "make": "Mitsubishi",
       "models": [
         {
-          "name": "ASX",
+          "name": "Colt (1996-2004)",
+          "versions": [
+            "1.3 75",
+            "1.6 90",
+            "1.8 GTi 122",
+            "Diğer"
+          ],
+          "trims": [
+            "GL",
+            "GLX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Colt (2004-2012)",
+          "versions": [
+            "1.1 75",
+            "1.3 95",
+            "1.5 109",
+            "Diğer"
+          ],
+          "trims": [
+            "Invite",
+            "Inform",
+            "Intense",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Colt (2023-)",
+          "versions": [
+            "1.0 T 96",
+            "1.3 T 130 MHEV",
+            "Diğer"
+          ],
+          "trims": [
+            "Intense",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Space Star",
+          "versions": [
+            "1.3 82",
+            "1.6 90",
+            "Diğer"
+          ],
+          "trims": [
+            "Comfort",
+            "Elegance",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Carisma",
+          "versions": [
+            "1.6 90",
+            "1.8 116",
+            "1.9 TD 90",
+            "1.9 DI-D 102",
+            "Diğer"
+          ],
+          "trims": [
+            "Comfort",
+            "Elegance",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Lancer (1988-2000)",
+          "versions": [
+            "1.3 75",
+            "1.6 90",
+            "1.8 GTi 135",
+            "1.8 TD 75",
+            "Diğer"
+          ],
+          "trims": [
+            "GL",
+            "GLX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Lancer (2000-2007)",
+          "versions": [
+            "1.3 82",
+            "1.6 98",
+            "2.0 135",
+            "2.0 Di-D 121",
+            "Diğer"
+          ],
+          "trims": [
+            "GL",
+            "GLX",
+            "Invite",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Lancer (2007-2017)",
+          "versions": [
+            "1.5 109",
+            "1.8 143",
+            "2.0 150",
+            "Ralliart 2.0T 241 AWD",
+            "Diğer"
+          ],
+          "trims": [
+            "Invite",
+            "Instyle",
+            "Intense",
+            "Ralliart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Galant",
+          "versions": [
+            "1.8 90",
+            "2.0 115",
+            "2.0 TD 82",
+            "2.5 V6 170",
+            "Diğer"
+          ],
+          "trims": [
+            "GLS",
+            "GLXi",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ASX (2010-2016)",
+          "versions": [
+            "1.6 117",
+            "1.8 DI-D 150 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Invite",
+            "Inform",
+            "Intense",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ASX (2016-2023)",
+          "versions": [
+            "1.6 117",
+            "2.0 150 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Inform",
+            "Instyle",
+            "Intense",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ASX (2023-)",
           "versions": [
             "1.0 T 120",
             "1.3 T 140",
@@ -8881,6 +9359,35 @@
             "Inform",
             "Instyle",
             "Intense",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Space Wagon",
+          "versions": [
+            "1.8 90",
+            "2.0 116",
+            "2.4 150",
+            "2.0 TD 82",
+            "Diğer"
+          ],
+          "trims": [
+            "GLXi",
+            "Comfort",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Grandis",
+          "versions": [
+            "2.0 136",
+            "2.4 165",
+            "2.0 Di-D 140",
+            "Diğer"
+          ],
+          "trims": [
+            "Comfort",
+            "Instyle",
             "Diğer"
           ]
         },
@@ -8914,10 +9421,67 @@
           ]
         },
         {
-          "name": "L200",
+          "name": "Pajero (1991-1999)",
           "versions": [
-            "2.2 Di-D 154 4WD",
-            "2.4 MIVEC 181 4WD",
+            "2.4 GLX 98",
+            "3.0 V6 143",
+            "2.5 TD 99",
+            "Diğer"
+          ],
+          "trims": [
+            "GL",
+            "GLS",
+            "GLX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pajero (1999-2006)",
+          "versions": [
+            "3.0 V6 173",
+            "3.2 Di-D 160",
+            "3.5 V6 202",
+            "Diğer"
+          ],
+          "trims": [
+            "GL",
+            "GLS",
+            "Instyle",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pajero (2006-2021)",
+          "versions": [
+            "3.0 V6 178",
+            "3.2 Di-D 200",
+            "Diğer"
+          ],
+          "trims": [
+            "Invite",
+            "Instyle",
+            "Intense",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "L200 (1996-2006)",
+          "versions": [
+            "2.5 TD 99",
+            "2.8 TD 125",
+            "Diğer"
+          ],
+          "trims": [
+            "GL",
+            "GLS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "L200 (2006-2015)",
+          "versions": [
+            "2.5 Di-D 136 4WD",
+            "2.5 Di-D 178 4WD",
             "Diğer"
           ],
           "trims": [
@@ -8928,13 +9492,15 @@
           ]
         },
         {
-          "name": "Colt",
+          "name": "L200 (2015-)",
           "versions": [
-            "1.0 T 96",
-            "1.3 T 130 MHEV",
+            "2.2 Di-D 154 4WD",
+            "2.4 MIVEC 181 4WD",
             "Diğer"
           ],
           "trims": [
+            "Invite",
+            "Inform",
             "Intense",
             "Diğer"
           ]
