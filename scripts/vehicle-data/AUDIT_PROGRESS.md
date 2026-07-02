@@ -73,15 +73,92 @@
 | alpine | ✅ Tamamlandı | Dosyada sadece 2017 sonrası relansman modelleri vardı (A110/A290). Klasik Alpine A110 (1961-1977, orijinal Berlinette, Renault-öncesi/dönemi ikonik model) tamamen eksikti, düşük güvenle eklendi (Türkiye'de çok nadir ama var). A310/GTA/A610 (1976-1995 Renault-Alpine dönemi) çok niş olduğu için kapsam dışı bırakıldı. |
 | dodge | ✅ Tamamlandı | Büyük eksiklik: dosyada sadece güncel muscle-car nesiller vardı (Charger/Challenger/Durango 2011+), oysa Dodge'ın Türkiye'de resmi olarak satılan asıl modelleri tamamen eksikti — **Caliber (2006-2012), Avenger (2007-2010), Nitro (2007-2012), Journey (2008-2020)** eklendi (WebSearch ile resmi Türkiye lansmanı doğrulandı). Viper (1992-2017, ikonik V10, sınırlı sayıda resmi/paralel ithal) eklendi. |
 | genesis | ✅ Tamamlandı | Dosya zaten eksiksizdi — G70/G80/G90/GV70/GV80 ve elektrikli versiyonlar Türkiye resmi Genesis distribütörü lansmanıyla uyumlu. Değişiklik gerekmedi. |
-| infiniti | ⬜ Bekliyor | |
-| polestar | ⬜ Bekliyor | |
-| ora | ⬜ Bekliyor | |
-| leapmotor | ⬜ Bekliyor | |
+| infiniti | ✅ Tamamlandı | Zaten sağlıklıydı (Q30/Q50/Q60/Q70/QX70-FX, 2013-2019 Nissan-Renault Alliance Avrupa/Türkiye dönemi ile uyumlu). Değişiklik gerekmedi. |
+| polestar | ✅ Tamamlandı | Zaten sağlıklıydı. Polestar 1 (2019-2022, sınırlı üretim) Türkiye'de hiç satılmadı, WebSearch ile doğrulandı, eklenmedi. |
+| ora | ✅ Tamamlandı | Zaten sağlıklıydı (Funky Cat/Good Cat = GWM Ora 03, Lightning Cat). Değişiklik gerekmedi. |
+| leapmotor | ✅ Tamamlandı | Zaten sağlıklıydı (T03/C10, Türkiye'ye yeni giren marka). Değişiklik gerekmedi. |
 | diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder, denetime gerek yok |
+
+**🎉 OTOMOBİL KATEGORİSİ TAMAMLANDI (51/51 marka).** Sırada: Motosiklet kategorisi (61 marka) — aşağıdaki listeyi doldur ve ilk markadan başla.
 
 ## Motosiklet (61 marka)
 
-_Otomobil bitince listelenecek._
+### Tier 1 — Türkiye'de en yaygın/çok satan (önce bunlar)
+
+| Marka | Durum | Not |
+|---|---|---|
+| honda | ⬜ Bekliyor | (sıradaki) |
+| yamaha | ⬜ Bekliyor | |
+| suzuki | ⬜ Bekliyor | |
+| kawasaki | ⬜ Bekliyor | |
+| bmw | ⬜ Bekliyor | |
+| ktm | ⬜ Bekliyor | |
+| piaggio | ⬜ Bekliyor | |
+| vespa | ⬜ Bekliyor | |
+| bajaj | ⬜ Bekliyor | |
+| tvs | ⬜ Bekliyor | |
+| kymco | ⬜ Bekliyor | |
+| mondial-tr | ⬜ Bekliyor | Yerli üretim (Türkiye) — üretim geçmişi dikkatli kontrol edilmeli |
+| umit-motor | ⬜ Bekliyor | Yerli marka |
+| kuba-motor | ⬜ Bekliyor | Yerli marka |
+| regal-raptor | ⬜ Bekliyor | |
+| sym | ⬜ Bekliyor | |
+| keeway | ⬜ Bekliyor | |
+
+### Tier 2 — orta yaygınlık / tanınmış
+
+| Marka | Durum | Not |
+|---|---|---|
+| triumph | ⬜ Bekliyor | |
+| ducati | ⬜ Bekliyor | |
+| harley-davidson | ⬜ Bekliyor | |
+| royal-enfield | ⬜ Bekliyor | |
+| benelli | ⬜ Bekliyor | |
+| cf-moto | ⬜ Bekliyor | |
+| aprilia | ⬜ Bekliyor | |
+| mv-agusta | ⬜ Bekliyor | |
+| husqvarna | ⬜ Bekliyor | |
+| peugeot-motorcycles | ⬜ Bekliyor | |
+| gas-gas | ⬜ Bekliyor | |
+| fb-mondial | ⬜ Bekliyor | |
+| hero | ⬜ Bekliyor | |
+| moto-guzzi | ⬜ Bekliyor | |
+| indian | ⬜ Bekliyor | |
+| voge | ⬜ Bekliyor | |
+| qjmotor | ⬜ Bekliyor | |
+| zontes | ⬜ Bekliyor | |
+| lifan | ⬜ Bekliyor | |
+
+### Tier 3 — niş / elektrikli / az sayıda araç (son sıra)
+
+| Marka | Durum | Not |
+|---|---|---|
+| beta | ⬜ Bekliyor | |
+| sherco | ⬜ Bekliyor | |
+| rieju | ⬜ Bekliyor | |
+| fantic | ⬜ Bekliyor | |
+| jawa | ⬜ Bekliyor | |
+| ural | ⬜ Bekliyor | |
+| norton | ⬜ Bekliyor | |
+| buell | ⬜ Bekliyor | |
+| bimota | ⬜ Bekliyor | |
+| moto-morini | ⬜ Bekliyor | |
+| motron | ⬜ Bekliyor | |
+| orcal | ⬜ Bekliyor | |
+| mash | ⬜ Bekliyor | |
+| kanuni | ⬜ Bekliyor | Yerli marka |
+| cag | ⬜ Bekliyor | Yerli marka |
+| arora | ⬜ Bekliyor | Yerli marka |
+| asya | ⬜ Bekliyor | Yerli marka |
+| colove | ⬜ Bekliyor | |
+| energica | ⬜ Bekliyor | Elektrikli |
+| zero-motorcycles | ⬜ Bekliyor | Elektrikli |
+| stark-future | ⬜ Bekliyor | Elektrikli |
+| silence | ⬜ Bekliyor | Elektrikli |
+| super-soco | ⬜ Bekliyor | Elektrikli |
+| sur-ron | ⬜ Bekliyor | Elektrikli |
+| brixton | ⬜ Bekliyor | |
+| diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder, denetime gerek yok |
 
 ## Kamyonet (30 marka)
 
