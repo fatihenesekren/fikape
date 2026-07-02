@@ -5761,7 +5761,51 @@
           ]
         },
         {
-          "name": "Cherokee",
+          "name": "Cherokee (1984-2001)",
+          "versions": [
+            "2.5 121",
+            "4.0 190",
+            "2.5 TD 116",
+            "Diğer"
+          ],
+          "trims": [
+            "Laredo",
+            "Limited",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cherokee (2001-2007)",
+          "versions": [
+            "2.4 150",
+            "3.7 V6 210",
+            "2.5 CRD 143",
+            "2.8 CRD 163",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cherokee (2008-2013)",
+          "versions": [
+            "2.4 170",
+            "3.7 V6 197",
+            "2.8 CRD 177",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cherokee (2014-2023)",
           "versions": [
             "2.0 Multijet 140 AWD",
             "2.0 GME 270 AWD",
@@ -5776,7 +5820,72 @@
           ]
         },
         {
-          "name": "Grand Cherokee",
+          "name": "Grand Cherokee (1993-1998)",
+          "versions": [
+            "4.0 190",
+            "5.2 V8 220",
+            "2.5 TD 116",
+            "Diğer"
+          ],
+          "trims": [
+            "Laredo",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Grand Cherokee (1999-2004)",
+          "versions": [
+            "4.0 195",
+            "4.7 V8 235",
+            "2.7 CRD 163",
+            "Diğer"
+          ],
+          "trims": [
+            "Laredo",
+            "Limited",
+            "Overland",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Grand Cherokee (2005-2010)",
+          "versions": [
+            "3.7 V6 210",
+            "4.7 V8 235",
+            "5.7 V8 326",
+            "3.0 CRD 218",
+            "Diğer"
+          ],
+          "trims": [
+            "Laredo",
+            "Limited",
+            "Overland",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Grand Cherokee (2011-2021)",
+          "versions": [
+            "3.6 V6 286",
+            "5.7 V8 352",
+            "3.0 CRD 250",
+            "Trailhawk 3.6 V6",
+            "SRT 6.4 V8 468",
+            "Diğer"
+          ],
+          "trims": [
+            "Laredo",
+            "Limited",
+            "Overland",
+            "Summit",
+            "Trailhawk",
+            "SRT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Grand Cherokee (2022-)",
           "versions": [
             "3.6 V6 290 AWD",
             "5.7 V8 360 AWD",
@@ -5794,7 +5903,52 @@
           ]
         },
         {
-          "name": "Wrangler",
+          "name": "Wrangler (1987-1995)",
+          "versions": [
+            "2.5 121",
+            "4.0 180",
+            "2.5 TD 82",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sahara",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Wrangler (1997-2006)",
+          "versions": [
+            "2.5 118",
+            "4.0 177",
+            "2.8 CRD 177",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport",
+            "Sahara",
+            "Rubicon",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Wrangler (2007-2018)",
+          "versions": [
+            "2.8 CRD 177",
+            "3.6 V6 284",
+            "3.8 V6 197",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport",
+            "Sahara",
+            "Rubicon",
+            "Unlimited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Wrangler (2018-)",
           "versions": [
             "2.0 T 272 Sahara",
             "3.6 V6 285 Sport",
@@ -5807,6 +5961,22 @@
             "Sahara",
             "Rubicon",
             "Unlimited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Patriot",
+          "versions": [
+            "2.0 156",
+            "2.4 172",
+            "2.0 CRD 140",
+            "2.2 CRD 163",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport",
+            "Longitude",
+            "Limited",
             "Diğer"
           ]
         },

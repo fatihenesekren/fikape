@@ -45,8 +45,8 @@
 |---|---|---|
 | volvo | ✅ Tamamlandı | Aynı desen — dosyada sadece güncel nesiller vardı. Türkiye'de çok yaygın klasikler tamamen eksikti: 240 (1974-1993, ikonik RWD sedan/wagon), 940 (1990-1998), 850 (1991-1997). S40/V40/C30/S60/S70/V70/S80/XC60/XC90 tek girişten gerçek nesillere bölündü (S60/S70-V70/S80 3'er nesil, XC60/XC90 2'şer nesil). XC70 (2000-2016, cross country wagon) tamamen eksikti, eklendi. XC40/S90/V90/C40 Recharge/EX30/EX90 zaten sağlıklıydı. |
 | mini | ✅ Tamamlandı | Cooper, Cabrio, Clubman, Countryman tek girişten gerçek nesillere bölündü (Cooper 4 nesle: R50/R56/F56/güncel; Cabrio 2 nesle: R57/F57; Clubman 2 nesle: R55/F54; Countryman 3 nesle: R60/F60/güncel). Paceman/Coupe/Roadster (niş, üretimi durmuş modeller) zaten sağlıklıydı, dokunulmadı. Orijinal klasik Mini (1959-2000, İngiliz üretimi, RHD) kapsam dışı bırakıldı — Türkiye ikinci el pazarında pratik olarak yok. |
-| jeep | ⬜ Bekliyor | (sıradaki) |
-| subaru | ⬜ Bekliyor | |
+| jeep | ✅ Tamamlandı | Cherokee, Grand Cherokee, Wrangler tek girişten gerçek nesillere bölündü — Türkiye'de özellikle klasik XJ Cherokee ve WJ/WK Grand Cherokee çok yaygın off-road SUV'lar. Cherokee 4 nesle (XJ/KJ/KK/KL), Grand Cherokee 5 nesle (ZJ/WJ/WK/WK2/WL), Wrangler 4 nesle (YJ/TJ/JK/JL) bölündü. Patriot (2007-2017) tamamen eksikti, eklendi. Renegade/Compass/Avenger/Gladiator/Commander zaten sağlıklıydı. |
+| subaru | ⬜ Bekliyor | (sıradaki) |
 | mitsubishi | ⬜ Bekliyor | |
 | land-rover | ⬜ Bekliyor | |
 | jaguar | ⬜ Bekliyor | |
