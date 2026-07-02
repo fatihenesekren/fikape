@@ -25,6 +25,11 @@
       "name": "Terramar",
       "versions": ["1.5 TSI 150", "1.5 e-Hybrid 204", "2.0 TDI 150", "Diğer"],
       "trims": ["Standart", "VZ", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

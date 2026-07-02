@@ -40,6 +40,11 @@
       "name": "Solterra",
       "versions": ["AWD 218 71.4kWh", "Diğer"],
       "trims": ["Comfort", "Sport", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

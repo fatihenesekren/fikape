@@ -45,6 +45,11 @@
       "name": "MX-30",
       "versions": ["e-SKYACTIV-G R-EV 170 PHEV", "EV 145 35.5kWh", "Diğer"],
       "trims": ["Prime-Line", "Exclusive-Line", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

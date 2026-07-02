@@ -100,6 +100,11 @@
       "name": "Caddy",
       "versions": ["1.5 TSI 114", "2.0 TDI 102", "2.0 TDI 122", "eHybrid 204", "Diğer"],
       "trims": ["Life", "Style", "California", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

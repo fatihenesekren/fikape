@@ -45,6 +45,11 @@
       "name": "LX",
       "versions": ["LX 500d 3.3 304 AWD", "LX 600 3.5 416 AWD", "Diğer"],
       "trims": ["Standart", "Sport+", "F Sport", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

@@ -4,6 +4,11 @@
     { "name": "MP3 300", "versions": ["300cc 23 CV", "HPE Sport", "Diğer"], "trims": ["Sport", "Business", "Diğer"] },
     { "name": "MP3 530", "versions": ["530cc 37 CV", "HPE Exclusive", "Diğer"], "trims": ["Exclusive", "Diğer"] },
     { "name": "Medley 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
-    { "name": "Liberty 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "S", "Iget", "Diğer"] }
+    { "name": "Liberty 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "S", "Iget", "Diğer"] },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
   ]
 }

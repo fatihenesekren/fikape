@@ -4,6 +4,11 @@
     { "name": "NV200", "versions": ["1.5 dCi 90", "1.5 dCi 110", "e-NV200 Electric", "Diğer"], "trims": ["Comfort", "Diğer"] },
     { "name": "NV300", "versions": ["2.0 dCi 120", "2.0 dCi 145", "2.0 dCi 170", "Diğer"], "trims": ["Comfort", "Diğer"] },
     { "name": "NV400", "versions": ["2.3 dCi 125", "2.3 dCi 145", "2.3 dCi 170", "Diğer"], "trims": ["Comfort", "Diğer"] },
-    { "name": "Navara", "versions": ["2.3 dCi 160 4WD", "2.3 dCi 190 4WD", "Diğer"], "trims": ["Visia", "Acenta", "N-Guard", "Tekna", "Diğer"] }
+    { "name": "Navara", "versions": ["2.3 dCi 160 4WD", "2.3 dCi 190 4WD", "Diğer"], "trims": ["Visia", "Acenta", "N-Guard", "Tekna", "Diğer"] },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
   ]
 }

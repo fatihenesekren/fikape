@@ -10,6 +10,11 @@
       "name": "T10F",
       "versions": ["Standard Range RWD 200 52.4kWh", "Long Range RWD 200 88.5kWh", "AWD 400 88.5kWh", "Diğer"],
       "trims": ["Life", "Move", "Sport", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

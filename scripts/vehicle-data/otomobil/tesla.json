@@ -25,6 +25,11 @@
       "name": "Cybertruck",
       "versions": ["RWD 335", "AWD 600", "Cyberbeast AWD 845", "Diğer"],
       "trims": ["Foundation Series", "Standart", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

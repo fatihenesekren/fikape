@@ -50,6 +50,11 @@
       "name": "EX90",
       "versions": ["Twin Motor 517 111kWh", "Twin Motor Performance 680 111kWh", "Diğer"],
       "trims": ["Core", "Plus", "Ultra", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

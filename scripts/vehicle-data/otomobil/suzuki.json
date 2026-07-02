@@ -40,6 +40,11 @@
       "name": "Swace",
       "versions": ["1.8 Hybrid 122", "Diğer"],
       "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

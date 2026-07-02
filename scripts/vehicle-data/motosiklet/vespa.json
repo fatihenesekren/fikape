@@ -6,6 +6,11 @@
     { "name": "GTS 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Super", "Diğer"] },
     { "name": "GTS 300", "versions": ["300cc 24 CV", "HPE 300cc", "Diğer"], "trims": ["Standart", "Super", "SuperSport", "Diğer"] },
     { "name": "GTV", "versions": ["300cc 24 CV HPE", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Elettrica", "versions": ["EV 45 km/h", "EV 70 km/h", "Diğer"], "trims": ["Standart", "X", "Diğer"] }
+    { "name": "Elettrica", "versions": ["EV 45 km/h", "EV 70 km/h", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
   ]
 }

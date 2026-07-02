@@ -35,6 +35,11 @@
       "name": "Range Rover Velar",
       "versions": ["P250 2.0 249 AWD", "P380 3.0 380 AWD", "P400e PHEV 404 AWD", "D200 2.0 204 AWD", "D300 3.0 300 AWD", "Diğer"],
       "trims": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

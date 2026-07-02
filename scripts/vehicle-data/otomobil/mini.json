@@ -35,6 +35,11 @@
       "name": "Roadster",
       "versions": ["1.6 Cooper 122", "2.0 Cooper S 184", "2.0 JCW 211", "Diğer"],
       "trims": ["Standart", "JCW", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

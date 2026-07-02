@@ -10,6 +10,11 @@
     { "name": "390 RC", "versions": ["390cc 44 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Adventure 390", "versions": ["390cc 44 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Adventure 890", "versions": ["889cc 105 CV", "R 105 CV", "Diğer"], "trims": ["Standart", "R", "Rally", "Diğer"] },
-    { "name": "Adventure 1290", "versions": ["1301cc 160 CV", "S 160 CV", "R 160 CV", "Diğer"], "trims": ["Standart", "S", "R", "Diğer"] }
+    { "name": "Adventure 1290", "versions": ["1301cc 160 CV", "S 160 CV", "R 160 CV", "Diğer"], "trims": ["Standart", "S", "R", "Diğer"] },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
   ]
 }

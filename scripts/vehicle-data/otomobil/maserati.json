@@ -30,6 +30,11 @@
       "name": "MC20",
       "versions": ["3.0 Nettuno V6 630 Coupé", "3.0 Nettuno V6 630 Cielo", "Folgore EV AWD 761", "Diğer"],
       "trims": ["Coupé", "Cielo", "Folgore", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

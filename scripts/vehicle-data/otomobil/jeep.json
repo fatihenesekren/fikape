@@ -40,6 +40,11 @@
       "name": "Commander",
       "versions": ["1.3 T4 185 FWD", "1.3 T4 240 AWD", "4xe PHEV 240 AWD", "Diğer"],
       "trims": ["Sport", "Longitude", "Limited", "Overland", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

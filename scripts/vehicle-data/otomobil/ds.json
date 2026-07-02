@@ -20,6 +20,11 @@
       "name": "DS 9",
       "versions": ["1.6 PureTech 180", "E-Tense FWD 225", "E-Tense 4x4 360", "Diğer"],
       "trims": ["So Chic", "Grand Chic", "Rivoli", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

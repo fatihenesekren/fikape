@@ -30,6 +30,11 @@
       "name": "XF",
       "versions": ["P250 2.0 250", "P300 2.0 300 AWD", "D200 2.0 204 AWD", "D300 3.0 300 AWD", "Diğer"],
       "trims": ["S", "SE", "R-Dynamic S", "R-Dynamic HSE", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

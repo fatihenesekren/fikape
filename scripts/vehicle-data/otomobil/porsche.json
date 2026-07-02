@@ -35,6 +35,11 @@
       "name": "Panamera",
       "versions": ["2.9 V6 330", "2.9 S 440", "4.0 GTS 480", "Turbo 4.0 V8 550", "Turbo S E-Hybrid 700", "4 E-Hybrid 462", "Diğer"],
       "trims": ["Standart", "Sport Turismo", "Executive", "Turbo S E-Hybrid", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

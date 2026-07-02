@@ -20,6 +20,11 @@
       "name": "Forfour",
       "versions": ["1.0 71", "0.9 Turbo 90", "0.9 Brabus Turbo 109", "EV 17.6kWh 82", "Diğer"],
       "trims": ["Pure", "Passion", "Prime", "Brabus", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

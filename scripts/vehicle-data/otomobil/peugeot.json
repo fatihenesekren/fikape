@@ -45,6 +45,11 @@
       "name": "5008",
       "versions": ["1.2 PureTech 130", "1.5 BlueHDi 130", "1.6 Hybrid 136", "EV 73kWh 210", "EV 98kWh 230", "Diğer"],
       "trims": ["Active", "Allure", "GT", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

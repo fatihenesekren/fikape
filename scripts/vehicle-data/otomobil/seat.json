@@ -25,6 +25,11 @@
       "name": "Tarraco",
       "versions": ["1.5 TSI 150", "2.0 TDI 150", "2.0 TDI 190 4Drive", "2.0 TSI 190 4Drive", "Diğer"],
       "trims": ["Style", "FR", "Xcellence", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

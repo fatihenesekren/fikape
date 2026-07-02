@@ -5,6 +5,11 @@
     { "name": "Scout Bobber", "versions": ["1133cc 100 CV", "Diğer"], "trims": ["Standart", "Twenty", "Diğer"] },
     { "name": "Chief", "versions": ["1890cc 116 CV", "Diğer"], "trims": ["Standart", "Dark Horse", "Bobber Dark Horse", "Diğer"] },
     { "name": "Challenger", "versions": ["1768cc 122 CV", "Dark Horse", "Limited", "Diğer"], "trims": ["Standart", "Dark Horse", "Limited", "Elite", "Diğer"] },
-    { "name": "FTR 1200", "versions": ["1203cc 123 CV", "S 123 CV", "R Carbon", "Diğer"], "trims": ["Standart", "S", "Rally", "R Carbon", "Diğer"] }
+    { "name": "FTR 1200", "versions": ["1203cc 123 CV", "S 123 CV", "R Carbon", "Diğer"], "trims": ["Standart", "S", "Rally", "R Carbon", "Diğer"] },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
   ]
 }

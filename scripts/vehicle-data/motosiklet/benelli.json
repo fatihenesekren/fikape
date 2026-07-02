@@ -8,6 +8,11 @@
     { "name": "752S", "versions": ["750cc 77 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Leoncino", "versions": ["500cc 47 CV", "800cc 76 CV", "Diğer"], "trims": ["Standart", "Trail", "Diğer"] },
     { "name": "TRK 502", "versions": ["500cc 47 CV", "X 500cc AWD", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
-    { "name": "TRK 702", "versions": ["700cc 76 CV", "X 700cc AWD", "Diğer"], "trims": ["Standart", "X", "Diğer"] }
+    { "name": "TRK 702", "versions": ["700cc 76 CV", "X 700cc AWD", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
   ]
 }

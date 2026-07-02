@@ -55,6 +55,11 @@
       "name": "Ioniq 6",
       "versions": ["Standard Range RWD 151", "Long Range RWD 229", "Long Range AWD 325", "Diğer"],
       "trims": ["Level 2", "Level 3", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

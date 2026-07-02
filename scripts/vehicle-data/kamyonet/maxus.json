@@ -4,6 +4,11 @@
     { "name": "Deliver 9", "versions": ["2.0 TDI 136", "e-Deliver 9 Electric", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "EV30", "versions": ["Electric 204", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "T60", "versions": ["2.0 TDI 150 4WD", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "T90", "versions": ["2.0 TDI 150 4WD", "eT90 Electric", "Diğer"], "trims": ["Standart", "Executive", "Diğer"] }
+    { "name": "T90", "versions": ["2.0 TDI 150 4WD", "eT90 Electric", "Diğer"], "trims": ["Standart", "Executive", "Diğer"] },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
   ]
 }

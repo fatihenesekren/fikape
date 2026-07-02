@@ -11,6 +11,11 @@
     { "name": "Trident 660", "versions": ["660cc 81 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Street Triple", "versions": ["765cc 130 CV", "S 120 CV", "R 130 CV", "RS 130 CV", "Diğer"], "trims": ["S", "R", "RS", "Moto2 Edition", "Diğer"] },
     { "name": "Speed Triple", "versions": ["1160cc 180 CV", "RS 180 CV", "Diğer"], "trims": ["Standart", "RS", "Diğer"] },
-    { "name": "Rocket 3", "versions": ["2458cc 167 CV", "GT 167 CV", "R 167 CV", "Diğer"], "trims": ["Standart", "GT", "R", "Diğer"] }
+    { "name": "Rocket 3", "versions": ["2458cc 167 CV", "GT 167 CV", "R 167 CV", "Diğer"], "trims": ["Standart", "GT", "R", "Diğer"] },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
+    }
   ]
 }

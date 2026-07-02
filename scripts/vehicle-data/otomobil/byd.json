@@ -30,6 +30,11 @@
       "name": "Tang",
       "versions": ["EV AWD 476 108.8kWh", "DM-i AWD PHEV", "Diğer"],
       "trims": ["Premium", "Excellence", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }

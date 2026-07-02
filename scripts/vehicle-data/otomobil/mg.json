@@ -40,6 +40,11 @@
       "name": "Marvel R",
       "versions": ["RWD 180 70kWh", "AWD 288 70kWh", "Diğer"],
       "trims": ["Comfort", "Luxury", "Diğer"]
+    },
+    {
+      "name": "Diğer",
+      "versions": ["Diğer"],
+      "trims": ["Diğer"]
     }
   ]
 }
