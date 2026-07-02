@@ -4,6 +4,9 @@
     { "name": "Apache RTR 200 4V (2016-)", "versions": ["197cc 20.8 CV", "Diğer"], "trims": ["Standart", "Race Edition", "Diğer"] },
     { "name": "Apache RR 310 (2017-)", "versions": ["312cc 34 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Ronin 225 (2022-)", "versions": ["225cc 20.4 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Raider (2021-)", "versions": ["124.8cc 11.4 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Jupiter 125 (2021-)", "versions": ["124.8cc 8.2 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "NTorq 125 RE (2023-)", "versions": ["124.8cc 9.3 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

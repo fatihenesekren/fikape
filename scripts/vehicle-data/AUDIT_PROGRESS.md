@@ -93,12 +93,10 @@
 | kawasaki | ✅ Tamamlandı | **KLR 650 Türkiye'de 1987-2004 arası Otosan tarafından resmi satıldı** (2022'de yeni nesille geri döndü) — her ikisi de tamamen eksikti, eklendi. ER-5 (1997-2006, bütçe twin), Eliminator (yeni cruiser/naked), KLX250, Versys-X300 eklendi. |
 | bmw | ✅ Tamamlandı | R1100GS (1994-1999) ve R1150GS (1999-2004, R1200GS'in atası, yaygın ikinci el) tamamen eksikti, eklendi. R nineT (heritage roadster ailesi) ve F650 (1993-2007, çok yaygın funduro) tamamen eksikti, eklendi. |
 | ktm | ✅ Tamamlandı | 200 Duke, 690 Duke, 990 Duke (2005-2013), 200 RC, 690 Enduro R, Adventure 950/990 (2003-2013, güncel 890/1290'un atası) tamamen eksikti, eklendi. |
-| bmw | ⬜ Bekliyor | |
-| ktm | ⬜ Bekliyor | |
 | piaggio | ✅ Tamamlandı | Resmi Türkiye fiyat listesiyle karşılaştırıldı: **Beverly (200/300/400, "high-wheel" segment lideri) tamamen eksikti**, eklendi. Piaggio One (yeni elektrikli scooter) eklendi. MP3 300 → MP3 310 güncel isimlendirmeye taşındı. |
 | vespa | ✅ Tamamlandı | **PX 125/150/200 (1977-2007 klasik largeframe + 2011'de yeniden üretime alındı, Türkiye'de çok yaygın ikinci el klasik) tamamen eksikti**, eklendi. 946 (premium sınırlı seri hattı) eklendi. |
 | bajaj | ✅ Tamamlandı | Resmi Türkiye distribütörü (eKuralkan) fiyat listesiyle karşılaştırıldı — güncel nesil **Pulsar N160/N250 isimlendirmesi eksikti**, eklendi. Diğer modeller (Dominar, Avenger, RS200) zaten sağlıklıydı. |
-| tvs | ⬜ Bekliyor | |
+| tvs | ✅ Tamamlandı | Resmi Türkiye fiyat listesi (turkiye.tvsmotor.com) ile karşılaştırıldı — güncel satışta olan **Raider, Jupiter 125 tamamen eksikti**, eklendi. Ayrıca resmi ürün sayfası doğrulamasıyla **NTorq 125 RE** (2023-, satışta olduğu ayrı sayfadan teyit edildi ama fiyat listesinde görünmüyordu) eklendi. Apache RR 310 ve Ronin 225 güncel resmi fiyat listesinde yok (muhtemelen üretimden kalktı/ithalat durdu) ama ikinci elde var olabileceğinden dosyadan silinmedi.
 | kymco | ⬜ Bekliyor | |
 | mondial-tr | ⬜ Bekliyor | Yerli üretim (Türkiye) — üretim geçmişi dikkatli kontrol edilmeli |
 | umit-motor | ⬜ Bekliyor | Yerli marka |
