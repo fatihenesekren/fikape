@@ -67,9 +67,9 @@
 | Marka | Durum | Not |
 |---|---|---|
 | porsche | ✅ Tamamlandı | En büyük eksiklik: dosyada sadece güncel nesiller vardı. 911 tek girişten 7 gerçek nesile bölündü (klasik 1965-1989, 964, 993, 996, 997, 991, 992). Boxster/Cayman tek girişten gerçek nesillere bölündü (986, 987, 981, 718=982). Cayenne 3 nesle bölündü (955/957, 92A, 2017-), Panamera 2 nesle bölündü (970, 971). Tamamen eksik klasik front-engine modeller eklendi: 924, 944, 928, 968. |
-| maserati | ⬜ Bekliyor | |
-| aston-martin | ⬜ Bekliyor | |
-| abarth | ⬜ Bekliyor | |
+| maserati | ✅ Tamamlandı | **Quattroporte (marka bayrak gemisi sedan) tamamen eksikti** — 3 nesille eklendi (1994-2001, 2003-2012, 2013-2023). Biturbo (1982-1994, en yaygın klasik Maserati) ve 3200 GT/Coupé-Spyder (1998-2007) tamamen eksikti, eklendi. Ghibli/Levante/GranTurismo/GranCabrio/Grecale/MC20 (güncel dönem) zaten sağlıklıydı. |
+| aston-martin | ✅ Tamamlandı | DB9/DB11/Vantage/DBS Superleggera/DBX zaten sağlıklıydı ama önceki nesiller eksikti. DB7 (1994-2003, DB9'un atası), Vanquish (2001-2007, ilk nesil V12 amiral gemisi), V8 Vantage (2005-2017, güncel Vantage'ın atası, ayrı isimle), Rapide (2010-2020, 4 kapılı), Vanquish (2012-2018, 2. nesil, DBS Superleggera'nın atası) tamamen eksikti, eklendi. |
+| abarth | ✅ Tamamlandı | Dosya görece sağlıklıydı. Grande Punto (2008-2010) eksikti, "Punto (2010-2012)" → "Punto Evo (2010-2012)" olarak netleştirildi ve Grande Punto ayrı model olarak eklendi. Abarth 600e Türkiye'de henüz satışa çıkmadı (WebSearch ile doğrulandı, Temmuz 2026), eklenmedi. |
 | alpine | ⬜ Bekliyor | |
 | dodge | ⬜ Bekliyor | |
 | genesis | ⬜ Bekliyor | |

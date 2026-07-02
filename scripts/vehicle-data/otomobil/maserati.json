@@ -2,6 +2,31 @@
   "make": "Maserati",
   "models": [
     {
+      "name": "Biturbo (1982-1994)",
+      "versions": ["2.0 Turbo 180", "2.5 V6 Turbo 185", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "3200 GT / Coupé-Spyder (1998-2007)",
+      "versions": ["3.2 V8 Twin-Turbo 370", "4200 GT 4.2 V8 390", "Diğer"],
+      "trims": ["Standart", "GT", "Diğer"]
+    },
+    {
+      "name": "Quattroporte (1994-2001)",
+      "versions": ["2.8 V6 Twin-Turbo 284", "3.2 V8 Twin-Turbo 335", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Quattroporte (2003-2012)",
+      "versions": ["4.2 V8 400", "4.7 V8 425", "GTS 4.7 V8 433", "Diğer"],
+      "trims": ["Standart", "Sport GT", "GTS", "Diğer"]
+    },
+    {
+      "name": "Quattroporte (2013-2023)",
+      "versions": ["3.0 V6 Twin-Turbo 350", "3.0 V6 Twin-Turbo 410", "GTS 3.8 V8 530", "Diesel 3.0 V6 275", "Diğer"],
+      "trims": ["Standart", "GT", "GTS", "Diğer"]
+    },
+    {
       "name": "Ghibli",
       "versions": ["2.0 Hybrid 330", "3.0 V6 350", "3.0 V6 430 Q4 AWD", "Trofeo 3.8 V8 580", "Diğer"],
       "trims": ["Modena", "GT", "Trofeo", "Diğer"]
