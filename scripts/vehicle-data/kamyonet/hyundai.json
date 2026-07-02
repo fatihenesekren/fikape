@@ -4,7 +4,7 @@
     { "name": "H-100", "versions": ["2.5 CRDi 128", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "H-1", "versions": ["2.5 CRDi 170", "Diğer"], "trims": ["Standart", "Starex", "Diğer"] },
     { "name": "Porter", "versions": ["2.5 CRDi 130", "Electric", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Staria", "versions": ["2.2 CRDi 177", "Diğer"], "trims": ["Standart", "Lounge", "Diğer"] },
+    { "name": "Staria", "versions": ["2.2 CRDi 177", "1.6 T-GDI 225 HEV", "Diğer"], "trims": ["Standart", "Lounge", "Elite", "Diğer"] },
     { "name": "H350", "versions": ["2.5 CRDi 150", "Diğer"], "trims": ["Standart", "Panelvan", "Minibüs", "Diğer"] },
     {
       "name": "Diğer",

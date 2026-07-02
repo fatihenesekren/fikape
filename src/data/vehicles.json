@@ -26042,11 +26042,13 @@
           "name": "Staria",
           "versions": [
             "2.2 CRDi 177",
+            "1.6 T-GDI 225 HEV",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Lounge",
+            "Elite",
             "Diğer"
           ]
         },
