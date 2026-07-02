@@ -37,13 +37,13 @@
 | suzuki | ✅ Tamamlandı | En büyük eksiklik: **Jimny tamamen eksikti** — Türkiye'de çok popüler off-roader, 2 nesille eklendi (1998-2018 ve 2018-). Samurai (Jimny'nin atası) eklendi. Vitara tek girişten gerçek nesillere bölündü: Vitara (1988-1998) → Grand Vitara (1998-2005, 2005-2015) → Vitara (2015-). Swift tek girişten 4 nesle bölündü (1989-2003/2004-2010/2010-2017/2017-). Tamamen eksik nameplate'ler eklendi: SX4 (2006-2013, S-Cross'un atası), eski Baleno (1995-2002, sedan/wagon), Splash, Liana, Wagon R+. Alto/Ignis/SX4 S-Cross/Across/Swace zaten sağlıklıydı. |
 | seat | ✅ Tamamlandı | Aynı VW-grup deseni (bkz. Skoda/Audi) — Ibiza ve Leon tek girişten gerçek nesillere bölündü (Ibiza 5 nesle, Leon 4 nesle). Tamamen eksik nameplate'ler eklendi: Cordoba (1993-2009, Ibiza sedan versiyonu), Toledo (3 nesil, 1991-2009, D-segment), Altea (2004-2015, kompakt MPV), Alhambra (2 nesil, 1996-2020, büyük MPV). Arona/Ateca/Tarraco zaten sağlıklıydı. |
 | jaecoo | ✅ Tamamlandı | Çok yeni marka (Chery grubu), nesil geçmişi yok — web araması ile Türkiye pazar durumu doğrulandı (Temmuz 2026 itibarıyla). **Jaecoo 5 EV** (Nisan-Haziran 2026'da Türkiye'ye girdi) tamamen eksikti, eklendi. Jaecoo 7 ve 8 zaten dosyadaydı; Jaecoo 8'in Türkiye lansmanı henüz gerçekleşmedi (2026 sonu/2027 bekleniyor) ama dosyada olması zararsız, dokunulmadı. |
-| omoda | ⬜ Bekliyor | Chery grubu, yeni ama Türkiye'de hızla yaygınlaştı (sıradaki) |
+| omoda | ✅ Tamamlandı | WebSearch ile doğrulandı (Temmuz 2026) — Türkiye pazarında sadece Omoda 5 ve Omoda 7 satışta, Omoda 9 (Avrupa'da satışta) ve Omoda 3 henüz Türkiye'ye gelmedi. Dosya zaten eksiksizdi, değişiklik gerekmedi. |
 
 ### Tier 2 — orta yaygınlık / premium ama tanıdık
 
 | Marka | Durum | Not |
 |---|---|---|
-| volvo | ⬜ Bekliyor | |
+| volvo | ⬜ Bekliyor | (sıradaki, Tier 1 tamamlandı 🎉) |
 | mini | ⬜ Bekliyor | |
 | jeep | ⬜ Bekliyor | |
 | subaru | ⬜ Bekliyor | |
