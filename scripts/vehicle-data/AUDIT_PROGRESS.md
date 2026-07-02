@@ -4,65 +4,79 @@
 
 **Yöntem:** Her marka için her model, web aramasıyla gerçek nesil/versiyon/trim listesiyle karşılaştırılır. Eksik nesil eklenir, versiyon/trim listeleri güncellenir. Kaydedilen her marka commit edilir.
 
-**Devam etme kuralı:** Bu dosyadaki "Bekliyor" (⬜) durumundaki ilk markadan devam et. Kategori sırası: otomobil → motosiklet → kamyonet → e-scooter → e-bisiklet → karavan.
+**Devam etme kuralı:** Bu dosyadaki "Bekliyor" (⬜) durumundaki ilk markadan devam et — öncelik sırası Tier 1 → Tier 2 → Tier 3. Kategori sırası: otomobil → motosiklet → kamyonet → e-scooter → e-bisiklet → karavan.
+
+**Belirsizlik kuralı:** Nesil/motor bilgisi net kaynaktan doğrulanabiliyorsa yazılır. Trim (donanım paketi) ismi net değilse uydurulmaz — generic ama doğru bir isim kullanılır (örn. "Standart", "4WD"), düşük güven notu düşülür. Nesil hiç bulunamıyorsa eklenmez.
 
 ---
 
-## Otomobil (51 marka)
+## Otomobil (51 marka) — öncelik sırasına göre
+
+### Tier 1 — Türkiye'de en yaygın/çok yorumlanan (önce bunlar)
 
 | Marka | Durum | Not |
 |---|---|---|
-| honda | ✅ Tamamlandı | Jazz: 4 nesil eklendi (2002-2008 ES/LS/Elite/Sport, 2008-2015 Fun/Joy, 2015-2020 Dream PE/Premium/Elegance, 2020- Elegance/Advance/Crosstar). HR-V: 1999-2006 ilk nesil eklendi (trim isimleri belirsiz, generic "Standart/4WD" kullanıldı — düşük güven). CR-V: tek nesil yerine 5 nesile bölündü (2002-2006, 2007-2012, 2012-2018, 2018-2023, 2023-). Civic/ZR-V/Accord/e zaten sağlıklıydı, dokunulmadı. |
-| abarth | ⬜ Bekliyor | |
-| alfa-romeo | ⬜ Bekliyor | |
-| alpine | ⬜ Bekliyor | |
-| aston-martin | ⬜ Bekliyor | |
-| audi | ⬜ Bekliyor | |
-| bmw | ⬜ Bekliyor | |
-| byd | ⬜ Bekliyor | |
-| changan | ⬜ Bekliyor | |
-| citroen | ⬜ Bekliyor | |
-| cupra | ⬜ Bekliyor | |
-| dacia | ⬜ Bekliyor | |
-| dodge | ⬜ Bekliyor | |
-| ds | ⬜ Bekliyor | |
-| fiat | ⬜ Bekliyor | |
-| ford | ⬜ Bekliyor | |
-| genesis | ⬜ Bekliyor | |
-| haval | ⬜ Bekliyor | |
-| hyundai | ⬜ Bekliyor | |
-| infiniti | ⬜ Bekliyor | |
-| jaecoo | ⬜ Bekliyor | |
-| jaguar | ⬜ Bekliyor | |
-| jeep | ⬜ Bekliyor | |
-| kia | ⬜ Bekliyor | |
-| land-rover | ⬜ Bekliyor | |
-| leapmotor | ⬜ Bekliyor | |
-| lexus | ⬜ Bekliyor | |
-| maserati | ⬜ Bekliyor | |
-| mazda | ⬜ Bekliyor | |
-| mercedes-benz | ⬜ Bekliyor | |
-| mg | ⬜ Bekliyor | |
-| mini | ⬜ Bekliyor | |
-| mitsubishi | ⬜ Bekliyor | |
-| nissan | ⬜ Bekliyor | |
-| omoda | ⬜ Bekliyor | |
-| opel | ⬜ Bekliyor | |
-| ora | ⬜ Bekliyor | |
-| peugeot | ⬜ Bekliyor | |
-| polestar | ⬜ Bekliyor | |
-| porsche | ⬜ Bekliyor | |
+| honda | ✅ Tamamlandı | Jazz: 4 nesil eklendi (2002-2008 ES/LS/Elite/Sport, 2008-2015 Fun/Joy, 2015-2020 Dream PE/Premium/Elegance, 2020- Elegance/Advance/Crosstar). HR-V: 1999-2006 ilk nesil eklendi (trim isimleri belirsiz, generic "Standart/4WD" — düşük güven). CR-V: tek nesil yerine 5 nesile bölündü. Civic/ZR-V/Accord/e zaten sağlıklıydı. |
 | renault | ⬜ Bekliyor | |
-| seat | ⬜ Bekliyor | |
+| fiat | ⬜ Bekliyor | |
+| volkswagen | ⬜ Bekliyor | |
+| ford | ⬜ Bekliyor | |
+| toyota | ⬜ Bekliyor | |
+| hyundai | ⬜ Bekliyor | |
+| opel | ⬜ Bekliyor | |
+| peugeot | ⬜ Bekliyor | |
+| citroen | ⬜ Bekliyor | |
+| dacia | ⬜ Bekliyor | |
+| kia | ⬜ Bekliyor | |
 | skoda | ⬜ Bekliyor | |
-| smart | ⬜ Bekliyor | |
-| subaru | ⬜ Bekliyor | |
+| mercedes-benz | ⬜ Bekliyor | |
+| bmw | ⬜ Bekliyor | |
+| audi | ⬜ Bekliyor | |
+| nissan | ⬜ Bekliyor | |
+| mazda | ⬜ Bekliyor | |
 | suzuki | ⬜ Bekliyor | |
+| seat | ⬜ Bekliyor | |
+| jaecoo | ⬜ Bekliyor | Chery grubu, yeni ama Türkiye'de hızla yaygınlaştı |
+| omoda | ⬜ Bekliyor | Chery grubu, yeni ama Türkiye'de hızla yaygınlaştı |
+
+### Tier 2 — orta yaygınlık / premium ama tanıdık
+
+| Marka | Durum | Not |
+|---|---|---|
+| volvo | ⬜ Bekliyor | |
+| mini | ⬜ Bekliyor | |
+| jeep | ⬜ Bekliyor | |
+| subaru | ⬜ Bekliyor | |
+| mitsubishi | ⬜ Bekliyor | |
+| land-rover | ⬜ Bekliyor | |
+| jaguar | ⬜ Bekliyor | |
+| lexus | ⬜ Bekliyor | |
+| alfa-romeo | ⬜ Bekliyor | |
+| ds | ⬜ Bekliyor | |
+| cupra | ⬜ Bekliyor | |
+| smart | ⬜ Bekliyor | |
 | tesla | ⬜ Bekliyor | |
 | togg | ⬜ Bekliyor | |
-| toyota | ⬜ Bekliyor | |
-| volkswagen | ⬜ Bekliyor | |
-| volvo | ⬜ Bekliyor | |
+| byd | ⬜ Bekliyor | |
+| mg | ⬜ Bekliyor | |
+| haval | ⬜ Bekliyor | |
+| changan | ⬜ Bekliyor | |
+
+### Tier 3 — niş / lüks / az sayıda araç (son sıra)
+
+| Marka | Durum | Not |
+|---|---|---|
+| porsche | ⬜ Bekliyor | |
+| maserati | ⬜ Bekliyor | |
+| aston-martin | ⬜ Bekliyor | |
+| abarth | ⬜ Bekliyor | |
+| alpine | ⬜ Bekliyor | |
+| dodge | ⬜ Bekliyor | |
+| genesis | ⬜ Bekliyor | |
+| infiniti | ⬜ Bekliyor | |
+| polestar | ⬜ Bekliyor | |
+| ora | ⬜ Bekliyor | |
+| leapmotor | ⬜ Bekliyor | |
 | diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder, denetime gerek yok |
 
 ## Motosiklet (61 marka)
