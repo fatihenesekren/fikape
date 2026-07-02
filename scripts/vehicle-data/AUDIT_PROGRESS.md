@@ -166,7 +166,49 @@
 
 ## Kamyonet (30 marka)
 
-_Sırada._
+### Tier 1 — Türkiye'de en yaygın pickup/hafif ticari (önce bunlar)
+
+| Marka | Durum | Not |
+|---|---|---|
+| ford | ✅ Tamamlandı | Resmi ford.com.tr ticari araç listesiyle karşılaştırıldı — Ranger, Transit (Kamyonet/Van/Custom/Connect), Tourneo (Custom/Connect), Courier, E-Transit zaten dosyada mevcuttu. Değişiklik gerekmedi. |
+| toyota | ✅ Tamamlandı | Resmi toyota.com.tr ile karşılaştırıldı — Hilux (3 nesil), Proace, Proace City, Land Cruiser Pickup zaten dosyada mevcuttu. Değişiklik gerekmedi. |
+| volkswagen | ✅ Tamamlandı | Resmi ticariarac.vw.com.tr ile karşılaştırıldı — **ID. Buzz (elektrikli van) tamamen eksikti**, eklendi. Grand California (karavan kategorisinde ayrıca kontrol edilmeli) kapsam dışı bırakıldı. Caddy/Transporter/Caravelle/Multivan/Crafter/Amarok zaten sağlıklıydı. |
+| isuzu | ⬜ Bekliyor | |
+| mitsubishi | ⬜ Bekliyor | |
+| fiat | ⬜ Bekliyor | |
+| renault | ⬜ Bekliyor | |
+| peugeot | ⬜ Bekliyor | |
+| citroen | ⬜ Bekliyor | |
+| mercedes-benz | ⬜ Bekliyor | |
+| hyundai | ⬜ Bekliyor | |
+| karsan | ⬜ Bekliyor | Yerli üretici |
+
+### Tier 2 — orta yaygınlık
+
+| Marka | Durum | Not |
+|---|---|---|
+| nissan | ⬜ Bekliyor | |
+| opel | ⬜ Bekliyor | |
+| kia | ⬜ Bekliyor | |
+| dacia | ⬜ Bekliyor | |
+| iveco | ⬜ Bekliyor | |
+| ram | ⬜ Bekliyor | |
+| gwm | ⬜ Bekliyor | |
+| bmc | ⬜ Bekliyor | Yerli üretici (kamyon ağırlıklı) |
+
+### Tier 3 — niş / az sayıda araç (son sıra)
+
+| Marka | Durum | Not |
+|---|---|---|
+| byd | ⬜ Bekliyor | |
+| dfsk | ⬜ Bekliyor | |
+| foton | ⬜ Bekliyor | |
+| fuso | ⬜ Bekliyor | |
+| hino | ⬜ Bekliyor | |
+| ineos | ⬜ Bekliyor | |
+| maxus | ⬜ Bekliyor | |
+| tata | ⬜ Bekliyor | |
+| diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder |
 
 ## E-Scooter (21 marka)
 
