@@ -1,8 +1,27 @@
 {
   "make": "Mondial (TR)",
   "models": [
-    { "name": "125 Retro / Classic", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "250 Retro / Classic", "versions": ["250cc 21 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "125 MG Classic", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Deluxe", "Sport", "Diğer"] },
+    { "name": "125 NT", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "125 ZN / ZNU Nostalji", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "i", "Diğer"] },
+    { "name": "125 Elegante", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "250 Nevada", "versions": ["248.9cc 18.4 CV", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
+    { "name": "250 Ressivo", "versions": ["244.3cc 25.2 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Exon 50", "versions": ["50cc 3.5 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Exon 125", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Wing 50i", "versions": ["50cc 3.5 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Turismo 50i", "versions": ["50cc 3.5 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "50 ZNU i", "versions": ["50cc 3.5 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "50 UAG", "versions": ["50cc 3.5 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Rio 50", "versions": ["50cc 3.5 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Fury 110i", "versions": ["110cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Lavinia Pro", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Lungo 125", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Fuzion 125", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Velomax", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "125 Drift L", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "SFC Mini 50", "versions": ["50cc 3.5 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Cross X-Treme Maxx 200i", "versions": ["200cc 17 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
