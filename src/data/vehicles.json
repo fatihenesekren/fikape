@@ -17012,6 +17012,30 @@
           ]
         },
         {
+          "name": "DB5 / DB6 / DB7 / DB9 (Ducati motorlu)",
+          "versions": [
+            "1100cc Ducati DB5",
+            "1198cc Ducati DB7",
+            "1198cc Ducati DB9",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tesi (Ducati motorlu, klasik)",
+          "versions": [
+            "1198cc Ducati",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -17393,6 +17417,17 @@
           "versions": [
             "1125cc 146 CV 1125R",
             "1125cc 146 CV 1125CR",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ulysses XB12X (2006-2010)",
+          "versions": [
+            "1203cc 101 CV",
             "Diğer"
           ],
           "trims": [
@@ -21790,6 +21825,30 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Superlight SS",
+          "versions": [
+            "650cc 105 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dominator",
+          "versions": [
+            "650cc 84 CV",
+            "Street",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Street",
             "Diğer"
           ]
         },

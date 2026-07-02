@@ -3,6 +3,8 @@
   "models": [
     { "name": "KB4 (2021-)", "versions": ["1043cc 140 CV Kawasaki", "KB4RC 140 CV", "Diğer"], "trims": ["Standart", "RC", "Diğer"] },
     { "name": "Tesi H2 (2020-)", "versions": ["998cc SC 210 CV Kawasaki H2", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "DB5 / DB6 / DB7 / DB9 (Ducati motorlu)", "versions": ["1100cc Ducati DB5", "1198cc Ducati DB7", "1198cc Ducati DB9", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Tesi (Ducati motorlu, klasik)", "versions": ["1198cc Ducati", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

@@ -141,9 +141,9 @@
 | fantic | ✅ Tamamlandı | Korlas (resmi distribütör) sitesiyle doğrulandı — XEF 250/450 (4T Enduro) eksikti, eklendi. |
 | jawa | ✅ Tamamlandı | Resmi jawa.com.tr (Blue Motor distribütörlüğü) ile karşılaştırıldı, dosya zaten (42/Perak/350 OHC) eksiksizdi, değişiklik gerekmedi. |
 | ural | ✅ Tamamlandı | Resmi uralmotosiklet.com (Restar distribütörlüğü) ile karşılaştırıldı — Türkiye'de satılan 4 model isminden (T/Sportsman/Ranger/Retro) sadece 2'si (Gear Up/CT, farklı isimlendirme) vardı, Ranger/Sportsman/Retro eklendi. |
-| norton | ⬜ Bekliyor | |
-| buell | ⬜ Bekliyor | |
-| bimota | ⬜ Bekliyor | |
+| norton | ✅ Tamamlandı | Çok niş (Türkiye'de resmi distribütör yok, sadece ikinci el birkaç adet) — Superlight SS, Dominator eklendi. |
+| buell | ✅ Tamamlandı | Ulysses XB12X (adventure, tanınan model) eksikti, eklendi. |
+| bimota | ✅ Tamamlandı | Çok niş (Türkiye'de resmi satış yok) — dosyada sadece Kawasaki motorlu KB4/Tesi H2 vardı, markanın tarihsel ana hattı olan **Ducati motorlu DB serisi (DB5-DB9) ve klasik Tesi tamamen eksikti**, eklendi. |
 | moto-morini | ⬜ Bekliyor | |
 | motron | ⬜ Bekliyor | |
 | orcal | ⬜ Bekliyor | |

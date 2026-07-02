@@ -4,6 +4,8 @@
     { "name": "Commando 961 (2012-)", "versions": ["961cc 79 CV Sport", "961cc 79 CV Cafe Racer", "961cc 79 CV SE", "Diğer"], "trims": ["Sport", "Cafe Racer", "SE", "Diğer"] },
     { "name": "V4CR (2023-)", "versions": ["1200cc 185 CV V4", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "V4SV (2023-)", "versions": ["1200cc 200 CV V4", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Superlight SS", "versions": ["650cc 105 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Dominator", "versions": ["650cc 84 CV", "Street", "Diğer"], "trims": ["Standart", "Street", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
