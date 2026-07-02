@@ -894,7 +894,46 @@
           ]
         },
         {
-          "name": "3 Serisi (1998-2005)",
+          "name": "3 Serisi E30 (1982-1994)",
+          "versions": [
+            "316i 90",
+            "318i 113",
+            "320i 129",
+            "325i 171",
+            "324d 86",
+            "324td 115",
+            "M3 (E30) 200",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "M3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "3 Serisi E36 (1990-2000)",
+          "versions": [
+            "316i 102",
+            "318i 113",
+            "320i 150",
+            "323i 170",
+            "325i 192",
+            "328i 193",
+            "318tds 90",
+            "325tds 143",
+            "M3 (E36) 286",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "M3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "3 Serisi E46 (1998-2005)",
           "versions": [
             "316i",
             "318i",
@@ -919,7 +958,7 @@
           ]
         },
         {
-          "name": "3 Serisi (2005-2012)",
+          "name": "3 Serisi E90 (2005-2012)",
           "versions": [
             "316i",
             "318i",
@@ -945,7 +984,7 @@
           ]
         },
         {
-          "name": "3 Serisi (2012-2018)",
+          "name": "3 Serisi F30 (2012-2018)",
           "versions": [
             "316i",
             "318i",
@@ -974,7 +1013,7 @@
           ]
         },
         {
-          "name": "3 Serisi (2018-)",
+          "name": "3 Serisi G20 (2018-)",
           "versions": [
             "318i",
             "320i",
@@ -1020,7 +1059,50 @@
           ]
         },
         {
-          "name": "5 Serisi (2003-2010)",
+          "name": "5 Serisi E34 (1987-1996)",
+          "versions": [
+            "518i 115",
+            "520i 129",
+            "525i 171",
+            "530i 188",
+            "535i 211",
+            "524td 115",
+            "525tds 143",
+            "M5 (E34) 315",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "M5",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "5 Serisi E39 (1995-2003)",
+          "versions": [
+            "520i 150",
+            "523i 170",
+            "525i 192",
+            "528i 193",
+            "530i 231",
+            "535i 235",
+            "520d 105",
+            "525d 163",
+            "530d 184",
+            "M5 (E39) 400",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "Sport",
+            "M5",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "5 Serisi E60 (2003-2010)",
           "versions": [
             "520i",
             "523i",
@@ -1044,7 +1126,7 @@
           ]
         },
         {
-          "name": "5 Serisi (2010-2017)",
+          "name": "5 Serisi F10 (2010-2017)",
           "versions": [
             "520i",
             "523i",
@@ -1070,7 +1152,7 @@
           ]
         },
         {
-          "name": "5 Serisi (2017-)",
+          "name": "5 Serisi G30 (2017-)",
           "versions": [
             "520i",
             "530i",
@@ -1091,7 +1173,131 @@
           ]
         },
         {
-          "name": "7 Serisi",
+          "name": "6 Serisi E24 (1977-1989)",
+          "versions": [
+            "628CSi 184",
+            "630CS 185",
+            "633CSi 197",
+            "635CSi 218",
+            "M635CSi 286",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "6 Serisi E63/E64 (2004-2010)",
+          "versions": [
+            "630i 258",
+            "645Ci 333",
+            "650i 367",
+            "630d 218",
+            "M6 507",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sport",
+            "M6",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "6 Serisi F12/F13 (2012-2018)",
+          "versions": [
+            "640i 320",
+            "650i 450",
+            "640d 313",
+            "640d xDrive 313",
+            "M6 560",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport Line",
+            "M Sport",
+            "M6",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "7 Serisi E38 (1994-2001)",
+          "versions": [
+            "728i 193",
+            "730i 218",
+            "735i 235",
+            "740i 286",
+            "750i 326",
+            "725tds 143",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "L (Uzun Şasi)",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "7 Serisi E65/E66 (2001-2008)",
+          "versions": [
+            "730i 231",
+            "735i 272",
+            "740i 306",
+            "745i 333",
+            "750i 367",
+            "760i 445",
+            "730d 218",
+            "740d 258",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "L (Uzun Şasi)",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "7 Serisi F01/F02 (2009-2015)",
+          "versions": [
+            "730i 258",
+            "740i 326",
+            "750i 407",
+            "730d 245",
+            "740d 313",
+            "750d 381",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "L (Uzun Şasi)",
+            "M Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "7 Serisi G11/G12 (2015-2022)",
+          "versions": [
+            "730i 258",
+            "740i 326",
+            "750i 462",
+            "730d 265",
+            "740d 320",
+            "750d 400",
+            "745e PHEV 394",
+            "M760Li 585",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "L (Uzun Şasi)",
+            "M Sport",
+            "Individual",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "7 Serisi G70 (2022-)",
           "versions": [
             "730i",
             "740i",
@@ -1108,6 +1314,22 @@
             "M Sport",
             "Individual",
             "L",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X1 E84 (2009-2015)",
+          "versions": [
+            "sDrive18i 150",
+            "xDrive20i 184",
+            "sDrive18d 143",
+            "xDrive20d 184",
+            "sDrive20d 163",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "xLine",
             "Diğer"
           ]
         },
@@ -1149,7 +1371,39 @@
           ]
         },
         {
-          "name": "X3",
+          "name": "X3 E83 (2004-2010)",
+          "versions": [
+            "2.0i 150",
+            "2.5i 192",
+            "3.0i 231",
+            "2.0d 150",
+            "3.0d 218",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X3 F25 (2011-2017)",
+          "versions": [
+            "xDrive20i 184",
+            "xDrive28i 245",
+            "xDrive35i 306",
+            "xDrive20d 184",
+            "xDrive30d 258",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "xLine",
+            "M Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X3 G01 (2017-)",
           "versions": [
             "xDrive20i",
             "xDrive30i",
@@ -1192,7 +1446,60 @@
           ]
         },
         {
-          "name": "X5",
+          "name": "X5 E53 (2000-2006)",
+          "versions": [
+            "3.0i 231",
+            "4.4i 286",
+            "4.6is 347",
+            "4.8is 360",
+            "3.0d 184",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X5 E70 (2007-2013)",
+          "versions": [
+            "xDrive30i 272",
+            "xDrive35i 306",
+            "xDrive48i 355",
+            "xDrive30d 235",
+            "xDrive35d 286",
+            "X5 M 555",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "M Sport",
+            "X5 M",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X5 F15 (2014-2018)",
+          "versions": [
+            "xDrive35i 306",
+            "xDrive40e PHEV 313",
+            "xDrive25d 218",
+            "xDrive30d 258",
+            "xDrive40d 313",
+            "X5 M 575",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport Line",
+            "M Sport",
+            "xLine",
+            "X5 M",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X5 G05 (2018-)",
           "versions": [
             "xDrive40i",
             "xDrive30d",
@@ -1213,7 +1520,41 @@
           ]
         },
         {
-          "name": "X6",
+          "name": "X6 E71 (2008-2014)",
+          "versions": [
+            "xDrive35i 306",
+            "xDrive50i 407",
+            "xDrive30d 235",
+            "xDrive40d 306",
+            "X6 M 555",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "M Sport",
+            "X6 M",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X6 F16 (2015-2019)",
+          "versions": [
+            "xDrive35i 306",
+            "xDrive50i 450",
+            "xDrive30d 258",
+            "xDrive40d 313",
+            "X6 M 575",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport Line",
+            "M Sport",
+            "X6 M",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X6 G06 (2019-)",
           "versions": [
             "xDrive30i",
             "xDrive40i",
@@ -1250,6 +1591,23 @@
           ]
         },
         {
+          "name": "Z3 (1996-2002)",
+          "versions": [
+            "1.8 115",
+            "1.9 118",
+            "2.0i 150",
+            "2.8i 193",
+            "3.0i 231",
+            "M Roadster 321",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "M",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Z4",
           "versions": [
             "sDrive20i 197",
@@ -1261,6 +1619,36 @@
             "Sport Line",
             "M Sport",
             "M40i",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "8 Serisi E31 (1991-1997)",
+          "versions": [
+            "840i 286",
+            "850i 300",
+            "850CSi 380",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "8 Serisi G14/G15/G16 (2018-)",
+          "versions": [
+            "840i 340",
+            "M850i xDrive 530",
+            "840d xDrive 320",
+            "M8 Competition 625",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport Line",
+            "M Sport",
+            "M850i",
+            "M8",
             "Diğer"
           ]
         },
