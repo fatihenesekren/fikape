@@ -9453,7 +9453,42 @@
           ]
         },
         {
-          "name": "Superb",
+          "name": "Superb (2001-2008)",
+          "versions": [
+            "1.8T 150",
+            "2.0 115",
+            "2.5 V6 TDI 163",
+            "1.9 TDI 105",
+            "1.9 TDI 130",
+            "Diğer"
+          ],
+          "trims": [
+            "Classic",
+            "Comfort",
+            "Elegance",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Superb (2008-2015)",
+          "versions": [
+            "1.4 TSI 125",
+            "1.8 TSI 152",
+            "2.0 TSI 200",
+            "1.6 TDI 105",
+            "2.0 TDI 140",
+            "2.0 TDI 170",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambition",
+            "Elegance",
+            "L&K",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Superb (2015-2023)",
           "versions": [
             "1.5 TSI 150 ACT",
             "2.0 TSI 272 4x4",
@@ -9468,6 +9503,89 @@
             "L&K",
             "Scout",
             "Sportline",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Superb (2023-)",
+          "versions": [
+            "1.5 TSI 150",
+            "2.0 TSI 265 4x4",
+            "2.0 TDI 150",
+            "2.0 TDI 193 4x4",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambition",
+            "Style",
+            "L&K",
+            "Sportline",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Favorit / Felicia (1988-2001)",
+          "versions": [
+            "1.3 MPI 54",
+            "1.3 MPI 68",
+            "1.9 D 64",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "LX",
+            "GLX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Roomster",
+          "versions": [
+            "1.2 HTP 70",
+            "1.4 16V 86",
+            "1.6 16V 105",
+            "1.4 TDI 80",
+            "1.9 TDI 105",
+            "Diğer"
+          ],
+          "trims": [
+            "Active",
+            "Ambiente",
+            "Style",
+            "Scout",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Yeti",
+          "versions": [
+            "1.2 TSI 105",
+            "1.4 TSI 122",
+            "1.8 TSI 160 4x4",
+            "1.6 TDI 105",
+            "2.0 TDI 110",
+            "2.0 TDI 140 4x4",
+            "Diğer"
+          ],
+          "trims": [
+            "Active",
+            "Ambition",
+            "Elegance",
+            "Outdoor",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Citigo",
+          "versions": [
+            "1.0 MPI 60",
+            "1.0 MPI 75",
+            "Diğer"
+          ],
+          "trims": [
+            "Active",
+            "Ambition",
+            "Style",
             "Diğer"
           ]
         },
