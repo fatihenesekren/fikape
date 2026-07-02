@@ -12,12 +12,27 @@
       "trims": ["Pro", "Pro+", "Premium", "Brabus", "Diğer"]
     },
     {
-      "name": "Fortwo",
+      "name": "Fortwo (1998-2007)",
+      "versions": ["0.6 45", "0.7 Turbo 61", "0.8 CDI 41", "Diğer"],
+      "trims": ["Pure", "Pulse", "Passion", "Diğer"]
+    },
+    {
+      "name": "Fortwo (2007-2014)",
+      "versions": ["1.0 61", "1.0 Turbo 84", "0.8 CDI 54", "Diğer"],
+      "trims": ["Pure", "Pulse", "Passion", "Diğer"]
+    },
+    {
+      "name": "Fortwo (2014-2024)",
       "versions": ["1.0 71", "0.9 Turbo 90", "0.9 Brabus Turbo 109", "EV 17.6kWh 82", "Diğer"],
       "trims": ["Pure", "Passion", "Prime", "Brabus", "Cabrio", "Diğer"]
     },
     {
-      "name": "Forfour",
+      "name": "Forfour (2004-2006)",
+      "versions": ["1.1 75", "1.3 95", "1.5 CDI 68", "Diğer"],
+      "trims": ["Pure", "Pulse", "Passion", "Diğer"]
+    },
+    {
+      "name": "Forfour (2014-2022)",
       "versions": ["1.0 71", "0.9 Turbo 90", "0.9 Brabus Turbo 109", "EV 17.6kWh 82", "Diğer"],
       "trims": ["Pure", "Passion", "Prime", "Brabus", "Diğer"]
     },

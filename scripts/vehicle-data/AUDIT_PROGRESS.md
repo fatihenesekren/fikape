@@ -53,10 +53,10 @@
 | lexus | ✅ Tamamlandı | IS tek girişten 4 nesle bölündü (XE10-XE30+güncel). RX 4 nesle, NX 2 nesle bölündü. LS eski nesil (2006-2017) eklendi. Tamamen eksik nameplate'ler eklendi: GS (bayrak sedan, 1997-2020, üretimi durdu) ve CT (200h hatchback, 2010-2020). ES/LC/UX/GX/LX zaten sağlıklıydı. |
 | alfa-romeo | ✅ Tamamlandı | Dosya zaten görece iyi durumdaydı (147/156/159/MiTo/Giulietta nesillere ayrılmıştı). Klasik nameplate'ler tamamen eksikti: 33, 75, 164, 145/146, 166, GTV/Spider (1995-2005), GT (2003-2010) eklendi. |
 | ds | ✅ Tamamlandı | DS 3 ve DS 4 tek girişten 2'şer nesle bölündü (eski Citroën-kökenli 2010-2019/2011-2018 nesilleri + yeni bağımsız DS nesilleri). **DS 5 tamamen eksikti** (2011-2018, Citroën DS5 kökenli), eklendi. DS 7/DS 9 zaten sağlıklıydı. |
-| cupra | ⬜ Bekliyor | (sıradaki) |
-| smart | ⬜ Bekliyor | |
-| tesla | ⬜ Bekliyor | |
-| togg | ⬜ Bekliyor | |
+| cupra | ✅ Tamamlandı | Yeni marka (2018-), nesil geçmişi az. İlk Cupra modeli olan **Ateca (2018-2021, Seat Ateca tabanlı)** tamamen eksikti, eklendi. Born/Formentor/Leon/Tavascan/Terramar zaten sağlıklıydı. |
+| smart | ✅ Tamamlandı | Fortwo (Türkiye'de yaygın şehir arabası) ve Forfour tek girişten gerçek nesillere bölündü (Fortwo 3 nesle: W450/W451/W453, Forfour 2 nesle: W454/W453). #1/#3 zaten sağlıklıydı. |
+| tesla | ✅ Tamamlandı | Dosya zaten eksiksizdi (yeni marka, gerçek nesil geçmişi yok, facelift'ler Highland/Juniper zaten versiyonlarda mevcut). Değişiklik gerekmedi. |
+| togg | ⬜ Bekliyor | (sıradaki) |
 | byd | ⬜ Bekliyor | |
 | mg | ⬜ Bekliyor | |
 | haval | ⬜ Bekliyor | |

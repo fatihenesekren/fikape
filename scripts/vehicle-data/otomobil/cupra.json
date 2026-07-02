@@ -2,6 +2,11 @@
   "make": "Cupra",
   "models": [
     {
+      "name": "Ateca (2018-2021)",
+      "versions": ["2.0 TSI 300 4Drive", "2.0 TDI 190 4Drive", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
       "name": "Born",
       "versions": ["58kWh 204", "77kWh 231", "77kWh 286 AWD", "Diğer"],
       "trims": ["Standart", "V2H", "Diğer"]
