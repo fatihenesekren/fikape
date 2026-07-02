@@ -187,14 +187,14 @@
 
 | Marka | Durum | Not |
 |---|---|---|
-| nissan | ⬜ Bekliyor | |
-| opel | ⬜ Bekliyor | |
-| kia | ⬜ Bekliyor | |
-| dacia | ⬜ Bekliyor | |
-| iveco | ⬜ Bekliyor | |
-| ram | ⬜ Bekliyor | |
-| gwm | ⬜ Bekliyor | |
-| bmc | ⬜ Bekliyor | Yerli üretici (kamyon ağırlıklı) |
+| nissan | ✅ Tamamlandı | NV200/NV300/NV400/Navara zaten sağlıklıydı (Renault-Nissan alliance eşdeğerleriyle uyumlu). Interstar/Kubistar Türkiye'de resmi satıldığı doğrulanamadı, eklenmedi. Değişiklik gerekmedi. |
+| opel | ✅ Tamamlandı | **Combo D (2011-2018, Fiat Doblo tabanlı ara nesil) eksikti**, eklendi. Vivaro/Movano zaten sağlıklıydı. |
+| kia | ✅ Tamamlandı | Bongo/K2500/Carens zaten sağlıklıydı. PV5 Cargo Türkiye lansmanı henüz netleşmediği için eklenmedi (WebSearch, Temmuz 2026). Değişiklik gerekmedi. |
+| dacia | ✅ Tamamlandı | Dokker/Express zaten sağlıklıydı. Değişiklik gerekmedi. |
+| iveco | ✅ Tamamlandı | Daily/Eurocargo zaten sağlıklıydı. Değişiklik gerekmedi. |
+| ram | ✅ Tamamlandı | 1500 (2 nesil) + 1500 Classic zaten sağlıklıydı (paralel ithal niş marka). Değişiklik gerekmedi. |
+| gwm | ✅ Tamamlandı | Cannon/Cannon Alpha EV zaten sağlıklıydı, Türkiye'de ek model doğrulanamadı. Değişiklik gerekmedi. |
+| bmc | ✅ Tamamlandı | Yerli üretici — resmi bmc.com.tr ile karşılaştırıldı. **417 (hafif kamyon+EV), Tuğra (TGR, çekici/yol/inşaat serisi), Pro L (çekici) tamamen eksikti**, eklendi. Eski Professional/Fenix isimleri ikinci elde olabileceğinden dosyada bırakıldı. |
 
 ### Tier 3 — niş / az sayıda araç (son sıra)
 

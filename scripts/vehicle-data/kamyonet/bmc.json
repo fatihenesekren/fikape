@@ -12,6 +12,21 @@
       "trims": ["Standart", "Diğer"]
     },
     {
+      "name": "417 (2019-)",
+      "versions": ["3.8 D 170", "EV Elektrik", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Tuğra (TGR)",
+      "versions": ["1832 4x2", "1846 4x2", "2532 6x2", "3232 8x2", "3540 6x4", "4340 8x4", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Pro L",
+      "versions": ["1852 4x2", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
       "name": "Diğer",
       "versions": ["Diğer"],
       "trims": ["Diğer"]
