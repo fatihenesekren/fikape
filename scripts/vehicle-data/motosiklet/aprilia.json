@@ -13,6 +13,12 @@
     { "name": "Dorsoduro", "versions": ["900 95 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "SX 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "RX 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "RS 457", "versions": ["457cc 47 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Tuono 457", "versions": ["457cc 47 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "RSV Mille (1998-2004)", "versions": ["998cc 128 CV", "R 139 CV", "Diğer"], "trims": ["Standart", "R", "Diğer"] },
+    { "name": "Shiver 750 / SL750 (2007-2016)", "versions": ["750cc 95 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Scarabeo 200 / 500", "versions": ["200cc 18 CV", "500cc 40 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Mana 850 GT", "versions": ["850cc 76 CV", "Diğer"], "trims": ["Standart", "GT ABS", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

@@ -16463,6 +16463,76 @@
           ]
         },
         {
+          "name": "RS 457",
+          "versions": [
+            "457cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tuono 457",
+          "versions": [
+            "457cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RSV Mille (1998-2004)",
+          "versions": [
+            "998cc 128 CV",
+            "R 139 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Shiver 750 / SL750 (2007-2016)",
+          "versions": [
+            "750cc 95 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Scarabeo 200 / 500",
+          "versions": [
+            "200cc 18 CV",
+            "500cc 40 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mana 850 GT",
+          "versions": [
+            "850cc 76 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "GT ABS",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -19099,6 +19169,113 @@
           ]
         },
         {
+          "name": "Vitpilen 125",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Svartpilen 250",
+          "versions": [
+            "250cc 30 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Svartpilen 801",
+          "versions": [
+            "693cc 105 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Vitpilen 801",
+          "versions": [
+            "693cc 105 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "701 Supermoto",
+          "versions": [
+            "693cc 75 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TE 250 / TE 300",
+          "versions": [
+            "250cc",
+            "300cc",
+            "300 PRO",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "PRO",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "FE 350 / FE 450 / FE 501",
+          "versions": [
+            "350cc",
+            "450cc",
+            "501cc",
+            "350 PRO",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "PRO",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "FC 250 / FC 450",
+          "versions": [
+            "250cc",
+            "450cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TC 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -21178,6 +21355,59 @@
           "trims": [
             "Standart",
             "Alpine",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dragster 800",
+          "versions": [
+            "800cc 140 CV",
+            "RR 148 CV",
+            "RC 148 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "RR",
+            "RC",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Rush 1000",
+          "versions": [
+            "998cc 208 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F4 (1998-2018)",
+          "versions": [
+            "750cc 126 CV",
+            "1000cc 201 CV",
+            "R 201 CV",
+            "RR 212 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
+            "RR",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Enduro Veloce",
+          "versions": [
+            "798cc 124 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },

@@ -117,9 +117,9 @@
 | royal-enfield | ✅ Tamamlandı | Güncel Türkiye lineup'ı (K-Rides/Kibar distribütörlüğü) eksikti — Super Meteor 650, Shotgun 650, Bear 650, Guerrilla 450, Scram 411, Classic 500, Bullet 500 (Trials), eski Continental GT 535 eklendi. |
 | benelli | ✅ Tamamlandı | Güncel lineup eksikleri eklendi: TRK 251, Leoncino 250, Imperiale 400, 249S, BN 251. Klasik/discontinued TNT 899/1130 ve Tornado Tre 1130 (marka bayrak gemisi süperbike) tamamen eksikti, eklendi. |
 | cf-moto | ✅ Tamamlandı | Güncel lineup'ta 250NK/250SR/450NK/450MT/450SR/450CL-C/675SR tamamen eksikti (dosyada sadece 150-800cc arası eski nesil vardı), eklendi. |
-| aprilia | ⬜ Bekliyor | |
-| mv-agusta | ⬜ Bekliyor | |
-| husqvarna | ⬜ Bekliyor | |
+| aprilia | ✅ Tamamlandı | RS 457/Tuono 457 (yeni A2 segment) eksikti. Klasikler eklendi: RSV Mille (1998-2004, marka bayrak gemisi), Shiver 750/SL750, Scarabeo 200/500 scooter, Mana 850 GT (otomatik). |
+| mv-agusta | ✅ Tamamlandı | Dragster 800 (RR/RC), Rush 1000, Enduro Veloce güncel modelleri eksikti. **F4 (1998-2018, marka bayrak gemisi süperbike) tamamen eksikti**, eklendi. |
+| husqvarna | ✅ Tamamlandı | Dosyada sadece cadde (street) modelleri vardı, **tüm enduro/motokros off-road lineup'ı (TE/FE/FC/TC serileri) tamamen eksikti** — Türkiye'de Husqvarna'nın güçlü olduğu segment. Vitpilen 125/Svartpilen 250/Svartpilen-Vitpilen 801/701 Supermoto de eklendi. |
 | peugeot-motorcycles | ⬜ Bekliyor | |
 | gas-gas | ⬜ Bekliyor | |
 | fb-mondial | ⬜ Bekliyor | |

@@ -6,6 +6,10 @@
     { "name": "Brutale 1000", "versions": ["998cc 208 CV", "RR 208 CV", "Serie Oro 212 CV", "Diğer"], "trims": ["Standart", "RR", "Serie Oro", "Diğer"] },
     { "name": "Turismo Veloce", "versions": ["800cc 110 CV", "Lusso SCS", "Diğer"], "trims": ["Standart", "Lusso", "Diğer"] },
     { "name": "Superveloce", "versions": ["800cc 148 CV", "Alpine", "Diğer"], "trims": ["Standart", "Alpine", "Diğer"] },
+    { "name": "Dragster 800", "versions": ["800cc 140 CV", "RR 148 CV", "RC 148 CV", "Diğer"], "trims": ["Standart", "RR", "RC", "Diğer"] },
+    { "name": "Rush 1000", "versions": ["998cc 208 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "F4 (1998-2018)", "versions": ["750cc 126 CV", "1000cc 201 CV", "R 201 CV", "RR 212 CV", "Diğer"], "trims": ["Standart", "R", "RR", "Diğer"] },
+    { "name": "Enduro Veloce", "versions": ["798cc 124 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     {
       "name": "Diğer",
       "versions": ["Diğer"],
