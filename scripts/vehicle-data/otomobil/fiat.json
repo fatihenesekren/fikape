@@ -72,6 +72,56 @@
       "trims": ["Pop", "Lounge", "Diğer"]
     },
     {
+      "name": "Murat 124 / Serçe (1971-1977)",
+      "versions": ["1.4 60", "Diğer"],
+      "trims": ["Standart", "Serçe", "Diğer"]
+    },
+    {
+      "name": "Şahin (1986-2002)",
+      "versions": ["1.6 75", "1.6 ie 79", "Diğer"],
+      "trims": ["S", "SLX", "Diğer"]
+    },
+    {
+      "name": "Doğan (1986-2001)",
+      "versions": ["1.6 75", "1.6 ie 79", "Diğer"],
+      "trims": ["S", "SL", "SLX", "Diğer"]
+    },
+    {
+      "name": "Kartal (1981-2002)",
+      "versions": ["1.6 75", "1.6 ie 79", "Diğer"],
+      "trims": ["Standart", "SL", "Diğer"]
+    },
+    {
+      "name": "Tipo (1990-1995)",
+      "versions": ["1.4 75", "1.6 88", "1.6 ie 98", "1.7 D 58", "1.9 TD 92", "Diğer"],
+      "trims": ["S", "SX", "DS", "Diğer"]
+    },
+    {
+      "name": "Tempra (1990-1999)",
+      "versions": ["1.4 75", "1.6 88", "1.6 ie 98", "1.8 ie 113", "1.9 TD 92", "Diğer"],
+      "trims": ["S", "SX", "SLX", "Diğer"]
+    },
+    {
+      "name": "Uno (1985-2003)",
+      "versions": ["1.1 55", "1.4 60", "1.4 ie 70", "1.7 D 57", "Diğer"],
+      "trims": ["S", "SX", "70 SX", "Diğer"]
+    },
+    {
+      "name": "Brava (1995-2001)",
+      "versions": ["1.4 80", "1.6 103", "1.9 TD 100", "1.9 JTD 105", "Diğer"],
+      "trims": ["S", "SX", "ELX", "HLX", "Diğer"]
+    },
+    {
+      "name": "Marea (1996-2002)",
+      "versions": ["1.6 103", "1.8 113", "2.0 20V 147", "1.9 TD 100", "1.9 JTD 105", "Diğer"],
+      "trims": ["S", "SX", "ELX", "HLX", "Diğer"]
+    },
+    {
+      "name": "Siena (1997-2007)",
+      "versions": ["1.2 60", "1.4 77", "1.6 100", "1.7 SD 57", "1.9 D 65", "Diğer"],
+      "trims": ["EL", "ELX", "HLX", "Diğer"]
+    },
+    {
       "name": "Diğer",
       "versions": ["Diğer"],
       "trims": ["Diğer"]
