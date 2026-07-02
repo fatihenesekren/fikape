@@ -49,7 +49,7 @@ function getModelYearRange(modelName: string): [number, number] | null {
 // Versiyon metninden (motor kodundan) muhtemel yakıt tipini tahmin eder — kullanıcı isterse değiştirebilir
 function detectFuelType(version: string): string | null {
   const v = version.toUpperCase();
-  if (v.includes("KWH") || v.includes("ELECTRIC")) return "EV";
+  if (v.includes("KWH") || v.includes("ELECTRIC") || v.includes("ELEKTRİK") || v.includes("ELEKTRIK")) return "EV";
   if (v.includes("PHEV") || v.includes("PLUG-IN")) return "PHEV";
   if (v.includes("HEV") || v.includes("HYBRID") || v.includes("HİBRİT")) return "HYBRID";
   if (v.includes("LPG") || v.includes("ECO-G")) return "LPG";
