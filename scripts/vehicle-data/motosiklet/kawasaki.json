@@ -13,10 +13,16 @@
     { "name": "Z750 (2004-2012)", "versions": ["750cc 106 CV", "Z750 R", "Diğer"], "trims": ["Standart", "R", "Diğer"] },
     { "name": "Z900", "versions": ["900cc 125 CV", "RS 126 CV", "Diğer"], "trims": ["Standart", "RS", "Diğer"] },
     { "name": "Z1000 (2003-2020)", "versions": ["953cc 141 CV", "SX Touring", "Diğer"], "trims": ["Standart", "SX", "Diğer"] },
+    { "name": "Versys-X 300", "versions": ["300cc 39 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Versys 650", "versions": ["650cc 68 CV", "LT 650cc", "Diğer"], "trims": ["Standart", "LT", "Diğer"] },
     { "name": "Versys 1000", "versions": ["1000cc 120 CV", "SE 120 CV", "Diğer"], "trims": ["Standart", "SE", "Grand Tourer", "Diğer"] },
     { "name": "Vulcan S", "versions": ["650cc 61 CV", "ABS", "Diğer"], "trims": ["Standart", "Café", "Diğer"] },
+    { "name": "Eliminator", "versions": ["400cc 45 CV", "500cc 47 CV", "Diğer"], "trims": ["Standart", "SE", "Diğer"] },
     { "name": "W800", "versions": ["800cc 52 CV", "Café", "Street", "Diğer"], "trims": ["Standart", "Café", "Street", "Diğer"] },
+    { "name": "ER-5 (1997-2006)", "versions": ["500cc 50 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "KLX 250", "versions": ["250cc 23 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "KLR 650 (1987-2004)", "versions": ["650cc 46 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "KLR 650 (2022-)", "versions": ["650cc 45 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

@@ -16901,6 +16901,30 @@
           ]
         },
         {
+          "name": "R 1100 GS (1994-1999)",
+          "versions": [
+            "1085cc 80 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1150 GS (1999-2004)",
+          "versions": [
+            "1130cc 85 CV",
+            "Adventure 98 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Adventure",
+            "Diğer"
+          ]
+        },
+        {
           "name": "R 1200 GS (2004-2018)",
           "versions": [
             "105 CV 1170cc",
@@ -16943,6 +16967,39 @@
           "trims": [
             "Standart",
             "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R nineT",
+          "versions": [
+            "1170cc 110 CV",
+            "Scrambler",
+            "Pure",
+            "Urban G/S",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Scrambler",
+            "Pure",
+            "Urban G/S",
+            "Racer",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 650 (1993-2007)",
+          "versions": [
+            "652cc 48 CV",
+            "GS 48 CV",
+            "Funduro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "GS",
+            "Funduro",
             "Diğer"
           ]
         },
@@ -18977,6 +19034,17 @@
           ]
         },
         {
+          "name": "Versys-X 300",
+          "versions": [
+            "300cc 39 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Versys 650",
           "versions": [
             "650cc 68 CV",
@@ -19017,6 +19085,19 @@
           ]
         },
         {
+          "name": "Eliminator",
+          "versions": [
+            "400cc 45 CV",
+            "500cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
           "name": "W800",
           "versions": [
             "800cc 52 CV",
@@ -19028,6 +19109,50 @@
             "Standart",
             "Café",
             "Street",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ER-5 (1997-2006)",
+          "versions": [
+            "500cc 50 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KLX 250",
+          "versions": [
+            "250cc 23 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KLR 650 (1987-2004)",
+          "versions": [
+            "650cc 46 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KLR 650 (2022-)",
+          "versions": [
+            "650cc 45 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -19118,6 +19243,17 @@
           ]
         },
         {
+          "name": "200 Duke",
+          "versions": [
+            "200cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "390 Duke",
           "versions": [
             "390cc 44 CV",
@@ -19125,6 +19261,19 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "690 Duke (2008-)",
+          "versions": [
+            "690cc 75 CV",
+            "R 75 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
             "Diğer"
           ]
         },
@@ -19144,6 +19293,19 @@
           "versions": [
             "889cc 121 CV",
             "R 121 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "990 Duke (2005-2013)",
+          "versions": [
+            "999cc 115 CV",
+            "R 115 CV",
             "Diğer"
           ],
           "trims": [
@@ -19177,9 +19339,31 @@
           ]
         },
         {
+          "name": "200 RC",
+          "versions": [
+            "200cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "390 RC",
           "versions": [
             "390cc 44 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "690 Enduro R",
+          "versions": [
+            "690cc 74 CV",
             "Diğer"
           ],
           "trims": [
@@ -19195,6 +19379,20 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Adventure 950 / 990 (2003-2013)",
+          "versions": [
+            "950cc 98 CV",
+            "990cc 115 CV",
+            "R",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
             "Diğer"
           ]
         },
