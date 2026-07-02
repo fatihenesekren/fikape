@@ -8453,7 +8453,52 @@
       "make": "Mini",
       "models": [
         {
-          "name": "Cooper",
+          "name": "Cooper (2001-2006)",
+          "versions": [
+            "1.6 Cooper 90",
+            "1.6 Cooper S 163",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cooper (2006-2013)",
+          "versions": [
+            "1.6 Cooper 122",
+            "1.6 Cooper S 175",
+            "2.0 Cooper SD 143",
+            "1.6 JCW 211",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "JCW",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cooper (2014-2024)",
+          "versions": [
+            "1.5 Cooper 136",
+            "2.0 Cooper S 192",
+            "2.0 JCW 231",
+            "Diğer"
+          ],
+          "trims": [
+            "Essential",
+            "Classic",
+            "Exclusive",
+            "JCW",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cooper (2024-)",
           "versions": [
             "1.5 Cooper 136",
             "2.0 Cooper S 192",
@@ -8470,7 +8515,22 @@
           ]
         },
         {
-          "name": "Cabrio",
+          "name": "Cabrio (2009-2015)",
+          "versions": [
+            "1.6 Cooper 122",
+            "1.6 Cooper S 184",
+            "2.0 JCW 211",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "JCW",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cabrio (2016-)",
           "versions": [
             "1.5 Cooper 136",
             "2.0 Cooper S 192",
@@ -8486,7 +8546,23 @@
           ]
         },
         {
-          "name": "Clubman",
+          "name": "Clubman (2007-2014)",
+          "versions": [
+            "1.6 Cooper 122",
+            "1.6 Cooper S 175",
+            "2.0 Cooper SD 143",
+            "1.6 JCW 211",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "JCW",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Clubman (2015-)",
           "versions": [
             "1.5 Cooper 136",
             "2.0 Cooper S 192 ALL4",
@@ -8503,7 +8579,40 @@
           ]
         },
         {
-          "name": "Countryman",
+          "name": "Countryman (2010-2016)",
+          "versions": [
+            "1.6 Cooper 122 FWD",
+            "1.6 Cooper S 184 ALL4",
+            "2.0 Cooper SD 143 ALL4",
+            "1.6 JCW 218 ALL4",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "JCW",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Countryman (2017-2023)",
+          "versions": [
+            "1.5 Cooper 136 FWD",
+            "2.0 Cooper S 178 ALL4",
+            "2.0 Cooper SE ALL4 PHEV 224",
+            "2.0 JCW 231 ALL4",
+            "Diğer"
+          ],
+          "trims": [
+            "Essential",
+            "Classic",
+            "Exclusive",
+            "JCW",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Countryman (2024-)",
           "versions": [
             "1.5 Cooper 136 FWD",
             "2.0 Cooper S 178 ALL4",
