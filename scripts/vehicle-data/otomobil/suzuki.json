@@ -7,13 +7,73 @@
       "trims": ["GL", "GLX", "Diğer"]
     },
     {
-      "name": "Swift",
+      "name": "Samurai",
+      "versions": ["1.3 65", "1.0 45", "Diğer"],
+      "trims": ["Standart", "JLX", "Diğer"]
+    },
+    {
+      "name": "Jimny (1998-2018)",
+      "versions": ["1.3 85", "1.5 102", "Diğer"],
+      "trims": ["JLX", "Standart", "Diğer"]
+    },
+    {
+      "name": "Jimny (2018-)",
+      "versions": ["1.5 102", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Swift (1989-2003)",
+      "versions": ["1.0 50", "1.3 68", "1.3 GTi 101", "Diğer"],
+      "trims": ["GA", "GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Swift (2004-2010)",
+      "versions": ["1.3 92", "1.5 101", "1.6 Sport 125", "Diğer"],
+      "trims": ["GL", "GLX", "Sport", "Diğer"]
+    },
+    {
+      "name": "Swift (2010-2017)",
+      "versions": ["1.2 94", "1.6 Sport 136", "1.3 DDiS 75", "Diğer"],
+      "trims": ["GL", "GLX", "Sport", "Diğer"]
+    },
+    {
+      "name": "Swift (2017-)",
       "versions": ["1.0 Boosterjet 111 MHEV", "1.2 Dualjet 83 MHEV", "1.4 Boosterjet 129", "Sport 1.4 Boosterjet 129", "Diğer"],
       "trims": ["GL", "GLX", "Sport", "Diğer"]
     },
     {
-      "name": "Baleno",
+      "name": "SX4 (2006-2013)",
+      "versions": ["1.6 94", "1.9 DDiS 120", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "SX4 S-Cross",
+      "versions": ["1.0 Boosterjet 111 FWD", "1.4 Boosterjet 129 AWD", "1.5 MHEV 102 FWD", "Diğer"],
+      "trims": ["GL", "GLX", "S", "Diğer"]
+    },
+    {
+      "name": "Baleno (1995-2002)",
+      "versions": ["1.3 79", "1.6 90", "Diğer"],
+      "trims": ["Standart", "GLX", "Diğer"]
+    },
+    {
+      "name": "Baleno (2015-)",
       "versions": ["1.2 Dualjet 90 MHEV", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Splash",
+      "versions": ["1.0 68", "1.2 86", "1.3 DDiS 75", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Liana",
+      "versions": ["1.6 94", "1.6 4x4 94", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Wagon R+",
+      "versions": ["1.0 58", "1.2 80", "Diğer"],
       "trims": ["GL", "GLX", "Diğer"]
     },
     {
@@ -22,13 +82,23 @@
       "trims": ["GL", "GLX", "Diğer"]
     },
     {
-      "name": "Vitara",
-      "versions": ["1.0 Boosterjet 111 FWD", "1.4 Boosterjet 129 FWD", "1.4 Boosterjet 129 AWD", "1.5 MHEV 102 FWD", "Diğer"],
-      "trims": ["GL", "GLX", "S", "Diğer"]
+      "name": "Vitara (1988-1998)",
+      "versions": ["1.6 80", "1.6 97", "2.0 TD 73", "Diğer"],
+      "trims": ["JLX", "JX", "Diğer"]
     },
     {
-      "name": "SX4 S-Cross",
-      "versions": ["1.0 Boosterjet 111 FWD", "1.4 Boosterjet 129 AWD", "1.5 MHEV 102 FWD", "Diğer"],
+      "name": "Grand Vitara (1998-2005)",
+      "versions": ["1.6 92", "2.0 128", "2.5 V6 156", "2.0 TD 109", "Diğer"],
+      "trims": ["JLX", "Diğer"]
+    },
+    {
+      "name": "Grand Vitara (2005-2015)",
+      "versions": ["1.6 106", "2.0 140", "2.4 166", "1.9 DDiS 129", "Diğer"],
+      "trims": ["GL", "GLX", "Diğer"]
+    },
+    {
+      "name": "Vitara (2015-)",
+      "versions": ["1.0 Boosterjet 111 FWD", "1.4 Boosterjet 129 FWD", "1.4 Boosterjet 129 AWD", "1.5 MHEV 102 FWD", "Diğer"],
       "trims": ["GL", "GLX", "S", "Diğer"]
     },
     {
