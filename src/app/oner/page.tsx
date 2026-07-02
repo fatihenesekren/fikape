@@ -70,6 +70,7 @@ export default function OnerPage() {
 
   const [categorySlug, setCategorySlug] = useState<CategoryKey>("otomobil");
   const [selectedMake, setSelectedMake]   = useState("");
+  const [customMake, setCustomMake]       = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [customModel, setCustomModel]     = useState("");
   const [selectedVersion, setSelectedVersion] = useState("");
@@ -94,6 +95,7 @@ export default function OnerPage() {
   const versions   = modelEntry?.versions ?? [];
   const trims      = modelEntry?.trims ?? [];
 
+  const isOtherMake    = selectedMake === "Diğer / Bulamadım";
   const isOtherModel   = selectedModel === "Diğer";
   const isOtherVersion = selectedVersion === "Diğer";
   const isOtherTrim    = selectedTrim === "Diğer";
@@ -108,6 +110,7 @@ export default function OnerPage() {
 
   function handleMakeChange(val: string) {
     setSelectedMake(val);
+    setCustomMake("");
     setSelectedModel(""); setCustomModel("");
     setSelectedVersion(""); setCustomVersion("");
     setSelectedTrim(""); setCustomTrim("");
@@ -123,7 +126,7 @@ export default function OnerPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const brandName  = selectedMake === "Diğer / Bulamadım" ? customModel : selectedMake;
+    const brandName  = isOtherMake     ? customMake.trim()  : selectedMake;
     const modelName  = isOtherModel   ? customModel.trim()  : selectedModel;
     const versionFin = isOtherVersion ? customVersion.trim() : selectedVersion;
     const trimFin    = isOtherTrim    ? customTrim.trim()    : selectedTrim;
@@ -246,6 +249,16 @@ export default function OnerPage() {
               <option key={m.make} value={m.make}>{m.make}</option>
             ))}
           </select>
+          {isOtherMake && (
+            <input
+              type="text"
+              value={customMake}
+              onChange={(e) => setCustomMake(e.target.value)}
+              placeholder="Marka adını yazın"
+              className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
+              autoFocus
+            />
+          )}
         </div>
 
         {/* Model */}
