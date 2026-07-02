@@ -2,6 +2,21 @@
   "make": "Ford",
   "models": [
     {
+      "name": "Taunus (1985-1993)",
+      "versions": ["1.6 75", "2.0 95", "GT 2.0 105", "Diğer"],
+      "trims": ["GL", "S", "GT", "GLS", "Diğer"]
+    },
+    {
+      "name": "Escort (1993-1999)",
+      "versions": ["1.4 75", "1.6 90", "1.6 Zetec 90", "Diğer"],
+      "trims": ["CL", "Classic", "CLX", "Ghia", "Diğer"]
+    },
+    {
+      "name": "Ka (2009-2016)",
+      "versions": ["1.2 69", "1.3 TDCi 75", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Titanium", "Diğer"]
+    },
+    {
       "name": "Fiesta (2001-2008)",
       "versions": ["1.25 75", "1.25 86", "1.4 80", "1.6 100", "1.4 TDCi 68", "1.6 TDCi 90", "ST 2.0 150", "Diğer"],
       "trims": ["Ambiente", "Trend", "Ghia", "Sport", "ST", "Diğer"]
@@ -67,9 +82,64 @@
       "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "ST-Line X", "ST", "Diğer"]
     },
     {
-      "name": "Kuga",
+      "name": "Kuga (2008-2012)",
+      "versions": ["2.0 TDCi 136 4x2", "2.0 TDCi 136 AWD", "2.0 TDCi 163 AWD", "2.5T 200 AWD", "Diğer"],
+      "trims": ["Trend", "Titanium", "Diğer"]
+    },
+    {
+      "name": "Kuga (2012-2019)",
+      "versions": ["1.5 EcoBoost 150", "1.5 EcoBoost 182", "2.0 TDCi 120", "2.0 TDCi 150", "2.0 TDCi 180 AWD", "Diğer"],
+      "trims": ["Trend", "Titanium", "ST-Line", "Vignale", "Diğer"]
+    },
+    {
+      "name": "Kuga (2019-)",
       "versions": ["1.5 EcoBoost 120", "1.5 EcoBoost 150", "2.0 EcoBlue 120", "2.0 EcoBlue 150", "2.5 FHEV 190", "2.5 PHEV 225", "Diğer"],
       "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "ST-Line X", "Vignale", "Diğer"]
+    },
+    {
+      "name": "Galaxy (1995-2006)",
+      "versions": ["2.0 115", "2.3 145", "2.8 VR6 174", "1.9 TDI 90", "1.9 TDI 115", "Diğer"],
+      "trims": ["Ambiente", "Ghia", "Diğer"]
+    },
+    {
+      "name": "Galaxy (2006-2015)",
+      "versions": ["2.3 145", "1.8 TDCi 125", "2.0 TDCi 140", "2.0 TDCi 163", "2.2 TDCi 175", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Ghia", "Titanium", "Diğer"]
+    },
+    {
+      "name": "Galaxy (2015-)",
+      "versions": ["2.0 EcoBlue 150", "2.0 EcoBlue 190", "2.0 EcoBlue 240 AWD", "Diğer"],
+      "trims": ["Trend", "Titanium", "Vignale", "Diğer"]
+    },
+    {
+      "name": "S-Max (2006-2015)",
+      "versions": ["1.6 EcoBoost 160", "2.0 145", "2.0 EcoBoost 203", "1.8 TDCi 125", "2.0 TDCi 140", "2.0 TDCi 163", "2.2 TDCi 200", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Titanium", "Ghia", "Diğer"]
+    },
+    {
+      "name": "S-Max (2015-)",
+      "versions": ["1.5 EcoBoost 160", "2.0 EcoBlue 150", "2.0 EcoBlue 190", "2.0 EcoBlue 240 AWD", "Diğer"],
+      "trims": ["Trend", "Titanium", "ST-Line", "Vignale", "Diğer"]
+    },
+    {
+      "name": "C-Max (2003-2010)",
+      "versions": ["1.6 100", "1.8 125", "2.0 145", "1.6 TDCi 90", "1.8 TDCi 115", "2.0 TDCi 136", "Diğer"],
+      "trims": ["Ambiente", "Trend", "Ghia", "Titanium", "Diğer"]
+    },
+    {
+      "name": "Grand C-Max (2010-2019)",
+      "versions": ["1.0 EcoBoost 125", "1.6 EcoBoost 150", "1.6 TDCi 95", "1.6 TDCi 115", "2.0 TDCi 140", "Diğer"],
+      "trims": ["Trend", "Titanium", "Diğer"]
+    },
+    {
+      "name": "B-Max (2012-2017)",
+      "versions": ["1.0 EcoBoost 100", "1.0 EcoBoost 120", "1.4 90", "1.6 105", "1.5 TDCi 75", "1.5 TDCi 95", "Diğer"],
+      "trims": ["Trend", "Titanium", "Diğer"]
+    },
+    {
+      "name": "Edge (2016-2019)",
+      "versions": ["2.0 TDCi 180 AWD", "2.0 TDCi 210 AWD", "Diğer"],
+      "trims": ["Titanium", "Sport", "Diğer"]
     },
     {
       "name": "EcoSport",
@@ -95,6 +165,11 @@
       "name": "Transit Custom",
       "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "PHEV 126", "Diğer"],
       "trims": ["Trend", "Limited", "Sport", "Diğer"]
+    },
+    {
+      "name": "Tourneo Custom",
+      "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "PHEV 126", "Diğer"],
+      "trims": ["Trend", "Titanium", "Sport", "Diğer"]
     },
     {
       "name": "Tourneo Connect",
