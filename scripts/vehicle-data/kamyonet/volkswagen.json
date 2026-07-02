@@ -9,7 +9,7 @@
     { "name": "Caravelle", "versions": ["2.0 TDI 110", "2.0 TDI 150", "Diğer"], "trims": ["Comfortline", "Highline", "Diğer"] },
     { "name": "Multivan", "versions": ["1.5 TSI eHybrid 218", "2.0 TDI 150", "Diğer"], "trims": ["Life", "Style", "Style Long", "Diğer"] },
     { "name": "Crafter", "versions": ["2.0 TDI 102", "2.0 TDI 140", "2.0 TDI 177", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "ID. Buzz", "versions": ["Pro 204", "GTX 4Motion 340", "Diğer"], "trims": ["Life", "Style", "GTX", "Diğer"] },
+    { "name": "ID. Buzz", "versions": ["Pro 204 Elektrik", "GTX 4Motion 340 Elektrik", "Diğer"], "trims": ["Life", "Style", "GTX", "Diğer"] },
     { "name": "Amarok (2010-2022)", "versions": ["2.0 TDI 140 4Motion", "2.0 BiTDI 180 4Motion", "3.0 TDI 204 4Motion", "Diğer"], "trims": ["Trendline", "Comfortline", "Highline", "Canyon", "Aventura", "Diğer"] },
     { "name": "Amarok (2022-)", "versions": ["2.0 TDI 170 4Motion", "3.0 TDI 240 4Motion", "3.0 V6 TDI 272 4Motion", "Diğer"], "trims": ["Life", "Style", "Aventura", "PanAmericana", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
