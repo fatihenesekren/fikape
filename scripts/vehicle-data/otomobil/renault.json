@@ -87,6 +87,81 @@
       "trims": ["Comfort", "Techno", "Iconic", "Diğer"]
     },
     {
+      "name": "12 Toros (1971-2000)",
+      "versions": ["1.4 47", "1.4 60", "1.6 GTL 72", "Diğer"],
+      "trims": ["TL", "GTL", "TSW", "STW", "Diğer"]
+    },
+    {
+      "name": "9 Broadway (1985-2000)",
+      "versions": ["1.1 47", "1.4 60", "1.6 Fairway 72", "1.6 dCi GTD 55", "Diğer"],
+      "trims": ["GTL", "GTC", "GTE", "Spring", "Fairway", "Diğer"]
+    },
+    {
+      "name": "11 Flash (1987-1996)",
+      "versions": ["1.4 60", "1.6 72", "Diğer"],
+      "trims": ["Flash", "Rainbow", "Diğer"]
+    },
+    {
+      "name": "21 Manager (1990-1995)",
+      "versions": ["1.7 79", "2.0 103", "2.1 TD 88", "Diğer"],
+      "trims": ["GTS", "TXE", "Manager", "Diğer"]
+    },
+    {
+      "name": "19 Europa (1992-2003)",
+      "versions": ["1.4 75", "1.6 90", "1.8 95", "1.9 D 65", "1.9 dCi 98", "Diğer"],
+      "trims": ["RT", "RTE", "RNE", "Alize", "Europa", "Diğer"]
+    },
+    {
+      "name": "Megane (1997-2003)",
+      "versions": ["1.4 75", "1.6 90", "1.6 16V 107", "2.0 16V 114", "1.9 dCi 80", "1.9 dTi 80", "Diğer"],
+      "trims": ["RN", "RT", "RXE", "RXT", "Diğer"]
+    },
+    {
+      "name": "Symbol / Thalia (1999-2013)",
+      "versions": ["1.4 75", "1.4 16V 98", "1.6 16V 105", "1.2 16V 75", "1.5 dCi 65", "1.5 dCi 70", "1.5 dCi 85", "1.5 dCi 105", "Diğer"],
+      "trims": ["Authentique", "Expression", "Privilege", "Diğer"]
+    },
+    {
+      "name": "Symbol (2013-2021)",
+      "versions": ["1.2 16V 75", "0.9 TCe 90", "1.5 dCi 75", "1.5 dCi 90", "Diğer"],
+      "trims": ["Joy", "Touch", "Icon", "Diğer"]
+    },
+    {
+      "name": "Fluence (2009-2016)",
+      "versions": ["1.6 16V 110", "2.0 16V 137", "1.5 dCi 90", "1.5 dCi 110", "Diğer"],
+      "trims": ["Authentique", "Expression", "Dynamique", "Icon", "Privilege", "Diğer"]
+    },
+    {
+      "name": "Twingo (1993-2014)",
+      "versions": ["1.2 55", "1.2 16V 75", "1.5 dCi 65", "1.2 16V TCe 100", "Diğer"],
+      "trims": ["Authentique", "Expression", "Dynamique", "Diğer"]
+    },
+    {
+      "name": "Modus (2004-2012)",
+      "versions": ["1.2 16V 75", "1.6 16V 105", "1.5 dCi 70", "1.5 dCi 85", "1.5 dCi 105", "Diğer"],
+      "trims": ["Authentique", "Expression", "Privilege", "Dynamique", "Diğer"]
+    },
+    {
+      "name": "Scenic (1996-2016)",
+      "versions": ["1.6 16V 95", "2.0 16V 140", "1.9 dCi 120", "1.5 dCi 105", "1.5 dCi 110", "Diğer"],
+      "trims": ["Authentique", "Expression", "Privilege", "Dynamique", "Diğer"]
+    },
+    {
+      "name": "Safrane (1992-2000)",
+      "versions": ["2.0 103", "2.2 110", "2.5 V6 170", "2.1 dT 88", "Diğer"],
+      "trims": ["RN", "RT", "RXE", "Baccara", "Diğer"]
+    },
+    {
+      "name": "Laguna (1994-2015)",
+      "versions": ["1.8 16V 110", "2.0 16V 140", "1.9 dCi 120", "2.0 dCi 150", "1.5 dCi 110", "Diğer"],
+      "trims": ["RT", "RXE", "Authentique", "Expression", "Privilege", "Dynamique", "Diğer"]
+    },
+    {
+      "name": "Talisman (2016-2022)",
+      "versions": ["1.6 dCi 130", "1.3 TCe 155", "1.5 dCi 110", "1.8 TCe 225", "Diğer"],
+      "trims": ["Joy", "Icon", "Intens", "Executive", "Diğer"]
+    },
+    {
       "name": "Diğer",
       "versions": ["Diğer"],
       "trims": ["Diğer"]
