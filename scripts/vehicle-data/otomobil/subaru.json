@@ -2,32 +2,112 @@
   "make": "Subaru",
   "models": [
     {
-      "name": "Impreza",
+      "name": "Impreza (1992-2000)",
+      "versions": ["1.6 90", "1.8 90 AWD", "2.0 AWD 137", "WRX 2.0 Turbo 218 AWD", "Diğer"],
+      "trims": ["Standart", "GX", "WRX", "Diğer"]
+    },
+    {
+      "name": "Impreza (2000-2007)",
+      "versions": ["1.5 100", "1.6 105 AWD", "2.0R 156 AWD", "WRX 2.0 Turbo 230 AWD", "STI 2.5 Turbo 280 AWD", "Diğer"],
+      "trims": ["Standart", "GX", "WRX", "STI", "Diğer"]
+    },
+    {
+      "name": "Impreza (2007-2011)",
+      "versions": ["1.5R 107 AWD", "2.0R 150 AWD", "WRX 2.5 Turbo 230 AWD", "STI 2.5 Turbo 300 AWD", "Diğer"],
+      "trims": ["Standart", "R", "WRX", "STI", "Diğer"]
+    },
+    {
+      "name": "Impreza (2011-2016)",
+      "versions": ["1.6i 114 AWD", "2.0i 150 AWD", "Diğer"],
+      "trims": ["Trend", "Sport", "Diğer"]
+    },
+    {
+      "name": "Impreza (2016-)",
       "versions": ["2.0i 156 AWD", "2.0i Sport 156 AWD", "Diğer"],
       "trims": ["Pure", "Comfort", "Sport", "Diğer"]
     },
     {
-      "name": "Legacy",
+      "name": "Legacy (1989-1994)",
+      "versions": ["1.8 90 AWD", "2.0 115 AWD", "2.2 135 AWD", "Diğer"],
+      "trims": ["Standart", "GX", "Diğer"]
+    },
+    {
+      "name": "Legacy (1994-1998)",
+      "versions": ["2.0 115 AWD", "2.2 137 AWD", "2.5 165 AWD", "Diğer"],
+      "trims": ["Standart", "GX", "GT", "Diğer"]
+    },
+    {
+      "name": "Legacy (1998-2003)",
+      "versions": ["2.0 125 AWD", "2.5 156 AWD", "3.0R 212 AWD", "Diğer"],
+      "trims": ["Standart", "GX", "GT", "Diğer"]
+    },
+    {
+      "name": "Legacy (2003-2009)",
+      "versions": ["2.0R 165 AWD", "2.5i 173 AWD", "3.0R 245 AWD", "Diğer"],
+      "trims": ["R", "RS", "Diğer"]
+    },
+    {
+      "name": "Legacy (2009-2014)",
+      "versions": ["2.5i 167 AWD", "2.0D 150 AWD", "3.6R 260 AWD", "Diğer"],
+      "trims": ["Comfort", "Sport", "Diğer"]
+    },
+    {
+      "name": "Legacy (2014-)",
       "versions": ["2.5i 175 AWD", "3.6R 256 AWD", "Diğer"],
       "trims": ["Comfort", "Sport", "Limited", "Diğer"]
     },
     {
-      "name": "Forester",
+      "name": "Forester (1997-2002)",
+      "versions": ["2.0 125 AWD", "2.0 Turbo 177 AWD", "Diğer"],
+      "trims": ["Standart", "S", "Diğer"]
+    },
+    {
+      "name": "Forester (2002-2007)",
+      "versions": ["2.0X 125 AWD", "2.5X 165 AWD", "2.5XT Turbo 230 AWD", "2.0D 147 AWD", "Diğer"],
+      "trims": ["X", "XT", "Diğer"]
+    },
+    {
+      "name": "Forester (2008-2012)",
+      "versions": ["2.0X 150 AWD", "2.5XT Turbo 230 AWD", "2.0D 147 AWD", "Diğer"],
+      "trims": ["X", "XS", "XT", "Diğer"]
+    },
+    {
+      "name": "Forester (2012-2018)",
+      "versions": ["2.0i 150 AWD", "2.0XT Turbo 240 AWD", "2.0D 147 AWD", "Diğer"],
+      "trims": ["Comfort", "Sport", "Diğer"]
+    },
+    {
+      "name": "Forester (2018-)",
       "versions": ["2.0i 156 AWD", "2.0i e-Boxer 150 AWD Hybrid", "2.0XT 240 AWD", "Diğer"],
       "trims": ["Pure", "Comfort", "Sport", "X-Break", "Diğer"]
     },
     {
-      "name": "Outback",
+      "name": "Outback (1996-2009)",
+      "versions": ["2.5i 165 AWD", "3.0R 245 AWD", "2.0D 150 AWD", "Diğer"],
+      "trims": ["Standart", "Limited", "Diğer"]
+    },
+    {
+      "name": "Outback (2009-)",
       "versions": ["2.5i 175 AWD", "2.5i XT 260 AWD", "Diğer"],
       "trims": ["Comfort", "Sport", "Limited", "Outdoor", "Diğer"]
     },
     {
-      "name": "XV",
+      "name": "XV (2012-2017)",
+      "versions": ["1.6i 114 AWD", "2.0i 150 AWD", "2.0D 147 AWD", "Diğer"],
+      "trims": ["Trend", "Sport", "Diğer"]
+    },
+    {
+      "name": "XV (2017-)",
       "versions": ["2.0i 156 AWD", "2.0i e-Boxer 150 AWD Hybrid", "Diğer"],
       "trims": ["Pure", "Comfort", "Sport", "Diğer"]
     },
     {
-      "name": "BRZ",
+      "name": "BRZ (2012-2020)",
+      "versions": ["2.0 200", "Diğer"],
+      "trims": ["Standart", "Sport", "Diğer"]
+    },
+    {
+      "name": "BRZ (2021-)",
       "versions": ["2.4 Turbo 228", "Diğer"],
       "trims": ["Standart", "Sport", "Diğer"]
     },
