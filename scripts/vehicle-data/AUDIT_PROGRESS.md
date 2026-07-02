@@ -214,7 +214,32 @@
 
 ## E-Scooter (21 marka)
 
-_Sırada._
+| Marka | Durum | Not |
+|---|---|---|
+| apollo | ✅ Tamamlandı | Dash (giriş seviyesi) ve Go (Ludo Mode, çift motor commuter) tamamen eksikti, eklendi. Türkiye'de resmi distribütör yok, paralel ithal/ikinci el (hiscoot.com). |
+| dualtron | ✅ Tamamlandı | Dualtron X (flagship, 13000W), City, Victor, Togo tamamen eksikti, eklendi. Türkiye'de resmi distribütör var (Citymate, dualtron.com.tr). |
+| emove | ✅ Tamamlandı | **RoadRunner serisi (marka'nın en tanınmış oturmalı hattı) tamamen eksikti**, eklendi. Türkiye'de resmi distribütör yok, sadece ikinci el/ithal. |
+| gotrax | ✅ Tamamlandı | XR Elite/XR Ultra, GMax Ultra, GX3, G3/G Pro eklendi. Türkiye'de **Evofone güvencesiyle resmi satışta** (DonanımHaber haberiyle doğrulandı). |
+| hiboy | ✅ Tamamlandı | Titan/Titan Pro (yeni performans hattı) tamamen eksikti, eklendi. Türkiye'de resmi distribütör kanıtı yok. |
+| inmotion | ✅ Tamamlandı | **RS (flagship, 101km/h, "dünyanın en hızlı scooter'ı") tamamen eksikti**, C10 de eklendi. Türkiye'de resmi distribütör var (Ege TekTeker — Kingsong/Inmotion/Leaper/Begode). |
+| inokim | ✅ Tamamlandı | Mini (en hafif klasik model) ve KIX eklendi. Türkiye'de OX/Light 2 resmi satışta (Trendyol, escooter.com.tr), Mini/KIX için TR kanıtı zayıf. |
+| kaabo | ✅ Tamamlandı | Mantis King GT, Mantis X, Wolf King GTR eklendi. Türkiye'de **Ecovolt resmi distribütör**, her model için ayrı sayfa mevcut. |
+| kugoo | ✅ Tamamlandı | Marka artık çoğunlukla "KuKirin" adıyla pazarlanıyor. G4, M4 Max eklendi. Türkiye kanıtı zayıf (sadece Amazon.com.tr/ikinci el). |
+| laotie | ✅ Tamamlandı | ES19 eklendi. Türkiye'de resmi distribütör/satış kanıtı bulunamadı — marka geneli düşük güvenle, paralel ithal/marjinal. |
+| navee | ✅ Tamamlandı | N65i/N65 Pro, S65C/S65 GT, V50 eklendi. Türkiye'de resmi distribütör var (navee.com.tr, Trendyol/Teknosa/Vatan/n11). |
+| ninebot | ✅ Tamamlandı | C2/C9, F3/F3 Pro, Zing eklendi. **Segway markasıyla model çakışma riski**: E-serisi (E22/E25/E45) ve Max G30 ailesi zaten `segway.json`'da "Ninebot ..." adıyla kayıtlı olduğu için buraya mükerrer eklenmedi — ileride bu iki dosya birleştirilmesi/temizlenmesi gerekebilir (not düşüldü). |
+| niu | ✅ Tamamlandı | KQi Air/KQi Air X, M+/M+ Lite/M+ Sport/N1S eklendi. Türkiye'de resmi distribütör var (niu.com.tr, fiyat listesi mevcut). |
+| okai | ✅ Tamamlandı | Panther ES800 (off-road, IF Design Award), Ceetle (oturaklı) eklendi. Türkiye'de resmi satış kanıtı bulunamadı, düşük güven. |
+| pure-electric | ✅ Tamamlandı | Escape serisi (Pro+/Ultra Max) eklendi. Türkiye'de resmi satış kanıtı bulunamadı (UK/Belçika odaklı marka), düşük güven. Pure X McLaren (özel işbirliği) çok niş olduğu için eklenmedi. |
+| razor | ✅ Tamamlandı | EcoSmart Metro, E XR eklendi. Türkiye'de resmi distribütör var (global.razor.com/tr, Sport City). |
+| segway | ✅ Tamamlandı | **GT Serisi (GT1/GT2/GT2P, off-road "SuperScooter" performans hattı) tamamen eksikti**, eklendi — resmi turkiye.segway.com'da satışta. ES serisi (ES1-E4) zaten `ninebot.json`'da kayıtlı olduğu için mükerrer eklenmedi. |
+| vsett | ✅ Tamamlandı | 8+ ve düz 9 (tek motorlu temel model) eklendi. Türkiye'de resmi distribütör kanıtı yok, niş/ithal marka. |
+| xiaomi | ✅ Tamamlandı | **Xiaomi 5 ve Xiaomi 6 serisi (Mi öneki bırakılan yeni nesil, 2023 sonrası) tamamen eksikti**, eklendi — Trendyol/Teknosa/n11'de MIEKO resmi distribütörlüğüyle satışta. |
+| yadea | ✅ Tamamlandı | KS2/KS3 Lite/KS5/KS5 Pro eklendi. Türkiye'de resmi satış/distribütör kanıtı bulunamadı, düşük güven. |
+| zero | ✅ Tamamlandı | Mevcut veri (10X/11X) zaten Ecovolt Türkiye resmi portföyüyle birebir örtüşüyor, değişiklik gerekmedi. |
+| diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder |
+
+**🎉 E-SCOOTER KATEGORİSİ TAMAMLANDI (21/21 marka), 2 Temmuz 2026.** En büyük bulgular: Emove'da RoadRunner (marka'nın asıl tanınmış ürünü), Inmotion'da RS (flagship), Segway'de GT Serisi, Xiaomi'de yeni nesil 5/6 serisi tamamen eksikti. Ninebot/Segway arasında model çakışma riski not edildi (aynı fiziksel ürünler iki farklı marka dosyasında "Ninebot ..." adıyla geçebiliyor). Sırada: E-Bisiklet kategorisi (40 marka).
 
 ## E-Bisiklet (40 marka)
 
