@@ -34,6 +34,7 @@ const FUEL_TYPES: Record<string, { value: string; label: string }[]> = {
     { value: "EV",       label: "Elektrikli" },
     { value: "PHEV",     label: "Plug-in Hibrit (PHEV)" },
     { value: "HYBRID",   label: "Hibrit" },
+    { value: "LPG",      label: "LPG" },
   ],
 };
 
