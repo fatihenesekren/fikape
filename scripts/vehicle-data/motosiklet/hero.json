@@ -4,6 +4,12 @@
     { "name": "Xpulse 200 (2019-)", "versions": ["200cc 18.8 CV 4V", "200cc 18.4 CV 2V", "Diğer"], "trims": ["Standart", "4V", "Diğer"] },
     { "name": "Xtreme 160R (2020-)", "versions": ["163cc 15 CV", "Diğer"], "trims": ["Standart", "Stealth", "Diğer"] },
     { "name": "Mavrick 440 (2024-)", "versions": ["440cc 27 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Dash 110", "versions": ["110cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Dash 125", "versions": ["125cc 9 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Duet 110 (Scooter)", "versions": ["110cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Karizma", "versions": ["223cc 17 CV", "Diğer"], "trims": ["Standart", "R", "ZMR", "Diğer"] },
+    { "name": "Hunk", "versions": ["150cc 14 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Pleasure", "versions": ["110cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

@@ -123,9 +123,9 @@
 | peugeot-motorcycles | ✅ Tamamlandı | Pulsion/Pulsion Evo ve XP400 SUV (maxi-scooter) güncel modelleri eksikti, eklendi. |
 | gas-gas | ✅ Tamamlandı | Dosyada sadece EC/MC/ES/SM kategorileri vardı, **TXT (Trial) kategorisi tamamen eksikti** — GasGas'ın tarihsel olarak en güçlü olduğu segment, eklendi. |
 | fb-mondial | ✅ Tamamlandı | İtalyan FB Mondial (Türkiye'de niş/az sayıda ithal, mondial-tr'den [Mondial Motor TR] ayrı marka) — Imola ve Flat Track modelleri eksikti, eklendi. |
-| hero | ⬜ Bekliyor | |
-| moto-guzzi | ⬜ Bekliyor | |
-| indian | ⬜ Bekliyor | |
+| hero | ✅ Tamamlandı | Türkiye'de sadece 3 model resmi satışta (Dash 110/125, Xpulse 200 4V) ama ikinci elde Karizma/Hunk/Pleasure/Duet 110 de yaygın — eklendi. |
+| moto-guzzi | ✅ Tamamlandı | Klasik nameplate'ler tamamen eksikti: California, Griso, Nevada, Breva, Norge, V11 Sport eklendi. |
+| indian | ✅ Tamamlandı | Resmi indianmotorcycle.com.tr sitesiyle karşılaştırıldı — Chieftain, Roadmaster, Pursuit (Bagger/Touring aile) tamamen eksikti, eklendi. Springfield (discontinued ama ikinci elde yaygın) ve Chief Vintage eklendi. |
 | voge | ⬜ Bekliyor | |
 | qjmotor | ⬜ Bekliyor | |
 | zontes | ⬜ Bekliyor | |

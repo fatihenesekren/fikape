@@ -18660,6 +18660,74 @@
           ]
         },
         {
+          "name": "Dash 110",
+          "versions": [
+            "110cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dash 125",
+          "versions": [
+            "125cc 9 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Duet 110 (Scooter)",
+          "versions": [
+            "110cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Karizma",
+          "versions": [
+            "223cc 17 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
+            "ZMR",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hunk",
+          "versions": [
+            "150cc 14 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pleasure",
+          "versions": [
+            "110cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -19393,6 +19461,70 @@
             "S",
             "Rally",
             "R Carbon",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Chieftain",
+          "versions": [
+            "1890cc 116 CV",
+            "PowerPlus 122 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Dark Horse",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Roadmaster",
+          "versions": [
+            "1890cc 116 CV",
+            "PowerPlus 122 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Dark Horse",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pursuit",
+          "versions": [
+            "PowerPlus 122 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Dark Horse",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Springfield",
+          "versions": [
+            "1811cc 100 CV",
+            "1890cc 116 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Dark Horse",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Chief Vintage",
+          "versions": [
+            "1890cc 116 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -21207,6 +21339,85 @@
           "versions": [
             "1042cc 115 CV",
             "PFF 115 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "California",
+          "versions": [
+            "1064cc 76 CV",
+            "1400cc 96 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Touring",
+            "Custom",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Griso",
+          "versions": [
+            "850cc 65 CV",
+            "1100cc 85 CV",
+            "1200 8V 110 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "8V",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Nevada",
+          "versions": [
+            "750cc 48 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Classic",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Breva",
+          "versions": [
+            "750cc 48 CV",
+            "850cc 65 CV",
+            "1100cc 76 CV",
+            "1200cc 85 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Norge",
+          "versions": [
+            "1200cc 90 CV",
+            "GT 8V 105 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "GT 8V",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V11 Sport",
+          "versions": [
+            "1064cc 91 CV",
             "Diğer"
           ],
           "trims": [

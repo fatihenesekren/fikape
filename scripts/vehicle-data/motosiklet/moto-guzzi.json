@@ -6,6 +6,12 @@
     { "name": "V9", "versions": ["853cc 65 CV Bobber", "853cc 65 CV Roamer", "Diğer"], "trims": ["Bobber", "Roamer", "Diğer"] },
     { "name": "V100 Mandello", "versions": ["1042cc 115 CV", "S 115 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
     { "name": "Stelvio", "versions": ["1042cc 115 CV", "PFF 115 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "California", "versions": ["1064cc 76 CV", "1400cc 96 CV", "Diğer"], "trims": ["Standart", "Touring", "Custom", "Diğer"] },
+    { "name": "Griso", "versions": ["850cc 65 CV", "1100cc 85 CV", "1200 8V 110 CV", "Diğer"], "trims": ["Standart", "8V", "SE", "Diğer"] },
+    { "name": "Nevada", "versions": ["750cc 48 CV", "Diğer"], "trims": ["Standart", "Classic", "Diğer"] },
+    { "name": "Breva", "versions": ["750cc 48 CV", "850cc 65 CV", "1100cc 76 CV", "1200cc 85 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Norge", "versions": ["1200cc 90 CV", "GT 8V 105 CV", "Diğer"], "trims": ["Standart", "GT 8V", "Diğer"] },
+    { "name": "V11 Sport", "versions": ["1064cc 91 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     {
       "name": "Diğer",
       "versions": ["Diğer"],
