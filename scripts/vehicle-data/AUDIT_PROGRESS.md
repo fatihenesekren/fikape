@@ -59,14 +59,14 @@
 | togg | ✅ Tamamlandı | WebSearch ile doğrulandı (Temmuz 2026) — Türkiye'de sadece T10X ve T10F satışta, yeni uygun fiyatlı model henüz gelmedi ("üzerinde çalışılıyor" aşamasında). Dosya zaten eksiksizdi, değişiklik gerekmedi. |
 | byd | ✅ Tamamlandı | WebSearch ile doğrulandı — Türkiye'de Seal, **Sealion 7**, Han, Tang aktif satışta (Atto 3/Atto 2/Dolphin/Seal U geçici olarak satış dışı ama ikinci elde var, dokunulmadı). Sealion 7 tamamen eksikti, eklendi. |
 | mg | ✅ Tamamlandı | WebSearch ile doğrulandı — Türkiye'de MG7, MG HS, MG ZS, MG4, Marvel R satışta. **MG7 tamamen eksikti** (orta segment sedan), eklendi. |
-| haval | ⬜ Bekliyor | (sıradaki) |
-| changan | ⬜ Bekliyor | |
+| haval | ✅ Tamamlandı | WebSearch ile Türkiye pazarı doğrulandı — Jolion, H6, H9 resmi/güncel fiyatlandırmayla teyit edildi, dosya zaten eksiksizdi. F7/F7x/Shenshou için güvenilir Türkiye kaynağı bulunamadı (Rusya pazarı modelleri gibi görünüyor), eklenmedi. |
+| changan | ✅ Tamamlandı | Türkiye resmi fiyat listesi kaynağıyla doğrulandı — dosyada sadece CS55 Plus/UNI-K/UNI-V/Deepal S7 vardı, **Alsvin, CS15, CS35 Plus, CS55, Uni-T, X7 Plus tamamen eksikti**, eklendi (6 model). UNI-V ve Deepal S7'nin güncel satış durumu net doğrulanamadı, dokunulmadı (silinmedi). |
 
 ### Tier 3 — niş / lüks / az sayıda araç (son sıra)
 
 | Marka | Durum | Not |
 |---|---|---|
-| porsche | ⬜ Bekliyor | |
+| porsche | ✅ Tamamlandı | En büyük eksiklik: dosyada sadece güncel nesiller vardı. 911 tek girişten 7 gerçek nesile bölündü (klasik 1965-1989, 964, 993, 996, 997, 991, 992). Boxster/Cayman tek girişten gerçek nesillere bölündü (986, 987, 981, 718=982). Cayenne 3 nesle bölündü (955/957, 92A, 2017-), Panamera 2 nesle bölündü (970, 971). Tamamen eksik klasik front-engine modeller eklendi: 924, 944, 928, 968. |
 | maserati | ⬜ Bekliyor | |
 | aston-martin | ⬜ Bekliyor | |
 | abarth | ⬜ Bekliyor | |
