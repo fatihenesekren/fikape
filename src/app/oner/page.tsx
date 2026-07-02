@@ -37,6 +37,26 @@ const FUEL_TYPES: Record<string, { value: string; label: string }[]> = {
 
 const YEARS = Array.from({ length: 2026 - 1990 + 1 }, (_, i) => 2026 - i);
 
+// Model adının sonundaki "(2004-2012)" / "(2020-)" gibi nesil aralığını ayıklar
+function getModelYearRange(modelName: string): [number, number] | null {
+  const match = modelName.match(/\((\d{4})\s*-\s*(\d{4})?\)\s*$/);
+  if (!match) return null;
+  const start = parseInt(match[1], 10);
+  const end = match[2] ? parseInt(match[2], 10) : new Date().getFullYear();
+  return [start, end];
+}
+
+// Versiyon metninden (motor kodundan) muhtemel yakıt tipini tahmin eder — kullanıcı isterse değiştirebilir
+function detectFuelType(version: string): string | null {
+  const v = version.toUpperCase();
+  if (v.includes("KWH") || v.includes("ELECTRIC")) return "EV";
+  if (v.includes("PHEV") || v.includes("PLUG-IN")) return "PHEV";
+  if (v.includes("HEV") || v.includes("HYBRID") || v.includes("HİBRİT")) return "HYBRID";
+  if (v.includes("LPG") || v.includes("ECO-G")) return "LPG";
+  if (v.includes("DCI") || v.includes("TDI") || v.includes("CRDI") || v.includes("BLUEHDI") || v.includes("HDI") || v.includes("DIESEL") || v.includes("DİZEL")) return "DIESEL";
+  return "GASOLINE";
+}
+
 type CategoryKey = keyof typeof vehiclesData;
 
 export default function OnerPage() {
@@ -92,6 +112,7 @@ export default function OnerPage() {
     setSelectedModel(val);
     setSelectedVersion(""); setCustomVersion("");
     setSelectedTrim(""); setCustomTrim("");
+    setYear("");
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -170,6 +191,10 @@ export default function OnerPage() {
   }
 
   const fuelOptions = FUEL_TYPES[categorySlug] ?? [];
+  const modelYearRange = !isOtherModel ? getModelYearRange(selectedModel) : null;
+  const availableYears = modelYearRange
+    ? Array.from({ length: modelYearRange[1] - modelYearRange[0] + 1 }, (_, i) => modelYearRange[1] - i)
+    : YEARS;
 
   return (
     <div className="max-w-[480px] mx-auto px-4 py-10">
@@ -253,7 +278,16 @@ export default function OnerPage() {
             <label className="block text-xs font-semibold text-gray-700 mb-1">Versiyon</label>
             <select
               value={selectedVersion}
-              onChange={(e) => { setSelectedVersion(e.target.value); setCustomVersion(""); setSelectedTrim(""); setCustomTrim(""); }}
+              onChange={(e) => {
+                const val = e.target.value;
+                setSelectedVersion(val); setCustomVersion(""); setSelectedTrim(""); setCustomTrim("");
+                if (val && val !== "Diğer") {
+                  const detected = detectFuelType(val);
+                  if (detected && fuelOptions.some((f) => f.value === detected)) {
+                    setFuelType(detected);
+                  }
+                }
+              }}
               className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
             >
               <option value="">— Seçin (opsiyonel) —</option>
@@ -294,7 +328,7 @@ export default function OnerPage() {
             <select value={year} onChange={(e) => setYear(e.target.value)}
               className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white">
               <option value="">— Seçin —</option>
-              {YEARS.map((y) => <option key={y} value={y}>{y}</option>)}
+              {availableYears.map((y) => <option key={y} value={y}>{y}</option>)}
             </select>
           </div>
           {fuelOptions.length > 0 && (
