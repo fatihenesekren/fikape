@@ -5,6 +5,7 @@
     { "name": "H-1", "versions": ["2.5 CRDi 170", "Diğer"], "trims": ["Standart", "Starex", "Diğer"] },
     { "name": "Porter", "versions": ["2.5 CRDi 130", "Electric", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Staria", "versions": ["2.2 CRDi 177", "Diğer"], "trims": ["Standart", "Lounge", "Diğer"] },
+    { "name": "H350", "versions": ["2.5 CRDi 150", "Diğer"], "trims": ["Standart", "Panelvan", "Minibüs", "Diğer"] },
     {
       "name": "Diğer",
       "versions": ["Diğer"],

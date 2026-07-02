@@ -27,6 +27,16 @@
       "trims": ["Standart", "Diğer"]
     },
     {
+      "name": "J10 (2010-2015)",
+      "versions": ["2.3 CRDi 116 Dizel", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Star (2020-)",
+      "versions": ["3.0 CRDi 177 Dizel", "e-Star Elektrik", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
       "name": "Diğer",
       "versions": ["Diğer"],
       "trims": ["Diğer"]

@@ -179,9 +179,9 @@
 | renault | ✅ Tamamlandı | Resmi renault.com.tr ile karşılaştırıldı — Kangoo/Express/Trafic/Master zaten sağlıklıydı. Alaskan'ın Türkiye resmi satış durumu net doğrulanamadı ama zararsız olduğu için dosyada bırakıldı. Değişiklik gerekmedi. |
 | peugeot | ✅ Tamamlandı | Partner/Expert/Traveller/Boxer zaten sağlıklı ve gerçek nesillere bölünmüştü (Citroën kamyonet dosyasıyla aynı desen). Değişiklik gerekmedi. |
 | citroen | ✅ Tamamlandı | Berlingo/Nemo/Jumpy/SpaceTourer/Jumper zaten sağlıklı ve gerçek nesillere bölünmüştü. Değişiklik gerekmedi. |
-| mercedes-benz | ⬜ Bekliyor | |
-| hyundai | ⬜ Bekliyor | |
-| karsan | ⬜ Bekliyor | Yerli üretici |
+| mercedes-benz | ✅ Tamamlandı | Citan/Vito/V-Serisi/Sprinter zaten gerçek nesillere bölünmüş ve kapsamlıydı. Değişiklik gerekmedi. |
+| hyundai | ✅ Tamamlandı | **H350 (Karsan üretimi, panelvan/minibüs, 2015-2020 Türkiye'de resmi satıldı) tamamen eksikti**, düşük-orta güvenle eklendi (ikinci elde yaygın). H-100/H-1/Porter/Staria zaten sağlıklıydı. |
+| karsan | ✅ Tamamlandı | Yerli üretici — **J10 (Jest'in atası, 2010-2015) ve Star (2020-, 31 yolculu midibüs) tamamen eksikti**, eklendi. Jest/e-Jest/Atak/e-Atak/J8/e-J8 zaten sağlıklıydı. |
 
 ### Tier 2 — orta yaygınlık
 
