@@ -2,9 +2,64 @@
   "make": "Porsche",
   "models": [
     {
-      "name": "911",
+      "name": "911 (Klasik, 1965-1989)",
+      "versions": ["2.0-3.2 Standart", "Turbo (930)", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "911 (964, 1989-1994)",
+      "versions": ["Carrera 2 3.6 250", "Carrera 4 3.6 250 AWD", "Turbo 3.6 360", "Diğer"],
+      "trims": ["Coupe", "Cabriolet", "Targa", "Diğer"]
+    },
+    {
+      "name": "911 (993, 1993-1998)",
+      "versions": ["Carrera 3.6 272", "Carrera 4 3.6 272 AWD", "Turbo 3.6 408 AWD", "Diğer"],
+      "trims": ["Coupe", "Cabriolet", "Targa", "Diğer"]
+    },
+    {
+      "name": "911 (996, 1997-2005)",
+      "versions": ["Carrera 3.4 300", "Carrera S 3.6 320", "Carrera 4S 3.6 320 AWD", "Turbo 3.6 420 AWD", "GT3 3.6 360", "Diğer"],
+      "trims": ["Coupe", "Cabriolet", "Targa", "Diğer"]
+    },
+    {
+      "name": "911 (997, 2004-2012)",
+      "versions": ["Carrera 3.6 325", "Carrera S 3.8 355", "Carrera 4S 3.8 355 AWD", "Turbo 3.6 480 AWD", "GT3 3.8 435", "Diğer"],
+      "trims": ["Coupe", "Cabriolet", "Targa 4", "Targa 4S", "Diğer"]
+    },
+    {
+      "name": "911 (991, 2011-2019)",
+      "versions": ["Carrera 3.4 350", "Carrera S 3.8 400", "Carrera 4S 3.0 420 AWD", "Turbo 3.8 520 AWD", "Turbo S 3.8 580 AWD", "GT3 3.8/4.0 475-500", "Diğer"],
+      "trims": ["Coupe", "Cabriolet", "Targa 4", "Targa 4S", "Diğer"]
+    },
+    {
+      "name": "911 (992, 2018-)",
       "versions": ["Carrera 3.0 385", "Carrera S 3.0 450", "Carrera 4S 3.0 450 AWD", "Carrera GTS 3.0 480", "Turbo 3.8 580 AWD", "Turbo S 3.8 650 AWD", "GT3 4.0 510", "Diğer"],
       "trims": ["Coupe", "Cabriolet", "Targa 4", "Targa 4S", "Diğer"]
+    },
+    {
+      "name": "Boxster (986, 1996-2004)",
+      "versions": ["2.5 204", "2.7 220", "S 3.2 252", "Diğer"],
+      "trims": ["Standart", "S", "Diğer"]
+    },
+    {
+      "name": "Boxster (987, 2004-2012)",
+      "versions": ["2.7 245", "S 3.4 295", "Spyder 3.4 320", "Diğer"],
+      "trims": ["Standart", "S", "Spyder", "Diğer"]
+    },
+    {
+      "name": "Cayman (987, 2005-2012)",
+      "versions": ["2.7 245", "S 3.4 295", "R 3.4 330", "Diğer"],
+      "trims": ["Standart", "S", "R", "Diğer"]
+    },
+    {
+      "name": "Boxster (981, 2012-2016)",
+      "versions": ["2.7 265", "S 3.4 315", "GTS 3.4 330", "Spyder 3.8 375", "Diğer"],
+      "trims": ["Standart", "S", "GTS", "Spyder", "Diğer"]
+    },
+    {
+      "name": "Cayman (981, 2013-2016)",
+      "versions": ["2.7 265", "S 3.4 325", "GTS 3.4 340", "GT4 3.8 385", "Diğer"],
+      "trims": ["Standart", "S", "GTS", "GT4", "Diğer"]
     },
     {
       "name": "718 Cayman",
@@ -17,6 +72,26 @@
       "trims": ["Standart", "S", "GTS", "Spyder", "Diğer"]
     },
     {
+      "name": "924",
+      "versions": ["2.0 125", "Turbo 2.0 170", "S 2.5 160", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "944",
+      "versions": ["2.5 163", "S 2.5 190", "S2 3.0 211", "Turbo 2.5 250", "Diğer"],
+      "trims": ["Standart", "S", "S2", "Turbo", "Diğer"]
+    },
+    {
+      "name": "928",
+      "versions": ["4.5 218", "S 4.7 300", "GT 5.0 330", "GTS 5.4 350", "Diğer"],
+      "trims": ["Standart", "S", "GT", "GTS", "Diğer"]
+    },
+    {
+      "name": "968",
+      "versions": ["3.0 240", "CS 3.0 240", "Turbo S 3.0 305", "Diğer"],
+      "trims": ["Standart", "CS", "Turbo S", "Diğer"]
+    },
+    {
       "name": "Taycan",
       "versions": ["RWD 408 93.4kWh", "4S AWD 490 93.4kWh", "GTS AWD 517 105kWh", "Turbo AWD 680 105kWh", "Turbo S AWD 761 105kWh", "Diğer"],
       "trims": ["Standart", "Sport Turismo", "Cross Turismo", "Diğer"]
@@ -27,12 +102,27 @@
       "trims": ["Standart", "S", "GTS", "Turbo", "Diğer"]
     },
     {
-      "name": "Cayenne",
+      "name": "Cayenne (955/957, 2002-2010)",
+      "versions": ["3.2 V6 250", "S 4.5 340", "Turbo 4.5 450", "Turbo S 4.5 521", "Diğer"],
+      "trims": ["Standart", "S", "Turbo", "Turbo S", "Diğer"]
+    },
+    {
+      "name": "Cayenne (92A, 2010-2017)",
+      "versions": ["3.6 V6 300", "S 4.8 400", "S Hybrid 380", "Turbo 4.8 500", "Turbo S 4.8 570", "Diğer"],
+      "trims": ["Standart", "S", "GTS", "Turbo", "Turbo S", "Diğer"]
+    },
+    {
+      "name": "Cayenne (2017-)",
       "versions": ["3.0 V6 353", "3.0 S 440", "4.0 GTS V8 460", "Turbo 4.0 V8 550", "Turbo S E-Hybrid 693", "E-Hybrid 462", "Diğer"],
       "trims": ["Standart", "Coupe", "S", "GTS", "Turbo", "Turbo S E-Hybrid", "Diğer"]
     },
     {
-      "name": "Panamera",
+      "name": "Panamera (970, 2009-2016)",
+      "versions": ["3.6 V6 300", "S 4.8 400", "4S 4.8 400 AWD", "Turbo 4.8 500 AWD", "S E-Hybrid 416", "Diğer"],
+      "trims": ["Standart", "S", "4S", "Turbo", "S E-Hybrid", "Diğer"]
+    },
+    {
+      "name": "Panamera (971, 2016-)",
       "versions": ["2.9 V6 330", "2.9 S 440", "4.0 GTS 480", "Turbo 4.0 V8 550", "Turbo S E-Hybrid 700", "4 E-Hybrid 462", "Diğer"],
       "trims": ["Standart", "Sport Turismo", "Executive", "Turbo S E-Hybrid", "Diğer"]
     },

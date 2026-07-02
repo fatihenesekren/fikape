@@ -2,9 +2,39 @@
   "make": "Changan",
   "models": [
     {
+      "name": "Alsvin (2024-)",
+      "versions": ["1.4 99 2WD", "Diğer"],
+      "trims": ["Elite", "Comfort", "Diğer"]
+    },
+    {
+      "name": "CS15 (2023-)",
+      "versions": ["1.5 105 2WD", "Diğer"],
+      "trims": ["Comfort", "Diğer"]
+    },
+    {
+      "name": "CS35 Plus (2019-)",
+      "versions": ["1.6 126 2WD", "1.4T 160 2WD", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Limited", "Diğer"]
+    },
+    {
+      "name": "CS55 (2019-2022)",
+      "versions": ["1.5T 155 2WD", "Diğer"],
+      "trims": ["Elite", "Luxury", "Diğer"]
+    },
+    {
       "name": "CS55 Plus (2022-)",
       "versions": ["1.5T TGDI 156 2WD", "Diğer"],
       "trims": ["Comfort", "Luxury", "Flagship", "Diğer"]
+    },
+    {
+      "name": "Uni-T (2021-)",
+      "versions": ["1.5T 177 2WD", "Diğer"],
+      "trims": ["Elite", "Limited", "Diğer"]
+    },
+    {
+      "name": "X7 Plus (2021-)",
+      "versions": ["1.5T 167 2WD", "Diğer"],
+      "trims": ["Luxury", "Limited", "Diğer"]
     },
     {
       "name": "UNI-K (2021-)",
