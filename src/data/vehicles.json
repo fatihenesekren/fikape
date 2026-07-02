@@ -21594,6 +21594,41 @@
           ]
         },
         {
+          "name": "Corsaro",
+          "versions": [
+            "649cc 61 CV",
+            "GT 61 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "GT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X-Cape 700",
+          "versions": [
+            "694cc 76 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "3½ (Trepuntocinque)",
+          "versions": [
+            "649cc 60 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"

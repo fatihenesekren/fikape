@@ -4,6 +4,9 @@
     { "name": "X-Cape 650 (2021-)", "versions": ["649cc 60 CV", "X-Cape+ 649cc", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Seiemmezzo (2022-)", "versions": ["649cc 60 CV SCR", "649cc 60 CV STR", "Diğer"], "trims": ["SCR (Café Racer)", "STR (Tracker)", "Diğer"] },
     { "name": "Milano (2023-)", "versions": ["649cc 60 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Corsaro", "versions": ["649cc 61 CV", "GT 61 CV", "Diğer"], "trims": ["Standart", "GT", "Diğer"] },
+    { "name": "X-Cape 700", "versions": ["694cc 76 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "3½ (Trepuntocinque)", "versions": ["649cc 60 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

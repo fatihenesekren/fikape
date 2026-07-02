@@ -144,9 +144,9 @@
 | norton | ✅ Tamamlandı | Çok niş (Türkiye'de resmi distribütör yok, sadece ikinci el birkaç adet) — Superlight SS, Dominator eklendi. |
 | buell | ✅ Tamamlandı | Ulysses XB12X (adventure, tanınan model) eksikti, eklendi. |
 | bimota | ✅ Tamamlandı | Çok niş (Türkiye'de resmi satış yok) — dosyada sadece Kawasaki motorlu KB4/Tesi H2 vardı, markanın tarihsel ana hattı olan **Ducati motorlu DB serisi (DB5-DB9) ve klasik Tesi tamamen eksikti**, eklendi. |
-| moto-morini | ⬜ Bekliyor | |
-| motron | ⬜ Bekliyor | |
-| orcal | ⬜ Bekliyor | |
+| moto-morini | ✅ Tamamlandı | Korlas (resmi distribütör) ile doğrulandı — Corsaro (marka flagship naked), X-Cape 700, 3½ (Trepuntocinque, retro) eksikti, eklendi. |
+| motron | ✅ Tamamlandı | Türkiye'de doğrulanabilir ikinci el/distribütör izi bulunamadı, dosya (Cubertino/X-Pace/Unplugged) değiştirilmedi. |
+| orcal | ✅ Tamamlandı | Fransız niş marka, Türkiye'de Astor/Sprint 125 dışında doğrulanabilir ek model bulunamadı, değişiklik gerekmedi. |
 | mash | ⬜ Bekliyor | |
 | kanuni | ⬜ Bekliyor | Yerli marka |
 | cag | ⬜ Bekliyor | Yerli marka |
