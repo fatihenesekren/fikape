@@ -8,6 +8,13 @@
     { "name": "650MT", "versions": ["649cc 71 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "700CL-X", "versions": ["693cc 70 CV", "Sport", "Heritage", "Adventure", "Diğer"], "trims": ["Sport", "Heritage", "Adventure", "Diğer"] },
     { "name": "800MT", "versions": ["799cc 95 CV", "Sport", "Touring", "Diğer"], "trims": ["Sport", "Touring", "Diğer"] },
+    { "name": "250NK", "versions": ["250cc 25 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "250SR", "versions": ["250cc 25 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "450NK", "versions": ["450cc 46 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "450MT", "versions": ["450cc 46 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "450SR", "versions": ["450cc 46 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "450CL-C", "versions": ["450cc 46 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "675SR", "versions": ["675cc 93 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     {
       "name": "Diğer",
       "versions": ["Diğer"],

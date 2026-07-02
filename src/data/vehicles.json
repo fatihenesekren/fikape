@@ -16749,6 +16749,87 @@
           ]
         },
         {
+          "name": "TRK 251",
+          "versions": [
+            "250cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Leoncino 250",
+          "versions": [
+            "250cc 25 CV",
+            "Trail 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Trail",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Imperiale 400",
+          "versions": [
+            "374cc 21 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "249S",
+          "versions": [
+            "250cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "BN 251",
+          "versions": [
+            "250cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TNT 899 / 1130 (2008-2016)",
+          "versions": [
+            "899cc 122 CV",
+            "1130cc 144 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tornado Tre 1130",
+          "versions": [
+            "1130cc 148 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -17393,6 +17474,83 @@
           "trims": [
             "Sport",
             "Touring",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "250NK",
+          "versions": [
+            "250cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "250SR",
+          "versions": [
+            "250cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "450NK",
+          "versions": [
+            "450cc 46 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "450MT",
+          "versions": [
+            "450cc 46 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "450SR",
+          "versions": [
+            "450cc 46 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "450CL-C",
+          "versions": [
+            "450cc 46 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "675SR",
+          "versions": [
+            "675cc 93 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -21742,6 +21900,98 @@
             "Dapper",
             "Metro",
             "Rebel",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Super Meteor 650",
+          "versions": [
+            "648cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Tourer",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Shotgun 650",
+          "versions": [
+            "648cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bear 650",
+          "versions": [
+            "648cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Guerrilla 450",
+          "versions": [
+            "452cc 40 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Scram 411",
+          "versions": [
+            "411cc 24 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Classic 500",
+          "versions": [
+            "500cc 27 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Desert Storm",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bullet 500",
+          "versions": [
+            "500cc 27 CV",
+            "Trials 27 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Trials",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Continental GT 535 (2013-2017)",
+          "versions": [
+            "535cc 29 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },

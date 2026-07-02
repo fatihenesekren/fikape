@@ -9,6 +9,13 @@
     { "name": "Leoncino", "versions": ["500cc 47 CV", "800cc 76 CV", "Diğer"], "trims": ["Standart", "Trail", "Diğer"] },
     { "name": "TRK 502", "versions": ["500cc 47 CV", "X 500cc AWD", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
     { "name": "TRK 702", "versions": ["700cc 76 CV", "X 700cc AWD", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
+    { "name": "TRK 251", "versions": ["250cc 25 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Leoncino 250", "versions": ["250cc 25 CV", "Trail 25 CV", "Diğer"], "trims": ["Standart", "Trail", "Diğer"] },
+    { "name": "Imperiale 400", "versions": ["374cc 21 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "249S", "versions": ["250cc 25 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "BN 251", "versions": ["250cc 25 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "TNT 899 / 1130 (2008-2016)", "versions": ["899cc 122 CV", "1130cc 144 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
+    { "name": "Tornado Tre 1130", "versions": ["1130cc 148 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     {
       "name": "Diğer",
       "versions": ["Diğer"],
