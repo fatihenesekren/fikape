@@ -16,6 +16,14 @@
     { "name": "Diavel", "versions": ["168 CV 1262cc", "Diavel V4 168 CV", "Diğer"], "trims": ["Standart", "Carbon", "Diğer"] },
     { "name": "Scrambler", "versions": ["803 73 CV", "1100 86 CV", "Nightshift 73 CV", "Diğer"], "trims": ["Icon", "Full Throttle", "Nightshift", "Urban Motard", "Diğer"] },
     { "name": "Streetfighter V4", "versions": ["208 CV 1103cc", "S 208 CV", "SP 220 CV", "Diğer"], "trims": ["Standart", "S", "SP", "Diğer"] },
+    { "name": "Streetfighter V2", "versions": ["955cc 153 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "DesertX", "versions": ["937cc 110 CV", "Rally 110 CV", "Diğer"], "trims": ["Standart", "Rally", "Diğer"] },
+    { "name": "Multistrada V2", "versions": ["937cc 113 CV", "S 113 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
+    { "name": "748 / 916 / 996 / 998 / 999 (1994-2006)", "versions": ["748cc 98 CV", "916cc 114 CV", "996cc 123 CV", "998cc 136 CV", "999cc 143 CV", "Diğer"], "trims": ["Standart", "S", "R", "Biposto", "Diğer"] },
+    { "name": "SuperSport 600SS / 750SS / 900SS / 1000SS (1991-2007)", "versions": ["600cc 53 CV", "750cc 61 CV", "900cc 80 CV", "1000cc 92 CV", "Diğer"], "trims": ["Standart", "IE", "FE", "Diğer"] },
+    { "name": "Monster 600 / 620 / 695 / 750 / 900 / 1000 (1993-2008)", "versions": ["600cc 53 CV", "620cc 62 CV", "695cc 73 CV", "750cc 61 CV", "900cc 80 CV", "1000cc 92 CV", "S4 916 CV", "S4R 130 CV", "Diğer"], "trims": ["Standart", "Dark", "S4", "S2R", "S4R", "S4RS", "Diğer"] },
+    { "name": "ST2 / ST3 / ST4 (1997-2007)", "versions": ["944cc 83 CV", "992cc 100 CV", "996cc 107 CV", "ST4S 117 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
+    { "name": "Multistrada 1000DS / 1100 (2003-2009)", "versions": ["992cc 84 CV", "1078cc 95 CV", "S 95 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

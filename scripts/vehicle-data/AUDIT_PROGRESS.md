@@ -111,9 +111,9 @@
 
 | Marka | Durum | Not |
 |---|---|---|
-| triumph | ⬜ Bekliyor | |
-| ducati | ⬜ Bekliyor | |
-| harley-davidson | ⬜ Bekliyor | |
+| triumph | ✅ Tamamlandı | Güncel lineup eksikleri eklendi (Tiger Sport 660/800, Trident 800, Thruxton 400, Street Tracker 400, Bonneville Bobber/Speedmaster, Scrambler 900/1200). Klasik/discontinued modeller eklendi: Daytona (2004-2017), Tiger 800 (2010-2020, Tiger 900'ün öncülü), Sprint ST/RS, America/Speedmaster (2003-2017 cruiser), Thunderbird. |
+| ducati | ✅ Tamamlandı | Güncel lineup eksikleri eklendi: DesertX (tamamen eksikti), Streetfighter V2, Multistrada V2. Klasik superbike lineage tamamen eksikti: 748/916/996/998/999, SuperSport 600SS/750SS/900SS/1000SS. Ayrıca Monster 600-1000 (eski nesil, mevcut 696/796'dan ayrı), ST2/ST3/ST4 sport tourer, Multistrada 1000DS/1100 eklendi. |
+| harley-davidson | ✅ Tamamlandı | Güncel lineup eksikleri eklendi: Nightster/Nightster Special, Street Bob, Low Rider S/ST, Road Glide, Tri Glide. Klasik/discontinued eklendi: Dyna serisi (1991-2017, mevcut Softail-tabanlı Fat Bob/Street Bob'dan ayrı), Sportster 883/1200 Custom (klasik isimlendirme), V-Rod. |
 | royal-enfield | ⬜ Bekliyor | |
 | benelli | ⬜ Bekliyor | |
 | cf-moto | ⬜ Bekliyor | |

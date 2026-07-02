@@ -14,7 +14,15 @@
     { "name": "Road King", "versions": ["107ci 1745cc", "Special 114ci", "Diğer"], "trims": ["Standart", "Special", "Diğer"] },
     { "name": "Street Glide", "versions": ["107ci 1745cc", "Special 114ci", "ST 117ci", "Diğer"], "trims": ["Standart", "Special", "ST", "Diğer"] },
     { "name": "Electra Glide", "versions": ["107ci 1745cc", "Ultra Limited 114ci", "Diğer"], "trims": ["Standart", "Ultra Limited", "Diğer"] },
-    { "name": "Pan America", "versions": ["1252cc 150 CV", "Special 150 CV", "Diğer"], "trims": ["Standart", "Special", "Diğer"] },
+    { "name": "Pan America", "versions": ["1252cc 150 CV", "Special 150 CV", "ST 150 CV", "Diğer"], "trims": ["Standart", "Special", "ST", "Limited", "Diğer"] },
+    { "name": "Nightster", "versions": ["975cc 91 CV", "Special 91 CV", "Diğer"], "trims": ["Standart", "Special", "Diğer"] },
+    { "name": "Street Bob", "versions": ["107ci 1745cc", "114ci 1746cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Low Rider S / ST", "versions": ["117ci 1923cc", "Diğer"], "trims": ["S", "ST", "Diğer"] },
+    { "name": "Road Glide", "versions": ["107ci 1745cc", "Special 114ci", "Limited 114ci", "Diğer"], "trims": ["Standart", "Special", "Limited", "Diğer"] },
+    { "name": "Sportster 883 Custom / 1200 Custom (klasik)", "versions": ["883cc 50 CV", "1200cc 61 CV", "Diğer"], "trims": ["Custom", "Low", "Diğer"] },
+    { "name": "Dyna Super Glide / Wide Glide / Fat Bob (1991-2017)", "versions": ["1450cc", "1584cc", "103ci 1690cc", "Diğer"], "trims": ["Super Glide", "Wide Glide", "Fat Bob", "Street Bob", "Low Rider", "Diğer"] },
+    { "name": "V-Rod", "versions": ["1130cc 115 CV", "1250cc 125 CV", "Muscle", "Night Rod", "Diğer"], "trims": ["Standart", "Muscle", "Night Rod Special", "Diğer"] },
+    { "name": "Tri Glide", "versions": ["103ci 1690cc", "114ci 1868cc", "Diğer"], "trims": ["Standart", "Ultra", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

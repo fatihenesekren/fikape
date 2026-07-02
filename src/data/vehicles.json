@@ -17684,6 +17684,129 @@
           ]
         },
         {
+          "name": "Streetfighter V2",
+          "versions": [
+            "955cc 153 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DesertX",
+          "versions": [
+            "937cc 110 CV",
+            "Rally 110 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Rally",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Multistrada V2",
+          "versions": [
+            "937cc 113 CV",
+            "S 113 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "748 / 916 / 996 / 998 / 999 (1994-2006)",
+          "versions": [
+            "748cc 98 CV",
+            "916cc 114 CV",
+            "996cc 123 CV",
+            "998cc 136 CV",
+            "999cc 143 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "R",
+            "Biposto",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SuperSport 600SS / 750SS / 900SS / 1000SS (1991-2007)",
+          "versions": [
+            "600cc 53 CV",
+            "750cc 61 CV",
+            "900cc 80 CV",
+            "1000cc 92 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "IE",
+            "FE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Monster 600 / 620 / 695 / 750 / 900 / 1000 (1993-2008)",
+          "versions": [
+            "600cc 53 CV",
+            "620cc 62 CV",
+            "695cc 73 CV",
+            "750cc 61 CV",
+            "900cc 80 CV",
+            "1000cc 92 CV",
+            "S4 916 CV",
+            "S4R 130 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Dark",
+            "S4",
+            "S2R",
+            "S4R",
+            "S4RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ST2 / ST3 / ST4 (1997-2007)",
+          "versions": [
+            "944cc 83 CV",
+            "992cc 100 CV",
+            "996cc 107 CV",
+            "ST4S 117 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Multistrada 1000DS / 1100 (2003-2009)",
+          "versions": [
+            "992cc 84 CV",
+            "1078cc 95 CV",
+            "S 95 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -18099,11 +18222,125 @@
           "versions": [
             "1252cc 150 CV",
             "Special 150 CV",
+            "ST 150 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Special",
+            "ST",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Nightster",
+          "versions": [
+            "975cc 91 CV",
+            "Special 91 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Special",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Street Bob",
+          "versions": [
+            "107ci 1745cc",
+            "114ci 1746cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Low Rider S / ST",
+          "versions": [
+            "117ci 1923cc",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Road Glide",
+          "versions": [
+            "107ci 1745cc",
+            "Special 114ci",
+            "Limited 114ci",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Special",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sportster 883 Custom / 1200 Custom (klasik)",
+          "versions": [
+            "883cc 50 CV",
+            "1200cc 61 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Custom",
+            "Low",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dyna Super Glide / Wide Glide / Fat Bob (1991-2017)",
+          "versions": [
+            "1450cc",
+            "1584cc",
+            "103ci 1690cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Super Glide",
+            "Wide Glide",
+            "Fat Bob",
+            "Street Bob",
+            "Low Rider",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V-Rod",
+          "versions": [
+            "1130cc 115 CV",
+            "1250cc 125 CV",
+            "Muscle",
+            "Night Rod",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Muscle",
+            "Night Rod Special",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tri Glide",
+          "versions": [
+            "103ci 1690cc",
+            "114ci 1868cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Ultra",
             "Diğer"
           ]
         },
@@ -22386,6 +22623,183 @@
             "Standart",
             "GT",
             "R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tiger Sport 660",
+          "versions": [
+            "660cc 81 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tiger Sport 800",
+          "versions": [
+            "888cc 113 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Touring",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Trident 800",
+          "versions": [
+            "798cc 90 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Thruxton 400",
+          "versions": [
+            "398cc 40 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Street Tracker 400",
+          "versions": [
+            "398cc 40 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bonneville Bobber",
+          "versions": [
+            "1200cc 77 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Black",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bonneville Speedmaster",
+          "versions": [
+            "1200cc 77 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Scrambler 900",
+          "versions": [
+            "900cc 65 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Scrambler 1200",
+          "versions": [
+            "1200cc 90 CV",
+            "X 90 CV",
+            "XE 90 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "X",
+            "XE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Daytona (2004-2017)",
+          "versions": [
+            "600cc 110 CV",
+            "675cc 128 CV",
+            "675 R 128 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tiger 800 (2010-2020)",
+          "versions": [
+            "800cc 95 CV",
+            "XC 95 CV",
+            "XR 95 CV",
+            "XRx 95 CV",
+            "XCx 95 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "XC",
+            "XR",
+            "XRx",
+            "XCx",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sprint ST / RS (1999-2011)",
+          "versions": [
+            "955cc 118 CV",
+            "1050cc 130 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "ST",
+            "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "America / Speedmaster (2003-2017)",
+          "versions": [
+            "865cc 61 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Thunderbird (2009-2018)",
+          "versions": [
+            "1600cc 86 CV",
+            "1700cc 94 CV",
+            "Storm",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Storm",
+            "Commander",
+            "LT",
             "Diğer"
           ]
         },
