@@ -50,10 +50,10 @@
 | mitsubishi | ✅ Tamamlandı | En büyük eksiklik: **Pajero tamamen eksikti** (Türkiye'de çok popüler off-roader), 3 nesille eklendi. Lancer tamamen eksikti, 3 nesille eklendi. Carisma, Galant, Space Wagon, Grandis tamamen eksik nameplate'ler olarak eklendi. Colt tek girişten 3 nesle bölündü (1996-2004 klasik hatchback, 2004-2012, 2023- reborn). ASX ve L200 gerçek nesillere bölündü. |
 | land-rover | ✅ Tamamlandı | Aynı desen — Defender/Discovery/Range Rover/Range Rover Sport/Range Rover Evoque tek girişten ibaretti. Klasik Defender (1983-2016) eklendi. Discovery 4 nesle bölündü (1989-2016 + güncel). Range Rover 4 nesle, Range Rover Sport 3 nesle, Evoque 2 nesle bölündü. **Freelander tamamen eksikti** (Türkiye'de çok yaygın kompakt SUV), 2 nesille eklendi. |
 | jaguar | ✅ Tamamlandı | XF tek girişten 2 nesle bölündü. Tamamen eksik nameplate'ler eklendi: XJ (bayrak gemisi sedan, 3 nesil), XK (spor coupe/cabrio), X-Type (Mondeo tabanlı, yaygın), S-Type (orta-üst segment sedan). E-Pace/F-Pace/F-Type/I-Pace/XE zaten sağlıklıydı. |
-| lexus | ⬜ Bekliyor | (sıradaki) |
-| alfa-romeo | ⬜ Bekliyor | |
-| ds | ⬜ Bekliyor | |
-| cupra | ⬜ Bekliyor | |
+| lexus | ✅ Tamamlandı | IS tek girişten 4 nesle bölündü (XE10-XE30+güncel). RX 4 nesle, NX 2 nesle bölündü. LS eski nesil (2006-2017) eklendi. Tamamen eksik nameplate'ler eklendi: GS (bayrak sedan, 1997-2020, üretimi durdu) ve CT (200h hatchback, 2010-2020). ES/LC/UX/GX/LX zaten sağlıklıydı. |
+| alfa-romeo | ✅ Tamamlandı | Dosya zaten görece iyi durumdaydı (147/156/159/MiTo/Giulietta nesillere ayrılmıştı). Klasik nameplate'ler tamamen eksikti: 33, 75, 164, 145/146, 166, GTV/Spider (1995-2005), GT (2003-2010) eklendi. |
+| ds | ✅ Tamamlandı | DS 3 ve DS 4 tek girişten 2'şer nesle bölündü (eski Citroën-kökenli 2010-2019/2011-2018 nesilleri + yeni bağımsız DS nesilleri). **DS 5 tamamen eksikti** (2011-2018, Citroën DS5 kökenli), eklendi. DS 7/DS 9 zaten sağlıklıydı. |
+| cupra | ⬜ Bekliyor | (sıradaki) |
 | smart | ⬜ Bekliyor | |
 | tesla | ⬜ Bekliyor | |
 | togg | ⬜ Bekliyor | |

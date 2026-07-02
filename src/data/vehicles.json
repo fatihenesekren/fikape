@@ -74,23 +74,80 @@
       "make": "Alfa Romeo",
       "models": [
         {
-          "name": "147 (2000-2010)",
+          "name": "33",
           "versions": [
-            "1.6 Twin Spark 105",
-            "1.6 Twin Spark 120",
-            "2.0 Twin Spark 150",
-            "1.9 JTD 100",
-            "1.9 JTD 115",
-            "1.9 JTD 120",
-            "1.9 JTDm 140",
-            "GTA 3.2 V6 250",
+            "1.3 79",
+            "1.5 95",
+            "1.7 16V 129",
+            "1.7 TD 80",
             "Diğer"
           ],
           "trims": [
-            "Progression",
-            "Distinctive",
+            "Standart",
+            "TI",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "75",
+          "versions": [
+            "1.8 120",
+            "2.0 148",
+            "2.5 V6 156",
+            "1.8 Turbo 155",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "TS",
+            "America",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "164",
+          "versions": [
+            "2.0 TS 148",
+            "3.0 V6 192",
+            "2.5 TD 116",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Super",
+            "Q4",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "145/146 (1994-2001)",
+          "versions": [
+            "1.4 103",
+            "1.6 120",
+            "1.8 144",
+            "2.0 TS 155",
+            "1.9 JTD 90",
+            "1.9 JTD 105",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "L",
+            "Ti",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GTV/Spider (1995-2005)",
+          "versions": [
+            "2.0 TS 150",
+            "3.0 V6 220",
+            "2.4 JTD 137",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Lusso",
-            "GTA",
             "Diğer"
           ]
         },
@@ -115,6 +172,57 @@
             "Lusso",
             "Sportwagon",
             "GTA",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "166 (1998-2007)",
+          "versions": [
+            "2.0 TS 155",
+            "2.5 V6 190",
+            "3.0 V6 226",
+            "2.4 JTD 136",
+            "2.4 JTD 175",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Distinctive",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "147 (2000-2010)",
+          "versions": [
+            "1.6 Twin Spark 105",
+            "1.6 Twin Spark 120",
+            "2.0 Twin Spark 150",
+            "1.9 JTD 100",
+            "1.9 JTD 115",
+            "1.9 JTD 120",
+            "1.9 JTDm 140",
+            "GTA 3.2 V6 250",
+            "Diğer"
+          ],
+          "trims": [
+            "Progression",
+            "Distinctive",
+            "Lusso",
+            "GTA",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GT (2003-2010)",
+          "versions": [
+            "1.9 JTD 150",
+            "2.0 JTS 165",
+            "3.2 V6 240",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Distinctive",
             "Diğer"
           ]
         },
@@ -3144,7 +3252,24 @@
       "make": "DS",
       "models": [
         {
-          "name": "DS 3",
+          "name": "DS 3 (2010-2019)",
+          "versions": [
+            "1.2 PureTech 82",
+            "1.2 PureTech 110",
+            "1.6 THP 155",
+            "1.6 BlueHDi 100",
+            "1.6 BlueHDi 120",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Chic",
+            "Sport Chic",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DS 3 (2019-)",
           "versions": [
             "1.2 PureTech 100",
             "1.2 PureTech 130",
@@ -3161,7 +3286,22 @@
           ]
         },
         {
-          "name": "DS 4",
+          "name": "DS 4 (2011-2018)",
+          "versions": [
+            "1.6 THP 165",
+            "1.6 e-HDi 115",
+            "2.0 HDi 160",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Chic",
+            "Sport Chic",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DS 4 (2021-)",
           "versions": [
             "1.2 PureTech 130",
             "1.5 BlueHDi 130",
@@ -3175,6 +3315,22 @@
             "Grand Chic",
             "Performance Line",
             "Rivoli",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DS 5 (2011-2018)",
+          "versions": [
+            "1.6 THP 165",
+            "1.6 e-HDi 115",
+            "2.0 HDi 160",
+            "Hybrid4 200",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Chic",
+            "Sport Chic",
             "Diğer"
           ]
         },
@@ -7131,7 +7287,51 @@
       "make": "Lexus",
       "models": [
         {
-          "name": "IS",
+          "name": "IS (1999-2005)",
+          "versions": [
+            "IS 200 2.0 155",
+            "IS 300 3.0 218",
+            "IS 200d 2.0D 116",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "IS (2005-2013)",
+          "versions": [
+            "IS 220d 2.2D 177",
+            "IS 250 2.5 208",
+            "ISF 5.0 V8 423",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Executive",
+            "F Sport",
+            "ISF",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "IS (2013-2020)",
+          "versions": [
+            "IS 300h 223 Hybrid",
+            "IS 200t 2.0T 245",
+            "Diğer"
+          ],
+          "trims": [
+            "Business",
+            "Prestige",
+            "F Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "IS (2020-)",
           "versions": [
             "IS 300h 223 Hybrid",
             "IS 300 245 AWD",
@@ -7159,7 +7359,50 @@
           ]
         },
         {
-          "name": "LS",
+          "name": "GS",
+          "versions": [
+            "GS 300 3.0 220",
+            "GS 430 4.3 V8 282",
+            "GS 450h 3.5 Hybrid 345",
+            "GS 300h 2.5 Hybrid 223",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Executive",
+            "F Sport",
+            "Luxury",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CT",
+          "versions": [
+            "CT 200h 1.8 Hybrid 136",
+            "Diğer"
+          ],
+          "trims": [
+            "Business",
+            "Prestige",
+            "F Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "LS (2006-2017)",
+          "versions": [
+            "LS 460 4.6 V8 380",
+            "LS 600h 5.0 Hybrid AWD 445",
+            "Diğer"
+          ],
+          "trims": [
+            "Premium",
+            "Executive",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "LS (2017-)",
           "versions": [
             "LS 500h 359 AWD Hybrid",
             "Diğer"
@@ -7200,7 +7443,21 @@
           ]
         },
         {
-          "name": "NX",
+          "name": "NX (2014-2021)",
+          "versions": [
+            "NX 300h 2.5 Hybrid AWD 197",
+            "NX 300 2.0T 235 AWD",
+            "Diğer"
+          ],
+          "trims": [
+            "Business",
+            "Prestige",
+            "F Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NX (2021-)",
           "versions": [
             "NX 350h 243 Hybrid FWD",
             "NX 350h 243 Hybrid AWD",
@@ -7217,7 +7474,50 @@
           ]
         },
         {
-          "name": "RX",
+          "name": "RX (2003-2009)",
+          "versions": [
+            "RX 300 3.0 204",
+            "RX 400h 3.3 Hybrid AWD 272",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Executive",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RX (2009-2015)",
+          "versions": [
+            "RX 350 3.5 277",
+            "RX 450h 3.5 Hybrid AWD 299",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Executive",
+            "F Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RX (2015-2022)",
+          "versions": [
+            "RX 350 3.5 305",
+            "RX 450h 3.5 Hybrid AWD 313",
+            "RX 450hL 3.5 Hybrid AWD 313",
+            "Diğer"
+          ],
+          "trims": [
+            "Business",
+            "Prestige",
+            "F Sport",
+            "Luxury",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RX (2022-)",
           "versions": [
             "RX 350h 246 Hybrid FWD",
             "RX 350h 246 Hybrid AWD",

@@ -2,14 +2,29 @@
   "make": "DS",
   "models": [
     {
-      "name": "DS 3",
+      "name": "DS 3 (2010-2019)",
+      "versions": ["1.2 PureTech 82", "1.2 PureTech 110", "1.6 THP 155", "1.6 BlueHDi 100", "1.6 BlueHDi 120", "Diğer"],
+      "trims": ["Standart", "Chic", "Sport Chic", "Diğer"]
+    },
+    {
+      "name": "DS 3 (2019-)",
       "versions": ["1.2 PureTech 100", "1.2 PureTech 130", "E-Tense 100kW 136", "E-Tense 115kW 156", "Diğer"],
       "trims": ["So Chic", "Grand Chic", "Performance Line", "Rivoli", "Diğer"]
     },
     {
-      "name": "DS 4",
+      "name": "DS 4 (2011-2018)",
+      "versions": ["1.6 THP 165", "1.6 e-HDi 115", "2.0 HDi 160", "Diğer"],
+      "trims": ["Standart", "Chic", "Sport Chic", "Diğer"]
+    },
+    {
+      "name": "DS 4 (2021-)",
       "versions": ["1.2 PureTech 130", "1.5 BlueHDi 130", "1.6 PureTech 225", "E-Tense 225 FWD", "E-Tense 300 AWD", "Diğer"],
       "trims": ["So Chic", "Grand Chic", "Performance Line", "Rivoli", "Diğer"]
+    },
+    {
+      "name": "DS 5 (2011-2018)",
+      "versions": ["1.6 THP 165", "1.6 e-HDi 115", "2.0 HDi 160", "Hybrid4 200", "Diğer"],
+      "trims": ["Standart", "Chic", "Sport Chic", "Diğer"]
     },
     {
       "name": "DS 7",
