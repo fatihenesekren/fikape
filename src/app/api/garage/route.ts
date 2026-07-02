@@ -44,15 +44,28 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
-  const { productId, action, soldReason } = await req.json();
+  const { productId, action, soldReason, soldMonthsAgo } = await req.json();
   const userId = Number(session.user.id);
 
   if (action === "sell") {
+    const userProduct = await prisma.userProduct.findUnique({
+      where: { userId_productId: { userId, productId } },
+    });
+    if (!userProduct) {
+      return NextResponse.json({ error: "Garajında değil" }, { status: 404 });
+    }
+
+    let soldAt = new Date();
+    if (typeof soldMonthsAgo === "number" && soldMonthsAgo > 0) {
+      soldAt.setMonth(soldAt.getMonth() - soldMonthsAgo);
+      if (soldAt < userProduct.createdAt) soldAt = userProduct.createdAt;
+    }
+
     await prisma.userProduct.update({
       where: { userId_productId: { userId, productId } },
       data: {
         ownershipStatus: "PAST",
-        soldAt: new Date(),
+        soldAt,
         soldReason: soldReason ?? null,
       },
     });

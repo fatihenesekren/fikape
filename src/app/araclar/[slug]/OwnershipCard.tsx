@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { SOLD_REASONS, SOLD_REASON_LABEL } from "@/lib/soldReasons";
+import { SOLD_REASONS, SOLD_REASON_LABEL, SOLD_TIME_SLOTS, SOLD_TIME_MONTHS_AGO } from "@/lib/soldReasons";
 
 interface Props {
   productId: number;
@@ -27,6 +27,7 @@ export function OwnershipCard({
   const [soldReason, setSoldReason] = useState(initialSoldReason);
   const [showSellForm, setShowSellForm] = useState(false);
   const [selectedReason, setSelectedReason] = useState("");
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState("now");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -65,13 +66,19 @@ export function OwnershipCard({
     await fetch("/api/garage", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ productId, action: "sell", soldReason: selectedReason }),
+      body: JSON.stringify({
+        productId,
+        action: "sell",
+        soldReason: selectedReason,
+        soldMonthsAgo: SOLD_TIME_MONTHS_AGO[selectedTimeSlot] ?? 0,
+      }),
     });
     setInGarage(false);
     setIsSold(true);
     setSoldReason(selectedReason);
     setShowSellForm(false);
     setSelectedReason("");
+    setSelectedTimeSlot("now");
     setLoading(false);
     router.refresh();
   }
@@ -183,6 +190,26 @@ export function OwnershipCard({
       {/* Satış formu */}
       {showSellForm && inGarage && (
         <div className="border-t border-gray-100 px-5 py-4 space-y-4">
+          <div>
+            <p className="text-sm font-semibold text-gray-800 mb-2">Ne zaman sattınız?</p>
+            <div className="flex flex-wrap gap-2">
+              {SOLD_TIME_SLOTS.map((s) => (
+                <button
+                  key={s.key}
+                  type="button"
+                  onClick={() => setSelectedTimeSlot(s.key)}
+                  className="px-3 py-2 rounded-xl text-sm font-semibold border-2 transition-all"
+                  style={
+                    selectedTimeSlot === s.key
+                      ? { background: "#111", borderColor: "#111", color: "#fff" }
+                      : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
+                  }
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+          </div>
           <p className="text-sm font-semibold text-gray-800">Bu aracı neden sattınız?</p>
           <div className="flex flex-wrap gap-2">
             {SOLD_REASONS.map((r) => (
