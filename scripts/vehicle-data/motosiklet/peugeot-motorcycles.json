@@ -6,6 +6,8 @@
     { "name": "Tweet 125 / 150", "versions": ["125cc 11 CV", "150cc 12 CV", "Diğer"], "trims": ["Standart", "Evo", "Diğer"] },
     { "name": "Kisbee 50 / 100", "versions": ["50cc 3 CV", "100cc 6 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Metropolis 400 (3 Tekerlekli)", "versions": ["400cc 32 CV", "Diğer"], "trims": ["Standart", "RS", "Diğer"] },
+    { "name": "Pulsion / Pulsion Evo", "versions": ["125cc 15 CV", "Evo 125cc", "Diğer"], "trims": ["Standart", "Evo", "Diğer"] },
+    { "name": "XP400 SUV", "versions": ["400cc 32 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

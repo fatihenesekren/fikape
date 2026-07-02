@@ -5,6 +5,7 @@
     { "name": "MC", "versions": ["85cc", "125cc 2T", "250cc 2T", "350cc 4T", "450cc 4T", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "ES", "versions": ["125cc 4T", "700cc 4T", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "SM", "versions": ["125cc 4T", "700cc 4T", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "TXT (Trial)", "versions": ["250cc 2T", "300cc 2T", "Racing 250cc", "Diğer"], "trims": ["Standart", "Racing", "Diğer"] },
     {
       "name": "Diğer",
       "versions": ["Diğer"],

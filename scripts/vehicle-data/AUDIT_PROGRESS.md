@@ -120,9 +120,9 @@
 | aprilia | ✅ Tamamlandı | RS 457/Tuono 457 (yeni A2 segment) eksikti. Klasikler eklendi: RSV Mille (1998-2004, marka bayrak gemisi), Shiver 750/SL750, Scarabeo 200/500 scooter, Mana 850 GT (otomatik). |
 | mv-agusta | ✅ Tamamlandı | Dragster 800 (RR/RC), Rush 1000, Enduro Veloce güncel modelleri eksikti. **F4 (1998-2018, marka bayrak gemisi süperbike) tamamen eksikti**, eklendi. |
 | husqvarna | ✅ Tamamlandı | Dosyada sadece cadde (street) modelleri vardı, **tüm enduro/motokros off-road lineup'ı (TE/FE/FC/TC serileri) tamamen eksikti** — Türkiye'de Husqvarna'nın güçlü olduğu segment. Vitpilen 125/Svartpilen 250/Svartpilen-Vitpilen 801/701 Supermoto de eklendi. |
-| peugeot-motorcycles | ⬜ Bekliyor | |
-| gas-gas | ⬜ Bekliyor | |
-| fb-mondial | ⬜ Bekliyor | |
+| peugeot-motorcycles | ✅ Tamamlandı | Pulsion/Pulsion Evo ve XP400 SUV (maxi-scooter) güncel modelleri eksikti, eklendi. |
+| gas-gas | ✅ Tamamlandı | Dosyada sadece EC/MC/ES/SM kategorileri vardı, **TXT (Trial) kategorisi tamamen eksikti** — GasGas'ın tarihsel olarak en güçlü olduğu segment, eklendi. |
+| fb-mondial | ✅ Tamamlandı | İtalyan FB Mondial (Türkiye'de niş/az sayıda ithal, mondial-tr'den [Mondial Motor TR] ayrı marka) — Imola ve Flat Track modelleri eksikti, eklendi. |
 | hero | ⬜ Bekliyor | |
 | moto-guzzi | ⬜ Bekliyor | |
 | indian | ⬜ Bekliyor | |

@@ -18198,6 +18198,29 @@
           ]
         },
         {
+          "name": "Imola",
+          "versions": [
+            "125cc 15 CV",
+            "300cc 26 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Flat Track",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -18264,6 +18287,20 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TXT (Trial)",
+          "versions": [
+            "250cc 2T",
+            "300cc 2T",
+            "Racing 250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Racing",
             "Diğer"
           ]
         },
@@ -21571,6 +21608,30 @@
           "trims": [
             "Standart",
             "RS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsion / Pulsion Evo",
+          "versions": [
+            "125cc 15 CV",
+            "Evo 125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Evo",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XP400 SUV",
+          "versions": [
+            "400cc 32 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
