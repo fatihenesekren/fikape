@@ -2195,7 +2195,7 @@
           ]
         },
         {
-          "name": "Duster (2017-)",
+          "name": "Duster (2017-2024)",
           "versions": [
             "TCe 100 2WD",
             "TCe 130 4WD",
@@ -2208,6 +2208,39 @@
             "Expression",
             "Extreme",
             "Journey",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dokker",
+          "versions": [
+            "1.6 MPI 85",
+            "1.6 MPI 102",
+            "1.5 dCi 75",
+            "1.5 dCi 90",
+            "1.5 dCi 95",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiance",
+            "Laureate",
+            "Stepway",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Lodgy",
+          "versions": [
+            "1.6 SCe 100",
+            "1.5 dCi 95",
+            "1.5 dCi 115",
+            "ECO-G 110 LPG",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambiance",
+            "Laureate",
+            "Stepway",
             "Diğer"
           ]
         },
@@ -8528,6 +8561,22 @@
             "Zen",
             "Intens",
             "RS Line",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Duster (2024-)",
+          "versions": [
+            "TCe 130 MHEV",
+            "Full Hybrid 155",
+            "ECO-G 100 LPG",
+            "Diğer"
+          ],
+          "trims": [
+            "Essential",
+            "Expression",
+            "Extreme",
+            "Journey",
             "Diğer"
           ]
         },

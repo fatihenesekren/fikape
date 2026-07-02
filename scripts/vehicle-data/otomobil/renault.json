@@ -62,6 +62,11 @@
       "trims": ["Zen", "Intens", "RS Line", "Diğer"]
     },
     {
+      "name": "Duster (2024-)",
+      "versions": ["TCe 130 MHEV", "Full Hybrid 155", "ECO-G 100 LPG", "Diğer"],
+      "trims": ["Essential", "Expression", "Extreme", "Journey", "Diğer"]
+    },
+    {
       "name": "Austral",
       "versions": ["1.2 TCe 130 MHEV", "1.2 TCe 160 MHEV", "E-Tech Full Hybrid 200", "E-Tech Plug-in 300 AWD", "Diğer"],
       "trims": ["Zen", "Techno", "Esprit Alpine", "Iconic", "Diğer"]
