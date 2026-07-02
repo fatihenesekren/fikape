@@ -23072,6 +23072,17 @@
           ]
         },
         {
+          "name": "Varg SM (Supermoto)",
+          "versions": [
+            "Elektrik 80 kW 110 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"

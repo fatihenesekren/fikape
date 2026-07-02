@@ -3,6 +3,7 @@
   "models": [
     { "name": "Varg (2023-)", "versions": ["Elektrik 80 kW 110 CV Motocross", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Varg EX (2024-)", "versions": ["Elektrik 80 kW 110 CV Enduro", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Varg SM (Supermoto)", "versions": ["Elektrik 80 kW 110 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

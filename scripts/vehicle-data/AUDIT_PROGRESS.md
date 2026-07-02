@@ -153,9 +153,9 @@
 | arora | ✅ Tamamlandı | Yerli marka, gerçekliği doğrulandı (motoron.com.tr 2026 fiyat listesi). Dosyada generic placeholder vardı, gerçek model isimleriyle (Freedom 50, Dazzle 50, Jaguar 125, AR 125/251, GS 525, CK 250, Supersport GP250, Angel Pro vb.) değiştirildi. |
 | asya | ✅ Tamamlandı | Yerli üretici, gerçekliği doğrulandı (Nazilli/Aydın fabrikası, 2004'ten beri, Wikipedia). Dosyada generic placeholder vardı, gerçek model isimleriyle (Nostalji 125, Thunder, SkyMax/Pro, Bubbly, T-Rex, Turkcup, Ultra 150, Polo vb.) değiştirildi. Not: Asya Motor ayrıca Daelim'in Türkiye distribütörü ve Quswa markasının sahibi — bunlar ayrı marka dosyaları olarak ele alınmalı, karıştırılmamalı. |
 | colove | ✅ Tamamlandı | Muhtemelen "Kove" (Çinli üretici, kovemoto.com.tr resmi distribütörü) markasının bu veri setindeki yazımı — 800X Pro/800X Rally eksikti, eklendi. Marka adı riski not düşüldü: gelecekte "kove" adıyla ayrı bir dosya oluşturulursa mükerrerlik kontrol edilmeli. |
-| energica | ⬜ Bekliyor | Elektrikli |
-| zero-motorcycles | ⬜ Bekliyor | Elektrikli |
-| stark-future | ⬜ Bekliyor | Elektrikli |
+| energica | ✅ Tamamlandı | Resmi Türkiye distribütörü doğrulandı (Ankara), dosya (Ego/Eva Ribelle/Experia) zaten eksiksizdi. |
+| zero-motorcycles | ✅ Tamamlandı | Resmi Türkiye distribütörü doğrulandı (İmecar Otomotiv, Antalya), dosya zaten eksiksizdi. |
+| stark-future | ✅ Tamamlandı | Resmi Türkiye distribütörü doğrulandı (Uzun Moto) — Varg SM (Supermoto) eksikti, eklendi. |
 | silence | ⬜ Bekliyor | Elektrikli |
 | super-soco | ⬜ Bekliyor | Elektrikli |
 | sur-ron | ⬜ Bekliyor | Elektrikli |
