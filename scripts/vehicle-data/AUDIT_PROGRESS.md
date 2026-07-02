@@ -43,8 +43,8 @@
 
 | Marka | Durum | Not |
 |---|---|---|
-| volvo | ⬜ Bekliyor | (sıradaki, Tier 1 tamamlandı 🎉) |
-| mini | ⬜ Bekliyor | |
+| volvo | ✅ Tamamlandı | Aynı desen — dosyada sadece güncel nesiller vardı. Türkiye'de çok yaygın klasikler tamamen eksikti: 240 (1974-1993, ikonik RWD sedan/wagon), 940 (1990-1998), 850 (1991-1997). S40/V40/C30/S60/S70/V70/S80/XC60/XC90 tek girişten gerçek nesillere bölündü (S60/S70-V70/S80 3'er nesil, XC60/XC90 2'şer nesil). XC70 (2000-2016, cross country wagon) tamamen eksikti, eklendi. XC40/S90/V90/C40 Recharge/EX30/EX90 zaten sağlıklıydı. |
+| mini | ⬜ Bekliyor | (sıradaki) |
 | jeep | ⬜ Bekliyor | |
 | subaru | ⬜ Bekliyor | |
 | mitsubishi | ⬜ Bekliyor | |

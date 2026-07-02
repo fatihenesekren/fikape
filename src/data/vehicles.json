@@ -13762,7 +13762,160 @@
       "make": "Volvo",
       "models": [
         {
-          "name": "S60",
+          "name": "240",
+          "versions": [
+            "2.0 90",
+            "2.3 115",
+            "2.3 Turbo 155",
+            "2.4 D 82",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "GL",
+            "GLT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "940",
+          "versions": [
+            "2.0 116",
+            "2.3 131",
+            "2.3 Turbo 165",
+            "2.4 D 102",
+            "Diğer"
+          ],
+          "trims": [
+            "GL",
+            "GLE",
+            "Turbo",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "850",
+          "versions": [
+            "2.0 126",
+            "2.5 144",
+            "2.5 Turbo 225",
+            "2.5 TDI 116",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "GLT",
+            "T5",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S40 (1995-2004)",
+          "versions": [
+            "1.6 109",
+            "1.8 115",
+            "2.0 T4 200",
+            "1.9 TDI 90",
+            "1.9 TDI 115",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S40 (2004-2012)",
+          "versions": [
+            "1.6 100",
+            "1.8 125",
+            "2.0 145",
+            "2.4 170",
+            "1.6 D 109",
+            "2.0 D 136",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "R-Design",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V40 (2012-2019)",
+          "versions": [
+            "1.6 120",
+            "1.6 T3 152",
+            "2.0 T5 245",
+            "1.6 D2 115",
+            "2.0 D3 150",
+            "2.0 D4 190",
+            "Diğer"
+          ],
+          "trims": [
+            "Momentum",
+            "R-Design",
+            "Inscription",
+            "Cross Country",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C30",
+          "versions": [
+            "1.6 100",
+            "1.8 125",
+            "2.0 145",
+            "2.5 T5 230",
+            "1.6 D 109",
+            "2.0 D 136",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "R-Design",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S60 (2000-2009)",
+          "versions": [
+            "2.0 T 180",
+            "2.4 170",
+            "2.5 T 210",
+            "2.4 D 130",
+            "2.4 D5 180",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S60 (2010-2018)",
+          "versions": [
+            "T3 150",
+            "T4 190",
+            "T5 245",
+            "D3 150",
+            "D4 181",
+            "D5 220",
+            "Diğer"
+          ],
+          "trims": [
+            "Momentum",
+            "R-Design",
+            "Summum",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S60 (2018-)",
           "versions": [
             "B3 163",
             "B4 197",
@@ -13776,6 +13929,123 @@
             "R-Design",
             "Inscription",
             "Ultimate",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S70/V70 (1996-2000)",
+          "versions": [
+            "2.0 126",
+            "2.5 144",
+            "2.5 T5 240",
+            "2.5 TDI 140",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V70 (2000-2007)",
+          "versions": [
+            "2.0 T 180",
+            "2.4 170",
+            "2.5 T 210",
+            "2.4 D 130",
+            "2.4 D5 180",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V70 (2007-2016)",
+          "versions": [
+            "2.0 145",
+            "3.0 T6 304",
+            "2.0 D3 136",
+            "2.4 D5 215",
+            "Diğer"
+          ],
+          "trims": [
+            "Momentum",
+            "Summum",
+            "R-Design",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V60 (2010-2018)",
+          "versions": [
+            "T3 150",
+            "T4 190",
+            "T5 245",
+            "D3 150",
+            "D4 181",
+            "D5 220",
+            "Diğer"
+          ],
+          "trims": [
+            "Momentum",
+            "R-Design",
+            "Summum",
+            "Cross Country",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V60 (2018-)",
+          "versions": [
+            "B3 163",
+            "B4 197",
+            "B4 AWD 211",
+            "B5 AWD 250",
+            "T8 AWD PHEV 455",
+            "Diğer"
+          ],
+          "trims": [
+            "Momentum",
+            "R-Design",
+            "Inscription",
+            "Ultimate",
+            "Cross Country",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S80 (1998-2006)",
+          "versions": [
+            "2.0 T 163",
+            "2.4 170",
+            "2.9 200",
+            "2.4 D 130",
+            "2.5 TDI 140",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S80 (2006-2016)",
+          "versions": [
+            "2.0 T4 180",
+            "3.0 T6 285",
+            "2.0 D3 136",
+            "2.4 D5 215",
+            "Diğer"
+          ],
+          "trims": [
+            "Momentum",
+            "Summum",
+            "R-Design",
             "Diğer"
           ]
         },
@@ -13792,25 +14062,6 @@
             "Momentum",
             "Inscription",
             "Ultimate",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "V60",
-          "versions": [
-            "B3 163",
-            "B4 197",
-            "B4 AWD 211",
-            "B5 AWD 250",
-            "T8 AWD PHEV 455",
-            "Diğer"
-          ],
-          "trims": [
-            "Momentum",
-            "R-Design",
-            "Inscription",
-            "Ultimate",
-            "Cross Country",
             "Diğer"
           ]
         },
@@ -13852,7 +14103,41 @@
           ]
         },
         {
-          "name": "XC60",
+          "name": "XC70",
+          "versions": [
+            "2.5 T 210",
+            "3.0 T6 238",
+            "2.4 D5 185",
+            "2.4 D5 215",
+            "Diğer"
+          ],
+          "trims": [
+            "Momentum",
+            "Summum",
+            "Ocean Race",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XC60 (2008-2017)",
+          "versions": [
+            "2.0 T4 180",
+            "2.0 T5 245",
+            "3.0 T6 304",
+            "2.0 D3 150",
+            "2.4 D4 181",
+            "2.4 D5 220",
+            "Diğer"
+          ],
+          "trims": [
+            "Momentum",
+            "R-Design",
+            "Summum",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XC60 (2017-)",
           "versions": [
             "B4 197",
             "B4 AWD 211",
@@ -13871,7 +14156,24 @@
           ]
         },
         {
-          "name": "XC90",
+          "name": "XC90 (2002-2014)",
+          "versions": [
+            "2.5 T 210",
+            "2.9 T6 272",
+            "4.4 V8 315",
+            "2.4 D5 163",
+            "2.4 D5 200",
+            "Diğer"
+          ],
+          "trims": [
+            "Momentum",
+            "Summum",
+            "R-Design",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XC90 (2015-)",
           "versions": [
             "B5 AWD 250",
             "B6 AWD 300",
