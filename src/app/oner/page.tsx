@@ -102,7 +102,8 @@ export default function OnerPage() {
 
   function handleCategoryChange(val: string) {
     setCategorySlug(val as CategoryKey);
-    setSelectedMake(""); setSelectedModel(""); setCustomModel("");
+    setSelectedMake(""); setCustomMake("");
+    setSelectedModel(""); setCustomModel("");
     setSelectedVersion(""); setCustomVersion("");
     setSelectedTrim(""); setCustomTrim("");
     setFuelType("");
