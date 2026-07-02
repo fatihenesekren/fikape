@@ -147,9 +147,9 @@
 | moto-morini | ✅ Tamamlandı | Korlas (resmi distribütör) ile doğrulandı — Corsaro (marka flagship naked), X-Cape 700, 3½ (Trepuntocinque, retro) eksikti, eklendi. |
 | motron | ✅ Tamamlandı | Türkiye'de doğrulanabilir ikinci el/distribütör izi bulunamadı, dosya (Cubertino/X-Pace/Unplugged) değiştirilmedi. |
 | orcal | ✅ Tamamlandı | Fransız niş marka, Türkiye'de Astor/Sprint 125 dışında doğrulanabilir ek model bulunamadı, değişiklik gerekmedi. |
-| mash | ⬜ Bekliyor | |
-| kanuni | ⬜ Bekliyor | Yerli marka |
-| cag | ⬜ Bekliyor | Yerli marka |
+| mash | ✅ Tamamlandı | Mondial Motor distribütörlüğü doğrulandı — X-Ride (125/650) eksikti, eklendi. |
+| kanuni | ✅ Tamamlandı | Yerli üretici, gerçek marka doğrulandı (1987'den beri, Tuzla fabrikası, Wikipedia). Dosyada generic placeholder vardı ("Motosiklet 50/100/125", "Scooter 50/125") — gerçek model isimleriyle (Trodon XS, Tigrina, Puma 150, Nev 50) değiştirildi. |
+| cag | ❌ Kaldırıldı | Araştırıldı, gerçek bir motosiklet üreticisi bulunamadı — "Çağ Motor" adıyla bulunan tek işletme Ankara Ostim'de bir motor tamir/yenileme atölyesi (1986), motosiklet üretmiyor. Ümit Motor ile aynı desen. Kullanıcıya soruldu, kaldırılması onaylandı — `cag.json` silindi. |
 | arora | ⬜ Bekliyor | Yerli marka |
 | asya | ⬜ Bekliyor | Yerli marka |
 | colove | ⬜ Bekliyor | |

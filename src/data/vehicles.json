@@ -17469,46 +17469,6 @@
       ]
     },
     {
-      "make": "Çağ",
-      "models": [
-        {
-          "name": "Motosiklet 50 / 70 / 100 / 125",
-          "versions": [
-            "50cc",
-            "70cc",
-            "100cc",
-            "125cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Scooter 50 / 125",
-          "versions": [
-            "50cc",
-            "125cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Diğer",
-          "versions": [
-            "Diğer"
-          ],
-          "trims": [
-            "Diğer"
-          ]
-        }
-      ]
-    },
-    {
       "make": "CF Moto",
       "models": [
         {
@@ -19655,10 +19615,9 @@
       "make": "Kanuni",
       "models": [
         {
-          "name": "Motosiklet 50 / 100 / 125",
+          "name": "Trodon XS",
           "versions": [
             "50cc",
-            "100cc",
             "125cc",
             "Diğer"
           ],
@@ -19668,10 +19627,32 @@
           ]
         },
         {
-          "name": "Scooter 50 / 125",
+          "name": "Tigrina",
           "versions": [
             "50cc",
-            "125cc",
+            "100cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Puma 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Nev 50",
+          "versions": [
+            "50cc",
             "Diğer"
           ],
           "trims": [
@@ -21126,6 +21107,18 @@
           "name": "Roadstar 650",
           "versions": [
             "649cc 34 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X-Ride",
+          "versions": [
+            "125cc 11 CV",
+            "650cc 34 CV",
             "Diğer"
           ],
           "trims": [
