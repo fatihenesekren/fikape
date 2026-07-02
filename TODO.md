@@ -10,4 +10,8 @@
 - [x] 6. oner/page.tsx version + trim dropdown (5 seviyeli seçim)
 - [x] 7. Commit + push — 631e65f
 
+## Backlog — İleride Değerlendirilecek
+
+- [ ] **Çok dilli destek (TR/EN)** — Site TR + EN olarak erişilebilir olsun. Statik arayüz metinleri (next-intl, `/tr` `/en` routing) + sabit içerik (chip etiketleri, marka/model adları) önceden çevrilir. Kullanıcı yorumları (serbest metin) için on-demand makine çevirisi (DeepL/Google Translate API) + DB cache (`ReviewTranslation` tablosu) + "Makine çevirisi" rozeti/uyarısı (kullanıcının sözünü yanlış temsil etmeme). Efor: ~1-2 hafta solo. Henüz kesin karar yok, ileride tekrar değerlendirilecek.
+
 ## Tamamlandı
