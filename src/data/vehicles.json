@@ -18420,6 +18420,17 @@
           ]
         },
         {
+          "name": "CRF 250 L",
+          "versions": [
+            "250cc 27 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "SH 125i",
           "versions": [
             "125cc 12 CV",
@@ -18440,6 +18451,17 @@
           "trims": [
             "Standart",
             "DLX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "EM1 e:",
+          "versions": [
+            "Elektrik 4.2 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -20674,6 +20696,41 @@
           ]
         },
         {
+          "name": "Freewind XF650 (1997-2002)",
+          "versions": [
+            "650cc 48 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GS500 (1989-2008)",
+          "versions": [
+            "500cc 45 CV",
+            "F",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "F",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Marauder VZ800 (1997-2004)",
+          "versions": [
+            "800cc 55 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Burgman 400",
           "versions": [
             "400cc 31 CV",
@@ -21233,6 +21290,56 @@
     {
       "make": "Yamaha",
       "models": [
+        {
+          "name": "YBR 125 (2005-2016)",
+          "versions": [
+            "125cc 11 CV",
+            "ED",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ED",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Crypton 105 (1997-2005)",
+          "versions": [
+            "105cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DT 125 (1988-2003)",
+          "versions": [
+            "125cc 12 CV",
+            "R",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Virago XV (1988-2003)",
+          "versions": [
+            "125cc",
+            "250cc",
+            "535cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
         {
           "name": "YZF-R125",
           "versions": [

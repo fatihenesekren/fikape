@@ -1,6 +1,10 @@
 {
   "make": "Yamaha",
   "models": [
+    { "name": "YBR 125 (2005-2016)", "versions": ["125cc 11 CV", "ED", "Diğer"], "trims": ["Standart", "ED", "Diğer"] },
+    { "name": "Crypton 105 (1997-2005)", "versions": ["105cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "DT 125 (1988-2003)", "versions": ["125cc 12 CV", "R", "Diğer"], "trims": ["Standart", "R", "Diğer"] },
+    { "name": "Virago XV (1988-2003)", "versions": ["125cc", "250cc", "535cc", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "YZF-R125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "YZF-R25", "versions": ["250cc 36 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "YZF-R3", "versions": ["321cc 42 CV", "Diğer"], "trims": ["Standart", "WorldGP 60th Anniversary", "Diğer"] },
