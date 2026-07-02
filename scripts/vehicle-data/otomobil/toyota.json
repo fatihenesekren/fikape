@@ -2,6 +2,11 @@
   "make": "Toyota",
   "models": [
     {
+      "name": "Corolla (1994-2001)",
+      "versions": ["1.3 XLi 75", "1.6 GLi 100", "2.0 D 73", "Diğer"],
+      "trims": ["XL", "XLi", "GLi", "SLi", "Diğer"]
+    },
+    {
       "name": "Corolla (2001-2007)",
       "versions": ["1.4 VVT-i 97", "1.6 VVT-i 110", "1.8 VVT-i 135", "2.0 D-4D 90", "2.0 D-4D 116", "T-Sport 1.8 192", "Diğer"],
       "trims": ["Terra", "Aura", "Sol", "T-Sport", "Diğer"]
@@ -27,7 +32,57 @@
       "trims": ["Comfort", "Dream", "Flame", "GR Sport", "Diğer"]
     },
     {
-      "name": "Yaris",
+      "name": "Corolla Verso (2001-2009)",
+      "versions": ["1.6 VVT-i 110", "1.8 VVT-i 129", "2.0 D-4D 116", "2.2 D-4D 136", "Diğer"],
+      "trims": ["Terra", "Sol", "Elegant", "Diğer"]
+    },
+    {
+      "name": "Verso (2009-2018)",
+      "versions": ["1.6 Valvematic 132", "1.8 Valvematic 147", "2.0 D-4D 126", "Diğer"],
+      "trims": ["Terra", "Advance", "Elegant", "Diğer"]
+    },
+    {
+      "name": "Avensis (1998-2003)",
+      "versions": ["1.6 VVT-i 110", "1.8 VVT-i 129", "2.0 VVT-i 143", "2.0 D-4D 90", "Diğer"],
+      "trims": ["Terra", "Sol", "Elegant", "Diğer"]
+    },
+    {
+      "name": "Avensis (2003-2009)",
+      "versions": ["1.6 VVT-i 110", "1.8 VVT-i 129", "2.0 VVT-i 147", "2.0 D-4D 126", "2.2 D-4D 150", "Diğer"],
+      "trims": ["Terra", "Sol", "Elegant", "Executive", "Diğer"]
+    },
+    {
+      "name": "Avensis (2009-2018)",
+      "versions": ["1.6 Valvematic 132", "1.8 Valvematic 147", "2.0 D-4D 126", "2.0 D-4D 143", "Diğer"],
+      "trims": ["Terra", "Advance", "Elegant", "Executive", "Diğer"]
+    },
+    {
+      "name": "Auris (2007-2012)",
+      "versions": ["1.33 Dual VVT-i 101", "1.4 VVT-i 97", "1.6 VVT-i 124", "1.4 D-4D 90", "2.0 D-4D 126", "HSD Hybrid 136", "Diğer"],
+      "trims": ["Terra", "Sol", "Comfort", "Hybrid", "Diğer"]
+    },
+    {
+      "name": "Auris (2012-2018)",
+      "versions": ["1.33 Dual VVT-i 99", "1.6 Valvematic 132", "1.4 D-4D 90", "1.6 D-4D 112", "Hybrid 1.8 136", "Diğer"],
+      "trims": ["Comfort", "Dream", "Flame", "Hybrid", "Diğer"]
+    },
+    {
+      "name": "Yaris (1999-2005)",
+      "versions": ["1.0 VVT-i 68", "1.3 VVT-i 86", "1.4 D-4D 75", "Diğer"],
+      "trims": ["Terra", "Sol", "Luna", "Diğer"]
+    },
+    {
+      "name": "Yaris (2005-2011)",
+      "versions": ["1.0 VVT-i 69", "1.3 VVT-i 87", "1.4 D-4D 90", "Diğer"],
+      "trims": ["Terra", "Comfort", "Sol", "Diğer"]
+    },
+    {
+      "name": "Yaris (2011-2020)",
+      "versions": ["1.0 VVT-i 69", "1.33 Dual VVT-i 99", "1.4 D-4D 90", "Hybrid 1.5 100", "GRMN 1.8 Supercharged 212", "Diğer"],
+      "trims": ["Terra", "Comfort", "Dream", "Flame", "GRMN", "Diğer"]
+    },
+    {
+      "name": "Yaris (2020-)",
       "versions": ["1.0 VVT-i 72", "1.5 Dynamic Force 125 Hybrid", "1.5 GR Sport Hybrid 130", "GR Yaris 1.6 Turbo 272 AWD", "Diğer"],
       "trims": ["Fire", "Dream", "Flame", "GR Sport", "GR Yaris", "Diğer"]
     },
@@ -37,17 +92,62 @@
       "trims": ["Fire", "Dream", "Flame", "GR Sport", "Diğer"]
     },
     {
+      "name": "Aygo (2005-2014)",
+      "versions": ["1.0 12V 68", "1.4 D-4D 54", "Diğer"],
+      "trims": ["Terra", "Sol", "Diğer"]
+    },
+    {
+      "name": "Aygo (2014-2022)",
+      "versions": ["1.0 VVT-i 69", "1.2 VVT-i 82", "Diğer"],
+      "trims": ["X", "X-Play", "X-Clusiv", "Diğer"]
+    },
+    {
+      "name": "Aygo X",
+      "versions": ["1.0 VVT-i 72", "Diğer"],
+      "trims": ["Active", "Pulse", "Air", "GR Sport", "Diğer"]
+    },
+    {
+      "name": "Camry (1992-2006)",
+      "versions": ["2.2 16V 136", "3.0 V6 194", "Diğer"],
+      "trims": ["GLi", "SE", "Elegant", "Diğer"]
+    },
+    {
       "name": "Camry",
       "versions": ["2.5 Hybrid 218 AWD", "Diğer"],
       "trims": ["Comfort", "Premium", "Diğer"]
     },
     {
-      "name": "C-HR",
+      "name": "C-HR (2016-2023)",
+      "versions": ["1.2 Turbo 116", "1.8 Hybrid 122", "Diğer"],
+      "trims": ["Comfort", "Dream", "Flame", "Diğer"]
+    },
+    {
+      "name": "C-HR (2023-)",
       "versions": ["1.8 Hybrid 122 FWD", "2.0 Hybrid 197 AWD", "GR Sport 2.0 Hybrid 197", "Diğer"],
       "trims": ["Comfort", "Dream", "Flame", "GR Sport", "Diğer"]
     },
     {
-      "name": "RAV4",
+      "name": "RAV4 (1994-2000)",
+      "versions": ["2.0 16V 129", "2.0 TD 86", "Diğer"],
+      "trims": ["Base", "GX", "Diğer"]
+    },
+    {
+      "name": "RAV4 (2000-2005)",
+      "versions": ["1.8 VVT-i 125", "2.0 VVT-i 150", "2.0 D-4D 116", "Diğer"],
+      "trims": ["Terra", "Sol", "Elegant", "Diğer"]
+    },
+    {
+      "name": "RAV4 (2005-2013)",
+      "versions": ["2.0 VVT-i 158", "2.2 D-4D 136", "2.2 D-4D 150", "2.2 D-CAT 177", "Diğer"],
+      "trims": ["Terra", "Sol", "Elegant", "Executive", "Diğer"]
+    },
+    {
+      "name": "RAV4 (2013-2018)",
+      "versions": ["2.0 Valvematic 146", "2.0 D-4D 124", "2.2 D-4D 150 AWD", "Diğer"],
+      "trims": ["Comfort", "Dream", "Flame", "Executive", "Diğer"]
+    },
+    {
+      "name": "RAV4 (2019-2025)",
       "versions": ["2.5 Hybrid 222 FWD", "2.5 Hybrid 222 AWD", "2.0 D-4D 150 FWD", "Diğer"],
       "trims": ["Comfort", "Dream", "Flame", "GR Sport", "Diğer"]
     },
@@ -57,19 +157,59 @@
       "trims": ["Comfort", "Dream", "Flame", "GR Sport", "Diğer"]
     },
     {
-      "name": "Land Cruiser",
+      "name": "Land Cruiser (1990-1997)",
+      "versions": ["4.0 24V 155", "4.2 TD 130", "Diğer"],
+      "trims": ["GX", "VX", "Diğer"]
+    },
+    {
+      "name": "Land Cruiser (1998-2007)",
+      "versions": ["4.2 TD 204", "4.7 V8 235", "Diğer"],
+      "trims": ["GX", "VX", "Diğer"]
+    },
+    {
+      "name": "Land Cruiser (2008-2021)",
+      "versions": ["4.5 V8 D-4D 235 AWD", "4.6 V8 318 AWD", "Diğer"],
+      "trims": ["GX", "VX", "VXS", "Executive", "Diğer"]
+    },
+    {
+      "name": "Land Cruiser (2021-)",
       "versions": ["3.5 V6 Twin Turbo 415 AWD", "3.3 D-4D 309 AWD", "Diğer"],
       "trims": ["GX", "VX", "Limited", "Heritage", "GR Sport", "Diğer"]
     },
     {
-      "name": "Land Cruiser Prado",
+      "name": "Land Cruiser Prado (1996-2002)",
+      "versions": ["3.4 V6 183", "3.0 TD 122", "Diğer"],
+      "trims": ["TX", "VX", "Diğer"]
+    },
+    {
+      "name": "Land Cruiser Prado (2002-2009)",
+      "versions": ["4.0 V6 249", "3.0 D-4D 173", "Diğer"],
+      "trims": ["TX", "VX", "Diğer"]
+    },
+    {
+      "name": "Land Cruiser Prado (2009-2024)",
       "versions": ["3.0 D-4D 163 AWD", "2.7 VVTI 163 AWD", "Diğer"],
       "trims": ["TX", "VX", "Limited", "Diğer"]
     },
     {
-      "name": "Hilux",
+      "name": "Hilux (1997-2005)",
+      "versions": ["2.4 D 90", "2.8 D 95", "3.0 D-4D 136 4WD", "Diğer"],
+      "trims": ["Standart", "DX", "SR5", "Diğer"]
+    },
+    {
+      "name": "Hilux (2005-2015)",
+      "versions": ["2.5 D-4D 106 4WD", "3.0 D-4D 171 4WD", "Diğer"],
+      "trims": ["Standart", "Comfort", "Extra Cab", "Diğer"]
+    },
+    {
+      "name": "Hilux (2015-)",
       "versions": ["2.4 D-4D 150 4WD", "2.8 D-4D 204 4WD", "Diğer"],
       "trims": ["Country", "Comfort", "Executive", "GR Sport", "Diğer"]
+    },
+    {
+      "name": "Starlet (1990-1999)",
+      "versions": ["1.0 12V 55", "1.3 16V 75", "1.3 XLi 75", "Diğer"],
+      "trims": ["XL", "XLi", "Diğer"]
     },
     {
       "name": "Prius",
@@ -85,11 +225,6 @@
       "name": "Proace City",
       "versions": ["1.2 PureTech 110", "1.5 BlueHDi 100", "1.5 BlueHDi 130", "EV 136 50kWh", "Diğer"],
       "trims": ["Active", "Team", "Diğer"]
-    },
-    {
-      "name": "Aygo X",
-      "versions": ["1.0 VVT-i 72", "Diğer"],
-      "trims": ["Active", "Pulse", "Air", "GR Sport", "Diğer"]
     },
     {
       "name": "Diğer",
