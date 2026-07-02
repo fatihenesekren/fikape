@@ -20968,6 +20968,61 @@
           ]
         },
         {
+          "name": "KPV 150 (Scooter)",
+          "versions": [
+            "150cc 13 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K29 (Cruiser)",
+          "versions": [
+            "250cc 20 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V16 (Chopper)",
+          "versions": [
+            "250cc 20 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KPS 250 (Naked)",
+          "versions": [
+            "250cc 24 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KPT 400 (Adventure)",
+          "versions": [
+            "400cc 42 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -21979,6 +22034,41 @@
           "name": "Advent 650 (Adventure)",
           "versions": [
             "649cc 60 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SRT550 / SRT550 X (Adventure)",
+          "versions": [
+            "550cc 50 CV",
+            "X 550cc 50 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "X",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SVT650 X (Adventure)",
+          "versions": [
+            "650cc 60 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SRT800 X (Adventure)",
+          "versions": [
+            "800cc 80 CV",
             "Diğer"
           ],
           "trims": [
@@ -23856,6 +23946,80 @@
           ]
         },
         {
+          "name": "SR1 / SR3 / SR4 / SR16 (Scooter)",
+          "versions": [
+            "125cc SR1",
+            "300cc SR3",
+            "125cc SR4",
+            "160cc SR16",
+            "SR1 ADV",
+            "SR3 SE",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "ADV",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "250RR",
+          "versions": [
+            "250cc 29 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RR525",
+          "versions": [
+            "494cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "250GY",
+          "versions": [
+            "250cc 24 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DS625X / DS900X",
+          "versions": [
+            "649cc 71 CV DS625X",
+            "895cc 95 CV DS900X",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R125",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -24405,6 +24569,50 @@
           "versions": [
             "350cc 38 CV ZT350-T Retro",
             "350cc 38 CV ZT350-ADV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ZT200C",
+          "versions": [
+            "200cc 20 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ZT250T-E / ZT250T-G",
+          "versions": [
+            "250cc 30 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ZT350T2 / ZT350R1 / ZT350V1",
+          "versions": [
+            "350cc 38 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ZT368G / ZT368T-G",
+          "versions": [
+            "368cc 40 CV",
             "Diğer"
           ],
           "trims": [

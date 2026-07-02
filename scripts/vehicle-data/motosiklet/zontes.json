@@ -5,6 +5,10 @@
     { "name": "Z250 / ZT250-N (Naked)", "versions": ["249cc 30 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "ZT310-R / ZT310-X (Sport/Adventure)", "versions": ["312cc 35 CV ZT310-R", "312cc 35 CV ZT310-X", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "ZT350-T / ZT350-ADV (Retro/Adventure)", "versions": ["350cc 38 CV ZT350-T Retro", "350cc 38 CV ZT350-ADV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ZT200C", "versions": ["200cc 20 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ZT250T-E / ZT250T-G", "versions": ["250cc 30 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ZT350T2 / ZT350R1 / ZT350V1", "versions": ["350cc 38 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ZT368G / ZT368T-G", "versions": ["368cc 40 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

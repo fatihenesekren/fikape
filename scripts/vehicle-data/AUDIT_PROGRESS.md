@@ -126,10 +126,10 @@
 | hero | ✅ Tamamlandı | Türkiye'de sadece 3 model resmi satışta (Dash 110/125, Xpulse 200 4V) ama ikinci elde Karizma/Hunk/Pleasure/Duet 110 de yaygın — eklendi. |
 | moto-guzzi | ✅ Tamamlandı | Klasik nameplate'ler tamamen eksikti: California, Griso, Nevada, Breva, Norge, V11 Sport eklendi. |
 | indian | ✅ Tamamlandı | Resmi indianmotorcycle.com.tr sitesiyle karşılaştırıldı — Chieftain, Roadmaster, Pursuit (Bagger/Touring aile) tamamen eksikti, eklendi. Springfield (discontinued ama ikinci elde yaygın) ve Chief Vintage eklendi. |
-| voge | ⬜ Bekliyor | |
-| qjmotor | ⬜ Bekliyor | |
-| zontes | ⬜ Bekliyor | |
-| lifan | ⬜ Bekliyor | |
+| voge | ✅ Tamamlandı | Resmi vogeturkiye.com.tr fiyat listesiyle karşılaştırıldı — lineup büyük ölçüde yenilenmiş (SR serisi scooter, 250RR/RR525, DS625X/DS900X, R125, AC525X), eski nesil isimlerin (300AC/500AC/650AC) yanına yeni resmi modeller eklendi. |
+| qjmotor | ✅ Tamamlandı | SRT550/SRT550 X, SVT650 X, SRT800 X (adventure ailesi) eksikti, eklendi. |
+| zontes | ✅ Tamamlandı | Resmi zontesturkiye.com fiyat listesindeki güncel nesil (ZT200C, ZT250T-E/G, ZT350T2/R1/V1, ZT368G/T-G) eski nesil isimlerden (Z125/Z250/ZT310/ZT350-T) farklı çıktı, yeni modeller eklendi. |
+| lifan | ✅ Tamamlandı | Resmi lifanmotor.com.tr listesiyle karşılaştırıldı — KPV 150, K29, V16, KPS 250, KPT 400 (güncel resmi lineup) eksikti, eklendi. |
 
 ### Tier 3 — niş / elektrikli / az sayıda araç (son sıra)
 

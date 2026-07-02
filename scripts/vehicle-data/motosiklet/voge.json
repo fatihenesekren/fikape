@@ -5,6 +5,12 @@
     { "name": "500AC / 500AC S (2021-)", "versions": ["494cc 47 CV 500AC", "494cc 47 CV 500AC S", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
     { "name": "500DS (Dual Sport)", "versions": ["494cc 47 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "650AC / 650DS (2022-)", "versions": ["649cc 71 CV 650AC", "649cc 71 CV 650DS", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "SR1 / SR3 / SR4 / SR16 (Scooter)", "versions": ["125cc SR1", "300cc SR3", "125cc SR4", "160cc SR16", "SR1 ADV", "SR3 SE", "Diğer"], "trims": ["Standart", "SE", "ADV", "Diğer"] },
+    { "name": "250RR", "versions": ["250cc 29 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "RR525", "versions": ["494cc 47 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "250GY", "versions": ["250cc 24 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "DS625X / DS900X", "versions": ["649cc 71 CV DS625X", "895cc 95 CV DS900X", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "R125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
