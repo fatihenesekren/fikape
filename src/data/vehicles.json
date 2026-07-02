@@ -29035,6 +29035,28 @@
           ]
         },
         {
+          "name": "8+",
+          "versions": [
+            "500W 15Ah 32km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "9",
+          "versions": [
+            "500W 21Ah 40km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "9+",
           "versions": [
             "1000W 21Ah 50km/h",
@@ -29170,6 +29192,38 @@
           ]
         },
         {
+          "name": "Xiaomi 5",
+          "versions": [
+            "300W 7.65Ah 25km/h",
+            "Pro 300W",
+            "Max 700W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Max",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Xiaomi 6",
+          "versions": [
+            "300W 7.65Ah 25km/h",
+            "Lite 250W",
+            "Pro 350W",
+            "Max 700W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Lite",
+            "Pro",
+            "Max",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -29219,6 +29273,21 @@
           "trims": [
             "Pro",
             "Max",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KS2 / KS3 Lite / KS5",
+          "versions": [
+            "300W 25 km/s KS2",
+            "350W 25 km/s KS3 Lite",
+            "500W 30 km/s KS5",
+            "Pro 500W KS5 Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
             "Diğer"
           ]
         },

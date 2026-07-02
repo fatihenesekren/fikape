@@ -9,6 +9,8 @@
     { "name": "Mi 4 Lite", "versions": ["300W 5.2Ah 20km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Mi 4 Pro", "versions": ["300W 11.6Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Mi 4 Ultra", "versions": ["500W 15.3Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Xiaomi 5", "versions": ["300W 7.65Ah 25km/h", "Pro 300W", "Max 700W", "Diğer"], "trims": ["Standart", "Pro", "Max", "Diğer"] },
+    { "name": "Xiaomi 6", "versions": ["300W 7.65Ah 25km/h", "Lite 250W", "Pro 350W", "Max 700W", "Diğer"], "trims": ["Standart", "Lite", "Pro", "Max", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
