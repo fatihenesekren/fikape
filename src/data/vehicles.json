@@ -18103,6 +18103,40 @@
       "make": "Honda",
       "models": [
         {
+          "name": "CG 125 (1976-2010)",
+          "versions": [
+            "125cc 10 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Titan",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CB 125 F",
+          "versions": [
+            "125cc 10 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Monkey",
+          "versions": [
+            "125cc 9 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "CBR 125 R",
           "versions": [
             "125cc 15 CV",
@@ -18231,7 +18265,7 @@
           ]
         },
         {
-          "name": "CB 500 F",
+          "name": "CB 500 F (2013-2023)",
           "versions": [
             "500cc 47 CV",
             "ABS",
@@ -18240,6 +18274,17 @@
           "trims": [
             "Standart",
             "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CB 500 Hornet (2024-)",
+          "versions": [
+            "500cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -18281,6 +18326,17 @@
           ]
         },
         {
+          "name": "CB 750 Hornet",
+          "versions": [
+            "750cc 91 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "CB 1000 R",
           "versions": [
             "145 CV 1000cc",
@@ -18294,6 +18350,17 @@
           ]
         },
         {
+          "name": "CL 250",
+          "versions": [
+            "250cc 23 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "NC 750 X",
           "versions": [
             "750cc 58 CV",
@@ -18303,6 +18370,17 @@
           "trims": [
             "Standart",
             "DCT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NX 500",
+          "versions": [
+            "500cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -18331,7 +18409,51 @@
           ]
         },
         {
+          "name": "CRF 250 Rally",
+          "versions": [
+            "250cc 27 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SH 125i",
+          "versions": [
+            "125cc 12 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Forza 250",
+          "versions": [
+            "250cc 23 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Forza 350",
+          "versions": [
+            "350cc 29 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ADV 350",
           "versions": [
             "350cc 29 CV",
             "Diğer"
@@ -18357,13 +18479,41 @@
           ]
         },
         {
-          "name": "Transalp",
+          "name": "XL 750 Transalp",
           "versions": [
             "750cc 92 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NT 1100",
+          "versions": [
+            "1100cc 102 CV",
+            "DCT",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "DCT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GL 1800 Gold Wing",
+          "versions": [
+            "1800cc 125 CV",
+            "DCT",
+            "Bagger",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Tour",
+            "Bagger",
             "Diğer"
           ]
         },
@@ -20307,6 +20457,17 @@
           ]
         },
         {
+          "name": "GSX-S125",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "GSX-R600 (1997-2017)",
           "versions": [
             "600cc 120 CV",
@@ -20346,9 +20507,44 @@
           ]
         },
         {
+          "name": "Hayabusa (GSX1300R)",
+          "versions": [
+            "1298cc 175 CV",
+            "1340cc 190 CV (2008-2020)",
+            "1340cc 190 CV (2021-)",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "GSX-S750",
           "versions": [
             "750cc 114 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GSX-8S",
+          "versions": [
+            "776cc 83 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GSX-8R",
+          "versions": [
+            "776cc 83 CV",
             "Diğer"
           ],
           "trims": [
@@ -20368,6 +20564,17 @@
             "Standart",
             "GT",
             "GX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GSX-S1000S Katana",
+          "versions": [
+            "999cc 152 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -20427,6 +20634,17 @@
           ]
         },
         {
+          "name": "V-Strom 800 DE",
+          "versions": [
+            "776cc 83 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "V-Strom 1000 / 1050 (2002-)",
           "versions": [
             "996cc 99 CV V-Strom 1000",
@@ -20446,6 +20664,39 @@
           "name": "Burgman 400",
           "versions": [
             "400cc 31 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Burgman Street 125",
+          "versions": [
+            "125cc 12 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Address 125",
+          "versions": [
+            "125cc 9 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Avenis 125",
+          "versions": [
+            "125cc 9 CV",
             "Diğer"
           ],
           "trims": [
@@ -20970,6 +21221,28 @@
       "make": "Yamaha",
       "models": [
         {
+          "name": "YZF-R125",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "YZF-R25",
+          "versions": [
+            "250cc 36 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "YZF-R3",
           "versions": [
             "321cc 42 CV",
@@ -21032,6 +21305,17 @@
           "trims": [
             "Standart",
             "M",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "MT-125",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -21177,6 +21461,17 @@
           ]
         },
         {
+          "name": "XSR 125",
+          "versions": [
+            "125cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "XSR 700",
           "versions": [
             "689cc 73 CV",
@@ -21191,10 +21486,12 @@
           "name": "XSR 900",
           "versions": [
             "889cc 119 CV",
+            "GP",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "GP",
             "Diğer"
           ]
         },
@@ -21208,6 +21505,28 @@
           "trims": [
             "Standart",
             "Connected",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NMAX 155",
+          "versions": [
+            "155cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XMAX 250",
+          "versions": [
+            "250cc 23 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -21234,6 +21553,28 @@
           "trims": [
             "Standart",
             "Tech Max",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tricity 155",
+          "versions": [
+            "155cc 15 CV 3 tekerlek",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tricity 300",
+          "versions": [
+            "300cc 28 CV 3 tekerlek",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },

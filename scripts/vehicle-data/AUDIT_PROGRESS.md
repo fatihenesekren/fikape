@@ -87,10 +87,10 @@
 
 | Marka | Durum | Not |
 |---|---|---|
-| honda | ⬜ Bekliyor | (sıradaki) |
-| yamaha | ⬜ Bekliyor | |
-| suzuki | ⬜ Bekliyor | |
-| kawasaki | ⬜ Bekliyor | |
+| honda | ✅ Tamamlandı | Büyük eksiklik: **CG 125 (1976-2010, Türkiye'de Anadolu Honda tarafından 1992-2002 üretildi, dekadlarca en yaygın filo/esnaf motosikleti)** tamamen eksikti, eklendi — otomobil denetimindeki yerli üretim deseniyle birebir aynı. Güncel resmi Türkiye fiyat listesiyle karşılaştırıldı: CB125F, Monkey, CL250, CB500 Hornet, CB750 Hornet, NX500, CRF250 Rally, SH125i, Forza250, ADV350, XL750 Transalp (isim güncellendi), NT1100, GL1800 Gold Wing tamamen eksikti, eklendi. |
+| yamaha | ✅ Tamamlandı | 125cc segment (Türkiye'de A1 ehliyet/komütasyon için çok büyük pazar) sistematik eksikti — **YZF-R125, MT-125, XSR125** tamamen eksikti, eklendi. Ayrıca YZF-R25, NMAX155, XMAX250, Tricity155/300 (3 tekerlekli scooter) eksikti, eklendi. |
+| suzuki | ✅ Tamamlandı | **Hayabusa (GSX1300R, marka bayrak gemisi) tamamen eksikti**, eklendi. GSX-S125, GSX-8S, GSX-8R, GSX-S1000S Katana, V-Strom 800 DE, Burgman Street 125, Address 125, Avenis 125 (yaygın 125cc scooterlar) tamamen eksikti, eklendi. |
+| kawasaki | ⬜ Bekliyor | (sıradaki) |
 | bmw | ⬜ Bekliyor | |
 | ktm | ⬜ Bekliyor | |
 | piaggio | ⬜ Bekliyor | |
