@@ -1,8 +1,17 @@
 {
   "make": "Asya",
   "models": [
-    { "name": "AS 100 / 125 Motosiklet", "versions": ["100cc 6 CV", "125cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "AS 50 / 125 Scooter", "versions": ["50cc 3.5 CV", "125cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "AS 100 / 125", "versions": ["100cc 6 CV", "125cc 8 CV", "T-15 125cc", "Diğer"], "trims": ["Standart", "T-15", "Diğer"] },
+    { "name": "AS 150 T", "versions": ["150cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Nostalji 125", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Thunder", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "SkyMax / SkyMax Pro (Scooter)", "versions": ["125cc", "Pro 125cc", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
+    { "name": "Bubbly (Scooter)", "versions": ["50cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "T-Rex", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Turkcup Delüx / Klasik", "versions": ["100cc", "125cc", "Diğer"], "trims": ["Delüx", "Klasik", "Diğer"] },
+    { "name": "Efsane Eco 100", "versions": ["100cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Ultra 150", "versions": ["150cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Polo (Scooter)", "versions": ["50cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

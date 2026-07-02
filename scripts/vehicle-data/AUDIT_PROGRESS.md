@@ -150,9 +150,9 @@
 | mash | ✅ Tamamlandı | Mondial Motor distribütörlüğü doğrulandı — X-Ride (125/650) eksikti, eklendi. |
 | kanuni | ✅ Tamamlandı | Yerli üretici, gerçek marka doğrulandı (1987'den beri, Tuzla fabrikası, Wikipedia). Dosyada generic placeholder vardı ("Motosiklet 50/100/125", "Scooter 50/125") — gerçek model isimleriyle (Trodon XS, Tigrina, Puma 150, Nev 50) değiştirildi. |
 | cag | ❌ Kaldırıldı | Araştırıldı, gerçek bir motosiklet üreticisi bulunamadı — "Çağ Motor" adıyla bulunan tek işletme Ankara Ostim'de bir motor tamir/yenileme atölyesi (1986), motosiklet üretmiyor. Ümit Motor ile aynı desen. Kullanıcıya soruldu, kaldırılması onaylandı — `cag.json` silindi. |
-| arora | ⬜ Bekliyor | Yerli marka |
-| asya | ⬜ Bekliyor | Yerli marka |
-| colove | ⬜ Bekliyor | |
+| arora | ✅ Tamamlandı | Yerli marka, gerçekliği doğrulandı (motoron.com.tr 2026 fiyat listesi). Dosyada generic placeholder vardı, gerçek model isimleriyle (Freedom 50, Dazzle 50, Jaguar 125, AR 125/251, GS 525, CK 250, Supersport GP250, Angel Pro vb.) değiştirildi. |
+| asya | ✅ Tamamlandı | Yerli üretici, gerçekliği doğrulandı (Nazilli/Aydın fabrikası, 2004'ten beri, Wikipedia). Dosyada generic placeholder vardı, gerçek model isimleriyle (Nostalji 125, Thunder, SkyMax/Pro, Bubbly, T-Rex, Turkcup, Ultra 150, Polo vb.) değiştirildi. Not: Asya Motor ayrıca Daelim'in Türkiye distribütörü ve Quswa markasının sahibi — bunlar ayrı marka dosyaları olarak ele alınmalı, karıştırılmamalı. |
+| colove | ✅ Tamamlandı | Muhtemelen "Kove" (Çinli üretici, kovemoto.com.tr resmi distribütörü) markasının bu veri setindeki yazımı — 800X Pro/800X Rally eksikti, eklendi. Marka adı riski not düşüldü: gelecekte "kove" adıyla ayrı bir dosya oluşturulursa mükerrerlik kontrol edilmeli. |
 | energica | ⬜ Bekliyor | Elektrikli |
 | zero-motorcycles | ⬜ Bekliyor | Elektrikli |
 | stark-future | ⬜ Bekliyor | Elektrikli |

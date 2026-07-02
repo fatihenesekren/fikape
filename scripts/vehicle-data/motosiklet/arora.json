@@ -1,9 +1,19 @@
 {
   "make": "Arora",
   "models": [
-    { "name": "Scooter 50 / 100 / 125", "versions": ["50cc 3.7 CV", "100cc 5.5 CV", "125cc 8 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Motosiklet 100 / 125", "versions": ["100cc 6 CV", "125cc 8.5 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Cross / Enduro 125", "versions": ["125cc 9 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Freedom 50 (Scooter)", "versions": ["50cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Dazzle 50 (Scooter)", "versions": ["50cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Cappucino (Scooter)", "versions": ["50cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Vesta (Scooter)", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Jaguar 125 (Scooter)", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "AR 125 (Naked)", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "MT 125 (Naked)", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "CK 250", "versions": ["250cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "AR 251", "versions": ["250cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Supersport GP250", "versions": ["250cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GS 525 (Adventure)", "versions": ["525cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Angel Pro", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "CR250 (Cross)", "versions": ["250cc", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

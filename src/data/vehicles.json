@@ -16547,11 +16547,9 @@
       "make": "Arora",
       "models": [
         {
-          "name": "Scooter 50 / 100 / 125",
+          "name": "Freedom 50 (Scooter)",
           "versions": [
-            "50cc 3.7 CV",
-            "100cc 5.5 CV",
-            "125cc 8 CV",
+            "50cc",
             "Diğer"
           ],
           "trims": [
@@ -16560,10 +16558,9 @@
           ]
         },
         {
-          "name": "Motosiklet 100 / 125",
+          "name": "Dazzle 50 (Scooter)",
           "versions": [
-            "100cc 6 CV",
-            "125cc 8.5 CV",
+            "50cc",
             "Diğer"
           ],
           "trims": [
@@ -16572,9 +16569,120 @@
           ]
         },
         {
-          "name": "Cross / Enduro 125",
+          "name": "Cappucino (Scooter)",
           "versions": [
-            "125cc 9 CV",
+            "50cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Vesta (Scooter)",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Jaguar 125 (Scooter)",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AR 125 (Naked)",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "MT 125 (Naked)",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CK 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AR 251",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Supersport GP250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GS 525 (Adventure)",
+          "versions": [
+            "525cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Angel Pro",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CR250 (Cross)",
+          "versions": [
+            "250cc",
             "Diğer"
           ],
           "trims": [
@@ -16597,10 +16705,23 @@
       "make": "Asya",
       "models": [
         {
-          "name": "AS 100 / 125 Motosiklet",
+          "name": "AS 100 / 125",
           "versions": [
             "100cc 6 CV",
             "125cc 8 CV",
+            "T-15 125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "T-15",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 150 T",
+          "versions": [
+            "150cc",
             "Diğer"
           ],
           "trims": [
@@ -16609,10 +16730,103 @@
           ]
         },
         {
-          "name": "AS 50 / 125 Scooter",
+          "name": "Nostalji 125",
           "versions": [
-            "50cc 3.5 CV",
-            "125cc 8 CV",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Thunder",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SkyMax / SkyMax Pro (Scooter)",
+          "versions": [
+            "125cc",
+            "Pro 125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bubbly (Scooter)",
+          "versions": [
+            "50cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "T-Rex",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Turkcup Delüx / Klasik",
+          "versions": [
+            "100cc",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Delüx",
+            "Klasik",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Efsane Eco 100",
+          "versions": [
+            "100cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ultra 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Polo (Scooter)",
+          "versions": [
+            "50cc",
+            "125cc",
             "Diğer"
           ],
           "trims": [
@@ -17666,6 +17880,19 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "800X Pro / 800X Rally",
+          "versions": [
+            "799cc 95 CV Pro",
+            "799cc 95 CV Rally",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "Rally",
             "Diğer"
           ]
         },
