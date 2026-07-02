@@ -95,9 +95,9 @@
 | ktm | ✅ Tamamlandı | 200 Duke, 690 Duke, 990 Duke (2005-2013), 200 RC, 690 Enduro R, Adventure 950/990 (2003-2013, güncel 890/1290'un atası) tamamen eksikti, eklendi. |
 | bmw | ⬜ Bekliyor | |
 | ktm | ⬜ Bekliyor | |
-| piaggio | ⬜ Bekliyor | |
-| vespa | ⬜ Bekliyor | |
-| bajaj | ⬜ Bekliyor | |
+| piaggio | ✅ Tamamlandı | Resmi Türkiye fiyat listesiyle karşılaştırıldı: **Beverly (200/300/400, "high-wheel" segment lideri) tamamen eksikti**, eklendi. Piaggio One (yeni elektrikli scooter) eklendi. MP3 300 → MP3 310 güncel isimlendirmeye taşındı. |
+| vespa | ✅ Tamamlandı | **PX 125/150/200 (1977-2007 klasik largeframe + 2011'de yeniden üretime alındı, Türkiye'de çok yaygın ikinci el klasik) tamamen eksikti**, eklendi. 946 (premium sınırlı seri hattı) eklendi. |
+| bajaj | ✅ Tamamlandı | Resmi Türkiye distribütörü (eKuralkan) fiyat listesiyle karşılaştırıldı — güncel nesil **Pulsar N160/N250 isimlendirmesi eksikti**, eklendi. Diğer modeller (Dominar, Avenger, RS200) zaten sağlıklıydı. |
 | tvs | ⬜ Bekliyor | |
 | kymco | ⬜ Bekliyor | |
 | mondial-tr | ⬜ Bekliyor | Yerli üretim (Türkiye) — üretim geçmişi dikkatli kontrol edilmeli |

@@ -6,6 +6,8 @@
     { "name": "GTS 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Super", "Diğer"] },
     { "name": "GTS 300", "versions": ["300cc 24 CV", "HPE 300cc", "Diğer"], "trims": ["Standart", "Super", "SuperSport", "Diğer"] },
     { "name": "GTV", "versions": ["300cc 24 CV HPE", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "PX 125 / 150 / 200 (1977-2007, 2011-)", "versions": ["125cc 8 CV", "150cc 9.5 CV", "200cc 12 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "946", "versions": ["125cc 12 CV", "150cc 12 CV", "Dragon", "Diğer"], "trims": ["Standart", "Dragon", "Snake", "Kum Edition", "Diğer"] },
     { "name": "Elettrica", "versions": ["EV 45 km/h", "EV 70 km/h", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
     {
       "name": "Diğer",
