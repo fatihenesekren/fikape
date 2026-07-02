@@ -1,7 +1,7 @@
 {
   "make": "Isuzu",
   "models": [
-    { "name": "D-Max", "versions": ["1.9 ddi 163 4WD", "3.0 ddi 190 4WD", "Diğer"], "trims": ["LSX", "V-Cross", "Diğer"] },
+    { "name": "D-Max", "versions": ["1.9 ddi 163 4WD", "3.0 ddi 190 4WD", "Diğer"], "trims": ["V-Life", "V-Joy", "V-Cross", "Diğer"] },
     { "name": "N-Series", "versions": ["3.0 4JJ1-TC 130", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "F-Series", "versions": ["5.2 4HK1-TC 215", "Diğer"], "trims": ["Standart", "Diğer"] },
     {

@@ -173,12 +173,12 @@
 | ford | ✅ Tamamlandı | Resmi ford.com.tr ticari araç listesiyle karşılaştırıldı — Ranger, Transit (Kamyonet/Van/Custom/Connect), Tourneo (Custom/Connect), Courier, E-Transit zaten dosyada mevcuttu. Değişiklik gerekmedi. |
 | toyota | ✅ Tamamlandı | Resmi toyota.com.tr ile karşılaştırıldı — Hilux (3 nesil), Proace, Proace City, Land Cruiser Pickup zaten dosyada mevcuttu. Değişiklik gerekmedi. |
 | volkswagen | ✅ Tamamlandı | Resmi ticariarac.vw.com.tr ile karşılaştırıldı — **ID. Buzz (elektrikli van) tamamen eksikti**, eklendi. Grand California (karavan kategorisinde ayrıca kontrol edilmeli) kapsam dışı bırakıldı. Caddy/Transporter/Caravelle/Multivan/Crafter/Amarok zaten sağlıklıydı. |
-| isuzu | ⬜ Bekliyor | |
-| mitsubishi | ⬜ Bekliyor | |
-| fiat | ⬜ Bekliyor | |
-| renault | ⬜ Bekliyor | |
-| peugeot | ⬜ Bekliyor | |
-| citroen | ⬜ Bekliyor | |
+| isuzu | ✅ Tamamlandı | D-Max trim isimleri güncel resmi isimlendirmeye (V-Life/V-Joy/V-Cross) güncellendi, eski "LSX" kaldırıldı. N-Series/F-Series (kamyon ailesi) zaten mevcuttu, kamyon/otobüs (Novo/Turkuaz/Visigo) kapsam dışı bırakıldı. |
+| mitsubishi | ✅ Tamamlandı | **Yeni nesil L200 (2024-, Tornado/Storm/Blizzard/Premium/Crawler donanımları) eksikti**, L200 (2015-) ikiye bölündü: 2015-2024 ve 2024-. L300/Canter zaten sağlıklıydı. |
+| fiat | ✅ Tamamlandı | **Qubo (Fiorino'nun yolcu versiyonu) yanlışlıkla Fiorino'nun trim'i olarak listelenmişti**, ayrı model olarak düzeltildi. **Ulysse (Scudo tabanlı büyük MPV) tamamen eksikti**, eklendi. Fullback (L200 rebadge) Türkiye'de resmi satılmadığı için eklenmedi. Doblo/Ducato/Scudo/Talento zaten sağlıklıydı. |
+| renault | ✅ Tamamlandı | Resmi renault.com.tr ile karşılaştırıldı — Kangoo/Express/Trafic/Master zaten sağlıklıydı. Alaskan'ın Türkiye resmi satış durumu net doğrulanamadı ama zararsız olduğu için dosyada bırakıldı. Değişiklik gerekmedi. |
+| peugeot | ✅ Tamamlandı | Partner/Expert/Traveller/Boxer zaten sağlıklı ve gerçek nesillere bölünmüştü (Citroën kamyonet dosyasıyla aynı desen). Değişiklik gerekmedi. |
+| citroen | ✅ Tamamlandı | Berlingo/Nemo/Jumpy/SpaceTourer/Jumper zaten sağlıklı ve gerçek nesillere bölünmüştü. Değişiklik gerekmedi. |
 | mercedes-benz | ⬜ Bekliyor | |
 | hyundai | ⬜ Bekliyor | |
 | karsan | ⬜ Bekliyor | Yerli üretici |
