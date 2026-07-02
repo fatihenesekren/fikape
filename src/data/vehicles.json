@@ -19230,6 +19230,61 @@
           ]
         },
         {
+          "name": "RK 125 E",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RKF 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sixties 300i",
+          "versions": [
+            "300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V302N Streetfighter",
+          "versions": [
+            "298cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Versilia 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -19452,10 +19507,142 @@
       "make": "Küba Motor",
       "models": [
         {
-          "name": "Scooter 50 / 100 / 125",
+          "name": "TK03",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Terra 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "VN50 Grande",
           "versions": [
             "50cc",
-            "100cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Brilliant 50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ST",
+            "PRO",
+            "PRO-PLUS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Borelli 50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AZ50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Brilliant 26E",
+          "versions": [
+            "Elektrikli",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bayberry 50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Newcity 50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Newlight 50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Grace 50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Space 50 Pro",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Newcity 125",
+          "versions": [
             "125cc",
             "Diğer"
           ],
@@ -19465,9 +19652,8 @@
           ]
         },
         {
-          "name": "Motosiklet 100 / 125",
+          "name": "Brilliant 125 Pro-X",
           "versions": [
-            "100cc",
             "125cc",
             "Diğer"
           ],
@@ -19477,10 +19663,263 @@
           ]
         },
         {
-          "name": "Cross / Enduro 125",
+          "name": "Bannry 125",
           "versions": [
-            "125cc 2T",
-            "125cc 4T",
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Bevely 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Arome 125 Pro",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Newlight 125 Pro",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Novax 200",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ege 50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Easy Pro 50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sniper 50 Pro X",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cristal 50",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Çita 50RX",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Gold",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CG50 RX Pro",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CG50 Pro Ultra",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Superlight 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KB50-9",
+          "versions": [
+            "50cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Race 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Kargo 180",
+          "versions": [
+            "180cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pikap 200 Max",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Braves 110",
+          "versions": [
+            "110cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Gardentrack",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hussar 135",
+          "versions": [
+            "135cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "MX220",
+          "versions": [
+            "220cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hussar 220 Pro",
+          "versions": [
+            "220cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Altera 400",
+          "versions": [
+            "400cc",
             "Diğer"
           ],
           "trims": [
@@ -20709,6 +21148,204 @@
           ]
         },
         {
+          "name": "Cafe Racer 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Classic 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Daytona 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pilder 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Daytona 250V",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Daytona 250S",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pilder 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DY 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Max 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XSUV 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XSUV 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SPN 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Shark 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M210 (ATV)",
+          "versions": [
+            "210cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F320 (ATV)",
+          "versions": [
+            "320cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Promax 500 (ATV)",
+          "versions": [
+            "500cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Promax 650L (ATV)",
+          "versions": [
+            "650cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Stellino 50",
+          "versions": [
+            "Elektrikli",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -21421,11 +22058,12 @@
           "name": "Jet 14",
           "versions": [
             "50cc",
-            "125cc",
+            "200cc",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "EVO",
             "Diğer"
           ]
         },
@@ -21438,6 +22076,7 @@
           ],
           "trims": [
             "Standart",
+            "TCS ABS",
             "Diğer"
           ]
         },
@@ -21460,6 +22099,129 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Fiddle IV 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "CBS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X'Pro 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NHX 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dragon 160",
+          "versions": [
+            "160cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ABS/TCS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mamba 160",
+          "versions": [
+            "160cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Symphony ST 200",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ABS",
+            "ABS Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NHT 200",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Joymax Z 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ABS/TCS",
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ADX 300",
+          "versions": [
+            "300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Joyride 300",
+          "versions": [
+            "300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "TCS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Maxsym 508",
+          "versions": [
+            "500cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ABS/TCS",
             "Diğer"
           ]
         },

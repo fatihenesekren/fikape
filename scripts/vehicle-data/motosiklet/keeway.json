@@ -5,6 +5,11 @@
     { "name": "K-Light 125 / 250V (Cruiser)", "versions": ["125cc 11 CV", "249cc 17 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Vieste 125 / 300 (Scooter)", "versions": ["125cc 11 CV", "300cc 26 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "TX 125 (Naked)", "versions": ["125cc 11 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "RK 125 E", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "RKF 125", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Sixties 300i", "versions": ["300cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "V302N Streetfighter", "versions": ["298cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Versilia 125", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

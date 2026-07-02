@@ -1,10 +1,21 @@
 {
   "make": "SYM",
   "models": [
-    { "name": "Jet 14", "versions": ["50cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Jet X", "versions": ["125cc", "150cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Jet 14", "versions": ["50cc", "200cc", "Diğer"], "trims": ["Standart", "EVO", "Diğer"] },
+    { "name": "Jet X", "versions": ["125cc", "150cc", "Diğer"], "trims": ["Standart", "TCS ABS", "Diğer"] },
     { "name": "Cruisym 300", "versions": ["300cc", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "ADX 125", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Fiddle IV 125", "versions": ["125cc", "Diğer"], "trims": ["CBS", "Diğer"] },
+    { "name": "X'Pro 125", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "NHX 125", "versions": ["125cc", "Diğer"], "trims": ["ABS", "Diğer"] },
+    { "name": "Dragon 160", "versions": ["160cc", "Diğer"], "trims": ["ABS/TCS", "Diğer"] },
+    { "name": "Mamba 160", "versions": ["160cc", "Diğer"], "trims": ["ABS", "Diğer"] },
+    { "name": "Symphony ST 200", "versions": ["200cc", "Diğer"], "trims": ["ABS", "ABS Plus", "Diğer"] },
+    { "name": "NHT 200", "versions": ["200cc", "Diğer"], "trims": ["ABS", "Diğer"] },
+    { "name": "Joymax Z 250", "versions": ["250cc", "Diğer"], "trims": ["ABS/TCS", "Plus", "Diğer"] },
+    { "name": "ADX 300", "versions": ["300cc", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Joyride 300", "versions": ["300cc", "Diğer"], "trims": ["TCS", "Diğer"] },
+    { "name": "Maxsym 508", "versions": ["500cc", "Diğer"], "trims": ["ABS/TCS", "Diğer"] },
     {
       "name": "Diğer",
       "versions": ["Diğer"],
