@@ -70,9 +70,9 @@
 | maserati | ✅ Tamamlandı | **Quattroporte (marka bayrak gemisi sedan) tamamen eksikti** — 3 nesille eklendi (1994-2001, 2003-2012, 2013-2023). Biturbo (1982-1994, en yaygın klasik Maserati) ve 3200 GT/Coupé-Spyder (1998-2007) tamamen eksikti, eklendi. Ghibli/Levante/GranTurismo/GranCabrio/Grecale/MC20 (güncel dönem) zaten sağlıklıydı. |
 | aston-martin | ✅ Tamamlandı | DB9/DB11/Vantage/DBS Superleggera/DBX zaten sağlıklıydı ama önceki nesiller eksikti. DB7 (1994-2003, DB9'un atası), Vanquish (2001-2007, ilk nesil V12 amiral gemisi), V8 Vantage (2005-2017, güncel Vantage'ın atası, ayrı isimle), Rapide (2010-2020, 4 kapılı), Vanquish (2012-2018, 2. nesil, DBS Superleggera'nın atası) tamamen eksikti, eklendi. |
 | abarth | ✅ Tamamlandı | Dosya görece sağlıklıydı. Grande Punto (2008-2010) eksikti, "Punto (2010-2012)" → "Punto Evo (2010-2012)" olarak netleştirildi ve Grande Punto ayrı model olarak eklendi. Abarth 600e Türkiye'de henüz satışa çıkmadı (WebSearch ile doğrulandı, Temmuz 2026), eklenmedi. |
-| alpine | ⬜ Bekliyor | |
-| dodge | ⬜ Bekliyor | |
-| genesis | ⬜ Bekliyor | |
+| alpine | ✅ Tamamlandı | Dosyada sadece 2017 sonrası relansman modelleri vardı (A110/A290). Klasik Alpine A110 (1961-1977, orijinal Berlinette, Renault-öncesi/dönemi ikonik model) tamamen eksikti, düşük güvenle eklendi (Türkiye'de çok nadir ama var). A310/GTA/A610 (1976-1995 Renault-Alpine dönemi) çok niş olduğu için kapsam dışı bırakıldı. |
+| dodge | ✅ Tamamlandı | Büyük eksiklik: dosyada sadece güncel muscle-car nesiller vardı (Charger/Challenger/Durango 2011+), oysa Dodge'ın Türkiye'de resmi olarak satılan asıl modelleri tamamen eksikti — **Caliber (2006-2012), Avenger (2007-2010), Nitro (2007-2012), Journey (2008-2020)** eklendi (WebSearch ile resmi Türkiye lansmanı doğrulandı). Viper (1992-2017, ikonik V10, sınırlı sayıda resmi/paralel ithal) eklendi. |
+| genesis | ✅ Tamamlandı | Dosya zaten eksiksizdi — G70/G80/G90/GV70/GV80 ve elektrikli versiyonlar Türkiye resmi Genesis distribütörü lansmanıyla uyumlu. Değişiklik gerekmedi. |
 | infiniti | ⬜ Bekliyor | |
 | polestar | ⬜ Bekliyor | |
 | ora | ⬜ Bekliyor | |

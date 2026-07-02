@@ -384,6 +384,18 @@
       "make": "Alpine",
       "models": [
         {
+          "name": "A110 (Klasik, 1961-1977)",
+          "versions": [
+            "1.3 Berlinette",
+            "1.6 Berlinette",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "A110 (2017-)",
           "versions": [
             "1.8 Turbo 252",
@@ -3366,6 +3378,84 @@
     {
       "make": "Dodge",
       "models": [
+        {
+          "name": "Caliber (2006-2012)",
+          "versions": [
+            "1.8 125",
+            "2.0 156",
+            "2.0 CRD 140 Dizel",
+            "SRT4 2.4 Turbo 285",
+            "Diğer"
+          ],
+          "trims": [
+            "SE",
+            "SXT",
+            "R/T",
+            "SRT4",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Avenger (2007-2010)",
+          "versions": [
+            "2.0 156",
+            "2.4 170",
+            "2.0 CRD 140 Dizel",
+            "Diğer"
+          ],
+          "trims": [
+            "SE",
+            "SXT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Nitro (2007-2012)",
+          "versions": [
+            "2.8 CRD 177 Dizel 4WD",
+            "3.7 V6 210",
+            "4.0 V6 260",
+            "Diğer"
+          ],
+          "trims": [
+            "SE",
+            "SXT",
+            "R/T",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Journey (2008-2020)",
+          "versions": [
+            "2.0 CRD 140 Dizel",
+            "2.4 170",
+            "3.6 V6 283",
+            "Diğer"
+          ],
+          "trims": [
+            "SE",
+            "SXT",
+            "R/T",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Viper (1992-2017)",
+          "versions": [
+            "8.0 V10 400",
+            "8.3 V10 450",
+            "8.4 V10 600",
+            "SRT 8.4 V10 645",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "GTS",
+            "SRT",
+            "ACR",
+            "Diğer"
+          ]
+        },
         {
           "name": "Charger (2011-2023)",
           "versions": [
