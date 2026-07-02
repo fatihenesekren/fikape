@@ -12,7 +12,7 @@
 
 | Marka | Durum | Not |
 |---|---|---|
-| honda | ⬜ Bekliyor | Bilinen sorun: Jazz'da sadece son nesil var (2002-2008, 2008-2015, 2015-2020 eksik) |
+| honda | ✅ Tamamlandı | Jazz: 4 nesil eklendi (2002-2008 ES/LS/Elite/Sport, 2008-2015 Fun/Joy, 2015-2020 Dream PE/Premium/Elegance, 2020- Elegance/Advance/Crosstar). HR-V: 1999-2006 ilk nesil eklendi (trim isimleri belirsiz, generic "Standart/4WD" kullanıldı — düşük güven). CR-V: tek nesil yerine 5 nesile bölündü (2002-2006, 2007-2012, 2012-2018, 2018-2023, 2023-). Civic/ZR-V/Accord/e zaten sağlıklıydı, dokunulmadı. |
 | abarth | ⬜ Bekliyor | |
 | alfa-romeo | ⬜ Bekliyor | |
 | alpine | ⬜ Bekliyor | |

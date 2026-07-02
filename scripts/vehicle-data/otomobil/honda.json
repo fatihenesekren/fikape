@@ -27,19 +27,59 @@
       "trims": ["Elegance", "Executive", "Sport", "Advance", "Type R", "Diğer"]
     },
     {
-      "name": "Jazz",
-      "versions": ["1.5 i-MMD e:HEV 109", "Diğer"],
+      "name": "Jazz (2002-2008)",
+      "versions": ["1.2 i-DSI 78", "1.4 i-DSI 83", "1.4 CTDi 100", "Diğer"],
+      "trims": ["ES", "LS", "Elite", "Sport", "Diğer"]
+    },
+    {
+      "name": "Jazz (2008-2015)",
+      "versions": ["1.2 i-VTEC 90", "1.4 i-VTEC 100", "1.4 i-DTEC 100", "Diğer"],
+      "trims": ["Fun", "Joy", "Diğer"]
+    },
+    {
+      "name": "Jazz (2015-2020)",
+      "versions": ["1.3 i-VTEC 102", "1.5 i-VTEC 130", "Diğer"],
+      "trims": ["Dream PE", "Premium", "Elegance", "Diğer"]
+    },
+    {
+      "name": "Jazz (2020-)",
+      "versions": ["1.5 i-MMD e:HEV 109", "1.5 i-MMD e:HEV 122", "Diğer"],
       "trims": ["Elegance", "Advance", "Crosstar", "Diğer"]
     },
     {
-      "name": "HR-V",
+      "name": "HR-V (1999-2006)",
+      "versions": ["1.6i 105", "1.6i VTEC 125 4WD", "Diğer"],
+      "trims": ["Standart", "4WD", "Diğer"]
+    },
+    {
+      "name": "HR-V (2021-)",
       "versions": ["1.5 i-MMD e:HEV 131", "Diğer"],
       "trims": ["Elegance", "Advance", "Sport", "Diğer"]
     },
     {
-      "name": "CR-V",
-      "versions": ["1.5 VTEC Turbo 193 4WD", "2.0 i-MMD e:HEV 184 FWD", "2.0 i-MMD e:HEV 184 AWD", "PHEV AWD 184", "Diğer"],
-      "trims": ["Elegance", "Advance", "Advance Sport", "Diğer"]
+      "name": "CR-V (2002-2006)",
+      "versions": ["2.0i 150", "2.2 i-CTDi 140", "Diğer"],
+      "trims": ["Comfort", "Executive", "Diğer"]
+    },
+    {
+      "name": "CR-V (2007-2012)",
+      "versions": ["2.0i 150", "2.2 i-CTDi 140", "Diğer"],
+      "trims": ["Comfort", "Executive", "Diğer"]
+    },
+    {
+      "name": "CR-V (2012-2018)",
+      "versions": ["2.0i 155", "1.6 i-DTEC 120", "1.6 i-DTEC 160", "Diğer"],
+      "trims": ["Dream", "Premium", "Elegance", "Executive", "Diğer"]
+    },
+    {
+      "name": "CR-V (2018-2023)",
+      "versions": ["1.5 VTEC Turbo 193 4WD", "2.0 i-MMD e:HEV 184", "Diğer"],
+      "trims": ["Elegance", "Executive", "Diğer"]
+    },
+    {
+      "name": "CR-V (2023-)",
+      "versions": ["2.0 i-MMD e:HEV 184 FWD", "2.0 i-MMD e:HEV 184 AWD", "PHEV AWD 184", "Diğer"],
+      "trims": ["Elegance", "Advance", "Advance Sport", "Executive", "Diğer"]
     },
     {
       "name": "ZR-V",
