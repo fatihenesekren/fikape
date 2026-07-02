@@ -36,8 +36,8 @@
 | mazda | ✅ Tamamlandı | Aynı desen — dosyada sadece güncel nesiller vardı. 2/3/6/CX-5 tek girişten gerçek nesillere bölündü (3 ve 6 dörder nesle: BK-BP, GG-GL). Tamamen eksik klasik nameplate'ler eklendi: 323 (1989-2003, 3'ün atası), 626 (1987-2002, 6'nın atası), MPV (1999-2006), Premacy (1999-2018), 5 (2005-2015, Premacy'nin global adı), Tribute (2000-2011, Ford Escape platform kardeşi), CX-7 (2006-2012), CX-9 (2006-2015). CX-3/CX-30/CX-60/MX-5/MX-30 zaten sağlıklıydı. |
 | suzuki | ✅ Tamamlandı | En büyük eksiklik: **Jimny tamamen eksikti** — Türkiye'de çok popüler off-roader, 2 nesille eklendi (1998-2018 ve 2018-). Samurai (Jimny'nin atası) eklendi. Vitara tek girişten gerçek nesillere bölündü: Vitara (1988-1998) → Grand Vitara (1998-2005, 2005-2015) → Vitara (2015-). Swift tek girişten 4 nesle bölündü (1989-2003/2004-2010/2010-2017/2017-). Tamamen eksik nameplate'ler eklendi: SX4 (2006-2013, S-Cross'un atası), eski Baleno (1995-2002, sedan/wagon), Splash, Liana, Wagon R+. Alto/Ignis/SX4 S-Cross/Across/Swace zaten sağlıklıydı. |
 | seat | ✅ Tamamlandı | Aynı VW-grup deseni (bkz. Skoda/Audi) — Ibiza ve Leon tek girişten gerçek nesillere bölündü (Ibiza 5 nesle, Leon 4 nesle). Tamamen eksik nameplate'ler eklendi: Cordoba (1993-2009, Ibiza sedan versiyonu), Toledo (3 nesil, 1991-2009, D-segment), Altea (2004-2015, kompakt MPV), Alhambra (2 nesil, 1996-2020, büyük MPV). Arona/Ateca/Tarraco zaten sağlıklıydı. |
-| jaecoo | ⬜ Bekliyor | Chery grubu, yeni ama Türkiye'de hızla yaygınlaştı (sıradaki) |
-| omoda | ⬜ Bekliyor | Chery grubu, yeni ama Türkiye'de hızla yaygınlaştı |
+| jaecoo | ✅ Tamamlandı | Çok yeni marka (Chery grubu), nesil geçmişi yok — web araması ile Türkiye pazar durumu doğrulandı (Temmuz 2026 itibarıyla). **Jaecoo 5 EV** (Nisan-Haziran 2026'da Türkiye'ye girdi) tamamen eksikti, eklendi. Jaecoo 7 ve 8 zaten dosyadaydı; Jaecoo 8'in Türkiye lansmanı henüz gerçekleşmedi (2026 sonu/2027 bekleniyor) ama dosyada olması zararsız, dokunulmadı. |
+| omoda | ⬜ Bekliyor | Chery grubu, yeni ama Türkiye'de hızla yaygınlaştı (sıradaki) |
 
 ### Tier 2 — orta yaygınlık / premium ama tanıdık
 

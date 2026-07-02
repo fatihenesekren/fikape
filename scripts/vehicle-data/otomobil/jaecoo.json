@@ -2,6 +2,11 @@
   "make": "Jaecoo",
   "models": [
     {
+      "name": "Jaecoo 5 (2026-)",
+      "versions": ["EV 204 402km", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Supreme", "Diğer"]
+    },
+    {
       "name": "Jaecoo 7 (2023-)",
       "versions": ["1.6T 147 2WD", "1.6T 147 4WD", "Diğer"],
       "trims": ["Comfort", "Luxury", "Supreme", "Diğer"]
