@@ -5,6 +5,8 @@
     { "name": "Quick 4", "versions": ["500W 13Ah 45km/h", "Max 500W", "Diğer"], "trims": ["Standart", "Max", "Diğer"] },
     { "name": "OX", "versions": ["1000W Çift 13Ah", "Eco 500W", "Diğer"], "trims": ["Standart", "Eco", "Diğer"] },
     { "name": "OXO", "versions": ["2000W Çift 26Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Mini", "versions": ["250W 5.2Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "KIX", "versions": ["350W 8Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

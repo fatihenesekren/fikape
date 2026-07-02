@@ -6,6 +6,8 @@
     { "name": "G-Booster", "versions": ["2000W Çift 23Ah 70km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "G2 Pro", "versions": ["500W 26Ah 45km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "M4 Pro", "versions": ["1200W 24Ah 50km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "G4", "versions": ["1600W Çift 23Ah 70km/h", "Max 2000W", "Diğer"], "trims": ["Standart", "Max", "Diğer"] },
+    { "name": "M4 Max", "versions": ["1200W Çift 26Ah 55km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

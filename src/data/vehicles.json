@@ -28001,6 +28001,32 @@
           ]
         },
         {
+          "name": "RS",
+          "versions": [
+            "8400W Çift 101km/h",
+            "Lite 4000W",
+            "JET 8400W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Lite",
+            "JET",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C10",
+          "versions": [
+            "800W Çift 45km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -28057,6 +28083,28 @@
           "name": "OXO",
           "versions": [
             "2000W Çift 26Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mini",
+          "versions": [
+            "250W 5.2Ah 25km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "KIX",
+          "versions": [
+            "350W 8Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -28141,6 +28189,43 @@
           ]
         },
         {
+          "name": "Mantis King GT",
+          "versions": [
+            "1400W Çift 30Ah 55km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mantis X",
+          "versions": [
+            "1000W Çift 21Ah 50km/h",
+            "Plus 1200W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Wolf King GTR",
+          "versions": [
+            "2000W Çift 35Ah 65km/h",
+            "Max 2000W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Max",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -28213,6 +28298,30 @@
           ]
         },
         {
+          "name": "G4",
+          "versions": [
+            "1600W Çift 23Ah 70km/h",
+            "Max 2000W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Max",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M4 Max",
+          "versions": [
+            "1200W Çift 26Ah 55km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -28252,6 +28361,17 @@
           "name": "SC11",
           "versions": [
             "500W 13Ah 35km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ES19",
+          "versions": [
+            "6000W Çift 40Ah 80km/h",
             "Diğer"
           ],
           "trims": [

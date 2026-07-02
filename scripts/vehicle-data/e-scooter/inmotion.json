@@ -4,6 +4,8 @@
     { "name": "S1 / S1F (2020-)", "versions": ["500W 30 km/s S1", "500W 30 km/s S1F Katlanabilir", "Diğer"], "trims": ["Standart", "F (Katlanabilir)", "Diğer"] },
     { "name": "L9 (2021-)", "versions": ["900W 45 km/s", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Climber / Air Pro (2023-)", "versions": ["500W 35 km/s Air Pro", "800W 40 km/s Climber", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "RS", "versions": ["8400W Çift 101km/h", "Lite 4000W", "JET 8400W", "Diğer"], "trims": ["Standart", "Lite", "JET", "Diğer"] },
+    { "name": "C10", "versions": ["800W Çift 45km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
