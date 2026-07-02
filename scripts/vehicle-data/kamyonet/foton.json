@@ -17,6 +17,16 @@
       "trims": ["Standart", "Diğer"]
     },
     {
+      "name": "Tunland G7 (2022-)",
+      "versions": ["2.0T Dizel 163 4WD", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
+      "name": "Tunland V9 (2023-)",
+      "versions": ["2.0T Mild Hybrid 163 4WD", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
       "name": "Diğer",
       "versions": ["Diğer"],
       "trims": ["Diğer"]

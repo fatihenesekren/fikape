@@ -25112,6 +25112,45 @@
           ]
         },
         {
+          "name": "417 (2019-)",
+          "versions": [
+            "3.8 D 170",
+            "EV Elektrik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tuğra (TGR)",
+          "versions": [
+            "1832 4x2",
+            "1846 4x2",
+            "2532 6x2",
+            "3232 8x2",
+            "3540 6x4",
+            "4340 8x4",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pro L",
+          "versions": [
+            "1852 4x2",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -25365,6 +25404,39 @@
           ]
         },
         {
+          "name": "C31 (Pick-up)",
+          "versions": [
+            "1.5 MT 102 Tek Kabin",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C32 (Pick-up)",
+          "versions": [
+            "1.5 MT 102 Çift Kabin",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mini Maxi",
+          "versions": [
+            "1.0 MT 68",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -25402,7 +25474,19 @@
           "trims": [
             "Pop",
             "Adventure",
-            "Qubo",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Qubo",
+          "versions": [
+            "1.3 MultiJet 80",
+            "1.4 Fire 77",
+            "Diğer"
+          ],
+          "trims": [
+            "Pop",
+            "Trekking",
             "Diğer"
           ]
         },
@@ -25459,6 +25543,19 @@
           "trims": [
             "Base",
             "SX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ulysse",
+          "versions": [
+            "2.0 MultiJet 145",
+            "2.0 MultiJet 180",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Business",
             "Diğer"
           ]
         },
@@ -25701,6 +25798,28 @@
           ]
         },
         {
+          "name": "Tunland G7 (2022-)",
+          "versions": [
+            "2.0T Dizel 163 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tunland V9 (2023-)",
+          "versions": [
+            "2.0T Mild Hybrid 163 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -25932,6 +26051,19 @@
           ]
         },
         {
+          "name": "H350",
+          "versions": [
+            "2.5 CRDi 150",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Panelvan",
+            "Minibüs",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -25981,7 +26113,8 @@
             "Diğer"
           ],
           "trims": [
-            "LSX",
+            "V-Life",
+            "V-Joy",
             "V-Cross",
             "Diğer"
           ]
@@ -26122,6 +26255,29 @@
           ]
         },
         {
+          "name": "J10 (2010-2015)",
+          "versions": [
+            "2.3 CRDi 116 Dizel",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Star (2020-)",
+          "versions": [
+            "3.0 CRDi 177 Dizel",
+            "e-Star Elektrik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -26225,10 +26381,32 @@
       "make": "Maxus",
       "models": [
         {
+          "name": "Deliver 7",
+          "versions": [
+            "2.0 TDI 166",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Deliver 9",
           "versions": [
             "2.0 TDI 136",
             "e-Deliver 9 Electric",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "e-Deliver 3",
+          "versions": [
+            "Electric 122",
             "Diğer"
           ],
           "trims": [
@@ -26428,7 +26606,7 @@
           ]
         },
         {
-          "name": "L200 (2015-)",
+          "name": "L200 (2015-2024)",
           "versions": [
             "2.2 Di-D 154 4WD",
             "2.4 MIVEC 181 4WD",
@@ -26438,6 +26616,21 @@
             "Invite",
             "Inform",
             "Intense",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "L200 (2024-)",
+          "versions": [
+            "2.4 MIVEC 181 4WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Tornado",
+            "Storm",
+            "Blizzard",
+            "Premium",
+            "Crawler",
             "Diğer"
           ]
         },
@@ -26556,6 +26749,20 @@
           ],
           "trims": [
             "Base",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Combo (2011-2018)",
+          "versions": [
+            "1.3 CDTI 95",
+            "1.6 CDTI 105",
+            "1.6 CDTI 120",
+            "Diğer"
+          ],
+          "trims": [
+            "Base",
+            "Sportive",
             "Diğer"
           ]
         },
@@ -27206,6 +27413,20 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ID. Buzz",
+          "versions": [
+            "Pro 204",
+            "GTX 4Motion 340",
+            "Diğer"
+          ],
+          "trims": [
+            "Life",
+            "Style",
+            "GTX",
             "Diğer"
           ]
         },

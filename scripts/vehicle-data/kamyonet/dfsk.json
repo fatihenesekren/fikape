@@ -17,6 +17,21 @@
       "trims": ["Standart", "Diğer"]
     },
     {
+      "name": "C31 (Pick-up)",
+      "versions": ["1.5 MT 102 Tek Kabin", "Diğer"],
+      "trims": ["Pro", "Diğer"]
+    },
+    {
+      "name": "C32 (Pick-up)",
+      "versions": ["1.5 MT 102 Çift Kabin", "Diğer"],
+      "trims": ["Pro", "Diğer"]
+    },
+    {
+      "name": "Mini Maxi",
+      "versions": ["1.0 MT 68", "Diğer"],
+      "trims": ["Standart", "Diğer"]
+    },
+    {
       "name": "Diğer",
       "versions": ["Diğer"],
       "trims": ["Diğer"]

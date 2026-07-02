@@ -200,15 +200,17 @@
 
 | Marka | Durum | Not |
 |---|---|---|
-| byd | ⬜ Bekliyor | |
-| dfsk | ⬜ Bekliyor | |
-| foton | ⬜ Bekliyor | |
-| fuso | ⬜ Bekliyor | |
-| hino | ⬜ Bekliyor | |
-| ineos | ⬜ Bekliyor | |
-| maxus | ⬜ Bekliyor | |
-| tata | ⬜ Bekliyor | |
+| byd | ✅ Tamamlandı | T3/M3 EV/ETM6 zaten dosyadaydı, Türkiye'de ek ticari model doğrulanamadı. Değişiklik gerekmedi. |
+| dfsk | ✅ Tamamlandı | **C31 (tek kabin pick-up) ve C32 (çift kabin pick-up) — gerçek pickup modelleri — tamamen eksikti**, eklendi. Mini Maxi (küçük panelvan) eklendi. Glory Van/EC35 EV/EC31 EV zaten sağlıklıydı. |
+| foton | ✅ Tamamlandı | **Tunland G7 ve Tunland V9 (Otokar distribütörlüğünde satılan gerçek pickup modelleri) tamamen eksikti**, eklendi — Foton'un Türkiye'de en tanınan modelleri. Gratour/View/Aumark zaten sağlıklıydı. |
+| fuso | ✅ Tamamlandı | Canter/eCanter/Fighter zaten sağlıklıydı. Değişiklik gerekmedi. |
+| hino | ✅ Tamamlandı | 300/500/700 Serisi zaten sağlıklıydı (standart Hino kamyon aile isimlendirmesi). Değişiklik gerekmedi. |
+| ineos | ✅ Tamamlandı | Grenadier Quartermaster (pickup versiyonu) zaten sağlıklıydı, SUV versiyonu Grenadier otomobil kategorisinde olmalı (kapsam dışı). Değişiklik gerekmedi. |
+| maxus | ✅ Tamamlandı | **Deliver 7 ve e-Deliver 3 tamamen eksikti**, eklendi. Deliver 9/EV30/T60/T90 zaten sağlıklıydı. |
+| tata | ✅ Tamamlandı | Super Ace/Xenon/Ace EV zaten sağlıklıydı. Değişiklik gerekmedi. |
 | diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder |
+
+**🎉 KAMYONET KATEGORİSİ TAMAMLANDI (30/30 marka), 2 Temmuz 2026.** Tier 1 (12), Tier 2 (8), Tier 3 (10) hepsi bitti. En büyük bulgular: Foton'a gerçek pickup modelleri (Tunland G7/V9) ve DFSK'ye gerçek pickup modelleri (C31/C32) tamamen eksikti. Sırada: E-Scooter kategorisi (21 marka).
 
 ## E-Scooter (21 marka)
 
