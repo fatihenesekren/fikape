@@ -5,6 +5,7 @@
     { "name": "Caballero 250 / 500", "versions": ["249cc 27 CV", "449cc 38 CV", "Diğer"], "trims": ["Standart", "Rally", "Diğer"] },
     { "name": "XMF 125 (Enduro)", "versions": ["125cc 15 CV 2T", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Volt 125 (Elektrik)", "versions": ["Elektrik 11 kW 125 eşdeğer", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "XEF 250 / 450 (Enduro 4T)", "versions": ["250cc 4T", "450cc 4T", "Trail 250cc", "Diğer"], "trims": ["Standart", "Trail", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

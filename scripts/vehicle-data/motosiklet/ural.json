@@ -3,6 +3,9 @@
   "models": [
     { "name": "Gear Up (Sepetli / Sidecar)", "versions": ["749cc 41 CV 2WD", "Diğer"], "trims": ["Standart", "Camouflage", "Diğer"] },
     { "name": "CT (Solo)", "versions": ["749cc 41 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Ranger (Sepetli / 2WD)", "versions": ["749cc 41 CV 2WD", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Sportsman (Sepetli / 2WD)", "versions": ["749cc 41 CV 2WD", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Retro (Sepetli)", "versions": ["749cc 41 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

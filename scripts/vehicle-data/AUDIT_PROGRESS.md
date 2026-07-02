@@ -138,9 +138,9 @@
 | beta | ✅ Tamamlandı | **Evo (Trial) kategorisi tamamen eksikti** — Beta'nın Trial/Enduro/Street üç ana ailesinden biri, dosyada sadece RR Enduro/Motard/Xtrainer vardı, eklendi. |
 | sherco | ✅ Tamamlandı | **ST (Trial) kategorisi tamamen eksikti** — dosyada sadece Enduro/Supermoto vardı, eklendi. |
 | rieju | ✅ Tamamlandı | MRT 125 (naked/enduro) eksikti, eklendi. Dosya zaten görece kapsamlıydı. |
-| fantic | ⬜ Bekliyor | |
-| jawa | ⬜ Bekliyor | |
-| ural | ⬜ Bekliyor | |
+| fantic | ✅ Tamamlandı | Korlas (resmi distribütör) sitesiyle doğrulandı — XEF 250/450 (4T Enduro) eksikti, eklendi. |
+| jawa | ✅ Tamamlandı | Resmi jawa.com.tr (Blue Motor distribütörlüğü) ile karşılaştırıldı, dosya zaten (42/Perak/350 OHC) eksiksizdi, değişiklik gerekmedi. |
+| ural | ✅ Tamamlandı | Resmi uralmotosiklet.com (Restar distribütörlüğü) ile karşılaştırıldı — Türkiye'de satılan 4 model isminden (T/Sportsman/Ranger/Retro) sadece 2'si (Gear Up/CT, farklı isimlendirme) vardı, Ranger/Sportsman/Retro eklendi. |
 | norton | ⬜ Bekliyor | |
 | buell | ⬜ Bekliyor | |
 | bimota | ⬜ Bekliyor | |
