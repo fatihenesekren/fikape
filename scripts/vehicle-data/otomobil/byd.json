@@ -17,6 +17,11 @@
       "trims": ["Standart", "Premium", "Diğer"]
     },
     {
+      "name": "Sealion 7",
+      "versions": ["RWD 313 82.5kWh", "AWD 390 82.5kWh", "Diğer"],
+      "trims": ["Design", "Excellence", "Diğer"]
+    },
+    {
       "name": "Seal",
       "versions": ["RWD 313 82.56kWh", "AWD 390 82.56kWh", "Performance AWD 523", "Diğer"],
       "trims": ["Design", "Excellence", "Diğer"]

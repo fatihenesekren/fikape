@@ -56,10 +56,10 @@
 | cupra | ✅ Tamamlandı | Yeni marka (2018-), nesil geçmişi az. İlk Cupra modeli olan **Ateca (2018-2021, Seat Ateca tabanlı)** tamamen eksikti, eklendi. Born/Formentor/Leon/Tavascan/Terramar zaten sağlıklıydı. |
 | smart | ✅ Tamamlandı | Fortwo (Türkiye'de yaygın şehir arabası) ve Forfour tek girişten gerçek nesillere bölündü (Fortwo 3 nesle: W450/W451/W453, Forfour 2 nesle: W454/W453). #1/#3 zaten sağlıklıydı. |
 | tesla | ✅ Tamamlandı | Dosya zaten eksiksizdi (yeni marka, gerçek nesil geçmişi yok, facelift'ler Highland/Juniper zaten versiyonlarda mevcut). Değişiklik gerekmedi. |
-| togg | ⬜ Bekliyor | (sıradaki) |
-| byd | ⬜ Bekliyor | |
-| mg | ⬜ Bekliyor | |
-| haval | ⬜ Bekliyor | |
+| togg | ✅ Tamamlandı | WebSearch ile doğrulandı (Temmuz 2026) — Türkiye'de sadece T10X ve T10F satışta, yeni uygun fiyatlı model henüz gelmedi ("üzerinde çalışılıyor" aşamasında). Dosya zaten eksiksizdi, değişiklik gerekmedi. |
+| byd | ✅ Tamamlandı | WebSearch ile doğrulandı — Türkiye'de Seal, **Sealion 7**, Han, Tang aktif satışta (Atto 3/Atto 2/Dolphin/Seal U geçici olarak satış dışı ama ikinci elde var, dokunulmadı). Sealion 7 tamamen eksikti, eklendi. |
+| mg | ✅ Tamamlandı | WebSearch ile doğrulandı — Türkiye'de MG7, MG HS, MG ZS, MG4, Marvel R satışta. **MG7 tamamen eksikti** (orta segment sedan), eklendi. |
+| haval | ⬜ Bekliyor | (sıradaki) |
 | changan | ⬜ Bekliyor | |
 
 ### Tier 3 — niş / lüks / az sayıda araç (son sıra)

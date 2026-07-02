@@ -37,6 +37,11 @@
       "trims": ["Comfort", "Luxury", "Diğer"]
     },
     {
+      "name": "7",
+      "versions": ["1.5T 174", "2.0T 258", "Diğer"],
+      "trims": ["Comfort", "Luxury", "Excellence", "Diğer"]
+    },
+    {
       "name": "Marvel R",
       "versions": ["RWD 180 70kWh", "AWD 288 70kWh", "Diğer"],
       "trims": ["Comfort", "Luxury", "Diğer"]
