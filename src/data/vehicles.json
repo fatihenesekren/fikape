@@ -18431,6 +18431,19 @@
           ]
         },
         {
+          "name": "PCX 125",
+          "versions": [
+            "125cc 12.5 CV",
+            "DLX",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "DLX",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Forza 250",
           "versions": [
             "250cc 23 CV",

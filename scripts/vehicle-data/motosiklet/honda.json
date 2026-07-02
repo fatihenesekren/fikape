@@ -28,6 +28,7 @@
     { "name": "X-ADV", "versions": ["750cc 58 CV DCT", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "CRF 250 Rally", "versions": ["250cc 27 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "SH 125i", "versions": ["125cc 12 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "PCX 125", "versions": ["125cc 12.5 CV", "DLX", "Diğer"], "trims": ["Standart", "DLX", "Diğer"] },
     { "name": "Forza 250", "versions": ["250cc 23 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Forza 350", "versions": ["350cc 29 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "ADV 350", "versions": ["350cc 29 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
