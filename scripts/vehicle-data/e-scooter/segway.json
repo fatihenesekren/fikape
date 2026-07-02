@@ -9,6 +9,7 @@
     { "name": "Ninebot Max G30", "versions": ["350W 15.3Ah 30km/h", "G30D 25km/h", "Diğer"], "trims": ["Standart", "D", "Diğer"] },
     { "name": "Ninebot Max G2", "versions": ["450W 15.3Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Ninebot Max G65", "versions": ["700W 22Ah 65km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GT Serisi", "versions": ["3000W Çift 45Ah 70km/h GT1", "3800W Çift 40Ah 70km/h GT2", "3800W Çift 40Ah 70km/h GT2P", "Diğer"], "trims": ["GT1", "GT2", "GT2P", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

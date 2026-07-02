@@ -5,6 +5,9 @@
     { "name": "F2 / F2 Plus / F2 Pro (2022-)", "versions": ["300W 25 km/s F2", "300W 25 km/s F2 Plus", "450W 30 km/s F2 Pro", "Diğer"], "trims": ["F2", "F2 Plus", "F2 Pro", "Diğer"] },
     { "name": "G30 / G30 Max (2019-)", "versions": ["350W 30 km/s G30", "350W 30 km/s G30 Max", "Diğer"], "trims": ["G30", "G30 Max", "Diğer"] },
     { "name": "D28 / D38 / D40 (2021-)", "versions": ["300W 25 km/s D28", "350W 25 km/s D38", "450W 30 km/s D40", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "C2 / C9 (2022-)", "versions": ["150W 15 km/s C2", "250W 20 km/s C9", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "F3 / F3 Pro (2023-)", "versions": ["300W 25 km/s F3", "450W 30 km/s F3 Pro", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
+    { "name": "Zing", "versions": ["150W 16 km/s", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

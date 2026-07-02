@@ -28427,6 +28427,43 @@
           ]
         },
         {
+          "name": "N65i / N65 Pro",
+          "versions": [
+            "500W 17.5Ah 35km/h N65i",
+            "500W 20Ah 35km/h N65 Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S65C / S65 GT",
+          "versions": [
+            "500W 17.5Ah 40km/h S65C",
+            "700W 20Ah 40km/h S65 GT",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "GT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V50",
+          "versions": [
+            "500W 15Ah 32km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -28489,6 +28526,42 @@
             "300W 25 km/s D28",
             "350W 25 km/s D38",
             "450W 30 km/s D40",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C2 / C9 (2022-)",
+          "versions": [
+            "150W 15 km/s C2",
+            "250W 20 km/s C9",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F3 / F3 Pro (2023-)",
+          "versions": [
+            "300W 25 km/s F3",
+            "450W 30 km/s F3 Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Zing",
+          "versions": [
+            "150W 16 km/s",
             "Diğer"
           ],
           "trims": [
@@ -28574,6 +28647,33 @@
           ]
         },
         {
+          "name": "KQi Air",
+          "versions": [
+            "300W 10Ah 25km/h",
+            "X 300W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "X",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M+ / N1S",
+          "versions": [
+            "350W 15Ah 30km/h M+",
+            "500W 30Ah 45km/h N1S",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Lite",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -28626,6 +28726,30 @@
           ]
         },
         {
+          "name": "Panther ES800",
+          "versions": [
+            "800W Çift 40 km/s",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ceetle",
+          "versions": [
+            "500W 30 km/s EA10",
+            "Pro 500W EA10C",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -28669,6 +28793,21 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Escape",
+          "versions": [
+            "500W 15Ah 25km/h",
+            "Pro+ 500W",
+            "Ultra Max 800W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro+",
+            "Ultra Max",
             "Diğer"
           ]
         },
@@ -28722,6 +28861,28 @@
           "trims": [
             "Standart",
             "Air",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "EcoSmart Metro",
+          "versions": [
+            "350W 24 km/s",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E XR",
+          "versions": [
+            "300W 29 km/s",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -28830,6 +28991,21 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GT Serisi",
+          "versions": [
+            "3000W Çift 45Ah 70km/h GT1",
+            "3800W Çift 40Ah 70km/h GT2",
+            "3800W Çift 40Ah 70km/h GT2P",
+            "Diğer"
+          ],
+          "trims": [
+            "GT1",
+            "GT2",
+            "GT2P",
             "Diğer"
           ]
         },
