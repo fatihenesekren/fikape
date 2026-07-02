@@ -17600,6 +17600,29 @@
           ]
         },
         {
+          "name": "Crossfire 125 / 500 (Scrambler)",
+          "versions": [
+            "125cc 11 CV",
+            "500cc 47 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sunray 125",
+          "versions": [
+            "125cc 11 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"

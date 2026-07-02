@@ -159,7 +159,9 @@
 | silence | ✅ Tamamlandı | Resmi distribütör doğrulandı (Doğan Trend Otomobilite) — **S02 tamamen eksikti** (dosyada sadece S01 vardı), eklendi. |
 | super-soco | ✅ Tamamlandı | Resmi lineup (TC/TC Max/CUx/CPx) ile karşılaştırıldı, dosya zaten eksiksizdi. |
 | sur-ron | ✅ Tamamlandı | Resmi sur-ron.com.tr ile karşılaştırıldı (Light Bee X/Ultra Bee/Storm Bee), dosya zaten eksiksizdi. |
-| brixton | ⬜ Bekliyor | |
+| brixton | ✅ Tamamlandı | Resmi distribütör doğrulandı (Isotlar Motor) — Crossfire 125/500 (Scrambler ailesi) ve Sunray 125 tamamen eksikti, eklendi. |
+
+**🎉 MOTOSİKLET KATEGORİSİ TAMAMLANDI (61/61 marka), 2 Temmuz 2026.** Tier 1 (17), Tier 2 (18), Tier 3 (26) hepsi bitti; Çağ markası doğrulanamadığı için kaldırıldı (Ümit Motor ile aynı desen — motosiklet kategorisinde artık 60 gerçek marka var). Sırada: Kamyonet kategorisi (31 marka) — aşağıya tier listesi eklenip ilk markadan başlanmalı.
 | diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder, denetime gerek yok |
 
 ## Kamyonet (30 marka)
