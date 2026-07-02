@@ -5303,7 +5303,48 @@
           ]
         },
         {
-          "name": "Sorento",
+          "name": "Sorento (2002-2009)",
+          "versions": [
+            "2.5 CRDi 140 AWD",
+            "3.5 V6 197 AWD",
+            "Diğer"
+          ],
+          "trims": [
+            "EX",
+            "LX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sorento (2009-2014)",
+          "versions": [
+            "2.2 CRDi 197 AWD",
+            "2.4 GDI 174 2WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sorento (2014-2020)",
+          "versions": [
+            "2.2 CRDi 200 AWD",
+            "2.0 CRDi 184 2WD",
+            "Diğer"
+          ],
+          "trims": [
+            "Concept",
+            "Comfort",
+            "GT Line",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sorento (2020-)",
           "versions": [
             "2.5 T-GDI 277 AWD",
             "2.2 CRDi 200 AWD",
@@ -5316,6 +5357,251 @@
             "Comfort",
             "GT Line",
             "GT Line Premium",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cerato (2004-2009)",
+          "versions": [
+            "1.6 MPI 105",
+            "2.0 MPI 143",
+            "1.6 CRDi 90",
+            "2.0 CRDi 140",
+            "Diğer"
+          ],
+          "trims": [
+            "EX",
+            "LX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cerato (2009-2013)",
+          "versions": [
+            "1.6 MPI 126",
+            "2.0 MPI 150",
+            "1.6 CRDi 128",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cerato (2013-2018)",
+          "versions": [
+            "1.6 MPI 130",
+            "1.6 CRDi 136",
+            "Diğer"
+          ],
+          "trims": [
+            "Concept",
+            "Comfort",
+            "GT Line",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Optima / Magentis (2000-2005)",
+          "versions": [
+            "2.0 MPI 131",
+            "2.5 V6 165",
+            "Diğer"
+          ],
+          "trims": [
+            "EX",
+            "LX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Optima / Magentis (2005-2010)",
+          "versions": [
+            "2.0 MPI 144",
+            "2.7 V6 175",
+            "2.0 CRDi 140",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Optima (2010-2015)",
+          "versions": [
+            "1.7 CRDi 136",
+            "2.0 GDI 166",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Optima (2015-2020)",
+          "versions": [
+            "1.6 T-GDI 178",
+            "1.7 CRDi 141",
+            "Diğer"
+          ],
+          "trims": [
+            "Concept",
+            "Comfort",
+            "GT Line",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Carens / Rondo (2000-2006)",
+          "versions": [
+            "1.8 MPI 105",
+            "2.0 CRDi 113",
+            "Diğer"
+          ],
+          "trims": [
+            "EX",
+            "LX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Carens / Rondo (2006-2013)",
+          "versions": [
+            "1.6 MPI 122",
+            "2.0 MPI 143",
+            "1.6 CRDi 115",
+            "2.0 CRDi 140",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Carens (2013-2019)",
+          "versions": [
+            "1.6 GDI 135",
+            "1.7 CRDi 141",
+            "Diğer"
+          ],
+          "trims": [
+            "Concept",
+            "Comfort",
+            "GT Line",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Carnival / Sedona (1998-2005)",
+          "versions": [
+            "2.5 V6 165",
+            "2.9 CRDi 126",
+            "Diğer"
+          ],
+          "trims": [
+            "EX",
+            "LX",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Carnival / Sedona (2006-2014)",
+          "versions": [
+            "2.7 V6 189",
+            "2.9 CRDi 185",
+            "2.2 CRDi 197",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Carnival / Sedona (2014-2020)",
+          "versions": [
+            "2.2 CRDi 200",
+            "3.3 GDI 276",
+            "Diğer"
+          ],
+          "trims": [
+            "Concept",
+            "Comfort",
+            "GT Line",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Soul (2008-2013)",
+          "versions": [
+            "1.6 MPI 126",
+            "1.6 CRDi 128",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Soul (2013-2019)",
+          "versions": [
+            "1.6 GDI 132",
+            "1.6 CRDi 136",
+            "Diğer"
+          ],
+          "trims": [
+            "Concept",
+            "Comfort",
+            "GT Line",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Venga",
+          "versions": [
+            "1.4 MPI 90",
+            "1.6 MPI 125",
+            "1.4 CRDi 90",
+            "1.6 CRDi 115",
+            "Diğer"
+          ],
+          "trims": [
+            "Cool",
+            "Comfort",
+            "Spirit",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XCeed",
+          "versions": [
+            "1.0 T-GDI 120",
+            "1.5 T-GDI 160",
+            "1.6 CRDi 115",
+            "1.6 CRDi 136",
+            "Diğer"
+          ],
+          "trims": [
+            "Concept",
+            "Comfort",
+            "GT Line",
             "Diğer"
           ]
         },
