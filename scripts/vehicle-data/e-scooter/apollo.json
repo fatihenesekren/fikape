@@ -7,6 +7,8 @@
     { "name": "Phantom", "versions": ["2400W Çift 52Ah 65km/h", "V3 2400W", "Diğer"], "trims": ["Standart", "V3", "Diğer"] },
     { "name": "Pro", "versions": ["1000W 34Ah 45km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Explore", "versions": ["1200W Çift 52Ah 55km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Dash", "versions": ["250W 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Go", "versions": ["500W Çift 45km/h", "Diğer"], "trims": ["Standart", "Ludo", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

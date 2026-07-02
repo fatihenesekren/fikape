@@ -27550,6 +27550,29 @@
           ]
         },
         {
+          "name": "Dash",
+          "versions": [
+            "250W 25km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Go",
+          "versions": [
+            "500W Çift 45km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Ludo",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -27663,6 +27686,54 @@
           ]
         },
         {
+          "name": "Dualtron X",
+          "versions": [
+            "13000W Çift 60Ah",
+            "Limited 13000W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "City",
+          "versions": [
+            "4000W Çift 25Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Victor",
+          "versions": [
+            "4300W Çift 42Ah",
+            "Luxury Plus 4300W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Luxury Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Togo",
+          "versions": [
+            "1350W 12Ah 25km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -27695,6 +27766,24 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RoadRunner",
+          "versions": [
+            "2000W 35Ah 45km/h",
+            "SE 1000W",
+            "Pro 3000W",
+            "V3 3000W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "Pro",
+            "V2",
+            "V3",
             "Diğer"
           ]
         },
@@ -27741,6 +27830,52 @@
           "versions": [
             "350W 32 km/s Rival",
             "500W 40 km/s Apex",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XR Elite / XR Ultra",
+          "versions": [
+            "300W 32 km/s XR Elite",
+            "500W 40 km/s XR Ultra",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GMax Ultra",
+          "versions": [
+            "1000W Çift 72km menzil",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GX3",
+          "versions": [
+            "2000W Çift 45km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "G3 / G Pro (3 Tekerlekli)",
+          "versions": [
+            "500W 25km/h G3",
+            "500W 25km/h G Pro",
             "Diğer"
           ],
           "trims": [
@@ -27799,6 +27934,19 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Titan / Titan Pro (2023-)",
+          "versions": [
+            "1200W 40 km/s Titan",
+            "750W Çift 50 km/s Titan Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
             "Diğer"
           ]
         },

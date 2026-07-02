@@ -3,6 +3,7 @@
   "models": [
     { "name": "Cruiser", "versions": ["1600W 30Ah 45km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Touring", "versions": ["500W 20Ah 35km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "RoadRunner", "versions": ["2000W 35Ah 45km/h", "SE 1000W", "Pro 3000W", "V3 3000W", "Diğer"], "trims": ["Standart", "SE", "Pro", "V2", "V3", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
