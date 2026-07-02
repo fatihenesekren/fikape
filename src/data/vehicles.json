@@ -23032,6 +23032,21 @@
           "trims": [
             "Standart",
             "+",
+            "Urban",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S02",
+          "versions": [
+            "Elektrik Low Speed",
+            "Elektrik High Speed",
+            "Diğer"
+          ],
+          "trims": [
+            "Low Speed",
+            "High Speed",
+            "Corporate",
             "Diğer"
           ]
         },

@@ -156,9 +156,9 @@
 | energica | ✅ Tamamlandı | Resmi Türkiye distribütörü doğrulandı (Ankara), dosya (Ego/Eva Ribelle/Experia) zaten eksiksizdi. |
 | zero-motorcycles | ✅ Tamamlandı | Resmi Türkiye distribütörü doğrulandı (İmecar Otomotiv, Antalya), dosya zaten eksiksizdi. |
 | stark-future | ✅ Tamamlandı | Resmi Türkiye distribütörü doğrulandı (Uzun Moto) — Varg SM (Supermoto) eksikti, eklendi. |
-| silence | ⬜ Bekliyor | Elektrikli |
-| super-soco | ⬜ Bekliyor | Elektrikli |
-| sur-ron | ⬜ Bekliyor | Elektrikli |
+| silence | ✅ Tamamlandı | Resmi distribütör doğrulandı (Doğan Trend Otomobilite) — **S02 tamamen eksikti** (dosyada sadece S01 vardı), eklendi. |
+| super-soco | ✅ Tamamlandı | Resmi lineup (TC/TC Max/CUx/CPx) ile karşılaştırıldı, dosya zaten eksiksizdi. |
+| sur-ron | ✅ Tamamlandı | Resmi sur-ron.com.tr ile karşılaştırıldı (Light Bee X/Ultra Bee/Storm Bee), dosya zaten eksiksizdi. |
 | brixton | ⬜ Bekliyor | |
 | diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder, denetime gerek yok |
 
