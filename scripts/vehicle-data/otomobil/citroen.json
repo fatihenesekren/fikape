@@ -2,9 +2,24 @@
   "make": "Citroën",
   "models": [
     {
+      "name": "Saxo (1996-2004)",
+      "versions": ["1.1 60", "1.4 75", "1.6 VTS 118", "1.5D 57", "1.9D 70", "Diğer"],
+      "trims": ["X", "SX", "VTS", "Diğer"]
+    },
+    {
       "name": "C1",
       "versions": ["1.0 VTi 72", "Diğer"],
       "trims": ["Feel", "Shine", "Diğer"]
+    },
+    {
+      "name": "C2 (2003-2009)",
+      "versions": ["1.1 61", "1.4 75", "1.6 VTS 110", "1.4 HDi 70", "Diğer"],
+      "trims": ["X", "SX", "VTS", "Diğer"]
+    },
+    {
+      "name": "ZX (1991-1998)",
+      "versions": ["1.4 75", "1.6 88", "1.9D 65", "1.9 TD 92", "Diğer"],
+      "trims": ["Reflex", "Avantage", "Diğer"]
     },
     {
       "name": "C3",
@@ -12,9 +27,39 @@
       "trims": ["Feel", "Shine", "Max", "Diğer"]
     },
     {
+      "name": "C3 Picasso (2009-2017)",
+      "versions": ["1.4 95", "1.6 120", "1.6 HDi 92", "1.6 HDi 112", "Diğer"],
+      "trims": ["Attraction", "Seduction", "Exclusive", "Diğer"]
+    },
+    {
       "name": "C3 Aircross",
       "versions": ["1.2 PureTech 110", "1.2 PureTech 130", "1.5 BlueHDi 110", "Diğer"],
       "trims": ["Feel", "Shine", "Max", "Diğer"]
+    },
+    {
+      "name": "C-Elysée (2012-2022)",
+      "versions": ["1.2 PureTech 82", "1.6 VTi 115", "1.6 HDi 92", "1.5 BlueHDi 75", "Diğer"],
+      "trims": ["Live", "Feel", "Shine", "Diğer"]
+    },
+    {
+      "name": "Xsara (1997-2005)",
+      "versions": ["1.4 75", "1.6 90", "1.8 101", "2.0 VTS 167", "1.9D 68", "1.9 TD 90", "2.0 HDi 90", "Diğer"],
+      "trims": ["X", "SX", "Exclusive", "VTS", "Diğer"]
+    },
+    {
+      "name": "Xsara Picasso (1999-2010)",
+      "versions": ["1.6 95", "1.8 115", "2.0 136", "1.6 HDi 92", "2.0 HDi 90", "2.0 HDi 109", "Diğer"],
+      "trims": ["X", "SX", "Exclusive", "Diğer"]
+    },
+    {
+      "name": "C4 (2004-2010)",
+      "versions": ["1.4 90", "1.6 110", "2.0 143", "1.6 HDi 92", "1.6 HDi 110", "2.0 HDi 138", "Diğer"],
+      "trims": ["X", "SX", "VTR", "Exclusive", "Diğer"]
+    },
+    {
+      "name": "C4 (2010-2018)",
+      "versions": ["1.2 PureTech 82", "1.6 VTi 120", "1.6 e-HDi 92", "1.6 HDi 110", "Diğer"],
+      "trims": ["Attraction", "Seduction", "Exclusive", "Diğer"]
     },
     {
       "name": "C4",
@@ -27,6 +72,31 @@
       "trims": ["Feel", "Shine", "Max", "Diğer"]
     },
     {
+      "name": "C4 Picasso (2006-2013)",
+      "versions": ["1.6 120", "2.0 143", "1.6 HDi 110", "2.0 HDi 138", "Diğer"],
+      "trims": ["X", "SX", "Exclusive", "Diğer"]
+    },
+    {
+      "name": "Grand C4 Picasso (2013-2018)",
+      "versions": ["1.2 PureTech 130", "1.6 BlueHDi 120", "2.0 BlueHDi 150", "Diğer"],
+      "trims": ["Feel", "Shine", "Diğer"]
+    },
+    {
+      "name": "Xantia (1993-2001)",
+      "versions": ["1.8 101", "2.0 121", "1.9D 71", "1.9 TD 90", "2.0 HDi 90", "Diğer"],
+      "trims": ["SX", "VSX", "Exclusive", "Diğer"]
+    },
+    {
+      "name": "C5 (2001-2008)",
+      "versions": ["1.8 117", "2.0 143", "2.0 HDi 110", "2.2 HDi 136", "Diğer"],
+      "trims": ["X", "SX", "VTR", "Exclusive", "Diğer"]
+    },
+    {
+      "name": "C5 (2008-2017)",
+      "versions": ["1.6 THP 156", "2.0 143", "1.6 HDi 110", "2.0 HDi 160", "2.2 HDi 200", "Diğer"],
+      "trims": ["Attraction", "Seduction", "Exclusive", "Diğer"]
+    },
+    {
       "name": "C5 Aircross",
       "versions": ["1.2 PureTech 130", "1.6 PureTech 180", "1.5 BlueHDi 130", "Plug-in Hybrid 225", "Diğer"],
       "trims": ["Feel", "Shine", "Shine Bold", "Max", "Diğer"]
@@ -35,6 +105,11 @@
       "name": "C5 X",
       "versions": ["1.2 PureTech 130", "1.6 PureTech 180", "Plug-in Hybrid 225", "Diğer"],
       "trims": ["Feel", "Shine", "Max", "Diğer"]
+    },
+    {
+      "name": "C8 (2002-2014)",
+      "versions": ["2.0 143", "2.0 HDi 136", "2.2 HDi 170", "Diğer"],
+      "trims": ["SX", "Exclusive", "Diğer"]
     },
     {
       "name": "ë-C3",
