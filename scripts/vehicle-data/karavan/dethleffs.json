@@ -6,6 +6,12 @@
     { "name": "Camper", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Lifestyle", "Diğer"] },
     { "name": "Beduin", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Nomad", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Advantage (Yarı Entegre/Entegre, 2015-)", "versions": ["Fransız Karyola", "İkiz Yatak", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Esprit (Yarı Entegre/Entegre, 2010-)", "versions": ["Fransız Karyola", "İkiz Yatak", "Diğer"], "trims": ["Standart", "Comfort (Çift Taban)", "Diğer"] },
+    { "name": "Globebus (Kompakt, 2015-)", "versions": ["Fransız Karyola", "İkiz Yatak", "Diğer"], "trims": ["Standart", "Active", "Go", "Performance", "Diğer"] },
+    { "name": "Just Camp (2018-)", "versions": ["Fransız Karyola", "İkiz Yatak", "Diğer"], "trims": ["Standart", "Active", "Go", "Diğer"] },
+    { "name": "Alpa (Yarı Entegre/Entegre, 2018-)", "versions": ["2 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "XL Family (2020-)", "versions": ["6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

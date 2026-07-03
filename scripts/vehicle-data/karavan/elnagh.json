@@ -3,6 +3,10 @@
   "models": [
     { "name": "Baron", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Marlin", "versions": ["4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Baron Compact (Yarı Entegre, 2022-)", "versions": ["4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "T-Loft (Yarı Entegre, 2020-)", "versions": ["T-Loft 450", "T-Loft 529", "T-Loft 530", "T-Loft 532", "T-Loft 582", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Magnum (Entegre, 2020-)", "versions": ["Magnum 530", "Magnum 532", "Magnum 582", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "E-Van (Van, 2022-)", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Next", "Premium", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

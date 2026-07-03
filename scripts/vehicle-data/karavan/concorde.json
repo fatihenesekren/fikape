@@ -2,9 +2,11 @@
   "make": "Concorde",
   "models": [
     { "name": "Credo (Yarı Entegre, 2000-)", "versions": ["Credo 791 RL", "Credo 841 RB", "Credo 791 M", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Carver (Entegre, 2005-)", "versions": ["Carver 841 L", "Carver 891 L", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Carver (Entegre, 2005-)", "versions": ["Carver 841 L", "Carver 891 L", "Diğer"], "trims": ["Standart", "Select", "Diğer"] },
+    { "name": "Charisma (Entegre, Ultra Lüks, 2010-)", "versions": ["Fransız Karyola", "İkiz Yatak", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Liner (2000-)", "versions": ["Liner 1090 G", "Liner 1090 RL", "Liner Plus", "Diğer"], "trims": ["Standart", "Plus", "Diğer"] },
-    { "name": "Centurion (Ultra Lüks, 2010-)", "versions": ["Centurion 1200", "Centurion 1400", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Centurion (Ultra Lüks, 2010-)", "versions": ["Centurion 1200", "Centurion 1400", "Diğer"], "trims": ["Standart", "GSI", "Diğer"] },
+    { "name": "Cruiser (Alkovlu, 2015-)", "versions": ["Cruiser Daily", "Cruiser Atego", "Diğer"], "trims": ["Standart", "Diamond", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

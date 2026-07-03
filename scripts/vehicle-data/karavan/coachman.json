@@ -6,6 +6,7 @@
     { "name": "Laser", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Pastiche", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "VIP", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Lusso (2022-)", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
