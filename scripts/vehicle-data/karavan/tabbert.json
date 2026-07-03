@@ -4,6 +4,9 @@
     { "name": "Rossini", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Edition", "Diğer"] },
     { "name": "Da Vinci", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Vivaldi", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Puccini", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Cellini", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Slide-Out", "Diğer"] },
+    { "name": "Pep", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

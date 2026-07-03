@@ -1,8 +1,11 @@
 {
   "make": "Rapido",
   "models": [
-    { "name": "Serie 1", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Premium", "Diğer"] },
-    { "name": "Serie 6", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Série C (Yarı Entegre)", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Night Edition", "Diğer"] },
+    { "name": "Série 6F (Alçak Profil)", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Série 8F / 80dF (Tam Entegre)", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Distinction M (Premium Tam Entegre)", "versions": ["i166M", "i196M", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Van (V-Serisi)", "versions": ["V55", "V65 XL", "V68", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

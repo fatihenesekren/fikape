@@ -4,7 +4,7 @@
     { "name": "A (Alkoven)", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "C (Yarı Entegre)", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "T67 (Tam Entegre)", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "V (Van)", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Cliff (Kompakt Van)", "versions": ["2 Kişilik", "4 Kişilik", "RT (Yükseltilebilir Tavan)", "Diğer"], "trims": ["Standart", "Adventure", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

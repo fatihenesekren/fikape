@@ -6,6 +6,10 @@
     { "name": "View / Navion (C Sınıfı, 2005-)", "versions": ["View 24D", "View 24V", "Navion 24V", "Navion 24J", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Intent / Forza (A Sınıfı, 2015-)", "versions": ["Intent 26M", "Intent 30R", "Forza 38F", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Revel (4x4 Kampervan, 2018-)", "versions": ["Revel 44E", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Solis (B Sınıfı Kampervan)", "versions": ["Solis 59P", "Solis 59PX", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "EKKO (C Sınıfı 4x4)", "versions": ["EKKO 22A", "EKKO 22FF", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Voyage (Çekme Karavan)", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Suncruiser (C Sınıfı)", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
