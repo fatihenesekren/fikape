@@ -4,6 +4,9 @@
     { "name": "Premio", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Life", "Plus", "Diğer"] },
     { "name": "Averso", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "GT", "Diğer"] },
     { "name": "Lyseo", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "TD", "HD", "Diğer"] },
+    { "name": "Ixeo (Motokaravan)", "versions": ["Yarı Entegre", "Alkoven", "Diğer"], "trims": ["Standart", "TL", "Diğer"] },
+    { "name": "Nexxo (Motokaravan)", "versions": ["Entegre", "Van", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Elegance (Motokaravan)", "versions": ["Entegre", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

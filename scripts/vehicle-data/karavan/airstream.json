@@ -6,6 +6,9 @@
     { "name": "International / Globetrotter (2000-)", "versions": ["25 ft", "27 ft", "30 ft", "Diğer"], "trims": ["International", "Globetrotter", "Diğer"] },
     { "name": "Classic (2000-)", "versions": ["30 ft", "33 ft", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Interstate / Atlas (Motorhome, 2010-)", "versions": ["Interstate 24GT", "Interstate 24X", "Atlas 24", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Caravel (2017-)", "versions": ["16 ft", "19 ft", "22 ft", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Basecamp (2016-)", "versions": ["16 ft", "20 ft", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
+    { "name": "Trade Wind (2022-)", "versions": ["19 ft", "23 ft", "25 ft", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

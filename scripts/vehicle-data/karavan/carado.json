@@ -6,6 +6,7 @@
     { "name": "V Serisi (Van / Kampervan, 2010-)", "versions": ["V 132", "V 600", "V 601", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "I Serisi (Entegre, 2010-)", "versions": ["I 132", "I 447", "I 600", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "C Serisi (Kampervan Kompakt, 2018-)", "versions": ["C 338", "C 231", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "CV Serisi (Camper Van, 2022-)", "versions": ["CV 600", "CV 602", "CV 640", "CV 590 4x4", "Diğer"], "trims": ["Standart", "Pro+", "Edition", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
