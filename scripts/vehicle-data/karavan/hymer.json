@@ -6,6 +6,8 @@
     { "name": "B-Klasse", "versions": ["SL", "DL", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "ML-T", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "S-Klasse", "versions": ["SL", "DL", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Grand Canyon", "versions": ["Van", "S", "Diğer"], "trims": ["Standart", "CrossOver", "CrossTrail", "Xperience", "Diğer"] },
+    { "name": "Free", "versions": ["Van", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

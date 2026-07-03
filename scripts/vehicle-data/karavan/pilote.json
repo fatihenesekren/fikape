@@ -1,8 +1,8 @@
 {
   "make": "Pilote",
   "models": [
-    { "name": "Pacific", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Galaxy", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Pacific", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Essentiel", "Sensation", "Evidence", "Diğer"] },
+    { "name": "Galaxy", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Expression", "Evidence", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

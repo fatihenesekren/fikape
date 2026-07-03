@@ -3,6 +3,10 @@
   "models": [
     { "name": "Lagan", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Edition", "Diğer"] },
     { "name": "Tandy", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Nevis", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Mc4", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Glamys", "versions": ["Van", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Menfys", "versions": ["Van", "Diğer"], "trims": ["Next", "S-Line", "Prestige", "7 LifeStyle", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
