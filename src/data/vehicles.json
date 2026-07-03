@@ -29378,6 +29378,35 @@
           ]
         },
         {
+          "name": "Air 20 (Katlanabilir, 2021-)",
+          "versions": [
+            "250W 25 km/h 36V 10.4Ah",
+            "Pro 350W",
+            "S 250W",
+            "Ultra 500W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "S",
+            "Ultra",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Air Rover / Air Beast (Fat-Tire)",
+          "versions": [
+            "250W 25 km/h Air Rover",
+            "750W Çift 32 km/h Air Beast",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -29407,6 +29436,30 @@
           "name": "Katlanabilir Elektrikli",
           "versions": [
             "250W 25 km/h 36V 8Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sunshine / StreetRider (Şehir)",
+          "versions": [
+            "250W 25 km/h Sunshine",
+            "350W 32 km/h StreetRider",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Gladiator / Hummer (Fat-Tire)",
+          "versions": [
+            "500W 32 km/h Gladiator",
+            "500W 32 km/h Hummer",
             "Diğer"
           ],
           "trims": [
@@ -29475,6 +29528,41 @@
           ]
         },
         {
+          "name": "Abound (Kargo)",
+          "versions": [
+            "750W 32 km/h SR",
+            "750W 32 km/h LR",
+            "Diğer"
+          ],
+          "trims": [
+            "SR",
+            "LR",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ramblas (E-MTB)",
+          "versions": [
+            "750W 32 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sinch (Katlanabilir)",
+          "versions": [
+            "500W 32 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -29516,6 +29604,18 @@
             "750W BBSHD",
             "500W BBS02B",
             "250W BBS01B",
+            "BBS03 750W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "G510 / G521 (Mid-Drive)",
+          "versions": [
+            "250W Mid-Drive 25 km/h",
             "Diğer"
           ],
           "trims": [
@@ -29551,6 +29651,28 @@
         },
         {
           "name": "Electric C Line (2019-2022)",
+          "versions": [
+            "250W 25 km/h 300Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Electric G Line (2025-)",
+          "versions": [
+            "250W 25 km/h 300Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Electric T Line (2026-)",
           "versions": [
             "250W 25 km/h 300Wh",
             "Diğer"
@@ -29672,6 +29794,17 @@
           "name": "City Speed (Speed Pedelec, 2021-)",
           "versions": [
             "250W Bosch 45 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Speeddrive (Şehir/Hızlı)",
+          "versions": [
+            "250W Bosch 25 km/h",
             "Diğer"
           ],
           "trims": [

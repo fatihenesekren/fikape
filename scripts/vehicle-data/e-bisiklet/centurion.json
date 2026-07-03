@@ -4,6 +4,7 @@
     { "name": "No Pogo E (E-MTB Full-Sus, 2020-)", "versions": ["250W Bosch CX 25 km/h 625Wh", "250W Bosch CX 25 km/h 750Wh", "Diğer"], "trims": ["2000", "4000", "Diğer"] },
     { "name": "Numinis E (Trekking, 2020-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["500", "800", "Diğer"] },
     { "name": "City Speed (Speed Pedelec, 2021-)", "versions": ["250W Bosch 45 km/h 500Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Speeddrive (Şehir/Hızlı)", "versions": ["250W Bosch 25 km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

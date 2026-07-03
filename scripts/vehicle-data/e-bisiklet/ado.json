@@ -4,6 +4,8 @@
     { "name": "A20 (Katlanabilir Şehir)", "versions": ["250W 25 km/h 36V 10.4Ah", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
     { "name": "A26 (Katlanabilir)", "versions": ["250W 25 km/h 36V 12.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "D30 (Şehir)", "versions": ["250W 25 km/h 36V 14.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Air 20 (Katlanabilir, 2021-)", "versions": ["250W 25 km/h 36V 10.4Ah", "Pro 350W", "S 250W", "Ultra 500W", "Diğer"], "trims": ["Standart", "Pro", "S", "Ultra", "Diğer"] },
+    { "name": "Air Rover / Air Beast (Fat-Tire)", "versions": ["250W 25 km/h Air Rover", "750W Çift 32 km/h Air Beast", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
