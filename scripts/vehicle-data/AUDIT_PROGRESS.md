@@ -243,7 +243,51 @@
 
 ## E-Bisiklet (40 marka)
 
-_Sırada._
+| Marka | Durum | Not |
+|---|---|---|
+| ado | ✅ Tamamlandı | Air 20 serisi (2021 sonrası yeni isimlendirme), Air Rover/Air Beast (fat-tire) eklendi. TR'de resmi distribütör yok, paralel ithal. |
+| ancheer | ✅ Tamamlandı | Jenerik girişler yerine gerçek model isimleri (Sunshine/StreetRider, Gladiator/Hummer) eklendi. TR'de resmi kanal yok, sadece pazaryeri. |
+| aventon | ✅ Tamamlandı | Abound (kargo), Ramblas (e-MTB), Sinch (katlanabilir) eklendi. Türkiye'de resmi satış YOK — kaynaklar açıkça doğruladı. |
+| bafang | ✅ Tamamlandı | BBS03, G510/G521 eklendi. Not: bağımsız bisiklet markası değil, motor/kit üreticisi (OEM) — JSON içeriği bu açıdan doğru. TR'de ELDrive resmi distribütör. |
+| brompton-electric | ✅ Tamamlandı | **G Line Electric (2025) ve T Line Electric (2026) tamamen eksikti**, eklendi. TR'de Accell Bisiklet resmi bayi ağı (Atek/Bike Arenas/Erdoğanlar). |
+| cannondale | ✅ Tamamlandı | Gerçek eksik bulunamadı, mevcut Neo/Synapse Neo/Tesoro Neo/Moterra Neo serisi güncel. TR'de Delta Bisiklet resmi distribütör. |
+| centurion | ✅ Tamamlandı | Speeddrive (şehir/hızlı hat) eklendi. TR'de net resmi distribütör bulunamadı, sadece ikinci el/paralel. |
+| cowboy | ✅ Tamamlandı | İlk nesiller (Cowboy/Cowboy 2, Cowboy 3) tamamen eksikti, eklendi. TR'de resmi satış YOK (kaynak doğruladı). |
+| cube | ✅ Tamamlandı | Touring Hybrid, Supreme Hybrid, Editor eklendi. TR'de Yasmin Spor A.Ş. resmi distribütör (2013'ten beri). |
+| decathlon | ✅ Tamamlandı | Rockrider isimlendirme riski nedeniyle dokunulmadı (JSON'daki E-ST muhtemelen güncel E-ACTV ile aynı ürün, mükerrer kayıt riski). TR'de Decathlon kendi mağazaları üzerinden kesin resmi satış. |
+| eleglide | ✅ Tamamlandı | C1/C2, T2, Mopride, Tankroll eklendi (güncel commuter/moped hattı). TR'de resmi kanal yok. |
+| engwe | ✅ Tamamlandı | P275 (orta motor, ilk kez), X20/X24/X26, Engine X eklendi. TR'de resmi distribütör yok, ithalat/pazaryeri. |
+| eskute | ✅ Tamamlandı | C100/C200, M200, T300, V100/V200 eklendi — marka önemli ölçüde genişlemiş. TR'de resmi kanal yok. |
+| fiido | ✅ Tamamlandı | C11/C21/C700, Air (karbon flagship), Titan/T2 (kargo) eklendi. TR'de resmi distribütör yok, Gearbest/Geekbuying/Amazon.com.tr. |
+| flyer | ✅ Tamamlandı | **Uproc (tam süspansiyonlu enduro/trail flagship hattı) tamamen eksikti**, eklendi. TR'de resmi kanal yok, İsviçre/DE-AT-NL odaklı. |
+| gazelle | ✅ Tamamlandı | Eclipse, Avignon, Arroyo eklendi. TR'de GAZ Türkiye resmi bayi ağı + yetkili servis. |
+| giant | ✅ Tamamlandı | Reign E+ (tam süspansiyonlu enduro/downhill hattı) tamamen eksikti, eklendi. TR'de Giant Türkiye 2014'ten beri tek yetkili distribütör. |
+| gocycle | ✅ Tamamlandı | G3 (eski nesil), CX/CXi (kargo/aile ailesi) eklendi. TR'de resmi distribütör yok, çok sınırlı/nadir. |
+| gogobest | ✅ Tamamlandı | **Ciddi eksiklik**: GF300/GF750, GM27/GM28 (şehir), GF100 (kargo trisiklet) tamamen eksikti, eklendi — sadece 2 model vardı. TR'de resmi kanal yok. |
+| haibike | ✅ Tamamlandı | AllTrail (popüler hardtail e-MTB hattı) eklendi. TR'de çok kanallı ihtisas perakendesi (Sisman/Freeride Shop/Bike Shop Division), marka tanınıyor. |
+| heybike | ✅ Tamamlandı | Explore/Tyson, Brawn/Venus, Saturn (52V çift batarya) eklendi. TR'de resmi distribütör yok, Amazon.com.tr üzerinden bireysel satış. |
+| himo | ✅ Tamamlandı | Z16 (katlanır, Z20'nin küçük kardeşi) eklendi. TR'de MediaMarkt/Vatan/Trendyol/Hepsiburada'da yaygın satışta (Xiaomi ekosistemi). |
+| kalkhoff | ✅ Tamamlandı | **Entice (markanın 3. ana omurgası, all-road) tamamen eksikti**, eklendi. TR'de resmi distribütör bulunamadı, sınırlı/ithal. |
+| ktm-bikes | ✅ Tamamlandı | Macina Lycan, Sport/Gran/Fun/Cross eklendi. Not: KTM motosiklet markasından tamamen ayrı bir Avusturya bisiklet üreticisi, karıştırılmamalı. TR'de parçalı satış ağı. |
+| lankeleisi | ✅ Tamamlandı | XT750 (en popüler model), MG740 (çift motor flagship), X3000 eklendi. TR'de resmi kanal yok, muhtemelen gri pazar. |
+| lectric | ✅ Tamamlandı | XP4 750, XPeak2 (off-road e-MTB), ONE (kayış tahrikli) eklendi. TR'de resmi satış kanalı bulunamadı, ABD odaklı marka. |
+| merida | ✅ Tamamlandı | eONE-FORTY (trail, eONE-SIXTY'nin hafif kardeşi) eklendi. TR'de Aslı Bisiklet resmi distribütör — ~160 yetkili bayi, ~300 satış noktası. |
+| orbea | ✅ Tamamlandı | **Rise (hafif tam süspansiyonlu e-MTB flagship, EP8 RS) tamamen eksikti**, eklendi. TR'de Mayavelo resmi seçici distribütör. |
+| rad-power-bikes | ✅ Tamamlandı | Gerçek eksik bulunamadı. Not: şirket Ocak 2026'da Life EV Group tarafından satın alındı ("Rad Life Mobility"), Avrupa'dan 2023'te çekildi — TR'de resmi satış yok. |
+| riese-muller | ✅ Tamamlandı | Roadster (spor/hızlı şehir), Swing (Hollanda tipi) eklendi. TR'de resmi distribütör kanıtı zayıf, ikinci el/bireysel ithalat. |
+| scott | ✅ Tamamlandı | **Genius eRIDE ve Patron eRIDE (güncel amiral e-MTB serileri) tamamen eksikti**, eklendi. TR'de çok sayıda yetkili bayi (Uğur/Veloistanbul/Erdoğanlar/Sisman/Aydın/Kaçkar). |
+| specialized | ✅ Tamamlandı | Turbo Kenevo (gravity/enduro), Turbo Tero (macera/adventure) eklendi. TR'de Aktif Pedal (Levent/Caddebostan) resmi distribütör. |
+| stromer | ✅ Tamamlandı | **ST7 (yeni flagship, Pinion+Gates, VAB Bike of the Year 2026) tamamen eksikti**, ST1 de eklendi. TR resmi distribütörlüğü net doğrulanamadı. |
+| super73 | ✅ Tamamlandı | Z Miami serisi (Core/SE/Legacy/Limited Edition) tamamen eksikti, eklendi. TR'de resmi distribütör yok, toptan/bireysel ithalat. |
+| tenways | ✅ Tamamlandı | Wayfarer (2025/2026 kruvazör, Apple Find My) eklendi. TR'de resmi distribütör yok, sahibinden/bireysel ithalat. |
+| tern | ✅ Tamamlandı | Vektron (en tanınmış katlanır seri), Quick Haul, Orox eklendi. TR'de resmi bayi ağı (bike.com.tr, Kaçkar Bisiklet, Martı Bisiklet) + ternturkiye.com. |
+| trek | ✅ Tamamlandı | FX+, Marlin+, Fuel+ (TQ motorlu hafif e-MTB) eklendi. TR'de Alatin Bisiklet 2000'den beri resmi distribütör. |
+| vanmoof | ✅ Tamamlandı | **S6 (McLaren Applied/Lavoie girişimi sonrası ilk yeni model, Haziran 2025) tamamen eksikti**, eklendi. TR'de hiçbir zaman resmi satış olmadı, sadece paralel ithal/ikinci el. |
+| winora | ✅ Tamamlandı | Sima (günlük kullanım), Radius (spor/fitness trekking) eklendi — marka geneli 5 ana seriden 2'si eksikti. TR'de resmi distribütör yok. |
+| xiaomi | ✅ Tamamlandı | Gerçek eksik bulunamadı (1S/QiCycle güncel). Himo, Xiaomi ekosistemine bağlı olsa da zaten ayrı marka dosyası (`himo.json`) olarak mevcut, mükerrer eklenmedi. |
+| diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder |
+
+**🎉 E-BİSİKLET KATEGORİSİ TAMAMLANDI (39/39 gerçek marka + diğer.json), 2 Temmuz 2026.** 6 paralel araştırma agent'ı (her biri 6-7 marka) kullanıldı, e-scooter turundaki yöntemle aynı. **En büyük bulgular:** Brompton Electric'te G Line/T Line, Flyer'da Uproc (flagship), Gogobest'te ciddi eksiklik (sadece 2 modelden 6'ya çıktı), Kalkhoff'ta Entice (3. ana omurga), Orbea'da Rise (flagship), Scott'ta Genius/Patron eRIDE (amiral e-MTB'ler), Stromer'de ST7 (yeni flagship), VanMoof'ta S6 (McLaren Applied sonrası ilk model) tamamen eksikti. **Yeni desen — marka/dosya çakışması:** Xiaomi (bisiklet) ve Himo aynı ekosisteme ait ama zaten iki ayrı JSON dosyası olarak var, Himo'nun Xiaomi dosyasına mükerrer eklenmemesine dikkat edildi. **Güven seviyesi deseni:** Geleneksel büyük bisiklet markalarının (Cannondale, Cube, Gazelle, Giant, Merida, Orbea, Scott, Specialized, Tern, Trek) çoğunda güçlü TR resmi distribütör/bayi ağı doğrulandı; buna karşın Çin/ABD kaynaklı doğrudan-tüketici e-bike markalarının (Ado, Ancheer, Aventon, Cowboy, Eleglide, Engwe, Eskute, Fiido, Gocycle, Gogobest, Heybike, Lankeleisi, Lectric, Rad Power Bikes, Riese & Müller, Super73, Tenways, VanMoof, Winora) hiçbirinde TR resmi satış kanalı bulunamadı — düşük-orta güvenle eklendi. Sırada: Karavan kategorisi (32 marka).
 
 ## Karavan (32 marka)
 
