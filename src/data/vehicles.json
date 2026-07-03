@@ -32637,6 +32637,33 @@
           ]
         },
         {
+          "name": "Action",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sports",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Alpina",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "6 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -32718,6 +32745,45 @@
           ]
         },
         {
+          "name": "Caravel (2017-)",
+          "versions": [
+            "16 ft",
+            "19 ft",
+            "22 ft",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Basecamp (2016-)",
+          "versions": [
+            "16 ft",
+            "20 ft",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "X",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Trade Wind (2022-)",
+          "versions": [
+            "19 ft",
+            "23 ft",
+            "25 ft",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -32786,6 +32852,21 @@
           ]
         },
         {
+          "name": "Phoenix",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "GT75",
+            "Black Edition",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -32839,6 +32920,42 @@
             "Standart",
             "TD",
             "HD",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ixeo (Motokaravan)",
+          "versions": [
+            "Yarı Entegre",
+            "Alkoven",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "TL",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Nexxo (Motokaravan)",
+          "versions": [
+            "Entegre",
+            "Van",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Elegance (Motokaravan)",
+          "versions": [
+            "Entegre",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -32924,6 +33041,22 @@
           ]
         },
         {
+          "name": "CV Serisi (Camper Van, 2022-)",
+          "versions": [
+            "CV 600",
+            "CV 602",
+            "CV 640",
+            "CV 590 4x4",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro+",
+            "Edition",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -32968,6 +33101,44 @@
           "versions": [
             "2 Kişilik",
             "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Alba (2024-)",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sport Line (2024-)",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Exclusive Line (2024-)",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
             "Diğer"
           ],
           "trims": [
@@ -33033,11 +33204,60 @@
           "name": "liner-for-two (2010-)",
           "versions": [
             "liner-for-two 50 L",
+            "liner-for-two 53 I",
             "liner-for-two 55 L",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "chic c-line T (Yarı Entegre, 2020-)",
+          "versions": [
+            "Fransız Karyola",
+            "İkiz Yatak",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "chic c-line I (Entegre, 2020-)",
+          "versions": [
+            "Fransız Karyola",
+            "İkiz Yatak",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "chic s-plus I (Entegre, Ultra Lüks, 2018-)",
+          "versions": [
+            "64-XL-QB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C1-tourer / C2-tourer (2022-)",
+          "versions": [
+            "Fransız Karyola",
+            "İkiz Yatak",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Edition+",
             "Diğer"
           ]
         },
@@ -33103,6 +33323,19 @@
             "Titanium 510",
             "Titanium 627 GA",
             "Titanium 640",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Ultimate",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X-Line (2020-)",
+          "versions": [
+            "X 590",
+            "X 640",
             "Diğer"
           ],
           "trims": [
@@ -33190,6 +33423,18 @@
           ]
         },
         {
+          "name": "Lusso (2022-)",
+          "versions": [
+            "4 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -33225,6 +33470,19 @@
           ],
           "trims": [
             "Standart",
+            "Select",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Charisma (Entegre, Ultra Lüks, 2010-)",
+          "versions": [
+            "Fransız Karyola",
+            "İkiz Yatak",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -33251,6 +33509,20 @@
           ],
           "trims": [
             "Standart",
+            "GSI",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cruiser (Alkovlu, 2015-)",
+          "versions": [
+            "Cruiser Daily",
+            "Cruiser Atego",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diamond",
             "Diğer"
           ]
         },
@@ -33334,6 +33606,83 @@
           ]
         },
         {
+          "name": "Advantage (Yarı Entegre/Entegre, 2015-)",
+          "versions": [
+            "Fransız Karyola",
+            "İkiz Yatak",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Esprit (Yarı Entegre/Entegre, 2010-)",
+          "versions": [
+            "Fransız Karyola",
+            "İkiz Yatak",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Comfort (Çift Taban)",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Globebus (Kompakt, 2015-)",
+          "versions": [
+            "Fransız Karyola",
+            "İkiz Yatak",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Active",
+            "Go",
+            "Performance",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Just Camp (2018-)",
+          "versions": [
+            "Fransız Karyola",
+            "İkiz Yatak",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Active",
+            "Go",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Alpa (Yarı Entegre/Entegre, 2018-)",
+          "versions": [
+            "2 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XL Family (2020-)",
+          "versions": [
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -33386,6 +33735,59 @@
           ]
         },
         {
+          "name": "Baron Compact (Yarı Entegre, 2022-)",
+          "versions": [
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "T-Loft (Yarı Entegre, 2020-)",
+          "versions": [
+            "T-Loft 450",
+            "T-Loft 529",
+            "T-Loft 530",
+            "T-Loft 532",
+            "T-Loft 582",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Magnum (Entegre, 2020-)",
+          "versions": [
+            "Magnum 530",
+            "Magnum 532",
+            "Magnum 582",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E-Van (Van, 2022-)",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Next",
+            "Premium",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -33425,6 +33827,30 @@
             "Troll",
             "Familia",
             "Triton",
+            "Silver Edition",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Novaline",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Car (Motorlu Karavan)",
+          "versions": [
+            "Van",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -33442,6 +33868,18 @@
     {
       "make": "Eura Mobil",
       "models": [
+        {
+          "name": "Profila T (Yarı Entegre, 2015-)",
+          "versions": [
+            "Standart",
+            "Freestyle",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
         {
           "name": "Profila RS (Yarı Entegre, 2000-)",
           "versions": [
@@ -33469,6 +33907,28 @@
           ]
         },
         {
+          "name": "Contura (Yarı Entegre, 2022-)",
+          "versions": [
+            "Standart",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Integra (Entegre, 2018-)",
+          "versions": [
+            "Standart",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Integra Line (Entegre, 2005-)",
           "versions": [
             "Integra Line 690 QB",
@@ -33482,10 +33942,43 @@
           ]
         },
         {
+          "name": "Integra Line GT (Entegre, Mercedes Bazlı, 2020-)",
+          "versions": [
+            "Standart",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Terrestra (Off-Road, 2020-)",
           "versions": [
             "Terrestra 680 HB",
             "Terrestra 695 HB",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Xtura (4x4 Off-Road)",
+          "versions": [
+            "Standart",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Van",
+          "versions": [
+            "Van",
             "Diğer"
           ],
           "trims": [
@@ -33507,6 +34000,18 @@
     {
       "make": "Fendt",
       "models": [
+        {
+          "name": "Apero",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
         {
           "name": "Opal",
           "versions": [
@@ -33562,6 +34067,19 @@
           ]
         },
         {
+          "name": "Diamant",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -33576,12 +34094,28 @@
       "make": "Forster",
       "models": [
         {
-          "name": "T Serisi (Çekme Karavan, 2000-)",
+          "name": "T Serisi (Teilintegriert Motorhome, 2013-)",
           "versions": [
-            "T 600 UB",
-            "T 600 HB",
-            "T 655 EB",
-            "T 740 UB",
+            "T 699 EB",
+            "T 699 HB",
+            "T 699 LF",
+            "T 745 EF",
+            "T 745 QF",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Vibe",
+            "Coupé",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "A Serisi (Alkoven Motorhome, 2013-)",
+          "versions": [
+            "A 699 EB",
+            "A 699 VB",
+            "A 699 DVB",
             "Diğer"
           ],
           "trims": [
@@ -33590,11 +34124,23 @@
           ]
         },
         {
-          "name": "F Serisi (Motorhome Yarı Entegre, 2005-)",
+          "name": "I Serisi (Entegre Motorhome, 2026-)",
           "versions": [
-            "F 600 EB",
-            "F 680 EB",
-            "F 699 EB",
+            "I 745 EF",
+            "I 745 QF",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Van Serisi (Kompakt Van)",
+          "versions": [
+            "Vantasy",
+            "Flip",
+            "Livin' Up Pro",
             "Diğer"
           ],
           "trims": [
@@ -33617,7 +34163,7 @@
       "make": "Frankia",
       "models": [
         {
-          "name": "I Serisi (Entegre, 2000-)",
+          "name": "I Serisi (Fiat Bazlı Entegre, 2000-)",
           "versions": [
             "I 6800 BD",
             "I 7400 QD",
@@ -33631,7 +34177,7 @@
           ]
         },
         {
-          "name": "M Serisi (Entegre Geniş, 2005-)",
+          "name": "M Serisi (Mercedes Bazlı Entegre, 2005-)",
           "versions": [
             "M 7400 QD",
             "M 7900 GD",
@@ -33644,10 +34190,9 @@
           ]
         },
         {
-          "name": "Platinum (2015-)",
+          "name": "Now (Yarı Entegre, 2022-)",
           "versions": [
-            "Platinum 7900 GD",
-            "Platinum 8500 QD",
+            "Standart",
             "Diğer"
           ],
           "trims": [
@@ -33660,10 +34205,59 @@
           "versions": [
             "Neo 6800 BD",
             "Neo 7400 QD",
+            "Cruiser",
+            "Liner",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Noctra (Yarı Entegre, 2023-)",
+          "versions": [
+            "Standart",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Together (Entegre, 2023-)",
+          "versions": [
+            "Overcab",
+            "Entegre",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Titan (Entegre, 2020-)",
+          "versions": [
+            "Standart",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Platin (2015-)",
+          "versions": [
+            "Platin 7900 GD",
+            "Platin 8500 QD",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pure",
             "Diğer"
           ]
         },
@@ -33689,33 +34283,66 @@
           ],
           "trims": [
             "Standart",
+            "B",
+            "Revolution",
             "Diğer"
           ]
         },
         {
-          "name": "Quadro",
+          "name": "Roadscout",
           "versions": [
             "Van",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "R",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Globescout",
+          "versions": [
+            "Van",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "R",
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Globestar",
+          "versions": [
+            "600 L",
+            "640 DK",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Revolution",
             "Diğer"
           ]
         },
         {
           "name": "Summit",
           "versions": [
-            "Van",
+            "540",
+            "600",
+            "640",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Shine",
+            "Prime",
             "Diğer"
           ]
         },
         {
-          "name": "Prime",
+          "name": "Vario",
           "versions": [
             "Van",
             "Diğer"
@@ -33806,6 +34433,32 @@
           ]
         },
         {
+          "name": "Optima",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "On Tour Edition",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Maxia",
+          "versions": [
+            "Van",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -33882,6 +34535,33 @@
           ]
         },
         {
+          "name": "Grand Canyon",
+          "versions": [
+            "Van",
+            "S",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "CrossOver",
+            "CrossTrail",
+            "Xperience",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Free",
+          "versions": [
+            "Van",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -33939,6 +34619,30 @@
         },
         {
           "name": "Sky TI",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sport&Fun",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Yaseo",
           "versions": [
             "2 Kişilik",
             "4 Kişilik",
@@ -34055,6 +34759,30 @@
           ]
         },
         {
+          "name": "Vivo",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Videro",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -34096,6 +34824,56 @@
           ]
         },
         {
+          "name": "Nevis",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mc4",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Glamys",
+          "versions": [
+            "Van",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Menfys",
+          "versions": [
+            "Van",
+            "Diğer"
+          ],
+          "trims": [
+            "Next",
+            "S-Line",
+            "Prestige",
+            "7 LifeStyle",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -34118,7 +34896,9 @@
             "Diğer"
           ],
           "trims": [
-            "Standart",
+            "Essentiel",
+            "Sensation",
+            "Evidence",
             "Diğer"
           ]
         },
@@ -34130,7 +34910,8 @@
             "Diğer"
           ],
           "trims": [
-            "Standart",
+            "Expression",
+            "Evidence",
             "Diğer"
           ]
         },
@@ -34149,7 +34930,33 @@
       "make": "Rapido",
       "models": [
         {
-          "name": "Serie 1",
+          "name": "Série C (Yarı Entegre)",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Night Edition",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Série 6F (Alçak Profil)",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Série 8F / 80dF (Tam Entegre)",
           "versions": [
             "4 Kişilik",
             "6 Kişilik",
@@ -34158,15 +34965,27 @@
           ],
           "trims": [
             "Standart",
-            "Premium",
             "Diğer"
           ]
         },
         {
-          "name": "Serie 6",
+          "name": "Distinction M (Premium Tam Entegre)",
           "versions": [
-            "4 Kişilik",
-            "6 Kişilik",
+            "i166M",
+            "i196M",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Van (V-Serisi)",
+          "versions": [
+            "V55",
+            "V65 XL",
+            "V68",
             "Diğer"
           ],
           "trims": [
@@ -34194,6 +35013,69 @@
             "4 Kişilik",
             "6 Kişilik",
             "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Kronos",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Zefiro",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pegaso",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Auto-Roller",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "T-Line",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
             "Diğer"
           ],
           "trims": [
@@ -34253,13 +35135,16 @@
           ]
         },
         {
-          "name": "V (Van)",
+          "name": "Cliff (Kompakt Van)",
           "versions": [
-            "Van",
+            "2 Kişilik",
+            "4 Kişilik",
+            "RT (Yükseltilebilir Tavan)",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Adventure",
             "Diğer"
           ]
         },
@@ -34311,6 +35196,44 @@
           "name": "Eccles",
           "versions": [
             "2 Kişilik",
+            "4 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Basecamp",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Conqueror",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Grande",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Elegance Grande",
+          "versions": [
             "4 Kişilik",
             "Fransız Karyola",
             "Diğer"
@@ -34373,6 +35296,44 @@
           ]
         },
         {
+          "name": "Puccini",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cellini",
+          "versions": [
+            "4 Kişilik",
+            "Fransız Karyola",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Slide-Out",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pep",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -34424,6 +35385,41 @@
           "trims": [
             "Standart",
             "Suite",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CaraSuite",
+          "versions": [
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CaraBus",
+          "versions": [
+            "Van",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "X-Pedition",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CaraCito",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -34499,6 +35495,54 @@
           "name": "Revel (4x4 Kampervan, 2018-)",
           "versions": [
             "Revel 44E",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Solis (B Sınıfı Kampervan)",
+          "versions": [
+            "Solis 59P",
+            "Solis 59PX",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "EKKO (C Sınıfı 4x4)",
+          "versions": [
+            "EKKO 22A",
+            "EKKO 22FF",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Voyage (Çekme Karavan)",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Suncruiser (C Sınıfı)",
+          "versions": [
+            "4 Kişilik",
+            "6 Kişilik",
             "Diğer"
           ],
           "trims": [

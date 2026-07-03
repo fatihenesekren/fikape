@@ -291,7 +291,47 @@
 
 ## Karavan (32 marka)
 
-_Sırada._
+| Marka | Durum | Not |
+|---|---|---|
+| adria | ✅ Tamamlandı | Türkiye'de resmi distribütör var (adriaturkiye.com, NN Grup). Eksik çekme karavan modelleri eklendi: Action (sportif kompakt), Alpina (4 mevsim flagship). Mevcut Altea/Adora/Aviva/Astella/Sonic/Matrix doğrulandı, dokunulmadı. |
+| airstream | ✅ Tamamlandı | Türkiye'de resmi ithalat yok, ikinci el pazarı var. Eksik güncel modeller eklendi: Caravel, Basecamp, Trade Wind. Mevcut Bambi/Flying Cloud/Globetrotter/Classic/Interstate doğrulandı. |
+| bailey | ✅ Tamamlandı | Türkiye'de resmi satış kanıtı bulunamadı (düşük güven, ikinci el/ithal için geçerli). Eksik model eklendi: Phoenix (GT75/Black Edition). Mevcut Discovery/Unicorn/Pegasus/Alicanto doğrulandı. |
+| burstner | ✅ Tamamlandı | Önemli bulgu: Bürstner 2027 sezonundan itibaren çekme karavan üretimini tamamen durduruyor, sadece motokaravan/camper van üretecek. Mevcut Premio/Averso/Lyseo (çekme karavan) korundu, motokaravan hattı eklendi: Ixeo, Nexxo, Elegance (düşük-orta güven). |
+| carado | ✅ Tamamlandı | Türkiye'de resmi distribütör kanıtı bulunamadı (ikinci el pazarı mevcut). Yeni CV Serisi (Camper Van, 2022-, CV600/CV602/CV640/CV590 4x4) eklendi, mevcut T/A/V/I/C Serisi korundu. |
+| caravelair | ✅ Tamamlandı | Önemli bulgu: Marka 2024'te ürün gamını tamamen yeniledi — eski Antares/Armonia/Ventura hatları büyük oranda Alba, Sport Line ve Exclusive Line ile değiştirildi. Eski modeller ikinci el için korundu, yeni 3 hat eklendi. |
+| carthago | ✅ Tamamlandı | Güncel chic c-line (T/I), chic s-plus, C1/C2-tourer nesli eklendi; eski c-tourer/chic e-line/liner-for-two korundu. Türkiye'de resmi distribütör yok, ikinci el/ithal pazar notu düşük güven. |
+| chausson | ✅ Tamamlandı | X-Line (X590/X640) modeli ve Titanium'a "Ultimate" trim'i eklendi; Sweet Line/Sweet Spirit doğrulanamadığı için eklenmedi. |
+| coachman | ✅ Tamamlandı | Lusso (2022 sonrası premium seri) eklendi; Vision/Pastiche eski nesiller olarak korundu. |
+| concorde | ✅ Tamamlandı | Charisma ve Cruiser (Daily/Atego) modelleri eklendi, Carver'a "Select" ve Centurion'a "GSI" trim'i eklendi. |
+| dethleffs | ✅ Tamamlandı | Güncel motokaravan serileri (Advantage, Esprit, Globebus, Just Camp, Alpa, XL Family) eklendi; eski Coco/Camper/Beduin/Nomad karavan hatları korundu. |
+| elnagh | ✅ Tamamlandı | Baron Compact, T-Loft, Magnum, E-Van serileri eklendi; Marlin eski model olarak korundu. |
+| eriba | ✅ Tamamlandı | Novaline (yeni ana model) ve Car (motorlu karavan) eklendi; Touring'e Silver Edition trim eklendi. Mevcut Feeling/Touring verisi doğruydu, dokunulmadı. |
+| eura-mobil | ✅ Tamamlandı | Profila T, Contura, Integra, Integra Line GT, Xtura, Van eklendi (floorplan kodları doğrulanamadığı için generic/düşük güven). Terrestra güncel sitede yok ama ikinci el pazarı için korundu. |
+| fendt | ✅ Tamamlandı | Apero (giriş seviyesi) ve Diamant (üst segment) eklendi — resmi sitenin güncel 4 ana modelinden ikisi eksikti. Opal/Saphir korundu. |
+| forster | ✅ Tamamlandı | Önemli hata düzeltildi: "T Serisi (Çekme Karavan)" yanlıştı — Forster sadece motorhome (Alkoven/Teilintegriert/Entegre/Van) üretiyor, çekme karavan yapmıyor. Model aileleri gerçek FA/FT/FI/FV/I/Van serilerine göre yeniden yapılandırıldı. |
+| frankia | ✅ Tamamlandı | Yazım hatası düzeltildi ("Platinum" → "Platin"). Now, Noctra, Together, Titan (güncel resmi model serileri) eklendi. I/M Serisi ikinci el pazarı için korundu. |
+| globecar | ✅ Tamamlandı | Doğrulanamayan "Quadro" kaldırıldı (muhtemelen hatalı veri); "Prime" bağımsız model değil Summit'in trim seviyesi olduğu için Summit trims'e taşındı. Gerçek modeller eklendi: Roadscout, Globescout, Globestar, Vario. |
+| hobby | ✅ Tamamlandı | De Luxe/Excellent/On Tour/Premium/Prestige doğrulandı; eksik "Optima" (giriş segmenti) ve "Maxia" (van/motorcaravan hattı) eklendi. |
+| hymer | ✅ Tamamlandı | Nova/Tramp/B-Klasse/ML-T/S-Klasse doğrulandı; eksik "Grand Canyon" (CrossOver/CrossTrail/Xperience edition'larıyla) ve "Free" motorcaravan hattı eklendi. |
+| knaus | ✅ Tamamlandı | Sport/Südwind/Starclass/Sky TI doğrulandı (ikinci el pazar için korundu); güncel resmi hatlar "Sport&Fun" ve "Yaseo" eklendi. |
+| laika | ✅ Tamamlandı | Resmi site mevcut 3 aileyi (Kosmo/Ecovip/Kreos) tam olarak doğruladı, değişiklik gerekmedi. |
+| lmc | ✅ Tamamlandı | Style/Maestro/Musica doğrulandı; eksik "Vivo" ve Musica'nın 2025 halefi "Videro" eklendi. |
+| mc-louis | ✅ Tamamlandı | Lagan/Tandy eski isimler olarak korundu (ikinci el pazar için); güncel resmi hatlar "Nevis", "Mc4", "Glamys", "Menfys" eklendi. |
+| pilote | ✅ Tamamlandı | Pacific/Galaxy model isimleri doğru; generic "Standart" trim'i gerçek donanım seviyeleriyle (Pacific: Essentiel/Sensation/Evidence, Galaxy: Expression/Evidence) değiştirildi. |
+| rapido | ✅ Tamamlandı | Yanlış nomenklatür ("Serie 1/6") gerçek Rapido isimleriyle (Série C, Série 6F, Série 8F/80dF) değiştirildi/eklendi, yeni Distinction M ailesi ve Van (V55/V65XL/V68) serisi eklendi. |
+| roller-team | ✅ Tamamlandı | Sadece Livingstone vardı; Kronos, Zefiro, Pegaso, Auto-Roller, T-Line serileri eklendi. |
+| sunlight | ✅ Tamamlandı | Genel "V (Van)" modeli gerçek "Cliff" (kompakt van, RT yükseltilebilir tavan versiyonu dahil) modeliyle değiştirildi; A/C/T67 mevcut doğru veriye dokunulmadı. |
+| swift | ✅ Tamamlandı | Sprite/Challenger/Eccles doğrulandı, dokunulmadı; Basecamp, Conqueror, Elegance Grande modelleri eklendi. |
+| tabbert | ✅ Tamamlandı | Rossini/Da Vinci/Vivaldi doğrulandı, dokunulmadı; Puccini, Cellini (Slide-Out trim dahil), Pep modelleri eklendi. |
+| weinsberg | ✅ Tamamlandı | CaraOne/CaraTwo/CaraCompact doğrulandı, dokunulmadı; CaraSuite, CaraBus (X-Pedition trim), CaraCito modelleri eklendi. |
+| winnebago | ✅ Tamamlandı (düşük güven, Türkiye'de resmi satış kanıtı yok) | Mevcut model aileleri korundu; Solis, EKKO, Voyage (çekme karavan), Suncruiser (C sınıfı) eklendi — hepsi global ABD pazarı verisi, ikinci el/ithal senaryosu için. |
+| diger.json | ⏭️ Atlanacak | Genel "Diğer" placeholder |
+
+**🎉 KARAVAN KATEGORİSİ TAMAMLANDI (32/32 marka), 3 Temmuz 2026.** 5 paralel araştırma agent'ı (her biri 6-7 marka) kullanıldı. **En büyük bulgular:** Forster'da "çekme karavan" verisi tamamen yanlıştı (marka sadece motorhome üretiyor, model aileleri baştan yeniden yapılandırıldı). Caravelair 2024'te ürün gamını tamamen yeniledi (eski hatlar yeni Alba/Sport Line/Exclusive Line ile değişti). Bürstner 2027'den itibaren çekme karavan üretimini tamamen durduruyor. Frankia'da yazım hatası ("Platinum"→"Platin"), Globecar'da doğrulanamayan "Quadro" modeli kaldırıldı. Genel desen: karavan markalarının büyük çoğunluğunun Türkiye'de resmi distribütörü yok (Adria, Hymer, Knaus, Dethleffs gibi birkaç istisna dışında), eklenen modeller üretici resmi sitelerinden (global) doğrulandı — ikinci el/ithal pazar için düşük-orta güvenle.
+
+---
+
+**🏁 TÜM ARAÇ VERİ DENETİMİ TAMAMLANDI — 6/6 kategori (Otomobil 51, Motosiklet 60, Kamyonet 30, E-Scooter 21, E-Bisiklet 39, Karavan 32 = toplam 233 gerçek marka), 3 Temmuz 2026.** `merge.ts` çalıştırıldı, `src/data/vehicles.json` güncel.
 
 ---
 
