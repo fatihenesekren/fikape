@@ -6,6 +6,9 @@
     { "name": "Kathmandu Hybrid (Trekking, 2018-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["Pro", "SL", "One", "Diğer"] },
     { "name": "Nuride Hybrid (Şehir, 2020-)", "versions": ["250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["Pro", "One", "Allroad", "Diğer"] },
     { "name": "Agree Hybrid (Yol, 2021-)", "versions": ["250W Fazua 25 km/h", "Diğer"], "trims": ["Pro", "SL", "Diğer"] },
+    { "name": "Touring Hybrid (Şehir/Trekking)", "versions": ["250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["Pro", "SL", "Diğer"] },
+    { "name": "Supreme Hybrid (Şehir)", "versions": ["250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["Pro", "SL", "Diğer"] },
+    { "name": "Editor (Şehir, 2024-)", "versions": ["250W Bosch 25 km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

@@ -1,6 +1,8 @@
 {
   "make": "Cowboy",
   "models": [
+    { "name": "Cowboy / Cowboy 2 (2017-2019)", "versions": ["250W 25 km/h 350Wh", "Diğer"], "trims": ["1", "2", "Diğer"] },
+    { "name": "Cowboy 3 (2020-2021)", "versions": ["250W 25 km/h 360Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Cowboy 4 / 4ST (2021-)", "versions": ["250W 25 km/h 360Wh", "Diğer"], "trims": ["4", "4ST (Step-Through)", "Diğer"] },
     { "name": "Cowboy Cruiser (2022-)", "versions": ["250W 25 km/h 360Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Cowboy Cross (2023-)", "versions": ["250W 25 km/h 360Wh", "Diğer"], "trims": ["Standart", "ST", "Diğer"] },

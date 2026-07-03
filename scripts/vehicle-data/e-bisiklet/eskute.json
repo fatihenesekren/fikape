@@ -4,6 +4,10 @@
     { "name": "Polluno (Şehir, 2021-)", "versions": ["250W 25 km/h 36V 14.4Ah", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
     { "name": "Netuno (Trekking, 2021-)", "versions": ["250W 25 km/h 36V 14.4Ah", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
     { "name": "Wayfarer (Katlanabilir, 2022-)", "versions": ["250W 25 km/h 36V 10Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "C100 / C200 (Şehir)", "versions": ["250W 25 km/h C100", "250W 25 km/h ST C100 ST", "250W 25 km/h SO C100 SO", "250W 25 km/h C200", "Diğer"], "trims": ["Standart", "ST", "SO", "Diğer"] },
+    { "name": "M200 (E-MTB)", "versions": ["250W 25 km/h 36V 14.4Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "T300 (Trike)", "versions": ["250W 25 km/h 48V", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "V100 / V200 (Hızlı Şehir)", "versions": ["250W 25 km/h V100", "250W 25 km/h V200", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

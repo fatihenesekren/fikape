@@ -5,6 +5,9 @@
     { "name": "D21 (Katlanabilir Trekking, 2022-)", "versions": ["250W 25 km/h 36V 11.6Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "M1 Pro (Fat Tire MTB, 2021-)", "versions": ["500W 40 km/h 48V 12.8Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Beast (Fat Tire, 2022-)", "versions": ["750W 45 km/h 48V 17.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "C11 / C21 / C700 (Katlanabilir Şehir)", "versions": ["250W 25 km/h C11", "Pro 250W C11 Pro", "250W 25 km/h C21", "250W 25 km/h C700", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
+    { "name": "Air (Karbon)", "versions": ["250W 25 km/h Karbon", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Titan / T2 (Kargo)", "versions": ["250W 25 km/h Titan", "250W 25 km/h T2", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

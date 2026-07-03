@@ -29827,6 +29827,29 @@
       "make": "Cowboy",
       "models": [
         {
+          "name": "Cowboy / Cowboy 2 (2017-2019)",
+          "versions": [
+            "250W 25 km/h 350Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "2",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cowboy 3 (2020-2021)",
+          "versions": [
+            "250W 25 km/h 360Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Cowboy 4 / 4ST (2021-)",
           "versions": [
             "250W 25 km/h 360Wh",
@@ -29941,6 +29964,41 @@
           "trims": [
             "Pro",
             "SL",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Touring Hybrid (Şehir/Trekking)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "SL",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Supreme Hybrid (Şehir)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "SL",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Editor (Şehir, 2024-)",
+          "versions": [
+            "250W Bosch 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -30072,6 +30130,57 @@
           ]
         },
         {
+          "name": "C1 / C2 (Şehir)",
+          "versions": [
+            "250W 25 km/h 36V 12.5Ah C1",
+            "36V ST C1 ST",
+            "250W 25 km/h 36V 12.5Ah C2",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "T2 (Trekking)",
+          "versions": [
+            "250W 25 km/h 36V 15.6Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mopride",
+          "versions": [
+            "250W 25 km/h 1",
+            "250W 25 km/h Plus",
+            "250W 25 km/h 3",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "1 Plus",
+            "3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tankroll",
+          "versions": [
+            "250W 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -30141,6 +30250,45 @@
           ]
         },
         {
+          "name": "P275 (Orta Motor, 2024-)",
+          "versions": [
+            "250W Mid-Drive 25 km/h Pro",
+            "250W Mid-Drive 25 km/h ST",
+            "250W Mid-Drive 25 km/h SE",
+            "Diğer"
+          ],
+          "trims": [
+            "Pro",
+            "ST",
+            "SE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X20 / X24 / X26 (Fat Tire Katlanabilir)",
+          "versions": [
+            "750W Çift 45 km/h X20",
+            "750W Çift 45 km/h X24",
+            "1000W Çift 45 km/h X26",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Engine X (Fat Tire Full Süspansiyon)",
+          "versions": [
+            "750W Çift 45 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -30182,6 +30330,56 @@
           "name": "Wayfarer (Katlanabilir, 2022-)",
           "versions": [
             "250W 25 km/h 36V 10Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C100 / C200 (Şehir)",
+          "versions": [
+            "250W 25 km/h C100",
+            "250W 25 km/h ST C100 ST",
+            "250W 25 km/h SO C100 SO",
+            "250W 25 km/h C200",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ST",
+            "SO",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M200 (E-MTB)",
+          "versions": [
+            "250W 25 km/h 36V 14.4Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "T300 (Trike)",
+          "versions": [
+            "250W 25 km/h 48V",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V100 / V200 (Hızlı Şehir)",
+          "versions": [
+            "250W 25 km/h V100",
+            "250W 25 km/h V200",
             "Diğer"
           ],
           "trims": [
@@ -30240,6 +30438,44 @@
           "name": "Beast (Fat Tire, 2022-)",
           "versions": [
             "750W 45 km/h 48V 17.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C11 / C21 / C700 (Katlanabilir Şehir)",
+          "versions": [
+            "250W 25 km/h C11",
+            "Pro 250W C11 Pro",
+            "250W 25 km/h C21",
+            "250W 25 km/h C700",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Air (Karbon)",
+          "versions": [
+            "250W 25 km/h Karbon",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Titan / T2 (Kargo)",
+          "versions": [
+            "250W 25 km/h Titan",
+            "250W 25 km/h T2",
             "Diğer"
           ],
           "trims": [

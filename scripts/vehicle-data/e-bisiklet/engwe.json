@@ -6,6 +6,9 @@
     { "name": "C20 Pro (Katlanabilir Şehir, 2022-)", "versions": ["250W 25 km/h 36V 19.2Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "M20 (Katlanabilir, 2022-)", "versions": ["250W 25 km/h 48V 13Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "T14 (Katlanabilir Kompakt, 2023-)", "versions": ["250W 25 km/h 48V 10Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "P275 (Orta Motor, 2024-)", "versions": ["250W Mid-Drive 25 km/h Pro", "250W Mid-Drive 25 km/h ST", "250W Mid-Drive 25 km/h SE", "Diğer"], "trims": ["Pro", "ST", "SE", "Diğer"] },
+    { "name": "X20 / X24 / X26 (Fat Tire Katlanabilir)", "versions": ["750W Çift 45 km/h X20", "750W Çift 45 km/h X24", "1000W Çift 45 km/h X26", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Engine X (Fat Tire Full Süspansiyon)", "versions": ["750W Çift 45 km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
