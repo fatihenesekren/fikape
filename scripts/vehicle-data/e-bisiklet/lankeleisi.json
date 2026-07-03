@@ -3,6 +3,9 @@
   "models": [
     { "name": "G650 (Fat Tire, 2021-)", "versions": ["1000W 45 km/h 48V 20Ah Çift Motor", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "X-Time (Fat Tire MTB, 2022-)", "versions": ["1000W 45 km/h 48V 17.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "XT750 (Fat Tire Katlanabilir)", "versions": ["1000W 45 km/h 48V 17.5Ah", "Plus 1000W", "Diğer"], "trims": ["Standart", "Plus", "Diğer"] },
+    { "name": "MG740 (Fat Tire Çift Motor)", "versions": ["1000W Çift 45 km/h 48V 20Ah Plus", "Diğer"], "trims": ["Plus", "Diğer"] },
+    { "name": "X3000 (Fat Tire Off-Road)", "versions": ["1000W 45 km/h 48V Max", "Plus-UP 1000W", "Diğer"], "trims": ["Max", "Plus-UP", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

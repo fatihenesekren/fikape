@@ -4,6 +4,9 @@
     { "name": "XP 3.0 (Katlanabilir, 2022-)", "versions": ["500W 32 km/h 48V 9.6Ah", "Diğer"], "trims": ["Standart", "Step-Through", "Diğer"] },
     { "name": "XPedition (Kargo, 2022-)", "versions": ["500W 32 km/h 48V 14Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "XP Lite (Katlanabilir Hafif, 2021-)", "versions": ["300W 25 km/h 36V 7.8Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "XP4 750 (Katlanabilir Güçlü)", "versions": ["750W 32 km/h 48V 14Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "XPeak2 (E-MTB)", "versions": ["500W 32 km/h 48V 14Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ONE (Kayış Tahrikli)", "versions": ["750W 32 km/h 48V", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

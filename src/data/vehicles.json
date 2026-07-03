@@ -31113,6 +31113,17 @@
           ]
         },
         {
+          "name": "Z16 (Katlanabilir, 2022-)",
+          "versions": [
+            "250W 25 km/h 36V 10Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -31162,6 +31173,20 @@
             "1 Advance",
             "3 Advance",
             "5 Advance",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Entice (All-Road)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "3 Advance",
+            "5 Advance",
+            "7 Advance",
             "Diğer"
           ]
         },
@@ -31232,6 +31257,32 @@
           ]
         },
         {
+          "name": "Macina Lycan (E-MTB Hardtail)",
+          "versions": [
+            "250W Bosch 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "271",
+            "294",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Macina Sport / Gran / Fun / Cross (Trekking)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport",
+            "Gran",
+            "Fun",
+            "Cross",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -31264,6 +31315,43 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XT750 (Fat Tire Katlanabilir)",
+          "versions": [
+            "1000W 45 km/h 48V 17.5Ah",
+            "Plus 1000W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "MG740 (Fat Tire Çift Motor)",
+          "versions": [
+            "1000W Çift 45 km/h 48V 20Ah Plus",
+            "Diğer"
+          ],
+          "trims": [
+            "Plus",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "X3000 (Fat Tire Off-Road)",
+          "versions": [
+            "1000W 45 km/h 48V Max",
+            "Plus-UP 1000W",
+            "Diğer"
+          ],
+          "trims": [
+            "Max",
+            "Plus-UP",
             "Diğer"
           ]
         },
@@ -31308,6 +31396,39 @@
           "name": "XP Lite (Katlanabilir Hafif, 2021-)",
           "versions": [
             "300W 25 km/h 36V 7.8Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XP4 750 (Katlanabilir Güçlü)",
+          "versions": [
+            "750W 32 km/h 48V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XPeak2 (E-MTB)",
+          "versions": [
+            "500W 32 km/h 48V 14Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ONE (Kayış Tahrikli)",
+          "versions": [
+            "750W 32 km/h 48V",
             "Diğer"
           ],
           "trims": [
@@ -31383,6 +31504,18 @@
           ]
         },
         {
+          "name": "eONE-FORTY (E-MTB Trail)",
+          "versions": [
+            "250W Shimano Steps EP8 25 km/h 630Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "400",
+            "700",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -31446,6 +31579,20 @@
             "10",
             "20",
             "30",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Rise (E-MTB Hafif Tam Süspansiyon)",
+          "versions": [
+            "250W Shimano EP8 RS 25 km/h 360Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "H10",
+            "H20",
+            "H30",
+            "M10",
             "Diğer"
           ]
         },

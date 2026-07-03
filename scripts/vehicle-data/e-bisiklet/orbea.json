@@ -5,6 +5,7 @@
     { "name": "Urrun (E-MTB Hardtail, 2022-)", "versions": ["250W Bosch CX 25 km/h 625Wh", "Diğer"], "trims": ["10", "30", "Diğer"] },
     { "name": "Gain (Yol E-Bisiklet, 2019-)", "versions": ["250W Fazua 25 km/h 250Wh", "Diğer"], "trims": ["D30", "D20", "D10", "Diğer"] },
     { "name": "Keram (Trekking, 2021-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["10", "20", "30", "Diğer"] },
+    { "name": "Rise (E-MTB Hafif Tam Süspansiyon)", "versions": ["250W Shimano EP8 RS 25 km/h 360Wh", "Diğer"], "trims": ["H10", "H20", "H30", "M10", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

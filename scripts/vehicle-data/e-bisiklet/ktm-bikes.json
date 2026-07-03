@@ -5,6 +5,8 @@
     { "name": "Macina Kapoho (E-Enduro, 2021-)", "versions": ["250W Bosch CX 25 km/h 750Wh", "Diğer"], "trims": ["7973", "7974", "Diğer"] },
     { "name": "Macina Tour (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["P", "PT", "P610", "Diğer"] },
     { "name": "Macina Style (Şehir, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["P", "PT", "Diğer"] },
+    { "name": "Macina Lycan (E-MTB Hardtail)", "versions": ["250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["271", "294", "Diğer"] },
+    { "name": "Macina Sport / Gran / Fun / Cross (Trekking)", "versions": ["250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["Sport", "Gran", "Fun", "Cross", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
