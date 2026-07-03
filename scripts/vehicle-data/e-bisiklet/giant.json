@@ -6,6 +6,7 @@
     { "name": "Explore E+ (Trekking, 2019-)", "versions": ["250W SyncDrive Sport 25 km/h 500Wh", "250W SyncDrive Sport 25 km/h 625Wh", "Diğer"], "trims": ["1 GTS", "2 GTS", "3 GTS", "Diğer"] },
     { "name": "Fastroad E+ (Şehir, 2019-)", "versions": ["250W SyncDrive Sport 25 km/h 500Wh", "Diğer"], "trims": ["1 Pro", "2 Pro", "EX Pro", "Diğer"] },
     { "name": "Liv Avail Advanced E+ (Yol, 2021-)", "versions": ["250W SyncDrive 25 km/h", "Diğer"], "trims": ["1", "2", "Diğer"] },
+    { "name": "Reign E+ (E-MTB Enduro)", "versions": ["250W SyncDrive Pro2 25 km/h 800Wh", "Diğer"], "trims": ["0", "1", "2", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

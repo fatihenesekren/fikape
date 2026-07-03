@@ -3,6 +3,10 @@
   "models": [
     { "name": "GF600 (Fat Tire MTB)", "versions": ["500W 40 km/h 48V 13Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "GF700 (Fat Tire MTB)", "versions": ["750W 45 km/h 48V 17.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GF300 (Fat Tire MTB)", "versions": ["350W 32 km/h 48V 10Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GF750 (Fat Tire MTB)", "versions": ["750W 45 km/h 48V 20Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GM27 / GM28 (Şehir)", "versions": ["350W 32 km/h GM27", "500W 40 km/h GM28", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "GF100 (Kargo Trisiklet)", "versions": ["500W 25 km/h 48V", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

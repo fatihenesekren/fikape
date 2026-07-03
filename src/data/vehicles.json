@@ -30539,6 +30539,20 @@
           ]
         },
         {
+          "name": "Uproc (E-MTB Tam Süspansiyonlu)",
+          "versions": [
+            "250W Bosch CX 25 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "3",
+            "6",
+            "7",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -30585,6 +30599,39 @@
           "trims": [
             "C7 HMB",
             "C380 HMB",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Eclipse (Şehir)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Avignon (Trekking)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Arroyo (Şehir)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -30669,6 +30716,19 @@
           ]
         },
         {
+          "name": "Reign E+ (E-MTB Enduro)",
+          "versions": [
+            "250W SyncDrive Pro2 25 km/h 800Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "0",
+            "1",
+            "2",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -30721,6 +30781,29 @@
           ]
         },
         {
+          "name": "G3 (2016-2019)",
+          "versions": [
+            "250W 25 km/h 300Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CX / CXi (Kargo)",
+          "versions": [
+            "250W 25 km/h 375Wh CX",
+            "250W 25 km/h 375Wh CXi",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -30749,6 +30832,51 @@
           "name": "GF700 (Fat Tire MTB)",
           "versions": [
             "750W 45 km/h 48V 17.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GF300 (Fat Tire MTB)",
+          "versions": [
+            "350W 32 km/h 48V 10Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GF750 (Fat Tire MTB)",
+          "versions": [
+            "750W 45 km/h 48V 20Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GM27 / GM28 (Şehir)",
+          "versions": [
+            "350W 32 km/h GM27",
+            "500W 40 km/h GM28",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "GF100 (Kargo Trisiklet)",
+          "versions": [
+            "500W 25 km/h 48V",
             "Diğer"
           ],
           "trims": [
@@ -30829,6 +30957,20 @@
           ]
         },
         {
+          "name": "AllTrail (E-MTB Hardtail)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "1",
+            "3",
+            "5",
+            "7",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -30880,6 +31022,41 @@
           "name": "Mars (Fat Tire Katlanabilir, 2022-)",
           "versions": [
             "500W 32 km/h 48V 12.5Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Explore / Tyson (Fat Tire)",
+          "versions": [
+            "750W 32 km/h Explore",
+            "1000W Çift 32 km/h Tyson",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Brawn / Venus (Şehir)",
+          "versions": [
+            "750W 32 km/h Brawn",
+            "500W 32 km/h Venus",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Saturn (Katlanabilir)",
+          "versions": [
+            "750W 32 km/h 52V Çift Batarya",
             "Diğer"
           ],
           "trims": [

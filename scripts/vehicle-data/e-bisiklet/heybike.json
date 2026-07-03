@@ -5,6 +5,9 @@
     { "name": "Ranger (Fat Tire, 2021-)", "versions": ["500W 32 km/h 48V 12.5Ah", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
     { "name": "Hauler (Kargo, 2022-)", "versions": ["750W 32 km/h 48V 15Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Mars (Fat Tire Katlanabilir, 2022-)", "versions": ["500W 32 km/h 48V 12.5Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Explore / Tyson (Fat Tire)", "versions": ["750W 32 km/h Explore", "1000W Çift 32 km/h Tyson", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Brawn / Venus (Şehir)", "versions": ["750W 32 km/h Brawn", "500W 32 km/h Venus", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Saturn (Katlanabilir)", "versions": ["750W 32 km/h 52V Çift Batarya", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
