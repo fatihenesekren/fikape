@@ -6,6 +6,8 @@
     { "name": "Pegasus", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "Grande", "Diğer"] },
     { "name": "Alicanto", "versions": ["4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Grande", "Diğer"] },
     { "name": "Phoenix", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "GT75", "Black Edition", "Diğer"] },
+    { "name": "Autograph (Motokaravan)", "versions": ["Alkoven", "Entegre", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Endurance / Adamo (Motokaravan)", "versions": ["Yarı Entegre Endurance", "Van Adamo", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

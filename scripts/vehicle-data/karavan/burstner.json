@@ -7,6 +7,8 @@
     { "name": "Ixeo (Motokaravan)", "versions": ["Yarı Entegre", "Alkoven", "Diğer"], "trims": ["Standart", "TL", "Diğer"] },
     { "name": "Nexxo (Motokaravan)", "versions": ["Entegre", "Van", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Elegance (Motokaravan)", "versions": ["Entegre", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Delfin (Kampervan, Renault Master Tabanlı)", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Copa / Campeo (Kompakt Kampervan)", "versions": ["Van Copa", "Van Campeo", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

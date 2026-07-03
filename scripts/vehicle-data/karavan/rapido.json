@@ -6,6 +6,7 @@
     { "name": "Série 8F / 80dF (Tam Entegre)", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Distinction M (Premium Tam Entegre)", "versions": ["i166M", "i196M", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Van (V-Serisi)", "versions": ["V55", "V65 XL", "V68", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Club (Çekme Karavan)", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

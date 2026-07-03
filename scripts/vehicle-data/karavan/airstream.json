@@ -9,6 +9,7 @@
     { "name": "Caravel (2017-)", "versions": ["16 ft", "19 ft", "22 ft", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Basecamp (2016-)", "versions": ["16 ft", "20 ft", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
     { "name": "Trade Wind (2022-)", "versions": ["19 ft", "23 ft", "25 ft", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "World Traveler (2026-)", "versions": ["22 ft", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

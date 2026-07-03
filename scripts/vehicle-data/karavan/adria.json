@@ -9,6 +9,7 @@
     { "name": "Matrix", "versions": ["Van", "Diğer"], "trims": ["Standart", "M", "Supreme", "Diğer"] },
     { "name": "Action", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Sports", "Diğer"] },
     { "name": "Alpina", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Twin (Kampervan, Mercedes Sprinter Tabanlı)", "versions": ["Van", "Sports", "Supreme", "Diğer"], "trims": ["Standart", "Sports", "Supreme", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
