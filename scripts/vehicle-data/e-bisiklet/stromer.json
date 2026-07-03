@@ -4,6 +4,8 @@
     { "name": "ST2 (Speed Pedelec, 2014-)", "versions": ["250W SYNO Drive 45 km/h 983Wh", "Diğer"], "trims": ["Standart", "Sport", "Diğer"] },
     { "name": "ST3 (Speed Pedelec, 2018-)", "versions": ["250W SYNO Drive II 45 km/h 983Wh", "Diğer"], "trims": ["Standart", "Pinion", "Diğer"] },
     { "name": "ST5 (Speed Pedelec, 2020-)", "versions": ["250W SYNO Drive II 45 km/h 983Wh", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
+    { "name": "ST1 (Giriş Segment)", "versions": ["250W SYNO Drive 25 km/h 618Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "ST7 (Speed Pedelec, 2026-)", "versions": ["250W SYNO Drive III 45 km/h Pinion+Gates", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

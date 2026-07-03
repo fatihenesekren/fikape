@@ -31737,6 +31737,30 @@
           ]
         },
         {
+          "name": "Roadster (Spor/Hızlı Şehir)",
+          "versions": [
+            "250W Bosch 45 km/h 625Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Mixte",
+            "Vario",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Swing (Hollanda Tipi)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -31801,6 +31825,34 @@
             "10",
             "20",
             "30",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Genius eRIDE (E-MTB Full-Sus, Değiştirilebilir Tekerlek)",
+          "versions": [
+            "250W Bosch CX 25 km/h 800Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "900 Tuned",
+            "910",
+            "920",
+            "930",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Patron eRIDE (E-Enduro, 2023-)",
+          "versions": [
+            "250W Bosch CX 25 km/h 800Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "900",
+            "920",
+            "930",
+            "ST",
             "Diğer"
           ]
         },
@@ -31884,6 +31936,33 @@
           ]
         },
         {
+          "name": "Turbo Kenevo (E-MTB Gravity/Enduro)",
+          "versions": [
+            "250W Specialized 2.2 25 km/h 700Wh",
+            "SL 25 km/h 320Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Comp",
+            "Expert",
+            "SL",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Turbo Tero (Macera/Adventure)",
+          "versions": [
+            "250W Specialized 2.2 25 km/h 710Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "3.0",
+            "4.0",
+            "X",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -31930,6 +32009,28 @@
           "trims": [
             "Standart",
             "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ST1 (Giriş Segment)",
+          "versions": [
+            "250W SYNO Drive 25 km/h 618Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ST7 (Speed Pedelec, 2026-)",
+          "versions": [
+            "250W SYNO Drive III 45 km/h Pinion+Gates",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -31988,6 +32089,22 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Z Miami (Kompakt)",
+          "versions": [
+            "500W 32 km/h Core",
+            "500W 32 km/h SE",
+            "500W 32 km/h Legacy",
+            "Diğer"
+          ],
+          "trims": [
+            "Core",
+            "SE",
+            "Legacy",
+            "Limited Edition",
             "Diğer"
           ]
         },

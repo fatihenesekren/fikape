@@ -6,6 +6,8 @@
     { "name": "Turbo Vado (Trekking, 2019-)", "versions": ["250W Specialized SL 1.1 25 km/h 320Wh", "Diğer"], "trims": ["3.0 IGH", "4.0 IGH", "5.0 IGH EQ", "Diğer"] },
     { "name": "Turbo Como (Şehir, 2019-)", "versions": ["250W Specialized SL 1.1 25 km/h 320Wh", "Diğer"], "trims": ["3.0", "4.0", "5.0 IGH EQ", "Diğer"] },
     { "name": "Turbo Creo (Yol, 2019-)", "versions": ["250W Specialized SL 1.1 25 km/h 320Wh", "Diğer"], "trims": ["Comp E5", "Expert", "S-Works", "Diğer"] },
+    { "name": "Turbo Kenevo (E-MTB Gravity/Enduro)", "versions": ["250W Specialized 2.2 25 km/h 700Wh", "SL 25 km/h 320Wh", "Diğer"], "trims": ["Comp", "Expert", "SL", "Diğer"] },
+    { "name": "Turbo Tero (Macera/Adventure)", "versions": ["250W Specialized 2.2 25 km/h 710Wh", "Diğer"], "trims": ["3.0", "4.0", "X", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

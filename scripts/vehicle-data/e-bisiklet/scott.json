@@ -5,6 +5,8 @@
     { "name": "Aspect eRIDE (E-MTB Hardtail, 2019-)", "versions": ["250W Bosch CX 25 km/h 500Wh", "Diğer"], "trims": ["920", "930", "950", "Diğer"] },
     { "name": "Sub Cross eRIDE (Trekking, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["10", "20", "30", "Diğer"] },
     { "name": "E-Silence (Yol, 2020-)", "versions": ["250W Fazua 25 km/h 250Wh", "Diğer"], "trims": ["10", "20", "30", "Diğer"] },
+    { "name": "Genius eRIDE (E-MTB Full-Sus, Değiştirilebilir Tekerlek)", "versions": ["250W Bosch CX 25 km/h 800Wh", "Diğer"], "trims": ["900 Tuned", "910", "920", "930", "Diğer"] },
+    { "name": "Patron eRIDE (E-Enduro, 2023-)", "versions": ["250W Bosch CX 25 km/h 800Wh", "Diğer"], "trims": ["900", "920", "930", "ST", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
