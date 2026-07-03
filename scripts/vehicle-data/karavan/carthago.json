@@ -9,6 +9,7 @@
     { "name": "chic c-line I (Entegre, 2020-)", "versions": ["Fransız Karyola", "İkiz Yatak", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "chic s-plus I (Entegre, Ultra Lüks, 2018-)", "versions": ["64-XL-QB", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "C1-tourer / C2-tourer (2022-)", "versions": ["Fransız Karyola", "İkiz Yatak", "Diğer"], "trims": ["Standart", "Edition+", "Diğer"] },
+    { "name": "Malibu (Van/Kompakt Alt Marka)", "versions": ["Van", "Charming", "First Class", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

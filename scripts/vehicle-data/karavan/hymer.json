@@ -8,6 +8,8 @@
     { "name": "S-Klasse", "versions": ["SL", "DL", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Grand Canyon", "versions": ["Van", "S", "Diğer"], "trims": ["Standart", "CrossOver", "CrossTrail", "Xperience", "Diğer"] },
     { "name": "Free", "versions": ["Van", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Exsis (Yarı Entegre/Entegre, Fiat Tabanlı)", "versions": ["Fransız Karyola", "İkiz Yatak", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "DuoCar (Van, Mercedes Sprinter Tabanlı)", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

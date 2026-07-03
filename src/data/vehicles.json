@@ -33372,6 +33372,19 @@
           ]
         },
         {
+          "name": "Malibu (Van/Kompakt Alt Marka)",
+          "versions": [
+            "Van",
+            "Charming",
+            "First Class",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -33446,6 +33459,17 @@
           "versions": [
             "X 590",
             "X 640",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sweet (Van/Kompakt)",
+          "versions": [
+            "Van",
             "Diğer"
           ],
           "trims": [
@@ -34569,6 +34593,18 @@
           ]
         },
         {
+          "name": "Beachy",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -34672,6 +34708,29 @@
           ]
         },
         {
+          "name": "Exsis (Yarı Entegre/Entegre, Fiat Tabanlı)",
+          "versions": [
+            "Fransız Karyola",
+            "İkiz Yatak",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "DuoCar (Van, Mercedes Sprinter Tabanlı)",
+          "versions": [
+            "Van",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -34756,6 +34815,29 @@
           "versions": [
             "2 Kişilik",
             "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Deseo (Hafif Karavan, FibreFrame)",
+          "versions": [
+            "2 Kişilik",
+            "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Van Ti (Motokaravan, Kompakt Yarı Entegre)",
+          "versions": [
+            "Van",
             "Diğer"
           ],
           "trims": [

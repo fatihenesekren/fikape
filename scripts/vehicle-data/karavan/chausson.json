@@ -6,6 +6,7 @@
     { "name": "S-Line (2015-)", "versions": ["S-Line 510", "S-Line 514", "S-Line 630", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Titanium (2018-)", "versions": ["Titanium 510", "Titanium 627 GA", "Titanium 640", "Diğer"], "trims": ["Standart", "Ultimate", "Diğer"] },
     { "name": "X-Line (2020-)", "versions": ["X 590", "X 640", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Sweet (Van/Kompakt)", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

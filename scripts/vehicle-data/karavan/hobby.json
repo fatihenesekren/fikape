@@ -8,6 +8,7 @@
     { "name": "Prestige", "versions": ["4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Optima", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "On Tour Edition", "Diğer"] },
     { "name": "Maxia", "versions": ["Van", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Beachy", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
