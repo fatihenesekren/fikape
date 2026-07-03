@@ -1,10 +1,12 @@
 {
   "make": "Globecar",
   "models": [
-    { "name": "Campscout", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Quadro", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Summit", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Prime", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Campscout", "versions": ["Van", "Diğer"], "trims": ["Standart", "B", "Revolution", "Diğer"] },
+    { "name": "Roadscout", "versions": ["Van", "Diğer"], "trims": ["Standart", "R", "Diğer"] },
+    { "name": "Globescout", "versions": ["Van", "Diğer"], "trims": ["Standart", "R", "Plus", "Diğer"] },
+    { "name": "Globestar", "versions": ["600 L", "640 DK", "Diğer"], "trims": ["Standart", "Revolution", "Diğer"] },
+    { "name": "Summit", "versions": ["540", "600", "640", "Diğer"], "trims": ["Standart", "Shine", "Prime", "Diğer"] },
+    { "name": "Vario", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

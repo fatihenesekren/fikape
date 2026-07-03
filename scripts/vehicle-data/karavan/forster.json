@@ -1,8 +1,10 @@
 {
   "make": "Forster",
   "models": [
-    { "name": "T Serisi (Çekme Karavan, 2000-)", "versions": ["T 600 UB", "T 600 HB", "T 655 EB", "T 740 UB", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "F Serisi (Motorhome Yarı Entegre, 2005-)", "versions": ["F 600 EB", "F 680 EB", "F 699 EB", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "T Serisi (Teilintegriert Motorhome, 2013-)", "versions": ["T 699 EB", "T 699 HB", "T 699 LF", "T 745 EF", "T 745 QF", "Diğer"], "trims": ["Standart", "Vibe", "Coupé", "Diğer"] },
+    { "name": "A Serisi (Alkoven Motorhome, 2013-)", "versions": ["A 699 EB", "A 699 VB", "A 699 DVB", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "I Serisi (Entegre Motorhome, 2026-)", "versions": ["I 745 EF", "I 745 QF", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Van Serisi (Kompakt Van)", "versions": ["Vantasy", "Flip", "Livin' Up Pro", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }

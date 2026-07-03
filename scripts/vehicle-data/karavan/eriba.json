@@ -2,7 +2,9 @@
   "make": "Eriba",
   "models": [
     { "name": "Feeling", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Gold", "Diğer"] },
-    { "name": "Touring", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Troll", "Familia", "Triton", "Diğer"] },
+    { "name": "Touring", "versions": ["2 Kişilik", "4 Kişilik", "6 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Troll", "Familia", "Triton", "Silver Edition", "Diğer"] },
+    { "name": "Novaline", "versions": ["2 Kişilik", "4 Kişilik", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Car (Motorlu Karavan)", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
