@@ -32156,6 +32156,17 @@
           ]
         },
         {
+          "name": "Wayfarer (Kruvazör, 2025-)",
+          "versions": [
+            "500W Bafang 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -32203,6 +32214,42 @@
           ],
           "trims": [
             "S8i",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Vektron (Katlanabilir)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Q9",
+            "S10",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Quick Haul (Hafif Kargo)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "Long 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Long",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Orox (Off-Road Macera)",
+          "versions": [
+            "250W Bosch CX 25 km/h 800Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -32296,6 +32343,41 @@
           ]
         },
         {
+          "name": "FX+ (Şehir/Fitness)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "2",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Marlin+ (E-MTB Giriş Segment)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Fuel+ (E-MTB Hafif, TQ Motor)",
+          "versions": [
+            "250W TQ HPR50 25 km/h 360Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "7",
+            "8",
+            "9",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -32332,6 +32414,19 @@
           "trims": [
             "S3",
             "X3",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S6 (2025-)",
+          "versions": [
+            "250W 25 km/h 487Wh",
+            "Open 250W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Open",
             "Diğer"
           ]
         },
@@ -32383,6 +32478,28 @@
           "trims": [
             "F8",
             "R8",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sima (Günlük Kullanım)",
+          "versions": [
+            "250W Bosch 25 km/h 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Radius (Spor/Fitness Trekking)",
+          "versions": [
+            "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },

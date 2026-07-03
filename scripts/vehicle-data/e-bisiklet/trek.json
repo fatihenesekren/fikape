@@ -6,6 +6,9 @@
     { "name": "Allant+ (Trekking/Şehir, 2019-)", "versions": ["250W Bosch 25 km/h 500Wh", "250W Bosch 25 km/h 625Wh", "Diğer"], "trims": ["5", "7", "7S", "8S", "9S", "9.9S", "Diğer"] },
     { "name": "Domane+ (Yol, 2019-)", "versions": ["250W Fazua 25 km/h 250Wh", "Diğer"], "trims": ["ALT", "LT", "HP", "SLT", "Diğer"] },
     { "name": "Verve+ (Şehir Konfor, 2019-)", "versions": ["250W Bosch 25 km/h 400Wh", "250W Bosch 25 km/h 500Wh", "Diğer"], "trims": ["1", "2", "3", "Diğer"] },
+    { "name": "FX+ (Şehir/Fitness)", "versions": ["250W Bosch 25 km/h 400Wh", "Diğer"], "trims": ["2", "Diğer"] },
+    { "name": "Marlin+ (E-MTB Giriş Segment)", "versions": ["250W Bosch 25 km/h 400Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
+    { "name": "Fuel+ (E-MTB Hafif, TQ Motor)", "versions": ["250W TQ HPR50 25 km/h 360Wh", "Diğer"], "trims": ["7", "8", "9", "Diğer"] },
     { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
   ]
 }
