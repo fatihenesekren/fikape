@@ -88,6 +88,46 @@ export async function sendUpdateReminderEmail({
   });
 }
 
+export async function sendReviewPublishedEmail({
+  to, displayName, vehicleName, reviewId,
+}: {
+  to: string;
+  displayName: string | null;
+  vehicleName: string;
+  reviewId: number;
+}) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const url = `${BASE_URL}/yorumum/${reviewId}/paylas`;
+  const name = displayName ?? "Merhaba";
+
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: `${vehicleName} yorumun yayında 🎉`,
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
+        ${LOGO}
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
+          ${name}, yorumun yayında!
+        </h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 16px">
+          <strong>${vehicleName}</strong> için yazdığın yorum onaylandı ve fikape'de yayınlandı.
+        </p>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
+          Puanlarını içeren bir paylaşım kartı hazırladık — WhatsApp veya Instagram story'nde paylaşabilirsin.
+        </p>
+        <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
+          Kartını gör ve paylaş →
+        </a>
+        <p style="color:#aaa;font-size:12px;margin-top:32px;line-height:1.6">
+          Bu bildirimi almak istemiyorsan hesap ayarlarından bildirim tercihlerini güncelleyebilirsin.
+          <br>© ${new Date().getFullYear()} fikape.com
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendVerificationEmail(email: string, token: string) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const url = `${BASE_URL}/api/auth/verify-email?token=${token}`;

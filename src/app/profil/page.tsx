@@ -187,6 +187,12 @@ export default async function ProfilPage() {
                   {r.status === "PUBLISHED" && (
                     <div className="pt-2 border-t border-gray-50 flex items-center gap-4">
                       <Link
+                        href={`/yorumum/${r.id}/paylas`}
+                        className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
+                      >
+                        ↗ Paylaş
+                      </Link>
+                      <Link
                         href={`/yorumum/${r.id}/duzenle`}
                         className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
                       >

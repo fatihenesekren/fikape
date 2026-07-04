@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { sendReviewPublishedEmail } from "@/lib/email";
 
 export async function PATCH(
   req: Request,
@@ -21,6 +22,13 @@ export async function PATCH(
       select: {
         userId: true,
         photos: { where: { status: "PENDING" }, select: { id: true } },
+        user: { select: { email: true, displayName: true } },
+        product: {
+          select: {
+            brand: { select: { name: true } },
+            model: { select: { name: true } },
+          },
+        },
       },
     });
 
@@ -43,6 +51,16 @@ export async function PATCH(
           })]
         : []),
     ]);
+
+    if (review?.user.email) {
+      sendReviewPublishedEmail({
+        to: review.user.email,
+        displayName: review.user.displayName,
+        vehicleName: `${review.product.brand.name} ${review.product.model.name}`,
+        reviewId,
+      }).catch(() => {});
+    }
+
     return NextResponse.json({ ok: true, status: "PUBLISHED" });
   }
 
