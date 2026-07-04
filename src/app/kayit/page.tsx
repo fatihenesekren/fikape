@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function KayitPage() {
+function KayitForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const ref = searchParams.get("ref");
 
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail]             = useState("");
@@ -22,7 +24,7 @@ export default function KayitPage() {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, displayName }),
+      body: JSON.stringify({ email, password, displayName, ref }),
     });
 
     const data = await res.json();
@@ -53,6 +55,9 @@ export default function KayitPage() {
           </Link>
           <h1 className="text-xl font-bold text-gray-900">Hesap oluştur</h1>
           <p className="text-sm text-gray-500 mt-1">Ücretsiz kayıt ol, deneyimini paylaş</p>
+          {ref && (
+            <p className="text-xs text-gray-400 mt-2">Bir arkadaşının daveti ile geliyorsun 👋</p>
+          )}
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
@@ -131,5 +136,13 @@ export default function KayitPage() {
 
       </div>
     </div>
+  );
+}
+
+export default function KayitPage() {
+  return (
+    <Suspense>
+      <KayitForm />
+    </Suspense>
   );
 }

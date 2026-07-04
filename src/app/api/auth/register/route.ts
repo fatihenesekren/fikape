@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
@@ -5,7 +6,7 @@ import { createVerificationToken } from "@/lib/emailToken";
 import { sendVerificationEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
-  const { email, password, displayName } = await req.json();
+  const { email, password, displayName, ref } = await req.json();
 
   if (!email || !password) {
     return NextResponse.json({ error: "E-posta ve şifre zorunludur." }, { status: 400 });
@@ -19,6 +20,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Bu e-posta zaten kayıtlı." }, { status: 409 });
   }
 
+  const referrer = ref
+    ? await prisma.user.findUnique({ where: { referralCode: ref }, select: { id: true } })
+    : null;
+
   const passwordHash = await bcrypt.hash(password, 12);
   const user = await prisma.user.create({
     data: {
@@ -26,6 +31,8 @@ export async function POST(req: Request) {
       passwordHash,
       displayName: displayName?.trim() || null,
       trustLevel: 1,
+      referralCode: randomUUID().replace(/-/g, "").slice(0, 8).toUpperCase(),
+      referredByUserId: referrer?.id ?? null,
       consentLogs: {
         create: [
           { consentType: "PRIVACY_POLICY",   isGranted: true },

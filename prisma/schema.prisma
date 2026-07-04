@@ -142,6 +142,12 @@ model User {
   // KVKK: hesap silme talebi
   deletionRequestedAt DateTime?
 
+  // Referral/davet sistemi — parasal olmayan statü rozeti
+  referralCode      String   @unique
+  referredByUserId  Int?
+  referredByUser    User?    @relation("Referrals", fields: [referredByUserId], references: [id])
+  referrals         User[]   @relation("Referrals")
+
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 

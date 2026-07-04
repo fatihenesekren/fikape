@@ -8,6 +8,7 @@ import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { TRUST_PROFILE } from "@/lib/trustBadge";
 import { DeleteReviewButton } from "./DeleteReviewButton";
+import { InviteBox } from "./InviteBox";
 
 export const metadata: Metadata = { title: "Profilim" };
 
@@ -25,6 +26,8 @@ export default async function ProfilPage() {
       trustLevel: true,
       emailVerifiedAt: true,
       createdAt: true,
+      referralCode: true,
+      _count: { select: { referrals: true } },
     },
   });
 
@@ -126,6 +129,8 @@ export default async function ProfilPage() {
           Yorum Yaz →
         </Link>
       </div>
+
+      <InviteBox referralCode={user.referralCode} referralCount={user._count.referrals} />
 
       {/* Yorum geçmişi */}
       <div>
