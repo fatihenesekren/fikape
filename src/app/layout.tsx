@@ -7,6 +7,8 @@ import { VerificationBanner } from "@/components/VerificationBanner";
 import { SearchBar, SearchIcon } from "@/components/SearchBar";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { JsonLd } from "@/components/JsonLd";
+import { BASE_URL } from "@/lib/baseUrl";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
@@ -47,6 +49,28 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="tr" className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[--background]">
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                name: "fikape",
+                url: BASE_URL,
+              },
+              {
+                "@type": "WebSite",
+                name: "fikape",
+                url: BASE_URL,
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: `${BASE_URL}/arama?q={search_term_string}`,
+                  "query-input": "required name=search_term_string",
+                },
+              },
+            ],
+          }}
+        />
         <SessionProvider>
         <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">

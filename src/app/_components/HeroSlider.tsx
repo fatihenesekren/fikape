@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
 
 type TopProduct = {
@@ -113,12 +114,15 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
               </div>
 
               {p.imageUrl && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={p.imageUrl}
-                  alt={`${p.brandName} ${p.modelName}`}
-                  className="w-full h-36 object-cover rounded-xl mb-4"
-                />
+                <div className="relative w-full h-36 rounded-xl overflow-hidden mb-4">
+                  <Image
+                    src={p.imageUrl}
+                    alt={`${p.brandName} ${p.modelName}`}
+                    fill
+                    sizes="288px"
+                    className="object-cover"
+                  />
+                </div>
               )}
 
               <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">

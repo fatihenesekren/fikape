@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
@@ -14,6 +15,8 @@ import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
 import { ScoreTrendChart } from "./ScoreTrendChart";
+import { JsonLd } from "@/components/JsonLd";
+import { BASE_URL } from "@/lib/baseUrl";
 
 export async function generateMetadata({
   params,
@@ -443,6 +446,35 @@ export default async function VehicleDetailPage({
     </div>
   );
 
+  // ── JSON-LD: Product + AggregateRating + Review (sadece yorumu varsa) ──
+  const productName = `${product.brand.name} ${product.model.name}${product.year ? ` ${product.year}` : ""}`;
+  const productSchema = reviewCount > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: productName,
+    ...(imageUrl ? { image: [imageUrl] } : {}),
+    brand: { "@type": "Brand", name: product.brand.name },
+    url: `${BASE_URL}/araclar/${slug}`,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: Math.round((agg._avg.scoreOverall ?? 0) * 10) / 10,
+      reviewCount,
+      bestRating: 10,
+      worstRating: 1,
+    },
+    review: reviews.slice(0, 5).map((r) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: r.user.displayName },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: Math.round(calcOverall(r) * 10) / 10,
+        bestRating: 10,
+        worstRating: 1,
+      },
+      reviewBody: r.detailText || r.summaryText,
+    })),
+  } : null;
+
   const left = specs.filter((_, i) => i % 2 === 0);
   const right = specs.filter((_, i) => i % 2 === 1);
 
@@ -471,6 +503,8 @@ export default async function VehicleDetailPage({
 
   return (
     <>
+      {productSchema && <JsonLd data={productSchema} />}
+
       {/* ── Hero ── */}
       <div
         className="w-full relative"
@@ -478,11 +512,12 @@ export default async function VehicleDetailPage({
       >
         {imageUrl && (
           <div className="absolute inset-0 overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={imageUrl}
               alt={`${product.brand.name} ${product.model.name}`}
-              className="absolute inset-0 w-full h-full object-cover opacity-20"
+              fill
+              sizes="100vw"
+              className="object-cover opacity-20"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80" />
           </div>
@@ -498,15 +533,16 @@ export default async function VehicleDetailPage({
 
           <div className="flex flex-col sm:flex-row sm:items-end gap-6">
             <div
-              className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shrink-0 overflow-hidden"
+              className="relative w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shrink-0 overflow-hidden"
               style={{ background: categorySlug === "e-scooter" || categorySlug === "e-bisiklet" ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.08)" }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               {imageUrl
-                ? <img
+                ? <Image
                     src={imageUrl}
                     alt=""
-                    className={`w-full h-full ${categorySlug === "e-scooter" || categorySlug === "motosiklet" || categorySlug === "e-bisiklet" ? "object-contain p-1.5" : "object-cover"}`}
+                    fill
+                    sizes="80px"
+                    className={categorySlug === "e-scooter" || categorySlug === "motosiklet" || categorySlug === "e-bisiklet" ? "object-contain p-1.5" : "object-cover"}
                   />
                 : (bodyType ? BODY_ICONS[bodyType] : null) ?? CATEGORY_FALLBACK_ICONS[categorySlug] ?? "🚗"
               }

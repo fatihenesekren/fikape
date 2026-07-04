@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
@@ -81,11 +82,12 @@ export function VehicleCard({
         style={{ background: placeholderBg }}
       >
         {imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={imageUrl}
             alt={`${brandName} ${modelName}${trimName ? ` ${trimName}` : ""}`}
-            className={`absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-300 ${
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className={`group-hover:scale-105 transition-transform duration-300 ${
               isScooter ? "object-contain p-2" : "object-cover"
             }`}
           />

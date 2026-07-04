@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 interface Photo {
   url: string;
@@ -16,20 +17,22 @@ function SliderFrame({ photo, alt, index }: { photo: Photo; alt: string; index: 
   return (
     <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden">
       {/* Blur arka plan */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={photo.url}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
+        fill
+        sizes="(max-width: 1024px) 100vw, 1024px"
+        className="object-cover scale-110 blur-xl opacity-60"
       />
       <div className="absolute inset-0 bg-black/20" />
       {/* Asıl fotoğraf */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={photo.url}
         alt={index === 0 ? alt : `${alt} fotoğraf ${index + 1}`}
-        className="relative w-full h-full object-contain"
+        fill
+        sizes="(max-width: 1024px) 100vw, 1024px"
+        className="object-contain"
       />
       {/* Kaynak badge */}
       {photo.label && (
@@ -73,20 +76,22 @@ export function PhotoSlider({ photos, alt }: Props) {
               }`}
             >
               {/* Blur arka plan */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={photo.url}
                 alt=""
                 aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
+                fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-cover scale-110 blur-xl opacity-60"
               />
               <div className="absolute inset-0 bg-black/20" />
               {/* Asıl fotoğraf */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={photo.url}
                 alt={i === 0 ? alt : `${alt} fotoğraf ${i + 1}`}
-                className="relative w-full h-full object-contain"
+                fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-contain"
               />
               {/* Kaynak badge */}
               {photo.label && (
@@ -139,11 +144,12 @@ export function PhotoSlider({ photos, alt }: Props) {
                     : "opacity-60 hover:opacity-90"
                 }`}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={photo.url}
                   alt={`Fotoğraf ${i + 1}`}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="64px"
+                  className="object-cover"
                 />
               </button>
             ))}
