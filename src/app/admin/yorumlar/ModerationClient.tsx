@@ -25,7 +25,10 @@ interface Review {
   photos: Photo[];
   sameIpCount: number;
   sameChipComboCount: number;
+  recentProductReviewCount: number;
 }
+
+const RECENT_REVIEW_BURST_THRESHOLD = 5;
 
 function ScorePill({ label, value, color, bg }: { label: string; value: number; color: string; bg: string }) {
   return (
@@ -88,6 +91,11 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
             {review.sameChipComboCount > 1 && (
               <span className="inline-flex items-center gap-1 mt-1 ml-1 px-2 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
                 ⚠ Aynı artı/eksi seti {review.sameChipComboCount} kez
+              </span>
+            )}
+            {review.recentProductReviewCount >= RECENT_REVIEW_BURST_THRESHOLD && (
+              <span className="inline-flex items-center gap-1 mt-1 ml-1 px-2 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                ⚠ Son 24 saatte bu ürüne {review.recentProductReviewCount} yorum
               </span>
             )}
           </div>

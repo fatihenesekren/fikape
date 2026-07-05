@@ -87,11 +87,26 @@ export default async function ModerationPage() {
     return candidates.some((c) => c.id !== photoId && hammingDistance(c.phash, phash) <= PHASH_DUPLICATE_THRESHOLD);
   }
 
+  // Ürün bazlı anomali/hız tespiti — kısa sürede aynı ürüne çok sayıda
+  // yorum gelirse (review bombing sinyali). 24 saatlik pencere, sabit eşik
+  // (z-score/istatistiksel model için henüz yeterli veri hacmi yok).
+  const RECENT_WINDOW_HOURS = 24;
+  const recentSince = new Date(Date.now() - RECENT_WINDOW_HOURS * 60 * 60 * 1000);
+  const recentCounts = productIds.length
+    ? await prisma.review.groupBy({
+        by: ["productId"],
+        where: { productId: { in: productIds }, status: { in: ["PENDING", "PUBLISHED"] }, createdAt: { gte: recentSince } },
+        _count: { id: true },
+      })
+    : [];
+  const recentCountMap = new Map(recentCounts.map((c) => [c.productId, c._count.id]));
+
   const serialized = reviews.map(({ ipHash, productId, photos, ...r }) => ({
     ...r,
     createdAt: r.createdAt.toISOString(),
     sameIpCount: ipHash ? (ipCountMap.get(ipHash) ?? 1) : 0,
     sameChipComboCount: comboCountMap.get(comboKey(productId, r.extendedData)) ?? 1,
+    recentProductReviewCount: recentCountMap.get(productId) ?? 1,
     photos: photos.map(({ phash, ...p }) => ({ ...p, isDuplicate: isDuplicatePhoto(productId, p.id, phash) })),
   }));
 
