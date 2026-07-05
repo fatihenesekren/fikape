@@ -27,9 +27,15 @@ describe("reviewCreateSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("boş cons dizisini reddeder", () => {
-    const result = reviewCreateSchema.safeParse({ ...valid, cons: [] });
-    expect(result.success).toBe(false);
+  it("boş pros/cons dizisini kabul eder (sıfır-sürtünmeli hızlı puan)", () => {
+    const result = reviewCreateSchema.safeParse({ ...valid, pros: [], cons: [] });
+    expect(result.success).toBe(true);
+  });
+
+  it("pros/cons hiç gönderilmezse kabul eder (sıfır-sürtünmeli hızlı puan)", () => {
+    const { pros: _pros, cons: _cons, ...withoutChips } = valid;
+    const result = reviewCreateSchema.safeParse(withoutChips);
+    expect(result.success).toBe(true);
   });
 });
 

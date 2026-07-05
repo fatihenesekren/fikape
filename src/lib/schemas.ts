@@ -13,8 +13,8 @@ export const reviewCreateSchema = z.object({
   wouldBuyAgain:  z.boolean().optional().nullable(),
   ownershipMonths: z.union([z.number(), z.string()]).optional().nullable(),
   extendedData:   z.record(z.string(), z.unknown()).optional().nullable(),
-  pros:           z.array(z.string()).min(1, "En az 1, en fazla 3 artı seçin.").max(3, "En az 1, en fazla 3 artı seçin."),
-  cons:           z.array(z.string()).min(1, "En az 1, en fazla 3 eksi seçin.").max(3, "En az 1, en fazla 3 eksi seçin."),
+  pros:           z.array(z.string()).max(3, "En fazla 3 artı seçebilirsiniz.").optional(),
+  cons:           z.array(z.string()).max(3, "En fazla 3 eksi seçebilirsiniz.").optional(),
   photoUrls:      z.array(z.string().url()).max(3).optional(),
 });
 

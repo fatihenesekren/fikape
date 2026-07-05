@@ -156,6 +156,11 @@ export default async function ProfilPage() {
               };
               const st = statusMap[r.status] ?? statusMap.PENDING;
 
+              const ext = (r.extendedData as Record<string, unknown>) ?? {};
+              const rPros = (ext.pros as string[] | undefined) ?? [];
+              const rCons = (ext.cons as string[] | undefined) ?? [];
+              const needsChipNudge = r.status === "PUBLISHED" && rPros.length === 0 && rCons.length === 0;
+
               return (
                 <div key={r.id} className="bg-white border border-gray-100 rounded-2xl p-4 space-y-3">
                   <Link
@@ -188,6 +193,16 @@ export default async function ProfilPage() {
                       </span>
                     </div>
                   </Link>
+
+                  {needsChipNudge && (
+                    <Link
+                      href={`/yorumum/${r.id}/duzenle`}
+                      className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold hover:opacity-80 transition-opacity"
+                      style={{ background: "#FEF3C7", color: "#92400E" }}
+                    >
+                      ⚡ Hızlı puandın — artı/eksi ekleyerek güçlendir →
+                    </Link>
+                  )}
 
                   {r.status === "PUBLISHED" && (
                     <div className="pt-2 border-t border-gray-50 flex items-center gap-4">

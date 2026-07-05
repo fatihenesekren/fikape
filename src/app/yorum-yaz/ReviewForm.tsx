@@ -470,6 +470,8 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
   const [error,   setError]   = useState("");
   const [loading, setLoading] = useState(false);
+  const [mode,    setMode]    = useState<"quick" | "full">("quick");
+  const isQuick = mode === "quick";
 
   // Chip listesini seçili araca göre hesapla
   const chips = getChipsForCategory(selectedProduct?.categorySlug ?? null);
@@ -518,29 +520,33 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
     if (!productSlug)    { setError("Lütfen bir araç seçin."); return; }
     if (alreadyReviewed) { setError("Bu araç için zaten bir yorumun var."); return; }
     if (!scoresComplete) { setError("Lütfen tüm FI·KA·PE puanlarını verin."); return; }
-    if (pros.length < 1) { setError("En az 1 artı seçin."); return; }
-    if (cons.length < 1) { setError("En az 1 eksi seçin."); return; }
-    if (!detailValidation.ok) { setDetailTouched(true); setError(detailValidation.error!); return; }
+    if (!isQuick) {
+      if (pros.length < 1) { setError("En az 1 artı seçin."); return; }
+      if (cons.length < 1) { setError("En az 1 eksi seçin."); return; }
+      if (!detailValidation.ok) { setDetailTouched(true); setError(detailValidation.error!); return; }
+    }
 
     const extended: Record<string, unknown> = {};
-    if (usageType)      extended.usage_type      = usageType;
-    if (roadDurability) extended.road_durability = roadDurability;
-    if (isCombustion) {
-      if (fuelConsumption) extended.fuel_consumption = fuelConsumption;
-      if (isGasoline && lpgStatus) extended.lpg_status = lpgStatus;
-    }
-    if (isEV) {
-      if (evRange)               extended.ev_range      = evRange;
-      if (homeCharging !== null) extended.home_charging = homeCharging;
-      if (!isEscooter && chargingAccess) extended.charging_access = chargingAccess;
-      if (winterRange)           extended.winter_range  = winterRange;
-    }
-    if (isEbisiklet) {
-      if (ebikeMotorType)    extended.motor_type_exp    = ebikeMotorType;
-      if (ebikePedelecClass) extended.pedelec_class_exp = ebikePedelecClass;
-      if (ebikeRealRangeKm)  extended.real_range_km     = Number(ebikeRealRangeKm);
-      if (ebikeWinterRange)  extended.winter_range_ok   = ebikeWinterRange;
-      if (ebikeChargeHours)  extended.charge_time_hours = Number(ebikeChargeHours);
+    if (!isQuick) {
+      if (usageType)      extended.usage_type      = usageType;
+      if (roadDurability) extended.road_durability = roadDurability;
+      if (isCombustion) {
+        if (fuelConsumption) extended.fuel_consumption = fuelConsumption;
+        if (isGasoline && lpgStatus) extended.lpg_status = lpgStatus;
+      }
+      if (isEV) {
+        if (evRange)               extended.ev_range      = evRange;
+        if (homeCharging !== null) extended.home_charging = homeCharging;
+        if (!isEscooter && chargingAccess) extended.charging_access = chargingAccess;
+        if (winterRange)           extended.winter_range  = winterRange;
+      }
+      if (isEbisiklet) {
+        if (ebikeMotorType)    extended.motor_type_exp    = ebikeMotorType;
+        if (ebikePedelecClass) extended.pedelec_class_exp = ebikePedelecClass;
+        if (ebikeRealRangeKm)  extended.real_range_km     = Number(ebikeRealRangeKm);
+        if (ebikeWinterRange)  extended.winter_range_ok   = ebikeWinterRange;
+        if (ebikeChargeHours)  extended.charge_time_hours = Number(ebikeChargeHours);
+      }
     }
 
     setLoading(true);
@@ -549,13 +555,13 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         productSlug, scoreFiyat, scoreKalite, scorePerformans,
-        detailText,
-        pros,
-        cons,
-        photoUrls: photoUrls.length ? photoUrls : undefined,
-        wouldBuyAgain:   wouldRecommend === "yes" ? true : wouldRecommend === "no" ? false : null,
-        ownershipMonths: OWNERSHIP_MONTHS[ownershipSlot] ?? null,
-        extendedData:    Object.keys(extended).length ? extended : undefined,
+        detailText:      isQuick ? "" : detailText,
+        pros:             isQuick ? [] : pros,
+        cons:             isQuick ? [] : cons,
+        photoUrls:        isQuick ? undefined : (photoUrls.length ? photoUrls : undefined),
+        wouldBuyAgain:    isQuick ? null : (wouldRecommend === "yes" ? true : wouldRecommend === "no" ? false : null),
+        ownershipMonths:  isQuick ? null : (OWNERSHIP_MONTHS[ownershipSlot] ?? null),
+        extendedData:     Object.keys(extended).length ? extended : undefined,
       }),
     });
     const data = await res.json();
@@ -571,6 +577,30 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         <h1 className="text-2xl font-black text-gray-900">Yorum yaz</h1>
         <p className="text-sm text-gray-500 mt-1">Deneyimini paylaş, diğer kullanıcılara yol göster.</p>
       </div>
+
+      <div className="flex gap-1 p-1 rounded-xl bg-gray-100">
+        <button
+          type="button"
+          onClick={() => setMode("quick")}
+          className="flex-1 py-2 rounded-lg text-sm font-bold transition-colors"
+          style={mode === "quick" ? { background: "#111", color: "#fff" } : { color: "#6b7280" }}
+        >
+          ⚡ Hızlı Puanla
+        </button>
+        <button
+          type="button"
+          onClick={() => setMode("full")}
+          className="flex-1 py-2 rounded-lg text-sm font-bold transition-colors"
+          style={mode === "full" ? { background: "#111", color: "#fff" } : { color: "#6b7280" }}
+        >
+          📝 Detaylı Yorum
+        </button>
+      </div>
+      {isQuick && (
+        <p className="text-xs text-gray-400 -mt-3">
+          10 saniyede puanla — istersen sonra artı/eksi ekleyerek güçlendirebilirsin.
+        </p>
+      )}
 
       {error && (
         <div className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
@@ -707,6 +737,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
       </SectionCard>
 
       {/* 3 — Artılar & Eksiler */}
+      {!isQuick && (
       <SectionCard step={3} title="Artılar & Eksiler" badge="required">
         <p className="text-xs text-gray-400 -mt-2">
           Her kategoriden en az 1, en fazla 3 seçin.
@@ -804,8 +835,10 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
           <p className="text-xs text-gray-400">JPEG, PNG veya WebP · maks. 5 MB · moderasyon onayından sonra yayınlanır</p>
         </div>
       </SectionCard>
+      )}
 
       {/* 4 — Sahiplik & Kullanım */}
+      {!isQuick && (
       <SectionCard step={4} title="Sahiplik & Kullanım" badge="optional">
         <SubQuestion label="Ne kadar süredir kullanıyorsunuz?">
           <div className="flex flex-wrap gap-2">
@@ -836,8 +869,10 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
           <IconChipGroup opts={RECOMMEND_OPTS} value={wouldRecommend} onChange={setWouldRecommend} />
         </SubQuestion>
       </SectionCard>
+      )}
 
       {/* 5 — Türkiye'ye Özel */}
+      {!isQuick && (
       <SectionCard step={5} title="Türkiye'ye özel" badge="conditional">
         <p className="text-xs text-gray-400 -mt-2">
           Araç tipine göre sorular otomatik değişir. Hepsi opsiyoneldir.
@@ -922,6 +957,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
           </>
         )}
       </SectionCard>
+      )}
 
       <button
         type="submit"
@@ -929,7 +965,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         className="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-colors disabled:opacity-60"
         style={{ background: "#111" }}
       >
-        {loading ? "Gönderiliyor..." : "Yorumu Gönder →"}
+        {loading ? "Gönderiliyor..." : isQuick ? "Hızlı Gönder →" : "Yorumu Gönder →"}
       </button>
 
       <p className="text-xs text-center text-gray-400">

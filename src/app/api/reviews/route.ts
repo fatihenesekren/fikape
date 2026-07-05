@@ -80,10 +80,15 @@ export async function POST(req: Request) {
 
   const scoreOverall = calcOverall({ scoreFiyat, scoreKalite, scorePerformans });
 
+  const pros = prosArr ?? [];
+  const cons = consArr ?? [];
+
   const mergedExtended = {
     ...(extendedData && Object.keys(extendedData).length ? extendedData : {}),
-    pros: prosArr,
-    cons: consArr,
+    pros,
+    cons,
+    // Sıfır-sürtünmeli hızlı puan: chip seçilmeden gönderildi, sonra güçlendirme nudge'ı için işaretle
+    ...(pros.length === 0 && cons.length === 0 ? { quickReview: true } : {}),
   };
 
   const { ipHash, userAgentHash } = hashRequestContext(req);

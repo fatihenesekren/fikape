@@ -101,11 +101,20 @@ export default async function ModerationPage() {
     : [];
   const recentCountMap = new Map(recentCounts.map((c) => [c.productId, c._count.id]));
 
+  function hasChips(extendedData: unknown): boolean {
+    const ext = extendedData as Record<string, unknown> | null | undefined;
+    const pros = (ext?.pros as string[] | undefined) ?? [];
+    const cons = (ext?.cons as string[] | undefined) ?? [];
+    return pros.length > 0 || cons.length > 0;
+  }
+
   const serialized = reviews.map(({ ipHash, productId, photos, ...r }) => ({
     ...r,
     createdAt: r.createdAt.toISOString(),
     sameIpCount: ipHash ? (ipCountMap.get(ipHash) ?? 1) : 0,
-    sameChipComboCount: comboCountMap.get(comboKey(productId, r.extendedData)) ?? 1,
+    // Sıfır-sürtünmeli hızlı puanların hepsi boş artı/eksi setini paylaşıyor —
+    // bunu "tekrar" olarak flag'lememek için chip'i olmayan yorumlarda sinyal atlanır.
+    sameChipComboCount: hasChips(r.extendedData) ? (comboCountMap.get(comboKey(productId, r.extendedData)) ?? 1) : 1,
     recentProductReviewCount: recentCountMap.get(productId) ?? 1,
     photos: photos.map(({ phash, ...p }) => ({ ...p, isDuplicate: isDuplicatePhoto(productId, p.id, phash) })),
   }));
