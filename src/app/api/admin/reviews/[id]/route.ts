@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sendReviewPublishedEmail } from "@/lib/email";
+import { recordScoreSnapshot } from "@/lib/security";
 
 export async function PATCH(
   req: Request,
@@ -21,6 +22,9 @@ export async function PATCH(
       where: { id: reviewId },
       select: {
         userId: true,
+        productId: true,
+        trustScore: true,
+        scoreOverall: true,
         photos: { where: { status: "PENDING" }, select: { id: true } },
         user: { select: { email: true, displayName: true } },
         product: {
@@ -61,14 +65,36 @@ export async function PATCH(
       }).catch(() => {});
     }
 
+    if (review) {
+      await recordScoreSnapshot({
+        reviewId,
+        productId: review.productId,
+        trustScore: review.trustScore,
+        scoreOverall: review.scoreOverall,
+        status: "PUBLISHED",
+        reason: "PUBLISHED",
+      });
+    }
+
     return NextResponse.json({ ok: true, status: "PUBLISHED" });
   }
 
   if (action === "reject") {
-    await prisma.review.update({
+    const review = await prisma.review.update({
       where: { id: reviewId },
       data: { status: "REJECTED", rejectedAt: new Date(), rejectionReason: reason ?? null },
+      select: { productId: true, trustScore: true, scoreOverall: true },
     });
+
+    await recordScoreSnapshot({
+      reviewId,
+      productId: review.productId,
+      trustScore: review.trustScore,
+      scoreOverall: review.scoreOverall,
+      status: "REJECTED",
+      reason: "REJECTED",
+    });
+
     return NextResponse.json({ ok: true, status: "REJECTED" });
   }
 

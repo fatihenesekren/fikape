@@ -249,6 +249,10 @@ model Review {
   // Güven skoru — 0-100, okuyucuya gösterilmez, sıralamada kullanılır
   trustScore    Int      @default(35)
 
+  // Fingerprint — KVKK: ham IP/UA saklanmaz, sadece HMAC hash'i (review bombing tespiti için)
+  ipHash        String?
+  userAgentHash String?
+
   // Moderasyon
   status        ReviewStatus @default(PENDING)
   publishedAt   DateTime?
@@ -274,8 +278,35 @@ model Review {
   helpfulVotes  ReviewHelpfulVote[]
   photos        ProductPhoto[]
   versions      ReviewVersion[]
+  scoreSnapshots ScoreSnapshot[]
 
   @@map("reviews")
+}
+
+// ─────────────────────────────────────────────
+// SKOR AUDIT TRAIL — hangi review hangi ağırlıkla
+// yayındaki skora katkı sağladı, geçmişe dönük izlenebilirlik
+// ─────────────────────────────────────────────
+
+model ScoreSnapshot {
+  id           Int            @id @default(autoincrement())
+  reviewId     Int
+  review       Review         @relation(fields: [reviewId], references: [id])
+  productId    Int
+  trustScore   Int
+  scoreOverall Float
+  status       ReviewStatus
+  reason       SnapshotReason
+  createdAt    DateTime       @default(now())
+
+  @@map("score_snapshots")
+}
+
+enum SnapshotReason {
+  CREATED
+  PUBLISHED
+  REJECTED
+  EDITED
 }
 
 model ReviewVersion {

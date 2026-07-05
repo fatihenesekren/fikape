@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { validateDetailShort } from "@/lib/reviewValidation";
+import { hashRequestContext, recordScoreSnapshot } from "@/lib/security";
 
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
@@ -90,6 +91,8 @@ export async function POST(req: Request) {
     cons: consArr,
   };
 
+  const { ipHash, userAgentHash } = hashRequestContext(req);
+
   const review = await prisma.review.create({
     data: {
       userId,
@@ -104,7 +107,18 @@ export async function POST(req: Request) {
       ownershipMonthsAtReview: ownershipMonths ? Number(ownershipMonths) : null,
       extendedData:            mergedExtended,
       status:                  "PENDING",
+      ipHash,
+      userAgentHash,
     },
+  });
+
+  await recordScoreSnapshot({
+    reviewId: review.id,
+    productId: product.id,
+    trustScore: review.trustScore,
+    scoreOverall,
+    status: "PENDING",
+    reason: "CREATED",
   });
 
   // Fotoğraflar varsa ProductPhoto kaydı oluştur (PENDING — admin onaylar)

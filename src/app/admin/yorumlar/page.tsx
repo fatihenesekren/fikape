@@ -27,13 +27,25 @@ export default async function ModerationPage() {
         },
       },
       photos: { select: { id: true, url: true }, orderBy: { order: "asc" } },
+      ipHash: true,
     },
     orderBy: { createdAt: "asc" },
   });
 
-  const serialized = reviews.map((r) => ({
+  const ipHashes = [...new Set(reviews.map((r) => r.ipHash).filter((h): h is string => !!h))];
+  const ipCounts = ipHashes.length
+    ? await prisma.review.groupBy({
+        by: ["ipHash"],
+        where: { ipHash: { in: ipHashes } },
+        _count: { id: true },
+      })
+    : [];
+  const ipCountMap = new Map(ipCounts.map((c) => [c.ipHash, c._count.id]));
+
+  const serialized = reviews.map(({ ipHash, ...r }) => ({
     ...r,
     createdAt: r.createdAt.toISOString(),
+    sameIpCount: ipHash ? (ipCountMap.get(ipHash) ?? 1) : 0,
   }));
 
   return (

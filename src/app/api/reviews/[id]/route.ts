@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { validateDetailShort } from "@/lib/reviewValidation";
 import { calcOverall } from "@/lib/fikape";
+import { recordScoreSnapshot } from "@/lib/security";
 
 export async function PATCH(
   req: Request,
@@ -45,6 +46,7 @@ export async function PATCH(
     select: {
       userId: true, status: true, extendedData: true, editCount: true,
       scoreFiyat: true, scoreKalite: true, scorePerformans: true,
+      productId: true, trustScore: true,
     },
   });
 
@@ -95,6 +97,15 @@ export async function PATCH(
       },
     }),
   ]);
+
+  await recordScoreSnapshot({
+    reviewId,
+    productId: review.productId,
+    trustScore: review.trustScore,
+    scoreOverall: newOverall,
+    status: "PUBLISHED",
+    reason: "EDITED",
+  });
 
   return NextResponse.json({ ok: true });
 }

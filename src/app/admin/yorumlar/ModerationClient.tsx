@@ -23,6 +23,7 @@ interface Review {
   user: { email: string; displayName: string | null };
   product: { name: string; slug: string; model: { name: string; brand: { name: string } } };
   photos: Photo[];
+  sameIpCount: number;
 }
 
 function ScorePill({ label, value, color, bg }: { label: string; value: number; color: string; bg: string }) {
@@ -78,6 +79,11 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
               {review.user.displayName ?? review.user.email} ·{" "}
               {new Date(review.createdAt).toLocaleDateString("tr-TR")}
             </p>
+            {review.sameIpCount > 1 && (
+              <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                ⚠ Bu IP&apos;den {review.sameIpCount} yorum
+              </span>
+            )}
           </div>
           <div className="text-right shrink-0">
             <span className="text-2xl font-black text-gray-900">{review.scoreOverall.toFixed(1)}</span>
