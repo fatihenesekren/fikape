@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sendReviewPublishedEmail } from "@/lib/email";
 import { recordScoreSnapshot, recordModerationLog } from "@/lib/security";
+import { calcTrustScore } from "@/lib/trustScore";
 
 export async function PATCH(
   req: Request,
@@ -27,7 +28,7 @@ export async function PATCH(
         trustScore: true,
         scoreOverall: true,
         photos: { where: { status: "PENDING" }, select: { id: true } },
-        user: { select: { email: true, displayName: true } },
+        user: { select: { email: true, displayName: true, trustLevel: true } },
         product: {
           select: {
             brand: { select: { name: true } },
@@ -39,10 +40,22 @@ export async function PATCH(
 
     const hasPhotos = (review?.photos.length ?? 0) > 0;
 
+    // Onay anında TrustLevel değişmiş olabilir (fotoğraflı yorumla Level 2→3
+    // yükselmesi tam bu anda oluyor) — trustScore'u güncel seviyeyle yeniden hesapla.
+    let recomputedTrustScore = review?.trustScore ?? 35;
+    if (review) {
+      const garajEntry = await prisma.userProduct.findFirst({
+        where: { userId: review.userId, productId: review.productId },
+        select: { id: true },
+      });
+      const finalTrustLevel = hasPhotos && review.user.trustLevel === 2 ? 3 : review.user.trustLevel;
+      recomputedTrustScore = calcTrustScore({ trustLevel: finalTrustLevel, garajLinked: !!garajEntry });
+    }
+
     await prisma.$transaction([
       prisma.review.update({
         where: { id: reviewId },
-        data: { status: "PUBLISHED", publishedAt: new Date() },
+        data: { status: "PUBLISHED", publishedAt: new Date(), trustScore: recomputedTrustScore },
       }),
       prisma.productPhoto.updateMany({
         where: { reviewId, status: "PENDING" },
@@ -70,7 +83,7 @@ export async function PATCH(
       await recordScoreSnapshot({
         reviewId,
         productId: review.productId,
-        trustScore: review.trustScore,
+        trustScore: recomputedTrustScore,
         scoreOverall: review.scoreOverall,
         status: "PUBLISHED",
         reason: "PUBLISHED",

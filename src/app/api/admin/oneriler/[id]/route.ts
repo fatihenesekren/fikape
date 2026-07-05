@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
+import { calcTrustScore } from "@/lib/trustScore";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -178,13 +179,19 @@ export async function POST(
     const fi = Number(reviewData.scoreFiyat) * 2;
     const ka = Number(reviewData.scoreKalite) * 2;
     const pe = Number(reviewData.scorePerformans) * 2;
+    const reviewer = await prisma.user.findUnique({
+      where: { id: suggestion.userId },
+      select: { trustLevel: true },
+    });
+    // Ürün bu anda oluşturuluyor, dolayısıyla garaj bağlantısı henüz mümkün değil (garajLinked: false)
+    const trustScore = calcTrustScore({ trustLevel: reviewer?.trustLevel ?? 1, garajLinked: false });
     await prisma.review.create({
       data: {
         userId: suggestion.userId, productId: product.id,
         scoreFiyat: fi, scoreKalite: ka, scorePerformans: pe,
         scoreOverall: calcOverall({ scoreFiyat: fi, scoreKalite: ka, scorePerformans: pe }),
         summaryText: String(reviewData.summaryText).slice(0, 500),
-        status: "PUBLISHED", publishedAt: new Date(), trustScore: 35,
+        status: "PUBLISHED", publishedAt: new Date(), trustScore,
       },
     });
   }

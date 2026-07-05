@@ -6,6 +6,7 @@ import { validateDetailShort } from "@/lib/reviewValidation";
 import { hashRequestContext, recordScoreSnapshot } from "@/lib/security";
 import { computePHash } from "@/lib/phash";
 import { reviewCreateSchema, formatZodError } from "@/lib/schemas";
+import { calcTrustScore } from "@/lib/trustScore";
 
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
@@ -31,14 +32,18 @@ export async function POST(req: Request) {
 
   const userId = parseInt(session.user.id);
 
-  const [product, user, recentCount] = await Promise.all([
+  const [product, user, recentCount, garajEntry] = await Promise.all([
     prisma.product.findUnique({ where: { slug: productSlug }, select: { id: true } }),
-    prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true } }),
+    prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true, trustLevel: true } }),
     prisma.review.count({
       where: {
         userId,
         createdAt: { gte: new Date(Date.now() - RATE_LIMIT_WINDOW_MS) },
       },
+    }),
+    prisma.userProduct.findFirst({
+      where: { userId, product: { slug: productSlug } },
+      select: { id: true },
     }),
   ]);
 
@@ -83,6 +88,8 @@ export async function POST(req: Request) {
 
   const { ipHash, userAgentHash } = hashRequestContext(req);
 
+  const trustScore = calcTrustScore({ trustLevel: user.trustLevel, garajLinked: !!garajEntry });
+
   const review = await prisma.review.create({
     data: {
       userId,
@@ -99,6 +106,7 @@ export async function POST(req: Request) {
       status:                  "PENDING",
       ipHash,
       userAgentHash,
+      trustScore,
     },
   });
 
