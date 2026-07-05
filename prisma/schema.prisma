@@ -586,6 +586,9 @@ model ProductPhoto {
   status           PhotoStatus @default(PENDING)
   order            Int         @default(0)
 
+  // Perceptual hash (dHash, 64-bit hex) — görsel olarak tekrar kullanılan fotoğraf tespiti için
+  phash            String?
+
   createdAt        DateTime    @default(now())
 
   @@map("product_photos")

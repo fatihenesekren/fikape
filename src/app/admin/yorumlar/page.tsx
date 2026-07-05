@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { ModerationClient } from "./ModerationClient";
+import { hammingDistance, PHASH_DUPLICATE_THRESHOLD } from "@/lib/phash";
 
 export const metadata = { title: "Moderasyon — fikape admin" };
 
@@ -27,7 +28,7 @@ export default async function ModerationPage() {
           model: { select: { name: true, brand: { select: { name: true } } } },
         },
       },
-      photos: { select: { id: true, url: true }, orderBy: { order: "asc" } },
+      photos: { select: { id: true, url: true, phash: true }, orderBy: { order: "asc" } },
       ipHash: true,
     },
     orderBy: { createdAt: "asc" },
@@ -65,11 +66,33 @@ export default async function ModerationPage() {
     comboCountMap.set(key, (comboCountMap.get(key) ?? 0) + 1);
   }
 
-  const serialized = reviews.map(({ ipHash, productId, ...r }) => ({
+  // Fotoğraf tekrar kullanımı tespiti (pHash) — aynı ürüne ait başka bir yorumun
+  // fotoğrafına görsel olarak neredeyse aynıysa (Hamming mesafesi eşik altında) uyar.
+  const productPhotos = productIds.length
+    ? await prisma.productPhoto.findMany({
+        where: { productId: { in: productIds }, status: { in: ["PENDING", "APPROVED"] }, phash: { not: null } },
+        select: { id: true, productId: true, phash: true },
+      })
+    : [];
+  const photosByProduct = new Map<number, { id: number; phash: string }[]>();
+  for (const p of productPhotos) {
+    if (!p.phash) continue;
+    const list = photosByProduct.get(p.productId) ?? [];
+    list.push({ id: p.id, phash: p.phash });
+    photosByProduct.set(p.productId, list);
+  }
+  function isDuplicatePhoto(productId: number, photoId: number, phash: string | null): boolean {
+    if (!phash) return false;
+    const candidates = photosByProduct.get(productId) ?? [];
+    return candidates.some((c) => c.id !== photoId && hammingDistance(c.phash, phash) <= PHASH_DUPLICATE_THRESHOLD);
+  }
+
+  const serialized = reviews.map(({ ipHash, productId, photos, ...r }) => ({
     ...r,
     createdAt: r.createdAt.toISOString(),
     sameIpCount: ipHash ? (ipCountMap.get(ipHash) ?? 1) : 0,
     sameChipComboCount: comboCountMap.get(comboKey(productId, r.extendedData)) ?? 1,
+    photos: photos.map(({ phash, ...p }) => ({ ...p, isDuplicate: isDuplicatePhoto(productId, p.id, phash) })),
   }));
 
   return (

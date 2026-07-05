@@ -6,7 +6,7 @@ import { FIKAPE } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
 import { BlurEditor } from "./BlurEditor";
 
-interface Photo { id: number; url: string; }
+interface Photo { id: number; url: string; isDuplicate: boolean; }
 
 interface Review {
   id: number;
@@ -156,6 +156,14 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
                 <div key={p.id} className="relative group w-24 h-24 rounded-xl overflow-hidden bg-gray-100 shrink-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={p.url} alt={`Fotoğraf ${idx + 1}`} className="w-full h-full object-cover" />
+                  {p.isDuplicate && (
+                    <span
+                      className="absolute top-1 left-1 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200"
+                      title="Bu fotoğraf aynı ürüne ait başka bir yorumda kullanılmış olabilir"
+                    >
+                      ⚠ Tekrar
+                    </span>
+                  )}
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                     <button

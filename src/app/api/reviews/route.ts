@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { validateDetailShort } from "@/lib/reviewValidation";
 import { hashRequestContext, recordScoreSnapshot } from "@/lib/security";
+import { computePHash } from "@/lib/phash";
 
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
@@ -124,6 +125,19 @@ export async function POST(req: Request) {
   // Fotoğraflar varsa ProductPhoto kaydı oluştur (PENDING — admin onaylar)
   const urls: string[] = Array.isArray(photoUrls) ? photoUrls.slice(0, 3) : [];
   if (urls.length > 0) {
+    // pHash hesaplama best-effort — başarısız olursa fotoğraf yine de kaydedilir, sadece tekrar tespiti atlanır
+    const phashes = await Promise.all(
+      urls.map(async (url) => {
+        try {
+          const res = await fetch(url);
+          const buffer = Buffer.from(await res.arrayBuffer());
+          return await computePHash(buffer);
+        } catch {
+          return null;
+        }
+      })
+    );
+
     await prisma.productPhoto.createMany({
       data: urls.map((url, idx) => ({
         productId: product.id,
@@ -132,6 +146,7 @@ export async function POST(req: Request) {
         url,
         status: "PENDING",
         order: idx,
+        phash: phashes[idx],
       })),
     });
   }
