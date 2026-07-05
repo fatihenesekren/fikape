@@ -3,9 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { validateSummary, validateDetail } from "@/lib/reviewValidation";
-
-const VALID_CATEGORIES = ["otomobil", "motosiklet", "e-scooter", "e-bisiklet", "karavan", "kamyonet"];
-const VALID_FUEL_TYPES  = ["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"];
+import { vehicleSuggestSchema, formatZodError } from "@/lib/schemas";
 
 function slugify(text: string): string {
   return String(text).toLowerCase()
@@ -32,25 +30,16 @@ export async function POST(req: Request) {
     );
   }
 
-  const body = await req.json();
+  const parsed = vehicleSuggestSchema.safeParse(await req.json());
+  if (!parsed.success) {
+    return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
+  }
   const {
     brandName, modelName, year, trimName, fuelType, categorySlug,
     scoreFiyat, scoreKalite, scorePerformans,
     summaryText, detailText, wouldBuyAgain, ownershipMonths, extendedData,
-  } = body;
+  } = parsed.data;
 
-  if (!brandName?.trim() || !modelName?.trim()) {
-    return NextResponse.json({ error: "Marka ve model zorunludur." }, { status: 400 });
-  }
-  if (!VALID_CATEGORIES.includes(categorySlug)) {
-    return NextResponse.json({ error: "Geçersiz kategori." }, { status: 400 });
-  }
-  if (fuelType && !VALID_FUEL_TYPES.includes(fuelType)) {
-    return NextResponse.json({ error: "Geçersiz yakıt tipi." }, { status: 400 });
-  }
-  if ([scoreFiyat, scoreKalite, scorePerformans].some((s) => s < 1 || s > 10)) {
-    return NextResponse.json({ error: "Puanlar 1-10 arasında olmalıdır." }, { status: 400 });
-  }
   const summaryCheck = validateSummary(summaryText ?? "");
   if (!summaryCheck.ok) return NextResponse.json({ error: summaryCheck.error }, { status: 400 });
   const detailCheck = validateDetail(detailText ?? "");
@@ -136,7 +125,9 @@ export async function POST(req: Request) {
         detailText:              detailText?.trim() || null,
         wouldBuyAgain:           wouldBuyAgain ?? null,
         ownershipMonthsAtReview: ownershipMonths ? Number(ownershipMonths) : null,
-        extendedData:            extendedData && Object.keys(extendedData).length ? extendedData : undefined,
+        extendedData:            (extendedData && Object.keys(extendedData).length
+                                    ? extendedData
+                                    : undefined) as Parameters<typeof tx.review.create>[0]["data"]["extendedData"],
         status:                  "PENDING",
       },
     });

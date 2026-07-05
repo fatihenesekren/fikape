@@ -5,6 +5,7 @@ import { calcOverall } from "@/lib/fikape";
 import { validateDetailShort } from "@/lib/reviewValidation";
 import { hashRequestContext, recordScoreSnapshot } from "@/lib/security";
 import { computePHash } from "@/lib/phash";
+import { reviewCreateSchema, formatZodError } from "@/lib/schemas";
 
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
@@ -13,27 +14,15 @@ export async function POST(req: Request) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
+  const parsed = reviewCreateSchema.safeParse(await req.json());
+  if (!parsed.success) {
+    return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
+  }
   const {
     productSlug, scoreFiyat, scoreKalite, scorePerformans,
     summaryText, detailText, wouldBuyAgain, ownershipMonths, extendedData,
-    pros, cons, photoUrls,
-  } = await req.json();
-
-  if (!productSlug) {
-    return NextResponse.json({ error: "Araç zorunludur." }, { status: 400 });
-  }
-  if ([scoreFiyat, scoreKalite, scorePerformans].some((s) => s < 1 || s > 10)) {
-    return NextResponse.json({ error: "Puanlar 1-10 arasında olmalıdır." }, { status: 400 });
-  }
-
-  const prosArr: string[] = Array.isArray(pros) ? pros : [];
-  const consArr: string[] = Array.isArray(cons) ? cons : [];
-  if (prosArr.length < 1 || prosArr.length > 3) {
-    return NextResponse.json({ error: "En az 1, en fazla 3 artı seçin." }, { status: 400 });
-  }
-  if (consArr.length < 1 || consArr.length > 3) {
-    return NextResponse.json({ error: "En az 1, en fazla 3 eksi seçin." }, { status: 400 });
-  }
+    pros: prosArr, cons: consArr, photoUrls,
+  } = parsed.data;
 
   const detailCheck = validateDetailShort(detailText ?? "");
   if (!detailCheck.ok) {
@@ -123,7 +112,7 @@ export async function POST(req: Request) {
   });
 
   // Fotoğraflar varsa ProductPhoto kaydı oluştur (PENDING — admin onaylar)
-  const urls: string[] = Array.isArray(photoUrls) ? photoUrls.slice(0, 3) : [];
+  const urls: string[] = photoUrls ?? [];
   if (urls.length > 0) {
     // pHash hesaplama best-effort — başarısız olursa fotoğraf yine de kaydedilir, sadece tekrar tespiti atlanır
     const phashes = await Promise.all(

@@ -8,10 +8,14 @@ function hash(value: string): string {
   return createHmac("sha256", SECRET).update(value).digest("hex");
 }
 
+export function getClientIp(req: Request): string | null {
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  return forwardedFor?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || null;
+}
+
 // KVKK: ham IP/UA hiçbir yerde tutulmaz, sadece hash'i.
 export function hashRequestContext(req: Request): { ipHash: string | null; userAgentHash: string | null } {
-  const forwardedFor = req.headers.get("x-forwarded-for");
-  const ip = forwardedFor?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || null;
+  const ip = getClientIp(req);
   const userAgent = req.headers.get("user-agent");
 
   return {

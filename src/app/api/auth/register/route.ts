@@ -4,16 +4,22 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { createVerificationToken } from "@/lib/emailToken";
 import { sendVerificationEmail } from "@/lib/email";
+import { rateLimitByIp } from "@/lib/rateLimit";
+import { registerSchema, formatZodError } from "@/lib/schemas";
+
+const RATE_LIMIT_COUNT = 5;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 
 export async function POST(req: Request) {
-  const { email, password, displayName, ref } = await req.json();
+  if (!rateLimitByIp(req, "register", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS)) {
+    return NextResponse.json({ error: "Çok fazla deneme yapıldı. Lütfen daha sonra tekrar deneyin." }, { status: 429 });
+  }
 
-  if (!email || !password) {
-    return NextResponse.json({ error: "E-posta ve şifre zorunludur." }, { status: 400 });
+  const parsed = registerSchema.safeParse(await req.json());
+  if (!parsed.success) {
+    return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
-  if (password.length < 8) {
-    return NextResponse.json({ error: "Şifre en az 8 karakter olmalıdır." }, { status: 400 });
-  }
+  const { email, password, displayName, ref } = parsed.data;
 
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
