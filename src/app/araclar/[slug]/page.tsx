@@ -549,9 +549,12 @@ export default async function VehicleDetailPage({
             </div>
 
             <div className="flex-1">
-              <div className="text-sm font-semibold text-gray-400 mb-1 tracking-wide uppercase">
+              <Link
+                href={`/markalar/${product.brand.slug}`}
+                className="text-sm font-semibold text-gray-400 mb-1 tracking-wide uppercase hover:text-gray-200 hover:underline transition-colors inline-block"
+              >
                 {product.brand.name}
-              </div>
+              </Link>
               <h1 className="text-3xl font-black text-white tracking-tight">
                 {product.model.name}
                 {product.year && <span className="text-gray-400 font-light ml-2">{product.year}</span>}
