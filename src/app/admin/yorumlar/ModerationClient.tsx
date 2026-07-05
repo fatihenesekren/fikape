@@ -24,6 +24,7 @@ interface Review {
   product: { name: string; slug: string; model: { name: string; brand: { name: string } } };
   photos: Photo[];
   sameIpCount: number;
+  sameChipComboCount: number;
 }
 
 function ScorePill({ label, value, color, bg }: { label: string; value: number; color: string; bg: string }) {
@@ -82,6 +83,11 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
             {review.sameIpCount > 1 && (
               <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
                 ⚠ Bu IP&apos;den {review.sameIpCount} yorum
+              </span>
+            )}
+            {review.sameChipComboCount > 1 && (
+              <span className="inline-flex items-center gap-1 mt-1 ml-1 px-2 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                ⚠ Aynı artı/eksi seti {review.sameChipComboCount} kez
               </span>
             )}
           </div>

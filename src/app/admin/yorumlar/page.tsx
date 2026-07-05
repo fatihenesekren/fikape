@@ -8,6 +8,7 @@ export default async function ModerationPage() {
     where: { status: "PENDING" },
     select: {
       id: true,
+      productId: true,
       summaryText: true,
       detailText: true,
       extendedData: true,
@@ -42,10 +43,33 @@ export default async function ModerationPage() {
     : [];
   const ipCountMap = new Map(ipCounts.map((c) => [c.ipHash, c._count.id]));
 
-  const serialized = reviews.map(({ ipHash, ...r }) => ({
+  // Chip kombinasyonu tekrar tespiti — aynı ürün için aynı artı/eksi seti
+  // kısa sürede tekrarlanırsa (kopyala-yapıştır yorum bombardımanı sinyali).
+  function comboKey(productId: number, extendedData: unknown): string {
+    const ext = extendedData as Record<string, unknown> | null | undefined;
+    const pros = ((ext?.pros as string[] | undefined) ?? []).slice().sort();
+    const cons = ((ext?.cons as string[] | undefined) ?? []).slice().sort();
+    return `${productId}:${pros.join(",")}|${cons.join(",")}`;
+  }
+
+  const productIds = [...new Set(reviews.map((r) => r.productId))];
+  const productReviews = productIds.length
+    ? await prisma.review.findMany({
+        where: { productId: { in: productIds }, status: { in: ["PENDING", "PUBLISHED"] } },
+        select: { productId: true, extendedData: true },
+      })
+    : [];
+  const comboCountMap = new Map<string, number>();
+  for (const r of productReviews) {
+    const key = comboKey(r.productId, r.extendedData);
+    comboCountMap.set(key, (comboCountMap.get(key) ?? 0) + 1);
+  }
+
+  const serialized = reviews.map(({ ipHash, productId, ...r }) => ({
     ...r,
     createdAt: r.createdAt.toISOString(),
     sameIpCount: ipHash ? (ipCountMap.get(ipHash) ?? 1) : 0,
+    sameChipComboCount: comboCountMap.get(comboKey(productId, r.extendedData)) ?? 1,
   }));
 
   return (
