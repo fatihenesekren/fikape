@@ -110,6 +110,7 @@ model Product {
   reviews         Review[]
   photos          ProductPhoto[]
   suggestions     VehicleSuggestion[]
+  questions       Question[]
 
   @@map("products")
 }
@@ -161,6 +162,8 @@ model User {
   vehicleSuggestions  VehicleSuggestion[]
   productPhotos       ProductPhoto[]        @relation("UserProductPhotos")
   moderationLogs      ModerationLog[]
+  questions           Question[]
+  answers             Answer[]
 
   @@map("users")
 }
@@ -598,4 +601,39 @@ enum PhotoStatus {
   PENDING
   APPROVED
   REJECTED
+}
+
+// ─────────────────────────────────────────────
+// SORU-CEVAP — Model sayfasında, sahiplik yorumcularına
+// bildirim giden uzun kuyruk SEO + retention modülü
+// ─────────────────────────────────────────────
+
+model Question {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+
+  text      String   @db.VarChar(300)
+
+  createdAt DateTime @default(now())
+
+  answers   Answer[]
+
+  @@map("questions")
+}
+
+model Answer {
+  id         Int      @id @default(autoincrement())
+  questionId Int
+  question   Question @relation(fields: [questionId], references: [id])
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+
+  text       String   @db.VarChar(500)
+
+  createdAt  DateTime @default(now())
+
+  @@map("answers")
 }

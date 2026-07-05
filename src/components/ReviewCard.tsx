@@ -1,4 +1,5 @@
 import { FikapeScore } from "@/components/FikapeScore";
+import { ReviewHelpfulButtons } from "@/components/ReviewHelpfulButtons";
 import { calcOverall } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
 import { TRUST_BADGES } from "@/lib/trustBadge";
@@ -27,6 +28,11 @@ interface Props {
   ownershipStatus?: string | null;
   soldReason?: string | null;
   extendedData?: Record<string, unknown> | null;
+  isFounding?: boolean;
+  reviewId?: number;
+  helpfulCount?: number;
+  currentUserVote?: boolean | null;
+  isLoggedIn?: boolean;
 }
 
 export function ReviewCard({
@@ -46,6 +52,11 @@ export function ReviewCard({
   ownershipStatus,
   soldReason,
   extendedData,
+  isFounding,
+  reviewId,
+  helpfulCount = 0,
+  currentUserVote = null,
+  isLoggedIn = false,
 }: Props) {
   const scores = { scoreFiyat, scoreKalite, scorePerformans };
   const overall = calcOverall(scores);
@@ -79,6 +90,16 @@ export function ReviewCard({
                 >
                   {badge.icon && <span>{badge.icon}</span>}
                   {badge.label}
+                </span>
+              )}
+              {isFounding && (
+                <span
+                  className="text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1"
+                  style={{ background: "#FEF3C7", color: "#92400E" }}
+                  title="Bu araç için ilk 3 yorumcudan biri"
+                >
+                  <span>🏅</span>
+                  Kurucu Yorumcu
                 </span>
               )}
               {ownershipStatus === "PAST" && (
@@ -194,6 +215,18 @@ export function ReviewCard({
         <div className="flex items-center gap-2 text-xs text-gray-500 pt-1 border-t border-gray-50">
           <span>{wouldBuyAgain ? "✓" : "✗"}</span>
           <span>{wouldBuyAgain ? "Tekrar alırım" : "Tekrar almam"}</span>
+        </div>
+      )}
+
+      {/* Faydalı oyu */}
+      {reviewId != null && (
+        <div className="pt-1 border-t border-gray-50">
+          <ReviewHelpfulButtons
+            reviewId={reviewId}
+            initialHelpfulCount={helpfulCount}
+            initialUserVote={currentUserVote}
+            isLoggedIn={isLoggedIn}
+          />
         </div>
       )}
     </div>

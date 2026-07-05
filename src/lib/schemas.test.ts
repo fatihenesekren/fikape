@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { reviewCreateSchema, registerSchema, vehicleSuggestSchema } from "./schemas";
+import { reviewCreateSchema, registerSchema, vehicleSuggestSchema, questionCreateSchema, answerCreateSchema } from "./schemas";
 
 describe("reviewCreateSchema", () => {
   const valid = {
@@ -69,5 +69,31 @@ describe("vehicleSuggestSchema", () => {
 
   it("geçersiz yakıt tipini reddeder", () => {
     expect(vehicleSuggestSchema.safeParse({ ...valid, fuelType: "NUKLEER" }).success).toBe(false);
+  });
+});
+
+describe("questionCreateSchema", () => {
+  const valid = { productSlug: "toyota-corolla", text: "Kışın menzil ne kadar düşüyor?" };
+
+  it("geçerli bir soruyu kabul eder", () => {
+    expect(questionCreateSchema.safeParse(valid).success).toBe(true);
+  });
+
+  it("çok kısa soruyu reddeder", () => {
+    expect(questionCreateSchema.safeParse({ ...valid, text: "Neden?" }).success).toBe(false);
+  });
+
+  it("productSlug eksikse reddeder", () => {
+    expect(questionCreateSchema.safeParse({ ...valid, productSlug: "" }).success).toBe(false);
+  });
+});
+
+describe("answerCreateSchema", () => {
+  it("geçerli bir cevabı kabul eder", () => {
+    expect(answerCreateSchema.safeParse({ text: "Yaklaşık %15 düşüyor." }).success).toBe(true);
+  });
+
+  it("çok kısa cevabı reddeder", () => {
+    expect(answerCreateSchema.safeParse({ text: "Evet" }).success).toBe(false);
   });
 });

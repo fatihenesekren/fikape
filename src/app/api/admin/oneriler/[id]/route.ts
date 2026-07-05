@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { calcTrustScore } from "@/lib/trustScore";
+import { notifyGarageBrandFollowers } from "@/lib/notifications";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -115,6 +116,7 @@ export async function POST(
       where: { id: suggestionId },
       data: { status: "APPROVED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: Number(session.user.id) },
     });
+    await notifyGarageBrandFollowers(suggestion.productId);
     return NextResponse.json({ ok: true, action: "APPROVED", productId: suggestion.productId });
   }
 
@@ -211,6 +213,8 @@ export async function POST(
     where: { id: suggestionId },
     data: { status: "APPROVED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: Number(session.user.id) },
   });
+
+  await notifyGarageBrandFollowers(product.id);
 
   return NextResponse.json({ ok: true, action: "APPROVED", productId: product.id, slug: product.slug });
 }

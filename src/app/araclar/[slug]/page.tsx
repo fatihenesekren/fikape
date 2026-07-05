@@ -15,8 +15,10 @@ import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
 import { ScoreTrendChart } from "./ScoreTrendChart";
+import { QnaSection } from "./QnaSection";
 import { JsonLd } from "@/components/JsonLd";
 import { BASE_URL } from "@/lib/baseUrl";
+import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 
 export async function generateMetadata({
   params,
@@ -90,10 +92,10 @@ export default async function VehicleDetailPage({
   searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ yorum?: string }>;
+  searchParams: Promise<{ yorum?: string; sekme?: string }>;
 }) {
   const { slug } = await params;
-  const { yorum } = await searchParams;
+  const { yorum, sekme } = await searchParams;
 
   const [product, session] = await Promise.all([
     prisma.product.findUnique({
@@ -235,10 +237,50 @@ export default async function VehicleDetailPage({
         select: { version: true, scoreOverall: true, createdAt: true },
         orderBy: { version: "asc" },
       },
+      helpfulVotes: {
+        select: { userId: true, isHelpful: true },
+      },
     },
     orderBy: { publishedAt: "desc" },
     take: 20,
   });
+
+  // Kürasyonlu "kurucu yorumcu" — bu ürün için ilk 3 yayınlanmış yorum
+  const foundingReviewIds = await getFoundingReviewIds([product.id]);
+
+  // Soru-Cevap — migration henüz uygulanmamışsa (questions/answers tabloları)
+  // sayfanın tamamen çökmesini önlemek için best-effort
+  const questionsRaw = await prisma.question.findMany({
+    where: { productId: product.id },
+    select: {
+      id: true,
+      text: true,
+      createdAt: true,
+      user: { select: { displayName: true } },
+      answers: {
+        select: {
+          id: true,
+          text: true,
+          createdAt: true,
+          user: { select: { displayName: true } },
+        },
+        orderBy: { createdAt: "asc" },
+      },
+    },
+    orderBy: { createdAt: "desc" },
+  }).catch(() => []);
+  const questions = questionsRaw.map((q) => ({
+    id: q.id,
+    text: q.text,
+    displayName: q.user.displayName,
+    createdAt: q.createdAt.toISOString(),
+    answers: q.answers.map((a) => ({
+      id: a.id,
+      text: a.text,
+      displayName: a.user.displayName,
+      createdAt: a.createdAt.toISOString(),
+    })),
+  }));
 
   // ── Spec strip — kategori bazlı 5 öne çıkan özellik ──
   type SpecItem = { label: string; value: string };
@@ -440,6 +482,11 @@ export default async function VehicleDetailPage({
             ownershipStatus={r.userProduct?.ownershipStatus ?? null}
             soldReason={r.userProduct?.soldReason ?? null}
             extendedData={r.extendedData as Record<string, unknown> | null}
+            isFounding={foundingReviewIds.has(r.id)}
+            reviewId={r.id}
+            helpfulCount={r.helpfulVotes.filter((v) => v.isHelpful).length}
+            currentUserVote={userId ? (r.helpfulVotes.find((v) => v.userId === userId)?.isHelpful ?? null) : null}
+            isLoggedIn={!!userId}
           />
         </div>
       ))}
@@ -474,6 +521,10 @@ export default async function VehicleDetailPage({
       reviewBody: r.detailText || r.summaryText,
     })),
   } : null;
+
+  const qnaContent = (
+    <QnaSection productSlug={slug} questions={questions} isLoggedIn={!!userId} />
+  );
 
   const left = specs.filter((_, i) => i % 2 === 0);
   const right = specs.filter((_, i) => i % 2 === 1);
@@ -680,11 +731,14 @@ export default async function VehicleDetailPage({
           </div>
         )}
 
-        {/* Tab: Yorumlar / Teknik Özellikler */}
+        {/* Tab: Yorumlar / Teknik Özellikler / Soru-Cevap */}
         <TabView
           reviewCount={reviewCount}
           reviewsContent={reviewsContent}
           specsContent={specsContent}
+          questionCount={questions.length}
+          qnaContent={qnaContent}
+          initialTab={sekme === "soru-cevap" ? "soru-cevap" : undefined}
         />
 
       </div>

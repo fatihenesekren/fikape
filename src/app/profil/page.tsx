@@ -9,6 +9,7 @@ import { FUEL_LABELS } from "@/lib/fuel";
 import { TRUST_PROFILE } from "@/lib/trustBadge";
 import { DeleteReviewButton } from "./DeleteReviewButton";
 import { InviteBox } from "./InviteBox";
+import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 
 export const metadata: Metadata = { title: "Profilim" };
 
@@ -41,7 +42,23 @@ export default async function ProfilPage() {
     orderBy: { createdAt: "desc" },
   });
 
-  const garageCount = await prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } });
+  const publishedReviews = reviews.filter((r) => r.status === "PUBLISHED");
+  const reviewIds = publishedReviews.map((r) => r.id);
+
+  const [garageCount, helpfulCount, foundingIds] = await Promise.all([
+    prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } }),
+    reviewIds.length
+      ? prisma.reviewHelpfulVote.count({ where: { reviewId: { in: reviewIds }, isHelpful: true } })
+      : Promise.resolve(0),
+    getFoundingReviewIds([...new Set(publishedReviews.map((r) => r.productId))]),
+  ]);
+
+  const foundingCount = publishedReviews.filter((r) => foundingIds.has(r.id)).length;
+
+  // Katkı-etki: yorumların olduğu araçların toplam görüntülenmesi (yaklaşık —
+  // yorum başına ayrı view tracking yok, ürün sayfası görüntülenmesi proxy olarak kullanılıyor)
+  const uniqueProductViews = new Map(publishedReviews.map((r) => [r.productId, r.product.viewCount]));
+  const totalViews = [...uniqueProductViews.values()].reduce((s, v) => s + v, 0);
 
   const trust = TRUST_PROFILE[user.trustLevel] ?? TRUST_PROFILE[1];
 
@@ -111,6 +128,23 @@ export default async function ProfilPage() {
             <div className="text-xs text-gray-400 mt-0.5">Ort. fi·ka·pe</div>
           </div>
         </div>
+
+        {/* Katkı-etki geri bildirimi */}
+        {publishedReviews.length > 0 && (
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-5 pt-5 border-t border-gray-100 text-xs text-gray-500">
+            <span>
+              Yorumlarının olduğu araçlar <strong className="text-gray-900">{totalViews.toLocaleString("tr-TR")}</strong> kez görüntülendi
+            </span>
+            <span>
+              <strong className="text-gray-900">{helpfulCount}</strong> kişi yorumlarını faydalı buldu
+            </span>
+            {foundingCount > 0 && (
+              <span>
+                🏅 <strong className="text-gray-900">{foundingCount}</strong> araçta Kurucu Yorumcusun
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Hızlı linkler */}
@@ -191,6 +225,14 @@ export default async function ProfilPage() {
                       >
                         {st.label}
                       </span>
+                      {foundingIds.has(r.id) && (
+                        <span
+                          className="text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1"
+                          style={{ background: "#FEF3C7", color: "#92400E" }}
+                        >
+                          🏅 Kurucu
+                        </span>
+                      )}
                     </div>
                   </Link>
 

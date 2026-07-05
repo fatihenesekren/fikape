@@ -48,7 +48,7 @@ export function validateDetailShort(text: string): ValidationResult {
   return checkContent(t);
 }
 
-function checkContent(t: string): ValidationResult {
+export function checkContent(t: string): ValidationResult {
   // URL kontrolü
   for (const pattern of SPAM_PATTERNS) {
     if (pattern.test(t)) {

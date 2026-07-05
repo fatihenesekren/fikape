@@ -128,6 +128,161 @@ export async function sendReviewPublishedEmail({
   });
 }
 
+export async function sendNewQuestionEmail({
+  to, displayName, vehicleName, questionText, productSlug,
+}: {
+  to: string;
+  displayName: string | null;
+  vehicleName: string;
+  questionText: string;
+  productSlug: string;
+}) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const url = `${BASE_URL}/araclar/${productSlug}?sekme=soru-cevap`;
+  const name = displayName ?? "Merhaba";
+
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: `${vehicleName} hakkında yeni bir soru var`,
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
+        ${LOGO}
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
+          ${name}, ${vehicleName} sahiplerine bir soru soruldu
+        </h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 16px">
+          "${questionText}"
+        </p>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
+          Bu aracı kullandığın için cevaplayabilecek en doğru kişilerden birisin.
+        </p>
+        <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
+          Soruyu cevapla →
+        </a>
+        <p style="color:#aaa;font-size:12px;margin-top:32px;line-height:1.6">
+          Bu bildirimi almak istemiyorsan hesap ayarlarından bildirim tercihlerini güncelleyebilirsin.
+          <br>© ${new Date().getFullYear()} fikape.com
+        </p>
+      </div>
+    `,
+  });
+}
+
+export async function sendQuestionAnsweredEmail({
+  to, displayName, vehicleName, productSlug,
+}: {
+  to: string;
+  displayName: string | null;
+  vehicleName: string;
+  productSlug: string;
+}) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const url = `${BASE_URL}/araclar/${productSlug}?sekme=soru-cevap`;
+  const name = displayName ?? "Merhaba";
+
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: `${vehicleName} hakkındaki sorun cevaplandı`,
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
+        ${LOGO}
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
+          ${name}, sorun cevaplandı
+        </h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
+          <strong>${vehicleName}</strong> hakkında sorduğun soruya gerçek bir kullanıcı cevap verdi.
+        </p>
+        <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
+          Cevabı gör →
+        </a>
+        <p style="color:#aaa;font-size:12px;margin-top:32px;line-height:1.6">
+          Bu bildirimi almak istemiyorsan hesap ayarlarından bildirim tercihlerini güncelleyebilirsin.
+          <br>© ${new Date().getFullYear()} fikape.com
+        </p>
+      </div>
+    `,
+  });
+}
+
+export async function sendReviewHelpfulEmail({
+  to, displayName, vehicleName, reviewId,
+}: {
+  to: string;
+  displayName: string | null;
+  vehicleName: string;
+  reviewId: number;
+}) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const url = `${BASE_URL}/yorumum/${reviewId}/paylas`;
+  const name = displayName ?? "Merhaba";
+
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: `${vehicleName} yorumun birine faydalı oldu 👍`,
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
+        ${LOGO}
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
+          ${name}, yorumun işe yaradı!
+        </h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
+          <strong>${vehicleName}</strong> için yazdığın yorumu bir kullanıcı "faydalı" olarak işaretledi.
+          Deneyimini paylaşman gerçekten fark yaratıyor.
+        </p>
+        <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
+          Yorumunu gör →
+        </a>
+        <p style="color:#aaa;font-size:12px;margin-top:32px;line-height:1.6">
+          Bu bildirimi almak istemiyorsan hesap ayarlarından bildirim tercihlerini güncelleyebilirsin.
+          <br>© ${new Date().getFullYear()} fikape.com
+        </p>
+      </div>
+    `,
+  });
+}
+
+export async function sendNewModelInBrandEmail({
+  to, displayName, brandName, vehicleName, productSlug,
+}: {
+  to: string;
+  displayName: string | null;
+  brandName: string;
+  vehicleName: string;
+  productSlug: string;
+}) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const url = `${BASE_URL}/araclar/${productSlug}`;
+  const name = displayName ?? "Merhaba";
+
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: `${brandName} ailesine yeni bir model katıldı`,
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
+        ${LOGO}
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
+          ${name}, garajındaki markaya yeni model eklendi
+        </h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
+          Garajında ${brandName} olduğu için haber vermek istedik:
+          <strong>${vehicleName}</strong> artık fikape'de.
+        </p>
+        <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
+          Aracı incele →
+        </a>
+        <p style="color:#aaa;font-size:12px;margin-top:32px;line-height:1.6">
+          Bu bildirimi almak istemiyorsan hesap ayarlarından bildirim tercihlerini güncelleyebilirsin.
+          <br>© ${new Date().getFullYear()} fikape.com
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendVerificationEmail(email: string, token: string) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const url = `${BASE_URL}/api/auth/verify-email?token=${token}`;

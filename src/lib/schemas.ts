@@ -42,6 +42,15 @@ export const vehicleSuggestSchema = z.object({
   extendedData:   z.record(z.string(), z.unknown()).optional().nullable(),
 });
 
+export const questionCreateSchema = z.object({
+  productSlug: z.string().min(1, "Araç zorunludur."),
+  text:        z.string().trim().min(10, "En az 10 karakter yazın.").max(300, "En fazla 300 karakter yazabilirsiniz."),
+});
+
+export const answerCreateSchema = z.object({
+  text: z.string().trim().min(5, "En az 5 karakter yazın.").max(500, "En fazla 500 karakter yazabilirsiniz."),
+});
+
 export function formatZodError(error: z.ZodError): string {
   return error.issues[0]?.message ?? "Geçersiz istek.";
 }
