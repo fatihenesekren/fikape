@@ -160,6 +160,7 @@ model User {
   dataDeletionRequests DataDeletionRequest[]
   vehicleSuggestions  VehicleSuggestion[]
   productPhotos       ProductPhoto[]        @relation("UserProductPhotos")
+  moderationLogs      ModerationLog[]
 
   @@map("users")
 }
@@ -279,6 +280,7 @@ model Review {
   photos        ProductPhoto[]
   versions      ReviewVersion[]
   scoreSnapshots ScoreSnapshot[]
+  moderationLogs ModerationLog[]
 
   @@map("reviews")
 }
@@ -307,6 +309,29 @@ enum SnapshotReason {
   PUBLISHED
   REJECTED
   EDITED
+}
+
+// ─────────────────────────────────────────────
+// MODERASYON AUDIT LOG — hangi admin, hangi review'u,
+// ne zaman, hangi sebeple onayladı/reddetti
+// ─────────────────────────────────────────────
+
+model ModerationLog {
+  id          Int              @id @default(autoincrement())
+  reviewId    Int
+  review      Review           @relation(fields: [reviewId], references: [id])
+  moderatorId Int
+  moderator   User             @relation(fields: [moderatorId], references: [id])
+  action      ModerationAction
+  reason      String?          @db.VarChar(300)
+  createdAt   DateTime         @default(now())
+
+  @@map("moderation_logs")
+}
+
+enum ModerationAction {
+  APPROVED
+  REJECTED
 }
 
 model ReviewVersion {

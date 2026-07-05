@@ -30,3 +30,12 @@ export function recordScoreSnapshot(params: {
 }) {
   return prisma.scoreSnapshot.create({ data: params });
 }
+
+export function recordModerationLog(params: {
+  reviewId: number;
+  moderatorId: number;
+  action: "APPROVED" | "REJECTED";
+  reason?: string | null;
+}) {
+  return prisma.moderationLog.create({ data: params });
+}

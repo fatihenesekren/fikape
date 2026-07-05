@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sendReviewPublishedEmail } from "@/lib/email";
-import { recordScoreSnapshot } from "@/lib/security";
+import { recordScoreSnapshot, recordModerationLog } from "@/lib/security";
 
 export async function PATCH(
   req: Request,
@@ -15,6 +15,7 @@ export async function PATCH(
 
   const { id } = await params;
   const reviewId = parseInt(id);
+  const moderatorId = parseInt(session.user.id);
   const { action, reason } = await req.json() as { action: "approve" | "reject"; reason?: string };
 
   if (action === "approve") {
@@ -76,6 +77,8 @@ export async function PATCH(
       });
     }
 
+    await recordModerationLog({ reviewId, moderatorId, action: "APPROVED" });
+
     return NextResponse.json({ ok: true, status: "PUBLISHED" });
   }
 
@@ -94,6 +97,8 @@ export async function PATCH(
       status: "REJECTED",
       reason: "REJECTED",
     });
+
+    await recordModerationLog({ reviewId, moderatorId, action: "REJECTED", reason: reason ?? null });
 
     return NextResponse.json({ ok: true, status: "REJECTED" });
   }
