@@ -660,6 +660,11 @@ export default async function VehicleDetailPage({
         {scores && (
           <div className="bg-white border border-gray-100 rounded-2xl p-5">
             <FikapeScore scores={scores} variant="bars" reviewCount={reviewCount} />
+            {/* LLM/arama motorlarının doğrudan alıntılayabileceği tek cümlelik özet */}
+            <p className="mt-3 text-sm text-gray-500">
+              {productName}, {reviewCount} kullanıcı yorumuna göre 10 üzerinden {(scores.scoreOverall ?? 0).toFixed(1)} puan aldı
+              {" "}— Fiyat {scores.scoreFiyat.toFixed(1)}, Kalite {scores.scoreKalite.toFixed(1)}, Performans {scores.scorePerformans.toFixed(1)}.
+            </p>
             <div className="mt-4">
               <Link
                 href={`/yorum-yaz?arac=${slug}`}
