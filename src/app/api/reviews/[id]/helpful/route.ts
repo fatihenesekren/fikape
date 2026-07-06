@@ -35,6 +35,9 @@ export async function POST(
   if (!review || review.status !== "PUBLISHED") {
     return NextResponse.json({ error: "Yorum bulunamadı." }, { status: 404 });
   }
+  if (review.userId === userId) {
+    return NextResponse.json({ error: "Kendi yorumuna oy veremezsin." }, { status: 403 });
+  }
 
   const priorHelpfulCount = await prisma.reviewHelpfulVote.count({
     where: { reviewId, isHelpful: true },

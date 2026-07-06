@@ -222,8 +222,8 @@ export function ReviewCard({
         </div>
       )}
 
-      {/* Faydalı oyu */}
-      {reviewId != null && (
+      {/* Faydalı oyu — kendi yorumunda gösterilmez */}
+      {reviewId != null && !isOwnReview && (
         <div className="pt-1 border-t border-gray-50">
           <ReviewHelpfulButtons
             reviewId={reviewId}
