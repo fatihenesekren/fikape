@@ -13,15 +13,17 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   });
   if (!adminUser || adminUser.trustLevel < 5) redirect("/");
 
-  const [pendingReviews, pendingSuggestions] = await Promise.all([
+  const [pendingReviews, pendingSuggestions, newLeads] = await Promise.all([
     prisma.review.count({ where: { status: "PENDING" } }).catch(() => 0),
     prisma.vehicleSuggestion.count({ where: { status: "PENDING" } }).catch(() => 0),
+    prisma.insuranceLead.count({ where: { status: "NEW" } }).catch(() => 0),
   ]);
 
   const navItems = [
     { href: "/admin/yorumlar",  label: "Yorumlar",       icon: "💬", badge: pendingReviews },
     { href: "/admin/oneriler",  label: "Araç Önerileri", icon: "🚗", badge: pendingSuggestions },
     { href: "/admin/araclar",   label: "Görseller",      icon: "🖼️", badge: 0 },
+    { href: "/admin/leads",     label: "Sigorta Talepleri", icon: "🛡️", badge: newLeads },
   ];
 
   return (

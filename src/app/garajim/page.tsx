@@ -7,6 +7,7 @@ import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { calcOverall } from "@/lib/fikape";
 import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
 import { GarageAnimation } from "./GarageAnimation";
+import { InsuranceLeadCard } from "./InsuranceLeadCard";
 
 export const metadata: Metadata = { title: "Garajım" };
 
@@ -27,6 +28,12 @@ export default async function GarajimPage() {
   });
 
   const userName = currentUser?.displayName || currentUser?.email?.split("@")[0] || "Sürücü";
+
+  const insuranceLeads = await prisma.insuranceLead.findMany({
+    where: { userId },
+    select: { productId: true },
+  }).catch(() => []); // migration henüz uygulanmadıysa sayfa çökmesin
+  const leadProductIds = new Set(insuranceLeads.map((l) => l.productId));
 
   const userProducts = await prisma.userProduct.findMany({
     where: { userId },
@@ -136,6 +143,15 @@ export default async function GarajimPage() {
             <p className="text-xs text-gray-400 mt-2">
               {soldAt.toLocaleDateString("tr-TR", { month: "long", year: "numeric" })} tarihinde satıldı
             </p>
+          )}
+
+          {!isSold && (
+            <InsuranceLeadCard
+              productId={product.id}
+              vehicleName={`${product.brand.name} ${product.model.name}`}
+              defaultFullName={currentUser?.displayName ?? ""}
+              alreadySubmitted={leadProductIds.has(product.id)}
+            />
           )}
         </div>
 
