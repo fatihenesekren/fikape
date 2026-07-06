@@ -52,8 +52,8 @@ export async function PATCH(
 
   if (!review) return NextResponse.json({ error: "Yorum bulunamadı." }, { status: 404 });
   if (review.userId !== userId) return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
-  if (review.status !== "PUBLISHED") {
-    return NextResponse.json({ error: "Yalnızca yayındaki yorumlar düzenlenebilir." }, { status: 409 });
+  if (review.status !== "PUBLISHED" && review.status !== "PENDING") {
+    return NextResponse.json({ error: "Bu yorum artık düzenlenemez." }, { status: 409 });
   }
 
   const existing = (review.extendedData as Record<string, unknown>) ?? {};
@@ -103,7 +103,7 @@ export async function PATCH(
     productId: review.productId,
     trustScore: review.trustScore,
     scoreOverall: newOverall,
-    status: "PUBLISHED",
+    status: review.status,
     reason: "EDITED",
   });
 

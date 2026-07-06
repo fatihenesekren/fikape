@@ -226,6 +226,7 @@ export default async function VehicleDetailPage({
     where: { productId: product.id, status: "PUBLISHED" },
     select: {
       id: true,
+      userId: true,
       scoreFiyat: true,
       scoreKalite: true,
       scorePerformans: true,
@@ -493,6 +494,7 @@ export default async function VehicleDetailPage({
             helpfulCount={r.helpfulVotes.filter((v) => v.isHelpful).length}
             currentUserVote={userId ? (r.helpfulVotes.find((v) => v.userId === userId)?.isHelpful ?? null) : null}
             isLoggedIn={!!userId}
+            isOwnReview={userId === r.userId}
           />
         </div>
       ))}

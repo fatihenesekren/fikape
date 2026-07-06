@@ -115,6 +115,7 @@ function ScoreRow({
 interface Props {
   reviewId: number;
   productSlug: string;
+  reviewStatus: "PENDING" | "PUBLISHED";
   chips: Chip[];
   initialPros: string[];
   initialCons: string[];
@@ -128,6 +129,7 @@ interface Props {
 export function EditReviewForm({
   reviewId,
   productSlug,
+  reviewStatus,
   chips,
   initialPros,
   initialCons,
@@ -178,7 +180,7 @@ export function EditReviewForm({
     });
 
     if (res.ok) {
-      router.push(`/araclar/${productSlug}`);
+      router.push(reviewStatus === "PENDING" ? "/profil" : `/araclar/${productSlug}`);
       router.refresh();
     } else {
       const data = await res.json() as { error?: string };

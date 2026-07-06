@@ -7,7 +7,7 @@ import { EditName } from "./EditName";
 import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { TRUST_PROFILE } from "@/lib/trustBadge";
-import { DeleteReviewButton } from "./DeleteReviewButton";
+import { DeleteReviewButton } from "@/components/DeleteReviewButton";
 import { InviteBox } from "./InviteBox";
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 
@@ -193,7 +193,9 @@ export default async function ProfilPage() {
               const ext = (r.extendedData as Record<string, unknown>) ?? {};
               const rPros = (ext.pros as string[] | undefined) ?? [];
               const rCons = (ext.cons as string[] | undefined) ?? [];
-              const needsChipNudge = r.status === "PUBLISHED" && rPros.length === 0 && rCons.length === 0;
+              const needsChipNudge =
+                (r.status === "PUBLISHED" || r.status === "PENDING") &&
+                rPros.length === 0 && rCons.length === 0;
 
               return (
                 <div key={r.id} className="bg-white border border-gray-100 rounded-2xl p-4 space-y-3">
@@ -246,14 +248,16 @@ export default async function ProfilPage() {
                     </Link>
                   )}
 
-                  {r.status === "PUBLISHED" && (
+                  {(r.status === "PUBLISHED" || r.status === "PENDING") && (
                     <div className="pt-2 border-t border-gray-50 flex items-center gap-4">
-                      <Link
-                        href={`/yorumum/${r.id}/paylas`}
-                        className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
-                      >
-                        ↗ Paylaş
-                      </Link>
+                      {r.status === "PUBLISHED" && (
+                        <Link
+                          href={`/yorumum/${r.id}/paylas`}
+                          className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
+                        >
+                          ↗ Paylaş
+                        </Link>
+                      )}
                       <Link
                         href={`/yorumum/${r.id}/duzenle`}
                         className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"

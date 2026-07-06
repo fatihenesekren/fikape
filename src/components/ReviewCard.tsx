@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ReviewHelpfulButtons } from "@/components/ReviewHelpfulButtons";
+import { DeleteReviewButton } from "@/components/DeleteReviewButton";
 import { calcOverall } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
 import { TRUST_BADGES } from "@/lib/trustBadge";
@@ -33,6 +35,7 @@ interface Props {
   helpfulCount?: number;
   currentUserVote?: boolean | null;
   isLoggedIn?: boolean;
+  isOwnReview?: boolean;
 }
 
 export function ReviewCard({
@@ -57,6 +60,7 @@ export function ReviewCard({
   helpfulCount = 0,
   currentUserVote = null,
   isLoggedIn = false,
+  isOwnReview = false,
 }: Props) {
   const scores = { scoreFiyat, scoreKalite, scorePerformans };
   const overall = calcOverall(scores);
@@ -227,6 +231,19 @@ export function ReviewCard({
             initialUserVote={currentUserVote}
             isLoggedIn={isLoggedIn}
           />
+        </div>
+      )}
+
+      {/* Kendi yorumun — düzenle/sil */}
+      {isOwnReview && reviewId != null && (
+        <div className="pt-2 border-t border-gray-50 flex items-center gap-4">
+          <Link
+            href={`/yorumum/${reviewId}/duzenle`}
+            className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
+          >
+            ✎ Düzenle
+          </Link>
+          <DeleteReviewButton reviewId={reviewId} />
         </div>
       )}
     </div>

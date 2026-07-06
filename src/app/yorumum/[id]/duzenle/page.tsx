@@ -45,7 +45,7 @@ export default async function EditReviewPage({
 
   if (!review) notFound();
   if (review.userId !== userId) notFound();
-  if (review.status !== "PUBLISHED") redirect("/profil");
+  if (review.status !== "PUBLISHED" && review.status !== "PENDING") redirect("/profil");
 
   const ext = (review.extendedData as Record<string, unknown>) ?? {};
   const initialPros = (ext.pros as string[] | undefined) ?? [];
@@ -64,11 +64,17 @@ export default async function EditReviewPage({
         <p className="text-sm text-gray-400 mt-1">
           Puanları, artı/eksileri ve metni güncelleyebilirsin.
         </p>
+        {review.status === "PENDING" && (
+          <p className="text-xs mt-3 px-3 py-2 rounded-lg bg-amber-50 text-amber-800 border border-amber-100">
+            Bu yorum henüz incelemede — yayınlanmadan önce de düzenleyebilirsin.
+          </p>
+        )}
       </div>
 
       <EditReviewForm
         reviewId={reviewId}
         productSlug={review.product.slug}
+        reviewStatus={review.status}
         chips={chips}
         initialPros={initialPros}
         initialCons={initialCons}
