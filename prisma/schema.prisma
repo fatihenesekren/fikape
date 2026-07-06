@@ -176,6 +176,7 @@ model User {
   answers             Answer[]
   insuranceLeads      InsuranceLead[]
   saleLeads           SaleLead[]
+  plusWaitlistEntries PlusWaitlistEntry[]
 
   @@map("users")
 }
@@ -716,4 +717,24 @@ model SaleLead {
 enum SaleLeadType {
   EXPERTISE
   QUICK_OFFER
+}
+
+// ─────────────────────────────────────────────
+// FIKAPE PLUS BEKLEME LİSTESİ — Gerçek ödeme YOK.
+// Gelişmiş filtre/kayıtlı arama gibi Plus özellikleri için önce
+// talep sinyali toplanıyor (fake door test); Stripe/iyzico entegrasyonu
+// ancak yeterli ilgi birikince ayrı bir turda ele alınacak.
+// ─────────────────────────────────────────────
+
+model PlusWaitlistEntry {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
+  email     String   @db.VarChar(255)
+  note      String?  @db.VarChar(280)
+
+  createdAt DateTime @default(now())
+
+  @@unique([email])
+  @@map("plus_waitlist_entries")
 }

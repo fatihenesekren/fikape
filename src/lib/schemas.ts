@@ -64,6 +64,11 @@ export const saleLeadSchema = z.object({
   phone:     z.string().trim().min(10, "Geçerli bir telefon numarası girin.").max(20),
 });
 
+export const plusWaitlistSchema = z.object({
+  email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi girin."),
+  note:  z.string().trim().max(280).optional().nullable(),
+});
+
 export function formatZodError(error: z.ZodError): string {
   return error.issues[0]?.message ?? "Geçersiz istek.";
 }

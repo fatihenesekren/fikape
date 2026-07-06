@@ -14,7 +14,7 @@ const SALE_TYPE_LABEL: Record<string, string> = {
 };
 
 export default async function AdminLeadsPage() {
-  const [insuranceLeads, saleLeads] = await Promise.all([
+  const [insuranceLeads, saleLeads, plusWaitlist] = await Promise.all([
     prisma.insuranceLead.findMany({
       orderBy: { createdAt: "desc" },
       include: {
@@ -29,6 +29,7 @@ export default async function AdminLeadsPage() {
         product: { select: { name: true, brand: { select: { name: true } }, model: { select: { name: true } } } },
       },
     }).catch(() => []),
+    prisma.plusWaitlistEntry.findMany({ orderBy: { createdAt: "desc" } }).catch(() => []),
   ]);
 
   return (
@@ -97,6 +98,29 @@ export default async function AdminLeadsPage() {
                   </div>
                 </div>
                 <LeadStatusSelect id={lead.id} status={lead.status} kind="sale" />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <h1 className="text-xl font-black text-gray-900 mb-1">✨ Fikape Plus Bekleme Listesi</h1>
+        <p className="text-sm text-gray-500 mb-6">
+          Gerçek ödeme yok — sadece talep sinyali. Liste büyüdükçe Stripe/iyzico entegrasyonu değerlendirilecek.
+        </p>
+
+        {plusWaitlist.length === 0 ? (
+          <p className="text-sm text-gray-400">Henüz kayıt yok.</p>
+        ) : (
+          <div className="space-y-2">
+            {plusWaitlist.map((entry) => (
+              <div key={entry.id} className="bg-white border border-gray-100 rounded-xl p-4">
+                <div className="font-semibold text-gray-900 text-sm">{entry.email}</div>
+                {entry.note && <div className="text-xs text-gray-500 mt-0.5">{entry.note}</div>}
+                <div className="text-[11px] text-gray-300 mt-0.5">
+                  {entry.createdAt.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}
+                </div>
               </div>
             ))}
           </div>

@@ -99,6 +99,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <div className="flex items-center justify-center gap-4">
               <Link href="/nasil-calisir" className="hover:text-gray-700 hover:underline transition-colors">Nasıl Çalışır</Link>
               <span>·</span>
+              <Link href="/karsilastir" className="hover:text-gray-700 hover:underline transition-colors">Karşılaştır</Link>
+              <span>·</span>
+              <Link href="/plus" className="hover:text-gray-700 hover:underline transition-colors">Plus</Link>
+              <span>·</span>
               <Link href="/gelistiriciler" className="hover:text-gray-700 hover:underline transition-colors">API</Link>
               <span>·</span>
               <Link href="/gizlilik" className="hover:text-gray-700 hover:underline transition-colors">Gizlilik Politikası</Link>
