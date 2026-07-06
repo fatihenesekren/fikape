@@ -53,6 +53,8 @@ export function ReviewHelpfulButtons({ reviewId, initialHelpfulCount, initialUse
         className="flex items-center gap-1 font-semibold transition-colors disabled:cursor-default"
         style={{ color: userVote === true ? "#16a34a" : "#9ca3af" }}
         title={isLoggedIn ? "Faydalı buldum" : "Oy vermek için giriş yap"}
+        aria-label={isLoggedIn ? "Yorumu faydalı buldum" : "Oy vermek için giriş yap"}
+        aria-pressed={userVote === true}
       >
         <span>👍</span>
         <span>Faydalı{helpfulCount > 0 ? ` (${helpfulCount})` : ""}</span>
@@ -64,8 +66,10 @@ export function ReviewHelpfulButtons({ reviewId, initialHelpfulCount, initialUse
         className="flex items-center gap-1 font-semibold transition-colors disabled:cursor-default"
         style={{ color: userVote === false ? "#dc2626" : "#9ca3af" }}
         title={isLoggedIn ? "Faydasız buldum" : "Oy vermek için giriş yap"}
+        aria-label={isLoggedIn ? "Yorumu faydasız buldum" : "Oy vermek için giriş yap"}
+        aria-pressed={userVote === false}
       >
-        <span>👎</span>
+        <span aria-hidden="true">👎</span>
       </button>
     </div>
   );
