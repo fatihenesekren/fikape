@@ -1,10 +1,12 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider   = "postgresql"
+  extensions = [pg_trgm]
 }
 
 // ─────────────────────────────────────────────
@@ -57,6 +59,8 @@ model Brand {
   models    Model[]
   products  Product[]
 
+  // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
+  @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "brands_name_trgm_idx")
   @@map("brands")
 }
 
@@ -71,6 +75,8 @@ model Model {
 
   products  Product[]
 
+  // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
+  @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "models_name_trgm_idx")
   @@map("models")
 }
 
@@ -112,6 +118,8 @@ model Product {
   suggestions     VehicleSuggestion[]
   questions       Question[]
 
+  // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
+  @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "products_name_trgm_idx")
   @@map("products")
 }
 
@@ -563,6 +571,9 @@ model VehicleSuggestion {
   reviewedAt   DateTime?
   reviewedBy   Int?
 
+  // Supabase'de elle oluşturulmuş index'ler
+  @@index([status], map: "idx_vs_status")
+  @@index([userId], map: "idx_vs_user")
   @@map("vehicle_suggestions")
 }
 
@@ -621,6 +632,7 @@ model Question {
 
   answers   Answer[]
 
+  @@index([productId])
   @@map("questions")
 }
 
@@ -635,5 +647,6 @@ model Answer {
 
   createdAt  DateTime @default(now())
 
+  @@index([questionId])
   @@map("answers")
 }
