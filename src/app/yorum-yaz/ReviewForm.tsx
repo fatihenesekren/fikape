@@ -616,7 +616,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
               type="text"
               value={searchQuery}
               onChange={(e) => { setSearchQuery(e.target.value); setSelectedProduct(null); setDropdownOpen(true); }}
-              onFocus={() => { if (searchQuery.length >= 2) setDropdownOpen(true); }}
+              onFocus={() => { if (!selectedProduct && searchQuery.length >= 2) setDropdownOpen(true); }}
               placeholder="Araç ara... örn: Clio, Yaris, Megane"
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
             />
@@ -661,7 +661,9 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                   onMouseDown={() => router.push("/oner?from=yorum-yaz")}
                   className="w-full px-4 py-3 text-sm font-semibold text-left text-blue-600 hover:bg-blue-50 transition-colors border-t border-gray-100"
                 >
-                  + &ldquo;{searchQuery}&rdquo; sistemde yok — araç öner
+                  {searchResults.length === 0
+                    ? <>+ &ldquo;{searchQuery}&rdquo; sistemde yok — araç öner</>
+                    : <>Aradığın araç listede yok mu? + Araç öner</>}
                 </button>
               </div>
             )}
