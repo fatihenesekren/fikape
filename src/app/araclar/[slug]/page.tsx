@@ -4,13 +4,13 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
-import { FikapeScore } from "@/components/FikapeScore";
 import { ReviewCard } from "@/components/ReviewCard";
 import { PhotoSlider } from "./PhotoSlider";
 import { TabView } from "./TabView";
 import { OwnershipCard } from "./OwnershipCard";
 import { calcOverall } from "@/lib/fikape";
 import { getVehicleImageUrl } from "@/lib/vehicleImages";
+import { FIKAPE } from "@/lib/fikape";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
@@ -706,24 +706,47 @@ export default async function VehicleDetailPage({
           isLoggedIn={!!userId}
         />
 
-        {/* Puan varken: score kartı + Yorum Yaz butonu */}
-        {scores && (
+        {/* Puan varken: tek yorumda ince özet şeridi, çok yorumda kompakt skor kartı
+            (5 personalı değerlendirme, oy çokluğu kararları — barlı kart kaldırıldı) */}
+        {scores && reviewCount === 1 && (
+          <div className="bg-white border border-gray-100 rounded-2xl px-5 py-4 flex items-center justify-between gap-3">
+            <div className="flex items-baseline gap-2.5 min-w-0">
+              <span className="text-2xl font-black shrink-0">
+                {(scores.scoreOverall ?? 0).toFixed(1)}<span className="text-sm font-normal text-gray-400">/10</span>
+              </span>
+              <span className="text-sm text-gray-500 truncate">1 yorum — ikinci yorum seninki olsun</span>
+            </div>
+            <Link href={`/yorum-yaz?arac=${slug}`} className="text-sm font-semibold text-gray-900 whitespace-nowrap hover:underline">
+              Yorum yaz →
+            </Link>
+          </div>
+        )}
+        {scores && reviewCount !== 1 && (
           <div className="bg-white border border-gray-100 rounded-2xl p-5">
-            <FikapeScore scores={scores} variant="bars" reviewCount={reviewCount} />
-            {/* LLM/arama motorlarının doğrudan alıntılayabileceği tek cümlelik özet */}
-            <p className="mt-3 text-sm text-gray-500">
+            <div className="flex items-baseline justify-between gap-3">
+              <div className="flex items-baseline gap-2.5">
+                <span className="text-3xl font-black">
+                  {(scores.scoreOverall ?? 0).toFixed(1)}<span className="text-sm font-normal text-gray-400">/10</span>
+                </span>
+                <span className="text-sm text-gray-500">{reviewCount} yorum</span>
+              </div>
+              <Link href={`/yorum-yaz?arac=${slug}`} className="text-sm font-semibold text-gray-900 whitespace-nowrap hover:underline">
+                Yorum yaz →
+              </Link>
+            </div>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 mt-3">
+              {FIKAPE.map(({ key, label, color }) => (
+                <span key={key} className="inline-flex items-center gap-1.5 text-sm text-gray-500">
+                  <span className="w-2 h-2 rounded-full inline-block" style={{ background: color }} />
+                  {label} <span className="font-bold text-gray-900">{(scores[key as keyof FikapeScores] as number).toFixed(1)}</span>
+                </span>
+              ))}
+            </div>
+            {/* LLM/arama motorlarının doğrudan alıntılayabileceği tek cümlelik özet — dipnot stili */}
+            <p className="border-t border-gray-100 mt-4 pt-3 text-[11px] text-gray-400">
               {productName}, {reviewCount} kullanıcı yorumuna göre 10 üzerinden {(scores.scoreOverall ?? 0).toFixed(1)} puan aldı
               {" "}— Fiyat {scores.scoreFiyat.toFixed(1)}, Kalite {scores.scoreKalite.toFixed(1)}, Performans {scores.scorePerformans.toFixed(1)}.
             </p>
-            <div className="mt-4">
-              <Link
-                href={`/yorum-yaz?arac=${slug}`}
-                className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
-                style={{ background: "#111" }}
-              >
-                Yorum Yaz →
-              </Link>
-            </div>
           </div>
         )}
 
