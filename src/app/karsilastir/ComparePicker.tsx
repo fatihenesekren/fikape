@@ -7,7 +7,8 @@ interface SearchResult {
   slug: string;
   name: string;
   year: number | null;
-  model: { name: string; brand: { name: string } };
+  modelName: string;
+  brandName: string;
 }
 
 export function ComparePicker({ initial }: { initial: { slug: string; name: string }[] }) {
@@ -43,7 +44,7 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
 
   function add(r: SearchResult) {
     if (selected.some((s) => s.slug === r.slug) || selected.length >= 4) return;
-    const name = `${r.model.brand.name} ${r.model.name}${r.year ? ` ${r.year}` : ""}`;
+    const name = `${r.brandName} ${r.modelName}${r.year ? ` ${r.year}` : ""}`;
     setSelected([...selected, { slug: r.slug, name }]);
     setQuery("");
     setResults([]);
@@ -96,7 +97,7 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
                   className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 disabled:opacity-40"
                   disabled={selected.some((s) => s.slug === r.slug)}
                 >
-                  {r.model.brand.name} {r.model.name}{r.year ? ` ${r.year}` : ""}
+                  {r.brandName} {r.modelName}{r.year ? ` ${r.year}` : ""}
                 </button>
               ))}
             </div>
