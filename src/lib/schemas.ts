@@ -57,6 +57,13 @@ export const insuranceLeadSchema = z.object({
   phone:     z.string().trim().min(10, "Geçerli bir telefon numarası girin.").max(20),
 });
 
+export const saleLeadSchema = z.object({
+  productId: z.union([z.number(), z.string()]),
+  type:      z.enum(["EXPERTISE", "QUICK_OFFER"], { error: "Geçersiz talep türü." }),
+  fullName:  z.string().trim().min(2, "Ad soyad zorunludur.").max(100),
+  phone:     z.string().trim().min(10, "Geçerli bir telefon numarası girin.").max(20),
+});
+
 export function formatZodError(error: z.ZodError): string {
   return error.issues[0]?.message ?? "Geçersiz istek.";
 }

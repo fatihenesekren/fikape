@@ -118,6 +118,7 @@ model Product {
   suggestions     VehicleSuggestion[]
   questions       Question[]
   insuranceLeads  InsuranceLead[]
+  saleLeads       SaleLead[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "products_name_trgm_idx")
@@ -174,6 +175,7 @@ model User {
   questions           Question[]
   answers             Answer[]
   insuranceLeads      InsuranceLead[]
+  saleLeads           SaleLead[]
 
   @@map("users")
 }
@@ -682,4 +684,36 @@ enum LeadStatus {
   NEW
   CONTACTED
   CONVERTED
+}
+
+// ─────────────────────────────────────────────
+// SATIŞ ANI LEAD — "Sattım" formunu AÇTIĞI an (henüz kaydetmeden,
+// satış niyeti anı) gösterilen opt-in ekspertiz/hızlı teklif talebi.
+// Gerçek partner/API entegrasyonu YOK — sadece pasif kayıt.
+// Ekspertiz ve hızlı teklif ayrı dikeyler (farklı partner ekosistemleri),
+// bu yüzden tür bazlı ayrı kayıt tutuluyor.
+// ─────────────────────────────────────────────
+
+model SaleLead {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+
+  type      SaleLeadType
+  fullName  String   @db.VarChar(100)
+  phone     String   @db.VarChar(20)
+
+  status    LeadStatus @default(NEW)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId, type])
+  @@map("sale_leads")
+}
+
+enum SaleLeadType {
+  EXPERTISE
+  QUICK_OFFER
 }

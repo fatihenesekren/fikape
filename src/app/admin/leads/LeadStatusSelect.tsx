@@ -8,7 +8,7 @@ const STATUS_LABEL: Record<string, string> = {
   CONVERTED: "Dönüştü",
 };
 
-export function LeadStatusSelect({ id, status }: { id: number; status: string }) {
+export function LeadStatusSelect({ id, status, kind }: { id: number; status: string; kind: "insurance" | "sale" }) {
   const [value, setValue] = useState(status);
   const [saving, setSaving] = useState(false);
 
@@ -19,7 +19,7 @@ export function LeadStatusSelect({ id, status }: { id: number; status: string })
       await fetch(`/api/admin/leads/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: next }),
+        body: JSON.stringify({ status: next, kind }),
       });
     } finally {
       setSaving(false);

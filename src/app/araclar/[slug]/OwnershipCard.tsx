@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { SOLD_REASONS, SOLD_REASON_LABEL, SOLD_TIME_SLOTS, SOLD_TIME_MONTHS_AGO } from "@/lib/soldReasons";
+import { SaleLeadCard } from "./SaleLeadCard";
 
 interface Props {
   productId: number;
@@ -12,6 +13,8 @@ interface Props {
   initialSoldReason: string | null;
   garageCount: number;
   isLoggedIn: boolean;
+  defaultFullName: string;
+  submittedSaleLeadTypes: ("EXPERTISE" | "QUICK_OFFER")[];
 }
 
 export function OwnershipCard({
@@ -21,6 +24,8 @@ export function OwnershipCard({
   initialSoldReason,
   garageCount,
   isLoggedIn,
+  defaultFullName,
+  submittedSaleLeadTypes,
 }: Props) {
   const [inGarage, setInGarage]     = useState(initialInGarage);
   const [isSold, setIsSold]         = useState(initialIsSold);
@@ -190,6 +195,11 @@ export function OwnershipCard({
       {/* Satış formu */}
       {showSellForm && inGarage && (
         <div className="border-t border-gray-100 px-5 py-4 space-y-4">
+          <SaleLeadCard
+            productId={productId}
+            defaultFullName={defaultFullName}
+            submittedTypes={submittedSaleLeadTypes}
+          />
           <div>
             <p className="text-sm font-semibold text-gray-800 mb-2">Ne zaman sattınız?</p>
             <div className="flex flex-wrap gap-2">

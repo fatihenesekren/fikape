@@ -9,15 +9,19 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   }
 
   const { id } = await params;
-  const { status } = await req.json();
+  const { status, kind } = await req.json();
   if (!["NEW", "CONTACTED", "CONVERTED"].includes(status)) {
     return NextResponse.json({ error: "Geçersiz durum." }, { status: 400 });
   }
+  if (!["insurance", "sale"].includes(kind)) {
+    return NextResponse.json({ error: "Geçersiz tür." }, { status: 400 });
+  }
 
-  await prisma.insuranceLead.update({
-    where: { id: Number(id) },
-    data: { status },
-  });
+  if (kind === "insurance") {
+    await prisma.insuranceLead.update({ where: { id: Number(id) }, data: { status } });
+  } else {
+    await prisma.saleLead.update({ where: { id: Number(id) }, data: { status } });
+  }
 
   return NextResponse.json({ ok: true });
 }

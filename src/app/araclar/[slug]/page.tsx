@@ -135,7 +135,7 @@ export default async function VehicleDetailPage({
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
 
   const userId = session?.user?.id ? Number(session.user.id) : null;
-  const [userGarageEntry, garageCount] = await Promise.all([
+  const [userGarageEntry, garageCount, currentUser, existingSaleLeads] = await Promise.all([
     userId
       ? prisma.userProduct.findUnique({
           where: { userId_productId: { userId, productId: product.id } },
@@ -143,9 +143,19 @@ export default async function VehicleDetailPage({
         })
       : null,
     prisma.userProduct.count({ where: { productId: product.id, ownershipStatus: "CURRENT" } }),
+    userId
+      ? prisma.user.findUnique({ where: { id: userId }, select: { displayName: true } })
+      : null,
+    userId
+      ? prisma.saleLead.findMany({
+          where: { userId, productId: product.id },
+          select: { type: true },
+        }).catch(() => [])
+      : [],
   ]);
   const inGarage = userGarageEntry?.ownershipStatus === "CURRENT";
   const isSold   = userGarageEntry?.ownershipStatus === "PAST";
+  const submittedSaleLeadTypes = existingSaleLeads.map((l) => l.type);
 
   const agg = await prisma.review.aggregate({
     where: { productId: product.id, status: "PUBLISHED" },
@@ -704,6 +714,8 @@ export default async function VehicleDetailPage({
           initialSoldReason={userGarageEntry?.soldReason ?? null}
           garageCount={garageCount}
           isLoggedIn={!!userId}
+          defaultFullName={currentUser?.displayName ?? ""}
+          submittedSaleLeadTypes={submittedSaleLeadTypes}
         />
 
         {/* Puan varken: tek yorumda ince özet şeridi, çok yorumda kompakt skor kartı
