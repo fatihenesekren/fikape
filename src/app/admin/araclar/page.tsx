@@ -6,6 +6,9 @@ export const metadata = { title: "Araç Görselleri — Admin" };
 export default async function AdminAraclarPage() {
 
   const products = await prisma.product.findMany({
+    // REJECTED öneri ürünleri "görselsiz" gürültüsü yaratmasın; PENDING'ler de
+    // onaylanana kadar görsel yönetimine girmesin
+    where: { status: "ACTIVE" },
     include: { brand: true, model: true, category: true },
     orderBy: [{ category: { name: "asc" } }, { brand: { name: "asc" } }, { year: "desc" }],
   });

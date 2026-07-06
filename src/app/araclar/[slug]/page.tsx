@@ -112,6 +112,9 @@ export default async function VehicleDetailPage({
   ]);
 
   if (!product) notFound();
+  // Reddedilen öneri ürünleri URL'i bilenlere de gösterilmez (PENDING açık
+  // kalıyor: öneren kullanıcı ve admin önizlemesi görebilsin)
+  if (product.status === "REJECTED") notFound();
 
   const attrs = product.attributes as Record<string, unknown>;
   const categorySlug = product.category?.slug ?? "";

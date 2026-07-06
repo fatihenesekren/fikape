@@ -86,6 +86,35 @@ export async function POST(req: Request) {
     return NextResponse.json({ slug: pendingProduct.slug }, { status: 200 });
   }
 
+  // Aynı REJECTED ürün var mı? — geri dönüştür: timestamp'li kopya slug üretmek
+  // yerine mevcut kaydı PENDING'e çevirip yeni öneriye bağla (temiz slug korunur,
+  // reddedilen çöp kayıt birikmez; eski REJECTED yorumlar olduğu gibi kalır)
+  const rejectedProduct = await prisma.product.findFirst({
+    where: { slug: baseSlug, status: "REJECTED" },
+    select: { id: true, slug: true },
+  });
+  if (rejectedProduct) {
+    await prisma.product.update({
+      where: { id: rejectedProduct.id },
+      data: { status: "PENDING", isActive: false },
+    });
+    await prisma.vehicleSuggestion.create({
+      data: {
+        userId,
+        brandName: brandName.trim(),
+        modelName: modelName.trim(),
+        year:      year ? Number(year) : null,
+        categorySlug,
+        fuelType:  fuelType || null,
+        trimName:  trimName?.trim() || null,
+        notes:     notes?.trim() || null,
+        photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 3) : [],
+        productId: rejectedProduct.id,
+      },
+    });
+    return NextResponse.json({ slug: rejectedProduct.slug }, { status: 200 });
+  }
+
   // Kategori bul
   const category = await prisma.category.findUnique({ where: { slug: categorySlug } });
   if (!category) {
