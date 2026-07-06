@@ -19,6 +19,10 @@ import { QnaSection } from "./QnaSection";
 import { JsonLd } from "@/components/JsonLd";
 import { BASE_URL } from "@/lib/baseUrl";
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
+import {
+  MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
+  BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, toLabelMap,
+} from "@/lib/vehicleTypes";
 
 export async function generateMetadata({
   params,
@@ -51,23 +55,18 @@ export async function generateMetadata({
 }
 
 const BODY_LABELS: Record<string, string> = {
-  sedan: "Sedan", suv: "SUV", hatchback: "Hatchback",
-  mpv: "MPV", coupe: "Coupe", cabrio: "Cabriolet",
-  pickup: "Pickup", van: "Van",
+  ...toLabelMap(OTOMOBIL_BODY_TYPES),
+  ...toLabelMap(KAMYONET_BODY_TYPES),
 };
 
 const BODY_ICONS: Record<string, string> = {
-  suv: "🚙", sedan: "🚗", hatchback: "🚗", mpv: "🚐", coupe: "🏎", cabrio: "🏎",
-  pickup: "🛻", van: "🚐",
+  suv: "🚙", sedan: "🚗", hatchback: "🚗", station: "🚗", mpv: "🚐", coupe: "🏎", cabrio: "🏎",
+  pickup: "🛻", van: "🚐", panelvan: "🚐", minivan: "🚐",
 };
 
-const MOTO_TYPE_LABELS: Record<string, string> = {
-  naked: "Naked", sport: "Spor", adventure: "Adventure", touring: "Touring", elektrikli: "Elektrikli",
-};
+const MOTO_TYPE_LABELS = toLabelMap(MOTO_TYPES);
 
-const KARAVAN_TYPE_LABELS: Record<string, string> = {
-  cekme: "Çekme Karavan", motorlu: "Motorlu Karavan",
-};
+const KARAVAN_TYPE_LABELS = toLabelMap(KARAVAN_TYPES);
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -75,17 +74,11 @@ const CATEGORY_FALLBACK_ICONS: Record<string, string> = {
   otomobil: "🚗", motosiklet: "🏍️", "e-scooter": "🛴", "e-bisiklet": "🚴", karavan: "🏕️", kamyonet: "🛻",
 };
 
-const BIKE_TYPE_LABELS: Record<string, string> = {
-  sehir: "Şehir", mtb: "MTB", yol: "Yol", kargo: "Kargo", katlanabilir: "Katlanabilir",
-};
+const BIKE_TYPE_LABELS = toLabelMap(BIKE_TYPES);
 
-const MOTOR_TYPE_LABELS: Record<string, string> = {
-  "mid-drive": "Mid-Drive", "hub-drive": "Hub-Drive",
-};
+const MOTOR_TYPE_LABELS = toLabelMap(EBIKE_MOTOR_TYPES);
 
-const PEDELEC_LABELS: Record<string, string> = {
-  "standard-25": "25 km/h Standart", "speed-45": "45 km/h Speed",
-};
+const PEDELEC_LABELS = toLabelMap(PEDELEC_CLASSES);
 
 export default async function VehicleDetailPage({
   params,

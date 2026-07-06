@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { calcTrustScore } from "@/lib/trustScore";
 import { notifyGarageBrandFollowers } from "@/lib/notifications";
+import { normalizeAttributeValues } from "@/lib/vehicleTypes";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -77,7 +78,7 @@ export async function POST(
       ...(typeof existingProduct?.attributes === "object" && existingProduct.attributes !== null
         ? existingProduct.attributes as Record<string, unknown>
         : {}),
-      ...(incomingAttrs ?? {}),
+      ...normalizeAttributeValues(incomingAttrs ?? {}),
     };
 
     // Wikipedia: imageUrl yoksa otomatik çek (kullanıcı fotoğraflarından bağımsız)
@@ -152,9 +153,9 @@ export async function POST(
   });
 
   const imageUrl = await fetchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
-  const attributes: Record<string, string> = {};
+  const attributes: Record<string, unknown> = {};
   if (suggestion.fuelType) attributes.fuel_type = suggestion.fuelType;
-  Object.assign(attributes, incomingAttrs ?? {});
+  Object.assign(attributes, normalizeAttributeValues(incomingAttrs ?? {}));
 
   const product = await prisma.product.create({
     data: {
@@ -162,7 +163,7 @@ export async function POST(
       name: `${suggestion.brandName} ${suggestion.modelName}${suggestion.trimName ? ` ${suggestion.trimName}` : ""}`,
       year: suggestion.year ?? null,
       trimName: suggestion.trimName ?? null,
-      attributes,
+      attributes: attributes as Parameters<typeof prisma.product.create>[0]["data"]["attributes"],
       categoryId: category.id,
       brandId: brand.id,
       modelId: model.id,

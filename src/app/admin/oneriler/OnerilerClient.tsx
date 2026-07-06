@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import {
+  MOTO_TYPES, OTOMOBIL_BODY_TYPES, OTOMOBIL_SEGMENTS, KAMYONET_BODY_TYPES,
+  KARAVAN_TYPES, BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES,
+} from "@/lib/vehicleTypes";
 
 type Suggestion = {
   id: number;
@@ -41,17 +45,8 @@ type FieldDef =
 
 const SPEC_FIELDS: Record<string, FieldDef[]> = {
   otomobil: [
-    { key: "body_type",    label: "Kasa",      type: "select", options: [
-      { value: "sedan", label: "Sedan" }, { value: "hatchback", label: "Hatchback" },
-      { value: "suv", label: "SUV" }, { value: "mpv", label: "MPV" },
-      { value: "coupe", label: "Coupe" }, { value: "cabrio", label: "Cabriolet" },
-      { value: "pickup", label: "Pickup" }, { value: "van", label: "Van" },
-    ]},
-    { key: "segment",      label: "Segment",   type: "select", options: [
-      { value: "A", label: "A Segment" }, { value: "B", label: "B Segment" },
-      { value: "C", label: "C Segment" }, { value: "D", label: "D Segment" },
-      { value: "E", label: "E Segment" },
-    ]},
+    { key: "body_type",    label: "Kasa",      type: "select", options: OTOMOBIL_BODY_TYPES },
+    { key: "segment",      label: "Segment",   type: "select", options: OTOMOBIL_SEGMENTS },
     { key: "drivetrain",   label: "Çekiş",     type: "select", options: [
       { value: "FWD", label: "Önden Çekiş (FWD)" }, { value: "RWD", label: "Arkadan İtiş (RWD)" },
       { value: "AWD", label: "Dört Çeker (AWD)" }, { value: "4WD", label: "4WD" },
@@ -72,11 +67,7 @@ const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "weight_kg",    label: "Ağırlık",   type: "number", unit: "kg" },
   ],
   motosiklet: [
-    { key: "moto_type",    label: "Tip",       type: "select", options: [
-      { value: "naked", label: "Naked" }, { value: "sport", label: "Spor" },
-      { value: "adventure", label: "Adventure" }, { value: "touring", label: "Touring" },
-      { value: "elektrikli", label: "Elektrikli" },
-    ]},
+    { key: "moto_type",    label: "Tip",       type: "select", options: MOTO_TYPES },
     { key: "engine_cc",    label: "Motor",      type: "number", unit: "cc" },
     { key: "power_hp",     label: "Güç",        type: "number", unit: "HP" },
     { key: "torque_nm",    label: "Tork",       type: "number", unit: "Nm" },
@@ -99,17 +90,9 @@ const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "tire_inch",     label: "Lastik",       type: "number", unit: "\"" },
   ],
   "e-bisiklet": [
-    { key: "bike_type",    label: "Bisiklet Tipi", type: "select", options: [
-      { value: "sehir", label: "Şehir" }, { value: "mtb", label: "MTB" },
-      { value: "yol", label: "Yol" }, { value: "kargo", label: "Kargo" },
-      { value: "katlanabilir", label: "Katlanabilir" },
-    ]},
-    { key: "motor_type",   label: "Motor Tipi",    type: "select", options: [
-      { value: "mid-drive", label: "Mid-Drive" }, { value: "hub-drive", label: "Hub-Drive" },
-    ]},
-    { key: "pedelec_class", label: "Pedelec",      type: "select", options: [
-      { value: "standard-25", label: "25 km/h Standart" }, { value: "speed-45", label: "45 km/h Speed" },
-    ]},
+    { key: "bike_type",    label: "Bisiklet Tipi", type: "select", options: BIKE_TYPES },
+    { key: "motor_type",   label: "Motor Tipi",    type: "select", options: EBIKE_MOTOR_TYPES },
+    { key: "pedelec_class", label: "Pedelec",      type: "select", options: PEDELEC_CLASSES },
     { key: "motor_watt",   label: "Motor Gücü",    type: "number", unit: "W" },
     { key: "battery_wh",   label: "Batarya",       type: "number", unit: "Wh" },
     { key: "range_km",     label: "Menzil",        type: "number", unit: "km" },
@@ -117,9 +100,7 @@ const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "weight_kg",    label: "Ağırlık",       type: "number", unit: "kg" },
   ],
   karavan: [
-    { key: "karavan_type", label: "Tip",            type: "select", options: [
-      { value: "cekme", label: "Çekme Karavan" }, { value: "motorlu", label: "Motorlu Karavan" },
-    ]},
+    { key: "karavan_type", label: "Tip",            type: "select", options: KARAVAN_TYPES },
     { key: "berth",          label: "Yatak Kap.",   type: "number", unit: "kişi" },
     { key: "length_cm",      label: "Uzunluk",      type: "number", unit: "cm" },
     { key: "width_cm",       label: "Genişlik",     type: "number", unit: "cm" },
@@ -130,10 +111,7 @@ const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "has_ac",         label: "Klima",        type: "boolean" },
   ],
   kamyonet: [
-    { key: "body_type",     label: "Kasa",          type: "select", options: [
-      { value: "van", label: "Van" }, { value: "pickup", label: "Pickup" },
-      { value: "panel", label: "Panel" },
-    ]},
+    { key: "body_type",     label: "Kasa",          type: "select", options: KAMYONET_BODY_TYPES },
     { key: "engine_cc",     label: "Motor",         type: "number", unit: "cc" },
     { key: "power_hp",      label: "Güç",           type: "number", unit: "HP" },
     { key: "torque_nm",     label: "Tork",          type: "number", unit: "Nm" },

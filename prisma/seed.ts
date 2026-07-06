@@ -1,6 +1,10 @@
 import "dotenv/config";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import {
+  MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
+  BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, toValues,
+} from "../src/lib/vehicleTypes";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 const prisma = new PrismaClient({ adapter } as any);
@@ -27,20 +31,24 @@ async function main() {
     },
   });
 
+  // Tip enum'ları tek kaynaktan (src/lib/vehicleTypes.ts) gelir; upsert'in
+  // update tarafı da attributeSchema'yı yazar ki prod bir daha geride kalmasın.
+  const otomobilSchema = {
+    fuel_type: { type: "enum", values: ["GASOLINE", "DIESEL", "LPG", "HYBRID", "EV"], label: "Yakıt Tipi" },
+    segment:   { type: "enum", values: ["A", "B", "C", "D", "E", "F"], label: "Segment" },
+    body_type: { type: "enum", values: toValues(OTOMOBIL_BODY_TYPES), label: "Kasa Tipi" },
+    engine_cc: { type: "number", label: "Motor Hacmi (cc)", nullable: true },
+    power_hp:  { type: "number", label: "Güç (HP)", nullable: true },
+    ev_range_km: { type: "number", label: "Menzil (km) - Yalnızca EV", nullable: true },
+  };
+
   const catOtomobil = await prisma.category.upsert({
     where: { slug: "otomobil" },
-    update: {},
+    update: { attributeSchema: otomobilSchema },
     create: {
       slug: "otomobil", name: "Otomobil",
       parentId: catAraclar.id, sortOrder: 1,
-      attributeSchema: {
-        fuel_type: { type: "enum", values: ["GASOLINE", "DIESEL", "LPG", "HYBRID", "EV"], label: "Yakıt Tipi" },
-        segment:   { type: "enum", values: ["A", "B", "C", "D", "E", "F"], label: "Segment" },
-        body_type: { type: "enum", values: ["sedan", "hatchback", "suv", "mpv", "coupe", "cabrio"], label: "Kasa Tipi" },
-        engine_cc: { type: "number", label: "Motor Hacmi (cc)", nullable: true },
-        power_hp:  { type: "number", label: "Güç (HP)", nullable: true },
-        ev_range_km: { type: "number", label: "Menzil (km) - Yalnızca EV", nullable: true },
-      },
+      attributeSchema: otomobilSchema,
       reviewFormSchema: [
         { key: "real_fuel_per_100km", label: "Gerçek yakıt tüketimi (L/100km)", type: "number", forFuelTypes: ["GASOLINE", "DIESEL", "LPG"] },
         { key: "has_lpg", label: "LPG dönüşümü yaptırdınız mı?", type: "boolean", forFuelTypes: ["GASOLINE"] },
@@ -53,19 +61,21 @@ async function main() {
     },
   });
 
+  const motosikletSchema = {
+    engine_cc: { type: "number", label: "Motor Hacmi (cc)" },
+    power_hp:  { type: "number", label: "Güç (HP)" },
+    moto_type: { type: "enum", values: toValues(MOTO_TYPES), label: "Tip" },
+    fuel_type: { type: "enum", values: ["GASOLINE", "EV"], label: "Yakıt Tipi" },
+    ev_range_km: { type: "number", label: "Menzil (km) - Yalnızca EV", nullable: true },
+  };
+
   const catMotosiklet = await prisma.category.upsert({
     where: { slug: "motosiklet" },
-    update: {},
+    update: { attributeSchema: motosikletSchema },
     create: {
       slug: "motosiklet", name: "Motosiklet",
       parentId: catAraclar.id, sortOrder: 2,
-      attributeSchema: {
-        engine_cc: { type: "number", label: "Motor Hacmi (cc)" },
-        power_hp:  { type: "number", label: "Güç (HP)" },
-        moto_type: { type: "enum", values: ["naked", "sport", "touring", "enduro", "adventure", "custom", "elektrikli"], label: "Tip" },
-        fuel_type: { type: "enum", values: ["GASOLINE", "EV"], label: "Yakıt Tipi" },
-        ev_range_km: { type: "number", label: "Menzil (km) - Yalnızca EV", nullable: true },
-      },
+      attributeSchema: motosikletSchema,
       reviewFormSchema: [
         { key: "real_fuel_per_100km", label: "Gerçek yakıt tüketimi (L/100km)", type: "number" },
         { key: "score_handling", label: "Sürüş kabiliyeti (1-5)", type: "rating" },
@@ -76,19 +86,21 @@ async function main() {
     },
   });
 
+  // scooter_type legacy alanı kaldırıldı — e-bisiklet artık ayrı kategori
+  const escooterSchema = {
+    motor_watt:   { type: "number", label: "Motor Gücü (W)" },
+    range_km:     { type: "number", label: "İlan Edilen Menzil (km)" },
+    max_speed_kmh: { type: "number", label: "Maks. Hız (km/s)" },
+    battery_wh:   { type: "number", label: "Batarya Kapasitesi (Wh)" },
+  };
+
   const catEscooter = await prisma.category.upsert({
     where: { slug: "e-scooter" },
-    update: { name: "E-Scooter" },
+    update: { name: "E-Scooter", attributeSchema: escooterSchema },
     create: {
       slug: "e-scooter", name: "E-Scooter",
       parentId: catAraclar.id, sortOrder: 3,
-      attributeSchema: {
-        scooter_type: { type: "enum", values: ["e-scooter", "e-bisiklet"], label: "Tip" },
-        motor_watt:   { type: "number", label: "Motor Gücü (W)" },
-        range_km:     { type: "number", label: "İlan Edilen Menzil (km)" },
-        max_speed_kmh: { type: "number", label: "Maks. Hız (km/s)" },
-        battery_wh:   { type: "number", label: "Batarya Kapasitesi (Wh)" },
-      },
+      attributeSchema: escooterSchema,
       reviewFormSchema: [
         { key: "real_range_km", label: "Gerçek menzil (km)", type: "number" },
         { key: "charge_time_hours", label: "Şarj süresi (saat)", type: "number" },
@@ -100,18 +112,20 @@ async function main() {
     },
   });
 
+  const karavanSchema = {
+    karavan_type: { type: "enum", values: toValues(KARAVAN_TYPES), label: "Tip" },
+    berth:       { type: "number", label: "Yatak Kapasitesi" },
+    length_cm:   { type: "number", label: "Uzunluk (cm)" },
+    tow_weight_kg: { type: "number", label: "Ağırlık (kg)", nullable: true },
+  };
+
   const catKaravan = await prisma.category.upsert({
     where: { slug: "karavan" },
-    update: {},
+    update: { attributeSchema: karavanSchema },
     create: {
       slug: "karavan", name: "Karavan",
       parentId: catAraclar.id, sortOrder: 4,
-      attributeSchema: {
-        karavan_type: { type: "enum", values: ["cekme", "motorlu", "kamper-van"], label: "Tip" },
-        berth:       { type: "number", label: "Yatak Kapasitesi" },
-        length_cm:   { type: "number", label: "Uzunluk (cm)" },
-        tow_weight_kg: { type: "number", label: "Ağırlık (kg)", nullable: true },
-      },
+      attributeSchema: karavanSchema,
       reviewFormSchema: [
         { key: "score_insulation", label: "Yalıtım kalitesi (1-5)", type: "rating" },
         { key: "score_storage", label: "Depolama alanı (1-5)", type: "rating" },
@@ -122,20 +136,22 @@ async function main() {
     },
   });
 
+  const kamyonetSchema = {
+    fuel_type:  { type: "enum", values: ["GASOLINE", "DIESEL", "EV"], label: "Yakıt Tipi" },
+    body_type:  { type: "enum", values: toValues(KAMYONET_BODY_TYPES), label: "Kasa Tipi" },
+    payload_kg: { type: "number", label: "Yük Kapasitesi (kg)" },
+    engine_cc:  { type: "number", label: "Motor Hacmi (cc)" },
+    power_hp:   { type: "number", label: "Güç (HP)" },
+    four_wd:    { type: "boolean", label: "4x4 / AWD" },
+  };
+
   const catKamyonet = await prisma.category.upsert({
     where: { slug: "kamyonet" },
-    update: {},
+    update: { attributeSchema: kamyonetSchema },
     create: {
       slug: "kamyonet", name: "Kamyonet / Pickup",
       parentId: catAraclar.id, sortOrder: 5,
-      attributeSchema: {
-        fuel_type:  { type: "enum", values: ["GASOLINE", "DIESEL", "EV"], label: "Yakıt Tipi" },
-        body_type:  { type: "enum", values: ["pickup", "van", "minivan"], label: "Kasa Tipi" },
-        payload_kg: { type: "number", label: "Yük Kapasitesi (kg)" },
-        engine_cc:  { type: "number", label: "Motor Hacmi (cc)" },
-        power_hp:   { type: "number", label: "Güç (HP)" },
-        four_wd:    { type: "boolean", label: "4x4 / AWD" },
-      },
+      attributeSchema: kamyonetSchema,
       reviewFormSchema: [
         { key: "real_fuel_per_100km", label: "Gerçek yakıt tüketimi (L/100km)", type: "number" },
         { key: "score_payload", label: "Yük taşıma kapasitesi (1-5)", type: "rating" },
@@ -146,22 +162,24 @@ async function main() {
     },
   });
 
+  const ebisikletSchema = {
+    bike_type:     { type: "enum", values: toValues(BIKE_TYPES), label: "Bisiklet Tipi" },
+    motor_type:    { type: "enum", values: toValues(EBIKE_MOTOR_TYPES), label: "Motor Tipi" },
+    pedelec_class: { type: "enum", values: toValues(PEDELEC_CLASSES), label: "Pedelec Sınıfı" },
+    motor_watt:    { type: "number", label: "Motor Gücü (W)" },
+    battery_wh:    { type: "number", label: "Batarya Kapasitesi (Wh)" },
+    range_km:      { type: "number", label: "İlan Edilen Menzil (km)" },
+    max_speed_kmh: { type: "number", label: "Maks. Hız (km/h)" },
+    weight_kg:     { type: "number", label: "Ağırlık (kg)" },
+  };
+
   const catEbisiklet = await prisma.category.upsert({
     where: { slug: "e-bisiklet" },
-    update: {},
+    update: { attributeSchema: ebisikletSchema },
     create: {
       slug: "e-bisiklet", name: "E-Bisiklet",
       parentId: catAraclar.id, sortOrder: 6,
-      attributeSchema: {
-        bike_type:     { type: "enum", values: ["sehir", "mtb", "yol", "kargo", "katlanabilir"], label: "Bisiklet Tipi" },
-        motor_type:    { type: "enum", values: ["mid-drive", "hub-drive"], label: "Motor Tipi" },
-        pedelec_class: { type: "enum", values: ["standard-25", "speed-45"], label: "Pedelec Sınıfı" },
-        motor_watt:    { type: "number", label: "Motor Gücü (W)" },
-        battery_wh:    { type: "number", label: "Batarya Kapasitesi (Wh)" },
-        range_km:      { type: "number", label: "İlan Edilen Menzil (km)" },
-        max_speed_kmh: { type: "number", label: "Maks. Hız (km/h)" },
-        weight_kg:     { type: "number", label: "Ağırlık (kg)" },
-      },
+      attributeSchema: ebisikletSchema,
       reviewFormSchema: [
         { key: "real_range_km",       label: "Gerçek menzil (km)",                  type: "number" },
         { key: "motor_type_exp",      label: "Motor tipi",                           type: "enum", options: ["mid-drive", "hub-drive", "diger"] },
