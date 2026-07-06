@@ -694,7 +694,7 @@ export default async function VehicleDetailPage({
       )}
 
       {/* ── Ana içerik ── */}
-      <div className="max-w-5xl mx-auto px-4 py-8 space-y-4">
+      <div className="w-full max-w-5xl mx-auto px-4 py-8 space-y-4">
 
         {/* Sahiplik kartı */}
         <OwnershipCard
