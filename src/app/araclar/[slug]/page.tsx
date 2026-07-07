@@ -531,7 +531,7 @@ export default async function VehicleDetailPage({
   } : null;
 
   const qnaContent = (
-    <QnaSection productSlug={slug} questions={questions} isLoggedIn={!!userId} />
+    <QnaSection productSlug={slug} questions={questions} isLoggedIn={!!userId} categorySlug={categorySlug} />
   );
 
   const left = specs.filter((_, i) => i % 2 === 0);

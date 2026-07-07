@@ -19,9 +19,57 @@ interface QuestionData {
 }
 
 interface Props {
-  productSlug: string;
-  questions: QuestionData[];
-  isLoggedIn: boolean;
+  productSlug:  string;
+  questions:    QuestionData[];
+  isLoggedIn:   boolean;
+  categorySlug: string;
+}
+
+// Kategoriye uygun örnek sorular — her yüklemede havuzdan rastgele biri gösterilir
+const QNA_EXAMPLES: Record<string, string[]> = {
+  otomobil: [
+    "Kışın klima performansı nasıl?",
+    "Yakıt tüketimi ilan edilenle uyumlu mu?",
+    "LPG'ye dönüşüm yapılabilir mi?",
+    "Bakım maliyeti diğer araçlara göre nasıl?",
+  ],
+  motosiklet: [
+    "Kışın günlük kullanıma uygun mu?",
+    "Gerçek yakıt tüketimi ne kadar?",
+    "Uzun yolda konfor nasıl?",
+    "Bakım periyodu ne sıklıkta?",
+  ],
+  "e-scooter": [
+    "Şarj süresi gerçekte ne kadar?",
+    "Yağmurda kullanılabiliyor mu?",
+    "İlan edilen menzile ne kadar yaklaşıyor?",
+    "Azami hızı yeterli mi?",
+  ],
+  "e-bisiklet": [
+    "Pedal desteği yokuşta yeterli mi?",
+    "Gerçek menzil kaç km?",
+    "Şarj süresi ne kadar?",
+    "Ağırlığı taşımayı zorlaştırıyor mu?",
+  ],
+  karavan: [
+    "Kışın izolasyonu yeterli mi?",
+    "Elektrik/su bağlantısı pratik mi?",
+    "Çekişi zorlanmadan yapılabiliyor mu?",
+    "İç hacim günlük kullanım için yeterli mi?",
+  ],
+  kamyonet: [
+    "Yüklüyken yakıt tüketimi nasıl değişiyor?",
+    "İlan edilen yük kapasitesi gerçekçi mi?",
+    "Off-road yeteneği nasıl?",
+    "Bakım maliyeti işletme için uygun mu?",
+  ],
+};
+
+const DEFAULT_EXAMPLES = QNA_EXAMPLES.otomobil;
+
+function pickExample(categorySlug: string): string {
+  const pool = QNA_EXAMPLES[categorySlug] ?? DEFAULT_EXAMPLES;
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
 function fmtDate(iso: string) {
@@ -72,12 +120,13 @@ function AnswerForm({ questionId, onDone }: { questionId: number; onDone: () => 
   );
 }
 
-export function QnaSection({ productSlug, questions, isLoggedIn }: Props) {
+export function QnaSection({ productSlug, questions, isLoggedIn, categorySlug }: Props) {
   const router = useRouter();
   const [askText, setAskText] = useState("");
   const [askLoading, setAskLoading] = useState(false);
   const [askError, setAskError] = useState("");
   const [replyOpenId, setReplyOpenId] = useState<number | null>(null);
+  const [example] = useState(() => pickExample(categorySlug));
 
   async function submitQuestion() {
     setAskError("");
@@ -105,7 +154,7 @@ export function QnaSection({ productSlug, questions, isLoggedIn }: Props) {
               value={askText}
               onChange={(e) => setAskText(e.target.value.slice(0, 300))}
               rows={2}
-              placeholder="Örn: Kışın menzil ne kadar düşüyor?"
+              placeholder={`Örn: ${example}`}
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 resize-none"
             />
             {askError && <p className="text-xs text-red-500">{askError}</p>}
