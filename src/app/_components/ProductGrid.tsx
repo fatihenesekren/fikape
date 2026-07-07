@@ -106,6 +106,11 @@ export async function ProductGrid({
     });
   }
 
+  // Quiz sonuç barındaki güven metni için: bu kategorideki gerçek yorum sayısı
+  const categoryReviewCount = quizAnswers
+    ? products.reduce((sum, p) => sum + (scoreMap.get(p.id)?.count ?? 0), 0)
+    : undefined;
+
   // Wikipedia fallback — only for products missing imageUrl
   const slugsNeedingWiki = products.filter((p) => !p.imageUrl).map((p) => p.slug);
   const wikiUrls = slugsNeedingWiki.length > 0
@@ -138,6 +143,7 @@ export async function ProductGrid({
         <NiyetKarti
           quizAnswers={quizAnswers}
           preCatSlug={catFilter ?? null}
+          categoryReviewCount={categoryReviewCount}
         />
 
         {products.map((product) => {
