@@ -142,31 +142,33 @@ export default async function Home({
       {/* ── Trend şeridi (filtre yokken) ── */}
       {!catFilter && trendProducts.length > 0 && (
         <section className="w-full max-w-7xl mx-auto px-4 pt-8 pb-2">
-          <h2 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <span className="text-base">🔥</span> Trend
+          <h2 className="text-sm font-bold text-gray-900 mb-3">
+            Bu hafta ilgi gören araçlar
           </h2>
-          <div className="flex gap-3 overflow-x-auto scrollbar-none pb-2">
-            {trendProducts.map((p) => {
-              const icon = CATEGORY_ICONS[p.category?.slug ?? "otomobil"] ?? "🚗";
-              return (
-                <Link
-                  key={p.id}
-                  href={`/araclar/${p.slug}`}
-                  className="shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-100 bg-white hover:border-gray-300 transition-colors"
-                >
-                  <span className="text-lg">{icon}</span>
-                  <div>
-                    <div className="text-xs font-semibold text-gray-900 whitespace-nowrap">
-                      {p.brand.name} {p.model.name}
+          <div className="relative">
+            <div className="flex gap-3 overflow-x-auto scrollbar-none pb-2 snap-x snap-proximity">
+              {trendProducts.map((p) => {
+                const icon = CATEGORY_ICONS[p.category?.slug ?? "otomobil"] ?? "🚗";
+                return (
+                  <Link
+                    key={p.id}
+                    href={`/araclar/${p.slug}`}
+                    className="shrink-0 snap-start flex items-center gap-2 px-3 py-2.5 rounded-xl border border-gray-100 bg-white hover:border-gray-300 transition-colors"
+                  >
+                    <span className="text-lg">{icon}</span>
+                    <div>
+                      <div className="text-xs font-semibold text-gray-900 whitespace-nowrap">
+                        {p.brand.name} {p.model.name}
+                      </div>
+                      <div className="text-xs text-gray-400">{p.year}</div>
                     </div>
-                    <div className="text-xs text-gray-400">{p.year}</div>
-                  </div>
-                  <div className="ml-1 text-xs text-gray-300 font-medium">
-                    {p.weeklyViewCount.toLocaleString("tr-TR")} bu hafta
-                  </div>
-                </Link>
-              );
-            })}
+                  </Link>
+                );
+              })}
+              {/* Kaydırma sonunda son kartın fade altında kalmaması için boşluk */}
+              <div className="shrink-0 w-8" aria-hidden="true" />
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#f8f9fa] to-transparent" />
           </div>
         </section>
       )}
