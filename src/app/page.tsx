@@ -5,6 +5,7 @@ import { HeroSection } from "./_components/HeroSection";
 import { ProductGrid } from "./_components/ProductGrid";
 import { CardGridSkeleton } from "./_components/CardGridSkeleton";
 import { RecentReviews } from "./_components/RecentReviews";
+import { ScrollFadeRow } from "@/components/ScrollFadeRow";
 import { decodeQuiz, CAT_TO_SLUG } from "@/lib/quiz";
 import Link from "next/link";
 
@@ -145,31 +146,27 @@ export default async function Home({
           <h2 className="text-sm font-bold text-gray-900 mb-3">
             Bu hafta ilgi gören araçlar
           </h2>
-          <div className="relative">
-            <div className="flex gap-3 overflow-x-auto scrollbar-none pb-2 snap-x snap-proximity">
-              {trendProducts.map((p) => {
-                const icon = CATEGORY_ICONS[p.category?.slug ?? "otomobil"] ?? "🚗";
-                return (
-                  <Link
-                    key={p.id}
-                    href={`/araclar/${p.slug}`}
-                    className="shrink-0 snap-start flex items-center gap-2 px-3 py-2.5 rounded-xl border border-gray-100 bg-white hover:border-gray-300 transition-colors"
-                  >
-                    <span className="text-lg">{icon}</span>
-                    <div>
-                      <div className="text-xs font-semibold text-gray-900 whitespace-nowrap">
-                        {p.brand.name} {p.model.name}
-                      </div>
-                      <div className="text-xs text-gray-400">{p.year}</div>
+          <ScrollFadeRow>
+            {trendProducts.map((p) => {
+              const icon = CATEGORY_ICONS[p.category?.slug ?? "otomobil"] ?? "🚗";
+              return (
+                <Link
+                  key={p.id}
+                  href={`/araclar/${p.slug}`}
+                  data-scroll-card
+                  className="shrink-0 snap-start flex items-center gap-2 px-3 py-2.5 rounded-xl border border-gray-100 bg-white hover:border-gray-300 transition-colors"
+                >
+                  <span className="text-lg">{icon}</span>
+                  <div>
+                    <div className="text-xs font-semibold text-gray-900 whitespace-nowrap">
+                      {p.brand.name} {p.model.name}
                     </div>
-                  </Link>
-                );
-              })}
-              {/* Kaydırma sonunda son kartın fade altında kalmaması için boşluk */}
-              <div className="shrink-0 w-8" aria-hidden="true" />
-            </div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#f8f9fa] to-transparent" />
-          </div>
+                    <div className="text-xs text-gray-400">{p.year}</div>
+                  </div>
+                </Link>
+              );
+            })}
+          </ScrollFadeRow>
         </section>
       )}
 
