@@ -28,40 +28,46 @@ interface Props {
 // Kategoriye uygun örnek sorular — her yüklemede havuzdan rastgele biri gösterilir
 const QNA_EXAMPLES: Record<string, string[]> = {
   otomobil: [
-    "Kışın klima performansı nasıl?",
-    "Yakıt tüketimi ilan edilenle uyumlu mu?",
+    "Kalorifer/ısıtma kışın yeterli mi?",
+    "Şehir içi gerçek yakıt tüketimi kaç litre?",
     "LPG'ye dönüşüm yapılabilir mi?",
-    "Bakım maliyeti diğer araçlara göre nasıl?",
+    "Yedek parça bulmak kolay mı?",
+    "2. elde değer kaybı çok mu?",
   ],
   motosiklet: [
     "Kışın günlük kullanıma uygun mu?",
     "Gerçek yakıt tüketimi ne kadar?",
     "Uzun yolda konfor nasıl?",
-    "Bakım periyodu ne sıklıkta?",
+    "Yedek parça/servis kolay bulunuyor mu?",
+    "İlk motosiklet için uygun mu?",
   ],
   "e-scooter": [
     "Şarj süresi gerçekte ne kadar?",
     "Yağmurda kullanılabiliyor mu?",
     "İlan edilen menzile ne kadar yaklaşıyor?",
-    "Azami hızı yeterli mi?",
+    "Yokuşta güç yetiyor mu?",
+    "Katlanabilir mi, taşıması kolay mı?",
   ],
   "e-bisiklet": [
     "Pedal desteği yokuşta yeterli mi?",
     "Gerçek menzil kaç km?",
     "Şarj süresi ne kadar?",
-    "Ağırlığı taşımayı zorlaştırıyor mu?",
+    "Motor gücü şehir içi için yeterli mi?",
+    "Yedek pil bulmak kolay mı?",
   ],
   karavan: [
-    "Kışın izolasyonu yeterli mi?",
+    "Kışın izolasyonu/su tesisatı donuyor mu?",
     "Elektrik/su bağlantısı pratik mi?",
-    "Çekişi zorlanmadan yapılabiliyor mu?",
+    "Hangi araçla çekilebiliyor, çeki kapasitesi ne?",
     "İç hacim günlük kullanım için yeterli mi?",
+    "Muayeneden geçmesi zor mu?",
   ],
   kamyonet: [
     "Yüklüyken yakıt tüketimi nasıl değişiyor?",
     "İlan edilen yük kapasitesi gerçekçi mi?",
+    "Kasa paslanmaya dayanıklı mı?",
     "Off-road yeteneği nasıl?",
-    "Bakım maliyeti işletme için uygun mu?",
+    "Çift kabin günlük kullanım için pratik mi?",
   ],
 };
 
