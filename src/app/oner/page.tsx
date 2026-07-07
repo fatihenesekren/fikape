@@ -217,7 +217,7 @@ export default function OnerPage() {
 
       {/* Bilgi notu */}
       <div className="mb-6 px-4 py-3 rounded-xl bg-blue-50 border border-blue-100 text-sm text-blue-700 leading-relaxed">
-        Aracı ekledikten sonra tam deneyiminizi yorum formuyla paylaşabilirsiniz. Moderatörümüz inceleyip onaylayacak.
+        Aracı ekledikten sonra isterseniz yorum da yazabilirsiniz — zorunlu değil. Moderatörümüz inceleyip onaylayacak.
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
@@ -447,11 +447,11 @@ export default function OnerPage() {
           className="w-full py-3 rounded-xl text-sm font-bold text-white transition-opacity disabled:opacity-60"
           style={{ background: "#111" }}
         >
-          {submitting ? "Oluşturuluyor..." : "Devam Et ve Yorum Yaz →"}
+          {submitting ? "Oluşturuluyor..." : "Aracı Öner"}
         </button>
 
         <p className="text-center text-xs text-gray-400">
-          Araç eklendikten sonra tam deneyiminizi paylaşabilirsiniz.
+          Araç eklendikten sonra dilerseniz deneyiminizi de paylaşabilirsiniz — yorum yazmak zorunlu değil.
         </p>
       </form>
     </div>

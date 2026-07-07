@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
 import { validateDetailShort } from "@/lib/reviewValidation";
 import { FUEL_ICONS, FUEL_LABELS, FUEL_COLORS } from "@/lib/fuel";
@@ -577,6 +578,18 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         <h1 className="text-2xl font-black text-gray-900">Yorum yaz</h1>
         <p className="text-sm text-gray-500 mt-1">Deneyimini paylaş, diğer kullanıcılara yol göster.</p>
       </div>
+
+      {defaultSlug && (
+        <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-green-50 border border-green-100 text-sm text-green-700">
+          <span>Aracınız eklendi ✓ — isterseniz deneyiminizi de paylaşabilirsiniz, zorunlu değil.</span>
+          <Link
+            href={`/araclar/${defaultSlug}`}
+            className="shrink-0 text-xs font-semibold text-green-700 underline underline-offset-2 hover:text-green-800"
+          >
+            Şimdi değil, sonra yazarım →
+          </Link>
+        </div>
+      )}
 
       <div className="flex gap-1 p-1 rounded-xl bg-gray-100">
         <button
