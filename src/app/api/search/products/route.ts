@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { rateLimitByIp } from "@/lib/rateLimit";
 
@@ -19,36 +20,36 @@ export async function GET(req: Request) {
 
   const terms = q.split(/\s+/).filter(Boolean).slice(0, 5);
 
-  const products = await prisma.product.findMany({
-    where: {
-      isActive: true,
-      AND: terms.map((term) => ({
-        OR: [
-          { name:  { contains: term, mode: "insensitive" } },
-          { model: { name: { contains: term, mode: "insensitive" } } },
-          { model: { brand: { name: { contains: term, mode: "insensitive" } } } },
-        ],
-      })),
-    },
-    select: {
-      slug: true,
-      name: true,
-      year: true,
-      trimName: true,
-      imageUrl: true,
-      attributes: true,
-      model: { select: { name: true, brand: { select: { name: true } } } },
-      category: { select: { slug: true } },
-    },
-    orderBy: [{ weeklyViewCount: "desc" }, { viewCount: "desc" }],
-    take: 10,
+  // unaccent() her iki tarafa da uygulanıyor ki "citroen" → "Citroën", "skoda" → "Škoda"
+  // gibi aksan farkları arama sonucunu etkilemesin (Türkçe ş/ğ/ç/ö/ü/ı da normalize olur).
+  const termClauses = terms.map((term) => {
+    const pattern = `%${term}%`;
+    return Prisma.sql`(
+      unaccent(p.name) ILIKE unaccent(${pattern})
+      OR unaccent(m.name) ILIKE unaccent(${pattern})
+      OR unaccent(b.name) ILIKE unaccent(${pattern})
+    )`;
   });
 
-  if (products.length > 0) {
-    return NextResponse.json(products.map(serialize));
+  const exact = await prisma.$queryRaw<FuzzyRow[]>`
+    SELECT p.slug, p.name, p."trimName", p.year, p."imageUrl", p.attributes,
+           m.name AS "modelName", b.name AS "brandName", c.slug AS "categorySlug"
+    FROM "products" p
+    JOIN "models" m ON m.id = p."modelId"
+    JOIN "brands" b ON b.id = p."brandId"
+    LEFT JOIN "categories" c ON c.id = p."categoryId"
+    WHERE p."isActive" = true
+      AND ${Prisma.join(termClauses, " AND ")}
+    ORDER BY p."weeklyViewCount" DESC, p."viewCount" DESC
+    LIMIT 10
+  `;
+
+  if (exact.length > 0) {
+    return NextResponse.json(exact.map(serialize));
   }
 
-  // Tam eşleşme yok — pg_trgm ile typo toleranslı benzerlik araması (örn. "toyta" → "Toyota")
+  // Tam eşleşme yok — pg_trgm ile typo toleranslı benzerlik araması (örn. "toyta" → "Toyota"),
+  // burada da unaccent uygulanıyor (aksan + yazım hatası birlikte olursa, örn. "sitroen")
   const fuzzy = await prisma.$queryRaw<FuzzyRow[]>`
     SELECT p.slug, p.name, p."trimName", p.year, p."imageUrl", p.attributes,
            m.name AS "modelName", b.name AS "brandName", c.slug AS "categorySlug"
@@ -57,8 +58,16 @@ export async function GET(req: Request) {
     JOIN "brands" b ON b.id = p."brandId"
     LEFT JOIN "categories" c ON c.id = p."categoryId"
     WHERE p."isActive" = true
-      AND (b.name % ${q} OR m.name % ${q} OR p.name % ${q})
-    ORDER BY GREATEST(similarity(b.name, ${q}), similarity(m.name, ${q}), similarity(p.name, ${q})) DESC
+      AND (
+        unaccent(b.name) % unaccent(${q})
+        OR unaccent(m.name) % unaccent(${q})
+        OR unaccent(p.name) % unaccent(${q})
+      )
+    ORDER BY GREATEST(
+      similarity(unaccent(b.name), unaccent(${q})),
+      similarity(unaccent(m.name), unaccent(${q})),
+      similarity(unaccent(p.name), unaccent(${q}))
+    ) DESC
     LIMIT 10
   `;
 
