@@ -20,16 +20,19 @@ export async function generateMetadata({
   };
 }
 
+// Türkçe ı/İ Unicode NFD ile ayrışmıyor (kendi başına harf, aksanlı değil), bu yüzden
+// elle map'leniyor. Geri kalan tüm aksanlı Latin harfleri (ë, š, é, ç, ö, ü, ğ, ş...)
+// NFD ile ayrıştırılıp kaldırılıyor — Citroën, Škoda gibi tek tek eklenmesi gereken
+// özel durum listesi tutmak yerine genel bir çözüm.
+const DIACRITIC_MARKS_RE = new RegExp("[\\u0300-\\u036f]", "g");
+
 function normalize(str: string) {
   return str
     .toLowerCase()
-    .replace(/ş/g, "s")
-    .replace(/ç/g, "c")
-    .replace(/ğ/g, "g")
-    .replace(/ü/g, "u")
-    .replace(/ö/g, "o")
     .replace(/ı/g, "i")
-    .replace(/İ/g, "i");
+    .replace(/İ/g, "i")
+    .normalize("NFD")
+    .replace(DIACRITIC_MARKS_RE, "");
 }
 
 async function SearchResults({ query }: { query: string }) {
