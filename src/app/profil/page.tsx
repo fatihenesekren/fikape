@@ -10,6 +10,7 @@ import { TRUST_PROFILE } from "@/lib/trustBadge";
 import { DeleteReviewButton } from "@/components/DeleteReviewButton";
 import { InviteBox } from "./InviteBox";
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const metadata: Metadata = { title: "Profilim" };
 
@@ -208,7 +209,7 @@ export default async function ProfilPage() {
                         {r.product.brand.name}
                       </div>
                       <div className="font-semibold text-gray-900 truncate">
-                        {r.product.model.name}
+                        {stripModelGenRange(r.product.model.name)}
                         {r.product.year && (
                           <span className="text-gray-400 font-normal ml-1.5">{r.product.year}</span>
                         )}

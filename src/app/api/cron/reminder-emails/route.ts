@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendReminderEmail, sendUpdateReminderEmail } from "@/lib/email";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -63,7 +64,7 @@ export async function GET(req: Request) {
 
   for (const c of candidates) {
     const key = `${c.userId}-${c.productId}`;
-    const vehicleName = `${c.product.brand.name} ${c.product.model.name}`;
+    const vehicleName = `${c.product.brand.name} ${stripModelGenRange(c.product.model.name)}`;
     const existingReviewId = reviewMap.get(key);
 
     try {

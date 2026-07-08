@@ -7,6 +7,7 @@ import { CardGridSkeleton } from "./_components/CardGridSkeleton";
 import { RecentReviews } from "./_components/RecentReviews";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
 import { decodeQuiz, CAT_TO_SLUG } from "@/lib/quiz";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -159,7 +160,7 @@ export default async function Home({
                   <span className="text-lg shrink-0">{icon}</span>
                   <div className="min-w-0">
                     <div className="text-xs font-semibold text-gray-900 truncate">
-                      {p.brand.name} {p.model.name}
+                      {p.brand.name} {stripModelGenRange(p.model.name)}
                     </div>
                     <div className="text-xs text-gray-400">{p.year}</div>
                   </div>

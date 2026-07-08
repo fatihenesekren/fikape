@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 const AVATAR_COLORS = ["#0C447C", "#27500A", "#712B13", "#6B3A8A", "#0D6E5A"];
 
@@ -57,7 +58,7 @@ export async function RecentReviews() {
                     {name}
                   </div>
                   <div className="text-xs text-gray-400 truncate">
-                    {r.product.brand.name} {r.product.model.name}
+                    {r.product.brand.name} {stripModelGenRange(r.product.model.name)}
                   </div>
                 </div>
                 <div

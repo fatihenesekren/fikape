@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { getChipsForCategory } from "@/lib/chips";
 import { EditReviewForm } from "./EditReviewForm";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const metadata = { title: "Yorumu Düzenle — fikape" };
 
@@ -52,7 +53,7 @@ export default async function EditReviewPage({
   const initialCons = (ext.cons as string[] | undefined) ?? [];
   const chips = getChipsForCategory(review.product.category.slug);
 
-  const vehicleName = `${review.product.brand.name} ${review.product.model.name}`;
+  const vehicleName = `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`;
 
   return (
     <div className="max-w-xl mx-auto px-4 py-10 space-y-6">

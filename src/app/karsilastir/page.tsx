@@ -6,6 +6,7 @@ import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ComparePicker } from "./ComparePicker";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export async function generateMetadata({
   searchParams,
@@ -24,7 +25,7 @@ export async function generateMetadata({
     where: { slug: { in: slugs } },
     select: { model: { select: { name: true, brand: { select: { name: true } } } } },
   });
-  const names = products.map((p) => `${p.model.brand.name} ${p.model.name}`).join(" vs ");
+  const names = products.map((p) => `${p.model.brand.name} ${stripModelGenRange(p.model.name)}`).join(" vs ");
   return {
     title: `${names} Karşılaştırma`,
     description: `${names} — fikape kullanıcı yorumlarına dayalı FI·KA·PE skor karşılaştırması.`,
@@ -94,7 +95,7 @@ export default async function ComparePage({
             "@type": "ListItem",
             position: i + 1,
             url: `${BASE_URL}/araclar/${p.slug}`,
-            name: `${p.model.brand.name} ${p.model.name}${p.year ? ` ${p.year}` : ""}`,
+            name: `${p.model.brand.name} ${stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}`,
           })),
         }
       : null;
@@ -115,7 +116,7 @@ export default async function ComparePage({
           fikape kullanıcı yorumlarına dayalı, iki veya daha fazla aracı yan yana karşılaştır. Ücretsiz.
         </p>
 
-        <ComparePicker initial={products.map((p) => ({ slug: p.slug, name: `${p.model.brand.name} ${p.model.name}${p.year ? ` ${p.year}` : ""}` }))} />
+        <ComparePicker initial={products.map((p) => ({ slug: p.slug, name: `${p.model.brand.name} ${stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}` }))} />
 
         {products.length >= 2 && (
           <div className="grid gap-5" style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}>
@@ -125,12 +126,12 @@ export default async function ComparePage({
                 <div key={p.slug} className="bg-white border border-gray-100 rounded-2xl p-4">
                   {p.imageUrl && (
                     <div className="relative w-full aspect-[4/3] mb-3 rounded-xl overflow-hidden bg-gray-50">
-                      <Image src={p.imageUrl} alt={p.name} fill className="object-contain p-2" />
+                      <Image src={p.imageUrl} alt={`${p.model.brand.name} ${stripModelGenRange(p.model.name)}`} fill className="object-contain p-2" />
                     </div>
                   )}
                   <div className="text-xs text-gray-400 uppercase tracking-wide mb-0.5">{p.model.brand.name}</div>
                   <Link href={`/araclar/${p.slug}`} className="font-bold text-gray-900 hover:underline">
-                    {p.model.name}{p.year ? ` ${p.year}` : ""}
+                    {stripModelGenRange(p.model.name)}{p.year ? ` ${p.year}` : ""}
                   </Link>
 
                   {agg.count > 0 ? (

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { rateLimitByIp } from "@/lib/rateLimit";
 import { BASE_URL } from "@/lib/baseUrl";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const dynamic = "force-dynamic";
 
@@ -50,7 +51,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
 
   return withCors(
     NextResponse.json({
-      product: `${product.brand.name} ${product.model.name}${product.year ? ` ${product.year}` : ""}${product.trimName ? ` ${product.trimName}` : ""}`,
+      product: `${product.brand.name} ${stripModelGenRange(product.model.name)}${product.year ? ` ${product.year}` : ""}${product.trimName ? ` ${product.trimName}` : ""}`,
       category: product.category?.name ?? null,
       score,
       scoreLabel: score !== null ? `${score}/10` : "Veri birikiyor",

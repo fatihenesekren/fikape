@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import vehiclesData from "@/data/vehicles.json";
+import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 
 const CATEGORIES = [
   { value: "otomobil",   label: "Otomobil" },
@@ -42,7 +43,7 @@ const YEARS = Array.from({ length: 2026 - 1990 + 1 }, (_, i) => 2026 - i);
 
 // Model adının sonundaki "(2004-2012)" / "(2020-)" gibi nesil aralığını ayıklar
 function getModelYearRange(modelName: string): [number, number] | null {
-  const match = modelName.match(/\((\d{4})\s*-\s*(\d{4})?\)\s*$/);
+  const match = modelName.match(MODEL_GEN_RANGE_RE);
   if (!match) return null;
   const start = parseInt(match[1], 10);
   const end = match[2] ? parseInt(match[2], 10) : new Date().getFullYear();

@@ -3,6 +3,7 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sendReviewHelpfulEmail } from "@/lib/email";
+import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 const bodySchema = z.object({ isHelpful: z.boolean() });
 
@@ -54,7 +55,7 @@ export async function POST(
     sendReviewHelpfulEmail({
       to: review.user.email,
       displayName: review.user.displayName,
-      vehicleName: review.product.name,
+      vehicleName: stripGenRangeAnywhere(review.product.name),
       reviewId,
     }).catch(() => {});
   }

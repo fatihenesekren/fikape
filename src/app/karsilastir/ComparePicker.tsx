@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 interface SearchResult {
   slug: string;
@@ -44,7 +45,7 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
 
   function add(r: SearchResult) {
     if (selected.some((s) => s.slug === r.slug) || selected.length >= 4) return;
-    const name = `${r.brandName} ${r.modelName}${r.year ? ` ${r.year}` : ""}`;
+    const name = `${r.brandName} ${stripModelGenRange(r.modelName)}${r.year ? ` ${r.year}` : ""}`;
     setSelected([...selected, { slug: r.slug, name }]);
     setQuery("");
     setResults([]);

@@ -7,6 +7,7 @@ import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
 import { validateDetailShort } from "@/lib/reviewValidation";
 import { FUEL_ICONS, FUEL_LABELS, FUEL_COLORS } from "@/lib/fuel";
 import { getChipsForCategory, type Chip } from "@/lib/chips";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
@@ -435,7 +436,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
   function handleSelectProduct(p: Product) {
     setSelectedProduct(p);
-    setSearchQuery(`${p.brandName} ${p.modelName}${p.trimName ? ` · ${p.trimName}` : ""}${p.year ? ` (${p.year})` : ""}`);
+    setSearchQuery(`${p.brandName} ${stripModelGenRange(p.modelName)}${p.trimName ? ` · ${p.trimName}` : ""}${p.year ? ` (${p.year})` : ""}`);
     setDropdownOpen(false);
   }
 
@@ -693,12 +694,12 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
           <div className="flex gap-3 items-center p-3 rounded-xl bg-gray-50 border border-gray-100">
             <div className="w-24 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0 flex items-center justify-center">
               {selectedProduct.imageUrl
-                ? <img src={selectedProduct.imageUrl} alt={selectedProduct.modelName} className="w-full h-full object-cover" />
+                ? <img src={selectedProduct.imageUrl} alt={stripModelGenRange(selectedProduct.modelName)} className="w-full h-full object-cover" />
                 : <span className="text-2xl">🚗</span>}
             </div>
             <div className="flex-1 min-w-0 space-y-1">
               <p className="text-sm font-bold text-gray-900 leading-tight">
-                {selectedProduct.brandName} {selectedProduct.modelName}
+                {selectedProduct.brandName} {stripModelGenRange(selectedProduct.modelName)}
                 {selectedProduct.trimName && <span className="font-normal text-gray-500"> · {selectedProduct.trimName}</span>}
               </p>
               {selectedProduct.year && <p className="text-xs text-gray-400">{selectedProduct.year}</p>}

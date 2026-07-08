@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { sendNewModelInBrandEmail } from "@/lib/email";
+import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 /**
  * Garajında aynı markadan bir araç olan (ama bu ürünün kendisi olmayan)
@@ -28,7 +29,7 @@ export async function notifyGarageBrandFollowers(newProductId: number) {
         to: f.user.email,
         displayName: f.user.displayName,
         brandName: product.brand.name,
-        vehicleName: product.name,
+        vehicleName: stripGenRangeAnywhere(product.name),
         productSlug: product.slug,
       }).catch(() => {});
     }

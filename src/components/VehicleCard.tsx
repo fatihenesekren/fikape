@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
@@ -70,6 +71,7 @@ export function VehicleCard({
 
   const typeLabel = bodyLabel ?? CATEGORY_LABELS[categorySlug] ?? categorySlug;
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
+  const cleanModelName = stripModelGenRange(modelName);
 
   return (
     <Link
@@ -84,7 +86,7 @@ export function VehicleCard({
         {imageUrl ? (
           <Image
             src={imageUrl}
-            alt={`${brandName} ${modelName}${trimName ? ` ${trimName}` : ""}`}
+            alt={`${brandName} ${cleanModelName}${trimName ? ` ${trimName}` : ""}`}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className={`group-hover:scale-105 transition-transform duration-300 ${
@@ -156,7 +158,7 @@ export function VehicleCard({
         </div>
         <div className="text-base font-bold text-gray-900 leading-tight">
           {year && <span className="text-gray-400 font-medium mr-1">{year}</span>}
-          {modelName}
+          {cleanModelName}
         </div>
         {trimName && (
           <div className="text-sm text-gray-600 font-medium mt-0.5">{trimName}</div>

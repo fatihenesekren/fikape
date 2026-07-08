@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { checkContent } from "@/lib/reviewValidation";
 import { questionCreateSchema, formatZodError } from "@/lib/schemas";
 import { sendNewQuestionEmail } from "@/lib/email";
+import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -60,7 +61,7 @@ export async function POST(req: Request) {
     sendNewQuestionEmail({
       to: r.email,
       displayName: r.displayName,
-      vehicleName: product.name,
+      vehicleName: stripGenRangeAnywhere(product.name),
       questionText: text,
       productSlug,
     }).catch(() => {});

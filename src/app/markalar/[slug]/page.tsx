@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
 import { calcShrunkScore, MIN_TOTAL_REVIEWS_FOR_INDEX } from "@/lib/brandIndex";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export async function generateMetadata({
   params,
@@ -94,7 +95,7 @@ export default async function BrandIndexPage({
         if (scores.length === 0) return null;
         return {
           slug: p.slug,
-          name: `${p.model.name}${p.year ? ` ${p.year}` : ""}`,
+          name: `${stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}`,
           avgScore: Math.round((scores.reduce((s, n) => s + n, 0) / scores.length) * 10) / 10,
           reviewCount: scores.length,
         };
@@ -126,7 +127,7 @@ export default async function BrandIndexPage({
         "@type": "ListItem",
         position: categoryIndex * 1000 + i + 1,
         url: `${BASE_URL}/araclar/${p.slug}`,
-        name: `${brand.name} ${p.model.name}${p.year ? ` ${p.year}` : ""}`,
+        name: `${brand.name} ${stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}`,
       }));
     }),
   };

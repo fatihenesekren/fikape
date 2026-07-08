@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 type TopProduct = {
   slug: string;
@@ -124,7 +125,7 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
                 <div className="relative w-full h-36 rounded-xl overflow-hidden mb-4">
                   <Image
                     src={p.imageUrl}
-                    alt={`${p.brandName} ${p.modelName}`}
+                    alt={`${p.brandName} ${stripModelGenRange(p.modelName)}`}
                     fill
                     sizes="288px"
                     className="object-cover"
@@ -136,7 +137,7 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
                 {p.brandName}
               </div>
               <div className="text-base font-bold text-gray-900 mb-3">
-                {p.modelName}
+                {stripModelGenRange(p.modelName)}
                 {p.year && (
                   <span className="text-gray-400 font-normal ml-1.5">· {p.year}</span>
                 )}

@@ -8,6 +8,7 @@ import { calcOverall } from "@/lib/fikape";
 import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
 import { GarageAnimation } from "./GarageAnimation";
 import { InsuranceLeadCard } from "./InsuranceLeadCard";
+import { stripModelGenRange, stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 export const metadata: Metadata = { title: "Garajım" };
 
@@ -82,7 +83,7 @@ export default async function GarajimPage() {
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={product.imageUrl}
-              alt={product.name}
+              alt={stripGenRangeAnywhere(product.name)}
               className="w-full h-full object-cover"
             />
           ) : (
@@ -96,7 +97,7 @@ export default async function GarajimPage() {
             {product.brand.name}
           </div>
           <div className="font-bold text-gray-900">
-            {product.model.name}
+            {stripModelGenRange(product.model.name)}
             {product.year && (
               <span className="text-gray-400 font-normal ml-1.5">{product.year}</span>
             )}
@@ -148,7 +149,7 @@ export default async function GarajimPage() {
           {!isSold && (
             <InsuranceLeadCard
               productId={product.id}
-              vehicleName={`${product.brand.name} ${product.model.name}`}
+              vehicleName={`${product.brand.name} ${stripModelGenRange(product.model.name)}`}
               defaultFullName={currentUser?.displayName ?? ""}
               alreadySubmitted={leadProductIds.has(product.id)}
             />

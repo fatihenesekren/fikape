@@ -2,6 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ShareCard } from "./ShareCard";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const metadata = { title: "Yorumunu Paylaş — fikape" };
 
@@ -38,7 +39,7 @@ export default async function ShareReviewPage({
   if (review.userId !== userId) notFound();
   if (review.status !== "PUBLISHED") redirect("/profil");
 
-  const vehicleName = `${review.product.brand.name} ${review.product.model.name}`;
+  const vehicleName = `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`;
 
   return (
     <div className="max-w-md mx-auto px-4 py-10 space-y-6">

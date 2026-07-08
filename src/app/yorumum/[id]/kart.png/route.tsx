@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/prisma";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const runtime = "nodejs";
 
@@ -87,7 +88,7 @@ export async function GET(
     );
   }
 
-  const vehicleName = `${review.product.brand.name} ${review.product.model.name}`;
+  const vehicleName = `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`;
   const yearStr = review.product.year ? ` ${review.product.year}` : "";
   const isOwner = review.user.trustLevel >= 3;
   const reviewerName = review.user.displayName ?? "fikape kullanıcısı";
@@ -140,7 +141,7 @@ export async function GET(
               letterSpacing: "-1.5px",
             }}
           >
-            {review.product.model.name}
+            {stripModelGenRange(review.product.model.name)}
             {yearStr && (
               <span style={{ color: "#555", fontWeight: 400, fontSize: 50 }}>{yearStr}</span>
             )}

@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { sendReviewPublishedEmail } from "@/lib/email";
 import { recordScoreSnapshot, recordModerationLog } from "@/lib/security";
 import { calcTrustScore } from "@/lib/trustScore";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export async function PATCH(
   req: Request,
@@ -74,7 +75,7 @@ export async function PATCH(
       sendReviewPublishedEmail({
         to: review.user.email,
         displayName: review.user.displayName,
-        vehicleName: `${review.product.brand.name} ${review.product.model.name}`,
+        vehicleName: `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`,
         reviewId,
       }).catch(() => {});
     }

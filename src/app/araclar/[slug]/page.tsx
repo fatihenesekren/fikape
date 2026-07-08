@@ -23,6 +23,7 @@ import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
   BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, toLabelMap,
 } from "@/lib/vehicleTypes";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export async function generateMetadata({
   params,
@@ -39,7 +40,7 @@ export async function generateMetadata({
   const attrs = product.attributes as Record<string, unknown>;
   const fuelType = String(attrs.fuel_type ?? "");
   const fuelLabel = FUEL_LABELS[fuelType] ?? "";
-  const name = `${product.brand.name} ${product.model.name}${product.year ? ` ${product.year}` : ""}`;
+  const name = `${product.brand.name} ${stripModelGenRange(product.model.name)}${product.year ? ` ${product.year}` : ""}`;
   const title = `${name} Kullanıcı Yorumları`;
   const description = `${name}${fuelLabel ? ` (${fuelLabel})` : ""} hakkında gerçek kullanıcı yorumları ve fi·ka·pe puanları. Fiyat, kalite ve performans değerlendirmeleri.`;
 
@@ -502,7 +503,7 @@ export default async function VehicleDetailPage({
   );
 
   // ── JSON-LD: Product + AggregateRating + Review (sadece yorumu varsa) ──
-  const productName = `${product.brand.name} ${product.model.name}${product.year ? ` ${product.year}` : ""}`;
+  const productName = `${product.brand.name} ${stripModelGenRange(product.model.name)}${product.year ? ` ${product.year}` : ""}`;
   const productSchema = reviewCount > 0 ? {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -573,7 +574,7 @@ export default async function VehicleDetailPage({
           <div className="absolute inset-0 overflow-hidden">
             <Image
               src={imageUrl}
-              alt={`${product.brand.name} ${product.model.name}`}
+              alt={`${product.brand.name} ${stripModelGenRange(product.model.name)}`}
               fill
               sizes="100vw"
               className="object-cover opacity-20"
@@ -615,7 +616,7 @@ export default async function VehicleDetailPage({
                 {product.brand.name}
               </Link>
               <h1 className="text-3xl font-black text-white tracking-tight">
-                {product.model.name}
+                {stripModelGenRange(product.model.name)}
                 {product.year && <span className="text-gray-400 font-light ml-2">{product.year}</span>}
               </h1>
               <div className="flex flex-wrap gap-2 mt-3">
@@ -671,7 +672,7 @@ export default async function VehicleDetailPage({
       {/* ── Fotoğraf slider ── */}
       <PhotoSlider
         photos={sliderPhotos}
-        alt={`${product.brand.name} ${product.model.name}`}
+        alt={`${product.brand.name} ${stripModelGenRange(product.model.name)}`}
       />
 
       {/* ── Spec strip ── */}

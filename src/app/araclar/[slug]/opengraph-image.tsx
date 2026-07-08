@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/prisma";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const runtime = "nodejs";
 export const alt = "fikape araç yorumları";
@@ -94,7 +95,7 @@ export default async function Image({
   const overall = agg._avg.scoreOverall ?? 0;
   const count = agg._count.id;
 
-  const vehicleName = `${product.brand.name} ${product.model.name}`;
+  const vehicleName = `${product.brand.name} ${stripModelGenRange(product.model.name)}`;
   const yearStr = product.year ? ` ${product.year}` : "";
 
   return new ImageResponse(
@@ -150,7 +151,7 @@ export default async function Image({
               letterSpacing: "-1.5px",
             }}
           >
-            {product.model.name}
+            {stripModelGenRange(product.model.name)}
             {yearStr && (
               <span style={{ color: "#555", fontWeight: 400, fontSize: 44 }}>{yearStr}</span>
             )}

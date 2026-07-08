@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/prisma";
 import { rateLimitByIp } from "@/lib/rateLimit";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const runtime = "nodejs";
 export const contentType = "image/png";
@@ -58,7 +59,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
               overflow: "hidden",
             }}
           >
-            {product ? product.model.name : "Araç bulunamadı"}
+            {product ? stripModelGenRange(product.model.name) : "Araç bulunamadı"}
           </div>
         </div>
         {score !== null ? (
