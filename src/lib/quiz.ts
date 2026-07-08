@@ -12,6 +12,7 @@ export interface QuizAnswers {
   cat: QuizCat;
   q2: string;
   q3: string;
+  q4: string;
 }
 
 export interface QuizOption {
@@ -84,6 +85,17 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "keyif", icon: "🏎️", label: "Sürüş keyfi",   sub: "Performans" },
       ],
     },
+    {
+      question: "Yakıt tercihin var mı?",
+      stepLabel: "Yakıt",
+      opts: [
+        { key: "benzin",   icon: "⛽", label: "Benzin / LPG", sub: "" },
+        { key: "dizel",    icon: "🛢️", label: "Dizel",        sub: "Uzun yol ekonomisi" },
+        { key: "hibrit",   icon: "🔋", label: "Hibrit",       sub: "Düşük tüketim" },
+        { key: "elektrik", icon: "⚡", label: "Elektrikli",   sub: "Sıfır emisyon" },
+        { key: "fark",     icon: "—",  label: "Farketmez",    sub: "" },
+      ],
+    },
   ],
   moto: [
     {
@@ -104,6 +116,17 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "orta",  icon: "💪", label: "400–600 cc", sub: "Orta güç" },
         { key: "buyuk", icon: "🔥", label: "600 cc+",    sub: "Yüksek performans" },
         { key: "fark",  icon: "—",  label: "Farketmez",  sub: "" },
+      ],
+    },
+    {
+      question: "Nasıl bir tarz arıyorsun?",
+      stepLabel: "Tip",
+      opts: [
+        { key: "naked",   icon: "🏍️", label: "Naked / Klasik", sub: "Şehir, günlük" },
+        { key: "sport",   icon: "🏁", label: "Sport",           sub: "Hız, viraj" },
+        { key: "scooter", icon: "🛵", label: "Scooter",         sub: "Pratik, komüt" },
+        { key: "tur",     icon: "🧭", label: "Adventure / Tur", sub: "Uzun yol, arazi" },
+        { key: "fark",    icon: "—",  label: "Farketmez",       sub: "" },
       ],
     },
   ],
@@ -127,6 +150,16 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "zor",   icon: "😰", label: "Çok kısıtlı",   sub: "Yok gibi" },
       ],
     },
+    {
+      question: "Motor gücü beklentin?",
+      stepLabel: "Güç",
+      opts: [
+        { key: "eco",   icon: "🍃", label: "350W'a kadar", sub: "Hafif, düz yol" },
+        { key: "orta",  icon: "💪", label: "350–500W",     sub: "Dengeli" },
+        { key: "guclu", icon: "🔥", label: "500W+",        sub: "Yokuş, performans" },
+        { key: "fark",  icon: "—",  label: "Farketmez",    sub: "" },
+      ],
+    },
   ],
   karavan: [
     {
@@ -145,6 +178,16 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "tamkonfor", icon: "🛁", label: "Tam konfor",  sub: "Banyo + mutfak şart" },
         { key: "temel",     icon: "🍳", label: "Temel yeter", sub: "Mutfak yeterli" },
         { key: "minimal",   icon: "🏕️", label: "Minimal",    sub: "Sadece uyku" },
+      ],
+    },
+    {
+      question: "Nasıl bir karavan?",
+      stepLabel: "Tip",
+      opts: [
+        { key: "cekme",   icon: "🚙", label: "Çekme",      sub: "Araçla çekilir" },
+        { key: "motorlu", icon: "🚐", label: "Motorlu",    sub: "Kendi motoru var" },
+        { key: "kamper",  icon: "🚌", label: "Kamper-Van", sub: "Van dönüşüm" },
+        { key: "fark",    icon: "—",  label: "Farketmez",  sub: "" },
       ],
     },
   ],
@@ -169,6 +212,14 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "fark",  icon: "—",  label: "Farketmez",  sub: "" },
       ],
     },
+    {
+      question: "4x4 çekiş şart mı?",
+      stepLabel: "Çekiş",
+      opts: [
+        { key: "dortcarpi", icon: "🏔️", label: "4x4 şart",   sub: "Arazi, zorlu koşul" },
+        { key: "fark",      icon: "🛣️", label: "Şart değil", sub: "Asfalt ağırlıklı" },
+      ],
+    },
   ],
   hepsi: [
     {
@@ -190,23 +241,33 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "bes_alti", icon: "👨‍👩‍👧‍👦", label: "5+ kişilik",  sub: "Büyük aile" },
       ],
     },
+    {
+      question: "Enerji tercihin?",
+      stepLabel: "Enerji",
+      opts: [
+        { key: "elektrik", icon: "⚡", label: "Elektrikli",       sub: "Şarjlı" },
+        { key: "yakitli",  icon: "⛽", label: "Benzinli / Dizel", sub: "" },
+        { key: "fark",     icon: "—",  label: "Farketmez",        sub: "" },
+      ],
+    },
   ],
 };
 
 // ─── URL encode / decode ───────────────────────
 
 export function encodeQuiz(answers: QuizAnswers): string {
-  return `${answers.cat},${answers.q2},${answers.q3}`;
+  return `${answers.cat},${answers.q2},${answers.q3},${answers.q4}`;
 }
 
 export function decodeQuiz(param: string): QuizAnswers | null {
   const parts = param.split(",");
   if (parts.length < 3) return null;
-  const [cat, q2, q3] = parts;
+  const [cat, q2, q3, q4] = parts;
   const valid: QuizCat[] = ["oto", "moto", "scooter", "karavan", "kamyon", "hepsi"];
   if (!valid.includes(cat as QuizCat)) return null;
   if (!q2 || !q3) return null;
-  return { cat: cat as QuizCat, q2, q3 };
+  // Eski (3 parçalı) paylaşılan URL'ler kırılmasın — q4 yoksa "farketmez" varsayılır
+  return { cat: cat as QuizCat, q2, q3, q4: q4 || "fark" };
 }
 
 // ─── Scoring ──────────────────────────────────
@@ -246,6 +307,85 @@ export const MOTO_CC_RANGES: Record<string, { min: number; max: number } | null>
   buyuk: { min: 600, max: Infinity },
   fark:  null,
 };
+
+// ── 4. soru sert filtreleri ───────────────────────────
+// Her kategorinin 4. sorusu gerçek bir attributes alanına bağlanır — MOTO_CC_RANGES ile
+// aynı ilke: "fark" filtre koymaz, somut seçim aralık/liste dışını sonuçtan çıkarır.
+
+export const OTO_FUEL_MAP: Record<string, string[] | null> = {
+  benzin:   ["GASOLINE", "LPG"],
+  dizel:    ["DIESEL"],
+  hibrit:   ["HYBRID", "PHEV"],
+  elektrik: ["EV"],
+  fark:     null,
+};
+
+export const MOTO_TYPE_MAP: Record<string, string[] | null> = {
+  naked:   ["naked", "retro", "cruiser"],
+  sport:   ["sport"],
+  scooter: ["scooter"],
+  tur:     ["adventure", "touring", "enduro", "cross"],
+  fark:    null,
+};
+
+export const SCOOTER_WATT_RANGES: Record<string, { min: number; max: number } | null> = {
+  eco:   { min: 0,   max: 350 },
+  orta:  { min: 350, max: 500 },
+  guclu: { min: 500, max: Infinity },
+  fark:  null,
+};
+
+export const KARAVAN_TYPE_MAP: Record<string, string[] | null> = {
+  cekme:   ["cekme"],
+  motorlu: ["motorlu"],
+  kamper:  ["kamper-van"],
+  fark:    null,
+};
+
+export function quizQ4Matches(
+  answers: QuizAnswers,
+  attrs: Record<string, unknown>,
+  categorySlug: string | null,
+): boolean {
+  const q4 = answers.q4;
+  if (!q4 || q4 === "fark") return true;
+
+  switch (answers.cat) {
+    case "oto": {
+      const allowed = OTO_FUEL_MAP[q4];
+      return !allowed || allowed.includes(String(attrs.fuel_type ?? ""));
+    }
+    case "moto": {
+      const allowed = MOTO_TYPE_MAP[q4];
+      return !allowed || allowed.includes(String(attrs.moto_type ?? ""));
+    }
+    case "scooter": {
+      const range = SCOOTER_WATT_RANGES[q4];
+      if (!range) return true;
+      const watt = Number(attrs.motor_watt);
+      return Number.isFinite(watt) && watt >= range.min && watt <= range.max;
+    }
+    case "karavan": {
+      const allowed = KARAVAN_TYPE_MAP[q4];
+      return !allowed || allowed.includes(String(attrs.karavan_type ?? ""));
+    }
+    case "kamyon": {
+      // "Şart değil" = fark (filtre yok); sadece "4x4 şart" eleme yapar
+      if (q4 === "dortcarpi") return attrs.four_wd === true || String(attrs.four_wd) === "true";
+      return true;
+    }
+    case "hepsi": {
+      const isElectric =
+        String(attrs.fuel_type ?? "") === "EV" ||
+        categorySlug === "e-scooter" ||
+        categorySlug === "e-bisiklet";
+      if (q4 === "elektrik") return isElectric;
+      if (q4 === "yakitli")  return !isElectric;
+      return true;
+    }
+  }
+  return true;
+}
 
 function weightedScore(scores: FikapeScores, q3: string): number {
   const { scoreFiyat: fi, scoreKalite: ka, scorePerformans: pe } = scores;

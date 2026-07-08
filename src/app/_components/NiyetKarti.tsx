@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import {
   ALL_CATS, QUIZ_STEPS, CAT_LABELS, CAT_TO_SLUG, SLUG_TO_CAT,
@@ -16,6 +16,18 @@ interface Props {
 
 // Kartların gri değil, marka renklerinden birine hafif çekilmesi için döngüsel ton
 const TINTS = ["var(--fi-bg)", "var(--ka-bg)", "var(--pe-bg)"];
+
+// Kapalı banner'da dönüşümlü niyet soruları — ilk eleman varsayılan etiket,
+// prefers-reduced-motion açıkken döngü hiç başlamaz ve bu sabit kalır.
+const BANNER_PHRASES = [
+  "4 Soru · 30 Saniye",
+  "Yeni bir araç mı almayı düşünüyorsun?",
+  "Şehir içi mi, uzun yol mu?",
+  "Elektrikliye geçmeyi mi düşünüyorsun?",
+];
+
+// Seçim yapılınca otomatik ilerleme gecikmesi — check-pop animasyonu görünsün diye
+const AUTO_ADVANCE_MS = 350;
 
 function MatchIcon({ size = 20 }: { size?: number }) {
   return (
@@ -46,17 +58,45 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
   const router = useRouter();
 
   const [open,        setOpen]        = useState(false);
-  const [step,        setStep]        = useState<0 | 1 | 2>(0);
+  const [step,        setStep]        = useState<0 | 1 | 2 | 3>(0);
   const [direction,   setDirection]   = useState<"fwd" | "back">("fwd");
   const [selectedCat, setSelectedCat] = useState<QuizCat | null>(null);
   const [selectedQ2,  setSelectedQ2]  = useState<string | null>(null);
   const [selectedQ3,  setSelectedQ3]  = useState<string | null>(null);
+  const [selectedQ4,  setSelectedQ4]  = useState<string | null>(null);
+
+  // Dönüşümlü banner metni
+  const [phraseIdx,     setPhraseIdx]     = useState(0);
+  const [phraseVisible, setPhraseVisible] = useState(true);
+
+  // Otomatik ilerleme zamanlayıcısı — geri/kapat/yeni seçimde iptal edilmeli,
+  // yoksa geri dönen kullanıcı istemeden ileri fırlatılır
+  const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const clearAdvanceTimer = useCallback(() => {
+    if (advanceTimer.current) { clearTimeout(advanceTimer.current); advanceTimer.current = null; }
+  }, []);
+  useEffect(() => clearAdvanceTimer, [clearAdvanceTimer]);
 
   const preCat = preCatSlug ? (SLUG_TO_CAT[preCatSlug] ?? null) : null;
+  const showBanner = !quizAnswers && !open;
+
+  useEffect(() => {
+    if (!showBanner) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const interval = setInterval(() => {
+      setPhraseVisible(false);
+      setTimeout(() => {
+        setPhraseIdx((i) => (i + 1) % BANNER_PHRASES.length);
+        setPhraseVisible(true);
+      }, 450);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [showBanner]);
 
   const openQuiz = useCallback(() => {
     setSelectedQ2(null);
     setSelectedQ3(null);
+    setSelectedQ4(null);
     setDirection("fwd");
     if (preCat) {
       setSelectedCat(preCat);
@@ -69,24 +109,21 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
   }, [preCat]);
 
   const closeQuiz = useCallback(() => {
+    clearAdvanceTimer();
     setOpen(false);
-  }, []);
+  }, [clearAdvanceTimer]);
 
   const handleBack = useCallback(() => {
+    clearAdvanceTimer();
     setDirection("back");
-    if (step === 2) { setStep(1); setSelectedQ3(null); }
-    else            { setStep(0); setSelectedCat(null); setSelectedQ2(null); }
-  }, [step]);
+    if      (step === 3) { setStep(2); setSelectedQ4(null); }
+    else if (step === 2) { setStep(1); setSelectedQ3(null); }
+    else                 { setStep(0); setSelectedCat(null); setSelectedQ2(null); }
+  }, [step, clearAdvanceTimer]);
 
-  const handleNext = useCallback(() => {
-    setDirection("fwd");
-    if (step === 0 && selectedCat) setStep(1);
-    if (step === 1 && selectedQ2)  setStep(2);
-  }, [step, selectedCat, selectedQ2]);
-
-  const handleComplete = useCallback(() => {
+  const completeWith = useCallback((q4: string) => {
     if (!selectedCat || !selectedQ2 || !selectedQ3) return;
-    const encoded  = encodeQuiz({ cat: selectedCat, q2: selectedQ2, q3: selectedQ3 });
+    const encoded  = encodeQuiz({ cat: selectedCat, q2: selectedQ2, q3: selectedQ3, q4 });
     const catSlug  = CAT_TO_SLUG[selectedCat];
     const params   = new URLSearchParams();
     if (catSlug) params.set("kategori", catSlug);
@@ -94,6 +131,24 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
     router.push(`/?${params.toString()}`);
     setOpen(false);
   }, [router, selectedCat, selectedQ2, selectedQ3]);
+
+  // Seçim → kısa gecikmeyle otomatik ilerleme; son soruda doğrudan sonuç
+  const selectCat = useCallback((key: QuizCat) => {
+    setSelectedCat(key);
+    clearAdvanceTimer();
+    advanceTimer.current = setTimeout(() => { setDirection("fwd"); setStep(1); }, AUTO_ADVANCE_MS);
+  }, [clearAdvanceTimer]);
+
+  const selectAnswer = useCallback((key: string) => {
+    const setter = step === 1 ? setSelectedQ2 : step === 2 ? setSelectedQ3 : setSelectedQ4;
+    setter(key);
+    clearAdvanceTimer();
+    advanceTimer.current = setTimeout(() => {
+      if (step === 3) { completeWith(key); return; }
+      setDirection("fwd");
+      setStep((s) => (s + 1) as 1 | 2 | 3);
+    }, AUTO_ADVANCE_MS);
+  }, [step, clearAdvanceTimer, completeWith]);
 
   const handleClearQuiz = useCallback(() => {
     if (!quizAnswers) { router.push("/"); return; }
@@ -106,8 +161,10 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
     const steps  = QUIZ_STEPS[quizAnswers.cat];
     const q2Opt  = steps[0]?.opts.find((o) => o.key === quizAnswers.q2);
     const q3Opt  = steps[1]?.opts.find((o) => o.key === quizAnswers.q3);
+    const q4Opt  = steps[2]?.opts.find((o) => o.key === quizAnswers.q4);
     const q2Label = q2Opt ? `${q2Opt.icon} ${q2Opt.label}` : quizAnswers.q2;
     const q3Label = q3Opt ? `${q3Opt.icon} ${q3Opt.label}` : quizAnswers.q3;
+    const q4Label = q4Opt ? `${q4Opt.icon} ${q4Opt.label}` : null;
 
     return (
       <div className="col-span-full bg-white rounded-2xl border border-gray-100 overflow-hidden animate-niyet-result">
@@ -123,7 +180,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
               {CAT_LABELS[quizAnswers.cat]} · {resultTrustLine(categoryReviewCount)}
             </p>
             <p className="text-[11px] text-gray-500 mt-0.5">
-              {q2Label} · {q3Label}
+              {q2Label} · {q3Label}{q4Label ? <> · {q4Label}</> : null}
             </p>
           </div>
           <button
@@ -164,10 +221,19 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
             <MatchIcon />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-bold uppercase tracking-wide mb-0.5" style={{ color: "var(--pe-color)" }}>
-              3 Soru · 30 Saniye
-            </p>
-            <p className="text-sm font-bold text-gray-900">3 soruda sana en uygun aracı bulalım</p>
+            {/* Sabit yükseklik: metin değişirken banner zıplamasın */}
+            <div className="h-4 mb-0.5 overflow-hidden">
+              <p
+                className={`text-[11px] font-bold tracking-wide truncate transition-all duration-[450ms] ease-out ${
+                  phraseVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
+                }`}
+                style={{ color: "var(--pe-color)" }}
+                aria-hidden={phraseIdx !== 0}
+              >
+                {BANNER_PHRASES[phraseIdx]}
+              </p>
+            </div>
+            <p className="text-sm font-bold text-gray-900">4 soruda sana en uygun aracı bulalım</p>
             <p className="text-xs text-gray-500 mt-0.5">FI·KA·PE puanı + gerçek yorumlara göre sıralanır</p>
           </div>
           <span className="text-gray-300 group-hover:text-gray-500 group-hover:translate-x-0.5 transition-all text-xl font-light select-none">
@@ -180,13 +246,8 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
 
   // ── Quiz open ─────────────────────────────────────────
   const stepDef   = step > 0 ? QUIZ_STEPS[selectedCat!]?.[step - 1] : null;
-  const totalSteps = preCat ? 2 : 3;
+  const totalSteps = preCat ? 3 : 4;
   const curIndex   = preCat ? step - 1 : step;          // 0-based progress index
-  const canProceed =
-    step === 0 ? !!selectedCat :
-    step === 1 ? !!selectedQ2  :
-                  !!selectedQ3;
-  const isLastStep = step === 2;
   const slideClass = direction === "fwd" ? "animate-niyet-slide-right" : "animate-niyet-slide-left";
 
   return (
@@ -237,7 +298,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
                 return (
                   <button
                     key={c.key}
-                    onClick={() => setSelectedCat(c.key)}
+                    onClick={() => selectCat(c.key)}
                     className={`relative flex flex-col items-start p-4 rounded-xl border-[1.5px] transition-all active:scale-95 text-left ${
                       isSel
                         ? "border-gray-900 bg-white shadow-sm"
@@ -254,17 +315,16 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
             </div>
           )}
 
-          {/* Steps 1 & 2: branching questions */}
+          {/* Steps 1-3: branching questions */}
           {step > 0 && stepDef && (
             <div className="grid grid-cols-2 gap-3 mb-4">
               {stepDef.opts.map((opt, i) => {
-                const current = step === 1 ? selectedQ2 : selectedQ3;
-                const setter  = step === 1 ? setSelectedQ2 : setSelectedQ3;
+                const current = step === 1 ? selectedQ2 : step === 2 ? selectedQ3 : selectedQ4;
                 const isSel   = current === opt.key;
                 return (
                   <button
                     key={opt.key}
-                    onClick={() => setter(opt.key)}
+                    onClick={() => selectAnswer(opt.key)}
                     className={`relative flex flex-col items-start p-4 rounded-xl border-[1.5px] transition-all active:scale-95 text-left ${
                       isSel
                         ? "border-gray-900 bg-white shadow-sm"
@@ -285,7 +345,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
           )}
         </div>
 
-        {/* Navigation */}
+        {/* Navigation — ileri butonu yok: seçim otomatik ilerletir, son soruda sonuca geçer */}
         <div className="flex items-center justify-between">
           <button
             onClick={step === 0 ? closeQuiz : handleBack}
@@ -293,13 +353,9 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
           >
             {step === 0 ? "İptal" : "← Geri"}
           </button>
-          <button
-            onClick={isLastStep ? handleComplete : handleNext}
-            disabled={!canProceed}
-            className="px-5 py-2 rounded-xl text-xs font-bold text-white bg-gray-900 hover:bg-gray-700 transition-colors disabled:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
-          >
-            {isLastStep ? "Bana uyanları göster →" : "Sıradaki soru →"}
-          </button>
+          <span className="text-[10px] text-gray-300 select-none">
+            {step === 3 ? "Seçince sonuçlar gelir" : "Seçince otomatik ilerler"}
+          </span>
         </div>
       </div>
     </div>

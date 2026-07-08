@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { NiyetKarti } from "./NiyetKarti";
-import { decodeQuiz, calcQuizScore, CAT_TO_SLUG, MOTO_CC_RANGES, type ReviewExtData } from "@/lib/quiz";
+import { decodeQuiz, calcQuizScore, quizQ4Matches, CAT_TO_SLUG, MOTO_CC_RANGES, type ReviewExtData } from "@/lib/quiz";
 import type { FikapeScores } from "@/lib/fikape";
 
 const CATEGORY_ICONS: Record<string, string> = {
@@ -60,6 +60,13 @@ export async function ProductGrid({
         return Number.isFinite(cc) && cc >= ccRange.min && cc <= ccRange.max;
       });
     }
+  }
+
+  // 4. soru sert filtresi — kategoriye göre yakıt/tip/güç/çekiş (bkz. quizQ4Matches)
+  if (quizAnswers) {
+    products = products.filter((p) =>
+      quizQ4Matches(quizAnswers, p.attributes as Record<string, unknown>, p.category?.slug ?? null)
+    );
   }
 
   const scoreAggs = await prisma.review.groupBy({
