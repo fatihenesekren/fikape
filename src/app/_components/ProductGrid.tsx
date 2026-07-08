@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { NiyetKarti } from "./NiyetKarti";
-import { decodeQuiz, calcQuizScore, CAT_TO_SLUG, type ReviewExtData } from "@/lib/quiz";
+import { decodeQuiz, calcQuizScore, CAT_TO_SLUG, MOTO_CC_RANGES, type ReviewExtData } from "@/lib/quiz";
 import type { FikapeScores } from "@/lib/fikape";
 
 const CATEGORY_ICONS: Record<string, string> = {
@@ -33,7 +33,7 @@ export async function ProductGrid({
   const quizCatSlug = quizAnswers ? CAT_TO_SLUG[quizAnswers.cat] : undefined;
   const effectiveCat = quizCatSlug ?? catFilter;
 
-  const products = await prisma.product.findMany({
+  let products = await prisma.product.findMany({
     where: {
       isActive: true,
       ...(effectiveCat ? { category: { slug: effectiveCat } } : {}),
@@ -49,6 +49,18 @@ export async function ProductGrid({
     },
     orderBy: [{ brand: { name: "asc" } }, { model: { name: "asc" } }, { year: "desc" }],
   });
+
+  // Motosiklet "Motor hacmi" sert filtresi — quiz'te seçilen cc aralığının dışındaki
+  // araçlar sonuçtan tamamen çıkarılır (bkz. MOTO_CC_RANGES, "farketmez" filtre koymaz).
+  if (quizAnswers?.cat === "moto") {
+    const ccRange = MOTO_CC_RANGES[quizAnswers.q3];
+    if (ccRange) {
+      products = products.filter((p) => {
+        const cc = Number((p.attributes as Record<string, unknown>).engine_cc);
+        return Number.isFinite(cc) && cc >= ccRange.min && cc <= ccRange.max;
+      });
+    }
+  }
 
   const scoreAggs = await prisma.review.groupBy({
     by: ["productId"],

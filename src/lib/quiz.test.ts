@@ -1,5 +1,27 @@
 import { describe, it, expect } from "vitest";
-import { encodeQuiz, decodeQuiz, calcQuizScore, type QuizAnswers } from "./quiz";
+import { encodeQuiz, decodeQuiz, calcQuizScore, MOTO_CC_RANGES, type QuizAnswers } from "./quiz";
+
+describe("MOTO_CC_RANGES", () => {
+  it("aralık sınırlarını doğru tanımlar", () => {
+    expect(MOTO_CC_RANGES.kucuk).toEqual({ min: 125, max: 250 });
+    expect(MOTO_CC_RANGES.orta).toEqual({ min: 400, max: 600 });
+    expect(MOTO_CC_RANGES.buyuk).toEqual({ min: 600, max: Infinity });
+  });
+
+  it("farketmez için filtre koymaz (null)", () => {
+    expect(MOTO_CC_RANGES.fark).toBeNull();
+  });
+
+  it("125cc bir scooter 600cc+ aralığına girmez", () => {
+    const r = MOTO_CC_RANGES.buyuk!;
+    expect(125 >= r.min && 125 <= r.max).toBe(false);
+  });
+
+  it("689cc bir motosiklet 600cc+ aralığına girer", () => {
+    const r = MOTO_CC_RANGES.buyuk!;
+    expect(689 >= r.min && 689 <= r.max).toBe(true);
+  });
+});
 
 describe("encodeQuiz / decodeQuiz", () => {
   it("round-trip yapar", () => {

@@ -238,6 +238,15 @@ const USAGE_MAP: Record<string, string> = {
 
 const LOW_MAINTENANCE = new Set(["affordable", "okay"]);
 
+// Motosiklet "Motor hacmi" sorusu — sert filtre (attributes.engine_cc'ye uygulanır).
+// "fark" (farketmez) filtre koymaz, elektrikli motosikletler (engine_cc yok) dahil kalır.
+export const MOTO_CC_RANGES: Record<string, { min: number; max: number } | null> = {
+  kucuk: { min: 125, max: 250 },
+  orta:  { min: 400, max: 600 },
+  buyuk: { min: 600, max: Infinity },
+  fark:  null,
+};
+
 function weightedScore(scores: FikapeScores, q3: string): number {
   const { scoreFiyat: fi, scoreKalite: ka, scorePerformans: pe } = scores;
   switch (q3) {
