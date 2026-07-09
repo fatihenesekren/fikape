@@ -11,6 +11,7 @@ type Suggestion = {
   year: number | null;
   categorySlug: string;
   fuelType: string | null;
+  transmission: string | null;
   trimName: string | null;
   notes: string | null;
   status: string;
@@ -111,7 +112,9 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
       setCustomSlug("");
     }
 
-    const base: Record<string, string> = suggestion.fuelType ? { fuel_type: suggestion.fuelType } : {};
+    const base: Record<string, string> = {};
+    if (suggestion.fuelType) base.fuel_type = suggestion.fuelType;
+    if (suggestion.transmission) base.transmission = suggestion.transmission;
     setAttrs(base);
     setModal({ suggestion, action });
 
@@ -184,6 +187,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                 <div className="flex items-center gap-2 flex-wrap text-xs text-gray-400 mb-2">
                   <span>{CAT_LABELS[s.categorySlug] ?? s.categorySlug}</span>
                   {s.fuelType && <><span>·</span><span>{FUEL_LABELS[s.fuelType] ?? s.fuelType}</span></>}
+                  {s.transmission && <><span>·</span><span>{s.transmission}</span></>}
                   <span>·</span><span>#{s.id}</span>
                   <span>·</span><span>{new Date(s.createdAt).toLocaleDateString("tr-TR")}</span>
                 </div>

@@ -25,6 +25,7 @@ export default async function AdminOnerilerPage() {
     year: s.year,
     categorySlug: s.categorySlug,
     fuelType: s.fuelType,
+    transmission: s.transmission,
     trimName: s.trimName,
     notes: s.notes,
     status: s.status,

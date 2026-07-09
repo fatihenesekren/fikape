@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 
 const VALID_CATEGORIES = ["otomobil", "motosiklet", "e-scooter", "e-bisiklet", "karavan", "kamyonet"];
 const VALID_FUEL_TYPES  = ["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"];
+const VALID_TRANSMISSIONS = ["Manuel", "Otomatik", "CVT", "Yarı Otomatik"];
 
 function slugify(text: string): string {
   return String(text)
@@ -26,7 +27,7 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const { brandName, modelName, year, categorySlug, fuelType, trimName, notes, photoUrls } = body;
+  const { brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, photoUrls } = body;
 
   if (!brandName?.trim() || !modelName?.trim()) {
     return NextResponse.json({ error: "Marka ve model zorunludur" }, { status: 400 });
@@ -36,6 +37,9 @@ export async function POST(req: Request) {
   }
   if (fuelType && !VALID_FUEL_TYPES.includes(fuelType)) {
     return NextResponse.json({ error: "Geçersiz yakıt tipi" }, { status: 400 });
+  }
+  if (transmission && !VALID_TRANSMISSIONS.includes(transmission)) {
+    return NextResponse.json({ error: "Geçersiz vites tipi" }, { status: 400 });
   }
 
   const userId = Number(session.user.id);
@@ -76,6 +80,7 @@ export async function POST(req: Request) {
           year:      year ? Number(year) : null,
           categorySlug,
           fuelType:  fuelType || null,
+          transmission: transmission || null,
           trimName:  trimName?.trim() || null,
           notes:     notes?.trim() || null,
           photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 3) : [],
@@ -106,6 +111,7 @@ export async function POST(req: Request) {
         year:      year ? Number(year) : null,
         categorySlug,
         fuelType:  fuelType || null,
+        transmission: transmission || null,
         trimName:  trimName?.trim() || null,
         notes:     notes?.trim() || null,
         photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 3) : [],
@@ -138,6 +144,7 @@ export async function POST(req: Request) {
 
   const attributes: Record<string, string> = {};
   if (fuelType) attributes.fuel_type = fuelType;
+  if (transmission) attributes.transmission = transmission;
 
   // Slug çakışma önlemi
   let finalSlug = baseSlug;
@@ -169,6 +176,7 @@ export async function POST(req: Request) {
       year:      year ? Number(year) : null,
       categorySlug,
       fuelType:  fuelType || null,
+      transmission: transmission || null,
       trimName:  trimName?.trim() || null,
       notes:     notes?.trim() || null,
       photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 3) : [],

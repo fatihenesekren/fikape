@@ -553,6 +553,7 @@ model VehicleSuggestion {
   year         Int?
   categorySlug String
   fuelType     String?
+  transmission String?
   trimName     String?
   notes        String?  @db.VarChar(500)
 
