@@ -619,6 +619,9 @@ export default async function VehicleDetailPage({
                 {stripModelGenRange(product.model.name)}
                 {product.year && <span className="text-gray-400 font-light ml-2">{product.year}</span>}
               </h1>
+              {product.trimName && (
+                <p className="text-sm text-gray-400 mt-1">{product.trimName}</p>
+              )}
               <div className="flex flex-wrap gap-2 mt-3">
                 {fuelType && (
                   <span
