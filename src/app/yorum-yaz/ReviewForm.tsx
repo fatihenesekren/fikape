@@ -9,6 +9,17 @@ import { FUEL_ICONS, FUEL_LABELS, FUEL_COLORS } from "@/lib/fuel";
 import { getChipsForCategory, type Chip } from "@/lib/chips";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
+// Kaynak veriye göre büyük/küçük harf tutarsız olabiliyor (Öner formu,
+// admin manuel giriş, eski kayıtlar) — render anında ilk harfi büyütüyoruz,
+// veriye dokunmuyoruz. İkon: manuel için 🕹️ (vites koluna benzer), diğerleri
+// (Otomatik/CVT/Yarı Otomatik) için ⚙️.
+function formatTransmission(t: string): { label: string; icon: string } {
+  return {
+    label: t.charAt(0).toUpperCase() + t.slice(1),
+    icon: t.toLowerCase().includes("manuel") ? "🕹️" : "⚙️",
+  };
+}
+
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
   mpv: "MPV", pickup: "Pick-up", coupe: "Coupe",
@@ -666,7 +677,10 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                         <div className="flex items-center gap-1.5 mt-0.5">
                           {p.year && <span className="text-xs text-gray-400">{p.year}</span>}
                           {fc && <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>{FUEL_ICONS[p.fuelType!]} {FUEL_LABELS[p.fuelType!]}</span>}
-                          {p.transmission && <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-600">⚙️ {p.transmission}</span>}
+                          {p.transmission && (() => {
+                            const tr = formatTransmission(p.transmission);
+                            return <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-600">{tr.icon} {tr.label}</span>;
+                          })()}
                         </div>
                       </div>
                     </button>
@@ -719,11 +733,14 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                     {BODY_LABELS[selectedProduct.bodyType]}
                   </span>
                 )}
-                {selectedProduct.transmission && (
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
-                    ⚙️ {selectedProduct.transmission}
-                  </span>
-                )}
+                {selectedProduct.transmission && (() => {
+                  const tr = formatTransmission(selectedProduct.transmission);
+                  return (
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
+                      {tr.icon} {tr.label}
+                    </span>
+                  );
+                })()}
               </div>
             </div>
           </div>
