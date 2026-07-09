@@ -16,7 +16,10 @@ const WIKI_PAGE: Record<string, string> = {
 };
 
 function wikiPageFor(slug: string): string | undefined {
-  return Object.entries(WIKI_PAGE).find(([prefix]) => slug.startsWith(prefix))?.[1];
+  // TAM slug eşleşmesi şart — önek (startsWith) eşleşmesi "renault-clio" gibi
+  // bir önekle başlayan TÜM nesilleri (Clio 2/3/4/5 vb.) aynı (yanlış) fotoğrafa
+  // eşliyordu. Bu harita sadece slug'ı harfiyen eşleşen tek bir ürünü hedefler.
+  return WIKI_PAGE[slug];
 }
 
 export async function getVehicleImageUrl(slug: string): Promise<string | null> {
