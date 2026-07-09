@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
 import { validateDetailShort } from "@/lib/reviewValidation";
 import { FUEL_ICONS, FUEL_LABELS, FUEL_COLORS } from "@/lib/fuel";
@@ -420,9 +421,12 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
     defaultSlug ? (products.find((p) => p.slug === defaultSlug) ?? null) : null
   );
 
-  // Debounced arama
+  // Debounced arama — searchResults sadece fetch tamamlanınca güncellenir;
+  // sorgu 2 karakterden kısayken gösterilecek liste render sırasında
+  // türetiliyor (aşağıdaki visibleResults), effect içinde senkron setState
+  // çağrısına gerek kalmıyor.
   useEffect(() => {
-    if (searchQuery.length < 2) { setSearchResults([]); return; }
+    if (searchQuery.length < 2) return;
     const t = setTimeout(async () => {
       setSearchLoading(true);
       try {
@@ -434,6 +438,8 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
     }, 300);
     return () => clearTimeout(t);
   }, [searchQuery]);
+
+  const visibleResults = searchQuery.length < 2 ? [] : searchResults;
 
   // Dışarı tıklayınca dropdown kapansın
   useEffect(() => {
@@ -459,6 +465,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
   const [pros, setPros] = useState<string[]>([]);
   const [cons, setCons] = useState<string[]>([]);
+  const [prevProductSlug, setPrevProductSlug] = useState(productSlug);
   const [detailText,    setDetailText]    = useState("");
   const [detailTouched, setDetailTouched] = useState(false);
   const [photoUrls,     setPhotoUrls]     = useState<string[]>([]);
@@ -490,11 +497,15 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   // Chip listesini seçili araca göre hesapla
   const chips = getChipsForCategory(selectedProduct?.categorySlug ?? null);
 
-  // Araç değişince chip seçimlerini sıfırla
-  useEffect(() => {
+  // Araç değişince chip seçimlerini sıfırla — React'ın "render sırasında
+  // ayarla" deseni (bkz. react.dev/learn/you-might-not-need-an-effect):
+  // effect + setState yerine önceki slug'ı takip edip render anında
+  // sıfırlıyoruz, fazladan bir render turu olmuyor.
+  if (productSlug !== prevProductSlug) {
+    setPrevProductSlug(productSlug);
     setPros([]);
     setCons([]);
-  }, [selectedProduct?.slug]);
+  }
 
   function togglePro(key: string) {
     setPros((prev) => {
@@ -652,10 +663,10 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                 {searchLoading && (
                   <div className="px-4 py-3 text-sm text-gray-400">Aranıyor...</div>
                 )}
-                {!searchLoading && searchResults.length === 0 && (
+                {!searchLoading && visibleResults.length === 0 && (
                   <div className="px-4 py-3 text-sm text-gray-400">Sonuç bulunamadı.</div>
                 )}
-                {!searchLoading && searchResults.map((p) => {
+                {!searchLoading && visibleResults.map((p) => {
                   const fc = p.fuelType ? (FUEL_COLORS[p.fuelType] ?? null) : null;
                   return (
                     <button
@@ -664,9 +675,9 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                       onMouseDown={() => handleSelectProduct(p)}
                       className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-left transition-colors border-b border-gray-50 last:border-0"
                     >
-                      <div className="w-10 h-8 rounded-md bg-gray-100 shrink-0 overflow-hidden flex items-center justify-center">
+                      <div className="relative w-10 h-8 rounded-md bg-gray-100 shrink-0 overflow-hidden flex items-center justify-center">
                         {p.imageUrl
-                          ? <img src={p.imageUrl} alt={p.modelName} className="w-full h-full object-cover" />
+                          ? <Image src={p.imageUrl} alt={p.modelName} fill sizes="40px" className="object-cover" />
                           : <span className="text-base">🚗</span>}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -691,7 +702,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                   onMouseDown={() => router.push("/oner?from=yorum-yaz")}
                   className="w-full px-4 py-3 text-sm font-semibold text-left text-blue-600 hover:bg-blue-50 transition-colors border-t border-gray-100"
                 >
-                  {searchResults.length === 0
+                  {visibleResults.length === 0
                     ? <>+ &ldquo;{searchQuery}&rdquo; sistemde yok — araç öner</>
                     : <>Aradığın araç listede yok mu? + Araç öner</>}
                 </button>
@@ -708,9 +719,9 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
         {selectedProduct && (
           <div className="flex gap-3 items-center p-3 rounded-xl bg-gray-50 border border-gray-100">
-            <div className="w-24 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0 flex items-center justify-center">
+            <div className="relative w-24 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0 flex items-center justify-center">
               {selectedProduct.imageUrl
-                ? <img src={selectedProduct.imageUrl} alt={stripModelGenRange(selectedProduct.modelName)} className="w-full h-full object-cover" />
+                ? <Image src={selectedProduct.imageUrl} alt={stripModelGenRange(selectedProduct.modelName)} fill sizes="96px" className="object-cover" />
                 : <span className="text-2xl">🚗</span>}
             </div>
             <div className="flex-1 min-w-0 space-y-1">
