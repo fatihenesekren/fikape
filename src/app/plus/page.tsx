@@ -21,8 +21,8 @@ export default async function PlusPage() {
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Fikape Plus</h1>
       <p className="text-sm text-gray-500 mb-8">
-        Temel skor, yorum ve arama fikape'de her zaman ücretsiz kalacak. Plus, daha rahat karar
-        vermek isteyenler için ekstra bir katman — henüz yapım aşamasında.
+        Kullanıcı taleplerine göre geliştirdiğimiz yeni özellikler — daha rahat karar vermeni
+        sağlayacak araçlar, henüz yapım aşamasında.
       </p>
 
       <ul className="space-y-3 text-sm text-gray-700 mb-8">
@@ -33,7 +33,7 @@ export default async function PlusPage() {
 
       <p className="text-xs text-gray-400 mb-4">
         Bu arada <Link href="/karsilastir" className="underline hover:text-gray-600">araç karşılaştırma</Link> zaten
-        herkese ücretsiz açık.
+        herkese açık.
       </p>
 
       <WaitlistForm defaultEmail={session?.user?.email ?? ""} />

@@ -40,7 +40,7 @@ export function WaitlistForm({ defaultEmail }: { defaultEmail: string }) {
   if (done) {
     return (
       <div className="text-sm font-medium text-green-700 bg-green-50 rounded-xl px-4 py-3">
-        {alreadyJoined ? "✓ Zaten listedesin — haber verdiğimizde ilk sen duyacaksın." : "✓ Kaydettik! Plus hazır olunca ilk sana haber vereceğiz."}
+        {alreadyJoined ? "✓ Zaten listedesin — haber verdiğimizde ilk sen duyacaksın." : "✓ Kaydettik! Bu özellikler hazır olunca ilk sana haber vereceğiz."}
       </div>
     );
   }
@@ -48,8 +48,7 @@ export function WaitlistForm({ defaultEmail }: { defaultEmail: string }) {
   return (
     <div className="border border-gray-100 bg-white rounded-2xl p-5">
       <p className="text-sm text-gray-600 mb-3">
-        Fikape Plus henüz yok — ilgileniyorsan e-postanı bırak, hazır olduğunda ilk sana haber verelim.
-        Ücretsiz temel deneyim (skor, yorum, arama) her zaman olduğu gibi devam edecek.
+        Bu özellikler henüz yok — ilgileniyorsan e-postanı bırak, hazır olduğunda ilk sana haber verelim.
       </p>
       <div className="flex flex-col sm:flex-row gap-2">
         <input
