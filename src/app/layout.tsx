@@ -5,6 +5,8 @@ import { SessionProvider } from "@/components/SessionProvider";
 import { AuthNav } from "@/components/AuthNav";
 import { VerificationBanner } from "@/components/VerificationBanner";
 import { SearchBar, SearchIcon } from "@/components/SearchBar";
+import { FooterNav } from "@/components/FooterNav";
+import { HomeFab } from "@/components/HomeFab";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { JsonLd } from "@/components/JsonLd";
@@ -96,22 +98,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
         <footer className="border-t border-gray-100 py-6">
           <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 space-y-2">
-            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-              <Link href="/nasil-calisir" className="hover:text-gray-700 hover:underline transition-colors">Nasıl Çalışır</Link>
-              <span>·</span>
-              <Link href="/karsilastir" className="hover:text-gray-700 hover:underline transition-colors">Karşılaştır</Link>
-              <span>·</span>
-              <Link href="/plus" className="hover:text-gray-700 hover:underline transition-colors">Plus</Link>
-              <span>·</span>
-              <Link href="/gelistiriciler" className="hover:text-gray-700 hover:underline transition-colors">API</Link>
-              <span>·</span>
-              <Link href="/gizlilik" className="hover:text-gray-700 hover:underline transition-colors">Gizlilik Politikası</Link>
-              <span>·</span>
-              <Link href="/kullanim-kosullari" className="hover:text-gray-700 hover:underline transition-colors">Kullanım Koşulları</Link>
-            </div>
+            <FooterNav />
             <p>© {new Date().getFullYear()} fikape.com · Tüm hakları saklıdır.</p>
           </div>
         </footer>
+        <HomeFab />
         </SessionProvider>
       </body>
     </html>

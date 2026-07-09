@@ -153,15 +153,6 @@ export default function GizlilikPage() {
         </section>
 
       </div>
-
-      <div className="mt-12 pt-8 border-t border-gray-100 flex flex-wrap gap-4 text-sm text-gray-400">
-        <Link href="/kullanim-kosullari" className="hover:text-gray-600 transition-colors underline">
-          Kullanım Koşulları
-        </Link>
-        <Link href="/" className="hover:text-gray-600 transition-colors">
-          Ana sayfa
-        </Link>
-      </div>
     </div>
   );
 }
