@@ -54,7 +54,7 @@ function KayitForm() {
             <span style={{ color: "#993C1D" }}>pe</span>
           </Link>
           <h1 className="text-xl font-bold text-gray-900">Hesap oluştur</h1>
-          <p className="text-sm text-gray-500 mt-1">Ücretsiz kayıt ol, deneyimini paylaş</p>
+          <p className="text-sm text-gray-500 mt-1">Kayıt ol, deneyimini paylaş</p>
           {ref && (
             <p className="text-xs text-gray-400 mt-2">Bir arkadaşının daveti ile geliyorsun 👋</p>
           )}

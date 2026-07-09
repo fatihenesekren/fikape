@@ -113,7 +113,7 @@ export default async function ComparePage({
 
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Araç Karşılaştır</h1>
         <p className="text-sm text-gray-400 mb-8">
-          fikape kullanıcı yorumlarına dayalı, iki veya daha fazla aracı yan yana karşılaştır. Ücretsiz.
+          fikape kullanıcı yorumlarına dayalı, iki veya daha fazla aracı yan yana karşılaştır.
         </p>
 
         <ComparePicker initial={products.map((p) => ({ slug: p.slug, name: `${p.model.brand.name} ${stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}` }))} />
