@@ -4,6 +4,7 @@
 
 import { WIKI_HEADERS } from "@/lib/vehicleImages";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { findVerifiedWikipediaPage } from "@/lib/wikidataVerify";
 
 function norm(s: string) { return (s ?? "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
 
@@ -275,7 +276,12 @@ async function fetchWikipediaSpecs(
 ): Promise<Record<string, string>> {
   const title = await wikiSearch(brand, model);
   if (!title) return {};
+  return specsFromTitle(title, trimHint);
+}
 
+async function specsFromTitle(
+  title: string, trimHint: string | null
+): Promise<Record<string, string>> {
   const [section0Html, sections] = await Promise.all([
     wikiSectionHtml(title, "0"),
     wikiSections(title),
@@ -400,4 +406,32 @@ export async function fetchVehicleSpecs(
 
   const source = cqResult.found ? "CarQuery" : Object.keys(wikiSpecs).length > 0 ? "Wikipedia" : null;
   return { specs: merged, source };
+}
+
+// Doğrulanmış (üretici + üretim yılı örtüşmesi kontrol edilmiş, bkz.
+// wikidataVerify.ts) Wikipedia sayfasından teknik özellik çeker. Düz metin
+// aramasından (fetchVehicleSpecs) farkı: yanlış nesil/model sayfasına düşme
+// riski yok — doğrulanmış sayfa bulunamazsa boş döner, tahmin etmez.
+// CarQuery yine de denenir (kalıcı olarak erişilemez olsa da düşük maliyetli,
+// ileride geri gelirse otomatik fayda sağlar).
+export async function fetchVerifiedVehicleSpecs(
+  brand: string, model: string, year: number | null, trimHint: string | null
+): Promise<{ specs: Record<string, string>; source: string | null; verifiedTitle: string | null }> {
+  const page = await findVerifiedWikipediaPage(brand, model, year);
+  // SPARQL doğrulaması bazı Wikidata kayıtlarında P176 (üretici) alanı boş
+  // olduğu için (ör. "Volkswagen Golf Mk7") sonuçsuz kalabiliyor — bu durumda
+  // eski düz-metin-arama yöntemine düş (o farklı bir kör noktaya sahip ama
+  // ikisi birlikte daha geniş kapsar).
+  const [cqResult, wikiSpecs] = await Promise.all([
+    fetchCarQuery(brand, model, year != null ? String(year) : null, trimHint),
+    page ? specsFromTitle(page.title, trimHint) : fetchWikipediaSpecs(brand, model, trimHint),
+  ]);
+
+  const merged: Record<string, string> = { ...wikiSpecs, ...cqResult.specs };
+  if (Object.keys(merged).length === 0) return { specs: {}, source: null, verifiedTitle: page?.title ?? null };
+
+  const source = cqResult.found ? "CarQuery" : Object.keys(wikiSpecs).length > 0
+    ? (page ? "Wikipedia (doğrulanmış)" : "Wikipedia")
+    : null;
+  return { specs: merged, source, verifiedTitle: page?.title ?? null };
 }

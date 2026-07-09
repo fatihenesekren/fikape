@@ -5,6 +5,9 @@
 // üretim yılını (P571) doğrulayarak seçim yapıyoruz — eşleşme bulunamazsa
 // görsel boş bırakılır, YANLIŞ görsel yazılmaz.
 
+import { WIKI_HEADERS } from "@/lib/vehicleImages";
+import { findVerifiedWikipediaPage } from "@/lib/wikidataVerify";
+
 const WD_HEADERS = { "User-Agent": "fikape.com/1.0 (https://fikape.com; info@fikape.com)" };
 
 function normalize(s: string): string {
@@ -75,7 +78,33 @@ function inceptionYear(entity: WdEntity): number | null {
   return m ? parseInt(m[1], 10) : null;
 }
 
+// Doğrulanmış Wikipedia sayfasının (bkz. wikidataVerify.ts — SPARQL + üretim
+// yılı örtüşmesi kontrolü, eski wbSearch'ten çok daha geniş kapsamlı) kapak
+// görselini REST özet API'sinden çeker.
+async function thumbnailForTitle(title: string): Promise<string | null> {
+  try {
+    const res = await fetch(
+      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`,
+      { signal: AbortSignal.timeout(4000), headers: WIKI_HEADERS }
+    );
+    if (!res.ok) return null;
+    const data = (await res.json()) as { thumbnail?: { source: string } };
+    return data.thumbnail?.source ?? null;
+  } catch { return null; }
+}
+
 export async function findVerifiedVehicleImage(
+  brand: string, model: string, year: number | null
+): Promise<string | null> {
+  const sparqlPage = await findVerifiedWikipediaPage(brand, model, year);
+  if (sparqlPage) {
+    const thumb = await thumbnailForTitle(sparqlPage.title);
+    if (thumb) return thumb;
+  }
+  return findVerifiedVehicleImageLegacy(brand, model, year);
+}
+
+async function findVerifiedVehicleImageLegacy(
   brand: string, model: string, year: number | null
 ): Promise<string | null> {
   const cleanModel = model.replace(/\s*\([^)]*\)\s*$/, "").trim();

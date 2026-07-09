@@ -45,6 +45,8 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
   const [errorMsg, setErrorMsg]     = useState<string | null>(null);
   const [fetchingSpecs, setFetchingSpecs] = useState(false);
   const [specSource, setSpecSource]       = useState<string | null>(null);
+  const [previewImage, setPreviewImage]   = useState<string | null>(null);
+  const [imageChecked, setImageChecked]   = useState(false);
 
   const visible = suggestions.filter((s) => s.status === filter);
   const counts = {
@@ -75,6 +77,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
           adminNote: adminNote.trim() || undefined,
           customSlug: customSlug.trim() || undefined,
           attributes: modal.action === "APPROVED" && Object.keys(attrs).length > 0 ? attrs : undefined,
+          imageUrl: modal.action === "APPROVED" && imageChecked ? previewImage : undefined,
         }),
       });
       const data = await res.json();
@@ -96,6 +99,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
 
   async function openModal(suggestion: Suggestion, action: "APPROVED" | "REJECTED") {
     setErrorMsg(null); setAdminNote(""); setSpecSource(null);
+    setPreviewImage(null); setImageChecked(false);
     if (!suggestion.productId) {
       const parts = [suggestion.brandName, suggestion.modelName, suggestion.trimName, suggestion.year]
         .filter(Boolean).join("-").toLowerCase()
@@ -111,7 +115,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
     setAttrs(base);
     setModal({ suggestion, action });
 
-    if (action === "APPROVED" && suggestion.categorySlug === "otomobil") {
+    if (action === "APPROVED") {
       setFetchingSpecs(true);
       try {
         const params = new URLSearchParams({
@@ -124,9 +128,11 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
         const data = await res.json();
         if (data.specs && Object.keys(data.specs).length > 0) {
           setAttrs((prev) => ({ ...data.specs, ...prev })); // öneri verileri (fuel_type) üste çıksın
-          setSpecSource(data.source ?? "CarQuery");
+          setSpecSource(data.source ?? null);
         }
-      } catch { /* sessizce geç */ }
+        setPreviewImage(data.imageUrl ?? null);
+        setImageChecked(true);
+      } catch { setImageChecked(true); }
       finally { setFetchingSpecs(false); }
     }
   }
@@ -283,12 +289,28 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
               </div>
             )}
 
-            {/* Teknik özellik formu — sadece APPROVED'da */}
+            {/* Görsel + teknik özellik — sadece APPROVED'da */}
             {modal.action === "APPROVED" && (
               <>
                 {fetchingSpecs && (
-                  <p className="text-xs text-gray-400 mb-2 animate-pulse">🔍 CarQuery&apos;den veriler çekiliyor...</p>
+                  <p className="text-xs text-gray-400 mb-2 animate-pulse">🔍 Doğrulanmış görsel/özellik aranıyor...</p>
                 )}
+
+                {imageChecked && (
+                  <div className="mb-3">
+                    <p className="text-xs font-semibold text-gray-700 mb-1.5">Görsel</p>
+                    {previewImage ? (
+                      <div className="flex items-center gap-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={previewImage} alt="" className="w-20 h-20 rounded-lg object-cover border border-gray-200" />
+                        <p className="text-xs text-green-600">✓ Doğrulanmış (üretici + üretim yılı kontrol edildi). Onayladığında kaydedilecek.</p>
+                      </div>
+                    ) : (
+                      <p className="text-xs text-gray-400">Doğrulanmış görsel bulunamadı — görselsiz kaydedilecek, sonra /admin/araclar&apos;dan eklenebilir.</p>
+                    )}
+                  </div>
+                )}
+
                 {!fetchingSpecs && specSource && (
                   <div className="mb-2 flex flex-wrap items-center gap-3">
                     <p className="text-xs text-green-600">✓ {specSource} — alanlar otomatik dolduruldu.</p>

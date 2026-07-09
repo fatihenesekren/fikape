@@ -5,7 +5,7 @@ import { calcOverall } from "@/lib/fikape";
 import { calcTrustScore } from "@/lib/trustScore";
 import { notifyGarageBrandFollowers } from "@/lib/notifications";
 import { normalizeAttributeValues } from "@/lib/vehicleTypes";
-import { searchWikipediaImage } from "@/lib/vehicleImages";
+import { findVerifiedVehicleImage } from "@/lib/wikidataImage";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -28,11 +28,12 @@ export async function POST(
   const { id } = await params;
   const suggestionId = Number(id);
   const body = await req.json();
-  const { action, adminNote, customSlug, attributes: incomingAttrs } = body as {
+  const { action, adminNote, customSlug, attributes: incomingAttrs, imageUrl: previewedImageUrl } = body as {
     action: "APPROVED" | "REJECTED";
     adminNote?: string;
     customSlug?: string;
     attributes?: Record<string, string>;
+    imageUrl?: string | null;
   };
 
   if (action !== "APPROVED" && action !== "REJECTED") {
@@ -82,10 +83,14 @@ export async function POST(
       ...normalizeAttributeValues(incomingAttrs ?? {}),
     };
 
-    // Wikipedia: imageUrl yoksa otomatik çek (kullanıcı fotoğraflarından bağımsız)
+    // Görsel: admin modalde önizlemesini gördüyse o değeri kullan (client
+    // zaten doğrulanmış görseli fetch-specs'ten çekip göstermişti), yoksa
+    // (ör. eski client) sunucu tarafında doğrulanmış yöntemle tekrar dene.
     const wikiImage = existingProduct?.imageUrl
       ? null
-      : await searchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
+      : previewedImageUrl !== undefined
+        ? previewedImageUrl
+        : await findVerifiedVehicleImage(suggestion.brandName, suggestion.modelName, suggestion.year);
 
     // Kullanıcının önerdiği fotoğrafları ProductPhoto'ya ekle
     const suggestionPhotos: string[] = Array.isArray(suggestion.photoUrls) ? suggestion.photoUrls : [];
@@ -153,7 +158,9 @@ export async function POST(
     create: { slug: modelSlug, name: suggestion.modelName, brandId: brand.id },
   });
 
-  const imageUrl = await searchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
+  const imageUrl = previewedImageUrl !== undefined
+    ? previewedImageUrl
+    : await findVerifiedVehicleImage(suggestion.brandName, suggestion.modelName, suggestion.year);
   const attributes: Record<string, unknown> = {};
   if (suggestion.fuelType) attributes.fuel_type = suggestion.fuelType;
   Object.assign(attributes, normalizeAttributeValues(incomingAttrs ?? {}));

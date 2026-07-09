@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
-import { fetchVehicleSpecs } from "@/lib/vehicleSpecs";
+import { fetchVerifiedVehicleSpecs } from "@/lib/vehicleSpecs";
+import { findVerifiedVehicleImage } from "@/lib/wikidataImage";
 
 export const runtime = "nodejs";
 
@@ -16,6 +17,11 @@ export async function GET(req: Request) {
 
   if (!brand || !model) return NextResponse.json({ specs: {} });
 
-  const { specs, source } = await fetchVehicleSpecs(brand, model, year, trimName);
-  return NextResponse.json({ specs, source });
+  const yearNum = year ? parseInt(year, 10) : null;
+  const [specResult, imageUrl] = await Promise.all([
+    fetchVerifiedVehicleSpecs(brand, model, yearNum, trimName),
+    findVerifiedVehicleImage(brand, model, yearNum),
+  ]);
+
+  return NextResponse.json({ specs: specResult.specs, source: specResult.source, imageUrl });
 }
