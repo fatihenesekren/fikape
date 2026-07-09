@@ -1,10 +1,15 @@
 import { ImageResponse } from "next/og";
+import QRCode from "qrcode";
 import { prisma } from "@/lib/prisma";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { CHIP_LABEL } from "@/lib/chips";
 
 export const runtime = "nodejs";
 
 const size = { width: 1080, height: 1920 };
+const QUOTE_MAX_CHARS = 260;
+const MAX_CHIPS = 5;
+const MAX_PROS = 3;
 
 function ScoreRow({
   label,
@@ -37,6 +42,27 @@ function ScoreRow({
   );
 }
 
+function ChipPill({ label, positive }: { label: string; positive: boolean }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 6,
+        padding: "8px 14px",
+        borderRadius: 999,
+        fontSize: 22,
+        fontWeight: 700,
+        background: positive ? "rgba(151,196,89,0.15)" : "rgba(240,153,123,0.15)",
+        color: positive ? "#97C459" : "#F0997B",
+      }}
+    >
+      <span>{positive ? "+" : "−"}</span>
+      <span>{label}</span>
+    </div>
+  );
+}
+
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -50,6 +76,8 @@ export async function GET(
         where: { id: reviewId },
         select: {
           summaryText: true,
+          detailText: true,
+          extendedData: true,
           scoreFiyat: true,
           scoreKalite: true,
           scorePerformans: true,
@@ -58,6 +86,7 @@ export async function GET(
           user: { select: { displayName: true, trustLevel: true } },
           product: {
             select: {
+              slug: true,
               year: true,
               brand: { select: { name: true } },
               model: { select: { name: true } },
@@ -92,10 +121,24 @@ export async function GET(
   const yearStr = review.product.year ? ` ${review.product.year}` : "";
   const isOwner = review.user.trustLevel >= 3;
   const reviewerName = review.user.displayName ?? "fikape kullanıcısı";
-  const quote =
-    review.summaryText.length > 140
-      ? `${review.summaryText.slice(0, 140)}…`
-      : review.summaryText;
+
+  const fullText = [review.summaryText, review.detailText].filter(Boolean).join(" ");
+  const truncated = fullText.length > QUOTE_MAX_CHARS;
+  const quote = truncated ? fullText.slice(0, QUOTE_MAX_CHARS).trimEnd() : fullText;
+
+  const extended = (review.extendedData as Record<string, unknown> | null) ?? {};
+  const pros = ((extended.pros as string[] | undefined) ?? []).map((k) => CHIP_LABEL[k] ?? k);
+  const cons = ((extended.cons as string[] | undefined) ?? []).map((k) => CHIP_LABEL[k] ?? k);
+  const shownPros = pros.slice(0, MAX_PROS);
+  const shownCons = cons.slice(0, Math.max(0, MAX_CHIPS - shownPros.length));
+  const hasChips = shownPros.length > 0 || shownCons.length > 0;
+
+  const productUrl = `https://fikape.com/araclar/${review.product.slug}`;
+  const qrDataUrl = await QRCode.toDataURL(productUrl, {
+    width: 220,
+    margin: 0,
+    color: { dark: "#111111", light: "#ffffff" },
+  });
 
   return new ImageResponse(
     (
@@ -166,11 +209,28 @@ export async function GET(
           <ScoreRow label="Performans" score={review.scorePerformans} color="#F0997B" />
         </div>
 
+        {/* Chip'ler — artılar solda, eksiler sağda */}
+        {hasChips && (
+          <div style={{ display: "flex", marginTop: 60, gap: 24 }}>
+            <div style={{ display: "flex", flex: 1, flexDirection: "column", gap: 10 }}>
+              {shownPros.map((label) => (
+                <ChipPill key={label} label={label} positive />
+              ))}
+            </div>
+            <div style={{ display: "flex", flex: 1, flexDirection: "column", gap: 10 }}>
+              {shownCons.map((label) => (
+                <ChipPill key={label} label={label} positive={false} />
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Quote */}
         <div
           style={{
             display: "flex",
-            marginTop: 70,
+            flexDirection: "column",
+            marginTop: 60,
             fontSize: 34,
             color: "#ccc",
             lineHeight: 1.4,
@@ -178,35 +238,58 @@ export async function GET(
             paddingLeft: 28,
           }}
         >
-          &quot;{quote}&quot;
+          <span>
+            &quot;{quote}
+            {truncated ? "…" : ""}&quot;
+          </span>
+          {truncated && (
+            <span style={{ fontSize: 24, color: "#666", marginTop: 10 }}>Devamı var →</span>
+          )}
         </div>
 
         {/* Spacer */}
         <div style={{ display: "flex", flex: 1 }} />
 
-        {/* Reviewer */}
-        <div style={{ display: "flex", flexDirection: "column", marginBottom: 40 }}>
-          <span style={{ fontSize: 30, fontWeight: 700, color: "#fff" }}>{reviewerName}</span>
-          {isOwner && (
-            <span style={{ fontSize: 22, color: "#97C459", marginTop: 6 }}>
-              Doğrulanmış Sahip
-            </span>
-          )}
-        </div>
+        {/* Alt satır: reviewer/footer solda, QR sağ altta */}
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span style={{ fontSize: 30, fontWeight: 700, color: "#fff" }}>{reviewerName}</span>
+            {isOwner && (
+              <span style={{ fontSize: 22, color: "#97C459", marginTop: 6 }}>
+                Doğrulanmış Sahip
+              </span>
+            )}
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 24 }}>
+              <div
+                style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: "50%",
+                  background: "#85B7EB",
+                }}
+              />
+              <span style={{ fontSize: 24, color: "#444" }}>
+                Gerçek kullanıcı yorumları — fikape.com
+              </span>
+            </div>
+          </div>
 
-        {/* Footer */}
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: "50%",
-              background: "#85B7EB",
-            }}
-          />
-          <span style={{ fontSize: 24, color: "#444" }}>
-            Gerçek kullanıcı yorumları — fikape.com
-          </span>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div
+              style={{
+                display: "flex",
+                width: 150,
+                height: 150,
+                background: "#fff",
+                borderRadius: 16,
+                padding: 12,
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={qrDataUrl} width={126} height={126} alt="" />
+            </div>
+            <span style={{ fontSize: 20, color: "#666", marginTop: 10 }}>Kartı okut →</span>
+          </div>
         </div>
       </div>
     ),
