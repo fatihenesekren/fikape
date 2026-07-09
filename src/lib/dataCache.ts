@@ -45,6 +45,7 @@ export const getTopRatedProducts = unstable_cache(
           slug: p.slug,
           brandName: p.brand.name,
           modelName: p.model.name,
+          trimName: p.trimName ?? null,
           imageUrl: p.imageUrl ?? null,
           year: p.year ?? null,
           reviewCount: a._count.id,
@@ -60,6 +61,7 @@ export const getTopRatedProducts = unstable_cache(
         slug: string;
         brandName: string;
         modelName: string;
+        trimName: string | null;
         imageUrl: string | null;
         year: number | null;
         reviewCount: number;

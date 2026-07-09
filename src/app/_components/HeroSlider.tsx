@@ -9,6 +9,7 @@ type TopProduct = {
   slug: string;
   brandName: string;
   modelName: string;
+  trimName: string | null;
   imageUrl: string | null;
   year: number | null;
   reviewCount: number;
@@ -136,10 +137,15 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
               <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">
                 {p.brandName}
               </div>
-              <div className="text-base font-bold text-gray-900 mb-3">
-                {stripModelGenRange(p.modelName)}
-                {p.year && (
-                  <span className="text-gray-400 font-normal ml-1.5">· {p.year}</span>
+              <div className="mb-3">
+                <div className="text-base font-bold text-gray-900">
+                  {stripModelGenRange(p.modelName)}
+                  {p.year && (
+                    <span className="text-gray-400 font-normal ml-1.5">· {p.year}</span>
+                  )}
+                </div>
+                {p.trimName && (
+                  <div className="text-xs text-gray-400 mt-0.5">{p.trimName}</div>
                 )}
               </div>
 
