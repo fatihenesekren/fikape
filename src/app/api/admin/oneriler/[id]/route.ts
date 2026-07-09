@@ -5,6 +5,7 @@ import { calcOverall } from "@/lib/fikape";
 import { calcTrustScore } from "@/lib/trustScore";
 import { notifyGarageBrandFollowers } from "@/lib/notifications";
 import { normalizeAttributeValues } from "@/lib/vehicleTypes";
+import { searchWikipediaImage } from "@/lib/vehicleImages";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -84,7 +85,7 @@ export async function POST(
     // Wikipedia: imageUrl yoksa otomatik çek (kullanıcı fotoğraflarından bağımsız)
     const wikiImage = existingProduct?.imageUrl
       ? null
-      : await fetchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
+      : await searchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
 
     // Kullanıcının önerdiği fotoğrafları ProductPhoto'ya ekle
     const suggestionPhotos: string[] = Array.isArray(suggestion.photoUrls) ? suggestion.photoUrls : [];
@@ -152,7 +153,7 @@ export async function POST(
     create: { slug: modelSlug, name: suggestion.modelName, brandId: brand.id },
   });
 
-  const imageUrl = await fetchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
+  const imageUrl = await searchWikipediaImage(suggestion.brandName, suggestion.modelName, suggestion.year);
   const attributes: Record<string, unknown> = {};
   if (suggestion.fuelType) attributes.fuel_type = suggestion.fuelType;
   Object.assign(attributes, normalizeAttributeValues(incomingAttrs ?? {}));
@@ -218,29 +219,6 @@ export async function POST(
   await notifyGarageBrandFollowers(product.id);
 
   return NextResponse.json({ ok: true, action: "APPROVED", productId: product.id, slug: product.slug });
-}
-
-async function fetchWikipediaImage(brand: string, model: string, year: number | null): Promise<string | null> {
-  try {
-    const query = `${brand} ${model}${year ? ` ${year}` : ""} automobile`;
-    const searchRes = await fetch(
-      `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&srlimit=1&format=json&origin=*`,
-      { signal: AbortSignal.timeout(4000) }
-    );
-    if (!searchRes.ok) return null;
-    const searchData = await searchRes.json();
-    const title: string | undefined = searchData.query?.search?.[0]?.title;
-    if (!title) return null;
-    const summaryRes = await fetch(
-      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`,
-      { signal: AbortSignal.timeout(4000) }
-    );
-    if (!summaryRes.ok) return null;
-    const summaryData = await summaryRes.json();
-    return summaryData.thumbnail?.source ?? null;
-  } catch {
-    return null;
-  }
 }
 
 function slugify(text: string): string {
