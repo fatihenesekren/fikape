@@ -52,18 +52,29 @@ export async function POST(req: Request) {
   // Aktif katalogda var mı?
   const activeProduct = await prisma.product.findFirst({
     where: { slug: baseSlug, status: "ACTIVE" },
-    select: { slug: true },
+    select: { slug: true, attributes: true },
   });
-  if (activeProduct) {
+
+  // Vites tipi farklıysa (ör. mevcut Otomatik, öneri Manuel) aynı araç
+  // sayılmaz — ayrı bir varyant ürünü olarak slug'a vites eklenip devam edilir.
+  // Vites belirtilmemişse veya mevcutla aynıysa değişiklik yok (eski slug'lar bozulmaz).
+  const activeTransmission = (activeProduct?.attributes as Record<string, string> | null)?.transmission;
+  const isDifferentVariant =
+    !!activeProduct && !!transmission && !!activeTransmission &&
+    slugify(transmission) !== slugify(activeTransmission);
+
+  if (activeProduct && !isDifferentVariant) {
     return NextResponse.json(
       { error: "Bu araç zaten katalogda mevcut", existingSlug: activeProduct.slug },
       { status: 409 }
     );
   }
 
+  const slug = isDifferentVariant ? `${baseSlug}-${slugify(transmission)}` : baseSlug;
+
   // Aynı PENDING ürün var mı? (başka bir kullanıcı önermişse veya önceki hatalı submit)
   const pendingProduct = await prisma.product.findFirst({
-    where: { slug: baseSlug, status: "PENDING" },
+    where: { slug, status: "PENDING" },
     select: { id: true, slug: true },
   });
   if (pendingProduct) {
@@ -95,7 +106,7 @@ export async function POST(req: Request) {
   // yerine mevcut kaydı PENDING'e çevirip yeni öneriye bağla (temiz slug korunur,
   // reddedilen çöp kayıt birikmez; eski REJECTED yorumlar olduğu gibi kalır)
   const rejectedProduct = await prisma.product.findFirst({
-    where: { slug: baseSlug, status: "REJECTED" },
+    where: { slug, status: "REJECTED" },
     select: { id: true, slug: true },
   });
   if (rejectedProduct) {
@@ -147,9 +158,9 @@ export async function POST(req: Request) {
   if (transmission) attributes.transmission = transmission;
 
   // Slug çakışma önlemi
-  let finalSlug = baseSlug;
+  let finalSlug = slug;
   const existing = await prisma.product.findUnique({ where: { slug: finalSlug } });
-  if (existing) finalSlug = `${baseSlug}-${Date.now()}`;
+  if (existing) finalSlug = `${slug}-${Date.now()}`;
 
   // PENDING ürün oluştur (isActive: false → public listelerden gizli)
   const product = await prisma.product.create({
