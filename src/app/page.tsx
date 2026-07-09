@@ -38,7 +38,7 @@ export default async function Home({
   const quizParam      = quiz ?? undefined;
   const activeCategory = kategori ?? "hepsi";
   const activeFuel     = yakit    ?? "hepsi";
-  const showFuelFilter = catFilter === "otomobil";
+  const showFuelFilter = catFilter === "otomobil" && !quizParam;
 
   // Trend — sadece filtre yokken, haftalık görüntülemesi olanlar
   const trendProducts = !catFilter
