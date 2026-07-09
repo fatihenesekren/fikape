@@ -10,7 +10,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
   const { id } = await params;
   const { status, kind } = await req.json();
-  if (!["NEW", "CONTACTED", "CONVERTED"].includes(status)) {
+  if (!["NEW", "CONTACTED", "PENDING", "COMPLETED", "NOT_DONE"].includes(status)) {
     return NextResponse.json({ error: "Geçersiz durum." }, { status: 400 });
   }
   if (!["insurance", "sale"].includes(kind)) {

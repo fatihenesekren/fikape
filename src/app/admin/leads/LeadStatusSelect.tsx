@@ -5,7 +5,9 @@ import { useState } from "react";
 const STATUS_LABEL: Record<string, string> = {
   NEW: "Yeni",
   CONTACTED: "İletişime Geçildi",
-  CONVERTED: "Dönüştü",
+  PENDING: "Beklemede",
+  COMPLETED: "Tamamlandı",
+  NOT_DONE: "Yapılmadı",
 };
 
 export function LeadStatusSelect({ id, status, kind }: { id: number; status: string; kind: "insurance" | "sale" }) {

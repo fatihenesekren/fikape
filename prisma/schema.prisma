@@ -684,7 +684,9 @@ model InsuranceLead {
 enum LeadStatus {
   NEW
   CONTACTED
-  CONVERTED
+  PENDING
+  COMPLETED
+  NOT_DONE
 }
 
 // ─────────────────────────────────────────────
