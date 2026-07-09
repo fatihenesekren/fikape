@@ -40,6 +40,15 @@ export default async function AdminPage() {
       badgeLabel: "",
       color: "gray",
     },
+    {
+      href: "/admin/urunler",
+      icon: "🔧",
+      label: "Teknik Özellikler",
+      desc: "Katalog araçlarının motor, kasa, güç gibi özelliklerini gir",
+      badge: 0,
+      badgeLabel: "",
+      color: "gray",
+    },
   ];
 
   return (
