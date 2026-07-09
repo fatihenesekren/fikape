@@ -107,6 +107,7 @@ function serialize(p: FuzzyRow | {
     imageUrl:     p.imageUrl ?? null,
     fuelType:     (attrs.fuel_type as string | undefined) ?? null,
     bodyType:     (attrs.body_type as string | undefined) ?? null,
+    transmission: (attrs.transmission as string | undefined) ?? null,
     categorySlug: categorySlug ?? null,
   };
 }

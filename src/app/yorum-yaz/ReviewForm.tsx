@@ -24,6 +24,7 @@ interface Product {
   imageUrl: string | null;
   fuelType: string | null;
   bodyType: string | null;
+  transmission: string | null;
   categorySlug: string | null;
 }
 
@@ -665,6 +666,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                         <div className="flex items-center gap-1.5 mt-0.5">
                           {p.year && <span className="text-xs text-gray-400">{p.year}</span>}
                           {fc && <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>{FUEL_ICONS[p.fuelType!]} {FUEL_LABELS[p.fuelType!]}</span>}
+                          {p.transmission && <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-600">⚙️ {p.transmission}</span>}
                         </div>
                       </div>
                     </button>
@@ -715,6 +717,11 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                 {selectedProduct.bodyType && BODY_LABELS[selectedProduct.bodyType] && (
                   <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-200 text-gray-600">
                     {BODY_LABELS[selectedProduct.bodyType]}
+                  </span>
+                )}
+                {selectedProduct.transmission && (
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
+                    ⚙️ {selectedProduct.transmission}
                   </span>
                 )}
               </div>

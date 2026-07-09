@@ -94,6 +94,7 @@ export default async function YorumYazPage({
       imageUrl:     p.imageUrl ?? null,
       fuelType:     (attrs.fuel_type as string | undefined) ?? null,
       bodyType:     (attrs.body_type as string | undefined) ?? null,
+      transmission: (attrs.transmission as string | undefined) ?? null,
       categorySlug: p.category?.slug ?? null,
     };
   });
