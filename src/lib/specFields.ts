@@ -89,3 +89,17 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "tank_l",        label: "Yakıt Dep.",    type: "number", unit: "L" },
   ],
 };
+
+// Kategori bazlı "kritik" alanlar — karşılaştırma/filtrelemede kullanılan,
+// admin onayında yüksek güvenle dolu olması beklenen alanlar. Bunların hepsi
+// "high" güvenle doluysa öneri otomatik onaya hazır sayılır (bkz. vehicleSpecs.ts
+// readyForAutoApprove). Diğer alanlar (tork, 0-100, bagaj vb.) eksik/düşük
+// güvenli olsa da admin'i bloklamaz.
+export const CRITICAL_FIELDS: Record<string, string[]> = {
+  otomobil:      ["engine_cc", "power_hp", "transmission", "drivetrain", "body_type"],
+  motosiklet:    ["engine_cc", "power_hp", "moto_type"],
+  "e-scooter":   ["motor_watt", "max_speed_kmh"],
+  "e-bisiklet":  ["motor_watt", "bike_type"],
+  karavan:       ["karavan_type", "berth"],
+  kamyonet:      ["body_type", "engine_cc", "power_hp"],
+};

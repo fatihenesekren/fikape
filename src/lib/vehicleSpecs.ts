@@ -435,3 +435,99 @@ export async function fetchVerifiedVehicleSpecs(
     : null;
   return { specs: merged, source, verifiedTitle: page?.title ?? null };
 }
+
+// ── Güven skorlaması ─────────────────────────────────────────────────────────
+// Hiçbir ücretsiz kaynak (CarQuery + Wikipedia HTML parse) tek başına %100
+// doğruluk garantisi vermiyor (CarQuery çoğu zaman erişilemez, Wikipedia
+// regex ile parse edilen serbest metin/tablo). Bu yüzden "veri bulundu mu"
+// yerine "bu değere ne kadar güvenilir" sorusuna cevap veren bir katman:
+// iki bağımsız kaynak aynı değerde mutabıksa yüksek güven, tek kaynak orta,
+// çelişki varsa düşük+işaretli. Admin ekranı bu skora göre triaj yapar —
+// yüksek güvenli alanlara hiç bakmasına gerek kalmaz.
+export type SpecConfidence = "high" | "medium" | "low";
+export interface SpecFieldMeta {
+  value: string;
+  confidence: SpecConfidence;
+  source: string;
+  conflictWith?: { source: string; value: string };
+}
+export type SpecFieldMap = Record<string, SpecFieldMeta>;
+
+// Alan başına makul değer aralığı — dışındaki değerler veri hatası kabul
+// edilip HİÇ yazılmaz (susmuş boşluk, yanlış değerden iyidir).
+const REASONABLE_RANGES: Record<string, [number, number]> = {
+  engine_cc:     [600, 8000],
+  power_hp:      [40, 800],
+  torque_nm:     [50, 1200],
+  zero_to_100:   [2, 25],
+  top_speed_kmh: [80, 350],
+  tank_l:        [20, 150],
+  weight_kg:     [700, 4000],
+  boot_l:        [50, 2000],
+  battery_kwh:   [10, 200],
+  ev_range_km:   [50, 800],
+};
+
+const NUMERIC_FIELDS = new Set(Object.keys(REASONABLE_RANGES));
+
+function inReasonableRange(key: string, raw: string): boolean {
+  const range = REASONABLE_RANGES[key];
+  if (!range) return true;
+  const n = parseFloat(raw);
+  if (Number.isNaN(n)) return false;
+  return n >= range[0] && n <= range[1];
+}
+
+function valuesAgree(key: string, a: string, b: string): boolean {
+  if (NUMERIC_FIELDS.has(key)) {
+    const na = parseFloat(a), nb = parseFloat(b);
+    if (Number.isNaN(na) || Number.isNaN(nb)) return false;
+    return Math.abs(na - nb) / Math.max(na, nb) <= 0.05; // ±%5 tolerans
+  }
+  return a.trim().toLowerCase() === b.trim().toLowerCase();
+}
+
+// fetchVerifiedVehicleSpecs ile aynı kaynak zincirini kullanır, ama alan
+// bazında güven skoru ve çakışma bilgisi ekler. Admin onay ekranı bunu
+// tüketir (bkz. /api/admin/fetch-specs).
+export async function fetchVehicleSpecsWithConfidence(
+  brand: string, model: string, year: number | null, trimHint: string | null
+): Promise<{ specs: SpecFieldMap; verifiedTitle: string | null }> {
+  const page = await findVerifiedWikipediaPage(brand, model, year);
+  const [cqResult, wikiSpecs] = await Promise.all([
+    fetchCarQuery(brand, model, year != null ? String(year) : null, trimHint),
+    page ? specsFromTitle(page.title, trimHint) : fetchWikipediaSpecs(brand, model, trimHint),
+  ]);
+
+  const wikiSource = page ? "wikipedia_verified" : "wikipedia_text";
+  const cqSpecs = cqResult.found ? cqResult.specs : {};
+
+  const keys = new Set([...Object.keys(wikiSpecs), ...Object.keys(cqSpecs)]);
+  const result: SpecFieldMap = {};
+
+  for (const key of keys) {
+    const wikiVal = wikiSpecs[key];
+    const cqVal = cqSpecs[key];
+
+    let meta: SpecFieldMeta;
+    if (wikiVal && cqVal) {
+      if (valuesAgree(key, wikiVal, cqVal)) {
+        meta = { value: cqVal, confidence: "high", source: `carquery+${wikiSource}` };
+      } else {
+        meta = {
+          value: cqVal, confidence: "low", source: "carquery",
+          conflictWith: { source: wikiSource, value: wikiVal },
+        };
+      }
+    } else if (cqVal) {
+      meta = { value: cqVal, confidence: "medium", source: "carquery" };
+    } else {
+      meta = { value: wikiVal, confidence: page ? "medium" : "low", source: wikiSource };
+    }
+
+    if (!inReasonableRange(key, meta.value)) continue; // aralık dışı — hiç yazma
+    result[key] = meta;
+  }
+
+  return { specs: result, verifiedTitle: page?.title ?? null };
+}

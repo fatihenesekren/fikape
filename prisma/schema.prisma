@@ -560,6 +560,11 @@ model VehicleSuggestion {
   // CarQuery'den seçilen ham veri
   carQueryData Json?
 
+  // Admin onayı sırasında hesaplanan alan-bazlı güven skoru/kaynak
+  // ({ engine_cc: { confidence, source, conflictWith? }, ... }) — hangi
+  // teknik özelliğin ne kadar güvenilir olduğunu geriye dönük izlemek için.
+  specConfidence Json?
+
   // Öneri kabul edildiğinde oluşturulan ürün (PENDING → ACTIVE)
   productId    Int?
   product      Product? @relation(fields: [productId], references: [id], onDelete: SetNull)

@@ -33,6 +33,13 @@ const CAT_LABELS: Record<string, string> = {
   "e-bisiklet": "E-Bisiklet", karavan: "Karavan", kamyonet: "Kamyonet",
 };
 
+type SpecConfidenceMeta = {
+  confidence: "high" | "medium" | "low";
+  source: string;
+  conflictWith?: { source: string; value: string };
+};
+type SpecConfidenceMap = Record<string, SpecConfidenceMeta>;
+
 // ── Ana bileşen ───────────────────────────────────────────────────────────────
 
 export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Suggestion[] }) {
@@ -45,7 +52,9 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
   const [attrs, setAttrs]     = useState<Record<string, string>>({});
   const [errorMsg, setErrorMsg]     = useState<string | null>(null);
   const [fetchingSpecs, setFetchingSpecs] = useState(false);
-  const [specSource, setSpecSource]       = useState<string | null>(null);
+  const [specConfidence, setSpecConfidence] = useState<SpecConfidenceMap>({});
+  const [readyForAutoApprove, setReadyForAutoApprove] = useState(false);
+  const [criticalFieldsMissing, setCriticalFieldsMissing] = useState<string[]>([]);
   const [previewImage, setPreviewImage]   = useState<string | null>(null);
   const [imageChecked, setImageChecked]   = useState(false);
 
@@ -61,6 +70,13 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
       const next = { ...prev };
       if (value === "") delete next[key];
       else next[key] = value;
+      return next;
+    });
+    // Admin bir alanı elle değiştirdiğinde otomatik güven rozeti anlamsızlaşır
+    setSpecConfidence((prev) => {
+      if (!(key in prev)) return prev;
+      const next = { ...prev };
+      delete next[key];
       return next;
     });
   }
@@ -79,6 +95,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
           customSlug: customSlug.trim() || undefined,
           attributes: modal.action === "APPROVED" && Object.keys(attrs).length > 0 ? attrs : undefined,
           imageUrl: modal.action === "APPROVED" && imageChecked ? previewImage : undefined,
+          specConfidence: modal.action === "APPROVED" && Object.keys(specConfidence).length > 0 ? specConfidence : undefined,
         }),
       });
       const data = await res.json();
@@ -90,7 +107,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
             : s
         )
       );
-      setModal(null); setAdminNote(""); setCustomSlug(""); setAttrs({});
+      setModal(null); setAdminNote(""); setCustomSlug(""); setAttrs({}); setSpecConfidence({});
     } catch {
       setErrorMsg("Bir hata oluştu");
     } finally {
@@ -99,7 +116,8 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
   }
 
   async function openModal(suggestion: Suggestion, action: "APPROVED" | "REJECTED") {
-    setErrorMsg(null); setAdminNote(""); setSpecSource(null);
+    setErrorMsg(null); setAdminNote(""); setSpecConfidence({});
+    setReadyForAutoApprove(false); setCriticalFieldsMissing([]);
     setPreviewImage(null); setImageChecked(false);
     if (!suggestion.productId) {
       const parts = [suggestion.brandName, suggestion.modelName, suggestion.trimName, suggestion.year]
@@ -124,15 +142,25 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
         const params = new URLSearchParams({
           brand: suggestion.brandName,
           model: suggestion.modelName,
+          category: suggestion.categorySlug,
           ...(suggestion.year ? { year: String(suggestion.year) } : {}),
           ...(suggestion.trimName ? { trim: suggestion.trimName } : {}),
         });
         const res  = await fetch(`/api/admin/fetch-specs?${params}`);
         const data = await res.json();
-        if (data.specs && Object.keys(data.specs).length > 0) {
-          setAttrs((prev) => ({ ...data.specs, ...prev })); // öneri verileri (fuel_type) üste çıksın
-          setSpecSource(data.source ?? null);
+        const specs = data.specs as Record<string, { value: string; confidence: "high" | "medium" | "low"; source: string; conflictWith?: { source: string; value: string } }> | undefined;
+        if (specs && Object.keys(specs).length > 0) {
+          const flatValues: Record<string, string> = {};
+          const confidenceMap: SpecConfidenceMap = {};
+          for (const [key, meta] of Object.entries(specs)) {
+            flatValues[key] = meta.value;
+            confidenceMap[key] = { confidence: meta.confidence, source: meta.source, conflictWith: meta.conflictWith };
+          }
+          setAttrs((prev) => ({ ...flatValues, ...prev })); // öneri verileri (fuel_type) üste çıksın
+          setSpecConfidence(confidenceMap);
         }
+        setReadyForAutoApprove(!!data.readyForAutoApprove);
+        setCriticalFieldsMissing(data.criticalFieldsMissing ?? []);
         setPreviewImage(data.imageUrl ?? null);
         setImageChecked(true);
       } catch { setImageChecked(true); }
@@ -315,22 +343,29 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                   </div>
                 )}
 
-                {!fetchingSpecs && specSource && (
-                  <div className="mb-2 flex flex-wrap items-center gap-3">
-                    <p className="text-xs text-green-600">✓ {specSource} — alanlar otomatik dolduruldu.</p>
+                {!fetchingSpecs && Object.keys(specConfidence).length > 0 && (
+                  <div className={`mb-2 px-3 py-2 rounded-xl text-xs ${
+                    readyForAutoApprove ? "bg-green-50 border border-green-100 text-green-700" : "bg-amber-50 border border-amber-100 text-amber-700"
+                  }`}>
+                    {readyForAutoApprove
+                      ? "✓ Tüm kritik alanlar yüksek güvenle doğrulandı — direkt onaylayabilirsin."
+                      : `⚠ ${criticalFieldsMissing.length} kritik alan gözden geçirilmeli: ${criticalFieldsMissing.join(", ")}`}
                     {(!attrs.weight_kg || !attrs.boot_l) && (
-                      <a
-                        href={`https://www.auto-data.net/en/search?q=${encodeURIComponent(`${modal.suggestion.brandName} ${modal.suggestion.modelName}`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-blue-600 hover:underline"
-                      >
-                        🔗 Ağırlık/Bagaj için ara →
-                      </a>
+                      <>
+                        {" "}
+                        <a
+                          href={`https://www.auto-data.net/en/search?q=${encodeURIComponent(`${modal.suggestion.brandName} ${modal.suggestion.modelName}`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:no-underline"
+                        >
+                          Ağırlık/Bagaj için ara →
+                        </a>
+                      </>
                     )}
                   </div>
                 )}
-                {!fetchingSpecs && !specSource && modal.suggestion.categorySlug === "otomobil" && (
+                {!fetchingSpecs && Object.keys(specConfidence).length === 0 && modal.suggestion.categorySlug === "otomobil" && (
                   <div className="mb-2 flex flex-wrap items-center gap-3">
                     <p className="text-xs text-gray-400">Otomatik veri bulunamadı.</p>
                     <a
@@ -347,6 +382,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                   categorySlug={modal.suggestion.categorySlug}
                   attrs={attrs}
                   onChange={handleAttrChange}
+                  confidence={specConfidence}
                 />
               </>
             )}
@@ -372,7 +408,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
 
             <div className="flex gap-2 justify-end">
               <button
-                onClick={() => { setModal(null); setErrorMsg(null); setAttrs({}); }}
+                onClick={() => { setModal(null); setErrorMsg(null); setAttrs({}); setSpecConfidence({}); }}
                 className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50"
               >
                 İptal

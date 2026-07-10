@@ -28,12 +28,13 @@ export async function POST(
   const { id } = await params;
   const suggestionId = Number(id);
   const body = await req.json();
-  const { action, adminNote, customSlug, attributes: incomingAttrs, imageUrl: previewedImageUrl } = body as {
+  const { action, adminNote, customSlug, attributes: incomingAttrs, imageUrl: previewedImageUrl, specConfidence } = body as {
     action: "APPROVED" | "REJECTED";
     adminNote?: string;
     customSlug?: string;
     attributes?: Record<string, string>;
     imageUrl?: string | null;
+    specConfidence?: Record<string, unknown>;
   };
 
   if (action !== "APPROVED" && action !== "REJECTED") {
@@ -121,7 +122,11 @@ export async function POST(
     });
     await prisma.vehicleSuggestion.update({
       where: { id: suggestionId },
-      data: { status: "APPROVED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: Number(session.user.id) },
+      data: {
+        status: "APPROVED", adminNote: adminNote ?? null,
+        reviewedAt: new Date(), reviewedBy: Number(session.user.id),
+        specConfidence: (specConfidence ?? undefined) as Parameters<typeof prisma.vehicleSuggestion.update>[0]["data"]["specConfidence"],
+      },
     });
     await notifyGarageBrandFollowers(suggestion.productId);
     return NextResponse.json({ ok: true, action: "APPROVED", productId: suggestion.productId });
@@ -220,7 +225,11 @@ export async function POST(
 
   await prisma.vehicleSuggestion.update({
     where: { id: suggestionId },
-    data: { status: "APPROVED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: Number(session.user.id) },
+    data: {
+      status: "APPROVED", adminNote: adminNote ?? null,
+      reviewedAt: new Date(), reviewedBy: Number(session.user.id),
+      specConfidence: (specConfidence ?? undefined) as Parameters<typeof prisma.vehicleSuggestion.update>[0]["data"]["specConfidence"],
+    },
   });
 
   await notifyGarageBrandFollowers(product.id);
