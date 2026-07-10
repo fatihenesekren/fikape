@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { SpecForm } from "@/components/admin/SpecForm";
 import { parseSahibindenSpecs } from "@/lib/sahibindenParse";
-import { CRITICAL_FIELDS } from "@/lib/specFields";
+import { getCriticalFields } from "@/lib/specFields";
 
 type Suggestion = {
   id: number;
@@ -98,7 +98,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
     const nextConfidence = { ...specConfidence };
     for (const key of keys) nextConfidence[key] = { confidence: "high", source: "sahibinden" };
 
-    const critical = CRITICAL_FIELDS[modal.suggestion.categorySlug] ?? [];
+    const critical = getCriticalFields(modal.suggestion.categorySlug, modal.suggestion.fuelType);
     setAttrs((prev) => ({ ...prev, ...parsed }));
     setSpecConfidence(nextConfidence);
     setReadyForAutoApprove(critical.length > 0 && critical.every((f) => nextConfidence[f]?.confidence === "high"));
@@ -170,6 +170,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
           category: suggestion.categorySlug,
           ...(suggestion.year ? { year: String(suggestion.year) } : {}),
           ...(suggestion.trimName ? { trim: suggestion.trimName } : {}),
+          ...(suggestion.fuelType ? { fuel: suggestion.fuelType } : {}),
         });
         const res  = await fetch(`/api/admin/fetch-specs?${params}`);
         const data = await res.json();

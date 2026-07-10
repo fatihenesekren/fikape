@@ -91,7 +91,8 @@ export function parseSahibindenSpecs(html: string): Record<string, string> {
     } else if (t.includes("motor hacmi")) {
       const n = extractNumber(value);
       if (n) specs.engine_cc = String(Math.round(parseFloat(n)));
-    } else if (t.includes("maksimum tork")) {
+    } else if (t.includes("tork")) {
+      // "Maksimum Tork" (İçten yanmalı) veya sadece "Tork" (elektrikli) — ikisi de aynı alana gider
       const n = extractNumber(value);
       if (n) specs.torque_nm = String(Math.round(parseFloat(n)));
     } else if (t.includes("hızlanma")) {
@@ -109,6 +110,11 @@ export function parseSahibindenSpecs(html: string): Record<string, string> {
     } else if (t.includes("bagaj")) {
       const n = extractNumber(value);
       if (n) specs.boot_l = n;
+    } else if (t === "menzil") {
+      // Tam eşleşme şart — "Şarj Süresi" gibi başlıklar da "süre/menzil" gibi
+      // kelimeler içerebiliyor, yanlışlıkla eşleşmesin
+      const n = extractNumber(value);
+      if (n) specs.ev_range_km = n;
     }
   }
 

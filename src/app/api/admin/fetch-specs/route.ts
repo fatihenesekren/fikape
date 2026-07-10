@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { fetchVehicleSpecsWithConfidence } from "@/lib/vehicleSpecs";
 import { findVerifiedVehicleImage } from "@/lib/wikidataImage";
-import { CRITICAL_FIELDS } from "@/lib/specFields";
+import { getCriticalFields } from "@/lib/specFields";
 
 export const runtime = "nodejs";
 
@@ -16,6 +16,7 @@ export async function GET(req: Request) {
   const year         = searchParams.get("year") ?? null;
   const trimName     = searchParams.get("trim") ?? null;
   const categorySlug = searchParams.get("category") ?? "";
+  const fuelType     = searchParams.get("fuel") ?? null;
 
   if (!brand || !model) return NextResponse.json({ specs: {} });
 
@@ -25,7 +26,7 @@ export async function GET(req: Request) {
     findVerifiedVehicleImage(brand, model, yearNum),
   ]);
 
-  const criticalFields = CRITICAL_FIELDS[categorySlug] ?? [];
+  const criticalFields = getCriticalFields(categorySlug, fuelType);
   const criticalFieldsMissing = criticalFields.filter(
     (f) => specResult.specs[f]?.confidence !== "high"
   );

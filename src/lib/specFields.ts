@@ -103,3 +103,12 @@ export const CRITICAL_FIELDS: Record<string, string[]> = {
   karavan:       ["karavan_type", "berth"],
   kamyonet:      ["body_type", "engine_cc", "power_hp"],
 };
+
+// Elektrikli araçların motor hacmi (engine_cc) olmaz — bu alanı kritik saymaya
+// devam etmek her EV onayında sahte "gözden geçirilmeli" uyarısı üretir.
+// EV ise engine_cc yerine menzil (ev_range_km) kritik alan olur.
+export function getCriticalFields(categorySlug: string, fuelType?: string | null): string[] {
+  const base = CRITICAL_FIELDS[categorySlug] ?? [];
+  if (fuelType !== "EV") return base;
+  return base.map((f) => (f === "engine_cc" ? "ev_range_km" : f));
+}
