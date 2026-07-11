@@ -20,7 +20,7 @@ const TINTS = ["var(--fi-bg)", "var(--ka-bg)", "var(--pe-bg)"];
 // Kapalı banner'da dönüşümlü niyet soruları — ilk eleman varsayılan etiket,
 // prefers-reduced-motion açıkken döngü hiç başlamaz ve bu sabit kalır.
 const BANNER_PHRASES = [
-  "4 Soru · 30 Saniye",
+  "4 Soru · 10 Saniye",
   "Yeni bir araç mı almayı düşünüyorsun?",
   "Şehir içi mi, uzun yol mu?",
   "Elektrikliye geçmeyi mi düşünüyorsun?",
