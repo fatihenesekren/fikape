@@ -1,7 +1,7 @@
 const AVATAR_COLORS = ["#0C447C", "#27500A", "#712B13", "#6B3A8A", "#0D6E5A", "#185FA5", "#993C1D", "#3B6D11"];
 
 const DICEBEAR_STYLE = "adventurer";
-const DICEBEAR_OPTION_COUNT = 24;
+const DICEBEAR_OPTION_COUNT = 40;
 
 export function getInitials(name: string | null | undefined): string {
   const trimmed = (name ?? "").trim();
