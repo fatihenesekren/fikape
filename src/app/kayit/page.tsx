@@ -118,10 +118,10 @@ function KayitForm() {
                 setDisplayName(e.target.value);
                 e.target.setCustomValidity("");
               }}
-              onInvalid={(e) => e.currentTarget.setCustomValidity("Görünen ad en az 3, en fazla 40 karakter olmalıdır.")}
+              onInvalid={(e) => e.currentTarget.setCustomValidity("Görünen ad en az 3, en fazla 30 karakter olmalıdır.")}
               required
               minLength={3}
-              maxLength={40}
+              maxLength={30}
               placeholder="Ahmet K."
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
             />

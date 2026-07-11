@@ -10,8 +10,8 @@ export async function PATCH(req: NextRequest) {
 
   const { displayName } = await req.json();
   const trimmed = displayName?.trim();
-  if (!trimmed || trimmed.length < 3 || trimmed.length > 40) {
-    return NextResponse.json({ error: "Ad 3-40 karakter olmalı" }, { status: 400 });
+  if (!trimmed || trimmed.length < 3 || trimmed.length > 30) {
+    return NextResponse.json({ error: "Ad 3-30 karakter olmalı" }, { status: 400 });
   }
 
   await prisma.user.update({
