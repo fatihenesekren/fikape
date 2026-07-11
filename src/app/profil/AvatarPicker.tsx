@@ -5,6 +5,38 @@ import { useSession } from "next-auth/react";
 import { Avatar } from "@/components/Avatar";
 import { buildAvatarOptions, dicebearUrl } from "@/lib/avatar";
 
+// DiceBear ücretsiz API bazen tekil isteklerde geçici hata dönebiliyor
+// (SLA'sız üçüncü parti servis) — bir kez sessizce yeniden dener, yine
+// başarısız olursa çirkin "kırık görsel" yerine nötr bir placeholder gösterir.
+function AvatarOptionImg({ src }: { src: string }) {
+  const [attempt, setAttempt] = useState(0);
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return (
+      <div className="w-full aspect-square rounded-lg bg-gray-100 flex items-center justify-center text-gray-300 text-lg">
+        ?
+      </div>
+    );
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element -- DiceBear'dan üretilen SVG
+    <img
+      src={attempt > 0 ? `${src}&retry=${attempt}` : src}
+      alt="Avatar seçeneği"
+      width={64}
+      height={64}
+      className="w-full rounded-lg"
+      loading="lazy"
+      onError={() => {
+        if (attempt < 1) setAttempt((a) => a + 1);
+        else setFailed(true);
+      }}
+    />
+  );
+}
+
 export function AvatarPicker({
   userId,
   displayName,
@@ -70,8 +102,7 @@ export function AvatarPicker({
                 disabled={loading}
                 className="rounded-xl border border-gray-100 hover:border-gray-300 p-1.5 transition-colors disabled:opacity-50"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element -- DiceBear'dan üretilen SVG */}
-                <img src={dicebearUrl(opt.seed, opt.style)} alt="Avatar seçeneği" width={64} height={64} className="w-full rounded-lg" loading="lazy" />
+                <AvatarOptionImg src={dicebearUrl(opt.seed, opt.style)} />
               </button>
             ))}
           </div>
