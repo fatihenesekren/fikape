@@ -36,6 +36,7 @@ export async function POST(
       select: {
         id: true,
         userId: true,
+        productId: true,
         user: { select: { email: true, displayName: true } },
         product: { select: { name: true, slug: true } },
       },
@@ -47,6 +48,20 @@ export async function POST(
   if (!user?.emailVerifiedAt) {
     return NextResponse.json(
       { error: "Cevap yazmak için e-posta adresinizi doğrulamanız gerekiyor." },
+      { status: 403 }
+    );
+  }
+  if (question.userId === userId) {
+    return NextResponse.json({ error: "Kendi sorunuzu cevaplayamazsınız." }, { status: 403 });
+  }
+
+  const ownership = await prisma.userProduct.findUnique({
+    where: { userId_productId: { userId, productId: question.productId } },
+    select: { id: true },
+  });
+  if (!ownership) {
+    return NextResponse.json(
+      { error: "Sadece bu aracı garajında bulunduran veya kullanıp satmış kullanıcılar cevap verebilir." },
       { status: 403 }
     );
   }

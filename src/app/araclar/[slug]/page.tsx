@@ -262,6 +262,7 @@ export default async function VehicleDetailPage({
     where: { productId: product.id },
     select: {
       id: true,
+      userId: true,
       text: true,
       createdAt: true,
       user: { select: { displayName: true } },
@@ -279,6 +280,7 @@ export default async function VehicleDetailPage({
   }).catch(() => []);
   const questions = questionsRaw.map((q) => ({
     id: q.id,
+    userId: q.userId,
     text: q.text,
     displayName: q.user.displayName,
     createdAt: q.createdAt.toISOString(),
@@ -534,7 +536,14 @@ export default async function VehicleDetailPage({
   } : null;
 
   const qnaContent = (
-    <QnaSection productSlug={slug} questions={questions} isLoggedIn={!!userId} categorySlug={categorySlug} />
+    <QnaSection
+      productSlug={slug}
+      questions={questions}
+      isLoggedIn={!!userId}
+      currentUserId={userId}
+      canAnswer={!!userGarageEntry}
+      categorySlug={categorySlug}
+    />
   );
 
   const left = specs.filter((_, i) => i % 2 === 0);

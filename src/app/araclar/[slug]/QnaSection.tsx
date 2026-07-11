@@ -12,6 +12,7 @@ interface AnswerData {
 
 interface QuestionData {
   id: number;
+  userId: number;
   text: string;
   displayName: string | null;
   createdAt: string;
@@ -19,10 +20,12 @@ interface QuestionData {
 }
 
 interface Props {
-  productSlug:  string;
-  questions:    QuestionData[];
-  isLoggedIn:   boolean;
-  categorySlug: string;
+  productSlug:   string;
+  questions:     QuestionData[];
+  isLoggedIn:    boolean;
+  currentUserId: number | null;
+  canAnswer:     boolean;
+  categorySlug:  string;
 }
 
 // Kategoriye uygun örnek sorular — her yüklemede havuzdan rastgele biri gösterilir
@@ -126,7 +129,7 @@ function AnswerForm({ questionId, onDone }: { questionId: number; onDone: () => 
   );
 }
 
-export function QnaSection({ productSlug, questions, isLoggedIn, categorySlug }: Props) {
+export function QnaSection({ productSlug, questions, isLoggedIn, currentUserId, canAnswer, categorySlug }: Props) {
   const router = useRouter();
   const [askText, setAskText] = useState("");
   const [askLoading, setAskLoading] = useState(false);
@@ -208,7 +211,7 @@ export function QnaSection({ productSlug, questions, isLoggedIn, categorySlug }:
               </div>
             )}
 
-            {isLoggedIn && (
+            {isLoggedIn && canAnswer && currentUserId !== q.userId && (
               replyOpenId === q.id ? (
                 <AnswerForm questionId={q.id} onDone={() => { setReplyOpenId(null); router.refresh(); }} />
               ) : (
