@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { checkContent } from "@/lib/reviewValidation";
 import { answerCreateSchema, formatZodError } from "@/lib/schemas";
 import { sendQuestionAnsweredEmail } from "@/lib/email";
+import { createNotification } from "@/lib/notification";
 import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 export async function POST(
@@ -71,13 +72,20 @@ export async function POST(
   });
 
   if (question.userId !== userId) {
+    const vehicleName = stripGenRangeAnywhere(question.product.name);
     sendQuestionAnsweredEmail({
       to: question.user.email,
       displayName: question.user.displayName,
-      vehicleName: stripGenRangeAnywhere(question.product.name),
+      vehicleName,
       productSlug: question.product.slug,
       userId: question.userId,
     }).catch(() => {});
+    createNotification({
+      userId: question.userId,
+      type: "QUESTION_ANSWERED",
+      message: `${vehicleName} hakkında sorduğun soru cevaplandı`,
+      link: `/araclar/${question.product.slug}?sekme=soru-cevap`,
+    });
   }
 
   return NextResponse.json({ ok: true, answerId: answer.id }, { status: 201 });

@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { sendNewModelInBrandEmail } from "@/lib/email";
+import { createNotification } from "@/lib/notification";
 import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 /**
@@ -24,15 +25,22 @@ export async function notifyGarageBrandFollowers(newProductId: number) {
       distinct: ["userId"],
     });
 
+    const vehicleName = stripGenRangeAnywhere(product.name);
     for (const f of followers) {
       await sendNewModelInBrandEmail({
         to: f.user.email,
         displayName: f.user.displayName,
         brandName: product.brand.name,
-        vehicleName: stripGenRangeAnywhere(product.name),
+        vehicleName,
         productSlug: product.slug,
         userId: f.user.id,
       }).catch(() => {});
+      createNotification({
+        userId: f.user.id,
+        type: "NEW_MODEL_IN_BRAND",
+        message: `Garajındaki ${product.brand.name} markasına yeni bir model eklendi: ${vehicleName}`,
+        link: `/araclar/${product.slug}`,
+      });
     }
   } catch {
     // best-effort — bildirim başarısız olsa da admin onay akışı etkilenmemeli

@@ -3,6 +3,7 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sendReviewHelpfulEmail } from "@/lib/email";
+import { createNotification } from "@/lib/notification";
 import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 const bodySchema = z.object({ isHelpful: z.boolean() });
@@ -52,13 +53,20 @@ export async function POST(
 
   // İlk "faydalı" oyu yorum sahibine bildirim gönderir — her oyda spam olmasın diye sadece ilk kez
   if (isHelpful && priorHelpfulCount === 0 && review.userId !== userId) {
+    const vehicleName = stripGenRangeAnywhere(review.product.name);
     sendReviewHelpfulEmail({
       to: review.user.email,
       displayName: review.user.displayName,
-      vehicleName: stripGenRangeAnywhere(review.product.name),
+      vehicleName,
       reviewId,
       userId: review.userId,
     }).catch(() => {});
+    createNotification({
+      userId: review.userId,
+      type: "REVIEW_HELPFUL",
+      message: `${vehicleName} için yazdığın yorumu birisi faydalı buldu`,
+      link: `/yorumum/${reviewId}/paylas`,
+    });
   }
 
   const [helpfulCount, notHelpfulCount] = await Promise.all([

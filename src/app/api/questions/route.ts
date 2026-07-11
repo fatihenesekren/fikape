@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { checkContent } from "@/lib/reviewValidation";
 import { questionCreateSchema, formatZodError } from "@/lib/schemas";
 import { sendNewQuestionEmail } from "@/lib/email";
+import { createNotification } from "@/lib/notification";
 import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 export async function POST(req: Request) {
@@ -57,15 +58,22 @@ export async function POST(req: Request) {
   for (const r of [...reviewers, ...garageOwners]) {
     recipients.set(r.user.id, { email: r.user.email, displayName: r.user.displayName });
   }
+  const vehicleName = stripGenRangeAnywhere(product.name);
   for (const [recipientId, r] of recipients) {
     sendNewQuestionEmail({
       to: r.email,
       displayName: r.displayName,
-      vehicleName: stripGenRangeAnywhere(product.name),
+      vehicleName,
       questionText: text,
       productSlug,
       userId: recipientId,
     }).catch(() => {});
+    createNotification({
+      userId: recipientId,
+      type: "NEW_QUESTION",
+      message: `${vehicleName} hakkında yeni bir soru soruldu: "${text}"`,
+      link: `/araclar/${productSlug}?sekme=soru-cevap`,
+    });
   }
 
   return NextResponse.json({ ok: true, questionId: question.id }, { status: 201 });

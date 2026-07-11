@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import { Avatar } from "@/components/Avatar";
+import { NotificationBell } from "@/components/NotificationBell";
 
 export function AuthNav() {
   const { data: session, status } = useSession();
@@ -53,6 +54,8 @@ export function AuthNav() {
         >
           Çıkış
         </button>
+
+        <NotificationBell />
 
         {/* Mobil hesap menüsü — Admin/Garajım/Profil/Çıkış masaüstünde header'da inline,
             mobilde hidden sm:block ile gizli olduğu için buraya toplanıyor. */}

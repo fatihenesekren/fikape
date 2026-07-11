@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { EditName } from "./EditName";
 import { AvatarPicker } from "./AvatarPicker";
 import { NotificationToggle } from "./NotificationToggle";
+import { NotificationsSection } from "./NotificationsSection";
 import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { TRUST_PROFILE } from "@/lib/trustBadge";
@@ -50,12 +51,18 @@ export default async function ProfilPage() {
   const publishedReviews = reviews.filter((r) => r.status === "PUBLISHED");
   const reviewIds = publishedReviews.map((r) => r.id);
 
-  const [garageCount, helpfulCount, foundingIds] = await Promise.all([
+  const [garageCount, helpfulCount, foundingIds, notifications] = await Promise.all([
     prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } }),
     reviewIds.length
       ? prisma.reviewHelpfulVote.count({ where: { reviewId: { in: reviewIds }, isHelpful: true } })
       : Promise.resolve(0),
     getFoundingReviewIds([...new Set(publishedReviews.map((r) => r.productId))]),
+    prisma.notification.findMany({
+      where: { userId },
+      orderBy: { createdAt: "desc" },
+      take: 20,
+      select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true },
+    }),
   ]);
 
   const foundingCount = publishedReviews.filter((r) => foundingIds.has(r.id)).length;
@@ -170,6 +177,10 @@ export default async function ProfilPage() {
           Yorum Yaz →
         </Link>
       </div>
+
+      <NotificationsSection
+        notifications={notifications.map((n) => ({ ...n, createdAt: n.createdAt.toISOString() }))}
+      />
 
       <InviteBox referralCode={user.referralCode} referralCount={user._count.referrals} />
 

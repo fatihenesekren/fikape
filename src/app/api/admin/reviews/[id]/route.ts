@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sendReviewPublishedEmail } from "@/lib/email";
+import { createNotification } from "@/lib/notification";
 import { recordScoreSnapshot, recordModerationLog } from "@/lib/security";
 import { calcTrustScore } from "@/lib/trustScore";
 import { stripModelGenRange } from "@/lib/modelDisplay";
@@ -71,14 +72,23 @@ export async function PATCH(
         : []),
     ]);
 
-    if (review?.user.email) {
-      sendReviewPublishedEmail({
-        to: review.user.email,
-        displayName: review.user.displayName,
-        vehicleName: `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`,
-        reviewId,
+    if (review) {
+      const vehicleName = `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`;
+      if (review.user.email) {
+        sendReviewPublishedEmail({
+          to: review.user.email,
+          displayName: review.user.displayName,
+          vehicleName,
+          reviewId,
+          userId: review.userId,
+        }).catch(() => {});
+      }
+      createNotification({
         userId: review.userId,
-      }).catch(() => {});
+        type: "REVIEW_PUBLISHED",
+        message: `${vehicleName} için yazdığın yorum yayınlandı`,
+        link: `/yorumum/${reviewId}/paylas`,
+      });
     }
 
     if (review) {

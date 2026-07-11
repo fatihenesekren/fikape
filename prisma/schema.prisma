@@ -181,8 +181,40 @@ model User {
   insuranceLeads      InsuranceLead[]
   saleLeads           SaleLead[]
   plusWaitlistEntries PlusWaitlistEntry[]
+  notifications       Notification[]
 
   @@map("users")
+}
+
+// ─────────────────────────────────────────────
+// SİTE İÇİ BİLDİRİMLER — e-posta tercihinden bağımsız,
+// her zaman oluşturulur (bkz. src/lib/notification.ts)
+// ─────────────────────────────────────────────
+
+enum NotificationType {
+  NEW_QUESTION
+  QUESTION_ANSWERED
+  REVIEW_PUBLISHED
+  REVIEW_HELPFUL
+  NEW_MODEL_IN_BRAND
+  REMINDER
+  UPDATE_REMINDER
+}
+
+model Notification {
+  id        Int              @id @default(autoincrement())
+  userId    Int
+  user      User             @relation(fields: [userId], references: [id])
+
+  type      NotificationType
+  message   String
+  link      String
+  isRead    Boolean          @default(false)
+
+  createdAt DateTime         @default(now())
+
+  @@index([userId, isRead])
+  @@map("notifications")
 }
 
 // ─────────────────────────────────────────────

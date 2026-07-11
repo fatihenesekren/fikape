@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendReminderEmail, sendUpdateReminderEmail } from "@/lib/email";
+import { createNotification } from "@/lib/notification";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const runtime = "nodejs";
@@ -78,6 +79,12 @@ export async function GET(req: Request) {
           updateUrl,
           userId:      c.user.id,
         });
+        createNotification({
+          userId: c.user.id,
+          type: "UPDATE_REMINDER",
+          message: `${vehicleName} hakkındaki yorumunu güncellemek ister misin?`,
+          link: `/yorumum/${existingReviewId}/guncelle`,
+        });
       } else {
         // İlk yorum hatırlatması
         await sendReminderEmail({
@@ -86,6 +93,12 @@ export async function GET(req: Request) {
           vehicleName,
           productSlug: c.product.slug,
           userId:      c.user.id,
+        });
+        createNotification({
+          userId: c.user.id,
+          type: "REMINDER",
+          message: `${vehicleName} hakkında henüz yorum yazmadın — deneyimini paylaşmaya ne dersin?`,
+          link: `/yorum-yaz?arac=${c.product.slug}`,
         });
       }
       sent++;
