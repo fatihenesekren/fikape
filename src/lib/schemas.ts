@@ -18,11 +18,29 @@ export const reviewCreateSchema = z.object({
   photoUrls:      z.array(z.string().url()).max(3).optional(),
 });
 
+export const passwordSchema = z.string()
+  .min(8, "Şifre en az 8 karakter olmalıdır.")
+  .max(72, "Şifre en fazla 72 karakter olabilir.")
+  .regex(/[A-ZÇĞİÖŞÜ]/, "Şifre en az 1 büyük harf içermelidir.")
+  .regex(/[a-zçğıöşü]/, "Şifre en az 1 küçük harf içermelidir.")
+  .regex(/[0-9]/, "Şifre en az 1 rakam içermelidir.")
+  .regex(/[!@#$%^&*(),.?":{}|<>_\-+=[\]/\\;'`~]/, "Şifre en az 1 özel karakter içermelidir.")
+  .regex(/^\S*$/, "Şifre boşluk karakteri içeremez.");
+
 export const registerSchema = z.object({
   email:       z.string().trim().min(1, "E-posta ve şifre zorunludur.").email("Geçerli bir e-posta adresi girin."),
-  password:    z.string().min(8, "Şifre en az 8 karakter olmalıdır."),
+  password:    passwordSchema,
   displayName: z.string().trim().max(80).optional().nullable(),
   ref:         z.string().optional().nullable(),
+});
+
+export const forgotPasswordSchema = z.object({
+  email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi girin."),
+});
+
+export const resetPasswordSchema = z.object({
+  token:    z.string().min(1, "Geçersiz bağlantı."),
+  password: passwordSchema,
 });
 
 export const vehicleSuggestSchema = z.object({
