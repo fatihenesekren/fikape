@@ -76,6 +76,7 @@ export async function GET(req: Request) {
           displayName: c.user.displayName,
           vehicleName,
           updateUrl,
+          userId:      c.user.id,
         });
       } else {
         // İlk yorum hatırlatması
@@ -84,6 +85,7 @@ export async function GET(req: Request) {
           displayName: c.user.displayName,
           vehicleName,
           productSlug: c.product.slug,
+          userId:      c.user.id,
         });
       }
       sent++;

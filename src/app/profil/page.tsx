@@ -5,6 +5,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { EditName } from "./EditName";
 import { AvatarPicker } from "./AvatarPicker";
+import { NotificationToggle } from "./NotificationToggle";
 import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { TRUST_PROFILE } from "@/lib/trustBadge";
@@ -29,6 +30,7 @@ export default async function ProfilPage() {
       email: true,
       trustLevel: true,
       emailVerifiedAt: true,
+      emailNotificationsEnabled: true,
       createdAt: true,
       referralCode: true,
       _count: { select: { referrals: true } },
@@ -98,6 +100,7 @@ export default async function ProfilPage() {
                 </span>
               )}
             </div>
+            <NotificationToggle initialEnabled={user.emailNotificationsEnabled} />
           </div>
 
           <div className="text-right space-y-1">

@@ -1,18 +1,28 @@
 import { Resend } from "resend";
+import { prisma } from "@/lib/prisma";
 
 const LOGO = `<span style="font-size:22px;font-weight:900;letter-spacing:-1px"><span style="color:#185FA5">fi</span><span style="color:#ccc">·</span><span style="color:#3B6D11">ka</span><span style="color:#ccc">·</span><span style="color:#993C1D">pe</span></span>`;
 
 const FROM = process.env.EMAIL_FROM ?? "fikape <onboarding@resend.dev>";
 const BASE_URL = process.env.NEXTAUTH_URL ?? process.env.AUTH_URL ?? "https://fikape-e4t7.vercel.app";
 
+// Auth e-postaları (doğrulama, şifre sıfırlama) bu kontrole tabi değil —
+// sadece "bildirim" niteliğindeki e-postalar (yorum/soru/faydalı vb.) için.
+async function notificationsEnabled(userId: number): Promise<boolean> {
+  const user = await prisma.user.findUnique({ where: { id: userId }, select: { emailNotificationsEnabled: true } });
+  return user?.emailNotificationsEnabled ?? true;
+}
+
 export async function sendReminderEmail({
-  to, displayName, vehicleName, productSlug,
+  to, displayName, vehicleName, productSlug, userId,
 }: {
   to: string;
   displayName: string | null;
   vehicleName: string;
   productSlug: string;
+  userId: number;
 }) {
+  if (!(await notificationsEnabled(userId))) return;
   const resend = new Resend(process.env.RESEND_API_KEY);
   const url = `${BASE_URL}/yorum-yaz?arac=${productSlug}`;
   const name = displayName ?? "Merhaba";
@@ -48,13 +58,15 @@ export async function sendReminderEmail({
 }
 
 export async function sendUpdateReminderEmail({
-  to, displayName, vehicleName, updateUrl,
+  to, displayName, vehicleName, updateUrl, userId,
 }: {
   to: string;
   displayName: string | null;
   vehicleName: string;
   updateUrl: string;
+  userId: number;
 }) {
+  if (!(await notificationsEnabled(userId))) return;
   const resend = new Resend(process.env.RESEND_API_KEY);
   const name = displayName ?? "Merhaba";
 
@@ -89,13 +101,15 @@ export async function sendUpdateReminderEmail({
 }
 
 export async function sendReviewPublishedEmail({
-  to, displayName, vehicleName, reviewId,
+  to, displayName, vehicleName, reviewId, userId,
 }: {
   to: string;
   displayName: string | null;
   vehicleName: string;
   reviewId: number;
+  userId: number;
 }) {
+  if (!(await notificationsEnabled(userId))) return;
   const resend = new Resend(process.env.RESEND_API_KEY);
   const url = `${BASE_URL}/yorumum/${reviewId}/paylas`;
   const name = displayName ?? "Merhaba";
@@ -129,14 +143,16 @@ export async function sendReviewPublishedEmail({
 }
 
 export async function sendNewQuestionEmail({
-  to, displayName, vehicleName, questionText, productSlug,
+  to, displayName, vehicleName, questionText, productSlug, userId,
 }: {
   to: string;
   displayName: string | null;
   vehicleName: string;
   questionText: string;
   productSlug: string;
+  userId: number;
 }) {
+  if (!(await notificationsEnabled(userId))) return;
   const resend = new Resend(process.env.RESEND_API_KEY);
   const url = `${BASE_URL}/araclar/${productSlug}?sekme=soru-cevap`;
   const name = displayName ?? "Merhaba";
@@ -170,13 +186,15 @@ export async function sendNewQuestionEmail({
 }
 
 export async function sendQuestionAnsweredEmail({
-  to, displayName, vehicleName, productSlug,
+  to, displayName, vehicleName, productSlug, userId,
 }: {
   to: string;
   displayName: string | null;
   vehicleName: string;
   productSlug: string;
+  userId: number;
 }) {
+  if (!(await notificationsEnabled(userId))) return;
   const resend = new Resend(process.env.RESEND_API_KEY);
   const url = `${BASE_URL}/araclar/${productSlug}?sekme=soru-cevap`;
   const name = displayName ?? "Merhaba";
@@ -207,13 +225,15 @@ export async function sendQuestionAnsweredEmail({
 }
 
 export async function sendReviewHelpfulEmail({
-  to, displayName, vehicleName, reviewId,
+  to, displayName, vehicleName, reviewId, userId,
 }: {
   to: string;
   displayName: string | null;
   vehicleName: string;
   reviewId: number;
+  userId: number;
 }) {
+  if (!(await notificationsEnabled(userId))) return;
   const resend = new Resend(process.env.RESEND_API_KEY);
   const url = `${BASE_URL}/yorumum/${reviewId}/paylas`;
   const name = displayName ?? "Merhaba";
@@ -245,14 +265,16 @@ export async function sendReviewHelpfulEmail({
 }
 
 export async function sendNewModelInBrandEmail({
-  to, displayName, brandName, vehicleName, productSlug,
+  to, displayName, brandName, vehicleName, productSlug, userId,
 }: {
   to: string;
   displayName: string | null;
   brandName: string;
   vehicleName: string;
   productSlug: string;
+  userId: number;
 }) {
+  if (!(await notificationsEnabled(userId))) return;
   const resend = new Resend(process.env.RESEND_API_KEY);
   const url = `${BASE_URL}/araclar/${productSlug}`;
   const name = displayName ?? "Merhaba";

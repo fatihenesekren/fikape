@@ -77,6 +77,7 @@ export async function PATCH(
         displayName: review.user.displayName,
         vehicleName: `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`,
         reviewId,
+        userId: review.userId,
       }).catch(() => {});
     }
 

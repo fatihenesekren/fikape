@@ -76,6 +76,7 @@ export async function POST(
       displayName: question.user.displayName,
       vehicleName: stripGenRangeAnywhere(question.product.name),
       productSlug: question.product.slug,
+      userId: question.userId,
     }).catch(() => {});
   }
 

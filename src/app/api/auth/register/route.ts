@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { createVerificationToken } from "@/lib/emailToken";
 import { sendVerificationEmail } from "@/lib/email";
 import { rateLimitByIp } from "@/lib/rateLimit";
+import { hashRequestContext } from "@/lib/security";
 import { registerSchema, formatZodError } from "@/lib/schemas";
 
 const RATE_LIMIT_COUNT = 5;
@@ -30,6 +31,9 @@ export async function POST(req: Request) {
     ? await prisma.user.findUnique({ where: { referralCode: ref }, select: { id: true } })
     : null;
 
+  // KVKK: ham IP/UA tutulmaz, sadece hash'i (bkz. lib/security.ts)
+  const { ipHash, userAgentHash } = hashRequestContext(req);
+
   const passwordHash = await bcrypt.hash(password, 12);
   const user = await prisma.user.create({
     data: {
@@ -41,8 +45,8 @@ export async function POST(req: Request) {
       referredByUserId: referrer?.id ?? null,
       consentLogs: {
         create: [
-          { consentType: "PRIVACY_POLICY",   isGranted: true },
-          { consentType: "TERMS_OF_SERVICE",  isGranted: true },
+          { consentType: "PRIVACY_POLICY",   isGranted: true, ipAddress: ipHash, userAgent: userAgentHash },
+          { consentType: "TERMS_OF_SERVICE",  isGranted: true, ipAddress: ipHash, userAgent: userAgentHash },
         ],
       },
     },

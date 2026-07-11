@@ -57,6 +57,7 @@ export async function POST(
       displayName: review.user.displayName,
       vehicleName: stripGenRangeAnywhere(review.product.name),
       reviewId,
+      userId: review.userId,
     }).catch(() => {});
   }
 

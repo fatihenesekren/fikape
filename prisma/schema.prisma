@@ -143,6 +143,10 @@ model User {
 
   emailVerifiedAt DateTime?
 
+  // Bildirim e-postaları (yorum yayınlandı, soru cevaplandı vb.) — kapatılabilir.
+  // Auth e-postaları (doğrulama, şifre sıfırlama) bundan etkilenmez, her zaman gider.
+  emailNotificationsEnabled Boolean @default(true)
+
   // Fake review tespiti için — kullanıcıya gösterilmez
   deviceFingerprint String?
 

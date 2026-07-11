@@ -31,6 +31,7 @@ export async function notifyGarageBrandFollowers(newProductId: number) {
         brandName: product.brand.name,
         vehicleName: stripGenRangeAnywhere(product.name),
         productSlug: product.slug,
+        userId: f.user.id,
       }).catch(() => {});
     }
   } catch {

@@ -57,13 +57,14 @@ export async function POST(req: Request) {
   for (const r of [...reviewers, ...garageOwners]) {
     recipients.set(r.user.id, { email: r.user.email, displayName: r.user.displayName });
   }
-  for (const r of recipients.values()) {
+  for (const [recipientId, r] of recipients) {
     sendNewQuestionEmail({
       to: r.email,
       displayName: r.displayName,
       vehicleName: stripGenRangeAnywhere(product.name),
       questionText: text,
       productSlug,
+      userId: recipientId,
     }).catch(() => {});
   }
 

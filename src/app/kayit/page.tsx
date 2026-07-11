@@ -50,6 +50,7 @@ function KayitForm() {
   const [email, setEmail]             = useState("");
   const [password, setPassword]       = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [consent, setConsent]         = useState(false);
   const [error, setError]             = useState("");
   const [loading, setLoading]         = useState(false);
 
@@ -64,7 +65,7 @@ function KayitForm() {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, displayName, ref }),
+      body: JSON.stringify({ email, password, displayName, ref, consent }),
     });
 
     const data = await res.json();
@@ -209,22 +210,30 @@ function KayitForm() {
             )}
           </div>
 
+          <label className="flex items-start gap-2 text-xs text-gray-500">
+            <input
+              type="checkbox"
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              required
+              className="mt-0.5 shrink-0"
+            />
+            <span>
+              <Link href="/gizlilik" className="underline">Gizlilik Politikası</Link>
+              {"'nı ve "}
+              <Link href="/kullanim-kosullari" className="underline">Kullanım Koşulları</Link>
+              {"'nı okudum, kabul ediyorum."}
+            </span>
+          </label>
+
           <button
             type="submit"
-            disabled={loading || !allRulesPass}
+            disabled={loading || !allRulesPass || !consent}
             className="w-full py-2.5 rounded-xl text-sm font-semibold text-white transition-colors disabled:opacity-60"
             style={{ background: "#185FA5" }}
           >
             {loading ? "Kayıt oluşturuluyor..." : "Kayıt ol"}
           </button>
-
-          <p className="text-xs text-gray-400 text-center">
-            Kayıt olarak{" "}
-            <Link href="/gizlilik" className="underline">Gizlilik Politikası</Link>
-            {" "}ve{" "}
-            <Link href="/kullanim-kosullari" className="underline">Kullanım Koşulları</Link>
-            {" "}kabul etmiş sayılırsın.
-          </p>
         </form>
 
         <p className="text-center text-sm text-gray-500 mt-4">
