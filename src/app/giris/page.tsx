@@ -142,7 +142,7 @@ function GirisForm() {
             className="w-full py-2.5 rounded-xl text-sm font-semibold text-white transition-colors disabled:opacity-60"
             style={{ background: "#185FA5" }}
           >
-            {loading ? "Giriş yapılıyor..." : ">> Giriş Yap"}
+            {loading ? "Giriş yapılıyor..." : "Giriş Yap"}
           </button>
         </form>
 
