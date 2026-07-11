@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Avatar } from "@/components/Avatar";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ReviewHelpfulButtons } from "@/components/ReviewHelpfulButtons";
 import { DeleteReviewButton } from "@/components/DeleteReviewButton";
@@ -15,6 +16,8 @@ interface ScoreVersion {
 
 interface Props {
   displayName: string | null;
+  avatarUrl?: string | null;
+  avatarSeed?: string;
   trustLevel: number;
   ownershipMonths: number | null;
   scoreFiyat: number;
@@ -40,6 +43,8 @@ interface Props {
 
 export function ReviewCard({
   displayName,
+  avatarUrl,
+  avatarSeed,
   trustLevel,
   ownershipMonths,
   scoreFiyat,
@@ -79,9 +84,12 @@ export function ReviewCard({
       {/* Üst satır: kullanıcı + tarih */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-sm font-bold text-gray-500 shrink-0">
-            {displayName ? displayName[0].toUpperCase() : "?"}
-          </div>
+          <Avatar
+            displayName={displayName}
+            avatarUrl={avatarUrl}
+            seed={avatarSeed ?? displayName ?? "?"}
+            size={36}
+          />
           <div>
             <div className="text-sm font-semibold text-gray-900">
               {displayName ?? "Anonim kullanıcı"}

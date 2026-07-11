@@ -11,6 +11,11 @@ export function EditName({ current }: { current: string }) {
   const { update } = useSession();
 
   async function save() {
+    const trimmed = value.trim();
+    if (trimmed.length < 3 || trimmed.length > 30) {
+      setError("Ad 3-30 karakter olmalı");
+      return;
+    }
     setLoading(true);
     setError("");
     const res = await fetch("/api/profile", {
@@ -49,7 +54,8 @@ export function EditName({ current }: { current: string }) {
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          maxLength={40}
+          minLength={3}
+          maxLength={30}
           className="px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-gray-500"
           autoFocus
         />

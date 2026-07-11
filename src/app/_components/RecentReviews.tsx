@@ -1,8 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
+import { Avatar } from "@/components/Avatar";
 import { stripModelGenRange } from "@/lib/modelDisplay";
-
-const AVATAR_COLORS = ["#0C447C", "#27500A", "#712B13", "#6B3A8A", "#0D6E5A"];
 
 export async function RecentReviews() {
   const reviews = await prisma.review.findMany({
@@ -10,7 +9,7 @@ export async function RecentReviews() {
     orderBy: { publishedAt: "desc" },
     take: 6,
     include: {
-      user:    { select: { displayName: true } },
+      user:    { select: { id: true, displayName: true, avatarUrl: true } },
       product: { include: { brand: true, model: true } },
     },
   });
@@ -27,8 +26,6 @@ export async function RecentReviews() {
         {reviews.map((r) => {
           const overall   = r.scoreOverall ?? 0;
           const name      = r.user.displayName ?? "Kullanıcı";
-          const initial   = name[0].toUpperCase();
-          const avatarBg  = AVATAR_COLORS[r.id % AVATAR_COLORS.length];
           const scoreColor =
             overall >= 7.5 ? "#27500A" : overall >= 5 ? "#B45309" : "#991B1B";
 
@@ -47,12 +44,12 @@ export async function RecentReviews() {
             >
               {/* Kullanıcı + skor */}
               <div className="flex items-center gap-2">
-                <div
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
-                  style={{ background: avatarBg }}
-                >
-                  {initial}
-                </div>
+                <Avatar
+                  displayName={r.user.displayName}
+                  avatarUrl={r.user.avatarUrl}
+                  seed={String(r.user.id)}
+                  size={28}
+                />
                 <div className="min-w-0 flex-1">
                   <div className="text-xs font-semibold text-gray-700 truncate">
                     {name}

@@ -239,7 +239,7 @@ export default async function VehicleDetailPage({
       editedAt: true,
       editCount: true,
       extendedData: true,
-      user: { select: { displayName: true, trustLevel: true } },
+      user: { select: { id: true, displayName: true, trustLevel: true, avatarUrl: true } },
       userProduct: { select: { ownershipStatus: true, soldReason: true } },
       versions: {
         select: { version: true, scoreOverall: true, createdAt: true },
@@ -475,6 +475,8 @@ export default async function VehicleDetailPage({
         <div key={r.id} className="px-5 py-1">
           <ReviewCard
             displayName={r.user.displayName}
+            avatarUrl={r.user.avatarUrl}
+            avatarSeed={String(r.user.id)}
             trustLevel={r.user.trustLevel}
             ownershipMonths={r.ownershipMonthsAtReview}
             scoreFiyat={r.scoreFiyat}

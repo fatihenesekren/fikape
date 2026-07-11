@@ -40,16 +40,30 @@ describe("reviewCreateSchema", () => {
 });
 
 describe("registerSchema", () => {
-  it("geçerli e-posta+şifreyi kabul eder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: "sifre1234" }).success).toBe(true);
+  const validPassword = "Sifre1234!";
+
+  it("geçerli e-posta+şifre+görünen ad kabul eder", () => {
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ali" }).success).toBe(true);
   });
 
   it("geçersiz e-postayı reddeder", () => {
-    expect(registerSchema.safeParse({ email: "gecersiz", password: "sifre1234" }).success).toBe(false);
+    expect(registerSchema.safeParse({ email: "gecersiz", password: validPassword, displayName: "Ali" }).success).toBe(false);
   });
 
   it("kısa şifreyi reddeder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: "kisa" }).success).toBe(false);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: "kisa", displayName: "Ali" }).success).toBe(false);
+  });
+
+  it("kural setini sağlamayan şifreyi reddeder (büyük/özel karakter yok)", () => {
+    expect(registerSchema.safeParse({ email: "a@b.com", password: "sifre1234", displayName: "Ali" }).success).toBe(false);
+  });
+
+  it("görünen ad eksikse reddeder", () => {
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword }).success).toBe(false);
+  });
+
+  it("2 karakterlik görünen adı reddeder", () => {
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Al" }).success).toBe(false);
   });
 });
 

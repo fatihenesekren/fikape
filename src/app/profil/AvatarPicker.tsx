@@ -1,0 +1,89 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
+import { Avatar } from "@/components/Avatar";
+import { buildAvatarOptionSeeds, dicebearUrl } from "@/lib/avatar";
+
+export function AvatarPicker({
+  userId,
+  displayName,
+  initialAvatarUrl,
+}: {
+  userId: number;
+  displayName: string | null;
+  initialAvatarUrl: string | null;
+}) {
+  const { update } = useSession();
+  const [avatarUrl, setAvatarUrl] = useState(initialAvatarUrl);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  const options = buildAvatarOptionSeeds(userId);
+
+  useEffect(() => {
+    if (!open) return;
+    function onClickOutside(e: MouseEvent) {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, [open]);
+
+  async function choose(seed: string | null) {
+    setLoading(true);
+    const res = await fetch("/api/profile/avatar", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ seed }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      setAvatarUrl(data.avatarUrl);
+      await update({ image: data.avatarUrl });
+      setOpen(false);
+    }
+    setLoading(false);
+  }
+
+  return (
+    <div ref={rootRef} className="relative flex items-center gap-3">
+      <Avatar displayName={displayName} avatarUrl={avatarUrl} seed={String(userId)} size={56} />
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="text-xs font-semibold text-gray-500 hover:text-gray-800 hover:underline"
+      >
+        Avatarını değiştir
+      </button>
+
+      {open && (
+        <div className="absolute mt-2 top-full left-0 z-20 bg-white border border-gray-100 rounded-2xl shadow-lg p-4 w-72">
+          <p className="text-xs font-semibold text-gray-500 mb-3">Bir avatar seç</p>
+          <div className="grid grid-cols-3 gap-2">
+            {options.map((seed) => (
+              <button
+                key={seed}
+                onClick={() => choose(seed)}
+                disabled={loading}
+                className="rounded-xl border border-gray-100 hover:border-gray-300 p-1.5 transition-colors disabled:opacity-50"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- DiceBear'dan üretilen SVG */}
+                <img src={dicebearUrl(seed)} alt="Avatar seçeneği" width={64} height={64} className="w-full rounded-lg" />
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={() => choose(null)}
+            disabled={loading}
+            className="mt-3 w-full text-xs font-semibold text-gray-500 hover:text-gray-800 py-2 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+          >
+            Baş harflerimi kullan
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}

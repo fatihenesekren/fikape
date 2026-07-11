@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import { Avatar } from "@/components/Avatar";
 
 export function AuthNav() {
   const { data: session, status } = useSession();
@@ -23,7 +24,6 @@ export function AuthNav() {
 
   if (session) {
     const isAdmin = (session.user.trustLevel as number) >= 5;
-    const initial = (session.user.name ?? "U")[0].toUpperCase();
 
     return (
       <div className="flex items-center gap-2">
@@ -61,9 +61,13 @@ export function AuthNav() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Hesap menüsü"
             aria-expanded={menuOpen}
-            className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-600"
           >
-            {initial}
+            <Avatar
+              displayName={session.user.name ?? null}
+              avatarUrl={session.user.image}
+              seed={session.user.email ?? session.user.id}
+              size={32}
+            />
           </button>
           {menuOpen && (
             <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">

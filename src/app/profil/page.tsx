@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { EditName } from "./EditName";
+import { AvatarPicker } from "./AvatarPicker";
 import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { TRUST_PROFILE } from "@/lib/trustBadge";
@@ -24,6 +25,7 @@ export default async function ProfilPage() {
     where: { id: userId },
     select: {
       displayName: true,
+      avatarUrl: true,
       email: true,
       trustLevel: true,
       emailVerifiedAt: true,
@@ -74,6 +76,7 @@ export default async function ProfilPage() {
       <div className="bg-white border border-gray-100 rounded-2xl p-6">
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div className="space-y-3">
+            <AvatarPicker userId={userId} displayName={user.displayName} initialAvatarUrl={user.avatarUrl} />
             <EditName current={user.displayName ?? ""} />
             <div className="text-sm text-gray-500">{user.email}</div>
             <div className="flex flex-wrap gap-2 items-center">
