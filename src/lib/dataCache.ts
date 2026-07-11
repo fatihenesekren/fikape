@@ -1,18 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 
-export const getHeroStats = unstable_cache(
-  async () => {
-    const [totalModels, totalReviews] = await Promise.all([
-      prisma.model.count({ where: { products: { some: { isActive: true } } } }),
-      prisma.review.count({ where: { status: "PUBLISHED" } }),
-    ]);
-    return { totalModels, totalReviews };
-  },
-  ["hero-stats"],
-  { revalidate: 3600 }
-);
-
 export const getTopRatedProducts = unstable_cache(
   async () => {
     const topAgg = await prisma.review.groupBy({

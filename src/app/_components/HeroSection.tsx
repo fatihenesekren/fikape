@@ -1,4 +1,4 @@
-import { getHeroStats, getTopRatedProducts } from "@/lib/dataCache";
+import { getTopRatedProducts } from "@/lib/dataCache";
 import { HeroSlider } from "./HeroSlider";
 
 const POPULAR_SEARCHES = [
@@ -10,10 +10,7 @@ const POPULAR_SEARCHES = [
 ];
 
 export async function HeroSection() {
-  const [stats, topRatedProducts] = await Promise.all([
-    getHeroStats(),
-    getTopRatedProducts(),
-  ]);
+  const topRatedProducts = await getTopRatedProducts();
 
   return (
     <section className="bg-[#111] text-white overflow-hidden">
@@ -93,25 +90,6 @@ export async function HeroSection() {
                   {q}
                 </a>
               ))}
-            </div>
-
-            {/* Stats — sıfır olanlar gizlenir */}
-            <div className="flex items-center gap-2 text-sm text-gray-500 flex-wrap">
-              <span>
-                <span className="font-bold text-gray-300">{stats.totalModels}</span>{" "}
-                araç modeli
-              </span>
-              {stats.totalReviews > 0 && (
-                <>
-                  <span className="text-gray-700">·</span>
-                  <span>
-                    <span className="font-bold text-gray-300">
-                      {stats.totalReviews}
-                    </span>{" "}
-                    yorum
-                  </span>
-                </>
-              )}
             </div>
           </div>
 
