@@ -30,7 +30,7 @@ export const passwordSchema = z.string()
 export const registerSchema = z.object({
   email:       z.string().trim().min(1, "E-posta ve şifre zorunludur.").email("Geçerli bir e-posta adresi girin."),
   password:    passwordSchema,
-  displayName: z.string().trim().max(80).optional().nullable(),
+  displayName: z.string().trim().min(3, "Görünen ad en az 3 karakter olmalıdır.").max(40, "Görünen ad en fazla 40 karakter olabilir."),
   ref:         z.string().optional().nullable(),
 });
 

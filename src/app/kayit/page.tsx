@@ -115,10 +115,13 @@ function KayitForm() {
               type="text"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
+              required
+              minLength={3}
+              maxLength={40}
               placeholder="Ahmet K."
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
             />
-            <p className="text-xs text-gray-400">Yorumlarında görünecek isim. İstersen takma ad kullanabilirsin.</p>
+            <p className="text-xs text-gray-400">Yorumlarında görünecek isim (en az 3 karakter). İstersen takma ad kullanabilirsin.</p>
           </div>
 
           <div className="space-y-1">

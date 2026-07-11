@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     data: {
       email,
       passwordHash,
-      displayName: displayName?.trim() || null,
+      displayName,
       trustLevel: 1,
       referralCode: randomUUID().replace(/-/g, "").slice(0, 8).toUpperCase(),
       referredByUserId: referrer?.id ?? null,
