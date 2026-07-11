@@ -134,7 +134,11 @@ function SifreSifirlaForm() {
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    e.target.setCustomValidity("");
+                  }}
+                  onInvalid={(e) => e.currentTarget.setCustomValidity("Şifre zorunludur, yukarıdaki kuralları sağlamalıdır.")}
                   required
                   placeholder="En az 8 karakter"
                   className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
@@ -183,7 +187,11 @@ function SifreSifirlaForm() {
               <input
                 type={showPassword ? "text" : "password"}
                 value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
+                onChange={(e) => {
+                  setPasswordConfirm(e.target.value);
+                  e.target.setCustomValidity("");
+                }}
+                onInvalid={(e) => e.currentTarget.setCustomValidity("Şifre tekrarı zorunludur.")}
                 required
                 placeholder="••••••••"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"

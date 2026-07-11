@@ -69,7 +69,15 @@ export default function SifremiUnuttumPage() {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  e.target.setCustomValidity("");
+                }}
+                onInvalid={(e) => e.currentTarget.setCustomValidity(
+                  e.currentTarget.validity.valueMissing
+                    ? "E-posta zorunludur."
+                    : "Geçerli bir e-posta adresi girin (ör. ornek@example.com)."
+                )}
                 required
                 placeholder="ornek@example.com"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"

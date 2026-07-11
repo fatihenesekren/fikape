@@ -114,7 +114,11 @@ function KayitForm() {
             <input
               type="text"
               value={displayName}
-              onChange={(e) => setDisplayName(e.target.value)}
+              onChange={(e) => {
+                setDisplayName(e.target.value);
+                e.target.setCustomValidity("");
+              }}
+              onInvalid={(e) => e.currentTarget.setCustomValidity("Görünen ad en az 3, en fazla 40 karakter olmalıdır.")}
               required
               minLength={3}
               maxLength={40}
@@ -131,7 +135,15 @@ function KayitForm() {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                e.target.setCustomValidity("");
+              }}
+              onInvalid={(e) => e.currentTarget.setCustomValidity(
+                e.currentTarget.validity.valueMissing
+                  ? "E-posta zorunludur."
+                  : "Geçerli bir e-posta adresi girin (ör. ornek@example.com)."
+              )}
               required
               placeholder="ornek@example.com"
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
@@ -146,7 +158,11 @@ function KayitForm() {
               <input
                 type={showPassword ? "text" : "password"}
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  e.target.setCustomValidity("");
+                }}
+                onInvalid={(e) => e.currentTarget.setCustomValidity("Şifre zorunludur, yukarıdaki kuralları sağlamalıdır.")}
                 required
                 placeholder="En az 8 karakter"
                 className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
