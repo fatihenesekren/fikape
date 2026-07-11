@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { Avatar } from "@/components/Avatar";
-import { buildAvatarOptionSeeds, dicebearUrl } from "@/lib/avatar";
+import { buildAvatarOptions, dicebearUrl } from "@/lib/avatar";
 
 export function AvatarPicker({
   userId,
@@ -20,7 +20,7 @@ export function AvatarPicker({
   const [loading, setLoading] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
-  const options = buildAvatarOptionSeeds(userId);
+  const options = buildAvatarOptions(userId);
 
   useEffect(() => {
     if (!open) return;
@@ -33,12 +33,12 @@ export function AvatarPicker({
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, [open]);
 
-  async function choose(seed: string | null) {
+  async function choose(index: number | null) {
     setLoading(true);
     const res = await fetch("/api/profile/avatar", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ seed }),
+      body: JSON.stringify({ index }),
     });
     if (res.ok) {
       const data = await res.json();
@@ -63,15 +63,15 @@ export function AvatarPicker({
         <div className="absolute mt-2 top-full left-0 z-20 bg-white border border-gray-100 rounded-2xl shadow-lg p-4 w-80">
           <p className="text-xs font-semibold text-gray-500 mb-3">Bir avatar seç</p>
           <div className="grid grid-cols-4 gap-2 max-h-72 overflow-y-auto pr-1">
-            {options.map((seed) => (
+            {options.map((opt) => (
               <button
-                key={seed}
-                onClick={() => choose(seed)}
+                key={opt.index}
+                onClick={() => choose(opt.index)}
                 disabled={loading}
                 className="rounded-xl border border-gray-100 hover:border-gray-300 p-1.5 transition-colors disabled:opacity-50"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element -- DiceBear'dan üretilen SVG */}
-                <img src={dicebearUrl(seed)} alt="Avatar seçeneği" width={64} height={64} className="w-full rounded-lg" loading="lazy" />
+                <img src={dicebearUrl(opt.seed, opt.style)} alt="Avatar seçeneği" width={64} height={64} className="w-full rounded-lg" loading="lazy" />
               </button>
             ))}
           </div>
