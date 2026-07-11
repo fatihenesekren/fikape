@@ -60,9 +60,9 @@ export function AvatarPicker({
       </button>
 
       {open && (
-        <div className="absolute mt-2 top-full left-0 z-20 bg-white border border-gray-100 rounded-2xl shadow-lg p-4 w-72">
+        <div className="absolute mt-2 top-full left-0 z-20 bg-white border border-gray-100 rounded-2xl shadow-lg p-4 w-80">
           <p className="text-xs font-semibold text-gray-500 mb-3">Bir avatar seç</p>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-4 gap-2 max-h-72 overflow-y-auto pr-1">
             {options.map((seed) => (
               <button
                 key={seed}
@@ -71,7 +71,7 @@ export function AvatarPicker({
                 className="rounded-xl border border-gray-100 hover:border-gray-300 p-1.5 transition-colors disabled:opacity-50"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element -- DiceBear'dan üretilen SVG */}
-                <img src={dicebearUrl(seed)} alt="Avatar seçeneği" width={64} height={64} className="w-full rounded-lg" />
+                <img src={dicebearUrl(seed)} alt="Avatar seçeneği" width={64} height={64} className="w-full rounded-lg" loading="lazy" />
               </button>
             ))}
           </div>

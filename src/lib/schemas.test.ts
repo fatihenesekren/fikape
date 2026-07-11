@@ -65,6 +65,19 @@ describe("registerSchema", () => {
   it("2 karakterlik görünen adı reddeder", () => {
     expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Al" }).success).toBe(false);
   });
+
+  it("sadece rakamdan oluşan görünen adı reddeder", () => {
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "12345" }).success).toBe(false);
+  });
+
+  it("harf+rakam karışımı görünen adı reddeder", () => {
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet35" }).success).toBe(false);
+  });
+
+  it("nokta/tire/boşluk içeren görünen adı kabul eder", () => {
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet K." }).success).toBe(true);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet-Can" }).success).toBe(true);
+  });
 });
 
 describe("vehicleSuggestSchema", () => {

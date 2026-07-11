@@ -27,10 +27,16 @@ export const passwordSchema = z.string()
   .regex(/[!@#$%^&*(),.?":{}|<>_\-+=[\]/\\;'`~]/, "Şifre en az 1 özel karakter içermelidir.")
   .regex(/^\S*$/, "Şifre boşluk karakteri içeremez.");
 
+export const displayNameSchema = z.string().trim()
+  .min(3, "Görünen ad en az 3 karakter olmalıdır.")
+  .max(30, "Görünen ad en fazla 30 karakter olabilir.")
+  .regex(/^[A-Za-zÇĞİÖŞÜçğıöşü. -]+$/, "Görünen ad sadece harf, boşluk, nokta ve tire içerebilir.")
+  .refine((v) => /[A-Za-zÇĞİÖŞÜçğıöşü]/.test(v), "Görünen ad en az 1 harf içermelidir.");
+
 export const registerSchema = z.object({
   email:       z.string().trim().min(1, "E-posta ve şifre zorunludur.").email("Geçerli bir e-posta adresi girin."),
   password:    passwordSchema,
-  displayName: z.string().trim().min(3, "Görünen ad en az 3 karakter olmalıdır.").max(30, "Görünen ad en fazla 30 karakter olabilir."),
+  displayName: displayNameSchema,
   ref:         z.string().optional().nullable(),
 });
 

@@ -16,6 +16,10 @@ export function EditName({ current }: { current: string }) {
       setError("Ad 3-30 karakter olmalı");
       return;
     }
+    if (!/^[A-Za-zÇĞİÖŞÜçğıöşü. -]+$/.test(trimmed)) {
+      setError("Ad sadece harf, boşluk, nokta ve tire içerebilir");
+      return;
+    }
     setLoading(true);
     setError("");
     const res = await fetch("/api/profile", {
@@ -56,6 +60,7 @@ export function EditName({ current }: { current: string }) {
           onChange={(e) => setValue(e.target.value)}
           minLength={3}
           maxLength={30}
+          pattern="[A-Za-zÇĞİÖŞÜçğıöşü. -]+"
           className="px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-gray-500"
           autoFocus
         />

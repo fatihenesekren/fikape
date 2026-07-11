@@ -118,14 +118,19 @@ function KayitForm() {
                 setDisplayName(e.target.value);
                 e.target.setCustomValidity("");
               }}
-              onInvalid={(e) => e.currentTarget.setCustomValidity("Görünen ad en az 3, en fazla 30 karakter olmalıdır.")}
+              onInvalid={(e) => e.currentTarget.setCustomValidity(
+                e.currentTarget.validity.patternMismatch
+                  ? "Görünen ad sadece harf, boşluk, nokta ve tire içerebilir."
+                  : "Görünen ad en az 3, en fazla 30 karakter olmalıdır."
+              )}
               required
               minLength={3}
               maxLength={30}
+              pattern="[A-Za-zÇĞİÖŞÜçğıöşü. -]+"
               placeholder="Ahmet K."
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
             />
-            <p className="text-xs text-gray-400">Yorumlarında görünecek isim (en az 3 karakter). İstersen takma ad kullanabilirsin.</p>
+            <p className="text-xs text-gray-400">Yorumlarında görünecek isim, sadece harf içerebilir (en az 3 karakter). İstersen takma ad kullanabilirsin.</p>
           </div>
 
           <div className="space-y-1">
