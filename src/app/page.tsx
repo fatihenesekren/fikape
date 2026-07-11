@@ -143,7 +143,7 @@ export default async function Home({
 
       {/* ── Trend şeridi (filtre yokken) ── */}
       {!catFilter && trendProducts.length > 0 && (
-        <section className="w-full max-w-7xl mx-auto px-4 pt-8 pb-2">
+        <section className="w-full max-w-7xl mx-auto px-4 pt-6 pb-3">
           <h2 className="text-sm font-bold text-gray-900 mb-3">
             Bu hafta ilgi gören araçlar
           </h2>

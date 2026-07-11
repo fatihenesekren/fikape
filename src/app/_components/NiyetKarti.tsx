@@ -207,7 +207,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
       <div className="col-span-full">
         <button
           onClick={openQuiz}
-          className="relative w-full bg-white rounded-2xl border border-gray-200 pl-6 pr-4 py-4 flex items-center gap-3 overflow-hidden hover:border-gray-300 hover:shadow-sm transition-all group text-left animate-niyet-enter"
+          className="relative w-full bg-white rounded-2xl border border-gray-200 pl-6 pr-4 py-6 flex items-center gap-3 overflow-hidden hover:border-gray-300 hover:shadow-sm transition-all group text-left animate-niyet-enter"
         >
           <div
             className="absolute inset-y-0 left-0 w-1.5"
@@ -215,10 +215,10 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
             aria-hidden="true"
           />
           <div
-            className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+            className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0"
             style={{ background: "linear-gradient(135deg, var(--fi-color), var(--ka-color) 55%, var(--pe-color))" }}
           >
-            <MatchIcon />
+            <MatchIcon size={24} />
           </div>
           <div className="flex-1 min-w-0">
             {/* Sabit yükseklik: metin değişirken banner zıplamasın */}
