@@ -2,8 +2,40 @@ const AVATAR_COLORS = ["#0C447C", "#27500A", "#712B13", "#6B3A8A", "#0D6E5A", "#
 
 // İnsan yüzlü, aileye uygun DiceBear stilleri — çeşitlilik bunların
 // döngüsel karışımından geliyor, tek stilde sadece seed değişmiyor.
-const DICEBEAR_STYLES = ["adventurer", "avataaars", "big-smile", "personas", "micah", "lorelei"];
+// "adventurer" çıkarıldı: mouth/eyes seçenekleri numaralandırılmış
+// (variant01, variant02...) olduğu için hangisinin olumsuz göründüğü
+// API şemasından doğrulanamıyor — yerine tamamı etiketli olan fun-emoji eklendi.
+const DICEBEAR_STYLES = ["avataaars", "big-smile", "personas", "micah", "lorelei", "fun-emoji"];
 const DICEBEAR_OPTION_COUNT = 100;
+
+// Her stilin resmi DiceBear API şemasından (mouth/eyes enum listesi) doğrulanarak
+// seçilmiş, sadece olumlu/nötr görünen seçenekler — üzgün/şaşkın/kızgın gibi
+// olumsuz ifadeler tamamen dışarıda bırakılıyor (kullanıcı geri bildirimi).
+const POSITIVE_FEATURES: Record<string, Record<string, string[]>> = {
+  avataaars: {
+    mouth: ["default", "eating", "smile", "tongue", "twinkle"],
+    eyes:  ["default", "happy", "hearts", "side", "wink", "winkWacky", "squint"],
+  },
+  "big-smile": {
+    mouth: ["openedSmile", "teethSmile", "gapSmile", "kawaii", "braces", "awkwardSmile"],
+    eyes:  ["cheery", "normal", "winking", "starstruck"],
+  },
+  personas: {
+    mouth: ["smile", "bigSmile", "lips", "smirk"],
+    eyes:  ["open", "wink", "happy", "glasses", "sunglasses"],
+  },
+  micah: {
+    mouth: ["laughing", "smile", "smirk", "pucker"],
+  },
+  lorelei: {
+    // lorelei'de "happy01".."happy18" ve "sad01".."sad09" var — hepsini olumlu seç.
+    mouth: Array.from({ length: 18 }, (_, i) => `happy${String(i + 1).padStart(2, "0")}`),
+  },
+  "fun-emoji": {
+    mouth: ["plain", "lilSmile", "cute", "wideSmile", "smileTeeth", "smileLol", "tongueOut", "kissHeart", "drip"],
+    eyes:  ["cute", "wink", "wink2", "love", "stars", "glasses", "shades", "plain"],
+  },
+};
 
 export function getInitials(name: string | null | undefined): string {
   const trimmed = (name ?? "").trim();
@@ -29,7 +61,14 @@ export function getAvatarColor(seed: string): string {
 }
 
 export function dicebearUrl(seed: string, style: string): string {
-  return `https://api.dicebear.com/9.x/${style}/svg?seed=${encodeURIComponent(seed)}`;
+  const params = new URLSearchParams({ seed });
+  const features = POSITIVE_FEATURES[style];
+  if (features) {
+    for (const [key, values] of Object.entries(features)) {
+      for (const value of values) params.append(`${key}[]`, value);
+    }
+  }
+  return `https://api.dicebear.com/9.x/${style}/svg?${params.toString()}`;
 }
 
 export interface AvatarOption {
