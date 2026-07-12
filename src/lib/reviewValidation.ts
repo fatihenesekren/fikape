@@ -55,14 +55,14 @@ export function checkContent(t: string): ValidationResult {
       if (/https?:\/\//i.test(t) || /www\./i.test(t)) {
         return err("Link paylaşımına izin verilmemektedir.");
       }
-      return err("Lütfen anlamlı bir metin yazın.");
+      return err("Lütfen anlamlı bir metin yazınız.");
     }
   }
 
   // Harf oranı — metnin en az %40'ı harf olmalı
   const letters = (t.match(/[a-züğışöçA-ZÜĞİŞÖÇ]/g) ?? []).length;
   if (t.length > 15 && letters / t.length < 0.4) {
-    return err("Lütfen anlamlı bir metin yazın.");
+    return err("Lütfen anlamlı bir metin yazınız.");
   }
 
   // Küfür / hakaret kontrolü

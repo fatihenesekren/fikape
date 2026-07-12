@@ -148,7 +148,7 @@ function KayitForm() {
               onInvalid={(e) => e.currentTarget.setCustomValidity(
                 e.currentTarget.validity.valueMissing
                   ? "E-posta zorunludur."
-                  : "Geçerli bir e-posta adresi girin (ör. ornek@example.com)."
+                  : "Geçerli bir e-posta adresi giriniz (ör. ornek@example.com)."
               )}
               required
               placeholder="ornek@example.com"

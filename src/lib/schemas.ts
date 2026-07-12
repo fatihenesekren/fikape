@@ -34,7 +34,7 @@ export const displayNameSchema = z.string().trim()
   .refine((v) => /[A-Za-zÇĞİÖŞÜçğıöşü]/.test(v), "Görünen ad en az 1 harf içermelidir.");
 
 export const registerSchema = z.object({
-  email:       z.string().trim().min(1, "E-posta ve şifre zorunludur.").email("Geçerli bir e-posta adresi girin."),
+  email:       z.string().trim().min(1, "E-posta ve şifre zorunludur.").email("Geçerli bir e-posta adresi giriniz."),
   password:    passwordSchema,
   displayName: displayNameSchema,
   ref:         z.string().optional().nullable(),
@@ -42,7 +42,7 @@ export const registerSchema = z.object({
 });
 
 export const forgotPasswordSchema = z.object({
-  email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi girin."),
+  email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi giriniz."),
 });
 
 export const resetPasswordSchema = z.object({
@@ -69,28 +69,28 @@ export const vehicleSuggestSchema = z.object({
 
 export const questionCreateSchema = z.object({
   productSlug: z.string().min(1, "Araç zorunludur."),
-  text:        z.string().trim().min(10, "En az 10 karakter yazın.").max(300, "En fazla 300 karakter yazabilirsiniz."),
+  text:        z.string().trim().min(10, "En az 10 karakter yazınız.").max(300, "En fazla 300 karakter yazabilirsiniz."),
 });
 
 export const answerCreateSchema = z.object({
-  text: z.string().trim().min(5, "En az 5 karakter yazın.").max(500, "En fazla 500 karakter yazabilirsiniz."),
+  text: z.string().trim().min(5, "En az 5 karakter yazınız.").max(500, "En fazla 500 karakter yazabilirsiniz."),
 });
 
 export const insuranceLeadSchema = z.object({
   productId: z.union([z.number(), z.string()]),
   fullName:  z.string().trim().min(2, "Ad soyad zorunludur.").max(100),
-  phone:     z.string().trim().min(10, "Geçerli bir telefon numarası girin.").max(20),
+  phone:     z.string().trim().min(10, "Geçerli bir telefon numarası giriniz.").max(20),
 });
 
 export const saleLeadSchema = z.object({
   productId: z.union([z.number(), z.string()]),
   type:      z.enum(["EXPERTISE", "QUICK_OFFER"], { error: "Geçersiz talep türü." }),
   fullName:  z.string().trim().min(2, "Ad soyad zorunludur.").max(100),
-  phone:     z.string().trim().min(10, "Geçerli bir telefon numarası girin.").max(20),
+  phone:     z.string().trim().min(10, "Geçerli bir telefon numarası giriniz.").max(20),
 });
 
 export const plusWaitlistSchema = z.object({
-  email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi girin."),
+  email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi giriniz."),
   note:  z.string().trim().max(280).optional().nullable(),
 });
 

@@ -34,11 +34,11 @@ export function SaleLeadCard({
 
   async function submit() {
     if (!selectedType) {
-      setError("Bir seçenek seç.");
+      setError("Bir seçenek seçiniz.");
       return;
     }
     if (fullName.trim().length < 2 || phone.trim().length < 10) {
-      setError("Ad soyad ve geçerli bir telefon numarası gir.");
+      setError("Ad soyad ve geçerli bir telefon numarası giriniz.");
       return;
     }
     setError(null);

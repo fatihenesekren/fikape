@@ -32,7 +32,7 @@ export async function POST(
 
     const allowed = ["image/jpeg", "image/png", "image/webp", "image/avif"];
     if (!allowed.includes(file.type)) {
-      return NextResponse.json({ error: "JPG, PNG veya WebP yükleyin." }, { status: 400 });
+      return NextResponse.json({ error: "JPG, PNG veya WebP yükleyiniz." }, { status: 400 });
     }
 
     if (file.size > 5 * 1024 * 1024) {
@@ -81,7 +81,7 @@ export async function PATCH(
     const { imageUrl } = body;
 
     if (!imageUrl || !imageUrl.startsWith("http")) {
-      return NextResponse.json({ error: "Geçerli bir URL girin." }, { status: 400 });
+      return NextResponse.json({ error: "Geçerli bir URL giriniz." }, { status: 400 });
     }
 
     await prisma.product.update({

@@ -44,7 +44,7 @@ export function InsuranceLeadCard({
   async function submit() {
     setError(null);
     if (fullName.trim().length < 2 || phone.trim().length < 10) {
-      setError("Ad soyad ve geçerli bir telefon numarası gir.");
+      setError("Ad soyad ve geçerli bir telefon numarası giriniz.");
       return;
     }
     setSubmitting(true);

@@ -542,12 +542,12 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
     e.preventDefault();
     setError("");
 
-    if (!productSlug)    { setError("Lütfen bir araç seçin."); return; }
+    if (!productSlug)    { setError("Lütfen bir araç seçiniz."); return; }
     if (alreadyReviewed) { setError("Bu araç için zaten bir yorumun var."); return; }
-    if (!scoresComplete) { setError("Lütfen tüm FI·KA·PE puanlarını verin."); return; }
+    if (!scoresComplete) { setError("Lütfen tüm FI·KA·PE puanlarını veriniz."); return; }
     if (!isQuick) {
-      if (pros.length < 1) { setError("En az 1 artı seçin."); return; }
-      if (cons.length < 1) { setError("En az 1 eksi seçin."); return; }
+      if (pros.length < 1) { setError("En az 1 artı seçiniz."); return; }
+      if (cons.length < 1) { setError("En az 1 eksi seçiniz."); return; }
       if (!detailValidation.ok) { setDetailTouched(true); setError(detailValidation.error!); return; }
     }
 

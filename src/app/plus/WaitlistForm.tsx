@@ -13,7 +13,7 @@ export function WaitlistForm({ defaultEmail }: { defaultEmail: string }) {
   async function submit() {
     setError(null);
     if (!email.includes("@")) {
-      setError("Geçerli bir e-posta adresi gir.");
+      setError("Geçerli bir e-posta adresi giriniz.");
       return;
     }
     setSubmitting(true);

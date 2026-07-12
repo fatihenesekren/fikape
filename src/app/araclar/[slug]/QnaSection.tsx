@@ -92,7 +92,7 @@ function AnswerForm({ questionId, onDone }: { questionId: number; onDone: () => 
 
   async function submit() {
     setError("");
-    if (text.trim().length < 5) { setError("En az 5 karakter yazın."); return; }
+    if (text.trim().length < 5) { setError("En az 5 karakter yazınız."); return; }
     setLoading(true);
     const res = await fetch(`/api/questions/${questionId}/answers`, {
       method: "POST",
@@ -139,7 +139,7 @@ export function QnaSection({ productSlug, questions, isLoggedIn, currentUserId, 
 
   async function submitQuestion() {
     setAskError("");
-    if (askText.trim().length < 10) { setAskError("En az 10 karakter yazın."); return; }
+    if (askText.trim().length < 10) { setAskError("En az 10 karakter yazınız."); return; }
     setAskLoading(true);
     const res = await fetch("/api/questions", {
       method: "POST",

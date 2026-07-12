@@ -157,7 +157,7 @@ export default function OnerPage() {
     const trimFin    = isOtherTrim    ? customTrim.trim()    : selectedTrim;
 
     if (!brandName || !modelName) {
-      setError("Lütfen marka ve model seçin.");
+      setError("Lütfen marka ve model seçiniz.");
       return;
     }
 
@@ -285,7 +285,7 @@ export default function OnerPage() {
               type="text"
               value={customMake}
               onChange={(e) => setCustomMake(e.target.value)}
-              placeholder="Marka adını yazın"
+              placeholder="Marka adını yazınız"
               className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
               autoFocus
             />
@@ -313,7 +313,7 @@ export default function OnerPage() {
                 type="text"
                 value={customModel}
                 onChange={(e) => setCustomModel(e.target.value)}
-                placeholder="Model adını yazın"
+                placeholder="Model adını yazınız"
                 className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
                 autoFocus
               />
@@ -344,7 +344,7 @@ export default function OnerPage() {
             </select>
             {isOtherVersion && (
               <input type="text" value={customVersion} onChange={(e) => setCustomVersion(e.target.value)}
-                placeholder="Versiyon bilgisi yazın"
+                placeholder="Versiyon bilgisi yazınız"
                 className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400" autoFocus />
             )}
           </div>
@@ -364,7 +364,7 @@ export default function OnerPage() {
             </select>
             {isOtherTrim && (
               <input type="text" value={customTrim} onChange={(e) => setCustomTrim(e.target.value)}
-                placeholder="Donanım paketi yazın"
+                placeholder="Donanım paketi yazınız"
                 className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400" autoFocus />
             )}
           </div>

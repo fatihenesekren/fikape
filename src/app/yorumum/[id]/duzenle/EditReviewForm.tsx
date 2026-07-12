@@ -152,8 +152,8 @@ export function EditReviewForm({
   const [detailTouched, setDetailTouched] = useState(false);
 
   const detailValidation = validateDetailShort(detailText);
-  const prosError = pros.length < 1 ? "En az 1 artı seçin." : pros.length > 3 ? "En fazla 3 artı seçebilirsiniz." : null;
-  const consError = cons.length < 1 ? "En az 1 eksi seçin." : cons.length > 3 ? "En fazla 3 eksi seçebilirsiniz." : null;
+  const prosError = pros.length < 1 ? "En az 1 artı seçiniz." : pros.length > 3 ? "En fazla 3 artı seçebilirsiniz." : null;
+  const consError = cons.length < 1 ? "En az 1 eksi seçiniz." : cons.length > 3 ? "En fazla 3 eksi seçebilirsiniz." : null;
   const canSubmit = !prosError && !consError && detailValidation.ok;
 
   function togglePro(key: string) {

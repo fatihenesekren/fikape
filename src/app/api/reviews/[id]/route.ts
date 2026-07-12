@@ -24,10 +24,10 @@ export async function PATCH(
   const prosArr: string[] = Array.isArray(pros) ? pros : [];
   const consArr: string[] = Array.isArray(cons) ? cons : [];
   if (prosArr.length < 1 || prosArr.length > 3) {
-    return NextResponse.json({ error: "En az 1, en fazla 3 artı seçin." }, { status: 400 });
+    return NextResponse.json({ error: "En az 1, en fazla 3 artı seçiniz." }, { status: 400 });
   }
   if (consArr.length < 1 || consArr.length > 3) {
-    return NextResponse.json({ error: "En az 1, en fazla 3 eksi seçin." }, { status: 400 });
+    return NextResponse.json({ error: "En az 1, en fazla 3 eksi seçiniz." }, { status: 400 });
   }
 
   const detailCheck = validateDetailShort(detailText ?? "");
