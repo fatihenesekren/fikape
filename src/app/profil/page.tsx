@@ -149,14 +149,14 @@ export default async function ProfilPage() {
         {/* Katkı-etki geri bildirimi */}
         {publishedReviews.length > 0 && (
           <div className="flex flex-wrap gap-x-6 gap-y-2 mt-5 pt-5 border-t border-gray-100 text-xs text-gray-500">
-            <span>
+            <span className="min-w-0">
               Yorumlarının olduğu araçlar <strong className="text-gray-900">{totalViews.toLocaleString("tr-TR")}</strong> kez görüntülendi
             </span>
-            <span>
+            <span className="min-w-0">
               <strong className="text-gray-900">{helpfulCount}</strong> kişi yorumlarını faydalı buldu
             </span>
             {foundingCount > 0 && (
-              <span>
+              <span className="min-w-0">
                 🏅 <strong className="text-gray-900">{foundingCount}</strong> araçta Kurucu Yorumcusun
               </span>
             )}
