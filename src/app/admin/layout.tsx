@@ -2,6 +2,8 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { AdminNav } from "./AdminNav";
+import { AdminBottomNav } from "./AdminBottomNav";
+import { AdminMobileHeader } from "./AdminMobileHeader";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
@@ -21,18 +23,22 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   ]);
 
   const navItems = [
-    { href: "/admin/yorumlar",  label: "Yorumlar",       icon: "💬", badge: pendingReviews },
-    { href: "/admin/oneriler",  label: "Araç Önerileri", icon: "🚗", badge: pendingSuggestions },
-    { href: "/admin/araclar",   label: "Görseller",      icon: "🖼️", badge: 0 },
-    { href: "/admin/leads",     label: "Gelir Talepleri", icon: "🛡️", badge: newInsuranceLeads + newSaleLeads },
+    { href: "/admin/yorumlar",  label: "Yorumlar",       shortLabel: "Yorumlar",  icon: "💬", badge: pendingReviews },
+    { href: "/admin/oneriler",  label: "Araç Önerileri", shortLabel: "Öneriler",  icon: "🚗", badge: pendingSuggestions },
+    { href: "/admin/araclar",   label: "Görseller",      shortLabel: "Görseller", icon: "🖼️", badge: 0 },
+    { href: "/admin/leads",     label: "Gelir Talepleri", shortLabel: "Talepler", icon: "🛡️", badge: newInsuranceLeads + newSaleLeads },
   ];
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
       <AdminNav items={navItems} />
-      <main className="flex-1 overflow-auto">
-        {children}
-      </main>
+      <div className="flex-1 flex flex-col min-w-0">
+        <AdminMobileHeader />
+        <main className="flex-1 overflow-auto pb-16 md:pb-0">
+          {children}
+        </main>
+      </div>
+      <AdminBottomNav items={navItems} />
     </div>
   );
 }
