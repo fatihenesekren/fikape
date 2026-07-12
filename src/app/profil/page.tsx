@@ -60,10 +60,13 @@ export default async function ProfilPage() {
     prisma.notification.findMany({
       where: { userId },
       orderBy: { createdAt: "desc" },
-      take: 20,
+      take: 21,
       select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true },
     }),
   ]);
+
+  const hasMoreNotifications = notifications.length > 20;
+  const visibleNotifications = notifications.slice(0, 20);
 
   const foundingCount = publishedReviews.filter((r) => foundingIds.has(r.id)).length;
 
@@ -179,7 +182,8 @@ export default async function ProfilPage() {
       </div>
 
       <NotificationsSection
-        notifications={notifications.map((n) => ({ ...n, createdAt: n.createdAt.toISOString() }))}
+        notifications={visibleNotifications.map((n) => ({ ...n, createdAt: n.createdAt.toISOString() }))}
+        hasMore={hasMoreNotifications}
       />
 
       <InviteBox referralCode={user.referralCode} referralCount={user._count.referrals} />
