@@ -11,7 +11,7 @@ export interface NotificationData {
   createdAt: string;
 }
 
-const TYPE_ICON: Record<string, string> = {
+export const TYPE_ICON: Record<string, string> = {
   NEW_QUESTION: "❓",
   QUESTION_ANSWERED: "💬",
   REVIEW_PUBLISHED: "🎉",

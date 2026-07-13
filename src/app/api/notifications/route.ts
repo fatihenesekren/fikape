@@ -6,9 +6,17 @@ export async function GET() {
   const session = await auth();
   if (!session?.user?.id) return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
 
-  const unreadCount = await prisma.notification.count({
-    where: { userId: Number(session.user.id), isRead: false },
-  });
+  const userId = Number(session.user.id);
 
-  return NextResponse.json({ unreadCount });
+  const [unreadCount, notifications] = await Promise.all([
+    prisma.notification.count({ where: { userId, isRead: false } }),
+    prisma.notification.findMany({
+      where: { userId },
+      orderBy: { createdAt: "desc" },
+      take: 6,
+      select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true },
+    }),
+  ]);
+
+  return NextResponse.json({ unreadCount, notifications });
 }
