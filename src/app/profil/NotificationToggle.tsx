@@ -19,7 +19,10 @@ export function NotificationToggle({ initialEnabled }: { initialEnabled: boolean
   }
 
   return (
-    <label className="flex items-center gap-2 text-xs text-gray-500 cursor-pointer select-none w-fit">
+    <label
+      className="flex items-center gap-2 text-xs font-medium cursor-pointer select-none w-fit transition-colors"
+      style={{ color: enabled ? "#16A34A" : "#6B7280" }}
+    >
       <button
         type="button"
         role="switch"
@@ -27,7 +30,7 @@ export function NotificationToggle({ initialEnabled }: { initialEnabled: boolean
         onClick={toggle}
         disabled={loading}
         className="relative w-8 h-4 rounded-full transition-colors disabled:opacity-50"
-        style={{ background: enabled ? "#111" : "#e5e7eb" }}
+        style={{ background: enabled ? "#16A34A" : "#e5e7eb" }}
       >
         <span
           className="absolute top-0.5 left-0.5 w-3 h-3 rounded-full bg-white transition-transform"
