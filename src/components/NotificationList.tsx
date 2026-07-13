@@ -21,6 +21,16 @@ export const TYPE_ICON: Record<string, string> = {
   UPDATE_REMINDER: "🔄",
 };
 
+export const TYPE_LABEL: Record<string, string> = {
+  NEW_QUESTION: "Soru-Cevap",
+  QUESTION_ANSWERED: "Soru-Cevap",
+  REVIEW_PUBLISHED: "Yorumun",
+  REVIEW_HELPFUL: "Yorumun",
+  NEW_MODEL_IN_BRAND: "Yeni Model",
+  REMINDER: "Hatırlatma",
+  UPDATE_REMINDER: "Hatırlatma",
+};
+
 function fmtDate(iso: string) {
   return new Date(iso).toLocaleDateString("tr-TR", { day: "numeric", month: "short", year: "numeric" });
 }
@@ -49,7 +59,8 @@ export function NotificationList({ notifications, dimUnread }: { notifications: 
         >
           <span className="text-lg shrink-0">{TYPE_ICON[n.type] ?? "🔔"}</span>
           <div className="flex-1 min-w-0">
-            <p className="text-sm text-gray-800">{n.message}</p>
+            <p className="text-[10px] font-bold uppercase tracking-wide text-gray-400">{TYPE_LABEL[n.type] ?? "Bildirim"}</p>
+            <p className="text-sm text-gray-800 mt-0.5">{n.message}</p>
             <p className="text-xs text-gray-400 mt-0.5">{fmtDate(n.createdAt)}</p>
           </div>
         </Link>

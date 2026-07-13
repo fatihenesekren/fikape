@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { TYPE_ICON, type NotificationData } from "./NotificationList";
+import { TYPE_ICON, TYPE_LABEL, type NotificationData } from "./NotificationList";
 
 function fmtDate(iso: string) {
   return new Date(iso).toLocaleDateString("tr-TR", { day: "numeric", month: "short" });
@@ -100,7 +100,8 @@ export function NotificationBell() {
                 >
                   <span className="text-base shrink-0">{TYPE_ICON[n.type] ?? "🔔"}</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-800 line-clamp-2">{n.message}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-wide text-gray-400">{TYPE_LABEL[n.type] ?? "Bildirim"}</p>
+                    <p className="text-sm text-gray-800 line-clamp-2 mt-0.5">{n.message}</p>
                     <p className="text-xs text-gray-400 mt-0.5">{fmtDate(n.createdAt)}</p>
                   </div>
                   {!n.isRead && <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0 mt-1.5" />}
