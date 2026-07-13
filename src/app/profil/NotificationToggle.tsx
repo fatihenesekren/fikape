@@ -30,7 +30,7 @@ export function NotificationToggle({ initialEnabled }: { initialEnabled: boolean
         style={{ background: enabled ? "#111" : "#e5e7eb" }}
       >
         <span
-          className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform"
+          className="absolute top-0.5 left-0.5 w-3 h-3 rounded-full bg-white transition-transform"
           style={{ transform: enabled ? "translateX(17px)" : "translateX(2px)" }}
         />
       </button>
