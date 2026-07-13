@@ -28,8 +28,12 @@ function fmtDate(iso: string) {
 export function NotificationList({ notifications, dimUnread }: { notifications: NotificationData[]; dimUnread: boolean }) {
   if (notifications.length === 0) {
     return (
-      <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-10 text-center text-gray-400 text-sm">
-        Henüz bir bildirimin yok.
+      <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-12 text-center space-y-3">
+        <div className="text-4xl">🔔</div>
+        <p className="font-semibold text-gray-800">Henüz bir bildirimin yok</p>
+        <p className="text-sm text-gray-400">
+          Sorularına cevap geldiğinde veya yorumun yayınlandığında burada göreceksin.
+        </p>
       </div>
     );
   }
