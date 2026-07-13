@@ -42,7 +42,7 @@ export function NotificationList({ notifications, dimUnread }: { notifications: 
         <div className="text-4xl">🔔</div>
         <p className="font-semibold text-gray-800">Henüz bir bildirimin yok</p>
         <p className="text-sm text-gray-400">
-          Sorularına cevap geldiğinde veya yorumun yayınlandığında burada göreceksin.
+          Sorularına cevap geldiğinde veya yorumun yayınlandığında burada göreceksiniz.
         </p>
       </div>
     );
