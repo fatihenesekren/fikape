@@ -10,5 +10,5 @@ export function createNotification(params: {
   message: string;
   link: string;
 }) {
-  return prisma.notification.create({ data: params }).catch(() => {});
+  return prisma.notification.create({ data: params }).catch((e) => console.error("[notification]", e));
 }

@@ -16,7 +16,7 @@ export default function KullanimKosullariPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Kullanım Koşulları</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Haziran 2025</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Temmuz 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -142,7 +142,25 @@ export default function KullanimKosullariPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">10. Uygulanacak Hukuk ve Uyuşmazlık Çözümü</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">10. Takas İlanları ve Kullanıcılar Arası İletişim</h2>
+          <p>
+            Platform, kullanıcıların araçlarını "Takasa Açık" olarak işaretleyip birbirleriyle
+            platform içi mesajlaşma yoluyla iletişime geçmesine imkan tanır. Bu alan yalnızca bir
+            iletişim aracıdır; fikape.com taraflar arasında kurulan hiçbir anlaşmanın, sözlü veya
+            yazılı görüşmenin tarafı değildir ve bunların doğruluğu, güvenilirliği veya
+            sonuçlarından sorumlu tutulamaz.
+          </p>
+          <p className="mt-2">
+            İlan verirken paylaştığınız araç ve konum (il) bilgisinin doğruluğundan ve bu bilgileri
+            paylaşma kararınızdan tamamen siz sorumlusunuz. Araç sahibi olmadığınız halde ilan
+            vermek Kullanım Koşulları'nın ihlalidir. Şüpheli veya kötü niyetli kullanıcı davranışını
+            bildirmek için mesajlaşma ekranındaki "Rapor Et" özelliğini kullanabilirsiniz; platform
+            gerekli gördüğü durumlarda hesapları kısıtlama hakkını saklı tutar.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">11. Uygulanacak Hukuk ve Uyuşmazlık Çözümü</h2>
           <p>
             Bu koşullar Türkiye Cumhuriyeti hukukuna tabidir. Taraflar arasında doğabilecek
             uyuşmazlıklarda İstanbul Merkez Mahkemeleri ve İcra Daireleri yetkilidir.
@@ -153,7 +171,7 @@ export default function KullanimKosullariPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">11. İletişim</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">12. İletişim</h2>
           <p>
             Sorularınız veya şikayetleriniz için:{" "}
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>

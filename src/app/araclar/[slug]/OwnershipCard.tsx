@@ -34,6 +34,7 @@ export function OwnershipCard({
   const [selectedReason, setSelectedReason] = useState("");
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("now");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   async function addToGarage() {
@@ -52,11 +53,18 @@ export function OwnershipCard({
 
   async function removeFromGarage() {
     setLoading(true);
-    await fetch("/api/garage", {
+    setError(null);
+    const res = await fetch("/api/garage", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ productId }),
     });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setError(data.error ?? "Bir hata oluştu.");
+      setLoading(false);
+      return;
+    }
     setInGarage(false);
     setIsSold(false);
     setSoldReason(null);
@@ -191,6 +199,8 @@ export function OwnershipCard({
           )}
         </div>
       </div>
+
+      {error && <p className="px-5 pb-3 text-xs text-red-600">{error}</p>}
 
       {/* Satış formu */}
       {showSellForm && inGarage && (

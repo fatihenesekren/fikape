@@ -8,6 +8,7 @@ import { calcOverall } from "@/lib/fikape";
 import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
 import { GarageAnimation } from "./GarageAnimation";
 import { InsuranceLeadCard } from "./InsuranceLeadCard";
+import { TradeToggleCard } from "./TradeToggleCard";
 import { stripModelGenRange, stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 export const metadata: Metadata = { title: "Garajım" };
@@ -25,16 +26,27 @@ export default async function GarajimPage() {
 
   const currentUser = await prisma.user.findUnique({
     where: { id: userId },
-    select: { displayName: true, email: true },
+    select: { displayName: true, email: true, trustLevel: true },
   });
 
   const userName = currentUser?.displayName || currentUser?.email?.split("@")[0] || "Sürücü";
+  const trustLevelOk = (currentUser?.trustLevel ?? 0) >= 3;
 
   const insuranceLeads = await prisma.insuranceLead.findMany({
     where: { userId },
     select: { productId: true },
   }).catch(() => []); // migration henüz uygulanmadıysa sayfa çökmesin
   const leadProductIds = new Set(insuranceLeads.map((l) => l.productId));
+
+  const [tradeListings, tradeCategories, tradeBrands] = await Promise.all([
+    prisma.tradeListing.findMany({
+      where: { userId, isActive: true },
+      select: { id: true, userProductId: true },
+    }).catch(() => []),
+    prisma.category.findMany({ where: { isActive: true }, select: { id: true, name: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
+    prisma.brand.findMany({ where: { isActive: true }, select: { id: true, name: true }, orderBy: { name: "asc" } }).catch(() => []),
+  ]);
+  const tradeListingByUserProductId = new Map(tradeListings.map((t) => [t.userProductId, t]));
 
   const userProducts = await prisma.userProduct.findMany({
     where: { userId },
@@ -55,13 +67,14 @@ export default async function GarajimPage() {
   const soldVehicles   = userProducts.filter((up) => up.ownershipStatus === "PAST");
 
   function VehicleCard({
-    product, reviews, soldReason, soldAt, isSold,
+    product, reviews, soldReason, soldAt, isSold, userProductId,
   }: {
     product: (typeof userProducts)[0]["product"];
     reviews: (typeof userProducts)[0]["reviews"];
     soldReason?: string | null;
     soldAt?: Date | null;
     isSold?: boolean;
+    userProductId: number;
   }) {
     const attrs = product.attributes as Record<string, unknown>;
     const fuelType = String(attrs.fuel_type ?? "");
@@ -154,6 +167,16 @@ export default async function GarajimPage() {
               alreadySubmitted={leadProductIds.has(product.id)}
             />
           )}
+
+          {!isSold && (
+            <TradeToggleCard
+              userProductId={userProductId}
+              trustLevelOk={trustLevelOk}
+              categories={tradeCategories}
+              brands={tradeBrands}
+              existingListing={tradeListingByUserProductId.get(userProductId) ?? null}
+            />
+          )}
         </div>
 
         {/* Araç sayfası linki */}
@@ -204,8 +227,8 @@ export default async function GarajimPage() {
                   Garajımdaki Araçlar
                 </h2>
               )}
-              {activeVehicles.map(({ product, reviews }) => (
-                <VehicleCard key={product.id} product={product} reviews={reviews} />
+              {activeVehicles.map(({ id, product, reviews }) => (
+                <VehicleCard key={product.id} product={product} reviews={reviews} userProductId={id} />
               ))}
             </div>
           )}
@@ -216,7 +239,7 @@ export default async function GarajimPage() {
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider">
                 Geçmiş Araçlarım
               </h2>
-              {soldVehicles.map(({ product, reviews, soldReason, soldAt }) => (
+              {soldVehicles.map(({ id, product, reviews, soldReason, soldAt }) => (
                 <VehicleCard
                   key={product.id}
                   product={product}
@@ -224,6 +247,7 @@ export default async function GarajimPage() {
                   soldReason={soldReason}
                   soldAt={soldAt}
                   isSold
+                  userProductId={id}
                 />
               ))}
             </div>

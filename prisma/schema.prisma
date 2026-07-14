@@ -40,6 +40,7 @@ model Category {
   createdAt        DateTime   @default(now())
 
   products         Product[]
+  tradeListingsWanted TradeListing[]
 
   @@map("categories")
 }
@@ -58,6 +59,7 @@ model Brand {
 
   models    Model[]
   products  Product[]
+  tradeListingsWanted TradeListing[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "brands_name_trgm_idx")
@@ -119,6 +121,7 @@ model Product {
   questions       Question[]
   insuranceLeads  InsuranceLead[]
   saleLeads       SaleLead[]
+  tradeListings   TradeListing[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "products_name_trgm_idx")
@@ -182,6 +185,11 @@ model User {
   saleLeads           SaleLead[]
   plusWaitlistEntries PlusWaitlistEntry[]
   notifications       Notification[]
+  tradeListings       TradeListing[]
+  threadsInitiated    MessageThread[] @relation("ThreadInitiator")
+  messagesSent        Message[]       @relation("MessageSender")
+  threadsBlocked      MessageThread[] @relation("ThreadBlockedBy")
+  messageReports      MessageReport[]
 
   @@map("users")
 }
@@ -199,6 +207,8 @@ enum NotificationType {
   NEW_MODEL_IN_BRAND
   REMINDER
   UPDATE_REMINDER
+  TRADE_INTEREST
+  NEW_TRADE_MESSAGE
 }
 
 model Notification {
@@ -245,6 +255,7 @@ model UserProduct {
   updatedAt       DateTime @updatedAt
 
   reviews         Review[]
+  tradeListings   TradeListing[]
 
   @@unique([userId, productId])
   @@map("user_products")
@@ -781,4 +792,125 @@ model PlusWaitlistEntry {
 
   @@unique([email])
   @@map("plus_waitlist_entries")
+}
+
+// ─────────────────────────────────────────────
+// TAKASA AÇ — Garaj'daki araç için "takasa açık" işareti.
+// 1 ilan = 1 mesajlaşma thread'i modeli (genel DM sistemi YOK).
+// Erişim: trustLevel >= 3 (garajda araç + fotoğraflı + onaylı yorum)
+// ─────────────────────────────────────────────
+
+model TradeListing {
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  user            User     @relation(fields: [userId], references: [id])
+  productId       Int
+  product         Product  @relation(fields: [productId], references: [id])
+  userProductId   Int
+  userProduct     UserProduct @relation(fields: [userProductId], references: [id], onDelete: Cascade)
+
+  wantCategoryId  Int?
+  wantCategory    Category? @relation(fields: [wantCategoryId], references: [id])
+  wantBrandId     Int?
+  wantBrand       Brand?    @relation(fields: [wantBrandId], references: [id])
+  wantAnything    Boolean  @default(false)
+  note            String?  @db.VarChar(300)
+
+  paymentIntent   TradePaymentIntent @default(SWAP_ONLY)
+  city            String   @db.VarChar(50)   // sadece İl, ilçe yok — TURKISH_CITIES whitelist'ine karşı validate edilir
+
+  isActive        Boolean  @default(true)
+  closedAt        DateTime?
+  closeReason     TradeCloseReason?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  threads         MessageThread[]
+
+  // NOT: Prisma @@unique([userProductId]) YOK (kapanan ilan yeniden açılamama
+  // bug'ına yol açar). Bunun yerine migration SQL'ine ELLE bir PARTIAL UNIQUE
+  // INDEX eklenir:
+  //   CREATE UNIQUE INDEX trade_listings_active_user_product_key
+  //   ON trade_listings ("userProductId") WHERE "isActive" = true;
+  @@index([userProductId, isActive])
+  @@index([city, isActive])
+  @@index([userId])
+  @@map("trade_listings")
+}
+
+enum TradePaymentIntent {
+  SWAP_ONLY
+  PAYS_EXTRA
+  WANTS_EXTRA
+}
+
+enum TradeCloseReason {
+  TRADED
+  GAVE_UP
+  FOUND_ELSEWHERE
+}
+
+model MessageThread {
+  id              Int      @id @default(autoincrement())
+  tradeListingId  Int
+  tradeListing    TradeListing @relation(fields: [tradeListingId], references: [id], onDelete: Cascade)
+  initiatorId     Int
+  initiator       User     @relation("ThreadInitiator", fields: [initiatorId], references: [id])
+  createdAt       DateTime @default(now())
+  lastMessageAt   DateTime @default(now())
+  hasReciprocalReply Boolean @default(false)
+
+  // Görüşmeyi sonlandırma — kim dondurduğunu tutar
+  blockedByUserId Int?
+  blockedByUser   User?    @relation("ThreadBlockedBy", fields: [blockedByUserId], references: [id])
+  blockedAt       DateTime?
+
+  messages        Message[]
+
+  @@unique([tradeListingId, initiatorId])
+  @@index([initiatorId])
+  @@map("message_threads")
+}
+
+model Message {
+  id        Int           @id @default(autoincrement())
+  threadId  Int
+  thread    MessageThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  senderId  Int
+  sender    User          @relation("MessageSender", fields: [senderId], references: [id])
+  text      String        @db.VarChar(1000)
+  isRead    Boolean       @default(false)
+  createdAt DateTime      @default(now())
+
+  reports   MessageReport[]
+
+  @@index([threadId, createdAt])
+  @@map("messages")
+}
+
+model MessageReport {
+  id         Int                 @id @default(autoincrement())
+  messageId  Int
+  message    Message             @relation(fields: [messageId], references: [id])
+  reporterId Int
+  reporter   User                @relation(fields: [reporterId], references: [id])
+  reason     MessageReportReason
+  note       String?             @db.VarChar(300)
+  status     MessageReportStatus @default(PENDING)
+  createdAt  DateTime            @default(now())
+
+  @@map("message_reports")
+}
+
+enum MessageReportReason {
+  SPAM
+  SCAM_ATTEMPT
+  OFFENSIVE
+  OTHER
+}
+
+enum MessageReportStatus {
+  PENDING
+  REVIEWED
 }

@@ -7,6 +7,10 @@
     {
       "path": "/api/cron/reminder-emails",
       "schedule": "0 9 * * 1"
+    },
+    {
+      "path": "/api/cron/anonymize-closed-trades",
+      "schedule": "0 4 * * 1"
     }
   ]
 }

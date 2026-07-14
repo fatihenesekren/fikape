@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TURKISH_CITIES } from "@/lib/turkishCities";
 
 // Ortak parçalar
 const score = z.number().min(1, "Puanlar 1-10 arasında olmalıdır.").max(10, "Puanlar 1-10 arasında olmalıdır.");
@@ -92,6 +93,29 @@ export const saleLeadSchema = z.object({
 export const plusWaitlistSchema = z.object({
   email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi giriniz."),
   note:  z.string().trim().max(280).optional().nullable(),
+});
+
+export const tradeListingCreateSchema = z.object({
+  userProductId:  z.union([z.number(), z.string()]),
+  wantCategoryId: z.union([z.number(), z.string()]).optional().nullable(),
+  wantBrandId:    z.union([z.number(), z.string()]).optional().nullable(),
+  wantAnything:   z.boolean().optional(),
+  note:           z.string().trim().max(300).optional().nullable(),
+  paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"], { error: "Geçersiz ödeme niyeti." }),
+  city:           z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
+});
+
+export const tradeListingCloseSchema = z.object({
+  closeReason: z.enum(["TRADED", "GAVE_UP", "FOUND_ELSEWHERE"]).optional().nullable(),
+});
+
+export const messageCreateSchema = z.object({
+  text: z.string().trim().min(1, "Mesaj boş olamaz.").max(1000, "En fazla 1000 karakter yazabilirsiniz."),
+});
+
+export const messageReportSchema = z.object({
+  reason: z.enum(["SPAM", "SCAM_ATTEMPT", "OFFENSIVE", "OTHER"], { error: "Geçersiz rapor sebebi." }),
+  note:   z.string().trim().max(300).optional().nullable(),
 });
 
 export function formatZodError(error: z.ZodError): string {

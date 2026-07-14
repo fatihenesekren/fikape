@@ -61,14 +61,20 @@ export async function PATCH(req: NextRequest) {
       if (soldAt < userProduct.createdAt) soldAt = userProduct.createdAt;
     }
 
-    await prisma.userProduct.update({
-      where: { userId_productId: { userId, productId } },
-      data: {
-        ownershipStatus: "PAST",
-        soldAt,
-        soldReason: soldReason ?? null,
-      },
-    });
+    await prisma.$transaction([
+      prisma.userProduct.update({
+        where: { userId_productId: { userId, productId } },
+        data: {
+          ownershipStatus: "PAST",
+          soldAt,
+          soldReason: soldReason ?? null,
+        },
+      }),
+      prisma.tradeListing.updateMany({
+        where: { userProductId: userProduct.id, isActive: true },
+        data: { isActive: false, closedAt: new Date() },
+      }),
+    ]);
   } else if (action === "reactivate") {
     await prisma.userProduct.update({
       where: { userId_productId: { userId, productId } },
@@ -89,6 +95,26 @@ export async function DELETE(req: NextRequest) {
 
   const { productId } = await req.json();
   const userId = Number(session.user.id);
+
+  const userProduct = await prisma.userProduct.findUnique({
+    where: { userId_productId: { userId, productId } },
+    select: { id: true },
+  });
+
+  if (userProduct) {
+    const pendingReport = await prisma.messageReport.findFirst({
+      where: {
+        status: "PENDING",
+        message: { thread: { tradeListing: { userProductId: userProduct.id } } },
+      },
+    });
+    if (pendingReport) {
+      return NextResponse.json(
+        { error: "Bu araç şu an incelemede, takasa açılamıyor." },
+        { status: 409 }
+      );
+    }
+  }
 
   await prisma.userProduct.deleteMany({
     where: { userId, productId },

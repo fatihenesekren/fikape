@@ -15,11 +15,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   });
   if (!adminUser || adminUser.trustLevel < 5) redirect("/");
 
-  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads] = await Promise.all([
+  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports] = await Promise.all([
     prisma.review.count({ where: { status: "PENDING" } }).catch(() => 0),
     prisma.vehicleSuggestion.count({ where: { status: "PENDING" } }).catch(() => 0),
     prisma.insuranceLead.count({ where: { status: "NEW" } }).catch(() => 0),
     prisma.saleLead.count({ where: { status: "NEW" } }).catch(() => 0),
+    prisma.messageReport.count({ where: { status: "PENDING" } }).catch(() => 0),
   ]);
 
   const navItems = [
@@ -27,6 +28,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     { href: "/admin/oneriler",  label: "Araç Önerileri", shortLabel: "Öneriler",  icon: "🚗", badge: pendingSuggestions },
     { href: "/admin/araclar",   label: "Görseller",      shortLabel: "Görseller", icon: "🖼️", badge: 0 },
     { href: "/admin/leads",     label: "Gelir Talepleri", shortLabel: "Talepler", icon: "🛡️", badge: newInsuranceLeads + newSaleLeads },
+    { href: "/admin/mesaj-raporlari", label: "Mesaj Raporları", shortLabel: "Raporlar", icon: "🚩", badge: pendingMessageReports },
   ];
 
   return (

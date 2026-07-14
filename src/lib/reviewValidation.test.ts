@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { validateSummary, validateDetail, validateDetailShort } from "./reviewValidation";
+import { validateSummary, validateDetail, validateDetailShort, checkContent } from "./reviewValidation";
 
 describe("validateSummary", () => {
   it("boş metni reddeder", () => {
@@ -33,6 +33,48 @@ describe("validateSummary", () => {
   it("anlamsız tekrar eden karakterleri reddeder", () => {
     const result = validateSummary("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     expect(result.ok).toBe(false);
+  });
+});
+
+describe("checkContent — ayraçlı küfür atlatma düzeltmesi", () => {
+  it("nokta ile ayrılmış küfürü reddeder", () => {
+    const result = checkContent("bu araba tam bir a.m.k gibi bir şey oldu valla");
+    expect(result.ok).toBe(false);
+  });
+
+  it("boşlukla ayrılmış küfürü reddeder", () => {
+    const result = checkContent("bu araba tam bir a m k gibi bir şey oldu valla");
+    expect(result.ok).toBe(false);
+  });
+
+  it("normal, küfürsüz bir metni hâlâ kabul eder", () => {
+    const result = checkContent("bu araç gerçekten fiyatına göre gayet iyi performans veriyor");
+    expect(result.ok).toBe(true);
+  });
+});
+
+describe("checkContent — IBAN engeli", () => {
+  it("boşluklu IBAN paylaşımını reddeder", () => {
+    const result = checkContent("hesap bilgim TR33 0006 1005 1978 6457 8413 26 buraya gönderebilirsin");
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/IBAN/);
+  });
+
+  it("boşluksuz IBAN paylaşımını reddeder", () => {
+    const result = checkContent("hesap bilgim TR330006100519786457841326 buraya gönderebilirsin");
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/IBAN/);
+  });
+
+  it("noktalı IBAN paylaşımını reddeder", () => {
+    const result = checkContent("hesap bilgim TR33.0006.1005.1978.6457.8413.26 buraya gönderebilirsin");
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/IBAN/);
+  });
+
+  it("meşru plaka/şasi içeren normal bir mesajı hâlâ kabul eder (yanlış-pozitif kontrolü)", () => {
+    const result = checkContent("aracın plakası 34 ABC 123 ve şasi numarası da elimde mevcut durumda");
+    expect(result.ok).toBe(true);
   });
 });
 

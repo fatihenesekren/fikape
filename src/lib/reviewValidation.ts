@@ -14,6 +14,9 @@ const SPAM_PATTERNS = [
   /(.{1,10})\1{4,}/,       // Kısa tekrar bloğu: "aşk aşk aşk aşk aşk"
 ];
 
+// Türk IBAN'ı: TR + 2 kontrol hanesi + 22 hane, boşluk/tire/nokta ile ayrılmış olabilir
+const IBAN_PATTERN = /TR\d{2}([\s\-.]?\d{4}){5}[\s\-.]?\d{2}/i;
+
 export interface ValidationResult {
   ok: boolean;
   error: string | null;
@@ -49,6 +52,11 @@ export function validateDetailShort(text: string): ValidationResult {
 }
 
 export function checkContent(t: string): ValidationResult {
+  // IBAN / banka hesabı paylaşımı — jenerik spam mesajına düşmeden önce, özel mesajla reddet
+  if (IBAN_PATTERN.test(t)) {
+    return err("IBAN veya banka hesap bilgisi paylaşımına izin verilmemektedir.");
+  }
+
   // URL kontrolü
   for (const pattern of SPAM_PATTERNS) {
     if (pattern.test(t)) {
@@ -65,10 +73,11 @@ export function checkContent(t: string): ValidationResult {
     return err("Lütfen anlamlı bir metin yazınız.");
   }
 
-  // Küfür / hakaret kontrolü
-  const lower = t.toLowerCase().replace(/[^a-züğışöç\s]/gi, " ");
+  // Küfür / hakaret kontrolü — boşluklu VE bitişik (ayraçla atlatmayı önlemek için) iki ayrı kontrol
+  const lowerSpaced = t.toLowerCase().replace(/[^a-züğışöç\s]/gi, " ");
+  const lowerCollapsed = t.toLowerCase().replace(/[^a-züğışöç]/gi, "");
   for (const word of PROFANITY) {
-    if (lower.includes(word)) {
+    if (lowerSpaced.includes(word) || lowerCollapsed.includes(word)) {
       return err("Hakaret veya uygunsuz ifade tespit edildi.");
     }
   }

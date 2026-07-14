@@ -19,6 +19,8 @@ export const TYPE_ICON: Record<string, string> = {
   NEW_MODEL_IN_BRAND: "🚗",
   REMINDER: "✍️",
   UPDATE_REMINDER: "🔄",
+  TRADE_INTEREST: "🤝",
+  NEW_TRADE_MESSAGE: "🤝",
 };
 
 export const TYPE_LABEL: Record<string, string> = {
@@ -29,6 +31,8 @@ export const TYPE_LABEL: Record<string, string> = {
   NEW_MODEL_IN_BRAND: "Yeni Model",
   REMINDER: "Hatırlatma",
   UPDATE_REMINDER: "Hatırlatma",
+  TRADE_INTEREST: "Takas",
+  NEW_TRADE_MESSAGE: "Takas",
 };
 
 function fmtDate(iso: string) {
