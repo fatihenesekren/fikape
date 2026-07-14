@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { TradeCard } from "./TradeCard";
+import { TakasFilterForm } from "./TakasFilterForm";
 
 export async function generateMetadata({
   searchParams,
@@ -31,7 +32,7 @@ export default async function TakasPage({
   }
 
   const categories = await prisma.category.findMany({
-    where: { isActive: true },
+    where: { isActive: true, parentId: { not: null } },
     select: { id: true, slug: true, name: true },
     orderBy: { sortOrder: "asc" },
   }).catch(() => []);
@@ -40,6 +41,15 @@ export default async function TakasPage({
     select: { id: true, slug: true, name: true },
     orderBy: { name: "asc" },
   }).catch(() => []);
+  const categoryBrandLinks = await prisma.product.findMany({
+    where: { isActive: true },
+    select: { category: { select: { slug: true } }, brand: { select: { slug: true } } },
+    distinct: ["categoryId", "brandId"],
+  }).catch(() => []);
+  const categoryBrandMap: Record<string, string[]> = {};
+  for (const link of categoryBrandLinks) {
+    (categoryBrandMap[link.category.slug] ??= []).push(link.brand.slug);
+  }
 
   return (
     <div className="max-w-3xl w-full mx-auto px-4 py-10">
@@ -48,29 +58,15 @@ export default async function TakasPage({
         <p className="text-sm text-gray-500 mt-1">Aracını takasa açan kullanıcıları keşfet.</p>
       </div>
 
-      <form method="get" className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-8">
-        <select name="il" defaultValue={il} className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5">
-          <option value="">İl seçiniz</option>
-          {TURKISH_CITIES.map((c) => (
-            <option key={c} value={c}>{c}</option>
-          ))}
-        </select>
-        <select name="kategori" defaultValue={params.kategori ?? ""} className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5">
-          <option value="">Tüm kategoriler</option>
-          {categories.map((c) => (
-            <option key={c.id} value={c.slug}>{c.name}</option>
-          ))}
-        </select>
-        <select name="marka" defaultValue={params.marka ?? ""} className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5">
-          <option value="">Tüm markalar</option>
-          {brands.map((b) => (
-            <option key={b.id} value={b.slug}>{b.name}</option>
-          ))}
-        </select>
-        <button type="submit" className="sm:col-span-3 text-sm font-semibold text-white rounded-lg px-3 py-1.5" style={{ background: "#4338ca" }}>
-          Filtrele
-        </button>
-      </form>
+      <TakasFilterForm
+        il={il}
+        kategoriSlug={params.kategori ?? ""}
+        markaSlug={params.marka ?? ""}
+        cities={TURKISH_CITIES}
+        categories={categories}
+        brands={brands}
+        categoryBrandMap={categoryBrandMap}
+      />
 
       {!il ? (
         <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-10 text-center text-gray-400 text-sm">

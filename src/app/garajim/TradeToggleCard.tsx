@@ -12,12 +12,14 @@ export function TradeToggleCard({
   trustLevelOk,
   categories,
   brands,
+  categoryBrandMap,
   existingListing,
 }: {
   userProductId: number;
   trustLevelOk: boolean;
   categories: { id: number; name: string }[];
   brands: { id: number; name: string }[];
+  categoryBrandMap: Record<number, number[]>;
   existingListing: { id: number } | null;
 }) {
   const router = useRouter();
@@ -26,6 +28,9 @@ export function TradeToggleCard({
   const [wantAnything, setWantAnything] = useState(true);
   const [wantCategoryId, setWantCategoryId] = useState("");
   const [wantBrandId, setWantBrandId] = useState("");
+  const availableBrands = wantCategoryId
+    ? brands.filter((b) => categoryBrandMap[Number(wantCategoryId)]?.includes(b.id))
+    : brands;
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent>("SWAP_ONLY");
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -155,7 +160,7 @@ export function TradeToggleCard({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <select
             value={wantCategoryId}
-            onChange={(e) => setWantCategoryId(e.target.value)}
+            onChange={(e) => { setWantCategoryId(e.target.value); setWantBrandId(""); }}
             className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
           >
             <option value="">Kategori seçiniz</option>
@@ -166,10 +171,11 @@ export function TradeToggleCard({
           <select
             value={wantBrandId}
             onChange={(e) => setWantBrandId(e.target.value)}
-            className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            disabled={!wantCategoryId}
+            className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white disabled:opacity-50"
           >
-            <option value="">Marka seçiniz</option>
-            {brands.map((b) => (
+            <option value="">{wantCategoryId ? "Marka seçiniz" : "Önce kategori seçiniz"}</option>
+            {availableBrands.map((b) => (
               <option key={b.id} value={b.id}>{b.name}</option>
             ))}
           </select>
@@ -204,7 +210,7 @@ export function TradeToggleCard({
       />
 
       <p className="text-[11px] text-indigo-700 bg-indigo-100/60 rounded-lg px-2.5 py-2">
-        Fark tutarını asla aracınızı teslim etmeden önce göndermeyiniz. Buluşmayı halka açık, kalabalık bir yerde yapınız.
+        Fark tutarını asla aracı teslim almadan ve aracınızı teslim etmeden önce göndermeyiniz. Araç ekspertizi yaptırılmadan takasın kabul edilmemesi önerilir. Buluşmayı halka açık, kalabalık bir yerde yapınız. Fikape takas işlemlerinde taraf değildir.
       </p>
 
       <button

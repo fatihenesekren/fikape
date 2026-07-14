@@ -38,15 +38,21 @@ export default async function GarajimPage() {
   }).catch(() => []); // migration henüz uygulanmadıysa sayfa çökmesin
   const leadProductIds = new Set(insuranceLeads.map((l) => l.productId));
 
-  const [tradeListings, tradeCategories, tradeBrands] = await Promise.all([
+  const [tradeListings, tradeCategories, tradeBrands, categoryBrandLinks] = await Promise.all([
     prisma.tradeListing.findMany({
       where: { userId, isActive: true },
       select: { id: true, userProductId: true },
     }).catch(() => []),
-    prisma.category.findMany({ where: { isActive: true }, select: { id: true, name: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
+    // Sadece yaprak kategoriler (üst kategori "Araçlar" hariç)
+    prisma.category.findMany({ where: { isActive: true, parentId: { not: null } }, select: { id: true, name: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
     prisma.brand.findMany({ where: { isActive: true }, select: { id: true, name: true }, orderBy: { name: "asc" } }).catch(() => []),
+    prisma.product.findMany({ where: { isActive: true }, select: { categoryId: true, brandId: true }, distinct: ["categoryId", "brandId"] }).catch(() => []),
   ]);
   const tradeListingByUserProductId = new Map(tradeListings.map((t) => [t.userProductId, t]));
+  const categoryBrandMap: Record<number, number[]> = {};
+  for (const link of categoryBrandLinks) {
+    (categoryBrandMap[link.categoryId] ??= []).push(link.brandId);
+  }
 
   const userProducts = await prisma.userProduct.findMany({
     where: { userId },
@@ -174,6 +180,7 @@ export default async function GarajimPage() {
               trustLevelOk={trustLevelOk}
               categories={tradeCategories}
               brands={tradeBrands}
+              categoryBrandMap={categoryBrandMap}
               existingListing={tradeListingByUserProductId.get(userProductId) ?? null}
             />
           )}
