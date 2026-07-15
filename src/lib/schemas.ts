@@ -16,7 +16,7 @@ export const reviewCreateSchema = z.object({
   extendedData:   z.record(z.string(), z.unknown()).optional().nullable(),
   pros:           z.array(z.string()).max(3, "En fazla 3 artı seçebilirsiniz.").optional(),
   cons:           z.array(z.string()).max(3, "En fazla 3 eksi seçebilirsiniz.").optional(),
-  photoUrls:      z.array(z.string().url()).max(3).optional(),
+  photoUrls:      z.array(z.string().url()).max(5).optional(),
 });
 
 export const passwordSchema = z.string()

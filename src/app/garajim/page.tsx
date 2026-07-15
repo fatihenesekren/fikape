@@ -26,11 +26,20 @@ export default async function GarajimPage() {
 
   const currentUser = await prisma.user.findUnique({
     where: { id: userId },
-    select: { displayName: true, email: true, trustLevel: true },
+    select: { displayName: true, email: true },
   });
 
   const userName = currentUser?.displayName || currentUser?.email?.split("@")[0] || "Sürücü";
-  const trustLevelOk = (currentUser?.trustLevel ?? 0) >= 3;
+
+  // Takasa açabilmek için trustLevel (genel/kullanıcı-bazlı) yeterli değil —
+  // her ARAÇ için ayrı ayrı, o araca bağlı fotoğraflı+onaylı bir yorum var mı bakılır.
+  const verifiedReviews = await prisma.review.findMany({
+    where: { userId, status: "PUBLISHED", photos: { some: { status: "APPROVED" } } },
+    select: { userProductId: true },
+  }).catch(() => []);
+  const verifiedUserProductIds = new Set(
+    verifiedReviews.map((r) => r.userProductId).filter((id): id is number => id != null)
+  );
 
   const insuranceLeads = await prisma.insuranceLead.findMany({
     where: { userId },
@@ -177,7 +186,7 @@ export default async function GarajimPage() {
           {!isSold && (
             <TradeToggleCard
               userProductId={userProductId}
-              trustLevelOk={trustLevelOk}
+              canOpenTrade={verifiedUserProductIds.has(userProductId)}
               categories={tradeCategories}
               brands={tradeBrands}
               categoryBrandMap={categoryBrandMap}

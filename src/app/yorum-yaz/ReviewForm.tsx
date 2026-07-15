@@ -826,7 +826,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         {/* Fotoğraf yükleme */}
         <div className="space-y-3 pt-1">
           <p className="text-sm font-semibold text-gray-800">
-            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 3)</span>
+            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 5)</span>
           </p>
 
           {photoUrls.length > 0 && (
@@ -848,14 +848,14 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
             </div>
           )}
 
-          {photoUrls.length < 3 && (
+          {photoUrls.length < 5 && (
             <label className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed text-sm font-semibold cursor-pointer transition-colors ${photoUploading ? "border-gray-200 text-gray-300" : "border-gray-300 text-gray-500 hover:border-gray-400 hover:text-gray-700"}`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect x="3" y="3" width="18" height="18" rx="2" />
                 <circle cx="8.5" cy="8.5" r="1.5" />
                 <polyline points="21 15 16 10 5 21" />
               </svg>
-              {photoUploading ? "Yükleniyor..." : `Fotoğraf seç (${photoUrls.length}/3)`}
+              {photoUploading ? "Yükleniyor..." : `Fotoğraf seç (${photoUrls.length}/5)`}
               <input
                 type="file"
                 accept="image/jpeg,image/png,image/webp"
@@ -864,7 +864,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
                 disabled={photoUploading}
                 onChange={async (e) => {
                   const files = Array.from(e.target.files ?? []);
-                  const remaining = 3 - photoUrls.length;
+                  const remaining = 5 - photoUrls.length;
                   const toUpload = files.slice(0, remaining);
                   setPhotoUploading(true);
                   for (const file of toUpload) {

@@ -419,7 +419,7 @@ export default function OnerPage() {
         {/* Fotoğraf Yükle */}
         <div>
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 3 adet · 5 MB)</span>
+            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 5 adet · 5 MB)</span>
           </label>
           <div className="flex flex-wrap gap-2 mb-2">
             {photoUrls.map((url, i) => (
@@ -435,7 +435,7 @@ export default function OnerPage() {
                 </button>
               </div>
             ))}
-            {photoUrls.length < 3 && (
+            {photoUrls.length < 5 && (
               <label className={`w-20 h-20 rounded-xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center cursor-pointer hover:border-gray-400 transition-colors text-gray-400 text-[10px] gap-1 ${uploadingPhoto ? "opacity-50 pointer-events-none" : ""}`}>
                 <span className="text-xl">+</span>
                 <span>{uploadingPhoto ? "Yükleniyor..." : "Fotoğraf"}</span>

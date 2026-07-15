@@ -19,16 +19,10 @@ export async function POST(req: Request) {
 
   const user = await prisma.user.findUnique({
     where: { id: userId },
-    select: { trustLevel: true, isBanned: true },
+    select: { isBanned: true },
   });
   if (!user || user.isBanned) {
     return NextResponse.json({ error: "Bu işlemi gerçekleştiremezsiniz." }, { status: 403 });
-  }
-  if (user.trustLevel < 3) {
-    return NextResponse.json(
-      { error: "Takasa açmak için garajınızda fotoğraflı, onaylanmış bir yorumunuz olması gerekiyor." },
-      { status: 403 }
-    );
   }
 
   const parsed = tradeListingCreateSchema.safeParse(await req.json());
@@ -46,6 +40,19 @@ export async function POST(req: Request) {
   });
   if (!userProduct || userProduct.userId !== userId || userProduct.ownershipStatus !== "CURRENT") {
     return NextResponse.json({ error: "Bu araç garajınızda değil." }, { status: 404 });
+  }
+
+  // trustLevel genel/kullanıcı-bazlı olduğu için (başka bir araç için yükselmiş olabilir),
+  // bu ARACA özgü fotoğraflı+onaylı bir yorum var mı diye kontrol edilir.
+  const verifiedReview = await prisma.review.findFirst({
+    where: { userProductId, status: "PUBLISHED", photos: { some: { status: "APPROVED" } } },
+    select: { id: true },
+  });
+  if (!verifiedReview) {
+    return NextResponse.json(
+      { error: "Takasa açmak için bu aracın fotoğraflı, onaylanmış bir yorumu olması gerekiyor." },
+      { status: 403 }
+    );
   }
 
   const existing = await prisma.tradeListing.findFirst({

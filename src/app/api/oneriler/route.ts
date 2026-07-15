@@ -94,7 +94,7 @@ export async function POST(req: Request) {
           transmission: transmission || null,
           trimName:  trimName?.trim() || null,
           notes:     notes?.trim() || null,
-          photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 3) : [],
+          photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 5) : [],
           productId: pendingProduct.id,
         },
       });
@@ -125,7 +125,7 @@ export async function POST(req: Request) {
         transmission: transmission || null,
         trimName:  trimName?.trim() || null,
         notes:     notes?.trim() || null,
-        photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 3) : [],
+        photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 5) : [],
         productId: rejectedProduct.id,
       },
     });
@@ -190,7 +190,7 @@ export async function POST(req: Request) {
       transmission: transmission || null,
       trimName:  trimName?.trim() || null,
       notes:     notes?.trim() || null,
-      photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 3) : [],
+      photoUrls: Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string").slice(0, 5) : [],
       productId: product.id,
     },
   });

@@ -9,14 +9,14 @@ type CloseReason = "TRADED" | "GAVE_UP" | "FOUND_ELSEWHERE";
 
 export function TradeToggleCard({
   userProductId,
-  trustLevelOk,
+  canOpenTrade,
   categories,
   brands,
   categoryBrandMap,
   existingListing,
 }: {
   userProductId: number;
-  trustLevelOk: boolean;
+  canOpenTrade: boolean;
   categories: { id: number; name: string }[];
   brands: { id: number; name: string }[];
   categoryBrandMap: Record<number, number[]>;
@@ -38,10 +38,10 @@ export function TradeToggleCard({
   const [closeReason, setCloseReason] = useState<CloseReason | "">("");
   const [closing, setClosing] = useState(false);
 
-  if (!trustLevelOk) {
+  if (!canOpenTrade) {
     return (
       <p className="mt-3 text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">
-        Takasa açmak için garajınızda fotoğraflı, onaylanmış bir yorumunuz olması gerekiyor.
+        Bu aracı takasa açmak için fotoğraflı, onaylanmış bir yorumunuz olması gerekiyor.
       </p>
     );
   }
