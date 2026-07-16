@@ -6,9 +6,19 @@ export const metadata = { title: "Moderasyon — fikape admin" };
 
 export default async function ModerationPage() {
   const reviews = await prisma.review.findMany({
-    where: { status: "PENDING" },
+    // PENDING: yeni yorum. PUBLISHED + en az 1 PENDING foto: zaten yayınlanmış
+    // bir yorum düzenlenirken sonradan eklenen fotoğraf(lar) — bunlar da
+    // moderasyon bekliyor ama yorumun kendisi zaten onaylı, ayrı ele alınır
+    // (bkz. ModerationClient'taki "sadece fotoğraf" dalı).
+    where: {
+      OR: [
+        { status: "PENDING" },
+        { status: "PUBLISHED", photos: { some: { status: "PENDING" } } },
+      ],
+    },
     select: {
       id: true,
+      status: true,
       productId: true,
       summaryText: true,
       detailText: true,
@@ -28,7 +38,7 @@ export default async function ModerationPage() {
           model: { select: { name: true, brand: { select: { name: true } } } },
         },
       },
-      photos: { select: { id: true, url: true, phash: true }, orderBy: { order: "asc" } },
+      photos: { select: { id: true, url: true, phash: true, status: true }, orderBy: { order: "asc" } },
       ipHash: true,
     },
     orderBy: { createdAt: "asc" },
@@ -108,8 +118,11 @@ export default async function ModerationPage() {
     return pros.length > 0 || cons.length > 0;
   }
 
-  const serialized = reviews.map(({ ipHash, productId, photos, ...r }) => ({
+  const serialized = reviews.map(({ ipHash, productId, photos, status, ...r }) => ({
     ...r,
+    // Sorgu sadece PENDING veya (PUBLISHED + bekleyen foto) getirir, diğer
+    // durumlar hiç gelmez — ModerationClient'ın daraltılmış union'ına eşlenir.
+    status: status as "PENDING" | "PUBLISHED",
     createdAt: r.createdAt.toISOString(),
     sameIpCount: ipHash ? (ipCountMap.get(ipHash) ?? 1) : 0,
     // Sıfır-sürtünmeli hızlı puanların hepsi boş artı/eksi setini paylaşıyor —
@@ -127,6 +140,9 @@ export default async function ModerationPage() {
           {reviews.length > 0
             ? `${reviews.length} yorum onay bekliyor`
             : "Bekleyen yorum yok"}
+        </p>
+        <p className="text-xs text-gray-400 mt-1">
+          &quot;Zaten Yayında&quot; etiketli kartlar, onaylı bir yoruma düzenleme sırasında sonradan eklenen fotoğraflardır — sadece fotoğraf(lar) onaylanır/reddedilir, yorumun kendisi etkilenmez.
         </p>
       </div>
       <ModerationClient initialReviews={serialized} />

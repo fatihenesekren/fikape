@@ -21,6 +21,60 @@ export async function PATCH(
   const moderatorId = parseInt(session.user.id);
   const { action, reason } = await req.json() as { action: "approve" | "reject"; reason?: string };
 
+  const existingReview = await prisma.review.findUnique({
+    where: { id: reviewId },
+    select: { status: true },
+  });
+  if (!existingReview) {
+    return NextResponse.json({ error: "Yorum bulunamadı." }, { status: 404 });
+  }
+
+  // Yorumun kendisi zaten yayında — buradaki bekleyen fotoğraflar, onaylı bir
+  // yorum düzenlenirken sonradan eklenmiş demektir. Yorumun durumuna/puanına/
+  // trustScore'una dokunmadan sadece bu fotoğrafları onayla/reddet.
+  if (existingReview.status === "PUBLISHED") {
+    if (action === "approve") {
+      const pendingPhotos = await prisma.productPhoto.findMany({
+        where: { reviewId, status: "PENDING" },
+        select: { id: true },
+      });
+      if (pendingPhotos.length === 0) {
+        return NextResponse.json({ error: "Onay bekleyen fotoğraf yok." }, { status: 409 });
+      }
+
+      const review = await prisma.review.findUnique({
+        where: { id: reviewId },
+        select: { userId: true, user: { select: { trustLevel: true } } },
+      });
+
+      await prisma.$transaction([
+        prisma.productPhoto.updateMany({ where: { reviewId, status: "PENDING" }, data: { status: "APPROVED" } }),
+        ...(review && review.user.trustLevel === 2
+          ? [prisma.user.updateMany({ where: { id: review.userId, trustLevel: 2 }, data: { trustLevel: 3 } })]
+          : []),
+      ]);
+
+      await recordModerationLog({ reviewId, moderatorId, action: "APPROVED", reason: "Sonradan eklenen fotoğraf(lar) onaylandı" });
+      return NextResponse.json({ ok: true, status: "PUBLISHED" });
+    }
+
+    if (action === "reject") {
+      const result = await prisma.productPhoto.updateMany({ where: { reviewId, status: "PENDING" }, data: { status: "REJECTED" } });
+      if (result.count === 0) {
+        return NextResponse.json({ error: "Reddedilecek fotoğraf yok." }, { status: 409 });
+      }
+
+      await recordModerationLog({ reviewId, moderatorId, action: "REJECTED", reason: reason || "Sonradan eklenen fotoğraf(lar) reddedildi" });
+      return NextResponse.json({ ok: true, status: "PUBLISHED" });
+    }
+
+    return NextResponse.json({ error: "Geçersiz işlem." }, { status: 400 });
+  }
+
+  if (existingReview.status !== "PENDING") {
+    return NextResponse.json({ error: "Bu yorum bu işlem için uygun durumda değil." }, { status: 409 });
+  }
+
   if (action === "approve") {
     const review = await prisma.review.findUnique({
       where: { id: reviewId },

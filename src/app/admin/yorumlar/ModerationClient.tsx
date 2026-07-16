@@ -6,10 +6,11 @@ import { FIKAPE } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
 import { BlurEditor } from "./BlurEditor";
 
-interface Photo { id: number; url: string; isDuplicate: boolean; }
+interface Photo { id: number; url: string; isDuplicate: boolean; status: "PENDING" | "APPROVED" | "REJECTED"; }
 
 interface Review {
   id: number;
+  status: "PENDING" | "PUBLISHED";
   summaryText: string;
   detailText: string | null;
   extendedData: unknown;
@@ -44,6 +45,7 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
   const [showReject, setShowReject] = useState(false);
   const [photos, setPhotos] = useState<Photo[]>(review.photos);
   const [editingPhoto, setEditingPhoto] = useState<Photo | null>(null);
+  const isPhotosOnly = review.status === "PUBLISHED";
 
   async function handle(action: "approve" | "reject") {
     setLoading(action);
@@ -79,6 +81,11 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
             <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold">
               {review.product.model.brand.name} {review.product.model.name} · {review.product.name}
             </p>
+            {isPhotosOnly && (
+              <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                📷 Zaten Yayında — Yeni Fotoğraf
+              </span>
+            )}
             <p className="text-xs text-gray-400 mt-0.5">
               {review.user.displayName ?? review.user.email} ·{" "}
               {new Date(review.createdAt).toLocaleDateString("tr-TR")}
@@ -172,6 +179,14 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
                       ⚠ Tekrar
                     </span>
                   )}
+                  {isPhotosOnly && p.status === "PENDING" && (
+                    <span
+                      className="absolute bottom-1 left-1 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200"
+                      title="Bu fotoğraf sonradan eklendi, onay bekliyor"
+                    >
+                      Bekliyor
+                    </span>
+                  )}
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                     <button
@@ -209,7 +224,7 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
             className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white transition-colors disabled:opacity-50"
             style={{ background: "#16a34a" }}
           >
-            {loading === "approve" ? "..." : "✓ Onayla"}
+            {loading === "approve" ? "..." : isPhotosOnly ? "✓ Fotoğrafı Onayla" : "✓ Onayla"}
           </button>
 
           {!showReject ? (
@@ -217,7 +232,7 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
               onClick={() => setShowReject(true)}
               className="flex-1 py-2.5 rounded-xl text-sm font-bold border-2 border-red-200 text-red-500 transition-colors hover:bg-red-50"
             >
-              ✕ Reddet
+              {isPhotosOnly ? "✕ Fotoğrafı Reddet" : "✕ Reddet"}
             </button>
           ) : (
             <button
@@ -226,7 +241,7 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
               className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white transition-colors disabled:opacity-50"
               style={{ background: "#dc2626" }}
             >
-              {loading === "reject" ? "..." : "✕ Reddet"}
+              {loading === "reject" ? "..." : isPhotosOnly ? "✕ Fotoğrafı Reddet" : "✕ Reddet"}
             </button>
           )}
         </div>

@@ -16,7 +16,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   if (!adminUser || adminUser.trustLevel < 5) redirect("/");
 
   const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports] = await Promise.all([
-    prisma.review.count({ where: { status: "PENDING" } }).catch(() => 0),
+    prisma.review.count({
+      where: { OR: [{ status: "PENDING" }, { status: "PUBLISHED", photos: { some: { status: "PENDING" } } }] },
+    }).catch(() => 0),
     prisma.vehicleSuggestion.count({ where: { status: "PENDING" } }).catch(() => 0),
     prisma.insuranceLead.count({ where: { status: "NEW" } }).catch(() => 0),
     prisma.saleLead.count({ where: { status: "NEW" } }).catch(() => 0),
