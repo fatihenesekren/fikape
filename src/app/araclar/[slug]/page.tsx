@@ -101,7 +101,7 @@ export default async function VehicleDetailPage({
         photos: {
           where: { status: "APPROVED" },
           orderBy: { order: "asc" },
-          select: { url: true },
+          select: { url: true, uploadedBy: { select: { displayName: true } } },
         },
       },
     }),
@@ -122,8 +122,11 @@ export default async function VehicleDetailPage({
   const imageUrl = product.imageUrl ?? await getVehicleImageUrl(slug);
 
   const sliderPhotos = [
-    ...(imageUrl ? [{ url: imageUrl }] : []),
-    ...product.photos.map((p) => ({ url: p.url, label: "Kullanıcı fotoğrafı" })),
+    ...(imageUrl ? [{ url: imageUrl, label: "Katalog fotoğrafı" }] : []),
+    ...product.photos.map((p) => ({
+      url: p.url,
+      label: p.uploadedBy?.displayName ? `Kullanıcı: ${p.uploadedBy.displayName}` : "Kullanıcı fotoğrafı",
+    })),
   ];
 
   const fuelType = String(attrs.fuel_type ?? "");

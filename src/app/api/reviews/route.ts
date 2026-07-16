@@ -99,6 +99,7 @@ export async function POST(req: Request) {
     data: {
       userId,
       productId:   product.id,
+      userProductId: garajEntry?.id ?? null,
       scoreFiyat,
       scoreKalite,
       scorePerformans,

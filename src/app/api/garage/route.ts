@@ -35,6 +35,14 @@ export async function POST(req: NextRequest) {
     data: { userId, productId },
   });
 
+  // Kullanıcı bu araç için önce yorum yazmış, sonra garajına eklemiş olabilir —
+  // o zaman review.userProductId hâlâ null'dı (yorum yazılırken garaj kaydı yoktu).
+  // Şimdi garaj kaydı oluştuğuna göre, o yorum(lar)ı geriye dönük bağla.
+  await prisma.review.updateMany({
+    where: { userId, productId, userProductId: null },
+    data: { userProductId: userProduct.id },
+  });
+
   return NextResponse.json({ ok: true, id: userProduct.id });
 }
 
