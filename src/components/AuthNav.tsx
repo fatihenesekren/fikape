@@ -40,7 +40,7 @@ export function AuthNav() {
           href="/garajim"
           className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50 transition-colors hidden sm:block"
         >
-          🚗 Garajım
+          Garajım
         </Link>
         <Link
           href="/profil"
@@ -88,7 +88,7 @@ export function AuthNav() {
                 onClick={() => setMenuOpen(false)}
                 className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"
               >
-                🚗 Garajım
+                Garajım
               </Link>
               <Link
                 href="/profil"
