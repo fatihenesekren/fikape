@@ -3,12 +3,14 @@ import Link from "next/link";
 import { FUEL_ICONS, FUEL_LABELS } from "@/lib/fuel";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
-// FI (mavi) · KA (yeşil) · PE (kahve) — sayfanın altındaki FI·KA·PE
-// açıklama bloğuyla aynı palet, kart sırasına göre döngüsel atanır.
+// FI (mavi) · KA (yeşil) · PE (kahve) — sayfanın altındaki FI·KA·PE açıklama
+// bloğuyla aynı "açık ton wash" dili: 50 seviyesi arka plan + kendi renginin
+// koyu tonunda metin. Doygun/koyu dolgu bilinçli olarak kullanılmıyor — hero
+// zaten koyu bir blok, hemen altında ikinci bir koyu şerit sayfayı ağırlaştırıyordu.
 const CARD_COLORS = [
-  { bg: "#0C447C", tint: "#B5D4F4" },
-  { bg: "#27500A", tint: "#C0DD97" },
-  { bg: "#712B13", tint: "#F5C4B3" },
+  { bg: "#E6F1FB", mid: "#185FA5", dark: "#0C447C", chip: "rgba(12,68,124,0.12)" },
+  { bg: "#EAF3DE", mid: "#3B6D11", dark: "#27500A", chip: "rgba(39,80,10,0.12)" },
+  { bg: "#FAECE7", mid: "#993C1D", dark: "#712B13", chip: "rgba(113,43,19,0.12)" },
 ] as const;
 
 export function TrendVehicleCard({
@@ -36,7 +38,7 @@ export function TrendVehicleCard({
   garageCount: number;
   colorIndex: number;
 }) {
-  const { bg, tint } = CARD_COLORS[colorIndex % CARD_COLORS.length];
+  const { bg, mid, dark, chip } = CARD_COLORS[colorIndex % CARD_COLORS.length];
 
   return (
     <Link
@@ -46,7 +48,7 @@ export function TrendVehicleCard({
       style={{ background: bg }}
     >
       <div className="flex items-start gap-2.5">
-        <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-white/10 flex items-center justify-center text-lg">
+        <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 flex items-center justify-center text-lg" style={{ background: chip }}>
           {imageUrl ? (
             <Image src={imageUrl} alt="" width={40} height={40} className="w-full h-full object-cover" />
           ) : (
@@ -54,31 +56,31 @@ export function TrendVehicleCard({
           )}
         </div>
         <div className="min-w-0">
-          <div className="text-[10px] font-semibold uppercase tracking-wide truncate" style={{ color: tint }}>
+          <div className="text-[10px] font-semibold uppercase tracking-wide truncate" style={{ color: mid }}>
             {brandName}
           </div>
-          <div className="text-sm font-semibold text-white truncate">
+          <div className="text-sm font-semibold truncate" style={{ color: dark }}>
             {stripModelGenRange(modelName)}
-            {year && <span className="font-normal ml-1" style={{ color: tint }}>{year}</span>}
+            {year && <span className="font-normal ml-1" style={{ color: mid }}>{year}</span>}
           </div>
         </div>
       </div>
 
-      <div className="text-xs truncate mt-1.5 mb-2.5 h-4" style={{ color: tint }}>
-        {trimName ?? " "}
+      <div className="text-xs truncate mt-1.5 mb-2.5 h-4" style={{ color: mid }}>
+        {trimName ?? " "}
       </div>
 
       <div className="flex flex-wrap gap-1.5">
         {fuelType && FUEL_LABELS[fuelType] && (
-          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-white/15 text-white">
+          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: chip, color: dark }}>
             {FUEL_ICONS[fuelType]} {FUEL_LABELS[fuelType]}
           </span>
         )}
-        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-white/15 text-white">
+        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: chip, color: dark }}>
           {categoryLabel}
         </span>
         {garageCount > 0 && (
-          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-white/15 text-white">
+          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: chip, color: dark }}>
             {garageCount} garajda
           </span>
         )}
