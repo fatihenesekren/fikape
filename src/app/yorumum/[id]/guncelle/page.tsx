@@ -71,7 +71,7 @@ export default async function UpdateReviewPage({
     : null;
 
   return (
-    <div className="max-w-xl mx-auto px-4 py-10 space-y-6">
+    <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
       <div>
         <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold mb-1">
           Yorumu Güncelle

@@ -102,7 +102,7 @@ export function PhotoUploader({
         </label>
       )}
       <p className="text-xs text-amber-600 font-medium">Fotoğraftaki plaka ve yüzleri gizli tutun — yüklemeden önce kendiniz kapatın ya da göstermeyin. Atlarsanız KVKK gereği moderasyon ekibimiz düzenler.</p>
-      <p className="text-xs text-gray-400">JPEG, PNG veya WebP · maks. 5 MB · moderasyon onayından sonra yayınlanır</p>
+      <p className="text-xs text-gray-400">JPEG, PNG veya WebP · maks. 10 MB · moderasyon onayından sonra yayınlanır</p>
     </div>
   );
 }
