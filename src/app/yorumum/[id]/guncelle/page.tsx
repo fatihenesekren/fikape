@@ -33,9 +33,16 @@ export default async function UpdateReviewPage({
       scoreFiyat: true,
       scoreKalite: true,
       scorePerformans: true,
+      ownershipMonthsAtReview: true,
+      photos: {
+        where: { status: { not: "REJECTED" } },
+        orderBy: { order: "asc" },
+        select: { id: true, url: true },
+      },
       product: {
         select: {
           slug: true,
+          attributes: true,
           brand: { select: { name: true } },
           model: { select: { name: true } },
           category: { select: { slug: true } },
@@ -52,6 +59,10 @@ export default async function UpdateReviewPage({
   const initialPros = (ext.pros as string[] | undefined) ?? [];
   const initialCons = (ext.cons as string[] | undefined) ?? [];
   const chips = getChipsForCategory(review.product.category.slug);
+
+  const attrs = (review.product.attributes as Record<string, unknown>) ?? {};
+  const fuelType = (attrs.fuel_type as string | undefined) ?? null;
+  const categorySlug = review.product.category.slug;
 
   const vehicleName = `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`;
 
@@ -77,6 +88,8 @@ export default async function UpdateReviewPage({
         reviewId={reviewId}
         productSlug={review.product.slug}
         chips={chips}
+        fuelType={fuelType}
+        categorySlug={categorySlug}
         initialPros={initialPros}
         initialCons={initialCons}
         initialDetailText={review.detailText ?? ""}
@@ -84,6 +97,9 @@ export default async function UpdateReviewPage({
         initialScoreFiyat={review.scoreFiyat}
         initialScoreKalite={review.scoreKalite}
         initialScorePerformans={review.scorePerformans}
+        initialOwnershipMonths={review.ownershipMonthsAtReview}
+        initialExtendedData={ext}
+        initialPhotos={review.photos}
       />
     </div>
   );

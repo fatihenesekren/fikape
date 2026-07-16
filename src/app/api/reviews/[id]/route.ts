@@ -4,6 +4,9 @@ import { prisma } from "@/lib/prisma";
 import { validateDetailShort } from "@/lib/reviewValidation";
 import { calcOverall } from "@/lib/fikape";
 import { recordScoreSnapshot } from "@/lib/security";
+import { computePHash } from "@/lib/phash";
+
+const MAX_PHOTOS = 5;
 
 export async function PATCH(
   req: Request,
@@ -18,8 +21,11 @@ export async function PATCH(
   const reviewId = parseInt(id);
   const userId = parseInt(session.user.id);
 
-  const { pros, cons, detailText, wouldBuyAgain, triggerSource,
-          scoreFiyat, scoreKalite, scorePerformans } = await req.json();
+  const {
+    pros, cons, detailText, wouldBuyAgain, triggerSource,
+    scoreFiyat, scoreKalite, scorePerformans,
+    extendedData, ownershipMonths, photoUrls, removePhotoIds,
+  } = await req.json();
 
   const prosArr: string[] = Array.isArray(pros) ? pros : [];
   const consArr: string[] = Array.isArray(cons) ? cons : [];
@@ -47,6 +53,7 @@ export async function PATCH(
       userId: true, status: true, extendedData: true, editCount: true,
       scoreFiyat: true, scoreKalite: true, scorePerformans: true,
       productId: true, trustScore: true,
+      photos: { select: { id: true }, where: { status: { not: "REJECTED" } } },
     },
   });
 
@@ -56,8 +63,18 @@ export async function PATCH(
     return NextResponse.json({ error: "Bu yorum artık düzenlenemez." }, { status: 409 });
   }
 
+  const newPhotoUrls: string[] = Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string") : [];
+  const removeIds: number[] = Array.isArray(removePhotoIds) ? removePhotoIds.filter((n: unknown) => typeof n === "number") : [];
+  const existingPhotoIds = new Set(review.photos.map((p) => p.id));
+  const validRemoveIds = removeIds.filter((rid) => existingPhotoIds.has(rid));
+  const remainingExistingCount = review.photos.length - validRemoveIds.length;
+  if (remainingExistingCount + newPhotoUrls.length > MAX_PHOTOS) {
+    return NextResponse.json({ error: `En fazla ${MAX_PHOTOS} fotoğraf ekleyebilirsiniz.` }, { status: 400 });
+  }
+
+  const incomingExtended = (extendedData && typeof extendedData === "object") ? extendedData as Record<string, unknown> : {};
   const existing = (review.extendedData as Record<string, unknown>) ?? {};
-  const updatedExtended = { ...existing, pros: prosArr, cons: consArr };
+  const updatedExtended = { ...existing, ...incomingExtended, pros: prosArr, cons: consArr };
   const newVersion = review.editCount + 1;
   const source = triggerSource === "REMINDER_3M" ? "REMINDER_3M" : "MANUAL";
 
@@ -65,6 +82,8 @@ export async function PATCH(
   const newKalite     = hasScores ? (scoreKalite as number)     : review.scoreKalite;
   const newPerformans = hasScores ? (scorePerformans as number) : review.scorePerformans;
   const newOverall    = calcOverall({ scoreFiyat: newFiyat, scoreKalite: newKalite, scorePerformans: newPerformans });
+
+  const newOwnershipMonths = typeof ownershipMonths === "number" ? ownershipMonths : undefined;
 
   await prisma.$transaction([
     prisma.review.update({
@@ -79,6 +98,7 @@ export async function PATCH(
         scoreOverall:    newOverall,
         editedAt:        new Date(),
         editCount:       newVersion,
+        ...(newOwnershipMonths !== undefined ? { ownershipMonthsAtReview: newOwnershipMonths } : {}),
       },
     }),
     prisma.reviewVersion.create({
@@ -96,7 +116,37 @@ export async function PATCH(
         triggerSource:   source,
       },
     }),
+    ...(validRemoveIds.length > 0
+      ? [prisma.productPhoto.deleteMany({ where: { id: { in: validRemoveIds }, reviewId } })]
+      : []),
   ]);
+
+  if (newPhotoUrls.length > 0) {
+    // pHash hesaplama best-effort — başarısız olursa fotoğraf yine de kaydedilir
+    const phashes = await Promise.all(
+      newPhotoUrls.map(async (url) => {
+        try {
+          const res = await fetch(url);
+          const buffer = Buffer.from(await res.arrayBuffer());
+          return await computePHash(buffer);
+        } catch {
+          return null;
+        }
+      })
+    );
+
+    await prisma.productPhoto.createMany({
+      data: newPhotoUrls.map((url, idx) => ({
+        productId: review.productId,
+        uploadedByUserId: userId,
+        reviewId,
+        url,
+        status: "PENDING",
+        order: remainingExistingCount + idx,
+        phash: phashes[idx],
+      })),
+    });
+  }
 
   await recordScoreSnapshot({
     reviewId,
