@@ -210,7 +210,7 @@ export async function sendQuestionAnsweredEmail({
           ${name}, sorun cevaplandı
         </h1>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
-          <strong>${vehicleName}</strong> hakkında sorduğun soruya gerçek bir kullanıcı cevap verdi.
+          <strong>${vehicleName}</strong> hakkında sorduğun soruya bir kullanıcı cevap verdi.
         </p>
         <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
           Cevabı gör →
