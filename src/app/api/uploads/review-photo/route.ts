@@ -4,7 +4,7 @@ import { put } from "@vercel/blob";
 
 export const runtime = "nodejs";
 
-const MAX_SIZE = 10 * 1024 * 1024;
+const MAX_SIZE = 15 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 export async function POST(req: Request) {
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Sadece JPEG, PNG veya WebP yüklenebilir" }, { status: 400 });
   }
   if (file.size > MAX_SIZE) {
-    return NextResponse.json({ error: "Dosya en fazla 10 MB olabilir" }, { status: 400 });
+    return NextResponse.json({ error: "Dosya en fazla 15 MB olabilir" }, { status: 400 });
   }
 
   const ext = file.type.split("/")[1];

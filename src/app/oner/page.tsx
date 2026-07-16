@@ -419,7 +419,7 @@ export default function OnerPage() {
         {/* Fotoğraf Yükle */}
         <div>
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 5 adet · 10 MB)</span>
+            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 5 adet · 15 MB)</span>
           </label>
           <div className="flex flex-wrap gap-2 mb-2">
             {photoUrls.map((url, i) => (

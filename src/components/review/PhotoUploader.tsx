@@ -23,6 +23,7 @@ export function PhotoUploader({
   max?: number;
 }) {
   const [uploading, setUploading] = useState(false);
+  const [uploadErrors, setUploadErrors] = useState<string[]>([]);
   const remainingExisting = existingPhotos.filter((p) => !removedExistingIds.includes(p.id));
   const total = remainingExisting.length + newPhotoUrls.length;
 
@@ -83,26 +84,46 @@ export function PhotoUploader({
               const files = Array.from(e.target.files ?? []);
               const remaining = max - total;
               const toUpload = files.slice(0, remaining);
+              const skipped = files.length - toUpload.length;
+
               setUploading(true);
               const uploaded: string[] = [];
+              const errors: string[] = [];
+              if (skipped > 0) {
+                errors.push(`En fazla ${max} fotoğraf ekleyebilirsiniz — ${skipped} fotoğraf seçilmedi.`);
+              }
+
               for (const file of toUpload) {
-                const fd = new FormData();
-                fd.append("file", file);
-                const res = await fetch("/api/uploads/review-photo", { method: "POST", body: fd });
-                if (res.ok) {
-                  const { url } = await res.json() as { url: string };
-                  uploaded.push(url);
+                try {
+                  const fd = new FormData();
+                  fd.append("file", file);
+                  const res = await fetch("/api/uploads/review-photo", { method: "POST", body: fd });
+                  const data = await res.json().catch(() => ({}));
+                  if (res.ok && data.url) {
+                    uploaded.push(data.url);
+                  } else {
+                    errors.push(`${file.name}: ${data.error ?? "Yüklenemedi."}`);
+                  }
+                } catch {
+                  errors.push(`${file.name}: Bağlantı hatası, yüklenemedi.`);
                 }
               }
+
               if (uploaded.length) onNewPhotoUrlsChange([...newPhotoUrls, ...uploaded]);
+              setUploadErrors(errors);
               setUploading(false);
               e.target.value = "";
             }}
           />
         </label>
       )}
+      {uploadErrors.length > 0 && (
+        <div className="text-xs text-red-600 space-y-0.5">
+          {uploadErrors.map((err, i) => <p key={i}>⚠ {err}</p>)}
+        </div>
+      )}
       <p className="text-xs text-amber-600 font-medium">Fotoğraftaki plaka ve yüzleri gizli tutun — yüklemeden önce kendiniz kapatın ya da göstermeyin. Atlarsanız KVKK gereği moderasyon ekibimiz düzenler.</p>
-      <p className="text-xs text-gray-400">JPEG, PNG veya WebP · maks. 10 MB · moderasyon onayından sonra yayınlanır</p>
+      <p className="text-xs text-gray-400">JPEG, PNG veya WebP · maks. 15 MB · moderasyon onayından sonra yayınlanır</p>
     </div>
   );
 }
