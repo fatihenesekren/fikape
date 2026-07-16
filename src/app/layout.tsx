@@ -94,7 +94,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
         {unverifiedEmail && <VerificationBanner email={unverifiedEmail} />}
 
-        <main className="flex-1 flex flex-col">{children}</main>
+        <main className="flex-1 flex flex-col min-w-0">
+          <div className="min-w-0">{children}</div>
+        </main>
 
         <footer className="border-t border-gray-100 py-6">
           <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 space-y-2">
