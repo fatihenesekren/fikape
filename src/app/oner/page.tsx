@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { upload } from "@vercel/blob/client";
 import vehiclesData from "@/data/vehicles.json";
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 
@@ -419,7 +420,7 @@ export default function OnerPage() {
         {/* Fotoğraf Yükle */}
         <div>
           <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 5 adet · 15 MB)</span>
+            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 5 adet · 25 MB)</span>
           </label>
           <div className="flex flex-wrap gap-2 mb-2">
             {photoUrls.map((url, i) => (
@@ -451,12 +452,11 @@ export default function OnerPage() {
                     setPhotoError(null);
                     setUploadingPhoto(true);
                     try {
-                      const fd = new FormData();
-                      fd.append("file", file);
-                      const res = await fetch("/api/uploads/suggestion-photo", { method: "POST", body: fd });
-                      const data = await res.json();
-                      if (!res.ok) throw new Error(data.error ?? "Yükleme başarısız");
-                      setPhotoUrls((prev) => [...prev, data.url]);
+                      const blob = await upload(`suggestions/${Date.now()}-${file.name}`, file, {
+                        access: "public",
+                        handleUploadUrl: "/api/uploads/suggestion-photo",
+                      });
+                      setPhotoUrls((prev) => [...prev, blob.url]);
                     } catch (err) {
                       setPhotoError(err instanceof Error ? err.message : "Yükleme başarısız");
                     } finally {

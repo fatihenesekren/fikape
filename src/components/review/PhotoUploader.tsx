@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { upload } from "@vercel/blob/client";
 
 export interface ExistingPhoto {
   id: number;
@@ -95,17 +96,13 @@ export function PhotoUploader({
 
               for (const file of toUpload) {
                 try {
-                  const fd = new FormData();
-                  fd.append("file", file);
-                  const res = await fetch("/api/uploads/review-photo", { method: "POST", body: fd });
-                  const data = await res.json().catch(() => ({}));
-                  if (res.ok && data.url) {
-                    uploaded.push(data.url);
-                  } else {
-                    errors.push(`${file.name}: ${data.error ?? "Yüklenemedi."}`);
-                  }
-                } catch {
-                  errors.push(`${file.name}: Bağlantı hatası, yüklenemedi.`);
+                  const blob = await upload(`reviews/${Date.now()}-${file.name}`, file, {
+                    access: "public",
+                    handleUploadUrl: "/api/uploads/review-photo",
+                  });
+                  uploaded.push(blob.url);
+                } catch (err) {
+                  errors.push(`${file.name}: ${err instanceof Error ? err.message : "Yüklenemedi."}`);
                 }
               }
 
@@ -123,7 +120,7 @@ export function PhotoUploader({
         </div>
       )}
       <p className="text-xs text-amber-600 font-medium">Fotoğraftaki plaka ve yüzleri gizli tutun — yüklemeden önce kendiniz kapatın ya da göstermeyin. Atlarsanız KVKK gereği moderasyon ekibimiz düzenler.</p>
-      <p className="text-xs text-gray-400">JPEG, PNG veya WebP · maks. 15 MB · moderasyon onayından sonra yayınlanır</p>
+      <p className="text-xs text-gray-400">JPEG, PNG veya WebP · maks. 25 MB · moderasyon onayından sonra yayınlanır</p>
     </div>
   );
 }

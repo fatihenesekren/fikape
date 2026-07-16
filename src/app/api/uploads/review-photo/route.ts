@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
-import { put } from "@vercel/blob";
+import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
 
 export const runtime = "nodejs";
 
-const MAX_SIZE = 15 * 1024 * 1024;
+const MAX_SIZE = 25 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 export async function POST(req: Request) {
@@ -13,21 +13,30 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Giriş gerekiyor" }, { status: 401 });
   }
 
-  const formData = await req.formData();
-  const file = formData.get("file") as File | null;
+  const body = (await req.json()) as HandleUploadBody;
 
-  if (!file) return NextResponse.json({ error: "Dosya bulunamadı" }, { status: 400 });
-  if (!ALLOWED_TYPES.includes(file.type)) {
-    return NextResponse.json({ error: "Sadece JPEG, PNG veya WebP yüklenebilir" }, { status: 400 });
+  try {
+    const jsonResponse = await handleUpload({
+      body,
+      request: req,
+      onBeforeGenerateToken: async (pathname) => {
+        if (!pathname.startsWith("reviews/")) {
+          throw new Error("Geçersiz dosya yolu");
+        }
+        return {
+          allowedContentTypes: ALLOWED_TYPES,
+          maximumSizeInBytes: MAX_SIZE,
+          addRandomSuffix: true,
+        };
+      },
+      onUploadCompleted: async () => {},
+    });
+
+    return NextResponse.json(jsonResponse);
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Yükleme başarısız" },
+      { status: 400 },
+    );
   }
-  if (file.size > MAX_SIZE) {
-    return NextResponse.json({ error: "Dosya en fazla 15 MB olabilir" }, { status: 400 });
-  }
-
-  const ext = file.type.split("/")[1];
-  const filename = `reviews/${session.user.id}/${Date.now()}.${ext}`;
-
-  const blob = await put(filename, file, { access: "public" });
-
-  return NextResponse.json({ url: blob.url }, { status: 201 });
 }
