@@ -180,40 +180,48 @@ export default async function VehicleDetailPage({
   });
   const soldTotal = soldReasonData.reduce((s, d) => s + d._count.soldReason, 0);
 
-  // ── Skor trendi — tüm yorum + versiyon olayları ──
-  const trendRaw = await prisma.review.findMany({
-    where: { productId: product.id, status: "PUBLISHED", publishedAt: { not: null } },
-    select: {
-      scoreOverall: true,
-      publishedAt: true,
-      versions: {
-        select: { scoreOverall: true, createdAt: true },
-        where: { scoreOverall: { not: null } },
-      },
-    },
-  });
+  // ── Skor trendi ──
+  // Her yorum, düzenleme sayısına bakılmaksızın ortalamaya HER ZAMAN en fazla
+  // 1 kez katkıda bulunur — bir kullanıcının kendi yorumunu birden çok kez
+  // düzenlemesi, sanki birden çok bağımsız yorumcu varmış gibi trendi şişirmez.
+  // ScoreSnapshot geçmişi kullanılarak, her ay için "o ana kadar her yorumun
+  // bilinen en güncel skoru" ortalaması alınır (zaman içinde ilerleyen anlık görüntü).
+  const publishedReviewIds = (
+    await prisma.review.findMany({
+      where: { productId: product.id, status: "PUBLISHED" },
+      select: { id: true },
+    })
+  ).map((r) => r.id);
+
+  const scoreEvents = publishedReviewIds.length
+    ? await prisma.scoreSnapshot.findMany({
+        where: {
+          reviewId: { in: publishedReviewIds },
+          OR: [{ reason: "PUBLISHED" }, { reason: "EDITED", status: "PUBLISHED" }],
+        },
+        select: { reviewId: true, scoreOverall: true, createdAt: true },
+        orderBy: { createdAt: "asc" },
+      })
+    : [];
 
   type MonthlyScore = { month: string; avg: number; count: number };
-  const byMonth = new Map<string, number[]>();
-  for (const r of trendRaw) {
-    if (r.publishedAt && r.scoreOverall) {
-      const k = `${r.publishedAt.getFullYear()}-${String(r.publishedAt.getMonth() + 1).padStart(2, "0")}`;
-      byMonth.set(k, [...(byMonth.get(k) ?? []), r.scoreOverall]);
+  const monthOf = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+  const currentScoreByReview = new Map<number, number>();
+  const trendPoints: MonthlyScore[] = [];
+  let i = 0;
+  while (i < scoreEvents.length) {
+    const month = monthOf(scoreEvents[i].createdAt);
+    while (i < scoreEvents.length && monthOf(scoreEvents[i].createdAt) === month) {
+      currentScoreByReview.set(scoreEvents[i].reviewId, scoreEvents[i].scoreOverall);
+      i++;
     }
-    for (const v of r.versions) {
-      if (v.scoreOverall) {
-        const k = `${v.createdAt.getFullYear()}-${String(v.createdAt.getMonth() + 1).padStart(2, "0")}`;
-        byMonth.set(k, [...(byMonth.get(k) ?? []), v.scoreOverall]);
-      }
-    }
-  }
-  const trendPoints: MonthlyScore[] = [...byMonth.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([month, scores]) => ({
+    const scores = [...currentScoreByReview.values()];
+    trendPoints.push({
       month,
       avg: Math.round((scores.reduce((s, n) => s + n, 0) / scores.length) * 10) / 10,
       count: scores.length,
-    }));
+    });
+  }
 
   const reviewCount = agg._count.id;
   const scores: FikapeScores | null =
@@ -444,7 +452,7 @@ export default async function VehicleDetailPage({
     <div className="divide-y divide-gray-50">
       {/* Skor trendi — min 2 aylık veri */}
       {trendPoints.length >= 2 && (
-        <ScoreTrendChart points={trendPoints} />
+        <ScoreTrendChart points={trendPoints} totalReviews={reviewCount} />
       )}
 
       {/* Satış nedenleri özeti — min 5 veri */}

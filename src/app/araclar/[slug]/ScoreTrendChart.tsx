@@ -15,7 +15,7 @@ function formatMonth(month: string) {
   return `${TR_MONTHS[parseInt(m) - 1]} ${y?.slice(2)}`;
 }
 
-export function ScoreTrendChart({ points }: { points: MonthlyScore[] }) {
+export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore[]; totalReviews: number }) {
   const [hover, setHover] = useState<number | null>(null);
 
   if (points.length < 2) return null;
@@ -60,7 +60,7 @@ export function ScoreTrendChart({ points }: { points: MonthlyScore[] }) {
         <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">
           Skor Trendi
           <span className="font-normal normal-case ml-1.5 text-gray-400">
-            ({points.reduce((s, p) => s + p.count, 0)} yorum/güncelleme)
+            ({totalReviews} yorum)
           </span>
         </p>
         {delta !== 0 && (
@@ -187,7 +187,7 @@ export function ScoreTrendChart({ points }: { points: MonthlyScore[] }) {
                   {p.avg.toFixed(1)}/10
                 </text>
                 <text x={tipX + tipW / 2} y={tipY + 26} textAnchor="middle" fontSize="9" fill="#9ca3af">
-                  {p.count} olay · {formatMonth(p.month)}
+                  {p.count} yorum · {formatMonth(p.month)}
                 </text>
               </g>
             );
