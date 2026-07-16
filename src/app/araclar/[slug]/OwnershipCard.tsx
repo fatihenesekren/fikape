@@ -115,7 +115,7 @@ export function OwnershipCard({
 
   return (
     <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden">
-      <div className="p-5 flex items-center gap-4">
+      <div className="p-5 flex items-center flex-wrap gap-3">
         {/* İkon */}
         <div
           className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors"
@@ -129,7 +129,7 @@ export function OwnershipCard({
         </div>
 
         {/* Metin */}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-[140px]">
           {isSold ? (
             <div>
               <p className="text-sm font-semibold text-gray-500">Geçmiş Araç</p>
