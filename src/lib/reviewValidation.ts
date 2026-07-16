@@ -46,7 +46,7 @@ export function validateDetailShort(text: string): ValidationResult {
 
   if (!t) return ok();
   if (t.length < 20) return err(`En az 20 karakter yazın. (${t.length}/20)`);
-  if (t.length > 280) return err("En fazla 280 karakter yazabilirsiniz.");
+  if (t.length > 500) return err("En fazla 500 karakter yazabilirsiniz.");
 
   return checkContent(t);
 }

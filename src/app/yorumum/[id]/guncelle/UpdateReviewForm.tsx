@@ -216,13 +216,13 @@ export function UpdateReviewForm({
           <p className="text-sm font-bold text-gray-900">
             Yorumun <span className="text-gray-400 font-normal">(opsiyonel)</span>
           </p>
-          <span className={`text-xs ${detailText.length >= 260 ? "text-orange-400" : "text-gray-400"}`}>
-            {detailText.length}/280
+          <span className={`text-xs ${detailText.length >= 460 ? "text-orange-400" : "text-gray-400"}`}>
+            {detailText.length}/500
           </span>
         </div>
         <textarea
           value={detailText}
-          onChange={(e) => setDetailText(e.target.value.slice(0, 280))}
+          onChange={(e) => setDetailText(e.target.value.slice(0, 500))}
           onBlur={() => { if (detailText.trim()) setDetailTouched(true); }}
           rows={4}
           placeholder="Deneyimini birkaç cümleyle anlat..."

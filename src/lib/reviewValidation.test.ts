@@ -89,8 +89,8 @@ describe("validateDetail", () => {
 });
 
 describe("validateDetailShort", () => {
-  it("280 karakterden uzun metni reddeder", () => {
-    expect(validateDetailShort("a".repeat(281)).ok).toBe(false);
+  it("500 karakterden uzun metni reddeder", () => {
+    expect(validateDetailShort("a".repeat(501)).ok).toBe(false);
   });
 
   it("boş metni opsiyonel olarak kabul eder", () => {
