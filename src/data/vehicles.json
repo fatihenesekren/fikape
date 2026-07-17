@@ -5271,9 +5271,9 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
-            "N Line",
+            "Jump",
+            "Style",
+            "Elite",
             "Diğer"
           ]
         },
@@ -5321,8 +5321,9 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
+            "Jump",
+            "Style",
+            "Elite",
             "N Line",
             "N",
             "Diğer"
@@ -5374,9 +5375,10 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
+            "Style",
+            "Elite",
             "N Line",
+            "N",
             "Diğer"
           ]
         },
@@ -5402,8 +5404,9 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
+            "Jump",
+            "Style",
+            "Elite",
             "N Line",
             "Diğer"
           ]
@@ -5734,10 +5737,11 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
+            "Comfort",
+            "Prime",
+            "Elite",
+            "Elite Plus",
             "N Line",
-            "N Line Premium",
             "Diğer"
           ]
         },
@@ -5794,9 +5798,9 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
-            "N Line",
+            "Style",
+            "Elite",
+            "Elite Plus",
             "Diğer"
           ]
         },
@@ -5809,9 +5813,11 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
+            "Style",
+            "Elite Smart",
+            "Progressive",
             "N Line",
+            "N",
             "Diğer"
           ]
         },
@@ -5823,9 +5829,8 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
-            "N Line",
+            "Advance",
+            "Progressive",
             "Diğer"
           ]
         },
@@ -5839,8 +5844,10 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
+            "Progressive",
+            "Dynamic",
+            "Dynamic Vision Roof",
+            "Advance",
             "N Line",
             "N",
             "Diğer"
@@ -5855,8 +5862,8 @@
             "Diğer"
           ],
           "trims": [
-            "Level 2",
-            "Level 3",
+            "Advance",
+            "Progressive",
             "Diğer"
           ]
         },
