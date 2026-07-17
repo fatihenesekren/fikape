@@ -89,24 +89,23 @@ export function BlurEditor({
     img.src = url;
   }, [url, redraw]);
 
-  function getPos(e: React.MouseEvent<HTMLCanvasElement>): { x: number; y: number } {
+  function getPos(clientX: number, clientY: number): { x: number; y: number } {
     const canvas = canvasRef.current!;
     const rect = canvas.getBoundingClientRect();
     return {
-      x: (e.clientX - rect.left) * (canvas.width / rect.width),
-      y: (e.clientY - rect.top) * (canvas.height / rect.height),
+      x: (clientX - rect.left) * (canvas.width / rect.width),
+      y: (clientY - rect.top) * (canvas.height / rect.height),
     };
   }
 
-  function onMouseDown(e: React.MouseEvent<HTMLCanvasElement>) {
-    const pos = getPos(e);
-    setStartPos(pos);
+  function beginDraw(clientX: number, clientY: number) {
+    setStartPos(getPos(clientX, clientY));
     setDrawing(true);
   }
 
-  function onMouseMove(e: React.MouseEvent<HTMLCanvasElement>) {
+  function moveDraw(clientX: number, clientY: number) {
     if (!drawing || !startPos) return;
-    const pos = getPos(e);
+    const pos = getPos(clientX, clientY);
     const active: Rect = {
       x: Math.min(startPos.x, pos.x),
       y: Math.min(startPos.y, pos.y),
@@ -117,7 +116,7 @@ export function BlurEditor({
     redraw(rects, active);
   }
 
-  function onMouseUp() {
+  function endDraw() {
     if (!drawing) return;
     setDrawing(false);
     if (activeRect && activeRect.w > 8 && activeRect.h > 8) {
@@ -127,6 +126,39 @@ export function BlurEditor({
     }
     setActiveRect(null);
     setStartPos(null);
+  }
+
+  function onMouseDown(e: React.MouseEvent<HTMLCanvasElement>) {
+    beginDraw(e.clientX, e.clientY);
+  }
+
+  function onMouseMove(e: React.MouseEvent<HTMLCanvasElement>) {
+    moveDraw(e.clientX, e.clientY);
+  }
+
+  function onMouseUp() {
+    endDraw();
+  }
+
+  // Mobilde parmakla sürükleyerek kutu çizebilmek için — canvas eskiden
+  // sadece mouse olaylarını dinliyordu, dokunmatik ekranlarda hiçbir şey
+  // yapmıyordu. preventDefault ile touchAction:none üzerinden sayfa kaymasını
+  // da engelliyoruz.
+  function onTouchStart(e: React.TouchEvent<HTMLCanvasElement>) {
+    e.preventDefault();
+    const t = e.touches[0];
+    if (t) beginDraw(t.clientX, t.clientY);
+  }
+
+  function onTouchMove(e: React.TouchEvent<HTMLCanvasElement>) {
+    e.preventDefault();
+    const t = e.touches[0];
+    if (t) moveDraw(t.clientX, t.clientY);
+  }
+
+  function onTouchEnd(e: React.TouchEvent<HTMLCanvasElement>) {
+    e.preventDefault();
+    endDraw();
   }
 
   function undo() {
@@ -195,6 +227,10 @@ export function BlurEditor({
             onMouseMove={onMouseMove}
             onMouseUp={onMouseUp}
             onMouseLeave={onMouseUp}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+            onTouchCancel={onTouchEnd}
           />
         </div>
 
