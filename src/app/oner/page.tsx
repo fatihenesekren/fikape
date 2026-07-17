@@ -115,10 +115,23 @@ export default function OnerPage() {
 
   const makes      = vehiclesData[categorySlug] ?? [];
   const makeEntry  = makes.find((m) => m.make === selectedMake);
-  const models     = (makeEntry?.models ?? []) as { name: string; versions: string[]; trims: string[] }[];
+  const models     = (makeEntry?.models ?? []) as {
+    name: string;
+    versions: string[];
+    trims: string[];
+    // Opsiyonel — bazı modellerde versiyona göre hangi donanım paketinin
+    // gerçekten satıldığı araştırılıp eşlenmiş (örn. "N AWD ..." versiyonu
+    // sadece "N" paketiyle gelir). Bu eşleme yoksa (henüz araştırılmamış
+    // modeller) tüm `trims` listesi gösterilir — geriye dönük bozulma olmaz.
+    trimsByVersion?: Record<string, string[]>;
+  }[];
   const modelEntry = models.find((m) => m.name === selectedModel);
   const versions   = modelEntry?.versions ?? [];
-  const trims      = modelEntry?.trims ?? [];
+  const trimsForSelectedVersion =
+    selectedVersion && selectedVersion !== "Diğer"
+      ? modelEntry?.trimsByVersion?.[selectedVersion]
+      : undefined;
+  const trims = trimsForSelectedVersion ?? modelEntry?.trims ?? [];
 
   const isOtherMake    = selectedMake === "Diğer / Bulamadım";
   const isOtherModel   = selectedModel === "Diğer";
