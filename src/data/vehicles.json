@@ -5327,7 +5327,35 @@
             "N Line",
             "N",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "1.0 T-GDI 100": [
+              "Jump",
+              "Style",
+              "Elite",
+              "Diğer"
+            ],
+            "1.0 T-GDI 120": [
+              "Jump",
+              "Style",
+              "Elite",
+              "Diğer"
+            ],
+            "1.2 MPI 84": [
+              "Jump",
+              "Style",
+              "Elite",
+              "Diğer"
+            ],
+            "N Line 1.0 T-GDI 120": [
+              "N Line",
+              "Diğer"
+            ],
+            "N 1.6 T-GDI 204": [
+              "N",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "i30 (2007-2012)",
@@ -5380,7 +5408,33 @@
             "N Line",
             "N",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "1.0 T-GDI 120": [
+              "Style",
+              "Elite",
+              "Diğer"
+            ],
+            "1.5 T-GDI 160 MHEV": [
+              "Style",
+              "Elite",
+              "Diğer"
+            ],
+            "1.6 CRDi 115": [
+              "Style",
+              "Elite",
+              "Diğer"
+            ],
+            "1.6 CRDi 136": [
+              "Style",
+              "Elite",
+              "Diğer"
+            ],
+            "N Line 1.5 T-GDI 160": [
+              "N Line",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "i30 N",
@@ -5851,7 +5905,34 @@
             "N Line",
             "N",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "Standard Range RWD 125kW 58kWh": [
+              "Progressive",
+              "Dynamic",
+              "Dynamic Vision Roof",
+              "Advance",
+              "Diğer"
+            ],
+            "Long Range RWD 160kW 77.4kWh": [
+              "Progressive",
+              "Dynamic",
+              "Dynamic Vision Roof",
+              "Advance",
+              "Diğer"
+            ],
+            "Long Range AWD 225kW 77.4kWh": [
+              "Progressive",
+              "Dynamic",
+              "Dynamic Vision Roof",
+              "Advance",
+              "Diğer"
+            ],
+            "N AWD 478 84kWh": [
+              "N",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "Ioniq 6",
