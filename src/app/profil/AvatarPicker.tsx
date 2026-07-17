@@ -6,8 +6,13 @@ import { Avatar } from "@/components/Avatar";
 import { buildAvatarOptions, dicebearUrl } from "@/lib/avatar";
 
 // DiceBear ücretsiz API bazen tekil isteklerde geçici hata dönebiliyor
-// (SLA'sız üçüncü parti servis) — bir kez sessizce yeniden dener, yine
-// başarısız olursa çirkin "kırık görsel" yerine nötr bir placeholder gösterir.
+// (SLA'sız üçüncü parti servis, muhtemelen seçici açılınca ~16-20 görselin
+// aynı anda istenmesiyle rate-limit'e takılıyor) — art arda 3 deneme yapılır,
+// her denemeden önce artan bir gecikme bırakılır (rate-limit penceresinin
+// geçmesi için), yine başarısız olursa çirkin "kırık görsel" yerine nötr
+// bir placeholder gösterilir.
+const MAX_AVATAR_RETRIES = 3;
+
 function AvatarOptionImg({ src }: { src: string }) {
   const [attempt, setAttempt] = useState(0);
   const [failed, setFailed] = useState(false);
@@ -30,8 +35,11 @@ function AvatarOptionImg({ src }: { src: string }) {
       className="w-full rounded-lg"
       loading="lazy"
       onError={() => {
-        if (attempt < 1) setAttempt((a) => a + 1);
-        else setFailed(true);
+        if (attempt < MAX_AVATAR_RETRIES) {
+          setTimeout(() => setAttempt((a) => a + 1), 400 * (attempt + 1));
+        } else {
+          setFailed(true);
+        }
       }}
     />
   );
