@@ -9,6 +9,16 @@ import { watermarkImage } from "@/lib/watermarkImage";
 import vehiclesData from "@/data/vehicles.json";
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 
+// Versiyon string'lerindeki RWD/AWD kısaltmaları teknik/İngilizce — kullanıcıya
+// gösterirken Türkiye'de yaygın kullanılan "4x2"/"4x4" karşılığı eklenir.
+// Sadece GÖRÜNÜMDE: değer (value, form state, trimsByVersion eşleşmeleri)
+// hep orijinal string kalır, hiçbir veri değişmez.
+function formatVersionLabel(version: string): string {
+  return version
+    .replace(/\bRWD\b/g, "RWD(4x2)")
+    .replace(/\bAWD\b/g, "AWD(4x4)");
+}
+
 const CATEGORIES = [
   { value: "otomobil",   label: "Otomobil" },
   { value: "motosiklet", label: "Motosiklet" },
@@ -355,7 +365,7 @@ export default function OnerPage() {
               className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
             >
               <option value="">— Seçin (opsiyonel) —</option>
-              {versions.map((v) => <option key={v} value={v}>{v}</option>)}
+              {versions.map((v) => <option key={v} value={v}>{formatVersionLabel(v)}</option>)}
             </select>
             {isOtherVersion && (
               <input type="text" value={customVersion} onChange={(e) => setCustomVersion(e.target.value)}
