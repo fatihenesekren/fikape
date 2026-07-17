@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { upload } from "@vercel/blob/client";
+import { watermarkImage } from "@/lib/watermarkImage";
 import vehiclesData from "@/data/vehicles.json";
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 
@@ -452,7 +453,8 @@ export default function OnerPage() {
                     setPhotoError(null);
                     setUploadingPhoto(true);
                     try {
-                      const blob = await upload(`suggestions/${Date.now()}-${file.name}`, file, {
+                      const watermarked = await watermarkImage(file).catch(() => file);
+                      const blob = await upload(`suggestions/${Date.now()}-${file.name}`, watermarked, {
                         access: "public",
                         handleUploadUrl: "/api/uploads/suggestion-photo",
                       });

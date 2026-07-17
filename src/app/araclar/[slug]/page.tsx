@@ -122,10 +122,10 @@ export default async function VehicleDetailPage({
   const imageUrl = product.imageUrl ?? await getVehicleImageUrl(slug);
 
   const sliderPhotos = [
-    ...(imageUrl ? [{ url: imageUrl, label: "Katalog fotoğrafı" }] : []),
+    ...(imageUrl ? [{ url: imageUrl, label: "Katalog" }] : []),
     ...product.photos.map((p) => ({
       url: p.url,
-      label: p.uploadedBy?.displayName ? `Kullanıcı: ${p.uploadedBy.displayName}` : "Kullanıcı fotoğrafı",
+      label: p.uploadedBy?.displayName ?? "Kullanıcı fotoğrafı",
     })),
   ];
 

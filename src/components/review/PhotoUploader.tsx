@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { upload } from "@vercel/blob/client";
+import { watermarkImage } from "@/lib/watermarkImage";
 
 export interface ExistingPhoto {
   id: number;
@@ -96,7 +97,8 @@ export function PhotoUploader({
 
               for (const file of toUpload) {
                 try {
-                  const blob = await upload(`reviews/${Date.now()}-${file.name}`, file, {
+                  const watermarked = await watermarkImage(file).catch(() => file);
+                  const blob = await upload(`reviews/${Date.now()}-${file.name}`, watermarked, {
                     access: "public",
                     handleUploadUrl: "/api/uploads/review-photo",
                   });
