@@ -2,6 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ShareCard } from "./ShareCard";
+import { BackButton } from "./BackButton";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const metadata = { title: "Yorumunu Paylaş — fikape" };
@@ -43,6 +44,8 @@ export default async function ShareReviewPage({
 
   return (
     <div className="max-w-md mx-auto px-4 py-10 space-y-6">
+      <BackButton />
+
       <div>
         <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold mb-1">
           Yorumun Yayında
