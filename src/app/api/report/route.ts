@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
-const VALID_TARGET_TYPES = ["SPEC", "PHOTO", "REVIEW", "QNA"] as const;
+const VALID_TARGET_TYPES = ["SPEC", "PHOTO", "REVIEW", "QNA", "OTHER"] as const;
 type TargetType = (typeof VALID_TARGET_TYPES)[number];
 
 export async function POST(req: Request) {

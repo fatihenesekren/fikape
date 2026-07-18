@@ -15,6 +15,7 @@ const TARGET_LABELS: Record<string, string> = {
   PHOTO: "Fotoğraf",
   REVIEW: "Yorum",
   QNA: "Soru-Cevap",
+  OTHER: "Diğer",
 };
 
 const FIX_LINKS: Record<string, { href: string; label: string }> = {
@@ -100,9 +101,13 @@ export default async function IcerikBildirimleriPage() {
                     <Link href={fixLink.href} className="text-xs font-semibold text-gray-900 hover:underline">
                       {fixLink.label}
                     </Link>
-                  ) : (
+                  ) : r.targetType === "QNA" ? (
                     <Link href={`/araclar/${r.product.slug}?sekme=soru-cevap`} className="text-xs font-semibold text-gray-900 hover:underline">
                       Soru-Cevap sekmesini görüntüle →
+                    </Link>
+                  ) : (
+                    <Link href={`/araclar/${r.product.slug}`} className="text-xs font-semibold text-gray-900 hover:underline">
+                      Ürünü görüntüle →
                     </Link>
                   )}
                   <ContentReportActions reportId={r.id} />

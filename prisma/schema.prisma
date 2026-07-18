@@ -965,6 +965,7 @@ enum ContentReportTargetType {
   PHOTO
   REVIEW
   QNA
+  OTHER
 }
 
 enum ContentReportStatus {

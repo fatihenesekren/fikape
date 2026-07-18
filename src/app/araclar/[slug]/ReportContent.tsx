@@ -4,13 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { SPEC_FIELDS } from "@/lib/specFields";
 
-type TargetType = "SPEC" | "PHOTO" | "REVIEW" | "QNA";
+type TargetType = "SPEC" | "PHOTO" | "REVIEW" | "QNA" | "OTHER";
 
 const TARGET_LABELS: Record<TargetType, string> = {
   SPEC: "Teknik Özellik",
   PHOTO: "Fotoğraf",
   REVIEW: "Yorum",
   QNA: "Soru-Cevap",
+  OTHER: "Diğer",
 };
 
 interface Props {
