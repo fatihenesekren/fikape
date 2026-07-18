@@ -242,9 +242,15 @@ export function ReviewCard({
         </div>
       )}
 
-      {/* Kendi yorumun — düzenle/sil */}
+      {/* Kendi yorumun — paylaş/düzenle/sil */}
       {isOwnReview && reviewId != null && (
         <div className="pt-2 border-t border-gray-50 flex items-center gap-4">
+          <Link
+            href={`/yorumum/${reviewId}/paylas`}
+            className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
+          >
+            ↗ Paylaş
+          </Link>
           <Link
             href={`/yorumum/${reviewId}/duzenle`}
             className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
