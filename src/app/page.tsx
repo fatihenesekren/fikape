@@ -7,6 +7,7 @@ import { CardGridSkeleton } from "./_components/CardGridSkeleton";
 import { RecentReviews } from "./_components/RecentReviews";
 import { TrendVehicleCard } from "./_components/TrendVehicleCard";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
+import { ScrollTopLogo } from "./_components/ScrollTopLogo";
 import { decodeQuiz, CAT_TO_SLUG } from "@/lib/quiz";
 
 export const dynamic = "force-dynamic";
@@ -223,6 +224,7 @@ export default async function Home({
       {/* ── Alt CTA ── */}
       <section className="bg-[#111] text-white mt-4">
         <div className="max-w-7xl mx-auto px-4 py-14 text-center">
+          <ScrollTopLogo />
           <p className="text-gray-300 text-lg font-bold mb-2">
             Aracın hakkında ne düşünüyorsun?
           </p>
