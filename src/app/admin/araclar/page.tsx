@@ -1,9 +1,15 @@
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ImageManager } from "./ImageManager";
 
 export const metadata = { title: "Araç Görselleri — Admin" };
 
-export default async function AdminAraclarPage() {
+export default async function AdminAraclarPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ eksik?: string }>;
+}) {
+  const { eksik } = await searchParams;
 
   const products = await prisma.product.findMany({
     // REJECTED öneri ürünleri "görselsiz" gürültüsü yaratmasın; PENDING'ler de
@@ -27,7 +33,9 @@ export default async function AdminAraclarPage() {
         <h1 className="text-2xl font-bold text-gray-900 mb-1">Araç Görselleri</h1>
         <p className="text-sm text-gray-500">
           {mapped.length} araç — {missing > 0 ? (
-            <span className="text-orange-600 font-semibold">{missing} görselsiz</span>
+            <Link href="/admin/araclar?eksik=1" className="text-orange-600 font-semibold hover:underline">
+              {missing} görselsiz
+            </Link>
           ) : (
             <span className="text-green-600 font-semibold">tümü tamamlanmış</span>
           )}
@@ -37,7 +45,7 @@ export default async function AdminAraclarPage() {
         </p>
       </div>
 
-      <ImageManager products={mapped} />
+      <ImageManager products={mapped} initialOnlyMissing={eksik === "1"} />
     </div>
   );
 }

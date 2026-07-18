@@ -8,7 +8,7 @@ interface Product {
   imageUrl: string | null;
 }
 
-export function ImageManager({ products }: { products: Product[] }) {
+export function ImageManager({ products, initialOnlyMissing = false }: { products: Product[]; initialOnlyMissing?: boolean }) {
   const [states, setStates] = useState<Record<string, { loading: boolean; url: string | null; error: string | null }>>(
     Object.fromEntries(products.map((p) => [p.slug, { loading: false, url: p.imageUrl, error: null }]))
   );
@@ -16,6 +16,15 @@ export function ImageManager({ products }: { products: Product[] }) {
     Object.fromEntries(products.map((p) => [p.slug, p.imageUrl ?? ""]))
   );
   const fileRefs = useRef<Record<string, HTMLInputElement | null>>({});
+  const [query, setQuery] = useState("");
+  const [onlyMissing, setOnlyMissing] = useState(initialOnlyMissing);
+
+  const q = query.trim().toLocaleLowerCase("tr-TR");
+  const filtered = products.filter((p) => {
+    if (onlyMissing && states[p.slug]?.url) return false;
+    if (q && !p.name.toLocaleLowerCase("tr-TR").includes(q) && !p.slug.includes(q)) return false;
+    return true;
+  });
 
   async function parseJson(res: Response) {
     const text = await res.text();
@@ -59,7 +68,32 @@ export function ImageManager({ products }: { products: Product[] }) {
 
   return (
     <div className="space-y-4">
-      {products.map((product) => {
+      <div className="sticky top-0 z-10 bg-gray-50/95 backdrop-blur-sm py-3 -mx-1 px-1 flex items-center gap-3">
+        <div className="relative flex-1">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Marka veya model ara..."
+            className="w-full text-sm px-3 py-2 rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-gray-400"
+          />
+        </div>
+        <label className="flex items-center gap-1.5 text-xs text-gray-600 whitespace-nowrap select-none">
+          <input
+            type="checkbox"
+            checked={onlyMissing}
+            onChange={(e) => setOnlyMissing(e.target.checked)}
+          />
+          Sadece görselsizler
+        </label>
+        <span className="text-xs text-gray-400 whitespace-nowrap">{filtered.length} sonuç</span>
+      </div>
+
+      {filtered.length === 0 && (
+        <p className="text-sm text-gray-400 text-center py-10">Sonuç bulunamadı.</p>
+      )}
+
+      {filtered.map((product) => {
         const st = states[product.slug];
         return (
           <div
