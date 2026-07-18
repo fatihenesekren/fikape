@@ -119,7 +119,7 @@ export function ReviewCard({
                   className="text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1"
                   style={{ background: "#f3f4f6", color: "#6b7280" }}
                 >
-                  {soldReason ? `Satıldı · ${SOLD_REASON_LABEL[soldReason] ?? soldReason}` : "Eski Sahip"}
+                  {soldReason ? `Satıldı · ${SOLD_REASON_LABEL[soldReason] ?? soldReason}` : "Eski Kullanıcı"}
                 </span>
               )}
               {ownershipMonths != null && (

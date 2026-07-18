@@ -74,9 +74,9 @@ export default function KullanimKosullariPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">5. "Doğrulanmış Sahip" Rozeti</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">5. "Doğrulanmış Kullanıcı" Rozeti</h2>
           <p>
-            E-posta adresinizi doğruladığınızda "Doğrulanmış Sahip" rozeti alırsınız. Bu rozet;
+            E-posta adresinizi doğruladığınızda "Doğrulanmış Kullanıcı" rozeti alırsınız. Bu rozet;
             platforma kaydının doğrulandığını gösterir, ancak araç sahipliğinin fiziksel
             belgelenmesini garanti etmez. Sahte araç sahipliği iddiasıyla yorum yapmak
             hesabın kalıcı olarak kapatılmasına yol açar.

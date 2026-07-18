@@ -50,7 +50,7 @@ export default function GizlilikPage() {
           <p className="mb-2">Toplanan veriler aşağıdaki amaçlarla işlenmektedir:</p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Hesabınızın oluşturulması ve güvenliğinin sağlanması</li>
-            <li>E-posta doğrulama ve "doğrulanmış sahip" rozetinin verilmesi</li>
+            <li>E-posta doğrulama ve "doğrulanmış kullanıcı" rozetinin verilmesi</li>
             <li>Yorumlarınızın platform üzerinde yayımlanması</li>
             <li>Spam ve sahte yorum tespiti ile içerik moderasyonu</li>
             <li>Platform kalitesinin iyileştirilmesi ve hataların giderilmesi</li>

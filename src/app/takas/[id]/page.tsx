@@ -93,7 +93,7 @@ export default async function TakasDetayPage({
 
         {listing.user.trustLevel >= 3 && (
           <p className="mt-3 text-[11px] text-gray-400" title="Bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez.">
-            ✓ Doğrulanmış sahip rozeti — bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez.
+            ✓ Doğrulanmış kullanıcı rozeti — bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez.
           </p>
         )}
 

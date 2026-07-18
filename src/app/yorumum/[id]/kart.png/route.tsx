@@ -294,7 +294,7 @@ export async function GET(
             <span style={{ fontSize: 30, fontWeight: 700, color: "#fff" }}>{reviewerName}</span>
             {isOwner && (
               <span style={{ fontSize: 22, color: "#97C459", marginTop: 6 }}>
-                Doğrulanmış Sahip
+                Doğrulanmış Kullanıcı
               </span>
             )}
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 24 }}>
