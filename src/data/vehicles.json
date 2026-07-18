@@ -8324,6 +8324,29 @@
           ]
         },
         {
+          "name": "Ioniq 9",
+          "versions": [
+            "Long Range RWD 160kW 110.3kWh",
+            "Long Range AWD 226kW 110.3kWh",
+            "Diğer"
+          ],
+          "trims": [
+            "Progressive",
+            "Calligraphy",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "Long Range RWD 160kW 110.3kWh": [
+              "Progressive",
+              "Diğer"
+            ],
+            "Long Range AWD 226kW 110.3kWh": [
+              "Calligraphy",
+              "Diğer"
+            ]
+          }
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
