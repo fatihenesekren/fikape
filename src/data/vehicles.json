@@ -8347,6 +8347,61 @@
           }
         },
         {
+          "name": "Inster",
+          "versions": [
+            "Standard Range 71kW 42kWh",
+            "Long Range 84.5kW 49kWh",
+            "Diğer"
+          ],
+          "trims": [
+            "Advance",
+            "Lounge",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Terracan (2001-2007)",
+          "versions": [
+            "2.5 TD 100",
+            "2.9 CRDi 150",
+            "2.9 CRDi 163",
+            "3.5 V6 200",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Galloper (1991-1997)",
+          "versions": [
+            "2.5 D 72",
+            "2.5 TCI 101",
+            "2.5 TD 82",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Exceed",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Galloper (1997-2003)",
+          "versions": [
+            "2.5 D 79",
+            "2.5 TCI 103",
+            "2.5 TD 84",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Exceed",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
