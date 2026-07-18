@@ -1,16 +1,22 @@
 "use client";
 
 // Native scrollTo({behavior:"smooth"}) süresi tarayıcı/cihaza göre değişiyor
-// ve mobilde çok kısa sürüp aniden zıplama hissi verebiliyor — sabit süreli,
-// ease-out'lu kendi animasyonumuzla tutarlı bir his sağlıyoruz.
-function smoothScrollToTop(duration = 600) {
+// ve mobilde çok kısa sürüp aniden zıplama hissi verebiliyor — sabit süreli
+// kendi animasyonumuzla tutarlı bir his sağlıyoruz. ease-out (kübik) mesafenin
+// %87'sini sürenin ilk yarısında bitirip "fırlama" hissi verdiği için,
+// yavaş başlayıp ortada hızlanan, yavaş biten ease-in-out kullanılıyor.
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+function smoothScrollToTop(duration = 700) {
   const start = window.scrollY;
   if (start === 0) return;
   const startTime = performance.now();
 
   function step(now: number) {
     const progress = Math.min((now - startTime) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
+    const eased = easeInOutCubic(progress);
     window.scrollTo(0, start * (1 - eased));
     if (progress < 1) requestAnimationFrame(step);
   }
