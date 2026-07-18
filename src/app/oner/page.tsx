@@ -4,8 +4,6 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { upload } from "@vercel/blob/client";
-import { watermarkImage } from "@/lib/watermarkImage";
 import vehiclesData from "@/data/vehicles.json";
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 
@@ -119,9 +117,6 @@ export default function OnerPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError]           = useState<string | null>(null);
 
-  const [photoUrls, setPhotoUrls]     = useState<string[]>([]);
-  const [uploadingPhoto, setUploadingPhoto] = useState(false);
-  const [photoError, setPhotoError]   = useState<string | null>(null);
 
   const makes      = vehiclesData[categorySlug] ?? [];
   const makeEntry  = makes.find((m) => m.make === selectedMake);
@@ -198,7 +193,7 @@ export default function OnerPage() {
       const res = await fetch("/api/oneriler", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, photoUrls }),
+        body: JSON.stringify({ brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes }),
       });
       const text = await res.text();
       let data: Record<string, unknown> = {};
@@ -439,62 +434,6 @@ export default function OnerPage() {
             className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 resize-none"
           />
           <p className="text-right text-xs text-gray-400 mt-0.5">{notes.length}/500</p>
-        </div>
-
-        {/* Fotoğraf Yükle */}
-        <div>
-          <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. 5 adet · 25 MB)</span>
-          </label>
-          <div className="flex flex-wrap gap-2 mb-2">
-            {photoUrls.map((url, i) => (
-              <div key={url} className="relative w-20 h-20 rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={url} alt="" className="w-full h-full object-cover" />
-                <button
-                  type="button"
-                  onClick={() => setPhotoUrls((prev) => prev.filter((_, idx) => idx !== i))}
-                  className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-black/60 text-white text-[10px] flex items-center justify-center hover:bg-black/80"
-                >
-                  ✕
-                </button>
-              </div>
-            ))}
-            {photoUrls.length < 5 && (
-              <label className={`w-20 h-20 rounded-xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center cursor-pointer hover:border-gray-400 transition-colors text-gray-400 text-[10px] gap-1 ${uploadingPhoto ? "opacity-50 pointer-events-none" : ""}`}>
-                <span className="text-xl">+</span>
-                <span>{uploadingPhoto ? "Yükleniyor..." : "Fotoğraf"}</span>
-                <input
-                  type="file"
-                  accept="image/jpeg,image/png,image/webp"
-                  className="hidden"
-                  disabled={uploadingPhoto}
-                  onChange={async (e) => {
-                    const file = e.target.files?.[0];
-                    e.target.value = "";
-                    if (!file) return;
-                    setPhotoError(null);
-                    setUploadingPhoto(true);
-                    try {
-                      const watermarked = await watermarkImage(file).catch(() => file);
-                      const blob = await upload(`suggestions/${Date.now()}-${file.name}`, watermarked, {
-                        access: "public",
-                        handleUploadUrl: "/api/uploads/suggestion-photo",
-                      });
-                      setPhotoUrls((prev) => [...prev, blob.url]);
-                    } catch (err) {
-                      setPhotoError(err instanceof Error ? err.message : "Yükleme başarısız");
-                    } finally {
-                      setUploadingPhoto(false);
-                    }
-                  }}
-                />
-              </label>
-            )}
-          </div>
-          {photoError && (
-            <p className="text-xs text-red-500">{photoError}</p>
-          )}
         </div>
 
         {error && (
