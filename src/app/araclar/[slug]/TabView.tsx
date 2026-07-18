@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ReportContent } from "./ReportContent";
 
 interface Props {
   reviewCount: number;
@@ -9,9 +10,18 @@ interface Props {
   questionCount: number;
   qnaContent: React.ReactNode;
   initialTab?: "yorumlar" | "teknik" | "soru-cevap";
+  productId: number;
+  categorySlug: string;
+  isLoggedIn: boolean;
+  reviewsForReport: { id: number; label: string }[];
+  questionsForReport: { id: number; label: string }[];
+  photosForReport: { id: number; label: string }[];
 }
 
-export function TabView({ reviewCount, reviewsContent, specsContent, questionCount, qnaContent, initialTab }: Props) {
+export function TabView({
+  reviewCount, reviewsContent, specsContent, questionCount, qnaContent, initialTab,
+  productId, categorySlug, isLoggedIn, reviewsForReport, questionsForReport, photosForReport,
+}: Props) {
   const [tab, setTab] = useState<"yorumlar" | "teknik" | "soru-cevap">(initialTab ?? "yorumlar");
 
   return (
@@ -73,6 +83,16 @@ export function TabView({ reviewCount, reviewsContent, specsContent, questionCou
           {qnaContent}
         </div>
       )}
+
+      <ReportContent
+        productId={productId}
+        categorySlug={categorySlug}
+        isLoggedIn={isLoggedIn}
+        activeTab={tab}
+        reviewsForReport={reviewsForReport}
+        questionsForReport={questionsForReport}
+        photosForReport={photosForReport}
+      />
     </div>
   );
 }

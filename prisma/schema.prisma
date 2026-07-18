@@ -122,6 +122,7 @@ model Product {
   insuranceLeads  InsuranceLead[]
   saleLeads       SaleLead[]
   tradeListings   TradeListing[]
+  contentReports  ContentReport[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "products_name_trgm_idx")
@@ -190,6 +191,7 @@ model User {
   messagesSent        Message[]       @relation("MessageSender")
   threadsBlocked      MessageThread[] @relation("ThreadBlockedBy")
   messageReports      MessageReport[]
+  contentReports      ContentReport[]
 
   @@map("users")
 }
@@ -341,6 +343,7 @@ model Review {
   flags         ReviewFlag[]
   helpfulVotes  ReviewHelpfulVote[]
   photos        ProductPhoto[]
+  contentReports ContentReport[]
   versions      ReviewVersion[]
   scoreSnapshots ScoreSnapshot[]
   moderationLogs ModerationLog[]
@@ -663,6 +666,8 @@ model ProductPhoto {
 
   createdAt        DateTime    @default(now())
 
+  contentReports   ContentReport[]
+
   @@map("product_photos")
 }
 
@@ -689,6 +694,7 @@ model Question {
   createdAt DateTime @default(now())
 
   answers   Answer[]
+  contentReports ContentReport[]
 
   @@index([productId])
   @@map("questions")
@@ -913,4 +919,56 @@ enum MessageReportReason {
 enum MessageReportStatus {
   PENDING
   REVIEWED
+}
+
+// ─────────────────────────────────────────────
+// İÇERİK HATASI BİLDİRİMİ — araç sayfasındaki teknik özellik,
+// fotoğraf, yorum veya soru-cevap içeriğinde hata bildirimi.
+// ReviewFlag/MessageReport'tan farklı: kötüye kullanım şikayeti değil,
+// "bu bilgi yanlış, düzeltilmeli" — admin aksiyonu moderasyon değil düzeltme.
+// ─────────────────────────────────────────────
+
+model ContentReport {
+  id         Int      @id @default(autoincrement())
+  productId  Int
+  product    Product  @relation(fields: [productId], references: [id])
+  reporterId Int
+  reporter   User     @relation(fields: [reporterId], references: [id])
+
+  targetType ContentReportTargetType
+
+  // Hedefe göre yalnızca ilgili alan doldurulur
+  field      String?       @db.VarChar(100) // targetType=SPEC ise (örn. "ev_range_km")
+  photoId    Int?
+  photo      ProductPhoto? @relation(fields: [photoId], references: [id])
+  reviewId   Int?
+  review     Review?       @relation(fields: [reviewId], references: [id])
+  questionId Int?
+  question   Question?     @relation(fields: [questionId], references: [id])
+
+  note       String   @db.VarChar(500)
+
+  status     ContentReportStatus @default(PENDING)
+  resolvedAt DateTime?
+  resolvedBy Int?      // Admin user id
+  adminNote  String?   @db.VarChar(300)
+
+  createdAt  DateTime @default(now())
+
+  @@index([productId])
+  @@index([status])
+  @@map("content_reports")
+}
+
+enum ContentReportTargetType {
+  SPEC
+  PHOTO
+  REVIEW
+  QNA
+}
+
+enum ContentReportStatus {
+  PENDING
+  RESOLVED
+  REJECTED
 }

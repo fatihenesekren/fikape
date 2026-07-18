@@ -101,7 +101,7 @@ export default async function VehicleDetailPage({
         photos: {
           where: { status: "APPROVED" },
           orderBy: { order: "asc" },
-          select: { url: true, uploadedBy: { select: { displayName: true } } },
+          select: { id: true, url: true, uploadedBy: { select: { displayName: true } } },
         },
       },
     }),
@@ -557,6 +557,20 @@ export default async function VehicleDetailPage({
     />
   );
 
+  // ── İçerik hatası bildirimi için kısa referans listeleri ──
+  const reviewsForReport = reviews.map((r) => ({
+    id: r.id,
+    label: `${r.user.displayName ?? "Kullanıcı"} — "${r.summaryText.slice(0, 40)}${r.summaryText.length > 40 ? "…" : ""}"`,
+  }));
+  const questionsForReport = questions.map((q) => ({
+    id: q.id,
+    label: `${q.text.slice(0, 50)}${q.text.length > 50 ? "…" : ""}`,
+  }));
+  const photosForReport = product.photos.map((p, i) => ({
+    id: p.id,
+    label: `${i + 1}. fotoğraf — ${p.uploadedBy?.displayName ?? "Kullanıcı fotoğrafı"}`,
+  }));
+
   const left = specs.filter((_, i) => i % 2 === 0);
   const right = specs.filter((_, i) => i % 2 === 1);
 
@@ -802,6 +816,12 @@ export default async function VehicleDetailPage({
           questionCount={questions.length}
           qnaContent={qnaContent}
           initialTab={sekme === "soru-cevap" ? "soru-cevap" : undefined}
+          productId={product.id}
+          categorySlug={categorySlug}
+          isLoggedIn={!!userId}
+          reviewsForReport={reviewsForReport}
+          questionsForReport={questionsForReport}
+          photosForReport={photosForReport}
         />
 
       </div>
