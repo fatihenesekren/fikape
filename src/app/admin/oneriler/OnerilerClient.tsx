@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { SpecForm } from "@/components/admin/SpecForm";
-import { parseSahibindenSpecs } from "@/lib/sahibindenParse";
+import { parseListingSpecs } from "@/lib/listingSpecParse";
 import { getCriticalFields } from "@/lib/specFields";
 
 type Suggestion = {
@@ -59,8 +59,8 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
   const [criticalFieldsMissing, setCriticalFieldsMissing] = useState<string[]>([]);
   const [previewImage, setPreviewImage]   = useState<string | null>(null);
   const [imageChecked, setImageChecked]   = useState(false);
-  const [sahibindenPaste, setSahibindenPaste] = useState("");
-  const [sahibindenResult, setSahibindenResult] = useState<{ count: number } | null>(null);
+  const [listingPaste, setListingPaste] = useState("");
+  const [listingResult, setListingResult] = useState<{ count: number } | null>(null);
 
   const visible = suggestions.filter((s) => s.status === filter);
   const counts = {
@@ -85,25 +85,25 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
     });
   }
 
-  // sahibinden.com Cloudflare bot koruması arkasında olduğu için otomatik
-  // erişilemiyor — admin ilanı kendi tarayıcısında açıp "Teknik Özellikler"
-  // HTML'ini buraya yapıştırıyor. Kaynak admin'in zaten doğruladığı bir ilan
-  // olduğu için eşlenen alanlara doğrudan "high" güven veriliyor.
-  function handleSahibindenParse() {
+  // Kaynak ilan sayfası bot koruması arkasında olduğu için otomatik erişilemiyor
+  // — admin ilanı kendi tarayıcısında açıp "Teknik Özellikler" HTML'ini buraya
+  // yapıştırıyor. Kaynak admin'in zaten doğruladığı bir ilan olduğu için
+  // eşlenen alanlara doğrudan "high" güven veriliyor.
+  function handleListingParse() {
     if (!modal) return;
-    const parsed = parseSahibindenSpecs(sahibindenPaste);
+    const parsed = parseListingSpecs(listingPaste);
     const keys = Object.keys(parsed);
-    if (keys.length === 0) { setSahibindenResult({ count: 0 }); return; }
+    if (keys.length === 0) { setListingResult({ count: 0 }); return; }
 
     const nextConfidence = { ...specConfidence };
-    for (const key of keys) nextConfidence[key] = { confidence: "high", source: "sahibinden" };
+    for (const key of keys) nextConfidence[key] = { confidence: "high", source: "ilan" };
 
     const critical = getCriticalFields(modal.suggestion.categorySlug, modal.suggestion.fuelType);
     setAttrs((prev) => ({ ...prev, ...parsed }));
     setSpecConfidence(nextConfidence);
     setReadyForAutoApprove(critical.length > 0 && critical.every((f) => nextConfidence[f]?.confidence === "high"));
     setCriticalFieldsMissing(critical.filter((f) => nextConfidence[f]?.confidence !== "high"));
-    setSahibindenResult({ count: keys.length });
+    setListingResult({ count: keys.length });
   }
 
   async function handleAction() {
@@ -132,7 +132,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
             : s
         )
       );
-      setModal(null); setAdminNote(""); setCustomSlug(""); setAttrs({}); setSpecConfidence({}); setSahibindenPaste(""); setSahibindenResult(null);
+      setModal(null); setAdminNote(""); setCustomSlug(""); setAttrs({}); setSpecConfidence({}); setListingPaste(""); setListingResult(null);
     } catch {
       setErrorMsg("Bir hata oluştu");
     } finally {
@@ -142,7 +142,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
 
   async function openModal(suggestion: Suggestion, action: "APPROVED" | "REJECTED") {
     setErrorMsg(null); setAdminNote(""); setSpecConfidence({});
-    setReadyForAutoApprove(false); setCriticalFieldsMissing([]); setSahibindenPaste(""); setSahibindenResult(null);
+    setReadyForAutoApprove(false); setCriticalFieldsMissing([]); setListingPaste(""); setListingResult(null);
     setPreviewImage(null); setImageChecked(false);
     if (!suggestion.productId) {
       const parts = [suggestion.brandName, suggestion.modelName, suggestion.trimName, suggestion.year]
@@ -406,15 +406,15 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                 )}
                 <div className="mb-3 p-2.5 rounded-xl border border-gray-200 bg-gray-50">
                   <p className="text-xs font-semibold text-gray-700 mb-1">
-                    Sahibinden ilanından doldur
+                    İlan HTML&apos;inden doldur
                   </p>
                   <p className="text-[11px] text-gray-400 mb-1.5">
                     İlanı kendi tarayıcında aç → &quot;Teknik Özellikler&quot; bölümünün HTML&apos;ini
                     (sağ tık → Kaynağı Görüntüle) kopyala, aşağıya yapıştır.
                   </p>
                   <textarea
-                    value={sahibindenPaste}
-                    onChange={(e) => { setSahibindenPaste(e.target.value); setSahibindenResult(null); }}
+                    value={listingPaste}
+                    onChange={(e) => { setListingPaste(e.target.value); setListingResult(null); }}
                     rows={3}
                     placeholder='<div id="technical-details">...'
                     className="w-full px-2.5 py-1.5 rounded-lg border border-gray-200 text-[11px] font-mono focus:outline-none focus:border-gray-400 bg-white mb-1.5"
@@ -422,16 +422,16 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
-                      onClick={handleSahibindenParse}
-                      disabled={!sahibindenPaste.trim()}
+                      onClick={handleListingParse}
+                      disabled={!listingPaste.trim()}
                       className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-900 text-white hover:bg-gray-700 disabled:opacity-40 transition-colors"
                     >
                       Alanları Doldur
                     </button>
-                    {sahibindenResult && (
-                      <p className={`text-xs ${sahibindenResult.count > 0 ? "text-green-600" : "text-red-500"}`}>
-                        {sahibindenResult.count > 0
-                          ? `✓ ${sahibindenResult.count} alan dolduruldu (yüksek güven).`
+                    {listingResult && (
+                      <p className={`text-xs ${listingResult.count > 0 ? "text-green-600" : "text-red-500"}`}>
+                        {listingResult.count > 0
+                          ? `✓ ${listingResult.count} alan dolduruldu (yüksek güven).`
                           : "Tanınan bir alan bulunamadı — HTML yapısı beklenenden farklı olabilir."}
                       </p>
                     )}
@@ -467,7 +467,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
 
             <div className="flex gap-2 justify-end">
               <button
-                onClick={() => { setModal(null); setErrorMsg(null); setAttrs({}); setSpecConfidence({}); setSahibindenPaste(""); setSahibindenResult(null); }}
+                onClick={() => { setModal(null); setErrorMsg(null); setAttrs({}); setSpecConfidence({}); setListingPaste(""); setListingResult(null); }}
                 className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50"
               >
                 İptal

@@ -1,7 +1,7 @@
-// sahibinden.com ilan sayfası Cloudflare bot koruması arkasında olduğu için
-// otomatik erişilemiyor (bkz. proje notları). Bunun yerine admin ilanı kendi
-// tarayıcısında açıp "Teknik Özellikler" bölümünün HTML'ini kopyalayıp
-// yapıştırıyor — bu fonksiyon o HTML'i SPEC_FIELDS şemasına eşler.
+// Kaynak ilan sayfası bot koruması arkasında olduğu için otomatik erişilemiyor
+// (bkz. proje notları). Bunun yerine admin ilanı kendi tarayıcısında açıp
+// "Teknik Özellikler" bölümünün HTML'ini kopyalayıp yapıştırıyor — bu fonksiyon
+// o HTML'i SPEC_FIELDS şemasına eşler.
 // Kaynak admin'in zaten güvendiği/doğruladığı bir ilan olduğu için (Wikipedia/
 // CarQuery tahmininin aksine) eşlenen alanlara doğrudan "high" güven veriliyor.
 
@@ -66,7 +66,7 @@ function mapDrivetrain(value: string): string | null {
   return null;
 }
 
-export function parseSahibindenSpecs(html: string): Record<string, string> {
+export function parseListingSpecs(html: string): Record<string, string> {
   const specs: Record<string, string> = {};
 
   for (const { title, value } of extractPairs(html)) {
