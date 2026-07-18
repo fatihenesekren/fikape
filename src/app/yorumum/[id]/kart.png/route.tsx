@@ -3,6 +3,7 @@ import QRCode from "qrcode";
 import { prisma } from "@/lib/prisma";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { CHIP_LABEL } from "@/lib/chips";
+import { getVehicleImageUrl } from "@/lib/vehicleImages";
 
 export const runtime = "nodejs";
 
@@ -88,6 +89,7 @@ export async function GET(
             select: {
               slug: true,
               year: true,
+              imageUrl: true,
               brand: { select: { name: true } },
               model: { select: { name: true } },
             },
@@ -140,6 +142,8 @@ export async function GET(
     color: { dark: "#111111", light: "#ffffff" },
   });
 
+  const catalogImageUrl = review.product.imageUrl ?? (await getVehicleImageUrl(review.product.slug));
+
   return new ImageResponse(
     (
       <div
@@ -150,8 +154,30 @@ export async function GET(
           display: "flex",
           flexDirection: "column",
           padding: "90px 70px",
+          position: "relative",
         }}
       >
+        {/* Arka plan — kartın tam ortasında, düşük opaklıkla */}
+        {catalogImageUrl && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={catalogImageUrl}
+            alt=""
+            width={size.width}
+            height={size.height}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: size.width,
+              height: size.height,
+              objectFit: "cover",
+              objectPosition: "center",
+              opacity: 0.2,
+            }}
+          />
+        )}
+
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
           <span style={{ fontSize: 44, fontWeight: 900, color: "#85B7EB" }}>fi</span>
@@ -162,32 +188,44 @@ export async function GET(
         </div>
 
         {/* Vehicle */}
-        <div style={{ display: "flex", flexDirection: "column", marginTop: 90 }}>
-          <div
-            style={{
-              fontSize: 28,
-              color: "#666",
-              marginBottom: 14,
-              textTransform: "uppercase",
-              letterSpacing: "2px",
-            }}
-          >
-            {review.product.brand.name}
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 66,
-              fontWeight: 900,
-              color: "#fff",
-              lineHeight: 1.1,
-              letterSpacing: "-1.5px",
-            }}
-          >
-            {stripModelGenRange(review.product.model.name)}
-            {yearStr && (
-              <span style={{ color: "#555", fontWeight: 400, fontSize: 50 }}>{yearStr}</span>
-            )}
+        <div style={{ display: "flex", alignItems: "center", gap: 28, marginTop: 90 }}>
+          {catalogImageUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={catalogImageUrl}
+              alt={vehicleName}
+              width={130}
+              height={96}
+              style={{ borderRadius: 18, objectFit: "cover" }}
+            />
+          )}
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{
+                fontSize: 28,
+                color: "#666",
+                marginBottom: 14,
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+              }}
+            >
+              {review.product.brand.name}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 66,
+                fontWeight: 900,
+                color: "#fff",
+                lineHeight: 1.1,
+                letterSpacing: "-1.5px",
+              }}
+            >
+              {stripModelGenRange(review.product.model.name)}
+              {yearStr && (
+                <span style={{ color: "#555", fontWeight: 400, fontSize: 50 }}>{yearStr}</span>
+              )}
+            </div>
           </div>
         </div>
 
