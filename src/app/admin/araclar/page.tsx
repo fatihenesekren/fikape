@@ -41,7 +41,7 @@ export default async function AdminAraclarPage({
           )}
         </p>
         <p className="text-xs text-gray-400 mt-2">
-          URL: doğrudan Wikipedia Commons, basın kit veya Vercel Blob URL. Dosya: yüklenip otomatik blob'a kaydedilir.
+          URL: doğrudan Wikipedia Commons, basın kit veya Vercel Blob URL. Dosya: yüklenip otomatik blob&apos;a kaydedilir.
         </p>
       </div>
 
