@@ -118,8 +118,14 @@ export function AuthNav() {
                 <GarageIcon /> Garajım
               </Link>
               {/* Araç Öner masaüstünde header'da ayrı buton olarak zaten görünüyor —
-                  mobilde header'da yer olmadığı için sadece bu menüde tekrarlanıyor. */}
-              <Link href="/oner" onClick={() => setMenuOpen(false)} className={`sm:hidden ${menuItemClass}`}>
+                  mobilde header'da yer olmadığı için sadece bu menüde tekrarlanıyor.
+                  Diğerleri hesap ayarı, bu bir aksiyon — vurgu rengiyle ayrıştırılıyor. */}
+              <Link
+                href="/oner"
+                onClick={() => setMenuOpen(false)}
+                className={`sm:hidden ${menuItemClass}`}
+                style={{ color: "#185FA5" }}
+              >
                 <PlusCircleIcon /> Araç Öner
               </Link>
               <Link href="/profil" onClick={() => setMenuOpen(false)} className={menuItemClass}>
