@@ -8249,8 +8249,15 @@
             "Style",
             "Elite",
             "Elite Plus",
+            "Progressive",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "HEV 230 AWD": [
+              "Progressive",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "Kona",
