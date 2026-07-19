@@ -188,7 +188,7 @@ export default function OnerPage() {
       // güç+batarya rakamlarını metne gömüyor (örn. "Extended Range 204 72.8kWh")
       // — bu rakamlar zaten ayrı attributes alanlarında tutulacağı için burada
       // (kullanıcıya gösterilecek trimName'de) tekrar etmesin.
-      const versionClean = versionFin.replace(/\s+\d+\s+\d+(\.\d+)?\s*kwh\b/i, "").trim();
+      const versionClean = versionFin.replace(/\s+\d+(\.\d+)?\s*(kw)?\s+\d+(\.\d+)?\s*kwh\b/i, "").trim();
       const trimName = [versionClean, trimFin].filter(Boolean).join(" – ") || "";
       const res = await fetch("/api/oneriler", {
         method: "POST",
