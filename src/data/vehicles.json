@@ -7820,6 +7820,7 @@
             "1.0 T-GDI 100 MHEV",
             "1.0 T-GDI 120 MHEV",
             "1.2 MPI 84",
+            "1.4 MPI 100",
             "Diğer"
           ],
           "trims": [
@@ -7828,7 +7829,25 @@
             "Elite",
             "N Line",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "1.4 MPI 100": [
+              "Jump",
+              "Style",
+              "Elite",
+              "Diğer"
+            ],
+            "1.0 T-GDI 100 MHEV": [
+              "Style",
+              "Elite",
+              "Diğer"
+            ],
+            "1.0 T-GDI 120 MHEV": [
+              "Elite",
+              "N Line",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "Getz (2002-2011)",
