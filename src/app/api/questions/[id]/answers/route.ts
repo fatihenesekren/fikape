@@ -67,6 +67,16 @@ export async function POST(
     );
   }
 
+  const existingAnswerCount = await prisma.answer.count({
+    where: { questionId, userId },
+  });
+  if (existingAnswerCount >= 3) {
+    return NextResponse.json(
+      { error: "Bu soruya en fazla 3 cevap yazabilirsiniz." },
+      { status: 403 }
+    );
+  }
+
   const answer = await prisma.answer.create({
     data: { questionId, userId, text },
   });
