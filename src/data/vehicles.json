@@ -8355,9 +8355,19 @@
           ],
           "trims": [
             "Advance",
-            "Lounge",
+            "Dynamic",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "Standard Range 71kW 42kWh": [
+              "Dynamic",
+              "Diğer"
+            ],
+            "Long Range 84.5kW 49kWh": [
+              "Advance",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "Terracan (2001-2007)",
