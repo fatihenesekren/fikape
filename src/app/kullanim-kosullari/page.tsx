@@ -23,7 +23,7 @@ export default function KullanimKosullariPage() {
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mb-3">1. Genel</h2>
           <p>
-            Bu Kullanım Koşulları, <strong>fikape.com</strong> ("Platform") üzerindeki tüm
+            Bu Kullanım Koşulları, <strong>fikape.com</strong> (&quot;Platform&quot;) üzerindeki tüm
             hizmetleri kapsayan bir sözleşmedir. Platforma kayıt olarak veya hizmetleri
             kullanarak bu koşulları okuduğunuzu ve kabul ettiğinizi beyan etmiş olursunuz.
           </p>
@@ -74,9 +74,9 @@ export default function KullanimKosullariPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">5. "Doğrulanmış Kullanıcı" Rozeti</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">5. &quot;Doğrulanmış Kullanıcı&quot; Rozeti</h2>
           <p>
-            E-posta adresinizi doğruladığınızda "Doğrulanmış Kullanıcı" rozeti alırsınız. Bu rozet;
+            E-posta adresinizi doğruladığınızda &quot;Doğrulanmış Kullanıcı&quot; rozeti alırsınız. Bu rozet;
             platforma kaydının doğrulandığını gösterir, ancak araç sahipliğinin fiziksel
             belgelenmesini garanti etmez. Sahte araç sahipliği iddiasıyla yorum yapmak
             hesabın kalıcı olarak kapatılmasına yol açar.
@@ -86,7 +86,7 @@ export default function KullanimKosullariPage() {
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mb-3">6. Fikri Mülkiyet</h2>
           <p className="mb-2">
-            Platform üzerindeki logo, tasarım, yazılım kodu ve özgün içerikler fikape.com'a aittir
+            Platform üzerindeki logo, tasarım, yazılım kodu ve özgün içerikler fikape.com&apos;a aittir
             ve ilgili mevzuat kapsamında korunmaktadır.
           </p>
           <p>
@@ -120,7 +120,7 @@ export default function KullanimKosullariPage() {
             Aşağıdaki durumlarda hesabınız uyarısız askıya alınabilir veya kalıcı olarak kapatılabilir:
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li>Bu Kullanım Koşulları'nın ihlali</li>
+            <li>Bu Kullanım Koşulları&apos;nın ihlali</li>
             <li>Sahte yorum veya çoklu hesap tespiti</li>
             <li>Platforma veya diğer kullanıcılara zarar verme girişimi</li>
             <li>Uzun süreli pasif hesap (24 ay boyunca hiç giriş yapılmaması)</li>
@@ -144,7 +144,7 @@ export default function KullanimKosullariPage() {
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mb-3">10. Takas İlanları ve Kullanıcılar Arası İletişim</h2>
           <p>
-            Platform, kullanıcıların araçlarını "Takasa Açık" olarak işaretleyip birbirleriyle
+            Platform, kullanıcıların araçlarını &quot;Takasa Açık&quot; olarak işaretleyip birbirleriyle
             platform içi mesajlaşma yoluyla iletişime geçmesine imkan tanır. Bu alan yalnızca bir
             iletişim aracıdır; fikape.com taraflar arasında kurulan hiçbir anlaşmanın, sözlü veya
             yazılı görüşmenin tarafı değildir ve bunların doğruluğu, güvenilirliği veya
@@ -153,8 +153,8 @@ export default function KullanimKosullariPage() {
           <p className="mt-2">
             İlan verirken paylaştığınız araç ve konum (il) bilgisinin doğruluğundan ve bu bilgileri
             paylaşma kararınızdan tamamen siz sorumlusunuz. Araç sahibi olmadığınız halde ilan
-            vermek Kullanım Koşulları'nın ihlalidir. Şüpheli veya kötü niyetli kullanıcı davranışını
-            bildirmek için mesajlaşma ekranındaki "Rapor Et" özelliğini kullanabilirsiniz; platform
+            vermek Kullanım Koşulları&apos;nın ihlalidir. Şüpheli veya kötü niyetli kullanıcı davranışını
+            bildirmek için mesajlaşma ekranındaki &quot;Rapor Et&quot; özelliğini kullanabilirsiniz; platform
             gerekli gördüğü durumlarda hesapları kısıtlama hakkını saklı tutar.
           </p>
         </section>

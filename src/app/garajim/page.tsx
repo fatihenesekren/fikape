@@ -223,7 +223,7 @@ export default async function GarajimPage() {
           <div className="text-4xl">🚗</div>
           <p className="font-semibold text-gray-800">Henüz araç eklemedin</p>
           <p className="text-sm text-gray-400">
-            Araç sayfasında "Bu araç benim" butonuna tıklayarak garajına ekleyebilirsin.
+            Araç sayfasında &quot;Bu araç benim&quot; butonuna tıklayarak garajına ekleyebilirsin.
           </p>
           <Link
             href="/"

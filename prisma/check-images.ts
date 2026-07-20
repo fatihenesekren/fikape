@@ -3,7 +3,7 @@ import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
-const prisma = new PrismaClient({ adapter } as any);
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   const products = await prisma.product.findMany({
@@ -33,4 +33,4 @@ async function main() {
 
 main()
   .catch(console.error)
-  .finally(() => (prisma as any).$disconnect());
+  .finally(() => prisma.$disconnect());

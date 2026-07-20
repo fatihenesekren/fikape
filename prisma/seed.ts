@@ -7,7 +7,7 @@ import {
 } from "../src/lib/vehicleTypes";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
-const prisma = new PrismaClient({ adapter } as any);
+const prisma = new PrismaClient({ adapter });
 
 const IMG = (file: string) =>
   `https://commons.wikimedia.org/wiki/Special:FilePath/${file}`;

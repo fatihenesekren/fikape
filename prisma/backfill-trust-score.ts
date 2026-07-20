@@ -11,7 +11,7 @@ import { calcTrustScore } from "../src/lib/trustScore";
 // trustScore dağılımı oluşur.
 async function main() {
   const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
-  const prisma = new PrismaClient({ adapter } as any);
+  const prisma = new PrismaClient({ adapter });
 
   const reviews = await prisma.review.findMany({
     where: { status: "PUBLISHED" },

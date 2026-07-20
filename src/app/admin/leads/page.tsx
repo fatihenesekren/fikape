@@ -37,7 +37,7 @@ export default async function AdminLeadsPage() {
       <div>
         <h1 className="text-xl font-black text-gray-900 mb-1">🛡️ Sigorta Talepleri</h1>
         <p className="text-sm text-gray-500 mb-6">
-          Garaj'dan gelen opt-in sigorta teklifi talepleri. Henüz aktif bir partner yok — bu liste ileride
+          Garaj&apos;dan gelen opt-in sigorta teklifi talepleri. Henüz aktif bir partner yok — bu liste ileride
           partnere manuel/toplu aktarılabilir.
         </p>
 
@@ -71,7 +71,7 @@ export default async function AdminLeadsPage() {
       <div>
         <h1 className="text-xl font-black text-gray-900 mb-1">🔧 Satış Anı Talepleri</h1>
         <p className="text-sm text-gray-500 mb-6">
-          "Sattım" formunu açarken gelen opt-in ekspertiz/hızlı teklif talepleri. Henüz aktif bir partner yok.
+          &quot;Sattım&quot; formunu açarken gelen opt-in ekspertiz/hızlı teklif talepleri. Henüz aktif bir partner yok.
         </p>
 
         {saleLeads.length === 0 ? (

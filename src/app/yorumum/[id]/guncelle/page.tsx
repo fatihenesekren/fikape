@@ -7,6 +7,10 @@ import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const metadata = { title: "Yorumu Güncelle — fikape" };
 
+function monthsSince(date: Date): number {
+  return Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24 * 30));
+}
+
 export default async function UpdateReviewPage({
   params,
 }: {
@@ -66,9 +70,7 @@ export default async function UpdateReviewPage({
 
   const vehicleName = `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`;
 
-  const monthsAgo = review.publishedAt
-    ? Math.floor((Date.now() - review.publishedAt.getTime()) / (1000 * 60 * 60 * 24 * 30))
-    : null;
+  const monthsAgo = review.publishedAt ? monthsSince(review.publishedAt) : null;
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">

@@ -4,6 +4,10 @@ import { hammingDistance, PHASH_DUPLICATE_THRESHOLD } from "@/lib/phash";
 
 export const metadata = { title: "Moderasyon — fikape admin" };
 
+function hoursAgo(hours: number): Date {
+  return new Date(Date.now() - hours * 60 * 60 * 1000);
+}
+
 export default async function ModerationPage() {
   const reviews = await prisma.review.findMany({
     // PENDING: yeni yorum. PUBLISHED + en az 1 PENDING foto: zaten yayınlanmış
@@ -101,7 +105,7 @@ export default async function ModerationPage() {
   // yorum gelirse (review bombing sinyali). 24 saatlik pencere, sabit eşik
   // (z-score/istatistiksel model için henüz yeterli veri hacmi yok).
   const RECENT_WINDOW_HOURS = 24;
-  const recentSince = new Date(Date.now() - RECENT_WINDOW_HOURS * 60 * 60 * 1000);
+  const recentSince = hoursAgo(RECENT_WINDOW_HOURS);
   const recentCounts = productIds.length
     ? await prisma.review.groupBy({
         by: ["productId"],

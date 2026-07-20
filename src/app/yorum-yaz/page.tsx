@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ReviewForm } from "./ReviewForm";
@@ -26,13 +27,13 @@ export default async function YorumYazPage({
           Araç öneriniz ve yorumunuz incelemeye alındı.
           Onaylandıktan sonra yayınlanacak ve size bildirim gönderilecek.
         </p>
-        <a
+        <Link
           href="/"
           className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white"
           style={{ background: "#111" }}
         >
           Ana sayfaya dön →
-        </a>
+        </Link>
       </div>
     );
   }

@@ -14,7 +14,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { put } from "@vercel/blob";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
-const prisma = new PrismaClient({ adapter } as any);
+const prisma = new PrismaClient({ adapter });
 
 // Yeni ürün görseli eklemek için buraya { slug, sourceUrl } ekle ve script'i çalıştır.
 const IMAGES: { slug: string; sourceUrl: string; overwrite?: boolean }[] = [

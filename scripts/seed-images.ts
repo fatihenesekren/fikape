@@ -10,7 +10,7 @@ import "dotenv/config";
 
 const prisma = new PrismaClient({
   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL! }),
-} as any) as PrismaClient;
+});
 
 async function main() {
   const products = await prisma.product.findMany({

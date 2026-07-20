@@ -22,7 +22,10 @@ export function InsuranceLeadCard({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // localStorage sunucuda yok — dismissed=true ile başlayıp (SSR/hydration'da
+    // gizli), gerçek değer sadece mount sonrası (tarayıcıya özel) okunuyor.
     if (typeof window === "undefined") return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDismissed(window.localStorage.getItem(storageKey) === "1");
   }, [storageKey]);
 

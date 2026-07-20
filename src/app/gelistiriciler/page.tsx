@@ -16,7 +16,7 @@ export default function DevelopersPage() {
         </Link>
       </div>
 
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">Geliştiriciler için Skor API'si</h1>
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">Geliştiriciler için Skor API&apos;si</h1>
       <p className="text-sm text-gray-500 mb-10">
         Bir aracın fikape kullanıcı yorumlarına dayalı FI·KA·PE skorunu kendi sitenizde
         göstermek için ücretsiz, salt-okunur API ve gömülebilir rozet görseli.
@@ -46,7 +46,7 @@ GET https://fikape.com/api/public/skor/&#123;arac-slug&#125;
           </pre>
           <p className="mt-2">
             Henüz yeterli yorumu olmayan araçlarda <code>score</code> alanı <code>null</code> döner,
-            <code> scoreLabel</code> "Veri birikiyor" gösterir — sahte/erken veri sunmamak için.
+            <code> scoreLabel</code> &quot;Veri birikiyor&quot; gösterir — sahte/erken veri sunmamak için.
           </p>
         </section>
 
@@ -66,8 +66,8 @@ GET https://fikape.com/api/public/skor/&#123;arac-slug&#125;
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Ücretsiz, API anahtarı gerekmez, dakikada 30 istek IP başına sınırı vardır.</li>
             <li>Rozeti veya veriyi kullanırken ilgili araç sayfasına link vermeniz gerekir (yukarıdaki örnekteki gibi).</li>
-            <li>Veri salt-okunur ve toplulaştırılmıştır; bireysel yorum içeriği API'de yer almaz.</li>
-            <li>fikape skoru hiçbir şekilde para karşılığı değiştirilemez — API'de gösterilen sayı, sitede gösterilenle her zaman birebir aynıdır.</li>
+            <li>Veri salt-okunur ve toplulaştırılmıştır; bireysel yorum içeriği API&apos;de yer almaz.</li>
+            <li>fikape skoru hiçbir şekilde para karşılığı değiştirilemez — API&apos;de gösterilen sayı, sitede gösterilenle her zaman birebir aynıdır.</li>
           </ul>
         </section>
       </div>

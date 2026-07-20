@@ -457,7 +457,11 @@ export function GarageAnimation({ userName: _userName }: { userName: string }) {
   const [isDay, setIsDay] = useState(false);
 
   useEffect(() => {
+    // Sunucu ve istemcinin ilk render'da aynı şeyi göstermesi için isDay=false
+    // (gece) ile başlıyor, gerçek saat sadece mount sonrası (tarayıcıya özel)
+    // hesaplanıp düzeltiliyor — hydration mismatch'i önlüyor.
     const h = new Date().getHours();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsDay(h >= 7 && h < 20);
   }, []);
 

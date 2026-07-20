@@ -22,7 +22,7 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (query.length < 2) { setResults([]); return; }
+    if (query.length < 2) return;
     const t = setTimeout(async () => {
       setLoading(true);
       try {

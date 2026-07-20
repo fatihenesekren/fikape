@@ -3,6 +3,10 @@ import { ScrollFadeRow } from "@/components/ScrollFadeRow";
 import { Avatar } from "@/components/Avatar";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
+function daysSince(date: Date): number {
+  return Math.floor((Date.now() - date.getTime()) / 86_400_000);
+}
+
 export async function RecentReviews() {
   const reviews = await prisma.review.findMany({
     where: { status: "PUBLISHED" },
@@ -29,9 +33,7 @@ export async function RecentReviews() {
           const scoreColor =
             overall >= 7.5 ? "#27500A" : overall >= 5 ? "#B45309" : "#991B1B";
 
-          const now = Date.now();
-          const createdMs = new Date(r.createdAt).getTime();
-          const days = Math.floor((now - createdMs) / 86_400_000);
+          const days = daysSince(new Date(r.createdAt));
           const timeLabel =
             days === 0 ? "bugün" : days === 1 ? "dün" : `${days} gün önce`;
 

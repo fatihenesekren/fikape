@@ -23,7 +23,7 @@ export default function GizlilikPage() {
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mb-3">1. Veri Sorumlusu</h2>
           <p>
-            Bu Gizlilik Politikası, <strong>fikape.com</strong> ("Platform", "biz") tarafından sunulan
+            Bu Gizlilik Politikası, <strong>fikape.com</strong> (&quot;Platform&quot;, &quot;biz&quot;) tarafından sunulan
             hizmetler kapsamında toplanan kişisel verilerin nasıl işlendiğini açıklamaktadır.
             Platform, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu
             sıfatıyla hareket etmektedir.
@@ -50,7 +50,7 @@ export default function GizlilikPage() {
           <p className="mb-2">Toplanan veriler aşağıdaki amaçlarla işlenmektedir:</p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Hesabınızın oluşturulması ve güvenliğinin sağlanması</li>
-            <li>E-posta doğrulama ve "doğrulanmış kullanıcı" rozetinin verilmesi</li>
+            <li>E-posta doğrulama ve &quot;doğrulanmış kullanıcı&quot; rozetinin verilmesi</li>
             <li>Yorumlarınızın platform üzerinde yayımlanması</li>
             <li>Spam ve sahte yorum tespiti ile içerik moderasyonu</li>
             <li>Platform kalitesinin iyileştirilmesi ve hataların giderilmesi</li>
@@ -63,7 +63,7 @@ export default function GizlilikPage() {
 
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mb-3">4. Hukuki Dayanak</h2>
-          <p className="mb-2">Kişisel verileriniz KVKK'nın 5. maddesi uyarınca aşağıdaki hukuki dayanaklar çerçevesinde işlenmektedir:</p>
+          <p className="mb-2">Kişisel verileriniz KVKK&apos;nın 5. maddesi uyarınca aşağıdaki hukuki dayanaklar çerçevesinde işlenmektedir:</p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li><strong>Sözleşmenin ifası:</strong> Hesap oluşturma ve hizmet sunumu</li>
             <li><strong>Açık rıza:</strong> E-posta doğrulama ve iletişim için</li>
@@ -91,7 +91,7 @@ export default function GizlilikPage() {
             <li><strong>Resend:</strong> Doğrulama e-postaları — GDPR uyumlu</li>
           </ul>
           <p className="mt-2 text-sm text-gray-500">
-            Bu hizmet sağlayıcılar yalnızca Platform'un işlevselliği için gerekli minimum veriyi işler
+            Bu hizmet sağlayıcılar yalnızca Platform&apos;un işlevselliği için gerekli minimum veriyi işler
             ve kendi gizlilik politikaları kapsamında hareket eder.
           </p>
         </section>
@@ -111,7 +111,7 @@ export default function GizlilikPage() {
 
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mb-3">8. KVKK Kapsamındaki Haklarınız</h2>
-          <p className="mb-2">KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p>
+          <p className="mb-2">KVKK&apos;nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
             <li>İşlenen verileriniz hakkında bilgi talep etme</li>
