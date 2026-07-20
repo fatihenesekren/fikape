@@ -4,6 +4,7 @@ import { FikapeScore } from "@/components/FikapeScore";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { isDomesticBrand } from "@/lib/domesticBrands";
 
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
@@ -72,11 +73,14 @@ export function VehicleCard({
   const typeLabel = bodyLabel ?? CATEGORY_LABELS[categorySlug] ?? categorySlug;
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
   const cleanModelName = stripModelGenRange(modelName);
+  const isDomestic = isDomesticBrand(brandName);
 
   return (
     <Link
       href={`/araclar/${slug}`}
-      className="group block bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+      className={`group block bg-white rounded-2xl border overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 ${
+        isDomestic ? "border-gray-100 border-l-[3px] border-l-[#E30A17]" : "border-gray-100"
+      }`}
     >
       {/* Görsel */}
       <div
@@ -153,8 +157,9 @@ export function VehicleCard({
 
       {/* Kart gövdesi */}
       <div className="px-4 pt-4 pb-4">
-        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">
+        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5 flex items-center gap-1">
           {brandName}
+          {isDomestic && <span aria-label="Yerli üretim">🇹🇷</span>}
         </div>
         <div className="text-base font-bold text-gray-900 leading-tight">
           {year && <span className="text-gray-400 font-medium mr-1">{year}</span>}
