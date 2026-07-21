@@ -8396,6 +8396,18 @@
           }
         },
         {
+          "name": "Excel (1991-1995)",
+          "versions": [
+            "1.5",
+            "Diğer"
+          ],
+          "trims": [
+            "LS",
+            "GLS",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Grandeur (1998-2005)",
           "versions": [
             "2.0i",
