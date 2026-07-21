@@ -25008,6 +25008,325 @@
           }
         },
         {
+          "name": "Avenger Street 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Boxer",
+          "versions": [
+            "100cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Chetak",
+          "versions": [
+            "Elektrikli",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Discover 125 ST",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Discover 150 F",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "F",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Discover 150 S",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dominar 400",
+          "versions": [
+            "400cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dominar 400 UG",
+          "versions": [
+            "400cc",
+            "Diğer"
+          ],
+          "trims": [
+            "UG",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dominar D 400",
+          "versions": [
+            "400cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar 180",
+          "versions": [
+            "180cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar 220",
+          "versions": [
+            "220cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar AS 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "AS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar AS 200",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "AS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar F 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "F",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar N 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "N",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar N 160",
+          "versions": [
+            "160cc",
+            "Diğer"
+          ],
+          "trims": [
+            "N",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar N 160 UG",
+          "versions": [
+            "160cc",
+            "Diğer"
+          ],
+          "trims": [
+            "N UG",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar N 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "N",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar NS 125 ABS",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "NS ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar NS 125 CBS",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "NS CBS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar NS 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "NS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar NS 160",
+          "versions": [
+            "160cc",
+            "Diğer"
+          ],
+          "trims": [
+            "NS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar NS 200",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "NS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar NS 200 ABS",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "NS ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar NS 200 UG",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "NS UG",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar NS 200 UG2",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "NS UG2",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar NS 400 Z",
+          "versions": [
+            "400cc",
+            "Diğer"
+          ],
+          "trims": [
+            "NS Z",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pulsar RS 200 UG",
+          "versions": [
+            "200cc",
+            "Diğer"
+          ],
+          "trims": [
+            "RS UG",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "V 15",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -25207,6 +25526,105 @@
           ]
         },
         {
+          "name": "125-S",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "BN 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "BN 302",
+          "versions": [
+            "302cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TNT 25",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TNT 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TNT 600",
+          "versions": [
+            "600cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TRK 502X",
+          "versions": [
+            "500cc",
+            "Diğer"
+          ],
+          "trims": [
+            "X",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "TRK 702X",
+          "versions": [
+            "700cc",
+            "Diğer"
+          ],
+          "trims": [
+            "X",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Zafferano",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -25277,6 +25695,72 @@
           "trims": [
             "Standart",
             "Factory",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Alp 4.0",
+          "versions": [
+            "400cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RR 250 2T Enduro Racing",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Racing",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RR 2T Enduro 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RR 300 2T Enduro Racing",
+          "versions": [
+            "300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Racing",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RR 4T 125 Enduro",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RR 4T Enduro 350",
+          "versions": [
+            "350cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -26523,6 +27007,61 @@
           ]
         },
         {
+          "name": "BX 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "BX 125 X",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "X",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Crossfire 125 XS",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "XS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Crossfire 500 XC",
+          "versions": [
+            "500cc",
+            "Diğer"
+          ],
+          "trims": [
+            "XC",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Felsberg 125 X",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "X",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -27369,6 +27908,80 @@
             "992cc 84 CV",
             "1078cc 95 CV",
             "S 95 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Panigale 899 / 959 (2014-2019)",
+          "versions": [
+            "899cc 148 CV",
+            "959cc 157 CV",
+            "959 Corsa 157 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Corsa",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Monster 1100 (2009-2013)",
+          "versions": [
+            "1100cc 95 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "S",
+            "Evo",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hypermotard 698 Mono",
+          "versions": [
+            "77 CV 659cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "RVE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hyperstrada",
+          "versions": [
+            "821cc 110 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Streetfighter 848 (2012-2015)",
+          "versions": [
+            "132 CV 849cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SuperSport (2017-)",
+          "versions": [
+            "113 CV 937cc",
+            "S 113 CV",
             "Diğer"
           ],
           "trims": [
@@ -34946,6 +35559,218 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "CFmoto",
+      "models": [
+        {
+          "name": "CF 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "150NK",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "250CL-X",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "250 Dual",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Dual",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "400NK",
+          "versions": [
+            "400cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "450CL-C",
+          "versions": [
+            "450cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "450MT",
+          "versions": [
+            "450cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "450NK",
+          "versions": [
+            "450cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "450SR",
+          "versions": [
+            "450cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "650MT",
+          "versions": [
+            "650cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "650NK",
+          "versions": [
+            "650cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "650TK",
+          "versions": [
+            "650cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "700CL-X ADV",
+          "versions": [
+            "700cc",
+            "Diğer"
+          ],
+          "trims": [
+            "ADV",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "700CL-X Heritage",
+          "versions": [
+            "700cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Heritage",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "700CL-X Sport",
+          "versions": [
+            "700cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "700MT",
+          "versions": [
+            "700cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "800MT Sport",
+          "versions": [
+            "800cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "800MT Touring",
+          "versions": [
+            "800cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Touring",
             "Diğer"
           ]
         },
