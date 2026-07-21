@@ -24573,11 +24573,13 @@
           "trims": [
             "Standart",
             "T-15",
+            "Turkcub",
             "Diğer"
           ],
           "trimsByVersion": {
             "100cc 6 CV": [
               "Standart",
+              "Turkcub",
               "Diğer"
             ],
             "125cc 8 CV": [
@@ -24728,39 +24730,6 @@
           ]
         },
         {
-          "name": "AS 100-7 Turkcub",
-          "versions": [
-            "100cc 7 CV",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "AS 100-8",
-          "versions": [
-            "100cc 8 CV",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "AS 125",
-          "versions": [
-            "125cc 8 CV",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
           "name": "AS 125 T",
           "versions": [
             "125cc",
@@ -24768,17 +24737,6 @@
           ],
           "trims": [
             "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "AS 125 T-15",
-          "versions": [
-            "125cc",
-            "Diğer"
-          ],
-          "trims": [
-            "T-15",
             "Diğer"
           ]
         },
@@ -24939,6 +24897,7 @@
           ],
           "trims": [
             "Standart",
+            "UG",
             "Diğer"
           ]
         },
@@ -24964,6 +24923,7 @@
           ],
           "trims": [
             "Standart",
+            "UG",
             "Diğer"
           ]
         },
@@ -24976,6 +24936,8 @@
           ],
           "trims": [
             "Standart",
+            "UG",
+            "D",
             "Diğer"
           ]
         },
@@ -25074,61 +25036,6 @@
           ]
         },
         {
-          "name": "Dominar 400",
-          "versions": [
-            "400cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Dominar 400 UG",
-          "versions": [
-            "400cc",
-            "Diğer"
-          ],
-          "trims": [
-            "UG",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Dominar D 400",
-          "versions": [
-            "400cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Pulsar 180",
-          "versions": [
-            "180cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Pulsar 220",
-          "versions": [
-            "220cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
           "name": "Pulsar AS 150",
           "versions": [
             "150cc",
@@ -25165,39 +25072,6 @@
           "name": "Pulsar N 125",
           "versions": [
             "125cc",
-            "Diğer"
-          ],
-          "trims": [
-            "N",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Pulsar N 160",
-          "versions": [
-            "160cc",
-            "Diğer"
-          ],
-          "trims": [
-            "N",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Pulsar N 160 UG",
-          "versions": [
-            "160cc",
-            "Diğer"
-          ],
-          "trims": [
-            "N UG",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Pulsar N 250",
-          "versions": [
-            "250cc",
             "Diğer"
           ],
           "trims": [
@@ -25301,17 +25175,6 @@
           ],
           "trims": [
             "NS Z",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Pulsar RS 200 UG",
-          "versions": [
-            "200cc",
-            "Diğer"
-          ],
-          "trims": [
-            "RS UG",
             "Diğer"
           ]
         },
@@ -25592,28 +25455,6 @@
           ]
         },
         {
-          "name": "TRK 502X",
-          "versions": [
-            "500cc",
-            "Diğer"
-          ],
-          "trims": [
-            "X",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "TRK 702X",
-          "versions": [
-            "700cc",
-            "Diğer"
-          ],
-          "trims": [
-            "X",
-            "Diğer"
-          ]
-        },
-        {
           "name": "Zafferano",
           "versions": [
             "150cc",
@@ -25702,61 +25543,6 @@
           "name": "Alp 4.0",
           "versions": [
             "400cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "RR 250 2T Enduro Racing",
-          "versions": [
-            "250cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Racing",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "RR 2T Enduro 250",
-          "versions": [
-            "250cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "RR 300 2T Enduro Racing",
-          "versions": [
-            "300cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Racing",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "RR 4T 125 Enduro",
-          "versions": [
-            "125cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "RR 4T Enduro 350",
-          "versions": [
-            "350cc",
             "Diğer"
           ],
           "trims": [
@@ -26317,17 +26103,6 @@
           ]
         },
         {
-          "name": "F 650 GS",
-          "versions": [
-            "652cc 48 CV",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
           "name": "F 650 GS Dakar",
           "versions": [
             "652cc 48 CV",
@@ -26357,17 +26132,6 @@
           ],
           "trims": [
             "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "F 800 GS Adventure",
-          "versions": [
-            "85 CV 798cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Adventure",
             "Diğer"
           ]
         },
@@ -26555,17 +26319,6 @@
           ],
           "trims": [
             "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "K 1600 GTL Exclusive",
-          "versions": [
-            "160 CV 1649cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Exclusive",
             "Diğer"
           ]
         },
@@ -26797,17 +26550,6 @@
           ],
           "trims": [
             "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "R 1250 GS Adventure",
-          "versions": [
-            "136 CV 1254cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Adventure",
             "Diğer"
           ]
         },
