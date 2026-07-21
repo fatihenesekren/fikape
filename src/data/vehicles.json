@@ -23393,11 +23393,13 @@
           "versions": [
             "100 CV 659cc",
             "Extrema 100 CV",
+            "Factory 100 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Extrema",
+            "Factory",
             "Diğer"
           ],
           "trimsByVersion": {
@@ -23407,6 +23409,10 @@
             ],
             "Extrema 100 CV": [
               "Extrema",
+              "Diğer"
+            ],
+            "Factory 100 CV": [
+              "Factory",
               "Diğer"
             ]
           }
@@ -23611,6 +23617,136 @@
           "trims": [
             "Standart",
             "GT ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SR 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RS 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SR GT",
+          "versions": [
+            "125cc",
+            "200cc",
+            "400cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tuono 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Caponord",
+          "versions": [
+            "1000 ETV",
+            "1200",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "Rally",
+            "Travel Pack",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pegaso 650",
+          "versions": [
+            "650cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SR Max 300",
+          "versions": [
+            "300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SRV 850",
+          "versions": [
+            "850cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ABS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tuono 1000R",
+          "versions": [
+            "1000cc R",
+            "1000cc RF",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "RF",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Atlantic 500",
+          "versions": [
+            "500cc Sprint",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RXV 4.5",
+          "versions": [
+            "450cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
