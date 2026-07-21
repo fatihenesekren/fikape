@@ -24717,6 +24717,193 @@
           ]
         },
         {
+          "name": "Armada 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 100-7 Turkcub",
+          "versions": [
+            "100cc 7 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 100-8",
+          "versions": [
+            "100cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 125",
+          "versions": [
+            "125cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 125 T",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 125 T-15",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "T-15",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 150-12",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 150 T1",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "T1",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 150 T 19 A",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AS 150 T 5A",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Elegant 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Hero 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Legent 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Pars 250",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Quswa 125",
+          "versions": [
+            "125cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Shark 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Swift 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -25587,6 +25774,666 @@
           ],
           "trims": [
             "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C 400 GT",
+          "versions": [
+            "34 CV 350cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C 600 Sport",
+          "versions": [
+            "60 CV 647cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C 650 GT",
+          "versions": [
+            "60 CV 647cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C 650 Sport",
+          "versions": [
+            "60 CV 647cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 650 CS",
+          "versions": [
+            "652cc 48 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 650 GS",
+          "versions": [
+            "652cc 48 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 650 GS Dakar",
+          "versions": [
+            "652cc 48 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Dakar",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 700 GS",
+          "versions": [
+            "75 CV 798cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 750 GS",
+          "versions": [
+            "77 CV 853cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 800 GS Adventure",
+          "versions": [
+            "85 CV 798cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Adventure",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 800 GT",
+          "versions": [
+            "90 CV 798cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 800 S",
+          "versions": [
+            "85 CV 798cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 800 ST",
+          "versions": [
+            "85 CV 798cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 900 GS",
+          "versions": [
+            "105 CV 895cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 900 GS Adventure",
+          "versions": [
+            "105 CV 895cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Adventure",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "G 650 GS",
+          "versions": [
+            "48 CV 652cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "G 650 X Country",
+          "versions": [
+            "53 CV 652cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K1",
+          "versions": [
+            "100 CV 987cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1100 LT",
+          "versions": [
+            "100 CV 1092cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1200 GT",
+          "versions": [
+            "152 CV 1157cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1200 LT",
+          "versions": [
+            "98 CV 1171cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1200 R",
+          "versions": [
+            "163 CV 1157cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1200 S",
+          "versions": [
+            "167 CV 1157cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1300 GT",
+          "versions": [
+            "160 CV 1293cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1300 R",
+          "versions": [
+            "173 CV 1293cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1600 Bagger",
+          "versions": [
+            "160 CV 1649cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1600 Grand America",
+          "versions": [
+            "160 CV 1649cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1600 GTL Exclusive",
+          "versions": [
+            "160 CV 1649cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Exclusive",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M 1000 R",
+          "versions": [
+            "210 CV 999cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "M 1000 XR",
+          "versions": [
+            "201 CV 999cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 12",
+          "versions": [
+            "95 CV 1170cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 12 GS",
+          "versions": [
+            "95 CV 1170cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 18",
+          "versions": [
+            "91 CV 1802cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 60-6",
+          "versions": [
+            "30 CV 599cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 60-7",
+          "versions": [
+            "40 CV 599cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 65",
+          "versions": [
+            "27 CV 650cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 80",
+          "versions": [
+            "50 CV 798cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 80 GS",
+          "versions": [
+            "50 CV 798cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 800 RT",
+          "versions": [
+            "87 CV 798cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 850 GS",
+          "versions": [
+            "67 CV 848cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1100 R",
+          "versions": [
+            "80 CV 1085cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1100 RT",
+          "versions": [
+            "80 CV 1085cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1100 S",
+          "versions": [
+            "98 CV 1085cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1150 R",
+          "versions": [
+            "85 CV 1130cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1150 RT",
+          "versions": [
+            "95 CV 1130cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1200 C",
+          "versions": [
+            "61 CV 1170cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1200 CL",
+          "versions": [
+            "61 CV 1170cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1200 RS",
+          "versions": [
+            "125 CV 1170cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1200 ST",
+          "versions": [
+            "98 CV 1170cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1250 GS Adventure",
+          "versions": [
+            "136 CV 1254cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Adventure",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1250 RS",
+          "versions": [
+            "136 CV 1254cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1300 GS",
+          "versions": [
+            "145 CV 1300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1300 GS Adventure",
+          "versions": [
+            "145 CV 1300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Adventure",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1300 R",
+          "versions": [
+            "145 CV 1300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1300 RS",
+          "versions": [
+            "145 CV 1300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1300 RT",
+          "versions": [
+            "145 CV 1300cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R nineT Pure",
+          "versions": [
+            "110 CV 1170cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Pure",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R nineT Scrambler",
+          "versions": [
+            "110 CV 1170cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Scrambler",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R nineT Urban G/S",
+          "versions": [
+            "110 CV 1170cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Urban G/S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "S 1000 RR HP Motosport",
+          "versions": [
+            "210 CV 1000cc",
+            "Diğer"
+          ],
+          "trims": [
+            "HP Motosport",
             "Diğer"
           ]
         },
