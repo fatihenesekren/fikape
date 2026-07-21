@@ -78,10 +78,18 @@ export function VehicleCard({
   return (
     <Link
       href={`/araclar/${slug}`}
-      className={`group block bg-white rounded-2xl border overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 ${
-        isDomestic ? "border-gray-100 border-l-[3px] border-l-[#E30A17]" : "border-gray-100"
-      }`}
+      className={`group relative block bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200`}
     >
+      {isDomestic && (
+        <div
+          aria-hidden="true"
+          className="absolute left-0 top-0 bottom-0 w-[3px] z-10"
+          style={{
+            background:
+              "linear-gradient(to bottom, #E30A17 0, #E30A17 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #E30A17 66.66%, #E30A17 100%)",
+          }}
+        />
+      )}
       {/* Görsel */}
       <div
         className="relative w-full h-44 flex items-center justify-center overflow-hidden border-b border-gray-100"
