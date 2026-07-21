@@ -6,6 +6,26 @@ import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
 
+function TrFlagIcon() {
+  return (
+    <svg
+      viewBox="0 0 30 20"
+      width="14"
+      height="9.5"
+      role="img"
+      aria-label="Yerli üretim"
+    >
+      <rect width="30" height="20" fill="#E30A17" />
+      <circle cx="12" cy="10" r="5.5" fill="#fff" />
+      <circle cx="13.5" cy="10" r="4.4" fill="#E30A17" />
+      <polygon
+        fill="#fff"
+        points="18.5,10 20.9,10.75 19.45,8.73 19.45,11.27 20.9,9.25"
+      />
+    </svg>
+  );
+}
+
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
   mpv: "MPV", coupe: "Coupé", cabrio: "Cabrio",
@@ -167,7 +187,7 @@ export function VehicleCard({
       <div className="px-4 pt-4 pb-4">
         <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5 flex items-center gap-1">
           {brandName}
-          {isDomestic && <span aria-label="Yerli üretim">🇹🇷</span>}
+          {isDomestic && <TrFlagIcon />}
         </div>
         <div className="text-base font-bold text-gray-900 leading-tight">
           {year && <span className="text-gray-400 font-medium mr-1">{year}</span>}
