@@ -27340,6 +27340,61 @@
           ]
         },
         {
+          "name": "CF 150",
+          "versions": [
+            "150cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "250CL-X",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "250 Dual",
+          "versions": [
+            "250cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Dual",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "650TK",
+          "versions": [
+            "650cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "700MT",
+          "versions": [
+            "700cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -35559,218 +35614,6 @@
           ],
           "trims": [
             "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Diğer",
-          "versions": [
-            "Diğer"
-          ],
-          "trims": [
-            "Diğer"
-          ]
-        }
-      ]
-    },
-    {
-      "make": "CFmoto",
-      "models": [
-        {
-          "name": "CF 150",
-          "versions": [
-            "150cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "150NK",
-          "versions": [
-            "150cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "250CL-X",
-          "versions": [
-            "250cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "250 Dual",
-          "versions": [
-            "250cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Dual",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "400NK",
-          "versions": [
-            "400cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "450CL-C",
-          "versions": [
-            "450cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "450MT",
-          "versions": [
-            "450cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "450NK",
-          "versions": [
-            "450cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "450SR",
-          "versions": [
-            "450cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "650MT",
-          "versions": [
-            "650cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "650NK",
-          "versions": [
-            "650cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "650TK",
-          "versions": [
-            "650cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "700CL-X ADV",
-          "versions": [
-            "700cc",
-            "Diğer"
-          ],
-          "trims": [
-            "ADV",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "700CL-X Heritage",
-          "versions": [
-            "700cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Heritage",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "700CL-X Sport",
-          "versions": [
-            "700cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Sport",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "700MT",
-          "versions": [
-            "700cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "800MT Sport",
-          "versions": [
-            "800cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Sport",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "800MT Touring",
-          "versions": [
-            "800cc",
-            "Diğer"
-          ],
-          "trims": [
-            "Touring",
             "Diğer"
           ]
         },
