@@ -29043,6 +29043,7 @@
           ],
           "trims": [
             "Standart",
+            "Special Edition",
             "Diğer"
           ]
         },
@@ -29089,6 +29090,7 @@
           "trims": [
             "Standart",
             "DLX",
+            "DX",
             "Diğer"
           ],
           "trimsByVersion": {
@@ -29121,6 +29123,7 @@
           ],
           "trims": [
             "Standart",
+            "SE",
             "Diğer"
           ]
         },
@@ -29241,6 +29244,387 @@
               "Diğer"
             ]
           }
+        },
+        {
+          "name": "Dio",
+          "versions": [
+            "50cc 4 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Activa 100",
+          "versions": [
+            "100cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Activa 110",
+          "versions": [
+            "110cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Activa 125",
+          "versions": [
+            "125cc 9 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Activa S",
+          "versions": [
+            "125cc 9 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "S",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CBF 150",
+          "versions": [
+            "150cc 15 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CB 250 R",
+          "versions": [
+            "250cc 27 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CBR 250 R",
+          "versions": [
+            "250cc 26 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "PCX 150",
+          "versions": [
+            "150cc 14 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Spacy 110",
+          "versions": [
+            "110cc 8 CV",
+            "Alpha 110cc",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Alpha",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Forza 750",
+          "versions": [
+            "750cc 58 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CBF 1000",
+          "versions": [
+            "250cc",
+            "500cc",
+            "600cc",
+            "1000cc 98 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NSS 300 Forza",
+          "versions": [
+            "300cc 25 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XL 1000V Varadero",
+          "versions": [
+            "1000cc 95 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CB 125E",
+          "versions": [
+            "125cc 10 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ACE",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CHS 125 Fizy",
+          "versions": [
+            "125cc 10 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "MSX 125",
+          "versions": [
+            "125cc 10 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CBR 600 F",
+          "versions": [
+            "600cc 100 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "FA",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CBR 650 F",
+          "versions": [
+            "650cc 87 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "FA",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "VFR 800 X Crossrunner",
+          "versions": [
+            "800cc 106 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NC 750D Integra",
+          "versions": [
+            "700cc 54 CV",
+            "750cc 58 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "NC 750 S",
+          "versions": [
+            "700cc 54 CV",
+            "750cc 58 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "DCT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "VT 750 C Shadow",
+          "versions": [
+            "750cc 45 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "ACE",
+            "Black Widow",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XL 650 Transalp",
+          "versions": [
+            "600cc 50 CV",
+            "650cc 52 CV",
+            "700cc 60 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Today 50",
+          "versions": [
+            "50cc 4 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Kinetic DX",
+          "versions": [
+            "100cc 8 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Innova 125",
+          "versions": [
+            "125cc 9 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "PS 150i",
+          "versions": [
+            "150cc 13 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CGL 125",
+          "versions": [
+            "125cc 10 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CBR 1100 XX",
+          "versions": [
+            "1100cc 164 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "VFR 1200 F",
+          "versions": [
+            "1200cc 173 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "CrossTourer",
+            "CrossTourer DCT",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ST 1300 Pan European",
+          "versions": [
+            "1100cc 100 CV",
+            "1300cc 125 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C125 Super Cub",
+          "versions": [
+            "125cc 10 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
         },
         {
           "name": "Diğer",
