@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { validateDetailShort } from "@/lib/reviewValidation";
 import { calcOverall } from "@/lib/fikape";
 import { recordScoreSnapshot } from "@/lib/security";
-import { computePHash } from "@/lib/phash";
+import { computePHash, findDuplicatePair } from "@/lib/phash";
 
 const MAX_PHOTOS = 5;
 
@@ -53,7 +53,7 @@ export async function PATCH(
       userId: true, status: true, extendedData: true, editCount: true,
       scoreFiyat: true, scoreKalite: true, scorePerformans: true,
       productId: true, trustScore: true,
-      photos: { select: { id: true }, where: { status: { not: "REJECTED" } } },
+      photos: { select: { id: true, phash: true }, where: { status: { not: "REJECTED" } } },
     },
   });
 
@@ -70,6 +70,28 @@ export async function PATCH(
   const remainingExistingCount = review.photos.length - validRemoveIds.length;
   if (remainingExistingCount + newPhotoUrls.length > MAX_PHOTOS) {
     return NextResponse.json({ error: `En fazla ${MAX_PHOTOS} fotoğraf ekleyebilirsiniz.` }, { status: 400 });
+  }
+
+  // pHash hesaplama best-effort — başarısız olursa fotoğraf yine de kaydedilir, sadece tekrar tespiti atlanır
+  const newPhashes = await Promise.all(
+    newPhotoUrls.map(async (url) => {
+      try {
+        const res = await fetch(url);
+        const buffer = Buffer.from(await res.arrayBuffer());
+        return await computePHash(buffer);
+      } catch {
+        return null;
+      }
+    })
+  );
+  const remainingExistingPhashes = review.photos
+    .filter((p) => !validRemoveIds.includes(p.id))
+    .map((p) => p.phash);
+  if (findDuplicatePair([...remainingExistingPhashes, ...newPhashes])) {
+    return NextResponse.json(
+      { error: "Aynı fotoğrafı birden fazla kez eklemişsin gibi görünüyor, lütfen farklı fotoğraflar seç." },
+      { status: 400 }
+    );
   }
 
   const incomingExtended = (extendedData && typeof extendedData === "object") ? extendedData as Record<string, unknown> : {};
@@ -122,19 +144,6 @@ export async function PATCH(
   ]);
 
   if (newPhotoUrls.length > 0) {
-    // pHash hesaplama best-effort — başarısız olursa fotoğraf yine de kaydedilir
-    const phashes = await Promise.all(
-      newPhotoUrls.map(async (url) => {
-        try {
-          const res = await fetch(url);
-          const buffer = Buffer.from(await res.arrayBuffer());
-          return await computePHash(buffer);
-        } catch {
-          return null;
-        }
-      })
-    );
-
     await prisma.productPhoto.createMany({
       data: newPhotoUrls.map((url, idx) => ({
         productId: review.productId,
@@ -143,7 +152,7 @@ export async function PATCH(
         url,
         status: "PENDING",
         order: remainingExistingCount + idx,
-        phash: phashes[idx],
+        phash: newPhashes[idx],
       })),
     });
   }

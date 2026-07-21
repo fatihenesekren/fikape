@@ -39,3 +39,18 @@ export function hammingDistance(hexA: string, hexB: string): number {
 
 // 64 bitten <=6 farklı bit → görsel olarak neredeyse aynı kabul edilir
 export const PHASH_DUPLICATE_THRESHOLD = 6;
+
+// Bir yorumun kendi fotoğrafları arasında (veya düzenlemede mevcut+yeni fotoğraflar
+// arasında) neredeyse aynı ilk çifti bulur — null (hash hesaplanamamış) atlanır.
+export function findDuplicatePair(hashes: (string | null)[]): [number, number] | null {
+  for (let i = 0; i < hashes.length; i++) {
+    if (!hashes[i]) continue;
+    for (let j = i + 1; j < hashes.length; j++) {
+      if (!hashes[j]) continue;
+      if (hammingDistance(hashes[i]!, hashes[j]!) <= PHASH_DUPLICATE_THRESHOLD) {
+        return [i, j];
+      }
+    }
+  }
+  return null;
+}

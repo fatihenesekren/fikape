@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import sharp from "sharp";
-import { computePHash, hammingDistance, PHASH_DUPLICATE_THRESHOLD } from "./phash";
+import { computePHash, hammingDistance, findDuplicatePair, PHASH_DUPLICATE_THRESHOLD } from "./phash";
 
 describe("hammingDistance", () => {
   it("aynı hash için 0 döner", () => {
@@ -57,5 +57,24 @@ describe("computePHash", () => {
     const hashA = await computePHash(solidBlack);
     const hashB = await computePHash(gradient);
     expect(hammingDistance(hashA, hashB)).toBeGreaterThan(0);
+  });
+});
+
+describe("findDuplicatePair", () => {
+  it("aynı hash'ten iki tane varsa ilk çifti döner", () => {
+    expect(findDuplicatePair(["abc", "def", "abc"])).toEqual([0, 2]);
+  });
+
+  it("hiç yakın çift yoksa null döner", () => {
+    expect(findDuplicatePair(["0000000000000000", "ffffffffffffffff"])).toBeNull();
+  });
+
+  it("null (hesaplanamamış) hash'leri atlar", () => {
+    expect(findDuplicatePair([null, "abc", null, "abc"])).toEqual([1, 3]);
+  });
+
+  it("boş veya tek elemanlı listede null döner", () => {
+    expect(findDuplicatePair([])).toBeNull();
+    expect(findDuplicatePair(["abc"])).toBeNull();
   });
 });

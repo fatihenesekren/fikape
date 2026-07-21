@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { validateDetailShort } from "@/lib/reviewValidation";
 import { hashRequestContext, recordScoreSnapshot } from "@/lib/security";
-import { computePHash } from "@/lib/phash";
+import { computePHash, findDuplicatePair } from "@/lib/phash";
 import { reviewCreateSchema, formatZodError } from "@/lib/schemas";
 import { calcTrustScore } from "@/lib/trustScore";
 
@@ -95,6 +95,26 @@ export async function POST(req: Request) {
 
   const trustScore = calcTrustScore({ trustLevel: user.trustLevel, garajLinked: !!garajEntry });
 
+  // pHash hesaplama best-effort — başarısız olursa fotoğraf yine de kaydedilir, sadece tekrar tespiti atlanır
+  const urls: string[] = photoUrls ?? [];
+  const phashes = await Promise.all(
+    urls.map(async (url) => {
+      try {
+        const res = await fetch(url);
+        const buffer = Buffer.from(await res.arrayBuffer());
+        return await computePHash(buffer);
+      } catch {
+        return null;
+      }
+    })
+  );
+  if (findDuplicatePair(phashes)) {
+    return NextResponse.json(
+      { error: "Aynı fotoğrafı birden fazla kez eklemişsin gibi görünüyor, lütfen farklı fotoğraflar seç." },
+      { status: 400 }
+    );
+  }
+
   const review = await prisma.review.create({
     data: {
       userId,
@@ -126,21 +146,7 @@ export async function POST(req: Request) {
   });
 
   // Fotoğraflar varsa ProductPhoto kaydı oluştur (PENDING — admin onaylar)
-  const urls: string[] = photoUrls ?? [];
   if (urls.length > 0) {
-    // pHash hesaplama best-effort — başarısız olursa fotoğraf yine de kaydedilir, sadece tekrar tespiti atlanır
-    const phashes = await Promise.all(
-      urls.map(async (url) => {
-        try {
-          const res = await fetch(url);
-          const buffer = Buffer.from(await res.arrayBuffer());
-          return await computePHash(buffer);
-        } catch {
-          return null;
-        }
-      })
-    );
-
     await prisma.productPhoto.createMany({
       data: urls.map((url, idx) => ({
         productId: product.id,
