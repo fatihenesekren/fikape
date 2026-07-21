@@ -8396,6 +8396,18 @@
           }
         },
         {
+          "name": "Genesis Coupe (2008-2016)",
+          "versions": [
+            "2.0L TCI",
+            "3.8",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Terracan (2001-2007)",
           "versions": [
             "2.5 TD 100",
