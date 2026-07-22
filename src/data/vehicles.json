@@ -660,6 +660,28 @@
       ]
     },
     {
+      "make": "Arora",
+      "models": [
+        {
+          "name": "S1",
+          "versions": [
+            "2kW 72V58Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "2kW 72V58Ah": [
+              "Standart",
+              "Diğer"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "make": "Aston Martin",
       "models": [
         {
