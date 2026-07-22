@@ -173,7 +173,7 @@ export function VehicleCard({
           <div
             className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
             style={{
-              height: "26%",
+              height: "10%",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
               maskImage: "linear-gradient(to bottom, transparent 0%, black 50%)",
