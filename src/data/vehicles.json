@@ -5043,12 +5043,16 @@
             "1.6 MPI 85",
             "1.5 dCi 75",
             "1.5 dCi 90",
+            "1.2 MCV",
+            "1.5 dCi MCV",
+            "1.6 MCV",
             "Diğer"
           ],
           "trims": [
             "Access",
             "Ambiance",
             "Laureate",
+            "Black Line",
             "Diğer"
           ]
         },
@@ -5087,10 +5091,12 @@
           "name": "Sandero (2012-2020)",
           "versions": [
             "0.9 TCe 90",
+            "0.9 ECO-G",
             "1.0 SCe 75",
             "1.6 MPI 85",
             "1.5 dCi 75",
             "1.5 dCi 90",
+            "1.5 BlueDCI",
             "RS 1.6 T 115",
             "Diğer"
           ],
@@ -5187,10 +5193,10 @@
         {
           "name": "Lodgy",
           "versions": [
-            "1.6 SCe 100",
-            "1.5 dCi 95",
-            "1.5 dCi 115",
-            "ECO-G 110 LPG",
+            "1.3 TCe",
+            "1.5 dCi",
+            "1.5 BlueDCI",
+            "1.6 ECO-G",
             "Diğer"
           ],
           "trims": [
@@ -5206,6 +5212,7 @@
             "TCe 110 5 Koltuk",
             "TCe 110 7 Koltuk",
             "TCe 100 ECO-G LPG",
+            "Hybrid 140",
             "Diğer"
           ],
           "trims": [
@@ -5259,6 +5266,31 @@
             "Journey",
             "Diğer"
           ]
+        },
+        {
+          "name": "Solenza",
+          "versions": [
+            "1.4",
+            "Diğer"
+          ],
+          "trims": [
+            "Clima",
+            "Comfort",
+            "Prima",
+            "Rapsodie",
+            "Scala",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "1.4": [
+              "Clima",
+              "Comfort",
+              "Prima",
+              "Rapsodie",
+              "Scala",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "Diğer",
