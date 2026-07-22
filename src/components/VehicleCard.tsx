@@ -6,7 +6,7 @@ import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
 
-function TrFlagIcon() {
+export function TrFlagIcon() {
   return (
     <svg
       viewBox="0 0 30 20"

@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
+import { TrFlagIcon } from "@/components/VehicleCard";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { isDomesticBrand } from "@/lib/domesticBrands";
 
 type TopProduct = {
   slug: string;
@@ -100,10 +102,11 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
         {products.map((p, idx) => {
           const isActive = active === idx + 1;
           const badge = RANK_BADGES[idx];
+          const isDomestic = isDomesticBrand(p.brandName);
           return (
             <div
               key={p.slug}
-              className="w-72 bg-white rounded-2xl shadow-2xl p-5 relative"
+              className="w-72 bg-white rounded-2xl shadow-2xl p-5 relative overflow-hidden"
               style={{
                 gridArea: "1 / 1",
                 transition: TRANSITION,
@@ -113,6 +116,16 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
                 zIndex: isActive ? 1 : 0,
               }}
             >
+              {isDomestic && (
+                <div
+                  aria-hidden="true"
+                  className="absolute left-0 top-0 bottom-0 w-[3px] z-10"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, #E30A17 0, #E30A17 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #E30A17 66.66%, #E30A17 100%)",
+                  }}
+                />
+              )}
               {badge && (
                 <div
                   className="absolute top-3 left-3 w-7 h-7 rounded-full bg-white border border-gray-200 flex items-center justify-center text-sm z-10"
@@ -134,8 +147,9 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
                 </div>
               )}
 
-              <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">
+              <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5 flex items-center gap-1">
                 {p.brandName}
+                {isDomestic && <TrFlagIcon />}
               </div>
               <div className="mb-3">
                 <div className="text-base font-bold text-gray-900">
