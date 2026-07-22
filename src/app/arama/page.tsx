@@ -140,7 +140,6 @@ async function SearchResults({ query }: { query: string }) {
               fuelType={String(attrs.fuel_type ?? "")}
               bodyType={String(attrs.body_type ?? "")}
               scores={score?.scores ?? null}
-              totalReviews={score?.count ?? 0}
               imageUrl={imageUrl}
             />
           );

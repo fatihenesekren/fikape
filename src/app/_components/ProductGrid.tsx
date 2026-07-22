@@ -186,7 +186,6 @@ export async function ProductGrid({
                 karavanType={attrs.karavan_type ? String(attrs.karavan_type) : null}
                 motorWatt={attrs.motor_watt != null ? Number(attrs.motor_watt) : null}
                 scores={score?.scores ?? null}
-                totalReviews={score?.count ?? 0}
                 imageUrl={imageUrl}
               />
             </div>

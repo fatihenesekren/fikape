@@ -74,14 +74,13 @@ interface Props {
   karavanType?: string | null;
   motorWatt?: number | null;
   scores: FikapeScores | null;
-  totalReviews: number;
   imageUrl?: string | null;
 }
 
 export function VehicleCard({
   slug, brandName, modelName, trimName, year,
   categorySlug, fuelType, bodyType, motorType, karavanType, motorWatt,
-  scores, totalReviews, imageUrl,
+  scores, imageUrl,
 }: Props) {
   const bodyLabel = BODY_LABELS[bodyType];
   const placeholderIcon = bodyLabel
@@ -160,13 +159,6 @@ export function VehicleCard({
             {FUEL_ICONS[fuelType]} {FUEL_LABELS[fuelType] ?? fuelType}
           </span>
         ) : null}
-
-        {/* Sağ alt — toplam yorum */}
-        {totalReviews > 0 && (
-          <span className="absolute bottom-3 right-3 text-xs font-medium px-2 py-0.5 rounded-full bg-black/60 text-white z-10">
-            {totalReviews} yorum
-          </span>
-        )}
 
         {/* Plaka blur — sadece kara araçlarında (e-scooter'da plaka yok) */}
         {imageUrl && !isScooter && (
