@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { NotificationList, type NotificationData } from "@/components/NotificationList";
+import { ScrollFadeBox } from "@/components/ScrollFadeBox";
 
 export function NotificationsSection({
   notifications,
@@ -31,7 +32,9 @@ export function NotificationsSection({
           </Link>
         )}
       </div>
-      <NotificationList notifications={notifications} dimUnread={!marked} />
+      <ScrollFadeBox itemCount={notifications.length} maxHeight={400}>
+        <NotificationList notifications={notifications} dimUnread={!marked} />
+      </ScrollFadeBox>
     </div>
   );
 }

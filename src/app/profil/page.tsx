@@ -14,6 +14,7 @@ import { DeleteReviewButton } from "@/components/DeleteReviewButton";
 import { InviteBox } from "./InviteBox";
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { ScrollFadeBox } from "@/components/ScrollFadeBox";
 
 export const metadata: Metadata = { title: "Profilim" };
 
@@ -197,6 +198,7 @@ export default async function ProfilPage() {
             Henüz yorum yazmadınız.
           </div>
         ) : (
+          <ScrollFadeBox itemCount={reviews.length} maxHeight={640}>
           <div className="space-y-3">
             {reviews.map((r) => {
               const attrs = r.product.attributes as Record<string, unknown>;
@@ -293,6 +295,7 @@ export default async function ProfilPage() {
               );
             })}
           </div>
+          </ScrollFadeBox>
         )}
       </div>
 
