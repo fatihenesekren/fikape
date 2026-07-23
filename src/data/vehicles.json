@@ -22889,19 +22889,52 @@
         {
           "name": "Amarok",
           "versions": [
-            "2.0 TDI 170 4Motion",
-            "3.0 TDI 240 4Motion",
-            "3.0 V6 TDI 272 4Motion",
-            "V8 3.0 V6 TDI 237 4Motion",
+            "2.0 TDI",
+            "2.0 Bi-TDI",
+            "3.0 TDI",
             "Diğer"
           ],
           "trims": [
+            "Trendline",
+            "Comfortline",
+            "Highline",
+            "Exclusive",
+            "Canyon",
+            "Aventura",
             "Life",
             "Style",
-            "Aventura",
+            "Style Plus",
             "PanAmericana",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "2.0 TDI": [
+              "Trendline",
+              "Comfortline",
+              "Highline",
+              "Life",
+              "Style",
+              "Style Plus",
+              "Diğer"
+            ],
+            "2.0 Bi-TDI": [
+              "Trendline",
+              "Highline",
+              "Exclusive",
+              "Canyon",
+              "Aventura",
+              "Diğer"
+            ],
+            "3.0 TDI": [
+              "Comfortline",
+              "Canyon",
+              "Highline",
+              "Aventura",
+              "PanAmericana",
+              "Style",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "Caddy",
