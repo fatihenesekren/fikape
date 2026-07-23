@@ -35,11 +35,13 @@ function pixelate(ctx: CanvasRenderingContext2D, r: Rect) {
 
 export function BlurEditor({
   photoId,
+  productSlug,
   url,
   onSave,
   onClose,
 }: {
-  photoId: number;
+  photoId?: number;
+  productSlug?: string;
   url: string;
   onSave: (newUrl: string) => void;
   onClose: () => void;
@@ -175,8 +177,17 @@ export function BlurEditor({
     );
     const fd = new FormData();
     fd.append("file", blob, "photo.jpg");
-    fd.append("photoId", String(photoId));
-    const res = await fetch("/api/admin/photos/blur", { method: "POST", body: fd });
+    let endpoint: string;
+    if (photoId != null) {
+      fd.append("photoId", String(photoId));
+      endpoint = "/api/admin/photos/blur";
+    } else if (productSlug) {
+      endpoint = `/api/admin/products/${encodeURIComponent(productSlug)}/image/blur`;
+    } else {
+      setSaving(false);
+      return;
+    }
+    const res = await fetch(endpoint, { method: "POST", body: fd });
     if (res.ok) {
       const { url: newUrl } = await res.json() as { url: string };
       onSave(newUrl);

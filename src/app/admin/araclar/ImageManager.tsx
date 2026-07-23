@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { BlurEditor } from "../yorumlar/BlurEditor";
 
 interface Product {
   slug: string;
@@ -18,6 +19,7 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
   const fileRefs = useRef<Record<string, HTMLInputElement | null>>({});
   const [query, setQuery] = useState("");
   const [onlyMissing, setOnlyMissing] = useState(initialOnlyMissing);
+  const [blurringSlug, setBlurringSlug] = useState<string | null>(null);
 
   const q = query.trim().toLocaleLowerCase("tr-TR");
   const filtered = products.filter((p) => {
@@ -68,6 +70,18 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
 
   return (
     <div className="space-y-4">
+      {blurringSlug && states[blurringSlug]?.url && (
+        <BlurEditor
+          productSlug={blurringSlug}
+          url={states[blurringSlug]!.url!}
+          onSave={(newUrl) => {
+            setStates((s) => ({ ...s, [blurringSlug]: { ...s[blurringSlug], loading: false, url: newUrl } }));
+            setUrlInputs((u) => ({ ...u, [blurringSlug]: newUrl }));
+            setBlurringSlug(null);
+          }}
+          onClose={() => setBlurringSlug(null)}
+        />
+      )}
       <div className="sticky top-0 z-10 bg-gray-50/95 backdrop-blur-sm py-3 -mx-1 px-1 flex items-center gap-3">
         <div className="relative flex-1">
           <input
@@ -167,6 +181,15 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
                   >
                     Dosya Yükle
                   </button>
+                  {st.url && (
+                    <button
+                      onClick={() => setBlurringSlug(product.slug)}
+                      disabled={st.loading}
+                      className="text-xs px-3 py-1.5 rounded-lg border border-gray-200 text-gray-600 font-medium disabled:opacity-40 hover:border-gray-400 transition-colors"
+                    >
+                      Bulanıklaştır
+                    </button>
+                  )}
                   <span className="text-xs text-gray-400">JPG/PNG/WebP, maks 5MB</span>
                 </div>
 
