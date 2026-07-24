@@ -38572,17 +38572,19 @@
         }
       ]
     },
-    {
+        {
       "make": "Dualtron",
       "models": [
         {
           "name": "Mini",
           "versions": [
             "600W 10.5Ah 25km/h",
+            "Special 600W",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Special",
             "Diğer"
           ]
         },
@@ -38602,11 +38604,13 @@
           "versions": [
             "1600W Çift 28.9Ah",
             "Pro 1600W",
+            "Limited 1600W",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Pro",
+            "Limited",
             "Diğer"
           ],
           "trimsByVersion": {
@@ -38617,6 +38621,10 @@
             "Pro 1600W": [
               "Pro",
               "Diğer"
+            ],
+            "Limited 1600W": [
+              "Limited",
+              "Diğer"
             ]
           }
         },
@@ -38625,11 +38633,13 @@
           "versions": [
             "5400W Çift 35Ah",
             "2 5400W",
+            "3 5400W",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "2",
+            "3",
             "Diğer"
           ]
         },
@@ -38638,11 +38648,13 @@
           "versions": [
             "6640W Çift 48Ah",
             "X 6640W",
+            "Limited 11500W",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "X",
+            "Limited",
             "Diğer"
           ]
         },
@@ -38663,10 +38675,12 @@
           "name": "X2",
           "versions": [
             "8300W Çift 72Ah",
+            "Limited 8300W",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Limited",
             "Diğer"
           ]
         },
@@ -38697,10 +38711,12 @@
           "name": "City",
           "versions": [
             "4000W Çift 25Ah",
+            "New 4000W",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "New",
             "Diğer"
           ]
         },
@@ -38709,11 +38725,13 @@
           "versions": [
             "4300W Çift 42Ah",
             "Luxury Plus 4300W",
+            "Limited 4300W",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Luxury Plus",
+            "Limited",
             "Diğer"
           ],
           "trimsByVersion": {
@@ -38724,6 +38742,10 @@
             "Luxury Plus 4300W": [
               "Luxury Plus",
               "Diğer"
+            ],
+            "Limited 4300W": [
+              "Limited",
+              "Diğer"
             ]
           }
         },
@@ -38731,6 +38753,134 @@
           "name": "Togo",
           "versions": [
             "1350W 12Ah 25km/h",
+            "Plus 1000W",
+            "Limited 1350W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Plus",
+            "Limited",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Achilleus",
+          "versions": [
+            "4648W Çift 60V",
+            "Limited 4648W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Limited",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "4648W Çift 60V": [
+              "Standart",
+              "Diğer"
+            ],
+            "Limited 4648W": [
+              "Limited",
+              "Diğer"
+            ]
+          }
+        },
+        {
+          "name": "Raptor",
+          "versions": [
+            "3000W Çift Hub Motor",
+            "2 3000W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "2",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Spider",
+          "versions": [
+            "Standart",
+            "2",
+            "2 Limited",
+            "Max",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "2",
+            "2 Limited",
+            "Max",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sonic",
+          "versions": [
+            "Model N 700W Çift",
+            "Alien 11800W Çift",
+            "Diğer"
+          ],
+          "trims": [
+            "Model N",
+            "Alien",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "Model N 700W Çift": [
+              "Model N",
+              "Diğer"
+            ],
+            "Alien 11800W Çift": [
+              "Alien",
+              "Diğer"
+            ]
+          }
+        },
+        {
+          "name": "Pop",
+          "versions": [
+            "Standart",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Aminia",
+          "versions": [
+            "Standart",
+            "Special Long Body",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Special Long Body",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Man",
+          "versions": [
+            "2700W",
+            "EX+ 2700W",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "EX+",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Dolphin",
+          "versions": [
+            "Standart",
             "Diğer"
           ],
           "trims": [
@@ -39655,150 +39805,6 @@
       ]
     },
     {
-      "make": "Ninebot",
-      "models": [
-        {
-          "name": "ES1 / ES2 / ES4 (2018-)",
-          "versions": [
-            "250W 20 km/s ES1",
-            "300W 25 km/s ES2",
-            "300W+200W 30 km/s ES4",
-            "Diğer"
-          ],
-          "trims": [
-            "ES1",
-            "ES2",
-            "ES4",
-            "Diğer"
-          ],
-          "trimsByVersion": {
-            "250W 20 km/s ES1": [
-              "ES1",
-              "Diğer"
-            ],
-            "300W 25 km/s ES2": [
-              "ES2",
-              "Diğer"
-            ],
-            "300W+200W 30 km/s ES4": [
-              "ES4",
-              "Diğer"
-            ]
-          }
-        },
-        {
-          "name": "F2 / F2 Plus / F2 Pro (2022-)",
-          "versions": [
-            "300W 25 km/s F2",
-            "300W 25 km/s F2 Plus",
-            "450W 30 km/s F2 Pro",
-            "Diğer"
-          ],
-          "trims": [
-            "F2",
-            "F2 Plus",
-            "F2 Pro",
-            "Diğer"
-          ],
-          "trimsByVersion": {
-            "300W 25 km/s F2": [
-              "F2",
-              "Diğer"
-            ],
-            "300W 25 km/s F2 Plus": [
-              "F2 Plus",
-              "Diğer"
-            ],
-            "450W 30 km/s F2 Pro": [
-              "F2 Pro",
-              "Diğer"
-            ]
-          }
-        },
-        {
-          "name": "G30 / G30 Max (2019-)",
-          "versions": [
-            "350W 30 km/s G30",
-            "350W 30 km/s G30 Max",
-            "Diğer"
-          ],
-          "trims": [
-            "G30",
-            "G30 Max",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "D28 / D38 / D40 (2021-)",
-          "versions": [
-            "300W 25 km/s D28",
-            "350W 25 km/s D38",
-            "450W 30 km/s D40",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "C2 / C9 (2022-)",
-          "versions": [
-            "150W 15 km/s C2",
-            "250W 20 km/s C9",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "F3 / F3 Pro (2023-)",
-          "versions": [
-            "300W 25 km/s F3",
-            "450W 30 km/s F3 Pro",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Pro",
-            "Diğer"
-          ],
-          "trimsByVersion": {
-            "300W 25 km/s F3": [
-              "Standart",
-              "Diğer"
-            ],
-            "450W 30 km/s F3 Pro": [
-              "Pro",
-              "Diğer"
-            ]
-          }
-        },
-        {
-          "name": "Zing",
-          "versions": [
-            "150W 16 km/s",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Diğer",
-          "versions": [
-            "Diğer"
-          ],
-          "trims": [
-            "Diğer"
-          ]
-        }
-      ]
-    },
-    {
       "make": "Niu",
       "models": [
         {
@@ -40180,7 +40186,7 @@
         }
       ]
     },
-    {
+        {
       "make": "Segway",
       "models": [
         {
@@ -40217,30 +40223,128 @@
           ]
         },
         {
-          "name": "Ninebot F2",
+          "name": "Ninebot ES1 / ES2 / ES4 (2018-)",
           "versions": [
-            "350W 7.5Ah 25km/h",
-            "F2 Plus 350W",
-            "F2 Pro 350W",
+            "250W 20 km/s ES1",
+            "300W 25 km/s ES2",
+            "300W+200W 30 km/s ES4",
+            "Diğer"
+          ],
+          "trims": [
+            "ES1",
+            "ES2",
+            "ES4",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "250W 20 km/s ES1": [
+              "ES1",
+              "Diğer"
+            ],
+            "300W 25 km/s ES2": [
+              "ES2",
+              "Diğer"
+            ],
+            "300W+200W 30 km/s ES4": [
+              "ES4",
+              "Diğer"
+            ]
+          }
+        },
+        {
+          "name": "Ninebot E2 / E2 Plus (2023-)",
+          "versions": [
+            "300W 25 km/s E2",
+            "300W 25 km/s E2 II",
+            "450W 25 km/s E2 Plus",
+            "450W 25 km/s E2 Plus II",
+            "Diğer"
+          ],
+          "trims": [
+            "E2",
+            "E2 II",
+            "E2 Plus",
+            "E2 Plus II",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "300W 25 km/s E2": [
+              "E2",
+              "Diğer"
+            ],
+            "300W 25 km/s E2 II": [
+              "E2 II",
+              "Diğer"
+            ],
+            "450W 25 km/s E2 Plus": [
+              "E2 Plus",
+              "Diğer"
+            ],
+            "450W 25 km/s E2 Plus II": [
+              "E2 Plus II",
+              "Diğer"
+            ]
+          }
+        },
+        {
+          "name": "Ninebot E3 Pro",
+          "versions": [
+            "800W 25 km/s",
             "Diğer"
           ],
           "trims": [
             "Standart",
-            "Plus",
-            "Pro",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ninebot F2",
+          "versions": [
+            "300W 25 km/s F2",
+            "300W 25 km/s F2 Plus",
+            "450W 30 km/s F2 Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "F2",
+            "F2 Plus",
+            "F2 Pro",
             "Diğer"
           ],
           "trimsByVersion": {
-            "350W 7.5Ah 25km/h": [
-              "Standart",
+            "300W 25 km/s F2": [
+              "F2",
               "Diğer"
             ],
-            "F2 Plus 350W": [
-              "Plus",
+            "300W 25 km/s F2 Plus": [
+              "F2 Plus",
               "Diğer"
             ],
-            "F2 Pro 350W": [
-              "Pro",
+            "450W 30 km/s F2 Pro": [
+              "F2 Pro",
+              "Diğer"
+            ]
+          }
+        },
+        {
+          "name": "Ninebot F2 II / F2 Pro II (2024-)",
+          "versions": [
+            "700W 25 km/s F2 II",
+            "900W 30 km/s F2 Pro II",
+            "Diğer"
+          ],
+          "trims": [
+            "F2 II",
+            "F2 Pro II",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "700W 25 km/s F2 II": [
+              "F2 II",
+              "Diğer"
+            ],
+            "900W 30 km/s F2 Pro II": [
+              "F2 Pro II",
               "Diğer"
             ]
           }
@@ -40255,6 +40359,29 @@
             "Standart",
             "Diğer"
           ]
+        },
+        {
+          "name": "Ninebot F3 / F3 Pro (2023-)",
+          "versions": [
+            "300W 25 km/s F3",
+            "450W 30 km/s F3 Pro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Pro",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "300W 25 km/s F3": [
+              "Standart",
+              "Diğer"
+            ],
+            "450W 30 km/s F3 Pro": [
+              "Pro",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "Ninebot Max G30",
@@ -40281,9 +40408,31 @@
           ]
         },
         {
+          "name": "Ninebot Max G3",
+          "versions": [
+            "2000W 25 km/s",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Ninebot Max G65",
           "versions": [
             "700W 22Ah 65km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ninebot ZT3 Pro",
+          "versions": [
+            "1600W 45 km/s",
             "Diğer"
           ],
           "trims": [
@@ -40297,12 +40446,16 @@
             "3000W Çift 45Ah 70km/h GT1",
             "3800W Çift 40Ah 70km/h GT2",
             "3800W Çift 40Ah 70km/h GT2P",
+            "GT3",
+            "7000W Çift GT3 Pro",
             "Diğer"
           ],
           "trims": [
             "GT1",
             "GT2",
             "GT2P",
+            "GT3",
+            "GT3 Pro",
             "Diğer"
           ],
           "trimsByVersion": {
@@ -40317,8 +40470,63 @@
             "3800W Çift 40Ah 70km/h GT2P": [
               "GT2P",
               "Diğer"
+            ],
+            "GT3": [
+              "GT3",
+              "Diğer"
+            ],
+            "7000W Çift GT3 Pro": [
+              "GT3 Pro",
+              "Diğer"
             ]
           }
+        },
+        {
+          "name": "Ninebot D28 / D38 / D40 (2021-)",
+          "versions": [
+            "300W 25 km/s D28",
+            "350W 25 km/s D38",
+            "450W 30 km/s D40",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ninebot C2 / C9 (2022-)",
+          "versions": [
+            "150W 15 km/s C2",
+            "250W 20 km/s C9",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ninebot C2 Lite",
+          "versions": [
+            "130W 15 km/s",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Ninebot Zing",
+          "versions": [
+            "150W 16 km/s",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
         },
         {
           "name": "Diğer",
