@@ -249,6 +249,14 @@ model UserProduct {
   purchaseYear    Int?
   ownershipMonths Int?
 
+  // Satış detayı — nakit satışta satış fiyatı, takasta aracın kendi değeri (TL).
+  // Profilde/araç sayfasında tek tek gösterilmez, yalnızca toplu/anonim
+  // ortalama piyasa fiyatı istatistiği için kullanılır.
+  saleType            SaleType?
+  salePrice           Int?
+  tradeExtraDirection TradeExtraDirection?
+  tradeExtraAmount    Int?
+
   // Araç için km, diğer ürünler için kullanım miktarı (opsiyonel)
   usageAmount     Int?
   usageUnit       String?  // "km", "saat", "yıkama_sayisi" vb.
@@ -267,6 +275,17 @@ enum ProductStatus {
   PENDING
   ACTIVE
   REJECTED
+}
+
+enum SaleType {
+  CASH
+  TRADE
+}
+
+enum TradeExtraDirection {
+  PAID_EXTRA
+  RECEIVED_EXTRA
+  EVEN
 }
 
 enum OwnershipStatus {

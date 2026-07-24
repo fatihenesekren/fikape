@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
+import { SOLD_REASONS } from "@/lib/soldReasons";
 
 // Ortak parçalar
 const score = z.number().min(1, "Puanlar 1-10 arasında olmalıdır.").max(10, "Puanlar 1-10 arasında olmalıdır.");
@@ -103,6 +104,20 @@ export const tradeListingCreateSchema = z.object({
   note:           z.string().trim().max(300).optional().nullable(),
   paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"], { error: "Geçersiz ödeme niyeti." }),
   city:           z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
+});
+
+const salePriceRange = z.number().int()
+  .min(1000, "Fiyat çok düşük görünüyor.")
+  .max(50_000_000, "Fiyat çok yüksek görünüyor.");
+
+export const sellVehicleSchema = z.object({
+  productId:           z.union([z.number(), z.string()]),
+  soldReason:          z.enum(SOLD_REASONS.map((r) => r.key) as [string, ...string[]], { error: "Geçerli bir satış nedeni seçiniz." }),
+  soldMonth:           z.string().regex(/^\d{4}-\d{2}$/, "Geçerli bir ay/yıl seçiniz.").optional().nullable(),
+  saleType:            z.enum(["CASH", "TRADE"], { error: "Geçerli bir satış türü seçiniz." }),
+  salePrice:           salePriceRange.optional().nullable(),
+  tradeExtraDirection: z.enum(["PAID_EXTRA", "RECEIVED_EXTRA", "EVEN"]).optional().nullable(),
+  tradeExtraAmount:    salePriceRange.optional().nullable(),
 });
 
 export const tradeListingCloseSchema = z.object({

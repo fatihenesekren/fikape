@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { sellVehicleSchema, formatZodError } from "@/lib/schemas";
 
 export async function POST(req: NextRequest) {
   const session = await auth();
@@ -24,7 +25,15 @@ export async function POST(req: NextRequest) {
       // Sold vehicle → reactivate instead of error
       await prisma.userProduct.update({
         where: { userId_productId: { userId, productId } },
-        data: { ownershipStatus: "CURRENT", soldAt: null, soldReason: null },
+        data: {
+          ownershipStatus: "CURRENT",
+          soldAt: null,
+          soldReason: null,
+          saleType: null,
+          salePrice: null,
+          tradeExtraDirection: null,
+          tradeExtraAmount: null,
+        },
       });
       return NextResponse.json({ ok: true, reactivated: true });
     }
@@ -52,10 +61,17 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
-  const { productId, action, soldReason, soldMonthsAgo } = await req.json();
+  const body = await req.json();
+  const { productId, action } = body;
   const userId = Number(session.user.id);
 
   if (action === "sell") {
+    const parsed = sellVehicleSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
+    }
+    const { soldReason, soldMonth, saleType, salePrice, tradeExtraDirection, tradeExtraAmount } = parsed.data;
+
     const userProduct = await prisma.userProduct.findUnique({
       where: { userId_productId: { userId, productId } },
     });
@@ -64,9 +80,11 @@ export async function PATCH(req: NextRequest) {
     }
 
     let soldAt = new Date();
-    if (typeof soldMonthsAgo === "number" && soldMonthsAgo > 0) {
-      soldAt.setMonth(soldAt.getMonth() - soldMonthsAgo);
+    if (soldMonth) {
+      const [y, m] = soldMonth.split("-").map(Number);
+      soldAt = new Date(y, m - 1, 1);
       if (soldAt < userProduct.createdAt) soldAt = userProduct.createdAt;
+      if (soldAt > new Date()) soldAt = new Date();
     }
 
     await prisma.$transaction([
@@ -75,7 +93,11 @@ export async function PATCH(req: NextRequest) {
         data: {
           ownershipStatus: "PAST",
           soldAt,
-          soldReason: soldReason ?? null,
+          soldReason,
+          saleType,
+          salePrice: salePrice ?? null,
+          tradeExtraDirection: saleType === "TRADE" ? (tradeExtraDirection ?? null) : null,
+          tradeExtraAmount: saleType === "TRADE" ? (tradeExtraAmount ?? null) : null,
         },
       }),
       prisma.tradeListing.updateMany({
@@ -86,7 +108,15 @@ export async function PATCH(req: NextRequest) {
   } else if (action === "reactivate") {
     await prisma.userProduct.update({
       where: { userId_productId: { userId, productId } },
-      data: { ownershipStatus: "CURRENT", soldAt: null, soldReason: null },
+      data: {
+        ownershipStatus: "CURRENT",
+        soldAt: null,
+        soldReason: null,
+        saleType: null,
+        salePrice: null,
+        tradeExtraDirection: null,
+        tradeExtraAmount: null,
+      },
     });
   } else {
     return NextResponse.json({ error: "Geçersiz action" }, { status: 400 });

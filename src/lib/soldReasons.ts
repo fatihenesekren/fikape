@@ -11,14 +11,13 @@ export const SOLD_REASON_LABEL: Record<string, string> = Object.fromEntries(
   SOLD_REASONS.map((r) => [r.key, r.label])
 );
 
-export const SOLD_TIME_SLOTS = [
-  { key: "now",    label: "Bu ay",           monthsAgo: 0  },
-  { key: "recent", label: "1–3 ay önce",     monthsAgo: 2  },
-  { key: "mid",    label: "3–6 ay önce",     monthsAgo: 4  },
-  { key: "far",    label: "6–12 ay önce",    monthsAgo: 9  },
-  { key: "old",    label: "1 yıldan fazla",  monthsAgo: 18 },
+export const SALE_TYPES = [
+  { key: "CASH",  label: "Sattım (nakit)" },
+  { key: "TRADE", label: "Takas ettim" },
 ] as const;
 
-export const SOLD_TIME_MONTHS_AGO: Record<string, number> = Object.fromEntries(
-  SOLD_TIME_SLOTS.map((s) => [s.key, s.monthsAgo])
-);
+export const TRADE_EXTRA_DIRECTIONS = [
+  { key: "PAID_EXTRA",     label: "Üstüne para verdim" },
+  { key: "RECEIVED_EXTRA", label: "Üstüne para aldım" },
+  { key: "EVEN",           label: "Denk takas (para yok)" },
+] as const;

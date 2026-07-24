@@ -3,8 +3,16 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { SOLD_REASONS, SOLD_REASON_LABEL, SOLD_TIME_SLOTS, SOLD_TIME_MONTHS_AGO } from "@/lib/soldReasons";
+import { SOLD_REASONS, SOLD_REASON_LABEL, SALE_TYPES, TRADE_EXTRA_DIRECTIONS } from "@/lib/soldReasons";
 import { SaleLeadCard } from "./SaleLeadCard";
+
+type SaleType = "CASH" | "TRADE";
+type TradeExtraDirection = "PAID_EXTRA" | "RECEIVED_EXTRA" | "EVEN";
+
+function currentMonthStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+}
 
 interface Props {
   productId: number;
@@ -32,7 +40,11 @@ export function OwnershipCard({
   const [soldReason, setSoldReason] = useState(initialSoldReason);
   const [showSellForm, setShowSellForm] = useState(false);
   const [selectedReason, setSelectedReason] = useState("");
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState("now");
+  const [soldMonth, setSoldMonth] = useState(currentMonthStr());
+  const [saleType, setSaleType] = useState<SaleType | "">("");
+  const [salePrice, setSalePrice] = useState("");
+  const [tradeExtraDirection, setTradeExtraDirection] = useState<TradeExtraDirection | "">("");
+  const [tradeExtraAmount, setTradeExtraAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
@@ -74,24 +86,39 @@ export function OwnershipCard({
   }
 
   async function confirmSell() {
-    if (!selectedReason) return;
+    if (!selectedReason || !saleType) return;
+    setError(null);
     setLoading(true);
-    await fetch("/api/garage", {
+    const res = await fetch("/api/garage", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         productId,
         action: "sell",
         soldReason: selectedReason,
-        soldMonthsAgo: SOLD_TIME_MONTHS_AGO[selectedTimeSlot] ?? 0,
+        soldMonth,
+        saleType,
+        salePrice: salePrice ? Number(salePrice) : null,
+        tradeExtraDirection: saleType === "TRADE" && tradeExtraDirection ? tradeExtraDirection : null,
+        tradeExtraAmount: saleType === "TRADE" && tradeExtraAmount ? Number(tradeExtraAmount) : null,
       }),
     });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setError(data.error ?? "Bir hata oluştu.");
+      setLoading(false);
+      return;
+    }
     setInGarage(false);
     setIsSold(true);
     setSoldReason(selectedReason);
     setShowSellForm(false);
     setSelectedReason("");
-    setSelectedTimeSlot("now");
+    setSoldMonth(currentMonthStr());
+    setSaleType("");
+    setSalePrice("");
+    setTradeExtraDirection("");
+    setTradeExtraAmount("");
     setLoading(false);
     router.refresh();
   }
@@ -211,24 +238,14 @@ export function OwnershipCard({
             submittedTypes={submittedSaleLeadTypes}
           />
           <div>
-            <p className="text-sm font-semibold text-gray-800 mb-2">Ne zaman sattınız?</p>
-            <div className="flex flex-wrap gap-2">
-              {SOLD_TIME_SLOTS.map((s) => (
-                <button
-                  key={s.key}
-                  type="button"
-                  onClick={() => setSelectedTimeSlot(s.key)}
-                  className="px-3 py-2 rounded-xl text-sm font-semibold border-2 transition-all"
-                  style={
-                    selectedTimeSlot === s.key
-                      ? { background: "#111", borderColor: "#111", color: "#fff" }
-                      : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
-                  }
-                >
-                  {s.label}
-                </button>
-              ))}
-            </div>
+            <p className="text-sm font-semibold text-gray-800 mb-2">Ne zaman elden çıkardınız?</p>
+            <input
+              type="month"
+              value={soldMonth}
+              max={currentMonthStr()}
+              onChange={(e) => setSoldMonth(e.target.value)}
+              className="px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
+            />
           </div>
           <p className="text-sm font-semibold text-gray-800">Bu aracı neden sattınız?</p>
           <div className="flex flex-wrap gap-2">
@@ -248,10 +265,96 @@ export function OwnershipCard({
               </button>
             ))}
           </div>
+
+          <p className="text-sm font-semibold text-gray-800">Nasıl elden çıkardınız?</p>
+          <div className="flex flex-wrap gap-2">
+            {SALE_TYPES.map((t) => (
+              <button
+                key={t.key}
+                type="button"
+                onClick={() => setSaleType(t.key)}
+                className="px-3 py-2 rounded-xl text-sm font-semibold border-2 transition-all"
+                style={
+                  saleType === t.key
+                    ? { background: "#111", borderColor: "#111", color: "#fff" }
+                    : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
+                }
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+
+          {saleType && (
+            <div>
+              <p className="text-sm font-semibold text-gray-800 mb-2">
+                {saleType === "TRADE" ? "Aracınızın takasta biçilen değeri (TL, opsiyonel)" : "Satış fiyatı (TL, opsiyonel)"}
+              </p>
+              <input
+                type="number"
+                inputMode="numeric"
+                min={0}
+                value={salePrice}
+                onChange={(e) => setSalePrice(e.target.value)}
+                placeholder="örn. 850000"
+                className="w-full sm:w-56 px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
+              />
+            </div>
+          )}
+
+          {saleType === "TRADE" && (
+            <>
+              <p className="text-sm font-semibold text-gray-800">Üstüne para durumu</p>
+              <div className="flex flex-wrap gap-2">
+                {TRADE_EXTRA_DIRECTIONS.map((d) => (
+                  <button
+                    key={d.key}
+                    type="button"
+                    onClick={() => setTradeExtraDirection(d.key)}
+                    className="px-3 py-2 rounded-xl text-sm font-semibold border-2 transition-all"
+                    style={
+                      tradeExtraDirection === d.key
+                        ? { background: "#111", borderColor: "#111", color: "#fff" }
+                        : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
+                    }
+                  >
+                    {d.label}
+                  </button>
+                ))}
+              </div>
+
+              {(tradeExtraDirection === "PAID_EXTRA" || tradeExtraDirection === "RECEIVED_EXTRA") && (
+                <div>
+                  <p className="text-sm font-semibold text-gray-800 mb-2">Tutar (TL)</p>
+                  <input
+                    type="number"
+                    inputMode="numeric"
+                    min={0}
+                    value={tradeExtraAmount}
+                    onChange={(e) => setTradeExtraAmount(e.target.value)}
+                    placeholder="örn. 150000"
+                    className="w-full sm:w-56 px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
+                  />
+                </div>
+              )}
+            </>
+          )}
+
+          <p className="text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">
+            Bu bilgi yalnızca ortalama piyasa fiyatı hesaplaması için kullanılır, profilinizde gösterilmez.
+          </p>
+
           <div className="flex gap-2">
             <button
               type="button"
-              onClick={() => { setShowSellForm(false); setSelectedReason(""); }}
+              onClick={() => {
+                setShowSellForm(false);
+                setSelectedReason("");
+                setSaleType("");
+                setSalePrice("");
+                setTradeExtraDirection("");
+                setTradeExtraAmount("");
+              }}
               className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors"
             >
               İptal
@@ -259,7 +362,7 @@ export function OwnershipCard({
             <button
               type="button"
               onClick={confirmSell}
-              disabled={!selectedReason || loading}
+              disabled={!selectedReason || !saleType || loading}
               className="px-4 py-2 rounded-xl text-sm font-semibold text-white disabled:opacity-40 transition-colors"
               style={{ background: "#111" }}
             >
