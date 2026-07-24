@@ -18,6 +18,19 @@ import { ScoreTrendChart } from "./ScoreTrendChart";
 import { QnaSection } from "./QnaSection";
 import { JsonLd } from "@/components/JsonLd";
 import { BASE_URL } from "@/lib/baseUrl";
+
+// purchasedAt biliniyorsa gerçek sahiplik süresini (purchasedAt → soldAt ya da bugün)
+// hesaplar; bilinmiyorsa yorum yazılırken seçilen sabit bucket'a (ownershipMonthsAtReview) düşer.
+function realOwnershipMonths(
+  purchasedAt: Date | null | undefined,
+  soldAt: Date | null | undefined,
+  fallback: number | null
+): number | null {
+  if (!purchasedAt) return fallback;
+  const end = soldAt ?? new Date();
+  const months = (end.getFullYear() - purchasedAt.getFullYear()) * 12 + (end.getMonth() - purchasedAt.getMonth());
+  return Math.max(0, months);
+}
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
@@ -143,7 +156,13 @@ export default async function VehicleDetailPage({
     userId
       ? prisma.userProduct.findUnique({
           where: { userId_productId: { userId, productId: product.id } },
-          select: { ownershipStatus: true, soldReason: true, soldReasonNote: true },
+          select: {
+            ownershipStatus: true,
+            soldReason: true,
+            soldReasonNote: true,
+            purchasedAt: true,
+            purchasePrice: true,
+          },
         })
       : null,
     prisma.userProduct.count({ where: { productId: product.id, ownershipStatus: "CURRENT" } }),
@@ -261,7 +280,15 @@ export default async function VehicleDetailPage({
       editCount: true,
       extendedData: true,
       user: { select: { id: true, displayName: true, trustLevel: true, avatarUrl: true } },
-      userProduct: { select: { ownershipStatus: true, soldReason: true, soldReasonNote: true } },
+      userProduct: {
+        select: {
+          ownershipStatus: true,
+          soldReason: true,
+          soldReasonNote: true,
+          purchasedAt: true,
+          soldAt: true,
+        },
+      },
       versions: {
         select: { version: true, scoreOverall: true, createdAt: true },
         orderBy: { version: "asc" },
@@ -501,7 +528,7 @@ export default async function VehicleDetailPage({
             avatarUrl={r.user.avatarUrl}
             avatarSeed={String(r.user.id)}
             trustLevel={r.user.trustLevel}
-            ownershipMonths={r.ownershipMonthsAtReview}
+            ownershipMonths={realOwnershipMonths(r.userProduct?.purchasedAt, r.userProduct?.soldAt, r.ownershipMonthsAtReview)}
             scoreFiyat={r.scoreFiyat}
             scoreKalite={r.scoreKalite}
             scorePerformans={r.scorePerformans}
@@ -770,6 +797,8 @@ export default async function VehicleDetailPage({
           initialIsSold={isSold}
           initialSoldReason={userGarageEntry?.soldReason ?? null}
           initialSoldReasonNote={userGarageEntry?.soldReasonNote ?? null}
+          initialPurchasedAt={userGarageEntry?.purchasedAt?.toISOString() ?? null}
+          initialPurchasePrice={userGarageEntry?.purchasePrice ?? null}
           garageCount={garageCount}
           isLoggedIn={!!userId}
           defaultFullName={currentUser?.displayName ?? ""}

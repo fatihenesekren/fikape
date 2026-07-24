@@ -122,6 +122,12 @@ export const sellVehicleSchema = z.object({
   tradeExtraAmount:    salePriceRange.optional().nullable(),
 });
 
+export const purchaseInfoSchema = z.object({
+  productId:     z.union([z.number(), z.string()]),
+  purchaseMonth: z.string().regex(/^\d{4}-\d{2}$/, "Geçerli bir ay/yıl seçiniz.").optional().nullable(),
+  purchasePrice: salePriceRange.optional().nullable(),
+});
+
 export const tradeListingCloseSchema = z.object({
   closeReason: z.enum(["TRADED", "GAVE_UP", "FOUND_ELSEWHERE"]).optional().nullable(),
 });

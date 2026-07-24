@@ -247,8 +247,11 @@ model UserProduct {
   soldAt          DateTime?
   soldReason      String[] @default([])
   soldReasonNote  String?  @db.VarChar(200)
-  purchaseYear    Int?
-  ownershipMonths Int?
+
+  // Satın alma bilgisi — sahiplik süresini ve ileride ortalama fiyat/tarih
+  // analizini gerçek tarihlere dayandırmak için (bkz. saleType/salePrice notu).
+  purchasedAt   DateTime?
+  purchasePrice Int?
 
   // Satış detayı — nakit satışta satış fiyatı, takasta aracın kendi değeri (TL).
   // Profilde/araç sayfasında tek tek gösterilmez, yalnızca toplu/anonim

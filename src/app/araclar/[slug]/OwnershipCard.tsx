@@ -20,6 +20,8 @@ interface Props {
   initialIsSold: boolean;
   initialSoldReason: string[] | null;
   initialSoldReasonNote?: string | null;
+  initialPurchasedAt?: string | null;
+  initialPurchasePrice?: number | null;
   garageCount: number;
   isLoggedIn: boolean;
   defaultFullName: string;
@@ -32,6 +34,8 @@ export function OwnershipCard({
   initialIsSold,
   initialSoldReason,
   initialSoldReasonNote = null,
+  initialPurchasedAt = null,
+  initialPurchasePrice = null,
   garageCount,
   isLoggedIn,
   defaultFullName,
@@ -52,6 +56,47 @@ export function OwnershipCard({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+
+  const [purchasedAt, setPurchasedAt] = useState(initialPurchasedAt);
+  const [purchasePrice, setPurchasePrice] = useState(initialPurchasePrice);
+  const [showPurchaseForm, setShowPurchaseForm] = useState(false);
+  const [purchaseMonthInput, setPurchaseMonthInput] = useState(
+    initialPurchasedAt ? initialPurchasedAt.slice(0, 7) : currentMonthStr()
+  );
+  const [purchasePriceInput, setPurchasePriceInput] = useState(
+    initialPurchasePrice != null ? String(initialPurchasePrice) : ""
+  );
+  const [purchaseLoading, setPurchaseLoading] = useState(false);
+
+  async function savePurchaseInfo() {
+    setPurchaseLoading(true);
+    setError(null);
+    const res = await fetch("/api/garage", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        productId,
+        action: "setPurchaseInfo",
+        purchaseMonth: purchaseMonthInput || null,
+        purchasePrice: purchasePriceInput ? Number(purchasePriceInput) : null,
+      }),
+    });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setError(data.error ?? "Bir hata oluştu.");
+      setPurchaseLoading(false);
+      return;
+    }
+    setPurchasedAt(purchaseMonthInput ? `${purchaseMonthInput}-01` : null);
+    setPurchasePrice(purchasePriceInput ? Number(purchasePriceInput) : null);
+    setShowPurchaseForm(false);
+    setPurchaseLoading(false);
+    router.refresh();
+  }
+
+  const purchasedLabel = purchasedAt
+    ? new Date(purchasedAt).toLocaleDateString("tr-TR", { month: "long", year: "numeric" })
+    : null;
 
   async function addToGarage() {
     setLoading(true);
@@ -183,19 +228,28 @@ export function OwnershipCard({
               )}
             </div>
           ) : (
-            <p className="text-sm font-semibold text-gray-900">
-              Bu aracı kullanıyor musun?
-              {garageCount > 0 && (
-                <span className="text-xs font-normal text-gray-400 ml-2">
-                  · {garageCount} kişinin garajında
-                </span>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">
+                Bu aracı kullanıyor musun?
+                {garageCount > 0 && (
+                  <span className="text-xs font-normal text-gray-400 ml-2">
+                    · {garageCount} kişinin garajında
+                  </span>
+                )}
+              </p>
+              {inGarage && purchasedLabel && (
+                <p className="text-xs text-gray-400 mt-0.5">
+                  {purchasedLabel}
+                  {purchasePrice != null && ` · ${purchasePrice.toLocaleString("tr-TR")} TL'ye alındı`}
+                  {purchasePrice == null && "'de alındı"}
+                </p>
               )}
-            </p>
+            </div>
           )}
         </div>
 
         {/* Butonlar */}
-        <div className="shrink-0 flex items-center gap-2">
+        <div className="shrink-0 flex items-center flex-wrap gap-2">
           {!isLoggedIn ? (
             <Link
               href="/giris"
@@ -223,6 +277,13 @@ export function OwnershipCard({
                 ✓ Garajımda
               </button>
               <button
+                onClick={() => setShowPurchaseForm((v) => !v)}
+                disabled={loading}
+                className="px-3 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors disabled:opacity-60"
+              >
+                {purchasedLabel ? "Alış bilgisini düzenle" : "Alış bilgisi ekle"}
+              </button>
+              <button
                 onClick={() => setShowSellForm((v) => !v)}
                 disabled={loading}
                 className="px-3 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors disabled:opacity-60"
@@ -244,6 +305,55 @@ export function OwnershipCard({
       </div>
 
       {error && <p className="px-5 pb-3 text-xs text-red-600">{error}</p>}
+
+      {/* Alış bilgisi formu */}
+      {showPurchaseForm && inGarage && !isSold && (
+        <div className="border-t border-gray-100 px-5 py-4 space-y-3">
+          <div>
+            <p className="text-sm font-semibold text-gray-800 mb-2">Ne zaman aldınız? (opsiyonel)</p>
+            <input
+              type="month"
+              value={purchaseMonthInput}
+              max={currentMonthStr()}
+              onChange={(e) => setPurchaseMonthInput(e.target.value)}
+              className="px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
+            />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-gray-800 mb-2">Kaça aldınız? (TL, opsiyonel)</p>
+            <input
+              type="number"
+              inputMode="numeric"
+              min={0}
+              value={purchasePriceInput}
+              onChange={(e) => setPurchasePriceInput(e.target.value)}
+              placeholder="örn. 650000"
+              className="w-full sm:w-56 px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
+            />
+          </div>
+          <p className="text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">
+            Bu bilgi yalnızca ortalama piyasa fiyatı hesaplaması için kullanılır, profilinizde gösterilmez.
+          </p>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setShowPurchaseForm(false)}
+              className="px-4 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors"
+            >
+              İptal
+            </button>
+            <button
+              type="button"
+              onClick={savePurchaseInfo}
+              disabled={purchaseLoading}
+              className="px-4 py-2 rounded-xl text-sm font-semibold text-white disabled:opacity-40 transition-colors"
+              style={{ background: "#111" }}
+            >
+              {purchaseLoading ? "Kaydediliyor..." : "Kaydet"}
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Satış formu */}
       {showSellForm && inGarage && (

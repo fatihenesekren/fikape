@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { sellVehicleSchema, formatZodError } from "@/lib/schemas";
+import { sellVehicleSchema, purchaseInfoSchema, formatZodError } from "@/lib/schemas";
 
 export async function POST(req: NextRequest) {
   const session = await auth();
@@ -84,7 +84,6 @@ export async function PATCH(req: NextRequest) {
     if (soldMonth) {
       const [y, m] = soldMonth.split("-").map(Number);
       soldAt = new Date(y, m - 1, 1);
-      if (soldAt < userProduct.createdAt) soldAt = userProduct.createdAt;
       if (soldAt > new Date()) soldAt = new Date();
     }
 
@@ -107,6 +106,31 @@ export async function PATCH(req: NextRequest) {
         data: { isActive: false, closedAt: new Date() },
       }),
     ]);
+  } else if (action === "setPurchaseInfo") {
+    const parsed = purchaseInfoSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
+    }
+    const { purchaseMonth, purchasePrice } = parsed.data;
+
+    const userProduct = await prisma.userProduct.findUnique({
+      where: { userId_productId: { userId, productId } },
+    });
+    if (!userProduct) {
+      return NextResponse.json({ error: "Garajında değil" }, { status: 404 });
+    }
+
+    let purchasedAt: Date | null = null;
+    if (purchaseMonth) {
+      const [y, m] = purchaseMonth.split("-").map(Number);
+      purchasedAt = new Date(y, m - 1, 1);
+      if (purchasedAt > new Date()) purchasedAt = new Date();
+    }
+
+    await prisma.userProduct.update({
+      where: { userId_productId: { userId, productId } },
+      data: { purchasedAt, purchasePrice: purchasePrice ?? null },
+    });
   } else if (action === "reactivate") {
     await prisma.userProduct.update({
       where: { userId_productId: { userId, productId } },
