@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { SOLD_REASONS, SOLD_REASON_LABEL, SALE_TYPES, TRADE_EXTRA_DIRECTIONS } from "@/lib/soldReasons";
+import { SOLD_REASONS, SALE_TYPES, TRADE_EXTRA_DIRECTIONS, formatSoldReasons } from "@/lib/soldReasons";
 import { SaleLeadCard } from "./SaleLeadCard";
 
 type SaleType = "CASH" | "TRADE";
@@ -18,7 +18,8 @@ interface Props {
   productId: number;
   initialInGarage: boolean;
   initialIsSold: boolean;
-  initialSoldReason: string | null;
+  initialSoldReason: string[] | null;
+  initialSoldReasonNote?: string | null;
   garageCount: number;
   isLoggedIn: boolean;
   defaultFullName: string;
@@ -30,6 +31,7 @@ export function OwnershipCard({
   initialInGarage,
   initialIsSold,
   initialSoldReason,
+  initialSoldReasonNote = null,
   garageCount,
   isLoggedIn,
   defaultFullName,
@@ -38,8 +40,10 @@ export function OwnershipCard({
   const [inGarage, setInGarage]     = useState(initialInGarage);
   const [isSold, setIsSold]         = useState(initialIsSold);
   const [soldReason, setSoldReason] = useState(initialSoldReason);
+  const [persistedNote, setPersistedNote] = useState(initialSoldReasonNote);
   const [showSellForm, setShowSellForm] = useState(false);
-  const [selectedReason, setSelectedReason] = useState("");
+  const [selectedReasons, setSelectedReasons] = useState<string[]>([]);
+  const [soldReasonNote, setSoldReasonNote] = useState("");
   const [soldMonth, setSoldMonth] = useState(currentMonthStr());
   const [saleType, setSaleType] = useState<SaleType | "">("");
   const [salePrice, setSalePrice] = useState("");
@@ -59,6 +63,7 @@ export function OwnershipCard({
     setInGarage(true);
     setIsSold(false);
     setSoldReason(null);
+    setPersistedNote(null);
     setLoading(false);
     router.refresh();
   }
@@ -80,13 +85,20 @@ export function OwnershipCard({
     setInGarage(false);
     setIsSold(false);
     setSoldReason(null);
+    setPersistedNote(null);
     setShowSellForm(false);
     setLoading(false);
     router.refresh();
   }
 
+  function toggleReason(key: string) {
+    setSelectedReasons((prev) =>
+      prev.includes(key) ? prev.filter((r) => r !== key) : [...prev, key]
+    );
+  }
+
   async function confirmSell() {
-    if (!selectedReason || !saleType) return;
+    if (selectedReasons.length === 0 || !saleType) return;
     setError(null);
     setLoading(true);
     const res = await fetch("/api/garage", {
@@ -95,7 +107,8 @@ export function OwnershipCard({
       body: JSON.stringify({
         productId,
         action: "sell",
-        soldReason: selectedReason,
+        soldReason: selectedReasons,
+        soldReasonNote: selectedReasons.includes("OTHER") ? soldReasonNote.trim() || null : null,
         soldMonth,
         saleType,
         salePrice: salePrice ? Number(salePrice) : null,
@@ -111,9 +124,11 @@ export function OwnershipCard({
     }
     setInGarage(false);
     setIsSold(true);
-    setSoldReason(selectedReason);
+    setSoldReason(selectedReasons);
+    setPersistedNote(selectedReasons.includes("OTHER") ? soldReasonNote.trim() || null : null);
     setShowSellForm(false);
-    setSelectedReason("");
+    setSelectedReasons([]);
+    setSoldReasonNote("");
     setSoldMonth(currentMonthStr());
     setSaleType("");
     setSalePrice("");
@@ -133,6 +148,7 @@ export function OwnershipCard({
     setInGarage(true);
     setIsSold(false);
     setSoldReason(null);
+    setPersistedNote(null);
     setLoading(false);
     router.refresh();
   }
@@ -160,9 +176,9 @@ export function OwnershipCard({
           {isSold ? (
             <div>
               <p className="text-sm font-semibold text-gray-500">Geçmiş Araç</p>
-              {soldReason && (
+              {soldReason && soldReason.length > 0 && (
                 <p className="text-xs text-gray-400 mt-0.5">
-                  {SOLD_REASON_LABEL[soldReason] ?? soldReason}
+                  {formatSoldReasons(soldReason, persistedNote)}
                 </p>
               )}
             </div>
@@ -247,16 +263,16 @@ export function OwnershipCard({
               className="px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
             />
           </div>
-          <p className="text-sm font-semibold text-gray-800">Bu aracı neden sattınız?</p>
+          <p className="text-sm font-semibold text-gray-800">Bu aracı neden sattınız? <span className="font-normal text-gray-400">(birden fazla seçebilirsiniz)</span></p>
           <div className="flex flex-wrap gap-2">
             {SOLD_REASONS.map((r) => (
               <button
                 key={r.key}
                 type="button"
-                onClick={() => setSelectedReason(r.key)}
+                onClick={() => toggleReason(r.key)}
                 className="px-3 py-2 rounded-xl text-sm font-semibold border-2 transition-all"
                 style={
-                  selectedReason === r.key
+                  selectedReasons.includes(r.key)
                     ? { background: "#111", borderColor: "#111", color: "#fff" }
                     : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
                 }
@@ -265,6 +281,17 @@ export function OwnershipCard({
               </button>
             ))}
           </div>
+
+          {selectedReasons.includes("OTHER") && (
+            <input
+              type="text"
+              value={soldReasonNote}
+              onChange={(e) => setSoldReasonNote(e.target.value)}
+              placeholder="Farklı sebebinizi kısaca belirtin (opsiyonel)"
+              maxLength={200}
+              className="w-full px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
+            />
+          )}
 
           <p className="text-sm font-semibold text-gray-800">Nasıl elden çıkardınız?</p>
           <div className="flex flex-wrap gap-2">
@@ -349,7 +376,8 @@ export function OwnershipCard({
               type="button"
               onClick={() => {
                 setShowSellForm(false);
-                setSelectedReason("");
+                setSelectedReasons([]);
+                setSoldReasonNote("");
                 setSaleType("");
                 setSalePrice("");
                 setTradeExtraDirection("");
@@ -362,7 +390,7 @@ export function OwnershipCard({
             <button
               type="button"
               onClick={confirmSell}
-              disabled={!selectedReason || !saleType || loading}
+              disabled={selectedReasons.length === 0 || !saleType || loading}
               className="px-4 py-2 rounded-xl text-sm font-semibold text-white disabled:opacity-40 transition-colors"
               style={{ background: "#111" }}
             >

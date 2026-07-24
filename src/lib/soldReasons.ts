@@ -11,6 +11,13 @@ export const SOLD_REASON_LABEL: Record<string, string> = Object.fromEntries(
   SOLD_REASONS.map((r) => [r.key, r.label])
 );
 
+export function formatSoldReasons(reasons?: string[] | null, note?: string | null): string {
+  if (!reasons || reasons.length === 0) return "";
+  return reasons
+    .map((r) => (r === "OTHER" && note ? `Diğer (${note})` : SOLD_REASON_LABEL[r] ?? r))
+    .join(", ");
+}
+
 export const SALE_TYPES = [
   { key: "CASH",  label: "Sattım (nakit)" },
   { key: "TRADE", label: "Takas ettim" },

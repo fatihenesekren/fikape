@@ -28,7 +28,8 @@ export async function POST(req: NextRequest) {
         data: {
           ownershipStatus: "CURRENT",
           soldAt: null,
-          soldReason: null,
+          soldReason: [],
+          soldReasonNote: null,
           saleType: null,
           salePrice: null,
           tradeExtraDirection: null,
@@ -70,7 +71,7 @@ export async function PATCH(req: NextRequest) {
     if (!parsed.success) {
       return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
     }
-    const { soldReason, soldMonth, saleType, salePrice, tradeExtraDirection, tradeExtraAmount } = parsed.data;
+    const { soldReason, soldReasonNote, soldMonth, saleType, salePrice, tradeExtraDirection, tradeExtraAmount } = parsed.data;
 
     const userProduct = await prisma.userProduct.findUnique({
       where: { userId_productId: { userId, productId } },
@@ -94,6 +95,7 @@ export async function PATCH(req: NextRequest) {
           ownershipStatus: "PAST",
           soldAt,
           soldReason,
+          soldReasonNote: soldReason.includes("OTHER") ? (soldReasonNote?.trim() || null) : null,
           saleType,
           salePrice: salePrice ?? null,
           tradeExtraDirection: saleType === "TRADE" ? (tradeExtraDirection ?? null) : null,
@@ -111,7 +113,8 @@ export async function PATCH(req: NextRequest) {
       data: {
         ownershipStatus: "CURRENT",
         soldAt: null,
-        soldReason: null,
+        soldReason: [],
+        soldReasonNote: null,
         saleType: null,
         salePrice: null,
         tradeExtraDirection: null,

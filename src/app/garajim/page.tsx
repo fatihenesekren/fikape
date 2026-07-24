@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { calcOverall } from "@/lib/fikape";
-import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
+import { formatSoldReasons } from "@/lib/soldReasons";
 import { GarageAnimation } from "./GarageAnimation";
 import { InsuranceLeadCard } from "./InsuranceLeadCard";
 import { TradeToggleCard } from "./TradeToggleCard";
@@ -82,11 +82,12 @@ export default async function GarajimPage() {
   const soldVehicles   = userProducts.filter((up) => up.ownershipStatus === "PAST");
 
   function VehicleCard({
-    product, reviews, soldReason, soldAt, isSold, userProductId,
+    product, reviews, soldReason, soldReasonNote, soldAt, isSold, userProductId,
   }: {
     product: (typeof userProducts)[0]["product"];
     reviews: (typeof userProducts)[0]["reviews"];
-    soldReason?: string | null;
+    soldReason?: string[] | null;
+    soldReasonNote?: string | null;
     soldAt?: Date | null;
     isSold?: boolean;
     userProductId: number;
@@ -140,10 +141,10 @@ export default async function GarajimPage() {
             <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
               {BODY_LABELS[bodyType] ?? bodyType}
             </span>
-            {isSold && soldReason && (
+            {isSold && soldReason && soldReason.length > 0 && (
               <span className="text-xs font-semibold px-2 py-0.5 rounded-full"
                 style={{ background: "#f3f4f6", color: "#6b7280" }}>
-                Satıldı · {SOLD_REASON_LABEL[soldReason] ?? soldReason}
+                Satıldı · {formatSoldReasons(soldReason, soldReasonNote)}
               </span>
             )}
           </div>
@@ -255,12 +256,13 @@ export default async function GarajimPage() {
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider">
                 Geçmiş Araçlarım
               </h2>
-              {soldVehicles.map(({ id, product, reviews, soldReason, soldAt }) => (
+              {soldVehicles.map(({ id, product, reviews, soldReason, soldReasonNote, soldAt }) => (
                 <VehicleCard
                   key={product.id}
                   product={product}
                   reviews={reviews}
                   soldReason={soldReason}
+                  soldReasonNote={soldReasonNote}
                   soldAt={soldAt}
                   isSold
                   userProductId={id}

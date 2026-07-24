@@ -143,7 +143,7 @@ export default async function VehicleDetailPage({
     userId
       ? prisma.userProduct.findUnique({
           where: { userId_productId: { userId, productId: product.id } },
-          select: { ownershipStatus: true, soldReason: true },
+          select: { ownershipStatus: true, soldReason: true, soldReasonNote: true },
         })
       : null,
     prisma.userProduct.count({ where: { productId: product.id, ownershipStatus: "CURRENT" } }),
@@ -172,13 +172,23 @@ export default async function VehicleDetailPage({
     _count: { id: true },
   });
 
-  const soldReasonData = await prisma.userProduct.groupBy({
-    by: ["soldReason"],
-    where: { productId: product.id, ownershipStatus: "PAST", soldReason: { not: null } },
-    _count: { soldReason: true },
-    orderBy: { _count: { soldReason: "desc" } },
+  // Çoklu seçim olduğu için groupBy kullanılamıyor (array kolonunda exact-match
+  // gruplar) — her satırın nedenleri JS'de tek tek sayılıyor. Yüzdeler bu yüzden
+  // toplamda %100'ü aşabilir (bir kişi birden fazla neden seçmiş olabilir).
+  const soldReasonRows = await prisma.userProduct.findMany({
+    where: { productId: product.id, ownershipStatus: "PAST", soldReason: { isEmpty: false } },
+    select: { soldReason: true },
   });
-  const soldTotal = soldReasonData.reduce((s, d) => s + d._count.soldReason, 0);
+  const soldTotal = soldReasonRows.length;
+  const reasonCounts = new Map<string, number>();
+  for (const row of soldReasonRows) {
+    for (const reason of row.soldReason) {
+      reasonCounts.set(reason, (reasonCounts.get(reason) ?? 0) + 1);
+    }
+  }
+  const soldReasonData = [...reasonCounts.entries()]
+    .map(([soldReason, count]) => ({ soldReason, count }))
+    .sort((a, b) => b.count - a.count);
 
   // ── Skor trendi ──
   // Her yorum, düzenleme sayısına bakılmaksızın ortalamaya HER ZAMAN en fazla
@@ -251,7 +261,7 @@ export default async function VehicleDetailPage({
       editCount: true,
       extendedData: true,
       user: { select: { id: true, displayName: true, trustLevel: true, avatarUrl: true } },
-      userProduct: { select: { ownershipStatus: true, soldReason: true } },
+      userProduct: { select: { ownershipStatus: true, soldReason: true, soldReasonNote: true } },
       versions: {
         select: { version: true, scoreOverall: true, createdAt: true },
         orderBy: { version: "asc" },
@@ -463,8 +473,8 @@ export default async function VehicleDetailPage({
           </p>
           <div className="space-y-2">
             {soldReasonData.map((d) => {
-              const pct = Math.round((d._count.soldReason / soldTotal) * 100);
-              const label = SOLD_REASON_LABEL[d.soldReason ?? ""] ?? d.soldReason;
+              const pct = Math.round((d.count / soldTotal) * 100);
+              const label = SOLD_REASON_LABEL[d.soldReason] ?? d.soldReason;
               return (
                 <div key={d.soldReason} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
@@ -504,6 +514,7 @@ export default async function VehicleDetailPage({
             versions={r.versions}
             ownershipStatus={r.userProduct?.ownershipStatus ?? null}
             soldReason={r.userProduct?.soldReason ?? null}
+            soldReasonNote={r.userProduct?.soldReasonNote ?? null}
             extendedData={r.extendedData as Record<string, unknown> | null}
             isFounding={foundingReviewIds.has(r.id)}
             reviewId={r.id}
@@ -758,6 +769,7 @@ export default async function VehicleDetailPage({
           initialInGarage={inGarage}
           initialIsSold={isSold}
           initialSoldReason={userGarageEntry?.soldReason ?? null}
+          initialSoldReasonNote={userGarageEntry?.soldReasonNote ?? null}
           garageCount={garageCount}
           isLoggedIn={!!userId}
           defaultFullName={currentUser?.displayName ?? ""}

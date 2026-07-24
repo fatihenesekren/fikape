@@ -112,7 +112,9 @@ const salePriceRange = z.number().int()
 
 export const sellVehicleSchema = z.object({
   productId:           z.union([z.number(), z.string()]),
-  soldReason:          z.enum(SOLD_REASONS.map((r) => r.key) as [string, ...string[]], { error: "Geçerli bir satış nedeni seçiniz." }),
+  soldReason:          z.array(z.enum(SOLD_REASONS.map((r) => r.key) as [string, ...string[]]))
+                         .min(1, "En az bir satış nedeni seçiniz."),
+  soldReasonNote:      z.string().trim().max(200).optional().nullable(),
   soldMonth:           z.string().regex(/^\d{4}-\d{2}$/, "Geçerli bir ay/yıl seçiniz.").optional().nullable(),
   saleType:            z.enum(["CASH", "TRADE"], { error: "Geçerli bir satış türü seçiniz." }),
   salePrice:           salePriceRange.optional().nullable(),

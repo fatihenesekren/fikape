@@ -245,7 +245,8 @@ model UserProduct {
   // Genel: sahiplik süresi
   ownershipStatus OwnershipStatus @default(CURRENT)
   soldAt          DateTime?
-  soldReason      String?
+  soldReason      String[] @default([])
+  soldReasonNote  String?  @db.VarChar(200)
   purchaseYear    Int?
   ownershipMonths Int?
 

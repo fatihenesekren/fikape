@@ -6,7 +6,7 @@ import { DeleteReviewButton } from "@/components/DeleteReviewButton";
 import { calcOverall } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
 import { TRUST_BADGES } from "@/lib/trustBadge";
-import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
+import { formatSoldReasons } from "@/lib/soldReasons";
 
 interface ScoreVersion {
   version: number;
@@ -31,7 +31,8 @@ interface Props {
   editCount?: number | null;
   versions?: ScoreVersion[];
   ownershipStatus?: string | null;
-  soldReason?: string | null;
+  soldReason?: string[] | null;
+  soldReasonNote?: string | null;
   extendedData?: Record<string, unknown> | null;
   isFounding?: boolean;
   reviewId?: number;
@@ -59,6 +60,7 @@ export function ReviewCard({
   versions,
   ownershipStatus,
   soldReason,
+  soldReasonNote,
   extendedData,
   isFounding,
   reviewId,
@@ -119,7 +121,7 @@ export function ReviewCard({
                   className="text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1"
                   style={{ background: "#f3f4f6", color: "#6b7280" }}
                 >
-                  {soldReason ? `Satıldı · ${SOLD_REASON_LABEL[soldReason] ?? soldReason}` : "Eski Kullanıcı"}
+                  {soldReason && soldReason.length > 0 ? `Satıldı · ${formatSoldReasons(soldReason, soldReasonNote)}` : "Eski Kullanıcı"}
                 </span>
               )}
               {ownershipMonths != null && (
