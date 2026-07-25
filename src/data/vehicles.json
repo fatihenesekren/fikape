@@ -24765,6 +24765,17 @@
             "Diğer"
           ]
         },
+                {
+          "name": "ZR7",
+          "versions": [
+            "Elektrik 3 kW 72V 35Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
         {
           "name": "Diğer",
           "versions": [
@@ -35971,7 +35982,180 @@
         }
       ]
     }
-  ],
+  ,
+    {
+      "make": "Volta",
+      "models": [
+        {
+          "name": "SE-03 Max",
+          "versions": [
+            "Elektrik 1.5 kW 72V 20Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SE-03",
+          "versions": [
+            "Elektrik 1.5 kW 60V 12Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "VS1",
+          "versions": [
+            "Elektrik 2 kW 72V 20Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "VS2",
+          "versions": [
+            "Elektrik 1.5 kW 60V 22Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "VM4 Neo (3 Tekerlekli)",
+          "versions": [
+            "Elektrik 1 kW 60V 20Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "VM5 Neo (3 Tekerlekli)",
+          "versions": [
+            "Elektrik 1 kW 72V 20Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "VT5 Pro (3 Tekerlekli Kargo)",
+          "versions": [
+            "Elektrik 3.9 kW 72V 60Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Sunra",
+      "models": [
+        {
+          "name": "Robo-SC",
+          "versions": [
+            "Elektrik 3 kW 72V Çift 20Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Miku Super",
+          "versions": [
+            "Elektrik 3 kW Bosch Motor",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Miku Max",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    },
+    {
+      "make": "Apec",
+      "models": [
+        {
+          "name": "APS2",
+          "versions": [
+            "Elektrik 1 kW 60V 20Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "APM5",
+          "versions": [
+            "Elektrik 1 kW 60V 20Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Diğer",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Diğer"
+          ]
+        }
+      ]
+    }],
   "kamyonet": [
     {
       "make": "BMC",
