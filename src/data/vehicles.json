@@ -38859,7 +38859,7 @@
           "name": "X2",
           "versions": [
             "8300W Çift 72Ah",
-            "Limited 8300W",
+            "8300W",
             "Diğer"
           ],
           "trims": [
@@ -38869,10 +38869,10 @@
           ]
         },
         {
-          "name": "Dualtron X",
+          "name": "X",
           "versions": [
             "13000W Çift 60Ah",
-            "Limited 13000W",
+            "13000W",
             "Diğer"
           ],
           "trims": [
@@ -38885,7 +38885,7 @@
               "Standart",
               "Diğer"
             ],
-            "Limited 13000W": [
+            "13000W": [
               "Limited",
               "Diğer"
             ]
