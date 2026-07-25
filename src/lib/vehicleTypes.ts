@@ -71,6 +71,13 @@ export const PEDELEC_CLASSES: TypeOption[] = [
   { value: "speed-45",    label: "45 km/h Speed" },
 ];
 
+export const DRIVETRAIN_TYPES: TypeOption[] = [
+  { value: "FWD", label: "FWD (Önden Çekiş)" },
+  { value: "RWD", label: "RWD (Arkadan İtiş)" },
+  { value: "AWD", label: "AWD (Dört Çeker)" },
+  { value: "4WD", label: "4WD (Dört Çeker – Manuel Aktarma)" },
+];
+
 export function toLabelMap(options: TypeOption[]): Record<string, string> {
   return Object.fromEntries(options.map((o) => [o.value, o.label]));
 }

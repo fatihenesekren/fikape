@@ -34,7 +34,7 @@ function realOwnershipMonths(
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
-  BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, toLabelMap,
+  BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES, toLabelMap,
 } from "@/lib/vehicleTypes";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
@@ -81,6 +81,8 @@ const BODY_ICONS: Record<string, string> = {
 const MOTO_TYPE_LABELS = toLabelMap(MOTO_TYPES);
 
 const KARAVAN_TYPE_LABELS = toLabelMap(KARAVAN_TYPES);
+
+const DRIVETRAIN_LABELS = toLabelMap(DRIVETRAIN_TYPES);
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -455,7 +457,7 @@ export default async function VehicleDetailPage({
       fuelType             ? { label: "Yakıt",         value: FUEL_LABELS[fuelType] ?? fuelType } : null,
       bodyType             ? { label: "Kasa",          value: BODY_LABELS[bodyType] ?? bodyType } : null,
       attrs.segment        ? { label: "Segment",       value: `${attrs.segment} Segment` }     : null,
-      attrs.drivetrain     ? { label: "Çekiş",         value: capitalize(String(attrs.drivetrain)) }        : null,
+      attrs.drivetrain     ? { label: "Çekiş",         value: DRIVETRAIN_LABELS[String(attrs.drivetrain)] ?? String(attrs.drivetrain) } : null,
       attrs.transmission   ? { label: "Vites",         value: capitalize(String(attrs.transmission)) }      : null,
       attrs.engine_cc      ? { label: "Motor",         value: `${attrs.engine_cc} cc` }         : null,
       attrs.power_hp       ? { label: "Güç",           value: `${attrs.power_hp} HP` }          : null,

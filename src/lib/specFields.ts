@@ -1,6 +1,6 @@
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, OTOMOBIL_SEGMENTS, KAMYONET_BODY_TYPES,
-  KARAVAN_TYPES, BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES,
+  KARAVAN_TYPES, BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES,
 } from "@/lib/vehicleTypes";
 
 export type FieldDef =
@@ -15,10 +15,7 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
   otomobil: [
     { key: "body_type",    label: "Kasa",      type: "select", options: OTOMOBIL_BODY_TYPES },
     { key: "segment",      label: "Segment",   type: "select", options: OTOMOBIL_SEGMENTS },
-    { key: "drivetrain",   label: "Çekiş",     type: "select", options: [
-      { value: "FWD", label: "Önden Çekiş (FWD)" }, { value: "RWD", label: "Arkadan İtiş (RWD)" },
-      { value: "AWD", label: "Dört Çeker (AWD)" }, { value: "4WD", label: "4WD" },
-    ]},
+    { key: "drivetrain",   label: "Çekiş",     type: "select", options: DRIVETRAIN_TYPES },
     { key: "transmission", label: "Vites",     type: "select", options: [
       { value: "Manuel", label: "Manuel" }, { value: "Otomatik", label: "Otomatik" },
       { value: "CVT", label: "CVT" }, { value: "Yarı Otomatik", label: "Yarı Otomatik" },
