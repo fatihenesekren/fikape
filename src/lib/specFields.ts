@@ -1,6 +1,7 @@
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, OTOMOBIL_SEGMENTS, KAMYONET_BODY_TYPES,
   KARAVAN_TYPES, BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES,
+  HEATING_TYPES,
 } from "@/lib/vehicleTypes";
 
 export type FieldDef =
@@ -75,9 +76,23 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "berth",          label: "Yatak Kap.",   type: "number", unit: "kişi" },
     { key: "length_cm",      label: "Uzunluk",      type: "number", unit: "cm" },
     { key: "width_cm",       label: "Genişlik",     type: "number", unit: "cm" },
-    { key: "total_weight_kg",label: "Toplam Ağ.",   type: "number", unit: "kg" },
+    { key: "height_cm",      label: "İç Yükseklik", type: "number", unit: "cm" },
+    { key: "exterior_height_cm", label: "Dış Yükseklik", type: "number", unit: "cm" },
+    { key: "empty_weight_kg",label: "Boş Ağırlık",  type: "number", unit: "kg" },
+    { key: "total_weight_kg",label: "Azami Yüklü Ağırlık", type: "number", unit: "kg" },
     { key: "tow_weight_kg",  label: "Çekme Ağ.",    type: "number", unit: "kg" },
+    { key: "has_braked_axle", label: "Frenli Dingil", type: "boolean" },
+    { key: "water_tank_l",   label: "Taze Su Tankı", type: "number", unit: "L" },
+    { key: "waste_water_tank_l", label: "Gri/Pis Su Tankı", type: "number", unit: "L" },
+    { key: "heating_type",   label: "Isıtma",       type: "select", options: HEATING_TYPES },
+    { key: "engine_cc",      label: "Motor",        type: "number", unit: "cc" },
+    { key: "power_hp",       label: "Güç",          type: "number", unit: "HP" },
+    { key: "transmission",   label: "Vites",        type: "select", options: [
+      { value: "Manuel", label: "Manuel" }, { value: "Otomatik", label: "Otomatik" },
+      { value: "CVT", label: "CVT" }, { value: "Yarı Otomatik", label: "Yarı Otomatik" },
+    ]},
     { key: "has_bathroom",   label: "Banyo",        type: "boolean" },
+    { key: "has_shower",     label: "Duş",          type: "boolean" },
     { key: "has_kitchen",    label: "Mutfak",       type: "boolean" },
     { key: "has_ac",         label: "Klima",        type: "boolean" },
   ],

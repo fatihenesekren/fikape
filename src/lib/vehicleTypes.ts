@@ -54,6 +54,14 @@ export const KARAVAN_TYPES: TypeOption[] = [
   { value: "kamper-van", label: "Kamper Van" },
 ];
 
+export const HEATING_TYPES: TypeOption[] = [
+  { value: "gazli",              label: "Gazlı (Truma/LPG)" },
+  { value: "dizel",               label: "Dizel (Webasto/Eberspächer)" },
+  { value: "elektrikli",          label: "Elektrikli" },
+  { value: "klima-isi-pompasi",   label: "Klima/Isı Pompası" },
+  { value: "yok",                 label: "Yok" },
+];
+
 export const BIKE_TYPES: TypeOption[] = [
   { value: "sehir",        label: "Şehir" },
   { value: "mtb",          label: "MTB" },

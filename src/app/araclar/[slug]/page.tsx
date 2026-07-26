@@ -34,7 +34,7 @@ function realOwnershipMonths(
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
-  BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES, toLabelMap,
+  BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES, HEATING_TYPES, toLabelMap,
 } from "@/lib/vehicleTypes";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
@@ -83,6 +83,8 @@ const MOTO_TYPE_LABELS = toLabelMap(MOTO_TYPES);
 const KARAVAN_TYPE_LABELS = toLabelMap(KARAVAN_TYPES);
 
 const DRIVETRAIN_LABELS = toLabelMap(DRIVETRAIN_TYPES);
+
+const HEATING_TYPE_LABELS = toLabelMap(HEATING_TYPES);
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -433,10 +435,17 @@ export default async function VehicleDetailPage({
       attrs.length_cm            ? { label: "Uzunluk",       value: `${attrs.length_cm} cm` }         : null,
       attrs.width_cm             ? { label: "Genişlik",      value: `${attrs.width_cm} cm` }          : null,
       attrs.height_cm            ? { label: "İç Yükseklik",  value: `${attrs.height_cm} cm` }         : null,
-      attrs.total_weight_kg      ? { label: "Toplam Ağ.",    value: `${attrs.total_weight_kg} kg` }   : null,
+      attrs.exterior_height_cm   ? { label: "Dış Yükseklik", value: `${attrs.exterior_height_cm} cm` } : null,
+      attrs.empty_weight_kg      ? { label: "Boş Ağırlık",   value: `${attrs.empty_weight_kg} kg` }   : null,
+      attrs.total_weight_kg      ? { label: "Azami Yüklü Ağırlık", value: `${attrs.total_weight_kg} kg` } : null,
       attrs.tow_weight_kg        ? { label: "Çekme Ağ.",     value: `${attrs.tow_weight_kg} kg` }     : null,
+      attrs.has_braked_axle != null ? { label: "Frenli Dingil", value: attrs.has_braked_axle ? "Var" : "Yok" } : null,
       attrs.water_tank_l         ? { label: "Taze Su Tankı", value: `${attrs.water_tank_l} L` }       : null,
-      attrs.heating_type         ? { label: "Isıtma",        value: capitalize(String(attrs.heating_type)) } : null,
+      attrs.waste_water_tank_l   ? { label: "Gri/Pis Su Tankı", value: `${attrs.waste_water_tank_l} L` } : null,
+      attrs.heating_type         ? { label: "Isıtma",        value: HEATING_TYPE_LABELS[String(attrs.heating_type)] ?? capitalize(String(attrs.heating_type)) } : null,
+      attrs.engine_cc            ? { label: "Motor",         value: `${attrs.engine_cc} cc` }         : null,
+      attrs.power_hp             ? { label: "Güç",           value: `${attrs.power_hp} HP` }          : null,
+      attrs.transmission         ? { label: "Vites",         value: capitalize(String(attrs.transmission)) } : null,
       attrs.has_bathroom != null ? { label: "Banyo",         value: attrs.has_bathroom ? "Var" : "Yok" } : null,
       attrs.has_shower   != null ? { label: "Duş",           value: attrs.has_shower   ? "Var" : "Yok" } : null,
       attrs.has_kitchen  != null ? { label: "Mutfak",        value: attrs.has_kitchen  ? "Var" : "Yok" } : null,

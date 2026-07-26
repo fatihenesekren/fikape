@@ -3,7 +3,7 @@ import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
-  BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, toValues,
+  BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, HEATING_TYPES, toValues,
 } from "../src/lib/vehicleTypes";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
@@ -122,7 +122,23 @@ async function main() {
     karavan_type: { type: "enum", values: toValues(KARAVAN_TYPES), label: "Tip" },
     berth:       { type: "number", label: "Yatak Kapasitesi" },
     length_cm:   { type: "number", label: "Uzunluk (cm)" },
+    width_cm:    { type: "number", label: "Genişlik (cm)", nullable: true },
+    height_cm:   { type: "number", label: "İç Yükseklik (cm)", nullable: true },
+    exterior_height_cm: { type: "number", label: "Dış Yükseklik (cm)", nullable: true },
+    empty_weight_kg: { type: "number", label: "Boş Ağırlık (kg)", nullable: true },
+    total_weight_kg: { type: "number", label: "Azami Yüklü Ağırlık (kg)", nullable: true },
     tow_weight_kg: { type: "number", label: "Ağırlık (kg)", nullable: true },
+    has_braked_axle: { type: "boolean", label: "Frenli Dingil", nullable: true },
+    water_tank_l: { type: "number", label: "Taze Su Tankı (L)", nullable: true },
+    waste_water_tank_l: { type: "number", label: "Gri/Pis Su Tankı (L)", nullable: true },
+    heating_type: { type: "enum", values: toValues(HEATING_TYPES), label: "Isıtma", nullable: true },
+    engine_cc:   { type: "number", label: "Motor Hacmi (cc)", nullable: true },
+    power_hp:    { type: "number", label: "Güç (HP)", nullable: true },
+    transmission: { type: "enum", values: ["Manuel", "Otomatik", "CVT", "Yarı Otomatik"], label: "Vites", nullable: true },
+    has_bathroom: { type: "boolean", label: "Banyo", nullable: true },
+    has_shower:  { type: "boolean", label: "Duş", nullable: true },
+    has_kitchen: { type: "boolean", label: "Mutfak", nullable: true },
+    has_ac:      { type: "boolean", label: "Klima", nullable: true },
   };
 
   const catKaravan = await prisma.category.upsert({
