@@ -42,6 +42,11 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "weight_kg",    label: "Ağırlık",    type: "number", unit: "kg" },
     { key: "seat_height_mm", label: "Sele Yüks.", type: "number", unit: "mm" },
     { key: "ev_range_km",  label: "Menzil (EV)", type: "number", unit: "km" },
+    { key: "battery_kwh",  label: "Batarya",     type: "number", unit: "kWh" },
+    { key: "motor_watt",   label: "Motor Gücü (EV)", type: "number", unit: "W" },
+    { key: "charge_hours", label: "Şarj Süresi", type: "number", unit: "saat" },
+    { key: "max_speed_kmh", label: "Azami Hız",  type: "number", unit: "km/s" },
+    { key: "removable_battery", label: "Çıkarılabilir Batarya", type: "boolean" },
   ],
   "e-scooter": [
     { key: "motor_watt",    label: "Motor Gücü",   type: "number", unit: "W" },
@@ -53,6 +58,7 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "ip_rating",     label: "Su Ger.",       type: "text", placeholder: "örn. IP54" },
     { key: "max_load_kg",   label: "Maks. Yük",    type: "number", unit: "kg" },
     { key: "tire_inch",     label: "Lastik",       type: "number", unit: "\"" },
+    { key: "removable_battery", label: "Çıkarılabilir Batarya", type: "boolean" },
   ],
   "e-bisiklet": [
     { key: "bike_type",    label: "Bisiklet Tipi", type: "select", options: BIKE_TYPES },

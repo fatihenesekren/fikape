@@ -67,6 +67,11 @@ async function main() {
     moto_type: { type: "enum", values: toValues(MOTO_TYPES), label: "Tip" },
     fuel_type: { type: "enum", values: ["GASOLINE", "EV"], label: "Yakıt Tipi" },
     ev_range_km: { type: "number", label: "Menzil (km) - Yalnızca EV", nullable: true },
+    battery_kwh: { type: "number", label: "Batarya (kWh) - Yalnızca EV", nullable: true },
+    motor_watt: { type: "number", label: "Motor Gücü (W) - Yalnızca EV", nullable: true },
+    charge_hours: { type: "number", label: "Şarj Süresi (saat) - Yalnızca EV", nullable: true },
+    max_speed_kmh: { type: "number", label: "Azami Hız (km/s)", nullable: true },
+    removable_battery: { type: "boolean", label: "Çıkarılabilir Batarya", nullable: true },
   };
 
   const catMotosiklet = await prisma.category.upsert({
@@ -92,6 +97,7 @@ async function main() {
     range_km:     { type: "number", label: "İlan Edilen Menzil (km)" },
     max_speed_kmh: { type: "number", label: "Maks. Hız (km/s)" },
     battery_wh:   { type: "number", label: "Batarya Kapasitesi (Wh)" },
+    removable_battery: { type: "boolean", label: "Çıkarılabilir Batarya", nullable: true },
   };
 
   const catEscooter = await prisma.category.upsert({
