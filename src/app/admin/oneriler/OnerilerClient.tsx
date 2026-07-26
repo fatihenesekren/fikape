@@ -404,6 +404,24 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                     </a>
                   </div>
                 )}
+                {/* Scraping/ilan-parse verisi olmayan kategorilerde (örn. karavan) admin
+                    elle doldururken kritik alan doluluğunu canlı göster — attrs'a bağlı,
+                    otomatik veri kaynağı gerektirmez. */}
+                {!fetchingSpecs && Object.keys(specConfidence).length === 0 && modal.suggestion.categorySlug !== "otomobil" && (() => {
+                  const liveCritical = getCriticalFields(modal.suggestion.categorySlug, modal.suggestion.fuelType);
+                  if (liveCritical.length === 0) return null;
+                  const liveMissing = liveCritical.filter((f) => !attrs[f]);
+                  const liveReady = liveMissing.length === 0;
+                  return (
+                    <div className={`mb-2 px-3 py-2 rounded-xl text-xs ${
+                      liveReady ? "bg-green-50 border border-green-100 text-green-700" : "bg-amber-50 border border-amber-100 text-amber-700"
+                    }`}>
+                      {liveReady
+                        ? "✓ Kritik alanların hepsi dolu — onaylayabilirsin."
+                        : `⚠ ${liveMissing.length} kritik alan eksik: ${liveMissing.join(", ")}`}
+                    </div>
+                  );
+                })()}
                 <div className="mb-3 p-2.5 rounded-xl border border-gray-200 bg-gray-50">
                   <p className="text-xs font-semibold text-gray-700 mb-1">
                     İlan HTML&apos;inden doldur

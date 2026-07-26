@@ -118,7 +118,7 @@ export const CRITICAL_FIELDS: Record<string, string[]> = {
   motosiklet:    ["engine_cc", "power_hp", "moto_type"],
   "e-scooter":   ["motor_watt", "max_speed_kmh"],
   "e-bisiklet":  ["motor_watt", "bike_type"],
-  karavan:       ["karavan_type", "berth"],
+  karavan:       ["karavan_type", "berth", "total_weight_kg", "length_cm"],
   kamyonet:      ["body_type", "engine_cc", "power_hp"],
 };
 
@@ -129,4 +129,59 @@ export function getCriticalFields(categorySlug: string, fuelType?: string | null
   const base = CRITICAL_FIELDS[categorySlug] ?? [];
   if (fuelType !== "EV") return base;
   return base.map((f) => (f === "engine_cc" ? "ev_range_km" : f));
+}
+
+// Alan sayısı fazla olan kategorilerde (örn. karavan: 20 alan) formu bloklara
+// ayırıp admin'i tek bakışta "zorunlu"ya odaklamak için. Tanımı olmayan
+// kategoriler eski düz-liste görünümünü aynen korur (SpecForm.tsx).
+export interface SpecGroup {
+  title: string;
+  keys: string[];
+  defaultOpen?: boolean;
+}
+export const SPEC_GROUPS: Record<string, SpecGroup[]> = {
+  karavan: [
+    { title: "Zorunlu", keys: ["karavan_type", "berth", "total_weight_kg", "length_cm"], defaultOpen: true },
+    { title: "Ölçü & Ağırlık", keys: ["width_cm", "height_cm", "exterior_height_cm", "empty_weight_kg", "tow_weight_kg", "has_braked_axle"] },
+    { title: "Yaşam Alanı", keys: ["water_tank_l", "waste_water_tank_l", "heating_type", "has_bathroom", "has_shower", "has_kitchen", "has_ac"] },
+    { title: "Motor & Şanzıman (motorlu/kamper-van)", keys: ["engine_cc", "power_hp", "transmission"] },
+  ],
+};
+
+// Scraping tabanlı güven skoru olmayan kategorilerde (karavan gibi) admin'in
+// elle girdiği değerler arasındaki mantıksal tutarsızlıkları yakalamak için
+// basit çapraz-alan kuralları — engelleyici değil, sadece uyarı.
+export interface CrossFieldRule {
+  fields: string[];
+  check: (attrs: Record<string, string>) => boolean;
+  message: string;
+}
+export const CROSS_FIELD_RULES: Record<string, CrossFieldRule[]> = {
+  karavan: [
+    {
+      fields: ["empty_weight_kg", "total_weight_kg"],
+      check: (a) => !a.empty_weight_kg || !a.total_weight_kg || Number(a.empty_weight_kg) < Number(a.total_weight_kg),
+      message: "Boş Ağırlık, Azami Yüklü Ağırlık'tan büyük olamaz.",
+    },
+    {
+      fields: ["height_cm", "exterior_height_cm"],
+      check: (a) => !a.height_cm || !a.exterior_height_cm || Number(a.exterior_height_cm) > Number(a.height_cm),
+      message: "Dış Yükseklik, İç Yükseklik'ten küçük olamaz.",
+    },
+    {
+      fields: ["has_shower", "has_bathroom"],
+      check: (a) => a.has_shower !== "true" || a.has_bathroom === "true",
+      message: 'Duş "Var" ise Banyo da "Var" olmalı.',
+    },
+    {
+      fields: ["karavan_type", "engine_cc"],
+      check: (a) => a.karavan_type !== "cekme" || !a.engine_cc,
+      message: "Çekme Karavan'da motor bilgisi olmaz — Tip'i kontrol edin.",
+    },
+  ],
+};
+
+export function getCrossFieldWarnings(categorySlug: string, attrs: Record<string, string>): string[] {
+  const rules = CROSS_FIELD_RULES[categorySlug] ?? [];
+  return rules.filter((r) => !r.check(attrs)).map((r) => r.message);
 }
