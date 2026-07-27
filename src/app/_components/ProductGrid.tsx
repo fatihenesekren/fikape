@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { NiyetKarti } from "./NiyetKarti";
@@ -136,6 +137,17 @@ export async function ProductGrid({
     ? await getVehicleImageUrls(slugsNeedingWiki)
     : {};
 
+  const session = await auth();
+  const isLoggedIn = !!session?.user?.id;
+  let favoritedIds = new Set<number>();
+  if (isLoggedIn) {
+    const favs = await prisma.favorite.findMany({
+      where: { userId: Number(session!.user!.id), productId: { in: products.map((p) => p.id) } },
+      select: { productId: true },
+    });
+    favoritedIds = new Set(favs.map((f) => f.productId));
+  }
+
   if (products.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -174,6 +186,7 @@ export async function ProductGrid({
                 </div>
               )}
               <VehicleCard
+                id={product.id}
                 slug={product.slug}
                 brandName={product.brand.name}
                 modelName={product.model.name}
@@ -187,6 +200,8 @@ export async function ProductGrid({
                 motorWatt={attrs.motor_watt != null ? Number(attrs.motor_watt) : null}
                 scores={score?.scores ?? null}
                 imageUrl={imageUrl}
+                isLoggedIn={isLoggedIn}
+                initialFavorited={favoritedIds.has(product.id)}
               />
             </div>
           );

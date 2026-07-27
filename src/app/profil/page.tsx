@@ -15,6 +15,7 @@ import { InviteBox } from "./InviteBox";
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { ScrollFadeBox } from "@/components/ScrollFadeBox";
+import { FavoriteRemoveButton } from "./FavoriteRemoveButton";
 
 export const metadata: Metadata = { title: "Profilim" };
 
@@ -42,6 +43,14 @@ export default async function ProfilPage() {
   if (!user) redirect("/giris");
 
   const reviews = await prisma.review.findMany({
+    where: { userId },
+    include: {
+      product: { include: { brand: true, model: true } },
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  const favorites = await prisma.favorite.findMany({
     where: { userId },
     include: {
       product: { include: { brand: true, model: true } },
@@ -188,6 +197,42 @@ export default async function ProfilPage() {
       />
 
       <InviteBox referralCode={user.referralCode} referralCount={user._count.referrals} />
+
+      {/* Favorilerim */}
+      <div>
+        <h2 className="text-base font-bold text-gray-900 mb-3">★ Favorilerim</h2>
+
+        {favorites.length === 0 ? (
+          <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-10 text-center text-gray-400 text-sm">
+            Henüz favori aracın yok.
+          </div>
+        ) : (
+          <ScrollFadeBox itemCount={favorites.length} maxHeight={320}>
+            <div className="space-y-2">
+              {favorites.map((f) => (
+                <div
+                  key={f.id}
+                  className="bg-white border border-gray-100 rounded-2xl p-3 flex items-center justify-between gap-3"
+                >
+                  <Link
+                    href={`/araclar/${f.product.slug}`}
+                    className="flex-1 min-w-0 hover:opacity-80 transition-opacity"
+                  >
+                    <div className="text-xs text-gray-400">{f.product.brand.name}</div>
+                    <div className="font-semibold text-gray-900 truncate">
+                      {stripModelGenRange(f.product.model.name)}
+                      {f.product.year && (
+                        <span className="text-gray-400 font-normal ml-1.5">{f.product.year}</span>
+                      )}
+                    </div>
+                  </Link>
+                  <FavoriteRemoveButton productId={f.productId} />
+                </div>
+              ))}
+            </div>
+          </ScrollFadeBox>
+        )}
+      </div>
 
       {/* Yorum geçmişi */}
       <div>

@@ -5,6 +5,7 @@ import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
+import { FavoriteButton } from "@/components/FavoriteButton";
 
 export function TrFlagIcon() {
   return (
@@ -62,6 +63,7 @@ const CATEGORY_ICONS: Record<string, string> = {
 };
 
 interface Props {
+  id?: number;
   slug: string;
   brandName: string;
   modelName: string;
@@ -75,12 +77,14 @@ interface Props {
   motorWatt?: number | null;
   scores: FikapeScores | null;
   imageUrl?: string | null;
+  isLoggedIn?: boolean;
+  initialFavorited?: boolean;
 }
 
 export function VehicleCard({
-  slug, brandName, modelName, trimName, year,
+  id, slug, brandName, modelName, trimName, year,
   categorySlug, fuelType, bodyType, motorType, karavanType, motorWatt,
-  scores, imageUrl,
+  scores, imageUrl, isLoggedIn = false, initialFavorited = false,
 }: Props) {
   const bodyLabel = BODY_LABELS[bodyType];
   const placeholderIcon = bodyLabel
@@ -177,9 +181,14 @@ export function VehicleCard({
 
       {/* Kart gövdesi */}
       <div className="px-4 pt-4 pb-4">
-        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5 flex items-center gap-1">
-          {brandName}
-          {isDomestic && <TrFlagIcon />}
+        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5 flex items-center justify-between gap-1">
+          <span className="flex items-center gap-1 min-w-0">
+            {brandName}
+            {isDomestic && <TrFlagIcon />}
+          </span>
+          {id != null && (
+            <FavoriteButton productId={id} initialFavorited={initialFavorited} isLoggedIn={isLoggedIn} variant="card" />
+          )}
         </div>
         <div className="text-base font-bold text-gray-900 leading-tight">
           {year && <span className="text-gray-400 font-medium mr-1">{year}</span>}

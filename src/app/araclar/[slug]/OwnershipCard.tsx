@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { SOLD_REASONS, SALE_TYPES, TRADE_EXTRA_DIRECTIONS, formatSoldReasons } from "@/lib/soldReasons";
 import { SaleLeadCard } from "./SaleLeadCard";
+import { FavoriteButton } from "@/components/FavoriteButton";
 
 type SaleType = "CASH" | "TRADE";
 type TradeExtraDirection = "PAID_EXTRA" | "RECEIVED_EXTRA" | "EVEN";
@@ -26,6 +27,7 @@ interface Props {
   isLoggedIn: boolean;
   defaultFullName: string;
   submittedSaleLeadTypes: ("EXPERTISE" | "QUICK_OFFER")[];
+  initialFavorited?: boolean;
 }
 
 export function OwnershipCard({
@@ -40,6 +42,7 @@ export function OwnershipCard({
   isLoggedIn,
   defaultFullName,
   submittedSaleLeadTypes,
+  initialFavorited = false,
 }: Props) {
   const [inGarage, setInGarage]     = useState(initialInGarage);
   const [isSold, setIsSold]         = useState(initialIsSold);
@@ -301,6 +304,7 @@ export function OwnershipCard({
               + Garajıma ekle
             </button>
           )}
+          <FavoriteButton productId={productId} initialFavorited={initialFavorited} isLoggedIn={isLoggedIn} variant="detail" />
         </div>
       </div>
 

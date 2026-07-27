@@ -156,7 +156,7 @@ export default async function VehicleDetailPage({
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
 
   const userId = session?.user?.id ? Number(session.user.id) : null;
-  const [userGarageEntry, garageCount, currentUser, existingSaleLeads] = await Promise.all([
+  const [userGarageEntry, garageCount, currentUser, existingSaleLeads, favoriteEntry] = await Promise.all([
     userId
       ? prisma.userProduct.findUnique({
           where: { userId_productId: { userId, productId: product.id } },
@@ -179,6 +179,11 @@ export default async function VehicleDetailPage({
           select: { type: true },
         }).catch(() => [])
       : [],
+    userId
+      ? prisma.favorite.findUnique({
+          where: { userId_productId: { userId, productId: product.id } },
+        })
+      : null,
   ]);
   const inGarage = userGarageEntry?.ownershipStatus === "CURRENT";
   const isSold   = userGarageEntry?.ownershipStatus === "PAST";
@@ -816,6 +821,7 @@ export default async function VehicleDetailPage({
           initialSoldReasonNote={userGarageEntry?.soldReasonNote ?? null}
           initialPurchasedAt={userGarageEntry?.purchasedAt?.toISOString() ?? null}
           initialPurchasePrice={userGarageEntry?.purchasePrice ?? null}
+          initialFavorited={!!favoriteEntry}
           garageCount={garageCount}
           isLoggedIn={!!userId}
           defaultFullName={currentUser?.displayName ?? ""}

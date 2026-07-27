@@ -123,10 +123,25 @@ model Product {
   saleLeads       SaleLead[]
   tradeListings   TradeListing[]
   contentReports  ContentReport[]
+  favorites       Favorite[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "products_name_trgm_idx")
   @@map("products")
+}
+
+// Sahiplik/durum bilgisi taşımayan hafif "ilgileniyorum" işareti — garajdan
+// (UserProduct) farkı: hiç sahiplik iddiası yok, tek amacı takip listesi.
+model Favorite {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@map("favorites")
 }
 
 // ─────────────────────────────────────────────
@@ -192,6 +207,7 @@ model User {
   threadsBlocked      MessageThread[] @relation("ThreadBlockedBy")
   messageReports      MessageReport[]
   contentReports      ContentReport[]
+  favorites           Favorite[]
 
   @@map("users")
 }

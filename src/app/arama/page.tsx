@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
@@ -92,6 +93,17 @@ async function SearchResults({ query }: { query: string }) {
   const slugsNeedingWiki = products.filter((p) => !p.imageUrl).map((p) => p.slug);
   const wikiUrls = slugsNeedingWiki.length > 0 ? await getVehicleImageUrls(slugsNeedingWiki) : {};
 
+  const session = await auth();
+  const isLoggedIn = !!session?.user?.id;
+  let favoritedIds = new Set<number>();
+  if (isLoggedIn) {
+    const favs = await prisma.favorite.findMany({
+      where: { userId: Number(session!.user!.id), productId: { in: productIds } },
+      select: { productId: true },
+    });
+    favoritedIds = new Set(favs.map((f) => f.productId));
+  }
+
   if (query.length >= 2 && products.length === 0) {
     return (
       <div className="text-center py-20 text-gray-400">
@@ -131,6 +143,7 @@ async function SearchResults({ query }: { query: string }) {
           return (
             <VehicleCard
               key={product.id}
+              id={product.id}
               slug={product.slug}
               brandName={product.brand.name}
               modelName={product.model.name}
@@ -141,6 +154,8 @@ async function SearchResults({ query }: { query: string }) {
               bodyType={String(attrs.body_type ?? "")}
               scores={score?.scores ?? null}
               imageUrl={imageUrl}
+              isLoggedIn={isLoggedIn}
+              initialFavorited={favoritedIds.has(product.id)}
             />
           );
         })}
