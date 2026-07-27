@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { SCORE_LABELS } from "@/lib/fikape";
 
-export function ScoreSelector({ label, short, color, bg, value, initialValue, onChange, disabled = false }: {
+export function ScoreSelector({ label, short, color, bg, value, initialValue, onChange, disabled = false, showRequiredWarning = false }: {
   label: string; short: string; color: string; bg: string;
-  value: number; initialValue?: number; onChange: (v: number) => void; disabled?: boolean;
+  value: number; initialValue?: number; onChange: (v: number) => void; disabled?: boolean; showRequiredWarning?: boolean;
 }) {
   const [hovered, setHovered] = useState(0);
   const active = disabled ? value : (hovered || value);
@@ -36,12 +36,19 @@ export function ScoreSelector({ label, short, color, bg, value, initialValue, on
               <span className="text-3xl font-black leading-none" style={{ color }}>{active}</span>
               <span className="text-xs font-medium" style={{ color }}>{SCORE_LABELS[active]}</span>
             </>
+          ) : showRequiredWarning ? (
+            <span className="text-xs font-semibold text-red-500 flex items-center gap-1">
+              <span>⚠</span> Puan ver
+            </span>
           ) : (
             <span className="text-xs text-gray-300">Puan ver</span>
           )}
         </div>
       </div>
-      <div className="flex gap-1" role="radiogroup" aria-label={`${label} puanı`}>
+      <div
+        className={`flex gap-1 rounded-lg transition-shadow ${showRequiredWarning ? "ring-1 ring-red-300 ring-offset-2" : ""}`}
+        role="radiogroup" aria-label={`${label} puanı`}
+      >
         {[1,2,3,4,5,6,7,8,9,10].map((n) => (
           <button
             key={n}

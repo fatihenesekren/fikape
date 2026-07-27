@@ -66,7 +66,16 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   const [dropdownOpen,  setDropdownOpen]  = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const vehicleSectionRef = useRef<HTMLDivElement>(null);
-  const [highlightVehicle, setHighlightVehicle] = useState(false);
+  const scoreSectionRef = useRef<HTMLDivElement>(null);
+  const prosConsSectionRef = useRef<HTMLDivElement>(null);
+  const [highlightedSection, setHighlightedSection] = useState<"vehicle" | "score" | "proscons" | null>(null);
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+
+  function focusSection(ref: React.RefObject<HTMLDivElement | null>, key: "vehicle" | "score" | "proscons") {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setHighlightedSection(key);
+    setTimeout(() => setHighlightedSection((cur) => (cur === key ? null : cur)), 1500);
+  }
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(
     defaultSlug ? (products.find((p) => p.slug === defaultSlug) ?? null) : null
@@ -195,20 +204,36 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+    setSubmitAttempted(true);
 
     if (!productSlug) {
       setError("Lütfen bir araç seçiniz.");
-      vehicleSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-      setHighlightVehicle(true);
-      setTimeout(() => setHighlightVehicle(false), 1500);
+      focusSection(vehicleSectionRef, "vehicle");
       return;
     }
     if (alreadyReviewed) { setError("Bu araç için zaten bir yorumun var."); return; }
-    if (!scoresComplete) { setError("Lütfen tüm FI·KA·PE puanlarını veriniz."); return; }
+    if (!scoresComplete) {
+      setError("Lütfen tüm FI·KA·PE puanlarını veriniz.");
+      focusSection(scoreSectionRef, "score");
+      return;
+    }
     if (!isQuick) {
-      if (pros.length < 1) { setError("En az 1 artı seçiniz."); return; }
-      if (cons.length < 1) { setError("En az 1 eksi seçiniz."); return; }
-      if (!detailValidation.ok) { setDetailTouched(true); setError(detailValidation.error!); return; }
+      if (pros.length < 1) {
+        setError("En az 1 artı seçiniz.");
+        focusSection(prosConsSectionRef, "proscons");
+        return;
+      }
+      if (cons.length < 1) {
+        setError("En az 1 eksi seçiniz.");
+        focusSection(prosConsSectionRef, "proscons");
+        return;
+      }
+      if (!detailValidation.ok) {
+        setDetailTouched(true);
+        setError(detailValidation.error!);
+        focusSection(prosConsSectionRef, "proscons");
+        return;
+      }
     }
 
     const extended = isQuick
@@ -289,7 +314,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
       {/* 1 — Araç */}
       <div
         ref={vehicleSectionRef}
-        className={`rounded-2xl transition-shadow duration-300 ${highlightVehicle ? "ring-2 ring-blue-400 ring-offset-2" : ""}`}
+        className={`rounded-2xl transition-shadow duration-300 ${highlightedSection === "vehicle" ? "ring-2 ring-blue-400 ring-offset-2" : ""}`}
       >
       <SectionCard step={1} title="Araç" badge="required">
 
@@ -405,19 +430,27 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
       </div>
 
       {/* 2 — FI·KA·PE Puanı */}
+      <div
+        ref={scoreSectionRef}
+        className={`rounded-2xl transition-shadow duration-300 ${highlightedSection === "score" ? "ring-2 ring-blue-400 ring-offset-2" : ""}`}
+      >
       <SectionCard
         step={2} title="fi·ka·pe puanı" badge="required"
         locked={formLocked}
         lockedHint="Puanlamak için önce bir araç seçiniz"
       >
-        {FIKAPE.map(({ key, short, label, color, bg }) => (
-          <ScoreSelector
-            key={key} short={short} label={label} color={color} bg={bg}
-            value={key === "scoreFiyat" ? scoreFiyat : key === "scoreKalite" ? scoreKalite : scorePerformans}
-            onChange={key === "scoreFiyat" ? setScoreFiyat : key === "scoreKalite" ? setScoreKalite : setScorePerformans}
-            disabled={formLocked}
-          />
-        ))}
+        {FIKAPE.map(({ key, short, label, color, bg }) => {
+          const value = key === "scoreFiyat" ? scoreFiyat : key === "scoreKalite" ? scoreKalite : scorePerformans;
+          return (
+            <ScoreSelector
+              key={key} short={short} label={label} color={color} bg={bg}
+              value={value}
+              onChange={key === "scoreFiyat" ? setScoreFiyat : key === "scoreKalite" ? setScoreKalite : setScorePerformans}
+              disabled={formLocked}
+              showRequiredWarning={submitAttempted && value === 0}
+            />
+          );
+        })}
 
         {overall !== null && (() => {
           const o = overall;
@@ -437,9 +470,14 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
           );
         })()}
       </SectionCard>
+      </div>
 
       {/* 3 — Artılar & Eksiler */}
       {!isQuick && (
+      <div
+        ref={prosConsSectionRef}
+        className={`rounded-2xl transition-shadow duration-300 ${highlightedSection === "proscons" ? "ring-2 ring-blue-400 ring-offset-2" : ""}`}
+      >
       <SectionCard
         step={3} title="Artılar & Eksiler" badge="required"
         locked={formLocked}
@@ -448,6 +486,11 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         <p className="text-xs text-gray-400 -mt-2">
           Her kategoriden en az 1, en fazla 3 seçin.
         </p>
+        {submitAttempted && (pros.length < 1 || cons.length < 1) && (
+          <p className="text-xs text-red-500 flex items-center gap-1 -mt-1">
+            <span>⚠</span> En az 1 artı ve 1 eksi seçmelisiniz.
+          </p>
+        )}
 
         <ProConChipSelector
           chips={chips}
@@ -485,6 +528,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
           onNewPhotoUrlsChange={setPhotoUrls}
         />
       </SectionCard>
+      </div>
       )}
 
       {/* 4 — Sahiplik & Kullanım */}
