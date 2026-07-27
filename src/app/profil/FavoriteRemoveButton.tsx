@@ -21,9 +21,10 @@ export function FavoriteRemoveButton({ productId }: { productId: number }) {
     <button
       onClick={handleRemove}
       disabled={loading}
-      className="text-xs font-semibold text-gray-400 hover:text-red-500 transition-colors disabled:opacity-50 shrink-0"
+      aria-label="Favorilerden çıkar"
+      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50 shrink-0"
     >
-      {loading ? "..." : "Çıkar"}
+      <span className="text-amber-500" style={{ fontSize: 18 }}>{loading ? "…" : "★"}</span>
     </button>
   );
 }

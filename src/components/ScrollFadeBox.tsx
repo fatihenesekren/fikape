@@ -3,13 +3,15 @@ export function ScrollFadeBox({
   itemCount,
   visibleCount = 4,
   maxHeight,
+  alwaysFramed = false,
 }: {
   children: React.ReactNode;
   itemCount: number;
   visibleCount?: number;
   maxHeight: number;
+  alwaysFramed?: boolean;
 }) {
-  if (itemCount <= visibleCount) {
+  if (!alwaysFramed && itemCount <= visibleCount) {
     return <>{children}</>;
   }
 

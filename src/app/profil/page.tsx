@@ -15,7 +15,8 @@ import { InviteBox } from "./InviteBox";
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { ScrollFadeBox } from "@/components/ScrollFadeBox";
-import { FavoriteRemoveButton } from "./FavoriteRemoveButton";
+import { FavoriteRow } from "./FavoriteRow";
+import { getVehicleImageUrls } from "@/lib/vehicleImages";
 
 export const metadata: Metadata = { title: "Profilim" };
 
@@ -53,10 +54,28 @@ export default async function ProfilPage() {
   const favorites = await prisma.favorite.findMany({
     where: { userId },
     include: {
-      product: { include: { brand: true, model: true } },
+      product: { include: { brand: true, model: true, category: true } },
     },
     orderBy: { createdAt: "desc" },
   });
+
+  const favoriteProductIds = favorites.map((f) => f.productId);
+  const [favoriteScoreAggs, favoriteWikiUrls] = await Promise.all([
+    favoriteProductIds.length
+      ? prisma.review.groupBy({
+          by: ["productId"],
+          where: { status: "PUBLISHED", productId: { in: favoriteProductIds } },
+          _avg: { scoreOverall: true },
+          _count: { id: true },
+        })
+      : Promise.resolve([]),
+    getVehicleImageUrls(
+      favorites.filter((f) => !f.product.imageUrl).map((f) => f.product.slug)
+    ),
+  ]);
+  const favoriteScoreMap = new Map(
+    favoriteScoreAggs.map((a) => [a.productId, { avg: a._avg.scoreOverall ?? 0, count: a._count.id }])
+  );
 
   const publishedReviews = reviews.filter((r) => r.status === "PUBLISHED");
   const reviewIds = publishedReviews.map((r) => r.id);
@@ -200,34 +219,24 @@ export default async function ProfilPage() {
 
       {/* Favorilerim */}
       <div>
-        <h2 className="text-base font-bold text-gray-900 mb-3">★ Favorilerim</h2>
+        <h2 className="text-base font-bold text-gray-900 mb-3">
+          <span className="text-amber-500">★</span> Favorilerim
+        </h2>
 
         {favorites.length === 0 ? (
           <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-10 text-center text-gray-400 text-sm">
             Henüz favori aracın yok.
           </div>
         ) : (
-          <ScrollFadeBox itemCount={favorites.length} maxHeight={320}>
+          <ScrollFadeBox itemCount={favorites.length} maxHeight={320} alwaysFramed>
             <div className="space-y-2">
               {favorites.map((f) => (
-                <div
+                <FavoriteRow
                   key={f.id}
-                  className="bg-white border border-gray-100 rounded-2xl p-3 flex items-center justify-between gap-3"
-                >
-                  <Link
-                    href={`/araclar/${f.product.slug}`}
-                    className="flex-1 min-w-0 hover:opacity-80 transition-opacity"
-                  >
-                    <div className="text-xs text-gray-400">{f.product.brand.name}</div>
-                    <div className="font-semibold text-gray-900 truncate">
-                      {stripModelGenRange(f.product.model.name)}
-                      {f.product.year && (
-                        <span className="text-gray-400 font-normal ml-1.5">{f.product.year}</span>
-                      )}
-                    </div>
-                  </Link>
-                  <FavoriteRemoveButton productId={f.productId} />
-                </div>
+                  product={f.product}
+                  imageUrl={f.product.imageUrl ?? favoriteWikiUrls[f.product.slug] ?? null}
+                  score={favoriteScoreMap.get(f.productId) ?? null}
+                />
               ))}
             </div>
           </ScrollFadeBox>
