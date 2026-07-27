@@ -103,20 +103,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
-  // Kullanıcının en son GERÇEKTEN seçtiği aracı takip eder — arama kutusunu
-  // temizleyip yeniden yazma gibi ara adımlardan (selectedProduct geçici
-  // olarak null olur) etkilenmez, sadece bilinçli bir seçimde güncellenir.
-  const lastConfirmedSlugRef = useRef<string>(defaultSlug ?? "");
-
   function handleSelectProduct(p: Product) {
-    if (lastConfirmedSlugRef.current && lastConfirmedSlugRef.current !== p.slug) {
-      // Farklı bir araç seçildi — önceki aracın puanları yeni araca
-      // sessizce taşınmasın, her araç kendi puanlamasıyla başlar.
-      setScoreFiyat(0);
-      setScoreKalite(0);
-      setScorePerformans(0);
-    }
-    lastConfirmedSlugRef.current = p.slug;
     setSelectedProduct(p);
     setSearchQuery(`${p.brandName} ${stripModelGenRange(p.modelName)}${p.trimName ? ` · ${p.trimName}` : ""}${p.year ? ` (${p.year})` : ""}`);
     setDropdownOpen(false);
@@ -150,26 +137,29 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   // Chip listesini seçili araca göre hesapla
   const chips = getChipsForCategory(selectedProduct?.categorySlug ?? null);
 
-  // Araç değişince chip seçimlerini sıfırla — React'ın "render sırasında
-  // ayarla" deseni (bkz. react.dev/learn/you-might-not-need-an-effect):
-  // effect + setState yerine önceki slug'ı takip edip render anında
-  // sıfırlıyoruz, fazladan bir render turu olmuyor.
+  // Araç değişince (seçilince, DEĞİŞTİRİLİNCE ya da tamamen SİLİNİNCE) 2, 3,
+  // 4, 5 numaralı bölümlerin tüm verisi sıfırlanır — kısmi bir "aynı araca
+  // dönersen korunsun" istisnası YOK: kullanıcı seçimi sildiği an o veriler
+  // geçersiz sayılır, tekrar aynı aracı seçse bile sıfırdan başlar. React'ın
+  // "render sırasında ayarla" deseni (bkz. react.dev/learn/you-might-not-need-an-effect).
   if (productSlug !== prevProductSlug) {
-    // Gerçek bir araçtan başka bir gerçek araca geçişte (A → B) önceki
-    // puanlar yeni araca sessizce taşınmasın — her araç kendi puanlamasıyla
-    // başlar. Puan sıfırlama artık handleSelectProduct'ta, kullanıcının
-    // GERÇEKTEN seçtiği araç değiştiğinde yapılıyor (lastConfirmedSlugRef) —
-    // burada sadece pros/cons sıfırlanır, arama kutusu boşaldığında da
-    // (productSlug === "") bu çalışır, bu ikisi için sorun değil.
     setPrevProductSlug(productSlug);
+    setScoreFiyat(0);
+    setScoreKalite(0);
+    setScorePerformans(0);
     setPros([]);
     setCons([]);
+    setDetailText("");
+    setDetailTouched(false);
+    setPhotoUrls([]);
+    setWouldRecommend(null);
+    setOwnershipSlot("");
+    setTurkeySpecific(EMPTY_TURKEY_SPECIFIC_VALUES);
   }
 
-  // Puanlama bölümü, o an seçili bir araç olmadığı sürece kilitli/bulanık
-  // gösterilir — puan verilmiş olması kilidi etkilemez, çünkü puanlar zaten
-  // korunuyor (handleSelectProduct) ve araç tekrar seçilince ortaya çıkar.
-  const scoringLocked = !productSlug;
+  // 2, 3, 4, 5 numaralı bölümler, o an seçili bir araç olmadığı sürece
+  // kilitli/bulanık gösterilir.
+  const formLocked = !productSlug;
 
   function togglePro(key: string) {
     setPros((prev) => {
@@ -417,7 +407,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
       {/* 2 — FI·KA·PE Puanı */}
       <SectionCard
         step={2} title="fi·ka·pe puanı" badge="required"
-        locked={scoringLocked}
+        locked={formLocked}
         lockedHint="Puanlamak için önce bir araç seçiniz"
       >
         {FIKAPE.map(({ key, short, label, color, bg }) => (
@@ -425,7 +415,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
             key={key} short={short} label={label} color={color} bg={bg}
             value={key === "scoreFiyat" ? scoreFiyat : key === "scoreKalite" ? scoreKalite : scorePerformans}
             onChange={key === "scoreFiyat" ? setScoreFiyat : key === "scoreKalite" ? setScoreKalite : setScorePerformans}
-            disabled={scoringLocked}
+            disabled={formLocked}
           />
         ))}
 
@@ -450,7 +440,11 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
       {/* 3 — Artılar & Eksiler */}
       {!isQuick && (
-      <SectionCard step={3} title="Artılar & Eksiler" badge="required">
+      <SectionCard
+        step={3} title="Artılar & Eksiler" badge="required"
+        locked={formLocked}
+        lockedHint="Bu bölüm için önce bir araç seçiniz"
+      >
         <p className="text-xs text-gray-400 -mt-2">
           Her kategoriden en az 1, en fazla 3 seçin.
         </p>
@@ -495,7 +489,11 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
       {/* 4 — Sahiplik & Kullanım */}
       {!isQuick && (
-      <SectionCard step={4} title="Sahiplik & Kullanım" badge="optional">
+      <SectionCard
+        step={4} title="Sahiplik & Kullanım" badge="optional"
+        locked={formLocked}
+        lockedHint="Bu bölüm için önce bir araç seçiniz"
+      >
         <OwnershipUsageSection
           isEbisiklet={isEbisiklet}
           ownershipSlot={ownershipSlot}
@@ -510,7 +508,11 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
 
       {/* 5 — Türkiye'ye Özel */}
       {!isQuick && (
-      <SectionCard step={5} title="Türkiye'ye özel" badge="conditional">
+      <SectionCard
+        step={5} title="Türkiye'ye özel" badge="conditional"
+        locked={formLocked}
+        lockedHint="Bu bölüm için önce bir araç seçiniz"
+      >
         <p className="text-xs text-gray-400 -mt-2">
           Araç tipine göre sorular otomatik değişir. Hepsi opsiyoneldir.
         </p>
