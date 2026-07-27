@@ -428,7 +428,7 @@ async function main() {
         torque_nm: 38, gearbox: 6, abs: true, weight_kg: 168, seat_height_mm: 785, tank_l: 14 } },
     { slug: "zero-sr-s-2024", name: "Zero SR/S 2024", year: 2024, trimName: "Premium",
       imageUrl: null, modelId: modelZeroSRS.id, brandId: zeromotorcycles.id,
-      attributes: { fuel_type: "EV", moto_type: "elektrikli", ev_range_km: 259, power_hp: 110,
+      attributes: { fuel_type: "EV", moto_type: "touring", ev_range_km: 259, power_hp: 110,
         torque_nm: 190, abs: true, weight_kg: 220, seat_height_mm: 787 } },
   ];
 

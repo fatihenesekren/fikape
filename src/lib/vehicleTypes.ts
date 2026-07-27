@@ -16,7 +16,6 @@ export const MOTO_TYPES: TypeOption[] = [
   { value: "cross",      label: "Cross" },
   { value: "cruiser",    label: "Cruiser" },
   { value: "retro",      label: "Retro/Klasik" },
-  { value: "elektrikli", label: "Elektrikli" },
   { value: "uc-tekerlekli", label: "Üç Tekerlekli / Kargo" },
 ];
 
