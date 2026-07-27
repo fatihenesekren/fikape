@@ -14,6 +14,7 @@ interface FavoriteProduct {
   attributes: unknown;
   brand: { name: string };
   model: { name: string };
+  category: { slug: string } | null;
 }
 
 export function FavoriteRow({
@@ -28,6 +29,11 @@ export function FavoriteRow({
   const attrs = (product.attributes as Record<string, unknown>) ?? {};
   const fuelType = String(attrs.fuel_type ?? "");
   const isDomestic = isDomesticBrand(product.brand.name);
+  const categorySlug = product.category?.slug ?? "otomobil";
+  // 56x40'lık minik kutuda VehicleCard'daki (h-44, geniş kutu) object-cover
+  // dikey/dar fotoğraflarda (scooter, motosiklet) aracı neredeyse tamamen
+  // kırpıyor — burada motosikleti de "dar araç" grubuna dahil ediyoruz.
+  const isNarrowVehicle = categorySlug === "e-scooter" || categorySlug === "e-bisiklet" || categorySlug === "motosiklet";
 
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-2.5 flex items-center gap-3">
@@ -35,11 +41,22 @@ export function FavoriteRow({
         href={`/araclar/${product.slug}`}
         className="flex-1 min-w-0 flex items-center gap-3 hover:opacity-80 transition-opacity"
       >
-        <div className="relative w-14 h-10 shrink-0 rounded-lg overflow-hidden bg-gray-100">
+        <div
+          className="relative w-14 h-10 shrink-0 rounded-lg overflow-hidden"
+          style={{ background: isNarrowVehicle ? "#f5f5f5" : "#f3f4f6" }}
+        >
           {imageUrl ? (
-            <Image src={imageUrl} alt="" fill sizes="56px" className="object-cover" />
+            <Image
+              src={imageUrl}
+              alt=""
+              fill
+              sizes="56px"
+              className={isNarrowVehicle ? "object-contain p-1" : "object-cover"}
+            />
           ) : (
-            <span className="absolute inset-0 flex items-center justify-center text-lg opacity-30">🚗</span>
+            <span className="absolute inset-0 flex items-center justify-center text-lg opacity-30">
+              {isNarrowVehicle ? "🛴" : "🚗"}
+            </span>
           )}
         </div>
         <div className="flex-1 min-w-0">
