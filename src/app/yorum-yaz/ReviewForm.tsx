@@ -103,7 +103,20 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
+  // Kullanıcının en son GERÇEKTEN seçtiği aracı takip eder — arama kutusunu
+  // temizleyip yeniden yazma gibi ara adımlardan (selectedProduct geçici
+  // olarak null olur) etkilenmez, sadece bilinçli bir seçimde güncellenir.
+  const lastConfirmedSlugRef = useRef<string>(defaultSlug ?? "");
+
   function handleSelectProduct(p: Product) {
+    if (lastConfirmedSlugRef.current && lastConfirmedSlugRef.current !== p.slug) {
+      // Farklı bir araç seçildi — önceki aracın puanları yeni araca
+      // sessizce taşınmasın, her araç kendi puanlamasıyla başlar.
+      setScoreFiyat(0);
+      setScoreKalite(0);
+      setScorePerformans(0);
+    }
+    lastConfirmedSlugRef.current = p.slug;
     setSelectedProduct(p);
     setSearchQuery(`${p.brandName} ${stripModelGenRange(p.modelName)}${p.trimName ? ` · ${p.trimName}` : ""}${p.year ? ` (${p.year})` : ""}`);
     setDropdownOpen(false);
@@ -144,23 +157,19 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   if (productSlug !== prevProductSlug) {
     // Gerçek bir araçtan başka bir gerçek araca geçişte (A → B) önceki
     // puanlar yeni araca sessizce taşınmasın — her araç kendi puanlamasıyla
-    // başlar. Arama kutusuna tekrar yazarken slug geçici olarak boşalması
-    // (productSlug === "") bu sıfırlamayı TETİKLEMEMELİ, yoksa kullanıcı
-    // zaten verdiği puanı kaybeder ve puanlama alanı yeniden kilitlenir.
-    if (prevProductSlug && productSlug) {
-      setScoreFiyat(0);
-      setScoreKalite(0);
-      setScorePerformans(0);
-    }
+    // başlar. Puan sıfırlama artık handleSelectProduct'ta, kullanıcının
+    // GERÇEKTEN seçtiği araç değiştiğinde yapılıyor (lastConfirmedSlugRef) —
+    // burada sadece pros/cons sıfırlanır, arama kutusu boşaldığında da
+    // (productSlug === "") bu çalışır, bu ikisi için sorun değil.
     setPrevProductSlug(productSlug);
     setPros([]);
     setCons([]);
   }
 
-  // Puanlama bölümü sadece "araç seçilmemiş VE hiç puan verilmemiş" durumunda
-  // kilitli/bulanık gösterilir — kullanıcı puan verdikten sonra arama kutusuna
-  // tekrar dokunursa (productSlug anlık boşalır) alan aniden bulanıklaşmasın.
-  const scoringLocked = !productSlug && !(scoreFiyat > 0 || scoreKalite > 0 || scorePerformans > 0);
+  // Puanlama bölümü, o an seçili bir araç olmadığı sürece kilitli/bulanık
+  // gösterilir — puan verilmiş olması kilidi etkilemez, çünkü puanlar zaten
+  // korunuyor (handleSelectProduct) ve araç tekrar seçilince ortaya çıkar.
+  const scoringLocked = !productSlug;
 
   function togglePro(key: string) {
     setPros((prev) => {
