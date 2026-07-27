@@ -415,6 +415,7 @@ export default async function VehicleDetailPage({
       attrs.ip_rating     ? { label: "Su Geçirmezlik", value: String(attrs.ip_rating) }        : null,
       attrs.max_load_kg   ? { label: "Maks. Yük",      value: `${attrs.max_load_kg} kg` }      : null,
       attrs.tire_inch     ? { label: "Lastik",         value: `${attrs.tire_inch}"` }           : null,
+      attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: attrs.removable_battery ? "Var" : "Yok" } : null,
     ];
     if (categorySlug === "motosiklet") return [
       fuelType              ? { label: "Yakıt",        value: FUEL_LABELS[fuelType] ?? fuelType } : null,
@@ -428,6 +429,11 @@ export default async function VehicleDetailPage({
       attrs.weight_kg       ? { label: "Ağırlık",      value: `${attrs.weight_kg} kg` }        : null,
       attrs.seat_height_mm  ? { label: "Sele Yüks.",   value: `${attrs.seat_height_mm} mm` }   : null,
       attrs.ev_range_km     ? { label: "Menzil",       value: `${attrs.ev_range_km} km (WLTP)` } : null,
+      attrs.battery_kwh     ? { label: "Batarya",      value: `${attrs.battery_kwh} kWh` }     : null,
+      attrs.motor_watt      ? { label: "Motor Gücü (EV)", value: `${attrs.motor_watt} W` }      : null,
+      attrs.charge_hours    ? { label: "Şarj Süresi",  value: `~${attrs.charge_hours} saat` }  : null,
+      attrs.max_speed_kmh   ? { label: "Azami Hız",    value: `${attrs.max_speed_kmh} km/s` }  : null,
+      attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: attrs.removable_battery ? "Var" : "Yok" } : null,
     ];
     if (categorySlug === "karavan") return [
       karavanType                ? { label: "Tip",           value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
