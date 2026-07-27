@@ -374,7 +374,7 @@ export default async function VehicleDetailPage({
       attrs.berth            ? { label: "Yatak Kapasitesi", value: `${attrs.berth} kişi` }       : null,
       attrs.length_cm        ? { label: "Uzunluk",         value: `${attrs.length_cm} cm` }      : null,
       attrs.height_cm        ? { label: "İç Yükseklik",    value: `${attrs.height_cm} cm` }      : null,
-      attrs.total_weight_kg  ? { label: "Toplam Ağırlık",  value: `${attrs.total_weight_kg} kg` } : null,
+      attrs.total_weight_kg  ? { label: "Azami Yüklü Ağırlık",  value: `${attrs.total_weight_kg} kg` } : null,
     ];
     if (categorySlug === "kamyonet") return [
       attrs.power_hp         ? { label: "Güç",              value: `${attrs.power_hp} HP` }        : null,
