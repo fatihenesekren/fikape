@@ -124,7 +124,16 @@ export function ReviewCard({
                   {soldReason && soldReason.length > 0 ? `Satıldı · ${formatSoldReasons(soldReason, soldReasonNote)}` : "Eski Kullanıcı"}
                 </span>
               )}
-              {ownershipMonths != null && (
+              {ownershipStatus == null && (
+                <span
+                  className="text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1"
+                  style={{ background: "#EFF6FF", color: "#1E40AF" }}
+                  title="Bu yorumu yazan kullanıcının bu araç için güncel bir garaj kaydı yok"
+                >
+                  Garaj Kaydı Yok
+                </span>
+              )}
+              {ownershipStatus != null && ownershipMonths != null && (
                 <span className="text-[10px] text-gray-400">
                   {ownershipMonths} ay kullandı
                 </span>
