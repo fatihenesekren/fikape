@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { SCORE_LABELS } from "@/lib/fikape";
 
-export function ScoreSelector({ label, short, color, bg, value, initialValue, onChange }: {
+export function ScoreSelector({ label, short, color, bg, value, initialValue, onChange, disabled = false }: {
   label: string; short: string; color: string; bg: string;
-  value: number; initialValue?: number; onChange: (v: number) => void;
+  value: number; initialValue?: number; onChange: (v: number) => void; disabled?: boolean;
 }) {
   const [hovered, setHovered] = useState(0);
-  const active = hovered || value;
+  const active = disabled ? value : (hovered || value);
 
   // Kaydedilmiş puandan farklıysa (düzenleme ekranında) küçük bir "eski → yeni" göstergesi
   const changed = initialValue != null && initialValue > 0 && active > 0 && active !== initialValue;
@@ -49,10 +49,11 @@ export function ScoreSelector({ label, short, color, bg, value, initialValue, on
             role="radio"
             aria-checked={n === value}
             aria-label={`${n} puan`}
+            disabled={disabled}
             onClick={() => onChange(n)}
             onMouseEnter={() => setHovered(n)}
             onMouseLeave={() => setHovered(0)}
-            className="flex-1 flex flex-col items-center gap-1"
+            className="flex-1 flex flex-col items-center gap-1 disabled:cursor-not-allowed"
           >
             <div
               className="w-full h-7 rounded-md transition-all duration-100"

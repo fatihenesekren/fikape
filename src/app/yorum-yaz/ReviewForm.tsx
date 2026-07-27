@@ -65,6 +65,8 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   const [searchLoading, setSearchLoading] = useState(false);
   const [dropdownOpen,  setDropdownOpen]  = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
+  const vehicleSectionRef = useRef<HTMLDivElement>(null);
+  const [highlightVehicle, setHighlightVehicle] = useState(false);
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(
     defaultSlug ? (products.find((p) => p.slug === defaultSlug) ?? null) : null
@@ -140,10 +142,25 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
   // effect + setState yerine önceki slug'ı takip edip render anında
   // sıfırlıyoruz, fazladan bir render turu olmuyor.
   if (productSlug !== prevProductSlug) {
+    // Gerçek bir araçtan başka bir gerçek araca geçişte (A → B) önceki
+    // puanlar yeni araca sessizce taşınmasın — her araç kendi puanlamasıyla
+    // başlar. Arama kutusuna tekrar yazarken slug geçici olarak boşalması
+    // (productSlug === "") bu sıfırlamayı TETİKLEMEMELİ, yoksa kullanıcı
+    // zaten verdiği puanı kaybeder ve puanlama alanı yeniden kilitlenir.
+    if (prevProductSlug && productSlug) {
+      setScoreFiyat(0);
+      setScoreKalite(0);
+      setScorePerformans(0);
+    }
     setPrevProductSlug(productSlug);
     setPros([]);
     setCons([]);
   }
+
+  // Puanlama bölümü sadece "araç seçilmemiş VE hiç puan verilmemiş" durumunda
+  // kilitli/bulanık gösterilir — kullanıcı puan verdikten sonra arama kutusuna
+  // tekrar dokunursa (productSlug anlık boşalır) alan aniden bulanıklaşmasın.
+  const scoringLocked = !productSlug && !(scoreFiyat > 0 || scoreKalite > 0 || scorePerformans > 0);
 
   function togglePro(key: string) {
     setPros((prev) => {
@@ -180,7 +197,13 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
     e.preventDefault();
     setError("");
 
-    if (!productSlug)    { setError("Lütfen bir araç seçiniz."); return; }
+    if (!productSlug) {
+      setError("Lütfen bir araç seçiniz.");
+      vehicleSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      setHighlightVehicle(true);
+      setTimeout(() => setHighlightVehicle(false), 1500);
+      return;
+    }
     if (alreadyReviewed) { setError("Bu araç için zaten bir yorumun var."); return; }
     if (!scoresComplete) { setError("Lütfen tüm FI·KA·PE puanlarını veriniz."); return; }
     if (!isQuick) {
@@ -265,6 +288,10 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
       )}
 
       {/* 1 — Araç */}
+      <div
+        ref={vehicleSectionRef}
+        className={`rounded-2xl transition-shadow duration-300 ${highlightVehicle ? "ring-2 ring-blue-400 ring-offset-2" : ""}`}
+      >
       <SectionCard step={1} title="Araç" badge="required">
 
         <div ref={searchRef} className="relative">
@@ -376,14 +403,20 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
           </div>
         )}
       </SectionCard>
+      </div>
 
       {/* 2 — FI·KA·PE Puanı */}
-      <SectionCard step={2} title="fi·ka·pe puanı" badge="required">
+      <SectionCard
+        step={2} title="fi·ka·pe puanı" badge="required"
+        locked={scoringLocked}
+        lockedHint="Puanlamak için önce bir araç seçiniz"
+      >
         {FIKAPE.map(({ key, short, label, color, bg }) => (
           <ScoreSelector
             key={key} short={short} label={label} color={color} bg={bg}
             value={key === "scoreFiyat" ? scoreFiyat : key === "scoreKalite" ? scoreKalite : scorePerformans}
             onChange={key === "scoreFiyat" ? setScoreFiyat : key === "scoreKalite" ? setScoreKalite : setScorePerformans}
+            disabled={scoringLocked}
           />
         ))}
 

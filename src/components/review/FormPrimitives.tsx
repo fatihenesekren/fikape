@@ -89,9 +89,11 @@ export function YesNo({ value, onChange }: { value: boolean | null; onChange: (v
   );
 }
 
-export function SectionCard({ step, title, badge, children }: {
+export function SectionCard({ step, title, badge, locked, lockedHint, children }: {
   step: number; title: string;
   badge?: "required" | "optional" | "conditional";
+  locked?: boolean;
+  lockedHint?: string;
   children: React.ReactNode;
 }) {
   const badgeStyles = {
@@ -117,7 +119,20 @@ export function SectionCard({ step, title, badge, children }: {
           </span>
         )}
       </div>
-      {children}
+      {locked ? (
+        <div className="relative">
+          <div className="space-y-5 blur-[2px] opacity-60 pointer-events-none select-none" aria-hidden="true">
+            {children}
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center text-center px-4">
+            <p className="text-xs font-semibold text-gray-500 bg-white/90 rounded-xl px-4 py-2 border border-gray-200">
+              🔒 {lockedHint ?? "Bu bölüm için önce bir araç seçiniz"}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-5">{children}</div>
+      )}
     </div>
   );
 }
