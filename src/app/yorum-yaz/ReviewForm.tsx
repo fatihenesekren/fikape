@@ -164,6 +164,12 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
     setWouldRecommend(null);
     setOwnershipSlot("");
     setTurkeySpecific(EMPTY_TURKEY_SPECIFIC_VALUES);
+    // Veriler sıfırlanınca eski hata banner'ı ve "eksik alan" kırmızı
+    // uyarıları (Puan ver, En az 1 artı/eksi seçiniz vb.) da geçerliliğini
+    // yitirir — onlar da sıfırlanmazsa artık boş olan alanlar hâlâ "hatalı"
+    // gösterilmeye devam eder.
+    setError("");
+    setSubmitAttempted(false);
   }
 
   // 2, 3, 4, 5 numaralı bölümler, o an seçili bir araç olmadığı sürece
