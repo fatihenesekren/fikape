@@ -2519,7 +2519,7 @@
         }
       ]
     },
-    {
+        {
       "make": "BMW",
       "models": [
         {
@@ -2532,7 +2532,7 @@
             "116d",
             "118d",
             "120d",
-            "M135i",
+            "123d",
             "Diğer"
           ],
           "trims": [
@@ -2553,6 +2553,7 @@
             "118d",
             "120d",
             "125d",
+            "M135i",
             "M140i",
             "Diğer"
           ],
@@ -2641,31 +2642,26 @@
             "218i Gran Coupé": [
               "Sport Line",
               "M Sport",
-              "M2",
               "Diğer"
             ],
             "220i Coupé": [
               "Sport Line",
               "M Sport",
-              "M2",
               "Diğer"
             ],
             "230i": [
               "Sport Line",
               "M Sport",
-              "M2",
               "Diğer"
             ],
             "218d Gran Coupé": [
               "Sport Line",
               "M Sport",
-              "M2",
               "Diğer"
             ],
             "220d": [
               "Sport Line",
               "M Sport",
-              "M2",
               "Diğer"
             ],
             "M240i xDrive": [
@@ -2673,8 +2669,6 @@
               "Diğer"
             ],
             "M2 Coupé": [
-              "Sport Line",
-              "M Sport",
               "M2",
               "Diğer"
             ]
@@ -2696,7 +2690,37 @@
             "Standart",
             "M3",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "316i 90": [
+              "Standart",
+              "Diğer"
+            ],
+            "318i 113": [
+              "Standart",
+              "Diğer"
+            ],
+            "320i 129": [
+              "Standart",
+              "Diğer"
+            ],
+            "325i 171": [
+              "Standart",
+              "Diğer"
+            ],
+            "324d 86": [
+              "Standart",
+              "Diğer"
+            ],
+            "324td 115": [
+              "Standart",
+              "Diğer"
+            ],
+            "M3 (E30) 200": [
+              "M3",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "3 Serisi E36 (1990-2000)",
@@ -2717,7 +2741,53 @@
             "SE",
             "M3",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "316i 102": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "318i 113": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "320i 150": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "323i 170": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "325i 192": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "328i 193": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "318tds 90": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "325tds 143": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "M3 (E36) 286": [
+              "M3",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "3 Serisi E46 (1998-2005)",
@@ -2742,7 +2812,83 @@
             "M Sport",
             "M3",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "316i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "318i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "320i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "323i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "325i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "328i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "330i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "318d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "320d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "330d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "M3 3.2": [
+              "M3",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "3 Serisi E90 (2005-2012)",
@@ -2768,7 +2914,90 @@
             "M Sport",
             "M3",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "316i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "318i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "320i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "325i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "330i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "335i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "318d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "320d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "325d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "330d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "335d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "M3 4.0 V8": [
+              "M3",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "3 Serisi F30 (2012-2018)",
@@ -2778,6 +3007,7 @@
             "320i",
             "328i",
             "330i",
+            "335i",
             "340i",
             "316d",
             "318d",
@@ -2797,7 +3027,112 @@
             "M3",
             "M3 Competition",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "316i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "318i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "320i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "328i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "330i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "340i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "316d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "318d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "320d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "325d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "330d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "320i xDrive": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "320d xDrive": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "M3": [
+              "M3",
+              "M3 Competition",
+              "Diğer"
+            ],
+            "335i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "3 Serisi G20 (2018-)",
@@ -2827,56 +3162,42 @@
               "Advantage",
               "Sport Line",
               "M Sport",
-              "M3",
-              "M3 Competition",
               "Diğer"
             ],
             "320i": [
               "Advantage",
               "Sport Line",
               "M Sport",
-              "M3",
-              "M3 Competition",
               "Diğer"
             ],
             "330i": [
               "Advantage",
               "Sport Line",
               "M Sport",
-              "M3",
-              "M3 Competition",
               "Diğer"
             ],
             "318d": [
               "Advantage",
               "Sport Line",
               "M Sport",
-              "M3",
-              "M3 Competition",
               "Diğer"
             ],
             "320d": [
               "Advantage",
               "Sport Line",
               "M Sport",
-              "M3",
-              "M3 Competition",
               "Diğer"
             ],
             "330d": [
               "Advantage",
               "Sport Line",
               "M Sport",
-              "M3",
-              "M3 Competition",
               "Diğer"
             ],
             "330e PHEV": [
               "Advantage",
               "Sport Line",
               "M Sport",
-              "M3",
-              "M3 Competition",
               "Diğer"
             ],
             "M340i xDrive": [
@@ -2884,9 +3205,6 @@
               "Diğer"
             ],
             "M3": [
-              "Advantage",
-              "Sport Line",
-              "M Sport",
               "M3",
               "M3 Competition",
               "Diğer"
@@ -2918,31 +3236,26 @@
             "418i Gran Coupé": [
               "Sport Line",
               "M Sport",
-              "M4",
               "Diğer"
             ],
             "420i Coupé": [
               "Sport Line",
               "M Sport",
-              "M4",
               "Diğer"
             ],
             "430i": [
               "Sport Line",
               "M Sport",
-              "M4",
               "Diğer"
             ],
             "418d Gran Coupé": [
               "Sport Line",
               "M Sport",
-              "M4",
               "Diğer"
             ],
             "420d": [
               "Sport Line",
               "M Sport",
-              "M4",
               "Diğer"
             ],
             "M440i xDrive": [
@@ -2950,13 +3263,12 @@
               "Diğer"
             ],
             "M4 Coupé": [
-              "Sport Line",
-              "M Sport",
               "M4",
               "Diğer"
             ],
             "M4 Competition": [
-              "M4 Competition",
+              "Sport Line",
+              "M Sport",
               "Diğer"
             ]
           }
@@ -2979,7 +3291,48 @@
             "SE",
             "M5",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "518i 115": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "520i 129": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "525i 171": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "530i 188": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "535i 211": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "524td 115": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "525tds 143": [
+              "Standart",
+              "SE",
+              "Diğer"
+            ],
+            "M5 (E34) 315": [
+              "M5",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "5 Serisi E39 (1995-2003)",
@@ -3002,7 +3355,67 @@
             "Sport",
             "M5",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "520i 150": [
+              "Standart",
+              "SE",
+              "Sport",
+              "Diğer"
+            ],
+            "523i 170": [
+              "Standart",
+              "SE",
+              "Sport",
+              "Diğer"
+            ],
+            "525i 192": [
+              "Standart",
+              "SE",
+              "Sport",
+              "Diğer"
+            ],
+            "528i 193": [
+              "Standart",
+              "SE",
+              "Sport",
+              "Diğer"
+            ],
+            "530i 231": [
+              "Standart",
+              "SE",
+              "Sport",
+              "Diğer"
+            ],
+            "535i 235": [
+              "Standart",
+              "SE",
+              "Sport",
+              "Diğer"
+            ],
+            "520d 105": [
+              "Standart",
+              "SE",
+              "Sport",
+              "Diğer"
+            ],
+            "525d 163": [
+              "Standart",
+              "SE",
+              "Sport",
+              "Diğer"
+            ],
+            "530d 184": [
+              "Standart",
+              "SE",
+              "Sport",
+              "Diğer"
+            ],
+            "M5 (E39) 400": [
+              "M5",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "5 Serisi E60 (2003-2010)",
@@ -3026,7 +3439,76 @@
             "M Sport",
             "M5",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "520i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "523i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "525i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "530i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "535i": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "520d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "525d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "530d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "535d": [
+              "Standart",
+              "SE",
+              "Sport",
+              "M Sport",
+              "Diğer"
+            ],
+            "M5 V10": [
+              "M5",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "5 Serisi F10 (2010-2017)",
@@ -3052,15 +3534,100 @@
             "M Sport",
             "M5",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "520i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "523i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "528i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "530i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "535i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "518d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "520d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "525d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "530d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "535d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "M5": [
+              "M5",
+              "Diğer"
+            ],
+            "M5 Competition": [
+              "M5",
+              "Diğer"
+            ]
+          }
         },
         {
-          "name": "5 Serisi G30 (2017-)",
+          "name": "5 Serisi G30 (2017-2023)",
           "versions": [
             "520i",
             "530i",
             "520d",
             "530d",
+            "540i xDrive",
+            "530e",
+            "518d",
+            "520d xDrive",
+            "540d xDrive",
             "545e xDrive PHEV",
             "M550i xDrive",
             "M5",
@@ -3078,36 +3645,26 @@
             "520i": [
               "Sport Line",
               "M Sport",
-              "M5",
-              "M5 Competition",
               "Diğer"
             ],
             "530i": [
               "Sport Line",
               "M Sport",
-              "M5",
-              "M5 Competition",
               "Diğer"
             ],
             "520d": [
               "Sport Line",
               "M Sport",
-              "M5",
-              "M5 Competition",
               "Diğer"
             ],
             "530d": [
               "Sport Line",
               "M Sport",
-              "M5",
-              "M5 Competition",
               "Diğer"
             ],
             "545e xDrive PHEV": [
               "Sport Line",
               "M Sport",
-              "M5",
-              "M5 Competition",
               "Diğer"
             ],
             "M550i xDrive": [
@@ -3115,10 +3672,33 @@
               "Diğer"
             ],
             "M5": [
-              "Sport Line",
-              "M Sport",
               "M5",
               "M5 Competition",
+              "Diğer"
+            ],
+            "540i xDrive": [
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "530e": [
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "518d": [
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "520d xDrive": [
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "540d xDrive": [
+              "Sport Line",
+              "M Sport",
               "Diğer"
             ]
           }
@@ -3153,7 +3733,33 @@
             "Sport",
             "M6",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "630i 258": [
+              "Standart",
+              "Sport",
+              "Diğer"
+            ],
+            "645Ci 333": [
+              "Standart",
+              "Sport",
+              "Diğer"
+            ],
+            "650i 367": [
+              "Standart",
+              "Sport",
+              "Diğer"
+            ],
+            "630d 218": [
+              "Standart",
+              "Sport",
+              "Diğer"
+            ],
+            "M6 507": [
+              "M6",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "6 Serisi F12/F13 (2012-2018)",
@@ -3170,7 +3776,33 @@
             "M Sport",
             "M6",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "640i 320": [
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "650i 450": [
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "640d 313": [
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "640d xDrive 313": [
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "M6 560": [
+              "M6",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "7 Serisi E38 (1994-2001)",
@@ -3209,7 +3841,7 @@
           ]
         },
         {
-          "name": "7 Serisi F01/F02 (2009-2015)",
+          "name": "7 Serisi F01/F02 (2008-2015)",
           "versions": [
             "730i 258",
             "740i 326",
@@ -3384,10 +4016,11 @@
           ]
         },
         {
-          "name": "X3 G01 (2017-)",
+          "name": "X3 G01 (2017-2024)",
           "versions": [
             "xDrive20i",
             "xDrive30i",
+            "xDrive18d",
             "xDrive20d",
             "xDrive30d",
             "xDrive30e PHEV",
@@ -3451,6 +4084,13 @@
             ],
             "X3 M Competition": [
               "X3 M",
+              "Diğer"
+            ],
+            "xDrive18d": [
+              "Advantage",
+              "Sport Line",
+              "M Sport",
+              "xLine",
               "Diğer"
             ]
           }
@@ -3636,7 +4276,10 @@
             "xDrive30d",
             "xDrive40d",
             "xDrive45e PHEV",
+            "xDrive50e PHEV",
+            "M50d",
             "M50i",
+            "M60i xDrive",
             "X5 M",
             "X5 M Competition",
             "Diğer"
@@ -3646,6 +4289,7 @@
             "M Sport",
             "xLine",
             "M50i",
+            "M60i",
             "X5 M",
             "Diğer"
           ],
@@ -3684,6 +4328,22 @@
             ],
             "X5 M Competition": [
               "X5 M",
+              "Diğer"
+            ],
+            "xDrive50e PHEV": [
+              "Sport Line",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "M50d": [
+              "Sport Line",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "M60i xDrive": [
+              "M60i",
               "Diğer"
             ]
           }
@@ -3732,7 +4392,7 @@
           }
         },
         {
-          "name": "X6 F16 (2015-2019)",
+          "name": "X6 F16 (2014-2019)",
           "versions": [
             "xDrive35i 306",
             "xDrive50i 450",
@@ -3782,6 +4442,7 @@
             "xDrive30d",
             "xDrive40d",
             "M50i",
+            "M60i xDrive",
             "X6 M",
             "X6 M Competition",
             "Diğer"
@@ -3790,6 +4451,7 @@
             "Sport Line",
             "M Sport",
             "M50i",
+            "M60i",
             "X6 M",
             "Diğer"
           ],
@@ -3825,6 +4487,10 @@
             "X6 M Competition": [
               "X6 M",
               "Diğer"
+            ],
+            "M60i xDrive": [
+              "M60i",
+              "Diğer"
             ]
           }
         },
@@ -3834,6 +4500,7 @@
             "xDrive40i",
             "xDrive30d",
             "xDrive40d",
+            "M50d",
             "M60i",
             "Diğer"
           ],
@@ -3866,6 +4533,12 @@
             "M60i": [
               "M60i",
               "Diğer"
+            ],
+            "M50d": [
+              "Sport Line",
+              "M Sport",
+              "xLine",
+              "Diğer"
             ]
           }
         },
@@ -3884,7 +4557,33 @@
             "Standart",
             "M",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "1.8 115": [
+              "Standart",
+              "Diğer"
+            ],
+            "1.9 118": [
+              "Standart",
+              "Diğer"
+            ],
+            "2.0i 150": [
+              "Standart",
+              "Diğer"
+            ],
+            "2.8i 193": [
+              "Standart",
+              "Diğer"
+            ],
+            "3.0i 231": [
+              "Standart",
+              "Diğer"
+            ],
+            "M Roadster 321": [
+              "M",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "Z4",
@@ -3918,7 +4617,7 @@
           }
         },
         {
-          "name": "8 Serisi E31 (1991-1997)",
+          "name": "8 Serisi E31 (1990-1999)",
           "versions": [
             "840i 286",
             "850i 300",
@@ -3950,7 +4649,6 @@
             "840i 340": [
               "Sport Line",
               "M Sport",
-              "M8",
               "Diğer"
             ],
             "M850i xDrive 530": [
@@ -3960,12 +4658,9 @@
             "840d xDrive 320": [
               "Sport Line",
               "M Sport",
-              "M8",
               "Diğer"
             ],
             "M8 Competition 625": [
-              "Sport Line",
-              "M Sport",
               "M8",
               "Diğer"
             ]
@@ -3974,6 +4669,11 @@
         {
           "name": "i3",
           "versions": [
+            "i3 60Ah",
+            "i3 REx 60Ah",
+            "i3 94Ah",
+            "i3 REx 94Ah",
+            "i3s 94Ah",
             "i3 120Ah",
             "i3s 120Ah",
             "i3 REx 120Ah",
@@ -4109,6 +4809,7 @@
         {
           "name": "iX1",
           "versions": [
+            "eDrive20",
             "xDrive30",
             "Diğer"
           ],
@@ -4122,11 +4823,12 @@
         {
           "name": "iX3",
           "versions": [
-            "Impressive",
+            "iX3",
             "Diğer"
           ],
           "trims": [
-            "Sport Line",
+            "Inspiring",
+            "Impressive",
             "M Sport",
             "Diğer"
           ]
@@ -4139,6 +4841,109 @@
           "trims": [
             "Diğer"
           ]
+        },
+        {
+          "name": "5 Serisi G60 (2023-)",
+          "versions": [
+            "520i",
+            "530i",
+            "520d",
+            "540d xDrive",
+            "530e",
+            "550e xDrive PHEV",
+            "M60i xDrive",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "M Sport",
+            "M Sport Pro",
+            "M60i",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "520i": [
+              "Standart",
+              "M Sport",
+              "M Sport Pro",
+              "Diğer"
+            ],
+            "530i": [
+              "Standart",
+              "M Sport",
+              "M Sport Pro",
+              "Diğer"
+            ],
+            "520d": [
+              "Standart",
+              "M Sport",
+              "M Sport Pro",
+              "Diğer"
+            ],
+            "540d xDrive": [
+              "Standart",
+              "M Sport",
+              "M Sport Pro",
+              "Diğer"
+            ],
+            "530e": [
+              "Standart",
+              "M Sport",
+              "M Sport Pro",
+              "Diğer"
+            ],
+            "550e xDrive PHEV": [
+              "Standart",
+              "M Sport",
+              "M Sport Pro",
+              "Diğer"
+            ],
+            "M60i xDrive": [
+              "M60i",
+              "Diğer"
+            ]
+          }
+        },
+        {
+          "name": "X3 G45 (2024-)",
+          "versions": [
+            "20 xDrive",
+            "20d xDrive",
+            "30e xDrive PHEV",
+            "M50 xDrive",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "M Sport",
+            "xLine",
+            "M50",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "20 xDrive": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "20d xDrive": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "30e xDrive PHEV": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "M50 xDrive": [
+              "M50",
+              "Diğer"
+            ]
+          }
         }
       ]
     },
@@ -25851,100 +26656,60 @@
         }
       ]
     },
-    {
+        {
       "make": "BMW",
       "models": [
         {
           "name": "S 1000 RR",
           "versions": [
-            "210 CV 1000cc",
-            "M Package",
+            "999cc 207 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "M Package",
+            "Sport",
+            "Race",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "210 CV 1000cc": [
-              "Standart",
-              "Diğer"
-            ],
-            "M Package": [
-              "M Package",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
           "name": "S 1000 R",
           "versions": [
-            "165 CV 1000cc",
-            "M Package",
+            "999cc 165 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "M Package",
+            "Sport",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "165 CV 1000cc": [
-              "Standart",
-              "Diğer"
-            ],
-            "M Package": [
-              "M Package",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
           "name": "S 1000 XR",
           "versions": [
-            "165 CV 1000cc",
-            "M Package",
+            "999cc 165 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "M Package",
+            "Sport",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "165 CV 1000cc": [
-              "Standart",
-              "Diğer"
-            ],
-            "M Package": [
-              "M Package",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
           "name": "M 1000 RR",
           "versions": [
-            "212 CV 1000cc",
-            "Competition",
+            "999cc 212 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Competition",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "212 CV 1000cc": [
-              "Standart",
-              "Diğer"
-            ],
-            "Competition": [
-              "Competition",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
           "name": "R 1100 GS (1994-1999)",
@@ -25961,105 +26726,96 @@
           "name": "R 1150 GS (1999-2004)",
           "versions": [
             "1130cc 85 CV",
-            "Adventure 98 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
-            "Adventure",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "1130cc 85 CV": [
-              "Standart",
-              "Diğer"
-            ],
-            "Adventure 98 CV": [
-              "Adventure",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
-          "name": "R 1200 GS (2004-2018)",
+          "name": "R 1150 GS Adventure (2002-2005)",
           "versions": [
-            "105 CV 1170cc",
-            "Adventure 105 CV",
-            "LC 125 CV",
-            "LC Adventure 125 CV",
-            "Rallye 125 CV",
+            "1130cc 98 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
-            "Adventure",
-            "TE",
-            "Rallye",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1200 GS (2004-2012)",
+          "versions": [
+            "1170cc 105 CV",
             "Diğer"
           ],
-          "trimsByVersion": {
-            "105 CV 1170cc": [
-              "Standart",
-              "TE",
-              "Diğer"
-            ],
-            "Adventure 105 CV": [
-              "Adventure",
-              "Diğer"
-            ],
-            "LC 125 CV": [
-              "Standart",
-              "TE",
-              "Diğer"
-            ],
-            "LC Adventure 125 CV": [
-              "Adventure",
-              "Diğer"
-            ],
-            "Rallye 125 CV": [
-              "Rallye",
-              "Diğer"
-            ]
-          }
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1200 GS LC (2013-2018)",
+          "versions": [
+            "1170cc 125 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Rallye",
+            "Triple Black",
+            "Exclusive",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1200 GS Adventure (2006-2018)",
+          "versions": [
+            "1170cc 105 CV",
+            "1170cc 125 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Rallye",
+            "Diğer"
+          ]
         },
         {
           "name": "R 1250 GS (2018-)",
           "versions": [
-            "136 CV 1254cc",
-            "Adventure",
-            "Trophy",
+            "1254cc 136 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
-            "Adventure",
-            "TE",
-            "40 Years",
+            "Trophy",
+            "Rallye",
+            "Triple Black",
+            "40 Years GS",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1250 GS Adventure",
+          "versions": [
+            "1254cc 136 CV",
             "Diğer"
           ],
-          "trimsByVersion": {
-            "136 CV 1254cc": [
-              "Standart",
-              "TE",
-              "40 Years",
-              "Diğer"
-            ],
-            "Adventure": [
-              "Adventure",
-              "Diğer"
-            ],
-            "Trophy": [
-              "Standart",
-              "TE",
-              "40 Years",
-              "Diğer"
-            ]
-          }
+          "trims": [
+            "Standart",
+            "Trophy",
+            "Rallye",
+            "Triple Black",
+            "40 Years GS",
+            "Diğer"
+          ]
         },
         {
           "name": "R 1250 RT",
           "versions": [
-            "136 CV 1254cc",
+            "1254cc 136 CV",
             "Diğer"
           ],
           "trims": [
@@ -26069,100 +26825,110 @@
           ]
         },
         {
+          "name": "R 1200 RT",
+          "versions": [
+            "1170cc 110 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1250 R",
+          "versions": [
+            "1254cc 136 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 1200 R",
+          "versions": [
+            "1170cc 125 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "R nineT",
           "versions": [
             "1170cc 110 CV",
-            "Scrambler",
-            "Pure",
-            "Urban G/S",
             "Diğer"
           ],
           "trims": [
             "Standart",
-            "Scrambler",
-            "Pure",
-            "Urban G/S",
-            "Racer",
+            "Option 719",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "1170cc 110 CV": [
-              "Standart",
-              "Racer",
-              "Diğer"
-            ],
-            "Scrambler": [
-              "Scrambler",
-              "Diğer"
-            ],
-            "Pure": [
-              "Pure",
-              "Diğer"
-            ],
-            "Urban G/S": [
-              "Urban G/S",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
-          "name": "F 650 (1993-2007)",
+          "name": "R nineT Racer",
+          "versions": [
+            "1170cc 110 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Racer",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 650 Funduro (1993-2000)",
           "versions": [
             "652cc 48 CV",
-            "GS 48 CV",
-            "Funduro",
             "Diğer"
           ],
           "trims": [
             "Standart",
-            "GS",
-            "Funduro",
+            "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 650 GS (2000-2007)",
+          "versions": [
+            "652cc 50 CV",
             "Diğer"
           ],
-          "trimsByVersion": {
-            "652cc 48 CV": [
-              "Standart",
-              "GS",
-              "Diğer"
-            ],
-            "GS 48 CV": [
-              "Standart",
-              "GS",
-              "Diğer"
-            ],
-            "Funduro": [
-              "Funduro",
-              "Diğer"
-            ]
-          }
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
         },
         {
           "name": "F 800 GS (2008-2018)",
           "versions": [
-            "85 CV 798cc",
-            "Adventure 85 CV",
+            "798cc 85 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
-            "Adventure",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 800 GS Adventure",
+          "versions": [
+            "798cc 85 CV",
             "Diğer"
           ],
-          "trimsByVersion": {
-            "85 CV 798cc": [
-              "Standart",
-              "Diğer"
-            ],
-            "Adventure 85 CV": [
-              "Adventure",
-              "Diğer"
-            ]
-          }
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
         },
         {
           "name": "F 800 R (2009-2019)",
           "versions": [
-            "90 CV 798cc",
+            "798cc 90 CV",
             "Diğer"
           ],
           "trims": [
@@ -26173,30 +26939,29 @@
         {
           "name": "F 850 GS (2018-)",
           "versions": [
-            "95 CV 853cc",
-            "Adventure",
+            "853cc 95 CV",
             "Diğer"
           ],
           "trims": [
             "Standart",
-            "Adventure",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "F 850 GS Adventure",
+          "versions": [
+            "853cc 95 CV",
             "Diğer"
           ],
-          "trimsByVersion": {
-            "95 CV 853cc": [
-              "Standart",
-              "Diğer"
-            ],
-            "Adventure": [
-              "Adventure",
-              "Diğer"
-            ]
-          }
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
         },
         {
           "name": "F 900 R",
           "versions": [
-            "105 CV 895cc",
+            "895cc 105 CV",
             "Diğer"
           ],
           "trims": [
@@ -26208,7 +26973,7 @@
         {
           "name": "F 900 XR",
           "versions": [
-            "105 CV 895cc",
+            "895cc 105 CV",
             "Diğer"
           ],
           "trims": [
@@ -26220,7 +26985,7 @@
         {
           "name": "G 310 R",
           "versions": [
-            "34 CV 313cc",
+            "313cc 34 CV",
             "Diğer"
           ],
           "trims": [
@@ -26231,7 +26996,7 @@
         {
           "name": "G 310 GS",
           "versions": [
-            "34 CV 313cc",
+            "313cc 34 CV",
             "Diğer"
           ],
           "trims": [
@@ -26240,10 +27005,22 @@
           ]
         },
         {
-          "name": "K 1600 GT/GTL",
+          "name": "K 1600 GT",
           "versions": [
-            "160 CV 1649cc GT",
-            "160 CV 1649cc GTL",
+            "1649cc 160 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "SE",
+            "Exclusive",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "K 1600 GTL",
+          "versions": [
+            "1649cc 160 CV",
             "Diğer"
           ],
           "trims": [
@@ -26256,7 +27033,7 @@
         {
           "name": "C 400 X",
           "versions": [
-            "34 CV 350cc",
+            "350cc 34 CV",
             "Diğer"
           ],
           "trims": [
@@ -26276,9 +27053,20 @@
           ]
         },
         {
+          "name": "CE 02",
+          "versions": [
+            "11 kW Elektrikli",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "C 400 GT",
           "versions": [
-            "34 CV 350cc",
+            "350cc 34 CV",
             "Diğer"
           ],
           "trims": [
@@ -26289,7 +27077,7 @@
         {
           "name": "C 600 Sport",
           "versions": [
-            "60 CV 647cc",
+            "647cc 60 CV",
             "Diğer"
           ],
           "trims": [
@@ -26300,7 +27088,7 @@
         {
           "name": "C 650 GT",
           "versions": [
-            "60 CV 647cc",
+            "647cc 60 CV",
             "Diğer"
           ],
           "trims": [
@@ -26311,7 +27099,7 @@
         {
           "name": "C 650 Sport",
           "versions": [
-            "60 CV 647cc",
+            "647cc 60 CV",
             "Diğer"
           ],
           "trims": [
@@ -26344,7 +27132,7 @@
         {
           "name": "F 700 GS",
           "versions": [
-            "75 CV 798cc",
+            "798cc 75 CV",
             "Diğer"
           ],
           "trims": [
@@ -26355,7 +27143,7 @@
         {
           "name": "F 750 GS",
           "versions": [
-            "77 CV 853cc",
+            "853cc 77 CV",
             "Diğer"
           ],
           "trims": [
@@ -26366,7 +27154,7 @@
         {
           "name": "F 800 GT",
           "versions": [
-            "90 CV 798cc",
+            "798cc 90 CV",
             "Diğer"
           ],
           "trims": [
@@ -26377,7 +27165,7 @@
         {
           "name": "F 800 S",
           "versions": [
-            "85 CV 798cc",
+            "798cc 85 CV",
             "Diğer"
           ],
           "trims": [
@@ -26388,7 +27176,7 @@
         {
           "name": "F 800 ST",
           "versions": [
-            "85 CV 798cc",
+            "798cc 85 CV",
             "Diğer"
           ],
           "trims": [
@@ -26399,7 +27187,7 @@
         {
           "name": "F 900 GS",
           "versions": [
-            "105 CV 895cc",
+            "895cc 105 CV",
             "Diğer"
           ],
           "trims": [
@@ -26410,7 +27198,7 @@
         {
           "name": "F 900 GS Adventure",
           "versions": [
-            "105 CV 895cc",
+            "895cc 105 CV",
             "Diğer"
           ],
           "trims": [
@@ -26421,7 +27209,7 @@
         {
           "name": "G 650 GS",
           "versions": [
-            "48 CV 652cc",
+            "652cc 48 CV",
             "Diğer"
           ],
           "trims": [
@@ -26432,7 +27220,7 @@
         {
           "name": "G 650 X Country",
           "versions": [
-            "53 CV 652cc",
+            "652cc 53 CV",
             "Diğer"
           ],
           "trims": [
@@ -26443,7 +27231,7 @@
         {
           "name": "K1",
           "versions": [
-            "100 CV 987cc",
+            "987cc 100 CV",
             "Diğer"
           ],
           "trims": [
@@ -26454,7 +27242,7 @@
         {
           "name": "K 1100 LT",
           "versions": [
-            "100 CV 1092cc",
+            "1092cc 100 CV",
             "Diğer"
           ],
           "trims": [
@@ -26465,7 +27253,7 @@
         {
           "name": "K 1200 GT",
           "versions": [
-            "152 CV 1157cc",
+            "1157cc 152 CV",
             "Diğer"
           ],
           "trims": [
@@ -26476,7 +27264,7 @@
         {
           "name": "K 1200 LT",
           "versions": [
-            "98 CV 1171cc",
+            "1171cc 98 CV",
             "Diğer"
           ],
           "trims": [
@@ -26487,7 +27275,7 @@
         {
           "name": "K 1200 R",
           "versions": [
-            "163 CV 1157cc",
+            "1157cc 163 CV",
             "Diğer"
           ],
           "trims": [
@@ -26498,7 +27286,7 @@
         {
           "name": "K 1200 S",
           "versions": [
-            "167 CV 1157cc",
+            "1157cc 167 CV",
             "Diğer"
           ],
           "trims": [
@@ -26509,7 +27297,7 @@
         {
           "name": "K 1300 GT",
           "versions": [
-            "160 CV 1293cc",
+            "1293cc 160 CV",
             "Diğer"
           ],
           "trims": [
@@ -26520,7 +27308,7 @@
         {
           "name": "K 1300 R",
           "versions": [
-            "173 CV 1293cc",
+            "1293cc 173 CV",
             "Diğer"
           ],
           "trims": [
@@ -26531,7 +27319,7 @@
         {
           "name": "K 1600 Bagger",
           "versions": [
-            "160 CV 1649cc",
+            "1649cc 160 CV",
             "Diğer"
           ],
           "trims": [
@@ -26542,7 +27330,7 @@
         {
           "name": "K 1600 Grand America",
           "versions": [
-            "160 CV 1649cc",
+            "1649cc 160 CV",
             "Diğer"
           ],
           "trims": [
@@ -26553,7 +27341,7 @@
         {
           "name": "M 1000 R",
           "versions": [
-            "210 CV 999cc",
+            "999cc 210 CV",
             "Diğer"
           ],
           "trims": [
@@ -26564,7 +27352,7 @@
         {
           "name": "M 1000 XR",
           "versions": [
-            "201 CV 999cc",
+            "999cc 201 CV",
             "Diğer"
           ],
           "trims": [
@@ -26575,7 +27363,7 @@
         {
           "name": "R 12",
           "versions": [
-            "95 CV 1170cc",
+            "1170cc 95 CV",
             "Diğer"
           ],
           "trims": [
@@ -26584,9 +27372,21 @@
           ]
         },
         {
-          "name": "R 12 GS",
+          "name": "R 12 nineT",
           "versions": [
-            "95 CV 1170cc",
+            "1170cc 109 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Option 719",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 12 G/S",
+          "versions": [
+            "1170cc 109 CV",
             "Diğer"
           ],
           "trims": [
@@ -26597,7 +27397,33 @@
         {
           "name": "R 18",
           "versions": [
-            "91 CV 1802cc",
+            "1802cc 91 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "First Edition",
+            "100 Years",
+            "Option 719",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 18 Classic",
+          "versions": [
+            "1802cc 91 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "First Edition",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 18 B",
+          "versions": [
+            "1802cc 91 CV",
             "Diğer"
           ],
           "trims": [
@@ -26606,9 +27432,9 @@
           ]
         },
         {
-          "name": "R 60-6",
+          "name": "R 18 Transcontinental",
           "versions": [
-            "30 CV 599cc",
+            "1802cc 91 CV",
             "Diğer"
           ],
           "trims": [
@@ -26617,9 +27443,31 @@
           ]
         },
         {
-          "name": "R 60-7",
+          "name": "R 18 Roctane",
           "versions": [
-            "40 CV 599cc",
+            "1802cc 91 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 60/6",
+          "versions": [
+            "599cc 40 CV",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "R 60/7",
+          "versions": [
+            "599cc 40 CV",
             "Diğer"
           ],
           "trims": [
@@ -26630,7 +27478,7 @@
         {
           "name": "R 65",
           "versions": [
-            "27 CV 650cc",
+            "649cc 45 CV",
             "Diğer"
           ],
           "trims": [
@@ -26641,7 +27489,7 @@
         {
           "name": "R 80",
           "versions": [
-            "50 CV 798cc",
+            "798cc 50 CV",
             "Diğer"
           ],
           "trims": [
@@ -26652,7 +27500,7 @@
         {
           "name": "R 80 GS",
           "versions": [
-            "50 CV 798cc",
+            "798cc 50 CV",
             "Diğer"
           ],
           "trims": [
@@ -26661,9 +27509,9 @@
           ]
         },
         {
-          "name": "R 800 RT",
+          "name": "R 80 RT",
           "versions": [
-            "87 CV 798cc",
+            "797cc 50 CV",
             "Diğer"
           ],
           "trims": [
@@ -26674,7 +27522,7 @@
         {
           "name": "R 850 GS",
           "versions": [
-            "67 CV 848cc",
+            "848cc 67 CV",
             "Diğer"
           ],
           "trims": [
@@ -26685,7 +27533,7 @@
         {
           "name": "R 1100 R",
           "versions": [
-            "80 CV 1085cc",
+            "1085cc 80 CV",
             "Diğer"
           ],
           "trims": [
@@ -26696,7 +27544,7 @@
         {
           "name": "R 1100 RT",
           "versions": [
-            "80 CV 1085cc",
+            "1085cc 80 CV",
             "Diğer"
           ],
           "trims": [
@@ -26707,7 +27555,7 @@
         {
           "name": "R 1100 S",
           "versions": [
-            "98 CV 1085cc",
+            "1085cc 98 CV",
             "Diğer"
           ],
           "trims": [
@@ -26718,7 +27566,7 @@
         {
           "name": "R 1150 R",
           "versions": [
-            "85 CV 1130cc",
+            "1130cc 85 CV",
             "Diğer"
           ],
           "trims": [
@@ -26729,7 +27577,7 @@
         {
           "name": "R 1150 RT",
           "versions": [
-            "95 CV 1130cc",
+            "1130cc 95 CV",
             "Diğer"
           ],
           "trims": [
@@ -26740,7 +27588,7 @@
         {
           "name": "R 1200 C",
           "versions": [
-            "61 CV 1170cc",
+            "1170cc 61 CV",
             "Diğer"
           ],
           "trims": [
@@ -26751,7 +27599,7 @@
         {
           "name": "R 1200 CL",
           "versions": [
-            "61 CV 1170cc",
+            "1170cc 61 CV",
             "Diğer"
           ],
           "trims": [
@@ -26762,7 +27610,7 @@
         {
           "name": "R 1200 RS",
           "versions": [
-            "125 CV 1170cc",
+            "1170cc 125 CV",
             "Diğer"
           ],
           "trims": [
@@ -26773,7 +27621,7 @@
         {
           "name": "R 1200 ST",
           "versions": [
-            "98 CV 1170cc",
+            "1170cc 98 CV",
             "Diğer"
           ],
           "trims": [
@@ -26784,7 +27632,7 @@
         {
           "name": "R 1250 RS",
           "versions": [
-            "136 CV 1254cc",
+            "1254cc 136 CV",
             "Diğer"
           ],
           "trims": [
@@ -26795,7 +27643,7 @@
         {
           "name": "R 1300 GS",
           "versions": [
-            "145 CV 1300cc",
+            "1300cc 145 CV",
             "Diğer"
           ],
           "trims": [
@@ -26806,7 +27654,7 @@
         {
           "name": "R 1300 GS Adventure",
           "versions": [
-            "145 CV 1300cc",
+            "1300cc 145 CV",
             "Diğer"
           ],
           "trims": [
@@ -26817,7 +27665,7 @@
         {
           "name": "R 1300 R",
           "versions": [
-            "145 CV 1300cc",
+            "1300cc 145 CV",
             "Diğer"
           ],
           "trims": [
@@ -26828,7 +27676,7 @@
         {
           "name": "R 1300 RS",
           "versions": [
-            "145 CV 1300cc",
+            "1300cc 145 CV",
             "Diğer"
           ],
           "trims": [
@@ -26839,7 +27687,7 @@
         {
           "name": "R 1300 RT",
           "versions": [
-            "145 CV 1300cc",
+            "1300cc 145 CV",
             "Diğer"
           ],
           "trims": [
@@ -26850,7 +27698,7 @@
         {
           "name": "R nineT Pure",
           "versions": [
-            "110 CV 1170cc",
+            "1170cc 110 CV",
             "Diğer"
           ],
           "trims": [
@@ -26861,7 +27709,7 @@
         {
           "name": "R nineT Scrambler",
           "versions": [
-            "110 CV 1170cc",
+            "1170cc 110 CV",
             "Diğer"
           ],
           "trims": [
@@ -26872,7 +27720,7 @@
         {
           "name": "R nineT Urban G/S",
           "versions": [
-            "110 CV 1170cc",
+            "1170cc 110 CV",
             "Diğer"
           ],
           "trims": [
@@ -26883,7 +27731,7 @@
         {
           "name": "S 1000 RR HP Motosport",
           "versions": [
-            "210 CV 1000cc",
+            "1000cc 210 CV",
             "Diğer"
           ],
           "trims": [
