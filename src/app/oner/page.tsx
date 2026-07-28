@@ -185,13 +185,19 @@ export default function OnerPage() {
     setSubmitting(true);
     try {
       // Kürate edilmiş versiyon listesi (vehicles.json) yakıt tipi tahmini için
-      // güç+batarya rakamlarını metne gömüyor (örn. "Extended Range 204 72.8kWh"
-      // otomobilde, "Elektrik 3 kW 72V 35Ah" motosiklet/scooter'da) — bu rakamlar
-      // zaten ayrı attributes alanlarında tutulacağı için burada (kullanıcıya
-      // gösterilecek trimName'de) tekrar etmesin.
+      // güç+batarya+hız rakamlarını metne gömüyor (örn. "Extended Range 204 72.8kWh"
+      // otomobilde, "250W Bosch 25 km/h 500Wh" e-bisiklette, "500W 17.5Ah 35km/h N65i"
+      // e-scooter'da) — bu rakamlar zaten ayrı attributes alanlarında tutulacağı için
+      // burada (kullanıcıya gösterilecek trimName'de) tekrar etmesin. Motosiklet/
+      // otomobil yakıt motorlarının "cc"/"CV" değerlerine dokunmuyor — o gerçek
+      // versiyon kimliği, teknik gürültü değil.
       const versionClean = versionFin
-        .replace(/\d+(\.\d+)?\s*kw\s+\d+(\.\d+)?\s*v\s*(çift\s*)?\d+(\.\d+)?\s*ah\b/gi, "")
         .replace(/\s+\d+(\.\d+)?\s*(kw)?\s+\d+(\.\d+)?\s*kwh\b/i, "")
+        .replace(/\d+(\.\d+)?\s*(kwh|kw|wh|ah|w|v)\b/gi, "")
+        .replace(/\d+(\.\d+)?\s*km(\/h|\/s|\s*menzil)?\b/gi, "")
+        .replace(/(?<=^|\s)Çift\s+(Motor|Batarya|Bat\.)(?=\s|$)/giu, "")
+        .replace(/(?<=^|\s)Çift(?=\s|$)/giu, "")
+        .replace(/(?<=^|\s)\+(?=\s|$)/g, "")
         .replace(/\bElektrik(li)?\b/gi, "")
         .replace(/\s{2,}/g, " ")
         .trim();
