@@ -2519,7 +2519,7 @@
         }
       ]
     },
-        {
+            {
       "make": "BMW",
       "models": [
         {
@@ -3917,23 +3917,156 @@
           ]
         },
         {
-          "name": "X1",
+          "name": "X1 F48 (2015-2022)",
           "versions": [
+            "sDrive16i",
             "sDrive18i",
-            "xDrive23i",
-            "xDrive25i",
-            "sDrive18d",
+            "sDrive20i",
+            "sDrive16d",
+            "sDrive20d",
             "xDrive20d",
+            "xDrive23d",
             "xDrive25e PHEV",
+            "xDrive30e PHEV",
+            "M35i xDrive",
             "Diğer"
           ],
           "trims": [
-            "Advantage",
             "Sport Line",
+            "xLine",
+            "M Sport",
+            "M35i",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "sDrive16i": [
+              "Sport Line",
+              "xLine",
+              "M Sport",
+              "Diğer"
+            ],
+            "sDrive18i": [
+              "Sport Line",
+              "xLine",
+              "M Sport",
+              "Diğer"
+            ],
+            "sDrive20i": [
+              "Sport Line",
+              "xLine",
+              "M Sport",
+              "Diğer"
+            ],
+            "sDrive16d": [
+              "Sport Line",
+              "xLine",
+              "M Sport",
+              "Diğer"
+            ],
+            "sDrive20d": [
+              "Sport Line",
+              "xLine",
+              "M Sport",
+              "Diğer"
+            ],
+            "xDrive20d": [
+              "Sport Line",
+              "xLine",
+              "M Sport",
+              "Diğer"
+            ],
+            "xDrive23d": [
+              "Sport Line",
+              "xLine",
+              "M Sport",
+              "Diğer"
+            ],
+            "xDrive25e PHEV": [
+              "Sport Line",
+              "xLine",
+              "M Sport",
+              "Diğer"
+            ],
+            "xDrive30e PHEV": [
+              "Sport Line",
+              "xLine",
+              "M Sport",
+              "Diğer"
+            ],
+            "M35i xDrive": [
+              "M35i",
+              "Diğer"
+            ]
+          }
+        },
+        {
+          "name": "X1 U11 (2022-)",
+          "versions": [
+            "sDrive18i",
+            "sDrive20i",
+            "xDrive23i",
+            "sDrive18d",
+            "xDrive20d",
+            "xDrive25e PHEV",
+            "xDrive30e PHEV",
+            "M35i xDrive",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "M Sport",
             "xLine",
+            "M35i",
             "Diğer"
-          ]
+          ],
+          "trimsByVersion": {
+            "sDrive18i": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "sDrive20i": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "xDrive23i": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "sDrive18d": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "xDrive20d": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "xDrive25e PHEV": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "xDrive30e PHEV": [
+              "Standart",
+              "M Sport",
+              "xLine",
+              "Diğer"
+            ],
+            "M35i xDrive": [
+              "M35i",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "X2",
