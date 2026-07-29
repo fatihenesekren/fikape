@@ -21,6 +21,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: {
     signIn: "/giris",
   },
+  // Varsayılan (30 gün) yerine bilinçli bir süre: çalınan/paylaşılan bir cihazda
+  // oturumun açık kalma penceresini sınırlar. updateAge ile aktif kullanıcıda
+  // sessizce yenilenir, pasif bırakılırsa maxAge'de düşer.
+  session: {
+    strategy: "jwt",
+    maxAge: 60 * 60 * 24 * 14, // 14 gün
+    updateAge: 60 * 60 * 24,   // 1 gün
+  },
   callbacks: {
     async jwt({ token, user, trigger, session }) {
       if (user) {

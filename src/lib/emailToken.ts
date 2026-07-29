@@ -39,7 +39,7 @@ export function verifyEmailToken(token: string): { userId: number } | null {
 // tek kullanımlıktır — şifre değişince eski token'lar otomatik geçersiz olur,
 // ayrı bir DB alanı (resetToken/expiry) veya migration gerekmez.
 export function createPasswordResetToken(userId: number, currentPasswordHash: string): string {
-  const expiry = Date.now() + 24 * 60 * 60 * 1000; // 24 saat
+  const expiry = Date.now() + 60 * 60 * 1000; // 1 saat
   const hashFingerprint = createHmac("sha256", SECRET).update(currentPasswordHash).digest("hex").slice(0, 16);
   const payload = `${userId}:${expiry}:${hashFingerprint}`;
   const sig = createHmac("sha256", SECRET).update(payload).digest("hex");

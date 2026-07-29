@@ -320,7 +320,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
         </div>
         <h1 style="font-size:20px;font-weight:700;color:#111;margin:0 0 8px">Şifreni sıfırla</h1>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
-          Hesabın için şifre sıfırlama talebinde bulundun. Aşağıdaki butona tıklayarak yeni bir şifre belirleyebilirsin. Link 24 saat geçerlidir.
+          Hesabın için şifre sıfırlama talebinde bulundun. Aşağıdaki butona tıklayarak yeni bir şifre belirleyebilirsin. Link 1 saat geçerlidir.
         </p>
         <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
           Şifremi sıfırla →
