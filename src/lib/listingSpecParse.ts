@@ -36,7 +36,7 @@ function extractPairs(html: string): { title: string; value: string }[] {
 }
 
 function mapBodyType(value: string): string | null {
-  const l = value.toLowerCase();
+  const l = value.toLocaleLowerCase("tr-TR");
   if (l.includes("suv")) return "suv";
   if (l.includes("hatchback")) return "hatchback";
   if (l.includes("sedan")) return "sedan";
@@ -50,7 +50,7 @@ function mapBodyType(value: string): string | null {
 }
 
 function mapTransmission(value: string): string | null {
-  const l = value.toLowerCase();
+  const l = value.toLocaleLowerCase("tr-TR");
   if (l.includes("yarı otomatik")) return "Yarı Otomatik";
   if (l.includes("cvt")) return "CVT";
   if (l.includes("otomatik")) return "Otomatik";
@@ -59,7 +59,7 @@ function mapTransmission(value: string): string | null {
 }
 
 function mapDrivetrain(value: string): string | null {
-  const l = value.toLowerCase();
+  const l = value.toLocaleLowerCase("tr-TR");
   if (l.includes("önden")) return "FWD";
   if (l.includes("arkadan")) return "RWD";
   if (l.includes("4 çeker") || l.includes("dört çeker") || l.includes("4x4") || l.includes("awd")) return "AWD";
@@ -70,7 +70,7 @@ export function parseListingSpecs(html: string): Record<string, string> {
   const specs: Record<string, string> = {};
 
   for (const { title, value } of extractPairs(html)) {
-    const t = title.toLowerCase();
+    const t = title.toLocaleLowerCase("tr-TR");
 
     if (t.includes("segment")) {
       const m = value.match(/^([A-F])\b/i);

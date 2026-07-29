@@ -75,10 +75,12 @@ export function checkContent(t: string): ValidationResult {
 
   // Küfür / hakaret kontrolü — boşluklu VE bitişik (ayraçla atlatmayı önlemek için) iki ayrı kontrol.
   // Büyük "İ" toLowerCase() ile göze görünmez bir birleşen nokta işaretine (U+0307) ayrışıp
-  // kelimeyi ikiye bölebildiği için (örn. "İbne" -> "i bne") önce düz "i"ye çevriliyor. NFD
+  // kelimeyi ikiye bölebildiği için (örn. "İbne" -> "i bne") önce düz "i"ye çevriliyor. ASCII
+  // "I" da (Türkçe klavyesi olmayan kullanıcıların noktasız "ı" yerine yazdığı harf, örn.
+  // "AMINA"/"AMCIK") "ı"ya çevriliyor — aksi halde bu kelimeler listeyle hiç eşleşmiyor. NFD
   // normalize BURADA kullanılmıyor — Türkçe ç/ğ/ö/ş/ü harfleri de NFD'de temel harf+birleşen
   // işarete ayrışıyor, bu da PROFANITY listesindeki aksanlı kelimelerle eşleşmeyi bozar.
-  const lowerBase = t.replace(/İ/g, "i").toLowerCase();
+  const lowerBase = t.replace(/İ/g, "i").replace(/I/g, "ı").toLowerCase();
   const lowerSpaced = lowerBase.replace(/[^a-züğışöç\s]/gi, " ");
   const lowerCollapsed = lowerBase.replace(/[^a-züğışöç]/gi, "");
   for (const word of PROFANITY) {
