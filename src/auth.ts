@@ -36,18 +36,25 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.trustLevel = (user as { trustLevel?: number }).trustLevel ?? 1;
         token.picture     = (user as { image?: string | null }).image ?? null;
         token.pwdChangedAt = (user as { passwordChangedAt?: number | null }).passwordChangedAt ?? null;
+        token.pwdCheckedAt = Date.now();
       } else if (token.id) {
         // Şifre bu oturum açıldıktan SONRA değiştirildiyse (reset-password akışı
-        // passwordChangedAt'i günceller) eski JWT'yi geçersiz kıl — hesap ele
-        // geçirilip şifre kurban tarafından sıfırlansa bile saldırganın eski
-        // oturum çerezi artık çalışmaz.
-        const dbUser = await prisma.user.findUnique({
-          where: { id: Number(token.id) },
-          select: { passwordChangedAt: true },
-        });
-        const dbChangedAt = dbUser?.passwordChangedAt?.getTime() ?? null;
-        if (dbChangedAt !== ((token.pwdChangedAt as number | null | undefined) ?? null)) {
-          return null;
+        // passwordChangedAt'i günceller) eski JWT'yi geçersiz kıl. jwt() callback'i
+        // her `auth()` çağrısında (yani hemen hemen her sayfa yüklemesinde) tekrar
+        // çalıştığı için bu kontrolü HER istekte yapmak site genelinde gözle görülür
+        // bir yavaşlığa yol açtı — bu yüzden en fazla 5 dakikada bir DB'ye gidiyor.
+        // Güvenlik penceresi: şifre değişikliği en geç 5 dakika içinde eski oturumu düşürür.
+        const lastChecked = (token.pwdCheckedAt as number | undefined) ?? 0;
+        if (Date.now() - lastChecked > 5 * 60 * 1000) {
+          const dbUser = await prisma.user.findUnique({
+            where: { id: Number(token.id) },
+            select: { passwordChangedAt: true },
+          });
+          const dbChangedAt = dbUser?.passwordChangedAt?.getTime() ?? null;
+          if (dbChangedAt !== ((token.pwdChangedAt as number | null | undefined) ?? null)) {
+            return null;
+          }
+          token.pwdCheckedAt = Date.now();
         }
       }
       if (trigger === "update") {
