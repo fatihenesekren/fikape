@@ -73,9 +73,14 @@ export function checkContent(t: string): ValidationResult {
     return err("Lütfen anlamlı bir metin yazınız.");
   }
 
-  // Küfür / hakaret kontrolü — boşluklu VE bitişik (ayraçla atlatmayı önlemek için) iki ayrı kontrol
-  const lowerSpaced = t.toLowerCase().replace(/[^a-züğışöç\s]/gi, " ");
-  const lowerCollapsed = t.toLowerCase().replace(/[^a-züğışöç]/gi, "");
+  // Küfür / hakaret kontrolü — boşluklu VE bitişik (ayraçla atlatmayı önlemek için) iki ayrı kontrol.
+  // Büyük "İ" toLowerCase() ile göze görünmez bir birleşen nokta işaretine (U+0307) ayrışıp
+  // kelimeyi ikiye bölebildiği için (örn. "İbne" -> "i bne") önce düz "i"ye çevriliyor. NFD
+  // normalize BURADA kullanılmıyor — Türkçe ç/ğ/ö/ş/ü harfleri de NFD'de temel harf+birleşen
+  // işarete ayrışıyor, bu da PROFANITY listesindeki aksanlı kelimelerle eşleşmeyi bozar.
+  const lowerBase = t.replace(/İ/g, "i").toLowerCase();
+  const lowerSpaced = lowerBase.replace(/[^a-züğışöç\s]/gi, " ");
+  const lowerCollapsed = lowerBase.replace(/[^a-züğışöç]/gi, "");
   for (const word of PROFANITY) {
     if (lowerSpaced.includes(word) || lowerCollapsed.includes(word)) {
       return err("Hakaret veya uygunsuz ifade tespit edildi.");

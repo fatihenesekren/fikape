@@ -42,9 +42,9 @@ export function getInitials(name: string | null | undefined): string {
   if (!trimmed) return "?";
   const parts = trimmed.split(/\s+/);
   if (parts.length >= 2) {
-    return (parts[0][0] + parts[1][0]).toUpperCase();
+    return (parts[0][0] + parts[1][0]).toLocaleUpperCase("tr-TR");
   }
-  return trimmed.slice(0, 2).toUpperCase();
+  return trimmed.slice(0, 2).toLocaleUpperCase("tr-TR");
 }
 
 function hashSeed(seed: string): number {

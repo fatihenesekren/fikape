@@ -21,17 +21,18 @@ export async function generateMetadata({
   };
 }
 
-// Türkçe ı/İ Unicode NFD ile ayrışmıyor (kendi başına harf, aksanlı değil), bu yüzden
-// elle map'leniyor. Geri kalan tüm aksanlı Latin harfleri (ë, š, é, ç, ö, ü, ğ, ş...)
-// NFD ile ayrıştırılıp kaldırılıyor — Citroën, Škoda gibi tek tek eklenmesi gereken
-// özel durum listesi tutmak yerine genel bir çözüm.
+// Türkçe noktasız "ı" NFD ile ayrışmıyor (kendi başına harf, aksanlı değil), bu yüzden
+// elle map'leniyor. Büyük "İ" ise toLowerCase() ile zaten "i" + görünmez birleşen nokta
+// işaretine (U+0307) ayrışıyor — bu işaret de aşağıdaki NFD+DIACRITIC_MARKS_RE adımıyla
+// temizleniyor. Geri kalan tüm aksanlı Latin harfleri (ë, š, é, ç, ö, ü, ğ, ş...) de
+// aynı NFD adımıyla ayrıştırılıp kaldırılıyor — Citroën, Škoda gibi tek tek eklenmesi
+// gereken özel durum listesi tutmak yerine genel bir çözüm.
 const DIACRITIC_MARKS_RE = new RegExp("[\\u0300-\\u036f]", "g");
 
 function normalize(str: string) {
   return str
     .toLowerCase()
     .replace(/ı/g, "i")
-    .replace(/İ/g, "i")
     .normalize("NFD")
     .replace(DIACRITIC_MARKS_RE, "");
 }

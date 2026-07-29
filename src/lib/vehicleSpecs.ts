@@ -6,7 +6,14 @@ import { WIKI_HEADERS } from "@/lib/vehicleImages";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { findVerifiedWikipediaPage } from "@/lib/wikidataVerify";
 
-function norm(s: string) { return (s ?? "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
+function norm(s: string) {
+  return (s ?? "")
+    .toLowerCase()
+    .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
+    .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
+    .normalize("NFD").replace(/\p{Mn}/gu, "")
+    .replace(/[^a-z0-9]/g, "");
+}
 
 function slugifyMake(name: string) {
   return name.toLowerCase()
@@ -484,7 +491,7 @@ function valuesAgree(key: string, a: string, b: string): boolean {
     if (Number.isNaN(na) || Number.isNaN(nb)) return false;
     return Math.abs(na - nb) / Math.max(na, nb) <= 0.05; // ±%5 tolerans
   }
-  return a.trim().toLowerCase() === b.trim().toLowerCase();
+  return norm(a) === norm(b);
 }
 
 // fetchVerifiedVehicleSpecs ile aynı kaynak zincirini kullanır, ama alan

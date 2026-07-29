@@ -86,7 +86,7 @@ const DRIVETRAIN_LABELS = toLabelMap(DRIVETRAIN_TYPES);
 
 const HEATING_TYPE_LABELS = toLabelMap(HEATING_TYPES);
 
-const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const capitalize = (s: string) => s.charAt(0).toLocaleUpperCase("tr-TR") + s.slice(1);
 
 const CATEGORY_FALLBACK_ICONS: Record<string, string> = {
   otomobil: "🚗", motosiklet: "🏍️", "e-scooter": "🛴", "e-bisiklet": "🚴", karavan: "🏕️", kamyonet: "🛻",
