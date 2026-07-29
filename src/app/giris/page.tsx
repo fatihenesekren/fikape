@@ -25,10 +25,18 @@ function EyeOffIcon() {
   );
 }
 
+// Sadece site-içi relative path'lere izin verir — mutlak (https://evil.com) veya
+// protocol-relative (//evil.com) URL'ler login sonrası harici bir siteye
+// yönlendirme (open redirect / phishing) için kullanılamasın diye.
+function sanitizeCallbackUrl(url: string | null): string {
+  if (!url || !url.startsWith("/") || url.startsWith("//")) return "/";
+  return url;
+}
+
 function GirisForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") ?? "/";
+  const callbackUrl = sanitizeCallbackUrl(searchParams.get("callbackUrl"));
 
   const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");

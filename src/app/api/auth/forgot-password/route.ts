@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { createPasswordResetToken } from "@/lib/emailToken";
 import { sendPasswordResetEmail } from "@/lib/email";
-import { rateLimitByIp } from "@/lib/rateLimit";
+import { rateLimitByIp, rateLimitByEmail } from "@/lib/rateLimit";
 import { forgotPasswordSchema, formatZodError } from "@/lib/schemas";
 
 const RATE_LIMIT_COUNT = 5;
@@ -18,6 +18,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
   const { email } = parsed.data;
+
+  // E-posta bazlı ikinci limit katmanı — IP-limit'i çoklu IP/VPN ile aşan bir
+  // saldırganın tek bir kurbanın e-postasına sınırsız mail göndermesini engeller.
+  // Enumeration önleme prensibiyle tutarlı: limit aşılsa da her zaman aynı {ok:true} dönülür.
+  if (!rateLimitByEmail(email, "forgot-password", 3, RATE_LIMIT_WINDOW_MS)) {
+    return NextResponse.json({ ok: true });
+  }
 
   const user = await prisma.user.findUnique({ where: { email }, select: { id: true, passwordHash: true } });
 

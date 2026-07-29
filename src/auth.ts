@@ -2,6 +2,8 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { getClientIp } from "@/lib/security";
+import { checkRateLimit, rateLimitByEmail } from "@/lib/rateLimit";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
@@ -10,11 +12,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         email:    { label: "E-posta", type: "email" },
         password: { label: "Şifre",  type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(credentials, request) {
         if (!credentials?.email || !credentials?.password) return null;
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email as string },
-        });
+        const email = (credentials.email as string).toLowerCase();
+
+        // Brute-force koruması: hem e-posta hem IP bazlı (biri atlatılsa diğeri tutar)
+        if (!rateLimitByEmail(email, "login", 5, 15 * 60 * 1000)) return null;
+        const ip = getClientIp(request);
+        if (ip && !checkRateLimit(`login:${ip}`, 20, 15 * 60 * 1000)) return null;
+
+        const user = await prisma.user.findUnique({ where: { email } });
         if (!user) return null;
         const valid = await bcrypt.compare(
           credentials.password as string,

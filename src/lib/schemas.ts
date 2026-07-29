@@ -36,7 +36,7 @@ export const displayNameSchema = z.string().trim()
   .refine((v) => /[A-Za-zÇĞİÖŞÜçğıöşü]/.test(v), "Görünen ad en az 1 harf içermelidir.");
 
 export const registerSchema = z.object({
-  email:       z.string().trim().min(1, "E-posta ve şifre zorunludur.").email("Geçerli bir e-posta adresi giriniz."),
+  email:       z.string().trim().min(1, "E-posta ve şifre zorunludur.").email("Geçerli bir e-posta adresi giriniz.").toLowerCase(),
   password:    passwordSchema,
   displayName: displayNameSchema,
   ref:         z.string().optional().nullable(),
@@ -44,7 +44,7 @@ export const registerSchema = z.object({
 });
 
 export const forgotPasswordSchema = z.object({
-  email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi giriniz."),
+  email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi giriniz.").toLowerCase(),
 });
 
 export const resetPasswordSchema = z.object({

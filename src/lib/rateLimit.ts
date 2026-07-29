@@ -31,3 +31,7 @@ export function rateLimitByIp(req: Request, prefix: string, limit: number, windo
   const ip = getClientIp(req) ?? "unknown";
   return checkRateLimit(`${prefix}:${ip}`, limit, windowMs);
 }
+
+export function rateLimitByEmail(email: string, prefix: string, limit: number, windowMs: number): boolean {
+  return checkRateLimit(`${prefix}:${email.toLowerCase()}`, limit, windowMs);
+}
