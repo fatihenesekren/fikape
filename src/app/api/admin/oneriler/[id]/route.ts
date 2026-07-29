@@ -135,9 +135,13 @@ export async function POST(
   // Legacy akış: productId yok, eski yöntemle ürün oluştur
   const brandSlug = slugify(suggestion.brandName);
   const modelSlug = slugify(`${suggestion.brandName}-${suggestion.modelName}`);
-  const productSlug =
-    customSlug?.trim() ||
-    slugify([suggestion.brandName, suggestion.modelName, suggestion.trimName, suggestion.year].filter(Boolean).join("-"));
+  const productSlug = customSlug?.trim()
+    ? slugify(customSlug)
+    : slugify([suggestion.brandName, suggestion.modelName, suggestion.trimName, suggestion.year].filter(Boolean).join("-"));
+
+  if (!productSlug) {
+    return NextResponse.json({ error: "Geçersiz slug: alfasayısal karakter içermiyor." }, { status: 422 });
+  }
 
   const category = await prisma.category.findUnique({ where: { slug: suggestion.categorySlug } });
   if (!category) {
