@@ -2519,7 +2519,7 @@
         }
       ]
     },
-            {
+                {
       "make": "BMW",
       "models": [
         {
@@ -3212,19 +3212,200 @@
           }
         },
         {
-          "name": "4 Serisi",
+          "name": "4 Serisi F32/F33/F36 (2013-2020)",
           "versions": [
+            "418i",
             "418i Gran Coupé",
-            "420i Coupé",
-            "430i",
+            "418d",
             "418d Gran Coupé",
+            "420i",
+            "420i Gran Coupé",
             "420d",
+            "420d Gran Coupé",
+            "420d xDrive",
+            "420d xDrive Gran Coupé",
+            "428i",
+            "428i Gran Coupé",
+            "428i xDrive",
+            "428i xDrive Gran Coupé",
+            "430i",
+            "430i xDrive",
+            "430i xDrive Gran Coupé",
+            "430i Cabrio Edition M Sport",
+            "430i Coupé Edition M Sport",
+            "430d xDrive Gran Coupé",
+            "440i xDrive",
+            "Diğer"
+          ],
+          "trims": [
+            "Advantage",
+            "Sport Line",
+            "Luxury",
+            "M Sport",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "418i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "418i Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "418d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "418d Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "420i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "420i Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "420d": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "420d Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "420d xDrive": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "420d xDrive Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "428i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "428i Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "428i xDrive": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "428i xDrive Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "430i": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "430i xDrive": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "430i xDrive Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "430i Cabrio Edition M Sport": [
+              "Diğer"
+            ],
+            "430i Coupé Edition M Sport": [
+              "Diğer"
+            ],
+            "430d xDrive Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ],
+            "440i xDrive": [
+              "Advantage",
+              "Sport Line",
+              "Luxury",
+              "M Sport",
+              "Diğer"
+            ]
+          }
+        },
+        {
+          "name": "4 Serisi G22/G26 (2020-)",
+          "versions": [
+            "420i",
+            "420i Gran Coupé",
+            "420d",
+            "420d Gran Coupé",
+            "430i",
+            "430i Gran Coupé",
+            "430i xDrive",
+            "430d xDrive",
+            "430d xDrive Gran Coupé",
             "M440i xDrive",
+            "M440i xDrive Gran Coupé",
             "M4 Coupé",
             "M4 Competition",
             "Diğer"
           ],
           "trims": [
+            "Advantage",
             "Sport Line",
             "M Sport",
             "M440i",
@@ -3233,27 +3414,56 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "418i Gran Coupé": [
+            "420i": [
+              "Advantage",
               "Sport Line",
               "M Sport",
               "Diğer"
             ],
-            "420i Coupé": [
-              "Sport Line",
-              "M Sport",
-              "Diğer"
-            ],
-            "430i": [
-              "Sport Line",
-              "M Sport",
-              "Diğer"
-            ],
-            "418d Gran Coupé": [
+            "420i Gran Coupé": [
+              "Advantage",
               "Sport Line",
               "M Sport",
               "Diğer"
             ],
             "420d": [
+              "Advantage",
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "420d Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "430i": [
+              "Advantage",
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "430i Gran Coupé": [
+              "Advantage",
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "430i xDrive": [
+              "Advantage",
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "430d xDrive": [
+              "Advantage",
+              "Sport Line",
+              "M Sport",
+              "Diğer"
+            ],
+            "430d xDrive Gran Coupé": [
+              "Advantage",
               "Sport Line",
               "M Sport",
               "Diğer"
@@ -3262,13 +3472,16 @@
               "M440i",
               "Diğer"
             ],
+            "M440i xDrive Gran Coupé": [
+              "M440i",
+              "Diğer"
+            ],
             "M4 Coupé": [
               "M4",
               "Diğer"
             ],
             "M4 Competition": [
-              "Sport Line",
-              "M Sport",
+              "M4 Competition",
               "Diğer"
             ]
           }
