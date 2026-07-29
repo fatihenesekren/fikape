@@ -152,6 +152,9 @@ model User {
   id              Int      @id @default(autoincrement())
   email           String   @unique
   passwordHash    String
+  // Şifre değiştirildiğinde/sıfırlandığında set edilir — jwt() callback'i bunu
+  // token'ın oluşturulma zamanıyla karşılaştırıp eski oturumları geçersiz kılar.
+  passwordChangedAt DateTime?
 
   // Kişisel bilgiler — minimum tutulur (KVKK)
   displayName     String?

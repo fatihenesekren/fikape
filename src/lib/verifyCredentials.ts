@@ -8,6 +8,7 @@ export interface VerifiedUser {
   name: string;
   image: string | null;
   trustLevel: number;
+  passwordChangedAt: number | null;
 }
 
 // auth.ts'teki NextAuth Credentials provider'ından çıkarıldı — mobil bir giriş
@@ -35,5 +36,6 @@ export async function verifyCredentials(
     name: user.displayName ?? user.email,
     image: user.avatarUrl ?? null,
     trustLevel: user.trustLevel,
+    passwordChangedAt: user.passwordChangedAt?.getTime() ?? null,
   };
 }

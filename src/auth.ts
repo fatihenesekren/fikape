@@ -27,6 +27,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.id         = user.id;
         token.trustLevel = (user as { trustLevel?: number }).trustLevel ?? 1;
         token.picture     = (user as { image?: string | null }).image ?? null;
+        token.pwdChangedAt = (user as { passwordChangedAt?: number | null }).passwordChangedAt ?? null;
+      } else if (token.id) {
+        // Şifre bu oturum açıldıktan SONRA değiştirildiyse (reset-password akışı
+        // passwordChangedAt'i günceller) eski JWT'yi geçersiz kıl — hesap ele
+        // geçirilip şifre kurban tarafından sıfırlansa bile saldırganın eski
+        // oturum çerezi artık çalışmaz.
+        const dbUser = await prisma.user.findUnique({
+          where: { id: Number(token.id) },
+          select: { passwordChangedAt: true },
+        });
+        const dbChangedAt = dbUser?.passwordChangedAt?.getTime() ?? null;
+        if (dbChangedAt !== ((token.pwdChangedAt as number | null | undefined) ?? null)) {
+          return null;
+        }
       }
       if (trigger === "update") {
         // update({ name: "..." }) / update({ image: "..." }) ile gelen veriyi doğrudan kullan
