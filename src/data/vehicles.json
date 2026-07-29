@@ -2519,7 +2519,7 @@
         }
       ]
     },
-                {
+                    {
       "make": "BMW",
       "models": [
         {
@@ -3238,130 +3238,202 @@
             "Diğer"
           ],
           "trims": [
-            "Advantage",
+            "Joy",
             "Sport Line",
-            "Luxury",
+            "Luxury Line",
+            "Prestige",
             "M Sport",
+            "Edition M Sport",
+            "Ultimate M Sport",
+            "50th Year M Edition",
             "Diğer"
           ],
           "trimsByVersion": {
             "418i": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "418i Gran Coupé": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "418d": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "418d Gran Coupé": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "420i": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "420i Gran Coupé": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "420d": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "420d Gran Coupé": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "420d xDrive": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "420d xDrive Gran Coupé": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "428i": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "428i Gran Coupé": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "428i xDrive": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "428i xDrive Gran Coupé": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "430i": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "430i xDrive": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "430i xDrive Gran Coupé": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "430i Cabrio Edition M Sport": [
@@ -3371,17 +3443,25 @@
               "Diğer"
             ],
             "430d xDrive Gran Coupé": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ],
             "440i xDrive": [
-              "Advantage",
+              "Joy",
               "Sport Line",
-              "Luxury",
+              "Luxury Line",
+              "Prestige",
               "M Sport",
+              "Edition M Sport",
+              "Ultimate M Sport",
+              "50th Year M Edition",
               "Diğer"
             ]
           }
