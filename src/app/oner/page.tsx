@@ -191,16 +191,30 @@ export default function OnerPage() {
       // burada (kullanıcıya gösterilecek trimName'de) tekrar etmesin. Motosiklet/
       // otomobil yakıt motorlarının "cc"/"CV" değerlerine dokunmuyor — o gerçek
       // versiyon kimliği, teknik gürültü değil.
-      const versionClean = versionFin
-        .replace(/\s+\d+(\.\d+)?\s*(kw)?\s+\d+(\.\d+)?\s*kwh\b/i, "")
-        .replace(/\d+(\.\d+)?\s*(kwh|kw|wh|ah|w|v)\b/gi, "")
+      const isMotorluTasit = categorySlug === "otomobil" || categorySlug === "kamyonet";
+      let versionClean = versionFin
+        .replace(/(?:^|\s)\d+(\.\d+)?\s*(kw)?\s+\d+(\.\d+)?\s*kwh\b/i, "")
+        .replace(/\d+(\.\d+)?\s*(kwh|ah)\b/gi, "")
+        // "kW" (elektrikli motor gücü) her kategoride temizlenir, ama "V"/"W" tek
+        // başına SADECE otomobil/kamyonet DIŞINDA temizlenir — otomobilde "V" harfi
+        // supap sayısı anlamına gelebiliyor (örn. "1.4 16V 100" = 16 supap, 100 HP),
+        // buna dokunulursa motor kodu bozulur.
+        .replace(isMotorluTasit ? /\d+(\.\d+)?\s*kw\b/gi : /\d+(\.\d+)?\s*(kw|wh|w|v)\b/gi, "")
         .replace(/\d+(\.\d+)?\s*km(\/h|\/s|\s*menzil)?\b/gi, "")
         .replace(/(?<=^|\s)Çift\s+(Motor|Batarya|Bat\.)(?=\s|$)/giu, "")
         .replace(/(?<=^|\s)Çift(?=\s|$)/giu, "")
         .replace(/(?<=^|\s)\+(?=\s|$)/g, "")
-        .replace(/\bElektrik(li)?\b/gi, "")
-        .replace(/\s{2,}/g, " ")
-        .trim();
+        .replace(/\bElektrik(li)?\b/gi, "");
+      if (isMotorluTasit) {
+        // Motor kodunun sonundaki çıplak beygir gücü rakamı (örn. "1.4 T-Jet 135",
+        // "E 220d 197" -> "135"/"197" HP) — attributes.power_hp'de zaten ayrı
+        // tutuluyor. Sadece otomobil/kamyonet'e özgü: karavan'da aynı konumdaki
+        // rakam model/uzunluk kodu ("T 132", "Welcome 500"), motosiklette motor
+        // hacmi veya model adı ("V-Strom 1000", "Scrambler 125") olabiliyor,
+        // o kategorilere dokunulmuyor.
+        versionClean = versionClean.replace(/(\s\d{2,4})+\s*$/, "");
+      }
+      versionClean = versionClean.replace(/\s{2,}/g, " ").trim();
       const trimName = [versionClean, trimFin].filter(Boolean).join(" – ") || "";
       const res = await fetch("/api/oneriler", {
         method: "POST",
