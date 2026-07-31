@@ -1,6 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+// Sahne (yol, garaj, araçların geçtiği animasyon) sabit piksel koordinatlarıyla
+// ~650px genişlikte bir "tasarım tuvali" varsayarak inşa edildi. Mobilde
+// konteyner çok daha dar olduğu için (örn. 375px) bu koordinatlar kırpılıyor
+// veya araçlar görünür alanın tamamen dışına taşıyordu. Çözüm: tuval sabit
+// genişlikte kalıyor, gerçek konteyner genişliğine göre transform:scale()
+// ile oranlı küçültülüyor — hiçbir piksel pozisyonuna dokunmadan.
+const SCENE_WIDTH = 650;
+const SCENE_HEIGHT = 215;
+
+function useSceneScale() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const update = () => setScale(el.offsetWidth / SCENE_WIDTH);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  return { ref, scale };
+}
 
 function Car() {
   return (
@@ -46,6 +72,7 @@ function Scooter() {
 }
 
 function NightAnimation() {
+  const { ref, scale } = useSceneScale();
   const stars: [number, number, number][] = [
     [32,12,2],[80,6,2],[145,18,2.5],[210,9,1.5],[275,22,2],[340,7,2.5],
     [60,35,1.5],[170,38,2],[290,30,1.5],[15,28,1.5],[420,14,2],[500,8,2.5],
@@ -95,9 +122,9 @@ function NightAnimation() {
         }
       `}</style>
 
+      <div ref={ref} className="relative w-full rounded-2xl overflow-hidden mb-6 select-none" style={{ height: SCENE_HEIGHT * scale }}>
       <div
-        className="relative w-full rounded-2xl overflow-hidden mb-6 select-none"
-        style={{ height:215, background:"linear-gradient(180deg,#0f1923 0%,#1c2d4a 100%)" }}
+        style={{ width: SCENE_WIDTH, height: SCENE_HEIGHT, transform: `scale(${scale})`, transformOrigin: "top left", background:"linear-gradient(180deg,#0f1923 0%,#1c2d4a 100%)" }}
       >
         {stars.map(([x,y,r],i) => (
           <div key={i} style={{
@@ -215,11 +242,13 @@ function NightAnimation() {
         <div style={{ position:"absolute", bottom:54, left:0, animation:"nMotoMove 9s infinite" }}><Motorcycle /></div>
         <div style={{ position:"absolute", bottom:54, left:0, animation:"nScooterMove 9s infinite" }}><Scooter /></div>
       </div>
+      </div>
     </>
   );
 }
 
 function DayAnimation() {
+  const { ref, scale } = useSceneScale();
   return (
     <>
       <style>{`
@@ -269,9 +298,9 @@ function DayAnimation() {
         @keyframes dSunPulse { 0%,100%{ opacity:0.92;} 50%{ opacity:1;} }
       `}</style>
 
+      <div ref={ref} className="relative w-full rounded-2xl overflow-hidden mb-6 select-none" style={{ height: SCENE_HEIGHT * scale }}>
       <div
-        className="relative w-full rounded-2xl overflow-hidden mb-6 select-none"
-        style={{ height:215, background:"linear-gradient(180deg,#5ba8d4 0%,#9ed0ec 52%,#cce8f6 100%)" }}
+        style={{ width: SCENE_WIDTH, height: SCENE_HEIGHT, transform: `scale(${scale})`, transformOrigin: "top left", background:"linear-gradient(180deg,#5ba8d4 0%,#9ed0ec 52%,#cce8f6 100%)" }}
       >
         {/* Güneş */}
         <div style={{
@@ -448,6 +477,7 @@ function DayAnimation() {
         <div style={{ position:"absolute", bottom:54, left:176, animation:"dCarExit 18s infinite" }}><Car /></div>
         <div style={{ position:"absolute", bottom:54, left:176, animation:"dMotoExit 18s infinite" }}><Motorcycle /></div>
         <div style={{ position:"absolute", bottom:54, left:176, animation:"dScooterExit 18s infinite" }}><Scooter /></div>
+      </div>
       </div>
     </>
   );
