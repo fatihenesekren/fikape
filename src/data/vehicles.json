@@ -23017,7 +23017,7 @@
         }
       ]
     },
-    {
+        {
       "make": "Volkswagen",
       "models": [
         {
@@ -23874,6 +23874,38 @@
             "R",
             "Diğer"
           ]
+        },
+        {
+          "name": "Taigo",
+          "versions": [
+            "1.0 TSI 95",
+            "1.0 TSI 110",
+            "1.5 TSI 150",
+            "Diğer"
+          ],
+          "trims": [
+            "Life",
+            "Style",
+            "R-Line",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "1.0 TSI 95": [
+              "Life",
+              "Diğer"
+            ],
+            "1.0 TSI 110": [
+              "Life",
+              "Style",
+              "R-Line",
+              "Diğer"
+            ],
+            "1.5 TSI 150": [
+              "Style",
+              "R-Line",
+              "Diğer"
+            ]
+          }
         },
         {
           "name": "Tiguan",
