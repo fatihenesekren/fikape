@@ -23017,7 +23017,7 @@
         }
       ]
     },
-            {
+                {
       "make": "Volkswagen",
       "models": [
         {
@@ -23956,37 +23956,27 @@
             "Diğer"
           ],
           "trims": [
-            "Pure",
-            "Business",
-            "Style",
-            "GTX",
             "Standart",
             "Diğer"
           ],
           "trimsByVersion": {
+            "Pure Performance 45kWh 148": [
+              "Standart",
+              "Diğer"
+            ],
             "Pro 58kWh 204": [
-              "Pure",
-              "Business",
-              "Style",
+              "Standart",
               "Diğer"
             ],
             "Pro S 77kWh 204": [
-              "Pure",
-              "Business",
-              "Style",
+              "Standart",
               "Diğer"
             ],
             "Pro Performance 77kWh 204": [
-              "Pure",
-              "Business",
-              "Style",
+              "Standart",
               "Diğer"
             ],
             "GTX 4Motion 340 77kWh": [
-              "GTX",
-              "Diğer"
-            ],
-            "Pure Performance 45kWh 148": [
               "Standart",
               "Diğer"
             ]
@@ -24003,30 +23993,24 @@
             "Diğer"
           ],
           "trims": [
-            "Pure",
-            "Life",
-            "Style",
-            "GTX",
             "Standart",
             "Diğer"
           ],
           "trimsByVersion": {
             "Pure 52kWh 170": [
-              "Pure",
+              "Standart",
               "Diğer"
             ],
             "Pro 77kWh 204": [
-              "Life",
-              "Style",
+              "Standart",
               "Diğer"
             ],
             "Pro 4Motion 77kWh 195": [
-              "Life",
-              "Style",
+              "Standart",
               "Diğer"
             ],
             "GTX 4Motion 77kWh 299": [
-              "GTX",
+              "Standart",
               "Diğer"
             ],
             "Crozz Pro": [
@@ -24044,24 +24028,20 @@
             "Diğer"
           ],
           "trims": [
-            "Life",
-            "Style",
-            "GTX",
+            "Standart",
             "Diğer"
           ],
           "trimsByVersion": {
             "Pro 77kWh 204": [
-              "Life",
-              "Style",
+              "Standart",
               "Diğer"
             ],
             "Pro Performance 77kWh 204": [
-              "Life",
-              "Style",
+              "Standart",
               "Diğer"
             ],
             "GTX 4Motion 77kWh 299": [
-              "GTX",
+              "Standart",
               "Diğer"
             ]
           }
@@ -24097,22 +24077,20 @@
             "Diğer"
           ],
           "trims": [
-            "Pro",
-            "Style",
-            "GTX",
+            "Standart",
             "Diğer"
           ],
           "trimsByVersion": {
             "Pro 77kWh 286": [
-              "Pro",
+              "Standart",
               "Diğer"
             ],
             "Pro S 86kWh 286": [
-              "Pro",
+              "Standart",
               "Diğer"
             ],
             "GTX 4Motion 86kWh 340": [
-              "GTX",
+              "Standart",
               "Diğer"
             ]
           }
