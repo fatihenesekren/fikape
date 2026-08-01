@@ -19032,7 +19032,7 @@
         }
       ]
     },
-        {
+            {
       "make": "Renault",
       "models": [
         {
@@ -19595,7 +19595,8 @@
             "Diğer"
           ],
           "trims": [
-            "Standart",
+            "Comfort",
+            "Intens",
             "Diğer"
           ]
         },
@@ -19608,7 +19609,8 @@
             "Diğer"
           ],
           "trims": [
-            "Standart",
+            "Comfort",
+            "Sport",
             "Diğer"
           ]
         },
@@ -19620,7 +19622,9 @@
             "Diğer"
           ],
           "trims": [
-            "Standart",
+            "Comfort",
+            "Sport",
+            "SpaceClass",
             "Diğer"
           ]
         },
@@ -19634,8 +19638,9 @@
             "Diğer"
           ],
           "trims": [
+            "Comfort",
+            "Equilibre",
             "Techno",
-            "Iconic",
             "Diğer"
           ]
         },
