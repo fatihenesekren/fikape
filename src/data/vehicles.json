@@ -23017,7 +23017,7 @@
         }
       ]
     },
-        {
+            {
       "make": "Volkswagen",
       "models": [
         {
@@ -23948,6 +23948,7 @@
         {
           "name": "ID.3",
           "versions": [
+            "Pure Performance 45kWh 148",
             "Pro 58kWh 204",
             "Pro S 77kWh 204",
             "Pro Performance 77kWh 204",
@@ -23959,6 +23960,7 @@
             "Business",
             "Style",
             "GTX",
+            "Standart",
             "Diğer"
           ],
           "trimsByVersion": {
@@ -23983,6 +23985,10 @@
             "GTX 4Motion 340 77kWh": [
               "GTX",
               "Diğer"
+            ],
+            "Pure Performance 45kWh 148": [
+              "Standart",
+              "Diğer"
             ]
           }
         },
@@ -23993,6 +23999,7 @@
             "Pro 77kWh 204",
             "Pro 4Motion 77kWh 195",
             "GTX 4Motion 77kWh 299",
+            "Crozz Pro",
             "Diğer"
           ],
           "trims": [
@@ -24000,6 +24007,7 @@
             "Life",
             "Style",
             "GTX",
+            "Standart",
             "Diğer"
           ],
           "trimsByVersion": {
@@ -24019,6 +24027,10 @@
             ],
             "GTX 4Motion 77kWh 299": [
               "GTX",
+              "Diğer"
+            ],
+            "Crozz Pro": [
+              "Standart",
               "Diğer"
             ]
           }
@@ -24050,6 +24062,28 @@
             ],
             "GTX 4Motion 77kWh 299": [
               "GTX",
+              "Diğer"
+            ]
+          }
+        },
+        {
+          "name": "ID.6",
+          "versions": [
+            "Crozz Pro",
+            "XPro",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ],
+          "trimsByVersion": {
+            "Crozz Pro": [
+              "Standart",
+              "Diğer"
+            ],
+            "XPro": [
+              "Standart",
               "Diğer"
             ]
           }
@@ -39685,7 +39719,7 @@
         }
       ]
     },
-    {
+        {
       "make": "Volkswagen",
       "models": [
         {
@@ -39809,24 +39843,31 @@
         {
           "name": "ID. Buzz",
           "versions": [
-            "Pro 204 Elektrik",
-            "GTX 4Motion 340 Elektrik",
+            "Cargo 286 Elektrik",
+            "Pro 286 Elektrik",
+            "Pure 286 Elektrik",
+            "GTX 340 Elektrik",
             "Diğer"
           ],
           "trims": [
-            "Life",
-            "Style",
-            "GTX",
+            "Standart",
             "Diğer"
           ],
           "trimsByVersion": {
-            "Pro 204 Elektrik": [
-              "Life",
-              "Style",
+            "Cargo 286 Elektrik": [
+              "Standart",
               "Diğer"
             ],
-            "GTX 4Motion 340 Elektrik": [
-              "GTX",
+            "Pro 286 Elektrik": [
+              "Standart",
+              "Diğer"
+            ],
+            "Pure 286 Elektrik": [
+              "Standart",
+              "Diğer"
+            ],
+            "GTX 340 Elektrik": [
+              "Standart",
               "Diğer"
             ]
           }
