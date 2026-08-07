@@ -929,7 +929,24 @@
       "make": "Audi",
       "models": [
         {
-          "name": "A1",
+          "name": "A1 (2010-2018)",
+          "versions": [
+            "1.4 TFSI",
+            "1.6 TDI",
+            "Diğer"
+          ],
+          "trims": [
+            "Ambition",
+            "Attraction",
+            "Basic",
+            "Dynamic",
+            "S Line",
+            "Sport",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "A1 (2018-)",
           "versions": [
             "1.0 TFSI 95",
             "1.5 TFSI 150",
