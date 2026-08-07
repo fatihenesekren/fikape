@@ -1290,6 +1290,7 @@
             "1.9 TDI 115",
             "2.5 TDI 150",
             "S4 2.7T 265",
+            "2.8 193",
             "Diğer"
           ],
           "trims": [
@@ -1315,6 +1316,9 @@
             "2.0 TDI 140",
             "2.5 TDI 163",
             "S4 4.2 V8 344",
+            "3.0 220",
+            "2.7 TDI 180",
+            "3.2 FSI 265",
             "Diğer"
           ],
           "trims": [
@@ -1323,6 +1327,7 @@
             "Sport",
             "S line",
             "S4",
+            "Standart",
             "Diğer"
           ]
         },
@@ -1349,6 +1354,7 @@
             "Sport",
             "S line",
             "S4",
+            "Standart",
             "Diğer"
           ]
         },
@@ -1361,6 +1367,10 @@
             "2.0 TDI 150",
             "3.0 TDI 286 quattro",
             "S4 3.0 TFSI 354",
+            "2.0 TDI 204",
+            "2.0 TDI 163",
+            "2.0 TFSI 245",
+            "1.4 TFSI 150",
             "Diğer"
           ],
           "trims": [
@@ -1368,6 +1378,9 @@
             "Sport",
             "S line",
             "S4",
+            "Design",
+            "Dynamic",
+            "Standart",
             "Diğer"
           ]
         },
