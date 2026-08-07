@@ -1008,6 +1008,10 @@
             "2.0 TDI 140",
             "2.0 TDI 170",
             "S3 2.0T 265",
+            "1.6 FSI 115",
+            "1.8 125",
+            "1.8 TFSI 160",
+            "2.0 FSI 150",
             "Diğer"
           ],
           "trims": [
@@ -1016,6 +1020,9 @@
             "Sport",
             "S line",
             "S3",
+            "Ambiente",
+            "Sport Line",
+            "Standart",
             "Diğer"
           ]
         },
@@ -1036,6 +1043,8 @@
             "S3 2.0T 300",
             "S3 2.0T 310",
             "RS3 2.5 TFSI 367",
+            "1.5 TFSI 150",
+            "2.0 TDI 116",
             "Diğer"
           ],
           "trims": [
@@ -1044,6 +1053,14 @@
             "S line",
             "S3",
             "RS 3",
+            "Ambiente",
+            "Ambition",
+            "Design",
+            "Design Line",
+            "Dynamic",
+            "Sport Line",
+            "All Street",
+            "Standart",
             "Diğer"
           ],
           "trimsByVersion": {
@@ -1052,6 +1069,11 @@
               "Sport",
               "S line",
               "S3",
+              "Advanced",
+              "Design",
+              "Design Line",
+              "Dynamic",
+              "Sport Line",
               "Diğer"
             ],
             "1.2 TFSI 105": [
@@ -1059,6 +1081,7 @@
               "Sport",
               "S line",
               "S3",
+              "Ambiente",
               "Diğer"
             ],
             "1.4 TFSI 122": [
@@ -1066,6 +1089,10 @@
               "Sport",
               "S line",
               "S3",
+              "Ambiente",
+              "Ambition",
+              "Sport Line",
+              "Standart",
               "Diğer"
             ],
             "1.4 TFSI 150": [
@@ -1101,6 +1128,12 @@
               "Sport",
               "S line",
               "S3",
+              "Ambiente",
+              "Ambition",
+              "Design Line",
+              "Dynamic",
+              "Sport Line",
+              "Standart",
               "Diğer"
             ],
             "2.0 TDI 150": [
@@ -1140,6 +1173,23 @@
             ],
             "RS3 2.5 TFSI 367": [
               "RS 3",
+              "Diğer"
+            ],
+            "1.5 TFSI 150": [
+              "Advanced",
+              "All Street",
+              "Design",
+              "Design Line",
+              "Dynamic",
+              "Sport Line",
+              "S line",
+              "Sport",
+              "Diğer"
+            ],
+            "2.0 TDI 116": [
+              "Design",
+              "Dynamic",
+              "Sport",
               "Diğer"
             ]
           }
@@ -2536,7 +2586,7 @@
         }
       ]
     },
-                            {
+    {
       "make": "BMW",
       "models": [
         {
@@ -18361,7 +18411,7 @@
         }
       ]
     },
-        {
+    {
       "make": "Porsche",
       "models": [
         {
@@ -19049,7 +19099,7 @@
         }
       ]
     },
-            {
+    {
       "make": "Renault",
       "models": [
         {
@@ -23382,7 +23432,7 @@
         }
       ]
     },
-                {
+    {
       "make": "Volkswagen",
       "models": [
         {
@@ -26339,7 +26389,7 @@
             "Diğer"
           ]
         },
-                {
+        {
           "name": "ZR7",
           "versions": [
             "Elektrik 3 kW 72V 35Ah",
@@ -27425,7 +27475,7 @@
         }
       ]
     },
-        {
+    {
       "make": "BMW",
       "models": [
         {
@@ -37598,8 +37648,7 @@
           ]
         }
       ]
-    }
-  ,
+    },
     {
       "make": "Volta",
       "models": [
@@ -37772,7 +37821,8 @@
           ]
         }
       ]
-    }],
+    }
+  ],
   "kamyonet": [
     {
       "make": "BMC",
@@ -40062,7 +40112,7 @@
         }
       ]
     },
-        {
+    {
       "make": "Volkswagen",
       "models": [
         {
@@ -40380,7 +40430,7 @@
         }
       ]
     },
-        {
+    {
       "make": "Dualtron",
       "models": [
         {
@@ -41994,7 +42044,7 @@
         }
       ]
     },
-        {
+    {
       "make": "Segway",
       "models": [
         {
