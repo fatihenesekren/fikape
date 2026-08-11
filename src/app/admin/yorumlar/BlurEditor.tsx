@@ -2,13 +2,14 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 
-interface Rect { x: number; y: number; w: number; h: number; }
+// angle: radyan, dikdörtgenin merkezi etrafında saat yönünde dönüş — araç fotoğrafı
+// çapraz çekilmişse plaka/yüz de çapraz durur, eksene sabit dikdörtgen o zaman ya
+// bölgeyi eksik kapatır ya da gereğinden fazla alanı bulanıklaştırır.
+interface Rect { x: number; y: number; w: number; h: number; angle: number; }
 
 const BLOCK_SIZE = 14;
 
-function pixelate(ctx: CanvasRenderingContext2D, r: Rect) {
-  const x = Math.round(r.x), y = Math.round(r.y);
-  const w = Math.round(r.w), h = Math.round(r.h);
+function pixelateAxisAligned(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number) {
   if (w <= 0 || h <= 0) return;
   const data = ctx.getImageData(x, y, w, h);
   const px = data.data;
@@ -33,6 +34,57 @@ function pixelate(ctx: CanvasRenderingContext2D, r: Rect) {
   ctx.putImageData(data, x, y);
 }
 
+// Dönük bir dikdörtgeni pikselleştirmek için getImageData/putImageData eksen-hizalı
+// çalışır, doğrudan dönük bölge okunamaz. Yöntem: kaynak görseli merkez etrafında
+// -angle döndürerek geçici bir tuvale çiz (böylece hedef bölge o tuvalde eksene
+// hizalanmış olur) → o eksene-hizalı bölgeyi pikselleştir → küçük bir yamaya kopyala
+// → ana tuvale +angle döndürerek doğru konum/açıda geri yapıştır.
+function applyBlur(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement, img: HTMLImageElement, r: Rect) {
+  const w = Math.round(r.w), h = Math.round(r.h);
+  if (w <= 0 || h <= 0) return;
+  if (!r.angle) {
+    pixelateAxisAligned(ctx, Math.round(r.x), Math.round(r.y), w, h);
+    return;
+  }
+  const cx = r.x + r.w / 2, cy = r.y + r.h / 2;
+
+  const tmp = document.createElement("canvas");
+  tmp.width = canvas.width;
+  tmp.height = canvas.height;
+  const tctx = tmp.getContext("2d")!;
+  tctx.translate(cx, cy);
+  tctx.rotate(-r.angle);
+  tctx.translate(-cx, -cy);
+  tctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+  const x = Math.round(cx - r.w / 2), y = Math.round(cy - r.h / 2);
+  pixelateAxisAligned(tctx, x, y, w, h);
+  const patch = tctx.getImageData(x, y, w, h);
+  const patchCanvas = document.createElement("canvas");
+  patchCanvas.width = w;
+  patchCanvas.height = h;
+  patchCanvas.getContext("2d")!.putImageData(patch, 0, 0);
+
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(r.angle);
+  ctx.drawImage(patchCanvas, -w / 2, -h / 2, w, h);
+  ctx.restore();
+}
+
+function hitTest(rects: Rect[], px: number, py: number): number | null {
+  for (let i = rects.length - 1; i >= 0; i--) {
+    const r = rects[i];
+    const cx = r.x + r.w / 2, cy = r.y + r.h / 2;
+    const dx = px - cx, dy = py - cy;
+    const cos = Math.cos(-r.angle), sin = Math.sin(-r.angle);
+    const lx = dx * cos - dy * sin;
+    const ly = dx * sin + dy * cos;
+    if (Math.abs(lx) <= r.w / 2 && Math.abs(ly) <= r.h / 2) return i;
+  }
+  return null;
+}
+
 export function BlurEditor({
   photoId,
   productSlug,
@@ -52,18 +104,31 @@ export function BlurEditor({
   const [drawing, setDrawing] = useState(false);
   const [startPos, setStartPos] = useState<{ x: number; y: number } | null>(null);
   const [activeRect, setActiveRect] = useState<Rect | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [loadError, setLoadError] = useState(false);
 
-  const redraw = useCallback((rectList: Rect[], active: Rect | null) => {
+  const redraw = useCallback((rectList: Rect[], active: Rect | null, selIdx?: number | null) => {
     const canvas = canvasRef.current;
     const img = imgRef.current;
     if (!canvas || !img) return;
     const ctx = canvas.getContext("2d")!;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    for (const r of rectList) pixelate(ctx, r);
+    for (const r of rectList) applyBlur(ctx, canvas, img, r);
+    if (selIdx != null && rectList[selIdx]) {
+      const r = rectList[selIdx];
+      ctx.save();
+      ctx.translate(r.x + r.w / 2, r.y + r.h / 2);
+      ctx.rotate(r.angle);
+      ctx.strokeStyle = "#2563eb";
+      ctx.lineWidth = 2;
+      ctx.setLineDash([6, 3]);
+      ctx.strokeRect(-r.w / 2, -r.h / 2, r.w, r.h);
+      ctx.restore();
+      ctx.setLineDash([]);
+    }
     if (active && active.w > 0 && active.h > 0) {
       ctx.strokeStyle = "#ef4444";
       ctx.lineWidth = 2;
@@ -106,7 +171,15 @@ export function BlurEditor({
   }
 
   function beginDraw(clientX: number, clientY: number) {
-    setStartPos(getPos(clientX, clientY));
+    const pos = getPos(clientX, clientY);
+    const hit = hitTest(rects, pos.x, pos.y);
+    if (hit != null) {
+      setSelectedIndex(hit);
+      redraw(rects, null, hit);
+      return;
+    }
+    setSelectedIndex(null);
+    setStartPos(pos);
     setDrawing(true);
   }
 
@@ -118,6 +191,7 @@ export function BlurEditor({
       y: Math.min(startPos.y, pos.y),
       w: Math.abs(pos.x - startPos.x),
       h: Math.abs(pos.y - startPos.y),
+      angle: 0,
     };
     setActiveRect(active);
     redraw(rects, active);
@@ -129,7 +203,8 @@ export function BlurEditor({
     if (activeRect && activeRect.w > 8 && activeRect.h > 8) {
       const newRects = [...rects, activeRect];
       setRects(newRects);
-      redraw(newRects, null);
+      setSelectedIndex(newRects.length - 1);
+      redraw(newRects, null, newRects.length - 1);
     }
     setActiveRect(null);
     setStartPos(null);
@@ -168,9 +243,31 @@ export function BlurEditor({
     endDraw();
   }
 
+  function setSelectedAngleDeg(deg: number) {
+    if (selectedIndex == null) return;
+    const newRects = rects.map((r, i) => (i === selectedIndex ? { ...r, angle: (deg * Math.PI) / 180 } : r));
+    setRects(newRects);
+    redraw(newRects, null, selectedIndex);
+  }
+
+  function nudgeSelectedAngle(deltaDeg: number) {
+    if (selectedIndex == null) return;
+    const currentDeg = (rects[selectedIndex].angle * 180) / Math.PI;
+    setSelectedAngleDeg(currentDeg + deltaDeg);
+  }
+
+  function removeSelected() {
+    if (selectedIndex == null) return;
+    const newRects = rects.filter((_, i) => i !== selectedIndex);
+    setRects(newRects);
+    setSelectedIndex(null);
+    redraw(newRects, null);
+  }
+
   function undo() {
     const newRects = rects.slice(0, -1);
     setRects(newRects);
+    setSelectedIndex(null);
     redraw(newRects, null);
   }
 
@@ -200,6 +297,8 @@ export function BlurEditor({
     setSaving(false);
   }
 
+  const selectedAngleDeg = selectedIndex != null ? Math.round((rects[selectedIndex].angle * 180) / Math.PI) : 0;
+
   return (
     <div
       className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4"
@@ -215,7 +314,8 @@ export function BlurEditor({
           <div>
             <p className="font-bold text-gray-900 text-sm">Bölge Bulanıklaştır</p>
             <p className="text-xs text-gray-400 mt-0.5">
-              Plaka veya yüz üzerine dikdörtgen çiz → Kaydet
+              Plaka veya yüz üzerine dikdörtgen çiz → Kaydet. Araç çaprazsa çizilen
+              bölgeyi seçip döndürebilirsin.
             </p>
           </div>
           <button
@@ -254,6 +354,42 @@ export function BlurEditor({
             onTouchCancel={onTouchEnd}
           />
         </div>
+
+        {/* Döndürme kontrolü — bir bölge seçiliyken görünür */}
+        {selectedIndex != null && (
+          <div className="px-5 py-3 border-t border-gray-100 bg-blue-50/50 flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => nudgeSelectedAngle(-5)}
+              className="w-8 h-8 shrink-0 flex items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+              title="5° sola döndür"
+            >
+              ↺
+            </button>
+            <input
+              type="range"
+              min={-60}
+              max={60}
+              step={1}
+              value={selectedAngleDeg}
+              onChange={(e) => setSelectedAngleDeg(Number(e.target.value))}
+              className="flex-1"
+            />
+            <button
+              onClick={() => nudgeSelectedAngle(5)}
+              className="w-8 h-8 shrink-0 flex items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+              title="5° sağa döndür"
+            >
+              ↻
+            </button>
+            <span className="text-xs font-mono text-gray-500 w-10 text-right shrink-0">{selectedAngleDeg}°</span>
+            <button
+              onClick={removeSelected}
+              className="text-xs font-semibold text-red-500 hover:text-red-600 shrink-0"
+            >
+              Bu bölgeyi sil
+            </button>
+          </div>
+        )}
 
         {/* Alt bar */}
         <div className="px-5 py-4 border-t border-gray-100 flex items-center justify-between gap-3 shrink-0">
