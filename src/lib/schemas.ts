@@ -152,6 +152,10 @@ export const tradeRatingSchema = z.object({
   comment: z.string().trim().max(300).optional().nullable(),
 });
 
+export const deletionRequestSchema = z.object({
+  reason: z.string().trim().max(500).optional().nullable(),
+});
+
 export const savedSearchCreateSchema = z.object({
   city:       z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
   categoryId: z.union([z.number(), z.string()]).optional().nullable(),

@@ -17,6 +17,7 @@ import { stripModelGenRange } from "@/lib/modelDisplay";
 import { ScrollFadeBox } from "@/components/ScrollFadeBox";
 import { FavoriteRow } from "./FavoriteRow";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
+import { DeleteAccountSection } from "./DeleteAccountSection";
 
 export const metadata: Metadata = { title: "Profilim" };
 
@@ -103,6 +104,11 @@ export default async function ProfilPage() {
   // yorum başına ayrı view tracking yok, ürün sayfası görüntülenmesi proxy olarak kullanılıyor)
   const uniqueProductViews = new Map(publishedReviews.map((r) => [r.productId, r.product.viewCount]));
   const totalViews = [...uniqueProductViews.values()].reduce((s, v) => s + v, 0);
+
+  const pendingDeletionRequest = await prisma.dataDeletionRequest.findFirst({
+    where: { userId, status: { in: ["PENDING", "IN_PROGRESS"] } },
+    select: { dueAt: true },
+  }).catch(() => null);
 
   const trust = TRUST_PROFILE[user.trustLevel] ?? TRUST_PROFILE[1];
 
@@ -352,6 +358,10 @@ export default async function ProfilPage() {
           </ScrollFadeBox>
         )}
       </div>
+
+      <DeleteAccountSection
+        initialPendingRequest={pendingDeletionRequest ? { dueAt: pendingDeletionRequest.dueAt.toISOString() } : null}
+      />
 
     </div>
   );

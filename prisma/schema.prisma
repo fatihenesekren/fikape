@@ -631,6 +631,8 @@ model DataDeletionRequest {
   completedAt DateTime?
   completedBy Int?
 
+  @@index([userId])
+  @@index([status])
   @@map("data_deletion_requests")
 }
 

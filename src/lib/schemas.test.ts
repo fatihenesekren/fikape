@@ -3,6 +3,7 @@ import {
   reviewCreateSchema, registerSchema, vehicleSuggestSchema, questionCreateSchema, answerCreateSchema,
   tradeListingCreateSchema, tradeListingUpdateSchema, tradeListingCloseSchema,
   messageCreateSchema, messageReportSchema, savedSearchCreateSchema, tradeRatingSchema,
+  deletionRequestSchema,
 } from "./schemas";
 
 describe("reviewCreateSchema", () => {
@@ -211,6 +212,20 @@ describe("messageCreateSchema", () => {
 
   it("1000 karakterden uzun mesajı reddeder", () => {
     expect(messageCreateSchema.safeParse({ text: "a".repeat(1001) }).success).toBe(false);
+  });
+});
+
+describe("deletionRequestSchema", () => {
+  it("neden olmadan da kabul eder (opsiyonel)", () => {
+    expect(deletionRequestSchema.safeParse({}).success).toBe(true);
+  });
+
+  it("neden ile kabul eder", () => {
+    expect(deletionRequestSchema.safeParse({ reason: "Artık kullanmıyorum." }).success).toBe(true);
+  });
+
+  it("500 karakterden uzun nedeni reddeder", () => {
+    expect(deletionRequestSchema.safeParse({ reason: "a".repeat(501) }).success).toBe(false);
   });
 });
 
