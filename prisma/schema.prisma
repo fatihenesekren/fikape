@@ -209,8 +209,11 @@ model User {
   messagesSent        Message[]       @relation("MessageSender")
   threadsBlocked      MessageThread[] @relation("ThreadBlockedBy")
   messageReports      MessageReport[]
+  tradeListingReports TradeListingReport[]
   contentReports      ContentReport[]
   favorites           Favorite[]
+  blockedUsers        BlockedUser[] @relation("Blocker")
+  blockedByUsers      BlockedUser[] @relation("Blocked")
 
   @@map("users")
 }
@@ -604,6 +607,7 @@ enum ConsentType {
   TERMS_OF_SERVICE    // Kullanım koşulları
   MARKETING_EMAIL     // Pazarlama e-postası
   ANALYTICS_COOKIES   // Analitik çerezler
+  TRADE_LISTING       // Takas ilanı açarken il/iletişim verisinin diğer kullanıcılara gösterilmesine rıza
 }
 
 // "Verilerimi sil" talepleri
@@ -875,6 +879,7 @@ model TradeListing {
   updatedAt       DateTime @updatedAt
 
   threads         MessageThread[]
+  reports         TradeListingReport[]
 
   // NOT: Prisma @@unique([userProductId]) YOK (kapanan ilan yeniden açılamama
   // bug'ına yol açar). Bunun yerine migration SQL'ine ELLE bir PARTIAL UNIQUE
@@ -921,6 +926,23 @@ model MessageThread {
   @@map("message_threads")
 }
 
+// Kullanıcı-bazlı, kalıcı blok — MessageThread.blockedByUserId sadece TEK bir
+// görüşmeyi donduruyordu; bloklanan kişi yeni bir ilan/thread üzerinden tekrar
+// ulaşabiliyordu (bkz. denetim raporu). Bu tablo bloğu kullanıcı çifti bazında
+// kalıcı hale getirir, yeni ilan/thread açma route'larında kontrol edilir.
+model BlockedUser {
+  id        Int      @id @default(autoincrement())
+  blockerId Int
+  blocker   User     @relation("Blocker", fields: [blockerId], references: [id])
+  blockedId Int
+  blocked   User     @relation("Blocked", fields: [blockedId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([blockerId, blockedId])
+  @@index([blockedId])
+  @@map("blocked_users")
+}
+
 model Message {
   id        Int           @id @default(autoincrement())
   threadId  Int
@@ -954,6 +976,26 @@ model MessageReport {
   @@index([reporterId])
   @@index([status])
   @@map("message_reports")
+}
+
+// İlanın kendisini (fotoğraf, içerik, sahte/spam ilan şüphesi) hedefleyen rapor —
+// MessageReport mesaj bazlı, bu ilan bazlı. Aynı reason/status enum'ları paylaşılıyor,
+// admin tarafında aynı sayfada (mesaj-raporlari) birlikte listeleniyor.
+model TradeListingReport {
+  id             Int                 @id @default(autoincrement())
+  tradeListingId Int
+  tradeListing   TradeListing        @relation(fields: [tradeListingId], references: [id])
+  reporterId     Int
+  reporter       User                @relation(fields: [reporterId], references: [id])
+  reason         MessageReportReason
+  note           String?             @db.VarChar(300)
+  status         MessageReportStatus @default(PENDING)
+  createdAt      DateTime            @default(now())
+
+  @@index([tradeListingId])
+  @@index([reporterId])
+  @@index([status])
+  @@map("trade_listing_reports")
 }
 
 enum MessageReportReason {

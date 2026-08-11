@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { SOLD_REASONS, SALE_TYPES, TRADE_EXTRA_DIRECTIONS, formatSoldReasons } from "@/lib/soldReasons";
 import { SaleLeadCard } from "./SaleLeadCard";
@@ -44,21 +44,28 @@ export function OwnershipCard({
   submittedSaleLeadTypes,
   initialFavorited = false,
 }: Props) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  // "Takas oldu" ile kapatılan bir ilan Garajım'dan buraya yönlendirdiğinde, Sattım
+  // formu TRADE ön-dolu şekilde otomatik açılır — önceden kullanıcı aynı bilgiyi
+  // (takas oldu) iki ayrı formda tekrar giriyordu (bkz. denetim raporu). Effect içinde
+  // setState yerine lazy initializer kullanılıyor (cascading render'ı önlemek için).
+  const cameFromTradeClose = searchParams.get("sat") === "trade" && initialInGarage && !initialIsSold;
+
   const [inGarage, setInGarage]     = useState(initialInGarage);
   const [isSold, setIsSold]         = useState(initialIsSold);
   const [soldReason, setSoldReason] = useState(initialSoldReason);
   const [persistedNote, setPersistedNote] = useState(initialSoldReasonNote);
-  const [showSellForm, setShowSellForm] = useState(false);
+  const [showSellForm, setShowSellForm] = useState(cameFromTradeClose);
   const [selectedReasons, setSelectedReasons] = useState<string[]>([]);
   const [soldReasonNote, setSoldReasonNote] = useState("");
   const [soldMonth, setSoldMonth] = useState(currentMonthStr());
-  const [saleType, setSaleType] = useState<SaleType | "">("");
+  const [saleType, setSaleType] = useState<SaleType | "">(cameFromTradeClose ? "TRADE" : "");
   const [salePrice, setSalePrice] = useState("");
   const [tradeExtraDirection, setTradeExtraDirection] = useState<TradeExtraDirection | "">("");
   const [tradeExtraAmount, setTradeExtraAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
 
   const [purchasedAt, setPurchasedAt] = useState(initialPurchasedAt);
   const [purchasePrice, setPurchasePrice] = useState(initialPurchasePrice);

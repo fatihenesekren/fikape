@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { tradeListingCreateSchema, formatZodError } from "@/lib/schemas";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeListingEnabled } from "@/lib/features";
+import { hashRequestContext } from "@/lib/security";
 
 const DAILY_LISTING_LIMIT = Number(process.env.TAKASA_AC_ILAN_GUNLUK_LIMIT) || 5;
 
@@ -80,6 +81,21 @@ export async function POST(req: Request) {
         city,
       },
     });
+
+    // KVKK açık rıza kaydı — schema zaten ham IP/UA yerine hash saklama ilkesini
+    // kullanıyor (bkz. security.ts), ConsentLog alan adları "ipAddress/userAgent"
+    // olsa da buraya kasıtlı olarak hash yazılıyor.
+    const { ipHash, userAgentHash } = hashRequestContext(req);
+    await prisma.consentLog.create({
+      data: {
+        userId,
+        consentType: "TRADE_LISTING",
+        isGranted: true,
+        ipAddress: ipHash,
+        userAgent: userAgentHash,
+      },
+    }).catch(() => {});
+
     return NextResponse.json({ ok: true, id: listing.id }, { status: 201 });
   } catch {
     return NextResponse.json({ error: "Bu araç için zaten aktif bir takas ilanınız var." }, { status: 409 });

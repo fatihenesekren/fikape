@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { BanButton, UnbanButton } from "./ReportActions";
+import { ListingBanButton } from "./ListingReportActions";
 
 export const metadata: Metadata = { title: "Mesaj Raporları — Admin" };
 
@@ -12,10 +13,18 @@ const REASON_LABEL: Record<string, string> = {
 };
 
 export default async function MesajRaporlariPage() {
-  const [reports, bannedUsers, activeListingCount, tradedCount, threadCount, reciprocalThreadCount] = await Promise.all([
+  const [reports, listingReports, bannedUsers, activeListingCount, tradedCount, threadCount, reciprocalThreadCount] = await Promise.all([
     prisma.messageReport.findMany({
       where: { status: "PENDING" },
       include: { message: { select: { text: true, senderId: true, threadId: true } }, reporter: { select: { displayName: true } } },
+      orderBy: { createdAt: "desc" },
+    }),
+    prisma.tradeListingReport.findMany({
+      where: { status: "PENDING" },
+      include: {
+        tradeListing: { select: { id: true, city: true, product: { select: { brand: { select: { name: true } }, model: { select: { name: true } } } } } },
+        reporter: { select: { displayName: true } },
+      },
       orderBy: { createdAt: "desc" },
     }),
     prisma.user.findMany({
@@ -52,7 +61,34 @@ export default async function MesajRaporlariPage() {
       </div>
 
       <div>
-        <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Bekleyen Raporlar</h2>
+        <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Bekleyen İlan Raporları</h2>
+        {listingReports.length === 0 ? (
+          <p className="text-sm text-gray-400">Bekleyen ilan raporu yok.</p>
+        ) : (
+          <div className="space-y-2">
+            {listingReports.map((r) => (
+              <div key={r.id} className="bg-white border border-gray-100 rounded-xl p-4">
+                <p className="text-xs text-gray-400">
+                  {r.reporter.displayName ?? "Kullanıcı"} tarafından raporlandı — {REASON_LABEL[r.reason] ?? r.reason}
+                </p>
+                <p className="text-sm text-gray-800 mt-1">
+                  {r.tradeListing.product.brand.name} {r.tradeListing.product.model.name} — {r.tradeListing.city}
+                </p>
+                {r.note && <p className="text-xs text-gray-500 mt-0.5">&quot;{r.note}&quot;</p>}
+                <div className="flex items-center gap-3 mt-2">
+                  <a href={`/takas/${r.tradeListing.id}`} className="text-xs text-gray-400 hover:underline">
+                    İlanı görüntüle →
+                  </a>
+                  <ListingBanButton reportId={r.id} />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Bekleyen Mesaj Raporları</h2>
         {reports.length === 0 ? (
           <p className="text-sm text-gray-400">Bekleyen rapor yok.</p>
         ) : (

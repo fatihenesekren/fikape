@@ -9,6 +9,7 @@ import { isTradeMessagingEnabled } from "@/lib/features";
 import { timeAgoTr } from "@/lib/timeAgo";
 import { TradeMessageForm } from "./TradeMessageForm";
 import { ShareButton } from "./ShareButton";
+import { ListingReportButton } from "./ListingReportButton";
 
 const PAYMENT_LABEL: Record<string, string> = {
   SWAP_ONLY: "Sadece takas",
@@ -170,6 +171,8 @@ export default async function TakasDetayPage({
             <TradeMessageForm listingId={listing.id} />
           </>
         )}
+
+        {userId && !isOwner && <ListingReportButton listingId={listing.id} />}
       </div>
     </div>
   );

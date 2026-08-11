@@ -52,6 +52,21 @@ export async function POST(
     return NextResponse.json({ error: "Kendi ilanınıza mesaj gönderemezsiniz." }, { status: 403 });
   }
 
+  // Taraflardan biri diğerini daha önce kalıcı olarak bloklamışsa (bkz. block/route.ts),
+  // yeni bir ilan üzerinden tekrar temas kurulmasını engelle.
+  const blocked = await prisma.blockedUser.findFirst({
+    where: {
+      OR: [
+        { blockerId: userId, blockedId: listing.userId },
+        { blockerId: listing.userId, blockedId: userId },
+      ],
+    },
+    select: { id: true },
+  });
+  if (blocked) {
+    return NextResponse.json({ error: "Bu kullanıcıyla iletişim kuramazsınız." }, { status: 403 });
+  }
+
   const parsed = messageCreateSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });

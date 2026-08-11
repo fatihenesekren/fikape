@@ -42,6 +42,10 @@ export default function GizlilikPage() {
             <li><strong>Yorum ve puanlar:</strong> Paylaştığınız araç yorumları, FI·KA·PE puanları ve detay metinler</li>
             <li><strong>Kullanım verileri:</strong> Sayfa görüntüleme sayıları, oturum bilgileri</li>
             <li><strong>Onay kayıtları:</strong> KVKK kapsamında verdiğiniz açık rızalar</li>
+            <li><strong>Takas ilanı bilgileri:</strong> İliniz, aracınızın markası/modeli, istediğiniz araç
+            kategorisi/markası, ödeme niyeti ve opsiyonel not — takas ilanı açtığınızda</li>
+            <li><strong>Takas mesajlaşma içeriği:</strong> Takas ilanları üzerinden diğer kullanıcılarla
+            yaptığınız yazışmalar</li>
           </ul>
         </section>
 
@@ -78,6 +82,9 @@ export default function GizlilikPage() {
             <li>Aktif hesap verileri: Hesabınız açık olduğu sürece</li>
             <li>Yorumlar ve puanlar: Hesap silme talebinize kadar</li>
             <li>Oturum verileri: Oturumun kapanmasından itibaren en fazla 30 gün</li>
+            <li>Takas mesajlaşması: İlan kapandıktan 6 ay sonra mesaj içeriği anonimleştirilir</li>
+            <li>Raporlanan içerik (mesaj/ilan): Moderasyon incelemesi sonuçlanana kadar, sonrasında
+            genel saklama sürelerine tabidir</li>
             <li>Yasal zorunluluk bulunan kayıtlar: İlgili mevzuatta öngörülen süreler boyunca</li>
           </ul>
         </section>
@@ -137,7 +144,28 @@ export default function GizlilikPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">10. Politika Güncellemeleri</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">10. Takas Özelliği</h2>
+          <p className="mb-2">
+            Bir aracınızı takasa açtığınızda, ilanınızdaki il, araç bilgisi ve ilan detayları platformdaki
+            diğer kullanıcılara açık olarak gösterilir. İlan açarken ayrıca açık rızanız istenir.
+          </p>
+          <p className="mb-2">
+            Bir takas ilanına mesaj gönderdiğinizde veya bir görüşmede taraf olduğunuzda, mesaj içeriğiniz
+            ve temel hesap bilgileriniz (görünen adınız) karşı taraf tarafından görülebilir; bu bakımdan
+            Platform, sizin dışınızdaki kullanıcıların (karşı tarafın) verisini de sizin gönderdiğiniz içerik
+            aracılığıyla işler. Bir mesaj veya ilan rapor edildiğinde, rapor içeriği ve ilgili taraf bilgileri
+            moderasyon ekibi tarafından incelenir.
+          </p>
+          <p>
+            Kapanan bir takas ilanının mesajları, kapanmadan 6 ay sonra otomatik olarak anonimleştirilir
+            (mesaj metni silinir). Adli veya idari bir makamdan gelen resmi bir talep olması halinde,
+            ilgili veriler yalnızca talep kapsamıyla sınırlı olarak ve yasal saklama süresi boyunca
+            paylaşılabilir/saklanabilir.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">11. Politika Güncellemeleri</h2>
           <p>
             Bu politikayı zaman zaman güncelleyebiliriz. Önemli değişiklikler kayıtlı e-posta
             adresinize bildirilir. Güncel versiyona her zaman bu sayfadan ulaşabilirsiniz.
@@ -145,7 +173,7 @@ export default function GizlilikPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">11. İletişim</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">12. İletişim</h2>
           <p>
             Gizlilik ile ilgili sorularınız için:{" "}
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>

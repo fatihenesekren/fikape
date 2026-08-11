@@ -28,10 +28,22 @@ export async function POST(
     return NextResponse.json({ error: "Görüşme bulunamadı." }, { status: 404 });
   }
 
-  await prisma.messageThread.update({
-    where: { id: threadId },
-    data: { blockedByUserId: userId, blockedAt: new Date() },
-  });
+  const counterpartId = userId === thread.initiatorId ? thread.tradeListing.userId : thread.initiatorId;
+
+  await prisma.$transaction([
+    prisma.messageThread.update({
+      where: { id: threadId },
+      data: { blockedByUserId: userId, blockedAt: new Date() },
+    }),
+    // Önceden blok sadece bu tek görüşmeyi donduruyordu; bloklanan kişi yeni bir
+    // ilan/thread üzerinden tekrar ulaşabiliyordu (bkz. denetim raporu) — artık
+    // kullanıcı çifti kalıcı olarak da bloklanıyor.
+    prisma.blockedUser.upsert({
+      where: { blockerId_blockedId: { blockerId: userId, blockedId: counterpartId } },
+      create: { blockerId: userId, blockedId: counterpartId },
+      update: {},
+    }),
+  ]);
 
   return NextResponse.json({ ok: true });
 }

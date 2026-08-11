@@ -48,16 +48,29 @@ export default async function GarajimPage() {
   const leadProductIds = new Set(insuranceLeads.map((l) => l.productId));
 
   const [tradeListings, tradeCategories, tradeBrands, categoryBrandLinks] = await Promise.all([
+    // Sadece aktif değil, en son (kapalı dahil) ilan da çekiliyor — kapalı bir
+    // ilanı "yeniden aç" seçeneği sunabilmek için (bkz. denetim raporu Faz 2).
     prisma.tradeListing.findMany({
-      where: { userId, isActive: true },
-      select: { id: true, userProductId: true },
+      where: { userId },
+      select: {
+        id: true, userProductId: true, isActive: true, city: true,
+        paymentIntent: true, note: true, wantAnything: true,
+        wantCategoryId: true, wantBrandId: true,
+      },
+      orderBy: { createdAt: "desc" },
     }).catch(() => []),
     // Sadece yaprak kategoriler (üst kategori "Araçlar" hariç)
     prisma.category.findMany({ where: { isActive: true, parentId: { not: null } }, select: { id: true, name: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
     prisma.brand.findMany({ where: { isActive: true }, select: { id: true, name: true }, orderBy: { name: "asc" } }).catch(() => []),
     prisma.product.findMany({ where: { isActive: true }, select: { categoryId: true, brandId: true }, distinct: ["categoryId", "brandId"] }).catch(() => []),
   ]);
-  const tradeListingByUserProductId = new Map(tradeListings.map((t) => [t.userProductId, t]));
+  // tradeListings createdAt desc sıralı — her userProductId için İLK karşılaşılan
+  // (yani en yeni) kayıt tutulmalı; new Map(array) tam tersini yapıp SON kaydı
+  // tutar, bu yüzden manuel olarak sadece henüz map'te olmayan anahtarlar ekleniyor.
+  const tradeListingByUserProductId = new Map<number, (typeof tradeListings)[number]>();
+  for (const t of tradeListings) {
+    if (!tradeListingByUserProductId.has(t.userProductId)) tradeListingByUserProductId.set(t.userProductId, t);
+  }
   const categoryBrandMap: Record<number, number[]> = {};
   for (const link of categoryBrandLinks) {
     (categoryBrandMap[link.categoryId] ??= []).push(link.brandId);

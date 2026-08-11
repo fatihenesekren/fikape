@@ -8,6 +8,25 @@ import { TURKISH_CITIES } from "@/lib/turkishCities";
 type PaymentIntent = "SWAP_ONLY" | "PAYS_EXTRA" | "WANTS_EXTRA";
 type CloseReason = "TRADED" | "GAVE_UP" | "FOUND_ELSEWHERE";
 
+interface ExistingListing {
+  id: number;
+  isActive: boolean;
+  city: string;
+  paymentIntent: PaymentIntent;
+  note: string | null;
+  wantAnything: boolean;
+  wantCategoryId: number | null;
+  wantBrandId: number | null;
+}
+
+const PAYMENT_WARNING = (
+  <p className="text-[11px] text-amber-700 bg-amber-50 rounded-lg px-2.5 py-2">
+    ⚠️ Üstüne para el değiştiren takaslarda dolandırıcılık riski daha yüksektir. Fark tutarını asla
+    aracı fiziksel olarak teslim almadan/etmeden önce göndermeyiniz, banka dekontunu &ldquo;teslimat kanıtı&rdquo;
+    olarak kabul etmeyiniz.
+  </p>
+);
+
 export function TradeToggleCard({
   userProductId,
   canOpenTrade,
@@ -22,24 +41,27 @@ export function TradeToggleCard({
   categories: { id: number; name: string }[];
   brands: { id: number; name: string }[];
   categoryBrandMap: Record<number, number[]>;
-  existingListing: { id: number } | null;
+  existingListing: ExistingListing | null;
   productSlug: string;
 }) {
   const router = useRouter();
   const [formOpen, setFormOpen] = useState(false);
-  const [city, setCity] = useState("");
-  const [wantAnything, setWantAnything] = useState(true);
-  const [wantCategoryId, setWantCategoryId] = useState("");
-  const [wantBrandId, setWantBrandId] = useState("");
+  const [editOpen, setEditOpen] = useState(false);
+  const [city, setCity] = useState(existingListing?.city ?? "");
+  const [wantAnything, setWantAnything] = useState(existingListing?.wantAnything ?? true);
+  const [wantCategoryId, setWantCategoryId] = useState(existingListing?.wantCategoryId?.toString() ?? "");
+  const [wantBrandId, setWantBrandId] = useState(existingListing?.wantBrandId?.toString() ?? "");
   const availableBrands = wantCategoryId
     ? brands.filter((b) => categoryBrandMap[Number(wantCategoryId)]?.includes(b.id))
     : brands;
-  const [paymentIntent, setPaymentIntent] = useState<PaymentIntent>("SWAP_ONLY");
-  const [note, setNote] = useState("");
+  const [paymentIntent, setPaymentIntent] = useState<PaymentIntent>(existingListing?.paymentIntent ?? "SWAP_ONLY");
+  const [note, setNote] = useState(existingListing?.note ?? "");
+  const [consentGiven, setConsentGiven] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [closeReason, setCloseReason] = useState<CloseReason | "">("");
   const [closing, setClosing] = useState(false);
+  const [reopening, setReopening] = useState(false);
 
   if (!canOpenTrade) {
     return (
@@ -49,28 +71,138 @@ export function TradeToggleCard({
     );
   }
 
-  if (existingListing) {
-    async function closeListing() {
-      setClosing(true);
-      try {
-        const res = await fetch(`/api/trades/${existingListing!.id}/close`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ closeReason: closeReason || null }),
-        });
-        if (res.ok) router.refresh();
-      } finally {
-        setClosing(false);
+  async function reopenListing() {
+    setReopening(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/trades/${existingListing!.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "reopen" }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.error ?? "Bir hata oluştu.");
+        return;
       }
+      router.refresh();
+    } finally {
+      setReopening(false);
+    }
+  }
+
+  // Kapalı bir ilan varsa: yeniden aç seçeneği sun.
+  if (existingListing && !existingListing.isActive) {
+    return (
+      <div className="mt-3 border border-gray-100 bg-gray-50 rounded-xl p-3 flex items-center justify-between gap-2">
+        <p className="text-xs text-gray-500">Takas ilanınız kapalı.</p>
+        <button
+          onClick={reopenListing}
+          disabled={reopening}
+          className="text-xs font-semibold text-indigo-700 hover:underline disabled:opacity-60 shrink-0"
+        >
+          {reopening ? "Açılıyor..." : "🔄 Yeniden Aç"}
+        </button>
+        {error && <p className="text-xs text-red-600">{error}</p>}
+      </div>
+    );
+  }
+
+  async function closeListing() {
+    setClosing(true);
+    try {
+      const res = await fetch(`/api/trades/${existingListing!.id}/close`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ closeReason: closeReason || null }),
+      });
+      if (!res.ok) return;
+      if (closeReason === "TRADED") {
+        // "Sattım" formunu TRADE ön-dolu açacak şekilde araç sayfasına yönlendir —
+        // kullanıcı aynı bilgiyi iki ayrı formda tekrar girmesin diye (bkz. denetim raporu).
+        router.push(`/araclar/${productSlug}?sat=trade`);
+      } else {
+        router.refresh();
+      }
+    } finally {
+      setClosing(false);
+    }
+  }
+
+  async function saveEdit() {
+    setError(null);
+    setSubmitting(true);
+    try {
+      const res = await fetch(`/api/trades/${existingListing!.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "update",
+          city,
+          wantAnything,
+          wantCategoryId: wantAnything ? null : wantCategoryId || null,
+          wantBrandId: wantAnything ? null : wantBrandId || null,
+          paymentIntent,
+          note: note.trim() || null,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.error ?? "Bir hata oluştu.");
+        return;
+      }
+      setEditOpen(false);
+      router.refresh();
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  // Aktif bir ilan varsa: özet + düzenle/kapat seçenekleri.
+  if (existingListing) {
+    if (editOpen) {
+      return (
+        <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3 space-y-2.5">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-bold text-indigo-800">İlanı Düzenle</p>
+            <button onClick={() => setEditOpen(false)} aria-label="Kapat" className="text-indigo-400 hover:text-indigo-700 text-xs">✕</button>
+          </div>
+          <TradeFormFields
+            city={city} setCity={setCity}
+            wantAnything={wantAnything} setWantAnything={setWantAnything}
+            wantCategoryId={wantCategoryId} setWantCategoryId={setWantCategoryId}
+            wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
+            availableBrands={availableBrands} categories={categories}
+            paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
+            note={note} setNote={setNote}
+          />
+          {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
+          <button
+            onClick={saveEdit}
+            disabled={submitting}
+            className="w-full text-sm font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-60"
+            style={{ background: "#4338ca" }}
+          >
+            {submitting ? "Kaydediliyor..." : "Kaydet"}
+          </button>
+          {error && <p className="text-xs text-red-600">{error}</p>}
+        </div>
+      );
     }
 
     return (
       <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3">
-        <p className="text-xs font-bold text-indigo-800">✓ Takasa açık</p>
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-xs font-bold text-indigo-800">✓ Takasa açık</p>
+          <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-indigo-600 hover:underline shrink-0">
+            Düzenle
+          </button>
+        </div>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           <select
             value={closeReason}
             onChange={(e) => setCloseReason(e.target.value as CloseReason | "")}
+            aria-label="Kapatma sebebi"
             className="text-xs rounded-lg border border-indigo-200 px-2 py-1 bg-white"
           >
             <option value="">Kapatma sebebi (opsiyonel)</option>
@@ -108,6 +240,10 @@ export function TradeToggleCard({
       setError("Lütfen ilinizi seçiniz.");
       return;
     }
+    if (!consentGiven) {
+      setError("İlanı açmak için KVKK onay kutusunu işaretlemelisiniz.");
+      return;
+    }
     setSubmitting(true);
     try {
       const res = await fetch("/api/trades", {
@@ -121,6 +257,7 @@ export function TradeToggleCard({
           wantBrandId: wantAnything ? null : wantBrandId || null,
           paymentIntent,
           note: note.trim() || null,
+          consentGiven,
         }),
       });
       const data = await res.json();
@@ -143,6 +280,75 @@ export function TradeToggleCard({
         <button onClick={() => setFormOpen(false)} aria-label="Kapat" className="text-indigo-400 hover:text-indigo-700 text-xs">✕</button>
       </div>
 
+      <TradeFormFields
+        city={city} setCity={setCity}
+        wantAnything={wantAnything} setWantAnything={setWantAnything}
+        wantCategoryId={wantCategoryId} setWantCategoryId={setWantCategoryId}
+        wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
+        availableBrands={availableBrands} categories={categories}
+        paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
+        note={note} setNote={setNote}
+      />
+
+      {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
+
+      <p className="text-[11px] text-indigo-700 bg-indigo-100/60 rounded-lg px-2.5 py-2">
+        Fark tutarını asla aracı teslim almadan ve aracınızı teslim etmeden önce göndermeyiniz. Araç
+        ekspertizi yaptırılmadan takasın kabul edilmemesi önerilir —{" "}
+        <Link href={`/araclar/${productSlug}`} className="underline font-semibold">
+          ekspertiz/hızlı teklif için araç sayfasına bakın
+        </Link>
+        . Buluşmayı halka açık, kalabalık bir yerde yapınız. Fikape takas işlemlerinde taraf değildir.
+      </p>
+
+      <label className="flex items-start gap-2 text-[11px] text-indigo-800">
+        <input
+          type="checkbox"
+          checked={consentGiven}
+          onChange={(e) => setConsentGiven(e.target.checked)}
+          className="mt-0.5"
+        />
+        <span>
+          İlimin ve ilan detaylarımın diğer kullanıcılara gösterileceğini,{" "}
+          <Link href="/gizlilik" className="underline" target="_blank">Gizlilik Politikası</Link>&apos;nı
+          okuduğumu kabul ediyorum.
+        </span>
+      </label>
+
+      <button
+        onClick={submit}
+        disabled={submitting}
+        className="w-full text-sm font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-60"
+        style={{ background: "#4338ca" }}
+      >
+        {submitting ? "Gönderiliyor..." : "Takasa Aç"}
+      </button>
+
+      {error && <p className="text-xs text-red-600">{error}</p>}
+    </div>
+  );
+}
+
+function TradeFormFields({
+  city, setCity,
+  wantAnything, setWantAnything,
+  wantCategoryId, setWantCategoryId,
+  wantBrandId, setWantBrandId,
+  availableBrands, categories,
+  paymentIntent, setPaymentIntent,
+  note, setNote,
+}: {
+  city: string; setCity: (v: string) => void;
+  wantAnything: boolean; setWantAnything: (v: boolean) => void;
+  wantCategoryId: string; setWantCategoryId: (v: string) => void;
+  wantBrandId: string; setWantBrandId: (v: string) => void;
+  availableBrands: { id: number; name: string }[];
+  categories: { id: number; name: string }[];
+  paymentIntent: PaymentIntent; setPaymentIntent: (v: PaymentIntent) => void;
+  note: string; setNote: (v: string) => void;
+}) {
+  return (
+    <>
       <select
         value={city}
         onChange={(e) => setCity(e.target.value)}
@@ -214,34 +420,6 @@ export function TradeToggleCard({
         rows={2}
         className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
       />
-
-      {paymentIntent !== "SWAP_ONLY" && (
-        <p className="text-[11px] text-amber-700 bg-amber-50 rounded-lg px-2.5 py-2">
-          ⚠️ Üstüne para el değiştiren takaslarda dolandırıcılık riski daha yüksektir. Fark tutarını asla
-          aracı fiziksel olarak teslim almadan/etmeden önce göndermeyiniz, banka dekontunu &ldquo;teslimat kanıtı&rdquo;
-          olarak kabul etmeyiniz.
-        </p>
-      )}
-
-      <p className="text-[11px] text-indigo-700 bg-indigo-100/60 rounded-lg px-2.5 py-2">
-        Fark tutarını asla aracı teslim almadan ve aracınızı teslim etmeden önce göndermeyiniz. Araç
-        ekspertizi yaptırılmadan takasın kabul edilmemesi önerilir —{" "}
-        <Link href={`/araclar/${productSlug}`} className="underline font-semibold">
-          ekspertiz/hızlı teklif için araç sayfasına bakın
-        </Link>
-        . Buluşmayı halka açık, kalabalık bir yerde yapınız. Fikape takas işlemlerinde taraf değildir.
-      </p>
-
-      <button
-        onClick={submit}
-        disabled={submitting}
-        className="w-full text-sm font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-60"
-        style={{ background: "#4338ca" }}
-      >
-        {submitting ? "Gönderiliyor..." : "Takasa Aç"}
-      </button>
-
-      {error && <p className="text-xs text-red-600">{error}</p>}
-    </div>
+    </>
   );
 }
