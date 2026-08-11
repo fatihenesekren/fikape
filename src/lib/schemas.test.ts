@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   reviewCreateSchema, registerSchema, vehicleSuggestSchema, questionCreateSchema, answerCreateSchema,
   tradeListingCreateSchema, tradeListingUpdateSchema, tradeListingCloseSchema,
-  messageCreateSchema, messageReportSchema, savedSearchCreateSchema,
+  messageCreateSchema, messageReportSchema, savedSearchCreateSchema, tradeRatingSchema,
 } from "./schemas";
 
 describe("reviewCreateSchema", () => {
@@ -211,6 +211,28 @@ describe("messageCreateSchema", () => {
 
   it("1000 karakterden uzun mesajı reddeder", () => {
     expect(messageCreateSchema.safeParse({ text: "a".repeat(1001) }).success).toBe(false);
+  });
+});
+
+describe("tradeRatingSchema", () => {
+  it("geçerli bir puanı kabul eder", () => {
+    expect(tradeRatingSchema.safeParse({ score: 5 }).success).toBe(true);
+  });
+
+  it("0 puanı reddeder", () => {
+    expect(tradeRatingSchema.safeParse({ score: 0 }).success).toBe(false);
+  });
+
+  it("6 puanı reddeder", () => {
+    expect(tradeRatingSchema.safeParse({ score: 6 }).success).toBe(false);
+  });
+
+  it("ondalıklı puanı reddeder", () => {
+    expect(tradeRatingSchema.safeParse({ score: 3.5 }).success).toBe(false);
+  });
+
+  it("yorum olmadan da kabul eder (opsiyonel)", () => {
+    expect(tradeRatingSchema.safeParse({ score: 4 }).success).toBe(true);
   });
 });
 

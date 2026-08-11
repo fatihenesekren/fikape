@@ -80,6 +80,15 @@ export default async function TakasDetayPage({
 
   const coverPhotoUrl = await getCoverPhoto(listing.userProductId);
 
+  // Takas sonrası değerlendirme ortalaması — güven takas geçmişinden birikmiyordu
+  // (bkz. denetim raporu), artık ilan sahibinin geçmiş takaslardan aldığı puanlar
+  // burada gösteriliyor.
+  const ratingAgg = await prisma.tradeRating.aggregate({
+    where: { ratedUserId: listing.userId },
+    _avg: { score: true },
+    _count: true,
+  });
+
   return (
     <div className="max-w-2xl w-full mx-auto px-4 py-10">
       <div className="bg-white border border-gray-100 rounded-2xl p-6">
@@ -128,6 +137,12 @@ export default async function TakasDetayPage({
         {listing.user.trustLevel >= 3 && (
           <p className="mt-3 text-[11px] text-gray-400" title="Bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez.">
             ✓ Doğrulanmış kullanıcı rozeti — bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez.
+          </p>
+        )}
+
+        {ratingAgg._count > 0 && (
+          <p className="mt-1.5 text-[11px] text-amber-600">
+            ★ {ratingAgg._avg.score?.toFixed(1)} — geçmiş takaslardan {ratingAgg._count} değerlendirme
           </p>
         )}
 

@@ -217,6 +217,8 @@ model User {
   blockedUsers        BlockedUser[] @relation("Blocker")
   blockedByUsers      BlockedUser[] @relation("Blocked")
   savedSearches       SavedSearch[]
+  tradeRatingsGiven    TradeRating[] @relation("TradeRater")
+  tradeRatingsReceived TradeRating[] @relation("TradeRated")
 
   @@map("users")
 }
@@ -950,10 +952,34 @@ model MessageThread {
   blockedAt       DateTime?
 
   messages        Message[]
+  ratings         TradeRating[]
 
   @@unique([tradeListingId, initiatorId])
   @@index([initiatorId])
   @@map("message_threads")
+}
+
+// Takas sonrası karşılıklı değerlendirme — önceden hiç yoktu, güven takas
+// geçmişinden hiç birikmiyordu (bkz. denetim raporu, KRİTİK madde). Thread
+// bazında (ilan değil): bir ilanda birden çok görüşme olabilir, hangisinin
+// gerçek takasla sonuçlandığını sadece taraflar bilir — o yüzden ilan
+// TRADED ile kapandığında HER thread'in tarafları birbirini değerlendirebilir,
+// gerçekte takas etmedikleri biriyle karşılaşan taraf değerlendirmeyi atlar.
+model TradeRating {
+  id          Int           @id @default(autoincrement())
+  threadId    Int
+  thread      MessageThread @relation(fields: [threadId], references: [id])
+  raterId     Int
+  rater       User          @relation("TradeRater", fields: [raterId], references: [id])
+  ratedUserId Int
+  ratedUser   User          @relation("TradeRated", fields: [ratedUserId], references: [id])
+  score       Int           // 1-5
+  comment     String?       @db.VarChar(300)
+  createdAt   DateTime      @default(now())
+
+  @@unique([threadId, raterId])
+  @@index([ratedUserId])
+  @@map("trade_ratings")
 }
 
 // Kullanıcı-bazlı, kalıcı blok — MessageThread.blockedByUserId sadece TEK bir

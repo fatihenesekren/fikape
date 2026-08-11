@@ -7,6 +7,7 @@ import { isTradeMessagingEnabled } from "@/lib/features";
 import { MessageForm } from "./MessageForm";
 import { ThreadActions } from "./ThreadActions";
 import { ReportButton } from "./ReportButton";
+import { TradeRatingForm } from "./TradeRatingForm";
 
 export const metadata: Metadata = { title: "Görüşme", robots: { index: false } };
 
@@ -27,7 +28,7 @@ export default async function ThreadPage({
   const thread = await prisma.messageThread.findUnique({
     where: { id: threadId },
     include: {
-      tradeListing: { include: { product: { include: { brand: true, model: true } } } },
+      tradeListing: { include: { product: { include: { brand: true, model: true } }, user: { select: { id: true, displayName: true } } } },
       initiator: { select: { id: true, displayName: true } },
       messages: { orderBy: { createdAt: "asc" }, include: { sender: { select: { id: true, displayName: true } } } },
     },
@@ -46,6 +47,18 @@ export default async function ThreadPage({
   const isBlocked = thread.blockedByUserId != null;
   const isListingClosed = !thread.tradeListing.isActive;
   const canMessage = !isBlocked && !isListingClosed && isTradeMessagingEnabled();
+  const isInitiator = userId === thread.initiatorId;
+  const counterpart = isInitiator ? thread.tradeListing.user : thread.initiator;
+
+  // Takas sonrası karşılıklı değerlendirme daveti — ilan "Takas oldu" ile
+  // kapandıysa ve bu kullanıcı bu görüşmeyi henüz değerlendirmediyse gösterilir.
+  const canRate = thread.tradeListing.closeReason === "TRADED";
+  const existingRating = canRate
+    ? await prisma.tradeRating.findUnique({
+        where: { threadId_raterId: { threadId, raterId: userId } },
+        select: { id: true },
+      })
+    : null;
 
   return (
     <div className="max-w-2xl w-full mx-auto flex flex-col" style={{ minHeight: "100dvh" }}>
@@ -83,6 +96,10 @@ export default async function ThreadPage({
         <p className="p-4 text-xs text-gray-400 text-center">Mesajlaşma özelliği geçici olarak kapalı.</p>
       ) : (
         canMessage && <MessageForm threadId={thread.id} />
+      )}
+
+      {canRate && !existingRating && (
+        <TradeRatingForm threadId={thread.id} counterpartName={counterpart?.displayName ?? "Kullanıcı"} />
       )}
     </div>
   );
