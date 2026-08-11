@@ -54,6 +54,7 @@ export function BlurEditor({
   const [activeRect, setActiveRect] = useState<Rect | null>(null);
   const [saving, setSaving] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [loadError, setLoadError] = useState(false);
 
   const redraw = useCallback((rectList: Rect[], active: Rect | null) => {
     const canvas = canvasRef.current;
@@ -88,7 +89,11 @@ export function BlurEditor({
       redraw([], null);
       setLoaded(true);
     };
-    img.src = url;
+    img.onerror = () => setLoadError(true);
+    // Görsel farklı bir origin'den geliyorsa (Wikimedia Commons, basın kiti vb.) ve
+    // CORS header'ı yoksa tuvel "kirlenip" pikselleştirme başarısız olur — kendi
+    // sunucumuz üzerinden proxy'leyerek bu sorunu tamamen ortadan kaldırıyoruz.
+    img.src = `/api/admin/image-proxy?url=${encodeURIComponent(url)}`;
   }, [url, redraw]);
 
   function getPos(clientX: number, clientY: number): { x: number; y: number } {
@@ -223,8 +228,13 @@ export function BlurEditor({
 
         {/* Canvas */}
         <div className="overflow-auto p-4 flex-1 flex items-center justify-center bg-gray-50">
-          {!loaded && (
+          {!loaded && !loadError && (
             <p className="text-sm text-gray-400">Yükleniyor...</p>
+          )}
+          {loadError && (
+            <p className="text-sm text-red-500 text-center px-4">
+              Görsel yüklenemedi. URL&apos;in doğru ve erişilebilir olduğundan emin olun.
+            </p>
           )}
           <canvas
             ref={canvasRef}
