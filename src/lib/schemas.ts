@@ -147,6 +147,12 @@ export const messageCreateSchema = z.object({
   text: z.string().trim().min(1, "Mesaj boş olamaz.").max(1000, "En fazla 1000 karakter yazabilirsiniz."),
 });
 
+export const savedSearchCreateSchema = z.object({
+  city:       z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
+  categoryId: z.union([z.number(), z.string()]).optional().nullable(),
+  brandId:    z.union([z.number(), z.string()]).optional().nullable(),
+});
+
 export const messageReportSchema = z.object({
   reason: z.enum(["SPAM", "SCAM_ATTEMPT", "OFFENSIVE", "OTHER"], { error: "Geçersiz rapor sebebi." }),
   note:   z.string().trim().max(300).optional().nullable(),

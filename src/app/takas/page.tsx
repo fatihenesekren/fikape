@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { TradeCard } from "./TradeCard";
 import { TakasFilterForm } from "./TakasFilterForm";
+import { SavedSearchPanel } from "./SavedSearchPanel";
 
 export async function generateMetadata({
   searchParams,
@@ -50,6 +52,18 @@ export default async function TakasPage({
     (categoryBrandMap[link.category.slug] ??= []).push(link.brand.slug);
   }
 
+  const session = await auth();
+  const isLoggedIn = !!session?.user?.id;
+  const selectedCategory = categories.find((c) => c.slug === (params.kategori ?? ""));
+  const selectedBrand = brands.find((b) => b.slug === (params.marka ?? ""));
+  const savedSearches = isLoggedIn
+    ? await prisma.savedSearch.findMany({
+        where: { userId: Number(session!.user.id) },
+        include: { category: { select: { name: true } }, brand: { select: { name: true } } },
+        orderBy: { createdAt: "desc" },
+      }).catch(() => [])
+    : [];
+
   return (
     <div className="max-w-3xl w-full mx-auto px-4 py-10">
       <div className="mb-6">
@@ -66,6 +80,14 @@ export default async function TakasPage({
         categories={categories}
         brands={brands}
         categoryBrandMap={categoryBrandMap}
+      />
+
+      <SavedSearchPanel
+        isLoggedIn={isLoggedIn}
+        il={il}
+        kategoriId={selectedCategory?.id ?? null}
+        markaId={selectedBrand?.id ?? null}
+        initialSearches={savedSearches}
       />
 
       {listings.length === 0 ? (

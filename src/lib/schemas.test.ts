@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   reviewCreateSchema, registerSchema, vehicleSuggestSchema, questionCreateSchema, answerCreateSchema,
   tradeListingCreateSchema, tradeListingUpdateSchema, tradeListingCloseSchema,
-  messageCreateSchema, messageReportSchema,
+  messageCreateSchema, messageReportSchema, savedSearchCreateSchema,
 } from "./schemas";
 
 describe("reviewCreateSchema", () => {
@@ -211,6 +211,20 @@ describe("messageCreateSchema", () => {
 
   it("1000 karakterden uzun mesajı reddeder", () => {
     expect(messageCreateSchema.safeParse({ text: "a".repeat(1001) }).success).toBe(false);
+  });
+});
+
+describe("savedSearchCreateSchema", () => {
+  it("geçerli bir aramayı kabul eder", () => {
+    expect(savedSearchCreateSchema.safeParse({ city: "İstanbul" }).success).toBe(true);
+  });
+
+  it("kategori/marka olmadan da kabul eder (fark etmez anlamına gelir)", () => {
+    expect(savedSearchCreateSchema.safeParse({ city: "İzmir", categoryId: null, brandId: null }).success).toBe(true);
+  });
+
+  it("geçersiz ili reddeder", () => {
+    expect(savedSearchCreateSchema.safeParse({ city: "Atlantis" }).success).toBe(false);
   });
 });
 

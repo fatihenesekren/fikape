@@ -41,6 +41,7 @@ model Category {
 
   products         Product[]
   tradeListingsWanted TradeListing[]
+  savedSearches    SavedSearch[]
 
   @@map("categories")
 }
@@ -60,6 +61,7 @@ model Brand {
   models    Model[]
   products  Product[]
   tradeListingsWanted TradeListing[]
+  savedSearches SavedSearch[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "brands_name_trgm_idx")
@@ -214,6 +216,7 @@ model User {
   favorites           Favorite[]
   blockedUsers        BlockedUser[] @relation("Blocker")
   blockedByUsers      BlockedUser[] @relation("Blocked")
+  savedSearches       SavedSearch[]
 
   @@map("users")
 }
@@ -233,6 +236,7 @@ enum NotificationType {
   UPDATE_REMINDER
   TRADE_INTEREST
   NEW_TRADE_MESSAGE
+  SAVED_SEARCH_MATCH
 }
 
 model Notification {
@@ -902,6 +906,26 @@ enum TradePaymentIntent {
   SWAP_ONLY
   PAYS_EXTRA
   WANTS_EXTRA
+}
+
+// Kayıtlı arama — kullanıcı /takas'ta il+kategori/marka filtresi kaydedip, o
+// kritere uyan yeni bir ilan açıldığında bildirim alır. Önceden kullanıcı
+// pasif tarama yapmak zorundaydı, kayıtlı arama/eşleşme bildirimi hiç yoktu
+// (bkz. denetim raporu).
+model SavedSearch {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+  city       String   @db.VarChar(50)
+  categoryId Int?
+  category   Category? @relation(fields: [categoryId], references: [id])
+  brandId    Int?
+  brand      Brand?    @relation(fields: [brandId], references: [id])
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, city, categoryId, brandId])
+  @@index([city])
+  @@map("saved_searches")
 }
 
 enum TradeCloseReason {

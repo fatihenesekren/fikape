@@ -5,6 +5,7 @@ import { tradeListingCreateSchema, formatZodError } from "@/lib/schemas";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeListingEnabled } from "@/lib/features";
 import { hashRequestContext } from "@/lib/security";
+import { createNotification } from "@/lib/notification";
 
 const DAILY_LISTING_LIMIT = Number(process.env.TAKASA_AC_ILAN_GUNLUK_LIMIT) || 5;
 
@@ -37,7 +38,10 @@ export async function POST(req: Request) {
 
   const userProduct = await prisma.userProduct.findUnique({
     where: { id: userProductId },
-    select: { id: true, userId: true, productId: true, ownershipStatus: true },
+    select: {
+      id: true, userId: true, productId: true, ownershipStatus: true,
+      product: { select: { categoryId: true, brandId: true } },
+    },
   });
   if (!userProduct || userProduct.userId !== userId || userProduct.ownershipStatus !== "CURRENT") {
     return NextResponse.json({ error: "Bu araç garajınızda değil." }, { status: 404 });
@@ -95,6 +99,29 @@ export async function POST(req: Request) {
         userAgent: userAgentHash,
       },
     }).catch(() => {});
+
+    // Kayıtlı arama eşleşme bildirimi — kullanıcı pasif taramak zorunda kalmasın
+    // diye (bkz. denetim raporu). categoryId/brandId NULL olan kayıtlı aramalar
+    // "fark etmez" anlamına geliyor, o alan için her zaman eşleşir.
+    const matchingSearches = await prisma.savedSearch.findMany({
+      where: {
+        city,
+        userId: { not: userId },
+        AND: [
+          { OR: [{ categoryId: null }, { categoryId: userProduct.product.categoryId }] },
+          { OR: [{ brandId: null }, { brandId: userProduct.product.brandId }] },
+        ],
+      },
+      select: { userId: true },
+    });
+    for (const s of matchingSearches) {
+      createNotification({
+        userId: s.userId,
+        type: "SAVED_SEARCH_MATCH",
+        message: `${city} ilinde kayıtlı aramanızla eşleşen yeni bir takas ilanı var`,
+        link: `/takas/${listing.id}`,
+      }).catch(() => {});
+    }
 
     return NextResponse.json({ ok: true, id: listing.id }, { status: 201 });
   } catch {
