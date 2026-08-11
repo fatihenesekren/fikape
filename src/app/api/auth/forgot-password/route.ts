@@ -9,7 +9,7 @@ const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 
 export async function POST(req: Request) {
-  if (!rateLimitByIp(req, "forgot-password", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS)) {
+  if (!(await rateLimitByIp(req, "forgot-password", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS))) {
     return NextResponse.json({ error: "Çok fazla deneme yapıldı. Lütfen daha sonra tekrar deneyin." }, { status: 429 });
   }
 
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   // E-posta bazlı ikinci limit katmanı — IP-limit'i çoklu IP/VPN ile aşan bir
   // saldırganın tek bir kurbanın e-postasına sınırsız mail göndermesini engeller.
   // Enumeration önleme prensibiyle tutarlı: limit aşılsa da her zaman aynı {ok:true} dönülür.
-  if (!rateLimitByEmail(email, "forgot-password", 3, RATE_LIMIT_WINDOW_MS)) {
+  if (!(await rateLimitByEmail(email, "forgot-password", 3, RATE_LIMIT_WINDOW_MS))) {
     return NextResponse.json({ ok: true });
   }
 

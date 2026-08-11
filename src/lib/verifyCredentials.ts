@@ -22,8 +22,8 @@ export async function verifyCredentials(
   const normalizedEmail = email.toLowerCase();
 
   // Brute-force koruması: hem e-posta hem IP bazlı (biri atlatılsa diğeri tutar)
-  if (!rateLimitByEmail(normalizedEmail, "login", 5, 15 * 60 * 1000)) return null;
-  if (ip && !checkRateLimit(`login:${ip}`, 20, 15 * 60 * 1000)) return null;
+  if (!(await rateLimitByEmail(normalizedEmail, "login", 5, 15 * 60 * 1000))) return null;
+  if (ip && !(await checkRateLimit(`login:${ip}`, 20, 15 * 60 * 1000))) return null;
 
   const user = await prisma.user.findUnique({ where: { email: normalizedEmail } });
   if (!user) return null;

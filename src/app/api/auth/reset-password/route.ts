@@ -9,7 +9,7 @@ const RATE_LIMIT_COUNT = 10;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 
 export async function POST(req: Request) {
-  if (!rateLimitByIp(req, "reset-password", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS)) {
+  if (!(await rateLimitByIp(req, "reset-password", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS))) {
     return NextResponse.json({ error: "Çok fazla deneme yapıldı. Lütfen daha sonra tekrar deneyin." }, { status: 429 });
   }
 

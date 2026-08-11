@@ -5,7 +5,7 @@ import { plusWaitlistSchema, formatZodError } from "@/lib/schemas";
 import { rateLimitByIp } from "@/lib/rateLimit";
 
 export async function POST(req: Request) {
-  if (!rateLimitByIp(req, "plus-waitlist", 5, 60 * 60 * 1000)) {
+  if (!(await rateLimitByIp(req, "plus-waitlist", 5, 60 * 60 * 1000))) {
     return NextResponse.json({ error: "Çok fazla istek. Lütfen biraz sonra tekrar dene." }, { status: 429 });
   }
 

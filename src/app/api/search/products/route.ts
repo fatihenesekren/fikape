@@ -9,7 +9,7 @@ const RATE_LIMIT_COUNT = 60;
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 
 export async function GET(req: Request) {
-  if (!rateLimitByIp(req, "search", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS)) {
+  if (!(await rateLimitByIp(req, "search", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS))) {
     return NextResponse.json({ error: "Çok fazla istek. Lütfen biraz yavaşlayın." }, { status: 429 });
   }
 

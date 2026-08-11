@@ -78,7 +78,7 @@ export async function POST(
     return NextResponse.json({ error: contentCheck.error }, { status: 400 });
   }
 
-  if (!checkRateLimit(`trade-thread-create:${userId}`, DAILY_THREAD_LIMIT, 24 * 60 * 60 * 1000)) {
+  if (!(await checkRateLimit(`trade-thread-create:${userId}`, DAILY_THREAD_LIMIT, 24 * 60 * 60 * 1000))) {
     return NextResponse.json({ error: "Günlük mesaj başlatma sınırına ulaştınız, yarın tekrar deneyiniz." }, { status: 429 });
   }
 

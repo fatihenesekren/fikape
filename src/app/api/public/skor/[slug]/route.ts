@@ -19,7 +19,7 @@ export async function OPTIONS() {
 }
 
 export async function GET(req: Request, { params }: { params: Promise<{ slug: string }> }) {
-  if (!rateLimitByIp(req, "public-skor-api", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS)) {
+  if (!(await rateLimitByIp(req, "public-skor-api", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS))) {
     return withCors(NextResponse.json({ error: "Çok fazla istek. Lütfen biraz yavaşlayın." }, { status: 429 }));
   }
 

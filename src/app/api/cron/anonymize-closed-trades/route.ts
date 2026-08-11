@@ -18,8 +18,10 @@ export async function GET(req: Request) {
   try {
     const cutoff = new Date(Date.now() - RETENTION_MS);
 
+    // anonymizedAt:null ile idempotent hale getirildi — önceden mesaj metnindeki
+    // placeholder'a bakarak (implicit) tekrarı önlüyordu, bu artık açık bir alan.
     const staleListings = await prisma.tradeListing.findMany({
-      where: { isActive: false, closedAt: { lt: cutoff } },
+      where: { isActive: false, closedAt: { lt: cutoff }, anonymizedAt: null },
       select: { id: true },
     });
 
@@ -27,15 +29,26 @@ export async function GET(req: Request) {
       return NextResponse.json({ ok: true, anonymized: 0 });
     }
 
-    const result = await prisma.message.updateMany({
-      where: {
-        text: { not: "[Bu mesaj silinmiştir]" },
-        thread: { tradeListingId: { in: staleListings.map((l) => l.id) } },
-      },
-      data: { text: "[Bu mesaj silinmiştir]" },
-    });
+    const listingIds = staleListings.map((l) => l.id);
 
-    return NextResponse.json({ ok: true, listings: staleListings.length, anonymized: result.count });
+    const [messageResult] = await prisma.$transaction([
+      prisma.message.updateMany({
+        where: {
+          text: { not: "[Bu mesaj silinmiştir]" },
+          thread: { tradeListingId: { in: listingIds } },
+        },
+        data: { text: "[Bu mesaj silinmiştir]" },
+      }),
+      // İlanın kendi serbest metni (note) de PII/kimliklendirici bilgi taşıyabilir
+      // ("34 ABC 123 plakalı aracımı takas ederim" gibi) — sadece mesaj metni değil,
+      // bu da temizleniyor.
+      prisma.tradeListing.updateMany({
+        where: { id: { in: listingIds } },
+        data: { note: null, anonymizedAt: new Date() },
+      }),
+    ]);
+
+    return NextResponse.json({ ok: true, listings: staleListings.length, anonymized: messageResult.count });
   } catch (e) {
     console.error("[cron/anonymize-closed-trades] başarısız oldu:", e);
     return NextResponse.json({ error: "Anonimleştirme işlemi başarısız oldu." }, { status: 500 });

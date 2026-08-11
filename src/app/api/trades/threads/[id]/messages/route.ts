@@ -62,7 +62,7 @@ export async function POST(
     return NextResponse.json({ error: contentCheck.error }, { status: 400 });
   }
 
-  if (!checkRateLimit(`trade-message:${userId}`, HOURLY_MESSAGE_LIMIT, 60 * 60 * 1000)) {
+  if (!(await checkRateLimit(`trade-message:${userId}`, HOURLY_MESSAGE_LIMIT, 60 * 60 * 1000))) {
     return NextResponse.json({ error: "Saatlik mesaj gönderme sınırına ulaştınız, biraz sonra tekrar deneyiniz." }, { status: 429 });
   }
 

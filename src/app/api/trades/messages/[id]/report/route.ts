@@ -43,7 +43,7 @@ export async function POST(
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
 
-  if (!checkRateLimit(`trade-report:${reporterId}`, 5, 24 * 60 * 60 * 1000)) {
+  if (!(await checkRateLimit(`trade-report:${reporterId}`, 5, 24 * 60 * 60 * 1000))) {
     return NextResponse.json({ error: "Günlük rapor gönderme sınırına ulaştınız." }, { status: 429 });
   }
 

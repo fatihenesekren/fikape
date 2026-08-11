@@ -33,6 +33,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     { href: "/admin/urunler",   label: "Teknik Özellikler", shortLabel: "Özellikler", icon: "🔧", badge: 0 },
     { href: "/admin/leads",     label: "Gelir Talepleri", shortLabel: "Talepler", icon: "🛡️", badge: newInsuranceLeads + newSaleLeads },
     { href: "/admin/mesaj-raporlari", label: "Mesaj Raporları", shortLabel: "Raporlar", icon: "🚩", badge: pendingMessageReports },
+    { href: "/admin/takas-talep-raporu", label: "Takas Talep Raporu", shortLabel: "Talep", icon: "📊", badge: 0 },
     { href: "/admin/icerik-bildirimleri", label: "İçerik Bildirimleri", shortLabel: "Bildirimler", icon: "⚠️", badge: pendingContentReports },
   ];
 

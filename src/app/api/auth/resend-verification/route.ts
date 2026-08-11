@@ -16,7 +16,7 @@ export async function POST() {
     return NextResponse.json({ ok: true });
   }
 
-  if (!rateLimitByEmail(user.email, "resend-verification", 3, 60 * 60 * 1000)) {
+  if (!(await rateLimitByEmail(user.email, "resend-verification", 3, 60 * 60 * 1000))) {
     return NextResponse.json({ error: "Çok fazla istek. Lütfen daha sonra tekrar deneyin." }, { status: 429 });
   }
 

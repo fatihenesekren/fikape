@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { reviewCreateSchema, registerSchema, vehicleSuggestSchema, questionCreateSchema, answerCreateSchema } from "./schemas";
+import {
+  reviewCreateSchema, registerSchema, vehicleSuggestSchema, questionCreateSchema, answerCreateSchema,
+  tradeListingCreateSchema, tradeListingUpdateSchema, tradeListingCloseSchema,
+  messageCreateSchema, messageReportSchema,
+} from "./schemas";
 
 describe("reviewCreateSchema", () => {
   const valid = {
@@ -130,5 +134,96 @@ describe("answerCreateSchema", () => {
 
   it("çok kısa cevabı reddeder", () => {
     expect(answerCreateSchema.safeParse({ text: "Evet" }).success).toBe(false);
+  });
+});
+
+describe("tradeListingCreateSchema", () => {
+  const valid = {
+    userProductId: 1, wantAnything: true, paymentIntent: "SWAP_ONLY", city: "İstanbul", consentGiven: true,
+  };
+
+  it("geçerli bir ilanı kabul eder", () => {
+    expect(tradeListingCreateSchema.safeParse(valid).success).toBe(true);
+  });
+
+  it("geçersiz ili reddeder", () => {
+    expect(tradeListingCreateSchema.safeParse({ ...valid, city: "Atlantis" }).success).toBe(false);
+  });
+
+  it("geçersiz ödeme niyetini reddeder", () => {
+    expect(tradeListingCreateSchema.safeParse({ ...valid, paymentIntent: "BARTER" }).success).toBe(false);
+  });
+
+  it("KVKK onayı verilmezse reddeder", () => {
+    expect(tradeListingCreateSchema.safeParse({ ...valid, consentGiven: false }).success).toBe(false);
+  });
+
+  it("KVKK onayı hiç gönderilmezse reddeder", () => {
+    const { consentGiven: _consentGiven, ...withoutConsent } = valid;
+    expect(tradeListingCreateSchema.safeParse(withoutConsent).success).toBe(false);
+  });
+
+  it("300 karakterden uzun notu reddeder", () => {
+    expect(tradeListingCreateSchema.safeParse({ ...valid, note: "a".repeat(301) }).success).toBe(false);
+  });
+});
+
+describe("tradeListingUpdateSchema", () => {
+  it("update aksiyonunu kabul eder", () => {
+    expect(tradeListingUpdateSchema.safeParse({ action: "update", city: "Ankara" }).success).toBe(true);
+  });
+
+  it("reopen aksiyonunu kabul eder", () => {
+    expect(tradeListingUpdateSchema.safeParse({ action: "reopen" }).success).toBe(true);
+  });
+
+  it("geçersiz aksiyonu reddeder", () => {
+    expect(tradeListingUpdateSchema.safeParse({ action: "delete" }).success).toBe(false);
+  });
+
+  it("action alanı eksikse reddeder", () => {
+    expect(tradeListingUpdateSchema.safeParse({ city: "Ankara" }).success).toBe(false);
+  });
+});
+
+describe("tradeListingCloseSchema", () => {
+  it("geçerli bir kapanış nedenini kabul eder", () => {
+    expect(tradeListingCloseSchema.safeParse({ closeReason: "TRADED" }).success).toBe(true);
+  });
+
+  it("kapanış nedeni olmadan da kabul eder (opsiyonel)", () => {
+    expect(tradeListingCloseSchema.safeParse({}).success).toBe(true);
+  });
+
+  it("geçersiz kapanış nedenini reddeder", () => {
+    expect(tradeListingCloseSchema.safeParse({ closeReason: "CANCELLED" }).success).toBe(false);
+  });
+});
+
+describe("messageCreateSchema", () => {
+  it("geçerli bir mesajı kabul eder", () => {
+    expect(messageCreateSchema.safeParse({ text: "Merhaba, aracınızla ilgileniyorum." }).success).toBe(true);
+  });
+
+  it("boş mesajı reddeder", () => {
+    expect(messageCreateSchema.safeParse({ text: "" }).success).toBe(false);
+  });
+
+  it("1000 karakterden uzun mesajı reddeder", () => {
+    expect(messageCreateSchema.safeParse({ text: "a".repeat(1001) }).success).toBe(false);
+  });
+});
+
+describe("messageReportSchema", () => {
+  it("geçerli bir rapor sebebini kabul eder", () => {
+    expect(messageReportSchema.safeParse({ reason: "SCAM_ATTEMPT" }).success).toBe(true);
+  });
+
+  it("geçersiz rapor sebebini reddeder", () => {
+    expect(messageReportSchema.safeParse({ reason: "HACKED" }).success).toBe(false);
+  });
+
+  it("not olmadan da kabul eder (opsiyonel)", () => {
+    expect(messageReportSchema.safeParse({ reason: "OTHER" }).success).toBe(true);
   });
 });

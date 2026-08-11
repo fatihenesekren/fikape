@@ -874,6 +874,12 @@ model TradeListing {
   isActive        Boolean  @default(true)
   closedAt        DateTime?
   closeReason     TradeCloseReason?
+  // 6 ay sonra anonimleştirme cron'unun bu ilanı işleyip işlemediğini işaretler —
+  // önceden bu iş tekrarlanabilirliği mesaj metnindeki placeholder'a bakarak
+  // (implicit) kontrol ediyordu; ilanın kendi notu (serbest metin, PII riski
+  // taşıyabilir) hiç temizlenmiyordu (bkz. denetim raporu "gerçek anonimleştirme
+  // değil" maddesi).
+  anonymizedAt    DateTime?
 
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
