@@ -12,7 +12,13 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
-  if (!session || (session.user.trustLevel as number) < 5) {
+  if (!session) return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
+
+  const adminUser = await prisma.user.findUnique({
+    where: { id: Number(session.user.id) },
+    select: { trustLevel: true },
+  });
+  if (!adminUser || adminUser.trustLevel < 5) {
     return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
   }
 
