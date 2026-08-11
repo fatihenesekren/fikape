@@ -21,6 +21,11 @@ const SPAM_PATTERNS = [
 // Türk IBAN'ı: TR + 2 kontrol hanesi + 22 hane, boşluk/tire/nokta ile ayrılmış olabilir
 const IBAN_PATTERN = /TR\d{2}([\s\-.]?\d{4}){5}[\s\-.]?\d{2}/i;
 
+// Telefon numarası: 05XX XXX XX XX kalıbı, boşluk/tire/nokta/parantezle ayrılmış olabilir,
+// başında opsiyonel +90/0090 ülke kodu. Takas mesajlarında kullanıcıları platform dışına
+// (WhatsApp vb.) çekmeyi önlemek için — bkz. denetim raporu, telefon paylaşımı filtrelenmiyordu.
+const PHONE_PATTERN = /(\+90|0090|0)?[\s\-.]?\(?5\d{2}\)?([\s\-.]?\d){7}/;
+
 export interface ValidationResult {
   ok: boolean;
   error: string | null;
@@ -59,6 +64,12 @@ export function checkContent(t: string): ValidationResult {
   // IBAN / banka hesabı paylaşımı — jenerik spam mesajına düşmeden önce, özel mesajla reddet
   if (IBAN_PATTERN.test(t)) {
     return err("IBAN veya banka hesap bilgisi paylaşımına izin verilmemektedir.");
+  }
+
+  // Telefon numarası paylaşımı — kullanıcıları platform dışına (WhatsApp vb.) çekip
+  // mesajlaşma korumasını (rapor/blok/moderasyon) atlatmayı önlemek için.
+  if (PHONE_PATTERN.test(t)) {
+    return err("Telefon numarası paylaşımına izin verilmemektedir.");
   }
 
   // URL kontrolü

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { isTradeMessagingEnabled } from "@/lib/features";
+import { timeAgoTr } from "@/lib/timeAgo";
 import { TradeMessageForm } from "./TradeMessageForm";
+import { ShareButton } from "./ShareButton";
 
 const PAYMENT_LABEL: Record<string, string> = {
   SWAP_ONLY: "Sadece takas",
@@ -23,6 +26,17 @@ async function getListing(id: number) {
       user: { select: { id: true, trustLevel: true } },
     },
   });
+}
+
+// İlan açmak için zaten onaylı fotoğraflı bir yorum şart koşuluyor, yani veri
+// mevcut — burada tek sorguyla kapak fotoğrafı olarak join ediliyor.
+async function getCoverPhoto(userProductId: number) {
+  const photo = await prisma.productPhoto.findFirst({
+    where: { status: "APPROVED", review: { status: "PUBLISHED", userProductId } },
+    orderBy: { order: "asc" },
+    select: { url: true },
+  });
+  return photo?.url ?? null;
 }
 
 export async function generateMetadata({
@@ -63,14 +77,33 @@ export default async function TakasDetayPage({
     existingThreadId = thread?.id ?? null;
   }
 
+  const coverPhotoUrl = await getCoverPhoto(listing.userProductId);
+
   return (
     <div className="max-w-2xl w-full mx-auto px-4 py-10">
       <div className="bg-white border border-gray-100 rounded-2xl p-6">
-        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{listing.product.brand.name}</div>
+        {coverPhotoUrl && (
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-50 mb-4">
+            <Image src={coverPhotoUrl} alt="" fill sizes="(max-width: 640px) 100vw, 640px" className="object-cover" />
+          </div>
+        )}
+
+        <div className="flex items-start justify-between gap-2">
+          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{listing.product.brand.name}</div>
+          <span className="text-[11px] text-gray-300 shrink-0">{timeAgoTr(listing.createdAt)}</span>
+        </div>
         <h1 className="text-xl font-bold text-gray-900">
           {stripModelGenRange(listing.product.model.name)}
           {listing.product.year && <span className="text-gray-400 font-normal ml-1.5">{listing.product.year}</span>}
         </h1>
+        <div className="flex items-center gap-3 mt-0.5">
+          <Link href={`/araclar/${listing.product.slug}`} className="text-[11px] text-indigo-600 hover:underline">
+            Araç sayfasını gör →
+          </Link>
+          <ShareButton
+            title={`${listing.product.brand.name} ${stripModelGenRange(listing.product.model.name)} Takasa Açık`}
+          />
+        </div>
 
         <div className="flex flex-wrap gap-1.5 mt-3">
           <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">📍 {listing.city}</span>
@@ -125,7 +158,13 @@ export default async function TakasDetayPage({
           </p>
         ) : (
           <>
-            <p className="mt-5 text-[11px] text-indigo-700 bg-indigo-50 rounded-lg px-2.5 py-2">
+            {listing.paymentIntent !== "SWAP_ONLY" && (
+              <p className="mt-5 text-[11px] text-amber-700 bg-amber-50 rounded-lg px-2.5 py-2">
+                ⚠️ Üstüne para el değiştiren takaslarda dolandırıcılık riski daha yüksektir. Fark tutarını
+                asla teslimattan önce göndermeyiniz.
+              </p>
+            )}
+            <p className="mt-2 text-[11px] text-indigo-700 bg-indigo-50 rounded-lg px-2.5 py-2">
               Plaka/şasi bilgisini paylaşmadan önce karşı tarafın kimliğinden emin olunuz. Fark tutarını asla teslimattan önce göndermeyiniz.
             </p>
             <TradeMessageForm listingId={listing.id} />

@@ -7,10 +7,10 @@ import { TakasFilterForm } from "./TakasFilterForm";
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<{ il?: string; kategori?: string; marka?: string }>;
+  searchParams: Promise<{ il?: string; kategori?: string; marka?: string; odeme?: string }>;
 }): Promise<Metadata> {
   const params = await searchParams;
-  const isFiltered = !!(params.il || params.kategori || params.marka);
+  const isFiltered = !!(params.il || params.kategori || params.marka || params.odeme);
   return {
     title: "Araç Takas İlanları – fikape",
     robots: isFiltered ? { index: false, follow: true } : undefined,
@@ -21,15 +21,14 @@ export async function generateMetadata({
 export default async function TakasPage({
   searchParams,
 }: {
-  searchParams: Promise<{ il?: string; kategori?: string; marka?: string }>;
+  searchParams: Promise<{ il?: string; kategori?: string; marka?: string; odeme?: string }>;
 }) {
   const params = await searchParams;
   const il = params.il ?? "";
 
-  let listings: Awaited<ReturnType<typeof fetchListings>> = [];
-  if (il) {
-    listings = await fetchListings(il, params.kategori, params.marka);
-  }
+  // İl seçilmemişse artık tüm Türkiye'deki ilanlar gösteriliyor (önceden boş sayfa gösterip
+  // platformun envanterini hiç göstermiyordu — bkz. denetim raporu).
+  const listings = await fetchListings(il, params.kategori, params.marka, params.odeme);
 
   const categories = await prisma.category.findMany({
     where: { isActive: true, parentId: { not: null } },
@@ -62,19 +61,16 @@ export default async function TakasPage({
         il={il}
         kategoriSlug={params.kategori ?? ""}
         markaSlug={params.marka ?? ""}
+        odemeNiyeti={params.odeme ?? ""}
         cities={TURKISH_CITIES}
         categories={categories}
         brands={brands}
         categoryBrandMap={categoryBrandMap}
       />
 
-      {!il ? (
+      {listings.length === 0 ? (
         <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-10 text-center text-gray-400 text-sm">
-          Önce ilinizi seçiniz.
-        </div>
-      ) : listings.length === 0 ? (
-        <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-10 text-center text-gray-400 text-sm">
-          Bu ilde henüz ilan yok. Veri birikiyor — ilk sen ol.
+          {il ? "Bu ilde henüz ilan yok. Veri birikiyor — ilk sen ol." : "Henüz ilan yok. Veri birikiyor — ilk sen ol."}
         </div>
       ) : (
         <div className="space-y-4">
@@ -87,9 +83,14 @@ export default async function TakasPage({
   );
 }
 
-async function fetchListings(il: string, kategoriSlug?: string, markaSlug?: string) {
+async function fetchListings(il: string, kategoriSlug?: string, markaSlug?: string, odemeNiyeti?: string) {
+  const paymentIntent =
+    odemeNiyeti === "SWAP_ONLY" || odemeNiyeti === "PAYS_EXTRA" || odemeNiyeti === "WANTS_EXTRA"
+      ? odemeNiyeti
+      : undefined;
+
   const listings = await prisma.tradeListing.findMany({
-    where: { isActive: true, city: il },
+    where: { isActive: true, ...(il ? { city: il } : {}), ...(paymentIntent ? { paymentIntent } : {}) },
     include: {
       product: { include: { brand: true, model: true, category: true } },
     },
@@ -97,9 +98,38 @@ async function fetchListings(il: string, kategoriSlug?: string, markaSlug?: stri
     take: 50,
   });
 
-  return listings.filter((l) => {
+  const filtered = listings.filter((l) => {
     if (kategoriSlug && l.product.category.slug !== kategoriSlug) return false;
     if (markaSlug && l.product.brand.slug !== markaSlug) return false;
     return true;
   });
+
+  // İlan açmak için zaten onaylı fotoğraflı bir yorum şart koşuluyor (bkz. api/trades/route.ts),
+  // yani fotoğraf her ilan için mevcut — sadece burada join edilip karta taşınıyor.
+  const coverPhotoByUserProductId = await fetchCoverPhotos(filtered.map((l) => l.userProductId));
+
+  return filtered.map((l) => ({
+    ...l,
+    coverPhotoUrl: coverPhotoByUserProductId.get(l.userProductId) ?? null,
+  }));
+}
+
+async function fetchCoverPhotos(userProductIds: number[]) {
+  const map = new Map<number, string>();
+  if (userProductIds.length === 0) return map;
+
+  const photos = await prisma.productPhoto.findMany({
+    where: {
+      status: "APPROVED",
+      review: { status: "PUBLISHED", userProductId: { in: userProductIds } },
+    },
+    orderBy: { order: "asc" },
+    select: { url: true, review: { select: { userProductId: true } } },
+  });
+
+  for (const p of photos) {
+    const upid = p.review?.userProductId;
+    if (upid != null && !map.has(upid)) map.set(upid, p.url);
+  }
+  return map;
 }

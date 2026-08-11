@@ -1,11 +1,16 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { isTradeMessagingEnabled } from "@/lib/features";
 
 export async function POST(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!isTradeMessagingEnabled()) {
+    return NextResponse.json({ error: "Bu özellik geçici olarak kapalı." }, { status: 503 });
+  }
+
   const session = await auth();
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 

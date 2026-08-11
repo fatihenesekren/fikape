@@ -51,7 +51,7 @@ export async function POST(
     return NextResponse.json({ error: "Bu ilan artık takasa açık değil, mesaj gönderemezsiniz." }, { status: 403 });
   }
 
-  const parsed = messageCreateSchema.safeParse(await req.json());
+  const parsed = messageCreateSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }

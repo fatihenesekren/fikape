@@ -26,6 +26,10 @@ export default async function MesajlarPage() {
       },
       initiator: { select: { id: true, displayName: true } },
       messages: { orderBy: { createdAt: "desc" }, take: 1 },
+      // Karşı taraftan gelen, henüz okunmamış mesaj sayısı — Message.isRead alanı
+      // zaten thread açılınca güncelleniyordu, sadece liste sorgusuna hiç dahil
+      // edilmemişti (bkz. denetim raporu).
+      _count: { select: { messages: { where: { isRead: false, senderId: { not: userId } } } } },
     },
     orderBy: { lastMessageAt: "desc" },
     take: 50,
@@ -46,6 +50,7 @@ export default async function MesajlarPage() {
             const counterpart = isInitiator ? t.tradeListing.user : t.initiator;
             const vehicleName = `${t.tradeListing.product.brand.name} ${stripModelGenRange(t.tradeListing.product.model.name)}`;
             const lastMessage = t.messages[0];
+            const unreadCount = t._count.messages;
             return (
               <Link
                 key={t.id}
@@ -53,15 +58,22 @@ export default async function MesajlarPage() {
                 className="block bg-white border border-gray-100 rounded-2xl p-4 hover:border-gray-200 transition-colors"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <p className="font-semibold text-gray-900 text-sm">
+                  <p className={`text-sm ${unreadCount > 0 ? "font-bold text-gray-900" : "font-semibold text-gray-900"}`}>
                     {counterpart?.displayName ?? "Kullanıcı"} — {vehicleName}
                   </p>
-                  {!t.tradeListing.isActive && (
-                    <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-400">Kapandı</span>
-                  )}
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {unreadCount > 0 && (
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ background: "#4338ca" }}>
+                        {unreadCount}
+                      </span>
+                    )}
+                    {!t.tradeListing.isActive && (
+                      <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-400">Kapandı</span>
+                    )}
+                  </div>
                 </div>
                 {lastMessage && (
-                  <p className="text-xs text-gray-400 mt-1 truncate">{lastMessage.text}</p>
+                  <p className={`text-xs mt-1 truncate ${unreadCount > 0 ? "text-gray-600" : "text-gray-400"}`}>{lastMessage.text}</p>
                 )}
               </Link>
             );

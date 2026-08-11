@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Bu işlemi gerçekleştiremezsiniz." }, { status: 403 });
   }
 
-  const parsed = tradeListingCreateSchema.safeParse(await req.json());
+  const parsed = tradeListingCreateSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }

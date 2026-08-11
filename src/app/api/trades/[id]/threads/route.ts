@@ -52,7 +52,7 @@ export async function POST(
     return NextResponse.json({ error: "Kendi ilanınıza mesaj gönderemezsiniz." }, { status: 403 });
   }
 
-  const parsed = messageCreateSchema.safeParse(await req.json());
+  const parsed = messageCreateSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }

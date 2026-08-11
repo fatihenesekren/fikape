@@ -12,24 +12,32 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const cutoff = new Date(Date.now() - RETENTION_MS);
+  // KVKK saklama süresi taahhüdüne bağlı bir iş — sessizce başarısız olursa fark
+  // edilmeden 6 aylık taahhüt ihlal edilebilir (bkz. denetim raporu), bu yüzden
+  // hata burada mutlaka loglanıyor.
+  try {
+    const cutoff = new Date(Date.now() - RETENTION_MS);
 
-  const staleListings = await prisma.tradeListing.findMany({
-    where: { isActive: false, closedAt: { lt: cutoff } },
-    select: { id: true },
-  });
+    const staleListings = await prisma.tradeListing.findMany({
+      where: { isActive: false, closedAt: { lt: cutoff } },
+      select: { id: true },
+    });
 
-  if (staleListings.length === 0) {
-    return NextResponse.json({ ok: true, anonymized: 0 });
+    if (staleListings.length === 0) {
+      return NextResponse.json({ ok: true, anonymized: 0 });
+    }
+
+    const result = await prisma.message.updateMany({
+      where: {
+        text: { not: "[Bu mesaj silinmiştir]" },
+        thread: { tradeListingId: { in: staleListings.map((l) => l.id) } },
+      },
+      data: { text: "[Bu mesaj silinmiştir]" },
+    });
+
+    return NextResponse.json({ ok: true, listings: staleListings.length, anonymized: result.count });
+  } catch (e) {
+    console.error("[cron/anonymize-closed-trades] başarısız oldu:", e);
+    return NextResponse.json({ error: "Anonimleştirme işlemi başarısız oldu." }, { status: 500 });
   }
-
-  const result = await prisma.message.updateMany({
-    where: {
-      text: { not: "[Bu mesaj silinmiştir]" },
-      thread: { tradeListingId: { in: staleListings.map((l) => l.id) } },
-    },
-    data: { text: "[Bu mesaj silinmiştir]" },
-  });
-
-  return NextResponse.json({ ok: true, listings: staleListings.length, anonymized: result.count });
 }

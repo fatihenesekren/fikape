@@ -192,6 +192,7 @@ export default async function GarajimPage() {
               brands={tradeBrands}
               categoryBrandMap={categoryBrandMap}
               existingListing={tradeListingByUserProductId.get(userProductId) ?? null}
+              productSlug={product.slug}
             />
           )}
         </div>

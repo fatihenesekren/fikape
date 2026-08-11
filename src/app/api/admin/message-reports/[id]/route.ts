@@ -7,13 +7,25 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
-  if (!session || (session.user.trustLevel as number) < 5) {
+  if (!session) {
+    return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
+  }
+
+  // Admin yetkisi (trustLevel) JWT'de sadece login anında yazılıyor ve normal
+  // isteklerde DB'den yenilenmiyor — bu ban işlemi geri döndürülemez bir aksiyon
+  // olduğu için burada özellikle taze kontrol ediliyor (bkz. denetim raporu:
+  // "yetkisi geri alınan bir admin, mevcut oturumu boyunca ban atmaya devam edebiliyordu").
+  const adminUser = await prisma.user.findUnique({
+    where: { id: Number(session.user.id) },
+    select: { trustLevel: true },
+  });
+  if (!adminUser || adminUser.trustLevel < 5) {
     return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
   }
 
   const { id } = await params;
   const reportId = parseInt(id);
-  const { action } = await req.json();
+  const { action } = await req.json().catch(() => ({ action: null }));
   if (action !== "ban") {
     return NextResponse.json({ error: "Geçersiz aksiyon." }, { status: 400 });
   }

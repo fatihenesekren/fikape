@@ -948,6 +948,11 @@ model MessageReport {
   status     MessageReportStatus @default(PENDING)
   createdAt  DateTime            @default(now())
 
+  // Postgres FK'leri otomatik index'lemiyor — admin panelde mesaj/kullanıcı bazlı
+  // rapor sorguları büyüdükçe tam tablo taraması riski taşıyordu (bkz. denetim raporu).
+  @@index([messageId])
+  @@index([reporterId])
+  @@index([status])
   @@map("message_reports")
 }
 

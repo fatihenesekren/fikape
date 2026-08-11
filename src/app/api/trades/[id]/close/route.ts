@@ -2,11 +2,16 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { tradeListingCloseSchema, formatZodError } from "@/lib/schemas";
+import { isTradeListingEnabled } from "@/lib/features";
 
 export async function PATCH(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!isTradeListingEnabled()) {
+    return NextResponse.json({ error: "Bu özellik geçici olarak kapalı." }, { status: 503 });
+  }
+
   const session = await auth();
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 

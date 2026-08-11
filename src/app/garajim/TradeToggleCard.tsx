@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 
 type PaymentIntent = "SWAP_ONLY" | "PAYS_EXTRA" | "WANTS_EXTRA";
@@ -14,6 +15,7 @@ export function TradeToggleCard({
   brands,
   categoryBrandMap,
   existingListing,
+  productSlug,
 }: {
   userProductId: number;
   canOpenTrade: boolean;
@@ -21,6 +23,7 @@ export function TradeToggleCard({
   brands: { id: number; name: string }[];
   categoryBrandMap: Record<number, number[]>;
   existingListing: { id: number } | null;
+  productSlug: string;
 }) {
   const router = useRouter();
   const [formOpen, setFormOpen] = useState(false);
@@ -137,12 +140,13 @@ export function TradeToggleCard({
     <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3 space-y-2.5">
       <div className="flex items-center justify-between">
         <p className="text-xs font-bold text-indigo-800">Takasa Aç</p>
-        <button onClick={() => setFormOpen(false)} className="text-indigo-400 hover:text-indigo-700 text-xs">✕</button>
+        <button onClick={() => setFormOpen(false)} aria-label="Kapat" className="text-indigo-400 hover:text-indigo-700 text-xs">✕</button>
       </div>
 
       <select
         value={city}
         onChange={(e) => setCity(e.target.value)}
+        aria-label="İl"
         className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
       >
         <option value="">İl seçiniz</option>
@@ -161,6 +165,7 @@ export function TradeToggleCard({
           <select
             value={wantCategoryId}
             onChange={(e) => { setWantCategoryId(e.target.value); setWantBrandId(""); }}
+            aria-label="İstenen kategori"
             className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
           >
             <option value="">Kategori seçiniz</option>
@@ -172,6 +177,7 @@ export function TradeToggleCard({
             value={wantBrandId}
             onChange={(e) => setWantBrandId(e.target.value)}
             disabled={!wantCategoryId}
+            aria-label="İstenen marka"
             className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white disabled:opacity-50"
           >
             <option value="">{wantCategoryId ? "Marka seçiniz" : "Önce kategori seçiniz"}</option>
@@ -209,8 +215,21 @@ export function TradeToggleCard({
         className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
       />
 
+      {paymentIntent !== "SWAP_ONLY" && (
+        <p className="text-[11px] text-amber-700 bg-amber-50 rounded-lg px-2.5 py-2">
+          ⚠️ Üstüne para el değiştiren takaslarda dolandırıcılık riski daha yüksektir. Fark tutarını asla
+          aracı fiziksel olarak teslim almadan/etmeden önce göndermeyiniz, banka dekontunu &ldquo;teslimat kanıtı&rdquo;
+          olarak kabul etmeyiniz.
+        </p>
+      )}
+
       <p className="text-[11px] text-indigo-700 bg-indigo-100/60 rounded-lg px-2.5 py-2">
-        Fark tutarını asla aracı teslim almadan ve aracınızı teslim etmeden önce göndermeyiniz. Araç ekspertizi yaptırılmadan takasın kabul edilmemesi önerilir. Buluşmayı halka açık, kalabalık bir yerde yapınız. Fikape takas işlemlerinde taraf değildir.
+        Fark tutarını asla aracı teslim almadan ve aracınızı teslim etmeden önce göndermeyiniz. Araç
+        ekspertizi yaptırılmadan takasın kabul edilmemesi önerilir —{" "}
+        <Link href={`/araclar/${productSlug}`} className="underline font-semibold">
+          ekspertiz/hızlı teklif için araç sayfasına bakın
+        </Link>
+        . Buluşmayı halka açık, kalabalık bir yerde yapınız. Fikape takas işlemlerinde taraf değildir.
       </p>
 
       <button

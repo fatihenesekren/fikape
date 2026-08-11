@@ -3,11 +3,16 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { messageReportSchema, formatZodError } from "@/lib/schemas";
 import { checkRateLimit } from "@/lib/rateLimit";
+import { isTradeMessagingEnabled } from "@/lib/features";
 
 export async function POST(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!isTradeMessagingEnabled()) {
+    return NextResponse.json({ error: "Bu özellik geçici olarak kapalı." }, { status: 503 });
+  }
+
   const session = await auth();
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
@@ -33,7 +38,7 @@ export async function POST(
     return NextResponse.json({ error: "Mesaj bulunamadı." }, { status: 404 });
   }
 
-  const parsed = messageReportSchema.safeParse(await req.json());
+  const parsed = messageReportSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }

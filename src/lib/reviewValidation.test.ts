@@ -78,6 +78,31 @@ describe("checkContent — IBAN engeli", () => {
   });
 });
 
+describe("checkContent — telefon numarası engeli", () => {
+  it("boşluklu telefon numarası paylaşımını reddeder", () => {
+    const result = checkContent("beni 0532 123 45 67 numarasından arayabilirsin");
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/[Tt]elefon/);
+  });
+
+  it("ülke kodlu telefon numarası paylaşımını reddeder", () => {
+    const result = checkContent("whatsapp +90 532 123 45 67 üzerinden yazabilirsin");
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/[Tt]elefon/);
+  });
+
+  it("boşluksuz telefon numarası paylaşımını reddeder", () => {
+    const result = checkContent("hemen 05321234567 numarasını ara");
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/[Tt]elefon/);
+  });
+
+  it("km/fiyat gibi normal sayısal metni yanlışlıkla reddetmez (yanlış-pozitif kontrolü)", () => {
+    const result = checkContent("aracın kilometresi 95000 ve fiyatı da 750000 TL civarında görünüyor");
+    expect(result.ok).toBe(true);
+  });
+});
+
 describe("validateDetail", () => {
   it("boş metni opsiyonel olarak kabul eder", () => {
     expect(validateDetail("").ok).toBe(true);
