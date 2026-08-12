@@ -226,10 +226,20 @@ export default async function GarajimPage() {
       <GarageAnimation userName={userName} />
 
       <div className="mb-8">
-        <h1 className="text-2xl font-black text-gray-900">Garajım</h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Sahip olduğun veya kullandığın araçlar
-        </p>
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <div>
+            <h1 className="text-2xl font-black text-gray-900">Garajım</h1>
+            <p className="text-sm text-gray-500 mt-1">
+              Sahip olduğun veya kullandığın araçlar
+            </p>
+          </div>
+          <Link
+            href="/takas"
+            className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold border-2 border-indigo-100 text-indigo-700 hover:border-indigo-200 transition-colors"
+          >
+            🔄 Takas Pazarına Gözat
+          </Link>
+        </div>
       </div>
 
       {/* Aktif araçlar */}

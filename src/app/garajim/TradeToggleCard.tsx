@@ -94,15 +94,20 @@ export function TradeToggleCard({
   // Kapalı bir ilan varsa: yeniden aç seçeneği sun.
   if (existingListing && !existingListing.isActive) {
     return (
-      <div className="mt-3 border border-gray-100 bg-gray-50 rounded-xl p-3 flex items-center justify-between gap-2">
-        <p className="text-xs text-gray-500">Takas ilanınız kapalı.</p>
-        <button
-          onClick={reopenListing}
-          disabled={reopening}
-          className="text-xs font-semibold text-indigo-700 hover:underline disabled:opacity-60 shrink-0"
-        >
-          {reopening ? "Açılıyor..." : "🔄 Yeniden Aç"}
-        </button>
+      <div className="mt-3 border border-gray-100 bg-gray-50 rounded-xl p-3">
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-xs text-gray-500">Takas ilanınız kapalı.</p>
+          <button
+            onClick={reopenListing}
+            disabled={reopening}
+            className="text-xs font-semibold text-indigo-700 hover:underline disabled:opacity-60 shrink-0"
+          >
+            {reopening ? "Açılıyor..." : "🔄 Yeniden Aç"}
+          </button>
+        </div>
+        <Link href={`/takas/${existingListing.id}`} className="text-[11px] text-gray-400 hover:underline mt-1 inline-block">
+          İlanı görüntüle →
+        </Link>
         {error && <p className="text-xs text-red-600">{error}</p>}
       </div>
     );
@@ -194,9 +199,14 @@ export function TradeToggleCard({
       <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3">
         <div className="flex items-center justify-between gap-2">
           <p className="text-xs font-bold text-indigo-800">✓ Takasa açık</p>
-          <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-indigo-600 hover:underline shrink-0">
-            Düzenle
-          </button>
+          <div className="flex items-center gap-2 shrink-0">
+            <Link href={`/takas/${existingListing.id}`} className="text-[11px] font-semibold text-gray-400 hover:underline">
+              İlanı görüntüle →
+            </Link>
+            <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-indigo-600 hover:underline">
+              Düzenle
+            </button>
+          </div>
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           <select

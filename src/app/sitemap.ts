@@ -18,6 +18,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
+    // /takas siteden hiçbir sayfaya link almadığı için Google için "yetim
+    // sayfa" durumundaydı (bkz. denetim raporu) — sitemap'e eklenmesi kullanıcı
+    // arayüzünü etkilemiyor, sadece Google'ın sayfayı bulmasını sağlıyor.
+    { url: `${BASE_URL}/takas`, lastModified: new Date(), changeFrequency: "daily", priority: 0.6 },
     ...products.map((p) => ({
       url: `${BASE_URL}/araclar/${p.slug}`,
       lastModified: p.updatedAt,

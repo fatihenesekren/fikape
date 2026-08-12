@@ -156,7 +156,7 @@ export default async function VehicleDetailPage({
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
 
   const userId = session?.user?.id ? Number(session.user.id) : null;
-  const [userGarageEntry, garageCount, currentUser, existingSaleLeads, favoriteEntry] = await Promise.all([
+  const [userGarageEntry, garageCount, currentUser, existingSaleLeads, favoriteEntry, activeTradeCount] = await Promise.all([
     userId
       ? prisma.userProduct.findUnique({
           where: { userId_productId: { userId, productId: product.id } },
@@ -184,6 +184,11 @@ export default async function VehicleDetailPage({
           where: { userId_productId: { userId, productId: product.id } },
         })
       : null,
+    // Bu modele ait açık takas ilanı sayısı — organik trafiğin ana giriş noktası
+    // olan araç sayfasından /takas'a keşif köprüsü (bkz. denetim raporu, /takas
+    // hiçbir sayfadan link almıyordu). Aynı Promise.all içinde, sıralı await
+    // zincirine eklenip sayfa TTFB'sini uzatmasın diye.
+    prisma.tradeListing.count({ where: { productId: product.id, isActive: true } }).catch(() => 0),
   ]);
   const inGarage = userGarageEntry?.ownershipStatus === "CURRENT";
   const isSold   = userGarageEntry?.ownershipStatus === "PAST";
@@ -765,6 +770,14 @@ export default async function VehicleDetailPage({
                     </svg>
                     {garageCount} kişinin garajında
                   </span>
+                )}
+                {activeTradeCount > 0 && (
+                  <Link
+                    href={`/takas?kategori=${categorySlug}&marka=${product.brand.slug}`}
+                    className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-200 hover:bg-indigo-500/30 transition-colors"
+                  >
+                    🔄 {activeTradeCount} takas ilanı var
+                  </Link>
                 )}
               </div>
             </div>
