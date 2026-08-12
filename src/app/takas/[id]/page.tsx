@@ -12,7 +12,7 @@ import { ShareButton } from "./ShareButton";
 import { ListingReportButton } from "./ListingReportButton";
 
 const PAYMENT_LABEL: Record<string, string> = {
-  SWAP_ONLY: "Sadece takas",
+  SWAP_ONLY: "Sadece takas (yakın değer)",
   PAYS_EXTRA: "Üstüne para verir",
   WANTS_EXTRA: "Üstüne para bekliyor",
 };

@@ -399,7 +399,7 @@ function TradeFormFields({
         <div className="flex flex-col gap-1">
           <label className="flex items-center gap-1.5">
             <input type="radio" name="paymentIntent" checked={paymentIntent === "SWAP_ONLY"} onChange={() => setPaymentIntent("SWAP_ONLY")} />
-            Sadece takas
+            Sadece takas (yakın değer)
           </label>
           <label className="flex items-center gap-1.5">
             <input type="radio" name="paymentIntent" checked={paymentIntent === "PAYS_EXTRA"} onChange={() => setPaymentIntent("PAYS_EXTRA")} />

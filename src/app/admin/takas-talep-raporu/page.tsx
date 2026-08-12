@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Takas Talep Raporu — Admin", robots: { index: false } };
 
 const PAYMENT_LABEL: Record<string, string> = {
-  SWAP_ONLY: "Sadece takas",
+  SWAP_ONLY: "Sadece takas (yakın değer)",
   PAYS_EXTRA: "Üstüne para verir",
   WANTS_EXTRA: "Üstüne para bekliyor",
 };

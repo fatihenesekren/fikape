@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const PAYMENT_OPTIONS = [
-  { value: "SWAP_ONLY", label: "Sadece takas" },
+  { value: "SWAP_ONLY", label: "Sadece takas (yakın değer)" },
   { value: "PAYS_EXTRA", label: "Üstüne para verir" },
   { value: "WANTS_EXTRA", label: "Üstüne para bekliyor" },
 ];
