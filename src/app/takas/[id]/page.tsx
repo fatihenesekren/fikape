@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { isTradeMessagingEnabled } from "@/lib/features";
 import { timeAgoTr } from "@/lib/timeAgo";
+import { Avatar } from "@/components/Avatar";
+import { PhotoSlider } from "@/app/araclar/[slug]/PhotoSlider";
 import { TradeMessageForm } from "./TradeMessageForm";
 import { ShareButton } from "./ShareButton";
 import { ListingReportButton } from "./ListingReportButton";
@@ -24,20 +25,22 @@ async function getListing(id: number) {
       product: { include: { brand: true, model: true } },
       wantCategory: true,
       wantBrand: true,
-      user: { select: { id: true, trustLevel: true } },
+      user: { select: { id: true, trustLevel: true, displayName: true, avatarUrl: true } },
     },
   });
 }
 
 // İlan açmak için zaten onaylı fotoğraflı bir yorum şart koşuluyor, yani veri
-// mevcut — burada tek sorguyla kapak fotoğrafı olarak join ediliyor.
-async function getCoverPhoto(userProductId: number) {
-  const photo = await prisma.productPhoto.findFirst({
+// mevcut — önceden sadece TEK bir kapak fotoğrafı çekiliyordu, kullanıcının
+// yüklediği tüm fotoğraflar araç kartındaki gibi slider olarak gösterilmiyordu
+// (bkz. kullanıcı geri bildirimi).
+async function getGalleryPhotos(userProductId: number) {
+  const photos = await prisma.productPhoto.findMany({
     where: { status: "APPROVED", review: { status: "PUBLISHED", userProductId } },
     orderBy: { order: "asc" },
     select: { url: true },
   });
-  return photo?.url ?? null;
+  return photos;
 }
 
 export async function generateMetadata({
@@ -78,7 +81,7 @@ export default async function TakasDetayPage({
     existingThreadId = thread?.id ?? null;
   }
 
-  const coverPhotoUrl = await getCoverPhoto(listing.userProductId);
+  const galleryPhotos = await getGalleryPhotos(listing.userProductId);
 
   // Takas sonrası değerlendirme ortalaması — güven takas geçmişinden birikmiyordu
   // (bkz. denetim raporu), artık ilan sahibinin geçmiş takaslardan aldığı puanlar
@@ -89,14 +92,28 @@ export default async function TakasDetayPage({
     _count: true,
   });
 
+  const vehicleAlt = `${listing.product.brand.name} ${stripModelGenRange(listing.product.model.name)}`;
+
   return (
     <div className="max-w-2xl w-full mx-auto px-4 py-10">
+      {galleryPhotos.length > 0 && (
+        <div className="mb-4 rounded-2xl overflow-hidden">
+          <PhotoSlider photos={galleryPhotos} alt={vehicleAlt} />
+        </div>
+      )}
+
       <div className="bg-white border border-gray-100 rounded-2xl p-6">
-        {coverPhotoUrl && (
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-50 mb-4">
-            <Image src={coverPhotoUrl} alt="" fill sizes="(max-width: 640px) 100vw, 640px" className="object-cover" />
-          </div>
-        )}
+        <div className="flex items-center gap-2 mb-3">
+          <Avatar
+            displayName={listing.user.displayName}
+            avatarUrl={listing.user.avatarUrl}
+            seed={String(listing.user.id)}
+            size={28}
+          />
+          <span className="text-sm font-semibold text-gray-700">
+            {listing.user.displayName ?? "Kullanıcı"}
+          </span>
+        </div>
 
         <div className="flex items-start justify-between gap-2">
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{listing.product.brand.name}</div>
@@ -122,16 +139,20 @@ export default async function TakasDetayPage({
           </span>
         </div>
 
-        <div className="mt-3 text-sm text-gray-600">
+        <div className="mt-3 bg-gray-50 rounded-lg px-3 py-2.5 text-sm text-gray-600">
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
+            İlan Sahibinin Takas Beklentileri
+          </p>
           {listing.wantAnything ? (
-            <p>İstenen: marka/kategori fark etmez</p>
+            <p>Marka/kategori fark etmez</p>
           ) : (
-            <p>
-              İstenen: {listing.wantCategory?.name ?? "Belirtilmemiş"}
-              {listing.wantBrand ? ` — ${listing.wantBrand.name}` : ""}
-            </p>
+            <div className="space-y-0.5">
+              {listing.wantCategory && <p>Araç Kategorisi: {listing.wantCategory.name}</p>}
+              {listing.wantBrand && <p>Marka: {listing.wantBrand.name}</p>}
+              {!listing.wantCategory && !listing.wantBrand && <p>Belirtilmemiş</p>}
+            </div>
           )}
-          {listing.note && <p className="mt-1 text-gray-500">&quot;{listing.note}&quot;</p>}
+          {listing.note && <p className="mt-1.5 text-gray-500">&quot;{listing.note}&quot;</p>}
         </div>
 
         {listing.user.trustLevel >= 3 && (
