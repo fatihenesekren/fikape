@@ -14,6 +14,7 @@ interface ExistingListing {
   city: string;
   paymentIntent: PaymentIntent;
   note: string | null;
+  description: string | null;
   wantAnything: boolean;
   wantCategoryId: number | null;
   wantBrandId: number | null;
@@ -56,6 +57,7 @@ export function TradeToggleCard({
     : brands;
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent>(existingListing?.paymentIntent ?? "SWAP_ONLY");
   const [note, setNote] = useState(existingListing?.note ?? "");
+  const [description, setDescription] = useState(existingListing?.description ?? "");
   const [consentGiven, setConsentGiven] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -149,6 +151,7 @@ export function TradeToggleCard({
           wantBrandId: wantAnything ? null : wantBrandId || null,
           paymentIntent,
           note: note.trim() || null,
+          description: description.trim() || null,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -180,6 +183,7 @@ export function TradeToggleCard({
             availableBrands={availableBrands} categories={categories}
             paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
             note={note} setNote={setNote}
+            description={description} setDescription={setDescription}
           />
           {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
           <button
@@ -267,6 +271,7 @@ export function TradeToggleCard({
           wantBrandId: wantAnything ? null : wantBrandId || null,
           paymentIntent,
           note: note.trim() || null,
+          description: description.trim() || null,
           consentGiven,
         }),
       });
@@ -298,6 +303,7 @@ export function TradeToggleCard({
         availableBrands={availableBrands} categories={categories}
         paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
         note={note} setNote={setNote}
+        description={description} setDescription={setDescription}
       />
 
       {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
@@ -347,6 +353,7 @@ function TradeFormFields({
   availableBrands, categories,
   paymentIntent, setPaymentIntent,
   note, setNote,
+  description, setDescription,
 }: {
   city: string; setCity: (v: string) => void;
   wantAnything: boolean; setWantAnything: (v: boolean) => void;
@@ -356,6 +363,7 @@ function TradeFormFields({
   categories: { id: number; name: string }[];
   paymentIntent: PaymentIntent; setPaymentIntent: (v: PaymentIntent) => void;
   note: string; setNote: (v: string) => void;
+  description: string; setDescription: (v: string) => void;
 }) {
   return (
     <>
@@ -425,11 +433,25 @@ function TradeFormFields({
       <textarea
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        placeholder="Opsiyonel not"
+        placeholder="Opsiyonel not (örn. hangi araçları arıyorsun)"
         maxLength={300}
         rows={2}
         className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
       />
+
+      <div>
+        <label className="block text-xs font-semibold text-indigo-800 mb-1">
+          Açıklama <span className="font-normal text-indigo-400">(opsiyonel — km, bakım geçmişi, aksesuar vb.)</span>
+        </label>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Aracınız hakkında detaylı bilgi verin"
+          maxLength={2000}
+          rows={4}
+          className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+        />
+      </div>
     </>
   );
 }

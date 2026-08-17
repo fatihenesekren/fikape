@@ -54,7 +54,7 @@ export default async function GarajimPage() {
       where: { userId },
       select: {
         id: true, userProductId: true, isActive: true, city: true,
-        paymentIntent: true, note: true, wantAnything: true,
+        paymentIntent: true, note: true, description: true, wantAnything: true,
         wantCategoryId: true, wantBrandId: true,
       },
       orderBy: { createdAt: "desc" },

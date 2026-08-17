@@ -39,12 +39,12 @@ export async function GET(req: Request) {
         },
         data: { text: "[Bu mesaj silinmiştir]" },
       }),
-      // İlanın kendi serbest metni (note) de PII/kimliklendirici bilgi taşıyabilir
-      // ("34 ABC 123 plakalı aracımı takas ederim" gibi) — sadece mesaj metni değil,
-      // bu da temizleniyor.
+      // İlanın kendi serbest metinleri (note + description) de PII/kimliklendirici
+      // bilgi taşıyabilir ("34 ABC 123 plakalı aracımı takas ederim" gibi) —
+      // sadece mesaj metni değil, bunlar da temizleniyor.
       prisma.tradeListing.updateMany({
         where: { id: { in: listingIds } },
-        data: { note: null, anonymizedAt: new Date() },
+        data: { note: null, description: null, anonymizedAt: new Date() },
       }),
     ]);
 

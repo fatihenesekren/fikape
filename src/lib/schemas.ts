@@ -102,6 +102,7 @@ export const tradeListingCreateSchema = z.object({
   wantBrandId:    z.union([z.number(), z.string()]).optional().nullable(),
   wantAnything:   z.boolean().optional(),
   note:           z.string().trim().max(300).optional().nullable(),
+  description:    z.string().trim().max(2000).optional().nullable(),
   paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"], { error: "Geçersiz ödeme niyeti." }),
   city:           z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
   consentGiven:   z.literal(true, { error: "İlanı açmak için KVKK onay kutusunu işaretlemelisiniz." }),
@@ -139,6 +140,7 @@ export const tradeListingUpdateSchema = z.object({
   wantBrandId:    z.union([z.number(), z.string()]).optional().nullable(),
   wantAnything:   z.boolean().optional(),
   note:           z.string().trim().max(300).optional().nullable(),
+  description:    z.string().trim().max(2000).optional().nullable(),
   paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"]).optional(),
   city:           z.enum(TURKISH_CITIES).optional(),
 });

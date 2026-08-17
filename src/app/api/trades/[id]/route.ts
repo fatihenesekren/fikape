@@ -73,6 +73,7 @@ export async function PATCH(
       wantCategoryId: data.wantAnything ? null : wantCategoryId,
       wantBrandId: data.wantAnything ? null : wantBrandId,
       note: data.note ?? null,
+      description: data.description ?? null,
     },
   });
 

@@ -8,9 +8,11 @@ import { isTradeMessagingEnabled } from "@/lib/features";
 import { timeAgoTr } from "@/lib/timeAgo";
 import { Avatar } from "@/components/Avatar";
 import { PhotoSlider } from "@/app/araclar/[slug]/PhotoSlider";
+import { buildSpecList } from "@/lib/buildSpecList";
 import { TradeMessageForm } from "./TradeMessageForm";
 import { ShareButton } from "./ShareButton";
 import { ListingReportButton } from "./ListingReportButton";
+import { ListingTabs } from "./ListingTabs";
 
 const PAYMENT_LABEL: Record<string, string> = {
   SWAP_ONLY: "Sadece takas (yakın değer)",
@@ -22,7 +24,7 @@ async function getListing(id: number) {
   return prisma.tradeListing.findUnique({
     where: { id },
     include: {
-      product: { include: { brand: true, model: true } },
+      product: { include: { brand: true, model: true, category: { select: { slug: true } } } },
       wantCategory: true,
       wantBrand: true,
       user: { select: { id: true, trustLevel: true, displayName: true, avatarUrl: true } },
@@ -94,6 +96,38 @@ export default async function TakasDetayPage({
 
   const vehicleAlt = `${listing.product.brand.name} ${stripModelGenRange(listing.product.model.name)}`;
 
+  // "Açıklama" (aracın kendisi hakkında serbest metin) ve "Teknik Özellikler"
+  // sekmeleri — Teknik Özellikler verisi zaten Product.attributes'ta hazır,
+  // ek veri toplamaya gerek yok (bkz. buildSpecList, araç sayfasıyla paylaşılıyor).
+  const specs = buildSpecList(listing.product.category?.slug ?? "", listing.product.attributes);
+  const listingTabs = [
+    {
+      key: "aciklama",
+      label: "Açıklama",
+      content: listing.description ? (
+        <p className="text-sm text-gray-600 whitespace-pre-wrap">{listing.description}</p>
+      ) : (
+        <p className="text-sm text-gray-400 text-center py-4">İlan sahibi henüz bir açıklama eklememiş.</p>
+      ),
+    },
+    {
+      key: "teknik",
+      label: "Teknik Özellikler",
+      content: specs.length === 0 ? (
+        <p className="text-sm text-gray-400 text-center py-4">Bu araç için teknik özellik bulunamadı.</p>
+      ) : (
+        <div className="divide-y divide-gray-50">
+          {specs.map(({ label, value }) => (
+            <div key={label} className="flex justify-between items-baseline py-2 text-sm">
+              <span className="text-gray-400">{label}</span>
+              <span className="font-semibold text-gray-800 text-right ml-4">{value}</span>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+  ];
+
   return (
     <div className="max-w-2xl w-full mx-auto px-4 py-10">
       {galleryPhotos.length > 0 && (
@@ -101,6 +135,8 @@ export default async function TakasDetayPage({
           <PhotoSlider photos={galleryPhotos} alt={vehicleAlt} />
         </div>
       )}
+
+      <ListingTabs tabs={listingTabs} />
 
       <div className="bg-white border border-gray-100 rounded-2xl p-6">
         <div className="flex items-center gap-2 mb-3">

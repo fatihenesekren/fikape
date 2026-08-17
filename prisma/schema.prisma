@@ -875,6 +875,10 @@ model TradeListing {
   wantBrand       Brand?    @relation(fields: [wantBrandId], references: [id])
   wantAnything    Boolean  @default(false)
   note            String?  @db.VarChar(300)
+  // "note" kısa bir takas beklentisi notu ("sadece dizel arıyorum" gibi) — bu
+  // ayrı bir alan: aracın kendisi hakkında serbest, uzun açıklama (km, bakım
+  // geçmişi vb.). İkisi karıştırılmasın diye bilinçli olarak ayrı tutuldu.
+  description     String?  @db.VarChar(2000)
 
   paymentIntent   TradePaymentIntent @default(SWAP_ONLY)
   city            String   @db.VarChar(50)   // sadece İl, ilçe yok — TURKISH_CITIES whitelist'ine karşı validate edilir

@@ -31,7 +31,7 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
-  const { wantAnything, note, paymentIntent, city } = parsed.data;
+  const { wantAnything, note, description, paymentIntent, city } = parsed.data;
   const userProductId = Number(parsed.data.userProductId);
   const wantCategoryId = parsed.data.wantCategoryId != null ? Number(parsed.data.wantCategoryId) : null;
   const wantBrandId = parsed.data.wantBrandId != null ? Number(parsed.data.wantBrandId) : null;
@@ -81,6 +81,7 @@ export async function POST(req: Request) {
         wantBrandId,
         wantAnything: wantAnything ?? false,
         note: note ?? null,
+        description: description ?? null,
         paymentIntent,
         city,
       },
