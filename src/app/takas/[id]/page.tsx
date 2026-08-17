@@ -173,8 +173,6 @@ export default async function TakasDetayPage({
         </div>
       )}
 
-      <ListingTabs tabs={listingTabs} />
-
       <div className="bg-white border border-gray-100 rounded-2xl p-6">
         <div className="flex items-center gap-2 mb-3">
           <Avatar
@@ -280,9 +278,13 @@ export default async function TakasDetayPage({
             <TradeMessageForm listingId={listing.id} />
           </>
         )}
-
-        {userId && !isOwner && <ListingReportButton listingId={listing.id} />}
       </div>
+
+      <div className="mt-4">
+        <ListingTabs tabs={listingTabs} />
+      </div>
+
+      {userId && !isOwner && <ListingReportButton listingId={listing.id} />}
     </div>
   );
 }
