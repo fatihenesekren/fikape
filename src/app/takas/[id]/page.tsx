@@ -9,6 +9,8 @@ import { timeAgoTr } from "@/lib/timeAgo";
 import { Avatar } from "@/components/Avatar";
 import { PhotoSlider } from "@/app/araclar/[slug]/PhotoSlider";
 import { buildSpecList } from "@/lib/buildSpecList";
+import { CarDamageDiagram } from "@/components/CarDamageDiagram";
+import { PART_CONDITION_CATEGORIES, PART_CONDITION_LABEL, CAR_PARTS, type PartCondition } from "@/lib/carParts";
 import { TradeMessageForm } from "./TradeMessageForm";
 import { ShareButton } from "./ShareButton";
 import { ListingReportButton } from "./ListingReportButton";
@@ -28,6 +30,7 @@ async function getListing(id: number) {
       wantCategory: true,
       wantBrand: true,
       user: { select: { id: true, trustLevel: true, displayName: true, avatarUrl: true } },
+      partConditions: { select: { partKey: true, condition: true } },
     },
   });
 }
@@ -100,6 +103,17 @@ export default async function TakasDetayPage({
   // sekmeleri — Teknik Özellikler verisi zaten Product.attributes'ta hazır,
   // ek veri toplamaya gerek yok (bkz. buildSpecList, araç sayfasıyla paylaşılıyor).
   const specs = buildSpecList(listing.product.category?.slug ?? "", listing.product.attributes);
+
+  // "Boyalı veya Değişen Parça" — sadece gövde paneli olan kategorilerde
+  // (otomobil/kamyonet) anlamlı, diğer kategorilerde sekme hiç gösterilmiyor.
+  const showPartConditions = PART_CONDITION_CATEGORIES.includes(
+    (listing.product.category?.slug ?? "") as (typeof PART_CONDITION_CATEGORIES)[number]
+  );
+  const partConditionsMap: Record<string, PartCondition> = Object.fromEntries(
+    listing.partConditions.map((p) => [p.partKey, p.condition as PartCondition])
+  );
+  const hasPartConditionData = listing.partConditions.length > 0;
+
   const listingTabs = [
     {
       key: "aciklama",
@@ -126,6 +140,29 @@ export default async function TakasDetayPage({
         </div>
       ),
     },
+    ...(showPartConditions
+      ? [
+          {
+            key: "boya",
+            label: "Boyalı/Değişen Parça",
+            content: !hasPartConditionData ? (
+              <p className="text-sm text-gray-400 text-center py-4">İlan sahibi bu bilgiyi henüz eklememiş.</p>
+            ) : (
+              <div className="space-y-3">
+                <CarDamageDiagram conditions={partConditionsMap} />
+                <div className="divide-y divide-gray-50">
+                  {listing.partConditions.map(({ partKey, condition }) => (
+                    <div key={partKey} className="flex justify-between items-baseline py-1.5 text-sm">
+                      <span className="text-gray-400">{CAR_PARTS.find((p) => p.key === partKey)?.label ?? partKey}</span>
+                      <span className="font-semibold text-gray-800">{PART_CONDITION_LABEL[condition as PartCondition]}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ),
+          },
+        ]
+      : []),
   ];
 
   return (

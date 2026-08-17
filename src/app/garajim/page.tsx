@@ -9,6 +9,7 @@ import { formatSoldReasons } from "@/lib/soldReasons";
 import { GarageAnimation } from "./GarageAnimation";
 import { InsuranceLeadCard } from "./InsuranceLeadCard";
 import { TradeToggleCard } from "./TradeToggleCard";
+import type { PartCondition } from "@/lib/carParts";
 import { stripModelGenRange, stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 export const metadata: Metadata = { title: "Garajım" };
@@ -56,6 +57,7 @@ export default async function GarajimPage() {
         id: true, userProductId: true, isActive: true, city: true,
         paymentIntent: true, note: true, description: true, wantAnything: true,
         wantCategoryId: true, wantBrandId: true,
+        partConditions: { select: { partKey: true, condition: true } },
       },
       orderBy: { createdAt: "desc" },
     }).catch(() => []),
@@ -67,9 +69,15 @@ export default async function GarajimPage() {
   // tradeListings createdAt desc sıralı — her userProductId için İLK karşılaşılan
   // (yani en yeni) kayıt tutulmalı; new Map(array) tam tersini yapıp SON kaydı
   // tutar, bu yüzden manuel olarak sadece henüz map'te olmayan anahtarlar ekleniyor.
-  const tradeListingByUserProductId = new Map<number, (typeof tradeListings)[number]>();
+  const tradeListingByUserProductId = new Map<number, Omit<(typeof tradeListings)[number], "partConditions"> & { partConditions: Record<string, PartCondition> }>();
   for (const t of tradeListings) {
-    if (!tradeListingByUserProductId.has(t.userProductId)) tradeListingByUserProductId.set(t.userProductId, t);
+    if (!tradeListingByUserProductId.has(t.userProductId)) {
+      const { partConditions: rawPartConditions, ...rest } = t;
+      const partConditionsMap: Record<string, PartCondition> = Object.fromEntries(
+        rawPartConditions.map((p) => [p.partKey, p.condition as PartCondition])
+      );
+      tradeListingByUserProductId.set(t.userProductId, { ...rest, partConditions: partConditionsMap });
+    }
   }
   const categoryBrandMap: Record<number, number[]> = {};
   for (const link of categoryBrandLinks) {
@@ -80,7 +88,7 @@ export default async function GarajimPage() {
     where: { userId },
     include: {
       product: {
-        include: { brand: true, model: true },
+        include: { brand: true, model: true, category: { select: { slug: true } } },
       },
       reviews: {
         where: { status: "PUBLISHED" },
@@ -206,6 +214,7 @@ export default async function GarajimPage() {
               categoryBrandMap={categoryBrandMap}
               existingListing={tradeListingByUserProductId.get(userProductId) ?? null}
               productSlug={product.slug}
+              categorySlug={product.category?.slug ?? ""}
             />
           )}
         </div>

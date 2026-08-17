@@ -96,6 +96,15 @@ export const plusWaitlistSchema = z.object({
   note:  z.string().trim().max(280).optional().nullable(),
 });
 
+// Boyalı/Değişen Parça — partKey'ler sabit bir whitelist'ten gelir (CAR_PARTS),
+// ama burada zod tarafında serbest string kabul edilip route handler'da
+// whitelist'e karşı doğrulanıyor (carParts.ts'i schemas.ts'e import etmemek için
+// — döngüsel bağımlılık riski yok ama katman ayrımı daha temiz).
+export const partConditionsSchema = z.record(
+  z.string(),
+  z.enum(["ORIGINAL", "LOCAL_PAINT", "PAINTED", "REPLACED"])
+).optional();
+
 export const tradeListingCreateSchema = z.object({
   userProductId:  z.union([z.number(), z.string()]),
   wantCategoryId: z.union([z.number(), z.string()]).optional().nullable(),
@@ -106,6 +115,7 @@ export const tradeListingCreateSchema = z.object({
   paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"], { error: "Geçersiz ödeme niyeti." }),
   city:           z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
   consentGiven:   z.literal(true, { error: "İlanı açmak için KVKK onay kutusunu işaretlemelisiniz." }),
+  partConditions: partConditionsSchema,
 });
 
 const salePriceRange = z.number().int()
@@ -143,6 +153,7 @@ export const tradeListingUpdateSchema = z.object({
   description:    z.string().trim().max(2000).optional().nullable(),
   paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"]).optional(),
   city:           z.enum(TURKISH_CITIES).optional(),
+  partConditions: partConditionsSchema,
 });
 
 export const messageCreateSchema = z.object({

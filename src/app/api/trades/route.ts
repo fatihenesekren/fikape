@@ -6,6 +6,7 @@ import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeListingEnabled } from "@/lib/features";
 import { hashRequestContext } from "@/lib/security";
 import { createNotification } from "@/lib/notification";
+import { CAR_PARTS } from "@/lib/carParts";
 
 const DAILY_LISTING_LIMIT = Number(process.env.TAKASA_AC_ILAN_GUNLUK_LIMIT) || 5;
 
@@ -35,6 +36,13 @@ export async function POST(req: Request) {
   const userProductId = Number(parsed.data.userProductId);
   const wantCategoryId = parsed.data.wantCategoryId != null ? Number(parsed.data.wantCategoryId) : null;
   const wantBrandId = parsed.data.wantBrandId != null ? Number(parsed.data.wantBrandId) : null;
+
+  // Sadece bilinen parça anahtarları kabul edilir (whitelist) — istemciden
+  // gelen serbest string'lerin doğrudan DB'ye yazılmasını önler.
+  const validPartKeys = new Set(CAR_PARTS.map((p) => p.key));
+  const partConditionEntries = Object.entries(parsed.data.partConditions ?? {}).filter(
+    ([key]) => validPartKeys.has(key)
+  );
 
   const userProduct = await prisma.userProduct.findUnique({
     where: { id: userProductId },
@@ -86,6 +94,16 @@ export async function POST(req: Request) {
         city,
       },
     });
+
+    if (partConditionEntries.length > 0) {
+      await prisma.tradeListingPartCondition.createMany({
+        data: partConditionEntries.map(([partKey, condition]) => ({
+          tradeListingId: listing.id,
+          partKey,
+          condition,
+        })),
+      });
+    }
 
     // KVKK açık rıza kaydı — schema zaten ham IP/UA yerine hash saklama ilkesini
     // kullanıyor (bkz. security.ts), ConsentLog alan adları "ipAddress/userAgent"

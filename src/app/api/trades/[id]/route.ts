@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { tradeListingUpdateSchema, formatZodError } from "@/lib/schemas";
 import { isTradeListingEnabled } from "@/lib/features";
+import { CAR_PARTS } from "@/lib/carParts";
 
 // İlan düzenleme + yeniden açma — önceden ne düzenleme ne yeniden açma vardı,
 // kullanıcı şehir/ödeme niyeti/notu değiştirmek için ilanı kapatıp sıfırdan
@@ -64,18 +65,44 @@ export async function PATCH(
   const wantCategoryId = data.wantCategoryId != null ? Number(data.wantCategoryId) : null;
   const wantBrandId = data.wantBrandId != null ? Number(data.wantBrandId) : null;
 
-  await prisma.tradeListing.update({
-    where: { id: listingId },
-    data: {
-      ...(data.city !== undefined ? { city: data.city } : {}),
-      ...(data.paymentIntent !== undefined ? { paymentIntent: data.paymentIntent } : {}),
-      ...(data.wantAnything !== undefined ? { wantAnything: data.wantAnything } : {}),
-      wantCategoryId: data.wantAnything ? null : wantCategoryId,
-      wantBrandId: data.wantAnything ? null : wantBrandId,
-      note: data.note ?? null,
-      description: data.description ?? null,
-    },
-  });
+  const validPartKeys = new Set(CAR_PARTS.map((p) => p.key));
+  const partConditionEntries = Object.entries(data.partConditions ?? {}).filter(
+    ([key]) => validPartKeys.has(key)
+  );
+
+  await prisma.$transaction([
+    prisma.tradeListing.update({
+      where: { id: listingId },
+      data: {
+        ...(data.city !== undefined ? { city: data.city } : {}),
+        ...(data.paymentIntent !== undefined ? { paymentIntent: data.paymentIntent } : {}),
+        ...(data.wantAnything !== undefined ? { wantAnything: data.wantAnything } : {}),
+        wantCategoryId: data.wantAnything ? null : wantCategoryId,
+        wantBrandId: data.wantAnything ? null : wantBrandId,
+        note: data.note ?? null,
+        description: data.description ?? null,
+      },
+    }),
+    // Parça durumları formda gelen tam set neyse onunla değiştirilir (sil+yeniden
+    // ekle) — böylece kullanıcı bir parçanın işaretini kaldırırsa (partConditions'ta
+    // artık yoksa) eski kayıt da temizlenmiş olur.
+    ...(data.partConditions !== undefined
+      ? [
+          prisma.tradeListingPartCondition.deleteMany({ where: { tradeListingId: listingId } }),
+          ...(partConditionEntries.length > 0
+            ? [
+                prisma.tradeListingPartCondition.createMany({
+                  data: partConditionEntries.map(([partKey, condition]) => ({
+                    tradeListingId: listingId,
+                    partKey,
+                    condition,
+                  })),
+                }),
+              ]
+            : []),
+        ]
+      : []),
+  ]);
 
   return NextResponse.json({ ok: true });
 }

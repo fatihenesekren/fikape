@@ -3,7 +3,7 @@ import {
   reviewCreateSchema, registerSchema, vehicleSuggestSchema, questionCreateSchema, answerCreateSchema,
   tradeListingCreateSchema, tradeListingUpdateSchema, tradeListingCloseSchema,
   messageCreateSchema, messageReportSchema, savedSearchCreateSchema, tradeRatingSchema,
-  deletionRequestSchema,
+  deletionRequestSchema, partConditionsSchema,
 } from "./schemas";
 
 describe("reviewCreateSchema", () => {
@@ -135,6 +135,24 @@ describe("answerCreateSchema", () => {
 
   it("çok kısa cevabı reddeder", () => {
     expect(answerCreateSchema.safeParse({ text: "Evet" }).success).toBe(false);
+  });
+});
+
+describe("partConditionsSchema", () => {
+  it("boş nesneyi kabul eder (opsiyonel)", () => {
+    expect(partConditionsSchema.safeParse({}).success).toBe(true);
+  });
+
+  it("hiç gönderilmezse de kabul eder", () => {
+    expect(partConditionsSchema.safeParse(undefined).success).toBe(true);
+  });
+
+  it("geçerli parça durumlarını kabul eder", () => {
+    expect(partConditionsSchema.safeParse({ kaput: "PAINTED", on_tampon: "REPLACED" }).success).toBe(true);
+  });
+
+  it("geçersiz bir durum değerini reddeder", () => {
+    expect(partConditionsSchema.safeParse({ kaput: "SCRATCHED" }).success).toBe(false);
   });
 });
 

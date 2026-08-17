@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
+import { PART_CONDITION_CATEGORIES, type PartCondition } from "@/lib/carParts";
+import { PartConditionForm } from "./PartConditionForm";
 
 type PaymentIntent = "SWAP_ONLY" | "PAYS_EXTRA" | "WANTS_EXTRA";
 type CloseReason = "TRADED" | "GAVE_UP" | "FOUND_ELSEWHERE";
@@ -18,6 +20,7 @@ interface ExistingListing {
   wantAnything: boolean;
   wantCategoryId: number | null;
   wantBrandId: number | null;
+  partConditions: Record<string, PartCondition>;
 }
 
 const PAYMENT_WARNING = (
@@ -36,6 +39,7 @@ export function TradeToggleCard({
   categoryBrandMap,
   existingListing,
   productSlug,
+  categorySlug,
 }: {
   userProductId: number;
   canOpenTrade: boolean;
@@ -44,6 +48,7 @@ export function TradeToggleCard({
   categoryBrandMap: Record<number, number[]>;
   existingListing: ExistingListing | null;
   productSlug: string;
+  categorySlug: string;
 }) {
   const router = useRouter();
   const [formOpen, setFormOpen] = useState(false);
@@ -58,6 +63,12 @@ export function TradeToggleCard({
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent>(existingListing?.paymentIntent ?? "SWAP_ONLY");
   const [note, setNote] = useState(existingListing?.note ?? "");
   const [description, setDescription] = useState(existingListing?.description ?? "");
+  const [partConditions, setPartConditions] = useState<Record<string, PartCondition | undefined>>(
+    existingListing?.partConditions ?? {}
+  );
+  // Boyalı/Değişen Parça sadece gövde paneli olan kategorilerde anlamlı
+  // (bkz. carParts.ts) — motosiklet/e-scooter/karavan gibi kategorilerde form hiç gösterilmiyor.
+  const showPartConditions = (PART_CONDITION_CATEGORIES as readonly string[]).includes(categorySlug);
   const [consentGiven, setConsentGiven] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -152,6 +163,7 @@ export function TradeToggleCard({
           paymentIntent,
           note: note.trim() || null,
           description: description.trim() || null,
+          partConditions,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -185,6 +197,12 @@ export function TradeToggleCard({
             note={note} setNote={setNote}
             description={description} setDescription={setDescription}
           />
+          {showPartConditions && (
+            <div className="border-t border-indigo-100 pt-2.5">
+              <p className="text-xs font-semibold text-indigo-800 mb-1.5">Boyalı veya Değişen Parça</p>
+              <PartConditionForm value={partConditions} onChange={setPartConditions} />
+            </div>
+          )}
           {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
           <button
             onClick={saveEdit}
@@ -272,6 +290,7 @@ export function TradeToggleCard({
           paymentIntent,
           note: note.trim() || null,
           description: description.trim() || null,
+          partConditions,
           consentGiven,
         }),
       });
@@ -305,6 +324,13 @@ export function TradeToggleCard({
         note={note} setNote={setNote}
         description={description} setDescription={setDescription}
       />
+
+      {showPartConditions && (
+        <div className="border-t border-indigo-100 pt-2.5">
+          <p className="text-xs font-semibold text-indigo-800 mb-1.5">Boyalı veya Değişen Parça</p>
+          <PartConditionForm value={partConditions} onChange={setPartConditions} />
+        </div>
+      )}
 
       {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
 

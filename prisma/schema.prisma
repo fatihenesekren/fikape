@@ -898,6 +898,7 @@ model TradeListing {
 
   threads         MessageThread[]
   reports         TradeListingReport[]
+  partConditions  TradeListingPartCondition[]
 
   // NOT: Prisma @@unique([userProductId]) YOK (kapanan ilan yeniden açılamama
   // bug'ına yol açar). Bunun yerine migration SQL'ine ELLE bir PARTIAL UNIQUE
@@ -1058,6 +1059,28 @@ model TradeListingReport {
   @@index([reporterId])
   @@index([status])
   @@map("trade_listing_reports")
+}
+
+// Boyalı/Değişen Parça — ilana bağlı (Product/UserProduct'a değil): bu, o
+// SPESİFİK aracın o andaki fiziksel durumu, model geneli bir özellik değil.
+// partKey sabit bir whitelist'ten gelir (bkz. src/lib/carParts.ts), sadece
+// gövde paneli olan kategorilerde (otomobil/kamyonet) kullanılır.
+model TradeListingPartCondition {
+  id             Int           @id @default(autoincrement())
+  tradeListingId Int
+  tradeListing   TradeListing  @relation(fields: [tradeListingId], references: [id], onDelete: Cascade)
+  partKey        String        @db.VarChar(50)
+  condition      PartCondition
+
+  @@unique([tradeListingId, partKey])
+  @@map("trade_listing_part_conditions")
+}
+
+enum PartCondition {
+  ORIGINAL
+  LOCAL_PAINT
+  PAINTED
+  REPLACED
 }
 
 enum MessageReportReason {
