@@ -145,19 +145,25 @@ export default async function TakasDetayPage({
           {
             key: "boya",
             label: "Boyalı/Değişen Parça",
-            content: !hasPartConditionData ? (
-              <p className="text-sm text-gray-400 text-center py-4">İlan sahibi bu bilgiyi henüz eklememiş.</p>
-            ) : (
+            // Veri olmasa bile şema her zaman gösterilir (tamamı "Belirtilmemiş"
+            // renginde) — kullanıcı geri bildirimi: boş durumda hiçbir görsel
+            // olmaması metne göre daha kafa karıştırıcıydı.
+            content: (
               <div className="space-y-3">
+                {!hasPartConditionData && (
+                  <p className="text-xs text-gray-400 text-center">İlan sahibi henüz parça durumu belirtmemiş.</p>
+                )}
                 <CarDamageDiagram conditions={partConditionsMap} />
-                <div className="divide-y divide-gray-50">
-                  {listing.partConditions.map(({ partKey, condition }) => (
-                    <div key={partKey} className="flex justify-between items-baseline py-1.5 text-sm">
-                      <span className="text-gray-400">{CAR_PARTS.find((p) => p.key === partKey)?.label ?? partKey}</span>
-                      <span className="font-semibold text-gray-800">{PART_CONDITION_LABEL[condition as PartCondition]}</span>
-                    </div>
-                  ))}
-                </div>
+                {hasPartConditionData && (
+                  <div className="divide-y divide-gray-50">
+                    {listing.partConditions.map(({ partKey, condition }) => (
+                      <div key={partKey} className="flex justify-between items-baseline py-1.5 text-sm">
+                        <span className="text-gray-400">{CAR_PARTS.find((p) => p.key === partKey)?.label ?? partKey}</span>
+                        <span className="font-semibold text-gray-800">{PART_CONDITION_LABEL[condition as PartCondition]}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ),
           },

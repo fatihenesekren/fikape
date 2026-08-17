@@ -19,6 +19,15 @@ export function PartConditionForm({
     onChange({ ...value, [partKey]: condition });
   }
 
+  // Yanlışlıkla işaretlenen bir parçayı geri alma yolu yoktu (bkz. kullanıcı
+  // geri bildirimi) — anahtarı nesneden tamamen çıkararak "Belirtilmemiş"
+  // durumuna dönülüyor.
+  function clearCondition(partKey: string) {
+    const next = { ...value };
+    delete next[partKey];
+    onChange(next);
+  }
+
   const selectedPartLabel = CAR_PARTS.find((p) => p.key === selectedPart)?.label;
 
   return (
@@ -33,6 +42,18 @@ export function PartConditionForm({
         <div className="bg-white border border-indigo-200 rounded-lg p-2.5">
           <p className="text-xs font-semibold text-indigo-800 mb-1.5">{selectedPartLabel}</p>
           <div className="flex flex-wrap gap-1.5">
+            <button
+              type="button"
+              onClick={() => clearCondition(selectedPart)}
+              className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 border-dashed transition-all"
+              style={
+                !value[selectedPart]
+                  ? { background: "#e5e7eb", borderColor: "#9ca3af", color: "#374151" }
+                  : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+              }
+            >
+              Belirtilmemiş
+            </button>
             {CONDITIONS.map((c) => (
               <button
                 key={c}
