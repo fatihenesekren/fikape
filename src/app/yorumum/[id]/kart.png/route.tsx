@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { CHIP_LABEL } from "@/lib/chips";
 import { getVehicleImageUrl } from "@/lib/vehicleImages";
+import { fetchAndResizeImage } from "@/lib/imageResize";
 
 export const runtime = "nodejs";
 
@@ -11,24 +12,19 @@ const size = { width: 1080, height: 1920 };
 const QUOTE_MAX_CHARS = 260;
 const MAX_CHIPS = 5;
 const MAX_PROS = 3;
-const MAX_CATALOG_IMAGE_BYTES = 3 * 1024 * 1024; // satori bunu iki kez (arka plan + küçük foto) fetch/decode ediyor
 
-// Katalog fotoğrafı bazen orijinal çözünürlükte (birkaç MB) yüklenmiş oluyor
-// (bkz. admin "URL'den yükle" akışı, boyut kontrolü yok) — satori böyle büyük
-// bir görseli fetch+decode ederken zaman aşımına uğrayıp TÜM kartın render'ını
-// başarısız kılabiliyor. Burada önden ölçüp büyükse görseli hiç kullanmıyoruz;
-// kart yine de (fotoğrafsız) üretiliyor, "broken image" ikonuyla boşa düşmüyor.
-async function safeCatalogImageUrl(url: string | null): Promise<string | null> {
+// Katalog fotoğrafı admin tarafında artık her zaman küçültülmüş kaydediliyor
+// (bkz. src/lib/imageResize.ts, api/admin/products/[slug]/image/route.ts) —
+// ama eski kayıtlar veya harici (Wikipedia) URL'ler yine de büyük olabilir.
+// Satori'ye ham URL vermek yerine burada da kendimiz indirip küçültüyoruz ve
+// data: URI olarak gömüyoruz — satori'nin kendi fetch/decode'una hiç
+// bağımlı kalmıyoruz, görsel HER ZAMAN karta dahil oluyor ("fotoğrafsız kart"
+// kabul edilebilir bir çıktı değil — bkz. kullanıcı geri bildirimi).
+async function catalogImageDataUrl(url: string | null): Promise<string | null> {
   if (!url) return null;
-  try {
-    const res = await fetch(url, { method: "HEAD", signal: AbortSignal.timeout(2500) });
-    if (!res.ok) return null;
-    const len = Number(res.headers.get("content-length"));
-    if (Number.isFinite(len) && len > MAX_CATALOG_IMAGE_BYTES) return null;
-    return url;
-  } catch {
-    return null;
-  }
+  const resized = await fetchAndResizeImage(url);
+  if (!resized) return null;
+  return `data:${resized.contentType};base64,${resized.buffer.toString("base64")}`;
 }
 
 function fallbackCard() {
@@ -177,7 +173,7 @@ async function renderCard(review: NonNullable<Awaited<ReturnType<typeof getRevie
   });
 
   const rawImageUrl = review.product.imageUrl ?? (await getVehicleImageUrl(review.product.slug));
-  const catalogImageUrl = await safeCatalogImageUrl(rawImageUrl);
+  const catalogImageUrl = await catalogImageDataUrl(rawImageUrl);
 
   return new ImageResponse(
     (

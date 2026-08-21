@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
+import { resizeImageBuffer, fetchAndResizeImage } from "@/lib/imageResize";
 
 export async function POST(
   req: Request,
@@ -39,9 +40,20 @@ export async function POST(
       return NextResponse.json({ error: "Dosya 5MB'dan küçük olmalı." }, { status: 400 });
     }
 
-    const ext = file.name.split(".").pop() ?? "jpg";
-    const blob = await put(`product-images/${slug}.${ext}`, file, {
+    // Kaynağında küçültme — orijinal çözünürlükte saklamak yerine (bkz. kart.png
+    // render'ını 12.8MB'lık bir katalog fotoğrafının çökertmesi) DB'ye hep
+    // önceden küçültülmüş/sıkıştırılmış hali kaydediliyor. Böylece hem sayfa
+    // performansı hem paylaşım kartı bu sınıf sorundan tamamen bağımsız kalıyor.
+    let resized;
+    try {
+      resized = await resizeImageBuffer(Buffer.from(await file.arrayBuffer()));
+    } catch {
+      return NextResponse.json({ error: "Görsel işlenemedi — dosya bozuk olabilir." }, { status: 400 });
+    }
+
+    const blob = await put(`product-images/${slug}.jpg`, resized.buffer, {
       access: "public",
+      contentType: resized.contentType,
       addRandomSuffix: false,
       allowOverwrite: true,
     });
@@ -71,6 +83,14 @@ export async function PATCH(
 
     const { slug } = await params;
 
+    const product = await prisma.product.findUnique({
+      where: { slug },
+      select: { id: true },
+    });
+    if (!product) {
+      return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
+    }
+
     let body: { imageUrl?: string };
     try {
       body = await req.json();
@@ -84,27 +104,32 @@ export async function PATCH(
       return NextResponse.json({ error: "Geçerli bir URL giriniz." }, { status: 400 });
     }
 
-    // POST (dosya yükleme) yolunda 5MB sınırı var, bu "URL'den" yolunda hiç yoktu —
-    // orijinal çözünürlükte (birkaç MB) bir görsel yapıştırılırsa hem sayfa
-    // performansı hem de paylaşım kartı render'ı (bkz. kart.png route, satori
-    // fetch/decode zaman aşımı) bundan etkileniyordu. Bilinebiliyorsa aynı sınırı
-    // burada da uygula; Content-Length dönmeyen sunucularda (bazı CDN'ler) engelleme.
-    try {
-      const head = await fetch(imageUrl, { method: "HEAD", signal: AbortSignal.timeout(3000) });
-      const len = Number(head.headers.get("content-length"));
-      if (Number.isFinite(len) && len > 5 * 1024 * 1024) {
-        return NextResponse.json({ error: "Görsel 5MB'dan küçük olmalı." }, { status: 400 });
-      }
-    } catch {
-      // HEAD isteği başarısız olabilir (CORS, sunucu desteklemiyor vb.) — bu durumda engelleme.
+    // Dış URL'yi doğrudan kaydetmiyoruz — indirip küçültüp KENDİ blob'umuza
+    // yüklüyoruz (POST/dosya-yükleme yoluyla aynı işlem). Böylece hem boyut
+    // hep bizim kontrolümüzde oluyor (bkz. 12.8MB'lık katalog fotoğrafı
+    // kart.png render'ını çökertmişti) hem de kaynak site erişilemez hale
+    // gelse bile görsel canlı kalıyor.
+    const resized = await fetchAndResizeImage(imageUrl);
+    if (!resized) {
+      return NextResponse.json(
+        { error: "Görsel indirilemedi veya işlenemedi — URL'i kontrol ediniz." },
+        { status: 400 }
+      );
     }
 
-    await prisma.product.update({
-      where: { slug },
-      data: { imageUrl },
+    const blob = await put(`product-images/${slug}.jpg`, resized.buffer, {
+      access: "public",
+      contentType: resized.contentType,
+      addRandomSuffix: false,
+      allowOverwrite: true,
     });
 
-    return NextResponse.json({ ok: true, imageUrl });
+    await prisma.product.update({
+      where: { id: product.id },
+      data: { imageUrl: blob.url },
+    });
+
+    return NextResponse.json({ ok: true, imageUrl: blob.url });
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     return NextResponse.json({ error: msg }, { status: 500 });
