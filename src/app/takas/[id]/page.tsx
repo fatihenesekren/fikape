@@ -10,7 +10,7 @@ import { Avatar } from "@/components/Avatar";
 import { PhotoSlider } from "@/app/araclar/[slug]/PhotoSlider";
 import { buildSpecList } from "@/lib/buildSpecList";
 import { CarDamageDiagram } from "@/components/CarDamageDiagram";
-import { PART_CONDITION_CATEGORIES, PART_CONDITION_LABEL, CAR_PARTS, type PartCondition } from "@/lib/carParts";
+import { PART_CONDITION_CATEGORIES, PART_CONDITION_LABEL, PART_CONDITION_COLOR, CAR_PARTS, type PartCondition } from "@/lib/carParts";
 import { TradeMessageForm } from "./TradeMessageForm";
 import { ShareButton } from "./ShareButton";
 import { ListingReportButton } from "./ListingReportButton";
@@ -118,23 +118,37 @@ export default async function TakasDetayPage({
     {
       key: "aciklama",
       label: "Açıklama",
+      icon: "📝",
       content: listing.description ? (
-        <p className="text-sm text-gray-600 whitespace-pre-wrap">{listing.description}</p>
+        <div className="space-y-3">
+          {listing.description
+            .split(/\n{2,}|\n/)
+            .map((s) => s.trim())
+            .filter(Boolean)
+            .map((paragraph, i) => (
+              <p key={i} className="text-[13.5px] leading-relaxed text-gray-700">
+                {paragraph}
+              </p>
+            ))}
+        </div>
       ) : (
-        <p className="text-sm text-gray-400 text-center py-4">İlan sahibi henüz bir açıklama eklememiş.</p>
+        <p className="text-sm text-gray-400 text-center py-6">İlan sahibi henüz bir açıklama eklememiş.</p>
       ),
     },
     {
       key: "teknik",
       label: "Teknik Özellikler",
+      icon: "⚙️",
       content: specs.length === 0 ? (
-        <p className="text-sm text-gray-400 text-center py-4">Bu araç için teknik özellik bulunamadı.</p>
+        <p className="text-sm text-gray-400 text-center py-6">Bu araç için teknik özellik bulunamadı.</p>
       ) : (
-        <div className="divide-y divide-gray-50">
+        <div className="grid grid-cols-2 gap-2">
           {specs.map(({ label, value }) => (
-            <div key={label} className="flex justify-between items-baseline py-2 text-sm">
-              <span className="text-gray-400">{label}</span>
-              <span className="font-semibold text-gray-800 text-right ml-4">{value}</span>
+            <div key={label} className="bg-gray-50 rounded-lg px-3 py-2">
+              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide leading-tight">
+                {label}
+              </div>
+              <div className="text-sm font-semibold text-gray-800 mt-0.5">{value}</div>
             </div>
           ))}
         </div>
@@ -145,21 +159,32 @@ export default async function TakasDetayPage({
           {
             key: "boya",
             label: "Boyalı/Değişen Parça",
+            icon: "🎨",
             // Veri olmasa bile şema her zaman gösterilir (tamamı "Belirtilmemiş"
             // renginde) — kullanıcı geri bildirimi: boş durumda hiçbir görsel
             // olmaması metne göre daha kafa karıştırıcıydı.
             content: (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {!hasPartConditionData && (
                   <p className="text-xs text-gray-400 text-center">İlan sahibi henüz parça durumu belirtmemiş.</p>
                 )}
                 <CarDamageDiagram conditions={partConditionsMap} />
                 {hasPartConditionData && (
-                  <div className="divide-y divide-gray-50">
+                  <div className="grid grid-cols-2 gap-2">
                     {listing.partConditions.map(({ partKey, condition }) => (
-                      <div key={partKey} className="flex justify-between items-baseline py-1.5 text-sm">
-                        <span className="text-gray-400">{CAR_PARTS.find((p) => p.key === partKey)?.label ?? partKey}</span>
-                        <span className="font-semibold text-gray-800">{PART_CONDITION_LABEL[condition as PartCondition]}</span>
+                      <div
+                        key={partKey}
+                        className="flex items-center justify-between gap-2 bg-gray-50 rounded-lg px-3 py-2"
+                      >
+                        <span className="text-xs text-gray-500 leading-tight">
+                          {CAR_PARTS.find((p) => p.key === partKey)?.label ?? partKey}
+                        </span>
+                        <span
+                          className="shrink-0 text-[11px] font-semibold px-2 py-0.5 rounded-full text-white"
+                          style={{ backgroundColor: PART_CONDITION_COLOR[condition as PartCondition] }}
+                        >
+                          {PART_CONDITION_LABEL[condition as PartCondition]}
+                        </span>
                       </div>
                     ))}
                   </div>

@@ -54,3 +54,10 @@ body {
 .animate-niyet-slide-right { animation: niyet-slide-in-right 0.22s ease-out both; }
 .animate-niyet-slide-left  { animation: niyet-slide-in-left 0.22s ease-out both; }
 .animate-niyet-result      { animation: niyet-result-enter 0.4s ease-out both; }
+
+/* Sekme içeriği geçişi (ör. takas ilanı Açıklama/Teknik Özellikler/Boya) */
+@keyframes tab-fade-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-tab-fade-in { animation: tab-fade-in 0.15s ease-out both; }
