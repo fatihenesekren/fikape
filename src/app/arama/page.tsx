@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
+import { SuggestVehicleCard } from "@/components/SuggestVehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
 import Link from "next/link";
@@ -160,6 +161,9 @@ async function SearchResults({ query }: { query: string }) {
             />
           );
         })}
+        {/* Aradığı tam varyantı (yıl, trim vb.) bulamamış olabilir — sonuçlar
+            listesinin doğal bir parçası olarak "öner" seçeneğini göster. */}
+        {query.length >= 2 && <SuggestVehicleCard query={query} />}
       </div>
     </>
   );
