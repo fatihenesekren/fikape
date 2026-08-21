@@ -94,7 +94,8 @@ export async function POST(
       userId: question.userId,
       type: "QUESTION_ANSWERED",
       message: `${vehicleName} hakkında sorduğun soru cevaplandı`,
-      link: `/araclar/${question.product.slug}?sekme=soru-cevap`,
+      // Slug değil id — katalog bakımında slug değişse bile link kırılmasın (bkz. /urun/[id]).
+      link: `/urun/${question.productId}?sekme=soru-cevap`,
     });
   }
 

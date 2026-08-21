@@ -84,6 +84,21 @@ export async function PATCH(
       return NextResponse.json({ error: "Geçerli bir URL giriniz." }, { status: 400 });
     }
 
+    // POST (dosya yükleme) yolunda 5MB sınırı var, bu "URL'den" yolunda hiç yoktu —
+    // orijinal çözünürlükte (birkaç MB) bir görsel yapıştırılırsa hem sayfa
+    // performansı hem de paylaşım kartı render'ı (bkz. kart.png route, satori
+    // fetch/decode zaman aşımı) bundan etkileniyordu. Bilinebiliyorsa aynı sınırı
+    // burada da uygula; Content-Length dönmeyen sunucularda (bazı CDN'ler) engelleme.
+    try {
+      const head = await fetch(imageUrl, { method: "HEAD", signal: AbortSignal.timeout(3000) });
+      const len = Number(head.headers.get("content-length"));
+      if (Number.isFinite(len) && len > 5 * 1024 * 1024) {
+        return NextResponse.json({ error: "Görsel 5MB'dan küçük olmalı." }, { status: 400 });
+      }
+    } catch {
+      // HEAD isteği başarısız olabilir (CORS, sunucu desteklemiyor vb.) — bu durumda engelleme.
+    }
+
     await prisma.product.update({
       where: { slug },
       data: { imageUrl },

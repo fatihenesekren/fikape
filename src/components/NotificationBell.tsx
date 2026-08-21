@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { TYPE_ICON, TYPE_LABEL, type NotificationData } from "./NotificationList";
 
 function fmtDate(iso: string) {
@@ -14,6 +15,7 @@ export function NotificationBell() {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     let cancelled = false;
@@ -29,6 +31,13 @@ export function NotificationBell() {
       .finally(() => { if (!cancelled) setLoaded(true); });
     return () => { cancelled = true; };
   }, []);
+
+  // Sayfa değişince panel her zaman kapansın — sadece dışarı-tıklama algısına
+  // güvenmek, bir bildirime tıklayıp client-side navigasyon başladığında bazen
+  // kaçırılabiliyordu (bkz. kullanıcı geri bildirimi: panel yeni sayfada açık kalıyor).
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) return;

@@ -72,7 +72,8 @@ export async function POST(req: Request) {
       userId: recipientId,
       type: "NEW_QUESTION",
       message: `${vehicleName} hakkında yeni bir soru soruldu: "${text}"`,
-      link: `/araclar/${productSlug}?sekme=soru-cevap`,
+      // Slug değil id — katalog bakımında slug değişse bile link kırılmasın (bkz. /urun/[id]).
+      link: `/urun/${product.id}?sekme=soru-cevap`,
     });
   }
 

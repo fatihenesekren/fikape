@@ -39,7 +39,8 @@ export async function notifyGarageBrandFollowers(newProductId: number) {
         userId: f.user.id,
         type: "NEW_MODEL_IN_BRAND",
         message: `Garajındaki ${product.brand.name} markasına yeni bir model eklendi: ${vehicleName}`,
-        link: `/araclar/${product.slug}`,
+        // Slug değil id — katalog bakımında slug değişse bile link kırılmasın (bkz. /urun/[id]).
+        link: `/urun/${product.id}`,
       });
     }
   } catch {

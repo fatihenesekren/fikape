@@ -11,6 +11,47 @@ const size = { width: 1080, height: 1920 };
 const QUOTE_MAX_CHARS = 260;
 const MAX_CHIPS = 5;
 const MAX_PROS = 3;
+const MAX_CATALOG_IMAGE_BYTES = 3 * 1024 * 1024; // satori bunu iki kez (arka plan + küçük foto) fetch/decode ediyor
+
+// Katalog fotoğrafı bazen orijinal çözünürlükte (birkaç MB) yüklenmiş oluyor
+// (bkz. admin "URL'den yükle" akışı, boyut kontrolü yok) — satori böyle büyük
+// bir görseli fetch+decode ederken zaman aşımına uğrayıp TÜM kartın render'ını
+// başarısız kılabiliyor. Burada önden ölçüp büyükse görseli hiç kullanmıyoruz;
+// kart yine de (fotoğrafsız) üretiliyor, "broken image" ikonuyla boşa düşmüyor.
+async function safeCatalogImageUrl(url: string | null): Promise<string | null> {
+  if (!url) return null;
+  try {
+    const res = await fetch(url, { method: "HEAD", signal: AbortSignal.timeout(2500) });
+    if (!res.ok) return null;
+    const len = Number(res.headers.get("content-length"));
+    if (Number.isFinite(len) && len > MAX_CATALOG_IMAGE_BYTES) return null;
+    return url;
+  } catch {
+    return null;
+  }
+}
+
+function fallbackCard() {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          background: "#111",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 60,
+          color: "#fff",
+        }}
+      >
+        fikape
+      </div>
+    ),
+    { ...size }
+  );
+}
 
 function ScoreRow({
   label,
@@ -64,6 +105,32 @@ function ChipPill({ label, positive }: { label: string; positive: boolean }) {
   );
 }
 
+function getReview(reviewId: number) {
+  return prisma.review.findUnique({
+    where: { id: reviewId },
+    select: {
+      summaryText: true,
+      detailText: true,
+      extendedData: true,
+      scoreFiyat: true,
+      scoreKalite: true,
+      scorePerformans: true,
+      scoreOverall: true,
+      status: true,
+      user: { select: { displayName: true, trustLevel: true } },
+      product: {
+        select: {
+          slug: true,
+          year: true,
+          imageUrl: true,
+          brand: { select: { name: true } },
+          model: { select: { name: true } },
+        },
+      },
+    },
+  });
+}
+
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -71,54 +138,21 @@ export async function GET(
   const { id } = await params;
   const reviewId = parseInt(id);
 
-  const review = isNaN(reviewId)
-    ? null
-    : await prisma.review.findUnique({
-        where: { id: reviewId },
-        select: {
-          summaryText: true,
-          detailText: true,
-          extendedData: true,
-          scoreFiyat: true,
-          scoreKalite: true,
-          scorePerformans: true,
-          scoreOverall: true,
-          status: true,
-          user: { select: { displayName: true, trustLevel: true } },
-          product: {
-            select: {
-              slug: true,
-              year: true,
-              imageUrl: true,
-              brand: { select: { name: true } },
-              model: { select: { name: true } },
-            },
-          },
-        },
-      });
+  const review = isNaN(reviewId) ? null : await getReview(reviewId);
 
   if (!review || review.status !== "PUBLISHED") {
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            background: "#111",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 60,
-            color: "#fff",
-          }}
-        >
-          fikape
-        </div>
-      ),
-      { ...size }
-    );
+    return fallbackCard();
   }
 
+  try {
+    return await renderCard(review);
+  } catch (e) {
+    console.error("[kart.png]", e);
+    return fallbackCard();
+  }
+}
+
+async function renderCard(review: NonNullable<Awaited<ReturnType<typeof getReview>>>) {
   const vehicleName = `${review.product.brand.name} ${stripModelGenRange(review.product.model.name)}`;
   const yearStr = review.product.year ? ` ${review.product.year}` : "";
   const isOwner = review.user.trustLevel >= 3;
@@ -142,7 +176,8 @@ export async function GET(
     color: { dark: "#111111", light: "#ffffff" },
   });
 
-  const catalogImageUrl = review.product.imageUrl ?? (await getVehicleImageUrl(review.product.slug));
+  const rawImageUrl = review.product.imageUrl ?? (await getVehicleImageUrl(review.product.slug));
+  const catalogImageUrl = await safeCatalogImageUrl(rawImageUrl);
 
   return new ImageResponse(
     (
