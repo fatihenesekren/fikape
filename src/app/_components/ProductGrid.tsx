@@ -3,7 +3,7 @@ import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { NiyetKarti } from "./NiyetKarti";
-import { decodeQuiz, calcQuizScore, quizQ4Matches, CAT_TO_SLUG, MOTO_CC_RANGES, type ReviewExtData } from "@/lib/quiz";
+import { decodeQuiz, calcQuizScore, quizQ4Matches, CAT_TO_SLUG, MOTO_CC_RANGES, EBIKE_WATT_RANGES, type ReviewExtData } from "@/lib/quiz";
 import type { FikapeScores } from "@/lib/fikape";
 
 const CATEGORY_ICONS: Record<string, string> = {
@@ -59,6 +59,17 @@ export async function ProductGrid({
       products = products.filter((p) => {
         const cc = Number((p.attributes as Record<string, unknown>).engine_cc);
         return Number.isFinite(cc) && cc >= ccRange.min && cc <= ccRange.max;
+      });
+    }
+  }
+
+  // E-Bisiklet "Motor gücü" sert filtresi — moto'nun cc filtresiyle aynı ilke (bkz. EBIKE_WATT_RANGES).
+  if (quizAnswers?.cat === "ebike") {
+    const wattRange = EBIKE_WATT_RANGES[quizAnswers.q3];
+    if (wattRange) {
+      products = products.filter((p) => {
+        const watt = Number((p.attributes as Record<string, unknown>).motor_watt);
+        return Number.isFinite(watt) && watt >= wattRange.min && watt <= wattRange.max;
       });
     }
   }

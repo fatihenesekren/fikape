@@ -4,6 +4,7 @@ export type QuizCat =
   | "oto"
   | "moto"
   | "scooter"
+  | "ebike"
   | "karavan"
   | "kamyon"
   | "hepsi";
@@ -32,6 +33,7 @@ export const CAT_TO_SLUG: Record<QuizCat, string | undefined> = {
   oto:     "otomobil",
   moto:    "motosiklet",
   scooter: "e-scooter",
+  ebike:   "e-bisiklet",
   karavan: "karavan",
   kamyon:  "kamyonet",
   hepsi:   undefined,
@@ -41,6 +43,7 @@ export const SLUG_TO_CAT: Record<string, QuizCat> = {
   otomobil:    "oto",
   motosiklet:  "moto",
   "e-scooter": "scooter",
+  "e-bisiklet": "ebike",
   karavan:     "karavan",
   kamyonet:    "kamyon",
 };
@@ -49,6 +52,7 @@ export const CAT_LABELS: Record<QuizCat, string> = {
   oto:     "🚗 Otomobil",
   moto:    "🏍️ Motosiklet",
   scooter: "⚡ E-Scooter",
+  ebike:   "🚲 E-Bisiklet",
   karavan: "🏕️ Karavan",
   kamyon:  "🛻 Kamyonet",
   hepsi:   "🔍 Tümü",
@@ -60,6 +64,7 @@ export const ALL_CATS: { key: QuizCat; icon: string; label: string }[] = [
   { key: "scooter", icon: "⚡",  label: "E-Scooter" },
   { key: "karavan", icon: "🏕️", label: "Karavan" },
   { key: "kamyon",  icon: "🛻", label: "Kamyonet" },
+  { key: "ebike",   icon: "🚲", label: "E-Bisiklet" },
   { key: "hepsi",   icon: "🤷", label: "Bilmiyorum" },
 ];
 
@@ -221,6 +226,40 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
       ],
     },
   ],
+  ebike: [
+    {
+      question: "Günlük ortalama mesafin ne kadar?",
+      stepLabel: "Mesafe",
+      opts: [
+        { key: "kisa",       icon: "📍", label: "5–15 km",   sub: "Kısa mesafe" },
+        { key: "orta",       icon: "📍", label: "15–30 km",  sub: "Orta mesafe" },
+        { key: "uzun",       icon: "📍", label: "30 km+",    sub: "Uzun mesafe" },
+        { key: "bilmiyorum", icon: "❓", label: "Bilmiyorum", sub: "" },
+      ],
+    },
+    {
+      question: "Motor gücü beklentin?",
+      stepLabel: "Güç",
+      opts: [
+        { key: "eco",   icon: "🍃", label: "350W'a kadar", sub: "Hafif, düz yol" },
+        { key: "orta",  icon: "💪", label: "350–500W",     sub: "Dengeli" },
+        { key: "guclu", icon: "🔥", label: "500W+",        sub: "Yokuş, performans" },
+        { key: "fark",  icon: "—",  label: "Farketmez",    sub: "" },
+      ],
+    },
+    {
+      question: "Nasıl bir bisiklet arıyorsun?",
+      stepLabel: "Tip",
+      opts: [
+        { key: "sehir",    icon: "🏙️", label: "Şehir",        sub: "Günlük komüt" },
+        { key: "mtb",      icon: "⛰️", label: "MTB",           sub: "Dağ, arazi" },
+        { key: "yol",      icon: "🛣️", label: "Yol",          sub: "Hız, spor" },
+        { key: "kargo",    icon: "📦", label: "Kargo",         sub: "Yük taşıma" },
+        { key: "katlanir", icon: "🧳", label: "Katlanabilir",  sub: "Taşınabilir" },
+        { key: "fark",     icon: "—",  label: "Farketmez",     sub: "" },
+      ],
+    },
+  ],
   hepsi: [
     {
       question: "Öncelikli kullanım şeklin?",
@@ -263,7 +302,7 @@ export function decodeQuiz(param: string): QuizAnswers | null {
   const parts = param.split(",");
   if (parts.length < 3) return null;
   const [cat, q2, q3, q4] = parts;
-  const valid: QuizCat[] = ["oto", "moto", "scooter", "karavan", "kamyon", "hepsi"];
+  const valid: QuizCat[] = ["oto", "moto", "scooter", "ebike", "karavan", "kamyon", "hepsi"];
   if (!valid.includes(cat as QuizCat)) return null;
   if (!q2 || !q3) return null;
   // Eski (3 parçalı) paylaşılan URL'ler kırılmasın — q4 yoksa "farketmez" varsayılır
@@ -335,6 +374,24 @@ export const SCOOTER_WATT_RANGES: Record<string, { min: number; max: number } | 
   fark:  null,
 };
 
+// E-bisiklet "Motor gücü" sert filtresi — 2. soru (q3), MOTO_CC_RANGES ile aynı ilke.
+export const EBIKE_WATT_RANGES: Record<string, { min: number; max: number } | null> = {
+  eco:   { min: 0,   max: 350 },
+  orta:  { min: 350, max: 500 },
+  guclu: { min: 500, max: Infinity },
+  fark:  null,
+};
+
+// E-bisiklet "Tip" sert filtresi — 3. soru (q4), attrs.bike_type'a uygulanır.
+export const BIKE_TYPE_MAP: Record<string, string[] | null> = {
+  sehir:    ["sehir"],
+  mtb:      ["mtb"],
+  yol:      ["yol"],
+  kargo:    ["kargo"],
+  katlanir: ["katlanabilir"],
+  fark:     null,
+};
+
 export const KARAVAN_TYPE_MAP: Record<string, string[] | null> = {
   cekme:   ["cekme"],
   motorlu: ["motorlu"],
@@ -364,6 +421,10 @@ export function quizQ4Matches(
       if (!range) return true;
       const watt = Number(attrs.motor_watt);
       return Number.isFinite(watt) && watt >= range.min && watt <= range.max;
+    }
+    case "ebike": {
+      const allowed = BIKE_TYPE_MAP[q4];
+      return !allowed || allowed.includes(String(attrs.bike_type ?? ""));
     }
     case "karavan": {
       const allowed = KARAVAN_TYPE_MAP[q4];

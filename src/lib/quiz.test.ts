@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   encodeQuiz, decodeQuiz, calcQuizScore, quizQ4Matches,
-  MOTO_CC_RANGES, QUIZ_STEPS,
+  MOTO_CC_RANGES, EBIKE_WATT_RANGES, QUIZ_STEPS,
   type QuizAnswers, type QuizCat,
 } from "./quiz";
 
@@ -24,6 +24,18 @@ describe("MOTO_CC_RANGES", () => {
   it("689cc bir motosiklet 600cc+ aralığına girer", () => {
     const r = MOTO_CC_RANGES.buyuk!;
     expect(689 >= r.min && 689 <= r.max).toBe(true);
+  });
+});
+
+describe("EBIKE_WATT_RANGES", () => {
+  it("aralık sınırlarını doğru tanımlar", () => {
+    expect(EBIKE_WATT_RANGES.eco).toEqual({ min: 0, max: 350 });
+    expect(EBIKE_WATT_RANGES.orta).toEqual({ min: 350, max: 500 });
+    expect(EBIKE_WATT_RANGES.guclu).toEqual({ min: 500, max: Infinity });
+  });
+
+  it("farketmez için filtre koymaz (null)", () => {
+    expect(EBIKE_WATT_RANGES.fark).toBeNull();
   });
 });
 
@@ -97,6 +109,24 @@ describe("quizQ4Matches", () => {
     expect(quizQ4Matches(answers, { motor_watt: 700 }, "e-scooter")).toBe(true);
     expect(quizQ4Matches(answers, { motor_watt: 350 }, "e-scooter")).toBe(false);
     expect(quizQ4Matches(answers, {}, "e-scooter")).toBe(false);
+  });
+
+  it("ebike: motor_watt aralığa göre filtrelenir, watt verisi olmayan elenir", () => {
+    const answers: QuizAnswers = { cat: "ebike", q2: "kisa", q3: "orta", q4: "guclu" };
+    expect(quizQ4Matches(answers, { motor_watt: 700, bike_type: "mtb" }, "e-bisiklet")).toBe(true);
+    expect(quizQ4Matches(answers, {}, "e-bisiklet")).toBe(true); // q4 (tip) burada test edilen filtre değil
+  });
+
+  it("ebike: kargo seçimi sadece kargo tipini kapsar", () => {
+    const answers: QuizAnswers = { cat: "ebike", q2: "orta", q3: "fark", q4: "kargo" };
+    expect(quizQ4Matches(answers, { bike_type: "kargo" }, "e-bisiklet")).toBe(true);
+    expect(quizQ4Matches(answers, { bike_type: "sehir" }, "e-bisiklet")).toBe(false);
+  });
+
+  it("ebike: katlanır seçimi katlanabilir tipini eşler", () => {
+    const answers: QuizAnswers = { cat: "ebike", q2: "kisa", q3: "eco", q4: "katlanir" };
+    expect(quizQ4Matches(answers, { bike_type: "katlanabilir" }, "e-bisiklet")).toBe(true);
+    expect(quizQ4Matches(answers, { bike_type: "mtb" }, "e-bisiklet")).toBe(false);
   });
 
   it("karavan: kamper seçimi kamper-van tipini eşler", () => {
