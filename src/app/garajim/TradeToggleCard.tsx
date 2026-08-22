@@ -107,9 +107,9 @@ export function TradeToggleCard({
   // Kapalı bir ilan varsa: yeniden aç seçeneği sun.
   if (existingListing && !existingListing.isActive) {
     return (
-      <div className="mt-3 border border-gray-100 bg-gray-50 rounded-xl p-3">
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-xs text-gray-500">Takas ilanınız kapalı.</p>
+      <div className="mt-3 border border-gray-100 bg-gray-50 rounded-xl p-3 overflow-hidden">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <p className="text-xs text-gray-500 whitespace-nowrap">Takas ilanınız kapalı.</p>
           <button
             onClick={reopenListing}
             disabled={reopening}
@@ -182,7 +182,7 @@ export function TradeToggleCard({
   if (existingListing) {
     if (editOpen) {
       return (
-        <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3 space-y-2.5">
+        <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3 space-y-2.5 overflow-hidden">
           <div className="flex items-center justify-between">
             <p className="text-xs font-bold text-indigo-800">İlanı Düzenle</p>
             <button onClick={() => setEditOpen(false)} aria-label="Kapat" className="text-indigo-400 hover:text-indigo-700 text-xs">✕</button>
@@ -218,24 +218,28 @@ export function TradeToggleCard({
     }
 
     return (
-      <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3">
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-xs font-bold text-indigo-800">✓ Takasa açık</p>
-          <div className="flex items-center gap-2 shrink-0">
-            <Link href={`/takas/${existingListing.id}`} className="text-[11px] font-semibold text-gray-400 hover:underline">
+      <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3 overflow-hidden">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <p className="text-xs font-bold text-indigo-800 whitespace-nowrap">✓ Takasa açık</p>
+          <div className="flex items-center gap-3 shrink-0">
+            <Link href={`/takas/${existingListing.id}`} className="text-[11px] font-semibold text-gray-400 hover:underline whitespace-nowrap">
               İlanı görüntüle →
             </Link>
-            <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-indigo-600 hover:underline">
+            <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-indigo-600 hover:underline whitespace-nowrap">
               Düzenle
             </button>
           </div>
         </div>
-        <div className="mt-2 flex flex-wrap items-center gap-2">
+        {/* Native <select>, flex satırında varsayılan min-width:auto yüzünden
+            küçülmüyor ve taşıyordu (bkz. kullanıcı geri bildirimi, ekran
+            görüntüsü) — min-w-0+flex-1 ile küçülebilir yapıldı, mobilde
+            butonla aynı satırı paylaşmak yerine alt alta diziliyor. */}
+        <div className="mt-2.5 flex flex-col sm:flex-row sm:items-center gap-2">
           <select
             value={closeReason}
             onChange={(e) => setCloseReason(e.target.value as CloseReason | "")}
             aria-label="Kapatma sebebi"
-            className="text-xs rounded-lg border border-indigo-200 px-2 py-1 bg-white"
+            className="min-w-0 w-full sm:flex-1 text-xs rounded-lg border border-indigo-200 px-2 py-1.5 bg-white"
           >
             <option value="">Kapatma sebebi (opsiyonel)</option>
             <option value="TRADED">Takas oldu</option>
@@ -245,7 +249,7 @@ export function TradeToggleCard({
           <button
             onClick={closeListing}
             disabled={closing}
-            className="text-xs font-semibold text-indigo-700 hover:underline disabled:opacity-60"
+            className="shrink-0 text-xs font-semibold text-indigo-700 hover:underline disabled:opacity-60 text-left sm:text-center"
           >
             İlanı Kapat
           </button>

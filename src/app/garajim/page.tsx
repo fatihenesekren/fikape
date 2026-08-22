@@ -121,12 +121,12 @@ export default async function GarajimPage() {
 
     return (
       <div
-        className="bg-white border border-gray-100 rounded-2xl p-5 flex gap-4 items-start"
+        className="bg-white border border-gray-100 rounded-2xl p-4 sm:p-5 flex gap-3 sm:gap-4 items-start overflow-hidden"
         style={isSold ? { opacity: 0.75 } : undefined}
       >
         {/* Araç fotoğrafı */}
         <div
-          className="w-20 h-16 rounded-xl overflow-hidden shrink-0 flex items-center justify-center text-2xl"
+          className="w-16 h-16 sm:w-20 sm:h-16 rounded-xl overflow-hidden shrink-0 flex items-center justify-center text-2xl"
           style={{ background: fuelType === "EV" ? "#0d1117" : "#f3f4f6" }}
         >
           {product.imageUrl ? (
@@ -141,10 +141,21 @@ export default async function GarajimPage() {
           )}
         </div>
 
-        {/* Bilgiler */}
+        {/* Bilgiler — "Sayfaya git" artık ayrı bir üçüncü sütun değil, bu başlık
+            satırının içinde; mobilde dar ekranlarda o sütun genişliği yiyip
+            altındaki takas/sigorta kutularının taşmasına (bkz. kullanıcı
+            geri bildirimi, ekran görüntüsü) yol açıyordu. */}
         <div className="flex-1 min-w-0">
-          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">
-            {product.brand.name}
+          <div className="flex items-start justify-between gap-2">
+            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide truncate">
+              {product.brand.name}
+            </div>
+            <Link
+              href={`/araclar/${product.slug}`}
+              className="shrink-0 text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
+            >
+              Sayfaya git →
+            </Link>
           </div>
           <div className="font-bold text-gray-900">
             {stripModelGenRange(product.model.name)}
@@ -218,14 +229,6 @@ export default async function GarajimPage() {
             />
           )}
         </div>
-
-        {/* Araç sayfası linki */}
-        <Link
-          href={`/araclar/${product.slug}`}
-          className="shrink-0 text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
-        >
-          Sayfaya git →
-        </Link>
       </div>
     );
   }
