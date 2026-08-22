@@ -4,11 +4,20 @@ import {
   HEATING_TYPES,
 } from "@/lib/vehicleTypes";
 
+// showIf: alan sadece diğer alanların (ör. fuel_type) mevcut değerine göre
+// anlamlıysa gösterilir — ör. "Çıkarılabilir Batarya" benzinli bir motosiklette
+// hiç anlamlı değil, sadece elektrikli motosikletlerde sorulmalı/gösterilmeli
+// (bkz. kullanıcı geri bildirimi: benzinli XMAX 250'de bu alan yanlışlıkla
+// "Yok" olarak gösteriliyordu).
+type ShowIf = (attrs: Record<string, string>) => boolean;
+
 export type FieldDef =
-  | { key: string; label: string; type: "number"; unit?: string; placeholder?: string }
-  | { key: string; label: string; type: "select"; options: { value: string; label: string }[] }
-  | { key: string; label: string; type: "boolean" }
-  | { key: string; label: string; type: "text"; placeholder?: string };
+  | { key: string; label: string; type: "number"; unit?: string; placeholder?: string; showIf?: ShowIf }
+  | { key: string; label: string; type: "select"; options: { value: string; label: string }[]; showIf?: ShowIf }
+  | { key: string; label: string; type: "boolean"; showIf?: ShowIf }
+  | { key: string; label: string; type: "text"; placeholder?: string; showIf?: ShowIf };
+
+const isElectricMoto: ShowIf = (a) => a.fuel_type === "EV";
 
 // Kategori bazlı teknik özellik form alanları — admin öneri onay formu ve
 // ürün düzenleme formu (/admin/urunler) tarafından ortak kullanılır.
@@ -42,12 +51,12 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "tank_l",       label: "Depo",       type: "number", unit: "L" },
     { key: "weight_kg",    label: "Ağırlık",    type: "number", unit: "kg" },
     { key: "seat_height_mm", label: "Sele Yüks.", type: "number", unit: "mm" },
-    { key: "ev_range_km",  label: "Menzil (EV)", type: "number", unit: "km" },
-    { key: "battery_kwh",  label: "Batarya",     type: "number", unit: "kWh" },
-    { key: "motor_watt",   label: "Motor Gücü (EV)", type: "number", unit: "W" },
-    { key: "charge_hours", label: "Şarj Süresi", type: "number", unit: "saat" },
+    { key: "ev_range_km",  label: "Menzil (EV)", type: "number", unit: "km", showIf: isElectricMoto },
+    { key: "battery_kwh",  label: "Batarya",     type: "number", unit: "kWh", showIf: isElectricMoto },
+    { key: "motor_watt",   label: "Motor Gücü (EV)", type: "number", unit: "W", showIf: isElectricMoto },
+    { key: "charge_hours", label: "Şarj Süresi", type: "number", unit: "saat", showIf: isElectricMoto },
     { key: "max_speed_kmh", label: "Azami Hız",  type: "number", unit: "km/s" },
-    { key: "removable_battery", label: "Çıkarılabilir Batarya", type: "boolean" },
+    { key: "removable_battery", label: "Çıkarılabilir Batarya", type: "boolean", showIf: isElectricMoto },
   ],
   "e-scooter": [
     { key: "motor_watt",    label: "Motor Gücü",   type: "number", unit: "W" },

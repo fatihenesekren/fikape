@@ -72,12 +72,17 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.tank_l          ? { label: "Depo",         value: `${attrs.tank_l} L` }            : null,
       attrs.weight_kg       ? { label: "Ağırlık",      value: `${attrs.weight_kg} kg` }        : null,
       attrs.seat_height_mm  ? { label: "Sele Yüks.",   value: `${attrs.seat_height_mm} mm` }   : null,
-      attrs.ev_range_km     ? { label: "Menzil",       value: `${attrs.ev_range_km} km (WLTP)` } : null,
-      attrs.battery_kwh     ? { label: "Batarya",      value: `${attrs.battery_kwh} kWh` }     : null,
-      attrs.motor_watt      ? { label: "Motor Gücü (EV)", value: `${attrs.motor_watt} W` }      : null,
-      attrs.charge_hours    ? { label: "Şarj Süresi",  value: `~${attrs.charge_hours} saat` }  : null,
+      // EV'ye özel alanlar — benzinli bir motosiklette bu alanların (özellikle
+      // "Çıkarılabilir Batarya") gösterilmesi anlamsız; admin formunda showIf
+      // ile zaten girilmesi engellendi (specFields.ts), burada da (eski/hatalı
+      // veriye karşı savunma katmanı olarak) fuelType==="EV" şartı eklendi —
+      // bkz. kullanıcı geri bildirimi.
+      fuelType === "EV" && attrs.ev_range_km     ? { label: "Menzil",       value: `${attrs.ev_range_km} km (WLTP)` } : null,
+      fuelType === "EV" && attrs.battery_kwh     ? { label: "Batarya",      value: `${attrs.battery_kwh} kWh` }     : null,
+      fuelType === "EV" && attrs.motor_watt      ? { label: "Motor Gücü (EV)", value: `${attrs.motor_watt} W` }      : null,
+      fuelType === "EV" && attrs.charge_hours    ? { label: "Şarj Süresi",  value: `~${attrs.charge_hours} saat` }  : null,
       attrs.max_speed_kmh   ? { label: "Azami Hız",    value: `${attrs.max_speed_kmh} km/s` }  : null,
-      attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: attrs.removable_battery ? "Var" : "Yok" } : null,
+      fuelType === "EV" && attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: attrs.removable_battery ? "Var" : "Yok" } : null,
     ];
     if (categorySlug === "karavan") return [
       karavanType                ? { label: "Tip",           value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,

@@ -19,7 +19,11 @@ function toStringAttrs(attrs: Record<string, unknown>): Record<string, string> {
 }
 
 function filledCount(categorySlug: string, attrs: Record<string, unknown>): { filled: number; total: number } {
-  const fields = SPEC_FIELDS[categorySlug] ?? [];
+  const stringAttrs = toStringAttrs(attrs);
+  // showIf'i geçemeyen alanlar (ör. elektrikli olmayan motosiklette EV alanları)
+  // SpecForm'da hiç gösterilmiyor — sayaç da aynı filtreyi uygulamalı, yoksa
+  // "3/15 dolu" gibi yanıltıcı bir oran gösterir (bkz. SpecForm.tsx).
+  const fields = (SPEC_FIELDS[categorySlug] ?? []).filter((f) => !f.showIf || f.showIf(stringAttrs));
   const filled = fields.filter((f) => attrs[f.key] !== undefined && attrs[f.key] !== null && attrs[f.key] !== "").length;
   return { filled, total: fields.length };
 }

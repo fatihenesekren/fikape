@@ -122,7 +122,11 @@ export function SpecForm({
   onChange: (key: string, value: string) => void;
   confidence?: Record<string, FieldConfidence>;
 }) {
-  const fields = SPEC_FIELDS[categorySlug] ?? [];
+  // showIf'i geçemeyen alanlar (ör. elektrikli olmayan bir motosiklette
+  // "Çıkarılabilir Batarya") formda hiç gösterilmiyor — hem admin'in yanlışlıkla
+  // anlamsız bir değer girmesini engelliyor hem de "boş bırakılanlar
+  // kaydedilmez" ile tutarlı (görünmeyen alan zaten girilemez).
+  const fields = (SPEC_FIELDS[categorySlug] ?? []).filter((f) => !f.showIf || f.showIf(attrs));
   if (fields.length === 0) return null;
 
   const groups = SPEC_GROUPS[categorySlug];
