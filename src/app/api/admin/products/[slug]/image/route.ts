@@ -58,12 +58,21 @@ export async function POST(
       allowOverwrite: true,
     });
 
+    // Blob dosya adı sabit (allowOverwrite) olduğu için aynı URL'yi CDN/tarayıcı
+    // önbellekleri (Cache-Control: public, max-age=30 gün) eski baytlarla
+    // tutmaya devam ediyordu — bir görsel değiştirildiğinde katalogdaki bazı
+    // sayfalar yeni fotoğrafı, bazıları hâlâ eskisini gösteriyordu (bkz.
+    // kullanıcı geri bildirimi: "Yamaha XMAX 250'de 2 farklı resim gözüküyor").
+    // ?v= sürüm parametresi DB'ye kaydedilen URL'yi HER yüklemede tekilleştirir,
+    // böylece önbellekler asla eski görseli sunmaz — "son yüklenen" garanti olur.
+    const versionedUrl = `${blob.url}?v=${Date.now()}`;
+
     await prisma.product.update({
       where: { id: product.id },
-      data: { imageUrl: blob.url },
+      data: { imageUrl: versionedUrl },
     });
 
-    return NextResponse.json({ ok: true, imageUrl: blob.url });
+    return NextResponse.json({ ok: true, imageUrl: versionedUrl });
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     return NextResponse.json({ error: msg }, { status: 500 });
@@ -124,12 +133,21 @@ export async function PATCH(
       allowOverwrite: true,
     });
 
+    // Blob dosya adı sabit (allowOverwrite) olduğu için aynı URL'yi CDN/tarayıcı
+    // önbellekleri (Cache-Control: public, max-age=30 gün) eski baytlarla
+    // tutmaya devam ediyordu — bir görsel değiştirildiğinde katalogdaki bazı
+    // sayfalar yeni fotoğrafı, bazıları hâlâ eskisini gösteriyordu (bkz.
+    // kullanıcı geri bildirimi: "Yamaha XMAX 250'de 2 farklı resim gözüküyor").
+    // ?v= sürüm parametresi DB'ye kaydedilen URL'yi HER yüklemede tekilleştirir,
+    // böylece önbellekler asla eski görseli sunmaz — "son yüklenen" garanti olur.
+    const versionedUrl = `${blob.url}?v=${Date.now()}`;
+
     await prisma.product.update({
       where: { id: product.id },
-      data: { imageUrl: blob.url },
+      data: { imageUrl: versionedUrl },
     });
 
-    return NextResponse.json({ ok: true, imageUrl: blob.url });
+    return NextResponse.json({ ok: true, imageUrl: versionedUrl });
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     return NextResponse.json({ error: msg }, { status: 500 });

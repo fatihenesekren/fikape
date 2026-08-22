@@ -42,8 +42,10 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
       const res = await fetch(`/api/admin/products/${slug}/image`, { method: "POST", body: form });
       const data = await parseJson(res);
       if (!res.ok) throw new Error(data.error ?? `HTTP ${res.status}`);
-      const busted = `${data.imageUrl}?t=${Date.now()}`;
-      setStates((s) => ({ ...s, [slug]: { loading: false, url: busted, error: null } }));
+      // API artık her yüklemede ?v= sürüm parametresiyle tekilleştirilmiş bir URL
+      // döndürüyor (bkz. api/.../image/route.ts) — burada ayrıca cache-bust
+      // eklemeye gerek yok, DB'ye kaydedilenle admin'in gördüğü artık aynı URL.
+      setStates((s) => ({ ...s, [slug]: { loading: false, url: data.imageUrl, error: null } }));
       setUrlInputs((u) => ({ ...u, [slug]: data.imageUrl }));
     } catch (e) {
       setStates((s) => ({ ...s, [slug]: { ...s[slug], loading: false, error: String(e) } }));
