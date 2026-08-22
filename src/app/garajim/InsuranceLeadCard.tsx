@@ -15,6 +15,11 @@ export function InsuranceLeadCard({
 }) {
   const storageKey = `leadDismissed:insurance:${productId}`;
   const [dismissed, setDismissed] = useState(true); // SSR/hydration'da önce gizli, sonra localStorage kontrolü
+  // Form varsayılan kapalı — bir çip/buton olarak duruyor, tıklanınca açılıyor.
+  // Önceden her zaman tam form açıktı; kartta sürekli görünen renkli bir kutu
+  // (takas kutusuyla birlikte) görsel gürültü yaratıyordu (bkz. kullanıcı geri
+  // bildirimi — "görsel görünüm çok basit ve kötü").
+  const [expanded, setExpanded] = useState(false);
   const [fullName, setFullName] = useState(defaultFullName);
   const [phone, setPhone] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -42,6 +47,30 @@ export function InsuranceLeadCard({
   function dismiss() {
     window.localStorage.setItem(storageKey, "1");
     setDismissed(true);
+  }
+
+  if (!expanded) {
+    return (
+      <div className="mt-3 flex items-center gap-2">
+        <button
+          onClick={() => setExpanded(true)}
+          className="flex-1 flex items-center justify-between gap-2 text-xs font-semibold text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-100 rounded-xl px-3 py-2 transition-colors"
+        >
+          <span className="flex items-center gap-1.5">
+            🛡️ Sigorta teklifi ister misin?
+            <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700">Reklam</span>
+          </span>
+          <span className="text-amber-400">›</span>
+        </button>
+        <button
+          onClick={dismiss}
+          className="shrink-0 text-amber-300 hover:text-amber-600 text-xs px-1"
+          aria-label="Kapat"
+        >
+          ✕
+        </button>
+      </div>
+    );
   }
 
   async function submit() {
@@ -81,9 +110,9 @@ export function InsuranceLeadCard({
           </span>
         </div>
         <button
-          onClick={dismiss}
+          onClick={() => setExpanded(false)}
           className="text-amber-400 hover:text-amber-700 text-xs shrink-0"
-          aria-label="Kapat"
+          aria-label="Daralt"
         >
           ✕
         </button>

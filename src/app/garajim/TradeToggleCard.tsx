@@ -75,6 +75,10 @@ export function TradeToggleCard({
   const [closeReason, setCloseReason] = useState<CloseReason | "">("");
   const [closing, setClosing] = useState(false);
   const [reopening, setReopening] = useState(false);
+  // Aktif ilan özeti varsayılan kapalı — sürekli açık, renkli bir kutu yerine
+  // tıklanınca genişleyen bir çip (bkz. InsuranceLeadCard'daki aynı desen,
+  // kullanıcı geri bildirimi: kart görsel olarak çok yoğun/gürültülüydü).
+  const [summaryOpen, setSummaryOpen] = useState(false);
 
   if (!canOpenTrade) {
     return (
@@ -217,6 +221,18 @@ export function TradeToggleCard({
       );
     }
 
+    if (!summaryOpen) {
+      return (
+        <button
+          onClick={() => setSummaryOpen(true)}
+          className="mt-3 w-full flex items-center justify-between gap-2 text-xs font-semibold text-indigo-800 bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 rounded-xl px-3 py-2 transition-colors"
+        >
+          <span>🔄 Takasa açık</span>
+          <span className="text-indigo-400">›</span>
+        </button>
+      );
+    }
+
     return (
       <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3 overflow-hidden">
         <div className="flex items-center justify-between gap-2 flex-wrap">
@@ -227,6 +243,9 @@ export function TradeToggleCard({
             </Link>
             <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-indigo-600 hover:underline whitespace-nowrap">
               Düzenle
+            </button>
+            <button onClick={() => setSummaryOpen(false)} aria-label="Daralt" className="text-indigo-400 hover:text-indigo-700 text-xs">
+              ✕
             </button>
           </div>
         </div>

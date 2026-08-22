@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
-import { calcOverall } from "@/lib/fikape";
+import { FikapeScore } from "@/components/FikapeScore";
 import { formatSoldReasons } from "@/lib/soldReasons";
 import { GarageAnimation } from "./GarageAnimation";
 import { InsuranceLeadCard } from "./InsuranceLeadCard";
@@ -121,13 +121,17 @@ export default async function GarajimPage() {
 
     return (
       <div
-        className="bg-white border border-gray-100 rounded-2xl p-4 sm:p-5 flex gap-3 sm:gap-4 items-start overflow-hidden"
+        className="bg-white border border-gray-100 rounded-2xl overflow-hidden"
         style={isSold ? { opacity: 0.75 } : undefined}
       >
-        {/* Araç fotoğrafı */}
+        {/* Araç fotoğrafı — sitenin geri kalanındaki VehicleCard'la aynı görsel
+            dil (geniş banner + gradyan + yakıt rozeti): önceden küçük bir kare
+            thumbnail olarak yan sütundaydı, bu hem görsel olarak zayıf duruyordu
+            hem de mobilde bilgi sütununu sıkıştırıp taşmaya yol açıyordu
+            (bkz. kullanıcı geri bildirimi). */}
         <div
-          className="w-16 h-16 sm:w-20 sm:h-16 rounded-xl overflow-hidden shrink-0 flex items-center justify-center text-2xl"
-          style={{ background: fuelType === "EV" ? "#0d1117" : "#f3f4f6" }}
+          className="relative w-full h-36 sm:h-40 flex items-center justify-center overflow-hidden"
+          style={{ background: fuelType === "EV" ? "#0f2027" : "#1a1a2e" }}
         >
           {product.imageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -137,39 +141,36 @@ export default async function GarajimPage() {
               className="w-full h-full object-cover"
             />
           ) : (
-            "🚗"
+            <span className="text-5xl opacity-20 select-none">🚗</span>
           )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+          {fuelType && (
+            <span
+              className="absolute top-3 left-3 text-xs font-semibold px-2 py-0.5 rounded-full"
+              style={{ background: fuelColor.bg, color: fuelColor.text }}
+            >
+              {FUEL_ICONS[fuelType]} {FUEL_LABELS[fuelType] ?? fuelType}
+            </span>
+          )}
+          <Link
+            href={`/araclar/${product.slug}`}
+            className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/90 text-gray-700 hover:bg-white transition-colors"
+          >
+            Sayfaya git →
+          </Link>
         </div>
 
-        {/* Bilgiler — "Sayfaya git" artık ayrı bir üçüncü sütun değil, bu başlık
-            satırının içinde; mobilde dar ekranlarda o sütun genişliği yiyip
-            altındaki takas/sigorta kutularının taşmasına (bkz. kullanıcı
-            geri bildirimi, ekran görüntüsü) yol açıyordu. */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-2">
-            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide truncate">
-              {product.brand.name}
-            </div>
-            <Link
-              href={`/araclar/${product.slug}`}
-              className="shrink-0 text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
-            >
-              Sayfaya git →
-            </Link>
+        <div className="p-4 sm:p-5">
+          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">
+            {product.brand.name}
           </div>
-          <div className="font-bold text-gray-900">
+          <div className="font-bold text-gray-900 text-base">
             {stripModelGenRange(product.model.name)}
             {product.year && (
               <span className="text-gray-400 font-normal ml-1.5">{product.year}</span>
             )}
           </div>
           <div className="flex flex-wrap gap-1.5 mt-2">
-            <span
-              className="text-xs font-semibold px-2 py-0.5 rounded-full"
-              style={{ background: fuelColor.bg, color: fuelColor.text }}
-            >
-              {FUEL_ICONS[fuelType]} {FUEL_LABELS[fuelType] ?? fuelType}
-            </span>
             <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
               {BODY_LABELS[bodyType] ?? bodyType}
             </span>
@@ -181,19 +182,16 @@ export default async function GarajimPage() {
             )}
           </div>
 
-          {/* Yorum durumu */}
+          {/* Yorum durumu — puan varsa sitenin diğer kartlarındaki gibi
+              FI·KA·PE çipleriyle gösteriliyor, yoksa dashed CTA kutusu. */}
           {!isSold && (
             <div className="mt-3">
               {review ? (
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="text-green-600 font-semibold">
-                    ✓ Yorum yazdın — {calcOverall(review).toFixed(1)} fi·ka·pe
-                  </span>
-                </div>
+                <FikapeScore scores={review} variant="chips" />
               ) : (
                 <Link
                   href={`/yorum-yaz?arac=${product.slug}`}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-900 hover:underline"
+                  className="flex items-center justify-center h-11 rounded-xl border-2 border-dashed border-gray-100 text-sm font-semibold text-gray-500 hover:border-gray-200 hover:text-gray-800 transition-colors"
                 >
                   Yorum yaz →
                 </Link>
