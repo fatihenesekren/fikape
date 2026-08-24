@@ -98,9 +98,12 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.water_tank_l         ? { label: "Taze Su Tankı", value: `${attrs.water_tank_l} L` }       : null,
       attrs.waste_water_tank_l   ? { label: "Gri/Pis Su Tankı", value: `${attrs.waste_water_tank_l} L` } : null,
       attrs.heating_type         ? { label: "Isıtma",        value: HEATING_TYPE_LABELS[String(attrs.heating_type)] ?? capitalize(String(attrs.heating_type)) } : null,
-      attrs.engine_cc            ? { label: "Motor",         value: `${attrs.engine_cc} cc` }         : null,
-      attrs.power_hp             ? { label: "Güç",           value: `${attrs.power_hp} HP` }          : null,
-      attrs.transmission         ? { label: "Vites",         value: capitalize(String(attrs.transmission)) } : null,
+      // "Çekme" karavanın kendi motoru yok — motor/vites alanları sadece
+      // motorlu/kamper-van tiplerinde anlamlı (bkz. specFields.ts isMotorizedKaravan,
+      // aynı kural CROSS_FIELD_RULES'da da uyarı olarak vardı).
+      karavanType !== "cekme" && attrs.engine_cc    ? { label: "Motor",  value: `${attrs.engine_cc} cc` }        : null,
+      karavanType !== "cekme" && attrs.power_hp     ? { label: "Güç",    value: `${attrs.power_hp} HP` }         : null,
+      karavanType !== "cekme" && attrs.transmission ? { label: "Vites",  value: capitalize(String(attrs.transmission)) } : null,
       attrs.has_bathroom != null ? { label: "Banyo",         value: attrs.has_bathroom ? "Var" : "Yok" } : null,
       attrs.has_shower   != null ? { label: "Duş",           value: attrs.has_shower   ? "Var" : "Yok" } : null,
       attrs.has_kitchen  != null ? { label: "Mutfak",        value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
@@ -123,14 +126,18 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.segment        ? { label: "Segment",       value: `${attrs.segment} Segment` }     : null,
       attrs.drivetrain     ? { label: "Çekiş",         value: DRIVETRAIN_LABELS[String(attrs.drivetrain)] ?? String(attrs.drivetrain) } : null,
       attrs.transmission   ? { label: "Vites",         value: capitalize(String(attrs.transmission)) }      : null,
-      attrs.engine_cc      ? { label: "Motor",         value: `${attrs.engine_cc} cc` }         : null,
+      // Saf EV'de içten yanmalı motor/yakıt deposu, saf benzin/dizel/LPG'de
+      // çekiş bataryası/elektrikli menzil yok — PHEV/HYBRID'de ikisi de gerçek
+      // (bkz. specFields.ts hasCombustionEngine/hasElectricRange, BYD Seal PHEV
+      // örneği: battery_kwh=18.3 doğru veri, sadece saf yakıtlılarda anlamsız).
+      fuelType !== "EV"                                     && attrs.engine_cc   ? { label: "Motor",     value: `${attrs.engine_cc} cc` }         : null,
       attrs.power_hp       ? { label: "Güç",           value: `${attrs.power_hp} HP` }          : null,
       attrs.torque_nm      ? { label: "Tork",          value: `${attrs.torque_nm} Nm` }         : null,
       attrs.zero_to_100    ? { label: "0–100 km/s",    value: `${attrs.zero_to_100} sn` }       : null,
       attrs.top_speed_kmh  ? { label: "Azami Hız",     value: `${attrs.top_speed_kmh} km/s` }   : null,
-      attrs.ev_range_km    ? { label: "Menzil",        value: `${attrs.ev_range_km} km (WLTP)` } : null,
-      attrs.battery_kwh    ? { label: "Batarya",       value: `${attrs.battery_kwh} kWh` }      : null,
-      attrs.tank_l         ? { label: "Yakıt Dep.",    value: `${attrs.tank_l} L` }             : null,
+      (fuelType === "EV" || fuelType === "PHEV" || fuelType === "HYBRID") && attrs.ev_range_km  ? { label: "Menzil",  value: `${attrs.ev_range_km} km (WLTP)` } : null,
+      (fuelType === "EV" || fuelType === "PHEV" || fuelType === "HYBRID") && attrs.battery_kwh  ? { label: "Batarya", value: `${attrs.battery_kwh} kWh` }      : null,
+      fuelType !== "EV"                                     && attrs.tank_l      ? { label: "Yakıt Dep.", value: `${attrs.tank_l} L` }             : null,
       attrs.boot_l         ? { label: "Bagaj",         value: `${attrs.boot_l} L` }             : null,
       attrs.weight_kg      ? { label: "Ağırlık",       value: `${attrs.weight_kg} kg` }         : null,
     ];

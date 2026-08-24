@@ -19,6 +19,19 @@ export type FieldDef =
 
 const isElectricMoto: ShowIf = (a) => a.fuel_type === "EV";
 
+// Otomobil: EV/PHEV/HYBRID araçlarda gerçek bir çekiş bataryası+elektrikli
+// menzil vardır (PHEV'de bu tamamen gerçek bir spesifikasyon — bkz. BYD Seal
+// PHEV örneği, battery_kwh=18.3 doğru veri), sadece saf benzin/dizel/LPG'de
+// anlamsız. Motor hacmi+yakıt deposu ise tam tersi: sadece SAF EV'de (içten
+// yanmalı motoru hiç olmayan) anlamsız, PHEV/HYBRID'de ikisi de gerçek.
+const hasElectricRange: ShowIf     = (a) => a.fuel_type === "EV" || a.fuel_type === "PHEV" || a.fuel_type === "HYBRID";
+const hasCombustionEngine: ShowIf  = (a) => a.fuel_type !== "EV";
+
+// Karavan: motor/vites bilgisi sadece motorlu/kamper-van tiplerinde var —
+// "Çekme" karavanın kendi motoru yok (bkz. CROSS_FIELD_RULES'daki aynı kural,
+// orada sadece UYARI veriyordu, burada showIf ile alan hiç gösterilmiyor).
+const isMotorizedKaravan: ShowIf = (a) => a.karavan_type !== "cekme";
+
 // Kategori bazlı teknik özellik form alanları — admin öneri onay formu ve
 // ürün düzenleme formu (/admin/urunler) tarafından ortak kullanılır.
 export const SPEC_FIELDS: Record<string, FieldDef[]> = {
@@ -30,14 +43,14 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
       { value: "Manuel", label: "Manuel" }, { value: "Otomatik", label: "Otomatik" },
       { value: "CVT", label: "CVT" }, { value: "Yarı Otomatik", label: "Yarı Otomatik" },
     ]},
-    { key: "engine_cc",    label: "Motor",     type: "number", unit: "cc" },
+    { key: "engine_cc",    label: "Motor",     type: "number", unit: "cc", showIf: hasCombustionEngine },
     { key: "power_hp",     label: "Güç",       type: "number", unit: "HP" },
     { key: "torque_nm",    label: "Tork",      type: "number", unit: "Nm" },
     { key: "zero_to_100",  label: "0–100",     type: "number", unit: "sn", placeholder: "örn. 8.5" },
     { key: "top_speed_kmh",label: "Azami Hız", type: "number", unit: "km/s" },
-    { key: "tank_l",       label: "Yakıt Dep.",type: "number", unit: "L" },
-    { key: "battery_kwh",  label: "Batarya",   type: "number", unit: "kWh" },
-    { key: "ev_range_km",  label: "Menzil",    type: "number", unit: "km (WLTP)" },
+    { key: "tank_l",       label: "Yakıt Dep.",type: "number", unit: "L", showIf: hasCombustionEngine },
+    { key: "battery_kwh",  label: "Batarya",   type: "number", unit: "kWh", showIf: hasElectricRange },
+    { key: "ev_range_km",  label: "Menzil",    type: "number", unit: "km (WLTP)", showIf: hasElectricRange },
     { key: "boot_l",       label: "Bagaj",     type: "number", unit: "L" },
     { key: "weight_kg",    label: "Ağırlık",   type: "number", unit: "kg" },
   ],
@@ -94,9 +107,9 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "water_tank_l",   label: "Taze Su Tankı", type: "number", unit: "L" },
     { key: "waste_water_tank_l", label: "Gri/Pis Su Tankı", type: "number", unit: "L" },
     { key: "heating_type",   label: "Isıtma",       type: "select", options: HEATING_TYPES },
-    { key: "engine_cc",      label: "Motor",        type: "number", unit: "cc" },
-    { key: "power_hp",       label: "Güç",          type: "number", unit: "HP" },
-    { key: "transmission",   label: "Vites",        type: "select", options: [
+    { key: "engine_cc",      label: "Motor",        type: "number", unit: "cc", showIf: isMotorizedKaravan },
+    { key: "power_hp",       label: "Güç",          type: "number", unit: "HP", showIf: isMotorizedKaravan },
+    { key: "transmission",   label: "Vites",        type: "select", showIf: isMotorizedKaravan, options: [
       { value: "Manuel", label: "Manuel" }, { value: "Otomatik", label: "Otomatik" },
       { value: "CVT", label: "CVT" }, { value: "Yarı Otomatik", label: "Yarı Otomatik" },
     ]},
