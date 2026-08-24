@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { stripModelGenRange } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { FUEL_ICONS } from "@/lib/fuel";
 import { isDomesticBrand } from "@/lib/domesticBrands";
 import { TrFlagIcon } from "@/components/VehicleCard";
@@ -34,6 +34,7 @@ export function FavoriteRow({
   // dikey/dar fotoğraflarda (scooter, motosiklet) aracı neredeyse tamamen
   // kırpıyor — burada motosikleti de "dar araç" grubuna dahil ediyoruz.
   const isNarrowVehicle = categorySlug === "e-scooter" || categorySlug === "e-bisiklet" || categorySlug === "motosiklet";
+  const trimSplit = splitTrimName(product.trimName);
 
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-2.5 flex items-center gap-3">
@@ -66,9 +67,12 @@ export function FavoriteRow({
             {fuelType && <span>{FUEL_ICONS[fuelType]}</span>}
           </div>
           <div className="font-semibold text-gray-900 truncate text-sm">
-            {stripModelGenRange(product.model.name)}
+            {trimSplit ? trimSplit.version : stripModelGenRange(product.model.name)}
             {product.year && <span className="text-gray-400 font-normal ml-1">{product.year}</span>}
           </div>
+          {trimSplit && (
+            <div className="text-[10px] text-gray-400 truncate">{trimSplit.donanim}</div>
+          )}
         </div>
       </Link>
 

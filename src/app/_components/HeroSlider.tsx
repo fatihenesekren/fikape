@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
 import { TrFlagIcon } from "@/components/VehicleCard";
-import { stripModelGenRange } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
 
 type TopProduct = {
@@ -103,6 +103,7 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
           const isActive = active === idx + 1;
           const badge = RANK_BADGES[idx];
           const isDomestic = isDomesticBrand(p.brandName);
+          const trimSplit = splitTrimName(p.trimName);
           return (
             <div
               key={p.slug}
@@ -152,14 +153,26 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
                 {isDomestic && <TrFlagIcon />}
               </div>
               <div className="mb-3">
-                <div className="text-base font-bold text-gray-900">
-                  {stripModelGenRange(p.modelName)}
-                  {p.year && (
-                    <span className="text-gray-400 font-normal ml-1.5">· {p.year}</span>
-                  )}
-                </div>
-                {p.trimName && (
-                  <div className="text-xs text-gray-400 mt-0.5">{p.trimName}</div>
+                {trimSplit ? (
+                  <>
+                    <div className="text-base font-bold text-gray-900">
+                      {trimSplit.version}
+                      {p.year && <span className="text-gray-400 font-normal ml-1.5">· {p.year}</span>}
+                    </div>
+                    <div className="text-xs text-gray-400 mt-0.5">{trimSplit.donanim}</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="text-base font-bold text-gray-900">
+                      {stripModelGenRange(p.modelName)}
+                      {p.year && (
+                        <span className="text-gray-400 font-normal ml-1.5">· {p.year}</span>
+                      )}
+                    </div>
+                    {p.trimName && (
+                      <div className="text-xs text-gray-400 mt-0.5">{p.trimName}</div>
+                    )}
+                  </>
                 )}
               </div>
 

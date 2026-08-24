@@ -6,7 +6,7 @@ import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ComparePicker } from "./ComparePicker";
-import { stripModelGenRange } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 
 export async function generateMetadata({
   searchParams,
@@ -23,9 +23,11 @@ export async function generateMetadata({
   }
   const products = await prisma.product.findMany({
     where: { slug: { in: slugs } },
-    select: { model: { select: { name: true, brand: { select: { name: true } } } } },
+    select: { trimName: true, model: { select: { name: true, brand: { select: { name: true } } } } },
   });
-  const names = products.map((p) => `${p.model.brand.name} ${stripModelGenRange(p.model.name)}`).join(" vs ");
+  const names = products
+    .map((p) => `${p.model.brand.name} ${splitTrimName(p.trimName)?.version ?? stripModelGenRange(p.model.name)}`)
+    .join(" vs ");
   return {
     title: `${names} Karşılaştırma`,
     description: `${names} — fikape kullanıcı yorumlarına dayalı FI·KA·PE skor karşılaştırması.`,
@@ -95,7 +97,7 @@ export default async function ComparePage({
             "@type": "ListItem",
             position: i + 1,
             url: `${BASE_URL}/araclar/${p.slug}`,
-            name: `${p.model.brand.name} ${stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}`,
+            name: `${p.model.brand.name} ${splitTrimName(p.trimName)?.version ?? stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}`,
           })),
         }
       : null;
@@ -116,12 +118,13 @@ export default async function ComparePage({
           fikape kullanıcı yorumlarına dayalı, iki veya daha fazla aracı yan yana karşılaştır.
         </p>
 
-        <ComparePicker initial={products.map((p) => ({ slug: p.slug, name: `${p.model.brand.name} ${stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}` }))} />
+        <ComparePicker initial={products.map((p) => ({ slug: p.slug, name: `${p.model.brand.name} ${splitTrimName(p.trimName)?.version ?? stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}` }))} />
 
         {products.length >= 2 && (
           <div className="grid gap-5" style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}>
             {products.map((p) => {
               const agg = aggByProductId.get(p.id)!;
+              const trimSplit = splitTrimName(p.trimName);
               return (
                 <div key={p.slug} className="bg-white border border-gray-100 rounded-2xl p-4">
                   {p.imageUrl && (
@@ -131,8 +134,13 @@ export default async function ComparePage({
                   )}
                   <div className="text-xs text-gray-400 uppercase tracking-wide mb-0.5">{p.model.brand.name}</div>
                   <Link href={`/araclar/${p.slug}`} className="font-bold text-gray-900 hover:underline">
-                    {stripModelGenRange(p.model.name)}{p.year ? ` ${p.year}` : ""}
+                    {trimSplit ? trimSplit.version : stripModelGenRange(p.model.name)}{p.year ? ` ${p.year}` : ""}
                   </Link>
+                  {trimSplit ? (
+                    <p className="text-xs text-gray-400 mt-0.5">{trimSplit.donanim}</p>
+                  ) : (
+                    p.trimName && <p className="text-xs text-gray-400 mt-0.5">{p.trimName}</p>
+                  )}
 
                   {agg.count > 0 ? (
                     <div className="mt-3">

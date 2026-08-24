@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FUEL_ICONS, FUEL_LABELS } from "@/lib/fuel";
-import { stripModelGenRange } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 
 // FI (mavi) · KA (yeşil) · PE (kahve) — sayfanın altındaki FI·KA·PE açıklama
 // bloğuyla aynı "açık ton wash" dili: 50 seviyesi arka plan + kendi renginin
@@ -39,6 +39,7 @@ export function TrendVehicleCard({
   colorIndex: number;
 }) {
   const { bg, mid, dark, chip } = CARD_COLORS[colorIndex % CARD_COLORS.length];
+  const trimSplit = splitTrimName(trimName);
 
   return (
     <Link
@@ -60,14 +61,14 @@ export function TrendVehicleCard({
             {brandName}
           </div>
           <div className="text-sm font-semibold truncate" style={{ color: dark }}>
-            {stripModelGenRange(modelName)}
+            {trimSplit ? trimSplit.version : stripModelGenRange(modelName)}
             {year && <span className="font-normal ml-1" style={{ color: mid }}>{year}</span>}
           </div>
         </div>
       </div>
 
       <div className="text-xs truncate mt-1.5 mb-2.5 h-4" style={{ color: mid }}>
-        {trimName ?? " "}
+        {(trimSplit ? trimSplit.donanim : trimName) ?? " "}
       </div>
 
       <div className="flex flex-wrap gap-1.5">

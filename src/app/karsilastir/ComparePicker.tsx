@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { stripModelGenRange } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 
 interface SearchResult {
   slug: string;
@@ -10,6 +10,7 @@ interface SearchResult {
   year: number | null;
   modelName: string;
   brandName: string;
+  trimName: string | null;
 }
 
 export function ComparePicker({ initial }: { initial: { slug: string; name: string }[] }) {
@@ -45,7 +46,7 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
 
   function add(r: SearchResult) {
     if (selected.some((s) => s.slug === r.slug) || selected.length >= 4) return;
-    const name = `${r.brandName} ${stripModelGenRange(r.modelName)}${r.year ? ` ${r.year}` : ""}`;
+    const name = `${r.brandName} ${splitTrimName(r.trimName)?.version ?? stripModelGenRange(r.modelName)}${r.year ? ` ${r.year}` : ""}`;
     setSelected([...selected, { slug: r.slug, name }]);
     setQuery("");
     setResults([]);
@@ -98,7 +99,7 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
                   className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 disabled:opacity-40"
                   disabled={selected.some((s) => s.slug === r.slug)}
                 >
-                  {r.brandName} {r.modelName}{r.year ? ` ${r.year}` : ""}
+                  {r.brandName} {splitTrimName(r.trimName)?.version ?? r.modelName}{r.year ? ` ${r.year}` : ""}
                 </button>
               ))}
             </div>
