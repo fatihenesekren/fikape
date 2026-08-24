@@ -36,7 +36,7 @@ import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
   BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, toLabelMap,
 } from "@/lib/vehicleTypes";
-import { stripModelGenRange } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { buildSpecList } from "@/lib/buildSpecList";
 
 export async function generateMetadata({
@@ -150,6 +150,7 @@ export default async function VehicleDetailPage({
   const bikeType = attrs.bike_type ? String(attrs.bike_type) : null;
   const pedelecClass = attrs.pedelec_class ? String(attrs.pedelec_class) : null;
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
+  const trimSplit = splitTrimName(product.trimName);
 
   const userId = session?.user?.id ? Number(session.user.id) : null;
   const [userGarageEntry, garageCount, currentUser, existingSaleLeads, favoriteEntry, activeTradeCount] = await Promise.all([
@@ -621,12 +622,27 @@ export default async function VehicleDetailPage({
               >
                 {product.brand.name}
               </Link>
-              <h1 className="text-3xl font-black text-white tracking-tight">
-                {stripModelGenRange(product.model.name)}
-                {product.year && <span className="text-gray-400 font-light ml-2">{product.year}</span>}
-              </h1>
-              {product.trimName && (
-                <p className="text-sm text-gray-400 mt-1">{product.trimName}</p>
+              {/* trimName "versiyon – donanım" kalıbındaysa (ör. "E 220d – Exclusive")
+                  versiyon başlıkta, model adı hiç gösterilmiyor — bkz. kullanıcı
+                  geri bildirimi, VehicleCard'daki aynı düzenle tutarlı. */}
+              {trimSplit ? (
+                <>
+                  <h1 className="text-3xl font-black text-white tracking-tight">
+                    {trimSplit.version}
+                    {product.year && <span className="text-gray-400 font-light ml-2">{product.year}</span>}
+                  </h1>
+                  <p className="text-sm text-gray-400 mt-1">{trimSplit.donanim}</p>
+                </>
+              ) : (
+                <>
+                  <h1 className="text-3xl font-black text-white tracking-tight">
+                    {stripModelGenRange(product.model.name)}
+                    {product.year && <span className="text-gray-400 font-light ml-2">{product.year}</span>}
+                  </h1>
+                  {product.trimName && (
+                    <p className="text-sm text-gray-400 mt-1">{product.trimName}</p>
+                  )}
+                </>
               )}
               <div className="flex flex-wrap gap-2 mt-3">
                 {fuelType && (

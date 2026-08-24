@@ -26,3 +26,21 @@ const GEN_RANGE_ANYWHERE_RE = new RegExp(`\\s*\\(\\d{4}\\s*${DASH}\\s*\\d{4}?\\)
 export function stripGenRangeAnywhere(text: string): string {
   return text.replace(GEN_RANGE_ANYWHERE_RE, "").replace(/\s{2,}/g, " ").trim();
 }
+
+// trimName alanı katalog verisinde çoğunlukla "{versiyon} – {donanım}" kalıbında
+// tutuluyor (örn. "E 220d – Exclusive", "2.0 TDI – Style") — ama bu kalıp sadece
+// otomobil (ve kısmen motosiklet) kataloğunda tutarlı; karavan/kamyonet/e-scooter/
+// e-bisiklette trimName tek parça ("Raptor", "Athlete" gibi), tire içermiyor.
+// Kart/başlık bileşenleri "versiyon" ile "donanım"ı ayrı ayrı vurgulamak istediğinde
+// (versiyon başlıkta, donanım alt satırda, model adı hiç gösterilmeden — bkz.
+// kullanıcı geri bildirimi: "E Serisi W213" yerine "E 220d" öne çıksın) bu yardımcı
+// kullanılır; tire yoksa null döner, çağıran taraf eski (model adı büyük) düzene
+// düşer — veri şekli olmayan kategorilerde zorla bölme yapılmaz.
+const TRIM_SPLIT_RE = new RegExp(`^(.+?)\\s${DASH}\\s(.+)$`);
+
+export function splitTrimName(trimName: string | null | undefined): { version: string; donanim: string } | null {
+  if (!trimName) return null;
+  const m = trimName.match(TRIM_SPLIT_RE);
+  if (!m) return null;
+  return { version: m[1].trim(), donanim: m[2].trim() };
+}

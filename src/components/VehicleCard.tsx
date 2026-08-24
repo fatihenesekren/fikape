@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
-import { stripModelGenRange } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
 import { FavoriteButton } from "@/components/FavoriteButton";
 
@@ -97,6 +97,7 @@ export function VehicleCard({
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
   const cleanModelName = stripModelGenRange(modelName);
   const isDomestic = isDomesticBrand(brandName);
+  const trimSplit = splitTrimName(trimName);
 
   return (
     <Link
@@ -190,12 +191,29 @@ export function VehicleCard({
             <FavoriteButton productId={id} initialFavorited={initialFavorited} isLoggedIn={isLoggedIn} variant="card" />
           )}
         </div>
-        <div className="text-base font-bold text-gray-900 leading-tight">
-          {year && <span className="text-gray-400 font-medium mr-1">{year}</span>}
-          {cleanModelName}
-        </div>
-        {trimName && (
-          <div className="text-sm text-gray-600 font-medium mt-0.5">{trimName}</div>
+        {/* trimName "versiyon – donanım" kalıbındaysa (ör. "E 220d – Exclusive")
+            versiyon başlıkta öne çıkıyor, model adı (ör. "E Serisi W213") hiç
+            gösterilmiyor — bkz. kullanıcı geri bildirimi. Bu kalıpta olmayan
+            kategorilerde (karavan/kamyonet/e-scooter/e-bisiklet gibi) eski
+            düzen (model adı büyük) korunuyor. */}
+        {trimSplit ? (
+          <>
+            <div className="text-base font-bold text-gray-900 leading-tight">
+              {trimSplit.version}
+              {year && <span className="text-gray-400 font-normal ml-1.5">{year}</span>}
+            </div>
+            <div className="text-sm text-gray-600 font-medium mt-0.5">{trimSplit.donanim}</div>
+          </>
+        ) : (
+          <>
+            <div className="text-base font-bold text-gray-900 leading-tight">
+              {year && <span className="text-gray-400 font-medium mr-1">{year}</span>}
+              {cleanModelName}
+            </div>
+            {trimName && (
+              <div className="text-sm text-gray-600 font-medium mt-0.5">{trimName}</div>
+            )}
+          </>
         )}
         <div className="text-xs text-gray-400 mt-0.5 mb-3">{typeLabel}</div>
 
