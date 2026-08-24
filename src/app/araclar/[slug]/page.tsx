@@ -54,7 +54,14 @@ export async function generateMetadata({
   const attrs = product.attributes as Record<string, unknown>;
   const fuelType = String(attrs.fuel_type ?? "");
   const fuelLabel = FUEL_LABELS[fuelType] ?? "";
-  const name = `${product.brand.name} ${stripModelGenRange(product.model.name)}${product.year ? ` ${product.year}` : ""}`;
+  // H1'de artık (varsa) trimName'in versiyon kısmı öne çıkıyor, model adı hiç
+  // gösterilmiyor — sayfa başlığı/OG/arama sonucu snippet'i görünen içerikle
+  // çelişmesin diye burada da aynı kaynak kullanılıyor (bkz. kullanıcı geri
+  // bildirimi: "geçmişe dönük ... herhangi bir yerde soruna sebep olan bir
+  // durum varsa düzeltelim").
+  const trimSplit = splitTrimName(product.trimName);
+  const displayName = trimSplit ? trimSplit.version : stripModelGenRange(product.model.name);
+  const name = `${product.brand.name} ${displayName}${product.year ? ` ${product.year}` : ""}`;
   const title = `${name} Kullanıcı Yorumları`;
   const description = `${name}${fuelLabel ? ` (${fuelLabel})` : ""} hakkında gerçek kullanıcı yorumları ve fi·ka·pe puanları. Fiyat, kalite ve performans değerlendirmeleri.`;
 
@@ -489,7 +496,8 @@ export default async function VehicleDetailPage({
   );
 
   // ── JSON-LD: Product + AggregateRating + Review (sadece yorumu varsa) ──
-  const productName = `${product.brand.name} ${stripModelGenRange(product.model.name)}${product.year ? ` ${product.year}` : ""}`;
+  // H1'le aynı kaynak (trimSplit) — arama motoru/şema verisi görünen başlıkla çelişmesin.
+  const productName = `${product.brand.name} ${trimSplit ? trimSplit.version : stripModelGenRange(product.model.name)}${product.year ? ` ${product.year}` : ""}`;
   const productSchema = reviewCount > 0 ? {
     "@context": "https://schema.org",
     "@type": "Product",
