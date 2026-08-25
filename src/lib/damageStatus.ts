@@ -71,7 +71,7 @@ export function formatTl(amount: number): string {
   return `${amount.toLocaleString("tr-TR")} TL`;
 }
 
-const MONTH_LABELS = [
+export const MONTH_LABELS = [
   "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
   "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık",
 ];

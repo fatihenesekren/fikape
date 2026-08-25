@@ -3,7 +3,7 @@
 import {
   DAMAGE_STATUS_LABEL, DAMAGE_STATUS_COLOR, type DamageStatus,
   MECHANICAL_CONDITIONS, MECHANICAL_CONDITION_LABEL, MECHANICAL_CONDITION_COLOR, type MechanicalCondition,
-  MECHANICAL_COMPONENTS, type TramerRecordInput, formatTl,
+  MECHANICAL_COMPONENTS, type TramerRecordInput, formatTl, MONTH_LABELS,
 } from "@/lib/damageStatus";
 
 const DAMAGE_STATUSES: DamageStatus[] = ["NONE", "DAMAGED", "HEAVY"];
@@ -181,7 +181,7 @@ export function DamageStatusForm({
                 className="text-xs rounded-lg border border-gray-200 px-1.5 py-1.5 bg-white"
               >
                 {MONTHS.map((m) => (
-                  <option key={m} value={m}>{m}</option>
+                  <option key={m} value={m}>{MONTH_LABELS[m - 1]}</option>
                 ))}
               </select>
               <select
