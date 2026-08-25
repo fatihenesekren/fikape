@@ -37,6 +37,7 @@ export async function POST(req: Request) {
     damageStatus, engineCondition, engineNote,
     transmissionCondition, transmissionNote,
     runningGearCondition, runningGearNote, tramerRecords,
+    wantLocationScope, wantDamageStatuses,
   } = parsed.data;
   const userProductId = Number(parsed.data.userProductId);
   const wantCategoryId = parsed.data.wantCategoryId != null ? Number(parsed.data.wantCategoryId) : null;
@@ -93,6 +94,8 @@ export async function POST(req: Request) {
         wantCategoryId,
         wantBrandId,
         wantAnything: wantAnything ?? false,
+        ...(wantLocationScope !== undefined ? { wantLocationScope } : {}),
+        ...(wantDamageStatuses !== undefined ? { wantDamageStatuses } : {}),
         note: note ?? null,
         description: description ?? null,
         paymentIntent,

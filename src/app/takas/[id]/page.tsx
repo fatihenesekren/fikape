@@ -16,6 +16,7 @@ import {
   MECHANICAL_CONDITION_LABEL, MECHANICAL_CONDITION_COLOR, MECHANICAL_COMPONENTS,
   formatTl, formatMonthYear, type DamageStatus, type MechanicalCondition,
 } from "@/lib/damageStatus";
+import { LOCATION_SCOPE_LABEL } from "@/lib/tradeExpectations";
 import { TradeMessageForm } from "./TradeMessageForm";
 import { ShareButton } from "./ShareButton";
 import { ListingReportButton } from "./ListingReportButton";
@@ -390,6 +391,13 @@ export default async function TakasDetayPage({
                 {!listing.wantCategory && !listing.wantBrand && <p>Belirtilmemiş</p>}
               </div>
             )}
+            <p>Konum: {LOCATION_SCOPE_LABEL[listing.wantLocationScope as keyof typeof LOCATION_SCOPE_LABEL]}</p>
+            <p>
+              Kabul Edilen Hasar Durumu:{" "}
+              {listing.wantDamageStatuses.length > 0
+                ? listing.wantDamageStatuses.map((s) => DAMAGE_STATUS_LABEL[s as DamageStatus]).join(", ")
+                : "Tümü"}
+            </p>
             {listing.note && <p className="mt-1.5 text-indigo-700">&quot;{listing.note}&quot;</p>}
           </div>
 

@@ -57,6 +57,7 @@ export default async function GarajimPage() {
         id: true, userProductId: true, isActive: true, city: true,
         paymentIntent: true, note: true, description: true, wantAnything: true,
         wantCategoryId: true, wantBrandId: true,
+        wantLocationScope: true, wantDamageStatuses: true,
         partConditions: { select: { partKey: true, condition: true } },
         damageStatus: true,
         engineCondition: true, engineNote: true,

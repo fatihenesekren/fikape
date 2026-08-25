@@ -130,6 +130,14 @@ const damageStatusFields = {
   tramerRecords:         tramerRecordsSchema,
 };
 
+// Aradığım araç nerede olmalı / hangi hasar durumlarını kabul ederim —
+// ikisi de opsiyonel, boş bırakılırsa Prisma @default'u (Türkiye geneli /
+// tüm hasar durumları = kısıtlama yok) devreye girer.
+const wantExpectationFields = {
+  wantLocationScope:  z.enum(["SAME_CITY", "SAME_REGION", "NATIONWIDE"]).optional(),
+  wantDamageStatuses: z.array(z.enum(["NONE", "DAMAGED", "HEAVY"])).max(3).optional(),
+};
+
 export const tradeListingCreateSchema = z.object({
   userProductId:  z.union([z.number(), z.string()]),
   wantCategoryId: z.union([z.number(), z.string()]).optional().nullable(),
@@ -142,6 +150,7 @@ export const tradeListingCreateSchema = z.object({
   consentGiven:   z.literal(true, { error: "İlanı açmak için KVKK onay kutusunu işaretlemelisiniz." }),
   partConditions: partConditionsSchema,
   ...damageStatusFields,
+  ...wantExpectationFields,
 });
 
 const salePriceRange = z.number().int()
@@ -181,6 +190,7 @@ export const tradeListingUpdateSchema = z.object({
   city:           z.enum(TURKISH_CITIES).optional(),
   partConditions: partConditionsSchema,
   ...damageStatusFields,
+  ...wantExpectationFields,
 });
 
 export const messageCreateSchema = z.object({

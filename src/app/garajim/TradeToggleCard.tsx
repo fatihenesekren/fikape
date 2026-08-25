@@ -6,11 +6,14 @@ import Link from "next/link";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { PART_CONDITION_CATEGORIES, type PartCondition } from "@/lib/carParts";
 import type { DamageStatus, MechanicalCondition, TramerRecordInput } from "@/lib/damageStatus";
+import { DAMAGE_STATUS_LABEL } from "@/lib/damageStatus";
+import { LOCATION_SCOPES, LOCATION_SCOPE_LABEL, type LocationScope } from "@/lib/tradeExpectations";
 import { PartConditionForm } from "./PartConditionForm";
 import { DamageStatusForm, EMPTY_DAMAGE_STATUS, type DamageStatusValue } from "./DamageStatusForm";
 
 type PaymentIntent = "SWAP_ONLY" | "PAYS_EXTRA" | "WANTS_EXTRA";
 type CloseReason = "TRADED" | "GAVE_UP" | "FOUND_ELSEWHERE";
+const ACCEPTABLE_DAMAGE_STATUSES: DamageStatus[] = ["NONE", "DAMAGED", "HEAVY"];
 
 interface ExistingListing {
   id: number;
@@ -22,6 +25,8 @@ interface ExistingListing {
   wantAnything: boolean;
   wantCategoryId: number | null;
   wantBrandId: number | null;
+  wantLocationScope: LocationScope;
+  wantDamageStatuses: DamageStatus[];
   partConditions: Record<string, PartCondition>;
   damageStatus: DamageStatus | null;
   engineCondition: MechanicalCondition | null;
@@ -96,6 +101,12 @@ export function TradeToggleCard({
   const [wantAnything, setWantAnything] = useState(existingListing?.wantAnything ?? true);
   const [wantCategoryId, setWantCategoryId] = useState(existingListing?.wantCategoryId?.toString() ?? "");
   const [wantBrandId, setWantBrandId] = useState(existingListing?.wantBrandId?.toString() ?? "");
+  const [wantLocationScope, setWantLocationScope] = useState<LocationScope>(
+    existingListing?.wantLocationScope ?? "NATIONWIDE"
+  );
+  const [wantDamageStatuses, setWantDamageStatuses] = useState<DamageStatus[]>(
+    existingListing?.wantDamageStatuses ?? []
+  );
   const availableBrands = wantCategoryId
     ? brands.filter((b) => categoryBrandMap[Number(wantCategoryId)]?.includes(b.id))
     : brands;
@@ -207,6 +218,8 @@ export function TradeToggleCard({
           wantAnything,
           wantCategoryId: wantAnything ? null : wantCategoryId || null,
           wantBrandId: wantAnything ? null : wantBrandId || null,
+          wantLocationScope,
+          wantDamageStatuses,
           paymentIntent,
           note: note.trim() || null,
           description: description.trim() || null,
@@ -240,6 +253,8 @@ export function TradeToggleCard({
             wantAnything={wantAnything} setWantAnything={setWantAnything}
             wantCategoryId={wantCategoryId} setWantCategoryId={setWantCategoryId}
             wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
+            wantLocationScope={wantLocationScope} setWantLocationScope={setWantLocationScope}
+            wantDamageStatuses={wantDamageStatuses} setWantDamageStatuses={setWantDamageStatuses}
             availableBrands={availableBrands} categories={categories}
             paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
             note={note} setNote={setNote}
@@ -361,6 +376,8 @@ export function TradeToggleCard({
           wantAnything,
           wantCategoryId: wantAnything ? null : wantCategoryId || null,
           wantBrandId: wantAnything ? null : wantBrandId || null,
+          wantLocationScope,
+          wantDamageStatuses,
           paymentIntent,
           note: note.trim() || null,
           description: description.trim() || null,
@@ -394,6 +411,8 @@ export function TradeToggleCard({
         wantAnything={wantAnything} setWantAnything={setWantAnything}
         wantCategoryId={wantCategoryId} setWantCategoryId={setWantCategoryId}
         wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
+        wantLocationScope={wantLocationScope} setWantLocationScope={setWantLocationScope}
+        wantDamageStatuses={wantDamageStatuses} setWantDamageStatuses={setWantDamageStatuses}
         availableBrands={availableBrands} categories={categories}
         paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
         note={note} setNote={setNote}
@@ -451,6 +470,8 @@ function TradeFormFields({
   wantAnything, setWantAnything,
   wantCategoryId, setWantCategoryId,
   wantBrandId, setWantBrandId,
+  wantLocationScope, setWantLocationScope,
+  wantDamageStatuses, setWantDamageStatuses,
   availableBrands, categories,
   paymentIntent, setPaymentIntent,
   note, setNote,
@@ -460,12 +481,22 @@ function TradeFormFields({
   wantAnything: boolean; setWantAnything: (v: boolean) => void;
   wantCategoryId: string; setWantCategoryId: (v: string) => void;
   wantBrandId: string; setWantBrandId: (v: string) => void;
+  wantLocationScope: LocationScope; setWantLocationScope: (v: LocationScope) => void;
+  wantDamageStatuses: DamageStatus[]; setWantDamageStatuses: (v: DamageStatus[]) => void;
   availableBrands: { id: number; name: string }[];
   categories: { id: number; name: string }[];
   paymentIntent: PaymentIntent; setPaymentIntent: (v: PaymentIntent) => void;
   note: string; setNote: (v: string) => void;
   description: string; setDescription: (v: string) => void;
 }) {
+  function toggleDamageStatus(status: DamageStatus) {
+    setWantDamageStatuses(
+      wantDamageStatuses.includes(status)
+        ? wantDamageStatuses.filter((s) => s !== status)
+        : [...wantDamageStatuses, status]
+    );
+  }
+
   return (
     <>
       <select
@@ -512,6 +543,56 @@ function TradeFormFields({
           </select>
         </div>
       )}
+
+      {/* Aradığı aracın nerede olmasını beklediği — önceden ilan sadece KENDİ
+          aracının (city alanı) nerede olduğunu söylüyordu, karşı taraftan
+          beklenen konumu hiç belirtemiyordu (bkz. kullanıcı geri bildirimi).
+          Boş bırakılırsa varsayılan "Türkiye Genelinde" (Prisma @default). */}
+      <fieldset className="text-xs text-indigo-800">
+        <legend className="font-semibold mb-1">Aradığım araç nerede olsun?</legend>
+        <div className="flex flex-wrap gap-1.5">
+          {LOCATION_SCOPES.map((s) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => setWantLocationScope(s)}
+              className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+              style={
+                wantLocationScope === s
+                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                  : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+              }
+            >
+              {LOCATION_SCOPE_LABEL[s]}
+            </button>
+          ))}
+        </div>
+      </fieldset>
+
+      {/* Aradığı aracın kabul edilebilir hasar durumları — çoklu seçim, hiçbiri
+          seçilmezse "tüm hasar durumları" anlamına gelir (Prisma @default([])). */}
+      <fieldset className="text-xs text-indigo-800">
+        <legend className="font-semibold mb-1">
+          Kabul edebileceğim hasar durumu <span className="font-normal text-indigo-400">(boş = tümü)</span>
+        </legend>
+        <div className="flex flex-wrap gap-1.5">
+          {ACCEPTABLE_DAMAGE_STATUSES.map((s) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => toggleDamageStatus(s)}
+              className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+              style={
+                wantDamageStatuses.includes(s)
+                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                  : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+              }
+            >
+              {DAMAGE_STATUS_LABEL[s]}
+            </button>
+          ))}
+        </div>
+      </fieldset>
 
       <fieldset className="text-xs text-indigo-800">
         <legend className="font-semibold mb-1">Ödeme niyeti</legend>

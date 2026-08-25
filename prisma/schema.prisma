@@ -874,6 +874,15 @@ model TradeListing {
   wantBrandId     Int?
   wantBrand       Brand?    @relation(fields: [wantBrandId], references: [id])
   wantAnything    Boolean  @default(false)
+  // İlan sahibinin karşı taraftan beklediği konum kapsamı + kabul edebileceği
+  // hasar durumları — kullanıcı geri bildirimi: ilan sadece KENDİ aracının
+  // (city alanı) nerede olduğunu söylüyordu, aradığı aracın nerede/nasıl
+  // olmasını istediğini hiç belirtemiyordu. İkisi de opsiyonel; boş/varsayılan
+  // durumda "hiç kısıtlama yok" anlamına gelir (Türkiye geneli / tüm hasar
+  // durumları) — @default değerleri bunun için var, formda boş bırakılırsa
+  // otomatik bu değere düşer.
+  wantLocationScope  TradeLocationScope   @default(NATIONWIDE)
+  wantDamageStatuses TradeDamageStatus[]  @default([])
   note            String?  @db.VarChar(300)
   // "note" kısa bir takas beklentisi notu ("sadece dizel arıyorum" gibi) — bu
   // ayrı bir alan: aracın kendisi hakkında serbest, uzun açıklama (km, bakım
@@ -1116,6 +1125,16 @@ enum TradeDamageStatus {
   NONE    // Hasarsız
   DAMAGED // Hasarlı
   HEAVY   // Ağır Hasarlı
+}
+
+// İlan sahibinin, takas edeceği aracın ne kadar uzakta olabileceğine dair
+// beklentisi — otomatik bir mesafe/bölge hesaplaması yapılmıyor, sadece
+// diğer kullanıcıya gösterilen bir beklenti etiketi (city alanındaki gibi
+// gerçek bir konum değil, bir tercih).
+enum TradeLocationScope {
+  SAME_CITY   // Aynı Şehirde
+  SAME_REGION // Aynı Bölgede
+  NATIONWIDE  // Türkiye Genelinde
 }
 
 // Motor/Şanzıman/Yürüyen Aksam için ortak 5 durumlu model — kullanıcı geri

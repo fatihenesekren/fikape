@@ -79,6 +79,8 @@ export async function PATCH(
         ...(data.wantAnything !== undefined ? { wantAnything: data.wantAnything } : {}),
         wantCategoryId: data.wantAnything ? null : wantCategoryId,
         wantBrandId: data.wantAnything ? null : wantBrandId,
+        ...(data.wantLocationScope !== undefined ? { wantLocationScope: data.wantLocationScope } : {}),
+        ...(data.wantDamageStatuses !== undefined ? { wantDamageStatuses: data.wantDamageStatuses } : {}),
         note: data.note ?? null,
         description: data.description ?? null,
         damageStatus: data.damageStatus ?? null,
