@@ -344,9 +344,23 @@ export default async function TakasDetayPage({
               seed={String(listing.user.id)}
               size={36}
             />
-            <span className="text-sm font-semibold text-gray-900 truncate">
-              {listing.user.displayName ?? "Kullanıcı"}
-            </span>
+            {/* "Doğrulanmış kullanıcı" rozeti, isim doğrudan altına taşındı —
+                önceden sayfanın alt kısmındaki güven sinyalleri satırındaydı,
+                kullanıcı hangi kişiye ait olduğunun isimle birlikte hemen
+                görünmesinin daha doğru olacağını belirtti (bkz. ekran görüntüsü). */}
+            <div className="min-w-0">
+              <span className="text-sm font-semibold text-gray-900 truncate block">
+                {listing.user.displayName ?? "Kullanıcı"}
+              </span>
+              {listing.user.trustLevel >= 3 && (
+                <span
+                  className="text-[11px] text-gray-400"
+                  title="Bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez."
+                >
+                  ✓ Doğrulanmış kullanıcı
+                </span>
+              )}
+            </div>
           </div>
           <span className="text-[11px] text-gray-400 shrink-0">{timeAgoTr(listing.createdAt)}</span>
         </div>
@@ -400,20 +414,13 @@ export default async function TakasDetayPage({
             {listing.note && <p className="mt-1.5 text-indigo-700">&quot;{listing.note}&quot;</p>}
           </div>
 
-          {/* Güven sinyalleri (doğrulanmış rozet + değerlendirme) tek satırda
-              toplandı — önceden 2 ayrı ince gri satır, gözü gereksiz yoruyordu. */}
-          {(listing.user.trustLevel >= 3 || ratingAgg._count > 0) && (
+          {/* Doğrulanmış rozeti üst başlık satırına (isim altına) taşındı —
+              burada sadece değerlendirme özeti kaldı. */}
+          {ratingAgg._count > 0 && (
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 text-[11px] text-gray-400">
-              {listing.user.trustLevel >= 3 && (
-                <span title="Bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez.">
-                  ✓ Doğrulanmış kullanıcı
-                </span>
-              )}
-              {ratingAgg._count > 0 && (
-                <span className="text-amber-600">
-                  ★ {ratingAgg._avg.score?.toFixed(1)} · {ratingAgg._count} değerlendirme
-                </span>
-              )}
+              <span className="text-amber-600">
+                ★ {ratingAgg._avg.score?.toFixed(1)} · {ratingAgg._count} değerlendirme
+              </span>
             </div>
           )}
 
