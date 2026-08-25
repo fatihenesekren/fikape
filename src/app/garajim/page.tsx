@@ -139,9 +139,15 @@ export default async function GarajimPage() {
             genişlikte olduğu için (max-w-3xl, ~700px'e kadar) sabit yükseklik
             masaüstünde aşırı geniş/kısa bir kutu (≈4.6:1) yaratıp fotoğrafın
             object-cover ile aşırı kırpılmasına yol açıyordu; oran kullanınca
-            genişlik değişse de kırpma her ekranda aynı kalıyor. */}
+            genişlik değişse de kırpma her ekranda aynı kalıyor (mobil dahil,
+            aspect-ratio ekran boyutundan bağımsız). Oran 12/5 (2.4:1)'den
+            2/1'e düşürüldü — kaynak fotoğraf kare/dara yakınsa (ör. "Geçmiş
+            Araçlarım"daki bazı eski fotoğraflar) 2.4:1 gibi aşırı geniş bir
+            kutuya sığdırılırken object-cover fazla yakınlaşıp kırpıyordu;
+            2:1 sitenin geri kalanındaki VehicleCard'ın oranına (~1.4-2:1)
+            da daha yakın, kırpma her fotoğrafta daha ölçülü. */}
         <div
-          className="relative w-full aspect-[12/5] flex items-center justify-center overflow-hidden"
+          className="relative w-full aspect-[2/1] flex items-center justify-center overflow-hidden"
           style={{ background: fuelType === "EV" ? "#0f2027" : "#1a1a2e" }}
         >
           {product.imageUrl ? (

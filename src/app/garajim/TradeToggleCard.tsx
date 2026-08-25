@@ -570,12 +570,25 @@ function TradeFormFields({
       </fieldset>
 
       {/* Aradığı aracın kabul edilebilir hasar durumları — çoklu seçim, hiçbiri
-          seçilmezse "tüm hasar durumları" anlamına gelir (Prisma @default([])). */}
+          seçilmezse (ya da "Farketmez" seçilirse) "tüm hasar durumları"
+          anlamına gelir (Prisma @default([])). "Farketmez" boş diziyi temsil
+          eder; belirli bir durum seçilince dizi doluyor ve "Farketmez"
+          otomatik olarak pasif görünür. */}
       <fieldset className="text-xs text-indigo-800">
-        <legend className="font-semibold mb-1">
-          Kabul edebileceğim hasar durumu <span className="font-normal text-indigo-400">(boş = tümü)</span>
-        </legend>
+        <legend className="font-semibold mb-1">Kabul edebileceğim hasar durumu</legend>
         <div className="flex flex-wrap gap-1.5">
+          <button
+            type="button"
+            onClick={() => setWantDamageStatuses([])}
+            className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+            style={
+              wantDamageStatuses.length === 0
+                ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+            }
+          >
+            Farketmez
+          </button>
           {ACCEPTABLE_DAMAGE_STATUSES.map((s) => (
             <button
               key={s}
