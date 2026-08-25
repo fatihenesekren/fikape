@@ -395,7 +395,7 @@ export default async function TakasDetayPage({
               Kabul Edilen Hasar Durumu:{" "}
               {listing.wantDamageStatuses.length > 0
                 ? listing.wantDamageStatuses.map((s) => DAMAGE_STATUS_LABEL[s as DamageStatus]).join(", ")
-                : "Tümü"}
+                : "Hepsi (Fark Etmez)"}
             </p>
             {listing.note && <p className="mt-1.5 text-indigo-700">&quot;{listing.note}&quot;</p>}
           </div>
