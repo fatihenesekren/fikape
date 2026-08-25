@@ -162,35 +162,64 @@ export default async function TakasDetayPage({
             icon: "🎨",
             // Veri olmasa bile şema her zaman gösterilir (tamamı "Belirtilmemiş"
             // renginde) — kullanıcı geri bildirimi: boş durumda hiçbir görsel
-            // olmaması metne göre daha kafa karıştırıcıydı.
-            content: (
-              <div className="space-y-4">
-                {!hasPartConditionData && (
-                  <p className="text-xs text-gray-400 text-center">İlan sahibi henüz parça durumu belirtmemiş.</p>
-                )}
-                <CarDamageDiagram conditions={partConditionsMap} />
-                {hasPartConditionData && (
-                  <div className="grid grid-cols-2 gap-2">
-                    {listing.partConditions.map(({ partKey, condition }) => (
-                      <div
-                        key={partKey}
-                        className="flex items-center justify-between gap-2 bg-gray-50 rounded-lg px-3 py-2"
-                      >
-                        <span className="text-xs text-gray-500 leading-tight">
-                          {CAR_PARTS.find((p) => p.key === partKey)?.label ?? partKey}
-                        </span>
-                        <span
-                          className="shrink-0 text-[11px] font-semibold px-2 py-0.5 rounded-full text-white"
-                          style={{ backgroundColor: PART_CONDITION_COLOR[condition as PartCondition] }}
-                        >
-                          {PART_CONDITION_LABEL[condition as PartCondition]}
-                        </span>
-                      </div>
-                    ))}
+            // olmaması metne göre daha kafa karıştırıcıydı. Ayrıca: (1) diyagram
+            // artık krem tonlu bir çerçeve içinde (referans görsel), (2) hiç veri
+            // yoksa/tamamı orijinalse durumu özetleyen bir kutu var, (3) aşağıdaki
+            // liste artık CAR_PARTS'ın tamamını gösteriyor — kaydı olmayan parçalar
+            // "Belirtilmemiş" rozetiyle, önceden listede hiç yer almıyorlardı.
+            content: (() => {
+              const allOriginal =
+                hasPartConditionData &&
+                listing.partConditions.every(({ condition }) => condition === "ORIGINAL");
+
+              return (
+                <div className="space-y-4">
+                  <div className="bg-amber-50/60 border border-amber-100 rounded-2xl p-4">
+                    <CarDamageDiagram conditions={partConditionsMap} />
                   </div>
-                )}
-              </div>
-            ),
+
+                  {!hasPartConditionData ? (
+                    <div className="bg-gray-50 border border-gray-100 rounded-xl px-3.5 py-3">
+                      <p className="text-xs font-bold text-gray-700">Belirtilmemiş</p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        İlan sahibi henüz parça durumu belirtmemiş.
+                      </p>
+                    </div>
+                  ) : allOriginal ? (
+                    <div className="bg-green-50 border border-green-100 rounded-xl px-3.5 py-3">
+                      <p className="text-xs font-bold text-green-800">✓ Orijinal</p>
+                      <p className="text-xs text-green-700 mt-1">
+                        Aracın tüm parçaları orijinaldir. Değişen ve boyalı parçası bulunmamaktadır.
+                      </p>
+                    </div>
+                  ) : null}
+
+                  {hasPartConditionData && (
+                    <div className="grid grid-cols-2 gap-2">
+                      {CAR_PARTS.map((part) => {
+                        const condition = partConditionsMap[part.key] as PartCondition | undefined;
+                        return (
+                          <div
+                            key={part.key}
+                            className="flex items-center justify-between gap-2 bg-gray-50 rounded-lg px-3 py-2"
+                          >
+                            <span className="text-xs text-gray-500 leading-tight">{part.label}</span>
+                            <span
+                              className="shrink-0 text-[11px] font-semibold px-2 py-0.5 rounded-full text-white"
+                              style={{
+                                backgroundColor: condition ? PART_CONDITION_COLOR[condition] : "#9CA3AF",
+                              }}
+                            >
+                              {condition ? PART_CONDITION_LABEL[condition] : "Belirtilmemiş"}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })(),
           },
         ]
       : []),
