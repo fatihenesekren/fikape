@@ -49,12 +49,16 @@ export const MECHANICAL_CONDITION_COLOR: Record<MechanicalCondition, string> = {
 export interface MechanicalComponent {
   key: "engine" | "transmission" | "runningGear";
   label: string;
+  // Not alanı placeholder'ı — üçü de aynı örneği ("turbo değişti") paylaşıyordu,
+  // ama turbo sadece motora ait; her bileşene kendi gerçekçi örneği verildi
+  // (bkz. kullanıcı geri bildirimi).
+  notePlaceholder: string;
 }
 
 export const MECHANICAL_COMPONENTS: MechanicalComponent[] = [
-  { key: "engine", label: "Motor" },
-  { key: "transmission", label: "Şanzıman" },
-  { key: "runningGear", label: "Yürüyen Aksam" },
+  { key: "engine", label: "Motor", notePlaceholder: "Opsiyonel not (örn. turbo değişti, 15.000 km'de)" },
+  { key: "transmission", label: "Şanzıman", notePlaceholder: "Opsiyonel not (örn. debriyaj seti değişti, 40.000 km'de)" },
+  { key: "runningGear", label: "Yürüyen Aksam", notePlaceholder: "Opsiyonel not (örn. amortisörler değişti, rot-balans yaptırıldı)" },
 ];
 
 export interface TramerRecordInput {

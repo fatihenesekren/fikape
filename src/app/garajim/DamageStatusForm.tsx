@@ -155,7 +155,7 @@ export function DamageStatusForm({
                 value={note}
                 onChange={(e) => setComponentNote(c.key, e.target.value)}
                 maxLength={300}
-                placeholder="Opsiyonel not (örn. turbo değişti, 15.000 km'de)"
+                placeholder={c.notePlaceholder}
                 className="w-full text-xs rounded-lg border border-gray-200 px-2 py-1.5"
               />
             </div>

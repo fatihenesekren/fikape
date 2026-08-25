@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CarDamageDiagram } from "@/components/CarDamageDiagram";
 import { CAR_PARTS, PART_CONDITION_LABEL, PART_CONDITION_COLOR, type PartCondition } from "@/lib/carParts";
 
@@ -12,22 +12,45 @@ const CONDITIONS: PartCondition[] = ["ORIGINAL", "LOCAL_PAINT", "PAINTED", "REPL
 // "tümü lokal boyalı" gerçek hayatta anlamlı bir senaryo değil.
 const BULK_CONDITIONS: PartCondition[] = ["ORIGINAL", "PAINTED", "REPLACED"];
 
+const UNDO_TIMEOUT_MS = 6000;
+
+type PartConditionsValue = Record<string, PartCondition | undefined>;
+
 export function PartConditionForm({
   value,
   onChange,
 }: {
-  value: Record<string, PartCondition | undefined>;
-  onChange: (v: Record<string, PartCondition | undefined>) => void;
+  value: PartConditionsValue;
+  onChange: (v: PartConditionsValue) => void;
 }) {
   const [selectedPart, setSelectedPart] = useState<string | null>(null);
+  // Toplu doldurma/temizleme artık window.confirm() ile onay istemiyor (kullanıcı
+  // geri bildirimi: tarayıcının native popup'ı akışı kesiyor, sitenin diliyle
+  // uyuşmuyordu) — bunun yerine anında uygulanıp kısa süreli bir "geri al"
+  // şeridi gösteriliyor (Gmail'in "gönderildi · geri al" deseni).
+  const [undo, setUndo] = useState<{ snapshot: PartConditionsValue; label: string } | null>(null);
+  const undoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (undoTimer.current) clearTimeout(undoTimer.current); }, []);
+
+  function applyWithUndo(next: PartConditionsValue, label: string) {
+    if (undoTimer.current) clearTimeout(undoTimer.current);
+    setUndo({ snapshot: value, label });
+    undoTimer.current = setTimeout(() => setUndo(null), UNDO_TIMEOUT_MS);
+    onChange(next);
+  }
+
+  function undoLastBulkAction() {
+    if (!undo) return;
+    if (undoTimer.current) clearTimeout(undoTimer.current);
+    onChange(undo.snapshot);
+    setUndo(null);
+  }
 
   function setCondition(partKey: string, condition: PartCondition) {
     onChange({ ...value, [partKey]: condition });
   }
 
-  // Yanlışlıkla işaretlenen bir parçayı geri alma yolu yoktu (bkz. kullanıcı
-  // geri bildirimi) — anahtarı nesneden tamamen çıkararak "Belirtilmemiş"
-  // durumuna dönülüyor.
   function clearCondition(partKey: string) {
     const next = { ...value };
     delete next[partKey];
@@ -37,17 +60,15 @@ export function PartConditionForm({
   const selectedPartLabel = CAR_PARTS.find((p) => p.key === selectedPart)?.label;
   const markedCount = Object.values(value).filter(Boolean).length;
 
-  // Mevcut işaretlemelerin üzerine yazacağı için (var olan tekil seçimler
-  // kaybolur) sadece boş değilken onay isteniyor — boş formda tıklamak
-  // sürtünmesiz olmalı.
   function applyToAll(condition: PartCondition) {
-    if (markedCount > 0 && !window.confirm("Mevcut işaretlemeler bu seçimle değiştirilecek. Emin misiniz?")) return;
-    onChange(Object.fromEntries(CAR_PARTS.map((p) => [p.key, condition])));
+    applyWithUndo(
+      Object.fromEntries(CAR_PARTS.map((p) => [p.key, condition])),
+      `13 parça "${PART_CONDITION_LABEL[condition]}" olarak işaretlendi`
+    );
   }
 
   function clearAll() {
-    if (!window.confirm("Tüm işaretlemeler kaldırılacak. Emin misiniz?")) return;
-    onChange({});
+    applyWithUndo({}, "Tüm işaretlemeler kaldırıldı");
   }
 
   return (
@@ -79,6 +100,15 @@ export function PartConditionForm({
           </button>
         )}
       </div>
+
+      {undo && (
+        <div className="flex items-center justify-between gap-2 bg-gray-900 text-white rounded-lg px-3 py-2 text-xs">
+          <span>{undo.label}</span>
+          <button type="button" onClick={undoLastBulkAction} className="font-semibold text-indigo-300 hover:text-indigo-200 shrink-0">
+            Geri Al
+          </button>
+        </div>
+      )}
 
       <CarDamageDiagram conditions={value} interactivePartKey={selectedPart} onPartClick={setSelectedPart} />
 
