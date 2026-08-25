@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { PART_CONDITION_CATEGORIES, type PartCondition } from "@/lib/carParts";
+import type { DamageStatus, MechanicalCondition, TramerRecordInput } from "@/lib/damageStatus";
 import { PartConditionForm } from "./PartConditionForm";
+import { DamageStatusForm, EMPTY_DAMAGE_STATUS, type DamageStatusValue } from "./DamageStatusForm";
 
 type PaymentIntent = "SWAP_ONLY" | "PAYS_EXTRA" | "WANTS_EXTRA";
 type CloseReason = "TRADED" | "GAVE_UP" | "FOUND_ELSEWHERE";
@@ -21,6 +23,43 @@ interface ExistingListing {
   wantCategoryId: number | null;
   wantBrandId: number | null;
   partConditions: Record<string, PartCondition>;
+  damageStatus: DamageStatus | null;
+  engineCondition: MechanicalCondition | null;
+  engineNote: string | null;
+  transmissionCondition: MechanicalCondition | null;
+  transmissionNote: string | null;
+  runningGearCondition: MechanicalCondition | null;
+  runningGearNote: string | null;
+  tramerRecords: TramerRecordInput[];
+}
+
+// Boş metin notlarını null'a çevirir (description/note ile aynı ilke) —
+// API'ye gönderilirken kullanılır.
+function damageStatusPayload(v: DamageStatusValue) {
+  return {
+    damageStatus: v.damageStatus,
+    engineCondition: v.engineCondition,
+    engineNote: v.engineNote.trim() || null,
+    transmissionCondition: v.transmissionCondition,
+    transmissionNote: v.transmissionNote.trim() || null,
+    runningGearCondition: v.runningGearCondition,
+    runningGearNote: v.runningGearNote.trim() || null,
+    tramerRecords: v.tramerRecords,
+  };
+}
+
+function damageStatusFromListing(l: ExistingListing | null): DamageStatusValue {
+  if (!l) return EMPTY_DAMAGE_STATUS;
+  return {
+    damageStatus: l.damageStatus,
+    engineCondition: l.engineCondition,
+    engineNote: l.engineNote ?? "",
+    transmissionCondition: l.transmissionCondition,
+    transmissionNote: l.transmissionNote ?? "",
+    runningGearCondition: l.runningGearCondition,
+    runningGearNote: l.runningGearNote ?? "",
+    tramerRecords: l.tramerRecords,
+  };
 }
 
 const PAYMENT_WARNING = (
@@ -66,8 +105,12 @@ export function TradeToggleCard({
   const [partConditions, setPartConditions] = useState<Record<string, PartCondition | undefined>>(
     existingListing?.partConditions ?? {}
   );
-  // Boyalı/Değişen Parça sadece gövde paneli olan kategorilerde anlamlı
-  // (bkz. carParts.ts) — motosiklet/e-scooter/karavan gibi kategorilerde form hiç gösterilmiyor.
+  const [damageStatusValue, setDamageStatusValue] = useState<DamageStatusValue>(
+    damageStatusFromListing(existingListing)
+  );
+  // Hasar Durumu + Boyalı/Değişen Parça sadece gövde paneli olan kategorilerde
+  // anlamlı (bkz. carParts.ts) — motosiklet/e-scooter/karavan gibi kategorilerde
+  // ikisi de form'da gösterilmiyor (aynı kısıtlama, tutarlılık için).
   const showPartConditions = (PART_CONDITION_CATEGORIES as readonly string[]).includes(categorySlug);
   const [consentGiven, setConsentGiven] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -168,6 +211,7 @@ export function TradeToggleCard({
           note: note.trim() || null,
           description: description.trim() || null,
           partConditions,
+          ...damageStatusPayload(damageStatusValue),
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -201,6 +245,13 @@ export function TradeToggleCard({
             note={note} setNote={setNote}
             description={description} setDescription={setDescription}
           />
+          {showPartConditions && (
+            <div className="border-t border-indigo-100 pt-2.5">
+              <p className="text-xs font-semibold text-indigo-800 mb-1.5">Hasar Durumu</p>
+              <DamageStatusForm value={damageStatusValue} onChange={setDamageStatusValue} />
+            </div>
+          )}
+
           {showPartConditions && (
             <div className="border-t border-indigo-100 pt-2.5">
               <p className="text-xs font-semibold text-indigo-800 mb-1.5">Boyalı veya Değişen Parça</p>
@@ -315,6 +366,7 @@ export function TradeToggleCard({
           description: description.trim() || null,
           partConditions,
           consentGiven,
+          ...damageStatusPayload(damageStatusValue),
         }),
       });
       const data = await res.json();

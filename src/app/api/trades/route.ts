@@ -32,7 +32,12 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
-  const { wantAnything, note, description, paymentIntent, city } = parsed.data;
+  const {
+    wantAnything, note, description, paymentIntent, city,
+    damageStatus, engineCondition, engineNote,
+    transmissionCondition, transmissionNote,
+    runningGearCondition, runningGearNote, tramerRecords,
+  } = parsed.data;
   const userProductId = Number(parsed.data.userProductId);
   const wantCategoryId = parsed.data.wantCategoryId != null ? Number(parsed.data.wantCategoryId) : null;
   const wantBrandId = parsed.data.wantBrandId != null ? Number(parsed.data.wantBrandId) : null;
@@ -92,6 +97,13 @@ export async function POST(req: Request) {
         description: description ?? null,
         paymentIntent,
         city,
+        damageStatus: damageStatus ?? null,
+        engineCondition: engineCondition ?? null,
+        engineNote: engineNote ?? null,
+        transmissionCondition: transmissionCondition ?? null,
+        transmissionNote: transmissionNote ?? null,
+        runningGearCondition: runningGearCondition ?? null,
+        runningGearNote: runningGearNote ?? null,
       },
     });
 
@@ -101,6 +113,17 @@ export async function POST(req: Request) {
           tradeListingId: listing.id,
           partKey,
           condition,
+        })),
+      });
+    }
+
+    if (tramerRecords && tramerRecords.length > 0) {
+      await prisma.tradeTramerRecord.createMany({
+        data: tramerRecords.map((r) => ({
+          tradeListingId: listing.id,
+          month: r.month,
+          year: r.year,
+          amount: r.amount,
         })),
       });
     }

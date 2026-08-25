@@ -900,6 +900,20 @@ model TradeListing {
   reports         TradeListingReport[]
   partConditions  TradeListingPartCondition[]
 
+  // Hasar Durumu — kullanıcı beyanı, fikape tarafından doğrulanmamış (araç
+  // sayfası/ilan sekmesinde bunu belirten bir uyarı gösterilir). Motor/
+  // şanzıman/yürüyen aksam CAR_PARTS gibi dinamik bir liste değil, sabit 3
+  // bileşen olduğu için (Boyalı/Değişen Parça'daki gibi ayrı bir ilişki
+  // tablosu yerine) doğrudan kolon olarak tutuluyor — bkz. src/lib/damageStatus.ts.
+  damageStatus          TradeDamageStatus?
+  engineCondition       MechanicalCondition?
+  engineNote            String?              @db.VarChar(300)
+  transmissionCondition MechanicalCondition?
+  transmissionNote      String?              @db.VarChar(300)
+  runningGearCondition  MechanicalCondition?
+  runningGearNote       String?              @db.VarChar(300)
+  tramerRecords         TradeTramerRecord[]
+
   // NOT: Prisma @@unique([userProductId]) YOK (kapanan ilan yeniden açılamama
   // bug'ına yol açar). Bunun yerine migration SQL'ine ELLE bir PARTIAL UNIQUE
   // INDEX eklenir:
@@ -1081,6 +1095,38 @@ enum PartCondition {
   LOCAL_PAINT
   PAINTED
   REPLACED
+}
+
+// Tramer kayıtları — bir ilanda birden fazla kaza/tamir geçmişi olabilir,
+// bu yüzden TradeListingPartCondition'daki aynı gerekçeyle (o SPESİFİK
+// aracın o andaki durumu, model geneli değil) ayrı bir tek-çok tablo.
+model TradeTramerRecord {
+  id             Int          @id @default(autoincrement())
+  tradeListingId Int
+  tradeListing   TradeListing @relation(fields: [tradeListingId], references: [id], onDelete: Cascade)
+  month          Int          // 1-12
+  year           Int
+  amount         Float        // TL
+
+  @@index([tradeListingId])
+  @@map("trade_tramer_records")
+}
+
+enum TradeDamageStatus {
+  NONE    // Hasarsız
+  DAMAGED // Hasarlı
+  HEAVY   // Ağır Hasarlı
+}
+
+// Motor/Şanzıman/Yürüyen Aksam için ortak 5 durumlu model — kullanıcı geri
+// bildirimiyle düz "Var/Yok" yetersiz bulundu (orijinal mi yan sanayi mi
+// parça, geçmişte mi giderildi yoksa hâlâ mı sürüyor gibi ayrımlar kayboluyordu).
+enum MechanicalCondition {
+  ORIGINAL             // Orijinal / Sorunsuz
+  MINOR_FIXED          // Küçük Sorun — Giderildi
+  REPLACED_OEM         // Orijinal Parça ile Değişti
+  REPLACED_AFTERMARKET // Yan Sanayi Parça ile Değişti
+  ONGOING_ISSUE        // Devam Eden Sorun Var
 }
 
 enum MessageReportReason {

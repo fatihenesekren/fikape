@@ -105,6 +105,31 @@ export const partConditionsSchema = z.record(
   z.enum(["ORIGINAL", "LOCAL_PAINT", "PAINTED", "REPLACED"])
 ).optional();
 
+// Hasar Durumu — genel durum + motor/şanzıman/yürüyen aksam (bkz.
+// src/lib/damageStatus.ts) + tramer kayıtları (çoklu, ay/yıl/tutar).
+const mechanicalConditionSchema = z.enum(
+  ["ORIGINAL", "MINOR_FIXED", "REPLACED_OEM", "REPLACED_AFTERMARKET", "ONGOING_ISSUE"]
+).optional().nullable();
+
+const currentYear = new Date().getFullYear();
+export const tramerRecordSchema = z.object({
+  month:  z.number().int().min(1, "Geçerli bir ay giriniz.").max(12, "Geçerli bir ay giriniz."),
+  year:   z.number().int().min(1990, "Geçerli bir yıl giriniz.").max(currentYear, "Geçerli bir yıl giriniz."),
+  amount: z.number().min(0, "Tutar 0'dan küçük olamaz.").max(10_000_000, "Tutar çok yüksek görünüyor."),
+});
+export const tramerRecordsSchema = z.array(tramerRecordSchema).max(20).optional();
+
+const damageStatusFields = {
+  damageStatus:          z.enum(["NONE", "DAMAGED", "HEAVY"]).optional().nullable(),
+  engineCondition:       mechanicalConditionSchema,
+  engineNote:            z.string().trim().max(300).optional().nullable(),
+  transmissionCondition: mechanicalConditionSchema,
+  transmissionNote:      z.string().trim().max(300).optional().nullable(),
+  runningGearCondition:  mechanicalConditionSchema,
+  runningGearNote:       z.string().trim().max(300).optional().nullable(),
+  tramerRecords:         tramerRecordsSchema,
+};
+
 export const tradeListingCreateSchema = z.object({
   userProductId:  z.union([z.number(), z.string()]),
   wantCategoryId: z.union([z.number(), z.string()]).optional().nullable(),
@@ -116,6 +141,7 @@ export const tradeListingCreateSchema = z.object({
   city:           z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
   consentGiven:   z.literal(true, { error: "İlanı açmak için KVKK onay kutusunu işaretlemelisiniz." }),
   partConditions: partConditionsSchema,
+  ...damageStatusFields,
 });
 
 const salePriceRange = z.number().int()
@@ -154,6 +180,7 @@ export const tradeListingUpdateSchema = z.object({
   paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"]).optional(),
   city:           z.enum(TURKISH_CITIES).optional(),
   partConditions: partConditionsSchema,
+  ...damageStatusFields,
 });
 
 export const messageCreateSchema = z.object({

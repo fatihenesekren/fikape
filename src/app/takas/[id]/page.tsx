@@ -11,6 +11,11 @@ import { PhotoSlider } from "@/app/araclar/[slug]/PhotoSlider";
 import { buildSpecList } from "@/lib/buildSpecList";
 import { CarDamageDiagram } from "@/components/CarDamageDiagram";
 import { PART_CONDITION_CATEGORIES, PART_CONDITION_LABEL, PART_CONDITION_COLOR, CAR_PARTS, type PartCondition } from "@/lib/carParts";
+import {
+  DAMAGE_STATUS_LABEL, DAMAGE_STATUS_COLOR,
+  MECHANICAL_CONDITION_LABEL, MECHANICAL_CONDITION_COLOR, MECHANICAL_COMPONENTS,
+  formatTl, formatMonthYear, type DamageStatus, type MechanicalCondition,
+} from "@/lib/damageStatus";
 import { TradeMessageForm } from "./TradeMessageForm";
 import { ShareButton } from "./ShareButton";
 import { ListingReportButton } from "./ListingReportButton";
@@ -31,6 +36,7 @@ async function getListing(id: number) {
       wantBrand: true,
       user: { select: { id: true, trustLevel: true, displayName: true, avatarUrl: true } },
       partConditions: { select: { partKey: true, condition: true } },
+      tramerRecords: { select: { month: true, year: true, amount: true }, orderBy: [{ year: "desc" }, { month: "desc" }] },
     },
   });
 }
@@ -156,6 +162,98 @@ export default async function TakasDetayPage({
     },
     ...(showPartConditions
       ? [
+          {
+            key: "hasar",
+            label: "Hasar Durumu",
+            icon: "🚨",
+            // Boyalı/Değişen Parça ile aynı prensip: kullanıcı beyanı, fikape
+            // tarafından doğrulanmamış (bkz. kullanıcı talebi — yeni sekme,
+            // genel hasar durumu + motor/şanzıman/yürüyen aksam + tramer kayıtları).
+            content: (() => {
+              const mechanicalEntries: { key: string; label: string; condition: string | null; note: string | null }[] =
+                MECHANICAL_COMPONENTS.map((c) => ({
+                  key: c.key,
+                  label: c.label,
+                  condition:
+                    c.key === "engine" ? listing.engineCondition
+                    : c.key === "transmission" ? listing.transmissionCondition
+                    : listing.runningGearCondition,
+                  note:
+                    c.key === "engine" ? listing.engineNote
+                    : c.key === "transmission" ? listing.transmissionNote
+                    : listing.runningGearNote,
+                }));
+              const hasMechanicalData = mechanicalEntries.some((m) => m.condition);
+              const hasTramerData = listing.tramerRecords.length > 0;
+              const tramerTotal = listing.tramerRecords.reduce((sum, r) => sum + r.amount, 0);
+              const hasAnyData = !!listing.damageStatus || hasMechanicalData || hasTramerData;
+
+              return (
+                <div className="space-y-4">
+                  <p className="text-[11px] text-gray-400 bg-gray-50 rounded-lg px-2.5 py-2">
+                    Bu bilgiler ilan sahibi tarafından beyan edilmiştir, fikape tarafından doğrulanmamıştır.
+                  </p>
+
+                  {!hasAnyData && (
+                    <p className="text-sm text-gray-400 text-center py-6">İlan sahibi henüz hasar durumu belirtmemiş.</p>
+                  )}
+
+                  {listing.damageStatus && (
+                    <div>
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Genel Hasar Durumu</p>
+                      <span
+                        className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full text-white"
+                        style={{ backgroundColor: DAMAGE_STATUS_COLOR[listing.damageStatus as DamageStatus] }}
+                      >
+                        {DAMAGE_STATUS_LABEL[listing.damageStatus as DamageStatus]}
+                      </span>
+                    </div>
+                  )}
+
+                  {hasMechanicalData && (
+                    <div>
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">
+                        Motor / Şanzıman / Yürüyen Aksam
+                      </p>
+                      <div className="space-y-2">
+                        {mechanicalEntries.filter((m) => m.condition).map((m) => (
+                          <div key={m.key} className="bg-gray-50 rounded-lg px-3 py-2">
+                            <div className="flex items-center justify-between gap-2">
+                              <span className="text-xs text-gray-600 font-medium">{m.label}</span>
+                              <span
+                                className="shrink-0 text-[11px] font-semibold px-2 py-0.5 rounded-full text-white"
+                                style={{ backgroundColor: MECHANICAL_CONDITION_COLOR[m.condition as MechanicalCondition] }}
+                              >
+                                {MECHANICAL_CONDITION_LABEL[m.condition as MechanicalCondition]}
+                              </span>
+                            </div>
+                            {m.note && <p className="text-xs text-gray-500 mt-1">{m.note}</p>}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {hasTramerData && (
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Tramer Kayıtları</p>
+                        <span className="text-xs font-semibold text-gray-700">Toplam: {formatTl(tramerTotal)}</span>
+                      </div>
+                      <div className="divide-y divide-gray-50">
+                        {listing.tramerRecords.map((r, i) => (
+                          <div key={i} className="flex items-center justify-between py-1.5 text-sm">
+                            <span className="text-gray-500">{formatMonthYear(r.month, r.year)}</span>
+                            <span className="font-semibold text-gray-800">{formatTl(r.amount)}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })(),
+          },
           {
             key: "boya",
             label: "Boyalı/Değişen Parça",

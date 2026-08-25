@@ -81,6 +81,13 @@ export async function PATCH(
         wantBrandId: data.wantAnything ? null : wantBrandId,
         note: data.note ?? null,
         description: data.description ?? null,
+        damageStatus: data.damageStatus ?? null,
+        engineCondition: data.engineCondition ?? null,
+        engineNote: data.engineNote ?? null,
+        transmissionCondition: data.transmissionCondition ?? null,
+        transmissionNote: data.transmissionNote ?? null,
+        runningGearCondition: data.runningGearCondition ?? null,
+        runningGearNote: data.runningGearNote ?? null,
       },
     }),
     // Parça durumları formda gelen tam set neyse onunla değiştirilir (sil+yeniden
@@ -96,6 +103,24 @@ export async function PATCH(
                     tradeListingId: listingId,
                     partKey,
                     condition,
+                  })),
+                }),
+              ]
+            : []),
+        ]
+      : []),
+    // Tramer kayıtları da aynı ilkeyle (sil+yeniden ekle) güncellenir.
+    ...(data.tramerRecords !== undefined
+      ? [
+          prisma.tradeTramerRecord.deleteMany({ where: { tradeListingId: listingId } }),
+          ...(data.tramerRecords.length > 0
+            ? [
+                prisma.tradeTramerRecord.createMany({
+                  data: data.tramerRecords.map((r) => ({
+                    tradeListingId: listingId,
+                    month: r.month,
+                    year: r.year,
+                    amount: r.amount,
                   })),
                 }),
               ]
