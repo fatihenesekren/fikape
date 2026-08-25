@@ -386,9 +386,8 @@ export default async function TakasDetayPage({
               <p>Marka/kategori fark etmez</p>
             ) : (
               <div className="space-y-0.5">
-                {listing.wantCategory && <p>Araç Kategorisi: {listing.wantCategory.name}</p>}
-                {listing.wantBrand && <p>Marka: {listing.wantBrand.name}</p>}
-                {!listing.wantCategory && !listing.wantBrand && <p>Belirtilmemiş</p>}
+                <p>Araç Kategorisi: {listing.wantCategory ? listing.wantCategory.name : "Hepsi (Fark Etmez)"}</p>
+                <p>Marka: {listing.wantBrand ? listing.wantBrand.name : "Hepsi (Fark Etmez)"}</p>
               </div>
             )}
             <p>Konum: {LOCATION_SCOPE_LABEL[listing.wantLocationScope as keyof typeof LOCATION_SCOPE_LABEL]}</p>

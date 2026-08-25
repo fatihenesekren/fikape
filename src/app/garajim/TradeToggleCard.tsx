@@ -98,7 +98,6 @@ export function TradeToggleCard({
   const [formOpen, setFormOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [city, setCity] = useState(existingListing?.city ?? "");
-  const [wantAnything, setWantAnything] = useState(existingListing?.wantAnything ?? true);
   const [wantCategoryId, setWantCategoryId] = useState(existingListing?.wantCategoryId?.toString() ?? "");
   const [wantBrandId, setWantBrandId] = useState(existingListing?.wantBrandId?.toString() ?? "");
   const [wantLocationScope, setWantLocationScope] = useState<LocationScope>(
@@ -110,6 +109,9 @@ export function TradeToggleCard({
   const availableBrands = wantCategoryId
     ? brands.filter((b) => categoryBrandMap[Number(wantCategoryId)]?.includes(b.id))
     : brands;
+  // wantAnything artık ayrı bir checkbox'la değil, kategori VE marka ikisi de
+  // boş bırakıldığında (ikisi de "fark etmez") true olarak türetiliyor.
+  const wantAnything = !wantCategoryId && !wantBrandId;
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent>(existingListing?.paymentIntent ?? "SWAP_ONLY");
   const [note, setNote] = useState(existingListing?.note ?? "");
   const [description, setDescription] = useState(existingListing?.description ?? "");
@@ -216,8 +218,8 @@ export function TradeToggleCard({
           action: "update",
           city,
           wantAnything,
-          wantCategoryId: wantAnything ? null : wantCategoryId || null,
-          wantBrandId: wantAnything ? null : wantBrandId || null,
+          wantCategoryId: wantCategoryId || null,
+          wantBrandId: wantBrandId || null,
           wantLocationScope,
           wantDamageStatuses,
           paymentIntent,
@@ -250,7 +252,6 @@ export function TradeToggleCard({
           </div>
           <TradeFormFields
             city={city} setCity={setCity}
-            wantAnything={wantAnything} setWantAnything={setWantAnything}
             wantCategoryId={wantCategoryId} setWantCategoryId={setWantCategoryId}
             wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
             wantLocationScope={wantLocationScope} setWantLocationScope={setWantLocationScope}
@@ -374,8 +375,8 @@ export function TradeToggleCard({
           userProductId,
           city,
           wantAnything,
-          wantCategoryId: wantAnything ? null : wantCategoryId || null,
-          wantBrandId: wantAnything ? null : wantBrandId || null,
+          wantCategoryId: wantCategoryId || null,
+          wantBrandId: wantBrandId || null,
           wantLocationScope,
           wantDamageStatuses,
           paymentIntent,
@@ -408,7 +409,6 @@ export function TradeToggleCard({
 
       <TradeFormFields
         city={city} setCity={setCity}
-        wantAnything={wantAnything} setWantAnything={setWantAnything}
         wantCategoryId={wantCategoryId} setWantCategoryId={setWantCategoryId}
         wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
         wantLocationScope={wantLocationScope} setWantLocationScope={setWantLocationScope}
@@ -467,7 +467,6 @@ export function TradeToggleCard({
 
 function TradeFormFields({
   city, setCity,
-  wantAnything, setWantAnything,
   wantCategoryId, setWantCategoryId,
   wantBrandId, setWantBrandId,
   wantLocationScope, setWantLocationScope,
@@ -478,7 +477,6 @@ function TradeFormFields({
   description, setDescription,
 }: {
   city: string; setCity: (v: string) => void;
-  wantAnything: boolean; setWantAnything: (v: boolean) => void;
   wantCategoryId: string; setWantCategoryId: (v: string) => void;
   wantBrandId: string; setWantBrandId: (v: string) => void;
   wantLocationScope: LocationScope; setWantLocationScope: (v: LocationScope) => void;
@@ -511,38 +509,37 @@ function TradeFormFields({
         ))}
       </select>
 
-      <label className="flex items-center gap-2 text-xs text-indigo-800">
-        <input type="checkbox" checked={wantAnything} onChange={(e) => setWantAnything(e.target.checked)} />
-        Marka/kategori fark etmez
-      </label>
-
-      {!wantAnything && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <select
-            value={wantCategoryId}
-            onChange={(e) => { setWantCategoryId(e.target.value); setWantBrandId(""); }}
-            aria-label="İstenen kategori"
-            className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
-          >
-            <option value="">Kategori seçiniz</option>
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>{c.name}</option>
-            ))}
-          </select>
-          <select
-            value={wantBrandId}
-            onChange={(e) => setWantBrandId(e.target.value)}
-            disabled={!wantCategoryId}
-            aria-label="İstenen marka"
-            className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white disabled:opacity-50"
-          >
-            <option value="">{wantCategoryId ? "Marka seçiniz" : "Önce kategori seçiniz"}</option>
-            {availableBrands.map((b) => (
-              <option key={b.id} value={b.id}>{b.name}</option>
-            ))}
-          </select>
-        </div>
-      )}
+      {/* Kategori ve marka birbirinden bağımsız "fark etmez" olabilmeli —
+          önceden tek bir "Marka/kategori fark etmez" checkbox'ı ikisini
+          birlikte kapatıp açıyordu, kullanıcı "kategori: Otomobil ama marka
+          fark etmez" gibi bir kombinasyon seçemiyordu (bkz. kullanıcı geri
+          bildirimi, ekran görüntüsü). Artık her iki select de her zaman
+          görünür, "Fark etmez" ayrı birer seçenek; wantAnything ikisi de
+          boş bırakıldığında true olarak türetiliyor (bkz. submit/saveEdit). */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <select
+          value={wantCategoryId}
+          onChange={(e) => { setWantCategoryId(e.target.value); setWantBrandId(""); }}
+          aria-label="İstenen kategori"
+          className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+        >
+          <option value="">Kategori fark etmez</option>
+          {categories.map((c) => (
+            <option key={c.id} value={c.id}>{c.name}</option>
+          ))}
+        </select>
+        <select
+          value={wantBrandId}
+          onChange={(e) => setWantBrandId(e.target.value)}
+          aria-label="İstenen marka"
+          className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+        >
+          <option value="">Marka fark etmez</option>
+          {availableBrands.map((b) => (
+            <option key={b.id} value={b.id}>{b.name}</option>
+          ))}
+        </select>
+      </div>
 
       {/* Aradığı aracın nerede olmasını beklediği — önceden ilan sadece KENDİ
           aracının (city alanı) nerede olduğunu söylüyordu, karşı taraftan
