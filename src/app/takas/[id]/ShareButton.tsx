@@ -23,7 +23,7 @@ export function ShareButton({ title }: { title: string }) {
   return (
     <button
       onClick={handleShare}
-      className="text-[11px] font-semibold text-gray-400 hover:text-indigo-700 transition-colors"
+      className="text-xs font-semibold text-gray-600 bg-gray-50 hover:bg-gray-100 rounded-full px-2.5 py-1 transition-colors"
     >
       {copied ? "Kopyalandı ✓" : "🔗 Paylaş"}
     </button>

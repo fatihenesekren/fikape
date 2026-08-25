@@ -331,72 +331,86 @@ export default async function TakasDetayPage({
         </div>
       )}
 
-      <div className="bg-white border border-gray-100 rounded-2xl p-6">
-        <div className="flex items-center gap-2 mb-3">
-          <Avatar
-            displayName={listing.user.displayName}
-            avatarUrl={listing.user.avatarUrl}
-            seed={String(listing.user.id)}
-            size={28}
-          />
-          <span className="text-sm font-semibold text-gray-700">
-            {listing.user.displayName ?? "Kullanıcı"}
-          </span>
+      <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden">
+        {/* Satıcı kimliği — araç bilgisinden ayrı bir satır, ince bir alt
+            çizgiyle bölünüyor (önceden hepsi aynı ince gri tonda üst üste
+            diziliydi, kimin, ne sattığı birbirine karışıyordu). */}
+        <div className="flex items-center justify-between gap-2 px-6 py-3.5 border-b border-gray-50">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <Avatar
+              displayName={listing.user.displayName}
+              avatarUrl={listing.user.avatarUrl}
+              seed={String(listing.user.id)}
+              size={36}
+            />
+            <span className="text-sm font-semibold text-gray-900 truncate">
+              {listing.user.displayName ?? "Kullanıcı"}
+            </span>
+          </div>
+          <span className="text-[11px] text-gray-400 shrink-0">{timeAgoTr(listing.createdAt)}</span>
         </div>
 
-        <div className="flex items-start justify-between gap-2">
-          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{listing.product.brand.name}</div>
-          <span className="text-[11px] text-gray-300 shrink-0">{timeAgoTr(listing.createdAt)}</span>
-        </div>
-        <h1 className="text-xl font-bold text-gray-900">
-          {stripModelGenRange(listing.product.model.name)}
-          {listing.product.year && <span className="text-gray-400 font-normal ml-1.5">{listing.product.year}</span>}
-        </h1>
-        <div className="flex items-center gap-3 mt-0.5">
-          <Link href={`/araclar/${listing.product.slug}`} className="text-[11px] text-indigo-600 hover:underline">
-            Araç sayfasını gör →
-          </Link>
-          <ShareButton
-            title={`${listing.product.brand.name} ${stripModelGenRange(listing.product.model.name)} Takasa Açık`}
-          />
-        </div>
+        <div className="p-6">
+          <div className="text-xs font-semibold text-indigo-600 uppercase tracking-wide">{listing.product.brand.name}</div>
+          <h1 className="text-xl font-bold text-gray-900 mt-0.5">
+            {stripModelGenRange(listing.product.model.name)}
+            {listing.product.year && <span className="text-gray-400 font-normal ml-1.5">{listing.product.year}</span>}
+          </h1>
+          <div className="flex items-center gap-2 mt-2">
+            <Link
+              href={`/araclar/${listing.product.slug}`}
+              className="text-xs font-semibold text-gray-600 bg-gray-50 hover:bg-gray-100 rounded-full px-2.5 py-1 transition-colors"
+            >
+              Araç sayfasını gör →
+            </Link>
+            <ShareButton
+              title={`${listing.product.brand.name} ${stripModelGenRange(listing.product.model.name)} Takasa Açık`}
+            />
+          </div>
 
-        <div className="flex flex-wrap gap-1.5 mt-3">
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">📍 {listing.city}</span>
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">
-            {PAYMENT_LABEL[listing.paymentIntent] ?? listing.paymentIntent}
-          </span>
-        </div>
+          <div className="flex flex-wrap gap-1.5 mt-3">
+            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">📍 {listing.city}</span>
+            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">
+              {PAYMENT_LABEL[listing.paymentIntent] ?? listing.paymentIntent}
+            </span>
+          </div>
 
-        <div className="mt-3 bg-gray-50 rounded-lg px-3 py-2.5 text-sm text-gray-600">
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
-            İlan Sahibinin Takas Beklentileri
-          </p>
-          {listing.wantAnything ? (
-            <p>Marka/kategori fark etmez</p>
-          ) : (
-            <div className="space-y-0.5">
-              {listing.wantCategory && <p>Araç Kategorisi: {listing.wantCategory.name}</p>}
-              {listing.wantBrand && <p>Marka: {listing.wantBrand.name}</p>}
-              {!listing.wantCategory && !listing.wantBrand && <p>Belirtilmemiş</p>}
+          {/* Takas beklentileri — nötr gri yerine indigo tonu, sitedeki "takas"
+              kavramıyla (TradeToggleCard vb.) aynı renk dili kullanılıyor. */}
+          <div className="mt-3 bg-indigo-50/60 border border-indigo-100 rounded-xl px-3.5 py-3 text-sm text-indigo-900">
+            <p className="text-xs font-bold text-indigo-800 mb-1">
+              İlan Sahibinin Takas Beklentileri
+            </p>
+            {listing.wantAnything ? (
+              <p>Marka/kategori fark etmez</p>
+            ) : (
+              <div className="space-y-0.5">
+                {listing.wantCategory && <p>Araç Kategorisi: {listing.wantCategory.name}</p>}
+                {listing.wantBrand && <p>Marka: {listing.wantBrand.name}</p>}
+                {!listing.wantCategory && !listing.wantBrand && <p>Belirtilmemiş</p>}
+              </div>
+            )}
+            {listing.note && <p className="mt-1.5 text-indigo-700">&quot;{listing.note}&quot;</p>}
+          </div>
+
+          {/* Güven sinyalleri (doğrulanmış rozet + değerlendirme) tek satırda
+              toplandı — önceden 2 ayrı ince gri satır, gözü gereksiz yoruyordu. */}
+          {(listing.user.trustLevel >= 3 || ratingAgg._count > 0) && (
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 text-[11px] text-gray-400">
+              {listing.user.trustLevel >= 3 && (
+                <span title="Bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez.">
+                  ✓ Doğrulanmış kullanıcı
+                </span>
+              )}
+              {ratingAgg._count > 0 && (
+                <span className="text-amber-600">
+                  ★ {ratingAgg._avg.score?.toFixed(1)} · {ratingAgg._count} değerlendirme
+                </span>
+              )}
             </div>
           )}
-          {listing.note && <p className="mt-1.5 text-gray-500">&quot;{listing.note}&quot;</p>}
-        </div>
 
-        {listing.user.trustLevel >= 3 && (
-          <p className="mt-3 text-[11px] text-gray-400" title="Bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez.">
-            ✓ Doğrulanmış kullanıcı rozeti — bu, aracın fiziksel durumunun doğrulandığı anlamına gelmez.
-          </p>
-        )}
-
-        {ratingAgg._count > 0 && (
-          <p className="mt-1.5 text-[11px] text-amber-600">
-            ★ {ratingAgg._avg.score?.toFixed(1)} — geçmiş takaslardan {ratingAgg._count} değerlendirme
-          </p>
-        )}
-
-        {!listing.isActive ? (
+          {!listing.isActive ? (
           <div className="mt-5 bg-gray-50 rounded-lg px-3 py-2 text-sm text-gray-500">
             Bu ilan artık aktif değil.
           </div>
@@ -436,6 +450,7 @@ export default async function TakasDetayPage({
             <TradeMessageForm listingId={listing.id} />
           </>
         )}
+        </div>
       </div>
 
       <div className="mt-4">
