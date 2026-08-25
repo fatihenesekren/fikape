@@ -133,9 +133,14 @@ export default async function GarajimPage() {
             dil (geniş banner + gradyan + yakıt rozeti): önceden küçük bir kare
             thumbnail olarak yan sütundaydı, bu hem görsel olarak zayıf duruyordu
             hem de mobilde bilgi sütununu sıkıştırıp taşmaya yol açıyordu
-            (bkz. kullanıcı geri bildirimi). */}
+            (bkz. kullanıcı geri bildirimi). Sabit piksel yükseklik (h-36/h-40)
+            yerine oran (aspect-ratio) kullanılıyor — kart tek sütun tam
+            genişlikte olduğu için (max-w-3xl, ~700px'e kadar) sabit yükseklik
+            masaüstünde aşırı geniş/kısa bir kutu (≈4.6:1) yaratıp fotoğrafın
+            object-cover ile aşırı kırpılmasına yol açıyordu; oran kullanınca
+            genişlik değişse de kırpma her ekranda aynı kalıyor. */}
         <div
-          className="relative w-full h-36 sm:h-40 flex items-center justify-center overflow-hidden"
+          className="relative w-full aspect-[12/5] flex items-center justify-center overflow-hidden"
           style={{ background: fuelType === "EV" ? "#0f2027" : "#1a1a2e" }}
         >
           {product.imageUrl ? (
