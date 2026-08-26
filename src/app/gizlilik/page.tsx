@@ -16,7 +16,7 @@ export default function GizlilikPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Gizlilik Politikası</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Haziran 2025</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ağustos 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -43,9 +43,15 @@ export default function GizlilikPage() {
             <li><strong>Kullanım verileri:</strong> Sayfa görüntüleme sayıları, oturum bilgileri</li>
             <li><strong>Onay kayıtları:</strong> KVKK kapsamında verdiğiniz açık rızalar</li>
             <li><strong>Takas ilanı bilgileri:</strong> İliniz, aracınızın markası/modeli, istediğiniz araç
-            kategorisi/markası, ödeme niyeti ve opsiyonel not — takas ilanı açtığınızda</li>
+            kategorisi/markası, aradığınız aracın konum ve hasar durumu beklentisi, ödeme niyeti, opsiyonel
+            not ve açıklama — takas ilanı açtığınızda</li>
+            <li><strong>Araç hasar/durum beyanı:</strong> Takasa açtığınız aracın genel hasar durumu, tramer
+            kayıtları (ay/yıl/tutar), motor-şanzıman-yürüyen aksam durumu ve boyalı/değişen parça bilgisi —
+            bunlar sizin beyanınızdır, fikape tarafından doğrulanmaz</li>
             <li><strong>Takas mesajlaşma içeriği:</strong> Takas ilanları üzerinden diğer kullanıcılarla
             yaptığınız yazışmalar</li>
+            <li><strong>Takas değerlendirmeleri:</strong> Bir takas sonrasında karşı tarafa verdiğiniz
+            1-5 yıldız puanı ve opsiyonel yorum</li>
           </ul>
         </section>
 
@@ -146,8 +152,9 @@ export default function GizlilikPage() {
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mb-3">10. Takas Özelliği</h2>
           <p className="mb-2">
-            Bir aracınızı takasa açtığınızda, ilanınızdaki il, araç bilgisi ve ilan detayları platformdaki
-            diğer kullanıcılara açık olarak gösterilir. İlan açarken ayrıca açık rızanız istenir.
+            Bir aracınızı takasa açtığınızda, ilanınızdaki il, araç bilgisi, hasar durumu/tramer/boyalı-değişen
+            parça beyanınız ve ilan detayları platformdaki diğer kullanıcılara açık olarak gösterilir. İlan
+            açarken ayrıca açık rızanız istenir.
           </p>
           <p className="mb-2">
             Bir takas ilanına mesaj gönderdiğinizde veya bir görüşmede taraf olduğunuzda, mesaj içeriğiniz
@@ -155,6 +162,11 @@ export default function GizlilikPage() {
             Platform, sizin dışınızdaki kullanıcıların (karşı tarafın) verisini de sizin gönderdiğiniz içerik
             aracılığıyla işler. Bir mesaj veya ilan rapor edildiğinde, rapor içeriği ve ilgili taraf bilgileri
             moderasyon ekibi tarafından incelenir.
+          </p>
+          <p className="mb-2">
+            İlan &quot;takas oldu&quot; şeklinde kapandıktan sonra, görüşmenin tarafları birbirine 1-5 yıldız
+            puanı ve opsiyonel yorum verebilir; bu değerlendirme ilgili takas ilanı üzerinden diğer
+            kullanıcılara gösterilir.
           </p>
           <p>
             Kapanan bir takas ilanının mesajları, kapanmadan 6 ay sonra otomatik olarak anonimleştirilir
