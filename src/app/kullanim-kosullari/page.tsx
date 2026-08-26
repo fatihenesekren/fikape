@@ -16,7 +16,7 @@ export default function KullanimKosullariPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Kullanım Koşulları</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Temmuz 2026</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ağustos 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -37,7 +37,10 @@ export default function KullanimKosullariPage() {
           <p>
             fikape.com, araç kullanıcılarının Fiyat (FI), Kalite (KA) ve Performans (PE) başlıkları
             altında yapılandırılmış yorum ve puan paylaşabildiği bağımsız bir tüketici platformudur.
-            Platform herhangi bir marka, bayi veya üretici ile ticari ilişki içinde değildir.
+            Platform ayrıca kullanıcıların araçlarını &quot;Takasa Açık&quot; olarak ilan edip birbirleriyle
+            platform içi mesajlaşma yoluyla iletişime geçebildiği bir Takas Pazarı hizmeti sunar
+            (bkz. madde 10). Platform herhangi bir marka, bayi veya üretici ile ticari ilişki içinde
+            değildir.
           </p>
         </section>
 
@@ -151,11 +154,18 @@ export default function KullanimKosullariPage() {
             sonuçlarından sorumlu tutulamaz.
           </p>
           <p className="mt-2">
-            İlan verirken paylaştığınız araç ve konum (il) bilgisinin doğruluğundan ve bu bilgileri
-            paylaşma kararınızdan tamamen siz sorumlusunuz. Araç sahibi olmadığınız halde ilan
-            vermek Kullanım Koşulları&apos;nın ihlalidir. Şüpheli veya kötü niyetli kullanıcı davranışını
-            bildirmek için mesajlaşma ekranındaki &quot;Rapor Et&quot; özelliğini kullanabilirsiniz; platform
-            gerekli gördüğü durumlarda hesapları kısıtlama hakkını saklı tutar.
+            İlan verirken paylaştığınız araç, konum (il) ve hasar durumu/tramer/boyalı-değişen parça
+            beyanının doğruluğundan ve bu bilgileri paylaşma kararınızdan tamamen siz sorumlusunuz.
+            Araç sahibi olmadığınız halde ilan vermek Kullanım Koşulları&apos;nın ihlalidir. Şüpheli veya
+            kötü niyetli kullanıcı davranışını bildirmek için mesajlaşma ekranındaki &quot;Rapor Et&quot;
+            özelliğini, bir görüşmeyi tek taraflı sonlandırmak için &quot;Görüşmeyi Sonlandır&quot; özelliğini
+            kullanabilirsiniz; platform gerekli gördüğü durumlarda hesapları kısıtlama hakkını saklı
+            tutar.
+          </p>
+          <p className="mt-2">
+            İlan &quot;Takas oldu&quot; şeklinde kapandıktan sonra görüşmenin tarafları birbirine yıldız puanı
+            ve opsiyonel yorum verebilir. Bu değerlendirmeler için de 4. maddedeki içerik kuralları
+            (hakaret, ayrımcılık, yanıltıcı iddia yasağı vb.) geçerlidir.
           </p>
         </section>
 
