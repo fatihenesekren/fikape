@@ -36,6 +36,7 @@ async function getListing(id: number) {
       wantCategory: true,
       wantBrand: true,
       user: { select: { id: true, trustLevel: true, displayName: true, avatarUrl: true } },
+      userProduct: { select: { usageAmount: true, usageUnit: true } },
       partConditions: { select: { partKey: true, condition: true } },
       tramerRecords: { select: { month: true, year: true, amount: true }, orderBy: [{ year: "desc" }, { month: "desc" }] },
     },
@@ -385,6 +386,11 @@ export default async function TakasDetayPage({
 
           <div className="flex flex-wrap gap-1.5 mt-3">
             <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">📍 {listing.city}</span>
+            {listing.userProduct?.usageUnit === "km" && listing.userProduct.usageAmount != null && (
+              <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
+                {listing.userProduct.usageAmount.toLocaleString("tr-TR")} km
+              </span>
+            )}
             <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">
               {PAYMENT_LABEL[listing.paymentIntent] ?? listing.paymentIntent}
             </span>

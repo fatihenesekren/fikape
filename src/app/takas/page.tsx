@@ -178,6 +178,10 @@ async function fetchListings(
       where,
       include: {
         product: { include: { brand: true, model: true, category: true } },
+        // Km bilgisi Garaj'da zaten toplanıyordu ama Takas kartında/detayında hiç
+        // gösterilmiyordu (bkz. denetim raporu, YÜKSEK madde) — bir araç takasında
+        // hasardan sonraki en kritik ikinci veri.
+        userProduct: { select: { usageAmount: true, usageUnit: true } },
       },
       orderBy: { createdAt: "desc" },
       skip: (page - 1) * PAGE_SIZE,

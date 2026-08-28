@@ -20,8 +20,10 @@ export function TradeCard({
     createdAt: Date;
     coverPhotoUrl?: string | null;
     product: { brand: { name: string }; model: { name: string }; year: number | null };
+    userProduct?: { usageAmount: number | null; usageUnit: string | null } | null;
   };
 }) {
+  const km = listing.userProduct?.usageUnit === "km" ? listing.userProduct.usageAmount : null;
   return (
     <Link
       href={`/takas/${listing.id}`}
@@ -43,6 +45,11 @@ export function TradeCard({
         </div>
         <div className="flex flex-wrap gap-1.5 mt-2">
           <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">📍 {listing.city}</span>
+          {km != null && (
+            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
+              {km.toLocaleString("tr-TR")} km
+            </span>
+          )}
           <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">
             {PAYMENT_LABEL[listing.paymentIntent] ?? listing.paymentIntent}
           </span>
