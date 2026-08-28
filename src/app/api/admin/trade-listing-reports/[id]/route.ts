@@ -27,9 +27,23 @@ export async function PATCH(
 
   const report = await prisma.tradeListingReport.findUnique({
     where: { id: reportId },
-    select: { id: true, reason: true, tradeListing: { select: { userId: true } } },
+    select: { id: true, reason: true, tradeListingId: true, tradeListing: { select: { userId: true } } },
   });
   if (!report) return NextResponse.json({ error: "Rapor bulunamadı." }, { status: 404 });
+
+  // "İlanı Kapat" — sadece raporlanan ilanı kapatır, kullanıcıya dokunmaz. Önceden
+  // tek aksiyon kullanıcıyı tamamen banlamaktı, tek bir kötü ilan için orantısız
+  // olabiliyordu (bkz. boşluk raporu, ORTA madde).
+  if (action === "close_listing") {
+    await prisma.$transaction([
+      prisma.tradeListing.update({
+        where: { id: report.tradeListingId },
+        data: { isActive: false, closedAt: new Date() },
+      }),
+      prisma.tradeListingReport.update({ where: { id: reportId }, data: { status: "REVIEWED" } }),
+    ]);
+    return NextResponse.json({ ok: true });
+  }
 
   if (action === "ban") {
     const bannedUserId = report.tradeListing.userId;

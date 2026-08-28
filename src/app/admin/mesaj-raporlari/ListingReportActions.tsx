@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 
 export function ListingBanButton({ reportId }: { reportId: number }) {
   const router = useRouter();
-  const [loading, setLoading] = useState<"ban" | "dismiss" | null>(null);
+  const [loading, setLoading] = useState<"ban" | "dismiss" | "close_listing" | null>(null);
 
-  async function act(action: "ban" | "dismiss") {
+  async function act(action: "ban" | "dismiss" | "close_listing") {
     setLoading(action);
     try {
       const res = await fetch(`/api/admin/trade-listing-reports/${reportId}`, {
@@ -23,6 +23,13 @@ export function ListingBanButton({ reportId }: { reportId: number }) {
 
   return (
     <span className="inline-flex items-center gap-3">
+      <button
+        onClick={() => act("close_listing")}
+        disabled={loading !== null}
+        className="text-xs font-semibold text-gray-500 hover:underline disabled:opacity-60"
+      >
+        İlanı Kapat
+      </button>
       <button
         onClick={() => act("ban")}
         disabled={loading !== null}

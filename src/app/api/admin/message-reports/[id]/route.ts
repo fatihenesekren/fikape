@@ -26,15 +26,31 @@ export async function PATCH(
   const { id } = await params;
   const reportId = parseInt(id);
   const { action } = await req.json().catch(() => ({ action: null }));
-  if (action !== "ban") {
+  if (action !== "ban" && action !== "delete_message") {
     return NextResponse.json({ error: "Geçersiz aksiyon." }, { status: 400 });
   }
 
   const report = await prisma.messageReport.findUnique({
     where: { id: reportId },
-    select: { id: true, reason: true, message: { select: { senderId: true } } },
+    select: { id: true, reason: true, messageId: true, message: { select: { senderId: true } } },
   });
   if (!report) return NextResponse.json({ error: "Rapor bulunamadı." }, { status: 404 });
+
+  // "Mesajı Sil" — önceden tek aksiyon kullanıcıyı tamamen banlamaktı (tüm aktif
+  // ilanlarını da kapatıyordu), tek bir kötü mesaj için orantısız olabiliyordu
+  // (bkz. boşluk raporu, ORTA madde). Bu aksiyon sadece mesaj metnini kaldırır,
+  // kullanıcıya dokunmaz. Anonimleştirme cron'undakinden ayrı bir placeholder
+  // kullanılıyor — biri KVKK saklama süresi, diğeri moderasyon kararı.
+  if (action === "delete_message") {
+    await prisma.$transaction([
+      prisma.message.update({
+        where: { id: report.messageId },
+        data: { text: "[Bu mesaj moderasyon tarafından kaldırıldı]" },
+      }),
+      prisma.messageReport.update({ where: { id: reportId }, data: { status: "REVIEWED" } }),
+    ]);
+    return NextResponse.json({ ok: true });
+  }
 
   const bannedUserId = report.message.senderId;
 
