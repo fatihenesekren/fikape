@@ -7,6 +7,9 @@ import { isTradeListingEnabled } from "@/lib/features";
 import { hashRequestContext } from "@/lib/security";
 import { createNotification } from "@/lib/notification";
 import { CAR_PARTS } from "@/lib/carParts";
+import { isMutualMatch, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
+import type { LocationScope } from "@/lib/tradeExpectations";
+import type { DamageStatus } from "@/lib/damageStatus";
 
 const DAILY_LISTING_LIMIT = Number(process.env.TAKASA_AC_ILAN_GUNLUK_LIMIT) || 5;
 
@@ -54,7 +57,12 @@ export async function POST(req: Request) {
     where: { id: userProductId },
     select: {
       id: true, userId: true, productId: true, ownershipStatus: true,
-      product: { select: { categoryId: true, brandId: true } },
+      product: {
+        select: {
+          categoryId: true, brandId: true,
+          brand: { select: { name: true } }, model: { select: { name: true } },
+        },
+      },
     },
   });
   if (!userProduct || userProduct.userId !== userId || userProduct.ownershipStatus !== "CURRENT") {
@@ -165,6 +173,71 @@ export async function POST(req: Request) {
         type: "SAVED_SEARCH_MATCH",
         message: `${city} ilinde kayıtlı aramanızla eşleşen yeni bir takas ilanı var`,
         link: `/takas/${listing.id}`,
+      }).catch(() => {});
+    }
+
+    // Karşılıklı eşleşme bildirimi — yeni ilanın aracı bir başka aktif ilanın
+    // aradığına, o ilanın aracı da yeni ilanın aradığına uyuyorsa iki tarafa
+    // da bildirim gider (bkz. boşluk raporu, DÜŞÜK madde — Faz 2). DB seviyesinde
+    // kategori/marka ile ön-filtreleniyor, konum/hasar kontrolü JS'te.
+    const newVehicle: VehicleFacts = {
+      categoryId: userProduct.product.categoryId,
+      brandId: userProduct.product.brandId,
+      city,
+      damageStatus: damageStatus ?? null,
+    };
+    const newWant: WantCriteria = {
+      wantCategoryId,
+      wantBrandId,
+      wantLocationScope: (wantLocationScope ?? "NATIONWIDE") as LocationScope,
+      wantDamageStatuses: (wantDamageStatuses ?? []) as DamageStatus[],
+      city,
+    };
+    const newVehicleName = `${userProduct.product.brand.name} ${userProduct.product.model.name}`;
+
+    const candidates = await prisma.tradeListing.findMany({
+      where: {
+        isActive: true,
+        userId: { not: userId },
+        OR: [{ wantCategoryId: null }, { wantCategoryId: newVehicle.categoryId }],
+        AND: [{ OR: [{ wantBrandId: null }, { wantBrandId: newVehicle.brandId }] }],
+      },
+      select: {
+        id: true, userId: true, city: true, damageStatus: true,
+        wantCategoryId: true, wantBrandId: true, wantLocationScope: true, wantDamageStatuses: true,
+        product: {
+          select: {
+            categoryId: true, brandId: true,
+            brand: { select: { name: true } }, model: { select: { name: true } },
+          },
+        },
+      },
+    }).catch(() => []);
+
+    for (const c of candidates) {
+      const candidateVehicle: VehicleFacts = {
+        categoryId: c.product.categoryId, brandId: c.product.brandId, city: c.city, damageStatus: c.damageStatus,
+      };
+      const candidateWant: WantCriteria = {
+        wantCategoryId: c.wantCategoryId, wantBrandId: c.wantBrandId,
+        wantLocationScope: c.wantLocationScope as LocationScope,
+        wantDamageStatuses: c.wantDamageStatuses as DamageStatus[],
+        city: c.city,
+      };
+      if (!isMutualMatch({ want: newWant, vehicle: newVehicle }, { want: candidateWant, vehicle: candidateVehicle })) continue;
+
+      const candidateVehicleName = `${c.product.brand.name} ${c.product.model.name}`;
+      createNotification({
+        userId: c.userId,
+        type: "TRADE_MUTUAL_MATCH",
+        message: `"${newVehicleName}" ilanı, aradığın kriterlerle eşleşiyor ve senin aracın da onun aradığına uyuyor!`,
+        link: `/takas/${listing.id}`,
+      }).catch(() => {});
+      createNotification({
+        userId,
+        type: "TRADE_MUTUAL_MATCH",
+        message: `"${candidateVehicleName}" ilanı, aradığın kriterlerle eşleşiyor ve senin aracın da onun aradığına uyuyor!`,
+        link: `/takas/${c.id}`,
       }).catch(() => {});
     }
 

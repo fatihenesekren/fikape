@@ -242,6 +242,7 @@ enum NotificationType {
   SAVED_SEARCH_MATCH
   TRADE_INTEREST_LOST
   TRADE_RATED
+  TRADE_MUTUAL_MATCH
 }
 
 model Notification {
@@ -907,6 +908,12 @@ model TradeListing {
 
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+
+  // "İlan Yenile" — createdAt'ı DEĞİŞTİRMEDEN (ilanın gerçek açılış tarihi
+  // korunur) sıralamayı öne almak için ayrı bir alan. Oluşturmada createdAt'la
+  // aynı, yenilemede tekrar now()'a set edilir. Kötüye kullanımı önlemek için
+  // API'de cooldown uygulanır (bkz. boşluk raporu, DÜŞÜK madde).
+  effectiveDate   DateTime @default(now())
 
   threads         MessageThread[]
   reports         TradeListingReport[]

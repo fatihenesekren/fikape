@@ -23,6 +23,7 @@ export const TYPE_ICON: Record<string, string> = {
   NEW_TRADE_MESSAGE: "🤝",
   TRADE_INTEREST_LOST: "👋",
   TRADE_RATED: "⭐",
+  TRADE_MUTUAL_MATCH: "✨",
 };
 
 export const TYPE_LABEL: Record<string, string> = {
@@ -37,6 +38,7 @@ export const TYPE_LABEL: Record<string, string> = {
   NEW_TRADE_MESSAGE: "Takas",
   TRADE_INTEREST_LOST: "Takas",
   TRADE_RATED: "Takas",
+  TRADE_MUTUAL_MATCH: "Takas",
 };
 
 function fmtDate(iso: string) {

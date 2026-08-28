@@ -11,6 +11,7 @@ const PAYMENT_LABEL: Record<string, string> = {
 
 export function TradeCard({
   listing,
+  isMatch = false,
 }: {
   listing: {
     id: number;
@@ -22,13 +23,23 @@ export function TradeCard({
     product: { brand: { name: string }; model: { name: string }; year: number | null };
     userProduct?: { usageAmount: number | null; usageUnit: string | null } | null;
   };
+  isMatch?: boolean;
 }) {
   const km = listing.userProduct?.usageUnit === "km" ? listing.userProduct.usageAmount : null;
   return (
     <Link
       href={`/takas/${listing.id}`}
-      className="flex gap-3 bg-white border border-gray-100 rounded-2xl p-5 hover:border-gray-200 transition-colors"
+      className="flex gap-3 bg-white border border-gray-100 rounded-2xl p-5 hover:border-gray-200 transition-colors relative"
     >
+      {isMatch && (
+        <span
+          className="absolute -top-2 -left-2 text-[10px] font-bold text-white px-2 py-0.5 rounded-full shadow-sm"
+          style={{ background: "#4338ca" }}
+          title="İlan sahibinin aradığı kriterler senin aracınla, senin aradığın kriterler de onun aracıyla uyuşuyor"
+        >
+          ✨ Sana Uygun
+        </span>
+      )}
       {listing.coverPhotoUrl && (
         <div className="relative w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-gray-50">
           <Image src={listing.coverPhotoUrl} alt="" fill sizes="80px" className="object-cover" />

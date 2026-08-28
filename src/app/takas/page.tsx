@@ -7,6 +7,9 @@ import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { TradeCard } from "./TradeCard";
 import { TakasFilterForm } from "./TakasFilterForm";
 import { SavedSearchPanel } from "./SavedSearchPanel";
+import { matchesWant, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
+import type { LocationScope } from "@/lib/tradeExpectations";
+import type { DamageStatus } from "@/lib/damageStatus";
 
 const PAGE_SIZE = 20;
 
@@ -85,6 +88,43 @@ export default async function TakasPage({
 
   const session = await auth();
   const isLoggedIn = !!session?.user?.id;
+
+  // "Sana Uygun" rozeti — kullanıcının kendi aktif ilanı varsa, listedeki her
+  // adayın hem aracı kullanıcının aradığına hem kullanıcının aracı adayın
+  // aradığına uyup uymadığı kontrol edilir (bkz. boşluk raporu, DÜŞÜK madde
+  // — Faz 1). Mevcut alanlar üzerinden hesaplanıyor, yeni veri toplanmadı.
+  const myListing = isLoggedIn
+    ? await prisma.tradeListing.findFirst({
+        where: { userId: Number(session!.user.id), isActive: true },
+        select: {
+          city: true,
+          damageStatus: true,
+          wantCategoryId: true,
+          wantBrandId: true,
+          wantLocationScope: true,
+          wantDamageStatuses: true,
+          product: { select: { categoryId: true, brandId: true } },
+        },
+      }).catch(() => null)
+    : null;
+  const myWant: WantCriteria | null = myListing
+    ? {
+        wantCategoryId: myListing.wantCategoryId,
+        wantBrandId: myListing.wantBrandId,
+        wantLocationScope: myListing.wantLocationScope as LocationScope,
+        wantDamageStatuses: myListing.wantDamageStatuses as DamageStatus[],
+        city: myListing.city,
+      }
+    : null;
+  const myVehicle: VehicleFacts | null = myListing
+    ? {
+        categoryId: myListing.product.categoryId,
+        brandId: myListing.product.brandId,
+        city: myListing.city,
+        damageStatus: myListing.damageStatus,
+      }
+    : null;
+
   const selectedCategory = categories.find((c) => c.slug === (params.kategori ?? ""));
   const selectedBrand = brands.find((b) => b.slug === (params.marka ?? ""));
   const savedSearches = isLoggedIn
@@ -134,9 +174,28 @@ export default async function TakasPage({
         </div>
       ) : (
         <div className="space-y-4">
-          {listings.map((listing) => (
-            <TradeCard key={listing.id} listing={listing} />
-          ))}
+          {listings.map((listing) => {
+            const isMatch =
+              myWant && myVehicle
+                ? matchesWant(myWant, {
+                    categoryId: listing.product.categoryId,
+                    brandId: listing.product.brandId,
+                    city: listing.city,
+                    damageStatus: listing.damageStatus,
+                  }) &&
+                  matchesWant(
+                    {
+                      wantCategoryId: listing.wantCategoryId,
+                      wantBrandId: listing.wantBrandId,
+                      wantLocationScope: listing.wantLocationScope as LocationScope,
+                      wantDamageStatuses: listing.wantDamageStatuses as DamageStatus[],
+                      city: listing.city,
+                    },
+                    myVehicle
+                  )
+                : false;
+            return <TradeCard key={listing.id} listing={listing} isMatch={isMatch} />;
+          })}
         </div>
       )}
 
@@ -208,7 +267,9 @@ async function fetchListings(
         // hasardan sonraki en kritik ikinci veri.
         userProduct: { select: { usageAmount: true, usageUnit: true } },
       },
-      orderBy: { createdAt: "desc" },
+      // effectiveDate: createdAt'la aynı başlar, "İlan Yenile" ile tekrar now()'a
+      // set edilir — createdAt'ın kendisi (ilanın gerçek açılış tarihi) korunur.
+      orderBy: { effectiveDate: "desc" },
       skip: (page - 1) * PAGE_SIZE,
       take: PAGE_SIZE,
     }),
