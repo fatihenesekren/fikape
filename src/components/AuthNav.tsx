@@ -38,6 +38,15 @@ function PlusCircleIcon() {
   );
 }
 
+// Mesajlarım — konuşma balonu.
+function MessageIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+    </svg>
+  );
+}
+
 function UserIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -68,6 +77,7 @@ function ChevronDown() {
 export function AuthNav() {
   const { data: session, status } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [unreadMessages, setUnreadMessages] = useState(0);
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
@@ -75,6 +85,19 @@ export function AuthNav() {
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
+
+  // "Mesajlarım" rozeti — /mesajlar sayfası zaten çalışıyordu ama hiçbir nav'da
+  // linki yoktu (bkz. boşluk raporu). Sayfa değişince yeniden çekiliyor, böylece
+  // bir görüşmeyi okuduktan sonra sayaç güncel kalıyor.
+  useEffect(() => {
+    if (!session) return;
+    let cancelled = false;
+    fetch("/api/messages/unread-count")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => { if (!cancelled && data) setUnreadMessages(data.count); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [session, pathname]);
 
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {
@@ -123,6 +146,14 @@ export function AuthNav() {
               )}
               <Link href="/garajim" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                 <GarageIcon /> Garajım
+              </Link>
+              <Link href="/mesajlar" onClick={() => setMenuOpen(false)} className={`${menuItemClass} justify-between`}>
+                <span className="flex items-center gap-2.5"><MessageIcon /> Mesajlarım</span>
+                {unreadMessages > 0 && (
+                  <span className="min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center leading-none">
+                    {unreadMessages > 9 ? "9+" : unreadMessages}
+                  </span>
+                )}
               </Link>
               {/* Araç Öner masaüstünde header'da ayrı buton olarak zaten görünüyor —
                   mobilde header'da yer olmadığı için sadece bu menüde tekrarlanıyor.
