@@ -131,6 +131,8 @@ export function TradeToggleCard({
   const [closeReason, setCloseReason] = useState<CloseReason | "">("");
   const [closing, setClosing] = useState(false);
   const [reopening, setReopening] = useState(false);
+  const [renewing, setRenewing] = useState(false);
+  const [renewMessage, setRenewMessage] = useState<string | null>(null);
   // Aktif ilan özeti varsayılan kapalı — sürekli açık, renkli bir kutu yerine
   // tıklanınca genişleyen bir çip (bkz. InsuranceLeadCard'daki aynı desen,
   // kullanıcı geri bildirimi: kart görsel olarak çok yoğun/gürültülüydü).
@@ -184,6 +186,30 @@ export function TradeToggleCard({
         {error && <p className="text-xs text-red-600">{error}</p>}
       </div>
     );
+  }
+
+  // "İlanı Yenile" — createdAt'a dokunmaz, sadece listeleme sıralamasında öne
+  // alır. 48 saatlik cooldown API tarafında uygulanıyor, burada sadece hata
+  // mesajı (varsa "en erken ne zaman" bilgisi) gösteriliyor.
+  async function renewListing() {
+    setRenewing(true);
+    setRenewMessage(null);
+    try {
+      const res = await fetch(`/api/trades/${existingListing!.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "renew" }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setRenewMessage(data.error ?? "Bir hata oluştu.");
+        return;
+      }
+      setRenewMessage("İlanınız yenilendi, listenin üst sıralarına taşındı.");
+      router.refresh();
+    } finally {
+      setRenewing(false);
+    }
   }
 
   async function closeListing() {
@@ -311,11 +337,19 @@ export function TradeToggleCard({
             <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-indigo-600 hover:underline whitespace-nowrap">
               Düzenle
             </button>
+            <button
+              onClick={renewListing}
+              disabled={renewing}
+              className="text-[11px] font-semibold text-indigo-600 hover:underline whitespace-nowrap disabled:opacity-60"
+            >
+              {renewing ? "Yenileniyor..." : "🔝 İlanı Yenile"}
+            </button>
             <button onClick={() => setSummaryOpen(false)} aria-label="Daralt" className="text-indigo-400 hover:text-indigo-700 text-xs">
               ✕
             </button>
           </div>
         </div>
+        {renewMessage && <p className="mt-1.5 text-[11px] text-indigo-700">{renewMessage}</p>}
         {/* Native <select>, flex satırında varsayılan min-width:auto yüzünden
             küçülmüyor ve taşıyordu (bkz. kullanıcı geri bildirimi, ekran
             görüntüsü) — min-w-0+flex-1 ile küçülebilir yapıldı, mobilde

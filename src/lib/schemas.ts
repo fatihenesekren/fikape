@@ -180,7 +180,7 @@ export const tradeListingCloseSchema = z.object({
 });
 
 export const tradeListingUpdateSchema = z.object({
-  action:         z.enum(["update", "reopen"]),
+  action:         z.enum(["update", "reopen", "renew"]),
   wantCategoryId: z.union([z.number(), z.string()]).optional().nullable(),
   wantBrandId:    z.union([z.number(), z.string()]).optional().nullable(),
   wantAnything:   z.boolean().optional(),

@@ -19,6 +19,7 @@ export function TradeCard({
     paymentIntent: string;
     wantAnything: boolean;
     createdAt: Date;
+    effectiveDate: Date;
     coverPhotoUrl?: string | null;
     product: { brand: { name: string }; model: { name: string }; year: number | null };
     userProduct?: { usageAmount: number | null; usageUnit: string | null } | null;
@@ -48,7 +49,9 @@ export function TradeCard({
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{listing.product.brand.name}</div>
-          <span className="text-[10px] text-gray-300 shrink-0">{timeAgoTr(listing.createdAt)}</span>
+          {/* effectiveDate — "İlan Yenile" ile öne alınan sıralamayla tutarlı
+              kalması için createdAt yerine bu gösteriliyor (bkz. boşluk raporu). */}
+          <span className="text-[10px] text-gray-300 shrink-0">{timeAgoTr(listing.effectiveDate)}</span>
         </div>
         <div className="font-bold text-gray-900">
           {stripModelGenRange(listing.product.model.name)}

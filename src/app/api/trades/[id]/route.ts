@@ -27,7 +27,7 @@ export async function PATCH(
 
   const listing = await prisma.tradeListing.findUnique({
     where: { id: listingId },
-    select: { id: true, userId: true, userProductId: true, isActive: true },
+    select: { id: true, userId: true, userProductId: true, isActive: true, effectiveDate: true },
   });
   if (!listing || listing.userId !== userId) {
     return NextResponse.json({ error: "İlan bulunamadı." }, { status: 404 });
@@ -38,6 +38,24 @@ export async function PATCH(
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
   const data = parsed.data;
+
+  // "İlan Yenile" — createdAt'a (ilanın gerçek açılış tarihi) dokunmadan
+  // effectiveDate'i now()'a çekip listeleme sıralamasında öne alır. Kötüye
+  // kullanımı önlemek için 48 saatlik cooldown (bkz. boşluk raporu, DÜŞÜK madde).
+  const RENEW_COOLDOWN_MS = 48 * 60 * 60 * 1000;
+  if (data.action === "renew") {
+    if (!listing.isActive) {
+      return NextResponse.json({ error: "Kapalı bir ilan yenilenemez." }, { status: 409 });
+    }
+    const nextEligible = new Date(listing.effectiveDate.getTime() + RENEW_COOLDOWN_MS);
+    if (nextEligible > new Date()) {
+      return NextResponse.json({
+        error: `İlanınızı en erken ${nextEligible.toLocaleString("tr-TR", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })} tarihinde yenileyebilirsiniz.`,
+      }, { status: 429 });
+    }
+    await prisma.tradeListing.update({ where: { id: listingId }, data: { effectiveDate: new Date() } });
+    return NextResponse.json({ ok: true });
+  }
 
   if (data.action === "reopen") {
     if (listing.isActive) {
@@ -50,9 +68,11 @@ export async function PATCH(
     if (existingActive) {
       return NextResponse.json({ error: "Bu araç için zaten aktif bir takas ilanınız var." }, { status: 409 });
     }
+    // Yeniden açılan ilan da fiilen yeni bir ilan gibi listeye dönüyor —
+    // effectiveDate now()'a çekilir (createdAt yine dokunulmaz).
     await prisma.tradeListing.update({
       where: { id: listingId },
-      data: { isActive: true, closedAt: null, closeReason: null },
+      data: { isActive: true, closedAt: null, closeReason: null, effectiveDate: new Date() },
     });
     return NextResponse.json({ ok: true });
   }
