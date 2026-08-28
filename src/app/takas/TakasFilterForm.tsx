@@ -13,6 +13,9 @@ export function TakasFilterForm({
   kategoriSlug,
   markaSlug,
   odemeNiyeti,
+  yilMin,
+  yilMax,
+  kmMax,
   cities,
   categories,
   brands,
@@ -22,6 +25,9 @@ export function TakasFilterForm({
   kategoriSlug: string;
   markaSlug: string;
   odemeNiyeti: string;
+  yilMin: string;
+  yilMax: string;
+  kmMax: string;
   cities: readonly string[];
   categories: { id: number; slug: string; name: string }[];
   brands: { id: number; slug: string; name: string }[];
@@ -68,6 +74,35 @@ export function TakasFilterForm({
           <option key={o.value} value={o.value}>{o.label}</option>
         ))}
       </select>
+      <input
+        type="number"
+        name="yilMin"
+        defaultValue={yilMin}
+        placeholder="Yıl (min)"
+        min={1980}
+        max={2100}
+        aria-label="En eski model yılı"
+        className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
+      />
+      <input
+        type="number"
+        name="yilMax"
+        defaultValue={yilMax}
+        placeholder="Yıl (max)"
+        min={1980}
+        max={2100}
+        aria-label="En yeni model yılı"
+        className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
+      />
+      <input
+        type="number"
+        name="kmMax"
+        defaultValue={kmMax}
+        placeholder="Km (en fazla)"
+        min={0}
+        aria-label="En fazla kilometre"
+        className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
+      />
       <button type="submit" className="sm:col-span-4 text-sm font-semibold text-white rounded-lg px-3 py-1.5" style={{ background: "#4338ca" }}>
         Filtrele
       </button>

@@ -10,13 +10,18 @@ import { SavedSearchPanel } from "./SavedSearchPanel";
 
 const PAGE_SIZE = 20;
 
+interface TakasSearchParams {
+  il?: string; kategori?: string; marka?: string; odeme?: string; sayfa?: string;
+  yilMin?: string; yilMax?: string; kmMax?: string;
+}
+
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<{ il?: string; kategori?: string; marka?: string; odeme?: string; sayfa?: string }>;
+  searchParams: Promise<TakasSearchParams>;
 }): Promise<Metadata> {
   const params = await searchParams;
-  const isFiltered = !!(params.il || params.kategori || params.marka || params.odeme || params.sayfa);
+  const isFiltered = Object.values(params).some(Boolean);
   return {
     title: "Araç Takas İlanları – fikape",
     robots: isFiltered ? { index: false, follow: true } : undefined,
@@ -27,15 +32,20 @@ export async function generateMetadata({
 export default async function TakasPage({
   searchParams,
 }: {
-  searchParams: Promise<{ il?: string; kategori?: string; marka?: string; odeme?: string; sayfa?: string }>;
+  searchParams: Promise<TakasSearchParams>;
 }) {
   const params = await searchParams;
   const il = params.il ?? "";
   const page = Math.max(1, parseInt(params.sayfa ?? "1") || 1);
+  const yilMin = params.yilMin ? parseInt(params.yilMin) : undefined;
+  const yilMax = params.yilMax ? parseInt(params.yilMax) : undefined;
+  const kmMax = params.kmMax ? parseInt(params.kmMax) : undefined;
 
   // İl seçilmemişse artık tüm Türkiye'deki ilanlar gösteriliyor (önceden boş sayfa gösterip
   // platformun envanterini hiç göstermiyordu — bkz. denetim raporu).
-  const { listings, total } = await fetchListings(il, params.kategori, params.marka, params.odeme, page);
+  const { listings, total } = await fetchListings(
+    il, params.kategori, params.marka, params.odeme, yilMin, yilMax, kmMax, page
+  );
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   // Mevcut filtreleri koruyarak sayfa linki üretir (pagination kontrolleri için).
@@ -45,6 +55,9 @@ export default async function TakasPage({
     if (params.kategori) qs.set("kategori", params.kategori);
     if (params.marka) qs.set("marka", params.marka);
     if (params.odeme) qs.set("odeme", params.odeme);
+    if (params.yilMin) qs.set("yilMin", params.yilMin);
+    if (params.yilMax) qs.set("yilMax", params.yilMax);
+    if (params.kmMax) qs.set("kmMax", params.kmMax);
     if (targetPage > 1) qs.set("sayfa", String(targetPage));
     const q = qs.toString();
     return q ? `/takas?${q}` : "/takas";
@@ -94,6 +107,9 @@ export default async function TakasPage({
         kategoriSlug={params.kategori ?? ""}
         markaSlug={params.marka ?? ""}
         odemeNiyeti={params.odeme ?? ""}
+        yilMin={params.yilMin ?? ""}
+        yilMax={params.yilMax ?? ""}
+        kmMax={params.kmMax ?? ""}
         cities={TURKISH_CITIES}
         categories={categories}
         brands={brands}
@@ -148,6 +164,9 @@ async function fetchListings(
   kategoriSlug: string | undefined,
   markaSlug: string | undefined,
   odemeNiyeti: string | undefined,
+  yilMin: number | undefined,
+  yilMax: number | undefined,
+  kmMax: number | undefined,
   page: number
 ) {
   const paymentIntent =
@@ -159,18 +178,24 @@ async function fetchListings(
   // önce en yeni 50 ilan çekilip filtre JS'te sonradan uygulanıyordu, envanter büyüdükçe
   // filtreye uyan ama daha eski bir ilan sorgudan hiç dönmüyordu (bkz. denetim raporu, KRİTİK
   // madde). Artık hem doğru sonuç veriyor hem gerçek sayfalama (skip/take) destekliyor.
+  // Yıl/km filtresi de aynı denetim raporunun ORTA maddesi — mevcut product.year ve
+  // userProduct.usageAmount alanları üzerinden, yeni bir veri toplamaya gerek kalmadan.
   const where: Prisma.TradeListingWhereInput = {
     isActive: true,
     ...(il ? { city: il } : {}),
     ...(paymentIntent ? { paymentIntent } : {}),
-    ...(kategoriSlug || markaSlug
+    ...(kategoriSlug || markaSlug || yilMin != null || yilMax != null
       ? {
           product: {
             ...(kategoriSlug ? { category: { slug: kategoriSlug } } : {}),
             ...(markaSlug ? { brand: { slug: markaSlug } } : {}),
+            ...(yilMin != null || yilMax != null
+              ? { year: { ...(yilMin != null ? { gte: yilMin } : {}), ...(yilMax != null ? { lte: yilMax } : {}) } }
+              : {}),
           },
         }
       : {}),
+    ...(kmMax != null ? { userProduct: { usageUnit: "km", usageAmount: { lte: kmMax } } } : {}),
   };
 
   const [listings, total] = await Promise.all([
