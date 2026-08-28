@@ -241,6 +241,7 @@ enum NotificationType {
   NEW_TRADE_MESSAGE
   SAVED_SEARCH_MATCH
   TRADE_INTEREST_LOST
+  TRADE_RATED
 }
 
 model Notification {

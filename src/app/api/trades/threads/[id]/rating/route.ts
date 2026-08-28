@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { tradeRatingSchema, formatZodError } from "@/lib/schemas";
 import { checkRateLimit } from "@/lib/rateLimit";
+import { createNotification } from "@/lib/notification";
 
 // Takas sonrası karşılıklı değerlendirme — sadece ilan "Takas oldu" ile
 // kapandıktan sonra, o görüşmenin tarafları birbirini bir kez değerlendirebilir
@@ -25,7 +26,13 @@ export async function POST(
     select: {
       id: true,
       initiatorId: true,
-      tradeListing: { select: { userId: true, closeReason: true } },
+      tradeListing: {
+        select: {
+          userId: true,
+          closeReason: true,
+          product: { select: { brand: { select: { name: true } }, model: { select: { name: true } } } },
+        },
+      },
     },
   });
   if (!thread || (thread.initiatorId !== userId && thread.tradeListing.userId !== userId)) {
@@ -55,6 +62,15 @@ export async function POST(
         score: parsed.data.score,
         comment: parsed.data.comment ?? null,
       },
+    });
+    // Önceden puan alan kullanıcı bunu ancak ilgili ilana tekrar girerek fark
+    // ediyordu — hiçbir bildirim tipi karşılığı yoktu (bkz. boşluk raporu, ORTA madde).
+    const vehicleName = `${thread.tradeListing.product.brand.name} ${thread.tradeListing.product.model.name}`;
+    await createNotification({
+      userId: ratedUserId,
+      type: "TRADE_RATED",
+      message: `"${vehicleName}" takasınız için bir değerlendirme aldınız.`,
+      link: `/mesajlar/${threadId}`,
     });
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch {
