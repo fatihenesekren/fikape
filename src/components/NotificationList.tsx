@@ -21,6 +21,7 @@ export const TYPE_ICON: Record<string, string> = {
   UPDATE_REMINDER: "🔄",
   TRADE_INTEREST: "🤝",
   NEW_TRADE_MESSAGE: "🤝",
+  TRADE_INTEREST_LOST: "👋",
 };
 
 export const TYPE_LABEL: Record<string, string> = {
@@ -33,6 +34,7 @@ export const TYPE_LABEL: Record<string, string> = {
   UPDATE_REMINDER: "Hatırlatma",
   TRADE_INTEREST: "Takas",
   NEW_TRADE_MESSAGE: "Takas",
+  TRADE_INTEREST_LOST: "Takas",
 };
 
 function fmtDate(iso: string) {

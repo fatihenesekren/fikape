@@ -30,6 +30,7 @@ export default async function ThreadPage({
     include: {
       tradeListing: { include: { product: { include: { brand: true, model: true } }, user: { select: { id: true, displayName: true } } } },
       initiator: { select: { id: true, displayName: true } },
+      interestLostByUser: { select: { id: true, displayName: true } },
       messages: { orderBy: { createdAt: "asc" }, include: { sender: { select: { id: true, displayName: true } } } },
     },
   });
@@ -49,6 +50,8 @@ export default async function ThreadPage({
   const canMessage = !isBlocked && !isListingClosed && isTradeMessagingEnabled();
   const isInitiator = userId === thread.initiatorId;
   const counterpart = isInitiator ? thread.tradeListing.user : thread.initiator;
+  const interestLostByMe = thread.interestLostByUserId === userId;
+  const interestLostByOther = thread.interestLostByUserId != null && !interestLostByMe;
 
   // Takas sonrası karşılıklı değerlendirme daveti — ilan "Takas oldu" ile
   // kapandıysa ve bu kullanıcı bu görüşmeyi henüz değerlendirmediyse gösterilir.
@@ -67,8 +70,21 @@ export default async function ThreadPage({
           <h1 className="font-bold text-gray-900 text-sm">{vehicleName}</h1>
           <p className="text-xs text-gray-400">{thread.tradeListing.city}</p>
         </div>
-        {!isBlocked && <ThreadActions threadId={thread.id} />}
+        {!isBlocked && (
+          <ThreadActions threadId={thread.id} showInterestLost={thread.interestLostByUserId == null} />
+        )}
       </div>
+
+      {interestLostByMe && (
+        <p className="px-4 py-2 text-xs text-center text-gray-400 bg-gray-50 border-b border-gray-100">
+          Bu görüşmeyle ilgini kaybettiğini belirttin.
+        </p>
+      )}
+      {interestLostByOther && (
+        <p className="px-4 py-2 text-xs text-center text-gray-400 bg-gray-50 border-b border-gray-100">
+          {counterpart?.displayName ?? "Diğer taraf"} bu görüşmeyle ilgisini kaybettiğini belirtti.
+        </p>
+      )}
 
       <div className="flex-1 px-4 py-4 space-y-3">
         {thread.messages.map((m) => {

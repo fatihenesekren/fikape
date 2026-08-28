@@ -210,6 +210,7 @@ model User {
   threadsInitiated    MessageThread[] @relation("ThreadInitiator")
   messagesSent        Message[]       @relation("MessageSender")
   threadsBlocked      MessageThread[] @relation("ThreadBlockedBy")
+  threadsInterestLost MessageThread[] @relation("ThreadInterestLostBy")
   messageReports      MessageReport[]
   tradeListingReports TradeListingReport[]
   contentReports      ContentReport[]
@@ -239,6 +240,7 @@ enum NotificationType {
   TRADE_INTEREST
   NEW_TRADE_MESSAGE
   SAVED_SEARCH_MATCH
+  TRADE_INTEREST_LOST
 }
 
 model Notification {
@@ -980,6 +982,15 @@ model MessageThread {
   blockedByUserId Int?
   blockedByUser   User?    @relation("ThreadBlockedBy", fields: [blockedByUserId], references: [id])
   blockedAt       DateTime?
+
+  // "İlgimi kaybettim" — Block'tan farklı: mesajlaşmayı KAPATMAZ, sadece
+  // karşı tarafa (genelde ilan sahibine) yumuşak bir sinyal verir. Önceden
+  // sadece ilan sahibi ilanı kapatabiliyordu, görüşmeyi başlatan tarafın
+  // vazgeçtiğini belirtecek bir yolu yoktu — iki taraf da sessiz kalırsa ilan
+  // süresiz aktif kalıyordu (bkz. boşluk raporu, YÜKSEK madde).
+  interestLostByUserId Int?
+  interestLostByUser   User?    @relation("ThreadInterestLostBy", fields: [interestLostByUserId], references: [id])
+  interestLostAt       DateTime?
 
   messages        Message[]
   ratings         TradeRating[]
