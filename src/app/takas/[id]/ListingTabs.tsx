@@ -30,7 +30,7 @@ export function ListingTabs({ tabs }: { tabs: Tab[] }) {
             }`}
           >
             {tab.icon && <span aria-hidden="true">{tab.icon}</span>}
-            <span>{tab.label}</span>
+            <span className="whitespace-nowrap">{tab.label}</span>
           </button>
         ))}
       </div>

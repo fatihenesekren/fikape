@@ -258,7 +258,7 @@ export default async function TakasDetayPage({
           },
           {
             key: "boya",
-            label: "Boyalı/Değişen Parça",
+            label: "Boyalı/Değişen",
             icon: "🎨",
             // Veri olmasa bile şema her zaman gösterilir (tamamı "Belirtilmemiş"
             // renginde) — kullanıcı geri bildirimi: boş durumda hiçbir görsel
