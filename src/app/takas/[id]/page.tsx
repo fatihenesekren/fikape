@@ -145,7 +145,7 @@ export default async function TakasDetayPage({
     },
     {
       key: "teknik",
-      label: "Teknik Özellikler",
+      label: "Özellikler",
       icon: "⚙️",
       content: specs.length === 0 ? (
         <p className="text-sm text-gray-400 text-center py-6">Bu araç için teknik özellik bulunamadı.</p>
@@ -166,7 +166,7 @@ export default async function TakasDetayPage({
       ? [
           {
             key: "hasar",
-            label: "Hasar Durumu",
+            label: "Hasar",
             icon: "🚨",
             // Boyalı/Değişen Parça ile aynı prensip: kullanıcı beyanı, fikape
             // tarafından doğrulanmamış (bkz. kullanıcı talebi — yeni sekme,
@@ -258,7 +258,7 @@ export default async function TakasDetayPage({
           },
           {
             key: "boya",
-            label: "Boyalı/Değişen",
+            label: "Boya/Değişen",
             icon: "🎨",
             // Veri olmasa bile şema her zaman gösterilir (tamamı "Belirtilmemiş"
             // renginde) — kullanıcı geri bildirimi: boş durumda hiçbir görsel

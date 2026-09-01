@@ -18,19 +18,24 @@ export function ListingTabs({ tabs }: { tabs: Tab[] }) {
 
   return (
     <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden mb-4">
+      {/* Kaydırma yerine kısa (tek kelimelik) etiketler tercih edildi — ikon
+          zaten bağlamı veriyor, tam başlık sekme içeriğinde duruyor (bkz.
+          kullanıcı geri bildirimi: kaydırma "şık durmuyor"). min-w-0, flex
+          öğesinin whitespace-nowrap ile birlikte satırı taşırmaması için
+          (bilinen hata sınıfı — bkz. fikape_mobil_tasma_bug_sinifi). */}
       <div className="flex border-b border-gray-100 bg-gray-50/60">
         {tabs.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActive(tab.key)}
-            className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-2.5 text-[13px] sm:text-sm font-semibold border-b-2 transition-colors ${
+            className={`min-w-0 flex-1 flex items-center justify-center gap-1.5 px-2 py-2.5 text-[13px] sm:text-sm font-semibold border-b-2 transition-colors whitespace-nowrap ${
               active === tab.key
                 ? "border-indigo-600 text-indigo-700 bg-white"
                 : "border-transparent text-gray-400 hover:text-gray-600"
             }`}
           >
             {tab.icon && <span aria-hidden="true">{tab.icon}</span>}
-            <span className="whitespace-nowrap">{tab.label}</span>
+            <span>{tab.label}</span>
           </button>
         ))}
       </div>
