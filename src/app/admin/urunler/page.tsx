@@ -20,7 +20,7 @@ export default async function AdminUrunlerPage() {
   }));
 
   return (
-    <div className="px-8 py-10 max-w-4xl">
+    <div className="px-4 sm:px-8 py-10 max-w-4xl">
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-1">Teknik Özellikler</h1>
         <p className="text-sm text-gray-500">

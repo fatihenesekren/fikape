@@ -38,7 +38,7 @@ export default async function IcerikBildirimleriPage() {
   });
 
   return (
-    <div className="px-8 py-10 max-w-3xl">
+    <div className="px-4 sm:px-8 py-10 max-w-3xl">
       <div className="mb-8">
         <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2">
           İçerik Bildirimleri
@@ -66,16 +66,16 @@ export default async function IcerikBildirimleriPage() {
 
             return (
               <div key={r.id} className="bg-white border border-gray-100 rounded-xl p-4 space-y-2">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2 text-xs">
-                    <span className="px-2 py-0.5 rounded-full font-semibold bg-gray-100 text-gray-600">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 text-xs min-w-0">
+                    <span className="shrink-0 px-2 py-0.5 rounded-full font-semibold bg-gray-100 text-gray-600">
                       {TARGET_LABELS[r.targetType] ?? r.targetType}
                     </span>
-                    <Link href={`/araclar/${r.product.slug}`} className="font-semibold text-gray-800 hover:underline">
+                    <Link href={`/araclar/${r.product.slug}`} className="font-semibold text-gray-800 hover:underline truncate">
                       {productName}
                     </Link>
                   </div>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-gray-400 whitespace-nowrap">
                     {r.reporter.displayName ?? "Kullanıcı"} bildirdi
                   </span>
                 </div>
@@ -96,7 +96,7 @@ export default async function IcerikBildirimleriPage() {
 
                 <p className="text-sm text-gray-800 bg-gray-50 rounded-lg px-3 py-2">{r.note}</p>
 
-                <div className="flex items-center justify-between gap-2 pt-1">
+                <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
                   {fixLink ? (
                     <Link href={fixLink.href} className="text-xs font-semibold text-gray-900 hover:underline">
                       {fixLink.label}
