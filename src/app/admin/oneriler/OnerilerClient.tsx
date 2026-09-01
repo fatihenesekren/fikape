@@ -197,13 +197,16 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
 
   return (
     <div>
-      {/* Sekmeler */}
-      <div className="flex gap-2 mb-6 border-b border-gray-100 pb-4">
+      {/* Sekmeler — flex-wrap: 3 pil dar ekranda (px-8 mobilde de daraltıldı)
+          yan yana sığmayıp yatay taşıyordu, "Reddedilen 5" kesiliyordu
+          (bkz. kullanıcı geri bildirimi, ekran görüntüsü). Artık gerekirse
+          ikinci satıra düşüyor, kaydırmaya gerek kalmıyor. */}
+      <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-100 pb-4">
         {(["PENDING", "APPROVED", "REJECTED"] as const).map((tab) => (
           <button
             key={tab}
             onClick={() => setFilter(tab)}
-            className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
+            className={`shrink-0 px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
               filter === tab ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >

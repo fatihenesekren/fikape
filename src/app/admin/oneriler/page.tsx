@@ -40,7 +40,7 @@ export default async function AdminOnerilerPage() {
   const pendingCount = serialized.filter((s) => s.status === "PENDING").length;
 
   return (
-    <div className="px-8 py-10 max-w-3xl">
+    <div className="px-4 sm:px-8 py-10 max-w-3xl">
       <div className="mb-8">
         <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2">
           Araç Önerileri
