@@ -254,7 +254,17 @@ async function fetchListings(
           },
         }
       : {}),
-    ...(kmMax != null ? { userProduct: { usageUnit: "km", usageAmount: { lte: kmMax } } } : {}),
+    // Km beyan edilmemiş ilanlar (usageAmount null) filtre uygulanınca yanlışlıkla
+    // elenmesin — bilinmeyen km "belki uyuyor" anlamına gelir, "uymuyor" değil
+    // (bkz. kullanıcı geri bildirimi).
+    ...(kmMax != null
+      ? {
+          OR: [
+            { userProduct: { usageUnit: "km", usageAmount: { lte: kmMax } } },
+            { userProduct: { usageAmount: null } },
+          ],
+        }
+      : {}),
   };
 
   const [listings, total] = await Promise.all([
