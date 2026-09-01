@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -101,6 +101,9 @@ function SliderFrame({ photo, alt, index }: { photo: Photo; alt: string; index: 
 
 export function PhotoSlider({ photos, alt }: Props) {
   const [current, setCurrent] = useState(0);
+  // Hook'lar erken return'lerden ÖNCE çağrılmalı (Rules of Hooks) — touchStartX
+  // tek-fotoğraf/boş durumlarda kullanılmasa bile burada tanımlanıyor.
+  const touchStartX = useRef<number | null>(null);
 
   if (photos.length === 0) return null;
 
@@ -120,12 +123,33 @@ export function PhotoSlider({ photos, alt }: Props) {
   const next = () => setCurrent((c) => (c + 1) % photos.length);
   const showThumbs = photos.length >= 3;
 
+  // Dokunmatik kaydırma — önceden sadece ok butonları vardı, ama onlar
+  // `group-hover` ile görünür oluyordu ve mobilde hover diye bir şey
+  // olmadığı için pratikte hiç görünmüyordu; tek yol küçük resme dokunmaktı
+  // (bkz. kullanıcı geri bildirimi, ekran görüntüsü). Basit bir yatay
+  // parmak-kaydırma eşiği ile normal galeri davranışı eklendi.
+  const SWIPE_THRESHOLD = 40;
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current == null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    if (deltaX > SWIPE_THRESHOLD) prev();
+    else if (deltaX < -SWIPE_THRESHOLD) next();
+    touchStartX.current = null;
+  }
+
   return (
     <PhotoProvider toolbarRender={({ scale, onScale }) => <ZoomToolbar scale={scale} onScale={onScale} />}>
       <div className="w-full bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 py-4 space-y-3">
           {/* Ana kare */}
-          <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden group">
+          <div
+            className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden group"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {photos.map((photo, i) => (
               <div
                 key={i}
