@@ -558,20 +558,6 @@ function TradeFormFields({
         ))}
       </select>
 
-      {/* Km — Garaj'daki "Alış bilgisi" formuyla AYNI alanı düzenliyor, tek
-          doğruluk kaynağı UserProduct.usageAmount (bkz. kullanıcı geri
-          bildirimi: "diğer tarafla senkron olmalı"). */}
-      <input
-        type="number"
-        inputMode="numeric"
-        min={0}
-        value={usageAmountInput}
-        onChange={(e) => setUsageAmountInput(e.target.value)}
-        placeholder="Km (opsiyonel)"
-        aria-label="Aracın kilometresi"
-        className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
-      />
-
       {/* Kategori ve marka birbirinden bağımsız "fark etmez" olabilmeli —
           önceden tek bir "Marka/kategori fark etmez" checkbox'ı ikisini
           birlikte kapatıp açıyordu, kullanıcı "kategori: Otomobil ama marka
@@ -694,9 +680,25 @@ function TradeFormFields({
         className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
       />
 
+      {/* Km — Garaj'daki "Alış bilgisi" formuyla AYNI alanı düzenliyor, tek
+          doğruluk kaynağı UserProduct.usageAmount (bkz. kullanıcı geri
+          bildirimi: "diğer tarafla senkron olmalı"). Açıklama'nın hemen
+          üstünde — önceden açıklama metninin parantezinde "km" örnek olarak
+          geçiyordu, artık kendi alanı olduğu için oradan kaldırıldı. */}
+      <input
+        type="number"
+        inputMode="numeric"
+        min={0}
+        value={usageAmountInput}
+        onChange={(e) => setUsageAmountInput(e.target.value)}
+        placeholder="Km (opsiyonel)"
+        aria-label="Aracın kilometresi"
+        className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+      />
+
       <div>
         <label className="block text-xs font-semibold text-indigo-800 mb-1">
-          Açıklama <span className="font-normal text-indigo-400">(opsiyonel — km, bakım geçmişi, aksesuar vb.)</span>
+          Açıklama <span className="font-normal text-indigo-400">(opsiyonel — bakım geçmişi, aksesuar vb.)</span>
         </label>
         <textarea
           value={description}
