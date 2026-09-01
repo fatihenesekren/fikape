@@ -84,8 +84,11 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
           onClose={() => setBlurringSlug(null)}
         />
       )}
-      <div className="sticky top-0 z-10 bg-gray-50/95 backdrop-blur-sm py-3 -mx-1 px-1 flex items-center gap-3">
-        <div className="relative flex-1">
+      {/* flex-wrap + min-w-0: dar ekranda arama kutusu + checkbox + sayaç yan
+          yana sığmıyordu, metin kesilip taşıyordu (bkz. kullanıcı geri
+          bildirimi, ekran görüntüsü — bilinen mobil taşma hata sınıfı). */}
+      <div className="sticky top-0 z-10 bg-gray-50/95 backdrop-blur-sm py-3 -mx-1 px-1 flex flex-wrap items-center gap-x-3 gap-y-2">
+        <div className="relative w-full sm:w-auto sm:flex-1 min-w-0">
           <input
             type="text"
             value={query}
@@ -116,14 +119,20 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
             key={product.slug}
             className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
           >
-            <div className="flex gap-0">
+            {/* Mobilde görsel üstte tam genişlikte (aspect-ratio), kontroller
+                altta; sm: ve üstünde yan yana. Önceden sabit w-40 h-28 görsel
+                + esnek olmayan (min-w-0'sız, wrap'siz) kontrol satırları dar
+                ekranda metni kesip taşırıyordu (bkz. kullanıcı geri bildirimi,
+                ekran görüntüsü — bilinen mobil taşma hata sınıfı). */}
+            <div className="flex flex-col sm:flex-row gap-0">
               {/* Görsel önizleme */}
-              <div className="w-40 h-28 flex-shrink-0 bg-gray-50 border-r border-gray-100 relative overflow-hidden">
+              <div className="w-full aspect-[16/10] sm:w-40 sm:h-28 sm:aspect-auto shrink-0 bg-gray-50 sm:border-r border-b sm:border-b-0 border-gray-100 relative overflow-hidden">
                 {st.url ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={st.url}
                     alt={product.name}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -139,32 +148,32 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
               </div>
 
               {/* Kontroller */}
-              <div className="flex-1 p-4 flex flex-col justify-center gap-3">
+              <div className="flex-1 min-w-0 p-4 flex flex-col justify-center gap-3">
                 <div>
-                  <div className="text-xs text-gray-400 font-mono mb-0.5">{product.slug}</div>
+                  <div className="text-xs text-gray-400 font-mono mb-0.5 break-all">{product.slug}</div>
                   <div className="text-sm font-semibold text-gray-900">{product.name}</div>
                 </div>
 
                 {/* URL paste */}
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   <input
                     type="url"
                     value={urlInputs[product.slug] ?? ""}
                     onChange={(e) => setUrlInputs((u) => ({ ...u, [product.slug]: e.target.value }))}
                     placeholder="Görsel URL'si yapıştır..."
-                    className="flex-1 text-xs px-3 py-1.5 rounded-lg border border-gray-200 focus:outline-none focus:border-gray-400"
+                    className="flex-1 min-w-[140px] text-xs px-3 py-1.5 rounded-lg border border-gray-200 focus:outline-none focus:border-gray-400"
                   />
                   <button
                     onClick={() => saveUrl(product.slug)}
                     disabled={st.loading}
-                    className="text-xs px-3 py-1.5 rounded-lg bg-gray-900 text-white font-semibold disabled:opacity-40 hover:bg-gray-700 transition-colors"
+                    className="shrink-0 text-xs px-3 py-1.5 rounded-lg bg-gray-900 text-white font-semibold disabled:opacity-40 hover:bg-gray-700 transition-colors"
                   >
                     Kaydet
                   </button>
                 </div>
 
                 {/* Dosya yükle */}
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <input
                     ref={(el) => { fileRefs.current[product.slug] = el; }}
                     type="file"
@@ -179,7 +188,7 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
                   <button
                     onClick={() => fileRefs.current[product.slug]?.click()}
                     disabled={st.loading}
-                    className="text-xs px-3 py-1.5 rounded-lg border border-gray-200 text-gray-600 font-medium disabled:opacity-40 hover:border-gray-400 transition-colors"
+                    className="shrink-0 text-xs px-3 py-1.5 rounded-lg border border-gray-200 text-gray-600 font-medium disabled:opacity-40 hover:border-gray-400 transition-colors"
                   >
                     Dosya Yükle
                   </button>
@@ -187,16 +196,16 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
                     <button
                       onClick={() => setBlurringSlug(product.slug)}
                       disabled={st.loading}
-                      className="text-xs px-3 py-1.5 rounded-lg border border-gray-200 text-gray-600 font-medium disabled:opacity-40 hover:border-gray-400 transition-colors"
+                      className="shrink-0 text-xs px-3 py-1.5 rounded-lg border border-gray-200 text-gray-600 font-medium disabled:opacity-40 hover:border-gray-400 transition-colors"
                     >
                       Bulanıklaştır
                     </button>
                   )}
-                  <span className="text-xs text-gray-400">JPG/PNG/WebP, maks 5MB</span>
+                  <span className="text-xs text-gray-400 whitespace-nowrap">JPG/PNG/WebP, maks 5MB</span>
                 </div>
 
                 {st.error && (
-                  <p className="text-xs text-red-500">{st.error}</p>
+                  <p className="text-xs text-red-500 break-words">{st.error}</p>
                 )}
               </div>
             </div>
