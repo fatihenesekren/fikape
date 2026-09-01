@@ -104,6 +104,13 @@ export default async function GarajimPage() {
     },
     orderBy: { createdAt: "desc" },
   });
+  // Km — hem Garaj'daki alış bilgisi formundan hem Takas ilan formundan
+  // düzenlenebilir olması gerekiyor, tek doğruluk kaynağı burası (UserProduct),
+  // ikisi arasında ayrı bir kopya tutulmuyor (bkz. kullanıcı geri bildirimi:
+  // "bu bilgi diğer tarafla senkron olmalı").
+  const usageAmountByUserProductId = new Map(
+    userProducts.map((up) => [up.id, up.usageUnit === "km" ? up.usageAmount : null])
+  );
 
   const activeVehicles = userProducts.filter((up) => up.ownershipStatus === "CURRENT");
   const soldVehicles   = userProducts.filter((up) => up.ownershipStatus === "PAST");
@@ -239,6 +246,7 @@ export default async function GarajimPage() {
               brands={tradeBrands}
               categoryBrandMap={categoryBrandMap}
               existingListing={tradeListingByUserProductId.get(userProductId) ?? null}
+              currentUsageAmount={usageAmountByUserProductId.get(userProductId) ?? null}
               productSlug={product.slug}
               categorySlug={product.category?.slug ?? ""}
             />

@@ -40,7 +40,7 @@ export async function POST(req: Request) {
     damageStatus, engineCondition, engineNote,
     transmissionCondition, transmissionNote,
     runningGearCondition, runningGearNote, tramerRecords,
-    wantLocationScope, wantDamageStatuses,
+    wantLocationScope, wantDamageStatuses, usageAmount,
   } = parsed.data;
   const userProductId = Number(parsed.data.userProductId);
   const wantCategoryId = parsed.data.wantCategoryId != null ? Number(parsed.data.wantCategoryId) : null;
@@ -117,6 +117,16 @@ export async function POST(req: Request) {
         runningGearNote: runningGearNote ?? null,
       },
     });
+
+    // Km — TradeListing'de değil, UserProduct'ta tutulan tek doğruluk kaynağı
+    // (bkz. schemas.ts'teki usageAmountRange notu) — Takas formundan girilirse
+    // buradan Garaj'a doğru yazılır, Garaj'dan girilirse zaten oradan yazılıyor.
+    if (usageAmount !== undefined) {
+      await prisma.userProduct.update({
+        where: { id: userProductId },
+        data: { usageAmount: usageAmount ?? null, usageUnit: usageAmount != null ? "km" : null },
+      }).catch(() => {});
+    }
 
     if (partConditionEntries.length > 0) {
       await prisma.tradeListingPartCondition.createMany({

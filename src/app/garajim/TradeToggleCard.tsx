@@ -82,6 +82,7 @@ export function TradeToggleCard({
   brands,
   categoryBrandMap,
   existingListing,
+  currentUsageAmount,
   productSlug,
   categorySlug,
 }: {
@@ -91,6 +92,7 @@ export function TradeToggleCard({
   brands: { id: number; name: string }[];
   categoryBrandMap: Record<number, number[]>;
   existingListing: ExistingListing | null;
+  currentUsageAmount?: number | null;
   productSlug: string;
   categorySlug: string;
 }) {
@@ -98,6 +100,13 @@ export function TradeToggleCard({
   const [formOpen, setFormOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [city, setCity] = useState(existingListing?.city ?? "");
+  // Km — Garaj'daki "Alış bilgisi" formuyla AYNI alanı (UserProduct.usageAmount)
+  // düzenliyor, tek doğruluk kaynağı bu (bkz. kullanıcı geri bildirimi: "bu
+  // bilgi diğer tarafla senkron olmalı"). existingListing'de değil, ayrı bir
+  // prop'ta geliyor çünkü bu araca ait, ilana değil.
+  const [usageAmountInput, setUsageAmountInput] = useState(
+    currentUsageAmount != null ? String(currentUsageAmount) : ""
+  );
   const [wantCategoryId, setWantCategoryId] = useState(existingListing?.wantCategoryId?.toString() ?? "");
   const [wantBrandId, setWantBrandId] = useState(existingListing?.wantBrandId?.toString() ?? "");
   const [wantLocationScope, setWantLocationScope] = useState<LocationScope>(
@@ -252,6 +261,7 @@ export function TradeToggleCard({
           note: note.trim() || null,
           description: description.trim() || null,
           partConditions,
+          usageAmount: usageAmountInput ? Number(usageAmountInput) : null,
           ...damageStatusPayload(damageStatusValue),
         }),
       });
@@ -278,6 +288,7 @@ export function TradeToggleCard({
           </div>
           <TradeFormFields
             city={city} setCity={setCity}
+            usageAmountInput={usageAmountInput} setUsageAmountInput={setUsageAmountInput}
             wantCategoryId={wantCategoryId} setWantCategoryId={setWantCategoryId}
             wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
             wantLocationScope={wantLocationScope} setWantLocationScope={setWantLocationScope}
@@ -418,6 +429,7 @@ export function TradeToggleCard({
           description: description.trim() || null,
           partConditions,
           consentGiven,
+          usageAmount: usageAmountInput ? Number(usageAmountInput) : null,
           ...damageStatusPayload(damageStatusValue),
         }),
       });
@@ -443,6 +455,7 @@ export function TradeToggleCard({
 
       <TradeFormFields
         city={city} setCity={setCity}
+        usageAmountInput={usageAmountInput} setUsageAmountInput={setUsageAmountInput}
         wantCategoryId={wantCategoryId} setWantCategoryId={setWantCategoryId}
         wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
         wantLocationScope={wantLocationScope} setWantLocationScope={setWantLocationScope}
@@ -501,6 +514,7 @@ export function TradeToggleCard({
 
 function TradeFormFields({
   city, setCity,
+  usageAmountInput, setUsageAmountInput,
   wantCategoryId, setWantCategoryId,
   wantBrandId, setWantBrandId,
   wantLocationScope, setWantLocationScope,
@@ -511,6 +525,7 @@ function TradeFormFields({
   description, setDescription,
 }: {
   city: string; setCity: (v: string) => void;
+  usageAmountInput: string; setUsageAmountInput: (v: string) => void;
   wantCategoryId: string; setWantCategoryId: (v: string) => void;
   wantBrandId: string; setWantBrandId: (v: string) => void;
   wantLocationScope: LocationScope; setWantLocationScope: (v: LocationScope) => void;
@@ -542,6 +557,20 @@ function TradeFormFields({
           <option key={c} value={c}>{c}</option>
         ))}
       </select>
+
+      {/* Km — Garaj'daki "Alış bilgisi" formuyla AYNI alanı düzenliyor, tek
+          doğruluk kaynağı UserProduct.usageAmount (bkz. kullanıcı geri
+          bildirimi: "diğer tarafla senkron olmalı"). */}
+      <input
+        type="number"
+        inputMode="numeric"
+        min={0}
+        value={usageAmountInput}
+        onChange={(e) => setUsageAmountInput(e.target.value)}
+        placeholder="Km (opsiyonel)"
+        aria-label="Aracın kilometresi"
+        className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+      />
 
       {/* Kategori ve marka birbirinden bağımsız "fark etmez" olabilmeli —
           önceden tek bir "Marka/kategori fark etmez" checkbox'ı ikisini

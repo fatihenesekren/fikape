@@ -15,7 +15,7 @@ const PAGE_SIZE = 20;
 
 interface TakasSearchParams {
   il?: string; kategori?: string; marka?: string; odeme?: string; sayfa?: string;
-  yilMin?: string; yilMax?: string; kmMax?: string;
+  yilMin?: string; yilMax?: string; kmMin?: string; kmMax?: string;
 }
 
 export async function generateMetadata({
@@ -42,12 +42,13 @@ export default async function TakasPage({
   const page = Math.max(1, parseInt(params.sayfa ?? "1") || 1);
   const yilMin = params.yilMin ? parseInt(params.yilMin) : undefined;
   const yilMax = params.yilMax ? parseInt(params.yilMax) : undefined;
+  const kmMin = params.kmMin ? parseInt(params.kmMin) : undefined;
   const kmMax = params.kmMax ? parseInt(params.kmMax) : undefined;
 
   // İl seçilmemişse artık tüm Türkiye'deki ilanlar gösteriliyor (önceden boş sayfa gösterip
   // platformun envanterini hiç göstermiyordu — bkz. denetim raporu).
   const { listings, total } = await fetchListings(
-    il, params.kategori, params.marka, params.odeme, yilMin, yilMax, kmMax, page
+    il, params.kategori, params.marka, params.odeme, yilMin, yilMax, kmMin, kmMax, page
   );
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
@@ -60,6 +61,7 @@ export default async function TakasPage({
     if (params.odeme) qs.set("odeme", params.odeme);
     if (params.yilMin) qs.set("yilMin", params.yilMin);
     if (params.yilMax) qs.set("yilMax", params.yilMax);
+    if (params.kmMin) qs.set("kmMin", params.kmMin);
     if (params.kmMax) qs.set("kmMax", params.kmMax);
     if (targetPage > 1) qs.set("sayfa", String(targetPage));
     const q = qs.toString();
@@ -149,6 +151,7 @@ export default async function TakasPage({
         odemeNiyeti={params.odeme ?? ""}
         yilMin={params.yilMin ?? ""}
         yilMax={params.yilMax ?? ""}
+        kmMin={params.kmMin ?? ""}
         kmMax={params.kmMax ?? ""}
         cities={TURKISH_CITIES}
         categories={categories}
@@ -225,6 +228,7 @@ async function fetchListings(
   odemeNiyeti: string | undefined,
   yilMin: number | undefined,
   yilMax: number | undefined,
+  kmMin: number | undefined,
   kmMax: number | undefined,
   page: number
 ) {
@@ -256,11 +260,20 @@ async function fetchListings(
       : {}),
     // Km beyan edilmemiş ilanlar (usageAmount null) filtre uygulanınca yanlışlıkla
     // elenmesin — bilinmeyen km "belki uyuyor" anlamına gelir, "uymuyor" değil
-    // (bkz. kullanıcı geri bildirimi).
-    ...(kmMax != null
+    // (bkz. kullanıcı geri bildirimi). kmMin/kmMax ayrı ayrı ya da birlikte
+    // verilebilir, ikisi de aynı "usageAmount null ise dokunma" ilkesini paylaşır.
+    ...(kmMin != null || kmMax != null
       ? {
           OR: [
-            { userProduct: { usageUnit: "km", usageAmount: { lte: kmMax } } },
+            {
+              userProduct: {
+                usageUnit: "km",
+                usageAmount: {
+                  ...(kmMin != null ? { gte: kmMin } : {}),
+                  ...(kmMax != null ? { lte: kmMax } : {}),
+                },
+              },
+            },
             { userProduct: { usageAmount: null } },
           ],
         }

@@ -149,6 +149,17 @@ export async function PATCH(
             : []),
         ]
       : []),
+    // Km — TradeListing'de değil, UserProduct'ta tutulan tek doğruluk kaynağı
+    // (bkz. schemas.ts'teki usageAmountRange notu) — Takas formundan
+    // düzenlenirse buradan Garaj'a doğru senkron yazılır.
+    ...(data.usageAmount !== undefined
+      ? [
+          prisma.userProduct.update({
+            where: { id: listing.userProductId },
+            data: { usageAmount: data.usageAmount ?? null, usageUnit: data.usageAmount != null ? "km" : null },
+          }),
+        ]
+      : []),
   ]);
 
   return NextResponse.json({ ok: true });

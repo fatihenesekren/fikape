@@ -138,6 +138,14 @@ const wantExpectationFields = {
   wantDamageStatuses: z.array(z.enum(["NONE", "DAMAGED", "HEAVY"])).max(3).optional(),
 };
 
+// Km — Garaj'daki alış bilgisi formu ile Takas ilan formu AYNI alanı
+// (UserProduct.usageAmount) düzenliyor, tek doğruluk kaynağı bu — ikisi
+// arasında ayrı bir kopya tutulmuyor (bkz. kullanıcı geri bildirimi: "bu
+// bilgi diğer tarafla senkron olmalı").
+const usageAmountRange = z.number().int()
+  .min(0, "Km 0'dan küçük olamaz.")
+  .max(2_000_000, "Km çok yüksek görünüyor.");
+
 export const tradeListingCreateSchema = z.object({
   userProductId:  z.union([z.number(), z.string()]),
   wantCategoryId: z.union([z.number(), z.string()]).optional().nullable(),
@@ -149,6 +157,7 @@ export const tradeListingCreateSchema = z.object({
   city:           z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
   consentGiven:   z.literal(true, { error: "İlanı açmak için KVKK onay kutusunu işaretlemelisiniz." }),
   partConditions: partConditionsSchema,
+  usageAmount:    usageAmountRange.optional().nullable(),
   ...damageStatusFields,
   ...wantExpectationFields,
 });
@@ -173,10 +182,7 @@ export const purchaseInfoSchema = z.object({
   productId:     z.union([z.number(), z.string()]),
   purchaseMonth: z.string().regex(/^\d{4}-\d{2}$/, "Geçerli bir ay/yıl seçiniz.").optional().nullable(),
   purchasePrice: salePriceRange.optional().nullable(),
-  // Km — Takas ilanlarında zaten gösterilirken (usageUnit==="km") hiçbir formda
-  // girilebilir değildi (bkz. kullanıcı geri bildirimi, ekran görüntüsü) — bu
-  // alanın doğru yeri Garaj'daki alış bilgisi formu, sadece Takas'a özel değil.
-  usageAmount:   z.number().int().min(0, "Km 0'dan küçük olamaz.").max(2_000_000, "Km çok yüksek görünüyor.").optional().nullable(),
+  usageAmount:   usageAmountRange.optional().nullable(),
 });
 
 export const tradeListingCloseSchema = z.object({
@@ -193,6 +199,7 @@ export const tradeListingUpdateSchema = z.object({
   paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"]).optional(),
   city:           z.enum(TURKISH_CITIES).optional(),
   partConditions: partConditionsSchema,
+  usageAmount:    usageAmountRange.optional().nullable(),
   ...damageStatusFields,
   ...wantExpectationFields,
 });

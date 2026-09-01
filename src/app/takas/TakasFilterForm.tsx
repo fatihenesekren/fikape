@@ -16,6 +16,7 @@ export function TakasFilterForm({
   odemeNiyeti,
   yilMin,
   yilMax,
+  kmMin,
   kmMax,
   cities,
   categories,
@@ -28,6 +29,7 @@ export function TakasFilterForm({
   odemeNiyeti: string;
   yilMin: string;
   yilMax: string;
+  kmMin: string;
   kmMax: string;
   cities: readonly string[];
   categories: { id: number; slug: string; name: string }[];
@@ -39,7 +41,7 @@ export function TakasFilterForm({
   // Filtreleri temizleme — önceden hiç yoktu, kullanıcı bir filtre uyguladıktan
   // sonra geri dönmenin tek yolu URL'yi elle temizlemekti (bkz. kullanıcı geri
   // bildirimi, ekran görüntüsü).
-  const hasActiveFilters = !!(il || kategoriSlug || markaSlug || odemeNiyeti || yilMin || yilMax || kmMax);
+  const hasActiveFilters = !!(il || kategoriSlug || markaSlug || odemeNiyeti || yilMin || yilMax || kmMin || kmMax);
 
   return (
     <form method="get" className="grid grid-cols-1 sm:grid-cols-4 gap-2 mb-8">
@@ -97,6 +99,15 @@ export function TakasFilterForm({
         min={1980}
         max={2100}
         aria-label="En yeni model yılı"
+        className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
+      />
+      <input
+        type="number"
+        name="kmMin"
+        defaultValue={kmMin}
+        placeholder="Km (en az)"
+        min={0}
+        aria-label="En az kilometre"
         className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
       />
       <input
