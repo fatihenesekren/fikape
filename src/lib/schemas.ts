@@ -173,6 +173,10 @@ export const purchaseInfoSchema = z.object({
   productId:     z.union([z.number(), z.string()]),
   purchaseMonth: z.string().regex(/^\d{4}-\d{2}$/, "Geçerli bir ay/yıl seçiniz.").optional().nullable(),
   purchasePrice: salePriceRange.optional().nullable(),
+  // Km — Takas ilanlarında zaten gösterilirken (usageUnit==="km") hiçbir formda
+  // girilebilir değildi (bkz. kullanıcı geri bildirimi, ekran görüntüsü) — bu
+  // alanın doğru yeri Garaj'daki alış bilgisi formu, sadece Takas'a özel değil.
+  usageAmount:   z.number().int().min(0, "Km 0'dan küçük olamaz.").max(2_000_000, "Km çok yüksek görünüyor.").optional().nullable(),
 });
 
 export const tradeListingCloseSchema = z.object({

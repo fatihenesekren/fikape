@@ -170,6 +170,8 @@ export default async function VehicleDetailPage({
             soldReasonNote: true,
             purchasedAt: true,
             purchasePrice: true,
+            usageAmount: true,
+            usageUnit: true,
           },
         })
       : null,
@@ -763,6 +765,7 @@ export default async function VehicleDetailPage({
           initialSoldReasonNote={userGarageEntry?.soldReasonNote ?? null}
           initialPurchasedAt={userGarageEntry?.purchasedAt?.toISOString() ?? null}
           initialPurchasePrice={userGarageEntry?.purchasePrice ?? null}
+          initialUsageAmount={userGarageEntry?.usageUnit === "km" ? userGarageEntry.usageAmount : null}
           initialFavorited={!!favoriteEntry}
           garageCount={garageCount}
           isLoggedIn={!!userId}

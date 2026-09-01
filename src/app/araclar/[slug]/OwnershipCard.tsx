@@ -23,6 +23,7 @@ interface Props {
   initialSoldReasonNote?: string | null;
   initialPurchasedAt?: string | null;
   initialPurchasePrice?: number | null;
+  initialUsageAmount?: number | null;
   garageCount: number;
   isLoggedIn: boolean;
   defaultFullName: string;
@@ -38,6 +39,7 @@ export function OwnershipCard({
   initialSoldReasonNote = null,
   initialPurchasedAt = null,
   initialPurchasePrice = null,
+  initialUsageAmount = null,
   garageCount,
   isLoggedIn,
   defaultFullName,
@@ -76,6 +78,10 @@ export function OwnershipCard({
   const [purchasePriceInput, setPurchasePriceInput] = useState(
     initialPurchasePrice != null ? String(initialPurchasePrice) : ""
   );
+  const [usageAmount, setUsageAmount] = useState(initialUsageAmount);
+  const [usageAmountInput, setUsageAmountInput] = useState(
+    initialUsageAmount != null ? String(initialUsageAmount) : ""
+  );
   const [purchaseLoading, setPurchaseLoading] = useState(false);
 
   async function savePurchaseInfo() {
@@ -89,6 +95,7 @@ export function OwnershipCard({
         action: "setPurchaseInfo",
         purchaseMonth: purchaseMonthInput || null,
         purchasePrice: purchasePriceInput ? Number(purchasePriceInput) : null,
+        usageAmount: usageAmountInput ? Number(usageAmountInput) : null,
       }),
     });
     if (!res.ok) {
@@ -99,6 +106,7 @@ export function OwnershipCard({
     }
     setPurchasedAt(purchaseMonthInput ? `${purchaseMonthInput}-01` : null);
     setPurchasePrice(purchasePriceInput ? Number(purchasePriceInput) : null);
+    setUsageAmount(usageAmountInput ? Number(usageAmountInput) : null);
     setShowPurchaseForm(false);
     setPurchaseLoading(false);
     router.refresh();
@@ -247,11 +255,18 @@ export function OwnershipCard({
                   </span>
                 )}
               </p>
-              {inGarage && purchasedLabel && (
+              {inGarage && (purchasedLabel || usageAmount != null) && (
                 <p className="text-xs text-gray-400 mt-0.5">
-                  {purchasedLabel}
-                  {purchasePrice != null && ` · ${purchasePrice.toLocaleString("tr-TR")} TL'ye alındı`}
-                  {purchasePrice == null && "'de alındı"}
+                  {purchasedLabel && (
+                    <>
+                      {purchasedLabel}
+                      {purchasePrice != null && ` · ${purchasePrice.toLocaleString("tr-TR")} TL'ye alındı`}
+                      {purchasePrice == null && "'de alındı"}
+                    </>
+                  )}
+                  {usageAmount != null && (
+                    <>{purchasedLabel && " · "}{usageAmount.toLocaleString("tr-TR")} km</>
+                  )}
                 </p>
               )}
             </div>
@@ -291,7 +306,7 @@ export function OwnershipCard({
                 disabled={loading}
                 className="px-3 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors disabled:opacity-60"
               >
-                {purchasedLabel ? "Alış bilgisini düzenle" : "Alış bilgisi ekle"}
+                {purchasedLabel || usageAmount != null ? "Alış/km bilgisini düzenle" : "Alış/km bilgisi ekle"}
               </button>
               <button
                 onClick={() => setShowSellForm((v) => !v)}
@@ -342,8 +357,23 @@ export function OwnershipCard({
               className="w-full sm:w-56 px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
             />
           </div>
+          <div>
+            {/* Km — önceden hiçbir formda girilebilir değildi, sadece Takas
+                ilanlarında (varsa) gösteriliyordu (bkz. kullanıcı geri bildirimi). */}
+            <p className="text-sm font-semibold text-gray-800 mb-2">Şu an kaç km&apos;de? (opsiyonel)</p>
+            <input
+              type="number"
+              inputMode="numeric"
+              min={0}
+              value={usageAmountInput}
+              onChange={(e) => setUsageAmountInput(e.target.value)}
+              placeholder="örn. 82000"
+              className="w-full sm:w-56 px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
+            />
+          </div>
           <p className="text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">
-            Bu bilgi yalnızca ortalama piyasa fiyatı hesaplaması için kullanılır, profilinizde gösterilmez.
+            Alış tarihi/fiyatı yalnızca ortalama piyasa fiyatı hesaplaması için kullanılır, profilinizde
+            gösterilmez. Km bilgisi ise aracı takasa açtığınızda ilanınızda görünür.
           </p>
           <div className="flex gap-2">
             <button

@@ -111,7 +111,7 @@ export async function PATCH(req: NextRequest) {
     if (!parsed.success) {
       return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
     }
-    const { purchaseMonth, purchasePrice } = parsed.data;
+    const { purchaseMonth, purchasePrice, usageAmount } = parsed.data;
 
     const userProduct = await prisma.userProduct.findUnique({
       where: { userId_productId: { userId, productId } },
@@ -129,7 +129,12 @@ export async function PATCH(req: NextRequest) {
 
     await prisma.userProduct.update({
       where: { userId_productId: { userId, productId } },
-      data: { purchasedAt, purchasePrice: purchasePrice ?? null },
+      data: {
+        purchasedAt,
+        purchasePrice: purchasePrice ?? null,
+        usageAmount: usageAmount ?? null,
+        usageUnit: usageAmount != null ? "km" : null,
+      },
     });
   } else if (action === "reactivate") {
     await prisma.userProduct.update({

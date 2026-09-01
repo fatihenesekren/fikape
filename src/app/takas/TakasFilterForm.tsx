@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const PAYMENT_OPTIONS = [
   { value: "SWAP_ONLY", label: "Sadece takas (yakın değer)" },
@@ -35,6 +36,10 @@ export function TakasFilterForm({
 }) {
   const [kategori, setKategori] = useState(kategoriSlug);
   const availableBrands = kategori ? brands.filter((b) => categoryBrandMap[kategori]?.includes(b.slug)) : brands;
+  // Filtreleri temizleme — önceden hiç yoktu, kullanıcı bir filtre uyguladıktan
+  // sonra geri dönmenin tek yolu URL'yi elle temizlemekti (bkz. kullanıcı geri
+  // bildirimi, ekran görüntüsü).
+  const hasActiveFilters = !!(il || kategoriSlug || markaSlug || odemeNiyeti || yilMin || yilMax || kmMax);
 
   return (
     <form method="get" className="grid grid-cols-1 sm:grid-cols-4 gap-2 mb-8">
@@ -103,9 +108,16 @@ export function TakasFilterForm({
         aria-label="En fazla kilometre"
         className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
       />
-      <button type="submit" className="sm:col-span-4 text-sm font-semibold text-white rounded-lg px-3 py-1.5" style={{ background: "#4338ca" }}>
-        Filtrele
-      </button>
+      <div className="sm:col-span-4 flex items-center gap-3">
+        <button type="submit" className="flex-1 text-sm font-semibold text-white rounded-lg px-3 py-1.5" style={{ background: "#4338ca" }}>
+          Filtrele
+        </button>
+        {hasActiveFilters && (
+          <Link href="/takas" className="text-xs font-semibold text-gray-500 hover:text-gray-800 hover:underline whitespace-nowrap">
+            Filtreleri Temizle
+          </Link>
+        )}
+      </div>
     </form>
   );
 }
