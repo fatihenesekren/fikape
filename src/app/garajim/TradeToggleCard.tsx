@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
@@ -297,20 +297,10 @@ export function TradeToggleCard({
             paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
             note={note} setNote={setNote}
             description={description} setDescription={setDescription}
+            showPartConditions={showPartConditions}
+            damageStatusValue={damageStatusValue} setDamageStatusValue={setDamageStatusValue}
+            partConditions={partConditions} setPartConditions={setPartConditions}
           />
-          {showPartConditions && (
-            <div className="border-t border-indigo-100 pt-2.5">
-              <p className="text-xs font-semibold text-indigo-800 mb-1.5">Hasar Durumu</p>
-              <DamageStatusForm value={damageStatusValue} onChange={setDamageStatusValue} />
-            </div>
-          )}
-
-          {showPartConditions && (
-            <div className="border-t border-indigo-100 pt-2.5">
-              <p className="text-xs font-semibold text-indigo-800 mb-1.5">Boyalı veya Değişen Parça</p>
-              <PartConditionForm value={partConditions} onChange={setPartConditions} />
-            </div>
-          )}
           {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
           <button
             onClick={saveEdit}
@@ -464,14 +454,10 @@ export function TradeToggleCard({
         paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
         note={note} setNote={setNote}
         description={description} setDescription={setDescription}
+        showPartConditions={showPartConditions}
+        damageStatusValue={damageStatusValue} setDamageStatusValue={setDamageStatusValue}
+        partConditions={partConditions} setPartConditions={setPartConditions}
       />
-
-      {showPartConditions && (
-        <div className="border-t border-indigo-100 pt-2.5">
-          <p className="text-xs font-semibold text-indigo-800 mb-1.5">Boyalı veya Değişen Parça</p>
-          <PartConditionForm value={partConditions} onChange={setPartConditions} />
-        </div>
-      )}
 
       {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
 
@@ -512,6 +498,19 @@ export function TradeToggleCard({
   );
 }
 
+// Bölüm çerçevesi — üç grubun (aracınız / aradığınız araç / takas şartları)
+// görsel olarak birbirinden ayrılması için (bkz. kullanıcı geri bildirimi,
+// ekran görüntüsü: "bizim aracımızın... takasta beklediğimiz aracın...
+// birbirine girmiş"). Her biri kendi başlığı olan beyaz bir kart.
+function FormSection({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="bg-white border border-indigo-100 rounded-xl p-3 space-y-3">
+      <p className="text-xs font-bold text-indigo-800">{title}</p>
+      {children}
+    </div>
+  );
+}
+
 function TradeFormFields({
   city, setCity,
   usageAmountInput, setUsageAmountInput,
@@ -523,6 +522,9 @@ function TradeFormFields({
   paymentIntent, setPaymentIntent,
   note, setNote,
   description, setDescription,
+  showPartConditions,
+  damageStatusValue, setDamageStatusValue,
+  partConditions, setPartConditions,
 }: {
   city: string; setCity: (v: string) => void;
   usageAmountInput: string; setUsageAmountInput: (v: string) => void;
@@ -535,6 +537,9 @@ function TradeFormFields({
   paymentIntent: PaymentIntent; setPaymentIntent: (v: PaymentIntent) => void;
   note: string; setNote: (v: string) => void;
   description: string; setDescription: (v: string) => void;
+  showPartConditions: boolean;
+  damageStatusValue: DamageStatusValue; setDamageStatusValue: (v: DamageStatusValue) => void;
+  partConditions: Record<string, PartCondition | undefined>; setPartConditions: (v: Record<string, PartCondition | undefined>) => void;
 }) {
   function toggleDamageStatus(status: DamageStatus) {
     setWantDamageStatuses(
@@ -546,169 +551,193 @@ function TradeFormFields({
 
   return (
     <>
-      <select
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        aria-label="İl"
-        className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
-      >
-        <option value="">İl seçiniz</option>
-        {TURKISH_CITIES.map((c) => (
-          <option key={c} value={c}>{c}</option>
-        ))}
-      </select>
-
-      {/* Kategori ve marka birbirinden bağımsız "fark etmez" olabilmeli —
-          önceden tek bir "Marka/kategori fark etmez" checkbox'ı ikisini
-          birlikte kapatıp açıyordu, kullanıcı "kategori: Otomobil ama marka
-          fark etmez" gibi bir kombinasyon seçemiyordu (bkz. kullanıcı geri
-          bildirimi, ekran görüntüsü). Artık her iki select de her zaman
-          görünür, "Fark etmez" ayrı birer seçenek; wantAnything ikisi de
-          boş bırakıldığında true olarak türetiliyor (bkz. submit/saveEdit). */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+      {/* 🚗 Aracınız hakkında — konum, km, açıklama, hasar durumu, boyalı/
+          değişen parça: hepsi TAKASA VERDİĞİNİZ aracınıza ait. */}
+      <FormSection title="🚗 Aracınız Hakkında">
         <select
-          value={wantCategoryId}
-          onChange={(e) => { setWantCategoryId(e.target.value); setWantBrandId(""); }}
-          aria-label="İstenen kategori"
-          className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          aria-label="İl"
+          className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
         >
-          <option value="">Kategori fark etmez</option>
-          {categories.map((c) => (
-            <option key={c.id} value={c.id}>{c.name}</option>
+          <option value="">İl seçiniz</option>
+          {TURKISH_CITIES.map((c) => (
+            <option key={c} value={c}>{c}</option>
           ))}
         </select>
-        <select
-          value={wantBrandId}
-          onChange={(e) => setWantBrandId(e.target.value)}
-          aria-label="İstenen marka"
-          className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
-        >
-          <option value="">Marka fark etmez</option>
-          {availableBrands.map((b) => (
-            <option key={b.id} value={b.id}>{b.name}</option>
-          ))}
-        </select>
-      </div>
 
-      {/* Aradığı aracın nerede olmasını beklediği — önceden ilan sadece KENDİ
-          aracının (city alanı) nerede olduğunu söylüyordu, karşı taraftan
-          beklenen konumu hiç belirtemiyordu (bkz. kullanıcı geri bildirimi).
-          Boş bırakılırsa varsayılan "Türkiye Genelinde" (Prisma @default). */}
-      <fieldset className="text-xs text-indigo-800">
-        <legend className="font-semibold mb-1">Aradığım araç nerede olsun?</legend>
-        <div className="flex flex-wrap gap-1.5">
-          {LOCATION_SCOPES.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setWantLocationScope(s)}
-              className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
-              style={
-                wantLocationScope === s
-                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
-                  : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
-              }
-            >
-              {LOCATION_SCOPE_LABEL[s]}
-            </button>
-          ))}
-        </div>
-      </fieldset>
-
-      {/* Aradığı aracın kabul edilebilir hasar durumları — çoklu seçim, hiçbiri
-          seçilmezse (ya da "Farketmez" seçilirse) "tüm hasar durumları"
-          anlamına gelir (Prisma @default([])). "Farketmez" boş diziyi temsil
-          eder; belirli bir durum seçilince dizi doluyor ve "Farketmez"
-          otomatik olarak pasif görünür. */}
-      <fieldset className="text-xs text-indigo-800">
-        <legend className="font-semibold mb-1">Kabul edebileceğim hasar durumu</legend>
-        <div className="flex flex-wrap gap-1.5">
-          <button
-            type="button"
-            onClick={() => setWantDamageStatuses([])}
-            className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
-            style={
-              wantDamageStatuses.length === 0
-                ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
-                : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
-            }
-          >
-            Farketmez
-          </button>
-          {ACCEPTABLE_DAMAGE_STATUSES.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => toggleDamageStatus(s)}
-              className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
-              style={
-                wantDamageStatuses.includes(s)
-                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
-                  : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
-              }
-            >
-              {DAMAGE_STATUS_LABEL[s]}
-            </button>
-          ))}
-        </div>
-      </fieldset>
-
-      <fieldset className="text-xs text-indigo-800">
-        <legend className="font-semibold mb-1">Ödeme niyeti</legend>
-        <div className="flex flex-col gap-1">
-          <label className="flex items-center gap-1.5">
-            <input type="radio" name="paymentIntent" checked={paymentIntent === "SWAP_ONLY"} onChange={() => setPaymentIntent("SWAP_ONLY")} />
-            Sadece takas (yakın değer)
-          </label>
-          <label className="flex items-center gap-1.5">
-            <input type="radio" name="paymentIntent" checked={paymentIntent === "PAYS_EXTRA"} onChange={() => setPaymentIntent("PAYS_EXTRA")} />
-            Üstüne para verebilirim
-          </label>
-          <label className="flex items-center gap-1.5">
-            <input type="radio" name="paymentIntent" checked={paymentIntent === "WANTS_EXTRA"} onChange={() => setPaymentIntent("WANTS_EXTRA")} />
-            Üstüne para bekliyorum
-          </label>
-        </div>
-      </fieldset>
-
-      <textarea
-        value={note}
-        onChange={(e) => setNote(e.target.value)}
-        placeholder="Opsiyonel not (örn. hangi araçları arıyorsun)"
-        maxLength={300}
-        rows={2}
-        className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
-      />
-
-      {/* Km — Garaj'daki "Alış bilgisi" formuyla AYNI alanı düzenliyor, tek
-          doğruluk kaynağı UserProduct.usageAmount (bkz. kullanıcı geri
-          bildirimi: "diğer tarafla senkron olmalı"). Açıklama'nın hemen
-          üstünde — önceden açıklama metninin parantezinde "km" örnek olarak
-          geçiyordu, artık kendi alanı olduğu için oradan kaldırıldı. */}
-      <input
-        type="number"
-        inputMode="numeric"
-        min={0}
-        value={usageAmountInput}
-        onChange={(e) => setUsageAmountInput(e.target.value)}
-        placeholder="Km (opsiyonel)"
-        aria-label="Aracın kilometresi"
-        className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
-      />
-
-      <div>
-        <label className="block text-xs font-semibold text-indigo-800 mb-1">
-          Açıklama <span className="font-normal text-indigo-400">(opsiyonel — bakım geçmişi, aksesuar vb.)</span>
-        </label>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Aracınız hakkında detaylı bilgi verin"
-          maxLength={2000}
-          rows={4}
+        {/* Km — Garaj'daki "Alış bilgisi" formuyla AYNI alanı düzenliyor, tek
+            doğruluk kaynağı UserProduct.usageAmount (bkz. kullanıcı geri
+            bildirimi: "diğer tarafla senkron olmalı"). */}
+        <input
+          type="number"
+          inputMode="numeric"
+          min={0}
+          value={usageAmountInput}
+          onChange={(e) => setUsageAmountInput(e.target.value)}
+          placeholder="Km (opsiyonel)"
+          aria-label="Aracın kilometresi"
           className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
         />
-      </div>
+
+        <div>
+          <label className="block text-xs font-semibold text-indigo-800 mb-1">
+            Açıklama <span className="font-normal text-indigo-400">(opsiyonel — bakım geçmişi, aksesuar vb.)</span>
+          </label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Aracınız hakkında detaylı bilgi verin"
+            maxLength={2000}
+            rows={4}
+            className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+          />
+        </div>
+
+        {showPartConditions && (
+          <div className="border-t border-indigo-100 pt-3">
+            <p className="text-xs font-semibold text-indigo-800 mb-1.5">Hasar Durumu</p>
+            <DamageStatusForm value={damageStatusValue} onChange={setDamageStatusValue} />
+          </div>
+        )}
+
+        {showPartConditions && (
+          <div className="border-t border-indigo-100 pt-3">
+            <p className="text-xs font-semibold text-indigo-800 mb-1.5">Boyalı veya Değişen Parça</p>
+            <PartConditionForm value={partConditions} onChange={setPartConditions} />
+          </div>
+        )}
+      </FormSection>
+
+      {/* 🔍 Aradığınız araç — kategori/marka/konum/hasar beklentisi: hepsi
+          TAKAS KARŞILIĞINDA istediğiniz araca ait, sizinkine değil. */}
+      <FormSection title="🔍 Aradığınız Araç">
+        {/* Kategori ve marka birbirinden bağımsız "fark etmez" olabilmeli —
+            önceden tek bir "Marka/kategori fark etmez" checkbox'ı ikisini
+            birlikte kapatıp açıyordu, kullanıcı "kategori: Otomobil ama marka
+            fark etmez" gibi bir kombinasyon seçemiyordu (bkz. kullanıcı geri
+            bildirimi, ekran görüntüsü). Artık her iki select de her zaman
+            görünür, "Fark etmez" ayrı birer seçenek; wantAnything ikisi de
+            boş bırakıldığında true olarak türetiliyor (bkz. submit/saveEdit). */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <select
+            value={wantCategoryId}
+            onChange={(e) => { setWantCategoryId(e.target.value); setWantBrandId(""); }}
+            aria-label="İstenen kategori"
+            className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+          >
+            <option value="">Kategori fark etmez</option>
+            {categories.map((c) => (
+              <option key={c.id} value={c.id}>{c.name}</option>
+            ))}
+          </select>
+          <select
+            value={wantBrandId}
+            onChange={(e) => setWantBrandId(e.target.value)}
+            aria-label="İstenen marka"
+            className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+          >
+            <option value="">Marka fark etmez</option>
+            {availableBrands.map((b) => (
+              <option key={b.id} value={b.id}>{b.name}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Aradığı aracın nerede olmasını beklediği — önceden ilan sadece KENDİ
+            aracının (city alanı) nerede olduğunu söylüyordu, karşı taraftan
+            beklenen konumu hiç belirtemiyordu (bkz. kullanıcı geri bildirimi).
+            Boş bırakılırsa varsayılan "Türkiye Genelinde" (Prisma @default). */}
+        <fieldset className="text-xs text-indigo-800">
+          <legend className="font-semibold mb-1">Aradığım araç nerede olsun?</legend>
+          <div className="flex flex-wrap gap-1.5">
+            {LOCATION_SCOPES.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setWantLocationScope(s)}
+                className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+                style={
+                  wantLocationScope === s
+                    ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                    : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+                }
+              >
+                {LOCATION_SCOPE_LABEL[s]}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        {/* Aradığı aracın kabul edilebilir hasar durumları — çoklu seçim, hiçbiri
+            seçilmezse (ya da "Farketmez" seçilirse) "tüm hasar durumları"
+            anlamına gelir (Prisma @default([])). "Farketmez" boş diziyi temsil
+            eder; belirli bir durum seçilince dizi doluyor ve "Farketmez"
+            otomatik olarak pasif görünür. */}
+        <fieldset className="text-xs text-indigo-800">
+          <legend className="font-semibold mb-1">Kabul edebileceğim hasar durumu</legend>
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              type="button"
+              onClick={() => setWantDamageStatuses([])}
+              className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+              style={
+                wantDamageStatuses.length === 0
+                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                  : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+              }
+            >
+              Farketmez
+            </button>
+            {ACCEPTABLE_DAMAGE_STATUSES.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => toggleDamageStatus(s)}
+                className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+                style={
+                  wantDamageStatuses.includes(s)
+                    ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                    : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+                }
+              >
+                {DAMAGE_STATUS_LABEL[s]}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      </FormSection>
+
+      {/* 🤝 Takas şartları — ödeme niyeti ve not, hem sizin aracınıza hem
+          aradığınız araca değil, ANLAŞMANIN kendisine ait. */}
+      <FormSection title="🤝 Takas Şartları">
+        <fieldset className="text-xs text-indigo-800">
+          <legend className="font-semibold mb-1">Ödeme niyeti</legend>
+          <div className="flex flex-col gap-1">
+            <label className="flex items-center gap-1.5">
+              <input type="radio" name="paymentIntent" checked={paymentIntent === "SWAP_ONLY"} onChange={() => setPaymentIntent("SWAP_ONLY")} />
+              Sadece takas (yakın değer)
+            </label>
+            <label className="flex items-center gap-1.5">
+              <input type="radio" name="paymentIntent" checked={paymentIntent === "PAYS_EXTRA"} onChange={() => setPaymentIntent("PAYS_EXTRA")} />
+              Üstüne para verebilirim
+            </label>
+            <label className="flex items-center gap-1.5">
+              <input type="radio" name="paymentIntent" checked={paymentIntent === "WANTS_EXTRA"} onChange={() => setPaymentIntent("WANTS_EXTRA")} />
+              Üstüne para bekliyorum
+            </label>
+          </div>
+        </fieldset>
+
+        <textarea
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          placeholder="Opsiyonel not (örn. hangi araçları arıyorsun)"
+          maxLength={300}
+          rows={2}
+          className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+        />
+      </FormSection>
     </>
   );
 }
