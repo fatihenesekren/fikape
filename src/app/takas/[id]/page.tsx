@@ -406,13 +406,13 @@ export default async function TakasDetayPage({
               <p>Marka/kategori fark etmez</p>
             ) : (
               <div className="space-y-0.5">
-                <p>Araç Kategorisi: {listing.wantCategory ? listing.wantCategory.name : "Hepsi (Fark Etmez)"}</p>
-                <p>Marka: {listing.wantBrand ? listing.wantBrand.name : "Hepsi (Fark Etmez)"}</p>
+                <p><span className="font-semibold">Araç Kategorisi:</span> {listing.wantCategory ? listing.wantCategory.name : "Hepsi (Fark Etmez)"}</p>
+                <p><span className="font-semibold">Marka:</span> {listing.wantBrand ? listing.wantBrand.name : "Hepsi (Fark Etmez)"}</p>
               </div>
             )}
-            <p>Konum: {LOCATION_SCOPE_LABEL[listing.wantLocationScope as keyof typeof LOCATION_SCOPE_LABEL]}</p>
+            <p><span className="font-semibold">Konum:</span> {LOCATION_SCOPE_LABEL[listing.wantLocationScope as keyof typeof LOCATION_SCOPE_LABEL]}</p>
             <p>
-              Kabul Edilen Hasar Durumu:{" "}
+              <span className="font-semibold">Kabul Edilen Hasar Durumu:</span>{" "}
               {listing.wantDamageStatuses.length > 0
                 ? listing.wantDamageStatuses.map((s) => DAMAGE_STATUS_LABEL[s as DamageStatus]).join(", ")
                 : "Hepsi (Fark Etmez)"}
