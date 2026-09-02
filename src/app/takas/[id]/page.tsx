@@ -17,6 +17,7 @@ import {
   formatTl, formatMonthYear, type DamageStatus, type MechanicalCondition,
 } from "@/lib/damageStatus";
 import { LOCATION_SCOPE_LABEL } from "@/lib/tradeExpectations";
+import { FUEL_LABELS } from "@/lib/fuel";
 import { TradeMessageForm } from "./TradeMessageForm";
 import { ShareButton } from "./ShareButton";
 import { ListingReportButton } from "./ListingReportButton";
@@ -417,6 +418,30 @@ export default async function TakasDetayPage({
                 ? listing.wantDamageStatuses.map((s) => DAMAGE_STATUS_LABEL[s as DamageStatus]).join(", ")
                 : "Hepsi (Fark Etmez)"}
             </p>
+            {(listing.wantYearMin != null || listing.wantYearMax != null) && (
+              <p>
+                <span className="font-semibold">Model Yılı:</span>{" "}
+                {listing.wantYearMin ?? "…"}–{listing.wantYearMax ?? "…"}
+              </p>
+            )}
+            {(listing.wantKmMin != null || listing.wantKmMax != null) && (
+              <p>
+                <span className="font-semibold">Km:</span>{" "}
+                {listing.wantKmMin != null ? listing.wantKmMin.toLocaleString("tr-TR") : "…"}–
+                {listing.wantKmMax != null ? listing.wantKmMax.toLocaleString("tr-TR") : "…"}
+              </p>
+            )}
+            {listing.wantFuelTypes.length > 0 && (
+              <p>
+                <span className="font-semibold">Yakıt Tipi:</span>{" "}
+                {listing.wantFuelTypes.map((f) => FUEL_LABELS[f] ?? f).join(", ")}
+              </p>
+            )}
+            {listing.wantTransmissions.length > 0 && (
+              <p>
+                <span className="font-semibold">Vites Tipi:</span> {listing.wantTransmissions.join(", ")}
+              </p>
+            )}
             {listing.note && <p className="mt-1.5 text-indigo-700">&quot;{listing.note}&quot;</p>}
           </div>
 

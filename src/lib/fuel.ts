@@ -1,6 +1,7 @@
 export const FUEL_ICONS: Record<string, string> = {
   EV:       "⚡",
   HYBRID:   "🔋",
+  PHEV:     "🔌",
   GASOLINE: "⛽",
   DIESEL:   "🛢️",
   LPG:      "🔵",
@@ -9,6 +10,7 @@ export const FUEL_ICONS: Record<string, string> = {
 export const FUEL_LABELS: Record<string, string> = {
   EV:       "Elektrikli",
   HYBRID:   "Hibrit",
+  PHEV:     "Plug-in Hibrit",
   GASOLINE: "Benzin",
   DIESEL:   "Dizel",
   LPG:      "LPG",
@@ -17,6 +19,7 @@ export const FUEL_LABELS: Record<string, string> = {
 export const FUEL_COLORS: Record<string, { bg: string; text: string }> = {
   EV:       { bg: "#C0DD97", text: "#27500A" },
   HYBRID:   { bg: "#B5D4F4", text: "#0C447C" },
+  PHEV:     { bg: "#CECBF6", text: "#3C3489" },
   GASOLINE: { bg: "#D3D1C7", text: "#444441" },
   DIESEL:   { bg: "#FAC775", text: "#412402" },
   LPG:      { bg: "#F4C0D1", text: "#4B1528" },

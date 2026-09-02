@@ -887,6 +887,20 @@ model TradeListing {
   // otomatik bu değere düşer.
   wantLocationScope  TradeLocationScope   @default(NATIONWIDE)
   wantDamageStatuses TradeDamageStatus[]  @default([])
+  // Aradığı aracın yıl/km aralığı + yakıt/vites tercihi — kullanıcı geri
+  // bildirimi: "Aradığınız Araç" bölümü sadece kategori/marka/konum/hasar
+  // biliyordu, yıl/km/yakıt/vites hiç sorulmuyordu. Hepsi opsiyonel — boş
+  // bırakılırsa (min/max null, diziler boş) o kritere göre kısıtlama yok.
+  wantYearMin     Int?
+  wantYearMax     Int?
+  wantKmMin       Int?
+  wantKmMax       Int?
+  wantFuelTypes   TradeFuelType[] @default([])
+  // Vites değerleri kategoriye göre serbest metin (Product.attributes.transmission
+  // ile aynı sözlük: "Manuel"/"Otomatik"/"CVT"/"Yarı Otomatik") — sabit bir enum
+  // yerine dizi, ileride kategoriye özel yeni bir vites tipi eklenirse migration
+  // gerekmesin diye.
+  wantTransmissions String[] @default([])
   note            String?  @db.VarChar(300)
   // "note" kısa bir takas beklentisi notu ("sadece dizel arıyorum" gibi) — bu
   // ayrı bir alan: aracın kendisi hakkında serbest, uzun açıklama (km, bakım
@@ -1154,6 +1168,17 @@ enum TradeLocationScope {
   SAME_CITY   // Aynı Şehirde
   SAME_REGION // Aynı Bölgede
   NATIONWIDE  // Türkiye Genelinde
+}
+
+// vehicleSuggestSchema'daki fuelType enum'uyla aynı değer seti — Product.attributes
+// JSON'ında string olarak tutulan "fuel_type" ile birebir eşleşir (bkz. specFields.ts).
+enum TradeFuelType {
+  GASOLINE
+  DIESEL
+  EV
+  PHEV
+  HYBRID
+  LPG
 }
 
 // Motor/Şanzıman/Yürüyen Aksam için ortak 5 durumlu model — kullanıcı geri

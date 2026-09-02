@@ -7,15 +7,32 @@ import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { TradeCard } from "./TradeCard";
 import { TakasFilterForm } from "./TakasFilterForm";
 import { SavedSearchPanel } from "./SavedSearchPanel";
-import { matchesWant, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
-import type { LocationScope } from "@/lib/tradeExpectations";
+import { matchesWant, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
+import type { LocationScope, TradeFuelType } from "@/lib/tradeExpectations";
 import type { DamageStatus } from "@/lib/damageStatus";
 
 const PAGE_SIZE = 20;
 
+// Serbest metin aramada aksan-duyarsızlık — ana site aramasındaki (/arama)
+// normalize() ile aynı mantık (bkz. kullanıcı onayı: "ana site aramasıyla
+// aynı aksan-duyarsızlık olsun"). Burada tek fark: DB seviyesinde değil,
+// diğer filtrelerle ÖNCE daraltılmış (ve sınırlı sayıdaki) küme üzerinde
+// JS'te uygulanıyor — envanter büyüdükçe tüm ilanları çekip filtrelemenin
+// tekrar "Kritik" ölçeklenebilirlik hatasına dönmemesi için (bkz. denetim
+// raporu).
+const DIACRITIC_MARKS_RE = new RegExp("[\\u0300-\\u036f]", "g");
+function normalize(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/ı/g, "i")
+    .normalize("NFD")
+    .replace(DIACRITIC_MARKS_RE, "");
+}
+
 interface TakasSearchParams {
   il?: string; kategori?: string; marka?: string; odeme?: string; sayfa?: string;
   yilMin?: string; yilMax?: string; kmMin?: string; kmMax?: string;
+  yakit?: string; vites?: string; q?: string;
 }
 
 export async function generateMetadata({
@@ -44,11 +61,14 @@ export default async function TakasPage({
   const yilMax = params.yilMax ? parseInt(params.yilMax) : undefined;
   const kmMin = params.kmMin ? parseInt(params.kmMin) : undefined;
   const kmMax = params.kmMax ? parseInt(params.kmMax) : undefined;
+  const yakit = params.yakit ?? "";
+  const vites = params.vites ?? "";
+  const q = (params.q ?? "").trim();
 
   // İl seçilmemişse artık tüm Türkiye'deki ilanlar gösteriliyor (önceden boş sayfa gösterip
   // platformun envanterini hiç göstermiyordu — bkz. denetim raporu).
   const { listings, total } = await fetchListings(
-    il, params.kategori, params.marka, params.odeme, yilMin, yilMax, kmMin, kmMax, page
+    il, params.kategori, params.marka, params.odeme, yilMin, yilMax, kmMin, kmMax, yakit, vites, q, page
   );
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
@@ -63,6 +83,9 @@ export default async function TakasPage({
     if (params.yilMax) qs.set("yilMax", params.yilMax);
     if (params.kmMin) qs.set("kmMin", params.kmMin);
     if (params.kmMax) qs.set("kmMax", params.kmMax);
+    if (params.yakit) qs.set("yakit", params.yakit);
+    if (params.vites) qs.set("vites", params.vites);
+    if (params.q) qs.set("q", params.q);
     if (targetPage > 1) qs.set("sayfa", String(targetPage));
     const q = qs.toString();
     return q ? `/takas?${q}` : "/takas";
@@ -105,7 +128,10 @@ export default async function TakasPage({
           wantBrandId: true,
           wantLocationScope: true,
           wantDamageStatuses: true,
-          product: { select: { categoryId: true, brandId: true } },
+          wantYearMin: true, wantYearMax: true, wantKmMin: true, wantKmMax: true,
+          wantFuelTypes: true, wantTransmissions: true,
+          product: { select: { categoryId: true, brandId: true, year: true, attributes: true } },
+          userProduct: { select: { usageAmount: true, usageUnit: true } },
         },
       }).catch(() => null)
     : null;
@@ -116,6 +142,12 @@ export default async function TakasPage({
         wantLocationScope: myListing.wantLocationScope as LocationScope,
         wantDamageStatuses: myListing.wantDamageStatuses as DamageStatus[],
         city: myListing.city,
+        wantYearMin: myListing.wantYearMin,
+        wantYearMax: myListing.wantYearMax,
+        wantKmMin: myListing.wantKmMin,
+        wantKmMax: myListing.wantKmMax,
+        wantFuelTypes: myListing.wantFuelTypes as TradeFuelType[],
+        wantTransmissions: myListing.wantTransmissions,
       }
     : null;
   const myVehicle: VehicleFacts | null = myListing
@@ -124,6 +156,9 @@ export default async function TakasPage({
         brandId: myListing.product.brandId,
         city: myListing.city,
         damageStatus: myListing.damageStatus,
+        year: myListing.product.year,
+        km: myListing.userProduct?.usageUnit === "km" ? myListing.userProduct.usageAmount : null,
+        ...fuelTransmissionFromAttributes(myListing.product.attributes),
       }
     : null;
 
@@ -153,6 +188,9 @@ export default async function TakasPage({
         yilMax={params.yilMax ?? ""}
         kmMin={params.kmMin ?? ""}
         kmMax={params.kmMax ?? ""}
+        yakit={yakit}
+        vites={vites}
+        q={q}
         cities={TURKISH_CITIES}
         categories={categories}
         brands={brands}
@@ -178,24 +216,31 @@ export default async function TakasPage({
       ) : (
         <div className="space-y-4">
           {listings.map((listing) => {
+            const listingVehicle: VehicleFacts = {
+              categoryId: listing.product.categoryId,
+              brandId: listing.product.brandId,
+              city: listing.city,
+              damageStatus: listing.damageStatus,
+              year: listing.product.year,
+              km: listing.userProduct?.usageUnit === "km" ? listing.userProduct.usageAmount : null,
+              ...fuelTransmissionFromAttributes(listing.product.attributes),
+            };
+            const listingWant: WantCriteria = {
+              wantCategoryId: listing.wantCategoryId,
+              wantBrandId: listing.wantBrandId,
+              wantLocationScope: listing.wantLocationScope as LocationScope,
+              wantDamageStatuses: listing.wantDamageStatuses as DamageStatus[],
+              city: listing.city,
+              wantYearMin: listing.wantYearMin,
+              wantYearMax: listing.wantYearMax,
+              wantKmMin: listing.wantKmMin,
+              wantKmMax: listing.wantKmMax,
+              wantFuelTypes: listing.wantFuelTypes as TradeFuelType[],
+              wantTransmissions: listing.wantTransmissions,
+            };
             const isMatch =
               myWant && myVehicle
-                ? matchesWant(myWant, {
-                    categoryId: listing.product.categoryId,
-                    brandId: listing.product.brandId,
-                    city: listing.city,
-                    damageStatus: listing.damageStatus,
-                  }) &&
-                  matchesWant(
-                    {
-                      wantCategoryId: listing.wantCategoryId,
-                      wantBrandId: listing.wantBrandId,
-                      wantLocationScope: listing.wantLocationScope as LocationScope,
-                      wantDamageStatuses: listing.wantDamageStatuses as DamageStatus[],
-                      city: listing.city,
-                    },
-                    myVehicle
-                  )
+                ? matchesWant(myWant, listingVehicle) && matchesWant(listingWant, myVehicle)
                 : false;
             return <TradeCard key={listing.id} listing={listing} isMatch={isMatch} />;
           })}
@@ -221,6 +266,12 @@ export default async function TakasPage({
   );
 }
 
+// Serbest metin aramalı sorgularda DB'den çekilecek üst sınır — diğer filtreler
+// (il/kategori/marka/yıl/km/yakıt/vites) bu sorgunun İÇİNDE zaten uygulanır,
+// bu sadece o daraltılmış kümenin üzerine bir güvenlik tavanı (bkz. yorum,
+// fetchListings başı).
+const FREE_TEXT_FETCH_CAP = 500;
+
 async function fetchListings(
   il: string,
   kategoriSlug: string | undefined,
@@ -230,6 +281,9 @@ async function fetchListings(
   yilMax: number | undefined,
   kmMin: number | undefined,
   kmMax: number | undefined,
+  yakit: string,
+  vites: string,
+  q: string,
   page: number
 ) {
   const paymentIntent =
@@ -243,11 +297,13 @@ async function fetchListings(
   // madde). Artık hem doğru sonuç veriyor hem gerçek sayfalama (skip/take) destekliyor.
   // Yıl/km filtresi de aynı denetim raporunun ORTA maddesi — mevcut product.year ve
   // userProduct.usageAmount alanları üzerinden, yeni bir veri toplamaya gerek kalmadan.
+  // Yakıt/vites filtresi Product.attributes (JSON) içindeki fuel_type/transmission
+  // alanlarına Prisma'nın JSON path sorgusuyla uygulanıyor.
   const where: Prisma.TradeListingWhereInput = {
     isActive: true,
     ...(il ? { city: il } : {}),
     ...(paymentIntent ? { paymentIntent } : {}),
-    ...(kategoriSlug || markaSlug || yilMin != null || yilMax != null
+    ...(kategoriSlug || markaSlug || yilMin != null || yilMax != null || yakit || vites
       ? {
           product: {
             ...(kategoriSlug ? { category: { slug: kategoriSlug } } : {}),
@@ -255,6 +311,8 @@ async function fetchListings(
             ...(yilMin != null || yilMax != null
               ? { year: { ...(yilMin != null ? { gte: yilMin } : {}), ...(yilMax != null ? { lte: yilMax } : {}) } }
               : {}),
+            ...(yakit ? { attributes: { path: ["fuel_type"], equals: yakit } } : {}),
+            ...(vites ? { attributes: { path: ["transmission"], equals: vites } } : {}),
           },
         }
       : {}),
@@ -280,24 +338,55 @@ async function fetchListings(
       : {}),
   };
 
-  const [listings, total] = await Promise.all([
-    prisma.tradeListing.findMany({
+  const include = {
+    product: { include: { brand: true, model: true, category: true } },
+    // Km bilgisi Garaj'da zaten toplanıyordu ama Takas kartında/detayında hiç
+    // gösterilmiyordu (bkz. denetim raporu, YÜKSEK madde) — bir araç takasında
+    // hasardan sonraki en kritik ikinci veri.
+    userProduct: { select: { usageAmount: true, usageUnit: true } },
+  } satisfies Prisma.TradeListingInclude;
+
+  let listings: Prisma.TradeListingGetPayload<{ include: typeof include }>[];
+  let total: number;
+
+  if (q) {
+    // Serbest metin arama — ana site aramasındaki (/arama) gibi aksan-duyarsız,
+    // JS tarafında .includes() ile. Aynı "Kritik" ölçeklenebilirlik hatasını
+    // tekrarlamamak için: diğer filtreler ÖNCE DB seviyesinde uygulanır, sadece
+    // o (zaten daraltılmış + tavanlı) küme üzerinde metin araması yapılır,
+    // sayfalama bundan SONRA (JS'te) uygulanır (bkz. kullanıcı onayı).
+    const nq = normalize(q);
+    const candidates = await prisma.tradeListing.findMany({
       where,
-      include: {
-        product: { include: { brand: true, model: true, category: true } },
-        // Km bilgisi Garaj'da zaten toplanıyordu ama Takas kartında/detayında hiç
-        // gösterilmiyordu (bkz. denetim raporu, YÜKSEK madde) — bir araç takasında
-        // hasardan sonraki en kritik ikinci veri.
-        userProduct: { select: { usageAmount: true, usageUnit: true } },
-      },
-      // effectiveDate: createdAt'la aynı başlar, "İlan Yenile" ile tekrar now()'a
-      // set edilir — createdAt'ın kendisi (ilanın gerçek açılış tarihi) korunur.
+      include,
       orderBy: { effectiveDate: "desc" },
-      skip: (page - 1) * PAGE_SIZE,
-      take: PAGE_SIZE,
-    }),
-    prisma.tradeListing.count({ where }),
-  ]);
+      take: FREE_TEXT_FETCH_CAP,
+    });
+    const filtered = candidates.filter((l) => {
+      const p = l.product;
+      return (
+        normalize(p.name).includes(nq) ||
+        normalize(p.brand.name).includes(nq) ||
+        normalize(p.model.name).includes(nq) ||
+        (p.trimName ? normalize(p.trimName).includes(nq) : false)
+      );
+    });
+    total = filtered.length;
+    listings = filtered.slice((page - 1) * PAGE_SIZE, (page - 1) * PAGE_SIZE + PAGE_SIZE);
+  } else {
+    [listings, total] = await Promise.all([
+      prisma.tradeListing.findMany({
+        where,
+        include,
+        // effectiveDate: createdAt'la aynı başlar, "İlan Yenile" ile tekrar now()'a
+        // set edilir — createdAt'ın kendisi (ilanın gerçek açılış tarihi) korunur.
+        orderBy: { effectiveDate: "desc" },
+        skip: (page - 1) * PAGE_SIZE,
+        take: PAGE_SIZE,
+      }),
+      prisma.tradeListing.count({ where }),
+    ]);
+  }
 
   // İlan açmak için zaten onaylı fotoğraflı bir yorum şart koşuluyor (bkz. api/trades/route.ts),
   // yani fotoğraf her ilan için mevcut — sadece burada join edilip karta taşınıyor.

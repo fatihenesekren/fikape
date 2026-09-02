@@ -7,7 +7,7 @@ import { isTradeListingEnabled } from "@/lib/features";
 import { hashRequestContext } from "@/lib/security";
 import { createNotification } from "@/lib/notification";
 import { CAR_PARTS } from "@/lib/carParts";
-import { isMutualMatch, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
+import { isMutualMatch, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
 import type { LocationScope } from "@/lib/tradeExpectations";
 import type { DamageStatus } from "@/lib/damageStatus";
 
@@ -41,6 +41,7 @@ export async function POST(req: Request) {
     transmissionCondition, transmissionNote,
     runningGearCondition, runningGearNote, tramerRecords,
     wantLocationScope, wantDamageStatuses, usageAmount,
+    wantYearMin, wantYearMax, wantKmMin, wantKmMax, wantFuelTypes, wantTransmissions,
   } = parsed.data;
   const userProductId = Number(parsed.data.userProductId);
   const wantCategoryId = parsed.data.wantCategoryId != null ? Number(parsed.data.wantCategoryId) : null;
@@ -59,7 +60,7 @@ export async function POST(req: Request) {
       id: true, userId: true, productId: true, ownershipStatus: true,
       product: {
         select: {
-          categoryId: true, brandId: true,
+          categoryId: true, brandId: true, year: true, attributes: true,
           brand: { select: { name: true } }, model: { select: { name: true } },
         },
       },
@@ -104,6 +105,12 @@ export async function POST(req: Request) {
         wantAnything: wantAnything ?? false,
         ...(wantLocationScope !== undefined ? { wantLocationScope } : {}),
         ...(wantDamageStatuses !== undefined ? { wantDamageStatuses } : {}),
+        wantYearMin: wantYearMin ?? null,
+        wantYearMax: wantYearMax ?? null,
+        wantKmMin: wantKmMin ?? null,
+        wantKmMax: wantKmMax ?? null,
+        ...(wantFuelTypes !== undefined ? { wantFuelTypes } : {}),
+        ...(wantTransmissions !== undefined ? { wantTransmissions } : {}),
         note: note ?? null,
         description: description ?? null,
         paymentIntent,
@@ -195,6 +202,9 @@ export async function POST(req: Request) {
       brandId: userProduct.product.brandId,
       city,
       damageStatus: damageStatus ?? null,
+      year: userProduct.product.year,
+      km: usageAmount ?? null,
+      ...fuelTransmissionFromAttributes(userProduct.product.attributes),
     };
     const newWant: WantCriteria = {
       wantCategoryId,
@@ -202,6 +212,12 @@ export async function POST(req: Request) {
       wantLocationScope: (wantLocationScope ?? "NATIONWIDE") as LocationScope,
       wantDamageStatuses: (wantDamageStatuses ?? []) as DamageStatus[],
       city,
+      wantYearMin: wantYearMin ?? null,
+      wantYearMax: wantYearMax ?? null,
+      wantKmMin: wantKmMin ?? null,
+      wantKmMax: wantKmMax ?? null,
+      wantFuelTypes: (wantFuelTypes ?? []) as WantCriteria["wantFuelTypes"],
+      wantTransmissions: wantTransmissions ?? [],
     };
     const newVehicleName = `${userProduct.product.brand.name} ${userProduct.product.model.name}`;
 
@@ -215,9 +231,12 @@ export async function POST(req: Request) {
       select: {
         id: true, userId: true, city: true, damageStatus: true,
         wantCategoryId: true, wantBrandId: true, wantLocationScope: true, wantDamageStatuses: true,
+        wantYearMin: true, wantYearMax: true, wantKmMin: true, wantKmMax: true,
+        wantFuelTypes: true, wantTransmissions: true,
+        userProduct: { select: { usageAmount: true, usageUnit: true } },
         product: {
           select: {
-            categoryId: true, brandId: true,
+            categoryId: true, brandId: true, year: true, attributes: true,
             brand: { select: { name: true } }, model: { select: { name: true } },
           },
         },
@@ -227,12 +246,19 @@ export async function POST(req: Request) {
     for (const c of candidates) {
       const candidateVehicle: VehicleFacts = {
         categoryId: c.product.categoryId, brandId: c.product.brandId, city: c.city, damageStatus: c.damageStatus,
+        year: c.product.year,
+        km: c.userProduct?.usageUnit === "km" ? c.userProduct.usageAmount : null,
+        ...fuelTransmissionFromAttributes(c.product.attributes),
       };
       const candidateWant: WantCriteria = {
         wantCategoryId: c.wantCategoryId, wantBrandId: c.wantBrandId,
         wantLocationScope: c.wantLocationScope as LocationScope,
         wantDamageStatuses: c.wantDamageStatuses as DamageStatus[],
         city: c.city,
+        wantYearMin: c.wantYearMin, wantYearMax: c.wantYearMax,
+        wantKmMin: c.wantKmMin, wantKmMax: c.wantKmMax,
+        wantFuelTypes: c.wantFuelTypes as WantCriteria["wantFuelTypes"],
+        wantTransmissions: c.wantTransmissions,
       };
       if (!isMutualMatch({ want: newWant, vehicle: newVehicle }, { want: candidateWant, vehicle: candidateVehicle })) continue;
 

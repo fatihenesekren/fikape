@@ -133,9 +133,21 @@ const damageStatusFields = {
 // Aradığım araç nerede olmalı / hangi hasar durumlarını kabul ederim —
 // ikisi de opsiyonel, boş bırakılırsa Prisma @default'u (Türkiye geneli /
 // tüm hasar durumları = kısıtlama yok) devreye girer.
+const wantYear = z.number().int().min(1980, "Geçerli bir yıl giriniz.").max(2100, "Geçerli bir yıl giriniz.");
+const wantKm = z.number().int().min(0, "Km 0'dan küçük olamaz.").max(2_000_000, "Km çok yüksek görünüyor.");
+
 const wantExpectationFields = {
   wantLocationScope:  z.enum(["SAME_CITY", "SAME_REGION", "NATIONWIDE"]).optional(),
   wantDamageStatuses: z.array(z.enum(["NONE", "DAMAGED", "HEAVY"])).max(3).optional(),
+  // Yıl/km aralığı + yakıt/vites tercihi — hepsi opsiyonel, boş bırakılırsa o
+  // kritere göre kısıtlama yok (bkz. kullanıcı geri bildirimi: "Aradığınız Araç"
+  // bölümü bunları hiç sormuyordu).
+  wantYearMin:         wantYear.optional().nullable(),
+  wantYearMax:         wantYear.optional().nullable(),
+  wantKmMin:           wantKm.optional().nullable(),
+  wantKmMax:           wantKm.optional().nullable(),
+  wantFuelTypes:       z.array(z.enum(["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"])).max(6).optional(),
+  wantTransmissions:   z.array(z.string().max(20)).max(4).optional(),
 };
 
 // Km — Garaj'daki alış bilgisi formu ile Takas ilan formu AYNI alanı

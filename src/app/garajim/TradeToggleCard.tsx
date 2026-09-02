@@ -7,7 +7,11 @@ import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { PART_CONDITION_CATEGORIES, type PartCondition } from "@/lib/carParts";
 import type { DamageStatus, MechanicalCondition, TramerRecordInput } from "@/lib/damageStatus";
 import { DAMAGE_STATUS_LABEL } from "@/lib/damageStatus";
-import { LOCATION_SCOPES, LOCATION_SCOPE_LABEL, type LocationScope } from "@/lib/tradeExpectations";
+import {
+  LOCATION_SCOPES, LOCATION_SCOPE_LABEL, type LocationScope,
+  TRADE_FUEL_TYPES, TRANSMISSION_OPTIONS, type TradeFuelType,
+} from "@/lib/tradeExpectations";
+import { FUEL_LABELS } from "@/lib/fuel";
 import { PartConditionForm } from "./PartConditionForm";
 import { DamageStatusForm, EMPTY_DAMAGE_STATUS, type DamageStatusValue } from "./DamageStatusForm";
 
@@ -27,6 +31,12 @@ interface ExistingListing {
   wantBrandId: number | null;
   wantLocationScope: LocationScope;
   wantDamageStatuses: DamageStatus[];
+  wantYearMin: number | null;
+  wantYearMax: number | null;
+  wantKmMin: number | null;
+  wantKmMax: number | null;
+  wantFuelTypes: TradeFuelType[];
+  wantTransmissions: string[];
   partConditions: Record<string, PartCondition>;
   damageStatus: DamageStatus | null;
   engineCondition: MechanicalCondition | null;
@@ -38,10 +48,11 @@ interface ExistingListing {
   tramerRecords: TramerRecordInput[];
 }
 
-// Km input'u tam sayıya yuvarlar — sunucudaki usageAmountRange şeması
-// .int() istiyor, tarayıcının number input'u ondalık girişi engellemiyor
-// (bkz. kullanıcı geri bildirimi: anlaşılır olmayan bir Zod hatasına yol açardı).
-function parseUsageAmount(input: string): number | null {
+// Sayısal input'ları (km, yıl aralığı vb.) tam sayıya yuvarlar — sunucudaki
+// zod şemaları .int() istiyor, tarayıcının number input'u ondalık girişi
+// engellemiyor (bkz. kullanıcı geri bildirimi: anlaşılır olmayan bir Zod
+// hatasına yol açardı).
+function parseIntOrNull(input: string): number | null {
   if (!input) return null;
   const n = Number(input);
   return Number.isFinite(n) ? Math.round(n) : null;
@@ -124,6 +135,14 @@ export function TradeToggleCard({
   const [wantDamageStatuses, setWantDamageStatuses] = useState<DamageStatus[]>(
     existingListing?.wantDamageStatuses ?? []
   );
+  // Aradığım aracın yıl/km aralığı + yakıt/vites tercihi — kullanıcı geri
+  // bildirimi: "Aradığınız Araç" bölümü bunları hiç sormuyordu.
+  const [wantYearMinInput, setWantYearMinInput] = useState(existingListing?.wantYearMin?.toString() ?? "");
+  const [wantYearMaxInput, setWantYearMaxInput] = useState(existingListing?.wantYearMax?.toString() ?? "");
+  const [wantKmMinInput, setWantKmMinInput] = useState(existingListing?.wantKmMin?.toString() ?? "");
+  const [wantKmMaxInput, setWantKmMaxInput] = useState(existingListing?.wantKmMax?.toString() ?? "");
+  const [wantFuelTypes, setWantFuelTypes] = useState<TradeFuelType[]>(existingListing?.wantFuelTypes ?? []);
+  const [wantTransmissions, setWantTransmissions] = useState<string[]>(existingListing?.wantTransmissions ?? []);
   const availableBrands = wantCategoryId
     ? brands.filter((b) => categoryBrandMap[Number(wantCategoryId)]?.includes(b.id))
     : brands;
@@ -266,11 +285,17 @@ export function TradeToggleCard({
           wantBrandId: wantBrandId || null,
           wantLocationScope,
           wantDamageStatuses,
+          wantYearMin: parseIntOrNull(wantYearMinInput),
+          wantYearMax: parseIntOrNull(wantYearMaxInput),
+          wantKmMin: parseIntOrNull(wantKmMinInput),
+          wantKmMax: parseIntOrNull(wantKmMaxInput),
+          wantFuelTypes,
+          wantTransmissions,
           paymentIntent,
           note: note.trim() || null,
           description: description.trim() || null,
           partConditions,
-          usageAmount: parseUsageAmount(usageAmountInput),
+          usageAmount: parseIntOrNull(usageAmountInput),
           ...damageStatusPayload(damageStatusValue),
         }),
       });
@@ -302,6 +327,12 @@ export function TradeToggleCard({
             wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
             wantLocationScope={wantLocationScope} setWantLocationScope={setWantLocationScope}
             wantDamageStatuses={wantDamageStatuses} setWantDamageStatuses={setWantDamageStatuses}
+            wantYearMinInput={wantYearMinInput} setWantYearMinInput={setWantYearMinInput}
+            wantYearMaxInput={wantYearMaxInput} setWantYearMaxInput={setWantYearMaxInput}
+            wantKmMinInput={wantKmMinInput} setWantKmMinInput={setWantKmMinInput}
+            wantKmMaxInput={wantKmMaxInput} setWantKmMaxInput={setWantKmMaxInput}
+            wantFuelTypes={wantFuelTypes} setWantFuelTypes={setWantFuelTypes}
+            wantTransmissions={wantTransmissions} setWantTransmissions={setWantTransmissions}
             availableBrands={availableBrands} categories={categories}
             paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
             note={note} setNote={setNote}
@@ -423,12 +454,18 @@ export function TradeToggleCard({
           wantBrandId: wantBrandId || null,
           wantLocationScope,
           wantDamageStatuses,
+          wantYearMin: parseIntOrNull(wantYearMinInput),
+          wantYearMax: parseIntOrNull(wantYearMaxInput),
+          wantKmMin: parseIntOrNull(wantKmMinInput),
+          wantKmMax: parseIntOrNull(wantKmMaxInput),
+          wantFuelTypes,
+          wantTransmissions,
           paymentIntent,
           note: note.trim() || null,
           description: description.trim() || null,
           partConditions,
           consentGiven,
-          usageAmount: parseUsageAmount(usageAmountInput),
+          usageAmount: parseIntOrNull(usageAmountInput),
           ...damageStatusPayload(damageStatusValue),
         }),
       });
@@ -459,6 +496,12 @@ export function TradeToggleCard({
         wantBrandId={wantBrandId} setWantBrandId={setWantBrandId}
         wantLocationScope={wantLocationScope} setWantLocationScope={setWantLocationScope}
         wantDamageStatuses={wantDamageStatuses} setWantDamageStatuses={setWantDamageStatuses}
+        wantYearMinInput={wantYearMinInput} setWantYearMinInput={setWantYearMinInput}
+        wantYearMaxInput={wantYearMaxInput} setWantYearMaxInput={setWantYearMaxInput}
+        wantKmMinInput={wantKmMinInput} setWantKmMinInput={setWantKmMinInput}
+        wantKmMaxInput={wantKmMaxInput} setWantKmMaxInput={setWantKmMaxInput}
+        wantFuelTypes={wantFuelTypes} setWantFuelTypes={setWantFuelTypes}
+        wantTransmissions={wantTransmissions} setWantTransmissions={setWantTransmissions}
         availableBrands={availableBrands} categories={categories}
         paymentIntent={paymentIntent} setPaymentIntent={setPaymentIntent}
         note={note} setNote={setNote}
@@ -527,6 +570,12 @@ function TradeFormFields({
   wantBrandId, setWantBrandId,
   wantLocationScope, setWantLocationScope,
   wantDamageStatuses, setWantDamageStatuses,
+  wantYearMinInput, setWantYearMinInput,
+  wantYearMaxInput, setWantYearMaxInput,
+  wantKmMinInput, setWantKmMinInput,
+  wantKmMaxInput, setWantKmMaxInput,
+  wantFuelTypes, setWantFuelTypes,
+  wantTransmissions, setWantTransmissions,
   availableBrands, categories,
   paymentIntent, setPaymentIntent,
   note, setNote,
@@ -541,6 +590,12 @@ function TradeFormFields({
   wantBrandId: string; setWantBrandId: (v: string) => void;
   wantLocationScope: LocationScope; setWantLocationScope: (v: LocationScope) => void;
   wantDamageStatuses: DamageStatus[]; setWantDamageStatuses: (v: DamageStatus[]) => void;
+  wantYearMinInput: string; setWantYearMinInput: (v: string) => void;
+  wantYearMaxInput: string; setWantYearMaxInput: (v: string) => void;
+  wantKmMinInput: string; setWantKmMinInput: (v: string) => void;
+  wantKmMaxInput: string; setWantKmMaxInput: (v: string) => void;
+  wantFuelTypes: TradeFuelType[]; setWantFuelTypes: (v: TradeFuelType[]) => void;
+  wantTransmissions: string[]; setWantTransmissions: (v: string[]) => void;
   availableBrands: { id: number; name: string }[];
   categories: { id: number; name: string }[];
   paymentIntent: PaymentIntent; setPaymentIntent: (v: PaymentIntent) => void;
@@ -555,6 +610,18 @@ function TradeFormFields({
       wantDamageStatuses.includes(status)
         ? wantDamageStatuses.filter((s) => s !== status)
         : [...wantDamageStatuses, status]
+    );
+  }
+
+  function toggleFuelType(fuel: TradeFuelType) {
+    setWantFuelTypes(
+      wantFuelTypes.includes(fuel) ? wantFuelTypes.filter((f) => f !== fuel) : [...wantFuelTypes, fuel]
+    );
+  }
+
+  function toggleTransmission(t: string) {
+    setWantTransmissions(
+      wantTransmissions.includes(t) ? wantTransmissions.filter((x) => x !== t) : [...wantTransmissions, t]
     );
   }
 
@@ -725,6 +792,119 @@ function TradeFormFields({
                 }
               >
                 {DAMAGE_STATUS_LABEL[s]}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        {/* Yıl/km aralığı + yakıt/vites tercihi — hepsi opsiyonel, boş
+            bırakılırsa o kritere göre kısıtlama yok (bkz. kullanıcı geri
+            bildirimi: "Aradığınız Araç" bölümü bunları hiç sormuyordu). */}
+        <fieldset className="text-xs text-indigo-800">
+          <legend className="font-semibold mb-1">Aradığım aracın yılı</legend>
+          <div className="grid grid-cols-2 gap-2">
+            <input
+              type="number" inputMode="numeric" step={1}
+              value={wantYearMinInput}
+              onChange={(e) => setWantYearMinInput(e.target.value)}
+              placeholder="Yıl (min)"
+              aria-label="Aradığım aracın en eski model yılı"
+              className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            />
+            <input
+              type="number" inputMode="numeric" step={1}
+              value={wantYearMaxInput}
+              onChange={(e) => setWantYearMaxInput(e.target.value)}
+              placeholder="Yıl (max)"
+              aria-label="Aradığım aracın en yeni model yılı"
+              className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            />
+          </div>
+        </fieldset>
+
+        <fieldset className="text-xs text-indigo-800">
+          <legend className="font-semibold mb-1">Aradığım aracın km&apos;si</legend>
+          <div className="grid grid-cols-2 gap-2">
+            <input
+              type="number" inputMode="numeric" min={0} step={1}
+              value={wantKmMinInput}
+              onChange={(e) => setWantKmMinInput(e.target.value)}
+              placeholder="Km (en az)"
+              aria-label="Aradığım aracın en az kilometresi"
+              className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            />
+            <input
+              type="number" inputMode="numeric" min={0} step={1}
+              value={wantKmMaxInput}
+              onChange={(e) => setWantKmMaxInput(e.target.value)}
+              placeholder="Km (en fazla)"
+              aria-label="Aradığım aracın en fazla kilometresi"
+              className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            />
+          </div>
+        </fieldset>
+
+        <fieldset className="text-xs text-indigo-800">
+          <legend className="font-semibold mb-1">Yakıt tipi</legend>
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              type="button"
+              onClick={() => setWantFuelTypes([])}
+              className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+              style={
+                wantFuelTypes.length === 0
+                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                  : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+              }
+            >
+              Farketmez
+            </button>
+            {TRADE_FUEL_TYPES.map((f) => (
+              <button
+                key={f}
+                type="button"
+                onClick={() => toggleFuelType(f)}
+                className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+                style={
+                  wantFuelTypes.includes(f)
+                    ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                    : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+                }
+              >
+                {FUEL_LABELS[f]}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset className="text-xs text-indigo-800">
+          <legend className="font-semibold mb-1">Vites tipi</legend>
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              type="button"
+              onClick={() => setWantTransmissions([])}
+              className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+              style={
+                wantTransmissions.length === 0
+                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                  : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+              }
+            >
+              Farketmez
+            </button>
+            {TRANSMISSION_OPTIONS.map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => toggleTransmission(t)}
+                className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
+                style={
+                  wantTransmissions.includes(t)
+                    ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                    : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
+                }
+              >
+                {t}
               </button>
             ))}
           </div>

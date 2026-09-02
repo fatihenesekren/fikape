@@ -9,6 +9,18 @@ const PAYMENT_OPTIONS = [
   { value: "WANTS_EXTRA", label: "Üstüne para bekliyor" },
 ];
 
+// Product.attributes.fuel_type / transmission ile aynı sözlük (bkz.
+// tradeExpectations.ts TRADE_FUEL_TYPES / TRANSMISSION_OPTIONS).
+const FUEL_OPTIONS = [
+  { value: "GASOLINE", label: "Benzin" },
+  { value: "DIESEL", label: "Dizel" },
+  { value: "EV", label: "Elektrikli" },
+  { value: "PHEV", label: "Plug-in Hibrit" },
+  { value: "HYBRID", label: "Hibrit" },
+  { value: "LPG", label: "LPG" },
+];
+const TRANSMISSION_OPTIONS = ["Manuel", "Otomatik", "CVT", "Yarı Otomatik"];
+
 export function TakasFilterForm({
   il,
   kategoriSlug,
@@ -18,6 +30,9 @@ export function TakasFilterForm({
   yilMax,
   kmMin,
   kmMax,
+  yakit,
+  vites,
+  q,
   cities,
   categories,
   brands,
@@ -31,6 +46,9 @@ export function TakasFilterForm({
   yilMax: string;
   kmMin: string;
   kmMax: string;
+  yakit: string;
+  vites: string;
+  q: string;
   cities: readonly string[];
   categories: { id: number; slug: string; name: string }[];
   brands: { id: number; slug: string; name: string }[];
@@ -41,10 +59,18 @@ export function TakasFilterForm({
   // Filtreleri temizleme — önceden hiç yoktu, kullanıcı bir filtre uyguladıktan
   // sonra geri dönmenin tek yolu URL'yi elle temizlemekti (bkz. kullanıcı geri
   // bildirimi, ekran görüntüsü).
-  const hasActiveFilters = !!(il || kategoriSlug || markaSlug || odemeNiyeti || yilMin || yilMax || kmMin || kmMax);
+  const hasActiveFilters = !!(il || kategoriSlug || markaSlug || odemeNiyeti || yilMin || yilMax || kmMin || kmMax || yakit || vites || q);
 
   return (
     <form method="get" className="grid grid-cols-1 sm:grid-cols-4 gap-2 mb-8">
+      <input
+        type="text"
+        name="q"
+        defaultValue={q}
+        placeholder="Marka, model veya versiyon ara…"
+        aria-label="Serbest metin arama"
+        className="sm:col-span-4 text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
+      />
       <select name="il" defaultValue={il} aria-label="İl" className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5">
         <option value="">İl seçiniz</option>
         {cities.map((c) => (
@@ -119,6 +145,18 @@ export function TakasFilterForm({
         aria-label="En fazla kilometre"
         className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
       />
+      <select name="yakit" defaultValue={yakit} aria-label="Yakıt tipi" className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5">
+        <option value="">Yakıt tipi (tümü)</option>
+        {FUEL_OPTIONS.map((o) => (
+          <option key={o.value} value={o.value}>{o.label}</option>
+        ))}
+      </select>
+      <select name="vites" defaultValue={vites} aria-label="Vites tipi" className="text-sm rounded-lg border border-gray-200 px-2.5 py-1.5">
+        <option value="">Vites tipi (tümü)</option>
+        {TRANSMISSION_OPTIONS.map((t) => (
+          <option key={t} value={t}>{t}</option>
+        ))}
+      </select>
       <div className="sm:col-span-4 flex items-center gap-3">
         <button type="submit" className="flex-1 text-sm font-semibold text-white rounded-lg px-3 py-1.5" style={{ background: "#4338ca" }}>
           Filtrele
