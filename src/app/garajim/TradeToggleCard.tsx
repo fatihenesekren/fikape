@@ -563,17 +563,20 @@ function TradeFormFields({
       {/* 🚗 Aracınız hakkında — konum, km, açıklama, hasar durumu, boyalı/
           değişen parça: hepsi TAKASA VERDİĞİNİZ aracınıza ait. */}
       <FormSection title="🚗 Aracınız Hakkında">
-        <select
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          aria-label="İl"
-          className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
-        >
-          <option value="">İl seçiniz</option>
-          {TURKISH_CITIES.map((c) => (
-            <option key={c} value={c}>{c}</option>
-          ))}
-        </select>
+        <div>
+          <label className="block text-xs font-semibold text-indigo-800 mb-1">Aracın Bulunduğu İl</label>
+          <select
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            aria-label="İl"
+            className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+          >
+            <option value="">İl seçiniz</option>
+            {TURKISH_CITIES.map((c) => (
+              <option key={c} value={c}>{c}</option>
+            ))}
+          </select>
+        </div>
 
         {/* Km — Garaj'daki "Alış bilgisi" formuyla AYNI alanı düzenliyor, tek
             doğruluk kaynağı UserProduct.usageAmount (bkz. kullanıcı geri
@@ -585,7 +588,7 @@ function TradeFormFields({
             girilirse anlaşılır olmayan bir Zod hatası dönerdi. */}
         <div>
           <label className="block text-xs font-semibold text-indigo-800 mb-1">
-            Km <span className="font-normal text-indigo-400">(opsiyonel)</span>
+            Aracın Km&apos;si <span className="font-normal text-indigo-400">(yaklaşık, opsiyonel)</span>
           </label>
           <input
             type="number"
