@@ -38,6 +38,15 @@ interface ExistingListing {
   tramerRecords: TramerRecordInput[];
 }
 
+// Km input'u tam sayıya yuvarlar — sunucudaki usageAmountRange şeması
+// .int() istiyor, tarayıcının number input'u ondalık girişi engellemiyor
+// (bkz. kullanıcı geri bildirimi: anlaşılır olmayan bir Zod hatasına yol açardı).
+function parseUsageAmount(input: string): number | null {
+  if (!input) return null;
+  const n = Number(input);
+  return Number.isFinite(n) ? Math.round(n) : null;
+}
+
 // Boş metin notlarını null'a çevirir (description/note ile aynı ilke) —
 // API'ye gönderilirken kullanılır.
 function damageStatusPayload(v: DamageStatusValue) {
@@ -261,7 +270,7 @@ export function TradeToggleCard({
           note: note.trim() || null,
           description: description.trim() || null,
           partConditions,
-          usageAmount: usageAmountInput ? Number(usageAmountInput) : null,
+          usageAmount: parseUsageAmount(usageAmountInput),
           ...damageStatusPayload(damageStatusValue),
         }),
       });
@@ -419,7 +428,7 @@ export function TradeToggleCard({
           description: description.trim() || null,
           partConditions,
           consentGiven,
-          usageAmount: usageAmountInput ? Number(usageAmountInput) : null,
+          usageAmount: parseUsageAmount(usageAmountInput),
           ...damageStatusPayload(damageStatusValue),
         }),
       });
@@ -568,17 +577,28 @@ function TradeFormFields({
 
         {/* Km — Garaj'daki "Alış bilgisi" formuyla AYNI alanı düzenliyor, tek
             doğruluk kaynağı UserProduct.usageAmount (bkz. kullanıcı geri
-            bildirimi: "diğer tarafla senkron olmalı"). */}
-        <input
-          type="number"
-          inputMode="numeric"
-          min={0}
-          value={usageAmountInput}
-          onChange={(e) => setUsageAmountInput(e.target.value)}
-          placeholder="Km (opsiyonel)"
-          aria-label="Aracın kilometresi"
-          className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
-        />
+            bildirimi: "diğer tarafla senkron olmalı"). Kalıcı bir <label>
+            var (Açıklama'daki gibi) — önceden sadece placeholder'dı, kullanıcı
+            değer yazınca bağlam kayboluyordu (bkz. kullanıcı geri bildirimi:
+            "58000" yazan çıplak kutu — bu konuşmayı başlatan ekran görüntüsü).
+            step="1" + tam sayıya yuvarlama: sunucu .int() istiyor, ondalık
+            girilirse anlaşılır olmayan bir Zod hatası dönerdi. */}
+        <div>
+          <label className="block text-xs font-semibold text-indigo-800 mb-1">
+            Km <span className="font-normal text-indigo-400">(opsiyonel)</span>
+          </label>
+          <input
+            type="number"
+            inputMode="numeric"
+            min={0}
+            step={1}
+            value={usageAmountInput}
+            onChange={(e) => setUsageAmountInput(e.target.value)}
+            placeholder="örn. 58000"
+            aria-label="Aracın kilometresi"
+            className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+          />
+        </div>
 
         <div>
           <label className="block text-xs font-semibold text-indigo-800 mb-1">
