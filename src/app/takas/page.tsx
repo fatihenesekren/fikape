@@ -311,8 +311,19 @@ async function fetchListings(
             ...(yilMin != null || yilMax != null
               ? { year: { ...(yilMin != null ? { gte: yilMin } : {}), ...(yilMax != null ? { lte: yilMax } : {}) } }
               : {}),
-            ...(yakit ? { attributes: { path: ["fuel_type"], equals: yakit } } : {}),
-            ...(vites ? { attributes: { path: ["transmission"], equals: vites } } : {}),
+            // İkisi de aynı "attributes" JSON alanını hedeflediği için tek bir
+            // object literal'da spread edilirse ikincisi birinciyi ezer (aynı
+            // key iki kez yazılmış olur) — bu yüzden AND array'i ile ayrı
+            // koşullar olarak birleştiriliyor (bkz. bug: yakıt+vites birlikte
+            // seçilince yakıt filtresi sessizce kayboluyordu).
+            ...(yakit || vites
+              ? {
+                  AND: [
+                    ...(yakit ? [{ attributes: { path: ["fuel_type"], equals: yakit } }] : []),
+                    ...(vites ? [{ attributes: { path: ["transmission"], equals: vites } }] : []),
+                  ],
+                }
+              : {}),
           },
         }
       : {}),
