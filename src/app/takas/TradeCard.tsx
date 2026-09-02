@@ -30,7 +30,7 @@ export function TradeCard({
   return (
     <Link
       href={`/takas/${listing.id}`}
-      className="flex gap-3 bg-white border border-gray-100 rounded-2xl p-5 hover:border-gray-200 transition-colors relative"
+      className="flex gap-3.5 bg-white border border-gray-100 rounded-2xl p-4 hover:border-indigo-200 hover:shadow-sm transition-all relative"
     >
       {isMatch && (
         <span
@@ -41,10 +41,12 @@ export function TradeCard({
           ✨ Sana Uygun
         </span>
       )}
-      {listing.coverPhotoUrl && (
-        <div className="relative w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-gray-50">
-          <Image src={listing.coverPhotoUrl} alt="" fill sizes="80px" className="object-cover" />
+      {listing.coverPhotoUrl ? (
+        <div className="relative w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-gray-50">
+          <Image src={listing.coverPhotoUrl} alt="" fill sizes="96px" className="object-cover" />
         </div>
+      ) : (
+        <div className="w-24 h-24 shrink-0 rounded-xl bg-gray-50 flex items-center justify-center text-2xl">🚗</div>
       )}
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
@@ -61,11 +63,11 @@ export function TradeCard({
           <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">📍 {listing.city}</span>
           {km != null && (
             <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
-              {km.toLocaleString("tr-TR")} km
+              🛣️ {km.toLocaleString("tr-TR")} km
             </span>
           )}
           <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">
-            {PAYMENT_LABEL[listing.paymentIntent] ?? listing.paymentIntent}
+            💰 {PAYMENT_LABEL[listing.paymentIntent] ?? listing.paymentIntent}
           </span>
           {listing.wantAnything && (
             <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">Marka fark etmez</span>
