@@ -167,7 +167,10 @@ export default async function TakasPage({
   const savedSearches = isLoggedIn
     ? await prisma.savedSearch.findMany({
         where: { userId: Number(session!.user.id) },
-        include: { category: { select: { name: true } }, brand: { select: { name: true } } },
+        include: {
+          category: { select: { name: true, slug: true } },
+          brand: { select: { name: true, slug: true } },
+        },
         orderBy: { createdAt: "desc" },
       }).catch(() => [])
     : [];
@@ -202,6 +205,13 @@ export default async function TakasPage({
         il={il}
         kategoriId={selectedCategory?.id ?? null}
         markaId={selectedBrand?.id ?? null}
+        odemeNiyeti={params.odeme ?? ""}
+        yilMin={yilMin ?? null}
+        yilMax={yilMax ?? null}
+        kmMin={kmMin ?? null}
+        kmMax={kmMax ?? null}
+        yakit={yakit}
+        vites={vites}
         initialSearches={savedSearches}
       />
 

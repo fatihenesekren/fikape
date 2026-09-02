@@ -8,7 +8,7 @@ import { hashRequestContext } from "@/lib/security";
 import { createNotification } from "@/lib/notification";
 import { CAR_PARTS } from "@/lib/carParts";
 import { isMutualMatch, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
-import type { LocationScope } from "@/lib/tradeExpectations";
+import type { LocationScope, TradeFuelType } from "@/lib/tradeExpectations";
 import type { DamageStatus } from "@/lib/damageStatus";
 
 const DAILY_LISTING_LIMIT = Number(process.env.TAKASA_AC_ILAN_GUNLUK_LIMIT) || 5;
@@ -171,8 +171,14 @@ export async function POST(req: Request) {
     }).catch(() => {});
 
     // Kayıtlı arama eşleşme bildirimi — kullanıcı pasif taramak zorunda kalmasın
-    // diye (bkz. denetim raporu). categoryId/brandId NULL olan kayıtlı aramalar
-    // "fark etmez" anlamına geliyor, o alan için her zaman eşleşir.
+    // diye (bkz. denetim raporu). Her alan NULL/boş ise "fark etmez" anlamına
+    // gelir. Yıl/km: yeni ilanın o verisi yoksa (year/km null) o kriterde
+    // dışlanmaz — aynı "bilinmeyen veriyi eleme" ilkesi (bkz. tradeMatching.ts).
+    // Serbest metin (q) kasıtlı olarak burada YOK — SavedSearch'e hiç kaydedilmiyor.
+    const { fuelType: newListingFuelType, transmission: newListingTransmission } =
+      fuelTransmissionFromAttributes(userProduct.product.attributes);
+    const newListingYear = userProduct.product.year;
+    const newListingKm = usageAmount ?? null;
     const matchingSearches = await prisma.savedSearch.findMany({
       where: {
         city,
@@ -180,6 +186,25 @@ export async function POST(req: Request) {
         AND: [
           { OR: [{ categoryId: null }, { categoryId: userProduct.product.categoryId }] },
           { OR: [{ brandId: null }, { brandId: userProduct.product.brandId }] },
+          { OR: [{ paymentIntent: null }, { paymentIntent }] },
+          ...(newListingYear != null
+            ? [
+                { OR: [{ yearMin: null }, { yearMin: { lte: newListingYear } }] },
+                { OR: [{ yearMax: null }, { yearMax: { gte: newListingYear } }] },
+              ]
+            : []),
+          ...(newListingKm != null
+            ? [
+                { OR: [{ kmMin: null }, { kmMin: { lte: newListingKm } }] },
+                { OR: [{ kmMax: null }, { kmMax: { gte: newListingKm } }] },
+              ]
+            : []),
+          ...(newListingFuelType != null
+            ? [{ OR: [{ fuelTypes: { isEmpty: true } }, { fuelTypes: { has: newListingFuelType as TradeFuelType } }] }]
+            : []),
+          ...(newListingTransmission != null
+            ? [{ OR: [{ transmissions: { isEmpty: true } }, { transmissions: { has: newListingTransmission } }] }]
+            : []),
         ],
       },
       select: { userId: true },

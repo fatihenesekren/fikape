@@ -968,18 +968,36 @@ enum TradePaymentIntent {
 // kritere uyan yeni bir ilan açıldığında bildirim alır. Önceden kullanıcı
 // pasif tarama yapmak zorundaydı, kayıtlı arama/eşleşme bildirimi hiç yoktu
 // (bkz. denetim raporu).
+//
+// Önceden sadece city/categoryId/brandId saklanıyordu — ödeme niyeti, yıl/km
+// aralığı, yakıt/vites filtreleri kaydediliyor GÖRÜNÜYOR ama sessizce yok
+// sayılıyordu (bkz. kullanıcı geri bildirimi, ekran görüntüsü). Serbest metin
+// (q) kasıtlı olarak DIŞARIDA — JS-tarafı aksan-duyarsız arama, DB seviyesinde
+// yeni-ilan tetiklemesiyle eşleştirilemez.
+//
+// criteriaKey: tüm kriterlerin kanonik (sıralı) serileştirmesi — array
+// kolonları üzerinde unique constraint yerine tek bir string üzerinden
+// tekilleştirme yapmak için (bkz. api/saved-searches/route.ts buildCriteriaKey).
 model SavedSearch {
-  id         Int      @id @default(autoincrement())
-  userId     Int
-  user       User     @relation(fields: [userId], references: [id])
-  city       String   @db.VarChar(50)
-  categoryId Int?
-  category   Category? @relation(fields: [categoryId], references: [id])
-  brandId    Int?
-  brand      Brand?    @relation(fields: [brandId], references: [id])
-  createdAt  DateTime @default(now())
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  user            User     @relation(fields: [userId], references: [id])
+  city            String   @db.VarChar(50)
+  categoryId      Int?
+  category        Category? @relation(fields: [categoryId], references: [id])
+  brandId         Int?
+  brand           Brand?    @relation(fields: [brandId], references: [id])
+  paymentIntent   TradePaymentIntent?
+  yearMin         Int?
+  yearMax         Int?
+  kmMin           Int?
+  kmMax           Int?
+  fuelTypes       TradeFuelType[] @default([])
+  transmissions   String[] @default([])
+  criteriaKey     String   @default("")
+  createdAt       DateTime @default(now())
 
-  @@unique([userId, city, categoryId, brandId])
+  @@unique([userId, criteriaKey])
   @@index([city])
   @@map("saved_searches")
 }

@@ -230,9 +230,16 @@ export const deletionRequestSchema = z.object({
 });
 
 export const savedSearchCreateSchema = z.object({
-  city:       z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
-  categoryId: z.union([z.number(), z.string()]).optional().nullable(),
-  brandId:    z.union([z.number(), z.string()]).optional().nullable(),
+  city:           z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
+  categoryId:     z.union([z.number(), z.string()]).optional().nullable(),
+  brandId:        z.union([z.number(), z.string()]).optional().nullable(),
+  paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"]).optional().nullable(),
+  yearMin:        z.number().int().min(1980).max(2100).optional().nullable(),
+  yearMax:        z.number().int().min(1980).max(2100).optional().nullable(),
+  kmMin:          z.number().int().min(0).max(2_000_000).optional().nullable(),
+  kmMax:          z.number().int().min(0).max(2_000_000).optional().nullable(),
+  fuelTypes:      z.array(z.enum(["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"])).max(6).optional(),
+  transmissions:  z.array(z.string().max(20)).max(4).optional(),
 });
 
 export const messageReportSchema = z.object({
