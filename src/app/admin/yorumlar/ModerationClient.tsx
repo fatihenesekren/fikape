@@ -78,8 +78,12 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
         {/* Üst satır: araç + kullanıcı + tarih */}
         <div className="flex items-start justify-between gap-3">
           <div>
+            {/* product.name zaten "marka model trim" birleşik canonical isim
+                (bkz. admin/araclar, admin/urunler'deki aynı üretim deseni) —
+                önüne ayrıca brand.name+model.name eklemek aynı bilgiyi iki
+                kez yazdırıyordu (bkz. kullanıcı geri bildirimi, ekran görüntüsü). */}
             <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold">
-              {review.product.model.brand.name} {review.product.model.name} · {review.product.name}
+              {review.product.name}
             </p>
             {isPhotosOnly && (
               <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
