@@ -4,13 +4,24 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+// Eşik önceden 300px'ti — header'daki logo zaten her zaman görünür olduğu
+// varsayımıyla (bkz. Legal Sayfa Nav + Home FAB özelliği). Kısa sayfalarda
+// (ör. bir takas ilanı) bu eşiğe hiç ulaşılmadığından buton hiç görünmüyordu
+// (bkz. kullanıcı geri bildirimi, ekran görüntüsü). Eşik kaldırılırsa bu sefer
+// sayfanın en tepesinde — header logosu zaten tam görünürken — aynı işi yapan
+// ikinci bir buton göstermek gereksiz olur (bkz. kullanıcının bu konudaki
+// itirazı). Çözüm: eşik header yüksekliği kadar (80px) düşürüldü — header
+// hâlâ elinin altındayken FAB görünmüyor, ama en ufak bir scroll'da (kısa
+// sayfalar dahil) neredeyse anında beliriyor.
+const SCROLL_THRESHOLD = 80;
+
 export function HomeFab() {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     function onScroll() {
-      setVisible(window.scrollY > 300);
+      setVisible(window.scrollY > SCROLL_THRESHOLD);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
