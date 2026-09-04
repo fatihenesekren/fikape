@@ -7,6 +7,7 @@ import { calcOverall } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
 import { TRUST_BADGES } from "@/lib/trustBadge";
 import { formatSoldReasons } from "@/lib/soldReasons";
+import { formatOwnershipDuration } from "@/lib/duration";
 
 interface ScoreVersion {
   version: number;
@@ -135,7 +136,7 @@ export function ReviewCard({
               )}
               {ownershipStatus != null && ownershipMonths != null && (
                 <span className="text-[10px] text-gray-400">
-                  {ownershipMonths} ay kullandı
+                  {formatOwnershipDuration(ownershipMonths)} kullandı
                 </span>
               )}
             </div>
