@@ -243,6 +243,17 @@ enum NotificationType {
   TRADE_INTEREST_LOST
   TRADE_RATED
   TRADE_MUTUAL_MATCH
+
+  // Admin'e özel — trustLevel>=5 kullanıcıya (bkz. admin/layout.tsx) gönderilen
+  // "yeni onay bekleyen X var" bildirimleri. Aynı bell'de (NotificationList.tsx)
+  // görünür, admin panele hiç girmeden de haberi olur (bkz. notifyAdmins,
+  // lib/notification.ts). Kategori başına 10dk'da 1 e-postayla eşlenir.
+  ADMIN_NEW_REVIEW
+  ADMIN_NEW_SUGGESTION
+  ADMIN_NEW_LEAD
+  ADMIN_NEW_MESSAGE_REPORT
+  ADMIN_NEW_CONTENT_REPORT
+  ADMIN_NEW_DELETION_REQUEST
 }
 
 model Notification {

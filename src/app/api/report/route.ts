@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { notifyAdmins } from "@/lib/notification";
 
 const VALID_TARGET_TYPES = ["SPEC", "PHOTO", "REVIEW", "QNA", "OTHER"] as const;
 type TargetType = (typeof VALID_TARGET_TYPES)[number];
@@ -39,6 +40,16 @@ export async function POST(req: Request) {
       note: trimmedNote.slice(0, 500),
     },
   });
+
+  notifyAdmins({
+    type: "ADMIN_NEW_CONTENT_REPORT",
+    message: "Yeni bir içerik bildirimi geldi.",
+    link: "/admin/icerik-bildirimleri",
+    emailSubject: "Yeni içerik bildirimi",
+    emailTitle: "Yeni bir içerik hatası bildirildi",
+    emailMessage: "Bir kullanıcı bir araç sayfasında içerik hatası bildirdi.",
+    rateLimitKey: "content-report",
+  }).catch(() => {});
 
   return NextResponse.json({ ok: true });
 }

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { deletionRequestSchema, formatZodError } from "@/lib/schemas";
+import { notifyAdmins } from "@/lib/notification";
 
 const DUE_DAYS = 30; // KVKK: 30 gün içinde tamamlanmalı
 
@@ -29,6 +30,16 @@ export async function POST(req: Request) {
   const request = await prisma.dataDeletionRequest.create({
     data: { userId, reason: parsed.data.reason ?? null, dueAt },
   });
+
+  notifyAdmins({
+    type: "ADMIN_NEW_DELETION_REQUEST",
+    message: "Yeni bir hesap silme talebi geldi.",
+    link: "/admin/hesap-silme-talepleri",
+    emailSubject: "Yeni hesap silme talebi",
+    emailTitle: "Yeni bir hesap silme talebi geldi",
+    emailMessage: "Bir kullanıcı hesabının silinmesini talep etti.",
+    rateLimitKey: "deletion-request",
+  }).catch(() => {});
 
   return NextResponse.json({ ok: true, id: request.id, dueAt }, { status: 201 });
 }

@@ -360,3 +360,36 @@ export async function sendVerificationEmail(email: string, token: string) {
     `,
   });
 }
+
+// Admin'e özel operasyonel e-posta — yorum/soru bildirimleri gibi kullanıcı
+// tercihine (emailNotificationsEnabled) tabi DEĞİL, her zaman gider (bkz.
+// notifyAdmins, lib/notification.ts). Kategori başına 10dk'da 1 ile
+// çağıran taraf zaten hız sınırlıyor, burada ekstra bir kısıtlama yok.
+export async function sendAdminAlertEmail({
+  to, subject, title, message, link,
+}: {
+  to: string;
+  subject: string;
+  title: string;
+  message: string;
+  link: string;
+}) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const url = `${BASE_URL}${link}`;
+
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: `[fikape admin] ${subject}`,
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
+        ${LOGO}
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">${title}</h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">${message}</p>
+        <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
+          İncele →
+        </a>
+      </div>
+    `,
+  });
+}

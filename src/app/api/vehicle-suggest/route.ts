@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { validateSummary, validateDetail } from "@/lib/reviewValidation";
 import { vehicleSuggestSchema, formatZodError } from "@/lib/schemas";
+import { notifyAdmins } from "@/lib/notification";
 
 function slugify(text: string): string {
   return String(text).toLowerCase()
@@ -134,6 +135,19 @@ export async function POST(req: Request) {
 
     return product;
   });
+
+  // Bir öneri hem VehicleSuggestion hem eşlik eden Review PENDING kaydı yaratıyor
+  // (yukarıda) — ikisi de "Araç Önerileri" kuyruğunda ele alınıyor, tek bildirim
+  // yeterli (ayrı bir ADMIN_NEW_REVIEW göndermek aynı olay için tekrar olurdu).
+  notifyAdmins({
+    type: "ADMIN_NEW_SUGGESTION",
+    message: "Yeni bir araç önerisi onay bekliyor.",
+    link: "/admin/oneriler",
+    emailSubject: "Yeni onay bekleyen araç önerisi",
+    emailTitle: "Yeni bir araç önerisi geldi",
+    emailMessage: "Bir kullanıcı yeni bir araç/model önerisi gönderdi, onayını bekliyor.",
+    rateLimitKey: "suggestion",
+  }).catch(() => {});
 
   return NextResponse.json({ ok: true, productSlug: product.slug }, { status: 201 });
 }

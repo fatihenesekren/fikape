@@ -7,6 +7,7 @@ import { hashRequestContext, recordScoreSnapshot } from "@/lib/security";
 import { computePHash, findDuplicatePair } from "@/lib/phash";
 import { reviewCreateSchema, formatZodError } from "@/lib/schemas";
 import { calcTrustScore } from "@/lib/trustScore";
+import { notifyAdmins } from "@/lib/notification";
 
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
@@ -159,6 +160,16 @@ export async function POST(req: Request) {
       })),
     });
   }
+
+  notifyAdmins({
+    type: "ADMIN_NEW_REVIEW",
+    message: "Yeni bir yorum onay bekliyor.",
+    link: "/admin/yorumlar",
+    emailSubject: "Yeni onay bekleyen yorum",
+    emailTitle: "Yeni bir yorum geldi",
+    emailMessage: "Bir kullanıcı yeni bir araç yorumu gönderdi, onayını bekliyor.",
+    rateLimitKey: "review",
+  }).catch(() => {});
 
   return NextResponse.json({ ok: true, reviewId: review.id }, { status: 201 });
 }

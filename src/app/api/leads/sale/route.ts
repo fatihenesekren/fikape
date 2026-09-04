@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { saleLeadSchema, formatZodError } from "@/lib/schemas";
+import { notifyAdmins } from "@/lib/notification";
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -32,6 +33,16 @@ export async function POST(req: Request) {
   const lead = await prisma.saleLead.create({
     data: { userId, productId, type, fullName, phone },
   });
+
+  notifyAdmins({
+    type: "ADMIN_NEW_LEAD",
+    message: "Yeni bir satış/ekspertiz talebi geldi.",
+    link: "/admin/leads",
+    emailSubject: "Yeni satış talebi",
+    emailTitle: "Yeni bir satış/ekspertiz talebi geldi",
+    emailMessage: "Bir kullanıcı hızlı satış teklifi ya da ekspertiz talep etti.",
+    rateLimitKey: "lead",
+  }).catch(() => {});
 
   return NextResponse.json({ ok: true, id: lead.id }, { status: 201 });
 }

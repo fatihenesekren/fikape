@@ -24,6 +24,12 @@ export const TYPE_ICON: Record<string, string> = {
   TRADE_INTEREST_LOST: "👋",
   TRADE_RATED: "⭐",
   TRADE_MUTUAL_MATCH: "✨",
+  ADMIN_NEW_REVIEW: "💬",
+  ADMIN_NEW_SUGGESTION: "🚗",
+  ADMIN_NEW_LEAD: "🛡️",
+  ADMIN_NEW_MESSAGE_REPORT: "🚩",
+  ADMIN_NEW_CONTENT_REPORT: "⚠️",
+  ADMIN_NEW_DELETION_REQUEST: "🗑️",
 };
 
 export const TYPE_LABEL: Record<string, string> = {
@@ -39,6 +45,12 @@ export const TYPE_LABEL: Record<string, string> = {
   TRADE_INTEREST_LOST: "Takas",
   TRADE_RATED: "Takas",
   TRADE_MUTUAL_MATCH: "Takas",
+  ADMIN_NEW_REVIEW: "Admin",
+  ADMIN_NEW_SUGGESTION: "Admin",
+  ADMIN_NEW_LEAD: "Admin",
+  ADMIN_NEW_MESSAGE_REPORT: "Admin",
+  ADMIN_NEW_CONTENT_REPORT: "Admin",
+  ADMIN_NEW_DELETION_REQUEST: "Admin",
 };
 
 function fmtDate(iso: string) {

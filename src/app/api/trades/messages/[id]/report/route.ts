@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { messageReportSchema, formatZodError } from "@/lib/schemas";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeMessagingEnabled } from "@/lib/features";
+import { notifyAdmins } from "@/lib/notification";
 
 export async function POST(
   req: Request,
@@ -55,6 +56,16 @@ export async function POST(
       note: parsed.data.note ?? null,
     },
   });
+
+  notifyAdmins({
+    type: "ADMIN_NEW_MESSAGE_REPORT",
+    message: "Yeni bir mesaj raporu geldi.",
+    link: "/admin/mesaj-raporlari",
+    emailSubject: "Yeni mesaj raporu",
+    emailTitle: "Yeni bir mesaj raporlandı",
+    emailMessage: "Bir kullanıcı takas mesajlaşmasında bir mesajı raporladı.",
+    rateLimitKey: "message-report",
+  }).catch(() => {});
 
   return NextResponse.json({ ok: true, id: report.id }, { status: 201 });
 }
