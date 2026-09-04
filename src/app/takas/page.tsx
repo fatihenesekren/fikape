@@ -177,6 +177,17 @@ export default async function TakasPage({
 
   return (
     <div className="max-w-3xl w-full mx-auto px-4 py-10">
+      {/* Geri/Ana Sayfa dönüşü — önceden hiç yoktu, sayfaya nasıl gelindiyse
+          (header logosu hariç) geri dönmenin bir yolu yoktu (bkz. kullanıcı
+          geri bildirimi). araçlar/[slug]'daki "← Tüm araçlar" ile aynı
+          yerleşim/stil (bkz. site geneli patern). */}
+      <Link
+        href="/"
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-600 mb-4 transition-colors"
+      >
+        ← Ana Sayfa
+      </Link>
+
       <div className="mb-6">
         <h1 className="text-2xl font-black text-gray-900">Araç Takas İlanları</h1>
         <p className="text-sm text-gray-500 mt-1">Aracını takasa açan kullanıcıları keşfet.</p>

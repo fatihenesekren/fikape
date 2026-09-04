@@ -328,6 +328,16 @@ export default async function TakasDetayPage({
 
   return (
     <div className="max-w-2xl w-full mx-auto px-4 py-10">
+      {/* Geri/Ana Sayfa dönüşü — önceden bir ilana girince listeye ya da ana
+          sayfaya dönmenin bir yolu yoktu (bkz. kullanıcı geri bildirimi).
+          araçlar/[slug]'daki "← Tüm araçlar" ile aynı yerleşim/stil. */}
+      <Link
+        href="/takas"
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-600 mb-4 transition-colors"
+      >
+        ← Takas İlanlarına Dön
+      </Link>
+
       {galleryPhotos.length > 0 && (
         <div className="mb-4 rounded-2xl overflow-hidden">
           <PhotoSlider photos={galleryPhotos} alt={vehicleAlt} />
