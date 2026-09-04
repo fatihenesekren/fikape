@@ -3,9 +3,27 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export function TradeMessageForm({ listingId }: { listingId: number }) {
+interface OwnListing {
+  id: number;
+  vehicleName: string;
+}
+
+export function TradeMessageForm({
+  listingId,
+  myActiveListings,
+}: {
+  listingId: number;
+  myActiveListings: OwnListing[];
+}) {
   const router = useRouter();
   const [text, setText] = useState("");
+  // Birden fazla aktif ilanı varsa en son açılanı varsayılan seçili gelir,
+  // değiştirilebilir — tek ilanı varsa zaten tek seçenek, otomatik o gönderilir
+  // (bkz. kullanıcı geri bildirimi: alıcı hangi araçla teklif edildiğini
+  // bilmiyordu).
+  const [initiatorListingId, setInitiatorListingId] = useState<string>(
+    myActiveListings[0]?.id.toString() ?? ""
+  );
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -20,7 +38,7 @@ export function TradeMessageForm({ listingId }: { listingId: number }) {
       const res = await fetch(`/api/trades/${listingId}/threads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, initiatorListingId: initiatorListingId || null }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -37,6 +55,23 @@ export function TradeMessageForm({ listingId }: { listingId: number }) {
 
   return (
     <div className="mt-4 space-y-2">
+      {myActiveListings.length > 1 && (
+        <div>
+          <label htmlFor="initiator-listing" className="block text-xs font-semibold text-gray-500 mb-1">
+            Hangi aracınızla teklif ediyorsunuz?
+          </label>
+          <select
+            id="initiator-listing"
+            value={initiatorListingId}
+            onChange={(e) => setInitiatorListingId(e.target.value)}
+            className="w-full text-sm rounded-lg border border-gray-200 px-3 py-2"
+          >
+            {myActiveListings.map((l) => (
+              <option key={l.id} value={l.id}>{l.vehicleName}</option>
+            ))}
+          </select>
+        </div>
+      )}
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}

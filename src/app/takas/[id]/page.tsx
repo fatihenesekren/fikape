@@ -95,6 +95,25 @@ export default async function TakasDetayPage({
     existingThreadId = thread?.id ?? null;
   }
 
+  // Mesaj atarken "hangi aracınızla teklif ediyorsunuz?" seçimi için — sadece
+  // yeni bir görüşme başlatılacaksa gerekli (bkz. kullanıcı geri bildirimi:
+  // alıcı, teklif edilen aracı görmeden mesajları değerlendiremiyordu).
+  let myActiveListings: { id: number; vehicleName: string }[] = [];
+  if (userId && !isOwner && !existingThreadId) {
+    const rows = await prisma.tradeListing.findMany({
+      where: { userId, isActive: true },
+      select: {
+        id: true,
+        product: { select: { brand: { select: { name: true } }, model: { select: { name: true } }, year: true } },
+      },
+      orderBy: { createdAt: "desc" },
+    }).catch(() => []);
+    myActiveListings = rows.map((r) => ({
+      id: r.id,
+      vehicleName: `${r.product.brand.name} ${stripModelGenRange(r.product.model.name)}${r.product.year ? ` ${r.product.year}` : ""}`,
+    }));
+  }
+
   const galleryPhotos = await getGalleryPhotos(listing.userProductId);
 
   // Takas sonrası değerlendirme ortalaması — güven takas geçmişinden birikmiyordu
@@ -502,7 +521,7 @@ export default async function TakasDetayPage({
             <p className="mt-2 text-[11px] text-indigo-700 bg-indigo-50 rounded-lg px-2.5 py-2">
               Plaka/şasi bilgisini paylaşmadan önce karşı tarafın kimliğinden emin olunuz. Fark tutarını asla teslimattan önce göndermeyiniz.
             </p>
-            <TradeMessageForm listingId={listing.id} />
+            <TradeMessageForm listingId={listing.id} myActiveListings={myActiveListings} />
           </>
         )}
         </div>

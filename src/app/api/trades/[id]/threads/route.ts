@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Prisma } from "@/generated/prisma/client";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { messageCreateSchema, formatZodError } from "@/lib/schemas";
+import { threadCreateSchema, formatZodError } from "@/lib/schemas";
 import { checkContent } from "@/lib/reviewValidation";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeMessagingEnabled } from "@/lib/features";
@@ -67,15 +67,30 @@ export async function POST(
     return NextResponse.json({ error: "Bu kullanıcıyla iletişim kuramazsınız." }, { status: 403 });
   }
 
-  const parsed = messageCreateSchema.safeParse(await req.json().catch(() => ({})));
+  const parsed = threadCreateSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
   const { text } = parsed.data;
+  const initiatorListingIdRaw = parsed.data.initiatorListingId;
+  const initiatorListingId = initiatorListingIdRaw != null ? Number(initiatorListingIdRaw) : null;
 
   const contentCheck = checkContent(text);
   if (!contentCheck.ok) {
     return NextResponse.json({ error: contentCheck.error }, { status: 400 });
+  }
+
+  // Seçilen ilan gerçekten mesajı atana mı ait ve hâlâ aktif mi — client
+  // tarafındaki listeden seçilse bile araya girip başkasının ilanını ya da
+  // kapanmış bir ilanı iliştirmesin diye sunucuda yeniden doğrulanıyor.
+  if (initiatorListingId != null) {
+    const ownListing = await prisma.tradeListing.findUnique({
+      where: { id: initiatorListingId },
+      select: { userId: true, isActive: true },
+    });
+    if (!ownListing || ownListing.userId !== userId || !ownListing.isActive) {
+      return NextResponse.json({ error: "Seçtiğiniz ilan geçersiz." }, { status: 400 });
+    }
   }
 
   if (!(await checkRateLimit(`trade-thread-create:${userId}`, DAILY_THREAD_LIMIT, 24 * 60 * 60 * 1000))) {
@@ -88,6 +103,7 @@ export async function POST(
       data: {
         tradeListingId: listingId,
         initiatorId: userId,
+        initiatorListingId,
         messages: { create: { senderId: userId, text } },
       },
     });

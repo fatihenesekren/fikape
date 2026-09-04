@@ -220,6 +220,13 @@ export const messageCreateSchema = z.object({
   text: z.string().trim().min(1, "Mesaj boş olamaz.").max(1000, "En fazla 1000 karakter yazabilirsiniz."),
 });
 
+// Sadece bir görüşme İLK açılırken kullanılıyor (mevcut yanıtlarda değil) —
+// mesajı atanın "hangi aracımla teklif ediyorum" seçimi (bkz. schema.prisma
+// MessageThread.initiatorListing notu).
+export const threadCreateSchema = messageCreateSchema.extend({
+  initiatorListingId: z.union([z.number(), z.string()]).optional().nullable(),
+});
+
 export const tradeRatingSchema = z.object({
   score:   z.number().int().min(1, "Puan 1-5 arasında olmalıdır.").max(5, "Puan 1-5 arasında olmalıdır."),
   comment: z.string().trim().max(300).optional().nullable(),

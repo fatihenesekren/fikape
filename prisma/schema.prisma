@@ -941,6 +941,10 @@ model TradeListing {
   effectiveDate   DateTime @default(now())
 
   threads         MessageThread[]
+  // Bu ilan, başka bir kullanıcının BAŞKA bir ilana attığı mesajda "ben bu
+  // aracımla teklif ediyorum" diye seçtiği ilan olarak kaç yerde geçiyor
+  // (bkz. MessageThread.initiatorListing notu).
+  offeredInThreads MessageThread[] @relation("InitiatorOfferedListing")
   reports         TradeListingReport[]
   partConditions  TradeListingPartCondition[]
 
@@ -1025,6 +1029,16 @@ model MessageThread {
   tradeListing    TradeListing @relation(fields: [tradeListingId], references: [id], onDelete: Cascade)
   initiatorId     Int
   initiator       User     @relation("ThreadInitiator", fields: [initiatorId], references: [id])
+
+  // Mesajı atanın KENDİ ilanı — "hangi aracınızla teklif ediyorsunuz?" (bkz.
+  // kullanıcı geri bildirimi: alıcı, teklif edilen aracı görmeden mesajları
+  // değerlendiremiyordu). Opsiyonel — mesajı atanın hiç aktif ilanı yoksa
+  // (sadece ilgileniyor, henüz bir şey listelememiş) null kalır. Mesaj
+  // gönderildikten SONRA o ilan kapanabilir/silinebilir diye SetNull —
+  // görüşme, referans verdiği ilan silinse bile kaybolmaz.
+  initiatorListingId Int?
+  initiatorListing   TradeListing? @relation("InitiatorOfferedListing", fields: [initiatorListingId], references: [id], onDelete: SetNull)
+
   createdAt       DateTime @default(now())
   lastMessageAt   DateTime @default(now())
   hasReciprocalReply Boolean @default(false)

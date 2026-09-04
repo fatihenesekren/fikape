@@ -1,5 +1,6 @@
 import { redirect, notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { stripModelGenRange } from "@/lib/modelDisplay";
@@ -29,6 +30,15 @@ export default async function ThreadPage({
     where: { id: threadId },
     include: {
       tradeListing: { include: { product: { include: { brand: true, model: true } }, user: { select: { id: true, displayName: true } } } },
+      // Mesajı atanın "ben bu aracımla teklif ediyorum" dediği kendi ilanı —
+      // opsiyonel, hiç seçmediyse (ya da eski bir görüşmeyse) null (bkz.
+      // kullanıcı geri bildirimi, schema.prisma MessageThread.initiatorListing notu).
+      initiatorListing: {
+        include: {
+          product: { include: { brand: true, model: true } },
+          userProduct: { select: { usageAmount: true, usageUnit: true } },
+        },
+      },
       initiator: { select: { id: true, displayName: true } },
       interestLostByUser: { select: { id: true, displayName: true } },
       messages: { orderBy: { createdAt: "asc" }, include: { sender: { select: { id: true, displayName: true } } } },
@@ -74,6 +84,38 @@ export default async function ThreadPage({
           <ThreadActions threadId={thread.id} showInterestLost={thread.interestLostByUserId == null} />
         )}
       </div>
+
+      {/* Karşı tarafın teklif ettiği araç — sadece alıcı (ilan sahibi) için
+          anlamlı, kendi ilanını zaten yukarıda görüyor. Mesajı atan hiç ilan
+          seçmediyse (ya da bu, özellik öncesi açılmış eski bir görüşmeyse)
+          "belirtilmedi" gösterilir (bkz. kullanıcı geri bildirimi). */}
+      {!isInitiator && (
+        <div className="px-4 py-3 bg-indigo-50/60 border-b border-indigo-100">
+          <p className="text-[11px] font-bold text-indigo-800 mb-1">
+            {counterpart?.displayName ?? "Kullanıcı"} teklif ettiği araç
+          </p>
+          {thread.initiatorListing ? (
+            thread.initiatorListing.isActive ? (
+              <Link
+                href={`/takas/${thread.initiatorListing.id}`}
+                className="text-sm font-semibold text-indigo-900 hover:underline"
+              >
+                {thread.initiatorListing.product.brand.name}{" "}
+                {stripModelGenRange(thread.initiatorListing.product.model.name)}
+                {thread.initiatorListing.product.year && ` ${thread.initiatorListing.product.year}`}
+                {thread.initiatorListing.userProduct?.usageUnit === "km" &&
+                  thread.initiatorListing.userProduct.usageAmount != null &&
+                  ` · ${thread.initiatorListing.userProduct.usageAmount.toLocaleString("tr-TR")} km`}
+                {" →"}
+              </Link>
+            ) : (
+              <p className="text-sm text-gray-400">Bu ilan artık aktif değil.</p>
+            )
+          ) : (
+            <p className="text-sm text-gray-400">Bu kullanıcı bir ilan belirtmedi.</p>
+          )}
+        </div>
+      )}
 
       {interestLostByMe && (
         <p className="px-4 py-2 text-xs text-center text-gray-400 bg-gray-50 border-b border-gray-100">

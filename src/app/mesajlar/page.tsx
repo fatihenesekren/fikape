@@ -24,6 +24,12 @@ export default async function MesajlarPage() {
           user: { select: { id: true, displayName: true } },
         },
       },
+      // Alıcıysam kendi ilanımı zaten biliyorum — bu satırda asıl merak
+      // ettiğim karşı tarafın teklif ettiği araç (bkz. kullanıcı geri
+      // bildirimi, thread detay sayfasındaki aynı mantık).
+      initiatorListing: {
+        include: { product: { include: { brand: true, model: true } } },
+      },
       initiator: { select: { id: true, displayName: true } },
       messages: { orderBy: { createdAt: "desc" }, take: 1 },
       // Karşı taraftan gelen, henüz okunmamış mesaj sayısı — Message.isRead alanı
@@ -48,7 +54,13 @@ export default async function MesajlarPage() {
           {threads.map((t) => {
             const isInitiator = t.initiatorId === userId;
             const counterpart = isInitiator ? t.tradeListing.user : t.initiator;
-            const vehicleName = `${t.tradeListing.product.brand.name} ${stripModelGenRange(t.tradeListing.product.model.name)}`;
+            // Alıcıysam (isInitiator false) kendi ilanımı değil, karşı
+            // tarafın teklif ettiği aracı görmek istiyorum — o hiç ilan
+            // seçmediyse eski davranışa (kendi ilanım) düşülür ki satır boş
+            // kalmasın (bkz. thread detay sayfasındaki aynı mantık).
+            const vehicleName = !isInitiator && t.initiatorListing
+              ? `${t.initiatorListing.product.brand.name} ${stripModelGenRange(t.initiatorListing.product.model.name)}`
+              : `${t.tradeListing.product.brand.name} ${stripModelGenRange(t.tradeListing.product.model.name)}`;
             const lastMessage = t.messages[0];
             const unreadCount = t._count.messages;
             return (
