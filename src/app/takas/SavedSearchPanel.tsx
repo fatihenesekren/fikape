@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FUEL_LABELS } from "@/lib/fuel";
+import { formatRange } from "@/lib/formatRange";
 
 interface SavedSearchRow {
   id: number;
@@ -48,9 +49,9 @@ function searchSummary(s: SavedSearchRow): string {
   if (s.category) parts.push(s.category.name);
   if (s.brand) parts.push(s.brand.name);
   if (s.paymentIntent) parts.push(PAYMENT_LABEL[s.paymentIntent] ?? s.paymentIntent);
-  if (s.yearMin != null || s.yearMax != null) parts.push(`${s.yearMin ?? "…"}–${s.yearMax ?? "…"}`);
+  if (s.yearMin != null || s.yearMax != null) parts.push(formatRange(s.yearMin, s.yearMax, (n) => String(n)));
   if (s.kmMin != null || s.kmMax != null) {
-    parts.push(`${s.kmMin?.toLocaleString("tr-TR") ?? "…"}–${s.kmMax?.toLocaleString("tr-TR") ?? "…"} km`);
+    parts.push(`${formatRange(s.kmMin, s.kmMax, (n) => n.toLocaleString("tr-TR"))} km`);
   }
   if (s.fuelTypes.length > 0) parts.push(s.fuelTypes.map((f) => FUEL_LABELS[f] ?? f).join("/"));
   if (s.transmissions.length > 0) parts.push(s.transmissions.join("/"));

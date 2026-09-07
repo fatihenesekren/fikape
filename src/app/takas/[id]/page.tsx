@@ -18,6 +18,7 @@ import {
 } from "@/lib/damageStatus";
 import { LOCATION_SCOPE_LABEL } from "@/lib/tradeExpectations";
 import { FUEL_LABELS } from "@/lib/fuel";
+import { formatRange } from "@/lib/formatRange";
 import { TradeMessageForm } from "./TradeMessageForm";
 import { ShareButton } from "./ShareButton";
 import { ListingReportButton } from "./ListingReportButton";
@@ -450,14 +451,13 @@ export default async function TakasDetayPage({
             {(listing.wantYearMin != null || listing.wantYearMax != null) && (
               <p>
                 <span className="font-semibold">Model Yılı:</span>{" "}
-                {listing.wantYearMin ?? "…"}–{listing.wantYearMax ?? "…"}
+                {formatRange(listing.wantYearMin, listing.wantYearMax, (n) => String(n))}
               </p>
             )}
             {(listing.wantKmMin != null || listing.wantKmMax != null) && (
               <p>
                 <span className="font-semibold">Km:</span>{" "}
-                {listing.wantKmMin != null ? listing.wantKmMin.toLocaleString("tr-TR") : "…"}–
-                {listing.wantKmMax != null ? listing.wantKmMax.toLocaleString("tr-TR") : "…"}
+                {formatRange(listing.wantKmMin, listing.wantKmMax, (n) => n.toLocaleString("tr-TR"))}
               </p>
             )}
             {listing.wantFuelTypes.length > 0 && (
