@@ -214,10 +214,22 @@ export function TakasFilterForm({
         </div>
       </details>
 
+      {/* "1 filtre aktif" rozetinin hemen altında, sağa hizalı — bağlamsal
+          yakınlık (aktif filtre → temizleme aksiyonu burada) korunuyor, ama
+          <summary>'nin native tıklama davranışıyla çakışmasın diye onun
+          İÇİNE değil, DIŞINA/ALTINA konuluyor (bkz. 3 uzman ajan
+          değerlendirmesi — mobil kullanılabilirlik çekincesi). Renk kırmızı
+          değil nötr gri+✕ — "temizle" bir hata/tehlike değil, gereksiz alarm
+          vermesin (bkz. görsel hiyerarşi uzmanı çekincesi). */}
       {hasActiveFilters && (
-        <Link href="/takas" className="inline-block mt-2 text-xs font-semibold text-gray-500 hover:text-gray-800 hover:underline">
-          Filtreleri Temizle
-        </Link>
+        <div className="flex justify-end mt-1.5">
+          <Link
+            href="/takas"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800"
+          >
+            <span aria-hidden="true">✕</span> Filtreleri Temizle
+          </Link>
+        </div>
       )}
     </form>
   );
