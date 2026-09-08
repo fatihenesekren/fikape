@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { ReviewCard } from "@/components/ReviewCard";
+import { GatedContentCard } from "@/components/GatedContentCard";
 import { PhotoSlider } from "./PhotoSlider";
 import { TabView } from "./TabView";
 import { OwnershipCard } from "./OwnershipCard";
@@ -160,6 +161,10 @@ export default async function VehicleDetailPage({
   const trimSplit = splitTrimName(product.trimName);
 
   const userId = session?.user?.id ? Number(session.user.id) : null;
+  // Yorum / soru-cevap İÇERİĞİ yalnızca giriş yapmış kullanıcıya. Anonimde bu
+  // metinler sunucudan HİÇ çekilmez (bkz. GatedContentCard) — skor ortalaması
+  // ve sayı teaser olarak açık kalır (bkz. backlog kararı, Seçenek A).
+  const isLoggedIn = userId !== null;
   const [userGarageEntry, garageCount, currentUser, existingSaleLeads, favoriteEntry, activeTradeCount] = await Promise.all([
     userId
       ? prisma.userProduct.findUnique({
@@ -235,12 +240,14 @@ export default async function VehicleDetailPage({
   // düzenlemesi, sanki birden çok bağımsız yorumcu varmış gibi trendi şişirmez.
   // ScoreSnapshot geçmişi kullanılarak, her ay için "o ana kadar her yorumun
   // bilinen en güncel skoru" ortalaması alınır (zaman içinde ilerleyen anlık görüntü).
-  const publishedReviewIds = (
-    await prisma.review.findMany({
-      where: { productId: product.id, status: "PUBLISHED" },
-      select: { id: true },
-    })
-  ).map((r) => r.id);
+  const publishedReviewIds = isLoggedIn
+    ? (
+        await prisma.review.findMany({
+          where: { productId: product.id, status: "PUBLISHED" },
+          select: { id: true },
+        })
+      ).map((r) => r.id)
+    : [];
 
   const scoreEvents = publishedReviewIds.length
     ? await prisma.scoreSnapshot.findMany({
@@ -283,7 +290,7 @@ export default async function VehicleDetailPage({
         }
       : null;
 
-  const reviews = await prisma.review.findMany({
+  const reviews = !isLoggedIn ? [] : await prisma.review.findMany({
     where: { productId: product.id, status: "PUBLISHED" },
     select: {
       id: true,
@@ -322,11 +329,12 @@ export default async function VehicleDetailPage({
   });
 
   // Kürasyonlu "kurucu yorumcu" — bu ürün için ilk 3 yayınlanmış yorum
-  const foundingReviewIds = await getFoundingReviewIds([product.id]);
+  const foundingReviewIds = isLoggedIn ? await getFoundingReviewIds([product.id]) : new Set<number>();
 
   // Soru-Cevap — migration henüz uygulanmamışsa (questions/answers tabloları)
-  // sayfanın tamamen çökmesini önlemek için best-effort
-  const questionsRaw = await prisma.question.findMany({
+  // sayfanın tamamen çökmesini önlemek için best-effort. Anonimde İÇERİK
+  // çekilmez, sadece sayı (aşağıda questionCount).
+  const questionsRaw = !isLoggedIn ? [] : await prisma.question.findMany({
     where: { productId: product.id },
     select: {
       id: true,
@@ -359,6 +367,10 @@ export default async function VehicleDetailPage({
       createdAt: a.createdAt.toISOString(),
     })),
   }));
+  // Anonimde questions boş — sekme rozetindeki sayı için hafif count sorgusu.
+  const questionCount = isLoggedIn
+    ? questions.length
+    : await prisma.question.count({ where: { productId: product.id } }).catch(() => 0);
 
   // ── Spec strip — kategori bazlı 5 öne çıkan özellik ──
   type SpecItem = { label: string; value: string };
@@ -414,7 +426,9 @@ export default async function VehicleDetailPage({
   const specs = buildSpecList(categorySlug, attrs);
 
   // ── Tab içerikleri (server render) ──
-  const reviewsContent = reviews.length === 0 ? (
+  const reviewsContent = !isLoggedIn ? (
+    <GatedContentCard type="reviews" count={reviewCount} callbackUrl={`/araclar/${slug}`} />
+  ) : reviews.length === 0 ? (
     <div className="p-10 text-center space-y-3">
       <div className="text-3xl">✍️</div>
       <p className="font-semibold text-gray-800">Bu araç için ilk yorumu sen yaz</p>
@@ -514,20 +528,28 @@ export default async function VehicleDetailPage({
       bestRating: 10,
       worstRating: 1,
     },
-    review: reviews.slice(0, 5).map((r) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: r.user.displayName },
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: Math.round(calcOverall(r) * 10) / 10,
-        bestRating: 10,
-        worstRating: 1,
-      },
-      reviewBody: r.detailText || r.summaryText,
-    })),
+    // Anonimde yorum metni sunulmaz — structured data'da da yorum gövdesi
+    // olmaz (giriş duvarı arkası içeriği JSON-LD'de göstermek cloaking riski).
+    ...(isLoggedIn && reviews.length > 0
+      ? {
+          review: reviews.slice(0, 5).map((r) => ({
+            "@type": "Review",
+            author: { "@type": "Person", name: r.user.displayName },
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: Math.round(calcOverall(r) * 10) / 10,
+              bestRating: 10,
+              worstRating: 1,
+            },
+            reviewBody: r.detailText || r.summaryText,
+          })),
+        }
+      : {}),
   } : null;
 
-  const qnaContent = (
+  const qnaContent = !isLoggedIn ? (
+    <GatedContentCard type="qna" count={questionCount} callbackUrl={`/araclar/${slug}`} />
+  ) : (
     <QnaSection
       productSlug={slug}
       questions={questions}
@@ -822,7 +844,7 @@ export default async function VehicleDetailPage({
           reviewCount={reviewCount}
           reviewsContent={reviewsContent}
           specsContent={specsContent}
-          questionCount={questions.length}
+          questionCount={questionCount}
           qnaContent={qnaContent}
           initialTab={sekme === "soru-cevap" ? "soru-cevap" : undefined}
           productId={product.id}

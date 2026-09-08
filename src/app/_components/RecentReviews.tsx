@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
 import { Avatar } from "@/components/Avatar";
 import { stripModelGenRange } from "@/lib/modelDisplay";
@@ -8,13 +9,24 @@ function daysSince(date: Date): number {
 }
 
 export async function RecentReviews() {
+  // Yorum METNİ (summaryText) yalnızca giriş yapmış kullanıcıya — anonimde
+  // sorguya bile alınmaz, kartta yerine kilit satırı gösterilir (bkz. Seçenek A).
+  const session = await auth();
+  const isLoggedIn = !!session?.user?.id;
+
   const reviews = await prisma.review.findMany({
     where: { status: "PUBLISHED" },
     orderBy: { publishedAt: "desc" },
     take: 6,
-    include: {
+    select: {
+      id: true,
+      scoreOverall: true,
+      createdAt: true,
+      // summaryText yalnızca giriş yapmışsa DB'den çekilir; anonimde hiç
+      // istenmez → HTML'e sızma yolu yok.
+      summaryText: isLoggedIn,
       user:    { select: { id: true, displayName: true, avatarUrl: true } },
-      product: { include: { brand: true, model: true } },
+      product: { select: { slug: true, brand: { select: { name: true } }, model: { select: { name: true } } } },
     },
   });
 
@@ -68,10 +80,21 @@ export async function RecentReviews() {
                 </div>
               </div>
 
-              {/* Yorum özeti */}
-              <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
-                {r.summaryText}
-              </p>
+              {/* Yorum özeti — yalnızca giriş yapmış kullanıcıya. Anonimde
+                  metin yok, yerine kilit ipucu (kart yine araç sayfasına gider). */}
+              {isLoggedIn ? (
+                <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
+                  {r.summaryText}
+                </p>
+              ) : (
+                <p className="text-xs text-gray-400 leading-relaxed flex items-center gap-1">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="2.5" />
+                    <path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" strokeWidth="2.5" />
+                  </svg>
+                  Yorumu okumak için giriş yap
+                </p>
+              )}
 
               {/* Zaman */}
               <div className="text-xs text-gray-300">{timeLabel}</div>
