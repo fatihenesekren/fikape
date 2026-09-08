@@ -265,17 +265,6 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
             aria-hidden="true"
           />
 
-          {/* Süre + kapsam rozeti — sağ üst; mobilde "4 soru ·" gizli */}
-          <span
-            className="absolute top-3 right-3 inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full"
-            style={{ background: "var(--pe-bg)", color: "var(--pe-color)" }}
-          >
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" />
-            </svg>
-            <span className="hidden sm:inline">4 soru · </span>10 saniye
-          </span>
-
           {/* İkon + metin — mobilde tek satır grup, masaüstünde doğrudan flex çocuğu */}
           <div className="flex items-center gap-4 sm:contents">
             <div
@@ -306,17 +295,30 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
             </div>
           </div>
 
-          {/* Görünür CTA — kartın kendisi buton olduğu için bu bir <span>, gerçek buton değil */}
-          <span className="shrink-0 w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl bg-gray-900 text-white text-sm font-semibold px-5 py-2.5 group-hover:bg-gray-700 transition-colors">
-            Hadi başlayalım
-            <svg
-              width="16" height="16" viewBox="0 0 24 24" fill="none"
-              className="animate-niyet-arrow-nudge"
-              aria-hidden="true"
+          {/* Sağ blok — süre rozeti + görünür CTA, birlikte bir birim.
+              Rozet artık absolute değil; butonun hemen üstünde duruyor. */}
+          <div className="shrink-0 w-full sm:w-auto flex flex-col gap-2 items-stretch sm:items-end">
+            <span
+              className="self-start sm:self-auto inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full"
+              style={{ background: "var(--pe-bg)", color: "var(--pe-color)" }}
             >
-              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" />
+              </svg>
+              4 soru · 10 saniye
+            </span>
+            {/* Kartın kendisi buton olduğu için bu bir <span>, gerçek buton değil */}
+            <span className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl bg-gray-900 text-white text-sm font-semibold px-5 py-2.5 group-hover:bg-gray-700 transition-colors">
+              Hadi başlayalım
+              <svg
+                width="16" height="16" viewBox="0 0 24 24" fill="none"
+                className="animate-niyet-arrow-nudge"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </div>
         </button>
       </div>
     );
