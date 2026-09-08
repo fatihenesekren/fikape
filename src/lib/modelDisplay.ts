@@ -38,9 +38,19 @@ export function stripGenRangeAnywhere(text: string): string {
 // düşer — veri şekli olmayan kategorilerde zorla bölme yapılmaz.
 const TRIM_SPLIT_RE = new RegExp(`^(.+?)\\s${DASH}\\s(.+)$`);
 
+// "versiyon" yarısı sadece motor-spec gürültüsü ise (örn. "125cc 12.5 CV",
+// "23 CV") bu bir donanım/versiyon adı değil — bölme yapma, çağıran taraf model
+// adına düşsün. Katalogda bu sızıntı tekrar eden bir hata sınıfı (bkz.
+// fikape_oner_trimname_sizinti_gecmisi memory'si); veri düzeltilse de savunma
+// katmanı olarak burada da kesiliyor.
+const SPEC_NOISE_RE = /\b\d+(\.\d+)?\s*(cc|cv|hp|kw|ps|bg)\b/i;
+
 export function splitTrimName(trimName: string | null | undefined): { version: string; donanim: string } | null {
   if (!trimName) return null;
   const m = trimName.match(TRIM_SPLIT_RE);
   if (!m) return null;
-  return { version: m[1].trim(), donanim: m[2].trim() };
+  const version = m[1].trim();
+  const donanim = m[2].trim();
+  if (SPEC_NOISE_RE.test(version)) return null;
+  return { version, donanim };
 }

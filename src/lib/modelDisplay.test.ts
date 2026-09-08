@@ -65,4 +65,10 @@ describe("splitTrimName", () => {
   it("baştaki/sondaki boşlukları temizler", () => {
     expect(splitTrimName("  Long Range RWD  –  Advance  ")).toEqual({ version: "Long Range RWD", donanim: "Advance" });
   });
+
+  it("versiyon yarısı motor-spec gürültüsüyse bölmez (null)", () => {
+    expect(splitTrimName("125cc 12.5 CV – Standart")).toBeNull();
+    expect(splitTrimName("250cc 23 CV – Standart")).toBeNull();
+    expect(splitTrimName("90 HP – Comfort")).toBeNull();
+  });
 });

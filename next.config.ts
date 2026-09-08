@@ -9,6 +9,28 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
     ],
   },
+  // Katalog verisinde motor bilgisi sızmış slug'lar temizlendi — eski URL'ler
+  // (bookmark / arama motoru indeksi) kırılmasın diye 301 (bkz. Honda PCX 125,
+  // Honda Forza 250, Yamaha XMAX 250 trimName/slug temizliği).
+  async redirects() {
+    return [
+      {
+        source: "/araclar/honda-pcx-125-125cc-12-5-cv-standart-2025",
+        destination: "/araclar/honda-pcx-125-standart-2025",
+        permanent: true,
+      },
+      {
+        source: "/araclar/honda-forza-250-250cc-23-cv-standart-2025",
+        destination: "/araclar/honda-forza-250-standart-2025",
+        permanent: true,
+      },
+      {
+        source: "/araclar/yamaha-xmax-250-250cc-23-cv-standart-2023",
+        destination: "/araclar/yamaha-xmax-250-standart-2023",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
