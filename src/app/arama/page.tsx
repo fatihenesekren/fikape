@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
-import { SuggestVehicleCard } from "@/components/SuggestVehicleCard";
+import { SearchNoMatchPrompt } from "@/components/SearchNoMatchPrompt";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import type { FikapeScores } from "@/lib/fikape";
-import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -107,25 +107,7 @@ async function SearchResults({ query }: { query: string }) {
   }
 
   if (query.length >= 2 && products.length === 0) {
-    return (
-      <div className="text-center py-20 text-gray-400">
-        <p className="text-5xl mb-4">🔍</p>
-        <p className="font-semibold text-gray-700 text-lg mb-1">Sonuç bulunamadı</p>
-        <p className="text-sm mb-6">
-          &ldquo;{query}&rdquo; ile eşleşen araç yok.{" "}
-          <Link href="/arama" className="underline text-gray-900 hover:text-gray-600 transition-colors">
-            Tümünü gör
-          </Link>
-        </p>
-        <Link
-          href={`/oner?brandName=${encodeURIComponent(query)}`}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors"
-          style={{ background: "#111" }}
-        >
-          <span>+</span> Bu aracı öner
-        </Link>
-      </div>
-    );
+    return <SearchNoMatchPrompt query={query} variant="empty" />;
   }
 
   return (
@@ -163,7 +145,7 @@ async function SearchResults({ query }: { query: string }) {
         })}
         {/* Aradığı tam varyantı (yıl, trim vb.) bulamamış olabilir — sonuçlar
             listesinin doğal bir parçası olarak "öner" seçeneğini göster. */}
-        {query.length >= 2 && <SuggestVehicleCard query={query} />}
+        {query.length >= 2 && <SearchNoMatchPrompt query={query} variant="grid-tail" />}
       </div>
     </>
   );
@@ -196,6 +178,16 @@ export default async function AramaPage({
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8">
+      {/* Geri dönüş — /araclar ve /takas ile aynı yerleşim/stil (önceden
+          /arama'da hiç yoktu, header logosu dışında ana sayfaya dönüş yolu
+          bulunmuyordu). */}
+      <Link
+        href="/"
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-600 mb-4 transition-colors"
+      >
+        ← Ana Sayfa
+      </Link>
+
       {/* Başlık */}
       <div className="mb-6">
         <h1 className="text-xl font-bold text-gray-900">
