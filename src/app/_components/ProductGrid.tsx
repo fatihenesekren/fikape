@@ -4,7 +4,15 @@ import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { NiyetKarti } from "./NiyetKarti";
 import { decodeQuiz, calcQuizScore, quizQ4Matches, CAT_TO_SLUG, MOTO_CC_RANGES, EBIKE_WATT_RANGES, type ReviewExtData } from "@/lib/quiz";
+import { calcShrunkScore } from "@/lib/brandIndex";
 import type { FikapeScores } from "@/lib/fikape";
+
+// Ana sayfa kürasyonu — ham liste /araclar'a taşındı, burada quiz yokken sadece
+// "öne çıkanlar" gösterilir (bkz. backlog_anasayfa_katalog_ayirma).
+const HOMEPAGE_LIMIT = 12;
+const PER_CATEGORY_CAP = 3;
+const CURATION_SHRINKAGE_M = 5;
+const MIN_REVIEWED_FOR_CURATION = 6;
 
 const CATEGORY_ICONS: Record<string, string> = {
   otomobil:     "🚗",
@@ -16,31 +24,19 @@ const CATEGORY_ICONS: Record<string, string> = {
 };
 
 interface Props {
-  catFilter?:     string;
-  fuelFilter?:    string;
-  activeCategory: string;
-  quizParam?:     string;
+  quizParam?: string;
 }
 
-export async function ProductGrid({
-  catFilter,
-  fuelFilter,
-  activeCategory,
-  quizParam,
-}: Props) {
+export async function ProductGrid({ quizParam }: Props) {
   const quizAnswers = quizParam ? decodeQuiz(quizParam) : null;
 
-  // Hard category filter: quiz cat takes precedence over filter bar if it provides a slug
-  const quizCatSlug = quizAnswers ? CAT_TO_SLUG[quizAnswers.cat] : undefined;
-  const effectiveCat = quizCatSlug ?? catFilter;
+  // Hard category filter: quiz kategorisi bir slug veriyorsa ona indir
+  const effectiveCat = quizAnswers ? CAT_TO_SLUG[quizAnswers.cat] : undefined;
 
   let products = await prisma.product.findMany({
     where: {
       isActive: true,
       ...(effectiveCat ? { category: { slug: effectiveCat } } : {}),
-      ...(fuelFilter && (!effectiveCat || effectiveCat === "otomobil")
-        ? { attributes: { path: ["fuel_type"], equals: fuelFilter } }
-        : {}),
     },
     include: {
       brand:    true,
@@ -135,6 +131,62 @@ export async function ProductGrid({
       const scoreB = calcQuizScore(sb.scores, extDataMap.get(b.id) ?? [], quizAnswers).score;
       return scoreB - scoreA;
     });
+  } else {
+    // ── Ana sayfa kürasyonu — "Öne çıkan araçlar" (~12) ──
+    // 1) Aday havuzu: en az 1 yayınlanmış yorumu olanlar.
+    const reviewed = products.filter((p) => scoreMap.has(p.id));
+
+    if (reviewed.length < MIN_REVIEWED_FOR_CURATION) {
+      // İnce veri koruması: en yeni aktif ürünler, grid boş görünmesin.
+      products = [...products]
+        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+        .slice(0, HOMEPAGE_LIMIT);
+    } else {
+      // 2) Bayesçi ağırlıklı ortalama (calcShrunkScore) — tek 10/10'luk yorum
+      //    sıralamayı domine edemesin. C = tüm yorumlanan ürünlerin genel ort.
+      const globalAvg =
+        reviewed.reduce((s, p) => s + (scoreMap.get(p.id)!.scores.scoreOverall || 0), 0) /
+        reviewed.length;
+
+      const scored = reviewed.map((p) => {
+        const sm = scoreMap.get(p.id)!;
+        return {
+          p,
+          w: calcShrunkScore({
+            reviewCount: sm.count,
+            rawAvg: sm.scores.scoreOverall || 0,
+            categoryAvg: globalAvg,
+            m: CURATION_SHRINKAGE_M,
+          }),
+        };
+      });
+      scored.sort(
+        (a, b) =>
+          b.w - a.w ||
+          (b.p.weeklyViewCount ?? 0) - (a.p.weeklyViewCount ?? 0) ||
+          b.p.createdAt.getTime() - a.p.createdAt.getTime(),
+      );
+
+      // 3) Kategori çeşitliliği: her kategoriden ilk PER_CATEGORY_CAP, kalan
+      //    slotlar global sıradan.
+      const perCat = new Map<string, number>();
+      const primary: typeof scored = [];
+      const overflow: typeof scored = [];
+      for (const item of scored) {
+        const c = item.p.category?.slug ?? "?";
+        const n = perCat.get(c) ?? 0;
+        if (n < PER_CATEGORY_CAP) {
+          perCat.set(c, n + 1);
+          primary.push(item);
+        } else {
+          overflow.push(item);
+        }
+      }
+      const finalItems = [...primary, ...overflow]
+        .slice(0, HOMEPAGE_LIMIT)
+        .sort((a, b) => b.w - a.w);
+      products = finalItems.map((x) => x.p);
+    }
   }
 
   // Quiz sonuç barındaki güven metni için: bu kategorideki gerçek yorum sayısı
@@ -163,13 +215,15 @@ export async function ProductGrid({
     return (
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center py-20 text-gray-400">
-          Bu filtrede araç bulunamadı.
+          {quizAnswers ? "Bu kriterlere uyan araç bulunamadı." : "Henüz araç yok."}
         </div>
       </div>
     );
   }
 
-  const showCatIcon = activeCategory === "hepsi" && !quizAnswers;
+  // Kürasyonlu ana sayfa görünümü kategoriler arası karışık — kart üstünde
+  // kategori ikonu göster (quiz sonuçları tek kategori olduğu için gösterilmez).
+  const showCatIcon = !quizAnswers;
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 pt-4 pb-8">
@@ -178,7 +232,7 @@ export async function ProductGrid({
         {/* NiyetKarti — col-span-full, always first */}
         <NiyetKarti
           quizAnswers={quizAnswers}
-          preCatSlug={catFilter ?? null}
+          preCatSlug={null}
           categoryReviewCount={categoryReviewCount}
         />
 

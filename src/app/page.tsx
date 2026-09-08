@@ -1,26 +1,18 @@
 import { Suspense } from "react";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { FUEL_FILTERS } from "@/lib/fuel";
 import { HeroSection } from "./_components/HeroSection";
 import { ProductGrid } from "./_components/ProductGrid";
 import { CardGridSkeleton } from "./_components/CardGridSkeleton";
 import { RecentReviews } from "./_components/RecentReviews";
 import { TrendVehicleCard } from "./_components/TrendVehicleCard";
+import { CategoryTabs } from "./_components/CategoryTabs";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
 import { ScrollTopLogo } from "./_components/ScrollTopLogo";
-import { decodeQuiz, CAT_TO_SLUG } from "@/lib/quiz";
+import { decodeQuiz } from "@/lib/quiz";
 
 export const dynamic = "force-dynamic";
-
-const CATEGORY_FILTERS = [
-  { key: "hepsi",       label: "Tümü",       icon: "🔍" },
-  { key: "otomobil",    label: "Araba",       icon: "🚗" },
-  { key: "motosiklet",  label: "Motosiklet",  icon: "🏍️" },
-  { key: "e-scooter",   label: "E-Scooter",   icon: "⚡" },
-  { key: "e-bisiklet",  label: "E-Bisiklet",  icon: "🚴" },
-  { key: "karavan",     label: "Karavan",     icon: "🏕️" },
-  { key: "kamyonet",    label: "Kamyonet",    icon: "🛻" },
-] as const;
 
 const CATEGORY_ICONS: Record<string, string> = {
   otomobil: "🚗", motosiklet: "🏍️", "e-scooter": "⚡",
@@ -30,18 +22,20 @@ const CATEGORY_ICONS: Record<string, string> = {
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ kategori?: string; yakit?: string; dogrulama?: string; quiz?: string }>;
+  searchParams: Promise<{ kategori?: string; dogrulama?: string; quiz?: string }>;
 }) {
-  const { kategori, yakit, dogrulama, quiz } = await searchParams;
-  const catFilter      = kategori && kategori !== "hepsi" ? kategori : undefined;
-  const fuelFilter     = yakit    && yakit    !== "hepsi" ? yakit    : undefined;
-  const quizParam      = quiz ?? undefined;
-  const activeCategory = kategori ?? "hepsi";
-  const activeFuel     = yakit    ?? "hepsi";
-  const showFuelFilter = catFilter === "otomobil" && !quizParam;
+  const { kategori, dogrulama, quiz } = await searchParams;
 
-  // Trend — sadece filtre yokken, haftalık görüntülemesi olanlar
-  const trendProducts = !catFilter
+  // Eski ana sayfa kategori filtresi linkleri (?kategori=X) artık katalog
+  // sayfasına taşındı — bookmark/dış link kırılmasın (bkz. backlog_anasayfa_katalog_ayirma).
+  if (kategori && kategori !== "hepsi") {
+    redirect(`/araclar?kategori=${encodeURIComponent(kategori)}`);
+  }
+
+  const quizParam = quiz ?? undefined;
+
+  // Trend — sadece quiz modunda değilken, haftalık görüntülemesi olanlar
+  const trendProducts = !quizParam
     ? await prisma.product.findMany({
         where: { isActive: true, weeklyViewCount: { gt: 0 } },
         include: { brand: true, model: true, category: true },
@@ -79,78 +73,37 @@ export default async function Home({
       {/* ── Hero ── */}
       <HeroSection />
 
-      {/* ── Kategori + Yakıt filtresi (sticky) ── */}
+      {/* ── Kategori sekmeleri (sticky) — her chip /araclar katalog sayfasına gider ── */}
       <section className="border-b border-gray-100 bg-white sticky top-14 z-40">
         <div className="max-w-7xl mx-auto px-4">
-
-          <div className="flex gap-2 overflow-x-auto py-3 scrollbar-none">
-            {/* Quiz chip — görünür olduğunda kategori chiplerinden önce */}
-            {quizParam && (() => {
-              const qa = decodeQuiz(quizParam);
-              if (!qa) return null;
-              const catSlug  = CAT_TO_SLUG[qa.cat];
-              const clearUrl = catSlug ? `/?kategori=${catSlug}` : "/";
-              return (
-                <a
-                  href={clearUrl}
-                  className="shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold border flex items-center gap-1.5"
-                  style={{ background: "#111", color: "#fff", borderColor: "#111" }}
-                >
-                  <span>🎯</span>
-                  <span>Araç Bul</span>
-                  <span className="opacity-60 ml-0.5">✕</span>
-                </a>
-              );
-            })()}
-            {CATEGORY_FILTERS.map((f) => {
-              const isActive = activeCategory === f.key && !quizParam;
-              const url = f.key === "hepsi" ? "/" : `/?kategori=${f.key}`;
-              return (
-                <a
-                  key={f.key}
-                  href={url}
-                  className="shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors flex items-center gap-1.5"
-                  style={
-                    isActive
-                      ? { background: "#111", color: "#fff", borderColor: "#111" }
-                      : { background: "#fff", color: "#555", borderColor: "#e5e7eb" }
-                  }
-                >
-                  <span>{f.icon}</span>
-                  <span>{f.label}</span>
-                </a>
-              );
-            })}
-          </div>
-
-          {showFuelFilter && (
-            <div className="flex gap-2 overflow-x-auto pb-3 scrollbar-none">
-              {FUEL_FILTERS.map((f) => {
-                const isActive = activeFuel === f.key;
-                const base = catFilter ? `/?kategori=${catFilter}` : "/";
-                const url  = f.key === "hepsi" ? base : `${base}&yakit=${f.key}`;
-                return (
-                  <a
-                    key={f.key}
-                    href={url}
-                    className="shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors"
-                    style={
-                      isActive
-                        ? { background: "#374151", color: "#fff", borderColor: "#374151" }
-                        : { background: "#f9fafb", color: "#6b7280", borderColor: "#e5e7eb" }
-                    }
-                  >
-                    {f.label}
-                  </a>
-                );
-              })}
-            </div>
-          )}
+          <CategoryTabs
+            quizActive={!!quizParam}
+            showQuizChip={
+              quizParam
+                ? (() => {
+                    const qa = decodeQuiz(quizParam);
+                    if (!qa) return null;
+                    // Katalog artık /araclar'da; quiz'i kapatınca ana sayfaya dön.
+                    return (
+                      <Link
+                        href="/"
+                        className="shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold border flex items-center gap-1.5"
+                        style={{ background: "#111", color: "#fff", borderColor: "#111" }}
+                      >
+                        <span aria-hidden="true">🎯</span>
+                        <span>Araç Bul</span>
+                        <span className="opacity-60 ml-0.5" aria-hidden="true">✕</span>
+                      </Link>
+                    );
+                  })()
+                : undefined
+            }
+          />
         </div>
       </section>
 
-      {/* ── Trend şeridi (filtre yokken) ── */}
-      {!catFilter && trendProducts.length > 0 && (
+      {/* ── Trend şeridi (quiz modunda değilken) ── */}
+      {!quizParam && trendProducts.length > 0 && (
         <section className="w-full max-w-7xl mx-auto px-4 pt-6 pb-3">
           <h2 className="text-sm font-bold text-gray-900 mb-3">
             Bu hafta ilgi gören araçlar
@@ -179,18 +132,26 @@ export default async function Home({
         </section>
       )}
 
-      {/* ── Son yorumlar (filtre yokken, koşullu) ── */}
-      {!catFilter && <RecentReviews />}
+      {/* ── Son yorumlar (quiz modunda değilken) ── */}
+      {!quizParam && <RecentReviews />}
 
-      {/* ── Araç kartları (Suspense ile — Wikipedia API yavaşlığını izole eder) ── */}
+      {/* ── Araç kartları — quiz yoksa kürasyonlu "öne çıkanlar" (~12),
+             quiz varsa quiz-skorlu sonuçlar. Tüm katalog artık /araclar'da. ── */}
       <Suspense fallback={<CardGridSkeleton />}>
-        <ProductGrid
-          catFilter={catFilter}
-          fuelFilter={fuelFilter}
-          activeCategory={activeCategory}
-          quizParam={quizParam}
-        />
+        <ProductGrid quizParam={quizParam} />
       </Suspense>
+
+      {/* ── Tüm kataloğa geçiş ── */}
+      {!quizParam && (
+        <div className="w-full max-w-7xl mx-auto px-4 -mt-2 pb-8">
+          <Link
+            href="/araclar"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-700 hover:underline"
+          >
+            Tüm araçlar →
+          </Link>
+        </div>
+      )}
 
       {/* ── FI·KA·PE açıklama ── */}
       <section className="w-full max-w-7xl mx-auto px-4 pb-8">
