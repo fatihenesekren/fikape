@@ -81,10 +81,14 @@ export function AuthNav() {
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Sayfa değişince menü her zaman kapansın (bkz. NotificationBell'deki aynı düzeltme).
-  useEffect(() => {
+  // Sayfa değişince menü her zaman kapansın (bkz. NotificationBell'deki aynı
+  // düzeltme) — effect yerine "prop değişince render sırasında state ayarla"
+  // deseni (React docs), cascading-render uyarısı vermiyor.
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setMenuOpen(false);
-  }, [pathname]);
+  }
 
   // "Mesajlarım" rozeti — /mesajlar sayfası zaten çalışıyordu ama hiçbir nav'da
   // linki yoktu (bkz. boşluk raporu). Sayfa değişince yeniden çekiliyor, böylece

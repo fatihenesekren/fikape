@@ -35,9 +35,13 @@ export function NotificationBell() {
   // Sayfa değişince panel her zaman kapansın — sadece dışarı-tıklama algısına
   // güvenmek, bir bildirime tıklayıp client-side navigasyon başladığında bazen
   // kaçırılabiliyordu (bkz. kullanıcı geri bildirimi: panel yeni sayfada açık kalıyor).
-  useEffect(() => {
+  // Effect yerine "prop değişince render sırasında state ayarla" deseni (React
+  // docs) — cascading-render uyarısı vermiyor, ekstra render turu da yok.
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (!open) return;

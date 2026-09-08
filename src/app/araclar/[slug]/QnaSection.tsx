@@ -104,6 +104,31 @@ function BellIcon({ className = "" }: { className?: string }) {
   );
 }
 
+// Soru sorma bloğunun başlık ikonu — "?" içeren konuşma balonu. Alttaki bildirim
+// notunun ziliyle karışmaması için bilinçli olarak farklı (bkz. kullanıcı geri
+// bildirimi: iki zil üst üste tekrar gibi duruyordu).
+function AskIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M21 11.5a8.5 8.5 0 0 1-11.9 7.8L3 21l1.7-6.1A8.5 8.5 0 1 1 21 11.5Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.6 9.5a2.4 2.4 0 0 1 4.7.7c0 1.6-2.3 2-2.3 3.3"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="16.4" r="0.9" fill="currentColor" />
+    </svg>
+  );
+}
+
 function AnswerForm({ questionId, onDone }: { questionId: number; onDone: () => void }) {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
@@ -183,7 +208,7 @@ export function QnaSection({ productSlug, questions, isLoggedIn, currentUserId, 
       <div className="rounded-2xl border border-gray-200 bg-gray-50/70 p-4 sm:p-5">
         <div className="flex items-start gap-3">
           <div className="hidden sm:flex w-9 h-9 shrink-0 rounded-full bg-link-soft text-link items-center justify-center">
-            <BellIcon className="w-4 h-4" />
+            <AskIcon className="w-4 h-4" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-gray-900">Bu araç hakkında soru sorun</p>
