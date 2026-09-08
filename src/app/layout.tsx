@@ -7,6 +7,7 @@ import { VerificationBanner } from "@/components/VerificationBanner";
 import { SearchBar, SearchIcon } from "@/components/SearchBar";
 import { FooterNav } from "@/components/FooterNav";
 import { HomeFab } from "@/components/HomeFab";
+import { BackToTop } from "@/components/BackToTop";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { JsonLd } from "@/components/JsonLd";
@@ -105,6 +106,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           </div>
         </footer>
         <HomeFab />
+        <BackToTop />
         </SessionProvider>
       </body>
     </html>
