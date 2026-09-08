@@ -9,6 +9,7 @@ import { timeAgoTr } from "@/lib/timeAgo";
 import { Avatar } from "@/components/Avatar";
 import { PhotoSlider } from "@/app/araclar/[slug]/PhotoSlider";
 import { buildSpecList } from "@/lib/buildSpecList";
+import { SpecGrid } from "@/components/SpecGrid";
 import { CarDamageDiagram } from "@/components/CarDamageDiagram";
 import { PART_CONDITION_CATEGORIES, PART_CONDITION_LABEL, PART_CONDITION_COLOR, CAR_PARTS, type PartCondition } from "@/lib/carParts";
 import {
@@ -174,20 +175,7 @@ export default async function TakasDetayPage({
       key: "teknik",
       label: "Özellikler",
       icon: "⚙️",
-      content: specs.length === 0 ? (
-        <p className="text-sm text-gray-400 text-center py-6">Bu araç için teknik özellik bulunamadı.</p>
-      ) : (
-        <div className="grid grid-cols-2 gap-2">
-          {specs.map(({ label, value }) => (
-            <div key={label} className="bg-gray-50 rounded-lg px-3 py-2">
-              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide leading-tight">
-                {label}
-              </div>
-              <div className="text-sm font-semibold text-gray-800 mt-0.5">{value}</div>
-            </div>
-          ))}
-        </div>
-      ),
+      content: <SpecGrid items={specs} emptyText="Bu araç için teknik özellik bulunamadı." />,
     },
     ...(showPartConditions
       ? [

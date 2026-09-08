@@ -7,6 +7,7 @@ import { auth } from "@/auth";
 import { ReviewCard } from "@/components/ReviewCard";
 import { GatedContentCard } from "@/components/GatedContentCard";
 import { ScrollToReview } from "./ScrollToReview";
+import { SpecGrid } from "@/components/SpecGrid";
 import { PhotoSlider } from "./PhotoSlider";
 import { TabView } from "./TabView";
 import { OwnershipCard } from "./OwnershipCard";
@@ -577,29 +578,12 @@ export default async function VehicleDetailPage({
     label: `${i + 1}. fotoğraf — ${p.uploadedBy?.displayName ?? "Kullanıcı fotoğrafı"}`,
   }));
 
-  const left = specs.filter((_, i) => i % 2 === 0);
-  const right = specs.filter((_, i) => i % 2 === 1);
-
-  const specsContent = specs.length === 0 ? (
-    <p className="p-6 text-sm text-gray-400 text-center">Teknik özellik bulunamadı.</p>
-  ) : (
-    <div className="grid grid-cols-2 divide-x divide-gray-100">
-      <div className="px-6 py-5">
-        {left.map(({ label, value }) => (
-          <div key={label} className="flex justify-between items-baseline py-3.5 border-b border-gray-50 text-sm last:border-b-0">
-            <span className="text-gray-400">{label}</span>
-            <span className="font-semibold text-gray-800 text-right ml-4">{value}</span>
-          </div>
-        ))}
-      </div>
-      <div className="px-6 py-5">
-        {right.map(({ label, value }) => (
-          <div key={label} className="flex justify-between items-baseline py-3.5 border-b border-gray-50 text-sm last:border-b-0">
-            <span className="text-gray-400">{label}</span>
-            <span className="font-semibold text-gray-800 text-right ml-4">{value}</span>
-          </div>
-        ))}
-      </div>
+  // Teknik özellikler — takas ilanı detayıyla aynı kutucuk grid'i
+  // (paylaşılan SpecGrid). Önceki "label ..... value" satır tablosu görünüm/
+  // okunurluk açısından geride kalıyordu (bkz. kullanıcı geri bildirimi).
+  const specsContent = (
+    <div className="px-5 py-5">
+      <SpecGrid items={specs} emptyText="Bu araç için teknik özellik bulunamadı." />
     </div>
   );
 
