@@ -19,11 +19,13 @@ const TINTS = ["var(--fi-bg)", "var(--ka-bg)", "var(--pe-bg)"];
 
 // Kapalı banner'da dönüşümlü niyet soruları — ilk eleman varsayılan etiket,
 // prefers-reduced-motion açıkken döngü hiç başlamaz ve bu sabit kalır.
+// "4 Soru · 10 Saniye" artık ayrı bir rozet olduğu için burada tekrar edilmiyor;
+// eyebrow tamamen "niyet sorusu" cümlelerine ayrıldı.
 const BANNER_PHRASES = [
-  "4 Soru · 10 Saniye",
   "Yeni bir araç mı almayı düşünüyorsun?",
   "Şehir içi mi, uzun yol mu?",
   "Elektrikliye geçmeyi mi düşünüyorsun?",
+  "Bütçene en uygun seçim hangisi?",
 ];
 
 // Seçim yapılınca otomatik ilerleme gecikmesi — check-pop animasyonu görünsün diye
@@ -254,37 +256,66 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
       <div className="col-span-full">
         <button
           onClick={() => openQuiz()}
-          className="relative w-full bg-white rounded-2xl border border-gray-200 pl-6 pr-4 py-6 flex items-center gap-3 overflow-hidden hover:border-gray-300 hover:shadow-sm transition-all group text-left animate-niyet-enter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+          aria-label="4 soruda sana en uygun aracı bulalım — başla"
+          className="relative w-full bg-white rounded-2xl border border-gray-200 p-5 sm:pl-7 sm:pr-7 sm:py-7 flex flex-col sm:flex-row sm:items-center gap-4 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all group text-left animate-niyet-enter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
         >
           <div
-            className="absolute inset-y-0 left-0 w-1.5"
+            className="absolute inset-y-0 left-0 w-2"
             style={{ background: "linear-gradient(180deg, var(--fi-color), var(--ka-color), var(--pe-color))" }}
             aria-hidden="true"
           />
-          <div
-            className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0"
-            style={{ background: "linear-gradient(135deg, var(--fi-color), var(--ka-color) 55%, var(--pe-color))" }}
+
+          {/* Süre + kapsam rozeti — sağ üst; mobilde "4 soru ·" gizli */}
+          <span
+            className="absolute top-3 right-3 inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full"
+            style={{ background: "var(--pe-bg)", color: "var(--pe-color)" }}
           >
-            <MatchIcon size={24} />
-          </div>
-          <div className="flex-1 min-w-0">
-            {/* Sabit yükseklik: metin değişirken banner zıplamasın */}
-            <div className="h-4 mb-0.5 overflow-hidden">
-              <p
-                className={`text-[11px] font-bold tracking-wide truncate transition-all duration-[450ms] ease-out ${
-                  phraseVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
-                }`}
-                style={{ color: "var(--pe-color)" }}
-                aria-hidden={phraseIdx !== 0}
-              >
-                {BANNER_PHRASES[phraseIdx]}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" />
+            </svg>
+            <span className="hidden sm:inline">4 soru · </span>10 saniye
+          </span>
+
+          {/* İkon + metin — mobilde tek satır grup, masaüstünde doğrudan flex çocuğu */}
+          <div className="flex items-center gap-4 sm:contents">
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 animate-niyet-icon-pulse"
+              style={{ background: "linear-gradient(135deg, var(--fi-color), var(--ka-color) 55%, var(--pe-color))" }}
+            >
+              <MatchIcon size={30} />
+            </div>
+            <div className="flex-1 min-w-0">
+              {/* Sabit yükseklik: metin değişirken banner zıplamasın */}
+              <div className="h-4 mb-0.5 overflow-hidden">
+                <p
+                  aria-hidden="true"
+                  className={`text-[11px] font-bold tracking-wide truncate transition-all duration-[450ms] ease-out ${
+                    phraseVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
+                  }`}
+                  style={{ color: "var(--pe-color)" }}
+                >
+                  {BANNER_PHRASES[phraseIdx]}
+                </p>
+              </div>
+              <p className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
+                4 soruda sana en uygun aracı bulalım
+              </p>
+              <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
+                FI·KA·PE puanı + gerçek yorumlara göre sıralanır
               </p>
             </div>
-            <p className="text-sm font-bold text-gray-900">4 soruda sana en uygun aracı bulalım</p>
-            <p className="text-xs text-gray-500 mt-0.5">FI·KA·PE puanı + gerçek yorumlara göre sıralanır</p>
           </div>
-          <span className="text-gray-300 group-hover:text-gray-500 group-hover:translate-x-0.5 transition-all text-xl font-light select-none">
-            ›
+
+          {/* Görünür CTA — kartın kendisi buton olduğu için bu bir <span>, gerçek buton değil */}
+          <span className="shrink-0 w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl bg-gray-900 text-white text-sm font-semibold px-5 py-2.5 group-hover:bg-gray-700 transition-colors">
+            Hadi başlayalım
+            <svg
+              width="16" height="16" viewBox="0 0 24 24" fill="none"
+              className="animate-niyet-arrow-nudge"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </span>
         </button>
       </div>
