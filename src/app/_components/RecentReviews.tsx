@@ -50,75 +50,66 @@ export async function RecentReviews() {
 
           const days = daysSince(new Date(r.createdAt));
           const timeLabel =
-            days === 0 ? "bugün" : days === 1 ? "dün" : `${days} gün önce`;
+            days === 0 ? "bugün" : days === 1 ? "dün" : `${days}g`;
 
-          // İçerik kaynağı: detailText → summaryText → artı/eksi chip'leri → boş.
+          // İçerik kaynağı: detailText → summaryText → artı/eksi → boş.
+          // Kart sadeliği için: TEK satır alıntı; chip yerine ilk 1-2 madde düz
+          // metin; hiçbiri yoksa soluk "Hızlı puan" notu (bkz. kullanıcı geri
+          // bildirimi: şerit çok kalabalıktı).
           const text = ((r.detailText ?? r.summaryText ?? "") as string).trim();
           const ed = r.extendedData as { pros?: string[]; cons?: string[] } | null | undefined;
           const chips = !text
             ? [
                 ...((ed?.pros ?? []).map((k) => ({ k, kind: "pro" as const }))),
                 ...((ed?.cons ?? []).map((k) => ({ k, kind: "con" as const }))),
-              ].slice(0, 3)
+              ].slice(0, 2)
             : [];
+          const chipText = chips
+            .map(({ k, kind }) => `${kind === "pro" ? "+" : "−"} ${CHIP_LABEL[k] ?? k}`)
+            .join(" · ");
 
           return (
             <a
               key={r.id}
               href={`/araclar/${r.product.slug}?sekme=yorumlar#yorum-${r.id}`}
               data-scroll-card
-              className="group shrink-0 snap-start w-64 flex flex-col gap-2 px-4 py-3.5 rounded-2xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm transition-all"
+              className="group shrink-0 snap-start w-64 flex flex-col gap-1.5 px-4 py-3 rounded-2xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm transition-all"
             >
-              {/* Kullanıcı + skor */}
+              {/* Kullanıcı · zaman + skor */}
               <div className="flex items-center gap-2">
                 <Avatar
                   displayName={r.user.displayName}
                   avatarUrl={r.user.avatarUrl}
                   seed={String(r.user.id)}
-                  size={28}
+                  size={26}
                 />
-                <div className="min-w-0 flex-1">
-                  <div className="text-xs font-semibold text-gray-700 truncate">{name}</div>
-                  <div className="text-xs text-gray-400 truncate">
-                    {r.product.brand.name} {stripModelGenRange(r.product.model.name)}
-                  </div>
+                <div className="min-w-0 flex-1 text-xs text-gray-400 truncate">
+                  <span className="font-semibold text-gray-700">{name}</span> · {timeLabel}
                 </div>
                 <div className="text-sm font-black shrink-0 tabular-nums" style={{ color: scoreColor }}>
                   {overall.toFixed(1)}
                 </div>
               </div>
 
-              {/* Giriş yapmış: yorumun bir kısmı + "Devamı →" (kart yorumun
-                  olduğu yere gider). Metin yoksa artı/eksi chip'leri; o da
-                  yoksa (saf hızlı yorum) sadece skor kalır. Anon: hiçbiri. */}
-              {isLoggedIn && text && (
-                <div>
-                  <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{text}</p>
-                  <span className="text-[11px] font-semibold text-link group-hover:underline">
-                    Devamı →
-                  </span>
-                </div>
-              )}
-              {isLoggedIn && !text && chips.length > 0 && (
-                <div className="flex flex-wrap gap-1">
-                  {chips.map(({ k, kind }) => (
-                    <span
-                      key={`${kind}-${k}`}
-                      className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-semibold"
-                      style={
-                        kind === "pro"
-                          ? { background: "#dcfce7", color: "#16a34a" }
-                          : { background: "#fee2e2", color: "#dc2626" }
-                      }
-                    >
-                      {kind === "pro" ? "+" : "−"} {CHIP_LABEL[k] ?? k}
-                    </span>
-                  ))}
-                </div>
-              )}
+              {/* Araç */}
+              <div className="text-xs font-medium text-gray-800 truncate">
+                {r.product.brand.name} {stripModelGenRange(r.product.model.name)}
+              </div>
 
-              {/* Zaman */}
-              <div className="text-xs text-gray-300">{timeLabel}</div>
+              {/* Giriş yapmış: yorumdan TEK satır → yoksa ilk 1-2 artı/eksi düz
+                  metin → yoksa soluk "Hızlı puan". Anon: bu satır hiç render
+                  edilmez (metin DB'den zaten çekilmedi). */}
+              {isLoggedIn && (
+                text ? (
+                  <p className="text-xs text-gray-400 truncate group-hover:text-gray-500 transition-colors">
+                    “{text}”
+                  </p>
+                ) : chipText ? (
+                  <p className="text-xs text-gray-400 truncate">{chipText}</p>
+                ) : (
+                  <p className="text-xs text-gray-300 truncate">Hızlı puan</p>
+                )
+              )}
             </a>
           );
         })}
