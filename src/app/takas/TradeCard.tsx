@@ -12,6 +12,7 @@ const PAYMENT_LABEL: Record<string, string> = {
 export function TradeCard({
   listing,
   isMatch = false,
+  isOwn = false,
 }: {
   listing: {
     id: number;
@@ -25,6 +26,7 @@ export function TradeCard({
     userProduct?: { usageAmount: number | null; usageUnit: string | null } | null;
   };
   isMatch?: boolean;
+  isOwn?: boolean;
 }) {
   const km = listing.userProduct?.usageUnit === "km" ? listing.userProduct.usageAmount : null;
   return (
@@ -32,7 +34,14 @@ export function TradeCard({
       href={`/takas/${listing.id}`}
       className="flex gap-3.5 bg-white border border-gray-100 rounded-2xl p-4 hover:border-indigo-200 hover:shadow-sm transition-all relative"
     >
-      {isMatch && (
+      {isOwn ? (
+        <span
+          className="absolute -top-2 -left-2 text-[10px] font-bold text-white px-2 py-0.5 rounded-full shadow-sm bg-gray-900"
+          title="Bu ilan size ait. Kapatmak veya düzenlemek için Garajım sayfasını kullanın."
+        >
+          Sizin ilanınız
+        </span>
+      ) : isMatch ? (
         <span
           className="absolute -top-2 -left-2 text-[10px] font-bold text-white px-2 py-0.5 rounded-full shadow-sm"
           style={{ background: "#4338ca" }}
@@ -40,7 +49,7 @@ export function TradeCard({
         >
           ✨ Sana Uygun
         </span>
-      )}
+      ) : null}
       {listing.coverPhotoUrl ? (
         <div className="relative w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-gray-50">
           <Image src={listing.coverPhotoUrl} alt="" fill sizes="96px" className="object-cover" />

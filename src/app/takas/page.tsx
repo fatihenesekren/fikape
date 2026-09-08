@@ -113,6 +113,7 @@ export default async function TakasPage({
 
   const session = await auth();
   const isLoggedIn = !!session?.user?.id;
+  const currentUserId = isLoggedIn ? Number(session!.user.id) : null;
 
   // "Sana Uygun" rozeti — kullanıcının kendi aktif ilanı varsa, listedeki her
   // adayın hem aracı kullanıcının aradığına hem kullanıcının aracı adayın
@@ -259,11 +260,16 @@ export default async function TakasPage({
               wantFuelTypes: listing.wantFuelTypes as TradeFuelType[],
               wantTransmissions: listing.wantTransmissions,
             };
+            // Kendi ilanı: "Sana Uygun" rozeti kendi aracını kendine önermiş
+            // olur (eşleştirmeye güveni zedeler) — bu yüzden bastırılıyor ve
+            // kartta bunun yerine "Sizin ilanınız" rozeti gösteriliyor (bkz.
+            // kullanıcı kararı: Seçenek A).
+            const isOwn = currentUserId != null && listing.userId === currentUserId;
             const isMatch =
-              myWant && myVehicle
+              !isOwn && myWant && myVehicle
                 ? matchesWant(myWant, listingVehicle) && matchesWant(listingWant, myVehicle)
                 : false;
-            return <TradeCard key={listing.id} listing={listing} isMatch={isMatch} />;
+            return <TradeCard key={listing.id} listing={listing} isMatch={isMatch} isOwn={isOwn} />;
           })}
         </div>
       )}
