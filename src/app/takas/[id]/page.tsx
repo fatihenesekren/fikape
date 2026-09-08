@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -66,9 +66,10 @@ export async function generateMetadata({
   const { id } = await params;
   const listing = await getListing(parseInt(id)).catch(() => null);
   if (!listing) return { title: "İlan bulunamadı – fikape" };
+  // Takas ilanı detayı üye içeriği (bkz. Seçenek B) — her zaman noindex.
   if (!listing.isActive) return { title: "İlan artık aktif değil – fikape", robots: { index: false } };
   const title = `${listing.product.brand.name} ${stripModelGenRange(listing.product.model.name)} Takasa Açık – ${listing.city}`;
-  return { title };
+  return { title, robots: { index: false, follow: true } };
 }
 
 export default async function TakasDetayPage({
@@ -80,11 +81,16 @@ export default async function TakasDetayPage({
   const listingId = parseInt(id);
   if (isNaN(listingId)) notFound();
 
+  // Takas ilanı detayı üyeye özel (Seçenek B) — anon kullanıcı ilan verisini
+  // HİÇ görmez: fetch bile edilmeden /giris'e yönlendirilir. Asıl kişisel veri
+  // (kimlik, hasar geçmişi, TRAMER tutarları, aradığı araç) + iletişim burada.
+  const session = await auth();
+  const userId = session?.user?.id ? Number(session.user.id) : null;
+  if (!userId) redirect(`/giris?callbackUrl=/takas/${listingId}`);
+
   const listing = await getListing(listingId);
   if (!listing) notFound();
 
-  const session = await auth();
-  const userId = session?.user?.id ? Number(session.user.id) : null;
   const isOwner = userId === listing.userId;
 
   let existingThreadId: number | null = null;
