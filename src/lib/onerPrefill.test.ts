@@ -25,10 +25,16 @@ describe("resolveOnerPrefill", () => {
     expect(resolveOnerPrefill("?brandName=tesla").selectedMake).toBe("Tesla");
   });
 
-  it("model eşleşmesi → kategori + marka + model", () => {
+  it("nesil belirsiz (clio → Clio 2/3/4/5) → marka dolu, model BOŞ", () => {
     const r = resolveOnerPrefill("?q=clio");
     expect(r.selectedMake).toBe("Renault");
-    expect(r.selectedModel).toMatch(/^Clio/);
+    expect(r.selectedModel).toBe("");
+  });
+
+  it("tek nesil / tam model adı → model de dolar", () => {
+    const r = resolveOnerPrefill("?q=twingo");
+    expect(r.selectedMake).toBe("Renault");
+    expect(r.selectedModel).toMatch(/^Twingo/);
   });
 
   it("katalogda olmayan tek kelime → Diğer / Bulamadım + customMake", () => {

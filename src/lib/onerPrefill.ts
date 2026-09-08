@@ -46,12 +46,23 @@ export function resolveOnerPrefill(search: string): OnerPrefill {
   //    harfli model adlarının ("Honda e") her sorguyla eşleşmesini önler.
   //    Ters yön (model adı sorgunun içinde) BİLİNÇLİ olarak yok — "chery
   //    tiggo" gibi bilinmeyen sorgular yanlışlıkla eşleşmesin.
+  //    Nesil belirsizse (aynı markada birden çok eşleşme, ör. "clio" -> Clio
+  //    2/3/4/5) MODEL BOŞ bırakılır, sadece marka+kategori; kullanıcı nesli
+  //    kendisi seçsin (bkz. kullanıcı kararı).
   for (const [cat, makesList] of cats) {
     for (const mk of makesList) {
-      const mdl = mk.models.find(
+      const matches = mk.models.filter(
         (x) => norm(x.name) === nq || (nq.length >= 3 && norm(x.name).includes(nq)),
       );
-      if (mdl) return { ...base, categorySlug: cat, selectedMake: mk.make, selectedModel: mdl.name };
+      if (matches.length === 0) continue;
+      const exact = matches.find((x) => norm(x.name) === nq);
+      const only = matches.length === 1 ? matches[0] : undefined;
+      return {
+        ...base,
+        categorySlug: cat,
+        selectedMake: mk.make,
+        selectedModel: (exact ?? only)?.name ?? "",
+      };
     }
   }
   // 3) "marka model" kombosu — ilk kelime bilinen bir marka
