@@ -81,18 +81,12 @@ export async function RecentReviews() {
               </div>
 
               {/* Yorum özeti — yalnızca giriş yapmış kullanıcıya. Anonimde
-                  metin yok, yerine kilit ipucu (kart yine araç sayfasına gider). */}
-              {isLoggedIn ? (
+                  hiç gösterilmez (her kartta tekrar eden "giriş yap" uyarısı
+                  gürültü yaratıyordu — bkz. kullanıcı geri bildirimi). Kart
+                  yine araç sayfasına gidiyor, kilit orada. */}
+              {isLoggedIn && (
                 <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
                   {r.summaryText}
-                </p>
-              ) : (
-                <p className="text-xs text-gray-400 leading-relaxed flex items-center gap-1">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="2.5" />
-                    <path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" strokeWidth="2.5" />
-                  </svg>
-                  Yorumu okumak için giriş yap
                 </p>
               )}
 
