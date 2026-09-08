@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { slugify } from "@/lib/slugify";
+import { findExistingVehicles } from "@/lib/existingVehicle";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -8,16 +10,6 @@ export const dynamic = "force-dynamic";
 const VALID_CATEGORIES = ["otomobil", "motosiklet", "e-scooter", "e-bisiklet", "karavan", "kamyonet"];
 const VALID_FUEL_TYPES  = ["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"];
 const VALID_TRANSMISSIONS = ["Manuel", "Otomatik", "CVT", "Yarı Otomatik"];
-
-function slugify(text: string): string {
-  return String(text)
-    .toLowerCase()
-    .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
-    .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
-    .normalize("NFD").replace(/\p{Mn}/gu, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 export async function POST(req: Request) {
   try {
@@ -49,28 +41,38 @@ export async function POST(req: Request) {
     .filter(Boolean).join("-");
   const baseSlug = slugify(baseParts);
 
-  // Aktif katalogda var mı?
-  const activeProduct = await prisma.product.findFirst({
-    where: { slug: baseSlug, status: "ACTIVE" },
-    select: { slug: true, attributes: true },
-  });
+  // Aktif katalogda var mı? — marka+model slug eşleşmesi (yıl/donanımdan
+  // bağımsız, bkz. findExistingVehicles). Eski birebir-slug kontrolü
+  // (marka-model-donanım-yıl) kullanıcı farklı yıl/donanım seçtiğinde tutmuyor,
+  // sessizce PENDING kopya üretiyordu.
+  const existingMatches = await findExistingVehicles(
+    brandName.trim(), modelName.trim(), categorySlug,
+  );
 
-  // Vites tipi farklıysa (ör. mevcut Otomatik, öneri Manuel) aynı araç
-  // sayılmaz — ayrı bir varyant ürünü olarak slug'a vites eklenip devam edilir.
-  // Vites belirtilmemişse veya mevcutla aynıysa değişiklik yok (eski slug'lar bozulmaz).
-  const activeTransmission = (activeProduct?.attributes as Record<string, string> | null)?.transmission;
-  const isDifferentVariant =
-    !!activeProduct && !!transmission && !!activeTransmission &&
-    slugify(transmission) !== slugify(activeTransmission);
+  // Vites-varyantı istisnası: kullanıcı bir vites belirttiyse ve mevcut
+  // eşleşmelerin HİÇBİRİ aynı vitese sahip değilse (ör. katalogda yalnızca
+  // Otomatik var, öneri Manuel), ayrı bir varyant olarak eklenmesine izin ver.
+  const txSlug = transmission ? slugify(transmission) : null;
+  const blockingMatches = existingMatches.filter(
+    (mm) => !txSlug || !mm.transmission || slugify(mm.transmission) === txSlug,
+  );
 
-  if (activeProduct && !isDifferentVariant) {
+  if (blockingMatches.length > 0) {
+    const top = blockingMatches[0];
     return NextResponse.json(
-      { error: "Bu araç zaten katalogda mevcut", existingSlug: activeProduct.slug },
+      {
+        error: "Bu araç zaten katalogda mevcut",
+        existingSlug:  top.slug,
+        existingName:  top.name,
+        reviewCount:   top.reviewCount,
+        matches:       blockingMatches,
+      },
       { status: 409 }
     );
   }
 
-  const slug = isDifferentVariant ? `${baseSlug}-${slugify(transmission)}` : baseSlug;
+  const isDifferentVariant = existingMatches.length > 0;
+  const slug = isDifferentVariant && txSlug ? `${baseSlug}-${txSlug}` : baseSlug;
 
   // Aynı PENDING ürün var mı? (başka bir kullanıcı önermişse veya önceki hatalı submit)
   const pendingProduct = await prisma.product.findFirst({

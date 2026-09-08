@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import vehiclesData from "@/data/vehicles.json";
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 import { resolveOnerPrefill, type OnerCategoryKey } from "@/lib/onerPrefill";
+import type { ExistingVehicleMatch } from "@/lib/existingVehicle";
 
 // Versiyon string'lerindeki RWD/AWD kısaltmaları teknik/İngilizce — kullanıcıya
 // gösterirken Türkiye'de yaygın kullanılan "4x2"/"4x4" karşılığı eklenir.
@@ -129,6 +130,11 @@ export default function OnerPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError]           = useState<string | null>(null);
 
+  // Katalogda zaten var mı? — marka + model seçilince kontrol edilir.
+  const [existingMatches, setExistingMatches]   = useState<ExistingVehicleMatch[]>([]);
+  const [checkingExisting, setCheckingExisting] = useState(false);
+  const existingCardRef = useRef<HTMLDivElement>(null);
+
   const makes      = categorySlug ? vehiclesData[categorySlug] : [];
   const makeEntry  = makes.find((m) => m.make === selectedMake);
   const models     = (makeEntry?.models ?? []) as {
@@ -154,6 +160,29 @@ export default function OnerPage() {
   const isOtherVersion = selectedVersion === "Diğer";
   const isOtherTrim    = selectedTrim === "Diğer";
 
+  // Marka + model katalogdan seçilince: bu araç zaten ACTIVE katalogda mı?
+  // (setState yalnızca .then/.finally içinde — senkron effect-body setState yok.)
+  useEffect(() => {
+    if (!selectedMake || !selectedModel || isOtherMake || isOtherModel) return;
+    let cancelled = false;
+    const brand = selectedMake;
+    const model = selectedModel;
+    const cat   = categorySlug;
+    const t = setTimeout(() => {
+      setCheckingExisting(true);
+      const qs = new URLSearchParams({ brand, model });
+      if (cat) qs.set("category", cat);
+      fetch(`/api/oneriler/mevcut-mu?${qs.toString()}`)
+        .then((r) => (r.ok ? r.json() : { matches: [] }))
+        .then((d) => {
+          if (!cancelled) setExistingMatches(Array.isArray(d.matches) ? d.matches : []);
+        })
+        .catch(() => { if (!cancelled) setExistingMatches([]); })
+        .finally(() => { if (!cancelled) setCheckingExisting(false); });
+    }, 300);
+    return () => { cancelled = true; clearTimeout(t); };
+  }, [selectedMake, selectedModel, isOtherMake, isOtherModel, categorySlug]);
+
   function handleCategoryChange(val: string) {
     setCategorySlug(val as CategoryKey | "");
     setSelectedMake(""); setCustomMake("");
@@ -162,6 +191,7 @@ export default function OnerPage() {
     setSelectedTrim(""); setCustomTrim("");
     setFuelType("");
     setTransmission("");
+    setExistingMatches([]);
   }
 
   function handleMakeChange(val: string) {
@@ -170,6 +200,7 @@ export default function OnerPage() {
     setSelectedModel(""); setCustomModel("");
     setSelectedVersion(""); setCustomVersion("");
     setSelectedTrim(""); setCustomTrim("");
+    setExistingMatches([]);
   }
 
   function handleModelChange(val: string) {
@@ -177,6 +208,7 @@ export default function OnerPage() {
     setSelectedVersion(""); setCustomVersion("");
     setSelectedTrim(""); setCustomTrim("");
     setYear("");
+    setExistingMatches([]);
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -241,8 +273,27 @@ export default function OnerPage() {
       try { data = text ? JSON.parse(text) : {}; } catch { throw new Error("Sunucu geçersiz yanıt döndürdü"); }
 
       if (res.status === 409 && data.existingSlug) {
-        // Araç zaten aktif katalogda
-        router.push(`/yorum-yaz?arac=${data.existingSlug}`);
+        // Araç zaten aktif katalogda — sessizce yönlendirmek yerine kartı
+        // göster, kullanıcı "yorum yaz" mı "yine de öner" mi seçsin.
+        const fromServer: ExistingVehicleMatch[] =
+          Array.isArray(data.matches) && data.matches.length > 0
+            ? (data.matches as ExistingVehicleMatch[])
+            : [{
+                slug: String(data.existingSlug),
+                name: typeof data.existingName === "string"
+                  ? data.existingName
+                  : `${brandName} ${modelName}`,
+                year: null,
+                trimName: null,
+                transmission: null,
+                reviewCount: typeof data.reviewCount === "number" ? data.reviewCount : 0,
+              }];
+        setExistingMatches(fromServer);
+        setSubmitting(false);
+        setError(null);
+        requestAnimationFrame(() =>
+          existingCardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
+        );
         return;
       }
       if (!res.ok) throw new Error(typeof data.error === "string" ? data.error : "Bir hata oluştu");
@@ -304,8 +355,15 @@ export default function OnerPage() {
       </div>
 
       {/* Bilgi notu */}
-      <div className="mb-6 px-4 py-3 rounded-xl bg-blue-50 border border-blue-100 text-sm text-blue-700 leading-relaxed">
-        Aracı ekledikten sonra isterseniz yorum da yazabilirsiniz — zorunlu değil. Moderatörümüz inceleyip onaylayacak.
+      <div className="mb-6 px-4 py-3 rounded-xl bg-blue-50 border border-blue-100 text-sm text-blue-700 leading-relaxed space-y-1">
+        <p>
+          <span className="font-semibold">Önce{" "}
+            <Link href="/araclar" className="underline hover:text-blue-900">araçlarda arayın</Link>
+          </span>{" "}— aracınız zaten ekli olabilir.
+        </p>
+        <p>
+          Eklediğiniz araç için sonrasında yorum da yazabilirsiniz — zorunlu değil. Moderatörümüz inceleyip onaylar.
+        </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
@@ -380,6 +438,57 @@ export default function OnerPage() {
                 autoFocus
               />
             )}
+            {checkingExisting && existingMatches.length === 0 && (
+              <p className="mt-1.5 text-xs text-gray-400">Katalogda var mı diye bakılıyor…</p>
+            )}
+          </div>
+        )}
+
+        {/* Bu araç zaten katalogda — yeniden eklemeye gerek yok */}
+        {existingMatches.length > 0 && (
+          <div ref={existingCardRef} className="rounded-2xl border border-green-200 bg-green-50 p-4 space-y-3">
+            <div className="flex items-start gap-2.5">
+              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-green-600 shrink-0 mt-0.5" aria-hidden="true">
+                <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" stroke="currentColor" strokeWidth="1.6" />
+                <path d="m8 12 2.5 2.5L16 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-green-900">Bu araç zaten fikape&apos;de</p>
+                <p className="text-xs text-green-700 mt-0.5">
+                  Yeniden eklemenize gerek yok — mevcut araca yorum yazabilirsiniz.
+                </p>
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              {existingMatches.slice(0, 4).map((mm) => (
+                <div
+                  key={mm.slug}
+                  className="flex items-center justify-between gap-2 rounded-xl bg-white border border-green-100 px-3 py-2"
+                >
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-gray-900 truncate">{mm.name}</p>
+                    <p className="text-[11px] text-gray-400">
+                      {mm.reviewCount > 0 ? `${mm.reviewCount} yorum` : "Henüz yorum yok"}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1 shrink-0">
+                    <Link
+                      href={`/araclar/${mm.slug}`}
+                      className="text-xs font-medium text-gray-500 hover:text-gray-800 px-2 py-1"
+                    >
+                      Aç
+                    </Link>
+                    <Link
+                      href={`/yorum-yaz?arac=${mm.slug}`}
+                      className="text-xs font-semibold text-white rounded-lg px-3 py-1.5"
+                      style={{ background: "#111" }}
+                    >
+                      Yorum yaz →
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
@@ -484,13 +593,24 @@ export default function OnerPage() {
           </div>
         )}
 
+        {/* Katalogda eşleşme varsa "öner" birincil aksiyon olmaktan çıkar —
+            kullanıcı kartdan yorum yazmaya yönlensin; yine de farklı bir
+            nesil/varyant önermek isteyebilir. */}
         <button
           type="submit"
           disabled={submitting}
-          className="w-full py-3 rounded-xl text-sm font-bold text-white transition-opacity disabled:opacity-60"
-          style={{ background: "#111" }}
+          className={`w-full py-3 rounded-xl text-sm font-bold transition-opacity disabled:opacity-60 ${
+            existingMatches.length > 0
+              ? "border border-gray-300 text-gray-600 hover:bg-gray-50"
+              : "text-white"
+          }`}
+          style={existingMatches.length > 0 ? undefined : { background: "#111" }}
         >
-          {submitting ? "Oluşturuluyor..." : "Aracı Öner"}
+          {submitting
+            ? "Oluşturuluyor..."
+            : existingMatches.length > 0
+              ? "Yine de farklı bir nesil/varyant öner"
+              : "Aracı Öner"}
         </button>
 
         <p className="text-center text-xs text-gray-400">

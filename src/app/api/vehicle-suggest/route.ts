@@ -5,14 +5,8 @@ import { calcOverall } from "@/lib/fikape";
 import { validateSummary, validateDetail } from "@/lib/reviewValidation";
 import { vehicleSuggestSchema, formatZodError } from "@/lib/schemas";
 import { notifyAdmins } from "@/lib/notification";
-
-function slugify(text: string): string {
-  return String(text).toLowerCase()
-    .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
-    .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
-    .normalize("NFD").replace(/\p{Mn}/gu, "")
-    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-}
+import { slugify } from "@/lib/slugify";
+import { findExistingVehicles } from "@/lib/existingVehicle";
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -54,13 +48,20 @@ export async function POST(req: Request) {
   const baseParts = [brandName.trim(), modelName.trim(), trimName?.trim(), year].filter(Boolean).join("-");
   const baseSlug  = slugify(baseParts);
 
-  const activeProduct = await prisma.product.findFirst({
-    where: { slug: baseSlug, status: "ACTIVE" },
-    select: { slug: true },
-  });
-  if (activeProduct) {
+  // Aktif katalogda var mı? — marka+model slug eşleşmesi, yıl/donanımdan
+  // bağımsız (bkz. findExistingVehicles).
+  const existingMatches = await findExistingVehicles(
+    brandName.trim(), modelName.trim(), categorySlug,
+  );
+  if (existingMatches.length > 0) {
+    const top = existingMatches[0];
     return NextResponse.json(
-      { error: "Bu araç zaten katalogda mevcut.", existingSlug: activeProduct.slug },
+      {
+        error: "Bu araç zaten katalogda mevcut.",
+        existingSlug: top.slug,
+        existingName: top.name,
+        reviewCount:  top.reviewCount,
+      },
       { status: 409 }
     );
   }
