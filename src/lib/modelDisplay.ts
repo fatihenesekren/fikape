@@ -16,6 +16,21 @@ export function stripModelGenRange(name: string): string {
   return name.replace(MODEL_GEN_RANGE_RE, "").trim();
 }
 
+// "Clio 4 (2012-2019)" -> "Clio" : nesil aralığını VE sondaki nesil numarasını atar.
+// Sondaki 1-2 haneli sayı YALNIZCA öncesinde ≥3 harflik gerçek bir isim varsa
+// atılır: "Clio 4" -> "Clio", "Megane 3" -> "Megane". "Ioniq 5", "Atto 3", "DS 3",
+// "AR 06", "R 12", "208", "500" gibi sayının modelin ADI olduğu durumlar korunur
+// ("AR"/"R" 3 harften kısa; sayısız tek parça isimlerde zaten boşluk yok).
+// findExistingVehicles bunu, seed'in nesilsiz slug'ladığı ("renault-clio") eski
+// kayıtları öner formundaki nesilli seçimle ("Clio 4 (2012-2019)") eşleştirmek
+// için kullanır.
+export function baseNameplate(name: string): string {
+  const noRange = stripModelGenRange(name).trim();
+  const m = noRange.match(/^(.*\S)\s+\d{1,2}$/);
+  if (m && /[A-Za-zÇĞİÖŞÜçğıöşü]{3,}$/.test(m[1])) return m[1].trim();
+  return noRange;
+}
+
 // Product.name gibi birleştirilmiş (marka+model+trim+yıl) string'lerde nesil aralığı
 // sonda değil ORTADA kalabilir (örn. "VW Golf 6 (2008-2012) 1.4 TSI 2011" — yıl sonda
 // olduğu için stripModelGenRange'in $ ile sabitlenmiş deseni eşleşmez). Bu yüzden konuma

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { stripModelGenRange, stripGenRangeAnywhere, splitTrimName } from "./modelDisplay";
+import { stripModelGenRange, stripGenRangeAnywhere, splitTrimName, baseNameplate } from "./modelDisplay";
 
 describe("stripModelGenRange", () => {
   it("sondaki kapalı nesil aralığını temizler", () => {
@@ -36,6 +36,37 @@ describe("stripGenRangeAnywhere", () => {
 
   it("nesil aralığı yoksa değiştirmez", () => {
     expect(stripGenRangeAnywhere("Citroën C5 Aircross")).toBe("Citroën C5 Aircross");
+  });
+});
+
+describe("baseNameplate", () => {
+  it("nesil aralığı + sondaki nesil numarasını atar (klasik nameplate'ler)", () => {
+    expect(baseNameplate("Clio 4 (2012-2019)")).toBe("Clio");
+    expect(baseNameplate("Megane 3 (2008-2016)")).toBe("Megane");
+    expect(baseNameplate("Golf 7 (2012-2020)")).toBe("Golf");
+    expect(baseNameplate("Clio 5 (2019-)")).toBe("Clio");
+  });
+
+  // Bilinen sınırlılık: "Ioniq 5" gibi sayının adın PARÇASI olduğu modellerde de
+  // sayı atılır ("Ioniq"). findExistingVehicles bunu sadece EK bir aday slug
+  // olarak kullandığı ve yalnızca numarasız/bare bir kayda denk geldiği için
+  // pratik risk düşük (kardeş nesiller kendi numarasını slug'da taşır).
+  it("sayı adın parçası olsa bile ≥3 harfli stem'de atar (kabul edilen tradeoff)", () => {
+    expect(baseNameplate("Ioniq 5")).toBe("Ioniq");
+    expect(baseNameplate("Polestar 2 (2020-)")).toBe("Polestar");
+  });
+
+  it("stem 3 harften kısaysa veya boşluk yoksa korur", () => {
+    expect(baseNameplate("DS 3 (2010-2019)")).toBe("DS 3");
+    expect(baseNameplate("AR 06")).toBe("AR 06");
+    expect(baseNameplate("R 12")).toBe("R 12");
+    expect(baseNameplate("208 (2019-)")).toBe("208");
+  });
+
+  it("nesil işareti yoksa sadece aralığı temizler", () => {
+    expect(baseNameplate("Model Y")).toBe("Model Y");
+    expect(baseNameplate("T10X")).toBe("T10X");
+    expect(baseNameplate("Duster (2018-)")).toBe("Duster");
   });
 });
 
