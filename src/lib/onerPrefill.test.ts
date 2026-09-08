@@ -2,9 +2,9 @@ import { describe, it, expect } from "vitest";
 import { resolveOnerPrefill } from "./onerPrefill";
 
 describe("resolveOnerPrefill", () => {
-  it("boş sorgu → varsayılan (otomobil, hepsi boş)", () => {
+  it("boş sorgu → hepsi boş, kategori bile seçili değil", () => {
     expect(resolveOnerPrefill("")).toEqual({
-      categorySlug: "otomobil",
+      categorySlug: "",
       selectedMake: "", customMake: "",
       selectedModel: "", customModel: "", notes: "",
     });
@@ -45,7 +45,7 @@ describe("resolveOnerPrefill", () => {
   });
 
   const EMPTY = {
-    categorySlug: "otomobil",
+    categorySlug: "",
     selectedMake: "", customMake: "",
     selectedModel: "", customModel: "", notes: "",
   };

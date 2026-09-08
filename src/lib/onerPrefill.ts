@@ -12,7 +12,9 @@ import vehiclesData from "@/data/vehicles.json";
 export type OnerCategoryKey = keyof typeof vehiclesData;
 
 export interface OnerPrefill {
-  categorySlug: OnerCategoryKey;
+  // "" = kategori tahmin edilmedi (form "— Araç tipi seçin —" ile açılır).
+  // Sadece katalog eşleşmesinde (case 1/2/3) gerçek kategori set edilir.
+  categorySlug: OnerCategoryKey | "";
   selectedMake: string;
   customMake: string;
   selectedModel: string;
@@ -27,7 +29,7 @@ const norm = (s: string) =>
 
 export function resolveOnerPrefill(search: string): OnerPrefill {
   const base: OnerPrefill = {
-    categorySlug: "otomobil",
+    categorySlug: "",
     selectedMake: "", customMake: "",
     selectedModel: "", customModel: "", notes: "",
   };

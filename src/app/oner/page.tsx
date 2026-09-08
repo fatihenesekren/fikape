@@ -109,7 +109,10 @@ export default function OnerPage() {
     resolveOnerPrefill(typeof window === "undefined" ? "" : window.location.search),
   );
 
-  const [categorySlug, setCategorySlug] = useState<CategoryKey>(prefill.categorySlug);
+  // "" = seçilmemiş ("— Araç tipi seçin —"). Diğer select'lerle tutarlı +
+  //  Marka/Yakıt/Vites listeleri kategoriye bağlı olduğu için önce kategori
+  //  seçilsin (bkz. kullanıcı geri bildirimi). Katalog eşleşmesinde önden dolar.
+  const [categorySlug, setCategorySlug] = useState<CategoryKey | "">(prefill.categorySlug);
   const [selectedMake, setSelectedMake]   = useState(prefill.selectedMake);
   const [customMake, setCustomMake]       = useState(prefill.customMake);
   const [selectedModel, setSelectedModel] = useState(prefill.selectedModel);
@@ -126,7 +129,7 @@ export default function OnerPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError]           = useState<string | null>(null);
 
-  const makes      = vehiclesData[categorySlug] ?? [];
+  const makes      = categorySlug ? vehiclesData[categorySlug] : [];
   const makeEntry  = makes.find((m) => m.make === selectedMake);
   const models     = (makeEntry?.models ?? []) as {
     name: string;
@@ -152,7 +155,7 @@ export default function OnerPage() {
   const isOtherTrim    = selectedTrim === "Diğer";
 
   function handleCategoryChange(val: string) {
-    setCategorySlug(val as CategoryKey);
+    setCategorySlug(val as CategoryKey | "");
     setSelectedMake(""); setCustomMake("");
     setSelectedModel(""); setCustomModel("");
     setSelectedVersion(""); setCustomVersion("");
@@ -184,6 +187,10 @@ export default function OnerPage() {
     const versionFin = isOtherVersion ? customVersion.trim() : selectedVersion;
     const trimFin    = isOtherTrim    ? customTrim.trim()    : selectedTrim;
 
+    if (!categorySlug) {
+      setError("Lütfen araç tipini seçiniz.");
+      return;
+    }
     if (!brandName || !modelName) {
       setError("Lütfen marka ve model seçiniz.");
       return;
@@ -313,6 +320,7 @@ export default function OnerPage() {
             onChange={(e) => handleCategoryChange(e.target.value)}
             className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
           >
+            <option value="">— Araç tipi seçin —</option>
             {CATEGORIES.map((c) => (
               <option key={c.value} value={c.value}>{c.label}</option>
             ))}
