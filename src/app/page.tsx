@@ -148,7 +148,7 @@ export default async function Home({
         <div className="w-full max-w-7xl mx-auto px-4 -mt-2 pb-8">
           <Link
             href="/araclar"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-700 hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-link hover:underline"
           >
             Tüm araçlar →
           </Link>

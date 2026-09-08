@@ -75,7 +75,7 @@ export default async function MesajlarPage() {
                   </p>
                   <div className="flex items-center gap-1.5 shrink-0">
                     {unreadCount > 0 && (
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ background: "#4338ca" }}>
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ background: "#0C447C" }}>
                         {unreadCount}
                       </span>
                     )}

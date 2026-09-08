@@ -53,7 +53,7 @@ export function MessageForm({ threadId }: { threadId: number }) {
           onClick={submit}
           disabled={submitting}
           className="text-sm font-semibold px-4 py-2 rounded-lg text-white disabled:opacity-60 shrink-0"
-          style={{ background: "#4338ca" }}
+          style={{ background: "#0C447C" }}
         >
           Gönder
         </button>

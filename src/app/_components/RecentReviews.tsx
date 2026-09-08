@@ -94,7 +94,7 @@ export async function RecentReviews() {
               {isLoggedIn && text && (
                 <div>
                   <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{text}</p>
-                  <span className="text-[11px] font-semibold text-indigo-600 group-hover:underline">
+                  <span className="text-[11px] font-semibold text-link group-hover:underline">
                     Devamı →
                   </span>
                 </div>
@@ -130,7 +130,7 @@ export async function RecentReviews() {
             data-scroll-card
             className="shrink-0 snap-start w-52 flex flex-col items-center justify-center text-center gap-2 px-4 py-3.5 rounded-2xl border-2 border-dashed border-gray-200 bg-white hover:border-gray-300 transition-colors"
           >
-            <span className="w-8 h-8 rounded-full flex items-center justify-center bg-indigo-50 text-indigo-600">
+            <span className="w-8 h-8 rounded-full flex items-center justify-center bg-link-soft text-link">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="2.5" />
                 <path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" strokeWidth="2.5" />
@@ -139,7 +139,7 @@ export async function RecentReviews() {
             <span className="text-xs font-semibold text-gray-700 leading-snug">
               Yorumları üyeler okuyabilir
             </span>
-            <span className="text-[11px] font-semibold text-indigo-600">Giriş yap →</span>
+            <span className="text-[11px] font-semibold text-link">Giriş yap →</span>
           </a>
         )}
       </ScrollFadeRow>

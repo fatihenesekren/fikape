@@ -332,7 +332,7 @@ async function AraclarResults({
           <div className="rounded-2xl border-2 border-dashed border-gray-100 p-12 text-center">
             <p className="text-sm text-gray-500 mb-3">Bu filtrelerle eşleşen araç yok.</p>
             {activeFilterCount > 0 && (
-              <Link href={clearedHref} className="text-sm font-semibold text-indigo-700 hover:underline">
+              <Link href={clearedHref} className="text-sm font-semibold text-link hover:underline">
                 Filtreleri temizle
               </Link>
             )}
@@ -372,11 +372,11 @@ async function AraclarResults({
             {totalPages > 1 && (
               <div className="flex items-center justify-between mt-8 text-sm">
                 {safePage > 1 ? (
-                  <Link href={pageHref(safePage - 1)} className="font-semibold text-indigo-700 hover:underline">← Önceki</Link>
+                  <Link href={pageHref(safePage - 1)} className="font-semibold text-link hover:underline">← Önceki</Link>
                 ) : <span />}
                 <span className="text-xs text-gray-400">Sayfa {safePage} / {totalPages}</span>
                 {safePage < totalPages ? (
-                  <Link href={pageHref(safePage + 1)} className="font-semibold text-indigo-700 hover:underline">Sonraki →</Link>
+                  <Link href={pageHref(safePage + 1)} className="font-semibold text-link hover:underline">Sonraki →</Link>
                 ) : <span />}
               </div>
             )}

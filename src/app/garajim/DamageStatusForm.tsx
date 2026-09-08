@@ -87,13 +87,13 @@ export function DamageStatusForm({
 
   return (
     <div className="space-y-3">
-      <p className="text-[11px] text-indigo-700 bg-indigo-100/60 rounded-lg px-2.5 py-2">
+      <p className="text-[11px] text-link bg-link-soft/60 rounded-lg px-2.5 py-2">
         Buradaki bilgiler ilan sahibi tarafından beyan edilir, fikape tarafından doğrulanmaz.
       </p>
 
       {/* Genel hasar durumu */}
       <div>
-        <p className="text-xs font-semibold text-indigo-800 mb-1.5">Genel Hasar Durumu</p>
+        <p className="text-xs font-semibold text-link-deep mb-1.5">Genel Hasar Durumu</p>
         <div className="flex flex-wrap gap-1.5">
           {DAMAGE_STATUSES.map((s) => (
             <button
@@ -125,13 +125,13 @@ export function DamageStatusForm({
 
       {/* Motor / Şanzıman / Yürüyen Aksam */}
       <div className="space-y-2.5">
-        <p className="text-xs font-semibold text-indigo-800">Motor / Şanzıman / Yürüyen Aksam</p>
+        <p className="text-xs font-semibold text-link-deep">Motor / Şanzıman / Yürüyen Aksam</p>
         {MECHANICAL_COMPONENTS.map((c) => {
           const { condition: conditionKey, note: noteKey } = CONDITION_KEY[c.key];
           const condition = value[conditionKey] as MechanicalCondition | null;
           const note = value[noteKey] as string;
           return (
-            <div key={c.key} className="bg-white border border-indigo-100 rounded-lg p-2.5 space-y-1.5">
+            <div key={c.key} className="bg-white border border-link-line rounded-lg p-2.5 space-y-1.5">
               <p className="text-xs font-semibold text-gray-700">{c.label}</p>
               <div className="flex flex-wrap gap-1.5">
                 <button
@@ -178,9 +178,9 @@ export function DamageStatusForm({
       {/* Tramer kayıtları */}
       <div>
         <div className="flex items-center justify-between mb-1.5">
-          <p className="text-xs font-semibold text-indigo-800">Tramer Kayıtları</p>
+          <p className="text-xs font-semibold text-link-deep">Tramer Kayıtları</p>
           {tramerTotal > 0 && (
-            <span className="text-[11px] font-semibold text-indigo-700">Toplam: {formatTl(tramerTotal)}</span>
+            <span className="text-[11px] font-semibold text-link">Toplam: {formatTl(tramerTotal)}</span>
           )}
         </div>
         <div className="space-y-1.5">
@@ -230,7 +230,7 @@ export function DamageStatusForm({
         <button
           type="button"
           onClick={addTramerRecord}
-          className="mt-1.5 text-[11px] font-semibold text-indigo-600 hover:underline"
+          className="mt-1.5 text-[11px] font-semibold text-link hover:underline"
         >
           + Tramer Kaydı Ekle
         </button>

@@ -410,7 +410,7 @@ export default async function TakasDetayPage({
         </div>
 
         <div className="p-6">
-          <div className="text-xs font-semibold text-indigo-600 uppercase tracking-wide">{listing.product.brand.name}</div>
+          <div className="text-xs font-semibold text-link uppercase tracking-wide">{listing.product.brand.name}</div>
           <h1 className="text-xl font-bold text-gray-900 mt-0.5">
             {stripModelGenRange(listing.product.model.name)}
             {listing.product.year && <span className="text-gray-400 font-normal ml-1.5">{listing.product.year}</span>}
@@ -434,15 +434,15 @@ export default async function TakasDetayPage({
                 {listing.userProduct.usageAmount.toLocaleString("tr-TR")} km
               </span>
             )}
-            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">
+            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-link-soft text-link">
               {PAYMENT_LABEL[listing.paymentIntent] ?? listing.paymentIntent}
             </span>
           </div>
 
-          {/* Takas beklentileri — nötr gri yerine indigo tonu, sitedeki "takas"
-              kavramıyla (TradeToggleCard vb.) aynı renk dili kullanılıyor. */}
-          <div className="mt-3 bg-indigo-50/60 border border-indigo-100 rounded-xl px-3.5 py-3 text-sm text-indigo-900">
-            <p className="text-xs font-bold text-indigo-800 mb-1">
+          {/* Takas beklentileri — nötr gri yerine FI lacivert link tonu,
+              sitedeki "takas" kavramıyla (TradeToggleCard vb.) aynı renk dili. */}
+          <div className="mt-3 bg-link-soft/60 border border-link-line rounded-xl px-3.5 py-3 text-sm text-link-deep">
+            <p className="text-xs font-bold text-link-deep mb-1">
               İlan Sahibinin Takas Beklentileri
             </p>
             {listing.wantAnything ? (
@@ -483,7 +483,7 @@ export default async function TakasDetayPage({
                 <span className="font-semibold">Vites Tipi:</span> {listing.wantTransmissions.join(", ")}
               </p>
             )}
-            {listing.note && <p className="mt-1.5 text-indigo-700">&quot;{listing.note}&quot;</p>}
+            {listing.note && <p className="mt-1.5 text-link">&quot;{listing.note}&quot;</p>}
           </div>
 
           {/* Doğrulanmış rozeti üst başlık satırına (isim altına) taşındı —
@@ -506,7 +506,7 @@ export default async function TakasDetayPage({
           </div>
         ) : existingThreadId ? (
           <div className="mt-5">
-            <Link href={`/mesajlar/${existingThreadId}`} className="text-sm font-semibold text-indigo-700 hover:underline">
+            <Link href={`/mesajlar/${existingThreadId}`} className="text-sm font-semibold text-link hover:underline">
               Görüşmenize devam edin →
             </Link>
           </div>
@@ -530,7 +530,7 @@ export default async function TakasDetayPage({
                 asla teslimattan önce göndermeyiniz.
               </p>
             )}
-            <p className="mt-2 text-[11px] text-indigo-700 bg-indigo-50 rounded-lg px-2.5 py-2">
+            <p className="mt-2 text-[11px] text-link bg-link-soft rounded-lg px-2.5 py-2">
               Plaka/şasi bilgisini paylaşmadan önce karşı tarafın kimliğinden emin olunuz. Fark tutarını asla teslimattan önce göndermeyiniz.
             </p>
             <TradeMessageForm listingId={listing.id} myActiveListings={myActiveListings} />

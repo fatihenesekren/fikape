@@ -215,7 +215,7 @@ export function TradeToggleCard({
           <button
             onClick={reopenListing}
             disabled={reopening}
-            className="text-xs font-semibold text-indigo-700 hover:underline disabled:opacity-60 shrink-0"
+            className="text-xs font-semibold text-link hover:underline disabled:opacity-60 shrink-0"
           >
             {reopening ? "Açılıyor..." : "🔄 Yeniden Aç"}
           </button>
@@ -318,10 +318,10 @@ export function TradeToggleCard({
   if (existingListing) {
     if (editOpen) {
       return (
-        <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3 space-y-2.5 overflow-hidden">
+        <div className="mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 space-y-2.5 overflow-hidden">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-bold text-indigo-800">İlanı Düzenle</p>
-            <button onClick={() => setEditOpen(false)} aria-label="Kapat" className="text-indigo-400 hover:text-indigo-700 text-xs">✕</button>
+            <p className="text-xs font-bold text-link-deep">İlanı Düzenle</p>
+            <button onClick={() => setEditOpen(false)} aria-label="Kapat" className="text-link-muted hover:text-link text-xs">✕</button>
           </div>
           <TradeFormFields
             city={city} setCity={setCity}
@@ -349,7 +349,7 @@ export function TradeToggleCard({
             onClick={saveEdit}
             disabled={submitting}
             className="w-full text-sm font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-60"
-            style={{ background: "#4338ca" }}
+            style={{ background: "#0C447C" }}
           >
             {submitting ? "Kaydediliyor..." : "Kaydet"}
           </button>
@@ -362,38 +362,38 @@ export function TradeToggleCard({
       return (
         <button
           onClick={() => setSummaryOpen(true)}
-          className="mt-3 w-full flex items-center justify-between gap-2 text-xs font-semibold text-indigo-800 bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 rounded-xl px-3 py-2 transition-colors"
+          className="mt-3 w-full flex items-center justify-between gap-2 text-xs font-semibold text-link-deep bg-link-soft hover:bg-link-soft border border-link-line rounded-xl px-3 py-2 transition-colors"
         >
           <span>🔄 Takasa açık</span>
-          <span className="text-indigo-400">›</span>
+          <span className="text-link-muted">›</span>
         </button>
       );
     }
 
     return (
-      <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3 overflow-hidden">
+      <div className="mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 overflow-hidden">
         <div className="flex items-center justify-between gap-2 flex-wrap">
-          <p className="text-xs font-bold text-indigo-800 whitespace-nowrap">✓ Takasa açık</p>
+          <p className="text-xs font-bold text-link-deep whitespace-nowrap">✓ Takasa açık</p>
           <div className="flex items-center gap-3 shrink-0">
             <Link href={`/takas/${existingListing.id}`} className="text-[11px] font-semibold text-gray-400 hover:underline whitespace-nowrap">
               İlanı görüntüle →
             </Link>
-            <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-indigo-600 hover:underline whitespace-nowrap">
+            <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-link hover:underline whitespace-nowrap">
               Düzenle
             </button>
             <button
               onClick={renewListing}
               disabled={renewing}
-              className="text-[11px] font-semibold text-indigo-600 hover:underline whitespace-nowrap disabled:opacity-60"
+              className="text-[11px] font-semibold text-link hover:underline whitespace-nowrap disabled:opacity-60"
             >
               {renewing ? "Yenileniyor..." : "🔝 İlanı Yenile"}
             </button>
-            <button onClick={() => setSummaryOpen(false)} aria-label="Daralt" className="text-indigo-400 hover:text-indigo-700 text-xs">
+            <button onClick={() => setSummaryOpen(false)} aria-label="Daralt" className="text-link-muted hover:text-link text-xs">
               ✕
             </button>
           </div>
         </div>
-        {renewMessage && <p className="mt-1.5 text-[11px] text-indigo-700">{renewMessage}</p>}
+        {renewMessage && <p className="mt-1.5 text-[11px] text-link">{renewMessage}</p>}
         {/* Native <select>, flex satırında varsayılan min-width:auto yüzünden
             küçülmüyor ve taşıyordu (bkz. kullanıcı geri bildirimi, ekran
             görüntüsü) — min-w-0+flex-1 ile küçülebilir yapıldı, mobilde
@@ -403,7 +403,7 @@ export function TradeToggleCard({
             value={closeReason}
             onChange={(e) => setCloseReason(e.target.value as CloseReason | "")}
             aria-label="Kapatma sebebi"
-            className="min-w-0 w-full sm:flex-1 text-xs rounded-lg border border-indigo-200 px-2 py-1.5 bg-white"
+            className="min-w-0 w-full sm:flex-1 text-xs rounded-lg border border-link-line px-2 py-1.5 bg-white"
           >
             <option value="">Kapatma sebebi (opsiyonel)</option>
             <option value="TRADED">Takas oldu</option>
@@ -413,7 +413,7 @@ export function TradeToggleCard({
           <button
             onClick={closeListing}
             disabled={closing}
-            className="shrink-0 text-xs font-semibold text-indigo-700 hover:underline disabled:opacity-60 text-left sm:text-center"
+            className="shrink-0 text-xs font-semibold text-link hover:underline disabled:opacity-60 text-left sm:text-center"
           >
             İlanı Kapat
           </button>
@@ -427,7 +427,7 @@ export function TradeToggleCard({
       <button
         onClick={() => setFormOpen(true)}
         className="mt-3 text-xs font-semibold px-3 py-1.5 rounded-lg text-white"
-        style={{ background: "#4338ca" }}
+        style={{ background: "#0C447C" }}
       >
         🔄 Takasa Aç
       </button>
@@ -486,10 +486,10 @@ export function TradeToggleCard({
   }
 
   return (
-    <div className="mt-3 border border-indigo-100 bg-indigo-50/60 rounded-xl p-3 space-y-2.5">
+    <div className="mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 space-y-2.5">
       <div className="flex items-center justify-between">
-        <p className="text-xs font-bold text-indigo-800">Takasa Aç</p>
-        <button onClick={() => setFormOpen(false)} aria-label="Kapat" className="text-indigo-400 hover:text-indigo-700 text-xs">✕</button>
+        <p className="text-xs font-bold text-link-deep">Takasa Aç</p>
+        <button onClick={() => setFormOpen(false)} aria-label="Kapat" className="text-link-muted hover:text-link text-xs">✕</button>
       </div>
 
       <TradeFormFields
@@ -516,7 +516,7 @@ export function TradeToggleCard({
 
       {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
 
-      <p className="text-[11px] text-indigo-700 bg-indigo-100/60 rounded-lg px-2.5 py-2">
+      <p className="text-[11px] text-link bg-link-soft/60 rounded-lg px-2.5 py-2">
         Fark tutarını asla aracı teslim almadan ve aracınızı teslim etmeden önce göndermeyiniz. Araç
         ekspertizi yaptırılmadan takasın kabul edilmemesi önerilir —{" "}
         <Link href={`/araclar/${productSlug}`} className="underline font-semibold">
@@ -525,7 +525,7 @@ export function TradeToggleCard({
         . Buluşmayı halka açık, kalabalık bir yerde yapınız. Fikape takas işlemlerinde taraf değildir.
       </p>
 
-      <label className="flex items-start gap-2 text-[11px] text-indigo-800">
+      <label className="flex items-start gap-2 text-[11px] text-link-deep">
         <input
           type="checkbox"
           checked={consentGiven}
@@ -543,7 +543,7 @@ export function TradeToggleCard({
         onClick={submit}
         disabled={submitting}
         className="w-full text-sm font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-60"
-        style={{ background: "#4338ca" }}
+        style={{ background: "#0C447C" }}
       >
         {submitting ? "Gönderiliyor..." : "Takasa Aç"}
       </button>
@@ -559,8 +559,8 @@ export function TradeToggleCard({
 // birbirine girmiş"). Her biri kendi başlığı olan beyaz bir kart.
 function FormSection({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="bg-white border border-indigo-100 rounded-xl p-3 space-y-3">
-      <p className="text-xs font-bold text-indigo-800">{title}</p>
+    <div className="bg-white border border-link-line rounded-xl p-3 space-y-3">
+      <p className="text-xs font-bold text-link-deep">{title}</p>
       {children}
     </div>
   );
@@ -634,12 +634,12 @@ function TradeFormFields({
           değişen parça: hepsi TAKASA VERDİĞİNİZ aracınıza ait. */}
       <FormSection title="🚗 Aracınız Hakkında">
         <div>
-          <label className="block text-xs font-semibold text-indigo-800 mb-1">Aracın Bulunduğu İl</label>
+          <label className="block text-xs font-semibold text-link-deep mb-1">Aracın Bulunduğu İl</label>
           <select
             value={city}
             onChange={(e) => setCity(e.target.value)}
             aria-label="İl"
-            className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
           >
             <option value="">İl seçiniz</option>
             {TURKISH_CITIES.map((c) => (
@@ -657,8 +657,8 @@ function TradeFormFields({
             step="1" + tam sayıya yuvarlama: sunucu .int() istiyor, ondalık
             girilirse anlaşılır olmayan bir Zod hatası dönerdi. */}
         <div>
-          <label className="block text-xs font-semibold text-indigo-800 mb-1">
-            Aracın Km&apos;si <span className="font-normal text-indigo-400">(yaklaşık, opsiyonel)</span>
+          <label className="block text-xs font-semibold text-link-deep mb-1">
+            Aracın Km&apos;si <span className="font-normal text-link-muted">(yaklaşık, opsiyonel)</span>
           </label>
           <input
             type="number"
@@ -669,13 +669,13 @@ function TradeFormFields({
             onChange={(e) => setUsageAmountInput(e.target.value)}
             placeholder="örn. 58000"
             aria-label="Aracın kilometresi"
-            className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-indigo-800 mb-1">
-            Açıklama <span className="font-normal text-indigo-400">(opsiyonel — bakım geçmişi, aksesuar vb.)</span>
+          <label className="block text-xs font-semibold text-link-deep mb-1">
+            Açıklama <span className="font-normal text-link-muted">(opsiyonel — bakım geçmişi, aksesuar vb.)</span>
           </label>
           <textarea
             value={description}
@@ -683,20 +683,20 @@ function TradeFormFields({
             placeholder="Aracınız hakkında detaylı bilgi verin"
             maxLength={2000}
             rows={4}
-            className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
           />
         </div>
 
         {showPartConditions && (
-          <div className="border-t border-indigo-100 pt-3">
-            <p className="text-xs font-semibold text-indigo-800 mb-1.5">Hasar Durumu</p>
+          <div className="border-t border-link-line pt-3">
+            <p className="text-xs font-semibold text-link-deep mb-1.5">Hasar Durumu</p>
             <DamageStatusForm value={damageStatusValue} onChange={setDamageStatusValue} />
           </div>
         )}
 
         {showPartConditions && (
-          <div className="border-t border-indigo-100 pt-3">
-            <p className="text-xs font-semibold text-indigo-800 mb-1.5">Boyalı veya Değişen Parça</p>
+          <div className="border-t border-link-line pt-3">
+            <p className="text-xs font-semibold text-link-deep mb-1.5">Boyalı veya Değişen Parça</p>
             <PartConditionForm value={partConditions} onChange={setPartConditions} />
           </div>
         )}
@@ -717,7 +717,7 @@ function TradeFormFields({
             value={wantCategoryId}
             onChange={(e) => { setWantCategoryId(e.target.value); setWantBrandId(""); }}
             aria-label="İstenen kategori"
-            className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            className="text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
           >
             <option value="">Kategori fark etmez</option>
             {categories.map((c) => (
@@ -728,7 +728,7 @@ function TradeFormFields({
             value={wantBrandId}
             onChange={(e) => setWantBrandId(e.target.value)}
             aria-label="İstenen marka"
-            className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+            className="text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
           >
             <option value="">Marka fark etmez</option>
             {availableBrands.map((b) => (
@@ -741,7 +741,7 @@ function TradeFormFields({
             aracının (city alanı) nerede olduğunu söylüyordu, karşı taraftan
             beklenen konumu hiç belirtemiyordu (bkz. kullanıcı geri bildirimi).
             Boş bırakılırsa varsayılan "Türkiye Genelinde" (Prisma @default). */}
-        <fieldset className="text-xs text-indigo-800">
+        <fieldset className="text-xs text-link-deep">
           <legend className="font-semibold mb-1">Aradığım araç nerede olsun?</legend>
           <div className="flex flex-wrap gap-1.5">
             {LOCATION_SCOPES.map((s) => (
@@ -752,7 +752,7 @@ function TradeFormFields({
                 className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
                 style={
                   wantLocationScope === s
-                    ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                    ? { background: "#0C447C", borderColor: "#0C447C", color: "#fff" }
                     : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
                 }
               >
@@ -767,7 +767,7 @@ function TradeFormFields({
             anlamına gelir (Prisma @default([])). "Farketmez" boş diziyi temsil
             eder; belirli bir durum seçilince dizi doluyor ve "Farketmez"
             otomatik olarak pasif görünür. */}
-        <fieldset className="text-xs text-indigo-800">
+        <fieldset className="text-xs text-link-deep">
           <legend className="font-semibold mb-1">Kabul edebileceğim hasar durumu</legend>
           <div className="flex flex-wrap gap-1.5">
             <button
@@ -776,7 +776,7 @@ function TradeFormFields({
               className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
               style={
                 wantDamageStatuses.length === 0
-                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                  ? { background: "#0C447C", borderColor: "#0C447C", color: "#fff" }
                   : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
               }
             >
@@ -790,7 +790,7 @@ function TradeFormFields({
                 className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
                 style={
                   wantDamageStatuses.includes(s)
-                    ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                    ? { background: "#0C447C", borderColor: "#0C447C", color: "#fff" }
                     : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
                 }
               >
@@ -803,7 +803,7 @@ function TradeFormFields({
         {/* Yıl/km aralığı + yakıt/vites tercihi — hepsi opsiyonel, boş
             bırakılırsa o kritere göre kısıtlama yok (bkz. kullanıcı geri
             bildirimi: "Aradığınız Araç" bölümü bunları hiç sormuyordu). */}
-        <fieldset className="text-xs text-indigo-800">
+        <fieldset className="text-xs text-link-deep">
           <legend className="font-semibold mb-1">Aradığım aracın yılı</legend>
           <div className="grid grid-cols-2 gap-2">
             <input
@@ -812,7 +812,7 @@ function TradeFormFields({
               onChange={(e) => setWantYearMinInput(e.target.value)}
               placeholder="Yıl (min)"
               aria-label="Aradığım aracın en eski model yılı"
-              className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+              className="text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
             />
             <input
               type="number" inputMode="numeric" step={1}
@@ -820,12 +820,12 @@ function TradeFormFields({
               onChange={(e) => setWantYearMaxInput(e.target.value)}
               placeholder="Yıl (max)"
               aria-label="Aradığım aracın en yeni model yılı"
-              className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+              className="text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
             />
           </div>
         </fieldset>
 
-        <fieldset className="text-xs text-indigo-800">
+        <fieldset className="text-xs text-link-deep">
           <legend className="font-semibold mb-1">Aradığım aracın km&apos;si</legend>
           <div className="grid grid-cols-2 gap-2">
             <input
@@ -834,7 +834,7 @@ function TradeFormFields({
               onChange={(e) => setWantKmMinInput(e.target.value)}
               placeholder="Km (en az)"
               aria-label="Aradığım aracın en az kilometresi"
-              className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+              className="text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
             />
             <input
               type="number" inputMode="numeric" min={0} step={1}
@@ -842,12 +842,12 @@ function TradeFormFields({
               onChange={(e) => setWantKmMaxInput(e.target.value)}
               placeholder="Km (en fazla)"
               aria-label="Aradığım aracın en fazla kilometresi"
-              className="text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+              className="text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
             />
           </div>
         </fieldset>
 
-        <fieldset className="text-xs text-indigo-800">
+        <fieldset className="text-xs text-link-deep">
           <legend className="font-semibold mb-1">Yakıt tipi</legend>
           <div className="flex flex-wrap gap-1.5">
             <button
@@ -856,7 +856,7 @@ function TradeFormFields({
               className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
               style={
                 wantFuelTypes.length === 0
-                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                  ? { background: "#0C447C", borderColor: "#0C447C", color: "#fff" }
                   : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
               }
             >
@@ -870,7 +870,7 @@ function TradeFormFields({
                 className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
                 style={
                   wantFuelTypes.includes(f)
-                    ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                    ? { background: "#0C447C", borderColor: "#0C447C", color: "#fff" }
                     : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
                 }
               >
@@ -880,7 +880,7 @@ function TradeFormFields({
           </div>
         </fieldset>
 
-        <fieldset className="text-xs text-indigo-800">
+        <fieldset className="text-xs text-link-deep">
           <legend className="font-semibold mb-1">Vites tipi</legend>
           <div className="flex flex-wrap gap-1.5">
             <button
@@ -889,7 +889,7 @@ function TradeFormFields({
               className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
               style={
                 wantTransmissions.length === 0
-                  ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                  ? { background: "#0C447C", borderColor: "#0C447C", color: "#fff" }
                   : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
               }
             >
@@ -903,7 +903,7 @@ function TradeFormFields({
                 className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-colors"
                 style={
                   wantTransmissions.includes(t)
-                    ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                    ? { background: "#0C447C", borderColor: "#0C447C", color: "#fff" }
                     : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
                 }
               >
@@ -917,7 +917,7 @@ function TradeFormFields({
       {/* 🤝 Takas şartları — ödeme niyeti ve not, hem sizin aracınıza hem
           aradığınız araca değil, ANLAŞMANIN kendisine ait. */}
       <FormSection title="🤝 Takas Şartları">
-        <fieldset className="text-xs text-indigo-800">
+        <fieldset className="text-xs text-link-deep">
           <legend className="font-semibold mb-1">Ödeme niyeti</legend>
           <div className="flex flex-col gap-1">
             <label className="flex items-center gap-1.5">
@@ -941,7 +941,7 @@ function TradeFormFields({
           placeholder="Opsiyonel not (örn. hangi araçları arıyorsun)"
           maxLength={300}
           rows={2}
-          className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white"
+          className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
         />
       </FormSection>
     </>

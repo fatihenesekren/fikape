@@ -277,13 +277,13 @@ export default async function TakasPage({
       {totalPages > 1 && (
         <div className="flex items-center justify-between mt-6 text-sm">
           {page > 1 ? (
-            <Link href={pageHref(page - 1)} className="font-semibold text-indigo-700 hover:underline">
+            <Link href={pageHref(page - 1)} className="font-semibold text-link hover:underline">
               ← Önceki
             </Link>
           ) : <span />}
           <span className="text-xs text-gray-400">Sayfa {page} / {totalPages}</span>
           {page < totalPages ? (
-            <Link href={pageHref(page + 1)} className="font-semibold text-indigo-700 hover:underline">
+            <Link href={pageHref(page + 1)} className="font-semibold text-link hover:underline">
               Sonraki →
             </Link>
           ) : <span />}

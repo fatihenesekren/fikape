@@ -70,7 +70,7 @@ export function ListingReportButton({ listingId }: { listingId: number }) {
       {error && <p className="text-[11px] text-red-600">{error}</p>}
       <div className="flex items-center gap-2">
         <button onClick={() => setOpen(false)} className="text-[11px] text-gray-400 hover:underline">Vazgeç</button>
-        <button onClick={submit} disabled={submitting} className="text-[11px] font-semibold text-indigo-700 disabled:opacity-60">
+        <button onClick={submit} disabled={submitting} className="text-[11px] font-semibold text-link disabled:opacity-60">
           {submitting ? "Gönderiliyor..." : "Gönder"}
         </button>
       </div>

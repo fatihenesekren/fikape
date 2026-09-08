@@ -92,7 +92,7 @@ export function AraclarFilters({
             {selectedBrand && (
               <Link
                 href={buildHref({ ...common, ...facetParams })}
-                className="text-[11px] font-semibold text-indigo-600 hover:underline"
+                className="text-[11px] font-semibold text-link hover:underline"
               >
                 Temizle
               </Link>
@@ -155,7 +155,7 @@ export function AraclarFilters({
                   scroll={false}
                   className={`text-xs font-medium rounded-full px-2.5 py-1 border transition-colors ${
                     isActive
-                      ? "bg-indigo-600 text-white border-indigo-600"
+                      ? "bg-link-deep text-white border-link"
                       : "bg-white text-gray-600 border-gray-200 hover:border-gray-300"
                   }`}
                 >
@@ -190,7 +190,7 @@ export function AraclarFilters({
         >
           Filtrele
           {activeFilterCount > 0 && (
-            <span className="text-[11px] font-bold bg-indigo-100 text-indigo-700 rounded-full px-2 py-0.5">
+            <span className="text-[11px] font-bold bg-link-soft text-link rounded-full px-2 py-0.5">
               {activeFilterCount}
             </span>
           )}

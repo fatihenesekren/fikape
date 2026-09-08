@@ -36,7 +36,7 @@ export function CarDamageDiagram({
               key={part.key}
               d={part.d}
               fill={fill}
-              stroke={interactivePartKey === part.key ? "#4338ca" : "#fff"}
+              stroke={interactivePartKey === part.key ? "#0C447C" : "#fff"}
               strokeWidth={interactivePartKey === part.key ? 3 : 2}
               strokeLinejoin="round"
               onClick={clickable ? () => onPartClick(part.key) : undefined}

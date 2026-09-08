@@ -140,7 +140,7 @@ export function SavedSearchPanel({
         <button
           onClick={saveSearch}
           disabled={saving}
-          className="text-xs font-semibold text-indigo-600 hover:underline disabled:opacity-60"
+          className="text-xs font-semibold text-link hover:underline disabled:opacity-60"
         >
           🔔 {saving ? "Kaydediliyor..." : "Bu aramayı kaydet, yeni ilan gelince haber ver"}
         </button>
@@ -155,7 +155,7 @@ export function SavedSearchPanel({
         <div className="mt-2 space-y-1.5">
           {searches.map((s) => (
             <div key={s.id} className="flex items-center justify-between gap-2 text-xs bg-gray-50 rounded-lg px-2.5 py-1.5">
-              <Link href={searchHref(s)} className="text-gray-600 hover:text-indigo-700 hover:underline">
+              <Link href={searchHref(s)} className="text-gray-600 hover:text-link hover:underline">
                 📍 {searchSummary(s)}
               </Link>
               <button onClick={() => removeSearch(s.id)} className="text-gray-400 hover:text-red-600 shrink-0">Sil</button>

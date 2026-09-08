@@ -86,7 +86,7 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
               {review.product.name}
             </p>
             {isPhotosOnly && (
-              <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+              <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full text-xs font-bold bg-link-soft text-link border border-link-line">
                 📷 Zaten Yayında — Yeni Fotoğraf
               </span>
             )}
@@ -185,7 +185,7 @@ function ReviewRow({ review, onDone }: { review: Review; onDone: () => void }) {
                   )}
                   {isPhotosOnly && p.status === "PENDING" && (
                     <span
-                      className="absolute bottom-1 left-1 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200"
+                      className="absolute bottom-1 left-1 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-link-soft text-link border border-link-line"
                       title="Bu fotoğraf sonradan eklendi, onay bekliyor"
                     >
                       Bekliyor

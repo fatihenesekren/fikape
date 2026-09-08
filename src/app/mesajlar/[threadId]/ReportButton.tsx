@@ -46,7 +46,7 @@ export function ReportButton({ messageId }: { messageId: number }) {
           <option key={k} value={k}>{v}</option>
         ))}
       </select>
-      <button onClick={submit} disabled={submitting} className="text-[10px] font-semibold text-indigo-700">
+      <button onClick={submit} disabled={submitting} className="text-[10px] font-semibold text-link">
         Gönder
       </button>
     </span>

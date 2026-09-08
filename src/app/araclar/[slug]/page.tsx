@@ -730,7 +730,7 @@ export default async function VehicleDetailPage({
                 {activeTradeCount > 0 && (
                   <Link
                     href={`/takas?kategori=${categorySlug}&marka=${product.brand.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-200 hover:bg-indigo-500/30 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-link/20 text-link-line hover:bg-link/30 transition-colors"
                   >
                     🔄 {activeTradeCount} takas ilanı var
                   </Link>

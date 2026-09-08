@@ -5,7 +5,7 @@ import { useEffect } from "react";
 // Son Yorumlar şeridinden gelen #yorum-<id> derin bağlantısı: ilgili yoruma
 // kaydır + kısa bir vurgu halkası. Yorumlar sekmesi varsayılan olduğu için
 // hedef DOM'da hazır; değilse (ör. ?sekme=soru-cevap) sessizce hiçbir şey yapmaz.
-const RING = ["ring-2", "ring-indigo-400", "ring-offset-2", "rounded-2xl"];
+const RING = ["ring-2", "ring-link", "ring-offset-2", "rounded-2xl"];
 
 export function ScrollToReview() {
   useEffect(() => {

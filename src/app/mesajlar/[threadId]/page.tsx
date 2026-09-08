@@ -90,15 +90,15 @@ export default async function ThreadPage({
           seçmediyse (ya da bu, özellik öncesi açılmış eski bir görüşmeyse)
           "belirtilmedi" gösterilir (bkz. kullanıcı geri bildirimi). */}
       {!isInitiator && (
-        <div className="px-4 py-3 bg-indigo-50/60 border-b border-indigo-100">
-          <p className="text-[11px] font-bold text-indigo-800 mb-1">
+        <div className="px-4 py-3 bg-link-soft/60 border-b border-link-line">
+          <p className="text-[11px] font-bold text-link-deep mb-1">
             {counterpart?.displayName ?? "Kullanıcı"} teklif ettiği araç
           </p>
           {thread.initiatorListing ? (
             thread.initiatorListing.isActive ? (
               <Link
                 href={`/takas/${thread.initiatorListing.id}`}
-                className="text-sm font-semibold text-indigo-900 hover:underline"
+                className="text-sm font-semibold text-link-deep hover:underline"
               >
                 {thread.initiatorListing.product.brand.name}{" "}
                 {stripModelGenRange(thread.initiatorListing.product.model.name)}
@@ -133,7 +133,7 @@ export default async function ThreadPage({
           const isMine = m.senderId === userId;
           return (
             <div key={m.id} className={`flex ${isMine ? "justify-end" : "justify-start"}`}>
-              <div className={`max-w-[75%] rounded-2xl px-3 py-2 text-sm ${isMine ? "bg-indigo-600 text-white" : "bg-gray-100 text-gray-900"}`}>
+              <div className={`max-w-[75%] rounded-2xl px-3 py-2 text-sm ${isMine ? "bg-link-deep text-white" : "bg-gray-100 text-gray-900"}`}>
                 <p>{m.text}</p>
                 {!isMine && (
                   <div className="mt-1">

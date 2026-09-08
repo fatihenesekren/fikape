@@ -73,7 +73,7 @@ export function PartConditionForm({
 
   return (
     <div className="space-y-2.5">
-      <p className="text-xs text-indigo-800">
+      <p className="text-xs text-link-deep">
         Aracın tamamı orijinal veya tamamı boyalı/değişense aşağıdan tek tıkla
         işaretleyebilir, ardından tek tek düzeltebilirsiniz. Tamamı opsiyonel.
       </p>
@@ -104,7 +104,7 @@ export function PartConditionForm({
       {undo && (
         <div className="flex items-center justify-between gap-2 bg-gray-900 text-white rounded-lg px-3 py-2 text-xs">
           <span>{undo.label}</span>
-          <button type="button" onClick={undoLastBulkAction} className="font-semibold text-indigo-300 hover:text-indigo-200 shrink-0">
+          <button type="button" onClick={undoLastBulkAction} className="font-semibold text-link-line hover:text-white shrink-0">
             Geri Al
           </button>
         </div>
@@ -113,8 +113,8 @@ export function PartConditionForm({
       <CarDamageDiagram conditions={value} interactivePartKey={selectedPart} onPartClick={setSelectedPart} />
 
       {selectedPart && (
-        <div className="bg-white border border-indigo-200 rounded-lg p-2.5">
-          <p className="text-xs font-semibold text-indigo-800 mb-1.5">{selectedPartLabel}</p>
+        <div className="bg-white border border-link-line rounded-lg p-2.5">
+          <p className="text-xs font-semibold text-link-deep mb-1.5">{selectedPartLabel}</p>
           <div className="flex flex-wrap gap-1.5">
             <button
               type="button"
@@ -136,7 +136,7 @@ export function PartConditionForm({
                 className="px-2.5 py-1 rounded-full text-xs font-semibold border-2 transition-all"
                 style={
                   value[selectedPart] === c
-                    ? { background: "#4338ca", borderColor: "#4338ca", color: "#fff" }
+                    ? { background: "#0C447C", borderColor: "#0C447C", color: "#fff" }
                     : { background: "#fff", borderColor: "#e5e7eb", color: "#6b7280" }
                 }
               >
@@ -148,7 +148,7 @@ export function PartConditionForm({
       )}
 
       {markedCount > 0 && (
-        <div className="text-[11px] text-indigo-700">
+        <div className="text-[11px] text-link">
           {markedCount} parça işaretlendi.
         </div>
       )}

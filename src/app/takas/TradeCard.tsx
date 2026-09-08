@@ -32,7 +32,7 @@ export function TradeCard({
   return (
     <Link
       href={`/takas/${listing.id}`}
-      className="flex gap-3.5 bg-white border border-gray-100 rounded-2xl p-4 hover:border-indigo-200 hover:shadow-sm transition-all relative"
+      className="flex gap-3.5 bg-white border border-gray-100 rounded-2xl p-4 hover:border-link-line hover:shadow-sm transition-all relative"
     >
       {isOwn ? (
         <span
@@ -44,7 +44,7 @@ export function TradeCard({
       ) : isMatch ? (
         <span
           className="absolute -top-2 -left-2 text-[10px] font-bold text-white px-2 py-0.5 rounded-full shadow-sm"
-          style={{ background: "#4338ca" }}
+          style={{ background: "#0C447C" }}
           title="İlan sahibinin aradığı kriterler senin aracınla, senin aradığın kriterler de onun aracıyla uyuşuyor"
         >
           ✨ Sana Uygun
@@ -75,7 +75,7 @@ export function TradeCard({
               🛣️ {km.toLocaleString("tr-TR")} km
             </span>
           )}
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">
+          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-link-soft text-link">
             💰 {PAYMENT_LABEL[listing.paymentIntent] ?? listing.paymentIntent}
           </span>
           {listing.wantAnything && (

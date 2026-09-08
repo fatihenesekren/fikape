@@ -43,8 +43,8 @@ export function TradeRatingForm({ threadId, counterpartName }: { threadId: numbe
   }
 
   return (
-    <div className="p-4 border-t border-gray-100 bg-indigo-50/40">
-      <p className="text-xs font-bold text-indigo-800 mb-2">
+    <div className="p-4 border-t border-gray-100 bg-link-soft/40">
+      <p className="text-xs font-bold text-link-deep mb-2">
         {counterpartName} ile takasınız nasıldı? Değerlendirin.
       </p>
       <div className="flex items-center gap-1 mb-2" role="radiogroup" aria-label="Puan">
@@ -68,14 +68,14 @@ export function TradeRatingForm({ threadId, counterpartName }: { threadId: numbe
         placeholder="Opsiyonel yorum"
         maxLength={300}
         rows={2}
-        className="w-full text-sm rounded-lg border border-indigo-200 px-2.5 py-1.5 bg-white mb-2"
+        className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white mb-2"
       />
       {error && <p className="text-xs text-red-600 mb-2">{error}</p>}
       <button
         onClick={submit}
         disabled={submitting}
         className="text-sm font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-60"
-        style={{ background: "#4338ca" }}
+        style={{ background: "#0C447C" }}
       >
         {submitting ? "Gönderiliyor..." : "Değerlendirmeyi Gönder"}
       </button>

@@ -37,7 +37,7 @@ export function SearchNoMatchPrompt({
         href={suggestHref(query)}
         className="group flex flex-col items-center justify-center text-center bg-white rounded-2xl border-2 border-dashed border-gray-200 hover:border-gray-300 hover:bg-gray-50/50 transition-colors overflow-hidden h-full min-h-[280px] px-6 py-8"
       >
-        <span className="w-12 h-12 rounded-full flex items-center justify-center bg-indigo-50 text-indigo-600 group-hover:scale-105 transition-transform mb-3">
+        <span className="w-12 h-12 rounded-full flex items-center justify-center bg-link-soft text-link group-hover:scale-105 transition-transform mb-3">
           <SearchIcon size={20} />
         </span>
         <p className="text-sm font-bold text-gray-900">Aradığın bu değil mi?</p>
@@ -58,7 +58,7 @@ export function SearchNoMatchPrompt({
 
   return (
     <div className="rounded-2xl border-2 border-dashed border-gray-200 px-6 py-12 text-center">
-      <span className="w-12 h-12 rounded-full flex items-center justify-center bg-indigo-50 text-indigo-600 mx-auto mb-4">
+      <span className="w-12 h-12 rounded-full flex items-center justify-center bg-link-soft text-link mx-auto mb-4">
         <SearchIcon size={22} />
       </span>
       <p className="text-base font-bold text-gray-900">
@@ -78,7 +78,7 @@ export function SearchNoMatchPrompt({
       </div>
       <Link
         href="/arama"
-        className="inline-block mt-4 text-sm font-semibold text-indigo-700 hover:underline"
+        className="inline-block mt-4 text-sm font-semibold text-link hover:underline"
       >
         Tüm araçları gör
       </Link>

@@ -272,7 +272,7 @@ export default async function GarajimPage() {
           </div>
           <Link
             href="/takas"
-            className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold border-2 border-indigo-100 text-indigo-700 hover:border-indigo-200 transition-colors"
+            className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold border-2 border-link-line text-link hover:border-link-line transition-colors"
           >
             🔄 Takas Pazarına Gözat
           </Link>

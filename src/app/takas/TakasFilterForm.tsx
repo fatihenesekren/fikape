@@ -72,7 +72,7 @@ export function TakasFilterForm({
   // hangisinin ne için olduğu ayırt edilemiyordu (bkz. 5 uzman ajan
   // değerlendirmesi). Aktif olan alan hafif accent kenarlıkla vurgulanıyor.
   const fieldClass = (active: boolean) =>
-    `text-sm rounded-lg border px-2.5 py-1.5 ${active ? "border-indigo-300 bg-indigo-50/40" : "border-gray-200"}`;
+    `text-sm rounded-lg border px-2.5 py-1.5 ${active ? "border-link-line bg-link-soft/40" : "border-gray-200"}`;
 
   return (
     <form method="get" className="mb-8">
@@ -90,7 +90,7 @@ export function TakasFilterForm({
             aria-label="Serbest metin arama"
             className="flex-1 text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
           />
-          <button type="submit" className="text-sm font-semibold text-white rounded-lg px-4 py-1.5 whitespace-nowrap" style={{ background: "#4338ca" }}>
+          <button type="submit" className="text-sm font-semibold text-white rounded-lg px-4 py-1.5 whitespace-nowrap" style={{ background: "#0C447C" }}>
             Ara
           </button>
         </div>
@@ -100,7 +100,7 @@ export function TakasFilterForm({
         <summary className="cursor-pointer select-none flex items-center justify-between text-xs font-bold text-gray-500 px-3 py-2.5">
           <span>🎛️ Detaylı Arama</span>
           {hasDetailedFilters && (
-            <span className="text-[11px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">
+            <span className="text-[11px] font-semibold text-link bg-link-soft px-2 py-0.5 rounded-full">
               {activeDetailedFields.length} filtre aktif
             </span>
           )}
@@ -208,7 +208,7 @@ export function TakasFilterForm({
             </select>
           </div>
 
-          <button type="submit" className="w-full text-sm font-semibold text-white rounded-lg px-3 py-1.5" style={{ background: "#4338ca" }}>
+          <button type="submit" className="w-full text-sm font-semibold text-white rounded-lg px-3 py-1.5" style={{ background: "#0C447C" }}>
             Filtrele
           </button>
         </div>

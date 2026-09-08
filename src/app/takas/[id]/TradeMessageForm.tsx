@@ -84,7 +84,7 @@ export function TradeMessageForm({
         onClick={submit}
         disabled={submitting}
         className="text-sm font-semibold px-4 py-2 rounded-lg text-white disabled:opacity-60"
-        style={{ background: "#4338ca" }}
+        style={{ background: "#0C447C" }}
       >
         {submitting ? "Gönderiliyor..." : "Mesaj Gönder"}
       </button>

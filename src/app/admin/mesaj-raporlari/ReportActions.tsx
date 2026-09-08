@@ -59,7 +59,7 @@ export function UnbanButton({ userId }: { userId: number }) {
     <button
       onClick={unban}
       disabled={loading}
-      className="text-xs font-semibold text-indigo-700 hover:underline disabled:opacity-60"
+      className="text-xs font-semibold text-link hover:underline disabled:opacity-60"
     >
       Banı Kaldır
     </button>
