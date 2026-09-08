@@ -206,9 +206,12 @@ export function VehicleCard({
           </>
         ) : (
           <>
+            {/* Yıl her kategoride model adının SONUNDA — otomobildeki
+                "versiyon – donanım" düzeniyle tutarlı (önceden bu dalda
+                yıl başa ekleniyordu, bkz. kullanıcı geri bildirimi). */}
             <div className="text-base font-bold text-gray-900 leading-tight">
-              {year && <span className="text-gray-400 font-medium mr-1">{year}</span>}
               {cleanModelName}
+              {year && <span className="text-gray-400 font-normal ml-1.5">{year}</span>}
             </div>
             {trimName && (
               <div className="text-sm text-gray-600 font-medium mt-0.5">{trimName}</div>
