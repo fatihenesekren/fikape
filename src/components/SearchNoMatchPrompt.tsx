@@ -19,9 +19,10 @@ function SearchIcon({ size = 16 }: { size?: number }) {
   );
 }
 
-// Ham arama metnini oner formuna taşırken — çok uzun/anlamsız girdileri kırp
-// (form yine düzeltilebilir; ham sorgu -> brandName isabetsizliği ayrı iş).
-const suggestHref = (query: string) => `/oner?brandName=${encodeURIComponent(query.slice(0, 60))}`;
+// Ham arama metnini oner formuna taşır — orası `q`'yu kataloğa karşı çözüp
+// marka/model alanlarını akıllıca ön-dolduruyor (bkz. oner/page.tsx mount
+// effect'i). `brandName` değil çünkü sorgu bir marka OLMAYABİLİR.
+const suggestHref = (query: string) => `/oner?q=${encodeURIComponent(query.slice(0, 60))}`;
 
 export function SearchNoMatchPrompt({
   query,

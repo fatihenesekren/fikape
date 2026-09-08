@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import vehiclesData from "@/data/vehicles.json";
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
+import { resolveOnerPrefill, type OnerCategoryKey } from "@/lib/onerPrefill";
 
 // Versiyon string'lerindeki RWD/AWD kısaltmaları teknik/İngilizce — kullanıcıya
 // gösterirken Türkiye'de yaygın kullanılan "4x2"/"4x4" karşılığı eklenir.
@@ -94,17 +95,25 @@ function detectFuelType(version: string): string | null {
   return "GASOLINE";
 }
 
-type CategoryKey = keyof typeof vehiclesData;
+type CategoryKey = OnerCategoryKey;
 
 export default function OnerPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const [categorySlug, setCategorySlug] = useState<CategoryKey>("otomobil");
-  const [selectedMake, setSelectedMake]   = useState("");
-  const [customMake, setCustomMake]       = useState("");
-  const [selectedModel, setSelectedModel] = useState("");
-  const [customModel, setCustomModel]     = useState("");
+  // /arama "eşleşme yok" akışından gelen sorguyu (`?q=`, eski linklerde
+  // `?brandName=`) forma çöz. Lazy useState — /oner session çözülene kadar
+  // sunucuda "Yükleniyor" render ettiği için form alanlarında hydration
+  // uyuşmazlığı riski yok (window sadece istemcide okunur).
+  const [prefill] = useState(() =>
+    resolveOnerPrefill(typeof window === "undefined" ? "" : window.location.search),
+  );
+
+  const [categorySlug, setCategorySlug] = useState<CategoryKey>(prefill.categorySlug);
+  const [selectedMake, setSelectedMake]   = useState(prefill.selectedMake);
+  const [customMake, setCustomMake]       = useState(prefill.customMake);
+  const [selectedModel, setSelectedModel] = useState(prefill.selectedModel);
+  const [customModel, setCustomModel]     = useState(prefill.customModel);
   const [selectedVersion, setSelectedVersion] = useState("");
   const [customVersion, setCustomVersion]     = useState("");
   const [selectedTrim, setSelectedTrim]   = useState("");
@@ -112,11 +121,10 @@ export default function OnerPage() {
   const [year, setYear]         = useState("");
   const [fuelType, setFuelType] = useState("");
   const [transmission, setTransmission] = useState("");
-  const [notes, setNotes]       = useState("");
+  const [notes, setNotes]       = useState(prefill.notes);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError]           = useState<string | null>(null);
-
 
   const makes      = vehiclesData[categorySlug] ?? [];
   const makeEntry  = makes.find((m) => m.make === selectedMake);
