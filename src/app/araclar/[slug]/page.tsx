@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { ReviewCard } from "@/components/ReviewCard";
 import { GatedContentCard } from "@/components/GatedContentCard";
+import { ScrollToReview } from "./ScrollToReview";
 import { PhotoSlider } from "./PhotoSlider";
 import { TabView } from "./TabView";
 import { OwnershipCard } from "./OwnershipCard";
@@ -478,7 +479,9 @@ export default async function VehicleDetailPage({
       )}
 
       {reviews.map((r) => (
-        <div key={r.id} className="px-5 py-1">
+        // id: Son Yorumlar şeridinden #yorum-<id> derin bağlantısı buraya kayar
+        // (bkz. ScrollToReview). scroll-mt: sticky header'ın altında kalmasın.
+        <div key={r.id} id={`yorum-${r.id}`} className="px-5 py-1 scroll-mt-24">
           <ReviewCard
             displayName={r.user.displayName}
             avatarUrl={r.user.avatarUrl}
@@ -838,6 +841,9 @@ export default async function VehicleDetailPage({
             </p>
           </div>
         )}
+
+        {/* Son Yorumlar şeridinden #yorum-<id> ile gelindiyse o yoruma kaydır */}
+        <ScrollToReview />
 
         {/* Tab: Yorumlar / Teknik Özellikler / Soru-Cevap */}
         <TabView
