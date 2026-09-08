@@ -954,6 +954,7 @@ model TradeListing {
   // bileşen olduğu için (Boyalı/Değişen Parça'daki gibi ayrı bir ilişki
   // tablosu yerine) doğrudan kolon olarak tutuluyor — bkz. src/lib/damageStatus.ts.
   damageStatus          TradeDamageStatus?
+  damageStatusNote      String?              @db.VarChar(300)
   engineCondition       MechanicalCondition?
   engineNote            String?              @db.VarChar(300)
   transmissionCondition MechanicalCondition?

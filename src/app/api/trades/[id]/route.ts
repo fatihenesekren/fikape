@@ -110,6 +110,7 @@ export async function PATCH(
         note: data.note ?? null,
         description: data.description ?? null,
         damageStatus: data.damageStatus ?? null,
+        damageStatusNote: data.damageStatusNote ?? null,
         engineCondition: data.engineCondition ?? null,
         engineNote: data.engineNote ?? null,
         transmissionCondition: data.transmissionCondition ?? null,

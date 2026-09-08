@@ -39,6 +39,7 @@ interface ExistingListing {
   wantTransmissions: string[];
   partConditions: Record<string, PartCondition>;
   damageStatus: DamageStatus | null;
+  damageStatusNote: string | null;
   engineCondition: MechanicalCondition | null;
   engineNote: string | null;
   transmissionCondition: MechanicalCondition | null;
@@ -63,6 +64,7 @@ function parseIntOrNull(input: string): number | null {
 function damageStatusPayload(v: DamageStatusValue) {
   return {
     damageStatus: v.damageStatus,
+    damageStatusNote: v.damageStatusNote.trim() || null,
     engineCondition: v.engineCondition,
     engineNote: v.engineNote.trim() || null,
     transmissionCondition: v.transmissionCondition,
@@ -77,6 +79,7 @@ function damageStatusFromListing(l: ExistingListing | null): DamageStatusValue {
   if (!l) return EMPTY_DAMAGE_STATUS;
   return {
     damageStatus: l.damageStatus,
+    damageStatusNote: l.damageStatusNote ?? "",
     engineCondition: l.engineCondition,
     engineNote: l.engineNote ?? "",
     transmissionCondition: l.transmissionCondition,

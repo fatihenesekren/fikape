@@ -37,7 +37,7 @@ export async function POST(req: Request) {
   }
   const {
     wantAnything, note, description, paymentIntent, city,
-    damageStatus, engineCondition, engineNote,
+    damageStatus, damageStatusNote, engineCondition, engineNote,
     transmissionCondition, transmissionNote,
     runningGearCondition, runningGearNote, tramerRecords,
     wantLocationScope, wantDamageStatuses, usageAmount,
@@ -116,6 +116,7 @@ export async function POST(req: Request) {
         paymentIntent,
         city,
         damageStatus: damageStatus ?? null,
+        damageStatusNote: damageStatusNote ?? null,
         engineCondition: engineCondition ?? null,
         engineNote: engineNote ?? null,
         transmissionCondition: transmissionCondition ?? null,

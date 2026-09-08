@@ -209,7 +209,8 @@ export default async function TakasDetayPage({
               const hasMechanicalData = mechanicalEntries.some((m) => m.condition);
               const hasTramerData = listing.tramerRecords.length > 0;
               const tramerTotal = listing.tramerRecords.reduce((sum, r) => sum + r.amount, 0);
-              const hasAnyData = !!listing.damageStatus || hasMechanicalData || hasTramerData;
+              const hasAnyData =
+                !!listing.damageStatus || !!listing.damageStatusNote || hasMechanicalData || hasTramerData;
 
               return (
                 <div className="space-y-4">
@@ -221,15 +222,20 @@ export default async function TakasDetayPage({
                     <p className="text-sm text-gray-400 text-center py-6">İlan sahibi henüz hasar durumu belirtmemiş.</p>
                   )}
 
-                  {listing.damageStatus && (
+                  {(listing.damageStatus || listing.damageStatusNote) && (
                     <div>
                       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Genel Hasar Durumu</p>
-                      <span
-                        className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full text-white"
-                        style={{ backgroundColor: DAMAGE_STATUS_COLOR[listing.damageStatus as DamageStatus] }}
-                      >
-                        {DAMAGE_STATUS_LABEL[listing.damageStatus as DamageStatus]}
-                      </span>
+                      {listing.damageStatus && (
+                        <span
+                          className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full text-white"
+                          style={{ backgroundColor: DAMAGE_STATUS_COLOR[listing.damageStatus as DamageStatus] }}
+                        >
+                          {DAMAGE_STATUS_LABEL[listing.damageStatus as DamageStatus]}
+                        </span>
+                      )}
+                      {listing.damageStatusNote && (
+                        <p className="text-xs text-gray-500 mt-1.5">{listing.damageStatusNote}</p>
+                      )}
                     </div>
                   )}
 

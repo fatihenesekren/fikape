@@ -121,6 +121,7 @@ export const tramerRecordsSchema = z.array(tramerRecordSchema).max(20).optional(
 
 const damageStatusFields = {
   damageStatus:          z.enum(["NONE", "DAMAGED", "HEAVY"]).optional().nullable(),
+  damageStatusNote:      z.string().trim().max(300).optional().nullable(),
   engineCondition:       mechanicalConditionSchema,
   engineNote:            z.string().trim().max(300).optional().nullable(),
   transmissionCondition: mechanicalConditionSchema,

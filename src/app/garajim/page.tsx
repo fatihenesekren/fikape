@@ -61,7 +61,7 @@ export default async function GarajimPage() {
         wantYearMin: true, wantYearMax: true, wantKmMin: true, wantKmMax: true,
         wantFuelTypes: true, wantTransmissions: true,
         partConditions: { select: { partKey: true, condition: true } },
-        damageStatus: true,
+        damageStatus: true, damageStatusNote: true,
         engineCondition: true, engineNote: true,
         transmissionCondition: true, transmissionNote: true,
         runningGearCondition: true, runningGearNote: true,

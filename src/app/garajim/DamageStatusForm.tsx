@@ -13,6 +13,7 @@ const YEARS = Array.from({ length: CURRENT_YEAR - 1989 }, (_, i) => CURRENT_YEAR
 
 export interface DamageStatusValue {
   damageStatus: DamageStatus | null;
+  damageStatusNote: string;
   engineCondition: MechanicalCondition | null;
   engineNote: string;
   transmissionCondition: MechanicalCondition | null;
@@ -24,6 +25,7 @@ export interface DamageStatusValue {
 
 export const EMPTY_DAMAGE_STATUS: DamageStatusValue = {
   damageStatus: null,
+  damageStatusNote: "",
   engineCondition: null,
   engineNote: "",
   transmissionCondition: null,
@@ -109,6 +111,16 @@ export function DamageStatusForm({
             </button>
           ))}
         </div>
+        {/* Genel duruma dair opsiyonel serbest metin — motor/şanzıman/yürüyen
+            aksam notlarıyla aynı desen (örn. hangi bölge, ne zaman). */}
+        <input
+          type="text"
+          value={value.damageStatusNote}
+          onChange={(e) => patch({ damageStatusNote: e.target.value })}
+          maxLength={300}
+          placeholder="Opsiyonel not (örn. sağ arka çamurluk boyalı, 2023'te)"
+          className="mt-1.5 w-full text-xs rounded-lg border border-gray-200 px-2 py-1.5"
+        />
       </div>
 
       {/* Motor / Şanzıman / Yürüyen Aksam */}
