@@ -29,6 +29,13 @@ const BANNER_PHRASES = [
 // Seçim yapılınca otomatik ilerleme gecikmesi — check-pop animasyonu görünsün diye
 const AUTO_ADVANCE_MS = 350;
 
+// Bir adımın seçili cevabının "🏙️ Şehir içi" biçimli etiketi (özet çipleri için).
+function answerLabel(cat: QuizCat, stepIdx: 0 | 1 | 2, key: string | null): string | null {
+  if (!key) return null;
+  const opt = QUIZ_STEPS[cat]?.[stepIdx]?.opts.find((o) => o.key === key);
+  return opt ? `${opt.icon} ${opt.label}` : key;
+}
+
 function MatchIcon({ size = 20 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -44,6 +51,24 @@ function CheckBadge() {
         <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </span>
+  );
+}
+
+// Özet çipi — seçili bir cevabı tikli gösterir, tıklayınca o adıma döner.
+function SelectedChip({ label, onClick }: { label: string; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="inline-flex items-center gap-1 rounded-full bg-gray-900 text-white text-[11px] font-semibold pl-1.5 pr-2.5 py-1 hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-1"
+    >
+      <span className="w-3.5 h-3.5 rounded-full bg-white/20 flex items-center justify-center shrink-0" aria-hidden="true">
+        <svg width="8" height="8" viewBox="0 0 24 24" fill="none">
+          <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+      {label}
+    </button>
   );
 }
 
@@ -93,32 +118,47 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
     return () => clearInterval(interval);
   }, [showBanner]);
 
-  const openQuiz = useCallback(() => {
-    setSelectedQ2(null);
-    setSelectedQ3(null);
-    setSelectedQ4(null);
+  // Quiz'i aç. Mevcut bir sonuç varsa (Değiştir) TÜM cevaplar yüklenir ve
+  // istenen adıma gidilir — kullanıcı 4 seçimini tikli görüp istediğini
+  // değiştirebilir, baştan doldurmak zorunda kalmaz.
+  const openQuiz = useCallback((atStep?: 0 | 1 | 2 | 3) => {
     setDirection("fwd");
-    if (preCat) {
+    if (quizAnswers) {
+      setSelectedCat(quizAnswers.cat);
+      setSelectedQ2(quizAnswers.q2);
+      setSelectedQ3(quizAnswers.q3);
+      setSelectedQ4(quizAnswers.q4);
+      setStep(atStep ?? 1);
+    } else if (preCat) {
       setSelectedCat(preCat);
-      setStep(1);
+      setSelectedQ2(null); setSelectedQ3(null); setSelectedQ4(null);
+      setStep(atStep ?? 1);
     } else {
       setSelectedCat(null);
-      setStep(0);
+      setSelectedQ2(null); setSelectedQ3(null); setSelectedQ4(null);
+      setStep(atStep ?? 0);
     }
     setOpen(true);
-  }, [preCat]);
+  }, [quizAnswers, preCat]);
 
   const closeQuiz = useCallback(() => {
     clearAdvanceTimer();
     setOpen(false);
   }, [clearAdvanceTimer]);
 
+  // Geri = sadece adım değiştir; seçimler KORUNUR (tikli kalır, değiştirilebilir).
+  // Alt cevaplar yalnızca kategori değişince sıfırlanır (bkz. selectCat).
   const handleBack = useCallback(() => {
     clearAdvanceTimer();
     setDirection("back");
-    if      (step === 3) { setStep(2); setSelectedQ4(null); }
-    else if (step === 2) { setStep(1); setSelectedQ3(null); }
-    else                 { setStep(0); setSelectedCat(null); setSelectedQ2(null); }
+    setStep((s) => (s > 0 ? ((s - 1) as 0 | 1 | 2 | 3) : 0));
+  }, [clearAdvanceTimer]);
+
+  // Herhangi bir adıma atla (özet çipleri).
+  const goToStep = useCallback((n: 0 | 1 | 2 | 3) => {
+    clearAdvanceTimer();
+    setDirection(n < step ? "back" : "fwd");
+    setStep(n);
   }, [step, clearAdvanceTimer]);
 
   const completeWith = useCallback((q4: string) => {
@@ -132,12 +172,15 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
     setOpen(false);
   }, [router, selectedCat, selectedQ2, selectedQ3]);
 
-  // Seçim → kısa gecikmeyle otomatik ilerleme; son soruda doğrudan sonuç
+  // Kategori seçimi — DEĞİŞİRSE alt cevaplar geçersizleşir (farklı dal), sıfırlanır.
   const selectCat = useCallback((key: QuizCat) => {
+    if (key !== selectedCat) {
+      setSelectedQ2(null); setSelectedQ3(null); setSelectedQ4(null);
+    }
     setSelectedCat(key);
     clearAdvanceTimer();
     advanceTimer.current = setTimeout(() => { setDirection("fwd"); setStep(1); }, AUTO_ADVANCE_MS);
-  }, [clearAdvanceTimer]);
+  }, [selectedCat, clearAdvanceTimer]);
 
   const selectAnswer = useCallback((key: string) => {
     const setter = step === 1 ? setSelectedQ2 : step === 2 ? setSelectedQ3 : setSelectedQ4;
@@ -151,51 +194,55 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
   }, [step, clearAdvanceTimer, completeWith]);
 
   const handleClearQuiz = useCallback(() => {
-    if (!quizAnswers) { router.push("/"); return; }
-    const catSlug = CAT_TO_SLUG[quizAnswers.cat];
-    router.push(catSlug ? `/?kategori=${catSlug}` : "/");
-  }, [router, quizAnswers]);
+    // Quiz'i kapatmak = ana sayfanın kürasyonlu görünümüne dön. Katalog artık
+    // /araclar'da (bkz. backlog_anasayfa_katalog_ayirma) — eski `/?kategori=X`
+    // varyantı oraya yönlendiği için "kapat" kullanıcıyı ana sayfadan atıyordu.
+    router.push("/");
+  }, [router]);
 
   // ── Result bar ────────────────────────────────────────
   if (quizAnswers && !open) {
-    const steps  = QUIZ_STEPS[quizAnswers.cat];
-    const q2Opt  = steps[0]?.opts.find((o) => o.key === quizAnswers.q2);
-    const q3Opt  = steps[1]?.opts.find((o) => o.key === quizAnswers.q3);
-    const q4Opt  = steps[2]?.opts.find((o) => o.key === quizAnswers.q4);
-    const q2Label = q2Opt ? `${q2Opt.icon} ${q2Opt.label}` : quizAnswers.q2;
-    const q3Label = q3Opt ? `${q3Opt.icon} ${q3Opt.label}` : quizAnswers.q3;
-    const q4Label = q4Opt ? `${q4Opt.icon} ${q4Opt.label}` : null;
+    const q2Label = answerLabel(quizAnswers.cat, 0, quizAnswers.q2);
+    const q3Label = answerLabel(quizAnswers.cat, 1, quizAnswers.q3);
+    const q4Label = answerLabel(quizAnswers.cat, 2, quizAnswers.q4);
+    const chips: { label: string; step: 1 | 2 | 3 }[] = [];
+    if (q2Label) chips.push({ label: q2Label, step: 1 });
+    if (q3Label) chips.push({ label: q3Label, step: 2 });
+    if (q4Label) chips.push({ label: q4Label, step: 3 });
 
     return (
       <div className="col-span-full bg-white rounded-2xl border border-gray-100 overflow-hidden animate-niyet-result">
-        <div className="px-4 py-3 flex items-center gap-3 flex-wrap">
-          <div
-            className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
-            style={{ background: "linear-gradient(135deg, var(--fi-color), var(--ka-color) 55%, var(--pe-color))" }}
-          >
-            <MatchIcon size={14} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-gray-900 leading-snug">
+        <div className="px-4 py-3">
+          <div className="flex items-center gap-3">
+            <div
+              className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+              style={{ background: "linear-gradient(135deg, var(--fi-color), var(--ka-color) 55%, var(--pe-color))" }}
+            >
+              <MatchIcon size={14} />
+            </div>
+            <p className="flex-1 min-w-0 text-xs font-semibold text-gray-900 leading-snug">
               {CAT_LABELS[quizAnswers.cat]} · {resultTrustLine(categoryReviewCount)}
             </p>
-            <p className="text-[11px] text-gray-500 mt-0.5">
-              {q2Label} · {q3Label}{q4Label ? <> · {q4Label}</> : null}
-            </p>
+            <button
+              onClick={() => openQuiz(1)}
+              className="text-xs font-semibold text-gray-500 hover:text-gray-900 transition-colors shrink-0"
+            >
+              Değiştir →
+            </button>
+            <button
+              onClick={handleClearQuiz}
+              aria-label="Filtreyi kaldır"
+              className="text-gray-300 hover:text-gray-500 transition-colors text-sm leading-none shrink-0"
+            >
+              ✕
+            </button>
           </div>
-          <button
-            onClick={openQuiz}
-            className="text-xs font-semibold text-gray-500 hover:text-gray-900 transition-colors"
-          >
-            Değiştir →
-          </button>
-          <button
-            onClick={handleClearQuiz}
-            aria-label="Quiz'i kapat"
-            className="text-gray-300 hover:text-gray-500 transition-colors text-sm leading-none ml-1"
-          >
-            ✕
-          </button>
+          {/* Aktif filtreler — tikli, tıklayınca o soruya döner */}
+          <div className="flex flex-wrap gap-1.5 mt-2 pl-10">
+            {chips.map((c) => (
+              <SelectedChip key={c.step} label={c.label} onClick={() => openQuiz(c.step)} />
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -206,8 +253,8 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
     return (
       <div className="col-span-full">
         <button
-          onClick={openQuiz}
-          className="relative w-full bg-white rounded-2xl border border-gray-200 pl-6 pr-4 py-6 flex items-center gap-3 overflow-hidden hover:border-gray-300 hover:shadow-sm transition-all group text-left animate-niyet-enter"
+          onClick={() => openQuiz()}
+          className="relative w-full bg-white rounded-2xl border border-gray-200 pl-6 pr-4 py-6 flex items-center gap-3 overflow-hidden hover:border-gray-300 hover:shadow-sm transition-all group text-left animate-niyet-enter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
         >
           <div
             className="absolute inset-y-0 left-0 w-1.5"
@@ -245,10 +292,24 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
   }
 
   // ── Quiz open ─────────────────────────────────────────
-  const stepDef   = step > 0 ? QUIZ_STEPS[selectedCat!]?.[step - 1] : null;
+  const stepDef    = step > 0 ? QUIZ_STEPS[selectedCat!]?.[step - 1] : null;
   const totalSteps = preCat ? 3 : 4;
   const curIndex   = preCat ? step - 1 : step;          // 0-based progress index
   const slideClass = direction === "fwd" ? "animate-niyet-slide-right" : "animate-niyet-slide-left";
+
+  // Açık quiz içindeki özet çipleri — cevabı olan her adım, mevcut adım hariç.
+  const summaryChips: { label: string; step: 0 | 1 | 2 | 3 }[] = [];
+  if (selectedCat && step !== 0 && !preCat) {
+    summaryChips.push({ label: CAT_LABELS[selectedCat], step: 0 });
+  }
+  if (selectedCat) {
+    const l2 = answerLabel(selectedCat, 0, selectedQ2);
+    const l3 = answerLabel(selectedCat, 1, selectedQ3);
+    const l4 = answerLabel(selectedCat, 2, selectedQ4);
+    if (l2 && step !== 1) summaryChips.push({ label: l2, step: 1 });
+    if (l3 && step !== 2) summaryChips.push({ label: l3, step: 2 });
+    if (l4 && step !== 3) summaryChips.push({ label: l4, step: 3 });
+  }
 
   return (
     <div className="col-span-full bg-white rounded-2xl border border-gray-900 overflow-hidden">
@@ -289,6 +350,15 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
       {/* Body */}
       <div className="p-4">
 
+        {/* Şu ana kadar seçilenler — tıklayınca o adıma döner */}
+        {summaryChips.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {summaryChips.map((c) => (
+              <SelectedChip key={c.step} label={c.label} onClick={() => goToStep(c.step)} />
+            ))}
+          </div>
+        )}
+
         <div key={step} className={slideClass}>
           {/* Step 0: Category */}
           {step === 0 && (
@@ -299,7 +369,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
                   <button
                     key={c.key}
                     onClick={() => selectCat(c.key)}
-                    className={`relative flex flex-col items-start p-4 rounded-xl border-[1.5px] transition-all active:scale-95 text-left ${
+                    className={`relative flex flex-col items-start p-4 rounded-xl border-[1.5px] transition-all active:scale-95 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-1 ${
                       isSel
                         ? "border-gray-900 bg-white shadow-sm"
                         : "border-transparent hover:border-gray-200"
@@ -325,7 +395,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
                   <button
                     key={opt.key}
                     onClick={() => selectAnswer(opt.key)}
-                    className={`relative flex flex-col items-start p-4 rounded-xl border-[1.5px] transition-all active:scale-95 text-left ${
+                    className={`relative flex flex-col items-start p-4 rounded-xl border-[1.5px] transition-all active:scale-95 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-1 ${
                       isSel
                         ? "border-gray-900 bg-white shadow-sm"
                         : "border-transparent hover:border-gray-200"
