@@ -1,9 +1,13 @@
 import vehiclesData from "@/data/vehicles.json";
 
 // /arama "eşleşme yok" akışından /oner'e taşınan ham arama sorgusunu forma
-// akıllıca çözer. Sorgu bir marka OLMAYABİLİR ("clio" model, "dodge polo"
-// kombo, "chery" katalogda yok) — bu yüzden kataloğa (vehicles.json) karşı
-// eşlenir. Saf fonksiyon: search string alır, form ön-dolum nesnesi döner.
+// çözer. YALNIZCA sorgu kataloğa (vehicles.json) gerçekten eşleşiyorsa
+// ön-doldurur — bilinen bir marka ("dacia"), bir model ("clio"), ya da
+// "bilinen-marka + varyant" ("dacia sandero"). Bu, "kayıtlı bir aracın
+// farklı versiyon/nesil durumu" senaryosu için mantıklı.
+// Sorgu tanınmıyorsa ("lada" katalogda yok, "sdfg" anlamsız) HİÇBİR ŞEY
+// doldurulmaz — form boş açılır; kategori bile tahmin edilmez (bkz.
+// kullanıcı geri bildirimi). Saf fonksiyon: search string alır.
 
 export type OnerCategoryKey = keyof typeof vehiclesData;
 
@@ -75,8 +79,9 @@ export function resolveOnerPrefill(search: string): OnerPrefill {
       }
     }
   }
-  // 4) Hiç eşleşme yok — tek kelimeyse muhtemel marka (custom make),
-  //    değilse serbest metni nota ipucu olarak bırak.
-  if (/^[\p{L}\d-]{1,24}$/u.test(q)) return { ...base, selectedMake: "Diğer / Bulamadım", customMake: q };
-  return { ...base, notes: `Aramada arandı: ${q}` };
+  // 4) Katalogda hiç eşleşme yok — ön-doldurma YAPMA. Sorgu bir marka bile
+  //    olmayabilir ("lada" katalogda yok, "sdfg" anlamsız); yanlış tahmin
+  //    (kategori=otomobil + customMake) kullanıcıya değer katmıyordu, sadece
+  //    düzeltmesi gereken bir şey ekliyordu (bkz. kullanıcı geri bildirimi).
+  return base;
 }

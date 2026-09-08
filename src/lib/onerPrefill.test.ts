@@ -37,29 +37,28 @@ describe("resolveOnerPrefill", () => {
     expect(r.selectedModel).toMatch(/^Twingo/);
   });
 
-  it("katalogda olmayan tek kelime → Diğer / Bulamadım + customMake", () => {
-    const r = resolveOnerPrefill("?q=skywell");
-    expect(r.selectedMake).toBe("Diğer / Bulamadım");
-    expect(r.customMake).toBe("skywell");
-  });
-
-  it("bilinen marka + ek kelime → marka + Diğer model + customModel", () => {
+  it("bilinen marka + varyant kelimesi → marka + Diğer model + customModel", () => {
     const r = resolveOnerPrefill("?q=dacia sandero");
     expect(r.selectedMake).toBe("Dacia");
     expect(r.selectedModel).toBe("Diğer");
     expect(r.customModel).toBe("sandero");
   });
 
-  it("hiç eşleşmeyen çok kelimeli sorgu → nota ipucu, alanlar boş", () => {
-    const r = resolveOnerPrefill("?q=chery tiggo 7");
-    expect(r.selectedMake).toBe("");
-    expect(r.notes).toBe("Aramada arandı: chery tiggo 7");
+  const EMPTY = {
+    categorySlug: "otomobil",
+    selectedMake: "", customMake: "",
+    selectedModel: "", customModel: "", notes: "",
+  };
+
+  it("katalogda olmayan tek kelime marka (lada) → HİÇBİR ŞEY doldurma", () => {
+    expect(resolveOnerPrefill("?q=lada")).toEqual(EMPTY);
   });
 
-  it("60 karakterden uzun sorgu kırpılır", () => {
-    const long = "x".repeat(80);
-    const r = resolveOnerPrefill(`?q=${long}`);
-    // tek kelime ama 24 karakterden uzun → nota düşer, kırpılmış haliyle
-    expect(r.notes).toBe(`Aramada arandı: ${"x".repeat(60)}`);
+  it("anlamsız girdi (sdfg) → HİÇBİR ŞEY doldurma", () => {
+    expect(resolveOnerPrefill("?q=sdfg")).toEqual(EMPTY);
+  });
+
+  it("hiç eşleşmeyen çok kelimeli sorgu → HİÇBİR ŞEY doldurma", () => {
+    expect(resolveOnerPrefill("?q=chery tiggo 7")).toEqual(EMPTY);
   });
 });
