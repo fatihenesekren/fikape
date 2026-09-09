@@ -29,15 +29,15 @@ export async function POST(
   }
 
   const counterpartId = userId === thread.initiatorId ? thread.tradeListing.userId : thread.initiatorId;
+  const now = new Date();
 
+  // "Kişiyi engelle" — kalıcı, çift yönlü kullanıcı bloğu + bu görüşmeyi de
+  // kapat. SESSİZ: engellenen kişiye bildirim gitmez (misilleme önleme).
   await prisma.$transaction([
     prisma.messageThread.update({
       where: { id: threadId },
-      data: { blockedByUserId: userId, blockedAt: new Date() },
+      data: { blockedByUserId: userId, blockedAt: now, closedByUserId: userId, closedAt: now },
     }),
-    // Önceden blok sadece bu tek görüşmeyi donduruyordu; bloklanan kişi yeni bir
-    // ilan/thread üzerinden tekrar ulaşabiliyordu (bkz. denetim raporu) — artık
-    // kullanıcı çifti kalıcı olarak da bloklanıyor.
     prisma.blockedUser.upsert({
       where: { blockerId_blockedId: { blockerId: userId, blockedId: counterpartId } },
       create: { blockerId: userId, blockedId: counterpartId },

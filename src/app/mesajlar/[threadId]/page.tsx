@@ -8,6 +8,7 @@ import { stripModelGenRange } from "@/lib/modelDisplay";
 import { isTradeMessagingEnabled } from "@/lib/features";
 import { MessageThread } from "./MessageThread";
 import { ThreadActions } from "./ThreadActions";
+import { ReopenButton } from "./ReopenButton";
 import { TradeRatingForm } from "./TradeRatingForm";
 
 export const metadata: Metadata = { title: "Görüşme", robots: { index: false } };
@@ -101,13 +102,32 @@ export default async function ThreadPage({
   }).catch(() => {});
 
   const isBlocked = thread.blockedByUserId != null;
+  const blockedByMe = thread.blockedByUserId === userId;
+  const isClosed = thread.closedByUserId != null;   // soft "kapat" VEYA engel
+  const closedByMe = thread.closedByUserId === userId;
   const isListingClosed = !thread.tradeListing.isActive;
-  const canMessage = !isBlocked && !isListingClosed && isTradeMessagingEnabled();
+  const canMessage = !isClosed && !isListingClosed && isTradeMessagingEnabled();
   const isInitiator = userId === thread.initiatorId;
   const counterpart = isInitiator ? thread.tradeListing.user : thread.initiator;
   const counterpartName = counterpart?.displayName ?? "Kullanıcı";
+  const counterpartId = isInitiator ? thread.tradeListing.userId : thread.initiatorId;
   const interestLostByMe = thread.interestLostByUserId === userId;
   const interestLostByOther = thread.interestLostByUserId != null && !interestLostByMe;
+
+  // Eskalasyon uyarısı — bu kişiyle kaç görüşme kapattım (engelli olanlar hariç,
+  // engel zaten sert çözüm).
+  const closedByMeCount = isBlocked
+    ? 0
+    : await prisma.messageThread.count({
+        where: {
+          closedByUserId: userId,
+          blockedByUserId: null,
+          OR: [
+            { initiatorId: counterpartId, tradeListing: { userId } },
+            { initiatorId: userId, tradeListing: { userId: counterpartId } },
+          ],
+        },
+      });
 
   // Takas görüşmesinde iki araç var: benim tarafım + karşı tarafın aracı.
   // Rol'e göre eşleşir — ilan sahibiysem ilanım tradeListing, karşı tarafın
@@ -116,19 +136,47 @@ export default async function ThreadPage({
   const mySide   = isInitiator ? thread.initiatorListing : thread.tradeListing;
   const theirSide = isInitiator ? thread.tradeListing : thread.initiatorListing;
 
-  const statusChip = isBlocked
-    ? { label: "Sonlandırıldı", cls: "bg-red-50 text-red-600" }
-    : isListingClosed
-      ? { label: "Kapandı", cls: "bg-gray-100 text-gray-500" }
-      : { label: "Aktif", cls: "bg-green-50 text-green-700" };
+  // Engellendi rozetini SADECE engelleyen görür — karşı taraf sadece "Kapatıldı"
+  // görür (engellendiği bilgisi verilmez).
+  const statusChip = isBlocked && blockedByMe
+    ? { label: "Engellendi", cls: "bg-red-50 text-red-600" }
+    : isClosed
+      ? { label: "Kapatıldı", cls: "bg-gray-100 text-gray-500" }
+      : isListingClosed
+        ? { label: "İlan kapandı", cls: "bg-gray-100 text-gray-500" }
+        : { label: "Aktif", cls: "bg-green-50 text-green-700" };
 
-  const disabledNote = isBlocked
-    ? "Bu görüşme sonlandırıldı."
-    : isListingClosed
-      ? "Bu ilan artık takasa açık değil, mesaj gönderemezsiniz."
-      : !isTradeMessagingEnabled()
-        ? "Mesajlaşma özelliği geçici olarak kapalı."
-        : "";
+  // Görüşme donmuşsa giriş alanı yerine açıklayıcı kart (kim, ne, sonra ne).
+  let stateCard: React.ReactNode = null;
+  if (isBlocked && blockedByMe) {
+    stateCard = (
+      <div className="p-4 text-center space-y-1">
+        <p className="text-xs text-gray-500">Bu kullanıcıyı engelledin.</p>
+        <p className="text-[11px] text-gray-400">
+          Engeli <Link href="/profil#engellenenler" className="text-link hover:underline">Profil › Engellenen kullanıcılar</Link>&apos;dan kaldırabilirsin.
+        </p>
+      </div>
+    );
+  } else if (isBlocked && !blockedByMe) {
+    stateCard = <p className="p-4 text-xs text-gray-400 text-center">Bu görüşme kapatıldı.</p>;
+  } else if (isClosed && closedByMe) {
+    stateCard = (
+      <div className="p-4 text-center space-y-2">
+        <p className="text-xs text-gray-500">Bu görüşmeyi kapattın.</p>
+        <ReopenButton threadId={thread.id} />
+      </div>
+    );
+  } else if (isClosed && !closedByMe) {
+    stateCard = (
+      <p className="p-4 text-xs text-gray-400 text-center">
+        {counterpartName} bu görüşmeyi kapattı.
+      </p>
+    );
+  } else if (isListingClosed) {
+    stateCard = <p className="p-4 text-xs text-gray-400 text-center">Bu ilan artık takasa açık değil, mesaj gönderemezsiniz.</p>;
+  } else if (!isTradeMessagingEnabled()) {
+    stateCard = <p className="p-4 text-xs text-gray-400 text-center">Mesajlaşma özelliği geçici olarak kapalı.</p>;
+  }
 
   // Takas sonrası karşılıklı değerlendirme daveti — ilan "Takas oldu" ile
   // kapandıysa ve bu kullanıcı bu görüşmeyi henüz değerlendirmediyse gösterilir.
@@ -168,7 +216,13 @@ export default async function ThreadPage({
               {statusChip.label}
             </span>
           </div>
-          <ThreadActions threadId={thread.id} showInterestLost={thread.interestLostByUserId == null} />
+          <ThreadActions
+            threadId={thread.id}
+            interestLostByMe={interestLostByMe}
+            isClosed={isClosed}
+            blockedByMe={blockedByMe}
+            closedByMeCount={closedByMeCount}
+          />
         </div>
       </div>
 
@@ -190,12 +244,12 @@ export default async function ThreadPage({
 
       {interestLostByMe && (
         <p className="shrink-0 px-4 py-2 text-xs text-center text-gray-400 bg-gray-50 border-b border-gray-100">
-          Bu görüşmeyle ilgini kaybettiğini belirttin.
+          Bu takasla ilgilenmediğini belirttin. Görüşme açık — istersen yazmaya devam edebilirsin. (⋯ → Yeniden ilgileniyorum)
         </p>
       )}
       {interestLostByOther && (
         <p className="shrink-0 px-4 py-2 text-xs text-center text-gray-400 bg-gray-50 border-b border-gray-100">
-          {counterpart?.displayName ?? "Diğer taraf"} bu görüşmeyle ilgisini kaybettiğini belirtti.
+          {counterpartName} bu takasla ilgilenmediğini belirtti — ama görüşme hâlâ açık.
         </p>
       )}
 
@@ -205,7 +259,7 @@ export default async function ThreadPage({
         currentUserId={userId}
         firstUnreadId={firstUnreadId}
         canMessage={canMessage}
-        disabledNote={disabledNote}
+        stateCard={stateCard}
         initialMessages={thread.messages.map((m) => ({
           id: m.id,
           text: m.text,

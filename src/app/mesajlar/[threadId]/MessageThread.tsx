@@ -19,7 +19,7 @@ interface Props {
   initialMessages: MessageDTO[];
   firstUnreadId: number | null;
   canMessage: boolean;
-  disabledNote?: string;
+  stateCard?: ReactNode;
   footer?: ReactNode;
 }
 
@@ -37,7 +37,7 @@ export function MessageThread({
   initialMessages,
   firstUnreadId,
   canMessage,
-  disabledNote,
+  stateCard,
   footer,
 }: Props) {
   const router = useRouter();
@@ -227,7 +227,7 @@ export function MessageThread({
             </div>
           </div>
         ) : (
-          <p className="p-4 text-xs text-gray-400 text-center">{disabledNote}</p>
+          stateCard
         )}
         {footer}
       </div>

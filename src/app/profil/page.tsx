@@ -7,6 +7,7 @@ import { EditName } from "./EditName";
 import { AvatarPicker } from "./AvatarPicker";
 import { NotificationToggle } from "./NotificationToggle";
 import { NotificationsSection } from "./NotificationsSection";
+import { BlockedUsersSection } from "./BlockedUsersSection";
 import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { TRUST_PROFILE } from "@/lib/trustBadge";
@@ -109,6 +110,19 @@ export default async function ProfilPage() {
     where: { userId, status: { in: ["PENDING", "IN_PROGRESS"] } },
     select: { dueAt: true },
   }).catch(() => null);
+
+  const blockedUsers = (
+    await prisma.blockedUser.findMany({
+      where: { blockerId: userId },
+      orderBy: { createdAt: "desc" },
+      select: { blockedId: true, createdAt: true, blocked: { select: { displayName: true, avatarUrl: true } } },
+    }).catch(() => [])
+  ).map((b) => ({
+    userId: b.blockedId,
+    displayName: b.blocked.displayName,
+    avatarUrl: b.blocked.avatarUrl,
+    since: b.createdAt.toISOString(),
+  }));
 
   const trust = TRUST_PROFILE[user.trustLevel] ?? TRUST_PROFILE[1];
 
@@ -220,6 +234,8 @@ export default async function ProfilPage() {
         notifications={visibleNotifications.map((n) => ({ ...n, createdAt: n.createdAt.toISOString() }))}
         hasMore={hasMoreNotifications}
       />
+
+      <BlockedUsersSection initialBlocked={blockedUsers} />
 
       <InviteBox referralCode={user.referralCode} referralCount={user._count.referrals} />
 

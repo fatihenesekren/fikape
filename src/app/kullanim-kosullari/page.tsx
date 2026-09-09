@@ -158,9 +158,12 @@ export default function KullanimKosullariPage() {
             beyanının doğruluğundan ve bu bilgileri paylaşma kararınızdan tamamen siz sorumlusunuz.
             Araç sahibi olmadığınız halde ilan vermek Kullanım Koşulları&apos;nın ihlalidir. Şüpheli veya
             kötü niyetli kullanıcı davranışını bildirmek için mesajlaşma ekranındaki &quot;Rapor Et&quot;
-            özelliğini, bir görüşmeyi tek taraflı sonlandırmak için &quot;Görüşmeyi Sonlandır&quot; özelliğini
-            kullanabilirsiniz; platform gerekli gördüğü durumlarda hesapları kısıtlama hakkını saklı
-            tutar.
+            özelliğini kullanabilirsiniz. Bir görüşmeyi tek taraflı olarak &quot;Görüşmeyi kapat&quot; ile
+            arşivleyebilir (geri alınabilir, kişi engellenmez), &quot;Kişiyi engelle&quot; ile bir kullanıcının
+            sizinle hiçbir ilan üzerinden iletişim kurmasını kalıcı olarak durdurabilir (Profil &rsaquo;
+            Engellenen kullanıcılar bölümünden kaldırılabilir) ya da &quot;İlgilenmiyorum&quot; ile görüşmeyi
+            kapatmadan karşı tarafa sinyal verebilirsiniz. Platform gerekli gördüğü durumlarda hesapları
+            kısıtlama hakkını saklı tutar.
           </p>
           <p className="mt-2">
             İlan &quot;Takas oldu&quot; şeklinde kapandıktan sonra görüşmenin tarafları birbirine yıldız puanı

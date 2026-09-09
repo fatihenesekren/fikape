@@ -208,6 +208,7 @@ model User {
   notifications       Notification[]
   tradeListings       TradeListing[]
   threadsInitiated    MessageThread[] @relation("ThreadInitiator")
+  threadsClosed       MessageThread[] @relation("ThreadClosedBy")
   messagesSent        Message[]       @relation("MessageSender")
   threadsBlocked      MessageThread[] @relation("ThreadBlockedBy")
   threadsInterestLost MessageThread[] @relation("ThreadInterestLostBy")
@@ -243,6 +244,8 @@ enum NotificationType {
   TRADE_INTEREST_LOST
   TRADE_RATED
   TRADE_MUTUAL_MATCH
+  TRADE_THREAD_CLOSED
+  TRADE_THREAD_REOPENED
 
   // Admin'e özel — trustLevel>=5 kullanıcıya (bkz. admin/layout.tsx) gönderilen
   // "yeni onay bekleyen X var" bildirimleri. Aynı bell'de (NotificationList.tsx)
@@ -1044,12 +1047,20 @@ model MessageThread {
   lastMessageAt   DateTime @default(now())
   hasReciprocalReply Boolean @default(false)
 
-  // Görüşmeyi sonlandırma — kim dondurduğunu tutar
+  // "Görüşmeyi kapat" — yumuşak arşiv: ikisi de yazamaz ama kişi ENGELLENMEZ,
+  // karşı taraf başka/aynı ilandan yeni görüşme açabilir. Yalnızca kapatan
+  // "yeniden aç" edebilir. blockedByUserId'den ayrı — bu geri alınabilir.
+  closedByUserId  Int?
+  closedByUser    User?    @relation("ThreadClosedBy", fields: [closedByUserId], references: [id])
+  closedAt        DateTime?
+
+  // "Kişiyi engelle" — kalıcı, çift yönlü, tüm ilanlar (BlockedUser satırı da
+  // yazılır). Görüşmeyi de kapatır (closedByUserId da set edilir). Sessiz.
   blockedByUserId Int?
   blockedByUser   User?    @relation("ThreadBlockedBy", fields: [blockedByUserId], references: [id])
   blockedAt       DateTime?
 
-  // "İlgimi kaybettim" — Block'tan farklı: mesajlaşmayı KAPATMAZ, sadece
+  // "İlgilenmiyorum" — Block'tan farklı: mesajlaşmayı KAPATMAZ, sadece
   // karşı tarafa (genelde ilan sahibine) yumuşak bir sinyal verir. Önceden
   // sadece ilan sahibi ilanı kapatabiliyordu, görüşmeyi başlatan tarafın
   // vazgeçtiğini belirtecek bir yolu yoktu — iki taraf da sessiz kalırsa ilan

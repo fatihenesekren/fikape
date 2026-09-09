@@ -7,6 +7,7 @@ import { checkContent } from "@/lib/reviewValidation";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeMessagingEnabled } from "@/lib/features";
 import { createNotification } from "@/lib/notification";
+import { CLOSE_COOLDOWN_MS } from "@/lib/tradeThread";
 
 const DAILY_THREAD_LIMIT = Number(process.env.TAKASA_AC_THREAD_GUNLUK_LIMIT) || 10;
 
@@ -65,6 +66,30 @@ export async function POST(
   });
   if (blocked) {
     return NextResponse.json({ error: "Bu kullanıcıyla iletişim kuramazsınız." }, { status: 403 });
+  }
+
+  // "Görüşmeyi kapat" soğuma süresi — ilan sahibi bu kullanıcıyla bir görüşmeyi
+  // son CLOSE_COOLDOWN_MS içinde kapattıysa, yeni görüşme başlatılamaz (çok-ilan
+  // üzerinden sık boğaz etmeyi keser; kalıcı çözüm engelleme). Yön önemli:
+  // yalnızca ilan sahibi kapattıysa geçerli.
+  const recentClose = await prisma.messageThread.findFirst({
+    where: {
+      closedByUserId: listing.userId,
+      closedAt: { gte: new Date(Date.now() - CLOSE_COOLDOWN_MS) },
+      blockedByUserId: null,
+      OR: [{ initiatorId: userId }, { tradeListing: { userId } }],
+    },
+    orderBy: { closedAt: "desc" },
+    select: { closedAt: true },
+  });
+  if (recentClose?.closedAt) {
+    const until = new Date(recentClose.closedAt.getTime() + CLOSE_COOLDOWN_MS);
+    return NextResponse.json(
+      {
+        error: `Bu kullanıcı yakın zamanda bir görüşmeyi kapattı. ${until.toLocaleDateString("tr-TR", { day: "numeric", month: "long" })} tarihinden sonra yeni bir görüşme başlatabilirsiniz.`,
+      },
+      { status: 403 },
+    );
   }
 
   const parsed = threadCreateSchema.safeParse(await req.json().catch(() => ({})));
