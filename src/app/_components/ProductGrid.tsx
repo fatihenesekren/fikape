@@ -158,11 +158,24 @@ export async function ProductGrid({ quizParam }: Props) {
     const reviewed = deduped.filter((p) => scoreMap.has(p.id));
 
     if (reviewed.length < MIN_REVIEWED_FOR_CURATION) {
-      // İnce veri koruması: en yeni aktif ürünler (model başına tek), grid boş
-      // görünmesin.
-      products = [...deduped]
-        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-        .slice(0, HOMEPAGE_LIMIT);
+      // İnce veri koruması: model başına tek, en yeni. Kategori çeşitliliği:
+      // her kategoriden ilk PER_CATEGORY_CAP, kalan slotlar sıradan — aksi halde
+      // katalog otomobil-ağırlıklı olduğu için grid neredeyse hep otomobil olur.
+      const newest = [...deduped].sort(
+        (a, b) => b.createdAt.getTime() - a.createdAt.getTime(),
+      );
+      const perCat = new Map<string, number>();
+      const primary: typeof newest = [];
+      const overflow: typeof newest = [];
+      for (const p of newest) {
+        const c = p.category?.slug ?? "?";
+        const n = perCat.get(c) ?? 0;
+        if (n < PER_CATEGORY_CAP) { perCat.set(c, n + 1); primary.push(p); }
+        else overflow.push(p);
+      }
+      products = [...primary, ...overflow]
+        .slice(0, HOMEPAGE_LIMIT)
+        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
     } else {
       // 2) Bayesçi ağırlıklı ortalama (calcShrunkScore) — tek 10/10'luk yorum
       //    sıralamayı domine edemesin. C = tüm yorumlanan ürünlerin genel ort.
