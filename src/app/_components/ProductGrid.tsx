@@ -246,12 +246,32 @@ export async function ProductGrid({ quizParam }: Props) {
   }
 
   if (products.length === 0) {
+    // Boş sonuç — NiyetKarti'yi (sonuç barı: Değiştir / ✕ Filtreyi kaldır /
+    // tikli cevap çipleri) yine göster ki kullanıcı bir cevabı düzeltip tekrar
+    // deneyebilsin veya filtreyi kaldırıp tüm araçlara dönebilsin. Önceden bu
+    // dal sadece düz bir "bulunamadı" metni döndürüyordu → açık uç.
     return (
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="text-center py-20 text-gray-400">
-          {quizAnswers ? "Bu kriterlere uyan araç bulunamadı." : "Henüz araç yok."}
+      <section className="w-full max-w-7xl mx-auto px-4 pt-4 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <NiyetKarti
+            quizAnswers={quizAnswers}
+            preCatSlug={null}
+            categoryReviewCount={categoryReviewCount}
+            showFeaturedHeading={false}
+          />
+          <div className="col-span-full text-center py-14 px-4">
+            <p className="text-sm font-semibold text-gray-700">
+              {quizAnswers ? "Bu kriterlere uyan araç bulunamadı." : "Henüz araç yok."}
+            </p>
+            {quizAnswers && (
+              <p className="text-xs text-gray-400 mt-1.5 max-w-xs mx-auto leading-relaxed">
+                Yukarıdaki karttan bir cevabı değiştirip tekrar deneyebilir ya da
+                filtreyi kaldırıp tüm araçlara dönebilirsin.
+              </p>
+            )}
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
 
