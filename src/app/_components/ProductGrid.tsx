@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
@@ -133,12 +134,33 @@ export async function ProductGrid({ quizParam }: Props) {
     });
   } else {
     // ── Ana sayfa kürasyonu — "Öne çıkan araçlar" (~12) ──
+    // 0) Model bazında tekilleştir: aynı marka+modelin farklı yıl-varyantları
+    //    ana sayfada yan yana görünmesin (bkz. kullanıcı geri bildirimi). Her
+    //    modelId'den TEK temsilci: en çok yayınlanmış yorumlu yıl, eşitlikte en
+    //    yeni yıl / en yeni kayıt. Tam katalog (/araclar) tekilleştirilmez.
+    const byModel = new Map<number, (typeof products)[number]>();
+    for (const p of products) {
+      const cur = byModel.get(p.modelId);
+      if (!cur) { byModel.set(p.modelId, p); continue; }
+      const pCount = scoreMap.get(p.id)?.count ?? 0;
+      const cCount = scoreMap.get(cur.id)?.count ?? 0;
+      const better =
+        pCount !== cCount
+          ? pCount > cCount
+          : (p.year ?? 0) !== (cur.year ?? 0)
+            ? (p.year ?? 0) > (cur.year ?? 0)
+            : p.createdAt.getTime() > cur.createdAt.getTime();
+      if (better) byModel.set(p.modelId, p);
+    }
+    const deduped = [...byModel.values()];
+
     // 1) Aday havuzu: en az 1 yayınlanmış yorumu olanlar.
-    const reviewed = products.filter((p) => scoreMap.has(p.id));
+    const reviewed = deduped.filter((p) => scoreMap.has(p.id));
 
     if (reviewed.length < MIN_REVIEWED_FOR_CURATION) {
-      // İnce veri koruması: en yeni aktif ürünler, grid boş görünmesin.
-      products = [...products]
+      // İnce veri koruması: en yeni aktif ürünler (model başına tek), grid boş
+      // görünmesin.
+      products = [...deduped]
         .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
         .slice(0, HOMEPAGE_LIMIT);
     } else {
@@ -227,6 +249,17 @@ export async function ProductGrid({ quizParam }: Props) {
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 pt-4 pb-8">
+      {!quizAnswers && (
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-sm font-bold text-gray-900 flex items-center gap-2">
+            <span aria-hidden="true">⭐</span> Öne çıkan araçlar
+          </h2>
+          <Link href="/araclar" className="text-xs font-semibold text-link hover:underline">
+            Tümü →
+          </Link>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
         {/* NiyetKarti — col-span-full, always first */}

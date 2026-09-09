@@ -137,23 +137,12 @@ export default async function Home({
       {/* ── Son yorumlar (quiz modunda değilken) ── */}
       {!quizParam && <RecentReviews />}
 
-      {/* ── Araç kartları — quiz yoksa kürasyonlu "öne çıkanlar" (~12),
-             quiz varsa quiz-skorlu sonuçlar. Tüm katalog artık /araclar'da. ── */}
+      {/* ── Araç kartları — quiz yoksa kürasyonlu "öne çıkanlar" (~12, model
+             başına tek), quiz varsa quiz-skorlu sonuçlar. "Tümü →" linki grid
+             başlığında; tüm katalog /araclar'da. ── */}
       <Suspense fallback={<CardGridSkeleton />}>
         <ProductGrid quizParam={quizParam} />
       </Suspense>
-
-      {/* ── Tüm kataloğa geçiş ── */}
-      {!quizParam && (
-        <div className="w-full max-w-7xl mx-auto px-4 -mt-2 pb-8">
-          <Link
-            href="/araclar"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-link hover:underline"
-          >
-            Tüm araçlar →
-          </Link>
-        </div>
-      )}
 
       {/* ── FI·KA·PE açıklama ── */}
       <section className="w-full max-w-7xl mx-auto px-4 pb-8">
