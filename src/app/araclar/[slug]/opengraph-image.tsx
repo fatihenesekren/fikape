@@ -109,13 +109,35 @@ export default async function Image({
         padding: "60px 80px",
       }}
     >
-      {/* Logo */}
-      <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
-        <span style={{ fontSize: 32, fontWeight: 900, color: "#85B7EB" }}>fi</span>
-        <span style={{ fontSize: 32, fontWeight: 300, color: "#333", margin: "0 3px" }}>·</span>
-        <span style={{ fontSize: 32, fontWeight: 900, color: "#97C459" }}>ka</span>
-        <span style={{ fontSize: 32, fontWeight: 300, color: "#333", margin: "0 3px" }}>·</span>
-        <span style={{ fontSize: 32, fontWeight: 900, color: "#F0997B" }}>pe</span>
+      {/* Logo — segmentli halka işareti + wordmark */}
+      <div style={{ display: "flex", alignItems: "center", gap: "13px" }}>
+        <div style={{ display: "flex", position: "relative", width: 38, height: 38 }}>
+          {[
+            { c: "#85B7EB", r: 0 },
+            { c: "#F0997B", r: 120 },
+            { c: "#97C459", r: 240 },
+          ].map(({ c, r }) => (
+            <div
+              key={r}
+              style={{
+                position: "absolute",
+                width: 38,
+                height: 38,
+                borderRadius: 38,
+                border: "6px solid transparent",
+                borderTopColor: c,
+                transform: `rotate(${r}deg)`,
+              }}
+            />
+          ))}
+        </div>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
+          <span style={{ fontSize: 32, fontWeight: 900, color: "#85B7EB" }}>fi</span>
+          <span style={{ fontSize: 32, fontWeight: 300, color: "#333", margin: "0 3px" }}>·</span>
+          <span style={{ fontSize: 32, fontWeight: 900, color: "#97C459" }}>ka</span>
+          <span style={{ fontSize: 32, fontWeight: 300, color: "#333", margin: "0 3px" }}>·</span>
+          <span style={{ fontSize: 32, fontWeight: 900, color: "#F0997B" }}>pe</span>
+        </div>
       </div>
 
       {/* Content */}

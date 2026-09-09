@@ -47,6 +47,26 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
           fontFamily: "sans-serif",
         }}
       >
+        <div style={{ display: "flex", position: "relative", width: 26, height: 26, marginRight: 10 }}>
+          {[
+            { c: "#85B7EB", r: 0 },
+            { c: "#F0997B", r: 120 },
+            { c: "#97C459", r: 240 },
+          ].map(({ c, r }) => (
+            <div
+              key={r}
+              style={{
+                position: "absolute",
+                width: 26,
+                height: 26,
+                borderRadius: 26,
+                border: "4.5px solid transparent",
+                borderTopColor: c,
+                transform: `rotate(${r}deg)`,
+              }}
+            />
+          ))}
+        </div>
         <div style={{ display: "flex", flexDirection: "column", flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", fontSize: 12, color: "#777" }}>fikape.com</div>
           <div
