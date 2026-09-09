@@ -38,11 +38,13 @@ function PlusCircleIcon() {
   );
 }
 
-// Mesajlarım — konuşma balonu.
-function MessageIcon() {
+// Mesajlarım — kuyruklu, iki satırlı konuşma balonu (DM hissi). Header'da 20px
+// (zil ile eşit); menüde 16px (diğer menü ikonlarıyla eşit). Renk currentColor.
+function MessageIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 15.5a2.5 2.5 0 0 1-2.5 2.5H8l-4 3V6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5z" />
+      <path d="M8 9.5h8M8 13h5" />
     </svg>
   );
 }
@@ -144,7 +146,9 @@ export function AuthNav() {
         <Link
           href="/mesajlar"
           aria-label={unreadMessages > 0 ? `${unreadMessages} okunmamış mesaj` : "Mesajlarım"}
-          className="relative hidden sm:flex p-2 rounded-md hover:bg-gray-50 transition-colors text-gray-600"
+          className={`relative hidden sm:flex p-2 rounded-md hover:bg-gray-50 transition-colors ${
+            unreadMessages > 0 ? "text-link" : "text-gray-600"
+          }`}
         >
           <MessageIcon />
           {unreadMessages > 0 && (
@@ -185,7 +189,7 @@ export function AuthNav() {
               {/* "Mesajlarım" SADECE mobilde menüde — masaüstünde zilin yanındaki
                   ayrı 💬 ikonu var. İkisi aynı anda olmayınca kopya görünmüyor. */}
               <Link href="/mesajlar" onClick={() => setMenuOpen(false)} className={`sm:hidden ${menuItemClass} justify-between`}>
-                <span className="flex items-center gap-2.5"><MessageIcon /> Mesajlarım</span>
+                <span className="flex items-center gap-2.5"><MessageIcon size={16} /> Mesajlarım</span>
                 {unreadMessages > 0 && (
                   <span className="min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center leading-none">
                     {unreadMessages > 9 ? "9+" : unreadMessages}
