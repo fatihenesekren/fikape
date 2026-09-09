@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { OnerilerClient } from "./OnerilerClient";
+import { findExistingVehicles } from "@/lib/existingVehicle";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -18,6 +19,34 @@ export default async function AdminOnerilerPage() {
     },
   });
 
+  // Faz 2 — "olası kopya" rozeti: bekleyen her öneri için katalogda (ACTIVE
+  // Product) aynı marka+model var mı? Faz 1 (canlı kontrol + 409) bypass
+  // edilebiliyor; moderatör kataloğu elle aramadan görsün diye.
+  const dupBySuggestionId = new Map<
+    number,
+    { slug: string; name: string; reviewCount: number }[]
+  >();
+  await Promise.all(
+    suggestions
+      .filter((s) => s.status === "PENDING")
+      .map(async (s) => {
+        const matches = await findExistingVehicles(s.brandName, s.modelName, s.categorySlug);
+        // Önerinin KENDİ ürünü PENDING olduğu için findExistingVehicles'a
+        // (status: ACTIVE) takılmaz; yine de emniyet için slug'ını çıkar.
+        const filtered = matches.filter((m) => m.slug !== s.product?.slug);
+        if (filtered.length > 0) {
+          dupBySuggestionId.set(
+            s.id,
+            filtered.slice(0, 3).map((m) => ({
+              slug: m.slug,
+              name: m.name,
+              reviewCount: m.reviewCount,
+            })),
+          );
+        }
+      }),
+  );
+
   const serialized = suggestions.map((s) => ({
     id: s.id,
     brandName: s.brandName,
@@ -35,6 +64,7 @@ export default async function AdminOnerilerPage() {
     productId: s.productId,
     productSlug: s.product?.slug ?? null,
     productStatus: s.product?.status ?? null,
+    dupMatches: dupBySuggestionId.get(s.id) ?? [],
   }));
 
   const pendingCount = serialized.filter((s) => s.status === "PENDING").length;

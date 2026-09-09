@@ -23,6 +23,7 @@ type Suggestion = {
   productId: number | null;
   productSlug: string | null;
   productStatus: string | null;
+  dupMatches: { slug: string; name: string; reviewCount: number }[];
 };
 
 const FUEL_LABELS: Record<string, string> = {
@@ -274,6 +275,29 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                   </div>
                 )}
 
+                {s.status === "PENDING" && s.dupMatches.length > 0 && (
+                  <div className="mb-2 px-3 py-2 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800">
+                    <p className="font-semibold mb-1">⚠️ Katalogda benzer araç var — olası kopya</p>
+                    <ul className="space-y-0.5">
+                      {s.dupMatches.map((m) => (
+                        <li key={m.slug} className="flex items-center gap-1.5 flex-wrap">
+                          <span className="font-medium">{m.name}</span>
+                          <span className="text-amber-600">
+                            · {m.reviewCount > 0 ? `${m.reviewCount} yorum` : "yorum yok"}
+                          </span>
+                          <Link
+                            href={`/araclar/${m.slug}`}
+                            target="_blank"
+                            className="underline hover:no-underline"
+                          >
+                            /araclar/{m.slug} →
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 {s.notes && (
                   <p className="text-sm text-gray-600 bg-gray-50 rounded-xl px-3 py-2 border border-gray-100">
                     &ldquo;{s.notes}&rdquo;
@@ -325,6 +349,20 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
               {modal.suggestion.year ? ` (${modal.suggestion.year})` : ""}
               {" · "}{CAT_LABELS[modal.suggestion.categorySlug] ?? modal.suggestion.categorySlug}
             </p>
+
+            {modal.action === "REJECTED" && modal.suggestion.dupMatches.length > 0 && (
+              <div className="mb-4 px-3 py-2.5 rounded-xl bg-amber-50 border border-amber-200 text-sm text-amber-800">
+                Katalogda mevcut olabilir:{" "}
+                <strong>{modal.suggestion.dupMatches[0].name}</strong>{" "}
+                (<a
+                  href={`/araclar/${modal.suggestion.dupMatches[0].slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:no-underline"
+                >/araclar/{modal.suggestion.dupMatches[0].slug}</a>).{" "}
+                <span className="text-xs text-amber-700">Reddederken admin notuna bu aracı yazabilirsin.</span>
+              </div>
+            )}
 
             {modal.action === "APPROVED" && modal.suggestion.productSlug && (
               <div className="mb-4 px-3 py-2.5 rounded-xl bg-green-50 border border-green-100 text-sm text-green-700">
