@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { tradeRatingSchema, formatZodError } from "@/lib/schemas";
+import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { createNotification } from "@/lib/notification";
 
@@ -47,6 +49,14 @@ export async function POST(
   const parsed = tradeRatingSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
+  }
+
+  if (parsed.data.comment) {
+    const c = checkContent(parsed.data.comment);
+    if (!c.ok) {
+      logContentFilterHit({ userId, surface: "TRADE_RATING", rule: c.rule, threadId });
+      return NextResponse.json({ error: c.error }, { status: 400 });
+    }
   }
 
   if (!(await checkRateLimit(`trade-rating:${userId}`, 20, 24 * 60 * 60 * 1000))) {

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { validateDetailShort } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { calcOverall } from "@/lib/fikape";
 import { recordScoreSnapshot } from "@/lib/security";
 import { computePHash, findDuplicatePair } from "@/lib/phash";
@@ -38,6 +39,7 @@ export async function PATCH(
 
   const detailCheck = validateDetailShort(detailText ?? "");
   if (!detailCheck.ok) {
+    logContentFilterHit({ userId, surface: "REVIEW", rule: detailCheck.rule });
     return NextResponse.json({ error: detailCheck.error }, { status: 400 });
   }
 

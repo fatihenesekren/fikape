@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { threadCreateSchema, formatZodError } from "@/lib/schemas";
 import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeMessagingEnabled } from "@/lib/features";
 import { createNotification } from "@/lib/notification";
@@ -100,8 +101,9 @@ export async function POST(
   const initiatorListingIdRaw = parsed.data.initiatorListingId;
   const initiatorListingId = initiatorListingIdRaw != null ? Number(initiatorListingIdRaw) : null;
 
-  const contentCheck = checkContent(text);
+  const contentCheck = checkContent(text, { strict: true });
   if (!contentCheck.ok) {
+    logContentFilterHit({ userId, surface: "TRADE_THREAD", rule: contentCheck.rule });
     return NextResponse.json({ error: contentCheck.error }, { status: 400 });
   }
 

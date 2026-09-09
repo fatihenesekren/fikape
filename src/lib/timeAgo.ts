@@ -1,3 +1,11 @@
+// "n gün öncesi" Date nesnesi — sunucu bileşenlerinde bir zaman penceresi
+// (örn. "son 30 gün") hesaplamak için. Doğrudan render içinde `Date.now()`
+// çağırmak react-hooks/purity kuralına takılıyor; yardımcı fonksiyon çağrısı
+// takılmıyor (timeAgoTr ile aynı kaçış).
+export function daysAgo(n: number): Date {
+  return new Date(Date.now() - n * 86_400_000);
+}
+
 // Basit Türkçe göreli zaman etiketi ("3 gün önce" gibi). RecentReviews.tsx'teki
 // yerel daysSince kalıbıyla aynı mantık, birden fazla yerde kullanıldığı için
 // (Takas ilan kartı/detayı) paylaşılan bir yardımcıya çıkarıldı.

@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { validateSummary, validateDetail } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { vehicleSuggestSchema, formatZodError } from "@/lib/schemas";
 import { notifyAdmins } from "@/lib/notification";
 import { slugify } from "@/lib/slugify";
@@ -36,9 +37,15 @@ export async function POST(req: Request) {
   } = parsed.data;
 
   const summaryCheck = validateSummary(summaryText ?? "");
-  if (!summaryCheck.ok) return NextResponse.json({ error: summaryCheck.error }, { status: 400 });
+  if (!summaryCheck.ok) {
+    logContentFilterHit({ userId, surface: "VEHICLE_SUGGEST", rule: summaryCheck.rule });
+    return NextResponse.json({ error: summaryCheck.error }, { status: 400 });
+  }
   const detailCheck = validateDetail(detailText ?? "");
-  if (!detailCheck.ok) return NextResponse.json({ error: detailCheck.error }, { status: 400 });
+  if (!detailCheck.ok) {
+    logContentFilterHit({ userId, surface: "VEHICLE_SUGGEST", rule: detailCheck.rule });
+    return NextResponse.json({ error: detailCheck.error }, { status: 400 });
+  }
 
   const category = await prisma.category.findUnique({ where: { slug: categorySlug } });
   if (!category) return NextResponse.json({ error: "Kategori bulunamadı." }, { status: 422 });

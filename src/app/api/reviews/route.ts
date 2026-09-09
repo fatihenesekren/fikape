@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
-import { validateDetailShort } from "@/lib/reviewValidation";
+import { checkContent, validateDetailShort } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { hashRequestContext, recordScoreSnapshot } from "@/lib/security";
 import { computePHash, findDuplicatePair } from "@/lib/phash";
 import { reviewCreateSchema, formatZodError } from "@/lib/schemas";
@@ -26,12 +27,22 @@ export async function POST(req: Request) {
     pros: prosArr, cons: consArr, photoUrls,
   } = parsed.data;
 
+  const userId = parseInt(session.user.id);
+
+  // summaryText opsiyonel (Hızlı Puanla akışı boş gönderir) — sadece doluysa
+  // içerik filtresinden geçir; uzunluk minimumu dayatma.
+  if (summaryText && summaryText.trim()) {
+    const summaryCheck = checkContent(summaryText);
+    if (!summaryCheck.ok) {
+      logContentFilterHit({ userId, surface: "REVIEW", rule: summaryCheck.rule });
+      return NextResponse.json({ error: summaryCheck.error }, { status: 400 });
+    }
+  }
   const detailCheck = validateDetailShort(detailText ?? "");
   if (!detailCheck.ok) {
+    logContentFilterHit({ userId, surface: "REVIEW", rule: detailCheck.rule });
     return NextResponse.json({ error: detailCheck.error }, { status: 400 });
   }
-
-  const userId = parseInt(session.user.id);
 
   const [product, user, recentCount, garajEntry] = await Promise.all([
     prisma.product.findUnique({ where: { slug: productSlug }, select: { id: true } }),

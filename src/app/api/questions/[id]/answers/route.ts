@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { answerCreateSchema, formatZodError } from "@/lib/schemas";
 import { sendQuestionAnsweredEmail } from "@/lib/email";
 import { createNotification } from "@/lib/notification";
@@ -24,12 +25,13 @@ export async function POST(
   }
   const { text } = parsed.data;
 
+  const userId = parseInt(session.user.id);
+
   const contentCheck = checkContent(text);
   if (!contentCheck.ok) {
+    logContentFilterHit({ userId, surface: "QNA", rule: contentCheck.rule });
     return NextResponse.json({ error: contentCheck.error }, { status: 400 });
   }
-
-  const userId = parseInt(session.user.id);
 
   const [question, user] = await Promise.all([
     prisma.question.findUnique({

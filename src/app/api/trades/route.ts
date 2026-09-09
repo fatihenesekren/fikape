@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { tradeListingCreateSchema, formatZodError } from "@/lib/schemas";
+import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeListingEnabled } from "@/lib/features";
 import { hashRequestContext } from "@/lib/security";
@@ -46,6 +48,17 @@ export async function POST(req: Request) {
   const userProductId = Number(parsed.data.userProductId);
   const wantCategoryId = parsed.data.wantCategoryId != null ? Number(parsed.data.wantCategoryId) : null;
   const wantBrandId = parsed.data.wantBrandId != null ? Number(parsed.data.wantBrandId) : null;
+
+  // İlan serbest metinleri de mesajlarla aynı filtreden geçer — herkese açık
+  // description/note, IBAN/telefon/e-posta paylaşımı için birebir uygun bir yer.
+  for (const field of [note, description, damageStatusNote, engineNote, transmissionNote, runningGearNote]) {
+    if (!field) continue;
+    const c = checkContent(field);
+    if (!c.ok) {
+      logContentFilterHit({ userId, surface: "TRADE_LISTING", rule: c.rule });
+      return NextResponse.json({ error: c.error }, { status: 400 });
+    }
+  }
 
   // Sadece bilinen parça anahtarları kabul edilir (whitelist) — istemciden
   // gelen serbest string'lerin doğrudan DB'ye yazılmasını önler.

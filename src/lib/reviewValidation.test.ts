@@ -103,6 +103,66 @@ describe("checkContent — telefon numarası engeli", () => {
   });
 });
 
+describe("checkContent — e-posta / sosyal medya / mesajlaşma engeli", () => {
+  it("e-posta adresi paylaşımını reddeder", () => {
+    const result = checkContent("bana buradan ulaş ahmet.yilmaz@gmail.com hemen dönerim");
+    expect(result.ok).toBe(false);
+    expect(result.rule).toBe("EMAIL");
+  });
+
+  it("wa.me / t.me kısa linkini reddeder (şemasız)", () => {
+    const result = checkContent("detaylar için wa.me/905321234567 üzerinden yazabilirsin bana");
+    expect(result.ok).toBe(false);
+    expect(result.rule).toBe("MESSAGING_APP");
+  });
+
+  it("instagram.com bağlantısını reddeder", () => {
+    const result = checkContent("araç fotoları instagram.com/satilikaraba hesabımda mevcut hepsi");
+    expect(result.ok).toBe(false);
+    expect(result.rule).toBe("MESSAGING_APP");
+  });
+
+  it("@kullaniciadi paylaşımını reddeder", () => {
+    const result = checkContent("bana ulaşmak için @satilik_araba yazabilirsin oradan dönerim");
+    expect(result.ok).toBe(false);
+    expect(result.rule).toBe("CONTACT_HANDLE");
+  });
+
+  it("strict modda 'whatsapptan yaz' ifadesini reddeder", () => {
+    const result = checkContent("müsaitsen whatsapptan yazalım detayları orada konuşuruz", { strict: true });
+    expect(result.ok).toBe(false);
+    expect(result.rule).toBe("MESSAGING_APP");
+  });
+
+  it("strict OLMAYAN modda 'whatsapp' anımını yakalamaz (yanlış-pozitif kontrolü)", () => {
+    const result = checkContent("araçta android auto ve whatsapp sesli okuma desteği gayet iyi çalışıyor");
+    expect(result.ok).toBe(true);
+  });
+
+  it("e-postası olmayan normal metni kabul eder (@ yok, nokta-alan yok)", () => {
+    const result = checkContent("bu araç şehir içi ve uzun yolda gerçekten çok konforlu ve ekonomik");
+    expect(result.ok).toBe(true);
+  });
+
+  it("ilan metnindeki '@45.000 km' ifadesini yanlışlıkla engellemez", () => {
+    const result = checkContent("2020 model temiz araç @45.000 km, tramersiz, ilk elden sahibinden");
+    expect(result.ok).toBe(true);
+  });
+});
+
+describe("checkContent — rule alanı", () => {
+  it("IBAN tetiklendiğinde rule='IBAN' döner", () => {
+    const r = checkContent("hesabım TR33 0006 1005 1978 6457 8413 26 buraya at");
+    expect(r.rule).toBe("IBAN");
+  });
+
+  it("temiz metinde rule tanımsızdır", () => {
+    const r = checkContent("bu araç fiyatına göre gayet başarılı ve keyifli bir sürüş sunuyor");
+    expect(r.ok).toBe(true);
+    expect(r.rule).toBeUndefined();
+  });
+});
+
 describe("validateDetail", () => {
   it("boş metni opsiyonel olarak kabul eder", () => {
     expect(validateDetail("").ok).toBe(true);

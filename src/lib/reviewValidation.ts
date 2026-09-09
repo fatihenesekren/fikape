@@ -26,9 +26,48 @@ const IBAN_PATTERN = /TR\d{2}([\s\-.]?\d{4}){5}[\s\-.]?\d{2}/i;
 // (WhatsApp vb.) çekmeyi önlemek için — bkz. denetim raporu, telefon paylaşımı filtrelenmiyordu.
 const PHONE_PATTERN = /(\+90|0090|0)?[\s\-.]?\(?5\d{2}\)?([\s\-.]?\d){7}/;
 
+// E-posta adresi — bir araç yorumunda/takas mesajında meşru bir gereksinim değil,
+// neredeyse her zaman platform dışına yönlendirme amaçlı. Çok düşük yanlış-pozitif.
+const EMAIL_PATTERN = /[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}/i;
+
+// Mesajlaşma/sosyal medya kısa alan adları — şemasız yazıldıklarında ("wa.me/905..",
+// "t.me/kullanici", "instagram.com/..") mevcut URL kontrolüne (http/www) takılmıyorlar.
+const MESSAGING_APP_URL_PATTERN =
+  /\b(wa\.me|t\.me|telegram\.(me|org)|instagram\.com|instagr\.am|fb\.(com|me)|facebook\.com|m\.me)\b/i;
+
+// "@kullaniciadi" — sosyal medya kolu paylaşımı. Harf/alt-çizgi ile BAŞLAYAN
+// (rakamla değil — "@45.000 km" gibi meşru ilan metnini yakalamasın) ve en az
+// 3 karakter olan token. Türkçe araç metinlerinde "@handle" nadir.
+const CONTACT_HANDLE_PATTERN = /(^|\s)@[a-z_][a-z0-9._]{2,29}\b/i;
+
+// Yalnızca "strict" modda (takas mesajlaşması) — uygulama adının anılması pratikte
+// her zaman "platform dışına geçelim" demek. Yorum/Soru-Cevap gibi paylaşımlı
+// bağlamlarda kapalı, çünkü "araçta Android Auto whatsapp desteği var" gibi
+// meşru cümleleri de yakalar. Sonda \b YOK — "whatsapptan", "telegramdan" gibi
+// Türkçe ekli hâlleri de yakalasın diye.
+const MESSAGING_APP_NAME_PATTERN =
+  /\b(whats?app|watsap|wpp|telegram|instagram)/i;
+
+export type FilterRule =
+  | "IBAN"
+  | "PHONE"
+  | "EMAIL"
+  | "CONTACT_HANDLE"
+  | "MESSAGING_APP"
+  | "URL"
+  | "PROFANITY"
+  | "GIBBERISH";
+
 export interface ValidationResult {
   ok: boolean;
   error: string | null;
+  /** ok === false olduğunda hangi kuralın tetiklendiği (moderasyon izi için). */
+  rule?: FilterRule;
+}
+
+export interface ContentCheckOptions {
+  /** Takas mesajlaşması gibi 1-1 kapalı bağlamlarda ek kurallar (uygulama adı anımı). */
+  strict?: boolean;
 }
 
 export function validateSummary(text: string): ValidationResult {
@@ -60,32 +99,54 @@ export function validateDetailShort(text: string): ValidationResult {
   return checkContent(t);
 }
 
-export function checkContent(t: string): ValidationResult {
+export function checkContent(t: string, opts: ContentCheckOptions = {}): ValidationResult {
   // IBAN / banka hesabı paylaşımı — jenerik spam mesajına düşmeden önce, özel mesajla reddet
   if (IBAN_PATTERN.test(t)) {
-    return err("IBAN veya banka hesap bilgisi paylaşımına izin verilmemektedir.");
+    return err("IBAN veya banka hesap bilgisi paylaşımına izin verilmemektedir.", "IBAN");
+  }
+
+  // Mesajlaşma/sosyal medya kısa linkleri (wa.me, t.me, instagram.com …) — telefon
+  // kontrolünden ÖNCE, çünkü "wa.me/9053.." aksi halde PHONE'a düşer, oysa bu bir
+  // site-dışı yönlendirme linki.
+  if (MESSAGING_APP_URL_PATTERN.test(t)) {
+    return err("Site dışı iletişim/sosyal medya bağlantısı paylaşımına izin verilmemektedir.", "MESSAGING_APP");
   }
 
   // Telefon numarası paylaşımı — kullanıcıları platform dışına (WhatsApp vb.) çekip
   // mesajlaşma korumasını (rapor/blok/moderasyon) atlatmayı önlemek için.
   if (PHONE_PATTERN.test(t)) {
-    return err("Telefon numarası paylaşımına izin verilmemektedir.");
+    return err("Telefon numarası paylaşımına izin verilmemektedir.", "PHONE");
+  }
+
+  // E-posta adresi
+  if (EMAIL_PATTERN.test(t)) {
+    return err("E-posta adresi paylaşımına izin verilmemektedir.", "EMAIL");
+  }
+
+  // "@kullaniciadi" — sosyal medya kolu
+  if (CONTACT_HANDLE_PATTERN.test(t)) {
+    return err("Sosyal medya hesabı paylaşımına izin verilmemektedir.", "CONTACT_HANDLE");
+  }
+
+  // Strict (takas mesajlaşması): uygulama adının anılması
+  if (opts.strict && MESSAGING_APP_NAME_PATTERN.test(t)) {
+    return err("Görüşmeyi site dışına taşımak (WhatsApp/Telegram vb.) için yönlendirme yapılamaz.", "MESSAGING_APP");
   }
 
   // URL kontrolü
   for (const pattern of SPAM_PATTERNS) {
     if (pattern.test(t)) {
       if (/https?:\/\//i.test(t) || /www\./i.test(t)) {
-        return err("Link paylaşımına izin verilmemektedir.");
+        return err("Link paylaşımına izin verilmemektedir.", "URL");
       }
-      return err("Lütfen anlamlı bir metin yazınız.");
+      return err("Lütfen anlamlı bir metin yazınız.", "GIBBERISH");
     }
   }
 
   // Harf oranı — metnin en az %40'ı harf olmalı
   const letters = (t.match(/[a-züğışöçA-ZÜĞİŞÖÇ]/g) ?? []).length;
   if (t.length > 15 && letters / t.length < 0.4) {
-    return err("Lütfen anlamlı bir metin yazınız.");
+    return err("Lütfen anlamlı bir metin yazınız.", "GIBBERISH");
   }
 
   // Küfür / hakaret kontrolü — boşluklu VE bitişik (ayraçla atlatmayı önlemek için) iki ayrı kontrol.
@@ -103,7 +164,7 @@ export function checkContent(t: string): ValidationResult {
   const lowerCollapsed = lowerBase.replace(/[^a-züğışöç]/gi, "");
   for (const word of PROFANITY_NORM) {
     if (lowerSpaced.includes(word) || lowerCollapsed.includes(word)) {
-      return err("Hakaret veya uygunsuz ifade tespit edildi.");
+      return err("Hakaret veya uygunsuz ifade tespit edildi.", "PROFANITY");
     }
   }
 
@@ -111,4 +172,4 @@ export function checkContent(t: string): ValidationResult {
 }
 
 function ok(): ValidationResult  { return { ok: true,  error: null }; }
-function err(e: string): ValidationResult { return { ok: false, error: e }; }
+function err(e: string, rule?: FilterRule): ValidationResult { return { ok: false, error: e, rule }; }

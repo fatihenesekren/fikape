@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { daysAgo } from "@/lib/timeAgo";
 import { AdminNav } from "./AdminNav";
 import { AdminBottomNav } from "./AdminBottomNav";
 import { AdminMobileHeader } from "./AdminMobileHeader";
@@ -15,7 +16,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   });
   if (!adminUser || adminUser.trustLevel < 5) redirect("/");
 
-  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports, pendingContentReports, pendingDeletionRequests] = await Promise.all([
+  const filterWindowStart = daysAgo(30);
+
+  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports, pendingContentReports, pendingDeletionRequests, repeatFilterOffenders] = await Promise.all([
     prisma.review.count({
       where: { OR: [{ status: "PENDING" }, { status: "PUBLISHED", photos: { some: { status: "PENDING" } } }] },
     }).catch(() => 0),
@@ -25,6 +28,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     prisma.messageReport.count({ where: { status: "PENDING" } }).catch(() => 0),
     prisma.contentReport.count({ where: { status: "PENDING" } }).catch(() => 0),
     prisma.dataDeletionRequest.count({ where: { status: "PENDING" } }).catch(() => 0),
+    prisma.contentFilterHit.groupBy({
+      by: ["userId"],
+      where: { createdAt: { gte: filterWindowStart }, user: { isBanned: false } },
+      _count: { id: true },
+      having: { id: { _count: { gte: 3 } } },
+    }).then((g) => g.length).catch(() => 0),
   ]);
 
   const navItems = [
@@ -37,6 +46,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     { href: "/admin/takas-talep-raporu", label: "Takas Talep Raporu", shortLabel: "Talep", icon: "📊", badge: 0 },
     { href: "/admin/hesap-silme-talepleri", label: "Hesap Silme Talepleri", shortLabel: "Silme", icon: "🗑️", badge: pendingDeletionRequests },
     { href: "/admin/icerik-bildirimleri", label: "İçerik Bildirimleri", shortLabel: "Bildirimler", icon: "⚠️", badge: pendingContentReports },
+    { href: "/admin/icerik-filtresi", label: "İçerik Filtresi", shortLabel: "Filtre", icon: "🛑", badge: repeatFilterOffenders },
   ];
 
   return (

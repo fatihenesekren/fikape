@@ -221,6 +221,7 @@ model User {
   savedSearches       SavedSearch[]
   tradeRatingsGiven    TradeRating[] @relation("TradeRater")
   tradeRatingsReceived TradeRating[] @relation("TradeRated")
+  contentFilterHits    ContentFilterHit[]
 
   @@map("users")
 }
@@ -462,6 +463,26 @@ model ModerationLog {
   createdAt   DateTime         @default(now())
 
   @@map("moderation_logs")
+}
+
+// ─────────────────────────────────────────────
+// İÇERİK FİLTRESİ İZİ — bir gönderim IBAN/telefon/e-posta/link/handle
+// nedeniyle engellendiğinde bırakılan hafif kayıt. Ham metin TUTULMAZ.
+// Amaç: tekrar eden ihlalciyi admin panelinde görünür kılmak.
+// ─────────────────────────────────────────────
+
+model ContentFilterHit {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  surface   String   @db.VarChar(24) // REVIEW | QNA | TRADE_MESSAGE | TRADE_THREAD | TRADE_LISTING | TRADE_RATING | VEHICLE_SUGGEST
+  rule      String   @db.VarChar(24) // IBAN | PHONE | EMAIL | CONTACT_HANDLE | MESSAGING_APP | URL | PROFANITY | GIBBERISH
+  threadId  Int?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([createdAt])
+  @@map("content_filter_hits")
 }
 
 enum ModerationAction {

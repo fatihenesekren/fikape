@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { tradeListingUpdateSchema, formatZodError } from "@/lib/schemas";
+import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { isTradeListingEnabled } from "@/lib/features";
 import { CAR_PARTS } from "@/lib/carParts";
 
@@ -80,6 +82,16 @@ export async function PATCH(
   // action === "update"
   if (!listing.isActive) {
     return NextResponse.json({ error: "Kapalı bir ilan düzenlenemez, önce yeniden açınız." }, { status: 409 });
+  }
+
+  // Serbest metinler ilan oluşturmadaki filtrenin aynısından geçer.
+  for (const field of [data.note, data.description, data.damageStatusNote, data.engineNote, data.transmissionNote, data.runningGearNote]) {
+    if (!field) continue;
+    const c = checkContent(field);
+    if (!c.ok) {
+      logContentFilterHit({ userId, surface: "TRADE_LISTING", rule: c.rule });
+      return NextResponse.json({ error: c.error }, { status: 400 });
+    }
   }
 
   const wantCategoryId = data.wantCategoryId != null ? Number(data.wantCategoryId) : null;
