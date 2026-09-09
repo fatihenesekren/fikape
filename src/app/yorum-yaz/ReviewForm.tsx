@@ -332,11 +332,8 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
         </div>
         {isQuick && (
           <p className="text-[11px] text-gray-400 mt-2 leading-relaxed">
-            Vaktin varsa{" "}
-            <button type="button" onClick={() => setMode("full")} className="font-semibold text-link hover:underline">
-              detaylı yorum
-            </button>{" "}
-            diğer alıcılara çok daha faydalı — hızlıyla başlayıp sonra da ekleyebilirsin.
+            Detaylı yorum diğer kullanıcılara daha çok yol gösterir. Hızlıca yorumunu
+            gönderip daha sonra detaylandırabilirsin.
           </p>
         )}
       </div>
