@@ -6,6 +6,7 @@ import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
 import { SearchNoMatchPrompt } from "@/components/SearchNoMatchPrompt";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
+import { searchProductIds } from "@/lib/searchProducts";
 import type { FikapeScores } from "@/lib/fikape";
 
 export const dynamic = "force-dynamic";
@@ -22,43 +23,47 @@ export async function generateMetadata({
   };
 }
 
-// Türkçe noktasız "ı" NFD ile ayrışmıyor (kendi başına harf, aksanlı değil), bu yüzden
-// elle map'leniyor. Büyük "İ" ise toLowerCase() ile zaten "i" + görünmez birleşen nokta
-// işaretine (U+0307) ayrışıyor — bu işaret de aşağıdaki NFD+DIACRITIC_MARKS_RE adımıyla
-// temizleniyor. Geri kalan tüm aksanlı Latin harfleri (ë, š, é, ç, ö, ü, ğ, ş...) de
-// aynı NFD adımıyla ayrıştırılıp kaldırılıyor — Citroën, Škoda gibi tek tek eklenmesi
-// gereken özel durum listesi tutmak yerine genel bir çözüm.
-const DIACRITIC_MARKS_RE = new RegExp("[\\u0300-\\u036f]", "g");
-
-function normalize(str: string) {
-  return str
-    .toLowerCase()
-    .replace(/ı/g, "i")
-    .normalize("NFD")
-    .replace(DIACRITIC_MARKS_RE, "");
-}
+// Boş/tek-karakter sorguda önizleme kaç kart gösterilsin — önceden TÜM katalog
+// sayfalamasız basılıyordu (bkz. ajan değerlendirmesi). Tam katalog /araclar'da.
+const CATALOG_PREVIEW_LIMIT = 60;
 
 async function SearchResults({ query }: { query: string }) {
-  const allProducts = await prisma.product.findMany({
-    where: { isActive: true },
-    include: {
-      brand: true,
-      model: true,
-      category: true,
-      _count: { select: { reviews: { where: { status: "PUBLISHED" } } } },
-    },
-    orderBy: [{ brand: { name: "asc" } }, { year: "desc" }],
-  });
+  const search = query.length >= 2 ? await searchProductIds(query) : null;
 
-  const nq = normalize(query);
-  const products = query.length >= 2
-    ? allProducts.filter((p) =>
-        normalize(p.name).includes(nq) ||
-        normalize(p.brand.name).includes(nq) ||
-        normalize(p.model.name).includes(nq) ||
-        (p.trimName ? normalize(p.trimName).includes(nq) : false)
-      )
-    : allProducts;
+  // Sorgu var ama hiç eşleşme (fuzzy dahil) yok → tam genişlik "öner" daveti.
+  // Bu erken çıkış, /oner katalog-büyütme hunisini korur (düşük güvenli fuzzy
+  // sonuç dönmediği için burada yakalanır).
+  if (search && search.ids.length === 0) {
+    return <SearchNoMatchPrompt query={query} variant="empty" />;
+  }
+
+  let products;
+  if (search) {
+    const rows = await prisma.product.findMany({
+      where: { id: { in: search.ids } },
+      include: {
+        brand: true,
+        model: true,
+        category: true,
+        _count: { select: { reviews: { where: { status: "PUBLISHED" } } } },
+      },
+    });
+    // searchProductIds sırasını koru (Faz 1: marka/yıl · Faz 2: similarity).
+    const rank = new Map(search.ids.map((id, i) => [id, i]));
+    products = rows.sort((a, b) => (rank.get(a.id) ?? 0) - (rank.get(b.id) ?? 0));
+  } else {
+    products = await prisma.product.findMany({
+      where: { isActive: true },
+      include: {
+        brand: true,
+        model: true,
+        category: true,
+        _count: { select: { reviews: { where: { status: "PUBLISHED" } } } },
+      },
+      orderBy: [{ brand: { name: "asc" } }, { year: "desc" }],
+      take: CATALOG_PREVIEW_LIMIT,
+    });
+  }
 
   // Puan ortalamaları
   const productIds = products.map((p) => p.id);
@@ -106,16 +111,19 @@ async function SearchResults({ query }: { query: string }) {
     favoritedIds = new Set(favs.map((f) => f.productId));
   }
 
-  if (query.length >= 2 && products.length === 0) {
-    return <SearchNoMatchPrompt query={query} variant="empty" />;
-  }
-
   return (
     <>
+      {search?.fuzzy && (
+        <p className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-4 py-2.5 mb-4">
+          &ldquo;{query}&rdquo; için tam eşleşme bulunamadı — benzer sonuçları gösteriyoruz.
+        </p>
+      )}
       <p className="text-sm text-gray-400 mb-5">
-        {query.length >= 2
-          ? `${products.length} araç bulundu`
-          : `${products.length} araç`}
+        {search?.fuzzy
+          ? `${products.length} benzer sonuç`
+          : query.length >= 2
+            ? `${products.length} araç bulundu`
+            : `${products.length} araç`}
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {products.map((product) => {
