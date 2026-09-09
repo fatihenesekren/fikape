@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
@@ -262,24 +261,16 @@ export async function ProductGrid({ quizParam }: Props) {
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 pt-4 pb-8">
-      {!quizAnswers && (
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-sm font-bold text-gray-900 flex items-center gap-2">
-            <span aria-hidden="true">⭐</span> Öne çıkan araçlar
-          </h2>
-          <Link href="/araclar" className="text-xs font-semibold text-link hover:underline">
-            Tümü →
-          </Link>
-        </div>
-      )}
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
-        {/* NiyetKarti — col-span-full, always first */}
+        {/* NiyetKarti — col-span-full, her zaman ilk. Quiz kapalıyken hemen
+            altında "⭐ Öne çıkan araçlar" başlığını da kendisi render eder;
+            quiz açılınca (seçim yapılırken) başlık da onunla birlikte kaybolur. */}
         <NiyetKarti
           quizAnswers={quizAnswers}
           preCatSlug={null}
           categoryReviewCount={categoryReviewCount}
+          showFeaturedHeading={!quizAnswers}
         />
 
         {products.map((product) => {

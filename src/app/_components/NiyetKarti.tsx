@@ -12,6 +12,11 @@ interface Props {
   quizAnswers:         QuizAnswers | null;
   preCatSlug:          string | null;
   categoryReviewCount?: number;
+  // Ana sayfa gridinde kapalı banner'ın hemen ALTINDA "⭐ Öne çıkan araçlar"
+  // başlığını göster. Quiz açıkken (seçim yapılırken) başlık gizlenir — bu
+  // yüzden ProductGrid'te ayrı bir <h2> yerine NiyetKarti'nin kendi open
+  // state'ine bağlı olarak burada render edilir.
+  showFeaturedHeading?: boolean;
 }
 
 // Kartların gri değil, marka renklerinden birine hafif çekilmesi için döngüsel ton
@@ -81,7 +86,7 @@ function resultTrustLine(count: number): string {
   return "Bu kategoride henüz az yorum var — şimdilik FI·KA·PE puanına göre sıraladık";
 }
 
-export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }: Props) {
+export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, showFeaturedHeading = false }: Props) {
   const router = useRouter();
 
   const [open,        setOpen]        = useState(false);
@@ -253,6 +258,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
   // ── Closed banner ─────────────────────────────────────
   if (!open) {
     return (
+      <>
       <div className="col-span-full">
         <button
           onClick={() => openQuiz()}
@@ -321,6 +327,13 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0 }:
           </div>
         </button>
       </div>
+
+      {showFeaturedHeading && (
+        <h2 className="col-span-full text-sm font-bold text-gray-900 flex items-center gap-2">
+          <span aria-hidden="true">⭐</span> Öne çıkan araçlar
+        </h2>
+      )}
+      </>
     );
   }
 
