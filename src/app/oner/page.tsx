@@ -299,7 +299,7 @@ export default function OnerPage() {
       if (!res.ok) throw new Error(typeof data.error === "string" ? data.error : "Bir hata oluştu");
 
       // Başarı — yorum formuna yönlendir
-      router.push(`/yorum-yaz?arac=${data.slug}`);
+      router.push(`/yorum-yaz?arac=${data.slug}&yeni=1`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Bir hata oluştu");
       setSubmitting(false);

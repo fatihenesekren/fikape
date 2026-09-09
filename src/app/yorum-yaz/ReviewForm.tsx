@@ -53,10 +53,14 @@ interface Product {
 interface Props {
   products: Product[];
   defaultSlug?: string;
+  /** Araç Öner akışından YENİ eklenerek gelindi mi — yeşil "aracınız eklendi"
+      bilgi kutusu yalnızca o zaman gösterilir. Sıradan "Yorum yaz" linkleri
+      (araç sayfası, garaj, favori...) `?arac=` taşısa da bu kutuyu göstermez. */
+  justAdded?: boolean;
   reviewedSlugs?: string[];
 }
 
-export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props) {
+export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedSlugs = [] }: Props) {
   const router = useRouter();
 
   // ── Araç arama ───────────────────────────────────────────────────────────
@@ -275,7 +279,7 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         <p className="text-sm text-gray-500 mt-1">Deneyimini paylaş, diğer kullanıcılara yol göster.</p>
       </div>
 
-      {defaultSlug && (
+      {defaultSlug && justAdded && (
         <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-green-50 border border-green-100 text-sm text-green-700">
           <span>Aracınız eklendi ✓ — isterseniz deneyiminizi de paylaşabilirsiniz, zorunlu değil.</span>
           <Link
@@ -287,29 +291,55 @@ export function ReviewForm({ products, defaultSlug, reviewedSlugs = [] }: Props)
         </div>
       )}
 
-      <div className="flex gap-1 p-1 rounded-xl bg-gray-100">
-        <button
-          type="button"
-          onClick={() => setMode("quick")}
-          className="flex-1 py-2 rounded-lg text-sm font-bold transition-colors"
-          style={mode === "quick" ? { background: "#111", color: "#fff" } : { color: "#6b7280" }}
-        >
-          ⚡ Hızlı Puanla
-        </button>
-        <button
-          type="button"
-          onClick={() => setMode("full")}
-          className="flex-1 py-2 rounded-lg text-sm font-bold transition-colors"
-          style={mode === "full" ? { background: "#111", color: "#fff" } : { color: "#6b7280" }}
-        >
-          📝 Detaylı Yorum
-        </button>
+      {/* Değerlendirme türü — iki seçenek de içeriğiyle birlikte görünür ki
+          "detaylı yorum" seçeneği fark edilsin (bkz. kullanıcı geri bildirimi:
+          Hızlı çok baskındı, Detaylı görmezden geliniyordu). */}
+      <div>
+        <p className="text-sm font-semibold text-gray-800 mb-2">Nasıl değerlendirmek istersin?</p>
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => setMode("quick")}
+            aria-pressed={isQuick}
+            className={`text-left rounded-xl border-2 p-3 transition-colors ${
+              isQuick ? "border-gray-900 bg-gray-50" : "border-gray-200 hover:border-gray-300"
+            }`}
+          >
+            <span className="flex items-center gap-1.5 text-sm font-bold text-gray-900">
+              <span aria-hidden="true">⚡</span> Hızlı
+              {isQuick && <span className="ml-auto text-gray-900" aria-hidden="true">✓</span>}
+            </span>
+            <span className="block text-[11px] text-gray-500 mt-1 leading-snug">
+              3 FI·KA·PE puanı · ~10 saniye
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("full")}
+            aria-pressed={!isQuick}
+            className={`text-left rounded-xl border-2 p-3 transition-colors ${
+              !isQuick ? "border-gray-900 bg-gray-50" : "border-gray-200 hover:border-gray-300"
+            }`}
+          >
+            <span className="flex items-center gap-1.5 text-sm font-bold text-gray-900">
+              <span aria-hidden="true">📝</span> Detaylı
+              {!isQuick && <span className="ml-auto text-gray-900" aria-hidden="true">✓</span>}
+            </span>
+            <span className="block text-[11px] text-gray-500 mt-1 leading-snug">
+              Puan + artı/eksi + fotoğraf + yazılı deneyim
+            </span>
+          </button>
+        </div>
+        {isQuick && (
+          <p className="text-[11px] text-gray-400 mt-2 leading-relaxed">
+            Vaktin varsa{" "}
+            <button type="button" onClick={() => setMode("full")} className="font-semibold text-link hover:underline">
+              detaylı yorum
+            </button>{" "}
+            diğer alıcılara çok daha faydalı — hızlıyla başlayıp sonra da ekleyebilirsin.
+          </p>
+        )}
       </div>
-      {isQuick && (
-        <p className="text-xs text-gray-400 -mt-3">
-          10 saniyede puanla — istersen sonra artı/eksi ekleyerek güçlendirebilirsin.
-        </p>
-      )}
 
       {error && (
         <div className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
