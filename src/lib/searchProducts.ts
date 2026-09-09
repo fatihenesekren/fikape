@@ -15,7 +15,10 @@ import { prisma } from "@/lib/prisma";
 const MAX_QUERY_LEN = 128;
 const MAX_TERMS = 6;
 const FUZZY_MAX_TERMS = 2;          // tüm-cümle similarity 2 kelimeden sonra güvenilmez
-const FUZZY_MIN_SIMILARITY = 0.45;  // sonuç sayfasında "benzer" göstermek için taban
+// pg_trgm varsayılanı (0.3) — referans /api/search/products ile aynı bar.
+// 0.45 denendi ama en yaygın typo bile ("toyta" vs "toyota" ≈ 0.44) eleniyordu.
+// "benzer sonuçları gösteriyoruz" banner'ı kafa karışıklığını hafifletiyor.
+const FUZZY_MIN_SIMILARITY = 0.3;
 const EXACT_LIMIT = 60;
 const FUZZY_LIMIT = 10;
 
