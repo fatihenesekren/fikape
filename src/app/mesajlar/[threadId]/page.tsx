@@ -12,6 +12,41 @@ import { TradeRatingForm } from "./TradeRatingForm";
 
 export const metadata: Metadata = { title: "Görüşme", robots: { index: false } };
 
+type SideListing = {
+  id: number;
+  isActive: boolean;
+  product: { brand: { name: string }; model: { name: string }; year: number | null };
+  userProduct?: { usageAmount: number | null; usageUnit: string | null } | null;
+} | null;
+
+function SideRow({ label, listing }: { label: string; listing: SideListing }) {
+  return (
+    <div>
+      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wide leading-tight">{label}</p>
+      {listing ? (
+        <div className="flex items-baseline gap-2 flex-wrap">
+          <span className="text-sm font-semibold text-gray-900">
+            {listing.product.brand.name} {stripModelGenRange(listing.product.model.name)}
+            {listing.product.year ? ` ${listing.product.year}` : ""}
+            {listing.userProduct?.usageUnit === "km" && listing.userProduct.usageAmount != null
+              ? ` · ${listing.userProduct.usageAmount.toLocaleString("tr-TR")} km`
+              : ""}
+          </span>
+          {listing.isActive ? (
+            <Link href={`/takas/${listing.id}`} className="text-xs text-link hover:underline">
+              İlanı aç →
+            </Link>
+          ) : (
+            <span className="text-xs text-gray-300">ilan kapandı</span>
+          )}
+        </div>
+      ) : (
+        <p className="text-sm text-gray-400">Araç belirtilmedi</p>
+      )}
+    </div>
+  );
+}
+
 export default async function ThreadPage({
   params,
 }: {
@@ -33,6 +68,7 @@ export default async function ThreadPage({
         include: {
           product: { include: { brand: true, model: true } },
           user: { select: { id: true, displayName: true, avatarUrl: true } },
+          userProduct: { select: { usageAmount: true, usageUnit: true } },
         },
       },
       // Mesajı atanın "ben bu aracımla teklif ediyorum" dediği kendi ilanı —
@@ -64,14 +100,21 @@ export default async function ThreadPage({
     data: { isRead: true },
   }).catch(() => {});
 
-  const vehicleName = `${thread.tradeListing.product.brand.name} ${stripModelGenRange(thread.tradeListing.product.model.name)}`;
   const isBlocked = thread.blockedByUserId != null;
   const isListingClosed = !thread.tradeListing.isActive;
   const canMessage = !isBlocked && !isListingClosed && isTradeMessagingEnabled();
   const isInitiator = userId === thread.initiatorId;
   const counterpart = isInitiator ? thread.tradeListing.user : thread.initiator;
+  const counterpartName = counterpart?.displayName ?? "Kullanıcı";
   const interestLostByMe = thread.interestLostByUserId === userId;
   const interestLostByOther = thread.interestLostByUserId != null && !interestLostByMe;
+
+  // Takas görüşmesinde iki araç var: benim tarafım + karşı tarafın aracı.
+  // Rol'e göre eşleşir — ilan sahibiysem ilanım tradeListing, karşı tarafın
+  // teklifi initiatorListing; mesajı ben başlattıysam tersi. Karşı taraf hiç
+  // ilan seçmemiş olabilir (initiatorListing null).
+  const mySide   = isInitiator ? thread.initiatorListing : thread.tradeListing;
+  const theirSide = isInitiator ? thread.tradeListing : thread.initiatorListing;
 
   const statusChip = isBlocked
     ? { label: "Sonlandırıldı", cls: "bg-red-50 text-red-600" }
@@ -102,7 +145,7 @@ export default async function ThreadPage({
       className="max-w-2xl w-full mx-auto flex flex-col"
       style={{ height: "calc(100dvh - 3.5rem)" }}
     >
-      {/* ── Başlık ── */}
+      {/* ── Başlık — sadece kiminle konuştuğun ── */}
       <div className="shrink-0 border-b border-gray-100">
         <div className="px-4 pt-3">
           <Link href="/mesajlar" className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-gray-600 transition-colors">
@@ -119,55 +162,31 @@ export default async function ThreadPage({
             seed={String(counterpart?.id ?? "")}
             size={36}
           />
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold text-gray-900 truncate">
-                {counterpart?.displayName ?? "Kullanıcı"}
-              </span>
-              <span className={`shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full ${statusChip.cls}`}>
-                {statusChip.label}
-              </span>
-            </div>
-            <div className="text-xs text-gray-400 truncate">
-              {vehicleName} · {thread.tradeListing.city} ·{" "}
-              <Link href={`/takas/${thread.tradeListing.id}`} className="text-link hover:underline">
-                İlanı gör →
-              </Link>
-            </div>
+          <div className="flex-1 min-w-0 flex items-center gap-2">
+            <span className="text-sm font-bold text-gray-900 truncate">{counterpartName}</span>
+            <span className={`shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full ${statusChip.cls}`}>
+              {statusChip.label}
+            </span>
           </div>
           <ThreadActions threadId={thread.id} showInterestLost={thread.interestLostByUserId == null} />
         </div>
       </div>
 
-      {/* Karşı tarafın teklif ettiği araç — sadece alıcı (ilan sahibi) için
-          anlamlı; kendi ilanını zaten başlıkta görüyor. */}
-      {!isInitiator && (
-        <div className="shrink-0 px-4 py-2 bg-link-soft/60 border-b border-link-line">
-          <p className="text-[11px] font-bold text-link-deep">
-            {counterpart?.displayName ?? "Kullanıcı"} — teklif ettiği araç
-          </p>
-          {thread.initiatorListing ? (
-            thread.initiatorListing.isActive ? (
-              <Link
-                href={`/takas/${thread.initiatorListing.id}`}
-                className="text-sm font-semibold text-link-deep hover:underline"
-              >
-                {thread.initiatorListing.product.brand.name}{" "}
-                {stripModelGenRange(thread.initiatorListing.product.model.name)}
-                {thread.initiatorListing.product.year && ` ${thread.initiatorListing.product.year}`}
-                {thread.initiatorListing.userProduct?.usageUnit === "km" &&
-                  thread.initiatorListing.userProduct.usageAmount != null &&
-                  ` · ${thread.initiatorListing.userProduct.usageAmount.toLocaleString("tr-TR")} km`}
-                {" →"}
-              </Link>
-            ) : (
-              <p className="text-sm text-gray-400">Bu ilan artık aktif değil.</p>
-            )
-          ) : (
-            <p className="text-sm text-gray-400">Bu kullanıcı bir ilan belirtmedi.</p>
-          )}
+      {/* ── Bu görüşmedeki takas — iki araç, kimin olduğu açıkça yazılı ── */}
+      <div className="shrink-0 px-4 py-3 bg-gray-50/70 border-b border-gray-100">
+        <p className="text-[11px] font-bold text-gray-500 mb-2">Bu görüşmedeki takas</p>
+        <div className="space-y-1.5">
+          <SideRow label="Senin aracın" listing={mySide} />
+          <div className="flex items-center gap-2 text-gray-300 pl-1">
+            <span className="h-px w-4 bg-gray-200" />
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 8h13l-3-3M17 16H4l3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="h-px flex-1 bg-gray-200" />
+          </div>
+          <SideRow label={`${counterpartName} — aracı`} listing={theirSide} />
         </div>
-      )}
+      </div>
 
       {interestLostByMe && (
         <p className="shrink-0 px-4 py-2 text-xs text-center text-gray-400 bg-gray-50 border-b border-gray-100">

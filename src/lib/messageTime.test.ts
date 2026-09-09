@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { sameDay, hhmm, dayLabel } from "./messageTime";
+import { sameDay, hhmm, dayLabel, listTimeLabel } from "./messageTime";
 
 describe("sameDay", () => {
   it("aynı gün → true", () => {
@@ -30,5 +30,21 @@ describe("dayLabel", () => {
   });
   it("farklı yıl → gün + ay + yıl", () => {
     expect(dayLabel(new Date("2025-07-12T10:00:00"), now)).toBe("12 Temmuz 2025");
+  });
+});
+
+describe("listTimeLabel", () => {
+  const now = new Date("2026-09-09T12:00:00");
+  it("bugün → saat", () => {
+    expect(listTimeLabel(new Date("2026-09-09T14:32:00"), now)).toBe("14:32");
+  });
+  it("dün", () => {
+    expect(listTimeLabel(new Date("2026-09-08T20:00:00"), now)).toBe("Dün");
+  });
+  it("aynı yıl → gün + kısa ay", () => {
+    expect(listTimeLabel(new Date("2026-09-04T10:00:00"), now)).toBe("4 Eyl");
+  });
+  it("farklı yıl → gün + kısa ay + yıl", () => {
+    expect(listTimeLabel(new Date("2025-09-04T10:00:00"), now)).toBe("4 Eyl 2025");
   });
 });

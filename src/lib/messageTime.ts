@@ -27,3 +27,17 @@ export function dayLabel(d: Date, now: Date = new Date()): string {
     ...(d.getFullYear() !== now.getFullYear() ? { year: "numeric" } : {}),
   });
 }
+
+// Görüşme listesi için kısa etiket: bugün → "14:32", dün → "Dün",
+// aynı yıl → "4 Eyl", farklı yıl → "4 Eyl 2025".
+export function listTimeLabel(d: Date, now: Date = new Date()): string {
+  if (sameDay(d, now)) return hhmm(d);
+  const yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+  if (sameDay(d, yesterday)) return "Dün";
+  return d.toLocaleDateString("tr-TR", {
+    day: "numeric",
+    month: "short",
+    ...(d.getFullYear() !== now.getFullYear() ? { year: "numeric" } : {}),
+  });
+}

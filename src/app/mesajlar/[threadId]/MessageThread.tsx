@@ -118,10 +118,12 @@ export function MessageThread({
     <>
       <div className="flex-1 overflow-y-auto">
         <div className="min-h-full flex flex-col justify-end px-4 py-4 gap-1">
-          {items.length === 0 && (
+          {items.length === 0 ? (
             <p className="text-center text-xs text-gray-400 py-8">
               Henüz mesaj yok. Aracı merak ettiğin bir şeyi sorarak başla.
             </p>
+          ) : (
+            <p className="text-center text-[10px] text-gray-300 pb-1">Görüşmenin başlangıcı</p>
           )}
 
           {items.map((it, i) => {
