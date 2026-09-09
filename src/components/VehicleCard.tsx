@@ -223,8 +223,9 @@ export function VehicleCard({
         {scores ? (
           <FikapeScore scores={scores} variant="chips" />
         ) : (
-          <div className="flex items-center justify-center h-14 rounded-xl border-2 border-dashed border-gray-100 text-xs text-gray-400">
-            İlk yorumu sen yaz →
+          <div className="flex flex-col items-center justify-center gap-0.5 h-14 rounded-xl border-2 border-dashed border-gray-100 text-center leading-tight">
+            <span className="text-[11px] text-gray-400">Henüz yorum yok</span>
+            <span className="text-xs font-semibold text-gray-600">İlk sen anlat →</span>
           </div>
         )}
       </div>
