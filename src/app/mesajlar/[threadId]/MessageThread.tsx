@@ -24,9 +24,9 @@ interface Props {
 }
 
 const TEMPLATES = [
-  "Aracın genel durumu nasıl?",
-  "Takasa açık mısınız, üstüne nakit görüşülür mü?",
-  "Ekspertiz / boya-değişen raporu var mı?",
+  "Aracın durumu nasıl?",
+  "Üstüne nakit görüşülür mü?",
+  "Ekspertiz raporu var mı?",
 ];
 
 type PendingMsg = { tempId: string; text: string; createdAt: string };

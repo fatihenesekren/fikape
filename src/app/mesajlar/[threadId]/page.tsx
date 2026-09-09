@@ -244,12 +244,12 @@ export default async function ThreadPage({
 
       {interestLostByMe && (
         <p className="shrink-0 px-4 py-2 text-xs text-center text-gray-400 bg-gray-50 border-b border-gray-100">
-          Bu takasla ilgilenmediğini belirttin. Görüşme açık — istersen yazmaya devam edebilirsin. (⋯ → Yeniden ilgileniyorum)
+          Bu takasla ilgilenmediğini belirttin — görüşme açık. Geri almak için: ⋯
         </p>
       )}
       {interestLostByOther && (
         <p className="shrink-0 px-4 py-2 text-xs text-center text-gray-400 bg-gray-50 border-b border-gray-100">
-          {counterpartName} bu takasla ilgilenmediğini belirtti — ama görüşme hâlâ açık.
+          {counterpartName} bu takasla ilgilenmediğini belirtti — görüşme hâlâ açık.
         </p>
       )}
 

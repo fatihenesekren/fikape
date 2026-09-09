@@ -138,12 +138,13 @@ export function AuthNav() {
       <div className="flex items-center gap-1.5">
         <NotificationBell />
 
-        {/* Okunmamış mesaj — hesap menüsünde gömülü kalmasın diye zilin
-            yanında ayrı, doğrudan /mesajlar'a giden ikon + rozet. */}
+        {/* Okunmamış mesaj — MASAÜSTÜNDE zilin yanında ayrı ikon + rozet.
+            Mobilde header dar olduğu için gösterilmez; orada "Mesajlarım"
+            hesap menüsünde (rozetli) + zil zaten mesaj bildirimlerini sayıyor. */}
         <Link
           href="/mesajlar"
           aria-label={unreadMessages > 0 ? `${unreadMessages} okunmamış mesaj` : "Mesajlarım"}
-          className="relative p-2 rounded-md hover:bg-gray-50 transition-colors text-gray-600"
+          className="relative hidden sm:flex p-2 rounded-md hover:bg-gray-50 transition-colors text-gray-600"
         >
           <MessageIcon />
           {unreadMessages > 0 && (
@@ -181,15 +182,18 @@ export function AuthNav() {
               <Link href="/garajim" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                 <GarageIcon /> Garajım
               </Link>
-              <Link href="/mesajlar" onClick={() => setMenuOpen(false)} className={`${menuItemClass} justify-between`}>
+              {/* "Mesajlarım" SADECE mobilde menüde — masaüstünde zilin yanındaki
+                  ayrı 💬 ikonu var. İkisi aynı anda olmayınca kopya görünmüyor. */}
+              <Link href="/mesajlar" onClick={() => setMenuOpen(false)} className={`sm:hidden ${menuItemClass} justify-between`}>
                 <span className="flex items-center gap-2.5"><MessageIcon /> Mesajlarım</span>
                 {unreadMessages > 0 && (
-                  <span className="text-xs font-semibold text-red-500">{unreadMessages > 9 ? "9+" : unreadMessages}</span>
+                  <span className="min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center leading-none">
+                    {unreadMessages > 9 ? "9+" : unreadMessages}
+                  </span>
                 )}
               </Link>
-              {/* Araç Öner masaüstünde header'da ayrı buton olarak zaten görünüyor —
-                  mobilde header'da yer olmadığı için sadece bu menüde tekrarlanıyor.
-                  Diğerleri hesap ayarı, bu bir aksiyon — vurgu rengiyle ayrıştırılıyor. */}
+              {/* Araç Öner: masaüstünde header'da ayrı buton; mobilde yer
+                  olmadığı için sadece bu menüde. (Yorum Yaz header'da kalıyor.) */}
               <Link
                 href="/oner"
                 onClick={() => setMenuOpen(false)}
