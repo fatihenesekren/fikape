@@ -81,11 +81,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Link href="/" className="flex items-center gap-2 text-xl font-black tracking-tight select-none">
               <LogoMark size={22} />
               <span className="flex items-center gap-0.5">
-                <span style={{ color: "#185FA5" }}>fi</span>
+                <span className="text-fi">fi</span>
                 <span className="text-gray-300 font-light">·</span>
-                <span style={{ color: "#3B6D11" }}>ka</span>
+                <span className="text-ka">ka</span>
                 <span className="text-gray-300 font-light">·</span>
-                <span style={{ color: "#993C1D" }}>pe</span>
+                <span className="text-pe">pe</span>
               </span>
             </Link>
 

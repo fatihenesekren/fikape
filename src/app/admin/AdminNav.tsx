@@ -26,9 +26,9 @@ export function AdminNav({ items }: { items: NavItem[] }) {
       {/* Logo */}
       <div className="px-5 py-5 border-b border-gray-100">
         <Link href="/" className="text-sm font-black tracking-tight">
-          <span style={{ color: "#0C447C" }}>fi</span>
-          <span style={{ color: "#27500A" }}>·ka·</span>
-          <span style={{ color: "#712B13" }}>pe</span>
+          <span className="text-fi">fi</span>
+          <span className="text-ka">·ka·</span>
+          <span className="text-pe">pe</span>
         </Link>
         <p className="text-[10px] text-gray-400 mt-0.5 font-medium uppercase tracking-widest">Admin Panel</p>
       </div>

@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/prisma";
 import { rateLimitByIp } from "@/lib/rateLimit";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { FIKAPE_SOFT } from "@/lib/fikape";
 
 export const runtime = "nodejs";
 export const contentType = "image/png";
@@ -49,9 +50,9 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
       >
         <div style={{ display: "flex", position: "relative", width: 26, height: 26, marginRight: 10 }}>
           {[
-            { c: "#85B7EB", r: 0 },
-            { c: "#F0997B", r: 120 },
-            { c: "#97C459", r: 240 },
+            { c: FIKAPE_SOFT.fi, r: 0 },
+            { c: FIKAPE_SOFT.pe, r: 120 },
+            { c: FIKAPE_SOFT.ka, r: 240 },
           ].map(({ c, r }) => (
             <div
               key={r}
@@ -84,7 +85,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
         </div>
         {score !== null ? (
           <div style={{ display: "flex", alignItems: "baseline", gap: 3, marginLeft: 12 }}>
-            <span style={{ fontSize: 26, fontWeight: 900, color: "#85B7EB" }}>{score.toFixed(1)}</span>
+            <span style={{ fontSize: 26, fontWeight: 900, color: FIKAPE_SOFT.fi }}>{score.toFixed(1)}</span>
             <span style={{ fontSize: 12, color: "#666" }}>/10</span>
           </div>
         ) : (

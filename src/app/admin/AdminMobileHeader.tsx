@@ -17,9 +17,9 @@ export function AdminMobileHeader() {
     <div className="md:hidden flex items-center justify-between px-4 py-3 bg-white border-b border-gray-100">
       <Link href="/" className="flex items-baseline gap-1.5 text-sm font-black tracking-tight">
         <span>
-          <span style={{ color: "#0C447C" }}>fi</span>
-          <span style={{ color: "#27500A" }}>·ka·</span>
-          <span style={{ color: "#712B13" }}>pe</span>
+          <span className="text-fi">fi</span>
+          <span className="text-ka">·ka·</span>
+          <span className="text-pe">pe</span>
         </span>
         <span className="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Admin</span>
       </Link>

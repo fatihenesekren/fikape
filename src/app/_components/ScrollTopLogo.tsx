@@ -1,5 +1,7 @@
 "use client";
 
+import { LogoMark } from "@/components/LogoMark";
+
 // Native scrollTo({behavior:"smooth"}) süresi tarayıcı/cihaza göre değişiyor
 // ve mobilde çok kısa sürüp aniden zıplama hissi verebiliyor — sabit süreli
 // kendi animasyonumuzla tutarlı bir his sağlıyoruz. ease-out (kübik) mesafenin
@@ -28,13 +30,16 @@ export function ScrollTopLogo() {
     <button
       onClick={() => smoothScrollToTop()}
       aria-label="Sayfa başına dön"
-      className="inline-flex items-center gap-0.5 text-2xl font-black tracking-tight select-none px-3 py-2 mb-2 hover:opacity-80 transition-opacity"
+      className="inline-flex flex-col items-center gap-2 select-none px-3 py-2 mb-2 hover:opacity-80 transition-opacity"
     >
-      <span style={{ color: "#85B7EB" }}>fi</span>
-      <span className="text-gray-600 font-light">·</span>
-      <span style={{ color: "#97C459" }}>ka</span>
-      <span className="text-gray-600 font-light">·</span>
-      <span style={{ color: "#F0997B" }}>pe</span>
+      <LogoMark size={32} variant="onDark" />
+      <span className="flex items-center gap-0.5 text-2xl font-black tracking-tight">
+        <span className="text-fi-soft">fi</span>
+        <span className="text-gray-600 font-light">·</span>
+        <span className="text-ka-soft">ka</span>
+        <span className="text-gray-600 font-light">·</span>
+        <span className="text-pe-soft">pe</span>
+      </span>
     </button>
   );
 }

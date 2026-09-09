@@ -6,9 +6,9 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 text-center">
       <div className="mb-6 text-5xl font-black tracking-tight select-none">
-        <span style={{ color: "#85B7EB" }}>4</span>
-        <span style={{ color: "#97C459" }}>0</span>
-        <span style={{ color: "#F0997B" }}>4</span>
+        <span style={{ color: "var(--fi-soft)" }}>4</span>
+        <span style={{ color: "var(--ka-soft)" }}>0</span>
+        <span style={{ color: "var(--pe-soft)" }}>4</span>
       </div>
 
       <h1 className="text-xl font-bold text-gray-900 mb-2">

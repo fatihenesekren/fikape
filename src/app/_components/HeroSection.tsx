@@ -37,7 +37,7 @@ export async function HeroSection() {
               <span
                 style={{
                   background:
-                    "linear-gradient(90deg, #85B7EB 0%, #97C459 55%, #F0997B 100%)",
+                    "linear-gradient(90deg, var(--fi-soft) 0%, var(--ka-soft) 55%, var(--pe-soft) 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -50,9 +50,9 @@ export async function HeroSection() {
             {/* Alt başlık */}
             <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-sm">
               Kullanan bilir —{" "}
-              <span style={{ color: "#85B7EB" }}>Fiyat</span>,{" "}
-              <span style={{ color: "#97C459" }}>Kalite</span> ve{" "}
-              <span style={{ color: "#F0997B" }}>Performans</span>{" "}
+              <span style={{ color: "var(--fi-soft)" }}>Fiyat</span>,{" "}
+              <span style={{ color: "var(--ka-soft)" }}>Kalite</span> ve{" "}
+              <span style={{ color: "var(--pe-soft)" }}>Performans</span>{" "}
               puanlarıyla gerçek kullanıcı deneyimleri.
             </p>
 

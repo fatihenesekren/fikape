@@ -4,13 +4,30 @@
   --background: #f8f9fa;
   --foreground: #111111;
 
-  /* FI·KA·PE renk sistemi — editorial tonu */
-  --fi-color: #0C447C;
+  /* FI·KA·PE renk ailesi — 3 katman + tint. TEK KAYNAK.
+     --fi         MID    beyaz üstünde: wordmark, logomark, birincil marka
+     --fi-strong  DARK   soluk tint (--fi-bg) üstünde kalın etiket/başlık
+     --fi-soft    LIGHT  koyu (#111) zemin üstünde: footer, OG/kart/badge (Satori
+                         CSS var çözemez → src/lib/fikape.ts FIKAPE_SOFT sabiti)
+     --fi-bg      TINT   pastel zemin
+     --fi-color   = --fi-strong alias'ı (eski kullanımlar kırılmasın) */
+  --fi: #185FA5;
+  --fi-strong: #0C447C;
+  --fi-soft: #85B7EB;
   --fi-bg: #E6F1FB;
-  --ka-color: #27500A;
+  --fi-color: var(--fi-strong);
+
+  --ka: #3B6D11;
+  --ka-strong: #27500A;
+  --ka-soft: #97C459;
   --ka-bg: #EAF3DE;
-  --pe-color: #712B13;
+  --ka-color: var(--ka-strong);
+
+  --pe: #993C1D;
+  --pe-strong: #712B13;
+  --pe-soft: #F0997B;
   --pe-bg: #FAECE7;
+  --pe-color: var(--pe-strong);
 
   /* Link / accent — FI lacivertiyle aynı aile (jenerik indigo yerine).
      Birincil buton rengi (#111) bundan bağımsız, değişmez. */
@@ -32,6 +49,19 @@
   --color-link-soft: var(--link-soft);
   --color-link-line: var(--link-line);
   --color-link-muted: var(--link-muted);
+
+  --color-fi: var(--fi);
+  --color-fi-strong: var(--fi-strong);
+  --color-fi-soft: var(--fi-soft);
+  --color-fi-bg: var(--fi-bg);
+  --color-ka: var(--ka);
+  --color-ka-strong: var(--ka-strong);
+  --color-ka-soft: var(--ka-soft);
+  --color-ka-bg: var(--ka-bg);
+  --color-pe: var(--pe);
+  --color-pe-strong: var(--pe-strong);
+  --color-pe-soft: var(--pe-soft);
+  --color-pe-bg: var(--pe-bg);
 }
 
 body {

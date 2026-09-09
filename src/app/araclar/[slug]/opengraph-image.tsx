@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/prisma";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { FIKAPE_SOFT } from "@/lib/fikape";
 
 export const runtime = "nodejs";
 export const alt = "fikape araç yorumları";
@@ -11,12 +12,10 @@ function ScoreBar({
   label,
   score,
   color,
-  bg,
 }: {
   label: string;
   score: number;
   color: string;
-  bg: string;
 }) {
   const pct = Math.round((score / 10) * 100);
   return (
@@ -95,7 +94,6 @@ export default async function Image({
   const overall = agg._avg.scoreOverall ?? 0;
   const count = agg._count.id;
 
-  const vehicleName = `${product.brand.name} ${stripModelGenRange(product.model.name)}`;
   const yearStr = product.year ? ` ${product.year}` : "";
 
   return new ImageResponse(
@@ -113,9 +111,9 @@ export default async function Image({
       <div style={{ display: "flex", alignItems: "center", gap: "13px" }}>
         <div style={{ display: "flex", position: "relative", width: 38, height: 38 }}>
           {[
-            { c: "#85B7EB", r: 0 },
-            { c: "#F0997B", r: 120 },
-            { c: "#97C459", r: 240 },
+            { c: FIKAPE_SOFT.fi, r: 0 },
+            { c: FIKAPE_SOFT.pe, r: 120 },
+            { c: FIKAPE_SOFT.ka, r: 240 },
           ].map(({ c, r }) => (
             <div
               key={r}
@@ -132,11 +130,11 @@ export default async function Image({
           ))}
         </div>
         <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
-          <span style={{ fontSize: 32, fontWeight: 900, color: "#85B7EB" }}>fi</span>
+          <span style={{ fontSize: 32, fontWeight: 900, color: FIKAPE_SOFT.fi }}>fi</span>
           <span style={{ fontSize: 32, fontWeight: 300, color: "#333", margin: "0 3px" }}>·</span>
-          <span style={{ fontSize: 32, fontWeight: 900, color: "#97C459" }}>ka</span>
+          <span style={{ fontSize: 32, fontWeight: 900, color: FIKAPE_SOFT.ka }}>ka</span>
           <span style={{ fontSize: 32, fontWeight: 300, color: "#333", margin: "0 3px" }}>·</span>
-          <span style={{ fontSize: 32, fontWeight: 900, color: "#F0997B" }}>pe</span>
+          <span style={{ fontSize: 32, fontWeight: 900, color: FIKAPE_SOFT.pe }}>pe</span>
         </div>
       </div>
 
@@ -214,9 +212,9 @@ export default async function Image({
               gap: 24,
             }}
           >
-            <ScoreBar label="Fiyat"      score={fi} color="#85B7EB" bg="#85B7EB22" />
-            <ScoreBar label="Kalite"     score={ka} color="#97C459" bg="#97C45922" />
-            <ScoreBar label="Performans" score={pe} color="#F0997B" bg="#F0997B22" />
+            <ScoreBar label="Fiyat"      score={fi} color={FIKAPE_SOFT.fi} />
+            <ScoreBar label="Kalite"     score={ka} color={FIKAPE_SOFT.ka} />
+            <ScoreBar label="Performans" score={pe} color={FIKAPE_SOFT.pe} />
           </div>
         )}
       </div>
@@ -228,7 +226,7 @@ export default async function Image({
             width: 6,
             height: 6,
             borderRadius: "50%",
-            background: "#85B7EB",
+            background: FIKAPE_SOFT.fi,
           }}
         />
         <span style={{ fontSize: 16, color: "#444" }}>

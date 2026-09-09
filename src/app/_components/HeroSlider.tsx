@@ -67,9 +67,9 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
 
           <div className="space-y-3 mb-6">
             {[
-              { short: "Fİ", label: "Fiyat",      color: "#85B7EB", width: "72%" },
-              { short: "KA", label: "Kalite",     color: "#97C459", width: "85%" },
-              { short: "PE", label: "Performans", color: "#F0997B", width: "78%" },
+              { short: "Fİ", label: "Fiyat",      color: "var(--fi-soft)", width: "72%" },
+              { short: "KA", label: "Kalite",     color: "var(--ka-soft)", width: "85%" },
+              { short: "PE", label: "Performans", color: "var(--pe-soft)", width: "78%" },
             ].map(({ short, label, color, width }) => (
               <div key={short} className="flex items-center gap-3">
                 <span className="text-xs font-black shrink-0 w-5 text-right" style={{ color }}>

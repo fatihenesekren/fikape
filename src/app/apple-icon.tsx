@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { FIKAPE_SOFT } from "@/lib/fikape";
 
 // iOS ana ekran ikonu. apple-icon.svg konvansiyonu Next'te desteklenmiyor
 // (yalnızca png/jpg veya bu generator) — işaret, Satori uyumlu border-arc
@@ -21,9 +22,9 @@ export default function AppleIcon() {
       >
         <div style={{ display: "flex", position: "relative", width: 108, height: 108 }}>
           {[
-            { c: "#378ADD", r: 0 },     // Fİ · üst
-            { c: "#F0997B", r: 120 },   // PE · sağ-alt
-            { c: "#97C459", r: 240 },   // KA · sol-alt
+            { c: FIKAPE_SOFT.fi, r: 0 },   // Fİ · üst
+            { c: FIKAPE_SOFT.pe, r: 120 }, // PE · sağ-alt
+            { c: FIKAPE_SOFT.ka, r: 240 }, // KA · sol-alt
           ].map(({ c, r }) => (
             <div
               key={r}

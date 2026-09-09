@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { FIKAPE_SOFT } from "@/lib/fikape";
 
 export const runtime = "edge";
 export const alt = "fikape — Gerçek Araç Yorumları";
@@ -6,9 +7,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const CHIPS = [
-  { short: "Fİ", label: "Fiyat",      color: "#85B7EB" },
-  { short: "KA", label: "Kalite",     color: "#97C459" },
-  { short: "PE", label: "Performans", color: "#F0997B" },
+  { short: "Fİ", label: "Fiyat",      color: FIKAPE_SOFT.fi },
+  { short: "KA", label: "Kalite",     color: FIKAPE_SOFT.ka },
+  { short: "PE", label: "Performans", color: FIKAPE_SOFT.pe },
 ];
 
 export default function Image() {
@@ -29,9 +30,9 @@ export default function Image() {
       <div style={{ display: "flex", alignItems: "center", gap: "18px", marginBottom: "44px" }}>
         <div style={{ display: "flex", position: "relative", width: 54, height: 54 }}>
           {[
-            { c: "#85B7EB", r: 0 },     // Fİ · üst
-            { c: "#F0997B", r: 120 },   // PE · sağ-alt
-            { c: "#97C459", r: 240 },   // KA · sol-alt
+            { c: FIKAPE_SOFT.fi, r: 0 },     // Fİ · üst
+            { c: FIKAPE_SOFT.pe, r: 120 },   // PE · sağ-alt
+            { c: FIKAPE_SOFT.ka, r: 240 },   // KA · sol-alt
           ].map(({ c, r }) => (
             <div
               key={r}
@@ -48,11 +49,11 @@ export default function Image() {
           ))}
         </div>
         <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
-          <span style={{ fontSize: 44, fontWeight: 900, color: "#85B7EB" }}>fi</span>
+          <span style={{ fontSize: 44, fontWeight: 900, color: FIKAPE_SOFT.fi }}>fi</span>
           <span style={{ fontSize: 44, fontWeight: 300, color: "#444", margin: "0 4px" }}>·</span>
-          <span style={{ fontSize: 44, fontWeight: 900, color: "#97C459" }}>ka</span>
+          <span style={{ fontSize: 44, fontWeight: 900, color: FIKAPE_SOFT.ka }}>ka</span>
           <span style={{ fontSize: 44, fontWeight: 300, color: "#444", margin: "0 4px" }}>·</span>
-          <span style={{ fontSize: 44, fontWeight: 900, color: "#F0997B" }}>pe</span>
+          <span style={{ fontSize: 44, fontWeight: 900, color: FIKAPE_SOFT.pe }}>pe</span>
         </div>
       </div>
 

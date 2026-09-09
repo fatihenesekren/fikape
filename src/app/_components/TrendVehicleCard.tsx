@@ -8,9 +8,9 @@ import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 // koyu tonunda metin. Doygun/koyu dolgu bilinçli olarak kullanılmıyor — hero
 // zaten koyu bir blok, hemen altında ikinci bir koyu şerit sayfayı ağırlaştırıyordu.
 const CARD_COLORS = [
-  { bg: "#E6F1FB", mid: "#185FA5", dark: "#0C447C", chip: "rgba(12,68,124,0.12)" },
-  { bg: "#EAF3DE", mid: "#3B6D11", dark: "#27500A", chip: "rgba(39,80,10,0.12)" },
-  { bg: "#FAECE7", mid: "#993C1D", dark: "#712B13", chip: "rgba(113,43,19,0.12)" },
+  { bg: "var(--fi-bg)", mid: "var(--fi)", dark: "var(--fi-strong)", chip: "rgba(12,68,124,0.12)" },
+  { bg: "var(--ka-bg)", mid: "var(--ka)", dark: "var(--ka-strong)", chip: "rgba(39,80,10,0.12)" },
+  { bg: "var(--pe-bg)", mid: "var(--pe)", dark: "var(--pe-strong)", chip: "rgba(113,43,19,0.12)" },
 ] as const;
 
 export function TrendVehicleCard({

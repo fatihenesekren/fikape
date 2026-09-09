@@ -162,17 +162,17 @@ export default async function Home({
             {
               short: "Fİ", word: "Fiyat",
               desc: "Para vermeye değdi mi? Bütçene göre doğru seçim miydi?",
-              color: "#0C447C", bg: "#E6F1FB",
+              color: "var(--fi-strong)", bg: "var(--fi-bg)",
             },
             {
               short: "KA", word: "Kalite",
               desc: "Dayanıklılık, montaj kalitesi, uzun vadede güven veriyor mu?",
-              color: "#27500A", bg: "#EAF3DE",
+              color: "var(--ka-strong)", bg: "var(--ka-bg)",
             },
             {
               short: "PE", word: "Performans",
               desc: "Günlük kullanım nasıl? Sürüş hissi, konfor, teknoloji.",
-              color: "#712B13", bg: "#FAECE7",
+              color: "var(--pe-strong)", bg: "var(--pe-bg)",
             },
           ].map(({ short, word, desc, color, bg }) => (
             <div key={short} className="rounded-xl p-4" style={{ background: bg }}>

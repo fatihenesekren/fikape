@@ -202,7 +202,7 @@ export function AuthNav() {
                 href="/oner"
                 onClick={() => setMenuOpen(false)}
                 className={`sm:hidden ${menuItemClass}`}
-                style={{ color: "#185FA5" }}
+                style={{ color: "var(--fi)" }}
               >
                 <PlusCircleIcon /> Araç Öner
               </Link>
@@ -233,7 +233,7 @@ export function AuthNav() {
         <Link
           href="/oner"
           className="hidden sm:inline-flex px-3 py-1.5 text-sm font-semibold rounded-md transition-colors"
-          style={{ background: "#EAF2FB", color: "#185FA5" }}
+          style={{ background: "var(--fi-bg)", color: "var(--fi)" }}
         >
           Araç Öner
         </Link>

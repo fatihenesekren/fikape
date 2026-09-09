@@ -91,11 +91,11 @@ function KayitForm() {
           <Link href="/" className="inline-flex flex-col items-center gap-2 select-none mb-4">
             <LogoMark size={34} />
             <span className="flex items-center gap-0.5 text-2xl font-black tracking-tight">
-              <span style={{ color: "#185FA5" }}>fi</span>
+              <span className="text-fi">fi</span>
               <span className="text-gray-300 font-light">·</span>
-              <span style={{ color: "#3B6D11" }}>ka</span>
+              <span className="text-ka">ka</span>
               <span className="text-gray-300 font-light">·</span>
-              <span style={{ color: "#993C1D" }}>pe</span>
+              <span className="text-pe">pe</span>
             </span>
           </Link>
           <h1 className="text-xl font-bold text-gray-900">Hesap oluştur</h1>
@@ -234,7 +234,7 @@ function KayitForm() {
             type="submit"
             disabled={loading || !allRulesPass || !consent}
             className="w-full py-2.5 rounded-xl text-sm font-semibold text-white transition-colors disabled:opacity-60"
-            style={{ background: "#185FA5" }}
+            style={{ background: "var(--fi)" }}
           >
             {loading ? "Kayıt oluşturuluyor..." : "Kayıt ol"}
           </button>
