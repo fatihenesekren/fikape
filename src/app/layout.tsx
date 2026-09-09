@@ -8,6 +8,7 @@ import { SearchBar, SearchIcon } from "@/components/SearchBar";
 import { FooterNav } from "@/components/FooterNav";
 import { HomeFab } from "@/components/HomeFab";
 import { BackToTop } from "@/components/BackToTop";
+import { LogoMark } from "@/components/LogoMark";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { JsonLd } from "@/components/JsonLd";
@@ -77,12 +78,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <SessionProvider>
         <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-0.5 text-xl font-black tracking-tight select-none">
-              <span style={{ color: "#185FA5" }}>fi</span>
-              <span className="text-gray-300 font-light">·</span>
-              <span style={{ color: "#3B6D11" }}>ka</span>
-              <span className="text-gray-300 font-light">·</span>
-              <span style={{ color: "#993C1D" }}>pe</span>
+            <Link href="/" className="flex items-center gap-2 text-xl font-black tracking-tight select-none">
+              <LogoMark size={22} />
+              <span className="flex items-center gap-0.5">
+                <span style={{ color: "#185FA5" }}>fi</span>
+                <span className="text-gray-300 font-light">·</span>
+                <span style={{ color: "#3B6D11" }}>ka</span>
+                <span className="text-gray-300 font-light">·</span>
+                <span style={{ color: "#993C1D" }}>pe</span>
+              </span>
             </Link>
 
             <SearchBar />

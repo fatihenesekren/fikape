@@ -25,13 +25,35 @@ export default function Image() {
         padding: "80px 90px",
       }}
     >
-      {/* Logo */}
-      <div style={{ display: "flex", alignItems: "baseline", gap: "2px", marginBottom: "44px" }}>
-        <span style={{ fontSize: 44, fontWeight: 900, color: "#85B7EB" }}>fi</span>
-        <span style={{ fontSize: 44, fontWeight: 300, color: "#444", margin: "0 4px" }}>·</span>
-        <span style={{ fontSize: 44, fontWeight: 900, color: "#97C459" }}>ka</span>
-        <span style={{ fontSize: 44, fontWeight: 300, color: "#444", margin: "0 4px" }}>·</span>
-        <span style={{ fontSize: 44, fontWeight: 900, color: "#F0997B" }}>pe</span>
+      {/* Logo — 3 segmentli halka işareti + wordmark */}
+      <div style={{ display: "flex", alignItems: "center", gap: "18px", marginBottom: "44px" }}>
+        <div style={{ display: "flex", position: "relative", width: 54, height: 54 }}>
+          {[
+            { c: "#85B7EB", r: 0 },     // Fİ · üst
+            { c: "#F0997B", r: 120 },   // PE · sağ-alt
+            { c: "#97C459", r: 240 },   // KA · sol-alt
+          ].map(({ c, r }) => (
+            <div
+              key={r}
+              style={{
+                position: "absolute",
+                width: 54,
+                height: 54,
+                borderRadius: 54,
+                border: "9px solid transparent",
+                borderTopColor: c,
+                transform: `rotate(${r}deg)`,
+              }}
+            />
+          ))}
+        </div>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
+          <span style={{ fontSize: 44, fontWeight: 900, color: "#85B7EB" }}>fi</span>
+          <span style={{ fontSize: 44, fontWeight: 300, color: "#444", margin: "0 4px" }}>·</span>
+          <span style={{ fontSize: 44, fontWeight: 900, color: "#97C459" }}>ka</span>
+          <span style={{ fontSize: 44, fontWeight: 300, color: "#444", margin: "0 4px" }}>·</span>
+          <span style={{ fontSize: 44, fontWeight: 900, color: "#F0997B" }}>pe</span>
+        </div>
       </div>
 
       {/* Headline */}

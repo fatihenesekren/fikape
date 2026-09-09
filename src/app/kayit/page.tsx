@@ -4,6 +4,7 @@ import { useState, Suspense } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { LogoMark } from "@/components/LogoMark";
 
 function EyeIcon() {
   return (
@@ -87,12 +88,15 @@ function KayitForm() {
       <div className="w-full max-w-sm">
 
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-0.5 text-2xl font-black tracking-tight select-none mb-4">
-            <span style={{ color: "#185FA5" }}>fi</span>
-            <span className="text-gray-300 font-light">·</span>
-            <span style={{ color: "#3B6D11" }}>ka</span>
-            <span className="text-gray-300 font-light">·</span>
-            <span style={{ color: "#993C1D" }}>pe</span>
+          <Link href="/" className="inline-flex flex-col items-center gap-2 select-none mb-4">
+            <LogoMark size={34} />
+            <span className="flex items-center gap-0.5 text-2xl font-black tracking-tight">
+              <span style={{ color: "#185FA5" }}>fi</span>
+              <span className="text-gray-300 font-light">·</span>
+              <span style={{ color: "#3B6D11" }}>ka</span>
+              <span className="text-gray-300 font-light">·</span>
+              <span style={{ color: "#993C1D" }}>pe</span>
+            </span>
           </Link>
           <h1 className="text-xl font-bold text-gray-900">Hesap oluştur</h1>
           <p className="text-sm text-gray-500 mt-1">Kayıt ol, deneyimini paylaş</p>
