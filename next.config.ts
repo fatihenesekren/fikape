@@ -29,6 +29,14 @@ const nextConfig: NextConfig = {
         destination: "/araclar/yamaha-xmax-250-standart-2023",
         permanent: true,
       },
+      // "Citroën" markası eski hatalı slugify ile "citro-n" slug'lı ölü bir
+      // marka kaydı yaratmış (ë atılıp "-" olmuş). Ölü kayıt silindi; gerçek
+      // marka slug'ı "citroen". /markalar/citro-n sitemap'te olduğu için 301.
+      {
+        source: "/markalar/citro-n",
+        destination: "/markalar/citroen",
+        permanent: true,
+      },
     ];
   },
   async headers() {
