@@ -82,19 +82,37 @@ export async function POST(
   const recipientId = userId === thread.initiatorId ? thread.tradeListing.userId : thread.initiatorId;
   const link = `/mesajlar/${threadId}`;
 
-  prisma.notification
-    .findFirst({ where: { userId: recipientId, type: "NEW_TRADE_MESSAGE", link, isRead: false } })
-    .then((existing) => {
-      if (!existing) {
-        createNotification({
-          userId: recipientId,
-          type: "NEW_TRADE_MESSAGE",
-          message: "Takas görüşmene yeni bir mesaj geldi",
-          link,
-        });
-      }
-    })
-    .catch(() => {});
+  // Bildirim: "kimden / kaç" — dedupe yerine mevcut okunmamış bildirimi
+  // güncelle (sayı + tarih tazelenir, listede öne çıkar). Sayı gerçek
+  // okunmamış mesaj adedi (bu görüşmede, benden alıcıya).
+  (async () => {
+    const senderName = session.user.name?.trim() || "Bir kullanıcı";
+    const unreadFromMe = await prisma.message.count({
+      where: { threadId, senderId: userId, isRead: false },
+    });
+    const notifMsg =
+      unreadFromMe > 1
+        ? `${senderName} sana ${unreadFromMe} yeni mesaj gönderdi`
+        : `${senderName} sana yeni bir mesaj gönderdi`;
+
+    const existing = await prisma.notification.findFirst({
+      where: { userId: recipientId, type: "NEW_TRADE_MESSAGE", link, isRead: false },
+      select: { id: true },
+    });
+    if (existing) {
+      await prisma.notification.update({
+        where: { id: existing.id },
+        data: { message: notifMsg, createdAt: new Date() },
+      });
+    } else {
+      await createNotification({
+        userId: recipientId,
+        type: "NEW_TRADE_MESSAGE",
+        message: notifMsg,
+        link,
+      });
+    }
+  })().catch(() => {});
 
   return NextResponse.json({ ok: true }, { status: 201 });
 }

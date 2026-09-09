@@ -90,18 +90,33 @@ export function AuthNav() {
     setMenuOpen(false);
   }
 
-  // "Mesajlarım" rozeti — /mesajlar sayfası zaten çalışıyordu ama hiçbir nav'da
-  // linki yoktu (bkz. boşluk raporu). Sayfa değişince yeniden çekiliyor, böylece
-  // bir görüşmeyi okuduktan sonra sayaç güncel kalıyor.
+  // Okunmamış mesaj sayacı — sayfa değişince + 45 sn'de bir hafif polling
+  // (websocket yok) → başka sekmedeyken gelen mesaj reload'suz fark edilsin.
   useEffect(() => {
     if (!session) return;
     let cancelled = false;
-    fetch("/api/messages/unread-count")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => { if (!cancelled && data) setUnreadMessages(data.count); })
-      .catch(() => {});
-    return () => { cancelled = true; };
+    const load = () => {
+      fetch("/api/messages/unread-count")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => { if (!cancelled && data) setUnreadMessages(data.count); })
+        .catch(() => {});
+    };
+    load();
+    const iv = setInterval(load, 45_000);
+    return () => { cancelled = true; clearInterval(iv); };
   }, [session, pathname]);
+
+  // Sekme başlığında okunmamış sayacı — "(3) fikape — …". Next metadata
+  // navigasyonda başlığı sıfırlayabildiği için 5 sn'de bir yeniden uygula.
+  useEffect(() => {
+    const apply = () => {
+      const base = document.title.replace(/^\(\d+\+?\)\s+/, "");
+      document.title = unreadMessages > 0 ? `(${unreadMessages > 9 ? "9+" : unreadMessages}) ${base}` : base;
+    };
+    apply();
+    const iv = setInterval(apply, 5000);
+    return () => clearInterval(iv);
+  }, [unreadMessages]);
 
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {
@@ -122,6 +137,21 @@ export function AuthNav() {
     return (
       <div className="flex items-center gap-1.5">
         <NotificationBell />
+
+        {/* Okunmamış mesaj — hesap menüsünde gömülü kalmasın diye zilin
+            yanında ayrı, doğrudan /mesajlar'a giden ikon + rozet. */}
+        <Link
+          href="/mesajlar"
+          aria-label={unreadMessages > 0 ? `${unreadMessages} okunmamış mesaj` : "Mesajlarım"}
+          className="relative p-2 rounded-md hover:bg-gray-50 transition-colors text-gray-600"
+        >
+          <MessageIcon />
+          {unreadMessages > 0 && (
+            <span className="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center leading-none">
+              {unreadMessages > 9 ? "9+" : unreadMessages}
+            </span>
+          )}
+        </Link>
 
         {/* Hesap menüsü — masaüstü/mobil ortak, avatar tetikliyor.
             Admin/Garajım/Profilim/Çıkış tek listede, iki ayrı yapı bakımı gerekmiyor. */}
@@ -154,9 +184,7 @@ export function AuthNav() {
               <Link href="/mesajlar" onClick={() => setMenuOpen(false)} className={`${menuItemClass} justify-between`}>
                 <span className="flex items-center gap-2.5"><MessageIcon /> Mesajlarım</span>
                 {unreadMessages > 0 && (
-                  <span className="min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center leading-none">
-                    {unreadMessages > 9 ? "9+" : unreadMessages}
-                  </span>
+                  <span className="text-xs font-semibold text-red-500">{unreadMessages > 9 ? "9+" : unreadMessages}</span>
                 )}
               </Link>
               {/* Araç Öner masaüstünde header'da ayrı buton olarak zaten görünüyor —

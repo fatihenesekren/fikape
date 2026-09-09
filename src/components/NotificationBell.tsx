@@ -19,17 +19,22 @@ export function NotificationBell() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/api/notifications")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (!cancelled && data) {
-          setUnreadCount(data.unreadCount);
-          setNotifications(data.notifications ?? []);
-        }
-      })
-      .catch(() => {})
-      .finally(() => { if (!cancelled) setLoaded(true); });
-    return () => { cancelled = true; };
+    const load = () => {
+      fetch("/api/notifications")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (!cancelled && data) {
+            setUnreadCount(data.unreadCount);
+            setNotifications(data.notifications ?? []);
+          }
+        })
+        .catch(() => {})
+        .finally(() => { if (!cancelled) setLoaded(true); });
+    };
+    load();
+    // Hafif polling — başka sekmedeyken gelen bildirim reload'suz görünsün.
+    const iv = setInterval(load, 60_000);
+    return () => { cancelled = true; clearInterval(iv); };
   }, []);
 
   // Sayfa değişince panel her zaman kapansın — sadece dışarı-tıklama algısına
