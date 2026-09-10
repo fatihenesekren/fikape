@@ -18,6 +18,8 @@ import { PhotoUploader } from "@/components/review/PhotoUploader";
 
 const TRADE_PHOTO_UPLOAD_URL = "/api/uploads/trade-photo";
 const TRADE_PHOTO_PATH_PREFIX = "trade-listings/";
+const TRADE_PHOTO_INTRO =
+  "Yorumunuzdaki fotoğraflar ilan sayfasında zaten görünür. Buradan bu ilana özel güncel fotoğraflar (dış/iç görünüm, km göstergesi, hasar) ekleyebilirsiniz.";
 
 type PaymentIntent = "SWAP_ONLY" | "PAYS_EXTRA" | "WANTS_EXTRA";
 type CloseReason = "TRADED" | "GAVE_UP" | "FOUND_ELSEWHERE";
@@ -357,20 +359,22 @@ export function TradeToggleCard({
             showPartConditions={showPartConditions}
             damageStatusValue={damageStatusValue} setDamageStatusValue={setDamageStatusValue}
             partConditions={partConditions} setPartConditions={setPartConditions}
+            photoSlot={
+              <PhotoUploader
+                existingPhotos={existingPhotos}
+                removedExistingIds={removedPhotoIds}
+                onToggleRemoveExisting={(id) =>
+                  setRemovedPhotoIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
+                }
+                newPhotoUrls={newPhotoUrls}
+                onNewPhotoUrlsChange={setNewPhotoUrls}
+                uploadUrl={TRADE_PHOTO_UPLOAD_URL}
+                pathPrefix={TRADE_PHOTO_PATH_PREFIX}
+                title="İlana Özel Fotoğraflar"
+                intro={TRADE_PHOTO_INTRO}
+              />
+            }
           />
-          <div className="bg-white border border-link-line rounded-xl p-3">
-            <PhotoUploader
-              existingPhotos={existingPhotos}
-              removedExistingIds={removedPhotoIds}
-              onToggleRemoveExisting={(id) =>
-                setRemovedPhotoIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
-              }
-              newPhotoUrls={newPhotoUrls}
-              onNewPhotoUrlsChange={setNewPhotoUrls}
-              uploadUrl={TRADE_PHOTO_UPLOAD_URL}
-              pathPrefix={TRADE_PHOTO_PATH_PREFIX}
-            />
-          </div>
           {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
           <button
             onClick={saveEdit}
@@ -421,14 +425,6 @@ export function TradeToggleCard({
           </div>
         </div>
         {renewMessage && <p className="mt-1.5 text-[11px] text-link">{renewMessage}</p>}
-        {existingListing.photos.length < 3 && (
-          <button
-            onClick={() => setEditOpen(true)}
-            className="mt-1.5 block text-left text-[11px] text-amber-700 hover:underline"
-          >
-            📷 Aracınızın fotoğraflarını ekleyin — ilanınız daha çok ilgi görür
-          </button>
-        )}
         {/* Native <select>, flex satırında varsayılan min-width:auto yüzünden
             küçülmüyor ve taşıyordu (bkz. kullanıcı geri bildirimi, ekran
             görüntüsü) — min-w-0+flex-1 ile küçülebilir yapıldı, mobilde
@@ -548,22 +544,20 @@ export function TradeToggleCard({
         showPartConditions={showPartConditions}
         damageStatusValue={damageStatusValue} setDamageStatusValue={setDamageStatusValue}
         partConditions={partConditions} setPartConditions={setPartConditions}
+        photoSlot={
+          <PhotoUploader
+            existingPhotos={[]}
+            removedExistingIds={[]}
+            onToggleRemoveExisting={() => {}}
+            newPhotoUrls={newPhotoUrls}
+            onNewPhotoUrlsChange={setNewPhotoUrls}
+            uploadUrl={TRADE_PHOTO_UPLOAD_URL}
+            pathPrefix={TRADE_PHOTO_PATH_PREFIX}
+            title="İlana Özel Fotoğraflar"
+            intro={TRADE_PHOTO_INTRO}
+          />
+        }
       />
-
-      <div className="bg-white border border-link-line rounded-xl p-3">
-        <PhotoUploader
-          existingPhotos={[]}
-          removedExistingIds={[]}
-          onToggleRemoveExisting={() => {}}
-          newPhotoUrls={newPhotoUrls}
-          onNewPhotoUrlsChange={setNewPhotoUrls}
-          uploadUrl={TRADE_PHOTO_UPLOAD_URL}
-          pathPrefix={TRADE_PHOTO_PATH_PREFIX}
-        />
-        <p className="mt-1.5 text-[11px] text-gray-400">
-          Aracınızın güncel fotoğrafları (dış, iç, km göstergesi) ilanınızın daha çok ilgi görmesini sağlar.
-        </p>
-      </div>
 
       {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
 
@@ -637,6 +631,7 @@ function TradeFormFields({
   showPartConditions,
   damageStatusValue, setDamageStatusValue,
   partConditions, setPartConditions,
+  photoSlot,
 }: {
   city: string; setCity: (v: string) => void;
   usageAmountInput: string; setUsageAmountInput: (v: string) => void;
@@ -658,6 +653,10 @@ function TradeFormFields({
   showPartConditions: boolean;
   damageStatusValue: DamageStatusValue; setDamageStatusValue: (v: DamageStatusValue) => void;
   partConditions: Record<string, PartCondition | undefined>; setPartConditions: (v: Record<string, PartCondition | undefined>) => void;
+  // "İlana özel fotoğraflar" bölümü — "🚗 Aracınız Hakkında" içinde Km altında
+  // render edilir. Yükleyici prop'ları create/edit'te farklı olduğu için slot
+  // olarak dışarıdan geliyor.
+  photoSlot?: ReactNode;
 }) {
   function toggleDamageStatus(status: DamageStatus) {
     setWantDamageStatuses(
@@ -723,6 +722,10 @@ function TradeFormFields({
             className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
           />
         </div>
+
+        {photoSlot && (
+          <div className="border-t border-link-line pt-3">{photoSlot}</div>
+        )}
 
         <div>
           <label className="block text-xs font-semibold text-link-deep mb-1">

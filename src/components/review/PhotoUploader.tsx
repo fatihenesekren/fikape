@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { upload } from "@vercel/blob/client";
 import { watermarkImage } from "@/lib/watermarkImage";
 
@@ -18,6 +18,8 @@ export function PhotoUploader({
   max = 5,
   uploadUrl = "/api/uploads/review-photo",
   pathPrefix = "reviews/",
+  title = "Fotoğraf",
+  intro,
 }: {
   existingPhotos?: ExistingPhoto[];
   removedExistingIds: number[];
@@ -26,9 +28,12 @@ export function PhotoUploader({
   onNewPhotoUrlsChange: (urls: string[]) => void;
   max?: number;
   // Farklı bağlamlarda yeniden kullanılır (yorum / takas ilanı) — yükleme
-  // endpoint'i ve blob yol öneki dışarıdan verilir, varsayılan yorum.
+  // endpoint'i, blob yol öneki ve başlık/açıklama dışarıdan verilir, varsayılan
+  // yorum.
   uploadUrl?: string;
   pathPrefix?: string;
+  title?: string;
+  intro?: ReactNode;
 }) {
   const [uploading, setUploading] = useState(false);
   const [uploadErrors, setUploadErrors] = useState<string[]>([]);
@@ -38,8 +43,9 @@ export function PhotoUploader({
   return (
     <div className="space-y-3 pt-1">
       <p className="text-sm font-semibold text-gray-800">
-        Fotoğraf <span className="text-gray-400 font-normal">(opsiyonel, maks. {max})</span>
+        {title} <span className="text-gray-400 font-normal">(opsiyonel, maks. {max})</span>
       </p>
+      {intro && <p className="text-xs text-gray-500 -mt-1.5">{intro}</p>}
 
       {(remainingExisting.length > 0 || newPhotoUrls.length > 0) && (
         <div className="flex gap-2 flex-wrap">
