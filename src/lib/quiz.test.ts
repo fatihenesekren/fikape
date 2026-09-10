@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import {
-  encodeQuiz, decodeQuiz, calcQuizScore, quizQ4Matches,
+  encodeQuiz, decodeQuiz, calcQuizScore, quizQ4Matches, answerAffectsResults,
   MOTO_CC_RANGES, EBIKE_WATT_RANGES, QUIZ_STEPS,
   type QuizAnswers, type QuizCat,
 } from "./quiz";
@@ -195,5 +195,51 @@ describe("calcQuizScore", () => {
     const reviews = [{ usage_type: "city" }, { usage_type: "highway" }, { usage_type: "city" }];
     const result = calcQuizScore(scores, reviews, { cat: "oto", q2: "sehir", q3: "guven", q4: "fark" });
     expect(result.matchCount).toBe(2);
+  });
+});
+
+describe("answerAffectsResults — sonuç şeridi çip görünürlüğü", () => {
+  it("q2 (1. soru) hiçbir kategoride çip üretmez", () => {
+    for (const cat of Object.keys(QUIZ_STEPS) as QuizCat[]) {
+      for (const opt of QUIZ_STEPS[cat][0].opts) {
+        expect(answerAffectsResults(cat, 1, opt.key)).toBe(false);
+      }
+    }
+  });
+
+  it("q3 (2. soru) yalnız oto/moto/ebike'de ve 'fark' değilse çip üretir", () => {
+    expect(answerAffectsResults("oto", 2, "guven")).toBe(true);
+    expect(answerAffectsResults("moto", 2, "orta")).toBe(true);
+    expect(answerAffectsResults("ebike", 2, "guclu")).toBe(true);
+    expect(answerAffectsResults("moto", 2, "fark")).toBe(false);
+    expect(answerAffectsResults("ebike", 2, "fark")).toBe(false);
+    // okunmayan q3'ler
+    expect(answerAffectsResults("scooter", 2, "rahat")).toBe(false);
+    expect(answerAffectsResults("karavan", 2, "tamkonfor")).toBe(false);
+    expect(answerAffectsResults("kamyon", 2, "agir")).toBe(false);
+    expect(answerAffectsResults("hepsi", 2, "dort")).toBe(false);
+  });
+
+  it("q4 (3. soru) her kategoride çip üretir, 'fark' hariç", () => {
+    for (const cat of Object.keys(QUIZ_STEPS) as QuizCat[]) {
+      for (const opt of QUIZ_STEPS[cat][2].opts) {
+        expect(answerAffectsResults(cat, 3, opt.key)).toBe(opt.key !== "fark");
+      }
+    }
+  });
+
+  it("kamyon q4 'Şart değil' (key: fark) çip üretmez", () => {
+    expect(answerAffectsResults("kamyon", 3, "fark")).toBe(false);
+  });
+
+  it("boş/tanımsız key çip üretmez", () => {
+    expect(answerAffectsResults("oto", 3, "")).toBe(false);
+  });
+
+  it("her q4 adımında tam olarak bir 'fark' key'i var (skip mantığı bozulmasın)", () => {
+    for (const cat of Object.keys(QUIZ_STEPS) as QuizCat[]) {
+      const farkCount = QUIZ_STEPS[cat][2].opts.filter((o) => o.key === "fark").length;
+      expect(farkCount).toBe(1);
+    }
   });
 });

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   --background: #f8f9fa;
   --foreground: #111111;
 
@@ -113,7 +114,12 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-niyet-icon-pulse,
-  .animate-niyet-arrow-nudge { animation: none; }
+  .animate-niyet-arrow-nudge,
+  .animate-niyet-enter,
+  .animate-niyet-check-pop,
+  .animate-niyet-slide-right,
+  .animate-niyet-slide-left,
+  .animate-niyet-result { animation: none; }
 }
 
 /* Sekme içeriği geçişi (ör. takas ilanı Açıklama/Teknik Özellikler/Boya) */

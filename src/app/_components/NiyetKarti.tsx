@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import {
   ALL_CATS, QUIZ_STEPS, CAT_LABELS, CAT_TO_SLUG, SLUG_TO_CAT,
-  encodeQuiz,
+  encodeQuiz, answerAffectsResults,
   type QuizAnswers, type QuizCat,
 } from "@/lib/quiz";
 
@@ -61,29 +61,33 @@ function CheckBadge() {
   );
 }
 
-// Özet çipi — seçili bir cevabı tikli gösterir, tıklayınca o adıma döner.
+// Seçili bir cevap — outline + FI tonu + kalem ikonu: "kaldır" değil "bu adımı
+// değiştir" sinyali (siyah tikli pill yanlışlıkla silinebilir etiket gibi
+// okunuyordu). Tıklayınca o adıma döner.
 function SelectedChip({ label, onClick }: { label: string; onClick: () => void }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center gap-1 rounded-full bg-gray-900 text-white text-[11px] font-semibold pl-1.5 pr-2.5 py-1 hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-1"
+      aria-label={`${label.replace(/^\S+\s+/, "")} — bu tercihi değiştir`}
+      className="inline-flex items-center gap-1 rounded-full border border-fi-soft/60 bg-fi-bg/60 text-fi-strong text-xs font-medium pl-2.5 pr-2 py-1 min-h-[30px] hover:bg-fi-bg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fi focus-visible:ring-offset-1"
     >
-      <span className="w-3.5 h-3.5 rounded-full bg-white/20 flex items-center justify-center shrink-0" aria-hidden="true">
-        <svg width="8" height="8" viewBox="0 0 24 24" fill="none">
-          <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
       {label}
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="opacity-50 shrink-0" aria-hidden="true">
+        <path d="M4 20h4L18 10l-4-4L4 16v4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M13 5l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
     </button>
   );
 }
 
-// Yorum sayısına göre kademeli, abartısız güven metni
+// Sıralama tabanı — tek kalıp, yükselen merdiven. Düşük/negatif sayı hiç
+// gösterilmez (bkz. fix_hero_stats_kaldirma: küçük rakam güveni zedeliyor),
+// "henüz az yorum var / şimdilik" gibi özür dili yok.
 function resultTrustLine(count: number): string {
-  if (count >= 20) return `${count} kullanıcının yorumuna göre sıralandı`;
-  if (count >= 3)  return `Bu kategoride ${count} gerçek kullanıcı yorumuna göre sıralandı`;
-  return "Bu kategoride henüz az yorum var — şimdilik FI·KA·PE puanına göre sıraladık";
+  if (count >= 20) return `${count} kullanıcı yorumuna göre sıralandı`;
+  if (count >= 3)  return "Kullanıcı yorumlarına göre sıralandı";
+  return "FI·KA·PE puanına göre sıralandı";
 }
 
 export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, showFeaturedHeading = false }: Props) {
@@ -209,47 +213,60 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
 
   // ── Result bar ────────────────────────────────────────
   if (quizAnswers && !open) {
-    const q2Label = answerLabel(quizAnswers.cat, 0, quizAnswers.q2);
-    const q3Label = answerLabel(quizAnswers.cat, 1, quizAnswers.q3);
-    const q4Label = answerLabel(quizAnswers.cat, 2, quizAnswers.q4);
-    const chips: { label: string; step: 1 | 2 | 3 }[] = [];
-    if (q2Label) chips.push({ label: q2Label, step: 1 });
-    if (q3Label) chips.push({ label: q3Label, step: 2 });
-    if (q4Label) chips.push({ label: q4Label, step: 3 });
+    // Yalnızca sonucu GERÇEKTEN etkileyen cevaplar çip olur (answerAffectsResults) —
+    // "Fark etmez" / "Emin değilim" ve hiç okunmayan adımlar anlamsız çip üretmesin.
+    const chips = ([
+      [quizAnswers.q2, 1, 0],
+      [quizAnswers.q3, 2, 1],
+      [quizAnswers.q4, 3, 2],
+    ] as const)
+      .filter(([key, step]) => answerAffectsResults(quizAnswers.cat, step, key))
+      .map(([key, step, idx]) => ({ label: answerLabel(quizAnswers.cat, idx, key), step }))
+      .filter((c): c is { label: string; step: 1 | 2 | 3 } => !!c.label);
 
     return (
-      <div className="col-span-full bg-white rounded-2xl border border-gray-100 overflow-hidden animate-niyet-result">
+      <div className="col-span-full bg-white rounded-2xl border border-gray-200 overflow-hidden animate-niyet-result">
         <div className="px-4 py-3">
-          <div className="flex items-center gap-3">
+          <div className="flex items-start gap-3">
             <div
-              className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+              className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
               style={{ background: "linear-gradient(135deg, var(--fi-color), var(--ka-color) 55%, var(--pe-color))" }}
             >
-              <MatchIcon size={14} />
+              <MatchIcon size={15} />
             </div>
-            <p className="flex-1 min-w-0 text-xs font-semibold text-gray-900 leading-snug">
-              {CAT_LABELS[quizAnswers.cat]} · {resultTrustLine(categoryReviewCount)}
+            <p className="flex-1 min-w-0 text-sm font-semibold text-gray-900 leading-snug">
+              {CAT_LABELS[quizAnswers.cat]}{" "}
+              <span className="font-normal text-gray-500">· {resultTrustLine(categoryReviewCount)}</span>
             </p>
             <button
               onClick={() => openQuiz(1)}
-              className="text-xs font-semibold text-gray-500 hover:text-gray-900 transition-colors shrink-0"
+              className="text-xs font-semibold text-link hover:underline transition-colors shrink-0 px-1.5 py-1 -my-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
             >
-              Değiştir →
+              Düzenle
             </button>
             <button
               onClick={handleClearQuiz}
-              aria-label="Filtreyi kaldır"
-              className="text-gray-300 hover:text-gray-500 transition-colors text-sm leading-none shrink-0"
+              aria-label="Sonuçları temizle"
+              className="text-gray-400 hover:text-gray-700 hover:bg-gray-50 transition-colors shrink-0 p-1.5 -m-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
             >
-              ✕
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
             </button>
           </div>
-          {/* Aktif filtreler — tikli, tıklayınca o soruya döner */}
-          <div className="flex flex-wrap gap-1.5 mt-2 pl-10">
-            {chips.map((c) => (
-              <SelectedChip key={c.step} label={c.label} onClick={() => openQuiz(c.step)} />
-            ))}
-          </div>
+          {chips.length > 0 ? (
+            <div
+              role="group"
+              aria-label="Sıralamayı etkileyen tercihlerin"
+              className="flex flex-wrap gap-1.5 mt-2 pl-0 sm:pl-11"
+            >
+              {chips.map((c) => (
+                <SelectedChip key={c.step} label={c.label} onClick={() => openQuiz(c.step)} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-xs text-gray-400 mt-1.5 pl-0 sm:pl-11">Tüm modeller listeleniyor</p>
+          )}
         </div>
       </div>
     );

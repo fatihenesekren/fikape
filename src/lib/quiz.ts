@@ -65,7 +65,7 @@ export const ALL_CATS: { key: QuizCat; icon: string; label: string }[] = [
   { key: "karavan", icon: "🏕️", label: "Karavan" },
   { key: "kamyon",  icon: "🛻", label: "Kamyonet" },
   { key: "ebike",   icon: "🚲", label: "E-Bisiklet" },
-  { key: "hepsi",   icon: "🤷", label: "Bilmiyorum" },
+  { key: "hepsi",   icon: "🤔", label: "Kararsızım" },
 ];
 
 export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
@@ -98,7 +98,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "dizel",    icon: "🛢️", label: "Dizel",        sub: "Uzun yol ekonomisi" },
         { key: "hibrit",   icon: "🔋", label: "Hibrit",       sub: "Düşük tüketim" },
         { key: "elektrik", icon: "⚡", label: "Elektrikli",   sub: "Sıfır emisyon" },
-        { key: "fark",     icon: "—",  label: "Farketmez",    sub: "" },
+        { key: "fark",     icon: "—",  label: "Fark etmez",    sub: "" },
       ],
     },
   ],
@@ -120,7 +120,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "kucuk", icon: "🐣", label: "125–250 cc", sub: "Başlangıç, şehir" },
         { key: "orta",  icon: "💪", label: "400–600 cc", sub: "Orta güç" },
         { key: "buyuk", icon: "🔥", label: "600 cc+",    sub: "Yüksek performans" },
-        { key: "fark",  icon: "—",  label: "Farketmez",  sub: "" },
+        { key: "fark",  icon: "—",  label: "Fark etmez",  sub: "" },
       ],
     },
     {
@@ -131,7 +131,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "sport",   icon: "🏁", label: "Sport",           sub: "Hız, viraj" },
         { key: "scooter", icon: "🛵", label: "Scooter",         sub: "Pratik, komüt" },
         { key: "tur",     icon: "🧭", label: "Adventure / Tur", sub: "Uzun yol, arazi" },
-        { key: "fark",    icon: "—",  label: "Farketmez",       sub: "" },
+        { key: "fark",    icon: "—",  label: "Fark etmez",       sub: "" },
       ],
     },
   ],
@@ -143,7 +143,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "kisa",       icon: "📍", label: "5–15 km",   sub: "Kısa mesafe" },
         { key: "orta",       icon: "📍", label: "15–30 km",  sub: "Orta mesafe" },
         { key: "uzun",       icon: "📍", label: "30 km+",    sub: "Uzun mesafe" },
-        { key: "bilmiyorum", icon: "❓", label: "Bilmiyorum", sub: "" },
+        { key: "bilmiyorum", icon: "❓", label: "Emin değilim", sub: "" },
       ],
     },
     {
@@ -162,7 +162,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "eco",   icon: "🍃", label: "350W'a kadar", sub: "Hafif, düz yol" },
         { key: "orta",  icon: "💪", label: "350–500W",     sub: "Dengeli" },
         { key: "guclu", icon: "🔥", label: "500W+",        sub: "Yokuş, performans" },
-        { key: "fark",  icon: "—",  label: "Farketmez",    sub: "" },
+        { key: "fark",  icon: "—",  label: "Fark etmez",    sub: "" },
       ],
     },
   ],
@@ -192,7 +192,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "cekme",   icon: "🚙", label: "Çekme",      sub: "Araçla çekilir" },
         { key: "motorlu", icon: "🚐", label: "Motorlu",    sub: "Kendi motoru var" },
         { key: "kamper",  icon: "🚌", label: "Kamper-Van", sub: "Van dönüşüm" },
-        { key: "fark",    icon: "—",  label: "Farketmez",  sub: "" },
+        { key: "fark",    icon: "—",  label: "Fark etmez",  sub: "" },
       ],
     },
   ],
@@ -214,7 +214,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "hafif", icon: "📦", label: "Hafif < 1t", sub: "Küçük yük" },
         { key: "orta",  icon: "📦", label: "Orta 1–2t",  sub: "Orta yük" },
         { key: "agir",  icon: "📦", label: "Ağır 2t+",   sub: "Ağır yük" },
-        { key: "fark",  icon: "—",  label: "Farketmez",  sub: "" },
+        { key: "fark",  icon: "—",  label: "Fark etmez",  sub: "" },
       ],
     },
     {
@@ -234,7 +234,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "kisa",       icon: "📍", label: "5–15 km",   sub: "Kısa mesafe" },
         { key: "orta",       icon: "📍", label: "15–30 km",  sub: "Orta mesafe" },
         { key: "uzun",       icon: "📍", label: "30 km+",    sub: "Uzun mesafe" },
-        { key: "bilmiyorum", icon: "❓", label: "Bilmiyorum", sub: "" },
+        { key: "bilmiyorum", icon: "❓", label: "Emin değilim", sub: "" },
       ],
     },
     {
@@ -244,7 +244,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "eco",   icon: "🍃", label: "350W'a kadar", sub: "Hafif, düz yol" },
         { key: "orta",  icon: "💪", label: "350–500W",     sub: "Dengeli" },
         { key: "guclu", icon: "🔥", label: "500W+",        sub: "Yokuş, performans" },
-        { key: "fark",  icon: "—",  label: "Farketmez",    sub: "" },
+        { key: "fark",  icon: "—",  label: "Fark etmez",    sub: "" },
       ],
     },
     {
@@ -256,7 +256,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
         { key: "yol",      icon: "🛣️", label: "Yol",          sub: "Hız, spor" },
         { key: "kargo",    icon: "📦", label: "Kargo",         sub: "Yük taşıma" },
         { key: "katlanir", icon: "🧳", label: "Katlanabilir",  sub: "Taşınabilir" },
-        { key: "fark",     icon: "—",  label: "Farketmez",     sub: "" },
+        { key: "fark",     icon: "—",  label: "Fark etmez",     sub: "" },
       ],
     },
   ],
@@ -286,7 +286,7 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
       opts: [
         { key: "elektrik", icon: "⚡", label: "Elektrikli",       sub: "Şarjlı" },
         { key: "yakitli",  icon: "⛽", label: "Benzinli / Dizel", sub: "" },
-        { key: "fark",     icon: "—",  label: "Farketmez",        sub: "" },
+        { key: "fark",     icon: "—",  label: "Fark etmez",        sub: "" },
       ],
     },
   ],
@@ -446,6 +446,23 @@ export function quizQ4Matches(
     }
   }
   return true;
+}
+
+// Bir quiz cevabı ana sayfa sonuç ızgarasını GERÇEKTEN etkiliyor mu? (sert filtre
+// VEYA sıralama ağırlığı). Sonuç şeridinde yalnız bunlar çip olarak gösterilir —
+// "Fark etmez" / "Emin değilim" ya da hiç okunmayan adımlar anlamsız çip üretmesin.
+//   • 1. soru (q2): hiçbir kategoride sonucu etkilemiyor — calcQuizScore yalnız
+//     .score döndürüp ProductGrid onu kullanıyor; matchCount (q2'nin girdiği yer)
+//     hiçbir yerde okunmuyor.
+//   • 2. soru (q3): yalnız oto (weightedScore öncelik ağırlığı) / moto
+//     (MOTO_CC_RANGES) / ebike (EBIKE_WATT_RANGES). scooter/karavan/kamyon/hepsi
+//     q3'ü hiçbir yerde okunmuyor.
+//   • 3. soru (q4): her kategoride sert filtre (quizQ4Matches) — "fark" hariç.
+export function answerAffectsResults(cat: QuizCat, step: 1 | 2 | 3, key: string): boolean {
+  if (!key || key === "fark") return false;
+  if (step === 1) return false;
+  if (step === 2) return cat === "oto" || cat === "moto" || cat === "ebike";
+  return true; // step 3 / q4
 }
 
 function weightedScore(scores: FikapeScores, q3: string): number {
