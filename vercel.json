@@ -5,12 +5,16 @@
       "schedule": "0 3 * * 1"
     },
     {
-      "path": "/api/cron/reminder-emails",
-      "schedule": "0 9 * * 1"
-    },
-    {
       "path": "/api/cron/anonymize-closed-trades",
       "schedule": "0 4 * * 1"
+    },
+    {
+      "path": "/api/cron/weekly-report",
+      "schedule": "0 5 * * 1"
+    },
+    {
+      "path": "/api/cron/reminder-emails",
+      "schedule": "0 9 * * 1"
     }
   ]
 }

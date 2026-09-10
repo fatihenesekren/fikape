@@ -126,6 +126,7 @@ model Product {
   tradeListings   TradeListing[]
   contentReports  ContentReport[]
   favorites       Favorite[]
+  weeklyViewSnapshots WeeklyViewSnapshot[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "products_name_trgm_idx")
@@ -483,6 +484,46 @@ model ContentFilterHit {
   @@index([userId, createdAt])
   @@index([createdAt])
   @@map("content_filter_hits")
+}
+
+// ─────────────────────────────────────────────
+// HAFTALIK GÖRÜNTÜLENME ANLIK GÖRÜNTÜSÜ — reset-weekly-views cron'u
+// weeklyViewCount'u sıfırlamadan önce buraya yazar; haftalık admin raporu
+// top-10 + WoW görüntülenme farkı için okur. (add_weekly_view_snapshots.sql)
+// ─────────────────────────────────────────────
+
+model WeeklyViewSnapshot {
+  id            Int      @id @default(autoincrement())
+  weekStart     DateTime // ISO Pazartesi 00:00 UTC — raporlanan haftanın başı
+  productId     Int
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  weeklyViews   Int      @default(0)
+  lifetimeViews Int      @default(0)
+  createdAt     DateTime @default(now())
+
+  @@unique([weekStart, productId])
+  @@index([weekStart])
+  @@map("weekly_view_snapshots")
+}
+
+// ─────────────────────────────────────────────
+// HAFTALIK ADMIN RAPORU KOŞU KAYDI — ISO hafta başına tek satır; cron
+// çift-ateşlenirse ikinci gönderim engellenir. (add_report_runs.sql)
+// ─────────────────────────────────────────────
+
+model ReportRun {
+  id             Int       @id @default(autoincrement())
+  kind           String    @db.VarChar(32) // "weekly-admin"
+  isoWeek        String    @db.VarChar(10) // "2026-W37"
+  status         String    @db.VarChar(12) // RUNNING | SENT | FAILED
+  recipientCount Int?
+  summary        String?
+  error          String?
+  startedAt      DateTime  @default(now())
+  finishedAt     DateTime?
+
+  @@unique([kind, isoWeek])
+  @@map("report_runs")
 }
 
 enum ModerationAction {

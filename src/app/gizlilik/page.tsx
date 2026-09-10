@@ -64,6 +64,7 @@ export default function GizlilikPage() {
             <li>Yorumlarınızın platform üzerinde yayımlanması</li>
             <li>Spam ve sahte yorum tespiti ile içerik moderasyonu</li>
             <li>Platform kalitesinin iyileştirilmesi ve hataların giderilmesi</li>
+            <li>Hizmetin işletilmesi amacıyla toplulaştırılmış (kişi bazında olmayan) kullanım istatistiklerinin oluşturulması ve yetkili personele iç raporlanması</li>
             <li>Yasal yükümlülüklerin yerine getirilmesi</li>
           </ul>
           <p className="mt-3 text-sm bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
