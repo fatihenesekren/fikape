@@ -8,7 +8,7 @@ import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeMessagingEnabled } from "@/lib/features";
 import { createNotification } from "@/lib/notification";
-import { CLOSE_COOLDOWN_MS } from "@/lib/tradeThread";
+import { CLOSE_COOLDOWN_MS, livePairThreadWhere } from "@/lib/tradeThread";
 
 const DAILY_THREAD_LIMIT = Number(process.env.TAKASA_AC_THREAD_GUNLUK_LIMIT) || 10;
 
@@ -93,6 +93,23 @@ export async function POST(
     );
   }
 
+  // Çift arası zaten canlı bir görüşme varsa (herhangi bir ilanda, iki yönden
+  // biriyle) yeni thread açtırma — mevcut görüşmeye yönlendir. Cooldown
+  // kontrolünden SONRA: sahibin kapattığı görüşme yukarıda 403 verir, buraya
+  // düşmez. Rate-limit'ten ÖNCE: yönlendirme token harcamamalı.
+  const existingPair = await prisma.messageThread.findFirst({
+    where: livePairThreadWhere(userId, listing.userId),
+    orderBy: { lastMessageAt: "desc" },
+    select: { id: true },
+  });
+  if (existingPair) {
+    console.log("[trade-dedup] redirect", { userId, listingId, threadId: existingPair.id, phase: "pre" });
+    return NextResponse.json(
+      { error: "Bu ilan sahibiyle zaten bir görüşmeniz var.", threadId: existingPair.id },
+      { status: 409 },
+    );
+  }
+
   const parsed = threadCreateSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
@@ -124,20 +141,54 @@ export async function POST(
     return NextResponse.json({ error: "Günlük mesaj başlatma sınırına ulaştınız, yarın tekrar deneyiniz." }, { status: 429 });
   }
 
+  // Yarış: A ve B aynı anda birbirlerinin ilanına mesaj atarsa iki findFirst de
+  // boş döner. Çift-anahtarlı advisory xact lock ile pair başına seri hale
+  // getir, kilidin içinde tekrar kontrol et. PgBouncer transaction-mode ile
+  // uyumlu (xact-scoped, commit'te otomatik serbest).
   let threadId: number;
   try {
-    const thread = await prisma.messageThread.create({
-      data: {
-        tradeListingId: listingId,
-        initiatorId: userId,
-        initiatorListingId,
-        messages: { create: { senderId: userId, text } },
-      },
+    const lo = Math.min(userId, listing.userId);
+    const hi = Math.max(userId, listing.userId);
+    const outcome = await prisma.$transaction(async (tx) => {
+      await tx.$queryRaw`SELECT pg_advisory_xact_lock(${lo}::int, ${hi}::int)`;
+      const again = await tx.messageThread.findFirst({
+        where: livePairThreadWhere(userId, listing.userId),
+        orderBy: { lastMessageAt: "desc" },
+        select: { id: true },
+      });
+      if (again) return { kind: "existing" as const, id: again.id };
+      const created = await tx.messageThread.create({
+        data: {
+          tradeListingId: listingId,
+          initiatorId: userId,
+          initiatorListingId,
+          messages: { create: { senderId: userId, text } },
+        },
+        select: { id: true },
+      });
+      return { kind: "created" as const, id: created.id };
     });
-    threadId = thread.id;
+    if (outcome.kind === "existing") {
+      console.log("[trade-dedup] redirect", { userId, listingId, threadId: outcome.id, phase: "lock" });
+      return NextResponse.json(
+        { error: "Bu ilan sahibiyle zaten bir görüşmeniz var.", threadId: outcome.id },
+        { status: 409 },
+      );
+    }
+    threadId = outcome.id;
   } catch (e) {
     if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
-      return NextResponse.json({ error: "Bu ilana zaten bir mesaj gönderdiniz." }, { status: 409 });
+      // Aynı ilana ikinci thread (tradeListingId_initiatorId unique) — mevcut
+      // görüşmenin id'sini çözüp yönlendir.
+      console.warn("[trade-dedup] p2002-race", { userId, listingId });
+      const dup = await prisma.messageThread.findUnique({
+        where: { tradeListingId_initiatorId: { tradeListingId: listingId, initiatorId: userId } },
+        select: { id: true },
+      });
+      return NextResponse.json(
+        { error: "Bu ilan sahibiyle zaten bir görüşmeniz var.", threadId: dup?.id },
+        { status: 409 },
+      );
     }
     throw e;
   }

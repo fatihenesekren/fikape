@@ -29,6 +29,8 @@ export async function POST(
       id: true,
       initiatorId: true,
       interestLostByUserId: true,
+      blockedByUserId: true,
+      closedByUserId: true,
       tradeListing: {
         select: {
           userId: true,
@@ -39,6 +41,9 @@ export async function POST(
   });
   if (!thread || (thread.initiatorId !== userId && thread.tradeListing.userId !== userId)) {
     return NextResponse.json({ error: "Görüşme bulunamadı." }, { status: 404 });
+  }
+  if (thread.blockedByUserId != null || thread.closedByUserId != null) {
+    return NextResponse.json({ error: "Bu görüşme kapalı." }, { status: 403 });
   }
   if (thread.interestLostByUserId !== userId) {
     return NextResponse.json({ error: "Bu işaret sana ait değil." }, { status: 409 });

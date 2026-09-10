@@ -5,6 +5,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { isTradeMessagingEnabled } from "@/lib/features";
+import { livePairThreadWhere, ownerCloseCooldownUntil } from "@/lib/tradeThread";
 import { timeAgoTr } from "@/lib/timeAgo";
 import { Avatar } from "@/components/Avatar";
 import { PhotoSlider } from "@/app/araclar/[slug]/PhotoSlider";
@@ -94,20 +95,45 @@ export default async function TakasDetayPage({
 
   const isOwner = userId === listing.userId;
 
-  let existingThreadId: number | null = null;
+  // Çift arası tek canlı görüşme: bakan kişinin, ilan sahibiyle herhangi bir
+  // ilanda (iki yönden biriyle) canlı bir görüşmesi varsa form gösterilmez,
+  // o görüşmeye yönlendirilir. Ayrıca engel (çift yönlü) ve sahibin kapatma
+  // cooldown'ı da burada kontrol edilir — hepsi bağımsız, tek round-trip.
+  let pairThread: { id: number; closedByUserId: number | null } | null = null;
+  let pairBlocked = false;
+  let cooldownUntil: Date | null = null;
   if (userId && !isOwner) {
-    const thread = await prisma.messageThread.findUnique({
-      where: { tradeListingId_initiatorId: { tradeListingId: listingId, initiatorId: userId } },
-      select: { id: true },
-    });
-    existingThreadId = thread?.id ?? null;
+    const [pt, blk, cd] = await Promise.all([
+      prisma.messageThread.findFirst({
+        where: livePairThreadWhere(userId, listing.userId),
+        orderBy: { lastMessageAt: "desc" },
+        select: { id: true, closedByUserId: true },
+      }),
+      prisma.blockedUser.findFirst({
+        where: {
+          OR: [
+            { blockerId: userId, blockedId: listing.userId },
+            { blockerId: listing.userId, blockedId: userId },
+          ],
+        },
+        select: { id: true },
+      }),
+      ownerCloseCooldownUntil(userId, listing.userId),
+    ]);
+    pairThread = pt;
+    pairBlocked = !!blk;
+    cooldownUntil = cd;
   }
 
-  // Mesaj atarken "hangi aracınızla teklif ediyorsunuz?" seçimi için — sadece
-  // yeni bir görüşme başlatılacaksa gerekli (bkz. kullanıcı geri bildirimi:
-  // alıcı, teklif edilen aracı görmeden mesajları değerlendiremiyordu).
+  const trustLevel = (session?.user?.trustLevel as number | undefined) ?? 0;
+  // "Hangi aracınızla teklif ediyorsunuz?" seçimi — yalnızca form gerçekten
+  // render olacaksa gerekli.
+  const formWillRender =
+    !!userId && !isOwner && listing.isActive && !pairThread && !pairBlocked &&
+    !cooldownUntil && trustLevel >= 3 && isTradeMessagingEnabled();
+
   let myActiveListings: { id: number; vehicleName: string }[] = [];
-  if (userId && !isOwner && !existingThreadId) {
+  if (formWillRender) {
     const rows = await prisma.tradeListing.findMany({
       where: { userId, isActive: true },
       select: {
@@ -492,17 +518,30 @@ export default async function TakasDetayPage({
           <div className="mt-5 bg-gray-50 rounded-lg px-3 py-2 text-sm text-gray-500">
             Bu sizin ilanınız. Kapatmak için <Link href="/garajim" className="underline">Garajım</Link> sayfasına gidiniz.
           </div>
-        ) : existingThreadId ? (
-          <div className="mt-5">
-            <Link href={`/mesajlar/${existingThreadId}`} className="text-sm font-semibold text-link hover:underline">
-              Görüşmenize devam edin →
-            </Link>
-          </div>
-        ) : !session ? (
+        ) : pairBlocked ? (
           <div className="mt-5 bg-gray-50 rounded-lg px-3 py-2 text-sm text-gray-500">
-            Mesaj göndermek için <Link href="/giris" className="underline">giriş yapınız</Link>.
+            Bu ilan sahibine mesaj gönderemezsiniz.
           </div>
-        ) : (session.user.trustLevel as number) < 3 ? (
+        ) : pairThread && pairThread.closedByUserId == null ? (
+          <div className="mt-5">
+            <Link href={`/mesajlar/${pairThread.id}`} className="text-sm font-semibold text-link hover:underline">
+              Görüşmeye gidin →
+            </Link>
+            <p className="mt-1 text-[11px] text-gray-400">Bu ilan sahibiyle bir görüşmeniz var.</p>
+          </div>
+        ) : pairThread ? (
+          <div className="mt-5">
+            <Link href={`/mesajlar/${pairThread.id}`} className="text-sm font-semibold text-link hover:underline">
+              Görüşmeyi yeniden açın →
+            </Link>
+            <p className="mt-1 text-[11px] text-gray-400">Bu ilan sahibiyle kapattığınız bir görüşme var.</p>
+          </div>
+        ) : cooldownUntil ? (
+          <p className="mt-5 text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">
+            İlan sahibi yakın zamanda bir görüşmeyi kapattığı için yeni bir görüşme başlatamazsınız.{" "}
+            {cooldownUntil.toLocaleDateString("tr-TR", { day: "numeric", month: "long" })} tarihinden sonra tekrar deneyebilirsiniz.
+          </p>
+        ) : trustLevel < 3 ? (
           <p className="mt-5 text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">
             Mesaj göndermek için garajınızda fotoğraflı, onaylanmış bir yorumunuz olması gerekiyor.
           </p>

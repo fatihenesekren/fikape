@@ -33,6 +33,8 @@ export async function POST(
       id: true,
       initiatorId: true,
       interestLostByUserId: true,
+      blockedByUserId: true,
+      closedByUserId: true,
       tradeListing: {
         select: {
           userId: true,
@@ -44,6 +46,11 @@ export async function POST(
   });
   if (!thread || (thread.initiatorId !== userId && thread.tradeListing.userId !== userId)) {
     return NextResponse.json({ error: "Görüşme bulunamadı." }, { status: 404 });
+  }
+  // Kapalı/engelli görüşmede bu yumuşak sinyalin anlamı yok; ayrıca bildirim
+  // tetiklediği için engelli kullanıcının dürtme aracı olmasın (güvenlik C2).
+  if (thread.blockedByUserId != null || thread.closedByUserId != null) {
+    return NextResponse.json({ error: "Bu görüşme kapalı." }, { status: 403 });
   }
   if (thread.interestLostByUserId != null) {
     return NextResponse.json({ error: "Bu görüşme zaten işaretlenmiş." }, { status: 409 });

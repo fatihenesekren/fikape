@@ -180,7 +180,12 @@ export default async function ThreadPage({
 
   // Takas sonrası karşılıklı değerlendirme daveti — ilan "Takas oldu" ile
   // kapandıysa ve bu kullanıcı bu görüşmeyi henüz değerlendirmediyse gösterilir.
-  const canRate = thread.tradeListing.closeReason === "TRADED";
+  // Görüşme birden fazla ilanı kapsayabilir — ilanlardan herhangi biri "Takas
+  // oldu" ile kapandıysa ve iki taraf da yazışmışsa davet gösterilir.
+  const canRate =
+    (thread.tradeListing.closeReason === "TRADED" ||
+      thread.initiatorListing?.closeReason === "TRADED") &&
+    thread.hasReciprocalReply;
   const existingRating = canRate
     ? await prisma.tradeRating.findUnique({
         where: { threadId_raterId: { threadId, raterId: userId } },

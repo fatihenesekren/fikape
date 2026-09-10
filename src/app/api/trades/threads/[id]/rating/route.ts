@@ -28,19 +28,21 @@ export async function POST(
     select: {
       id: true,
       initiatorId: true,
-      tradeListing: {
-        select: {
-          userId: true,
-          closeReason: true,
-          product: { select: { brand: { select: { name: true } }, model: { select: { name: true } } } },
-        },
-      },
+      hasReciprocalReply: true,
+      tradeListing: { select: { userId: true, closeReason: true } },
+      initiatorListing: { select: { closeReason: true } },
     },
   });
   if (!thread || (thread.initiatorId !== userId && thread.tradeListing.userId !== userId)) {
     return NextResponse.json({ error: "Görüşme bulunamadı." }, { status: 404 });
   }
-  if (thread.tradeListing.closeReason !== "TRADED") {
+  // Görüşme birden fazla ilanı kapsayabilir (çift-thread birleştirme sonrası) —
+  // ilanlardan HERHANGİ biri "Takas oldu" ile kapandıysa yeter. hasReciprocalReply
+  // tabanı: iki taraf da yazmamış soğuk görüşmelerde davet çıkmasın (güvenlik C4).
+  const anyTraded =
+    thread.tradeListing.closeReason === "TRADED" ||
+    thread.initiatorListing?.closeReason === "TRADED";
+  if (!anyTraded || !thread.hasReciprocalReply) {
     return NextResponse.json({ error: "Bu görüşme henüz değerlendirmeye uygun değil." }, { status: 409 });
   }
 
@@ -75,11 +77,11 @@ export async function POST(
     });
     // Önceden puan alan kullanıcı bunu ancak ilgili ilana tekrar girerek fark
     // ediyordu — hiçbir bildirim tipi karşılığı yoktu (bkz. boşluk raporu, ORTA madde).
-    const vehicleName = `${thread.tradeListing.product.brand.name} ${thread.tradeListing.product.model.name}`;
+    // Görüşme birden fazla aracı kapsayabildiği için mesajda araç adı geçmiyor.
     await createNotification({
       userId: ratedUserId,
       type: "TRADE_RATED",
-      message: `"${vehicleName}" takasınız için bir değerlendirme aldınız.`,
+      message: `Tamamladığınız bir takas için bir değerlendirme aldınız.`,
       link: `/mesajlar/${threadId}`,
     });
     return NextResponse.json({ ok: true }, { status: 201 });

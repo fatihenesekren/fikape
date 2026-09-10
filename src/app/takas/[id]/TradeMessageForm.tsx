@@ -42,6 +42,12 @@ export function TradeMessageForm({
       });
       const data = await res.json();
       if (!res.ok) {
+        // 409 + threadId: bu çiftle zaten bir görüşme var (aynı ya da başka
+        // ilandan) — hata göstermek yerine o görüşmeye yönlendir.
+        if (res.status === 409 && data.threadId) {
+          router.push(`/mesajlar/${data.threadId}`);
+          return;
+        }
         setError(data.error ?? "Bir hata oluştu.");
         return;
       }

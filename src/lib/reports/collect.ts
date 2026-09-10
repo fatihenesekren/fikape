@@ -292,7 +292,7 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
   sections.push(...await guard("Takas pazarı sağlığı", errors, async () => {
     const [
       activeNow, closedByReason, threadW, threadP,
-      tradedW, tradedP, ratingAgg,
+      tradedW, tradedP, ratingAgg, dupPairRows,
     ] = await Promise.all([
       prisma.tradeListing.count({ where: { isActive: true } }),
       prisma.tradeListing.groupBy({ by: ["closeReason"], where: { closedAt: W }, _count: { _all: true } }),
@@ -301,6 +301,21 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       prisma.tradeListing.count({ where: { closeReason: "TRADED", closedAt: W } }),
       prisma.tradeListing.count({ where: { closeReason: "TRADED", closedAt: P } }),
       prisma.tradeRating.aggregate({ where: { createdAt: W }, _avg: { score: true }, _count: { _all: true } }),
+      // "Çift başına tek canlı görüşme" invariant'ının sağlık göstergesi: aynı
+      // kullanıcı çiftinin, engellenmemiş + kapanmamış + ilanı aktif 2+ canlı
+      // görüşmesi. Fix çalışıyorsa bu sayı BÜYÜMEMELİ (bkz. çift-thread fix §8).
+      prisma.$queryRaw<{ n: number }[]>`
+        SELECT COUNT(*)::int AS n FROM (
+          SELECT 1
+          FROM message_threads mt
+          JOIN trade_listings tl ON tl.id = mt."tradeListingId"
+          WHERE mt."blockedByUserId" IS NULL
+            AND mt."closedByUserId"  IS NULL
+            AND tl."isActive" = true
+            AND mt."initiatorId" <> tl."userId"
+          GROUP BY LEAST(mt."initiatorId", tl."userId"), GREATEST(mt."initiatorId", tl."userId")
+          HAVING COUNT(*) >= 2
+        ) d`,
     ]);
     const closedMap = new Map(closedByReason.map((r) => [r.closeReason ?? "—", r._count._all]));
     return {
@@ -315,6 +330,7 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
         [tt("Karşılıklı mesajlaşan konu"), ...dd(recipW, recipP)],
         [tt("Yeni değerlendirme"), nn(ratingAgg._count._all)],
         [tt("Ortalama takas puanı"), { t: ratingAgg._avg.score ? ratingAgg._avg.score.toFixed(1).replace(".", ",") : "—", align: "r" }],
+        [tt("Çift-thread duplikesi (büyümemeli)"), nn(dupPairRows[0]?.n ?? 0)],
       ],
       link: { href: "/admin/mesaj-raporlari", label: "Mesaj raporları" },
     };

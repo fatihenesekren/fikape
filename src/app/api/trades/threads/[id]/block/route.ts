@@ -31,12 +31,29 @@ export async function POST(
   const counterpartId = userId === thread.initiatorId ? thread.tradeListing.userId : thread.initiatorId;
   const now = new Date();
 
-  // "Kişiyi engelle" — kalıcı, çift yönlü kullanıcı bloğu + bu görüşmeyi de
-  // kapat. SESSİZ: engellenen kişiye bildirim gitmez (misilleme önleme).
+  // Çift arası TÜM görüşmeleri kapsayan pair filtresi — engel tek bir thread'e
+  // değil kullanıcı çiftine ait. Aksi halde başka bir ilandaki kardeş thread
+  // blockedByUserId=null kalır ve engelli kullanıcı oradan yazmaya devam eder
+  // (bkz. çift-thread fix güvenlik B2).
+  const pairFilter = {
+    OR: [
+      { initiatorId: userId, tradeListing: { userId: counterpartId } },
+      { initiatorId: counterpartId, tradeListing: { userId } },
+    ],
+  };
+
+  // "Kişiyi engelle" — kalıcı, çift yönlü kullanıcı bloğu + çiftin tüm
+  // görüşmelerini engelle/kapat. SESSİZ: engellenen kişiye bildirim gitmez.
   await prisma.$transaction([
-    prisma.messageThread.update({
-      where: { id: threadId },
-      data: { blockedByUserId: userId, blockedAt: now, closedByUserId: userId, closedAt: now },
+    prisma.messageThread.updateMany({
+      where: { ...pairFilter, blockedByUserId: null },
+      data: { blockedByUserId: userId, blockedAt: now },
+    }),
+    // Kapanış alanlarını yalnızca henüz kapanmamışlara yaz — karşı tarafın
+    // kapattığı görüşmelerde closedByUserId/closedAt ezilmesin.
+    prisma.messageThread.updateMany({
+      where: { ...pairFilter, closedByUserId: null },
+      data: { closedByUserId: userId, closedAt: now },
     }),
     prisma.blockedUser.upsert({
       where: { blockerId_blockedId: { blockerId: userId, blockedId: counterpartId } },

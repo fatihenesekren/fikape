@@ -44,8 +44,11 @@ export function TradeRatingForm({ threadId, counterpartName }: { threadId: numbe
 
   return (
     <div className="p-4 border-t border-gray-100 bg-link-soft/40">
-      <p className="text-xs font-bold text-link-deep mb-2">
-        {counterpartName} ile takasınız nasıldı? Değerlendirin.
+      <p className="text-xs font-bold text-link-deep mb-1">
+        {counterpartName} ile takasınızı değerlendirin
+      </p>
+      <p className="text-[11px] text-gray-500 mb-2">
+        Bu kişiyle bir takas tamamladıysanız puan verin. Tamamlamadıysanız bu adımı geçebilirsiniz.
       </p>
       <div className="flex items-center gap-1 mb-2" role="radiogroup" aria-label="Puan">
         {[1, 2, 3, 4, 5].map((n) => (

@@ -33,6 +33,7 @@ export async function POST(
       id: true,
       initiatorId: true,
       blockedByUserId: true,
+      closedByUserId: true,
       tradeListing: { select: { userId: true, isActive: true } },
     },
   });
@@ -45,8 +46,30 @@ export async function POST(
     return NextResponse.json({ error: "Bu işlemi gerçekleştiremezsiniz." }, { status: 403 });
   }
 
+  const counterpartId = userId === thread.initiatorId ? thread.tradeListing.userId : thread.initiatorId;
+
   if (thread.blockedByUserId != null) {
     return NextResponse.json({ error: "Görüşme sonlandırıldı, mesaj gönderemezsiniz." }, { status: 403 });
+  }
+  // Soft "kapat" — istemci zaten compose kutusunu gizliyor; doğrudan API /
+  // eski sekme üzerinden yazmayı da kapat (bkz. çift-thread fix güvenlik B1:
+  // kapalı bir thread'e yönlendirilen kullanıcı cooldown'ı delemesin).
+  if (thread.closedByUserId != null) {
+    return NextResponse.json({ error: "Bu görüşme kapalı, mesaj gönderemezsiniz." }, { status: 403 });
+  }
+  // Kalıcı kullanıcı bloğu, thread'in kendi blockedByUserId alanı null olsa
+  // bile (çiftin başka bir thread'inden engellendiyse) geçerli.
+  const pairBlocked = await prisma.blockedUser.findFirst({
+    where: {
+      OR: [
+        { blockerId: userId, blockedId: counterpartId },
+        { blockerId: counterpartId, blockedId: userId },
+      ],
+    },
+    select: { id: true },
+  });
+  if (pairBlocked) {
+    return NextResponse.json({ error: "Bu kullanıcıyla iletişim kuramazsınız." }, { status: 403 });
   }
   if (!thread.tradeListing.isActive) {
     return NextResponse.json({ error: "Bu ilan artık takasa açık değil, mesaj gönderemezsiniz." }, { status: 403 });
