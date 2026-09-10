@@ -218,11 +218,12 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
       ],
     },
     {
-      question: "4x4 çekiş şart mı?",
-      stepLabel: "Çekiş",
+      question: "Nasıl bir araç arıyorsun?",
+      stepLabel: "Tip",
       opts: [
-        { key: "dortcarpi", icon: "🏔️", label: "4x4 şart",   sub: "Arazi, zorlu koşul" },
-        { key: "fark",      icon: "🛣️", label: "Şart değil", sub: "Asfalt ağırlıklı" },
+        { key: "yuk",    icon: "📦", label: "Panelvan / kapalı kasa", sub: "Yük, kargo, esnaf" },
+        { key: "pickup", icon: "🛻", label: "Pickup / açık kasa",     sub: "Çift kabin + kasa" },
+        { key: "fark",   icon: "—",  label: "Fark etmez",             sub: "" },
       ],
     },
   ],
@@ -431,8 +432,11 @@ export function quizQ4Matches(
       return !allowed || allowed.includes(String(attrs.karavan_type ?? ""));
     }
     case "kamyon": {
-      // "Şart değil" = fark (filtre yok); sadece "4x4 şart" eleme yapar
-      if (q4 === "dortcarpi") return attrs.four_wd === true || String(attrs.four_wd) === "true";
+      // Kasa tipi: "yuk" = kapalı kasa (van/panelvan), "pickup" = açık kasa.
+      // Minivan/insan taşıma ile veri eksiği her ikisinde de elenir; "fark" hepsi.
+      const bt = String(attrs.body_type ?? "").toLowerCase();
+      if (q4 === "yuk")    return bt === "van" || bt === "panelvan";
+      if (q4 === "pickup") return bt === "pickup";
       return true;
     }
     case "hepsi": {

@@ -37,10 +37,12 @@ const BANNER_PHRASES = [
 const AUTO_ADVANCE_MS = 350;
 
 // Bir adımın seçili cevabının "🏙️ Şehir içi" biçimli etiketi (özet çipleri için).
+// Bilinmeyen key (ör. yeniden adlandırılmış / eski paylaşılan URL) → null:
+// anlamsız ham-key çipi gösterme.
 function answerLabel(cat: QuizCat, stepIdx: 0 | 1 | 2, key: string | null): string | null {
   if (!key) return null;
   const opt = QUIZ_STEPS[cat]?.[stepIdx]?.opts.find((o) => o.key === key);
-  return opt ? `${opt.icon} ${opt.label}` : key;
+  return opt ? `${opt.icon} ${opt.label}` : null;
 }
 
 function MatchIcon({ size = 20 }: { size?: number }) {

@@ -135,12 +135,25 @@ describe("quizQ4Matches", () => {
     expect(quizQ4Matches(answers, { karavan_type: "cekme" }, "karavan")).toBe(false);
   });
 
-  it("kamyon: 4x4 şart seçimi four_wd olmayanı eler", () => {
-    const answers: QuizAnswers = { cat: "kamyon", q2: "is", q3: "orta", q4: "dortcarpi" };
-    expect(quizQ4Matches(answers, { four_wd: true }, "kamyonet")).toBe(true);
-    expect(quizQ4Matches(answers, { four_wd: "true" }, "kamyonet")).toBe(true);
-    expect(quizQ4Matches(answers, { four_wd: false }, "kamyonet")).toBe(false);
+  it("kamyon: 'yuk' seçimi van/panelvan kapsar, pickup'ı eler", () => {
+    const answers: QuizAnswers = { cat: "kamyon", q2: "is", q3: "orta", q4: "yuk" };
+    expect(quizQ4Matches(answers, { body_type: "panelvan" }, "kamyonet")).toBe(true);
+    expect(quizQ4Matches(answers, { body_type: "van" }, "kamyonet")).toBe(true);
+    expect(quizQ4Matches(answers, { body_type: "pickup" }, "kamyonet")).toBe(false);
+    expect(quizQ4Matches(answers, { body_type: "minivan" }, "kamyonet")).toBe(false);
     expect(quizQ4Matches(answers, {}, "kamyonet")).toBe(false);
+  });
+
+  it("kamyon: 'pickup' seçimi sadece pickup kapsar", () => {
+    const answers: QuizAnswers = { cat: "kamyon", q2: "is", q3: "orta", q4: "pickup" };
+    expect(quizQ4Matches(answers, { body_type: "pickup" }, "kamyonet")).toBe(true);
+    expect(quizQ4Matches(answers, { body_type: "panelvan" }, "kamyonet")).toBe(false);
+  });
+
+  it("kamyon: eski 'dortcarpi' URL'i (artık geçersiz key) filtre koymaz", () => {
+    const answers: QuizAnswers = { cat: "kamyon", q2: "is", q3: "orta", q4: "dortcarpi" };
+    expect(quizQ4Matches(answers, { body_type: "pickup" }, "kamyonet")).toBe(true);
+    expect(quizQ4Matches(answers, {}, "kamyonet")).toBe(true);
   });
 
   it("hepsi: elektrik seçimi EV + e-scooter/e-bisiklet kategorilerini kapsar", () => {

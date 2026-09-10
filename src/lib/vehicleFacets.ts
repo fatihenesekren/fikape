@@ -9,7 +9,8 @@
 
 import { FUEL_LABELS } from "@/lib/fuel";
 import {
-  OTOMOBIL_BODY_TYPES, OTOMOBIL_SEGMENTS, KARAVAN_TYPES, BIKE_TYPES, toLabelMap,
+  OTOMOBIL_BODY_TYPES, OTOMOBIL_SEGMENTS, KARAVAN_TYPES, BIKE_TYPES,
+  KAMYONET_BODY_TYPES, toLabelMap,
 } from "@/lib/vehicleTypes";
 
 type Attrs = Record<string, unknown>;
@@ -136,7 +137,13 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
     wattGroup("guc"),
   ],
   karavan: [enumGroup("tip", "Tip", "karavan_type", toLabelMap(KARAVAN_TYPES))],
-  kamyonet: [FUEL_GROUP, FOUR_WD_GROUP],
+  // Gövde ilk sırada — "kamyonet" pickup/panelvan/van/minivan karışımı bir
+  // hafif-ticari çatısı; kullanıcının ilk daralttığı boyut kasa tipi.
+  kamyonet: [
+    enumGroup("govde", "Gövde", "body_type", toLabelMap(KAMYONET_BODY_TYPES)),
+    FUEL_GROUP,
+    FOUR_WD_GROUP,
+  ],
 };
 
 export function facetGroupsForCategory(categorySlug: string | undefined): FacetGroup[] {
