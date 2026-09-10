@@ -42,8 +42,19 @@ const DAY = 86_400_000;
 
 function tt(t: string): Cell { return { t }; }
 function nn(n: number): Cell { return { t: fmtInt(n), align: "r" }; }
-function dd(cur: number, prev: number, goodDir: "up" | "down" | "none" = "up"): Cell {
-  return { t: fmtInt(cur), align: "r", delta: delta(cur, prev, goodDir) };
+/** Değer hücresi + ayrı Δ hücresi (satıra `...dd(...)` ile yayılır). */
+function dd(cur: number, prev: number, goodDir: "up" | "down" | "none" = "up"): Cell[] {
+  return [
+    { t: fmtInt(cur), align: "r" },
+    { t: "", align: "r", delta: delta(cur, prev, goodDir) },
+  ];
+}
+/** Oran hücresi (ör. "%71") + puan cinsinden Δ hücresi. */
+function rd(cur: number, prev: number, goodDir: "up" | "down" | "none" = "up"): Cell[] {
+  return [
+    { t: fmtPct(cur), align: "r" },
+    { t: "", align: "r", delta: pointDelta(cur, prev, goodDir) },
+  ];
 }
 function ageDays(from: Date | null | undefined, now: Date): string {
   if (!from) return "—";
@@ -161,11 +172,11 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       title: "Büyüme",
       head: ["Metrik", "Bu hafta", "Δ"],
       rows: [
-        [tt("Yeni kayıt"), dd(newUsersW, newUsersP)],
-        [tt("Doğrulanmış e-posta"), dd(verifiedW, verifiedP)],
-        [tt("Doğrulama oranı"), { t: fmtPct(vrW), align: "r", delta: pointDelta(vrW, vrP) }],
-        [tt("Referanslı kayıt"), dd(refW, refP)],
-        [tt("Banlanan hesap"), dd(banW, banP, "down")],
+        [tt("Yeni kayıt"), ...dd(newUsersW, newUsersP)],
+        [tt("Doğrulanmış e-posta"), ...dd(verifiedW, verifiedP)],
+        [tt("Doğrulama oranı"), ...rd(vrW, vrP)],
+        [tt("Referanslı kayıt"), ...dd(refW, refP)],
+        [tt("Banlanan hesap"), ...dd(banW, banP, "down")],
       ],
       link: { href: "/admin", label: "Admin" },
     };
@@ -205,15 +216,15 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       title: "İçerik üretimi",
       head: ["Metrik", "Bu hafta", "Δ"],
       rows: [
-        [tt("Yorum gönderildi"), dd(revCreatedW, revCreatedP)],
-        [tt("Yorum yayınlandı"), dd(pubReviewW, pubReviewP)],
-        [tt("Yorum reddedildi"), dd(revRejW, revRejP, "down")],
+        [tt("Yorum gönderildi"), ...dd(revCreatedW, revCreatedP)],
+        [tt("Yorum yayınlandı"), ...dd(pubReviewW, pubReviewP)],
+        [tt("Yorum reddedildi"), ...dd(revRejW, revRejP, "down")],
         [tt("Yayın oranı (bu hafta işlenen)"), { t: fmtPct(pubRate), align: "r" }],
-        [tt("Yeni soru"), dd(qW, qP)],
-        [tt("Yeni cevap"), dd(aW, aP)],
+        [tt("Yeni soru"), ...dd(qW, qP)],
+        [tt("Yeni cevap"), ...dd(aW, aP)],
         [tt("Cevapsız soru (toplam)"), nn(unansweredQ)],
         [tt("Fotoğraf yüklendi"), nn(photoW)],
-        [tt("İlk yorumunu alan araç"), dd(firstReviewedW[0]?.n ?? 0, firstReviewedP[0]?.n ?? 0)],
+        [tt("İlk yorumunu alan araç"), ...dd(firstReviewedW[0]?.n ?? 0, firstReviewedP[0]?.n ?? 0)],
       ],
       link: { href: "/admin/yorumlar", label: "Yorumlar" },
     };
@@ -238,11 +249,11 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       title: "Etkileşim",
       head: ["Metrik", "Bu hafta", "Δ"],
       rows: [
-        [tt("Garaj ekleme (kullanıyor)"), dd(gpCurW, gpCurP)],
-        [tt("Garaj ekleme (geçmiş araç)"), dd(gpPastW, gpPastP)],
-        [tt("\"Sattım\" işaretlenen"), dd(soldW, soldP, "none")],
-        [tt("Favori ekleme"), dd(favW, favP)],
-        [tt("Kayıtlı arama"), dd(ssW, ssP)],
+        [tt("Garaj ekleme (kullanıyor)"), ...dd(gpCurW, gpCurP)],
+        [tt("Garaj ekleme (geçmiş araç)"), ...dd(gpPastW, gpPastP)],
+        [tt("\"Sattım\" işaretlenen"), ...dd(soldW, soldP, "none")],
+        [tt("Favori ekleme"), ...dd(favW, favP)],
+        [tt("Kayıtlı arama"), ...dd(ssW, ssP)],
         [tt("Gönderilen bildirim (bağlam)"), nn(notifW)],
       ],
     };
@@ -266,12 +277,12 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       title: "Takas pazarı sağlığı",
       head: ["Metrik", "Bu hafta", "Δ"],
       rows: [
-        [tt("Yeni ilan"), dd(listingW, listingP)],
+        [tt("Yeni ilan"), ...dd(listingW, listingP)],
         [tt("Aktif ilan (şu an)"), nn(activeNow)],
-        [tt("Kapandı — takas oldu"), dd(tradedW, tradedP)],
+        [tt("Kapandı — takas oldu"), ...dd(tradedW, tradedP)],
         [tt("Kapandı — vazgeçildi/başka yerde"), nn((closedMap.get("GAVE_UP") ?? 0) + (closedMap.get("FOUND_ELSEWHERE") ?? 0))],
-        [tt("Yeni mesaj konusu"), dd(threadW, threadP)],
-        [tt("Karşılıklı mesajlaşan konu"), dd(recipW, recipP)],
+        [tt("Yeni mesaj konusu"), ...dd(threadW, threadP)],
+        [tt("Karşılıklı mesajlaşan konu"), ...dd(recipW, recipP)],
         [tt("Yeni değerlendirme"), nn(ratingAgg._count._all)],
         [tt("Ortalama takas puanı"), { t: ratingAgg._avg.score ? ratingAgg._avg.score.toFixed(1).replace(".", ",") : "—", align: "r" }],
       ],
@@ -312,7 +323,7 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       [tt("İçerik filtresi engellemesi"), { t: fmtInt(cfhW), align: "r" }],
       [tt("Tekrarlı ihlalci (30g ≥3 deneme)"), { t: fmtInt(offenders.length), align: "r" }],
       [tt("Aldığın moderasyon aksiyonu"), nn(modActions)],
-      [tt("Silme talebi (bu hafta)"), dd(delReqW, delReqP, "none")],
+      [tt("Silme talebi (bu hafta)"), ...dd(delReqW, delReqP, "none")],
     ];
     for (const r of cfhByRule.sort((a, b) => b._count._all - a._count._all)) {
       rows.push([tt(`  ↳ ${ruleLabel[r.rule] ?? r.rule}`), nn(r._count._all)]);
@@ -344,13 +355,13 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       note: "Lead sayıları — isim/telefon e-postada yok, işlem için admin panelini aç.",
       head: ["Metrik", "Bu hafta", "Δ"],
       rows: [
-        [tt("Sigorta talebi — yeni (7g)"), dd(leadInsW, leadInsP)],
+        [tt("Sigorta talebi — yeni (7g)"), ...dd(leadInsW, leadInsP)],
         [tt("Sigorta talebi — bekleyen NEW"), nn(insMap.get("NEW") ?? 0)],
         [tt("Sigorta talebi — iletişim kuruldu"), nn(insMap.get("CONTACTED") ?? 0)],
         [tt("Sigorta talebi — tamamlandı"), nn(insMap.get("COMPLETED") ?? 0)],
         [tt("Ekspertiz talebi (7g)"), nn(saleMap.get("EXPERTISE") ?? 0)],
         [tt("Hızlı teklif talebi (7g)"), nn(saleMap.get("QUICK_OFFER") ?? 0)],
-        [tt("Plus bekleme listesi (7g)"), dd(plusW, plusP)],
+        [tt("Plus bekleme listesi (7g)"), ...dd(plusW, plusP)],
         [tt(`Plus bekleme listesi (toplam)${plusNudge}`), nn(plusTotal)],
       ],
       link: { href: "/admin/leads", label: "Gelir talepleri" },
@@ -384,8 +395,7 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       rows: top.map((t, i) => [
         { t: String(i + 1), align: "r" as const },
         tt(`${t.product.brand.name} ${t.product.model.name}`),
-        nn(t.weeklyViews),
-        dd(t.weeklyViews, prevMap.get(t.productId) ?? 0),
+        ...dd(t.weeklyViews, prevMap.get(t.productId) ?? 0),
       ]),
       link: { href: "/admin", label: "Admin" },
     };
