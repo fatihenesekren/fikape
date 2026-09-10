@@ -7,8 +7,9 @@ import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeListingEnabled } from "@/lib/features";
 import { hashRequestContext } from "@/lib/security";
-import { createNotification } from "@/lib/notification";
+import { createNotification, notifyAdmins } from "@/lib/notification";
 import { CAR_PARTS } from "@/lib/carParts";
+import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate } from "@/lib/tradeListingPhotos";
 import { isMutualMatch, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
 import type { LocationScope, TradeFuelType } from "@/lib/tradeExpectations";
 import type { DamageStatus } from "@/lib/damageStatus";
@@ -48,6 +49,17 @@ export async function POST(req: Request) {
   const userProductId = Number(parsed.data.userProductId);
   const wantCategoryId = parsed.data.wantCategoryId != null ? Number(parsed.data.wantCategoryId) : null;
   const wantBrandId = parsed.data.wantBrandId != null ? Number(parsed.data.wantBrandId) : null;
+
+  // Takas fotoğrafları — sadece kendi blob yolumuzdaki URL'ler kabul edilir,
+  // aynı fotoğrafın tekrarı reddedilir. Kayıtlar PENDING oluşturulur (moderasyon).
+  const photoUrls = (parsed.data.photoUrls ?? []).filter(isTradePhotoUrl).slice(0, MAX_TRADE_PHOTOS);
+  const photoPhashes = photoUrls.length > 0 ? await computePhashes(photoUrls) : [];
+  if (hasDuplicate(photoPhashes)) {
+    return NextResponse.json(
+      { error: "Aynı fotoğrafı birden fazla kez eklemişsiniz gibi görünüyor, lütfen farklı fotoğraflar seçiniz." },
+      { status: 400 },
+    );
+  }
 
   // İlan serbest metinleri de mesajlarla aynı filtreden geçer — herkese açık
   // description/note, IBAN/telefon/e-posta paylaşımı için birebir uygun bir yer.
@@ -157,6 +169,28 @@ export async function POST(req: Request) {
           condition,
         })),
       });
+    }
+
+    if (photoUrls.length > 0) {
+      await prisma.tradeListingPhoto.createMany({
+        data: photoUrls.map((url, i) => ({
+          tradeListingId: listing.id,
+          uploadedByUserId: userId,
+          url,
+          status: "PENDING" as const,
+          order: i,
+          phash: photoPhashes[i],
+        })),
+      });
+      notifyAdmins({
+        type: "ADMIN_NEW_TRADE_PHOTO",
+        message: "Yeni takas ilanı fotoğrafı onay bekliyor.",
+        link: "/admin/takas-fotograflari",
+        emailSubject: "Onay bekleyen takas fotoğrafı",
+        emailTitle: "Takas fotoğrafı onayı",
+        emailMessage: "Bir takas ilanına eklenen fotoğraf(lar) moderasyon bekliyor.",
+        rateLimitKey: "admin-trade-photo",
+      }).catch(() => {});
     }
 
     if (tramerRecords && tramerRecords.length > 0) {

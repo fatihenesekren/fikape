@@ -6,6 +6,8 @@ import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { isTradeListingEnabled } from "@/lib/features";
 import { CAR_PARTS } from "@/lib/carParts";
+import { notifyAdmins } from "@/lib/notification";
+import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate, deleteTradePhotoBlobs } from "@/lib/tradeListingPhotos";
 
 // İlan düzenleme + yeniden açma — önceden ne düzenleme ne yeniden açma vardı,
 // kullanıcı şehir/ödeme niyeti/notu değiştirmek için ilanı kapatıp sıfırdan
@@ -97,6 +99,40 @@ export async function PATCH(
   const wantCategoryId = data.wantCategoryId != null ? Number(data.wantCategoryId) : null;
   const wantBrandId = data.wantBrandId != null ? Number(data.wantBrandId) : null;
 
+  // ── Takas fotoğrafları ──────────────────────────────────────────────
+  // Kaldırılacaklar: yalnızca BU ilana ait satırlar; blob'lar commit sonrası
+  // best-effort silinir. Yeni eklenenler: whitelist + tekrar kontrolü, PENDING.
+  const removePhotoIds = data.removePhotoIds ?? [];
+  const newPhotoUrls = (data.photoUrls ?? []).filter(isTradePhotoUrl).slice(0, MAX_TRADE_PHOTOS);
+
+  let removedUrls: string[] = [];
+  if (removePhotoIds.length > 0) {
+    const rows = await prisma.tradeListingPhoto.findMany({
+      where: { id: { in: removePhotoIds }, tradeListingId: listingId },
+      select: { id: true, url: true },
+    });
+    removePhotoIds.length = 0;
+    removePhotoIds.push(...rows.map((r) => r.id));
+    removedUrls = rows.map((r) => r.url);
+  }
+
+  let newPhotoPhashes: (string | null)[] = [];
+  if (newPhotoUrls.length > 0) {
+    const kept = await prisma.tradeListingPhoto.count({
+      where: { tradeListingId: listingId, status: { not: "REJECTED" }, id: { notIn: removePhotoIds } },
+    });
+    if (kept + newPhotoUrls.length > MAX_TRADE_PHOTOS) {
+      return NextResponse.json({ error: `En fazla ${MAX_TRADE_PHOTOS} fotoğraf ekleyebilirsiniz.` }, { status: 400 });
+    }
+    newPhotoPhashes = await computePhashes(newPhotoUrls);
+    if (hasDuplicate(newPhotoPhashes)) {
+      return NextResponse.json(
+        { error: "Aynı fotoğrafı birden fazla kez eklemişsiniz gibi görünüyor, lütfen farklı fotoğraflar seçiniz." },
+        { status: 400 },
+      );
+    }
+  }
+
   const validPartKeys = new Set(CAR_PARTS.map((p) => p.key));
   const partConditionEntries = Object.entries(data.partConditions ?? {}).filter(
     ([key]) => validPartKeys.has(key)
@@ -179,7 +215,41 @@ export async function PATCH(
           }),
         ]
       : []),
+    // Fotoğraf kaldırma — satırlar silinir (blob commit sonrası).
+    ...(removePhotoIds.length > 0
+      ? [prisma.tradeListingPhoto.deleteMany({ where: { id: { in: removePhotoIds }, tradeListingId: listingId } })]
+      : []),
+    // Yeni fotoğraf(lar) — PENDING, order mevcut en yüksek order'dan sonra değil,
+    // basitçe createdAt'a göre gösterileceği için 0'dan artan yeterli.
+    ...(newPhotoUrls.length > 0
+      ? [
+          prisma.tradeListingPhoto.createMany({
+            data: newPhotoUrls.map((url, i) => ({
+              tradeListingId: listingId,
+              uploadedByUserId: userId,
+              url,
+              status: "PENDING" as const,
+              order: i,
+              phash: newPhotoPhashes[i],
+            })),
+          }),
+        ]
+      : []),
   ]);
+
+  // Blob temizliği + admin bildirimi — transaction dışında (harici ağ).
+  if (removedUrls.length > 0) await deleteTradePhotoBlobs(removedUrls).catch(() => {});
+  if (newPhotoUrls.length > 0) {
+    notifyAdmins({
+      type: "ADMIN_NEW_TRADE_PHOTO",
+      message: "Takas ilanına eklenen fotoğraf onay bekliyor.",
+      link: "/admin/takas-fotograflari",
+      emailSubject: "Onay bekleyen takas fotoğrafı",
+      emailTitle: "Takas fotoğrafı onayı",
+      emailMessage: "Bir takas ilanına eklenen fotoğraf(lar) moderasyon bekliyor.",
+      rateLimitKey: "admin-trade-photo",
+    }).catch(() => {});
+  }
 
   return NextResponse.json({ ok: true });
 }

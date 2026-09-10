@@ -60,6 +60,17 @@ async function getGalleryPhotos(userProductId: number) {
   return photos;
 }
 
+// İlana özel, onaylı takas fotoğrafları — yorum fotoğraflarından ÖNCE gösterilir
+// (güncel durumu yansıttıkları için). Bekleyen (PENDING) fotoğraflar burada yok;
+// sadece ilan sahibine ayrı bir not olarak gösterilir.
+async function getTradePhotos(tradeListingId: number) {
+  return prisma.tradeListingPhoto.findMany({
+    where: { tradeListingId, status: "APPROVED" },
+    orderBy: [{ order: "asc" }, { createdAt: "asc" }],
+    select: { url: true },
+  });
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -148,7 +159,21 @@ export default async function TakasDetayPage({
     }));
   }
 
-  const galleryPhotos = await getGalleryPhotos(listing.userProductId);
+  const [reviewPhotos, tradePhotos, pendingTradePhotoCount] = await Promise.all([
+    getGalleryPhotos(listing.userProductId),
+    getTradePhotos(listing.id),
+    isOwner
+      ? prisma.tradeListingPhoto.count({ where: { tradeListingId: listing.id, status: "PENDING" } })
+      : Promise.resolve(0),
+  ]);
+  // Takas fotoğrafları önce (güncel durum), sonra yorum fotoğrafları — URL'ye
+  // göre tekilleştirilir.
+  const seenPhotoUrls = new Set<string>();
+  const galleryPhotos = [...tradePhotos, ...reviewPhotos].filter((p) => {
+    if (seenPhotoUrls.has(p.url)) return false;
+    seenPhotoUrls.add(p.url);
+    return true;
+  });
 
   // Takas sonrası değerlendirme ortalaması — güven takas geçmişinden birikmiyordu
   // (bkz. denetim raporu), artık ilan sahibinin geçmiş takaslardan aldığı puanlar
@@ -388,6 +413,12 @@ export default async function TakasDetayPage({
         <div className="mb-4 rounded-2xl overflow-hidden">
           <PhotoSlider photos={galleryPhotos} alt={vehicleAlt} />
         </div>
+      )}
+
+      {isOwner && pendingTradePhotoCount > 0 && (
+        <p className="mb-4 text-[11px] text-amber-700 bg-amber-50 rounded-lg px-3 py-2">
+          {pendingTradePhotoCount} fotoğrafınız moderasyonda — onaylandığında ilanınızda görünecek.
+        </p>
       )}
 
       <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden">

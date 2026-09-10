@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { deleteTradePhotoBlobs } from "@/lib/tradeListingPhotos";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -30,6 +31,17 @@ export async function GET(req: Request) {
     }
 
     const listingIds = staleListings.map((l) => l.id);
+
+    // Takas fotoğrafları — KVKK saklama süresi dolan ilanların fotoğrafları da
+    // blob'dan ve DB'den silinir (blob del harici ağ, transaction dışında).
+    const stalePhotos = await prisma.tradeListingPhoto.findMany({
+      where: { tradeListingId: { in: listingIds } },
+      select: { id: true, url: true },
+    });
+    if (stalePhotos.length > 0) {
+      await deleteTradePhotoBlobs(stalePhotos.map((p) => p.url)).catch(() => {});
+      await prisma.tradeListingPhoto.deleteMany({ where: { id: { in: stalePhotos.map((p) => p.id) } } });
+    }
 
     const [messageResult] = await prisma.$transaction([
       prisma.message.updateMany({

@@ -66,6 +66,11 @@ export default async function GarajimPage() {
         transmissionCondition: true, transmissionNote: true,
         runningGearCondition: true, runningGearNote: true,
         tramerRecords: { select: { month: true, year: true, amount: true }, orderBy: [{ year: "desc" }, { month: "desc" }] },
+        photos: {
+          where: { status: { not: "REJECTED" } },
+          select: { id: true, url: true, status: true },
+          orderBy: [{ order: "asc" }, { createdAt: "asc" }],
+        },
       },
       orderBy: { createdAt: "desc" },
     }).catch(() => []),

@@ -18,7 +18,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   const filterWindowStart = daysAgo(30);
 
-  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports, pendingContentReports, pendingDeletionRequests, repeatFilterOffenders] = await Promise.all([
+  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports, pendingContentReports, pendingDeletionRequests, repeatFilterOffenders, pendingTradePhotos] = await Promise.all([
     prisma.review.count({
       where: { OR: [{ status: "PENDING" }, { status: "PUBLISHED", photos: { some: { status: "PENDING" } } }] },
     }).catch(() => 0),
@@ -34,6 +34,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       _count: { id: true },
       having: { id: { _count: { gte: 3 } } },
     }).then((g) => g.length).catch(() => 0),
+    prisma.tradeListingPhoto.count({ where: { status: "PENDING", tradeListing: { isActive: true } } }).catch(() => 0),
   ]);
 
   const navItems = [
@@ -43,6 +44,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     { href: "/admin/urunler",   label: "Teknik Özellikler", shortLabel: "Özellikler", icon: "🔧", badge: 0 },
     { href: "/admin/leads",     label: "Gelir Talepleri", shortLabel: "Talepler", icon: "🛡️", badge: newInsuranceLeads + newSaleLeads },
     { href: "/admin/mesaj-raporlari", label: "Mesaj Raporları", shortLabel: "Raporlar", icon: "🚩", badge: pendingMessageReports },
+    { href: "/admin/takas-fotograflari", label: "Takas Fotoğrafları", shortLabel: "Takas Foto", icon: "📷", badge: pendingTradePhotos },
     { href: "/admin/takas-talep-raporu", label: "Takas Talep Raporu", shortLabel: "Talep", icon: "📊", badge: 0 },
     { href: "/admin/hesap-silme-talepleri", label: "Hesap Silme Talepleri", shortLabel: "Silme", icon: "🗑️", badge: pendingDeletionRequests },
     { href: "/admin/icerik-bildirimleri", label: "İçerik Bildirimleri", shortLabel: "Bildirimler", icon: "⚠️", badge: pendingContentReports },

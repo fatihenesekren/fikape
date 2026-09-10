@@ -3,6 +3,7 @@ import crypto from "crypto";
 import bcrypt from "bcryptjs";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { deleteTradePhotoBlobs } from "@/lib/tradeListingPhotos";
 
 // Hesap silme talebinin işlenmesi — TAKAS VERİSİ özel olarak ele alınıyor
 // (bkz. denetim raporu: "bu akış nasılsa yazılacaksa, takas özel durumu ilk
@@ -58,6 +59,15 @@ export async function PATCH(
   // Rastgele, kimsenin bilemeyeceği bir şifre hash'i — hesabı fiilen kilitler.
   const lockPasswordHash = await bcrypt.hash(crypto.randomBytes(32).toString("hex"), 10);
 
+  // Takas fotoğrafları — talep anında (6 ay beklemeden) siliniyor. Yorum
+  // fotoğrafları hâlâ kapsam dışı (bkz. yukarıdaki not); takas fotoğrafı
+  // geçici bir nesne olduğu için "takas verisi özel ele alınıyor" ilkesine
+  // uyar. Blob del commit sonrası (harici ağ).
+  const tradePhotos = await prisma.tradeListingPhoto.findMany({
+    where: { tradeListing: { userId: deletedUserId } },
+    select: { id: true, url: true },
+  });
+
   await prisma.$transaction([
     prisma.user.update({
       where: { id: deletedUserId },
@@ -85,11 +95,18 @@ export async function PATCH(
       where: { senderId: deletedUserId, text: { not: "[Bu mesaj silinmiştir]" } },
       data: { text: "[Bu mesaj silinmiştir]" },
     }),
+    ...(tradePhotos.length > 0
+      ? [prisma.tradeListingPhoto.deleteMany({ where: { id: { in: tradePhotos.map((p) => p.id) } } })]
+      : []),
     prisma.dataDeletionRequest.update({
       where: { id: requestId },
       data: { status: "COMPLETED", completedAt: new Date(), completedBy: Number(session.user.id) },
     }),
   ]);
+
+  if (tradePhotos.length > 0) {
+    await deleteTradePhotoBlobs(tradePhotos.map((p) => p.url)).catch(() => {});
+  }
 
   return NextResponse.json({ ok: true, status: "COMPLETED" });
 }

@@ -200,6 +200,7 @@ model User {
   dataDeletionRequests DataDeletionRequest[]
   vehicleSuggestions  VehicleSuggestion[]
   productPhotos       ProductPhoto[]        @relation("UserProductPhotos")
+  tradeListingPhotos  TradeListingPhoto[]   @relation("UserTradeListingPhotos")
   moderationLogs      ModerationLog[]
   questions           Question[]
   answers             Answer[]
@@ -259,6 +260,10 @@ enum NotificationType {
   ADMIN_NEW_MESSAGE_REPORT
   ADMIN_NEW_CONTENT_REPORT
   ADMIN_NEW_DELETION_REQUEST
+  ADMIN_NEW_TRADE_PHOTO
+
+  // İlan sahibine — takas fotoğrafı onaylandı/reddedildi.
+  TRADE_PHOTO_MODERATED
 }
 
 model Notification {
@@ -1045,6 +1050,7 @@ model TradeListing {
   runningGearCondition  MechanicalCondition?
   runningGearNote       String?              @db.VarChar(300)
   tramerRecords         TradeTramerRecord[]
+  photos                TradeListingPhoto[]
 
   // NOT: Prisma @@unique([userProductId]) YOK (kapanan ilan yeniden açılamama
   // bug'ına yol açar). Bunun yerine migration SQL'ine ELLE bir PARTIAL UNIQUE
@@ -1055,6 +1061,35 @@ model TradeListing {
   @@index([city, isActive])
   @@index([userId])
   @@map("trade_listings")
+}
+
+// Takas ilanına özel fotoğraflar — yorumdaki ProductPhoto'dan AYRI. Yorum
+// fotoğrafı "aracı değerlendirme" bağlamında (eski olabilir); takas fotoğrafı
+// güncel durum için (hasar, iç mekan, km göstergesi, lastik). Geçici nesne:
+// ilan kapanıp anonimleştirme cron'una takıldığında blob + satır silinir
+// (bkz. api/cron/anonymize-closed-trades). Hesap silme akışında da temizlenir.
+//
+// Auto-APPROVE YOK — öner akışındaki "moderasyonsuz APPROVED" hatası
+// tekrarlanmasın diye PENDING başlar, admin /admin/takas-fotograflari'ndan
+// onaylar. Sadece APPROVED olanlar ilan sayfasında gösterilir.
+model TradeListingPhoto {
+  id               Int          @id @default(autoincrement())
+  tradeListingId   Int
+  tradeListing     TradeListing @relation(fields: [tradeListingId], references: [id], onDelete: Cascade)
+  uploadedByUserId Int?
+  uploadedBy       User?        @relation("UserTradeListingPhotos", fields: [uploadedByUserId], references: [id])
+
+  url              String
+  status           PhotoStatus  @default(PENDING)
+  order            Int          @default(0)
+  // Perceptual hash (dHash) — başka ilandan/sahibinden aşırılmış fotoğrafı
+  // yakalamak için (bkz. lib/phash.ts, yorum fotoğraflarındaki ile aynı).
+  phash            String?
+
+  createdAt        DateTime     @default(now())
+
+  @@index([tradeListingId, status])
+  @@map("trade_listing_photos")
 }
 
 enum TradePaymentIntent {

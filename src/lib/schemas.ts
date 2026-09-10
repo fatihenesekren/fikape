@@ -171,6 +171,7 @@ export const tradeListingCreateSchema = z.object({
   consentGiven:   z.literal(true, { error: "İlanı açmak için KVKK onay kutusunu işaretlemelisiniz." }),
   partConditions: partConditionsSchema,
   usageAmount:    usageAmountRange.optional().nullable(),
+  photoUrls:      z.array(z.string().url()).max(5).optional(),
   ...damageStatusFields,
   ...wantExpectationFields,
 });
@@ -213,6 +214,8 @@ export const tradeListingUpdateSchema = z.object({
   city:           z.enum(TURKISH_CITIES).optional(),
   partConditions: partConditionsSchema,
   usageAmount:    usageAmountRange.optional().nullable(),
+  photoUrls:      z.array(z.string().url()).max(5).optional(),
+  removePhotoIds: z.array(z.number().int()).max(5).optional(),
   ...damageStatusFields,
   ...wantExpectationFields,
 });

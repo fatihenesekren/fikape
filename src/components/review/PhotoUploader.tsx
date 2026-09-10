@@ -16,6 +16,8 @@ export function PhotoUploader({
   newPhotoUrls,
   onNewPhotoUrlsChange,
   max = 5,
+  uploadUrl = "/api/uploads/review-photo",
+  pathPrefix = "reviews/",
 }: {
   existingPhotos?: ExistingPhoto[];
   removedExistingIds: number[];
@@ -23,6 +25,10 @@ export function PhotoUploader({
   newPhotoUrls: string[];
   onNewPhotoUrlsChange: (urls: string[]) => void;
   max?: number;
+  // Farklı bağlamlarda yeniden kullanılır (yorum / takas ilanı) — yükleme
+  // endpoint'i ve blob yol öneki dışarıdan verilir, varsayılan yorum.
+  uploadUrl?: string;
+  pathPrefix?: string;
 }) {
   const [uploading, setUploading] = useState(false);
   const [uploadErrors, setUploadErrors] = useState<string[]>([]);
@@ -98,9 +104,9 @@ export function PhotoUploader({
               for (const file of toUpload) {
                 try {
                   const watermarked = await watermarkImage(file).catch(() => file);
-                  const blob = await upload(`reviews/${Date.now()}-${file.name}`, watermarked, {
+                  const blob = await upload(`${pathPrefix}${Date.now()}-${file.name}`, watermarked, {
                     access: "public",
-                    handleUploadUrl: "/api/uploads/review-photo",
+                    handleUploadUrl: uploadUrl,
                   });
                   uploaded.push(blob.url);
                 } catch (err) {

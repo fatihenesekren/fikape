@@ -14,6 +14,10 @@ import {
 import { FUEL_LABELS } from "@/lib/fuel";
 import { PartConditionForm } from "./PartConditionForm";
 import { DamageStatusForm, EMPTY_DAMAGE_STATUS, type DamageStatusValue } from "./DamageStatusForm";
+import { PhotoUploader } from "@/components/review/PhotoUploader";
+
+const TRADE_PHOTO_UPLOAD_URL = "/api/uploads/trade-photo";
+const TRADE_PHOTO_PATH_PREFIX = "trade-listings/";
 
 type PaymentIntent = "SWAP_ONLY" | "PAYS_EXTRA" | "WANTS_EXTRA";
 type CloseReason = "TRADED" | "GAVE_UP" | "FOUND_ELSEWHERE";
@@ -47,6 +51,7 @@ interface ExistingListing {
   runningGearCondition: MechanicalCondition | null;
   runningGearNote: string | null;
   tramerRecords: TramerRecordInput[];
+  photos: { id: number; url: string; status: "PENDING" | "APPROVED" | "REJECTED" }[];
 }
 
 // Sayısal input'ları (km, yıl aralığı vb.) tam sayıya yuvarlar — sunucudaki
@@ -166,6 +171,11 @@ export function TradeToggleCard({
   // ikisi de form'da gösterilmiyor (aynı kısıtlama, tutarlılık için).
   const showPartConditions = (PART_CONDITION_CATEGORIES as readonly string[]).includes(categorySlug);
   const [consentGiven, setConsentGiven] = useState(false);
+  // Takas fotoğrafları — yorum fotoğraflarından ayrı, güncel durum için.
+  // Moderasyondan geçer (PENDING). Düzenlemede mevcutlar gösterilir/kaldırılır.
+  const [newPhotoUrls, setNewPhotoUrls] = useState<string[]>([]);
+  const [removedPhotoIds, setRemovedPhotoIds] = useState<number[]>([]);
+  const existingPhotos = (existingListing?.photos ?? []).map((p) => ({ id: p.id, url: p.url }));
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [closeReason, setCloseReason] = useState<CloseReason | "">("");
@@ -299,6 +309,8 @@ export function TradeToggleCard({
           description: description.trim() || null,
           partConditions,
           usageAmount: parseIntOrNull(usageAmountInput),
+          photoUrls: newPhotoUrls.length ? newPhotoUrls : undefined,
+          removePhotoIds: removedPhotoIds.length ? removedPhotoIds : undefined,
           ...damageStatusPayload(damageStatusValue),
         }),
       });
@@ -307,6 +319,8 @@ export function TradeToggleCard({
         setError(data.error ?? "Bir hata oluştu.");
         return;
       }
+      setNewPhotoUrls([]);
+      setRemovedPhotoIds([]);
       setEditOpen(false);
       router.refresh();
     } finally {
@@ -344,6 +358,19 @@ export function TradeToggleCard({
             damageStatusValue={damageStatusValue} setDamageStatusValue={setDamageStatusValue}
             partConditions={partConditions} setPartConditions={setPartConditions}
           />
+          <div className="bg-white border border-link-line rounded-xl p-3">
+            <PhotoUploader
+              existingPhotos={existingPhotos}
+              removedExistingIds={removedPhotoIds}
+              onToggleRemoveExisting={(id) =>
+                setRemovedPhotoIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
+              }
+              newPhotoUrls={newPhotoUrls}
+              onNewPhotoUrlsChange={setNewPhotoUrls}
+              uploadUrl={TRADE_PHOTO_UPLOAD_URL}
+              pathPrefix={TRADE_PHOTO_PATH_PREFIX}
+            />
+          </div>
           {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
           <button
             onClick={saveEdit}
@@ -394,6 +421,14 @@ export function TradeToggleCard({
           </div>
         </div>
         {renewMessage && <p className="mt-1.5 text-[11px] text-link">{renewMessage}</p>}
+        {existingListing.photos.length < 3 && (
+          <button
+            onClick={() => setEditOpen(true)}
+            className="mt-1.5 block text-left text-[11px] text-amber-700 hover:underline"
+          >
+            📷 Aracınızın fotoğraflarını ekleyin — ilanınız daha çok ilgi görür
+          </button>
+        )}
         {/* Native <select>, flex satırında varsayılan min-width:auto yüzünden
             küçülmüyor ve taşıyordu (bkz. kullanıcı geri bildirimi, ekran
             görüntüsü) — min-w-0+flex-1 ile küçülebilir yapıldı, mobilde
@@ -469,6 +504,7 @@ export function TradeToggleCard({
           partConditions,
           consentGiven,
           usageAmount: parseIntOrNull(usageAmountInput),
+          photoUrls: newPhotoUrls.length ? newPhotoUrls : undefined,
           ...damageStatusPayload(damageStatusValue),
         }),
       });
@@ -513,6 +549,21 @@ export function TradeToggleCard({
         damageStatusValue={damageStatusValue} setDamageStatusValue={setDamageStatusValue}
         partConditions={partConditions} setPartConditions={setPartConditions}
       />
+
+      <div className="bg-white border border-link-line rounded-xl p-3">
+        <PhotoUploader
+          existingPhotos={[]}
+          removedExistingIds={[]}
+          onToggleRemoveExisting={() => {}}
+          newPhotoUrls={newPhotoUrls}
+          onNewPhotoUrlsChange={setNewPhotoUrls}
+          uploadUrl={TRADE_PHOTO_UPLOAD_URL}
+          pathPrefix={TRADE_PHOTO_PATH_PREFIX}
+        />
+        <p className="mt-1.5 text-[11px] text-gray-400">
+          Aracınızın güncel fotoğrafları (dış, iç, km göstergesi) ilanınızın daha çok ilgi görmesini sağlar.
+        </p>
+      </div>
 
       {paymentIntent !== "SWAP_ONLY" && PAYMENT_WARNING}
 
