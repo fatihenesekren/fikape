@@ -37838,84 +37838,6 @@
   ],
   "kamyonet": [
     {
-      "make": "BMC",
-      "models": [
-        {
-          "name": "Professional (2000-)",
-          "versions": [
-            "2.5 TD 90",
-            "2.5 TD 115",
-            "2.8 TD 130",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Fenix (2018-)",
-          "versions": [
-            "2.2 D 130",
-            "2.2 D 160",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "417 (2019-)",
-          "versions": [
-            "3.8 D 170",
-            "EV Elektrik",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Tuğra (TGR)",
-          "versions": [
-            "1832 4x2",
-            "1846 4x2",
-            "2532 6x2",
-            "3232 8x2",
-            "3540 6x4",
-            "4340 8x4",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Pro L",
-          "versions": [
-            "1852 4x2",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Diğer",
-          "versions": [
-            "Diğer"
-          ],
-          "trims": [
-            "Diğer"
-          ]
-        }
-      ]
-    },
-    {
       "make": "BYD",
       "models": [
         {
@@ -37934,17 +37856,6 @@
           "name": "M3 EV (2021-)",
           "versions": [
             "Elektrik 122 CV 45kWh",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "ETM6 (2022-)",
-          "versions": [
-            "Elektrik 150 CV 60kWh",
             "Diğer"
           ],
           "trims": [
@@ -38581,18 +38492,6 @@
           ]
         },
         {
-          "name": "Aumark (2015-)",
-          "versions": [
-            "2.8 Cummins 130",
-            "3.8 Cummins 160",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
           "name": "Tunland G7 (2022-)",
           "versions": [
             "2.0T Dizel 163 4WD",
@@ -38655,18 +38554,6 @@
           ]
         },
         {
-          "name": "Fighter (2000-)",
-          "versions": [
-            "4.9 6M60 220",
-            "4.9 6M60 260",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -38698,57 +38585,6 @@
           "name": "Cannon Alpha EV (2023-)",
           "versions": [
             "Elektrik 326 CV AWD",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Diğer",
-          "versions": [
-            "Diğer"
-          ],
-          "trims": [
-            "Diğer"
-          ]
-        }
-      ]
-    },
-    {
-      "make": "Hino",
-      "models": [
-        {
-          "name": "300 Serisi (2003-)",
-          "versions": [
-            "4.0 N04C 130",
-            "4.0 N04C 150",
-            "4.0 N04C 175",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "500 Serisi (2003-)",
-          "versions": [
-            "7.7 J08E 260",
-            "7.7 J08E 300",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "700 Serisi (2003-)",
-          "versions": [
-            "12.9 A09C 380",
-            "12.9 A09C 460",
             "Diğer"
           ],
           "trims": [
@@ -38928,17 +38764,6 @@
           ]
         },
         {
-          "name": "F-Series",
-          "versions": [
-            "5.2 4HK1-TC 215",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -38965,18 +38790,6 @@
           "trims": [
             "Standart",
             "Business",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Eurocargo",
-          "versions": [
-            "3.9 Tector 170",
-            "6.7 Tector 220",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
             "Diğer"
           ]
         },
@@ -39010,63 +38823,6 @@
           "versions": [
             "Elektrik 90 CV 85kWh",
             "Elektrik 90 CV 120kWh",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Atak (2014-)",
-          "versions": [
-            "2.3 MultiJet 130 Dizel",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "e-Atak (2021-)",
-          "versions": [
-            "Elektrik 150 CV 120kWh",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "J8 (2018-)",
-          "versions": [
-            "2.0 CRDi 170 Dizel",
-            "e-J8 Elektrik 240 CV",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "J10 (2010-2015)",
-          "versions": [
-            "2.3 CRDi 116 Dizel",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "Star (2020-)",
-          "versions": [
-            "3.0 CRDi 177 Dizel",
-            "e-Star Elektrik",
             "Diğer"
           ],
           "trims": [
@@ -39144,18 +38900,6 @@
             "2.0 TDI 102",
             "2.0 TDI 140",
             "2.0 TDI 177",
-            "Diğer"
-          ],
-          "trims": [
-            "Standart",
-            "Diğer"
-          ]
-        },
-        {
-          "name": "TGL",
-          "versions": [
-            "4.6 D0836 150",
-            "4.6 D0836 180",
             "Diğer"
           ],
           "trims": [
