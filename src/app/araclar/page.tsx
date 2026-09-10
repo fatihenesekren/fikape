@@ -7,6 +7,7 @@ import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
+import { logSearch } from "@/lib/searchLog";
 import { CardGridSkeleton } from "@/app/_components/CardGridSkeleton";
 import type { FikapeScores } from "@/lib/fikape";
 import {
@@ -192,6 +193,9 @@ async function AraclarResults({
         (p.trimName ? normalize(p.trimName).includes(nq) : false),
       )
     : pool;
+
+  // Kataloğa aday sinyali — sıfır/az-sonuçlu serbest metin aramaları (fire-and-forget)
+  if (q.length >= 2) logSearch(q, searched.length, "araclar");
 
   // 3) Facet grupları — kapsam kapısından geçenler
   const allGroups = facetGroupsForCategory(catSlug);

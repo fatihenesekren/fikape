@@ -230,6 +230,36 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
     };
   }));
 
+  sections.push(...await guard("Sıfır-sonuç aramalar", errors, async () => {
+    const [totalW, zeroRows] = await Promise.all([
+      prisma.searchQueryLog.count({ where: { createdAt: W } }),
+      prisma.$queryRaw<{ term: string; hits: number; source: string }[]>`
+        SELECT term, COUNT(*)::int AS hits, MAX(source) AS source
+        FROM search_query_logs
+        WHERE "resultCount" = 0 AND "createdAt" >= ${win.weekStart} AND "createdAt" < ${win.weekEnd}
+        GROUP BY term
+        ORDER BY hits DESC, term ASC
+        LIMIT 20`,
+    ]);
+    const zeroTotal = zeroRows.reduce((s, r) => s + r.hits, 0);
+    if (zeroRows.length === 0) {
+      return {
+        title: "Sıfır-sonuç aramalar (kataloğa aday)",
+        rows: [],
+        note: totalW === 0
+          ? "Bu hafta arama logu yok (özellik yeni; veri birikiyor)."
+          : `${fmtInt(totalW)} arama yapıldı, sonuçsuz arama yok.`,
+      };
+    }
+    return {
+      title: "Sıfır-sonuç aramalar (kataloğa aday)",
+      note: `${fmtInt(zeroTotal)} sonuçsuz arama, ${fmtInt(zeroRows.length)}+ farklı terim — kataloğa eklenecek marka/model listesi.`,
+      head: ["Arama terimi", "Kaç kez"],
+      rows: zeroRows.map((r) => [tt(r.term), nn(r.hits)]),
+      link: { href: "/oner", label: "Araç öner" },
+    };
+  }));
+
   sections.push(...await guard("Etkileşim", errors, async () => {
     const [
       gpCurW, gpCurP, gpPastW, gpPastP,

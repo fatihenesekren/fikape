@@ -7,6 +7,7 @@ import { VehicleCard } from "@/components/VehicleCard";
 import { SearchNoMatchPrompt } from "@/components/SearchNoMatchPrompt";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { searchProductIds } from "@/lib/searchProducts";
+import { logSearch } from "@/lib/searchLog";
 import type { FikapeScores } from "@/lib/fikape";
 
 export const dynamic = "force-dynamic";
@@ -29,6 +30,10 @@ const CATALOG_PREVIEW_LIMIT = 60;
 
 async function SearchResults({ query }: { query: string }) {
   const search = query.length >= 2 ? await searchProductIds(query) : null;
+
+  // Sıfır-sonuç / az-sonuç aramalar kataloğa aday sinyali — fire-and-forget log
+  // (erken çıkıştan ÖNCE, yoksa sıfır-sonuç hiç loglanmaz).
+  if (search) logSearch(query, search.ids.length, "arama");
 
   // Sorgu var ama hiç eşleşme (fuzzy dahil) yok → tam genişlik "öner" daveti.
   // Bu erken çıkış, /oner katalog-büyütme hunisini korur (düşük güvenli fuzzy

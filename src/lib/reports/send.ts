@@ -116,6 +116,11 @@ export async function sendWeeklyReport(opts: { dryRun?: boolean; now?: Date } = 
       },
     });
 
+    // Arama logu retention — 90 günden eskiyi haftalık olarak temizle (fire-and-forget)
+    void prisma.searchQueryLog
+      .deleteMany({ where: { createdAt: { lt: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000) } } })
+      .catch(() => {});
+
     return { ok: true, isoWeek: win.isoWeek, recipients: recipients.length, sectionErrors: data.sectionErrors, subject };
   } catch (e) {
     const msg = String(e).slice(0, 1500);

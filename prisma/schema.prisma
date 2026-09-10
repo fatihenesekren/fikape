@@ -487,6 +487,24 @@ model ContentFilterHit {
 }
 
 // ─────────────────────────────────────────────
+// ARAMA SORGU LOGU — sıfır-sonuç ("kataloğa aday") + popüler terim analizi.
+// Kişisel veri YOK (userId/IP/session tutulmaz). 90g+ satırlar haftalık rapor
+// cron'unda silinir. (add_search_query_logs.sql)
+// ─────────────────────────────────────────────
+
+model SearchQueryLog {
+  id          Int      @id @default(autoincrement())
+  term        String   @db.VarChar(200)
+  resultCount Int
+  source      String   @db.VarChar(16) // "arama" | "araclar"
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([resultCount, createdAt])
+  @@map("search_query_logs")
+}
+
+// ─────────────────────────────────────────────
 // HAFTALIK GÖRÜNTÜLENME ANLIK GÖRÜNTÜSÜ — reset-weekly-views cron'u
 // weeklyViewCount'u sıfırlamadan önce buraya yazar; haftalık admin raporu
 // top-10 + WoW görüntülenme farkı için okur. (add_weekly_view_snapshots.sql)
