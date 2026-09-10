@@ -17,31 +17,31 @@ datasource db {
 // ─────────────────────────────────────────────
 
 model Category {
-  id               Int        @id @default(autoincrement())
-  slug             String     @unique
-  name             String
-  parentId         Int?
-  parent           Category?  @relation("CategoryTree", fields: [parentId], references: [id])
-  children         Category[] @relation("CategoryTree")
+  id       Int        @id @default(autoincrement())
+  slug     String     @unique
+  name     String
+  parentId Int?
+  parent   Category?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryTree")
 
   // Her kategoriye özgü ürün özellikleri (JSON şema)
   // Araç: { fuel_type, segment, body_type, engine_cc }
   // Klima: { btu, energy_class, inverter }
   // Laptop: { cpu, ram_gb, screen_inch }
-  attributeSchema  Json       @default("{}")
+  attributeSchema Json @default("{}")
 
   // Her kategoriye özgü yorum soruları (JSON şema)
   // Araç EV: [{ key: "real_range_km", label: "Gerçek menzil (km)", type: "number" }]
   // Klima: [{ key: "real_kwh_month", label: "Aylık kWh tüketimi", type: "number" }]
-  reviewFormSchema Json       @default("[]")
+  reviewFormSchema Json @default("[]")
 
-  isActive         Boolean    @default(true)
-  sortOrder        Int        @default(0)
-  createdAt        DateTime   @default(now())
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
 
-  products         Product[]
+  products            Product[]
   tradeListingsWanted TradeListing[]
-  savedSearches    SavedSearch[]
+  savedSearches       SavedSearch[]
 
   @@map("categories")
 }
@@ -51,17 +51,17 @@ model Category {
 // ─────────────────────────────────────────────
 
 model Brand {
-  id        Int       @id @default(autoincrement())
-  slug      String    @unique
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
   name      String
   logoUrl   String?
-  isActive  Boolean   @default(true)
-  createdAt DateTime  @default(now())
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
 
-  models    Model[]
-  products  Product[]
+  models              Model[]
+  products            Product[]
   tradeListingsWanted TradeListing[]
-  savedSearches SavedSearch[]
+  savedSearches       SavedSearch[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "brands_name_trgm_idx")
@@ -69,15 +69,18 @@ model Brand {
 }
 
 model Model {
-  id        Int       @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   brandId   Int
-  brand     Brand     @relation(fields: [brandId], references: [id])
-  slug      String    @unique
+  brand     Brand    @relation(fields: [brandId], references: [id])
+  slug      String   @unique
   name      String
-  isActive  Boolean   @default(true)
-  createdAt DateTime  @default(now())
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
 
-  products  Product[]
+  products Product[]
+
+  // Usta Görüşleri — usta notu MODEL seviyesine bağlanır (Product/trim değil)
+  expertNotes ExpertNote[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "models_name_trgm_idx")
@@ -90,42 +93,42 @@ model Model {
 // ─────────────────────────────────────────────
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  categoryId  Int
-  category    Category @relation(fields: [categoryId], references: [id])
-  brandId     Int
-  brand       Brand    @relation(fields: [brandId], references: [id])
-  modelId     Int
-  model       Model    @relation(fields: [modelId], references: [id])
+  id         Int      @id @default(autoincrement())
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  brandId    Int
+  brand      Brand    @relation(fields: [brandId], references: [id])
+  modelId    Int
+  model      Model    @relation(fields: [modelId], references: [id])
 
-  slug        String   @unique
-  name        String
-  year        Int?
-  trimName    String?  // Örn: "Easy", "Urban", "GR Sport", "Long Range"
-  imageUrl    String?  // Manuel kurasyon — boşsa Wikipedia fallback kullanılır
+  slug     String  @unique
+  name     String
+  year     Int?
+  trimName String? // Örn: "Easy", "Urban", "GR Sport", "Long Range"
+  imageUrl String? // Manuel kurasyon — boşsa Wikipedia fallback kullanılır
 
   // Kategoriye özgü özellikler — category.attributeSchema'ya göre dolar
   // Araç: { "fuel_type": "EV", "segment": "C", "body_type": "sedan", "ev_range_km": 480 }
   // Klima: { "btu": 12000, "energy_class": "A+++", "inverter": true }
-  attributes Json     @default("{}")
+  attributes Json @default("{}")
 
-  status      ProductStatus @default(ACTIVE)
-  isActive    Boolean  @default(true)
-  viewCount       Int      @default(0)
-  weeklyViewCount Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  status          ProductStatus @default(ACTIVE)
+  isActive        Boolean       @default(true)
+  viewCount       Int           @default(0)
+  weeklyViewCount Int           @default(0)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
 
-  userProducts    UserProduct[]
-  reviews         Review[]
-  photos          ProductPhoto[]
-  suggestions     VehicleSuggestion[]
-  questions       Question[]
-  insuranceLeads  InsuranceLead[]
-  saleLeads       SaleLead[]
-  tradeListings   TradeListing[]
-  contentReports  ContentReport[]
-  favorites       Favorite[]
+  userProducts        UserProduct[]
+  reviews             Review[]
+  photos              ProductPhoto[]
+  suggestions         VehicleSuggestion[]
+  questions           Question[]
+  insuranceLeads      InsuranceLead[]
+  saleLeads           SaleLead[]
+  tradeListings       TradeListing[]
+  contentReports      ContentReport[]
+  favorites           Favorite[]
   weeklyViewSnapshots WeeklyViewSnapshot[]
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
@@ -152,19 +155,19 @@ model Favorite {
 // ─────────────────────────────────────────────
 
 model User {
-  id              Int      @id @default(autoincrement())
-  email           String   @unique
-  passwordHash    String
+  id                Int       @id @default(autoincrement())
+  email             String    @unique
+  passwordHash      String
   // Şifre değiştirildiğinde/sıfırlandığında set edilir — jwt() callback'i bunu
   // token'ın oluşturulma zamanıyla karşılaştırıp eski oturumları geçersiz kılar.
   passwordChangedAt DateTime?
 
   // Kişisel bilgiler — minimum tutulur (KVKK)
-  displayName     String?
-  avatarUrl       String?
+  displayName String?
+  avatarUrl   String?
 
   // 0: Anonim  1: E-posta doğrulamalı  2: Beyan edilen sahip  3: Doğrulanmış sahip
-  trustLevel      Int      @default(1)
+  trustLevel Int @default(1)
 
   emailVerifiedAt DateTime?
 
@@ -175,55 +178,60 @@ model User {
   // Fake review tespiti için — kullanıcıya gösterilmez
   deviceFingerprint String?
 
-  isBanned        Boolean  @default(false)
-  banReason       String?
-  bannedAt        DateTime?
+  isBanned  Boolean   @default(false)
+  banReason String?
+  bannedAt  DateTime?
 
   // KVKK: hesap silme talebi
   deletionRequestedAt DateTime?
 
   // Referral/davet sistemi — parasal olmayan statü rozeti
-  referralCode      String   @unique
-  referredByUserId  Int?
-  referredByUser    User?    @relation("Referrals", fields: [referredByUserId], references: [id])
-  referrals         User[]   @relation("Referrals")
+  referralCode     String @unique
+  referredByUserId Int?
+  referredByUser   User?  @relation("Referrals", fields: [referredByUserId], references: [id])
+  referrals        User[] @relation("Referrals")
 
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  userProducts        UserProduct[]
-  reviews             Review[]
-  reviewVerifications ReviewVerification[]
-  reviewFlags         ReviewFlag[]
-  helpfulVotes        ReviewHelpfulVote[]
-  consentLogs         ConsentLog[]
+  userProducts         UserProduct[]
+  reviews              Review[]
+  reviewVerifications  ReviewVerification[]
+  reviewFlags          ReviewFlag[]
+  helpfulVotes         ReviewHelpfulVote[]
+  consentLogs          ConsentLog[]
   dataDeletionRequests DataDeletionRequest[]
-  vehicleSuggestions  VehicleSuggestion[]
-  productPhotos       ProductPhoto[]        @relation("UserProductPhotos")
-  tradeListingPhotos  TradeListingPhoto[]   @relation("UserTradeListingPhotos")
-  moderationLogs      ModerationLog[]
-  questions           Question[]
-  answers             Answer[]
-  insuranceLeads      InsuranceLead[]
-  saleLeads           SaleLead[]
-  plusWaitlistEntries PlusWaitlistEntry[]
-  notifications       Notification[]
-  tradeListings       TradeListing[]
-  threadsInitiated    MessageThread[] @relation("ThreadInitiator")
-  threadsClosed       MessageThread[] @relation("ThreadClosedBy")
-  messagesSent        Message[]       @relation("MessageSender")
-  threadsBlocked      MessageThread[] @relation("ThreadBlockedBy")
-  threadsInterestLost MessageThread[] @relation("ThreadInterestLostBy")
-  messageReports      MessageReport[]
-  tradeListingReports TradeListingReport[]
-  contentReports      ContentReport[]
-  favorites           Favorite[]
-  blockedUsers        BlockedUser[] @relation("Blocker")
-  blockedByUsers      BlockedUser[] @relation("Blocked")
-  savedSearches       SavedSearch[]
-  tradeRatingsGiven    TradeRating[] @relation("TradeRater")
-  tradeRatingsReceived TradeRating[] @relation("TradeRated")
+  vehicleSuggestions   VehicleSuggestion[]
+  productPhotos        ProductPhoto[]        @relation("UserProductPhotos")
+  tradeListingPhotos   TradeListingPhoto[]   @relation("UserTradeListingPhotos")
+  moderationLogs       ModerationLog[]
+  questions            Question[]
+  answers              Answer[]
+  insuranceLeads       InsuranceLead[]
+  saleLeads            SaleLead[]
+  plusWaitlistEntries  PlusWaitlistEntry[]
+  notifications        Notification[]
+  tradeListings        TradeListing[]
+  threadsInitiated     MessageThread[]       @relation("ThreadInitiator")
+  threadsClosed        MessageThread[]       @relation("ThreadClosedBy")
+  messagesSent         Message[]             @relation("MessageSender")
+  threadsBlocked       MessageThread[]       @relation("ThreadBlockedBy")
+  threadsInterestLost  MessageThread[]       @relation("ThreadInterestLostBy")
+  messageReports       MessageReport[]
+  tradeListingReports  TradeListingReport[]
+  contentReports       ContentReport[]
+  favorites            Favorite[]
+  blockedUsers         BlockedUser[]         @relation("Blocker")
+  blockedByUsers       BlockedUser[]         @relation("Blocked")
+  savedSearches        SavedSearch[]
+  tradeRatingsGiven    TradeRating[]         @relation("TradeRater")
+  tradeRatingsReceived TradeRating[]         @relation("TradeRated")
   contentFilterHits    ContentFilterHit[]
+
+  // Usta Görüşleri — çift şapka: usta profili bir User NİTELİĞİ, ayrı hesap değil
+  expertProfile   ExpertProfile?
+  expertNoteVotes ExpertNoteVote[]
+  takedownClaims  ExpertNoteTakedownRequest[] @relation("TakedownClaimant")
 
   @@map("users")
 }
@@ -264,19 +272,32 @@ enum NotificationType {
 
   // İlan sahibine — takas fotoğrafı onaylandı/reddedildi.
   TRADE_PHOTO_MODERATED
+
+  // ── USTA GÖRÜŞLERİ ──
+  EXPERT_NOTE_PUBLISHED // ustaya — notu yayınlandı
+  EXPERT_NOTE_REJECTED // ustaya — notu reddedildi
+  EXPERT_VERIFIED // ustaya — başvuru onaylandı, ACTIVE
+  EXPERT_CV_PAUSED // ustaya — bölgesel görünürlük duraklatıldı
+  EXPERT_CV_RESTORED // ustaya — bölgesel görünürlük yeniden açıldı
+  EXPERT_NOTE_TAKEDOWN_FILED // ustaya — notu hakkında bildirim/kaldırma talebi geldi
+  EXPERT_NOTE_INTERIM_HIDDEN // ustaya — notu inceleme boyunca geçici gizlendi
+  EXPERT_NOTE_TAKEDOWN_RESOLVED // her iki tarafa — bildirim/kaldırma sonuçlandı
+  ADMIN_NEW_EXPERT_NOTE // admin — onay bekleyen usta notu
+  ADMIN_NEW_EXPERT_APPLICATION // admin — onay bekleyen usta başvurusu
+  ADMIN_NEW_TAKEDOWN_REQUEST // admin — onay bekleyen bildirim/kaldırma talebi
 }
 
 model Notification {
-  id        Int              @id @default(autoincrement())
-  userId    Int
-  user      User             @relation(fields: [userId], references: [id])
+  id     Int  @id @default(autoincrement())
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 
-  type      NotificationType
-  message   String
-  link      String
-  isRead    Boolean          @default(false)
+  type    NotificationType
+  message String
+  link    String
+  isRead  Boolean          @default(false)
 
-  createdAt DateTime         @default(now())
+  createdAt DateTime @default(now())
 
   @@index([userId, isRead])
   @@map("notifications")
@@ -288,18 +309,18 @@ model Notification {
 // ─────────────────────────────────────────────
 
 model UserProduct {
-  id              Int      @id @default(autoincrement())
-  userId          Int
-  user            User     @relation(fields: [userId], references: [id])
-  productId       Int
-  product         Product  @relation(fields: [productId], references: [id])
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
 
   // Araç için: km bilgisi
   // Genel: sahiplik süresi
   ownershipStatus OwnershipStatus @default(CURRENT)
   soldAt          DateTime?
-  soldReason      String[] @default([])
-  soldReasonNote  String?  @db.VarChar(200)
+  soldReason      String[]        @default([])
+  soldReasonNote  String?         @db.VarChar(200)
 
   // Satın alma bilgisi — sahiplik süresini ve ileride ortalama fiyat/tarih
   // analizini gerçek tarihlere dayandırmak için (bkz. saleType/salePrice notu).
@@ -315,14 +336,14 @@ model UserProduct {
   tradeExtraAmount    Int?
 
   // Araç için km, diğer ürünler için kullanım miktarı (opsiyonel)
-  usageAmount     Int?
-  usageUnit       String?  // "km", "saat", "yıkama_sayisi" vb.
+  usageAmount Int?
+  usageUnit   String? // "km", "saat", "yıkama_sayisi" vb.
 
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  reviews         Review[]
-  tradeListings   TradeListing[]
+  reviews       Review[]
+  tradeListings TradeListing[]
 
   @@unique([userId, productId])
   @@map("user_products")
@@ -346,8 +367,8 @@ enum TradeExtraDirection {
 }
 
 enum OwnershipStatus {
-  CURRENT   // Hâlâ kullanıyor
-  PAST      // Daha önce kullandı
+  CURRENT // Hâlâ kullanıyor
+  PAST // Daha önce kullandı
 }
 
 // ─────────────────────────────────────────────
@@ -355,25 +376,25 @@ enum OwnershipStatus {
 // ─────────────────────────────────────────────
 
 model Review {
-  id            Int      @id @default(autoincrement())
+  id            Int          @id @default(autoincrement())
   userId        Int
-  user          User     @relation(fields: [userId], references: [id])
+  user          User         @relation(fields: [userId], references: [id])
   productId     Int
-  product       Product  @relation(fields: [productId], references: [id])
+  product       Product      @relation(fields: [productId], references: [id])
   userProductId Int?
   userProduct   UserProduct? @relation(fields: [userProductId], references: [id])
 
   // FI·KA·PE puanları — tüm kategorilerde ortak (1-5)
-  scoreFiyat      Float  // FI — Fiyat / Para değeri
-  scoreKalite     Float  // KA — Kalite / Dayanıklılık
-  scorePerformans Float  // PE — Performans / Kullanım deneyimi
-  scoreOverall    Float  // Genel memnuniyet (FI×0.30 + KA×0.35 + PE×0.35)
+  scoreFiyat      Float // FI — Fiyat / Para değeri
+  scoreKalite     Float // KA — Kalite / Dayanıklılık
+  scorePerformans Float // PE — Performans / Kullanım deneyimi
+  scoreOverall    Float // Genel memnuniyet (FI×0.30 + KA×0.35 + PE×0.35)
 
   // Kısa metin — zorunlu
-  summaryText   String   @db.VarChar(500)
+  summaryText String @db.VarChar(500)
 
   // Uzun metin — opsiyonel
-  detailText    String?  @db.Text
+  detailText String? @db.Text
 
   // "Tekrar alır mısınız?"
   wouldBuyAgain Boolean?
@@ -386,41 +407,41 @@ model Review {
   // Araç ICE: { "real_fuel_per_100km": 7.2, "has_lpg": true }
   // Klima: { "real_kwh_month": 90, "noise_level": "quiet" }
   // Laptop: { "real_battery_hours": 6.5, "throttle_issue": false }
-  extendedData  Json     @default("{}")
+  extendedData Json @default("{}")
 
   // Güven skoru — 0-100, okuyucuya gösterilmez, sıralamada kullanılır
-  trustScore    Int      @default(35)
+  trustScore Int @default(35)
 
   // Fingerprint — KVKK: ham IP/UA saklanmaz, sadece HMAC hash'i (review bombing tespiti için)
   ipHash        String?
   userAgentHash String?
 
   // Moderasyon
-  status        ReviewStatus @default(PENDING)
-  publishedAt   DateTime?
-  rejectedAt    DateTime?
+  status          ReviewStatus @default(PENDING)
+  publishedAt     DateTime?
+  rejectedAt      DateTime?
   rejectionReason String?
 
   // Periyodik güncelleme (TrueDelta modeli)
-  isUpdate      Boolean  @default(false)
+  isUpdate       Boolean  @default(false)
   parentReviewId Int?
-  parentReview  Review?  @relation("ReviewUpdates", fields: [parentReviewId], references: [id])
-  updates       Review[] @relation("ReviewUpdates")
+  parentReview   Review?  @relation("ReviewUpdates", fields: [parentReviewId], references: [id])
+  updates        Review[] @relation("ReviewUpdates")
 
   nextReminderAt DateTime? // 3 ayda bir güncelleme hatırlatması
 
-  editedAt      DateTime?
-  editCount     Int      @default(0)
+  editedAt  DateTime?
+  editCount Int       @default(0)
 
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  verification  ReviewVerification?
-  flags         ReviewFlag[]
-  helpfulVotes  ReviewHelpfulVote[]
-  photos        ProductPhoto[]
+  verification   ReviewVerification?
+  flags          ReviewFlag[]
+  helpfulVotes   ReviewHelpfulVote[]
+  photos         ProductPhoto[]
   contentReports ContentReport[]
-  versions      ReviewVersion[]
+  versions       ReviewVersion[]
   scoreSnapshots ScoreSnapshot[]
   moderationLogs ModerationLog[]
 
@@ -555,36 +576,36 @@ enum ModerationAction {
 }
 
 model ReviewVersion {
-  id            Int             @id @default(autoincrement())
-  reviewId      Int
-  review        Review          @relation(fields: [reviewId], references: [id])
-  version       Int
-  pros          Json            @default("[]")
-  cons          Json            @default("[]")
-  detailText    String?
-  wouldBuyAgain Boolean?
-  scoreFiyat    Float?
-  scoreKalite   Float?
+  id              Int            @id @default(autoincrement())
+  reviewId        Int
+  review          Review         @relation(fields: [reviewId], references: [id])
+  version         Int
+  pros            Json           @default("[]")
+  cons            Json           @default("[]")
+  detailText      String?
+  wouldBuyAgain   Boolean?
+  scoreFiyat      Float?
+  scoreKalite     Float?
   scorePerformans Float?
-  scoreOverall  Float?
-  triggerSource VersionTrigger
-  createdAt     DateTime        @default(now())
+  scoreOverall    Float?
+  triggerSource   VersionTrigger
+  createdAt       DateTime       @default(now())
 
   @@unique([reviewId, version])
   @@map("review_versions")
 }
 
 enum VersionTrigger {
-  MANUAL       // Kullanıcı manuel düzenledi
-  REMINDER_3M  // 3 aylık hatırlatma emaili üzerinden
+  MANUAL // Kullanıcı manuel düzenledi
+  REMINDER_3M // 3 aylık hatırlatma emaili üzerinden
 }
 
 enum ReviewStatus {
-  PENDING    // Moderasyon bekliyor
-  PUBLISHED  // Yayında
-  REJECTED   // Reddedildi
-  HIDDEN     // Gizlendi (flag sonrası)
-  DELETED    // Kullanıcı tarafından silindi (soft delete)
+  PENDING // Moderasyon bekliyor
+  PUBLISHED // Yayında
+  REJECTED // Reddedildi
+  HIDDEN // Gizlendi (flag sonrası)
+  DELETED // Kullanıcı tarafından silindi (soft delete)
 }
 
 // ─────────────────────────────────────────────
@@ -593,45 +614,45 @@ enum ReviewStatus {
 // ─────────────────────────────────────────────
 
 model ReviewVerification {
-  id          Int      @id @default(autoincrement())
-  reviewId    Int      @unique
-  review      Review   @relation(fields: [reviewId], references: [id])
-  userId      Int
-  user        User     @relation(fields: [userId], references: [id])
+  id       Int    @id @default(autoincrement())
+  reviewId Int    @unique
+  review   Review @relation(fields: [reviewId], references: [id])
+  userId   Int
+  user     User   @relation(fields: [userId], references: [id])
 
   // Doğrulama tipi
   verificationType VerificationType
 
   // AI analiz sonuçları
-  aiConfidenceScore Float?   // 0-1 arası
-  plateHash         String?  // Plaka değil, hash'i (araçlar için)
-  modelMatchScore   Float?   // AI'nin model tanıma skoru
+  aiConfidenceScore Float? // 0-1 arası
+  plateHash         String? // Plaka değil, hash'i (araçlar için)
+  modelMatchScore   Float? // AI'nin model tanıma skoru
 
   // EXIF verisi
-  photoExifDate     DateTime? // Fotoğrafın çekilme tarihi
+  photoExifDate DateTime? // Fotoğrafın çekilme tarihi
 
   // Mantık kontrol sonuçları
-  logicChecks       Json     @default("{}")
+  logicChecks Json @default("{}")
   // { "model_year_ok": true, "km_plausible": true, "exif_recent": true }
 
   // Sonuç
-  isVerified        Boolean  @default(false)
-  verifiedAt        DateTime?
+  isVerified Boolean   @default(false)
+  verifiedAt DateTime?
 
   // KVKK: Belge yüklendiyse anında silinir
   documentDeletedAt DateTime?
 
-  createdAt   DateTime @default(now())
+  createdAt DateTime @default(now())
 
   @@map("review_verifications")
 }
 
 enum VerificationType {
-  PHOTO_WITH_PLATE    // Araç: plaka görünür fotoğraf
-  PHOTO_WITH_PRODUCT  // Diğer: ürün etiketi görünür fotoğraf
-  INVOICE             // Sıfır ürün faturası
-  INSURANCE_POLICY    // Trafik sigortası (araç, ikinci el)
-  SELF_DECLARED       // Beyan — belge yok
+  PHOTO_WITH_PLATE // Araç: plaka görünür fotoğraf
+  PHOTO_WITH_PRODUCT // Diğer: ürün etiketi görünür fotoğraf
+  INVOICE // Sıfır ürün faturası
+  INSURANCE_POLICY // Trafik sigortası (araç, ikinci el)
+  SELF_DECLARED // Beyan — belge yok
 }
 
 // ─────────────────────────────────────────────
@@ -639,38 +660,38 @@ enum VerificationType {
 // ─────────────────────────────────────────────
 
 model ReviewFlag {
-  id          Int        @id @default(autoincrement())
-  reviewId    Int
-  review      Review     @relation(fields: [reviewId], references: [id])
-  reporterId  Int
-  reporter    User       @relation(fields: [reporterId], references: [id])
+  id         Int    @id @default(autoincrement())
+  reviewId   Int
+  review     Review @relation(fields: [reviewId], references: [id])
+  reporterId Int
+  reporter   User   @relation(fields: [reporterId], references: [id])
 
   reason      FlagReason
   description String?    @db.VarChar(300)
 
-  status      FlagStatus @default(PENDING)
-  resolvedAt  DateTime?
-  resolvedBy  Int?       // Admin user id
+  status     FlagStatus @default(PENDING)
+  resolvedAt DateTime?
+  resolvedBy Int? // Admin user id
 
-  createdAt   DateTime   @default(now())
+  createdAt DateTime @default(now())
 
   @@unique([reviewId, reporterId])
   @@map("review_flags")
 }
 
 enum FlagReason {
-  FAKE_REVIEW       // Sahte yorum
-  SPAM              // Spam
-  OFFENSIVE         // Hakaret / uygunsuz içerik
-  PERSONAL_DATA     // Kişisel veri içeriyor
-  WRONG_PRODUCT     // Yanlış ürün yorumu
+  FAKE_REVIEW // Sahte yorum
+  SPAM // Spam
+  OFFENSIVE // Hakaret / uygunsuz içerik
+  PERSONAL_DATA // Kişisel veri içeriyor
+  WRONG_PRODUCT // Yanlış ürün yorumu
   OTHER
 }
 
 enum FlagStatus {
-  PENDING    // İnceleme bekliyor
-  DISMISSED  // Reddedildi (yorum temiz)
-  ACTIONED   // İşlem yapıldı (yorum kaldırıldı/düzenlendi)
+  PENDING // İnceleme bekliyor
+  DISMISSED // Reddedildi (yorum temiz)
+  ACTIONED // İşlem yapıldı (yorum kaldırıldı/düzenlendi)
 }
 
 // ─────────────────────────────────────────────
@@ -697,38 +718,47 @@ model ReviewHelpfulVote {
 
 // Kullanıcının ne zaman, neyi onayladığı
 model ConsentLog {
-  id          Int      @id @default(autoincrement())
-  userId      Int
-  user        User     @relation(fields: [userId], references: [id])
+  id     Int  @id @default(autoincrement())
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 
   consentType ConsentType
   isGranted   Boolean
   ipAddress   String?
   userAgent   String?
 
-  createdAt   DateTime @default(now())
+  // Onaylanan metnin sürümü — açık rıza ispatı (Usta Görüşleri granüler rızaları için zorunlu)
+  consentVersion String?
+
+  createdAt DateTime @default(now())
 
   @@map("consent_logs")
 }
 
 enum ConsentType {
-  PRIVACY_POLICY      // Gizlilik politikası
-  TERMS_OF_SERVICE    // Kullanım koşulları
-  MARKETING_EMAIL     // Pazarlama e-postası
-  ANALYTICS_COOKIES   // Analitik çerezler
-  TRADE_LISTING       // Takas ilanı açarken il/iletişim verisinin diğer kullanıcılara gösterilmesine rıza
+  PRIVACY_POLICY // Gizlilik politikası
+  TERMS_OF_SERVICE // Kullanım koşulları
+  MARKETING_EMAIL // Pazarlama e-postası
+  ANALYTICS_COOKIES // Analitik çerezler
+  TRADE_LISTING // Takas ilanı açarken il/iletişim verisinin diğer kullanıcılara gösterilmesine rıza
+
+  // ── USTA GÖRÜŞLERİ — granüler açık rızalar (birbirinden bağımsız) ──
+  EXPERT_DOC_VERIFICATION // (a) belge/vergi levhası doğrulama amacıyla işleme
+  EXPERT_CONTACT_PUBLIC // (b) açık telefon/adresin herkese açık profilde yayını + arama motoru indekslemesi
+  EXPERT_REGIONAL_PROMO // (c) bölgesel görünürlük
+  EXPERT_PERFORMANCE_ANALYTICS // ileride: satış amaçlı performans raporu (özellik kapalı, baştan onay)
 }
 
 // "Verilerimi sil" talepleri
 model DataDeletionRequest {
-  id          Int      @id @default(autoincrement())
-  userId      Int
-  user        User     @relation(fields: [userId], references: [id])
+  id     Int  @id @default(autoincrement())
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 
-  reason      String?  @db.VarChar(500)
-  status      DeletionStatus @default(PENDING)
+  reason String?        @db.VarChar(500)
+  status DeletionStatus @default(PENDING)
 
-  requestedAt DateTime @default(now())
+  requestedAt DateTime  @default(now())
   // KVKK: 30 gün içinde tamamlanmalı
   dueAt       DateTime
   completedAt DateTime?
@@ -740,10 +770,10 @@ model DataDeletionRequest {
 }
 
 enum DeletionStatus {
-  PENDING     // Bekliyor
+  PENDING // Bekliyor
   IN_PROGRESS // İşleniyor
-  COMPLETED   // Tamamlandı
-  REJECTED    // Reddedildi (geçerli sebep yok)
+  COMPLETED // Tamamlandı
+  REJECTED // Reddedildi (geçerli sebep yok)
 }
 
 // ─────────────────────────────────────────────
@@ -751,9 +781,9 @@ enum DeletionStatus {
 // ─────────────────────────────────────────────
 
 model VehicleSuggestion {
-  id           Int      @id @default(autoincrement())
-  userId       Int?
-  user         User?    @relation(fields: [userId], references: [id])
+  id     Int   @id @default(autoincrement())
+  userId Int?
+  user   User? @relation(fields: [userId], references: [id])
 
   brandName    String
   modelName    String
@@ -762,7 +792,7 @@ model VehicleSuggestion {
   fuelType     String?
   transmission String?
   trimName     String?
-  notes        String?  @db.VarChar(500)
+  notes        String? @db.VarChar(500)
 
   // CarQuery'den seçilen ham veri
   carQueryData Json?
@@ -773,21 +803,21 @@ model VehicleSuggestion {
   specConfidence Json?
 
   // Öneri kabul edildiğinde oluşturulan ürün (PENDING → ACTIVE)
-  productId    Int?
-  product      Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  productId Int?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
 
   // Kullanıcının aynı anda yazdığı bekleyen yorum verisi (legacy)
-  reviewData   Json?
+  reviewData Json?
 
   // Yorum sırasında yüklenen fotoğraflar (Vercel Blob URL'leri)
-  photoUrls    String[] @default([])
+  photoUrls String[] @default([])
 
-  status       SuggestionStatus @default(PENDING)
-  adminNote    String?
+  status    SuggestionStatus @default(PENDING)
+  adminNote String?
 
-  createdAt    DateTime @default(now())
-  reviewedAt   DateTime?
-  reviewedBy   Int?
+  createdAt  DateTime  @default(now())
+  reviewedAt DateTime?
+  reviewedBy Int?
 
   // Supabase'de elle oluşturulmuş index'ler
   @@index([status], map: "idx_vs_status")
@@ -806,24 +836,24 @@ enum SuggestionStatus {
 // ─────────────────────────────────────────────
 
 model ProductPhoto {
-  id               Int         @id @default(autoincrement())
+  id               Int     @id @default(autoincrement())
   productId        Int
-  product          Product     @relation(fields: [productId], references: [id])
+  product          Product @relation(fields: [productId], references: [id])
   uploadedByUserId Int?
-  uploadedBy       User?       @relation("UserProductPhotos", fields: [uploadedByUserId], references: [id])
+  uploadedBy       User?   @relation("UserProductPhotos", fields: [uploadedByUserId], references: [id])
   reviewId         Int?
-  review           Review?     @relation(fields: [reviewId], references: [id])
+  review           Review? @relation(fields: [reviewId], references: [id])
 
-  url              String
-  status           PhotoStatus @default(PENDING)
-  order            Int         @default(0)
+  url    String
+  status PhotoStatus @default(PENDING)
+  order  Int         @default(0)
 
   // Perceptual hash (dHash, 64-bit hex) — görsel olarak tekrar kullanılan fotoğraf tespiti için
-  phash            String?
+  phash String?
 
-  createdAt        DateTime    @default(now())
+  createdAt DateTime @default(now())
 
-  contentReports   ContentReport[]
+  contentReports ContentReport[]
 
   @@map("product_photos")
 }
@@ -839,21 +869,27 @@ enum PhotoStatus {
 // bildirim giden uzun kuyruk SEO + retention modülü
 // ─────────────────────────────────────────────
 
+// Soru ya bir Product'a (araç sayfası Q&A) ya da bir ExpertNote'a (not-altı Q&A,
+// "B modeli") bağlanır — ikisi birden ASLA (elle SQL'de XOR CHECK constraint).
 model Question {
-  id        Int      @id @default(autoincrement())
-  productId Int
-  product   Product  @relation(fields: [productId], references: [id])
-  userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  id           Int         @id @default(autoincrement())
+  productId    Int?
+  product      Product?    @relation(fields: [productId], references: [id])
+  // Not-altı Q&A hedefi — doluysa productId NULL
+  expertNoteId Int?
+  expertNote   ExpertNote? @relation(fields: [expertNoteId], references: [id])
+  userId       Int
+  user         User        @relation(fields: [userId], references: [id])
 
-  text      String   @db.VarChar(300)
+  text String @db.VarChar(300)
 
   createdAt DateTime @default(now())
 
-  answers   Answer[]
+  answers        Answer[]
   contentReports ContentReport[]
 
   @@index([productId])
+  @@index([expertNoteId])
   @@map("questions")
 }
 
@@ -864,12 +900,23 @@ model Answer {
   userId     Int
   user       User     @relation(fields: [userId], references: [id])
 
-  text       String   @db.VarChar(500)
+  text String @db.VarChar(500)
 
-  createdAt  DateTime @default(now())
+  // Not-altı Q&A cevapları moderasyondan geçer (araç sayfası Q&A'sında varsayılan
+  // PUBLISHED kalır — geriye uyum). answeredByExpertProfileId doluysa cevap bir usta.
+  status                    AnswerStatus @default(PUBLISHED)
+  answeredByExpertProfileId Int?
+
+  createdAt DateTime @default(now())
 
   @@index([questionId])
   @@map("answers")
+}
+
+enum AnswerStatus {
+  PENDING
+  PUBLISHED
+  REJECTED
 }
 
 // ─────────────────────────────────────────────
@@ -880,16 +927,16 @@ model Answer {
 // ─────────────────────────────────────────────
 
 model InsuranceLead {
-  id        Int      @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
   productId Int
-  product   Product  @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
 
-  fullName  String   @db.VarChar(100)
-  phone     String   @db.VarChar(20)
+  fullName String @db.VarChar(100)
+  phone    String @db.VarChar(20)
 
-  status    LeadStatus @default(NEW)
+  status LeadStatus @default(NEW)
 
   createdAt DateTime @default(now())
 
@@ -914,17 +961,17 @@ enum LeadStatus {
 // ─────────────────────────────────────────────
 
 model SaleLead {
-  id        Int      @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
   productId Int
-  product   Product  @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
 
-  type      SaleLeadType
-  fullName  String   @db.VarChar(100)
-  phone     String   @db.VarChar(20)
+  type     SaleLeadType
+  fullName String       @db.VarChar(100)
+  phone    String       @db.VarChar(20)
 
-  status    LeadStatus @default(NEW)
+  status LeadStatus @default(NEW)
 
   createdAt DateTime @default(now())
 
@@ -945,11 +992,11 @@ enum SaleLeadType {
 // ─────────────────────────────────────────────
 
 model PlusWaitlistEntry {
-  id        Int      @id @default(autoincrement())
-  userId    Int?
-  user      User?    @relation(fields: [userId], references: [id])
-  email     String   @db.VarChar(255)
-  note      String?  @db.VarChar(280)
+  id     Int     @id @default(autoincrement())
+  userId Int?
+  user   User?   @relation(fields: [userId], references: [id])
+  email  String  @db.VarChar(255)
+  note   String? @db.VarChar(280)
 
   createdAt DateTime @default(now())
 
@@ -964,19 +1011,19 @@ model PlusWaitlistEntry {
 // ─────────────────────────────────────────────
 
 model TradeListing {
-  id              Int      @id @default(autoincrement())
-  userId          Int
-  user            User     @relation(fields: [userId], references: [id])
-  productId       Int
-  product         Product  @relation(fields: [productId], references: [id])
-  userProductId   Int
-  userProduct     UserProduct @relation(fields: [userProductId], references: [id], onDelete: Cascade)
+  id            Int         @id @default(autoincrement())
+  userId        Int
+  user          User        @relation(fields: [userId], references: [id])
+  productId     Int
+  product       Product     @relation(fields: [productId], references: [id])
+  userProductId Int
+  userProduct   UserProduct @relation(fields: [userProductId], references: [id], onDelete: Cascade)
 
-  wantCategoryId  Int?
-  wantCategory    Category? @relation(fields: [wantCategoryId], references: [id])
-  wantBrandId     Int?
-  wantBrand       Brand?    @relation(fields: [wantBrandId], references: [id])
-  wantAnything    Boolean  @default(false)
+  wantCategoryId     Int?
+  wantCategory       Category?           @relation(fields: [wantCategoryId], references: [id])
+  wantBrandId        Int?
+  wantBrand          Brand?              @relation(fields: [wantBrandId], references: [id])
+  wantAnything       Boolean             @default(false)
   // İlan sahibinin karşı taraftan beklediği konum kapsamı + kabul edebileceği
   // hasar durumları — kullanıcı geri bildirimi: ilan sadece KENDİ aracının
   // (city alanı) nerede olduğunu söylüyordu, aradığı aracın nerede/nasıl
@@ -984,57 +1031,57 @@ model TradeListing {
   // durumda "hiç kısıtlama yok" anlamına gelir (Türkiye geneli / tüm hasar
   // durumları) — @default değerleri bunun için var, formda boş bırakılırsa
   // otomatik bu değere düşer.
-  wantLocationScope  TradeLocationScope   @default(NATIONWIDE)
-  wantDamageStatuses TradeDamageStatus[]  @default([])
+  wantLocationScope  TradeLocationScope  @default(NATIONWIDE)
+  wantDamageStatuses TradeDamageStatus[] @default([])
   // Aradığı aracın yıl/km aralığı + yakıt/vites tercihi — kullanıcı geri
   // bildirimi: "Aradığınız Araç" bölümü sadece kategori/marka/konum/hasar
   // biliyordu, yıl/km/yakıt/vites hiç sorulmuyordu. Hepsi opsiyonel — boş
   // bırakılırsa (min/max null, diziler boş) o kritere göre kısıtlama yok.
-  wantYearMin     Int?
-  wantYearMax     Int?
-  wantKmMin       Int?
-  wantKmMax       Int?
-  wantFuelTypes   TradeFuelType[] @default([])
+  wantYearMin        Int?
+  wantYearMax        Int?
+  wantKmMin          Int?
+  wantKmMax          Int?
+  wantFuelTypes      TradeFuelType[]     @default([])
   // Vites değerleri kategoriye göre serbest metin (Product.attributes.transmission
   // ile aynı sözlük: "Manuel"/"Otomatik"/"CVT"/"Yarı Otomatik") — sabit bir enum
   // yerine dizi, ileride kategoriye özel yeni bir vites tipi eklenirse migration
   // gerekmesin diye.
-  wantTransmissions String[] @default([])
-  note            String?  @db.VarChar(300)
+  wantTransmissions  String[]            @default([])
+  note               String?             @db.VarChar(300)
   // "note" kısa bir takas beklentisi notu ("sadece dizel arıyorum" gibi) — bu
   // ayrı bir alan: aracın kendisi hakkında serbest, uzun açıklama (km, bakım
   // geçmişi vb.). İkisi karıştırılmasın diye bilinçli olarak ayrı tutuldu.
-  description     String?  @db.VarChar(2000)
+  description        String?             @db.VarChar(2000)
 
-  paymentIntent   TradePaymentIntent @default(SWAP_ONLY)
-  city            String   @db.VarChar(50)   // sadece İl, ilçe yok — TURKISH_CITIES whitelist'ine karşı validate edilir
+  paymentIntent TradePaymentIntent @default(SWAP_ONLY)
+  city          String             @db.VarChar(50) // sadece İl, ilçe yok — TURKISH_CITIES whitelist'ine karşı validate edilir
 
-  isActive        Boolean  @default(true)
-  closedAt        DateTime?
-  closeReason     TradeCloseReason?
+  isActive     Boolean           @default(true)
+  closedAt     DateTime?
+  closeReason  TradeCloseReason?
   // 6 ay sonra anonimleştirme cron'unun bu ilanı işleyip işlemediğini işaretler —
   // önceden bu iş tekrarlanabilirliği mesaj metnindeki placeholder'a bakarak
   // (implicit) kontrol ediyordu; ilanın kendi notu (serbest metin, PII riski
   // taşıyabilir) hiç temizlenmiyordu (bkz. denetim raporu "gerçek anonimleştirme
   // değil" maddesi).
-  anonymizedAt    DateTime?
+  anonymizedAt DateTime?
 
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   // "İlan Yenile" — createdAt'ı DEĞİŞTİRMEDEN (ilanın gerçek açılış tarihi
   // korunur) sıralamayı öne almak için ayrı bir alan. Oluşturmada createdAt'la
   // aynı, yenilemede tekrar now()'a set edilir. Kötüye kullanımı önlemek için
   // API'de cooldown uygulanır (bkz. boşluk raporu, DÜŞÜK madde).
-  effectiveDate   DateTime @default(now())
+  effectiveDate DateTime @default(now())
 
-  threads         MessageThread[]
+  threads          MessageThread[]
   // Bu ilan, başka bir kullanıcının BAŞKA bir ilana attığı mesajda "ben bu
   // aracımla teklif ediyorum" diye seçtiği ilan olarak kaç yerde geçiyor
   // (bkz. MessageThread.initiatorListing notu).
-  offeredInThreads MessageThread[] @relation("InitiatorOfferedListing")
-  reports         TradeListingReport[]
-  partConditions  TradeListingPartCondition[]
+  offeredInThreads MessageThread[]             @relation("InitiatorOfferedListing")
+  reports          TradeListingReport[]
+  partConditions   TradeListingPartCondition[]
 
   // Hasar Durumu — kullanıcı beyanı, fikape tarafından doğrulanmamış (araç
   // sayfası/ilan sekmesinde bunu belirten bir uyarı gösterilir). Motor/
@@ -1079,14 +1126,14 @@ model TradeListingPhoto {
   uploadedByUserId Int?
   uploadedBy       User?        @relation("UserTradeListingPhotos", fields: [uploadedByUserId], references: [id])
 
-  url              String
-  status           PhotoStatus  @default(PENDING)
-  order            Int          @default(0)
+  url    String
+  status PhotoStatus @default(PENDING)
+  order  Int         @default(0)
   // Perceptual hash (dHash) — başka ilandan/sahibinden aşırılmış fotoğrafı
   // yakalamak için (bkz. lib/phash.ts, yorum fotoğraflarındaki ile aynı).
-  phash            String?
+  phash  String?
 
-  createdAt        DateTime     @default(now())
+  createdAt DateTime @default(now())
 
   @@index([tradeListingId, status])
   @@map("trade_listing_photos")
@@ -1113,23 +1160,23 @@ enum TradePaymentIntent {
 // kolonları üzerinde unique constraint yerine tek bir string üzerinden
 // tekilleştirme yapmak için (bkz. api/saved-searches/route.ts buildCriteriaKey).
 model SavedSearch {
-  id              Int      @id @default(autoincrement())
-  userId          Int
-  user            User     @relation(fields: [userId], references: [id])
-  city            String   @db.VarChar(50)
-  categoryId      Int?
-  category        Category? @relation(fields: [categoryId], references: [id])
-  brandId         Int?
-  brand           Brand?    @relation(fields: [brandId], references: [id])
-  paymentIntent   TradePaymentIntent?
-  yearMin         Int?
-  yearMax         Int?
-  kmMin           Int?
-  kmMax           Int?
-  fuelTypes       TradeFuelType[] @default([])
-  transmissions   String[] @default([])
-  criteriaKey     String   @default("")
-  createdAt       DateTime @default(now())
+  id            Int                 @id @default(autoincrement())
+  userId        Int
+  user          User                @relation(fields: [userId], references: [id])
+  city          String              @db.VarChar(50)
+  categoryId    Int?
+  category      Category?           @relation(fields: [categoryId], references: [id])
+  brandId       Int?
+  brand         Brand?              @relation(fields: [brandId], references: [id])
+  paymentIntent TradePaymentIntent?
+  yearMin       Int?
+  yearMax       Int?
+  kmMin         Int?
+  kmMax         Int?
+  fuelTypes     TradeFuelType[]     @default([])
+  transmissions String[]            @default([])
+  criteriaKey   String              @default("")
+  createdAt     DateTime            @default(now())
 
   @@unique([userId, criteriaKey])
   @@index([city])
@@ -1143,11 +1190,11 @@ enum TradeCloseReason {
 }
 
 model MessageThread {
-  id              Int      @id @default(autoincrement())
-  tradeListingId  Int
-  tradeListing    TradeListing @relation(fields: [tradeListingId], references: [id], onDelete: Cascade)
-  initiatorId     Int
-  initiator       User     @relation("ThreadInitiator", fields: [initiatorId], references: [id])
+  id             Int          @id @default(autoincrement())
+  tradeListingId Int
+  tradeListing   TradeListing @relation(fields: [tradeListingId], references: [id], onDelete: Cascade)
+  initiatorId    Int
+  initiator      User         @relation("ThreadInitiator", fields: [initiatorId], references: [id])
 
   // Mesajı atanın KENDİ ilanı — "hangi aracınızla teklif ediyorsunuz?" (bkz.
   // kullanıcı geri bildirimi: alıcı, teklif edilen aracı görmeden mesajları
@@ -1158,21 +1205,21 @@ model MessageThread {
   initiatorListingId Int?
   initiatorListing   TradeListing? @relation("InitiatorOfferedListing", fields: [initiatorListingId], references: [id], onDelete: SetNull)
 
-  createdAt       DateTime @default(now())
-  lastMessageAt   DateTime @default(now())
-  hasReciprocalReply Boolean @default(false)
+  createdAt          DateTime @default(now())
+  lastMessageAt      DateTime @default(now())
+  hasReciprocalReply Boolean  @default(false)
 
   // "Görüşmeyi kapat" — yumuşak arşiv: ikisi de yazamaz ama kişi ENGELLENMEZ,
   // karşı taraf başka/aynı ilandan yeni görüşme açabilir. Yalnızca kapatan
   // "yeniden aç" edebilir. blockedByUserId'den ayrı — bu geri alınabilir.
-  closedByUserId  Int?
-  closedByUser    User?    @relation("ThreadClosedBy", fields: [closedByUserId], references: [id])
-  closedAt        DateTime?
+  closedByUserId Int?
+  closedByUser   User?     @relation("ThreadClosedBy", fields: [closedByUserId], references: [id])
+  closedAt       DateTime?
 
   // "Kişiyi engelle" — kalıcı, çift yönlü, tüm ilanlar (BlockedUser satırı da
   // yazılır). Görüşmeyi de kapatır (closedByUserId da set edilir). Sessiz.
   blockedByUserId Int?
-  blockedByUser   User?    @relation("ThreadBlockedBy", fields: [blockedByUserId], references: [id])
+  blockedByUser   User?     @relation("ThreadBlockedBy", fields: [blockedByUserId], references: [id])
   blockedAt       DateTime?
 
   // "İlgilenmiyorum" — Block'tan farklı: mesajlaşmayı KAPATMAZ, sadece
@@ -1181,11 +1228,11 @@ model MessageThread {
   // vazgeçtiğini belirtecek bir yolu yoktu — iki taraf da sessiz kalırsa ilan
   // süresiz aktif kalıyordu (bkz. boşluk raporu, YÜKSEK madde).
   interestLostByUserId Int?
-  interestLostByUser   User?    @relation("ThreadInterestLostBy", fields: [interestLostByUserId], references: [id])
+  interestLostByUser   User?     @relation("ThreadInterestLostBy", fields: [interestLostByUserId], references: [id])
   interestLostAt       DateTime?
 
-  messages        Message[]
-  ratings         TradeRating[]
+  messages Message[]
+  ratings  TradeRating[]
 
   @@unique([tradeListingId, initiatorId])
   @@index([initiatorId])
@@ -1206,7 +1253,7 @@ model TradeRating {
   rater       User          @relation("TradeRater", fields: [raterId], references: [id])
   ratedUserId Int
   ratedUser   User          @relation("TradeRated", fields: [ratedUserId], references: [id])
-  score       Int           // 1-5
+  score       Int // 1-5
   comment     String?       @db.VarChar(300)
   createdAt   DateTime      @default(now())
 
@@ -1242,7 +1289,7 @@ model Message {
   isRead    Boolean       @default(false)
   createdAt DateTime      @default(now())
 
-  reports   MessageReport[]
+  reports MessageReport[]
 
   @@index([threadId, createdAt])
   @@map("messages")
@@ -1316,18 +1363,18 @@ model TradeTramerRecord {
   id             Int          @id @default(autoincrement())
   tradeListingId Int
   tradeListing   TradeListing @relation(fields: [tradeListingId], references: [id], onDelete: Cascade)
-  month          Int          // 1-12
+  month          Int // 1-12
   year           Int
-  amount         Float        // TL
+  amount         Float // TL
 
   @@index([tradeListingId])
   @@map("trade_tramer_records")
 }
 
 enum TradeDamageStatus {
-  NONE    // Hasarsız
+  NONE // Hasarsız
   DAMAGED // Hasarlı
-  HEAVY   // Ağır Hasarlı
+  HEAVY // Ağır Hasarlı
 }
 
 // İlan sahibinin, takas edeceği aracın ne kadar uzakta olabileceğine dair
@@ -1335,9 +1382,9 @@ enum TradeDamageStatus {
 // diğer kullanıcıya gösterilen bir beklenti etiketi (city alanındaki gibi
 // gerçek bir konum değil, bir tercih).
 enum TradeLocationScope {
-  SAME_CITY   // Aynı Şehirde
+  SAME_CITY // Aynı Şehirde
   SAME_REGION // Aynı Bölgede
-  NATIONWIDE  // Türkiye Genelinde
+  NATIONWIDE // Türkiye Genelinde
 }
 
 // vehicleSuggestSchema'daki fuelType enum'uyla aynı değer seti — Product.attributes
@@ -1355,11 +1402,11 @@ enum TradeFuelType {
 // bildirimiyle düz "Var/Yok" yetersiz bulundu (orijinal mi yan sanayi mi
 // parça, geçmişte mi giderildi yoksa hâlâ mı sürüyor gibi ayrımlar kayboluyordu).
 enum MechanicalCondition {
-  ORIGINAL             // Orijinal / Sorunsuz
-  MINOR_FIXED          // Küçük Sorun — Giderildi
-  REPLACED_OEM         // Orijinal Parça ile Değişti
+  ORIGINAL // Orijinal / Sorunsuz
+  MINOR_FIXED // Küçük Sorun — Giderildi
+  REPLACED_OEM // Orijinal Parça ile Değişti
   REPLACED_AFTERMARKET // Yan Sanayi Parça ile Değişti
-  ONGOING_ISSUE        // Devam Eden Sorun Var
+  ONGOING_ISSUE // Devam Eden Sorun Var
 }
 
 enum MessageReportReason {
@@ -1383,30 +1430,33 @@ enum MessageReportStatus {
 
 model ContentReport {
   id         Int      @id @default(autoincrement())
-  productId  Int
-  product    Product  @relation(fields: [productId], references: [id])
+  // targetType=EXPERT_NOTE iken productId NULL, expertNoteId dolu (elle SQL'de CHECK)
+  productId  Int?
+  product    Product? @relation(fields: [productId], references: [id])
   reporterId Int
   reporter   User     @relation(fields: [reporterId], references: [id])
 
   targetType ContentReportTargetType
 
   // Hedefe göre yalnızca ilgili alan doldurulur
-  field      String?       @db.VarChar(100) // targetType=SPEC ise (örn. "ev_range_km")
-  photoId    Int?
-  photo      ProductPhoto? @relation(fields: [photoId], references: [id])
-  reviewId   Int?
-  review     Review?       @relation(fields: [reviewId], references: [id])
-  questionId Int?
-  question   Question?     @relation(fields: [questionId], references: [id])
+  field        String?       @db.VarChar(100) // targetType=SPEC ise (örn. "ev_range_km")
+  photoId      Int?
+  photo        ProductPhoto? @relation(fields: [photoId], references: [id])
+  reviewId     Int?
+  review       Review?       @relation(fields: [reviewId], references: [id])
+  questionId   Int?
+  question     Question?     @relation(fields: [questionId], references: [id])
+  expertNoteId Int?
+  expertNote   ExpertNote?   @relation(fields: [expertNoteId], references: [id])
 
-  note       String   @db.VarChar(500)
+  note String @db.VarChar(500)
 
   status     ContentReportStatus @default(PENDING)
   resolvedAt DateTime?
-  resolvedBy Int?      // Admin user id
-  adminNote  String?   @db.VarChar(300)
+  resolvedBy Int? // Admin user id
+  adminNote  String?             @db.VarChar(300)
 
-  createdAt  DateTime @default(now())
+  createdAt DateTime @default(now())
 
   @@index([productId])
   @@index([status])
@@ -1418,11 +1468,447 @@ enum ContentReportTargetType {
   PHOTO
   REVIEW
   QNA
+  EXPERT_NOTE
   OTHER
 }
 
 enum ContentReportStatus {
   PENDING
   RESOLVED
+  REJECTED
+}
+
+// ═════════════════════════════════════════════
+// USTA GÖRÜŞLERI — profesyonel ustaların araç MODELLERİ hakkında
+// yapılandırılmış teknik notları. Review'dan ayrı, SKORSUZ (FI·KA·PE'ye
+// sıfır etki). "Çift şapka": ExpertProfile bir User niteliği, ayrı hesap değil.
+// Tam tasarım: docs/usta-gorusleri-plan.md
+// ═════════════════════════════════════════════
+
+model ExpertProfile {
+  id     Int  @id @default(autoincrement())
+  userId Int  @unique
+  user   User @relation(fields: [userId], references: [id])
+
+  // Herkese açık profil / CV
+  slug          String   @unique // /usta/[slug] — oluşturmada DONDURULUR
+  headline      String?  @db.VarChar(120)
+  bio           String?  @db.VarChar(2000)
+  photoUrl      String?
+  city          String?  @db.VarChar(50) // TR il whitelist
+  district      String?  @db.VarChar(60) // ilçe — bölgesel eşleşme log granülerliği
+  expertiseTags String[] @default([])
+
+  // İletişim — KVKK: ayrı açık rıza (EXPERT_CONTACT_PUBLIC) + ConsentLog + retention.
+  // Silme TALEBİ anında sıfırlanır (30 gün SLA beklenmez).
+  contactPhone   String? @db.VarChar(20)
+  contactAddress String? @db.VarChar(300) // açık adres OPSİYONEL; il/ilçe zorunlu
+  contactVisible Boolean @default(false)
+  cvNoindex      Boolean @default(false) // usta isterse profil sayfası noindex
+
+  // Doğrulama — belge SAKLANMAZ (yalnız sonuç özeti; bkz. Saklama Politikası)
+  status     ExpertStatus @default(PENDING_VERIFICATION)
+  verifiedAt DateTime?
+  verifiedBy Int?
+
+  // Görünürlük baremi (aylık cron yazar)
+  visibilityState    ExpertVisibility @default(HIDDEN)
+  graceUntil         DateTime? // ACTIVE'e geçişte +2 ay; grace tanıtım yüzeyini AÇMAZ
+  lastScoredAt       DateTime?
+  currentPeriodScore Float?
+  adminOverride      ExpertOverride?
+
+  // Monetizasyon dikişi — kaynak-of-truth ExpertSponsorship; burası yalnız cache
+  sponsoredUntilCache DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  notes          ExpertNote[]
+  scoreHistory   ExpertScoreSnapshot[]
+  contactEvents  ExpertContactEvent[]
+  sponsorships   ExpertSponsorship[]
+  overrideEvents ExpertOverrideEvent[]
+
+  @@index([status, visibilityState])
+  @@index([city, visibilityState])
+  @@map("expert_profiles")
+}
+
+enum ExpertStatus {
+  PENDING_VERIFICATION
+  ACTIVE
+  WAITLISTED // kota dışı — sıradaki pencerede otomatik yükselir
+  SUSPENDED // admin askıya aldı (ihlal) — notlar da gizlenebilir
+  CLOSED // hesap silindi / kalıcı
+}
+
+enum ExpertVisibility {
+  HIDDEN // yeni; henüz baremde değil
+  FEATURED // barem üstü — bölgesel görünürlük + profil/iletişim açık
+  PAUSED // barem altı — tanıtım durdu, notlar kalır
+  PROBATION // grace'te tek ret vb. — ceza yolu
+}
+
+enum ExpertOverride {
+  FORCE_FEATURED
+  FORCE_PAUSED
+}
+
+model ExpertNote {
+  id        Int           @id @default(autoincrement())
+  profileId Int
+  profile   ExpertProfile @relation(fields: [profileId], references: [id])
+
+  // MODEL seviyesi — Product/trim DEĞİL
+  modelId Int
+  model   Model @relation(fields: [modelId], references: [id])
+
+  title      String @db.VarChar(140)
+  body       String @db.Text
+  // { kronik_arizalar[], bakim_maliyeti, parca_bulunurlugu, kacinilacak_yil_motor, alinirken_bak }
+  structured Json   @default("{}")
+
+  status               ExpertNoteStatus @default(PENDING)
+  qualityScore         Int? // admin onayda 0/1/2 — canlı değer
+  approvedQualityScore Int? // onay anındaki puan — BAREM BUNU okur
+  publishedAt          DateTime?
+  rejectedAt           DateTime?
+  rejectionReason      String?          @db.VarChar(300)
+  removedAt            DateTime? // ban/takedown soft-remove (hard-delete YOK — RESTRICT FK)
+
+  editedAt  DateTime?
+  editCount Int       @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  votes            ExpertNoteVote[]
+  questions        Question[]
+  versions         ExpertNoteVersion[]
+  contentReports   ContentReport[]
+  takedownRequests ExpertNoteTakedownRequest[]
+  externalReplies  ExpertNoteExternalReply[]
+
+  @@index([modelId, status])
+  @@index([profileId, status])
+  @@map("expert_notes")
+}
+
+enum ExpertNoteStatus {
+  PENDING
+  PUBLISHED
+  REJECTED
+  HIDDEN
+}
+
+model ExpertNoteVote {
+  id             Int        @id @default(autoincrement())
+  noteId         Int
+  note           ExpertNote @relation(fields: [noteId], references: [id])
+  userId         Int
+  user           User       @relation(fields: [userId], references: [id])
+  isHelpful      Boolean
+  voteConfidence Float      @default(1) // gecelik oy-sahteciliği işi [0-1] yazar
+  createdAt      DateTime   @default(now())
+
+  @@unique([noteId, userId])
+  @@map("expert_note_votes")
+}
+
+model ExpertNoteVersion {
+  id                   Int        @id @default(autoincrement())
+  noteId               Int
+  note                 ExpertNote @relation(fields: [noteId], references: [id])
+  version              Int
+  title                String
+  body                 String     @db.Text
+  structured           Json       @default("{}")
+  approvedQualityScore Int?
+  createdAt            DateTime   @default(now())
+
+  @@unique([noteId, version])
+  @@map("expert_note_versions")
+}
+
+// Aylık barem audit — /api/cron/expert-standing yazar
+model ExpertScoreSnapshot {
+  id                        Int              @id @default(autoincrement())
+  profileId                 Int
+  profile                   ExpertProfile    @relation(fields: [profileId], references: [id])
+  period                    String           @db.VarChar(7) // "2026-09"
+  distinctModelQualityNotes Int
+  qualityAvgNorm            Float // dönem platform ortalamasına normalize
+  helpfulWilson             Float // Wilson alt sınırı
+  voterDiversity            Float
+  reportRate                Float
+  penalties                 Float
+  rawScore                  Float
+  decision                  ExpertVisibility
+  wasSponsored              Boolean          @default(false)
+  placementImpressions      Int              @default(0)
+  createdAt                 DateTime         @default(now())
+
+  @@unique([profileId, period])
+  @@map("expert_score_snapshots")
+}
+
+// Her admin override gerekçe koduyla loglanır → formül gerçeğe karşı kalibre edilir
+model ExpertOverrideEvent {
+  id         Int              @id @default(autoincrement())
+  profileId  Int
+  profile    ExpertProfile    @relation(fields: [profileId], references: [id])
+  period     String           @db.VarChar(7)
+  fromState  ExpertVisibility
+  toState    ExpertVisibility
+  reasonCode String           @db.VarChar(40)
+  adminId    Int
+  createdAt  DateTime         @default(now())
+
+  @@map("expert_override_events")
+}
+
+// Dönüşüm ölçümü (monetizasyon hazırlığı) — usta açısından kişisel veri;
+// ziyaretçiye ait tanımlayıcı (IP/userId) TUTULMAZ.
+model ExpertContactEvent {
+  id              Int                    @id @default(autoincrement())
+  profileId       Int
+  profile         ExpertProfile          @relation(fields: [profileId], references: [id])
+  kind            ExpertContactEventKind
+  surface         ExpertPlacementSurface
+  placementReason PlacementReason
+  regionBucket    String                 @db.VarChar(40) // istek anındaki kaba şehir
+  dedupeKey       String                 @db.VarChar(64) // gün + kaba oturum hash — şişme önleme
+  createdAt       DateTime               @default(now())
+
+  @@index([profileId, createdAt])
+  @@map("expert_contact_events")
+}
+
+enum ExpertContactEventKind {
+  PROFILE_VIEW
+  CONTACT_REVEAL
+  MESSAGE_START
+  MESSAGE_REPLIED
+  THREAD_REACHED_DEPTH_3
+}
+
+enum ExpertPlacementSurface {
+  VEHICLE_PAGE
+  EXPERT_PROFILE
+  REGIONAL_BLOCK
+  MODEL_TAB
+  SEARCH
+}
+
+// Her yerleşim NEDEN göründüğünü tipli taşır — "para sıralamayı etkilemez"
+// iddiasının denetlenebilir karşılığı. Bugün yalnız EARNED dalı yazılır.
+enum PlacementReason {
+  EARNED
+  SPONSORED
+  EDITORIAL_PICK
+}
+
+// Aylık bölge rollup — fiyatlama girdisi + "özellik nerede çalışıyor" iç panosu.
+// regionBucket İLÇE granülerliğinde — il'e sonradan toplarsın, il'i bölemezsin.
+model ExpertRegionStat {
+  id                Int      @id @default(autoincrement())
+  period            String   @db.VarChar(7)
+  regionBucket      String   @db.VarChar(40)
+  expertCount       Int
+  featuredCount     Int
+  noteCount         Int
+  contactEventCount Int
+  modelsCovered     Int
+  createdAt         DateTime @default(now())
+
+  @@unique([period, regionBucket])
+  @@map("expert_region_stats")
+}
+
+// Sponsorluk / sertifikasyon dikişi — bugün tablo + enum var, UI/admin YOK.
+// Bareme, rozete, sıralamaya, not görünürlüğüne ETKİ ETMEZ (kırmızı çizgi).
+model ExpertSponsorship {
+  id                 Int               @id @default(autoincrement())
+  profileId          Int
+  profile            ExpertProfile     @relation(fields: [profileId], references: [id])
+  kind               SponsorshipKind
+  status             SponsorshipStatus @default(PENDING_PAYMENT)
+  startsAt           DateTime?
+  endsAt             DateTime?
+  scopeCities        String[]          @default([])
+  scopeDistricts     String[]          @default([])
+  scopeModelIds      Int[]             @default([])
+  soldByAdminId      Int?
+  priceMinorUnits    Int?
+  currency           String?           @db.VarChar(3)
+  externalInvoiceRef String?
+  paymentStatus      String?           @db.VarChar(24)
+  // "Fikape Onaylı Servis" sertifikasyon alt-alanları (şimdilik null)
+  assessedAt         DateTime?
+  assessedBy         Int?
+  expiresAt          DateTime?
+  revokedAt          DateTime?
+  note               String?           @db.Text
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  @@index([profileId, status])
+  @@map("expert_sponsorships")
+}
+
+enum SponsorshipKind {
+  SPONSORED_EXPERT
+  APPROVED_SERVICE
+}
+
+enum SponsorshipStatus {
+  PENDING_PAYMENT
+  ACTIVE
+  EXPIRED
+  CANCELLED
+}
+
+// ─────────────────────────────────────────────
+// ÜRETİCİ / 3. KİŞİ BİLDİRİM-KALDIRMA + YANIT HAKKI
+// Not hard-delete edilmez → ExpertNote.status=HIDDEN + removedAt.
+// Tam prosedür: docs/usta-gorusleri-hukuki-metinler.md §7
+// ─────────────────────────────────────────────
+
+model ExpertNoteTakedownRequest {
+  id                   Int        @id @default(autoincrement())
+  noteId               Int
+  note                 ExpertNote @relation(fields: [noteId], references: [id])
+  noteVersionAtRequest Int? // şikayet anındaki yayınlanmış sürüm — kanıt
+
+  // Başvuran
+  claimantType      TakedownClaimantType
+  claimantName      String               @db.VarChar(160)
+  claimantOrg       String?              @db.VarChar(200)
+  claimantEmail     String               @db.VarChar(200)
+  claimantPhone     String?              @db.VarChar(30)
+  claimantUserId    Int?
+  claimantUser      User?                @relation("TakedownClaimant", fields: [claimantUserId], references: [id])
+  authorityVerified Boolean              @default(false)
+  authorityNote     String?              @db.VarChar(300) // "vekâletname, 2026-09-10, <kontrol eden>"
+
+  // İddia
+  reasonCategory  TakedownReason
+  requestedRemedy TakedownRemedy
+  statement       String         @db.Text
+  evidenceUrls    String[]       @default([])
+
+  // Akış
+  status           TakedownStatus @default(RECEIVED)
+  acknowledgedAt   DateTime?
+  interimHiddenAt  DateTime?
+  expertNotifiedAt DateTime?
+  reviewDueAt      DateTime?
+
+  // Karar
+  decision       TakedownDecision?
+  decisionReason String?           @db.VarChar(600)
+  decidedBy      Int?
+  decidedAt      DateTime?
+
+  // İtiraz (karar başına tek)
+  appealStatus    TakedownAppealStatus @default(NONE)
+  appealFiledBy   TakedownAppellant?
+  appealReason    String?              @db.VarChar(600)
+  appealFiledAt   DateTime?
+  appealDecidedBy Int?
+  appealDecidedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  reply ExpertNoteExternalReply?
+
+  @@index([noteId, status])
+  @@index([status, reviewDueAt])
+  @@map("expert_note_takedown_requests")
+}
+
+// "Üretici / Marka Yanıtı" — notun altında açık etiketli tek blok.
+// Oy almaz, bareme girmez, FI·KA·PE skoruna etki etmez. Moderasyondan geçer.
+model ExpertNoteExternalReply {
+  id         Int                       @id @default(autoincrement())
+  takedownId Int                       @unique
+  takedown   ExpertNoteTakedownRequest @relation(fields: [takedownId], references: [id])
+  noteId     Int
+  note       ExpertNote                @relation(fields: [noteId], references: [id])
+
+  authorLabel          String             @db.VarChar(120) // "X Marka — Yetkili Temsilci"
+  body                 String             @db.VarChar(800)
+  status               ExpertReplyStatus  @default(PENDING)
+  expertRebuttal       String?            @db.VarChar(800)
+  expertRebuttalStatus ExpertReplyStatus?
+
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([noteId, status])
+  @@map("expert_note_external_replies")
+}
+
+enum TakedownClaimantType {
+  MANUFACTURER
+  BRAND_REP
+  AUTHORIZED_SERVICE
+  THIRD_PARTY
+  LEGAL_COUNSEL
+  OTHER
+}
+
+enum TakedownReason {
+  DEFAMATION
+  FACTUAL_INACCURACY
+  IP_INFRINGEMENT
+  PERSONAL_DATA
+  IMPERSONATION
+  OTHER
+}
+
+enum TakedownRemedy {
+  REMOVAL
+  CORRECTION
+  RIGHT_OF_REPLY
+}
+
+enum TakedownStatus {
+  RECEIVED
+  AWAITING_CLAIMANT_INFO
+  UNDER_REVIEW
+  INTERIM_HIDDEN
+  RESOLVED_REMOVED
+  RESOLVED_CORRECTED
+  RESOLVED_REJECTED
+  RESOLVED_REPLY_GRANTED
+  WITHDRAWN
+}
+
+enum TakedownDecision {
+  REMOVED
+  CORRECTED
+  REJECTED
+  REPLY_GRANTED
+}
+
+enum TakedownAppealStatus {
+  NONE
+  PENDING
+  UPHELD
+  OVERTURNED
+}
+
+enum TakedownAppellant {
+  CLAIMANT
+  EXPERT
+}
+
+enum ExpertReplyStatus {
+  PENDING
+  PUBLISHED
   REJECTED
 }

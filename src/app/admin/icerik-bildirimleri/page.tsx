@@ -15,6 +15,7 @@ const TARGET_LABELS: Record<string, string> = {
   PHOTO: "Fotoğraf",
   REVIEW: "Yorum",
   QNA: "Soru-Cevap",
+  EXPERT_NOTE: "Usta Notu",
   OTHER: "Diğer",
 };
 
@@ -58,6 +59,24 @@ export default async function IcerikBildirimleriPage() {
       ) : (
         <div className="space-y-3">
           {reports.map((r) => {
+            // Usta notu bildirimleri (targetType=EXPERT_NOTE) product taşımaz —
+            // sade kart göster, ayrıntılı yönetim ilerideki usta-notu moderasyon ekranında.
+            if (!r.product) {
+              return (
+                <div key={r.id} className="bg-white border border-gray-100 rounded-xl p-4 space-y-2">
+                  <span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
+                    {TARGET_LABELS[r.targetType] ?? r.targetType}
+                  </span>
+                  <p className="text-sm text-gray-800 bg-gray-50 rounded-lg px-3 py-2">{r.note}</p>
+                  <div className="flex items-center justify-between gap-2 pt-1">
+                    <span className="text-xs text-gray-400">
+                      {r.reporter.displayName ?? "Kullanıcı"} bildirdi
+                    </span>
+                    <ContentReportActions reportId={r.id} />
+                  </div>
+                </div>
+              );
+            }
             const productName = `${r.product.brand.name} ${r.product.model.name}`;
             const fieldLabel = r.field
               ? (SPEC_FIELDS[r.product.category?.slug ?? ""] ?? []).find((f) => f.key === r.field)?.label ?? r.field

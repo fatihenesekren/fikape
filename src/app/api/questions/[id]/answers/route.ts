@@ -57,9 +57,16 @@ export async function POST(
   if (question.userId === userId) {
     return NextResponse.json({ error: "Kendi sorunuzu cevaplayamazsınız." }, { status: 403 });
   }
+  // Bu uç yalnızca araç sayfası soru-cevabı içindir. Usta notu altındaki
+  // soru-cevap (expertNoteId dolu) ayrı bir uçtan yönetilir.
+  if (question.productId == null || question.product == null) {
+    return NextResponse.json({ error: "Bu soru bu uçtan cevaplanamaz." }, { status: 400 });
+  }
+  const productId = question.productId;
+  const product = question.product;
 
   const ownership = await prisma.userProduct.findUnique({
-    where: { userId_productId: { userId, productId: question.productId } },
+    where: { userId_productId: { userId, productId } },
     select: { id: true },
   });
   if (!ownership) {
@@ -84,12 +91,12 @@ export async function POST(
   });
 
   if (question.userId !== userId) {
-    const vehicleName = stripGenRangeAnywhere(question.product.name);
+    const vehicleName = stripGenRangeAnywhere(product.name);
     sendQuestionAnsweredEmail({
       to: question.user.email,
       displayName: question.user.displayName,
       vehicleName,
-      productSlug: question.product.slug,
+      productSlug: product.slug,
       userId: question.userId,
     }).catch(() => {});
     createNotification({
@@ -97,7 +104,7 @@ export async function POST(
       type: "QUESTION_ANSWERED",
       message: `${vehicleName} hakkında sorduğun soru cevaplandı`,
       // Slug değil id — katalog bakımında slug değişse bile link kırılmasın (bkz. /urun/[id]).
-      link: `/urun/${question.productId}?sekme=soru-cevap`,
+      link: `/urun/${productId}?sekme=soru-cevap`,
     });
   }
 
