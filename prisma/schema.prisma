@@ -1623,6 +1623,11 @@ model ExpertNoteVote {
   user           User       @relation(fields: [userId], references: [id])
   isHelpful      Boolean
   voteConfidence Float      @default(1) // gecelik oy-sahteciliği işi [0-1] yazar
+  // KVKK: ham IP/UA hiçbir yerde tutulmaz, sadece HMAC hash'i (Review.ipHash
+  // deseniyle aynı — bkz. lib/security.ts hashRequestContext). Oy sahteciliği
+  // işinin "IP/cihaz örtüşmesi" sinyali için.
+  ipHash         String?
+  userAgentHash  String?
   createdAt      DateTime   @default(now())
 
   @@unique([noteId, userId])

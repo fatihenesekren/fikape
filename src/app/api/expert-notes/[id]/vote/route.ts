@@ -2,12 +2,14 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { hashRequestContext } from "@/lib/security";
 
 const bodySchema = z.object({ isHelpful: z.boolean() });
 
 // Usta notu faydalı/faydasız oyu — ReviewHelpfulVote deseniyle aynı.
-// voteConfidence şimdilik varsayılan 1 (gecelik oy-sahteciliği işi Aşama 7'de
-// bu alanı güncelleyecek — barem bu alanı okuyacak, burada dokunulmuyor).
+// voteConfidence varsayılan 1 — gecelik oy-sahteciliği işi (api/cron/
+// expert-vote-fraud) bunu günceller, barem bu alanı okur. ipHash/
+// userAgentHash yalnız o iş için (KVKK: ham IP/UA tutulmaz).
 export async function POST(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -36,10 +38,12 @@ export async function POST(
     return NextResponse.json({ error: "Kendi notuna oy veremezsin." }, { status: 403 });
   }
 
+  const { ipHash, userAgentHash } = hashRequestContext(req);
+
   await prisma.expertNoteVote.upsert({
     where: { noteId_userId: { noteId, userId } },
-    create: { noteId, userId, isHelpful },
-    update: { isHelpful },
+    create: { noteId, userId, isHelpful, ipHash, userAgentHash },
+    update: { isHelpful, ipHash, userAgentHash },
   });
 
   const [helpfulCount, notHelpfulCount] = await Promise.all([
