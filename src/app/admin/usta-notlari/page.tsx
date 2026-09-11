@@ -1,13 +1,21 @@
 import { prisma } from "@/lib/prisma";
 import { ExpertNoteActions } from "./ExpertNoteActions";
 import { ExpertAnswerActions } from "./ExpertAnswerActions";
+import { ExpertOverrideActions } from "./ExpertOverrideActions";
 import { BootstrapExpertForm } from "./BootstrapExpertForm";
 import { EXPERT_NOTE_FIELDS } from "@/lib/expertNote";
 
 export const metadata = { title: "Usta Notları — fikape admin" };
 
+const VISIBILITY_LABEL: Record<string, string> = {
+  HIDDEN: "Gizli (kapı geçilmedi)",
+  FEATURED: "Görünür",
+  PAUSED: "Duraklatıldı",
+  PROBATION: "Denetimde",
+};
+
 export default async function ExpertNotesModerationPage() {
-  const [notes, activeExperts, pendingAnswers] = await Promise.all([
+  const [notes, activeProfiles, pendingAnswers] = await Promise.all([
     prisma.expertNote.findMany({
       where: { status: "PENDING" },
       select: {
@@ -25,7 +33,15 @@ export default async function ExpertNotesModerationPage() {
       },
       orderBy: { createdAt: "asc" },
     }),
-    prisma.expertProfile.count({ where: { status: "ACTIVE" } }).catch(() => 0),
+    prisma.expertProfile.findMany({
+      where: { status: "ACTIVE" },
+      select: {
+        id: true, headline: true, city: true, visibilityState: true, adminOverride: true,
+        currentPeriodScore: true, graceUntil: true,
+        user: { select: { displayName: true, email: true } },
+      },
+      orderBy: { headline: "asc" },
+    }).catch(() => []),
     // Usta notu altındaki soru-cevap — "B modeli" moderasyonu (§14.9)
     prisma.answer.findMany({
       where: { status: "PENDING", answeredByExpertProfileId: { not: null } },
@@ -50,7 +66,7 @@ export default async function ExpertNotesModerationPage() {
         </h1>
         <p className="text-sm text-gray-400 mt-1">
           Onaylanan not, ilgili modelin araç sayfasında &quot;Usta Görüşleri&quot; sekmesinde yayınlanır.
-          Aktif usta sayısı: {activeExperts}.
+          Aktif usta sayısı: {activeProfiles.length}.
         </p>
       </div>
 
@@ -61,6 +77,31 @@ export default async function ExpertNotesModerationPage() {
         </p>
         <BootstrapExpertForm />
       </div>
+
+      {activeProfiles.length > 0 && (
+        <div className="space-y-3">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">
+            Aktif Ustalar — Görünürlük (aylık barem)
+          </p>
+          {activeProfiles.map((p) => (
+            <div key={p.id} className="bg-white border border-gray-100 rounded-xl p-4 space-y-2">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="text-sm min-w-0">
+                  <span className="font-semibold text-gray-800">{p.headline ?? p.user.displayName ?? p.user.email}</span>
+                  {p.city && <span className="text-gray-400"> · {p.city}</span>}
+                </div>
+                <span className="text-xs text-gray-400 shrink-0">
+                  {VISIBILITY_LABEL[p.visibilityState] ?? p.visibilityState}
+                  {p.currentPeriodScore != null && ` · skor ${p.currentPeriodScore.toFixed(2)}`}
+                  {p.graceUntil && p.graceUntil > new Date() && " · grace"}
+                  {p.adminOverride && ` · override: ${p.adminOverride}`}
+                </span>
+              </div>
+              <ExpertOverrideActions profileId={p.id} adminOverride={p.adminOverride} />
+            </div>
+          ))}
+        </div>
+      )}
 
       {pendingAnswers.length > 0 && (
         <div className="space-y-3">

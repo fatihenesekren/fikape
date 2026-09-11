@@ -15,6 +15,10 @@
     {
       "path": "/api/cron/reminder-emails",
       "schedule": "0 9 * * 1"
+    },
+    {
+      "path": "/api/cron/expert-standing",
+      "schedule": "30 4 1 * *"
     }
   ]
 }

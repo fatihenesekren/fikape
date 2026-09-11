@@ -13,22 +13,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const profile = await prisma.expertProfile.findUnique({
     where: { slug },
-    select: { headline: true, status: true, cvNoindex: true },
+    select: { headline: true, status: true, cvNoindex: true, visibilityState: true },
   });
   if (!profile || profile.status !== "ACTIVE") return {};
+  const forceNoindex = profile.visibilityState === "PAUSED" || profile.visibilityState === "PROBATION";
   return {
     title: `${profile.headline ?? "Usta"} — Doğrulanmış Usta | fikape`,
     description: `${profile.headline ?? "Usta"} — fikape'de doğrulanmış usta profili ve teknik katkıları.`,
-    robots: profile.cvNoindex ? { index: false } : undefined,
+    robots: profile.cvNoindex || forceNoindex ? { index: false } : undefined,
   };
 }
 
 // Usta profil sayfası — İletişim bölümü (b) rızası + en az bir alan girilmişse
 // (contactVisible) gösterilir; site-içi mesajlaşma altyapısı henüz yok (bkz.
 // memory — takas mesajlaşmasına benzer ayrı bir sistem, Aşama 6'da bilinçli
-// olarak ertelendi). Görünürlük şimdilik yalnız status=ACTIVE'e bağlı —
-// barem/visibilityState (Aşama 7) devreye girince PAUSED/PROBATION için
-// 200+noindex davranışı buraya eklenecek.
+// olarak ertelendi). Sayfa varlığı yalnız status=ACTIVE'e bağlı. Barem
+// (Aşama 7) PAUSED/PROBATION üretirse: sayfa 200 kalır ama noindex olur ve
+// iletişim bölümü gizlenir — notlar ve rozet her zaman görünür kalır (§14.13).
 export default async function ExpertProfilePage({
   params,
 }: {
@@ -41,10 +42,12 @@ export default async function ExpertProfilePage({
     select: {
       headline: true, bio: true, expertiseTags: true, city: true, district: true,
       status: true, createdAt: true, contactVisible: true, contactPhone: true, contactAddress: true,
+      visibilityState: true,
       user: { select: { displayName: true } },
     },
   });
   if (!profile || profile.status !== "ACTIVE") notFound();
+  const promotionPaused = profile.visibilityState === "PAUSED" || profile.visibilityState === "PROBATION";
 
   const notes = await prisma.expertNote.findMany({
     where: { profile: { slug }, status: "PUBLISHED", removedAt: null },
@@ -101,7 +104,7 @@ export default async function ExpertProfilePage({
         </div>
       )}
 
-      {profile.contactVisible && (profile.contactPhone || profile.contactAddress) && (
+      {!promotionPaused && profile.contactVisible && (profile.contactPhone || profile.contactAddress) && (
         <div className="mb-8 bg-gray-50 rounded-xl p-4 space-y-1.5">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">İletişim</p>
           {profile.contactPhone && <p className="text-sm text-gray-800">📞 {profile.contactPhone}</p>}
