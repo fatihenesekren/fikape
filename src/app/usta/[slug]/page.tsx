@@ -13,19 +13,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const profile = await prisma.expertProfile.findUnique({
     where: { slug },
-    select: { headline: true, status: true },
+    select: { headline: true, status: true, cvNoindex: true },
   });
   if (!profile || profile.status !== "ACTIVE") return {};
   return {
     title: `${profile.headline ?? "Usta"} — Doğrulanmış Usta | fikape`,
     description: `${profile.headline ?? "Usta"} — fikape'de doğrulanmış usta profili ve teknik katkıları.`,
+    robots: profile.cvNoindex ? { index: false } : undefined,
   };
 }
 
-// Usta profil sayfası — Faz 1 kapsamı: yalnız içerik (uzmanlık, katkılar,
-// doğrulama). İletişim bölümü YOK (Aşama 6). Görünürlük şimdilik yalnız
-// status=ACTIVE'e bağlı — barem/visibilityState (Aşama 7) devreye girince
-// PAUSED/PROBATION için 200+noindex davranışı buraya eklenecek.
+// Usta profil sayfası — İletişim bölümü (b) rızası + en az bir alan girilmişse
+// (contactVisible) gösterilir; site-içi mesajlaşma altyapısı henüz yok (bkz.
+// memory — takas mesajlaşmasına benzer ayrı bir sistem, Aşama 6'da bilinçli
+// olarak ertelendi). Görünürlük şimdilik yalnız status=ACTIVE'e bağlı —
+// barem/visibilityState (Aşama 7) devreye girince PAUSED/PROBATION için
+// 200+noindex davranışı buraya eklenecek.
 export default async function ExpertProfilePage({
   params,
 }: {
@@ -37,7 +40,7 @@ export default async function ExpertProfilePage({
     where: { slug },
     select: {
       headline: true, bio: true, expertiseTags: true, city: true, district: true,
-      status: true, createdAt: true,
+      status: true, createdAt: true, contactVisible: true, contactPhone: true, contactAddress: true,
       user: { select: { displayName: true } },
     },
   });
@@ -95,6 +98,18 @@ export default async function ExpertProfilePage({
         <div className="mb-8">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Hakkında</p>
           <p className="text-sm text-gray-700 whitespace-pre-line leading-relaxed">{profile.bio}</p>
+        </div>
+      )}
+
+      {profile.contactVisible && (profile.contactPhone || profile.contactAddress) && (
+        <div className="mb-8 bg-gray-50 rounded-xl p-4 space-y-1.5">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">İletişim</p>
+          {profile.contactPhone && <p className="text-sm text-gray-800">📞 {profile.contactPhone}</p>}
+          {profile.contactAddress && <p className="text-sm text-gray-800">📍 {profile.contactAddress}</p>}
+          <p className="text-[11px] text-gray-400 pt-1 leading-relaxed">
+            Bu bilgi ustanın kendi beyanıdır. fikape, kurduğunuz iş ilişkisinin tarafı değildir;
+            işçilik veya onarım kalitesini garanti etmez.
+          </p>
         </div>
       )}
 

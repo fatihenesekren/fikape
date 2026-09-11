@@ -78,7 +78,16 @@ export default async function UstaGorusuYazPage({
     );
   }
 
-  return <ExpertNoteForm headline={profile.headline} />;
+  return (
+    <div>
+      <div className="max-w-2xl mx-auto px-4 pt-6 flex justify-end">
+        <Link href="/usta-gorusu/profil" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
+          İletişim ve Görünürlük Ayarları →
+        </Link>
+      </div>
+      <ExpertNoteForm headline={profile.headline} />
+    </div>
+  );
 }
 
 function Shell({ children }: { children: React.ReactNode }) {

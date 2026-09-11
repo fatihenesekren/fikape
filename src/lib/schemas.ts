@@ -103,6 +103,17 @@ export const expertNoteQuestionSchema = z.object({
   text: z.string().trim().min(10, "En az 10 karakter yazınız.").max(300, "En fazla 300 karakter yazabilirsiniz."),
 });
 
+// Usta iletişim ayarları — granüler rıza (§7): (b) açık iletişim yayını,
+// (c) bölgesel görünürlük. İkisi de bağımsız, ikisi de opsiyonel — rıza
+// hizmetin ön koşulu değil. Telefon/adres yalnız (b) rızası verilirse gösterilir.
+export const expertContactUpdateSchema = z.object({
+  contactPhone:          z.string().trim().regex(/^[0-9+()\s-]{7,20}$/, "Geçerli bir telefon numarası giriniz.").optional().nullable().or(z.literal("")),
+  contactAddress:        z.string().trim().max(300).optional().nullable().or(z.literal("")),
+  consentContactPublic:  z.boolean(),
+  consentRegionalPromo:  z.boolean(),
+  cvNoindex:             z.boolean(),
+});
+
 export const insuranceLeadSchema = z.object({
   productId: z.union([z.number(), z.string()]),
   fullName:  z.string().trim().min(2, "Ad soyad zorunludur.").max(100),
