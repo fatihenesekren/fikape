@@ -415,7 +415,7 @@ export default async function VehicleDetailPage({
     city: n.profile.city,
     authorName: n.profile.status === "CLOSED"
       ? "Silinmiş Usta"
-      : (n.profile.user.displayName ?? "Doğrulanmış Usta"),
+      : (n.profile.user.displayName ?? "Usta"),
     authorSlug: n.profile.status === "ACTIVE" ? n.profile.slug : null,
     authorUserId: n.profile.userId,
     createdAt: (n.publishedAt ?? n.createdAt).toISOString(),
@@ -429,7 +429,7 @@ export default async function VehicleDetailPage({
       answers: q.answers.map((a) => ({
         id: a.id,
         text: a.text,
-        authorName: a.user.displayName ?? "Doğrulanmış Usta",
+        authorName: a.user.displayName ?? "Usta",
         createdAt: a.createdAt.toISOString(),
       })),
     })),
@@ -443,7 +443,7 @@ export default async function VehicleDetailPage({
       title: n.title,
       publishedAt: (n.publishedAt ?? n.createdAt).toISOString(),
       authorUserId: n.profile.userId,
-      authorName: n.profile.user.displayName ?? "Doğrulanmış Usta",
+      authorName: n.profile.user.displayName ?? "Usta",
       authorSlug: n.profile.slug,
       city: n.profile.city,
     }));

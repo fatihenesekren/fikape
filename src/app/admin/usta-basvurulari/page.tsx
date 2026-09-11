@@ -39,9 +39,11 @@ export default async function ExpertApplicationsPage() {
         <p className="text-sm text-gray-400 mt-1">
           Bu ay onaylanan: {approvedThisMonth} / {EXPERT_MONTHLY_QUOTA_DEFAULT} (gösterge amaçlı — sert kota henüz otomatik değil).
         </p>
-        <p className="text-xs text-amber-600 bg-amber-50 rounded-lg px-3 py-2 mt-2 leading-relaxed">
-          ⚠️ Onaydan önce mesleki geçmiş belgesini (vergi levhası, oda kaydı, ustalık belgesi)
-          e-posta yoluyla talep edip kontrol edin — belge yükleme sistemi henüz kodda yok.
+        <p className="text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2 mt-2 leading-relaxed">
+          Kimlik/meslek belgesi istenmez veya doğrulanmaz (bilinçli tasarım kararı — bkz.
+          {" "}<code>feature_usta_gorusleri_ilerleme.md</code>). Yalnızca içerik uygunluğuna
+          bakın: spam, tutarsız/alakasız başlık-bio, ticari reklam veya galeri/marka-yetkili
+          servis beyanına aykırılık var mı.
         </p>
       </div>
 

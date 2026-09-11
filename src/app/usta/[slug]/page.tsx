@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { EXPERT_BADGE } from "@/lib/expertNote";
+import { contactFeedbackLabel } from "@/lib/expertContactFeedback";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { ExpertMessageComposer } from "./ExpertMessageComposer";
 
@@ -20,8 +21,8 @@ export async function generateMetadata({
   if (!profile || profile.status !== "ACTIVE") return {};
   const forceNoindex = profile.visibilityState === "PAUSED" || profile.visibilityState === "PROBATION";
   return {
-    title: `${profile.headline ?? "Usta"} — Doğrulanmış Usta | fikape`,
-    description: `${profile.headline ?? "Usta"} — fikape'de doğrulanmış usta profili ve teknik katkıları.`,
+    title: `${profile.headline ?? "Usta"} — Usta Profili | fikape`,
+    description: `${profile.headline ?? "Usta"} — fikape'de usta profili ve teknik katkıları.`,
     robots: profile.cvNoindex || forceNoindex ? { index: false } : undefined,
   };
 }
@@ -71,6 +72,11 @@ export default async function ExpertProfilePage({
       }))
     : false;
   const canMessage = !!viewerId && !isOwnProfile && !isBlocked;
+
+  const confirmedContactCount = profile.contactVisible
+    ? await prisma.expertContactFeedback.count({ where: { profileId: profile.id, isAccurate: true } })
+    : 0;
+  const contactFeedbackText = contactFeedbackLabel(confirmedContactCount);
 
   const notes = await prisma.expertNote.findMany({
     where: { profile: { slug }, status: "PUBLISHED", removedAt: null },
@@ -132,9 +138,12 @@ export default async function ExpertProfilePage({
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">İletişim</p>
           {profile.contactPhone && <p className="text-sm text-gray-800">📞 {profile.contactPhone}</p>}
           {profile.contactAddress && <p className="text-sm text-gray-800">📍 {profile.contactAddress}</p>}
+          {contactFeedbackText && (
+            <p className="text-[11px] font-semibold text-green-700">✓ {contactFeedbackText}</p>
+          )}
           <p className="text-[11px] text-gray-400 pt-1 leading-relaxed">
-            Bu bilgi ustanın kendi beyanıdır. fikape, kurduğunuz iş ilişkisinin tarafı değildir;
-            işçilik veya onarım kalitesini garanti etmez.
+            Bu bilgi ustanın kendi beyanıdır, fikape tarafından doğrulanmaz. fikape, kurduğunuz iş
+            ilişkisinin tarafı değildir; işçilik veya onarım kalitesini garanti etmez.
           </p>
         </div>
       )}

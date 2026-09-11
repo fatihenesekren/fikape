@@ -108,6 +108,12 @@ export const userCityUpdateSchema = z.object({
   city: z.union([z.enum([...TURKISH_CITIES] as [string, ...string[]]), z.null()]),
 });
 
+// Topluluk iletişim teyidi — yalnız ustayla gerçekten iletişime geçmiş
+// (thread başlatmış) kullanıcılar verebilir (bkz. lib/expertContactFeedback.ts).
+export const expertContactFeedbackSchema = z.object({
+  isAccurate: z.boolean(),
+});
+
 // Usta itirazı — not reddi VEYA görünürlük kararı (biri zorunlu, route'ta kontrol edilir).
 export const expertAppealCreateSchema = z.object({
   subjectType: z.enum(["NOTE_REJECTION", "VISIBILITY_DECISION"]),

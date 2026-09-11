@@ -239,6 +239,7 @@ model User {
   takedownClaims         ExpertNoteTakedownRequest[] @relation("TakedownClaimant")
   expertThreadsInitiated ExpertMessageThread[]       @relation("ExpertThreadInitiator")
   expertMessagesSent     ExpertMessage[]             @relation("ExpertMessageSender")
+  expertContactFeedback  ExpertContactFeedback[]
 
   @@map("users")
 }
@@ -1534,13 +1535,14 @@ model ExpertProfile {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  notes          ExpertNote[]
-  scoreHistory   ExpertScoreSnapshot[]
-  contactEvents  ExpertContactEvent[]
-  sponsorships   ExpertSponsorship[]
-  overrideEvents ExpertOverrideEvent[]
-  messageThreads ExpertMessageThread[]
-  appeals        ExpertAppeal[]
+  notes           ExpertNote[]
+  scoreHistory    ExpertScoreSnapshot[]
+  contactEvents   ExpertContactEvent[]
+  sponsorships    ExpertSponsorship[]
+  overrideEvents  ExpertOverrideEvent[]
+  messageThreads  ExpertMessageThread[]
+  appeals         ExpertAppeal[]
+  contactFeedback ExpertContactFeedback[]
 
   @@index([status, visibilityState])
   @@index([city, visibilityState])
@@ -1969,6 +1971,36 @@ model ExpertMessage {
 
   @@index([threadId, createdAt])
   @@map("expert_messages")
+}
+
+// ─────────────────────────────────────────────
+// USTA GÖRÜŞLERI — TOPLULUK İLETİŞİM TEYİDİ
+// Kimlik/belge doğrulaması KALDIRILDIĞI için (11 Eylül 2026 kararı) telefon/adres
+// bilgisinin gerçekliği hakkında platform hiçbir beyanda bulunmaz. Bunun yerine:
+// ustayla GERÇEKTEN iletişime geçmiş (bir ExpertMessageThread başlatmış)
+// kullanıcılardan basit bir "doğru muydu?" sorusu. Eşik üstünde gösterilen metin
+// BİLİNÇLİ olarak "doğrulandı" DEMEZ (bkz. lib/expertNote.ts EXPERT_BADGE notu) —
+// "N kullanıcı teyit etti" der; bu platformun değil, kullanıcıların beyanıdır.
+// Anti-gaming: yalnız gerçek thread başlatıcısı oy verebilir (unique kısıtı ile
+// kişi başı tek oy). ⚠️ BİLİNÇLİ SADELEŞTİRME: oy-sahteciliği cron'undaki IP/UA
+// örtüşme sinyali BURAYA henüz uygulanmadı — gerçek hacim gelince değerlendirilir.
+// ─────────────────────────────────────────────
+
+model ExpertContactFeedback {
+  id        Int           @id @default(autoincrement())
+  profileId Int
+  profile   ExpertProfile @relation(fields: [profileId], references: [id])
+  userId    Int
+  user      User          @relation(fields: [userId], references: [id])
+
+  isAccurate Boolean
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([profileId, userId])
+  @@index([profileId, isAccurate])
+  @@map("expert_contact_feedback")
 }
 
 // ─────────────────────────────────────────────

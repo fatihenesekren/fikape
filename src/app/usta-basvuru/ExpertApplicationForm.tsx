@@ -158,9 +158,9 @@ export function ExpertApplicationForm() {
         </div>
 
         <p className="text-xs text-gray-400 leading-relaxed">
-          Başvurunuz onaylanırsa mesleki geçmişinizi belgeyle doğrulamanız istenecektir
-          (vergi levhası, oda kaydı veya ustalık belgesi gibi) — bu adım ayrıca e-posta
-          ile iletilecektir.
+          Başvurunuz, girdiğiniz bilgilerin içerik uygunluğu açısından incelenir. fikape kimlik
+          veya meslek belgesi istemez ya da doğrulamaz — &quot;Usta&quot; rozeti kendi beyanınıza
+          dayanır ve yayınladığınız her not moderasyondan geçer.
         </p>
 
         {error && <p className="text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>}

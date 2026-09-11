@@ -3,6 +3,9 @@
 fikape.com · 2026-09-10 · 5 uzman ajan çıktısı derlemesi.
 
 > **TÜMÜ TASLAKTIR.** "— AVUKAT ONAYI GEREKİR —" ibareli metinler yürürlüğe girmeden önce KVKK, tüketici hukuku, haksız rekabet, sözleşme hukuku ve 6563 sayılı ETK yönünden avukat incelemesinden geçirilmelidir. Köşeli parantezler `[...]` doldurulacak yer tutuculardır.
+>
+> **⚠️ GÜNCELLEME NOTU (11 Eylül 2026) — KİMLİK/BELGE DOĞRULAMASI KALDIRILDI (kurucu kararı).**
+> Bu dosyadaki belge doğrulama/saklama/imha ile ilgili TÜM bölümler (§2 "Belge doğrulama amacıyla işleme" rıza kutusu, §3 "Belge Saklama ve İmha Politikası", "Doğrulanmış Usta" ibaresi geçen her yer, VERBİS'teki "belge" kategorisi) **ARTIK GEÇERLİ DEĞİL** — hiçbir taslak henüz avukata gitmediği için burada silinmedi, yalnız işaretlendi. Yeni model: kimlik/meslek belgesi hiç istenmez, hiç saklanmaz. Rozet ve başvuru tamamen kullanıcı beyanına dayanır; admin yalnız başvuru İÇERİĞİNİ (spam/tutarlılık) inceler. Gerekçe ve alternatif güven mekanizmaları (moderasyon + barem + oy-sahteciliği tespiti + topluluk geri bildirimli iletişim teyidi) için bkz. hafıza dosyası `feature_usta_gorusleri_ilerleme.md`. Bu dosya avukata gönderilmeden önce ilgili bölümler tamamen çıkarılmalı.
 
 İçindekiler:
 1. Usta Aydınlatma Metni (KVKK m.10)

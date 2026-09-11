@@ -2,7 +2,9 @@
 
 fikape.com · 2026-09-10 · v1 → v2: 5 uzman ajan (KVKK, marka, monetizasyon, trust/moderasyon, UX/teknik) review etti. v2 → v3: §18 mini kararlar bir ürün/ops ajanıyla kapatıldı, kurucu kilit kararları işlendi. Değişen/eklenen yerler **⟳** ile işaretli. **Bu sürüm uygulanabilir referanstır.**
 
-**Kurucu kilit kararları:** tek teslim · feragat satırı sabit ("Usta görüşleri, ustaların gönüllü teknik katkısıdır. fikape puanını etkilemez, sıralamada yer değiştirmez.") · usta sayısı büyüyebilir (kalıcı tavan yok) · Q&A B modeli · rozet "Doğrulanmış Usta" · "Teknik Çalışan" yok.
+**Kurucu kilit kararları:** tek teslim · feragat satırı sabit ("Usta görüşleri, ustaların gönüllü teknik katkısıdır. fikape puanını etkilemez, sıralamada yer değiştirmez.") · usta sayısı büyüyebilir (kalıcı tavan yok) · Q&A B modeli · rozet "Usta" · "Teknik Çalışan" yok.
+
+**⚠️ 11 Eylül 2026 güncellemesi:** Bu dosyadaki "belge doğrulama" / "Doğrulanmış Usta" ile ilgili tüm bölümler (§5.2 belge kontrolü, §5.3 belge işleme/imha, §392 granüler rıza (a) belge doğrulama) **KALDIRILDI** — kimlik/meslek belgesi hiç istenmez/saklanmaz, kurucu kararı. Detay ve gerekçe: hafıza dosyası `feature_usta_gorusleri_ilerleme.md`. Bu dosya güncellenmedi (yalnız işaretlendi), aşağıdaki ilgili bölümleri okurken bunu göz önünde bulundurun.
 
 ---
 

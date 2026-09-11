@@ -22,7 +22,7 @@ export default async function ExpertMessageThreadPage({
   const thread = await prisma.expertMessageThread.findUnique({
     where: { id: threadId },
     select: {
-      id: true, initiatorId: true,
+      id: true, initiatorId: true, expertProfileId: true,
       initiator: { select: { displayName: true } },
       expertProfile: { select: { slug: true, headline: true, userId: true, user: { select: { displayName: true } } } },
       messages: {
@@ -45,6 +45,14 @@ export default async function ExpertMessageThreadPage({
     ? (thread.expertProfile.user.displayName ?? "Usta")
     : (thread.initiator.displayName ?? "Kullanıcı");
 
+  const isInitiator = userId === thread.initiatorId;
+  const existingFeedback = isInitiator
+    ? await prisma.expertContactFeedback.findUnique({
+        where: { profileId_userId: { profileId: thread.expertProfileId, userId } },
+        select: { isAccurate: true },
+      })
+    : null;
+
   return (
     <ExpertThreadView
       threadId={thread.id}
@@ -56,6 +64,11 @@ export default async function ExpertMessageThreadPage({
         isOwn: m.senderId === userId,
         createdAt: m.createdAt.toISOString(),
       }))}
+      contactFeedback={
+        isInitiator
+          ? { expertProfileId: thread.expertProfileId, currentValue: existingFeedback?.isAccurate ?? null }
+          : null
+      }
     />
   );
 }

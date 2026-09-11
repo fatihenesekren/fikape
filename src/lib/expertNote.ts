@@ -3,14 +3,23 @@
 // Tam tasarım: docs/usta-gorusleri-plan.md
 // ─────────────────────────────────────────────
 
-// "Doğrulanmış Usta" rozeti — TrustLevel rozetlerinden AYRI eksen (yetkinlik ≠
-// kimlik güveni). Bir usta TrustLevel 1 de olabilir. Not kartında ve (çift şapka)
+// "Usta" rozeti — TrustLevel rozetlerinden AYRI eksen (yetkinlik ≠ kimlik
+// güveni). Bir usta TrustLevel 1 de olabilir. Not kartında ve (çift şapka)
 // ustanın kendi sahiplik yorumunda gösterilir; ustanın sahiplik yorumundaki
 // rozet profile DERİN LİNK VERMEZ (yalnız "Usta Görüşleri Nedir?" sayfasına).
+//
+// ⚠️ BİLİNÇLİ TASARIM KARARI (11 Eylül 2026): Kimlik/meslek belgesi doğrulaması
+// KALDIRILDI — kurucu kararı. Gerekçe: (a) bu bir reklam/CV yüzeyi, ücretli iş
+// değil — sahte biri risk alıp emek harcayarak burada "usta" görünmeye
+// çalışmaz; (b) her not zaten admin moderasyonundan geçiyor; (c) barem +
+// oy-sahteciliği tespiti kötü/sahte katkıyı otomatik söndürüyor. Bu yüzden
+// rozet ve metinler ASLA "doğrulanmış/doğrulandı" ifadesi kullanmaz — bu,
+// platformun kimlik/belge kontrolü yaptığı izlenimini verir ve gereksiz hukuki
+// yükümlülük doğurabilir. Beyan temelli olduğu her yerde açıkça belirtilir.
 export const EXPERT_BADGE = {
   icon: "🔧",
-  label: "Doğrulanmış Usta",
-  tooltip: "Teknik geçmişi belgeyle fikape tarafından doğrulandı. Bu bir tavsiye veya iş birliği değildir.",
+  label: "Usta",
+  tooltip: "Bu kişi kendini usta/teknik uzman olarak tanımlamıştır. fikape kimlik veya meslek belgesi doğrulaması yapmaz; içerikleri yayından önce incelenir.",
   color: "#7A3E00",
   bg: "#FBEEDF",
 } as const;

@@ -10,19 +10,27 @@ interface MessageView {
   createdAt: string;
 }
 
+interface ContactFeedbackProps {
+  expertProfileId: number;
+  currentValue: boolean | null;
+}
+
 export function ExpertThreadView({
-  threadId, counterpartName, expertHeadline, messages,
+  threadId, counterpartName, expertHeadline, messages, contactFeedback,
 }: {
   threadId: number;
   counterpartName: string;
   expertHeadline: string | null;
   messages: MessageView[];
+  contactFeedback: ContactFeedbackProps | null;
 }) {
   const router = useRouter();
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [blocked, setBlocked] = useState(false);
+  const [feedbackValue, setFeedbackValue] = useState(contactFeedback?.currentValue ?? null);
+  const [feedbackSending, setFeedbackSending] = useState(false);
 
   async function send(e: React.FormEvent) {
     e.preventDefault();
@@ -56,6 +64,21 @@ export function ExpertThreadView({
     if (res.ok) setBlocked(true);
   }
 
+  async function sendContactFeedback(isAccurate: boolean) {
+    if (!contactFeedback || feedbackSending) return;
+    setFeedbackSending(true);
+    try {
+      const res = await fetch(`/api/expert-profiles/${contactFeedback.expertProfileId}/contact-feedback`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isAccurate }),
+      });
+      if (res.ok) setFeedbackValue(isAccurate);
+    } finally {
+      setFeedbackSending(false);
+    }
+  }
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <div className="mb-6 flex items-center justify-between gap-2">
@@ -69,6 +92,34 @@ export function ExpertThreadView({
           </button>
         )}
       </div>
+
+      {contactFeedback && !blocked && (
+        <div className="mb-4 bg-gray-50 rounded-xl px-3 py-2.5 flex items-center justify-between gap-2 flex-wrap">
+          <p className="text-xs text-gray-500">İletişime geçtiğiniz telefon/adres bilgisi doğru muydu?</p>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              disabled={feedbackSending}
+              onClick={() => sendContactFeedback(true)}
+              className={`text-xs px-2.5 py-1 rounded-full font-semibold ${
+                feedbackValue === true ? "bg-green-600 text-white" : "bg-white border border-gray-200 text-gray-600"
+              }`}
+            >
+              Evet
+            </button>
+            <button
+              type="button"
+              disabled={feedbackSending}
+              onClick={() => sendContactFeedback(false)}
+              className={`text-xs px-2.5 py-1 rounded-full font-semibold ${
+                feedbackValue === false ? "bg-red-600 text-white" : "bg-white border border-gray-200 text-gray-600"
+              }`}
+            >
+              Hayır
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="space-y-2 mb-4">
         {messages.map((m) => (
