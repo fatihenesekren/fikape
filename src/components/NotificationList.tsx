@@ -32,6 +32,13 @@ export const TYPE_ICON: Record<string, string> = {
   ADMIN_NEW_MESSAGE_REPORT: "🚩",
   ADMIN_NEW_CONTENT_REPORT: "⚠️",
   ADMIN_NEW_DELETION_REQUEST: "🗑️",
+  EXPERT_NOTE_PUBLISHED: "🔧",
+  EXPERT_NOTE_REJECTED: "🔧",
+  EXPERT_VERIFIED: "🔧",
+  EXPERT_CV_PAUSED: "🔧",
+  EXPERT_CV_RESTORED: "🔧",
+  ADMIN_NEW_EXPERT_NOTE: "🔧",
+  ADMIN_NEW_EXPERT_APPLICATION: "🔧",
 };
 
 export const TYPE_LABEL: Record<string, string> = {
@@ -55,6 +62,13 @@ export const TYPE_LABEL: Record<string, string> = {
   ADMIN_NEW_MESSAGE_REPORT: "Admin",
   ADMIN_NEW_CONTENT_REPORT: "Admin",
   ADMIN_NEW_DELETION_REQUEST: "Admin",
+  EXPERT_NOTE_PUBLISHED: "Usta Görüşü",
+  EXPERT_NOTE_REJECTED: "Usta Görüşü",
+  EXPERT_VERIFIED: "Usta Görüşü",
+  EXPERT_CV_PAUSED: "Usta Görüşü",
+  EXPERT_CV_RESTORED: "Usta Görüşü",
+  ADMIN_NEW_EXPERT_NOTE: "Admin",
+  ADMIN_NEW_EXPERT_APPLICATION: "Admin",
 };
 
 function fmtDate(iso: string) {

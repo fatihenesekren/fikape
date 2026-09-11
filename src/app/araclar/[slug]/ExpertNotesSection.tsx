@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { EXPERT_BADGE, EXPERT_NOTE_DISCLAIMER, EXPERT_NOTE_FIELDS } from "@/lib/expertNote";
 
 export interface ExpertNoteView {
@@ -7,6 +8,7 @@ export interface ExpertNoteView {
   structured: Record<string, string>;
   city: string | null;
   authorName: string;
+  authorSlug: string | null;
   createdAt: string;
 }
 
@@ -37,7 +39,13 @@ export function ExpertNotesSection({ notes }: { notes: ExpertNoteView[] }) {
               >
                 {EXPERT_BADGE.icon} {EXPERT_BADGE.label}
               </span>
-              <span className="text-xs text-gray-500">{n.authorName}</span>
+              {n.authorSlug ? (
+                <Link href={`/usta/${n.authorSlug}`} className="text-xs text-gray-500 hover:underline">
+                  {n.authorName}
+                </Link>
+              ) : (
+                <span className="text-xs text-gray-500">{n.authorName}</span>
+              )}
               {n.city && <span className="text-xs text-gray-400">· {n.city}</span>}
             </div>
 

@@ -80,6 +80,16 @@ export const answerCreateSchema = z.object({
 
 // Usta Görüşü (ExpertNote) — MODEL seviyesi, skorsuz. structured alanları
 // sunucuda EXPERT_NOTE_FIELDS whitelist'ine göre sanitize edilir (bkz. lib/expertNote.ts).
+export const expertApplicationSchema = z.object({
+  headline:      z.string().trim().min(8, "Başlık en az 8 karakter olmalıdır.").max(120, "Başlık en fazla 120 karakter olabilir."),
+  expertiseTags: z.array(z.string().trim().min(1)).min(1, "En az bir uzmanlık alanı giriniz.").max(8, "En fazla 8 uzmanlık alanı ekleyebilirsiniz."),
+  city:          z.enum([...TURKISH_CITIES] as [string, ...string[]], { message: "Geçerli bir il seçiniz." }),
+  district:      z.string().trim().max(60).optional().nullable(),
+  bio:           z.string().trim().min(30, "En az 30 karakter yazınız.").max(2000, "En fazla 2000 karakter yazabilirsiniz."),
+  notCommercial: z.literal(true, { message: "Bu beyanı onaylamalısınız." }),
+  ageConfirmed:  z.literal(true, { message: "18 yaşından büyük olduğunuzu onaylamalısınız." }),
+});
+
 export const expertNoteCreateSchema = z.object({
   modelId:    z.union([z.number(), z.string()]),
   title:      z.string().trim().min(8, "Başlık en az 8 karakter olmalıdır.").max(140, "Başlık en fazla 140 karakter olabilir."),

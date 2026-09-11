@@ -82,7 +82,7 @@ export default async function ProfilPage() {
   const publishedReviews = reviews.filter((r) => r.status === "PUBLISHED");
   const reviewIds = publishedReviews.map((r) => r.id);
 
-  const [garageCount, helpfulCount, foundingIds, notifications] = await Promise.all([
+  const [garageCount, helpfulCount, foundingIds, notifications, expertProfile] = await Promise.all([
     prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } }),
     reviewIds.length
       ? prisma.reviewHelpfulVote.count({ where: { reviewId: { in: reviewIds }, isHelpful: true } })
@@ -94,6 +94,7 @@ export default async function ProfilPage() {
       take: 21,
       select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true },
     }),
+    prisma.expertProfile.findUnique({ where: { userId }, select: { status: true, slug: true } }).catch(() => null),
   ]);
 
   const hasMoreNotifications = notifications.length > 20;
@@ -238,6 +239,35 @@ export default async function ProfilPage() {
       <BlockedUsersSection initialBlocked={blockedUsers} />
 
       <InviteBox referralCode={user.referralCode} referralCount={user._count.referrals} />
+
+      {/* Usta Görüşü giriş noktası — profil.status'a göre farklı CTA */}
+      <div className="bg-white border border-gray-100 rounded-2xl p-4 flex items-center justify-between gap-3 flex-wrap">
+        <div>
+          <p className="text-sm font-bold text-gray-900">🔧 Usta Görüşü</p>
+          <p className="text-xs text-gray-400 mt-0.5">
+            {!expertProfile && "Bir tamir/bakım ustasıysanız, araç modelleri hakkında teknik görüş paylaşabilirsiniz."}
+            {expertProfile?.status === "PENDING_VERIFICATION" && "Başvurunuz inceleniyor."}
+            {expertProfile?.status === "WAITLISTED" && "Başvurunuz bekleme listesinde — sıradaki pencerede değerlendirilecek."}
+            {expertProfile?.status === "ACTIVE" && "Usta profiliniz aktif."}
+            {(expertProfile?.status === "SUSPENDED" || expertProfile?.status === "CLOSED") && "Usta profiliniz şu anda aktif değil."}
+          </p>
+        </div>
+        {!expertProfile && (
+          <Link href="/usta-basvuru" className="shrink-0 px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "#111" }}>
+            Başvur →
+          </Link>
+        )}
+        {expertProfile?.status === "ACTIVE" && (
+          <div className="shrink-0 flex items-center gap-2">
+            <Link href={`/usta/${expertProfile.slug}`} className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
+              Profilim
+            </Link>
+            <Link href="/usta-gorusu/yaz" className="px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "#111" }}>
+              Usta Görüşü Yaz →
+            </Link>
+          </div>
+        )}
+      </div>
 
       {/* Favorilerim */}
       <div>

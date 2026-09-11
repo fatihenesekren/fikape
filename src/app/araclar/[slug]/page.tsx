@@ -381,7 +381,7 @@ export default async function VehicleDetailPage({
     where: { modelId: product.modelId, status: "PUBLISHED", removedAt: null },
     select: {
       id: true, title: true, body: true, structured: true, publishedAt: true, createdAt: true,
-      profile: { select: { city: true, status: true, user: { select: { displayName: true } } } },
+      profile: { select: { city: true, status: true, slug: true, user: { select: { displayName: true } } } },
     },
     orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
     take: 20,
@@ -395,6 +395,7 @@ export default async function VehicleDetailPage({
     authorName: n.profile.status === "CLOSED"
       ? "Silinmiş Usta"
       : (n.profile.user.displayName ?? "Doğrulanmış Usta"),
+    authorSlug: n.profile.status === "ACTIVE" ? n.profile.slug : null,
     createdAt: (n.publishedAt ?? n.createdAt).toISOString(),
   }));
 
