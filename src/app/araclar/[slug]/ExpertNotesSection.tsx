@@ -2,6 +2,9 @@ import Link from "next/link";
 import { EXPERT_BADGE, EXPERT_NOTE_DISCLAIMER, EXPERT_NOTE_FIELDS } from "@/lib/expertNote";
 import { ExpertNoteVoteButtons } from "@/components/ExpertNoteVoteButtons";
 import { ExpertNoteQna, type ExpertNoteQuestionView } from "./ExpertNoteQna";
+import { RegionalExpertsBlock } from "./RegionalExpertsBlock";
+import { RegionOptInPrompt } from "./RegionOptInPrompt";
+import type { RegionalSummary } from "@/lib/expertRegional";
 
 export interface ExpertNoteView {
   id: number;
@@ -21,12 +24,14 @@ export interface ExpertNoteView {
 // "Usta Görüşleri" tab içeriği — model seviyesi teknik notlar. Skorsuz.
 // Not kartında yalnızca İL gösterilir (ilçe yalnız usta profilinde — §9).
 export function ExpertNotesSection({
-  notes, isLoggedIn, currentUserId, canAnswer,
+  notes, isLoggedIn, currentUserId, canAnswer, regionalSummary, showRegionOptIn,
 }: {
   notes: ExpertNoteView[];
   isLoggedIn: boolean;
   currentUserId: number | null;
   canAnswer: boolean;
+  regionalSummary: RegionalSummary | null;
+  showRegionOptIn: boolean;
 }) {
   if (notes.length === 0) {
     return (
@@ -41,9 +46,14 @@ export function ExpertNotesSection({
       <p className="px-5 pt-4 text-[11px] text-gray-400 leading-relaxed border-b border-gray-50 pb-3">
         {EXPERT_NOTE_DISCLAIMER}
       </p>
+
+      {/* Bölgesel görünürlük — yalnız FEATURED ustalar, sert eşik geçildiyse (Aşama 9) */}
+      <RegionalExpertsBlock summary={regionalSummary} />
+      {showRegionOptIn && regionalSummary?.city == null && <RegionOptInPrompt />}
+
       <div className="divide-y divide-gray-50">
         {notes.map((n) => (
-          <article key={n.id} className="px-5 py-5 space-y-3">
+          <article key={n.id} id={`usta-not-${n.id}`} className="px-5 py-5 space-y-3 scroll-mt-24">
             <div className="flex items-center gap-2 flex-wrap">
               <span
                 className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold"

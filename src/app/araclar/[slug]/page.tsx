@@ -20,6 +20,7 @@ import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
 import { ScoreTrendChart } from "./ScoreTrendChart";
 import { QnaSection } from "./QnaSection";
 import { ExpertNotesSection } from "./ExpertNotesSection";
+import { buildRegionalSummary } from "@/lib/expertRegional";
 import { JsonLd } from "@/components/JsonLd";
 import { BASE_URL } from "@/lib/baseUrl";
 
@@ -185,7 +186,7 @@ export default async function VehicleDetailPage({
       : null,
     prisma.userProduct.count({ where: { productId: product.id, ownershipStatus: "CURRENT" } }),
     userId
-      ? prisma.user.findUnique({ where: { id: userId }, select: { displayName: true } })
+      ? prisma.user.findUnique({ where: { id: userId }, select: { displayName: true, city: true } })
       : null,
     userId
       ? prisma.saleLead.findMany({
@@ -382,7 +383,7 @@ export default async function VehicleDetailPage({
       where: { modelId: product.modelId, status: "PUBLISHED", removedAt: null },
       select: {
         id: true, title: true, body: true, structured: true, publishedAt: true, createdAt: true,
-        profile: { select: { userId: true, city: true, status: true, slug: true, user: { select: { displayName: true } } } },
+        profile: { select: { userId: true, city: true, status: true, visibilityState: true, slug: true, user: { select: { displayName: true } } } },
         votes: { select: { userId: true, isHelpful: true } },
         // Not-altı soru-cevap — "B modeli": herkese görünür soru + cevap;
         // PENDING cevaplar (moderasyon bekleyen) herkese açık listeye girmez.
@@ -433,6 +434,23 @@ export default async function VehicleDetailPage({
       })),
     })),
   }));
+
+  // ── Bölgesel görünürlük (Aşama 9, §9) — yalnız FEATURED ustalar ──
+  const featuredNotesForRegion = expertNotesRaw
+    .filter((n) => n.profile.visibilityState === "FEATURED" && n.profile.status === "ACTIVE")
+    .map((n) => ({
+      id: n.id,
+      title: n.title,
+      publishedAt: (n.publishedAt ?? n.createdAt).toISOString(),
+      authorUserId: n.profile.userId,
+      authorName: n.profile.user.displayName ?? "Doğrulanmış Usta",
+      authorSlug: n.profile.slug,
+      city: n.profile.city,
+    }));
+  const regionalSummary = buildRegionalSummary(featuredNotesForRegion, currentUser?.city ?? null);
+  // Opt-in daveti yalnız: giriş yapmış + il beyan etmemiş + gösterilen şey
+  // Türkiye geneli fallback ise (bölge zaten eşleştiyse sormaya gerek yok)
+  const showRegionOptIn = !!userId && !currentUser?.city && regionalSummary?.city == null;
 
   // ── Spec strip — kategori bazlı 5 öne çıkan özellik ──
   type SpecItem = { label: string; value: string };
@@ -630,6 +648,8 @@ export default async function VehicleDetailPage({
       isLoggedIn={!!userId}
       currentUserId={userId}
       canAnswer={canAnswerExpertQna}
+      regionalSummary={regionalSummary}
+      showRegionOptIn={showRegionOptIn}
     />
   );
 

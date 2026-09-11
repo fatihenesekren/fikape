@@ -166,6 +166,11 @@ model User {
   displayName String?
   avatarUrl   String?
 
+  // Bölgesel görünürlük eşleştirmesi için opsiyonel, kullanıcı beyanlı il
+  // (Aşama 9 — §9). Varsayılan boş; "Türkiye geneli" fallback'i tetikler.
+  // Kullanıcı bağlamsal olarak (Usta Görüşleri tab'ında) sorulur, zorunlu değil.
+  city String? @db.VarChar(50)
+
   // 0: Anonim  1: E-posta doğrulamalı  2: Beyan edilen sahip  3: Doğrulanmış sahip
   trustLevel Int @default(1)
 

@@ -103,6 +103,11 @@ export const expertNoteQuestionSchema = z.object({
   text: z.string().trim().min(10, "En az 10 karakter yazınız.").max(300, "En fazla 300 karakter yazabilirsiniz."),
 });
 
+// Kullanıcının bölgesel eşleştirme için beyan ettiği il (Aşama 9, §9) — opsiyonel.
+export const userCityUpdateSchema = z.object({
+  city: z.union([z.enum([...TURKISH_CITIES] as [string, ...string[]]), z.null()]),
+});
+
 // Usta iletişim ayarları — granüler rıza (§7): (b) açık iletişim yayını,
 // (c) bölgesel görünürlük. İkisi de bağımsız, ikisi de opsiyonel — rıza
 // hizmetin ön koşulu değil. Telefon/adres yalnız (b) rızası verilirse gösterilir.
