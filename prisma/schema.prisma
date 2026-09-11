@@ -293,6 +293,8 @@ enum NotificationType {
   ADMIN_NEW_EXPERT_APPLICATION // admin — onay bekleyen usta başvurusu
   ADMIN_NEW_TAKEDOWN_REQUEST // admin — onay bekleyen bildirim/kaldırma talebi
   NEW_EXPERT_MESSAGE // usta veya mesajı başlatan kullanıcıya — site-içi maskeli mesajlaşma
+  ADMIN_NEW_EXPERT_APPEAL // admin — onay bekleyen usta itirazı
+  EXPERT_APPEAL_DECIDED // ustaya — itirazı karara bağlandı (kabul/ret/otomatik kesinleşme)
 }
 
 model Notification {
@@ -1538,6 +1540,7 @@ model ExpertProfile {
   sponsorships   ExpertSponsorship[]
   overrideEvents ExpertOverrideEvent[]
   messageThreads ExpertMessageThread[]
+  appeals        ExpertAppeal[]
 
   @@index([status, visibilityState])
   @@index([city, visibilityState])
@@ -1597,6 +1600,7 @@ model ExpertNote {
   versions         ExpertNoteVersion[]
   contentReports   ContentReport[]
   takedownRequests ExpertNoteTakedownRequest[]
+  appeals          ExpertAppeal[]
   externalReplies  ExpertNoteExternalReply[]
 
   @@index([modelId, status])
@@ -1960,4 +1964,57 @@ model ExpertMessage {
 
   @@index([threadId, createdAt])
   @@map("expert_messages")
+}
+
+// ─────────────────────────────────────────────
+// USTA GÖRÜŞLERI — İTİRAZ AKIŞI
+// Usta, iki tür karara itiraz edebilir: (1) bir notunun reddedilmesi,
+// (2) barem/cron'un ürettiği görünürlük kararı (ör. PAUSED). Karar başına
+// TEK itiraz (unique constraint'ler), usta başına kayan 30 günde en fazla
+// 2 itiraz (uygulama katmanında sayılır), 14 gün incelenmezse otomatik
+// kesinleşir (bkz. lib/expertAppeal.ts finalizeExpiredAppeals — lazy check,
+// ayrı cron YOK — bilinçli sadeleştirme).
+// ─────────────────────────────────────────────
+
+model ExpertAppeal {
+  id        Int           @id @default(autoincrement())
+  profileId Int
+  profile   ExpertProfile @relation(fields: [profileId], references: [id])
+
+  subjectType ExpertAppealSubject
+
+  // subjectType=NOTE_REJECTION ise dolu
+  noteId Int?
+  note   ExpertNote? @relation(fields: [noteId], references: [id])
+
+  // subjectType=VISIBILITY_DECISION ise dolu — ExpertScoreSnapshot.period ("2026-09")
+  period String? @db.VarChar(7)
+
+  reason String @db.Text // ustanın açıklaması
+
+  status       ExpertAppealStatus @default(PENDING)
+  decidedBy    Int?
+  decidedAt    DateTime?
+  decisionNote String?            @db.VarChar(600)
+
+  createdAt   DateTime @default(now())
+  reviewDueAt DateTime // createdAt + 14 gün
+
+  @@unique([noteId])
+  @@unique([profileId, period])
+  @@index([profileId, createdAt])
+  @@index([status, reviewDueAt])
+  @@map("expert_appeals")
+}
+
+enum ExpertAppealSubject {
+  NOTE_REJECTION
+  VISIBILITY_DECISION
+}
+
+enum ExpertAppealStatus {
+  PENDING
+  UPHELD // ret/karar korundu
+  OVERTURNED // ret/karar bozuldu
+  AUTO_FINALIZED // 14 gün içinde incelenmedi, orijinal karar kesinleşti
 }

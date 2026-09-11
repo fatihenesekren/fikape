@@ -40,6 +40,8 @@ export const TYPE_ICON: Record<string, string> = {
   ADMIN_NEW_EXPERT_NOTE: "🔧",
   ADMIN_NEW_EXPERT_APPLICATION: "🔧",
   NEW_EXPERT_MESSAGE: "💬",
+  ADMIN_NEW_EXPERT_APPEAL: "⚖️",
+  EXPERT_APPEAL_DECIDED: "⚖️",
 };
 
 export const TYPE_LABEL: Record<string, string> = {
@@ -71,6 +73,8 @@ export const TYPE_LABEL: Record<string, string> = {
   ADMIN_NEW_EXPERT_NOTE: "Admin",
   ADMIN_NEW_EXPERT_APPLICATION: "Admin",
   NEW_EXPERT_MESSAGE: "Usta Mesajı",
+  ADMIN_NEW_EXPERT_APPEAL: "Admin",
+  EXPERT_APPEAL_DECIDED: "Usta Görüşü",
 };
 
 function fmtDate(iso: string) {

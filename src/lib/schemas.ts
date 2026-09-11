@@ -108,6 +108,14 @@ export const userCityUpdateSchema = z.object({
   city: z.union([z.enum([...TURKISH_CITIES] as [string, ...string[]]), z.null()]),
 });
 
+// Usta itirazı — not reddi VEYA görünürlük kararı (biri zorunlu, route'ta kontrol edilir).
+export const expertAppealCreateSchema = z.object({
+  subjectType: z.enum(["NOTE_REJECTION", "VISIBILITY_DECISION"]),
+  noteId:      z.union([z.number(), z.string()]).optional().nullable(),
+  period:      z.string().regex(/^\d{4}-\d{2}$/).optional().nullable(),
+  reason:      z.string().trim().min(20, "En az 20 karakter yazınız.").max(1000, "En fazla 1000 karakter yazabilirsiniz."),
+});
+
 // Usta iletişim ayarları — granüler rıza (§7): (b) açık iletişim yayını,
 // (c) bölgesel görünürlük. İkisi de bağımsız, ikisi de opsiyonel — rıza
 // hizmetin ön koşulu değil. Telefon/adres yalnız (b) rızası verilirse gösterilir.
