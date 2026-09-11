@@ -5,7 +5,7 @@ import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { answerCreateSchema, formatZodError } from "@/lib/schemas";
 import { sendQuestionAnsweredEmail } from "@/lib/email";
-import { createNotification } from "@/lib/notification";
+import { createNotification, notifyAdmins } from "@/lib/notification";
 import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 export async function POST(
@@ -40,8 +40,10 @@ export async function POST(
         id: true,
         userId: true,
         productId: true,
+        expertNoteId: true,
         user: { select: { email: true, displayName: true } },
         product: { select: { name: true, slug: true } },
+        expertNote: { select: { title: true } },
       },
     }),
     prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true } }),
@@ -57,8 +59,44 @@ export async function POST(
   if (question.userId === userId) {
     return NextResponse.json({ error: "Kendi sorunuzu cevaplayamazsınız." }, { status: 403 });
   }
-  // Bu uç yalnızca araç sayfası soru-cevabı içindir. Usta notu altındaki
-  // soru-cevap (expertNoteId dolu) ayrı bir uçtan yönetilir.
+
+  // ── Usta notu altındaki soru — "B modeli": cevabı yalnız doğrulanmış
+  // (ExpertStatus=ACTIVE) ustalar verebilir; her cevap moderasyondan geçer. ──
+  if (question.expertNoteId != null) {
+    const expertProfile = await prisma.expertProfile.findUnique({
+      where: { userId },
+      select: { id: true, status: true },
+    });
+    if (!expertProfile || expertProfile.status !== "ACTIVE") {
+      return NextResponse.json(
+        { error: "Bu soruyu yalnızca doğrulanmış ustalar cevaplayabilir." },
+        { status: 403 }
+      );
+    }
+
+    const existingAnswerCount = await prisma.answer.count({ where: { questionId, userId } });
+    if (existingAnswerCount >= 3) {
+      return NextResponse.json({ error: "Bu soruya en fazla 3 cevap yazabilirsiniz." }, { status: 403 });
+    }
+
+    const answer = await prisma.answer.create({
+      data: { questionId, userId, text, status: "PENDING", answeredByExpertProfileId: expertProfile.id },
+    });
+
+    notifyAdmins({
+      type: "ADMIN_NEW_EXPERT_NOTE",
+      message: "Onay bekleyen yeni bir usta notu cevabı var",
+      link: "/admin/usta-notlari",
+      emailSubject: "Yeni usta notu cevabı — onay bekliyor",
+      emailTitle: "Yeni usta notu cevabı",
+      emailMessage: `"${question.expertNote?.title ?? ""}" başlıklı usta notuna gelen bir soru cevaplandı, moderasyon bekliyor.`,
+      rateLimitKey: "expert-note-answer",
+    }).catch(() => {});
+
+    return NextResponse.json({ ok: true, answerId: answer.id, status: "PENDING" }, { status: 201 });
+  }
+
+  // ── Araç sayfası soru-cevabı — mevcut sahiplik kuralı ──
   if (question.productId == null || question.product == null) {
     return NextResponse.json({ error: "Bu soru bu uçtan cevaplanamaz." }, { status: 400 });
   }

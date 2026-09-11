@@ -18,7 +18,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   const filterWindowStart = daysAgo(30);
 
-  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports, pendingContentReports, pendingDeletionRequests, repeatFilterOffenders, pendingTradePhotos, pendingExpertNotes, pendingExpertApplications] = await Promise.all([
+  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports, pendingContentReports, pendingDeletionRequests, repeatFilterOffenders, pendingTradePhotos, pendingExpertNotes, pendingExpertApplications, pendingExpertAnswers] = await Promise.all([
     prisma.review.count({
       where: { OR: [{ status: "PENDING" }, { status: "PUBLISHED", photos: { some: { status: "PENDING" } } }] },
     }).catch(() => 0),
@@ -37,12 +37,13 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     prisma.tradeListingPhoto.count({ where: { status: "PENDING", tradeListing: { isActive: true } } }).catch(() => 0),
     prisma.expertNote.count({ where: { status: "PENDING" } }).catch(() => 0),
     prisma.expertProfile.count({ where: { status: "PENDING_VERIFICATION" } }).catch(() => 0),
+    prisma.answer.count({ where: { status: "PENDING", answeredByExpertProfileId: { not: null } } }).catch(() => 0),
   ]);
 
   const navItems = [
     { href: "/admin/yorumlar",  label: "Yorumlar",       shortLabel: "Yorumlar",  icon: "💬", badge: pendingReviews },
     { href: "/admin/usta-basvurulari", label: "Usta Başvuruları", shortLabel: "Usta Başv.", icon: "🧑‍🔧", badge: pendingExpertApplications },
-    { href: "/admin/usta-notlari", label: "Usta Notları", shortLabel: "Usta Notları", icon: "🔧", badge: pendingExpertNotes },
+    { href: "/admin/usta-notlari", label: "Usta Notları", shortLabel: "Usta Notları", icon: "🔧", badge: pendingExpertNotes + pendingExpertAnswers },
     { href: "/admin/oneriler",  label: "Araç Önerileri", shortLabel: "Öneriler",  icon: "🚗", badge: pendingSuggestions },
     { href: "/admin/araclar",   label: "Görseller",      shortLabel: "Görseller", icon: "🖼️", badge: 0 },
     { href: "/admin/urunler",   label: "Teknik Özellikler", shortLabel: "Özellikler", icon: "🔧", badge: 0 },

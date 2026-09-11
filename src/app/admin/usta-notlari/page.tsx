@@ -1,12 +1,13 @@
 import { prisma } from "@/lib/prisma";
 import { ExpertNoteActions } from "./ExpertNoteActions";
+import { ExpertAnswerActions } from "./ExpertAnswerActions";
 import { BootstrapExpertForm } from "./BootstrapExpertForm";
 import { EXPERT_NOTE_FIELDS } from "@/lib/expertNote";
 
 export const metadata = { title: "Usta Notları — fikape admin" };
 
 export default async function ExpertNotesModerationPage() {
-  const [notes, activeExperts] = await Promise.all([
+  const [notes, activeExperts, pendingAnswers] = await Promise.all([
     prisma.expertNote.findMany({
       where: { status: "PENDING" },
       select: {
@@ -25,6 +26,15 @@ export default async function ExpertNotesModerationPage() {
       orderBy: { createdAt: "asc" },
     }),
     prisma.expertProfile.count({ where: { status: "ACTIVE" } }).catch(() => 0),
+    // Usta notu altındaki soru-cevap — "B modeli" moderasyonu (§14.9)
+    prisma.answer.findMany({
+      where: { status: "PENDING", answeredByExpertProfileId: { not: null } },
+      select: {
+        id: true, text: true, createdAt: true,
+        question: { select: { text: true, expertNote: { select: { title: true } } } },
+      },
+      orderBy: { createdAt: "asc" },
+    }).catch(() => []),
   ]);
 
   return (
@@ -51,6 +61,25 @@ export default async function ExpertNotesModerationPage() {
         </p>
         <BootstrapExpertForm />
       </div>
+
+      {pendingAnswers.length > 0 && (
+        <div className="space-y-3">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">
+            Usta Notu Cevapları ({pendingAnswers.length} bekliyor)
+          </p>
+          {pendingAnswers.map((a) => (
+            <div key={a.id} className="bg-white border border-gray-100 rounded-xl p-4 space-y-2">
+              <p className="text-xs text-gray-400">{a.question.expertNote?.title}</p>
+              <p className="text-sm text-gray-500 italic">&quot;{a.question.text}&quot;</p>
+              <p className="text-sm text-gray-800 bg-gray-50 rounded-lg px-3 py-2">{a.text}</p>
+              <div className="flex items-center justify-between gap-2 pt-1 border-t border-gray-50">
+                <span className="text-xs text-gray-400">{new Date(a.createdAt).toLocaleDateString("tr-TR")}</span>
+                <ExpertAnswerActions answerId={a.id} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {notes.length === 0 ? (
         <p className="text-sm text-gray-400">Bekleyen usta notu yok.</p>

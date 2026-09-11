@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { EXPERT_BADGE, EXPERT_NOTE_DISCLAIMER, EXPERT_NOTE_FIELDS } from "@/lib/expertNote";
+import { ExpertNoteVoteButtons } from "@/components/ExpertNoteVoteButtons";
+import { ExpertNoteQna, type ExpertNoteQuestionView } from "./ExpertNoteQna";
 
 export interface ExpertNoteView {
   id: number;
@@ -9,12 +11,23 @@ export interface ExpertNoteView {
   city: string | null;
   authorName: string;
   authorSlug: string | null;
+  authorUserId: number;
   createdAt: string;
+  helpfulCount: number;
+  currentUserVote: boolean | null;
+  questions: ExpertNoteQuestionView[];
 }
 
 // "Usta Görüşleri" tab içeriği — model seviyesi teknik notlar. Skorsuz.
 // Not kartında yalnızca İL gösterilir (ilçe yalnız usta profilinde — §9).
-export function ExpertNotesSection({ notes }: { notes: ExpertNoteView[] }) {
+export function ExpertNotesSection({
+  notes, isLoggedIn, currentUserId, canAnswer,
+}: {
+  notes: ExpertNoteView[];
+  isLoggedIn: boolean;
+  currentUserId: number | null;
+  canAnswer: boolean;
+}) {
   if (notes.length === 0) {
     return (
       <div className="p-10 text-center text-sm text-gray-400">
@@ -62,6 +75,21 @@ export function ExpertNotesSection({ notes }: { notes: ExpertNoteView[] }) {
                 ))}
               </dl>
             )}
+
+            <ExpertNoteVoteButtons
+              noteId={n.id}
+              initialHelpfulCount={n.helpfulCount}
+              initialUserVote={n.currentUserVote}
+              isLoggedIn={isLoggedIn}
+              isOwnNote={currentUserId === n.authorUserId}
+            />
+
+            <ExpertNoteQna
+              noteId={n.id}
+              questions={n.questions}
+              isLoggedIn={isLoggedIn}
+              canAnswer={canAnswer}
+            />
           </article>
         ))}
       </div>

@@ -377,15 +377,35 @@ export default async function VehicleDetailPage({
 
   // ── Usta Görüşleri — MODEL seviyesi, skorsuz, herkese açık (giriş gerekmez).
   // Not yoksa tab hiç render edilmez (§6). migration uygulanmamışsa çökme yok.
-  const expertNotesRaw = await prisma.expertNote.findMany({
-    where: { modelId: product.modelId, status: "PUBLISHED", removedAt: null },
-    select: {
-      id: true, title: true, body: true, structured: true, publishedAt: true, createdAt: true,
-      profile: { select: { city: true, status: true, slug: true, user: { select: { displayName: true } } } },
-    },
-    orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
-    take: 20,
-  }).catch(() => []);
+  const [expertNotesRaw, canAnswerExpertQna] = await Promise.all([
+    prisma.expertNote.findMany({
+      where: { modelId: product.modelId, status: "PUBLISHED", removedAt: null },
+      select: {
+        id: true, title: true, body: true, structured: true, publishedAt: true, createdAt: true,
+        profile: { select: { userId: true, city: true, status: true, slug: true, user: { select: { displayName: true } } } },
+        votes: { select: { userId: true, isHelpful: true } },
+        // Not-altı soru-cevap — "B modeli": herkese görünür soru + cevap;
+        // PENDING cevaplar (moderasyon bekleyen) herkese açık listeye girmez.
+        questions: {
+          select: {
+            id: true, text: true, createdAt: true,
+            user: { select: { displayName: true } },
+            answers: {
+              where: { status: "PUBLISHED" },
+              select: { id: true, text: true, createdAt: true, user: { select: { displayName: true } } },
+              orderBy: { createdAt: "asc" },
+            },
+          },
+          orderBy: { createdAt: "desc" },
+        },
+      },
+      orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
+      take: 20,
+    }).catch(() => []),
+    userId
+      ? prisma.expertProfile.findUnique({ where: { userId }, select: { status: true } }).then((p) => p?.status === "ACTIVE")
+      : Promise.resolve(false),
+  ]);
   const expertNotes = expertNotesRaw.map((n) => ({
     id: n.id,
     title: n.title,
@@ -396,7 +416,22 @@ export default async function VehicleDetailPage({
       ? "Silinmiş Usta"
       : (n.profile.user.displayName ?? "Doğrulanmış Usta"),
     authorSlug: n.profile.status === "ACTIVE" ? n.profile.slug : null,
+    authorUserId: n.profile.userId,
     createdAt: (n.publishedAt ?? n.createdAt).toISOString(),
+    helpfulCount: n.votes.filter((v) => v.isHelpful).length,
+    currentUserVote: userId ? (n.votes.find((v) => v.userId === userId)?.isHelpful ?? null) : null,
+    questions: n.questions.map((q) => ({
+      id: q.id,
+      text: q.text,
+      authorName: q.user.displayName ?? "Kullanıcı",
+      createdAt: q.createdAt.toISOString(),
+      answers: q.answers.map((a) => ({
+        id: a.id,
+        text: a.text,
+        authorName: a.user.displayName ?? "Doğrulanmış Usta",
+        createdAt: a.createdAt.toISOString(),
+      })),
+    })),
   }));
 
   // ── Spec strip — kategori bazlı 5 öne çıkan özellik ──
@@ -589,7 +624,14 @@ export default async function VehicleDetailPage({
     />
   );
 
-  const expertNotesContent = <ExpertNotesSection notes={expertNotes} />;
+  const expertNotesContent = (
+    <ExpertNotesSection
+      notes={expertNotes}
+      isLoggedIn={!!userId}
+      currentUserId={userId}
+      canAnswer={canAnswerExpertQna}
+    />
+  );
 
   // ── İçerik hatası bildirimi için kısa referans listeleri ──
   const reviewsForReport = reviews.map((r) => ({

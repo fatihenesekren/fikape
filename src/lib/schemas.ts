@@ -97,6 +97,12 @@ export const expertNoteCreateSchema = z.object({
   structured: z.record(z.string(), z.string()).optional().nullable(),
 });
 
+// Usta notu altındaki soru — "B modeli": soruyu herkes sorar, cevabı yalnız
+// notu yazan usta veya diğer doğrulanmış ustalar verir (bkz. answers route).
+export const expertNoteQuestionSchema = z.object({
+  text: z.string().trim().min(10, "En az 10 karakter yazınız.").max(300, "En fazla 300 karakter yazabilirsiniz."),
+});
+
 export const insuranceLeadSchema = z.object({
   productId: z.union([z.number(), z.string()]),
   fullName:  z.string().trim().min(2, "Ad soyad zorunludur.").max(100),
