@@ -78,6 +78,15 @@ export const answerCreateSchema = z.object({
   text: z.string().trim().min(5, "En az 5 karakter yazınız.").max(500, "En fazla 500 karakter yazabilirsiniz."),
 });
 
+// Usta Görüşü (ExpertNote) — MODEL seviyesi, skorsuz. structured alanları
+// sunucuda EXPERT_NOTE_FIELDS whitelist'ine göre sanitize edilir (bkz. lib/expertNote.ts).
+export const expertNoteCreateSchema = z.object({
+  modelId:    z.union([z.number(), z.string()]),
+  title:      z.string().trim().min(8, "Başlık en az 8 karakter olmalıdır.").max(140, "Başlık en fazla 140 karakter olabilir."),
+  body:       z.string().trim().min(120, "Not en az 120 karakter olmalıdır.").max(4000, "Not en fazla 4000 karakter olabilir."),
+  structured: z.record(z.string(), z.string()).optional().nullable(),
+});
+
 export const insuranceLeadSchema = z.object({
   productId: z.union([z.number(), z.string()]),
   fullName:  z.string().trim().min(2, "Ad soyad zorunludur.").max(100),

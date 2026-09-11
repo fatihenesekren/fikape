@@ -19,6 +19,7 @@ import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { SOLD_REASON_LABEL } from "@/lib/soldReasons";
 import { ScoreTrendChart } from "./ScoreTrendChart";
 import { QnaSection } from "./QnaSection";
+import { ExpertNotesSection } from "./ExpertNotesSection";
 import { JsonLd } from "@/components/JsonLd";
 import { BASE_URL } from "@/lib/baseUrl";
 
@@ -374,6 +375,29 @@ export default async function VehicleDetailPage({
     ? questions.length
     : await prisma.question.count({ where: { productId: product.id } }).catch(() => 0);
 
+  // ── Usta Görüşleri — MODEL seviyesi, skorsuz, herkese açık (giriş gerekmez).
+  // Not yoksa tab hiç render edilmez (§6). migration uygulanmamışsa çökme yok.
+  const expertNotesRaw = await prisma.expertNote.findMany({
+    where: { modelId: product.modelId, status: "PUBLISHED", removedAt: null },
+    select: {
+      id: true, title: true, body: true, structured: true, publishedAt: true, createdAt: true,
+      profile: { select: { city: true, status: true, user: { select: { displayName: true } } } },
+    },
+    orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
+    take: 20,
+  }).catch(() => []);
+  const expertNotes = expertNotesRaw.map((n) => ({
+    id: n.id,
+    title: n.title,
+    body: n.body,
+    structured: (n.structured ?? {}) as Record<string, string>,
+    city: n.profile.city,
+    authorName: n.profile.status === "CLOSED"
+      ? "Silinmiş Usta"
+      : (n.profile.user.displayName ?? "Doğrulanmış Usta"),
+    createdAt: (n.publishedAt ?? n.createdAt).toISOString(),
+  }));
+
   // ── Spec strip — kategori bazlı 5 öne çıkan özellik ──
   type SpecItem = { label: string; value: string };
 
@@ -563,6 +587,8 @@ export default async function VehicleDetailPage({
       categorySlug={categorySlug}
     />
   );
+
+  const expertNotesContent = <ExpertNotesSection notes={expertNotes} />;
 
   // ── İçerik hatası bildirimi için kısa referans listeleri ──
   const reviewsForReport = reviews.map((r) => ({
@@ -836,7 +862,14 @@ export default async function VehicleDetailPage({
           specsContent={specsContent}
           questionCount={questionCount}
           qnaContent={qnaContent}
-          initialTab={sekme === "soru-cevap" ? "soru-cevap" : undefined}
+          hasExpertNotes={expertNotes.length > 0}
+          expertNoteCount={expertNotes.length}
+          expertNotesContent={expertNotesContent}
+          initialTab={
+            sekme === "soru-cevap" ? "soru-cevap"
+            : sekme === "usta-gorusleri" ? "usta-gorusleri"
+            : undefined
+          }
           productId={product.id}
           categorySlug={categorySlug}
           isLoggedIn={!!userId}

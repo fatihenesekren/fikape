@@ -13,7 +13,9 @@ export type ContentFilterSurface =
   | "TRADE_THREAD"
   | "TRADE_LISTING"
   | "TRADE_RATING"
-  | "VEHICLE_SUGGEST";
+  | "VEHICLE_SUGGEST"
+  | "EXPERT_NOTE"
+  | "EXPERT_QNA";
 
 export function logContentFilterHit(params: {
   userId: number;
