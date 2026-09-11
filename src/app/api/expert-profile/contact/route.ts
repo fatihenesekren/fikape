@@ -30,11 +30,13 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
   const { consentContactPublic, consentRegionalPromo, cvNoindex } = parsed.data;
+  const businessName = parsed.data.businessName?.trim() || null;
   const contactPhone = parsed.data.contactPhone?.trim() || null;
   const contactAddress = parsed.data.contactAddress?.trim() || null;
 
-  if (contactAddress) {
-    const contentCheck = checkContent(contactAddress);
+  for (const text of [businessName, contactAddress]) {
+    if (!text) continue;
+    const contentCheck = checkContent(text);
     if (!contentCheck.ok) {
       logContentFilterHit({ userId, surface: "EXPERT_NOTE", rule: contentCheck.rule });
       return NextResponse.json({ error: contentCheck.error }, { status: 400 });
@@ -42,12 +44,13 @@ export async function PATCH(req: Request) {
   }
 
   // (b) rızası yoksa iletişim bilgisi DERHAL temizlenir ve gösterilmez —
-  // rıza olsa bile en az bir alan (telefon veya adres) girilmemişse de gösterilecek bir şey yok.
-  const contactVisible = consentContactPublic && (!!contactPhone || !!contactAddress);
+  // rıza olsa bile hiçbir alan girilmemişse de gösterilecek bir şey yok.
+  const contactVisible = consentContactPublic && (!!businessName || !!contactPhone || !!contactAddress);
 
   await prisma.expertProfile.update({
     where: { id: profile.id },
     data: {
+      businessName: consentContactPublic ? businessName : null,
       contactPhone: consentContactPublic ? contactPhone : null,
       contactAddress: consentContactPublic ? contactAddress : null,
       contactVisible,

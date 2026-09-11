@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export function ContactSettingsForm({
-  initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, profileSlug,
+  initialBusinessName, initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, profileSlug,
 }: {
+  initialBusinessName: string | null;
   initialPhone: string | null;
   initialAddress: string | null;
   initialConsentContactPublic: boolean;
@@ -15,6 +16,7 @@ export function ContactSettingsForm({
   profileSlug: string;
 }) {
   const router = useRouter();
+  const [businessName, setBusinessName] = useState(initialBusinessName ?? "");
   const [phone, setPhone] = useState(initialPhone ?? "");
   const [address, setAddress] = useState(initialAddress ?? "");
   const [consentContactPublic, setConsentContactPublic] = useState(initialConsentContactPublic);
@@ -35,6 +37,7 @@ export function ContactSettingsForm({
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          businessName: businessName.trim() || null,
           contactPhone: phone.trim() || null,
           contactAddress: address.trim() || null,
           consentContactPublic,
@@ -68,7 +71,7 @@ export function ContactSettingsForm({
             className="mt-0.5"
           />
           <span>
-            Telefon numaramın ve (girersem) açık adresimin{" "}
+            İşyeri adımın, telefon numaramın ve (girersem) açık adresimin{" "}
             <Link href={`/usta/${profileSlug}`} className="underline">profil sayfamda</Link>{" "}
             herkese açık gösterilmesine ve arama motorlarınca indekslenmesine açık rıza veriyorum.
             Bu rızayı istediğim zaman geri çekebilirim; geri çektiğimde bilgilerim{" "}
@@ -78,6 +81,16 @@ export function ContactSettingsForm({
 
         {consentContactPublic && (
           <div className="grid sm:grid-cols-2 gap-3 pl-6">
+            <div className="sm:col-span-2">
+              <label className="block text-xs font-semibold text-gray-600 mb-1">İşyeri adı (opsiyonel)</label>
+              <input
+                type="text"
+                value={businessName}
+                onChange={(e) => setBusinessName(e.target.value.slice(0, 120))}
+                placeholder="Örn. ABC Rot-Balans"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400"
+              />
+            </div>
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1">Telefon (opsiyonel)</label>
               <input

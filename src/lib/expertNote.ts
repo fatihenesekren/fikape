@@ -24,6 +24,16 @@ export const EXPERT_BADGE = {
   bg: "#FBEEDF",
 } as const;
 
+// İletişim bilgisi (işyeri adı/telefon/adres) görünürlüğü için TEMEL güvenilirlik
+// kapısı — barem'in FEATURED eşiği (MIN_LIFETIME_NOTES=3, expertBarem.ts) ile
+// KARIŞTIRILMAMALI: bu ayrı, daha düşük bir eşik ("hiç değer üretmemiş boş kabuk
+// profil" ile "en az bir kez içerik onaylanmış gerçek usta"yı ayırır). Rıza +
+// alan girilmiş olsa bile bu eşiğin altında iletişim bloğu hiç render edilmez
+// ve sayfa noindex kalır (3 ajanlı panel kararı — 11 Eylül 2026, bkz.
+// feature_usta_gorusleri_ilerleme.md). Tek eşik + admin'in zaten her notu tek
+// tek onaylaması yeterli kabul edildi; ek zaman-bazlı bekleme eklenmedi.
+export const CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES = 1;
+
 // Not kartı ve tab başında görünen sabit feragat (KİLİTLENDİ — kurucu kararı).
 // "reklam / ödeme karşılığı" ifadeleri BİLİNÇLİ olarak yok (§14.8).
 export const EXPERT_NOTE_DISCLAIMER =

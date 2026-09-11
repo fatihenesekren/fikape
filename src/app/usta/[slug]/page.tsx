@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
-import { EXPERT_BADGE } from "@/lib/expertNote";
+import { EXPERT_BADGE, CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES } from "@/lib/expertNote";
 import { contactFeedbackLabel } from "@/lib/expertContactFeedback";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { ExpertMessageComposer } from "./ExpertMessageComposer";
@@ -16,23 +16,31 @@ export async function generateMetadata({
   const { slug } = await params;
   const profile = await prisma.expertProfile.findUnique({
     where: { slug },
-    select: { headline: true, status: true, cvNoindex: true, visibilityState: true },
+    select: { id: true, headline: true, status: true, cvNoindex: true, visibilityState: true },
   });
   if (!profile || profile.status !== "ACTIVE") return {};
   const forceNoindex = profile.visibilityState === "PAUSED" || profile.visibilityState === "PROBATION";
+  // Temel güvenilirlik kapısı — bkz. lib/expertNote.ts CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES notu.
+  const publishedNoteCount = await prisma.expertNote.count({
+    where: { profileId: profile.id, status: "PUBLISHED", removedAt: null },
+  });
+  const belowContactThreshold = publishedNoteCount < CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES;
   return {
     title: `${profile.headline ?? "Usta"} — Usta Profili | fikape`,
     description: `${profile.headline ?? "Usta"} — fikape'de usta profili ve teknik katkıları.`,
-    robots: profile.cvNoindex || forceNoindex ? { index: false } : undefined,
+    robots: profile.cvNoindex || forceNoindex || belowContactThreshold ? { index: false } : undefined,
   };
 }
 
 // Usta profil sayfası — İletişim bölümü (b) rızası + en az bir alan girilmişse
-// (contactVisible) gösterilir; site-içi maskeli mesajlaşma (Aşama 6b) ayrıca
-// ve HER ZAMAN mevcuttur (rızadan bağımsız — §7.2). Sayfa varlığı yalnız
-// status=ACTIVE'e bağlı. Barem
-// (Aşama 7) PAUSED/PROBATION üretirse: sayfa 200 kalır ama noindex olur ve
-// iletişim bölümü gizlenir — notlar ve rozet her zaman görünür kalır (§14.13).
+// (contactVisible) VE en az CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES yayınlanmış
+// notu varsa gösterilir (3 ajanlı panel kararı — 11 Eylül 2026: kimlik/belge
+// doğrulaması olmadığı için hiç içerik üretmeden iletişim yayınlamayı önler,
+// bkz. lib/expertNote.ts). Site-içi maskeli mesajlaşma (Aşama 6b) ayrıca ve
+// HER ZAMAN mevcuttur (bu eşikten VE rızadan bağımsız — §7.2). Sayfa varlığı
+// yalnız status=ACTIVE'e bağlı. Barem (Aşama 7) PAUSED/PROBATION üretirse veya
+// eşik altındaysa: sayfa 200 kalır ama noindex olur ve iletişim bölümü
+// gizlenir — notlar ve rozet her zaman görünür kalır (§14.13).
 export default async function ExpertProfilePage({
   params,
 }: {
@@ -45,7 +53,7 @@ export default async function ExpertProfilePage({
       where: { slug },
       select: {
         id: true, headline: true, bio: true, expertiseTags: true, city: true, district: true,
-        status: true, createdAt: true, contactVisible: true, contactPhone: true, contactAddress: true,
+        status: true, createdAt: true, contactVisible: true, businessName: true, contactPhone: true, contactAddress: true,
         visibilityState: true, userId: true,
         user: { select: { displayName: true } },
       },
@@ -133,11 +141,27 @@ export default async function ExpertProfilePage({
         </div>
       )}
 
-      {!promotionPaused && profile.contactVisible && (profile.contactPhone || profile.contactAddress) && (
+      {!promotionPaused &&
+        profile.contactVisible &&
+        notes.length >= CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES &&
+        (profile.businessName || profile.contactPhone || profile.contactAddress) && (
         <div className="mb-8 bg-gray-50 rounded-xl p-4 space-y-1.5">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">İletişim</p>
+          {profile.businessName && <p className="text-sm font-semibold text-gray-900">🏢 {profile.businessName}</p>}
           {profile.contactPhone && <p className="text-sm text-gray-800">📞 {profile.contactPhone}</p>}
-          {profile.contactAddress && <p className="text-sm text-gray-800">📍 {profile.contactAddress}</p>}
+          {profile.contactAddress && (
+            <p className="text-sm text-gray-800">
+              📍 {profile.contactAddress}{" "}
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.contactAddress)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-blue-600 hover:underline"
+              >
+                Haritada Aç →
+              </a>
+            </p>
+          )}
           {contactFeedbackText && (
             <p className="text-[11px] font-semibold text-green-700">✓ {contactFeedbackText}</p>
           )}

@@ -1512,6 +1512,7 @@ model ExpertProfile {
 
   // İletişim — KVKK: ayrı açık rıza (EXPERT_CONTACT_PUBLIC) + ConsentLog + retention.
   // Silme TALEBİ anında sıfırlanır (30 gün SLA beklenmez).
+  businessName   String? @db.VarChar(120) // işyeri/dükkan adı (örn. "ABC Rot-Balans") — aynı rıza+eşiğe tabi
   contactPhone   String? @db.VarChar(20)
   contactAddress String? @db.VarChar(300) // açık adres OPSİYONEL; il/ilçe zorunlu
   contactVisible Boolean @default(false)

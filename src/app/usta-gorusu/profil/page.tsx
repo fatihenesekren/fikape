@@ -24,7 +24,7 @@ export default async function ExpertContactSettingsPage() {
   const profile = await prisma.expertProfile.findUnique({
     where: { userId },
     select: {
-      id: true, status: true, slug: true, contactPhone: true, contactAddress: true,
+      id: true, status: true, slug: true, businessName: true, contactPhone: true, contactAddress: true,
       cvNoindex: true, city: true, district: true, visibilityState: true,
     },
   });
@@ -98,6 +98,7 @@ export default async function ExpertContactSettingsPage() {
       </div>
 
       <ContactSettingsForm
+        initialBusinessName={profile.businessName}
         initialPhone={profile.contactPhone}
         initialAddress={profile.contactAddress}
         initialConsentContactPublic={consentContactPublic ?? false}

@@ -6,6 +6,7 @@ import { DeleteReviewButton } from "@/components/DeleteReviewButton";
 import { calcOverall } from "@/lib/fikape";
 import { CHIP_LABEL } from "@/lib/chips";
 import { TRUST_BADGES } from "@/lib/trustBadge";
+import { EXPERT_BADGE } from "@/lib/expertNote";
 import { formatSoldReasons } from "@/lib/soldReasons";
 import { formatOwnershipDuration } from "@/lib/duration";
 
@@ -41,6 +42,7 @@ interface Props {
   currentUserVote?: boolean | null;
   isLoggedIn?: boolean;
   isOwnReview?: boolean;
+  isExpert?: boolean;
 }
 
 export function ReviewCard({
@@ -69,6 +71,7 @@ export function ReviewCard({
   currentUserVote = null,
   isLoggedIn = false,
   isOwnReview = false,
+  isExpert = false,
 }: Props) {
   const scores = { scoreFiyat, scoreKalite, scorePerformans };
   const overall = calcOverall(scores);
@@ -105,6 +108,19 @@ export function ReviewCard({
                 >
                   {badge.icon && <span>{badge.icon}</span>}
                   {badge.label}
+                </span>
+              )}
+              {isExpert && (
+                // Çift şapka bilgi rozeti — SKORLU (bu sahiplik yorumu) ile SKORSUZ
+                // (usta notu) katmanlar karışmasın diye BİLİNÇLİ olarak usta
+                // profiline (/usta/[slug]) derin link vermez (bkz. plan §14.13).
+                <span
+                  className="text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1"
+                  style={{ background: EXPERT_BADGE.bg, color: EXPERT_BADGE.color }}
+                  title={EXPERT_BADGE.tooltip}
+                >
+                  <span>{EXPERT_BADGE.icon}</span>
+                  {EXPERT_BADGE.label}
                 </span>
               )}
               {isFounding && (

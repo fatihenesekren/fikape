@@ -310,7 +310,12 @@ export default async function VehicleDetailPage({
       editedAt: true,
       editCount: true,
       extendedData: true,
-      user: { select: { id: true, displayName: true, trustLevel: true, avatarUrl: true } },
+      user: {
+        select: {
+          id: true, displayName: true, trustLevel: true, avatarUrl: true,
+          expertProfile: { select: { status: true } },
+        },
+      },
       userProduct: {
         select: {
           ownershipStatus: true,
@@ -566,6 +571,7 @@ export default async function VehicleDetailPage({
             avatarUrl={r.user.avatarUrl}
             avatarSeed={String(r.user.id)}
             trustLevel={r.user.trustLevel}
+            isExpert={r.user.expertProfile?.status === "ACTIVE"}
             ownershipMonths={realOwnershipMonths(r.userProduct?.purchasedAt, r.userProduct?.soldAt, r.ownershipMonthsAtReview)}
             scoreFiyat={r.scoreFiyat}
             scoreKalite={r.scoreKalite}

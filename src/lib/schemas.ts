@@ -126,6 +126,7 @@ export const expertAppealCreateSchema = z.object({
 // (c) bölgesel görünürlük. İkisi de bağımsız, ikisi de opsiyonel — rıza
 // hizmetin ön koşulu değil. Telefon/adres yalnız (b) rızası verilirse gösterilir.
 export const expertContactUpdateSchema = z.object({
+  businessName:          z.string().trim().max(120).optional().nullable().or(z.literal("")),
   contactPhone:          z.string().trim().regex(/^[0-9+()\s-]{7,20}$/, "Geçerli bir telefon numarası giriniz.").optional().nullable().or(z.literal("")),
   contactAddress:        z.string().trim().max(300).optional().nullable().or(z.literal("")),
   consentContactPublic:  z.boolean(),
