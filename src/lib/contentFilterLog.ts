@@ -15,7 +15,8 @@ export type ContentFilterSurface =
   | "TRADE_RATING"
   | "VEHICLE_SUGGEST"
   | "EXPERT_NOTE"
-  | "EXPERT_QNA";
+  | "EXPERT_QNA"
+  | "EXPERT_MESSAGE";
 
 export function logContentFilterHit(params: {
   userId: number;

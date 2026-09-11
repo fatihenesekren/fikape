@@ -269,6 +269,14 @@ export default async function ProfilPage() {
         )}
       </div>
 
+      {/* Usta ile site-içi mesajlaşma — hem "usta olarak gelen" hem "kullanıcı
+          olarak başlattığın" görüşmeler tek gelen kutusunda (Aşama 6b) */}
+      <div className="flex justify-end">
+        <Link href="/usta-mesajlarim" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
+          💬 Usta Mesajlarım →
+        </Link>
+      </div>
+
       {/* Favorilerim */}
       <div>
         <h2 className="text-base font-bold text-gray-900 mb-3">

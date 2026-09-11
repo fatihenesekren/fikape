@@ -39,6 +39,7 @@ export const TYPE_ICON: Record<string, string> = {
   EXPERT_CV_RESTORED: "🔧",
   ADMIN_NEW_EXPERT_NOTE: "🔧",
   ADMIN_NEW_EXPERT_APPLICATION: "🔧",
+  NEW_EXPERT_MESSAGE: "💬",
 };
 
 export const TYPE_LABEL: Record<string, string> = {
@@ -69,6 +70,7 @@ export const TYPE_LABEL: Record<string, string> = {
   EXPERT_CV_RESTORED: "Usta Görüşü",
   ADMIN_NEW_EXPERT_NOTE: "Admin",
   ADMIN_NEW_EXPERT_APPLICATION: "Admin",
+  NEW_EXPERT_MESSAGE: "Usta Mesajı",
 };
 
 function fmtDate(iso: string) {

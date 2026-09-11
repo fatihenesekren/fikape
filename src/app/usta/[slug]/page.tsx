@@ -2,8 +2,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
 import { EXPERT_BADGE } from "@/lib/expertNote";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { ExpertMessageComposer } from "./ExpertMessageComposer";
 
 export async function generateMetadata({
   params,
@@ -25,9 +27,9 @@ export async function generateMetadata({
 }
 
 // Usta profil sayfası — İletişim bölümü (b) rızası + en az bir alan girilmişse
-// (contactVisible) gösterilir; site-içi mesajlaşma altyapısı henüz yok (bkz.
-// memory — takas mesajlaşmasına benzer ayrı bir sistem, Aşama 6'da bilinçli
-// olarak ertelendi). Sayfa varlığı yalnız status=ACTIVE'e bağlı. Barem
+// (contactVisible) gösterilir; site-içi maskeli mesajlaşma (Aşama 6b) ayrıca
+// ve HER ZAMAN mevcuttur (rızadan bağımsız — §7.2). Sayfa varlığı yalnız
+// status=ACTIVE'e bağlı. Barem
 // (Aşama 7) PAUSED/PROBATION üretirse: sayfa 200 kalır ama noindex olur ve
 // iletişim bölümü gizlenir — notlar ve rozet her zaman görünür kalır (§14.13).
 export default async function ExpertProfilePage({
@@ -37,17 +39,38 @@ export default async function ExpertProfilePage({
 }) {
   const { slug } = await params;
 
-  const profile = await prisma.expertProfile.findUnique({
-    where: { slug },
-    select: {
-      headline: true, bio: true, expertiseTags: true, city: true, district: true,
-      status: true, createdAt: true, contactVisible: true, contactPhone: true, contactAddress: true,
-      visibilityState: true,
-      user: { select: { displayName: true } },
-    },
-  });
+  const [profile, session] = await Promise.all([
+    prisma.expertProfile.findUnique({
+      where: { slug },
+      select: {
+        id: true, headline: true, bio: true, expertiseTags: true, city: true, district: true,
+        status: true, createdAt: true, contactVisible: true, contactPhone: true, contactAddress: true,
+        visibilityState: true, userId: true,
+        user: { select: { displayName: true } },
+      },
+    }),
+    auth(),
+  ]);
   if (!profile || profile.status !== "ACTIVE") notFound();
   const promotionPaused = profile.visibilityState === "PAUSED" || profile.visibilityState === "PROBATION";
+
+  // Site-içi maskeli mesajlaşma — telefon/e-posta paylaşmadan iletişim
+  // alternatifi (§7.2: (b) rızası olmasa da her zaman mevcut). Kendi
+  // profiline veya bloklu kullanıcıya gösterilmez.
+  const viewerId = session?.user?.id ? Number(session.user.id) : null;
+  const isOwnProfile = viewerId === profile.userId;
+  const isBlocked = viewerId && !isOwnProfile
+    ? !!(await prisma.blockedUser.findFirst({
+        where: {
+          OR: [
+            { blockerId: viewerId, blockedId: profile.userId },
+            { blockerId: profile.userId, blockedId: viewerId },
+          ],
+        },
+        select: { id: true },
+      }))
+    : false;
+  const canMessage = !!viewerId && !isOwnProfile && !isBlocked;
 
   const notes = await prisma.expertNote.findMany({
     where: { profile: { slug }, status: "PUBLISHED", removedAt: null },
@@ -114,6 +137,15 @@ export default async function ExpertProfilePage({
             işçilik veya onarım kalitesini garanti etmez.
           </p>
         </div>
+      )}
+
+      {canMessage && (
+        <div className="mb-8">
+          <ExpertMessageComposer expertProfileId={profile.id} />
+        </div>
+      )}
+      {viewerId && !isOwnProfile && isBlocked && (
+        <p className="mb-8 text-xs text-gray-400">Bu ustayla mesajlaşamazsınız.</p>
       )}
 
       <div>

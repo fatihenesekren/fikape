@@ -229,9 +229,11 @@ model User {
   contentFilterHits    ContentFilterHit[]
 
   // Usta Görüşleri — çift şapka: usta profili bir User NİTELİĞİ, ayrı hesap değil
-  expertProfile   ExpertProfile?
-  expertNoteVotes ExpertNoteVote[]
-  takedownClaims  ExpertNoteTakedownRequest[] @relation("TakedownClaimant")
+  expertProfile          ExpertProfile?
+  expertNoteVotes        ExpertNoteVote[]
+  takedownClaims         ExpertNoteTakedownRequest[] @relation("TakedownClaimant")
+  expertThreadsInitiated ExpertMessageThread[]       @relation("ExpertThreadInitiator")
+  expertMessagesSent     ExpertMessage[]             @relation("ExpertMessageSender")
 
   @@map("users")
 }
@@ -285,6 +287,7 @@ enum NotificationType {
   ADMIN_NEW_EXPERT_NOTE // admin — onay bekleyen usta notu
   ADMIN_NEW_EXPERT_APPLICATION // admin — onay bekleyen usta başvurusu
   ADMIN_NEW_TAKEDOWN_REQUEST // admin — onay bekleyen bildirim/kaldırma talebi
+  NEW_EXPERT_MESSAGE // usta veya mesajı başlatan kullanıcıya — site-içi maskeli mesajlaşma
 }
 
 model Notification {
@@ -1529,6 +1532,7 @@ model ExpertProfile {
   contactEvents  ExpertContactEvent[]
   sponsorships   ExpertSponsorship[]
   overrideEvents ExpertOverrideEvent[]
+  messageThreads ExpertMessageThread[]
 
   @@index([status, visibilityState])
   @@index([city, visibilityState])
@@ -1911,4 +1915,44 @@ enum ExpertReplyStatus {
   PENDING
   PUBLISHED
   REJECTED
+}
+
+// ─────────────────────────────────────────────
+// USTA GÖRÜŞLERI — SİTE-İÇİ MASKELİ MESAJLAŞMA (Aşama 6b)
+// Takas'taki MessageThread/Message'dan BİLİNÇLİ olarak AYRI ve DAHA DAR:
+// tradeListingId'ye bağlı değil; kapat/yeniden aç/ilgi-kaybı/puanlama YOK
+// (bkz. memory — takas mesajlaşma sistemi ayrı, çok parçalı bir iştir).
+// Engelleme mevcut genel BlockedUser tablosu ÜZERİNDEN yapılır (yeni tablo
+// gerekmedi). Bir (usta, mesajı başlatan kullanıcı) çifti için TEK thread.
+// ─────────────────────────────────────────────
+
+model ExpertMessageThread {
+  id              Int           @id @default(autoincrement())
+  expertProfileId Int
+  expertProfile   ExpertProfile @relation(fields: [expertProfileId], references: [id])
+  initiatorId     Int
+  initiator       User          @relation("ExpertThreadInitiator", fields: [initiatorId], references: [id])
+
+  createdAt     DateTime @default(now())
+  lastMessageAt DateTime @default(now())
+
+  messages ExpertMessage[]
+
+  @@unique([expertProfileId, initiatorId])
+  @@map("expert_message_threads")
+}
+
+model ExpertMessage {
+  id       Int                 @id @default(autoincrement())
+  threadId Int
+  thread   ExpertMessageThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  senderId Int
+  sender   User                @relation("ExpertMessageSender", fields: [senderId], references: [id])
+
+  text      String   @db.VarChar(1000)
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([threadId, createdAt])
+  @@map("expert_messages")
 }
