@@ -4,7 +4,7 @@ fikape.com · 2026-09-10 · v1 → v2: 5 uzman ajan (KVKK, marka, monetizasyon, 
 
 **Kurucu kilit kararları:** tek teslim · feragat satırı sabit ("Usta görüşleri, ustaların gönüllü teknik katkısıdır. fikape puanını etkilemez, sıralamada yer değiştirmez.") · usta sayısı büyüyebilir (kalıcı tavan yok) · Q&A B modeli · rozet "Usta" · "Teknik Çalışan" yok.
 
-**⚠️ 11 Eylül 2026 güncellemesi:** Bu dosyadaki "belge doğrulama" / "Doğrulanmış Usta" ile ilgili tüm bölümler (§5.2 belge kontrolü, §5.3 belge işleme/imha, §392 granüler rıza (a) belge doğrulama) **KALDIRILDI** — kimlik/meslek belgesi hiç istenmez/saklanmaz, kurucu kararı. Detay ve gerekçe: hafıza dosyası `feature_usta_gorusleri_ilerleme.md`. Bu dosya güncellenmedi (yalnız işaretlendi), aşağıdaki ilgili bölümleri okurken bunu göz önünde bulundurun.
+**⚠️ 11 Eylül 2026 güncellemesi:** Kimlik/meslek belgesi doğrulaması KALDIRILDI (kurucu kararı) — hiç istenmez, hiç saklanmaz. Bu dosyadaki tüm "belge doğrulama" / "Doğrulanmış Usta" bölümleri buna göre güncellendi/çıkarıldı (eski §5.3 "Belge işleme" bölümü kaldırıldı, rıza kutuları 3'ten 2'ye indi, rozet "Usta" oldu). Detay ve gerekçe: hafıza dosyası `feature_usta_gorusleri_ilerleme.md`.
 
 ---
 
@@ -27,7 +27,7 @@ fikape.com · 2026-09-10 · v1 → v2: 5 uzman ajan (KVKK, marka, monetizasyon, 
 - **⟳ İç terminoloji de temiz:** "bölgesel tanıtım" → **"bölgesel görünürlük"** / **"bölgesel eşleşme"**. Hiçbir katmanda (kod, admin, bildirim) "tanıtım" bırakılmaz.
 - **⟳ Konumlanma cümlesi:** "ustanın müşteriyle buluştuğu" → **"kullanıcının ustaya ulaşabildiği"**. Kullanıcıya dönük hiçbir yüzeyde "müşteri / potansiyel müşteri / lead" geçmez.
 - **Çift şapka:** "usta" bir `User` niteliğidir. Aynı kişi hem kendi aracına normal sahiplik yorumu (skora katılır) hem herhangi bir modele usta notu (skorsuz) yazar.
-- **⟳ Skorlu/skorsuz duvarı (marka S1.1):** Ustanın **sahiplik yorumundaki** yazar satırı, usta profiline veya iletişim bilgisine **asla derin link vermez**; yalnızca "bu üye doğrulanmış usta" bilgi rozeti gösterir ve rozet yalnızca "Usta Görüşleri Nedir?" sayfasına gider.
+- **⟳ Skorlu/skorsuz duvarı (marka S1.1):** Ustanın **sahiplik yorumundaki** yazar satırı, usta profiline veya iletişim bilgisine **asla derin link vermez**; yalnızca "bu üye usta" bilgi rozeti gösterir ve rozet yalnızca "Usta Görüşleri Nedir?" sayfasına gider.
 
 ---
 
@@ -36,11 +36,11 @@ fikape.com · 2026-09-10 · v1 → v2: 5 uzman ajan (KVKK, marka, monetizasyon, 
 | # | Karar |
 |---|---|
 | Ad | Tab başlığı "Usta Görüşleri"; tekil öğe "Usta Notu" |
-| Rozet | "Doğrulanmış Usta" + tooltip: *"Teknik geçmişi belgeyle fikape tarafından doğrulandı. Bu bir tavsiye veya iş birliği değildir."* Ayrı ikon (🔧), TrustLevel rozetlerinden ayrık |
+| Rozet | "Usta" + tooltip: *"Bu kişi kendini usta/teknik uzman olarak tanımlamıştır. fikape kimlik veya meslek belgesi doğrulaması yapmaz; içerikleri yayından önce incelenir."* Ayrı ikon (🔧), TrustLevel rozetlerinden ayrık — kimlik/belge doğrulaması YOK, kullanıcı beyanına dayanır (⟳ 11 Eylül 2026) |
 | İçerik seviyesi | **Model** seviyesi; `Review`'a dokunulmaz, ayrı `ExpertNote` |
 | UI | Araç detay sayfasında ayrı "Usta Görüşleri" tab'ı; modelde `PUBLISHED` not yoksa tab render edilmez |
 | Oylar | Her notun altında faydalı / faydasız (`ExpertNoteVote`) + kendi notuna oy engeli |
-| Not-altı Q&A | **B modeli:** soruyu herkes sorar, cevabı yalnızca notun ustası (veya diğer doğrulanmış ustalar); **⟳ her cevap `Answer.status` ile moderasyondan geçer**; iletişim bilgisi filtrelenir |
+| Not-altı Q&A | **B modeli:** soruyu herkes sorar, cevabı yalnızca notun ustası (veya diğer ACTIVE ustalar); **⟳ her cevap `Answer.status` ile moderasyondan geçer**; iletişim bilgisi filtrelenir |
 | Barem sayımı | Yalnızca onaylı `ExpertNote` (+ zayıf/tavanlı not-altı usta cevapları). Sahiplik yorumları **asla**. Usta→usta oyları hariç |
 | Hesap kapanışı | Anonimleştir + notlar kalır; **⟳ iletişim PII'si silme *talebi anında* sıfırlanır** (30 gün SLA beklenmez); ihlalle ban → notlar `HIDDEN + removedAt` (hard-delete yok) |
 | CV durunca | Usta notları görünür kalır; yalnızca tanıtım/görünürlük yüzeyi durur |
@@ -335,16 +335,16 @@ consentVersion String?
 
 - **Ayrı rota:** `/usta-gorusu/yaz` — yalnız `ExpertStatus = ACTIVE` ustalara. `ReviewForm`'a dokunulmaz.
 - Model seçici + `structured` alanlar + serbest gövde.
-- Ustanın kendi aracına sahiplik yorumu normal akışta; yazar satırında "Doğrulanmış Usta" bilgi rozeti (⟳ CV'ye link YOK — §1).
+- Ustanın kendi aracına sahiplik yorumu normal akışta; yazar satırında "Usta" bilgi rozeti (⟳ CV'ye link YOK — §1).
 - **⟳ S12:** `PUBLISHED` nota yapılan her düzenleme notu `PENDING`'e döndürür ve **barem katkısını yeniden onaya kadar dondurur**; barem `approvedQualityScore`'u okur, canlı `qualityScore`'u değil.
 
 ---
 
-## 5. Başvuru & doğrulama  ⟳
+## 5. Başvuru & onay  ⟳
 
 ### 5.1 Akış
-- `/profil` → başvuru formu: headline, uzmanlık etiketleri, il/ilçe, bio, belge yükleme, **beyan kutusu** (galerici/pazarlamacı/marka-yetkili servis değil), **⟳ 18 yaş / fiil ehliyeti beyanı ve kontrolü** (KVKK asgari #8 — yayımlanacak veri için geçerli rıza şartı).
-- `PENDING_VERIFICATION` → admin belge kontrolü → `ACTIVE` (+ `graceUntil = now + 2 ay`).
+- `/profil` → başvuru formu: headline, uzmanlık etiketleri, il/ilçe, bio, **beyan kutusu** (galerici/pazarlamacı/marka-yetkili servis değil), **⟳ 18 yaş / fiil ehliyeti beyanı ve kontrolü** (KVKK asgari #8 — yayımlanacak veri için geçerli rıza şartı).
+- `PENDING_VERIFICATION` → **admin yalnız başvuru içeriğini** (spam, tutarlılık, beyan uygunluğu) inceler; kimlik/meslek belgesi istenmez/doğrulanmaz (⟳ 11 Eylül 2026 kararı) → onaylanırsa `ACTIVE` (+ `graceUntil = now + 2 ay`).
 
 ### 5.2 ⟳ Başvuru akış kontrolü (Trust B1-B5 + §18 — kalıcı tavan değil, operasyonel güvenlik valfi)
 - **Başvuru penceresi:** form her ayın **ilk 7 günü** açık; kapalıyken e-posta bekleme listesi.
@@ -355,16 +355,8 @@ consentVersion String?
   - **Sert:** kuyruk > **25** **veya** gecikme > **4 gün** → sonraki başvuru penceresi **atlanır**, sonraki açılışta K **3'e sıfırlanır**.
 - Bu mekanizma "~15-25 aktif usta"yı bir hedef değil, moderasyon sağlığının doğal sonucu kılar; sağlık sürdükçe K büyür.
 
-### 5.3 ⟳ Belge işleme (KVKK 5.1-5.5 — "tercihen" temennileri kurala çevrildi)
-- **Tam belge görseli SAKLANMAZ**; doğrulama biter bitmez, **en geç 30 gün** içinde imha. İstisna: somut sahtecilik şüphesi / devam eden itiraz → yazılı gerekçeyle kilitli arşiv.
-- Saklanan: "doğrulandı: [tür] / [tarih] / [kontrol eden] / [kontrol tarihi]" özeti.
-- **⟳ Reddedilen başvuru:** tüm belgeler + pHash **15 gün** içinde imha; yalnız "başvuru / red + tarih + gerekçe kodu" **24 ay**.
-- **⟳ pHash:** kişisel veri; hukuki sebep meşru menfaat (m.5/2-f); belge imha edilse de **24 ay**; aydınlatmada açık; **tek başına ret sebebi değil, manuel inceleme tetikler**.
-- **⟳ Yurtdışı:** belgeler KVKK m.9 mekanizması (uygun ülke / standart sözleşme) devreye girmeden yurtdışına aktarılmaz; bucket tercihen AB bölgesi; **Vercel katmanında belge işlenmez/önbelleğe alınmaz**.
-- **⟳ İşyeri fotoğrafında 3. kişi/plaka:** olduğu gibi saklanmaz. De-identifiye edilebiliyorsa yalnız o sürüm; edilemiyorsa **fotoğraf reddedilir**. Bulanıklaştırma = kısmi imha, loglanır.
-
-### 5.4 ⟳ Koordineli başvuru tespiti (Trust C1)
-Başvuru inceleme panosu her bekleyen başvuru için gösterir: IP / cihaz parmak izi / telefon / bina düzeyi adres paylaşan **veya** son 30 günde aynı ilçeden doğrulanmış diğer başvuru/ustalar. Eşleşme → onay öncesi açık admin ack zorunlu. Belge pHash zaten "bir işletme = bir slot".
+### 5.3 ⟳ Koordineli başvuru tespiti (Trust C1)
+Başvuru inceleme panosu her bekleyen başvuru için gösterir: IP / cihaz parmak izi / telefon / bina düzeyi adres paylaşan **veya** son 30 günde aynı ilçeden diğer başvuru/ustalar. Eşleşme → onay öncesi açık admin ack zorunlu.
 
 ---
 
@@ -374,7 +366,7 @@ Başvuru inceleme panosu her bekleyen başvuru için gösterir: IP / cihaz parma
 - **Ayrı "Usta Görüşleri" tab'ı.** Modelde `PUBLISHED` not yoksa render edilmez.
 - **⟳ S5:** `TabView` union `"usta-gorusleri"` ile genişler (TabView + `ReportContent.activeTab` + switch — ~4 dosya); `?tab=usta-gorusleri` deep-link; server'da `hasPublishedExpertNotes = expertNote.count({modelId, status:PUBLISHED})`.
 - **⟳ S6:** Not `PUBLISHED`/`HIDDEN` olduğunda o modelin **tüm** Product slug'ları için `revalidatePath` (yazma tarafında 2. Model→Products fan-out) — yoksa tab prod'da geç/hiç görünmez.
-- **Not kartı:** "Doğrulanmış Usta" rozeti (🔧 + tooltip) · **⟳ yalnız il** (ilçe sadece profilde) · konum **bağlam olarak** ("İzmir'de servis veriyor"), dizin girişi gibi değil · `structured` alanlar · gövde · faydalı/faydasız · açılır not-altı Q&A (B modeli).
+- **Not kartı:** "Usta" rozeti (🔧 + tooltip) · **⟳ yalnız il** (ilçe sadece profilde) · konum **bağlam olarak** ("İzmir'de servis veriyor"), dizin girişi gibi değil · `structured` alanlar · gövde · faydalı/faydasız · açılır not-altı Q&A (B modeli).
 - **⟳ Feragat satırı (KİLİTLENDİ — kurucu kararı):** *"Usta görüşleri, ustaların gönüllü teknik katkısıdır. fikape puanını etkilemez, sıralamada yer değiştirmez."* "reklam değil / ödeme karşılığı değil" ifadesi hiçbir sabit yüzeyde kullanılmaz; yalnız "Usta Görüşleri Nedir?" sayfasında kalır.
 
 ### Araç kartı (grid)  ⟳ §18
@@ -391,8 +383,8 @@ Başvuru inceleme panosu her bekleyen başvuru için gösterir: IP / cihaz parma
 ## 7. İletişim katmanı  ⟳
 
 - Açık adres + telefon — **il/ilçe zorunlu, açık sokak adresi opsiyonel** — **+ site-içi maskeli mesajlaşma** (takas `MessageThread` deseni).
-- **Granüler açık rıza** (3 ayrı işaretsiz kutu): (a) belge doğrulama, (b) açık iletişim yayını + arama motoru indekslemesi, (c) bölgesel görünürlük. `ConsentLog` + `consentVersion` + zaman damgası, her biri bağımsız geri çekilebilir. Aydınlatma metni ayrı, önce.
-- **⟳ 7.2:** (b) rızası verilmese de usta `ACTIVE` olur, not yazar, rozeti alır, bölgesel yüzeyde **yalnızca "site üzerinden mesaj"** seçeneğiyle görünür. Rıza hizmetin ön koşulu değil.
+- **Granüler açık rıza** (2 ayrı işaretsiz kutu, ⟳ 11 Eylül 2026 — eski (a) belge doğrulama kutusu kaldırıldı, kimlik/belge doğrulaması hiç yapılmıyor): (a) açık iletişim yayını + arama motoru indekslemesi, (b) bölgesel görünürlük. `ConsentLog` + `consentVersion` + zaman damgası, her biri bağımsız geri çekilebilir. Aydınlatma metni ayrı, önce.
+- **⟳ 7.2:** (a) rızası verilmese de usta `ACTIVE` olur, not yazar, rozeti alır, bölgesel yüzeyde **yalnızca "site üzerinden mesaj"** seçeneğiyle görünür. Rıza hizmetin ön koşulu değil.
 - **⟳ 7.1:** Rıza geri çekmede açık telefon/adres profilden **derhal** kaldırılır + sayfa `noindex` + sitemap'ten çıkarılır; dış propagasyon/deindeks talebi **en geç 72 saat** (72s "kaldırma" değil, dış yayılım).
 - **⟳ 7.3:** Kullanıcı tarafı Gizlilik Politikası / mesajlaşma aydınlatması, usta mesajlaşmasını + içerik moderasyonunu + saklama süresini kapsayacak şekilde güncellenir.
 - **⟳ 7.4:** Yayın öncesi **yazılı risk/denge değerlendirmesi** dosyalanır (kapsam, alternatifler, taciz/scraping azaltımı, ehliyet kontrolü).
@@ -483,8 +475,8 @@ Yalnız `ExpertNote`. **Not-altı usta cevapları görünürlük/skora SIFIR ağ
 ## 11. Hesap kapanışı & içerik akıbeti  ⟳ (KVKK 11.1-11.3; UX S9-S10)
 
 - **⟳ İki adım:** (1) silme **talebi anında** ayrı yazma — `contactPhone/contactAddress = null`, `contactVisible = false`, profil `noindex` + gizle, `visibilityState` düşür. (2) Nihai anonimleştirme `$transaction`'ı (mevcut 30 gün SLA'lı akış) gerisini: `ExpertProfile → CLOSED`, `bio/headline/photoUrl = null` (`updateMany({where:{userId}})` array-form transaction'a eklenir).
-- **⟳ S9/11.1:** DB null'lamak **Supabase Storage nesnesini silmez** — profil + işyeri fotoğrafı + kilitli arşiv belgesi **dosya olarak da kalıcı silinir**, imha kaydına yazılır.
-- **⟳ 11.2 uydu tablolar:** `ConsentLog` **korunur [10 yıl]** (rıza + geri çekme ispat yükü); `ExpertScoreSnapshot` + `ExpertContactEvent` silinir/anonimleştirilir; `ExpertNoteVersion` nota bağlı; doğrulama özeti [10 yıl] sonra imha.
+- **⟳ S9/11.1:** DB null'lamak **Blob/Storage nesnesini silmez** — profil fotoğrafı **dosya olarak da kalıcı silinir**, imha kaydına yazılır.
+- **⟳ 11.2 uydu tablolar:** `ConsentLog` **korunur [10 yıl]** (rıza + geri çekme ispat yükü); `ExpertScoreSnapshot` + `ExpertContactEvent` silinir/anonimleştirilir; `ExpertNoteVersion` nota bağlı.
 - **⟳ 11.3:** `PUBLISHED` notlar **takma adla** kalır (isim `User` üzerinden zaten anonim → "Silinmiş Kullanıcı"; "Silinmiş **Usta**" istenirse ayrı gösterim yolu, `User.displayName` yeniden kullanılmaz). Kalan notlar **doğrudan/dolaylı tanımlayıcılardan** ("benim dükkanım", işletme adı, artık telefon) **arındırılır**. Usta kapanışta **notlarının da silinmesini talep edebilir**.
 - **⟳ Hukuki sebep:** not içeriğinin saklanması **açık rızaya değil, meşru menfaate (m.5/2-f — topluluk bilgi arşivi bütünlüğü) / sözleşmeye** dayandırılır; iletişim PII'si açık rızaya bağlı kalır, geri çekmede/kapanışta silinir.
 - **İhlalle ban** (`SUSPENDED → CLOSED`): notlar `status = HIDDEN + removedAt` (**hard-delete yok** — RESTRICT FK).
@@ -515,22 +507,20 @@ Yalnız `ExpertNote`. **Not-altı usta cevapları görünürlük/skora SIFIR ağ
 
 Bu turda taslakları yazıldı (→ **hukuki-metinler-v1.md**):
 1. Usta Aydınlatma Metni ✅ taslak — **⟳** kısmen otomatik karar (barem) + KVKK m.11/1-g itiraz hakkı + m.9 aktarım mekanizması detayı dahil edildi
-2. Usta Açık Rıza Metni (granüler, 3 kutu) ✅ taslak
-3. Belge Saklama ve İmha Politikası ✅ taslak
-4. Kullanıcıya Feragat / Sorumluluk Reddi (kısa + uzun) ✅ taslak
-5. **Usta Katılım Koşulları** ✅ taslak (Trust ajanı) — **⟳** "tazminat yok" mutlak kaydı **TBK m.115** nedeniyle geçersiz → "**fikape'nin kasıt ve ağır ihmali saklı kalmak kaydıyla**..." biçiminde daraltıldı
-6. **Üretici / 3. Kişi Bildirim-Kaldırma + Yanıt Hakkı Prosedürü** ✅ taslak + şema eki (UX ajanı)
-7. **"Usta Görüşleri Nedir?" Açıklama Sayfası** ✅ tam metin (marka ajanı) + KULLAN/KULLANMA kelime tablosu
+2. Usta Açık Rıza Metni (granüler, 2 kutu — ⟳ 11 Eylül 2026: eski belge doğrulama kutusu kaldırıldı) ✅ taslak
+3. Kullanıcıya Feragat / Sorumluluk Reddi (kısa + uzun) ✅ taslak
+4. **Usta Katılım Koşulları** ✅ taslak (Trust ajanı) — **⟳** "tazminat yok" mutlak kaydı **TBK m.115** nedeniyle geçersiz → "**fikape'nin kasıt ve ağır ihmali saklı kalmak kaydıyla**..." biçiminde daraltıldı
+5. **Üretici / 3. Kişi Bildirim-Kaldırma + Yanıt Hakkı Prosedürü** ✅ taslak + şema eki (UX ajanı)
+6. **"Usta Görüşleri Nedir?" Açıklama Sayfası** ✅ tam metin (marka ajanı) + KULLAN/KULLANMA kelime tablosu
 
-### ⟳ KVKK ajanının eklediği, lansmandan önce gerekli 8 kalem (metin değil, süreç):
+### ⟳ KVKK ajanının eklediği, lansmandan önce gerekli 7 kalem (metin değil, süreç):
 1. **6563 sayılı ETK "aracı hizmet sağlayıcı" rol değerlendirmesi** — açık iletişim yayını + mesajlaşma + bölgesel öne çıkarma fikape'yi aracı konumuna taşıyabilir → ETBİS kaydı, ETK m.5 gösterim, şikâyet mekanizması yükümlülükleri. **Lansmandan önce yazılı hukuki görüş.**
 2. **Yurtdışı veri işleyen sözleşmeleri (DPA)** — Supabase / Vercel / e-posta sağlayıcısı ile KVKK m.12 yazılı sözleşme + **m.9 aktarım mekanizması** (standart sözleşme / taahhütname) imzalanıp dosyalanır.
-3. **VERBİS kaydı güncellemesi + Kişisel Veri İşleme Envanteri** — yeni kategoriler (belge, açık iletişim, konum), yeni amaçlar, yurtdışı aktarım.
+3. **VERBİS kaydı güncellemesi + Kişisel Veri İşleme Envanteri** — yeni kategoriler (açık iletişim, konum), yeni amaçlar, yurtdışı aktarım.
 4. **Kısmen otomatik karar (barem) itiraz + insan incelemesi prosedürü** (m.11/1-g) — §8 itiraz akışı bunun karşılığı olarak belgelenir.
-5. **Reddedilen başvuru sahibinin belgelerinin imha kuralı** (§5.3'e işlendi).
-6. **Storage nesnelerinin silinmesi** — DB null yeterli değil (§11'e işlendi).
-7. **18 yaş / fiil ehliyeti kontrolü** başvuru akışında (§5.1'e işlendi).
-8. **Açık iletişim yayını için yazılı risk/denge değerlendirmesi** (§7.4'e işlendi).
+5. **Storage nesnelerinin silinmesi** — DB null yeterli değil (§11'e işlendi).
+6. **18 yaş / fiil ehliyeti kontrolü** başvuru akışında (§5.1'e işlendi).
+7. **Açık iletişim yayını için yazılı risk/denge değerlendirmesi** (§7.4'e işlendi).
 
 ---
 
@@ -542,7 +532,7 @@ Bu turda taslakları yazıldı (→ **hukuki-metinler-v1.md**):
 4. Katalog / yorumlar / arama / sıralama usta görünürlüğüne bağlı hiçbir şeyle **asla** sıralanmaz.
 5. Esnafın kişisel iletişim verisi **açık rıza + saklama politikası + çıkışta kalıcı silme (dosya dahil)** olmadan **asla** yayınlanmaz.
 6. Servis/satışla geçinen kişinin araç değerlendirmesi, sahiplik yorumundan ayırt edilemez biçimde **asla** görünmez.
-7. fikape'nin belirli bir ustayı iş için tavsiye ettiği **asla** ima edilmez. "Doğrulanmış" = "belge kontrol edildi".
+7. fikape'nin belirli bir ustayı iş için tavsiye ettiği **asla** ima edilmez. "Usta" rozeti = kullanıcı beyanı; kimlik/belge doğrulaması yapıldığı **asla** ima edilmez (⟳ 11 Eylül 2026).
 8. Kullanıcıya dönük metinde "reklam / ilan / sponsor / tanıtım" kelimeleri **asla** — kelimeyi olumsuzlayarak da değil; ve bu kelimelerin tarif ettiği şeyi kurup etiketini gizlemek de **asla**. **⟳ İstisna:** ileride açık-etiketli ücretli yüzey çıkarsa, yalnız o yüzeyde, yalnız dürüst "Reklam/Sponsorlu" etiketi yönünde.
 9. Usta ↔ kullanıcı arasında kullanıcının özel aracı hakkında **moderasyonsuz kanal asla** (Q&A = B modeli + `Answer.status`; mesajlaşma = filtreli).
 10. Ustanın kendi sahiplik yorumları usta baremine **asla** sayılmaz.
