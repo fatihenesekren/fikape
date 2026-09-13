@@ -45,9 +45,9 @@ export async function UstaBandi() {
             </svg>
           </span>
           <span className="min-w-0">
-            <span className="block text-sm font-semibold text-gray-900">Usta musunuz?</span>
+            <span className="block text-sm font-semibold text-gray-900">Usta Görüşleri&apos;ne katkı sağlayın</span>
             <span className="hidden sm:block text-xs text-gray-500 truncate">
-              Teknik bilginizle kullanıcılara yol gösterin
+              Tamirci/servis sahibiyseniz deneyiminizi paylaşın, kullanıcılar sizi bulsun
             </span>
           </span>
         </div>
