@@ -102,16 +102,6 @@ export default function UstaOlPage() {
         </div>
       </section>
 
-      <div className="text-center mb-10">
-        <Link
-          href="/usta-basvuru"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold rounded-full px-5 py-2.5 border transition-colors hover:bg-gray-50"
-          style={{ color: "var(--link)", borderColor: "var(--link-line)" }}
-        >
-          Başvuruya geç →
-        </Link>
-      </div>
-
       {/* ── Kimler başvurabilir — olumlu/olumsuz karşılaştırma ── */}
       <section className="mb-10">
         <h2 className="text-lg font-bold text-gray-900 mb-1">Kimler başvurabilir?</h2>
@@ -167,10 +157,16 @@ export default function UstaOlPage() {
         </div>
       </section>
 
-      {/* ── Sık Sorulanlar — native details/summary akordiyonu ── */}
-      <section className="mb-10">
-        <h2 className="text-lg font-bold text-gray-900 mb-2">Sık Sorulanlar</h2>
-        <div>
+      {/* ── Sık Sorulanlar — bütün blok da kapalı başlar (sayfa uzunluğunu
+          azaltmak için), içindeki her soru da ayrıca kendi akordiyonu ── */}
+      <details className="group/faq mb-10">
+        <summary className="flex cursor-pointer items-center justify-between gap-3 list-none [&::-webkit-details-marker]:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" style={{ outlineColor: "var(--link)" }}>
+          <h2 className="text-lg font-bold text-gray-900">Sık Sorulanlar</h2>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="shrink-0 transition-transform duration-200 group-open/faq:rotate-180" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </summary>
+        <div className="mt-2">
           {FAQS.map((f) => (
             <details key={f.q} className="group border-b border-gray-100 py-3.5">
               <summary className="flex cursor-pointer items-center justify-between gap-3 text-sm font-semibold text-gray-900 list-none [&::-webkit-details-marker]:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" style={{ outlineColor: "var(--link)" }}>
@@ -183,7 +179,7 @@ export default function UstaOlPage() {
             </details>
           ))}
         </div>
-      </section>
+      </details>
 
       <div className="text-center mb-8">
         <Link

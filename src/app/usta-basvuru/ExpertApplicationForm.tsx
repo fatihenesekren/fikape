@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
+import { TURKISH_DISTRICTS } from "@/lib/turkishDistricts";
 
 export function ExpertApplicationForm() {
   const router = useRouter();
@@ -15,9 +17,13 @@ export function ExpertApplicationForm() {
   const [bio, setBio] = useState("");
   const [notCommercial, setNotCommercial] = useState(false);
   const [ageConfirmed, setAgeConfirmed] = useState(false);
+  const [privacyConsent, setPrivacyConsent] = useState(false);
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const allChecksPass = notCommercial && ageConfirmed && privacyConsent;
+  const districtOptions = city ? TURKISH_DISTRICTS[city] ?? [] : [];
 
   function addTag() {
     const t = tagInput.trim();
@@ -32,7 +38,7 @@ export function ExpertApplicationForm() {
     if (tags.length === 0) return setError("En az bir uzmanlık alanı ekleyiniz.");
     if (!city) return setError("İl seçiniz.");
     if (bio.trim().length < 30) return setError("Kendinizi en az 30 karakterle tanıtınız.");
-    if (!notCommercial || !ageConfirmed) return setError("Aşağıdaki beyanları onaylamanız gerekiyor.");
+    if (!allChecksPass) return setError("Aşağıdaki onayları işaretlemeniz gerekiyor.");
 
     setLoading(true);
     try {
@@ -47,6 +53,7 @@ export function ExpertApplicationForm() {
           bio: bio.trim(),
           notCommercial,
           ageConfirmed,
+          privacyConsent,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -65,6 +72,7 @@ export function ExpertApplicationForm() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <div className="mb-6">
+        <div className="w-10 h-1 rounded-full mb-3" style={{ background: "var(--fi-strong)" }} />
         <h1 className="text-2xl font-black text-gray-900">Usta Başvurusu</h1>
         <p className="text-sm text-gray-500 mt-1">
           Bir tamir/bakım ustasıysanız başvurunuzu bırakın; admin onayından sonra
@@ -72,88 +80,104 @@ export function ExpertApplicationForm() {
         </p>
       </div>
 
-      <form onSubmit={submit} className="space-y-6">
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">Başlık</label>
-          <input
-            type="text"
-            value={headline}
-            onChange={(e) => setHeadline(e.target.value.slice(0, 120))}
-            placeholder="Örn: 18 yıllık dizel motor ustası · Bursa"
-            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">Uzmanlık alanları</label>
-          <div className="flex gap-2">
+      <form onSubmit={submit} className="space-y-4">
+        <div className="bg-white border border-gray-100 rounded-2xl p-4 space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Başlık</label>
             <input
               type="text"
-              value={tagInput}
-              onChange={(e) => setTagInput(e.target.value)}
-              onKeyDown={(e) => { if (e.key === "Enter" || e.key === ",") { e.preventDefault(); addTag(); } }}
-              placeholder="Örn: VAG dizel — Enter ile ekle"
-              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400"
-            />
-            <button type="button" onClick={addTag} className="px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-700 border border-gray-200">
-              Ekle
-            </button>
-          </div>
-          {tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mt-2">
-              {tags.map((t) => (
-                <span key={t} className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs bg-gray-100 text-gray-700">
-                  {t}
-                  <button type="button" onClick={() => setTags(tags.filter((x) => x !== t))} className="text-gray-400 hover:text-gray-700">×</button>
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">İl</label>
-            <select
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 bg-white"
-            >
-              <option value="">Seçiniz</option>
-              {TURKISH_CITIES.map((c) => <option key={c} value={c}>{c}</option>)}
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">İlçe <span className="text-gray-400 font-normal">(opsiyonel)</span></label>
-            <input
-              type="text"
-              value={district}
-              onChange={(e) => setDistrict(e.target.value.slice(0, 60))}
+              value={headline}
+              onChange={(e) => setHeadline(e.target.value.slice(0, 120))}
+              placeholder="Örn: 18 yıllık dizel motor ustası · Bursa"
               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400"
             />
           </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Uzmanlık alanları</label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={tagInput}
+                onChange={(e) => setTagInput(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === ",") { e.preventDefault(); addTag(); } }}
+                placeholder="Örn: VAG dizel — Enter ile ekle"
+                className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400"
+              />
+              <button type="button" onClick={addTag} className="px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-700 border border-gray-200">
+                Ekle
+              </button>
+            </div>
+            {tags.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {tags.map((t) => (
+                  <span key={t} className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs bg-gray-100 text-gray-700">
+                    {t}
+                    <button type="button" onClick={() => setTags(tags.filter((x) => x !== t))} className="text-gray-400 hover:text-gray-700">×</button>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1.5">İl</label>
+              <select
+                value={city}
+                onChange={(e) => { setCity(e.target.value); setDistrict(""); }}
+                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 bg-white"
+              >
+                <option value="">Seçiniz</option>
+                {TURKISH_CITIES.map((c) => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                İlçe <span className="text-gray-400 font-normal">(opsiyonel)</span>
+              </label>
+              <select
+                value={district}
+                onChange={(e) => setDistrict(e.target.value)}
+                disabled={!city}
+                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 bg-white disabled:bg-gray-50 disabled:text-gray-400"
+              >
+                <option value="">{city ? "Belirtmek istemiyorum" : "Önce il seçiniz"}</option>
+                {districtOptions.map((d) => <option key={d} value={d}>{d}</option>)}
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Kendinizi tanıtın</label>
+            <textarea
+              value={bio}
+              onChange={(e) => setBio(e.target.value.slice(0, 2000))}
+              rows={5}
+              placeholder="Deneyiminiz, uzmanlaştığınız marka/modeller, işletmeniz hakkında kısa bilgi..."
+              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 resize-y"
+            />
+          </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">Kendinizi tanıtın</label>
-          <textarea
-            value={bio}
-            onChange={(e) => setBio(e.target.value.slice(0, 2000))}
-            rows={5}
-            placeholder="Deneyiminiz, uzmanlaştığınız marka/modeller, işletmeniz hakkında kısa bilgi..."
-            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 resize-y"
-          />
-        </div>
-
-        <div className="space-y-2 bg-gray-50 rounded-xl p-4">
+        <div className="space-y-2.5 bg-gray-50 rounded-2xl p-4">
           <label className="flex items-start gap-2 text-sm text-gray-700">
-            <input type="checkbox" checked={notCommercial} onChange={(e) => setNotCommercial(e.target.checked)} className="mt-0.5" />
+            <input type="checkbox" checked={notCommercial} onChange={(e) => setNotCommercial(e.target.checked)} className="mt-0.5 shrink-0" />
             Araç alım-satımı yapan bir galeri/oto pazarlama işletmesinin sahibi, ortağı veya çalışanı değilim;
             bir marka veya yetkili servisin çalışanı/temsilcisi/sözleşmeli hizmet sağlayıcısı değilim.
           </label>
           <label className="flex items-start gap-2 text-sm text-gray-700">
-            <input type="checkbox" checked={ageConfirmed} onChange={(e) => setAgeConfirmed(e.target.checked)} className="mt-0.5" />
+            <input type="checkbox" checked={ageConfirmed} onChange={(e) => setAgeConfirmed(e.target.checked)} className="mt-0.5 shrink-0" />
             18 yaşından büyüğüm.
+          </label>
+          <label className="flex items-start gap-2 text-xs text-gray-500">
+            <input type="checkbox" checked={privacyConsent} onChange={(e) => setPrivacyConsent(e.target.checked)} className="mt-0.5 shrink-0" />
+            <span>
+              <Link href="/gizlilik" className="underline" target="_blank">Gizlilik Politikası</Link>
+              {"'nı ve "}
+              <Link href="/kullanim-kosullari" className="underline" target="_blank">Kullanım Koşulları</Link>
+              {"'nı okudum, kabul ediyorum."}
+            </span>
           </label>
         </div>
 
@@ -167,8 +191,8 @@ export function ExpertApplicationForm() {
 
         <button
           type="submit"
-          disabled={loading}
-          className="w-full px-5 py-3 rounded-xl text-sm font-semibold text-white disabled:opacity-50"
+          disabled={loading || !allChecksPass}
+          className="w-full px-5 py-3 rounded-xl text-sm font-semibold text-white disabled:opacity-40"
           style={{ background: "#111" }}
         >
           {loading ? "Gönderiliyor…" : "Başvuruyu gönder"}

@@ -88,6 +88,7 @@ export const expertApplicationSchema = z.object({
   bio:           z.string().trim().min(30, "En az 30 karakter yazınız.").max(2000, "En fazla 2000 karakter yazabilirsiniz."),
   notCommercial: z.literal(true, { message: "Bu beyanı onaylamalısınız." }),
   ageConfirmed:  z.literal(true, { message: "18 yaşından büyük olduğunuzu onaylamalısınız." }),
+  privacyConsent: z.literal(true, { message: "Gizlilik Politikası'nı ve Kullanım Koşulları'nı kabul etmelisiniz." }),
 });
 
 export const expertNoteCreateSchema = z.object({
