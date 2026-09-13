@@ -54,7 +54,7 @@ export default async function ExpertProfilePage({
       select: {
         id: true, headline: true, bio: true, expertiseTags: true, city: true, district: true,
         status: true, createdAt: true, contactVisible: true, businessName: true, contactPhone: true, contactAddress: true,
-        visibilityState: true, userId: true,
+        visibilityState: true, userId: true, messagingEnabled: true,
         user: { select: { displayName: true } },
       },
     }),
@@ -79,7 +79,7 @@ export default async function ExpertProfilePage({
         select: { id: true },
       }))
     : false;
-  const canMessage = !!viewerId && !isOwnProfile && !isBlocked;
+  const canMessage = !!viewerId && !isOwnProfile && !isBlocked && profile.messagingEnabled;
 
   const confirmedContactCount = profile.contactVisible
     ? await prisma.expertContactFeedback.count({ where: { profileId: profile.id, isAccurate: true } })
@@ -179,6 +179,9 @@ export default async function ExpertProfilePage({
       )}
       {viewerId && !isOwnProfile && isBlocked && (
         <p className="mb-8 text-xs text-gray-400">Bu ustayla mesajlaşamazsınız.</p>
+      )}
+      {viewerId && !isOwnProfile && !isBlocked && !profile.messagingEnabled && (
+        <p className="mb-8 text-xs text-gray-400">Bu usta şu anda site üzerinden mesaj almıyor.</p>
       )}
 
       <div>

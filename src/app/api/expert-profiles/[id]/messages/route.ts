@@ -29,7 +29,7 @@ export async function POST(
   const [profile, user] = await Promise.all([
     prisma.expertProfile.findUnique({
       where: { id: expertProfileId },
-      select: { id: true, userId: true, status: true },
+      select: { id: true, userId: true, status: true, messagingEnabled: true },
     }),
     prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true } }),
   ]);
@@ -41,6 +41,18 @@ export async function POST(
   }
   if (!user?.emailVerifiedAt) {
     return NextResponse.json({ error: "Mesaj göndermek için e-posta adresinizi doğrulamanız gerekiyor." }, { status: 403 });
+  }
+
+  // Mesajlaşma kapalıysa yalnız YENİ görüşme başlatma engellenir — var olan
+  // bir thread'e (bu uçtan devam mesajı gönderiliyorsa) dokunulmaz.
+  if (!profile.messagingEnabled) {
+    const existingThread = await prisma.expertMessageThread.findUnique({
+      where: { expertProfileId_initiatorId: { expertProfileId, initiatorId: userId } },
+      select: { id: true },
+    });
+    if (!existingThread) {
+      return NextResponse.json({ error: "Bu usta şu anda site üzerinden mesaj almıyor." }, { status: 403 });
+    }
   }
 
   const blocked = await prisma.blockedUser.findFirst({

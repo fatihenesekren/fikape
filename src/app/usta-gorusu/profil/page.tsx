@@ -25,7 +25,7 @@ export default async function ExpertContactSettingsPage() {
     where: { userId },
     select: {
       id: true, status: true, slug: true, businessName: true, contactPhone: true, contactAddress: true,
-      cvNoindex: true, city: true, district: true, visibilityState: true,
+      cvNoindex: true, city: true, district: true, visibilityState: true, messagingEnabled: true,
     },
   });
 
@@ -104,6 +104,7 @@ export default async function ExpertContactSettingsPage() {
         initialConsentContactPublic={consentContactPublic ?? false}
         initialConsentRegionalPromo={consentRegionalPromo ?? false}
         initialCvNoindex={profile.cvNoindex}
+        initialMessagingEnabled={profile.messagingEnabled}
         profileSlug={profile.slug}
       />
     </div>

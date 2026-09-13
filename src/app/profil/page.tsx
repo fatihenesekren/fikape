@@ -262,6 +262,9 @@ export default async function ProfilPage() {
             <Link href={`/usta/${expertProfile.slug}`} className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
               Profilim
             </Link>
+            <Link href="/usta-gorusu/profil" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
+              İletişim Ayarları
+            </Link>
             <Link href="/usta-gorusu/yaz" className="px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "#111" }}>
               Usta Görüşü Yaz →
             </Link>

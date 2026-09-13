@@ -132,6 +132,7 @@ export const expertContactUpdateSchema = z.object({
   consentContactPublic:  z.boolean(),
   consentRegionalPromo:  z.boolean(),
   cvNoindex:             z.boolean(),
+  messagingEnabled:      z.boolean(),
 });
 
 export const insuranceLeadSchema = z.object({

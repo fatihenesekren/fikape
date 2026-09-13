@@ -1512,11 +1512,16 @@ model ExpertProfile {
 
   // İletişim — KVKK: ayrı açık rıza (EXPERT_CONTACT_PUBLIC) + ConsentLog + retention.
   // Silme TALEBİ anında sıfırlanır (30 gün SLA beklenmez).
-  businessName   String? @db.VarChar(120) // işyeri/dükkan adı (örn. "ABC Rot-Balans") — aynı rıza+eşiğe tabi
-  contactPhone   String? @db.VarChar(20)
-  contactAddress String? @db.VarChar(300) // açık adres OPSİYONEL; il/ilçe zorunlu
-  contactVisible Boolean @default(false)
-  cvNoindex      Boolean @default(false) // usta isterse profil sayfası noindex
+  businessName     String? @db.VarChar(120) // işyeri/dükkan adı (örn. "ABC Rot-Balans") — aynı rıza+eşiğe tabi
+  contactPhone     String? @db.VarChar(20)
+  contactAddress   String? @db.VarChar(300) // açık adres OPSİYONEL; il/ilçe zorunlu
+  contactVisible   Boolean @default(false)
+  cvNoindex        Boolean @default(false) // usta isterse profil sayfası noindex
+  // Site-içi mesajlaşma tercihi — varsayılan açık (mevcut davranış korunur).
+  // İletişim bilgisinden (contactVisible) BAĞIMSIZ: usta ne zaman isterse
+  // kapatıp açabilir. Kapatınca yalnız YENİ görüşme başlatma engellenir —
+  // devam eden görüşmelerde yanıt vermeye devam edebilir.
+  messagingEnabled Boolean @default(true)
 
   // Doğrulama — belge SAKLANMAZ (yalnız sonuç özeti; bkz. Saklama Politikası)
   status     ExpertStatus @default(PENDING_VERIFICATION)

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export function ContactSettingsForm({
-  initialBusinessName, initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, profileSlug,
+  initialBusinessName, initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, initialMessagingEnabled, profileSlug,
 }: {
   initialBusinessName: string | null;
   initialPhone: string | null;
@@ -13,12 +13,14 @@ export function ContactSettingsForm({
   initialConsentContactPublic: boolean;
   initialConsentRegionalPromo: boolean;
   initialCvNoindex: boolean;
+  initialMessagingEnabled: boolean;
   profileSlug: string;
 }) {
   const router = useRouter();
   const [businessName, setBusinessName] = useState(initialBusinessName ?? "");
   const [phone, setPhone] = useState(initialPhone ?? "");
   const [address, setAddress] = useState(initialAddress ?? "");
+  const [messagingEnabled, setMessagingEnabled] = useState(initialMessagingEnabled);
   const [consentContactPublic, setConsentContactPublic] = useState(initialConsentContactPublic);
   const [consentRegionalPromo, setConsentRegionalPromo] = useState(initialConsentRegionalPromo);
   const [cvNoindex, setCvNoindex] = useState(initialCvNoindex);
@@ -43,6 +45,7 @@ export function ContactSettingsForm({
           consentContactPublic,
           consentRegionalPromo,
           cvNoindex,
+          messagingEnabled,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -128,6 +131,23 @@ export function ContactSettingsForm({
             veren ustalar&quot; arasında gösterilmeme açık rıza veriyorum. Bu ücretsizdir, sıralama
             katkı ve kaliteye göre yapılır. (Bölgesel görünürlük yüzeyi henüz devrede değil —
             rızanız kaydedilir, mekanizma yayına girince kullanılır.)
+          </span>
+        </label>
+      </div>
+
+      <div className="bg-gray-50 rounded-xl p-4">
+        <label className="flex items-start gap-2 text-sm text-gray-700">
+          <input
+            type="checkbox"
+            checked={messagingEnabled}
+            onChange={(e) => setMessagingEnabled(e.target.checked)}
+            className="mt-0.5"
+          />
+          <span>
+            Kullanıcıların site üzerinden bana mesaj göndermesine izin veriyorum. Kapatırsanız
+            yeni görüşme başlatılamaz; devam eden görüşmelerde yanıt vermeye devam edebilirsiniz.
+            Bu tercih, yukarıdaki iletişim bilgisi paylaşımından bağımsızdır — istediğiniz zaman
+            değiştirebilirsiniz.
           </span>
         </label>
       </div>

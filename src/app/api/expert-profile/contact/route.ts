@@ -29,7 +29,7 @@ export async function PATCH(req: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
-  const { consentContactPublic, consentRegionalPromo, cvNoindex } = parsed.data;
+  const { consentContactPublic, consentRegionalPromo, cvNoindex, messagingEnabled } = parsed.data;
   const businessName = parsed.data.businessName?.trim() || null;
   const contactPhone = parsed.data.contactPhone?.trim() || null;
   const contactAddress = parsed.data.contactAddress?.trim() || null;
@@ -55,6 +55,7 @@ export async function PATCH(req: Request) {
       contactAddress: consentContactPublic ? contactAddress : null,
       contactVisible,
       cvNoindex,
+      messagingEnabled,
     },
   });
 
