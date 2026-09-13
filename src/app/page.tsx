@@ -6,6 +6,7 @@ import { HeroSection } from "./_components/HeroSection";
 import { ProductGrid } from "./_components/ProductGrid";
 import { CardGridSkeleton } from "./_components/CardGridSkeleton";
 import { RecentReviews } from "./_components/RecentReviews";
+import { UstaBandi } from "./_components/UstaBandi";
 import { TrendVehicleCard } from "./_components/TrendVehicleCard";
 import { CategoryTabs } from "./_components/CategoryTabs";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
@@ -136,6 +137,13 @@ export default async function Home({
 
       {/* ── Son yorumlar (quiz modunda değilken) ── */}
       {!quizParam && <RecentReviews />}
+
+      {/* ── Usta musunuz? bandı (quiz modunda değilken — kullanıcı kararı) ── */}
+      {!quizParam && (
+        <div className="pt-4">
+          <UstaBandi />
+        </div>
+      )}
 
       {/* ── Araç kartları — quiz yoksa kürasyonlu "öne çıkanlar" (~12, model
              başına tek), quiz varsa quiz-skorlu sonuçlar. Tüm katalog /araclar'da. ── */}
