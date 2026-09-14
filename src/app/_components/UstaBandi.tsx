@@ -23,7 +23,12 @@ export async function UstaBandi() {
   }
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4">
+    // pt-8 BURADA (dıştaki bir wrapper'da değil) — aktif ustaya null dönünce
+    // (yukarıda) hiçbir şey render edilmiyor, boşluk dahil. Önceden page.tsx
+    // bu bileşeni her zaman render edilen bir <div className="pt-8"> içine
+    // sarıyordu; null dönünce bile bu boş div üstten boşluk bırakıyordu —
+    // aktif usta ana sayfada tuhaf bir boşluk görüyordu (kullanıcı fark etti).
+    <section className="w-full max-w-7xl mx-auto px-4 pt-8">
       <Link
         href="/usta-ol"
         className="flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 min-h-11 border border-gray-100 bg-white transition-shadow hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"

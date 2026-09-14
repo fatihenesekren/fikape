@@ -138,12 +138,11 @@ export default async function Home({
       {/* ── Son yorumlar (quiz modunda değilken) ── */}
       {!quizParam && <RecentReviews />}
 
-      {/* ── Usta musunuz? bandı (quiz modunda değilken — kullanıcı kararı) ── */}
-      {!quizParam && (
-        <div className="pt-8">
-          <UstaBandi />
-        </div>
-      )}
+      {/* ── Usta musunuz? bandı (quiz modunda değilken — kullanıcı kararı) ──
+          pt-8 bileşenin KENDİ İÇİNDE (UstaBandi.tsx) — burada sarmalayıcı bir
+          div olmamalı, yoksa aktif ustaya (bileşen null dönünce) boş bir
+          boşluk kutusu görünür. */}
+      {!quizParam && <UstaBandi />}
 
       {/* ── Araç kartları — quiz yoksa kürasyonlu "öne çıkanlar" (~12, model
              başına tek), quiz varsa quiz-skorlu sonuçlar. Tüm katalog /araclar'da. ── */}
