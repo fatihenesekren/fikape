@@ -52,6 +52,9 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.range_km        ? { label: "Menzil",         value: `${attrs.range_km} km` }                            : null,
       attrs.max_speed_kmh   ? { label: "Maks. Hız",      value: `${attrs.max_speed_kmh} km/s` }                     : null,
       attrs.weight_kg       ? { label: "Ağırlık",        value: `${attrs.weight_kg} kg` }                           : null,
+      attrs.charge_hours    ? { label: "Şarj Süresi",    value: `~${attrs.charge_hours} saat` }                     : null,
+      attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: attrs.removable_battery ? "Var" : "Yok" } : null,
+      attrs.gearbox         ? { label: "Vites Sayısı",   value: `${attrs.gearbox} vites` }                          : null,
     ];
     if (categorySlug === "e-scooter") return [
       attrs.motor_watt    ? { label: "Motor Gücü",     value: `${attrs.motor_watt} W` }       : null,
@@ -64,6 +67,7 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.max_load_kg   ? { label: "Maks. Yük",      value: `${attrs.max_load_kg} kg` }      : null,
       attrs.tire_inch     ? { label: "Lastik",         value: `${attrs.tire_inch}"` }           : null,
       attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: attrs.removable_battery ? "Var" : "Yok" } : null,
+      attrs.foldable != null ? { label: "Katlanabilir", value: attrs.foldable ? "Var" : "Yok" } : null,
     ];
     if (categorySlug === "motosiklet") return [
       fuelType              ? { label: "Yakıt",        value: FUEL_LABELS[fuelType] ?? fuelType } : null,
@@ -72,6 +76,7 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.power_hp        ? { label: "Güç",          value: `${attrs.power_hp} HP` }         : null,
       attrs.torque_nm       ? { label: "Tork",         value: `${attrs.torque_nm} Nm` }        : null,
       attrs.gearbox         ? { label: "Şanzıman",     value: `${attrs.gearbox} vites` }       : null,
+      attrs.transmission    ? { label: "Vites Tipi",   value: capitalize(String(attrs.transmission)) } : null,
       attrs.abs != null     ? { label: "ABS",          value: attrs.abs ? "Var" : "Yok" }      : null,
       attrs.tank_l          ? { label: "Depo",         value: `${attrs.tank_l} L` }            : null,
       attrs.weight_kg       ? { label: "Ağırlık",      value: `${attrs.weight_kg} kg` }        : null,
@@ -145,9 +150,11 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.top_speed_kmh  ? { label: "Azami Hız",     value: `${attrs.top_speed_kmh} km/s` }   : null,
       (fuelType === "EV" || fuelType === "PHEV" || fuelType === "HYBRID") && attrs.ev_range_km  ? { label: "Menzil",  value: `${attrs.ev_range_km} km (WLTP)` } : null,
       (fuelType === "EV" || fuelType === "PHEV" || fuelType === "HYBRID") && attrs.battery_kwh  ? { label: "Batarya", value: `${attrs.battery_kwh} kWh` }      : null,
+      (fuelType === "EV" || fuelType === "PHEV" || fuelType === "HYBRID") && attrs.charge_hours ? { label: "Şarj Süresi", value: `~${attrs.charge_hours} saat` } : null,
       fuelType !== "EV"                                     && attrs.tank_l      ? { label: "Yakıt Dep.", value: `${attrs.tank_l} L` }             : null,
       attrs.boot_l         ? { label: "Bagaj",         value: `${attrs.boot_l} L` }             : null,
       attrs.weight_kg      ? { label: "Ağırlık",       value: `${attrs.weight_kg} kg` }         : null,
+      attrs.seat_count     ? { label: "Koltuk Sayısı", value: `${attrs.seat_count} kişi` }      : null,
     ];
   })();
 

@@ -53,8 +53,10 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "tank_l",       label: "Yakıt Dep.",type: "number", unit: "L", showIf: hasCombustionEngine },
     { key: "battery_kwh",  label: "Batarya",   type: "number", unit: "kWh", showIf: hasElectricRange },
     { key: "ev_range_km",  label: "Menzil",    type: "number", unit: "km (WLTP)", showIf: hasElectricRange },
+    { key: "charge_hours", label: "Şarj Süresi", type: "number", unit: "saat", showIf: hasElectricRange },
     { key: "boot_l",       label: "Bagaj",     type: "number", unit: "L" },
     { key: "weight_kg",    label: "Ağırlık",   type: "number", unit: "kg" },
+    { key: "seat_count",   label: "Koltuk Sayısı", type: "number", unit: "kişi" },
   ],
   motosiklet: [
     { key: "moto_type",    label: "Tip",       type: "select", options: MOTO_TYPES },
@@ -62,6 +64,7 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "power_hp",     label: "Güç",        type: "number", unit: "HP" },
     { key: "torque_nm",    label: "Tork",       type: "number", unit: "Nm" },
     { key: "gearbox",      label: "Şanzıman",   type: "number", unit: "vites", placeholder: "örn. 6" },
+    { key: "transmission", label: "Vites Tipi", type: "select", options: TRANSMISSION_TYPES },
     { key: "abs",          label: "ABS",        type: "boolean" },
     { key: "tank_l",       label: "Depo",       type: "number", unit: "L" },
     { key: "weight_kg",    label: "Ağırlık",    type: "number", unit: "kg" },
@@ -84,6 +87,7 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "max_load_kg",   label: "Maks. Yük",    type: "number", unit: "kg" },
     { key: "tire_inch",     label: "Lastik",       type: "number", unit: "\"" },
     { key: "removable_battery", label: "Çıkarılabilir Batarya", type: "boolean" },
+    { key: "foldable",      label: "Katlanabilir", type: "boolean" },
   ],
   "e-bisiklet": [
     { key: "bike_type",    label: "Bisiklet Tipi", type: "select", options: BIKE_TYPES },
@@ -94,6 +98,9 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "range_km",     label: "Menzil",        type: "number", unit: "km" },
     { key: "max_speed_kmh",label: "Maks. Hız",     type: "number", unit: "km/s" },
     { key: "weight_kg",    label: "Ağırlık",       type: "number", unit: "kg" },
+    { key: "charge_hours", label: "Şarj Süresi",   type: "number", unit: "saat" },
+    { key: "removable_battery", label: "Çıkarılabilir Batarya", type: "boolean" },
+    { key: "gearbox",      label: "Vites Sayısı",  type: "number", unit: "vites", placeholder: "örn. 7" },
   ],
   karavan: [
     { key: "karavan_type", label: "Tip",            type: "select", options: KARAVAN_TYPES },
@@ -111,10 +118,7 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "heating_type",   label: "Isıtma",       type: "select", options: HEATING_TYPES },
     { key: "engine_cc",      label: "Motor",        type: "number", unit: "cc", showIf: isMotorizedKaravan },
     { key: "power_hp",       label: "Güç",          type: "number", unit: "HP", showIf: isMotorizedKaravan },
-    { key: "transmission",   label: "Vites",        type: "select", showIf: isMotorizedKaravan, options: [
-      { value: "Manuel", label: "Manuel" }, { value: "Otomatik", label: "Otomatik" },
-      { value: "CVT", label: "CVT" }, { value: "Yarı Otomatik", label: "Yarı Otomatik" },
-    ]},
+    { key: "transmission",   label: "Vites",        type: "select", showIf: isMotorizedKaravan, options: TRANSMISSION_TYPES },
     { key: "has_bathroom",   label: "Banyo",        type: "boolean" },
     { key: "has_shower",     label: "Duş",          type: "boolean" },
     { key: "has_kitchen",    label: "Mutfak",       type: "boolean" },
