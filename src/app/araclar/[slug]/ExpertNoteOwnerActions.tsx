@@ -44,7 +44,7 @@ export function ExpertNoteOwnerActions({ noteId }: { noteId: number }) {
   }
 
   return (
-    <div className="flex items-center gap-3 pt-1">
+    <div className="flex items-center gap-3">
       <button type="button" onClick={handleShare} className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors">
         {copied ? "Kopyalandı ✓" : "↗ Paylaş"}
       </button>

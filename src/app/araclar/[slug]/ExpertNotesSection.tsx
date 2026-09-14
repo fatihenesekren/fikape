@@ -192,20 +192,25 @@ export function ExpertNotesSection({
               </dl>
             )}
 
-            <ExpertNoteVoteButtons
-              noteId={n.id}
-              initialHelpfulCount={n.helpfulCount}
-              initialUserVote={n.currentUserVote}
-              isLoggedIn={isLoggedIn}
-              isOwnNote={currentUserId === n.authorUserId}
-            />
-
-            {/* Düzenle/Sil/Paylaş — önceden bu ürün sayfasından erişimi hiç
-                yoktu, yalnız /usta-gorusu/notlarim'e gidip bulmak gerekiyordu
-                (kullanıcı fark etti). Yalnız notun kendi sahibi görür. */}
-            {currentUserId === n.authorUserId && (
-              <ExpertNoteOwnerActions noteId={n.id} />
-            )}
+            {/* Aksiyon "footer" bandı — tek çocuk, ince üst çizgiyle gövdeden
+                ayrılıyor. Önceden oy butonları (sahip için zaten pasil/griydi)
+                ile Paylaş/Düzenle/Sil satırı üst üste, ayraçsız duruyordu,
+                karışık görünüyordu (kullanıcı fark etti). Sahibi kendi notuna
+                oy veremeyeceği için ona oy butonları hiç gösterilmiyor artık —
+                yalnız gerçekten kullanabileceği aksiyonlar var. */}
+            <div className="pt-2 mt-1 border-t border-gray-50">
+              {currentUserId === n.authorUserId ? (
+                <ExpertNoteOwnerActions noteId={n.id} />
+              ) : (
+                <ExpertNoteVoteButtons
+                  noteId={n.id}
+                  initialHelpfulCount={n.helpfulCount}
+                  initialUserVote={n.currentUserVote}
+                  isLoggedIn={isLoggedIn}
+                  isOwnNote={false}
+                />
+              )}
+            </div>
 
             <ExpertNoteQna
               noteId={n.id}
