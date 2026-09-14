@@ -30,7 +30,7 @@ export function ExpertNoteRowActions({ noteId }: { noteId: number }) {
   }
 
   return (
-    <div className="flex items-center gap-3 pt-1">
+    <div className="flex items-center gap-4">
       <Link href={`/usta-gorusu/notlarim/${noteId}/duzenle`} className="text-xs font-semibold text-link hover:underline">
         Düzenle
       </Link>

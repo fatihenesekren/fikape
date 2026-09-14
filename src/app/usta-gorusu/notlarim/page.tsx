@@ -6,6 +6,18 @@ import { finalizeExpiredAppeals } from "@/lib/expertAppeal";
 import { ExpertAppealForm } from "../ExpertAppealForm";
 import { ExpertNoteRowActions } from "./ExpertNoteRowActions";
 import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
+import { listTimeLabel } from "@/lib/messageTime";
+
+// Sağa dönük ok — kart başlığının "sayfada görüntüle" olduğunu ima eder
+// (ExpertNotesSection.tsx'teki inline SVG ikon deseniyle aynı).
+function ArrowRightIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M5 12h14" />
+      <path d="M13 6l6 6-6 6" />
+    </svg>
+  );
+}
 
 export const metadata = { title: "Notlarım — fikape", robots: { index: false } };
 
@@ -60,14 +72,21 @@ export default async function ExpertMyNotesPage() {
     orderBy: { createdAt: "desc" },
   });
 
+  const now = new Date();
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      <div className="mb-6 flex items-center justify-between gap-2">
+      <div className="mb-1 flex items-center justify-between gap-2">
         <h1 className="text-2xl font-black text-gray-900">Notlarım</h1>
-        <Link href="/usta-gorusu/yaz" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
+        <Link
+          href="/usta-gorusu/yaz"
+          className="shrink-0 inline-flex items-center gap-1 rounded-xl px-3.5 py-2 text-xs font-semibold text-white"
+          style={{ background: "var(--btn-dark)" }}
+        >
           + Yeni not yaz
         </Link>
       </div>
+      <p className="text-sm text-gray-400 mb-6">Yazdığınız teknik notlar ve durumları.</p>
 
       {notes.length === 0 ? (
         // Önceden çıplak bir metin satırıydı — özelliğin geri kalanındaki
@@ -88,36 +107,46 @@ export default async function ExpertMyNotesPage() {
           </Link>
         </div>
       ) : (
-        <div className="space-y-2">
+        // Mesajlarım/Takas listesiyle aynı modern liste deseni: tek kart,
+        // satırlar arası ince ayraç — önceki her-not-ayrı-kutu görünümü
+        // yerine (görsel denetim: "Sayfada görüntüle" linki Düzenle/Sil'in
+        // yanına sıkışmıştı, hiyerarşisiz duruyordu). Artık başlığın kendisi
+        // yayındaki nota giden birincil eylem (ok ikonlu); Düzenle/Sil ayrı
+        // bir alt satırda, ince bir üst çizgiyle görsel olarak ayrılmış.
+        <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden divide-y divide-gray-50">
           {notes.map((n) => {
             const badge = STATUS_LABEL[n.status] ?? { label: n.status, ...EXPERT_STATUS_TONES.neutral };
             const appeal = n.appeals[0];
             const productSlug = n.model.products[0]?.slug;
             const pageHref = productSlug ? `/araclar/${productSlug}?sekme=usta-gorusleri#usta-not-${n.id}` : null;
+            const isPublished = n.status === "PUBLISHED" && pageHref;
             return (
-              <div key={n.id} className="bg-white border border-gray-100 rounded-xl p-4 space-y-1.5">
+              <div key={n.id} className="px-4 py-4">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-xs text-gray-400">{n.model.brand.name} {n.model.name}</span>
+                  <span className="text-xs text-gray-400 truncate">{n.model.brand.name} {n.model.name}</span>
                   <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold shrink-0" style={{ color: badge.color, background: badge.bg }}>
                     {badge.label}
                   </span>
                 </div>
-                <p className="text-sm font-semibold text-gray-800">{n.title}</p>
+
+                {isPublished ? (
+                  <Link href={pageHref} className="group flex items-center gap-1.5 mt-1 -ml-0.5 pl-0.5 rounded hover:bg-gray-50">
+                    <span className="text-[15px] font-bold text-gray-900 group-hover:text-link transition-colors">{n.title}</span>
+                    <ArrowRightIcon className="text-gray-300 group-hover:text-link transition-colors shrink-0" />
+                  </Link>
+                ) : (
+                  <p className="text-[15px] font-bold text-gray-900 mt-1">{n.title}</p>
+                )}
+                <p className="text-[11px] text-gray-400 mt-0.5">{listTimeLabel(n.createdAt, now)}</p>
+
                 {n.status === "REJECTED" && (
-                  <>
+                  <div className="mt-1.5 space-y-1.5">
                     {n.rejectionReason && <p className="text-xs text-gray-500">Gerekçe: {n.rejectionReason}</p>}
                     <ExpertAppealForm subjectType="NOTE_REJECTION" noteId={n.id} existingStatus={appeal?.status ?? null} />
-                  </>
+                  </div>
                 )}
-                <div className="flex items-center gap-3">
-                  {/* Yayında ise sayfada nerede göründüğüne dair link — önceden hiç
-                      yoktu, usta kendi notunun canlı halini görmek için araç
-                      sayfasını elle aramak zorundaydı. */}
-                  {n.status === "PUBLISHED" && pageHref && (
-                    <Link href={pageHref} className="text-xs font-semibold" style={{ color: "var(--link)" }}>
-                      Sayfada görüntüle →
-                    </Link>
-                  )}
+
+                <div className="mt-3 pt-3 border-t border-gray-50">
                   <ExpertNoteRowActions noteId={n.id} />
                 </div>
               </div>
