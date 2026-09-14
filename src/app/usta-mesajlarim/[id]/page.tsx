@@ -27,11 +27,10 @@ export default async function ExpertMessageThreadPage({
       expertProfile: {
         select: {
           slug: true, headline: true, userId: true, user: { select: { displayName: true, avatarUrl: true } },
-          contactVisible: true, businessName: true, contactPhone: true, contactAddress: true,
         },
       },
       messages: {
-        select: { id: true, senderId: true, text: true, createdAt: true },
+        select: { id: true, senderId: true, text: true, createdAt: true, isRead: true },
         orderBy: { createdAt: "asc" },
       },
     },
@@ -42,11 +41,9 @@ export default async function ExpertMessageThreadPage({
   if (userId !== thread.initiatorId && userId !== ustaUserId) notFound();
 
   const counterpartId = userId === thread.initiatorId ? ustaUserId : thread.initiatorId;
-  // Önceden "engellendi" durumu yalnız İSTEMCİ state'inde (kullanıcı bu
-  // oturumda "Engelle"ye bastıysa) tutuluyordu — sayfa yenilenince ya da
-  // KARŞI TARAF sizi engellemişse arayüz hiç yansıtmıyordu (mesaj API'si
-  // zaten 403 veriyordu ama ekran normal görünüyordu). Artık sunucu
-  // tarafında gerçek durumu kontrol edip prop olarak geçiyoruz.
+  // "Engellendi" durumu sunucu tarafında gerçek BlockedUser tablosundan
+  // kontrol edilir (client state'e güvenilmez — sayfa yenilenince veya
+  // KARŞI TARAF sizi engellemişse de doğru yansısın diye).
   const [blockedByMe, blockedByThem] = await Promise.all([
     prisma.blockedUser.findUnique({
       where: { blockerId_blockedId: { blockerId: userId, blockedId: counterpartId } },
@@ -57,6 +54,10 @@ export default async function ExpertMessageThreadPage({
       select: { id: true },
     }),
   ]);
+
+  // "── Yeni ──" ayıracı için: okundu işaretlemeden ÖNCE ilk okunmamış
+  // (karşı taraftan gelen) mesajı yakala — Takas Mesajlarım'daki aynı desen.
+  const firstUnreadId = thread.messages.find((m) => m.senderId !== userId && !m.isRead)?.id ?? null;
 
   await prisma.expertMessage.updateMany({
     where: { threadId, senderId: { not: userId }, isRead: false },
@@ -70,19 +71,7 @@ export default async function ExpertMessageThreadPage({
     ? thread.expertProfile.user.avatarUrl
     : thread.initiator.avatarUrl;
 
-  const isInitiator = userId === thread.initiatorId;
-  // "İletişim bilgisi doğru muydu?" sorusu yalnız usta gerçekten bir iletişim
-  // bilgisi paylaşmışsa anlamlı — kullanıcı fark etti: paylaşılmamış bile
-  // olsa soru soruluyordu, hem kafa karıştırıyor hem sahte bir "teyit"
-  // kaydına yol açabiliyordu.
-  const hasSharedContact = thread.expertProfile.contactVisible &&
-    !!(thread.expertProfile.businessName || thread.expertProfile.contactPhone || thread.expertProfile.contactAddress);
-  const existingFeedback = isInitiator && hasSharedContact
-    ? await prisma.expertContactFeedback.findUnique({
-        where: { profileId_userId: { profileId: thread.expertProfileId, userId } },
-        select: { isAccurate: true },
-      })
-    : null;
+  const lastMineId = [...thread.messages].reverse().find((m) => m.senderId === userId)?.id ?? null;
 
   return (
     <ExpertThreadView
@@ -95,15 +84,13 @@ export default async function ExpertMessageThreadPage({
         id: m.id,
         text: m.text,
         isOwn: m.senderId === userId,
+        isRead: m.isRead,
         createdAt: m.createdAt.toISOString(),
       }))}
+      firstUnreadId={firstUnreadId}
+      lastMineId={lastMineId}
       initialBlockedByMe={!!blockedByMe}
       initialBlockedByThem={!!blockedByThem}
-      contactFeedback={
-        isInitiator && hasSharedContact
-          ? { expertProfileId: thread.expertProfileId, currentValue: existingFeedback?.isAccurate ?? null }
-          : null
-      }
     />
   );
 }

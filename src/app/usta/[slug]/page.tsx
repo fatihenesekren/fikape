@@ -7,6 +7,7 @@ import { EXPERT_BADGE, CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES } from "@/lib/expe
 import { contactFeedbackLabel } from "@/lib/expertContactFeedback";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { ExpertMessageComposer } from "./ExpertMessageComposer";
+import { ContactFeedbackWidget } from "./ContactFeedbackWidget";
 import { Avatar } from "@/components/Avatar";
 
 export async function generateMetadata({
@@ -86,6 +87,25 @@ export default async function ExpertProfilePage({
     ? await prisma.expertContactFeedback.count({ where: { profileId: profile.id, isAccurate: true } })
     : 0;
   const contactFeedbackText = contactFeedbackLabel(confirmedContactCount);
+
+  // "Bu bilgi doğru muydu?" sorusu artık BURADA (iletişim bilgisinin
+  // gösterildiği yer) soruluyor — önceden mesaj thread'inin içindeydi,
+  // bağlamsız duruyordu (kullanıcı fark etti). Yetki kuralı aynı: yalnız bu
+  // ustayla gerçekten bir mesaj thread'i başlatmış (kendi profili olmayan)
+  // ziyaretçi görür — API zaten bunu zorunlu kılıyor, burada da aynı koşulu
+  // önceden kontrol edip widget'ı yalnız uygunsa gösteriyoruz.
+  const myContactFeedbackThread = viewerId && !isOwnProfile
+    ? await prisma.expertMessageThread.findUnique({
+        where: { expertProfileId_initiatorId: { expertProfileId: profile.id, initiatorId: viewerId } },
+        select: { id: true },
+      })
+    : null;
+  const myExistingFeedback = myContactFeedbackThread
+    ? await prisma.expertContactFeedback.findUnique({
+        where: { profileId_userId: { profileId: profile.id, userId: viewerId! } },
+        select: { isAccurate: true },
+      })
+    : null;
 
   const notes = await prisma.expertNote.findMany({
     where: { profile: { slug }, status: "PUBLISHED", removedAt: null },
@@ -213,6 +233,9 @@ export default async function ExpertProfilePage({
           )}
           {contactFeedbackText && (
             <p className="text-[11px] font-semibold text-green-700">✓ {contactFeedbackText}</p>
+          )}
+          {myContactFeedbackThread && (
+            <ContactFeedbackWidget expertProfileId={profile.id} initialValue={myExistingFeedback?.isAccurate ?? null} />
           )}
           <p className="text-[11px] text-gray-400 pt-1 leading-relaxed">
             Bu bilgi ustanın kendi beyanıdır, fikape tarafından doğrulanmaz. fikape, kurduğunuz iş
