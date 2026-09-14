@@ -82,7 +82,7 @@ export default async function ProfilPage() {
   const publishedReviews = reviews.filter((r) => r.status === "PUBLISHED");
   const reviewIds = publishedReviews.map((r) => r.id);
 
-  const [garageCount, helpfulCount, foundingIds, notifications, expertProfile] = await Promise.all([
+  const [garageCount, helpfulCount, foundingIds, notifications, expertProfile, ustaThreadCount] = await Promise.all([
     prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } }),
     reviewIds.length
       ? prisma.reviewHelpfulVote.count({ where: { reviewId: { in: reviewIds }, isHelpful: true } })
@@ -95,6 +95,11 @@ export default async function ProfilPage() {
       select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true },
     }),
     prisma.expertProfile.findUnique({ where: { userId }, select: { status: true, slug: true } }).catch(() => null),
+    // "Usta Mesajlarım" linki yalnız gerçekten erişilebilir bir şey varsa
+    // gösterilir (bkz. /mesajlar sekme görünürlüğüyle AYNI kural).
+    prisma.expertMessageThread.count({
+      where: { OR: [{ initiatorId: userId }, { expertProfile: { userId } }] },
+    }),
   ]);
 
   const hasMoreNotifications = notifications.length > 20;
@@ -425,12 +430,16 @@ export default async function ProfilPage() {
             {/* Usta ile site-içi mesajlaşma — hem "usta olarak gelen" hem
                 "kullanıcı olarak başlattığın" görüşmeler tek gelen kutusunda
                 (Aşama 6b). Kart bile olmayan ayrı bir bloktan, karta gömülü
-                bir alt-satıra indirildi. */}
-            <div className="mt-3 pt-3 border-t border-blue-100/70 flex justify-end">
-              <Link href="/mesajlar?tab=usta" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
-                💬 Usta Mesajlarım →
-              </Link>
-            </div>
+                bir alt-satıra indirildi. Aktif usta değilse VE hiç
+                usta-konuşması yoksa hiç gösterilmez — erişecek bir şeyi
+                olmayan kullanıcıya boş bir link göstermenin anlamı yok. */}
+            {(expertProfile?.status === "ACTIVE" || ustaThreadCount > 0) && (
+              <div className="mt-3 pt-3 border-t border-blue-100/70 flex justify-end">
+                <Link href="/mesajlar?tab=usta" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
+                  💬 Usta Mesajlarım →
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
