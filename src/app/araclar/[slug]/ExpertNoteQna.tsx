@@ -28,13 +28,19 @@ export function ExpertNoteQna({
   isLoggedIn,
   canAnswer,
   currentUserId,
+  noteAuthorUserId,
 }: {
   noteId: number;
   questions: ExpertNoteQuestionView[];
   isLoggedIn: boolean;
   canAnswer: boolean;
   currentUserId: number | null;
+  noteAuthorUserId: number;
 }) {
+  // Kullanıcı fark etti: notun sahibi kendi notuna soru sorma formunu
+  // GÖRÜYORDU, göndermeyi deneyince sunucu reddediyordu ("Kendi notunuza
+  // soru soramazsınız") — form baştan hiç görünmemeliydi.
+  const isOwnNote = currentUserId != null && currentUserId === noteAuthorUserId;
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
@@ -186,26 +192,28 @@ export function ExpertNoteQna({
             <p className="text-xs text-gray-400">Henüz soru sorulmamış.</p>
           )}
 
-          {isLoggedIn ? (
-            <form onSubmit={ask} className="flex items-start gap-2">
-              <input
-                type="text"
-                value={text}
-                onChange={(e) => setText(e.target.value.slice(0, 300))}
-                placeholder={canAnswer ? "Not sahibine bir soru sorun…" : "Bu usta notu hakkında soru sorun…"}
-                className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400"
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="px-3 py-2 rounded-lg text-xs font-semibold text-white disabled:opacity-50 shrink-0"
-                style={{ background: "var(--btn-dark)" }}
-              >
-                {loading ? "…" : "Sor"}
-              </button>
-            </form>
-          ) : (
-            <p className="text-xs text-gray-400">Soru sormak için giriş yapmalısınız.</p>
+          {!isOwnNote && (
+            isLoggedIn ? (
+              <form onSubmit={ask} className="flex items-start gap-2">
+                <input
+                  type="text"
+                  value={text}
+                  onChange={(e) => setText(e.target.value.slice(0, 300))}
+                  placeholder={canAnswer ? "Not sahibine bir soru sorun…" : "Bu usta notu hakkında soru sorun…"}
+                  className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400"
+                />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="px-3 py-2 rounded-lg text-xs font-semibold text-white disabled:opacity-50 shrink-0"
+                  style={{ background: "var(--btn-dark)" }}
+                >
+                  {loading ? "…" : "Sor"}
+                </button>
+              </form>
+            ) : (
+              <p className="text-xs text-gray-400">Soru sormak için giriş yapmalısınız.</p>
+            )
           )}
           {error && <p className="text-xs text-red-600">{error}</p>}
         </div>

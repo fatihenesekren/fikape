@@ -3,6 +3,7 @@ import { Avatar } from "@/components/Avatar";
 import { EXPERT_BADGE, EXPERT_NOTE_DISCLAIMER, EXPERT_NOTE_FIELDS, EXPERT_NOTE_SCOPE_KEY } from "@/lib/expertNote";
 import { ExpertNoteVoteButtons } from "@/components/ExpertNoteVoteButtons";
 import { ExpertNoteQna, type ExpertNoteQuestionView } from "./ExpertNoteQna";
+import { ExpertNoteOwnerActions } from "./ExpertNoteOwnerActions";
 import { RegionalExpertsBlock } from "./RegionalExpertsBlock";
 import { RegionOptInPrompt } from "./RegionOptInPrompt";
 import type { RegionalSummary } from "@/lib/expertRegional";
@@ -189,12 +190,20 @@ export function ExpertNotesSection({
               isOwnNote={currentUserId === n.authorUserId}
             />
 
+            {/* Düzenle/Sil/Paylaş — önceden bu ürün sayfasından erişimi hiç
+                yoktu, yalnız /usta-gorusu/notlarim'e gidip bulmak gerekiyordu
+                (kullanıcı fark etti). Yalnız notun kendi sahibi görür. */}
+            {currentUserId === n.authorUserId && (
+              <ExpertNoteOwnerActions noteId={n.id} />
+            )}
+
             <ExpertNoteQna
               noteId={n.id}
               questions={n.questions}
               isLoggedIn={isLoggedIn}
               canAnswer={canAnswer}
               currentUserId={currentUserId}
+              noteAuthorUserId={n.authorUserId}
             />
           </article>
         ))}
