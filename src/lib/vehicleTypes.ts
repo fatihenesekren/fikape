@@ -47,6 +47,38 @@ export const KAMYONET_BODY_TYPES: TypeOption[] = [
   { value: "minivan",  label: "Minivan" },
 ];
 
+// Kabin konfigürasyonu — yalnız pickup kasa tipinde anlamlı (specFields.ts showIf).
+export const KAMYONET_CAB_TYPES: TypeOption[] = [
+  { value: "tek_kabin",   label: "Tek Kabin" },
+  { value: "bucuk_kabin", label: "Buçuk Kabin" },
+  { value: "cift_kabin",  label: "Çift Kabin" },
+];
+
+// Boyut sınıfı — pikaplar için A-F gibi resmi/uluslararası bir segment
+// standardı YOK (araştırıldı, "K segment" doğrulanabilir bir kaynak değil);
+// otomotiv basınında yaygın kullanılan tanımlayıcı sınıflandırma kullanıldı.
+export const KAMYONET_SIZE_CLASSES: TypeOption[] = [
+  { value: "kompakt", label: "Kompakt Pickup" },
+  { value: "orta",    label: "Orta Boy Pickup" },
+  { value: "buyuk",   label: "Büyük Boy Pickup" },
+];
+
+// AB/UN-ECE araç sınıfı (2007/46/EC) — gerçek, resmi bir standart.
+// Kamyonet kategorisindeki araçlar neredeyse hepsi N1, nadiren N2/N3 (kamyon
+// şasili büyük pikaplar). Otomobil kategorisi zaten M1 olduğundan burada yok.
+export const VEHICLE_CLASS_TYPES: TypeOption[] = [
+  { value: "N1", label: "N1 — Hafif ticari (≤3,5t)" },
+  { value: "N2", label: "N2 (3,5–12t)" },
+  { value: "N3", label: "N3 (>12t)" },
+];
+
+export const TRANSMISSION_TYPES: TypeOption[] = [
+  { value: "Manuel",        label: "Manuel" },
+  { value: "Otomatik",      label: "Otomatik" },
+  { value: "CVT",           label: "CVT" },
+  { value: "Yarı Otomatik", label: "Yarı Otomatik" },
+];
+
 export const KARAVAN_TYPES: TypeOption[] = [
   { value: "cekme",      label: "Çekme Karavan" },
   { value: "motorlu",    label: "Motorlu Karavan" },

@@ -1,5 +1,6 @@
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, OTOMOBIL_SEGMENTS, KAMYONET_BODY_TYPES,
+  KAMYONET_CAB_TYPES, KAMYONET_SIZE_CLASSES, VEHICLE_CLASS_TYPES, TRANSMISSION_TYPES,
   KARAVAN_TYPES, BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES,
   HEATING_TYPES,
 } from "@/lib/vehicleTypes";
@@ -32,6 +33,10 @@ const hasCombustionEngine: ShowIf  = (a) => a.fuel_type !== "EV";
 // orada sadece UYARI veriyordu, burada showIf ile alan hiç gösterilmiyor).
 const isMotorizedKaravan: ShowIf = (a) => a.karavan_type !== "cekme";
 
+// Kamyonet: kabin konfigürasyonu yalnız pickup kasa tipinde anlamlı —
+// van/panelvan/minivan'da "kaç kapı/kabin" ayrı bir kavram değil.
+const isPickupBody: ShowIf = (a) => a.body_type === "pickup";
+
 // Kategori bazlı teknik özellik form alanları — admin öneri onay formu ve
 // ürün düzenleme formu (/admin/urunler) tarafından ortak kullanılır.
 export const SPEC_FIELDS: Record<string, FieldDef[]> = {
@@ -39,10 +44,7 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "body_type",    label: "Kasa",      type: "select", options: OTOMOBIL_BODY_TYPES },
     { key: "segment",      label: "Segment",   type: "select", options: OTOMOBIL_SEGMENTS },
     { key: "drivetrain",   label: "Çekiş",     type: "select", options: DRIVETRAIN_TYPES },
-    { key: "transmission", label: "Vites",     type: "select", options: [
-      { value: "Manuel", label: "Manuel" }, { value: "Otomatik", label: "Otomatik" },
-      { value: "CVT", label: "CVT" }, { value: "Yarı Otomatik", label: "Yarı Otomatik" },
-    ]},
+    { key: "transmission", label: "Vites",     type: "select", options: TRANSMISSION_TYPES },
     { key: "engine_cc",    label: "Motor",     type: "number", unit: "cc", showIf: hasCombustionEngine },
     { key: "power_hp",     label: "Güç",       type: "number", unit: "HP" },
     { key: "torque_nm",    label: "Tork",      type: "number", unit: "Nm" },
@@ -120,6 +122,10 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
   ],
   kamyonet: [
     { key: "body_type",     label: "Kasa",          type: "select", options: KAMYONET_BODY_TYPES },
+    { key: "cab_type",      label: "Kabin",         type: "select", options: KAMYONET_CAB_TYPES, showIf: isPickupBody },
+    { key: "size_class",    label: "Boyut Sınıfı",  type: "select", options: KAMYONET_SIZE_CLASSES },
+    { key: "vehicle_class", label: "Taşıt Sınıfı",  type: "select", options: VEHICLE_CLASS_TYPES },
+    { key: "transmission",  label: "Vites",         type: "select", options: TRANSMISSION_TYPES },
     { key: "engine_cc",     label: "Motor",         type: "number", unit: "cc" },
     { key: "power_hp",      label: "Güç",           type: "number", unit: "HP" },
     { key: "torque_nm",     label: "Tork",          type: "number", unit: "Nm" },

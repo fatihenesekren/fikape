@@ -5,7 +5,8 @@
 // (bkz. kullanıcı talebi: takas ilanına Teknik Özellikler sekmesi).
 import { FUEL_LABELS } from "@/lib/fuel";
 import {
-  MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
+  MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KAMYONET_CAB_TYPES,
+  KAMYONET_SIZE_CLASSES, VEHICLE_CLASS_TYPES, KARAVAN_TYPES,
   BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES, HEATING_TYPES, toLabelMap,
 } from "@/lib/vehicleTypes";
 
@@ -18,6 +19,9 @@ const BODY_LABELS: Record<string, string> = {
   ...toLabelMap(OTOMOBIL_BODY_TYPES),
   ...toLabelMap(KAMYONET_BODY_TYPES),
 };
+const CAB_TYPE_LABELS = toLabelMap(KAMYONET_CAB_TYPES);
+const SIZE_CLASS_LABELS = toLabelMap(KAMYONET_SIZE_CLASSES);
+const VEHICLE_CLASS_LABELS = toLabelMap(VEHICLE_CLASS_TYPES);
 const MOTO_TYPE_LABELS = toLabelMap(MOTO_TYPES);
 const KARAVAN_TYPE_LABELS = toLabelMap(KARAVAN_TYPES);
 const DRIVETRAIN_LABELS = toLabelMap(DRIVETRAIN_TYPES);
@@ -112,6 +116,10 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
     if (categorySlug === "kamyonet") return [
       fuelType               ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType } : null,
       bodyType               ? { label: "Kasa",        value: BODY_LABELS[bodyType] ?? bodyType } : null,
+      attrs.cab_type         ? { label: "Kabin",       value: CAB_TYPE_LABELS[String(attrs.cab_type)] ?? String(attrs.cab_type) } : null,
+      attrs.size_class       ? { label: "Boyut Sınıfı",value: SIZE_CLASS_LABELS[String(attrs.size_class)] ?? String(attrs.size_class) } : null,
+      attrs.vehicle_class    ? { label: "Taşıt Sınıfı",value: VEHICLE_CLASS_LABELS[String(attrs.vehicle_class)] ?? String(attrs.vehicle_class) } : null,
+      attrs.transmission     ? { label: "Vites",       value: capitalize(String(attrs.transmission)) }        : null,
       attrs.engine_cc        ? { label: "Motor",       value: `${attrs.engine_cc} cc` }        : null,
       attrs.power_hp         ? { label: "Güç",         value: `${attrs.power_hp} HP` }         : null,
       attrs.torque_nm        ? { label: "Tork",        value: `${attrs.torque_nm} Nm` }        : null,

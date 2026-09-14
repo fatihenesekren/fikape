@@ -10,7 +10,8 @@
 import { FUEL_LABELS } from "@/lib/fuel";
 import {
   OTOMOBIL_BODY_TYPES, OTOMOBIL_SEGMENTS, KARAVAN_TYPES, BIKE_TYPES,
-  KAMYONET_BODY_TYPES, toLabelMap,
+  KAMYONET_BODY_TYPES, KAMYONET_CAB_TYPES, KAMYONET_SIZE_CLASSES, TRANSMISSION_TYPES,
+  toLabelMap,
 } from "@/lib/vehicleTypes";
 
 type Attrs = Record<string, unknown>;
@@ -143,6 +144,9 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
     enumGroup("govde", "Gövde", "body_type", toLabelMap(KAMYONET_BODY_TYPES)),
     FUEL_GROUP,
     FOUR_WD_GROUP,
+    enumGroup("boyut", "Boyut Sınıfı", "size_class", toLabelMap(KAMYONET_SIZE_CLASSES)),
+    enumGroup("kabin", "Kabin", "cab_type", toLabelMap(KAMYONET_CAB_TYPES)),
+    enumGroup("vites", "Vites", "transmission", toLabelMap(TRANSMISSION_TYPES)),
   ],
 };
 
