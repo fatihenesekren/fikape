@@ -2,11 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { hhmm } from "@/lib/messageTime";
 
 export interface ExpertNoteAnswerView {
   id: number;
   text: string;
   authorName: string;
+  authorUserId: number;
+  status: "PENDING" | "PUBLISHED" | "REJECTED";
   createdAt: string;
 }
 
@@ -19,9 +22,25 @@ export interface ExpertNoteQuestionView {
   answers: ExpertNoteAnswerView[];
 }
 
+// "14 Eyl · 14:32" — kullanıcı fark etti, soru/cevap satırlarında hiç
+// tarih/saat yoktu.
+function formatDateTime(iso: string): string {
+  const d = new Date(iso);
+  const datePart = d.toLocaleDateString("tr-TR", { day: "numeric", month: "short" });
+  return `${datePart} · ${hhmm(d)}`;
+}
+
+const ANSWER_STATUS_LABEL: Record<string, string> = {
+  PENDING: "İnceleniyor",
+  REJECTED: "Reddedildi",
+};
+
 // Usta notu altındaki soru-cevap — "B modeli": soruyu herkes sorar (sahiplik
-// şartı yok, kendi notuna hariç), cevabı yalnız doğrulanmış ustalar verir
-// (API tarafında zorlanır, burada da forma erişim `canAnswer` ile kapalı).
+// şartı yok, kendi notuna hariç). Kullanıcı kararı (14 Eylül 2026): bir
+// soruya toplamda TEK cevap yeterli — bir usta cevapladıktan sonra başka
+// birine "Cevap ver" gösterilmez, yalnız cevaplayan kendi cevabını
+// düzenleyebilir/silebilir. (Önceki tasarım — birden çok ustanın aynı soruya
+// ayrı ayrı cevap vermesi — kullanıcı isteğiyle basitleştirildi.)
 export function ExpertNoteQna({
   noteId,
   questions,
@@ -37,21 +56,21 @@ export function ExpertNoteQna({
   currentUserId: number | null;
   noteAuthorUserId: number;
 }) {
-  // Kullanıcı fark etti: notun sahibi kendi notuna soru sorma formunu
-  // GÖRÜYORDU, göndermeyi deneyince sunucu reddediyordu ("Kendi notunuza
-  // soru soramazsınız") — form baştan hiç görünmemeliydi.
-  const isOwnNote = currentUserId != null && currentUserId === noteAuthorUserId;
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const isOwnNote = currentUserId != null && currentUserId === noteAuthorUserId;
 
-  // Hangi sorunun cevap formu açık — aynı anda birden fazla açılabilir.
+  // Hangi sorunun cevap formu açık (yeni cevap YA DA düzenleme) — aynı anda
+  // birden fazla açılabilir. mode ayrımı submit davranışını belirler.
   const [answeringId, setAnsweringId] = useState<number | null>(null);
+  const [editingAnswerId, setEditingAnswerId] = useState<number | null>(null);
   const [answerText, setAnswerText] = useState("");
   const [answerLoading, setAnswerLoading] = useState(false);
   const [answerError, setAnswerError] = useState("");
+  const [deletingAnswerId, setDeletingAnswerId] = useState<number | null>(null);
   // Gönderilen (henüz moderasyon bekleyen, bu yüzden listede görünmeyen)
   // cevaplar için soru bazlı bir onay mesajı.
   const [submittedIds, setSubmittedIds] = useState<Set<number>>(new Set());
@@ -82,14 +101,15 @@ export function ExpertNoteQna({
     }
   }
 
-  async function answer(e: React.FormEvent, questionId: number) {
+  async function submitAnswer(e: React.FormEvent, questionId: number) {
     e.preventDefault();
     if (answerText.trim().length < 5) return setAnswerError("En az 5 karakter yazınız.");
     setAnswerLoading(true);
     setAnswerError("");
     try {
-      const res = await fetch(`/api/questions/${questionId}/answers`, {
-        method: "POST",
+      const url = editingAnswerId != null ? `/api/answers/${editingAnswerId}` : `/api/questions/${questionId}/answers`;
+      const res = await fetch(url, {
+        method: editingAnswerId != null ? "PATCH" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: answerText.trim() }),
       });
@@ -101,11 +121,29 @@ export function ExpertNoteQna({
       }
       setAnswerText("");
       setAnsweringId(null);
+      setEditingAnswerId(null);
       setAnswerLoading(false);
       setSubmittedIds((s) => new Set(s).add(questionId));
+      router.refresh();
     } catch {
       setAnswerError("Bağlantı hatası.");
       setAnswerLoading(false);
+    }
+  }
+
+  async function deleteAnswer(answerId: number) {
+    if (!confirm("Bu cevabı silmek istediğinize emin misiniz?")) return;
+    setDeletingAnswerId(answerId);
+    try {
+      const res = await fetch(`/api/answers/${answerId}`, { method: "DELETE" });
+      if (res.ok) {
+        router.refresh();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error ?? "Silinemedi.");
+      }
+    } finally {
+      setDeletingAnswerId(null);
     }
   }
 
@@ -123,29 +161,95 @@ export function ExpertNoteQna({
       {open && (
         <div className="mt-3 space-y-3">
           {questions.map((q) => {
-            // Cevap formu yalnız: doğrulanmış usta ise VE kendi sorusu değilse
-            // (kendi sorusuna cevap zaten sunucu tarafında da engelli).
-            const canAnswerThis = canAnswer && currentUserId != null && q.authorUserId !== currentUserId;
+            const myAnswer = currentUserId != null ? q.answers.find((a) => a.authorUserId === currentUserId) : undefined;
+            // Kullanıcı kararı: bir soruya toplamda tek cevap — biri
+            // (herhangi bir usta) zaten cevaplamışsa başkasına "Cevap ver"
+            // gösterilmez, yalnız cevaplayan kendi cevabını yönetebilir.
+            const canAnswerThis = canAnswer && currentUserId != null && q.authorUserId !== currentUserId
+              && q.answers.length === 0;
+            const isEditingMyAnswer = myAnswer != null && editingAnswerId === myAnswer.id;
+
             return (
               <div key={q.id} className="bg-gray-50 rounded-lg px-3 py-2 space-y-2">
-                <p className="text-sm text-gray-800">
-                  <span className="font-semibold">{q.authorName}:</span> {q.text}
-                </p>
-                {q.answers.map((a) => (
-                  <p key={a.id} className="text-sm text-gray-600 pl-3 border-l-2 border-gray-200">
-                    <span className="font-semibold text-gray-700">{a.authorName}:</span> {a.text}
+                <div>
+                  <p className="text-sm text-gray-800">
+                    <span className="font-semibold">{q.authorName}:</span> {q.text}
                   </p>
+                  <p className="text-[10px] text-gray-400 mt-0.5">{formatDateTime(q.createdAt)}</p>
+                </div>
+
+                {q.answers.map((a) => (
+                  <div key={a.id} className="pl-3 border-l-2 border-gray-200">
+                    {isEditingMyAnswer && a.id === myAnswer!.id ? (
+                      <form onSubmit={(e) => submitAnswer(e, q.id)} className="flex items-start gap-2">
+                        <input
+                          type="text"
+                          value={answerText}
+                          onChange={(e) => setAnswerText(e.target.value.slice(0, 500))}
+                          autoFocus
+                          className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
+                        />
+                        <button
+                          type="submit"
+                          disabled={answerLoading}
+                          className="px-3 py-2 rounded-lg text-xs font-semibold text-white disabled:opacity-50 shrink-0"
+                          style={{ background: "var(--btn-dark)" }}
+                        >
+                          {answerLoading ? "…" : "Kaydet"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { setEditingAnswerId(null); setAnswerError(""); }}
+                          className="text-xs text-gray-400 hover:text-gray-700 shrink-0 py-2"
+                        >
+                          Vazgeç
+                        </button>
+                      </form>
+                    ) : (
+                      <>
+                        <p className="text-sm text-gray-600">
+                          <span className="font-semibold text-gray-700">{a.authorName}:</span> {a.text}
+                        </p>
+                        <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                          <span className="text-[10px] text-gray-400">{formatDateTime(a.createdAt)}</span>
+                          {a.status !== "PUBLISHED" && (
+                            <span className="text-[10px] font-semibold text-amber-600">· {ANSWER_STATUS_LABEL[a.status]}</span>
+                          )}
+                          {a.authorUserId === currentUserId && (
+                            <>
+                              <button
+                                type="button"
+                                onClick={() => { setEditingAnswerId(a.id); setAnswerText(a.text); setAnswerError(""); }}
+                                className="text-[10px] font-semibold text-link hover:underline"
+                              >
+                                Düzenle
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => deleteAnswer(a.id)}
+                                disabled={deletingAnswerId === a.id}
+                                className="text-[10px] font-semibold text-red-500 hover:text-red-700 disabled:opacity-50"
+                              >
+                                {deletingAnswerId === a.id ? "Siliniyor…" : "Sil"}
+                              </button>
+                            </>
+                          )}
+                        </div>
+                        {isEditingMyAnswer && answerError && <p className="text-xs text-red-600 mt-1">{answerError}</p>}
+                      </>
+                    )}
+                  </div>
                 ))}
                 {q.answers.length === 0 && !submittedIds.has(q.id) && (
                   <p className="text-xs text-gray-400 italic">Henüz cevaplanmadı.</p>
                 )}
-                {submittedIds.has(q.id) && (
+                {submittedIds.has(q.id) && !myAnswer && (
                   <p className="text-xs text-green-700 italic">Cevabınız gönderildi, incelemeye alındı.</p>
                 )}
 
                 {canAnswerThis && (
                   answeringId === q.id ? (
-                    <form onSubmit={(e) => answer(e, q.id)} className="flex items-start gap-2 pt-1">
+                    <form onSubmit={(e) => submitAnswer(e, q.id)} className="flex items-start gap-2 pt-1">
                       <input
                         type="text"
                         value={answerText}
@@ -174,7 +278,7 @@ export function ExpertNoteQna({
                     !submittedIds.has(q.id) && (
                       <button
                         type="button"
-                        onClick={() => { setAnsweringId(q.id); setAnswerError(""); }}
+                        onClick={() => { setAnsweringId(q.id); setAnswerText(""); setAnswerError(""); }}
                         className="text-xs font-semibold text-link hover:underline pt-1"
                       >
                         Cevap ver →

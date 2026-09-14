@@ -397,8 +397,15 @@ export default async function VehicleDetailPage({
             id: true, text: true, createdAt: true,
             user: { select: { id: true, displayName: true } },
             answers: {
-              where: { status: "PUBLISHED" },
-              select: { id: true, text: true, createdAt: true, user: { select: { displayName: true } } },
+              // Herkese yalnız PUBLISHED görünür — ama kendi cevabını
+              // düzenleyip yeniden moderasyona düşen bir usta, "cevabım
+              // kayboldu" hissetmesin diye kendi PENDING/REJECTED cevabını
+              // da görebiliyor (kullanıcı isteği: düzenleme/silme erişimi).
+              where: userId ? { OR: [{ status: "PUBLISHED" }, { userId }] } : { status: "PUBLISHED" },
+              select: {
+                id: true, text: true, createdAt: true, status: true, userId: true,
+                user: { select: { displayName: true } },
+              },
               orderBy: { createdAt: "asc" },
             },
           },
@@ -437,6 +444,8 @@ export default async function VehicleDetailPage({
         id: a.id,
         text: a.text,
         authorName: a.user.displayName ?? "Usta",
+        authorUserId: a.userId,
+        status: a.status,
         createdAt: a.createdAt.toISOString(),
       })),
     })),
