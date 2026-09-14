@@ -238,48 +238,6 @@ export default async function ProfilPage() {
 
       <BlockedUsersSection initialBlocked={blockedUsers} />
 
-      <InviteBox referralCode={user.referralCode} referralCount={user._count.referrals} />
-
-      {/* Usta Görüşü giriş noktası — profil.status'a göre farklı CTA */}
-      <div className="bg-white border border-gray-100 rounded-2xl p-4 flex items-center justify-between gap-3 flex-wrap">
-        <div>
-          <p className="text-sm font-bold text-gray-900">🔧 Usta Görüşü</p>
-          <p className="text-xs text-gray-400 mt-0.5">
-            {!expertProfile && "Bir tamir/bakım ustasıysanız, araç modelleri hakkında teknik görüş paylaşabilirsiniz."}
-            {expertProfile?.status === "PENDING_VERIFICATION" && "Başvurunuz inceleniyor."}
-            {expertProfile?.status === "WAITLISTED" && "Başvurunuz bekleme listesinde — sıradaki pencerede değerlendirilecek."}
-            {expertProfile?.status === "ACTIVE" && "Usta profiliniz aktif."}
-            {(expertProfile?.status === "SUSPENDED" || expertProfile?.status === "CLOSED") && "Usta profiliniz şu anda aktif değil."}
-          </p>
-        </div>
-        {!expertProfile && (
-          <Link href="/usta-basvuru" className="shrink-0 px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "#111" }}>
-            Başvur →
-          </Link>
-        )}
-        {expertProfile?.status === "ACTIVE" && (
-          <div className="shrink-0 flex items-center gap-2">
-            <Link href={`/usta/${expertProfile.slug}`} className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
-              Profilim
-            </Link>
-            <Link href="/usta-gorusu/profil" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
-              İletişim Ayarları
-            </Link>
-            <Link href="/usta-gorusu/yaz" className="px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "#111" }}>
-              Usta Görüşü Yaz →
-            </Link>
-          </div>
-        )}
-      </div>
-
-      {/* Usta ile site-içi mesajlaşma — hem "usta olarak gelen" hem "kullanıcı
-          olarak başlattığın" görüşmeler tek gelen kutusunda (Aşama 6b) */}
-      <div className="flex justify-end">
-        <Link href="/usta-mesajlarim" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
-          💬 Usta Mesajlarım →
-        </Link>
-      </div>
-
       {/* Favorilerim */}
       <div>
         <h2 className="text-base font-bold text-gray-900 mb-3">
@@ -414,6 +372,67 @@ export default async function ProfilPage() {
           </div>
           </ScrollFadeBox>
         )}
+      </div>
+
+      {/* Topluluk — davet + usta başvurusu: sıradan kullanıcının günlük
+          kullandığı içeriğin (Favoriler/Yorumlar) ALTINA, hesap işlemlerinin
+          hemen ÜSTÜNE bilinçli olarak taşındı (4 ajanlı IA/Growth/Görsel
+          Hiyerarşi/Navigasyon panel değerlendirmesi — bkz.
+          feature_usta_gorusleri_ilerleme). Eskiden InviteBox'tan hemen sonra,
+          Favoriler'den hemen önce duruyordu; niş bir "usta mısın?" CTA'sı
+          herkesin sık kullandığı kişisel içeriğin önüne çıkıyordu. */}
+      <div>
+        <h2 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Topluluk</h2>
+        <div className="space-y-3">
+          <InviteBox referralCode={user.referralCode} referralCount={user._count.referrals} />
+
+          {/* Usta Görüşü — InviteBox'la kart stili bilinçli olarak farklı
+              (mavi ton): biri sosyal davet, diğeri mesleki başvuru — aynı
+              kalıpta olmaları kullanıcının ikisini aynı hafiflikte
+              algılamasına yol açıyordu (Görsel Hiyerarşi ajanı bulgusu). */}
+          <div className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4">
+            <div className="flex items-center justify-between gap-3 flex-wrap">
+              <div>
+                <p className="text-sm font-bold text-gray-900">🔧 Usta Görüşü</p>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  {!expertProfile && "Bir tamir/bakım ustasıysanız, araç modelleri hakkında teknik görüş paylaşabilirsiniz."}
+                  {expertProfile?.status === "PENDING_VERIFICATION" && "Başvurunuz inceleniyor."}
+                  {expertProfile?.status === "WAITLISTED" && "Başvurunuz bekleme listesinde — sıradaki pencerede değerlendirilecek."}
+                  {expertProfile?.status === "ACTIVE" && "Usta profiliniz aktif."}
+                  {(expertProfile?.status === "SUSPENDED" || expertProfile?.status === "CLOSED") && "Usta profiliniz şu anda aktif değil."}
+                </p>
+              </div>
+              {!expertProfile && (
+                <Link href="/usta-basvuru" className="shrink-0 px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "#111" }}>
+                  Başvur →
+                </Link>
+              )}
+              {expertProfile?.status === "ACTIVE" && (
+                <div className="shrink-0 flex items-center gap-2">
+                  <Link href={`/usta/${expertProfile.slug}`} className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
+                    Profilim
+                  </Link>
+                  <Link href="/usta-gorusu/profil" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
+                    İletişim Ayarları
+                  </Link>
+                  <Link href="/usta-gorusu/yaz" className="px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "#111" }}>
+                    Usta Görüşü Yaz →
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Usta ile site-içi mesajlaşma — hem "usta olarak gelen" hem
+                "kullanıcı olarak başlattığın" görüşmeler tek gelen kutusunda
+                (Aşama 6b). Kart bile olmayan ayrı bir bloktan, karta gömülü
+                bir alt-satıra indirildi. */}
+            <div className="mt-3 pt-3 border-t border-blue-100/70 flex justify-end">
+              <Link href="/mesajlar?tab=usta" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
+                💬 Usta Mesajlarım →
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
 
       <DeleteAccountSection

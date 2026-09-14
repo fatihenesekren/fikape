@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { EXPERT_BADGE, EXPERT_NOTE_DISCLAIMER, EXPERT_NOTE_FIELDS } from "@/lib/expertNote";
+import { EXPERT_BADGE, EXPERT_NOTE_DISCLAIMER, EXPERT_NOTE_FIELDS, EXPERT_NOTE_SCOPE_KEY } from "@/lib/expertNote";
 import { ExpertNoteVoteButtons } from "@/components/ExpertNoteVoteButtons";
 import { ExpertNoteQna, type ExpertNoteQuestionView } from "./ExpertNoteQna";
 import { RegionalExpertsBlock } from "./RegionalExpertsBlock";
@@ -73,11 +73,21 @@ export function ExpertNotesSection({
             </div>
 
             <h3 className="text-sm font-bold text-gray-900">{n.title}</h3>
+
+            {/* Kapsam uyarısı — bu not tüm varyantlar için değil, belirli bir
+                motor/yakıt/donanım içinmiş gibi okunmaması için gövdeden ÖNCE,
+                ayrı bir rozet olarak gösterilir (bkz. lib/expertNote.ts). */}
+            {n.structured[EXPERT_NOTE_SCOPE_KEY] && (
+              <p className="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-100 rounded-lg px-2.5 py-1.5 inline-block">
+                ⚠️ Bu not: {n.structured[EXPERT_NOTE_SCOPE_KEY]}
+              </p>
+            )}
+
             <p className="text-sm text-gray-700 whitespace-pre-line leading-relaxed">{n.body}</p>
 
-            {EXPERT_NOTE_FIELDS.some((f) => n.structured[f.key]) && (
+            {EXPERT_NOTE_FIELDS.some((f) => f.key !== EXPERT_NOTE_SCOPE_KEY && n.structured[f.key]) && (
               <dl className="space-y-2 pt-1">
-                {EXPERT_NOTE_FIELDS.filter((f) => n.structured[f.key]).map((f) => (
+                {EXPERT_NOTE_FIELDS.filter((f) => f.key !== EXPERT_NOTE_SCOPE_KEY && n.structured[f.key]).map((f) => (
                   <div key={f.key} className="bg-gray-50 rounded-lg px-3 py-2">
                     <dt className="text-[11px] font-bold text-gray-400 uppercase tracking-wide">{f.label}</dt>
                     <dd className="text-sm text-gray-700 whitespace-pre-line mt-0.5">{n.structured[f.key]}</dd>

@@ -54,7 +54,22 @@ export interface ExpertNoteField {
   multiline?: boolean;
 }
 
+// Notun kapsamı — opsiyonel. Bir ExpertNote hâlâ MODEL (jenerasyon) seviyesinde
+// yazılır (barem anti-gaming tasarımı KORUNUYOR, bkz. docs/usta-gorusleri-plan.md
+// "Model kapsamı" §), ama aynı jenerasyon altında birden çok motor/yakıt/donanım
+// varyantı olabilir (örn. aynı jenerasyon Civic'in hem benzinli hem dizel
+// versiyonu). Usta notu belirli bir varyanta özgüyse burada belirtir; sayfada
+// (ExpertNotesSection) genel `dl` listesine değil, başlığın hemen altına
+// UYARI rozeti olarak ayrıca render edilir — bkz. ilerleme notu (14 Eylül 2026).
+export const EXPERT_NOTE_SCOPE_KEY = "gecerli_varyant";
+
 export const EXPERT_NOTE_FIELDS: ExpertNoteField[] = [
+  {
+    key: EXPERT_NOTE_SCOPE_KEY,
+    label: "Hangi motor/yakıt/donanım için geçerli?",
+    placeholder: "örn. Sadece dizel motorlar / Yalnız 2.0 TDI / boş bırakılırsa tüm varyantlar için geçerli sayılır",
+    maxLength: 150,
+  },
   {
     key: "kronik_arizalar",
     label: "Kronik arızalar / zayıf noktalar",

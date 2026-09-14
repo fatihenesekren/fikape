@@ -43,7 +43,7 @@ export function ExpertMessageComposer({ expertProfileId }: { expertProfileId: nu
     return (
       <p className="text-sm text-green-700 bg-green-50 rounded-xl p-4">
         Mesajınız gönderildi.{" "}
-        <Link href="/usta-mesajlarim" className="underline">Mesajlarım&apos;dan takip edebilirsiniz.</Link>
+        <Link href="/mesajlar?tab=usta" className="underline">Mesajlarım&apos;dan takip edebilirsiniz.</Link>
       </p>
     );
   }
