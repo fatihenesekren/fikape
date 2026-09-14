@@ -31,18 +31,11 @@ export async function UstaBandi() {
       >
         <div className="flex items-center gap-3 min-w-0">
           <span
-            className="flex items-center justify-center w-9 h-9 rounded-full shrink-0"
+            className="flex items-center justify-center w-9 h-9 rounded-full shrink-0 text-base"
             style={{ background: "var(--link-soft)" }}
+            aria-hidden="true"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"
-                stroke="var(--link-deep)"
-                strokeWidth="1.8"
-                strokeLinejoin="round"
-              />
-              <path d="M9 12l2 2 4-4" stroke="var(--link-deep)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            🧑‍🔧
           </span>
           <span className="min-w-0">
             <span className="block text-sm font-semibold text-gray-900">Usta Görüşleri&apos;ne katkı sağlayın</span>
