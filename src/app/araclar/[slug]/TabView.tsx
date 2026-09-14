@@ -14,6 +14,7 @@ interface Props {
   hasExpertNotes: boolean;
   expertNoteCount: number;
   expertNotesContent: React.ReactNode;
+  canWriteExpertNote: boolean;
   initialTab?: Tab;
   productId: number;
   categorySlug: string;
@@ -25,11 +26,16 @@ interface Props {
 
 export function TabView({
   reviewCount, reviewsContent, specsContent, questionCount, qnaContent,
-  hasExpertNotes, expertNoteCount, expertNotesContent, initialTab,
+  hasExpertNotes, expertNoteCount, expertNotesContent, canWriteExpertNote, initialTab,
   productId, categorySlug, isLoggedIn, reviewsForReport, questionsForReport, photosForReport,
 }: Props) {
+  // Sekme, not varsa HERKESE, not yoksa yalnız yazabilecek (aktif usta)
+  // kullanıcıya görünür — boş sekmeyi sıradan kullanıcıya göstermenin
+  // anlamı yok, ama aktif usta 0 nottayken de kendi yazma CTA'sına
+  // ulaşabilmeli (bkz. feature_usta_gorusleri_ilerleme).
+  const showExpertTab = hasExpertNotes || canWriteExpertNote;
   const safeInitial: Tab =
-    initialTab === "usta-gorusleri" && !hasExpertNotes ? "yorumlar" : (initialTab ?? "yorumlar");
+    initialTab === "usta-gorusleri" && !showExpertTab ? "yorumlar" : (initialTab ?? "yorumlar");
   const [tab, setTab] = useState<Tab>(safeInitial);
 
   const tabBtn = (t: Tab, label: string, count?: number) => (
@@ -51,8 +57,9 @@ export function TabView({
       {/* Tab başlıkları */}
       <div className="flex items-center border-b border-gray-100 bg-white rounded-t-2xl px-1 overflow-x-auto">
         {tabBtn("yorumlar", "Yorumlar", reviewCount)}
-        {/* Usta Görüşleri — yalnızca bu modelde yayınlanmış not varsa görünür (§6) */}
-        {hasExpertNotes && tabBtn("usta-gorusleri", "Usta Görüşleri", expertNoteCount)}
+        {/* Usta Görüşleri — bu modelde yayınlanmış not varsa HERKESE (§6),
+            yoksa yalnız yazabilecek aktif ustaya görünür */}
+        {showExpertTab && tabBtn("usta-gorusleri", "Usta Görüşleri", expertNoteCount)}
         {tabBtn("teknik", "Teknik Özellikler")}
         {tabBtn("soru-cevap", "Soru-Cevap", questionCount)}
       </div>

@@ -654,6 +654,8 @@ export default async function VehicleDetailPage({
       isLoggedIn={!!userId}
       currentUserId={userId}
       canAnswer={canAnswerExpertQna}
+      canWriteNote={canAnswerExpertQna}
+      writeNoteHref={`/usta-gorusu/yaz?modelId=${product.modelId}&modelBrand=${encodeURIComponent(product.brand.name)}&modelName=${encodeURIComponent(stripModelGenRange(product.model.name))}&categorySlug=${encodeURIComponent(categorySlug)}`}
       regionalSummary={regionalSummary}
       showRegionOptIn={showRegionOptIn}
     />
@@ -934,6 +936,7 @@ export default async function VehicleDetailPage({
           hasExpertNotes={expertNotes.length > 0}
           expertNoteCount={expertNotes.length}
           expertNotesContent={expertNotesContent}
+          canWriteExpertNote={canAnswerExpertQna}
           initialTab={
             sekme === "soru-cevap" ? "soru-cevap"
             : sekme === "usta-gorusleri" ? "usta-gorusleri"

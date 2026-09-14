@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { Suspense } from "react";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ExpertNoteForm } from "./ExpertNoteForm";
@@ -88,7 +89,9 @@ export default async function UstaGorusuYazPage({
           İletişim ve Görünürlük Ayarları →
         </Link>
       </div>
-      <ExpertNoteForm headline={profile.headline} />
+      <Suspense>
+        <ExpertNoteForm headline={profile.headline} />
+      </Suspense>
     </div>
   );
 }

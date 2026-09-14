@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   EXPERT_NOTE_FIELDS,
   EXPERT_NOTE_TITLE_MAX,
@@ -25,11 +25,29 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 export function ExpertNoteForm({ headline }: { headline: string | null }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<ModelResult[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selected, setSelected] = useState<ModelResult | null>(null);
+  // Araç sayfasındaki "Teknik not ekle" CTA'sından ?modelId=&modelBrand=&modelName=
+  // ile gelindiyse model ön-seçili gelir — usta tekrar arama yapmak zorunda
+  // kalmaz (bkz. feature_usta_gorusleri_ilerleme). Yanlışsa "değiştir"le açılır.
+  const [selected, setSelected] = useState<ModelResult | null>(() => {
+    const id = searchParams.get("modelId");
+    const brandName = searchParams.get("modelBrand");
+    const modelName = searchParams.get("modelName");
+    if (!id || !modelName) return null;
+    const parsedId = Number(id);
+    if (!Number.isFinite(parsedId)) return null;
+    return {
+      id: parsedId,
+      slug: "",
+      brandName: brandName ?? "",
+      modelName,
+      categorySlug: searchParams.get("categorySlug"),
+    };
+  });
   const boxRef = useRef<HTMLDivElement>(null);
 
   const [title, setTitle] = useState("");
