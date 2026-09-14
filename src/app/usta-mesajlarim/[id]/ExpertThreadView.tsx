@@ -41,6 +41,11 @@ export function ExpertThreadView({
   const [error, setError] = useState("");
   const [blocked, setBlocked] = useState(initialBlockedByMe);
   const blockedByThem = initialBlockedByThem;
+  // Önceden window.confirm() (tarayıcı varsayılanı, sitenin hiçbir yerinde
+  // kullanılmıyor) — kullanıcı fark etti. Takas Mesajlarım'daki ThreadActions
+  // modal deseniyle birebir aynı: bottom-sheet, "Vazgeç" + kırmızı onay butonu.
+  const [confirmBlock, setConfirmBlock] = useState(false);
+  const [blocking, setBlocking] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
@@ -85,9 +90,14 @@ export function ExpertThreadView({
   }
 
   async function block() {
-    if (!confirm(`${counterpartName} kullanıcısını engellemek istediğinize emin misiniz?`)) return;
-    const res = await fetch(`/api/expert-message-threads/${threadId}/block`, { method: "POST" });
-    if (res.ok) setBlocked(true);
+    setBlocking(true);
+    try {
+      const res = await fetch(`/api/expert-message-threads/${threadId}/block`, { method: "POST" });
+      if (res.ok) setBlocked(true);
+    } finally {
+      setBlocking(false);
+      setConfirmBlock(false);
+    }
   }
 
   const canMessage = !blocked && !blockedByThem;
@@ -121,12 +131,38 @@ export function ExpertThreadView({
             {expertHeadline && <p className="text-xs text-gray-400 truncate">{expertHeadline}</p>}
           </div>
           {!blocked && !blockedByThem && (
-            <button onClick={block} className="text-xs text-red-600 hover:underline shrink-0">
+            <button onClick={() => setConfirmBlock(true)} className="text-xs text-red-600 hover:underline shrink-0">
               Engelle
             </button>
           )}
         </div>
       </div>
+
+      {confirmBlock && (
+        <div
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-4 py-6"
+          onClick={() => setConfirmBlock(false)}
+        >
+          <div className="bg-white rounded-2xl w-full max-w-sm p-5 text-left" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-sm font-bold text-gray-900 mb-1.5">Kişiyi engelle</h3>
+            <p className="text-sm text-gray-500 mb-4">
+              <strong className="text-gray-700">{counterpartName}</strong> bu görüşmede size bir daha
+              yazamaz, siz de ona yazamazsınız. Engeli <strong className="text-gray-700">Profil ›
+              Engellenen kullanıcılar</strong>&apos;dan kaldırabilirsiniz. Karşı tarafa bildirim gitmez.
+            </p>
+            <div className="flex items-center gap-2 justify-end">
+              <button onClick={() => setConfirmBlock(false)} className="text-xs text-gray-400 hover:underline px-2">Vazgeç</button>
+              <button
+                onClick={block}
+                disabled={blocking}
+                className="px-4 py-2 rounded-xl text-sm font-semibold text-white bg-red-600 hover:bg-red-700 disabled:opacity-60 transition-colors"
+              >
+                {blocking ? "İşleniyor…" : "Engelle"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Mesajlar ── */}
       <div className="flex-1 overflow-y-auto">

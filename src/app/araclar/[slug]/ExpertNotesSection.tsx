@@ -121,30 +121,40 @@ export function ExpertNotesSection({
       <div className="divide-y divide-gray-50">
         {notes.map((n) => (
           <article key={n.id} id={`usta-not-${n.id}`} className="px-5 py-5 space-y-3 scroll-mt-24">
-            <div className="flex items-center gap-2 flex-wrap">
-              <Avatar displayName={n.authorName} avatarUrl={n.authorAvatarUrl} seed={String(n.authorUserId)} size={22} />
-              <span
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold"
-                style={{ color: EXPERT_BADGE.color, background: EXPERT_BADGE.bg }}
-                title={EXPERT_BADGE.tooltip}
-              >
-                {EXPERT_BADGE.icon} {EXPERT_BADGE.label}
-              </span>
-              {n.authorSlug ? (
-                // Önceden düz gri metin + yalnız hover'da altı çiziliydi —
-                // kullanıcı bunun tıklanabilir olduğunun belli olmadığını
-                // fark etti. Site genelindeki marka/model link rengiyle
-                // (--link) ve bir ok işaretiyle tutarlı bir "buton" hissi.
-                <Link href={`/usta/${n.authorSlug}`} className="inline-flex items-center gap-0.5 text-xs font-semibold text-link hover:underline">
-                  {n.authorName}
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </Link>
-              ) : (
-                <span className="text-xs text-gray-500">{n.authorName}</span>
-              )}
-              {n.city && <span className="text-xs text-gray-400">· {n.city}</span>}
+            {/* Avatar + ad + rozet — ReviewCard'daki yerleşik desenle aynı:
+                avatar solda, sağında AD üstte / rozet+il altta. Önceden
+                avatar tek başına solda, ad+rozet ondan kopuk duruyordu
+                (kullanıcı fark etti). */}
+            <div className="flex items-center gap-3">
+              <Avatar displayName={n.authorName} avatarUrl={n.authorAvatarUrl} seed={String(n.authorUserId)} size={36} />
+              <div className="min-w-0">
+                <div className="text-sm font-semibold text-gray-900">
+                  {n.authorSlug ? (
+                    // Önceden düz gri metin + yalnız hover'da altı çiziliydi —
+                    // kullanıcı bunun tıklanabilir olduğunun belli olmadığını
+                    // fark etti. Site genelindeki marka/model link rengiyle
+                    // (--link) ve bir ok işaretiyle tutarlı bir "buton" hissi.
+                    <Link href={`/usta/${n.authorSlug}`} className="inline-flex items-center gap-0.5 hover:underline">
+                      {n.authorName}
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+                  ) : (
+                    n.authorName
+                  )}
+                </div>
+                <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                  <span
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold"
+                    style={{ color: EXPERT_BADGE.color, background: EXPERT_BADGE.bg }}
+                    title={EXPERT_BADGE.tooltip}
+                  >
+                    {EXPERT_BADGE.icon} {EXPERT_BADGE.label}
+                  </span>
+                  {n.city && <span className="text-xs text-gray-400">· {n.city}</span>}
+                </div>
+              </div>
             </div>
 
             <h3 className="text-sm font-bold text-gray-900">{n.title}</h3>
