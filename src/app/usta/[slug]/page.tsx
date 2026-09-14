@@ -172,17 +172,7 @@ export default async function ExpertProfilePage({
           {profile.contactPhone && <p className="text-sm text-gray-800">📞 {profile.contactPhone}</p>}
           {profile.contactAddress && (
             <div>
-              <p className="text-sm text-gray-800">
-                📍 {profile.contactAddress}{" "}
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.contactAddress)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-semibold text-link hover:underline"
-                >
-                  Haritada Aç →
-                </a>
-              </p>
+              <p className="text-sm text-gray-800">📍 {profile.contactAddress}</p>
               {/* Harita önizlemesi — API anahtarı gerektirmeyen Google Maps
                   embed URL şeması (kullanıcı isteği: adres yalnız metin değil,
                   görsel bir konum önizlemesi de sağlasın). */}
@@ -197,6 +187,20 @@ export default async function ExpertProfilePage({
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
+              {/* "Haritada Aç" önceden adres metninin ortasına sıkışmış inline
+                  bir link gibiydi ("kötü gözüküyor") — artık haritanın altında,
+                  kendi başına bir mini-buton. */}
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.contactAddress)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-link hover:underline"
+              >
+                Google Maps&apos;te aç
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
             </div>
           )}
           {contactFeedbackText && (
