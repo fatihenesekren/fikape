@@ -306,7 +306,7 @@ export function OwnershipCard({
                 disabled={loading}
                 className="px-3 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors disabled:opacity-60"
               >
-                {purchasedLabel || usageAmount != null ? "Alış/km bilgisini düzenle" : "Alış/km bilgisi ekle"}
+                {purchasedLabel || usageAmount != null ? "✓ Alış/km bilgisini düzenle" : "Alış/km bilgisi ekle"}
               </button>
               <button
                 onClick={() => setShowSellForm((v) => !v)}
