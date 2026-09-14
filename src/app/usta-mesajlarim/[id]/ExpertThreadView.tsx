@@ -17,18 +17,24 @@ interface ContactFeedbackProps {
 
 export function ExpertThreadView({
   threadId, counterpartName, expertHeadline, messages, contactFeedback,
+  initialBlockedByMe, initialBlockedByThem,
 }: {
   threadId: number;
   counterpartName: string;
   expertHeadline: string | null;
   messages: MessageView[];
   contactFeedback: ContactFeedbackProps | null;
+  initialBlockedByMe: boolean;
+  initialBlockedByThem: boolean;
 }) {
   const router = useRouter();
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [blocked, setBlocked] = useState(false);
+  // Önceden yalnız bu oturumda "Engelle"ye basılırsa true olurdu — sayfa
+  // yenilenince veya KARŞI TARAF sizi engellemişse hiç yansımıyordu.
+  const [blocked, setBlocked] = useState(initialBlockedByMe);
+  const blockedByThem = initialBlockedByThem;
   const [feedbackValue, setFeedbackValue] = useState(contactFeedback?.currentValue ?? null);
   const [feedbackSending, setFeedbackSending] = useState(false);
 
@@ -86,14 +92,14 @@ export function ExpertThreadView({
           <h1 className="text-xl font-black text-gray-900">{counterpartName}</h1>
           {expertHeadline && <p className="text-xs text-gray-400">{expertHeadline}</p>}
         </div>
-        {!blocked && (
+        {!blocked && !blockedByThem && (
           <button onClick={block} className="text-xs text-red-600 hover:underline shrink-0">
             Engelle
           </button>
         )}
       </div>
 
-      {contactFeedback && !blocked && (
+      {contactFeedback && !blocked && !blockedByThem && (
         <div className="mb-4 bg-gray-50 rounded-xl px-3 py-2.5 flex items-center justify-between gap-2 flex-wrap">
           <p className="text-xs text-gray-500">İletişime geçtiğiniz telefon/adres bilgisi doğru muydu?</p>
           <div className="flex items-center gap-2 shrink-0">
@@ -131,8 +137,10 @@ export function ExpertThreadView({
         ))}
       </div>
 
-      {blocked ? (
-        <p className="text-sm text-gray-400">Bu kullanıcıyı engellediniz.</p>
+      {blocked || blockedByThem ? (
+        <p className="text-sm text-gray-400">
+          {blocked ? "Bu kullanıcıyı engellediniz." : "Bu kullanıcıyla mesajlaşamazsınız."}
+        </p>
       ) : (
         <form onSubmit={send} className="flex items-start gap-2">
           <input

@@ -44,10 +44,22 @@ export async function PATCH(
 
   if (action === "overturn") {
     if (appeal.subjectType === "NOTE_REJECTION" && appeal.noteId) {
-      await prisma.expertNote.update({
-        where: { id: appeal.noteId },
+      // Not, itiraz PENDING'te beklerken (kullanıcı düzenleyip yeniden
+      // moderasyona düşürdüğü veya admin ayrı bir ekrandan işlem yaptığı
+      // için) artık REJECTED olmayabilir — koşulsuz PENDING'e çekmek,
+      // arada onaylanıp YAYINA GİRMİŞ güncel bir içeriği sessizce geri
+      // çeker. `updateMany` ile notun HÂLÂ REJECTED olduğunu doğrulayıp
+      // değilse itirazı karara bağlamadan 409 dönüyoruz.
+      const { count } = await prisma.expertNote.updateMany({
+        where: { id: appeal.noteId, status: "REJECTED" },
         data: { status: "PENDING", rejectedAt: null, rejectionReason: null },
       });
+      if (count === 0) {
+        return NextResponse.json(
+          { error: "Not artık reddedilmiş durumda değil (muhtemelen kullanıcı düzenleyip yeniden gönderdi) — itiraz karara bağlanamadı, kuyruktan kaldırmak için admin panelinden notun güncel durumunu kontrol edin." },
+          { status: 409 }
+        );
+      }
     } else if (appeal.subjectType === "VISIBILITY_DECISION") {
       await prisma.expertProfile.update({
         where: { id: appeal.profile.id },
