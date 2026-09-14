@@ -140,7 +140,7 @@ export default async function Home({
 
       {/* ── Usta musunuz? bandı (quiz modunda değilken — kullanıcı kararı) ── */}
       {!quizParam && (
-        <div className="pt-4">
+        <div className="pt-8">
           <UstaBandi />
         </div>
       )}

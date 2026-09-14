@@ -280,9 +280,10 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
       <>
       <div className="col-span-full">
         <button
+          type="button"
           onClick={() => openQuiz()}
           aria-label="4 soruda sana en uygun aracı bulalım — başla"
-          className="relative w-full bg-white rounded-2xl border border-gray-200 p-5 sm:pl-7 sm:pr-7 sm:py-7 flex flex-col sm:flex-row sm:items-center gap-4 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all group text-left animate-niyet-enter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+          className="relative w-full bg-white rounded-2xl border border-gray-100 p-5 sm:pl-7 sm:pr-7 sm:py-7 flex flex-col sm:flex-row sm:items-center gap-4 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all group text-left animate-niyet-enter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
         >
           <div
             className="absolute inset-y-0 left-0 w-2"
