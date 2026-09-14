@@ -7,6 +7,7 @@ import { EXPERT_BADGE, CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES } from "@/lib/expe
 import { contactFeedbackLabel } from "@/lib/expertContactFeedback";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { ExpertMessageComposer } from "./ExpertMessageComposer";
+import { Avatar } from "@/components/Avatar";
 
 export async function generateMetadata({
   params,
@@ -55,7 +56,7 @@ export default async function ExpertProfilePage({
         id: true, headline: true, bio: true, expertiseTags: true, city: true, district: true,
         status: true, createdAt: true, contactVisible: true, businessName: true, contactPhone: true, contactAddress: true,
         visibilityState: true, userId: true, messagingEnabled: true,
-        user: { select: { displayName: true } },
+        user: { select: { id: true, displayName: true, avatarUrl: true } },
       },
     }),
     auth(),
@@ -121,18 +122,25 @@ export default async function ExpertProfilePage({
           cevap (kullanıcı: "ilgi çekici değil, neden kullanmalıyım
           göstermiyor"). */}
       <div className="bg-white border border-gray-100 rounded-2xl p-5 mb-6">
-        <span
-          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold"
-          style={{ color: EXPERT_BADGE.color, background: EXPERT_BADGE.bg }}
-          title={EXPERT_BADGE.tooltip}
-        >
-          {EXPERT_BADGE.icon} {EXPERT_BADGE.label}
-        </span>
-        <h1 className="text-2xl font-black text-gray-900 mt-3">{profile.headline}</h1>
-        <p className="text-sm text-gray-400 mt-1">
-          {profile.user.displayName}
-          {profile.city && ` · ${profile.city}`}
-        </p>
+        <div className="flex items-start gap-3">
+          {/* Önceden hiç avatar yoktu, yalnız metin — kullanıcının kendi
+              önerisi üzerine (hesap isminin geçtiği her yere avatar). */}
+          <Avatar displayName={profile.user.displayName} avatarUrl={profile.user.avatarUrl} seed={String(profile.user.id)} size={48} />
+          <div className="min-w-0">
+            <span
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold"
+              style={{ color: EXPERT_BADGE.color, background: EXPERT_BADGE.bg }}
+              title={EXPERT_BADGE.tooltip}
+            >
+              {EXPERT_BADGE.icon} {EXPERT_BADGE.label}
+            </span>
+            <h1 className="text-2xl font-black text-gray-900 mt-3">{profile.headline}</h1>
+            <p className="text-sm text-gray-400 mt-1">
+              {profile.user.displayName}
+              {profile.city && ` · ${profile.city}`}
+            </p>
+          </div>
+        </div>
         <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-50 text-xs text-gray-500">
           <span className="font-semibold text-gray-700">{notes.length}</span> paylaşılan usta görüşü
           <span className="text-gray-300">·</span>

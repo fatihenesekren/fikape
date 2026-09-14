@@ -23,10 +23,10 @@ export default async function ExpertMessageThreadPage({
     where: { id: threadId },
     select: {
       id: true, initiatorId: true, expertProfileId: true,
-      initiator: { select: { displayName: true } },
+      initiator: { select: { displayName: true, avatarUrl: true } },
       expertProfile: {
         select: {
-          slug: true, headline: true, userId: true, user: { select: { displayName: true } },
+          slug: true, headline: true, userId: true, user: { select: { displayName: true, avatarUrl: true } },
           contactVisible: true, businessName: true, contactPhone: true, contactAddress: true,
         },
       },
@@ -66,6 +66,9 @@ export default async function ExpertMessageThreadPage({
   const counterpartName = userId === thread.initiatorId
     ? (thread.expertProfile.user.displayName ?? "Usta")
     : (thread.initiator.displayName ?? "Kullanıcı");
+  const counterpartAvatarUrl = userId === thread.initiatorId
+    ? thread.expertProfile.user.avatarUrl
+    : thread.initiator.avatarUrl;
 
   const isInitiator = userId === thread.initiatorId;
   // "İletişim bilgisi doğru muydu?" sorusu yalnız usta gerçekten bir iletişim
@@ -85,6 +88,8 @@ export default async function ExpertMessageThreadPage({
     <ExpertThreadView
       threadId={thread.id}
       counterpartName={counterpartName}
+      counterpartAvatarUrl={counterpartAvatarUrl}
+      counterpartSeed={String(counterpartId)}
       expertHeadline={thread.expertProfile.headline}
       messages={thread.messages.map((m) => ({
         id: m.id,

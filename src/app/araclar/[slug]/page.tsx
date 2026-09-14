@@ -388,7 +388,7 @@ export default async function VehicleDetailPage({
       where: { modelId: product.modelId, status: "PUBLISHED", removedAt: null },
       select: {
         id: true, title: true, body: true, structured: true, publishedAt: true, createdAt: true,
-        profile: { select: { userId: true, city: true, status: true, visibilityState: true, slug: true, user: { select: { displayName: true } } } },
+        profile: { select: { userId: true, city: true, status: true, visibilityState: true, slug: true, user: { select: { displayName: true, avatarUrl: true } } } },
         votes: { select: { userId: true, isHelpful: true } },
         // Not-altı soru-cevap — "B modeli": herkese görünür soru + cevap;
         // PENDING cevaplar (moderasyon bekleyen) herkese açık listeye girmez.
@@ -421,6 +421,7 @@ export default async function VehicleDetailPage({
     authorName: n.profile.status === "CLOSED"
       ? "Silinmiş Usta"
       : (n.profile.user.displayName ?? "Usta"),
+    authorAvatarUrl: n.profile.status === "CLOSED" ? null : n.profile.user.avatarUrl,
     authorSlug: n.profile.status === "ACTIVE" ? n.profile.slug : null,
     authorUserId: n.profile.userId,
     createdAt: (n.publishedAt ?? n.createdAt).toISOString(),

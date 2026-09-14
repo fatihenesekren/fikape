@@ -75,8 +75,8 @@ export default async function MesajlarPage({
         select: {
           id: true,
           lastMessageAt: true,
-          initiator: { select: { displayName: true } },
-          expertProfile: { select: { headline: true, userId: true, user: { select: { displayName: true } } } },
+          initiator: { select: { id: true, displayName: true, avatarUrl: true } },
+          expertProfile: { select: { headline: true, userId: true, user: { select: { id: true, displayName: true, avatarUrl: true } } } },
           messages: { orderBy: { createdAt: "desc" }, take: 1, select: { text: true, senderId: true, isRead: true } },
         },
         orderBy: { lastMessageAt: "desc" },
@@ -179,18 +179,25 @@ export default async function MesajlarPage({
       <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden divide-y divide-gray-50">
         {ustaThreads.map((t) => {
           const isUsta = t.expertProfile.userId === userId;
-          const counterpartName = isUsta
-            ? (t.initiator.displayName ?? "Kullanıcı")
-            : (t.expertProfile.user.displayName ?? "Usta");
+          const counterpart = isUsta ? t.initiator : t.expertProfile.user;
+          const counterpartName = counterpart.displayName ?? (isUsta ? "Kullanıcı" : "Usta");
           const last = t.messages[0];
           const hasUnread = !!last && last.senderId !== userId && !last.isRead;
           return (
             <Link
               key={t.id}
               href={`/usta-mesajlarim/${t.id}`}
-              className="flex items-center justify-between gap-2 px-4 py-3.5 hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-3 px-4 py-3.5 hover:bg-gray-50 transition-colors"
             >
-              <div className="min-w-0">
+              {/* Takas Mesajlarım listesindeki Avatar deseniyle tutarlı —
+                  önceden yalnız isim vardı (kullanıcı fark etti). */}
+              <Avatar
+                displayName={counterpart.displayName}
+                avatarUrl={counterpart.avatarUrl}
+                seed={String(counterpart.id)}
+                size={40}
+              />
+              <div className="min-w-0 flex-1">
                 <span className={`text-sm truncate block ${hasUnread ? "font-bold text-gray-900" : "font-semibold text-gray-800"}`}>
                   {counterpartName}
                 </span>

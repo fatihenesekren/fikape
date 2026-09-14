@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Avatar } from "@/components/Avatar";
 import { EXPERT_BADGE, EXPERT_NOTE_DISCLAIMER, EXPERT_NOTE_FIELDS, EXPERT_NOTE_SCOPE_KEY } from "@/lib/expertNote";
 import { ExpertNoteVoteButtons } from "@/components/ExpertNoteVoteButtons";
 import { ExpertNoteQna, type ExpertNoteQuestionView } from "./ExpertNoteQna";
@@ -38,6 +39,7 @@ export interface ExpertNoteView {
   structured: Record<string, string>;
   city: string | null;
   authorName: string;
+  authorAvatarUrl: string | null;
   authorSlug: string | null;
   authorUserId: number;
   createdAt: string;
@@ -120,6 +122,7 @@ export function ExpertNotesSection({
         {notes.map((n) => (
           <article key={n.id} id={`usta-not-${n.id}`} className="px-5 py-5 space-y-3 scroll-mt-24">
             <div className="flex items-center gap-2 flex-wrap">
+              <Avatar displayName={n.authorName} avatarUrl={n.authorAvatarUrl} seed={String(n.authorUserId)} size={22} />
               <span
                 className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold"
                 style={{ color: EXPERT_BADGE.color, background: EXPERT_BADGE.bg }}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Avatar } from "@/components/Avatar";
 
 interface MessageView {
   id: number;
@@ -16,11 +17,13 @@ interface ContactFeedbackProps {
 }
 
 export function ExpertThreadView({
-  threadId, counterpartName, expertHeadline, messages, contactFeedback,
+  threadId, counterpartName, counterpartAvatarUrl, counterpartSeed, expertHeadline, messages, contactFeedback,
   initialBlockedByMe, initialBlockedByThem,
 }: {
   threadId: number;
   counterpartName: string;
+  counterpartAvatarUrl: string | null;
+  counterpartSeed: string;
   expertHeadline: string | null;
   messages: MessageView[];
   contactFeedback: ContactFeedbackProps | null;
@@ -88,9 +91,12 @@ export function ExpertThreadView({
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <div className="mb-6 flex items-center justify-between gap-2">
-        <div>
-          <h1 className="text-xl font-black text-gray-900">{counterpartName}</h1>
-          {expertHeadline && <p className="text-xs text-gray-400">{expertHeadline}</p>}
+        <div className="flex items-center gap-3 min-w-0">
+          <Avatar displayName={counterpartName} avatarUrl={counterpartAvatarUrl} seed={counterpartSeed} size={40} />
+          <div className="min-w-0">
+            <h1 className="text-xl font-black text-gray-900 truncate">{counterpartName}</h1>
+            {expertHeadline && <p className="text-xs text-gray-400 truncate">{expertHeadline}</p>}
+          </div>
         </div>
         {!blocked && !blockedByThem && (
           <button onClick={block} className="text-xs text-red-600 hover:underline shrink-0">
