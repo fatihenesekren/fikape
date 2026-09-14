@@ -429,6 +429,12 @@ export default async function ProfilPage() {
                   <Link href={`/usta/${expertProfile.slug}`} className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
                     Profilim
                   </Link>
+                  {/* Önceden "Notlarım"a erişimin TEK yolu Usta Görüşü Yaz
+                      sayfasının kendi üst linkiydi — buradan (asıl usta
+                      hub'ı) hiç erişilemiyordu (kullanıcı fark etti). */}
+                  <Link href="/usta-gorusu/notlarim" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
+                    Notlarım
+                  </Link>
                   <Link href="/usta-gorusu/profil" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
                     İletişim Ayarları
                   </Link>
