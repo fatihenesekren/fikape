@@ -10,12 +10,12 @@ export const metadata = { title: "Usta Görüşü Yaz — fikape", robots: { ind
 export default async function UstaGorusuYazPage({
   searchParams,
 }: {
-  searchParams: Promise<{ gonderildi?: string }>;
+  searchParams: Promise<{ gonderildi?: string; returnSlug?: string }>;
 }) {
   const session = await auth();
   if (!session) redirect("/giris?callbackUrl=/usta-gorusu/yaz");
 
-  const { gonderildi } = await searchParams;
+  const { gonderildi, returnSlug } = await searchParams;
   if (gonderildi === "1") {
     return (
       <Shell>
@@ -25,9 +25,18 @@ export default async function UstaGorusuYazPage({
           Usta notunuz incelemeye alındı. Onaylandığında ilgili araç sayfasında
           yayınlanacak ve size bildirim göndereceğiz.
         </p>
-        <Link href="/usta-gorusu/yaz" className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "#111" }}>
-          Yeni not yaz →
-        </Link>
+        <div className="flex items-center justify-center gap-3 flex-wrap mt-2">
+          {/* Araç sayfasından gelindiyse oraya dönüş — önceden yalnız "Yeni not
+              yaz" vardı, kullanıcı geldiği yere dönemiyordu. */}
+          {returnSlug && (
+            <Link href={`/araclar/${returnSlug}`} className="inline-block px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-700 border border-gray-200">
+              ← Araç sayfasına dön
+            </Link>
+          )}
+          <Link href="/usta-gorusu/yaz" className="inline-block px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "#111" }}>
+            Yeni not yaz →
+          </Link>
+        </div>
       </Shell>
     );
   }

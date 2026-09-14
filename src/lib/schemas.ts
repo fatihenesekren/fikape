@@ -98,6 +98,9 @@ export const expertNoteCreateSchema = z.object({
   structured: z.record(z.string(), z.string()).optional().nullable(),
 });
 
+// Var olan bir notu düzenleme — modelId hariç (model sonradan değişmez).
+export const expertNoteEditSchema = expertNoteCreateSchema.omit({ modelId: true });
+
 // Usta notu altındaki soru — "B modeli": soruyu herkes sorar, cevabı yalnız
 // notu yazan usta veya diğer doğrulanmış ustalar verir (bkz. answers route).
 export const expertNoteQuestionSchema = z.object({
@@ -134,6 +137,7 @@ export const expertContactUpdateSchema = z.object({
   consentRegionalPromo:  z.boolean(),
   cvNoindex:             z.boolean(),
   messagingEnabled:      z.boolean(),
+  expertiseTags:         z.array(z.string().trim().min(1)).min(1, "En az bir uzmanlık alanı ekleyiniz.").max(8, "En fazla 8 uzmanlık alanı ekleyebilirsiniz."),
 });
 
 export const insuranceLeadSchema = z.object({

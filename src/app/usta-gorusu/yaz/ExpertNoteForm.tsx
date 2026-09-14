@@ -112,7 +112,8 @@ export function ExpertNoteForm({ headline }: { headline: string | null }) {
         setLoading(false);
         return;
       }
-      router.push("/usta-gorusu/yaz?gonderildi=1");
+      const returnSlug = searchParams.get("returnSlug");
+      router.push(`/usta-gorusu/yaz?gonderildi=1${returnSlug ? `&returnSlug=${encodeURIComponent(returnSlug)}` : ""}`);
       router.refresh();
     } catch {
       setError("Bağlantı hatası. Lütfen tekrar deneyin.");

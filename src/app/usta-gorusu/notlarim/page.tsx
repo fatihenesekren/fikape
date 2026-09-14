@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { finalizeExpiredAppeals } from "@/lib/expertAppeal";
 import { ExpertAppealForm } from "../ExpertAppealForm";
+import { ExpertNoteRowActions } from "./ExpertNoteRowActions";
 
 export const metadata = { title: "Notlarım — fikape", robots: { index: false } };
 
@@ -11,7 +12,6 @@ const STATUS_LABEL: Record<string, { label: string; color: string; bg: string }>
   PENDING: { label: "İnceleniyor", color: "#7A5A00", bg: "#FEF6D8" },
   PUBLISHED: { label: "Yayında", color: "#166534", bg: "#DCFCE7" },
   REJECTED: { label: "Reddedildi", color: "#991B1B", bg: "#FEE2E2" },
-  HIDDEN: { label: "Gizlendi", color: "#374151", bg: "#F3F4F6" },
 };
 
 export default async function ExpertMyNotesPage() {
@@ -38,7 +38,7 @@ export default async function ExpertMyNotesPage() {
   await finalizeExpiredAppeals();
 
   const notes = await prisma.expertNote.findMany({
-    where: { profileId: profile.id },
+    where: { profileId: profile.id, status: { not: "HIDDEN" } },
     select: {
       id: true, title: true, status: true, rejectionReason: true, createdAt: true,
       model: { select: { name: true, brand: { select: { name: true } } } },
@@ -78,6 +78,7 @@ export default async function ExpertMyNotesPage() {
                     <ExpertAppealForm subjectType="NOTE_REJECTION" noteId={n.id} existingStatus={appeal?.status ?? null} />
                   </>
                 )}
+                <ExpertNoteRowActions noteId={n.id} />
               </div>
             );
           })}

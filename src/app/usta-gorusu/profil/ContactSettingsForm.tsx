@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export function ContactSettingsForm({
-  initialBusinessName, initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, initialMessagingEnabled, profileSlug,
+  initialBusinessName, initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, initialMessagingEnabled, initialExpertiseTags, profileSlug,
 }: {
   initialBusinessName: string | null;
   initialPhone: string | null;
@@ -14,6 +14,7 @@ export function ContactSettingsForm({
   initialConsentRegionalPromo: boolean;
   initialCvNoindex: boolean;
   initialMessagingEnabled: boolean;
+  initialExpertiseTags: string[];
   profileSlug: string;
 }) {
   const router = useRouter();
@@ -24,15 +25,27 @@ export function ContactSettingsForm({
   const [consentContactPublic, setConsentContactPublic] = useState(initialConsentContactPublic);
   const [consentRegionalPromo, setConsentRegionalPromo] = useState(initialConsentRegionalPromo);
   const [cvNoindex, setCvNoindex] = useState(initialCvNoindex);
+  // Uzmanlık alanları — önceden yalnız başvuru formunda BİR KEZ girilip
+  // sonrasında hiç güncellenemiyordu (kullanıcı fark etti). Rızadan bağımsız,
+  // her zaman herkese açık profilde görünür — bu yüzden consent bloğunun DIŞINDA.
+  const [expertiseTags, setExpertiseTags] = useState<string[]>(initialExpertiseTags);
+  const [tagInput, setTagInput] = useState("");
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  function addTag() {
+    const t = tagInput.trim();
+    if (t && !expertiseTags.includes(t) && expertiseTags.length < 8) setExpertiseTags([...expertiseTags, t]);
+    setTagInput("");
+  }
+
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
     setSuccess(false);
+    if (expertiseTags.length === 0) return setError("En az bir uzmanlık alanı ekleyiniz.");
     setLoading(true);
     try {
       const res = await fetch("/api/expert-profile/contact", {
@@ -46,6 +59,7 @@ export function ContactSettingsForm({
           consentRegionalPromo,
           cvNoindex,
           messagingEnabled,
+          expertiseTags,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -65,6 +79,34 @@ export function ContactSettingsForm({
 
   return (
     <form onSubmit={submit} className="space-y-6">
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Uzmanlık alanları</label>
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={tagInput}
+            onChange={(e) => setTagInput(e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === ",") { e.preventDefault(); addTag(); } }}
+            placeholder="Örn: VAG dizel — Enter ile ekle"
+            className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400"
+          />
+          <button type="button" onClick={addTag} className="px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-700 border border-gray-200">
+            Ekle
+          </button>
+        </div>
+        {expertiseTags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {expertiseTags.map((t) => (
+              <span key={t} className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs bg-gray-100 text-gray-700">
+                {t}
+                <button type="button" onClick={() => setExpertiseTags(expertiseTags.filter((x) => x !== t))} className="text-gray-400 hover:text-gray-700">×</button>
+              </span>
+            ))}
+          </div>
+        )}
+        <p className="text-[11px] text-gray-400 mt-1">Profilinizde her zaman herkese açık görünür — en fazla 8 alan.</p>
+      </div>
+
       <div className="bg-gray-50 rounded-xl p-4 space-y-3">
         <label className="flex items-start gap-2 text-sm text-gray-700">
           <input

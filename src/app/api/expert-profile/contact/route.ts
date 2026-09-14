@@ -29,12 +29,12 @@ export async function PATCH(req: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
-  const { consentContactPublic, consentRegionalPromo, cvNoindex, messagingEnabled } = parsed.data;
+  const { consentContactPublic, consentRegionalPromo, cvNoindex, messagingEnabled, expertiseTags } = parsed.data;
   const businessName = parsed.data.businessName?.trim() || null;
   const contactPhone = parsed.data.contactPhone?.trim() || null;
   const contactAddress = parsed.data.contactAddress?.trim() || null;
 
-  for (const text of [businessName, contactAddress]) {
+  for (const text of [businessName, contactAddress, ...expertiseTags]) {
     if (!text) continue;
     const contentCheck = checkContent(text);
     if (!contentCheck.ok) {
@@ -56,6 +56,7 @@ export async function PATCH(req: Request) {
       contactVisible,
       cvNoindex,
       messagingEnabled,
+      expertiseTags,
     },
   });
 

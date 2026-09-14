@@ -395,7 +395,7 @@ export default async function VehicleDetailPage({
         questions: {
           select: {
             id: true, text: true, createdAt: true,
-            user: { select: { displayName: true } },
+            user: { select: { id: true, displayName: true } },
             answers: {
               where: { status: "PUBLISHED" },
               select: { id: true, text: true, createdAt: true, user: { select: { displayName: true } } },
@@ -430,6 +430,7 @@ export default async function VehicleDetailPage({
       id: q.id,
       text: q.text,
       authorName: q.user.displayName ?? "Kullanıcı",
+      authorUserId: q.user.id,
       createdAt: q.createdAt.toISOString(),
       answers: q.answers.map((a) => ({
         id: a.id,
@@ -655,7 +656,7 @@ export default async function VehicleDetailPage({
       currentUserId={userId}
       canAnswer={canAnswerExpertQna}
       canWriteNote={canAnswerExpertQna}
-      writeNoteHref={`/usta-gorusu/yaz?modelId=${product.modelId}&modelBrand=${encodeURIComponent(product.brand.name)}&modelName=${encodeURIComponent(stripModelGenRange(product.model.name))}&categorySlug=${encodeURIComponent(categorySlug)}`}
+      writeNoteHref={`/usta-gorusu/yaz?modelId=${product.modelId}&modelBrand=${encodeURIComponent(product.brand.name)}&modelName=${encodeURIComponent(stripModelGenRange(product.model.name))}&categorySlug=${encodeURIComponent(categorySlug)}&returnSlug=${encodeURIComponent(product.slug)}`}
       regionalSummary={regionalSummary}
       showRegionOptIn={showRegionOptIn}
     />

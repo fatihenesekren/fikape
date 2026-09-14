@@ -174,6 +174,7 @@ export function ExpertNotesSection({
               questions={n.questions}
               isLoggedIn={isLoggedIn}
               canAnswer={canAnswer}
+              currentUserId={currentUserId}
             />
           </article>
         ))}
