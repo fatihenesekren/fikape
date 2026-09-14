@@ -71,6 +71,16 @@ export const EXPERT_NOTE_FIELDS: ExpertNoteField[] = [
     maxLength: 150,
   },
   {
+    // Kullanıcı fark etti: alanların tamamı olumsuz tarafa ("arıza",
+    // "kaçınılacak") ağırlıklıydı, güçlü yönler için hiç alan yoktu — bu
+    // notların tek taraflı/karamsar bir tona kaymasına yol açabilir.
+    key: "guclu_yonler",
+    label: "Güçlü yönler / neden tercih edilir",
+    placeholder: "Bu modelin öne çıkan avantajları, sağlamlık/konfor/kullanım memnuniyeti yaratan özellikleri...",
+    maxLength: 600,
+    multiline: true,
+  },
+  {
     key: "kronik_arizalar",
     label: "Kronik arızalar / zayıf noktalar",
     placeholder: "Bu modelde sık gördüğünüz arızalar, hangi km civarında ortaya çıkar...",
