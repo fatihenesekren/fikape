@@ -75,6 +75,56 @@ export function ExpertNoteQna({
   // cevaplar için soru bazlı bir onay mesajı.
   const [submittedIds, setSubmittedIds] = useState<Set<number>>(new Set());
 
+  // Soruyu soranın kendi sorusunu düzenlemesi/silmesi — kullanıcı fark etti,
+  // önceden hiç mümkün değildi.
+  const [editingQuestionId, setEditingQuestionId] = useState<number | null>(null);
+  const [editQuestionText, setEditQuestionText] = useState("");
+  const [editQuestionLoading, setEditQuestionLoading] = useState(false);
+  const [editQuestionError, setEditQuestionError] = useState("");
+  const [deletingQuestionId, setDeletingQuestionId] = useState<number | null>(null);
+
+  async function saveQuestionEdit(e: React.FormEvent, questionId: number) {
+    e.preventDefault();
+    if (editQuestionText.trim().length < 10) return setEditQuestionError("En az 10 karakter yazınız.");
+    setEditQuestionLoading(true);
+    setEditQuestionError("");
+    try {
+      const res = await fetch(`/api/expert-notes/questions/${questionId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: editQuestionText.trim() }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setEditQuestionError(data.error ?? "Bir hata oluştu.");
+        setEditQuestionLoading(false);
+        return;
+      }
+      setEditingQuestionId(null);
+      setEditQuestionLoading(false);
+      router.refresh();
+    } catch {
+      setEditQuestionError("Bağlantı hatası.");
+      setEditQuestionLoading(false);
+    }
+  }
+
+  async function deleteQuestion(questionId: number) {
+    if (!confirm("Bu soruyu (varsa altındaki cevapla birlikte) silmek istediğinize emin misiniz?")) return;
+    setDeletingQuestionId(questionId);
+    try {
+      const res = await fetch(`/api/expert-notes/questions/${questionId}`, { method: "DELETE" });
+      if (res.ok) {
+        router.refresh();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error ?? "Silinemedi.");
+      }
+    } finally {
+      setDeletingQuestionId(null);
+    }
+  }
+
   async function ask(e: React.FormEvent) {
     e.preventDefault();
     if (text.trim().length < 10) return setError("En az 10 karakter yazınız.");
@@ -169,14 +219,71 @@ export function ExpertNoteQna({
               && q.answers.length === 0;
             const isEditingMyAnswer = myAnswer != null && editingAnswerId === myAnswer.id;
 
+            const isOwnQuestion = q.authorUserId === currentUserId;
+            const isEditingThisQuestion = isOwnQuestion && editingQuestionId === q.id;
+
             return (
               <div key={q.id} className="bg-gray-50 rounded-lg px-3 py-2 space-y-2">
-                <div>
-                  <p className="text-sm text-gray-800">
-                    <span className="font-semibold">{q.authorName}:</span> {q.text}
-                  </p>
-                  <p className="text-[10px] text-gray-400 mt-0.5">{formatDateTime(q.createdAt)}</p>
-                </div>
+                {isEditingThisQuestion ? (
+                  <div>
+                    <form onSubmit={(e) => saveQuestionEdit(e, q.id)} className="flex items-start gap-2">
+                      <input
+                        type="text"
+                        value={editQuestionText}
+                        onChange={(e) => setEditQuestionText(e.target.value.slice(0, 300))}
+                        autoFocus
+                        className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
+                      />
+                      <button
+                        type="submit"
+                        disabled={editQuestionLoading}
+                        className="px-3 py-2 rounded-lg text-xs font-semibold text-white disabled:opacity-50 shrink-0"
+                        style={{ background: "var(--btn-dark)" }}
+                      >
+                        {editQuestionLoading ? "…" : "Kaydet"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => { setEditingQuestionId(null); setEditQuestionError(""); }}
+                        className="text-xs text-gray-400 hover:text-gray-700 shrink-0 py-2"
+                      >
+                        Vazgeç
+                      </button>
+                    </form>
+                    {editQuestionError && <p className="text-xs text-red-600 mt-1">{editQuestionError}</p>}
+                  </div>
+                ) : (
+                  <div>
+                    <p className="text-sm text-gray-800">
+                      <span className="font-semibold">{q.authorName}:</span> {q.text}
+                    </p>
+                    <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                      <span className="text-[10px] text-gray-400">{formatDateTime(q.createdAt)}</span>
+                      {isOwnQuestion && (
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => { setEditingQuestionId(q.id); setEditQuestionText(q.text); setEditQuestionError(""); }}
+                            className="text-[10px] font-semibold text-link hover:underline"
+                          >
+                            Düzenle
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => deleteQuestion(q.id)}
+                            disabled={deletingQuestionId === q.id}
+                            className="text-[10px] font-semibold text-red-500 hover:text-red-700 disabled:opacity-50"
+                          >
+                            {deletingQuestionId === q.id ? "Siliniyor…" : "Sil"}
+                          </button>
+                        </>
+                      )}
+                    </div>
+                    {isOwnQuestion && editingQuestionId === q.id && editQuestionError && (
+                      <p className="text-xs text-red-600 mt-1">{editQuestionError}</p>
+                    )}
+                  </div>
+                )}
 
                 {q.answers.map((a) => (
                   <div key={a.id} className="pl-3 border-l-2 border-gray-200">
