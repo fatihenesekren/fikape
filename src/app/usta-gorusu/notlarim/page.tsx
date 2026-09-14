@@ -42,7 +42,19 @@ export default async function ExpertMyNotesPage() {
     where: { profileId: profile.id, status: { not: "HIDDEN" } },
     select: {
       id: true, title: true, status: true, rejectionReason: true, createdAt: true,
-      model: { select: { name: true, brand: { select: { name: true } } } },
+      model: {
+        select: {
+          name: true, brand: { select: { name: true } },
+          // Yayındaki nota sayfa üzerinden erişim linki için — admin/expert-answers'daki
+          // aynı desen (en çok görüntülenen aktif ürün, model'in kendi sayfası yok).
+          products: {
+            where: { isActive: true },
+            orderBy: { weeklyViewCount: "desc" },
+            take: 1,
+            select: { slug: true },
+          },
+        },
+      },
       appeals: { select: { status: true } },
     },
     orderBy: { createdAt: "desc" },
@@ -80,6 +92,8 @@ export default async function ExpertMyNotesPage() {
           {notes.map((n) => {
             const badge = STATUS_LABEL[n.status] ?? { label: n.status, ...EXPERT_STATUS_TONES.neutral };
             const appeal = n.appeals[0];
+            const productSlug = n.model.products[0]?.slug;
+            const pageHref = productSlug ? `/araclar/${productSlug}?sekme=usta-gorusleri#usta-not-${n.id}` : null;
             return (
               <div key={n.id} className="bg-white border border-gray-100 rounded-xl p-4 space-y-1.5">
                 <div className="flex items-center justify-between gap-2">
@@ -95,7 +109,17 @@ export default async function ExpertMyNotesPage() {
                     <ExpertAppealForm subjectType="NOTE_REJECTION" noteId={n.id} existingStatus={appeal?.status ?? null} />
                   </>
                 )}
-                <ExpertNoteRowActions noteId={n.id} />
+                <div className="flex items-center gap-3">
+                  {/* Yayında ise sayfada nerede göründüğüne dair link — önceden hiç
+                      yoktu, usta kendi notunun canlı halini görmek için araç
+                      sayfasını elle aramak zorundaydı. */}
+                  {n.status === "PUBLISHED" && pageHref && (
+                    <Link href={pageHref} className="text-xs font-semibold" style={{ color: "var(--link)" }}>
+                      Sayfada görüntüle →
+                    </Link>
+                  )}
+                  <ExpertNoteRowActions noteId={n.id} />
+                </div>
               </div>
             );
           })}
