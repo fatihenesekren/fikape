@@ -8,7 +8,17 @@ interface BlockedRow {
   displayName: string | null;
   avatarUrl: string | null;
   since: string;
+  source: "TAKAS" | "USTA" | null;
 }
+
+// Etiket — kullanıcı isteğiyle eklendi: engel birleşik çalışır (bir kişiyi
+// nereden engellersen engelle, her iki yüzeyden de iletişim kesilir), bu
+// yalnız "bu kişiyle nereden tanıştınız" bilgisini gösterir. Eski kayıtlar
+// (migrasyondan önce) source=null, etiketsiz kalır.
+const SOURCE_LABEL: Record<string, string> = {
+  TAKAS: "Takas",
+  USTA: "Usta",
+};
 
 export function BlockedUsersSection({ initialBlocked }: { initialBlocked: BlockedRow[] }) {
   const [rows, setRows] = useState(initialBlocked);
@@ -32,7 +42,7 @@ export function BlockedUsersSection({ initialBlocked }: { initialBlocked: Blocke
     <div id="engellenenler">
       <h2 className="text-base font-bold text-gray-900 mb-1">Engellenen kullanıcılar</h2>
       <p className="text-xs text-gray-400 mb-3">
-        Engellediğin kişiler seninle hiçbir takas ilanı üzerinden iletişim kuramaz.
+        Engellediğin kişiler seninle ne takas ilanı ne de usta mesajı üzerinden iletişim kurabilir.
       </p>
 
       {rows.length === 0 ? (
@@ -44,8 +54,15 @@ export function BlockedUsersSection({ initialBlocked }: { initialBlocked: Blocke
           {rows.map((r) => (
             <div key={r.userId} className="flex items-center gap-3 px-4 py-3">
               <Avatar displayName={r.displayName} avatarUrl={r.avatarUrl} seed={String(r.userId)} size={32} />
-              <span className="flex-1 min-w-0 text-sm font-medium text-gray-800 truncate">
-                {r.displayName ?? "Kullanıcı"}
+              <span className="flex-1 min-w-0 flex items-center gap-2">
+                <span className="text-sm font-medium text-gray-800 truncate">
+                  {r.displayName ?? "Kullanıcı"}
+                </span>
+                {r.source && (
+                  <span className="shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
+                    {SOURCE_LABEL[r.source]}
+                  </span>
+                )}
               </span>
               <button
                 type="button"

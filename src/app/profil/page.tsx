@@ -122,13 +122,14 @@ export default async function ProfilPage() {
     await prisma.blockedUser.findMany({
       where: { blockerId: userId },
       orderBy: { createdAt: "desc" },
-      select: { blockedId: true, createdAt: true, blocked: { select: { displayName: true, avatarUrl: true } } },
+      select: { blockedId: true, createdAt: true, source: true, blocked: { select: { displayName: true, avatarUrl: true } } },
     }).catch(() => [])
   ).map((b) => ({
     userId: b.blockedId,
     displayName: b.blocked.displayName,
     avatarUrl: b.blocked.avatarUrl,
     since: b.createdAt.toISOString(),
+    source: b.source, // "TAKAS" | "USTA" | null (null = migrasyondan önceki eski kayıt)
   }));
 
   const trust = TRUST_PROFILE[user.trustLevel] ?? TRUST_PROFILE[1];

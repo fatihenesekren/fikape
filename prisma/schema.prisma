@@ -1278,16 +1278,26 @@ model TradeRating {
 // ulaşabiliyordu (bkz. denetim raporu). Bu tablo bloğu kullanıcı çifti bazında
 // kalıcı hale getirir, yeni ilan/thread açma route'larında kontrol edilir.
 model BlockedUser {
-  id        Int      @id @default(autoincrement())
+  id        Int          @id @default(autoincrement())
   blockerId Int
-  blocker   User     @relation("Blocker", fields: [blockerId], references: [id])
+  blocker   User         @relation("Blocker", fields: [blockerId], references: [id])
   blockedId Int
-  blocked   User     @relation("Blocked", fields: [blockedId], references: [id])
-  createdAt DateTime @default(now())
+  blocked   User         @relation("Blocked", fields: [blockedId], references: [id])
+  createdAt DateTime     @default(now())
+  // Engelin hangi yüzeyden yapıldığı — yalnız bilgi amaçlı, engelin ETKİSİ
+  // hâlâ birleşik (Takas'tan engellenen usta mesajı da atamaz, tersi de
+  // geçerli). Eski kayıtlarda NULL (kullanıcı: "Engellenen Kullanıcılar'da
+  // Takas/Usta ayrımı olmalı" — 14 Eylül 2026).
+  source    BlockSource?
 
   @@unique([blockerId, blockedId])
   @@index([blockedId])
   @@map("blocked_users")
+}
+
+enum BlockSource {
+  TAKAS
+  USTA
 }
 
 model Message {

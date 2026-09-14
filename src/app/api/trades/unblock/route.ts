@@ -1,16 +1,15 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { isTradeMessagingEnabled } from "@/lib/features";
 
 // Engeli kaldır — Profil › Engellenen kullanıcılar bölümünden. Yalnızca kendi
 // koyduğun engeli kaldırabilirsin. Kapatılmış görüşmeleri OTOMATİK açmaz;
 // karşı taraf yeniden görüşme başlatabilir hâle gelir.
+// Not: `BlockedUser` artık hem Takas hem Usta engellemelerini kapsıyor
+// (source alanı, bkz. schema) — bu yüzden Takas'a özel isTradeMessagingEnabled
+// kapısı kaldırıldı; feature flag kapalıyken bile usta-kaynaklı bir engel
+// kaldırılabilmeli.
 export async function POST(req: Request) {
-  if (!isTradeMessagingEnabled()) {
-    return NextResponse.json({ error: "Bu özellik geçici olarak kapalı." }, { status: 503 });
-  }
-
   const session = await auth();
   if (!session?.user?.id) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 

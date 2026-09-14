@@ -57,7 +57,7 @@ export async function POST(
     }),
     prisma.blockedUser.upsert({
       where: { blockerId_blockedId: { blockerId: userId, blockedId: counterpartId } },
-      create: { blockerId: userId, blockedId: counterpartId },
+      create: { blockerId: userId, blockedId: counterpartId, source: "TAKAS" },
       update: {},
     }),
   ]);
