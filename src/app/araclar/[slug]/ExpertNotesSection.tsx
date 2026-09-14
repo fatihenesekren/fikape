@@ -94,6 +94,8 @@ export function ExpertNotesSection({
     );
   }
 
+  const hasOwnNote = currentUserId != null && notes.some((n) => n.authorUserId === currentUserId);
+
   return (
     <div>
       <p className="px-5 pt-4 text-[11px] text-gray-400 leading-relaxed border-b border-gray-50 pb-3">
@@ -101,10 +103,18 @@ export function ExpertNotesSection({
       </p>
 
       {/* Yazabilecek aktif ustaya, mevcut notların üstünde katkı daveti —
-          bilgi şeridinin kendisi ikonsuz (kimlik/eylem sembolüyle karışmasın). */}
+          bilgi şeridinin kendisi ikonsuz (kimlik/eylem sembolüyle karışmasın).
+          Usta bu modele zaten kendi notunu yazmışsa metin bunu yansıtır —
+          "tekrar mı yazayım?" belirsizliği yerine "ek bir şey" çerçevesi
+          (kullanıcı kararı: aynı modele ikinci not engellenmiyor, barem
+          zaten yalnız farklı modelleri ödüllendiriyor — bkz. lib/expertNote.ts). */}
       {canWriteNote && (
         <div className="flex items-center gap-3 px-5 py-3 border-b border-gray-50" style={{ background: "#FAFBFD" }}>
-          <p className="flex-1 text-xs" style={{ color: "#0C447C" }}>Bu model hakkında bildiğiniz başka bir şey mi var?</p>
+          <p className="flex-1 text-xs" style={{ color: "#0C447C" }}>
+            {hasOwnNote
+              ? "Bu modele daha önce bir teknik not eklediniz — başka bir şey mi eklemek istersiniz?"
+              : "Bu model hakkında bildiğiniz başka bir şey mi var?"}
+          </p>
           <Link
             href={writeNoteHref}
             className="shrink-0 inline-flex items-center gap-1 rounded-lg border px-3 py-1.5 text-[11px] font-semibold"
