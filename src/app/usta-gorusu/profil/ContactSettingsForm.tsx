@@ -197,13 +197,21 @@ export function ContactSettingsForm({
       <div className="bg-gray-50 rounded-xl p-4">
         <label className="flex items-start gap-2 text-sm text-gray-700">
           <input type="checkbox" checked={cvNoindex} onChange={(e) => setCvNoindex(e.target.checked)} className="mt-0.5" />
-          <span>Profil sayfamın arama motorlarında görünmesini istemiyorum (noindex).</span>
+          <span>
+            Profil sayfam Google gibi arama motorlarının sonuçlarında çıkmasın.
+            <span className="block text-xs text-gray-500 mt-0.5">
+              Bunu işaretlerseniz sayfanız yine fikape içinde (usta notlarınızın altında,
+              kendi profilinizde) görünmeye devam eder — yalnız Google aramasında çıkmaz.
+              İşaretlemezseniz, sayfanız (bilgileriniz herkese açıksa) internette aranabilir hale gelir.
+            </span>
+          </span>
         </label>
       </div>
 
       <p className="text-xs text-gray-400 leading-relaxed">
         fikape, usta ile kullanıcı arasındaki hizmet ilişkisinin tarafı değildir; işçilik veya
-        onarım kalitesini garanti etmez. Detaylı bilgi için &quot;Usta Görüşleri Nedir?&quot; sayfasına bakınız.
+        onarım kalitesini garanti etmez. Detaylı bilgi için{" "}
+        <Link href="/usta-ol" className="underline hover:text-gray-600">Usta Görüşleri Nedir?</Link> sayfasına bakınız.
       </p>
 
       {error && <p className="text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>}

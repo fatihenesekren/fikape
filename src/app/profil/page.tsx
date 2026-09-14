@@ -398,12 +398,22 @@ export default async function ProfilPage() {
           <div className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4">
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div>
-                <p className="text-sm font-bold text-gray-900">🔧 Usta Görüşü</p>
+                <p className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+                  🔧 Usta Görüşü
+                  {/* "Aktif" artık gri, göze çarpmayan bir alt metin değil,
+                      diğer durum rozetleriyle (STATUS_LABEL deseni) aynı
+                      görsel dilde yeşil bir rozet — kullanıcı fark etti. */}
+                  {expertProfile?.status === "ACTIVE" && (
+                    <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold" style={{ color: "#166534", background: "#DCFCE7" }}>
+                      Aktif
+                    </span>
+                  )}
+                </p>
                 <p className="text-xs text-gray-400 mt-0.5">
                   {!expertProfile && "Bir tamir/bakım ustasıysanız, araç modelleri hakkında teknik görüş paylaşabilirsiniz."}
                   {expertProfile?.status === "PENDING_VERIFICATION" && "Başvurunuz inceleniyor."}
                   {expertProfile?.status === "WAITLISTED" && "Başvurunuz bekleme listesinde — sıradaki pencerede değerlendirilecek."}
-                  {expertProfile?.status === "ACTIVE" && "Usta profiliniz aktif."}
+                  {expertProfile?.status === "ACTIVE" && "Yeni bir usta görüşü yazabilir, danışan mesajlarınızı görebilirsiniz."}
                   {(expertProfile?.status === "SUSPENDED" || expertProfile?.status === "CLOSED") && "Usta profiliniz şu anda aktif değil."}
                 </p>
               </div>

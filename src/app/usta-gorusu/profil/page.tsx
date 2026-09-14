@@ -66,11 +66,18 @@ export default async function ExpertContactSettingsPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 space-y-8">
+      <Link href="/profil" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800">
+        ← Profilime dön
+      </Link>
+
       <div>
         <h1 className="text-2xl font-black text-gray-900">İletişim ve Görünürlük Ayarları</h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Bu ayarlar profil sayfanızda ({profile.city ?? "—"}
-          {profile.district ? ` / ${profile.district}` : ""}) hangi bilgilerin görüneceğini belirler.
+        <p className="text-sm text-gray-500 mt-1.5 leading-relaxed">
+          Aşağıdaki ayarlar herkese açık usta profilinizde
+          ({profile.city ?? "il belirtilmedi"}{profile.district ? ` / ${profile.district}` : ""})
+          neyin görüneceğini belirler. Uzmanlık alanlarınız her zaman görünür; işyeri adı, telefon
+          ve adres ise yalnız aşağıda açıkça izin verirseniz gösterilir. Hiçbir alanı doldurmak
+          zorunda değilsiniz — boş bıraktığınız hiçbir bilgi paylaşılmaz.
         </p>
       </div>
 

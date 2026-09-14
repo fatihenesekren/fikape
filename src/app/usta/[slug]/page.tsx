@@ -150,17 +150,33 @@ export default async function ExpertProfilePage({
           {profile.businessName && <p className="text-sm font-semibold text-gray-900">🏢 {profile.businessName}</p>}
           {profile.contactPhone && <p className="text-sm text-gray-800">📞 {profile.contactPhone}</p>}
           {profile.contactAddress && (
-            <p className="text-sm text-gray-800">
-              📍 {profile.contactAddress}{" "}
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.contactAddress)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-blue-600 hover:underline"
-              >
-                Haritada Aç →
-              </a>
-            </p>
+            <div>
+              <p className="text-sm text-gray-800">
+                📍 {profile.contactAddress}{" "}
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.contactAddress)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-link hover:underline"
+                >
+                  Haritada Aç →
+                </a>
+              </p>
+              {/* Harita önizlemesi — API anahtarı gerektirmeyen Google Maps
+                  embed URL şeması (kullanıcı isteği: adres yalnız metin değil,
+                  görsel bir konum önizlemesi de sağlasın). */}
+              <div className="mt-2 rounded-xl overflow-hidden border border-gray-100">
+                <iframe
+                  title="Konum haritası"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(profile.contactAddress)}&output=embed`}
+                  width="100%"
+                  height="160"
+                  loading="lazy"
+                  style={{ border: 0, display: "block" }}
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
           )}
           {contactFeedbackText && (
             <p className="text-[11px] font-semibold text-green-700">✓ {contactFeedbackText}</p>
