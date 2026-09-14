@@ -295,7 +295,7 @@ async function main() {
   const modelNinebot    = await prisma.model.upsert({ where: { slug: "segway-ninebot-max" }, update: {}, create: { slug: "segway-ninebot-max", name: "Ninebot Max G30", brandId: segway.id } });
 
   // Karavan
-  const modelKnausSport = await prisma.model.upsert({ where: { slug: "knaus-beaufort" },        update: {}, create: { slug: "knaus-beaufort",        name: "Beaufort",      brandId: knaus.id } });
+  const modelKnausSport = await prisma.model.upsert({ where: { slug: "knaus-sky-i" },        update: {}, create: { slug: "knaus-sky-i",        name: "Sky-i",      brandId: knaus.id } });
   const modelAdriaAltea = await prisma.model.upsert({ where: { slug: "adria-altea-432" },      update: {}, create: { slug: "adria-altea-432",      name: "Altea 432 PX",  brandId: adria.id } });
   const modelHobbyPremium = await prisma.model.upsert({ where: { slug: "hobby-premium-650" }, update: {}, create: { slug: "hobby-premium-650", name: "Premium 650 UFe", brandId: hobby.id } });
 
@@ -472,11 +472,11 @@ async function main() {
   // ─────────────────────────────────────────────
 
   const karavanProducts = [
-    { slug: "knaus-beaufort-2023", name: "Knaus Beaufort 2023", year: 2023, trimName: null,
+    { slug: "knaus-sky-i-2023", name: "Knaus Sky-i 2023", year: 2023, trimName: null,
       imageUrl: BLOB("knaus-sport-400-lk-2023.jpg"), modelId: modelKnausSport.id, brandId: knaus.id,
-      attributes: { karavan_type: "motorlu", berth: 4, length_cm: 799, width_cm: 232,
+      attributes: { karavan_type: "motorlu", berth: 4, length_cm: 744, width_cm: 234,
         total_weight_kg: 4250, has_bathroom: true, has_shower: true, has_kitchen: true, has_ac: true,
-        heating_type: "gaz" } },
+        heating_type: "gazli", water_tank_l: 100, waste_water_tank_l: 95 } },
     { slug: "adria-altea-432-px-2023", name: "Adria Altea 432 PX 2023", year: 2023, trimName: null,
       imageUrl: BLOB("adria-altea-432-px-2023.jpg"), modelId: modelAdriaAltea.id, brandId: adria.id,
       attributes: { karavan_type: "cekme", berth: 4, length_cm: 780, tow_weight_kg: 1350,
@@ -595,7 +595,7 @@ async function main() {
     { slug: "toyota-hilux-2023",         viewCount: 1380, weeklyViewCount: 141 },
     { slug: "kawasaki-ninja-400-2023",   viewCount: 1200, weeklyViewCount: 128 },
     { slug: "dacia-duster-2024",         viewCount: 1090, weeklyViewCount: 117 },
-    { slug: "knaus-beaufort-2023",         viewCount:  880, weeklyViewCount:  89 },
+    { slug: "knaus-sky-i-2023",         viewCount:  880, weeklyViewCount:  89 },
     { slug: "zero-sr-s-2024",            viewCount:  760, weeklyViewCount:  74 },
   ];
 
