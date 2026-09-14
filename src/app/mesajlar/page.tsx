@@ -39,7 +39,7 @@ export default async function MesajlarPage({
   // bir konuşma geçmişi varsa — böylece mesajına kimse erişimini kaybetmez
   // (bkz. feature_usta_gorusleri_ilerleme / mesaj hub birleştirme kararı).
   const [expertProfile, ustaThreadCount] = await Promise.all([
-    prisma.expertProfile.findUnique({ where: { userId }, select: { status: true } }),
+    prisma.expertProfile.findUnique({ where: { userId }, select: { status: true, slug: true } }),
     prisma.expertMessageThread.count({
       where: { OR: [{ initiatorId: userId }, { expertProfile: { userId } }] },
     }),
@@ -157,10 +157,23 @@ export default async function MesajlarPage({
       </div>
     );
 
+  const isActiveExpert = expertProfile?.status === "ACTIVE";
+
   const ustaList =
     ustaThreads.length === 0 ? (
       <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-12 text-center">
-        <p className="font-semibold text-gray-800 text-sm">Henüz bir usta ile mesajlaşman yok</p>
+        <p className="font-semibold text-gray-800 text-sm">
+          {/* Aynı boş durum iki farklı okuyucuya hitap ediyor: aktif usta
+              "danışan mi bekliyorum" merak ederken, sıradan kullanıcı
+              "bir ustaya nasıl ulaşırım" derdinde — tek metin ikisine de
+              uymuyordu (kullanıcı fark etti). */}
+          {isActiveExpert ? "Henüz bir danışan mesajınız yok" : "Henüz bir usta ile mesajlaşman yok"}
+        </p>
+        {isActiveExpert && expertProfile?.slug && (
+          <p className="text-sm text-gray-400 mt-1">
+            Bir kullanıcı <Link href={`/usta/${expertProfile.slug}`} className="text-link hover:underline">profilinizden</Link> size mesaj gönderdiğinde burada görünecek.
+          </p>
+        )}
       </div>
     ) : (
       <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden divide-y divide-gray-50">
