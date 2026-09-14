@@ -106,9 +106,21 @@ export default async function ExpertProfilePage({
     orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
   });
 
+  const memberSince = profile.createdAt.toLocaleDateString("tr-TR", { month: "long", year: "numeric" });
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      <div className="space-y-3 mb-8">
+      <div className="flex items-center justify-between gap-3 text-xs font-semibold text-gray-500 mb-6">
+        <Link href="/" className="hover:text-gray-800 transition-colors">← Ana sayfaya dön</Link>
+        <Link href="/usta-ol" className="hover:text-gray-800 transition-colors">Usta Görüşleri hakkında bilgi al →</Link>
+      </div>
+
+      {/* Kimlik kartı — önceden düz metin yığını, kart yapısı yoktu (kullanıcı
+          "görünüm kötü" dedi). Not sayısı + üyelik tarihi somut bir güven
+          sinyali ekliyor — "neden bu ustaya bakmalıyım" sorusuna kısa bir
+          cevap (kullanıcı: "ilgi çekici değil, neden kullanmalıyım
+          göstermiyor"). */}
+      <div className="bg-white border border-gray-100 rounded-2xl p-5 mb-6">
         <span
           className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold"
           style={{ color: EXPERT_BADGE.color, background: EXPERT_BADGE.bg }}
@@ -116,28 +128,37 @@ export default async function ExpertProfilePage({
         >
           {EXPERT_BADGE.icon} {EXPERT_BADGE.label}
         </span>
-        <h1 className="text-2xl font-black text-gray-900">{profile.headline}</h1>
-        <p className="text-sm text-gray-400">
+        <h1 className="text-2xl font-black text-gray-900 mt-3">{profile.headline}</h1>
+        <p className="text-sm text-gray-400 mt-1">
           {profile.user.displayName}
           {profile.city && ` · ${profile.city}`}
         </p>
+        <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-50 text-xs text-gray-500">
+          <span className="font-semibold text-gray-700">{notes.length}</span> paylaşılan usta görüşü
+          <span className="text-gray-300">·</span>
+          {memberSince}&apos;den beri fikape&apos;de
+        </div>
       </div>
 
-      {profile.expertiseTags.length > 0 && (
-        <div className="mb-6">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Uzmanlık Alanları</p>
-          <div className="flex flex-wrap gap-1.5">
-            {profile.expertiseTags.map((t) => (
-              <span key={t} className="px-2.5 py-1 rounded-full text-xs bg-gray-100 text-gray-700">{t}</span>
-            ))}
-          </div>
-        </div>
-      )}
+      {(profile.expertiseTags.length > 0 || profile.bio) && (
+        <div className="bg-white border border-gray-100 rounded-2xl p-5 mb-6 space-y-5">
+          {profile.expertiseTags.length > 0 && (
+            <div>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Uzmanlık Alanları</p>
+              <div className="flex flex-wrap gap-1.5">
+                {profile.expertiseTags.map((t) => (
+                  <span key={t} className="px-2.5 py-1 rounded-full text-xs bg-gray-100 text-gray-700">{t}</span>
+                ))}
+              </div>
+            </div>
+          )}
 
-      {profile.bio && (
-        <div className="mb-8">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Hakkında</p>
-          <p className="text-sm text-gray-700 whitespace-pre-line leading-relaxed">{profile.bio}</p>
+          {profile.bio && (
+            <div>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Hakkında</p>
+              <p className="text-sm text-gray-700 whitespace-pre-line leading-relaxed">{profile.bio}</p>
+            </div>
+          )}
         </div>
       )}
 
@@ -202,10 +223,14 @@ export default async function ExpertProfilePage({
 
       <div>
         <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">
-          Katkıları {notes.length > 0 && `(${notes.length})`}
+          Usta Görüşleri {notes.length > 0 && `(${notes.length})`}
         </p>
         {notes.length === 0 ? (
-          <p className="text-sm text-gray-400">Henüz yayınlanmış usta notu yok.</p>
+          <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-8 text-center text-sm text-gray-400">
+            {isOwnProfile
+              ? <>Henüz bir usta görüşü paylaşmadınız. <Link href="/usta-gorusu/yaz" className="text-link font-semibold hover:underline">İlk görüşünüzü yazın →</Link></>
+              : "Bu usta henüz bir görüş paylaşmamış."}
+          </div>
         ) : (
           <div className="space-y-2">
             {notes.map((n) => {

@@ -128,8 +128,15 @@ export function ExpertNotesSection({
                 {EXPERT_BADGE.icon} {EXPERT_BADGE.label}
               </span>
               {n.authorSlug ? (
-                <Link href={`/usta/${n.authorSlug}`} className="text-xs text-gray-500 hover:underline">
+                // Önceden düz gri metin + yalnız hover'da altı çiziliydi —
+                // kullanıcı bunun tıklanabilir olduğunun belli olmadığını
+                // fark etti. Site genelindeki marka/model link rengiyle
+                // (--link) ve bir ok işaretiyle tutarlı bir "buton" hissi.
+                <Link href={`/usta/${n.authorSlug}`} className="inline-flex items-center gap-0.5 text-xs font-semibold text-link hover:underline">
                   {n.authorName}
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </Link>
               ) : (
                 <span className="text-xs text-gray-500">{n.authorName}</span>
