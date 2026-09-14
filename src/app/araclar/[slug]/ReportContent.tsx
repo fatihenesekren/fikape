@@ -4,13 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { SPEC_FIELDS } from "@/lib/specFields";
 
-type TargetType = "SPEC" | "PHOTO" | "REVIEW" | "QNA" | "OTHER";
+type TargetType = "SPEC" | "PHOTO" | "REVIEW" | "QNA" | "EXPERT_NOTE" | "OTHER";
 
 const TARGET_LABELS: Record<TargetType, string> = {
   SPEC: "Teknik Özellik",
   PHOTO: "Fotoğraf",
   REVIEW: "Yorum",
   QNA: "Soru-Cevap",
+  EXPERT_NOTE: "Usta Notu",
   OTHER: "Diğer",
 };
 
@@ -18,21 +19,23 @@ interface Props {
   productId: number;
   categorySlug: string;
   isLoggedIn: boolean;
-  activeTab: "yorumlar" | "teknik" | "soru-cevap";
+  activeTab: "yorumlar" | "teknik" | "soru-cevap" | "usta-gorusleri";
   reviewsForReport: { id: number; label: string }[];
   questionsForReport: { id: number; label: string }[];
   photosForReport: { id: number; label: string }[];
+  notesForReport: { id: number; label: string }[];
 }
 
 const TAB_TO_TARGET: Record<Props["activeTab"], TargetType> = {
   teknik: "SPEC",
   yorumlar: "REVIEW",
   "soru-cevap": "QNA",
+  "usta-gorusleri": "EXPERT_NOTE",
 };
 
 export function ReportContent({
   productId, categorySlug, isLoggedIn, activeTab,
-  reviewsForReport, questionsForReport, photosForReport,
+  reviewsForReport, questionsForReport, photosForReport, notesForReport,
 }: Props) {
   const [open, setOpen] = useState(false);
   const [targetType, setTargetType] = useState<TargetType>(TAB_TO_TARGET[activeTab]);
@@ -73,6 +76,7 @@ export function ReportContent({
           photoId: targetType === "PHOTO" ? (itemId || null) : undefined,
           reviewId: targetType === "REVIEW" ? (itemId || null) : undefined,
           questionId: targetType === "QNA" ? (itemId || null) : undefined,
+          expertNoteId: targetType === "EXPERT_NOTE" ? (itemId || null) : undefined,
           note,
         }),
       });
@@ -90,7 +94,8 @@ export function ReportContent({
   const itemOptions =
     targetType === "REVIEW" ? reviewsForReport :
     targetType === "QNA" ? questionsForReport :
-    targetType === "PHOTO" ? photosForReport : [];
+    targetType === "PHOTO" ? photosForReport :
+    targetType === "EXPERT_NOTE" ? notesForReport : [];
 
   return (
     <div className="mt-3 text-center">

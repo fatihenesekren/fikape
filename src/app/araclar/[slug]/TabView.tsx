@@ -22,12 +22,13 @@ interface Props {
   reviewsForReport: { id: number; label: string }[];
   questionsForReport: { id: number; label: string }[];
   photosForReport: { id: number; label: string }[];
+  notesForReport: { id: number; label: string }[];
 }
 
 export function TabView({
   reviewCount, reviewsContent, specsContent, questionCount, qnaContent,
   hasExpertNotes, expertNoteCount, expertNotesContent, canWriteExpertNote, initialTab,
-  productId, categorySlug, isLoggedIn, reviewsForReport, questionsForReport, photosForReport,
+  productId, categorySlug, isLoggedIn, reviewsForReport, questionsForReport, photosForReport, notesForReport,
 }: Props) {
   // Sekme, not varsa HERKESE, not yoksa yalnız yazabilecek (aktif usta)
   // kullanıcıya görünür — boş sekmeyi sıradan kullanıcıya göstermenin
@@ -78,18 +79,20 @@ export function TabView({
         <div className="bg-white border border-t-0 border-gray-100 rounded-b-2xl min-h-[320px]">{qnaContent}</div>
       )}
 
-      {/* İçerik hatası bildirimi — usta görüşleri için ayrı akış (Aşama 4), burada gizli */}
-      {tab !== "usta-gorusleri" && (
-        <ReportContent
-          productId={productId}
-          categorySlug={categorySlug}
-          isLoggedIn={isLoggedIn}
-          activeTab={tab}
-          reviewsForReport={reviewsForReport}
-          questionsForReport={questionsForReport}
-          photosForReport={photosForReport}
-        />
-      )}
+      {/* İçerik hatası bildirimi — önceden usta görüşleri sekmesinde
+          gizliydi ("Aşama 4'e ertelendi" notuyla), ama şema/admin tarafı
+          (ContentReportTargetType.EXPERT_NOTE) zaten hazırdı — kullanıcı
+          fark edip tamamlanmasını istedi, artık her sekmede aynı akış var. */}
+      <ReportContent
+        productId={productId}
+        categorySlug={categorySlug}
+        isLoggedIn={isLoggedIn}
+        activeTab={tab}
+        reviewsForReport={reviewsForReport}
+        questionsForReport={questionsForReport}
+        photosForReport={photosForReport}
+        notesForReport={notesForReport}
+      />
     </div>
   );
 }

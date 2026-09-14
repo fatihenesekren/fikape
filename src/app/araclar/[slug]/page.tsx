@@ -685,6 +685,10 @@ export default async function VehicleDetailPage({
     id: p.id,
     label: `${i + 1}. fotoğraf — ${p.uploadedBy?.displayName ?? "Kullanıcı fotoğrafı"}`,
   }));
+  const notesForReport = expertNotes.map((n) => ({
+    id: n.id,
+    label: `${n.authorName} — "${n.title.slice(0, 40)}${n.title.length > 40 ? "…" : ""}"`,
+  }));
 
   // Teknik özellikler — takas ilanı detayıyla aynı kutucuk grid'i
   // (paylaşılan SpecGrid). Önceki "label ..... value" satır tablosu görünüm/
@@ -959,6 +963,7 @@ export default async function VehicleDetailPage({
           reviewsForReport={reviewsForReport}
           questionsForReport={questionsForReport}
           photosForReport={photosForReport}
+          notesForReport={notesForReport}
         />
 
       </div>
