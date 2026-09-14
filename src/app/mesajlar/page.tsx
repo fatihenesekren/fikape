@@ -17,7 +17,7 @@ function carLabel(p: ProdRef): string | null {
 function UnreadBadge({ count }: { count: number }) {
   if (count <= 0) return null;
   return (
-    <span className="shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-white text-[10px] font-bold flex items-center justify-center" style={{ background: "#0C447C" }}>
+    <span className="shrink-0 min-w-[18px] h-[18px] px-1 rounded-full text-white text-[10px] font-bold flex items-center justify-center" style={{ background: "var(--link-deep)" }}>
       {count > 9 ? "9+" : count}
     </span>
   );
@@ -224,7 +224,7 @@ export default async function MesajlarPage({
               href="/mesajlar"
               className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors flex items-center gap-1.5 ${
                 activeTab === "takas"
-                  ? "border-gray-900 bg-gray-900 text-white"
+                  ? "border-[var(--btn-dark)] bg-[var(--btn-dark)] text-white"
                   : "border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50"
               }`}
             >
@@ -235,7 +235,7 @@ export default async function MesajlarPage({
               href="/mesajlar?tab=usta"
               className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors flex items-center gap-1.5 ${
                 activeTab === "usta"
-                  ? "border-gray-900 bg-gray-900 text-white"
+                  ? "border-[var(--btn-dark)] bg-[var(--btn-dark)] text-white"
                   : "border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50"
               }`}
             >

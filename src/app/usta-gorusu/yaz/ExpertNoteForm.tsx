@@ -269,7 +269,7 @@ export function ExpertNoteForm({ headline }: { headline: string | null }) {
           type="submit"
           disabled={loading}
           className="w-full px-5 py-3 rounded-xl text-sm font-semibold text-white disabled:opacity-50"
-          style={{ background: "#111" }}
+          style={{ background: "var(--btn-dark)" }}
         >
           {loading ? "Gönderiliyor…" : "İncelemeye gönder"}
         </button>

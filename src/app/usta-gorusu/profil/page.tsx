@@ -6,14 +6,15 @@ import { getLatestConsent } from "@/lib/consent";
 import { finalizeExpiredAppeals } from "@/lib/expertAppeal";
 import { ContactSettingsForm } from "./ContactSettingsForm";
 import { ExpertAppealForm } from "../ExpertAppealForm";
+import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 
 export const metadata = { title: "İletişim Ayarları — fikape", robots: { index: false } };
 
 const VISIBILITY_LABEL: Record<string, { label: string; color: string; bg: string }> = {
-  HIDDEN: { label: "Henüz görünür değil", color: "#374151", bg: "#F3F4F6" },
-  FEATURED: { label: "Görünür", color: "#166534", bg: "#DCFCE7" },
-  PAUSED: { label: "Duraklatıldı", color: "#991B1B", bg: "#FEE2E2" },
-  PROBATION: { label: "Denetimde", color: "#7A5A00", bg: "#FEF6D8" },
+  HIDDEN: { label: "Henüz görünür değil", ...EXPERT_STATUS_TONES.neutral },
+  FEATURED: { label: "Görünür", ...EXPERT_STATUS_TONES.success },
+  PAUSED: { label: "Duraklatıldı", ...EXPERT_STATUS_TONES.danger },
+  PROBATION: { label: "Denetimde", ...EXPERT_STATUS_TONES.warning },
 };
 
 export default async function ExpertContactSettingsPage() {
@@ -62,7 +63,7 @@ export default async function ExpertContactSettingsPage() {
       })
     : null;
 
-  const visBadge = VISIBILITY_LABEL[profile.visibilityState] ?? { label: profile.visibilityState, color: "#374151", bg: "#F3F4F6" };
+  const visBadge = VISIBILITY_LABEL[profile.visibilityState] ?? { label: profile.visibilityState, ...EXPERT_STATUS_TONES.neutral };
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 space-y-8">

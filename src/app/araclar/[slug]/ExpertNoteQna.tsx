@@ -152,7 +152,7 @@ export function ExpertNoteQna({
                         type="submit"
                         disabled={answerLoading}
                         className="px-3 py-2 rounded-lg text-xs font-semibold text-white disabled:opacity-50 shrink-0"
-                        style={{ background: "#111" }}
+                        style={{ background: "var(--btn-dark)" }}
                       >
                         {answerLoading ? "…" : "Gönder"}
                       </button>
@@ -199,7 +199,7 @@ export function ExpertNoteQna({
                 type="submit"
                 disabled={loading}
                 className="px-3 py-2 rounded-lg text-xs font-semibold text-white disabled:opacity-50 shrink-0"
-                style={{ background: "#111" }}
+                style={{ background: "var(--btn-dark)" }}
               >
                 {loading ? "…" : "Sor"}
               </button>

@@ -185,7 +185,7 @@ export default function UstaOlPage() {
         <Link
           href="/usta-basvuru"
           className="inline-block px-6 py-3 rounded-xl text-sm font-semibold text-white"
-          style={{ background: "#111" }}
+          style={{ background: "var(--btn-dark)" }}
         >
           Hemen Başvurun →
         </Link>

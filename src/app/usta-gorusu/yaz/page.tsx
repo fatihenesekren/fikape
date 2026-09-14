@@ -33,7 +33,7 @@ export default async function UstaGorusuYazPage({
               ← Araç sayfasına dön
             </Link>
           )}
-          <Link href="/usta-gorusu/yaz" className="inline-block px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "#111" }}>
+          <Link href="/usta-gorusu/yaz" className="inline-block px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
             Yeni not yaz →
           </Link>
         </div>
@@ -56,7 +56,7 @@ export default async function UstaGorusuYazPage({
           Usta görüşü yazabilmek için önce profilinizden usta başvurusu yapıp
           onay almanız gerekiyor.
         </p>
-        <Link href="/profil" className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "#111" }}>
+        <Link href="/profil" className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
           Profile git →
         </Link>
       </Shell>

@@ -45,7 +45,7 @@ export default async function UstaBasvuruPage({
               ? "Başvuru penceresi şu anda kapalı. Başvurunuz kaydedildi ve sıradaki pencerede otomatik değerlendirmeye alınacak."
               : "Usta başvurunuz incelemeye alındı. Onaylandığında size bildirim göndereceğiz."}
           </p>
-          <Link href="/profil" className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "#111" }}>
+          <Link href="/profil" className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
             Profile dön →
           </Link>
         </Shell>
@@ -82,7 +82,7 @@ export default async function UstaBasvuruPage({
           <Shell>
             <div className="text-4xl">🔧</div>
             <h1 className="text-xl font-black text-gray-900">Zaten aktif bir usta profiliniz var</h1>
-            <Link href={`/usta/${existing.slug}`} className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "#111" }}>
+            <Link href={`/usta/${existing.slug}`} className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
               Profilime git →
             </Link>
           </Shell>

@@ -34,6 +34,16 @@ export const EXPERT_BADGE = {
 // tek onaylaması yeterli kabul edildi; ek zaman-bazlı bekleme eklenmedi.
 export const CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES = 1;
 
+// Durum rozeti renk tonları — TEK KAYNAK. Önceden aynı 4 renk çifti
+// (yeşil/sarı/kırmızı/gri) üç ayrı dosyada (profil, notlarim, usta-gorusu/profil)
+// elle kopyalanmıştı (görsel denetim bulgusu, 14 Eylül 2026).
+export const EXPERT_STATUS_TONES = {
+  success: { color: "#166534", bg: "#DCFCE7" }, // Yayında / Görünür / Aktif
+  warning: { color: "#7A5A00", bg: "#FEF6D8" }, // İnceleniyor / Denetimde
+  danger:  { color: "#991B1B", bg: "#FEE2E2" }, // Reddedildi / Duraklatıldı
+  neutral: { color: "#374151", bg: "#F3F4F6" }, // Henüz görünür değil / bilinmeyen
+} as const;
+
 // Not kartı ve tab başında görünen sabit feragat (KİLİTLENDİ — kurucu kararı).
 // "reklam / ödeme karşılığı" ifadeleri BİLİNÇLİ olarak yok (§14.8).
 export const EXPERT_NOTE_DISCLAIMER =

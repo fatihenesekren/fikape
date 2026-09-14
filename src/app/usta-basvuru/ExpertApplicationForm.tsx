@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { TURKISH_DISTRICTS } from "@/lib/turkishDistricts";
+import { StyledCheckbox } from "@/components/StyledCheckbox";
 
 export function ExpertApplicationForm() {
   const router = useRouter();
@@ -160,25 +161,20 @@ export function ExpertApplicationForm() {
           </div>
         </div>
 
-        <div className="space-y-2.5 bg-gray-50 rounded-2xl p-4">
-          <label className="flex items-start gap-2 text-sm text-gray-700">
-            <input type="checkbox" checked={notCommercial} onChange={(e) => setNotCommercial(e.target.checked)} className="mt-0.5 shrink-0" />
+        <div className="space-y-3 bg-white border border-gray-100 rounded-2xl p-4">
+          <StyledCheckbox checked={notCommercial} onChange={setNotCommercial}>
             Araç alım-satımı yapan bir galeri/oto pazarlama işletmesinin sahibi, ortağı veya çalışanı değilim;
             bir marka veya yetkili servisin çalışanı/temsilcisi/sözleşmeli hizmet sağlayıcısı değilim.
-          </label>
-          <label className="flex items-start gap-2 text-sm text-gray-700">
-            <input type="checkbox" checked={ageConfirmed} onChange={(e) => setAgeConfirmed(e.target.checked)} className="mt-0.5 shrink-0" />
+          </StyledCheckbox>
+          <StyledCheckbox checked={ageConfirmed} onChange={setAgeConfirmed}>
             18 yaşından büyüğüm.
-          </label>
-          <label className="flex items-start gap-2 text-xs text-gray-500">
-            <input type="checkbox" checked={privacyConsent} onChange={(e) => setPrivacyConsent(e.target.checked)} className="mt-0.5 shrink-0" />
-            <span>
-              <Link href="/gizlilik" className="underline" target="_blank">Gizlilik Politikası</Link>
-              {"'nı ve "}
-              <Link href="/kullanim-kosullari" className="underline" target="_blank">Kullanım Koşulları</Link>
-              {"'nı okudum, kabul ediyorum."}
-            </span>
-          </label>
+          </StyledCheckbox>
+          <StyledCheckbox checked={privacyConsent} onChange={setPrivacyConsent} className="text-xs text-gray-500">
+            <Link href="/gizlilik" className="underline" target="_blank">Gizlilik Politikası</Link>
+            {"'nı ve "}
+            <Link href="/kullanim-kosullari" className="underline" target="_blank">Kullanım Koşulları</Link>
+            {"'nı okudum, kabul ediyorum."}
+          </StyledCheckbox>
         </div>
 
         <p className="text-xs text-gray-400 leading-relaxed">
@@ -193,7 +189,7 @@ export function ExpertApplicationForm() {
           type="submit"
           disabled={loading || !allChecksPass}
           className="w-full px-5 py-3 rounded-xl text-sm font-semibold text-white disabled:opacity-40"
-          style={{ background: "#111" }}
+          style={{ background: "var(--btn-dark)" }}
         >
           {loading ? "Gönderiliyor…" : "Başvuruyu gönder"}
         </button>

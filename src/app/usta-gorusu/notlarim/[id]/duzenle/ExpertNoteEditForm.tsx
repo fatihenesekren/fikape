@@ -122,7 +122,7 @@ export function ExpertNoteEditForm({
             type="submit"
             disabled={loading}
             className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white disabled:opacity-60"
-            style={{ background: "#111" }}
+            style={{ background: "var(--btn-dark)" }}
           >
             {loading ? "Kaydediliyor…" : "Kaydet"}
           </button>

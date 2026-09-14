@@ -19,6 +19,7 @@ import { ScrollFadeBox } from "@/components/ScrollFadeBox";
 import { FavoriteRow } from "./FavoriteRow";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { DeleteAccountSection } from "./DeleteAccountSection";
+import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 
 export const metadata: Metadata = { title: "Profilim" };
 
@@ -404,7 +405,7 @@ export default async function ProfilPage() {
                       diğer durum rozetleriyle (STATUS_LABEL deseni) aynı
                       görsel dilde yeşil bir rozet — kullanıcı fark etti. */}
                   {expertProfile?.status === "ACTIVE" && (
-                    <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold" style={{ color: "#166534", background: "#DCFCE7" }}>
+                    <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold" style={{ color: EXPERT_STATUS_TONES.success.color, background: EXPERT_STATUS_TONES.success.bg }}>
                       Aktif
                     </span>
                   )}
@@ -418,7 +419,7 @@ export default async function ProfilPage() {
                 </p>
               </div>
               {!expertProfile && (
-                <Link href="/usta-basvuru" className="shrink-0 px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "#111" }}>
+                <Link href="/usta-basvuru" className="shrink-0 px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
                   Başvur →
                 </Link>
               )}
@@ -430,7 +431,7 @@ export default async function ProfilPage() {
                   <Link href="/usta-gorusu/profil" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
                     İletişim Ayarları
                   </Link>
-                  <Link href="/usta-gorusu/yaz" className="px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "#111" }}>
+                  <Link href="/usta-gorusu/yaz" className="px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
                     Usta Görüşü Yaz →
                   </Link>
                 </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { StyledCheckbox } from "@/components/StyledCheckbox";
 
 export function ContactSettingsForm({
   initialBusinessName, initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, initialMessagingEnabled, initialExpertiseTags, profileSlug,
@@ -79,8 +80,8 @@ export function ContactSettingsForm({
 
   return (
     <form onSubmit={submit} className="space-y-6">
-      <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Uzmanlık alanları</label>
+      <div className="bg-white border border-gray-100 rounded-2xl p-4">
+        <label className="block text-sm font-semibold text-gray-700 mb-1.5">🔧 Uzmanlık alanları</label>
         <div className="flex gap-2">
           <input
             type="text"
@@ -107,25 +108,21 @@ export function ContactSettingsForm({
         <p className="text-[11px] text-gray-400 mt-1">Profilinizde her zaman herkese açık görünür — en fazla 8 alan.</p>
       </div>
 
-      <div className="bg-gray-50 rounded-xl p-4 space-y-3">
-        <label className="flex items-start gap-2 text-sm text-gray-700">
-          <input
-            type="checkbox"
-            checked={consentContactPublic}
-            onChange={(e) => setConsentContactPublic(e.target.checked)}
-            className="mt-0.5"
-          />
-          <span>
-            İşyeri adımın, telefon numaramın ve (girersem) açık adresimin{" "}
-            <Link href={`/usta/${profileSlug}`} className="underline">profil sayfamda</Link>{" "}
-            herkese açık gösterilmesine ve arama motorlarınca indekslenmesine açık rıza veriyorum.
-            Bu rızayı istediğim zaman geri çekebilirim; geri çektiğimde bilgilerim{" "}
-            <strong>derhal</strong> kaldırılır. Usta statüm, rozetim ve notlarım bundan etkilenmez.
-          </span>
-        </label>
+      {/* Önceden dört ayrı onay bloğu da düz `bg-gray-50` renginde,
+          birbirinden ayrışmayan bir "gri duvar" gibiydi (görsel denetim
+          bulgusu) — artık her biri kendi başlığı olan beyaz bir kart. */}
+      <div className="bg-white border border-gray-100 rounded-2xl p-4 space-y-3">
+        <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">🏢 İletişim Bilgisi Paylaşımı</p>
+        <StyledCheckbox checked={consentContactPublic} onChange={setConsentContactPublic}>
+          İşyeri adımın, telefon numaramın ve (girersem) açık adresimin{" "}
+          <Link href={`/usta/${profileSlug}`} className="underline">profil sayfamda</Link>{" "}
+          herkese açık gösterilmesine ve arama motorlarınca indekslenmesine açık rıza veriyorum.
+          Bu rızayı istediğim zaman geri çekebilirim; geri çektiğimde bilgilerim{" "}
+          <strong>derhal</strong> kaldırılır. Usta statüm, rozetim ve notlarım bundan etkilenmez.
+        </StyledCheckbox>
 
         {consentContactPublic && (
-          <div className="grid sm:grid-cols-2 gap-3 pl-6">
+          <div className="grid sm:grid-cols-2 gap-3 pl-[30px]">
             <div className="sm:col-span-2">
               <label className="block text-xs font-semibold text-gray-600 mb-1">İşyeri adı (opsiyonel)</label>
               <input
@@ -160,52 +157,36 @@ export function ContactSettingsForm({
         )}
       </div>
 
-      <div className="bg-gray-50 rounded-xl p-4">
-        <label className="flex items-start gap-2 text-sm text-gray-700">
-          <input
-            type="checkbox"
-            checked={consentRegionalPromo}
-            onChange={(e) => setConsentRegionalPromo(e.target.checked)}
-            className="mt-0.5"
-          />
-          <span>
-            Beyan ettiğim ilin çevresindeki kullanıcılara, ilgili araç sayfalarında &quot;aktif katkı
-            veren ustalar&quot; arasında gösterilmeme açık rıza veriyorum. Bu ücretsizdir, sıralama
-            katkı ve kaliteye göre yapılır. (Bölgesel görünürlük yüzeyi henüz devrede değil —
-            rızanız kaydedilir, mekanizma yayına girince kullanılır.)
-          </span>
-        </label>
+      <div className="bg-white border border-gray-100 rounded-2xl p-4">
+        <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">📍 Bölgesel Görünürlük</p>
+        <StyledCheckbox checked={consentRegionalPromo} onChange={setConsentRegionalPromo}>
+          Beyan ettiğim ilin çevresindeki kullanıcılara, ilgili araç sayfalarında &quot;aktif katkı
+          veren ustalar&quot; arasında gösterilmeme açık rıza veriyorum. Bu ücretsizdir, sıralama
+          katkı ve kaliteye göre yapılır. (Bölgesel görünürlük yüzeyi henüz devrede değil —
+          rızanız kaydedilir, mekanizma yayına girince kullanılır.)
+        </StyledCheckbox>
       </div>
 
-      <div className="bg-gray-50 rounded-xl p-4">
-        <label className="flex items-start gap-2 text-sm text-gray-700">
-          <input
-            type="checkbox"
-            checked={messagingEnabled}
-            onChange={(e) => setMessagingEnabled(e.target.checked)}
-            className="mt-0.5"
-          />
-          <span>
-            Kullanıcıların site üzerinden bana mesaj göndermesine izin veriyorum. Kapatırsanız
-            yeni görüşme başlatılamaz; devam eden görüşmelerde yanıt vermeye devam edebilirsiniz.
-            Bu tercih, yukarıdaki iletişim bilgisi paylaşımından bağımsızdır — istediğiniz zaman
-            değiştirebilirsiniz.
-          </span>
-        </label>
+      <div className="bg-white border border-gray-100 rounded-2xl p-4">
+        <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">💬 Mesajlaşma</p>
+        <StyledCheckbox checked={messagingEnabled} onChange={setMessagingEnabled}>
+          Kullanıcıların site üzerinden bana mesaj göndermesine izin veriyorum. Kapatırsanız
+          yeni görüşme başlatılamaz; devam eden görüşmelerde yanıt vermeye devam edebilirsiniz.
+          Bu tercih, yukarıdaki iletişim bilgisi paylaşımından bağımsızdır — istediğiniz zaman
+          değiştirebilirsiniz.
+        </StyledCheckbox>
       </div>
 
-      <div className="bg-gray-50 rounded-xl p-4">
-        <label className="flex items-start gap-2 text-sm text-gray-700">
-          <input type="checkbox" checked={cvNoindex} onChange={(e) => setCvNoindex(e.target.checked)} className="mt-0.5" />
-          <span>
-            Profil sayfam Google gibi arama motorlarının sonuçlarında çıkmasın.
-            <span className="block text-xs text-gray-500 mt-0.5">
-              Bunu işaretlerseniz sayfanız yine fikape içinde (usta notlarınızın altında,
-              kendi profilinizde) görünmeye devam eder — yalnız Google aramasında çıkmaz.
-              İşaretlemezseniz, sayfanız (bilgileriniz herkese açıksa) internette aranabilir hale gelir.
-            </span>
+      <div className="bg-white border border-gray-100 rounded-2xl p-4">
+        <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">🔍 Arama Motoru Görünürlüğü</p>
+        <StyledCheckbox checked={cvNoindex} onChange={setCvNoindex}>
+          Profil sayfam Google gibi arama motorlarının sonuçlarında çıkmasın.
+          <span className="block text-xs text-gray-500 mt-0.5">
+            Bunu işaretlerseniz sayfanız yine fikape içinde (usta notlarınızın altında,
+            kendi profilinizde) görünmeye devam eder — yalnız Google aramasında çıkmaz.
+            İşaretlemezseniz, sayfanız (bilgileriniz herkese açıksa) internette aranabilir hale gelir.
           </span>
-        </label>
+        </StyledCheckbox>
       </div>
 
       <p className="text-xs text-gray-400 leading-relaxed">
@@ -221,7 +202,7 @@ export function ContactSettingsForm({
         type="submit"
         disabled={loading}
         className="w-full px-5 py-3 rounded-xl text-sm font-semibold text-white disabled:opacity-50"
-        style={{ background: "#111" }}
+        style={{ background: "var(--btn-dark)" }}
       >
         {loading ? "Kaydediliyor…" : "Kaydet"}
       </button>

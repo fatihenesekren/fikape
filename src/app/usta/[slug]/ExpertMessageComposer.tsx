@@ -54,7 +54,7 @@ export function ExpertMessageComposer({ expertProfileId }: { expertProfileId: nu
         type="button"
         onClick={() => setOpen(true)}
         className="w-full px-4 py-2.5 rounded-xl text-sm font-semibold text-white"
-        style={{ background: "#111" }}
+        style={{ background: "var(--btn-dark)" }}
       >
         💬 Site üzerinden mesaj gönder
       </button>
@@ -75,7 +75,7 @@ export function ExpertMessageComposer({ expertProfileId }: { expertProfileId: nu
         type="submit"
         disabled={loading}
         className="px-4 py-2.5 rounded-xl text-sm font-semibold text-white disabled:opacity-50"
-        style={{ background: "#111" }}
+        style={{ background: "var(--btn-dark)" }}
       >
         {loading ? "Gönderiliyor…" : "Gönder"}
       </button>

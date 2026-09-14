@@ -72,7 +72,7 @@ export function ExpertAppealForm({ subjectType, noteId, period, existingStatus }
       />
       {error && <p className="text-xs text-red-600">{error}</p>}
       <div className="flex items-center gap-2">
-        <button type="submit" disabled={loading} className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white disabled:opacity-50" style={{ background: "#111" }}>
+        <button type="submit" disabled={loading} className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white disabled:opacity-50" style={{ background: "var(--btn-dark)" }}>
           {loading ? "Gönderiliyor…" : "Gönder"}
         </button>
         <button type="button" onClick={() => setOpen(false)} className="text-xs text-gray-400 hover:underline">vazgeç</button>

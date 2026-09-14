@@ -37,6 +37,13 @@
   --link-soft: #E6F1FB;   /* açık tint zemin */
   --link-line: #B5D4F4;   /* tint üstü hairline; koyu zemin üstü açık metin */
   --link-muted: #4A80B5;  /* soluk yardımcı metin (opsiyonel notlar) */
+
+  /* Birincil (siyah) buton zemini — TEK KAYNAK. Görsel denetim: Usta
+     Görüşleri özelliğinde bu değer 15+ dosyada `style={{ background: "#111" }}`
+     olarak elle tekrarlanmıştı, bazı yerlerde Tailwind `bg-gray-900` (#111827,
+     hafif farklı bir ton) kullanılmıştı. Değer DEĞİŞMEDİ (#111, "değişmez"
+     notu yukarıda) — yalnız tek bir token'a taşındı. */
+  --btn-dark: #111111;
 }
 
 @theme inline {

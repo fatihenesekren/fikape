@@ -50,7 +50,7 @@ export function BootstrapExpertForm() {
         type="submit"
         disabled={loading}
         className="px-4 py-2 rounded-lg text-sm font-semibold text-white disabled:opacity-50"
-        style={{ background: "#111" }}
+        style={{ background: "var(--btn-dark)" }}
       >
         {loading ? "İşleniyor…" : "Usta yap"}
       </button>
