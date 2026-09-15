@@ -78,16 +78,18 @@ export default async function MesajlarPage({
           initiator: { select: { id: true, displayName: true, avatarUrl: true } },
           expertProfile: { select: { headline: true, userId: true, user: { select: { id: true, displayName: true, avatarUrl: true } } } },
           messages: { orderBy: { createdAt: "desc" }, take: 1, select: { text: true, senderId: true, isRead: true } },
+          // Takas listesiyle aynı sayaç deseni — önceden yalnız "okunmamışı
+          // var mı?" (boole) tutuluyordu, bu yüzden satırda rakamlı rozet
+          // yerine düz bir mavi nokta gösteriliyordu (görsel tutarsızlık,
+          // kullanıcı fark etti).
+          _count: { select: { messages: { where: { isRead: false, senderId: { not: userId } } } } },
         },
         orderBy: { lastMessageAt: "desc" },
       })
     : [];
 
   const takasUnread = takasThreads.reduce((sum, t) => sum + t._count.messages, 0);
-  const ustaUnread = ustaThreads.filter((t) => {
-    const last = t.messages[0];
-    return !!last && last.senderId !== userId && !last.isRead;
-  }).length;
+  const ustaUnread = ustaThreads.reduce((sum, t) => sum + t._count.messages, 0);
 
   const now = new Date();
 
@@ -177,34 +179,47 @@ export default async function MesajlarPage({
       </div>
     ) : (
       <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden divide-y divide-gray-50">
+        {/* Takas Mesajlarım satırıyla BİREBİR aynı yapı — önceden avatar
+            dikey ortalanıyordu (items-center), tarih hiç yoktu, son mesaj
+            satırı farklı bir font boyutu/rengi (text-sm/text-gray-500)
+            kullanıyordu ve okunmamış göstergesi rakamsız düz bir nokta
+            idi. Kullanıcı iki listenin görünümünün tutarsız olduğunu
+            fark etti; artık ikisi de aynı bileşenlerle aynı satırı üretiyor. */}
         {ustaThreads.map((t) => {
           const isUsta = t.expertProfile.userId === userId;
           const counterpart = isUsta ? t.initiator : t.expertProfile.user;
           const counterpartName = counterpart.displayName ?? (isUsta ? "Kullanıcı" : "Usta");
           const last = t.messages[0];
-          const hasUnread = !!last && last.senderId !== userId && !last.isRead;
+          const unreadCount = t._count.messages;
           return (
             <Link
               key={t.id}
               href={`/usta-mesajlarim/${t.id}`}
-              className="flex items-center gap-3 px-4 py-3.5 hover:bg-gray-50 transition-colors"
+              className="flex gap-3 px-4 py-3.5 hover:bg-gray-50 transition-colors"
             >
-              {/* Takas Mesajlarım listesindeki Avatar deseniyle tutarlı —
-                  önceden yalnız isim vardı (kullanıcı fark etti). */}
               <Avatar
                 displayName={counterpart.displayName}
                 avatarUrl={counterpart.avatarUrl}
                 seed={String(counterpart.id)}
                 size={40}
               />
-              <div className="min-w-0 flex-1">
-                <span className={`text-sm truncate block ${hasUnread ? "font-bold text-gray-900" : "font-semibold text-gray-800"}`}>
-                  {counterpartName}
-                </span>
-                {t.expertProfile.headline && <p className="text-xs text-gray-400 truncate">{t.expertProfile.headline}</p>}
-                {last && <p className="text-sm text-gray-500 truncate mt-0.5">{last.text}</p>}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className={`text-sm truncate ${unreadCount > 0 ? "font-bold text-gray-900" : "font-semibold text-gray-800"}`}>
+                    {counterpartName}
+                  </span>
+                  <span className="ml-auto shrink-0 text-[11px] text-gray-400">{listTimeLabel(t.lastMessageAt, now)}</span>
+                </div>
+                {t.expertProfile.headline && (
+                  <p className="text-[11px] text-gray-400 truncate mt-0.5">{t.expertProfile.headline}</p>
+                )}
+                <div className="flex items-center gap-2 mt-1">
+                  <p className={`flex-1 text-xs truncate ${unreadCount > 0 ? "text-gray-700 font-medium" : "text-gray-400"}`}>
+                    {last ? `${last.senderId === userId ? "Sen: " : ""}${last.text}` : "Henüz mesaj yok"}
+                  </p>
+                  <UnreadBadge count={unreadCount} />
+                </div>
               </div>
-              {hasUnread && <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />}
             </Link>
           );
         })}
