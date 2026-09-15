@@ -8,7 +8,19 @@ import { useRouter } from "next/navigation";
 // geçmişi varsa oraya döner, yoksa (doğrudan link/yeni sekme/bookmark)
 // `fallbackHref`'e düşer — yorumum/[id]/paylas/BackButton.tsx'teki aynı
 // desen, burada paylaşılan bir bileşene çıkarıldı.
-export function BackLink({ fallbackHref, label = "← Geri dön" }: { fallbackHref: string; label?: string }) {
+export function BackLink({
+  fallbackHref,
+  label = "← Geri dön",
+  className = "inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800",
+}: {
+  fallbackHref: string;
+  label?: string;
+  // Çağıran yer, çağrı bağlamına göre görsel rolünü değiştirebilir — ör.
+  // yorumum/[id]/duzenle'deki "İptal" büyük bir form butonu, mesajlar/
+  // paylas'taki "Geri dön" küçük bir metin linki. Mantık (geçmiş varsa
+  // oraya, yoksa fallbackHref'e) ikisinde de aynı kalır.
+  className?: string;
+}) {
   const router = useRouter();
 
   function handleClick() {
@@ -20,11 +32,7 @@ export function BackLink({ fallbackHref, label = "← Geri dön" }: { fallbackHr
   }
 
   return (
-    <button
-      type="button"
-      onClick={handleClick}
-      className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800"
-    >
+    <button type="button" onClick={handleClick} className={className}>
       {label}
     </button>
   );

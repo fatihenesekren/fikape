@@ -14,6 +14,7 @@ import { ProConChipSelector } from "@/components/review/ProConChipSelector";
 import { OwnershipUsageSection } from "@/components/review/OwnershipUsageSection";
 import { TurkeySpecificSection } from "@/components/review/TurkeySpecificSection";
 import { PhotoUploader, type ExistingPhoto } from "@/components/review/PhotoUploader";
+import { BackLink } from "@/components/BackLink";
 
 interface Props {
   reviewId: number;
@@ -209,13 +210,15 @@ export function EditReviewForm({
       {error && <p className="text-sm text-red-500 text-center">{error}</p>}
 
       <div className="flex gap-3">
-        <button
-          type="button"
-          onClick={() => router.back()}
-          className="flex-1 py-3 rounded-xl text-sm font-bold border-2 border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
-        >
-          İptal
-        </button>
+        {/* Önceden düz router.back() idi — geçmiş yoksa (doğrudan link/yeni
+            sekmeyle gelinmişse) hiçbir şey yapmıyordu. BackLink aynı görsel
+            rolü (büyük form-iptal butonu) korurken geçmiş yoksa /profil'e
+            düşen güvenli fallback'i de ekliyor. */}
+        <BackLink
+          fallbackHref="/profil"
+          label="İptal"
+          className="flex-1 py-3 rounded-xl text-sm font-bold border-2 border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors text-center"
+        />
         <button
           type="submit"
           disabled={submitting || !canSubmit}

@@ -2,7 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ShareCard } from "./ShareCard";
-import { BackButton } from "./BackButton";
+import { BackLink } from "@/components/BackLink";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
 export const metadata = { title: "Yorumunu Paylaş — fikape" };
@@ -44,7 +44,7 @@ export default async function ShareReviewPage({
 
   return (
     <div className="max-w-md mx-auto px-4 py-10 space-y-6">
-      <BackButton />
+      <BackLink fallbackHref="/profil" label="← Geri dön" className="text-sm text-gray-400 hover:text-gray-700 transition-colors" />
 
       <div>
         <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold mb-1">
