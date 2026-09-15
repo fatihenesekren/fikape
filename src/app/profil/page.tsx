@@ -243,7 +243,7 @@ export default async function ProfilPage() {
         <Link
           href="/yorum-yaz"
           className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-white transition-colors"
-          style={{ background: "#111" }}
+          style={{ background: "var(--btn-dark)" }}
         >
           Yorum Yaz →
         </Link>
@@ -253,8 +253,6 @@ export default async function ProfilPage() {
         notifications={visibleNotifications.map((n) => ({ ...n, createdAt: n.createdAt.toISOString() }))}
         hasMore={hasMoreNotifications}
       />
-
-      <BlockedUsersSection initialBlocked={blockedUsers} />
 
       {/* Favorilerim */}
       <div>
@@ -497,6 +495,15 @@ export default async function ProfilPage() {
           </div>
         </div>
       </div>
+
+      {/* Engellenen Kullanıcılar — önceden Bildirimler'in hemen altında,
+          günlük aktivite akışının (Favoriler/Yorum Geçmişi) ortasında
+          duruyordu. Bu bir güvenlik/hesap yönetimi eylemi, sık ziyaret
+          edilen içerik değil — Topluluk bölümünün "hesap işlemlerinin
+          hemen üstüne" taşınmasıyla aynı ilkeyle buraya, Hesabımı Sil'in
+          hemen üstüne alındı (kullanıcı fark etti: "daha uygun bir yere
+          koymak lazım"). #engellenenler çapası konumdan bağımsız çalışır. */}
+      <BlockedUsersSection initialBlocked={blockedUsers} />
 
       <DeleteAccountSection
         initialPendingRequest={pendingDeletionRequest ? { dueAt: pendingDeletionRequest.dueAt.toISOString() } : null}
