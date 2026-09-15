@@ -42,6 +42,16 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
     setActive(Math.max(0, Math.min(photos.length - 1, index)));
   }
 
+  // Bir önceki/sonraki kareye geçerken `active`'i doğrudan closure'dan okumak
+  // yerine fonksiyonel güncelleme kullanıyoruz — art arda hızlı basılan ok
+  // tuşlarında (veya otomasyon testinde) React henüz yeniden render etmeden
+  // ikinci keydown eski `active` değerini okuyup aynı hedefe gidiyordu, bu da
+  // ya bir kare atlanmış ya da hiç ilerlememiş gibi görünüyordu (kullanıcı
+  // fark etti — "ortadaki fotoyu göstermiyor atlıyor").
+  function goToRelative(delta: number) {
+    setActive((prev) => Math.max(0, Math.min(photos.length - 1, prev + delta)));
+  }
+
   function dragStart(clientX: number) {
     dragStartX.current = clientX;
     trackWidth.current = trackEl.current?.clientWidth || 1;
@@ -62,8 +72,8 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
 
   function dragEnd() {
     if (!dragging) return;
-    if (dragOffset < -SWIPE_THRESHOLD) goTo(active + 1);
-    else if (dragOffset > SWIPE_THRESHOLD) goTo(active - 1);
+    if (dragOffset < -SWIPE_THRESHOLD) goToRelative(1);
+    else if (dragOffset > SWIPE_THRESHOLD) goToRelative(-1);
     setDragging(false);
     setDragOffset(0);
   }
@@ -78,8 +88,8 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
   // Klavye ile sağ/sol ok — kullanıcı fark etti, sadece dokunma/sürükleme
   // vardı. Slider'a odaklanınca (Tab ile veya tıklayarak) çalışır.
   function handleKeyDown(e: React.KeyboardEvent) {
-    if (e.key === "ArrowLeft") { e.preventDefault(); goTo(active - 1); }
-    else if (e.key === "ArrowRight") { e.preventDefault(); goTo(active + 1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); goToRelative(-1); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); goToRelative(1); }
   }
 
   // Lightbox açıkken de aynı ok tuşları + Escape ile kapatma — modal
@@ -87,14 +97,14 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
   useEffect(() => {
     if (!lightboxOpen) return;
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "ArrowLeft") goTo(active - 1);
-      else if (e.key === "ArrowRight") goTo(active + 1);
+      if (e.key === "ArrowLeft") goToRelative(-1);
+      else if (e.key === "ArrowRight") goToRelative(1);
       else if (e.key === "Escape") setLightboxOpen(false);
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lightboxOpen, active, photos.length]);
+  }, [lightboxOpen, photos.length]);
 
   if (photos.length === 0) return null;
 
@@ -166,7 +176,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
             {active > 0 && (
               <button
                 type="button"
-                onClick={() => goTo(active - 1)}
+                onClick={() => goToRelative(-1)}
                 aria-label="Önceki fotoğraf"
                 className="hidden sm:flex opacity-0 group-hover:opacity-100 transition-opacity absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-gray-100 items-center justify-center text-gray-600 hover:text-gray-900 shadow-sm"
               >
@@ -176,7 +186,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
             {active < photos.length - 1 && (
               <button
                 type="button"
-                onClick={() => goTo(active + 1)}
+                onClick={() => goToRelative(1)}
                 aria-label="Sonraki fotoğraf"
                 className="hidden sm:flex opacity-0 group-hover:opacity-100 transition-opacity absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-gray-100 items-center justify-center text-gray-600 hover:text-gray-900 shadow-sm"
               >
@@ -235,7 +245,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
               {active > 0 && (
                 <button
                   type="button"
-                  onClick={(e) => { e.stopPropagation(); goTo(active - 1); }}
+                  onClick={(e) => { e.stopPropagation(); goToRelative(-1); }}
                   aria-label="Önceki fotoğraf"
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
                 >
@@ -245,7 +255,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
               {active < photos.length - 1 && (
                 <button
                   type="button"
-                  onClick={(e) => { e.stopPropagation(); goTo(active + 1); }}
+                  onClick={(e) => { e.stopPropagation(); goToRelative(1); }}
                   aria-label="Sonraki fotoğraf"
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
                 >
