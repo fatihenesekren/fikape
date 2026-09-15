@@ -6,7 +6,11 @@ const AVATAR_COLORS = ["#0C447C", "#27500A", "#712B13", "#6B3A8A", "#0D6E5A", "#
 // (variant01, variant02...) olduğu için hangisinin olumsuz göründüğü
 // API şemasından doğrulanamıyor — yerine tamamı etiketli olan fun-emoji eklendi.
 const DICEBEAR_STYLES = ["avataaars", "big-smile", "personas", "micah", "lorelei", "fun-emoji"];
-const DICEBEAR_OPTION_COUNT = 100;
+// Kullanıcı isteğiyle 100 → 300'e çıkarıldı. Seed'ler `fikape-{userId}-{i+1}`
+// biçiminde deterministik olduğu için mevcut kullanıcıların ilk 100 seçeneği
+// (ve dolayısıyla halihazırda seçilmiş avatarları) AYNEN kalır — yalnız
+// dizinin sonuna yeni seçenekler eklenmiş olur, hiçbiri kaymaz/değişmez.
+const DICEBEAR_OPTION_COUNT = 300;
 
 // Her stilin resmi DiceBear API şemasından (mouth/eyes enum listesi) doğrulanarak
 // seçilmiş, sadece olumlu/nötr görünen seçenekler — üzgün/şaşkın/kızgın gibi
