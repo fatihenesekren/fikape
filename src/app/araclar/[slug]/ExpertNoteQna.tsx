@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { hhmm } from "@/lib/messageTime";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 
 export interface ExpertNoteAnswerView {
   id: number;
@@ -31,9 +32,13 @@ function formatDateTime(iso: string): string {
   return `${datePart} · ${hhmm(d)}`;
 }
 
-const ANSWER_STATUS_LABEL: Record<string, string> = {
-  PENDING: "İnceleniyor",
-  REJECTED: "Reddedildi",
+// Önceden ikisi de tek bir sabit renkte (amber) gösteriliyordu — anlamsal
+// olarak yanlış, "İnceleniyor" ile "Reddedildi" aynı şey değil. Notun kendi
+// durum rozetleriyle (EXPERT_STATUS_TONES) aynı renk diline bağlandı (renk/
+// tasarım sistemi denetimi bulgusu).
+const ANSWER_STATUS_TONE: Record<string, { label: string; color: string; bg: string }> = {
+  PENDING: { label: "İnceleniyor", ...EXPERT_STATUS_TONES.warning },
+  REJECTED: { label: "Reddedildi", ...EXPERT_STATUS_TONES.danger },
 };
 
 // Usta notu altındaki soru-cevap — "B modeli": soruyu herkes sorar (sahiplik
@@ -211,20 +216,30 @@ export function ExpertNoteQna({
     else deleteAnswer(confirmTarget.id);
   }
 
+  const [showAllQuestions, setShowAllQuestions] = useState(false);
+  const visibleQuestions = showAllQuestions ? questions : questions.slice(0, 3);
+  const hiddenCount = questions.length - visibleQuestions.length;
+
   return (
-    <div className="mt-3 pt-3 border-t border-gray-50">
+    // Önceden burada İKİNCİ bir "border-t border-gray-50" vardı — hemen
+    // üstündeki oy/sahip-aksiyonları footer'ı da AYNI çizgiyle bitiyordu,
+    // iki ardışık aynı ağırlıkta ayraç widget'ı notun bir devamı değil,
+    // bağımsız bir bölüm gibi gösteriyordu (kullanıcı: "yoruma entegre
+    // bir kısım ama ayırt edilebilir değil" — bilgi mimarisi denetimi
+    // bulgusu). Tek ayraç (üstteki footer'ınki) yeterli, burada yalnız boşluk var.
+    <div className="mt-3">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="text-xs font-semibold text-gray-500 hover:text-gray-800 flex items-center gap-1"
+        className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-700 hover:bg-gray-50 rounded-full px-2.5 py-1 -ml-2.5 transition-colors"
       >
         💬 Soru sor {questions.length > 0 ? `(${questions.length})` : ""}
         <span className="text-gray-300">{open ? "▲" : "▼"}</span>
       </button>
 
       {open && (
-        <div className="mt-3 space-y-3">
-          {questions.map((q) => {
+        <div className="mt-2 space-y-2">
+          {visibleQuestions.map((q) => {
             const myAnswer = currentUserId != null ? q.answers.find((a) => a.authorUserId === currentUserId) : undefined;
             // Kullanıcı kararı: bir soruya toplamda tek cevap — biri
             // (herhangi bir usta) zaten cevaplamışsa başkasına "Cevap ver"
@@ -272,13 +287,13 @@ export function ExpertNoteQna({
                       <span className="font-semibold">{q.authorName}:</span> {q.text}
                     </p>
                     <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                      <span className="text-[10px] text-gray-400">{formatDateTime(q.createdAt)}</span>
+                      <span className="text-[11px] text-gray-400">{formatDateTime(q.createdAt)}</span>
                       {isOwnQuestion && (
                         <>
                           <button
                             type="button"
                             onClick={() => { setEditingQuestionId(q.id); setEditQuestionText(q.text); setEditQuestionError(""); }}
-                            className="text-[10px] font-semibold text-link hover:underline"
+                            className="text-xs font-semibold text-link hover:underline"
                           >
                             Düzenle
                           </button>
@@ -286,7 +301,8 @@ export function ExpertNoteQna({
                             type="button"
                             onClick={() => setConfirmTarget({ type: "question", id: q.id })}
                             disabled={deletingQuestionId === q.id}
-                            className="text-[10px] font-semibold text-red-500 hover:text-red-700 disabled:opacity-50"
+                            className="text-xs font-semibold hover:opacity-70 disabled:opacity-50 transition-opacity"
+                            style={{ color: EXPERT_STATUS_TONES.danger.color }}
                           >
                             {deletingQuestionId === q.id ? "Siliniyor…" : "Sil"}
                           </button>
@@ -328,20 +344,25 @@ export function ExpertNoteQna({
                       </form>
                     ) : (
                       <>
-                        <p className="text-sm text-gray-600">
-                          <span className="font-semibold text-gray-700">{a.authorName}:</span> {a.text}
+                        <p className="text-sm text-gray-700">
+                          <span className="font-semibold text-gray-800">{a.authorName}:</span> {a.text}
                         </p>
                         <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                          <span className="text-[10px] text-gray-400">{formatDateTime(a.createdAt)}</span>
+                          <span className="text-[11px] text-gray-400">{formatDateTime(a.createdAt)}</span>
                           {a.status !== "PUBLISHED" && (
-                            <span className="text-[10px] font-semibold text-amber-600">· {ANSWER_STATUS_LABEL[a.status]}</span>
+                            <span
+                              className="text-[11px] font-semibold px-1.5 py-0.5 rounded-full"
+                              style={{ color: ANSWER_STATUS_TONE[a.status].color, background: ANSWER_STATUS_TONE[a.status].bg }}
+                            >
+                              {ANSWER_STATUS_TONE[a.status].label}
+                            </span>
                           )}
                           {a.authorUserId === currentUserId && (
                             <>
                               <button
                                 type="button"
                                 onClick={() => { setEditingAnswerId(a.id); setAnswerText(a.text); setAnswerError(""); }}
-                                className="text-[10px] font-semibold text-link hover:underline"
+                                className="text-xs font-semibold text-link hover:underline"
                               >
                                 Düzenle
                               </button>
@@ -349,7 +370,8 @@ export function ExpertNoteQna({
                                 type="button"
                                 onClick={() => setConfirmTarget({ type: "answer", id: a.id })}
                                 disabled={deletingAnswerId === a.id}
-                                className="text-[10px] font-semibold text-red-500 hover:text-red-700 disabled:opacity-50"
+                                className="text-xs font-semibold hover:opacity-70 disabled:opacity-50 transition-opacity"
+                                style={{ color: EXPERT_STATUS_TONES.danger.color }}
                               >
                                 {deletingAnswerId === a.id ? "Siliniyor…" : "Sil"}
                               </button>
@@ -365,56 +387,76 @@ export function ExpertNoteQna({
                   <p className="text-xs text-gray-400 italic">Henüz cevaplanmadı.</p>
                 )}
                 {submittedIds.has(q.id) && !myAnswer && (
-                  <p className="text-xs text-green-700 italic">Cevabınız gönderildi, incelemeye alındı.</p>
+                  <p className="text-xs italic" style={{ color: EXPERT_STATUS_TONES.success.color }}>
+                    Cevabınız gönderildi, incelemeye alındı.
+                  </p>
                 )}
 
+                {/* Cevap yokken de aynı sol-çizgili raya oturur — önceden
+                    cevaplıyken içeride (pl-3 border-l-2), cevapsızken tam
+                    genişlikte duruyordu; aynı eylemin iki farklı hizada
+                    görünmesi tutarsızdı (bilgi mimarisi denetimi bulgusu). */}
                 {canAnswerThis && (
-                  answeringId === q.id ? (
-                    <form onSubmit={(e) => submitAnswer(e, q.id)} className="flex items-start gap-2 pt-1">
-                      <input
-                        type="text"
-                        value={answerText}
-                        onChange={(e) => setAnswerText(e.target.value.slice(0, 500))}
-                        placeholder="Soruyu cevaplayın…"
-                        autoFocus
-                        className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
-                      />
-                      <button
-                        type="submit"
-                        disabled={answerLoading}
-                        className="px-3 py-2 rounded-lg text-xs font-semibold text-white disabled:opacity-50 shrink-0"
-                        style={{ background: "var(--btn-dark)" }}
-                      >
-                        {answerLoading ? "…" : "Gönder"}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => { setAnsweringId(null); setAnswerError(""); }}
-                        className="text-xs text-gray-400 hover:text-gray-700 shrink-0 py-2"
-                      >
-                        Vazgeç
-                      </button>
-                    </form>
-                  ) : (
-                    !submittedIds.has(q.id) && (
-                      <button
-                        type="button"
-                        onClick={() => { setAnsweringId(q.id); setAnswerText(""); setAnswerError(""); }}
-                        className="text-xs font-semibold text-link hover:underline pt-1"
-                      >
-                        Cevap ver →
-                      </button>
-                    )
-                  )
-                )}
-                {answeringId === q.id && answerError && (
-                  <p className="text-xs text-red-600">{answerError}</p>
+                  <div className="pl-3 border-l-2 border-gray-200">
+                    {answeringId === q.id ? (
+                      <form onSubmit={(e) => submitAnswer(e, q.id)} className="flex items-start gap-2">
+                        <input
+                          type="text"
+                          value={answerText}
+                          onChange={(e) => setAnswerText(e.target.value.slice(0, 500))}
+                          placeholder="Soruyu cevaplayın…"
+                          autoFocus
+                          className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
+                        />
+                        <button
+                          type="submit"
+                          disabled={answerLoading}
+                          className="px-3 py-2 rounded-lg text-xs font-semibold text-white disabled:opacity-50 shrink-0"
+                          style={{ background: "var(--btn-dark)" }}
+                        >
+                          {answerLoading ? "…" : "Gönder"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { setAnsweringId(null); setAnswerError(""); }}
+                          className="text-xs text-gray-400 hover:text-gray-700 shrink-0 py-2"
+                        >
+                          Vazgeç
+                        </button>
+                      </form>
+                    ) : (
+                      !submittedIds.has(q.id) && (
+                        <button
+                          type="button"
+                          onClick={() => { setAnsweringId(q.id); setAnswerText(""); setAnswerError(""); }}
+                          className="text-xs font-semibold text-link hover:underline"
+                        >
+                          Cevap ver →
+                        </button>
+                      )
+                    )}
+                    {answeringId === q.id && answerError && (
+                      <p className="text-xs text-red-600 mt-1">{answerError}</p>
+                    )}
+                  </div>
                 )}
               </div>
             );
           })}
           {questions.length === 0 && (
             <p className="text-xs text-gray-400">Henüz soru sorulmamış.</p>
+          )}
+          {hiddenCount > 0 && (
+            // Uzun notlarda Q&A widget'ı notun kendisinden daha baskın hale
+            // gelmesin diye ilk 3 soru sonrası daraltılıyor (bilgi mimarisi
+            // denetimi önerisi).
+            <button
+              type="button"
+              onClick={() => setShowAllQuestions(true)}
+              className="text-xs font-semibold text-link hover:underline"
+            >
+              {hiddenCount} soru daha göster
+            </button>
           )}
 
           {!isOwnNote && (
