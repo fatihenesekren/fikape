@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Çalışma yeri fotoğrafı için "bildir" — mevcut merkezi /api/report ucunu
 // (targetType=EXPERT_WORKPLACE_PHOTO) kullanır, görünümü takas ilanı bildir
@@ -25,6 +25,25 @@ export function WorkplacePhotoReportButton({
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const triggerBtnRef = useRef<HTMLButtonElement>(null);
+
+  // Modal açılınca odak metin alanına taşınır, Escape ile kapatılabilir,
+  // kapanınca tetikleyen butona geri döner — lightbox'takiyle aynı standart
+  // dialog davranışı (a11y denetimi bulgusu: bu modalda odak yönetimi hiç yoktu).
+  useEffect(() => {
+    if (!open) return;
+    const triggerNode = triggerBtnRef.current;
+    textareaRef.current?.focus();
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      triggerNode?.focus();
+    };
+  }, [open]);
 
   async function submit() {
     if (note.trim().length < 5) {
@@ -56,6 +75,7 @@ export function WorkplacePhotoReportButton({
         <p className="text-[11px] text-gray-400">Bildiriminiz alındı, teşekkürler.</p>
       ) : (
         <button
+          ref={triggerBtnRef}
           type="button"
           onClick={() => { setError(null); setOpen(true); }}
           className="inline-flex items-center gap-1 text-[11px] font-medium text-gray-400 hover:text-gray-600 transition-colors"
@@ -68,6 +88,9 @@ export function WorkplacePhotoReportButton({
         <div
           className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-4 py-6"
           onClick={() => setOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Bu fotoğrafı bildir${indexLabel}`}
         >
           <div className="bg-white rounded-2xl w-full max-w-md p-5 text-left" onClick={(e) => e.stopPropagation()}>
             {done ? (
@@ -84,16 +107,18 @@ export function WorkplacePhotoReportButton({
                   içerik taşıdığını düşünüyorsanız kısaca açıklayın.
                 </p>
                 <textarea
+                  ref={textareaRef}
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   rows={3}
                   maxLength={500}
+                  aria-label="Şikayet açıklaması"
                   placeholder="Örn: Bu fotoğraf başka bir işletmeye ait, benim dükkanım bu değil."
                   className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-none"
                 />
                 {error && <p className="text-xs text-red-600">{error}</p>}
                 <div className="flex items-center gap-2 justify-end">
-                  <button type="button" onClick={() => setOpen(false)} className="text-xs text-gray-400 hover:underline px-2">Vazgeç</button>
+                  <button type="button" onClick={() => setOpen(false)} className="text-xs text-gray-400 hover:underline px-3 py-2.5 -my-1">Vazgeç</button>
                   <button
                     type="button"
                     onClick={submit}

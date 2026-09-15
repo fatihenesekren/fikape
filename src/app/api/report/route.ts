@@ -34,6 +34,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Geçersiz araç." }, { status: 400 });
   }
 
+  // workplacePhotoId — var olmayan/rastgele bir id gönderilirse admin panelinde
+  // kırık bir referans oluşmasın diye önceden doğrulanır (5 alanlı review bulgusu).
+  if (type === "EXPERT_WORKPLACE_PHOTO") {
+    const workplacePhotoIdNum = Number(workplacePhotoId);
+    if (!Number.isInteger(workplacePhotoIdNum)) {
+      return NextResponse.json({ error: "Geçersiz fotoğraf." }, { status: 400 });
+    }
+    const exists = await prisma.expertWorkplacePhoto.findUnique({
+      where: { id: workplacePhotoIdNum },
+      select: { id: true },
+    });
+    if (!exists) return NextResponse.json({ error: "Fotoğraf bulunamadı." }, { status: 404 });
+  }
+
   await prisma.contentReport.create({
     data: {
       productId: isProductless ? null : productIdNum,

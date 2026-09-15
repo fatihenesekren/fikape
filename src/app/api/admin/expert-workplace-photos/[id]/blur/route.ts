@@ -5,6 +5,12 @@ import { put } from "@vercel/blob";
 
 export const runtime = "nodejs";
 
+// api/uploads/expert-workplace-photo ile aynı whitelist — 5 alanlı review
+// bulgusu: bu route'ta dosya tipi/boyut kontrolü hiç yoktu, admin oturumu ele
+// geçirilirse herkese açık blob'a keyfi içerik yazılabilirdi.
+const MAX_SIZE = 25 * 1024 * 1024;
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+
 // Usta çalışma yeri fotoğrafı için bulanıklaştırma — api/admin/photos/blur ile
 // birebir aynı desen (FormData → blob'a yeniden yükle → DB satırının url'ini
 // güncelle). Kullanıcı isteği: araç/yorum fotoğraflarındaki blurlama admin
@@ -30,13 +36,26 @@ export async function POST(
 
   const photo = await prisma.expertWorkplacePhoto.findUnique({
     where: { id: photoId },
-    select: { id: true },
+    select: { id: true, status: true },
   });
   if (!photo) return NextResponse.json({ error: "Fotoğraf bulunamadı." }, { status: 404 });
+  // Yalnız moderasyon kuyruğundaki (PENDING) fotoğraflar bulanıklaştırılabilir
+  // — approve/reject route'undaki aynı guard (satır ~40). REJECTED bir kaydın
+  // sessizce üzerine yazılmasını veya zaten APPROVED bir kaydın moderasyon dışı
+  // değiştirilmesini engeller (5 alanlı review bulgusu).
+  if (photo.status !== "PENDING") {
+    return NextResponse.json({ error: "Bu fotoğraf zaten işleme alınmış." }, { status: 409 });
+  }
 
   const formData = await req.formData();
   const file = formData.get("file") as File | null;
   if (!file) return NextResponse.json({ error: "Eksik parametre." }, { status: 400 });
+  if (!ALLOWED_TYPES.includes(file.type)) {
+    return NextResponse.json({ error: "Geçersiz dosya türü." }, { status: 400 });
+  }
+  if (file.size > MAX_SIZE) {
+    return NextResponse.json({ error: "Dosya çok büyük." }, { status: 400 });
+  }
 
   const filename = `expert-workplace/blurred/${Date.now()}.jpg`;
   const blob = await put(filename, file, { access: "public" });

@@ -56,7 +56,7 @@ export function PhotoUploader({
               <button
                 type="button"
                 onClick={() => onToggleRemoveExisting(p.id)}
-                className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/60 text-white flex items-center justify-center text-xs leading-none hover:bg-black/80"
+                className="absolute top-0.5 right-0.5 w-6 h-6 rounded-full bg-black/60 text-white flex items-center justify-center text-sm leading-none hover:bg-black/80"
                 aria-label="Fotoğrafı kaldır"
               >
                 ×
@@ -70,7 +70,7 @@ export function PhotoUploader({
               <button
                 type="button"
                 onClick={() => onNewPhotoUrlsChange(newPhotoUrls.filter((u) => u !== url))}
-                className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/60 text-white flex items-center justify-center text-xs leading-none hover:bg-black/80"
+                className="absolute top-0.5 right-0.5 w-6 h-6 rounded-full bg-black/60 text-white flex items-center justify-center text-sm leading-none hover:bg-black/80"
                 aria-label="Fotoğrafı kaldır"
               >
                 ×

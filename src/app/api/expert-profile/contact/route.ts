@@ -37,7 +37,7 @@ export async function PATCH(req: Request) {
   const contactAddress = parsed.data.contactAddress?.trim() || null;
   const district = parsed.data.district?.trim() || null;
 
-  for (const text of [headline, bio, businessName, contactAddress, ...expertiseTags]) {
+  for (const text of [headline, bio, businessName, contactAddress, district, ...expertiseTags]) {
     if (!text) continue;
     const contentCheck = checkContent(text);
     if (!contentCheck.ok) {

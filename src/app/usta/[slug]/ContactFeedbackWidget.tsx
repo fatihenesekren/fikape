@@ -42,6 +42,7 @@ export function ContactFeedbackWidget({
           type="button"
           disabled={sending}
           onClick={() => sendFeedback(true)}
+          aria-pressed={value === true}
           className={`text-xs px-2.5 py-1 rounded-full font-semibold transition-colors ${
             value === true ? "bg-green-600 text-white" : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
           }`}
@@ -52,6 +53,7 @@ export function ContactFeedbackWidget({
           type="button"
           disabled={sending}
           onClick={() => sendFeedback(false)}
+          aria-pressed={value === false}
           className={`text-xs px-2.5 py-1 rounded-full font-semibold transition-colors ${
             value === false ? "bg-red-600 text-white" : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
           }`}

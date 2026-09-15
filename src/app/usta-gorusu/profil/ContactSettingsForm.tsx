@@ -144,8 +144,13 @@ export function ContactSettingsForm({
         });
         const photoData = await photoRes.json().catch(() => ({}));
         if (!photoRes.ok) {
-          setError(photoData.error ?? "Fotoğraflar kaydedilemedi.");
+          // Profil bilgileri (üstteki PATCH) zaten kaydedilmiş durumda —
+          // kullanıcıya "hiçbir şey kaydedilmedi" izlenimi vermemek için bunu
+          // açıkça belirtiyoruz (5 alanlı kod incelemesi bulgusu: kısmi
+          // başarı durumu önceden ayırt edilmiyordu).
+          setError(`Profil bilgileriniz kaydedildi, ancak fotoğraflar kaydedilemedi: ${photoData.error ?? "bilinmeyen hata"}`);
           setLoading(false);
+          router.refresh();
           return;
         }
         setStorefrontNewUrls([]);
@@ -167,8 +172,9 @@ export function ContactSettingsForm({
     <form onSubmit={submit} className="space-y-6">
       <div className="bg-white border border-gray-100 rounded-2xl p-4 space-y-4">
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">Başlık</label>
+          <label htmlFor="usta-headline" className="block text-sm font-semibold text-gray-700 mb-1.5">Başlık</label>
           <input
+            id="usta-headline"
             type="text"
             value={headline}
             onChange={(e) => setHeadline(e.target.value.slice(0, 120))}
@@ -179,8 +185,9 @@ export function ContactSettingsForm({
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">İl</label>
+            <label htmlFor="usta-city" className="block text-sm font-semibold text-gray-700 mb-1.5">İl</label>
             <select
+              id="usta-city"
               value={city}
               onChange={(e) => { setCity(e.target.value); setDistrict(""); }}
               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 bg-white"
@@ -190,10 +197,11 @@ export function ContactSettingsForm({
             </select>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+            <label htmlFor="usta-district" className="block text-sm font-semibold text-gray-700 mb-1.5">
               İlçe <span className="text-gray-400 font-normal">(opsiyonel)</span>
             </label>
             <select
+              id="usta-district"
               value={district}
               onChange={(e) => setDistrict(e.target.value)}
               disabled={!city}
@@ -206,8 +214,9 @@ export function ContactSettingsForm({
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">Kendinizi tanıtın</label>
+          <label htmlFor="usta-bio" className="block text-sm font-semibold text-gray-700 mb-1.5">Kendinizi tanıtın</label>
           <textarea
+            id="usta-bio"
             value={bio}
             onChange={(e) => setBio(e.target.value.slice(0, 2000))}
             rows={5}
@@ -218,9 +227,10 @@ export function ContactSettingsForm({
       </div>
 
       <div className="bg-white border border-gray-100 rounded-2xl p-4">
-        <label className="block text-sm font-semibold text-gray-700 mb-1.5">🔧 Uzmanlık alanları</label>
+        <label htmlFor="usta-tag-input" className="block text-sm font-semibold text-gray-700 mb-1.5">🔧 Uzmanlık alanları</label>
         <div className="flex gap-2">
           <input
+            id="usta-tag-input"
             type="text"
             value={tagInput}
             onChange={(e) => setTagInput(e.target.value)}
@@ -263,8 +273,9 @@ export function ContactSettingsForm({
           // sıkıştırmanın anlamı kalmadı) — grid yerine düz dikey istif.
           <div className="space-y-3 pl-[30px]">
             <div>
-              <label className="block text-xs font-semibold text-gray-600 mb-1">İşyeri adı (opsiyonel)</label>
+              <label htmlFor="usta-business-name" className="block text-xs font-semibold text-gray-600 mb-1">İşyeri adı (opsiyonel)</label>
               <input
+                id="usta-business-name"
                 type="text"
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value.slice(0, 120))}
@@ -273,13 +284,14 @@ export function ContactSettingsForm({
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-600 mb-1">Telefon (opsiyonel)</label>
+              <label htmlFor="usta-phone" className="block text-xs font-semibold text-gray-600 mb-1">Telefon (opsiyonel)</label>
               {/* Kullanıcı "+90 elle yazmadan versek, girince silinse" dedi —
                   "+90" artık girilemez sabit bir önek, kullanıcı yalnız 10
                   haneli yerel numarayı yazıyor, yazarken otomatik gruplanıyor. */}
               <div className="flex items-stretch border border-gray-200 rounded-lg overflow-hidden focus-within:border-gray-400">
                 <span className="flex items-center px-3 text-sm text-gray-500 bg-gray-50 border-r border-gray-200 select-none">+90</span>
                 <input
+                  id="usta-phone"
                   type="tel"
                   inputMode="numeric"
                   value={formatLocalDigits(phoneDigits)}
@@ -290,11 +302,12 @@ export function ContactSettingsForm({
               </div>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-600 mb-1">Açık adres (opsiyonel)</label>
+              <label htmlFor="usta-address" className="block text-xs font-semibold text-gray-600 mb-1">Açık adres (opsiyonel)</label>
               {/* Önceden tek satırlık input'tu; girilen adres kesiliyordu
                   (kullanıcı fark etti — "biraz büyütsek mi"). Artık tam
                   genişlikte, çok satırlı bir alan. */}
               <textarea
+                id="usta-address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value.slice(0, 300))}
                 rows={3}

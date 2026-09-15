@@ -36,7 +36,7 @@ export default async function ExpertContactSettingsPage() {
       <div className="max-w-lg mx-auto px-4 py-20 text-center space-y-4">
         <div className="text-4xl">🔧</div>
         <h1 className="text-xl font-black text-gray-900">Bu sayfa yalnızca aktif ustalar içindir</h1>
-        <Link href="/profil" className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "#111" }}>
+        <Link href="/profil" className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
           Profile dön →
         </Link>
       </div>
@@ -97,7 +97,7 @@ export default async function ExpertContactSettingsPage() {
       </div>
 
       {/* Bölgesel görünürlük durumu + itiraz (barem kararı) */}
-      <div className="bg-white border border-gray-100 rounded-xl p-4 space-y-2">
+      <div className="bg-white border border-gray-100 rounded-2xl p-4 space-y-2">
         <div className="flex items-center gap-2">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">Bölgesel Görünürlük Durumu</p>
           <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold" style={{ color: visBadge.color, background: visBadge.bg }}>

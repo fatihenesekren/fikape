@@ -147,17 +147,20 @@ export default async function ExpertProfilePage({
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      <div className="flex items-center justify-between gap-3 text-xs font-semibold text-gray-500 mb-6">
+      {/* flex-wrap + min-w-0: 320-360px genişlikte iki link yan yana
+          sığmayabiliyordu (projenin bilinen mobil taşma hata sınıfı — 5
+          alanlı review bulgusu). */}
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs font-semibold text-gray-500 mb-6">
         {/* Kendi profiline "Profilim" butonuyla gelen usta buradan
             /profil'e dönecek bir yol bulamıyordu (kullanıcı fark etti —
             "girdim sonra geri gelemiyorum"). Herkese açık ziyaretçi için
             eski "Ana sayfaya dön" değişmedi. */}
         {isOwnProfile ? (
-          <Link href="/profil" className="hover:text-gray-800 transition-colors">← Profilime dön</Link>
+          <Link href="/profil" className="hover:text-gray-800 transition-colors min-w-0 truncate">← Profilime dön</Link>
         ) : (
-          <Link href="/" className="hover:text-gray-800 transition-colors">← Ana sayfaya dön</Link>
+          <Link href="/" className="hover:text-gray-800 transition-colors min-w-0 truncate">← Ana sayfaya dön</Link>
         )}
-        <Link href="/usta-ol" className="hover:text-gray-800 transition-colors">Usta Görüşleri hakkında bilgi al →</Link>
+        <Link href="/usta-ol" className="hover:text-gray-800 transition-colors min-w-0 truncate">Usta Görüşleri hakkında bilgi al →</Link>
       </div>
 
       {/* Kimlik kartı — önceden düz metin yığını, kart yapısı yoktu (kullanıcı
