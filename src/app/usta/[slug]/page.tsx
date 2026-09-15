@@ -10,6 +10,7 @@ import { ExpertMessageComposer } from "./ExpertMessageComposer";
 import { ContactFeedbackWidget } from "./ContactFeedbackWidget";
 import { Avatar } from "@/components/Avatar";
 import { toTelHref } from "@/lib/phone";
+import { WorkplacePhotoSlider } from "./WorkplacePhotoSlider";
 
 export async function generateMetadata({
   params,
@@ -60,11 +61,24 @@ export default async function ExpertProfilePage({
         contactLat: true, contactLng: true,
         visibilityState: true, userId: true, messagingEnabled: true,
         user: { select: { id: true, displayName: true, avatarUrl: true } },
+        // Çalışma yeri fotoğrafları — yalnız onaylanmış olanlar herkese
+        // açık görünür (moderasyonsuz kanal asla ilkesi). Sıralama JS'de:
+        // tabela her zaman ilk kare (bkz. altta), sonra iç mekan.
+        workplacePhotos: {
+          where: { status: "APPROVED" },
+          orderBy: { createdAt: "asc" },
+          select: { id: true, url: true, kind: true },
+        },
       },
     }),
     auth(),
   ]);
   if (!profile || profile.status !== "ACTIVE") notFound();
+
+  const sortedWorkplacePhotos = [
+    ...profile.workplacePhotos.filter((p) => p.kind === "STOREFRONT"),
+    ...profile.workplacePhotos.filter((p) => p.kind === "INTERIOR"),
+  ];
   const promotionPaused = profile.visibilityState === "PAUSED" || profile.visibilityState === "PROBATION";
 
   // Site-içi maskeli mesajlaşma — telefon/e-posta paylaşmadan iletişim
@@ -145,6 +159,29 @@ export default async function ExpertProfilePage({
         )}
         <Link href="/usta-ol" className="hover:text-gray-800 transition-colors">Usta Görüşleri hakkında bilgi al →</Link>
       </div>
+
+      {/* Çalışma yeri fotoğrafları — kullanıcı isteği: sayfanın EN BAŞINDA,
+          kimlik kartının üstünde bir slider. Kimlik doğrulama belgesi DEĞİL,
+          ustanın kendi beyanına dayanır (aşağıdaki feragat cümlesi bunu
+          açıklıyor). Fotoğraf yoksa bölüm tamamen gizlenir — boş placeholder
+          "eksik profil" izlenimi verir (3 ajanlı UX/güven-güvenlik kararı). */}
+      {sortedWorkplacePhotos.length > 0 && (
+        <div className="mb-6">
+          <WorkplacePhotoSlider photos={sortedWorkplacePhotos} />
+          {/* Güven & güvenlik ajanı önerisi — bu görsel bir kimlik doğrulaması
+              değil, ustanın kendi beyanı; ContactSettingsForm'daki aynı
+              dürüstlük ilkesinin buradaki karşılığı. */}
+          <p className="text-[11px] text-gray-400 px-1">
+            Fotoğraflar ustanın kendi beyanına dayanır, fikape işletmeye ait olduğunu doğrulamaz.
+          </p>
+        </div>
+      )}
+      {isOwnProfile && sortedWorkplacePhotos.length === 0 && (
+        <p className="text-xs text-gray-400 mb-6">
+          Henüz çalışma yeri fotoğrafı eklemediniz —{" "}
+          <Link href="/usta-gorusu/profil" className="text-link hover:underline">profilinize ekleyin →</Link>
+        </p>
+      )}
 
       {/* Kimlik kartı — önceden düz metin yığını, kart yapısı yoktu (kullanıcı
           "görünüm kötü" dedi). Not sayısı + üyelik tarihi somut bir güven

@@ -16,6 +16,7 @@ const TARGET_LABELS: Record<string, string> = {
   REVIEW: "Yorum",
   QNA: "Soru-Cevap",
   EXPERT_NOTE: "Usta Notu",
+  EXPERT_WORKPLACE_PHOTO: "Çalışma Yeri Fotoğrafı",
   OTHER: "Diğer",
 };
 

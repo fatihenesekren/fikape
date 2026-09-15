@@ -45,9 +45,10 @@ export default async function ExpertContactSettingsPage() {
 
   await finalizeExpiredAppeals();
 
-  const [consentContactPublic, consentRegionalPromo, latestPausedSnapshot] = await Promise.all([
+  const [consentContactPublic, consentRegionalPromo, consentWorkplacePhoto, latestPausedSnapshot, workplacePhotos] = await Promise.all([
     getLatestConsent(userId, "EXPERT_CONTACT_PUBLIC"),
     getLatestConsent(userId, "EXPERT_REGIONAL_PROMO"),
+    getLatestConsent(userId, "EXPERT_WORKPLACE_PHOTO"),
     profile.visibilityState === "PAUSED"
       ? prisma.expertScoreSnapshot.findFirst({
           where: { profileId: profile.id, decision: "PAUSED" },
@@ -55,6 +56,14 @@ export default async function ExpertContactSettingsPage() {
           select: { period: true },
         })
       : Promise.resolve(null),
+    // REJECTED de gösterilir (PhotoUploader zaten yalnız id+url alıyor) —
+    // usta reddedilen bir fotoğrafı da kaldırabilsin diye ayrı bir "sessizce
+    // kaybolmuş" durum yaşanmasın.
+    prisma.expertWorkplacePhoto.findMany({
+      where: { profileId: profile.id, status: { not: "REJECTED" } },
+      orderBy: { createdAt: "asc" },
+      select: { id: true, url: true, kind: true },
+    }),
   ]);
 
   const pausedAppeal = latestPausedSnapshot
@@ -124,6 +133,9 @@ export default async function ExpertContactSettingsPage() {
         initialMessagingEnabled={profile.messagingEnabled}
         initialExpertiseTags={profile.expertiseTags}
         profileSlug={profile.slug}
+        initialConsentWorkplacePhoto={consentWorkplacePhoto ?? false}
+        initialStorefrontPhotos={workplacePhotos.filter((p) => p.kind === "STOREFRONT").map((p) => ({ id: p.id, url: p.url }))}
+        initialInteriorPhotos={workplacePhotos.filter((p) => p.kind === "INTERIOR").map((p) => ({ id: p.id, url: p.url }))}
       />
     </div>
   );

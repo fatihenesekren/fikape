@@ -6,6 +6,7 @@ import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { expertContactUpdateSchema, formatZodError } from "@/lib/schemas";
 import { recordConsent, getLatestConsent } from "@/lib/consent";
 import { geocodeBestEffort } from "@/lib/geocode";
+import { deleteExpertWorkplacePhotoBlobs } from "@/lib/expertWorkplacePhotos";
 
 // Usta iletişim/görünürlük ayarları — self-servis. Granüler rıza (§7):
 // - (b) EXPERT_CONTACT_PUBLIC: açık telefon/adresin herkese açık yayını.
@@ -30,7 +31,7 @@ export async function PATCH(req: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
-  const { consentContactPublic, consentRegionalPromo, cvNoindex, messagingEnabled, expertiseTags, headline, bio, city } = parsed.data;
+  const { consentContactPublic, consentRegionalPromo, consentWorkplacePhoto, cvNoindex, messagingEnabled, expertiseTags, headline, bio, city } = parsed.data;
   const businessName = parsed.data.businessName?.trim() || null;
   const contactPhone = parsed.data.contactPhone?.trim() || null;
   const contactAddress = parsed.data.contactAddress?.trim() || null;
@@ -88,15 +89,33 @@ export async function PATCH(req: Request) {
   });
 
   // Rıza geçmişi — yalnızca bir önceki karardan farklıysa yeni satır (gereksiz spam önlenir)
-  const [lastContact, lastRegional] = await Promise.all([
+  const [lastContact, lastRegional, lastWorkplacePhoto] = await Promise.all([
     getLatestConsent(userId, "EXPERT_CONTACT_PUBLIC"),
     getLatestConsent(userId, "EXPERT_REGIONAL_PROMO"),
+    getLatestConsent(userId, "EXPERT_WORKPLACE_PHOTO"),
   ]);
   if (lastContact !== consentContactPublic) {
     await recordConsent({ userId, consentType: "EXPERT_CONTACT_PUBLIC", isGranted: consentContactPublic, req });
   }
   if (lastRegional !== consentRegionalPromo) {
     await recordConsent({ userId, consentType: "EXPERT_REGIONAL_PROMO", isGranted: consentRegionalPromo, req });
+  }
+  // (d) çalışma yeri fotoğrafı rızası — (b)'deki "geri çekmede derhal
+  // kaldırma" ilkesiyle aynı: rıza geri çekilirse tüm fotoğraflar (ve
+  // blob'ları) DERHAL silinir, moderasyon durumundan bağımsız.
+  const grantedWorkplacePhoto = consentWorkplacePhoto ?? false;
+  if (lastWorkplacePhoto !== grantedWorkplacePhoto) {
+    await recordConsent({ userId, consentType: "EXPERT_WORKPLACE_PHOTO", isGranted: grantedWorkplacePhoto, req });
+  }
+  if (!grantedWorkplacePhoto) {
+    const existingPhotos = await prisma.expertWorkplacePhoto.findMany({
+      where: { profileId: profile.id },
+      select: { id: true, url: true },
+    });
+    if (existingPhotos.length > 0) {
+      await prisma.expertWorkplacePhoto.deleteMany({ where: { profileId: profile.id } });
+      deleteExpertWorkplacePhotoBlobs(existingPhotos.map((p) => p.url)).catch(() => {});
+    }
   }
 
   return NextResponse.json({ ok: true, contactVisible });

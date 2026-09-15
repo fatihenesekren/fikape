@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { StyledCheckbox } from "@/components/StyledCheckbox";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { TURKISH_DISTRICTS } from "@/lib/turkishDistricts";
+import { PhotoUploader, type ExistingPhoto } from "@/components/review/PhotoUploader";
 
 // "0532...", "+90 532...", "532..." — ne girilmiş olursa olsun 10 haneli
 // yerel numaraya indirger (+90/0 önekini atar).
@@ -25,6 +26,7 @@ function formatLocalDigits(digits: string): string {
 export function ContactSettingsForm({
   initialHeadline, initialBio, initialCity, initialDistrict,
   initialBusinessName, initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, initialMessagingEnabled, initialExpertiseTags, profileSlug,
+  initialConsentWorkplacePhoto, initialStorefrontPhotos, initialInteriorPhotos,
 }: {
   initialHeadline: string;
   initialBio: string;
@@ -39,6 +41,9 @@ export function ContactSettingsForm({
   initialMessagingEnabled: boolean;
   initialExpertiseTags: string[];
   profileSlug: string;
+  initialConsentWorkplacePhoto: boolean;
+  initialStorefrontPhotos: ExistingPhoto[];
+  initialInteriorPhotos: ExistingPhoto[];
 }) {
   const router = useRouter();
   // Profil bilgileri — önceden yalnız başvuru formunda bir kez girilip
@@ -66,6 +71,15 @@ export function ContactSettingsForm({
   // her zaman herkese açık profilde görünür — bu yüzden consent bloğunun DIŞINDA.
   const [expertiseTags, setExpertiseTags] = useState<string[]>(initialExpertiseTags);
   const [tagInput, setTagInput] = useState("");
+
+  // Çalışma yeri fotoğrafları — adresten AYRI bir rıza (d), görsel daha
+  // fazla bağlam/üçüncü kişi ifşa edebileceği için (3 ajanlı panel kararı).
+  // Rıza kapanırsa sunucu tüm fotoğrafları derhal siler (contact route'ta).
+  const [consentWorkplacePhoto, setConsentWorkplacePhoto] = useState(initialConsentWorkplacePhoto);
+  const [storefrontRemovedIds, setStorefrontRemovedIds] = useState<number[]>([]);
+  const [storefrontNewUrls, setStorefrontNewUrls] = useState<string[]>([]);
+  const [interiorRemovedIds, setInteriorRemovedIds] = useState<number[]>([]);
+  const [interiorNewUrls, setInteriorNewUrls] = useState<string[]>([]);
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -101,6 +115,7 @@ export function ContactSettingsForm({
           contactAddress: address.trim() || null,
           consentContactPublic,
           consentRegionalPromo,
+          consentWorkplacePhoto,
           cvNoindex,
           messagingEnabled,
           expertiseTags,
@@ -112,6 +127,33 @@ export function ContactSettingsForm({
         setLoading(false);
         return;
       }
+
+      // Çalışma yeri fotoğrafları — ayrı bir uç nokta (moderasyon/pHash farklı
+      // bir akış). Rıza kapalıysa yukarıdaki istek zaten hepsini sildi,
+      // burada tekrar bir şey göndermeye gerek yok.
+      const newPhotos = [
+        ...storefrontNewUrls.map((url) => ({ url, kind: "STOREFRONT" as const })),
+        ...interiorNewUrls.map((url) => ({ url, kind: "INTERIOR" as const })),
+      ];
+      const removeIds = [...storefrontRemovedIds, ...interiorRemovedIds];
+      if (consentWorkplacePhoto && (newPhotos.length > 0 || removeIds.length > 0)) {
+        const photoRes = await fetch("/api/expert-profile/workplace-photos", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ newPhotos, removeIds }),
+        });
+        const photoData = await photoRes.json().catch(() => ({}));
+        if (!photoRes.ok) {
+          setError(photoData.error ?? "Fotoğraflar kaydedilemedi.");
+          setLoading(false);
+          return;
+        }
+        setStorefrontNewUrls([]);
+        setStorefrontRemovedIds([]);
+        setInteriorNewUrls([]);
+        setInteriorRemovedIds([]);
+      }
+
       setSuccess(true);
       router.refresh();
     } catch {
@@ -260,6 +302,71 @@ export function ContactSettingsForm({
                 className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 resize-y"
               />
             </div>
+          </div>
+        )}
+      </div>
+
+      {/* Çalışma yeri fotoğrafları — kullanıcı isteği: tabela/işletme girişi
+          + en fazla 3 iç mekan fotoğrafı, profilin en başında slider olarak
+          gösterilecek. Kimlik doğrulama belgesi DEĞİL — businessName/
+          contactAddress ile aynı "beyan + açık rıza" kategorisinde, ama
+          görsel daha fazla bağlam ifşa edebileceği için KENDİ ayrı rızası
+          var (3 ajanlı panel kararı). Doğrudan yayına gitmez — her fotoğraf
+          admin onayından geçer (moderasyonsuz kanal asla ilkesi). */}
+      <div className="bg-white border border-gray-100 rounded-2xl p-4 space-y-3">
+        <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">📸 Çalışma Yeri Fotoğrafları</p>
+        <StyledCheckbox checked={consentWorkplacePhoto} onChange={setConsentWorkplacePhoto}>
+Yükleyeceğim çalışma yeri fotoğraflarının <strong>kendi işletmeme/çalışma alanıma ait</strong>,
+          benim çektiğim veya çekilmesine izin verdiğim fotoğraflar olduğunu beyan ederim
+          (başkasına ait veya internetten alınmış bir görsel değildir). Bu fotoğrafların{" "}
+          <Link href={`/usta/${profileSlug}`} className="underline">profil sayfamda</Link>{" "}
+          herkese açık paylaşılmasına açık rıza veriyorum. Her fotoğraf yayınlanmadan önce
+          incelenir; bu bir doğrulama değil, yalnızca içerik uygunluğu kontrolüdür. Bu rızayı
+          istediğim zaman geri çekebilirim; geri çektiğimde tüm fotoğraflarım <strong>derhal</strong> kaldırılır.
+        </StyledCheckbox>
+
+        {consentWorkplacePhoto && (
+          <div className="space-y-5 pl-[30px]">
+            <PhotoUploader
+              existingPhotos={initialStorefrontPhotos}
+              removedExistingIds={storefrontRemovedIds}
+              onToggleRemoveExisting={(id) => setStorefrontRemovedIds((ids) => ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id])}
+              newPhotoUrls={storefrontNewUrls}
+              onNewPhotoUrlsChange={setStorefrontNewUrls}
+              max={1}
+              uploadUrl="/api/uploads/expert-workplace-photo"
+              pathPrefix="expert-workplace/storefront/"
+              title="Tabela / İşletme Girişi"
+              intro={
+                <span className="block space-y-0.5">
+                  <span className="block">• İşletme adı/tabela net ve okunur olmalı, uzaktan bulanık çekmeyin.</span>
+                  <span className="block">• Gündüz, doğal ışıkta çekin — gece flaşlı çekimler tabelayı okunmaz hale getirir.</span>
+                  <span className="block">• Kadrajda yalnızca işletmenizin girişi/cephesi olsun, komşu dükkanlar mümkünse dışarıda kalsın.</span>
+                </span>
+              }
+            />
+            <PhotoUploader
+              existingPhotos={initialInteriorPhotos}
+              removedExistingIds={interiorRemovedIds}
+              onToggleRemoveExisting={(id) => setInteriorRemovedIds((ids) => ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id])}
+              newPhotoUrls={interiorNewUrls}
+              onNewPhotoUrlsChange={setInteriorNewUrls}
+              max={3}
+              uploadUrl="/api/uploads/expert-workplace-photo"
+              pathPrefix="expert-workplace/interior/"
+              title="İç Mekan"
+              intro={
+                <span className="block space-y-0.5">
+                  <span className="block">• Çalışma alanınızı/ekipmanlarınızı gösteren gerçek fotoğraflar kullanın — stok görsel kullanmayın.</span>
+                  <span className="block">• Fotoğraf üzerinde başka bir işletmenin logosu, fiyat listesi veya reklam metni olmasın.</span>
+                  <span className="block">• Dağınık/karanlık kareler yerine düzenli ve aydınlık anları tercih edin.</span>
+                </span>
+              }
+            />
+            <p className="text-xs text-amber-600 font-medium">
+              Plaka, kişilerin yüzü, kimlik/belge gibi kişisel veya hassas bilgi içeren fotoğraf yüklemeyiniz —
+              bu tür fotoğraflar admin incelemesinde reddedilir.
+            </p>
           </div>
         )}
       </div>

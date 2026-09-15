@@ -146,6 +146,20 @@ export const expertContactUpdateSchema = z.object({
   cvNoindex:             z.boolean(),
   messagingEnabled:      z.boolean(),
   expertiseTags:         z.array(z.string().trim().min(1)).min(1, "En az bir uzmanlık alanı ekleyiniz.").max(8, "En fazla 8 uzmanlık alanı ekleyebilirsiniz."),
+  // (d) çalışma yeri fotoğrafı paylaşımı — adresten AYRI bir rıza (görsel
+  // daha fazla bağlam/üçüncü kişi ifşa edebilir, güven & güvenlik ajanı önerisi).
+  consentWorkplacePhoto: z.boolean().optional(),
+});
+
+// Usta çalışma yeri fotoğrafları — tabela (STOREFRONT, en fazla 1) + iç mekan
+// (INTERIOR, en fazla 3). Sayı sınırları burada DEĞİL route'ta (mevcut kayıt
+// sayısına göre) kontrol edilir, şema yalnız şekli doğrular.
+export const expertWorkplacePhotoUpdateSchema = z.object({
+  newPhotos: z.array(z.object({
+    url: z.string().url(),
+    kind: z.enum(["STOREFRONT", "INTERIOR"]),
+  })).max(4).default([]),
+  removeIds: z.array(z.number()).max(4).default([]),
 });
 
 export const insuranceLeadSchema = z.object({

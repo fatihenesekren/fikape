@@ -295,6 +295,8 @@ enum NotificationType {
   ADMIN_NEW_TAKEDOWN_REQUEST // admin — onay bekleyen bildirim/kaldırma talebi
   NEW_EXPERT_MESSAGE // usta veya mesajı başlatan kullanıcıya — site-içi maskeli mesajlaşma
   ADMIN_NEW_EXPERT_APPEAL // admin — onay bekleyen usta itirazı
+  ADMIN_NEW_EXPERT_WORKPLACE_PHOTO // admin — onay bekleyen çalışma yeri fotoğrafı
+  EXPERT_WORKPLACE_PHOTO_MODERATED // ustaya — çalışma yeri fotoğrafı onaylandı/reddedildi
   EXPERT_APPEAL_DECIDED // ustaya — itirazı karara bağlandı (kabul/ret/otomatik kesinleşme)
 }
 
@@ -765,6 +767,7 @@ enum ConsentType {
   EXPERT_CONTACT_PUBLIC // (b) açık telefon/adresin herkese açık profilde yayını + arama motoru indekslemesi
   EXPERT_REGIONAL_PROMO // (c) bölgesel görünürlük
   EXPERT_PERFORMANCE_ANALYTICS // ileride: satış amaçlı performans raporu (özellik kapalı, baştan onay)
+  EXPERT_WORKPLACE_PHOTO // (d) çalışma yeri (tabela/iç mekan) fotoğrafının herkese açık paylaşımı — adresten AYRI, görsel daha fazla bağlam (üçüncü kişi vb.) ifşa edebileceği için kendi rızası var
 }
 
 // "Verilerimi sil" talepleri
@@ -1467,15 +1470,17 @@ model ContentReport {
   targetType ContentReportTargetType
 
   // Hedefe göre yalnızca ilgili alan doldurulur
-  field        String?       @db.VarChar(100) // targetType=SPEC ise (örn. "ev_range_km")
-  photoId      Int?
-  photo        ProductPhoto? @relation(fields: [photoId], references: [id])
-  reviewId     Int?
-  review       Review?       @relation(fields: [reviewId], references: [id])
-  questionId   Int?
-  question     Question?     @relation(fields: [questionId], references: [id])
-  expertNoteId Int?
-  expertNote   ExpertNote?   @relation(fields: [expertNoteId], references: [id])
+  field            String?               @db.VarChar(100) // targetType=SPEC ise (örn. "ev_range_km")
+  photoId          Int?
+  photo            ProductPhoto?         @relation(fields: [photoId], references: [id])
+  reviewId         Int?
+  review           Review?               @relation(fields: [reviewId], references: [id])
+  questionId       Int?
+  question         Question?             @relation(fields: [questionId], references: [id])
+  expertNoteId     Int?
+  expertNote       ExpertNote?           @relation(fields: [expertNoteId], references: [id])
+  workplacePhotoId Int?
+  workplacePhoto   ExpertWorkplacePhoto? @relation(fields: [workplacePhotoId], references: [id])
 
   note String @db.VarChar(500)
 
@@ -1497,6 +1502,7 @@ enum ContentReportTargetType {
   REVIEW
   QNA
   EXPERT_NOTE
+  EXPERT_WORKPLACE_PHOTO
   OTHER
 }
 
@@ -1568,6 +1574,7 @@ model ExpertProfile {
   messageThreads  ExpertMessageThread[]
   appeals         ExpertAppeal[]
   contactFeedback ExpertContactFeedback[]
+  workplacePhotos ExpertWorkplacePhoto[]
 
   @@index([status, visibilityState])
   @@index([city, visibilityState])
@@ -1592,6 +1599,40 @@ enum ExpertVisibility {
 enum ExpertOverride {
   FORCE_FEATURED
   FORCE_PAUSED
+}
+
+// Çalışma yeri fotoğrafları — usta'nın profilinde en başta gösterilen slider.
+// Kimlik doğrulama belgesi DEĞİL (o akış 11 Eylül kararıyla kaldırıldı) —
+// usta'nın kendi isteğiyle herkese açık paylaştığı işletme görselleri,
+// businessName/contactAddress ile aynı "beyan + açık rıza" kategorisinde.
+// TradeListingPhoto ile BİREBİR aynı desen (moderasyon + pHash) — 3 ajanlı
+// panelin (UX/veri modeli/güven-güvenlik) ortak kararı: doğrudan yayın YOK,
+// her fotoğraf admin onayından geçer.
+model ExpertWorkplacePhoto {
+  id        Int           @id @default(autoincrement())
+  profileId Int
+  profile   ExpertProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  url    String
+  kind   WorkplacePhotoKind // STOREFRONT: en fazla 1 — slider'da her zaman ilk kare. INTERIOR: en fazla 3.
+  status PhotoStatus        @default(PENDING)
+  order  Int                @default(0)
+  // Perceptual hash (dHash) — başka bir ustanın/kaynağın fotoğrafının
+  // kopyalanmasını yakalamak için GLOBAL karşılaştırılır (bkz. lib/phash.ts) —
+  // takastaki gibi tek-ilan-içi değil, tüm usta fotoğrafları arasında.
+  phash  String?
+
+  createdAt DateTime @default(now())
+
+  contentReports ContentReport[]
+
+  @@index([profileId, status])
+  @@map("expert_workplace_photos")
+}
+
+enum WorkplacePhotoKind {
+  STOREFRONT
+  INTERIOR
 }
 
 model ExpertNote {

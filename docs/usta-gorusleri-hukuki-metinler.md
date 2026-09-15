@@ -37,7 +37,7 @@ Bu aydınlatma, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") m.10
 | Kimlik | Ad-soyad; doğum yılı / 18 yaş beyanı |
 | İletişim | Cep telefonu, e-posta, açık işyeri adresi (girerseniz), il/ilçe |
 | Mesleki deneyim / özgeçmiş | Başlık (headline), tanıtım metni (bio), uzmanlık etiketleri, hakkında görüş yazdığınız araç modelleri |
-| Görsel | Profil fotoğrafı |
+| Görsel | Profil fotoğrafı; (girerseniz) çalışma yeri tabela/iç mekan fotoğrafları — üçüncü kişi görüntüsü içerebilir |
 | İçerik | Usta notları ve düzenleme geçmişi (versiyonlar), not-altı soru-cevap mesajları, site içi mesajlaşma içerikleri |
 | Konum | Beyan ettiğiniz il/ilçe; (girerseniz) açık adres |
 | İşlem güvenliği / kullanım | IP adresi, cihaz/tarayıcı bilgisi, oturum ve log kayıtları |
@@ -54,6 +54,7 @@ Bu aydınlatma, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") m.10
 | Usta notu, versiyonlar, oy ve not-altı soru-cevap içeriğinin yayımlanması ve arşivde tutulması | m.5/2-c ve m.5/2-f — topluluk bilgi arşivi bütünlüğü |
 | Cep telefonunuzun ve (girerseniz) açık adresinizin /usta/[slug] profilinde herkese açık yayımlanması ve arama motoru indekslemesi | Açık rıza (m.5/1) |
 | Bölgesel görünürlük / kullanıcı ile bölgesel eşleştirme | Açık rıza (m.5/1) |
+| Çalışma yeri (tabela/iç mekan) fotoğraflarının /usta/[slug] profilinde herkese açık yayımlanması | Açık rıza (m.5/1) — adres rızasından AYRI, geri çekilirse fotoğraflar derhal kaldırılır |
 | Site içi (maskeli) mesajlaşmanın kurulması, içeriğin saklanması ve moderasyonu | m.5/2-c ve m.5/2-f — kötüye kullanımın önlenmesi |
 | İçerik moderasyonu, filtreleme, şikâyet ve itiraz yönetimi | m.5/2-f; gerekli ölçüde m.5/2-ç — hukuki yükümlülük |
 | Görünürlük baremi puanının hesaplanması ve görünürlük kararlarının (kısmen otomatik) alınması | m.5/2-c ve m.5/2-f |
@@ -441,3 +442,4 @@ Kapsam: tab başlığı, feragat/not kartı, profil bölüm adları, bölgesel b
 5. **Profil fotoğrafı gibi storage nesnelerinin (dosya) silinmesi** — DB null yeterli değil (plan §11'e işlendi).
 6. **Başvuruda 18 yaş / fiil ehliyeti beyanı ve kontrolü** (plan §5.1'e işlendi).
 7. **Açık iletişim yayını için yazılı risk/denge değerlendirmesi** (plan §7.4'e işlendi).
+8. **Çalışma yeri fotoğrafı özelliği için yazılı hukuki inceleme** — 15 Eylül 2026'da eklenen yeni bir onay maddesi (madde 2 ve 3 tablolarına işlendi); görsel içerik açık adresten daha fazla bağlam (üçüncü kişi görüntüsü, konum tanınırlığı) taşıyabildiğinden, aydınlatma metnindeki bu satırlar avukat/DPO onayından geçmeden lansmana alınmamalı.
