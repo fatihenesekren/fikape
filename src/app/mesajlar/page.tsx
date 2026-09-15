@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { Avatar } from "@/components/Avatar";
+import { BackLink } from "@/components/BackLink";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 import { listTimeLabel } from "@/lib/messageTime";
 
@@ -228,6 +229,13 @@ export default async function MesajlarPage({
 
   return (
     <div className="max-w-2xl w-full mx-auto px-4 py-8">
+      {/* Sayfaya anasayfadan, bir bildirimden ya da başka bir yerden gelinmiş
+          olabilir — sabit "Profilime dön" herkesi aynı yere gönderirdi
+          (kullanıcı fark etti). BackLink tarayıcı geçmişi varsa oraya döner,
+          yoksa (doğrudan link/yeni sekme) /profil'e düşer. */}
+      <div className="mb-4">
+        <BackLink fallbackHref="/profil" label="← Geri dön" />
+      </div>
       <h1 className="text-2xl font-black text-gray-900 mb-1">Mesajlarım</h1>
 
       {!showUstaTab ? (
