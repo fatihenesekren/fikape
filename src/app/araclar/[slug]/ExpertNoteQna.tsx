@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { hhmm } from "@/lib/messageTime";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 export interface ExpertNoteAnswerView {
   id: number;
@@ -82,6 +83,11 @@ export function ExpertNoteQna({
   const [editQuestionLoading, setEditQuestionLoading] = useState(false);
   const [editQuestionError, setEditQuestionError] = useState("");
   const [deletingQuestionId, setDeletingQuestionId] = useState<number | null>(null);
+  // window.confirm() sitenin hiçbir yerinde kullanılmıyor (kullanıcı fark
+  // etti) — soru/cevap silme onayı ConfirmDialog'a taşındı, tek bir state
+  // hangi hedefin (soru mu cevap mı, hangi id) onaylanacağını tutuyor.
+  const [confirmTarget, setConfirmTarget] = useState<{ type: "question" | "answer"; id: number } | null>(null);
+  const [deleteError, setDeleteError] = useState("");
 
   async function saveQuestionEdit(e: React.FormEvent, questionId: number) {
     e.preventDefault();
@@ -110,18 +116,19 @@ export function ExpertNoteQna({
   }
 
   async function deleteQuestion(questionId: number) {
-    if (!confirm("Bu soruyu (varsa altındaki cevapla birlikte) silmek istediğinize emin misiniz?")) return;
     setDeletingQuestionId(questionId);
+    setDeleteError("");
     try {
       const res = await fetch(`/api/expert-notes/questions/${questionId}`, { method: "DELETE" });
       if (res.ok) {
         router.refresh();
       } else {
         const data = await res.json().catch(() => ({}));
-        alert(data.error ?? "Silinemedi.");
+        setDeleteError(data.error ?? "Silinemedi.");
       }
     } finally {
       setDeletingQuestionId(null);
+      setConfirmTarget(null);
     }
   }
 
@@ -182,19 +189,26 @@ export function ExpertNoteQna({
   }
 
   async function deleteAnswer(answerId: number) {
-    if (!confirm("Bu cevabı silmek istediğinize emin misiniz?")) return;
     setDeletingAnswerId(answerId);
+    setDeleteError("");
     try {
       const res = await fetch(`/api/answers/${answerId}`, { method: "DELETE" });
       if (res.ok) {
         router.refresh();
       } else {
         const data = await res.json().catch(() => ({}));
-        alert(data.error ?? "Silinemedi.");
+        setDeleteError(data.error ?? "Silinemedi.");
       }
     } finally {
       setDeletingAnswerId(null);
+      setConfirmTarget(null);
     }
+  }
+
+  function confirmDelete() {
+    if (!confirmTarget) return;
+    if (confirmTarget.type === "question") deleteQuestion(confirmTarget.id);
+    else deleteAnswer(confirmTarget.id);
   }
 
   return (
@@ -270,7 +284,7 @@ export function ExpertNoteQna({
                           </button>
                           <button
                             type="button"
-                            onClick={() => deleteQuestion(q.id)}
+                            onClick={() => setConfirmTarget({ type: "question", id: q.id })}
                             disabled={deletingQuestionId === q.id}
                             className="text-[10px] font-semibold text-red-500 hover:text-red-700 disabled:opacity-50"
                           >
@@ -333,7 +347,7 @@ export function ExpertNoteQna({
                               </button>
                               <button
                                 type="button"
-                                onClick={() => deleteAnswer(a.id)}
+                                onClick={() => setConfirmTarget({ type: "answer", id: a.id })}
                                 disabled={deletingAnswerId === a.id}
                                 className="text-[10px] font-semibold text-red-500 hover:text-red-700 disabled:opacity-50"
                               >
@@ -427,8 +441,22 @@ export function ExpertNoteQna({
             )
           )}
           {error && <p className="text-xs text-red-600">{error}</p>}
+          {deleteError && <p className="text-xs text-red-600">{deleteError}</p>}
         </div>
       )}
+
+      <ConfirmDialog
+        open={confirmTarget != null}
+        title={confirmTarget?.type === "question" ? "Soruyu sil" : "Cevabı sil"}
+        description={
+          confirmTarget?.type === "question"
+            ? "Bu soruyu (varsa altındaki cevapla birlikte) silmek istediğinize emin misiniz?"
+            : "Bu cevabı silmek istediğinize emin misiniz?"
+        }
+        loading={confirmTarget?.type === "question" ? deletingQuestionId === confirmTarget.id : deletingAnswerId === confirmTarget?.id}
+        onConfirm={confirmDelete}
+        onCancel={() => setConfirmTarget(null)}
+      />
     </div>
   );
 }
