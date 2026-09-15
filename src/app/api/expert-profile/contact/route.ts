@@ -5,7 +5,7 @@ import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { expertContactUpdateSchema, formatZodError } from "@/lib/schemas";
 import { recordConsent, getLatestConsent } from "@/lib/consent";
-import { geocodeAddress } from "@/lib/geocode";
+import { geocodeBestEffort } from "@/lib/geocode";
 
 // Usta iletişim/görünürlük ayarları — self-servis. Granüler rıza (§7):
 // - (b) EXPERT_CONTACT_PUBLIC: açık telefon/adresin herkese açık yayını.
@@ -63,7 +63,7 @@ export async function PATCH(req: Request) {
     // geocode edilmemişse (örn. bu sütunlar eklenmeden önce kaydedilmiş
     // mevcut ustalar) — kullanıcı ayarları tekrar kaydettiğinde geriye
     // dönük olarak da koordinat kazandırılır.
-    const geocoded = await geocodeAddress(finalAddress);
+    const geocoded = await geocodeBestEffort(finalAddress, district, city);
     contactLat = geocoded?.lat ?? null;
     contactLng = geocoded?.lng ?? null;
   }
