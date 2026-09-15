@@ -125,18 +125,22 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
                   style={{ background: t.unreadCount > 0 ? "#F0F7FF" : undefined }}
                 >
                   <Avatar displayName={t.counterpartName} avatarUrl={t.counterpartAvatarUrl} seed={t.counterpartSeed} size={36} />
+                  {/* Bildirimler paneliyle (NotificationBell.tsx) BİREBİR aynı
+                      tipografi ölçeği: 10px etiket → text-sm asıl içerik
+                      (line-clamp-2) → text-xs tarih en altta. Önceden asıl
+                      içerik (son mesaj) text-xs'ti, bildirimlerdeki text-sm'den
+                      bir tık küçük kalıyordu (kullanıcı fark etti — "birinin
+                      yazıları küçük diğeri büyük"). */}
                   <div className="flex-1 min-w-0">
                     <p className="text-[10px] font-bold uppercase tracking-wide text-gray-400">{KIND_LABEL[t.kind]}</p>
-                    <div className="flex items-center gap-2">
-                      <span className={`text-sm truncate ${t.unreadCount > 0 ? "font-bold text-gray-900" : "font-semibold text-gray-800"}`}>
-                        {t.counterpartName ?? "Kullanıcı"}
-                      </span>
-                      <span className="ml-auto shrink-0 text-[11px] text-gray-400">{fmtDate(t.when)}</span>
-                    </div>
-                    {t.subtitle && <p className="text-[11px] text-gray-400 truncate">{t.subtitle}</p>}
-                    <p className={`text-xs truncate mt-0.5 ${t.unreadCount > 0 ? "text-gray-700 font-medium" : "text-gray-400"}`}>
+                    <p className={`text-sm truncate mt-0.5 ${t.unreadCount > 0 ? "font-bold text-gray-900" : "font-semibold text-gray-800"}`}>
+                      {t.counterpartName ?? "Kullanıcı"}
+                      {t.subtitle && <span className="font-normal text-gray-400"> · {t.subtitle}</span>}
+                    </p>
+                    <p className={`text-sm line-clamp-2 mt-0.5 ${t.unreadCount > 0 ? "text-gray-700 font-medium" : "text-gray-500"}`}>
                       {t.lastMessage}
                     </p>
+                    <p className="text-xs text-gray-400 mt-0.5">{fmtDate(t.when)}</p>
                   </div>
                   {t.unreadCount > 0 && <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0 mt-1.5" />}
                 </Link>
