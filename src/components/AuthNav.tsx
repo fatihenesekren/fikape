@@ -130,10 +130,10 @@ export function AuthNav() {
         <NotificationBell />
 
         {/* Mesaj ikonu artık zil gibi bir önizleme paneli açıyor (kullanıcı
-            fark etti — önceden düz bir /mesajlar linkiydi). MASAÜSTÜNDE
-            zilin yanında; mobilde header dar olduğu için gösterilmez, orada
-            "Mesajlarım" hesap menüsünde (rozetli). Okunmamış sayacı buradan
-            (onUnreadCountChange) yukarı bildirilip mobil menü rozeti +
+            fark etti — önceden düz bir /mesajlar linkiydi), bildirim çanıyla
+            aynı şekilde masaüstü+mobil HER boyutta görünür (3 ajanlı denetim
+            bulgusu: önceden yalnız masaüstündeydi, zille asimetrikti).
+            Okunmamış sayacı buradan (onUnreadCountChange) yukarı bildirilip
             sekme başlığı için de kullanılıyor. */}
         <MessageBell onUnreadCountChange={setUnreadMessages} />
 
@@ -165,16 +165,11 @@ export function AuthNav() {
               <Link href="/garajim" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                 <GarageIcon /> Garajım
               </Link>
-              {/* "Mesajlarım" SADECE mobilde menüde — masaüstünde zilin yanındaki
-                  ayrı 💬 ikonu var. İkisi aynı anda olmayınca kopya görünmüyor. */}
-              <Link href="/mesajlar" onClick={() => setMenuOpen(false)} className={`sm:hidden ${menuItemClass} justify-between`}>
-                <span className="flex items-center gap-2.5"><MessageIcon size={16} /> Mesajlarım</span>
-                {unreadMessages > 0 && (
-                  <span className="min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center leading-none">
-                    {unreadMessages > 9 ? "9+" : unreadMessages}
-                  </span>
-                )}
-              </Link>
+              {/* "Mesajlarım" hesap menüsündeki ayrı girişi kaldırıldı — MessageBell
+                  artık masaüstü+mobil HER boyutta görünür (3 ajanlı denetim
+                  bulgusu: bildirim çanı her yerde çalışıyordu, mesaj ikonu
+                  yalnız masaüstündeydi, asimetrikti), menüdeki kopya gereksiz
+                  hale geldi. */}
               {/* Araç Öner: masaüstünde header'da ayrı buton; mobilde yer
                   olmadığı için sadece bu menüde. (Yorum Yaz header'da kalıyor.) */}
               <Link

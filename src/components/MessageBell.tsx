@@ -5,21 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Avatar } from "./Avatar";
 import { MessageIcon } from "./AuthNav";
+import type { MessagePreviewItem } from "@/app/api/messages/preview/route";
 
-interface MessagePreview {
-  id: string;
-  kind: "takas" | "usta";
-  href: string;
-  counterpartName: string | null;
-  counterpartAvatarUrl: string | null;
-  counterpartSeed: string;
-  subtitle: string | null;
-  lastMessage: string;
-  unreadCount: number;
-  when: string;
-}
-
-const KIND_LABEL: Record<MessagePreview["kind"], string> = {
+const KIND_LABEL: Record<MessagePreviewItem["kind"], string> = {
   takas: "Takas",
   usta: "Usta Mesajı",
 };
@@ -32,11 +20,15 @@ function fmtDate(iso: string) {
 // önizleme paneli açmıyordu (kullanıcı fark etti). NotificationBell.tsx'teki
 // AYNI iskelet: aç/kapa, dışarı tıklayınca/sayfa değişince kapanma, hafif
 // polling. Takas ve Usta mesajları AYRI sekmeler değil, tek karışık listede
-// (en son gelen üstte) — her satırda küçük bir tür etiketiyle ("Takas" /
-// "Usta Mesajı") ayırt ediliyor, bildirim çanının tür etiketi deseniyle aynı.
+// (en son gelen üstte, okunmamışlar önce) — her satırda küçük bir tür
+// etiketiyle ("Takas" / "Usta Mesajı") ayırt ediliyor, bildirim çanının tür
+// etiketi deseniyle aynı. Artık masaüstü+mobil HER boyutta görünür (3 ajanlı
+// denetim bulgusu: bildirim çanı her yerde çalışıyordu, bu yalnız masaüstünde
+// vardı — asimetrikti).
 export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (count: number) => void }) {
   const [unreadCount, setUnreadCount] = useState(0);
-  const [threads, setThreads] = useState<MessagePreview[]>([]);
+  const [hiddenUnreadCount, setHiddenUnreadCount] = useState(0);
+  const [threads, setThreads] = useState<MessagePreviewItem[]>([]);
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -50,6 +42,7 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
         .then((data) => {
           if (!cancelled && data) {
             setUnreadCount(data.unreadCount);
+            setHiddenUnreadCount(data.hiddenUnreadCount ?? 0);
             setThreads(data.threads ?? []);
             onUnreadCountChange?.(data.unreadCount);
           }
@@ -73,22 +66,45 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
 
   useEffect(() => {
     if (!open) return;
-    function handlePointerDown(e: MouseEvent) {
+    function handlePointerDown(e: MouseEvent | TouchEvent) {
       if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
     }
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setOpen(false);
     }
+    // "touchstart" da dinleniyor — yalnız "mousedown" dokunmatik cihazlarda
+    // (özellikle iOS Safari) dışarı dokununca panelin kapanmamasına yol
+    // açabiliyordu (3 ajanlı denetim bulgusu).
     document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
 
+  // Bildirim çanı bir bildirime tıklayınca rozeti anında düşürüyor
+  // (optimistic update); MessageBell bunu yapmıyordu, rozet en fazla 45sn
+  // (bir sonraki poll'a kadar) eski/yanlış sayıyı göstermeye devam ediyordu
+  // (3 ajanlı denetim bulgusu — YÜKSEK). Ayrı bir "mark-read" isteği
+  // gerekmiyor: hedef thread sayfası (mesajlar/[threadId], usta-mesajlarim/
+  // [id]) zaten kendi server-side render'ında mesajları okundu işaretliyor —
+  // burada yalnız YEREL state'i (ve dolayısıyla rozeti) önden güncelliyoruz.
+  function handleThreadClick(t: MessagePreviewItem) {
+    setOpen(false);
+    if (t.unreadCount === 0) return;
+    setThreads((prev) => prev.map((x) => (x.id === t.id ? { ...x, unreadCount: 0 } : x)));
+    setUnreadCount((c) => {
+      const next = Math.max(0, c - t.unreadCount);
+      onUnreadCountChange?.(next);
+      return next;
+    });
+  }
+
   return (
-    <div ref={rootRef} className="relative hidden sm:block">
+    <div ref={rootRef} className="relative">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -120,22 +136,23 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
                 <Link
                   key={t.id}
                   href={t.href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleThreadClick(t)}
                   className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                   style={{ background: t.unreadCount > 0 ? "#F0F7FF" : undefined }}
                 >
                   <Avatar displayName={t.counterpartName} avatarUrl={t.counterpartAvatarUrl} seed={t.counterpartSeed} size={36} />
                   {/* Bildirimler paneliyle (NotificationBell.tsx) BİREBİR aynı
                       tipografi ölçeği: 10px etiket → text-sm asıl içerik
-                      (line-clamp-2) → text-xs tarih en altta. Önceden asıl
-                      içerik (son mesaj) text-xs'ti, bildirimlerdeki text-sm'den
-                      bir tık küçük kalıyordu (kullanıcı fark etti — "birinin
-                      yazıları küçük diğeri büyük"). */}
+                      (line-clamp-2) → text-xs tarih en altta. */}
                   <div className="flex-1 min-w-0">
                     <p className="text-[10px] font-bold uppercase tracking-wide text-gray-400">{KIND_LABEL[t.kind]}</p>
                     <p className={`text-sm truncate mt-0.5 ${t.unreadCount > 0 ? "font-bold text-gray-900" : "font-semibold text-gray-800"}`}>
                       {t.counterpartName ?? "Kullanıcı"}
                       {t.subtitle && <span className="font-normal text-gray-400"> · {t.subtitle}</span>}
+                      {/* Kapanmış takas görüşmesi — mesajlar/page.tsx'teki
+                          "Kapandı" rozetiyle aynı bilgi, önizlemede de
+                          gösteriliyor (3 ajanlı denetim bulgusu). */}
+                      {t.closed && <span className="font-semibold text-gray-400"> · Kapandı</span>}
                     </p>
                     <p className={`text-sm line-clamp-2 mt-0.5 ${t.unreadCount > 0 ? "text-gray-700 font-medium" : "text-gray-500"}`}>
                       {t.lastMessage}
@@ -145,6 +162,14 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
                   {t.unreadCount > 0 && <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0 mt-1.5" />}
                 </Link>
               ))}
+              {hiddenUnreadCount > 0 && (
+                // Rozet limitsiz sayıyor, önizleme yalnız ilk 8'i gösteriyor —
+                // çok sayıda okunmamış görüşme varsa (nadiren) dürüstçe not
+                // düşülüyor (3 ajanlı denetim bulgusu).
+                <div className="px-4 py-2 text-center text-xs text-gray-400">
+                  +{hiddenUnreadCount} okunmamış mesaj daha
+                </div>
+              )}
             </div>
           )}
 

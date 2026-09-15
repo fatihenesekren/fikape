@@ -50,16 +50,21 @@ export function NotificationBell() {
 
   useEffect(() => {
     if (!open) return;
-    function handlePointerDown(e: MouseEvent) {
+    function handlePointerDown(e: MouseEvent | TouchEvent) {
       if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
     }
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setOpen(false);
     }
+    // "touchstart" da dinleniyor — yalnız "mousedown" dokunmatik cihazlarda
+    // (özellikle iOS Safari) dışarı dokununca panelin kapanmamasına yol
+    // açabiliyordu (3 ajanlı denetim bulgusu, MessageBell.tsx'e paralel).
     document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
