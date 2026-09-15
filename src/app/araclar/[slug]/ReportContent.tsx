@@ -15,6 +15,19 @@ const TARGET_LABELS: Record<TargetType, string> = {
   OTHER: "Diğer",
 };
 
+// "Sorunu açıklayın" placeholder'ı önceden HER seçimde tek bir SPEC örneğine
+// ("Güç değeri yanlış...") sabitti — Usta Notu/Yorum/Soru-Cevap seçilince
+// bağlamla alakasız görünüyordu (kullanıcı fark etti). Artık seçilen türe
+// göre değişiyor.
+const NOTE_PLACEHOLDER: Record<TargetType, string> = {
+  SPEC: "Örn: Güç değeri yanlış, gerçekte 150 HP olmalı.",
+  PHOTO: "Örn: Bu fotoğraf bu araca ait değil / yanlış modelde görünüyor.",
+  REVIEW: "Örn: Bu yorum spam / bu araçla ilgisi yok.",
+  QNA: "Örn: Bu soruya verilen cevap yanlış bilgi içeriyor.",
+  EXPERT_NOTE: "Örn: Bu usta notundaki bilgi yanlış / güncel değil.",
+  OTHER: "Karşılaştığınız sorunu kısaca açıklayın.",
+};
+
 interface Props {
   productId: number;
   categorySlug: string;
@@ -181,7 +194,7 @@ export function ReportContent({
                     onChange={(e) => setNote(e.target.value)}
                     rows={3}
                     maxLength={500}
-                    placeholder="Örn: Güç değeri yanlış, gerçekte 150 HP olmalı."
+                    placeholder={NOTE_PLACEHOLDER[targetType]}
                     className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-none"
                   />
                 </div>
