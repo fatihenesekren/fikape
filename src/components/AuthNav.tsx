@@ -170,12 +170,14 @@ export function AuthNav() {
                   bulgusu: bildirim çanı her yerde çalışıyordu, mesaj ikonu
                   yalnız masaüstündeydi, asimetrikti), menüdeki kopya gereksiz
                   hale geldi. */}
-              {/* Araç Öner: masaüstünde header'da ayrı buton; mobilde yer
+              {/* Araç Öner: yalnız ≥1024px'te header'da ayrı buton var
+                  (tablet sıkışıklığı düzeltmesi — yukarıdaki yorum), bu
+                  aralığın altında (mobil DAHİL 640-1024 tablet) yer
                   olmadığı için sadece bu menüde. (Yorum Yaz header'da kalıyor.) */}
               <Link
                 href="/oner"
                 onClick={() => setMenuOpen(false)}
-                className={`sm:hidden ${menuItemClass}`}
+                className={`lg:hidden ${menuItemClass}`}
                 style={{ color: "var(--fi)" }}
               >
                 <PlusCircleIcon /> Araç Öner
@@ -204,9 +206,16 @@ export function AuthNav() {
         >
           Yorum Yaz
         </Link>
+        {/* Canlıda 768-1024px (tablet) aralığında test edildi: MessageBell +
+            NotificationBell + hesap menüsü + Yorum Yaz + bu buton + arama
+            kutusu üst üste binince arama placeholder'ı ("Araç, marka veya
+            model ara...") kesiliyordu (kullanıcı isteğiyle gerçek tarayıcıda
+            doğrulandı — 3 ajanlı denetimin "görsel doğrulama gerekir" dediği
+            madde). Eşik sm(640)→lg(1024) yükseltildi, hesap menüsündeki
+            yedek giriş de buna göre genişletildi (aşağıda). */}
         <Link
           href="/oner"
-          className="hidden sm:inline-flex px-3 py-1.5 text-sm font-semibold rounded-md transition-colors"
+          className="hidden lg:inline-flex px-3 py-1.5 text-sm font-semibold rounded-md transition-colors"
           style={{ background: "var(--fi-bg)", color: "var(--fi)" }}
         >
           Araç Öner
