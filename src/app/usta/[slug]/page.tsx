@@ -174,18 +174,21 @@ export default async function ExpertProfilePage({
               önerisi üzerine (hesap isminin geçtiği her yere avatar). */}
           <Avatar displayName={profile.user.displayName} avatarUrl={profile.user.avatarUrl} seed={String(profile.user.id)} size={48} />
           <div className="min-w-0">
+            {/* Kullanıcı isteği: rozet ile isim/il satırının yerleri
+                değiştirildi — isim/il artık başlığın ÜSTÜNDE (kısa bir
+                "üst bilgi" gibi), rozet başlığın altında. */}
+            <p className="text-sm text-gray-400">
+              {profile.user.displayName}
+              {profile.city && ` · ${profile.city}`}
+            </p>
+            <h1 className="text-2xl font-black text-gray-900 mt-1">{profile.headline}</h1>
             <span
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold mt-3"
               style={{ color: EXPERT_BADGE.color, background: EXPERT_BADGE.bg }}
               title={EXPERT_BADGE.tooltip}
             >
               {EXPERT_BADGE.icon} {EXPERT_BADGE.label}
             </span>
-            <h1 className="text-2xl font-black text-gray-900 mt-3">{profile.headline}</h1>
-            <p className="text-sm text-gray-400 mt-1">
-              {profile.user.displayName}
-              {profile.city && ` · ${profile.city}`}
-            </p>
           </div>
         </div>
         <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-50 text-xs text-gray-500">
