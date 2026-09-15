@@ -460,17 +460,20 @@ export default async function ProfilPage() {
                 parçası. */}
             {expertProfile?.status === "ACTIVE" && (
               <div className="mt-3 flex items-center gap-2 flex-wrap">
+                {/* Düz "Profilim" — sayfanın kendisi zaten "Profilim" başlığını
+                    taşıdığı için burada ayrı bir "Profilim"e gitmek kafa
+                    karıştırıcıydı, ayrıca "Notlarım"/"Mesajlarım" tek
+                    başına usta bağlamını taşımıyordu (kullanıcı fark etti).
+                    Üçü de artık "Usta" önekiyle — kartın kendi başlığıyla
+                    ("🔧 Usta Görüşü") ve "Usta Görüşü Yaz"la aynı dilde. */}
                 <Link href={`/usta/${expertProfile.slug}`} className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200 bg-white/70 hover:bg-white">
-                  Profilim
+                  Usta Profilim
                 </Link>
-                {/* Önceden "Notlarım"a erişimin TEK yolu Usta Görüşü Yaz
-                    sayfasının kendi üst linkiydi — buradan (asıl usta
-                    hub'ı) hiç erişilemiyordu (kullanıcı fark etti). */}
                 <Link href="/usta-gorusu/notlarim" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200 bg-white/70 hover:bg-white">
-                  Notlarım
+                  Usta Notlarım
                 </Link>
                 <Link href="/mesajlar?tab=usta" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200 bg-white/70 hover:bg-white">
-                  Mesajlarım
+                  Usta Mesajlarım
                 </Link>
                 <Link href="/usta-gorusu/yaz" className="ml-auto px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
                   Usta Görüşü Yaz →

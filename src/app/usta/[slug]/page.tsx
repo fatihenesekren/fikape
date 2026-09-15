@@ -133,7 +133,15 @@ export default async function ExpertProfilePage({
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <div className="flex items-center justify-between gap-3 text-xs font-semibold text-gray-500 mb-6">
-        <Link href="/" className="hover:text-gray-800 transition-colors">← Ana sayfaya dön</Link>
+        {/* Kendi profiline "Profilim" butonuyla gelen usta buradan
+            /profil'e dönecek bir yol bulamıyordu (kullanıcı fark etti —
+            "girdim sonra geri gelemiyorum"). Herkese açık ziyaretçi için
+            eski "Ana sayfaya dön" değişmedi. */}
+        {isOwnProfile ? (
+          <Link href="/profil" className="hover:text-gray-800 transition-colors">← Profilime dön</Link>
+        ) : (
+          <Link href="/" className="hover:text-gray-800 transition-colors">← Ana sayfaya dön</Link>
+        )}
         <Link href="/usta-ol" className="hover:text-gray-800 transition-colors">Usta Görüşleri hakkında bilgi al →</Link>
       </div>
 
