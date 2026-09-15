@@ -303,10 +303,17 @@ model Notification {
   userId Int
   user   User @relation(fields: [userId], references: [id])
 
-  type    NotificationType
-  message String
-  link    String
-  isRead  Boolean          @default(false)
+  type         NotificationType
+  message      String
+  link         String
+  isRead       Boolean          @default(false)
+  // Not başlığı değişirse eski bildirimlerin metni güncellensin diye —
+  // FK YOK (answeredByExpertProfileId ile aynı desen: uygulama katmanında
+  // doğrulanır), yalnız usta notu başlığı içeren 3 bildirim türü
+  // (NEW_QUESTION/QUESTION_ANSWERED/EXPERT_NOTE_PUBLISHED) doldurur.
+  // resolveLiveNotificationMessages() render anında tek toplu sorguyla
+  // güncel başlığı okuyup mesajı yeniden kurar (bkz. lib/notification.ts).
+  expertNoteId Int?
 
   createdAt DateTime @default(now())
 

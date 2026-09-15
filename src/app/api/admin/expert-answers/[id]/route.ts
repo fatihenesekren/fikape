@@ -35,6 +35,7 @@ export async function PATCH(
           userId: true,
           expertNote: {
             select: {
+              id: true,
               title: true,
               model: {
                 select: {
@@ -68,6 +69,7 @@ export async function PATCH(
       type: "QUESTION_ANSWERED",
       message: `"${noteTitle}" başlıklı usta notuna sorduğun soru cevaplandı`,
       link: productSlug ? `/araclar/${productSlug}?sekme=usta-gorusleri` : "/",
+      expertNoteId: answer.question.expertNote?.id,
     });
     return NextResponse.json({ ok: true, status: "PUBLISHED" });
   }

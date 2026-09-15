@@ -85,6 +85,7 @@ export async function POST(
     type: "NEW_QUESTION",
     message: `"${noteTitle}" başlıklı usta notunuza yeni bir soru soruldu`,
     link: productSlug ? `/araclar/${productSlug}?sekme=usta-gorusleri#usta-not-${noteId}` : "/",
+    expertNoteId: noteId,
   });
 
   return NextResponse.json({ ok: true, questionId: question.id }, { status: 201 });

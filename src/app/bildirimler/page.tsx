@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { BildirimlerClient } from "./BildirimlerClient";
+import { resolveLiveNotificationMessages } from "@/lib/notification";
 
 export const metadata: Metadata = { title: "Bildirimler" };
 
@@ -21,16 +22,19 @@ export default async function BildirimlerPage({
   const { sayfa } = await searchParams;
   const page = Math.max(1, parseInt(sayfa ?? "1", 10) || 1);
 
-  const [notifications, total] = await Promise.all([
+  const [notificationsRaw, total] = await Promise.all([
     prisma.notification.findMany({
       where: { userId },
       orderBy: { createdAt: "desc" },
       skip: (page - 1) * PAGE_SIZE,
       take: PAGE_SIZE,
-      select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true },
+      select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true, expertNoteId: true },
     }),
     prisma.notification.count({ where: { userId } }),
   ]);
+  // Not başlığı sonradan düzeltilmişse bildirim metni de güncel kalsın diye
+  // (kullanıcı fark etti) — tek toplu sorgu, N+1 değil.
+  const notifications = await resolveLiveNotificationMessages(notificationsRaw);
 
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 

@@ -87,6 +87,7 @@ export async function PATCH(
       type: "EXPERT_NOTE_PUBLISHED",
       message: `"${note.title}" başlıklı usta notunuz yayınlandı`,
       link: productSlug ? `/araclar/${productSlug}?sekme=usta-gorusleri` : "/usta-gorusu/notlarim",
+      expertNoteId: noteId,
     });
     return NextResponse.json({ ok: true, status: "PUBLISHED" });
   }

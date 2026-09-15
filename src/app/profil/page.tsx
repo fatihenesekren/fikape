@@ -7,6 +7,7 @@ import { EditName } from "./EditName";
 import { AvatarPicker } from "./AvatarPicker";
 import { NotificationToggle } from "./NotificationToggle";
 import { NotificationsSection } from "./NotificationsSection";
+import { resolveLiveNotificationMessages } from "@/lib/notification";
 import { BlockedUsersSection } from "./BlockedUsersSection";
 import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
@@ -107,7 +108,7 @@ export default async function ProfilPage() {
   const publishedReviews = reviews.filter((r) => r.status === "PUBLISHED");
   const reviewIds = publishedReviews.map((r) => r.id);
 
-  const [garageCount, helpfulCount, foundingIds, notifications, expertProfile, ustaThreadCount] = await Promise.all([
+  const [garageCount, helpfulCount, foundingIds, notificationsRaw, expertProfile, ustaThreadCount] = await Promise.all([
     prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } }),
     reviewIds.length
       ? prisma.reviewHelpfulVote.count({ where: { reviewId: { in: reviewIds }, isHelpful: true } })
@@ -117,7 +118,7 @@ export default async function ProfilPage() {
       where: { userId },
       orderBy: { createdAt: "desc" },
       take: 21,
-      select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true },
+      select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true, expertNoteId: true },
     }),
     prisma.expertProfile.findUnique({ where: { userId }, select: { status: true, slug: true } }).catch(() => null),
     // "Usta Mesajlarım" linki yalnız gerçekten erişilebilir bir şey varsa
@@ -127,8 +128,10 @@ export default async function ProfilPage() {
     }),
   ]);
 
-  const hasMoreNotifications = notifications.length > 20;
-  const visibleNotifications = notifications.slice(0, 20);
+  const hasMoreNotifications = notificationsRaw.length > 20;
+  // Not başlığı sonradan düzeltilmişse bildirim metni de güncel kalsın diye
+  // (kullanıcı fark etti) — tek toplu sorgu, N+1 değil.
+  const visibleNotifications = await resolveLiveNotificationMessages(notificationsRaw.slice(0, 20));
 
   const foundingCount = publishedReviews.filter((r) => foundingIds.has(r.id)).length;
 
