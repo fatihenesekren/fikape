@@ -23,6 +23,19 @@ import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 
 export const metadata: Metadata = { title: "Profilim" };
 
+// Yorum Geçmişi durum rozetleri — önceden her satırda (map() içinde, satır
+// başına yeniden) kendi ham hex renklerini (#27500A/#EAF3DE vb.) tanımlıyordu;
+// bu, usta notu/cevap durumlarında kullanılan EXPERT_STATUS_TONES'tan tamamen
+// AYRI, kavramsal olarak aynı işi yapan ikinci bir renk seti idi (genel tarama
+// bulgusu). Aynı 4 tona (success/warning/danger/neutral) indirgendi.
+const REVIEW_STATUS_TONE: Record<string, { label: string; color: string; bg: string }> = {
+  PUBLISHED: { label: "Yayında", ...EXPERT_STATUS_TONES.success },
+  PENDING: { label: "İncelemede", ...EXPERT_STATUS_TONES.warning },
+  REJECTED: { label: "Reddedildi", ...EXPERT_STATUS_TONES.danger },
+  HIDDEN: { label: "Gizlendi", ...EXPERT_STATUS_TONES.neutral },
+  DELETED: { label: "Silindi", ...EXPERT_STATUS_TONES.neutral },
+};
+
 // Usta kartındaki "Profil Ayarları" köşe ikonu — sitenin diğer inline SVG
 // ikon deseniyle (ör. ExpertNotesSection.tsx EditIcon) aynı stil.
 function GearIcon({ className = "" }: { className?: string }) {
@@ -190,8 +203,11 @@ export default async function ProfilPage() {
         {/* İstatistikler */}
         <div className="grid grid-cols-3 gap-4 mt-6 pt-5 border-t border-gray-100">
           <div className="text-center">
+            {/* Aynı filtre 3 kez ayrı ayrı hesaplanıyordu — `publishedReviews`
+                zaten en üstte tek seferlik hesaplanmıştı, ikisi de ona
+                yönlendirildi (genel tarama bulgusu). */}
             <div className="text-2xl font-black text-gray-900">
-              {reviews.filter((r) => r.status === "PUBLISHED").length}
+              {publishedReviews.length}
             </div>
             <div className="text-xs text-gray-400 mt-0.5">Yayınlanan yorum</div>
           </div>
@@ -200,16 +216,11 @@ export default async function ProfilPage() {
             <div className="text-xs text-gray-400 mt-0.5">Garajdaki araç</div>
           </div>
           <div className="text-center">
-            {(() => {
-              const published = reviews.filter((r) => r.status === "PUBLISHED");
-              return (
-                <div className="text-2xl font-black text-gray-900">
-                  {published.length > 0
-                    ? (published.reduce((s, r) => s + calcOverall(r), 0) / published.length).toFixed(1)
-                    : "—"}
-                </div>
-              );
-            })()}
+            <div className="text-2xl font-black text-gray-900">
+              {publishedReviews.length > 0
+                ? (publishedReviews.reduce((s, r) => s + calcOverall(r), 0) / publishedReviews.length).toFixed(1)
+                : "—"}
+            </div>
             <div className="text-xs text-gray-400 mt-0.5">Ort. fi·ka·pe</div>
           </div>
         </div>
@@ -295,15 +306,7 @@ export default async function ProfilPage() {
               const attrs = r.product.attributes as Record<string, unknown>;
               const fuelType = String(attrs.fuel_type ?? "");
               const overall = calcOverall(r).toFixed(1);
-
-              const statusMap = {
-                PUBLISHED: { label: "Yayında",    color: "#27500A", bg: "#EAF3DE" },
-                PENDING:   { label: "İncelemede", color: "#712B13", bg: "#FAECE7" },
-                REJECTED:  { label: "Reddedildi", color: "#555",    bg: "#f3f4f6" },
-                HIDDEN:    { label: "Gizlendi",   color: "#555",    bg: "#f3f4f6" },
-                DELETED:   { label: "Silindi",    color: "#555",    bg: "#f3f4f6" },
-              };
-              const st = statusMap[r.status] ?? statusMap.PENDING;
+              const st = REVIEW_STATUS_TONE[r.status] ?? REVIEW_STATUS_TONE.PENDING;
 
               const ext = (r.extendedData as Record<string, unknown>) ?? {};
               const rPros = (ext.pros as string[] | undefined) ?? [];
