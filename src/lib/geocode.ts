@@ -51,8 +51,20 @@ export async function geocodeBestEffort(
   city: string | null
 ): Promise<{ lat: number; lng: number } | null> {
   const cityDistrict = [district, city].filter(Boolean).join(", ");
+
+  // Ara basamak: apartman adı + "No:39" gibi Nominatim'in çözemediği kısımlar
+  // tam adresi baştan başarısız kılıyor, ama tek başına "X Sokak"/"Y Caddesi"
+  // KISMI genelde çözülüyor (canlıda doğrulandı — "Buket Sokak Çınar
+  // Apartmanı No:39 ..." başarısız, "Buket Sokak, Çiftlikköy, Yalova" gerçek
+  // sokağı buluyor; doğrudan ilçe/il'e düşmekten ~700m daha isabetli). Türkçe
+  // adresler neredeyse hep "<isim> Sokak/Cadde/Bulvar" ile başladığından, bu
+  // kelimeye kadarki kısmı ayıklıyoruz — bulunamazsa bu basamak atlanır.
+  const streetMatch = address.match(/^.*?\b(Sokak|Sokağı|Sok\.?|Cadde|Caddesi|Cad\.?|Bulvarı?|Bulv\.?)\b/i);
+  const streetOnly = streetMatch ? streetMatch[0].trim() : null;
+
   const candidates = [
     cityDistrict ? `${address}, ${cityDistrict}, Türkiye` : `${address}, Türkiye`,
+    streetOnly && cityDistrict ? `${streetOnly}, ${cityDistrict}, Türkiye` : null,
     cityDistrict ? `${cityDistrict}, Türkiye` : null,
     city ? `${city}, Türkiye` : null,
   ].filter((c): c is string => !!c);
