@@ -243,8 +243,16 @@ export default async function ExpertProfilePage({
               {/* "Haritada Aç" önceden adres metninin ortasına sıkışmış inline
                   bir link gibiydi ("kötü gözüküyor") — artık haritanın altında,
                   kendi başına bir mini-buton. */}
+              {/* Koordinat varsa "query=lat,lng" ile Google Maps'te de KESİN
+                  bir iğne açılır — metin aramasıyla aynı belirsizlik burada
+                  da vardı (kullanıcı fark etti). Koordinat yoksa (nadir
+                  geocode başarısızlığı) eski adres-metni aramasına düşülür. */}
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.contactAddress)}`}
+                href={
+                  profile.contactLat != null && profile.contactLng != null
+                    ? `https://www.google.com/maps/search/?api=1&query=${profile.contactLat}%2C${profile.contactLng}`
+                    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.contactAddress)}`
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-link hover:underline"
