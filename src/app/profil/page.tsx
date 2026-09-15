@@ -23,6 +23,17 @@ import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 
 export const metadata: Metadata = { title: "Profilim" };
 
+// Usta kartındaki "Profil Ayarları" köşe ikonu — sitenin diğer inline SVG
+// ikon deseniyle (ör. ExpertNotesSection.tsx EditIcon) aynı stil.
+function GearIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+    </svg>
+  );
+}
+
 export default async function ProfilPage() {
   const session = await auth();
   if (!session?.user?.id) redirect("/giris");
@@ -397,8 +408,25 @@ export default async function ProfilPage() {
               (mavi ton): biri sosyal davet, diğeri mesleki başvuru — aynı
               kalıpta olmaları kullanıcının ikisini aynı hafiflikte
               algılamasına yol açıyordu (Görsel Hiyerarşi ajanı bulgusu). */}
-          <div className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4">
-            <div className="flex items-center justify-between gap-3 flex-wrap">
+          <div className="relative bg-blue-50/50 border border-blue-100 rounded-2xl p-4">
+            {/* "Profilim"/"Profil Ayarları" iki ayrı metin butonu yan yana
+                aynı ağırlıkta durunca kullanıcıya kafa karıştırıcı geldi
+                ("bunu bu şekilde ayırmak yerine..."). Ayarlar, içerik
+                eylemleriyle (Profilim/Notlarım/Yaz) AYNI seviyede bir buton
+                değil — kart genelinde bir "yapılandırma" eylemi, bu yüzden
+                köşede sessiz bir dişli ikonuna indirildi (yaygın
+                app/SaaS deseni: içerik = düz butonlar, ayar = köşe ikonu). */}
+            {expertProfile?.status === "ACTIVE" && (
+              <Link
+                href="/usta-gorusu/profil"
+                aria-label="Profil ayarları"
+                title="Profil ayarları"
+                className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-white transition-colors"
+              >
+                <GearIcon />
+              </Link>
+            )}
+            <div className="flex items-center justify-between gap-3 flex-wrap pr-8">
               <div>
                 <p className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
                   🔧 Usta Görüşü
@@ -424,26 +452,27 @@ export default async function ProfilPage() {
                   Başvur →
                 </Link>
               )}
-              {expertProfile?.status === "ACTIVE" && (
-                <div className="shrink-0 flex items-center gap-2">
-                  <Link href={`/usta/${expertProfile.slug}`} className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
-                    Profilim
-                  </Link>
-                  {/* Önceden "Notlarım"a erişimin TEK yolu Usta Görüşü Yaz
-                      sayfasının kendi üst linkiydi — buradan (asıl usta
-                      hub'ı) hiç erişilemiyordu (kullanıcı fark etti). */}
-                  <Link href="/usta-gorusu/notlarim" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
-                    Notlarım
-                  </Link>
-                  <Link href="/usta-gorusu/profil" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
-                    Profil Ayarları
-                  </Link>
-                  <Link href="/usta-gorusu/yaz" className="px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
-                    Usta Görüşü Yaz →
-                  </Link>
-                </div>
-              )}
             </div>
+
+            {/* İçerik eylemleri kendi satırında — başlık satırıyla aynı
+                justify-between'da sıkışıp flex-wrap'le alta düşmek yerine
+                (eskiden böyleydi) artık bilinçli olarak ayrı bir satır. */}
+            {expertProfile?.status === "ACTIVE" && (
+              <div className="mt-3 flex items-center gap-2 flex-wrap">
+                <Link href={`/usta/${expertProfile.slug}`} className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200 bg-white/70 hover:bg-white">
+                  Profilim
+                </Link>
+                {/* Önceden "Notlarım"a erişimin TEK yolu Usta Görüşü Yaz
+                    sayfasının kendi üst linkiydi — buradan (asıl usta
+                    hub'ı) hiç erişilemiyordu (kullanıcı fark etti). */}
+                <Link href="/usta-gorusu/notlarim" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200 bg-white/70 hover:bg-white">
+                  Notlarım
+                </Link>
+                <Link href="/usta-gorusu/yaz" className="ml-auto px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
+                  Usta Görüşü Yaz →
+                </Link>
+              </div>
+            )}
 
             {/* Usta ile site-içi mesajlaşma — hem "usta olarak gelen" hem
                 "kullanıcı olarak başlattığın" görüşmeler tek gelen kutusunda
