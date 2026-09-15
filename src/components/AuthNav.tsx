@@ -41,7 +41,7 @@ function PlusCircleIcon() {
 
 // Mesajlarım — kuyruklu, iki satırlı konuşma balonu (DM hissi). Header'da 20px
 // (zil ile eşit); menüde 16px (diğer menü ikonlarıyla eşit). Renk currentColor.
-function MessageIcon({ size = 20 }: { size?: number }) {
+export function MessageIcon({ size = 20 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M20 15.5a2.5 2.5 0 0 1-2.5 2.5H8l-4 3V6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5z" />

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Avatar } from "./Avatar";
+import { MessageIcon } from "./AuthNav";
 
 interface MessagePreview {
   id: string;
@@ -95,9 +96,7 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
         aria-expanded={open}
         className={`relative p-2 rounded-md hover:bg-gray-50 transition-colors ${unreadCount > 0 ? "text-link" : "text-gray-600"}`}
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" />
-        </svg>
+        <MessageIcon />
         {unreadCount > 0 && (
           <span className="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center leading-none">
             {unreadCount > 9 ? "9+" : unreadCount}
