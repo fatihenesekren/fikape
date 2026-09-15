@@ -39,7 +39,11 @@ export const TYPE_ICON: Record<string, string> = {
   EXPERT_CV_RESTORED: "🔧",
   ADMIN_NEW_EXPERT_NOTE: "🔧",
   ADMIN_NEW_EXPERT_APPLICATION: "🔧",
-  NEW_EXPERT_MESSAGE: "💬",
+  // Önceden 💬 idi — QUESTION_ANSWERED (Soru-Cevap) ile birebir aynı ikonu
+  // paylaşıyordu, Mesajlarım panelinde de aynı çakışma vardı (kullanıcı
+  // fark etti). Usta ailesinin geri kalanı (EXPERT_NOTE_*, EXPERT_VERIFIED
+  // vb.) zaten hep 🔧 — bu tek istisnayı da aynı aileye çekiyoruz.
+  NEW_EXPERT_MESSAGE: "🔧",
   ADMIN_NEW_EXPERT_APPEAL: "⚖️",
   EXPERT_APPEAL_DECIDED: "⚖️",
 };

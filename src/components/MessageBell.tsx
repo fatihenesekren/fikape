@@ -7,8 +7,17 @@ import { Avatar } from "./Avatar";
 import { MessageIcon } from "./AuthNav";
 import type { MessagePreviewItem } from "@/app/api/messages/preview/route";
 
+// Bildirim çanındaki (NotificationList.tsx TYPE_ICON) AYNI aile ikonları —
+// Takas 🤝, Usta 🔧 — buraya da taşındı, iki panel arasında görsel bir bağ
+// kursun diye (kullanıcı isteği). Köşe rozeti yerine etikete gömülü ikon
+// tercih edildi (kullanıcı: "TAKAS (ikon) MESAJI / USTA (ikon) MESAJI").
+// Metin de simetrik olsun diye "Takas" → "Takas Mesajı" oldu.
+const KIND_ICON: Record<MessagePreviewItem["kind"], string> = {
+  takas: "🤝",
+  usta: "🔧",
+};
 const KIND_LABEL: Record<MessagePreviewItem["kind"], string> = {
-  takas: "Takas",
+  takas: "Takas Mesajı",
   usta: "Usta Mesajı",
 };
 
@@ -145,7 +154,10 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
                       tipografi ölçeği: 10px etiket → text-sm asıl içerik
                       (line-clamp-2) → text-xs tarih en altta. */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-[10px] font-bold uppercase tracking-wide text-gray-400">{KIND_LABEL[t.kind]}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-wide text-gray-400 flex items-center gap-1">
+                      <span className="text-xs normal-case" aria-hidden>{KIND_ICON[t.kind]}</span>
+                      {KIND_LABEL[t.kind]}
+                    </p>
                     <p className={`text-sm truncate mt-0.5 ${t.unreadCount > 0 ? "font-bold text-gray-900" : "font-semibold text-gray-800"}`}>
                       {t.counterpartName ?? "Kullanıcı"}
                       {t.subtitle && <span className="font-normal text-gray-400"> · {t.subtitle}</span>}
