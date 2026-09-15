@@ -88,12 +88,14 @@ function hitTest(rects: Rect[], px: number, py: number): number | null {
 export function BlurEditor({
   photoId,
   productSlug,
+  expertWorkplacePhotoId,
   url,
   onSave,
   onClose,
 }: {
   photoId?: number;
   productSlug?: string;
+  expertWorkplacePhotoId?: number;
   url: string;
   onSave: (newUrl: string) => void;
   onClose: () => void;
@@ -285,6 +287,8 @@ export function BlurEditor({
       endpoint = "/api/admin/photos/blur";
     } else if (productSlug) {
       endpoint = `/api/admin/products/${encodeURIComponent(productSlug)}/image/blur`;
+    } else if (expertWorkplacePhotoId != null) {
+      endpoint = `/api/admin/expert-workplace-photos/${expertWorkplacePhotoId}/blur`;
     } else {
       setSaving(false);
       return;

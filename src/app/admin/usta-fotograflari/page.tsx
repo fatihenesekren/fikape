@@ -92,7 +92,7 @@ export default async function UstaFotograflariPage() {
                     <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-xs text-gray-400 hover:underline">
                       Büyük görüntüle →
                     </a>
-                    <ExpertWorkplacePhotoActions photoId={p.id} />
+                    <ExpertWorkplacePhotoActions photoId={p.id} url={p.url} />
                   </div>
                 </div>
               </div>
