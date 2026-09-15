@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Avatar } from "@/components/Avatar";
 import { NotificationBell } from "@/components/NotificationBell";
+import { MessageBell } from "@/components/MessageBell";
 
 function ShieldIcon() {
   return (
@@ -92,21 +93,9 @@ export function AuthNav() {
     setMenuOpen(false);
   }
 
-  // Okunmamış mesaj sayacı — sayfa değişince + 45 sn'de bir hafif polling
-  // (websocket yok) → başka sekmedeyken gelen mesaj reload'suz fark edilsin.
-  useEffect(() => {
-    if (!session) return;
-    let cancelled = false;
-    const load = () => {
-      fetch("/api/messages/unread-count")
-        .then((res) => (res.ok ? res.json() : null))
-        .then((data) => { if (!cancelled && data) setUnreadMessages(data.count); })
-        .catch(() => {});
-    };
-    load();
-    const iv = setInterval(load, 45_000);
-    return () => { cancelled = true; clearInterval(iv); };
-  }, [session, pathname]);
+  // Okunmamış mesaj sayacı artık MessageBell'in kendi /api/messages/preview
+  // fetch'inden geliyor (onUnreadCountChange) — ayrı bir polling'e gerek
+  // kalmadı, tek istekle hem sayaç hem önizleme dolduruluyor.
 
   // Sekme başlığında okunmamış sayacı — "(3) fikape — …". Next metadata
   // navigasyonda başlığı sıfırlayabildiği için 5 sn'de bir yeniden uygula.
@@ -140,23 +129,13 @@ export function AuthNav() {
       <div className="flex items-center gap-1.5">
         <NotificationBell />
 
-        {/* Okunmamış mesaj — MASAÜSTÜNDE zilin yanında ayrı ikon + rozet.
-            Mobilde header dar olduğu için gösterilmez; orada "Mesajlarım"
-            hesap menüsünde (rozetli) + zil zaten mesaj bildirimlerini sayıyor. */}
-        <Link
-          href="/mesajlar"
-          aria-label={unreadMessages > 0 ? `${unreadMessages} okunmamış mesaj` : "Mesajlarım"}
-          className={`relative hidden sm:flex p-2 rounded-md hover:bg-gray-50 transition-colors ${
-            unreadMessages > 0 ? "text-link" : "text-gray-600"
-          }`}
-        >
-          <MessageIcon />
-          {unreadMessages > 0 && (
-            <span className="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center leading-none">
-              {unreadMessages > 9 ? "9+" : unreadMessages}
-            </span>
-          )}
-        </Link>
+        {/* Mesaj ikonu artık zil gibi bir önizleme paneli açıyor (kullanıcı
+            fark etti — önceden düz bir /mesajlar linkiydi). MASAÜSTÜNDE
+            zilin yanında; mobilde header dar olduğu için gösterilmez, orada
+            "Mesajlarım" hesap menüsünde (rozetli). Okunmamış sayacı buradan
+            (onUnreadCountChange) yukarı bildirilip mobil menü rozeti +
+            sekme başlığı için de kullanılıyor. */}
+        <MessageBell onUnreadCountChange={setUnreadMessages} />
 
         {/* Hesap menüsü — masaüstü/mobil ortak, avatar tetikliyor.
             Admin/Garajım/Profilim/Çıkış tek listede, iki ayrı yapı bakımı gerekmiyor. */}
