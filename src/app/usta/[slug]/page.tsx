@@ -9,6 +9,7 @@ import { stripModelGenRange } from "@/lib/modelDisplay";
 import { ExpertMessageComposer } from "./ExpertMessageComposer";
 import { ContactFeedbackWidget } from "./ContactFeedbackWidget";
 import { Avatar } from "@/components/Avatar";
+import { toTelHref } from "@/lib/phone";
 
 export async function generateMetadata({
   params,
@@ -206,7 +207,14 @@ export default async function ExpertProfilePage({
         <div className="mb-8 bg-gray-50 rounded-xl p-4 space-y-1.5">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">İletişim</p>
           {profile.businessName && <p className="text-sm font-semibold text-gray-900">🏢 {profile.businessName}</p>}
-          {profile.contactPhone && <p className="text-sm text-gray-800">📞 {profile.contactPhone}</p>}
+          {/* Mobilde numarayı kopyalayıp aramak yerine doğrudan dokunup
+              aranabilsin diye tel: linki — kullanıcı fark etti. Görünen
+              metin girildiği gibi kalır, yalnız href normalize edilir. */}
+          {profile.contactPhone && (
+            <p className="text-sm text-gray-800">
+              📞 <a href={`tel:${toTelHref(profile.contactPhone)}`} className="hover:underline">{profile.contactPhone}</a>
+            </p>
+          )}
           {profile.contactAddress && (
             <div>
               <p className="text-sm text-gray-800">📍 {profile.contactAddress}</p>

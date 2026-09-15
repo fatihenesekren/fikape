@@ -7,6 +7,21 @@ import { StyledCheckbox } from "@/components/StyledCheckbox";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { TURKISH_DISTRICTS } from "@/lib/turkishDistricts";
 
+// "0532...", "+90 532...", "532..." — ne girilmiş olursa olsun 10 haneli
+// yerel numaraya indirger (+90/0 önekini atar).
+function toLocalDigits(raw: string): string {
+  let digits = raw.replace(/\D/g, "");
+  if (digits.startsWith("90") && digits.length > 10) digits = digits.slice(2);
+  else if (digits.startsWith("0")) digits = digits.slice(1);
+  return digits.slice(0, 10);
+}
+
+// "5321234567" -> "532 123 45 67" (yazarken canlı gruplama).
+function formatLocalDigits(digits: string): string {
+  const parts = [digits.slice(0, 3), digits.slice(3, 6), digits.slice(6, 8), digits.slice(8, 10)].filter(Boolean);
+  return parts.join(" ");
+}
+
 export function ContactSettingsForm({
   initialHeadline, initialBio, initialCity, initialDistrict,
   initialBusinessName, initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, initialMessagingEnabled, initialExpertiseTags, profileSlug,
@@ -35,7 +50,12 @@ export function ContactSettingsForm({
   const [district, setDistrict] = useState(initialDistrict);
   const districtOptions = city ? TURKISH_DISTRICTS[city] ?? [] : [];
   const [businessName, setBusinessName] = useState(initialBusinessName ?? "");
-  const [phone, setPhone] = useState(initialPhone ?? "");
+  // Telefon — kullanıcı "+90 elle yazmadan, girince silinse" dedi: alan
+  // yalnız 10 haneli yerel numarayı ("5XX XXX XX XX") tutar, +90 sabit bir
+  // önek olarak solda gösterilir; kayıtta ikisi birleştirilir. Var olan bir
+  // kayıt "+90"/"0" ile başlıyor olabileceğinden, gösterime almadan önce
+  // yerel 10 haneye indirgenir.
+  const [phoneDigits, setPhoneDigits] = useState(() => toLocalDigits(initialPhone ?? ""));
   const [address, setAddress] = useState(initialAddress ?? "");
   const [messagingEnabled, setMessagingEnabled] = useState(initialMessagingEnabled);
   const [consentContactPublic, setConsentContactPublic] = useState(initialConsentContactPublic);
@@ -65,6 +85,7 @@ export function ContactSettingsForm({
     if (!city) return setError("İl seçiniz.");
     if (bio.trim().length < 30) return setError("Kendinizi en az 30 karakterle tanıtınız.");
     if (expertiseTags.length === 0) return setError("En az bir uzmanlık alanı ekleyiniz.");
+    if (phoneDigits.length > 0 && phoneDigits.length < 10) return setError("Telefon numarası eksik görünüyor.");
     setLoading(true);
     try {
       const res = await fetch("/api/expert-profile/contact", {
@@ -76,7 +97,7 @@ export function ContactSettingsForm({
           city,
           district: district.trim() || null,
           businessName: businessName.trim() || null,
-          contactPhone: phone.trim() || null,
+          contactPhone: phoneDigits ? `+90${phoneDigits}` : null,
           contactAddress: address.trim() || null,
           consentContactPublic,
           consentRegionalPromo,
@@ -196,8 +217,10 @@ export function ContactSettingsForm({
         </StyledCheckbox>
 
         {consentContactPublic && (
-          <div className="grid sm:grid-cols-2 gap-3 pl-[30px]">
-            <div className="sm:col-span-2">
+          // Üçü de artık tam genişlik (telefon+adres büyütülünce yan yana
+          // sıkıştırmanın anlamı kalmadı) — grid yerine düz dikey istif.
+          <div className="space-y-3 pl-[30px]">
+            <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1">İşyeri adı (opsiyonel)</label>
               <input
                 type="text"
@@ -209,22 +232,32 @@ export function ContactSettingsForm({
             </div>
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1">Telefon (opsiyonel)</label>
-              <input
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="05XX XXX XX XX"
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400"
-              />
+              {/* Kullanıcı "+90 elle yazmadan versek, girince silinse" dedi —
+                  "+90" artık girilemez sabit bir önek, kullanıcı yalnız 10
+                  haneli yerel numarayı yazıyor, yazarken otomatik gruplanıyor. */}
+              <div className="flex items-stretch border border-gray-200 rounded-lg overflow-hidden focus-within:border-gray-400">
+                <span className="flex items-center px-3 text-sm text-gray-500 bg-gray-50 border-r border-gray-200 select-none">+90</span>
+                <input
+                  type="tel"
+                  inputMode="numeric"
+                  value={formatLocalDigits(phoneDigits)}
+                  onChange={(e) => setPhoneDigits(toLocalDigits(e.target.value))}
+                  placeholder="5XX XXX XX XX"
+                  className="flex-1 min-w-0 px-3 py-2 text-sm focus:outline-none"
+                />
+              </div>
             </div>
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1">Açık adres (opsiyonel)</label>
-              <input
-                type="text"
+              {/* Önceden tek satırlık input'tu; girilen adres kesiliyordu
+                  (kullanıcı fark etti — "biraz büyütsek mi"). Artık tam
+                  genişlikte, çok satırlı bir alan. */}
+              <textarea
                 value={address}
                 onChange={(e) => setAddress(e.target.value.slice(0, 300))}
-                placeholder="İş yeri adresiniz"
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400"
+                rows={3}
+                placeholder="Sokak, apartman/site adı, kapı no vb."
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 resize-y"
               />
             </div>
           </div>
