@@ -8,7 +8,7 @@ import { ContactSettingsForm } from "./ContactSettingsForm";
 import { ExpertAppealForm } from "../ExpertAppealForm";
 import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 
-export const metadata = { title: "İletişim Ayarları — fikape", robots: { index: false } };
+export const metadata = { title: "Profil Ayarları — fikape", robots: { index: false } };
 
 const VISIBILITY_LABEL: Record<string, { label: string; color: string; bg: string }> = {
   HIDDEN: { label: "Henüz görünür değil", ...EXPERT_STATUS_TONES.neutral },
@@ -27,6 +27,7 @@ export default async function ExpertContactSettingsPage() {
     select: {
       id: true, status: true, slug: true, businessName: true, contactPhone: true, contactAddress: true,
       cvNoindex: true, city: true, district: true, visibilityState: true, messagingEnabled: true, expertiseTags: true,
+      headline: true, bio: true,
     },
   });
 
@@ -72,13 +73,17 @@ export default async function ExpertContactSettingsPage() {
       </Link>
 
       <div>
-        <h1 className="text-2xl font-black text-gray-900">İletişim ve Görünürlük Ayarları</h1>
+        {/* Önceden yalnız "İletişim ve Görünürlük Ayarları" idi — başlık/bio/il/ilçe
+            başvuru formunda BİR KEZ girilip sonrasında hiç düzenlenemiyordu, sayfa
+            adı da bunu yansıtmıyordu (kullanıcı fark etti: "2 gün sonra usta
+            uzmanlık alanı eklemek istese ne yapacak?"). Artık tüm profil buradan
+            yönetiliyor. */}
+        <h1 className="text-2xl font-black text-gray-900">Profil Ayarları</h1>
         <p className="text-sm text-gray-500 mt-1.5 leading-relaxed">
-          Aşağıdaki ayarlar herkese açık usta profilinizde
-          ({profile.city ?? "il belirtilmedi"}{profile.district ? ` / ${profile.district}` : ""})
-          neyin görüneceğini belirler. Uzmanlık alanlarınız her zaman görünür; işyeri adı, telefon
-          ve adres ise yalnız aşağıda açıkça izin verirseniz gösterilir. Hiçbir alanı doldurmak
-          zorunda değilsiniz — boş bıraktığınız hiçbir bilgi paylaşılmaz.
+          Başlık, il/ilçe ve kendinizi tanıttığınız yazı dahil profilinizin herkese açık
+          hâli buradan yönetilir; uzmanlık alanlarıyla birlikte her zaman görünürler.
+          İşyeri adı, telefon ve adres ise yalnız aşağıda açıkça izin verirseniz gösterilir.
+          O alanları doldurmak zorunda değilsiniz — boş bıraktığınız hiçbir bilgi paylaşılmaz.
         </p>
       </div>
 
@@ -106,6 +111,10 @@ export default async function ExpertContactSettingsPage() {
       </div>
 
       <ContactSettingsForm
+        initialHeadline={profile.headline ?? ""}
+        initialBio={profile.bio ?? ""}
+        initialCity={profile.city ?? ""}
+        initialDistrict={profile.district ?? ""}
         initialBusinessName={profile.businessName}
         initialPhone={profile.contactPhone}
         initialAddress={profile.contactAddress}

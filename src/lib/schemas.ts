@@ -130,6 +130,14 @@ export const expertAppealCreateSchema = z.object({
 // (c) bölgesel görünürlük. İkisi de bağımsız, ikisi de opsiyonel — rıza
 // hizmetin ön koşulu değil. Telefon/adres yalnız (b) rızası verilirse gösterilir.
 export const expertContactUpdateSchema = z.object({
+  // Önceden bu alanlar yalnız başvuru formunda BİR KEZ girilip sonrasında
+  // hiç güncellenemiyordu — usta 2 gün sonra unuttuğu bir şeyi eklemek
+  // isteyince hiçbir yolu yoktu (kullanıcı fark etti). Aynı doğrulama
+  // kuralları başvuru şemasıyla (expertApplicationSchema) birebir aynı.
+  headline:              z.string().trim().min(8, "Başlık en az 8 karakter olmalıdır.").max(120, "Başlık en fazla 120 karakter olabilir."),
+  bio:                   z.string().trim().min(30, "En az 30 karakter yazınız.").max(2000, "En fazla 2000 karakter yazabilirsiniz."),
+  city:                  z.enum([...TURKISH_CITIES] as [string, ...string[]], { message: "Geçerli bir il seçiniz." }),
+  district:              z.string().trim().max(60).optional().nullable().or(z.literal("")),
   businessName:          z.string().trim().max(120).optional().nullable().or(z.literal("")),
   contactPhone:          z.string().trim().regex(/^[0-9+()\s-]{7,20}$/, "Geçerli bir telefon numarası giriniz.").optional().nullable().or(z.literal("")),
   contactAddress:        z.string().trim().max(300).optional().nullable().or(z.literal("")),

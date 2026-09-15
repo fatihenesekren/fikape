@@ -5,6 +5,7 @@ import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { expertContactUpdateSchema, formatZodError } from "@/lib/schemas";
 import { recordConsent, getLatestConsent } from "@/lib/consent";
+import { geocodeAddress } from "@/lib/geocode";
 
 // Usta iletişim/görünürlük ayarları — self-servis. Granüler rıza (§7):
 // - (b) EXPERT_CONTACT_PUBLIC: açık telefon/adresin herkese açık yayını.
@@ -19,7 +20,7 @@ export async function PATCH(req: Request) {
 
   const profile = await prisma.expertProfile.findUnique({
     where: { userId },
-    select: { id: true, status: true, contactVisible: true },
+    select: { id: true, status: true, contactVisible: true, contactAddress: true, contactLat: true, contactLng: true },
   });
   if (!profile || profile.status !== "ACTIVE") {
     return NextResponse.json({ error: "Yalnızca aktif ustalar bu ayarları değiştirebilir." }, { status: 403 });
@@ -29,12 +30,13 @@ export async function PATCH(req: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
-  const { consentContactPublic, consentRegionalPromo, cvNoindex, messagingEnabled, expertiseTags } = parsed.data;
+  const { consentContactPublic, consentRegionalPromo, cvNoindex, messagingEnabled, expertiseTags, headline, bio, city } = parsed.data;
   const businessName = parsed.data.businessName?.trim() || null;
   const contactPhone = parsed.data.contactPhone?.trim() || null;
   const contactAddress = parsed.data.contactAddress?.trim() || null;
+  const district = parsed.data.district?.trim() || null;
 
-  for (const text of [businessName, contactAddress, ...expertiseTags]) {
+  for (const text of [headline, bio, businessName, contactAddress, ...expertiseTags]) {
     if (!text) continue;
     const contentCheck = checkContent(text);
     if (!contentCheck.ok) {
@@ -46,13 +48,38 @@ export async function PATCH(req: Request) {
   // (b) rızası yoksa iletişim bilgisi DERHAL temizlenir ve gösterilmez —
   // rıza olsa bile hiçbir alan girilmemişse de gösterilecek bir şey yok.
   const contactVisible = consentContactPublic && (!!businessName || !!contactPhone || !!contactAddress);
+  const finalAddress = consentContactPublic ? contactAddress : null;
+
+  // Adres yalnız değiştiyse (veya ilk kez giriliyorsa) yeniden geocode edilir —
+  // her kayıtta Nominatim'e istek atmamak için. Adres silindiyse/rıza geri
+  // çekildiyse koordinat da temizlenir.
+  let contactLat = profile.contactLat;
+  let contactLng = profile.contactLng;
+  if (!finalAddress) {
+    contactLat = null;
+    contactLng = null;
+  } else if (finalAddress !== profile.contactAddress || contactLat == null) {
+    // İkinci koşul (contactLat == null): adres değişmese de daha önce hiç
+    // geocode edilmemişse (örn. bu sütunlar eklenmeden önce kaydedilmiş
+    // mevcut ustalar) — kullanıcı ayarları tekrar kaydettiğinde geriye
+    // dönük olarak da koordinat kazandırılır.
+    const geocoded = await geocodeAddress(finalAddress);
+    contactLat = geocoded?.lat ?? null;
+    contactLng = geocoded?.lng ?? null;
+  }
 
   await prisma.expertProfile.update({
     where: { id: profile.id },
     data: {
+      headline,
+      bio,
+      city,
+      district,
       businessName: consentContactPublic ? businessName : null,
       contactPhone: consentContactPublic ? contactPhone : null,
-      contactAddress: consentContactPublic ? contactAddress : null,
+      contactAddress: finalAddress,
+      contactLat,
+      contactLng,
       contactVisible,
       cvNoindex,
       messagingEnabled,

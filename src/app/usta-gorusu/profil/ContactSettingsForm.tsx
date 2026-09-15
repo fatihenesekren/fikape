@@ -4,10 +4,17 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { StyledCheckbox } from "@/components/StyledCheckbox";
+import { TURKISH_CITIES } from "@/lib/turkishCities";
+import { TURKISH_DISTRICTS } from "@/lib/turkishDistricts";
 
 export function ContactSettingsForm({
+  initialHeadline, initialBio, initialCity, initialDistrict,
   initialBusinessName, initialPhone, initialAddress, initialConsentContactPublic, initialConsentRegionalPromo, initialCvNoindex, initialMessagingEnabled, initialExpertiseTags, profileSlug,
 }: {
+  initialHeadline: string;
+  initialBio: string;
+  initialCity: string;
+  initialDistrict: string;
   initialBusinessName: string | null;
   initialPhone: string | null;
   initialAddress: string | null;
@@ -19,6 +26,14 @@ export function ContactSettingsForm({
   profileSlug: string;
 }) {
   const router = useRouter();
+  // Profil bilgileri — önceden yalnız başvuru formunda bir kez girilip
+  // sonrasında hiç güncellenemiyordu (bkz. yukarıdaki uzmanlık alanları
+  // notu — aynı sorunun başlık/bio/il-ilçe versiyonu, kullanıcı fark etti).
+  const [headline, setHeadline] = useState(initialHeadline);
+  const [bio, setBio] = useState(initialBio);
+  const [city, setCity] = useState(initialCity);
+  const [district, setDistrict] = useState(initialDistrict);
+  const districtOptions = city ? TURKISH_DISTRICTS[city] ?? [] : [];
   const [businessName, setBusinessName] = useState(initialBusinessName ?? "");
   const [phone, setPhone] = useState(initialPhone ?? "");
   const [address, setAddress] = useState(initialAddress ?? "");
@@ -46,6 +61,9 @@ export function ContactSettingsForm({
     e.preventDefault();
     setError("");
     setSuccess(false);
+    if (headline.trim().length < 8) return setError("Başlık en az 8 karakter olmalıdır.");
+    if (!city) return setError("İl seçiniz.");
+    if (bio.trim().length < 30) return setError("Kendinizi en az 30 karakterle tanıtınız.");
     if (expertiseTags.length === 0) return setError("En az bir uzmanlık alanı ekleyiniz.");
     setLoading(true);
     try {
@@ -53,6 +71,10 @@ export function ContactSettingsForm({
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          headline: headline.trim(),
+          bio: bio.trim(),
+          city,
+          district: district.trim() || null,
           businessName: businessName.trim() || null,
           contactPhone: phone.trim() || null,
           contactAddress: address.trim() || null,
@@ -80,6 +102,58 @@ export function ContactSettingsForm({
 
   return (
     <form onSubmit={submit} className="space-y-6">
+      <div className="bg-white border border-gray-100 rounded-2xl p-4 space-y-4">
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-1.5">Başlık</label>
+          <input
+            type="text"
+            value={headline}
+            onChange={(e) => setHeadline(e.target.value.slice(0, 120))}
+            placeholder="Örn: 18 yıllık dizel motor ustası · Bursa"
+            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400"
+          />
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">İl</label>
+            <select
+              value={city}
+              onChange={(e) => { setCity(e.target.value); setDistrict(""); }}
+              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 bg-white"
+            >
+              <option value="">Seçiniz</option>
+              {TURKISH_CITIES.map((c) => <option key={c} value={c}>{c}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+              İlçe <span className="text-gray-400 font-normal">(opsiyonel)</span>
+            </label>
+            <select
+              value={district}
+              onChange={(e) => setDistrict(e.target.value)}
+              disabled={!city}
+              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 bg-white disabled:bg-gray-50 disabled:text-gray-400"
+            >
+              <option value="">{city ? "Belirtmek istemiyorum" : "Önce il seçiniz"}</option>
+              {districtOptions.map((d) => <option key={d} value={d}>{d}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-1.5">Kendinizi tanıtın</label>
+          <textarea
+            value={bio}
+            onChange={(e) => setBio(e.target.value.slice(0, 2000))}
+            rows={5}
+            placeholder="Deneyiminiz, uzmanlaştığınız marka/modeller, işletmeniz hakkında kısa bilgi..."
+            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 resize-y"
+          />
+        </div>
+      </div>
+
       <div className="bg-white border border-gray-100 rounded-2xl p-4">
         <label className="block text-sm font-semibold text-gray-700 mb-1.5">🔧 Uzmanlık alanları</label>
         <div className="flex gap-2">

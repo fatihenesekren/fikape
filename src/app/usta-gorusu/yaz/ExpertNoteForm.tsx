@@ -142,7 +142,7 @@ export function ExpertNoteForm({ headline }: { headline: string | null }) {
               Notlarım →
             </Link>
             <Link href="/usta-gorusu/profil" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
-              İletişim Ayarları →
+              Profil Ayarları →
             </Link>
           </div>
         </div>

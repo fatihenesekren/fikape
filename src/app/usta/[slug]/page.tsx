@@ -56,6 +56,7 @@ export default async function ExpertProfilePage({
       select: {
         id: true, headline: true, bio: true, expertiseTags: true, city: true, district: true,
         status: true, createdAt: true, contactVisible: true, businessName: true, contactPhone: true, contactAddress: true,
+        contactLat: true, contactLng: true,
         visibilityState: true, userId: true, messagingEnabled: true,
         user: { select: { id: true, displayName: true, avatarUrl: true } },
       },
@@ -201,19 +202,35 @@ export default async function ExpertProfilePage({
           {profile.contactAddress && (
             <div>
               <p className="text-sm text-gray-800">📍 {profile.contactAddress}</p>
-              {/* Harita önizlemesi — API anahtarı gerektirmeyen Google Maps
-                  embed URL şeması (kullanıcı isteği: adres yalnız metin değil,
-                  görsel bir konum önizlemesi de sağlasın). */}
+              {/* Harita önizlemesi. Google'ın API anahtarsız embed'i (q=<adres>)
+                  düzensiz/apartman-adlı Türkçe adreslerde net bir nokta
+                  bulamayıp yalnız genel bölgeyi gösteriyordu, hiç iğne
+                  koymuyordu (kullanıcı fark etti). Adres kaydedilirken artık
+                  bir kerelik Nominatim (OSM) ile geocode ediliyor
+                  (contactLat/contactLng) — koordinat varsa OSM embed KESİN
+                  bir iğneyle gösterir; geocode başarısızsa (nadiren) eski
+                  genel-bölge Google embed'ine düşülür. */}
               <div className="mt-2 rounded-xl overflow-hidden border border-gray-100">
-                <iframe
-                  title="Konum haritası"
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(profile.contactAddress)}&output=embed`}
-                  width="100%"
-                  height="160"
-                  loading="lazy"
-                  style={{ border: 0, display: "block" }}
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+                {profile.contactLat != null && profile.contactLng != null ? (
+                  <iframe
+                    title="Konum haritası"
+                    src={`https://www.openstreetmap.org/export/embed.html?bbox=${profile.contactLng - 0.006}%2C${profile.contactLat - 0.004}%2C${profile.contactLng + 0.006}%2C${profile.contactLat + 0.004}&layer=mapnik&marker=${profile.contactLat}%2C${profile.contactLng}`}
+                    width="100%"
+                    height="160"
+                    loading="lazy"
+                    style={{ border: 0, display: "block" }}
+                  />
+                ) : (
+                  <iframe
+                    title="Konum haritası"
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(profile.contactAddress)}&output=embed`}
+                    width="100%"
+                    height="160"
+                    loading="lazy"
+                    style={{ border: 0, display: "block" }}
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                )}
               </div>
               {/* "Haritada Aç" önceden adres metninin ortasına sıkışmış inline
                   bir link gibiydi ("kötü gözüküyor") — artık haritanın altında,

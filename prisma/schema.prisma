@@ -1525,6 +1525,8 @@ model ExpertProfile {
   businessName     String? @db.VarChar(120) // işyeri/dükkan adı (örn. "ABC Rot-Balans") — aynı rıza+eşiğe tabi
   contactPhone     String? @db.VarChar(20)
   contactAddress   String? @db.VarChar(300) // açık adres OPSİYONEL; il/ilçe zorunlu
+  contactLat       Float? // adres kaydedilirken bir kerelik Nominatim (OSM) geocode — harita bu
+  contactLng       Float? // koordinata KESİN bir iğne koyar; başarısızsa null kalır, eski genel-alan haritasına düşülür
   contactVisible   Boolean @default(false)
   cvNoindex        Boolean @default(false) // usta isterse profil sayfası noindex
   // Site-içi mesajlaşma tercihi — varsayılan açık (mevcut davranış korunur).

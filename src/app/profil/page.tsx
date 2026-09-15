@@ -436,7 +436,7 @@ export default async function ProfilPage() {
                     Notlarım
                   </Link>
                   <Link href="/usta-gorusu/profil" className="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200">
-                    İletişim Ayarları
+                    Profil Ayarları
                   </Link>
                   <Link href="/usta-gorusu/yaz" className="px-4 py-2 rounded-xl text-xs font-semibold text-white" style={{ background: "var(--btn-dark)" }}>
                     Usta Görüşü Yaz →
