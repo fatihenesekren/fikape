@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WorkplacePhotoReportButton } from "./WorkplacePhotoReportButton";
 
 export interface WorkplacePhoto {
@@ -30,8 +30,13 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
   const dragStartX = useRef(0);
   const trackWidth = useRef(0);
   const trackEl = useRef<HTMLDivElement>(null);
-
-  if (photos.length === 0) return null;
+  // Sürükleme küçük bir mesafeyi geçtiyse "bu bir tıklama değil, sürükleme"
+  // demek — state (dragging) yerine ref kullanıyoruz çünkü mouseup'tan hemen
+  // sonra tarayıcının doğal olarak ateşlediği click olayı, React'ın
+  // dragging=false state güncellemesini ÇOKTAN uygulamış olabiliyor; bu da
+  // her sürüklemenin sonunda yanlışlıkla lightbox'ı açıyordu (kullanıcı
+  // fark etti — "sürükleyince hem kaydırıyor hem büyütüyor").
+  const didDrag = useRef(false);
 
   function goTo(index: number) {
     setActive(Math.max(0, Math.min(photos.length - 1, index)));
@@ -40,12 +45,14 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
   function dragStart(clientX: number) {
     dragStartX.current = clientX;
     trackWidth.current = trackEl.current?.clientWidth || 1;
+    didDrag.current = false;
     setDragging(true);
   }
 
   function dragMove(clientX: number) {
     if (!dragging) return;
     let delta = clientX - dragStartX.current;
+    if (Math.abs(delta) > 5) didDrag.current = true;
     // Uçlarda direnç — ilk/son karede daha fazla çekmek gerekiyor hissi verir.
     if ((active === 0 && delta > 0) || (active === photos.length - 1 && delta < 0)) {
       delta *= 0.35;
@@ -61,9 +68,46 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
     setDragOffset(0);
   }
 
+  function handlePhotoClick() {
+    // Sürükleme sonrası tarayıcının ateşlediği "hayalet" click'i yut —
+    // yukarıdaki didDrag açıklamasına bkz.
+    if (didDrag.current) { didDrag.current = false; return; }
+    setLightboxOpen(true);
+  }
+
+  // Klavye ile sağ/sol ok — kullanıcı fark etti, sadece dokunma/sürükleme
+  // vardı. Slider'a odaklanınca (Tab ile veya tıklayarak) çalışır.
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === "ArrowLeft") { e.preventDefault(); goTo(active - 1); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); goTo(active + 1); }
+  }
+
+  // Lightbox açıkken de aynı ok tuşları + Escape ile kapatma — modal
+  // içindeyken beklenen standart davranış.
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "ArrowLeft") goTo(active - 1);
+      else if (e.key === "ArrowRight") goTo(active + 1);
+      else if (e.key === "Escape") setLightboxOpen(false);
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightboxOpen, active, photos.length]);
+
+  if (photos.length === 0) return null;
+
   return (
     <div className="mb-6">
-      <div className="relative group">
+      <div
+        className="relative group rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-400"
+        tabIndex={0}
+        role="group"
+        aria-roledescription="carousel"
+        aria-label="Çalışma yeri fotoğrafları"
+        onKeyDown={handleKeyDown}
+      >
         <div
           ref={trackEl}
           className="overflow-hidden rounded-2xl border border-gray-100 bg-gray-50 select-none"
@@ -73,6 +117,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
             style={{
               transform: `translateX(calc(${-active * 100}% + ${dragging ? dragOffset : 0}px))`,
               transition: dragging ? "none" : "transform 350ms cubic-bezier(0.22, 1, 0.36, 1)",
+              touchAction: "pan-y",
             }}
             onTouchStart={(e) => dragStart(e.touches[0].clientX)}
             onTouchMove={(e) => dragMove(e.touches[0].clientX)}
@@ -108,7 +153,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
                   alt="Çalışma yeri fotoğrafı"
                   draggable={false}
                   className="relative w-full h-full object-contain cursor-zoom-in"
-                  onClick={() => !dragging && setLightboxOpen(true)}
+                  onClick={handlePhotoClick}
                 />
               </div>
             ))}
