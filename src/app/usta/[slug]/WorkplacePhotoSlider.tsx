@@ -8,62 +8,111 @@ export interface WorkplacePhoto {
   url: string;
 }
 
+const SWIPE_THRESHOLD = 50;
+
 // Usta profilinde kimlik kartı ile Uzmanlık Alanları arasında gösterilen
 // çalışma yeri fotoğrafları — tabela her zaman ilk kare (çağıran taraf
-// sıralıyor), sonra iç mekan. Elle kaydırma birincil etkileşim (scroll-snap),
-// otomatik geçiş YOK — 3 ajanlı UX planının kararı: tek fotoğrafta mekanizma
-// hiç devreye girmesin, çoklu fotoğrafta alt ortada nokta göstergesi +
-// masaüstünde hover'da ok butonları. Fotoğrafa tıklanınca tam ekran büyütme
-// (lightbox) açılır — kullanıcı fotoğrafları büyütemediğini fark etti.
-// "Bildir" butonu SU AN GÖRÜNEN (active) fotoğrafı referans alır ve hangi
-// fotoğrafın bildirildiğini netleştirmek için "(2/3)" gibi bir sıra
-// gösterir — kullanıcı çoklu fotoğrafta bunun belirsiz olduğunu fark etti.
+// sıralıyor), sonra iç mekan. Önceden native scroll-snap kullanıyordu,
+// kullanıcı "modern slider yapısına uygun olsun" dedi — artık transform
+// tabanlı (translateX), sürükle-bırak (drag) destekli klasik carousel
+// deseni: parmakla/mouse ile sürüklerken anlık takip eder, bırakınca eşiği
+// geçtiyse bir sonraki/önceki kareye kayar, geçmediyse yumuşakça geri döner.
+// Otomatik geçiş YOK — 3 ajanlı UX planının kararı: tek fotoğrafta mekanizma
+// hiç devreye girmesin. Fotoğrafa tıklanınca tam ekran lightbox açılır.
+// "Bildir" butonu SU AN GÖRÜNEN (active) fotoğrafı referans alır ve
+// birden fazla fotoğrafta hangi fotoğrafın bildirildiğini "(2/3)" şeklinde
+// gösterir.
 export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
   const [active, setActive] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const dragStartX = useRef(0);
+  const trackWidth = useRef(0);
+  const trackEl = useRef<HTMLDivElement>(null);
 
   if (photos.length === 0) return null;
 
-  function scrollTo(index: number) {
-    const track = trackRef.current;
-    const clamped = Math.max(0, Math.min(photos.length - 1, index));
-    if (track) track.scrollTo({ left: clamped * track.clientWidth, behavior: "smooth" });
-    setActive(clamped);
+  function goTo(index: number) {
+    setActive(Math.max(0, Math.min(photos.length - 1, index)));
   }
 
-  function handleScroll() {
-    const track = trackRef.current;
-    if (!track || track.clientWidth === 0) return;
-    setActive(Math.round(track.scrollLeft / track.clientWidth));
+  function dragStart(clientX: number) {
+    dragStartX.current = clientX;
+    trackWidth.current = trackEl.current?.clientWidth || 1;
+    setDragging(true);
+  }
+
+  function dragMove(clientX: number) {
+    if (!dragging) return;
+    let delta = clientX - dragStartX.current;
+    // Uçlarda direnç — ilk/son karede daha fazla çekmek gerekiyor hissi verir.
+    if ((active === 0 && delta > 0) || (active === photos.length - 1 && delta < 0)) {
+      delta *= 0.35;
+    }
+    setDragOffset(delta);
+  }
+
+  function dragEnd() {
+    if (!dragging) return;
+    if (dragOffset < -SWIPE_THRESHOLD) goTo(active + 1);
+    else if (dragOffset > SWIPE_THRESHOLD) goTo(active - 1);
+    setDragging(false);
+    setDragOffset(0);
   }
 
   return (
     <div className="mb-6">
       <div className="relative group">
         <div
-          ref={trackRef}
-          onScroll={handleScroll}
-          className="flex overflow-x-auto snap-x snap-mandatory rounded-2xl border border-gray-100 bg-gray-50"
-          style={{ scrollbarWidth: "none" }}
+          ref={trackEl}
+          className="overflow-hidden rounded-2xl border border-gray-100 bg-gray-50 select-none"
         >
-          {photos.map((p) => (
-            <div key={p.id} className="w-full shrink-0 snap-center aspect-video">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={p.url}
-                alt="Çalışma yeri fotoğrafı"
-                className="w-full h-full object-cover cursor-zoom-in"
-                onClick={() => setLightboxOpen(true)}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Büyütme ipucu — kullanıcı fotoğrafın büyütülemediğini fark etti,
-            artık tıklanınca tam ekran açılıyor; köşedeki rozet bunu belli eder. */}
-        <div className="pointer-events-none absolute top-2 right-2 flex items-center gap-1 px-2 py-1 rounded-full bg-black/50 text-white text-[10px] font-semibold">
-          <span aria-hidden="true">🔍</span> Büyütmek için dokunun
+          <div
+            className="flex"
+            style={{
+              transform: `translateX(calc(${-active * 100}% + ${dragging ? dragOffset : 0}px))`,
+              transition: dragging ? "none" : "transform 350ms cubic-bezier(0.22, 1, 0.36, 1)",
+            }}
+            onTouchStart={(e) => dragStart(e.touches[0].clientX)}
+            onTouchMove={(e) => dragMove(e.touches[0].clientX)}
+            onTouchEnd={dragEnd}
+            onMouseDown={(e) => dragStart(e.clientX)}
+            onMouseMove={(e) => dragMove(e.clientX)}
+            onMouseUp={dragEnd}
+            onMouseLeave={dragEnd}
+          >
+            {photos.map((p) => (
+              <div
+                key={p.id}
+                className="relative w-full shrink-0 aspect-video overflow-hidden bg-gray-900"
+                style={{ cursor: dragging ? "grabbing" : "grab" }}
+              >
+                {/* object-cover dikey/dar kadrajlı fotoğraflarda tabelayı/üst
+                    kısmı kırpıp kötü görünüyordu (kullanıcı fark etti).
+                    Bulanık bir arka plan katmanıyla kareyi doldurup asıl
+                    fotoğrafı hiç kırpmadan (object-contain) ortalıyoruz —
+                    modern uygulamaların (Instagram, YouTube vb.) kullandığı
+                    "letterbox" deseni. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.url}
+                  alt=""
+                  aria-hidden="true"
+                  draggable={false}
+                  className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-50"
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.url}
+                  alt="Çalışma yeri fotoğrafı"
+                  draggable={false}
+                  className="relative w-full h-full object-contain cursor-zoom-in"
+                  onClick={() => !dragging && setLightboxOpen(true)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         {photos.length > 1 && (
@@ -72,7 +121,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
             {active > 0 && (
               <button
                 type="button"
-                onClick={() => scrollTo(active - 1)}
+                onClick={() => goTo(active - 1)}
                 aria-label="Önceki fotoğraf"
                 className="hidden sm:flex opacity-0 group-hover:opacity-100 transition-opacity absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-gray-100 items-center justify-center text-gray-600 hover:text-gray-900 shadow-sm"
               >
@@ -82,7 +131,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
             {active < photos.length - 1 && (
               <button
                 type="button"
-                onClick={() => scrollTo(active + 1)}
+                onClick={() => goTo(active + 1)}
                 aria-label="Sonraki fotoğraf"
                 className="hidden sm:flex opacity-0 group-hover:opacity-100 transition-opacity absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-gray-100 items-center justify-center text-gray-600 hover:text-gray-900 shadow-sm"
               >
@@ -95,9 +144,9 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
                 <button
                   key={p.id}
                   type="button"
-                  onClick={() => scrollTo(i)}
+                  onClick={() => goTo(i)}
                   aria-label={`${i + 1}. fotoğrafa git`}
-                  className={`w-1.5 h-1.5 rounded-full transition-colors ${i === active ? "bg-white" : "bg-white/50"}`}
+                  className={`rounded-full transition-all ${i === active ? "w-4 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/50"}`}
                 />
               ))}
             </div>
@@ -141,7 +190,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
               {active > 0 && (
                 <button
                   type="button"
-                  onClick={(e) => { e.stopPropagation(); scrollTo(active - 1); }}
+                  onClick={(e) => { e.stopPropagation(); goTo(active - 1); }}
                   aria-label="Önceki fotoğraf"
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
                 >
@@ -151,7 +200,7 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
               {active < photos.length - 1 && (
                 <button
                   type="button"
-                  onClick={(e) => { e.stopPropagation(); scrollTo(active + 1); }}
+                  onClick={(e) => { e.stopPropagation(); goTo(active + 1); }}
                   aria-label="Sonraki fotoğraf"
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
                 >
