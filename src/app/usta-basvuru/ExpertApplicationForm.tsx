@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { TURKISH_DISTRICTS } from "@/lib/turkishDistricts";
 import { StyledCheckbox } from "@/components/StyledCheckbox";
+import { PhotoUploader } from "@/components/review/PhotoUploader";
 
 export function ExpertApplicationForm() {
   const router = useRouter();
@@ -19,6 +20,13 @@ export function ExpertApplicationForm() {
   const [notCommercial, setNotCommercial] = useState(false);
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [privacyConsent, setPrivacyConsent] = useState(false);
+
+  // Çalışma yeri fotoğrafları — kullanıcı isteğiyle başvuru formuna da
+  // eklendi (önceden yalnız onay sonrası Profil Ayarları'ndaydı), tamamen
+  // opsiyonel. Aynı rıza + iki slotlu (tabela/iç mekan) yapı.
+  const [consentWorkplacePhoto, setConsentWorkplacePhoto] = useState(false);
+  const [storefrontUrls, setStorefrontUrls] = useState<string[]>([]);
+  const [interiorUrls, setInteriorUrls] = useState<string[]>([]);
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -55,6 +63,13 @@ export function ExpertApplicationForm() {
           notCommercial,
           ageConfirmed,
           privacyConsent,
+          consentWorkplacePhoto,
+          workplacePhotos: consentWorkplacePhoto
+            ? [
+                ...storefrontUrls.map((url) => ({ url, kind: "STOREFRONT" as const })),
+                ...interiorUrls.map((url) => ({ url, kind: "INTERIOR" as const })),
+              ]
+            : [],
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -159,6 +174,68 @@ export function ExpertApplicationForm() {
               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 resize-y"
             />
           </div>
+        </div>
+
+        {/* Çalışma yeri fotoğrafları — tamamen opsiyonel, ContactSettingsForm.tsx
+            ile AYNI rıza metni/yükleme deseni (moderasyon şart, geri
+            çekilirse derhal silinir). Başvuru anında ExpertProfile satırı
+            zaten oluştuğu için (bkz. api/expert-applications/route.ts)
+            aynı altyapı burada da çalışıyor. */}
+        <div className="bg-white border border-gray-100 rounded-2xl p-4 space-y-3">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">📸 Çalışma Yeri Fotoğrafları (opsiyonel)</p>
+          <StyledCheckbox checked={consentWorkplacePhoto} onChange={setConsentWorkplacePhoto}>
+            Yükleyeceğim çalışma yeri fotoğraflarının <strong>kendi işletmeme/çalışma alanıma ait</strong>,
+            benim çektiğim veya çekilmesine izin verdiğim fotoğraflar olduğunu beyan ederim
+            (başkasına ait veya internetten alınmış bir görsel değildir). Bu fotoğrafların,
+            başvurum onaylandığında profil sayfamda herkese açık paylaşılmasına açık rıza
+            veriyorum. Her fotoğraf yayınlanmadan önce incelenir. Bu rızayı istediğim zaman
+            geri çekebilirim; geri çektiğimde tüm fotoğraflarım <strong>derhal</strong> kaldırılır.
+          </StyledCheckbox>
+
+          {consentWorkplacePhoto && (
+            <div className="space-y-5 pl-[30px]">
+              <PhotoUploader
+                existingPhotos={[]}
+                removedExistingIds={[]}
+                onToggleRemoveExisting={() => {}}
+                newPhotoUrls={storefrontUrls}
+                onNewPhotoUrlsChange={setStorefrontUrls}
+                max={1}
+                uploadUrl="/api/uploads/expert-workplace-photo"
+                pathPrefix="expert-workplace/storefront/"
+                title="Tabela / İşletme Girişi"
+                intro={
+                  <span className="block space-y-0.5">
+                    <span className="block">• İşletme adı/tabela net ve okunur olmalı, uzaktan bulanık çekmeyin.</span>
+                    <span className="block">• Gündüz, doğal ışıkta çekin — gece flaşlı çekimler tabelayı okunmaz hale getirir.</span>
+                    <span className="block">• Kadrajda yalnızca işletmenizin girişi/cephesi olsun, komşu dükkanlar mümkünse dışarıda kalsın.</span>
+                  </span>
+                }
+              />
+              <PhotoUploader
+                existingPhotos={[]}
+                removedExistingIds={[]}
+                onToggleRemoveExisting={() => {}}
+                newPhotoUrls={interiorUrls}
+                onNewPhotoUrlsChange={setInteriorUrls}
+                max={3}
+                uploadUrl="/api/uploads/expert-workplace-photo"
+                pathPrefix="expert-workplace/interior/"
+                title="İç Mekan"
+                intro={
+                  <span className="block space-y-0.5">
+                    <span className="block">• Çalışma alanınızı/ekipmanlarınızı gösteren gerçek fotoğraflar kullanın — stok görsel kullanmayın.</span>
+                    <span className="block">• Fotoğraf üzerinde başka bir işletmenin logosu, fiyat listesi veya reklam metni olmasın.</span>
+                    <span className="block">• Dağınık/karanlık kareler yerine düzenli ve aydınlık anları tercih edin.</span>
+                  </span>
+                }
+              />
+              <p className="text-xs text-amber-600 font-medium">
+                Plaka, kişilerin yüzü, kimlik/belge gibi kişisel veya hassas bilgi içeren fotoğraf yüklemeyiniz —
+                bu tür fotoğraflar admin incelemesinde reddedilir.
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="space-y-3 bg-white border border-gray-100 rounded-2xl p-4">

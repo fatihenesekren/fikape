@@ -89,6 +89,13 @@ export const expertApplicationSchema = z.object({
   notCommercial: z.literal(true, { message: "Bu beyanı onaylamalısınız." }),
   ageConfirmed:  z.literal(true, { message: "18 yaşından büyük olduğunuzu onaylamalısınız." }),
   privacyConsent: z.literal(true, { message: "Gizlilik Politikası'nı ve Kullanım Koşulları'nı kabul etmelisiniz." }),
+  // Çalışma yeri fotoğrafları — kullanıcı isteğiyle başvuru formuna da eklendi
+  // (önceden yalnız onay sonrası Profil Ayarları'ndaydı), opsiyonel.
+  consentWorkplacePhoto: z.boolean().optional(),
+  workplacePhotos: z.array(z.object({
+    url: z.string().url(),
+    kind: z.enum(["STOREFRONT", "INTERIOR"]),
+  })).max(4).optional().default([]),
 });
 
 export const expertNoteCreateSchema = z.object({
