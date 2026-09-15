@@ -160,29 +160,6 @@ export default async function ExpertProfilePage({
         <Link href="/usta-ol" className="hover:text-gray-800 transition-colors">Usta Görüşleri hakkında bilgi al →</Link>
       </div>
 
-      {/* Çalışma yeri fotoğrafları — kullanıcı isteği: sayfanın EN BAŞINDA,
-          kimlik kartının üstünde bir slider. Kimlik doğrulama belgesi DEĞİL,
-          ustanın kendi beyanına dayanır (aşağıdaki feragat cümlesi bunu
-          açıklıyor). Fotoğraf yoksa bölüm tamamen gizlenir — boş placeholder
-          "eksik profil" izlenimi verir (3 ajanlı UX/güven-güvenlik kararı). */}
-      {sortedWorkplacePhotos.length > 0 && (
-        <div className="mb-6">
-          <WorkplacePhotoSlider photos={sortedWorkplacePhotos} />
-          {/* Güven & güvenlik ajanı önerisi — bu görsel bir kimlik doğrulaması
-              değil, ustanın kendi beyanı; ContactSettingsForm'daki aynı
-              dürüstlük ilkesinin buradaki karşılığı. */}
-          <p className="text-[11px] text-gray-400 px-1">
-            Fotoğraflar ustanın kendi beyanına dayanır, fikape işletmeye ait olduğunu doğrulamaz.
-          </p>
-        </div>
-      )}
-      {isOwnProfile && sortedWorkplacePhotos.length === 0 && (
-        <p className="text-xs text-gray-400 mb-6">
-          Henüz çalışma yeri fotoğrafı eklemediniz —{" "}
-          <Link href="/usta-gorusu/profil" className="text-link hover:underline">profilinize ekleyin →</Link>
-        </p>
-      )}
-
       {/* Kimlik kartı — önceden düz metin yığını, kart yapısı yoktu (kullanıcı
           "görünüm kötü" dedi). Not sayısı + üyelik tarihi somut bir güven
           sinyali ekliyor — "neden bu ustaya bakmalıyım" sorusuna kısa bir
@@ -214,6 +191,31 @@ export default async function ExpertProfilePage({
           {memberSince}&apos;den beri fikape&apos;de
         </div>
       </div>
+
+      {/* Çalışma yeri fotoğrafları — önceden sayfanın en başındaydı, kullanıcı
+          bunu kimlik kartı ile Uzmanlık Alanları arasına taşımamızı istedi
+          ("usta profil başlığı kısmının altına, Uzmanlık Alanlarının
+          üstüne"). Kimlik doğrulama belgesi DEĞİL, ustanın kendi beyanına
+          dayanır (aşağıdaki feragat cümlesi bunu açıklıyor). Fotoğraf yoksa
+          bölüm tamamen gizlenir — boş placeholder "eksik profil" izlenimi
+          verir (3 ajanlı UX/güven-güvenlik kararı). */}
+      {sortedWorkplacePhotos.length > 0 && (
+        <div className="mb-6">
+          <WorkplacePhotoSlider photos={sortedWorkplacePhotos} />
+          {/* Güven & güvenlik ajanı önerisi — bu görsel bir kimlik doğrulaması
+              değil, ustanın kendi beyanı; ContactSettingsForm'daki aynı
+              dürüstlük ilkesinin buradaki karşılığı. */}
+          <p className="text-[11px] text-gray-400 px-1">
+            Fotoğraflar ustanın kendi beyanına dayanır, fikape işletmeye ait olduğunu doğrulamaz.
+          </p>
+        </div>
+      )}
+      {isOwnProfile && sortedWorkplacePhotos.length === 0 && (
+        <p className="text-xs text-gray-400 mb-6">
+          Henüz çalışma yeri fotoğrafı eklemediniz —{" "}
+          <Link href="/usta-gorusu/profil" className="text-link hover:underline">profilinize ekleyin →</Link>
+        </p>
+      )}
 
       {(profile.expertiseTags.length > 0 || profile.bio) && (
         <div className="bg-white border border-gray-100 rounded-2xl p-5 mb-6 space-y-5">

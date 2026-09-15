@@ -6,8 +6,20 @@ import { useState } from "react";
 // (targetType=EXPERT_WORKPLACE_PHOTO) kullanır, görünümü takas ilanı bildir
 // deseniyle (ListingReportButton.tsx) aynı. Admin onayı tek seferliktir,
 // yayın sonrası sahiplik itirazı/şikayet gelebilir diye (güven & güvenlik
-// ajanı bulgusu) bu buton ayrıca gerekli.
-export function WorkplacePhotoReportButton({ photoId }: { photoId: number }) {
+// ajanı bulgusu) bu buton ayrıca gerekli. photoIndex/photoCount SADECE
+// birden fazla fotoğraf varken "(2/3)" gibi gösterilir — kullanıcı hangi
+// fotoğrafın bildirildiğinin belirsiz olduğunu fark etti.
+export function WorkplacePhotoReportButton({
+  photoId,
+  photoIndex,
+  photoCount,
+}: {
+  photoId: number;
+  photoIndex?: number;
+  photoCount?: number;
+}) {
+  const showIndex = photoIndex != null && photoCount != null && photoCount > 1;
+  const indexLabel = showIndex ? ` (${photoIndex! + 1}/${photoCount})` : "";
   const [open, setOpen] = useState(false);
   const [note, setNote] = useState("");
   const [done, setDone] = useState(false);
@@ -39,7 +51,7 @@ export function WorkplacePhotoReportButton({ photoId }: { photoId: number }) {
   }
 
   return (
-    <div className="mt-1.5 text-right">
+    <div>
       {done && !open ? (
         <p className="text-[11px] text-gray-400">Bildiriminiz alındı, teşekkürler.</p>
       ) : (
@@ -48,7 +60,7 @@ export function WorkplacePhotoReportButton({ photoId }: { photoId: number }) {
           onClick={() => { setError(null); setOpen(true); }}
           className="inline-flex items-center gap-1 text-[11px] font-medium text-gray-400 hover:text-gray-600 transition-colors"
         >
-          <span aria-hidden="true">🚩</span> Bu fotoğrafı bildir
+          <span aria-hidden="true">🚩</span> Bu fotoğrafı bildir{indexLabel}
         </button>
       )}
 
@@ -66,7 +78,7 @@ export function WorkplacePhotoReportButton({ photoId }: { photoId: number }) {
               </div>
             ) : (
               <div className="space-y-4">
-                <h3 className="text-sm font-bold text-gray-900">Bu fotoğrafı bildir</h3>
+                <h3 className="text-sm font-bold text-gray-900">Bu fotoğrafı bildir{indexLabel}</h3>
                 <p className="text-xs text-gray-500">
                   Fotoğrafın başka bir işletmeye ait olduğunu, yanıltıcı olduğunu ya da uygunsuz bir
                   içerik taşıdığını düşünüyorsanız kısaca açıklayın.

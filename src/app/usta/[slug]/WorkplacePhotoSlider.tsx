@@ -8,24 +8,27 @@ export interface WorkplacePhoto {
   url: string;
 }
 
-// Usta profilinin EN BAŞINDA gösterilen çalışma yeri fotoğrafları — tabela
-// her zaman ilk kare (çağıran taraf sıralıyor), sonra iç mekan. Elle
-// kaydırma birincil etkileşim (scroll-snap), otomatik geçiş YOK — 3 ajanlı
-// UX planının kararı: tek fotoğrafta mekanizma hiç devreye girmesin, çoklu
-// fotoğrafta alt ortada nokta göstergesi + masaüstünde hover'da ok butonları.
-// "Bildir" butonu SU AN GÖRÜNEN (active) fotoğrafı referans alır — bu yüzden
-// slider'ın kendi state'ine ihtiyaç duyduğu için burada, sayfa bileşeninde değil.
+// Usta profilinde kimlik kartı ile Uzmanlık Alanları arasında gösterilen
+// çalışma yeri fotoğrafları — tabela her zaman ilk kare (çağıran taraf
+// sıralıyor), sonra iç mekan. Elle kaydırma birincil etkileşim (scroll-snap),
+// otomatik geçiş YOK — 3 ajanlı UX planının kararı: tek fotoğrafta mekanizma
+// hiç devreye girmesin, çoklu fotoğrafta alt ortada nokta göstergesi +
+// masaüstünde hover'da ok butonları. Fotoğrafa tıklanınca tam ekran büyütme
+// (lightbox) açılır — kullanıcı fotoğrafları büyütemediğini fark etti.
+// "Bildir" butonu SU AN GÖRÜNEN (active) fotoğrafı referans alır ve hangi
+// fotoğrafın bildirildiğini netleştirmek için "(2/3)" gibi bir sıra
+// gösterir — kullanıcı çoklu fotoğrafta bunun belirsiz olduğunu fark etti.
 export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
   const [active, setActive] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
 
   if (photos.length === 0) return null;
 
   function scrollTo(index: number) {
     const track = trackRef.current;
-    if (!track) return;
     const clamped = Math.max(0, Math.min(photos.length - 1, index));
-    track.scrollTo({ left: clamped * track.clientWidth, behavior: "smooth" });
+    if (track) track.scrollTo({ left: clamped * track.clientWidth, behavior: "smooth" });
     setActive(clamped);
   }
 
@@ -47,9 +50,20 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
           {photos.map((p) => (
             <div key={p.id} className="w-full shrink-0 snap-center aspect-video">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={p.url} alt="Çalışma yeri fotoğrafı" className="w-full h-full object-cover" />
+              <img
+                src={p.url}
+                alt="Çalışma yeri fotoğrafı"
+                className="w-full h-full object-cover cursor-zoom-in"
+                onClick={() => setLightboxOpen(true)}
+              />
             </div>
           ))}
+        </div>
+
+        {/* Büyütme ipucu — kullanıcı fotoğrafın büyütülemediğini fark etti,
+            artık tıklanınca tam ekran açılıyor; köşedeki rozet bunu belli eder. */}
+        <div className="pointer-events-none absolute top-2 right-2 flex items-center gap-1 px-2 py-1 rounded-full bg-black/50 text-white text-[10px] font-semibold">
+          <span aria-hidden="true">🔍</span> Büyütmek için dokunun
         </div>
 
         {photos.length > 1 && (
@@ -91,9 +105,66 @@ export function WorkplacePhotoSlider({ photos }: { photos: WorkplacePhoto[] }) {
         )}
       </div>
 
-      <div className="mt-1.5 px-1">
-        <WorkplacePhotoReportButton photoId={photos[active].id} />
+      {/* Merkezde — önceden sağa dayalıydı, hangi fotoğrafın bildirildiği
+          belirsizdi (kullanıcı fark etti). Artık ortada ve birden fazla
+          fotoğraf varsa sırasını da gösteriyor. */}
+      <div className="mt-1.5 px-1 flex justify-center">
+        <WorkplacePhotoReportButton
+          photoId={photos[active].id}
+          photoIndex={active}
+          photoCount={photos.length}
+        />
       </div>
+
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 px-4 py-6"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxOpen(false)}
+            aria-label="Kapat"
+            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
+          >
+            ✕
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={photos[active].url}
+            alt="Çalışma yeri fotoğrafı — büyütülmüş"
+            className="max-w-full max-h-full object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+          {photos.length > 1 && (
+            <>
+              {active > 0 && (
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); scrollTo(active - 1); }}
+                  aria-label="Önceki fotoğraf"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
+                >
+                  ‹
+                </button>
+              )}
+              {active < photos.length - 1 && (
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); scrollTo(active + 1); }}
+                  aria-label="Sonraki fotoğraf"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
+                >
+                  ›
+                </button>
+              )}
+              <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-xs font-semibold">
+                {active + 1} / {photos.length}
+              </p>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }
