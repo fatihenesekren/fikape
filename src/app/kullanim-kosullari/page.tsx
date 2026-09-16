@@ -38,9 +38,10 @@ export default function KullanimKosullariPage() {
             fikape.com, araç kullanıcılarının Fiyat (FI), Kalite (KA) ve Performans (PE) başlıkları
             altında yapılandırılmış yorum ve puan paylaşabildiği bağımsız bir tüketici platformudur.
             Platform ayrıca kullanıcıların araçlarını &quot;Takasa Açık&quot; olarak ilan edip birbirleriyle
-            platform içi mesajlaşma yoluyla iletişime geçebildiği bir Takas Pazarı hizmeti sunar
-            (bkz. madde 10). Platform herhangi bir marka, bayi veya üretici ile ticari ilişki içinde
-            değildir.
+            platform içi mesajlaşma yoluyla iletişime geçebildiği bir Takas Pazarı hizmeti (bkz. madde 10)
+            ve deneyimli kişilerin araç modelleri hakkında teknik bilgi paylaştığı, puan tablosundan ayrı
+            bir Usta Görüşleri bölümü sunar (bkz. madde 11). Platform herhangi bir marka, bayi veya üretici
+            ile ticari ilişki içinde değildir.
           </p>
         </section>
 
@@ -173,7 +174,36 @@ export default function KullanimKosullariPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">11. Uygulanacak Hukuk ve Uyuşmazlık Çözümü</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">11. Usta Görüşleri ve Usta Profilleri</h2>
+          <p className="mb-2">
+            Usta Görüşleri, araç modelleri hakkında deneyime dayalı teknik bilgi paylaşımıdır; ustaların
+            gönüllü katkısıdır ve fikape puanını (FI·KA·PE) etkilemez, sıralamada yer değiştirmez. fikape,
+            başvuranların kimlik veya meslek belgesini görmez, doğrulamaz — &quot;Usta&quot; rozeti tamamen kişinin
+            kendi beyanına dayanır ve fikape&apos;nin o kişiyi bir iş için önerdiği ya da işçiliğine kefil
+            olduğu anlamına gelmez.
+          </p>
+          <p className="mb-2">
+            Araç alım-satımı yapan galeri/oto pazarlama işletmeleri ile marka veya yetkili servis
+            çalışanları/temsilcileri bu bölüme başvuramaz. Usta notları teknik ve deneyime dayalı olmalı;
+            reklam, pazarlama veya iletişim bilgisi (telefon, adres, sosyal medya, dış bağlantı vb.)
+            içeremez — bu tür içerikler filtrelenir ve yayımlanmaz. Yayınlanmadan önce her not moderasyon
+            ekibimizce incelenir; yayınlanmış bir notta yapılan değişiklik notu yeniden incelemeye alır.
+          </p>
+          <p className="mb-2">
+            İşyeri adı, telefon ve açık adres gibi iletişim bilgileri ile çalışma yeri (tabela/iç mekan)
+            fotoğrafları yalnızca usta bunun için ayrı ve açık rıza verirse profilinde gösterilir; bu rıza
+            her zaman geri çekilebilir ve geri çekildiğinde ilgili bilgi/fotoğraflar derhal kaldırılır. Bir
+            ustayla kuracağınız iş ilişkisi (fiyat, randevu, işin kapsamı) tamamen sizinle usta arasındadır;
+            fikape bu ilişkinin tarafı değildir ve doğabilecek uyuşmazlıklarda taraf tutmaz.
+          </p>
+          <p className="text-sm bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
+            fikape, bir başvuruyu gerekçe göstermeksizin reddedebilir ve bu maddedeki kurallara aykırı
+            davranan bir usta hesabını önceden haber vermeksizin askıya alabilir veya kapatabilir.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">12. Uygulanacak Hukuk ve Uyuşmazlık Çözümü</h2>
           <p>
             Bu koşullar Türkiye Cumhuriyeti hukukuna tabidir. Taraflar arasında doğabilecek
             uyuşmazlıklarda İstanbul Merkez Mahkemeleri ve İcra Daireleri yetkilidir.
@@ -184,7 +214,7 @@ export default function KullanimKosullariPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">12. İletişim</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">13. İletişim</h2>
           <p>
             Sorularınız veya şikayetleriniz için:{" "}
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>

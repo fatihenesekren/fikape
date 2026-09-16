@@ -27,6 +27,7 @@ const BENEFITS = [
   { tint: "var(--pe-bg)", dot: "var(--pe-strong)", title: "İsteğe bağlı iletişim", body: "Telefon/iş yeri adresinizi paylaşmayı seçerseniz, ilk notunuz yayınlandıktan sonra size ulaşmak isteyenler bunu görebilir." },
   { tint: "var(--fi-bg)", dot: "var(--fi-strong)", title: "Şu an için ücretsiz", body: "fikape bu özellik için sizden ücret almaz." },
   { tint: "var(--ka-bg)", dot: "var(--ka-strong)", title: "Yazmanız uzun sürmez", body: "Tek bir modelle ilgili bildiklerinizi birkaç cümleyle paylaşmanız yeterli." },
+  { tint: "var(--pe-bg)", dot: "var(--pe-strong)", title: "İsteğe bağlı tabela ve çalışma yeri fotoğrafı", body: "Profilinize tabela/işletme girişi ve iç mekan fotoğrafı ekleyerek profilinizi güçlendirebilirsiniz — tamamen isteğe bağlı." },
 ] as const;
 
 const STEPS = [
@@ -40,6 +41,7 @@ const FAQS = [
   { q: "Sertifika/belge gerekiyor mu?", a: "Hayır, anlattıklarınız yeterli. fikape kimlik veya meslek belgesi doğrulaması yapmaz — başvurunuz kendi anlattıklarınıza dayanır." },
   { q: "Ücretli mi?", a: "Şu an için hayır, ücretsizdir." },
   { q: "İletişim bilgimi paylaşmak zorunda mıyım?", a: "Hayır, isteğe bağlı — paylaşmasanız da kullanıcılar site üzerinden mesaj gönderebilir." },
+  { q: "Çalışma yeri fotoğrafı eklemek zorunda mıyım?", a: "Hayır, tamamen isteğe bağlı. Eklerseniz tabela/işletme girişi (en fazla 1) ve iç mekan (en fazla 3) fotoğrafı yükleyebilirsiniz; yayından önce incelenir, istediğiniz zaman kaldırabilirsiniz." },
   { q: "Galerici/yetkili servis çalışanıysam olur mu?", a: "Hayır, bu program bağımsız ustalar içindir." },
   { q: "Başvurum reddedilirse ne olur?", a: "Nedeniyle birlikte haber veririz; tekrar başvurabilirsiniz." },
   { q: "Kişisel bilgilerim nasıl kullanılır, fikape bir garanti veriyor mu?", a: "Başvurunuzda paylaştığınız bilgiler Gizlilik Politikamıza göre işlenir. fikape, sizinle kullanıcılar arasındaki hizmet ilişkisinin tarafı değildir ve garanti vermez; paylaştığınız bilginin doğruluğundan siz sorumlusunuz — yanıltıcı içerik \"Usta\" statünüzün sonlandırılmasına yol açar." },

@@ -52,6 +52,15 @@ export default function GizlilikPage() {
             yaptığınız yazışmalar</li>
             <li><strong>Takas değerlendirmeleri:</strong> Bir takas sonrasında karşı tarafa verdiğiniz
             1-5 yıldız puanı ve opsiyonel yorum</li>
+            <li><strong>Usta başvuru ve profil bilgileri:</strong> Usta Görüşleri&apos;ne başvurduğunuzda
+            uzmanlık alanlarınız, iliniz/ilçeniz, kendinizi tanıttığınız metin ve başlık</li>
+            <li><strong>Usta notu içeriği:</strong> Bir araç modeli hakkında paylaştığınız teknik notlar,
+            düzenleme geçmişi ve not altındaki soru-cevap yazışmaları</li>
+            <li><strong>Usta iletişim bilgisi (opsiyonel):</strong> Ayrıca ve açıkça rıza verirseniz, işyeri
+            adınız, telefon numaranız ve açık adresiniz usta profilinizde herkese açık gösterilir</li>
+            <li><strong>Çalışma yeri fotoğrafları (opsiyonel):</strong> Ayrıca ve açıkça rıza verirseniz,
+            yüklediğiniz tabela/iç mekan fotoğrafları — bunlar kendi beyanınızdır, fikape işletmenize ait
+            olduğunu doğrulamaz</li>
           </ul>
         </section>
 
@@ -178,7 +187,29 @@ export default function GizlilikPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">11. Politika Güncellemeleri</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">11. Usta Görüşleri Özelliği</h2>
+          <p className="mb-2">
+            Usta Görüşleri&apos;ne başvurduğunuzda ve profiliniz oluşturulduğunda, başlığınız, kendinizi
+            tanıttığınız metin, uzmanlık alanlarınız ve yazdığınız usta notları herkese açık gösterilir.
+            fikape, başvurunuzda kimlik veya meslek belgesi doğrulaması yapmaz; &quot;Usta&quot; rozeti tamamen
+            kendi beyanınıza dayanır.
+          </p>
+          <p className="mb-2">
+            İşyeri adı, telefon ve açık adres gibi iletişim bilgileriniz ile çalışma yeri (tabela/iç mekan)
+            fotoğraflarınız yalnızca bunun için ayrı ve açık rıza verirseniz profilinizde gösterilir; bu iki
+            rıza birbirinden ve diğer usta işlevlerinden bağımsızdır. Rızanızı istediğiniz zaman geri
+            çekebilirsiniz; geri çektiğinizde ilgili bilgiler/fotoğraflar derhal kaldırılır.
+          </p>
+          <p>
+            Yayınlanmadan önce her usta notu ve her çalışma yeri fotoğrafı moderasyon ekibimizce incelenir.
+            Bir kullanıcıyla site üzerinden mesajlaştığınızda, mesaj içeriğiniz ve temel hesap bilgileriniz
+            karşı tarafça görülebilir; bir içerik rapor edildiğinde rapor içeriği moderasyon ekibi tarafından
+            incelenir.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">12. Politika Güncellemeleri</h2>
           <p>
             Bu politikayı zaman zaman güncelleyebiliriz. Önemli değişiklikler kayıtlı e-posta
             adresinize bildirilir. Güncel versiyona her zaman bu sayfadan ulaşabilirsiniz.
@@ -186,7 +217,7 @@ export default function GizlilikPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">12. İletişim</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">13. İletişim</h2>
           <p>
             Gizlilik ile ilgili sorularınız için:{" "}
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>
