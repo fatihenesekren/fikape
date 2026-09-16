@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Chip } from "@/lib/chips";
-import { validateDetailShort } from "@/lib/reviewValidation";
+import { validateDetailShort, applyTextWithLimit } from "@/lib/reviewValidation";
+import { useSpeechToText } from "@/hooks/useSpeechToText";
 import { FIKAPE } from "@/lib/fikape";
 import {
   OWNERSHIP_MONTHS, buildExtendedData, ownershipSlotFromMonths, turkeySpecificValuesFromExtendedData,
 } from "@/lib/reviewFormOptions";
-import { SectionCard, FieldFeedback } from "@/components/review/FormPrimitives";
+import { SectionCard, FieldFeedback, VoiceInputButton } from "@/components/review/FormPrimitives";
 import { ScoreSelector } from "@/components/review/ScoreSelector";
 import { ProConChipSelector } from "@/components/review/ProConChipSelector";
 import { OwnershipUsageSection } from "@/components/review/OwnershipUsageSection";
@@ -67,6 +68,21 @@ export function UpdateReviewForm({
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [detailTouched, setDetailTouched] = useState(false);
+  const [voiceMessage, setVoiceMessage] = useState<string | null>(null);
+  const detailTextRef = useRef(detailText);
+  useEffect(() => { detailTextRef.current = detailText; }, [detailText]);
+  const speech = useSpeechToText();
+
+  function handleVoiceFinalTranscript(chunk: string) {
+    const { text: next, truncated } = applyTextWithLimit(detailTextRef.current, chunk, 500);
+    detailTextRef.current = next;
+    setDetailText(next);
+    setDetailTouched(true);
+    if (truncated) {
+      speech.stop();
+      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle ekleyebilirsiniz.");
+    }
+  }
 
   function updateTurkeySpecific<K extends keyof typeof turkeySpecific>(key: K, value: typeof turkeySpecific[K]) {
     setTurkeySpecific((prev) => ({ ...prev, [key]: value }));
@@ -169,6 +185,18 @@ export function UpdateReviewForm({
             className="w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none resize-none transition-colors"
             style={{ borderColor: detailTouched ? (detailValidation.ok ? "#86efac" : "#fca5a5") : "#e5e7eb" }}
           />
+          {speech.interimTranscript && (
+            <p className="text-xs text-gray-400 italic -mt-1">{speech.interimTranscript}</p>
+          )}
+          <div className="flex items-center gap-2">
+            <VoiceInputButton
+              status={speech.status}
+              message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+              onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+              onStop={() => speech.stop()}
+            />
+            <span className="text-xs text-gray-400">Sesli giriş — mikrofonunuza konuşarak yazabilirsiniz</span>
+          </div>
           {detailTouched && !detailValidation.ok && <FieldFeedback error={detailValidation.error} ok={false} />}
         </div>
 

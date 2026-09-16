@@ -117,6 +117,12 @@ export default function GizlilikPage() {
             Bu hizmet sağlayıcılar yalnızca Platform&apos;un işlevselliği için gerekli minimum veriyi işler
             ve kendi gizlilik politikaları kapsamında hareket eder.
           </p>
+          <p className="mt-3 text-sm text-gray-500">
+            <strong>Sesli yorum girişi:</strong> Yorum alanlarında mikrofon ile sesli giriş yaparsanız,
+            konuşmanız tarayıcınızın konuşma tanıma servisine (ör. Google) iletilir ve anlık olarak
+            metne çevrilir. Bu ses verisi Platform&apos;a kaydedilmez veya saklanmaz; ilgili servis
+            kendi gizlilik politikası kapsamında hareket eder.
+          </p>
         </section>
 
         <section>

@@ -173,3 +173,22 @@ export function checkContent(t: string, opts: ContentCheckOptions = {}): Validat
 
 function ok(): ValidationResult  { return { ok: true,  error: null }; }
 function err(e: string, rule?: FilterRule): ValidationResult { return { ok: false, error: e, rule }; }
+
+export interface LimitedTextResult {
+  text: string;
+  /** Ekleme sınır nedeniyle kırpıldıysa true — çağıran taraf bunu görüp kaydı durdurabilir. */
+  truncated: boolean;
+}
+
+/**
+ * Sesli girişten (veya başka bir kaynaktan) gelen metni mevcut metne ekleyip
+ * karakter sınırında kırpar. Yorum formlarındaki `.slice(0, 500)` mantığıyla
+ * aynı davranışı tek yerde tutar.
+ */
+export function applyTextWithLimit(prev: string, addition: string, limit = 500): LimitedTextResult {
+  const trimmedAddition = addition.trim();
+  if (!trimmedAddition) return { text: prev, truncated: false };
+  const separator = prev && !prev.endsWith(" ") ? " " : "";
+  const combined = prev + separator + trimmedAddition;
+  return { text: combined.slice(0, limit), truncated: combined.length > limit };
+}

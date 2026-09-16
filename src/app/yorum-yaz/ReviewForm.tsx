@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { calcOverall, FIKAPE, SCORE_LABELS } from "@/lib/fikape";
-import { validateDetailShort } from "@/lib/reviewValidation";
+import { validateDetailShort, applyTextWithLimit } from "@/lib/reviewValidation";
+import { useSpeechToText } from "@/hooks/useSpeechToText";
 import { FUEL_ICONS, FUEL_LABELS, FUEL_COLORS } from "@/lib/fuel";
 import { getChipsForCategory } from "@/lib/chips";
 import { stripModelGenRange } from "@/lib/modelDisplay";
@@ -13,7 +14,7 @@ import {
   OWNERSHIP_MONTHS, EMPTY_TURKEY_SPECIFIC_VALUES, buildExtendedData,
   type TurkeySpecificValues,
 } from "@/lib/reviewFormOptions";
-import { SectionCard, FieldFeedback } from "@/components/review/FormPrimitives";
+import { SectionCard, FieldFeedback, VoiceInputButton } from "@/components/review/FormPrimitives";
 import { ScoreSelector } from "@/components/review/ScoreSelector";
 import { ProConChipSelector } from "@/components/review/ProConChipSelector";
 import { OwnershipUsageSection } from "@/components/review/OwnershipUsageSection";
@@ -132,6 +133,21 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
   const [prevProductSlug, setPrevProductSlug] = useState(productSlug);
   const [detailText,    setDetailText]    = useState("");
   const [detailTouched, setDetailTouched] = useState(false);
+  const [voiceMessage,  setVoiceMessage]  = useState<string | null>(null);
+  const detailTextRef = useRef(detailText);
+  useEffect(() => { detailTextRef.current = detailText; }, [detailText]);
+  const speech = useSpeechToText();
+
+  function handleVoiceFinalTranscript(chunk: string) {
+    const { text: next, truncated } = applyTextWithLimit(detailTextRef.current, chunk, 500);
+    detailTextRef.current = next;
+    setDetailText(next);
+    setDetailTouched(true);
+    if (truncated) {
+      speech.stop();
+      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle ekleyebilirsiniz.");
+    }
+  }
   const [photoUrls,     setPhotoUrls]     = useState<string[]>([]);
 
   const [wouldRecommend, setWouldRecommend] = useState<"yes" | "maybe" | "no" | null>(null);
@@ -164,6 +180,8 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
     setCons([]);
     setDetailText("");
     setDetailTouched(false);
+    setVoiceMessage(null);
+    speech.abort(); // araç değişince aktif sesli kayıt varsa iptal edilir — bkz. plan §6
     setPhotoUrls([]);
     setWouldRecommend(null);
     setOwnershipSlot("");
@@ -551,6 +569,18 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
             className="w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none resize-none transition-colors"
             style={{ borderColor: detailTouched ? (detailValidation.ok ? "#86efac" : "#fca5a5") : "#e5e7eb" }}
           />
+          {speech.interimTranscript && (
+            <p className="text-xs text-gray-400 italic -mt-1">{speech.interimTranscript}</p>
+          )}
+          <div className="flex items-center gap-2">
+            <VoiceInputButton
+              status={speech.status}
+              message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+              onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+              onStop={() => speech.stop()}
+            />
+            <span className="text-xs text-gray-400">Sesli giriş — mikrofonunuza konuşarak yazabilirsiniz</span>
+          </div>
           {detailTouched && <FieldFeedback error={detailValidation.error} ok={detailValidation.ok} />}
         </div>
 

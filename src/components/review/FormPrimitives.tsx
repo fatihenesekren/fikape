@@ -149,6 +149,52 @@ export function SubQuestion({ label, hint, children }: { label: string; hint?: s
   );
 }
 
+export function VoiceInputButton({ status, message, onStart, onStop }: {
+  status: "idle" | "requesting-permission" | "listening" | "error" | "unsupported";
+  message?: string | null;
+  onStart: () => void;
+  onStop: () => void;
+}) {
+  if (status === "unsupported") return null;
+
+  const listening  = status === "listening";
+  const requesting = status === "requesting-permission";
+  const hasError   = status === "error";
+
+  return (
+    <div className="flex items-center gap-2">
+      <button
+        type="button"
+        aria-pressed={listening}
+        aria-label={listening ? "Kaydı durdur" : "Sesli giriş başlat"}
+        disabled={requesting}
+        onClick={listening ? onStop : onStart}
+        className="w-11 h-11 rounded-full flex items-center justify-center border-2 transition-all shrink-0"
+        style={
+          listening
+            ? { background: "#fee2e2", borderColor: "#fca5a5", color: "#991b1b" }
+            : requesting
+            ? { background: "#f3f4f6", borderColor: "#e5e7eb", color: "#9ca3af" }
+            : hasError
+            ? { background: "#fef3c7", borderColor: "#fcd34d", color: "#92400e" }
+            : { background: "#f9fafb", borderColor: "#e5e7eb", color: "#6b7280" }
+        }
+      >
+        <span aria-hidden="true" className={listening ? "animate-pulse motion-reduce:animate-none" : ""}>
+          {listening ? "⏺" : "🎤"}
+        </span>
+      </button>
+      {/* Ekran okuyucu için görünmez durum anonsu — sayaç/rozet değişimini göremeyen kullanıcı için zorunlu. */}
+      <span className="sr-only" role="status" aria-live="polite">
+        {listening ? "Dinleniyor…" : message ?? ""}
+      </span>
+      {message && !listening && (
+        <span className="text-xs text-orange-600">{message}</span>
+      )}
+    </div>
+  );
+}
+
 export function FieldFeedback({ error, ok }: { error: string | null; ok: boolean }) {
   if (!error && !ok) return null;
   if (ok) return (
