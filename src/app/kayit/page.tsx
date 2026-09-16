@@ -131,7 +131,7 @@ function KayitForm() {
               required
               minLength={3}
               maxLength={30}
-              pattern="[A-Za-zÇĞİÖŞÜçğıöşü. -]+"
+              pattern="[A-Za-zÇĞİÖŞÜçğıöşü\. \-]+"
               placeholder="Ahmet K."
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
             />
