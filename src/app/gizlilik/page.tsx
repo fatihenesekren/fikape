@@ -41,6 +41,10 @@ export default function GizlilikPage() {
             <li><strong>Araç sahipliği:</strong> Garajınıza eklediğiniz araçlara ilişkin bilgiler</li>
             <li><strong>Yorum ve puanlar:</strong> Paylaştığınız araç yorumları, FI·KA·PE puanları ve detay metinler</li>
             <li><strong>Kullanım verileri:</strong> Sayfa görüntüleme sayıları, oturum bilgileri</li>
+            <li><strong>Trafik bilgisi:</strong> 5651 sayılı Kanun kapsamında yer sağlayıcı
+            yükümlülüğü gereği; kayıt olma, giriş yapma, yorum/ilan/mesaj gönderme gibi
+            işlemlerde IP adresiniz, erişim zamanı ve yapılan işlem şifreli olarak
+            kaydedilir; yalnızca yetkili adli/idari merci talebi halinde çözülür</li>
             <li><strong>Onay kayıtları:</strong> KVKK kapsamında verdiğiniz açık rızalar</li>
             <li><strong>Takas ilanı bilgileri:</strong> İliniz, aracınızın markası/modeli, istediğiniz araç
             kategorisi/markası, aradığınız aracın konum ve hasar durumu beklentisi, ödeme niyeti, opsiyonel
@@ -98,6 +102,8 @@ export default function GizlilikPage() {
             <li>Aktif hesap verileri: Hesabınız açık olduğu sürece</li>
             <li>Yorumlar ve puanlar: Hesap silme talebinize kadar</li>
             <li>Oturum verileri: Oturumun kapanmasından itibaren en fazla 30 gün</li>
+            <li>Trafik bilgisi (5651 sayılı Kanun): Kayıt tarihinden itibaren 2 yıl,
+            sonrasında otomatik olarak silinir</li>
             <li>Takas mesajlaşması: İlan kapandıktan 6 ay sonra mesaj içeriği anonimleştirilir</li>
             <li>Raporlanan içerik (mesaj/ilan): Moderasyon incelemesi sonuçlanana kadar, sonrasında
             genel saklama sürelerine tabidir</li>
@@ -227,6 +233,11 @@ export default function GizlilikPage() {
           <p>
             Gizlilik ile ilgili sorularınız için:{" "}
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>
+          </p>
+          <p className="mt-2">
+            Üyelik ilişkimizin hak ve yükümlülükleri için{" "}
+            <Link href="/uyelik-sozlesmesi" className="underline">Üyelik Sözleşmesi</Link>&apos;ni
+            de inceleyebilirsiniz.
           </p>
         </section>
 

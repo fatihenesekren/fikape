@@ -9,6 +9,7 @@ import { computePHash, findDuplicatePair } from "@/lib/phash";
 import { reviewCreateSchema, formatZodError } from "@/lib/schemas";
 import { calcTrustScore } from "@/lib/trustScore";
 import { notifyAdmins } from "@/lib/notification";
+import { logAccess } from "@/lib/accessLog";
 
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
@@ -181,6 +182,9 @@ export async function POST(req: Request) {
     emailMessage: "Bir kullanıcı yeni bir araç yorumu gönderdi, onayını bekliyor.",
     rateLimitKey: "review",
   }).catch(() => {});
+
+  // 5651 trafik logu — yorum oluşturma (bkz. lib/accessLog.ts)
+  await logAccess(req, { action: "REVIEW_CREATE", userId });
 
   return NextResponse.json({ ok: true, reviewId: review.id }, { status: 201 });
 }

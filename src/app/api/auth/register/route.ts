@@ -7,6 +7,7 @@ import { sendVerificationEmail } from "@/lib/email";
 import { rateLimitByIp } from "@/lib/rateLimit";
 import { hashRequestContext } from "@/lib/security";
 import { registerSchema, formatZodError } from "@/lib/schemas";
+import { logAccess } from "@/lib/accessLog";
 
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
@@ -45,8 +46,9 @@ export async function POST(req: Request) {
       referredByUserId: referrer?.id ?? null,
       consentLogs: {
         create: [
-          { consentType: "PRIVACY_POLICY",   isGranted: true, ipAddress: ipHash, userAgent: userAgentHash },
-          { consentType: "TERMS_OF_SERVICE",  isGranted: true, ipAddress: ipHash, userAgent: userAgentHash },
+          { consentType: "PRIVACY_POLICY",      isGranted: true, ipAddress: ipHash, userAgent: userAgentHash },
+          { consentType: "TERMS_OF_SERVICE",    isGranted: true, ipAddress: ipHash, userAgent: userAgentHash },
+          { consentType: "MEMBERSHIP_AGREEMENT", isGranted: true, ipAddress: ipHash, userAgent: userAgentHash },
         ],
       },
     },
@@ -59,6 +61,9 @@ export async function POST(req: Request) {
   } catch (err) {
     console.error("Verification email failed:", err);
   }
+
+  // 5651 trafik logu — kayıt işlemi (bkz. lib/accessLog.ts)
+  await logAccess(req, { action: "REGISTER", userId: user.id });
 
   return NextResponse.json({ ok: true }, { status: 201 });
 }

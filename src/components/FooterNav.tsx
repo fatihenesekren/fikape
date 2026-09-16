@@ -11,6 +11,7 @@ const FOOTER_LINKS = [
   { href: "/gelistiriciler", label: "API" },
   { href: "/gizlilik", label: "Gizlilik Politikası" },
   { href: "/kullanim-kosullari", label: "Kullanım Koşulları" },
+  { href: "/uyelik-sozlesmesi", label: "Üyelik Sözleşmesi" },
 ];
 
 export function FooterNav() {

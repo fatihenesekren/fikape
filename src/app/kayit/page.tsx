@@ -223,10 +223,13 @@ function KayitForm() {
               className="mt-0.5 shrink-0"
             />
             <span>
+              Kaydolarak{" "}
               <Link href="/gizlilik" className="underline">Gizlilik Politikası</Link>
-              {"'nı ve "}
+              {"'nı, "}
               <Link href="/kullanim-kosullari" className="underline">Kullanım Koşulları</Link>
-              {"'nı okudum, kabul ediyorum."}
+              {"'nı ve "}
+              <Link href="/uyelik-sozlesmesi" className="underline">Üyelik Sözleşmesi</Link>
+              {"'ni kabul ediyorum."}
             </span>
           </label>
 

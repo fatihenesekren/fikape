@@ -7,6 +7,7 @@ import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeMessagingEnabled } from "@/lib/features";
 import { createNotification } from "@/lib/notification";
+import { logAccess } from "@/lib/accessLog";
 
 const HOURLY_MESSAGE_LIMIT = Number(process.env.TAKASA_AC_MESAJ_SAATLIK_LIMIT) || 30;
 
@@ -138,6 +139,9 @@ export async function POST(
       });
     }
   })().catch(() => {});
+
+  // 5651 trafik logu — mesaj gönderme (bkz. lib/accessLog.ts)
+  await logAccess(req, { action: "TRADE_MESSAGE_CREATE", userId });
 
   return NextResponse.json({ ok: true }, { status: 201 });
 }

@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { checkRateLimit, rateLimitByEmail } from "@/lib/rateLimit";
+import { logAccessRaw } from "@/lib/accessLog";
 
 export interface VerifiedUser {
   id: string;
@@ -29,6 +30,9 @@ export async function verifyCredentials(
   if (!user) return null;
   const valid = await bcrypt.compare(password, user.passwordHash);
   if (!valid) return null;
+
+  // 5651 trafik logu — başarılı giriş (bkz. lib/accessLog.ts)
+  await logAccessRaw({ action: "LOGIN", userId: user.id, ip, path: "/api/auth/callback/credentials" });
 
   return {
     id: String(user.id),

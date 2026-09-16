@@ -234,6 +234,7 @@ model User {
   tradeRatingsReceived TradeRating[]         @relation("TradeRated")
   contentFilterHits    ContentFilterHit[]
   aiSummaryApprovals   AiVehicleSummary[]
+  accessLogs           AccessLog[]
 
   // Usta Görüşleri — çift şapka: usta profili bir User NİTELİĞİ, ayrı hesap değil
   expertProfile          ExpertProfile?
@@ -809,7 +810,8 @@ model ConsentLog {
 enum ConsentType {
   PRIVACY_POLICY // Gizlilik politikası
   TERMS_OF_SERVICE // Kullanım koşulları
-  MARKETING_EMAIL // Pazarlama e-postası
+  MEMBERSHIP_AGREEMENT // Üyelik sözleşmesi
+  MARKETING_EMAIL // Pazarlama e-postası (şu an hiçbir akışta kullanılmıyor — altyapı hazır)
   ANALYTICS_COOKIES // Analitik çerezler
   TRADE_LISTING // Takas ilanı açarken il/iletişim verisinin diğer kullanıcılara gösterilmesine rıza
 
@@ -2171,4 +2173,42 @@ enum ExpertAppealStatus {
   UPHELD // ret/karar korundu
   OVERTURNED // ret/karar bozuldu
   AUTO_FINALIZED // 14 gün içinde incelenmedi, orijinal karar kesinleşti
+}
+
+// ─────────────────────────────────────────────
+// TRAFİK LOGU — 5651 sayılı Kanun m.5 "yer sağlayıcı" yükümlülüğü: erişim
+// (trafik) bilgisi 1-2 yıl arası saklanır, yetkili merci talebinde sunulur.
+// Bilinçli olarak sadece kritik "işlem" niteliğindeki route'lar loglanır
+// (kayıt, giriş, yorum/ilan/mesaj oluşturma) — genel sayfa görüntülemesi
+// hariftir (yazma hacmini kontrollü tutmak için, bkz. lib/accessLog.ts).
+//
+// ÖNEMLİ: ipAddress burada AES-256-GCM ile ŞİFRELİ tutulur (bkz. lib/security.ts
+// encryptIp/decryptIp) — security.ts'teki hashRequestContext() farklı bir amaca
+// hizmet eder (iç sahtecilik/rate-limit tespiti, tek yönlü hash yeterli). Burada
+// amaç yasal talep karşısında KAYNAĞI TANIMLAYABİLMEK; geri döndürülemez bir hash
+// bu yükümlülüğü karşılamaz, düz metin de DB sızıntısında doğrudan kişisel veri
+// ifşa eder. Anahtar (AUTH_SECRET türevi) DB dışında tutulur. KVKK-5651 dengesi
+// şifreleme + retention (2 yıl, cron ile otomatik silme) + alan minimizasyonuyla
+// (request body/query string tutulmaz) sağlanır. (add_access_logs.sql)
+// ─────────────────────────────────────────────
+
+model AccessLog {
+  id     Int   @id @default(autoincrement())
+  userId Int?
+  user   User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  ipAddress String  @db.VarChar(255) // AES-256-GCM şifreli (iv+tag+ciphertext, base64)
+  userAgent String? @db.VarChar(255)
+
+  method String @db.VarChar(8)
+  path   String @db.VarChar(255) // query string YOK — kişisel veri taşıyabilir
+
+  // Hangi işlem — sadece kritik route'larda dolar (bkz. lib/accessLog.ts)
+  action String @db.VarChar(32) // REGISTER | LOGIN | REVIEW_CREATE | TRADE_LISTING_CREATE | TRADE_MESSAGE_CREATE
+
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([userId, createdAt])
+  @@map("access_logs")
 }

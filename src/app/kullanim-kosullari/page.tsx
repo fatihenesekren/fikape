@@ -219,6 +219,11 @@ export default function KullanimKosullariPage() {
             Sorularınız veya şikayetleriniz için:{" "}
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>
           </p>
+          <p className="mt-2">
+            Taraflar arasındaki hak ve yükümlülükleri düzenleyen bağlayıcı metin için{" "}
+            <Link href="/uyelik-sozlesmesi" className="underline">Üyelik Sözleşmesi</Link>&apos;ni
+            inceleyebilirsiniz.
+          </p>
         </section>
 
       </div>

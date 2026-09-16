@@ -8,6 +8,7 @@ import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeListingEnabled } from "@/lib/features";
 import { hashRequestContext } from "@/lib/security";
 import { createNotification, notifyAdmins } from "@/lib/notification";
+import { logAccess } from "@/lib/accessLog";
 import { CAR_PARTS } from "@/lib/carParts";
 import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate } from "@/lib/tradeListingPhotos";
 import { isMutualMatch, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
@@ -349,6 +350,9 @@ export async function POST(req: Request) {
         link: `/takas/${c.id}`,
       }).catch(() => {});
     }
+
+    // 5651 trafik logu — takas ilanı oluşturma (bkz. lib/accessLog.ts)
+    await logAccess(req, { action: "TRADE_LISTING_CREATE", userId });
 
     return NextResponse.json({ ok: true, id: listing.id }, { status: 201 });
   } catch {
