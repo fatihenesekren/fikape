@@ -167,34 +167,53 @@ export default async function ExpertProfilePage({
           "görünüm kötü" dedi). Not sayısı + üyelik tarihi somut bir güven
           sinyali ekliyor — "neden bu ustaya bakmalıyım" sorusuna kısa bir
           cevap (kullanıcı: "ilgi çekici değil, neden kullanmalıyım
-          göstermiyor"). */}
-      <div className="bg-white border border-gray-100 rounded-2xl p-5 mb-6">
-        <div className="flex items-start gap-3">
+          göstermiyor"). Rozet+isim/il düzeni 3 uzman ajanlı bir tasarım
+          turundan geçti (kullanıcı bir önceki dikey-yığın halini "sıradan"
+          buldu, widget'ta paylaşılan öneriyi onayladı): rozet artık
+          avatarın köşesindeki küçük bir ikon + başlığın yanındaki ufak bir
+          "USTA" etiketi olarak ikiye bölündü, isim/il ikincil bilgi olarak
+          başlığın altına döndü, alt istatistik satırı iki ayrı ikonlu veri
+          noktasına ayrıldı, karta ince bir gölge eklendi. */}
+      <div className="bg-white border border-gray-100 rounded-2xl p-5 mb-6 shadow-sm">
+        <div className="flex items-start gap-3.5">
           {/* Önceden hiç avatar yoktu, yalnız metin — kullanıcının kendi
               önerisi üzerine (hesap isminin geçtiği her yere avatar). */}
-          <Avatar displayName={profile.user.displayName} avatarUrl={profile.user.avatarUrl} seed={String(profile.user.id)} size={48} />
+          <div className="relative shrink-0">
+            <Avatar displayName={profile.user.displayName} avatarUrl={profile.user.avatarUrl} seed={String(profile.user.id)} size={56} />
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-0.5 -right-0.5 w-[22px] h-[22px] rounded-full bg-white flex items-center justify-center text-[11px] leading-none"
+              style={{ border: `2px solid ${EXPERT_BADGE.color}` }}
+            >
+              {EXPERT_BADGE.icon}
+            </span>
+          </div>
           <div className="min-w-0">
-            {/* Kullanıcı isteği: rozet ile isim/il satırının yerleri
-                değiştirildi — isim/il artık başlığın ÜSTÜNDE (kısa bir
-                "üst bilgi" gibi), rozet başlığın altında. */}
-            <p className="text-sm text-gray-400">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h1 className="text-xl font-bold text-gray-900">{profile.headline}</h1>
+              <span
+                className="text-[10px] font-bold tracking-wide px-1.5 py-0.5 rounded"
+                style={{ color: EXPERT_BADGE.color, background: EXPERT_BADGE.bg }}
+                title={EXPERT_BADGE.tooltip}
+              >
+                {EXPERT_BADGE.label.toUpperCase()}
+              </span>
+            </div>
+            <p className="text-sm text-gray-500 mt-1">
               {profile.user.displayName}
               {profile.city && ` · ${profile.city}`}
             </p>
-            <h1 className="text-2xl font-black text-gray-900 mt-1">{profile.headline}</h1>
-            <span
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold mt-3"
-              style={{ color: EXPERT_BADGE.color, background: EXPERT_BADGE.bg }}
-              title={EXPERT_BADGE.tooltip}
-            >
-              {EXPERT_BADGE.icon} {EXPERT_BADGE.label}
-            </span>
           </div>
         </div>
-        <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-50 text-xs text-gray-500">
-          <span className="font-semibold text-gray-700">{notes.length}</span> paylaşılan usta görüşü
-          <span className="text-gray-300">·</span>
-          {memberSince}&apos;den beri fikape&apos;de
+        <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3.5 pt-3 border-t border-gray-50 text-xs text-gray-500">
+          <span className="inline-flex items-center gap-1.5">
+            <span aria-hidden="true">📝</span>
+            <span className="font-semibold text-gray-700">{notes.length}</span> usta görüşü
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span aria-hidden="true">📅</span>
+            {memberSince}&apos;den beri
+          </span>
         </div>
       </div>
 
