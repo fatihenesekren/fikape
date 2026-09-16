@@ -6,6 +6,7 @@ import { calcTrustScore } from "@/lib/trustScore";
 import { notifyGarageBrandFollowers } from "@/lib/notifications";
 import { normalizeAttributeValues } from "@/lib/vehicleTypes";
 import { findVerifiedVehicleImage } from "@/lib/wikidataImage";
+import { syncAiVehicleSummary } from "@/lib/ai/vehicleSummary";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -129,6 +130,7 @@ export async function POST(
       },
     });
     await notifyGarageBrandFollowers(suggestion.productId);
+    await syncAiVehicleSummary(suggestion.productId).catch((e) => console.error("[ai-vehicle-summary]", e));
     return NextResponse.json({ ok: true, action: "APPROVED", productId: suggestion.productId });
   }
 
@@ -237,6 +239,7 @@ export async function POST(
   });
 
   await notifyGarageBrandFollowers(product.id);
+  await syncAiVehicleSummary(product.id).catch((e) => console.error("[ai-vehicle-summary]", e));
 
   return NextResponse.json({ ok: true, action: "APPROVED", productId: product.id, slug: product.slug });
 }

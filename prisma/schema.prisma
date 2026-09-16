@@ -130,6 +130,7 @@ model Product {
   contentReports      ContentReport[]
   favorites           Favorite[]
   weeklyViewSnapshots WeeklyViewSnapshot[]
+  aiSummary           AiVehicleSummary?
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "products_name_trgm_idx")
@@ -232,6 +233,7 @@ model User {
   tradeRatingsGiven    TradeRating[]         @relation("TradeRater")
   tradeRatingsReceived TradeRating[]         @relation("TradeRated")
   contentFilterHits    ContentFilterHit[]
+  aiSummaryApprovals   AiVehicleSummary[]
 
   // Usta Görüşleri — çift şapka: usta profili bir User NİTELİĞİ, ayrı hesap değil
   expertProfile          ExpertProfile?
@@ -626,6 +628,55 @@ enum ReviewStatus {
   REJECTED // Reddedildi
   HIDDEN // Gizlendi (flag sonrası)
   DELETED // Kullanıcı tarafından silindi (soft delete)
+}
+
+// ─────────────────────────────────────────────
+// AI ARAÇ ÖZETİ — gerçek yorum yokken/azken geçici doldurucu
+// Gerçek Review'lara ve skor hesaplarına HİÇBİR ŞEKİLDE dokunmaz,
+// tamamen izole bir tablo. SINGLE_CARD ilk yayında admin onayı ister;
+// REVIEWS_SUMMARY (gerçek yorumların özeti, ≥5 yorumda) otomatik yayınlanır.
+// ─────────────────────────────────────────────
+
+model AiVehicleSummary {
+  id        Int     @id @default(autoincrement())
+  productId Int     @unique
+  product   Product @relation(fields: [productId], references: [id])
+
+  mode   AiSummaryMode
+  status AiSummaryStatus @default(PENDING_APPROVAL)
+
+  summaryText String @db.VarChar(750)
+
+  // REVIEWS_SUMMARY modunda üretildiği andaki gerçek yorum sayısı (5, 10, 15…) —
+  // bir sonraki +5 eşiğine geçilene kadar yeniden üretmemek için karşılaştırılır.
+  reviewCountAtGeneration Int?
+
+  modelVersion String // örn. "gemini-flash-lite-latest" — hangi model ürettiğinin izi
+
+  generatedAt DateTime @default(now())
+
+  approvedAt     DateTime?
+  approvedByUserId Int?
+  approvedByUser   User?    @relation(fields: [approvedByUserId], references: [id])
+
+  rejectedAt      DateTime?
+  rejectionReason String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("ai_vehicle_summaries")
+}
+
+enum AiSummaryMode {
+  SINGLE_CARD // Gerçek yorum yok/5'in altında — genel AI izlenimi
+  REVIEWS_SUMMARY // ≥5 gerçek yorumun özeti
+}
+
+enum AiSummaryStatus {
+  PENDING_APPROVAL // SINGLE_CARD ilk üretim — admin onayı bekliyor, yayında değil
+  APPROVED // Yayında
+  REJECTED // Admin reddetti, yayında değil
 }
 
 // ─────────────────────────────────────────────

@@ -6,6 +6,7 @@ import { createNotification } from "@/lib/notification";
 import { recordScoreSnapshot, recordModerationLog } from "@/lib/security";
 import { calcTrustScore } from "@/lib/trustScore";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { checkAndRegenerateReviewsSummary } from "@/lib/ai/vehicleSummary";
 
 export async function PATCH(
   req: Request,
@@ -163,6 +164,10 @@ export async function PATCH(
     }
 
     await recordModerationLog({ reviewId, moderatorId, action: "APPROVED" });
+
+    if (review) {
+      await checkAndRegenerateReviewsSummary(review.productId).catch((e) => console.error("[ai-vehicle-summary]", e));
+    }
 
     return NextResponse.json({ ok: true, status: "PUBLISHED" });
   }

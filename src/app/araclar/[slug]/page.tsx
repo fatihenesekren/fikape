@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { ReviewCard } from "@/components/ReviewCard";
 import { GatedContentCard } from "@/components/GatedContentCard";
+import { AiSummaryCard } from "@/components/AiSummaryCard";
 import { ScrollToReview } from "./ScrollToReview";
 import { SpecGrid } from "@/components/SpecGrid";
 import { PhotoSlider } from "./PhotoSlider";
@@ -169,7 +170,7 @@ export default async function VehicleDetailPage({
   // metinler sunucudan HİÇ çekilmez (bkz. GatedContentCard) — skor ortalaması
   // ve sayı teaser olarak açık kalır (bkz. backlog kararı, Seçenek A).
   const isLoggedIn = userId !== null;
-  const [userGarageEntry, garageCount, currentUser, existingSaleLeads, favoriteEntry, activeTradeCount] = await Promise.all([
+  const [userGarageEntry, garageCount, currentUser, existingSaleLeads, favoriteEntry, activeTradeCount, aiSummary] = await Promise.all([
     userId
       ? prisma.userProduct.findUnique({
           where: { userId_productId: { userId, productId: product.id } },
@@ -204,6 +205,14 @@ export default async function VehicleDetailPage({
     // hiçbir sayfadan link almıyordu). Aynı Promise.all içinde, sıralı await
     // zincirine eklenip sayfa TTFB'sini uzatmasın diye.
     prisma.tradeListing.count({ where: { productId: product.id, isActive: true } }).catch(() => 0),
+    // AI araç özeti — gerçek yorum sayısına göre SINGLE_CARD veya REVIEWS_SUMMARY
+    // modunda, sadece admin onaylı (SINGLE_CARD) / otomatik onaylı (REVIEWS_SUMMARY)
+    // kayıtlar gelir (bkz. lib/ai/vehicleSummary.ts). Giriş yapmamış kullanıcıya da
+    // gösterilir — gerçek kullanıcı yorumu değil, gate'e tabi değil.
+    prisma.aiVehicleSummary.findFirst({
+      where: { productId: product.id, status: "APPROVED" },
+      select: { mode: true, summaryText: true },
+    }).catch(() => null),
   ]);
   const inGarage = userGarageEntry?.ownershipStatus === "CURRENT";
   const isSold   = userGarageEntry?.ownershipStatus === "PAST";
@@ -522,7 +531,13 @@ export default async function VehicleDetailPage({
   const specs = buildSpecList(categorySlug, attrs);
 
   // ── Tab içerikleri (server render) ──
-  const reviewsContent = !isLoggedIn ? (
+  const aiSummaryBlock = aiSummary && (
+    <div className="px-5 py-4">
+      <AiSummaryCard mode={aiSummary.mode} summaryText={aiSummary.summaryText} />
+    </div>
+  );
+
+  const reviewsInnerContent = !isLoggedIn ? (
     <GatedContentCard type="reviews" count={reviewCount} callbackUrl={`/araclar/${slug}`} />
   ) : reviews.length === 0 ? (
     <div className="p-10 text-center space-y-3">
@@ -608,6 +623,13 @@ export default async function VehicleDetailPage({
         </div>
       ))}
     </div>
+  );
+
+  const reviewsContent = (
+    <>
+      {aiSummaryBlock}
+      {reviewsInnerContent}
+    </>
   );
 
   // ── JSON-LD: Product + AggregateRating + Review (sadece yorumu varsa) ──

@@ -18,7 +18,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   const filterWindowStart = daysAgo(30);
 
-  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports, pendingContentReports, pendingDeletionRequests, repeatFilterOffenders, pendingTradePhotos, pendingExpertNotes, pendingExpertApplications, pendingExpertAnswers, pendingExpertAppeals, pendingExpertWorkplacePhotos] = await Promise.all([
+  const [pendingReviews, pendingSuggestions, newInsuranceLeads, newSaleLeads, pendingMessageReports, pendingContentReports, pendingDeletionRequests, repeatFilterOffenders, pendingTradePhotos, pendingExpertNotes, pendingExpertApplications, pendingExpertAnswers, pendingExpertAppeals, pendingExpertWorkplacePhotos, pendingAiSummaries] = await Promise.all([
     prisma.review.count({
       where: { OR: [{ status: "PENDING" }, { status: "PUBLISHED", photos: { some: { status: "PENDING" } } }] },
     }).catch(() => 0),
@@ -40,6 +40,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     prisma.answer.count({ where: { status: "PENDING", answeredByExpertProfileId: { not: null } } }).catch(() => 0),
     prisma.expertAppeal.count({ where: { status: "PENDING" } }).catch(() => 0),
     prisma.expertWorkplacePhoto.count({ where: { status: "PENDING" } }).catch(() => 0),
+    prisma.aiVehicleSummary.count({ where: { status: "PENDING_APPROVAL" } }).catch(() => 0),
   ]);
 
   const navItems = [
@@ -58,6 +59,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     { href: "/admin/hesap-silme-talepleri", label: "Hesap Silme Talepleri", shortLabel: "Silme", icon: "🗑️", badge: pendingDeletionRequests },
     { href: "/admin/icerik-bildirimleri", label: "İçerik Bildirimleri", shortLabel: "Bildirimler", icon: "⚠️", badge: pendingContentReports },
     { href: "/admin/icerik-filtresi", label: "İçerik Filtresi", shortLabel: "Filtre", icon: "🛑", badge: repeatFilterOffenders },
+    { href: "/admin/ai-ozetleri", label: "AI Araç Özetleri", shortLabel: "AI Özet", icon: "🤖", badge: pendingAiSummaries },
   ];
 
   return (
