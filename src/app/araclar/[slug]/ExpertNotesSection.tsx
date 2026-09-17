@@ -7,22 +7,15 @@ import { ExpertNoteOwnerActions } from "./ExpertNoteOwnerActions";
 import { RegionalExpertsBlock } from "./RegionalExpertsBlock";
 import { RegionOptInPrompt } from "./RegionOptInPrompt";
 import type { RegionalSummary } from "@/lib/expertRegional";
+import { ClipboardIcon } from "@/components/icons";
 
-// Boş-durum DAİRESİ — "kayıt/not defteri boş" durumunu anlatır (durum ikonu).
-// "Teknik not ekle" BUTONU — yazma EYLEMİni anlatır (kalem). Bilinçli olarak
-// FARKLI ikonlar: aynı ikonun (🔧 usta rozeti dahil) her yerde tekrarı
-// kimlik/durum/eylem ayrımını bulanıklaştırıyordu (3 ayrı ajan panelinin
-// ortak sonucu — bkz. feature_usta_gorusleri_ilerleme, 14 Eylül 2026).
-function ClipboardIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <rect x="6" y="4" width="12" height="17" rx="2" />
-      <path d="M9 4a1 1 0 0 1 1-2h4a1 1 0 0 1 1 2" />
-      <line x1="9" y1="11" x2="15" y2="11" />
-      <line x1="9" y1="15" x2="13" y2="15" />
-    </svg>
-  );
-}
+// Boş-durum DAİRESİ — "kayıt/not defteri boş" durumunu anlatır (durum ikonu,
+// ClipboardIcon — artık src/components/icons.tsx'te, tek kaynak). "Teknik
+// not ekle" BUTONU — yazma EYLEMİni anlatır (kalem, aşağıdaki EditIcon).
+// Bilinçli olarak FARKLI ikonlar: aynı ikonun (🔧 usta rozeti dahil) her
+// yerde tekrarı kimlik/durum/eylem ayrımını bulanıklaştırıyordu (3 ayrı
+// ajan panelinin ortak sonucu — bkz. feature_usta_gorusleri_ilerleme, 14
+// Eylül 2026).
 
 function EditIcon({ className = "" }: { className?: string }) {
   return (
