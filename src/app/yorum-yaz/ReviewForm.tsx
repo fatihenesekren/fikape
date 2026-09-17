@@ -145,7 +145,7 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
     setDetailTouched(true);
     if (truncated) {
       speech.stop();
-      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle ekleyebilirsiniz.");
+      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle düzenleyebilirsiniz.");
     }
   }
   const [photoUrls,     setPhotoUrls]     = useState<string[]>([]);
@@ -579,7 +579,7 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
               onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
               onStop={() => speech.stop()}
             />
-            <span className="text-xs text-gray-400">Sesli giriş — mikrofonunuza konuşarak yazabilirsiniz</span>
+            <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
           </div>
           {detailTouched && <FieldFeedback error={detailValidation.error} ok={detailValidation.ok} />}
         </div>

@@ -80,7 +80,7 @@ export function UpdateReviewForm({
     setDetailTouched(true);
     if (truncated) {
       speech.stop();
-      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle ekleyebilirsiniz.");
+      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle düzenleyebilirsiniz.");
     }
   }
 
@@ -195,7 +195,7 @@ export function UpdateReviewForm({
               onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
               onStop={() => speech.stop()}
             />
-            <span className="text-xs text-gray-400">Sesli giriş — mikrofonunuza konuşarak yazabilirsiniz</span>
+            <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
           </div>
           {detailTouched && !detailValidation.ok && <FieldFeedback error={detailValidation.error} ok={false} />}
         </div>
