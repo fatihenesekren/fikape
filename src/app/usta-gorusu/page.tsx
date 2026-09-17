@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
+import { MessageIcon } from "@/components/AuthNav";
 
 export const metadata: Metadata = { title: "Usta Panelim — fikape", robots: { index: false } };
 
@@ -14,6 +15,35 @@ function GearIcon({ className = "" }: { className?: string }) {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
       <circle cx="12" cy="12" r="3" />
       <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+    </svg>
+  );
+}
+
+// Usta Profilim — bilinçli olarak header'daki düz kişi silueti (Profilim)
+// ikonundan FARKLI: hedef kendi hesabı değil, herkese açık/fotoğraflı bir
+// CV/kimlik kartı (/usta/[slug]) — kullanıcı isteği, widget'ta 3 alternatif
+// (kimlik kartı/göz/dışa link) paylaşılıp bu onaylandı.
+function IdCardIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <rect x="2" y="5" width="20" height="14" rx="2" />
+      <circle cx="8.5" cy="11.5" r="2" />
+      <path d="M5.5 16c0-1.7 1.3-3 3-3s3 1.3 3 3" />
+      <line x1="14" y1="9" x2="19" y2="9" />
+      <line x1="14" y1="13" x2="19" y2="13" />
+    </svg>
+  );
+}
+
+// Usta Notlarım — ExpertNotesSection.tsx'teki ClipboardIcon'un birebir
+// kopyası (o dosyadan export edilmediği için tekrar tanımlandı).
+function ClipboardIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <rect x="6" y="4" width="12" height="17" rx="2" />
+      <path d="M9 4a1 1 0 0 1 1-2h4a1 1 0 0 1 1 2" />
+      <line x1="9" y1="11" x2="15" y2="11" />
+      <line x1="9" y1="15" x2="13" y2="15" />
     </svg>
   );
 }
@@ -108,20 +138,23 @@ export default async function UstaGorusumPage() {
       <div className="grid sm:grid-cols-3 gap-3 mb-6">
         <Link
           href={`/usta/${profile.slug}`}
-          className="px-4 py-3.5 rounded-2xl border border-gray-100 bg-white hover:shadow-sm transition-shadow text-sm font-semibold text-gray-900 text-center"
+          className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl border border-gray-100 bg-white hover:shadow-sm transition-shadow text-sm font-semibold text-gray-900"
         >
+          <IdCardIcon />
           Usta Profilim
         </Link>
         <Link
           href="/usta-gorusu/notlarim"
-          className="px-4 py-3.5 rounded-2xl border border-gray-100 bg-white hover:shadow-sm transition-shadow text-sm font-semibold text-gray-900 text-center"
+          className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl border border-gray-100 bg-white hover:shadow-sm transition-shadow text-sm font-semibold text-gray-900"
         >
+          <ClipboardIcon />
           Usta Notlarım
         </Link>
         <Link
           href="/mesajlar?tab=usta"
-          className="px-4 py-3.5 rounded-2xl border border-gray-100 bg-white hover:shadow-sm transition-shadow text-sm font-semibold text-gray-900 text-center"
+          className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl border border-gray-100 bg-white hover:shadow-sm transition-shadow text-sm font-semibold text-gray-900"
         >
+          <MessageIcon size={18} />
           Usta Mesajlarım
         </Link>
       </div>
