@@ -103,15 +103,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div className="min-w-0">{children}</div>
         </main>
 
-        {/* pb-32 — HomeFab (bottom-5) + BackToTop (ana sayfa dışında bottom-20,
-            ikisi üst üste ~124px'e kadar çıkıyor) telif hakkı satırının
-            üzerine biniyordu (kullanıcı ekran görüntüsüyle gösterdi). Alt
-            boşluk FAB'ların en yükseğini net şekilde temizleyecek kadar
-            artırıldı. */}
-        <footer className="border-t border-gray-100 pt-6 pb-32">
-          <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 space-y-2">
+        {/* Bu ek boşluk SADECE mobilde gerekli — masaüstünde FooterNav zaten
+            2 satıra bölünmüyor ve FAB'larla çakışma yaşanmıyordu, orijinal
+            hali (pb-6, mt-2) sm: ile korunuyor. BackToTop'ta da aynı
+            (bottom-24 yalnız mobil, sm:bottom-20 masaüstü orijinali). */}
+        <footer className="border-t border-gray-100 pt-6 pb-28 sm:pb-6">
+          <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400">
             <FooterNav />
-            <p>© {new Date().getFullYear()} fikape.com · Tüm hakları saklıdır.</p>
+            <p className="mt-3 sm:mt-2">© {new Date().getFullYear()} fikape.com · Tüm hakları saklıdır.</p>
           </div>
         </footer>
         <HomeFab />

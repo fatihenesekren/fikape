@@ -66,7 +66,7 @@ export function BackToTop() {
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
       className={`fixed right-5 z-50 w-11 h-11 rounded-full bg-white border border-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:border-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-link focus-visible:ring-offset-2 ${
-        pathname === "/" ? "bottom-5" : "bottom-20"
+        pathname === "/" ? "bottom-5" : "bottom-24 sm:bottom-20"
       } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"}`}
     >
       {/* Scroll ilerleme halkası */}
