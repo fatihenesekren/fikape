@@ -97,10 +97,15 @@ export default async function UstaGorusumPage() {
 
       {/* Birincil eylem — üste taşındı (layout ajanı: eskiden sayfanın
           dibinde izole duruyordu). Aynı içerik türü olduğu için
-          Notlarım'daki AYNI ClipboardIcon önde (kullanıcı isteği). */}
+          Notlarım'daki AYNI ClipboardIcon önde (kullanıcı isteği).
+          ⟳ 2. tur 3 ajanlı ince ayar: py-3.5→py-3 (sitenin diğer siyah
+          CTA'larının çoğu px-5 py-2.5 kullanıyor — burası birincil eylem
+          olduğu için biraz daha vurgulu kalsın ama eski hali "hero buton"
+          gibi ağır duruyordu), rounded-xl→rounded-2xl (alttaki kartlarla
+          aynı köşe yarıçapı — önceden tek uyumsuz köşeydi). */}
       <Link
         href="/usta-gorusu/yaz"
-        className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 rounded-xl text-sm font-semibold text-white mb-8"
+        className="flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-3 rounded-2xl text-sm font-semibold text-white mb-8"
         style={{ background: "var(--btn-dark)" }}
       >
         <ClipboardIcon size={16} className="text-white" />
@@ -112,8 +117,10 @@ export default async function UstaGorusumPage() {
           bir önceki denemede emoji'lerin bazı ortamlarda bozuk render
           olması sorunun bir parçasıydı, bu desen zaten kanıtlanmış.
           ⟳ bg-gray-50 — aşağıdaki (beyaz) kısayol kartlarından görsel
-          olarak ayrışsın diye (görsel ajanı: ikisi birebir aynı stildi). */}
-      <div className="grid grid-cols-2 gap-4 mb-8 bg-gray-50 border border-gray-100 rounded-2xl p-6">
+          olarak ayrışsın diye (görsel ajanı: ikisi birebir aynı stildi).
+          p-6→p-5 (2. tur: layout ajanı, sadece 2 sayı için fazla şişkin
+          duruyordu, kısayol kartlarının py-3.5'iyle orantısızdı). */}
+      <div className="grid grid-cols-2 gap-4 mb-8 bg-gray-50 border border-gray-100 rounded-2xl p-5">
         <div className="text-center">
           <div className="text-2xl font-black text-gray-900">{expertNoteCount}</div>
           <div className="text-xs text-gray-400 mt-0.5">Yazdığınız not</div>
@@ -129,35 +136,41 @@ export default async function UstaGorusumPage() {
       {/* Kısayollar — Garajım'daki tekil "Takas Pazarına Gözat" linkinin
           aksine burada üç eşit ağırlıklı hedef var, bu yüzden grid kart.
           ⟳ Her ikona kendi renk aksanlı rozet zemini verildi (görsel
-          ajanı: önceden üçü de düz gri, birbirinden ayrışmıyordu) —
-          Profilim mavi (--link, sitenin marka rengi), Notlarım amber,
-          Mesajlarım emerald; üçü keyfi değil, üç AYRI hedefi göz
-          taramasında hızlıca ayırt etmeyi sağlıyor. */}
+          ajanı: önceden üçü de düz gri, birbirinden ayrışmıyordu).
+          ⟳ 2. tur — marka/profesyonellik ajanı: ham Tailwind amber/emerald
+          yerine fikape'nin KENDİ FI·KA·PE token ailesi kullanılıyor
+          (--fi/--ka/--pe + -bg/-color varyantları, globals.css) — hem
+          "Aktif" rozetinin yeşiliyle "Mesajlarım"ın yeşili artık aynı
+          kaynaktan (marka tutarlılığı), hem sayfa "kendi rastgele renk
+          setini icat eden" değil markanın bir uzantısı gibi duruyor.
+          Profilim --fi (mavi), Notlarım --pe (kahverengi), Mesajlarım
+          --ka (yeşil) — üçü keyfi değil, üç AYRI hedefi göz taramasında
+          hızlıca ayırt etmeyi sağlıyor. */}
       <div className="grid sm:grid-cols-3 gap-3">
         <Link
           href={`/usta/${profile.slug}`}
-          className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border border-gray-200 bg-white hover:border-[var(--link)]/40 hover:shadow-sm transition-all text-sm font-semibold text-gray-900"
+          className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border border-gray-200 bg-white hover:border-[var(--fi)]/40 hover:shadow-sm transition-all text-sm font-semibold text-gray-900"
         >
-          <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: "var(--link-soft)" }}>
-            <IdCardIcon size={16} className="text-[var(--link)]" />
+          <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: "var(--fi-bg)" }}>
+            <IdCardIcon size={16} className="text-[var(--fi-color)]" />
           </span>
           Usta Profilim
         </Link>
         <Link
           href="/usta-gorusu/notlarim"
-          className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border border-gray-200 bg-white hover:border-amber-300 hover:shadow-sm transition-all text-sm font-semibold text-gray-900"
+          className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border border-gray-200 bg-white hover:border-[var(--pe)]/40 hover:shadow-sm transition-all text-sm font-semibold text-gray-900"
         >
-          <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-amber-50">
-            <ClipboardIcon size={16} className="text-amber-700" />
+          <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: "var(--pe-bg)" }}>
+            <ClipboardIcon size={16} className="text-[var(--pe-color)]" />
           </span>
           Usta Notlarım
         </Link>
         <Link
           href="/mesajlar?tab=usta"
-          className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border border-gray-200 bg-white hover:border-emerald-300 hover:shadow-sm transition-all text-sm font-semibold text-gray-900"
+          className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border border-gray-200 bg-white hover:border-[var(--ka)]/40 hover:shadow-sm transition-all text-sm font-semibold text-gray-900"
         >
-          <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-emerald-50">
-            <MessageIcon size={16} className="text-emerald-700" />
+          <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: "var(--ka-bg)" }}>
+            <MessageIcon size={16} className="text-[var(--ka-color)]" />
           </span>
           Usta Mesajlarım
         </Link>
