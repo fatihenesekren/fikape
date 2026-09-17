@@ -32,7 +32,7 @@ export function NotificationsSection({
           </Link>
         )}
       </div>
-      <ScrollFadeBox itemCount={notifications.length} maxHeight={400}>
+      <ScrollFadeBox itemCount={notifications.length}>
         <NotificationList notifications={notifications} dimUnread={!marked} />
       </ScrollFadeBox>
     </div>

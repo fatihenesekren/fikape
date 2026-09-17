@@ -268,7 +268,7 @@ export default async function ProfilPage() {
             Henüz favori aracın yok.
           </div>
         ) : (
-          <ScrollFadeBox itemCount={favorites.length} maxHeight={320} alwaysFramed>
+          <ScrollFadeBox itemCount={favorites.length} alwaysFramed>
             <div className="space-y-2">
               {favorites.map((f) => (
                 <FavoriteRow
@@ -292,7 +292,7 @@ export default async function ProfilPage() {
             Henüz yorum yazmadınız.
           </div>
         ) : (
-          <ScrollFadeBox itemCount={reviews.length} maxHeight={640}>
+          <ScrollFadeBox itemCount={reviews.length} visibleCount={3}>
           <div className="space-y-3">
             {reviews.map((r) => {
               const attrs = r.product.attributes as Record<string, unknown>;
