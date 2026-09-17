@@ -248,7 +248,14 @@ export default async function MesajlarPage({
         </>
       ) : (
         <>
-          <p className="text-sm text-gray-400 mb-5">Takas ve usta görüşmelerin tek yerde.</p>
+          {/* Önceki metin ("Takas ve usta görüşmelerin tek yerde.") jenerik
+              bir pazarlama kalıbıydı, h1+sekme etiketleriyle aynı bilgiyi
+              3. kez tekrarlıyor ama iki sekmenin FARKLI NİTELİKTE konuşmalar
+              olduğunu (ilan pazarlığı vs. uzmana danışma) hiç anlatmıyordu
+              (1 ajanlı metin denetimi). Yeni metin, sekme yokken görünen
+              fallback ("Takas ilanların üzerinden başlayan görüşmeler.")
+              ile aynı "senin" dilini ve cümle kalıbını koruyor. */}
+          <p className="text-sm text-gray-400 mb-5">Takas ilanların ve usta danışmaların, ayrı sekmelerde.</p>
           <div className="flex gap-2 mb-5">
             <Link
               href="/mesajlar"
