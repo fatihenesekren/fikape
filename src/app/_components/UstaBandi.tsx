@@ -6,31 +6,39 @@ import { prisma } from "@/lib/prisma";
 // arasında, quiz açıkken (Son Yorumlar/Trend gizlendiğinde) kategori
 // sekmelerinin hemen altında görünür; page.tsx'te `!quizParam` koşuluyla
 // sarılır (kullanıcı açıkça istedi: quiz modunda hiç görünmesin).
-// Zaten aktif bir usta olan kullanıcıya (ExpertProfile.status=ACTIVE) hiç
-// gösterilmez. 5 uzman ajan (Görsel Tasarım, Metin, Marka Tutarlılığı,
-// Erişilebilirlik, Mobil) paneliyle tasarlandı — 13 Eylül 2026. Bilinçli
-// olarak nötr (beyaz kart + --link aksan) — amber/EXPERT_BADGE paleti
-// yalnız rozette kalsın, sayfa-seviyesi bileşene sızmasın (marka
-// tutarlılığı ajanının uyarısı: "reklam şeridi" hissi riski).
+// 5 uzman ajan (Görsel Tasarım, Metin, Marka Tutarlılığı, Erişilebilirlik,
+// Mobil) paneliyle tasarlandı — 13 Eylül 2026. Bilinçli olarak nötr (beyaz
+// kart + --link aksan) — amber/EXPERT_BADGE paleti yalnız rozette kalsın,
+// sayfa-seviyesi bileşene sızmasın (marka tutarlılığı ajanının uyarısı:
+// "reklam şeridi" hissi riski).
+//
+// ⟳ Aktif usta artık null DÖNMÜYOR — aynı bant, kendi paneline (Usta
+// Görüşüm) götüren farklı bir içerikle gösteriliyor (kullanıcı isteği: boş
+// yer yerine kendi işine hızlı erişim). Üstte "Son Yorumlar" ile aynı
+// ritimde bir bölüm başlığı da eklendi (3 uzman ajanla — IA/isimlendirme/
+// teknik — kararlaştırılan "Usta Görüşüm" markalaması burada da tutarlı).
 export async function UstaBandi() {
   const session = await auth();
+  let isActiveExpert = false;
   if (session?.user?.id) {
     const profile = await prisma.expertProfile.findUnique({
       where: { userId: Number(session.user.id) },
       select: { status: true },
     });
-    if (profile?.status === "ACTIVE") return null;
+    isActiveExpert = profile?.status === "ACTIVE";
   }
 
   return (
-    // pt-8 BURADA (dıştaki bir wrapper'da değil) — aktif ustaya null dönünce
-    // (yukarıda) hiçbir şey render edilmiyor, boşluk dahil. Önceden page.tsx
-    // bu bileşeni her zaman render edilen bir <div className="pt-8"> içine
-    // sarıyordu; null dönünce bile bu boş div üstten boşluk bırakıyordu —
-    // aktif usta ana sayfada tuhaf bir boşluk görüyordu (kullanıcı fark etti).
-    <section className="w-full max-w-7xl mx-auto px-4 pt-8">
+    // pt-3 + <h2> — RecentReviews'daki ("💬 Son Yorumlar") AYNI ritim, önceki
+    // pt-8'in boş bıraktığı alan artık bir başlıkla doluyor (toplam boşluk
+    // artmıyor, kullanıcı bunu açıkça istedi).
+    <section className="w-full max-w-7xl mx-auto px-4 pt-3">
+      <h2 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-2">
+        <span aria-hidden="true">🔧</span> Usta Görüşü
+      </h2>
       <Link
-        href="/usta-ol"
+        href={isActiveExpert ? "/profil#usta-gorusu" : "/usta-ol"}
+        aria-label={isActiveExpert ? "Usta panelinize gidin" : undefined}
         className="flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 min-h-11 border border-gray-100 bg-white transition-shadow hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         style={{ outlineColor: "var(--link)" }}
       >
@@ -43,17 +51,28 @@ export async function UstaBandi() {
             🧑‍🔧
           </span>
           <span className="min-w-0">
-            <span className="block text-sm font-semibold text-gray-900">Usta Görüşleri&apos;ne katkı sağlayın</span>
-            <span className="hidden sm:block text-xs text-gray-500 truncate">
-              Tamirci/servis sahibiyseniz deneyiminizi paylaşın, kullanıcılar sizi bulsun
-            </span>
+            {isActiveExpert ? (
+              <>
+                <span className="block text-sm font-semibold text-gray-900">Usta Görüşünüze göz atın</span>
+                <span className="hidden sm:block text-xs text-gray-500 truncate">
+                  Yeni not yazın, danışan mesajlarınızı görün
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="block text-sm font-semibold text-gray-900">Usta Görüşleri&apos;ne katkı sağlayın</span>
+                <span className="hidden sm:block text-xs text-gray-500 truncate">
+                  Tamirci/servis sahibiyseniz deneyiminizi paylaşın, kullanıcılar sizi bulsun
+                </span>
+              </>
+            )}
           </span>
         </div>
         <span
           className="flex items-center gap-1 text-xs font-semibold rounded-xl px-4 py-2 shrink-0 text-white"
           style={{ background: "var(--btn-dark)" }}
         >
-          Katıl
+          {isActiveExpert ? "Panelim" : "Katıl"}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

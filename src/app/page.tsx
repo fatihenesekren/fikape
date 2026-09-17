@@ -138,10 +138,10 @@ export default async function Home({
       {/* ── Son yorumlar (quiz modunda değilken) ── */}
       {!quizParam && <RecentReviews />}
 
-      {/* ── Usta musunuz? bandı (quiz modunda değilken — kullanıcı kararı) ──
-          pt-8 bileşenin KENDİ İÇİNDE (UstaBandi.tsx) — burada sarmalayıcı bir
-          div olmamalı, yoksa aktif ustaya (bileşen null dönünce) boş bir
-          boşluk kutusu görünür. */}
+      {/* ── Usta Görüşü bandı (quiz modunda değilken — kullanıcı kararı) ──
+          Aktif ustaya farklı içerikle (kendi paneline link) gösterilir,
+          artık hiç kimseye null dönmüyor — üst boşluk bileşenin KENDİ
+          İÇİNDE (UstaBandi.tsx), burada sarmalayıcı div yok. */}
       {!quizParam && <UstaBandi />}
 
       {/* ── Araç kartları — quiz yoksa kürasyonlu "öne çıkanlar" (~12, model

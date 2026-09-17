@@ -29,6 +29,16 @@ function GarageIcon() {
   );
 }
 
+// Usta Görüşüm — İngiliz anahtarı, kartın kendi başlığındaki (🔧) ikonla
+// aynı fikri taşıyor, diğer menü ikonlarıyla aynı outline SVG stilde.
+function WrenchIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </svg>
+  );
+}
+
 function PlusCircleIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -81,8 +91,21 @@ export function AuthNav() {
   const { data: session, status } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
   const [unreadMessages, setUnreadMessages] = useState(0);
+  const [isActiveExpert, setIsActiveExpert] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  // Usta durumu JWT'de yok (bkz. src/app/api/me/expert-status/route.ts) —
+  // MessageBell'deki gibi hafif bir client fetch, mount'ta bir kez.
+  useEffect(() => {
+    if (!session?.user?.id) return;
+    let cancelled = false;
+    fetch("/api/me/expert-status")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => { if (!cancelled && data) setIsActiveExpert(!!data.isActiveExpert); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [session?.user?.id]);
 
   // Sayfa değişince menü her zaman kapansın (bkz. NotificationBell'deki aynı
   // düzeltme) — effect yerine "prop değişince render sırasında state ayarla"
@@ -165,6 +188,11 @@ export function AuthNav() {
               <Link href="/garajim" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                 <GarageIcon /> Garajım
               </Link>
+              {isActiveExpert && (
+                <Link href="/profil#usta-gorusu" onClick={() => setMenuOpen(false)} className={menuItemClass}>
+                  <WrenchIcon /> Usta Görüşüm
+                </Link>
+              )}
               {/* "Mesajlarım" hesap menüsündeki ayrı girişi kaldırıldı — MessageBell
                   artık masaüstü+mobil HER boyutta görünür (3 ajanlı denetim
                   bulgusu: bildirim çanı her yerde çalışıyordu, mesaj ikonu

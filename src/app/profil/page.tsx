@@ -412,7 +412,7 @@ export default async function ProfilPage() {
               (mavi ton): biri sosyal davet, diğeri mesleki başvuru — aynı
               kalıpta olmaları kullanıcının ikisini aynı hafiflikte
               algılamasına yol açıyordu (Görsel Hiyerarşi ajanı bulgusu). */}
-          <div className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4">
+          <div id="usta-gorusu" className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4 scroll-mt-20">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
