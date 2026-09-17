@@ -37,17 +37,6 @@ const REVIEW_STATUS_TONE: Record<string, { label: string; color: string; bg: str
   DELETED: { label: "Silindi", ...EXPERT_STATUS_TONES.neutral },
 };
 
-// Usta kartındaki "Profil Ayarları" köşe ikonu — sitenin diğer inline SVG
-// ikon deseniyle (ör. ExpertNotesSection.tsx EditIcon) aynı stil.
-function GearIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <circle cx="12" cy="12" r="3" />
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" />
-    </svg>
-  );
-}
-
 export default async function ProfilPage() {
   const session = await auth();
   if (!session?.user?.id) redirect("/giris");
@@ -120,29 +109,13 @@ export default async function ProfilPage() {
       take: 21,
       select: { id: true, type: true, message: true, link: true, isRead: true, createdAt: true, expertNoteId: true },
     }),
-    prisma.expertProfile.findUnique({ where: { userId }, select: { id: true, status: true, slug: true } }).catch(() => null),
+    prisma.expertProfile.findUnique({ where: { userId }, select: { status: true } }).catch(() => null),
     // "Usta Mesajlarım" linki yalnız gerçekten erişilebilir bir şey varsa
     // gösterilir (bkz. /mesajlar sekme görünürlüğüyle AYNI kural).
     prisma.expertMessageThread.count({
       where: { OR: [{ initiatorId: userId }, { expertProfile: { userId } }] },
     }),
   ]);
-
-  // Usta paneli istatistik satırı — yalnız aktif ustalarda hesaplanır
-  // (Promise.all yukarıda bitmiş olmalı ki expertProfile.status'a göre
-  // koşullu sorulabilsin; 3 ajanlı — mimari — değerlendirmenin önerdiği
-  // sıralı yapı). Filtreler AYNEN kopyalandı: not sayımı
-  // usta-gorusu/notlarim/page.tsx'teki listeyle, okunmamış mesaj sayımı
-  // api/messages/preview/route.ts'teki usta okunmamış sayımıyla birebir
-  // aynı — tutarsız iki sayı göstermeyelim diye.
-  const [expertNoteCount, unreadExpertMessageCount] = expertProfile?.status === "ACTIVE"
-    ? await Promise.all([
-        prisma.expertNote.count({ where: { profileId: expertProfile.id, status: { not: "HIDDEN" } } }),
-        prisma.expertMessage.count({
-          where: { isRead: false, senderId: { not: userId }, thread: { OR: [{ initiatorId: userId }, { expertProfile: { userId } }] } },
-        }),
-      ])
-    : [0, 0];
 
   const hasMoreNotifications = notificationsRaw.length > 20;
   // Not başlığı sonradan düzeltilmişse bildirim metni de güncel kalsın diye
@@ -412,98 +385,6 @@ export default async function ProfilPage() {
         )}
       </div>
 
-      {/* Usta Görüşü — yalnız AKTİF ustalar için, kendi üst-düzey bölümü.
-          ⟳ 17 Eylül 2026: Önceden "Topluluk" başlığı altında, InviteBox'la
-          aynı katmandaydı (davet kutusu = sosyal perk, bu ise aktif ustanın
-          günlük iş aracı — aynı hafiflikte gösterilmemeli, kullanıcı fark
-          etti). 5 uzman ajanla (görsel/mobil/mimari/a11y/IA) değerlendirilip
-          Favoriler/Yorum Geçmişi'nden SONRA, Topluluk'tan ÖNCE'ye taşındı —
-          geçmişteki "niş CTA kişisel içeriğin önüne geçmesin" ilkesi
-          (aşağıdaki Topluluk yorumu) burada da korunuyor: usta paneli de
-          kullanıcının kendi yorumlarından/favorilerinden ÖNCE değil SONRA
-          gelir, sadece Topluluk'un ÖNÜNE geçer çünkü artık pasif bir
-          "topluluk perk'i" değil. Kartın kendi başlığı gerçek bir <h2> oldu
-          (IA agent: dış bir "Usta Görüşü" etiketiyle iç başlık aynı anda
-          tekrar etmesin diye tek başlık, Favorilerim/Yorum Geçmişi'yle aynı
-          text-base font-bold stilinde — Topluluk'un pasif gri-uppercase
-          diliyle DEĞİL, çünkü artık birincil bir araç). */}
-      {expertProfile?.status === "ACTIVE" && (
-        <div>
-          <h2 className="text-base font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <span aria-hidden="true">🔧</span> Usta Görüşü
-            <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold" style={{ color: EXPERT_STATUS_TONES.success.color, background: EXPERT_STATUS_TONES.success.bg }}>
-              Aktif
-            </span>
-          </h2>
-          <div id="usta-gorusu" className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4 sm:p-5 scroll-mt-20">
-            <div className="flex items-start justify-between gap-3">
-              <div className="min-w-0 flex-1">
-                <p className="text-xs text-gray-500">
-                  Yeni bir usta görüşü yazabilir, danışan mesajlarınızı görebilirsiniz.
-                </p>
-              </div>
-              {/* Yalnız dişli ikonu ne işe yaradığı belli olmuyordu
-                  (kullanıcı fark etti) — yanına kısa bir "Ayarlar" etiketi
-                  eklendi. aria-label: sayfada başka "Ayarlar" linkleri de
-                  olabileceği için ekran okuyucuda bağlamsız netlik (a11y
-                  ajanı önerisi). */}
-              <Link
-                href="/usta-gorusu/profil"
-                aria-label="Usta ayarları"
-                className="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800 mt-0.5"
-              >
-                <GearIcon className="w-3.5 h-3.5" />
-                Ayarlar
-              </Link>
-            </div>
-
-            {/* İstatistik satırı — usta-gorusu/notlarim/page.tsx ve
-                api/messages/preview/route.ts'teki AYNI filtrelerle
-                hesaplanan not/okunmamış-mesaj sayıları (bkz. yukarıdaki
-                sorgu). Kendi çizgisiyle ayrı bir katman (görsel ajanı
-                önerisi) — "Aktif" rozetiyle aynı satırda değil, durum ile
-                aktivite verisi göz için rekabet etmesin diye. Okunmamış
-                mesaj > 0 ise vurgulanır, 0 ise nötr kalır (aksiyon
-                gerektiren durumla bilgilendirme görsel olarak ayrışsın).
-                İkonlar aria-hidden, görünür metin zaten tam cümle (a11y
-                ajanı: ayrı aria-label gerekmez). */}
-            <div className="flex items-center gap-x-3 gap-y-1 flex-wrap text-xs text-gray-500 border-t border-b border-blue-100/70 py-2 mt-2 mb-3">
-              <span className="flex items-center gap-1">
-                <span aria-hidden="true">📝</span> {expertNoteCount} not
-              </span>
-              <span aria-hidden="true">·</span>
-              <span className={`flex items-center gap-1 ${unreadExpertMessageCount > 0 ? "text-red-600 font-semibold" : ""}`}>
-                <span aria-hidden="true">✉️</span> {unreadExpertMessageCount} okunmamış mesaj
-              </span>
-            </div>
-
-            {/* Mobil taşma önlemi (mobil ajanı bulgusu): 3 ikincil buton
-                yatay kaydırılabilir tek satırda, CTA ayrı bir satırda tam
-                genişlik (mobil) / sağa yaslı (sm+) — flex-wrap+ml-auto
-                kombinasyonu dar ekranda "yalnız kalmış buton" garipliği
-                yaratıyordu. */}
-            <div className="flex gap-2 overflow-x-auto -mx-1 px-1">
-              <Link href={`/usta/${expertProfile.slug}`} className="shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200 bg-white/70 hover:bg-white">
-                Usta Profilim
-              </Link>
-              <Link href="/usta-gorusu/notlarim" className="shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200 bg-white/70 hover:bg-white">
-                Usta Notlarım
-              </Link>
-              <Link href="/mesajlar?tab=usta" className="shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 border border-gray-200 bg-white/70 hover:bg-white">
-                Usta Mesajlarım
-              </Link>
-            </div>
-            <Link
-              href="/usta-gorusu/yaz"
-              className="mt-2 block w-full sm:w-auto sm:ml-auto text-center px-4 py-2 rounded-xl text-xs font-semibold text-white"
-              style={{ background: "var(--btn-dark)" }}
-            >
-              Usta Görüşü Yaz →
-            </Link>
-          </div>
-        </div>
-      )}
-
       {/* Topluluk — davet + usta başvurusu: sıradan kullanıcının günlük
           kullandığı içeriğin (Favoriler/Yorumlar) ALTINA, hesap işlemlerinin
           hemen ÜSTÜNE bilinçli olarak taşındı (4 ajanlı IA/Growth/Görsel
@@ -511,8 +392,10 @@ export default async function ProfilPage() {
           feature_usta_gorusleri_ilerleme). Eskiden InviteBox'tan hemen sonra,
           Favoriler'den hemen önce duruyordu; niş bir "usta mısın?" CTA'sı
           herkesin sık kullandığı kişisel içeriğin önüne çıkıyordu.
-          ⟳ Aktif usta artık burada DEĞİL — yukarıdaki kendi bölümünde
-          (yukarıya bkz.), bu blok yalnız aday/pasif durumları kapsıyor. */}
+          ⟳ Aktif usta artık burada DEĞİL — kendi ayrı sayfasında
+          (/usta-gorusu, "Garajım" gibi bağımsız bir sayfa — kullanıcı
+          isteği; header/anasayfa doğrudan oraya link veriyor), bu blok
+          yalnız aday/pasif durumları kapsıyor. */}
       <div>
         <h2 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Topluluk</h2>
         <div className="space-y-3">
@@ -546,8 +429,8 @@ export default async function ProfilPage() {
 
               {/* Usta ile site-içi mesajlaşma — hem "usta olarak gelen" hem
                   "kullanıcı olarak başlattığın" görüşmeler tek gelen
-                  kutusunda (Aşama 6b). Aktif usta olan artık yukarıdaki
-                  kendi bölümünden "Mesajlarım"a sahip — bu fallback yalnız
+                  kutusunda (Aşama 6b). Aktif usta olan artık /usta-gorusu
+                  sayfasından "Mesajlarım"a sahip — bu fallback yalnız
                   aktif usta OLMAYIP geçmişte bir usta konuşması bulunan
                   kullanıcı için (erişecek bir şeyi olmayana boş bir link
                   göstermenin anlamı yok). */}

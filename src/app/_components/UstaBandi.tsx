@@ -37,7 +37,7 @@ export async function UstaBandi() {
         <span aria-hidden="true">🔧</span> Usta Görüşü
       </h2>
       <Link
-        href={isActiveExpert ? "/profil#usta-gorusu" : "/usta-ol"}
+        href={isActiveExpert ? "/usta-gorusu" : "/usta-ol"}
         aria-label={isActiveExpert ? "Usta panelinize gidin" : undefined}
         className="flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 min-h-11 border border-gray-100 bg-white transition-shadow hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         style={{ outlineColor: "var(--link)" }}

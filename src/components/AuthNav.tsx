@@ -189,7 +189,7 @@ export function AuthNav() {
                 <GarageIcon /> Garajım
               </Link>
               {isActiveExpert && (
-                <Link href="/profil#usta-gorusu" onClick={() => setMenuOpen(false)} className={menuItemClass}>
+                <Link href="/usta-gorusu" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                   <WrenchIcon /> Usta Görüşüm
                 </Link>
               )}
