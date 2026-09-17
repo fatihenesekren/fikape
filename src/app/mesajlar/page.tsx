@@ -248,14 +248,12 @@ export default async function MesajlarPage({
         </>
       ) : (
         <>
-          {/* Önceki metin ("Takas ve usta görüşmelerin tek yerde.") jenerik
-              bir pazarlama kalıbıydı, h1+sekme etiketleriyle aynı bilgiyi
-              3. kez tekrarlıyor ama iki sekmenin FARKLI NİTELİKTE konuşmalar
-              olduğunu (ilan pazarlığı vs. uzmana danışma) hiç anlatmıyordu
-              (1 ajanlı metin denetimi). Yeni metin, sekme yokken görünen
-              fallback ("Takas ilanların üzerinden başlayan görüşmeler.")
-              ile aynı "senin" dilini ve cümle kalıbını koruyor. */}
-          <p className="text-sm text-gray-400 mb-5">Takas ilanların ve usta danışmaların, ayrı sekmelerde.</p>
+          {/* "Takas ve usta görüşmelerin tek yerde." → 1 ajanlı metin
+              denetimiyle "ilanların/danışmaların" diline çevrilmişti ama
+              kullanıcı bunun aşağıdaki sekme adlarından (Takas Mesajlarım/
+              Usta Mesajlarım) kopuk kaldığını belirtti; kendi taslağına
+              göre yeniden yazıldı — sekmelere doğrudan gönderme yapıyor. */}
+          <p className="text-sm text-gray-400 mb-5">Takas ve Usta mesajlarına aşağıdaki sekmelerden ulaşabilirsin.</p>
           <div className="flex gap-2 mb-5">
             <Link
               href="/mesajlar"
