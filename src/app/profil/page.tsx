@@ -159,7 +159,17 @@ export default async function ProfilPage() {
 
       {/* Kullanıcı kartı */}
       <div className="bg-white border border-gray-100 rounded-2xl p-6">
-        <div className="flex items-start justify-between gap-4 flex-wrap">
+        {/* 2 ajanlı denetim (mobil UX + frontend mimari): "Üyelik" bloğu
+            önceden `flex ... justify-between flex-wrap` + `text-right` idi —
+            dar ekranda flex satırı kırılınca sağ blok yeni satıra düşüyor
+            ama text-right mirası yüzünden hâlâ sağa yapışık kalıyor, kartın
+            geri kalanından kopuk/asılı duruyordu (kullanıcı: "Üyelik sağa
+            kaymış"). Kök neden min-w-0 taşma sınıfıyla alakasız — flex-wrap
+            satır kırılınca her satırın kendi justify bağlamı oluşturması +
+            text-align mirası çakışıyordu. Çözüm: mobilde tamamen dikey
+            istifleme (`flex-col`, "Üyelik" `text-left`), sadece `sm:` ve
+            üstünde eski iki-kolonlu sağa-yaslı görünüm geri geliyor. */}
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div className="space-y-3">
             <AvatarPicker userId={userId} displayName={user.displayName} initialAvatarUrl={user.avatarUrl} />
             <EditName current={user.displayName ?? ""} />
@@ -186,7 +196,7 @@ export default async function ProfilPage() {
             <NotificationToggle initialEnabled={user.emailNotificationsEnabled} />
           </div>
 
-          <div className="text-right space-y-1">
+          <div className="text-left sm:text-right sm:shrink-0 space-y-1">
             <div className="text-xs text-gray-400">Üyelik</div>
             <div className="text-sm font-semibold text-gray-700">{joinedAt}</div>
           </div>
