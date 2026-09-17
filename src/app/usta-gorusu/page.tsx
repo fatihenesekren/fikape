@@ -55,6 +55,14 @@ export default async function UstaGorusumPage() {
 
   return (
     <div className="max-w-3xl w-full mx-auto px-4 py-10">
+      {/* HomeFab scroll sonrası beliren bir "eve dön" butonu zaten sağlıyor,
+          ama hemen görünen, scroll gerektirmeyen bir link de istendi
+          (kullanıcı) — sitenin diğer sayfalarındaki (gizlilik,
+          kullanim-kosullari, usta-basvuru vb.) AYNI "← Ana sayfaya dön"
+          metni/deseni. */}
+      <Link href="/" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800 mb-6">
+        ← Ana sayfaya dön
+      </Link>
       <div className="mb-8">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div>

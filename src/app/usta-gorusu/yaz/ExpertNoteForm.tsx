@@ -149,12 +149,11 @@ export function ExpertNoteForm({ headline }: { headline: string | null }) {
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <div className="mb-6">
-        {/* Buradan /profil'e dönecek bir yol yoktu — usta bir kez içeri
-            girince "geri gelemiyorum" sorununun bir başka örneği
-            (kullanıcı fark etti). Diğer usta alt sayfalarıyla
-            (/usta-gorusu/notlarim, /usta/[slug]) aynı desen. */}
-        <Link href="/profil" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800 mb-4">
-          ← Profilime dön
+        {/* ⟳ /profil değil /usta-gorusu hub'ına dönüyor — diğer usta alt
+            sayfalarıyla (/usta-gorusu/notlarim, /usta-gorusu/profil,
+            /usta/[slug]) aynı desen, aynı metin (3 ajanlı karar). */}
+        <Link href="/usta-gorusu" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800 mb-4">
+          ← Usta Görüşüme dön
         </Link>
         {/* Önceden sayfanın en üstünde, başlıktan kopuk, ayrı bir satırda
             duruyordu ("hoşuma gitmedi") — artık başlıkla tek bir görsel

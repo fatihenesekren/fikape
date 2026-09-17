@@ -76,12 +76,12 @@ export default async function ExpertMyNotesPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      {/* Önceden /profil'e dönecek bir yol yoktu (kullanıcı fark etti —
-          "girdim sonra geri gelemiyorum"), /usta-gorusu/profil'deki aynı
-          desen buraya da eklendi. Başlığa da "Usta" öneki eklendi —
-          /profil kartındaki butonla ("Usta Notlarım") tutarlı olsun diye. */}
-      <Link href="/profil" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800 mb-4">
-        ← Profilime dön
+      {/* ⟳ /profil değil /usta-gorusu hub'ına dönüyor artık (aktif ustanın
+          iş akışı oraya taşındı) — link metni de hedefin h1'iyle
+          ("Usta Görüşüm") eşleşsin diye güncellendi; 3 ajanlı mikro-metin/
+          tutarlılık/a11y değerlendirmesi "Usta Görüşüme dön"de birleşti. */}
+      <Link href="/usta-gorusu" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800 mb-4">
+        ← Usta Görüşüme dön
       </Link>
       <div className="mb-1 flex items-center justify-between gap-2">
         <h1 className="text-2xl font-black text-gray-900">Usta Notlarım</h1>

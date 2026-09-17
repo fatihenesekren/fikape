@@ -151,16 +151,22 @@ export default async function ExpertProfilePage({
           sığmayabiliyordu (projenin bilinen mobil taşma hata sınıfı — 5
           alanlı review bulgusu). */}
       <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs font-semibold text-gray-500 mb-6">
-        {/* Kendi profiline "Profilim" butonuyla gelen usta buradan
-            /profil'e dönecek bir yol bulamıyordu (kullanıcı fark etti —
-            "girdim sonra geri gelemiyorum"). Herkese açık ziyaretçi için
-            eski "Ana sayfaya dön" değişmedi. */}
+        {/* ⟳ Aktif usta artık kendi işlerini /profil'den değil /usta-gorusu
+            hub'ından yönetiyor (bkz. feature_usta_gorusum_hizli_erisim) —
+            kendi profiline geri dönüş de oraya gitmeli, /profil'e değil
+            (kullanıcı fark etti: "aktif usta neden profiline dönsün").
+            Herkese açık ziyaretçi için "Ana sayfaya dön" değişmedi. */}
         {isOwnProfile ? (
-          <Link href="/profil" className="hover:text-gray-800 transition-colors min-w-0 truncate">← Profilime dön</Link>
+          <Link href="/usta-gorusu" className="hover:text-gray-800 transition-colors min-w-0 truncate">← Usta Görüşüme dön</Link>
         ) : (
           <Link href="/" className="hover:text-gray-800 transition-colors min-w-0 truncate">← Ana sayfaya dön</Link>
         )}
-        <Link href="/usta-ol" className="hover:text-gray-800 transition-colors min-w-0 truncate">Usta Görüşleri hakkında bilgi al →</Link>
+        {/* Kendi profiline bakan aktif usta zaten ne olduğunu biliyor —
+            "hakkında bilgi al" tanıtım linki yalnız ziyaretçiye gösterilir
+            (kullanıcı fark etti). */}
+        {!isOwnProfile && (
+          <Link href="/usta-ol" className="hover:text-gray-800 transition-colors min-w-0 truncate">Usta Görüşleri hakkında bilgi al →</Link>
+        )}
       </div>
 
       {/* Kimlik kartı — önceden düz metin yığını, kart yapısı yoktu (kullanıcı

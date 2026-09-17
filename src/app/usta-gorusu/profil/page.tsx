@@ -77,8 +77,10 @@ export default async function ExpertContactSettingsPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 space-y-8">
-      <Link href="/profil" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800">
-        ← Profilime dön
+      {/* ⟳ /profil değil /usta-gorusu hub'ına dönüyor — bkz.
+          feature_usta_gorusum_hizli_erisim, 3 ajanlı metin kararı. */}
+      <Link href="/usta-gorusu" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800">
+        ← Usta Görüşüme dön
       </Link>
 
       <div>
