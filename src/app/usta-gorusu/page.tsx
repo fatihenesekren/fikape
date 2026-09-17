@@ -82,7 +82,19 @@ export default async function UstaGorusumPage() {
               </span>
             </h1>
             <p className="text-sm text-gray-500 mt-1">
-              Yeni bir usta görüşü yazabilir, <span style={{ color: "var(--link)" }}>danışan mesajlarınızı</span> görebilirsiniz.
+              {/* ⟳ Kullanıcı fark etti: bu ifade önceden salt renkle
+                  (--link mavi) vurgulanmıştı ama tıklanamıyordu — mavi
+                  renk "buraya tıklanır" sinyali verip yanıltıyordu.
+                  Şimdi gerçek bir link, "Usta Mesajlarım" kartıyla AYNI
+                  hedefe (/mesajlar?tab=usta) gidiyor. Metin bilinçli
+                  olarak değişmedi (kullanıcı onayı) — kartın nav
+                  etiketinden farklı ama aynı yere gittiği artık linkin
+                  kendisiyle netleşiyor. */}
+              Yeni bir usta görüşü yazabilir,{" "}
+              <Link href="/mesajlar?tab=usta" className="hover:underline" style={{ color: "var(--link)" }}>
+                danışan mesajlarınızı
+              </Link>{" "}
+              görebilirsiniz.
             </p>
           </div>
           <Link
