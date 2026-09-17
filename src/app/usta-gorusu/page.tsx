@@ -74,12 +74,14 @@ export default async function UstaGorusumPage() {
           items-start ile buton üstte "yüzüyor" gibi duruyordu). */}
       <div className="mb-8">
         <div className="flex items-center justify-between gap-3 flex-wrap">
-          {/* ⟳ min-w-0 — fikape'nin bilinen tekrarlayan flex-taşma bug
-              sınıfı: bu div'e min-w-0 olmadan, içindeki metin uzayınca
-              flex satırı taşıp "Ayarlar" butonunu alt satıra itiyordu
-              (kullanıcı ekran görüntüsüyle fark etti). Yapısal düzeltme —
-              metin uzunluğundan bağımsız, Ayarlar hep aynı satırda kalır. */}
-          <div className="min-w-0">
+          {/* ⟳ min-w-0 TEK BAŞINA yetmedi (kullanıcı ekran görüntüsüyle
+              gösterdi — Ayarlar hâlâ alt satıra düşüyordu): flex-basis
+              "auto" kaldığı sürece tarayıcı satırı yine metnin
+              sarmasından ÖNCEKİ (tek satır) genişliğine göre ölçüyor.
+              flex-1 eklenince div mevcut boşluğu kullanıp KENDİ İÇİNDE
+              satır kırıyor, Ayarlar'ı itmiyor — usta/[slug]/page.tsx'teki
+              aynı "min-w-0 flex-1" deseniyle birebir aynı çözüm. */}
+          <div className="min-w-0 flex-1">
             <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2 flex-wrap">
               Usta Panelim
               <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold" style={{ color: EXPERT_STATUS_TONES.success.color, background: EXPERT_STATUS_TONES.success.bg }}>
