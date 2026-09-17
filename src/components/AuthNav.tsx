@@ -40,6 +40,15 @@ function WrenchIcon() {
   );
 }
 
+function PencilIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+    </svg>
+  );
+}
+
 function PlusCircleIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -221,12 +230,19 @@ export function AuthNav() {
           )}
         </div>
 
+        {/* Dar mobil genişliklerde (ör. 412px) metin butonu diğer header
+            öğeleriyle (zil, mesaj, avatar) sığmayıp 2 satıra bölünüyor ve
+            sabit yükseklikli header'ın dışına taşıyordu (kullanıcı ekran
+            görüntüsüyle gösterdi). sm altında yalnız kalem ikonu, sm ve
+            üstünde metinle birlikte — buton hiçbir zaman sarmıyor. */}
         <Link
           href="/yorum-yaz"
-          className="px-3 py-1.5 text-sm font-semibold text-white rounded-md transition-colors"
+          aria-label="Yorum Yaz"
+          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 sm:py-1.5 text-sm font-semibold text-white rounded-md transition-colors whitespace-nowrap"
           style={{ background: "#111" }}
         >
-          Yorum Yaz
+          <PencilIcon />
+          <span className="hidden sm:inline">Yorum Yaz</span>
         </Link>
         {/* Canlıda 768-1024px (tablet) aralığında test edildi: MessageBell +
             NotificationBell + hesap menüsü + Yorum Yaz + bu buton + arama
