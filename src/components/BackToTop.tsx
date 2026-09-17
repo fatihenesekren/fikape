@@ -17,7 +17,8 @@ const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
 export function BackToTop() {
   const pathname = usePathname();
-  const [visible, setVisible] = useState(false);
+  const [pastThreshold, setPastThreshold] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
   const [progress, setProgress] = useState(0);
   const rafRef = useRef<number | null>(null);
 
@@ -25,7 +26,7 @@ export function BackToTop() {
     function update() {
       const y = window.scrollY;
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      setVisible(y > SHOW_AFTER);
+      setPastThreshold(y > SHOW_AFTER);
       setProgress(max > 0 ? Math.min(1, Math.max(0, y / max)) : 0);
       rafRef.current = null;
     }
@@ -41,6 +42,22 @@ export function BackToTop() {
       if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
     };
   }, []);
+
+  // Footer göründüğünde buton kendini gizliyor — zaten sayfanın sonundayız,
+  // "yukarı çık" bir işe yaramıyor. Bu, footer'ın FAB'lara pay ayırmak için
+  // büyük bir alt boşluk taşımasına gerek bırakmıyor (kullanıcı: "aşağıda
+  // çok boşluk kalıyor" — 5 turluk padding denemesi yerine kalıcı çözüm).
+  useEffect(() => {
+    const footer = document.getElementById("site-footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(([entry]) => setFooterVisible(entry.isIntersecting), {
+      rootMargin: "0px 0px -1px 0px",
+    });
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
+  const visible = pastThreshold && !footerVisible;
 
   const scrollToTop = useCallback(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -66,7 +83,7 @@ export function BackToTop() {
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
       className={`fixed right-5 z-50 w-11 h-11 rounded-full bg-white border border-gray-200 shadow-lg flex items-center justify-center transition-all duration-300 hover:border-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-link focus-visible:ring-offset-2 ${
-        pathname === "/" ? "bottom-5" : "bottom-24 sm:bottom-20"
+        pathname === "/" ? "bottom-5" : "bottom-20"
       } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"}`}
     >
       {/* Scroll ilerleme halkası */}
