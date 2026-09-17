@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { TYPE_ICON, TYPE_LABEL, type NotificationData } from "./NotificationList";
+import { useAnchoredPosition } from "@/lib/useAnchoredPosition";
 
 function fmtDate(iso: string) {
   return new Date(iso).toLocaleDateString("tr-TR", { day: "numeric", month: "short" });
@@ -15,7 +16,9 @@ export function NotificationBell() {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
+  const panelStyle = useAnchoredPosition(btnRef, open, 320);
 
   useEffect(() => {
     let cancelled = false;
@@ -84,6 +87,7 @@ export function NotificationBell() {
   return (
     <div ref={rootRef} className="relative">
       <button
+        ref={btnRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label={unreadCount > 0 ? `${unreadCount} okunmamış bildirim` : "Bildirimler"}
@@ -102,14 +106,12 @@ export function NotificationBell() {
       </button>
 
       {open && (
-        // fixed + header'ın gerçek sağ kenarı — bu buton header'daki ikon
-        // kümesinin EN SAĞINDA değil (avatar/Yorum Yaz ondan sonra geliyor),
-        // bu yüzden "absolute right-0" paneli SOLA taşırıyordu. Sabit
-        // "right-4" de YETERSİZ çıktı: header max-w-7xl ile ortalanmış,
-        // geniş masaüstü ekranlarda panel viewport köşesine değil header'ın
-        // kendi kenarına hizalanmalı — right değeri bunu hesaplıyor,
-        // bkz. MessageBell.tsx'teki aynı fix.
-        <div className="fixed right-[max(1rem,calc((100vw-80rem)/2+1rem))] top-16 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
+        // CSS tahminiyle konumlama hep BİR senaryoda kırıldı — panel bazen
+        // tıklanan butondan tamamen başka bir yerde görünüyordu (kullanıcı
+        // gösterdi). useAnchoredPosition, mobilde eski (sorunsuz) davranışı
+        // koruyup sm ve üstünde paneli GERÇEKTEN bu butona göre konumlandırıyor
+        // — bkz. MessageBell.tsx'teki aynı fix.
+        <div style={panelStyle} className="bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
           <div className="px-4 py-3 border-b border-gray-50">
             <h3 className="text-sm font-bold text-gray-900">Bildirimler</h3>
           </div>

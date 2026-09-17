@@ -8,6 +8,7 @@ import { Avatar } from "@/components/Avatar";
 import { NotificationBell } from "@/components/NotificationBell";
 import { MessageBell } from "@/components/MessageBell";
 import { MessageIcon } from "@/components/icons";
+import { useAnchoredPosition } from "@/lib/useAnchoredPosition";
 
 function ShieldIcon() {
   return (
@@ -96,7 +97,9 @@ export function AuthNav() {
   const [unreadMessages, setUnreadMessages] = useState(0);
   const [isActiveExpert, setIsActiveExpert] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
+  const menuStyle = useAnchoredPosition(menuBtnRef, menuOpen, 208);
 
   // Usta durumu JWT'de yok (bkz. src/app/api/me/expert-status/route.ts) —
   // MessageBell'deki gibi hafif bir client fetch, mount'ta bir kez.
@@ -167,6 +170,7 @@ export function AuthNav() {
             Admin/Garajım/Profilim/Çıkış tek listede, iki ayrı yapı bakımı gerekmiyor. */}
         <div className="relative" ref={menuRef}>
           <button
+            ref={menuBtnRef}
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Hesap menüsü"
             aria-expanded={menuOpen}
@@ -182,17 +186,14 @@ export function AuthNav() {
           </button>
 
           {menuOpen && (
-            /* fixed + header'ın gerçek sağ kenarı — bkz. NotificationBell.tsx'teki
-               aynı fix. Avatar, "Yorum Yaz" kalem butonundan önce geldiği için
-               (kümenin en sağında değil) "absolute right-0" paneli sola
-               taşırıyordu. Sabit "right-4" de YETERSİZ çıktı: header içeriği
-               max-w-7xl ile ortalanmış, geniş masaüstü ekranlarda (>1280px)
-               viewport kenarıyla header'ın kendi kenarı arasında boşluk oluşuyor
-               — panel o boşlukta, butondan kopuk duruyordu (kullanıcı geniş
-               ekrandan gösterdi). right değeri artık header'ın max-w-7xl+px-4
-               kapsayıcısının GERÇEK sağ kenarını hesaplıyor: dar ekranda 1rem
-               (px-4 ile aynı), geniş ekranda o kenarın viewport'tan uzaklığı. */
-            <div className="fixed right-[max(1rem,calc((100vw-80rem)/2+1rem))] top-16 w-52 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">
+            /* CSS tahminiyle konumlama (absolute right-0, sonra fixed right-4,
+               sonra header kenarını hesaplayan calc()) hep BİR senaryoda
+               kırıldı — hiçbiri butonun gerçek konumunu bilmiyordu, panel bazen
+               tıklanan butondan tamamen başka bir yerde (başka bir butonun
+               altında) görünüyordu (kullanıcı gösterdi). useAnchoredPosition
+               artık triggerRef'in getBoundingClientRect()'ini ölçüp paneli
+               GERÇEKTEN o butona göre konumlandırıyor. */
+            <div style={menuStyle} className="bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">
               {isAdmin && (
                 <Link href="/admin/yorumlar" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                   <ShieldIcon /> Admin

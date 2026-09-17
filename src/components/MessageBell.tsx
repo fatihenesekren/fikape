@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Avatar } from "./Avatar";
 import { MessageIcon } from "./AuthNav";
 import type { MessagePreviewItem } from "@/app/api/messages/preview/route";
+import { useAnchoredPosition } from "@/lib/useAnchoredPosition";
 
 // Bildirim çanındaki (NotificationList.tsx TYPE_ICON) AYNI aile ikonları —
 // Takas 🤝, Usta 🔧 — buraya da taşındı, iki panel arasında görsel bir bağ
@@ -41,7 +42,9 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
+  const panelStyle = useAnchoredPosition(btnRef, open, 320);
 
   useEffect(() => {
     let cancelled = false;
@@ -115,6 +118,7 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
   return (
     <div ref={rootRef} className="relative">
       <button
+        ref={btnRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label={unreadCount > 0 ? `${unreadCount} okunmamış mesaj` : "Mesajlarım"}
@@ -130,14 +134,11 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
       </button>
 
       {open && (
-        // fixed + header'ın gerçek sağ kenarı — bkz. NotificationBell.tsx'teki
-        // aynı fix (önceki "absolute right-0" denemesi TETİKLEYİCİ BUTONUN
-        // kendi dar sarmalayıcısına göre hizalanıyordu; bu buton header'daki
-        // ikon kümesinin EN SAĞINDA değilse panel sola taşıyordu). Sabit
-        // "right-4" de YETERSİZ çıktı: header max-w-7xl ile ortalanmış, geniş
-        // masaüstü ekranlarda panel viewport köşesine değil header'ın kendi
-        // kenarına hizalanmalı — right değeri bunu hesaplıyor.
-        <div className="fixed right-[max(1rem,calc((100vw-80rem)/2+1rem))] top-16 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
+        // CSS tahminiyle konumlama hep BİR senaryoda kırıldı — panel bazen
+        // tıklanan butondan tamamen başka bir yerde görünüyordu (kullanıcı
+        // gösterdi). useAnchoredPosition, mobilde eski (sorunsuz) davranışı
+        // koruyup sm ve üstünde paneli GERÇEKTEN bu butona göre konumlandırıyor.
+        <div style={panelStyle} className="bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
           <div className="px-4 py-3 border-b border-gray-50">
             <h3 className="text-sm font-bold text-gray-900">Mesajlarım</h3>
           </div>
