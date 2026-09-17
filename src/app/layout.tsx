@@ -103,7 +103,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div className="min-w-0">{children}</div>
         </main>
 
-        <footer className="border-t border-gray-100 py-6">
+        {/* pb-32 — HomeFab (bottom-5) + BackToTop (ana sayfa dışında bottom-20,
+            ikisi üst üste ~124px'e kadar çıkıyor) telif hakkı satırının
+            üzerine biniyordu (kullanıcı ekran görüntüsüyle gösterdi). Alt
+            boşluk FAB'ların en yükseğini net şekilde temizleyecek kadar
+            artırıldı. */}
+        <footer className="border-t border-gray-100 pt-6 pb-32">
           <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 space-y-2">
             <FooterNav />
             <p>© {new Date().getFullYear()} fikape.com · Tüm hakları saklıdır.</p>
