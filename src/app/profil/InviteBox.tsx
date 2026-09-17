@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const BADGES = [
   { count: 1, label: "İlk Adım" },
@@ -10,10 +10,16 @@ const BADGES = [
 
 export function InviteBox({ referralCode, referralCount }: { referralCode: string; referralCount: number }) {
   const [copied, setCopied] = useState(false);
-  const inviteUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/kayit?ref=${referralCode}`
-      : `/kayit?ref=${referralCode}`;
+  const relativeUrl = `/kayit?ref=${referralCode}`;
+  const [inviteUrl, setInviteUrl] = useState(relativeUrl);
+
+  useEffect(() => {
+    // Sunucu ve istemcinin ilk render'da aynı şeyi göstermesi için göreli URL ile
+    // başlıyor, mutlak URL sadece mount sonrası (tarayıcıya özel) set ediliyor —
+    // hydration mismatch'i önlüyor.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setInviteUrl(`${window.location.origin}${relativeUrl}`);
+  }, [relativeUrl]);
 
   const badge = [...BADGES].reverse().find((b) => referralCount >= b.count);
   const nextBadge = BADGES.find((b) => referralCount < b.count);
