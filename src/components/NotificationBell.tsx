@@ -102,7 +102,11 @@ export function NotificationBell() {
       </button>
 
       {open && (
-        <div className="absolute left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 top-full mt-2 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
+        // right-0 her genişlikte — bu buton header'ın en sağındaki kümede,
+        // mobilde ortalamak (eski left-1/2 -translate-x-1/2) paneli sağdan
+        // viewport dışına taşırıyordu, yatay scroll gerektiriyordu
+        // (kullanıcı ekran görüntüsüyle gösterdi).
+        <div className="absolute right-0 top-full mt-2 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
           <div className="px-4 py-3 border-b border-gray-50">
             <h3 className="text-sm font-bold text-gray-900">Bildirimler</h3>
           </div>
