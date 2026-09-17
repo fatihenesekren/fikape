@@ -102,13 +102,14 @@ export function NotificationBell() {
       </button>
 
       {open && (
-        // fixed + viewport köşesi — bu buton header'daki ikon kümesinin
-        // EN SAĞINDA değil (avatar/Yorum Yaz ondan sonra geliyor), bu
-        // yüzden "absolute right-0" (kendi dar sarmalayıcısına göre)
-        // paneli SOLA doğru viewport dışına taşırıyordu (kullanıcı
-        // gerçek cihazdan gösterdi). fixed, tetikleyici butonun konumundan
-        // bağımsız her zaman aynı köşeye sabitler — bkz. MessageBell.tsx.
-        <div className="fixed right-4 top-16 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
+        // fixed + header'ın gerçek sağ kenarı — bu buton header'daki ikon
+        // kümesinin EN SAĞINDA değil (avatar/Yorum Yaz ondan sonra geliyor),
+        // bu yüzden "absolute right-0" paneli SOLA taşırıyordu. Sabit
+        // "right-4" de YETERSİZ çıktı: header max-w-7xl ile ortalanmış,
+        // geniş masaüstü ekranlarda panel viewport köşesine değil header'ın
+        // kendi kenarına hizalanmalı — right değeri bunu hesaplıyor,
+        // bkz. MessageBell.tsx'teki aynı fix.
+        <div className="fixed right-[max(1rem,calc((100vw-80rem)/2+1rem))] top-16 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
           <div className="px-4 py-3 border-b border-gray-50">
             <h3 className="text-sm font-bold text-gray-900">Bildirimler</h3>
           </div>

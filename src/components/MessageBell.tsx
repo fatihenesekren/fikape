@@ -130,14 +130,14 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
       </button>
 
       {open && (
-        // fixed + viewport köşesi — bkz. NotificationBell.tsx'teki aynı fix
-        // (önceki "absolute right-0" denemesi TETİKLEYİCİ BUTONUN kendi
-        // dar sarmalayıcısına göre hizalanıyordu; bu buton header'daki
-        // ikon kümesinin EN SAĞINDA değilse (avatar/Yorum Yaz ondan
-        // sonra geliyorsa) panel sola doğru viewport dışına taşıyordu —
-        // kullanıcı gerçek cihazdan gösterdi). fixed, hangi ikonun
-        // tetiklediğinden bağımsız olarak her zaman aynı köşeye sabitler.
-        <div className="fixed right-4 top-16 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
+        // fixed + header'ın gerçek sağ kenarı — bkz. NotificationBell.tsx'teki
+        // aynı fix (önceki "absolute right-0" denemesi TETİKLEYİCİ BUTONUN
+        // kendi dar sarmalayıcısına göre hizalanıyordu; bu buton header'daki
+        // ikon kümesinin EN SAĞINDA değilse panel sola taşıyordu). Sabit
+        // "right-4" de YETERSİZ çıktı: header max-w-7xl ile ortalanmış, geniş
+        // masaüstü ekranlarda panel viewport köşesine değil header'ın kendi
+        // kenarına hizalanmalı — right değeri bunu hesaplıyor.
+        <div className="fixed right-[max(1rem,calc((100vw-80rem)/2+1rem))] top-16 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
           <div className="px-4 py-3 border-b border-gray-50">
             <h3 className="text-sm font-bold text-gray-900">Mesajlarım</h3>
           </div>

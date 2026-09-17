@@ -182,8 +182,17 @@ export function AuthNav() {
           </button>
 
           {menuOpen && (
-            /* fixed + viewport köşesi — bkz. NotificationBell.tsx'teki aynı fix. Avatar, "Yorum Yaz" kalem butonundan önce geldiği için (kümenin en sağında değil) "absolute right-0" paneli sola taşırıyordu. */
-            <div className="fixed right-4 top-16 w-52 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">
+            /* fixed + header'ın gerçek sağ kenarı — bkz. NotificationBell.tsx'teki
+               aynı fix. Avatar, "Yorum Yaz" kalem butonundan önce geldiği için
+               (kümenin en sağında değil) "absolute right-0" paneli sola
+               taşırıyordu. Sabit "right-4" de YETERSİZ çıktı: header içeriği
+               max-w-7xl ile ortalanmış, geniş masaüstü ekranlarda (>1280px)
+               viewport kenarıyla header'ın kendi kenarı arasında boşluk oluşuyor
+               — panel o boşlukta, butondan kopuk duruyordu (kullanıcı geniş
+               ekrandan gösterdi). right değeri artık header'ın max-w-7xl+px-4
+               kapsayıcısının GERÇEK sağ kenarını hesaplıyor: dar ekranda 1rem
+               (px-4 ile aynı), geniş ekranda o kenarın viewport'tan uzaklığı. */
+            <div className="fixed right-[max(1rem,calc((100vw-80rem)/2+1rem))] top-16 w-52 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">
               {isAdmin && (
                 <Link href="/admin/yorumlar" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                   <ShieldIcon /> Admin
