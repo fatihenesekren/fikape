@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 
-export const metadata: Metadata = { title: "Usta Görüşüm — fikape", robots: { index: false } };
+export const metadata: Metadata = { title: "Usta Panelim — fikape", robots: { index: false } };
 
 // Ayarlar linkindeki dişli ikonu — ExpertNotesSection.tsx'teki EditIcon
 // deseniyle aynı inline SVG stili.
@@ -18,7 +18,7 @@ function GearIcon({ className = "" }: { className?: string }) {
   );
 }
 
-// Usta Görüşüm — aktif ustanın kendi paneli. Önceden /profil sayfasının
+// Usta Panelim — aktif ustanın kendi paneli. Önceden /profil sayfasının
 // altında gömülü bir karttı; kullanıcı ekran görüntüsüyle "küçük kalıyor,
 // büyütelim" dedi, 5 ajanlı bir bölüm-içi taşıma denendi ama sonuç
 // (istatistik satırı + tam-genişlik CTA bug'ı) daha kötü göründü —
@@ -67,7 +67,7 @@ export default async function UstaGorusumPage() {
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div>
             <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2 flex-wrap">
-              Usta Görüşüm
+              Usta Panelim
               <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold" style={{ color: EXPERT_STATUS_TONES.success.color, background: EXPERT_STATUS_TONES.success.bg }}>
                 Aktif
               </span>

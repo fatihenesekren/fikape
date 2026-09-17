@@ -168,7 +168,7 @@ export default async function ExpertProfilePage({
             (kullanıcı fark etti: "aktif usta neden profiline dönsün").
             Herkese açık ziyaretçi için "Ana sayfaya dön" değişmedi. */}
         {isOwnProfile ? (
-          <Link href="/usta-gorusu" className="hover:text-gray-800 transition-colors min-w-0 truncate">← Usta Görüşüme dön</Link>
+          <Link href="/usta-gorusu" className="hover:text-gray-800 transition-colors min-w-0 truncate">← Usta Panelime dön</Link>
         ) : (
           <Link href="/" className="hover:text-gray-800 transition-colors min-w-0 truncate">← Ana sayfaya dön</Link>
         )}

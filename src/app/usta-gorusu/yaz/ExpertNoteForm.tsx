@@ -153,21 +153,17 @@ export function ExpertNoteForm({ headline }: { headline: string | null }) {
             sayfalarıyla (/usta-gorusu/notlarim, /usta-gorusu/profil,
             /usta/[slug]) aynı desen, aynı metin (3 ajanlı karar). */}
         <Link href="/usta-gorusu" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800 mb-4">
-          ← Usta Görüşüme dön
+          ← Usta Panelime dön
         </Link>
         {/* Önceden sayfanın en üstünde, başlıktan kopuk, ayrı bir satırda
             duruyordu ("hoşuma gitmedi") — artık başlıkla tek bir görsel
-            blok, sağa yaslı. */}
+            blok, sağa yaslı.
+            ⟳ Usta Notlarım/Profil Ayarları kısayolları kaldırıldı — artık
+            "← Usta Panelime dön" linki zaten hepsine tek tıkla götürüyor,
+            burada ayrıca tekrarlamak gereksiz tekrardı (kullanıcı fark
+            etti). */}
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <h1 className="text-2xl font-black text-gray-900">Usta Görüşü Yaz</h1>
-          <div className="flex items-center gap-4 pt-1.5">
-            <Link href="/usta-gorusu/notlarim" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
-              Usta Notlarım →
-            </Link>
-            <Link href="/usta-gorusu/profil" className="text-xs font-semibold text-gray-500 hover:text-gray-800">
-              Profil Ayarları →
-            </Link>
-          </div>
         </div>
         {headline && <p className="text-sm text-gray-400 mt-1">{headline}</p>}
         <p className="text-xs text-gray-400 mt-3 bg-gray-50 rounded-lg px-3 py-2 leading-relaxed">

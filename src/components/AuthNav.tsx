@@ -29,8 +29,8 @@ function GarageIcon() {
   );
 }
 
-// Usta Görüşüm — İngiliz anahtarı, kartın kendi başlığındaki (🔧) ikonla
-// aynı fikri taşıyor, diğer menü ikonlarıyla aynı outline SVG stilde.
+// Usta Panelim — İngiliz anahtarı, hub sayfasının kendi başlığındaki (🔧)
+// ikonla aynı fikri taşıyor, diğer menü ikonlarıyla aynı outline SVG stilde.
 function WrenchIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -190,7 +190,7 @@ export function AuthNav() {
               </Link>
               {isActiveExpert && (
                 <Link href="/usta-gorusu" onClick={() => setMenuOpen(false)} className={menuItemClass}>
-                  <WrenchIcon /> Usta Görüşüm
+                  <WrenchIcon /> Usta Panelim
                 </Link>
               )}
               {/* "Mesajlarım" hesap menüsündeki ayrı girişi kaldırıldı — MessageBell

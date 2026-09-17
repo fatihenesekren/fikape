@@ -80,7 +80,7 @@ export default async function ExpertContactSettingsPage() {
       {/* ⟳ /profil değil /usta-gorusu hub'ına dönüyor — bkz.
           feature_usta_gorusum_hizli_erisim, 3 ajanlı metin kararı. */}
       <Link href="/usta-gorusu" className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800">
-        ← Usta Görüşüme dön
+        ← Usta Panelime dön
       </Link>
 
       <div>

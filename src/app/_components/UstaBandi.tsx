@@ -13,10 +13,11 @@ import { prisma } from "@/lib/prisma";
 // "reklam şeridi" hissi riski).
 //
 // ⟳ Aktif usta artık null DÖNMÜYOR — aynı bant, kendi paneline (Usta
-// Görüşüm) götüren farklı bir içerikle gösteriliyor (kullanıcı isteği: boş
+// Panelim) götüren farklı bir içerikle gösteriliyor (kullanıcı isteği: boş
 // yer yerine kendi işine hızlı erişim). Üstte "Son Yorumlar" ile aynı
-// ritimde bir bölüm başlığı da eklendi (3 uzman ajanla — IA/isimlendirme/
-// teknik — kararlaştırılan "Usta Görüşüm" markalaması burada da tutarlı).
+// ritimde bir bölüm başlığı da eklendi. Bölüm başlığı ("🔧 Usta Görüşü")
+// ÖZELLİKLE değişmedi — bu özelliğin/içeriğin genel adı, kişisel hub'ın
+// adından ("Usta Panelim") bilinçli olarak ayrı tutuluyor.
 export async function UstaBandi() {
   const session = await auth();
   let isActiveExpert = false;
@@ -53,7 +54,7 @@ export async function UstaBandi() {
           <span className="min-w-0">
             {isActiveExpert ? (
               <>
-                <span className="block text-sm font-semibold text-gray-900">Usta Görüşünüze göz atın</span>
+                <span className="block text-sm font-semibold text-gray-900">Usta Panelinize göz atın</span>
                 <span className="hidden sm:block text-xs text-gray-500 truncate">
                   Yeni not yazın, danışan mesajlarınızı görün
                 </span>
