@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { StyledCheckbox } from "@/components/StyledCheckbox";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { TURKISH_DISTRICTS } from "@/lib/turkishDistricts";
 import { PhotoUploader, type ExistingPhoto } from "@/components/review/PhotoUploader";
+import { VoiceInputButton } from "@/components/review/FormPrimitives";
+import { useSpeechToText } from "@/hooks/useSpeechToText";
+import { applyTextWithLimit } from "@/lib/reviewValidation";
 
 // "0532...", "+90 532...", "532..." — ne girilmiş olursa olsun 10 haneli
 // yerel numaraya indirger (+90/0 önekini atar).
@@ -51,6 +54,20 @@ export function ContactSettingsForm({
   // notu — aynı sorunun başlık/bio/il-ilçe versiyonu, kullanıcı fark etti).
   const [headline, setHeadline] = useState(initialHeadline);
   const [bio, setBio] = useState(initialBio);
+  const [voiceMessage, setVoiceMessage] = useState<string | null>(null);
+  const bioRef = useRef(bio);
+  useEffect(() => { bioRef.current = bio; }, [bio]);
+  const speech = useSpeechToText();
+
+  function handleVoiceFinalTranscript(chunk: string) {
+    const { text: next, truncated } = applyTextWithLimit(bioRef.current, chunk, 2000);
+    bioRef.current = next;
+    setBio(next);
+    if (truncated) {
+      speech.stop();
+      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle düzenleyebilirsiniz.");
+    }
+  }
   const [city, setCity] = useState(initialCity);
   const [district, setDistrict] = useState(initialDistrict);
   const districtOptions = city ? TURKISH_DISTRICTS[city] ?? [] : [];
@@ -215,14 +232,28 @@ export function ContactSettingsForm({
 
         <div>
           <label htmlFor="usta-bio" className="block text-sm font-semibold text-gray-700 mb-1.5">Kendinizi tanıtın</label>
-          <textarea
-            id="usta-bio"
-            value={bio}
-            onChange={(e) => setBio(e.target.value.slice(0, 2000))}
-            rows={5}
-            placeholder="Deneyiminiz, uzmanlaştığınız marka/modeller, işletmeniz hakkında kısa bilgi..."
-            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 resize-y"
-          />
+          <div className="border border-gray-200 rounded-xl overflow-hidden focus-within:border-gray-400 transition-colors">
+            <textarea
+              id="usta-bio"
+              value={bio}
+              onChange={(e) => setBio(e.target.value.slice(0, 2000))}
+              rows={5}
+              placeholder="Deneyiminiz, uzmanlaştığınız marka/modeller, işletmeniz hakkında kısa bilgi..."
+              className="w-full px-3 py-2.5 text-sm focus:outline-none resize-y border-0 block"
+            />
+            {speech.interimTranscript && (
+              <p className="text-xs text-gray-400 italic px-3 pb-1.5 -mt-1">{speech.interimTranscript}</p>
+            )}
+            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
+              <VoiceInputButton
+                status={speech.status}
+                message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+                onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+                onStop={() => speech.stop()}
+              />
+              <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+            </div>
+          </div>
         </div>
       </div>
 
