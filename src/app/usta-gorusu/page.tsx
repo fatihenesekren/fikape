@@ -82,19 +82,29 @@ export default async function UstaGorusumPage() {
               </span>
             </h1>
             <p className="text-sm text-gray-500 mt-1">
-              {/* ⟳ Kullanıcı fark etti: bu ifade önceden salt renkle
-                  (--link mavi) vurgulanmıştı ama tıklanamıyordu — mavi
-                  renk "buraya tıklanır" sinyali verip yanıltıyordu.
-                  Şimdi gerçek bir link, "Usta Mesajlarım" kartıyla AYNI
-                  hedefe (/mesajlar?tab=usta) gidiyor. Metin bilinçli
-                  olarak değişmedi (kullanıcı onayı) — kartın nav
-                  etiketinden farklı ama aynı yere gittiği artık linkin
-                  kendisiyle netleşiyor. */}
+              {/* ⟳ Kullanıcı fark etti: bu cümle panelin sadece 2
+                  yeteneğinden bahsediyordu (yaz + mesaj), "Usta Profilim"
+                  ve "Ayarlar" hiç geçmiyordu — panelin 4 yeteneği de artık
+                  burada. Üç link de (profilinizi/mesajlarınızı/
+                  ayarlarınızı) AYNI tek-tip --link mavisinde — 2 ajanlı
+                  karar: kart renklerine (mavi/yeşil/kahverengi) eşleştirmek
+                  "renk anahtarı" gibi okunup dikkat dağıtır, "Ayarlar"ın
+                  kartta da bilinçli olarak rengi yok (kategori değil,
+                  yardımcı eylem) — cümlede ona zorla renk uydurmak yapay
+                  olurdu. Tek renk = sade "bu tıklanabilir" sinyali. */}
               Yeni bir usta görüşü yazabilir,{" "}
+              <Link href={`/usta/${profile.slug}`} className="hover:underline" style={{ color: "var(--link)" }}>
+                profilinizi
+              </Link>{" "}
+              ve{" "}
               <Link href="/mesajlar?tab=usta" className="hover:underline" style={{ color: "var(--link)" }}>
                 danışan mesajlarınızı
               </Link>{" "}
-              görebilirsiniz.
+              görebilir,{" "}
+              <Link href="/usta-gorusu/profil" className="hover:underline" style={{ color: "var(--link)" }}>
+                ayarlarınızı
+              </Link>{" "}
+              düzenleyebilirsiniz.
             </p>
           </div>
           <Link
