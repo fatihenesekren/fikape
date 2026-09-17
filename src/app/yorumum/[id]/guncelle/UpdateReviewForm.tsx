@@ -176,26 +176,30 @@ export function UpdateReviewForm({
               {detailText.length}/500
             </span>
           </div>
-          <textarea
-            value={detailText}
-            onChange={(e) => setDetailText(e.target.value.slice(0, 500))}
-            onBlur={() => { if (detailText.trim()) setDetailTouched(true); }}
-            rows={4}
-            placeholder="Deneyimini birkaç cümleyle anlat..."
-            className="w-full px-3.5 py-2.5 rounded-xl border text-sm focus:outline-none resize-none transition-colors"
+          <div
+            className="rounded-xl border overflow-hidden transition-colors"
             style={{ borderColor: detailTouched ? (detailValidation.ok ? "#86efac" : "#fca5a5") : "#e5e7eb" }}
-          />
-          {speech.interimTranscript && (
-            <p className="text-xs text-gray-400 italic -mt-1">{speech.interimTranscript}</p>
-          )}
-          <div className="flex items-center gap-2">
-            <VoiceInputButton
-              status={speech.status}
-              message={speech.status === "error" ? speech.errorMessage : voiceMessage}
-              onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
-              onStop={() => speech.stop()}
+          >
+            <textarea
+              value={detailText}
+              onChange={(e) => setDetailText(e.target.value.slice(0, 500))}
+              onBlur={() => { if (detailText.trim()) setDetailTouched(true); }}
+              rows={4}
+              placeholder="Deneyimini birkaç cümleyle anlat..."
+              className="w-full px-3.5 py-2.5 text-sm focus:outline-none resize-none border-0 block"
             />
-            <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+            {speech.interimTranscript && (
+              <p className="text-xs text-gray-400 italic px-3.5 pb-1.5 -mt-1">{speech.interimTranscript}</p>
+            )}
+            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
+              <VoiceInputButton
+                status={speech.status}
+                message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+                onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+                onStop={() => speech.stop()}
+              />
+              <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+            </div>
           </div>
           {detailTouched && !detailValidation.ok && <FieldFeedback error={detailValidation.error} ok={false} />}
         </div>
