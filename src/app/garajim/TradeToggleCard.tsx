@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
@@ -15,6 +15,9 @@ import { FUEL_LABELS } from "@/lib/fuel";
 import { PartConditionForm } from "./PartConditionForm";
 import { DamageStatusForm, EMPTY_DAMAGE_STATUS, type DamageStatusValue } from "./DamageStatusForm";
 import { PhotoUploader } from "@/components/review/PhotoUploader";
+import { VoiceInputButton } from "@/components/review/FormPrimitives";
+import { useSpeechToText } from "@/hooks/useSpeechToText";
+import { applyTextWithLimit } from "@/lib/reviewValidation";
 
 const TRADE_PHOTO_UPLOAD_URL = "/api/uploads/trade-photo";
 const TRADE_PHOTO_PATH_PREFIX = "trade-listings/";
@@ -658,6 +661,21 @@ function TradeFormFields({
   // olarak dışarıdan geliyor.
   photoSlot?: ReactNode;
 }) {
+  const [descVoiceMessage, setDescVoiceMessage] = useState<string | null>(null);
+  const descriptionRef = useRef(description);
+  useEffect(() => { descriptionRef.current = description; }, [description]);
+  const descSpeech = useSpeechToText();
+
+  function handleDescriptionVoiceFinalTranscript(chunk: string) {
+    const { text: next, truncated } = applyTextWithLimit(descriptionRef.current, chunk, 2000);
+    descriptionRef.current = next;
+    setDescription(next);
+    if (truncated) {
+      descSpeech.stop();
+      setDescVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle düzenleyebilirsiniz.");
+    }
+  }
+
   function toggleDamageStatus(status: DamageStatus) {
     setWantDamageStatuses(
       wantDamageStatuses.includes(status)
@@ -731,14 +749,28 @@ function TradeFormFields({
           <label className="block text-xs font-semibold text-link-deep mb-1">
             Açıklama <span className="font-normal text-link-muted">(opsiyonel — bakım geçmişi, aksesuar vb.)</span>
           </label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Aracınız hakkında detaylı bilgi verin"
-            maxLength={2000}
-            rows={4}
-            className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
-          />
+          <div className="rounded-lg border border-link-line overflow-hidden bg-white focus-within:border-gray-400 transition-colors">
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value.slice(0, 2000))}
+              placeholder="Aracınız hakkında detaylı bilgi verin"
+              maxLength={2000}
+              rows={4}
+              className="w-full text-sm px-2.5 py-1.5 border-0 block focus:outline-none"
+            />
+            {descSpeech.interimTranscript && (
+              <p className="text-xs text-gray-400 italic px-2.5 pb-1.5 -mt-1">{descSpeech.interimTranscript}</p>
+            )}
+            <div className="flex items-center gap-2 px-2.5 py-2 bg-gray-50 border-t border-gray-100">
+              <VoiceInputButton
+                status={descSpeech.status}
+                message={descSpeech.status === "error" ? descSpeech.errorMessage : descVoiceMessage}
+                onStart={() => { setDescVoiceMessage(null); descSpeech.start(handleDescriptionVoiceFinalTranscript); }}
+                onStop={() => descSpeech.stop()}
+              />
+              <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+            </div>
+          </div>
         </div>
 
         {showPartConditions && (

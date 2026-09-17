@@ -10,6 +10,9 @@ import {
   EXPERT_NOTE_BODY_MAX,
   EXPERT_NOTE_DISCLAIMER,
 } from "@/lib/expertNote";
+import { VoiceInputButton } from "@/components/review/FormPrimitives";
+import { useSpeechToText } from "@/hooks/useSpeechToText";
+import { applyTextWithLimit } from "@/lib/reviewValidation";
 
 interface ModelResult {
   id: number;
@@ -53,6 +56,20 @@ export function ExpertNoteForm({ headline }: { headline: string | null }) {
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [voiceMessage, setVoiceMessage] = useState<string | null>(null);
+  const bodyRef = useRef(body);
+  useEffect(() => { bodyRef.current = body; }, [body]);
+  const speech = useSpeechToText();
+
+  function handleVoiceFinalTranscript(chunk: string) {
+    const { text: next, truncated } = applyTextWithLimit(bodyRef.current, chunk, EXPERT_NOTE_BODY_MAX);
+    bodyRef.current = next;
+    setBody(next);
+    if (truncated) {
+      speech.stop();
+      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle düzenleyebilirsiniz.");
+    }
+  }
   const [structured, setStructured] = useState<Record<string, string>>({});
 
   const [error, setError] = useState("");
@@ -239,13 +256,27 @@ export function ExpertNoteForm({ headline }: { headline: string | null }) {
         {/* Gövde */}
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1.5">Teknik notunuz</label>
-          <textarea
-            value={body}
-            onChange={(e) => setBody(e.target.value.slice(0, EXPERT_NOTE_BODY_MAX))}
-            rows={6}
-            placeholder="Bu model hakkında bildikleriniz — teknik, deneyime dayalı, ölçülü. İletişim bilgisi, marka reklamı veya 'bana ulaşın' türü ifadeler yazmayın."
-            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 resize-y"
-          />
+          <div className="border border-gray-200 rounded-xl overflow-hidden focus-within:border-gray-400 transition-colors">
+            <textarea
+              value={body}
+              onChange={(e) => setBody(e.target.value.slice(0, EXPERT_NOTE_BODY_MAX))}
+              rows={6}
+              placeholder="Bu model hakkında bildikleriniz — teknik, deneyime dayalı, ölçülü. İletişim bilgisi, marka reklamı veya 'bana ulaşın' türü ifadeler yazmayın."
+              className="w-full px-3 py-2.5 text-sm focus:outline-none resize-y border-0 block"
+            />
+            {speech.interimTranscript && (
+              <p className="text-xs text-gray-400 italic px-3 pb-1.5 -mt-1">{speech.interimTranscript}</p>
+            )}
+            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
+              <VoiceInputButton
+                status={speech.status}
+                message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+                onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+                onStop={() => speech.stop()}
+              />
+              <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+            </div>
+          </div>
           <p className={`text-[11px] mt-1 text-right ${bodyLen < EXPERT_NOTE_BODY_MIN ? "text-orange-500" : "text-gray-400"}`}>
             {bodyLen}/{EXPERT_NOTE_BODY_MAX} {bodyLen < EXPERT_NOTE_BODY_MIN && `· en az ${EXPERT_NOTE_BODY_MIN}`}
           </p>
