@@ -182,8 +182,8 @@ export function AuthNav() {
           </button>
 
           {menuOpen && (
-            /* right-0 her genişlikte — bkz. NotificationBell.tsx'teki aynı fix. */
-            <div className="absolute right-0 top-full mt-2 w-52 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">
+            /* fixed + viewport köşesi — bkz. NotificationBell.tsx'teki aynı fix. Avatar, "Yorum Yaz" kalem butonundan önce geldiği için (kümenin en sağında değil) "absolute right-0" paneli sola taşırıyordu. */
+            <div className="fixed right-4 top-16 w-52 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">
               {isAdmin && (
                 <Link href="/admin/yorumlar" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                   <ShieldIcon /> Admin

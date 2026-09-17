@@ -102,11 +102,13 @@ export function NotificationBell() {
       </button>
 
       {open && (
-        // right-0 her genişlikte — bu buton header'ın en sağındaki kümede,
-        // mobilde ortalamak (eski left-1/2 -translate-x-1/2) paneli sağdan
-        // viewport dışına taşırıyordu, yatay scroll gerektiriyordu
-        // (kullanıcı ekran görüntüsüyle gösterdi).
-        <div className="absolute right-0 top-full mt-2 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
+        // fixed + viewport köşesi — bu buton header'daki ikon kümesinin
+        // EN SAĞINDA değil (avatar/Yorum Yaz ondan sonra geliyor), bu
+        // yüzden "absolute right-0" (kendi dar sarmalayıcısına göre)
+        // paneli SOLA doğru viewport dışına taşırıyordu (kullanıcı
+        // gerçek cihazdan gösterdi). fixed, tetikleyici butonun konumundan
+        // bağımsız her zaman aynı köşeye sabitler — bkz. MessageBell.tsx.
+        <div className="fixed right-4 top-16 w-80 max-w-[calc(100vw-2rem)] bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
           <div className="px-4 py-3 border-b border-gray-50">
             <h3 className="text-sm font-bold text-gray-900">Bildirimler</h3>
           </div>
