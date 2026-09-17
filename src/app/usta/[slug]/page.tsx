@@ -13,6 +13,21 @@ import { toTelHref } from "@/lib/phone";
 import { WorkplacePhotoSlider } from "./WorkplacePhotoSlider";
 import { GearIcon } from "@/components/icons";
 
+// "Eylül 2026'dan beri kayıtlı" gibi bir ifadede ek, yılın son iki
+// hanesinin Türkçe okunuşundaki SON kelimeye göre uyum sağlar (ay değil —
+// "Eylül 2026" tamlamasında son kelime yıldır). Örn. 2024 "yirmi dört" —
+// "dört" ince+tonsuz → "ten"; 2026 "yirmi altı" — "altı" kalın+ünlü → "dan".
+const ONES_SUFFIX = ["dan", "den", "den", "ten", "ten", "ten", "dan", "den", "den", "dan"] as const;
+const TENS_SUFFIX = ["den", "dan", "den", "dan", "tan", "den", "tan", "ten", "den", "dan"] as const;
+function turkishBeriSuffix(year: number): string {
+  const lastTwo = year % 100;
+  const ones = lastTwo % 10;
+  const tens = Math.floor(lastTwo / 10);
+  if (ones !== 0) return ONES_SUFFIX[ones];
+  if (tens !== 0) return TENS_SUFFIX[tens];
+  return "den";
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -145,6 +160,7 @@ export default async function ExpertProfilePage({
   });
 
   const memberSince = profile.createdAt.toLocaleDateString("tr-TR", { month: "long", year: "numeric" });
+  const memberSinceSuffix = turkishBeriSuffix(profile.createdAt.getFullYear());
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
@@ -226,7 +242,7 @@ export default async function ExpertProfilePage({
           </span>
           <span className="inline-flex items-center gap-1.5">
             <span aria-hidden="true">📅</span>
-            {memberSince}&apos;den beri
+            {memberSince}&apos;{memberSinceSuffix} beri kayıtlı
           </span>
         </div>
       </div>
