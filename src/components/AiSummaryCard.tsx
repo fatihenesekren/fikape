@@ -17,7 +17,7 @@ export function AiSummaryCard({ mode, summaryText }: Props) {
   const title = mode === "REVIEWS_SUMMARY" ? "AI Yorum Özeti" : "AI İzlenimi";
   const caption = mode === "REVIEWS_SUMMARY"
     ? "Bu araç için yazılan gerçek kullanıcı yorumlarının yapay zeka ile oluşturulmuş özetidir."
-    : "Bu araç için henüz yeterli kullanıcı yorumu yok. Aşağıdaki metin, yapay zeka tarafından oluşturulmuş genel bir izlenimdir — gerçek bir kullanıcı deneyimi değildir ve puanlamayı etkilemez.";
+    : "Bu araç için henüz yeterli kullanıcı yorumu yok. Yukarıdaki metin, yapay zeka tarafından oluşturulmuş genel bir izlenimdir — gerçek bir kullanıcı deneyimi değildir ve puanlamayı etkilemez.";
 
   return (
     <div
