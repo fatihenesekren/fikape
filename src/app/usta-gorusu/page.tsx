@@ -74,37 +74,27 @@ export default async function UstaGorusumPage() {
           items-start ile buton üstte "yüzüyor" gibi duruyordu). */}
       <div className="mb-8">
         <div className="flex items-center justify-between gap-3 flex-wrap">
-          <div>
+          {/* ⟳ min-w-0 — fikape'nin bilinen tekrarlayan flex-taşma bug
+              sınıfı: bu div'e min-w-0 olmadan, içindeki metin uzayınca
+              flex satırı taşıp "Ayarlar" butonunu alt satıra itiyordu
+              (kullanıcı ekran görüntüsüyle fark etti). Yapısal düzeltme —
+              metin uzunluğundan bağımsız, Ayarlar hep aynı satırda kalır. */}
+          <div className="min-w-0">
             <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2 flex-wrap">
               Usta Panelim
               <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold" style={{ color: EXPERT_STATUS_TONES.success.color, background: EXPERT_STATUS_TONES.success.bg }}>
                 Aktif
               </span>
             </h1>
+            {/* ⟳ Linkler kaldırıldı — kullanıcı fark etti: aşağıda zaten
+                aynı 4 hedefe giden ayrı butonlar/kartlar var (Yaz CTA'sı,
+                3 kısayol kartı, Ayarlar butonu), cümleyi de linkli tutmak
+                aynı navigasyonu iki kez sunmak oluyordu ("yazabilirsiniz"
+                için de 4. bir link gerekirdi, tekrar daha da artardı).
+                Cümle artık SADECE bilgilendirme, eylem butonlarda —
+                klasik ayrım. */}
             <p className="text-sm text-gray-500 mt-1">
-              {/* ⟳ Kullanıcı fark etti: bu cümle panelin sadece 2
-                  yeteneğinden bahsediyordu (yaz + mesaj), "Usta Profilim"
-                  ve "Ayarlar" hiç geçmiyordu — panelin 4 yeteneği de artık
-                  burada. Üç link de (profilinizi/mesajlarınızı/
-                  ayarlarınızı) AYNI tek-tip --link mavisinde — 2 ajanlı
-                  karar: kart renklerine (mavi/yeşil/kahverengi) eşleştirmek
-                  "renk anahtarı" gibi okunup dikkat dağıtır, "Ayarlar"ın
-                  kartta da bilinçli olarak rengi yok (kategori değil,
-                  yardımcı eylem) — cümlede ona zorla renk uydurmak yapay
-                  olurdu. Tek renk = sade "bu tıklanabilir" sinyali. */}
-              Yeni bir usta görüşü yazabilir,{" "}
-              <Link href={`/usta/${profile.slug}`} className="hover:underline" style={{ color: "var(--link)" }}>
-                profilinizi
-              </Link>{" "}
-              ve{" "}
-              <Link href="/mesajlar?tab=usta" className="hover:underline" style={{ color: "var(--link)" }}>
-                danışan mesajlarınızı
-              </Link>{" "}
-              görebilir,{" "}
-              <Link href="/usta-gorusu/profil" className="hover:underline" style={{ color: "var(--link)" }}>
-                ayarlarınızı
-              </Link>{" "}
-              düzenleyebilirsiniz.
+              Yeni bir usta görüşü yazabilir, profilinizi ve danışan mesajlarınızı görebilir, ayarlarınızı düzenleyebilirsiniz.
             </p>
           </div>
           <Link
