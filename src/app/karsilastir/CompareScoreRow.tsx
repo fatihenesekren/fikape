@@ -99,7 +99,7 @@ export function CompareScoreRow({ products }: { products: CompareProductView[] }
           {unscored.map((p, i) => (
             <span key={p.slug}>
               <Link href={`/yorum-yaz?arac=${p.slug}`} className="text-link font-semibold hover:underline">
-                {p.brandName} {p.displayName} için ilk yorumu sen yaz
+                {p.brandName} {p.fullLabel} için ilk yorumu sen yaz
               </Link>
               {i < unscored.length - 1 ? " · " : ""}
             </span>

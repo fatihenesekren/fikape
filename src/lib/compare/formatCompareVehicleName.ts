@@ -13,11 +13,19 @@ import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 export function formatCompareVehicleName(
   modelName: string,
   trimName: string | null | undefined
-): { displayName: string; subtitle: string | null } {
+): { displayName: string; subtitle: string | null; fullLabel: string } {
   const cleanModel = stripModelGenRange(modelName);
   const trimSplit = splitTrimName(trimName);
   if (trimSplit) {
-    return { displayName: `${cleanModel} ${trimSplit.version}`, subtitle: trimSplit.donanim };
+    const displayName = `${cleanModel} ${trimSplit.version}`;
+    return { displayName, subtitle: trimSplit.donanim, fullLabel: `${displayName} ${trimSplit.donanim}` };
   }
-  return { displayName: cleanModel, subtitle: trimName || null };
+  const subtitle = trimName || null;
+  // "Techno" gibi tek parça trimName'ler (tire içermeyen — splitTrimName null
+  // döner) VehicleIdentityCard'da displayName'in ALTINDA ayrı bir satırda
+  // gösteriliyor (görsel hiyerarşi). Ama arama dropdown'ı/chip/sticky header gibi
+  // TEK SATIRLIK bağlamlarda subtitle hiç gösterilmezse, aynı model+yıl'a sahip
+  // farklı donanım paketleri ("Renault Clio 2023" iki kez) ayırt edilemez hale
+  // geliyordu (bkz. kullanıcı geri bildirimi). fullLabel bu bağlamlar için.
+  return { displayName: cleanModel, subtitle, fullLabel: subtitle ? `${cleanModel} ${subtitle}` : cleanModel };
 }

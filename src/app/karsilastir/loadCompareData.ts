@@ -37,7 +37,7 @@ export async function loadCompareMetaNames(slugs: string[]): Promise<string[]> {
     },
   });
   const products = orderAndLockCategory(matched, slugs);
-  return products.map((p) => `${p.model.brand.name} ${formatCompareVehicleName(p.model.name, p.trimName).displayName}`);
+  return products.map((p) => `${p.model.brand.name} ${formatCompareVehicleName(p.model.name, p.trimName).fullLabel}`);
 }
 
 export interface CompareData {
@@ -105,13 +105,14 @@ export async function loadCompareData(slugs: string[]): Promise<CompareData> {
     : [];
 
   const productViews: CompareProductView[] = products.map((p) => {
-    const { displayName, subtitle } = formatCompareVehicleName(p.model.name, p.trimName);
+    const { displayName, subtitle, fullLabel } = formatCompareVehicleName(p.model.name, p.trimName);
     return {
       slug: p.slug,
       imageUrl: p.imageUrl,
       brandName: p.model.brand.name,
       displayName,
       subtitle,
+      fullLabel,
       altText: `${p.model.brand.name} ${stripModelGenRange(p.model.name)}`,
       year: p.year,
       agg: aggByProductId.get(p.id) ?? { avg: 0, count: 0, fi: 0, ka: 0, pe: 0 },
@@ -129,14 +130,14 @@ export async function loadCompareData(slugs: string[]): Promise<CompareData> {
             "@type": "ListItem",
             position: i + 1,
             url: `${BASE_URL}/araclar/${p.slug}`,
-            name: `${p.model.brand.name} ${formatCompareVehicleName(p.model.name, p.trimName).displayName}${p.year ? ` ${p.year}` : ""}`,
+            name: `${p.model.brand.name} ${formatCompareVehicleName(p.model.name, p.trimName).fullLabel}${p.year ? ` ${p.year}` : ""}`,
           })),
         }
       : null;
 
   const pickerInitial = products.map((p) => ({
     slug: p.slug,
-    name: `${p.model.brand.name} ${formatCompareVehicleName(p.model.name, p.trimName).displayName}${p.year ? ` ${p.year}` : ""}`,
+    name: `${p.model.brand.name} ${formatCompareVehicleName(p.model.name, p.trimName).fullLabel}${p.year ? ` ${p.year}` : ""}`,
     categorySlug: p.category?.slug ?? null,
   }));
 

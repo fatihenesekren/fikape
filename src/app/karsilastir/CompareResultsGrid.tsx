@@ -13,6 +13,7 @@ export interface CompareProductView {
   brandName: string;
   displayName: string; // trim-aware versiyon adı (örn. trimSplit.version ya da stripModelGenRange(model.name))
   subtitle: string | null; // donanım adı ya da ham trimName, yoksa null
+  fullLabel: string; // displayName + donanım tek satırda birleşik — chip/sticky header/karar rozeti gibi tek satırlık bağlamlar için (aynı model+yıl'a sahip farklı donanımları ayırt eder)
   altText: string; // görsel alt metni (marka + sadeleştirilmiş model adı)
   year: number | null;
   agg: { avg: number; count: number; fi: number; ka: number; pe: number };
@@ -36,7 +37,7 @@ export function CompareResultsGrid({
   const powerRow = specRows.find((r) => r.label === "Güç");
   const decisionBadges = buildDecisionSummary(
     products.map((p) => ({
-      label: `${p.brandName} ${p.displayName}`,
+      label: `${p.brandName} ${p.fullLabel}`,
       overall: p.agg.count > 0 ? p.agg.avg : null,
       priceScore: p.agg.count > 0 ? p.agg.fi : null,
     })),
@@ -48,7 +49,7 @@ export function CompareResultsGrid({
       <StickyCompareHeader
         items={products.map((p) => ({
           slug: p.slug,
-          name: `${p.brandName} ${p.displayName}`,
+          name: `${p.brandName} ${p.fullLabel}`,
           overall: p.agg.count > 0 ? p.agg.avg : null,
         }))}
       />
@@ -65,7 +66,7 @@ export function CompareResultsGrid({
       <DecisionSummaryStrip badges={decisionBadges} />
 
       <CompareScoreRow products={products} />
-      <SpecComparisonTable rows={specRows} productNames={products.map((p) => `${p.brandName} ${p.displayName}`)} />
+      <SpecComparisonTable rows={specRows} productNames={products.map((p) => `${p.brandName} ${p.fullLabel}`)} />
       <AiSummarySection products={products} />
     </>
   );
