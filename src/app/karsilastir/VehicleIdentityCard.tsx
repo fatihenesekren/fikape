@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CompareProductView } from "./CompareResultsGrid";
+import { zebraColumnBg } from "@/lib/compare/zebraColumn";
 
 // Skor karşılaştırması artık ayrı bir satır-bazlı bölümde (CompareScoreRow) —
 // kart burada sadece hızlı kimlik doğrulama için genel skoru kısaca gösteriyor,
 // detaylı FI-KA-PE kırılımı için kullanıcı aşağı kaydırır.
-export function VehicleIdentityCard({ product }: { product: CompareProductView }) {
+export function VehicleIdentityCard({ product, index }: { product: CompareProductView; index: number }) {
   const { slug, imageUrl, brandName, displayName, subtitle, altText, year, agg } = product;
 
   return (
-    <div className="bg-white border border-gray-100 rounded-2xl p-4 min-w-[240px] sm:min-w-0 shrink-0 sm:shrink snap-start shadow-sm hover:shadow-md transition-shadow">
+    <div className={`${zebraColumnBg(index)} border border-gray-100 rounded-2xl p-4 min-w-[240px] sm:min-w-0 shrink-0 sm:shrink snap-start shadow-sm hover:shadow-md transition-shadow`}>
       {imageUrl && (
         <div className="relative w-full aspect-[4/3] mb-3 rounded-xl overflow-hidden bg-gray-50">
           <Image src={imageUrl} alt={altText} fill className="object-contain p-2" />

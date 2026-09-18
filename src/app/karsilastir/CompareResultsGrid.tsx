@@ -58,8 +58,8 @@ export function CompareResultsGrid({
         className="flex sm:grid gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0"
         style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}
       >
-        {products.map((p) => (
-          <VehicleIdentityCard key={p.slug} product={p} />
+        {products.map((p, i) => (
+          <VehicleIdentityCard key={p.slug} product={p} index={i} />
         ))}
       </div>
 

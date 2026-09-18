@@ -1,4 +1,5 @@
 import type { SpecComparisonRow } from "@/lib/compare/buildSpecComparisonRows";
+import { zebraColumnBg } from "@/lib/compare/zebraColumn";
 
 // İki ayrı vurgu sistemi, kasıtlı olarak hem renk hem şekil ile ayrışıyor
 // (sadece renkle ayırmak renk körü kullanıcılar için yetersiz — bkz. erişilebilirlik
@@ -47,7 +48,7 @@ export function SpecComparisonTable({
                 <th
                   key={i}
                   scope="col"
-                  className="text-left text-xs font-bold text-gray-700 px-3 py-2 max-w-[160px] truncate"
+                  className={`${zebraColumnBg(i)} text-left text-xs font-bold text-gray-700 px-3 py-2 max-w-[160px] truncate sm:sr-only`}
                   title={name}
                 >
                   {name}
@@ -72,7 +73,7 @@ export function SpecComparisonTable({
                       <td
                         key={i}
                         className={`px-3 py-2.5 text-gray-900 ${
-                          isBest ? "bg-emerald-50 font-semibold" : isDifferent ? "bg-amber-50" : ""
+                          isBest ? "bg-emerald-50 font-semibold" : isDifferent ? "bg-amber-50" : zebraColumnBg(i)
                         }`}
                       >
                         {value ?? <span className="text-gray-300">—</span>}
