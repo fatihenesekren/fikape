@@ -9,7 +9,7 @@ export function VehicleIdentityCard({ product }: { product: CompareProductView }
   const { slug, imageUrl, brandName, displayName, subtitle, altText, year, agg } = product;
 
   return (
-    <div className="bg-white border border-gray-100 rounded-2xl p-4 min-w-[240px] sm:min-w-0 shrink-0 sm:shrink snap-start">
+    <div className="bg-white border border-gray-100 rounded-2xl p-4 min-w-[240px] sm:min-w-0 shrink-0 sm:shrink snap-start shadow-sm hover:shadow-md transition-shadow">
       {imageUrl && (
         <div className="relative w-full aspect-[4/3] mb-3 rounded-xl overflow-hidden bg-gray-50">
           <Image src={imageUrl} alt={altText} fill className="object-contain p-2" />

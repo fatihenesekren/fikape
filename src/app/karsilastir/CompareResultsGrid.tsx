@@ -3,7 +3,9 @@ import { VehicleIdentityCard } from "./VehicleIdentityCard";
 import { CompareScoreRow } from "./CompareScoreRow";
 import { SpecComparisonTable } from "./SpecComparisonTable";
 import { AiSummarySection } from "./AiSummarySection";
+import { DecisionSummaryStrip } from "./DecisionSummaryStrip";
 import type { SpecComparisonRow } from "@/lib/compare/buildSpecComparisonRows";
+import { buildDecisionSummary } from "@/lib/compare/buildDecisionSummary";
 
 export interface CompareProductView {
   slug: string;
@@ -31,6 +33,16 @@ export function CompareResultsGrid({
 }) {
   if (products.length < 2) return null;
 
+  const powerRow = specRows.find((r) => r.label === "Güç");
+  const decisionBadges = buildDecisionSummary(
+    products.map((p) => ({
+      label: `${p.brandName} ${p.displayName}`,
+      overall: p.agg.count > 0 ? p.agg.avg : null,
+      priceScore: p.agg.count > 0 ? p.agg.fi : null,
+    })),
+    powerRow
+  );
+
   return (
     <>
       <StickyCompareHeader
@@ -49,6 +61,8 @@ export function CompareResultsGrid({
           <VehicleIdentityCard key={p.slug} product={p} />
         ))}
       </div>
+
+      <DecisionSummaryStrip badges={decisionBadges} />
 
       <CompareScoreRow products={products} />
       <SpecComparisonTable rows={specRows} productNames={products.map((p) => `${p.brandName} ${p.displayName}`)} />
