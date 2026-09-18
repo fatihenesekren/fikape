@@ -82,7 +82,7 @@ export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
 
   function compare() {
     if (selected.length < MIN_COMPARE_ITEMS) return;
-    router.push(`/karsilastir?urunler=${selected.map((s) => s.slug).join(",")}`);
+    router.push(`/karsilastir/${selected.map((s) => s.slug).join("-vs-")}`);
   }
 
   return (
