@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { FikapeScore } from "@/components/FikapeScore";
 import { AiSummaryCard } from "@/components/AiSummaryCard";
 import { ComparePicker } from "./ComparePicker";
+import { StickyCompareHeader } from "./StickyCompareHeader";
 import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { MAX_COMPARE_ITEMS } from "@/lib/compare/constants";
 import { buildSpecComparisonRows } from "@/lib/compare/buildSpecComparisonRows";
@@ -172,12 +173,29 @@ export default async function ComparePage({
         />
 
         {products.length >= 2 && (
-          <div className="grid gap-5" style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}>
+          <StickyCompareHeader
+            items={products.map((p) => {
+              const agg = aggByProductId.get(p.id);
+              const trimSplit = splitTrimName(p.trimName);
+              return {
+                slug: p.slug,
+                name: `${p.model.brand.name} ${trimSplit ? trimSplit.version : stripModelGenRange(p.model.name)}`,
+                overall: agg && agg.count > 0 ? agg.avg : null,
+              };
+            })}
+          />
+        )}
+
+        {products.length >= 2 && (
+          <div
+            className="flex sm:grid gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0"
+            style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}
+          >
             {products.map((p) => {
               const agg = aggByProductId.get(p.id) ?? { avg: 0, count: 0, fi: 0, ka: 0, pe: 0 };
               const trimSplit = splitTrimName(p.trimName);
               return (
-                <div key={p.slug} className="bg-white border border-gray-100 rounded-2xl p-4">
+                <div key={p.slug} className="bg-white border border-gray-100 rounded-2xl p-4 min-w-[240px] sm:min-w-0 shrink-0 sm:shrink snap-start">
                   {p.imageUrl && (
                     <div className="relative w-full aspect-[4/3] mb-3 rounded-xl overflow-hidden bg-gray-50">
                       <Image src={p.imageUrl} alt={`${p.model.brand.name} ${stripModelGenRange(p.model.name)}`} fill className="object-contain p-2" />
@@ -247,19 +265,23 @@ export default async function ComparePage({
         {products.length >= 2 && (
           <div className="mt-8">
             <h2 className="text-lg font-bold text-gray-900 mb-3">AI Özeti</h2>
-            <div className="grid gap-5" style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}>
+            <div
+              className="flex sm:grid gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0"
+              style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}
+            >
               {products.map((p) => {
                 const summary = aiSummaryByProductId.get(p.id);
                 return summary ? (
-                  <AiSummaryCard
-                    key={p.slug}
-                    mode={summary.mode}
-                    summaryText={summary.summaryText}
-                    variant="compare"
-                    reviewCount={summary.reviewCountAtGeneration ?? undefined}
-                  />
+                  <div key={p.slug} className="min-w-[260px] sm:min-w-0 shrink-0 sm:shrink snap-start">
+                    <AiSummaryCard
+                      mode={summary.mode}
+                      summaryText={summary.summaryText}
+                      variant="compare"
+                      reviewCount={summary.reviewCountAtGeneration ?? undefined}
+                    />
+                  </div>
                 ) : (
-                  <div key={p.slug} className="rounded-2xl p-5 border border-gray-100 bg-gray-50">
+                  <div key={p.slug} className="rounded-2xl p-5 border border-gray-100 bg-gray-50 min-w-[260px] sm:min-w-0 shrink-0 sm:shrink snap-start">
                     <p className="text-xs text-gray-400">Henüz özet yok.</p>
                   </div>
                 );
