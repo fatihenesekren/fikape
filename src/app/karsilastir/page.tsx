@@ -5,9 +5,11 @@ import { prisma } from "@/lib/prisma";
 import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
 import { FikapeScore } from "@/components/FikapeScore";
+import { AiSummaryCard } from "@/components/AiSummaryCard";
 import { ComparePicker } from "./ComparePicker";
 import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { MAX_COMPARE_ITEMS } from "@/lib/compare/constants";
+import { buildSpecComparisonRows } from "@/lib/compare/buildSpecComparisonRows";
 
 export async function generateMetadata({
   searchParams,
@@ -111,6 +113,19 @@ export default async function ComparePage({
     });
   }
 
+  const aiSummaryByProductId = new Map<number, { mode: "SINGLE_CARD" | "REVIEWS_SUMMARY"; summaryText: string; reviewCountAtGeneration: number | null }>();
+  if (products.length) {
+    const summaries = await prisma.aiVehicleSummary.findMany({
+      where: { productId: { in: products.map((p) => p.id) }, status: "APPROVED" },
+      select: { productId: true, mode: true, summaryText: true, reviewCountAtGeneration: true },
+    });
+    summaries.forEach((s) => aiSummaryByProductId.set(s.productId, s));
+  }
+
+  const specRows = products.length >= 2 && products[0].category
+    ? buildSpecComparisonRows(products[0].category.slug, products.map((p) => p.attributes))
+    : [];
+
   const comparisonSchema =
     products.length >= 2
       ? {
@@ -192,6 +207,64 @@ export default async function ComparePage({
                 </div>
               );
             })}
+          </div>
+        )}
+
+        {products.length >= 2 && specRows.length > 0 && (
+          <div className="mt-8">
+            <h2 className="text-lg font-bold text-gray-900 mb-3">Teknik Özellikler</h2>
+            <div className="overflow-x-auto border border-gray-100 rounded-2xl">
+              <table className="w-full text-sm border-collapse">
+                <tbody>
+                  {specRows.map((row) => (
+                    <tr key={row.label} className="border-b border-gray-100 last:border-0">
+                      <th
+                        scope="row"
+                        className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 whitespace-nowrap"
+                      >
+                        {row.label}
+                      </th>
+                      {row.values.map((value, i) => {
+                        const isBest = row.bestIndices.includes(i);
+                        return (
+                          <td
+                            key={i}
+                            className={`px-3 py-2.5 text-gray-900 ${isBest ? "bg-emerald-50 font-semibold" : ""}`}
+                          >
+                            {value ?? <span className="text-gray-300">—</span>}
+                            {isBest && <span className="text-emerald-600 ml-1" aria-label="en iyi değer">✓</span>}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {products.length >= 2 && (
+          <div className="mt-8">
+            <h2 className="text-lg font-bold text-gray-900 mb-3">AI Özeti</h2>
+            <div className="grid gap-5" style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}>
+              {products.map((p) => {
+                const summary = aiSummaryByProductId.get(p.id);
+                return summary ? (
+                  <AiSummaryCard
+                    key={p.slug}
+                    mode={summary.mode}
+                    summaryText={summary.summaryText}
+                    variant="compare"
+                    reviewCount={summary.reviewCountAtGeneration ?? undefined}
+                  />
+                ) : (
+                  <div key={p.slug} className="rounded-2xl p-5 border border-gray-100 bg-gray-50">
+                    <p className="text-xs text-gray-400">Henüz özet yok.</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>
