@@ -103,15 +103,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div className="min-w-0">{children}</div>
         </main>
 
-        {/* BackToTop artık footer görününce kendini gizliyor (bkz.
-            BackToTop.tsx) — bu yüzden burada onun için büyük bir pay
-            ayırmaya gerek yok, sadece HomeFab (bottom-5, 44px) için
-            mobilde biraz pay (pb-16) yeterli. mt-3 bağlantı satırıyla
-            telif satırını ayırıyor (kullanıcı: "bitişik durmasın"). */}
-        <footer id="site-footer" className="border-t border-gray-100 pt-6 pb-16 sm:pb-6">
+        {/* BackToTop footer görününce kendini gizliyor (bkz. BackToTop.tsx),
+            bu yüzden HomeFab dışında pay ayrılacak bir FAB kalmıyor —
+            kullanıcı: ok tuşu zaten footer'a varmadan kayboluyor, ekstra alt
+            boşluğa (pb-16) gerek yok, değişiklik öncesi hâle (pb-6) dönüldü.
+            mt-2 bağlantı satırıyla telif satırı arasında hafif bir ayrım
+            bırakıyor. */}
+        <footer id="site-footer" className="border-t border-gray-100 pt-6 pb-6">
           <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400">
             <FooterNav />
-            <p className="mt-3 sm:mt-2">© {new Date().getFullYear()} fikape.com · Tüm hakları saklıdır.</p>
+            <p className="mt-2">© {new Date().getFullYear()} fikape.com · Tüm hakları saklıdır.</p>
           </div>
         </footer>
         <HomeFab />
