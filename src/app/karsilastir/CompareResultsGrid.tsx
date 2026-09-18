@@ -49,7 +49,7 @@ export function CompareResultsGrid({
         ))}
       </div>
 
-      <SpecComparisonTable rows={specRows} />
+      <SpecComparisonTable rows={specRows} productNames={products.map((p) => `${p.brandName} ${p.displayName}`)} />
       <AiSummarySection products={products} />
     </>
   );
