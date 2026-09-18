@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ComparePicker } from "./ComparePicker";
 import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
+import { MAX_COMPARE_ITEMS } from "@/lib/compare/constants";
 
 export async function generateMetadata({
   searchParams,
@@ -21,10 +22,16 @@ export async function generateMetadata({
       description: "İki veya daha fazla aracı fikape kullanıcı puanlarına göre yan yana karşılaştır.",
     };
   }
-  const products = await prisma.product.findMany({
-    where: { slug: { in: slugs } },
-    select: { trimName: true, model: { select: { name: true, brand: { select: { name: true } } } } },
+  const matched = await prisma.product.findMany({
+    where: { slug: { in: slugs }, isActive: true },
+    select: {
+      slug: true,
+      trimName: true,
+      category: { select: { id: true } },
+      model: { select: { name: true, brand: { select: { name: true } } } },
+    },
   });
+  const products = orderAndLockCategory(matched, slugs);
   const names = products
     .map((p) => `${p.model.brand.name} ${splitTrimName(p.trimName)?.version ?? stripModelGenRange(p.model.name)}`)
     .join(" vs ");
@@ -36,7 +43,22 @@ export async function generateMetadata({
 
 function parseSlugs(raw?: string): string[] {
   if (!raw) return [];
-  return [...new Set(raw.split(",").map((s) => s.trim()).filter(Boolean))].slice(0, 4);
+  return [...new Set(raw.split(",").map((s) => s.trim()).filter(Boolean))].slice(0, MAX_COMPARE_ITEMS);
+}
+
+// Prisma `findMany({ where: { slug: { in: slugs } } })` kullanıcının URL'deki
+// sırasını korumaz (genelde id sırasına göre döner) — bu hem "ilk seçilen aracın
+// kategorisi kilitlenir" mantığını hem de kart render sırasını bozar. Burada
+// sonuçlar önce slugs sırasına göre diziliyor, sonra ilk aracın kategorisiyle
+// uyuşmayanlar elenip kilit gerçekten "ilk seçilen" araca göre uygulanıyor.
+function orderAndLockCategory<T extends { slug: string; category: { id: number } | null }>(
+  matched: T[],
+  slugs: string[]
+): T[] {
+  const bySlug = new Map(matched.map((p) => [p.slug, p]));
+  const ordered = slugs.map((s) => bySlug.get(s)).filter((p): p is T => Boolean(p));
+  const lockedCategoryId = ordered[0]?.category?.id ?? null;
+  return lockedCategoryId ? ordered.filter((p) => p.category?.id === lockedCategoryId) : ordered;
 }
 
 export default async function ComparePage({
@@ -47,7 +69,7 @@ export default async function ComparePage({
   const { urunler } = await searchParams;
   const slugs = parseSlugs(urunler);
 
-  const products = slugs.length
+  const matchedProducts = slugs.length
     ? await prisma.product.findMany({
         where: { slug: { in: slugs }, isActive: true },
         select: {
@@ -58,31 +80,33 @@ export default async function ComparePage({
           trimName: true,
           imageUrl: true,
           attributes: true,
-          category: { select: { name: true } },
+          category: { select: { id: true, name: true, slug: true } },
           model: { select: { name: true, brand: { select: { name: true } } } },
         },
       })
     : [];
 
+  // Karşılaştırma anlamsız olmasın diye (otomobil vs motosiklet gibi) sadece ilk
+  // seçilen aracın kategorisiyle aynı kategorideki araçlar tutulur — bu server-side
+  // kilit, URL'nin elle değiştirilmesine karşı da geçerli.
+  const products = orderAndLockCategory(matchedProducts, slugs);
+  const droppedCount = matchedProducts.length - products.length;
+
   const aggByProductId = new Map<number, { avg: number; count: number; fi: number; ka: number; pe: number }>();
   if (products.length) {
-    const aggs = await Promise.all(
-      products.map((p) =>
-        prisma.review.aggregate({
-          where: { productId: p.id, status: "PUBLISHED" },
-          _avg: { scoreOverall: true, scoreFiyat: true, scoreKalite: true, scorePerformans: true },
-          _count: { id: true },
-        })
-      )
-    );
-    products.forEach((p, i) => {
-      const a = aggs[i];
-      aggByProductId.set(p.id, {
-        avg: a._avg.scoreOverall ?? 0,
-        count: a._count.id,
-        fi: a._avg.scoreFiyat ?? 0,
-        ka: a._avg.scoreKalite ?? 0,
-        pe: a._avg.scorePerformans ?? 0,
+    const groups = await prisma.review.groupBy({
+      by: ["productId"],
+      where: { productId: { in: products.map((p) => p.id) }, status: "PUBLISHED" },
+      _avg: { scoreOverall: true, scoreFiyat: true, scoreKalite: true, scorePerformans: true },
+      _count: { id: true },
+    });
+    groups.forEach((g) => {
+      aggByProductId.set(g.productId, {
+        avg: g._avg.scoreOverall ?? 0,
+        count: g._count.id,
+        fi: g._avg.scoreFiyat ?? 0,
+        ka: g._avg.scoreKalite ?? 0,
+        pe: g._avg.scorePerformans ?? 0,
       });
     });
   }
@@ -118,12 +142,24 @@ export default async function ComparePage({
           fikape kullanıcı yorumlarına dayalı, iki veya daha fazla aracı yan yana karşılaştır.
         </p>
 
-        <ComparePicker initial={products.map((p) => ({ slug: p.slug, name: `${p.model.brand.name} ${splitTrimName(p.trimName)?.version ?? stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}` }))} />
+        {droppedCount > 0 && (
+          <p className="text-xs text-amber-600 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2 mb-4">
+            Farklı kategoriden {droppedCount} araç karşılaştırmadan çıkarıldı — aynı anda sadece aynı kategoriden araçlar (örn. hepsi otomobil) karşılaştırılabiliyor.
+          </p>
+        )}
+
+        <ComparePicker
+          initial={products.map((p) => ({
+            slug: p.slug,
+            name: `${p.model.brand.name} ${splitTrimName(p.trimName)?.version ?? stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}`,
+            categorySlug: p.category?.slug ?? null,
+          }))}
+        />
 
         {products.length >= 2 && (
           <div className="grid gap-5" style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}>
             {products.map((p) => {
-              const agg = aggByProductId.get(p.id)!;
+              const agg = aggByProductId.get(p.id) ?? { avg: 0, count: 0, fi: 0, ka: 0, pe: 0 };
               const trimSplit = splitTrimName(p.trimName);
               return (
                 <div key={p.slug} className="bg-white border border-gray-100 rounded-2xl p-4">

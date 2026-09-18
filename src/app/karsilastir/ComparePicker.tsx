@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
+import { MAX_COMPARE_ITEMS, MIN_COMPARE_ITEMS } from "@/lib/compare/constants";
 
 interface SearchResult {
   slug: string;
@@ -11,9 +12,18 @@ interface SearchResult {
   modelName: string;
   brandName: string;
   trimName: string | null;
+  categorySlug: string | null;
+  categoryName: string | null;
 }
 
-export function ComparePicker({ initial }: { initial: { slug: string; name: string }[] }) {
+interface SelectedItem {
+  slug: string;
+  name: string;
+  categorySlug: string | null;
+  categoryName?: string | null;
+}
+
+export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
   const router = useRouter();
   const [selected, setSelected] = useState(initial);
   const [query, setQuery] = useState("");
@@ -22,19 +32,26 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
 
+  // İlk araç seçildikten sonra arama o aracın kategorisiyle sınırlanır — farklı
+  // kategoriden araç (örn. otomobil vs motosiklet) karşılaştırmaya eklenemesin diye.
+  const lockedCategorySlug = selected[0]?.categorySlug ?? null;
+  const lockedCategoryName = selected[0]?.categoryName ?? null;
+
   useEffect(() => {
     if (query.length < 2) return;
     const t = setTimeout(async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/search/products?q=${encodeURIComponent(query)}`);
+        const params = new URLSearchParams({ q: query });
+        if (lockedCategorySlug) params.set("category", lockedCategorySlug);
+        const res = await fetch(`/api/search/products?${params.toString()}`);
         if (res.ok) setResults(await res.json());
       } finally {
         setLoading(false);
       }
     }, 300);
     return () => clearTimeout(t);
-  }, [query]);
+  }, [query, lockedCategorySlug]);
 
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {
@@ -45,9 +62,10 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
   }, []);
 
   function add(r: SearchResult) {
-    if (selected.some((s) => s.slug === r.slug) || selected.length >= 4) return;
+    if (selected.some((s) => s.slug === r.slug) || selected.length >= MAX_COMPARE_ITEMS) return;
+    if (lockedCategorySlug && r.categorySlug !== lockedCategorySlug) return;
     const name = `${r.brandName} ${splitTrimName(r.trimName)?.version ?? stripModelGenRange(r.modelName)}${r.year ? ` ${r.year}` : ""}`;
-    setSelected([...selected, { slug: r.slug, name }]);
+    setSelected([...selected, { slug: r.slug, name, categorySlug: r.categorySlug, categoryName: r.categoryName }]);
     setQuery("");
     setResults([]);
     setOpen(false);
@@ -58,7 +76,7 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
   }
 
   function compare() {
-    if (selected.length < 2) return;
+    if (selected.length < MIN_COMPARE_ITEMS) return;
     router.push(`/karsilastir?urunler=${selected.map((s) => s.slug).join(",")}`);
   }
 
@@ -72,11 +90,17 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
           </span>
         ))}
         {selected.length === 0 && (
-          <span className="text-xs text-gray-400">Karşılaştırmak için en az 2 araç ekle.</span>
+          <span className="text-xs text-gray-400">Karşılaştırmak için en az {MIN_COMPARE_ITEMS} araç ekle.</span>
         )}
       </div>
 
-      {selected.length < 4 && (
+      {lockedCategoryName && selected.length < MAX_COMPARE_ITEMS && (
+        <p className="text-xs text-gray-400 mb-2">
+          Arama <span className="font-semibold text-gray-600">{lockedCategoryName}</span> kategorisiyle sınırlı.
+        </p>
+      )}
+
+      {selected.length < MAX_COMPARE_ITEMS && (
         <div ref={boxRef} className="relative">
           <input
             type="text"
@@ -109,7 +133,7 @@ export function ComparePicker({ initial }: { initial: { slug: string; name: stri
 
       <button
         onClick={compare}
-        disabled={selected.length < 2}
+        disabled={selected.length < MIN_COMPARE_ITEMS}
         className="mt-3 text-sm font-semibold px-4 py-2 rounded-lg text-white bg-gray-900 hover:bg-gray-800 transition-colors disabled:opacity-40"
       >
         Karşılaştır ({selected.length})

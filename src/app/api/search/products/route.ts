@@ -15,6 +15,7 @@ export async function GET(req: Request) {
 
   const { searchParams } = new URL(req.url);
   const q = searchParams.get("q")?.trim() ?? "";
+  const categorySlug = searchParams.get("category")?.trim() || null;
 
   if (q.length < 2) return NextResponse.json([]);
 
@@ -31,15 +32,21 @@ export async function GET(req: Request) {
     )`;
   });
 
+  // Karşılaştırma sayfası ilk araç seçildikten sonra aramayı o aracın kategorisiyle
+  // sınırlıyor (otomobil vs motosiklet gibi anlamsız karşılaştırmaları baştan önlemek
+  // için) — server-side filtre, sadece UI'ya güvenmiyoruz.
+  const categoryClause = categorySlug ? Prisma.sql`AND c.slug = ${categorySlug}` : Prisma.empty;
+
   const exact = await prisma.$queryRaw<FuzzyRow[]>`
     SELECT p.slug, p.name, p."trimName", p.year, p."imageUrl", p.attributes,
-           m.name AS "modelName", b.name AS "brandName", c.slug AS "categorySlug"
+           m.name AS "modelName", b.name AS "brandName", c.slug AS "categorySlug", c.name AS "categoryName"
     FROM "products" p
     JOIN "models" m ON m.id = p."modelId"
     JOIN "brands" b ON b.id = p."brandId"
     LEFT JOIN "categories" c ON c.id = p."categoryId"
     WHERE p."isActive" = true
       AND ${Prisma.join(termClauses, " AND ")}
+      ${categoryClause}
     ORDER BY p."weeklyViewCount" DESC, p."viewCount" DESC
     LIMIT 10
   `;
@@ -52,7 +59,7 @@ export async function GET(req: Request) {
   // burada da unaccent uygulanıyor (aksan + yazım hatası birlikte olursa, örn. "sitroen")
   const fuzzy = await prisma.$queryRaw<FuzzyRow[]>`
     SELECT p.slug, p.name, p."trimName", p.year, p."imageUrl", p.attributes,
-           m.name AS "modelName", b.name AS "brandName", c.slug AS "categorySlug"
+           m.name AS "modelName", b.name AS "brandName", c.slug AS "categorySlug", c.name AS "categoryName"
     FROM "products" p
     JOIN "models" m ON m.id = p."modelId"
     JOIN "brands" b ON b.id = p."brandId"
@@ -63,6 +70,7 @@ export async function GET(req: Request) {
         OR unaccent(m.name) % unaccent(${q})
         OR unaccent(p.name) % unaccent(${q})
       )
+      ${categoryClause}
     ORDER BY GREATEST(
       similarity(unaccent(b.name), unaccent(${q})),
       similarity(unaccent(m.name), unaccent(${q})),
@@ -84,18 +92,20 @@ interface FuzzyRow {
   modelName: string;
   brandName: string;
   categorySlug: string | null;
+  categoryName: string | null;
 }
 
 function serialize(p: FuzzyRow | {
   slug: string; name: string; year: number | null; trimName: string | null;
   imageUrl: string | null; attributes: unknown;
   model: { name: string; brand: { name: string } };
-  category: { slug: string } | null;
+  category: { slug: string; name: string } | null;
 }) {
   const attrs = p.attributes as Record<string, unknown>;
   const brandName = "brandName" in p ? p.brandName : p.model.brand.name;
   const modelName = "modelName" in p ? p.modelName : p.model.name;
   const categorySlug = "categorySlug" in p ? p.categorySlug : (p.category?.slug ?? null);
+  const categoryName = "categoryName" in p ? p.categoryName : (p.category?.name ?? null);
 
   return {
     slug:         p.slug,
@@ -109,5 +119,6 @@ function serialize(p: FuzzyRow | {
     bodyType:     (attrs.body_type as string | undefined) ?? null,
     transmission: (attrs.transmission as string | undefined) ?? null,
     categorySlug: categorySlug ?? null,
+    categoryName: categoryName ?? null,
   };
 }
