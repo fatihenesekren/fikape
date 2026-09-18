@@ -31,6 +31,23 @@ export function CompareScoreRow({ products }: { products: CompareProductView[] }
       <h2 className="text-lg font-bold text-gray-900 mb-3">Kullanıcı Puanı</h2>
       <div className="overflow-x-auto border border-gray-100 rounded-2xl">
         <table className="w-full text-sm border-collapse" aria-label="Kullanıcı puanı karşılaştırması">
+          <thead>
+            <tr className="border-b border-gray-200">
+              <th scope="col" className="sticky left-0 bg-gray-50 text-left text-xs font-semibold text-gray-400 uppercase tracking-wide px-3 py-2 whitespace-nowrap">
+                Kriter
+              </th>
+              {products.map((p) => (
+                <th
+                  key={p.slug}
+                  scope="col"
+                  className="text-left text-xs font-bold text-gray-700 px-3 py-2 max-w-[160px] truncate"
+                  title={`${p.brandName} ${p.fullLabel}`}
+                >
+                  {p.brandName} {p.fullLabel}
+                </th>
+              ))}
+            </tr>
+          </thead>
           <tbody>
             <tr className="border-b border-gray-100">
               <th scope="row" className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 whitespace-nowrap">

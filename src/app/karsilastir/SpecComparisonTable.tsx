@@ -39,10 +39,19 @@ export function SpecComparisonTable({
           aria-label={`${productNames.join(" ve ")} teknik özellik karşılaştırması`}
         >
           <thead>
-            <tr>
-              <th scope="col" className="sr-only">Özellik</th>
+            <tr className="border-b border-gray-200">
+              <th scope="col" className="sticky left-0 bg-gray-50 text-left text-xs font-semibold text-gray-400 uppercase tracking-wide px-3 py-2 whitespace-nowrap">
+                Özellik
+              </th>
               {productNames.map((name, i) => (
-                <th key={i} scope="col" className="sr-only">{name}</th>
+                <th
+                  key={i}
+                  scope="col"
+                  className="text-left text-xs font-bold text-gray-700 px-3 py-2 max-w-[160px] truncate"
+                  title={name}
+                >
+                  {name}
+                </th>
               ))}
             </tr>
           </thead>
