@@ -48,7 +48,6 @@ export function SpecComparisonTable({
           </thead>
           <tbody>
             {rows.map((row) => {
-              const flagDifference = row.kind === "categorical" && row.hasDifference;
               return (
                 <tr key={row.label} className="border-b border-gray-100 last:border-0">
                   <th
@@ -59,7 +58,7 @@ export function SpecComparisonTable({
                   </th>
                   {row.values.map((value, i) => {
                     const isBest = row.bestIndices.includes(i);
-                    const isDifferent = flagDifference && value !== null;
+                    const isDifferent = row.kind === "categorical" && row.differentIndices.includes(i);
                     return (
                       <td
                         key={i}

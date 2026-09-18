@@ -21,6 +21,12 @@ export interface SpecComparisonRow {
   // Plug-in Hibrit farkı fark edilmiyordu).
   kind: "numeric" | "categorical";
   hasDifference: boolean;
+  // Amber "farklı" rozetinin uygulanacağı hücre index'leri. Satırda 3+ araç varsa
+  // TÜM farklı hücreleri değil, sadece ÇOĞUNLUKTAN SAPAN değerleri işaretler —
+  // örn. 3 araç "Hatchback", 1 araç "SUV" ise sadece SUV işaretlenir, 3 Hatchback
+  // birbirinden farklı değil ki hepsi amber olsun (canlıda bulunan gerçek hata,
+  // 4 araçlı karşılaştırmada tüm hücreleri amber'e boyuyordu).
+  differentIndices: number[];
 }
 
 const HIGHER_IS_BETTER = new Set([
@@ -33,6 +39,28 @@ const LOWER_IS_BETTER = new Set(["0–100 km/s", "Şarj Süresi"]);
 function parseLeadingNumber(value: string): number | null {
   const m = value.replace(",", ".").match(/-?\d+(\.\d+)?/);
   return m ? parseFloat(m[0]) : null;
+}
+
+// Net bir çoğunluk değeri varsa (örn. 3 "Hatchback" + 1 "SUV") sadece azınlıktaki
+// (çoğunluktan sapan) hücreler işaretlenir. En sık geçen değerde EŞİTLİK varsa
+// (örn. 2 "B Segment" + 2 "C Segment", net bir "normal" yok) tüm dolu hücreler
+// işaretlenir — 2 araçlı karşılaştırmada (her zaman 1'e 1 eşitlik) bu, önceki
+// davranışla birebir aynı sonucu verir.
+function computeDifferentIndices(values: (string | null)[]): number[] {
+  const freq = new Map<string, number>();
+  values.forEach((v) => {
+    if (v !== null) freq.set(v, (freq.get(v) ?? 0) + 1);
+  });
+  if (freq.size <= 1) return [];
+
+  const maxFreq = Math.max(...freq.values());
+  const modes = [...freq.entries()].filter(([, f]) => f === maxFreq);
+
+  if (modes.length === 1) {
+    const majorityValue = modes[0][0];
+    return values.flatMap((v, i) => (v !== null && v !== majorityValue ? [i] : []));
+  }
+  return values.flatMap((v, i) => (v !== null ? [i] : []));
 }
 
 export function buildSpecComparisonRows(categorySlug: string, attributesList: unknown[]): SpecComparisonRow[] {
@@ -67,9 +95,9 @@ export function buildSpecComparisonRows(categorySlug: string, attributesList: un
     }
 
     const kind: "numeric" | "categorical" = direction ? "numeric" : "categorical";
-    const distinctValues = new Set(values.filter((v): v is string => v !== null));
-    const hasDifference = distinctValues.size > 1;
+    const differentIndices = computeDifferentIndices(values);
+    const hasDifference = differentIndices.length > 0;
 
-    return { label, values, bestIndices, kind, hasDifference };
+    return { label, values, bestIndices, kind, hasDifference, differentIndices };
   });
 }

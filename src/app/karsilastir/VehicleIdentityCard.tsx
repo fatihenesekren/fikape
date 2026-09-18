@@ -16,10 +16,10 @@ export function VehicleIdentityCard({ product }: { product: CompareProductView }
         </div>
       )}
       <div className="text-xs text-gray-400 uppercase tracking-wide mb-0.5">{brandName}</div>
-      <Link href={`/araclar/${slug}`} className="font-bold text-gray-900 hover:underline">
+      <Link href={`/araclar/${slug}`} className="font-bold text-gray-900 hover:underline line-clamp-2 min-h-[2.5rem]">
         {displayName}{year ? ` ${year}` : ""}
       </Link>
-      {subtitle && <p className="text-xs text-gray-400 mt-0.5">{subtitle}</p>}
+      <p className="text-xs text-gray-400 mt-0.5 min-h-[1rem]">{subtitle}</p>
 
       {agg.count > 0 ? (
         <div className="mt-3 flex items-baseline gap-1.5">

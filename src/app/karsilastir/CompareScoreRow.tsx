@@ -17,8 +17,12 @@ function scoreValue(agg: CompareProductView["agg"], key: string): number {
 export function CompareScoreRow({ products }: { products: CompareProductView[] }) {
   const overalls = products.map((p) => (p.agg.count > 0 ? p.agg.avg : null));
   const presentOveralls = overalls.filter((v): v is number => v !== null);
-  const maxOverall = presentOveralls.length ? Math.max(...presentOveralls) : null;
-  const overallTie = presentOveralls.filter((v) => v === maxOverall).length > 1;
+  // En az 2 karşılaştırılabilir değer yoksa "en yüksek" ilan edilmiyor — tek
+  // araçta yorum varken diğerleri boşsa, o tek değeri "kazanan" gibi işaretlemek
+  // yanıltıcı (canlıda bulunan gerçek hata — spec tablosundaki aynı kural burada
+  // eksikti).
+  const maxOverall = presentOveralls.length >= 2 ? Math.max(...presentOveralls) : null;
+  const overallTie = maxOverall !== null && presentOveralls.filter((v) => v === maxOverall).length > 1;
 
   const unscored = products.filter((p) => p.agg.count === 0);
 
@@ -55,8 +59,8 @@ export function CompareScoreRow({ products }: { products: CompareProductView[] }
             {FIKAPE.map(({ key, label, color }) => {
               const values = products.map((p) => (p.agg.count > 0 ? scoreValue(p.agg, key) : null));
               const present = values.filter((v): v is number => v !== null);
-              const max = present.length ? Math.max(...present) : null;
-              const tie = present.filter((v) => v === max).length > 1;
+              const max = present.length >= 2 ? Math.max(...present) : null;
+              const tie = max !== null && present.filter((v) => v === max).length > 1;
               return (
                 <tr key={key} className="border-b border-gray-100 last:border-0">
                   <th scope="row" className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 whitespace-nowrap">

@@ -3,9 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { MAX_COMPARE_ITEMS, MIN_COMPARE_ITEMS } from "@/lib/compare/constants";
 import { FUEL_LABELS } from "@/lib/fuel";
+import { formatCompareVehicleName } from "@/lib/compare/formatCompareVehicleName";
 
 interface SearchResult {
   slug: string;
@@ -69,7 +69,7 @@ export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
   function add(r: SearchResult) {
     if (selected.some((s) => s.slug === r.slug) || selected.length >= MAX_COMPARE_ITEMS) return;
     if (lockedCategorySlug && r.categorySlug !== lockedCategorySlug) return;
-    const name = `${r.brandName} ${splitTrimName(r.trimName)?.version ?? stripModelGenRange(r.modelName)}${r.year ? ` ${r.year}` : ""}`;
+    const name = `${r.brandName} ${formatCompareVehicleName(r.modelName, r.trimName).displayName}${r.year ? ` ${r.year}` : ""}`;
     setSelected([...selected, { slug: r.slug, name, categorySlug: r.categorySlug, categoryName: r.categoryName }]);
     setQuery("");
     setResults([]);
@@ -138,7 +138,7 @@ export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
                     </div>
                     <div className="min-w-0">
                       <div className="truncate">
-                        {r.brandName} {splitTrimName(r.trimName)?.version ?? r.modelName}{r.year ? ` ${r.year}` : ""}
+                        {r.brandName} {formatCompareVehicleName(r.modelName, r.trimName).displayName}{r.year ? ` ${r.year}` : ""}
                       </div>
                       <div className="flex items-center gap-1.5 text-xs text-gray-400 truncate">
                         {r.categoryName && <span>{r.categoryName}</span>}

@@ -5,9 +5,10 @@ import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparePicker } from "./ComparePicker";
 import { CompareResultsGrid, type CompareProductView } from "./CompareResultsGrid";
-import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 import { MAX_COMPARE_ITEMS } from "@/lib/compare/constants";
 import { buildSpecComparisonRows } from "@/lib/compare/buildSpecComparisonRows";
+import { formatCompareVehicleName } from "@/lib/compare/formatCompareVehicleName";
 
 export async function generateMetadata({
   searchParams,
@@ -33,7 +34,7 @@ export async function generateMetadata({
   });
   const products = orderAndLockCategory(matched, slugs);
   const names = products
-    .map((p) => `${p.model.brand.name} ${splitTrimName(p.trimName)?.version ?? stripModelGenRange(p.model.name)}`)
+    .map((p) => `${p.model.brand.name} ${formatCompareVehicleName(p.model.name, p.trimName).displayName}`)
     .join(" vs ");
   return {
     title: `${names} Karşılaştırma`,
@@ -125,13 +126,13 @@ export default async function ComparePage({
     : [];
 
   const productViews: CompareProductView[] = products.map((p) => {
-    const trimSplit = splitTrimName(p.trimName);
+    const { displayName, subtitle } = formatCompareVehicleName(p.model.name, p.trimName);
     return {
       slug: p.slug,
       imageUrl: p.imageUrl,
       brandName: p.model.brand.name,
-      displayName: trimSplit ? trimSplit.version : stripModelGenRange(p.model.name),
-      subtitle: trimSplit ? trimSplit.donanim : (p.trimName || null),
+      displayName,
+      subtitle,
       altText: `${p.model.brand.name} ${stripModelGenRange(p.model.name)}`,
       year: p.year,
       agg: aggByProductId.get(p.id) ?? { avg: 0, count: 0, fi: 0, ka: 0, pe: 0 },
@@ -149,7 +150,7 @@ export default async function ComparePage({
             "@type": "ListItem",
             position: i + 1,
             url: `${BASE_URL}/araclar/${p.slug}`,
-            name: `${p.model.brand.name} ${splitTrimName(p.trimName)?.version ?? stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}`,
+            name: `${p.model.brand.name} ${formatCompareVehicleName(p.model.name, p.trimName).displayName}${p.year ? ` ${p.year}` : ""}`,
           })),
         }
       : null;
@@ -179,7 +180,7 @@ export default async function ComparePage({
         <ComparePicker
           initial={products.map((p) => ({
             slug: p.slug,
-            name: `${p.model.brand.name} ${splitTrimName(p.trimName)?.version ?? stripModelGenRange(p.model.name)}${p.year ? ` ${p.year}` : ""}`,
+            name: `${p.model.brand.name} ${formatCompareVehicleName(p.model.name, p.trimName).displayName}${p.year ? ` ${p.year}` : ""}`,
             categorySlug: p.category?.slug ?? null,
           }))}
         />
