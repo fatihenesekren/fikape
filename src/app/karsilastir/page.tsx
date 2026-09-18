@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
-import { FikapeScore } from "@/components/FikapeScore";
-import { AiSummaryCard } from "@/components/AiSummaryCard";
 import { ComparePicker } from "./ComparePicker";
-import { StickyCompareHeader } from "./StickyCompareHeader";
+import { CompareResultsGrid, type CompareProductView } from "./CompareResultsGrid";
 import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { MAX_COMPARE_ITEMS } from "@/lib/compare/constants";
 import { buildSpecComparisonRows } from "@/lib/compare/buildSpecComparisonRows";
@@ -127,6 +124,21 @@ export default async function ComparePage({
     ? buildSpecComparisonRows(products[0].category.slug, products.map((p) => p.attributes))
     : [];
 
+  const productViews: CompareProductView[] = products.map((p) => {
+    const trimSplit = splitTrimName(p.trimName);
+    return {
+      slug: p.slug,
+      imageUrl: p.imageUrl,
+      brandName: p.model.brand.name,
+      displayName: trimSplit ? trimSplit.version : stripModelGenRange(p.model.name),
+      subtitle: trimSplit ? trimSplit.donanim : (p.trimName || null),
+      altText: `${p.model.brand.name} ${stripModelGenRange(p.model.name)}`,
+      year: p.year,
+      agg: aggByProductId.get(p.id) ?? { avg: 0, count: 0, fi: 0, ka: 0, pe: 0 },
+      aiSummary: aiSummaryByProductId.get(p.id) ?? null,
+    };
+  });
+
   const comparisonSchema =
     products.length >= 2
       ? {
@@ -172,123 +184,7 @@ export default async function ComparePage({
           }))}
         />
 
-        {products.length >= 2 && (
-          <StickyCompareHeader
-            items={products.map((p) => {
-              const agg = aggByProductId.get(p.id);
-              const trimSplit = splitTrimName(p.trimName);
-              return {
-                slug: p.slug,
-                name: `${p.model.brand.name} ${trimSplit ? trimSplit.version : stripModelGenRange(p.model.name)}`,
-                overall: agg && agg.count > 0 ? agg.avg : null,
-              };
-            })}
-          />
-        )}
-
-        {products.length >= 2 && (
-          <div
-            className="flex sm:grid gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0"
-            style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}
-          >
-            {products.map((p) => {
-              const agg = aggByProductId.get(p.id) ?? { avg: 0, count: 0, fi: 0, ka: 0, pe: 0 };
-              const trimSplit = splitTrimName(p.trimName);
-              return (
-                <div key={p.slug} className="bg-white border border-gray-100 rounded-2xl p-4 min-w-[240px] sm:min-w-0 shrink-0 sm:shrink snap-start">
-                  {p.imageUrl && (
-                    <div className="relative w-full aspect-[4/3] mb-3 rounded-xl overflow-hidden bg-gray-50">
-                      <Image src={p.imageUrl} alt={`${p.model.brand.name} ${stripModelGenRange(p.model.name)}`} fill className="object-contain p-2" />
-                    </div>
-                  )}
-                  <div className="text-xs text-gray-400 uppercase tracking-wide mb-0.5">{p.model.brand.name}</div>
-                  <Link href={`/araclar/${p.slug}`} className="font-bold text-gray-900 hover:underline">
-                    {trimSplit ? trimSplit.version : stripModelGenRange(p.model.name)}{p.year ? ` ${p.year}` : ""}
-                  </Link>
-                  {trimSplit ? (
-                    <p className="text-xs text-gray-400 mt-0.5">{trimSplit.donanim}</p>
-                  ) : (
-                    p.trimName && <p className="text-xs text-gray-400 mt-0.5">{p.trimName}</p>
-                  )}
-
-                  {agg.count > 0 ? (
-                    <div className="mt-3">
-                      <FikapeScore
-                        variant="bars"
-                        reviewCount={agg.count}
-                        scores={{ scoreFiyat: agg.fi, scoreKalite: agg.ka, scorePerformans: agg.pe, scoreOverall: agg.avg }}
-                      />
-                    </div>
-                  ) : (
-                    <p className="text-xs text-gray-400 mt-3">Veri birikiyor — henüz yorum yok.</p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {products.length >= 2 && specRows.length > 0 && (
-          <div className="mt-8">
-            <h2 className="text-lg font-bold text-gray-900 mb-3">Teknik Özellikler</h2>
-            <div className="overflow-x-auto border border-gray-100 rounded-2xl">
-              <table className="w-full text-sm border-collapse">
-                <tbody>
-                  {specRows.map((row) => (
-                    <tr key={row.label} className="border-b border-gray-100 last:border-0">
-                      <th
-                        scope="row"
-                        className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 whitespace-nowrap"
-                      >
-                        {row.label}
-                      </th>
-                      {row.values.map((value, i) => {
-                        const isBest = row.bestIndices.includes(i);
-                        return (
-                          <td
-                            key={i}
-                            className={`px-3 py-2.5 text-gray-900 ${isBest ? "bg-emerald-50 font-semibold" : ""}`}
-                          >
-                            {value ?? <span className="text-gray-300">—</span>}
-                            {isBest && <span className="text-emerald-600 ml-1" aria-label="en iyi değer">✓</span>}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {products.length >= 2 && (
-          <div className="mt-8">
-            <h2 className="text-lg font-bold text-gray-900 mb-3">AI Özeti</h2>
-            <div
-              className="flex sm:grid gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0"
-              style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}
-            >
-              {products.map((p) => {
-                const summary = aiSummaryByProductId.get(p.id);
-                return summary ? (
-                  <div key={p.slug} className="min-w-[260px] sm:min-w-0 shrink-0 sm:shrink snap-start">
-                    <AiSummaryCard
-                      mode={summary.mode}
-                      summaryText={summary.summaryText}
-                      variant="compare"
-                      reviewCount={summary.reviewCountAtGeneration ?? undefined}
-                    />
-                  </div>
-                ) : (
-                  <div key={p.slug} className="rounded-2xl p-5 border border-gray-100 bg-gray-50 min-w-[260px] sm:min-w-0 shrink-0 sm:shrink snap-start">
-                    <p className="text-xs text-gray-400">Henüz özet yok.</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
+        <CompareResultsGrid products={productViews} specRows={specRows} />
       </div>
     </>
   );

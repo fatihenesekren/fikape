@@ -12,6 +12,15 @@ export interface SpecComparisonRow {
   // Ağırlık, yakıt deposu, motor hacmi gibi yönü belirsiz alanlarda vurgu YAPILMIYOR
   // — yanlış yöne vurgu yapmak (örn. en ağır aracı "en iyi" göstermek) susmaktan kötü.
   bestIndices: number[];
+  // "numeric" = yönü belli (bestIndices anlamlı olabilir), "categorical" = yön yok
+  // (metin değeri VEYA yönü belirsiz sayısal alan — örn. ağırlık, motor hacmi).
+  // UI bu ayrıma göre iki farklı vurgu sistemi kullanıyor: numeric'te yeşil "en iyi"
+  // tiki, categorical'da (sadece değerler gerçekten farklıysa) nötr amber "fark var"
+  // rozeti — ikisi kasıtlı olarak farklı renk+ikon, kullanıcı "kazanan" ile "sadece
+  // farklı" durumunu karıştırmasın diye (bkz. kullanıcı geri bildirimi: Hibrit vs
+  // Plug-in Hibrit farkı fark edilmiyordu).
+  kind: "numeric" | "categorical";
+  hasDifference: boolean;
 }
 
 const HIGHER_IS_BETTER = new Set([
@@ -57,6 +66,10 @@ export function buildSpecComparisonRows(categorySlug: string, attributesList: un
       }
     }
 
-    return { label, values, bestIndices };
+    const kind: "numeric" | "categorical" = direction ? "numeric" : "categorical";
+    const distinctValues = new Set(values.filter((v): v is string => v !== null));
+    const hasDifference = distinctValues.size > 1;
+
+    return { label, values, bestIndices, kind, hasDifference };
   });
 }
