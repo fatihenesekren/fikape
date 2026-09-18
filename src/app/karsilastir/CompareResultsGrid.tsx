@@ -1,5 +1,6 @@
 import { StickyCompareHeader } from "./StickyCompareHeader";
 import { VehicleIdentityCard } from "./VehicleIdentityCard";
+import { CompareScoreRow } from "./CompareScoreRow";
 import { SpecComparisonTable } from "./SpecComparisonTable";
 import { AiSummarySection } from "./AiSummarySection";
 import type { SpecComparisonRow } from "@/lib/compare/buildSpecComparisonRows";
@@ -49,6 +50,7 @@ export function CompareResultsGrid({
         ))}
       </div>
 
+      <CompareScoreRow products={products} />
       <SpecComparisonTable rows={specRows} productNames={products.map((p) => `${p.brandName} ${p.displayName}`)} />
       <AiSummarySection products={products} />
     </>

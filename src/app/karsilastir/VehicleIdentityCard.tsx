@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FikapeScore } from "@/components/FikapeScore";
 import type { CompareProductView } from "./CompareResultsGrid";
 
+// Skor karşılaştırması artık ayrı bir satır-bazlı bölümde (CompareScoreRow) —
+// kart burada sadece hızlı kimlik doğrulama için genel skoru kısaca gösteriyor,
+// detaylı FI-KA-PE kırılımı için kullanıcı aşağı kaydırır.
 export function VehicleIdentityCard({ product }: { product: CompareProductView }) {
   const { slug, imageUrl, brandName, displayName, subtitle, altText, year, agg } = product;
 
@@ -20,15 +22,12 @@ export function VehicleIdentityCard({ product }: { product: CompareProductView }
       {subtitle && <p className="text-xs text-gray-400 mt-0.5">{subtitle}</p>}
 
       {agg.count > 0 ? (
-        <div className="mt-3">
-          <FikapeScore
-            variant="bars"
-            reviewCount={agg.count}
-            scores={{ scoreFiyat: agg.fi, scoreKalite: agg.ka, scorePerformans: agg.pe, scoreOverall: agg.avg }}
-          />
+        <div className="mt-3 flex items-baseline gap-1.5">
+          <span className="text-2xl font-black text-gray-900">{agg.avg.toFixed(1)}</span>
+          <span className="text-xs text-gray-400">/10 · {agg.count} yorum</span>
         </div>
       ) : (
-        <p className="text-xs text-gray-400 mt-3">Veri birikiyor — henüz yorum yok.</p>
+        <p className="text-xs text-gray-400 mt-3">Veri birikiyor — henüz yorum yok. Aşağıda AI izlenimine bakabilirsin.</p>
       )}
     </div>
   );
