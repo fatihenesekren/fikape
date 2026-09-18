@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { MAX_COMPARE_ITEMS, MIN_COMPARE_ITEMS } from "@/lib/compare/constants";
+import { FUEL_LABELS } from "@/lib/fuel";
 
 interface SearchResult {
   slug: string;
@@ -14,6 +16,9 @@ interface SearchResult {
   trimName: string | null;
   categorySlug: string | null;
   categoryName: string | null;
+  imageUrl: string | null;
+  fuelType: string | null;
+  transmission: string | null;
 }
 
 interface SelectedItem {
@@ -116,16 +121,34 @@ export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
               {!loading && results.length === 0 && (
                 <div className="px-3 py-2 text-xs text-gray-400">Sonuç yok.</div>
               )}
-              {results.map((r) => (
-                <button
-                  key={r.slug}
-                  onClick={() => add(r)}
-                  className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 disabled:opacity-40"
-                  disabled={selected.some((s) => s.slug === r.slug)}
-                >
-                  {r.brandName} {splitTrimName(r.trimName)?.version ?? r.modelName}{r.year ? ` ${r.year}` : ""}
-                </button>
-              ))}
+              {results.map((r) => {
+                const fuelLabel = r.fuelType ? (FUEL_LABELS[r.fuelType] ?? r.fuelType) : null;
+                const meta = [fuelLabel, r.transmission].filter(Boolean).join(" · ");
+                return (
+                  <button
+                    key={r.slug}
+                    onClick={() => add(r)}
+                    className="w-full flex items-center gap-2.5 text-left px-3 py-2 text-sm hover:bg-gray-50 disabled:opacity-40"
+                    disabled={selected.some((s) => s.slug === r.slug)}
+                  >
+                    <div className="relative w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-gray-50">
+                      {r.imageUrl && (
+                        <Image src={r.imageUrl} alt="" fill className="object-contain" sizes="40px" />
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="truncate">
+                        {r.brandName} {splitTrimName(r.trimName)?.version ?? r.modelName}{r.year ? ` ${r.year}` : ""}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-gray-400 truncate">
+                        {r.categoryName && <span>{r.categoryName}</span>}
+                        {r.categoryName && meta && <span>·</span>}
+                        {meta && <span>{meta}</span>}
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           )}
         </div>
