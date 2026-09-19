@@ -23,8 +23,6 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
   const maxOverall = presentOveralls.length >= 2 ? Math.max(...presentOveralls) : null;
   const overallTie = maxOverall !== null && presentOveralls.filter((v) => v === maxOverall).length > 1;
 
-  const unscored = products.filter((p) => p.agg.count === 0);
-
   return (
     <>
       <tr className="border-b border-gray-100">
@@ -44,7 +42,15 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
                   {isBest && <span className="sr-only">, en yüksek puan</span>}
                 </span>
               ) : (
-                <span className="text-xs text-gray-400">Henüz yorum yok</span>
+                // Ayrı, sıkışık bir colSpan CTA satırı yerine (önceki tur —
+                // görsel olarak zayıf bulundu) davet doğrudan aracın kendi
+                // hücresinde — konum zaten hangi araca ait olduğunu gösteriyor.
+                <Link
+                  href={`/yorum-yaz?arac=${p.slug}`}
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-link-soft text-link hover:bg-link-line transition-colors"
+                >
+                  ✍️ İlk yorumu sen yaz
+                </Link>
               )}
             </td>
           );
@@ -84,22 +90,6 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
           </tr>
         );
       })}
-
-      {unscored.length > 0 && (
-        <tr className="border-b border-gray-200">
-          <td colSpan={products.length + 1} className="px-3 py-2 text-xs text-gray-400 bg-white">
-            Henüz kullanıcı yorumu yok:{" "}
-            {unscored.map((p, i) => (
-              <span key={p.slug}>
-                <Link href={`/yorum-yaz?arac=${p.slug}`} className="text-link font-semibold hover:underline">
-                  {p.brandName} {p.fullLabel} için ilk yorumu sen yaz
-                </Link>
-                {i < unscored.length - 1 ? " · " : ""}
-              </span>
-            ))}
-          </td>
-        </tr>
-      )}
     </>
   );
 }
