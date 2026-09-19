@@ -163,6 +163,11 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
           ilk aracı öneriden seçen kullanıcı ikinci/üçüncü aracı da yine tek
           tıkla ekleyebilsin diye. Zaten seçili bir araç listeden filtrelenir.
           Arama kutusuna odaklanınca (open=true) kaybolur. */}
+      {/* Öneri pill'i (kesikli çerçeve, "+" öneki, açık zemin) ile seçili
+          chip (dolu koyu zemin) BİLİNÇLİ olarak farklı stilller taşıyor —
+          önceden ikisi de aynı açık-gri tonda olduğu için "hangisi zaten
+          seçili, hangisi öneri" ayırt edilemiyordu (bkz. kullanıcı geri
+          bildirimi, masaüstü ekran görüntüsü). */}
       {showSuggestions && (
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <span className="text-xs text-gray-400">Popüler:</span>
@@ -170,8 +175,9 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
             <button
               key={s.slug}
               onClick={() => addSuggested(s)}
-              className="text-xs font-semibold bg-gray-50 text-gray-600 border border-gray-100 rounded-full px-3 py-1.5 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+              className="inline-flex items-center gap-1 text-xs font-semibold bg-white text-gray-600 border border-dashed border-gray-300 rounded-full px-3 py-1.5 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-900 transition-colors"
             >
+              <span className="text-gray-400" aria-hidden="true">+</span>
               {s.name} <span className="font-normal text-gray-400">({s.reviewCount} yorum)</span>
             </button>
           ))}
@@ -179,10 +185,11 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
       )}
 
       <div className={`flex flex-wrap items-center gap-2 mb-3 ${showSuggestions ? "pt-3 border-t border-gray-100" : ""}`}>
+        {selected.length > 0 && <span className="text-xs text-gray-400">Seçilenler:</span>}
         {selected.map((s) => (
-          <span key={s.slug} className="flex flex-wrap max-w-full items-center gap-1.5 text-xs font-semibold bg-gray-100 text-gray-700 rounded-full px-3 py-1.5">
+          <span key={s.slug} className="flex flex-wrap max-w-full items-center gap-1.5 text-xs font-semibold bg-gray-900 text-white rounded-full px-3 py-1.5">
             {s.name}
-            <button onClick={() => remove(s.slug)} className="text-gray-400 hover:text-gray-700" aria-label={`${s.name} kaldır`}>✕</button>
+            <button onClick={() => remove(s.slug)} className="text-gray-400 hover:text-white" aria-label={`${s.name} kaldır`}>✕</button>
           </span>
         ))}
         {selected.length === 0 && (
@@ -195,9 +202,23 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
         )}
       </div>
 
+      {/* Sayaç + limit mesajı — önceden 4/4 dolunca arama kutusu sessizce
+          kayboluyordu, kullanıcı "neden ekleyemiyorum" diye anlayamıyordu. */}
+      {selected.length > 0 && (
+        <p className="text-xs text-gray-400 mb-2">
+          {selected.length}/{MAX_COMPARE_ITEMS} araç seçildi
+        </p>
+      )}
+
       {lockedCategoryName && selected.length < MAX_COMPARE_ITEMS && (
         <p className="text-xs text-gray-400 mb-2">
           Arama <span className="font-semibold text-gray-600">{lockedCategoryName}</span> kategorisiyle sınırlı.
+        </p>
+      )}
+
+      {selected.length >= MAX_COMPARE_ITEMS && (
+        <p className="text-xs text-amber-800 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2 mb-2">
+          En fazla {MAX_COMPARE_ITEMS} araç karşılaştırabilirsin. Yeni bir araç eklemek için önce listeden birini kaldır.
         </p>
       )}
 
