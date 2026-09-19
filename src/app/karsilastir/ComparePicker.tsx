@@ -126,7 +126,7 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
     <div className="border border-gray-100 bg-white rounded-2xl p-5 mb-4">
       <div className="flex flex-wrap items-center gap-2 mb-3">
         {selected.map((s) => (
-          <span key={s.slug} className="flex items-center gap-1.5 text-xs font-semibold bg-gray-100 text-gray-700 rounded-full px-3 py-1.5">
+          <span key={s.slug} className="flex flex-wrap max-w-full items-center gap-1.5 text-xs font-semibold bg-gray-100 text-gray-700 rounded-full px-3 py-1.5">
             {s.name}
             <button onClick={() => remove(s.slug)} className="text-gray-400 hover:text-gray-700" aria-label={`${s.name} kaldır`}>✕</button>
           </span>

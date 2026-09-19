@@ -21,15 +21,21 @@ export function DecisionSummaryStrip({ badges }: { badges: DecisionBadge[] }) {
             <Link
               key={b.label}
               href={b.href ?? "/yorum-yaz"}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold bg-link-soft text-link border border-link-line rounded-full px-3 py-1.5 hover:bg-link-line transition-colors"
+              className="inline-flex flex-wrap max-w-full items-center gap-1.5 text-xs font-semibold bg-link-soft text-link border border-link-line rounded-full px-3 py-1.5 hover:bg-link-line transition-colors"
             >
               ✍️ {b.label} — ilk yorumu sen yaz →
             </Link>
           ) : (
+            // flex-wrap + max-w-full ZORUNLU: inline-flex varsayılan olarak
+            // flex-wrap:nowrap taşıyor, uzun araç adlarında (b.vehicleLabel)
+            // pill içeriği satır kırmadan viewport dışına taşıp SAYFAYI
+            // yatayda genişletiyordu (mobilde canlıda bulunan gerçek hata —
+            // body'ye overflow-x-hidden eklemek bunu ÇÖZMEDİ çünkü bu gerçek
+            // bir CSS taşmasıydı, tarayıcı viewport davranışı değil).
             <span
               key={b.label}
               title={SOURCE_STYLES[b.source].hint}
-              className={`inline-flex items-center gap-1.5 text-xs font-semibold rounded-full px-3 py-1.5 border cursor-help ${SOURCE_STYLES[b.source].bg} ${SOURCE_STYLES[b.source].text} ${SOURCE_STYLES[b.source].border}`}
+              className={`inline-flex flex-wrap max-w-full items-center gap-1.5 text-xs font-semibold rounded-full px-3 py-1.5 border cursor-help ${SOURCE_STYLES[b.source].bg} ${SOURCE_STYLES[b.source].text} ${SOURCE_STYLES[b.source].border}`}
             >
               <span aria-hidden="true">{SOURCE_STYLES[b.source].icon}</span>
               {b.label}: <span className="font-bold">{b.vehicleLabel}</span>
