@@ -28,7 +28,15 @@ interface SelectedItem {
   categoryName?: string | null;
 }
 
-export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
+interface SuggestedItem {
+  slug: string;
+  name: string;
+  categorySlug: string;
+  categoryName: string;
+  reviewCount: number;
+}
+
+export function ComparePicker({ initial, suggestions = [] }: { initial: SelectedItem[]; suggestions?: SuggestedItem[] }) {
   const router = useRouter();
   const pathname = usePathname();
   // Zaten bir karşılaştırma sonucu sayfasındaysak (/karsilastir/slug1-vs-slug2)
@@ -87,10 +95,21 @@ export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
     if (isResultsPage) {
       if (next.length >= MIN_COMPARE_ITEMS) {
         router.push(`/karsilastir/${next.map((s) => s.slug).join("-vs-")}`);
+      } else if (next.length === 1) {
+        // Tek slug'lı ama geçerli bir /karsilastir/[comparison] route'u — sonuç
+        // tablosu (products.length < 2 olduğu için) gizli kalır ama kalan tek
+        // araç chip'te durmaya devam eder, boş sayfaya dönüp onu da SİLMEZ
+        // (bkz. kullanıcı geri bildirimi: "2 araçtan 1'e düşünce kalanı da siliyor").
+        router.push(`/karsilastir/${next[0].slug}`);
       } else {
         router.push("/karsilastir");
       }
     }
+  }
+
+  function addSuggested(s: SuggestedItem) {
+    if (selected.some((x) => x.slug === s.slug) || selected.length >= MAX_COMPARE_ITEMS) return;
+    setSelected([...selected, { slug: s.slug, name: s.name, categorySlug: s.categorySlug, categoryName: s.categoryName }]);
   }
 
   function removeAll() {
@@ -121,6 +140,24 @@ export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
           </button>
         )}
       </div>
+
+      {/* Henüz hiç araç seçilmemişken ve arama kutusu boş/odaksızken gösterilen
+          hızlı-seçim önerileri — kullanıcı aramaya başlar başlamaz (open=true)
+          kaybolur, elle arama akışıyla karışmasın diye. */}
+      {selected.length === 0 && !open && suggestions.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          <span className="text-xs text-gray-400">Popüler:</span>
+          {suggestions.map((s) => (
+            <button
+              key={s.slug}
+              onClick={() => addSuggested(s)}
+              className="text-xs font-semibold bg-gray-50 text-gray-600 border border-gray-100 rounded-full px-3 py-1.5 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+            >
+              {s.name} <span className="font-normal text-gray-400">({s.reviewCount} yorum)</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {lockedCategoryName && selected.length < MAX_COMPARE_ITEMS && (
         <p className="text-xs text-gray-400 mb-2">

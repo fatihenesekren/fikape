@@ -3,6 +3,7 @@ import Link from "next/link";
 import { permanentRedirect } from "next/navigation";
 import { ComparePicker } from "./ComparePicker";
 import { dedupeAndLimitSlugs } from "./loadCompareData";
+import { getMostReviewedProducts } from "@/lib/dataCache";
 
 export const metadata: Metadata = {
   title: "Araç Karşılaştır",
@@ -26,6 +27,8 @@ export default async function CompareEntryPage({
     }
   }
 
+  const suggestions = await getMostReviewedProducts();
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <div className="mb-8">
@@ -39,7 +42,7 @@ export default async function CompareEntryPage({
         fikape kullanıcı yorumlarına dayalı, iki veya daha fazla aracı yan yana karşılaştır.
       </p>
 
-      <ComparePicker initial={[]} />
+      <ComparePicker initial={[]} suggestions={suggestions} />
     </div>
   );
 }
