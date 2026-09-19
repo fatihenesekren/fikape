@@ -41,12 +41,20 @@ export function UnifiedCompareTable({
 
       <div className="overflow-x-auto border border-gray-100 rounded-2xl">
         <table
-          className="w-full text-sm border-collapse"
+          className="w-full text-sm border-collapse table-fixed"
           aria-label={`${productNames.join(" ve ")} karşılaştırması`}
         >
           <thead>
             <tr>
-              <th scope="col" className="sr-only">Özellik</th>
+              {/* table-fixed: sütun genişlikleri artık İÇERİĞE değil, bu ilk
+                  satırdaki hücre genişliklerine göre belirleniyor (etiket
+                  sütunu sabit, araç sütunları eşit paylaşım) — table-layout:auto
+                  (varsayılan) tarayıcının sütun genişliğini hesaplamak için TÜM
+                  hücre içeriğini taraması gerektiriyordu, araç sayısı arttıkça bu
+                  bazı mobil tarayıcılarda sayfanın gerçek genişliğini yanlış
+                  algılamasına (canlıda bulunan "araç sayısı arttıkça büyüyen
+                  boşluk" hatası) katkı sağlıyor olabilirdi. */}
+              <th scope="col" className="sr-only w-28">Özellik</th>
               {productNames.map((name, i) => (
                 <th
                   key={i}
