@@ -37,11 +37,31 @@ interface SpecRowInput {
 // tabloda yine görünür kalıyor, sadece burada öne çıkarılmıyor.
 const MIN_REVIEWS_FOR_BADGE = 2;
 
-const SPEC_BADGE_CANDIDATES: { label: string; badgeLabel: string }[] = [
+// Kategoriye özel etiket (karavan/kamyonet/motosiklet/EV alanları da dahil —
+// buildSpecComparisonRows.ts'teki HIGHER_IS_BETTER/LOWER_IS_BETTER ile birebir
+// eşleşiyor). Sabit 3 alanlık eski liste ("Güç"/"0-100"/"Bagaj") sadece
+// otomobile özgüydü — karavan gibi bu alanları taşımayan kategorilerde hiçbir
+// zaman rozet üretemiyordu (canlıda bulunan gerçek hata). Öncelik sırası bu
+// dizinin sırasıyla belirleniyor, mevcut ilk 3 uygun eşleşme kullanılıyor.
+const SPEC_BADGE_LABELS: { label: string; badgeLabel: string }[] = [
   { label: "Güç", badgeLabel: "En güçlü" },
-  { label: "0–100 km/s", badgeLabel: "En hızlı (0-100)" },
+  { label: "Menzil", badgeLabel: "En uzun menzil" },
+  { label: "Çekme Kap.", badgeLabel: "En yüksek çekme kapasitesi" },
+  { label: "Yük Kap.", badgeLabel: "En yüksek yük kapasitesi" },
+  { label: "Yatak Kap.", badgeLabel: "En fazla yatak kapasitesi" },
   { label: "Bagaj", badgeLabel: "En geniş bagaj" },
+  { label: "0–100 km/s", badgeLabel: "En hızlı (0-100)" },
+  { label: "Tork", badgeLabel: "En yüksek tork" },
+  { label: "Azami Hız", badgeLabel: "En yüksek azami hız" },
+  { label: "Maks. Hız", badgeLabel: "En yüksek azami hız" },
+  { label: "Batarya", badgeLabel: "En büyük batarya" },
+  { label: "Maks. Yük", badgeLabel: "En yüksek taşıma kapasitesi" },
+  { label: "Taze Su Tankı", badgeLabel: "En büyük taze su tankı" },
+  { label: "Gri/Pis Su Tankı", badgeLabel: "En büyük atık su tankı" },
+  { label: "Çekme Ağ.", badgeLabel: "En yüksek çekme ağırlığı" },
+  { label: "Şarj Süresi", badgeLabel: "En kısa şarj süresi" },
 ];
+const MAX_SPEC_BADGES = 3;
 
 export function buildDecisionSummary(
   products: ProductScoreInput[],
@@ -75,7 +95,9 @@ export function buildDecisionSummary(
 
   // Öncelik sırası kasıtlı: kullanıcı deneyimi (yukarıda) > teknik özellik.
   // Toplamda en fazla 5 rozet (2 review + 3 spec) — daha fazlası gürültü olur.
-  for (const candidate of SPEC_BADGE_CANDIDATES) {
+  let specBadgeCount = 0;
+  for (const candidate of SPEC_BADGE_LABELS) {
+    if (specBadgeCount >= MAX_SPEC_BADGES) break;
     const row = specRows.find((r) => r.label === candidate.label);
     if (row && row.bestIndices.length === 1) {
       const i = row.bestIndices[0];
@@ -85,6 +107,7 @@ export function buildDecisionSummary(
         detail: row.values[i] ?? undefined,
         source: "spec",
       });
+      specBadgeCount++;
     }
   }
 
