@@ -30,10 +30,14 @@ function summaryLabel(summary: AiSummary): { title: string; muted: boolean; shor
 // Metnin önünde ayrıca "İzlenim:"/"Özet:" öneki YOK — rozet zaten bağlamı
 // kuruyor, ikisi art arda aynı kelimeyi tekrarlıyordu (bkz. kullanıcı geri
 // bildirimi).
+// w-full (min-w-[180px] DEĞİL): UnifiedCompareTable artık table-fixed —
+// sütun genişliği tabloca garanti altında, bir alt-eleman min-width ile
+// bunu zorlarsa dar sütunlarda (3-4 araç, mobil) komşu hücrenin üzerine
+// taşıyordu (canlıda bulunan gerçek hata, ekran görüntüsüyle doğrulandı).
 function AiSummaryCell({ summary }: { summary: AiSummary }) {
   const { title, muted, shortNote, icon } = summaryLabel(summary);
   return (
-    <div className="flex flex-col h-full min-w-[180px] max-w-[260px]">
+    <div className="flex flex-col h-full w-full max-w-[260px]">
       <span
         className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full mb-1.5 self-start"
         style={{ background: muted ? "#E0E7FF" : "#6366F1", color: muted ? "#4F46E5" : "#fff" }}
@@ -51,7 +55,7 @@ export function AiSummaryRow({ products }: { products: CompareProductView[] }) {
     <tr className="border-b border-gray-100">
       <th
         scope="row"
-        className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 align-top whitespace-nowrap"
+        className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 align-top"
       >
         <span className="inline-flex items-center gap-1">
           AI Değerlendirmesi

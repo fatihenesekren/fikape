@@ -26,7 +26,7 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
   return (
     <>
       <tr className="border-b border-gray-100">
-        <th scope="row" className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 whitespace-nowrap">
+        <th scope="row" className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5">
           Genel Skor
         </th>
         {products.map((p, i) => {
@@ -65,7 +65,7 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
         const tie = max !== null && present.filter((v) => v === max).length > 1;
         return (
           <tr key={key} className="border-b border-gray-100">
-            <th scope="row" className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 whitespace-nowrap">
+            <th scope="row" className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5">
               {label}
             </th>
             {products.map((p, i) => {
@@ -73,8 +73,11 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
               const isBest = val !== null && val === max && !tie;
               return (
                 <td key={p.slug} className={`px-3 py-2.5 ${isBest ? "bg-emerald-50" : zebraColumnBg(i)}`}>
+                  {/* min-w-[100px] DEĞİL: table-fixed altında dar sütunlarda
+                      (3-4 araç, mobil) komşu hücreye taşardı (bkz. AiSummaryRow
+                      yorumu — aynı hata sınıfı). */}
                   {val !== null ? (
-                    <div className="flex items-center gap-2 min-w-[100px]">
+                    <div className="flex items-center gap-2 w-full">
                       <div className="flex-1 h-1.5 rounded-full bg-gray-100 overflow-hidden">
                         <div className="h-full rounded-full" style={{ width: `${(val / 10) * 100}%`, background: color }} />
                       </div>

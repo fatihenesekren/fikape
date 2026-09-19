@@ -54,7 +54,31 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
   // kategoriden araç (örn. otomobil vs motosiklet) karşılaştırmaya eklenemesin diye.
   const lockedCategorySlug = selected[0]?.categorySlug ?? null;
   const lockedCategoryName = selected[0]?.categoryName ?? null;
-  const visibleSuggestions = suggestions.filter((s) => !selected.some((x) => x.slug === s.slug));
+  const [categorySuggestions, setCategorySuggestions] = useState<SuggestedItem[] | null>(null);
+  // Kategori kilitlenmemişken (hiç araç seçilmemişken) sayfa yüklenirken gelen
+  // global "en çok yorumlanan 3 araç" (`suggestions` prop) gösterilir. Kategori
+  // kilitlenince (isim veya öneriden ilk seçim yapılınca) öneriler o kategoriye
+  // özel listeye geçer — kullanıcı bir öneriyi seçtikçe seçilenler hariç
+  // tutularak tazelenir, liste hep 3 dolu kalmaya çalışır (bkz. kullanıcı geri
+  // bildirimi: "kategoriyle güncelleyelim, seçileni değil başka bir aday gelsin").
+  const activeSuggestions = lockedCategorySlug ? (categorySuggestions ?? []) : suggestions;
+  const visibleSuggestions = activeSuggestions.filter((s) => !selected.some((x) => x.slug === s.slug));
+  const selectedSlugsKey = selected.map((s) => s.slug).join(",");
+
+  useEffect(() => {
+    // Kategori kilidi yoksa (hiç araç seçilmemiş) bu efekt hiç çalışmaz —
+    // activeSuggestions zaten lockedCategorySlug null'ken categorySuggestions'ı
+    // görmezden geliyor, ayrıca sıfırlamaya gerek yok (gereksiz setState'ten kaçınılıyor).
+    if (!lockedCategorySlug) return;
+    const params = new URLSearchParams({ category: lockedCategorySlug });
+    if (selectedSlugsKey) params.set("exclude", selectedSlugsKey);
+    let cancelled = false;
+    fetch(`/api/compare/suggestions?${params.toString()}`)
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => { if (!cancelled) setCategorySuggestions(data); })
+      .catch(() => { if (!cancelled) setCategorySuggestions([]); });
+    return () => { cancelled = true; };
+  }, [lockedCategorySlug, selectedSlugsKey]);
 
   useEffect(() => {
     if (query.length < 2) return;
@@ -110,6 +134,11 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
 
   function addSuggested(s: SuggestedItem) {
     if (selected.some((x) => x.slug === s.slug) || selected.length >= MAX_COMPARE_ITEMS) return;
+    // add()'deki kategori kilidi kontrolü burada da gerekliydi — eksikti,
+    // öneri pilline tıklayınca farklı kategoriden bir araç sessizce
+    // eklenebiliyordu (sunucu tarafında karşılaştırma sayfasına geçince geç
+    // fark ediliyordu, bkz. kullanıcı geri bildirimi).
+    if (lockedCategorySlug && s.categorySlug !== lockedCategorySlug) return;
     setSelected([...selected, { slug: s.slug, name: s.name, categorySlug: s.categorySlug, categoryName: s.categoryName }]);
   }
 
@@ -123,9 +152,33 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
     router.push(`/karsilastir/${selected.map((s) => s.slug).join("-vs-")}`);
   }
 
+  const showSuggestions = !open && selected.length < MAX_COMPARE_ITEMS && visibleSuggestions.length > 0;
+
   return (
     <div className="border border-gray-100 bg-white rounded-2xl p-5 mb-4">
-      <div className="flex flex-wrap items-center gap-2 mb-3">
+      {/* Öneri şeridi kasıtlı olarak HER ZAMAN üstte, sabit bir konumda —
+          kullanıcı seçim yaptıkça yer değiştirmesin diye (bkz. kullanıcı
+          önerisi: "önerileri hep üstte tutalım, seçilenler altına"). Slot
+          kaldığı sürece (1-3 araç seçiliyken de) görünmeye devam ediyor —
+          ilk aracı öneriden seçen kullanıcı ikinci/üçüncü aracı da yine tek
+          tıkla ekleyebilsin diye. Zaten seçili bir araç listeden filtrelenir.
+          Arama kutusuna odaklanınca (open=true) kaybolur. */}
+      {showSuggestions && (
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          <span className="text-xs text-gray-400">Popüler:</span>
+          {visibleSuggestions.map((s) => (
+            <button
+              key={s.slug}
+              onClick={() => addSuggested(s)}
+              className="text-xs font-semibold bg-gray-50 text-gray-600 border border-gray-100 rounded-full px-3 py-1.5 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+            >
+              {s.name} <span className="font-normal text-gray-400">({s.reviewCount} yorum)</span>
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div className={`flex flex-wrap items-center gap-2 mb-3 ${showSuggestions ? "pt-3 border-t border-gray-100" : ""}`}>
         {selected.map((s) => (
           <span key={s.slug} className="flex flex-wrap max-w-full items-center gap-1.5 text-xs font-semibold bg-gray-100 text-gray-700 rounded-full px-3 py-1.5">
             {s.name}
@@ -141,30 +194,6 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
           </button>
         )}
       </div>
-
-      {/* Öneri pill'leri artık sadece boşken değil, slot kaldığı sürece (1-3
-          araç seçiliyken de) görünmeye devam ediyor — ilk aracı öneriden
-          seçen kullanıcı ikinci/üçüncü aracı da yine tek tıkla ekleyebilsin
-          diye (bkz. kullanıcı geri bildirimi: önce seçilince öneriler
-          kayboluyor, tekrar elle aramak gerekiyordu). Zaten seçili bir araç
-          listeden filtrelenir (iki kez gösterilmesin). Seçili gerçek chip'ler
-          varken aralarına ince bir ayırıcı çizgi konur — ikisi görsel olarak
-          karışmasın diye "soluk öneri" ile "gerçek seçim" ayrışık kalır.
-          Arama kutusuna odaklanınca (open=true) hâlâ kaybolur. */}
-      {!open && selected.length < MAX_COMPARE_ITEMS && visibleSuggestions.length > 0 && (
-        <div className={`flex flex-wrap items-center gap-2 mb-3 ${selected.length > 0 ? "pt-3 border-t border-gray-100" : ""}`}>
-          <span className="text-xs text-gray-400">Popüler:</span>
-          {visibleSuggestions.map((s) => (
-            <button
-              key={s.slug}
-              onClick={() => addSuggested(s)}
-              className="text-xs font-semibold bg-gray-50 text-gray-600 border border-gray-100 rounded-full px-3 py-1.5 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-            >
-              {s.name} <span className="font-normal text-gray-400">({s.reviewCount} yorum)</span>
-            </button>
-          ))}
-        </div>
-      )}
 
       {lockedCategoryName && selected.length < MAX_COMPARE_ITEMS && (
         <p className="text-xs text-gray-400 mb-2">

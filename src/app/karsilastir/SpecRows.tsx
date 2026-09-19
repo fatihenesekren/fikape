@@ -12,7 +12,7 @@ export function SpecRows({ rows }: { rows: SpecComparisonRow[] }) {
         <tr key={row.label} className="border-b border-gray-100 last:border-0">
           <th
             scope="row"
-            className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 whitespace-nowrap"
+            className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5"
           >
             {row.label}
           </th>

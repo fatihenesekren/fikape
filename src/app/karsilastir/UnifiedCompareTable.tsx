@@ -54,7 +54,10 @@ export function UnifiedCompareTable({
                   bazı mobil tarayıcılarda sayfanın gerçek genişliğini yanlış
                   algılamasına (canlıda bulunan "araç sayısı arttıkça büyüyen
                   boşluk" hatası) katkı sağlıyor olabilirdi. */}
-              <th scope="col" className="sr-only w-28">Özellik</th>
+              {/* w-32: etiket hücrelerindeki whitespace-nowrap kaldırıldı (uzun
+                  etiketler artık 2 satıra sarabiliyor) ama w-28 (112px) yine de
+                  dar kalıyordu, w-32 (128px) rahat payı veriyor. */}
+              <th scope="col" className="sr-only w-32">Özellik</th>
               {productNames.map((name, i) => (
                 <th
                   key={i}
