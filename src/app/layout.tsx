@@ -52,7 +52,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="tr" className={`${geist.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[--background]">
+      {/* overflow-x-hidden: sayfanın herhangi bir yerinde (örn. /karsilastir'in
+          geniş tablosu, kendi overflow-x-auto'su içinde düzgün tutulsa bile)
+          görsel bir taşma olursa mobil tarayıcılar (özellikle Android Chrome)
+          bunu algılayıp tüm sayfanın layout viewport'unu genişletip zoom-out
+          yapıyor — bu, sitenin tek scroll alanı olan body'de o davranışa karşı
+          global bir güvenlik önlemi, iç içe scroll container yaratmıyor. */}
+      <body className="min-h-full flex flex-col bg-[--background] overflow-x-hidden">
         <JsonLd
           data={{
             "@context": "https://schema.org",
