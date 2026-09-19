@@ -21,11 +21,16 @@ export function IdentityRow({ products }: { products: CompareProductView[] }) {
               <Image src={p.imageUrl} alt={p.altText} fill className="object-contain p-2" sizes="160px" />
             </div>
           )}
-          <div className="text-[10px] text-gray-400 uppercase tracking-wide mb-0.5">{p.brandName}</div>
-          <Link href={`/araclar/${p.slug}`} className="font-bold text-gray-900 hover:underline text-sm line-clamp-2">
+          {/* break-words: marka adı ("VOLKSWAGEN" gibi) TEK KELİME, normal
+              satır kırma noktası yok — dar mobil sütunlarda (3-4 araç) komşu
+              hücrenin üzerine taşıyordu (SpecRows.tsx'teki "Elektrikli" ile
+              AYNI hata sınıfı, ama bu satırda eksik kalmıştı — gerçek
+              kullanıcı ekran görüntüsüyle doğrulandı). */}
+          <div className="text-[10px] text-gray-400 uppercase tracking-wide mb-0.5 break-words">{p.brandName}</div>
+          <Link href={`/araclar/${p.slug}`} className="font-bold text-gray-900 hover:underline text-sm line-clamp-2 break-words">
             {p.displayName}{p.year ? ` ${p.year}` : ""}
           </Link>
-          {p.subtitle && <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{p.subtitle}</p>}
+          {p.subtitle && <p className="text-xs text-gray-400 mt-0.5 line-clamp-1 break-words">{p.subtitle}</p>}
         </td>
       ))}
     </tr>
