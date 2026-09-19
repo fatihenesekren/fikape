@@ -6,6 +6,7 @@ import Image from "next/image";
 import { MAX_COMPARE_ITEMS, MIN_COMPARE_ITEMS } from "@/lib/compare/constants";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { formatCompareVehicleName } from "@/lib/compare/formatCompareVehicleName";
+import { useSpeechToText } from "@/hooks/useSpeechToText";
 
 interface SearchResult {
   slug: string;
@@ -49,6 +50,28 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
+  const {
+    status: speechStatus,
+    interimTranscript: speechInterim,
+    errorMessage: speechError,
+    start: startSpeech,
+    stop: stopSpeech,
+    abort: abortSpeech,
+    supported: speechSupported,
+  } = useSpeechToText();
+
+  // Sesli girişte "final" parça (isFinal) araya girdikçe query'ye kalıcı olarak
+  // eklenir; interimTranscript ise henüz kesinleşmemiş kısmı anlık gösterir —
+  // ikisi birleştirilip hem input'ta hem arama sorgusunda kullanılır, böylece
+  // kullanıcı konuşurken kutu ve sonuçlar aynı anda dolar (kayıt-sonra-yaz değil).
+  const displayQuery = speechStatus === "listening" && speechInterim
+    ? `${query}${query && !query.endsWith(" ") ? " " : ""}${speechInterim}`
+    : query;
+
+  function handleVoiceFinalTranscript(text: string) {
+    setQuery((prev) => `${prev}${prev && !prev.endsWith(" ") ? " " : ""}${text}`.trimStart());
+    setOpen(true);
+  }
 
   // İlk araç seçildikten sonra arama o aracın kategorisiyle sınırlanır — farklı
   // kategoriden araç (örn. otomobil vs motosiklet) karşılaştırmaya eklenemesin diye.
@@ -81,11 +104,14 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
   }, [lockedCategorySlug, selectedSlugsKey]);
 
   useEffect(() => {
-    if (query.length < 2) return;
+    // Dropdown zaten displayQuery.length < 2 iken render edilmiyor (aşağıda),
+    // bu yüzden results'ı burada senkron sıfırlamaya gerek yok — bir sonraki
+    // gerçek aramada zaten üzerine yazılır.
+    if (displayQuery.length < 2) return;
     const t = setTimeout(async () => {
       setLoading(true);
       try {
-        const params = new URLSearchParams({ q: query });
+        const params = new URLSearchParams({ q: displayQuery });
         if (lockedCategorySlug) params.set("category", lockedCategorySlug);
         const res = await fetch(`/api/search/products?${params.toString()}`);
         if (res.ok) setResults(await res.json());
@@ -94,7 +120,18 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
       }
     }, 300);
     return () => clearTimeout(t);
-  }, [query, lockedCategorySlug]);
+  }, [displayQuery, lockedCategorySlug]);
+
+  // Kullanıcı "sonuç yok görününce mikrofon dursun" istedi — dinleme
+  // sırasında bir arama tamamlanıp sıfır sonuç dönerse mikrofonu kapatıyoruz
+  // (searchTerm >= 2 şartı, henüz hiç arama yapılmadan stale/boş results'a
+  // bakıp yanlışlıkla erken durdurmayı engelliyor).
+  useEffect(() => {
+    if (speechStatus !== "listening") return;
+    if (loading) return;
+    if (displayQuery.trim().length < 2) return;
+    if (results.length === 0) stopSpeech();
+  }, [speechStatus, stopSpeech, loading, displayQuery, results]);
 
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {
@@ -112,6 +149,7 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
     setQuery("");
     setResults([]);
     setOpen(false);
+    if (speechStatus === "listening") stopSpeech();
   }
 
   function remove(slug: string) {
@@ -226,13 +264,74 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
         <div ref={boxRef} className="relative">
           <input
             type="text"
-            value={query}
-            onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
+            value={displayQuery}
+            onChange={(e) => {
+              if (speechStatus === "listening") stopSpeech();
+              setQuery(e.target.value);
+              setOpen(true);
+            }}
             onFocus={() => setOpen(true)}
             placeholder="Araç ara ve ekle..."
-            className="w-full text-sm rounded-lg border border-gray-200 px-3 py-2"
+            className="w-full text-sm rounded-lg border border-gray-200 px-3 py-2 pr-9"
           />
-          {open && query.length >= 2 && (
+          {speechSupported && (
+            <button
+              type="button"
+              onClick={() => {
+                if (speechStatus === "listening") {
+                  stopSpeech();
+                } else if (displayQuery) {
+                  setQuery("");
+                  setResults([]);
+                  abortSpeech();
+                } else {
+                  setOpen(true);
+                  startSpeech(handleVoiceFinalTranscript);
+                }
+              }}
+              aria-label={
+                speechStatus === "listening"
+                  ? "Sesli aramayı durdur"
+                  : displayQuery
+                  ? "Aramayı temizle"
+                  : "Sesli arama başlat"
+              }
+              aria-pressed={speechStatus === "listening"}
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center transition-colors"
+              style={
+                speechStatus === "listening"
+                  ? { color: "#dc2626" }
+                  : displayQuery
+                  ? { color: "#6b7280" }
+                  : { color: "#9ca3af" }
+              }
+            >
+              {speechStatus === "listening" ? (
+                <span className="relative flex items-center justify-center" aria-hidden="true">
+                  <span className="absolute -inset-1.5 rounded-full border-2 border-current opacity-50 animate-pulse motion-reduce:animate-none" />
+                  <svg width={13} height={13} viewBox="0 0 24 24">
+                    <rect x={6} y={6} width={12} height={12} rx={2} fill="currentColor" />
+                  </svg>
+                </span>
+              ) : displayQuery ? (
+                <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+                  <line x1={18} y1={6} x2={6} y2={18} />
+                  <line x1={6} y1={6} x2={18} y2={18} />
+                </svg>
+              ) : (
+                <svg aria-hidden="true" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                  <line x1={12} y1={19} x2={12} y2={23} />
+                  <line x1={8} y1={23} x2={16} y2={23} />
+                </svg>
+              )}
+            </button>
+          )}
+          {speechStatus === "error" && speechError && (
+            <p className="text-xs text-amber-700 mt-1">{speechError}</p>
+          )}
+          {open && displayQuery.length >= 2 && (
             <div className="absolute z-10 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-lg max-h-64 overflow-y-auto">
               {loading && <div className="px-3 py-2 text-xs text-gray-400">Aranıyor...</div>}
               {!loading && results.length === 0 && (
