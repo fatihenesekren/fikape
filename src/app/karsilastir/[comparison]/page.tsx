@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { ComparePicker } from "../ComparePicker";
 import { CompareResultsGrid } from "../CompareResultsGrid";
 import { dedupeAndLimitSlugs, loadCompareData, loadCompareMetaNames } from "../loadCompareData";
+import { ScrollTopLogo } from "@/app/_components/ScrollTopLogo";
 
 // URL şeması: /karsilastir/slug1-vs-slug2-vs-slug3 (SEO/paylaşım için path-based,
 // eski `?urunler=slug1,slug2` query-string şemasından geçiş — bkz. karsilastir/page.tsx
@@ -75,6 +76,32 @@ export default async function ComparePage({
 
         <CompareResultsGrid products={productViews} specRows={specRows} />
       </div>
+
+      <section className="bg-[#111] text-white mt-4">
+        <div className="max-w-7xl mx-auto px-4 py-14 text-center">
+          <ScrollTopLogo />
+          <p className="text-gray-300 text-lg font-bold mb-2">
+            Hadi aracını değerlendirelim.
+          </p>
+          <p className="text-gray-500 text-sm mb-8">
+            Yorumun bir sonraki alıcının kararını değiştirebilir.
+          </p>
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <a
+              href="/yorum-yaz"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-sm text-[#111] bg-white hover:bg-gray-100 transition-colors"
+            >
+              Yorum Yaz →
+            </a>
+            <a
+              href="/oner"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm text-white border border-white/20 hover:border-white/40 transition-colors"
+            >
+              Araç Öner
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -1,8 +1,5 @@
 import { StickyCompareHeader } from "./StickyCompareHeader";
-import { VehicleIdentityCard } from "./VehicleIdentityCard";
-import { CompareScoreRow } from "./CompareScoreRow";
-import { SpecComparisonTable } from "./SpecComparisonTable";
-import { AiSummarySection } from "./AiSummarySection";
+import { UnifiedCompareTable } from "./UnifiedCompareTable";
 import { DecisionSummaryStrip } from "./DecisionSummaryStrip";
 import type { SpecComparisonRow } from "@/lib/compare/buildSpecComparisonRows";
 import { buildDecisionSummary } from "@/lib/compare/buildDecisionSummary";
@@ -20,11 +17,9 @@ export interface CompareProductView {
   aiSummary: { mode: "SINGLE_CARD" | "REVIEWS_SUMMARY"; summaryText: string; reviewCountAtGeneration: number | null } | null;
 }
 
-// Sonuç bölümünün orkestratörü — veri çekme page.tsx'te kalıyor, burası sadece
-// zaten hazırlanmış CompareProductView[]'ı alıp dört alt bölümü (sticky özet,
-// kimlik kartları, spec tablosu, AI özeti) sıralıyor. page.tsx'i küçük tutmak ve
-// her bölümü bağımsız test edilebilir kılmak için ayrıldı (davranış değişikliği
-// YOK — mevcut JSX'in birebir taşınmış hali).
+// Sonuç bölümünün orkestratörü — veri çekme page.tsx'te kalıyor, burası
+// sticky özet şeridi + karar rozetleri + BİRLEŞİK tabloyu (kimlik+skor+AI
+// özeti+spec, tek <table>) sıralıyor.
 export function CompareResultsGrid({
   products,
   specRows,
@@ -54,20 +49,9 @@ export function CompareResultsGrid({
         }))}
       />
 
-      <div
-        className="flex sm:grid gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0"
-        style={{ gridTemplateColumns: `repeat(${products.length}, minmax(0, 1fr))` }}
-      >
-        {products.map((p, i) => (
-          <VehicleIdentityCard key={p.slug} product={p} index={i} />
-        ))}
-      </div>
-
       <DecisionSummaryStrip badges={decisionBadges} />
 
-      <CompareScoreRow products={products} />
-      <SpecComparisonTable rows={specRows} productNames={products.map((p) => `${p.brandName} ${p.fullLabel}`)} />
-      <AiSummarySection products={products} />
+      <UnifiedCompareTable products={products} specRows={specRows} />
     </>
   );
 }
