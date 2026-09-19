@@ -56,6 +56,7 @@ export function MobileCompareCarousel({
       <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-[11px] text-gray-500 mb-3">
         <span>✓ En iyi değer</span>
         <span>△ Farklı — tercihine bağlı</span>
+        <span>— Veri yok</span>
       </div>
       <div className="flex items-center justify-center gap-1.5 mb-3">
         {products.map((p, i) => (

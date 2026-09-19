@@ -83,18 +83,27 @@ export function MobileVehicleCard({
         </div>
       )}
 
+      {/* Değer yoksa satırı GİZLEMİYORUZ — masaüstü SpecRows.tsx ile aynı
+          davranış: "—" gösteriliyor (bkz. kullanıcı geri bildirimi, bu
+          karşılaştırma amaçlı bir sayfa, hangi aracın hangi özelliği
+          eksik/doldurulmamış olduğu da bir bilgi; satırı tamamen atlamak
+          "bu özellik bu araçta yok" ile "veri girilmemiş"i ayırt
+          edilemez kılıyordu). */}
       <div className="mt-4 divide-y divide-gray-100">
         {specRows.map((row) => {
           const value = row.values[index];
-          if (!value) return null;
           const isBest = row.bestIndices.includes(index);
           const isDifferent = row.kind === "categorical" && row.differentIndices.includes(index);
           return (
             <div key={row.label} className="flex items-center justify-between gap-3 py-2 text-xs">
               <span className="text-gray-400 uppercase tracking-wide shrink-0">{row.label}</span>
-              <span className={`font-medium text-right break-words ${isBest ? "text-emerald-700" : isDifferent ? "text-amber-700" : "text-gray-900"}`}>
-                {value}{isBest && " ✓"}{isDifferent && " △"}
-              </span>
+              {value ? (
+                <span className={`font-medium text-right break-words ${isBest ? "text-emerald-700" : isDifferent ? "text-amber-700" : "text-gray-900"}`}>
+                  {value}{isBest && " ✓"}{isDifferent && " △"}
+                </span>
+              ) : (
+                <span className="text-gray-300">—</span>
+              )}
             </div>
           );
         })}
