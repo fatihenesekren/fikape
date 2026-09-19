@@ -39,9 +39,21 @@ export function UnifiedCompareTable({
         </span>
       </div>
 
+      {/* Veri sütunu başına min 110px (+ 128px etiket sütunu) — table-fixed
+          + w-full TEK BAŞINA, 3-4 araçlı mobilde sütunları ~55-70px'e
+          sıkıştırıyordu; AI özeti gibi uzun metinler satır başına 5-6
+          karaktere düşüp satırı tek başına 1300px+ yükseklikte devasa
+          yapıyordu (DOM ölçümüyle doğrulandı: 4 araçta AI satırı tablonun
+          toplam yüksekliğinin %45'iydi). minWidth, table-fixed'in kendisini
+          İPTAL ETMİYOR (sütun genişlikleri hâlâ içerikten bağımsız,
+          deterministik — 11. turdaki mobil viewport hatası geri gelmiyor),
+          sadece tabloya bir TABAN genişlik veriyor: 2 araçta genelde zaten
+          sığıyor (scroll gerekmiyor), 3-4 araçta overflow-x-auto sarmalayıcı
+          devreye girip yatay kaydırma sağlıyor — her sütun okunabilir kalıyor. */}
       <div className="overflow-x-auto border border-gray-100 rounded-2xl">
         <table
           className="w-full text-sm border-collapse table-fixed"
+          style={{ minWidth: `${128 + productNames.length * 110}px` }}
           aria-label={`${productNames.join(" ve ")} karşılaştırması`}
         >
           {/* table-fixed: sütun genişlikleri artık İÇERİĞE değil buradaki
