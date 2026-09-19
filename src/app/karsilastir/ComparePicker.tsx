@@ -54,6 +54,7 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
   // kategoriden araç (örn. otomobil vs motosiklet) karşılaştırmaya eklenemesin diye.
   const lockedCategorySlug = selected[0]?.categorySlug ?? null;
   const lockedCategoryName = selected[0]?.categoryName ?? null;
+  const visibleSuggestions = suggestions.filter((s) => !selected.some((x) => x.slug === s.slug));
 
   useEffect(() => {
     if (query.length < 2) return;
@@ -141,13 +142,19 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
         )}
       </div>
 
-      {/* Henüz hiç araç seçilmemişken ve arama kutusu boş/odaksızken gösterilen
-          hızlı-seçim önerileri — kullanıcı aramaya başlar başlamaz (open=true)
-          kaybolur, elle arama akışıyla karışmasın diye. */}
-      {selected.length === 0 && !open && suggestions.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 mb-3">
+      {/* Öneri pill'leri artık sadece boşken değil, slot kaldığı sürece (1-3
+          araç seçiliyken de) görünmeye devam ediyor — ilk aracı öneriden
+          seçen kullanıcı ikinci/üçüncü aracı da yine tek tıkla ekleyebilsin
+          diye (bkz. kullanıcı geri bildirimi: önce seçilince öneriler
+          kayboluyor, tekrar elle aramak gerekiyordu). Zaten seçili bir araç
+          listeden filtrelenir (iki kez gösterilmesin). Seçili gerçek chip'ler
+          varken aralarına ince bir ayırıcı çizgi konur — ikisi görsel olarak
+          karışmasın diye "soluk öneri" ile "gerçek seçim" ayrışık kalır.
+          Arama kutusuna odaklanınca (open=true) hâlâ kaybolur. */}
+      {!open && selected.length < MAX_COMPARE_ITEMS && visibleSuggestions.length > 0 && (
+        <div className={`flex flex-wrap items-center gap-2 mb-3 ${selected.length > 0 ? "pt-3 border-t border-gray-100" : ""}`}>
           <span className="text-xs text-gray-400">Popüler:</span>
-          {suggestions.map((s) => (
+          {visibleSuggestions.map((s) => (
             <button
               key={s.slug}
               onClick={() => addSuggested(s)}
