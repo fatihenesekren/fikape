@@ -38,6 +38,7 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
                 <span className="inline-flex items-baseline gap-1">
                   <span className="text-xl font-black text-gray-900">{overall.toFixed(1)}</span>
                   <span className="text-xs text-gray-400">/10</span>
+                  <span className="text-[11px] text-gray-400">({p.agg.count} yorum)</span>
                   {isBest && <span className="text-emerald-700 font-bold ml-1" aria-hidden="true">✓</span>}
                   {isBest && <span className="sr-only">, en yüksek puan</span>}
                 </span>

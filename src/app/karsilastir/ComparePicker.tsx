@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { MAX_COMPARE_ITEMS, MIN_COMPARE_ITEMS } from "@/lib/compare/constants";
 import { FUEL_LABELS } from "@/lib/fuel";
@@ -30,6 +30,11 @@ interface SelectedItem {
 
 export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
   const router = useRouter();
+  const pathname = usePathname();
+  // Zaten bir karşılaştırma sonucu sayfasındaysak (/karsilastir/slug1-vs-slug2)
+  // kaldırma işlemi aşağıdaki tabloyu da anında güncellemeli — boş seçici
+  // sayfasında (/karsilastir) güncellenecek bir sonuç yok, sadece local state yeterli.
+  const isResultsPage = pathname !== "/karsilastir";
   const [selected, setSelected] = useState(initial);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -77,7 +82,20 @@ export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
   }
 
   function remove(slug: string) {
-    setSelected(selected.filter((s) => s.slug !== slug));
+    const next = selected.filter((s) => s.slug !== slug);
+    setSelected(next);
+    if (isResultsPage) {
+      if (next.length >= MIN_COMPARE_ITEMS) {
+        router.push(`/karsilastir/${next.map((s) => s.slug).join("-vs-")}`);
+      } else {
+        router.push("/karsilastir");
+      }
+    }
+  }
+
+  function removeAll() {
+    setSelected([]);
+    if (isResultsPage) router.push("/karsilastir");
   }
 
   function compare() {
@@ -86,8 +104,8 @@ export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
   }
 
   return (
-    <div className="border border-gray-100 bg-white rounded-2xl p-5 mb-8">
-      <div className="flex flex-wrap gap-2 mb-3">
+    <div className="border border-gray-100 bg-white rounded-2xl p-5 mb-4">
+      <div className="flex flex-wrap items-center gap-2 mb-3">
         {selected.map((s) => (
           <span key={s.slug} className="flex items-center gap-1.5 text-xs font-semibold bg-gray-100 text-gray-700 rounded-full px-3 py-1.5">
             {s.name}
@@ -96,6 +114,11 @@ export function ComparePicker({ initial }: { initial: SelectedItem[] }) {
         ))}
         {selected.length === 0 && (
           <span className="text-xs text-gray-400">Karşılaştırmak için en az {MIN_COMPARE_ITEMS} araç ekle.</span>
+        )}
+        {selected.length > 0 && (
+          <button onClick={removeAll} className="text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2">
+            Tümünü kaldır
+          </button>
         )}
       </div>
 

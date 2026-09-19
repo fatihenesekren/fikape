@@ -29,14 +29,14 @@ export function CompareResultsGrid({
 }) {
   if (products.length < 2) return null;
 
-  const powerRow = specRows.find((r) => r.label === "Güç");
   const decisionBadges = buildDecisionSummary(
     products.map((p) => ({
       label: `${p.brandName} ${p.fullLabel}`,
       overall: p.agg.count > 0 ? p.agg.avg : null,
       priceScore: p.agg.count > 0 ? p.agg.fi : null,
+      reviewCount: p.agg.count,
     })),
-    powerRow
+    specRows
   );
 
   return (
