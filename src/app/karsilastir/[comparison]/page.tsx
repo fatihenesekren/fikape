@@ -81,7 +81,7 @@ export default async function ComparePage({
         <div className="max-w-7xl mx-auto px-4 py-14 text-center">
           <ScrollTopLogo />
           <p className="text-gray-300 text-lg font-bold mb-2">
-            Hadi aracını değerlendirelim.
+            Sen de deneyimini paylaş.
           </p>
           <p className="text-gray-500 text-sm mb-8">
             Yorumun bir sonraki alıcının kararını değiştirebilir.

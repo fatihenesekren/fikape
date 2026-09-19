@@ -9,17 +9,16 @@ type AiSummary = NonNullable<CompareProductView["aiSummary"]>;
 // alması (önceki "AI Özeti") kullanıcı için kafa karıştırıcıydı (bkz. geri
 // bildirim). Rozetler de ek bir ikonla (🔮 vs 💬) ayrışıyor — sadece renk farkı
 // hızlı taramada/renk körlüğünde yetersiz kalabilir.
-function summaryLabel(summary: AiSummary): { title: string; prefix: string; muted: boolean; shortNote: string; icon: string } {
+function summaryLabel(summary: AiSummary): { title: string; muted: boolean; shortNote: string; icon: string } {
   if (summary.mode === "REVIEWS_SUMMARY") {
     return {
       title: `AI Yorum Özeti${summary.reviewCountAtGeneration ? ` (${summary.reviewCountAtGeneration} yorum)` : ""}`,
-      prefix: "Özet:",
       muted: false,
       shortNote: "gerçek yorumlardan",
       icon: "💬",
     };
   }
-  return { title: "AI İzlenimi", prefix: "İzlenim:", muted: true, shortNote: "gerçek yorum değildir", icon: "🔮" };
+  return { title: "AI İzlenimi", muted: true, shortNote: "gerçek yorum değildir", icon: "🔮" };
 }
 
 // Metin artık HER ZAMAN tam açık (önceki turdaki line-clamp+modal yerine —
@@ -28,8 +27,11 @@ function summaryLabel(summary: AiSummary): { title: string; prefix: string; mute
 // değil "not her zaman aynı hizada" hissettirmek için hücre flex-col + h-full,
 // şeffaflık ibaresi mt-auto ile en alta sabitleniyor (3 uzman ajanın ortak
 // sonucu). Client state/modal kalmadığı için bu artık server component.
+// Metnin önünde ayrıca "İzlenim:"/"Özet:" öneki YOK — rozet zaten bağlamı
+// kuruyor, ikisi art arda aynı kelimeyi tekrarlıyordu (bkz. kullanıcı geri
+// bildirimi).
 function AiSummaryCell({ summary }: { summary: AiSummary }) {
-  const { title, prefix, muted, shortNote, icon } = summaryLabel(summary);
+  const { title, muted, shortNote, icon } = summaryLabel(summary);
   return (
     <div className="flex flex-col h-full min-w-[180px] max-w-[260px]">
       <span
@@ -38,9 +40,7 @@ function AiSummaryCell({ summary }: { summary: AiSummary }) {
       >
         {icon} {title}
       </span>
-      <p className="text-xs text-gray-700 italic leading-relaxed">
-        <span className="not-italic font-semibold text-gray-500">{prefix}</span> {summary.summaryText}
-      </p>
+      <p className="text-xs text-gray-700 italic leading-relaxed">{summary.summaryText}</p>
       <span className="text-[10px] text-amber-600 font-medium mt-auto pt-1.5">{shortNote}</span>
     </div>
   );
