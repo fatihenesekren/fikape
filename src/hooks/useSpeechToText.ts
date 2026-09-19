@@ -30,10 +30,30 @@ function mapError(code: string): string {
 }
 
 export function useSpeechToText() {
-  const supported = typeof window !== "undefined" && !!getSpeechRecognitionCtor();
-  const [status, setStatus] = useState<SpeechStatus>(supported ? "idle" : "unsupported");
+  // `supported` RENDER SIRASINDA `typeof window` ile hesaplanıyordu — sunucuda
+  // her zaman false, istemcinin İLK (hydration) render'ında tarayıcı
+  // destekliyorsa true çıkıyordu. Bu, mikrofon butonunun ({speechSupported &&
+  // ...}) sunucu HTML'i ile istemcinin ilk render'ı arasında FARKLI çıkmasına
+  // yol açıp "Hydration failed" hatası veriyordu (gerçek kullanıcı konsol
+  // hatasıyla doğrulandı). Fix: sunucu VE istemcinin ilk render'ı her zaman
+  // `false`/"unsupported" ile başlıyor (birebir eşleşiyor), gerçek destek
+  // durumu SADECE mount sonrası bir useEffect'te (istemciye özel, hydration
+  // tamamlandıktan SONRA çalışır) güncelleniyor — bu, React'in bu tür
+  // tarayıcı-API kontrolleri için önerdiği standart desen.
+  const [supported, setSupported] = useState(false);
+  const [status, setStatus] = useState<SpeechStatus>("unsupported");
   const [interimTranscript, setInterimTranscript] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    // React'in resmi hydration-mismatch çözümü tam olarak bu — sunucu/istemci
+    // arasında KASITLI bir fark (tarayıcı API'sinin varlığı) varsa, gerçek
+    // değer mount sonrası bir effect'te set edilir.
+    const isSupported = !!getSpeechRecognitionCtor();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- bilinçli, yukarıdaki not
+    setSupported(isSupported);
+    setStatus(isSupported ? "idle" : "unsupported");
+  }, []);
 
   const recognitionRef = useRef<ISpeechRecognition | null>(null);
   const noResultTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
