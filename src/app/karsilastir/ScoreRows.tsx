@@ -35,7 +35,10 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
           return (
             <td key={p.slug} className={`px-3 py-2.5 ${isBest ? "bg-emerald-50" : zebraColumnBg(i)}`}>
               {overall !== null ? (
-                <span className="inline-flex items-baseline gap-1">
+                // flex-wrap YOK ise: table-fixed altında dar mobil sütunda
+                // (3+ araç) 4 çocuğun toplamı sığmıyor, checkmark komşu
+                // sütunun üzerine taşıyor (DOM ölçümüyle doğrulandı).
+                <span className="flex flex-wrap items-baseline gap-x-1 gap-y-0 max-w-full">
                   <span className="text-xl font-black text-gray-900">{overall.toFixed(1)}</span>
                   <span className="text-xs text-gray-400">/10</span>
                   <span className="text-[11px] text-gray-400">({p.agg.count} yorum)</span>
@@ -46,9 +49,11 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
                 // Ayrı, sıkışık bir colSpan CTA satırı yerine (önceki tur —
                 // görsel olarak zayıf bulundu) davet doğrudan aracın kendi
                 // hücresinde — konum zaten hangi araca ait olduğunu gösteriyor.
+                // flex-wrap + max-w-full: 4 araçlı mobilde sütun ~55-60px'e
+                // düşünce bu CTA metni komşu hücreye taşıyordu.
                 <Link
                   href={`/yorum-yaz?arac=${p.slug}`}
-                  className="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-link-soft text-link hover:bg-link-line transition-colors"
+                  className="flex flex-wrap max-w-full items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-link-soft text-link hover:bg-link-line transition-colors"
                 >
                   ✍️ İlk yorumu sen yaz
                 </Link>
@@ -77,12 +82,14 @@ export function ScoreRows({ products }: { products: CompareProductView[] }) {
                       (3-4 araç, mobil) komşu hücreye taşardı (bkz. AiSummaryRow
                       yorumu — aynı hata sınıfı). */}
                   {val !== null ? (
-                    <div className="flex items-center gap-2 w-full">
-                      <div className="flex-1 h-1.5 rounded-full bg-gray-100 overflow-hidden">
+                    // flex-wrap: isBest checkmark eklenince (bar + değer + ✓)
+                    // dar sütunda sığmayabilir — taşımak yerine alta sarsın.
+                    <div className="flex flex-wrap items-center gap-2 w-full">
+                      <div className="flex-1 h-1.5 rounded-full bg-gray-100 overflow-hidden min-w-[24px]">
                         <div className="h-full rounded-full" style={{ width: `${(val / 10) * 100}%`, background: color }} />
                       </div>
-                      <span className="text-xs font-bold w-7 text-right" style={{ color }}>{val.toFixed(1)}</span>
-                      {isBest && <span className="text-emerald-700 font-bold" aria-hidden="true">✓</span>}
+                      <span className="text-xs font-bold w-7 text-right shrink-0" style={{ color }}>{val.toFixed(1)}</span>
+                      {isBest && <span className="text-emerald-700 font-bold shrink-0" aria-hidden="true">✓</span>}
                       {isBest && <span className="sr-only">, en yüksek {label.toLowerCase()} puanı</span>}
                     </div>
                   ) : (

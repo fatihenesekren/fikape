@@ -44,20 +44,31 @@ export function UnifiedCompareTable({
           className="w-full text-sm border-collapse table-fixed"
           aria-label={`${productNames.join(" ve ")} karşılaştırması`}
         >
+          {/* table-fixed: sütun genişlikleri artık İÇERİĞE değil buradaki
+              <colgroup>'a göre belirleniyor — table-layout:auto (varsayılan)
+              tarayıcının sütun genişliğini hesaplamak için TÜM hücre içeriğini
+              taraması gerektiriyordu, araç sayısı arttıkça bu bazı mobil
+              tarayıcılarda sayfanın gerçek genişliğini yanlış algılamasına
+              (canlıda bulunan "araç sayısı arttıkça büyüyen boşluk" hatası)
+              katkı sağlıyor olabilirdi.
+              <colgroup> KULLANILMASININ SEBEBİ: table-fixed spec'e göre sütun
+              genişliğini "ilk satırdaki hücreler"den de alabilir, ama etiket
+              sütunundaki ilk-satır hücresi `sr-only` (position:absolute) ve
+              gövdedeki hücreler `sticky` — bu ikisinin table-fixed genişlik
+              hesaplamasına katılma şekli tarayıcıda TUTARSIZ çıktı (DOM
+              ölçümüyle doğrulandı: thead'deki etiket hücresi 128px render
+              olurken, tbody'deki sticky etiket hücreleri 86px'de kaldı, sütun
+              sınırları thead/tbody arasında kaymış, "Özellik" başlığı ilk veri
+              sütununun üzerine taşıyordu). <colgroup> hücre CSS'inden tamamen
+              bağımsız, TEK ve kesin bir genişlik kaynağı — bu tutarsızlığı
+              spec-uyumlu şekilde ortadan kaldırıyor. */}
+          <colgroup>
+            <col className="w-32" />
+            {productNames.map((_, i) => <col key={i} />)}
+          </colgroup>
           <thead>
             <tr>
-              {/* table-fixed: sütun genişlikleri artık İÇERİĞE değil, bu ilk
-                  satırdaki hücre genişliklerine göre belirleniyor (etiket
-                  sütunu sabit, araç sütunları eşit paylaşım) — table-layout:auto
-                  (varsayılan) tarayıcının sütun genişliğini hesaplamak için TÜM
-                  hücre içeriğini taraması gerektiriyordu, araç sayısı arttıkça bu
-                  bazı mobil tarayıcılarda sayfanın gerçek genişliğini yanlış
-                  algılamasına (canlıda bulunan "araç sayısı arttıkça büyüyen
-                  boşluk" hatası) katkı sağlıyor olabilirdi. */}
-              {/* w-32: etiket hücrelerindeki whitespace-nowrap kaldırıldı (uzun
-                  etiketler artık 2 satıra sarabiliyor) ama w-28 (112px) yine de
-                  dar kalıyordu, w-32 (128px) rahat payı veriyor. */}
-              <th scope="col" className="sr-only w-32">Özellik</th>
+              <th scope="col" className="sr-only">Özellik</th>
               {productNames.map((name, i) => (
                 <th
                   key={i}

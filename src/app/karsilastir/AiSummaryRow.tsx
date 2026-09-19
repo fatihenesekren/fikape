@@ -9,6 +9,10 @@ type AiSummary = NonNullable<CompareProductView["aiSummary"]>;
 // alması (önceki "AI Özeti") kullanıcı için kafa karıştırıcıydı (bkz. geri
 // bildirim). Rozetler de ek bir ikonla (🔮 vs 💬) ayrışıyor — sadece renk farkı
 // hızlı taramada/renk körlüğünde yetersiz kalabilir.
+// flex-wrap: table-fixed'de dar sütunlarda (3-4 araç mobil, ~85px) rozet
+// (icon+title) ve satır etiketi (metin+tooltip ikonu) inline-flex+nowrap ile
+// komşu hücrenin üzerine taşıyordu (DOM ölçümüyle doğrulandı) — bilinen
+// tekrarlayan hata sınıfı, bkz. Layout Gotcha notu.
 function summaryLabel(summary: AiSummary): { title: string; muted: boolean; shortNote: string; icon: string } {
   if (summary.mode === "REVIEWS_SUMMARY") {
     return {
@@ -38,8 +42,13 @@ function AiSummaryCell({ summary }: { summary: AiSummary }) {
   const { title, muted, shortNote, icon } = summaryLabel(summary);
   return (
     <div className="flex flex-col h-full w-full max-w-[260px]">
+      {/* max-w-full ZORUNLU: self-start (dikey flex'te cross-axis hizalama)
+          bu rozetin kendi İÇERİĞİNE göre genişlemesine izin veriyor,
+          flex-wrap TEK BAŞINA yetmiyor — ebeveynin (max-w-[260px]) gerçek
+          genişliğine sınırlanmadığı için 4 araçlı dar mobil sütunda hâlâ
+          taşıyordu (DOM ölçümüyle doğrulandı). */}
       <span
-        className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full mb-1.5 self-start"
+        className="flex flex-wrap max-w-full items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full mb-1.5 self-start"
         style={{ background: muted ? "#E0E7FF" : "#6366F1", color: muted ? "#4F46E5" : "#fff" }}
       >
         {icon} {title}
@@ -57,7 +66,7 @@ export function AiSummaryRow({ products }: { products: CompareProductView[] }) {
         scope="row"
         className="sticky left-0 bg-gray-50 text-left font-semibold text-gray-500 text-xs uppercase tracking-wide px-3 py-2.5 align-top"
       >
-        <span className="inline-flex items-center gap-1">
+        <span className="flex flex-wrap items-center gap-1">
           AI Değerlendirmesi
           <span
             className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full bg-gray-200 text-gray-500 text-[9px] font-bold normal-case cursor-help shrink-0"

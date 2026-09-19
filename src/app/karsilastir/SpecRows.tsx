@@ -20,9 +20,14 @@ export function SpecRows({ rows }: { rows: SpecComparisonRow[] }) {
             const isBest = row.bestIndices.includes(i);
             const isDifferent = row.kind === "categorical" && row.differentIndices.includes(i);
             return (
+              // break-words: table-fixed'de dar sütunlarda (3-4 araç, mobil ~71px)
+              // "Elektrikli" gibi TEK UZUN KELİME (boşluksuz, normal satır
+              // kırma noktası yok) sığmayıp yanındaki △/✓ işaretiyle birlikte
+              // komşu hücreye taşıyordu (DOM ölçümüyle doğrulandı) — flex-wrap
+              // eksikliğinden AYRI bir alt-tür, burada flex hiç kullanılmıyor.
               <td
                 key={i}
-                className={`px-3 py-2.5 text-gray-900 ${
+                className={`px-3 py-2.5 text-gray-900 break-words ${
                   isBest ? "bg-emerald-50 font-semibold" : isDifferent ? "bg-amber-50" : zebraColumnBg(i)
                 }`}
               >
