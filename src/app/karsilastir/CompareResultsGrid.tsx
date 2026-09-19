@@ -1,5 +1,6 @@
 import { StickyCompareHeader } from "./StickyCompareHeader";
 import { UnifiedCompareTable } from "./UnifiedCompareTable";
+import { MobileCompareCarousel } from "./MobileCompareCarousel";
 import { DecisionSummaryStrip } from "./DecisionSummaryStrip";
 import type { SpecComparisonRow } from "@/lib/compare/buildSpecComparisonRows";
 import { buildDecisionSummary } from "@/lib/compare/buildDecisionSummary";
@@ -51,7 +52,14 @@ export function CompareResultsGrid({
 
       <DecisionSummaryStrip badges={decisionBadges} />
 
-      <UnifiedCompareTable products={products} specRows={specRows} />
+      {/* Mobilde (md altı) tablo yerine tek-araç kart karuseli (bkz.
+          MobileCompareCarousel.tsx — 3 uzman ajan sonrası kararlaştırılan
+          mimari; kendi içinde zaten md:hidden), masaüstünde (md ve üstü)
+          mevcut birleşik tablo. */}
+      <MobileCompareCarousel products={products} specRows={specRows} />
+      <div className="hidden md:block">
+        <UnifiedCompareTable products={products} specRows={specRows} />
+      </div>
     </>
   );
 }
