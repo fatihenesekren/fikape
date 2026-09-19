@@ -25,17 +25,11 @@ function summaryLabel(summary: AiSummary): { title: string; muted: boolean; shor
   return { title: "AI İzlenimi", muted: true, shortNote: "gerçek yorum değildir", icon: "🔮" };
 }
 
-// Masaüstünde metin HER ZAMAN tam açık (kullanıcı tercihi, geniş sütunlarda
-// sorun yaratmıyor). MOBİLDE (sm altı) artık line-clamp-6 uygulanıyor —
-// önceki turda tabloya minWidth verip yatay kaydırma zorlayarak sütunları
-// genişletmeyi denedik (AI satırı tek başına 1300px+ oluyordu), ama bu
-// mobilde dikey sayfa kaydırması sırasında istemsiz yatay kaymaya yol açtı
-// (kullanıcı "yarım kalmış kesik sütun" görünümünde takılı kalıyordu, gerçek
-// ekran görüntüsüyle doğrulandı) — yatay kaydırma GERİ ALINDI
-// (UnifiedCompareTable.tsx). Bunun yerine mobilde metin 6 satırla
-// sınırlanıyor (line-clamp otomatik "…" ekliyor) — satır yüksekliği artık
-// araç sayısından bağımsız, sabit bir üst sınırda; kısaltılan metnin tamamı
-// zaten aracın kendi sayfasında (İsim linkindeki /araclar/slug) mevcut.
+// Metin HER ZAMAN tam açık, mobilde de (line-clamp denendi, geri alındı —
+// kullanıcı dar sütunda 5-6 karaktere bölünen satırları "okunmuyor" olarak
+// değerlendirdi, geniş/kaydırmalı sütunu tercih etti). UnifiedCompareTable.tsx
+// artık bilinçli olarak yatay kaydırmalı (minWidth) — bu satır o kararla
+// birlikte okunuyor, tek başına anlamlı değil.
 // Kısa metinli hücrelerde altta doğal bir boşluk kalır — bunu "kayıp alan"
 // değil "not her zaman aynı hizada" hissettirmek için hücre flex-col + h-full,
 // şeffaflık ibaresi mt-auto ile en alta sabitleniyor.
@@ -61,7 +55,7 @@ function AiSummaryCell({ summary }: { summary: AiSummary }) {
       >
         {icon} {title}
       </span>
-      <p className="text-xs text-gray-700 italic leading-relaxed line-clamp-6 sm:line-clamp-none">{summary.summaryText}</p>
+      <p className="text-xs text-gray-700 italic leading-relaxed">{summary.summaryText}</p>
       <span className="text-[10px] text-amber-600 font-medium mt-auto pt-1.5">{shortNote}</span>
     </div>
   );
