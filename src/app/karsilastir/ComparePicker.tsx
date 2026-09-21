@@ -68,20 +68,8 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
     ? `${query}${query && !query.endsWith(" ") ? " " : ""}${speechInterim}`
     : query;
 
-  // Son "final" parça için henüz denenmemiş alternatif transkriptler — arama
-  // 0 sonuç dönerse ("Togg" yerine "Tok" gibi yanlış algılamalarda) sırayla
-  // bir sonraki adayı deneriz, hepsi tükenirse mikrofonu durdururuz.
-  const voiceBaseRef = useRef("");
-  const voiceAltsRef = useRef<string[]>([]);
-  const voiceAltIndexRef = useRef(0);
-
-  function handleVoiceFinalTranscript(text: string, alternatives: string[]) {
-    setQuery((prev) => {
-      voiceBaseRef.current = prev;
-      voiceAltsRef.current = alternatives.length ? alternatives : [text];
-      voiceAltIndexRef.current = 0;
-      return `${prev}${prev && !prev.endsWith(" ") ? " " : ""}${text}`.trimStart();
-    });
+  function handleVoiceFinalTranscript(text: string) {
+    setQuery((prev) => `${prev}${prev && !prev.endsWith(" ") ? " " : ""}${text}`.trimStart());
     setOpen(true);
   }
 
@@ -125,6 +113,11 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
       try {
         const params = new URLSearchParams({ q: displayQuery });
         if (lockedCategorySlug) params.set("category", lockedCategorySlug);
+        // Sesli arama kısa özel isimlerde (örn. "Togg") pg_trgm'nin typed-arama
+        // için bilinçli tutulan 0.3 barının hemen altında kalabiliyor — burada
+        // (küçük bir öneri dropdown'ı, kesin "0 sonuç" sayfası değil) biraz daha
+        // toleranslı bir bar istiyoruz. /arama ve /araclar'ın varsayılanı değişmedi.
+        params.set("minSim", "0.22");
         const res = await fetch(`/api/search/products?${params.toString()}`);
         if (res.ok) setResults(await res.json());
       } finally {
@@ -141,22 +134,9 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
   useEffect(() => {
     if (speechStatus !== "listening") return;
     if (loading) return;
-    if (speechInterim) return; // henüz bitmemiş bir kelime varken karar vermeyelim
     if (displayQuery.trim().length < 2) return;
-    if (results.length > 0) return;
-
-    const alts = voiceAltsRef.current;
-    const nextIndex = voiceAltIndexRef.current + 1;
-    if (nextIndex < alts.length) {
-      // "Togg" yerine "Tok" gibi yanlış algılanmışsa tarayıcının bir sonraki
-      // adayını dene — sessizce mikrofonu kapatmadan önce.
-      voiceAltIndexRef.current = nextIndex;
-      const base = voiceBaseRef.current;
-      setQuery(`${base}${base && !base.endsWith(" ") ? " " : ""}${alts[nextIndex]}`.trimStart());
-      return;
-    }
-    stopSpeech();
-  }, [speechStatus, speechInterim, stopSpeech, loading, displayQuery, results]);
+    if (results.length === 0) stopSpeech();
+  }, [speechStatus, stopSpeech, loading, displayQuery, results]);
 
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {

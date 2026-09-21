@@ -16,6 +16,14 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const q = searchParams.get("q")?.trim() ?? "";
   const categorySlug = searchParams.get("category")?.trim() || null;
+  // pg_trgm varsayılan barı (0.3, `%` operatörünün kullandığı) typed arama için
+  // bilinçli tutuluyor (bkz. searchProducts.ts notu — daha düşük bar gürültü
+  // getiriyordu). Ama sesli aramada "Togg" gibi kısa özel isimler tam bu barın
+  // hemen altında kalabiliyor (örn. "Tok" → "Togg" benzerliği ölçüldü: 0.2857)
+  // — çağıran taraf (ComparePicker) `minSim` ile daha düşük bir bar isteyebilir,
+  // typed aramalar bu parametreyi göndermediği için varsayılan davranış aynı kalır.
+  const minSimParam = Number(searchParams.get("minSim"));
+  const minSim = Number.isFinite(minSimParam) ? Math.min(0.3, Math.max(0.15, minSimParam)) : 0.3;
 
   if (q.length < 2) return NextResponse.json([]);
 
@@ -65,11 +73,11 @@ export async function GET(req: Request) {
     JOIN "brands" b ON b.id = p."brandId"
     LEFT JOIN "categories" c ON c.id = p."categoryId"
     WHERE p."isActive" = true
-      AND (
-        unaccent(b.name) % unaccent(${q})
-        OR unaccent(m.name) % unaccent(${q})
-        OR unaccent(p.name) % unaccent(${q})
-      )
+      AND GREATEST(
+        similarity(unaccent(b.name), unaccent(${q})),
+        similarity(unaccent(m.name), unaccent(${q})),
+        similarity(unaccent(p.name), unaccent(${q}))
+      ) >= ${minSim}
       ${categoryClause}
     ORDER BY GREATEST(
       similarity(unaccent(b.name), unaccent(${q})),
