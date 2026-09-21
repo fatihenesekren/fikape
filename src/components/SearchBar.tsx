@@ -31,7 +31,7 @@ export function SearchBar() {
           name="q"
           type="search"
           placeholder="Araç, marka veya model ara..."
-          className="w-full pl-9 pr-24 py-1.5 rounded-xl border border-gray-200 bg-gray-50 text-sm placeholder-gray-400 focus:outline-none focus:border-gray-400 focus:bg-white transition-colors"
+          className="voice-mic-input w-full pl-9 pr-24 py-1.5 rounded-xl border border-gray-200 bg-gray-50 text-sm placeholder-gray-400 focus:outline-none focus:border-gray-400 focus:bg-white transition-colors"
         />
         <svg
           className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"

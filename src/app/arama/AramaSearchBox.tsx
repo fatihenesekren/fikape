@@ -17,7 +17,7 @@ export function AramaSearchBox({ query }: { query: string }) {
           defaultValue={query}
           placeholder="Marka, model veya araç adı ara..."
           autoFocus={!query}
-          className="w-full pl-10 pr-32 py-3 rounded-2xl border border-gray-200 bg-white text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors"
+          className="voice-mic-input w-full pl-10 pr-32 py-3 rounded-2xl border border-gray-200 bg-white text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors"
         />
         <svg
           className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"

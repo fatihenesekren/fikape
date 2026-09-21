@@ -141,6 +141,17 @@ html, body {
   .animate-niyet-result { animation: none; }
 }
 
+/* VoiceMicButton eklenen type="search" input'larda tarayıcının kendi native
+   "temizle" (x) ikonu, bizim çizdiğimiz X/mikrofon kontrolüyle üst üste binip
+   iki çarpı gösteriyordu (bkz. kullanıcı geri bildirimi, ekran görüntüsü).
+   Sadece bu sınıfa sahip input'larda kapatıyoruz — mikrofonsuz diğer
+   type="search" kutuları (örn. Hero) native temizle ikonunu korur. */
+.voice-mic-input::-webkit-search-cancel-button,
+.voice-mic-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 /* Sekme içeriği geçişi (ör. takas ilanı Açıklama/Teknik Özellikler/Boya) */
 @keyframes tab-fade-in {
   from { opacity: 0; transform: translateY(2px); }

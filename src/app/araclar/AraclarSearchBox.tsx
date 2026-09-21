@@ -17,7 +17,7 @@ export function AraclarSearchBox({ catSlug, q }: { catSlug?: string; q: string }
           type="search"
           defaultValue={q}
           placeholder="Marka, model veya araç adı ara"
-          className="w-full pl-4 pr-28 py-2.5 rounded-xl border border-gray-200 bg-white text-sm placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors"
+          className="voice-mic-input w-full pl-4 pr-28 py-2.5 rounded-xl border border-gray-200 bg-white text-sm placeholder-gray-400 focus:outline-none focus:border-gray-400 transition-colors"
         />
         <VoiceMicButton inputRef={inputRef} formRef={formRef} rightPx={68} />
         <button
