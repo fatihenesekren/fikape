@@ -22,7 +22,7 @@ export async function GET(req: Request) {
 
   const yearNum = year ? parseInt(year, 10) : null;
   const [specResult, imageUrl] = await Promise.all([
-    fetchVehicleSpecsWithConfidence(brand, model, yearNum, trimName),
+    fetchVehicleSpecsWithConfidence(brand, model, yearNum, trimName, categorySlug, fuelType),
     findVerifiedVehicleImage(brand, model, yearNum),
   ]);
 

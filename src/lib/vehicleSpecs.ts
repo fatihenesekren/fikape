@@ -1,10 +1,31 @@
-// Otomobil teknik özelliklerini CarQuery API + Wikipedia'dan çekip birleştiren
-// paylaşılan mantık. /api/admin/fetch-specs (interaktif, admin öneri onayı) ve
-// prisma/enrich-otomobil-bulk.ts (toplu zenginleştirme) tarafından ortak kullanılır.
+// Araç öneri onayında teknik özellikleri otomatik ilk-tahminle dolduran katman.
+// ESKİ yaklaşım (CarQuery API + Wikipedia HTML parse) sadece otomobil için
+// anlamlıydı ve gerçek ölçümde 497 üründen 2'sinde veri buluyordu (CarQuery
+// kalıcı erişilemez durumda) — bkz. proje notları. Bunun yerine Gemini'den
+// (aynı ücretsiz katman, AI Araç Özeti'nde kullanılan) yapılandırılmış JSON
+// isteniyor; artık 6 kategorinin tamamı için çalışıyor.
+//
+// KRİTİK KISIT: Gemini'nin canlı Google araması (Grounding) burada da
+// KULLANILMIYOR — o özelliğin ToS'u "sadece isteği yapana göster, önbellekleme"
+// şartı koşuyor, biz DB'ye kalıcı yazıyoruz. Yani model SADECE eğitim
+// verisinden cevap veriyor: popüler/global modellerin nesil-seviyesi temel
+// bilgisinde (motor, güç, kasa) makul, Türkiye'ye özel paket/trim ince
+// detaylarında ve niş markalarda halüsinasyon riski var. Bu yüzden:
+// - Sonuç ASLA "high" güvene çıkmaz (tavan "medium") — kritik alanlarda admin
+//   onayı zorunluluğu (bkz. specFields.ts CRITICAL_FIELDS) aynen korunuyor.
+// - Aynı prompt'la 2 BAĞIMSIZ çağrı yapılır; ikisi örtüşürse "medium", çelişirse
+//   "low"+conflict, tek çağrı cevap verirse "low". (Aynı modele iki kez sormak
+//   CarQuery+Wikipedia gibi gerçekten bağımsız iki kaynak değil — o yüzden
+//   örtüşme bile "high" garantisi vermiyor, sadece "tutarlı" demek.)
+// - Aralık dışı değerler (REASONABLE_RANGES) hiç yazılmaz — susmuş boşluk,
+//   yanlış değerden iyidir (bkz. proje felsefesi, [[fikape-oner-akisi-guclendirme]]).
+//
+// İlan HTML'inden doldur (listingSpecParse.ts) BU KATMANDAN AYRI ve
+// DOKUNULMADI — admin'in zaten doğruladığı tek "high" güven kaynağı odur.
 
-import { WIKI_HEADERS } from "@/lib/vehicleImages";
-import { stripModelGenRange } from "@/lib/modelDisplay";
-import { findVerifiedWikipediaPage } from "@/lib/wikidataVerify";
+import { generateGeminiJson, GeminiError } from "@/lib/ai/gemini";
+import { SPEC_FIELDS, type FieldDef } from "@/lib/specFields";
+import { FUEL_LABELS } from "@/lib/fuel";
 
 function norm(s: string) {
   return (s ?? "")
@@ -15,442 +36,7 @@ function norm(s: string) {
     .replace(/[^a-z0-9]/g, "");
 }
 
-function slugifyMake(name: string) {
-  return name.toLowerCase()
-    .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
-    .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
-    .normalize("NFD").replace(/\p{Mn}/gu, "")
-    .replace(/[^a-z0-9]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
-}
-
-function mapDrivetrain(d: string) {
-  const l = norm(d);
-  if (l.includes("front") || l === "fwd") return "FWD";
-  if (l.includes("rear")  || l === "rwd") return "RWD";
-  if (l.includes("all")   || l.includes("awd") || l.includes("4wd") || l.includes("4x4")) return "AWD";
-  return "";
-}
-function mapTransmission(t: string) {
-  const l = (t ?? "").toLowerCase();
-  if (l.includes("auto")) return "Otomatik";
-  if (l.includes("manual") || l.includes("manuel")) return "Manuel";
-  if (l.includes("cvt")) return "CVT";
-  return "";
-}
-function mapBodyType(b: string) {
-  const l = norm(b);
-  if (l.includes("suv") || l.includes("crossover") || l.includes("cuv")) return "suv";
-  if (l.includes("sedan") || l.includes("saloon")) return "sedan";
-  if (l.includes("hatch")) return "hatchback";
-  if (l.includes("mpv") || l.includes("minivan")) return "mpv";
-  if (l.includes("coupe")) return "coupe";
-  if (l.includes("cabrio") || l.includes("convert") || l.includes("roadster")) return "cabrio";
-  if (l.includes("pickup")) return "pickup";
-  return "";
-}
-
-function stripHtml(s: string) {
-  return s
-    .replace(/&#160;|&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/<br\s*\/?>/gi, " ")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function extractNumber(s: string): string | null {
-  const cleaned = s.replace(/(\d)\s+(\d)/g, "$1$2").replace(/,/g, "");
-  const m = cleaned.match(/\d+\.?\d*/);
-  return m ? m[0] : null;
-}
-
-// ── Wikipedia helpers ────────────────────────────────────────────────────────
-
-async function wikiSearch(brand: string, model: string): Promise<string | null> {
-  try {
-    const res = await fetch(
-      `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(`${brand} ${model} automobile`)}&srlimit=5&format=json&origin=*`,
-      { signal: AbortSignal.timeout(5000), headers: WIKI_HEADERS }
-    );
-    const data = await res.json();
-    // Model.name'e gömülü nesil aralığı ("Corolla (2019-)") normalize sonrası
-    // rakamlara dönüşüp eşleşmeyi bozuyordu — temiz isimle karşılaştır.
-    const modelN = norm(stripModelGenRange(model));
-    const hit = (data.query?.search ?? []).find((r: { title: string }) =>
-      norm(r.title).includes(modelN.slice(0, 8))
-    );
-    return hit?.title ?? data.query?.search?.[0]?.title ?? null;
-  } catch { return null; }
-}
-
-async function wikiSections(title: string): Promise<{ index: string; line: string }[]> {
-  try {
-    const res = await fetch(
-      `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=sections&format=json&origin=*`,
-      { signal: AbortSignal.timeout(5000), headers: WIKI_HEADERS }
-    );
-    const data = await res.json();
-    return data.parse?.sections ?? [];
-  } catch { return []; }
-}
-
-async function wikiSectionHtml(title: string, sectionIdx: string): Promise<string> {
-  try {
-    const res = await fetch(
-      `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&section=${sectionIdx}&format=json&origin=*`,
-      { signal: AbortSignal.timeout(8000), headers: WIKI_HEADERS }
-    );
-    const data = await res.json();
-    return data.parse?.text?.["*"] ?? "";
-  } catch { return ""; }
-}
-
-// ── Spec tablosu parse: satırlar = spec adı, sütunlar = trim varyantları ────
-
-function parseSpecTable(
-  html: string,
-  trimHint: string | null
-): Record<string, string> {
-  const specs: Record<string, string> = {};
-
-  const tableMatch = html.match(/<table[^>]*>([\s\S]*?)<\/table>/i);
-  if (!tableMatch) return {};
-
-  const rows = [...tableMatch[1].matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
-  if (rows.length < 2) return {};
-
-  let headerRowIdx = -1;
-  let headers: string[] = [];
-  for (let i = 0; i < rows.length; i++) {
-    const cells = [...rows[i][1].matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gi)]
-      .map((m) => stripHtml(m[1]));
-    if (cells.length >= 2) { headers = cells; headerRowIdx = i; break; }
-  }
-  if (headerRowIdx === -1 || headers.length < 2) return {};
-
-  let colIdx = 1;
-  if (trimHint) {
-    const tn = norm(trimHint);
-    let bestScore = -1;
-    headers.forEach((h, i) => {
-      if (i === 0) return;
-      const hn = norm(h);
-      let score = 0;
-      for (const c of hn) if (tn.includes(c)) score++;
-      if (score > bestScore) { bestScore = score; colIdx = i; }
-    });
-  }
-
-  const rowMap: Record<string, string> = {};
-  for (let i = headerRowIdx + 1; i < rows.length; i++) {
-    const cells = [...rows[i][1].matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gi)]
-      .map((m) => stripHtml(m[1]));
-    if (cells.length < 2) continue;
-    const key = cells[0].toLowerCase();
-    const val = cells[colIdx] ?? cells[1] ?? "";
-    if (key && val) rowMap[key] = val;
-  }
-
-  const get = (keys: string[]): string =>
-    Object.entries(rowMap).find(([k]) => keys.some((kk) => k.includes(kk)))?.[1] ?? "";
-
-  const engCC = get(["displacement", "engine", "cubic", "cc", "cm"]);
-  if (engCC) {
-    const ccNorm = engCC.replace(/(\d)\s+(\d)/g, "$1$2");
-    const ccM = ccNorm.match(/([\d]+)\s*cm\s*[³3u]?/i) || ccNorm.match(/([\d]+)\s*cc/i);
-    if (ccM && +ccM[1] > 400) { specs.engine_cc = ccM[1]; }
-    else {
-      const lM = ccNorm.match(/(\d+\.?\d*)\s*[Ll]/);
-      if (lM) specs.engine_cc = String(Math.round(parseFloat(lM[1]) * 1000));
-      else { const n = extractNumber(engCC); if (n && +n > 400 && +n < 15000) specs.engine_cc = n; }
-    }
-  }
-
-  const pwr = get(["power", "output", "max. power"]);
-  if (pwr) {
-    const m = pwr.match(/(\d+)\s*(?:hp|ps|cv|bhp)/i);
-    if (m) specs.power_hp = m[1];
-    else {
-      const kwM = pwr.match(/(\d+)\s*kw/i);
-      if (kwM) specs.power_hp = String(Math.round(+kwM[1] * 1.341));
-      else { const n = extractNumber(pwr); if (n && +n > 30) specs.power_hp = n; }
-    }
-  }
-
-  const trq = get(["torque", "max. torque"]);
-  if (trq) {
-    const m = trq.match(/([\d]+)\s*n.?m/i);
-    if (m) specs.torque_nm = m[1];
-    else { const n = extractNumber(trq); if (n && +n > 50 && +n < 2000) specs.torque_nm = n; }
-  }
-
-  const acc = get(["0–100", "0-100", "acceleration", "0 to 100"]);
-  if (acc) {
-    const n = extractNumber(acc.replace(/(\d),(\d)/g, "$1.$2"));
-    if (n) specs.zero_to_100 = n;
-  }
-
-  const spd = get(["top speed", "maximum speed", "max speed", "max. speed"]);
-  if (spd) { const n = extractNumber(spd); if (n && +n > 80) specs.top_speed_kmh = n; }
-
-  const wt = get(["curb weight", "kerb weight", "weight", "mass"]);
-  if (wt) {
-    const m = wt.match(/([\d,]+)\s*kg/i);
-    if (m) { const n = m[1].replace(/,/g, ""); if (+n > 500) specs.weight_kg = n; }
-    else { const n = extractNumber(wt); if (n && +n > 500) specs.weight_kg = n; }
-  }
-
-  const tank = get(["fuel capacity", "fuel tank", "tank"]);
-  if (tank) {
-    const m = tank.match(/([\d.]+)\s*(?:l|litre|liter)/i);
-    if (m) specs.tank_l = m[1];
-    else { const n = extractNumber(tank); if (n && +n > 20) specs.tank_l = n; }
-  }
-
-  const tx = get(["transmission", "gearbox"]);
-  if (tx) { const v = mapTransmission(tx); if (v) specs.transmission = v; }
-
-  const dr = get(["drive", "drivetrain", "drive type", "drive wheels"]);
-  if (dr) { const v = mapDrivetrain(dr); if (v) specs.drivetrain = v; }
-
-  return specs;
-}
-
-// ── Wikipedia: madde metninden ağırlık / bagaj çıkar ────────────────────────
-
-function extractBootFromText(text: string): string | null {
-  const patterns = [
-    /boot\s+(?:space\s+)?(?:capacity\s+)?(?:of\s+)?([\d,]+)\s*(?:l|litre|liter)/i,
-    /([\d,]+)\s*(?:l|litre|liter)[- ]boot/i,
-    /luggage\s+(?:space\s+)?(?:of\s+)?([\d,]+)\s*(?:l|litre|liter)/i,
-    /cargo\s+(?:volume\s+)?(?:of\s+)?([\d,]+)\s*(?:l|litre|liter)/i,
-  ];
-  for (const p of patterns) {
-    const m = text.match(p);
-    if (m) { const n = m[1].replace(/,/g, ""); if (+n > 50 && +n < 5000) return n; }
-  }
-  return null;
-}
-
-function extractWeightFromText(text: string): string | null {
-  const patterns = [
-    /(?:kerb|curb)\s+weight[:\s]+(?:of\s+)?([\d,]+)/i,
-    /([\d,]+)\s*kg\s+(?:kerb|curb)/i,
-    /weighs?\s+([\d,]+)\s*kg/i,
-    /(?:unladen|empty)\s+weight[:\s]+([\d,]+)/i,
-  ];
-  for (const p of patterns) {
-    const m = text.match(p);
-    if (m) { const n = m[1].replace(/,/g, ""); if (+n > 500 && +n < 10000) return n; }
-  }
-  return null;
-}
-
-// ── Wikipedia: section 0 infobox (kasa, predecessor vs.) ───────────────────
-
-function parseInfoboxSpecs(html: string): Record<string, string> {
-  const specs: Record<string, string> = {};
-  const tableMatch = html.match(/<table[^>]*class="[^"]*infobox[^"]*"[^>]*>([\s\S]*?)<\/table>/i);
-  if (!tableMatch) return {};
-
-  const rows = [...tableMatch[1].matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
-  const fields: Record<string, string> = {};
-  for (const row of rows) {
-    const th = stripHtml(row[1].match(/<th[^>]*>([\s\S]*?)<\/th>/i)?.[1] ?? "").toLowerCase();
-    const td = stripHtml(row[1].match(/<td[^>]*>([\s\S]*?)<\/td>/i)?.[1] ?? "");
-    if (th && td) fields[th] = td;
-  }
-
-  const cls = fields["class"] ?? fields["body style"] ?? fields["type"] ?? "";
-  if (cls) {
-    const v = mapBodyType(cls.split("|")[0]);
-    if (v) specs.body_type = v;
-    const seg = cls.match(/\b([A-E])\s*[-–]?\s*(?:segment|class|seg)?\b/i);
-    if (seg) specs.segment = seg[1].toUpperCase();
-  }
-
-  const dr = fields["drive"] ?? fields["drivetrain"] ?? "";
-  if (dr) { const v = mapDrivetrain(dr.split("|")[0]); if (v) specs.drivetrain = v; }
-
-  return specs;
-}
-
-// ── Ana Wikipedia fetch ───────────────────────────────────────────────────────
-
-async function fetchWikipediaSpecs(
-  brand: string, model: string, trimHint: string | null
-): Promise<Record<string, string>> {
-  const title = await wikiSearch(brand, model);
-  if (!title) return {};
-  return specsFromTitle(title, trimHint);
-}
-
-async function specsFromTitle(
-  title: string, trimHint: string | null
-): Promise<Record<string, string>> {
-  const [section0Html, sections] = await Promise.all([
-    wikiSectionHtml(title, "0"),
-    wikiSections(title),
-  ]);
-
-  const infoSpecs = parseInfoboxSpecs(section0Html);
-
-  const techKeywords = /technical|specification|powertrain|engine|performance|data/i;
-  const sectionsToTry: { index: string; line: string }[] = [];
-  let techFound = false;
-  for (const s of sections) {
-    if (techKeywords.test(s.line)) {
-      techFound = true;
-      sectionsToTry.push(s);
-    } else if (techFound) {
-      sectionsToTry.push(s);
-      if (sectionsToTry.length >= 6) break;
-    }
-  }
-  if (sectionsToTry.length === 0) return infoSpecs;
-
-  let tableSpecs: Record<string, string> = {};
-  for (const sec of sectionsToTry) {
-    const html = await wikiSectionHtml(title, sec.index);
-    tableSpecs = parseSpecTable(html, trimHint);
-    if (Object.keys(tableSpecs).length >= 2) break;
-  }
-
-  const merged = { ...infoSpecs, ...tableSpecs };
-
-  if (!merged.weight_kg || !merged.boot_l) {
-    const s0text = stripHtml(section0Html);
-    if (!merged.boot_l) { const v = extractBootFromText(s0text); if (v) merged.boot_l = v; }
-    if (!merged.weight_kg) { const v = extractWeightFromText(s0text); if (v) merged.weight_kg = v; }
-
-    if (!merged.weight_kg || !merged.boot_l) {
-      for (const sec of ["1", "2"]) {
-        if (merged.weight_kg && merged.boot_l) break;
-        try {
-          const res = await fetch(
-            `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&section=${sec}&format=json&origin=*`,
-            { signal: AbortSignal.timeout(4000), headers: WIKI_HEADERS }
-          );
-          const data = await res.json();
-          const text = stripHtml(data.parse?.text?.["*"] ?? "");
-          if (!merged.boot_l) { const v = extractBootFromText(text); if (v) merged.boot_l = v; }
-          if (!merged.weight_kg) { const v = extractWeightFromText(text); if (v) merged.weight_kg = v; }
-        } catch { /* geç */ }
-      }
-    }
-  }
-
-  return merged;
-}
-
-// ── CarQuery ──────────────────────────────────────────────────────────────────
-
-async function fetchCarQuery(
-  brand: string, model: string, year: string | null, trimHint: string | null
-): Promise<{ specs: Record<string, string>; found: boolean }> {
-  const makeSlug  = slugifyMake(brand);
-  const modelNorm = norm(model);
-
-  const urls = [
-    year ? `https://www.carqueryapi.com/api/0.3/?callback=fn&cmd=getTrims&make=${makeSlug}&year=${year}` : null,
-    `https://www.carqueryapi.com/api/0.3/?callback=fn&cmd=getTrims&make=${makeSlug}`,
-  ].filter(Boolean) as string[];
-
-  type CQTrim = Record<string, string>;
-  let bestTrims: CQTrim[] = [];
-
-  for (const url of urls) {
-    try {
-      const res = await fetch(url, { signal: AbortSignal.timeout(5000), next: { revalidate: 86400 } });
-      const raw = await res.text();
-      const jsonStr = raw.replace(/^[a-zA-Z_$][\w$]*\s*\(/, "").replace(/\);\s*$/, "").replace(/\)\s*$/, "");
-      const data: { Trims?: CQTrim[] } = JSON.parse(jsonStr);
-      const filtered = (data.Trims ?? []).filter((t) => {
-        const mn = norm(t.model_name ?? "");
-        return mn.includes(modelNorm.slice(0, 8)) || modelNorm.includes(mn.slice(0, 8));
-      });
-      if (filtered.length > 0) { bestTrims = filtered; break; }
-    } catch { continue; }
-  }
-
-  if (bestTrims.length === 0) return { specs: {}, found: false };
-
-  let best = bestTrims[0];
-  if (trimHint) {
-    const tn = norm(trimHint).slice(0, 8);
-    const m = bestTrims.find((t) => norm(t.model_trim ?? "").includes(tn));
-    if (m) best = m;
-  }
-
-  const specs: Record<string, string> = {};
-  if (best.model_engine_cc)          specs.engine_cc     = String(Math.round(+best.model_engine_cc));
-  if (best.model_engine_power_ps)    specs.power_hp      = String(Math.round(+best.model_engine_power_ps));
-  if (best.model_engine_torque_nm)   specs.torque_nm     = String(Math.round(+best.model_engine_torque_nm));
-  if (best.model_0_to_100_kph)       specs.zero_to_100   = best.model_0_to_100_kph;
-  if (best.model_top_speed_kph)      specs.top_speed_kmh = best.model_top_speed_kph;
-  if (best.model_weight_kg)          specs.weight_kg     = String(Math.round(+best.model_weight_kg));
-  if (best.model_fuel_cap_l)         specs.tank_l        = String(Math.round(+best.model_fuel_cap_l));
-  if (best.model_drive)              { const v = mapDrivetrain(best.model_drive); if (v) specs.drivetrain = v; }
-  if (best.model_transmission_type)  { const v = mapTransmission(best.model_transmission_type); if (v) specs.transmission = v; }
-  if (best.model_body)               { const v = mapBodyType(best.model_body); if (v) specs.body_type = v; }
-
-  return { specs, found: Object.keys(specs).length > 0 };
-}
-
-// ── Herkese açık API ──────────────────────────────────────────────────────────
-
-export async function fetchVehicleSpecs(
-  brand: string, model: string, year: string | null, trimHint: string | null
-): Promise<{ specs: Record<string, string>; source: string | null }> {
-  const [cqResult, wikiSpecs] = await Promise.all([
-    fetchCarQuery(brand, model, year, trimHint),
-    fetchWikipediaSpecs(brand, model, trimHint),
-  ]);
-
-  const merged: Record<string, string> = { ...wikiSpecs, ...cqResult.specs };
-  if (Object.keys(merged).length === 0) return { specs: {}, source: null };
-
-  const source = cqResult.found ? "CarQuery" : Object.keys(wikiSpecs).length > 0 ? "Wikipedia" : null;
-  return { specs: merged, source };
-}
-
-// Doğrulanmış (üretici + üretim yılı örtüşmesi kontrol edilmiş, bkz.
-// wikidataVerify.ts) Wikipedia sayfasından teknik özellik çeker. Düz metin
-// aramasından (fetchVehicleSpecs) farkı: yanlış nesil/model sayfasına düşme
-// riski yok — doğrulanmış sayfa bulunamazsa boş döner, tahmin etmez.
-// CarQuery yine de denenir (kalıcı olarak erişilemez olsa da düşük maliyetli,
-// ileride geri gelirse otomatik fayda sağlar).
-export async function fetchVerifiedVehicleSpecs(
-  brand: string, model: string, year: number | null, trimHint: string | null
-): Promise<{ specs: Record<string, string>; source: string | null; verifiedTitle: string | null }> {
-  const page = await findVerifiedWikipediaPage(brand, model, year);
-  // SPARQL doğrulaması bazı Wikidata kayıtlarında P176 (üretici) alanı boş
-  // olduğu için (ör. "Volkswagen Golf Mk7") sonuçsuz kalabiliyor — bu durumda
-  // eski düz-metin-arama yöntemine düş (o farklı bir kör noktaya sahip ama
-  // ikisi birlikte daha geniş kapsar).
-  const [cqResult, wikiSpecs] = await Promise.all([
-    fetchCarQuery(brand, model, year != null ? String(year) : null, trimHint),
-    page ? specsFromTitle(page.title, trimHint) : fetchWikipediaSpecs(brand, model, trimHint),
-  ]);
-
-  const merged: Record<string, string> = { ...wikiSpecs, ...cqResult.specs };
-  if (Object.keys(merged).length === 0) return { specs: {}, source: null, verifiedTitle: page?.title ?? null };
-
-  const source = cqResult.found ? "CarQuery" : Object.keys(wikiSpecs).length > 0
-    ? (page ? "Wikipedia (doğrulanmış)" : "Wikipedia")
-    : null;
-  return { specs: merged, source, verifiedTitle: page?.title ?? null };
-}
-
 // ── Güven skorlaması ─────────────────────────────────────────────────────────
-// Hiçbir ücretsiz kaynak (CarQuery + Wikipedia HTML parse) tek başına %100
-// doğruluk garantisi vermiyor (CarQuery çoğu zaman erişilemez, Wikipedia
-// regex ile parse edilen serbest metin/tablo). Bu yüzden "veri bulundu mu"
-// yerine "bu değere ne kadar güvenilir" sorusuna cevap veren bir katman:
-// iki bağımsız kaynak aynı değerde mutabıksa yüksek güven, tek kaynak orta,
-// çelişki varsa düşük+işaretli. Admin ekranı bu skora göre triaj yapar —
-// yüksek güvenli alanlara hiç bakmasına gerek kalmaz.
 export type SpecConfidence = "high" | "medium" | "low";
 export interface SpecFieldMeta {
   value: string;
@@ -461,21 +47,42 @@ export interface SpecFieldMeta {
 export type SpecFieldMap = Record<string, SpecFieldMeta>;
 
 // Alan başına makul değer aralığı — dışındaki değerler veri hatası kabul
-// edilip HİÇ yazılmaz (susmuş boşluk, yanlış değerden iyidir).
+// edilip HİÇ yazılmaz. Sadece sayısal alanlar için; tanımı olmayan sayısal
+// alanlarda (örn. karavan boyutları) bu kontrol atlanır (reddetmez).
 const REASONABLE_RANGES: Record<string, [number, number]> = {
-  engine_cc:     [600, 8000],
-  power_hp:      [40, 800],
-  torque_nm:     [50, 1200],
-  zero_to_100:   [2, 25],
-  top_speed_kmh: [80, 350],
-  tank_l:        [20, 150],
-  weight_kg:     [700, 4000],
-  boot_l:        [50, 2000],
-  battery_kwh:   [10, 200],
-  ev_range_km:   [50, 800],
+  engine_cc:        [600, 8000],
+  power_hp:         [40, 800],
+  torque_nm:        [50, 1200],
+  zero_to_100:      [2, 25],
+  top_speed_kmh:    [80, 350],
+  max_speed_kmh:    [10, 250],
+  tank_l:           [20, 150],
+  weight_kg:        [700, 4000],
+  boot_l:           [50, 2000],
+  battery_kwh:      [10, 200],
+  ev_range_km:      [50, 800],
+  motor_watt:       [100, 15000],
+  range_km:         [5, 500],
+  battery_wh:       [100, 3000],
+  seat_height_mm:   [600, 950],
+  gearbox:          [1, 8],
+  berth:            [1, 8],
+  length_cm:        [300, 1200],
+  width_cm:         [150, 300],
+  height_cm:        [150, 250],
+  exterior_height_cm: [200, 400],
+  empty_weight_kg:  [500, 6000],
+  total_weight_kg:  [700, 7500],
+  tow_weight_kg:    [500, 5000],
+  water_tank_l:     [10, 500],
+  waste_water_tank_l: [10, 500],
+  payload_kg:       [200, 5000],
+  tow_capacity_kg:  [200, 5000],
+  max_load_kg:      [50, 200],
+  tire_inch:        [6, 14],
+  charge_hours:     [0.5, 24],
+  seat_count:       [1, 9],
 };
-
-const NUMERIC_FIELDS = new Set(Object.keys(REASONABLE_RANGES));
 
 function inReasonableRange(key: string, raw: string): boolean {
   const range = REASONABLE_RANGES[key];
@@ -485,8 +92,8 @@ function inReasonableRange(key: string, raw: string): boolean {
   return n >= range[0] && n <= range[1];
 }
 
-function valuesAgree(key: string, a: string, b: string): boolean {
-  if (NUMERIC_FIELDS.has(key)) {
+function valuesAgree(field: FieldDef, a: string, b: string): boolean {
+  if (field.type === "number") {
     const na = parseFloat(a), nb = parseFloat(b);
     if (Number.isNaN(na) || Number.isNaN(nb)) return false;
     return Math.abs(na - nb) / Math.max(na, nb) <= 0.05; // ±%5 tolerans
@@ -494,47 +101,143 @@ function valuesAgree(key: string, a: string, b: string): boolean {
   return norm(a) === norm(b);
 }
 
-// fetchVerifiedVehicleSpecs ile aynı kaynak zincirini kullanır, ama alan
-// bazında güven skoru ve çakışma bilgisi ekler. Admin onay ekranı bunu
-// tüketir (bkz. /api/admin/fetch-specs).
+// ── Gemini'den istenecek alan listesini prompt metnine çevir ────────────────
+
+const CATEGORY_LABELS: Record<string, string> = {
+  otomobil: "Otomobil", motosiklet: "Motosiklet", "e-scooter": "E-Scooter",
+  "e-bisiklet": "E-Bisiklet", karavan: "Karavan", kamyonet: "Kamyonet",
+};
+
+function describeField(f: FieldDef): string {
+  if (f.type === "number") return `- ${f.key}: sayı${f.unit ? ` (${f.unit})` : ""}, emin değilsen null`;
+  if (f.type === "boolean") return `- ${f.key}: true veya false, emin değilsen null`;
+  if (f.type === "select") {
+    const opts = f.options.map((o) => o.value).join(", ");
+    return `- ${f.key}: SADECE şu değerlerden biri (aynen yaz): ${opts} — emin değilsen null`;
+  }
+  return `- ${f.key}: kısa serbest metin, emin değilsen null`;
+}
+
+function relevantFields(categorySlug: string, fuelType: string | null): FieldDef[] {
+  const all = SPEC_FIELDS[categorySlug] ?? [];
+  const ctxAttrs = { fuel_type: fuelType ?? "" };
+  // showIf sadece fuel_type'a bağlı olanlar için filtrelenir — diğer alana
+  // bağlı olanlar (örn. body_type'a bağlı kabin tipi) henüz bilinmediği için
+  // olduğu gibi sorulur, zararsız (form katmanı zaten showIf'e göre gizliyor).
+  return all.filter((f) => !f.showIf || f.showIf(ctxAttrs));
+}
+
+function buildPrompt(
+  brand: string, model: string, year: number | null, trimHint: string | null,
+  categorySlug: string, fuelType: string | null, fields: FieldDef[],
+): string {
+  const vehicleLine = [
+    brand, model, year ? String(year) : null, trimHint,
+    fuelType ? FUEL_LABELS[fuelType] ?? fuelType : null,
+  ].filter(Boolean).join(" ");
+
+  return `Sen bir araç teknik özellikleri uzmanısın. Aşağıdaki araç için istenen teknik özellik alanlarını doldur.
+
+Araç: ${vehicleLine}
+Kategori: ${CATEGORY_LABELS[categorySlug] ?? categorySlug}
+
+KURALLAR:
+- Cevabın SADECE geçerli bir JSON nesnesi olsun, başka hiçbir metin ekleme.
+- Her alan için ya değeri ya da null yaz. UYDURMA — emin olmadığın, tahmin ettiğin
+  ya da genel/ortalama bir sayı vereceğin her alanı null bırak.
+- Değerler bu aracın GENEL/NESİL seviyesindeki (Türkiye'ye özel paket/donanım
+  adının ince ayrıntıları değil) teknik özellikleri olmalı — donanım paketi
+  isimlerine (ör. "Shine", "Elite", "Icon") göre değişen ince farkları bilmiyorsan
+  null bırak, genel nesil değerini de verme.
+- Sayısal alanlar birim/etiket İÇERMEDEN sade sayı olarak yazılsın (ör. "1598", "1.6" değil "1600").
+
+İstenen alanlar:
+${fields.map(describeField).join("\n")}
+
+JSON formatı: { "alan_adı": "değer_veya_null", ... } — yukarıdaki TÜM alan adlarını anahtar olarak kullan.`;
+}
+
+// ── Gemini yanıtını doğrula ve tanımlı alan şemasına eşle ───────────────────
+
+function validateGeminiResponse(raw: unknown, fields: FieldDef[]): Record<string, string> {
+  const out: Record<string, string> = {};
+  if (!raw || typeof raw !== "object") return out;
+  const obj = raw as Record<string, unknown>;
+
+  for (const f of fields) {
+    const v = obj[f.key];
+    if (v == null) continue;
+    const s = String(v).trim();
+    if (!s || s.toLowerCase() === "null") continue;
+
+    if (f.type === "number") {
+      const n = parseFloat(s.replace(",", "."));
+      if (Number.isNaN(n)) continue;
+      if (!inReasonableRange(f.key, String(n))) continue;
+      out[f.key] = String(n);
+    } else if (f.type === "boolean") {
+      const l = s.toLowerCase();
+      if (l !== "true" && l !== "false") continue;
+      out[f.key] = l;
+    } else if (f.type === "select") {
+      const match = f.options.find((o) => o.value === s || norm(o.value) === norm(s));
+      if (!match) continue;
+      out[f.key] = match.value;
+    } else {
+      out[f.key] = s.slice(0, 40);
+    }
+  }
+  return out;
+}
+
+async function fetchGeminiSpecsOnce(prompt: string, fields: FieldDef[]): Promise<Record<string, string>> {
+  try {
+    const raw = await generateGeminiJson(prompt);
+    return validateGeminiResponse(raw, fields);
+  } catch (e) {
+    if (e instanceof GeminiError) return {};
+    throw e;
+  }
+}
+
+// ── Herkese açık API ──────────────────────────────────────────────────────────
+// /api/admin/fetch-specs tarafından kullanılır (bkz. o route). Aynı prompt'la
+// iki BAĞIMSIZ çağrı yapılıp sonuçlar karşılaştırılır.
 export async function fetchVehicleSpecsWithConfidence(
-  brand: string, model: string, year: number | null, trimHint: string | null
-): Promise<{ specs: SpecFieldMap; verifiedTitle: string | null }> {
-  const page = await findVerifiedWikipediaPage(brand, model, year);
-  const [cqResult, wikiSpecs] = await Promise.all([
-    fetchCarQuery(brand, model, year != null ? String(year) : null, trimHint),
-    page ? specsFromTitle(page.title, trimHint) : fetchWikipediaSpecs(brand, model, trimHint),
+  brand: string, model: string, year: number | null, trimHint: string | null,
+  categorySlug: string, fuelType: string | null,
+): Promise<{ specs: SpecFieldMap }> {
+  const fields = relevantFields(categorySlug, fuelType);
+  if (fields.length === 0) return { specs: {} };
+
+  const prompt = buildPrompt(brand, model, year, trimHint, categorySlug, fuelType, fields);
+  const [a, b] = await Promise.all([
+    fetchGeminiSpecsOnce(prompt, fields),
+    fetchGeminiSpecsOnce(prompt, fields),
   ]);
 
-  const wikiSource = page ? "wikipedia_verified" : "wikipedia_text";
-  const cqSpecs = cqResult.found ? cqResult.specs : {};
-
-  const keys = new Set([...Object.keys(wikiSpecs), ...Object.keys(cqSpecs)]);
+  const fieldByKey = new Map(fields.map((f) => [f.key, f]));
+  const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
   const result: SpecFieldMap = {};
 
   for (const key of keys) {
-    const wikiVal = wikiSpecs[key];
-    const cqVal = cqSpecs[key];
+    const field = fieldByKey.get(key);
+    if (!field) continue;
+    const va = a[key], vb = b[key];
 
     let meta: SpecFieldMeta;
-    if (wikiVal && cqVal) {
-      if (valuesAgree(key, wikiVal, cqVal)) {
-        meta = { value: cqVal, confidence: "high", source: `carquery+${wikiSource}` };
+    if (va && vb) {
+      if (valuesAgree(field, va, vb)) {
+        meta = { value: va, confidence: "medium", source: "gemini_x2" };
       } else {
-        meta = {
-          value: cqVal, confidence: "low", source: "carquery",
-          conflictWith: { source: wikiSource, value: wikiVal },
-        };
+        meta = { value: va, confidence: "low", source: "gemini", conflictWith: { source: "gemini", value: vb } };
       }
-    } else if (cqVal) {
-      meta = { value: cqVal, confidence: "medium", source: "carquery" };
     } else {
-      meta = { value: wikiVal, confidence: page ? "medium" : "low", source: wikiSource };
+      meta = { value: (va ?? vb)!, confidence: "low", source: "gemini" };
     }
 
-    if (!inReasonableRange(key, meta.value)) continue; // aralık dışı — hiç yazma
     result[key] = meta;
   }
 
-  return { specs: result, verifiedTitle: page?.title ?? null };
+  return { specs: result };
 }
