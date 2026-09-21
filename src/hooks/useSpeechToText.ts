@@ -77,7 +77,7 @@ export function useSpeechToText() {
 
   useEffect(() => () => abort(), [abort]);
 
-  const start = useCallback((onFinalTranscript: (text: string) => void) => {
+  const start = useCallback((onFinalTranscript: (text: string, alternatives: string[]) => void) => {
     if (recognitionRef.current) return; // çift tetikleme guard'ı
     const Ctor = getSpeechRecognitionCtor();
     if (!Ctor) {
@@ -89,6 +89,11 @@ export function useSpeechToText() {
     recognition.lang = "tr-TR";
     recognition.continuous = true;
     recognition.interimResults = true;
+    // Marka/model adları (Togg, Škoda vb.) tek bir tahminle sık yanlış
+    // algılanıyor — tarayıcının ürettiği diğer adayları da (confidence
+    // sırasına göre) tüketiciye veriyoruz, arama sonucu boş dönerse bir
+    // sonraki adayı denemek isteyenler için (bkz. ComparePicker).
+    recognition.maxAlternatives = 5;
 
     const resetNoResultTimeout = () => {
       clearNoResultTimeout();
@@ -113,7 +118,12 @@ export function useSpeechToText() {
         const result = event.results[i];
         const transcript = result[0]?.transcript ?? "";
         if (result.isFinal) {
-          onFinalTranscript(transcript);
+          const alternatives: string[] = [];
+          for (let j = 0; j < result.length; j++) {
+            const alt = result[j]?.transcript;
+            if (alt) alternatives.push(alt);
+          }
+          onFinalTranscript(transcript, alternatives);
         } else {
           interim += transcript;
         }

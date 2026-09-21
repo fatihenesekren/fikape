@@ -2,11 +2,13 @@
 
 import { useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { VoiceMicButton } from "./VoiceMicButton";
 
 export function SearchBar() {
   const router   = useRouter();
   const pathname = usePathname();
   const inputRef = useRef<HTMLInputElement>(null);
+  const formRef  = useRef<HTMLFormElement>(null);
 
   // Ana sayfada hero'nun, arama sayfasında sayfanın kendi search kutusu var
   if (pathname === "/" || pathname === "/arama") return null;
@@ -19,6 +21,7 @@ export function SearchBar() {
 
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       className="flex-1 max-w-sm mx-4 hidden sm:flex items-center"
     >
@@ -28,7 +31,7 @@ export function SearchBar() {
           name="q"
           type="search"
           placeholder="Araç, marka veya model ara..."
-          className="w-full pl-9 pr-16 py-1.5 rounded-xl border border-gray-200 bg-gray-50 text-sm placeholder-gray-400 focus:outline-none focus:border-gray-400 focus:bg-white transition-colors"
+          className="w-full pl-9 pr-24 py-1.5 rounded-xl border border-gray-200 bg-gray-50 text-sm placeholder-gray-400 focus:outline-none focus:border-gray-400 focus:bg-white transition-colors"
         />
         <svg
           className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
@@ -38,6 +41,7 @@ export function SearchBar() {
           <circle cx={11} cy={11} r={8} />
           <path strokeLinecap="round" d="m21 21-4.35-4.35" />
         </svg>
+        <VoiceMicButton inputRef={inputRef} formRef={formRef} rightPx={52} />
         {/* Görünür "Ara" butonu — kullanıcı yalnızca Enter'a basınca arama
             yapıldığını bilemez (bkz. kullanıcı geri bildirimi; hero ve
             /arama, /araclar kutularında zaten var). */}

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
+import { VoiceMicButton } from "@/components/VoiceMicButton";
 
 const PAYMENT_OPTIONS = [
   { value: "SWAP_ONLY", label: "Sadece takas (yakın değer)" },
@@ -55,6 +56,8 @@ export function TakasFilterForm({
   categoryBrandMap: Record<string, string[]>;
 }) {
   const [kategori, setKategori] = useState(kategoriSlug);
+  const qInputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const availableBrands = kategori ? brands.filter((b) => categoryBrandMap[kategori]?.includes(b.slug)) : brands;
   // Hızlı Arama (serbest metin) ve Detaylı Arama (il/kategori/marka/ödeme/yıl/
   // km/yakıt/vites) görsel olarak ayrıldı ama aynı <form>/query string'i
@@ -75,21 +78,25 @@ export function TakasFilterForm({
     `text-sm rounded-lg border px-2.5 py-1.5 ${active ? "border-link-line bg-link-soft/40" : "border-gray-200"}`;
 
   return (
-    <form method="get" className="mb-8">
+    <form ref={formRef} method="get" className="mb-8">
       <div className="mb-2">
         <label htmlFor="takas-q" className="block text-xs font-bold text-gray-500 mb-1">
           🔍 Hızlı Arama
         </label>
         <div className="flex gap-2">
-          <input
-            id="takas-q"
-            type="text"
-            name="q"
-            defaultValue={q}
-            placeholder="Marka, model veya versiyon ara…"
-            aria-label="Serbest metin arama"
-            className="flex-1 text-sm rounded-lg border border-gray-200 px-2.5 py-1.5"
-          />
+          <div className="relative flex-1">
+            <input
+              ref={qInputRef}
+              id="takas-q"
+              type="text"
+              name="q"
+              defaultValue={q}
+              placeholder="Marka, model veya versiyon ara…"
+              aria-label="Serbest metin arama"
+              className="w-full text-sm rounded-lg border border-gray-200 pl-2.5 pr-9 py-1.5"
+            />
+            <VoiceMicButton inputRef={qInputRef} formRef={formRef} />
+          </div>
           <button type="submit" className="text-sm font-semibold text-white rounded-lg px-4 py-1.5 whitespace-nowrap" style={{ background: "#0C447C" }}>
             Ara
           </button>
