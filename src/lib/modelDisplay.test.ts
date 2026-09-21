@@ -35,7 +35,7 @@ describe("stripGenRangeAnywhere", () => {
   });
 
   it("nesil aralığı yoksa değiştirmez", () => {
-    expect(stripGenRangeAnywhere("Citroën C5 Aircross")).toBe("Citroën C5 Aircross");
+    expect(stripGenRangeAnywhere("Citroen C5 Aircross")).toBe("Citroen C5 Aircross");
   });
 });
 

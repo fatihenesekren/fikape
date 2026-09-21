@@ -17,8 +17,8 @@ describe("resolveOnerPrefill", () => {
     expect(r.selectedModel).toBe("");
   });
 
-  it("marka eşleşmesi aksan-duyarsız (CITROEN → Citroën)", () => {
-    expect(resolveOnerPrefill("?q=CITROEN").selectedMake).toBe("Citroën");
+  it("marka eşleşmesi aksan-duyarsız (CITROEN → Citroen)", () => {
+    expect(resolveOnerPrefill("?q=CITROEN").selectedMake).toBe("Citroen");
   });
 
   it("eski ?brandName= parametresi de kabul edilir", () => {

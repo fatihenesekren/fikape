@@ -5635,7 +5635,7 @@
       ]
     },
     {
-      "make": "Citroën",
+      "make": "Citroen",
       "models": [
         {
           "name": "Saxo (1996-2004)",
@@ -6079,7 +6079,7 @@
           ]
         },
         {
-          "name": "ë-C3",
+          "name": "e-C3",
           "versions": [
             "113 44kWh",
             "Diğer"
@@ -6091,7 +6091,7 @@
           ]
         },
         {
-          "name": "ë-C4",
+          "name": "e-C4",
           "versions": [
             "136 50kWh",
             "Diğer"
@@ -6119,7 +6119,7 @@
           ]
         },
         {
-          "name": "ë-Berlingo",
+          "name": "e-Berlingo",
           "versions": [
             "136 50kWh",
             "Diğer"
@@ -37875,7 +37875,7 @@
       ]
     },
     {
-      "make": "Citroën",
+      "make": "Citroen",
       "models": [
         {
           "name": "Berlingo (2000-2018)",
@@ -37899,7 +37899,7 @@
             "1.2 PureTech 110",
             "1.5 BlueHDi 100",
             "1.5 BlueHDi 130",
-            "ë-Berlingo Electric 136",
+            "e-Berlingo Electric 136",
             "Diğer"
           ],
           "trims": [
@@ -37940,7 +37940,7 @@
             "1.5 BlueHDi 100",
             "2.0 BlueHDi 120",
             "2.0 BlueHDi 145",
-            "ë-Jumpy Electric",
+            "e-Jumpy Electric",
             "Diğer"
           ],
           "trims": [

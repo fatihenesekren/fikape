@@ -29,7 +29,7 @@ export async function GET(req: Request) {
 
   const terms = q.split(/\s+/).filter(Boolean).slice(0, 5);
 
-  // unaccent() her iki tarafa da uygulanıyor ki "citroen" → "Citroën", "skoda" → "Škoda"
+  // unaccent() her iki tarafa da uygulanıyor ki "skoda" → "Škoda"
   // gibi aksan farkları arama sonucunu etkilemesin (Türkçe ş/ğ/ç/ö/ü/ı da normalize olur).
   const termClauses = terms.map((term) => {
     const pattern = `%${term}%`;
