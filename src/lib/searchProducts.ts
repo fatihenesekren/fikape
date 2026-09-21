@@ -15,10 +15,14 @@ import { prisma } from "@/lib/prisma";
 const MAX_QUERY_LEN = 128;
 const MAX_TERMS = 6;
 const FUZZY_MAX_TERMS = 2;          // tüm-cümle similarity 2 kelimeden sonra güvenilmez
-// pg_trgm varsayılanı (0.3) — referans /api/search/products ile aynı bar.
-// 0.45 denendi ama en yaygın typo bile ("toyta" vs "toyota" ≈ 0.44) eleniyordu.
-// "benzer sonuçları gösteriyoruz" banner'ı kafa karışıklığını hafifletiyor.
-const FUZZY_MIN_SIMILARITY = 0.3;
+// 0.45 denendi ama en yaygın typo bile ("toyta" vs "toyota" ≈ 0.44) eleniyordu,
+// 0.3'e (pg_trgm varsayılanı) çekildi. Sonra "Togg" sesli aramada "Tok" diye
+// algılanınca ("Tok" vs "Togg" ≈ 0.2857) YİNE hemen barın altında kalıp
+// elendiği görüldü — gerçek DB'de marka-marka benzerlik matrisi tarandı
+// (0.2-0.3 aralığında yalnız NIU/Nissan, Cube/Cupra, Hobby/Honda, Toyota/Togg
+// gibi zaten belirgin farklı çiftler var, yanlış-eşleşme riski yok), bar 0.22'ye
+// çekildi. "benzer sonuçları gösteriyoruz" banner'ı kafa karışıklığını hafifletiyor.
+const FUZZY_MIN_SIMILARITY = 0.22;
 const EXACT_LIMIT = 60;
 const FUZZY_LIMIT = 10;
 
