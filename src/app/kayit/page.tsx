@@ -51,7 +51,8 @@ function KayitForm() {
   const [email, setEmail]             = useState("");
   const [password, setPassword]       = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [consent, setConsent]         = useState(false);
+  const [kvkkConsent, setKvkkConsent]   = useState(false);
+  const [termsConsent, setTermsConsent] = useState(false);
   const [error, setError]             = useState("");
   const [loading, setLoading]         = useState(false);
 
@@ -66,7 +67,7 @@ function KayitForm() {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, displayName, ref, consent }),
+      body: JSON.stringify({ email, password, displayName, ref, kvkkConsent, termsConsent }),
     });
 
     const data = await res.json();
@@ -217,25 +218,36 @@ function KayitForm() {
           <label className="flex items-start gap-2 text-xs text-gray-500">
             <input
               type="checkbox"
-              checked={consent}
-              onChange={(e) => setConsent(e.target.checked)}
+              checked={kvkkConsent}
+              onChange={(e) => setKvkkConsent(e.target.checked)}
               required
               className="mt-0.5 shrink-0"
             />
             <span>
-              Kaydolarak{" "}
-              <Link href="/gizlilik" className="underline">Gizlilik Politikası</Link>
-              {"'nı, "}
+              <Link href="/gizlilik" className="underline">KVKK Aydınlatma Metni</Link>
+              {"'ni okudum, kişisel verilerimin belirtilen kapsamda işlenmesini kabul ediyorum."}
+            </span>
+          </label>
+
+          <label className="flex items-start gap-2 text-xs text-gray-500">
+            <input
+              type="checkbox"
+              checked={termsConsent}
+              onChange={(e) => setTermsConsent(e.target.checked)}
+              required
+              className="mt-0.5 shrink-0"
+            />
+            <span>
               <Link href="/kullanim-kosullari" className="underline">Kullanım Koşulları</Link>
               {"'nı ve "}
               <Link href="/uyelik-sozlesmesi" className="underline">Üyelik Sözleşmesi</Link>
-              {"'ni kabul ediyorum."}
+              {"'ni okudum, kabul ediyorum."}
             </span>
           </label>
 
           <button
             type="submit"
-            disabled={loading || !allRulesPass || !consent}
+            disabled={loading || !allRulesPass || !kvkkConsent || !termsConsent}
             className="w-full py-2.5 rounded-xl text-sm font-semibold text-white transition-colors disabled:opacity-60"
             style={{ background: "var(--fi)" }}
           >

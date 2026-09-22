@@ -47,48 +47,54 @@ describe("reviewCreateSchema", () => {
 describe("registerSchema", () => {
   const validPassword = "Sifre1234!";
 
+  const bothConsents = { kvkkConsent: true as const, termsConsent: true as const };
+
   it("geçerli e-posta+şifre+görünen ad+onay kabul eder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ali", consent: true }).success).toBe(true);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ali", ...bothConsents }).success).toBe(true);
   });
 
   it("geçersiz e-postayı reddeder", () => {
-    expect(registerSchema.safeParse({ email: "gecersiz", password: validPassword, displayName: "Ali", consent: true }).success).toBe(false);
+    expect(registerSchema.safeParse({ email: "gecersiz", password: validPassword, displayName: "Ali", ...bothConsents }).success).toBe(false);
   });
 
   it("kısa şifreyi reddeder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: "kisa", displayName: "Ali", consent: true }).success).toBe(false);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: "kisa", displayName: "Ali", ...bothConsents }).success).toBe(false);
   });
 
   it("kural setini sağlamayan şifreyi reddeder (büyük/özel karakter yok)", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: "sifre1234", displayName: "Ali", consent: true }).success).toBe(false);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: "sifre1234", displayName: "Ali", ...bothConsents }).success).toBe(false);
   });
 
   it("görünen ad eksikse reddeder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, consent: true }).success).toBe(false);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, ...bothConsents }).success).toBe(false);
   });
 
   it("2 karakterlik görünen adı reddeder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Al", consent: true }).success).toBe(false);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Al", ...bothConsents }).success).toBe(false);
   });
 
   it("sadece rakamdan oluşan görünen adı reddeder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "12345", consent: true }).success).toBe(false);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "12345", ...bothConsents }).success).toBe(false);
   });
 
   it("harf+rakam karışımı görünen adı reddeder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet35", consent: true }).success).toBe(false);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet35", ...bothConsents }).success).toBe(false);
   });
 
   it("nokta/tire/boşluk içeren görünen adı kabul eder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet K.", consent: true }).success).toBe(true);
-    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet-Can", consent: true }).success).toBe(true);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet K.", ...bothConsents }).success).toBe(true);
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet-Can", ...bothConsents }).success).toBe(true);
   });
 
-  it("onay verilmezse reddeder", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ali", consent: false }).success).toBe(false);
+  it("KVKK onayı verilmezse reddeder", () => {
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ali", kvkkConsent: false, termsConsent: true }).success).toBe(false);
   });
 
-  it("onay hiç gönderilmezse reddeder", () => {
+  it("Kullanım Koşulları onayı verilmezse reddeder", () => {
+    expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ali", kvkkConsent: true, termsConsent: false }).success).toBe(false);
+  });
+
+  it("onaylar hiç gönderilmezse reddeder", () => {
     expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ali" }).success).toBe(false);
   });
 });

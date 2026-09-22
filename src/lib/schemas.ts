@@ -40,7 +40,8 @@ export const registerSchema = z.object({
   password:    passwordSchema,
   displayName: displayNameSchema,
   ref:         z.string().optional().nullable(),
-  consent:     z.literal(true, { error: "Gizlilik Politikası ve Kullanım Koşulları'nı kabul etmelisiniz." }),
+  kvkkConsent:   z.literal(true, { error: "KVKK Aydınlatma Metni'ni okuduğunuzu onaylamalısınız." }),
+  termsConsent:  z.literal(true, { error: "Kullanım Koşulları ve Üyelik Sözleşmesi'ni kabul etmelisiniz." }),
 });
 
 export const forgotPasswordSchema = z.object({
