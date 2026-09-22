@@ -13,6 +13,10 @@ export function ShareCard({
 }) {
   const [sharing, setSharing] = useState(false);
   const imageUrl = `/yorumum/${reviewId}/kart.png`;
+  // Aracı isme göre ayırt edilebilir dosya adı — önceden her araçta aynı
+  // "fikape-yorum-karti.png" indiriliyordu, birden fazla araç kartı
+  // indirilince birbirinin üzerine yazıyordu (bkz. kullanıcı geri bildirimi).
+  const downloadFileName = `fikape-${productSlug}-yorum-karti.png`;
   const productUrl =
     typeof window !== "undefined"
       ? `${window.location.origin}/araclar/${productSlug}`
@@ -24,7 +28,7 @@ export function ShareCard({
     try {
       const res = await fetch(imageUrl);
       const blob = await res.blob();
-      const file = new File([blob], "fikape-yorum-karti.png", { type: "image/png" });
+      const file = new File([blob], downloadFileName, { type: "image/png" });
 
       if (navigator.canShare?.({ files: [file] })) {
         await navigator.share({
@@ -62,7 +66,7 @@ export function ShareCard({
         </button>
         <a
           href={imageUrl}
-          download="fikape-yorum-karti.png"
+          download={downloadFileName}
           className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold text-gray-700 hover:border-gray-300 transition-colors"
         >
           İndir
