@@ -93,14 +93,19 @@ export function ExpertMessageComposer({ expertProfileId }: { expertProfileId: nu
         {speech.interimTranscript && (
           <p className="text-xs text-gray-400 italic px-3 pb-1.5 -mt-1">{speech.interimTranscript}</p>
         )}
-        <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
-          <VoiceInputButton
-            status={speech.status}
-            message={speech.status === "error" ? speech.errorMessage : voiceMessage}
-            onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
-            onStop={() => speech.stop()}
-          />
-          <span className="text-xs text-gray-400">Sesli giriş</span>
+        <div className="flex items-center justify-between gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
+          <div className="flex items-center gap-2 min-w-0">
+            <VoiceInputButton
+              status={speech.status}
+              message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+              onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+              onStop={() => speech.stop()}
+            />
+            <span className="text-xs text-gray-400">Sesli giriş</span>
+          </div>
+          <span className={`text-[11px] shrink-0 ${text.length >= 920 ? "text-orange-400" : "text-gray-400"}`}>
+            {text.length}/1000
+          </span>
         </div>
       </div>
       {error && <p className="text-xs text-red-600">{error}</p>}

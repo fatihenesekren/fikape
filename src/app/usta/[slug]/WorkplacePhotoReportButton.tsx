@@ -116,6 +116,9 @@ export function WorkplacePhotoReportButton({
                   placeholder="Örn: Bu fotoğraf başka bir işletmeye ait, benim dükkanım bu değil."
                   className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-none"
                 />
+                <p className={`text-right text-[11px] -mt-2 ${note.length >= 460 ? "text-orange-400" : "text-gray-400"}`}>
+                  {note.length}/500
+                </p>
                 {error && <p className="text-xs text-red-600">{error}</p>}
                 <div className="flex items-center gap-2 justify-end">
                   <button type="button" onClick={() => setOpen(false)} className="text-xs text-gray-400 hover:underline px-3 py-2.5 -my-1">Vazgeç</button>

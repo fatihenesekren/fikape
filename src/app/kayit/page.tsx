@@ -136,7 +136,12 @@ function KayitForm() {
               placeholder="Ahmet K."
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
             />
-            <p className="text-xs text-gray-400">Yorumlarında görünecek isim, sadece harf içerebilir (en az 3 karakter). İstersen takma ad kullanabilirsin.</p>
+            <div className="flex items-start justify-between gap-2">
+              <p className="text-xs text-gray-400">Yorumlarında görünecek isim, sadece harf içerebilir (en az 3 karakter). İstersen takma ad kullanabilirsin.</p>
+              <span className={`text-[11px] shrink-0 ${displayName.length >= 28 ? "text-orange-400" : "text-gray-400"}`}>
+                {displayName.length}/30
+              </span>
+            </div>
           </div>
 
           <div className="space-y-1">

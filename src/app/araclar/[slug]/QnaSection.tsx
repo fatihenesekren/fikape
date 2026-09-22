@@ -222,6 +222,9 @@ export function QnaSection({ productSlug, questions, isLoggedIn, currentUserId, 
                   placeholder={`Örn: ${example}`}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-link focus:ring-2 focus:ring-link-soft resize-none transition-colors"
                 />
+                <p className={`text-right text-[11px] ${askText.length >= 276 ? "text-orange-400" : "text-gray-400"}`}>
+                  {askText.length}/300
+                </p>
                 {askError && <p className="text-xs text-red-500">{askError}</p>}
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <span className="inline-flex items-center gap-1.5 text-[11px] text-gray-500">

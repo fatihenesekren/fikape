@@ -105,6 +105,9 @@ export function DeleteAccountSection({
               rows={2}
               className="w-full text-sm rounded-lg border border-gray-200 px-3 py-2 resize-none focus:outline-none focus:border-gray-400"
             />
+            <p className={`text-right text-[11px] ${reason.length >= 460 ? "text-orange-400" : "text-gray-400"}`}>
+              {reason.length}/500
+            </p>
             {error && <p className="text-xs text-red-600">{error}</p>}
             <div className="flex items-center justify-end gap-2">
               <button

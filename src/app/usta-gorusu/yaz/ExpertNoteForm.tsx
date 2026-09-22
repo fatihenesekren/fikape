@@ -289,9 +289,13 @@ export function ExpertNoteForm({ headline }: { headline: string | null }) {
                   setStructured((s) => ({ ...s, [f.key]: e.target.value.slice(0, f.maxLength) }))
                 }
                 rows={2}
+                maxLength={f.maxLength}
                 placeholder={f.placeholder}
                 className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-gray-400 resize-y"
               />
+              <p className={`text-[11px] mt-1 text-right ${(structured[f.key] ?? "").length >= f.maxLength * 0.92 ? "text-orange-400" : "text-gray-400"}`}>
+                {(structured[f.key] ?? "").length}/{f.maxLength}
+              </p>
             </div>
           ))}
         </div>

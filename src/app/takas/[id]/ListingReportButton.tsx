@@ -97,6 +97,9 @@ export function ListingReportButton({ listingId }: { listingId: number }) {
                     placeholder="Örn: Aynı ilan defalarca açılmış, iletişim için site dışına yönlendiriyor."
                     className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-none"
                   />
+                  <p className={`text-right text-[11px] mt-1 ${note.length >= 276 ? "text-orange-400" : "text-gray-400"}`}>
+                    {note.length}/300
+                  </p>
                 </div>
 
                 {error && <p className="text-xs text-red-600">{error}</p>}

@@ -54,16 +54,21 @@ export function EditName({ current }: { current: string }) {
 
   return (
     <div className="flex flex-col gap-1.5">
-      <div className="flex items-center gap-2">
-        <input
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          minLength={3}
-          maxLength={30}
-          pattern="[A-Za-zÇĞİÖŞÜçğıöşü\. \-]+"
-          className="px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-gray-500"
-          autoFocus
-        />
+      <div className="flex items-start gap-2">
+        <div>
+          <input
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            minLength={3}
+            maxLength={30}
+            pattern="[A-Za-zÇĞİÖŞÜçğıöşü\. \-]+"
+            className="px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-gray-500"
+            autoFocus
+          />
+          <p className={`text-right text-[10px] mt-0.5 ${value.length >= 28 ? "text-orange-400" : "text-gray-400"}`}>
+            {value.length}/30
+          </p>
+        </div>
         <button
           onClick={save}
           disabled={loading}

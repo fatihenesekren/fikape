@@ -121,9 +121,13 @@ export function ExpertApplicationForm() {
               type="text"
               value={headline}
               onChange={(e) => setHeadline(e.target.value.slice(0, 120))}
+              maxLength={120}
               placeholder="Örn: 18 yıllık dizel motor ustası · Bursa"
               className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400"
             />
+            <p className={`text-right text-[11px] mt-1 ${headline.length >= 110 ? "text-orange-400" : "text-gray-400"}`}>
+              {headline.length}/120
+            </p>
           </div>
 
           <div>
@@ -194,14 +198,19 @@ export function ExpertApplicationForm() {
               {speech.interimTranscript && (
                 <p className="text-xs text-gray-400 italic px-3 pb-1.5 -mt-1">{speech.interimTranscript}</p>
               )}
-              <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
-                <VoiceInputButton
-                  status={speech.status}
-                  message={speech.status === "error" ? speech.errorMessage : voiceMessage}
-                  onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
-                  onStop={() => speech.stop()}
-                />
-                <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+              <div className="flex items-center justify-between gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
+                <div className="flex items-center gap-2 min-w-0">
+                  <VoiceInputButton
+                    status={speech.status}
+                    message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+                    onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+                    onStop={() => speech.stop()}
+                  />
+                  <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+                </div>
+                <span className={`text-[11px] shrink-0 ${bio.length >= 1840 ? "text-orange-400" : "text-gray-400"}`}>
+                  {bio.length}/2000
+                </span>
               </div>
             </div>
           </div>

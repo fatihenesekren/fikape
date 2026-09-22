@@ -121,6 +121,9 @@ export function DamageStatusForm({
           placeholder="Opsiyonel not (örn. sağ arka çamurluk boyalı, 2023'te)"
           className="mt-1.5 w-full text-xs rounded-lg border border-gray-200 px-2 py-1.5"
         />
+        <p className={`text-right text-[10px] mt-0.5 ${value.damageStatusNote.length >= 276 ? "text-orange-400" : "text-gray-400"}`}>
+          {value.damageStatusNote.length}/300
+        </p>
       </div>
 
       {/* Motor / Şanzıman / Yürüyen Aksam */}
@@ -170,6 +173,9 @@ export function DamageStatusForm({
                 placeholder={c.notePlaceholder}
                 className="w-full text-xs rounded-lg border border-gray-200 px-2 py-1.5"
               />
+              <p className={`text-right text-[10px] ${note.length >= 276 ? "text-orange-400" : "text-gray-400"}`}>
+                {note.length}/300
+              </p>
             </div>
           );
         })}

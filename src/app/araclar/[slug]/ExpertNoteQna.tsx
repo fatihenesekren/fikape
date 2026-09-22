@@ -256,13 +256,18 @@ export function ExpertNoteQna({
                 {isEditingThisQuestion ? (
                   <div>
                     <form onSubmit={(e) => saveQuestionEdit(e, q.id)} className="flex items-start gap-2">
-                      <input
-                        type="text"
-                        value={editQuestionText}
-                        onChange={(e) => setEditQuestionText(e.target.value.slice(0, 300))}
-                        autoFocus
-                        className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
-                      />
+                      <div className="flex-1 min-w-0">
+                        <input
+                          type="text"
+                          value={editQuestionText}
+                          onChange={(e) => setEditQuestionText(e.target.value.slice(0, 300))}
+                          autoFocus
+                          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
+                        />
+                        <p className={`text-right text-[10px] mt-0.5 ${editQuestionText.length >= 276 ? "text-orange-400" : "text-gray-400"}`}>
+                          {editQuestionText.length}/300
+                        </p>
+                      </div>
                       <button
                         type="submit"
                         disabled={editQuestionLoading}
@@ -319,13 +324,18 @@ export function ExpertNoteQna({
                   <div key={a.id} className="pl-3 border-l-2 border-gray-200">
                     {isEditingMyAnswer && a.id === myAnswer!.id ? (
                       <form onSubmit={(e) => submitAnswer(e, q.id)} className="flex items-start gap-2">
-                        <input
-                          type="text"
-                          value={answerText}
-                          onChange={(e) => setAnswerText(e.target.value.slice(0, 500))}
-                          autoFocus
-                          className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
-                        />
+                        <div className="flex-1 min-w-0">
+                          <input
+                            type="text"
+                            value={answerText}
+                            onChange={(e) => setAnswerText(e.target.value.slice(0, 500))}
+                            autoFocus
+                            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
+                          />
+                          <p className={`text-right text-[10px] mt-0.5 ${answerText.length >= 460 ? "text-orange-400" : "text-gray-400"}`}>
+                            {answerText.length}/500
+                          </p>
+                        </div>
                         <button
                           type="submit"
                           disabled={answerLoading}
@@ -400,14 +410,19 @@ export function ExpertNoteQna({
                   <div className="pl-3 border-l-2 border-gray-200">
                     {answeringId === q.id ? (
                       <form onSubmit={(e) => submitAnswer(e, q.id)} className="flex items-start gap-2">
-                        <input
-                          type="text"
-                          value={answerText}
-                          onChange={(e) => setAnswerText(e.target.value.slice(0, 500))}
-                          placeholder="Soruyu cevaplayın…"
-                          autoFocus
-                          className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
-                        />
+                        <div className="flex-1 min-w-0">
+                          <input
+                            type="text"
+                            value={answerText}
+                            onChange={(e) => setAnswerText(e.target.value.slice(0, 500))}
+                            placeholder="Soruyu cevaplayın…"
+                            autoFocus
+                            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
+                          />
+                          <p className={`text-right text-[10px] mt-0.5 ${answerText.length >= 460 ? "text-orange-400" : "text-gray-400"}`}>
+                            {answerText.length}/500
+                          </p>
+                        </div>
                         <button
                           type="submit"
                           disabled={answerLoading}
@@ -462,13 +477,18 @@ export function ExpertNoteQna({
           {!isOwnNote && (
             isLoggedIn ? (
               <form onSubmit={ask} className="flex items-start gap-2">
-                <input
-                  type="text"
-                  value={text}
-                  onChange={(e) => setText(e.target.value.slice(0, 300))}
-                  placeholder={canAnswer ? "Not sahibine bir soru sorun…" : "Bu usta notu hakkında soru sorun…"}
-                  className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400"
-                />
+                <div className="flex-1 min-w-0">
+                  <input
+                    type="text"
+                    value={text}
+                    onChange={(e) => setText(e.target.value.slice(0, 300))}
+                    placeholder={canAnswer ? "Not sahibine bir soru sorun…" : "Bu usta notu hakkında soru sorun…"}
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400"
+                  />
+                  <p className={`text-right text-[10px] mt-0.5 ${text.length >= 276 ? "text-orange-400" : "text-gray-400"}`}>
+                    {text.length}/300
+                  </p>
+                </div>
                 <button
                   type="submit"
                   disabled={loading}

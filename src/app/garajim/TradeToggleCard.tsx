@@ -776,14 +776,19 @@ function TradeFormFields({
             {descSpeech.interimTranscript && (
               <p className="text-xs text-gray-400 italic px-2.5 pb-1.5 -mt-1">{descSpeech.interimTranscript}</p>
             )}
-            <div className="flex items-center gap-2 px-2.5 py-2 bg-gray-50 border-t border-gray-100">
-              <VoiceInputButton
-                status={descSpeech.status}
-                message={descSpeech.status === "error" ? descSpeech.errorMessage : descVoiceMessage}
-                onStart={() => { setDescVoiceMessage(null); descSpeech.start(handleDescriptionVoiceFinalTranscript); }}
-                onStop={() => descSpeech.stop()}
-              />
-              <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+            <div className="flex items-center justify-between gap-2 px-2.5 py-2 bg-gray-50 border-t border-gray-100">
+              <div className="flex items-center gap-2 min-w-0">
+                <VoiceInputButton
+                  status={descSpeech.status}
+                  message={descSpeech.status === "error" ? descSpeech.errorMessage : descVoiceMessage}
+                  onStart={() => { setDescVoiceMessage(null); descSpeech.start(handleDescriptionVoiceFinalTranscript); }}
+                  onStop={() => descSpeech.stop()}
+                />
+                <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+              </div>
+              <span className={`text-[11px] shrink-0 ${description.length >= 1840 ? "text-orange-400" : "text-gray-400"}`}>
+                {description.length}/2000
+              </span>
             </div>
           </div>
         </div>
@@ -1048,7 +1053,7 @@ function TradeFormFields({
           {noteSpeech.interimTranscript && (
             <p className="text-xs text-gray-400 italic px-2.5 pb-1.5 -mt-1">{noteSpeech.interimTranscript}</p>
           )}
-          <div className="flex items-center gap-2 px-2 py-1 bg-gray-50 border-t border-gray-100">
+          <div className="flex items-center justify-between gap-2 px-2 py-1 bg-gray-50 border-t border-gray-100">
             <VoiceInputButton
               compact
               status={noteSpeech.status}
@@ -1056,6 +1061,9 @@ function TradeFormFields({
               onStart={() => { setNoteVoiceMessage(null); noteSpeech.start(handleNoteVoiceFinalTranscript); }}
               onStop={() => noteSpeech.stop()}
             />
+            <span className={`text-[11px] shrink-0 ${note.length >= 276 ? "text-orange-400" : "text-gray-400"}`}>
+              {note.length}/300
+            </span>
           </div>
         </div>
       </FormSection>

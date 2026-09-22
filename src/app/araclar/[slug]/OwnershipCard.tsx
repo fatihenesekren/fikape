@@ -443,6 +443,11 @@ export function OwnershipCard({
               className="w-full px-3 py-2 rounded-xl text-sm border-2 border-gray-200 text-gray-700 focus:outline-none focus:border-gray-400"
             />
           )}
+          {selectedReasons.includes("OTHER") && (
+            <p className={`text-right text-[11px] -mt-1 ${soldReasonNote.length >= 184 ? "text-orange-400" : "text-gray-400"}`}>
+              {soldReasonNote.length}/200
+            </p>
+          )}
 
           <p className="text-sm font-semibold text-gray-800">Nasıl elden çıkardınız?</p>
           <div className="flex flex-wrap gap-2">

@@ -195,9 +195,13 @@ export function ContactSettingsForm({
             type="text"
             value={headline}
             onChange={(e) => setHeadline(e.target.value.slice(0, 120))}
+            maxLength={120}
             placeholder="Örn: 18 yıllık dizel motor ustası · Bursa"
             className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400"
           />
+          <p className={`text-right text-[11px] mt-1 ${headline.length >= 110 ? "text-orange-400" : "text-gray-400"}`}>
+            {headline.length}/120
+          </p>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
@@ -244,14 +248,19 @@ export function ContactSettingsForm({
             {speech.interimTranscript && (
               <p className="text-xs text-gray-400 italic px-3 pb-1.5 -mt-1">{speech.interimTranscript}</p>
             )}
-            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
-              <VoiceInputButton
-                status={speech.status}
-                message={speech.status === "error" ? speech.errorMessage : voiceMessage}
-                onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
-                onStop={() => speech.stop()}
-              />
-              <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+            <div className="flex items-center justify-between gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
+              <div className="flex items-center gap-2 min-w-0">
+                <VoiceInputButton
+                  status={speech.status}
+                  message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+                  onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+                  onStop={() => speech.stop()}
+                />
+                <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+              </div>
+              <span className={`text-[11px] shrink-0 ${bio.length >= 1840 ? "text-orange-400" : "text-gray-400"}`}>
+                {bio.length}/2000
+              </span>
             </div>
           </div>
         </div>
@@ -310,9 +319,13 @@ export function ContactSettingsForm({
                 type="text"
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value.slice(0, 120))}
+                maxLength={120}
                 placeholder="Örn. ABC Rot-Balans"
                 className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400"
               />
+              <p className={`text-right text-[10px] mt-0.5 ${businessName.length >= 110 ? "text-orange-400" : "text-gray-400"}`}>
+                {businessName.length}/120
+              </p>
             </div>
             <div>
               <label htmlFor="usta-phone" className="block text-xs font-semibold text-gray-600 mb-1">Telefon (opsiyonel)</label>
@@ -341,10 +354,14 @@ export function ContactSettingsForm({
                 id="usta-address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value.slice(0, 300))}
+                maxLength={300}
                 rows={3}
                 placeholder="Sokak, apartman/site adı, kapı no vb."
                 className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-400 resize-y"
               />
+              <p className={`text-right text-[11px] mt-0.5 ${address.length >= 276 ? "text-orange-400" : "text-gray-400"}`}>
+                {address.length}/300
+              </p>
             </div>
           </div>
         )}

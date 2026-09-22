@@ -71,8 +71,11 @@ export function TradeRatingForm({ threadId, counterpartName }: { threadId: numbe
         placeholder="Opsiyonel yorum"
         maxLength={300}
         rows={2}
-        className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white mb-2"
+        className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
       />
+      <p className={`text-right text-[11px] mb-1.5 ${comment.length >= 276 ? "text-orange-400" : "text-gray-400"}`}>
+        {comment.length}/300
+      </p>
       {error && <p className="text-xs text-red-600 mb-2">{error}</p>}
       <button
         onClick={submit}

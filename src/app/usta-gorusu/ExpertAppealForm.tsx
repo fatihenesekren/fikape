@@ -70,6 +70,9 @@ export function ExpertAppealForm({ subjectType, noteId, period, existingStatus }
         placeholder="Neden itiraz ettiğinizi kısaca açıklayın…"
         className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-gray-400 resize-y"
       />
+      <p className={`text-right text-[11px] ${reason.length >= 920 ? "text-orange-400" : "text-gray-400"}`}>
+        {reason.length}/1000
+      </p>
       {error && <p className="text-xs text-red-600">{error}</p>}
       <div className="flex items-center gap-2">
         <button type="submit" disabled={loading} className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white disabled:opacity-50" style={{ background: "var(--btn-dark)" }}>
