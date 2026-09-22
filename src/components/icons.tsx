@@ -34,6 +34,21 @@ export function IdCardIcon({ size = 18, className = "" }: IconProps) {
   );
 }
 
+// Site genelinde "Paylaş" için tek kaynak ikon — önceden dosyaya göre
+// "↗" veya "🔗" emoji karışık kullanılıyordu (tutarsız, "↗" paylaşımdan çok
+// "harici sayfaya git" çağrıştırıyordu, bkz. kullanıcı geri bildirimi).
+export function ShareIcon({ size = 14, className = "" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <circle cx="18" cy="5" r="3" />
+      <circle cx="6" cy="12" r="3" />
+      <circle cx="18" cy="19" r="3" />
+      <line x1="8.6" y1="13.5" x2="15.4" y2="17.5" />
+      <line x1="15.4" y1="6.5" x2="8.6" y2="10.5" />
+    </svg>
+  );
+}
+
 export function ClipboardIcon({ size = 20, className = "" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">

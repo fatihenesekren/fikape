@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Avatar } from "@/components/Avatar";
+import { ShareIcon } from "@/components/icons";
 import { FikapeScore } from "@/components/FikapeScore";
 import { ReviewHelpfulButtons } from "@/components/ReviewHelpfulButtons";
 import { DeleteReviewButton } from "@/components/DeleteReviewButton";
@@ -275,9 +276,9 @@ export function ReviewCard({
         <div className="pt-2 border-t border-gray-50 flex items-center gap-4">
           <Link
             href={`/yorumum/${reviewId}/paylas`}
-            className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
           >
-            ↗ Paylaş
+            <ShareIcon size={12} /> Paylaş
           </Link>
           <Link
             href={`/yorumum/${reviewId}/duzenle`}

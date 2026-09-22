@@ -13,6 +13,7 @@ import { calcOverall } from "@/lib/fikape";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { TRUST_PROFILE } from "@/lib/trustBadge";
 import { DeleteReviewButton } from "@/components/DeleteReviewButton";
+import { ShareIcon } from "@/components/icons";
 import { InviteBox } from "./InviteBox";
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 import { stripModelGenRange } from "@/lib/modelDisplay";
@@ -373,9 +374,9 @@ export default async function ProfilPage() {
                       {r.status === "PUBLISHED" && (
                         <Link
                           href={`/yorumum/${r.id}/paylas`}
-                          className="text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors"
                         >
-                          ↗ Paylaş
+                          <ShareIcon size={12} /> Paylaş
                         </Link>
                       )}
                       <Link
