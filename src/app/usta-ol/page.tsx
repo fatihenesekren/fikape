@@ -11,7 +11,7 @@ import type { Metadata } from "next";
 // SSS native <details>/<summary> akordiyonu, "Bilmeniz gerekenler" içeriği
 // SSS'e dağıtıldı + CTA'dan hemen önceki caydırıcı konumdan kaldırıldı.
 export const metadata: Metadata = {
-  title: "Usta Ol, Ücretsiz İlan Ver — Oto Tamircisi Profili",
+  title: "Araç Tamircisiyseniz Ücretsiz İlan Verin — fikape Usta Profili",
   description:
     "Araç tamiri/bakımı konusunda deneyimliyseniz fikape'de ücretsiz usta profili oluşturun, teknik bilginizi paylaşın. Sertifika şartı yok.",
   openGraph: {

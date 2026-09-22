@@ -12,7 +12,7 @@ const PLATFORM_MAP = [
   { title: "Araç ara, yorum yaz", body: "Binlerce araç arasından ara, kendi deneyimini FI·KA·PE puanıyla paylaş.", href: "/araclar" },
   { title: "Garajına ekle", body: "Sahip olduğun/olduğun araçları garajına ekle, sahiplik geçmişini tut.", href: "/garajim" },
   { title: "Takasa çıkar", body: "Aracını takasa aç, ilgilenen kullanıcılarla platform içi mesajlaş.", href: "/takas" },
-  { title: "Usta görüşü oku", body: "Deneyimli ustaların model bazlı teknik notlarını incele, istersen kendin usta ol.", href: "/usta-ol" },
+  { title: "Usta görüşü oku", body: "Deneyimli ustaların model bazlı teknik notlarını incele, sen de ustaysan görüşünü paylaş.", href: "/usta-ol" },
   { title: "Karşılaştır", body: "Birden fazla aracı yan yana, puan bazında karşılaştır.", href: "/karsilastir" },
 ] as const;
 
@@ -109,7 +109,7 @@ export default function NasilCalisirPage() {
             </p>
           </div>
           <p className="mt-2 text-sm text-gray-500">
-            Usta olmak veya usta görüşlerine göz atmak için{" "}
+            Usta iseniz katkı sağlamak veya usta görüşlerine göz atmak için{" "}
             <Link href="/usta-ol" className="text-link hover:underline">Usta Görüşleri hakkında bilgi alın →</Link>
           </p>
         </section>
