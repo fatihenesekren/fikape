@@ -119,7 +119,7 @@ export default function GizlilikPage() {
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Aktif hesap verileri: Hesabınız açık olduğu sürece</li>
             <li>Yorumlar ve puanlar: Hesap silme talebinize kadar</li>
-            <li>Oturum verileri: Oturumun kapanmasından itibaren en fazla 30 gün</li>
+            <li>Oturum verileri: Son girişten itibaren en fazla 14 gün pasif kalırsa oturum sona erer</li>
             <li>Trafik bilgisi (5651 sayılı Kanun): Kayıt tarihinden itibaren 2 yıl,
             sonrasında otomatik olarak silinir</li>
             <li>Takas mesajlaşması: İlan kapandıktan 6 ay sonra mesaj içeriği anonimleştirilir</li>
