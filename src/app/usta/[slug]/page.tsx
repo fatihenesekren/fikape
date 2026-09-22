@@ -11,7 +11,7 @@ import { ContactFeedbackWidget } from "./ContactFeedbackWidget";
 import { Avatar } from "@/components/Avatar";
 import { toTelHref } from "@/lib/phone";
 import { WorkplacePhotoSlider } from "./WorkplacePhotoSlider";
-import { GearIcon } from "@/components/icons";
+import { GearIcon, ShareIcon } from "@/components/icons";
 
 // "Eylül 2026'dan beri kayıtlı" gibi bir ifadede ek, yılın son iki
 // hanesinin Türkçe okunuşundaki SON kelimeye göre uyum sağlar (ay değil —
@@ -218,7 +218,7 @@ export default async function ExpertProfilePage({
               {EXPERT_BADGE.icon}
             </span>
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 flex-wrap">
               <h1 className="text-xl font-bold text-gray-900">{profile.headline}</h1>
               <span
@@ -234,6 +234,17 @@ export default async function ExpertProfilePage({
               {profile.city && ` · ${profile.city}`}
             </p>
           </div>
+          {/* Ziyaretçi beğendiği bir ustayı arkadaşına önerebilsin diye —
+              görsel bir "usta kartı" story sayfasına gider (bkz. kullanıcı
+              isteği), sahiplik/giriş gerekmez, bu yüzden isOwnProfile'a
+              bağlı değil. */}
+          <Link
+            href={`/usta/${slug}/paylas`}
+            aria-label="Bu usta profilini paylaş"
+            className="shrink-0 w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-700 hover:border-gray-300 transition-colors"
+          >
+            <ShareIcon size={15} />
+          </Link>
         </div>
         <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3.5 pt-3 border-t border-gray-50 text-xs text-gray-500">
           <span className="inline-flex items-center gap-1.5">
