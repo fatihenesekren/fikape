@@ -815,6 +815,8 @@ enum ConsentType {
   MARKETING_EMAIL // Pazarlama e-postası (şu an hiçbir akışta kullanılmıyor — altyapı hazır)
   ANALYTICS_COOKIES // Analitik çerezler
   TRADE_LISTING // Takas ilanı açarken il/iletişim verisinin diğer kullanıcılara gösterilmesine rıza
+  INSURANCE_LEAD // Garaj'dan sigorta teklifi talebinde telefonun ileride ortak sigorta şirketiyle paylaşılabilmesine rıza
+  SALE_LEAD // "Sattım" formunda ekspertiz/hızlı teklif talebinde telefonun ileride ortak firmayla paylaşılabilmesine rıza
 
   // ── USTA GÖRÜŞLERİ — granüler açık rızalar (birbirinden bağımsız) ──
   EXPERT_DOC_VERIFICATION // (a) belge/vergi levhası doğrulama amacıyla işleme

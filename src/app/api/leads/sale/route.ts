@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { saleLeadSchema, formatZodError } from "@/lib/schemas";
 import { notifyAdmins } from "@/lib/notification";
+import { hashRequestContext } from "@/lib/security";
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -33,6 +34,19 @@ export async function POST(req: Request) {
   const lead = await prisma.saleLead.create({
     data: { userId, productId, type, fullName, phone },
   });
+
+  // KVKK açık rıza kaydı — telefonun ileride ortak ekspertiz/alım firmasıyla
+  // paylaşılabilmesine onay (bkz. backlog_kvkk_aydinlatma_ayri_onay memory)
+  const { ipHash, userAgentHash } = hashRequestContext(req);
+  await prisma.consentLog.create({
+    data: {
+      userId,
+      consentType: "SALE_LEAD",
+      isGranted: true,
+      ipAddress: ipHash,
+      userAgent: userAgentHash,
+    },
+  }).catch(() => {});
 
   notifyAdmins({
     type: "ADMIN_NEW_LEAD",

@@ -22,6 +22,7 @@ export function InsuranceLeadCard({
   const [expanded, setExpanded] = useState(false);
   const [fullName, setFullName] = useState(defaultFullName);
   const [phone, setPhone] = useState("");
+  const [consentGiven, setConsentGiven] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(alreadySubmitted);
   const [error, setError] = useState<string | null>(null);
@@ -79,12 +80,16 @@ export function InsuranceLeadCard({
       setError("Ad soyad ve geçerli bir telefon numarası giriniz.");
       return;
     }
+    if (!consentGiven) {
+      setError("Devam etmek için onay kutusunu işaretlemelisiniz.");
+      return;
+    }
     setSubmitting(true);
     try {
       const res = await fetch("/api/leads/insurance", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId, fullName, phone }),
+        body: JSON.stringify({ productId, fullName, phone, consentGiven }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -138,13 +143,25 @@ export function InsuranceLeadCard({
         />
         <button
           onClick={submit}
-          disabled={submitting}
+          disabled={submitting || !consentGiven}
           className="text-sm font-semibold px-3 py-1.5 rounded-lg text-white shrink-0 disabled:opacity-60"
           style={{ background: "#92400e" }}
         >
           {submitting ? "Gönderiliyor..." : "Bilgimi Bırak"}
         </button>
       </div>
+      <label className="flex items-start gap-1.5 mt-2 text-[11px] text-amber-700">
+        <input
+          type="checkbox"
+          checked={consentGiven}
+          onChange={(e) => setConsentGiven(e.target.checked)}
+          className="mt-0.5 shrink-0"
+        />
+        <span>
+          Ad soyad ve telefon numaramın, ileride bir sigorta partneri aktifleştiğinde teklif almam
+          amacıyla o partnerle paylaşılabilmesine onay veriyorum.
+        </span>
+      </label>
       {error && <p className="text-xs text-red-600 mt-1.5">{error}</p>}
     </div>
   );
