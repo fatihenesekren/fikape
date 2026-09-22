@@ -40,6 +40,13 @@ async function avatarDataUrl(url: string | null): Promise<string | null> {
   return `data:${resized.contentType};base64,${resized.buffer.toString("base64")}`;
 }
 
+// Satori (next/og) `-webkit-line-clamp`'i desteklemiyor — "…" ile kelime
+// sınırında elle kırpıyoruz (bkz. 3 uzman denetimi, 2026-09-22).
+function truncateAtWord(text: string, maxChars: number): string {
+  if (text.length <= maxChars) return text;
+  return text.slice(0, maxChars).replace(/\s+\S*$/, "") + "…";
+}
+
 function getProfile(slug: string) {
   return prisma.expertProfile.findUnique({
     where: { slug },
@@ -52,6 +59,17 @@ function getProfile(slug: string) {
       status: true,
       user: { select: { id: true, displayName: true, avatarUrl: true } },
       _count: { select: { notes: { where: { status: "PUBLISHED", removedAt: null } } } },
+      // Kart "çok sığ" duruyordu (bkz. kullanıcı geri bildirimi) — en son
+      // yayınlanan notun kısa bir kesiti "Devamını oku" tarzı bir çekim
+      // noktası olsun diye eklendi. Basit ve performanslı: en son yayınlanan
+      // (publishedAt indexli), popülerlik/oy sıralaması ek karmaşıklık
+      // gerektiriyordu.
+      notes: {
+        where: { status: "PUBLISHED", removedAt: null },
+        orderBy: { publishedAt: "desc" },
+        take: 1,
+        select: { title: true, body: true },
+      },
     },
   });
 }
@@ -81,6 +99,8 @@ async function renderCard(slug: string, profile: NonNullable<Awaited<ReturnType<
   const location = [profile.city, profile.district].filter(Boolean).join(" / ");
   const memberSince = profile.createdAt.toLocaleDateString("tr-TR", { month: "long", year: "numeric" });
   const tags = profile.expertiseTags.slice(0, 5);
+  const latestNote = profile.notes[0] ?? null;
+  const noteExcerpt = latestNote ? truncateAtWord(latestNote.body.trim(), 150) : null;
 
   const profileUrl = `${BASE_URL}/usta/${slug}`;
   const qrDataUrl = await QRCode.toDataURL(profileUrl, {
@@ -97,14 +117,48 @@ async function renderCard(slug: string, profile: NonNullable<Awaited<ReturnType<
     (
       <div
         style={{
-          background: "#111",
+          background: `radial-gradient(circle at 15% 0%, ${EXPERT_BADGE.color}33 0%, #111 45%)`,
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           padding: "90px 70px",
+          position: "relative",
         }}
       >
+        {/* Dev, soluk halka motifi — tamamen düz siyah zemin "boş/sıkıcı"
+            duruyordu (bkz. görsel tasarım denetimi, 2026-09-22). */}
+        <div
+          style={{
+            display: "flex",
+            position: "absolute",
+            top: -180,
+            right: -220,
+            width: 760,
+            height: 760,
+          }}
+        >
+          {[
+            { c: FIKAPE_SOFT.fi, r: 0 },
+            { c: FIKAPE_SOFT.pe, r: 120 },
+            { c: FIKAPE_SOFT.ka, r: 240 },
+          ].map(({ c, r }) => (
+            <div
+              key={r}
+              style={{
+                position: "absolute",
+                width: 760,
+                height: 760,
+                borderRadius: 760,
+                border: "36px solid transparent",
+                borderTopColor: c,
+                opacity: 0.07,
+                transform: `rotate(${r}deg)`,
+              }}
+            />
+          ))}
+        </div>
+
         {/* Logo — segmentli halka işareti + wordmark (review kartıyla aynı) */}
         <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
           <div style={{ display: "flex", position: "relative", width: 54, height: 54 }}>
@@ -137,28 +191,28 @@ async function renderCard(slug: string, profile: NonNullable<Awaited<ReturnType<
         </div>
 
         {/* Avatar + rozet */}
-        <div style={{ display: "flex", marginTop: 90 }}>
-          <div style={{ display: "flex", position: "relative", width: 180, height: 180 }}>
+        <div style={{ display: "flex", marginTop: 70 }}>
+          <div style={{ display: "flex", position: "relative", width: 230, height: 230 }}>
             {avatarUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={avatarUrl}
                 alt=""
-                width={180}
-                height={180}
+                width={230}
+                height={230}
                 style={{ borderRadius: "50%", objectFit: "cover" }}
               />
             ) : (
               <div
                 style={{
                   display: "flex",
-                  width: 180,
-                  height: 180,
+                  width: 230,
+                  height: 230,
                   borderRadius: "50%",
                   background: avatarColor,
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: 64,
+                  fontSize: 80,
                   fontWeight: 900,
                   color: "#fff",
                 }}
@@ -172,14 +226,14 @@ async function renderCard(slug: string, profile: NonNullable<Awaited<ReturnType<
                 position: "absolute",
                 bottom: -6,
                 right: -6,
-                width: 60,
-                height: 60,
+                width: 72,
+                height: 72,
                 borderRadius: "50%",
                 background: "#111",
-                border: `5px solid ${EXPERT_BADGE.color}`,
+                border: `6px solid ${EXPERT_BADGE.color}`,
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 28,
+                fontSize: 34,
               }}
             >
               {EXPERT_BADGE.icon}
@@ -249,6 +303,36 @@ async function renderCard(slug: string, profile: NonNullable<Awaited<ReturnType<
             {profile._count.notes} usta görüşü · {memberSince}&apos;den beri kayıtlı
           </span>
         </div>
+
+        {/* Not kesiti — kartın "sığ" durmasının asıl sebebi buydu (bkz.
+            kullanıcı geri bildirimi): sadece profil bilgisi, gerçek bir
+            içerik yoktu. En son yayınlanan usta notundan kısa bir alıntı +
+            "Devamını oku" çağrısı, merak uyandırıp fikape'ye çekiyor. */}
+        {noteExcerpt && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginTop: 64,
+              borderLeft: `5px solid ${EXPERT_BADGE.color}`,
+              paddingLeft: 30,
+              gap: 14,
+            }}
+          >
+            <span style={{ fontSize: 24, fontWeight: 700, color: "#888", textTransform: "uppercase", letterSpacing: "1.5px" }}>
+              Bir usta notundan
+            </span>
+            <span style={{ fontSize: 34, fontWeight: 900, color: "#fff", lineHeight: 1.3 }}>
+              {latestNote!.title}
+            </span>
+            <span style={{ fontSize: 28, color: "#bbb", lineHeight: 1.5 }}>
+              {noteExcerpt}
+            </span>
+            <span style={{ fontSize: 26, fontWeight: 700, color: FIKAPE_SOFT.fi, marginTop: 6 }}>
+              Devamını fikape&apos;de oku →
+            </span>
+          </div>
+        )}
 
         {/* Spacer */}
         <div style={{ display: "flex", flex: 1 }} />
