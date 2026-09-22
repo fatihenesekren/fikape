@@ -1071,7 +1071,7 @@ model PlusWaitlistEntry {
   userId Int?
   user   User?   @relation(fields: [userId], references: [id])
   email  String  @db.VarChar(255)
-  note   String? @db.VarChar(280)
+  note   String? @db.VarChar(500)
 
   createdAt DateTime @default(now())
 

@@ -184,7 +184,7 @@ export const saleLeadSchema = z.object({
 
 export const plusWaitlistSchema = z.object({
   email: z.string().trim().min(1, "E-posta zorunludur.").email("Geçerli bir e-posta adresi giriniz."),
-  note:  z.string().trim().max(280).optional().nullable(),
+  note:  z.string().trim().max(500).optional().nullable(),
 });
 
 // Boyalı/Değişen Parça — partKey'ler sabit bir whitelist'ten gelir (CAR_PARTS),
