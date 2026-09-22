@@ -13,7 +13,7 @@ const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const size = { width: 220, height: 64 };
 
 export async function GET(req: Request, { params }: { params: Promise<{ slug: string }> }) {
-  if (!rateLimitByIp(req, "public-skor-badge", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS)) {
+  if (!(await rateLimitByIp(req, "public-skor-badge", RATE_LIMIT_COUNT, RATE_LIMIT_WINDOW_MS))) {
     return new Response("Çok fazla istek", { status: 429 });
   }
 
