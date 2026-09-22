@@ -325,6 +325,14 @@ export const threadCreateSchema = messageCreateSchema.extend({
   initiatorListingId: z.union([z.number(), z.string()]).optional().nullable(),
 });
 
+// Devam eden bir görüşmedeki YANIT mesajları — ilk temas mesajından (1000kk,
+// kendini/durumu tanıtmak için daha fazla yere ihtiyaç olabilir) kasıtlı
+// olarak daha kısa: sohbet balonlarının okunabilir kalması için (bkz.
+// kullanıcı geri bildirimi, 2026-09-22).
+export const messageReplySchema = z.object({
+  text: z.string().trim().min(1, "Mesaj boş olamaz.").max(500, "En fazla 500 karakter yazabilirsiniz."),
+});
+
 export const tradeRatingSchema = z.object({
   score:   z.number().int().min(1, "Puan 1-5 arasında olmalıdır.").max(5, "Puan 1-5 arasında olmalıdır."),
   comment: z.string().trim().max(300).optional().nullable(),

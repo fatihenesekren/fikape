@@ -86,6 +86,7 @@ export function ExpertMessageComposer({ expertProfileId }: { expertProfileId: nu
           value={text}
           onChange={(e) => setText(e.target.value.slice(0, 1000))}
           rows={3}
+          maxLength={1000}
           placeholder="Mesajınızı yazın — telefon/e-posta paylaşmanıza gerek yok."
           className="w-full text-sm px-3 py-2.5 border-0 block resize-y focus:outline-none"
         />

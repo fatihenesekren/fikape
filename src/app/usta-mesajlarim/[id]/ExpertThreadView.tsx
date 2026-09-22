@@ -71,7 +71,7 @@ export function ExpertThreadView({
   const speech = useSpeechToText();
 
   function handleVoiceFinalTranscript(chunk: string) {
-    const { text: next, truncated } = applyTextWithLimit(textRef.current, chunk, 1000);
+    const { text: next, truncated } = applyTextWithLimit(textRef.current, chunk, 500);
     textRef.current = next;
     setText(next);
     requestAnimationFrame(autoGrow);
@@ -251,9 +251,10 @@ export function ExpertThreadView({
                 <textarea
                   ref={taRef}
                   value={text}
-                  onChange={(e) => { setText(e.target.value.slice(0, 1000)); autoGrow(); }}
+                  onChange={(e) => { setText(e.target.value.slice(0, 500)); autoGrow(); }}
                   placeholder="Mesajınızı yazınız…"
                   rows={1}
+                  maxLength={500}
                   className="w-full text-sm px-3 py-2 resize-none border-0 block focus:outline-none"
                 />
                 {speech.interimTranscript && (

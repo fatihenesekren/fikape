@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { messageCreateSchema, formatZodError } from "@/lib/schemas";
+import { messageReplySchema, formatZodError } from "@/lib/schemas";
 import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { checkRateLimit } from "@/lib/rateLimit";
@@ -76,7 +76,7 @@ export async function POST(
     return NextResponse.json({ error: "Bu ilan artık takasa açık değil, mesaj gönderemezsiniz." }, { status: 403 });
   }
 
-  const parsed = messageCreateSchema.safeParse(await req.json().catch(() => ({})));
+  const parsed = messageReplySchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }

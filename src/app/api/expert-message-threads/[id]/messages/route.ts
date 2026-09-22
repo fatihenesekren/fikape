@@ -3,7 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
-import { messageCreateSchema, formatZodError } from "@/lib/schemas";
+import { messageReplySchema, formatZodError } from "@/lib/schemas";
 import { createNotification } from "@/lib/notification";
 
 // Var olan thread'e yanıt — iki taraftan da (mesajı başlatan kullanıcı veya usta) gelebilir.
@@ -18,7 +18,7 @@ export async function POST(
   const threadId = parseInt(id);
   if (isNaN(threadId)) return NextResponse.json({ error: "Geçersiz görüşme." }, { status: 400 });
 
-  const parsed = messageCreateSchema.safeParse(await req.json().catch(() => null));
+  const parsed = messageReplySchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   const { text } = parsed.data;
 
