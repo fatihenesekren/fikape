@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 
 const BENEFITS = [
   { tint: "var(--fi-bg)", dot: "var(--fi-strong)", title: "Kendi tanıtım sayfanız", body: "Uzmanlık alanlarınız, yazdığınız notlar, isterseniz iletişim bilgileriniz tek sayfada." },
+  { tint: "var(--pe-bg)", dot: "var(--pe-strong)", title: "Paylaşılabilir profil kartı", body: "Profiliniz otomatik olarak görsel bir kart haline gelir — WhatsApp'ta, sosyal medyada veya işletmenizde kullanabilirsiniz." },
   { tint: "var(--ka-bg)", dot: "var(--ka-strong)", title: "Görünürlük", body: "Yazdığınız not, o modele bakan her kullanıcının karşısına çıkar; bulunduğunuz ildeki araç sahiplerine ulaşırsınız." },
   { tint: "var(--pe-bg)", dot: "var(--pe-strong)", title: "İsteğe bağlı iletişim", body: "Telefon/iş yeri adresinizi paylaşmayı seçerseniz, ilk notunuz yayınlandıktan sonra size ulaşmak isteyenler bunu görebilir." },
   { tint: "var(--fi-bg)", dot: "var(--fi-strong)", title: "Şu an için ücretsiz", body: "fikape bu özellik için sizden ücret almaz." },
