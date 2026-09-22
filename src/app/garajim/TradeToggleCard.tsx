@@ -1048,14 +1048,14 @@ function TradeFormFields({
           {noteSpeech.interimTranscript && (
             <p className="text-xs text-gray-400 italic px-2.5 pb-1.5 -mt-1">{noteSpeech.interimTranscript}</p>
           )}
-          <div className="flex items-center gap-2 px-2.5 py-2 bg-gray-50 border-t border-gray-100">
+          <div className="flex items-center gap-2 px-2 py-1 bg-gray-50 border-t border-gray-100">
             <VoiceInputButton
+              compact
               status={noteSpeech.status}
               message={noteSpeech.status === "error" ? noteSpeech.errorMessage : noteVoiceMessage}
               onStart={() => { setNoteVoiceMessage(null); noteSpeech.start(handleNoteVoiceFinalTranscript); }}
               onStop={() => noteSpeech.stop()}
             />
-            <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
           </div>
         </div>
       </FormSection>

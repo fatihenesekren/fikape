@@ -259,14 +259,14 @@ export function ExpertThreadView({
                 {speech.interimTranscript && (
                   <p className="text-xs text-gray-400 italic px-3 pb-1.5 -mt-1">{speech.interimTranscript}</p>
                 )}
-                <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
+                <div className="flex items-center gap-2 px-2 py-1 bg-gray-50 border-t border-gray-100">
                   <VoiceInputButton
+                    compact
                     status={speech.status}
                     message={speech.status === "error" ? speech.errorMessage : voiceMessage}
                     onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
                     onStop={() => speech.stop()}
                   />
-                  <span className="text-xs text-gray-400">Sesli giriş</span>
                 </div>
               </div>
               <button
