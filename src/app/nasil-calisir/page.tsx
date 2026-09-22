@@ -52,14 +52,19 @@ export default function NasilCalisirPage() {
           <p className="mb-2">Her kullanıcının profilinde şu seviyelerden biri gösterilir:</p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li><strong>Üye</strong> — kayıt olmuş, henüz e-posta doğrulamamış.</li>
-            <li><strong>✉️ Doğrulanmış</strong> — e-posta adresi doğrulanmış.</li>
-            <li><strong>📸 Fotoğraf Doğrulamalı</strong> — yorumuna eklediği fotoğraf admin tarafından onaylanmış.</li>
-            <li><strong>⚙️ Admin</strong> — fikape ekibi.</li>
+            <li><strong><span aria-hidden="true">✉️</span> Doğrulanmış</strong> — e-posta adresi doğrulanmış.</li>
+            <li><strong><span aria-hidden="true">📸</span> Fotoğraf Doğrulamalı</strong> — yorumuna eklediği fotoğraf admin tarafından onaylanmış.</li>
+            <li><strong><span aria-hidden="true">⚙️</span> Admin</strong> — fikape ekibi.</li>
           </ul>
           <p className="mt-2">
             Ayrıca her yorumun arkasında, kullanıcının güven seviyesi ve Garaj&apos;daki gerçek sahiplik kaydıyla
             tutarlılığına dayanan dahili bir güven sinyali hesaplanır. Bu sinyal okuyucuya gösterilmez;
             amacı moderasyon ekibine ve gelecekteki sıralama iyileştirmelerine yardımcı olmaktır.
+          </p>
+          <p className="mt-2">
+            <strong>Usta</strong> rozeti bunlardan tamamen ayrı bir eksendir — bir kullanıcının hesap
+            güven seviyesini değil, Usta Görüşleri bölümüne başvurup kabul edilmiş bir katkıcı
+            olduğunu gösterir. Usta notları FI·KA·PE puanını etkilemez ve sıralamada yer değiştirmez.
           </p>
         </section>
 

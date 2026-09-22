@@ -1,14 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BASE_URL } from "@/lib/baseUrl";
 
 export const metadata: Metadata = {
   title: "Gizlilik Politikası",
-  description: "fikape.com gizlilik politikası ve kişisel verilerin korunması hakkında bilgi.",
+  description:
+    "fikape.com'da hangi kişisel verilerin toplandığı, nasıl kullanıldığı, ne kadar saklandığı, hangi üçüncü taraf hizmetlerle paylaşıldığı ve KVKK kapsamındaki haklarınız.",
+};
+
+const webPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Gizlilik Politikası",
+  url: `${BASE_URL}/gizlilik`,
+  dateModified: "2026-09-01",
+  isPartOf: { "@type": "WebSite", name: "fikape", url: BASE_URL },
 };
 
 export default function GizlilikPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       <div className="mb-8">
         <Link href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
           ← Ana sayfaya dön
@@ -16,7 +32,7 @@ export default function GizlilikPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Gizlilik Politikası</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ağustos 2026</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Eylül 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -46,6 +62,8 @@ export default function GizlilikPage() {
             işlemlerde IP adresiniz, erişim zamanı ve yapılan işlem şifreli olarak
             kaydedilir; yalnızca yetkili adli/idari merci talebi halinde çözülür</li>
             <li><strong>Onay kayıtları:</strong> KVKK kapsamında verdiğiniz açık rızalar</li>
+            <li><strong>Plus ilgi oyları:</strong> Fikape Plus sayfasındaki yol haritası fikirlerinden
+            hangilerine &quot;ilgileniyorum&quot; işareti koyduğunuz — giriş yapmış üye olarak</li>
             <li><strong>Takas ilanı bilgileri:</strong> İliniz, aracınızın markası/modeli, istediğiniz araç
             kategorisi/markası, aradığınız aracın konum ve hasar durumu beklentisi, ödeme niyeti, opsiyonel
             not ve açıklama — takas ilanı açtığınızda</li>
@@ -73,7 +91,7 @@ export default function GizlilikPage() {
           <p className="mb-2">Toplanan veriler aşağıdaki amaçlarla işlenmektedir:</p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Hesabınızın oluşturulması ve güvenliğinin sağlanması</li>
-            <li>E-posta doğrulama ve &quot;doğrulanmış kullanıcı&quot; rozetinin verilmesi</li>
+            <li>E-posta doğrulama ve &quot;Doğrulanmış Kullanıcı&quot; rozetinin verilmesi</li>
             <li>Yorumlarınızın platform üzerinde yayımlanması</li>
             <li>Spam ve sahte yorum tespiti ile içerik moderasyonu</li>
             <li>Platform kalitesinin iyileştirilmesi ve hataların giderilmesi</li>
@@ -128,6 +146,12 @@ export default function GizlilikPage() {
             konuşmanız tarayıcınızın konuşma tanıma servisine (ör. Google) iletilir ve anlık olarak
             metne çevrilir. Bu ses verisi Platform&apos;a kaydedilmez veya saklanmaz; ilgili servis
             kendi gizlilik politikası kapsamında hareket eder.
+          </p>
+          <p className="mt-3 text-sm text-gray-500">
+            <strong>Google Gemini AI:</strong> Bazı araçlar için kullanıcı yorumlarının özetlenmesi
+            (AI Araç Özeti) ve teknik özelliklerin otomatik doldurulması amacıyla ilgili metin verisi
+            Google&apos;ın Gemini API&apos;sine gönderilir; bu servis kendi gizlilik politikası
+            kapsamında hareket eder.
           </p>
         </section>
 
@@ -186,7 +210,7 @@ export default function GizlilikPage() {
             moderasyon ekibi tarafından incelenir.
           </p>
           <p className="mb-2">
-            İlan &quot;takas oldu&quot; şeklinde kapandıktan sonra, görüşmenin tarafları birbirine 1-5 yıldız
+            İlan &quot;Takas oldu&quot; şeklinde kapandıktan sonra, görüşmenin tarafları birbirine 1-5 yıldız
             puanı ve opsiyonel yorum verebilir; bu değerlendirme ilgili takas ilanı üzerinden diğer
             kullanıcılara gösterilir.
           </p>

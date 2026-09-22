@@ -1,14 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BASE_URL } from "@/lib/baseUrl";
 
 export const metadata: Metadata = {
   title: "Üyelik Sözleşmesi",
-  description: "fikape.com üyelik sözleşmesi — tarafların hak ve yükümlülükleri.",
+  description:
+    "fikape.com ile üye arasındaki üyelik ilişkisini düzenleyen bağlayıcı sözleşme: üyelik şartları, yükümlülükler, platformun sorumluluk sınırları ve hesap sonlandırma koşulları.",
+};
+
+const webPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Üyelik Sözleşmesi",
+  url: `${BASE_URL}/uyelik-sozlesmesi`,
+  dateModified: "2026-09-22",
+  isPartOf: { "@type": "WebSite", name: "fikape", url: BASE_URL },
 };
 
 export default function UyelikSozlesmesiPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       <div className="mb-8">
         <Link href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
           ← Ana sayfaya dön
@@ -45,9 +61,10 @@ export default function UyelikSozlesmesiPage() {
             birbirleriyle platform içi mesajlaşma yoluyla iletişim kurabildiği hizmet.</li>
             <li><strong>Usta Görüşleri:</strong> Deneyimli kişilerin araç modelleri hakkında teknik bilgi
             paylaştığı, kendi beyanına dayalı bölüm.</li>
-            <li><strong>Fikape Plus:</strong> Platform&apos;un gelişmiş filtre ve kayıtlı arama gibi ek
-            özellikler sunmayı planladığı, şu an bekleme listesi (waitlist) aşamasında olan ve
-            herhangi bir ücret talep edilmeyen hizmet.</li>
+            <li><strong>Fikape Plus:</strong> Giriş yapmış üyelerin, Platform&apos;un gelecekteki
+            yönünü (mevcut özelliklerin geliştirilmesi, yapay zekâ destekli fikirler ve uzun
+            vadeli öneriler dahil) hangi fikirlere ilgi göstererek şekillendirdiği, ücretli bir
+            katman olmayan yol haritası bölümü.</li>
           </ul>
         </section>
 
@@ -55,8 +72,8 @@ export default function UyelikSozlesmesiPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-3">3. Üyeliğin Kapsamı ve Şartları</h2>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Platform&apos;a üye olabilmek için 18 yaşını doldurmuş, fiil ehliyetine sahip bir gerçek
-            kişi olmanız gerekir. 18 yaşından küçükseniz Platform&apos;a üye olamaz ve hizmetlerden
-            yararlanamazsınız.</li>
+            kişi olmanız gerekir. 18 yaşından küçükseniz Platform&apos;a üye olamazsınız ve
+            hizmetlerden yararlanamazsınız.</li>
             <li>Üyelik başvurusu, kayıt formunda istenen bilgilerin (e-posta, görünen ad, şifre) eksiksiz
             ve doğru şekilde girilmesiyle tamamlanır.</li>
             <li>Her gerçek kişi yalnızca bir üyelik hesabı oluşturabilir; aynı kişiye ait çoklu hesap
@@ -158,8 +175,8 @@ export default function UyelikSozlesmesiPage() {
           <p>
             İşbu Sözleşme&apos;nin yürürlüğe girdiği tarih itibarıyla Platform&apos;un tüm hizmetleri
             (yorum/puan paylaşımı, garaj yönetimi, Takas Pazarı, Usta Görüşleri dahil) <strong>ücretsizdir</strong>.
-            Fikape Plus adıyla duyurulan gelişmiş filtre ve kayıtlı arama özellikleri şu an yalnızca bir
-            bekleme listesi (waitlist) aşamasındadır ve herhangi bir ücret talep edilmemektedir. Platform,
+            Fikape Plus, üyelerin Platform&apos;un gelecekteki yönüne dair fikirlere oy verdiği ücretsiz bir
+            yol haritası bölümüdür; şu an ücretli bir hizmet sunulmamaktadır. Platform,
             ileride ücretli bir hizmet modeli sunmayı planlaması halinde, bu değişikliği yürürlüğe
             girmeden makul bir süre önce kayıtlı e-posta adresinize ve/veya Platform üzerinden açıkça
             duyuracak; ücretli bir hizmete geçiş, Üye&apos;nin açık onayı olmaksızın mevcut ücretsiz

@@ -1,14 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BASE_URL } from "@/lib/baseUrl";
 
 export const metadata: Metadata = {
   title: "Kullanım Koşulları",
-  description: "fikape.com kullanım koşulları ve hizmet şartları.",
+  description:
+    "fikape.com'u kullanırken uymanız gereken kurallar: hesap oluşturma, yorum/içerik kuralları, Takas Pazarı ve Usta Görüşleri şartları, hesap askıya alma sebepleri ve sorumluluk sınırları.",
+};
+
+const webPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Kullanım Koşulları",
+  url: `${BASE_URL}/kullanim-kosullari`,
+  dateModified: "2026-08-01",
+  isPartOf: { "@type": "WebSite", name: "fikape", url: BASE_URL },
 };
 
 export default function KullanimKosullariPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       <div className="mb-8">
         <Link href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
           ← Ana sayfaya dön
