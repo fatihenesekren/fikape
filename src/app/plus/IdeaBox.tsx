@@ -67,7 +67,10 @@ export function IdeaBox({ defaultEmail }: { defaultEmail: string }) {
         {note.length}/{NOTE_LIMIT}
       </div>
 
-      <div className="mt-2 flex flex-col sm:flex-row gap-2">
+      <p className="mt-2 text-xs text-gray-400">
+        Fikrini gönderdiğinde sana bu adresten dönüş yaparız.
+      </p>
+      <div className="mt-1 flex flex-col sm:flex-row gap-2">
         <input
           type="email"
           value={email}
