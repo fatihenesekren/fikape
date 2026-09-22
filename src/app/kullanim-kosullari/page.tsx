@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/baseUrl";
+import { HashTargetHighlighter } from "@/components/HashTargetHighlighter";
 
 export const metadata: Metadata = {
   title: "Kullanım Koşulları",
@@ -24,6 +25,7 @@ export default function KullanimKosullariPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
+      <HashTargetHighlighter />
 
       <div className="mb-8">
         <Link href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">

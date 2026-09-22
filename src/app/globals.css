@@ -158,3 +158,17 @@ html, body {
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-tab-fade-in { animation: tab-fade-in 0.15s ease-out both; }
+
+/* Sayfa içi "bkz./aşağıdaki X" linkleriyle işaret edilen hedefi kısa süreli
+   vurgulayan flash — hedef zaten ekranda görünürken (kaydırma hissedilmediği
+   için) tıklamanın "bir şey oldu" hissi vermesi için gerekli (bkz. kullanıcı
+   geri bildirimi: yakın hedeflerde link'in etkisiz göründüğü). */
+@keyframes hash-target-flash {
+  0%   { background-color: var(--link-soft); }
+  100% { background-color: transparent; }
+}
+.hash-target-flash { animation: hash-target-flash 1.6s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hash-target-flash { animation: none; outline: 2px solid var(--link-line); outline-offset: 2px; }
+}

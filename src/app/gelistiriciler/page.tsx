@@ -4,7 +4,7 @@ import { BASE_URL } from "@/lib/baseUrl";
 import { CopyButton } from "./CopyButton";
 import { TryItWidget } from "./TryItWidget";
 import { EXAMPLE_SLUG } from "./constants";
-import { HashDetailsOpener } from "./HashDetailsOpener";
+import { HashTargetHighlighter } from "@/components/HashTargetHighlighter";
 
 export const metadata: Metadata = {
   title: "Araç Güven Skoru API'si — Geliştiriciler",
@@ -109,7 +109,7 @@ export default function DevelopersPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <HashDetailsOpener />
+      <HashTargetHighlighter />
 
       <div className="mb-8">
         <Link href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
