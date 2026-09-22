@@ -17,7 +17,9 @@ export type ContentFilterSurface =
   | "EXPERT_NOTE"
   | "EXPERT_QNA"
   | "EXPERT_MESSAGE"
-  | "PLUS_IDEA";
+  | "PLUS_IDEA"
+  | "REPORT"
+  | "EXPERT_APPEAL";
 
 export function logContentFilterHit(params: {
   userId: number;

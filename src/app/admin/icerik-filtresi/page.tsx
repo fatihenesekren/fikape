@@ -28,6 +28,8 @@ const SURFACE_LABEL: Record<string, string> = {
   TRADE_LISTING: "Takas ilanı",
   TRADE_RATING: "Takas değerlendirmesi",
   VEHICLE_SUGGEST: "Araç önerisi",
+  REPORT: "Şikayet açıklaması",
+  EXPERT_APPEAL: "Usta itirazı",
 };
 
 function fmt(d: Date | null): string {

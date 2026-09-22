@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma";
 import { messageReportSchema, formatZodError } from "@/lib/schemas";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeListingEnabled } from "@/lib/features";
+import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 
 // İlanın kendisini (fotoğraf, içerik, sahte/spam ilan şüphesi) hedefleyen rapor —
 // önceden sadece mesaj bazlı rapor mekanizması vardı (bkz. denetim raporu).
@@ -40,6 +42,14 @@ export async function POST(
 
   if (!(await checkRateLimit(`trade-listing-report:${reporterId}`, 5, 24 * 60 * 60 * 1000))) {
     return NextResponse.json({ error: "Günlük rapor gönderme sınırına ulaştınız." }, { status: 429 });
+  }
+
+  if (parsed.data.note) {
+    const contentCheck = checkContent(parsed.data.note);
+    if (!contentCheck.ok) {
+      logContentFilterHit({ userId: reporterId, surface: "REPORT", rule: contentCheck.rule });
+      return NextResponse.json({ error: contentCheck.error }, { status: 400 });
+    }
   }
 
   const report = await prisma.tradeListingReport.create({

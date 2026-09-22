@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { notifyAdmins } from "@/lib/notification";
+import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 
 const VALID_TARGET_TYPES = ["SPEC", "PHOTO", "REVIEW", "QNA", "EXPERT_NOTE", "EXPERT_WORKPLACE_PHOTO", "OTHER"] as const;
 type TargetType = (typeof VALID_TARGET_TYPES)[number];
@@ -24,6 +26,12 @@ export async function POST(req: Request) {
   const trimmedNote = typeof note === "string" ? note.trim() : "";
   if (trimmedNote.length < 5) {
     return NextResponse.json({ error: "Lütfen sorunu kısaca açıklayın." }, { status: 400 });
+  }
+
+  const contentCheck = checkContent(trimmedNote);
+  if (!contentCheck.ok) {
+    logContentFilterHit({ userId: Number(session.user.id), surface: "REPORT", rule: contentCheck.rule });
+    return NextResponse.json({ error: contentCheck.error }, { status: 400 });
   }
 
   const type = targetType as TargetType;

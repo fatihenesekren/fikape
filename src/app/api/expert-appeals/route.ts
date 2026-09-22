@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma";
 import { expertAppealCreateSchema, formatZodError } from "@/lib/schemas";
 import { canFileNewAppeal, APPEAL_REVIEW_DUE_DAYS } from "@/lib/expertAppeal";
 import { notifyAdmins } from "@/lib/notification";
+import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 
 // Usta itirazı oluşturma — "karar başına tek itiraz" (unique constraint'ler
 // yakalar), "kayan 30 günde en fazla 2 itiraz" (uygulama katmanı).
@@ -23,6 +25,12 @@ export async function POST(req: Request) {
   const parsed = expertAppealCreateSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   const { subjectType, reason } = parsed.data;
+
+  const contentCheck = checkContent(reason);
+  if (!contentCheck.ok) {
+    logContentFilterHit({ userId, surface: "EXPERT_APPEAL", rule: contentCheck.rule });
+    return NextResponse.json({ error: contentCheck.error }, { status: 400 });
+  }
 
   if (!(await canFileNewAppeal(profile.id))) {
     return NextResponse.json(

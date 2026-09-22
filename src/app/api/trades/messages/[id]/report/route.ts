@@ -5,6 +5,8 @@ import { messageReportSchema, formatZodError } from "@/lib/schemas";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeMessagingEnabled } from "@/lib/features";
 import { notifyAdmins } from "@/lib/notification";
+import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 
 export async function POST(
   req: Request,
@@ -46,6 +48,14 @@ export async function POST(
 
   if (!(await checkRateLimit(`trade-report:${reporterId}`, 5, 24 * 60 * 60 * 1000))) {
     return NextResponse.json({ error: "Günlük rapor gönderme sınırına ulaştınız." }, { status: 429 });
+  }
+
+  if (parsed.data.note) {
+    const contentCheck = checkContent(parsed.data.note);
+    if (!contentCheck.ok) {
+      logContentFilterHit({ userId: reporterId, surface: "REPORT", rule: contentCheck.rule });
+      return NextResponse.json({ error: contentCheck.error }, { status: 400 });
+    }
   }
 
   const report = await prisma.messageReport.create({
