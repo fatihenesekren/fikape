@@ -54,10 +54,12 @@ export default function KullanimKosullariPage() {
             fikape.com, araç kullanıcılarının Fiyat (FI), Kalite (KA) ve Performans (PE) başlıkları
             altında yapılandırılmış yorum ve puan paylaşabildiği bağımsız bir tüketici platformudur.
             Platform ayrıca kullanıcıların araçlarını &quot;Takasa Açık&quot; olarak ilan edip birbirleriyle
-            platform içi mesajlaşma yoluyla iletişime geçebildiği bir Takas Pazarı hizmeti (bkz. madde 10)
-            ve deneyimli kişilerin araç modelleri hakkında teknik bilgi paylaştığı, puan tablosundan ayrı
-            bir Usta Görüşleri bölümü sunar (bkz. madde 11). Platform herhangi bir marka, bayi veya üretici
-            ile ticari ilişki içinde değildir.
+            platform içi mesajlaşma yoluyla iletişime geçebildiği bir Takas Pazarı hizmeti (
+            <a href="#madde-10" className="underline hover:text-gray-900">bkz. madde 10</a>
+            ) ve deneyimli kişilerin araç modelleri hakkında teknik bilgi paylaştığı, puan tablosundan ayrı
+            bir Usta Görüşleri bölümü sunar (
+            <a href="#madde-11" className="underline hover:text-gray-900">bkz. madde 11</a>
+            ). Platform herhangi bir marka, bayi veya üretici ile ticari ilişki içinde değildir.
           </p>
         </section>
 
@@ -161,7 +163,7 @@ export default function KullanimKosullariPage() {
           </p>
         </section>
 
-        <section>
+        <section id="madde-10" className="scroll-mt-8">
           <h2 className="text-lg font-semibold text-gray-900 mb-3">10. Takas İlanları ve Kullanıcılar Arası İletişim</h2>
           <p>
             Platform, kullanıcıların araçlarını &quot;Takasa Açık&quot; olarak işaretleyip birbirleriyle
@@ -189,7 +191,7 @@ export default function KullanimKosullariPage() {
           </p>
         </section>
 
-        <section>
+        <section id="madde-11" className="scroll-mt-8">
           <h2 className="text-lg font-semibold text-gray-900 mb-3">11. Usta Görüşleri ve Usta Profilleri</h2>
           <p className="mb-2">
             Usta Görüşleri, araç modelleri hakkında deneyime dayalı teknik bilgi paylaşımıdır; ustaların
