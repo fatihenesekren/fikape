@@ -4,6 +4,7 @@ import { BASE_URL } from "@/lib/baseUrl";
 import { CopyButton } from "./CopyButton";
 import { TryItWidget } from "./TryItWidget";
 import { EXAMPLE_SLUG } from "./constants";
+import { HashDetailsOpener } from "./HashDetailsOpener";
 
 export const metadata: Metadata = {
   title: "Araç Güven Skoru API'si — Geliştiriciler",
@@ -11,24 +12,31 @@ export const metadata: Metadata = {
     "fikape araç güven skorunu (FI·KA·PE) kendi sitenize gömmek için ücretsiz, anahtarsız API ve gömülebilir rozet. Bayi ve oto blogları için hazır entegrasyon.",
 };
 
+// `a` — JSON-LD (FAQPage) için düz metin, arama motoru bunu okur.
+// `id` — sayfa içi bağlantı hedefi (örn. RESPONSE_FIELDS'teki "bkz. SSS" linki).
 const FAQ_ITEMS = [
   {
+    id: "sss-score-null",
     q: "Score alanı neden null dönüyor?",
     a: "Bir aracın henüz yeterli sayıda yorumu yoksa sahte/erken bir skor göstermemek için score null döner, scoreLabel de \"Veri birikiyor\" yazar. Yorum sayısı arttıkça otomatik olarak gerçek değere döner.",
   },
   {
+    id: "sss-rate-limit",
     q: "Rate limit'i aşarsam ne olur?",
     a: "429 durum koduyla bir hata mesajı dönersiniz. Yanıttaki Retry-After header'ı kaç saniye sonra tekrar deneyebileceğinizi söyler; X-RateLimit-Remaining header'ı da kalan hakkınızı gösterir.",
   },
   {
+    id: "sss-guncelleme-sikligi",
     q: "Veri ne sıklıkla güncelleniyor?",
     a: "Skor, o an yayında olan yorumların canlı ortalamasıdır — önbelleğe alınmaz, her istekte yeniden hesaplanır. Kendi tarafınızda gösterirken makul bir önbellek süresi (örn. birkaç saat) kullanmanızı öneririz.",
   },
   {
+    id: "sss-rozet-css",
     q: "Rozeti kendi CSS'imle özelleştirebilir miyim?",
     a: "Rozet sabit boyutlu bir PNG görseli olarak üretiliyor, CSS ile içeriği değiştirilemez. Kendi tasarımınızı istiyorsanız JSON uç noktasını kullanıp skoru kendi arayüzünüzde gösterebilirsiniz.",
   },
   {
+    id: "sss-api-anahtari",
     q: "API anahtarı almam gerekiyor mu, ticari kullanım serbest mi?",
     a: "Hayır, anahtar/kayıt gerekmez. Ticari sitelerde (bayi, blog, karşılaştırma sitesi) kullanmak serbest — tek şart, aşağıdaki attribution kuralına uymanız.",
   },
@@ -71,7 +79,7 @@ const EXAMPLE_RESPONSE = `{
 const RESPONSE_FIELDS: { field: string; desc: string }[] = [
   { field: "product", desc: "Marka, model, yıl ve varsa donanım paketi ile tam araç adı." },
   { field: "category", desc: "Araç kategorisi (Otomobil, Motosiklet, vb.) — kategorisizse null." },
-  { field: "score", desc: "0-10 arası ortalama skor. Yeterli yorum yoksa null döner (bkz. SSS)." },
+  { field: "score", desc: "0-10 arası ortalama skor. Yeterli yorum yoksa null döner." },
   { field: "scoreLabel", desc: "Gösterime hazır etiket — score null ise \"Veri birikiyor\" yazar." },
   { field: "reviewCount", desc: "Skora dahil edilen yayınlanmış yorum sayısı." },
   { field: "url", desc: "Aracın fikape üzerindeki sayfası — attribution linki için kullanın." },
@@ -101,6 +109,7 @@ export default function DevelopersPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
+      <HashDetailsOpener />
 
       <div className="mb-8">
         <Link href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
@@ -121,7 +130,7 @@ export default function DevelopersPage() {
       </ol>
 
       <div className="space-y-10 text-sm text-gray-600">
-        <section className="min-w-0">
+        <section id="canli-dene" className="min-w-0 scroll-mt-24">
           <h2 className="text-lg font-semibold text-gray-900 mb-3">Canlı Dene</h2>
           <TryItWidget />
         </section>
@@ -140,7 +149,15 @@ export default function DevelopersPage() {
                 {RESPONSE_FIELDS.map((f) => (
                   <tr key={f.field} className="border-t border-gray-100 first:border-t-0">
                     <td className="align-top px-3 py-2 font-mono text-gray-800 whitespace-nowrap">{f.field}</td>
-                    <td className="align-top px-3 py-2 text-gray-500">{f.desc}</td>
+                    <td className="align-top px-3 py-2 text-gray-500">
+                      {f.desc}
+                      {f.field === "score" && (
+                        <>
+                          {" "}
+                          (<a href="#sss-score-null" className="underline hover:text-gray-700">bkz. SSS</a>)
+                        </>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -216,7 +233,8 @@ export default function DevelopersPage() {
             IP başına dakikada 30 istek. Her yanıtta şu header&apos;lar gelir:{" "}
             <code>X-RateLimit-Limit</code>, <code>X-RateLimit-Remaining</code>,{" "}
             <code>X-RateLimit-Reset</code> (epoch saniye). Limit aşılırsa ayrıca{" "}
-            <code>Retry-After</code> (saniye) header&apos;ı eklenir — bkz. yukarıdaki Canlı Dene widget&apos;i.
+            <code>Retry-After</code> (saniye) header&apos;ı eklenir — bkz. yukarıdaki{" "}
+            <a href="#canli-dene" className="underline hover:text-gray-700">Canlı Dene widget&apos;i</a>.
           </p>
         </section>
 
@@ -224,12 +242,25 @@ export default function DevelopersPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-3">Sıkça sorulan sorular</h2>
           <div className="space-y-2">
             {FAQ_ITEMS.map((item) => (
-              <details key={item.q} className="border border-gray-100 rounded-xl p-3 group">
+              <details key={item.id} id={item.id} className="border border-gray-100 rounded-xl p-3 group">
                 <summary className="text-sm font-medium text-gray-800 cursor-pointer list-none flex items-center justify-between gap-2">
                   {item.q}
                   <span className="text-gray-300 group-open:rotate-180 transition-transform shrink-0">⌄</span>
                 </summary>
-                <p className="mt-2 text-sm text-gray-500">{item.a}</p>
+                <p className="mt-2 text-sm text-gray-500">
+                  {item.id === "sss-api-anahtari" ? (
+                    <>
+                      Hayır, anahtar/kayıt gerekmez. Ticari sitelerde (bayi, blog, karşılaştırma sitesi)
+                      kullanmak serbest — tek şart,{" "}
+                      <a href="#attribution-kurali" className="underline hover:text-gray-700">
+                        aşağıdaki attribution kuralına
+                      </a>{" "}
+                      uymanız.
+                    </>
+                  ) : (
+                    item.a
+                  )}
+                </p>
               </details>
             ))}
           </div>
@@ -239,7 +270,7 @@ export default function DevelopersPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-2">Kullanırken dikkat et</h2>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Ücretsiz, API anahtarı gerekmez; dakikada IP başına 30 istek sınırı vardır.</li>
-            <li>
+            <li id="attribution-kurali" className="scroll-mt-24">
               Rozeti veya veriyi kullanırken ilgili araç sayfasına link vermeniz gerekir (yukarıdaki
               örnekteki gibi) — bu attribution zorunlu, opsiyonel değil.
             </li>
