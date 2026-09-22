@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const DEFAULT_SLUG = "citroen-c5-aircross-1-6-puretech-shine-2020";
+import { EXAMPLE_SLUG } from "./constants";
 
 interface ApiResult {
   status: number;
@@ -12,7 +11,7 @@ interface ApiResult {
 }
 
 export function TryItWidget() {
-  const [slug, setSlug] = useState(DEFAULT_SLUG);
+  const [slug, setSlug] = useState(EXAMPLE_SLUG);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ApiResult | null>(null);
 
@@ -26,10 +25,12 @@ export function TryItWidget() {
       const body = await res.json().catch(() => null);
       const remainingHeader = res.headers.get("X-RateLimit-Remaining");
       const retryAfterHeader = res.headers.get("Retry-After");
+      const remaining = remainingHeader !== null ? Number(remainingHeader) : NaN;
+      const retryAfter = retryAfterHeader !== null ? Number(retryAfterHeader) : NaN;
       setResult({
         status: res.status,
-        remaining: remainingHeader !== null ? Number(remainingHeader) : null,
-        retryAfter: retryAfterHeader !== null ? Number(retryAfterHeader) : null,
+        remaining: Number.isFinite(remaining) ? remaining : null,
+        retryAfter: Number.isFinite(retryAfter) ? retryAfter : null,
         body,
       });
     } catch {
@@ -44,7 +45,7 @@ export function TryItWidget() {
   return (
     <div className="border border-gray-100 bg-white rounded-2xl p-5 min-w-0">
       <p className="text-sm text-gray-600 mb-3">
-        Bir araç slug&apos;ı gir, gerçek API&apos;yi tarayıcından çağıralım — kayıt/anahtar gerekmez.
+        Bir araç slug&apos;u gir, gerçek API&apos;yi tarayıcından çağıralım — kayıt/anahtar gerekmez.
       </p>
       <div className="flex flex-col sm:flex-row gap-2">
         <input

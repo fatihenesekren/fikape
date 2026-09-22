@@ -3,8 +3,7 @@ import Link from "next/link";
 import { BASE_URL } from "@/lib/baseUrl";
 import { CopyButton } from "./CopyButton";
 import { TryItWidget } from "./TryItWidget";
-
-const EXAMPLE_SLUG = "citroen-c5-aircross-1-6-puretech-shine-2020";
+import { EXAMPLE_SLUG } from "./constants";
 
 export const metadata: Metadata = {
   title: "Araç Güven Skoru API'si — Geliştiriciler",
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
 
 const FAQ_ITEMS = [
   {
-    q: "score alanı neden null dönüyor?",
+    q: "Score alanı neden null dönüyor?",
     a: "Bir aracın henüz yeterli sayıda yorumu yoksa sahte/erken bir skor göstermemek için score null döner, scoreLabel de \"Veri birikiyor\" yazar. Yorum sayısı arttıkça otomatik olarak gerçek değere döner.",
   },
   {
@@ -23,7 +22,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Veri ne sıklıkla güncelleniyor?",
-    a: "Skor, o an yayında olan yorumların canlı ortalamasıdır — önbelleğe alınmaz, her istekte yeniden hesaplanır. Kendi tarafınızda göstereceksiniz makul bir önbellek süresi (örn. birkaç saat) kullanmanızı öneririz.",
+    a: "Skor, o an yayında olan yorumların canlı ortalamasıdır — önbelleğe alınmaz, her istekte yeniden hesaplanır. Kendi tarafınızda gösterirken makul bir önbellek süresi (örn. birkaç saat) kullanmanızı öneririz.",
   },
   {
     q: "Rozeti kendi CSS'imle özelleştirebilir miyim?",
@@ -85,7 +84,7 @@ const ERROR_ROWS: { status: string; when: string; body: string }[] = [
   { status: "404", when: "Slug'a ait aktif bir araç bulunamadı.", body: `{ "error": "Araç bulunamadı" }` },
   {
     status: "429",
-    when: "IP başına dakikada 30 isteklik sınır aşıldı. Retry-After header'ı saniye cinsinden bekleme süresini verir.",
+    when: "IP başına dakikada izin verilen 30 istek sınırı aşıldı. Retry-After header'ı saniye cinsinden bekleme süresini verir.",
     body: `{ "error": "Çok fazla istek. Lütfen biraz yavaşlayın." }`,
   },
   {
@@ -116,7 +115,7 @@ export default function DevelopersPage() {
         oto bloglarında ve karşılaştırma sayfalarında kullanabilirsiniz.
       </p>
       <ol className="flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-400 mb-10 list-decimal list-inside">
-        <li>Slug&apos;ı biliyorsan JSON&apos;ı çağır</li>
+        <li>Slug&apos;u biliyorsan JSON uç noktasını çağır</li>
         <li>Skoru kendi arayüzünde göster ya da rozeti göm</li>
         <li>Araç sayfasına link ver — tek şart bu</li>
       </ol>
@@ -156,7 +155,7 @@ export default function DevelopersPage() {
 
         <section className="min-w-0">
           <h2 className="text-lg font-semibold text-gray-900 mb-2">Gömülebilir rozet</h2>
-          <p className="mb-3">Aşağıdaki gibi, gerçek bir örnek üzerinde:</p>
+          <p className="mb-3">Gerçek bir örnek üzerinde şöyle görünür:</p>
 
           <div className="border border-gray-100 bg-gray-50 rounded-xl p-4 mb-3 min-w-0">
             <div className="flex flex-wrap items-center gap-3 min-w-0">
@@ -217,7 +216,7 @@ export default function DevelopersPage() {
             IP başına dakikada 30 istek. Her yanıtta şu header&apos;lar gelir:{" "}
             <code>X-RateLimit-Limit</code>, <code>X-RateLimit-Remaining</code>,{" "}
             <code>X-RateLimit-Reset</code> (epoch saniye). Limit aşılırsa ayrıca{" "}
-            <code>Retry-After</code> (saniye) header&apos;ı eklenir — bkz. yukarıdaki Canlı Dene widget&apos;ı.
+            <code>Retry-After</code> (saniye) header&apos;ı eklenir — bkz. yukarıdaki Canlı Dene widget&apos;i.
           </p>
         </section>
 
@@ -239,14 +238,14 @@ export default function DevelopersPage() {
         <section className="min-w-0">
           <h2 className="text-lg font-semibold text-gray-900 mb-2">Kullanırken dikkat et</h2>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li>Ücretsiz, API anahtarı gerekmez, dakikada 30 istek IP başına sınırı vardır.</li>
+            <li>Ücretsiz, API anahtarı gerekmez; dakikada IP başına 30 istek sınırı vardır.</li>
             <li>
               Rozeti veya veriyi kullanırken ilgili araç sayfasına link vermeniz gerekir (yukarıdaki
               örnekteki gibi) — bu attribution zorunlu, opsiyonel değil.
             </li>
             <li>Veri salt-okunur ve toplulaştırılmıştır; bireysel yorum içeriği API&apos;de yer almaz.</li>
             <li>
-              fikape skoru hiçbir şekilde para karşılığı değiştirilemez — API&apos;de gösterilen sayı,
+              fikape skoru hiçbir şekilde para karşılığında değiştirilemez — API&apos;de gösterilen sayı,
               sitede gösterilenle her zaman birebir aynıdır.
             </li>
             <li className="text-gray-500">

@@ -41,6 +41,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
     const product = await prisma.product.findUnique({
       where: { slug, isActive: true },
       select: {
+        id: true,
         slug: true,
         year: true,
         trimName: true,
@@ -56,7 +57,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
     }
 
     const agg = await prisma.review.aggregate({
-      where: { product: { slug }, status: "PUBLISHED" },
+      where: { productId: product.id, status: "PUBLISHED" },
       _avg: { scoreOverall: true },
       _count: { id: true },
     });
