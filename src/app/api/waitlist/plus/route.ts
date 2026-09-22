@@ -3,6 +3,8 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { plusWaitlistSchema, formatZodError } from "@/lib/schemas";
 import { rateLimitByIp } from "@/lib/rateLimit";
+import { checkContent } from "@/lib/reviewValidation";
+import { logContentFilterHit } from "@/lib/contentFilterLog";
 
 export async function POST(req: Request) {
   if (!(await rateLimitByIp(req, "plus-waitlist", 5, 60 * 60 * 1000))) {
@@ -17,6 +19,14 @@ export async function POST(req: Request) {
 
   const session = await auth();
   const userId = session?.user?.id ? Number(session.user.id) : null;
+
+  if (note && note.trim()) {
+    const contentCheck = checkContent(note);
+    if (!contentCheck.ok) {
+      if (userId) logContentFilterHit({ userId, surface: "PLUS_IDEA", rule: contentCheck.rule });
+      return NextResponse.json({ error: contentCheck.error }, { status: 400 });
+    }
+  }
 
   const existing = await prisma.plusWaitlistEntry.findUnique({ where: { email } });
   if (existing) {

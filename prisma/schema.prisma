@@ -216,6 +216,7 @@ model User {
   insuranceLeads       InsuranceLead[]
   saleLeads            SaleLead[]
   plusWaitlistEntries  PlusWaitlistEntry[]
+  plusInterestVotes    PlusInterestVote[]
   notifications        Notification[]
   tradeListings        TradeListing[]
   threadsInitiated     MessageThread[]       @relation("ThreadInitiator")
@@ -1076,6 +1077,23 @@ model PlusWaitlistEntry {
 
   @@unique([email])
   @@map("plus_waitlist_entries")
+}
+
+// Plus sayfasındaki fikir kartlarına verilen "İlgileniyorum" oyları — giriş
+// yapmış kullanıcı başına, kart başına en fazla bir kayıt. Oy sayıları public
+// gösterilmiyor (sürü etkisi riski) — sadece admin haftalık raporunda ve
+// kullanıcının kendi seçim durumunda kullanılıyor.
+model PlusInterestVote {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  interestKey String   @db.VarChar(64)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, interestKey])
+  @@index([interestKey])
+  @@map("plus_interest_votes")
 }
 
 // ─────────────────────────────────────────────

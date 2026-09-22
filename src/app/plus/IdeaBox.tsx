@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
-export function WaitlistForm({ defaultEmail }: { defaultEmail: string }) {
+const NOTE_LIMIT = 240;
+
+export function IdeaBox({ defaultEmail }: { defaultEmail: string }) {
   const [email, setEmail] = useState(defaultEmail);
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -16,12 +18,16 @@ export function WaitlistForm({ defaultEmail }: { defaultEmail: string }) {
       setError("Geçerli bir e-posta adresi giriniz.");
       return;
     }
+    if (!note.trim()) {
+      setError("Fikrini kısaca yazar mısın?");
+      return;
+    }
     setSubmitting(true);
     try {
       const res = await fetch("/api/waitlist/plus", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, note: note || undefined }),
+        body: JSON.stringify({ email, note }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -40,40 +46,43 @@ export function WaitlistForm({ defaultEmail }: { defaultEmail: string }) {
   if (done) {
     return (
       <div className="text-sm font-medium text-green-700 bg-green-50 rounded-xl px-4 py-3">
-        {alreadyJoined ? "✓ Zaten listedesin — haber verdiğimizde ilk sen duyacaksın." : "✓ Kaydettik! Bu özellikler hazır olunca ilk sana haber vereceğiz."}
+        {alreadyJoined
+          ? "✓ Fikrini aldık — zaten listedesin, gelişmelerden haberin olacak."
+          : "✓ Teşekkürler! Fikrini not ettik, gelişmelerden haberin olacak."}
       </div>
     );
   }
 
   return (
     <div className="border border-gray-100 bg-white rounded-2xl p-5">
-      <p className="text-sm text-gray-600 mb-3">
-        Bu özellikler henüz yok — ilgileniyorsan e-postanı bırak, hazır olduğunda ilk sana haber verelim.
-      </p>
-      <div className="flex flex-col sm:flex-row gap-2">
+      <textarea
+        value={note}
+        onChange={(e) => setNote(e.target.value.slice(0, NOTE_LIMIT))}
+        placeholder="Sende olmayan ne eksik? Kısaca yaz…"
+        rows={3}
+        maxLength={NOTE_LIMIT}
+        className="w-full text-sm rounded-lg border border-gray-200 px-3 py-2 resize-none"
+      />
+      <div className="mt-1 text-right text-xs text-gray-400">
+        {note.length}/{NOTE_LIMIT}
+      </div>
+
+      <div className="mt-2 flex flex-col sm:flex-row gap-2">
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="e-posta@ornek.com"
-          className="flex-1 text-sm rounded-lg border border-gray-200 px-3 py-2"
+          className="flex-1 min-w-0 text-sm rounded-lg border border-gray-200 px-3 py-2"
         />
         <button
           onClick={submit}
           disabled={submitting}
           className="text-sm font-semibold px-4 py-2 rounded-lg text-white shrink-0 disabled:opacity-60 bg-gray-900 hover:bg-gray-800 transition-colors"
         >
-          {submitting ? "Gönderiliyor..." : "İlgileniyorum"}
+          {submitting ? "Gönderiliyor…" : "Gönder"}
         </button>
       </div>
-      <input
-        type="text"
-        value={note}
-        onChange={(e) => setNote(e.target.value)}
-        placeholder="En çok neyi kullanırdın? (opsiyonel)"
-        maxLength={280}
-        className="mt-2 w-full text-sm rounded-lg border border-gray-200 px-3 py-2"
-      />
       {error && <p className="text-xs text-red-600 mt-1.5">{error}</p>}
     </div>
   );
