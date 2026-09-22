@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
-import { GearIcon, IdCardIcon, ClipboardIcon, MessageIcon } from "@/components/icons";
+import { GearIcon, IdCardIcon, ClipboardIcon, MessageIcon, ShareIcon } from "@/components/icons";
 
 export const metadata: Metadata = { title: "Usta Panelim — fikape", robots: { index: false } };
 
@@ -160,7 +160,7 @@ export default async function UstaGorusumPage() {
           Profilim --fi (mavi), Notlarım --pe (kahverengi), Mesajlarım
           --ka (yeşil) — üçü keyfi değil, üç AYRI hedefi göz taramasında
           hızlıca ayırt etmeyi sağlıyor. */}
-      <div className="grid sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <Link
           href={`/usta/${profile.slug}`}
           className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border border-gray-200 bg-white hover:border-[var(--fi)]/40 hover:shadow-sm transition-all text-sm font-semibold text-gray-900"
@@ -187,6 +187,18 @@ export default async function UstaGorusumPage() {
             <MessageIcon size={16} className="text-[var(--ka-color)]" />
           </span>
           Usta Mesajlarım
+        </Link>
+        {/* fi/ka/pe üçlüsü bilinçli olarak 3 gezinme hedefine ayrılmıştı
+            (bkz. yukarıdaki not) — bu bir gezinme değil paylaşım eylemi
+            olduğu için nötr gri, dördüncü bir "marka rengi" icat etmedi. */}
+        <Link
+          href={`/usta/${profile.slug}/paylas`}
+          className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border border-gray-200 bg-white hover:border-gray-400 hover:shadow-sm transition-all text-sm font-semibold text-gray-900"
+        >
+          <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-gray-100">
+            <ShareIcon size={15} className="text-gray-600" />
+          </span>
+          Kartımı Paylaş
         </Link>
       </div>
     </div>
