@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 interface MonthlyScore {
   month: string;   // "2025-03"
@@ -9,6 +9,7 @@ interface MonthlyScore {
 }
 
 const TR_MONTHS = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"];
+const DEFAULT_WIDTH = 560;
 
 function formatMonth(month: string) {
   const [y, m] = month.split("-");
@@ -16,13 +17,32 @@ function formatMonth(month: string) {
 }
 
 export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore[]; totalReviews: number }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(DEFAULT_WIDTH);
   const [hover, setHover] = useState<number | null>(null);
+
+  // SVG'nin viewBox'ını `width="100%"` ile ölçeklemek yerine gerçek piksel
+  // genişliğine eşitliyoruz — aksi halde (viewBox sabit 560 iken sayfa ~930px
+  // genişliğinde) tarayıcı ~1.7x büyütüyor, 10px olarak yazılan eksen fontları
+  // ekranda ~17px gibi orantısız/kaba görünüyordu (bkz. kullanıcı geri
+  // bildirimi + 5 uzman denetimi, 2026-09-22). 1:1 ölçekte font-size değerleri
+  // her ekran genişliğinde gerçek CSS piksel karşılığıyla render edilir.
+  useLayoutEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect.width;
+      if (w) setWidth(Math.round(w));
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   if (points.length < 2) return null;
 
-  const W = 560;
-  const H = 104;
-  const PAD = { top: 14, right: 20, bottom: 26, left: 36 };
+  const W = width;
+  const H = 120;
+  const PAD = { top: 16, right: 20, bottom: 26, left: 34 };
   const chartW = W - PAD.left - PAD.right;
   const chartH = H - PAD.top - PAD.bottom;
 
@@ -75,11 +95,11 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
         )}
       </div>
 
-      <div className="relative w-full">
+      <div ref={containerRef} className="relative w-full">
         <svg
+          width={W}
+          height={H}
           viewBox={`0 0 ${W} ${H}`}
-          width="100%"
-          preserveAspectRatio="xMidYMid meet"
           aria-label="Skor trendi grafiği"
         >
           {/* Y grid lines */}
@@ -100,7 +120,7 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
             <text
               key={`yl-${t}`}
               x={PAD.left - 6}
-              y={py(t) + 4}
+              y={py(t) + 3.5}
               textAnchor="end"
               fontSize="10"
               fill="#9ca3af"
@@ -116,15 +136,15 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
               `${px(points.length - 1)},${PAD.top + chartH}`,
               `${px(0)},${PAD.top + chartH}`,
             ].join(" ")}
-            fill="#111"
-            fillOpacity="0.03"
+            fill="#111827"
+            fillOpacity="0.035"
           />
 
           {/* Polyline */}
           <polyline
             points={polyline}
             fill="none"
-            stroke="#111"
+            stroke="#111827"
             strokeWidth="1.75"
             strokeLinejoin="round"
             strokeLinecap="round"
@@ -139,7 +159,7 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
               <text
                 key={`xl-${i}`}
                 x={px(i)}
-                y={H - 6}
+                y={H - 8}
                 textAnchor="middle"
                 fontSize="10"
                 fill="#9ca3af"
@@ -167,8 +187,8 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
                 cx={px(i)}
                 cy={py(p.avg)}
                 r={hover === i ? 4.5 : 3}
-                fill={hover === i ? "#111" : "#fff"}
-                stroke="#111"
+                fill={hover === i ? "#111827" : "#fff"}
+                stroke="#111827"
                 strokeWidth="1.5"
                 style={{ transition: "r 0.1s" }}
                 pointerEvents="none"
@@ -181,17 +201,17 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
             const p = points[hover];
             const x = px(hover);
             const y = py(p.avg);
-            const tipW = 72;
-            const tipH = 32;
+            const tipW = 74;
+            const tipH = 34;
             const tipX = Math.min(Math.max(x - tipW / 2, PAD.left), W - PAD.right - tipW);
-            const tipY = y - tipH - 8;
+            const tipY = Math.max(0, y - tipH - 8);
             return (
               <g pointerEvents="none">
                 <rect x={tipX} y={tipY} width={tipW} height={tipH} rx="8" fill="#fff" stroke="#e5e7eb" />
-                <text x={tipX + tipW / 2} y={tipY + 13} textAnchor="middle" fontSize="11" fontWeight="700" fill="#111827">
+                <text x={tipX + tipW / 2} y={tipY + 14} textAnchor="middle" fontSize="11" fontWeight="700" fill="#111827">
                   {p.avg.toFixed(1)}/10
                 </text>
-                <text x={tipX + tipW / 2} y={tipY + 26} textAnchor="middle" fontSize="9" fill="#9ca3af">
+                <text x={tipX + tipW / 2} y={tipY + 27} textAnchor="middle" fontSize="9" fill="#9ca3af">
                   {p.count} yorum · {formatMonth(p.month)}
                 </text>
               </g>
