@@ -5,14 +5,12 @@ import { useEffect } from "react";
 const FLASH_CLASS = "hash-target-flash";
 const FLASH_DURATION_MS = 1600;
 
-// Sayfa içi "bkz./aşağıdaki X" linkleriyle işaret edilen hedefi kısa süreli
-// vurgulayan flash + gerekirse kaydırma. İki sorunu birden çözüyor:
-// 1) Hedef kapalı bir <details> ise tarayıcı bunu otomatik açmıyor —
-//    açılmadan kaydırma kullanıcıya görünmeyen bir yere gitmiş gibi gelir.
-// 2) Hedef zaten ekranda görünüyorsa (yakın referanslar) kaydırma
-//    hissedilmiyor, tıklamanın hiçbir etkisi olmamış gibi görünüyor —
-//    bkz. kullanıcı geri bildirimi. Flash, mesafeden bağımsız her durumda
-//    "işte bahsettiğim yer burası" geri bildirimini veriyor.
+// Sayfa içi "bkz./aşağıdaki X" linklerine TIKLANINCA hedefi kısa süreli
+// vurgulayan flash + gerekirse kaydırma. Bilinçli olarak SADECE hashchange
+// event'inde çalışır, sayfa ilk yüklendiğinde (mount'ta) ÇALIŞMAZ — URL'de
+// zaten bir hash varken sayfayı açmak (örn. eski bir sekme/bookmark, paylaşılan
+// link) otomatik kaydırmaya yol açmamalı; kullanıcı bunu istemedi (bkz. geri
+// bildirim: "linke tıklamadan gidiyor").
 export function HashTargetHighlighter() {
   useEffect(() => {
     function handleHash() {
@@ -35,7 +33,6 @@ export function HashTargetHighlighter() {
       setTimeout(() => el.classList.remove(FLASH_CLASS), FLASH_DURATION_MS);
     }
 
-    handleHash();
     window.addEventListener("hashchange", handleHash);
     return () => window.removeEventListener("hashchange", handleHash);
   }, []);
