@@ -4,6 +4,9 @@ import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { ReportButton } from "./ReportButton";
 import { sameDay, hhmm, dayLabel } from "@/lib/messageTime";
+import { VoiceInputButton } from "@/components/review/FormPrimitives";
+import { useSpeechToText } from "@/hooks/useSpeechToText";
+import { applyTextWithLimit } from "@/lib/reviewValidation";
 
 interface MessageDTO {
   id: number;
@@ -66,6 +69,22 @@ export function MessageThread({
     if (!el) return;
     el.style.height = "auto";
     el.style.height = Math.min(el.scrollHeight, 140) + "px";
+  }
+
+  const [voiceMessage, setVoiceMessage] = useState<string | null>(null);
+  const textRef = useRef(text);
+  useEffect(() => { textRef.current = text; }, [text]);
+  const speech = useSpeechToText();
+
+  function handleVoiceFinalTranscript(chunk: string) {
+    const { text: next, truncated } = applyTextWithLimit(textRef.current, chunk, 1000);
+    textRef.current = next;
+    setText(next);
+    requestAnimationFrame(autoGrow);
+    if (truncated) {
+      speech.stop();
+      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle düzenleyebilirsiniz.");
+    }
   }
 
   async function send() {
@@ -203,15 +222,29 @@ export function MessageThread({
           <div className="p-3 space-y-1.5">
             {error && <p className="text-xs text-red-600">{error}</p>}
             <div className="flex gap-2 items-end">
-              <textarea
-                ref={taRef}
-                value={text}
-                onChange={(e) => { setText(e.target.value); autoGrow(); }}
-                placeholder="Mesajınızı yazınız…"
-                rows={1}
-                maxLength={1000}
-                className="flex-1 text-sm rounded-xl border border-gray-200 px-3 py-2 resize-none focus:outline-none focus:border-link focus:ring-2 focus:ring-link-soft transition-colors"
-              />
+              <div className="flex-1 rounded-xl border border-gray-200 overflow-hidden bg-white focus-within:border-link focus-within:ring-2 focus-within:ring-link-soft transition-colors">
+                <textarea
+                  ref={taRef}
+                  value={text}
+                  onChange={(e) => { setText(e.target.value.slice(0, 1000)); autoGrow(); }}
+                  placeholder="Mesajınızı yazınız…"
+                  rows={1}
+                  maxLength={1000}
+                  className="w-full text-sm px-3 py-2 resize-none border-0 block focus:outline-none"
+                />
+                {speech.interimTranscript && (
+                  <p className="text-xs text-gray-400 italic px-3 pb-1.5 -mt-1">{speech.interimTranscript}</p>
+                )}
+                <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
+                  <VoiceInputButton
+                    status={speech.status}
+                    message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+                    onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+                    onStop={() => speech.stop()}
+                  />
+                  <span className="text-xs text-gray-400">Sesli giriş</span>
+                </div>
+              </div>
               <button
                 type="button"
                 onClick={send}

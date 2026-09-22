@@ -1,8 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { VoiceInputButton } from "@/components/review/FormPrimitives";
+import { useSpeechToText } from "@/hooks/useSpeechToText";
+import { applyTextWithLimit } from "@/lib/reviewValidation";
 
 export function ExpertMessageComposer({ expertProfileId }: { expertProfileId: number }) {
   const router = useRouter();
@@ -11,6 +14,21 @@ export function ExpertMessageComposer({ expertProfileId }: { expertProfileId: nu
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
+
+  const [voiceMessage, setVoiceMessage] = useState<string | null>(null);
+  const textRef = useRef(text);
+  useEffect(() => { textRef.current = text; }, [text]);
+  const speech = useSpeechToText();
+
+  function handleVoiceFinalTranscript(chunk: string) {
+    const { text: next, truncated } = applyTextWithLimit(textRef.current, chunk, 1000);
+    textRef.current = next;
+    setText(next);
+    if (truncated) {
+      speech.stop();
+      setVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle düzenleyebilirsiniz.");
+    }
+  }
 
   async function send(e: React.FormEvent) {
     e.preventDefault();
@@ -63,13 +81,27 @@ export function ExpertMessageComposer({ expertProfileId }: { expertProfileId: nu
 
   return (
     <form onSubmit={send} className="space-y-2">
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value.slice(0, 1000))}
-        rows={3}
-        placeholder="Mesajınızı yazın — telefon/e-posta paylaşmanıza gerek yok."
-        className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 resize-y"
-      />
+      <div className="rounded-xl border border-gray-200 overflow-hidden bg-white focus-within:border-gray-400 transition-colors">
+        <textarea
+          value={text}
+          onChange={(e) => setText(e.target.value.slice(0, 1000))}
+          rows={3}
+          placeholder="Mesajınızı yazın — telefon/e-posta paylaşmanıza gerek yok."
+          className="w-full text-sm px-3 py-2.5 border-0 block resize-y focus:outline-none"
+        />
+        {speech.interimTranscript && (
+          <p className="text-xs text-gray-400 italic px-3 pb-1.5 -mt-1">{speech.interimTranscript}</p>
+        )}
+        <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
+          <VoiceInputButton
+            status={speech.status}
+            message={speech.status === "error" ? speech.errorMessage : voiceMessage}
+            onStart={() => { setVoiceMessage(null); speech.start(handleVoiceFinalTranscript); }}
+            onStop={() => speech.stop()}
+          />
+          <span className="text-xs text-gray-400">Sesli giriş</span>
+        </div>
+      </div>
       {error && <p className="text-xs text-red-600">{error}</p>}
       <button
         type="submit"

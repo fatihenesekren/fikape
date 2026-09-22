@@ -676,6 +676,21 @@ function TradeFormFields({
     }
   }
 
+  const [noteVoiceMessage, setNoteVoiceMessage] = useState<string | null>(null);
+  const noteRef = useRef(note);
+  useEffect(() => { noteRef.current = note; }, [note]);
+  const noteSpeech = useSpeechToText();
+
+  function handleNoteVoiceFinalTranscript(chunk: string) {
+    const { text: next, truncated } = applyTextWithLimit(noteRef.current, chunk, 300);
+    noteRef.current = next;
+    setNote(next);
+    if (truncated) {
+      noteSpeech.stop();
+      setNoteVoiceMessage("Karakter sınırına ulaşıldığı için kayıt durduruldu, kalan kısmı elle düzenleyebilirsiniz.");
+    }
+  }
+
   function toggleDamageStatus(status: DamageStatus) {
     setWantDamageStatuses(
       wantDamageStatuses.includes(status)
@@ -1021,14 +1036,28 @@ function TradeFormFields({
           </div>
         </fieldset>
 
-        <textarea
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-          placeholder="Opsiyonel not (örn. hangi araçları arıyorsun)"
-          maxLength={300}
-          rows={2}
-          className="w-full text-sm rounded-lg border border-link-line px-2.5 py-1.5 bg-white"
-        />
+        <div className="rounded-lg border border-link-line overflow-hidden bg-white focus-within:border-gray-400 transition-colors">
+          <textarea
+            value={note}
+            onChange={(e) => setNote(e.target.value.slice(0, 300))}
+            placeholder="Opsiyonel not (örn. hangi araçları arıyorsun)"
+            maxLength={300}
+            rows={2}
+            className="w-full text-sm px-2.5 py-1.5 border-0 block focus:outline-none"
+          />
+          {noteSpeech.interimTranscript && (
+            <p className="text-xs text-gray-400 italic px-2.5 pb-1.5 -mt-1">{noteSpeech.interimTranscript}</p>
+          )}
+          <div className="flex items-center gap-2 px-2.5 py-2 bg-gray-50 border-t border-gray-100">
+            <VoiceInputButton
+              status={noteSpeech.status}
+              message={noteSpeech.status === "error" ? noteSpeech.errorMessage : noteVoiceMessage}
+              onStart={() => { setNoteVoiceMessage(null); noteSpeech.start(handleNoteVoiceFinalTranscript); }}
+              onStop={() => noteSpeech.stop()}
+            />
+            <span className="text-xs text-gray-400">Sesli giriş — konuşarak metni oluşturabilirsiniz</span>
+          </div>
+        </div>
       </FormSection>
     </>
   );
