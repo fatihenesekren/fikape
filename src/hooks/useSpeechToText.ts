@@ -22,10 +22,14 @@ function mapError(code: string): string {
       return "Mikrofon izni verilmedi.";
     case "no-speech":
       return "Ses algılanamadı, tekrar deneyin veya yazarak devam edin.";
+    case "audio-capture":
+      return "Mikrofon bulunamadı veya kullanılamıyor.";
     case "network":
-      return "Bağlantı sorunu nedeniyle sesli giriş durduruldu.";
+      return "Bağlantı sorunu nedeniyle sesli giriş durduruldu, tekrar deneyebilirsin.";
+    case "aborted":
+      return "Dinleme durduruldu, tekrar deneyebilirsin.";
     default:
-      return "Sesli giriş sırasında bir hata oluştu.";
+      return "Sesli giriş sırasında bir hata oluştu, yazarak devam edebilirsin.";
   }
 }
 
@@ -57,6 +61,13 @@ export function useSpeechToText() {
 
   const recognitionRef = useRef<ISpeechRecognition | null>(null);
   const noResultTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Bu dinleme oturumunda en az bir kesin (final) sonuç geldi mi? Chrome gibi
+  // tarayıcılar continuous modda uzun sessizlik/arka plan geçişi sonrası
+  // zararsız bir error event'i (aborted/no-speech/network) fırlatabiliyor —
+  // kullanıcı zaten istediği metni almışken bunu alarm gibi kırmızı "hata"
+  // olarak göstermek kafa karıştırıcı. Sonuç alındıysa sonraki hata sessizce
+  // idle'a döner, alınmadıysa gerçek hata mesajı gösterilir.
+  const hasFinalResultRef = useRef(false);
 
   const clearNoResultTimeout = useCallback(() => {
     if (noResultTimeoutRef.current) {
@@ -98,14 +109,19 @@ export function useSpeechToText() {
     const resetNoResultTimeout = () => {
       clearNoResultTimeout();
       noResultTimeoutRef.current = setTimeout(() => {
-        setStatus("error");
-        setErrorMessage("Ses algılanamadı, tekrar deneyin veya yazarak devam edin.");
         recognition.abort();
         recognitionRef.current = null;
+        if (hasFinalResultRef.current) {
+          setStatus("idle");
+        } else {
+          setStatus("error");
+          setErrorMessage("Ses algılanamadı, tekrar deneyin veya yazarak devam edin.");
+        }
       }, NO_RESULT_TIMEOUT_MS);
     };
 
     recognition.onstart = () => {
+      hasFinalResultRef.current = false;
       setStatus("listening");
       setErrorMessage(null);
       resetNoResultTimeout();
@@ -118,6 +134,7 @@ export function useSpeechToText() {
         const result = event.results[i];
         const transcript = result[0]?.transcript ?? "";
         if (result.isFinal) {
+          hasFinalResultRef.current = true;
           const alternatives: string[] = [];
           for (let j = 0; j < result.length; j++) {
             const alt = result[j]?.transcript;
@@ -133,9 +150,15 @@ export function useSpeechToText() {
 
     recognition.onerror = (event) => {
       clearNoResultTimeout();
+      recognitionRef.current = null;
+      if (hasFinalResultRef.current) {
+        // Zaten kullanılabilir bir sonuç alınmıştı — arkaplandaki bu hata
+        // sessizce yok sayılıp normal bitişe (idle) düşülür, alarm gösterilmez.
+        setStatus("idle");
+        return;
+      }
       setStatus("error");
       setErrorMessage(mapError(event.error));
-      recognitionRef.current = null;
     };
 
     recognition.onend = () => {
