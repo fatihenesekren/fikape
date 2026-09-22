@@ -21,17 +21,22 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
   if (points.length < 2) return null;
 
   const W = 560;
-  const H = 140;
-  const PAD = { top: 20, right: 20, bottom: 32, left: 36 };
+  const H = 104;
+  const PAD = { top: 14, right: 20, bottom: 26, left: 36 };
   const chartW = W - PAD.left - PAD.right;
   const chartH = H - PAD.top - PAD.bottom;
 
   const scores = points.map((p) => p.avg);
   const rawMin = Math.min(...scores);
   const rawMax = Math.max(...scores);
-  // If all scores equal, give ±1 range so the line is centered
-  const yMin = rawMin === rawMax ? Math.max(0, rawMin - 1) : Math.max(0, rawMin - 0.5);
-  const yMax = rawMin === rawMax ? Math.min(10, rawMax + 1) : Math.min(10, rawMax + 0.5);
+  // Dar bir aralık (ör. ±0.5) küçük dalgalanmaları görsel olarak abartıyordu
+  // (bkz. 5 uzman denetimi) — en az 2 puanlık bir aralık zorlanıyor, gerçek
+  // fark ekranda olduğundan büyük görünmüyor.
+  const MIN_SPAN = 2;
+  const center = (rawMin + rawMax) / 2;
+  const halfSpan = Math.max(MIN_SPAN, rawMax - rawMin + 1) / 2;
+  const yMin = Math.max(0, center - halfSpan);
+  const yMax = Math.min(10, center + halfSpan);
 
   const xStep = chartW / Math.max(points.length - 1, 1);
 
@@ -70,7 +75,7 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
         )}
       </div>
 
-      <div className="relative w-full overflow-x-auto">
+      <div className="relative w-full">
         <svg
           viewBox={`0 0 ${W} ${H}`}
           width="100%"
@@ -112,7 +117,7 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
               `${px(0)},${PAD.top + chartH}`,
             ].join(" ")}
             fill="#111"
-            fillOpacity="0.04"
+            fillOpacity="0.03"
           />
 
           {/* Polyline */}
@@ -120,7 +125,7 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
             points={polyline}
             fill="none"
             stroke="#111"
-            strokeWidth="1.5"
+            strokeWidth="1.75"
             strokeLinejoin="round"
             strokeLinecap="round"
           />
@@ -182,8 +187,8 @@ export function ScoreTrendChart({ points, totalReviews }: { points: MonthlyScore
             const tipY = y - tipH - 8;
             return (
               <g pointerEvents="none">
-                <rect x={tipX} y={tipY} width={tipW} height={tipH} rx="6" fill="#111" />
-                <text x={tipX + tipW / 2} y={tipY + 13} textAnchor="middle" fontSize="11" fontWeight="700" fill="#fff">
+                <rect x={tipX} y={tipY} width={tipW} height={tipH} rx="8" fill="#fff" stroke="#e5e7eb" />
+                <text x={tipX + tipW / 2} y={tipY + 13} textAnchor="middle" fontSize="11" fontWeight="700" fill="#111827">
                   {p.avg.toFixed(1)}/10
                 </text>
                 <text x={tipX + tipW / 2} y={tipY + 26} textAnchor="middle" fontSize="9" fill="#9ca3af">
