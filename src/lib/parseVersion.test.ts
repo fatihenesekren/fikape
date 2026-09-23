@@ -18,9 +18,10 @@ describe("parseVersion", () => {
     expect(parseVersion("AMG S 63 612", "otomobil")).toEqual({ base: "AMG S 63", hp: 612 });
   });
 
-  it("ilk token asla HP değildir", () => {
+  it("ilk token HP değildir — ardından batarya kapasitesi gelmedikçe", () => {
     expect(parseVersion("595 Competizione 180", "otomobil").base).toBe("595 Competizione");
     expect(parseVersion("595", "otomobil").hp).toBeNull();
+    expect(parseVersion("136 50kWh", "otomobil")).toEqual({ base: "50kWh", hp: 136 });
   });
 
   it("Audi/AMG model kodlarını HP sanmaz", () => {
@@ -52,6 +53,12 @@ describe("versionForTrimName", () => {
     expect(versionForTrimName("1.4 Boosterjet 129 AWD", "otomobil")).toBe("1.4 Boosterjet AWD");
     expect(versionForTrimName("Extended Range 204 72.8kWh", "otomobil")).toBe("Extended Range");
     expect(versionForTrimName("Long Range 84.5kW 49kWh", "otomobil")).toBe("Long Range");
+    expect(versionForTrimName("136 50kWh", "otomobil")).toBe("");
+  });
+
+  it("EV model kodunu batarya rakamıyla birlikte silmez", () => {
+    expect(versionForTrimName("iV 60 180 62kWh", "otomobil")).toBe("iV 60");
+    expect(versionForTrimName("EQA 250 190 66.5kWh", "otomobil")).toBe("EQA 250");
   });
 
   it("e-mobilite birimlerini kendi kategorisinde temizler", () => {

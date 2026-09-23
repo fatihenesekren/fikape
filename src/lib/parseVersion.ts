@@ -41,8 +41,13 @@ export function parseVersion(version: string, categorySlug: string): ParsedVersi
 
   const tokens = text.split(" ");
   let idx = -1;
-  for (let i = tokens.length - 1; i > 0; i--) {
-    if (/^\d{2,4}$/.test(tokens[i])) { idx = i; break; }
+  for (let i = tokens.length - 1; i >= 0; i--) {
+    if (!/^\d{2,4}$/.test(tokens[i])) continue;
+    // İlk token ancak ardından batarya kapasitesi geliyorsa HP'dir ("136 50kWh");
+    // aksi halde model kodudur ("595 Competizione").
+    if (i === 0 && !/^\d+(\.\d+)?kwh$/i.test(tokens[1] ?? "")) break;
+    idx = i;
+    break;
   }
   if (idx === -1) return { base: text, hp: null };
 
@@ -83,8 +88,12 @@ export function formatVersionLabel(version: string, categorySlug: string): strin
  */
 export function versionForTrimName(version: string, categorySlug: string): string {
   const isMotorluTasit = categorySlug === "otomobil" || categorySlug === "kamyonet";
-  return parseVersion(version, categorySlug).base
-    .replace(/(?:^|\s)\d+(\.\d+)?\s*(kw)?\s+\d+(\.\d+)?\s*kwh\b/i, "")
+  let text = parseVersion(version, categorySlug).base;
+  // "güç + batarya" çifti ("204 72.8kWh"). Otomobil/kamyonette HP'yi zaten
+  // parseVersion ayırdı; bu kural orada model kodunu da silerdi ("iV 60 62kWh"
+  // -> "iV", "EQA 250 66.5kWh" -> "EQA"), bu yüzden sadece diğer kategorilerde.
+  if (!isMotorluTasit) text = text.replace(/(?:^|\s)\d+(\.\d+)?\s*(kw)?\s+\d+(\.\d+)?\s*kwh\b/i, "");
+  return text
     .replace(/\d+(\.\d+)?\s*(kwh|ah)\b/gi, "")
     // "kW" her kategoride temizlenir, ama "V"/"W" tek başına SADECE otomobil/
     // kamyonet DIŞINDA — otomobilde "V" supap sayısı olabilir ("1.4 16V").

@@ -2,12 +2,79 @@
   "make": "Skoda",
   "models": [
     {
-      "name": "Fabia",
+      "name": "Fabia (1999-2007)",
       "versions": [
-        "1.0 MPI 65",
+        "1.0 50",
+        "1.2 HTP 54",
+        "1.2 HTP 64",
+        "1.4 68",
+        "1.4 16V 75",
+        "1.4 16V 101",
+        "2.0 115",
+        "1.9 SDI 64",
+        "1.4 TDI 75",
+        "1.9 TDI 100",
+        "RS 1.9 TDI 130",
+        "Diğer"
+      ],
+      "trims": [
+        "Classic",
+        "Comfort",
+        "Elegance",
+        "RS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "RS 1.9 TDI 130": [
+          "RS",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Fabia (2007-2014)",
+      "versions": [
+        "1.2 HTP 60",
+        "1.2 HTP 70",
+        "1.2 TSI 86",
+        "1.2 TSI 105",
+        "1.4 86",
+        "1.6 105",
+        "RS 1.4 TSI 180",
+        "1.2 TDI 75",
+        "1.4 TDI 80",
+        "1.6 TDI 90",
+        "1.6 TDI 105",
+        "1.9 TDI 105",
+        "Diğer"
+      ],
+      "trims": [
+        "Classic",
+        "Ambiente",
+        "Elegance",
+        "Monte Carlo",
+        "Scout",
+        "RS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "RS 1.4 TSI 180": [
+          "RS",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Fabia (2014-2021)",
+      "versions": [
+        "1.0 MPI 60",
+        "1.0 MPI 75",
         "1.0 TSI 95",
         "1.0 TSI 110",
-        "1.5 TSI 150",
+        "1.2 TSI 90",
+        "1.2 TSI 110",
+        "1.4 TDI 90",
+        "1.4 TDI 105",
         "Diğer"
       ],
       "trims": [
@@ -19,10 +86,12 @@
       ]
     },
     {
-      "name": "Rapid",
+      "name": "Fabia (2021-)",
       "versions": [
+        "1.0 MPI 65",
+        "1.0 MPI 80",
         "1.0 TSI 95",
-        "1.0 TSI 115",
+        "1.0 TSI 110",
         "1.5 TSI 150",
         "Diğer"
       ],
@@ -30,11 +99,44 @@
         "Active",
         "Ambition",
         "Style",
+        "Monte Carlo",
+        "Elite",
+        "Premium",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.5 TSI 150": [
+          "Style",
+          "Monte Carlo",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Rapid",
+      "versions": [
+        "1.0 TSI 95",
+        "1.0 TSI 110",
+        "1.2 MPI 75",
+        "1.2 TSI 86",
+        "1.2 TSI 105",
+        "1.4 TSI 122",
+        "1.4 TDI 90",
+        "1.6 TDI 90",
+        "1.6 TDI 105",
+        "Diğer"
+      ],
+      "trims": [
+        "Active",
+        "Ambition",
+        "Style",
+        "Elegance",
+        "Dynamic",
         "Diğer"
       ]
     },
     {
-      "name": "Octavia (1996-2004)",
+      "name": "Octavia / Octavia Tour (1996-2010)",
       "versions": [
         "1.4 60",
         "1.6 75",
@@ -54,8 +156,15 @@
         "Comfort",
         "Elegance",
         "RS",
+        "Tour",
         "Diğer"
-      ]
+      ],
+      "trimsByVersion": {
+        "RS 1.8T 180": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Octavia (2004-2013)",
@@ -64,6 +173,8 @@
         "1.6 102",
         "1.8 TFSI 160",
         "2.0 TFSI 200",
+        "1.4 TSI 122",
+        "1.9 TDI 105",
         "1.6 TDI 105",
         "2.0 TDI 110",
         "2.0 TDI 140",
@@ -78,8 +189,23 @@
         "Elegance",
         "Scout",
         "RS",
+        "Classic",
         "Diğer"
-      ]
+      ],
+      "trimsByVersion": {
+        "RS 2.0T 200": [
+          "RS",
+          "Diğer"
+        ],
+        "RS 2.0T 230": [
+          "RS",
+          "Diğer"
+        ],
+        "RS TDI 170": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Octavia (2013-2020)",
@@ -91,6 +217,7 @@
         "1.4 TSI 150",
         "1.8 TSI 180",
         "2.0 TSI 220",
+        "1.5 TSI 150",
         "1.6 TDI 90",
         "1.6 TDI 105",
         "1.6 TDI 115",
@@ -106,14 +233,29 @@
         "Style",
         "Scout",
         "RS",
+        "Optimal",
+        "Elegance",
+        "Sport",
         "Diğer"
-      ]
+      ],
+      "trimsByVersion": {
+        "RS 2.0T 220": [
+          "RS",
+          "Diğer"
+        ],
+        "RS 2.0T 230": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Octavia (2020-)",
       "versions": [
         "1.0 TSI 110",
         "1.5 TSI 150",
+        "1.0 e-TEC 110 MHEV",
+        "1.5 e-TEC 150 MHEV",
         "2.0 TSI 190",
         "2.0 TDI 115",
         "2.0 TDI 150",
@@ -128,8 +270,22 @@
         "Style",
         "Scout",
         "RS",
+        "Elite",
+        "Premium",
+        "Prestige",
+        "Sportline",
         "Diğer"
-      ]
+      ],
+      "trimsByVersion": {
+        "RS 2.0 TSI 245": [
+          "RS",
+          "Diğer"
+        ],
+        "RS 2.0 TDI 200": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Superb (2001-2008)",
@@ -156,6 +312,7 @@
         "2.0 TSI 200",
         "1.6 TDI 105",
         "2.0 TDI 140",
+        "2.0 TDI 140 4x4",
         "2.0 TDI 170",
         "Diğer"
       ],
@@ -163,14 +320,19 @@
         "Ambition",
         "Elegance",
         "L&K",
+        "Active",
+        "Comfort",
         "Diğer"
       ]
     },
     {
       "name": "Superb (2015-2023)",
       "versions": [
+        "1.4 TSI 125",
+        "1.4 TSI 150",
         "1.5 TSI 150 ACT",
         "2.0 TSI 272 4x4",
+        "1.6 TDI 120",
         "2.0 TDI 150",
         "2.0 TDI 190 4x4",
         "1.4 TSI iV PHEV 218",
@@ -182,14 +344,22 @@
         "L&K",
         "Scout",
         "Sportline",
+        "Active",
+        "Comfort",
+        "Comfort Plus",
+        "Prestige",
+        "Elite",
+        "Premium",
+        "L&K Crystal",
         "Diğer"
       ]
     },
     {
       "name": "Superb (2023-)",
       "versions": [
-        "1.5 TSI 150",
+        "1.5 TSI 150 MHEV",
         "2.0 TSI 265 4x4",
+        "1.5 TSI iV PHEV 204",
         "2.0 TDI 150",
         "2.0 TDI 193 4x4",
         "Diğer"
@@ -199,6 +369,10 @@
         "Style",
         "L&K",
         "Sportline",
+        "Premium",
+        "Prestige",
+        "L&K Crystal",
+        "e-Sportline",
         "Diğer"
       ]
     },
@@ -273,6 +447,7 @@
       "versions": [
         "1.0 TSI 115",
         "1.5 TSI 150",
+        "1.6 TDI 115",
         "Diğer"
       ],
       "trims": [
@@ -280,6 +455,9 @@
         "Ambition",
         "Style",
         "Monte Carlo",
+        "Comfort",
+        "Elite",
+        "Premium",
         "Diğer"
       ]
     },
@@ -289,6 +467,7 @@
         "1.0 TSI 95",
         "1.0 TSI 110",
         "1.5 TSI 150",
+        "1.6 TDI 115",
         "Diğer"
       ],
       "trims": [
@@ -296,6 +475,8 @@
         "Ambition",
         "Style",
         "Monte Carlo",
+        "Elite",
+        "Premium",
         "Diğer"
       ]
     },
@@ -305,6 +486,7 @@
         "1.0 TSI 115",
         "1.5 TSI 150 ACT",
         "2.0 TSI 190 4x4",
+        "1.6 TDI 115",
         "2.0 TDI 115",
         "2.0 TDI 150 4x4",
         "Diğer"
@@ -315,17 +497,26 @@
         "Style",
         "Scout",
         "Sportline",
+        "Elite",
+        "Prestige",
         "Diğer"
       ]
     },
     {
-      "name": "Kodiaq",
+      "name": "Kodiaq (2016-2023)",
       "versions": [
+        "1.4 TSI 125",
+        "1.4 TSI 150",
         "1.5 TSI 150",
+        "1.5 TSI 150 4x4",
+        "2.0 TSI 180 4x4",
         "2.0 TSI 190 4x4",
-        "2.0 TSI 265 4x4 RS",
+        "2.0 TDI 150",
         "2.0 TDI 150 4x4",
+        "2.0 TDI 190 4x4",
         "2.0 TDI 200 4x4",
+        "RS 2.0 BiTDI 240 4x4",
+        "RS 2.0 TSI 245 4x4",
         "Diğer"
       ],
       "trims": [
@@ -335,13 +526,53 @@
         "Scout",
         "Sportline",
         "RS",
+        "Prestige",
         "Diğer"
-      ]
+      ],
+      "trimsByVersion": {
+        "RS 2.0 BiTDI 240 4x4": [
+          "RS",
+          "Diğer"
+        ],
+        "RS 2.0 TSI 245 4x4": [
+          "RS",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Kodiaq (2024-)",
+      "versions": [
+        "1.5 TSI 150 MHEV",
+        "1.5 TSI iV PHEV 204",
+        "2.0 TSI 204 4x4",
+        "2.0 TDI 150",
+        "2.0 TDI 193 4x4",
+        "RS 2.0 TSI 265 4x4",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambition",
+        "Style",
+        "L&K",
+        "Scout",
+        "Sportline",
+        "RS",
+        "Premium",
+        "Prestige",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "RS 2.0 TSI 265 4x4": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Enyaq",
       "versions": [
-        "iV 60 179 60kWh",
+        "iV 60 180 62kWh",
         "iV 80 204 82kWh",
         "iV 80x 265 82kWh AWD",
         "RS 299 82kWh AWD",
