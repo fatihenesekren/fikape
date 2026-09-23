@@ -35,11 +35,21 @@ export function yilNesilleri(model: KatalogModel, yil: number): KatalogNesil[] {
   return model.nesiller.filter((n) => n.el && n.bas <= yil && yil <= (n.bit ?? BUGUN_YIL));
 }
 
+export const VERSIYON_YOK = "Versiyon belirtilmemiş";
+
 /** Versiyon etiketi: "1.6 E-Torq · 110 HP". Aynı etiketli tipler tek seçenek olur. */
 export function versiyonEtiketi(t: Pick<KatalogTip, "v" | "hp">): string {
-  const v = t.v || "Versiyon belirtilmemiş";
+  const v = t.v || VERSIYON_YOK;
   return t.hp ? `${v} · ${t.hp} HP` : v;
 }
+
+/**
+ * Kaynakta bu tiplerin HİÇBİRİNDE motor metni ya da beygir yoksa (yalnızca
+ * donanım paketiyle ayrışan araçlar, ör. bazı klasik/lüks modeller) Versiyon
+ * adımının gösterilmesi anlamsız — tek seçenek olsa bile içi boş bir
+ * "Versiyon belirtilmemiş" rozeti kullanıcıya bir şey söylemez.
+ */
+export const versiyonBilgisiVarMi = (tipler: KatalogTip[]) => tipler.some((t) => t.v || t.hp);
 
 export const PAKET_YOK = "Paket adı belirtilmemiş";
 export const KASA_YOK = "Kasa tipi belirtilmemiş";
@@ -79,5 +89,5 @@ export function ortakBeygir(tipler: KatalogTip[]): number | null {
 
 /** Ürünün kalıcı adına girecek metin: "1.6 E-Torq – Urban" (beygir ayrı alanda tutulur). */
 export function trimAdi(versiyon: string | null, paket: string | null): string {
-  return [versiyon, paket].filter((x) => x && x !== PAKET_YOK && x !== "Versiyon belirtilmemiş").join(" – ");
+  return [versiyon, paket].filter((x) => x && x !== PAKET_YOK && x !== VERSIYON_YOK).join(" – ");
 }

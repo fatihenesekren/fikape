@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi, versiyonSecenekleri, versiyonaGore,
-  vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri,
+  versiyonBilgisiVarMi, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri,
 } from "./secim";
 import type { KatalogModel, KatalogTip } from "./tipler";
 
@@ -48,6 +48,12 @@ describe("katalog seçimi", () => {
     expect(modelYillari(golf)).toEqual([2014, 2013, 2011, 2010, 2009, 2008]);
     expect(yilTipleri(golf, 2011)).toEqual([]);
     expect(yilNesilleri(golf, 2011).map((n) => n.ad)).toEqual(["Golf 6 (2008-2012)"]);
+  });
+
+  it("versiyonBilgisiVarMi — motor/beygir yoksa Versiyon adımı anlamsız sayılır", () => {
+    expect(versiyonBilgisiVarMi([tip({ v: "", hp: null, p: "S" })])).toBe(false);
+    expect(versiyonBilgisiVarMi([tip({ v: "", hp: 204, p: null })])).toBe(true); // yalnız kW'den gelen beygir de yeterli
+    expect(versiyonBilgisiVarMi([tip({ v: "1.6 E-Torq", hp: null })])).toBe(true);
   });
 
   it("trim adı ve beygir", () => {

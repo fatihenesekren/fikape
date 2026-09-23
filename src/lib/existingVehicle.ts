@@ -8,6 +8,8 @@ export interface ExistingVehicleMatch {
   year: number | null;
   trimName: string | null;
   transmission: string | null;
+  /** GASOLINE/DIESEL/EV/... — attributes.fuel_type; formda kullanıcının seçimiyle karşılaştırmak için. */
+  fuelType: string | null;
   reviewCount: number;
 }
 
@@ -82,6 +84,7 @@ export async function findExistingVehicles(
       trimName: p.trimName,
       transmission:
         ((p.attributes as Record<string, unknown> | null)?.transmission as string | undefined) ?? null,
+      fuelType: ((p.attributes as Record<string, unknown> | null)?.fuel_type as string | undefined) ?? null,
       reviewCount: p._count.reviews,
     }))
     .sort(

@@ -11,7 +11,7 @@ import katalogIndex from "@/data/katalogIndex.json";
 import type { KatalogIndex, KatalogKategori, KatalogMarkaDosyasi } from "@/lib/katalog/tipler";
 import {
   kasaSecenekleri, kasayaGore, modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi,
-  versiyonSecenekleri, versiyonaGore, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri, BUGUN_YIL,
+  versiyonSecenekleri, versiyonaGore, versiyonBilgisiVarMi, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri, BUGUN_YIL,
   type AlanDurumu,
 } from "@/lib/katalog/secim";
 import { formatVersionLabel, parseVersion, versionForTrimName } from "@/lib/parseVersion";
@@ -279,7 +279,10 @@ export default function KatalogAracSecimi({
         </Alan>
       )}
 
-      {tsbModu && etkinKasa && (
+      {/* Kaynakta bu model için hiçbir motor/beygir bilgisi yoksa (yalnız paketle
+          ayrışıyor) boş "Versiyon belirtilmemiş" alanı göstermenin anlamı yok —
+          adım atlanır, doğrudan Donanım Paketi'ne geçilir. */}
+      {tsbModu && etkinKasa && versiyonBilgisiVarMi(t1) && (
         <Alan label="Versiyon">
           {/* Tek seçenekte de select: önceden seçili gelir, "Listede yok" ile kaçış mümkün */}
           {(

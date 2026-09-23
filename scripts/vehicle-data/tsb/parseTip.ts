@@ -385,6 +385,19 @@ export function parseTip(tsbMarka: string, tipAdi: string, deglue?: Deglue, raka
   if (vites === "MANUAL") vitesTuru = "Manuel";
   else if (vites === "AUTOMATIC") vitesTuru ??= "Otomatik";
   if (hp === null && kw !== null) hp = Math.round(kw * 1.35962);
+  // Parantez içi sayı normalde beygirdir ("i3 (170)") ama kaynakta en az bir
+  // satırda (Dodge Challenger/Charger SRT8 "(6400)") bariz motor hacmi/kod
+  // gibi görünüyor, beygir değil — imkânsız değeri tahmin etmek yerine at.
+  if (hp !== null && (hp < 40 || hp > 1500)) { hp = null; uyarilar.push("beygir-supheli"); }
+  // Elektrikli araçlarda motor genelde hacimle değil kW/kWh ile anılıyor — bu
+  // bilgi beygire çevrilse bile versiyon metni boş kalmasın diye burada da yazılır
+  // (ör. "170 kW" · 231 HP). Sadece parantezden gelen çıplak beygirde (kW/kWh
+  // yoksa) tekrarı önlemek için "Elektrik" gibi jenerik bir söz konur.
+  if (!motorParts.length && kw !== null) motorParts.push(`${kw} kW`);
+  else if (!motorParts.length && bataryaKwh !== null) motorParts.push(`${bataryaKwh} kWh`);
+  else if (!motorParts.length && hp !== null && (yakit === "EV" || yakit === "HYBRID" || yakit === "PHEV")) {
+    motorParts.push(yakit === "EV" ? "Elektrik" : yakit === "PHEV" ? "Plug-in Hibrit" : "Hibrit");
+  }
   if (hp === null) uyarilar.push("beygir-yok");
   if (!motorParts.length) uyarilar.push("motor-yok");
   if (hit.key.length > 14 && !hit.key.includes(" ")) uyarilar.push("model-supheli");

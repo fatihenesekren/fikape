@@ -23,7 +23,9 @@ describe("parseTip — TSB tip adı ayrıştırma", () => {
   });
 
   it("parantezli sayı beygirdir", () => {
-    expect(ok("BMW", "i3 (170)")).toMatchObject({ model: "i3", hp: 170, yakit: "EV", vites: "AUTOMATIC", vitesKaynak: "kural-ev" });
+    // "(170)" başka bir motor/kW bilgisi yokken tek başına kalınca versiyon
+    // metni boş olmasın diye jenerik "Elektrik" ile tamamlanır.
+    expect(ok("BMW", "i3 (170)")).toMatchObject({ model: "i3", motor: "Elektrik", hp: 170, yakit: "EV", vites: "AUTOMATIC", vitesKaynak: "kural-ev" });
   });
 
   it("BMW motor kodundan seri ve yakıt çıkar", () => {
@@ -125,6 +127,23 @@ describe("parseTip — TSB tip adı ayrıştırma", () => {
     expect(ok("RENAULT", "MASTER PANELVAN L4H3 17M3 CT 4.5T 165 D-FULL")).toMatchObject({ yakit: null, yakitKaynak: null });
     // Açık "DIZEL" kelimesi çelişkiyi çözer
     expect(ok("OPEL", "CORSA 1.3 ECOTEC 95 EASYTRONIC S&S DIZEL").yakit).toBe("DIESEL");
+  });
+
+  it("yalnız kW ile anılan elektrikli motorlarda versiyon metni boş kalmaz", () => {
+    // Motor hacmi/aile kelimesi yok, tek bilgi "150KW" — beygire çevrilir AMA
+    // versiyon metni de boş kalmamalı (aksi halde "Versiyon belirtilmemiş · 204 HP" gibi
+    // tutarsız görünür) — bkz. kullanıcı geri bildirimi.
+    const t = ok("BYD", "ATTO 3 150KW");
+    expect(t.motor).toBe("150 kW");
+    expect(t.hp).toBe(204);
+  });
+
+  it("mantıksız beygir değerini (kaynağın kendi hatası) tahmin etmeden atar", () => {
+    // Gerçek TSB satırı: "(6400)" burada beygir değil — 6.4L motoru işaret ediyor
+    // gibi görünüyor ama emin olunamaz; 1500'ün üstü beygir güvenilmez sayılır.
+    const t = ok("DODGE/USA", "CHALLENGER SRT8 (6400)");
+    expect(t.hp).toBeNull();
+    expect(t.paket).toBe("SRT8");
   });
 
   it("kaynaktaki yazım hatasını düzeltir ve kaydeder", () => {
