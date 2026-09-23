@@ -25,10 +25,11 @@ describe("resolveOnerPrefill", () => {
     expect(resolveOnerPrefill("?brandName=tesla").selectedMake).toBe("Tesla");
   });
 
-  it("nesil belirsiz (clio → Clio 2/3/4/5) → marka dolu, model BOŞ", () => {
+  it("tam model adı öncelikli (clio → Clio, \"Clio Sport Tourer\" değil) — nesil yıl seçimiyle belirlenir", () => {
     const r = resolveOnerPrefill("?q=clio");
+    expect(r.categorySlug).toBe("otomobil");
     expect(r.selectedMake).toBe("Renault");
-    expect(r.selectedModel).toBe("");
+    expect(r.selectedModel).toBe("Clio");
   });
 
   it("tek nesil / tam model adı → model de dolar", () => {
@@ -50,8 +51,8 @@ describe("resolveOnerPrefill", () => {
     selectedModel: "", customModel: "", notes: "",
   };
 
-  it("katalogda olmayan tek kelime marka (lada) → HİÇBİR ŞEY doldurma", () => {
-    expect(resolveOnerPrefill("?q=lada")).toEqual(EMPTY);
+  it("katalogda olmayan tek kelime marka (trabant) → HİÇBİR ŞEY doldurma", () => {
+    expect(resolveOnerPrefill("?q=trabant")).toEqual(EMPTY);
   });
 
   it("anlamsız girdi (sdfg) → HİÇBİR ŞEY doldurma", () => {
@@ -59,6 +60,6 @@ describe("resolveOnerPrefill", () => {
   });
 
   it("hiç eşleşmeyen çok kelimeli sorgu → HİÇBİR ŞEY doldurma", () => {
-    expect(resolveOnerPrefill("?q=chery tiggo 7")).toEqual(EMPTY);
+    expect(resolveOnerPrefill("?q=trabant 601")).toEqual(EMPTY);
   });
 });

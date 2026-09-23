@@ -1,4 +1,17 @@
 import vehiclesData from "@/data/vehicles.json";
+import katalogIndex from "@/data/katalogIndex.json";
+import type { KatalogIndex } from "@/lib/katalog/tipler";
+
+// Otomobil/kamyonet adları TSB tabanlı katalogdan (Araç Öner formu da onu kullanıyor);
+// diğer kategoriler henüz vehicles.json'da. Ön-doldurulan ad formdaki seçenekle
+// birebir aynı olmalı, yoksa form seçimi tanımaz.
+type OnerMarka = { make: string; models: { name: string }[] };
+const KATALOG = katalogIndex as KatalogIndex;
+const KAYNAK: Record<string, OnerMarka[]> = {
+  ...(vehiclesData as unknown as Record<string, OnerMarka[]>),
+  otomobil: KATALOG.otomobil.map((m) => ({ make: m.marka, models: m.modeller.map((name) => ({ name })) })),
+  kamyonet: KATALOG.kamyonet.map((m) => ({ make: m.marka, models: m.modeller.map((name) => ({ name })) })),
+};
 
 // /arama "eşleşme yok" akışından /oner'e taşınan ham arama sorgusunu forma
 // çözer. YALNIZCA sorgu kataloğa (vehicles.json) gerçekten eşleşiyorsa
@@ -40,7 +53,7 @@ export function resolveOnerPrefill(search: string): OnerPrefill {
 
   const q = raw.slice(0, 60);
   const nq = norm(q);
-  const cats = Object.entries(vehiclesData) as [OnerCategoryKey, (typeof vehiclesData)[OnerCategoryKey]][];
+  const cats = Object.entries(KAYNAK) as [OnerCategoryKey, OnerMarka[]][];
 
   // 1) Tam marka eşleşmesi (herhangi bir kategoride)
   for (const [cat, makesList] of cats) {

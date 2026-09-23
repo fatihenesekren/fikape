@@ -9,6 +9,7 @@ import { parseVersion, formatVersionLabel, versionForTrimName } from "@/lib/pars
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 import { resolveOnerPrefill, type OnerCategoryKey } from "@/lib/onerPrefill";
 import type { ExistingVehicleMatch } from "@/lib/existingVehicle";
+import KatalogAracSecimi, { type KatalogSecimSonucu } from "./KatalogAracSecimi";
 
 const CATEGORIES = [
   { value: "otomobil",   label: "Otomobil" },
@@ -126,7 +127,12 @@ export default function OnerPage() {
   const [checkingExisting, setCheckingExisting] = useState(false);
   const existingCardRef = useRef<HTMLDivElement>(null);
 
-  const makes      = categorySlug ? vehiclesData[categorySlug] : [];
+  // Otomobil/kamyonet: TSB tabanlı katalog (KatalogAracSecimi). Diğer kategoriler
+  // henüz eski vehicles.json listesiyle çalışıyor.
+  const katalogModu = categorySlug === "otomobil" || categorySlug === "kamyonet";
+  const [katalogSecim, setKatalogSecim] = useState<KatalogSecimSonucu | null>(null);
+
+  const makes      = categorySlug && !katalogModu ? vehiclesData[categorySlug] : [];
   const makeEntry  = makes.find((m) => m.make === selectedMake);
   const models     = (makeEntry?.models ?? []) as {
     name: string;
@@ -153,11 +159,13 @@ export default function OnerPage() {
 
   // Marka + model katalogdan seçilince: bu araç zaten ACTIVE katalogda mı?
   // (setState yalnızca .then/.finally içinde — senkron effect-body setState yok.)
+  const kontrolMarka = katalogModu ? katalogSecim?.brandName ?? "" : isOtherMake ? "" : selectedMake;
+  const kontrolModel = katalogModu ? katalogSecim?.modelName ?? "" : isOtherModel ? "" : selectedModel;
   useEffect(() => {
-    if (!selectedMake || !selectedModel || isOtherMake || isOtherModel) return;
+    if (!kontrolMarka || !kontrolModel) return;
     let cancelled = false;
-    const brand = selectedMake;
-    const model = selectedModel;
+    const brand = kontrolMarka;
+    const model = kontrolModel;
     const cat   = categorySlug;
     const t = setTimeout(() => {
       setCheckingExisting(true);
@@ -172,7 +180,7 @@ export default function OnerPage() {
         .finally(() => { if (!cancelled) setCheckingExisting(false); });
     }, 300);
     return () => { cancelled = true; clearTimeout(t); };
-  }, [selectedMake, selectedModel, isOtherMake, isOtherModel, categorySlug]);
+  }, [kontrolMarka, kontrolModel, categorySlug]);
 
   function handleCategoryChange(val: string) {
     setCategorySlug(val as CategoryKey | "");
@@ -182,6 +190,7 @@ export default function OnerPage() {
     setSelectedTrim(""); setCustomTrim("");
     setFuelType("");
     setTransmission("");
+    setKatalogSecim(null);
     setExistingMatches([]);
   }
 
@@ -205,8 +214,8 @@ export default function OnerPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const brandName  = isOtherMake     ? customMake.trim()  : selectedMake;
-    const modelName  = isOtherModel   ? customModel.trim()  : selectedModel;
+    const brandName  = katalogModu ? katalogSecim?.brandName ?? "" : isOtherMake ? customMake.trim() : selectedMake;
+    const modelName  = katalogModu ? katalogSecim?.modelName ?? "" : isOtherModel ? customModel.trim() : selectedModel;
     const versionFin = isOtherVersion ? customVersion.trim() : selectedVersion;
     const trimFin    = isOtherTrim    ? customTrim.trim()    : selectedTrim;
 
@@ -225,14 +234,19 @@ export default function OnerPage() {
       // Versiyon metnindeki HP/EV rakamları trimName'e girmez (bkz. parseVersion);
       // katalogdan seçildiyse HP ayrıca power_hp olarak gönderilir.
       const versionClean = versionForTrimName(versionFin, categorySlug);
-      const powerHp = !isOtherVersion && selectedVersion
-        ? parseVersion(selectedVersion, categorySlug).hp
-        : null;
-      const trimName = [versionClean, trimFin].filter(Boolean).join(" – ") || "";
+      const powerHp = katalogModu
+        ? katalogSecim?.powerHp ?? null
+        : !isOtherVersion && selectedVersion ? parseVersion(selectedVersion, categorySlug).hp : null;
+      const trimName = katalogModu
+        ? katalogSecim?.trimName ?? ""
+        : [versionClean, trimFin].filter(Boolean).join(" – ") || "";
+      const gonder = katalogModu
+        ? { year: katalogSecim?.year ?? "", fuelType: katalogSecim?.fuelType ?? "", transmission: katalogSecim?.transmission ?? "" }
+        : { year, fuelType, transmission };
       const res = await fetch("/api/oneriler", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, powerHp }),
+        body: JSON.stringify({ brandName, modelName, categorySlug, trimName, notes, powerHp, ...gonder }),
       });
       const text = await res.text();
       let data: Record<string, unknown> = {};
@@ -351,7 +365,19 @@ export default function OnerPage() {
           </select>
         </div>
 
+        {katalogModu && (
+          <KatalogAracSecimi
+            key={categorySlug}
+            kategori={categorySlug}
+            baslangicMarka={prefill.categorySlug === categorySlug ? prefill.selectedMake : ""}
+            baslangicModel={prefill.categorySlug === categorySlug ? prefill.selectedModel : ""}
+            baslangicOzelModel={prefill.categorySlug === categorySlug ? prefill.customModel : ""}
+            onChange={setKatalogSecim}
+          />
+        )}
+
         {/* Marka */}
+        {!katalogModu && (
         <div>
           <label className="block text-xs font-semibold text-gray-700 mb-1">
             Marka <span className="text-red-500">*</span>
@@ -377,9 +403,10 @@ export default function OnerPage() {
             />
           )}
         </div>
+        )}
 
         {/* Model */}
-        {selectedMake && (
+        {!katalogModu && selectedMake && (
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">
               Model <span className="text-red-500">*</span>
@@ -459,7 +486,7 @@ export default function OnerPage() {
         )}
 
         {/* Versiyon */}
-        {selectedModel && !isOtherModel && versions.length > 0 && (
+        {!katalogModu && selectedModel && !isOtherModel && versions.length > 0 && (
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">Versiyon</label>
             <select
@@ -488,7 +515,7 @@ export default function OnerPage() {
         )}
 
         {/* Donanım */}
-        {selectedModel && !isOtherModel && trims.length > 0 && (
+        {!katalogModu && selectedModel && !isOtherModel && trims.length > 0 && (
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">Donanım Paketi</label>
             <select
@@ -508,6 +535,7 @@ export default function OnerPage() {
         )}
 
         {/* Yıl & Yakıt & Vites */}
+        {!katalogModu && (
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">Yıl</label>
@@ -538,6 +566,7 @@ export default function OnerPage() {
             </div>
           )}
         </div>
+        )}
 
         {/* Not */}
         <div>
