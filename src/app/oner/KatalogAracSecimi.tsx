@@ -21,7 +21,7 @@ const DIGER_MARKA = "Diğer / Bulamadım";
 const DIGER = "Diğer";
 const LISTEDE_YOK = "Listede yok";
 
-export const YAKITLAR = [
+const TUM_YAKITLAR = [
   { value: "GASOLINE", label: "Benzin" },
   { value: "DIESEL", label: "Dizel" },
   { value: "EV", label: "Elektrikli (EV)" },
@@ -29,6 +29,12 @@ export const YAKITLAR = [
   { value: "HYBRID", label: "Hibrit" },
   { value: "LPG", label: "LPG" },
 ];
+/** Motosiklette dizel/hibrit/LPG fiilen yok — serbest seçimde yalnız bunlar sunulur. */
+export const YAKITLAR: Record<KatalogKategori, { value: string; label: string }[]> = {
+  otomobil: TUM_YAKITLAR,
+  kamyonet: TUM_YAKITLAR,
+  motosiklet: TUM_YAKITLAR.filter((o) => o.value === "GASOLINE" || o.value === "EV"),
+};
 const VITESLER: Record<KatalogKategori, { value: string; label: string }[]> = {
   otomobil: [
     { value: "Manuel", label: "Manuel" },
@@ -41,6 +47,10 @@ const VITESLER: Record<KatalogKategori, { value: string; label: string }[]> = {
     { value: "Otomatik", label: "Otomatik" },
     { value: "CVT", label: "CVT" },
     { value: "Yarı Otomatik", label: "Yarı Otomatik" },
+  ],
+  motosiklet: [
+    { value: "Manuel", label: "Manuel" },
+    { value: "Otomatik", label: "Otomatik" },
   ],
 };
 const TUM_YILLAR = Array.from({ length: BUGUN_YIL - 1990 + 1 }, (_, i) => BUGUN_YIL - i);
@@ -165,7 +175,7 @@ export default function KatalogAracSecimi({
   const tipTamam = tsbModu && t2.length > 0;
   const yakit: AlanDurumu<string> = tipTamam ? yakitDurumu(t3) : { serbest: true };
   const vites: AlanDurumu<string> = tipTamam ? vitesDurumu(t3) : { serbest: true };
-  const yakitSecenek = durumSecenekleri(yakit, YAKITLAR);
+  const yakitSecenek = durumSecenekleri(yakit, YAKITLAR[kategori]);
   const vitesSecenek = durumSecenekleri(vites, VITESLER[kategori]);
   const etkinYakit =
     "kilitli" in yakit ? yakit.kilitli : yakitSecenek.some((o) => o.value === yakitSecim) ? yakitSecim : "";
@@ -357,7 +367,7 @@ export default function KatalogAracSecimi({
         <div className="grid grid-cols-2 gap-3">
           <Alan label="Yakıt Tipi">
             {"kilitli" in yakit ? (
-              <KilitliDeger deger={YAKITLAR.find((o) => o.value === yakit.kilitli)?.label ?? yakit.kilitli} />
+              <KilitliDeger deger={YAKITLAR[kategori].find((o) => o.value === yakit.kilitli)?.label ?? yakit.kilitli} />
             ) : (
               <select value={etkinYakit} onChange={(e) => setYakitSecim(e.target.value)} className={selectCls}>
                 <option value="">— Seçin —</option>

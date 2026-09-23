@@ -129,7 +129,7 @@ export default function OnerPage() {
 
   // Otomobil/kamyonet: TSB tabanlı katalog (KatalogAracSecimi). Diğer kategoriler
   // henüz eski vehicles.json listesiyle çalışıyor.
-  const katalogModu = categorySlug === "otomobil" || categorySlug === "kamyonet";
+  const katalogModu = categorySlug === "otomobil" || categorySlug === "kamyonet" || categorySlug === "motosiklet";
   const [katalogSecim, setKatalogSecim] = useState<KatalogSecimSonucu | null>(null);
 
   const makes      = categorySlug && !katalogModu ? vehiclesData[categorySlug] : [];

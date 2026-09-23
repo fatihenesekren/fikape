@@ -5,7 +5,7 @@
 // Her "tip" gerçekte satılmış bir kombinasyondur (TSB satırı). Form seçimleri
 // tipleri adım adım süzer; böylece var olmayan bir kombinasyon seçilemez.
 
-export type KatalogKategori = "otomobil" | "kamyonet";
+export type KatalogKategori = "otomobil" | "kamyonet" | "motosiklet";
 
 export type KatalogYakit = "GASOLINE" | "DIESEL" | "HYBRID" | "PHEV" | "EV" | "LPG";
 /** Araç Öner'in vites seçenekleriyle aynı değerler. */

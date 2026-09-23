@@ -22,13 +22,18 @@ import type {
   KatalogIndex, KatalogKategori, KatalogMarkaDosyasi, KatalogModel, KatalogNesil, KatalogTip,
 } from "../../../src/lib/katalog/tipler";
 import type { KatalogTip as TsbTip } from "./build";
+import type { MotoKatalogTip } from "./motoBuild";
 import { fold } from "./rules";
 
 const root = process.cwd();
 const incele = path.join(root, "scripts", "vehicle-data", "_inceleme");
 const tsb = JSON.parse(fs.readFileSync(path.join(incele, "tsb-katalog.json"), "utf8")) as {
   baslik: string;
-  katalog: Record<KatalogKategori, Record<string, Record<string, { model: string; tipler: TsbTip[] }>>>;
+  katalog: Record<"otomobil" | "kamyonet", Record<string, Record<string, { model: string; tipler: TsbTip[] }>>>;
+};
+const tsbMoto = JSON.parse(fs.readFileSync(path.join(incele, "tsb-moto-katalog.json"), "utf8")) as {
+  baslik: string;
+  katalog: Record<string, Record<string, { model: string; tipler: MotoKatalogTip[] }>>;
 };
 type EskiModel = { name: string; versions: string[]; trims: string[]; trimsByVersion?: Record<string, string[]> };
 const eski = JSON.parse(fs.readFileSync(path.join(root, "src", "data", "vehicles.json"), "utf8")) as Record<
@@ -36,7 +41,9 @@ const eski = JSON.parse(fs.readFileSync(path.join(root, "src", "data", "vehicles
   { make: string; models: EskiModel[] }[]
 >;
 
-const KATEGORILER: KatalogKategori[] = ["otomobil", "kamyonet"];
+const KATEGORILER: KatalogKategori[] = ["otomobil", "kamyonet", "motosiklet"];
+/** Bir modelin "diğer kategoride de var mı?" çapraz kontrolü yalnız oto/kamyonet arasında anlamlı (ör. Transit Connect). */
+const CAPRAZ_KATEGORI: Partial<Record<KatalogKategori, KatalogKategori>> = { otomobil: "kamyonet", kamyonet: "otomobil" };
 const DIGER_MARKA = "Diğer / Bulamadım";
 const TSB_ILK_YIL = 2012;
 
@@ -116,27 +123,39 @@ const elSecenek = (em: EskiModel): NonNullable<KatalogNesil["el"]> => ({
   ...(em.trimsByVersion ? { paketlerVersiyona: em.trimsByVersion } : {}),
 });
 
+/** Motosiklet tipini (model/motor ayrımı yok) forma çevirir — v/p/k/hp/t hep boş, tek tip. */
+function motoTipleriCevir(tipler: MotoKatalogTip[]): KatalogTip[] {
+  const yillar = [...new Set(tipler.flatMap((t) => t.yillar))].sort((a, b) => a - b);
+  const yakitlar = new Set(tipler.map((t) => t.yakit));
+  return [{ v: "", hp: null, p: null, k: null, y: yillar, f: yakitlar.size === 1 ? [...yakitlar][0] : null, t: null }];
+}
+
 // ─── 1) TSB modelleri ─────────────────────────────────────────────────────
 type MarkaDurum = { marka: string; modeller: KatalogModel[]; tsbVar: boolean; not: Record<string, string[]> };
-const durum: Record<KatalogKategori, Map<string, MarkaDurum>> = { otomobil: new Map(), kamyonet: new Map() };
+const durum: Record<KatalogKategori, Map<string, MarkaDurum>> = { otomobil: new Map(), kamyonet: new Map(), motosiklet: new Map() };
 const markaAl = (kat: KatalogKategori, ad: string) => {
   const k = anahtar(ad);
   let d = durum[kat].get(k);
   if (!d) { d = { marka: ad, modeller: [], tsbVar: false, not: { eslesen: [], atilan: [], tek: [] } }; durum[kat].set(k, d); }
   return d;
 };
-for (const kat of KATEGORILER) {
+for (const kat of ["otomobil", "kamyonet"] as const) {
   for (const [marka, modeller] of Object.entries(tsb.katalog[kat])) {
     const d = markaAl(kat, marka);
     d.tsbVar = true;
     for (const m of Object.values(modeller)) d.modeller.push({ ad: m.model, nesiller: [], tipler: tipleriCevir(m.tipler) });
   }
 }
+for (const [marka, modeller] of Object.entries(tsbMoto.katalog)) {
+  const d = markaAl("motosiklet", marka);
+  d.tsbVar = true;
+  for (const m of Object.values(modeller)) d.modeller.push({ ad: m.model, nesiller: [], tipler: motoTipleriCevir(m.tipler) });
+}
 
 // ─── 2) Eski katalog: nesil olarak bağla, atla ya da tek başına ekle ────────
 const sayac = { nesil: 0, atilan: 0, tek: 0 };
 for (const kat of KATEGORILER) {
-  const digerKat = KATEGORILER.find((k) => k !== kat)!;
+  const digerKat: KatalogKategori = CAPRAZ_KATEGORI[kat] ?? kat; // çapraz kategori yoksa kendine düşer (zararsız, no-op)
   for (const em of eski[kat] ?? []) {
     if (em.make === DIGER_MARKA) continue;
     const mAnahtar = anahtar(em.make);
@@ -163,6 +182,9 @@ for (const kat of KATEGORILER) {
 
     for (const m of em.models) {
       if (m.name === "Diğer") continue;
+      // Eski motosiklet kataloğunda birkaç ATV/quad kaydı yanlışlıkla motosiklet
+      // sayılmış (bkz. TSB tarafında aynı kural) — burada da eleniyor.
+      if (kat === "motosiklet" && /\bATV|\bQUAD|\bUTV|4X4/i.test(m.name)) continue;
       const aralik = yilAraligi(m.name);
       const hedef = bul(buKat, m.name) ?? bul(digerMarka, m.name);
       const hedefKat = hedef && buKat.modeller.includes(hedef) ? kat : digerKat;
@@ -195,7 +217,7 @@ const rapor: string[] = [
   `# Katalog birleştirme raporu — ${tsb.baslik}`, "",
   `Eski nesil TSB modeline bağlandı: ${sayac.nesil} · eski kayıt atıldı (TSB kapsıyor): ${sayac.atilan} · eski kayıt tek başına kaldı: ${sayac.tek}`, "",
 ];
-const index = { otomobil: [], kamyonet: [] } as KatalogIndex;
+const index = { otomobil: [], kamyonet: [], motosiklet: [] } as KatalogIndex;
 for (const kat of KATEGORILER) {
   const outDir = path.join(root, "public", "katalog", kat);
   fs.rmSync(outDir, { recursive: true, force: true });

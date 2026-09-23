@@ -11,6 +11,7 @@ const KAYNAK: Record<string, OnerMarka[]> = {
   ...(vehiclesData as unknown as Record<string, OnerMarka[]>),
   otomobil: KATALOG.otomobil.map((m) => ({ make: m.marka, models: m.modeller.map((name) => ({ name })) })),
   kamyonet: KATALOG.kamyonet.map((m) => ({ make: m.marka, models: m.modeller.map((name) => ({ name })) })),
+  motosiklet: KATALOG.motosiklet.map((m) => ({ make: m.marka, models: m.modeller.map((name) => ({ name })) })),
 };
 
 // /arama "eşleşme yok" akışından /oner'e taşınan ham arama sorgusunu forma
