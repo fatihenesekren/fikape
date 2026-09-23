@@ -23,6 +23,7 @@ type Suggestion = {
   productId: number | null;
   productSlug: string | null;
   productStatus: string | null;
+  catalogPowerHp: string | null;
   dupMatches: { slug: string; name: string; reviewCount: number }[];
 };
 
@@ -160,6 +161,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
     const base: Record<string, string> = {};
     if (suggestion.fuelType) base.fuel_type = suggestion.fuelType;
     if (suggestion.transmission) base.transmission = suggestion.transmission;
+    if (suggestion.catalogPowerHp) base.power_hp = suggestion.catalogPowerHp;
     setAttrs(base);
     setModal({ suggestion, action });
 
@@ -183,6 +185,18 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
           for (const [key, meta] of Object.entries(specs)) {
             flatValues[key] = meta.value;
             confidenceMap[key] = { confidence: meta.confidence, source: meta.source, conflictWith: meta.conflictWith };
+          }
+          // Kullanıcı versiyonu katalogdan seçtiyse güç kesin bilgi — tahmin
+          // farklıysa çakışma olarak göster, değeri ezme.
+          if (suggestion.catalogPowerHp) {
+            const guess = specs.power_hp?.value;
+            confidenceMap.power_hp = {
+              confidence: "high",
+              source: "Katalog versiyonu",
+              ...(guess && guess !== suggestion.catalogPowerHp
+                ? { conflictWith: { source: specs.power_hp.source, value: guess } }
+                : {}),
+            };
           }
           setAttrs((prev) => ({ ...flatValues, ...prev })); // öneri verileri (fuel_type) üste çıksın
           setSpecConfidence(confidenceMap);

@@ -5,19 +5,10 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import vehiclesData from "@/data/vehicles.json";
+import { parseVersion, formatVersionLabel, versionForTrimName } from "@/lib/parseVersion";
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 import { resolveOnerPrefill, type OnerCategoryKey } from "@/lib/onerPrefill";
 import type { ExistingVehicleMatch } from "@/lib/existingVehicle";
-
-// Versiyon string'lerindeki RWD/AWD kısaltmaları teknik/İngilizce — kullanıcıya
-// gösterirken Türkiye'de yaygın kullanılan "4x2"/"4x4" karşılığı eklenir.
-// Sadece GÖRÜNÜMDE: değer (value, form state, trimsByVersion eşleşmeleri)
-// hep orijinal string kalır, hiçbir veri değişmez.
-function formatVersionLabel(version: string): string {
-  return version
-    .replace(/\bRWD\b/g, "RWD(4x2)")
-    .replace(/\bAWD\b/g, "AWD(4x4)");
-}
 
 const CATEGORIES = [
   { value: "otomobil",   label: "Otomobil" },
@@ -231,42 +222,17 @@ export default function OnerPage() {
     setError(null);
     setSubmitting(true);
     try {
-      // Kürate edilmiş versiyon listesi (vehicles.json) yakıt tipi tahmini için
-      // güç+batarya+hız rakamlarını metne gömüyor (örn. "Extended Range 204 72.8kWh"
-      // otomobilde, "250W Bosch 25 km/h 500Wh" e-bisiklette, "500W 17.5Ah 35km/h N65i"
-      // e-scooter'da) — bu rakamlar zaten ayrı attributes alanlarında tutulacağı için
-      // burada (kullanıcıya gösterilecek trimName'de) tekrar etmesin. Motosiklet/
-      // otomobil yakıt motorlarının "cc"/"CV" değerlerine dokunmuyor — o gerçek
-      // versiyon kimliği, teknik gürültü değil.
-      const isMotorluTasit = categorySlug === "otomobil" || categorySlug === "kamyonet";
-      let versionClean = versionFin
-        .replace(/(?:^|\s)\d+(\.\d+)?\s*(kw)?\s+\d+(\.\d+)?\s*kwh\b/i, "")
-        .replace(/\d+(\.\d+)?\s*(kwh|ah)\b/gi, "")
-        // "kW" (elektrikli motor gücü) her kategoride temizlenir, ama "V"/"W" tek
-        // başına SADECE otomobil/kamyonet DIŞINDA temizlenir — otomobilde "V" harfi
-        // supap sayısı anlamına gelebiliyor (örn. "1.4 16V 100" = 16 supap, 100 HP),
-        // buna dokunulursa motor kodu bozulur.
-        .replace(isMotorluTasit ? /\d+(\.\d+)?\s*kw\b/gi : /\d+(\.\d+)?\s*(kw|wh|w|v)\b/gi, "")
-        .replace(/\d+(\.\d+)?\s*km(\/h|\/s|\s*menzil)?\b/gi, "")
-        .replace(/(?<=^|\s)Çift\s+(Motor|Batarya|Bat\.)(?=\s|$)/giu, "")
-        .replace(/(?<=^|\s)Çift(?=\s|$)/giu, "")
-        .replace(/(?<=^|\s)\+(?=\s|$)/g, "")
-        .replace(/\bElektrik(li)?\b/gi, "");
-      if (isMotorluTasit) {
-        // Motor kodunun sonundaki çıplak beygir gücü rakamı (örn. "1.4 T-Jet 135",
-        // "E 220d 197" -> "135"/"197" HP) — attributes.power_hp'de zaten ayrı
-        // tutuluyor. Sadece otomobil/kamyonet'e özgü: karavan'da aynı konumdaki
-        // rakam model/uzunluk kodu ("T 132", "Welcome 500"), motosiklette motor
-        // hacmi veya model adı ("V-Strom 1000", "Scrambler 125") olabiliyor,
-        // o kategorilere dokunulmuyor.
-        versionClean = versionClean.replace(/(\s\d{2,4})+\s*$/, "");
-      }
-      versionClean = versionClean.replace(/\s{2,}/g, " ").trim();
+      // Versiyon metnindeki HP/EV rakamları trimName'e girmez (bkz. parseVersion);
+      // katalogdan seçildiyse HP ayrıca power_hp olarak gönderilir.
+      const versionClean = versionForTrimName(versionFin, categorySlug);
+      const powerHp = !isOtherVersion && selectedVersion
+        ? parseVersion(selectedVersion, categorySlug).hp
+        : null;
       const trimName = [versionClean, trimFin].filter(Boolean).join(" – ") || "";
       const res = await fetch("/api/oneriler", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes }),
+        body: JSON.stringify({ brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, powerHp }),
       });
       const text = await res.text();
       let data: Record<string, unknown> = {};
@@ -511,7 +477,7 @@ export default function OnerPage() {
               className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
             >
               <option value="">— Seçin (opsiyonel) —</option>
-              {versions.map((v) => <option key={v} value={v}>{formatVersionLabel(v)}</option>)}
+              {versions.map((v) => <option key={v} value={v}>{formatVersionLabel(v, categorySlug)}</option>)}
             </select>
             {isOtherVersion && (
               <input type="text" value={customVersion} onChange={(e) => setCustomVersion(e.target.value)}

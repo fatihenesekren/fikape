@@ -19,7 +19,7 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const { brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, photoUrls } = body;
+  const { brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, photoUrls, powerHp } = body;
 
   if (!brandName?.trim() || !modelName?.trim()) {
     return NextResponse.json({ error: "Marka ve model zorunludur" }, { status: 400 });
@@ -158,6 +158,11 @@ export async function POST(req: Request) {
   const attributes: Record<string, string> = {};
   if (fuelType) attributes.fuel_type = fuelType;
   if (transmission) attributes.transmission = transmission;
+  // Katalog versiyonundan ayrıştırılan beygir gücü (bkz. parseVersion) — admin
+  // onayında Gemini tahmini yerine bu değer esas alınır.
+  if (Number.isInteger(powerHp) && powerHp >= 40 && powerHp <= 2000) {
+    attributes.power_hp = String(powerHp);
+  }
 
   // Slug çakışma önlemi
   let finalSlug = slug;

@@ -9,13 +9,18 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
+function catalogPowerHp(attributes: unknown): string | null {
+  const hp = (attributes as Record<string, unknown> | null | undefined)?.power_hp;
+  return typeof hp === "string" ? hp : null;
+}
+
 export default async function AdminOnerilerPage() {
 
   const suggestions = await prisma.vehicleSuggestion.findMany({
     orderBy: { createdAt: "desc" },
     include: {
       user: { select: { displayName: true, email: true } },
-      product: { select: { slug: true, status: true } },
+      product: { select: { slug: true, status: true, attributes: true } },
     },
   });
 
@@ -64,6 +69,8 @@ export default async function AdminOnerilerPage() {
     productId: s.productId,
     productSlug: s.product?.slug ?? null,
     productStatus: s.product?.status ?? null,
+    // Öneri formunda katalog versiyonundan ayrıştırılan güç (bkz. parseVersion)
+    catalogPowerHp: catalogPowerHp(s.product?.attributes),
     dupMatches: dupBySuggestionId.get(s.id) ?? [],
   }));
 
