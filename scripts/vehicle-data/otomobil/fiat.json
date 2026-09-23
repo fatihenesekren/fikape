@@ -3,128 +3,472 @@
   "models": [
     {
       "name": "Albea (2002-2012)",
-      "versions": ["1.2 60", "1.4 77", "1.6 103", "1.3 Multijet 70", "1.9 JTD 80", "Diğer"],
-      "trims": ["Active", "Dynamic", "ELX", "Diğer"]
+      "versions": [
+        "1.2 60",
+        "1.4 77",
+        "1.6 103",
+        "1.3 Multijet 70",
+        "1.9 JTD 80",
+        "Diğer"
+      ],
+      "trims": [
+        "Active",
+        "Dynamic",
+        "ELX",
+        "Diğer"
+      ]
     },
     {
       "name": "Palio (2000-2012)",
-      "versions": ["1.2 60", "1.4 77", "1.6 100", "1.3 Multijet 70", "1.9 JTD 80", "Diğer"],
-      "trims": ["S", "EL", "ELX", "HLX", "Diğer"]
+      "versions": [
+        "1.2 60",
+        "1.4 77",
+        "1.6 100",
+        "1.3 Multijet 70",
+        "1.9 JTD 80",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "EL",
+        "ELX",
+        "HLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Stilo (2001-2007)",
-      "versions": ["1.2 80", "1.6 103", "1.8 133", "2.4 Abarth 170", "1.9 JTD 80", "1.9 JTD 100", "1.9 JTD 115", "Diğer"],
-      "trims": ["Active", "Dynamic", "Abarth", "Diğer"]
+      "versions": [
+        "1.2 80",
+        "1.6 103",
+        "1.8 133",
+        "2.4 Abarth 170",
+        "1.9 JTD 80",
+        "1.9 JTD 100",
+        "1.9 JTD 115",
+        "Diğer"
+      ],
+      "trims": [
+        "Active",
+        "Dynamic",
+        "Abarth",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.2 80": [
+          "Active",
+          "Dynamic",
+          "Diğer"
+        ],
+        "1.6 103": [
+          "Active",
+          "Dynamic",
+          "Diğer"
+        ],
+        "1.8 133": [
+          "Active",
+          "Dynamic",
+          "Diğer"
+        ],
+        "2.4 Abarth 170": [
+          "Abarth",
+          "Diğer"
+        ],
+        "1.9 JTD 80": [
+          "Active",
+          "Dynamic",
+          "Diğer"
+        ],
+        "1.9 JTD 100": [
+          "Active",
+          "Dynamic",
+          "Diğer"
+        ],
+        "1.9 JTD 115": [
+          "Active",
+          "Dynamic",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Bravo (2007-2014)",
-      "versions": ["1.4 90", "1.4 T-Jet 120", "1.4 T-Jet 150", "1.6 Multijet 105", "1.6 Multijet 120", "1.9 Multijet 150", "2.0 Multijet 165", "Diğer"],
-      "trims": ["Active", "Dynamic", "Sport", "Diğer"]
+      "versions": [
+        "1.4 90",
+        "1.4 T-Jet 120",
+        "1.4 T-Jet 150",
+        "1.6 Multijet 105",
+        "1.6 Multijet 120",
+        "1.9 Multijet 150",
+        "2.0 Multijet 165",
+        "Diğer"
+      ],
+      "trims": [
+        "Active",
+        "Dynamic",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "Linea (2007-2015)",
-      "versions": ["1.4 77", "1.4 T-Jet 120", "1.3 Multijet 90", "1.6 Multijet 105", "Diğer"],
-      "trims": ["Active", "Dynamic", "Emotion", "Diğer"]
+      "versions": [
+        "1.4 77",
+        "1.4 T-Jet 120",
+        "1.3 Multijet 90",
+        "1.6 Multijet 105",
+        "Diğer"
+      ],
+      "trims": [
+        "Active",
+        "Dynamic",
+        "Emotion",
+        "Diğer"
+      ]
     },
     {
       "name": "Tipo (2015-)",
-      "versions": ["1.4 95", "1.4 T-Jet 120", "1.6 Multijet 120", "Diğer"],
-      "trims": ["Pop", "Lounge", "S-Design", "Diğer"]
+      "versions": [
+        "1.4 95",
+        "1.4 T-Jet 120",
+        "1.6 Multijet 120",
+        "Diğer"
+      ],
+      "trims": [
+        "Pop",
+        "Lounge",
+        "S-Design",
+        "Diğer"
+      ]
     },
     {
       "name": "Egea (2015-)",
-      "versions": ["1.4 Fire 95", "1.6 E-Torq 110", "1.3 Multijet 95", "1.6 Multijet 120", "Diğer"],
-      "trims": ["Easy", "Urban", "Lounge", "Cross", "Diğer"]
+      "versions": [
+        "1.4 Fire 95",
+        "1.6 E-Torq 110",
+        "1.3 Multijet 95",
+        "1.6 Multijet 120",
+        "Diğer"
+      ],
+      "trims": [
+        "Easy",
+        "Urban",
+        "Lounge",
+        "Cross",
+        "Diğer"
+      ]
     },
     {
       "name": "Egea Cross (2020-)",
-      "versions": ["1.4 Fire 95", "1.6 E-Torq 110", "1.3 Multijet 95", "Diğer"],
-      "trims": ["Easy", "Urban", "Lounge", "Diğer"]
+      "versions": [
+        "1.4 Fire 95",
+        "1.6 E-Torq 110",
+        "1.3 Multijet 95",
+        "Diğer"
+      ],
+      "trims": [
+        "Easy",
+        "Urban",
+        "Lounge",
+        "Diğer"
+      ]
     },
     {
       "name": "Egea Wagon (2017-)",
-      "versions": ["1.4 Fire 95", "1.6 E-Torq 110", "1.3 Multijet 95", "1.6 Multijet 120", "Diğer"],
-      "trims": ["Easy", "Urban", "Lounge", "Diğer"]
+      "versions": [
+        "1.4 Fire 95",
+        "1.6 E-Torq 110",
+        "1.3 Multijet 95",
+        "1.6 Multijet 120",
+        "Diğer"
+      ],
+      "trims": [
+        "Easy",
+        "Urban",
+        "Lounge",
+        "Diğer"
+      ]
     },
     {
       "name": "500 (2007-)",
-      "versions": ["1.0 Mild Hybrid 70", "1.2 69", "1.4 100", "0.9 TwinAir 85", "Abarth 1.4 T-Jet 135", "Abarth 1.4 T-Jet 160", "Diğer"],
-      "trims": ["Pop", "Lounge", "Dolcevita", "Sport", "Abarth", "Diğer"]
+      "versions": [
+        "1.0 Mild Hybrid 70",
+        "1.2 69",
+        "1.4 100",
+        "0.9 TwinAir 85",
+        "Abarth 1.4 T-Jet 135",
+        "Abarth 1.4 T-Jet 160",
+        "Diğer"
+      ],
+      "trims": [
+        "Pop",
+        "Lounge",
+        "Dolcevita",
+        "Sport",
+        "Abarth",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.0 Mild Hybrid 70": [
+          "Pop",
+          "Lounge",
+          "Dolcevita",
+          "Sport",
+          "Diğer"
+        ],
+        "1.2 69": [
+          "Pop",
+          "Lounge",
+          "Dolcevita",
+          "Sport",
+          "Diğer"
+        ],
+        "1.4 100": [
+          "Pop",
+          "Lounge",
+          "Dolcevita",
+          "Sport",
+          "Diğer"
+        ],
+        "0.9 TwinAir 85": [
+          "Pop",
+          "Lounge",
+          "Dolcevita",
+          "Sport",
+          "Diğer"
+        ],
+        "Abarth 1.4 T-Jet 135": [
+          "Abarth",
+          "Diğer"
+        ],
+        "Abarth 1.4 T-Jet 160": [
+          "Abarth",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "500e (2020-)",
-      "versions": ["87kW 118 42kWh", "70kW 95 24kWh Cabrio", "Diğer"],
-      "trims": ["Action", "Passion", "La Prima", "Diğer"]
+      "versions": [
+        "87kW 118 42kWh",
+        "70kW 95 24kWh Cabrio",
+        "Diğer"
+      ],
+      "trims": [
+        "Action",
+        "Passion",
+        "La Prima",
+        "Diğer"
+      ]
     },
     {
       "name": "500X (2014-)",
-      "versions": ["1.0 T3 120", "1.3 T4 150", "1.5 T4 130 MHEV", "Diğer"],
-      "trims": ["Pop", "Connect", "Sport", "Cross", "Diğer"]
+      "versions": [
+        "1.0 T3 120",
+        "1.3 T4 150",
+        "1.5 T4 130 MHEV",
+        "Diğer"
+      ],
+      "trims": [
+        "Pop",
+        "Connect",
+        "Sport",
+        "Cross",
+        "Diğer"
+      ]
     },
     {
       "name": "Panda (2003-)",
-      "versions": ["1.0 Mild Hybrid 70", "0.9 TwinAir 85", "1.2 69", "1.3 Multijet 80", "Diğer"],
-      "trims": ["Pop", "City Cross", "Cross", "Diğer"]
+      "versions": [
+        "1.0 Mild Hybrid 70",
+        "0.9 TwinAir 85",
+        "1.2 69",
+        "1.3 Multijet 80",
+        "Diğer"
+      ],
+      "trims": [
+        "Pop",
+        "City Cross",
+        "Cross",
+        "Diğer"
+      ]
     },
     {
       "name": "Doblo (2001-)",
-      "versions": ["1.4 95", "1.3 Multijet 95", "1.6 Multijet 105", "Diğer"],
-      "trims": ["Pop", "Lounge", "Diğer"]
+      "versions": [
+        "1.4 95",
+        "1.3 Multijet 95",
+        "1.6 Multijet 105",
+        "Diğer"
+      ],
+      "trims": [
+        "Pop",
+        "Lounge",
+        "Diğer"
+      ]
     },
     {
       "name": "Murat 124 / Serçe (1971-1977)",
-      "versions": ["1.4 60", "Diğer"],
-      "trims": ["Standart", "Serçe", "Diğer"]
+      "versions": [
+        "1.4 60",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Serçe",
+        "Diğer"
+      ]
     },
     {
       "name": "Şahin (1986-2002)",
-      "versions": ["1.6 75", "1.6 ie 79", "Diğer"],
-      "trims": ["S", "SLX", "Diğer"]
+      "versions": [
+        "1.6 75",
+        "1.6 ie 79",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "SLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Doğan (1986-2001)",
-      "versions": ["1.6 75", "1.6 ie 79", "Diğer"],
-      "trims": ["S", "SL", "SLX", "Diğer"]
+      "versions": [
+        "1.6 75",
+        "1.6 ie 79",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "SL",
+        "SLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Kartal (1981-2002)",
-      "versions": ["1.6 75", "1.6 ie 79", "Diğer"],
-      "trims": ["Standart", "SL", "Diğer"]
+      "versions": [
+        "1.6 75",
+        "1.6 ie 79",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SL",
+        "Diğer"
+      ]
     },
     {
       "name": "Tipo (1990-1995)",
-      "versions": ["1.4 75", "1.6 88", "1.6 ie 98", "1.7 D 58", "1.9 TD 92", "Diğer"],
-      "trims": ["S", "SX", "DS", "Diğer"]
+      "versions": [
+        "1.4 75",
+        "1.6 88",
+        "1.6 ie 98",
+        "1.7 D 58",
+        "1.9 TD 92",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "SX",
+        "DS",
+        "Diğer"
+      ]
     },
     {
       "name": "Tempra (1990-1999)",
-      "versions": ["1.4 75", "1.6 88", "1.6 ie 98", "1.8 ie 113", "1.9 TD 92", "Diğer"],
-      "trims": ["S", "SX", "SLX", "Diğer"]
+      "versions": [
+        "1.4 75",
+        "1.6 88",
+        "1.6 ie 98",
+        "1.8 ie 113",
+        "1.9 TD 92",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "SX",
+        "SLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Uno (1985-2003)",
-      "versions": ["1.1 55", "1.4 60", "1.4 ie 70", "1.7 D 57", "Diğer"],
-      "trims": ["S", "SX", "70 SX", "Diğer"]
+      "versions": [
+        "1.1 55",
+        "1.4 60",
+        "1.4 ie 70",
+        "1.7 D 57",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "SX",
+        "70 SX",
+        "Diğer"
+      ]
     },
     {
       "name": "Brava (1995-2001)",
-      "versions": ["1.4 80", "1.6 103", "1.9 TD 100", "1.9 JTD 105", "Diğer"],
-      "trims": ["S", "SX", "ELX", "HLX", "Diğer"]
+      "versions": [
+        "1.4 80",
+        "1.6 103",
+        "1.9 TD 100",
+        "1.9 JTD 105",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "SX",
+        "ELX",
+        "HLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Marea (1996-2002)",
-      "versions": ["1.6 103", "1.8 113", "2.0 20V 147", "1.9 TD 100", "1.9 JTD 105", "Diğer"],
-      "trims": ["S", "SX", "ELX", "HLX", "Diğer"]
+      "versions": [
+        "1.6 103",
+        "1.8 113",
+        "2.0 20V 147",
+        "1.9 TD 100",
+        "1.9 JTD 105",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "SX",
+        "ELX",
+        "HLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Siena (1997-2007)",
-      "versions": ["1.2 60", "1.4 77", "1.6 100", "1.7 SD 57", "1.9 D 65", "Diğer"],
-      "trims": ["EL", "ELX", "HLX", "Diğer"]
+      "versions": [
+        "1.2 60",
+        "1.4 77",
+        "1.6 100",
+        "1.7 SD 57",
+        "1.9 D 65",
+        "Diğer"
+      ],
+      "trims": [
+        "EL",
+        "ELX",
+        "HLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

@@ -1,17 +1,313 @@
 {
   "make": "Asya",
   "models": [
-    { "name": "AS 100 / 125", "versions": ["100cc 6 CV", "125cc 8 CV", "T-15 125cc", "Diğer"], "trims": ["Standart", "T-15", "Diğer"] },
-    { "name": "AS 150 T", "versions": ["150cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Nostalji 125", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Thunder", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "SkyMax / SkyMax Pro (Scooter)", "versions": ["125cc", "Pro 125cc", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
-    { "name": "Bubbly (Scooter)", "versions": ["50cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "T-Rex", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Turkcup Delüx / Klasik", "versions": ["100cc", "125cc", "Diğer"], "trims": ["Delüx", "Klasik", "Diğer"] },
-    { "name": "Efsane Eco 100", "versions": ["100cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Ultra 150", "versions": ["150cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Polo (Scooter)", "versions": ["50cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "AS 100 / 125",
+      "versions": [
+        "100cc 6 CV",
+        "125cc 8 CV",
+        "T-15 125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "T-15",
+        "Turkcub",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "100cc 6 CV": [
+          "Standart",
+          "Turkcub",
+          "Diğer"
+        ],
+        "125cc 8 CV": [
+          "Standart",
+          "Diğer"
+        ],
+        "T-15 125cc": [
+          "T-15",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "AS 150 T",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Nostalji 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Thunder",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "SkyMax / SkyMax Pro (Scooter)",
+      "versions": [
+        "125cc",
+        "Pro 125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Pro",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "125cc": [
+          "Standart",
+          "Diğer"
+        ],
+        "Pro 125cc": [
+          "Pro",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Bubbly (Scooter)",
+      "versions": [
+        "50cc",
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "T-Rex",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Turkcup Delüx / Klasik",
+      "versions": [
+        "100cc",
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Delüx",
+        "Klasik",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Efsane Eco 100",
+      "versions": [
+        "100cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Ultra 150",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Polo (Scooter)",
+      "versions": [
+        "50cc",
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Armada 250",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AS 125 T",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AS 150-12",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AS 150 T1",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "T1",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AS 150 T 19 A",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AS 150 T 5A",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Elegant 150",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Hero 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Legent 150",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Pars 250",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Quswa 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Shark 150",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Swift 150",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

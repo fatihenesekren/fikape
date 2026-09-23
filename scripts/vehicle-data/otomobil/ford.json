@@ -3,183 +3,762 @@
   "models": [
     {
       "name": "Taunus (1985-1993)",
-      "versions": ["1.6 75", "2.0 95", "GT 2.0 105", "Diğer"],
-      "trims": ["GL", "S", "GT", "GLS", "Diğer"]
+      "versions": [
+        "1.6 75",
+        "2.0 95",
+        "GT 2.0 105",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "S",
+        "GT",
+        "GLS",
+        "Diğer"
+      ]
     },
     {
       "name": "Escort (1993-1999)",
-      "versions": ["1.4 75", "1.6 90", "1.6 Zetec 90", "Diğer"],
-      "trims": ["CL", "Classic", "CLX", "Ghia", "Diğer"]
+      "versions": [
+        "1.4 75",
+        "1.6 90",
+        "1.6 Zetec 90",
+        "Diğer"
+      ],
+      "trims": [
+        "CL",
+        "Classic",
+        "CLX",
+        "Ghia",
+        "Diğer"
+      ]
     },
     {
       "name": "Ka (2009-2016)",
-      "versions": ["1.2 69", "1.3 TDCi 75", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Titanium", "Diğer"]
+      "versions": [
+        "1.2 69",
+        "1.3 TDCi 75",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Titanium",
+        "Diğer"
+      ]
     },
     {
       "name": "Fiesta (2001-2008)",
-      "versions": ["1.25 75", "1.25 86", "1.4 80", "1.6 100", "1.4 TDCi 68", "1.6 TDCi 90", "ST 2.0 150", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Ghia", "Sport", "ST", "Diğer"]
+      "versions": [
+        "1.25 75",
+        "1.25 86",
+        "1.4 80",
+        "1.6 100",
+        "1.4 TDCi 68",
+        "1.6 TDCi 90",
+        "ST 2.0 150",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Ghia",
+        "Sport",
+        "ST",
+        "Diğer"
+      ]
     },
     {
       "name": "Fiesta (2008-2017)",
-      "versions": ["1.0 EcoBoost 65", "1.0 EcoBoost 80", "1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.25 82", "1.4 96", "1.6 120", "1.4 TDCi 70", "1.6 TDCi 90", "1.6 TDCi 95", "ST 1.6 EcoBoost 182", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Titanium", "ST-Line", "ST", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 65",
+        "1.0 EcoBoost 80",
+        "1.0 EcoBoost 100",
+        "1.0 EcoBoost 125",
+        "1.25 82",
+        "1.4 96",
+        "1.6 120",
+        "1.4 TDCi 70",
+        "1.6 TDCi 90",
+        "1.6 TDCi 95",
+        "ST 1.6 EcoBoost 182",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Titanium",
+        "ST-Line",
+        "ST",
+        "Diğer"
+      ]
     },
     {
       "name": "Fiesta (2017-2023)",
-      "versions": ["1.0 EcoBoost 85", "1.0 EcoBoost 95", "1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.5 TDCi 85", "1.5 TDCi 120", "ST 1.5 EcoBoost 200", "Diğer"],
-      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "ST", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 85",
+        "1.0 EcoBoost 95",
+        "1.0 EcoBoost 100",
+        "1.0 EcoBoost 125",
+        "1.5 TDCi 85",
+        "1.5 TDCi 120",
+        "ST 1.5 EcoBoost 200",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Cool & Connect",
+        "Titanium",
+        "ST-Line",
+        "ST",
+        "Diğer"
+      ]
     },
     {
       "name": "Focus (1998-2004)",
-      "versions": ["1.4 75", "1.6 100", "1.8 115", "2.0 130", "1.8 TDCi 100", "2.0 TDCi 115", "RS 2.0T 215", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Ghia", "RS", "Diğer"]
+      "versions": [
+        "1.4 75",
+        "1.6 100",
+        "1.8 115",
+        "2.0 130",
+        "1.8 TDCi 100",
+        "2.0 TDCi 115",
+        "RS 2.0T 215",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Ghia",
+        "RS",
+        "Diğer"
+      ]
     },
     {
       "name": "Focus (2004-2011)",
-      "versions": ["1.4 80", "1.6 100", "1.6 115", "1.8 125", "2.0 145", "1.6 TDCi 90", "1.6 TDCi 110", "1.8 TDCi 115", "2.0 TDCi 136", "ST 2.5T 225", "RS 2.5T 305", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Ghia", "Titanium", "ST", "RS", "Diğer"]
+      "versions": [
+        "1.4 80",
+        "1.6 100",
+        "1.6 115",
+        "1.8 125",
+        "2.0 145",
+        "1.6 TDCi 90",
+        "1.6 TDCi 110",
+        "1.8 TDCi 115",
+        "2.0 TDCi 136",
+        "ST 2.5T 225",
+        "RS 2.5T 305",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Ghia",
+        "Titanium",
+        "ST",
+        "RS",
+        "Diğer"
+      ]
     },
     {
       "name": "Focus (2011-2018)",
-      "versions": ["1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.5 EcoBoost 150", "2.0 EcoBoost 250", "1.5 TDCi 95", "1.5 TDCi 120", "2.0 TDCi 150", "ST 2.0 EcoBoost 250", "RS 2.3 EcoBoost 350", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Titanium", "ST-Line", "Active", "ST", "RS", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 100",
+        "1.0 EcoBoost 125",
+        "1.5 EcoBoost 150",
+        "2.0 EcoBoost 250",
+        "1.5 TDCi 95",
+        "1.5 TDCi 120",
+        "2.0 TDCi 150",
+        "ST 2.0 EcoBoost 250",
+        "RS 2.3 EcoBoost 350",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Titanium",
+        "ST-Line",
+        "Active",
+        "ST",
+        "RS",
+        "Diğer"
+      ]
     },
     {
       "name": "Focus (2018-)",
-      "versions": ["1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.5 EcoBoost 150", "1.5 EcoBoost 182", "1.5 EcoBlue 95", "1.5 EcoBlue 120", "2.3 EcoBoost ST 280", "Diğer"],
-      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "Active", "ST", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 100",
+        "1.0 EcoBoost 125",
+        "1.5 EcoBoost 150",
+        "1.5 EcoBoost 182",
+        "1.5 EcoBlue 95",
+        "1.5 EcoBlue 120",
+        "2.3 EcoBoost ST 280",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Cool & Connect",
+        "Titanium",
+        "ST-Line",
+        "Active",
+        "ST",
+        "Diğer"
+      ]
     },
     {
       "name": "Mondeo (2000-2007)",
-      "versions": ["1.8 125", "2.0 145", "2.5 V6 170", "2.0 TDCi 115", "2.0 TDCi 130", "ST220 2.5 V6 226", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Ghia", "ST220", "Diğer"]
+      "versions": [
+        "1.8 125",
+        "2.0 145",
+        "2.5 V6 170",
+        "2.0 TDCi 115",
+        "2.0 TDCi 130",
+        "ST220 2.5 V6 226",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Ghia",
+        "ST220",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.8 125": [
+          "Ambiente",
+          "Trend",
+          "Ghia",
+          "Diğer"
+        ],
+        "2.0 145": [
+          "Ambiente",
+          "Trend",
+          "Ghia",
+          "Diğer"
+        ],
+        "2.5 V6 170": [
+          "Ambiente",
+          "Trend",
+          "Ghia",
+          "Diğer"
+        ],
+        "2.0 TDCi 115": [
+          "Ambiente",
+          "Trend",
+          "Ghia",
+          "Diğer"
+        ],
+        "2.0 TDCi 130": [
+          "Ambiente",
+          "Trend",
+          "Ghia",
+          "Diğer"
+        ],
+        "ST220 2.5 V6 226": [
+          "ST220",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Mondeo (2007-2014)",
-      "versions": ["1.6 EcoBoost 160", "2.0 145", "2.5T 220", "1.8 TDCi 125", "2.0 TDCi 140", "2.0 TDCi 163", "ST 2.5T 220", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Titanium", "ST-Line", "ST", "Diğer"]
+      "versions": [
+        "1.6 EcoBoost 160",
+        "2.0 145",
+        "2.5T 220",
+        "1.8 TDCi 125",
+        "2.0 TDCi 140",
+        "2.0 TDCi 163",
+        "ST 2.5T 220",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Titanium",
+        "ST-Line",
+        "ST",
+        "Diğer"
+      ]
     },
     {
       "name": "Mondeo (2014-2022)",
-      "versions": ["1.5 EcoBoost 160", "2.0 EcoBlue 150", "2.0 EcoBlue 190", "2.0 Hybrid 187", "Diğer"],
-      "trims": ["Trend", "Titanium", "ST-Line", "Vignale", "Diğer"]
+      "versions": [
+        "1.5 EcoBoost 160",
+        "2.0 EcoBlue 150",
+        "2.0 EcoBlue 190",
+        "2.0 Hybrid 187",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Titanium",
+        "ST-Line",
+        "Vignale",
+        "Diğer"
+      ]
     },
     {
       "name": "Mustang",
-      "versions": ["2.3 EcoBoost 290", "2.3 EcoBoost 310", "5.0 V8 450", "5.0 V8 Mach 1 460", "5.2 V8 GT500 760", "Diğer"],
-      "trims": ["Fastback", "Convertible", "GT", "Mach 1", "Shelby GT350", "Shelby GT500", "Diğer"]
+      "versions": [
+        "2.3 EcoBoost 290",
+        "2.3 EcoBoost 310",
+        "5.0 V8 450",
+        "5.0 V8 Mach 1 460",
+        "5.2 V8 GT500 760",
+        "Diğer"
+      ],
+      "trims": [
+        "Fastback",
+        "Convertible",
+        "GT",
+        "Mach 1",
+        "Shelby GT350",
+        "Shelby GT500",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "2.3 EcoBoost 290": [
+          "Fastback",
+          "Convertible",
+          "GT",
+          "Shelby GT350",
+          "Shelby GT500",
+          "Diğer"
+        ],
+        "2.3 EcoBoost 310": [
+          "Fastback",
+          "Convertible",
+          "GT",
+          "Shelby GT350",
+          "Shelby GT500",
+          "Diğer"
+        ],
+        "5.0 V8 450": [
+          "Fastback",
+          "Convertible",
+          "GT",
+          "Shelby GT350",
+          "Shelby GT500",
+          "Diğer"
+        ],
+        "5.0 V8 Mach 1 460": [
+          "Mach 1",
+          "Diğer"
+        ],
+        "5.2 V8 GT500 760": [
+          "Fastback",
+          "Convertible",
+          "GT",
+          "Shelby GT350",
+          "Shelby GT500",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Mustang Mach-E",
-      "versions": ["Standard Range RWD 290", "Extended Range RWD 294", "Extended Range AWD 351", "GT AWD 487", "Diğer"],
-      "trims": ["Select", "Premium", "California Route 1", "GT", "Diğer"]
+      "versions": [
+        "Standard Range RWD 290",
+        "Extended Range RWD 294",
+        "Extended Range AWD 351",
+        "GT AWD 487",
+        "Diğer"
+      ],
+      "trims": [
+        "Select",
+        "Premium",
+        "California Route 1",
+        "GT",
+        "Diğer"
+      ]
     },
     {
       "name": "Puma",
-      "versions": ["1.0 EcoBoost 95", "1.0 EcoBoost 125", "1.0 EcoBoost 155 MHEV", "1.5 EcoBlue 120", "ST 1.5 EcoBoost 200", "Diğer"],
-      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "ST-Line X", "ST", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 95",
+        "1.0 EcoBoost 125",
+        "1.0 EcoBoost 155 MHEV",
+        "1.5 EcoBlue 120",
+        "ST 1.5 EcoBoost 200",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Cool & Connect",
+        "Titanium",
+        "ST-Line",
+        "ST-Line X",
+        "ST",
+        "Diğer"
+      ]
     },
     {
       "name": "Kuga (2008-2012)",
-      "versions": ["2.0 TDCi 136 4x2", "2.0 TDCi 136 AWD", "2.0 TDCi 163 AWD", "2.5T 200 AWD", "Diğer"],
-      "trims": ["Trend", "Titanium", "Diğer"]
+      "versions": [
+        "2.0 TDCi 136 4x2",
+        "2.0 TDCi 136 AWD",
+        "2.0 TDCi 163 AWD",
+        "2.5T 200 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Titanium",
+        "Diğer"
+      ]
     },
     {
       "name": "Kuga (2012-2019)",
-      "versions": ["1.5 EcoBoost 150", "1.5 EcoBoost 182", "2.0 TDCi 120", "2.0 TDCi 150", "2.0 TDCi 180 AWD", "Diğer"],
-      "trims": ["Trend", "Titanium", "ST-Line", "Vignale", "Diğer"]
+      "versions": [
+        "1.5 EcoBoost 150",
+        "1.5 EcoBoost 182",
+        "2.0 TDCi 120",
+        "2.0 TDCi 150",
+        "2.0 TDCi 180 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Titanium",
+        "ST-Line",
+        "Vignale",
+        "Diğer"
+      ]
     },
     {
       "name": "Kuga (2019-)",
-      "versions": ["1.5 EcoBoost 120", "1.5 EcoBoost 150", "2.0 EcoBlue 120", "2.0 EcoBlue 150", "2.5 FHEV 190", "2.5 PHEV 225", "Diğer"],
-      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "ST-Line X", "Vignale", "Diğer"]
+      "versions": [
+        "1.5 EcoBoost 120",
+        "1.5 EcoBoost 150",
+        "2.0 EcoBlue 120",
+        "2.0 EcoBlue 150",
+        "2.5 FHEV 190",
+        "2.5 PHEV 225",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Cool & Connect",
+        "Titanium",
+        "ST-Line",
+        "ST-Line X",
+        "Vignale",
+        "Diğer"
+      ]
     },
     {
       "name": "Galaxy (1995-2006)",
-      "versions": ["2.0 115", "2.3 145", "2.8 VR6 174", "1.9 TDI 90", "1.9 TDI 115", "Diğer"],
-      "trims": ["Ambiente", "Ghia", "Diğer"]
+      "versions": [
+        "2.0 115",
+        "2.3 145",
+        "2.8 VR6 174",
+        "1.9 TDI 90",
+        "1.9 TDI 115",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Ghia",
+        "Diğer"
+      ]
     },
     {
       "name": "Galaxy (2006-2015)",
-      "versions": ["2.3 145", "1.8 TDCi 125", "2.0 TDCi 140", "2.0 TDCi 163", "2.2 TDCi 175", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Ghia", "Titanium", "Diğer"]
+      "versions": [
+        "2.3 145",
+        "1.8 TDCi 125",
+        "2.0 TDCi 140",
+        "2.0 TDCi 163",
+        "2.2 TDCi 175",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Ghia",
+        "Titanium",
+        "Diğer"
+      ]
     },
     {
       "name": "Galaxy (2015-)",
-      "versions": ["2.0 EcoBlue 150", "2.0 EcoBlue 190", "2.0 EcoBlue 240 AWD", "Diğer"],
-      "trims": ["Trend", "Titanium", "Vignale", "Diğer"]
+      "versions": [
+        "2.0 EcoBlue 150",
+        "2.0 EcoBlue 190",
+        "2.0 EcoBlue 240 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Titanium",
+        "Vignale",
+        "Diğer"
+      ]
     },
     {
       "name": "S-Max (2006-2015)",
-      "versions": ["1.6 EcoBoost 160", "2.0 145", "2.0 EcoBoost 203", "1.8 TDCi 125", "2.0 TDCi 140", "2.0 TDCi 163", "2.2 TDCi 200", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Titanium", "Ghia", "Diğer"]
+      "versions": [
+        "1.6 EcoBoost 160",
+        "2.0 145",
+        "2.0 EcoBoost 203",
+        "1.8 TDCi 125",
+        "2.0 TDCi 140",
+        "2.0 TDCi 163",
+        "2.2 TDCi 200",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Titanium",
+        "Ghia",
+        "Diğer"
+      ]
     },
     {
       "name": "S-Max (2015-)",
-      "versions": ["1.5 EcoBoost 160", "2.0 EcoBlue 150", "2.0 EcoBlue 190", "2.0 EcoBlue 240 AWD", "Diğer"],
-      "trims": ["Trend", "Titanium", "ST-Line", "Vignale", "Diğer"]
+      "versions": [
+        "1.5 EcoBoost 160",
+        "2.0 EcoBlue 150",
+        "2.0 EcoBlue 190",
+        "2.0 EcoBlue 240 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Titanium",
+        "ST-Line",
+        "Vignale",
+        "Diğer"
+      ]
     },
     {
       "name": "C-Max (2003-2010)",
-      "versions": ["1.6 100", "1.8 125", "2.0 145", "1.6 TDCi 90", "1.8 TDCi 115", "2.0 TDCi 136", "Diğer"],
-      "trims": ["Ambiente", "Trend", "Ghia", "Titanium", "Diğer"]
+      "versions": [
+        "1.6 100",
+        "1.8 125",
+        "2.0 145",
+        "1.6 TDCi 90",
+        "1.8 TDCi 115",
+        "2.0 TDCi 136",
+        "Diğer"
+      ],
+      "trims": [
+        "Ambiente",
+        "Trend",
+        "Ghia",
+        "Titanium",
+        "Diğer"
+      ]
     },
     {
       "name": "Grand C-Max (2010-2019)",
-      "versions": ["1.0 EcoBoost 125", "1.6 EcoBoost 150", "1.6 TDCi 95", "1.6 TDCi 115", "2.0 TDCi 140", "Diğer"],
-      "trims": ["Trend", "Titanium", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 125",
+        "1.6 EcoBoost 150",
+        "1.6 TDCi 95",
+        "1.6 TDCi 115",
+        "2.0 TDCi 140",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Titanium",
+        "Diğer"
+      ]
     },
     {
       "name": "B-Max (2012-2017)",
-      "versions": ["1.0 EcoBoost 100", "1.0 EcoBoost 120", "1.4 90", "1.6 105", "1.5 TDCi 75", "1.5 TDCi 95", "Diğer"],
-      "trims": ["Trend", "Titanium", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 100",
+        "1.0 EcoBoost 120",
+        "1.4 90",
+        "1.6 105",
+        "1.5 TDCi 75",
+        "1.5 TDCi 95",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Titanium",
+        "Diğer"
+      ]
     },
     {
       "name": "Edge (2016-2019)",
-      "versions": ["2.0 TDCi 180 AWD", "2.0 TDCi 210 AWD", "Diğer"],
-      "trims": ["Titanium", "Sport", "Diğer"]
+      "versions": [
+        "2.0 TDCi 180 AWD",
+        "2.0 TDCi 210 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Titanium",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "EcoSport",
-      "versions": ["1.0 EcoBoost 100", "1.0 EcoBoost 125", "1.5 TDCi 100", "Diğer"],
-      "trims": ["Trend", "Cool & Connect", "Titanium", "ST-Line", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 100",
+        "1.0 EcoBoost 125",
+        "1.5 TDCi 100",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Cool & Connect",
+        "Titanium",
+        "ST-Line",
+        "Diğer"
+      ]
     },
     {
       "name": "Explorer",
-      "versions": ["3.0 EcoBoost 457 PHEV", "Diğer"],
-      "trims": ["ST-Line", "Platinum", "Diğer"]
+      "versions": [
+        "3.0 EcoBoost 457 PHEV",
+        "Diğer"
+      ],
+      "trims": [
+        "ST-Line",
+        "Platinum",
+        "Diğer"
+      ]
     },
     {
       "name": "Ranger",
-      "versions": ["2.0 EcoBlue 130 4x2", "2.0 EcoBlue 150 4x2", "2.0 EcoBlue 170 4x4", "2.0 Bi-Turbo 213 4x4", "3.0 V6 240 4x4", "Raptor 3.0 V6 288", "Diğer"],
-      "trims": ["XL", "XLT", "Limited", "Wildtrak", "Raptor", "Diğer"]
+      "versions": [
+        "2.0 EcoBlue 130 4x2",
+        "2.0 EcoBlue 150 4x2",
+        "2.0 EcoBlue 170 4x4",
+        "2.0 Bi-Turbo 213 4x4",
+        "3.0 V6 240 4x4",
+        "Raptor 3.0 V6 288",
+        "Diğer"
+      ],
+      "trims": [
+        "XL",
+        "XLT",
+        "Limited",
+        "Wildtrak",
+        "Raptor",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "2.0 EcoBlue 130 4x2": [
+          "XL",
+          "XLT",
+          "Limited",
+          "Wildtrak",
+          "Diğer"
+        ],
+        "2.0 EcoBlue 150 4x2": [
+          "XL",
+          "XLT",
+          "Limited",
+          "Wildtrak",
+          "Diğer"
+        ],
+        "2.0 EcoBlue 170 4x4": [
+          "XL",
+          "XLT",
+          "Limited",
+          "Wildtrak",
+          "Diğer"
+        ],
+        "2.0 Bi-Turbo 213 4x4": [
+          "XL",
+          "XLT",
+          "Limited",
+          "Wildtrak",
+          "Diğer"
+        ],
+        "3.0 V6 240 4x4": [
+          "XL",
+          "XLT",
+          "Limited",
+          "Wildtrak",
+          "Diğer"
+        ],
+        "Raptor 3.0 V6 288": [
+          "Raptor",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Transit Connect",
-      "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "Diğer"],
-      "trims": ["Trend", "Limited", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 100",
+        "1.5 EcoBlue 100",
+        "1.5 EcoBlue 120",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Limited",
+        "Diğer"
+      ]
     },
     {
       "name": "Transit Custom",
-      "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "PHEV 126", "Diğer"],
-      "trims": ["Trend", "Limited", "Sport", "Diğer"]
+      "versions": [
+        "2.0 EcoBlue 105",
+        "2.0 EcoBlue 130",
+        "2.0 EcoBlue 170",
+        "PHEV 126",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Limited",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "Tourneo Custom",
-      "versions": ["2.0 EcoBlue 105", "2.0 EcoBlue 130", "2.0 EcoBlue 170", "PHEV 126", "Diğer"],
-      "trims": ["Trend", "Titanium", "Sport", "Diğer"]
+      "versions": [
+        "2.0 EcoBlue 105",
+        "2.0 EcoBlue 130",
+        "2.0 EcoBlue 170",
+        "PHEV 126",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Titanium",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "Tourneo Connect",
-      "versions": ["1.0 EcoBoost 100", "1.5 EcoBlue 100", "1.5 EcoBlue 120", "PHEV 150", "Diğer"],
-      "trims": ["Trend", "Titanium", "Active", "Diğer"]
+      "versions": [
+        "1.0 EcoBoost 100",
+        "1.5 EcoBlue 100",
+        "1.5 EcoBlue 120",
+        "PHEV 150",
+        "Diğer"
+      ],
+      "trims": [
+        "Trend",
+        "Titanium",
+        "Active",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

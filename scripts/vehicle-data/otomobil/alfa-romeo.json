@@ -3,88 +3,452 @@
   "models": [
     {
       "name": "33",
-      "versions": ["1.3 79", "1.5 95", "1.7 16V 129", "1.7 TD 80", "Diğer"],
-      "trims": ["Standart", "TI", "Diğer"]
+      "versions": [
+        "1.3 79",
+        "1.5 95",
+        "1.7 16V 129",
+        "1.7 TD 80",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "TI",
+        "Diğer"
+      ]
     },
     {
       "name": "75",
-      "versions": ["1.8 120", "2.0 148", "2.5 V6 156", "1.8 Turbo 155", "Diğer"],
-      "trims": ["Standart", "TS", "America", "Diğer"]
+      "versions": [
+        "1.8 120",
+        "2.0 148",
+        "2.5 V6 156",
+        "1.8 Turbo 155",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "TS",
+        "America",
+        "Diğer"
+      ]
     },
     {
       "name": "164",
-      "versions": ["2.0 TS 148", "3.0 V6 192", "2.5 TD 116", "Diğer"],
-      "trims": ["Standart", "Super", "Q4", "Diğer"]
+      "versions": [
+        "2.0 TS 148",
+        "3.0 V6 192",
+        "2.5 TD 116",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Super",
+        "Q4",
+        "Diğer"
+      ]
     },
     {
       "name": "145/146 (1994-2001)",
-      "versions": ["1.4 103", "1.6 120", "1.8 144", "2.0 TS 155", "1.9 JTD 90", "1.9 JTD 105", "Diğer"],
-      "trims": ["Standart", "L", "Ti", "Diğer"]
+      "versions": [
+        "1.4 103",
+        "1.6 120",
+        "1.8 144",
+        "2.0 TS 155",
+        "1.9 JTD 90",
+        "1.9 JTD 105",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "L",
+        "Ti",
+        "Diğer"
+      ]
     },
     {
       "name": "GTV/Spider (1995-2005)",
-      "versions": ["2.0 TS 150", "3.0 V6 220", "2.4 JTD 137", "Diğer"],
-      "trims": ["Standart", "Lusso", "Diğer"]
+      "versions": [
+        "2.0 TS 150",
+        "3.0 V6 220",
+        "2.4 JTD 137",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Lusso",
+        "Diğer"
+      ]
     },
     {
       "name": "156 (1997-2006)",
-      "versions": ["1.6 Twin Spark 120", "1.8 Twin Spark 144", "2.0 Twin Spark 155", "2.5 V6 192", "1.9 JTD 105", "1.9 JTD 115", "1.9 JTD 140", "2.4 JTD 140", "2.4 JTD 175", "GTA 3.2 V6 250", "Diğer"],
-      "trims": ["Progression", "Distinctive", "Lusso", "Sportwagon", "GTA", "Diğer"]
+      "versions": [
+        "1.6 Twin Spark 120",
+        "1.8 Twin Spark 144",
+        "2.0 Twin Spark 155",
+        "2.5 V6 192",
+        "1.9 JTD 105",
+        "1.9 JTD 115",
+        "1.9 JTD 140",
+        "2.4 JTD 140",
+        "2.4 JTD 175",
+        "GTA 3.2 V6 250",
+        "Diğer"
+      ],
+      "trims": [
+        "Progression",
+        "Distinctive",
+        "Lusso",
+        "Sportwagon",
+        "GTA",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 Twin Spark 120": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Sportwagon",
+          "Diğer"
+        ],
+        "1.8 Twin Spark 144": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Sportwagon",
+          "Diğer"
+        ],
+        "2.0 Twin Spark 155": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Sportwagon",
+          "Diğer"
+        ],
+        "2.5 V6 192": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Sportwagon",
+          "Diğer"
+        ],
+        "1.9 JTD 105": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Sportwagon",
+          "Diğer"
+        ],
+        "1.9 JTD 115": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Sportwagon",
+          "Diğer"
+        ],
+        "1.9 JTD 140": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Sportwagon",
+          "Diğer"
+        ],
+        "2.4 JTD 140": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Sportwagon",
+          "Diğer"
+        ],
+        "2.4 JTD 175": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Sportwagon",
+          "Diğer"
+        ],
+        "GTA 3.2 V6 250": [
+          "GTA",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "166 (1998-2007)",
-      "versions": ["2.0 TS 155", "2.5 V6 190", "3.0 V6 226", "2.4 JTD 136", "2.4 JTD 175", "Diğer"],
-      "trims": ["Standart", "Distinctive", "Diğer"]
+      "versions": [
+        "2.0 TS 155",
+        "2.5 V6 190",
+        "3.0 V6 226",
+        "2.4 JTD 136",
+        "2.4 JTD 175",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Distinctive",
+        "Diğer"
+      ]
     },
     {
       "name": "147 (2000-2010)",
-      "versions": ["1.6 Twin Spark 105", "1.6 Twin Spark 120", "2.0 Twin Spark 150", "1.9 JTD 100", "1.9 JTD 115", "1.9 JTD 120", "1.9 JTDm 140", "GTA 3.2 V6 250", "Diğer"],
-      "trims": ["Progression", "Distinctive", "Lusso", "GTA", "Diğer"]
+      "versions": [
+        "1.6 Twin Spark 105",
+        "1.6 Twin Spark 120",
+        "2.0 Twin Spark 150",
+        "1.9 JTD 100",
+        "1.9 JTD 115",
+        "1.9 JTD 120",
+        "1.9 JTDm 140",
+        "GTA 3.2 V6 250",
+        "Diğer"
+      ],
+      "trims": [
+        "Progression",
+        "Distinctive",
+        "Lusso",
+        "GTA",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 Twin Spark 105": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Diğer"
+        ],
+        "1.6 Twin Spark 120": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Diğer"
+        ],
+        "2.0 Twin Spark 150": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Diğer"
+        ],
+        "1.9 JTD 100": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Diğer"
+        ],
+        "1.9 JTD 115": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Diğer"
+        ],
+        "1.9 JTD 120": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Diğer"
+        ],
+        "1.9 JTDm 140": [
+          "Progression",
+          "Distinctive",
+          "Lusso",
+          "Diğer"
+        ],
+        "GTA 3.2 V6 250": [
+          "GTA",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "GT (2003-2010)",
-      "versions": ["1.9 JTD 150", "2.0 JTS 165", "3.2 V6 240", "Diğer"],
-      "trims": ["Standart", "Distinctive", "Diğer"]
+      "versions": [
+        "1.9 JTD 150",
+        "2.0 JTS 165",
+        "3.2 V6 240",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Distinctive",
+        "Diğer"
+      ]
     },
     {
       "name": "159 (2005-2011)",
-      "versions": ["1.8 Twin Spark 140", "1.9 JTS 160", "2.2 JTS 185", "3.2 V6 260", "1.9 JTDm 120", "1.9 JTDm 150", "2.0 JTDm 136", "2.4 JTDm 200", "Diğer"],
-      "trims": ["Progression", "Distinctive", "Lusso", "Sportwagon", "Diğer"]
+      "versions": [
+        "1.8 Twin Spark 140",
+        "1.9 JTS 160",
+        "2.2 JTS 185",
+        "3.2 V6 260",
+        "1.9 JTDm 120",
+        "1.9 JTDm 150",
+        "2.0 JTDm 136",
+        "2.4 JTDm 200",
+        "Diğer"
+      ],
+      "trims": [
+        "Progression",
+        "Distinctive",
+        "Lusso",
+        "Sportwagon",
+        "Diğer"
+      ]
     },
     {
       "name": "MiTo (2008-2018)",
-      "versions": ["1.4 78", "1.4 TB 120", "1.4 TB 135", "1.4 MultiAir 105", "1.4 MultiAir 140", "1.3 JTDM 85", "1.3 JTDM 95", "1.6 JTDM 120", "QV 1.4 TB 170", "Diğer"],
-      "trims": ["Progression", "Distinctive", "Veloce", "QV", "Diğer"]
+      "versions": [
+        "1.4 78",
+        "1.4 TB 120",
+        "1.4 TB 135",
+        "1.4 MultiAir 105",
+        "1.4 MultiAir 140",
+        "1.3 JTDM 85",
+        "1.3 JTDM 95",
+        "1.6 JTDM 120",
+        "QV 1.4 TB 170",
+        "Diğer"
+      ],
+      "trims": [
+        "Progression",
+        "Distinctive",
+        "Veloce",
+        "QV",
+        "Diğer"
+      ]
     },
     {
       "name": "Brera / Spider (2006-2010)",
-      "versions": ["2.2 JTS 185", "3.2 V6 260 Q4", "2.4 JTDm 200", "Diğer"],
-      "trims": ["Standart", "S", "Diğer"]
+      "versions": [
+        "2.2 JTS 185",
+        "3.2 V6 260 Q4",
+        "2.4 JTDm 200",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
     },
     {
       "name": "Giulietta (2010-2020)",
-      "versions": ["1.4 TB 120", "1.4 TB 150", "1.75 TB 235", "1.6 JTDM 105", "1.6 JTDM 120", "2.0 JTDM 150", "2.0 JTDM 175", "QV 1.750 TB 240", "Diğer"],
-      "trims": ["Progression", "Distinctive", "Sprint", "Veloce", "QV", "Diğer"]
+      "versions": [
+        "1.4 TB 120",
+        "1.4 TB 150",
+        "1.75 TB 235",
+        "1.6 JTDM 105",
+        "1.6 JTDM 120",
+        "2.0 JTDM 150",
+        "2.0 JTDM 175",
+        "QV 1.750 TB 240",
+        "Diğer"
+      ],
+      "trims": [
+        "Progression",
+        "Distinctive",
+        "Sprint",
+        "Veloce",
+        "QV",
+        "Diğer"
+      ]
     },
     {
       "name": "Giulia (2016-)",
-      "versions": ["2.0 Turbo 200 RWD", "2.0 Turbo 280 AWD", "2.9 V6 Biturbo 510 Quadrifoglio", "Diğer"],
-      "trims": ["Sprint", "Ti", "Veloce", "Super", "Quadrifoglio", "Diğer"]
+      "versions": [
+        "2.0 Turbo 200 RWD",
+        "2.0 Turbo 280 AWD",
+        "2.9 V6 Biturbo 510 Quadrifoglio",
+        "Diğer"
+      ],
+      "trims": [
+        "Sprint",
+        "Ti",
+        "Veloce",
+        "Super",
+        "Quadrifoglio",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "2.0 Turbo 200 RWD": [
+          "Sprint",
+          "Ti",
+          "Veloce",
+          "Super",
+          "Diğer"
+        ],
+        "2.0 Turbo 280 AWD": [
+          "Sprint",
+          "Ti",
+          "Veloce",
+          "Super",
+          "Diğer"
+        ],
+        "2.9 V6 Biturbo 510 Quadrifoglio": [
+          "Quadrifoglio",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Stelvio (2017-)",
-      "versions": ["2.0 Turbo 200 RWD", "2.0 Turbo 280 AWD", "2.9 V6 Biturbo 510 Quadrifoglio", "Diğer"],
-      "trims": ["Sprint", "Ti", "Veloce", "Super", "Quadrifoglio", "Diğer"]
+      "versions": [
+        "2.0 Turbo 200 RWD",
+        "2.0 Turbo 280 AWD",
+        "2.9 V6 Biturbo 510 Quadrifoglio",
+        "Diğer"
+      ],
+      "trims": [
+        "Sprint",
+        "Ti",
+        "Veloce",
+        "Super",
+        "Quadrifoglio",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "2.0 Turbo 200 RWD": [
+          "Sprint",
+          "Ti",
+          "Veloce",
+          "Super",
+          "Diğer"
+        ],
+        "2.0 Turbo 280 AWD": [
+          "Sprint",
+          "Ti",
+          "Veloce",
+          "Super",
+          "Diğer"
+        ],
+        "2.9 V6 Biturbo 510 Quadrifoglio": [
+          "Quadrifoglio",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Tonale (2022-)",
-      "versions": ["1.5 T4 130 MHEV FWD", "1.5 T4 160 MHEV FWD", "1.6 MHEV 130 FWD", "PHEV Q4 280 AWD", "Diğer"],
-      "trims": ["Sprint", "Ti", "Veloce", "Edizione Speciale", "Diğer"]
+      "versions": [
+        "1.5 T4 130 MHEV FWD",
+        "1.5 T4 160 MHEV FWD",
+        "1.6 MHEV 130 FWD",
+        "PHEV Q4 280 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Sprint",
+        "Ti",
+        "Veloce",
+        "Edizione Speciale",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

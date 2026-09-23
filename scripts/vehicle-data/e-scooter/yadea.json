@@ -1,10 +1,116 @@
 {
   "make": "Yadea",
   "models": [
-    { "name": "C1S / C1 Pro (2021-)", "versions": ["500W 35 km/s C1S", "700W 40 km/s C1 Pro", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
-    { "name": "G5 Pro / G6 (2022-)", "versions": ["500W 35 km/s G5 Pro", "800W 45 km/s G6", "Diğer"], "trims": ["G5 Pro", "G6", "Diğer"] },
-    { "name": "KS6 Pro / KS6 Max (2023-)", "versions": ["500W 30 km/s KS6 Pro", "700W 35 km/s KS6 Max", "Diğer"], "trims": ["Pro", "Max", "Diğer"] },
-    { "name": "KS2 / KS3 Lite / KS5", "versions": ["300W 25 km/s KS2", "350W 25 km/s KS3 Lite", "500W 30 km/s KS5", "Pro 500W KS5 Pro", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "C1S / C1 Pro (2021-)",
+      "versions": [
+        "500W 35 km/s C1S",
+        "700W 40 km/s C1 Pro",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Pro",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "500W 35 km/s C1S": [
+          "Standart",
+          "Diğer"
+        ],
+        "700W 40 km/s C1 Pro": [
+          "Pro",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "G5 Pro / G6 (2022-)",
+      "versions": [
+        "500W 35 km/s G5 Pro",
+        "800W 45 km/s G6",
+        "Diğer"
+      ],
+      "trims": [
+        "G5 Pro",
+        "G6",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "500W 35 km/s G5 Pro": [
+          "G5 Pro",
+          "Diğer"
+        ],
+        "800W 45 km/s G6": [
+          "G6",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "KS6 Pro / KS6 Max (2023-)",
+      "versions": [
+        "500W 30 km/s KS6 Pro",
+        "700W 35 km/s KS6 Max",
+        "Diğer"
+      ],
+      "trims": [
+        "Pro",
+        "Max",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "500W 30 km/s KS6 Pro": [
+          "Pro",
+          "Diğer"
+        ],
+        "700W 35 km/s KS6 Max": [
+          "Max",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "KS2 / KS3 Lite / KS5",
+      "versions": [
+        "300W 25 km/s KS2",
+        "350W 25 km/s KS3 Lite",
+        "500W 30 km/s KS5",
+        "Pro 500W KS5 Pro",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Pro",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "300W 25 km/s KS2": [
+          "Standart",
+          "Diğer"
+        ],
+        "350W 25 km/s KS3 Lite": [
+          "Standart",
+          "Diğer"
+        ],
+        "500W 30 km/s KS5": [
+          "Standart",
+          "Diğer"
+        ],
+        "Pro 500W KS5 Pro": [
+          "Pro",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

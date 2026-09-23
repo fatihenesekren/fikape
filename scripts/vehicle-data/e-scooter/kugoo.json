@@ -1,13 +1,116 @@
 {
   "make": "Kugoo",
   "models": [
-    { "name": "S1", "versions": ["350W 7.5Ah 30km/h", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
-    { "name": "S3", "versions": ["350W 10Ah 35km/h", "Pro 350W", "Diğer"], "trims": ["Standart", "Pro", "Diğer"] },
-    { "name": "G-Booster", "versions": ["2000W Çift 23Ah 70km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "G2 Pro", "versions": ["500W 26Ah 45km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "M4 Pro", "versions": ["1200W 24Ah 50km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "G4", "versions": ["1600W Çift 23Ah 70km/h", "Max 2000W", "Diğer"], "trims": ["Standart", "Max", "Diğer"] },
-    { "name": "M4 Max", "versions": ["1200W Çift 26Ah 55km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "S1",
+      "versions": [
+        "350W 7.5Ah 30km/h",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Pro",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "S3",
+      "versions": [
+        "350W 10Ah 35km/h",
+        "Pro 350W",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Pro",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "350W 10Ah 35km/h": [
+          "Standart",
+          "Diğer"
+        ],
+        "Pro 350W": [
+          "Pro",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "G-Booster",
+      "versions": [
+        "2000W Çift 23Ah 70km/h",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "G2 Pro",
+      "versions": [
+        "500W 26Ah 45km/h",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "M4 Pro",
+      "versions": [
+        "1200W 24Ah 50km/h",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "G4",
+      "versions": [
+        "1600W Çift 23Ah 70km/h",
+        "Max 2000W",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Max",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1600W Çift 23Ah 70km/h": [
+          "Standart",
+          "Diğer"
+        ],
+        "Max 2000W": [
+          "Max",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "M4 Max",
+      "versions": [
+        "1200W Çift 26Ah 55km/h",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

@@ -3,33 +3,60 @@
   "models": [
     {
       "name": "Gratour (2015-)",
-      "versions": ["1.3 LPG 82", "1.5 Benzin 95", "EV Elektrik", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "1.3 LPG 82",
+        "1.5 Benzin 95",
+        "EV Elektrik",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "View (2010-)",
-      "versions": ["2.4 Dizel 95", "2.4 Dizel 115", "Diğer"],
-      "trims": ["Standart", "CS2", "Diğer"]
-    },
-    {
-      "name": "Aumark (2015-)",
-      "versions": ["2.8 Cummins 130", "3.8 Cummins 160", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "2.4 Dizel 95",
+        "2.4 Dizel 115",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "CS2",
+        "Diğer"
+      ]
     },
     {
       "name": "Tunland G7 (2022-)",
-      "versions": ["2.0T Dizel 163 4WD", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "2.0T Dizel 163 4WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Tunland V9 (2023-)",
-      "versions": ["2.0T Mild Hybrid 163 4WD", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "2.0T Mild Hybrid 163 4WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

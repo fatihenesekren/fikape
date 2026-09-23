@@ -1,14 +1,116 @@
 {
   "make": "Bürstner",
   "models": [
-    { "name": "Premio", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "Life", "Plus", "Diğer"] },
-    { "name": "Averso", "versions": ["2 Kişilik", "4 Kişilik", "Fransız Karyola", "Diğer"], "trims": ["Standart", "GT", "Diğer"] },
-    { "name": "Lyseo", "versions": ["4 Kişilik", "6 Kişilik", "Diğer"], "trims": ["Standart", "TD", "HD", "Diğer"] },
-    { "name": "Ixeo (Motokaravan)", "versions": ["Yarı Entegre", "Alkoven", "Diğer"], "trims": ["Standart", "TL", "Diğer"] },
-    { "name": "Nexxo (Motokaravan)", "versions": ["Entegre", "Van", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Elegance (Motokaravan)", "versions": ["Entegre", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Delfin (Kampervan, Renault Master Tabanlı)", "versions": ["Van", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Copa / Campeo (Kompakt Kampervan)", "versions": ["Van Copa", "Van Campeo", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "Premio",
+      "versions": [
+        "2 Kişilik",
+        "4 Kişilik",
+        "Fransız Karyola",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Life",
+        "Plus",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Averso",
+      "versions": [
+        "2 Kişilik",
+        "4 Kişilik",
+        "Fransız Karyola",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GT",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Lyseo",
+      "versions": [
+        "4 Kişilik",
+        "6 Kişilik",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "TD",
+        "HD",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Ixeo (Motokaravan)",
+      "versions": [
+        "Yarı Entegre",
+        "Alkoven",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "TL",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Nexxo (Motokaravan)",
+      "versions": [
+        "Entegre",
+        "Van",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Elegance (Motokaravan)",
+      "versions": [
+        "Entegre",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Delfin (Kampervan, Renault Master Tabanlı)",
+      "versions": [
+        "Van",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Copa / Campeo (Kompakt Kampervan)",
+      "versions": [
+        "Van Copa",
+        "Van Campeo",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

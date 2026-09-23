@@ -3,33 +3,137 @@
   "models": [
     {
       "name": "500 / 595 (2008-2023)",
-      "versions": ["1.4 T-Jet 135", "1.4 T-Jet 160", "1.4 T-Jet 180", "595 Competizione 180", "695 Biposto 190", "Diğer"],
-      "trims": ["Standart", "Turismo", "Competizione", "695", "Diğer"]
+      "versions": [
+        "1.4 T-Jet 135",
+        "1.4 T-Jet 160",
+        "1.4 T-Jet 180",
+        "595 Competizione 180",
+        "695 Biposto 190",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Turismo",
+        "Competizione",
+        "695",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 T-Jet 135": [
+          "Standart",
+          "Turismo",
+          "Diğer"
+        ],
+        "1.4 T-Jet 160": [
+          "Standart",
+          "Turismo",
+          "Diğer"
+        ],
+        "1.4 T-Jet 180": [
+          "Standart",
+          "Turismo",
+          "Diğer"
+        ],
+        "595 Competizione 180": [
+          "Competizione",
+          "Diğer"
+        ],
+        "695 Biposto 190": [
+          "695",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "500e (2023-)",
-      "versions": ["Elektrik 155 CV", "Scorpionissima 155 CV", "Diğer"],
-      "trims": ["Standart", "Turismo", "Scorpionissima", "Diğer"]
+      "versions": [
+        "Elektrik 155 CV",
+        "Scorpionissima 155 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Turismo",
+        "Scorpionissima",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Elektrik 155 CV": [
+          "Standart",
+          "Turismo",
+          "Diğer"
+        ],
+        "Scorpionissima 155 CV": [
+          "Scorpionissima",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "124 Spider (2016-2019)",
-      "versions": ["1.4 MultiAir 170", "Heritage 170", "Diğer"],
-      "trims": ["Standart", "Heritage", "Diğer"]
+      "versions": [
+        "1.4 MultiAir 170",
+        "Heritage 170",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Heritage",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 MultiAir 170": [
+          "Standart",
+          "Diğer"
+        ],
+        "Heritage 170": [
+          "Heritage",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Grande Punto (2008-2010)",
-      "versions": ["1.4 T-Jet 155", "Esseesse 180", "Diğer"],
-      "trims": ["Standart", "Esseesse", "Diğer"]
+      "versions": [
+        "1.4 T-Jet 155",
+        "Esseesse 180",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Esseesse",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 T-Jet 155": [
+          "Standart",
+          "Diğer"
+        ],
+        "Esseesse 180": [
+          "Esseesse",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Punto Evo (2010-2012)",
-      "versions": ["1.4 MultiAir 163", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "1.4 MultiAir 163",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

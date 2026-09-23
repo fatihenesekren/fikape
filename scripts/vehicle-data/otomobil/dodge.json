@@ -3,48 +3,261 @@
   "models": [
     {
       "name": "Caliber (2006-2012)",
-      "versions": ["1.8 125", "2.0 156", "2.0 CRD 140 Dizel", "SRT4 2.4 Turbo 285", "Diğer"],
-      "trims": ["SE", "SXT", "R/T", "SRT4", "Diğer"]
+      "versions": [
+        "1.8 125",
+        "2.0 156",
+        "2.0 CRD 140 Dizel",
+        "SRT4 2.4 Turbo 285",
+        "Diğer"
+      ],
+      "trims": [
+        "SE",
+        "SXT",
+        "R/T",
+        "SRT4",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.8 125": [
+          "SE",
+          "SXT",
+          "R/T",
+          "Diğer"
+        ],
+        "2.0 156": [
+          "SE",
+          "SXT",
+          "R/T",
+          "Diğer"
+        ],
+        "2.0 CRD 140 Dizel": [
+          "SE",
+          "SXT",
+          "R/T",
+          "Diğer"
+        ],
+        "SRT4 2.4 Turbo 285": [
+          "SRT4",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Avenger (2007-2010)",
-      "versions": ["2.0 156", "2.4 170", "2.0 CRD 140 Dizel", "Diğer"],
-      "trims": ["SE", "SXT", "Diğer"]
+      "versions": [
+        "2.0 156",
+        "2.4 170",
+        "2.0 CRD 140 Dizel",
+        "Diğer"
+      ],
+      "trims": [
+        "SE",
+        "SXT",
+        "Diğer"
+      ]
     },
     {
       "name": "Nitro (2007-2012)",
-      "versions": ["2.8 CRD 177 Dizel 4WD", "3.7 V6 210", "4.0 V6 260", "Diğer"],
-      "trims": ["SE", "SXT", "R/T", "Diğer"]
+      "versions": [
+        "2.8 CRD 177 Dizel 4WD",
+        "3.7 V6 210",
+        "4.0 V6 260",
+        "Diğer"
+      ],
+      "trims": [
+        "SE",
+        "SXT",
+        "R/T",
+        "Diğer"
+      ]
     },
     {
       "name": "Journey (2008-2020)",
-      "versions": ["2.0 CRD 140 Dizel", "2.4 170", "3.6 V6 283", "Diğer"],
-      "trims": ["SE", "SXT", "R/T", "Diğer"]
+      "versions": [
+        "2.0 CRD 140 Dizel",
+        "2.4 170",
+        "3.6 V6 283",
+        "Diğer"
+      ],
+      "trims": [
+        "SE",
+        "SXT",
+        "R/T",
+        "Diğer"
+      ]
     },
     {
       "name": "Viper (1992-2017)",
-      "versions": ["8.0 V10 400", "8.3 V10 450", "8.4 V10 600", "SRT 8.4 V10 645", "Diğer"],
-      "trims": ["Standart", "GTS", "SRT", "ACR", "Diğer"]
+      "versions": [
+        "8.0 V10 400",
+        "8.3 V10 450",
+        "8.4 V10 600",
+        "SRT 8.4 V10 645",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GTS",
+        "SRT",
+        "ACR",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "8.0 V10 400": [
+          "Standart",
+          "GTS",
+          "ACR",
+          "Diğer"
+        ],
+        "8.3 V10 450": [
+          "Standart",
+          "GTS",
+          "ACR",
+          "Diğer"
+        ],
+        "8.4 V10 600": [
+          "Standart",
+          "GTS",
+          "ACR",
+          "Diğer"
+        ],
+        "SRT 8.4 V10 645": [
+          "SRT",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Charger (2011-2023)",
-      "versions": ["3.6 V6 292", "5.7 V8 HEMI 370", "6.4 V8 HEMI 485 Scat Pack", "6.2 SC V8 717 Hellcat", "Diğer"],
-      "trims": ["SXT", "GT", "R/T", "Scat Pack", "Hellcat", "Diğer"]
+      "versions": [
+        "3.6 V6 292",
+        "5.7 V8 HEMI 370",
+        "6.4 V8 HEMI 485 Scat Pack",
+        "6.2 SC V8 717 Hellcat",
+        "Diğer"
+      ],
+      "trims": [
+        "SXT",
+        "GT",
+        "R/T",
+        "Scat Pack",
+        "Hellcat",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "3.6 V6 292": [
+          "SXT",
+          "GT",
+          "R/T",
+          "Diğer"
+        ],
+        "5.7 V8 HEMI 370": [
+          "SXT",
+          "GT",
+          "R/T",
+          "Diğer"
+        ],
+        "6.4 V8 HEMI 485 Scat Pack": [
+          "Scat Pack",
+          "Diğer"
+        ],
+        "6.2 SC V8 717 Hellcat": [
+          "Hellcat",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Challenger (2008-2023)",
-      "versions": ["3.6 V6 306", "5.7 V8 HEMI 375", "6.4 V8 HEMI 485 Scat Pack", "6.2 SC V8 717 Hellcat", "6.2 SC V8 807 Demon", "Diğer"],
-      "trims": ["SXT", "GT", "R/T", "Scat Pack", "Hellcat", "Demon", "Diğer"]
+      "versions": [
+        "3.6 V6 306",
+        "5.7 V8 HEMI 375",
+        "6.4 V8 HEMI 485 Scat Pack",
+        "6.2 SC V8 717 Hellcat",
+        "6.2 SC V8 807 Demon",
+        "Diğer"
+      ],
+      "trims": [
+        "SXT",
+        "GT",
+        "R/T",
+        "Scat Pack",
+        "Hellcat",
+        "Demon",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "3.6 V6 306": [
+          "SXT",
+          "GT",
+          "R/T",
+          "Diğer"
+        ],
+        "5.7 V8 HEMI 375": [
+          "SXT",
+          "GT",
+          "R/T",
+          "Diğer"
+        ],
+        "6.4 V8 HEMI 485 Scat Pack": [
+          "Scat Pack",
+          "Diğer"
+        ],
+        "6.2 SC V8 717 Hellcat": [
+          "Hellcat",
+          "Diğer"
+        ],
+        "6.2 SC V8 807 Demon": [
+          "Demon",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Durango (2011-)",
-      "versions": ["3.6 V6 292", "5.7 V8 HEMI 360", "6.4 V8 HEMI 485 SRT", "Diğer"],
-      "trims": ["SXT", "GT", "R/T", "Citadel", "SRT", "Diğer"]
+      "versions": [
+        "3.6 V6 292",
+        "5.7 V8 HEMI 360",
+        "6.4 V8 HEMI 485 SRT",
+        "Diğer"
+      ],
+      "trims": [
+        "SXT",
+        "GT",
+        "R/T",
+        "Citadel",
+        "SRT",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "3.6 V6 292": [
+          "SXT",
+          "GT",
+          "R/T",
+          "Citadel",
+          "Diğer"
+        ],
+        "5.7 V8 HEMI 360": [
+          "SXT",
+          "GT",
+          "R/T",
+          "Citadel",
+          "Diğer"
+        ],
+        "6.4 V8 HEMI 485 SRT": [
+          "SRT",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

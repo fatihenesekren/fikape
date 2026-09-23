@@ -3,58 +3,138 @@
   "models": [
     {
       "name": "Alsvin (2024-)",
-      "versions": ["1.4 99 2WD", "Diğer"],
-      "trims": ["Elite", "Comfort", "Diğer"]
+      "versions": [
+        "1.4 99 2WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Elite",
+        "Comfort",
+        "Diğer"
+      ]
     },
     {
       "name": "CS15 (2023-)",
-      "versions": ["1.5 105 2WD", "Diğer"],
-      "trims": ["Comfort", "Diğer"]
+      "versions": [
+        "1.5 105 2WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Diğer"
+      ]
     },
     {
       "name": "CS35 Plus (2019-)",
-      "versions": ["1.6 126 2WD", "1.4T 160 2WD", "Diğer"],
-      "trims": ["Comfort", "Luxury", "Limited", "Diğer"]
+      "versions": [
+        "1.6 126 2WD",
+        "1.4T 160 2WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Luxury",
+        "Limited",
+        "Diğer"
+      ]
     },
     {
       "name": "CS55 (2019-2022)",
-      "versions": ["1.5T 155 2WD", "Diğer"],
-      "trims": ["Elite", "Luxury", "Diğer"]
+      "versions": [
+        "1.5T 155 2WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Elite",
+        "Luxury",
+        "Diğer"
+      ]
     },
     {
       "name": "CS55 Plus (2022-)",
-      "versions": ["1.5T TGDI 156 2WD", "Diğer"],
-      "trims": ["Comfort", "Luxury", "Flagship", "Diğer"]
+      "versions": [
+        "1.5T TGDI 156 2WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Luxury",
+        "Flagship",
+        "Diğer"
+      ]
     },
     {
       "name": "Uni-T (2021-)",
-      "versions": ["1.5T 177 2WD", "Diğer"],
-      "trims": ["Elite", "Limited", "Diğer"]
+      "versions": [
+        "1.5T 177 2WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Elite",
+        "Limited",
+        "Diğer"
+      ]
     },
     {
       "name": "X7 Plus (2021-)",
-      "versions": ["1.5T 167 2WD", "Diğer"],
-      "trims": ["Luxury", "Limited", "Diğer"]
+      "versions": [
+        "1.5T 167 2WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Luxury",
+        "Limited",
+        "Diğer"
+      ]
     },
     {
       "name": "UNI-K (2021-)",
-      "versions": ["2.0T 233 2WD", "2.0T 233 4WD", "iDD PHEV 330", "Diğer"],
-      "trims": ["Comfort", "Luxury", "Flagship", "Diğer"]
+      "versions": [
+        "2.0T 233 2WD",
+        "2.0T 233 4WD",
+        "iDD PHEV 330",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Luxury",
+        "Flagship",
+        "Diğer"
+      ]
     },
     {
       "name": "UNI-V (2022-)",
-      "versions": ["1.5T TGDI 138", "Diğer"],
-      "trims": ["Comfort", "Luxury", "Diğer"]
+      "versions": [
+        "1.5T TGDI 138",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Luxury",
+        "Diğer"
+      ]
     },
     {
       "name": "Deepal S7 (2024-)",
-      "versions": ["Elektrik 218 CV", "EREV 1.5T + Elektrik 330 CV", "Diğer"],
-      "trims": ["Standart", "Plus", "Diğer"]
+      "versions": [
+        "Elektrik 218 CV",
+        "EREV 1.5T + Elektrik 330 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Plus",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

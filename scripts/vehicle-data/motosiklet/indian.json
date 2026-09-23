@@ -1,20 +1,181 @@
 {
   "make": "Indian",
   "models": [
-    { "name": "Scout", "versions": ["1133cc 100 CV", "Diğer"], "trims": ["Standart", "Sixty", "Rogue", "Diğer"] },
-    { "name": "Scout Bobber", "versions": ["1133cc 100 CV", "Diğer"], "trims": ["Standart", "Twenty", "Diğer"] },
-    { "name": "Chief", "versions": ["1890cc 116 CV", "Diğer"], "trims": ["Standart", "Dark Horse", "Bobber Dark Horse", "Diğer"] },
-    { "name": "Challenger", "versions": ["1768cc 122 CV", "Dark Horse", "Limited", "Diğer"], "trims": ["Standart", "Dark Horse", "Limited", "Elite", "Diğer"] },
-    { "name": "FTR 1200", "versions": ["1203cc 123 CV", "S 123 CV", "R Carbon", "Diğer"], "trims": ["Standart", "S", "Rally", "R Carbon", "Diğer"] },
-    { "name": "Chieftain", "versions": ["1890cc 116 CV", "PowerPlus 122 CV", "Diğer"], "trims": ["Standart", "Dark Horse", "Limited", "Diğer"] },
-    { "name": "Roadmaster", "versions": ["1890cc 116 CV", "PowerPlus 122 CV", "Diğer"], "trims": ["Standart", "Dark Horse", "Limited", "Diğer"] },
-    { "name": "Pursuit", "versions": ["PowerPlus 122 CV", "Diğer"], "trims": ["Dark Horse", "Limited", "Diğer"] },
-    { "name": "Springfield", "versions": ["1811cc 100 CV", "1890cc 116 CV", "Diğer"], "trims": ["Standart", "Dark Horse", "Diğer"] },
-    { "name": "Chief Vintage", "versions": ["1890cc 116 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
+    {
+      "name": "Scout",
+      "versions": [
+        "1133cc 100 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Sixty",
+        "Rogue",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Scout Bobber",
+      "versions": [
+        "1133cc 100 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Twenty",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Chief",
+      "versions": [
+        "1890cc 116 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Dark Horse",
+        "Bobber Dark Horse",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Challenger",
+      "versions": [
+        "1768cc 122 CV",
+        "Dark Horse",
+        "Limited",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Dark Horse",
+        "Limited",
+        "Elite",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1768cc 122 CV": [
+          "Standart",
+          "Elite",
+          "Diğer"
+        ],
+        "Dark Horse": [
+          "Dark Horse",
+          "Diğer"
+        ],
+        "Limited": [
+          "Limited",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "FTR 1200",
+      "versions": [
+        "1203cc 123 CV",
+        "S 123 CV",
+        "R Carbon",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Rally",
+        "R Carbon",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1203cc 123 CV": [
+          "Standart",
+          "S",
+          "Rally",
+          "Diğer"
+        ],
+        "S 123 CV": [
+          "Standart",
+          "S",
+          "Rally",
+          "Diğer"
+        ],
+        "R Carbon": [
+          "R Carbon",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Chieftain",
+      "versions": [
+        "1890cc 116 CV",
+        "PowerPlus 122 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Dark Horse",
+        "Limited",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Roadmaster",
+      "versions": [
+        "1890cc 116 CV",
+        "PowerPlus 122 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Dark Horse",
+        "Limited",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Pursuit",
+      "versions": [
+        "PowerPlus 122 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Dark Horse",
+        "Limited",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Springfield",
+      "versions": [
+        "1811cc 100 CV",
+        "1890cc 116 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Dark Horse",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Chief Vintage",
+      "versions": [
+        "1890cc 116 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

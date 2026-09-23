@@ -1,29 +1,578 @@
 {
   "make": "Ducati",
   "models": [
-    { "name": "848 / 1098 / 1198 (2007-2013)", "versions": ["848 134 CV", "1098 160 CV", "1098 S 160 CV", "1198 170 CV", "1198 S 170 CV", "Diğer"], "trims": ["Standart", "S", "SP", "Diğer"] },
-    { "name": "1199 Panigale (2012-2014)", "versions": ["195 CV 1199cc", "S 195 CV", "R 205 CV", "Tricolore", "Diğer"], "trims": ["Standart", "S", "R", "Diğer"] },
-    { "name": "1299 Panigale (2015-2018)", "versions": ["205 CV 1285cc", "S 205 CV", "R 220 CV", "Superleggera", "Diğer"], "trims": ["Standart", "S", "R", "Diğer"] },
-    { "name": "Panigale V2 (2020-)", "versions": ["155 CV 955cc", "Bayliss 1st 155 CV", "Diğer"], "trims": ["Standart", "Bayliss", "Diğer"] },
-    { "name": "Panigale V4 (2018-)", "versions": ["215 CV 1103cc", "S 215 CV", "R 240 CV", "SP 215 CV", "Diğer"], "trims": ["Standart", "S", "R", "SP", "Diğer"] },
-    { "name": "Monster 696 / 796 (2008-2015)", "versions": ["696cc 80 CV", "796cc 87 CV", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
-    { "name": "Monster 821 / 1200 (2014-2020)", "versions": ["821cc 109 CV", "1200cc 150 CV", "1200 S 150 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
-    { "name": "Monster (2021-)", "versions": ["111 CV 937cc", "Monster+ 111 CV", "Diğer"], "trims": ["Standart", "Plus", "Diğer"] },
-    { "name": "Multistrada 950 / 1200 / 1260 (2010-2021)", "versions": ["950cc 113 CV", "1200cc 160 CV", "1260cc 158 CV", "1260 S", "1260 Enduro", "Diğer"], "trims": ["Standart", "S", "Enduro", "Diğer"] },
-    { "name": "Multistrada V4 (2021-)", "versions": ["170 CV 1158cc", "S 170 CV", "Rally 170 CV", "Diğer"], "trims": ["Standart", "S", "S Sport", "Rally", "Diğer"] },
-    { "name": "Hypermotard 796 / 821 / 939 (2007-2018)", "versions": ["796cc 81 CV", "821cc 110 CV", "939cc 113 CV", "SP", "Diğer"], "trims": ["Standart", "SP", "Diğer"] },
-    { "name": "Hypermotard (2019-)", "versions": ["950 SP 114 CV", "Diğer"], "trims": ["Standart", "SP", "Diğer"] },
-    { "name": "Diavel", "versions": ["168 CV 1262cc", "Diavel V4 168 CV", "Diğer"], "trims": ["Standart", "Carbon", "Diğer"] },
-    { "name": "Scrambler", "versions": ["803 73 CV", "1100 86 CV", "Nightshift 73 CV", "Diğer"], "trims": ["Icon", "Full Throttle", "Nightshift", "Urban Motard", "Diğer"] },
-    { "name": "Streetfighter V4", "versions": ["208 CV 1103cc", "S 208 CV", "SP 220 CV", "Diğer"], "trims": ["Standart", "S", "SP", "Diğer"] },
-    { "name": "Streetfighter V2", "versions": ["955cc 153 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "DesertX", "versions": ["937cc 110 CV", "Rally 110 CV", "Diğer"], "trims": ["Standart", "Rally", "Diğer"] },
-    { "name": "Multistrada V2", "versions": ["937cc 113 CV", "S 113 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
-    { "name": "748 / 916 / 996 / 998 / 999 (1994-2006)", "versions": ["748cc 98 CV", "916cc 114 CV", "996cc 123 CV", "998cc 136 CV", "999cc 143 CV", "Diğer"], "trims": ["Standart", "S", "R", "Biposto", "Diğer"] },
-    { "name": "SuperSport 600SS / 750SS / 900SS / 1000SS (1991-2007)", "versions": ["600cc 53 CV", "750cc 61 CV", "900cc 80 CV", "1000cc 92 CV", "Diğer"], "trims": ["Standart", "IE", "FE", "Diğer"] },
-    { "name": "Monster 600 / 620 / 695 / 750 / 900 / 1000 (1993-2008)", "versions": ["600cc 53 CV", "620cc 62 CV", "695cc 73 CV", "750cc 61 CV", "900cc 80 CV", "1000cc 92 CV", "S4 916 CV", "S4R 130 CV", "Diğer"], "trims": ["Standart", "Dark", "S4", "S2R", "S4R", "S4RS", "Diğer"] },
-    { "name": "ST2 / ST3 / ST4 (1997-2007)", "versions": ["944cc 83 CV", "992cc 100 CV", "996cc 107 CV", "ST4S 117 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
-    { "name": "Multistrada 1000DS / 1100 (2003-2009)", "versions": ["992cc 84 CV", "1078cc 95 CV", "S 95 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "848 / 1098 / 1198 (2007-2013)",
+      "versions": [
+        "848 134 CV",
+        "1098 160 CV",
+        "1098 S 160 CV",
+        "1198 170 CV",
+        "1198 S 170 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "SP",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "1199 Panigale (2012-2014)",
+      "versions": [
+        "195 CV 1199cc",
+        "S 195 CV",
+        "R 205 CV",
+        "Tricolore",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "R",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "1299 Panigale (2015-2018)",
+      "versions": [
+        "205 CV 1285cc",
+        "S 205 CV",
+        "R 220 CV",
+        "Superleggera",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "R",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Panigale V2 (2020-)",
+      "versions": [
+        "155 CV 955cc",
+        "Bayliss 1st 155 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Bayliss",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "155 CV 955cc": [
+          "Standart",
+          "Diğer"
+        ],
+        "Bayliss 1st 155 CV": [
+          "Bayliss",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Panigale V4 (2018-)",
+      "versions": [
+        "215 CV 1103cc",
+        "S 215 CV",
+        "R 240 CV",
+        "SP 215 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "R",
+        "SP",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Monster 696 / 796 (2008-2015)",
+      "versions": [
+        "696cc 80 CV",
+        "796cc 87 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ABS",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Monster 821 / 1200 (2014-2020)",
+      "versions": [
+        "821cc 109 CV",
+        "1200cc 150 CV",
+        "1200 S 150 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Monster (2021-)",
+      "versions": [
+        "111 CV 937cc",
+        "Monster+ 111 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Plus",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Multistrada 950 / 1200 / 1260 (2010-2021)",
+      "versions": [
+        "950cc 113 CV",
+        "1200cc 160 CV",
+        "1260cc 158 CV",
+        "1260 S",
+        "1260 Enduro",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Enduro",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "950cc 113 CV": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1200cc 160 CV": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1260cc 158 CV": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1260 S": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1260 Enduro": [
+          "Enduro",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Multistrada V4 (2021-)",
+      "versions": [
+        "170 CV 1158cc",
+        "S 170 CV",
+        "Rally 170 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "S Sport",
+        "Rally",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "170 CV 1158cc": [
+          "Standart",
+          "S",
+          "S Sport",
+          "Diğer"
+        ],
+        "S 170 CV": [
+          "Standart",
+          "S",
+          "S Sport",
+          "Diğer"
+        ],
+        "Rally 170 CV": [
+          "Rally",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Hypermotard 796 / 821 / 939 (2007-2018)",
+      "versions": [
+        "796cc 81 CV",
+        "821cc 110 CV",
+        "939cc 113 CV",
+        "SP",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SP",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Hypermotard (2019-)",
+      "versions": [
+        "950 SP 114 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SP",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diavel",
+      "versions": [
+        "168 CV 1262cc",
+        "Diavel V4 168 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Carbon",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Scrambler",
+      "versions": [
+        "803 73 CV",
+        "1100 86 CV",
+        "Nightshift 73 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Icon",
+        "Full Throttle",
+        "Nightshift",
+        "Urban Motard",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "803 73 CV": [
+          "Icon",
+          "Full Throttle",
+          "Urban Motard",
+          "Diğer"
+        ],
+        "1100 86 CV": [
+          "Icon",
+          "Full Throttle",
+          "Urban Motard",
+          "Diğer"
+        ],
+        "Nightshift 73 CV": [
+          "Nightshift",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Streetfighter V4",
+      "versions": [
+        "208 CV 1103cc",
+        "S 208 CV",
+        "SP 220 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "SP",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Streetfighter V2",
+      "versions": [
+        "955cc 153 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "DesertX",
+      "versions": [
+        "937cc 110 CV",
+        "Rally 110 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Rally",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "937cc 110 CV": [
+          "Standart",
+          "Diğer"
+        ],
+        "Rally 110 CV": [
+          "Rally",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Multistrada V2",
+      "versions": [
+        "937cc 113 CV",
+        "S 113 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "748 / 916 / 996 / 998 / 999 (1994-2006)",
+      "versions": [
+        "748cc 98 CV",
+        "916cc 114 CV",
+        "996cc 123 CV",
+        "998cc 136 CV",
+        "999cc 143 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "R",
+        "Biposto",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "SuperSport 600SS / 750SS / 900SS / 1000SS (1991-2007)",
+      "versions": [
+        "600cc 53 CV",
+        "750cc 61 CV",
+        "900cc 80 CV",
+        "1000cc 92 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "IE",
+        "FE",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Monster 600 / 620 / 695 / 750 / 900 / 1000 (1993-2008)",
+      "versions": [
+        "600cc 53 CV",
+        "620cc 62 CV",
+        "695cc 73 CV",
+        "750cc 61 CV",
+        "900cc 80 CV",
+        "1000cc 92 CV",
+        "S4 916 CV",
+        "S4R 130 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Dark",
+        "S4",
+        "S2R",
+        "S4R",
+        "S4RS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "600cc 53 CV": [
+          "Standart",
+          "Dark",
+          "S4",
+          "S2R",
+          "S4RS",
+          "Diğer"
+        ],
+        "620cc 62 CV": [
+          "Standart",
+          "Dark",
+          "S4",
+          "S2R",
+          "S4RS",
+          "Diğer"
+        ],
+        "695cc 73 CV": [
+          "Standart",
+          "Dark",
+          "S4",
+          "S2R",
+          "S4RS",
+          "Diğer"
+        ],
+        "750cc 61 CV": [
+          "Standart",
+          "Dark",
+          "S4",
+          "S2R",
+          "S4RS",
+          "Diğer"
+        ],
+        "900cc 80 CV": [
+          "Standart",
+          "Dark",
+          "S4",
+          "S2R",
+          "S4RS",
+          "Diğer"
+        ],
+        "1000cc 92 CV": [
+          "Standart",
+          "Dark",
+          "S4",
+          "S2R",
+          "S4RS",
+          "Diğer"
+        ],
+        "S4 916 CV": [
+          "Standart",
+          "Dark",
+          "S4",
+          "S2R",
+          "S4RS",
+          "Diğer"
+        ],
+        "S4R 130 CV": [
+          "S4R",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "ST2 / ST3 / ST4 (1997-2007)",
+      "versions": [
+        "944cc 83 CV",
+        "992cc 100 CV",
+        "996cc 107 CV",
+        "ST4S 117 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Multistrada 1000DS / 1100 (2003-2009)",
+      "versions": [
+        "992cc 84 CV",
+        "1078cc 95 CV",
+        "S 95 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Panigale 899 / 959 (2014-2019)",
+      "versions": [
+        "899cc 148 CV",
+        "959cc 157 CV",
+        "959 Corsa 157 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Corsa",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Monster 1100 (2009-2013)",
+      "versions": [
+        "1100cc 95 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Evo",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Hypermotard 698 Mono",
+      "versions": [
+        "77 CV 659cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "RVE",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Hyperstrada",
+      "versions": [
+        "821cc 110 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Streetfighter 848 (2012-2015)",
+      "versions": [
+        "132 CV 849cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "SuperSport (2017-)",
+      "versions": [
+        "113 CV 937cc",
+        "S 113 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

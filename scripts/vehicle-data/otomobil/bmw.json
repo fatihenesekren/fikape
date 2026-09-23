@@ -3,258 +3,2785 @@
   "models": [
     {
       "name": "1 Serisi (2004-2011)",
-      "versions": ["116i", "118i", "120i", "130i", "116d", "118d", "120d", "M135i", "Diğer"],
-      "trims": ["Standart", "Sport", "M Sport", "Diğer"]
+      "versions": [
+        "116i",
+        "118i",
+        "120i",
+        "130i",
+        "116d",
+        "118d",
+        "120d",
+        "123d",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Sport",
+        "M Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "1 Serisi (2011-2019)",
-      "versions": ["116i", "118i", "120i", "125i", "116d", "118d", "120d", "125d", "M140i", "Diğer"],
-      "trims": ["Advantage", "Sport Line", "M Sport", "Diğer"]
+      "versions": [
+        "116i",
+        "118i",
+        "120i",
+        "125i",
+        "116d",
+        "118d",
+        "120d",
+        "125d",
+        "M135i",
+        "M140i",
+        "Diğer"
+      ],
+      "trims": [
+        "Advantage",
+        "Sport Line",
+        "M Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "1 Serisi (2019-)",
-      "versions": ["116i", "118i", "120i", "118d", "120d", "M135i xDrive", "Diğer"],
-      "trims": ["Advantage", "Sport Line", "M Sport", "M135i", "Diğer"]
+      "versions": [
+        "116i",
+        "118i",
+        "120i",
+        "118d",
+        "120d",
+        "M135i xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Advantage",
+        "Sport Line",
+        "M Sport",
+        "M135i",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "116i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "118i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "120i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "118d": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "120d": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M135i xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "2 Serisi",
-      "versions": ["218i Gran Coupé", "220i Coupé", "230i", "218d Gran Coupé", "220d", "M240i xDrive", "M2 Coupé", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "M240i", "M2", "Diğer"]
+      "versions": [
+        "218i Gran Coupé",
+        "220i Coupé",
+        "230i",
+        "218d Gran Coupé",
+        "220d",
+        "M240i xDrive",
+        "M2 Coupé",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "M240i",
+        "M2",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "218i Gran Coupé": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "220i Coupé": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "230i": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "218d Gran Coupé": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "220d": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M240i xDrive": [
+          "Standart",
+          "Diğer"
+        ],
+        "M2 Coupé": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "3 Serisi E30 (1982-1994)",
-      "versions": ["316i 90", "318i 113", "320i 129", "325i 171", "324d 86", "324td 115", "M3 (E30) 200", "Diğer"],
-      "trims": ["Standart", "M3", "Diğer"]
+      "versions": [
+        "316i 90",
+        "318i 113",
+        "320i 129",
+        "325i 171",
+        "324d 86",
+        "324td 115",
+        "M3 (E30) 200",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "M3",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "316i 90": [
+          "Standart",
+          "Diğer"
+        ],
+        "318i 113": [
+          "Standart",
+          "Diğer"
+        ],
+        "320i 129": [
+          "Standart",
+          "Diğer"
+        ],
+        "325i 171": [
+          "Standart",
+          "Diğer"
+        ],
+        "324d 86": [
+          "Standart",
+          "Diğer"
+        ],
+        "324td 115": [
+          "Standart",
+          "Diğer"
+        ],
+        "M3 (E30) 200": [
+          "M3",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "3 Serisi E36 (1990-2000)",
-      "versions": ["316i 102", "318i 113", "320i 150", "323i 170", "325i 192", "328i 193", "318tds 90", "325tds 143", "M3 (E36) 286", "Diğer"],
-      "trims": ["Standart", "SE", "M3", "Diğer"]
+      "versions": [
+        "316i 102",
+        "318i 113",
+        "320i 150",
+        "323i 170",
+        "325i 192",
+        "328i 193",
+        "318tds 90",
+        "325tds 143",
+        "M3 (E36) 286",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SE",
+        "M3",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "316i 102": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "318i 113": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "320i 150": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "323i 170": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "325i 192": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "328i 193": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "318tds 90": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "325tds 143": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "M3 (E36) 286": [
+          "M3",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "3 Serisi E46 (1998-2005)",
-      "versions": ["316i", "318i", "320i", "323i", "325i", "328i", "330i", "318d", "320d", "330d", "M3 3.2", "Diğer"],
-      "trims": ["Standart", "SE", "Sport", "M Sport", "M3", "Diğer"]
+      "versions": [
+        "316i",
+        "318i",
+        "320i",
+        "323i",
+        "325i",
+        "328i",
+        "330i",
+        "318d",
+        "320d",
+        "330d",
+        "M3 3.2",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SE",
+        "Sport",
+        "M Sport",
+        "M3",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "316i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "318i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "320i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "323i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "325i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "328i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "330i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "318d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "320d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "330d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "M3 3.2": [
+          "M3",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "3 Serisi E90 (2005-2012)",
-      "versions": ["316i", "318i", "320i", "325i", "330i", "335i", "318d", "320d", "325d", "330d", "335d", "M3 4.0 V8", "Diğer"],
-      "trims": ["Standart", "SE", "Sport", "M Sport", "M3", "Diğer"]
+      "versions": [
+        "316i",
+        "318i",
+        "320i",
+        "325i",
+        "330i",
+        "335i",
+        "318d",
+        "320d",
+        "325d",
+        "330d",
+        "335d",
+        "M3 4.0 V8",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SE",
+        "Sport",
+        "M Sport",
+        "M3",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "316i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "318i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "320i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "325i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "330i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "335i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "318d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "320d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "325d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "330d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "335d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "M3 4.0 V8": [
+          "M3",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "3 Serisi F30 (2012-2018)",
-      "versions": ["316i", "318i", "320i", "328i", "330i", "340i", "316d", "318d", "320d", "325d", "330d", "320i xDrive", "320d xDrive", "M3", "Diğer"],
-      "trims": ["Advantage", "Sport Line", "Luxury", "M Sport", "M3", "M3 Competition", "Diğer"]
+      "versions": [
+        "316i",
+        "318i",
+        "320i",
+        "328i",
+        "330i",
+        "335i",
+        "340i",
+        "316d",
+        "318d",
+        "320d",
+        "325d",
+        "330d",
+        "320i xDrive",
+        "320d xDrive",
+        "M3",
+        "Diğer"
+      ],
+      "trims": [
+        "Advantage",
+        "Sport Line",
+        "Luxury",
+        "M Sport",
+        "M3",
+        "M3 Competition",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "316i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "318i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "320i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "328i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "330i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "340i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "316d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "318d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "320d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "325d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "330d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "320i xDrive": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "320d xDrive": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "M3": [
+          "M3",
+          "M3 Competition",
+          "Diğer"
+        ],
+        "335i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "3 Serisi G20 (2018-)",
-      "versions": ["318i", "320i", "330i", "318d", "320d", "330d", "330e PHEV", "M340i xDrive", "M3", "Diğer"],
-      "trims": ["Advantage", "Sport Line", "M Sport", "M340i", "M3", "M3 Competition", "Diğer"]
+      "versions": [
+        "318i",
+        "320i",
+        "330i",
+        "318d",
+        "320d",
+        "330d",
+        "330e PHEV",
+        "M340i xDrive",
+        "M3",
+        "Diğer"
+      ],
+      "trims": [
+        "Advantage",
+        "Sport Line",
+        "M Sport",
+        "M340i",
+        "M3",
+        "M3 Competition",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "318i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "320i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "330i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "318d": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "320d": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "330d": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "330e PHEV": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M340i xDrive": [
+          "Standart",
+          "Diğer"
+        ],
+        "M3": [
+          "M3",
+          "M3 Competition",
+          "Diğer"
+        ]
+      }
     },
     {
-      "name": "4 Serisi",
-      "versions": ["418i Gran Coupé", "420i Coupé", "430i", "418d Gran Coupé", "420d", "M440i xDrive", "M4 Coupé", "M4 Competition", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "M440i", "M4", "M4 Competition", "Diğer"]
+      "name": "4 Serisi F32/F33/F36 (2013-2020)",
+      "versions": [
+        "418i",
+        "418i Gran Coupé",
+        "418d",
+        "418d Gran Coupé",
+        "420i",
+        "420i Gran Coupé",
+        "420d",
+        "420d Gran Coupé",
+        "420d xDrive",
+        "420d xDrive Gran Coupé",
+        "428i",
+        "428i Gran Coupé",
+        "428i xDrive",
+        "428i xDrive Gran Coupé",
+        "430i",
+        "430i xDrive",
+        "430i xDrive Gran Coupé",
+        "430i Cabrio Edition M Sport",
+        "430i Coupé Edition M Sport",
+        "430d xDrive Gran Coupé",
+        "440i xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Joy",
+        "Luxury Line",
+        "M Sport",
+        "Prestige",
+        "Sport Line",
+        "Ultimate M Sport",
+        "Standart",
+        "Pure",
+        "M Plus",
+        "Sport Plus",
+        "Edition M Sport",
+        "50th Year M Edition",
+        "Modern Line",
+        "Premium",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "418i": [
+          "Joy",
+          "Luxury Line",
+          "M Sport",
+          "Prestige",
+          "Sport Line",
+          "Ultimate M Sport",
+          "Diğer"
+        ],
+        "418i Gran Coupé": [
+          "Standart",
+          "Joy",
+          "Luxury Line",
+          "M Sport",
+          "Prestige",
+          "Pure",
+          "Sport Line",
+          "Ultimate M Sport",
+          "Diğer"
+        ],
+        "418d": [
+          "M Plus",
+          "Diğer"
+        ],
+        "418d Gran Coupé": [
+          "M Plus",
+          "Prestige",
+          "Sport Plus",
+          "Diğer"
+        ],
+        "420i": [
+          "Edition M Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "420i Gran Coupé": [
+          "50th Year M Edition",
+          "Edition M Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "420d": [
+          "Standart",
+          "Luxury Line",
+          "M Sport",
+          "Sport Line",
+          "Ultimate M Sport",
+          "Diğer"
+        ],
+        "420d Gran Coupé": [
+          "Standart",
+          "Luxury Line",
+          "M Sport",
+          "Sport Line",
+          "Diğer"
+        ],
+        "420d xDrive": [
+          "Luxury Line",
+          "M Sport",
+          "Sport Line",
+          "Ultimate M Sport",
+          "Diğer"
+        ],
+        "420d xDrive Gran Coupé": [
+          "Standart",
+          "Luxury Line",
+          "Modern Line",
+          "M Plus",
+          "M Sport",
+          "Premium",
+          "Sport Line",
+          "Sport Plus",
+          "Ultimate M Sport",
+          "Diğer"
+        ],
+        "428i": [
+          "M Sport",
+          "Sport Line",
+          "Diğer"
+        ],
+        "428i Gran Coupé": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "428i xDrive": [
+          "Luxury Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "428i xDrive Gran Coupé": [
+          "Standart",
+          "Luxury Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "430i": [
+          "Standart",
+          "Diğer"
+        ],
+        "430i xDrive": [
+          "Luxury Line",
+          "M Sport",
+          "Ultimate M Sport",
+          "Diğer"
+        ],
+        "430i xDrive Gran Coupé": [
+          "M Sport",
+          "Diğer"
+        ],
+        "430i Cabrio Edition M Sport": [
+          "Standart",
+          "Diğer"
+        ],
+        "430i Coupé Edition M Sport": [
+          "Standart",
+          "Diğer"
+        ],
+        "430d xDrive Gran Coupé": [
+          "Standart",
+          "Diğer"
+        ],
+        "440i xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "4 Serisi G22/G26 (2020-)",
+      "versions": [
+        "420i",
+        "420i Gran Coupé",
+        "420d",
+        "420d Gran Coupé",
+        "430i",
+        "430i Gran Coupé",
+        "430i xDrive",
+        "430d xDrive",
+        "430d xDrive Gran Coupé",
+        "M440i xDrive",
+        "M440i xDrive Gran Coupé",
+        "M4 Coupé",
+        "M4 Competition",
+        "Diğer"
+      ],
+      "trims": [
+        "Advantage",
+        "Sport Line",
+        "M Sport",
+        "M440i",
+        "M4",
+        "M4 Competition",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "420i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "420i Gran Coupé": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "420d": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "420d Gran Coupé": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "430i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "430i Gran Coupé": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "430i xDrive": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "430d xDrive": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "430d xDrive Gran Coupé": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M440i xDrive": [
+          "Standart",
+          "Diğer"
+        ],
+        "M440i xDrive Gran Coupé": [
+          "Standart",
+          "Diğer"
+        ],
+        "M4 Coupé": [
+          "Standart",
+          "Diğer"
+        ],
+        "M4 Competition": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "5 Serisi E34 (1987-1996)",
-      "versions": ["518i 115", "520i 129", "525i 171", "530i 188", "535i 211", "524td 115", "525tds 143", "M5 (E34) 315", "Diğer"],
-      "trims": ["Standart", "SE", "M5", "Diğer"]
+      "versions": [
+        "518i 115",
+        "520i 129",
+        "525i 171",
+        "530i 188",
+        "535i 211",
+        "524td 115",
+        "525tds 143",
+        "M5 (E34) 315",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SE",
+        "M5",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "518i 115": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "520i 129": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "525i 171": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "530i 188": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "535i 211": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "524td 115": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "525tds 143": [
+          "Standart",
+          "SE",
+          "Diğer"
+        ],
+        "M5 (E34) 315": [
+          "M5",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "5 Serisi E39 (1995-2003)",
-      "versions": ["520i 150", "523i 170", "525i 192", "528i 193", "530i 231", "535i 235", "520d 105", "525d 163", "530d 184", "M5 (E39) 400", "Diğer"],
-      "trims": ["Standart", "SE", "Sport", "M5", "Diğer"]
+      "versions": [
+        "520i 150",
+        "523i 170",
+        "525i 192",
+        "528i 193",
+        "530i 231",
+        "535i 235",
+        "520d 105",
+        "525d 163",
+        "530d 184",
+        "M5 (E39) 400",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SE",
+        "Sport",
+        "M5",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "520i 150": [
+          "Standart",
+          "SE",
+          "Sport",
+          "Diğer"
+        ],
+        "523i 170": [
+          "Standart",
+          "SE",
+          "Sport",
+          "Diğer"
+        ],
+        "525i 192": [
+          "Standart",
+          "SE",
+          "Sport",
+          "Diğer"
+        ],
+        "528i 193": [
+          "Standart",
+          "SE",
+          "Sport",
+          "Diğer"
+        ],
+        "530i 231": [
+          "Standart",
+          "SE",
+          "Sport",
+          "Diğer"
+        ],
+        "535i 235": [
+          "Standart",
+          "SE",
+          "Sport",
+          "Diğer"
+        ],
+        "520d 105": [
+          "Standart",
+          "SE",
+          "Sport",
+          "Diğer"
+        ],
+        "525d 163": [
+          "Standart",
+          "SE",
+          "Sport",
+          "Diğer"
+        ],
+        "530d 184": [
+          "Standart",
+          "SE",
+          "Sport",
+          "Diğer"
+        ],
+        "M5 (E39) 400": [
+          "M5",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "5 Serisi E60 (2003-2010)",
-      "versions": ["520i", "523i", "525i", "530i", "535i", "520d", "525d", "530d", "535d", "M5 V10", "Diğer"],
-      "trims": ["Standart", "SE", "Sport", "M Sport", "M5", "Diğer"]
+      "versions": [
+        "520i",
+        "523i",
+        "525i",
+        "530i",
+        "535i",
+        "520d",
+        "525d",
+        "530d",
+        "535d",
+        "M5 V10",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SE",
+        "Sport",
+        "M Sport",
+        "M5",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "520i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "523i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "525i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "530i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "535i": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "520d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "525d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "530d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "535d": [
+          "Standart",
+          "SE",
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "M5 V10": [
+          "M5",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "5 Serisi F10 (2010-2017)",
-      "versions": ["520i", "523i", "528i", "530i", "535i", "518d", "520d", "525d", "530d", "535d", "M5", "M5 Competition", "Diğer"],
-      "trims": ["Advantage", "Sport Line", "Luxury", "M Sport", "M5", "Diğer"]
+      "versions": [
+        "520i",
+        "523i",
+        "528i",
+        "530i",
+        "535i",
+        "518d",
+        "520d",
+        "525d",
+        "530d",
+        "535d",
+        "M5",
+        "M5 Competition",
+        "Diğer"
+      ],
+      "trims": [
+        "Advantage",
+        "Sport Line",
+        "Luxury",
+        "M Sport",
+        "M5",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "520i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "523i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "528i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "530i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "535i": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "518d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "520d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "525d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "530d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "535d": [
+          "Advantage",
+          "Sport Line",
+          "Luxury",
+          "M Sport",
+          "Diğer"
+        ],
+        "M5": [
+          "Standart",
+          "Diğer"
+        ],
+        "M5 Competition": [
+          "M5",
+          "Diğer"
+        ]
+      }
     },
     {
-      "name": "5 Serisi G30 (2017-)",
-      "versions": ["520i", "530i", "520d", "530d", "545e xDrive PHEV", "M550i xDrive", "M5", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "M550i", "M5", "M5 Competition", "Diğer"]
+      "name": "5 Serisi G30 (2017-2023)",
+      "versions": [
+        "520i",
+        "530i",
+        "520d",
+        "530d",
+        "540i xDrive",
+        "530e",
+        "518d",
+        "520d xDrive",
+        "540d xDrive",
+        "545e xDrive PHEV",
+        "M550i xDrive",
+        "M5",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "M550i",
+        "M5",
+        "M5 Competition",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "520i": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "530i": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "520d": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "530d": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "545e xDrive PHEV": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M550i xDrive": [
+          "Standart",
+          "Diğer"
+        ],
+        "M5": [
+          "M5",
+          "M5 Competition",
+          "Diğer"
+        ],
+        "540i xDrive": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "530e": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "518d": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "520d xDrive": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "540d xDrive": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "6 Serisi E24 (1977-1989)",
-      "versions": ["628CSi 184", "630CS 185", "633CSi 197", "635CSi 218", "M635CSi 286", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "628CSi 184",
+        "630CS 185",
+        "633CSi 197",
+        "635CSi 218",
+        "M635CSi 286",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "6 Serisi E63/E64 (2004-2010)",
-      "versions": ["630i 258", "645Ci 333", "650i 367", "630d 218", "M6 507", "Diğer"],
-      "trims": ["Standart", "Sport", "M6", "Diğer"]
+      "versions": [
+        "630i 258",
+        "645Ci 333",
+        "650i 367",
+        "630d 218",
+        "M6 507",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Sport",
+        "M6",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "630i 258": [
+          "Standart",
+          "Sport",
+          "Diğer"
+        ],
+        "645Ci 333": [
+          "Standart",
+          "Sport",
+          "Diğer"
+        ],
+        "650i 367": [
+          "Standart",
+          "Sport",
+          "Diğer"
+        ],
+        "630d 218": [
+          "Standart",
+          "Sport",
+          "Diğer"
+        ],
+        "M6 507": [
+          "M6",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "6 Serisi F12/F13 (2012-2018)",
-      "versions": ["640i 320", "650i 450", "640d 313", "640d xDrive 313", "M6 560", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "M6", "Diğer"]
+      "versions": [
+        "640i 320",
+        "650i 450",
+        "640d 313",
+        "640d xDrive 313",
+        "M6 560",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "M6",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "640i 320": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "650i 450": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "640d 313": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "640d xDrive 313": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M6 560": [
+          "M6",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "7 Serisi E38 (1994-2001)",
-      "versions": ["728i 193", "730i 218", "735i 235", "740i 286", "750i 326", "725tds 143", "Diğer"],
-      "trims": ["Standart", "L (Uzun Şasi)", "Diğer"]
+      "versions": [
+        "728i 193",
+        "730i 218",
+        "735i 235",
+        "740i 286",
+        "750i 326",
+        "725tds 143",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "L (Uzun Şasi)",
+        "Diğer"
+      ]
     },
     {
       "name": "7 Serisi E65/E66 (2001-2008)",
-      "versions": ["730i 231", "735i 272", "740i 306", "745i 333", "750i 367", "760i 445", "730d 218", "740d 258", "Diğer"],
-      "trims": ["Standart", "L (Uzun Şasi)", "Diğer"]
+      "versions": [
+        "730i 231",
+        "735i 272",
+        "740i 306",
+        "745i 333",
+        "750i 367",
+        "760i 445",
+        "730d 218",
+        "740d 258",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "L (Uzun Şasi)",
+        "Diğer"
+      ]
     },
     {
-      "name": "7 Serisi F01/F02 (2009-2015)",
-      "versions": ["730i 258", "740i 326", "750i 407", "730d 245", "740d 313", "750d 381", "Diğer"],
-      "trims": ["Standart", "L (Uzun Şasi)", "M Sport", "Diğer"]
+      "name": "7 Serisi F01/F02 (2008-2015)",
+      "versions": [
+        "730i 258",
+        "740i 326",
+        "750i 407",
+        "730d 245",
+        "740d 313",
+        "750d 381",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "L (Uzun Şasi)",
+        "M Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "7 Serisi G11/G12 (2015-2022)",
-      "versions": ["730i 258", "740i 326", "750i 462", "730d 265", "740d 320", "750d 400", "745e PHEV 394", "M760Li 585", "Diğer"],
-      "trims": ["Standart", "L (Uzun Şasi)", "M Sport", "Individual", "Diğer"]
+      "versions": [
+        "730i 258",
+        "740i 326",
+        "750i 462",
+        "730d 265",
+        "740d 320",
+        "750d 400",
+        "745e PHEV 394",
+        "M760Li 585",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "L (Uzun Şasi)",
+        "M Sport",
+        "Individual",
+        "Diğer"
+      ]
     },
     {
       "name": "7 Serisi G70 (2022-)",
-      "versions": ["730i", "740i", "750i xDrive", "730d", "740d xDrive", "745e xDrive PHEV", "760i xDrive", "M760i xDrive", "Diğer"],
-      "trims": ["Standart", "M Sport", "Individual", "L", "Diğer"]
+      "versions": [
+        "730i",
+        "740i",
+        "750i xDrive",
+        "730d",
+        "740d xDrive",
+        "745e xDrive PHEV",
+        "760i xDrive",
+        "M760i xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "M Sport",
+        "Individual",
+        "L",
+        "Diğer"
+      ]
     },
     {
       "name": "X1 E84 (2009-2015)",
-      "versions": ["sDrive18i 150", "xDrive20i 184", "sDrive18d 143", "xDrive20d 184", "sDrive20d 163", "Diğer"],
-      "trims": ["Standart", "xLine", "Diğer"]
+      "versions": [
+        "sDrive18i 150",
+        "xDrive20i 184",
+        "sDrive18d 143",
+        "xDrive20d 184",
+        "sDrive20d 163",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "xLine",
+        "Diğer"
+      ]
     },
     {
-      "name": "X1",
-      "versions": ["sDrive18i", "xDrive23i", "xDrive25i", "sDrive18d", "xDrive20d", "xDrive25e PHEV", "Diğer"],
-      "trims": ["Advantage", "Sport Line", "M Sport", "xLine", "Diğer"]
+      "name": "X1 F48 (2015-2022)",
+      "versions": [
+        "sDrive16i",
+        "sDrive18i",
+        "sDrive20i",
+        "sDrive16d",
+        "sDrive20d",
+        "xDrive20d",
+        "xDrive23d",
+        "xDrive25e PHEV",
+        "xDrive30e PHEV",
+        "M35i xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "xLine",
+        "M Sport",
+        "M35i",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "sDrive16i": [
+          "Sport Line",
+          "xLine",
+          "M Sport",
+          "Diğer"
+        ],
+        "sDrive18i": [
+          "Sport Line",
+          "xLine",
+          "M Sport",
+          "Diğer"
+        ],
+        "sDrive20i": [
+          "Sport Line",
+          "xLine",
+          "M Sport",
+          "Diğer"
+        ],
+        "sDrive16d": [
+          "Sport Line",
+          "xLine",
+          "M Sport",
+          "Diğer"
+        ],
+        "sDrive20d": [
+          "Sport Line",
+          "xLine",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive20d": [
+          "Sport Line",
+          "xLine",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive23d": [
+          "Sport Line",
+          "xLine",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive25e PHEV": [
+          "Sport Line",
+          "xLine",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive30e PHEV": [
+          "Sport Line",
+          "xLine",
+          "M Sport",
+          "Diğer"
+        ],
+        "M35i xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "X1 U11 (2022-)",
+      "versions": [
+        "sDrive18i",
+        "sDrive20i",
+        "xDrive23i",
+        "sDrive18d",
+        "xDrive20d",
+        "xDrive25e PHEV",
+        "xDrive30e PHEV",
+        "M35i xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "M Sport",
+        "xLine",
+        "M35i",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "sDrive18i": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "sDrive20i": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive23i": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "sDrive18d": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive20d": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive25e PHEV": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive30e PHEV": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "M35i xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "X2",
-      "versions": ["sDrive18i", "xDrive20i", "sDrive18d", "xDrive20d", "M35i xDrive", "Diğer"],
-      "trims": ["Sport", "M Sport", "M Sport X", "M35i", "Diğer"]
+      "versions": [
+        "sDrive18i",
+        "xDrive20i",
+        "sDrive18d",
+        "xDrive20d",
+        "M35i xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport",
+        "M Sport",
+        "M Sport X",
+        "M35i",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "sDrive18i": [
+          "Sport",
+          "M Sport",
+          "M Sport X",
+          "Diğer"
+        ],
+        "xDrive20i": [
+          "Sport",
+          "M Sport",
+          "M Sport X",
+          "Diğer"
+        ],
+        "sDrive18d": [
+          "Sport",
+          "M Sport",
+          "M Sport X",
+          "Diğer"
+        ],
+        "xDrive20d": [
+          "Sport",
+          "M Sport",
+          "M Sport X",
+          "Diğer"
+        ],
+        "M35i xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "X3 E83 (2004-2010)",
-      "versions": ["2.0i 150", "2.5i 192", "3.0i 231", "2.0d 150", "3.0d 218", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "2.0i 150",
+        "2.5i 192",
+        "3.0i 231",
+        "2.0d 150",
+        "3.0d 218",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "X3 F25 (2011-2017)",
-      "versions": ["xDrive20i 184", "xDrive28i 245", "xDrive35i 306", "xDrive20d 184", "xDrive30d 258", "Diğer"],
-      "trims": ["Standart", "xLine", "M Sport", "Diğer"]
+      "versions": [
+        "xDrive20i 184",
+        "xDrive28i 245",
+        "xDrive35i 306",
+        "xDrive20d 184",
+        "xDrive30d 258",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "xLine",
+        "M Sport",
+        "Diğer"
+      ]
     },
     {
-      "name": "X3 G01 (2017-)",
-      "versions": ["xDrive20i", "xDrive30i", "xDrive20d", "xDrive30d", "xDrive30e PHEV", "M40i", "X3 M", "X3 M Competition", "Diğer"],
-      "trims": ["Advantage", "Sport Line", "M Sport", "xLine", "M40i", "X3 M", "Diğer"]
+      "name": "X3 G01 (2017-2024)",
+      "versions": [
+        "xDrive20i",
+        "xDrive30i",
+        "xDrive18d",
+        "xDrive20d",
+        "xDrive30d",
+        "xDrive30e PHEV",
+        "M40i",
+        "X3 M",
+        "X3 M Competition",
+        "Diğer"
+      ],
+      "trims": [
+        "Advantage",
+        "Sport Line",
+        "M Sport",
+        "xLine",
+        "M40i",
+        "X3 M",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive20i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive30i": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive20d": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive30d": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive30e PHEV": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "M40i": [
+          "Standart",
+          "Diğer"
+        ],
+        "X3 M": [
+          "Standart",
+          "Diğer"
+        ],
+        "X3 M Competition": [
+          "X3 M",
+          "Diğer"
+        ],
+        "xDrive18d": [
+          "Advantage",
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "X4",
-      "versions": ["xDrive20i", "xDrive30i", "xDrive20d", "xDrive30d", "M40i", "X4 M", "X4 M Competition", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "M40i", "X4 M", "Diğer"]
+      "versions": [
+        "xDrive20i",
+        "xDrive30i",
+        "xDrive20d",
+        "xDrive30d",
+        "M40i",
+        "X4 M",
+        "X4 M Competition",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "M40i",
+        "X4 M",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive20i": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive30i": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive20d": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive30d": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M40i": [
+          "Standart",
+          "Diğer"
+        ],
+        "X4 M": [
+          "Standart",
+          "Diğer"
+        ],
+        "X4 M Competition": [
+          "X4 M",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "X5 E53 (2000-2006)",
-      "versions": ["3.0i 231", "4.4i 286", "4.6is 347", "4.8is 360", "3.0d 184", "Diğer"],
-      "trims": ["Standart", "Sport", "Diğer"]
+      "versions": [
+        "3.0i 231",
+        "4.4i 286",
+        "4.6is 347",
+        "4.8is 360",
+        "3.0d 184",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "X5 E70 (2007-2013)",
-      "versions": ["xDrive30i 272", "xDrive35i 306", "xDrive48i 355", "xDrive30d 235", "xDrive35d 286", "X5 M 555", "Diğer"],
-      "trims": ["Standart", "M Sport", "X5 M", "Diğer"]
+      "versions": [
+        "xDrive30i 272",
+        "xDrive35i 306",
+        "xDrive48i 355",
+        "xDrive30d 235",
+        "xDrive35d 286",
+        "X5 M 555",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "M Sport",
+        "X5 M",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive30i 272": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive35i 306": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive48i 355": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive30d 235": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive35d 286": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "X5 M 555": [
+          "X5 M",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "X5 F15 (2014-2018)",
-      "versions": ["xDrive35i 306", "xDrive40e PHEV 313", "xDrive25d 218", "xDrive30d 258", "xDrive40d 313", "X5 M 575", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "xLine", "X5 M", "Diğer"]
+      "versions": [
+        "xDrive35i 306",
+        "xDrive40e PHEV 313",
+        "xDrive25d 218",
+        "xDrive30d 258",
+        "xDrive40d 313",
+        "X5 M 575",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "xLine",
+        "X5 M",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive35i 306": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive40e PHEV 313": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive25d 218": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive30d 258": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive40d 313": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "X5 M 575": [
+          "X5 M",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "X5 G05 (2018-)",
-      "versions": ["xDrive40i", "xDrive30d", "xDrive40d", "xDrive45e PHEV", "M50i", "X5 M", "X5 M Competition", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "xLine", "M50i", "X5 M", "Diğer"]
+      "versions": [
+        "xDrive40i",
+        "xDrive30d",
+        "xDrive40d",
+        "xDrive45e PHEV",
+        "xDrive50e PHEV",
+        "M50d",
+        "M50i",
+        "M60i xDrive",
+        "X5 M",
+        "X5 M Competition",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "xLine",
+        "M50i",
+        "M60i",
+        "X5 M",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive40i": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive30d": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive40d": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive45e PHEV": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "M50i": [
+          "Standart",
+          "Diğer"
+        ],
+        "X5 M": [
+          "Standart",
+          "Diğer"
+        ],
+        "X5 M Competition": [
+          "X5 M",
+          "Diğer"
+        ],
+        "xDrive50e PHEV": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "M50d": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "M60i xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "X6 E71 (2008-2014)",
-      "versions": ["xDrive35i 306", "xDrive50i 407", "xDrive30d 235", "xDrive40d 306", "X6 M 555", "Diğer"],
-      "trims": ["Standart", "M Sport", "X6 M", "Diğer"]
+      "versions": [
+        "xDrive35i 306",
+        "xDrive50i 407",
+        "xDrive30d 235",
+        "xDrive40d 306",
+        "X6 M 555",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "M Sport",
+        "X6 M",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive35i 306": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive50i 407": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive30d 235": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive40d 306": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "X6 M 555": [
+          "X6 M",
+          "Diğer"
+        ]
+      }
     },
     {
-      "name": "X6 F16 (2015-2019)",
-      "versions": ["xDrive35i 306", "xDrive50i 450", "xDrive30d 258", "xDrive40d 313", "X6 M 575", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "X6 M", "Diğer"]
+      "name": "X6 F16 (2014-2019)",
+      "versions": [
+        "xDrive35i 306",
+        "xDrive50i 450",
+        "xDrive30d 258",
+        "xDrive40d 313",
+        "X6 M 575",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "X6 M",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive35i 306": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive50i 450": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive30d 258": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive40d 313": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "X6 M 575": [
+          "X6 M",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "X6 G06 (2019-)",
-      "versions": ["xDrive30i", "xDrive40i", "xDrive30d", "xDrive40d", "M50i", "X6 M", "X6 M Competition", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "M50i", "X6 M", "Diğer"]
+      "versions": [
+        "xDrive30i",
+        "xDrive40i",
+        "xDrive30d",
+        "xDrive40d",
+        "M50i",
+        "M60i xDrive",
+        "X6 M",
+        "X6 M Competition",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "M50i",
+        "M60i",
+        "X6 M",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive30i": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive40i": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive30d": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive40d": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M50i": [
+          "Standart",
+          "Diğer"
+        ],
+        "X6 M": [
+          "Standart",
+          "Diğer"
+        ],
+        "X6 M Competition": [
+          "X6 M",
+          "Diğer"
+        ],
+        "M60i xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "X7",
-      "versions": ["xDrive40i", "xDrive30d", "xDrive40d", "M60i", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "xLine", "M60i", "Diğer"]
+      "versions": [
+        "xDrive40i",
+        "xDrive30d",
+        "xDrive40d",
+        "M50d",
+        "M60i",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "xLine",
+        "M60i",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive40i": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive30d": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "xDrive40d": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "M60i": [
+          "Standart",
+          "Diğer"
+        ],
+        "M50d": [
+          "Sport Line",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Z3 (1996-2002)",
-      "versions": ["1.8 115", "1.9 118", "2.0i 150", "2.8i 193", "3.0i 231", "M Roadster 321", "Diğer"],
-      "trims": ["Standart", "M", "Diğer"]
+      "versions": [
+        "1.8 115",
+        "1.9 118",
+        "2.0i 150",
+        "2.8i 193",
+        "3.0i 231",
+        "M Roadster 321",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "M",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.8 115": [
+          "Standart",
+          "Diğer"
+        ],
+        "1.9 118": [
+          "Standart",
+          "Diğer"
+        ],
+        "2.0i 150": [
+          "Standart",
+          "Diğer"
+        ],
+        "2.8i 193": [
+          "Standart",
+          "Diğer"
+        ],
+        "3.0i 231": [
+          "Standart",
+          "Diğer"
+        ],
+        "M Roadster 321": [
+          "M",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Z4",
-      "versions": ["sDrive20i 197", "sDrive30i 258", "M40i 340", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "M40i", "Diğer"]
+      "versions": [
+        "sDrive20i 197",
+        "sDrive30i 258",
+        "M40i 340",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "M40i",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "sDrive20i 197": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "sDrive30i 258": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M40i 340": [
+          "M40i",
+          "Diğer"
+        ]
+      }
     },
     {
-      "name": "8 Serisi E31 (1991-1997)",
-      "versions": ["840i 286", "850i 300", "850CSi 380", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "name": "8 Serisi E31 (1990-1999)",
+      "versions": [
+        "840i 286",
+        "850i 300",
+        "850CSi 380",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "8 Serisi G14/G15/G16 (2018-)",
-      "versions": ["840i 340", "M850i xDrive 530", "840d xDrive 320", "M8 Competition 625", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "M850i", "M8", "Diğer"]
+      "versions": [
+        "840i 340",
+        "M850i xDrive 530",
+        "840d xDrive 320",
+        "M8 Competition 625",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "M850i",
+        "M8",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "840i 340": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M850i xDrive 530": [
+          "M850i",
+          "Diğer"
+        ],
+        "840d xDrive 320": [
+          "Sport Line",
+          "M Sport",
+          "Diğer"
+        ],
+        "M8 Competition 625": [
+          "M8",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "i3",
-      "versions": ["i3 120Ah", "i3s 120Ah", "i3 REx 120Ah", "Diğer"],
-      "trims": ["Standart", "Sport", "Diğer"]
+      "versions": [
+        "i3 60Ah",
+        "i3 REx 60Ah",
+        "i3 94Ah",
+        "i3 REx 94Ah",
+        "i3s 94Ah",
+        "i3 120Ah",
+        "i3s 120Ah",
+        "i3 REx 120Ah",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "i4",
-      "versions": ["eDrive35", "eDrive40", "M50 xDrive", "Diğer"],
-      "trims": ["Sport", "M Sport", "M50", "Diğer"]
+      "versions": [
+        "eDrive35",
+        "eDrive40",
+        "M50 xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport",
+        "M Sport",
+        "M50",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "eDrive35": [
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "eDrive40": [
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "M50 xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "i5",
-      "versions": ["eDrive40", "xDrive40", "M60 xDrive", "Diğer"],
-      "trims": ["M Sport", "M60", "Diğer"]
+      "versions": [
+        "eDrive40",
+        "xDrive40",
+        "M60 xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "M Sport",
+        "M60",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "eDrive40": [
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive40": [
+          "M Sport",
+          "Diğer"
+        ],
+        "M60 xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "i7",
-      "versions": ["eDrive60", "xDrive60", "M70 xDrive", "Diğer"],
-      "trims": ["Standart", "M Sport", "M70", "Diğer"]
+      "versions": [
+        "eDrive60",
+        "xDrive60",
+        "M70 xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "M Sport",
+        "M70",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "eDrive60": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive60": [
+          "Standart",
+          "M Sport",
+          "Diğer"
+        ],
+        "M70 xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "iX",
-      "versions": ["xDrive40", "xDrive50", "M60 xDrive", "Diğer"],
-      "trims": ["Sport", "M Sport", "M60", "Diğer"]
+      "versions": [
+        "xDrive40",
+        "xDrive50",
+        "M60 xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport",
+        "M Sport",
+        "M60",
+        "Standart",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "xDrive40": [
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "xDrive50": [
+          "Sport",
+          "M Sport",
+          "Diğer"
+        ],
+        "M60 xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "iX1",
-      "versions": ["xDrive30", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "xLine", "Diğer"]
+      "versions": [
+        "eDrive20",
+        "xDrive30",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport Line",
+        "M Sport",
+        "xLine",
+        "Diğer"
+      ]
     },
     {
       "name": "iX3",
-      "versions": ["Impressive", "Diğer"],
-      "trims": ["Sport Line", "M Sport", "Diğer"]
+      "versions": [
+        "iX3",
+        "Diğer"
+      ],
+      "trims": [
+        "Inspiring",
+        "Impressive",
+        "M Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    },
+    {
+      "name": "5 Serisi G60 (2023-)",
+      "versions": [
+        "520i",
+        "530i",
+        "520d",
+        "540d xDrive",
+        "530e",
+        "550e xDrive PHEV",
+        "M60i xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "M Sport",
+        "M Sport Pro",
+        "M60i",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "520i": [
+          "Standart",
+          "M Sport",
+          "M Sport Pro",
+          "Diğer"
+        ],
+        "530i": [
+          "Standart",
+          "M Sport",
+          "M Sport Pro",
+          "Diğer"
+        ],
+        "520d": [
+          "Standart",
+          "M Sport",
+          "M Sport Pro",
+          "Diğer"
+        ],
+        "540d xDrive": [
+          "Standart",
+          "M Sport",
+          "M Sport Pro",
+          "Diğer"
+        ],
+        "530e": [
+          "Standart",
+          "M Sport",
+          "M Sport Pro",
+          "Diğer"
+        ],
+        "550e xDrive PHEV": [
+          "Standart",
+          "M Sport",
+          "M Sport Pro",
+          "Diğer"
+        ],
+        "M60i xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "X3 G45 (2024-)",
+      "versions": [
+        "20 xDrive",
+        "20d xDrive",
+        "30e xDrive PHEV",
+        "M50 xDrive",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "M Sport",
+        "xLine",
+        "M50",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "20 xDrive": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "20d xDrive": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "30e xDrive PHEV": [
+          "Standart",
+          "M Sport",
+          "xLine",
+          "Diğer"
+        ],
+        "M50 xDrive": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     }
   ]
 }

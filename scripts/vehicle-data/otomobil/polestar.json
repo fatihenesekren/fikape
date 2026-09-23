@@ -3,23 +3,64 @@
   "models": [
     {
       "name": "Polestar 2 (2020-)",
-      "versions": ["Elektrik 231 CV Tek Motor FWD", "Elektrik 231 CV LR Tek Motor", "Elektrik 408 CV Çift Motor AWD", "Elektrik 476 CV LR Çift Motor AWD", "Diğer"],
-      "trims": ["Standart", "Pilot", "Plus", "Diğer"]
+      "versions": [
+        "Elektrik 231 CV Tek Motor FWD",
+        "Elektrik 231 CV LR Tek Motor",
+        "Elektrik 408 CV Çift Motor AWD",
+        "Elektrik 476 CV LR Çift Motor AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Pilot",
+        "Plus",
+        "Diğer"
+      ]
     },
     {
       "name": "Polestar 3 (2024-)",
-      "versions": ["Elektrik 360 CV LR AWD", "Elektrik 517 CV LR AWD Plus", "Diğer"],
-      "trims": ["Standart", "Plus", "Diğer"]
+      "versions": [
+        "Elektrik 360 CV LR AWD",
+        "Elektrik 517 CV LR AWD Plus",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Plus",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Elektrik 360 CV LR AWD": [
+          "Standart",
+          "Diğer"
+        ],
+        "Elektrik 517 CV LR AWD Plus": [
+          "Plus",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Polestar 4 (2024-)",
-      "versions": ["Elektrik 272 CV Tek Motor", "Elektrik 544 CV Çift Motor AWD", "Diğer"],
-      "trims": ["Standart", "Plus", "Diğer"]
+      "versions": [
+        "Elektrik 272 CV Tek Motor",
+        "Elektrik 544 CV Çift Motor AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Plus",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

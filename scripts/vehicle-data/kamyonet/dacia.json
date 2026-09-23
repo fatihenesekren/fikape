@@ -1,8 +1,42 @@
 {
   "make": "Dacia",
   "models": [
-    { "name": "Dokker (2012-2021)", "versions": ["1.6 SCe 102", "1.5 dCi 75", "1.5 dCi 90", "Diğer"], "trims": ["Access", "Ambiance", "Stepway", "Diğer"] },
-    { "name": "Express (2021-)", "versions": ["1.3 TCe 100", "1.5 dCi 95", "Diğer"], "trims": ["Essential", "Comfort", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "Dokker (2012-2021)",
+      "versions": [
+        "1.6 SCe 102",
+        "1.5 dCi 75",
+        "1.5 dCi 90",
+        "Diğer"
+      ],
+      "trims": [
+        "Access",
+        "Ambiance",
+        "Stepway",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Express (2021-)",
+      "versions": [
+        "1.3 TCe 100",
+        "1.5 dCi 95",
+        "Diğer"
+      ],
+      "trims": [
+        "Essential",
+        "Comfort",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

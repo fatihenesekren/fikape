@@ -3,243 +3,986 @@
   "models": [
     {
       "name": "Accent (1994-2000)",
-      "versions": ["1.3 GLS 84", "1.5 GLS 88", "Diğer"],
-      "trims": ["LS", "GL", "GLS", "GT", "Diğer"]
+      "versions": [
+        "1.3 GLS 84",
+        "1.5 GLS 88",
+        "Diğer"
+      ],
+      "trims": [
+        "LS",
+        "GL",
+        "GLS",
+        "GT",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.3 GLS 84": [
+          "GLS",
+          "Diğer"
+        ],
+        "1.5 GLS 88": [
+          "GLS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Accent (2000-2003)",
-      "versions": ["1.3 84", "1.5 90", "Diğer"],
-      "trims": ["LS", "GL", "GLS", "Diğer"]
+      "versions": [
+        "1.3 84",
+        "1.5 90",
+        "Diğer"
+      ],
+      "trims": [
+        "LS",
+        "GL",
+        "GLS",
+        "Diğer"
+      ]
     },
     {
       "name": "Accent (2003-2006)",
-      "versions": ["1.3 84", "1.5 90", "1.5 CRDi 82", "Diğer"],
-      "trims": ["GL", "GLS", "Admire", "Diğer"]
+      "versions": [
+        "1.3 84",
+        "1.5 90",
+        "1.5 CRDi 82",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Admire",
+        "Diğer"
+      ]
     },
     {
       "name": "Accent (2006-2012)",
-      "versions": ["1.4 97", "1.6 112", "1.5 CRDi 110", "Diğer"],
-      "trims": ["GL", "GLS", "Era", "Diğer"]
+      "versions": [
+        "1.4 97",
+        "1.6 112",
+        "1.5 CRDi 110",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Era",
+        "Diğer"
+      ]
     },
     {
       "name": "Accent Blue (2010-2018)",
-      "versions": ["1.4 100", "1.6 123", "1.6 CRDi 128", "Diğer"],
-      "trims": ["Start", "Team", "Mode", "Style", "Diğer"]
+      "versions": [
+        "1.4 100",
+        "1.6 123",
+        "1.6 CRDi 128",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Mode",
+        "Style",
+        "Diğer"
+      ]
     },
     {
       "name": "i10 (2007-2013)",
-      "versions": ["1.1 65", "1.2 78", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Diğer"]
+      "versions": [
+        "1.1 65",
+        "1.2 78",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Diğer"
+      ]
     },
     {
       "name": "i10 (2013-2019)",
-      "versions": ["1.0 66", "1.2 87", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Diğer"]
+      "versions": [
+        "1.0 66",
+        "1.2 87",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Diğer"
+      ]
     },
     {
       "name": "i10 (2019-)",
-      "versions": ["1.0 MPI 67", "1.0 T-GDI 100", "Diğer"],
-      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+      "versions": [
+        "1.0 MPI 67",
+        "1.0 T-GDI 100",
+        "Diğer"
+      ],
+      "trims": [
+        "Jump",
+        "Style",
+        "Elite",
+        "Diğer"
+      ]
     },
     {
       "name": "i20 (2008-2014)",
-      "versions": ["1.2 78", "1.4 100", "1.4 CRDi 90", "1.6 CRDi 128", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Diğer"]
+      "versions": [
+        "1.2 78",
+        "1.4 100",
+        "1.4 CRDi 90",
+        "1.6 CRDi 128",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Diğer"
+      ]
     },
     {
       "name": "i20 (2014-2020)",
-      "versions": ["1.2 84", "1.4 100", "1.0 T-GDI 100", "1.4 CRDi 90", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Elite", "Diğer"]
+      "versions": [
+        "1.2 84",
+        "1.4 100",
+        "1.0 T-GDI 100",
+        "1.4 CRDi 90",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Elite",
+        "Diğer"
+      ]
     },
     {
       "name": "i20 (2020-)",
-      "versions": ["1.0 T-GDI 100", "1.0 T-GDI 120", "1.2 MPI 84", "N Line 1.0 T-GDI 120", "N 1.6 T-GDI 204", "Diğer"],
-      "trims": ["Level 2", "Level 3", "N Line", "N", "Diğer"]
+      "versions": [
+        "1.0 T-GDI 100",
+        "1.0 T-GDI 120",
+        "1.2 MPI 84",
+        "N Line 1.0 T-GDI 120",
+        "N 1.6 T-GDI 204",
+        "Diğer"
+      ],
+      "trims": [
+        "Jump",
+        "Style",
+        "Elite",
+        "N Line",
+        "N",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.0 T-GDI 100": [
+          "Jump",
+          "Style",
+          "Elite",
+          "Diğer"
+        ],
+        "1.0 T-GDI 120": [
+          "Jump",
+          "Style",
+          "Elite",
+          "Diğer"
+        ],
+        "1.2 MPI 84": [
+          "Jump",
+          "Style",
+          "Elite",
+          "Diğer"
+        ],
+        "N Line 1.0 T-GDI 120": [
+          "N Line",
+          "Diğer"
+        ],
+        "N 1.6 T-GDI 204": [
+          "N",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "i30 (2007-2012)",
-      "versions": ["1.4 109", "1.6 122", "1.6 CRDi 90", "1.6 CRDi 116", "2.0 CRDi 140", "Diğer"],
-      "trims": ["GL", "GLS", "Style", "Diğer"]
+      "versions": [
+        "1.4 109",
+        "1.6 122",
+        "1.6 CRDi 90",
+        "1.6 CRDi 116",
+        "2.0 CRDi 140",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Style",
+        "Diğer"
+      ]
     },
     {
       "name": "i30 (2012-2017)",
-      "versions": ["1.4 100", "1.6 135", "1.4 CRDi 90", "1.6 CRDi 110", "1.6 CRDi 136", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Elite", "Diğer"]
+      "versions": [
+        "1.4 100",
+        "1.6 135",
+        "1.4 CRDi 90",
+        "1.6 CRDi 110",
+        "1.6 CRDi 136",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Elite",
+        "Diğer"
+      ]
     },
     {
       "name": "i30 (2017-)",
-      "versions": ["1.0 T-GDI 120", "1.5 T-GDI 160 MHEV", "1.6 CRDi 115", "1.6 CRDi 136", "N Line 1.5 T-GDI 160", "Diğer"],
-      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+      "versions": [
+        "1.0 T-GDI 120",
+        "1.5 T-GDI 160 MHEV",
+        "1.6 CRDi 115",
+        "1.6 CRDi 136",
+        "N Line 1.5 T-GDI 160",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Elite",
+        "N Line",
+        "N",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.0 T-GDI 120": [
+          "Style",
+          "Elite",
+          "Diğer"
+        ],
+        "1.5 T-GDI 160 MHEV": [
+          "Style",
+          "Elite",
+          "Diğer"
+        ],
+        "1.6 CRDi 115": [
+          "Style",
+          "Elite",
+          "Diğer"
+        ],
+        "1.6 CRDi 136": [
+          "Style",
+          "Elite",
+          "Diğer"
+        ],
+        "N Line 1.5 T-GDI 160": [
+          "N Line",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "i30 N",
-      "versions": ["2.0 T-GDI 280", "2.0 T-GDI 300 Performance", "Diğer"],
-      "trims": ["Standart", "Performance", "Diğer"]
+      "versions": [
+        "2.0 T-GDI 280",
+        "2.0 T-GDI 300 Performance",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Performance",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "2.0 T-GDI 280": [
+          "Standart",
+          "Diğer"
+        ],
+        "2.0 T-GDI 300 Performance": [
+          "Performance",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Bayon",
-      "versions": ["1.0 T-GDI 100 MHEV", "1.0 T-GDI 120 MHEV", "1.2 MPI 84", "Diğer"],
-      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+      "versions": [
+        "1.0 T-GDI 100 MHEV",
+        "1.0 T-GDI 120 MHEV",
+        "1.2 MPI 84",
+        "1.4 MPI 100",
+        "Diğer"
+      ],
+      "trims": [
+        "Jump",
+        "Style",
+        "Elite",
+        "N Line",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 MPI 100": [
+          "Jump",
+          "Style",
+          "Elite",
+          "Diğer"
+        ],
+        "1.0 T-GDI 100 MHEV": [
+          "Style",
+          "Elite",
+          "Diğer"
+        ],
+        "1.0 T-GDI 120 MHEV": [
+          "Elite",
+          "N Line",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Getz (2002-2011)",
-      "versions": ["1.1 66", "1.3 82", "1.4 97", "1.6 105", "1.5 CRDi 110", "Diğer"],
-      "trims": ["GL", "GLS", "Start", "Team", "Diğer"]
+      "versions": [
+        "1.1 66",
+        "1.3 82",
+        "1.4 97",
+        "1.6 105",
+        "1.5 CRDi 110",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Start",
+        "Team",
+        "Diğer"
+      ]
     },
     {
       "name": "Atos (1998-2007)",
-      "versions": ["1.0 55", "1.1 63", "Diğer"],
-      "trims": ["GL", "GLS", "Prime", "Diğer"]
+      "versions": [
+        "1.0 55",
+        "1.1 63",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Prime",
+        "Diğer"
+      ]
     },
     {
       "name": "Matrix (2001-2010)",
-      "versions": ["1.5 CRDi 82", "1.6 103", "1.8 122", "Diğer"],
-      "trims": ["GL", "GLS", "Diğer"]
+      "versions": [
+        "1.5 CRDi 82",
+        "1.6 103",
+        "1.8 122",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Diğer"
+      ]
     },
     {
       "name": "ix20 (2010-2019)",
-      "versions": ["1.4 90", "1.6 125", "1.4 CRDi 90", "1.6 CRDi 115", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Diğer"]
+      "versions": [
+        "1.4 90",
+        "1.6 125",
+        "1.4 CRDi 90",
+        "1.6 CRDi 115",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Diğer"
+      ]
     },
     {
       "name": "Elantra (1991-2000)",
-      "versions": ["1.6 GLS 90", "1.8 GLS 113", "Diğer"],
-      "trims": ["GL", "GLS", "Diğer"]
+      "versions": [
+        "1.6 GLS 90",
+        "1.8 GLS 113",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 GLS 90": [
+          "GLS",
+          "Diğer"
+        ],
+        "1.8 GLS 113": [
+          "GLS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Elantra (2000-2006)",
-      "versions": ["1.6 105", "2.0 137", "Diğer"],
-      "trims": ["GL", "GLS", "Diğer"]
+      "versions": [
+        "1.6 105",
+        "2.0 137",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Diğer"
+      ]
     },
     {
       "name": "Elantra (2006-2011)",
-      "versions": ["1.6 122", "2.0 143", "1.6 CRDi 116", "Diğer"],
-      "trims": ["GL", "GLS", "Style", "Diğer"]
+      "versions": [
+        "1.6 122",
+        "2.0 143",
+        "1.6 CRDi 116",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Style",
+        "Diğer"
+      ]
     },
     {
       "name": "Elantra (2011-2016)",
-      "versions": ["1.6 132", "1.6 CRDi 128", "Diğer"],
-      "trims": ["Start", "Team", "Elite", "Diğer"]
+      "versions": [
+        "1.6 132",
+        "1.6 CRDi 128",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Elite",
+        "Diğer"
+      ]
     },
     {
       "name": "Elantra (2016-2021)",
-      "versions": ["1.6 128", "Diğer"],
-      "trims": ["Style", "Style Plus", "Elite", "Elite Plus", "Diğer"]
+      "versions": [
+        "1.6 128",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Style Plus",
+        "Elite",
+        "Elite Plus",
+        "Diğer"
+      ]
     },
     {
       "name": "Elantra (2021-)",
-      "versions": ["1.6 123", "1.6 GDI Hybrid 141", "Diğer"],
-      "trims": ["Style", "Style Plus", "Elite", "Elite Plus", "Diğer"]
+      "versions": [
+        "1.6 123",
+        "1.6 GDI Hybrid 141",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Style Plus",
+        "Elite",
+        "Elite Plus",
+        "Diğer"
+      ]
     },
     {
       "name": "Sonata (1998-2005)",
-      "versions": ["2.0 137", "2.5 V6 170", "Diğer"],
-      "trims": ["GLS", "Diğer"]
+      "versions": [
+        "2.0 137",
+        "2.5 V6 170",
+        "Diğer"
+      ],
+      "trims": [
+        "GLS",
+        "Diğer"
+      ]
     },
     {
       "name": "Sonata (2005-2010)",
-      "versions": ["2.0 143", "2.4 162", "Diğer"],
-      "trims": ["GLS", "Diğer"]
+      "versions": [
+        "2.0 143",
+        "2.4 162",
+        "Diğer"
+      ],
+      "trims": [
+        "GLS",
+        "Diğer"
+      ]
     },
     {
       "name": "Sonata (2010-2014)",
-      "versions": ["2.0 163", "2.4 178", "Diğer"],
-      "trims": ["Mode", "Style", "Diğer"]
+      "versions": [
+        "2.0 163",
+        "2.4 178",
+        "Diğer"
+      ],
+      "trims": [
+        "Mode",
+        "Style",
+        "Diğer"
+      ]
     },
     {
       "name": "Coupe (1996-2001)",
-      "versions": ["1.6 116", "2.0 139", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "1.6 116",
+        "2.0 139",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Coupe (2001-2009)",
-      "versions": ["2.0 143", "2.7 V6 167", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "2.0 143",
+        "2.7 V6 167",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Veloster (2011-2017)",
-      "versions": ["1.6 140", "Turbo 1.6 186", "Diğer"],
-      "trims": ["Style", "Elite", "Diğer"]
+      "versions": [
+        "1.6 140",
+        "Turbo 1.6 186",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Elite",
+        "Diğer"
+      ]
     },
     {
       "name": "Trajet (1999-2008)",
-      "versions": ["2.0 CRDi 113", "2.7 V6 173", "Diğer"],
-      "trims": ["GLS", "Diğer"]
+      "versions": [
+        "2.0 CRDi 113",
+        "2.7 V6 173",
+        "Diğer"
+      ],
+      "trims": [
+        "GLS",
+        "Diğer"
+      ]
     },
     {
       "name": "i40 (2011-2019)",
-      "versions": ["1.6 135", "2.0 165", "1.7 CRDi 115", "1.7 CRDi 141", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Elite", "Diğer"]
+      "versions": [
+        "1.6 135",
+        "2.0 165",
+        "1.7 CRDi 115",
+        "1.7 CRDi 141",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Elite",
+        "Prime",
+        "Executive",
+        "Diğer"
+      ]
     },
     {
       "name": "Ioniq (2016-2022)",
-      "versions": ["1.6 GDI Hybrid 141", "1.6 GDI PHEV 141", "Electric 88kW 28kWh", "Diğer"],
-      "trims": ["Style", "Elite", "Diğer"]
+      "versions": [
+        "1.6 GDI Hybrid 141",
+        "1.6 GDI PHEV 141",
+        "Electric 88kW 28kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Elite",
+        "Diğer"
+      ]
     },
     {
       "name": "Tucson (2004-2009)",
-      "versions": ["2.0 141", "2.7 V6 175 AWD", "2.0 CRDi 113", "2.0 CRDi 140 AWD", "Diğer"],
-      "trims": ["GL", "GLS", "Diğer"]
+      "versions": [
+        "2.0 141",
+        "2.7 V6 175 AWD",
+        "2.0 CRDi 113",
+        "2.0 CRDi 140 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLS",
+        "Diğer"
+      ]
     },
     {
       "name": "ix35 (2009-2015)",
-      "versions": ["1.6 135", "2.0 163", "1.7 CRDi 115", "2.0 CRDi 136", "2.0 CRDi 184 AWD", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Elite", "Diğer"]
+      "versions": [
+        "1.6 135",
+        "2.0 163",
+        "1.7 CRDi 115",
+        "2.0 CRDi 136",
+        "2.0 CRDi 184 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Elite",
+        "Diğer"
+      ]
     },
     {
       "name": "Tucson (2015-2020)",
-      "versions": ["1.6 132", "1.6 T-GDI 177 AWD", "1.7 CRDi 116", "2.0 CRDi 136", "2.0 CRDi 185 AWD", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Elite", "Diğer"]
+      "versions": [
+        "1.6 132",
+        "1.6 T-GDI 177 AWD",
+        "1.7 CRDi 116",
+        "2.0 CRDi 136",
+        "2.0 CRDi 185 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Elite",
+        "Diğer"
+      ]
     },
     {
       "name": "Tucson (2020-)",
-      "versions": ["1.6 T-GDI 150", "1.6 T-GDI 180 AWD", "1.6 CRDi 115", "1.6 CRDi 136", "PHEV 265 AWD", "HEV 230", "Diğer"],
-      "trims": ["Level 2", "Level 3", "N Line", "N Line Premium", "Diğer"]
+      "versions": [
+        "1.6 T-GDI 150",
+        "1.6 T-GDI 180 AWD",
+        "1.6 CRDi 115",
+        "1.6 CRDi 136",
+        "PHEV 265 AWD",
+        "HEV 230",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Prime",
+        "Elite",
+        "Elite Plus",
+        "N Line",
+        "Diğer"
+      ]
     },
     {
       "name": "Santa Fe (2000-2006)",
-      "versions": ["2.4 142", "2.7 V6 175 AWD", "2.0 CRDi 113", "2.2 CRDi 150 AWD", "Diğer"],
-      "trims": ["GLS", "Diğer"]
+      "versions": [
+        "2.4 142",
+        "2.7 V6 175 AWD",
+        "2.0 CRDi 113",
+        "2.2 CRDi 150 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "GLS",
+        "Diğer"
+      ]
     },
     {
       "name": "Santa Fe (2006-2012)",
-      "versions": ["2.7 V6 189 AWD", "2.2 CRDi 155 AWD", "2.2 CRDi 197 AWD", "Diğer"],
-      "trims": ["GLS", "Style", "Diğer"]
+      "versions": [
+        "2.7 V6 189 AWD",
+        "2.2 CRDi 155 AWD",
+        "2.2 CRDi 197 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "GLS",
+        "Style",
+        "Diğer"
+      ]
     },
     {
       "name": "Santa Fe (2012-2018)",
-      "versions": ["2.0 CRDi 150 AWD", "2.2 CRDi 197 AWD", "Diğer"],
-      "trims": ["Start", "Team", "Style", "Elite", "Diğer"]
+      "versions": [
+        "2.0 CRDi 150 AWD",
+        "2.2 CRDi 197 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Start",
+        "Team",
+        "Style",
+        "Elite",
+        "Diğer"
+      ]
     },
     {
       "name": "Santa Fe (2018-)",
-      "versions": ["2.0 CRDi 186 AWD", "2.2 CRDi 200 AWD", "PHEV 265 AWD", "HEV 230 AWD", "Diğer"],
-      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+      "versions": [
+        "2.0 CRDi 186 AWD",
+        "2.2 CRDi 200 AWD",
+        "PHEV 265 AWD",
+        "HEV 230 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Elite",
+        "Elite Plus",
+        "Progressive",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "HEV 230 AWD": [
+          "Progressive",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Kona",
-      "versions": ["1.0 T-GDI 120", "1.6 T-GDI 198 AWD", "HEV 141", "Diğer"],
-      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+      "versions": [
+        "1.0 T-GDI 120",
+        "1.6 T-GDI 198 AWD",
+        "HEV 141",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Elite Smart",
+        "Progressive",
+        "N Line",
+        "N",
+        "Diğer"
+      ]
     },
     {
       "name": "Kona Electric",
-      "versions": ["Standard Range 136 48.6kWh", "Long Range 218 65.4kWh", "Diğer"],
-      "trims": ["Level 2", "Level 3", "N Line", "Diğer"]
+      "versions": [
+        "Standard Range 136 48.6kWh",
+        "Long Range 218 65.4kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Advance",
+        "Progressive",
+        "Diğer"
+      ]
     },
     {
       "name": "Ioniq 5",
-      "versions": ["Standard Range RWD 125kW 58kWh", "Long Range RWD 160kW 77.4kWh", "Long Range AWD 225kW 77.4kWh", "N AWD 478 84kWh", "Diğer"],
-      "trims": ["Level 2", "Level 3", "N Line", "N", "Diğer"]
+      "versions": [
+        "Standard Range RWD 125kW 58kWh",
+        "Long Range RWD 160kW 77.4kWh",
+        "Long Range AWD 225kW 77.4kWh",
+        "N AWD 478 84kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "Dynamic",
+        "Dynamic Vision Roof",
+        "Advance",
+        "N Line",
+        "N",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Standard Range RWD 125kW 58kWh": [
+          "Progressive",
+          "Dynamic",
+          "Dynamic Vision Roof",
+          "Advance",
+          "Diğer"
+        ],
+        "Long Range RWD 160kW 77.4kWh": [
+          "Progressive",
+          "Dynamic",
+          "Dynamic Vision Roof",
+          "Advance",
+          "Diğer"
+        ],
+        "Long Range AWD 225kW 77.4kWh": [
+          "Progressive",
+          "Dynamic",
+          "Dynamic Vision Roof",
+          "Advance",
+          "Diğer"
+        ],
+        "N AWD 478 84kWh": [
+          "N",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Ioniq 6",
-      "versions": ["Standard Range RWD 151", "Long Range RWD 229", "Long Range AWD 325", "Diğer"],
-      "trims": ["Level 2", "Level 3", "Diğer"]
+      "versions": [
+        "Standard Range RWD 151",
+        "Long Range RWD 229",
+        "Long Range AWD 325",
+        "Diğer"
+      ],
+      "trims": [
+        "Advance",
+        "Progressive",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Ioniq 9",
+      "versions": [
+        "Long Range RWD 160kW 110.3kWh",
+        "Long Range AWD 226kW 110.3kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "Calligraphy",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Long Range RWD 160kW 110.3kWh": [
+          "Progressive",
+          "Diğer"
+        ],
+        "Long Range AWD 226kW 110.3kWh": [
+          "Calligraphy",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Inster",
+      "versions": [
+        "Standard Range 71kW 42kWh",
+        "Long Range 84.5kW 49kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Advance",
+        "Dynamic",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Standard Range 71kW 42kWh": [
+          "Dynamic",
+          "Diğer"
+        ],
+        "Long Range 84.5kW 49kWh": [
+          "Advance",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Excel (1991-1995)",
+      "versions": [
+        "1.5",
+        "Diğer"
+      ],
+      "trims": [
+        "LS",
+        "GLS",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Grandeur (1998-2005)",
+      "versions": [
+        "2.0i",
+        "2.5i",
+        "3.0i",
+        "3.5i",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Genesis Coupe (2008-2016)",
+      "versions": [
+        "2.0L TCI",
+        "3.8",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Terracan (2001-2007)",
+      "versions": [
+        "2.5 TD 100",
+        "2.9 CRDi 150",
+        "2.9 CRDi 163",
+        "3.5 V6 200",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Galloper (1991-1997)",
+      "versions": [
+        "2.5 D 72",
+        "2.5 TCI 101",
+        "2.5 TD 82",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Exceed",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Galloper (1997-2003)",
+      "versions": [
+        "2.5 D 79",
+        "2.5 TCI 103",
+        "2.5 TD 84",
+        "2.5 TD 99",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Exceed",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

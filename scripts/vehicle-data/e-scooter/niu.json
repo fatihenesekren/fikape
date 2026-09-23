@@ -1,13 +1,115 @@
 {
   "make": "Niu",
   "models": [
-    { "name": "KQi1", "versions": ["250W 5.1Ah 20km/h", "Diğer"], "trims": ["Pro", "Diğer"] },
-    { "name": "KQi2", "versions": ["300W 8.68Ah 25km/h", "Diğer"], "trims": ["Pro", "Diğer"] },
-    { "name": "KQi3", "versions": ["300W 13.4Ah 25km/h", "Pro Max 700W", "Diğer"], "trims": ["Sport", "Pro", "Max", "Diğer"] },
-    { "name": "UQi", "versions": ["1500W 30Ah", "GT 2000W", "Diğer"], "trims": ["Standart", "GT", "Diğer"] },
-    { "name": "MQi", "versions": ["1500W 48Ah", "GT Pro 3000W", "Diğer"], "trims": ["Standart", "GT", "GT Pro", "Diğer"] },
-    { "name": "KQi Air", "versions": ["300W 10Ah 25km/h", "X 300W", "Diğer"], "trims": ["Standart", "X", "Diğer"] },
-    { "name": "M+ / N1S", "versions": ["350W 15Ah 30km/h M+", "500W 30Ah 45km/h N1S", "Diğer"], "trims": ["Standart", "Lite", "Sport", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "KQi1",
+      "versions": [
+        "250W 5.1Ah 20km/h",
+        "Diğer"
+      ],
+      "trims": [
+        "Pro",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "KQi2",
+      "versions": [
+        "300W 8.68Ah 25km/h",
+        "Diğer"
+      ],
+      "trims": [
+        "Pro",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "KQi3",
+      "versions": [
+        "300W 13.4Ah 25km/h",
+        "Pro Max 700W",
+        "Diğer"
+      ],
+      "trims": [
+        "Sport",
+        "Pro",
+        "Max",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "UQi",
+      "versions": [
+        "1500W 30Ah",
+        "GT 2000W",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GT",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "MQi",
+      "versions": [
+        "1500W 48Ah",
+        "GT Pro 3000W",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GT",
+        "GT Pro",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1500W 48Ah": [
+          "Standart",
+          "GT",
+          "Diğer"
+        ],
+        "GT Pro 3000W": [
+          "GT Pro",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "KQi Air",
+      "versions": [
+        "300W 10Ah 25km/h",
+        "X 300W",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "X",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "M+ / N1S",
+      "versions": [
+        "350W 15Ah 30km/h M+",
+        "500W 30Ah 45km/h N1S",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Lite",
+        "Sport",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

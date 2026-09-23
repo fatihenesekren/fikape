@@ -1,11 +1,10 @@
 {
-  "make": "QJMotor",
+  "make": "Volta",
   "models": [
     {
-      "name": "SRT 250 / SRK 400 (Naked)",
+      "name": "SE-03 Max",
       "versions": [
-        "249cc 26 CV SRT",
-        "400cc 42 CV SRK",
+        "Elektrik 1.5 kW 72V 20Ah",
         "Diğer"
       ],
       "trims": [
@@ -14,10 +13,9 @@
       ]
     },
     {
-      "name": "SRK 600 / SRT 600 (Naked/Sport)",
+      "name": "SE-03",
       "versions": [
-        "600cc 75 CV SRK Naked",
-        "600cc 75 CV SRT Sport",
+        "Elektrik 1.5 kW 60V 12Ah",
         "Diğer"
       ],
       "trims": [
@@ -26,9 +24,9 @@
       ]
     },
     {
-      "name": "Advent 650 (Adventure)",
+      "name": "VS1",
       "versions": [
-        "649cc 60 CV",
+        "Elektrik 2 kW 72V 20Ah",
         "Diğer"
       ],
       "trims": [
@@ -37,22 +35,9 @@
       ]
     },
     {
-      "name": "SRT550 / SRT550 X (Adventure)",
+      "name": "VS2",
       "versions": [
-        "550cc 50 CV",
-        "X 550cc 50 CV",
-        "Diğer"
-      ],
-      "trims": [
-        "Standart",
-        "X",
-        "Diğer"
-      ]
-    },
-    {
-      "name": "SVT650 X (Adventure)",
-      "versions": [
-        "650cc 60 CV",
+        "Elektrik 1.5 kW 60V 22Ah",
         "Diğer"
       ],
       "trims": [
@@ -61,9 +46,31 @@
       ]
     },
     {
-      "name": "SRT800 X (Adventure)",
+      "name": "VM4 Neo (3 Tekerlekli)",
       "versions": [
-        "800cc 80 CV",
+        "Elektrik 1 kW 60V 20Ah",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "VM5 Neo (3 Tekerlekli)",
+      "versions": [
+        "Elektrik 1 kW 72V 20Ah",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "VT5 Pro (3 Tekerlekli Kargo)",
+      "versions": [
+        "Elektrik 3.9 kW 72V 60Ah",
         "Diğer"
       ],
       "trims": [

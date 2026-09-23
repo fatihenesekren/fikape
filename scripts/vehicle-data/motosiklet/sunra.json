@@ -1,36 +1,31 @@
 {
-  "make": "Decathlon",
+  "make": "Sunra",
   "models": [
     {
-      "name": "Riverside 500E / 900E (Şehir/Trekking)",
+      "name": "Robo-SC",
       "versions": [
-        "250W 25 km/h 36V 11.6Ah",
-        "250W 25 km/h 36V 14Ah",
+        "Elektrik 3 kW 72V Çift 20Ah",
         "Diğer"
       ],
       "trims": [
-        "500E",
-        "900E",
+        "Standart",
         "Diğer"
       ]
     },
     {
-      "name": "Rockrider E-ST 100 / 900 (E-MTB)",
+      "name": "Miku Super",
       "versions": [
-        "250W 25 km/h 36V 10.4Ah",
-        "250W 25 km/h 36V 14Ah",
+        "Elektrik 3 kW Bosch Motor",
         "Diğer"
       ],
       "trims": [
-        "E-ST 100",
-        "E-ST 900",
+        "Standart",
         "Diğer"
       ]
     },
     {
-      "name": "Elops Speed 900E (Speed Pedelec)",
+      "name": "Miku Max",
       "versions": [
-        "250W 45 km/h 36V 14Ah",
         "Diğer"
       ],
       "trims": [

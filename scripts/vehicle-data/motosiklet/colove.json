@@ -1,9 +1,59 @@
 {
   "make": "Colove",
   "models": [
-    { "name": "450X (2022-)", "versions": ["450cc 47 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "500X (2023-)", "versions": ["500cc 55 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "800X Pro / 800X Rally", "versions": ["799cc 95 CV Pro", "799cc 95 CV Rally", "Diğer"], "trims": ["Pro", "Rally", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "450X (2022-)",
+      "versions": [
+        "450cc 47 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "500X (2023-)",
+      "versions": [
+        "500cc 55 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "800X Pro / 800X Rally",
+      "versions": [
+        "799cc 95 CV Pro",
+        "799cc 95 CV Rally",
+        "Diğer"
+      ],
+      "trims": [
+        "Pro",
+        "Rally",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "799cc 95 CV Pro": [
+          "Pro",
+          "Diğer"
+        ],
+        "799cc 95 CV Rally": [
+          "Rally",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

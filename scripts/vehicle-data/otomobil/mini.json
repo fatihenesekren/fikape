@@ -3,78 +3,485 @@
   "models": [
     {
       "name": "Cooper (2001-2006)",
-      "versions": ["1.6 Cooper 90", "1.6 Cooper S 163", "Diğer"],
-      "trims": ["Standart", "S", "Diğer"]
+      "versions": [
+        "1.6 Cooper 90",
+        "1.6 Cooper S 163",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
     },
     {
       "name": "Cooper (2006-2013)",
-      "versions": ["1.6 Cooper 122", "1.6 Cooper S 175", "2.0 Cooper SD 143", "1.6 JCW 211", "Diğer"],
-      "trims": ["Standart", "S", "JCW", "Diğer"]
+      "versions": [
+        "1.6 Cooper 122",
+        "1.6 Cooper S 175",
+        "2.0 Cooper SD 143",
+        "1.6 JCW 211",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 Cooper 122": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1.6 Cooper S 175": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "2.0 Cooper SD 143": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1.6 JCW 211": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Cooper (2014-2024)",
-      "versions": ["1.5 Cooper 136", "2.0 Cooper S 192", "2.0 JCW 231", "Diğer"],
-      "trims": ["Essential", "Classic", "Exclusive", "JCW", "Diğer"]
+      "versions": [
+        "1.5 Cooper 136",
+        "2.0 Cooper S 192",
+        "2.0 JCW 231",
+        "Diğer"
+      ],
+      "trims": [
+        "Essential",
+        "Classic",
+        "Exclusive",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.5 Cooper 136": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 Cooper S 192": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 JCW 231": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Cooper (2024-)",
-      "versions": ["1.5 Cooper 136", "2.0 Cooper S 192", "Cooper SE 184 EV", "2.0 JCW 231", "Diğer"],
-      "trims": ["Essential", "Classic", "Exclusive", "JCW", "Diğer"]
+      "versions": [
+        "1.5 Cooper 136",
+        "2.0 Cooper S 192",
+        "Cooper SE 184 EV",
+        "2.0 JCW 231",
+        "Diğer"
+      ],
+      "trims": [
+        "Essential",
+        "Classic",
+        "Exclusive",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.5 Cooper 136": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 Cooper S 192": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "Cooper SE 184 EV": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 JCW 231": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Cabrio (2009-2015)",
-      "versions": ["1.6 Cooper 122", "1.6 Cooper S 184", "2.0 JCW 211", "Diğer"],
-      "trims": ["Standart", "S", "JCW", "Diğer"]
+      "versions": [
+        "1.6 Cooper 122",
+        "1.6 Cooper S 184",
+        "2.0 JCW 211",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 Cooper 122": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1.6 Cooper S 184": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "2.0 JCW 211": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Cabrio (2016-)",
-      "versions": ["1.5 Cooper 136", "2.0 Cooper S 192", "2.0 JCW 231", "Diğer"],
-      "trims": ["Essential", "Classic", "Exclusive", "JCW", "Diğer"]
+      "versions": [
+        "1.5 Cooper 136",
+        "2.0 Cooper S 192",
+        "2.0 JCW 231",
+        "Diğer"
+      ],
+      "trims": [
+        "Essential",
+        "Classic",
+        "Exclusive",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.5 Cooper 136": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 Cooper S 192": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 JCW 231": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Clubman (2007-2014)",
-      "versions": ["1.6 Cooper 122", "1.6 Cooper S 175", "2.0 Cooper SD 143", "1.6 JCW 211", "Diğer"],
-      "trims": ["Standart", "S", "JCW", "Diğer"]
+      "versions": [
+        "1.6 Cooper 122",
+        "1.6 Cooper S 175",
+        "2.0 Cooper SD 143",
+        "1.6 JCW 211",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 Cooper 122": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1.6 Cooper S 175": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "2.0 Cooper SD 143": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1.6 JCW 211": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Clubman (2015-)",
-      "versions": ["1.5 Cooper 136", "2.0 Cooper S 192 ALL4", "2.0 Cooper SD 150 ALL4", "2.0 JCW 231 ALL4", "Diğer"],
-      "trims": ["Essential", "Classic", "Exclusive", "JCW", "Diğer"]
+      "versions": [
+        "1.5 Cooper 136",
+        "2.0 Cooper S 192 ALL4",
+        "2.0 Cooper SD 150 ALL4",
+        "2.0 JCW 231 ALL4",
+        "Diğer"
+      ],
+      "trims": [
+        "Essential",
+        "Classic",
+        "Exclusive",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.5 Cooper 136": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 Cooper S 192 ALL4": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 Cooper SD 150 ALL4": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 JCW 231 ALL4": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Countryman (2010-2016)",
-      "versions": ["1.6 Cooper 122 FWD", "1.6 Cooper S 184 ALL4", "2.0 Cooper SD 143 ALL4", "1.6 JCW 218 ALL4", "Diğer"],
-      "trims": ["Standart", "S", "JCW", "Diğer"]
+      "versions": [
+        "1.6 Cooper 122 FWD",
+        "1.6 Cooper S 184 ALL4",
+        "2.0 Cooper SD 143 ALL4",
+        "1.6 JCW 218 ALL4",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 Cooper 122 FWD": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1.6 Cooper S 184 ALL4": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "2.0 Cooper SD 143 ALL4": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "1.6 JCW 218 ALL4": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Countryman (2017-2023)",
-      "versions": ["1.5 Cooper 136 FWD", "2.0 Cooper S 178 ALL4", "2.0 Cooper SE ALL4 PHEV 224", "2.0 JCW 231 ALL4", "Diğer"],
-      "trims": ["Essential", "Classic", "Exclusive", "JCW", "Diğer"]
+      "versions": [
+        "1.5 Cooper 136 FWD",
+        "2.0 Cooper S 178 ALL4",
+        "2.0 Cooper SE ALL4 PHEV 224",
+        "2.0 JCW 231 ALL4",
+        "Diğer"
+      ],
+      "trims": [
+        "Essential",
+        "Classic",
+        "Exclusive",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.5 Cooper 136 FWD": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 Cooper S 178 ALL4": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 Cooper SE ALL4 PHEV 224": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 JCW 231 ALL4": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Countryman (2024-)",
-      "versions": ["1.5 Cooper 136 FWD", "2.0 Cooper S 178 ALL4", "2.0 Cooper SE ALL4 PHEV 300", "SE 313 EV", "2.0 JCW 300 ALL4", "Diğer"],
-      "trims": ["Essential", "Classic", "Exclusive", "JCW", "Diğer"]
+      "versions": [
+        "1.5 Cooper 136 FWD",
+        "2.0 Cooper S 178 ALL4",
+        "2.0 Cooper SE ALL4 PHEV 300",
+        "SE 313 EV",
+        "2.0 JCW 300 ALL4",
+        "Diğer"
+      ],
+      "trims": [
+        "Essential",
+        "Classic",
+        "Exclusive",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.5 Cooper 136 FWD": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 Cooper S 178 ALL4": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 Cooper SE ALL4 PHEV 300": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "SE 313 EV": [
+          "Essential",
+          "Classic",
+          "Exclusive",
+          "Diğer"
+        ],
+        "2.0 JCW 300 ALL4": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Paceman",
-      "versions": ["1.6 Cooper 122", "2.0 Cooper S 184 ALL4", "Diğer"],
-      "trims": ["Standart", "ALL4", "Diğer"]
+      "versions": [
+        "1.6 Cooper 122",
+        "2.0 Cooper S 184 ALL4",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ALL4",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 Cooper 122": [
+          "Standart",
+          "Diğer"
+        ],
+        "2.0 Cooper S 184 ALL4": [
+          "ALL4",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Coupe",
-      "versions": ["1.6 Cooper 122", "2.0 Cooper S 184", "2.0 JCW 211", "Diğer"],
-      "trims": ["Standart", "JCW", "Diğer"]
+      "versions": [
+        "1.6 Cooper 122",
+        "2.0 Cooper S 184",
+        "2.0 JCW 211",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 Cooper 122": [
+          "Standart",
+          "Diğer"
+        ],
+        "2.0 Cooper S 184": [
+          "Standart",
+          "Diğer"
+        ],
+        "2.0 JCW 211": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Roadster",
-      "versions": ["1.6 Cooper 122", "2.0 Cooper S 184", "2.0 JCW 211", "Diğer"],
-      "trims": ["Standart", "JCW", "Diğer"]
+      "versions": [
+        "1.6 Cooper 122",
+        "2.0 Cooper S 184",
+        "2.0 JCW 211",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "JCW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 Cooper 122": [
+          "Standart",
+          "Diğer"
+        ],
+        "2.0 Cooper S 184": [
+          "Standart",
+          "Diğer"
+        ],
+        "2.0 JCW 211": [
+          "JCW",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

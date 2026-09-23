@@ -3,38 +3,80 @@
   "models": [
     {
       "name": "Glory Van (2019-)",
-      "versions": ["1.5 T 143 Benzin", "1.5 T 143 LPG", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "1.5 T 143 Benzin",
+        "1.5 T 143 LPG",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "EC35 EV (2021-)",
-      "versions": ["Elektrik 60 CV 35kWh", "Elektrik 60 CV 42kWh", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "Elektrik 60 CV 35kWh",
+        "Elektrik 60 CV 42kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "EC31 EV (2022-)",
-      "versions": ["Elektrik 41 CV 25kWh", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "Elektrik 41 CV 25kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "C31 (Pick-up)",
-      "versions": ["1.5 MT 102 Tek Kabin", "Diğer"],
-      "trims": ["Pro", "Diğer"]
+      "versions": [
+        "1.5 MT 102 Tek Kabin",
+        "Diğer"
+      ],
+      "trims": [
+        "Pro",
+        "Diğer"
+      ]
     },
     {
       "name": "C32 (Pick-up)",
-      "versions": ["1.5 MT 102 Çift Kabin", "Diğer"],
-      "trims": ["Pro", "Diğer"]
+      "versions": [
+        "1.5 MT 102 Çift Kabin",
+        "Diğer"
+      ],
+      "trims": [
+        "Pro",
+        "Diğer"
+      ]
     },
     {
       "name": "Mini Maxi",
-      "versions": ["1.0 MT 68", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "1.0 MT 68",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

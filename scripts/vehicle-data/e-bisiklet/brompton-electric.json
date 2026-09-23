@@ -1,10 +1,59 @@
 {
   "make": "Brompton Electric",
   "models": [
-    { "name": "Electric P Line (2022-)", "versions": ["250W 25 km/h 300Wh", "Diğer"], "trims": ["Urban", "Explore", "Diğer"] },
-    { "name": "Electric C Line (2019-2022)", "versions": ["250W 25 km/h 300Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Electric G Line (2025-)", "versions": ["250W 25 km/h 300Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Electric T Line (2026-)", "versions": ["250W 25 km/h 300Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "Electric P Line (2022-)",
+      "versions": [
+        "250W 25 km/h 300Wh",
+        "Diğer"
+      ],
+      "trims": [
+        "Urban",
+        "Explore",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Electric C Line (2019-2022)",
+      "versions": [
+        "250W 25 km/h 300Wh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Electric G Line (2025-)",
+      "versions": [
+        "250W 25 km/h 300Wh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Electric T Line (2026-)",
+      "versions": [
+        "250W 25 km/h 300Wh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

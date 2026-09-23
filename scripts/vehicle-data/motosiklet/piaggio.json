@@ -1,16 +1,124 @@
 {
   "make": "Piaggio",
   "models": [
-    { "name": "MP3 310", "versions": ["300cc 23 CV", "Sport", "Diğer"], "trims": ["Standart", "Sport", "Diğer"] },
-    { "name": "MP3 530", "versions": ["530cc 37 CV", "HPE Exclusive", "Diğer"], "trims": ["Exclusive", "Diğer"] },
-    { "name": "Medley 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
-    { "name": "Liberty 125", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "S", "Iget", "Diğer"] },
-    { "name": "Beverly 400", "versions": ["400cc 35 CV", "S 35 CV", "Diğer"], "trims": ["Standart", "S", "Diğer"] },
-    { "name": "Piaggio One", "versions": ["50cc/125cc", "Active", "+", "Diğer"], "trims": ["Active", "+", "Diğer"] },
+    {
+      "name": "MP3 310",
+      "versions": [
+        "300cc 23 CV",
+        "Sport",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Sport",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "300cc 23 CV": [
+          "Standart",
+          "Diğer"
+        ],
+        "Sport": [
+          "Sport",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "MP3 530",
+      "versions": [
+        "530cc 37 CV",
+        "HPE Exclusive",
+        "Diğer"
+      ],
+      "trims": [
+        "Exclusive",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "530cc 37 CV": [
+          "Diğer"
+        ],
+        "HPE Exclusive": [
+          "Exclusive",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Medley 125",
+      "versions": [
+        "125cc 15 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Liberty 125",
+      "versions": [
+        "125cc 15 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Iget",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Beverly 400",
+      "versions": [
+        "400cc 35 CV",
+        "S 35 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Piaggio One",
+      "versions": [
+        "50cc/125cc",
+        "Active",
+        "+",
+        "Diğer"
+      ],
+      "trims": [
+        "Active",
+        "+",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "50cc/125cc": [
+          "+",
+          "Diğer"
+        ],
+        "Active": [
+          "Active",
+          "Diğer"
+        ],
+        "+": [
+          "+",
+          "Diğer"
+        ]
+      }
+    },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

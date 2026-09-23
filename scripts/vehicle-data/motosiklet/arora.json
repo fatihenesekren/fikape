@@ -1,19 +1,809 @@
 {
   "make": "Arora",
   "models": [
-    { "name": "Freedom 50 (Scooter)", "versions": ["50cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Dazzle 50 (Scooter)", "versions": ["50cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Cappucino (Scooter)", "versions": ["50cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Vesta (Scooter)", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Jaguar 125 (Scooter)", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "AR 125 (Naked)", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "MT 125 (Naked)", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CK 250", "versions": ["250cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "AR 251", "versions": ["250cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Supersport GP250", "versions": ["250cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "GS 525 (Adventure)", "versions": ["525cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Angel Pro", "versions": ["125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CR250 (Cross)", "versions": ["250cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "Freedom 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Freedom 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Dazzle 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Dazzle Pro 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Cappucino 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Cappucino 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Cappucino S50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Cappucino New 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Cappucino New S50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Vesta 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Jaguar 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Jaguar 200",
+      "versions": [
+        "200cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "MT 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CK 250",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 251",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "GP 250",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "GS 525",
+      "versions": [
+        "525cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CR 250",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Alfa 110",
+      "versions": [
+        "110cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Alfa 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 06",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 50-30",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 50-50 Kasırga",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 50-6 Capirossi",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 50-8 Espresso",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 100-7 Special Alfa",
+      "versions": [
+        "100cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 100-8 A Modifiye",
+      "versions": [
+        "100cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 150-5 Kargo",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 200-16C Jaguar",
+      "versions": [
+        "200cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "AR 250",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "ARS 200",
+      "versions": [
+        "200cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Beatrix",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Boss 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Boss 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Bravo 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CG 150",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CG 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Chinf 318",
+      "versions": [
+        "318cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CP 250",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CRV 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Fırtına 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Gemma 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "GT 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "GT 250",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Leader 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Malibu",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Malibu Pro",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Max Pro 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Max Pro 150",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Max Pro 250",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Max-T",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Max-T Easy",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Mojito 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Mojito 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Mojito Pro S",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Prime 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Safari 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Safari 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Safari Pro",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Shark 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "SK 250 K",
+      "versions": [
+        "250cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Smart 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Smart 50 X",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Special 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Super 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Quantum 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Quantum 125",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Verano 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Verano AR 125-25",
+      "versions": [
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Verano AR 50-9",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "ZRX 200",
+      "versions": [
+        "200cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "ZR7",
+      "versions": [
+        "Elektrik 3 kW 72V 35Ah",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

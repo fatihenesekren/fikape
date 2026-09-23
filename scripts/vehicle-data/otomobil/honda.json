@@ -3,103 +3,444 @@
   "models": [
     {
       "name": "Civic (2001-2006)",
-      "versions": ["1.4 iS 90", "1.6 iS 110", "1.7 CTDi 100", "2.0 Type R 200", "Diğer"],
-      "trims": ["S", "ES", "SE", "Type R", "Diğer"]
+      "versions": [
+        "1.4 iS 90",
+        "1.6 iS 110",
+        "1.7 CTDi 100",
+        "2.0 Type R 200",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "ES",
+        "SE",
+        "Type R",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 iS 90": [
+          "S",
+          "ES",
+          "SE",
+          "Diğer"
+        ],
+        "1.6 iS 110": [
+          "S",
+          "ES",
+          "SE",
+          "Diğer"
+        ],
+        "1.7 CTDi 100": [
+          "S",
+          "ES",
+          "SE",
+          "Diğer"
+        ],
+        "2.0 Type R 200": [
+          "Type R",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Civic (2006-2012)",
-      "versions": ["1.4 i-DSI 83", "1.8 i-VTEC 140", "2.0 i-VTEC 201", "2.2 i-CTDi 140", "Type R 2.0 201", "Diğer"],
-      "trims": ["Comfort", "Sport", "Executive", "Type R", "Diğer"]
+      "versions": [
+        "1.4 i-DSI 83",
+        "1.8 i-VTEC 140",
+        "2.0 i-VTEC 201",
+        "2.2 i-CTDi 140",
+        "Type R 2.0 201",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Sport",
+        "Executive",
+        "Type R",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 i-DSI 83": [
+          "Comfort",
+          "Sport",
+          "Executive",
+          "Diğer"
+        ],
+        "1.8 i-VTEC 140": [
+          "Comfort",
+          "Sport",
+          "Executive",
+          "Diğer"
+        ],
+        "2.0 i-VTEC 201": [
+          "Comfort",
+          "Sport",
+          "Executive",
+          "Diğer"
+        ],
+        "2.2 i-CTDi 140": [
+          "Comfort",
+          "Sport",
+          "Executive",
+          "Diğer"
+        ],
+        "Type R 2.0 201": [
+          "Type R",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Civic (2012-2017)",
-      "versions": ["1.4 i-VTEC 100", "1.6 i-DTEC 120", "1.8 i-VTEC 142", "2.0 Type R 280", "Diğer"],
-      "trims": ["Comfort", "Elegance", "Executive", "Type R", "Diğer"]
+      "versions": [
+        "1.4 i-VTEC 100",
+        "1.6 i-DTEC 120",
+        "1.8 i-VTEC 142",
+        "2.0 Type R 280",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Elegance",
+        "Executive",
+        "Type R",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 i-VTEC 100": [
+          "Comfort",
+          "Elegance",
+          "Executive",
+          "Diğer"
+        ],
+        "1.6 i-DTEC 120": [
+          "Comfort",
+          "Elegance",
+          "Executive",
+          "Diğer"
+        ],
+        "1.8 i-VTEC 142": [
+          "Comfort",
+          "Elegance",
+          "Executive",
+          "Diğer"
+        ],
+        "2.0 Type R 280": [
+          "Type R",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Civic (2017-2022)",
-      "versions": ["1.0 VTEC Turbo 126", "1.5 VTEC Turbo 182", "1.6 i-DTEC 120", "Type R 2.0 320", "Diğer"],
-      "trims": ["Elegance", "Executive", "Sport", "Prestige", "Type R", "Diğer"]
+      "versions": [
+        "1.0 VTEC Turbo 126",
+        "1.5 VTEC Turbo 182",
+        "1.6 i-DTEC 120",
+        "Type R 2.0 320",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Executive",
+        "Sport",
+        "Prestige",
+        "Type R",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.0 VTEC Turbo 126": [
+          "Elegance",
+          "Executive",
+          "Sport",
+          "Prestige",
+          "Diğer"
+        ],
+        "1.5 VTEC Turbo 182": [
+          "Elegance",
+          "Executive",
+          "Sport",
+          "Prestige",
+          "Diğer"
+        ],
+        "1.6 i-DTEC 120": [
+          "Elegance",
+          "Executive",
+          "Sport",
+          "Prestige",
+          "Diğer"
+        ],
+        "Type R 2.0 320": [
+          "Type R",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Civic (2022-)",
-      "versions": ["1.0 VTEC Turbo 126", "1.5 VTEC Turbo 182", "2.0 i-MMD e:HEV 184", "2.0 VTEC Turbo Type R 329", "Diğer"],
-      "trims": ["Elegance", "Executive", "Sport", "Advance", "Type R", "Diğer"]
+      "versions": [
+        "1.0 VTEC Turbo 126",
+        "1.5 VTEC Turbo 182",
+        "2.0 i-MMD e:HEV 184",
+        "2.0 VTEC Turbo Type R 329",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Executive",
+        "Sport",
+        "Advance",
+        "Type R",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.0 VTEC Turbo 126": [
+          "Elegance",
+          "Executive",
+          "Sport",
+          "Advance",
+          "Diğer"
+        ],
+        "1.5 VTEC Turbo 182": [
+          "Elegance",
+          "Executive",
+          "Sport",
+          "Advance",
+          "Diğer"
+        ],
+        "2.0 i-MMD e:HEV 184": [
+          "Elegance",
+          "Executive",
+          "Sport",
+          "Advance",
+          "Diğer"
+        ],
+        "2.0 VTEC Turbo Type R 329": [
+          "Type R",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Jazz (2002-2008)",
-      "versions": ["1.2 i-DSI 78", "1.4 i-DSI 83", "1.4 CTDi 100", "Diğer"],
-      "trims": ["ES", "LS", "Elite", "Sport", "Diğer"]
+      "versions": [
+        "1.2 i-DSI 78",
+        "1.4 i-DSI 83",
+        "1.4 CTDi 100",
+        "Diğer"
+      ],
+      "trims": [
+        "ES",
+        "LS",
+        "Elite",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "Jazz (2008-2015)",
-      "versions": ["1.2 i-VTEC 90", "1.4 i-VTEC 100", "1.4 i-DTEC 100", "Diğer"],
-      "trims": ["Fun", "Joy", "Diğer"]
+      "versions": [
+        "1.2 i-VTEC 90",
+        "1.4 i-VTEC 100",
+        "1.4 i-DTEC 100",
+        "Diğer"
+      ],
+      "trims": [
+        "Fun",
+        "Joy",
+        "Diğer"
+      ]
     },
     {
       "name": "Jazz (2015-2020)",
-      "versions": ["1.3 i-VTEC 102", "1.5 i-VTEC 130", "Diğer"],
-      "trims": ["Dream PE", "Premium", "Elegance", "Diğer"]
+      "versions": [
+        "1.3 i-VTEC 102",
+        "1.5 i-VTEC 130",
+        "Diğer"
+      ],
+      "trims": [
+        "Dream PE",
+        "Premium",
+        "Elegance",
+        "Diğer"
+      ]
     },
     {
       "name": "Jazz (2020-)",
-      "versions": ["1.5 i-MMD e:HEV 109", "1.5 i-MMD e:HEV 122", "Diğer"],
-      "trims": ["Elegance", "Advance", "Crosstar", "Diğer"]
+      "versions": [
+        "1.5 i-MMD e:HEV 109",
+        "1.5 i-MMD e:HEV 122",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Advance",
+        "Crosstar",
+        "Diğer"
+      ]
     },
     {
       "name": "HR-V (1999-2006)",
-      "versions": ["1.6i 105", "1.6i VTEC 125 4WD", "Diğer"],
-      "trims": ["Standart", "4WD", "Diğer"]
+      "versions": [
+        "1.6i 105",
+        "1.6i VTEC 125 4WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "4WD",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6i 105": [
+          "Standart",
+          "Diğer"
+        ],
+        "1.6i VTEC 125 4WD": [
+          "4WD",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "HR-V (2021-)",
-      "versions": ["1.5 i-MMD e:HEV 131", "Diğer"],
-      "trims": ["Elegance", "Advance", "Sport", "Diğer"]
+      "versions": [
+        "1.5 i-MMD e:HEV 131",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Advance",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "CR-V (2002-2006)",
-      "versions": ["2.0i 150", "2.2 i-CTDi 140", "Diğer"],
-      "trims": ["Comfort", "Executive", "Diğer"]
+      "versions": [
+        "2.0i 150",
+        "2.2 i-CTDi 140",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Executive",
+        "Diğer"
+      ]
     },
     {
       "name": "CR-V (2007-2012)",
-      "versions": ["2.0i 150", "2.2 i-CTDi 140", "Diğer"],
-      "trims": ["Comfort", "Executive", "Diğer"]
+      "versions": [
+        "2.0i 150",
+        "2.2 i-CTDi 140",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Executive",
+        "Diğer"
+      ]
     },
     {
       "name": "CR-V (2012-2018)",
-      "versions": ["2.0i 155", "1.6 i-DTEC 120", "1.6 i-DTEC 160", "Diğer"],
-      "trims": ["Dream", "Premium", "Elegance", "Executive", "Diğer"]
+      "versions": [
+        "2.0i 155",
+        "1.6 i-DTEC 120",
+        "1.6 i-DTEC 160",
+        "Diğer"
+      ],
+      "trims": [
+        "Dream",
+        "Premium",
+        "Elegance",
+        "Executive",
+        "Diğer"
+      ]
     },
     {
       "name": "CR-V (2018-2023)",
-      "versions": ["1.5 VTEC Turbo 193 4WD", "2.0 i-MMD e:HEV 184", "Diğer"],
-      "trims": ["Elegance", "Executive", "Diğer"]
+      "versions": [
+        "1.5 VTEC Turbo 193 4WD",
+        "2.0 i-MMD e:HEV 184",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Executive",
+        "Diğer"
+      ]
     },
     {
       "name": "CR-V (2023-)",
-      "versions": ["2.0 i-MMD e:HEV 184 FWD", "2.0 i-MMD e:HEV 184 AWD", "PHEV AWD 184", "Diğer"],
-      "trims": ["Elegance", "Advance", "Advance Sport", "Executive", "Diğer"]
+      "versions": [
+        "2.0 i-MMD e:HEV 184 FWD",
+        "2.0 i-MMD e:HEV 184 AWD",
+        "PHEV AWD 184",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Advance",
+        "Advance Sport",
+        "Executive",
+        "Diğer"
+      ]
     },
     {
       "name": "ZR-V",
-      "versions": ["2.0 i-MMD e:HEV 184", "Diğer"],
-      "trims": ["Elegance", "Advance", "Diğer"]
+      "versions": [
+        "2.0 i-MMD e:HEV 184",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Advance",
+        "Diğer"
+      ]
     },
     {
       "name": "Accord",
-      "versions": ["2.0 i-MMD e:HEV 207", "Diğer"],
-      "trims": ["Elegance", "Executive", "Diğer"]
+      "versions": [
+        "2.0 i-MMD e:HEV 207",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Executive",
+        "Diğer"
+      ]
     },
     {
       "name": "e",
-      "versions": ["136 28.5kWh", "154 28.5kWh Advance", "Diğer"],
-      "trims": ["Standart", "Advance", "Diğer"]
+      "versions": [
+        "136 28.5kWh",
+        "154 28.5kWh Advance",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Advance",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "136 28.5kWh": [
+          "Standart",
+          "Diğer"
+        ],
+        "154 28.5kWh Advance": [
+          "Advance",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

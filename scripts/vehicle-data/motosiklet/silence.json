@@ -1,8 +1,52 @@
 {
   "make": "Silence",
   "models": [
-    { "name": "S01 (2019-)", "versions": ["Elektrik 11 kW 125 eşd. 6.9kWh", "Elektrik 11 kW S01+ 8.1kWh", "Diğer"], "trims": ["Standart", "+", "Urban", "Diğer"] },
-    { "name": "S02", "versions": ["Elektrik Low Speed", "Elektrik High Speed", "Diğer"], "trims": ["Low Speed", "High Speed", "Corporate", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "S01 (2019-)",
+      "versions": [
+        "Elektrik 11 kW 125 eşd. 6.9kWh",
+        "Elektrik 11 kW S01+ 8.1kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "+",
+        "Urban",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "S02",
+      "versions": [
+        "Elektrik Low Speed",
+        "Elektrik High Speed",
+        "Diğer"
+      ],
+      "trims": [
+        "Low Speed",
+        "High Speed",
+        "Corporate",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Elektrik Low Speed": [
+          "Low Speed",
+          "Diğer"
+        ],
+        "Elektrik High Speed": [
+          "High Speed",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

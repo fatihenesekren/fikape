@@ -3,278 +3,2356 @@
   "models": [
     {
       "name": "A Serisi W168 (1997-2004)",
-      "versions": ["A 140 82", "A 160 75", "A 170 95", "A 190 102", "A 160 CDI 60", "A 170 CDI 95", "Diğer"],
-      "trims": ["Classic", "Elegance", "Avantgarde", "Diğer"]
+      "versions": [
+        "A 140 82",
+        "A 160 75",
+        "A 170 95",
+        "A 190 102",
+        "A 160 CDI 60",
+        "A 170 CDI 95",
+        "Diğer"
+      ],
+      "trims": [
+        "Classic",
+        "Elegance",
+        "Avantgarde",
+        "Diğer"
+      ]
     },
     {
       "name": "A Serisi W169 (2004-2012)",
-      "versions": ["A 150 95", "A 160 95", "A 170 116", "A 180 CDI 109", "A 200 136", "A 200 CDI 140", "AMG A 200 Turbo 193", "Diğer"],
-      "trims": ["Classic", "Elegance", "Avantgarde", "Diğer"]
+      "versions": [
+        "A 150 95",
+        "A 160 95",
+        "A 170 116",
+        "A 180 CDI 109",
+        "A 200 136",
+        "A 200 CDI 140",
+        "AMG A 200 Turbo 193",
+        "Diğer"
+      ],
+      "trims": [
+        "Classic",
+        "Elegance",
+        "Avantgarde",
+        "Diğer"
+      ]
     },
     {
       "name": "A Serisi W176 (2012-2018)",
-      "versions": ["A 160 102", "A 180 122", "A 200 156", "A 250 211", "A 180 CDI 109", "A 200 CDI 136", "A 220 CDI 177", "AMG A 45 360", "AMG A 45 381", "Diğer"],
-      "trims": ["Style", "Urban", "AMG Line", "AMG A 45", "Diğer"]
+      "versions": [
+        "A 160 102",
+        "A 180 122",
+        "A 200 156",
+        "A 250 211",
+        "A 180 CDI 109",
+        "A 200 CDI 136",
+        "A 220 CDI 177",
+        "AMG A 45 360",
+        "AMG A 45 381",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Urban",
+        "AMG Line",
+        "AMG A 45",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "A 160 102": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 180 122": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 200 156": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 250 211": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 180 CDI 109": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 200 CDI 136": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 220 CDI 177": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG A 45 360": [
+          "AMG A 45",
+          "Diğer"
+        ],
+        "AMG A 45 381": [
+          "AMG A 45",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "A Serisi W177 (2018-)",
-      "versions": ["A 180 136", "A 200 163", "A 220 190 4MATIC", "A 180d 116", "A 200d 150", "A 250 e PHEV 218", "AMG A 35 4MATIC 306", "AMG A 45 S 4MATIC+ 421", "Diğer"],
-      "trims": ["Progressive", "AMG Line", "AMG A 35", "AMG A 45 S", "Diğer"]
+      "versions": [
+        "A 180 136",
+        "A 200 163",
+        "A 220 190 4MATIC",
+        "A 180d 116",
+        "A 200d 150",
+        "A 250 e PHEV 218",
+        "AMG A 35 4MATIC 306",
+        "AMG A 45 S 4MATIC+ 421",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "AMG Line",
+        "AMG A 35",
+        "AMG A 45 S",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "A 180 136": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 200 163": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 220 190 4MATIC": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 180d 116": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 200d 150": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "A 250 e PHEV 218": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG A 35 4MATIC 306": [
+          "AMG A 35",
+          "Diğer"
+        ],
+        "AMG A 45 S 4MATIC+ 421": [
+          "AMG A 45 S",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "B Serisi W245 (2005-2011)",
-      "versions": ["B 150 95", "B 170 116", "B 180 CDI 109", "B 200 136", "B 200 Turbo 193", "B 200 CDI 140", "Diğer"],
-      "trims": ["Classic", "Elegance", "Diğer"]
+      "versions": [
+        "B 150 95",
+        "B 170 116",
+        "B 180 CDI 109",
+        "B 200 136",
+        "B 200 Turbo 193",
+        "B 200 CDI 140",
+        "Diğer"
+      ],
+      "trims": [
+        "Classic",
+        "Elegance",
+        "Diğer"
+      ]
     },
     {
       "name": "B Serisi W246 (2011-2018)",
-      "versions": ["B 160 102", "B 180 122", "B 200 156", "B 180 CDI 109", "B 200 CDI 136", "B 220 CDI 177", "B 250 e Electric Drive 180", "Diğer"],
-      "trims": ["Style", "Urban", "Diğer"]
+      "versions": [
+        "B 160 102",
+        "B 180 122",
+        "B 200 156",
+        "B 180 CDI 109",
+        "B 200 CDI 136",
+        "B 220 CDI 177",
+        "B 250 e Electric Drive 180",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Urban",
+        "Diğer"
+      ]
     },
     {
       "name": "B Serisi W247 (2018-)",
-      "versions": ["B 180 136", "B 200 163", "B 220 4MATIC 190", "B 180d 116", "B 200d 150", "Diğer"],
-      "trims": ["Progressive", "AMG Line", "Diğer"]
+      "versions": [
+        "B 180 136",
+        "B 200 163",
+        "B 220 4MATIC 190",
+        "B 180d 116",
+        "B 200d 150",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "AMG Line",
+        "Diğer"
+      ]
     },
     {
       "name": "190 (W201, 1982-1993)",
-      "versions": ["190 1.8 90", "190 2.0 105", "190 2.3 132", "190 2.6 166", "190 E 2.3-16 185", "190 D 2.0 72", "190 D 2.5 94", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "190 1.8 90",
+        "190 2.0 105",
+        "190 2.3 132",
+        "190 2.6 166",
+        "190 E 2.3-16 185",
+        "190 D 2.0 72",
+        "190 D 2.5 94",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "C Serisi W203 (2000-2007)",
-      "versions": ["C 180 Kompressor 143", "C 200 Kompressor 163", "C 230 Kompressor 192", "C 200 CDI 122", "C 220 CDI 143", "C 220 CDI 150", "C 270 CDI 170", "C 320 231", "AMG C 32 354", "AMG C 55 367", "Diğer"],
-      "trims": ["Classic", "Elegance", "Avantgarde", "AMG", "Diğer"]
+      "versions": [
+        "C 180 Kompressor 143",
+        "C 200 Kompressor 163",
+        "C 230 Kompressor 192",
+        "C 200 CDI 122",
+        "C 220 CDI 143",
+        "C 220 CDI 150",
+        "C 270 CDI 170",
+        "C 320 231",
+        "AMG C 32 354",
+        "AMG C 55 367",
+        "Diğer"
+      ],
+      "trims": [
+        "Classic",
+        "Elegance",
+        "Avantgarde",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "C 180 Kompressor 143": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "C 200 Kompressor 163": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "C 230 Kompressor 192": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "C 200 CDI 122": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "C 220 CDI 143": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "C 220 CDI 150": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "C 270 CDI 170": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "C 320 231": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "AMG C 32 354": [
+          "AMG",
+          "Diğer"
+        ],
+        "AMG C 55 367": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "C Serisi W204 (2007-2014)",
-      "versions": ["C 180 156", "C 200 184", "C 250 204", "C 300 231", "C 180 CDI 120", "C 200 CDI 136", "C 220 CDI 170", "C 250 CDI 204", "AMG C 63 457", "AMG C 63 507", "Diğer"],
-      "trims": ["Classic", "Elegance", "Avantgarde", "AMG Line", "AMG C 63", "Diğer"]
+      "versions": [
+        "C 180 156",
+        "C 200 184",
+        "C 250 204",
+        "C 300 231",
+        "C 180 CDI 120",
+        "C 200 CDI 136",
+        "C 220 CDI 170",
+        "C 250 CDI 204",
+        "AMG C 63 457",
+        "AMG C 63 507",
+        "Diğer"
+      ],
+      "trims": [
+        "Classic",
+        "Elegance",
+        "Avantgarde",
+        "AMG Line",
+        "AMG C 63",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "C 180 156": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 200 184": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 250 204": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 300 231": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 180 CDI 120": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 200 CDI 136": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 220 CDI 170": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 250 CDI 204": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG C 63 457": [
+          "AMG C 63",
+          "Diğer"
+        ],
+        "AMG C 63 507": [
+          "AMG C 63",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "C Serisi W205 (2014-2021)",
-      "versions": ["C 180 156", "C 200 184", "C 250 211", "C 300 258", "C 180d 116", "C 200d 136", "C 220d 170", "C 250d 204", "C 300 e PHEV 320", "AMG C 43 4MATIC 390", "AMG C 63 476", "AMG C 63 S 510", "Diğer"],
-      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG C 43", "AMG C 63", "Diğer"]
+      "versions": [
+        "C 180 156",
+        "C 200 184",
+        "C 250 211",
+        "C 300 258",
+        "C 180d 116",
+        "C 200d 136",
+        "C 220d 170",
+        "C 250d 204",
+        "C 300 e PHEV 320",
+        "AMG C 43 4MATIC 390",
+        "AMG C 63 476",
+        "AMG C 63 S 510",
+        "Diğer"
+      ],
+      "trims": [
+        "Avantgarde",
+        "Exclusive",
+        "AMG Line",
+        "AMG C 43",
+        "AMG C 63",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "C 180 156": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 200 184": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 250 211": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 300 258": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 180d 116": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 200d 136": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 220d 170": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 250d 204": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 300 e PHEV 320": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG C 43 4MATIC 390": [
+          "AMG C 43",
+          "Diğer"
+        ],
+        "AMG C 63 476": [
+          "AMG C 63",
+          "Diğer"
+        ],
+        "AMG C 63 S 510": [
+          "AMG C 63",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "C Serisi W206 (2021-)",
-      "versions": ["C 180 170", "C 200 204", "C 300 258", "C 300 e PHEV 313 4MATIC", "C 220d 197", "C 300d 265", "AMG C 43 4MATIC 408", "AMG C 63 S e Performance 680", "Diğer"],
-      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG C 43", "AMG C 63 S", "Diğer"]
+      "versions": [
+        "C 180 170",
+        "C 200 204",
+        "C 300 258",
+        "C 300 e PHEV 313 4MATIC",
+        "C 220d 197",
+        "C 300d 265",
+        "AMG C 43 4MATIC 408",
+        "AMG C 63 S e Performance 680",
+        "Diğer"
+      ],
+      "trims": [
+        "Avantgarde",
+        "Exclusive",
+        "AMG Line",
+        "AMG C 43",
+        "AMG C 63 S",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "C 180 170": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 200 204": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 300 258": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 300 e PHEV 313 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 220d 197": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "C 300d 265": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG C 43 4MATIC 408": [
+          "AMG C 43",
+          "Diğer"
+        ],
+        "AMG C 63 S e Performance 680": [
+          "AMG C 63 S",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "CLK C208 (1997-2002)",
-      "versions": ["CLK 200 136", "CLK 230 Kompressor 193", "CLK 320 218", "CLK 200 CDI 116", "AMG CLK 55 347", "Diğer"],
-      "trims": ["Elegance", "Avantgarde", "AMG", "Diğer"]
+      "versions": [
+        "CLK 200 136",
+        "CLK 230 Kompressor 193",
+        "CLK 320 218",
+        "CLK 200 CDI 116",
+        "AMG CLK 55 347",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Avantgarde",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "CLK 200 136": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "CLK 230 Kompressor 193": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "CLK 320 218": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "CLK 200 CDI 116": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "AMG CLK 55 347": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "CLK C209 (2002-2009)",
-      "versions": ["CLK 200 Kompressor 163", "CLK 240 170", "CLK 280 231", "CLK 320 218", "CLK 350 272", "CLK 220 CDI 150", "AMG CLK 55 367", "AMG CLK 63 481", "Diğer"],
-      "trims": ["Elegance", "Avantgarde", "AMG", "Diğer"]
+      "versions": [
+        "CLK 200 Kompressor 163",
+        "CLK 240 170",
+        "CLK 280 231",
+        "CLK 320 218",
+        "CLK 350 272",
+        "CLK 220 CDI 150",
+        "AMG CLK 55 367",
+        "AMG CLK 63 481",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Avantgarde",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "CLK 200 Kompressor 163": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "CLK 240 170": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "CLK 280 231": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "CLK 320 218": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "CLK 350 272": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "CLK 220 CDI 150": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "AMG CLK 55 367": [
+          "AMG",
+          "Diğer"
+        ],
+        "AMG CLK 63 481": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "CLS C219 (2004-2010)",
-      "versions": ["CLS 350 272", "CLS 500 306", "CLS 320 CDI 224", "CLS 350 CDI 224", "AMG CLS 55 476", "AMG CLS 63 507", "Diğer"],
-      "trims": ["Standart", "AMG Line", "AMG CLS 63", "Diğer"]
+      "versions": [
+        "CLS 350 272",
+        "CLS 500 306",
+        "CLS 320 CDI 224",
+        "CLS 350 CDI 224",
+        "AMG CLS 55 476",
+        "AMG CLS 63 507",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "AMG Line",
+        "AMG CLS 63",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "CLS 350 272": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLS 500 306": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLS 320 CDI 224": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLS 350 CDI 224": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG CLS 55 476": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG CLS 63 507": [
+          "AMG CLS 63",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "CLS C218 (2011-2017)",
-      "versions": ["CLS 250 CDI 204", "CLS 350 306", "CLS 350 CDI 265", "CLS 400 333", "CLS 500 408", "AMG CLS 63 557", "Diğer"],
-      "trims": ["Standart", "AMG Line", "AMG CLS 63", "Diğer"]
+      "versions": [
+        "CLS 250 CDI 204",
+        "CLS 350 306",
+        "CLS 350 CDI 265",
+        "CLS 400 333",
+        "CLS 500 408",
+        "AMG CLS 63 557",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "AMG Line",
+        "AMG CLS 63",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "CLS 250 CDI 204": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLS 350 306": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLS 350 CDI 265": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLS 400 333": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLS 500 408": [
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG CLS 63 557": [
+          "AMG CLS 63",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "CLS C257 (2018-2023)",
-      "versions": ["CLS 350 299", "CLS 400d 340", "CLS 450 4MATIC 367", "AMG CLS 53 435", "Diğer"],
-      "trims": ["AMG Line", "Diğer"]
+      "versions": [
+        "CLS 350 299",
+        "CLS 400d 340",
+        "CLS 450 4MATIC 367",
+        "AMG CLS 53 435",
+        "Diğer"
+      ],
+      "trims": [
+        "AMG Line",
+        "Diğer"
+      ]
     },
     {
       "name": "E Serisi W123 (1976-1985)",
-      "versions": ["200 94", "230 109", "230 E 136", "250 129", "280 156", "280 E 177", "200 D 55", "220 D 60", "240 D 65", "240 TD 72", "300 D 80", "300 TD 88", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "200 94",
+        "230 109",
+        "230 E 136",
+        "250 129",
+        "280 156",
+        "280 E 177",
+        "200 D 55",
+        "220 D 60",
+        "240 D 65",
+        "240 TD 72",
+        "300 D 80",
+        "300 TD 88",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "E Serisi W124 (1985-1995)",
-      "versions": ["200 109", "220 E 150", "230 E 132", "260 E 160", "280 E 177", "300 E 180", "200 D 72", "250 D 90", "300 D 109", "300 D Turbo 148", "Diğer"],
-      "trims": ["Standart", "Elegance", "Avantgarde", "Diğer"]
+      "versions": [
+        "200 109",
+        "220 E 150",
+        "230 E 132",
+        "260 E 160",
+        "280 E 177",
+        "300 E 180",
+        "200 D 72",
+        "250 D 90",
+        "300 D 109",
+        "300 D Turbo 148",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Elegance",
+        "Avantgarde",
+        "Diğer"
+      ]
     },
     {
       "name": "E Serisi W210 (1995-2002)",
-      "versions": ["E 200 136", "E 230 150", "E 240 170", "E 280 197", "E 320 224", "E 200 CDI 102", "E 220 CDI 125", "E 270 CDI 170", "E 290 Turbodiesel 95", "AMG E 55 354", "Diğer"],
-      "trims": ["Classic", "Elegance", "Avantgarde", "AMG", "Diğer"]
+      "versions": [
+        "E 200 136",
+        "E 230 150",
+        "E 240 170",
+        "E 280 197",
+        "E 320 224",
+        "E 200 CDI 102",
+        "E 220 CDI 125",
+        "E 270 CDI 170",
+        "E 290 Turbodiesel 95",
+        "AMG E 55 354",
+        "Diğer"
+      ],
+      "trims": [
+        "Classic",
+        "Elegance",
+        "Avantgarde",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "E 200 136": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 230 150": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 240 170": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 280 197": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 320 224": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 200 CDI 102": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 220 CDI 125": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 270 CDI 170": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 290 Turbodiesel 95": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "AMG E 55 354": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "E Serisi W211 (2002-2009)",
-      "versions": ["E 200 163", "E 240 177", "E 280 231", "E 350 272", "E 200 CDI 136", "E 220 CDI 150", "E 270 CDI 177", "E 320 CDI 211", "E 400 CDI 260", "AMG E 55 476", "Diğer"],
-      "trims": ["Classic", "Elegance", "Avantgarde", "AMG", "Diğer"]
+      "versions": [
+        "E 200 163",
+        "E 240 177",
+        "E 280 231",
+        "E 350 272",
+        "E 200 CDI 136",
+        "E 220 CDI 150",
+        "E 270 CDI 177",
+        "E 320 CDI 211",
+        "E 400 CDI 260",
+        "AMG E 55 476",
+        "Diğer"
+      ],
+      "trims": [
+        "Classic",
+        "Elegance",
+        "Avantgarde",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "E 200 163": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 240 177": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 280 231": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 350 272": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 200 CDI 136": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 220 CDI 150": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 270 CDI 177": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 320 CDI 211": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "E 400 CDI 260": [
+          "Classic",
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "AMG E 55 476": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "E Serisi W212 (2009-2016)",
-      "versions": ["E 200 184", "E 250 204", "E 300 252", "E 350 252", "E 200 CDI 136", "E 220 CDI 170", "E 250 CDI 204", "E 350 CDI 265", "E 400 Hybrid 306", "AMG E 63 525", "AMG E 63 S 585", "Diğer"],
-      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG E 63", "Diğer"]
+      "versions": [
+        "E 200 184",
+        "E 250 204",
+        "E 300 252",
+        "E 350 252",
+        "E 200 CDI 136",
+        "E 220 CDI 170",
+        "E 250 CDI 204",
+        "E 350 CDI 265",
+        "E 400 Hybrid 306",
+        "AMG E 63 525",
+        "AMG E 63 S 585",
+        "Diğer"
+      ],
+      "trims": [
+        "Avantgarde",
+        "Exclusive",
+        "AMG Line",
+        "AMG E 63",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "E 200 184": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 250 204": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 300 252": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 350 252": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 200 CDI 136": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 220 CDI 170": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 250 CDI 204": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 350 CDI 265": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 400 Hybrid 306": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG E 63 525": [
+          "AMG E 63",
+          "Diğer"
+        ],
+        "AMG E 63 S 585": [
+          "AMG E 63",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "E Serisi W213 (2016-)",
-      "versions": ["E 200 204", "E 300 258 4MATIC", "E 300 e PHEV 313", "E 220d 197", "E 300d 265", "AMG E 53 4MATIC+ 435", "Diğer"],
-      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG E 53", "Diğer"]
+      "versions": [
+        "E 200 204",
+        "E 300 258 4MATIC",
+        "E 300 e PHEV 313",
+        "E 220d 197",
+        "E 300d 265",
+        "AMG E 53 4MATIC+ 435",
+        "Diğer"
+      ],
+      "trims": [
+        "Avantgarde",
+        "Exclusive",
+        "AMG Line",
+        "AMG E 53",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "E 200 204": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 300 258 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 300 e PHEV 313": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 220d 197": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "E 300d 265": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG E 53 4MATIC+ 435": [
+          "AMG E 53",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "S Serisi W126 (1979-1991)",
-      "versions": ["280 S 156", "280 SE 156", "300 SE 177", "380 SE 204", "420 SE 218", "500 SE 240", "560 SEL 300", "300 SD 121", "300 SDL 148", "Diğer"],
-      "trims": ["Standart", "SEL (Uzun Şasi)", "Diğer"]
+      "versions": [
+        "280 S 156",
+        "280 SE 156",
+        "300 SE 177",
+        "380 SE 204",
+        "420 SE 218",
+        "500 SE 240",
+        "560 SEL 300",
+        "300 SD 121",
+        "300 SDL 148",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SEL (Uzun Şasi)",
+        "Diğer"
+      ]
     },
     {
       "name": "S Serisi W140 (1991-1998)",
-      "versions": ["S 280 193", "S 320 231", "S 420 279", "S 500 320", "S 600 394", "S 300 Turbodiesel 148", "S 350 Turbodiesel 150", "AMG S 70 394", "Diğer"],
-      "trims": ["Standart", "SEL (Uzun Şasi)", "AMG", "Diğer"]
+      "versions": [
+        "S 280 193",
+        "S 320 231",
+        "S 420 279",
+        "S 500 320",
+        "S 600 394",
+        "S 300 Turbodiesel 148",
+        "S 350 Turbodiesel 150",
+        "AMG S 70 394",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SEL (Uzun Şasi)",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "S 280 193": [
+          "Standart",
+          "SEL (Uzun Şasi)",
+          "Diğer"
+        ],
+        "S 320 231": [
+          "Standart",
+          "SEL (Uzun Şasi)",
+          "Diğer"
+        ],
+        "S 420 279": [
+          "Standart",
+          "SEL (Uzun Şasi)",
+          "Diğer"
+        ],
+        "S 500 320": [
+          "Standart",
+          "SEL (Uzun Şasi)",
+          "Diğer"
+        ],
+        "S 600 394": [
+          "Standart",
+          "SEL (Uzun Şasi)",
+          "Diğer"
+        ],
+        "S 300 Turbodiesel 148": [
+          "Standart",
+          "SEL (Uzun Şasi)",
+          "Diğer"
+        ],
+        "S 350 Turbodiesel 150": [
+          "Standart",
+          "SEL (Uzun Şasi)",
+          "Diğer"
+        ],
+        "AMG S 70 394": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "S Serisi W220 (1998-2005)",
-      "versions": ["S 280 204", "S 320 224", "S 350 245", "S 430 279", "S 500 306", "S 600 367", "S 400 CDI 250", "AMG S 55 360", "AMG S 65 450", "Diğer"],
-      "trims": ["Elegance", "Standart", "AMG", "Diğer"]
+      "versions": [
+        "S 280 204",
+        "S 320 224",
+        "S 350 245",
+        "S 430 279",
+        "S 500 306",
+        "S 600 367",
+        "S 400 CDI 250",
+        "AMG S 55 360",
+        "AMG S 65 450",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Standart",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "S 280 204": [
+          "Elegance",
+          "Standart",
+          "Diğer"
+        ],
+        "S 320 224": [
+          "Elegance",
+          "Standart",
+          "Diğer"
+        ],
+        "S 350 245": [
+          "Elegance",
+          "Standart",
+          "Diğer"
+        ],
+        "S 430 279": [
+          "Elegance",
+          "Standart",
+          "Diğer"
+        ],
+        "S 500 306": [
+          "Elegance",
+          "Standart",
+          "Diğer"
+        ],
+        "S 600 367": [
+          "Elegance",
+          "Standart",
+          "Diğer"
+        ],
+        "S 400 CDI 250": [
+          "Elegance",
+          "Standart",
+          "Diğer"
+        ],
+        "AMG S 55 360": [
+          "AMG",
+          "Diğer"
+        ],
+        "AMG S 65 450": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "S Serisi W221 (2005-2013)",
-      "versions": ["S 280 231", "S 350 272", "S 450 340", "S 500 388", "S 600 517", "S 320 CDI 235", "S 350 CDI 235", "S 400 Hybrid 299", "AMG S 63 544", "AMG S 65 612", "Diğer"],
-      "trims": ["Elegance", "Standart", "AMG Line", "AMG S 63", "AMG S 65", "Diğer"]
+      "versions": [
+        "S 280 231",
+        "S 350 272",
+        "S 450 340",
+        "S 500 388",
+        "S 600 517",
+        "S 320 CDI 235",
+        "S 350 CDI 235",
+        "S 400 Hybrid 299",
+        "AMG S 63 544",
+        "AMG S 65 612",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Standart",
+        "AMG Line",
+        "AMG S 63",
+        "AMG S 65",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "S 280 231": [
+          "Elegance",
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 350 272": [
+          "Elegance",
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 450 340": [
+          "Elegance",
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 500 388": [
+          "Elegance",
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 600 517": [
+          "Elegance",
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 320 CDI 235": [
+          "Elegance",
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 350 CDI 235": [
+          "Elegance",
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 400 Hybrid 299": [
+          "Elegance",
+          "Standart",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG S 63 544": [
+          "AMG S 63",
+          "Diğer"
+        ],
+        "AMG S 65 612": [
+          "AMG S 65",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "S Serisi W222 (2013-2020)",
-      "versions": ["S 400 333", "S 500 455", "S 350d 258", "S 400d 340", "S 500 4MATIC 435", "S 400 Hybrid 333", "S 500 e PHEV 442", "Maybach S 560 469", "Maybach S 650 630", "AMG S 63 612", "AMG S 65 630", "Diğer"],
-      "trims": ["Exclusive", "Luxury", "AMG Line", "Maybach", "AMG S 63", "Diğer"]
+      "versions": [
+        "S 400 333",
+        "S 500 455",
+        "S 350d 258",
+        "S 400d 340",
+        "S 500 4MATIC 435",
+        "S 400 Hybrid 333",
+        "S 500 e PHEV 442",
+        "Maybach S 560 469",
+        "Maybach S 650 630",
+        "AMG S 63 612",
+        "AMG S 65 630",
+        "Diğer"
+      ],
+      "trims": [
+        "Exclusive",
+        "Luxury",
+        "AMG Line",
+        "Maybach",
+        "AMG S 63",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "S 400 333": [
+          "Exclusive",
+          "Luxury",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 500 455": [
+          "Exclusive",
+          "Luxury",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 350d 258": [
+          "Exclusive",
+          "Luxury",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 400d 340": [
+          "Exclusive",
+          "Luxury",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 500 4MATIC 435": [
+          "Exclusive",
+          "Luxury",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 400 Hybrid 333": [
+          "Exclusive",
+          "Luxury",
+          "AMG Line",
+          "Diğer"
+        ],
+        "S 500 e PHEV 442": [
+          "Exclusive",
+          "Luxury",
+          "AMG Line",
+          "Diğer"
+        ],
+        "Maybach S 560 469": [
+          "Maybach",
+          "Diğer"
+        ],
+        "Maybach S 650 630": [
+          "Maybach",
+          "Diğer"
+        ],
+        "AMG S 63 612": [
+          "AMG S 63",
+          "Diğer"
+        ],
+        "AMG S 65 630": [
+          "Exclusive",
+          "Luxury",
+          "AMG Line",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "S Serisi W223 (2020-)",
-      "versions": ["S 400d 330 4MATIC", "S 450d 367 4MATIC", "S 500 435 4MATIC", "S 580 e PHEV 510 4MATIC", "Maybach S 580 4MATIC", "AMG S 63 E PERFORMANCE 802", "Diğer"],
-      "trims": ["Exclusive", "Luxury", "Maybach", "AMG S 63", "Diğer"]
+      "versions": [
+        "S 400d 330 4MATIC",
+        "S 450d 367 4MATIC",
+        "S 500 435 4MATIC",
+        "S 580 e PHEV 510 4MATIC",
+        "Maybach S 580 4MATIC",
+        "AMG S 63 E PERFORMANCE 802",
+        "Diğer"
+      ],
+      "trims": [
+        "Exclusive",
+        "Luxury",
+        "Maybach",
+        "AMG S 63",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "S 400d 330 4MATIC": [
+          "Exclusive",
+          "Luxury",
+          "Diğer"
+        ],
+        "S 450d 367 4MATIC": [
+          "Exclusive",
+          "Luxury",
+          "Diğer"
+        ],
+        "S 500 435 4MATIC": [
+          "Exclusive",
+          "Luxury",
+          "Diğer"
+        ],
+        "S 580 e PHEV 510 4MATIC": [
+          "Exclusive",
+          "Luxury",
+          "Diğer"
+        ],
+        "Maybach S 580 4MATIC": [
+          "Maybach",
+          "Diğer"
+        ],
+        "AMG S 63 E PERFORMANCE 802": [
+          "AMG S 63",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "SLK R170 (1996-2004)",
-      "versions": ["SLK 200 Kompressor 163", "SLK 230 Kompressor 197", "SLK 320 218", "AMG SLK 32 354", "Diğer"],
-      "trims": ["Standart", "AMG", "Diğer"]
+      "versions": [
+        "SLK 200 Kompressor 163",
+        "SLK 230 Kompressor 197",
+        "SLK 320 218",
+        "AMG SLK 32 354",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "SLK 200 Kompressor 163": [
+          "Standart",
+          "Diğer"
+        ],
+        "SLK 230 Kompressor 197": [
+          "Standart",
+          "Diğer"
+        ],
+        "SLK 320 218": [
+          "Standart",
+          "Diğer"
+        ],
+        "AMG SLK 32 354": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "SLK R171 (2004-2011)",
-      "versions": ["SLK 200 Kompressor 163", "SLK 280 231", "SLK 350 272", "AMG SLK 55 360", "Diğer"],
-      "trims": ["Standart", "AMG Line", "Diğer"]
+      "versions": [
+        "SLK 200 Kompressor 163",
+        "SLK 280 231",
+        "SLK 350 272",
+        "AMG SLK 55 360",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "AMG Line",
+        "Diğer"
+      ]
     },
     {
       "name": "SLK/SLC R172 (2011-2020)",
-      "versions": ["SLK 200 184", "SLC 200 184", "SLK 250 204", "SLC 300 245", "SLK 350 306", "AMG SLK 55 421", "Diğer"],
-      "trims": ["Standart", "AMG Line", "Diğer"]
+      "versions": [
+        "SLK 200 184",
+        "SLC 200 184",
+        "SLK 250 204",
+        "SLC 300 245",
+        "SLK 350 306",
+        "AMG SLK 55 421",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "AMG Line",
+        "Diğer"
+      ]
     },
     {
       "name": "CLA C117 (2013-2019)",
-      "versions": ["CLA 180 122", "CLA 200 156", "CLA 220 CDI 177", "CLA 200 CDI 136", "AMG CLA 45 360", "AMG CLA 45 381", "Diğer"],
-      "trims": ["Style", "Urban", "AMG Line", "AMG CLA 45", "Diğer"]
+      "versions": [
+        "CLA 180 122",
+        "CLA 200 156",
+        "CLA 220 CDI 177",
+        "CLA 200 CDI 136",
+        "AMG CLA 45 360",
+        "AMG CLA 45 381",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Urban",
+        "AMG Line",
+        "AMG CLA 45",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "CLA 180 122": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLA 200 156": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLA 220 CDI 177": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLA 200 CDI 136": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG CLA 45 360": [
+          "AMG CLA 45",
+          "Diğer"
+        ],
+        "AMG CLA 45 381": [
+          "AMG CLA 45",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "CLA C118 (2019-)",
-      "versions": ["CLA 180 136", "CLA 200 163", "CLA 220 190 4MATIC", "CLA 180d 116", "CLA 200d 150", "CLA 250 e PHEV 218", "AMG CLA 35 4MATIC 306", "AMG CLA 45 S 4MATIC+ 421", "Diğer"],
-      "trims": ["Progressive", "AMG Line", "AMG CLA 35", "AMG CLA 45 S", "Diğer"]
+      "versions": [
+        "CLA 180 136",
+        "CLA 200 163",
+        "CLA 220 190 4MATIC",
+        "CLA 180d 116",
+        "CLA 200d 150",
+        "CLA 250 e PHEV 218",
+        "AMG CLA 35 4MATIC 306",
+        "AMG CLA 45 S 4MATIC+ 421",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "AMG Line",
+        "AMG CLA 35",
+        "AMG CLA 45 S",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "CLA 180 136": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLA 200 163": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLA 220 190 4MATIC": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLA 180d 116": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLA 200d 150": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "CLA 250 e PHEV 218": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG CLA 35 4MATIC 306": [
+          "AMG CLA 35",
+          "Diğer"
+        ],
+        "AMG CLA 45 S 4MATIC+ 421": [
+          "AMG CLA 45 S",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "GLA X156 (2014-2020)",
-      "versions": ["GLA 180 122", "GLA 200 156", "GLA 220 4MATIC 177", "GLA 200 CDI 136", "GLA 220 CDI 177", "AMG GLA 45 360", "AMG GLA 45 381", "Diğer"],
-      "trims": ["Style", "Urban", "AMG Line", "AMG GLA 45", "Diğer"]
+      "versions": [
+        "GLA 180 122",
+        "GLA 200 156",
+        "GLA 220 4MATIC 177",
+        "GLA 200 CDI 136",
+        "GLA 220 CDI 177",
+        "AMG GLA 45 360",
+        "AMG GLA 45 381",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "Urban",
+        "AMG Line",
+        "AMG GLA 45",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "GLA 180 122": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLA 200 156": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLA 220 4MATIC 177": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLA 200 CDI 136": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLA 220 CDI 177": [
+          "Style",
+          "Urban",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG GLA 45 360": [
+          "AMG GLA 45",
+          "Diğer"
+        ],
+        "AMG GLA 45 381": [
+          "AMG GLA 45",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "GLA H247 (2020-)",
-      "versions": ["GLA 180 136", "GLA 200 163", "GLA 220 4MATIC 190", "GLA 180d 116", "GLA 200d 150", "GLA 250 e PHEV 218", "AMG GLA 35 4MATIC 306", "AMG GLA 45 S 4MATIC+ 421", "Diğer"],
-      "trims": ["Progressive", "AMG Line", "AMG GLA 35", "AMG GLA 45 S", "Diğer"]
+      "versions": [
+        "GLA 180 136",
+        "GLA 200 163",
+        "GLA 220 4MATIC 190",
+        "GLA 180d 116",
+        "GLA 200d 150",
+        "GLA 250 e PHEV 218",
+        "AMG GLA 35 4MATIC 306",
+        "AMG GLA 45 S 4MATIC+ 421",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "AMG Line",
+        "AMG GLA 35",
+        "AMG GLA 45 S",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "GLA 180 136": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLA 200 163": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLA 220 4MATIC 190": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLA 180d 116": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLA 200d 150": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLA 250 e PHEV 218": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG GLA 35 4MATIC 306": [
+          "AMG GLA 35",
+          "Diğer"
+        ],
+        "AMG GLA 45 S 4MATIC+ 421": [
+          "AMG GLA 45 S",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "GLB",
-      "versions": ["GLB 180 136", "GLB 200 163", "GLB 200d 150", "GLB 220d 190 4MATIC", "AMG GLB 35 4MATIC 306", "Diğer"],
-      "trims": ["Progressive", "AMG Line", "AMG GLB 35", "Diğer"]
+      "versions": [
+        "GLB 180 136",
+        "GLB 200 163",
+        "GLB 200d 150",
+        "GLB 220d 190 4MATIC",
+        "AMG GLB 35 4MATIC 306",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "AMG Line",
+        "AMG GLB 35",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "GLB 180 136": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLB 200 163": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLB 200d 150": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLB 220d 190 4MATIC": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG GLB 35 4MATIC 306": [
+          "AMG GLB 35",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "GLK X204 (2008-2015)",
-      "versions": ["GLK 200 CDI 143", "GLK 220 CDI 170", "GLK 250 204", "GLK 280 231", "GLK 300 231", "GLK 350 CDI 265", "Diğer"],
-      "trims": ["Standart", "Avantgarde", "Diğer"]
+      "versions": [
+        "GLK 200 CDI 143",
+        "GLK 220 CDI 170",
+        "GLK 250 204",
+        "GLK 280 231",
+        "GLK 300 231",
+        "GLK 350 CDI 265",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Avantgarde",
+        "Diğer"
+      ]
     },
     {
       "name": "GLC",
-      "versions": ["GLC 200 204", "GLC 300 258 4MATIC", "GLC 300 e PHEV 313 4MATIC", "GLC 220d 197 4MATIC", "GLC 300d 270 4MATIC", "AMG GLC 43 4MATIC 408", "AMG GLC 63 S e Performance 680", "Diğer"],
-      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG GLC 43", "AMG GLC 63 S", "Diğer"]
+      "versions": [
+        "GLC 200 204",
+        "GLC 300 258 4MATIC",
+        "GLC 300 e PHEV 313 4MATIC",
+        "GLC 220d 197 4MATIC",
+        "GLC 300d 270 4MATIC",
+        "AMG GLC 43 4MATIC 408",
+        "AMG GLC 63 S e Performance 680",
+        "Diğer"
+      ],
+      "trims": [
+        "Avantgarde",
+        "Exclusive",
+        "AMG Line",
+        "AMG GLC 43",
+        "AMG GLC 63 S",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "GLC 200 204": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLC 300 258 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLC 300 e PHEV 313 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLC 220d 197 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLC 300d 270 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG GLC 43 4MATIC 408": [
+          "AMG GLC 43",
+          "Diğer"
+        ],
+        "AMG GLC 63 S e Performance 680": [
+          "AMG GLC 63 S",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "M Serisi W163 (1997-2005)",
-      "versions": ["ML 230 150", "ML 270 CDI 163", "ML 320 218", "ML 350 245", "ML 400 CDI 250", "ML 500 306", "AMG ML 55 347", "Diğer"],
-      "trims": ["Standart", "Elegance", "AMG", "Diğer"]
+      "versions": [
+        "ML 230 150",
+        "ML 270 CDI 163",
+        "ML 320 218",
+        "ML 350 245",
+        "ML 400 CDI 250",
+        "ML 500 306",
+        "AMG ML 55 347",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Elegance",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "ML 230 150": [
+          "Standart",
+          "Elegance",
+          "Diğer"
+        ],
+        "ML 270 CDI 163": [
+          "Standart",
+          "Elegance",
+          "Diğer"
+        ],
+        "ML 320 218": [
+          "Standart",
+          "Elegance",
+          "Diğer"
+        ],
+        "ML 350 245": [
+          "Standart",
+          "Elegance",
+          "Diğer"
+        ],
+        "ML 400 CDI 250": [
+          "Standart",
+          "Elegance",
+          "Diğer"
+        ],
+        "ML 500 306": [
+          "Standart",
+          "Elegance",
+          "Diğer"
+        ],
+        "AMG ML 55 347": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "M Serisi W164 (2005-2011)",
-      "versions": ["ML 280 CDI 190", "ML 320 CDI 224", "ML 350 272", "ML 420 CDI 306", "ML 500 388", "ML 63 AMG 510", "Diğer"],
-      "trims": ["Elegance", "Avantgarde", "AMG", "Diğer"]
+      "versions": [
+        "ML 280 CDI 190",
+        "ML 320 CDI 224",
+        "ML 350 272",
+        "ML 420 CDI 306",
+        "ML 500 388",
+        "ML 63 AMG 510",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Avantgarde",
+        "AMG",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "ML 280 CDI 190": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "ML 320 CDI 224": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "ML 350 272": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "ML 420 CDI 306": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "ML 500 388": [
+          "Elegance",
+          "Avantgarde",
+          "Diğer"
+        ],
+        "ML 63 AMG 510": [
+          "AMG",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "M Serisi W166 (2011-2015)",
-      "versions": ["ML 250 CDI 204", "ML 350 306", "ML 350 CDI 258", "ML 400 367", "ML 500 408", "AMG ML 63 557", "Diğer"],
-      "trims": ["Elegance", "Avantgarde", "AMG Line", "Diğer"]
+      "versions": [
+        "ML 250 CDI 204",
+        "ML 350 306",
+        "ML 350 CDI 258",
+        "ML 400 367",
+        "ML 500 408",
+        "AMG ML 63 557",
+        "Diğer"
+      ],
+      "trims": [
+        "Elegance",
+        "Avantgarde",
+        "AMG Line",
+        "Diğer"
+      ]
     },
     {
       "name": "GLE",
-      "versions": ["GLE 300d 245 4MATIC", "GLE 350d 272 4MATIC", "GLE 450 367 4MATIC", "GLE 350 e PHEV 333 4MATIC", "AMG GLE 53 4MATIC+ 435", "Diğer"],
-      "trims": ["Avantgarde", "Exclusive", "AMG Line", "AMG GLE 53", "Diğer"]
+      "versions": [
+        "GLE 300d 245 4MATIC",
+        "GLE 350d 272 4MATIC",
+        "GLE 450 367 4MATIC",
+        "GLE 350 e PHEV 333 4MATIC",
+        "AMG GLE 53 4MATIC+ 435",
+        "Diğer"
+      ],
+      "trims": [
+        "Avantgarde",
+        "Exclusive",
+        "AMG Line",
+        "AMG GLE 53",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "GLE 300d 245 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLE 350d 272 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLE 450 367 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "GLE 350 e PHEV 333 4MATIC": [
+          "Avantgarde",
+          "Exclusive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG GLE 53 4MATIC+ 435": [
+          "AMG GLE 53",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "GL Serisi X164 (2006-2012)",
-      "versions": ["GL 320 CDI 224", "GL 350 CDI 235", "GL 420 CDI 306", "GL 450 340", "GL 500 388", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "GL 320 CDI 224",
+        "GL 350 CDI 235",
+        "GL 420 CDI 306",
+        "GL 450 340",
+        "GL 500 388",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "GL Serisi X166 (2012-2015)",
-      "versions": ["GL 350 CDI 258", "GL 350 Bluetec 258", "GL 400 333", "GL 500 435", "AMG GL 63 557", "Diğer"],
-      "trims": ["Standart", "AMG Line", "Diğer"]
+      "versions": [
+        "GL 350 CDI 258",
+        "GL 350 Bluetec 258",
+        "GL 400 333",
+        "GL 500 435",
+        "AMG GL 63 557",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "AMG Line",
+        "Diğer"
+      ]
     },
     {
       "name": "GLS",
-      "versions": ["GLS 400d 330 4MATIC", "GLS 450d 367 4MATIC", "GLS 600 Maybach 550 4MATIC", "AMG GLS 63 4MATIC+ 630", "Diğer"],
-      "trims": ["Exclusive", "Maybach", "AMG GLS 63", "Diğer"]
+      "versions": [
+        "GLS 400d 330 4MATIC",
+        "GLS 450d 367 4MATIC",
+        "GLS 600 Maybach 550 4MATIC",
+        "AMG GLS 63 4MATIC+ 630",
+        "Diğer"
+      ],
+      "trims": [
+        "Exclusive",
+        "Maybach",
+        "AMG GLS 63",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "GLS 400d 330 4MATIC": [
+          "Exclusive",
+          "Diğer"
+        ],
+        "GLS 450d 367 4MATIC": [
+          "Exclusive",
+          "Diğer"
+        ],
+        "GLS 600 Maybach 550 4MATIC": [
+          "Maybach",
+          "Diğer"
+        ],
+        "AMG GLS 63 4MATIC+ 630": [
+          "AMG GLS 63",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "G Serisi",
-      "versions": ["G 400d 330 4MATIC", "G 500 422 4MATIC", "AMG G 63 585 4MATIC", "Diğer"],
-      "trims": ["Professional", "Exclusive", "AMG G 63", "Diğer"]
+      "versions": [
+        "G 400d 330 4MATIC",
+        "G 500 422 4MATIC",
+        "AMG G 63 585 4MATIC",
+        "Diğer"
+      ],
+      "trims": [
+        "Professional",
+        "Exclusive",
+        "AMG G 63",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "G 400d 330 4MATIC": [
+          "Professional",
+          "Exclusive",
+          "Diğer"
+        ],
+        "G 500 422 4MATIC": [
+          "Professional",
+          "Exclusive",
+          "Diğer"
+        ],
+        "AMG G 63 585 4MATIC": [
+          "AMG G 63",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "V Serisi (2014-)",
-      "versions": ["V 200 d 120", "V 220 d 163", "V 250 d 190", "V 300 d 239", "V 250 4MATIC 190", "Diğer"],
-      "trims": ["Standart", "Avantgarde", "Diğer"]
+      "versions": [
+        "V 200 d 120",
+        "V 220 d 163",
+        "V 250 d 190",
+        "V 300 d 239",
+        "V 250 4MATIC 190",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Avantgarde",
+        "Diğer"
+      ]
     },
     {
       "name": "EQA",
-      "versions": ["EQA 250 190 66.5kWh", "EQA 250+ 190 70.5kWh", "EQA 300 4MATIC 228", "EQA 350 4MATIC 292", "Diğer"],
-      "trims": ["Progressive", "AMG Line", "Diğer"]
+      "versions": [
+        "EQA 250 190 66.5kWh",
+        "EQA 250+ 190 70.5kWh",
+        "EQA 300 4MATIC 228",
+        "EQA 350 4MATIC 292",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "AMG Line",
+        "Diğer"
+      ]
     },
     {
       "name": "EQB",
-      "versions": ["EQB 250 190 66.5kWh", "EQB 300 4MATIC 228", "EQB 350 4MATIC 292", "Diğer"],
-      "trims": ["Progressive", "AMG Line", "Diğer"]
+      "versions": [
+        "EQB 250 190 66.5kWh",
+        "EQB 300 4MATIC 228",
+        "EQB 350 4MATIC 292",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "AMG Line",
+        "Diğer"
+      ]
     },
     {
       "name": "EQE",
-      "versions": ["EQE 300 245 90.6kWh", "EQE 350 292 90.6kWh", "EQE 350+ 292 96.1kWh", "EQE 500 4MATIC 408", "AMG EQE 53 4MATIC+ 687", "Diğer"],
-      "trims": ["Progressive", "AMG Line", "AMG EQE 53", "Diğer"]
+      "versions": [
+        "EQE 300 245 90.6kWh",
+        "EQE 350 292 90.6kWh",
+        "EQE 350+ 292 96.1kWh",
+        "EQE 500 4MATIC 408",
+        "AMG EQE 53 4MATIC+ 687",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "AMG Line",
+        "AMG EQE 53",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "EQE 300 245 90.6kWh": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "EQE 350 292 90.6kWh": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "EQE 350+ 292 96.1kWh": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "EQE 500 4MATIC 408": [
+          "Progressive",
+          "AMG Line",
+          "Diğer"
+        ],
+        "AMG EQE 53 4MATIC+ 687": [
+          "AMG EQE 53",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "EQS",
-      "versions": ["EQS 450+ 333 108.4kWh", "EQS 500 4MATIC 449", "AMG EQS 53 4MATIC+ 761", "Diğer"],
-      "trims": ["Progressive", "Luxury", "Maybach EQS 680", "AMG EQS 53", "Diğer"]
+      "versions": [
+        "EQS 450+ 333 108.4kWh",
+        "EQS 500 4MATIC 449",
+        "AMG EQS 53 4MATIC+ 761",
+        "Diğer"
+      ],
+      "trims": [
+        "Progressive",
+        "Luxury",
+        "Maybach EQS 680",
+        "AMG EQS 53",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "EQS 450+ 333 108.4kWh": [
+          "Progressive",
+          "Luxury",
+          "Maybach EQS 680",
+          "Diğer"
+        ],
+        "EQS 500 4MATIC 449": [
+          "Progressive",
+          "Luxury",
+          "Maybach EQS 680",
+          "Diğer"
+        ],
+        "AMG EQS 53 4MATIC+ 761": [
+          "AMG EQS 53",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "AMG GT",
-      "versions": ["AMG GT 43 476 4MATIC+", "AMG GT 53 530 4MATIC+", "AMG GT 63 4MATIC+", "AMG GT 55 4MATIC+", "Diğer"],
-      "trims": ["4-Kapı Coupe", "Roadster", "Diğer"]
+      "versions": [
+        "AMG GT 43 476 4MATIC+",
+        "AMG GT 53 530 4MATIC+",
+        "AMG GT 63 4MATIC+",
+        "AMG GT 55 4MATIC+",
+        "Diğer"
+      ],
+      "trims": [
+        "4-Kapı Coupe",
+        "Roadster",
+        "Diğer"
+      ]
     },
     {
       "name": "SL",
-      "versions": ["SL 43 381", "SL 55 4MATIC+ 476", "SL 63 4MATIC+ 585", "Diğer"],
-      "trims": ["AMG Line", "Premium", "Diğer"]
+      "versions": [
+        "SL 43 381",
+        "SL 55 4MATIC+ 476",
+        "SL 63 4MATIC+ 585",
+        "Diğer"
+      ],
+      "trims": [
+        "AMG Line",
+        "Premium",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

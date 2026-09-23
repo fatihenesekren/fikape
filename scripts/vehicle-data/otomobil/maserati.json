@@ -3,63 +3,319 @@
   "models": [
     {
       "name": "Biturbo (1982-1994)",
-      "versions": ["2.0 Turbo 180", "2.5 V6 Turbo 185", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "2.0 Turbo 180",
+        "2.5 V6 Turbo 185",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "3200 GT / Coupé-Spyder (1998-2007)",
-      "versions": ["3.2 V8 Twin-Turbo 370", "4200 GT 4.2 V8 390", "Diğer"],
-      "trims": ["Standart", "GT", "Diğer"]
+      "versions": [
+        "3.2 V8 Twin-Turbo 370",
+        "4200 GT 4.2 V8 390",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GT",
+        "Diğer"
+      ]
     },
     {
       "name": "Quattroporte (1994-2001)",
-      "versions": ["2.8 V6 Twin-Turbo 284", "3.2 V8 Twin-Turbo 335", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "2.8 V6 Twin-Turbo 284",
+        "3.2 V8 Twin-Turbo 335",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Quattroporte (2003-2012)",
-      "versions": ["4.2 V8 400", "4.7 V8 425", "GTS 4.7 V8 433", "Diğer"],
-      "trims": ["Standart", "Sport GT", "GTS", "Diğer"]
+      "versions": [
+        "4.2 V8 400",
+        "4.7 V8 425",
+        "GTS 4.7 V8 433",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Sport GT",
+        "GTS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "4.2 V8 400": [
+          "Standart",
+          "Sport GT",
+          "Diğer"
+        ],
+        "4.7 V8 425": [
+          "Standart",
+          "Sport GT",
+          "Diğer"
+        ],
+        "GTS 4.7 V8 433": [
+          "GTS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Quattroporte (2013-2023)",
-      "versions": ["3.0 V6 Twin-Turbo 350", "3.0 V6 Twin-Turbo 410", "GTS 3.8 V8 530", "Diesel 3.0 V6 275", "Diğer"],
-      "trims": ["Standart", "GT", "GTS", "Diğer"]
+      "versions": [
+        "3.0 V6 Twin-Turbo 350",
+        "3.0 V6 Twin-Turbo 410",
+        "GTS 3.8 V8 530",
+        "Diesel 3.0 V6 275",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GT",
+        "GTS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "3.0 V6 Twin-Turbo 350": [
+          "Standart",
+          "GT",
+          "Diğer"
+        ],
+        "3.0 V6 Twin-Turbo 410": [
+          "Standart",
+          "GT",
+          "Diğer"
+        ],
+        "GTS 3.8 V8 530": [
+          "GTS",
+          "Diğer"
+        ],
+        "Diesel 3.0 V6 275": [
+          "Standart",
+          "GT",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Ghibli",
-      "versions": ["2.0 Hybrid 330", "3.0 V6 350", "3.0 V6 430 Q4 AWD", "Trofeo 3.8 V8 580", "Diğer"],
-      "trims": ["Modena", "GT", "Trofeo", "Diğer"]
+      "versions": [
+        "2.0 Hybrid 330",
+        "3.0 V6 350",
+        "3.0 V6 430 Q4 AWD",
+        "Trofeo 3.8 V8 580",
+        "Diğer"
+      ],
+      "trims": [
+        "Modena",
+        "GT",
+        "Trofeo",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "2.0 Hybrid 330": [
+          "Modena",
+          "GT",
+          "Diğer"
+        ],
+        "3.0 V6 350": [
+          "Modena",
+          "GT",
+          "Diğer"
+        ],
+        "3.0 V6 430 Q4 AWD": [
+          "Modena",
+          "GT",
+          "Diğer"
+        ],
+        "Trofeo 3.8 V8 580": [
+          "Trofeo",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Levante",
-      "versions": ["2.0 Hybrid 330", "3.0 V6 350", "3.0 V6 430 Q4 AWD", "Trofeo 3.8 V8 580", "Diğer"],
-      "trims": ["Modena", "GT", "Trofeo", "Diğer"]
+      "versions": [
+        "2.0 Hybrid 330",
+        "3.0 V6 350",
+        "3.0 V6 430 Q4 AWD",
+        "Trofeo 3.8 V8 580",
+        "Diğer"
+      ],
+      "trims": [
+        "Modena",
+        "GT",
+        "Trofeo",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "2.0 Hybrid 330": [
+          "Modena",
+          "GT",
+          "Diğer"
+        ],
+        "3.0 V6 350": [
+          "Modena",
+          "GT",
+          "Diğer"
+        ],
+        "3.0 V6 430 Q4 AWD": [
+          "Modena",
+          "GT",
+          "Diğer"
+        ],
+        "Trofeo 3.8 V8 580": [
+          "Trofeo",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "GranTurismo",
-      "versions": ["Folgore EV AWD 761", "Modena 3.0 V6 490", "Trofeo 3.0 V6 550", "Diğer"],
-      "trims": ["Modena", "Trofeo", "Folgore", "Diğer"]
+      "versions": [
+        "Folgore EV AWD 761",
+        "Modena 3.0 V6 490",
+        "Trofeo 3.0 V6 550",
+        "Diğer"
+      ],
+      "trims": [
+        "Modena",
+        "Trofeo",
+        "Folgore",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Folgore EV AWD 761": [
+          "Folgore",
+          "Diğer"
+        ],
+        "Modena 3.0 V6 490": [
+          "Modena",
+          "Diğer"
+        ],
+        "Trofeo 3.0 V6 550": [
+          "Trofeo",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "GranCabrio",
-      "versions": ["Folgore EV AWD 761", "Modena 3.0 V6 490", "Trofeo 3.0 V6 550", "Diğer"],
-      "trims": ["Modena", "Trofeo", "Folgore", "Diğer"]
+      "versions": [
+        "Folgore EV AWD 761",
+        "Modena 3.0 V6 490",
+        "Trofeo 3.0 V6 550",
+        "Diğer"
+      ],
+      "trims": [
+        "Modena",
+        "Trofeo",
+        "Folgore",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Folgore EV AWD 761": [
+          "Folgore",
+          "Diğer"
+        ],
+        "Modena 3.0 V6 490": [
+          "Modena",
+          "Diğer"
+        ],
+        "Trofeo 3.0 V6 550": [
+          "Trofeo",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Grecale",
-      "versions": ["2.0 Hybrid 300", "MHEV 330", "GT 3.0 V6 530", "Folgore EV 557", "Diğer"],
-      "trims": ["GT", "Modena", "Trofeo", "Folgore", "Diğer"]
+      "versions": [
+        "2.0 Hybrid 300",
+        "MHEV 330",
+        "GT 3.0 V6 530",
+        "Folgore EV 557",
+        "Diğer"
+      ],
+      "trims": [
+        "GT",
+        "Modena",
+        "Trofeo",
+        "Folgore",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "2.0 Hybrid 300": [
+          "GT",
+          "Modena",
+          "Trofeo",
+          "Diğer"
+        ],
+        "MHEV 330": [
+          "GT",
+          "Modena",
+          "Trofeo",
+          "Diğer"
+        ],
+        "GT 3.0 V6 530": [
+          "GT",
+          "Modena",
+          "Trofeo",
+          "Diğer"
+        ],
+        "Folgore EV 557": [
+          "Folgore",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "MC20",
-      "versions": ["3.0 Nettuno V6 630 Coupé", "3.0 Nettuno V6 630 Cielo", "Folgore EV AWD 761", "Diğer"],
-      "trims": ["Coupé", "Cielo", "Folgore", "Diğer"]
+      "versions": [
+        "3.0 Nettuno V6 630 Coupé",
+        "3.0 Nettuno V6 630 Cielo",
+        "Folgore EV AWD 761",
+        "Diğer"
+      ],
+      "trims": [
+        "Coupé",
+        "Cielo",
+        "Folgore",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "3.0 Nettuno V6 630 Coupé": [
+          "Coupé",
+          "Diğer"
+        ],
+        "3.0 Nettuno V6 630 Cielo": [
+          "Cielo",
+          "Diğer"
+        ],
+        "Folgore EV AWD 761": [
+          "Folgore",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

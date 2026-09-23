@@ -3,33 +3,150 @@
   "models": [
     {
       "name": "Model 3",
-      "versions": ["Standard Range RWD 283", "Long Range AWD 358", "Performance AWD 513", "Highland RWD 325", "Highland Long Range AWD 366", "Diğer"],
-      "trims": ["Standart", "Long Range", "Performance", "Diğer"]
+      "versions": [
+        "Standard Range RWD 283",
+        "Long Range AWD 358",
+        "Performance AWD 513",
+        "Highland RWD 325",
+        "Highland Long Range AWD 366",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Long Range",
+        "Performance",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Standard Range RWD 283": [
+          "Standart",
+          "Diğer"
+        ],
+        "Long Range AWD 358": [
+          "Long Range",
+          "Diğer"
+        ],
+        "Performance AWD 513": [
+          "Performance",
+          "Diğer"
+        ],
+        "Highland RWD 325": [
+          "Standart",
+          "Diğer"
+        ],
+        "Highland Long Range AWD 366": [
+          "Long Range",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Model S",
-      "versions": ["Long Range AWD 670", "Plaid AWD 1020", "Diğer"],
-      "trims": ["Long Range", "Plaid", "Diğer"]
+      "versions": [
+        "Long Range AWD 670",
+        "Plaid AWD 1020",
+        "Diğer"
+      ],
+      "trims": [
+        "Long Range",
+        "Plaid",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Long Range AWD 670": [
+          "Long Range",
+          "Diğer"
+        ],
+        "Plaid AWD 1020": [
+          "Plaid",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Model X",
-      "versions": ["Long Range AWD 670", "Plaid AWD 1020", "Diğer"],
-      "trims": ["Long Range", "Plaid", "Diğer"]
+      "versions": [
+        "Long Range AWD 670",
+        "Plaid AWD 1020",
+        "Diğer"
+      ],
+      "trims": [
+        "Long Range",
+        "Plaid",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Long Range AWD 670": [
+          "Long Range",
+          "Diğer"
+        ],
+        "Plaid AWD 1020": [
+          "Plaid",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Model Y",
-      "versions": ["Standard Range RWD 283", "Long Range AWD 533", "Performance AWD 534", "Juniper RWD 340", "Juniper Long Range AWD 507", "Diğer"],
-      "trims": ["Standart", "Long Range", "Performance", "Diğer"]
+      "versions": [
+        "Standard Range RWD 283",
+        "Long Range AWD 533",
+        "Performance AWD 534",
+        "Juniper RWD 340",
+        "Juniper Long Range AWD 507",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Long Range",
+        "Performance",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "Standard Range RWD 283": [
+          "Standart",
+          "Diğer"
+        ],
+        "Long Range AWD 533": [
+          "Long Range",
+          "Diğer"
+        ],
+        "Performance AWD 534": [
+          "Performance",
+          "Diğer"
+        ],
+        "Juniper RWD 340": [
+          "Standart",
+          "Diğer"
+        ],
+        "Juniper Long Range AWD 507": [
+          "Long Range",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Cybertruck",
-      "versions": ["RWD 335", "AWD 600", "Cyberbeast AWD 845", "Diğer"],
-      "trims": ["Foundation Series", "Standart", "Diğer"]
+      "versions": [
+        "RWD 335",
+        "AWD 600",
+        "Cyberbeast AWD 845",
+        "Diğer"
+      ],
+      "trims": [
+        "Foundation Series",
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

@@ -1,11 +1,89 @@
 {
   "make": "Super73",
   "models": [
-    { "name": "S2 (2020-)", "versions": ["750W 45 km/h 960Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "R Brooklyn (2021-)", "versions": ["750W 45 km/h 960Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "ZX (Giriş Segment, 2021-)", "versions": ["500W 32 km/h 614Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "RX (Adventure, 2020-)", "versions": ["750W 45 km/h 1008Wh", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Z Miami (Kompakt)", "versions": ["500W 32 km/h Core", "500W 32 km/h SE", "500W 32 km/h Legacy", "Diğer"], "trims": ["Core", "SE", "Legacy", "Limited Edition", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "S2 (2020-)",
+      "versions": [
+        "750W 45 km/h 960Wh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "R Brooklyn (2021-)",
+      "versions": [
+        "750W 45 km/h 960Wh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "ZX (Giriş Segment, 2021-)",
+      "versions": [
+        "500W 32 km/h 614Wh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "RX (Adventure, 2020-)",
+      "versions": [
+        "750W 45 km/h 1008Wh",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Z Miami (Kompakt)",
+      "versions": [
+        "500W 32 km/h Core",
+        "500W 32 km/h SE",
+        "500W 32 km/h Legacy",
+        "Diğer"
+      ],
+      "trims": [
+        "Core",
+        "SE",
+        "Legacy",
+        "Limited Edition",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "500W 32 km/h Core": [
+          "Core",
+          "Diğer"
+        ],
+        "500W 32 km/h SE": [
+          "SE",
+          "Limited Edition",
+          "Diğer"
+        ],
+        "500W 32 km/h Legacy": [
+          "Legacy",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

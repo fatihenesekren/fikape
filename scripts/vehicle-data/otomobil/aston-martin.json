@@ -3,58 +3,242 @@
   "models": [
     {
       "name": "DB7 (1994-2003)",
-      "versions": ["3.2 Supercharged 335", "Vantage 6.0 V12 420", "Volante", "Diğer"],
-      "trims": ["Standart", "Vantage", "Diğer"]
+      "versions": [
+        "3.2 Supercharged 335",
+        "Vantage 6.0 V12 420",
+        "Volante",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Vantage",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "3.2 Supercharged 335": [
+          "Standart",
+          "Diğer"
+        ],
+        "Vantage 6.0 V12 420": [
+          "Vantage",
+          "Diğer"
+        ],
+        "Volante": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Vanquish (2001-2007)",
-      "versions": ["6.0 V12 460", "S 6.0 V12 520", "Diğer"],
-      "trims": ["Standart", "S", "Diğer"]
+      "versions": [
+        "6.0 V12 460",
+        "S 6.0 V12 520",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
     },
     {
       "name": "V8 Vantage (2005-2017)",
-      "versions": ["4.3 V8 380", "4.7 V8 420", "S 4.7 V8 430", "N430 4.7 V8 430", "Roadster", "Diğer"],
-      "trims": ["Standart", "S", "N430", "Diğer"]
+      "versions": [
+        "4.3 V8 380",
+        "4.7 V8 420",
+        "S 4.7 V8 430",
+        "N430 4.7 V8 430",
+        "Roadster",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "N430",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "4.3 V8 380": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "4.7 V8 420": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "S 4.7 V8 430": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "N430 4.7 V8 430": [
+          "N430",
+          "Diğer"
+        ],
+        "Roadster": [
+          "Standart",
+          "S",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "DB9 (2004-2016)",
-      "versions": ["6.0 V12 470", "6.0 V12 510 GT", "Volante 6.0 V12", "Diğer"],
-      "trims": ["Standart", "GT", "Carbon Edition", "Diğer"]
+      "versions": [
+        "6.0 V12 470",
+        "6.0 V12 510 GT",
+        "Volante 6.0 V12",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GT",
+        "Carbon Edition",
+        "Diğer"
+      ]
     },
     {
       "name": "Rapide (2010-2020)",
-      "versions": ["6.0 V12 470", "S 6.0 V12 552", "AMR 6.0 V12 595", "Diğer"],
-      "trims": ["Standart", "S", "AMR", "Diğer"]
+      "versions": [
+        "6.0 V12 470",
+        "S 6.0 V12 552",
+        "AMR 6.0 V12 595",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "AMR",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "6.0 V12 470": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "S 6.0 V12 552": [
+          "Standart",
+          "S",
+          "Diğer"
+        ],
+        "AMR 6.0 V12 595": [
+          "AMR",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Vanquish (2012-2018)",
-      "versions": ["6.0 V12 565", "S 6.0 V12 595", "Volante", "Diğer"],
-      "trims": ["Standart", "S", "Diğer"]
+      "versions": [
+        "6.0 V12 565",
+        "S 6.0 V12 595",
+        "Volante",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "S",
+        "Diğer"
+      ]
     },
     {
       "name": "DB11 (2016-)",
-      "versions": ["4.0 V8 510", "5.2 V12 630", "Volante 4.0 V8 510", "Diğer"],
-      "trims": ["Standart", "AMR", "Diğer"]
+      "versions": [
+        "4.0 V8 510",
+        "5.2 V12 630",
+        "Volante 4.0 V8 510",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "AMR",
+        "Diğer"
+      ]
     },
     {
       "name": "Vantage (2018-)",
-      "versions": ["4.0 V8 510", "4.0 V8 535 F1 Edition", "4.0 V8 665 AMR", "Roadster 4.0 V8 503", "Diğer"],
-      "trims": ["Standart", "F1 Edition", "AMR", "Diğer"]
+      "versions": [
+        "4.0 V8 510",
+        "4.0 V8 535 F1 Edition",
+        "4.0 V8 665 AMR",
+        "Roadster 4.0 V8 503",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "F1 Edition",
+        "AMR",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "4.0 V8 510": [
+          "Standart",
+          "Diğer"
+        ],
+        "4.0 V8 535 F1 Edition": [
+          "F1 Edition",
+          "Diğer"
+        ],
+        "4.0 V8 665 AMR": [
+          "AMR",
+          "Diğer"
+        ],
+        "Roadster 4.0 V8 503": [
+          "Standart",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "DBS Superleggera (2018-)",
-      "versions": ["5.2 V12 725", "5.2 V12 760 770", "Volante 5.2 V12 725", "Diğer"],
-      "trims": ["Standart", "Superleggera", "770 Ultimate", "Diğer"]
+      "versions": [
+        "5.2 V12 725",
+        "5.2 V12 760 770",
+        "Volante 5.2 V12 725",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Superleggera",
+        "770 Ultimate",
+        "Diğer"
+      ]
     },
     {
       "name": "DBX (2020-)",
-      "versions": ["4.0 V8 550", "DBX707 4.0 V8 707", "Diğer"],
-      "trims": ["Standart", "707", "Diğer"]
+      "versions": [
+        "4.0 V8 550",
+        "DBX707 4.0 V8 707",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "707",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "4.0 V8 550": [
+          "Standart",
+          "Diğer"
+        ],
+        "DBX707 4.0 V8 707": [
+          "707",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

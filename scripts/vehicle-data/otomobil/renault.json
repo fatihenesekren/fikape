@@ -3,173 +3,1024 @@
   "models": [
     {
       "name": "Clio 2 (1998-2005)",
-      "versions": ["1.2 58", "1.2 75", "1.4 98", "1.6 107", "1.5 dCi 65", "1.5 dCi 80", "RS 2.0 172", "RS 2.0 182", "Diğer"],
-      "trims": ["Authentique", "Expression", "Privilege", "RS", "Diğer"]
+      "versions": [
+        "1.2 58",
+        "1.2 75",
+        "1.4 98",
+        "1.6 107",
+        "1.5 dCi 65",
+        "1.5 dCi 80",
+        "RS 2.0 172",
+        "RS 2.0 182",
+        "Diğer"
+      ],
+      "trims": [
+        "Authentique",
+        "Expression",
+        "Privilege",
+        "RS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.2 58": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.2 75": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.4 98": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.6 107": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.5 dCi 65": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.5 dCi 80": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "RS 2.0 172": [
+          "RS",
+          "Diğer"
+        ],
+        "RS 2.0 182": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Clio 3 (2005-2012)",
-      "versions": ["1.2 16V 75", "1.2 TCe 101", "1.4 16V 98", "1.6 16V 112", "1.5 dCi 70", "1.5 dCi 85", "1.5 dCi 105", "RS 2.0 197", "RS 2.0 200", "Diğer"],
-      "trims": ["Authentique", "Expression", "Privilege", "RS", "Diğer"]
+      "versions": [
+        "1.2 16V 75",
+        "1.2 TCe 101",
+        "1.4 16V 98",
+        "1.6 16V 112",
+        "1.5 dCi 70",
+        "1.5 dCi 85",
+        "1.5 dCi 105",
+        "RS 2.0 197",
+        "RS 2.0 200",
+        "Diğer"
+      ],
+      "trims": [
+        "Authentique",
+        "Expression",
+        "Privilege",
+        "RS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.2 16V 75": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.2 TCe 101": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.4 16V 98": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.6 16V 112": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.5 dCi 70": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.5 dCi 85": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.5 dCi 105": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "RS 2.0 197": [
+          "RS",
+          "Diğer"
+        ],
+        "RS 2.0 200": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Clio 4 (2012-2019)",
-      "versions": ["0.9 TCe 75", "0.9 TCe 90", "1.2 TCe 120", "1.5 dCi 75", "1.5 dCi 90", "1.5 dCi 110", "RS 1.6T 200", "RS 1.6T 220", "Diğer"],
-      "trims": ["Expression", "Joy", "Zen", "Intens", "RS", "Diğer"]
+      "versions": [
+        "0.9 TCe 75",
+        "0.9 TCe 90",
+        "1.2 TCe 120",
+        "1.5 dCi 75",
+        "1.5 dCi 90",
+        "1.5 dCi 110",
+        "RS 1.6T 200",
+        "RS 1.6T 220",
+        "Diğer"
+      ],
+      "trims": [
+        "Expression",
+        "Joy",
+        "Zen",
+        "Intens",
+        "Touch",
+        "RS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "0.9 TCe 75": [
+          "Expression",
+          "Joy",
+          "Touch",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "0.9 TCe 90": [
+          "Expression",
+          "Joy",
+          "Touch",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "1.2 TCe 120": [
+          "Expression",
+          "Joy",
+          "Touch",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "1.5 dCi 75": [
+          "Expression",
+          "Joy",
+          "Touch",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "1.5 dCi 90": [
+          "Expression",
+          "Joy",
+          "Touch",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "1.5 dCi 110": [
+          "Expression",
+          "Joy",
+          "Touch",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "RS 1.6T 200": [
+          "RS",
+          "Diğer"
+        ],
+        "RS 1.6T 220": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Clio 5 (2019-)",
-      "versions": ["1.0 SCe 65", "1.0 TCe 90", "1.0 TCe 100 ECO-G LPG", "1.6 E-Tech Hybrid 145", "1.5 dCi 85", "Diğer"],
-      "trims": ["Joy", "Touch", "Zen", "Intens", "RS Line", "R.S.", "Diğer"]
+      "versions": [
+        "1.0 SCe 65",
+        "1.0 TCe 90",
+        "1.0 TCe 100 ECO-G LPG",
+        "1.6 E-Tech Hybrid 145",
+        "1.5 dCi 85",
+        "Diğer"
+      ],
+      "trims": [
+        "Joy",
+        "Touch",
+        "Zen",
+        "Intens",
+        "RS Line",
+        "Diğer"
+      ]
     },
     {
       "name": "Megane 2 (2002-2008)",
-      "versions": ["1.4 16V 98", "1.6 16V 112", "2.0 16V 135", "1.5 dCi 80", "1.5 dCi 100", "1.5 dCi 106", "2.0T RS 225", "Diğer"],
-      "trims": ["Authentique", "Expression", "Privilege", "RS", "Diğer"]
+      "versions": [
+        "1.4 16V 98",
+        "1.6 16V 112",
+        "2.0 16V 135",
+        "1.5 dCi 80",
+        "1.5 dCi 100",
+        "1.5 dCi 106",
+        "2.0T RS 225",
+        "Diğer"
+      ],
+      "trims": [
+        "Authentique",
+        "Expression",
+        "Privilege",
+        "RS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 16V 98": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.6 16V 112": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "2.0 16V 135": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.5 dCi 80": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.5 dCi 100": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "1.5 dCi 106": [
+          "Authentique",
+          "Expression",
+          "Privilege",
+          "Diğer"
+        ],
+        "2.0T RS 225": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Megane 3 (2008-2016)",
-      "versions": ["1.2 TCe 115", "1.4 TCe 130", "1.6 16V 110", "2.0T 180", "2.0T 190", "1.5 dCi 90", "1.5 dCi 105", "1.5 dCi 110", "RS 2.0T 250", "RS 2.0T 265", "Diğer"],
-      "trims": ["Expression", "Joy", "Zen", "Intens", "RS", "Diğer"]
+      "versions": [
+        "1.2 TCe 115",
+        "1.4 TCe 130",
+        "1.6 16V 110",
+        "2.0T 180",
+        "2.0T 190",
+        "1.5 dCi 90",
+        "1.5 dCi 105",
+        "1.5 dCi 110",
+        "RS 2.0T 250",
+        "RS 2.0T 265",
+        "Diğer"
+      ],
+      "trims": [
+        "Expression",
+        "Joy",
+        "Zen",
+        "Intens",
+        "RS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.2 TCe 115": [
+          "Expression",
+          "Joy",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "1.4 TCe 130": [
+          "Expression",
+          "Joy",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "1.6 16V 110": [
+          "Expression",
+          "Joy",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "2.0T 180": [
+          "Expression",
+          "Joy",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "2.0T 190": [
+          "Expression",
+          "Joy",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "1.5 dCi 90": [
+          "Expression",
+          "Joy",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "1.5 dCi 105": [
+          "Expression",
+          "Joy",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "1.5 dCi 110": [
+          "Expression",
+          "Joy",
+          "Zen",
+          "Intens",
+          "Diğer"
+        ],
+        "RS 2.0T 250": [
+          "RS",
+          "Diğer"
+        ],
+        "RS 2.0T 265": [
+          "RS",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Megane 4 (2016-)",
-      "versions": ["1.3 TCe 115", "1.3 TCe 140", "1.3 TCe 160", "1.5 dCi 115", "1.8 RS 280", "Diğer"],
-      "trims": ["Joy", "Touch", "Zen", "Intens", "RS Line", "R.S.", "Diğer"]
+      "versions": [
+        "1.3 TCe 115",
+        "1.3 TCe 140",
+        "1.3 TCe 160",
+        "1.5 dCi 115",
+        "1.8 RS 280",
+        "Diğer"
+      ],
+      "trims": [
+        "Joy",
+        "Touch",
+        "Zen",
+        "Intens",
+        "Icon",
+        "RS Line",
+        "R.S.",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.3 TCe 115": [
+          "Joy",
+          "Touch",
+          "Icon",
+          "Zen",
+          "Intens",
+          "RS Line",
+          "Diğer"
+        ],
+        "1.3 TCe 140": [
+          "Joy",
+          "Touch",
+          "Icon",
+          "Zen",
+          "Intens",
+          "RS Line",
+          "Diğer"
+        ],
+        "1.3 TCe 160": [
+          "Joy",
+          "Touch",
+          "Icon",
+          "Zen",
+          "Intens",
+          "RS Line",
+          "Diğer"
+        ],
+        "1.5 dCi 115": [
+          "Joy",
+          "Touch",
+          "Icon",
+          "Zen",
+          "Intens",
+          "RS Line",
+          "Diğer"
+        ],
+        "1.8 RS 280": [
+          "R.S.",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Taliant",
-      "versions": ["1.0 SCe 65", "1.0 TCe 90", "1.0 TCe 100 ECO-G LPG", "Diğer"],
-      "trims": ["Joy", "Touch", "Zen", "Intens", "Diğer"]
+      "versions": [
+        "1.0 SCe 65",
+        "1.0 TCe 90",
+        "1.0 TCe 100 ECO-G LPG",
+        "Diğer"
+      ],
+      "trims": [
+        "Joy",
+        "Touch",
+        "Zen",
+        "Intens",
+        "Diğer"
+      ]
     },
     {
       "name": "Captur",
-      "versions": ["1.0 TCe 90", "1.0 TCe 100 ECO-G LPG", "1.3 TCe 140", "1.3 TCe 155", "E-Tech Hybrid 145", "E-Tech Plug-in 160", "Diğer"],
-      "trims": ["Joy", "Touch", "Zen", "Intens", "RS Line", "Diğer"]
+      "versions": [
+        "1.0 TCe 90",
+        "1.0 TCe 100 ECO-G LPG",
+        "1.3 TCe 140",
+        "1.3 TCe 155",
+        "E-Tech Hybrid 145",
+        "E-Tech Plug-in 160",
+        "Diğer"
+      ],
+      "trims": [
+        "Joy",
+        "Touch",
+        "Zen",
+        "Intens",
+        "Icon",
+        "RS Line",
+        "Diğer"
+      ]
     },
     {
       "name": "Kadjar",
-      "versions": ["1.3 TCe 140", "1.5 dCi 115", "1.7 dCi 150 AWD", "Diğer"],
-      "trims": ["Touch", "Zen", "Intens", "Diğer"]
+      "versions": [
+        "1.3 TCe 140",
+        "1.5 dCi 115",
+        "1.7 dCi 150 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Touch",
+        "Zen",
+        "Intens",
+        "Icon",
+        "Diğer"
+      ]
     },
     {
       "name": "Koleos",
-      "versions": ["1.3 TCe 160 FWD", "1.7 dCi 150 AWD", "2.0 dCi 175 AWD", "Diğer"],
-      "trims": ["Zen", "Intens", "Initiale Paris", "Diğer"]
+      "versions": [
+        "1.3 TCe 160 FWD",
+        "1.7 dCi 150 AWD",
+        "2.0 dCi 175 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Zen",
+        "Intens",
+        "Initiale Paris",
+        "Diğer"
+      ]
     },
     {
       "name": "Arkana",
-      "versions": ["1.3 TCe 140", "E-Tech Hybrid 145", "Diğer"],
-      "trims": ["Zen", "Intens", "RS Line", "Diğer"]
+      "versions": [
+        "1.3 TCe 140",
+        "E-Tech Hybrid 145",
+        "Diğer"
+      ],
+      "trims": [
+        "Zen",
+        "Intens",
+        "RS Line",
+        "Diğer"
+      ]
     },
     {
       "name": "Duster (2024-)",
-      "versions": ["TCe 130 MHEV", "Full Hybrid 155", "ECO-G 100 LPG", "Diğer"],
-      "trims": ["Essential", "Expression", "Extreme", "Journey", "Diğer"]
+      "versions": [
+        "TCe 130 MHEV",
+        "Full Hybrid 155",
+        "ECO-G 100 LPG",
+        "Diğer"
+      ],
+      "trims": [
+        "Evolution",
+        "Techno",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Alaskan",
+      "versions": [
+        "2.3 dCi 160 4WD",
+        "2.3 dCi 190 4WD",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Intens",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Master",
+      "versions": [
+        "2.3 dCi 110",
+        "2.3 dCi 135",
+        "2.3 dCi 150",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Sport",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Trafic",
+      "versions": [
+        "2.0 dCi 120",
+        "2.0 dCi 150",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Sport",
+        "SpaceClass",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Kangoo",
+      "versions": [
+        "1.3 TCe 100",
+        "1.3 TCe 130",
+        "1.5 dCi 95",
+        "E-Tech Electric 90",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Equilibre",
+        "Techno",
+        "Diğer"
+      ]
     },
     {
       "name": "Austral",
-      "versions": ["1.2 TCe 130 MHEV", "1.2 TCe 160 MHEV", "E-Tech Full Hybrid 200", "E-Tech Plug-in 300 AWD", "Diğer"],
-      "trims": ["Zen", "Techno", "Esprit Alpine", "Iconic", "Diğer"]
+      "versions": [
+        "1.2 TCe 130 MHEV",
+        "1.2 TCe 160 MHEV",
+        "E-Tech Full Hybrid 200",
+        "E-Tech Plug-in 300 AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "Zen",
+        "Techno",
+        "Esprit Alpine",
+        "Iconic",
+        "Diğer"
+      ]
     },
     {
       "name": "Espace",
-      "versions": ["1.2 TCe 130 MHEV", "E-Tech Full Hybrid 200", "Diğer"],
-      "trims": ["Techno", "Esprit Alpine", "Iconic", "Diğer"]
+      "versions": [
+        "1.2 TCe 130 MHEV",
+        "E-Tech Full Hybrid 200",
+        "Diğer"
+      ],
+      "trims": [
+        "Techno",
+        "Esprit Alpine",
+        "Iconic",
+        "Diğer"
+      ]
     },
     {
       "name": "Zoe",
-      "versions": ["R110 108 52kWh", "R135 135 52kWh", "Diğer"],
-      "trims": ["Life", "Zen", "Intens", "Iconic", "Diğer"]
+      "versions": [
+        "R110 108 52kWh",
+        "R135 135 52kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Life",
+        "Zen",
+        "Intens",
+        "Iconic",
+        "Diğer"
+      ]
     },
     {
       "name": "Megane E-Tech",
-      "versions": ["EV40 130 40kWh", "EV60 220 60kWh", "EV60 Optimum Charge 220", "Diğer"],
-      "trims": ["Life", "Zen", "Intens", "Iconic", "Diğer"]
+      "versions": [
+        "EV40 130 40kWh",
+        "EV60 220 60kWh",
+        "EV60 Optimum Charge 220",
+        "Diğer"
+      ],
+      "trims": [
+        "Life",
+        "Zen",
+        "Intens",
+        "Iconic",
+        "Diğer"
+      ]
     },
     {
       "name": "Scenic E-Tech",
-      "versions": ["EV60 170 60kWh", "EV87 220 87kWh", "Diğer"],
-      "trims": ["Comfort", "Techno", "Iconic", "Diğer"]
+      "versions": [
+        "EV60 170 60kWh",
+        "EV87 220 87kWh",
+        "Diğer"
+      ],
+      "trims": [
+        "Comfort",
+        "Techno",
+        "Iconic",
+        "Diğer"
+      ]
     },
     {
       "name": "12 Toros (1971-2000)",
-      "versions": ["1.4 47", "1.4 60", "1.6 GTL 72", "Diğer"],
-      "trims": ["TL", "GTL", "TSW", "STW", "Diğer"]
+      "versions": [
+        "1.4 47",
+        "1.4 60",
+        "1.6 GTL 72",
+        "Diğer"
+      ],
+      "trims": [
+        "TL",
+        "GTL",
+        "TSW",
+        "STW",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 47": [
+          "TL",
+          "TSW",
+          "STW",
+          "Diğer"
+        ],
+        "1.4 60": [
+          "TL",
+          "TSW",
+          "STW",
+          "Diğer"
+        ],
+        "1.6 GTL 72": [
+          "GTL",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "9 Broadway (1985-2000)",
-      "versions": ["1.1 47", "1.4 60", "1.6 Fairway 72", "1.6 dCi GTD 55", "Diğer"],
-      "trims": ["GTL", "GTC", "GTE", "Spring", "Fairway", "Diğer"]
+      "versions": [
+        "1.1 47",
+        "1.4 60",
+        "1.6 Fairway 72",
+        "1.6 dCi GTD 55",
+        "Diğer"
+      ],
+      "trims": [
+        "GTL",
+        "GTC",
+        "GTE",
+        "Spring",
+        "Fairway",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.1 47": [
+          "GTL",
+          "GTC",
+          "GTE",
+          "Spring",
+          "Diğer"
+        ],
+        "1.4 60": [
+          "GTL",
+          "GTC",
+          "GTE",
+          "Spring",
+          "Diğer"
+        ],
+        "1.6 Fairway 72": [
+          "Fairway",
+          "Diğer"
+        ],
+        "1.6 dCi GTD 55": [
+          "GTL",
+          "GTC",
+          "GTE",
+          "Spring",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "11 Flash (1987-1996)",
-      "versions": ["1.4 60", "1.6 72", "Diğer"],
-      "trims": ["Flash", "Rainbow", "Diğer"]
+      "versions": [
+        "1.4 60",
+        "1.6 72",
+        "Diğer"
+      ],
+      "trims": [
+        "Flash",
+        "Rainbow",
+        "Diğer"
+      ]
     },
     {
       "name": "21 Manager (1990-1995)",
-      "versions": ["1.7 79", "2.0 103", "2.1 TD 88", "Diğer"],
-      "trims": ["GTS", "TXE", "Manager", "Diğer"]
+      "versions": [
+        "1.7 79",
+        "2.0 103",
+        "2.1 TD 88",
+        "Diğer"
+      ],
+      "trims": [
+        "GTS",
+        "TXE",
+        "Manager",
+        "Diğer"
+      ]
     },
     {
       "name": "19 Europa (1992-2003)",
-      "versions": ["1.4 75", "1.6 90", "1.8 95", "1.9 D 65", "1.9 dCi 98", "Diğer"],
-      "trims": ["RT", "RTE", "RNE", "Alize", "Europa", "Diğer"]
+      "versions": [
+        "1.4 75",
+        "1.6 90",
+        "1.8 95",
+        "1.9 D 65",
+        "1.9 dCi 98",
+        "Diğer"
+      ],
+      "trims": [
+        "RT",
+        "RTE",
+        "RNE",
+        "Alize",
+        "Europa",
+        "Diğer"
+      ]
     },
     {
       "name": "Megane (1997-2003)",
-      "versions": ["1.4 75", "1.6 90", "1.6 16V 107", "2.0 16V 114", "1.9 dCi 80", "1.9 dTi 80", "Diğer"],
-      "trims": ["RN", "RT", "RXE", "RXT", "Diğer"]
+      "versions": [
+        "1.4 75",
+        "1.6 90",
+        "1.6 16V 107",
+        "2.0 16V 114",
+        "1.9 dCi 80",
+        "1.9 dTi 80",
+        "Diğer"
+      ],
+      "trims": [
+        "RN",
+        "RT",
+        "RXE",
+        "RXT",
+        "Diğer"
+      ]
     },
     {
       "name": "Symbol / Thalia (1999-2013)",
-      "versions": ["1.4 75", "1.4 16V 98", "1.6 16V 105", "1.2 16V 75", "1.5 dCi 65", "1.5 dCi 70", "1.5 dCi 85", "1.5 dCi 105", "Diğer"],
-      "trims": ["Authentique", "Expression", "Privilege", "Diğer"]
+      "versions": [
+        "1.4 75",
+        "1.4 16V 98",
+        "1.6 16V 105",
+        "1.2 16V 75",
+        "1.5 dCi 65",
+        "1.5 dCi 70",
+        "1.5 dCi 85",
+        "1.5 dCi 105",
+        "Diğer"
+      ],
+      "trims": [
+        "Authentique",
+        "Expression",
+        "Privilege",
+        "Diğer"
+      ]
     },
     {
       "name": "Symbol (2013-2021)",
-      "versions": ["1.2 16V 75", "0.9 TCe 90", "1.5 dCi 75", "1.5 dCi 90", "Diğer"],
-      "trims": ["Joy", "Touch", "Icon", "Diğer"]
+      "versions": [
+        "1.2 16V 75",
+        "0.9 TCe 90",
+        "1.5 dCi 75",
+        "1.5 dCi 90",
+        "Diğer"
+      ],
+      "trims": [
+        "Joy",
+        "Touch",
+        "Icon",
+        "Diğer"
+      ]
     },
     {
       "name": "Fluence (2009-2016)",
-      "versions": ["1.6 16V 110", "2.0 16V 137", "1.5 dCi 90", "1.5 dCi 110", "Diğer"],
-      "trims": ["Authentique", "Expression", "Dynamique", "Icon", "Privilege", "Diğer"]
+      "versions": [
+        "1.6 16V 110",
+        "2.0 16V 137",
+        "1.5 dCi 90",
+        "1.5 dCi 110",
+        "Diğer"
+      ],
+      "trims": [
+        "Authentique",
+        "Expression",
+        "Dynamique",
+        "Icon",
+        "Privilege",
+        "Diğer"
+      ]
     },
     {
       "name": "Twingo (1993-2014)",
-      "versions": ["1.2 55", "1.2 16V 75", "1.5 dCi 65", "1.2 16V TCe 100", "Diğer"],
-      "trims": ["Authentique", "Expression", "Dynamique", "Diğer"]
+      "versions": [
+        "1.2 55",
+        "1.2 16V 75",
+        "1.5 dCi 65",
+        "1.2 16V TCe 100",
+        "Diğer"
+      ],
+      "trims": [
+        "Authentique",
+        "Expression",
+        "Dynamique",
+        "Diğer"
+      ]
     },
     {
       "name": "Modus (2004-2012)",
-      "versions": ["1.2 16V 75", "1.6 16V 105", "1.5 dCi 70", "1.5 dCi 85", "1.5 dCi 105", "Diğer"],
-      "trims": ["Authentique", "Expression", "Privilege", "Dynamique", "Diğer"]
+      "versions": [
+        "1.2 16V 75",
+        "1.6 16V 105",
+        "1.5 dCi 70",
+        "1.5 dCi 85",
+        "1.5 dCi 105",
+        "Diğer"
+      ],
+      "trims": [
+        "Authentique",
+        "Expression",
+        "Privilege",
+        "Dynamique",
+        "Diğer"
+      ]
     },
     {
       "name": "Scenic (1996-2016)",
-      "versions": ["1.6 16V 95", "2.0 16V 140", "1.9 dCi 120", "1.5 dCi 105", "1.5 dCi 110", "Diğer"],
-      "trims": ["Authentique", "Expression", "Privilege", "Dynamique", "Diğer"]
+      "versions": [
+        "1.6 16V 95",
+        "2.0 16V 140",
+        "1.9 dCi 120",
+        "1.5 dCi 105",
+        "1.5 dCi 110",
+        "Diğer"
+      ],
+      "trims": [
+        "Authentique",
+        "Expression",
+        "Privilege",
+        "Dynamique",
+        "Diğer"
+      ]
     },
     {
       "name": "Safrane (1992-2000)",
-      "versions": ["2.0 103", "2.2 110", "2.5 V6 170", "2.1 dT 88", "Diğer"],
-      "trims": ["RN", "RT", "RXE", "Baccara", "Diğer"]
+      "versions": [
+        "2.0 103",
+        "2.2 110",
+        "2.5 V6 170",
+        "2.1 dT 88",
+        "Diğer"
+      ],
+      "trims": [
+        "RN",
+        "RT",
+        "RXE",
+        "Baccara",
+        "Diğer"
+      ]
     },
     {
       "name": "Laguna (1994-2015)",
-      "versions": ["1.8 16V 110", "2.0 16V 140", "1.9 dCi 120", "2.0 dCi 150", "1.5 dCi 110", "Diğer"],
-      "trims": ["RT", "RXE", "Authentique", "Expression", "Privilege", "Dynamique", "Diğer"]
+      "versions": [
+        "1.8 16V 110",
+        "2.0 16V 140",
+        "1.9 dCi 120",
+        "2.0 dCi 150",
+        "1.5 dCi 110",
+        "Diğer"
+      ],
+      "trims": [
+        "RT",
+        "RXE",
+        "Authentique",
+        "Expression",
+        "Privilege",
+        "Dynamique",
+        "Diğer"
+      ]
     },
     {
       "name": "Talisman (2016-2022)",
-      "versions": ["1.6 dCi 130", "1.3 TCe 155", "1.5 dCi 110", "1.8 TCe 225", "Diğer"],
-      "trims": ["Joy", "Icon", "Intens", "Executive", "Diğer"]
+      "versions": [
+        "1.6 dCi 130",
+        "1.6 dCi 160",
+        "1.3 TCe 155",
+        "1.5 dCi 110",
+        "1.8 TCe 225",
+        "Diğer"
+      ],
+      "trims": [
+        "Touch",
+        "Icon",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 dCi 130": [
+          "Icon",
+          "Diğer"
+        ],
+        "1.6 dCi 160": [
+          "Icon",
+          "Diğer"
+        ],
+        "1.5 dCi 110": [
+          "Touch",
+          "Diğer"
+        ],
+        "1.3 TCe 155": [
+          "Touch",
+          "Icon",
+          "Diğer"
+        ],
+        "1.8 TCe 225": [
+          "Icon",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

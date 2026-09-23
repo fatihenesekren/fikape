@@ -3,103 +3,643 @@
   "models": [
     {
       "name": "Ibiza (1984-1993)",
-      "versions": ["1.2 60", "1.5 85", "1.7 D 54", "Diğer"],
-      "trims": ["Standart", "GLX", "Diğer"]
+      "versions": [
+        "1.2 60",
+        "1.5 85",
+        "1.7 D 54",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Ibiza (1993-2002)",
-      "versions": ["1.4 60", "1.6 75", "1.8 GTi 105", "1.9 SDI 64", "1.9 TDI 90", "Diğer"],
-      "trims": ["Standart", "GLX", "GTi", "Diğer"]
+      "versions": [
+        "1.4 60",
+        "1.6 75",
+        "1.8 GTi 105",
+        "1.9 SDI 64",
+        "1.9 TDI 90",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GLX",
+        "GTi",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 60": [
+          "Standart",
+          "GLX",
+          "Diğer"
+        ],
+        "1.6 75": [
+          "Standart",
+          "GLX",
+          "Diğer"
+        ],
+        "1.8 GTi 105": [
+          "GTi",
+          "Diğer"
+        ],
+        "1.9 SDI 64": [
+          "Standart",
+          "GLX",
+          "Diğer"
+        ],
+        "1.9 TDI 90": [
+          "Standart",
+          "GLX",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Ibiza (2002-2008)",
-      "versions": ["1.2 64", "1.4 75", "1.4 16V 100", "1.9 TDI 100", "1.9 TDI 130", "Cupra 1.8T 180", "Diğer"],
-      "trims": ["Reference", "Stylance", "Sport", "Cupra", "Diğer"]
+      "versions": [
+        "1.2 64",
+        "1.4 75",
+        "1.4 16V 100",
+        "1.9 TDI 100",
+        "1.9 TDI 130",
+        "Cupra 1.8T 180",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Stylance",
+        "Sport",
+        "Cupra",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.2 64": [
+          "Reference",
+          "Stylance",
+          "Sport",
+          "Diğer"
+        ],
+        "1.4 75": [
+          "Reference",
+          "Stylance",
+          "Sport",
+          "Diğer"
+        ],
+        "1.4 16V 100": [
+          "Reference",
+          "Stylance",
+          "Sport",
+          "Diğer"
+        ],
+        "1.9 TDI 100": [
+          "Reference",
+          "Stylance",
+          "Sport",
+          "Diğer"
+        ],
+        "1.9 TDI 130": [
+          "Reference",
+          "Stylance",
+          "Sport",
+          "Diğer"
+        ],
+        "Cupra 1.8T 180": [
+          "Cupra",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Ibiza (2008-2017)",
-      "versions": ["1.2 70", "1.4 85", "1.2 TSI 105", "1.6 TDI 90", "1.6 TDI 105", "Cupra 1.4 TSI 180", "Diğer"],
-      "trims": ["Reference", "Style", "FR", "Cupra", "Diğer"]
+      "versions": [
+        "1.2 70",
+        "1.4 85",
+        "1.2 TSI 105",
+        "1.6 TDI 90",
+        "1.6 TDI 105",
+        "Cupra 1.4 TSI 180",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "FR",
+        "Cupra",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.2 70": [
+          "Reference",
+          "Style",
+          "FR",
+          "Diğer"
+        ],
+        "1.4 85": [
+          "Reference",
+          "Style",
+          "FR",
+          "Diğer"
+        ],
+        "1.2 TSI 105": [
+          "Reference",
+          "Style",
+          "FR",
+          "Diğer"
+        ],
+        "1.6 TDI 90": [
+          "Reference",
+          "Style",
+          "FR",
+          "Diğer"
+        ],
+        "1.6 TDI 105": [
+          "Reference",
+          "Style",
+          "FR",
+          "Diğer"
+        ],
+        "Cupra 1.4 TSI 180": [
+          "Cupra",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Ibiza (2017-)",
-      "versions": ["1.0 MPI 80", "1.0 TSI 95", "1.0 TSI 110", "1.5 TSI 150", "Diğer"],
-      "trims": ["Reference", "Style", "FR", "Xcellence", "Diğer"]
+      "versions": [
+        "1.0 MPI 80",
+        "1.0 TSI 95",
+        "1.0 TSI 110",
+        "1.5 TSI 150",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "FR",
+        "Xcellence",
+        "Diğer"
+      ]
     },
     {
       "name": "Cordoba",
-      "versions": ["1.4 60", "1.6 75", "1.9 SDI 64", "1.9 TDI 90", "Diğer"],
-      "trims": ["Standart", "GLX", "SXE", "Diğer"]
+      "versions": [
+        "1.4 60",
+        "1.6 75",
+        "1.9 SDI 64",
+        "1.9 TDI 90",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GLX",
+        "SXE",
+        "Diğer"
+      ]
     },
     {
       "name": "Leon (1999-2005)",
-      "versions": ["1.4 75", "1.6 100", "1.8 20V 125", "1.9 TDI 90", "1.9 TDI 110", "Cupra 1.8T 180", "Diğer"],
-      "trims": ["Standart", "Sport", "Cupra", "Diğer"]
+      "versions": [
+        "1.4 75",
+        "1.6 100",
+        "1.8 20V 125",
+        "1.9 TDI 90",
+        "1.9 TDI 110",
+        "Cupra 1.8T 180",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Sport",
+        "Cupra",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 75": [
+          "Standart",
+          "Sport",
+          "Diğer"
+        ],
+        "1.6 100": [
+          "Standart",
+          "Sport",
+          "Diğer"
+        ],
+        "1.8 20V 125": [
+          "Standart",
+          "Sport",
+          "Diğer"
+        ],
+        "1.9 TDI 90": [
+          "Standart",
+          "Sport",
+          "Diğer"
+        ],
+        "1.9 TDI 110": [
+          "Standart",
+          "Sport",
+          "Diğer"
+        ],
+        "Cupra 1.8T 180": [
+          "Cupra",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Leon (2005-2012)",
-      "versions": ["1.6 102", "1.8 TSI 160", "2.0 TDI 140", "2.0 TDI 170", "Cupra 2.0 TFSI 240", "Diğer"],
-      "trims": ["Reference", "Style", "Sport", "FR", "Cupra", "Diğer"]
+      "versions": [
+        "1.6 102",
+        "1.8 TSI 160",
+        "2.0 TDI 140",
+        "2.0 TDI 170",
+        "Cupra 2.0 TFSI 240",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "Sport",
+        "FR",
+        "Cupra",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 102": [
+          "Reference",
+          "Style",
+          "Sport",
+          "FR",
+          "Diğer"
+        ],
+        "1.8 TSI 160": [
+          "Reference",
+          "Style",
+          "Sport",
+          "FR",
+          "Diğer"
+        ],
+        "2.0 TDI 140": [
+          "Reference",
+          "Style",
+          "Sport",
+          "FR",
+          "Diğer"
+        ],
+        "2.0 TDI 170": [
+          "Reference",
+          "Style",
+          "Sport",
+          "FR",
+          "Diğer"
+        ],
+        "Cupra 2.0 TFSI 240": [
+          "Cupra",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Leon (2012-2020)",
-      "versions": ["1.2 TSI 110", "1.4 TSI 125", "1.8 TSI 180", "1.6 TDI 105", "2.0 TDI 150", "Cupra 2.0 TSI 300", "Diğer"],
-      "trims": ["Reference", "Style", "FR", "Xcellence", "Cupra", "Diğer"]
+      "versions": [
+        "1.2 TSI 110",
+        "1.4 TSI 125",
+        "1.8 TSI 180",
+        "1.6 TDI 105",
+        "2.0 TDI 150",
+        "Cupra 2.0 TSI 300",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "FR",
+        "Xcellence",
+        "Cupra",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.2 TSI 110": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "1.4 TSI 125": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "1.8 TSI 180": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "1.6 TDI 105": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "2.0 TDI 150": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "Cupra 2.0 TSI 300": [
+          "Cupra",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Leon (2020-)",
-      "versions": ["1.0 eTSI 110", "1.5 TSI 130", "1.5 eTSI 150", "2.0 TDI 115", "2.0 TDI 150", "1.4 e-Hybrid 204 DSG", "1.4 e-Hybrid 245 DSG", "Cupra 2.0 TSI 300", "Diğer"],
-      "trims": ["Reference", "Style", "FR", "Xcellence", "Cupra", "Diğer"]
+      "versions": [
+        "1.0 eTSI 110",
+        "1.5 TSI 130",
+        "1.5 eTSI 150",
+        "2.0 TDI 115",
+        "2.0 TDI 150",
+        "1.4 e-Hybrid 204 DSG",
+        "1.4 e-Hybrid 245 DSG",
+        "Cupra 2.0 TSI 300",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "FR",
+        "Xcellence",
+        "Cupra",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.0 eTSI 110": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "1.5 TSI 130": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "1.5 eTSI 150": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "2.0 TDI 115": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "2.0 TDI 150": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "1.4 e-Hybrid 204 DSG": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "1.4 e-Hybrid 245 DSG": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "Cupra 2.0 TSI 300": [
+          "Cupra",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Toledo (1991-1999)",
-      "versions": ["1.6 75", "1.8 90", "2.0 115", "1.9 D 64", "1.9 TDI 90", "Diğer"],
-      "trims": ["Standart", "GLX", "GT", "Diğer"]
+      "versions": [
+        "1.6 75",
+        "1.8 90",
+        "2.0 115",
+        "1.9 D 64",
+        "1.9 TDI 90",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GLX",
+        "GT",
+        "Diğer"
+      ]
     },
     {
       "name": "Toledo (1999-2004)",
-      "versions": ["1.6 100", "1.8 20V 125", "1.9 TDI 90", "1.9 TDI 110", "Diğer"],
-      "trims": ["Standart", "Sport", "Signo", "Diğer"]
+      "versions": [
+        "1.6 100",
+        "1.8 20V 125",
+        "1.9 TDI 90",
+        "1.9 TDI 110",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Sport",
+        "Signo",
+        "Diğer"
+      ]
     },
     {
       "name": "Toledo (2004-2009)",
-      "versions": ["1.6 102", "2.0 FSI 150", "1.9 TDI 105", "2.0 TDI 140", "Diğer"],
-      "trims": ["Reference", "Style", "Sport", "Diğer"]
+      "versions": [
+        "1.6 102",
+        "2.0 FSI 150",
+        "1.9 TDI 105",
+        "2.0 TDI 140",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "Sport",
+        "Diğer"
+      ]
     },
     {
       "name": "Altea",
-      "versions": ["1.6 102", "1.8 TSI 160", "2.0 TDI 140", "2.0 TDI 170", "Diğer"],
-      "trims": ["Reference", "Style", "Sport", "FR", "Diğer"]
+      "versions": [
+        "1.6 102",
+        "1.8 TSI 160",
+        "2.0 TDI 140",
+        "2.0 TDI 170",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "Sport",
+        "FR",
+        "Diğer"
+      ]
     },
     {
       "name": "Arona",
-      "versions": ["1.0 TSI 95", "1.0 TSI 110", "1.5 TSI 150", "1.0 eTSI 110", "Diğer"],
-      "trims": ["Reference", "Style", "FR", "Xcellence", "Diğer"]
+      "versions": [
+        "1.0 TSI 95",
+        "1.0 TSI 110",
+        "1.5 TSI 150",
+        "1.0 eTSI 110",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "FR",
+        "Xcellence",
+        "Diğer"
+      ]
     },
     {
       "name": "Ateca",
-      "versions": ["1.0 TSI 115", "1.5 TSI 150", "2.0 TDI 115", "2.0 TDI 150", "2.0 TSI 190 4Drive", "Cupra 2.0 TSI 300", "Diğer"],
-      "trims": ["Reference", "Style", "FR", "Xcellence", "Cupra", "Diğer"]
+      "versions": [
+        "1.0 TSI 115",
+        "1.5 TSI 150",
+        "2.0 TDI 115",
+        "2.0 TDI 150",
+        "2.0 TSI 190 4Drive",
+        "Cupra 2.0 TSI 300",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "FR",
+        "Xcellence",
+        "Cupra",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.0 TSI 115": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "1.5 TSI 150": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "2.0 TDI 115": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "2.0 TDI 150": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "2.0 TSI 190 4Drive": [
+          "Reference",
+          "Style",
+          "FR",
+          "Xcellence",
+          "Diğer"
+        ],
+        "Cupra 2.0 TSI 300": [
+          "Cupra",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Alhambra (1996-2010)",
-      "versions": ["1.8T 150", "2.0 115", "1.9 TDI 90", "1.9 TDI 115", "Diğer"],
-      "trims": ["Standart", "Stylance", "Diğer"]
+      "versions": [
+        "1.8T 150",
+        "2.0 115",
+        "1.9 TDI 90",
+        "1.9 TDI 115",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Stylance",
+        "Diğer"
+      ]
     },
     {
       "name": "Alhambra (2010-2020)",
-      "versions": ["1.4 TSI 150", "2.0 TSI 200", "2.0 TDI 140", "2.0 TDI 177", "Diğer"],
-      "trims": ["Reference", "Style", "Xcellence", "Diğer"]
+      "versions": [
+        "1.4 TSI 150",
+        "2.0 TSI 200",
+        "2.0 TDI 140",
+        "2.0 TDI 177",
+        "Diğer"
+      ],
+      "trims": [
+        "Reference",
+        "Style",
+        "Xcellence",
+        "Diğer"
+      ]
     },
     {
       "name": "Tarraco",
-      "versions": ["1.5 TSI 150", "2.0 TDI 150", "2.0 TDI 190 4Drive", "2.0 TSI 190 4Drive", "Diğer"],
-      "trims": ["Style", "FR", "Xcellence", "Diğer"]
+      "versions": [
+        "1.5 TSI 150",
+        "2.0 TDI 150",
+        "2.0 TDI 190 4Drive",
+        "2.0 TSI 190 4Drive",
+        "Diğer"
+      ],
+      "trims": [
+        "Style",
+        "FR",
+        "Xcellence",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }

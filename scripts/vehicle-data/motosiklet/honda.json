@@ -1,43 +1,1005 @@
 {
   "make": "Honda",
   "models": [
-    { "name": "CG 125 (1976-2010)", "versions": ["125cc 10 CV", "Diğer"], "trims": ["Standart", "Titan", "Diğer"] },
-    { "name": "CB 125 F", "versions": ["125cc 10 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Monkey", "versions": ["125cc 9 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CBR 125 R", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CBR 300 R", "versions": ["300cc 30 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CBR 500 R", "versions": ["500cc 47 CV", "ABS", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
-    { "name": "CBR 600 RR (2003-2020)", "versions": ["120 CV 599cc", "ABS", "C-ABS", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
-    { "name": "CBR 650 R", "versions": ["650cc 95 CV", "Diğer"], "trims": ["Standart", "E-Clutch", "Diğer"] },
-    { "name": "CBR 900 / 954 RR (2000-2003)", "versions": ["929cc 152 CV", "954cc 152 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CBR 1000 RR Fireblade (2004-2019)", "versions": ["172 CV 999cc", "ABS", "SP 192 CV", "SP2", "Diğer"], "trims": ["Standart", "ABS", "SP", "SP2", "Diğer"] },
-    { "name": "CBR 1000 RR-R (2020-)", "versions": ["217 CV 1000cc", "SP 217 CV", "Diğer"], "trims": ["Standart", "SP", "SP2", "Diğer"] },
-    { "name": "CB 125 R", "versions": ["125cc 15 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CB 400 (1992-2009)", "versions": ["400cc 53 CV VTEC", "Diğer"], "trims": ["Standart", "Spec II", "Spec III", "Diğer"] },
-    { "name": "CB 500 F (2013-2023)", "versions": ["500cc 47 CV", "ABS", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
-    { "name": "CB 500 Hornet (2024-)", "versions": ["500cc 47 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CB 500 X", "versions": ["500cc 47 CV", "ABS", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
-    { "name": "CB 600 F Hornet (1998-2013)", "versions": ["102 CV 599cc", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
-    { "name": "CB 650 R", "versions": ["650cc 95 CV", "Diğer"], "trims": ["Standart", "E-Clutch", "Diğer"] },
-    { "name": "CB 750 Hornet", "versions": ["750cc 91 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CB 1000 R", "versions": ["145 CV 1000cc", "Black Edition", "Diğer"], "trims": ["Standart", "Black Edition", "Diğer"] },
-    { "name": "CL 250", "versions": ["250cc 23 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "NC 750 X", "versions": ["750cc 58 CV", "DCT", "Diğer"], "trims": ["Standart", "DCT", "Diğer"] },
-    { "name": "NX 500", "versions": ["500cc 47 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "VFR 800 (1998-2013)", "versions": ["110 CV 782cc", "ABS", "Diğer"], "trims": ["Standart", "ABS", "Diğer"] },
-    { "name": "X-ADV", "versions": ["750cc 58 CV DCT", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CRF 250 Rally", "versions": ["250cc 27 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "CRF 250 L", "versions": ["250cc 27 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "SH 125i", "versions": ["125cc 12 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "PCX 125", "versions": ["125cc 12.5 CV", "DLX", "Diğer"], "trims": ["Standart", "DLX", "Diğer"] },
-    { "name": "EM1 e:", "versions": ["Elektrik 4.2 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Forza 250", "versions": ["250cc 23 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Forza 350", "versions": ["350cc 29 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "ADV 350", "versions": ["350cc 29 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Africa Twin (2016-)", "versions": ["1100cc 102 CV", "Adventure Sports", "DCT", "Diğer"], "trims": ["Standart", "Adventure Sports", "Adventure Sports DCT", "Diğer"] },
-    { "name": "XL 750 Transalp", "versions": ["750cc 92 CV", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "NT 1100", "versions": ["1100cc 102 CV", "DCT", "Diğer"], "trims": ["Standart", "DCT", "Diğer"] },
-    { "name": "GL 1800 Gold Wing", "versions": ["1800cc 125 CV", "DCT", "Bagger", "Diğer"], "trims": ["Standart", "Tour", "Bagger", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "CG 125 (1976-2010)",
+      "versions": [
+        "125cc 10 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Titan",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CB 125 F",
+      "versions": [
+        "125cc 10 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Monkey",
+      "versions": [
+        "125cc 9 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBR 125 R",
+      "versions": [
+        "125cc 15 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBR 300 R",
+      "versions": [
+        "300cc 30 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBR 500 R",
+      "versions": [
+        "500cc 47 CV",
+        "ABS",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ABS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "500cc 47 CV": [
+          "Standart",
+          "Diğer"
+        ],
+        "ABS": [
+          "ABS",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "CBR 600 RR (2003-2020)",
+      "versions": [
+        "120 CV 599cc",
+        "ABS",
+        "C-ABS",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ABS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "120 CV 599cc": [
+          "Standart",
+          "Diğer"
+        ],
+        "ABS": [
+          "ABS",
+          "Diğer"
+        ],
+        "C-ABS": [
+          "ABS",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "CBR 650 R",
+      "versions": [
+        "650cc 95 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "E-Clutch",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBR 900 / 954 RR (2000-2003)",
+      "versions": [
+        "929cc 152 CV",
+        "954cc 152 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBR 1000 RR Fireblade (2004-2019)",
+      "versions": [
+        "172 CV 999cc",
+        "ABS",
+        "SP 192 CV",
+        "SP2",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ABS",
+        "SP",
+        "SP2",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "172 CV 999cc": [
+          "Standart",
+          "SP",
+          "Diğer"
+        ],
+        "ABS": [
+          "ABS",
+          "Diğer"
+        ],
+        "SP 192 CV": [
+          "Standart",
+          "SP",
+          "Diğer"
+        ],
+        "SP2": [
+          "SP2",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "CBR 1000 RR-R (2020-)",
+      "versions": [
+        "217 CV 1000cc",
+        "SP 217 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SP",
+        "SP2",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "217 CV 1000cc": [
+          "Standart",
+          "SP",
+          "Diğer"
+        ],
+        "SP 217 CV": [
+          "SP2",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "CB 125 R",
+      "versions": [
+        "125cc 15 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CB 400 (1992-2009)",
+      "versions": [
+        "400cc 53 CV VTEC",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Spec II",
+        "Spec III",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CB 500 F (2013-2023)",
+      "versions": [
+        "500cc 47 CV",
+        "ABS",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ABS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "500cc 47 CV": [
+          "Standart",
+          "Diğer"
+        ],
+        "ABS": [
+          "ABS",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "CB 500 Hornet (2024-)",
+      "versions": [
+        "500cc 47 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CB 500 X",
+      "versions": [
+        "500cc 47 CV",
+        "ABS",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ABS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "500cc 47 CV": [
+          "Standart",
+          "Diğer"
+        ],
+        "ABS": [
+          "ABS",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "CB 600 F Hornet (1998-2013)",
+      "versions": [
+        "102 CV 599cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ABS",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CB 650 R",
+      "versions": [
+        "650cc 95 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "E-Clutch",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CB 750 Hornet",
+      "versions": [
+        "750cc 91 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CB 1000 R",
+      "versions": [
+        "145 CV 1000cc",
+        "Black Edition",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Black Edition",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "145 CV 1000cc": [
+          "Standart",
+          "Diğer"
+        ],
+        "Black Edition": [
+          "Black Edition",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "CL 250",
+      "versions": [
+        "250cc 23 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "NC 750 X",
+      "versions": [
+        "750cc 58 CV",
+        "DCT",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "DCT",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "750cc 58 CV": [
+          "Standart",
+          "Diğer"
+        ],
+        "DCT": [
+          "DCT",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "NX 500",
+      "versions": [
+        "500cc 47 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "VFR 800 (1998-2013)",
+      "versions": [
+        "110 CV 782cc",
+        "ABS",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ABS",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "110 CV 782cc": [
+          "Standart",
+          "Diğer"
+        ],
+        "ABS": [
+          "ABS",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "X-ADV",
+      "versions": [
+        "750cc 58 CV DCT",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Special Edition",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CRF 250 Rally",
+      "versions": [
+        "250cc 27 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CRF 250 L",
+      "versions": [
+        "250cc 27 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "SH 125i",
+      "versions": [
+        "125cc 12 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "PCX 125",
+      "versions": [
+        "125cc 12.5 CV",
+        "DLX",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "DLX",
+        "DX",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "125cc 12.5 CV": [
+          "Standart",
+          "Diğer"
+        ],
+        "DLX": [
+          "DLX",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "EM1 e:",
+      "versions": [
+        "Elektrik 4.2 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Forza 250",
+      "versions": [
+        "250cc 23 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "SE",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Forza 350",
+      "versions": [
+        "350cc 29 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "ADV 350",
+      "versions": [
+        "350cc 29 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Africa Twin (2016-)",
+      "versions": [
+        "1100cc 102 CV",
+        "Adventure Sports",
+        "DCT",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Adventure Sports",
+        "Adventure Sports DCT",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1100cc 102 CV": [
+          "Standart",
+          "Adventure Sports DCT",
+          "Diğer"
+        ],
+        "Adventure Sports": [
+          "Adventure Sports",
+          "Diğer"
+        ],
+        "DCT": [
+          "Standart",
+          "Adventure Sports DCT",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "XL 750 Transalp",
+      "versions": [
+        "750cc 92 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "NT 1100",
+      "versions": [
+        "1100cc 102 CV",
+        "DCT",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "DCT",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1100cc 102 CV": [
+          "Standart",
+          "Diğer"
+        ],
+        "DCT": [
+          "DCT",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "GL 1800 Gold Wing",
+      "versions": [
+        "1800cc 125 CV",
+        "DCT",
+        "Bagger",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Tour",
+        "Bagger",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1800cc 125 CV": [
+          "Standart",
+          "Tour",
+          "Diğer"
+        ],
+        "DCT": [
+          "Standart",
+          "Tour",
+          "Diğer"
+        ],
+        "Bagger": [
+          "Bagger",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Dio",
+      "versions": [
+        "50cc 4 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Activa 100",
+      "versions": [
+        "100cc 8 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Activa 110",
+      "versions": [
+        "110cc 8 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Activa 125",
+      "versions": [
+        "125cc 9 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Activa S",
+      "versions": [
+        "125cc 9 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "S",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBF 150",
+      "versions": [
+        "150cc 15 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CB 250 R",
+      "versions": [
+        "250cc 27 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBR 250 R",
+      "versions": [
+        "250cc 26 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "PCX 150",
+      "versions": [
+        "150cc 14 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Spacy 110",
+      "versions": [
+        "110cc 8 CV",
+        "Alpha 110cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Alpha",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Forza 750",
+      "versions": [
+        "750cc 58 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBF 1000",
+      "versions": [
+        "250cc",
+        "500cc",
+        "600cc",
+        "1000cc 98 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "NSS 300 Forza",
+      "versions": [
+        "300cc 25 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "XL 1000V Varadero",
+      "versions": [
+        "1000cc 95 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CB 125E",
+      "versions": [
+        "125cc 10 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ACE",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CHS 125 Fizy",
+      "versions": [
+        "125cc 10 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "MSX 125",
+      "versions": [
+        "125cc 10 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBR 600 F",
+      "versions": [
+        "600cc 100 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "FA",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBR 650 F",
+      "versions": [
+        "650cc 87 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "FA",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "VFR 800 X Crossrunner",
+      "versions": [
+        "800cc 106 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "NC 750D Integra",
+      "versions": [
+        "700cc 54 CV",
+        "750cc 58 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "NC 750 S",
+      "versions": [
+        "700cc 54 CV",
+        "750cc 58 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "DCT",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "VT 750 C Shadow",
+      "versions": [
+        "750cc 45 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "ACE",
+        "Black Widow",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "XL 650 Transalp",
+      "versions": [
+        "600cc 50 CV",
+        "650cc 52 CV",
+        "700cc 60 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Today 50",
+      "versions": [
+        "50cc 4 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Kinetic DX",
+      "versions": [
+        "100cc 8 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Innova 125",
+      "versions": [
+        "125cc 9 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "PS 150i",
+      "versions": [
+        "150cc 13 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CGL 125",
+      "versions": [
+        "125cc 10 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CBR 1100 XX",
+      "versions": [
+        "1100cc 164 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "VFR 1200 F",
+      "versions": [
+        "1200cc 173 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "CrossTourer",
+        "CrossTourer DCT",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "ST 1300 Pan European",
+      "versions": [
+        "1100cc 100 CV",
+        "1300cc 125 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "C125 Super Cub",
+      "versions": [
+        "125cc 10 CV",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

@@ -1,10 +1,60 @@
 {
   "make": "Kanuni",
   "models": [
-    { "name": "Trodon XS", "versions": ["50cc", "125cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Tigrina", "versions": ["50cc", "100cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Puma 150", "versions": ["150cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Nev 50", "versions": ["50cc", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "Trodon XS",
+      "versions": [
+        "50cc",
+        "125cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Tigrina",
+      "versions": [
+        "50cc",
+        "100cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Puma 150",
+      "versions": [
+        "150cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Nev 50",
+      "versions": [
+        "50cc",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }

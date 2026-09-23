@@ -1,12 +1,116 @@
 {
   "make": "Inokim",
   "models": [
-    { "name": "Light 2", "versions": ["350W 7.8Ah 25km/h", "Super 350W", "Diğer"], "trims": ["Standart", "Super", "Diğer"] },
-    { "name": "Quick 4", "versions": ["500W 13Ah 45km/h", "Max 500W", "Diğer"], "trims": ["Standart", "Max", "Diğer"] },
-    { "name": "OX", "versions": ["1000W Çift 13Ah", "Eco 500W", "Diğer"], "trims": ["Standart", "Eco", "Diğer"] },
-    { "name": "OXO", "versions": ["2000W Çift 26Ah", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Mini", "versions": ["250W 5.2Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "KIX", "versions": ["350W 8Ah 25km/h", "Diğer"], "trims": ["Standart", "Diğer"] },
-    { "name": "Diğer", "versions": ["Diğer"], "trims": ["Diğer"] }
+    {
+      "name": "Light 2",
+      "versions": [
+        "350W 7.8Ah 25km/h",
+        "Super 350W",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Super",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "350W 7.8Ah 25km/h": [
+          "Standart",
+          "Diğer"
+        ],
+        "Super 350W": [
+          "Super",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Quick 4",
+      "versions": [
+        "500W 13Ah 45km/h",
+        "Max 500W",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Max",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "500W 13Ah 45km/h": [
+          "Standart",
+          "Diğer"
+        ],
+        "Max 500W": [
+          "Max",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "OX",
+      "versions": [
+        "1000W Çift 13Ah",
+        "Eco 500W",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Eco",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1000W Çift 13Ah": [
+          "Standart",
+          "Diğer"
+        ],
+        "Eco 500W": [
+          "Eco",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "OXO",
+      "versions": [
+        "2000W Çift 26Ah",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Mini",
+      "versions": [
+        "250W 5.2Ah 25km/h",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "KIX",
+      "versions": [
+        "350W 8Ah 25km/h",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Diğer",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
+    }
   ]
 }
