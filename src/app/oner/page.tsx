@@ -79,7 +79,7 @@ function detectFuelType(version: string): string | null {
   if (v.includes("HEV") || v.includes("HYBRID") || v.includes("HİBRİT") || v.includes("HIBRIT")) return "HYBRID";
   if (v.includes("LPG") || v.includes("ECO-G")) return "LPG";
   if (
-    v.includes("DCI") || v.includes("TDI") || v.includes("CRDI") || v.includes("CDI") ||
+    v.includes("DCI") || v.includes("TDI") || v.includes("CRDI") || v.includes("CDI") || v.includes("DDIS") ||
     v.includes("BLUEHDI") || v.includes("HDI") || v.includes("DIESEL") || v.includes("DİZEL") || v.includes("DIZEL")
   ) return "DIESEL";
   // BMW/Mercedes "d" soneki: 116d, 220d, 400d — büyük harfli "4WD"/"AWD" ile karışmasın diye orijinal (küçük harf) string'de kontrol edilir

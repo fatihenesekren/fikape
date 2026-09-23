@@ -3,118 +3,507 @@
   "models": [
     {
       "name": "Alto",
-      "versions": ["1.0 68", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "versions": [
+        "1.0 68",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Samurai",
-      "versions": ["1.3 65", "1.0 45", "Diğer"],
-      "trims": ["Standart", "JLX", "Diğer"]
+      "versions": [
+        "1.3 65",
+        "1.0 45",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "JLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Jimny (1998-2018)",
-      "versions": ["1.3 85", "1.5 102", "Diğer"],
-      "trims": ["JLX", "Standart", "Diğer"]
+      "versions": [
+        "1.3 85",
+        "1.5 DDiS 65",
+        "1.5 DDiS 86",
+        "Diğer"
+      ],
+      "trims": [
+        "JLX",
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Jimny (2018-)",
-      "versions": ["1.5 102", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "versions": [
+        "1.5 102",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Swift (1989-2003)",
-      "versions": ["1.0 50", "1.3 68", "1.3 GTi 101", "Diğer"],
-      "trims": ["GA", "GL", "GLX", "Diğer"]
+      "versions": [
+        "1.0 50",
+        "1.3 68",
+        "1.3 GTi 101",
+        "Diğer"
+      ],
+      "trims": [
+        "GA",
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Swift (2004-2010)",
-      "versions": ["1.3 92", "1.5 101", "1.6 Sport 125", "Diğer"],
-      "trims": ["GL", "GLX", "Sport", "Diğer"]
+      "versions": [
+        "1.3 92",
+        "1.5 101",
+        "1.6 Sport 125",
+        "1.3 DDiS 75",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Sport",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.3 92": [
+          "GL",
+          "GLX",
+          "Diğer"
+        ],
+        "1.5 101": [
+          "GL",
+          "GLX",
+          "Diğer"
+        ],
+        "1.6 Sport 125": [
+          "Sport",
+          "Diğer"
+        ],
+        "1.3 DDiS 75": [
+          "GL",
+          "GLX",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Swift (2010-2017)",
-      "versions": ["1.2 94", "1.6 Sport 136", "1.3 DDiS 75", "Diğer"],
-      "trims": ["GL", "GLX", "Sport", "Diğer"]
+      "versions": [
+        "1.2 94",
+        "1.6 Sport 136",
+        "1.3 DDiS 75",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Sport",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.2 94": [
+          "GL",
+          "GLX",
+          "Diğer"
+        ],
+        "1.6 Sport 136": [
+          "Sport",
+          "Diğer"
+        ],
+        "1.3 DDiS 75": [
+          "GL",
+          "GLX",
+          "Diğer"
+        ]
+      }
     },
     {
-      "name": "Swift (2017-)",
-      "versions": ["1.0 Boosterjet 111 MHEV", "1.2 Dualjet 83 MHEV", "1.4 Boosterjet 129", "Sport 1.4 Boosterjet 129", "Diğer"],
-      "trims": ["GL", "GLX", "Sport", "Diğer"]
+      "name": "Swift (2017-2024)",
+      "versions": [
+        "1.2 Dualjet 90",
+        "1.2 Dualjet 83 MHEV",
+        "1.0 Boosterjet 111 MHEV",
+        "Sport 1.4 Boosterjet 140",
+        "Sport 1.4 Boosterjet 129 MHEV",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "GL Techno",
+        "GLX Premium",
+        "Sport",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.2 Dualjet 90": [
+          "GL",
+          "GLX",
+          "Diğer"
+        ],
+        "1.2 Dualjet 83 MHEV": [
+          "GL Techno",
+          "GLX Premium",
+          "Diğer"
+        ],
+        "1.0 Boosterjet 111 MHEV": [
+          "GL",
+          "GLX",
+          "Diğer"
+        ],
+        "Sport 1.4 Boosterjet 140": [
+          "Sport",
+          "Diğer"
+        ],
+        "Sport 1.4 Boosterjet 129 MHEV": [
+          "Sport",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "Swift (2024-)",
+      "versions": [
+        "1.2 MHEV 82",
+        "Diğer"
+      ],
+      "trims": [
+        "Life",
+        "Pulse",
+        "Diğer"
+      ]
     },
     {
       "name": "SX4 (2006-2013)",
-      "versions": ["1.6 94", "1.9 DDiS 120", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "versions": [
+        "1.5 99",
+        "1.6 VVT 107",
+        "1.9 DDiS 120",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
-      "name": "SX4 S-Cross",
-      "versions": ["1.0 Boosterjet 111 FWD", "1.4 Boosterjet 129 AWD", "1.5 MHEV 102 FWD", "Diğer"],
-      "trims": ["GL", "GLX", "S", "Diğer"]
+      "name": "SX4 S-Cross (2013-2021)",
+      "versions": [
+        "1.6 120 FWD",
+        "1.6 120 AWD",
+        "1.6 DDiS 120 FWD",
+        "1.6 DDiS 120 AWD",
+        "1.0 Boosterjet 111 FWD",
+        "1.4 Boosterjet 140 FWD",
+        "1.4 Boosterjet 140 AWD",
+        "1.4 Boosterjet 129 MHEV FWD",
+        "1.4 Boosterjet 129 MHEV AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GL Plus",
+        "GLX",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 120 FWD": [
+          "GL",
+          "GL Plus",
+          "GLX",
+          "Diğer"
+        ],
+        "1.6 120 AWD": [
+          "GL",
+          "GL Plus",
+          "GLX",
+          "Diğer"
+        ],
+        "1.6 DDiS 120 FWD": [
+          "GL",
+          "GL Plus",
+          "GLX",
+          "Diğer"
+        ],
+        "1.6 DDiS 120 AWD": [
+          "GL",
+          "GL Plus",
+          "GLX",
+          "Diğer"
+        ]
+      }
+    },
+    {
+      "name": "S-Cross (2022-)",
+      "versions": [
+        "1.4 Boosterjet 129 MHEV FWD",
+        "1.4 Boosterjet 129 MHEV AWD",
+        "1.5 Full Hybrid 115 AGS",
+        "Diğer"
+      ],
+      "trims": [
+        "GL Elegance",
+        "GLX Premium",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.4 Boosterjet 129 MHEV FWD": [
+          "GL Elegance",
+          "GLX Premium",
+          "Diğer"
+        ],
+        "1.4 Boosterjet 129 MHEV AWD": [
+          "GL Elegance",
+          "GLX Premium",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Baleno (1995-2002)",
-      "versions": ["1.3 79", "1.6 90", "Diğer"],
-      "trims": ["Standart", "GLX", "Diğer"]
+      "versions": [
+        "1.3 79",
+        "1.6 90",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
-      "name": "Baleno (2015-)",
-      "versions": ["1.2 Dualjet 90 MHEV", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "name": "Baleno (2016-2020)",
+      "versions": [
+        "1.2 Dualjet 90",
+        "1.2 Dualjet 90 MHEV",
+        "1.0 Boosterjet 111",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Splash",
-      "versions": ["1.0 68", "1.2 86", "1.3 DDiS 75", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "versions": [
+        "1.0 68",
+        "1.2 86",
+        "1.3 DDiS 75",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Liana",
-      "versions": ["1.6 94", "1.6 4x4 94", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "versions": [
+        "1.3 89",
+        "1.6 105",
+        "1.6 4x4 105",
+        "1.4 DDiS 90",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Wagon R+",
-      "versions": ["1.0 58", "1.2 80", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "versions": [
+        "1.0 58",
+        "1.2 80",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Ignis",
-      "versions": ["1.2 Dualjet 83 MHEV AWD", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "versions": [
+        "1.2 Dualjet 90 FWD",
+        "1.2 Dualjet 90 AWD",
+        "1.2 Dualjet 83 MHEV FWD",
+        "1.2 Dualjet 83 MHEV AWD",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Vitara (1988-1998)",
-      "versions": ["1.6 80", "1.6 97", "2.0 TD 73", "Diğer"],
-      "trims": ["JLX", "JX", "Diğer"]
+      "versions": [
+        "1.6 80",
+        "1.6 97",
+        "2.0 TD 73",
+        "Diğer"
+      ],
+      "trims": [
+        "JLX",
+        "JX",
+        "Diğer"
+      ]
     },
     {
       "name": "Grand Vitara (1998-2005)",
-      "versions": ["1.6 92", "2.0 128", "2.5 V6 156", "2.0 TD 109", "Diğer"],
-      "trims": ["JLX", "Diğer"]
+      "versions": [
+        "1.6 92",
+        "2.0 128",
+        "2.5 V6 156",
+        "2.0 TD 109",
+        "Diğer"
+      ],
+      "trims": [
+        "JLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Grand Vitara (2005-2015)",
-      "versions": ["1.6 106", "2.0 140", "2.4 166", "1.9 DDiS 129", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "versions": [
+        "1.6 106",
+        "2.0 140",
+        "2.4 166",
+        "1.9 DDiS 129",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Vitara (2015-)",
-      "versions": ["1.0 Boosterjet 111 FWD", "1.4 Boosterjet 129 FWD", "1.4 Boosterjet 129 AWD", "1.5 MHEV 102 FWD", "Diğer"],
-      "trims": ["GL", "GLX", "S", "Diğer"]
+      "versions": [
+        "1.6 120 FWD",
+        "1.6 120 AWD",
+        "1.6 DDiS 120 FWD",
+        "1.6 DDiS 120 AWD",
+        "1.4 Boosterjet 140 FWD",
+        "1.4 Boosterjet 140 AWD",
+        "1.4 Boosterjet 129 MHEV FWD",
+        "1.4 Boosterjet 129 MHEV AWD",
+        "1.0 Boosterjet 111 FWD",
+        "1.5 Full Hybrid 115 AGS",
+        "Diğer"
+      ],
+      "trims": [
+        "GL Plus",
+        "GLX",
+        "S",
+        "GL Elegance",
+        "GLX Premium",
+        "Diğer"
+      ],
+      "trimsByVersion": {
+        "1.6 120 FWD": [
+          "GL Plus",
+          "GLX",
+          "Diğer"
+        ],
+        "1.6 120 AWD": [
+          "GL Plus",
+          "GLX",
+          "Diğer"
+        ],
+        "1.6 DDiS 120 FWD": [
+          "GL Plus",
+          "GLX",
+          "Diğer"
+        ],
+        "1.6 DDiS 120 AWD": [
+          "GL Plus",
+          "GLX",
+          "Diğer"
+        ],
+        "1.4 Boosterjet 140 FWD": [
+          "S",
+          "GL Plus",
+          "GLX Premium",
+          "Diğer"
+        ],
+        "1.4 Boosterjet 140 AWD": [
+          "S",
+          "GL Plus",
+          "GLX Premium",
+          "Diğer"
+        ],
+        "1.4 Boosterjet 129 MHEV FWD": [
+          "GL Elegance",
+          "GLX Premium",
+          "Diğer"
+        ],
+        "1.4 Boosterjet 129 MHEV AWD": [
+          "GL Elegance",
+          "GLX Premium",
+          "Diğer"
+        ]
+      }
     },
     {
       "name": "Across",
-      "versions": ["2.5 PHEV AWD 306", "Diğer"],
-      "trims": ["Standart", "Diğer"]
+      "versions": [
+        "2.5 PHEV AWD 306",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
     },
     {
       "name": "Swace",
-      "versions": ["1.8 Hybrid 122", "Diğer"],
-      "trims": ["GL", "GLX", "Diğer"]
+      "versions": [
+        "1.8 Hybrid 122",
+        "Diğer"
+      ],
+      "trims": [
+        "GL",
+        "GLX",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",
-      "versions": ["Diğer"],
-      "trims": ["Diğer"]
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Diğer"
+      ]
     }
   ]
 }
