@@ -86,7 +86,16 @@ export const versiyonSecenekleri = (tipler: KatalogTip[]) => {
 };
 export const paketSecenekleri = (tipler: KatalogTip[]) => benzersiz(tipler.map((t) => t.p ?? PAKET_YOK));
 
-export const kasayaGore = (tipler: KatalogTip[], kasa: string) => tipler.filter((t) => (t.k ?? KASA_YOK) === kasa);
+/**
+ * Kasaya göre süzerken beygiri boş kalan satırlar dahil edilir (kapsayıcı filtre):
+ * TSB çoğu zaman yalnız azınlık gövdeyi ayırt etmek için kasa yazar (ör. Corolla'da
+ * yalnız "Hatchback" işaretlenir, "Sedan" hiç yazılı geçmez ama gerçekten satılır) —
+ * o yüzden gerçek bir kasa seçildiğinde kasası belirtilmemiş satırlar da gösterilir,
+ * gerçek trimler asla gizlenmez. Yalnız "Kasa tipi belirtilmemiş" seçilince sadece o
+ * belirsiz satırlar gösterilir.
+ */
+export const kasayaGore = (tipler: KatalogTip[], kasa: string) =>
+  kasa === KASA_YOK ? tipler.filter((t) => t.k === null) : tipler.filter((t) => t.k === kasa || t.k === null);
 export const versiyonaGore = (tipler: KatalogTip[], etiket: string) => {
   const beygirler = versiyonBeygirleri(tipler);
   return tipler.filter((t) => versiyonEtiketi(t, beygirler) === etiket);

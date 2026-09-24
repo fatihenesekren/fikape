@@ -126,6 +126,8 @@ export default function KatalogAracSecimi({
   const [ozelPaket, setOzelPaket] = useState("");
   const [yakitSecim, setYakitSecim] = useState("");
   const [vitesSecim, setVitesSecim] = useState("");
+  const [yakitDegistir, setYakitDegistir] = useState(false);
+  const [vitesDegistir, setVitesDegistir] = useState(false);
 
   // Marka dosyası — yalnız marka seçilince indirilir
   const markaGirdisi = markalar.find((m) => m.marka === marka);
@@ -177,10 +179,16 @@ export default function KatalogAracSecimi({
   const vites: AlanDurumu<string> = tipTamam ? vitesDurumu(t3) : { serbest: true };
   const yakitSecenek = durumSecenekleri(yakit, YAKITLAR[kategori]);
   const vitesSecenek = durumSecenekleri(vites, VITESLER[kategori]);
+  // Kilitli alan "değiştir" ile açılınca kataloğun önerdiği daralmış listeyle değil,
+  // tüm seçeneklerle sunulur — kullanıcı kendi aracını daha iyi biliyor olabilir.
+  const yakitListesi = "kilitli" in yakit ? YAKITLAR[kategori] : yakitSecenek;
+  const vitesListesi = "kilitli" in vites ? VITESLER[kategori] : vitesSecenek;
   const etkinYakit =
-    "kilitli" in yakit ? yakit.kilitli : yakitSecenek.some((o) => o.value === yakitSecim) ? yakitSecim : "";
+    "kilitli" in yakit && !yakitDegistir ? yakit.kilitli
+      : yakitListesi.some((o) => o.value === yakitSecim) ? yakitSecim : "";
   const etkinVites =
-    "kilitli" in vites ? vites.kilitli : vitesSecenek.some((o) => o.value === vitesSecim) ? vitesSecim : "";
+    "kilitli" in vites && !vitesDegistir ? vites.kilitli
+      : vitesListesi.some((o) => o.value === vitesSecim) ? vitesSecim : "";
 
   // ─── Sonuç ────────────────────────────────────────────────────────────
   // React Compiler önbelleğe alır — elle useMemo gerekmiyor
@@ -219,7 +227,7 @@ export default function KatalogAracSecimi({
     if (i < 3) setKasa("");
     if (i < 4) { setVersiyon(""); setOzelVersiyon(""); }
     if (i < 5) { setPaket(""); setOzelPaket(""); }
-    setYakitSecim(""); setVitesSecim("");
+    setYakitSecim(""); setVitesSecim(""); setYakitDegistir(false); setVitesDegistir(false);
   };
 
   return (
@@ -369,22 +377,34 @@ export default function KatalogAracSecimi({
       {yil && (!tsbModu || t2.length > 0 || versiyonListedeYok) && (
         <div className="grid grid-cols-2 gap-3">
           <Alan label="Yakıt Tipi">
-            {"kilitli" in yakit ? (
-              <KilitliDeger deger={YAKITLAR[kategori].find((o) => o.value === yakit.kilitli)?.label ?? yakit.kilitli} />
+            {"kilitli" in yakit && !yakitDegistir ? (
+              <>
+                <KilitliDeger deger={YAKITLAR[kategori].find((o) => o.value === yakit.kilitli)?.label ?? yakit.kilitli} />
+                <button type="button" onClick={() => { setYakitDegistir(true); setYakitSecim(yakit.kilitli); }}
+                  className="mt-1 text-xs text-gray-400 hover:text-gray-600 underline">
+                  Bu bilgi yanlışsa değiştir
+                </button>
+              </>
             ) : (
               <select value={etkinYakit} onChange={(e) => setYakitSecim(e.target.value)} className={selectCls}>
                 <option value="">— Seçin —</option>
-                {yakitSecenek.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+                {yakitListesi.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
               </select>
             )}
           </Alan>
           <Alan label="Vites Tipi">
-            {"kilitli" in vites ? (
-              <KilitliDeger deger={vites.kilitli} />
+            {"kilitli" in vites && !vitesDegistir ? (
+              <>
+                <KilitliDeger deger={vites.kilitli} />
+                <button type="button" onClick={() => { setVitesDegistir(true); setVitesSecim(vites.kilitli); }}
+                  className="mt-1 text-xs text-gray-400 hover:text-gray-600 underline">
+                  Bu bilgi yanlışsa değiştir
+                </button>
+              </>
             ) : (
               <select value={etkinVites} onChange={(e) => setVitesSecim(e.target.value)} className={selectCls}>
                 <option value="">— Seçin —</option>
-                {vitesSecenek.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+                {vitesListesi.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
               </select>
             )}
           </Alan>
