@@ -296,7 +296,7 @@ export const BODY_WORDS: Record<string, string> = {
   PANELVAN: "Panelvan", "PANEL VAN": "Panelvan", VAN: "Van", MINIBUS: "Minibüs", KAMYONET: "Kamyonet", "K.NET": "Kamyonet",
   KNET: "Kamyonet", CAMLIVAN: "Camlıvan", CITYVAN: "Cityvan", "CIFT KABIN": "Çift Kabin", "TEK KABIN": "Tek Kabin",
   "PICK-UP": "Pick-up", PICKUP: "Pick-up", SASI: "Şasi", OKUL: "Okul Taşıtı", SERVIS: "Servis", MIXTO: "Mixto",
-  CARGO: "Cargo", FURGON: "Furgon", "CAMLI VAN": "Camlıvan", HATCBACK: "Hatchback", "S.WAGON": "Station Wagon", SUV: "SUV", "4D": "Sedan", "KOMBI VAN": "Kombi Van", KOMBIVAN: "Kombi Van",
+  CARGO: "Cargo", FURGON: "Furgon", "CAMLI VAN": "Camlıvan", HATCBACK: "Hatchback", "S.WAGON": "Station Wagon", SUV: "SUV", "KOMBI VAN": "Kombi Van", KOMBIVAN: "Kombi Van",
 };
 
 /** Hafif ticaride boyut/kapasite yapılandırması — kasa bilgisine eklenir, paket değildir. */

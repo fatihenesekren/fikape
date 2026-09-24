@@ -283,6 +283,10 @@ export function parseTip(tsbMarka: string, tipAdi: string, deglue?: Deglue, raka
     if (two && BODY_WORDS[two]) { body ??= BODY_WORDS[two]; vitessiz.push(next); i++; continue; }
     if (two && DRIVE_WORDS[two]) { cekis ??= DRIVE_WORDS[two]; vitessiz.push(next); i++; continue; }
     if (two && ENGINE_WORDS[two]) { motorParts.push(ENGINE_WORDS[two]); motorSeen = true; vitessiz.push(next); i++; continue; }
+    // "4D" yalnız Honda Civic/City'de gövde önekiyken ("4D DREAM...") sedan işaretidir;
+    // aynı token SEAT Ateca'da (SUV) ve "D-4D" dizel motor kodunun parçası olarak
+    // Toyota'da ("... D 4D") da geçtiğinden, yalnız kalan metnin İLK kelimesiyse güvenilir.
+    if (w === "4D" && i === 0) { body ??= "Sedan"; continue; }
     if (BODY_WORDS[w]) { body ??= BODY_WORDS[w]; continue; }
     if (DRIVE_WORDS[w]) { cekis ??= DRIVE_WORDS[w]; continue; }
     if (/^(XDRIVE|SDRIVE)\d{2}[IDE]?$/.test(w)) { // "SDRIVE18I" → çekiş + motor

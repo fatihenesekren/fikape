@@ -146,6 +146,16 @@ describe("parseTip — TSB tip adı ayrıştırma", () => {
     expect(t.paket).toBe("SRT8");
   });
 
+  it("'4D' yalnız gövde önekiyken sedan sayılır, motor kodu parçası veya SUV'da değil", () => {
+    // Honda'da "4D" gövde adının kendisidir — Civic/City sedan modelleri
+    expect(ok("HONDA", "CIVIC 4D DREAM 1.6 125").kasa).toBe("Sedan");
+    expect(ok("HONDA", "CITY 4D 1.5 ELEGANCE").kasa).toBe("Sedan");
+    // SEAT Ateca bir SUV'dur; TSB metninde ortada geçen "4D" sedan anlamına gelmez
+    expect(ok("SEAT", "ATECA 1.4 ECOTSI ACT 150 4D XCELLENCE").kasa).not.toBe("Sedan");
+    // Toyota'da "D 4D" dizel motor kodunun (D-4D) parçasıdır, gövde bilgisi değildir
+    expect(ok("TOYOTA", "PRADO 3.0 D 4D").kasa).not.toBe("Sedan");
+  });
+
   it("kaynaktaki yazım hatasını düzeltir ve kaydeder", () => {
     const t = ok("ALFA ROMEO", "STEVIO 2.0 280 Q4");
     expect(t.model).toBe("Stelvio");
