@@ -56,6 +56,39 @@ describe("katalog seçimi", () => {
     expect(versiyonBilgisiVarMi([tip({ v: "1.6 E-Torq", hp: null })])).toBe(true);
   });
 
+  it("aynı versiyon metninde beygiri boş satır, tek bilinen beygir değerine katılır (C5 Aircross gibi)", () => {
+    const c5: KatalogModel = {
+      ad: "C5 Aircross",
+      nesiller: [],
+      tipler: [
+        tip({ v: "1.5 BlueHDi", hp: 130, p: "Shine", y: [2023] }),
+        tip({ v: "1.5 BlueHDi", hp: 130, p: "Shine Bold", y: [2023] }),
+        tip({ v: "1.5 BlueHDi", hp: null, p: "Shine Bold", y: [2023] }),
+      ],
+    };
+    const t = yilTipleri(c5, 2023);
+    // "1.5 BlueHDi" ve "1.5 BlueHDi · 130 HP" iki ayrı seçenek gibi görünmemeli
+    expect(versiyonSecenekleri(t)).toEqual(["1.5 BlueHDi · 130 HP"]);
+    const secilen = versiyonaGore(t, "1.5 BlueHDi · 130 HP");
+    expect(secilen).toHaveLength(3);
+    expect(paketSecenekleri(secilen)).toEqual(["Shine", "Shine Bold"]);
+    expect(ortakBeygir(paketeGore(secilen, "Shine Bold"))).toBe(130);
+  });
+
+  it("aynı versiyon metninde birden çok FARKLI beygir varsa karıştırmaz", () => {
+    const belirsiz: KatalogModel = {
+      ad: "X",
+      nesiller: [],
+      tipler: [
+        tip({ v: "2.0 TFSI", hp: 190, y: [2020] }),
+        tip({ v: "2.0 TFSI", hp: 245, y: [2020] }),
+        tip({ v: "2.0 TFSI", hp: null, y: [2020] }),
+      ],
+    };
+    const t = yilTipleri(belirsiz, 2020);
+    expect(versiyonSecenekleri(t)).toEqual(["2.0 TFSI", "2.0 TFSI · 190 HP", "2.0 TFSI · 245 HP"]);
+  });
+
   it("trim adı ve beygir", () => {
     const t = paketeGore(versiyonaGore(yilTipleri(egea, 2019), "1.4 Fire · 95 HP"), "Urban");
     expect(ortakBeygir(t)).toBe(95);

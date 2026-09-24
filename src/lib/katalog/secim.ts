@@ -37,10 +37,33 @@ export function yilNesilleri(model: KatalogModel, yil: number): KatalogNesil[] {
 
 export const VERSIYON_YOK = "Versiyon belirtilmemiş";
 
+/**
+ * Kaynak bazı satırlarda beygiri boş bırakmış olsa da motor aynıdır (ör. Citroën
+ * C5 Aircross "1.5 BlueHDi" bazı paket satırlarında 130 HP der, bazılarında hiç
+ * demez — ikisi de aynı motor). Aynı versiyon metninde beygiri BİLİNEN tek bir
+ * değer varsa (çelişki yoksa), o değeri beygiri boş satırlara da uygulayıp
+ * "1.5 BlueHDi" ile "1.5 BlueHDi · 130 HP"nin iki ayrı, kullanıcıyı yanıltan
+ * seçenek gibi görünmesini engeller. Aynı metinde birden fazla FARKLI beygir
+ * değeri varsa (gerçekten farklı güç seçenekleri olabilir) karıştırılmaz.
+ */
+function versiyonBeygirleri(tipler: KatalogTip[]): Map<string, number> {
+  const gruplar = new Map<string, Set<number>>();
+  for (const t of tipler) {
+    if (t.hp === null) continue;
+    const v = t.v || VERSIYON_YOK;
+    if (!gruplar.has(v)) gruplar.set(v, new Set());
+    gruplar.get(v)!.add(t.hp);
+  }
+  const sonuc = new Map<string, number>();
+  for (const [v, hpSet] of gruplar) if (hpSet.size === 1) sonuc.set(v, [...hpSet][0]);
+  return sonuc;
+}
+
 /** Versiyon etiketi: "1.6 E-Torq · 110 HP". Aynı etiketli tipler tek seçenek olur. */
-export function versiyonEtiketi(t: Pick<KatalogTip, "v" | "hp">): string {
+export function versiyonEtiketi(t: Pick<KatalogTip, "v" | "hp">, beygirler?: Map<string, number>): string {
   const v = t.v || VERSIYON_YOK;
-  return t.hp ? `${v} · ${t.hp} HP` : v;
+  const hp = t.hp ?? beygirler?.get(v) ?? null;
+  return hp ? `${v} · ${hp} HP` : v;
 }
 
 /**
@@ -57,11 +80,17 @@ export const KASA_YOK = "Kasa tipi belirtilmemiş";
 const benzersiz = (liste: string[]) => [...new Set(liste)].sort((a, b) => a.localeCompare(b, "tr", { numeric: true }));
 
 export const kasaSecenekleri = (tipler: KatalogTip[]) => benzersiz(tipler.map((t) => t.k ?? KASA_YOK));
-export const versiyonSecenekleri = (tipler: KatalogTip[]) => benzersiz(tipler.map(versiyonEtiketi));
+export const versiyonSecenekleri = (tipler: KatalogTip[]) => {
+  const beygirler = versiyonBeygirleri(tipler);
+  return benzersiz(tipler.map((t) => versiyonEtiketi(t, beygirler)));
+};
 export const paketSecenekleri = (tipler: KatalogTip[]) => benzersiz(tipler.map((t) => t.p ?? PAKET_YOK));
 
 export const kasayaGore = (tipler: KatalogTip[], kasa: string) => tipler.filter((t) => (t.k ?? KASA_YOK) === kasa);
-export const versiyonaGore = (tipler: KatalogTip[], etiket: string) => tipler.filter((t) => versiyonEtiketi(t) === etiket);
+export const versiyonaGore = (tipler: KatalogTip[], etiket: string) => {
+  const beygirler = versiyonBeygirleri(tipler);
+  return tipler.filter((t) => versiyonEtiketi(t, beygirler) === etiket);
+};
 export const paketeGore = (tipler: KatalogTip[], paket: string) => tipler.filter((t) => (t.p ?? PAKET_YOK) === paket);
 
 /**
@@ -81,9 +110,12 @@ function alanDurumu<T>(degerler: (T | null)[]): AlanDurumu<T> {
 export const yakitDurumu = (tipler: KatalogTip[]): AlanDurumu<KatalogYakit> => alanDurumu(tipler.map((t) => t.f));
 export const vitesDurumu = (tipler: KatalogTip[]): AlanDurumu<KatalogVites> => alanDurumu(tipler.map((t) => t.t));
 
-/** Kalan tiplerin hepsi aynı beygirdeyse o değer (power_hp olarak gönderilir). */
+/**
+ * Kalan tiplerin BİLİNEN beygirleri tek bir değerdeyse o değer (power_hp olarak
+ * gönderilir); beygiri boş satırlar (bkz. versiyonBeygirleri) çelişki saymaz.
+ */
 export function ortakBeygir(tipler: KatalogTip[]): number | null {
-  const set = new Set(tipler.map((t) => t.hp));
+  const set = new Set(tipler.map((t) => t.hp).filter((hp): hp is number => hp !== null));
   return set.size === 1 ? [...set][0] : null;
 }
 
