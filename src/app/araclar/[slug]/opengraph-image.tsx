@@ -7,6 +7,11 @@ export const runtime = "nodejs";
 export const alt = "fikape araç yorumları";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+// Dinamik segment + generateStaticParams yok → varsayılan her istekte render.
+// Araç sayfaları sitenin en çok paylaşılan içeriği; her paylaşım/crawler
+// önizlemesinde sıfırdan render gereksiz CPU harcıyordu (bkz. kart.png fix'i,
+// aynı gerekçe). Skor/yorum sayısı saatlik değişmeyecek kadar durağan.
+export const revalidate = 3600;
 
 function ScoreBar({
   label,
