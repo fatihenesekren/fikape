@@ -176,7 +176,7 @@ async function renderCard(review: NonNullable<Awaited<ReturnType<typeof getRevie
   const rawImageUrl = review.product.imageUrl ?? (await getVehicleImageUrl(review.product.slug));
   const catalogImageUrl = await catalogImageDataUrl(rawImageUrl);
 
-  return new ImageResponse(
+  const img = new ImageResponse(
     (
       <div
         style={{
@@ -387,4 +387,10 @@ async function renderCard(review: NonNullable<Awaited<ReturnType<typeof getRevie
     ),
     { ...size }
   );
+
+  // Paylaşım kartı her sosyal medya crawler'ında (WhatsApp/Twitter/Telegram
+  // önizlemesi) sıfırdan render ediliyordu — CPU maliyeti gereksiz tekrarlanıyordu.
+  // badge.png rotasındaki desenle aynı: içerik saatlik değişmeyecek kadar durağan.
+  img.headers.set("Cache-Control", "public, max-age=3600");
+  return img;
 }

@@ -113,7 +113,7 @@ async function renderCard(slug: string, profile: NonNullable<Awaited<ReturnType<
   const initials = getInitials(displayName);
   const avatarColor = getAvatarColor(String(profile.user.id));
 
-  return new ImageResponse(
+  const img = new ImageResponse(
     (
       <div
         style={{
@@ -365,4 +365,10 @@ async function renderCard(slug: string, profile: NonNullable<Awaited<ReturnType<
     ),
     { ...size }
   );
+
+  // Paylaşım kartı her sosyal medya crawler'ında (WhatsApp/Twitter/Telegram
+  // önizlemesi) sıfırdan render ediliyordu — CPU maliyeti gereksiz tekrarlanıyordu.
+  // badge.png rotasındaki desenle aynı: içerik saatlik değişmeyecek kadar durağan.
+  img.headers.set("Cache-Control", "public, max-age=3600");
+  return img;
 }
