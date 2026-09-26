@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
-  kasaSecenekleri, kasayaGore, modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi, versiyonSecenekleri,
+  modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi, versiyonSecenekleri,
   versiyonaGore, versiyonBilgisiVarMi, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri,
 } from "./secim";
 import type { KatalogModel, KatalogTip } from "./tipler";
@@ -87,25 +87,6 @@ describe("katalog seçimi", () => {
     };
     const t = yilTipleri(belirsiz, 2020);
     expect(versiyonSecenekleri(t)).toEqual(["2.0 TFSI", "2.0 TFSI · 190 HP", "2.0 TFSI · 245 HP"]);
-  });
-
-  it("kasa filtresi kapsayıcıdır — gerçek bir kasa seçilince kasası belirtilmemiş satırlar gizlenmez (Corolla gibi)", () => {
-    const corolla: KatalogModel = {
-      ad: "Corolla",
-      nesiller: [],
-      tipler: [
-        tip({ v: "1.8 Hybrid", p: "Flame", k: "Hatchback", y: [2024] }),
-        tip({ v: "1.5", p: "Dream", k: null, y: [2024] }),
-        tip({ v: "1.5", p: "Vision", k: null, y: [2024] }),
-      ],
-    };
-    const t = yilTipleri(corolla, 2024);
-    expect(kasaSecenekleri(t)).toEqual(["Hatchback", "Kasa tipi belirtilmemiş"]);
-    // "Hatchback" seçilince, kasası hiç yazılmamış (muhtemelen sedan) satırlar gizlenmemeli
-    expect(kasayaGore(t, "Hatchback")).toHaveLength(3);
-    expect(paketSecenekleri(kasayaGore(t, "Hatchback"))).toEqual(["Dream", "Flame", "Vision"]);
-    // "Kasa tipi belirtilmemiş" yalnız gerçekten belirsiz olanları gösterir
-    expect(kasayaGore(t, "Kasa tipi belirtilmemiş")).toHaveLength(2);
   });
 
   it("trim adı ve beygir", () => {

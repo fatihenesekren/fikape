@@ -1,7 +1,7 @@
 "use client";
 
 // Araç Öner — otomobil/kamyonet seçimi (TSB tabanlı katalog).
-// Marka → Model → Yıl → (Kasa) → Versiyon → Donanım Paketi → Yakıt → Vites.
+// Marka → Model → Yıl → Versiyon → Donanım Paketi → Yakıt → Vites.
 // Her adım gerçek tiplere göre daralır; yakıt/vites yalnız kaynak kesin söylüyorsa
 // kilitlenir, aksi halde kullanıcıya sorulur (bkz. src/lib/katalog/secim.ts).
 // Marka dosyası (public/katalog/…) yalnız marka seçilince indirilir.
@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import katalogIndex from "@/data/katalogIndex.json";
 import type { KatalogIndex, KatalogKategori, KatalogMarkaDosyasi } from "@/lib/katalog/tipler";
 import {
-  kasaSecenekleri, kasayaGore, modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi,
+  modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi,
   versiyonSecenekleri, versiyonaGore, versiyonBilgisiVarMi, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri, BUGUN_YIL,
   type AlanDurumu,
 } from "@/lib/katalog/secim";
@@ -119,7 +119,6 @@ export default function KatalogAracSecimi({
   const [ozelModel, setOzelModel] = useState(baslangicOzelModel);
   const [yil, setYil] = useState("");
   const [nesilAd, setNesilAd] = useState("");
-  const [kasa, setKasa] = useState("");
   const [versiyon, setVersiyon] = useState("");
   const [ozelVersiyon, setOzelVersiyon] = useState("");
   const [paket, setPaket] = useState("");
@@ -154,9 +153,7 @@ export default function KatalogAracSecimi({
   // ─── TSB modu (yıl için gerçek tipler var) ────────────────────────────
   const tsbTipler = modelObj && yilSayi ? yilTipleri(modelObj, yilSayi) : [];
   const tsbModu = tsbTipler.length > 0;
-  const kasalar = kasaSecenekleri(tsbTipler);
-  const etkinKasa = kasalar.length === 1 ? kasalar[0] : kasa;
-  const t1 = tsbModu && etkinKasa ? kasayaGore(tsbTipler, etkinKasa) : [];
+  const t1 = tsbTipler;
   const versiyonlar = versiyonSecenekleri(t1);
   const etkinVersiyon = versiyonlar.length === 1 ? versiyonlar[0] : versiyon;
   const versiyonListedeYok = versiyon === LISTEDE_YOK;
@@ -219,14 +216,13 @@ export default function KatalogAracSecimi({
   useEffect(() => { onChange(sonuc); }, [sonucAnahtar]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ─── Sıfırlayıcılar (bir üst seçim değişince alttakiler temizlenir) ─────
-  const altlariTemizle = (seviye: "marka" | "model" | "yil" | "kasa" | "versiyon" | "paket") => {
-    const sira = ["marka", "model", "yil", "kasa", "versiyon", "paket"];
+  const altlariTemizle = (seviye: "marka" | "model" | "yil" | "versiyon" | "paket") => {
+    const sira = ["marka", "model", "yil", "versiyon", "paket"];
     const i = sira.indexOf(seviye);
     if (i < 1) { setModel(""); setOzelModel(""); }
     if (i < 2) { setYil(""); setNesilAd(""); }
-    if (i < 3) setKasa("");
-    if (i < 4) { setVersiyon(""); setOzelVersiyon(""); }
-    if (i < 5) { setPaket(""); setOzelPaket(""); }
+    if (i < 3) { setVersiyon(""); setOzelVersiyon(""); }
+    if (i < 4) { setPaket(""); setOzelPaket(""); }
     setYakitSecim(""); setVitesSecim(""); setYakitDegistir(false); setVitesDegistir(false);
   };
 
@@ -277,20 +273,15 @@ export default function KatalogAracSecimi({
         </Alan>
       )}
 
-      {/* TSB modu */}
-      {tsbModu && kasalar.length > 1 && (
-        <Alan label="Kasa Tipi">
-          <select value={kasa} onChange={(e) => { setKasa(e.target.value); altlariTemizle("kasa"); }} className={selectCls}>
-            <option value="">— Seçin —</option>
-            {kasalar.map((k) => <option key={k} value={k}>{k}</option>)}
-          </select>
-        </Alan>
-      )}
+      {/* TSB modu — Kasa Tipi adımı kaldırıldı (bkz. kullanıcı geri bildirimi,
+          2026-09-26): TSB kasayı yalnız modelin azınlık gövde varyantını ayırt
+          etmek için yazıyor, bu yüzden ör. Corolla'da "Sedan" hiç seçenek olarak
+          çıkmıyordu ve kasa zaten kalıcı veriye (KatalogSecimSonucu) hiç girmiyordu. */}
 
       {/* Kaynakta bu model için hiçbir motor/beygir bilgisi yoksa (yalnız paketle
           ayrışıyor) boş "Versiyon belirtilmemiş" alanı göstermenin anlamı yok —
           adım atlanır, doğrudan Donanım Paketi'ne geçilir. */}
-      {tsbModu && etkinKasa && versiyonBilgisiVarMi(t1) && (
+      {tsbModu && versiyonBilgisiVarMi(t1) && (
         <Alan label="Versiyon">
           {/* Tek seçenekte de select: önceden seçili gelir, "Listede yok" ile kaçış mümkün */}
           {(
@@ -326,7 +317,7 @@ export default function KatalogAracSecimi({
       {/* Eski katalog modu (2012 öncesi / TSB'de olmayan model) */}
       {!tsbModu && nesiller.length > 1 && (
         <Alan label="Nesil">
-          <select value={nesilAd} onChange={(e) => { setNesilAd(e.target.value); altlariTemizle("kasa"); }} className={selectCls}>
+          <select value={nesilAd} onChange={(e) => { setNesilAd(e.target.value); altlariTemizle("yil"); }} className={selectCls}>
             <option value="">— Seçin —</option>
             {nesiller.map((n) => <option key={n.ad} value={n.ad}>{n.ad}</option>)}
           </select>
