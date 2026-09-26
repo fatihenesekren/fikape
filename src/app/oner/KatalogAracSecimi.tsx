@@ -80,16 +80,6 @@ function Alan({ label, zorunlu, children }: { label: string; zorunlu?: boolean; 
   );
 }
 
-/** Kilitli alan: kaynak kesin söylüyor, kullanıcı değiştiremez. */
-function KilitliDeger({ deger }: { deger: string }) {
-  return (
-    <div className="w-full px-3 py-2 rounded-xl border border-gray-200 bg-gray-50 text-sm text-gray-800 flex items-center justify-between gap-2">
-      <span className="truncate">{deger}</span>
-      <span className="text-[11px] text-gray-400 shrink-0">katalogdan</span>
-    </div>
-  );
-}
-
 function durumSecenekleri<T extends string>(
   durum: AlanDurumu<T>,
   tum: { value: string; label: string }[],
@@ -125,8 +115,6 @@ export default function KatalogAracSecimi({
   const [ozelPaket, setOzelPaket] = useState("");
   const [yakitSecim, setYakitSecim] = useState("");
   const [vitesSecim, setVitesSecim] = useState("");
-  const [yakitDegistir, setYakitDegistir] = useState(false);
-  const [vitesDegistir, setVitesDegistir] = useState(false);
 
   // Marka dosyası — yalnız marka seçilince indirilir
   const markaGirdisi = markalar.find((m) => m.marka === marka);
@@ -176,15 +164,16 @@ export default function KatalogAracSecimi({
   const vites: AlanDurumu<string> = tipTamam ? vitesDurumu(t3) : { serbest: true };
   const yakitSecenek = durumSecenekleri(yakit, YAKITLAR[kategori]);
   const vitesSecenek = durumSecenekleri(vites, VITESLER[kategori]);
-  // Kilitli alan "değiştir" ile açılınca kataloğun önerdiği daralmış listeyle değil,
-  // tüm seçeneklerle sunulur — kullanıcı kendi aracını daha iyi biliyor olabilir.
+  // Katalog kesin biliyorsa (kilitli) bunu bir öneri olarak sunar ama alan
+  // kilitlenmez — tüm seçeneklerle serbestçe değiştirilebilir, kullanıcı kendi
+  // aracını daha iyi biliyor olabilir.
   const yakitListesi = "kilitli" in yakit ? YAKITLAR[kategori] : yakitSecenek;
   const vitesListesi = "kilitli" in vites ? VITESLER[kategori] : vitesSecenek;
   const etkinYakit =
-    "kilitli" in yakit && !yakitDegistir ? yakit.kilitli
+    "kilitli" in yakit ? (yakitSecim || yakit.kilitli)
       : yakitListesi.some((o) => o.value === yakitSecim) ? yakitSecim : "";
   const etkinVites =
-    "kilitli" in vites && !vitesDegistir ? vites.kilitli
+    "kilitli" in vites ? (vitesSecim || vites.kilitli)
       : vitesListesi.some((o) => o.value === vitesSecim) ? vitesSecim : "";
 
   // ─── Sonuç ────────────────────────────────────────────────────────────
@@ -223,7 +212,7 @@ export default function KatalogAracSecimi({
     if (i < 2) { setYil(""); setNesilAd(""); }
     if (i < 3) { setVersiyon(""); setOzelVersiyon(""); }
     if (i < 4) { setPaket(""); setOzelPaket(""); }
-    setYakitSecim(""); setVitesSecim(""); setYakitDegistir(false); setVitesDegistir(false);
+    setYakitSecim(""); setVitesSecim("");
   };
 
   return (
@@ -363,41 +352,22 @@ export default function KatalogAracSecimi({
         </>
       )}
 
-      {/* TSB modunda yakıt/vites versiyon seçilince açılır: önce seçilip sonra
-          "katalogdan" kilitlenerek değişmesin */}
+      {/* TSB modunda yakıt/vites versiyon seçilince açılır. Katalog kesin
+          biliyorsa değer öneri olarak önceden seçili gelir ama alan kilitli
+          değildir — kullanıcı serbestçe değiştirebilir. */}
       {yil && (!tsbModu || t2.length > 0 || versiyonListedeYok) && (
         <div className="grid grid-cols-2 gap-3">
           <Alan label="Yakıt Tipi">
-            {"kilitli" in yakit && !yakitDegistir ? (
-              <>
-                <KilitliDeger deger={YAKITLAR[kategori].find((o) => o.value === yakit.kilitli)?.label ?? yakit.kilitli} />
-                <button type="button" onClick={() => { setYakitDegistir(true); setYakitSecim(yakit.kilitli); }}
-                  className="mt-1 text-xs text-gray-400 hover:text-gray-600 underline">
-                  Bu bilgi yanlışsa değiştir
-                </button>
-              </>
-            ) : (
-              <select value={etkinYakit} onChange={(e) => setYakitSecim(e.target.value)} className={selectCls}>
-                <option value="">— Seçin —</option>
-                {yakitListesi.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-              </select>
-            )}
+            <select value={etkinYakit} onChange={(e) => setYakitSecim(e.target.value)} className={selectCls}>
+              <option value="">— Seçin —</option>
+              {yakitListesi.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+            </select>
           </Alan>
           <Alan label="Vites Tipi">
-            {"kilitli" in vites && !vitesDegistir ? (
-              <>
-                <KilitliDeger deger={vites.kilitli} />
-                <button type="button" onClick={() => { setVitesDegistir(true); setVitesSecim(vites.kilitli); }}
-                  className="mt-1 text-xs text-gray-400 hover:text-gray-600 underline">
-                  Bu bilgi yanlışsa değiştir
-                </button>
-              </>
-            ) : (
-              <select value={etkinVites} onChange={(e) => setVitesSecim(e.target.value)} className={selectCls}>
-                <option value="">— Seçin —</option>
-                {vitesListesi.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-              </select>
-            )}
+            <select value={etkinVites} onChange={(e) => setVitesSecim(e.target.value)} className={selectCls}>
+              <option value="">— Seçin —</option>
+              {vitesListesi.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+            </select>
           </Alan>
         </div>
       )}
