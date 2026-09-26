@@ -13,6 +13,7 @@ import path from "path";
 import { readTsbXlsx } from "./xlsx";
 import { parseTip, type Deglue, type ParsedTip } from "./parseTip";
 import { EV_ONLY_MODELS, fold } from "./rules";
+import { motorMetinleriniTutarliYap } from "./motorTutarlilik";
 
 const root = path.join(process.cwd(), "scripts", "vehicle-data");
 const kaynakDir = path.join(root, "_kaynak");
@@ -104,6 +105,13 @@ for (const t of tipler) {
   for (const y of t.yillar) {
     m.yilAraligi[0] = Math.min(m.yilAraligi[0], y);
     m.yilAraligi[1] = Math.max(m.yilAraligi[1], y);
+  }
+}
+for (const kategori in katalog) {
+  for (const marka in katalog[kategori]) {
+    for (const modelKey in katalog[kategori][marka]) {
+      motorMetinleriniTutarliYap(katalog[kategori][marka][modelKey].tipler);
+    }
   }
 }
 
