@@ -47,6 +47,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "upload.wikimedia.org" },
+      { protocol: "https", hostname: "thumb.wikimedia.org" },
       { protocol: "https", hostname: "commons.wikimedia.org" },
       { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
     ],
