@@ -11,6 +11,13 @@ const VALID_CATEGORIES = ["otomobil", "motosiklet", "e-scooter", "e-bisiklet", "
 const VALID_FUEL_TYPES  = ["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"];
 const VALID_TRANSMISSIONS = ["Manuel", "Otomatik", "CVT", "Yarı Otomatik"];
 
+// reviews route'undaki (src/app/api/reviews/route.ts) desenle aynı: kullanıcı
+// bazlı, DB'den sayılan günlük limit. confirmDifferent eklenmesiyle 409 engeli
+// artık bir kullanıcının bilerek atlatabildiği bir kapı haline geldi — bu route
+// daha önce hiç rate limitlenmemişti (bkz. güvenlik incelemesi, 2026-09-27).
+const RATE_LIMIT_COUNT = 10;
+const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
+
 export async function POST(req: Request) {
   try {
   const session = await auth();
@@ -35,6 +42,16 @@ export async function POST(req: Request) {
   }
 
   const userId = Number(session.user.id);
+
+  const recentCount = await prisma.vehicleSuggestion.count({
+    where: { userId, createdAt: { gte: new Date(Date.now() - RATE_LIMIT_WINDOW_MS) } },
+  });
+  if (recentCount >= RATE_LIMIT_COUNT) {
+    return NextResponse.json(
+      { error: "Günlük araç önerisi limitine ulaştınız. 24 saat sonra tekrar deneyebilirsiniz." },
+      { status: 429 },
+    );
+  }
 
   // Slug oluştur
   const baseParts = [brandName.trim(), modelName.trim(), trimName?.trim(), year]
