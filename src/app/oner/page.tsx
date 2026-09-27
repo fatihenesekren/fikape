@@ -9,6 +9,7 @@ import { parseVersion, formatVersionLabel, versionForTrimName } from "@/lib/pars
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 import { resolveOnerPrefill, type OnerCategoryKey } from "@/lib/onerPrefill";
 import type { ExistingVehicleMatch } from "@/lib/existingVehicle";
+import { birebirAyniArac } from "@/lib/aracKarsilastir";
 import KatalogAracSecimi, { type KatalogSecimSonucu } from "./KatalogAracSecimi";
 
 const CATEGORIES = [
@@ -225,8 +226,6 @@ export default function OnerPage() {
 
     const brandName  = katalogModu ? katalogSecim?.brandName ?? "" : isOtherMake ? customMake.trim() : selectedMake;
     const modelName  = katalogModu ? katalogSecim?.modelName ?? "" : isOtherModel ? customModel.trim() : selectedModel;
-    const versionFin = isOtherVersion ? customVersion.trim() : selectedVersion;
-    const trimFin    = isOtherTrim    ? customTrim.trim()    : selectedTrim;
 
     if (!categorySlug) {
       setError("Lütfen araç tipini seçiniz.");
@@ -240,29 +239,26 @@ export default function OnerPage() {
     setError(null);
     setSubmitting(true);
     try {
-      // Versiyon metnindeki HP/EV rakamları trimName'e girmez (bkz. parseVersion);
-      // katalogdan seçildiyse HP ayrıca power_hp olarak gönderilir.
-      const versionClean = versionForTrimName(versionFin, categorySlug);
+      // powerHp ayrı: donanım/yakıt/vites'ten farklı olarak kopya kontrolüne
+      // girmiyor, yalnız katalogdan/versiyon metninden ayrıştırılan beygir.
       const powerHp = katalogModu
         ? katalogSecim?.powerHp ?? null
         : !isOtherVersion && selectedVersion ? parseVersion(selectedVersion, categorySlug).hp : null;
-      const trimName = katalogModu
-        ? katalogSecim?.trimName ?? ""
-        : [versionClean, trimFin].filter(Boolean).join(" – ") || "";
-      const gonder = katalogModu
-        ? { year: katalogSecim?.year ?? "", fuelType: katalogSecim?.fuelType ?? "", transmission: katalogSecim?.transmission ?? "" }
-        : { year, fuelType, transmission };
-      // "Bu araç zaten fikape'de" kartı submit'ten önce (proaktif arka plan
-      // kontrolüyle) bilgi amaçlı gösteriliyor — ama gerçek engelleme kararı
-      // artık TAMAMEN sunucuda, yıl/donanım/yakıt/vites'in TAMAMI birebir
-      // eşleşiyorsa veriliyor (client'tan bir "onaylıyorum" bayrağı GÖNDERİLMİYOR
-      // — böyle bir tasarım denenmişti, marka+model eşleştiği an her gönderiyi,
-      // birebir kopyalar dahil, atlatıyordu; bkz. kullanıcı geri bildirimi,
-      // 2026-09-27, ve route.ts'teki karşılaştırma).
+      // trimName/yıl/yakıt/vites render kapsamında zaten hesaplandı (bkz.
+      // secilenTrimName/secilenYil/secilenYakit/secilenVites) — "Aracı Öner"
+      // butonu birebirAyniKayit doluyken zaten devre dışı, buraya hiç
+      // gelinmez; yine de sunucu kendi karşılaştırmasını (route.ts) bağımsız
+      // olarak yapıyor, client'tan bir "onaylıyorum" bayrağı GÖNDERİLMİYOR —
+      // böyle bir tasarım denenmişti, marka+model eşleştiği an her gönderiyi,
+      // birebir kopyalar dahil, atlatıyordu (bkz. kullanıcı geri bildirimi,
+      // 2026-09-27).
       const res = await fetch("/api/oneriler", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brandName, modelName, categorySlug, trimName, notes, powerHp, ...gonder }),
+        body: JSON.stringify({
+          brandName, modelName, categorySlug, notes, powerHp,
+          trimName: secilenTrimName, year: secilenYil, fuelType: secilenYakit, transmission: secilenVites,
+        }),
       });
       const text = await res.text();
       let data: Record<string, unknown> = {};
@@ -343,6 +339,28 @@ export default function OnerPage() {
   // "aynı araç mı değil mi" sorusuna cevap vermeyebilir.
   const secilenYil = katalogModu ? katalogSecim?.year || "" : year;
   const secilenYilEslesiyor = !secilenYil || existingMatches.some((mm) => String(mm.year ?? "") === secilenYil);
+
+  // Formdaki GÜNCEL seçimin donanım/yakıt/vites'i — handleSubmit'teki gönderi
+  // gövdesiyle AYNI hesap (sunucudaki birebirAyniArac ile birebir aynı mantık).
+  // Butonu anlık aktif/pasif yapmak için kullanılıyor: kullanıcı bir alanı
+  // değiştirip artık tam eşleşme kalmayınca buton tekrar submit'e izin verir,
+  // sunucuya hiç gitmeden (bkz. kullanıcı önerisi, 2026-09-28).
+  const secilenTrimName = katalogModu
+    ? katalogSecim?.trimName ?? ""
+    : [
+        versionForTrimName(isOtherVersion ? customVersion.trim() : selectedVersion, categorySlug),
+        isOtherTrim ? customTrim.trim() : selectedTrim,
+      ].filter(Boolean).join(" – ") || "";
+  const secilenYakit = katalogModu ? katalogSecim?.fuelType ?? "" : fuelType;
+  const secilenVites = katalogModu ? katalogSecim?.transmission ?? "" : transmission;
+  const birebirAyniKayit = existingMatches.find((mm) =>
+    birebirAyniArac(mm, {
+      year: secilenYil ? Number(secilenYil) : null,
+      trimName: secilenTrimName || null,
+      fuelType: secilenYakit || null,
+      transmission: secilenVites || null,
+    }),
+  );
 
   const fuelOptions = FUEL_TYPES[categorySlug] ?? [];
   const transmissionOptions = TRANSMISSIONS[categorySlug] ?? [];
@@ -472,27 +490,41 @@ export default function OnerPage() {
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-green-900">Bu araç zaten fikape&apos;de</p>
                 <p className="text-xs text-green-700 mt-0.5">
-                  Marka ve model eşleşti — yıl/donanımdan bağımsız. Aşağıdaki kartlarda sizin
-                  aracınızla aynı olan var mı bakınız; yoksa alttaki &quot;Yine de farklı bir nesil/varyant öner&quot;e geçebilirsiniz.
+                  Bu marka ve modelde kayıtlı araçlar bulundu. Yıl, donanım paketi, yakıt türü ve
+                  vites sizinkiyle birebir aynıysa aracınız tekrar eklenemez; bunlardan biri bile
+                  farklıysa yeni bir kayıt olarak eklenir.
                 </p>
-                {!secilenYilEslesiyor && (
-                  <p className="text-xs text-amber-700 bg-amber-50 border border-amber-100 rounded-lg px-2 py-1 mt-1.5">
-                    Seçtiğiniz {secilenYil} model yılı aşağıdaki kayıtların hiçbirinde yok — muhtemelen sizinki farklı bir araç.
+                {birebirAyniKayit ? (
+                  <p className="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-2 py-1.5 mt-1.5 font-medium">
+                    Bu araç (aynı yıl, donanım, yakıt ve vites) zaten kayıtlı — aşağıdan var olan kayda gidip yorum yazabilirsiniz.
                   </p>
+                ) : (
+                  !secilenYilEslesiyor && (
+                    <p className="text-xs text-green-700/80 mt-1.5">
+                      Seçtiğiniz {secilenYil} model yılına ait bir kayıt yok — aracınız yeni bir kayıt olarak eklenecektir.
+                    </p>
+                  )
                 )}
               </div>
             </div>
             <div className="space-y-1.5">
               {existingMatches.slice(0, 4).map((mm) => {
-                const ayni = secilenYil && String(mm.year ?? "") === secilenYil;
+                const tamEslesme = birebirAyniKayit?.slug === mm.slug;
+                const ayni = !tamEslesme && secilenYil && String(mm.year ?? "") === secilenYil;
                 return (
                   <div
                     key={mm.slug}
-                    className={`rounded-xl bg-white border px-3 py-2.5 ${ayni ? "border-green-300 ring-1 ring-green-200" : "border-green-100"}`}
+                    className={`rounded-xl bg-white border px-3 py-2.5 ${
+                      tamEslesme ? "border-amber-300 ring-1 ring-amber-200" : ayni ? "border-green-300 ring-1 ring-green-200" : "border-green-100"
+                    }`}
                   >
                     <div className="flex items-start justify-between gap-2">
                       <p className="text-sm font-medium text-gray-900 leading-snug">{mm.name}</p>
-                      {ayni && (
+                      {tamEslesme ? (
+                        <span className="shrink-0 text-[10px] font-semibold text-amber-800 bg-amber-100 rounded-full px-2 py-0.5">
+                          Sizin aracınız bu
+                        </span>
+                      ) : ayni && (
                         <span className="shrink-0 text-[10px] font-semibold text-green-700 bg-green-100 rounded-full px-2 py-0.5">
                           Aynı yıl
                         </span>
@@ -642,24 +674,19 @@ export default function OnerPage() {
           </div>
         )}
 
-        {/* Katalogda eşleşme varsa "öner" birincil aksiyon olmaktan çıkar —
-            kullanıcı kartdan yorum yazmaya yönlensin; yine de farklı bir
-            nesil/varyant önermek isteyebilir. */}
+        {/* Tam eşleşme varken (birebirAyniKayit) buton devre dışı — kullanıcı
+            bir alanı değiştirip eşleşme kalkınca sunucuya hiç gitmeden tekrar
+            aktifleşir (bkz. kullanıcı önerisi, 2026-09-28). Yalnız benzer
+            (marka+model) ama tam eşleşmeyen kayıt varken buton normal çalışır
+            — özel bir "yine de öner" etiketine gerek yok, sunucu zaten kendi
+            karşılaştırmasını yapıyor (route.ts). */}
         <button
           type="submit"
-          disabled={submitting}
-          className={`w-full py-3 rounded-xl text-sm font-bold transition-opacity disabled:opacity-60 ${
-            existingMatches.length > 0
-              ? "border border-gray-300 text-gray-600 hover:bg-gray-50"
-              : "text-white"
-          }`}
-          style={existingMatches.length > 0 ? undefined : { background: "#111" }}
+          disabled={submitting || !!birebirAyniKayit}
+          className="w-full py-3 rounded-xl text-sm font-bold text-white transition-opacity disabled:opacity-40"
+          style={{ background: "#111" }}
         >
-          {submitting
-            ? "Oluşturuluyor..."
-            : existingMatches.length > 0
-              ? "Yine de farklı bir nesil/varyant öner"
-              : "Aracı Öner"}
+          {submitting ? "Oluşturuluyor..." : birebirAyniKayit ? "Bu araç zaten kayıtlı" : "Aracı Öner"}
         </button>
 
         <p className="text-center text-xs text-gray-400">

@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { slugify } from "@/lib/slugify";
 import { stripModelGenRange, baseNameplate } from "@/lib/modelDisplay";
 
+export { birebirAyniArac } from "@/lib/aracKarsilastir";
+
 export interface ExistingVehicleMatch {
   slug: string;
   name: string;
@@ -11,34 +13,6 @@ export interface ExistingVehicleMatch {
   /** GASOLINE/DIESEL/EV/... — attributes.fuel_type; formda kullanıcının seçimiyle karşılaştırmak için. */
   fuelType: string | null;
   reviewCount: number;
-}
-
-/**
- * Yeni bir araç önerisinin (yıl, donanım, yakıt, vites) dörtlüsü mevcut bir
- * eşleşmeyle BİREBİR aynı mı? — gerçek kopya olarak engellemek için tek kanıt
- * bu: client'tan gelen bir "onaylıyorum" bayrağına ASLA güvenilmez, çünkü
- * böyle bir tasarım denenmiş ve marka+model eşleştiği an her gönderiyi
- * (birebir kopyalar dahil) atlatmıştı (bkz. kullanıcı geri bildirimi,
- * 2026-09-27). Dörtlüden herhangi biri farklıysa (ör. farklı yıl/donanım)
- * gerçekten farklı bir varyanttır — eksik/null bir alan da "aynı olduğundan
- * emin değiliz" sayılır, kopya SAYILMAZ (yanlış-pozitif engellemektense
- * yanlış-negatifi tercih ederiz, moderatör panelindeki "olası kopya" rozeti
- * zaten ikinci bir güvenlik ağı).
- */
-export function birebirAyniArac(
-  mevcut: Pick<ExistingVehicleMatch, "year" | "trimName" | "transmission" | "fuelType">,
-  yeni: { year: number | null; trimName: string | null; transmission: string | null; fuelType: string | null },
-): boolean {
-  const mevcutTrim = (mevcut.trimName ?? "").trim().toLowerCase();
-  const yeniTrim = (yeni.trimName ?? "").trim().toLowerCase();
-  const mevcutVites = mevcut.transmission ? slugify(mevcut.transmission) : null;
-  const yeniVites = yeni.transmission ? slugify(yeni.transmission) : null;
-  return (
-    mevcut.year !== null && yeni.year !== null && mevcut.year === yeni.year &&
-    mevcutTrim !== "" && mevcutTrim === yeniTrim &&
-    mevcut.fuelType !== null && mevcut.fuelType === yeni.fuelType &&
-    mevcutVites !== null && mevcutVites === yeniVites
-  );
 }
 
 // Katalogda (ACTIVE Product) bu marka+model zaten var mı?
