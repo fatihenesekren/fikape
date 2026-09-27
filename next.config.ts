@@ -41,6 +41,7 @@ const KATALOG_SLUG_DEGISIKLIKLERI: [string, string][] = [
   ["ford-fiesta-2008-2017-1-4-titanium-2011", "ford-fiesta-1-4-titanium-2011"],
   ["renault-megane-4-2016-1-3-tce-touch-2024", "renault-megane-1-3-tce-touch-2024"],
   ["audi-a4-2016-1-4-tfsi-design-2018", "audi-a4-1-4-tfsi-design-2018"],
+  ["bmw-x1-sdrive16d-1-5-sdrive-x-line-2021-otomatik", "bmw-x1-sdrive16d-1-5-x-line-2021-otomatik"],
 ];
 
 const nextConfig: NextConfig = {
