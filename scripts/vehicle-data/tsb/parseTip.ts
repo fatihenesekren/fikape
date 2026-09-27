@@ -408,6 +408,12 @@ export function parseTip(tsbMarka: string, tipAdi: string, deglue?: Deglue, raka
 
   const kasa = [body, ...config].filter(Boolean).join(" · ") || null;
   const paketRaw = paketParts.join(" ").replace(/^[-+./]+|[-+./]+$/g, "").trim();
+  // Kaynak nadiren aynı token'ı satırda iki kez yazıyor (ör. "ZS 1.0T COMFORT
+  // 1.0T AT", "F TYPE 5.0 TYPE 5.0 V8...", "TRAILBLAZER RS 1.3 ECOTEC TURBO
+  // 1.3 (155)") — motorParts'a aynı metin birden fazla girip "1.0T 1.0T" gibi
+  // anlamsız bir motor metni oluşuyordu. İlk geçen halini koruyup sonraki
+  // birebir tekrarları (bitişik ya da araya başka kelime girmiş olsun) atıyoruz.
+  const motorParts2 = motorParts.filter((m, i) => motorParts.indexOf(m) === i);
 
   return {
     ok: true,
@@ -417,7 +423,7 @@ export function parseTip(tsbMarka: string, tipAdi: string, deglue?: Deglue, raka
       modelKey: hit.key,
       model: displayModel(hit.key),
       kasa,
-      motor: motorParts.length ? motorParts.join(" ") : null,
+      motor: motorParts2.length ? motorParts2.join(" ") : null,
       hp, kw, bataryaKwh, cekis,
       paket: paketRaw ? titleCase(paketRaw) : null,
       nesil,

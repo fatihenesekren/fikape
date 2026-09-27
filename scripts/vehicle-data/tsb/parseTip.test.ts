@@ -156,6 +156,13 @@ describe("parseTip — TSB tip adı ayrıştırma", () => {
     expect(ok("TOYOTA", "PRADO 3.0 D 4D").kasa).not.toBe("Sedan");
   });
 
+  it("kaynak aynı motor token'ını satırda iki kez yazınca tekilleştirir (MG ZS/Citroën C-Elysée/Jaguar F-Type/Chevrolet Trailblazer gibi)", () => {
+    expect(ok("MG", "ZS 1.0T COMFORT 1.0T AT").motor).toBe("1.0T");
+    expect(ok("CITROEN", "C-ELYSEE 1.5 FEEL 1.5 BLUEHDI 100 S&S").motor).toBe("1.5 BlueHDi");
+    // Araya başka kelime girmiş (bitişik olmayan) tekrar da atılır
+    expect(ok("CHEVROLET", "TRAILBLAZER RS 1.3 ECOTEC TURBO 1.3 (155) CVT").motor).toBe("1.3 Ecotec Turbo");
+  });
+
   it("kaynaktaki yazım hatasını düzeltir ve kaydeder", () => {
     const t = ok("ALFA ROMEO", "STEVIO 2.0 280 Q4");
     expect(t.model).toBe("Stelvio");
