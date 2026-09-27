@@ -19,7 +19,7 @@ export function CopyButton({ text }: { text: string }) {
     <button
       type="button"
       onClick={copy}
-      className="absolute top-2 right-2 text-xs font-medium px-2 py-1 rounded-md bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white transition-colors"
+      className="shrink-0 text-xs font-medium px-2 py-1 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
     >
       {copied ? "Kopyalandı ✓" : "Kopyala"}
     </button>

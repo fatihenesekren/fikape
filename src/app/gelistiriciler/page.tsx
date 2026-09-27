@@ -53,13 +53,18 @@ const faqJsonLd = {
 };
 
 function CodeBlock({ code, label }: { code: string; label?: string }) {
+  // "Kopyala" butonu eskiden kod kutusunun üstüne mutlak konumlandırılıyordu —
+  // mobilde tek satırlık uzun URL'ler (GET/curl örnekleri) yatay kaydırıldığında
+  // metin butonun ALTINDAN değil, ÜZERİNDEN geçiyordu (bkz. kullanıcı ekran
+  // görüntüsü). Buton artık kod kutusunun üstünde, ayrı bir başlık satırında —
+  // asla metinle çakışmıyor, kaydırmadan etkilenmiyor.
   return (
     <div className="min-w-0">
-      {label && <div className="text-xs text-gray-400 mb-1">{label}</div>}
-      <div className="relative min-w-0">
-        <pre className="bg-gray-900 text-gray-100 rounded-lg p-4 pr-16 overflow-x-auto text-xs">{code}</pre>
+      <div className={`flex items-center gap-2 mb-1 ${label ? "justify-between" : "justify-end"}`}>
+        {label && <span className="text-xs text-gray-400">{label}</span>}
         <CopyButton text={code} />
       </div>
+      <pre className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto text-xs">{code}</pre>
     </div>
   );
 }
