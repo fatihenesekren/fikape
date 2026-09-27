@@ -129,10 +129,17 @@ export default function OnerPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError]           = useState<string | null>(null);
 
-  // Katalogda zaten var mı? — marka + model seçilince kontrol edilir.
+  // Katalogda zaten var mı? — marka + model seçilince ARKA PLANDA kontrol
+  // edilir (kullanıcı submit etmeden), yalnızca kartı göstermek için.
   const [existingMatches, setExistingMatches]   = useState<ExistingVehicleMatch[]>([]);
   const [checkingExisting, setCheckingExisting] = useState(false);
   const existingCardRef = useRef<HTMLDivElement>(null);
+  // Sunucunun GERÇEKTEN 409 döndürdüğü tam gönderinin imzası — "Yine de
+  // farklı bir nesil/varyant öner" yalnız BİREBİR AYNI içerik tekrar
+  // gönderildiğinde onayı geçerli sayar. existingMatches'e bağlamak YANLIŞ
+  // olurdu: o, kullanıcı hiç submit etmeden arka planda dolduğu için ilk
+  // denemede bile engeli atlatırdı (bkz. kod incelemesi, 2026-09-27).
+  const [confirmedPayload, setConfirmedPayload] = useState<string | null>(null);
 
   // Otomobil/kamyonet: TSB tabanlı katalog (KatalogAracSecimi). Diğer kategoriler
   // henüz eski vehicles.json listesiyle çalışıyor.
@@ -199,6 +206,7 @@ export default function OnerPage() {
     setTransmission("");
     setKatalogSecim(null);
     setExistingMatches([]);
+    setConfirmedPayload(null);
   }
 
   function handleMakeChange(val: string) {
@@ -208,6 +216,7 @@ export default function OnerPage() {
     setSelectedVersion(""); setCustomVersion("");
     setSelectedTrim(""); setCustomTrim("");
     setExistingMatches([]);
+    setConfirmedPayload(null);
   }
 
   function handleModelChange(val: string) {
@@ -216,6 +225,7 @@ export default function OnerPage() {
     setSelectedTrim(""); setCustomTrim("");
     setYear("");
     setExistingMatches([]);
+    setConfirmedPayload(null);
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -250,10 +260,19 @@ export default function OnerPage() {
       const gonder = katalogModu
         ? { year: katalogSecim?.year ?? "", fuelType: katalogSecim?.fuelType ?? "", transmission: katalogSecim?.transmission ?? "" }
         : { year, fuelType, transmission };
+      const govde = { brandName, modelName, categorySlug, trimName, notes, powerHp, ...gonder };
+      // Sunucu bu TAM içerik için daha önce 409 döndürdüyse (bkz. aşağıdaki
+      // 409 dalı) ve kullanıcı hiçbir alanı değiştirmeden tekrar gönderdiyse
+      // ("Yine de farklı bir nesil/varyant öner"), engeli atla. İmza, arka
+      // planda proaktif çalışan existingMatches ön-kontrolüne DEĞİL, sunucunun
+      // bu tam gönderiyi gerçekten reddettiği ana bağlı — aksi halde marka+model
+      // eşleşen HER ilk denemede engel yanlışlıkla atlanır (bkz. kod incelemesi).
+      const govdeImza = JSON.stringify(govde);
+      const confirmDifferent = confirmedPayload === govdeImza;
       const res = await fetch("/api/oneriler", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brandName, modelName, categorySlug, trimName, notes, powerHp, ...gonder }),
+        body: JSON.stringify({ ...govde, confirmDifferent }),
       });
       const text = await res.text();
       let data: Record<string, unknown> = {};
@@ -277,6 +296,7 @@ export default function OnerPage() {
                 reviewCount: typeof data.reviewCount === "number" ? data.reviewCount : 0,
               }];
         setExistingMatches(fromServer);
+        setConfirmedPayload(govdeImza);
         setSubmitting(false);
         setError(null);
         requestAnimationFrame(() =>

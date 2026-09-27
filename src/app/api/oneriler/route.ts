@@ -19,7 +19,7 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const { brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, photoUrls, powerHp } = body;
+  const { brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, photoUrls, powerHp, confirmDifferent } = body;
 
   if (!brandName?.trim() || !modelName?.trim()) {
     return NextResponse.json({ error: "Marka ve model zorunludur" }, { status: 400 });
@@ -57,7 +57,11 @@ export async function POST(req: Request) {
     (mm) => !txSlug || !mm.transmission || slugify(mm.transmission) === txSlug,
   );
 
-  if (blockingMatches.length > 0) {
+  // Kullanıcı "Bu araç zaten fikape'de" kartını görüp yine de göndermeyi
+  // seçtiyse (confirmDifferent) engelleme; aksi halde aynı vites/marka/model
+  // eşleşmesi her denemede tekrar 409 döndürür ve farklı yıl/donanım/motor
+  // varyantı asla eklenemez (bkz. kullanıcı geri bildirimi, 2026-09-27).
+  if (blockingMatches.length > 0 && !confirmDifferent) {
     const top = blockingMatches[0];
     return NextResponse.json(
       {
@@ -169,21 +173,30 @@ export async function POST(req: Request) {
   const existing = await prisma.product.findUnique({ where: { slug: finalSlug } });
   if (existing) finalSlug = `${slug}-${Date.now()}`;
 
-  // PENDING ürün oluştur (isActive: false → public listelerden gizli)
-  const product = await prisma.product.create({
-    data: {
-      slug:       finalSlug,
-      name:       `${brandName.trim()} ${modelName.trim()}${trimName?.trim() ? ` ${trimName.trim()}` : ""}${year ? ` ${year}` : ""}`,
-      year:       year ? Number(year) : null,
-      trimName:   trimName?.trim() || null,
-      attributes,
-      categoryId: category.id,
-      brandId:    brand.id,
-      modelId:    model.id,
-      status:     "PENDING",
-      isActive:   false,
-    },
-  });
+  // PENDING ürün oluştur (isActive: false → public listelerden gizli).
+  // Çift tıklama/eşzamanlı istek slug'ı bizden önce alabilir (TOCTOU) — unique
+  // constraint çakışmasında (P2002) tekrar deneriz, opak 500 dönmeyiz.
+  const productData = {
+    name:       `${brandName.trim()} ${modelName.trim()}${trimName?.trim() ? ` ${trimName.trim()}` : ""}${year ? ` ${year}` : ""}`,
+    year:       year ? Number(year) : null,
+    trimName:   trimName?.trim() || null,
+    attributes,
+    categoryId: category.id,
+    brandId:    brand.id,
+    modelId:    model.id,
+    status:     "PENDING" as const,
+    isActive:   false,
+  };
+  let product;
+  try {
+    product = await prisma.product.create({ data: { slug: finalSlug, ...productData } });
+  } catch (e) {
+    if (e instanceof Error && "code" in e && e.code === "P2002") {
+      product = await prisma.product.create({ data: { slug: `${finalSlug}-${Date.now()}`, ...productData } });
+    } else {
+      throw e;
+    }
+  }
 
   // VehicleSuggestion — audit trail
   await prisma.vehicleSuggestion.create({
