@@ -24,6 +24,7 @@ import type {
 import type { KatalogTip as TsbTip } from "./build";
 import type { MotoKatalogTip } from "./motoBuild";
 import { fold } from "./rules";
+import { cekisTekrarsizEkle } from "./cekisTekrarsizEkle";
 
 const root = process.cwd();
 const incele = path.join(root, "scripts", "vehicle-data", "_inceleme");
@@ -106,7 +107,7 @@ function tipleriCevir(tipler: TsbTip[]): KatalogTip[] {
   const map = new Map<string, KatalogTip>();
   for (const t of tipler) {
     const tip: KatalogTip = {
-      v: [t.motor, t.cekis].filter(Boolean).join(" "),
+      v: cekisTekrarsizEkle(t.motor, t.cekis),
       hp: t.hp, p: t.paket, k: t.kasa, y: [], f: t.yakit, t: t.vitesTuru,
     };
     const key = JSON.stringify([tip.v, tip.hp, tip.p, tip.k, tip.f, tip.t]);
