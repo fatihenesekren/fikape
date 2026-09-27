@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { slugify } from "@/lib/slugify";
-import { findExistingVehicles } from "@/lib/existingVehicle";
+import { findExistingVehicles, birebirAyniArac } from "@/lib/existingVehicle";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -12,9 +12,8 @@ const VALID_FUEL_TYPES  = ["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"];
 const VALID_TRANSMISSIONS = ["Manuel", "Otomatik", "CVT", "Yarı Otomatik"];
 
 // reviews route'undaki (src/app/api/reviews/route.ts) desenle aynı: kullanıcı
-// bazlı, DB'den sayılan günlük limit. confirmDifferent eklenmesiyle 409 engeli
-// artık bir kullanıcının bilerek atlatabildiği bir kapı haline geldi — bu route
-// daha önce hiç rate limitlenmemişti (bkz. güvenlik incelemesi, 2026-09-27).
+// bazlı, DB'den sayılan günlük limit — bu route daha önce hiç rate limitlenmemişti
+// (bkz. güvenlik incelemesi, 2026-09-27).
 const RATE_LIMIT_COUNT = 10;
 const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000;
 
@@ -26,7 +25,7 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const { brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, photoUrls, powerHp, confirmDifferent } = body;
+  const { brandName, modelName, year, categorySlug, fuelType, transmission, trimName, notes, photoUrls, powerHp } = body;
 
   if (!brandName?.trim() || !modelName?.trim()) {
     return NextResponse.json({ error: "Marka ve model zorunludur" }, { status: 400 });
@@ -66,19 +65,16 @@ export async function POST(req: Request) {
     brandName.trim(), modelName.trim(), categorySlug,
   );
 
-  // Vites-varyantı istisnası: kullanıcı bir vites belirttiyse ve mevcut
-  // eşleşmelerin HİÇBİRİ aynı vitese sahip değilse (ör. katalogda yalnızca
-  // Otomatik var, öneri Manuel), ayrı bir varyant olarak eklenmesine izin ver.
-  const txSlug = transmission ? slugify(transmission) : null;
-  const blockingMatches = existingMatches.filter(
-    (mm) => !txSlug || !mm.transmission || slugify(mm.transmission) === txSlug,
-  );
+  // Gerçek kopya kontrolü — bkz. lib/existingVehicle.ts:birebirAyniArac
+  const yeniAracBilgisi = {
+    year: year ? Number(year) : null,
+    trimName: trimName ?? null,
+    fuelType: fuelType || null,
+    transmission: transmission || null,
+  };
+  const blockingMatches = existingMatches.filter((mm) => birebirAyniArac(mm, yeniAracBilgisi));
 
-  // Kullanıcı "Bu araç zaten fikape'de" kartını görüp yine de göndermeyi
-  // seçtiyse (confirmDifferent) engelleme; aksi halde aynı vites/marka/model
-  // eşleşmesi her denemede tekrar 409 döndürür ve farklı yıl/donanım/motor
-  // varyantı asla eklenemez (bkz. kullanıcı geri bildirimi, 2026-09-27).
-  if (blockingMatches.length > 0 && !confirmDifferent) {
+  if (blockingMatches.length > 0) {
     const top = blockingMatches[0];
     return NextResponse.json(
       {
@@ -93,6 +89,7 @@ export async function POST(req: Request) {
   }
 
   const isDifferentVariant = existingMatches.length > 0;
+  const txSlug = transmission ? slugify(transmission) : null;
   const slug = isDifferentVariant && txSlug ? `${baseSlug}-${txSlug}` : baseSlug;
 
   // Aynı PENDING ürün var mı? (başka bir kullanıcı önermişse veya önceki hatalı submit)

@@ -130,9 +130,8 @@ export default function OnerPage() {
   const [error, setError]           = useState<string | null>(null);
 
   // Katalogda zaten var mı? — marka + model seçilince arka planda kontrol
-  // edilir (kullanıcı submit etmeden) ve kart gösterilir; kart görününce
-  // "Yine de farklı bir nesil/varyant öner" butonu zaten bilinçli bir onay
-  // eylemidir (bkz. handleSubmit'teki confirmDifferent).
+  // edilir (kullanıcı submit etmeden) ve bilgi amaçlı kart gösterilir. Gerçek
+  // engelleme kararı sunucuda veriliyor (bkz. route.ts), bu yalnız UI bilgisi.
   const [existingMatches, setExistingMatches]   = useState<ExistingVehicleMatch[]>([]);
   const [checkingExisting, setCheckingExisting] = useState(false);
   const existingCardRef = useRef<HTMLDivElement>(null);
@@ -253,20 +252,17 @@ export default function OnerPage() {
       const gonder = katalogModu
         ? { year: katalogSecim?.year ?? "", fuelType: katalogSecim?.fuelType ?? "", transmission: katalogSecim?.transmission ?? "" }
         : { year, fuelType, transmission };
-      // "Bu araç zaten fikape'de" kartı zaten SUBMIT'TEN ÖNCE (proaktif
-      // arka plan kontrolüyle) yıl/donanım/yakıt/vites bilgisiyle gösteriliyor
-      // — kullanıcı bu bilgiyle "Yine de farklı bir nesil/varyant öner"
-      // butonuna basarak zaten bilinçli onay veriyor. Bunu ayrı bir "aynı
-      // içerikle tekrar gönder" turuna zorlamak (bir önceki deneme) tek
-      // tıkla eklenmesi gereken gerçekten farklı bir aracı 2 tıklamaya
-      // zorluyordu — kullanıcı geri bildirimi. Gerçek güvenlik ağı zaten var:
-      // moderatör panelinde "olası kopya" rozeti (bkz. admin/oneriler) +
-      // kullanıcı bazlı günlük öneri limiti (bkz. route.ts).
-      const confirmDifferent = existingMatches.length > 0;
+      // "Bu araç zaten fikape'de" kartı submit'ten önce (proaktif arka plan
+      // kontrolüyle) bilgi amaçlı gösteriliyor — ama gerçek engelleme kararı
+      // artık TAMAMEN sunucuda, yıl/donanım/yakıt/vites'in TAMAMI birebir
+      // eşleşiyorsa veriliyor (client'tan bir "onaylıyorum" bayrağı GÖNDERİLMİYOR
+      // — böyle bir tasarım denenmişti, marka+model eşleştiği an her gönderiyi,
+      // birebir kopyalar dahil, atlatıyordu; bkz. kullanıcı geri bildirimi,
+      // 2026-09-27, ve route.ts'teki karşılaştırma).
       const res = await fetch("/api/oneriler", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brandName, modelName, categorySlug, trimName, notes, powerHp, confirmDifferent, ...gonder }),
+        body: JSON.stringify({ brandName, modelName, categorySlug, trimName, notes, powerHp, ...gonder }),
       });
       const text = await res.text();
       let data: Record<string, unknown> = {};
