@@ -18,6 +18,11 @@ export async function generateGeminiText(prompt: string): Promise<string> {
       contents: [{ parts: [{ text: prompt }] }],
       generationConfig: { temperature: 0.4, maxOutputTokens: 600 },
     }),
+    // Süre sınırı yoktu — Gemini yavaş/sarkarsa bunu çağıran admin onay isteği
+    // sonsuza dek "İşleniyor..." durumunda kalıyordu (bkz. kullanıcı geri
+    // bildirimi, 2026-09-27). safeGenerate zaten hatayı yutuyor, burada
+    // yalnız üst sınır koyuyoruz.
+    signal: AbortSignal.timeout(15_000),
   });
 
   if (!res.ok) {
@@ -49,6 +54,7 @@ export async function generateGeminiJson(prompt: string): Promise<unknown> {
       contents: [{ parts: [{ text: prompt }] }],
       generationConfig: { temperature: 0.3, maxOutputTokens: 1000, responseMimeType: "application/json" },
     }),
+    signal: AbortSignal.timeout(15_000),
   });
 
   if (!res.ok) {
