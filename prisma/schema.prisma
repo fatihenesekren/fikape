@@ -1150,6 +1150,15 @@ model TradeListing {
   paymentIntent TradePaymentIntent @default(SWAP_ONLY)
   city          String             @db.VarChar(50) // sadece İl, ilçe yok — TURKISH_CITIES whitelist'ine karşı validate edilir
 
+  // AI destekli yaklaşık piyasa fiyatı — ilan oluşturulurken BİR KEZ hesaplanır
+  // (Tavily ile sahibinden.com/arabam.com'da gerçek ilan araması + Gemini ile
+  // aralığa özetleme, bkz. lib/marketPrice.ts). Güvenilir veri bulunamazsa
+  // ikisi de null kalır — asla tahmini bir rakam uydurulmaz. Salt bilgilendirme
+  // amaçlıdır, kesin/bağlayıcı bir değer değildir (bkz. ilan sayfasındaki uyarı).
+  marketPriceMin         Int?
+  marketPriceMax         Int?
+  marketPriceEstimatedAt DateTime?
+
   isActive     Boolean           @default(true)
   closedAt     DateTime?
   closeReason  TradeCloseReason?

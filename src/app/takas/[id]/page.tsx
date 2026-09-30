@@ -484,6 +484,32 @@ export default async function TakasDetayPage({
             </span>
           </div>
 
+          {/* Yaklaşık piyasa fiyatı — AI destekli (Tavily arama + Gemini özet),
+              ilan oluşturulurken bir kez hesaplanır (bkz. lib/marketPrice.ts).
+              Gerçek yorum/kullanıcı verisiyle KARIŞTIRILMASIN diye AiSummaryCard
+              ile aynı görsel dil (mor rozet + gri açıklama), ama kart yapısı
+              ayrı — burada "devamını oku" yok, tek satırlık bir aralık. */}
+          {listing.marketPriceMin != null && listing.marketPriceMax != null && (
+            <div
+              className="mt-3 rounded-xl p-3.5 border"
+              style={{ background: "linear-gradient(135deg, #F5F3FF 0%, #EEF2FF 100%)", borderColor: "#E0E7FF" }}
+            >
+              <span
+                className="text-[11px] font-bold px-2 py-0.5 rounded-full inline-flex items-center gap-1"
+                style={{ background: "#6366F1", color: "#fff" }}
+              >
+                🤖 AI Tahmini
+              </span>
+              <p className="text-sm font-bold text-gray-900 mt-1.5">
+                Yaklaşık {listing.marketPriceMin.toLocaleString("tr-TR")} – {listing.marketPriceMax.toLocaleString("tr-TR")} TL
+              </p>
+              <p className="text-[11px] text-gray-400 leading-snug mt-0.5">
+                Bu, ilan sitelerindeki benzer araçlara dayanan yapay zeka tahminidir — güncel piyasadan düşük çıkma
+                eğilimindedir, bağlayıcı değildir. Takas kararınızı vermeden önce mutlaka kendiniz kontrol ediniz.
+              </p>
+            </div>
+          )}
+
           {/* Takas beklentileri — nötr gri yerine FI lacivert link tonu,
               sitedeki "takas" kavramıyla (TradeToggleCard vb.) aynı renk dili. */}
           <div className="mt-3 bg-link-soft/60 border border-link-line rounded-xl px-3.5 py-3 text-sm text-link-deep">
