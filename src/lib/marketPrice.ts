@@ -1,4 +1,5 @@
 import { generateGeminiText } from "@/lib/ai/gemini";
+import { prisma } from "@/lib/prisma";
 
 // Takas ilanına "yaklaşık ortalama piyasa değeri" eklemek için: Tavily ile
 // gerçek ilan sitelerinde (sahibinden.com/arabam.com) arama yapıp bulunan
@@ -90,4 +91,28 @@ export async function estimateMarketPrice(
   } catch {
     return null;
   }
+}
+
+/**
+ * İlan oluşturma/yeniden açma sırasında response'u bekletmeden (await
+ * EDİLMEDEN) çağrılır — notifyAdmins/createNotification ile aynı "arka plan"
+ * deseni. Sonuç birkaç saniye içinde DB'ye yazılır; hata olursa sadece loglanır,
+ * ilan işlemini asla etkilemez.
+ */
+export function scheduleMarketPriceUpdate(
+  listingId: number,
+  brand: string,
+  model: string,
+  trim: string | null,
+  year: number | null,
+): void {
+  estimateMarketPrice(brand, model, trim, year)
+    .then((estimate) => {
+      if (!estimate) return;
+      return prisma.tradeListing.update({
+        where: { id: listingId },
+        data: { marketPriceMin: estimate.min, marketPriceMax: estimate.max, marketPriceEstimatedAt: new Date() },
+      });
+    })
+    .catch((e) => console.error("[market-price]", e));
 }

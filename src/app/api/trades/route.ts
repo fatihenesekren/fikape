@@ -12,7 +12,7 @@ import { logAccess } from "@/lib/accessLog";
 import { CAR_PARTS } from "@/lib/carParts";
 import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate } from "@/lib/tradeListingPhotos";
 import { isMutualMatch, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
-import { estimateMarketPrice } from "@/lib/marketPrice";
+import { scheduleMarketPriceUpdate } from "@/lib/marketPrice";
 import type { LocationScope, TradeFuelType } from "@/lib/tradeExpectations";
 import type { DamageStatus } from "@/lib/damageStatus";
 
@@ -153,25 +153,15 @@ export async function POST(req: Request) {
       },
     });
 
-    // Yaklaşık piyasa fiyatı — response'u bekletmemek için AWAIT edilmiyor
-    // (Tavily+Gemini birlikte ~5-15sn sürebiliyor), diğer arka plan işleri
-    // (notifyAdmins, createNotification) ile aynı desen. Sonuç birkaç saniye
-    // içinde DB'ye yazılır, kullanıcı ilan sayfasına yönlendiğinde genelde
-    // hazır olur; yetişmezse ilan sayfası fiyat kutusunu hiç göstermez.
-    estimateMarketPrice(
+    // Yaklaşık piyasa fiyatı — arka planda hesaplanır (bkz. marketPrice.ts),
+    // response'u bekletmez. Yetişmezse ilan sayfası fiyat kutusunu hiç göstermez.
+    scheduleMarketPriceUpdate(
+      listing.id,
       userProduct.product.brand.name,
       userProduct.product.model.name,
       userProduct.product.trimName,
       userProduct.product.year,
-    )
-      .then((estimate) => {
-        if (!estimate) return;
-        return prisma.tradeListing.update({
-          where: { id: listing.id },
-          data: { marketPriceMin: estimate.min, marketPriceMax: estimate.max, marketPriceEstimatedAt: new Date() },
-        });
-      })
-      .catch((e) => console.error("[market-price]", e));
+    );
 
     // Km — TradeListing'de değil, UserProduct'ta tutulan tek doğruluk kaynağı
     // (bkz. schemas.ts'teki usageAmountRange notu) — Takas formundan girilirse

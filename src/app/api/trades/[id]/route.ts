@@ -8,6 +8,12 @@ import { isTradeListingEnabled } from "@/lib/features";
 import { CAR_PARTS } from "@/lib/carParts";
 import { notifyAdmins } from "@/lib/notification";
 import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate, deleteTradePhotoBlobs } from "@/lib/tradeListingPhotos";
+import { scheduleMarketPriceUpdate } from "@/lib/marketPrice";
+
+// Yeniden açmada fiyat tahmini yalnız bu süreden eskiyse tekrar hesaplanır —
+// ilan sık kapatılıp açılırsa her seferinde Tavily+Gemini'yi boşuna yormamak
+// için (bkz. kullanıcı önerisi, 2026-09-30).
+const PRICE_REFRESH_AFTER_MS = 30 * 24 * 60 * 60 * 1000;
 
 // İlan düzenleme + yeniden açma — önceden ne düzenleme ne yeniden açma vardı,
 // kullanıcı şehir/ödeme niyeti/notu değiştirmek için ilanı kapatıp sıfırdan
@@ -31,7 +37,10 @@ export async function PATCH(
 
   const listing = await prisma.tradeListing.findUnique({
     where: { id: listingId },
-    select: { id: true, userId: true, userProductId: true, isActive: true, effectiveDate: true },
+    select: {
+      id: true, userId: true, userProductId: true, isActive: true, effectiveDate: true, marketPriceEstimatedAt: true,
+      product: { select: { year: true, trimName: true, brand: { select: { name: true } }, model: { select: { name: true } } } },
+    },
   });
   if (!listing || listing.userId !== userId) {
     return NextResponse.json({ error: "İlan bulunamadı." }, { status: 404 });
@@ -78,6 +87,17 @@ export async function PATCH(
       where: { id: listingId },
       data: { isActive: true, closedAt: null, closeReason: null, effectiveDate: new Date() },
     });
+
+    // Fiyat tahmini yalnız 30 günden eskiyse (ya da hiç hesaplanmamışsa) tekrar
+    // yapılır — response'u bekletmeden, ilan oluşturmadaki aynı arka plan deseni.
+    const priceIsStale =
+      !listing.marketPriceEstimatedAt || Date.now() - listing.marketPriceEstimatedAt.getTime() > PRICE_REFRESH_AFTER_MS;
+    if (priceIsStale) {
+      scheduleMarketPriceUpdate(
+        listingId, listing.product.brand.name, listing.product.model.name, listing.product.trimName, listing.product.year,
+      );
+    }
+
     return NextResponse.json({ ok: true });
   }
 
