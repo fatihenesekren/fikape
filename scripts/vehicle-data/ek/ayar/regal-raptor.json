@@ -22,8 +22,8 @@
     },
     "K5 Pro": {
       "bas": 2023,
-      "bit": null,
-      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2023"
+      "bit": 2023,
+      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2023-2023 (tek yıl; bitiş = başlangıç)"
     }
   }
 }

@@ -2,8 +2,8 @@
   "yeniModel": {
     "Mantis": {
       "bas": 1998,
-      "bit": null,
-      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 1998"
+      "bit": 1998,
+      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 1998-1998 (tek yıl; bitiş = başlangıç)"
     }
   }
 }

@@ -2,12 +2,12 @@
   "yeniModel": {
     "Spark": {
       "bas": 2026,
-      "bit": null,
+      "bit": 2026,
       "kaynak": "Kullanıcı bildirimi: 2026 (internetten doğrulanamadı)"
     },
     "Spark-H": {
       "bas": 2026,
-      "bit": null,
+      "bit": 2026,
       "kaynak": "Kullanıcı bildirimi: 2026 (internetten doğrulanamadı)"
     }
   }

@@ -3,8 +3,8 @@
     "2.8 TD": {
       "ad": "Santana",
       "bas": 2003,
-      "bit": null,
-      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2003"
+      "bit": 2003,
+      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2003-2003 (tek yıl; bitiş = başlangıç)"
     }
   }
 }

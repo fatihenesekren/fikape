@@ -2,18 +2,18 @@
   "yeniModel": {
     "S4": {
       "bas": 2026,
-      "bit": null,
-      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2026"
+      "bit": 2026,
+      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2026-2026 (tek yıl; bitiş = başlangıç)"
     },
     "E-Pickup Big": {
       "bas": 2026,
-      "bit": null,
-      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2026"
+      "bit": 2026,
+      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2026-2026 (tek yıl; bitiş = başlangıç)"
     },
     "E-Pickup Small": {
       "bas": 2026,
-      "bit": null,
-      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2026"
+      "bit": 2026,
+      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2026-2026 (tek yıl; bitiş = başlangıç)"
     }
   },
   "kamyonet": [
