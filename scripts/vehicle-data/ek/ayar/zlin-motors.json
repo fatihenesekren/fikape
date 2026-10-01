@@ -1,3 +1,14 @@
 {
-  "atlaMarka": "Zlin Motors Spark / Spark-H (4 tekerlekli elektrikli): otomobil kategorisine eklenecek, ancak çıkış yılı doğrulanamadı."
+  "yeniModel": {
+    "Spark": {
+      "bas": 2026,
+      "bit": null,
+      "kaynak": "Kullanıcı bildirimi: 2026 (internetten doğrulanamadı)"
+    },
+    "Spark-H": {
+      "bas": 2026,
+      "bit": null,
+      "kaynak": "Kullanıcı bildirimi: 2026 (internetten doğrulanamadı)"
+    }
+  }
 }

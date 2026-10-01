@@ -1,3 +1,9 @@
 {
-  "atlaMarka": "Rebat Motor YU 3: model ve çıkış yılı internette doğrulanamadı; otomobil kategorisine eklenecek, yıl bekleniyor."
+  "yeniModel": {
+    "YU 3": {
+      "bas": 2026,
+      "bit": null,
+      "kaynak": "Kullanıcı bildirimi: 2026 (internetten doğrulanamadı)"
+    }
+  }
 }
