@@ -1,3 +1,9 @@
 {
-  "atlaMarka": "Motolux WOW 01 (L7 sınıfı elektrikli, Aksaray üretimi — motolux.com.tr): otomobil kategorisine eklenecek, ancak Türkiye çıkış yılı internette doğrulanamadı."
+  "yeniModel": {
+    "WOW 01": {
+      "bas": 2024,
+      "bit": null,
+      "kaynak": "sikayetvar.com: en eski WOW 01 şikayeti Haziran 2024 (daha eski satış tarihi doğrulanamadı); L7 elektrikli, Aksaray üretimi"
+    }
+  }
 }

@@ -1,3 +1,9 @@
 {
-  "atlaMarka": "Rainwoll RW 10: model ve çıkış yılı internette doğrulanamadı; otomobil kategorisine eklenecek, yıl bekleniyor."
+  "yeniModel": {
+    "RW 10": {
+      "bas": 2023,
+      "bit": null,
+      "kaynak": "tamindir.com Rainwoll RW10 incelemesi (19 Aralık 2023) — en eski tarihli kaynak; daha eski çıkış doğrulanamadı"
+    }
+  }
 }

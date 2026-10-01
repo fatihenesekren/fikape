@@ -1,3 +1,19 @@
 {
-  "atlaMarka": "Yuki Amy / Hector / Hector Pro (elektrikli mini araçlar): otomobil kategorisine eklenecek, ancak çıkış yılları doğrulanamadı (Amy ~2023-24, Hector Pro 2024 haberleri var, kesin yıl yok)."
+  "yeniModel": {
+    "Amy": {
+      "bas": 2023,
+      "bit": null,
+      "kaynak": "arabam.com / sektorgazetesi: Yuki Amy Kasım 2023'te 399.000 TL ile satışa çıktı"
+    },
+    "Hector": {
+      "bas": 2022,
+      "bit": null,
+      "kaynak": "sonhaberler.com (21 Eylül 2022): Yuki Hector fiyat haberi — en eski tarihli kaynak"
+    },
+    "Hector Pro": {
+      "bas": 2023,
+      "bit": null,
+      "kaynak": "elektrikliarabadunyasi.com / elektrugo: Hector Pro 21 Aralık 2023'te satışa çıktı"
+    }
+  }
 }

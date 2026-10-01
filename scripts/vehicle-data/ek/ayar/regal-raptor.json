@@ -1,3 +1,24 @@
 {
-  "atlaMarka": "Regal Raptor K3 KLS / K4 / K5 / K5 Long / K5 Pro (4 tekerlekli elektrikli E-Car, regalraptor.com.tr): otomobil kategorisine eklenecek, ancak çıkış yılı internette doğrulanamadı."
+  "yeniModel": {
+    "K3 KLS": {
+      "bas": 2022,
+      "bit": null,
+      "kaynak": "aksam.com.tr (4 Ocak 2022) / internethaber.com (21 Mart 2022): Regal Raptor Türkiye'de 2022 başında satışa çıktı"
+    },
+    "K4": {
+      "bas": 2022,
+      "bit": null,
+      "kaynak": "aksam.com.tr (4 Ocak 2022) — Regal Raptor e-Car Türkiye satışı"
+    },
+    "K5": {
+      "bas": 2022,
+      "bit": null,
+      "kaynak": "aksam.com.tr (4 Ocak 2022) — Regal Raptor e-Car Türkiye satışı"
+    },
+    "K5 Long": {
+      "bas": 2022,
+      "bit": null,
+      "kaynak": "internethaber.com (21 Mart 2022): K5 Long 62.900 TL ile satışa sunuldu"
+    }
+  }
 }

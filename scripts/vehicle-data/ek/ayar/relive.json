@@ -4,10 +4,14 @@
       "bas": 2023,
       "bit": null,
       "kaynak": "shiftdelete.net Relive BAW01 (3 Eylül 2023 Türkiye lansmanı)"
+    },
+    "EZI": {
+      "bas": 2025,
+      "bit": null,
+      "kaynak": "relive.com.tr 2025 tavsiye edilen fiyat listesi — en eski doğrulanan kaynak; daha eski çıkış doğrulanamadı"
     }
   },
   "atla": {
-    "EZI": "Relive EZI (6.6 kW, 25 km/s L-kategori) — Türkiye çıkış yılı doğrulanamadı.",
     "N1": "Relive N1 (BAW tabanlı L7e) — Türkiye çıkış yılı doğrulanamadı."
   }
 }
