@@ -6,7 +6,7 @@
 // kilitlenir, aksi halde kullanıcıya sorulur (bkz. src/lib/katalog/secim.ts).
 // Marka dosyası (public/katalog/…) yalnız marka seçilince indirilir.
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import katalogIndex from "@/data/katalogIndex.json";
 import type { KatalogIndex, KatalogKategori, KatalogMarkaDosyasi } from "@/lib/katalog/tipler";
 import {
@@ -14,6 +14,7 @@ import {
   versiyonSecenekleri, versiyonaGore, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri, BUGUN_YIL,
   PAKET_YOK, VERSIYON_YOK, type AlanDurumu,
 } from "@/lib/katalog/secim";
+import { ekYilGecerli, katalogBirlestir, markalariBirlestir } from "@/lib/katalog/ek";
 import { formatVersionLabel, parseVersion, versionForTrimName } from "@/lib/parseVersion";
 
 const INDEX = katalogIndex as KatalogIndex;
@@ -53,6 +54,7 @@ const VITESLER: Record<KatalogKategori, { value: string; label: string }[]> = {
     { value: "Otomatik", label: "Otomatik" },
   ],
 };
+const YIL_DIGER = "__diger_yil";
 const TUM_YILLAR = Array.from({ length: BUGUN_YIL - 1990 + 1 }, (_, i) => BUGUN_YIL - i);
 
 export interface KatalogSecimSonucu {
@@ -101,13 +103,31 @@ export default function KatalogAracSecimi({
   baslangicOzelModel?: string;
   onChange: (s: KatalogSecimSonucu) => void;
 }) {
-  const markalar = INDEX[kategori];
+  // Statik marka listesi + veritabanında onaylı aracı olup statikte olmayan markalar (admin onayıyla gelenler)
+  const [ekMarkalar, setEkMarkalar] = useState<string[]>([]);
+  useEffect(() => {
+    let iptal = false;
+    fetch(`/api/katalog/ek/markalar?kategori=${kategori}`)
+      .then((r) => (r.ok ? r.json() : { markalar: [] }))
+      .then((d) => { if (!iptal && Array.isArray(d.markalar)) setEkMarkalar(d.markalar.filter((m: unknown): m is string => typeof m === "string")); })
+      .catch(() => {});
+    return () => { iptal = true; };
+  }, [kategori]);
+  const markalar = useMemo(() => {
+    const statik = INDEX[kategori].filter((m) => m.marka !== DIGER_MARKA);
+    const yeni = markalariBirlestir(statik.map((m) => m.marka), ekMarkalar).map((marka) => ({ marka, dosya: "", modeller: [] as string[] }));
+    const hepsi = [...statik, ...yeni].sort((a, b) => a.marka.localeCompare(b.marka, "tr"));
+    return [...hepsi, ...INDEX[kategori].filter((m) => m.marka === DIGER_MARKA)];
+  }, [kategori, ekMarkalar]);
 
   const [marka, setMarka] = useState(baslangicMarka);
   const [ozelMarka, setOzelMarka] = useState("");
   const [model, setModel] = useState(baslangicModel);
   const [ozelModel, setOzelModel] = useState(baslangicOzelModel);
   const [yil, setYil] = useState("");
+  // Model yılı "Diğer": listede olmayan yıl için sayı kutusu
+  const [yilDiger, setYilDiger] = useState(false);
+  const [ozelYil, setOzelYil] = useState("");
   const [nesilAd, setNesilAd] = useState("");
   const [versiyon, setVersiyon] = useState("");
   const [ozelVersiyon, setOzelVersiyon] = useState("");
@@ -116,21 +136,30 @@ export default function KatalogAracSecimi({
   const [yakitSecim, setYakitSecim] = useState("");
   const [vitesSecim, setVitesSecim] = useState("");
 
-  // Marka dosyası — yalnız marka seçilince indirilir
+  // Marka dosyası — yalnız marka seçilince indirilir (statik katalog + o markanın onaylı eklemeleri)
   const markaGirdisi = markalar.find((m) => m.marka === marka);
-  const [dosya, setDosya] = useState<{ yol: string; veri: KatalogMarkaDosyasi } | null>(null);
+  const [dosya, setDosya] = useState<{ anahtar: string; veri: KatalogMarkaDosyasi } | null>(null);
   const [dosyaHata, setDosyaHata] = useState(false);
   useEffect(() => {
-    if (!markaGirdisi?.dosya) return;
+    if (!marka || marka === DIGER_MARKA) return;
     let iptal = false;
-    const yol = markaGirdisi.dosya;
-    fetch(yol)
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-      .then((veri: KatalogMarkaDosyasi) => { if (!iptal) { setDosya({ yol, veri }); setDosyaHata(false); } })
-      .catch(() => { if (!iptal) setDosyaHata(true); });
+    const statikYol = markaGirdisi?.dosya || "";
+    const statikP = statikYol
+      ? fetch(statikYol).then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status))))).then((v: KatalogMarkaDosyasi) => ({ ok: true as const, v }), () => ({ ok: false as const, v: null }))
+      : Promise.resolve({ ok: true as const, v: null });
+    const ekP = fetch(`/api/katalog/ek?kategori=${kategori}&marka=${encodeURIComponent(marka)}`)
+      .then((r) => (r.ok ? r.json() : { marka: null }))
+      .then((d) => (d && d.marka && Array.isArray(d.marka.modeller) ? d.marka : null))
+      .catch(() => null);
+    Promise.all([statikP, ekP]).then(([s, e]) => {
+      if (iptal) return;
+      if (!s.ok) { setDosyaHata(true); return; }
+      setDosya({ anahtar: marka, veri: katalogBirlestir(s.v, e ?? { marka, modeller: [] }, kategori) });
+      setDosyaHata(false);
+    });
     return () => { iptal = true; };
-  }, [markaGirdisi?.dosya]);
-  const markaDosyasi = dosya && dosya.yol === markaGirdisi?.dosya ? dosya.veri : null;
+  }, [marka, markaGirdisi?.dosya, kategori]);
+  const markaDosyasi = dosya && dosya.anahtar === marka ? dosya.veri : null;
 
   const digerMarka = marka === DIGER_MARKA;
   const digerModel = model === DIGER;
@@ -221,6 +250,7 @@ export default function KatalogAracSecimi({
     const i = sira.indexOf(seviye);
     if (i < 1) { setModel(""); setOzelModel(""); }
     if (i < 2) { setYil(""); setNesilAd(""); }
+    if (i < 2) { setYilDiger(false); setOzelYil(""); }
     if (i < 3) { setVersiyon(""); setOzelVersiyon(""); }
     if (i < 4) { setPaket(""); setOzelPaket(""); }
     setYakitSecim(""); setVitesSecim("");
@@ -266,10 +296,34 @@ export default function KatalogAracSecimi({
 
       {(modelObj || digerModel || digerMarka) && (
         <Alan label="Model Yılı">
-          <select value={yil} onChange={(e) => { setYil(e.target.value); altlariTemizle("yil"); }} className={selectCls}>
+          <select
+            value={yilDiger ? YIL_DIGER : yil}
+            onChange={(e) => {
+              altlariTemizle("yil");
+              if (e.target.value === YIL_DIGER) { setYilDiger(true); setYil(ekYilGecerli(Number(ozelYil)) ? ozelYil : ""); }
+              else { setYilDiger(false); setOzelYil(""); setYil(e.target.value); }
+            }}
+            className={selectCls}
+          >
             <option value="">— Seçin —</option>
             {yillar.map((y) => <option key={y} value={y}>{y}</option>)}
+            <option value={YIL_DIGER}>{DIGER} (listede yok)</option>
           </select>
+          {yilDiger && (
+            <>
+              <input type="text" inputMode="numeric" maxLength={4} aria-label="Model yılı" value={ozelYil}
+                onChange={(e) => {
+                  const v = e.target.value.replace(/\D/g, "").slice(0, 4);
+                  setOzelYil(v);
+                  altlariTemizle("yil");
+                  setYil(ekYilGecerli(Number(v)) ? v : "");
+                }}
+                placeholder="Model yılını yazınız (örn. 2018)" className={inputCls} autoFocus />
+              {ozelYil.length === 4 && !ekYilGecerli(Number(ozelYil)) && (
+                <p className="mt-1 text-xs text-red-600">Geçerli bir yıl giriniz (1900 – {BUGUN_YIL + 1}).</p>
+              )}
+            </>
+          )}
         </Alan>
       )}
 
@@ -323,7 +377,7 @@ export default function KatalogAracSecimi({
         </Alan>
       )}
 
-      {!tsbModu && (nesil || digerModel || digerMarka) && yil && (
+      {!tsbModu && (nesil || digerModel || digerMarka || modelObj) && yil && (
         <>
           <Alan label="Versiyon">
             <select value={versiyon} onChange={(e) => { setVersiyon(e.target.value); altlariTemizle("versiyon"); }} className={selectCls}>

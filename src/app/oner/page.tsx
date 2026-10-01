@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -10,6 +10,7 @@ import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 import { resolveOnerPrefill, type OnerCategoryKey } from "@/lib/onerPrefill";
 import type { ExistingVehicleMatch } from "@/lib/existingVehicle";
 import { birebirAyniArac } from "@/lib/aracKarsilastir";
+import { ekYilGecerli, legacyBirlestir, type EkMarkaVeri, type LegacyMake } from "@/lib/katalog/ek";
 import KatalogAracSecimi, { type KatalogSecimSonucu } from "./KatalogAracSecimi";
 
 const CATEGORIES = [
@@ -69,7 +70,7 @@ const TRANSMISSIONS: Record<string, { value: string; label: string }[]> = {
   ],
 };
 
-const YEARS = Array.from({ length: 2026 - 1990 + 1 }, (_, i) => 2026 - i);
+const YEARS = Array.from({ length: new Date().getFullYear() - 1990 + 1 }, (_, i) => new Date().getFullYear() - i);
 
 // Model adının sonundaki "(2004-2012)" / "(2020-)" gibi nesil aralığını ayıklar
 function getModelYearRange(modelName: string): [number, number] | null {
@@ -123,6 +124,9 @@ export default function OnerPage() {
   const [selectedTrim, setSelectedTrim]   = useState("");
   const [customTrim, setCustomTrim]       = useState("");
   const [year, setYear]         = useState("");
+  // Model yılı "Diğer": listede olmayan yıl için sayı kutusu
+  const [yearDiger, setYearDiger] = useState(false);
+  const [customYear, setCustomYear] = useState("");
   const [fuelType, setFuelType] = useState("");
   const [transmission, setTransmission] = useState("");
   const [notes, setNotes]       = useState(prefill.notes);
@@ -144,7 +148,22 @@ export default function OnerPage() {
   const katalogModu = categorySlug === "otomobil" || categorySlug === "kamyonet" || categorySlug === "motosiklet";
   const [katalogSecim, setKatalogSecim] = useState<KatalogSecimSonucu | null>(null);
 
-  const makes      = categorySlug && !katalogModu ? vehiclesData[categorySlug] : [];
+  // Statik listesi olmayan kategorilerde (e-scooter/e-bisiklet/karavan) admin onaylı eklemeler canlı katalogdan gelir
+  const [ekTum, setEkTum] = useState<{ kategori: string; veri: EkMarkaVeri[] }>({ kategori: "", veri: [] });
+  useEffect(() => {
+    if (!categorySlug || katalogModu) return;
+    let iptal = false;
+    fetch(`/api/katalog/ek?kategori=${categorySlug}&tum=1`)
+      .then((r) => (r.ok ? r.json() : { markalar: [] }))
+      .then((d) => { if (!iptal && Array.isArray(d.markalar)) setEkTum({ kategori: categorySlug, veri: d.markalar }); })
+      .catch(() => {});
+    return () => { iptal = true; };
+  }, [categorySlug, katalogModu]);
+  const makes = useMemo<LegacyMake[]>(() => {
+    if (!categorySlug || katalogModu) return [];
+    const temel = vehiclesData[categorySlug] as unknown as LegacyMake[];
+    return legacyBirlestir(temel, ekTum.kategori === categorySlug ? ekTum.veri : []);
+  }, [categorySlug, katalogModu, ekTum]);
   const makeEntry  = makes.find((m) => m.make === selectedMake);
   const models     = (makeEntry?.models ?? []) as {
     name: string;
@@ -205,6 +224,7 @@ export default function OnerPage() {
     setSelectedModel(""); setCustomModel("");
     setSelectedVersion(""); setCustomVersion("");
     setSelectedTrim(""); setCustomTrim("");
+    setYear(""); setYearDiger(false); setCustomYear("");
     setFuelType("");
     setTransmission("");
     setKatalogSecim(null);
@@ -224,7 +244,7 @@ export default function OnerPage() {
     setSelectedModel(val);
     setSelectedVersion(""); setCustomVersion("");
     setSelectedTrim(""); setCustomTrim("");
-    setYear("");
+    setYear(""); setYearDiger(false); setCustomYear("");
     setExistingMatches([]);
   }
 
@@ -240,6 +260,11 @@ export default function OnerPage() {
     }
     if (!brandName || !modelName) {
       setError("Lütfen marka ve model seçiniz.");
+      return;
+    }
+
+    if (!katalogModu && yearDiger && !year) {
+      setError("Lütfen geçerli bir model yılı giriniz.");
       return;
     }
 
@@ -633,11 +658,31 @@ export default function OnerPage() {
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">Yıl</label>
-            <select value={year} onChange={(e) => setYear(e.target.value)}
+            <select value={yearDiger ? "__diger_yil" : year}
+              onChange={(e) => {
+                if (e.target.value === "__diger_yil") { setYearDiger(true); setYear(ekYilGecerli(Number(customYear)) ? customYear : ""); }
+                else { setYearDiger(false); setCustomYear(""); setYear(e.target.value); }
+              }}
               className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white">
               <option value="">— Seçin —</option>
               {availableYears.map((y) => <option key={y} value={y}>{y}</option>)}
+              <option value="__diger_yil">Diğer (listede yok)</option>
             </select>
+            {yearDiger && (
+              <>
+                <input type="text" inputMode="numeric" maxLength={4} aria-label="Model yılı" value={customYear}
+                  onChange={(e) => {
+                    const v = e.target.value.replace(/\D/g, "").slice(0, 4);
+                    setCustomYear(v);
+                    setYear(ekYilGecerli(Number(v)) ? v : "");
+                  }}
+                  placeholder="Model yılını yazınız" autoFocus
+                  className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400" />
+                {customYear.length === 4 && !ekYilGecerli(Number(customYear)) && (
+                  <p className="mt-1 text-xs text-red-600">Geçerli bir yıl giriniz (1900 – {new Date().getFullYear() + 1}).</p>
+                )}
+              </>
+            )}
           </div>
           {fuelOptions.length > 0 && (
             <div>

@@ -28,6 +28,8 @@ export interface KatalogTip {
   t: KatalogVites | null;
   /** Yıl bağımsız kayıt: kaynakta model yılı yok; resmi liste/nesil verisi olmayan yıllarda 1986-2026 arası seçilebilir. */
   g?: boolean;
+  /** Kullanıcı eklemesi: admin onaylı, veritabanından gelen kayıt (statik katalogda yok). Resmi/eski nesil verisini bastırmaz. */
+  e?: boolean;
 }
 
 /** Eski katalogdan gelen nesil: DB model adı (ör. "Clio 5 (2019-)") ve 2012 öncesi seçenekler. */

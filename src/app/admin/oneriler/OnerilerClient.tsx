@@ -25,7 +25,15 @@ type Suggestion = {
   productStatus: string | null;
   catalogPowerHp: string | null;
   dupMatches: { slug: string; name: string; reviewCount: number }[];
+  /** Yazım hatası / benzer ad uyarıları (marka, model, donanım) — bkz. lib/katalog/benzerlik.ts */
+  benzerUyarilar: string[];
 };
+
+type Duzeltme = {
+  brandName: string; modelName: string; trimName: string; year: string; fuelType: string; transmission: string;
+};
+
+const VITES_SECENEKLERI = ["Manuel", "Otomatik", "CVT", "Yarı Otomatik"];
 
 const FUEL_LABELS: Record<string, string> = {
   GASOLINE: "Benzin", DIESEL: "Dizel", EV: "Elektrikli",
@@ -52,6 +60,8 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
   const [loading, setLoading] = useState<number | null>(null);
   const [modal, setModal]     = useState<{ suggestion: Suggestion; action: "APPROVED" | "REJECTED" } | null>(null);
   const [adminNote, setAdminNote]   = useState("");
+  // Onay öncesi düzeltme (yazım, harf, versiyon–donanım ayrımı): değişirse sunucuya "duzeltme" olarak gider
+  const [duz, setDuz] = useState<Duzeltme | null>(null);
   const [customSlug, setCustomSlug] = useState("");
   const [attrs, setAttrs]     = useState<Record<string, string>>({});
   const [errorMsg, setErrorMsg]     = useState<string | null>(null);
@@ -108,6 +118,18 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
     setListingResult({ count: keys.length });
   }
 
+  function duzeltmeGonder(s: Suggestion, d: Duzeltme) {
+    const yilSayi = d.year.trim() ? Number(d.year) : null;
+    const degisti =
+      d.brandName.trim() !== s.brandName || d.modelName.trim() !== s.modelName || (d.trimName.trim() || null) !== (s.trimName ?? null) ||
+      yilSayi !== (s.year ?? null) || (d.fuelType || null) !== (s.fuelType ?? null) || (d.transmission || null) !== (s.transmission ?? null);
+    if (!degisti) return undefined;
+    return {
+      brandName: d.brandName.trim(), modelName: d.modelName.trim(), trimName: d.trimName.trim() || null,
+      year: yilSayi, fuelType: d.fuelType || null, transmission: d.transmission || null,
+    };
+  }
+
   async function handleAction() {
     if (!modal) return;
     setErrorMsg(null);
@@ -120,6 +142,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
           action: modal.action,
           adminNote: adminNote.trim() || undefined,
           customSlug: customSlug.trim() || undefined,
+          duzeltme: modal.action === "APPROVED" && duz ? duzeltmeGonder(modal.suggestion, duz) : undefined,
           attributes: modal.action === "APPROVED" && Object.keys(attrs).length > 0 ? attrs : undefined,
           imageUrl: modal.action === "APPROVED" && imageChecked ? previewImage : undefined,
           specConfidence: modal.action === "APPROVED" && Object.keys(specConfidence).length > 0 ? specConfidence : undefined,
@@ -144,6 +167,10 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
 
   async function openModal(suggestion: Suggestion, action: "APPROVED" | "REJECTED") {
     setErrorMsg(null); setAdminNote(""); setSpecConfidence({});
+    setDuz({
+      brandName: suggestion.brandName, modelName: suggestion.modelName, trimName: suggestion.trimName ?? "",
+      year: suggestion.year ? String(suggestion.year) : "", fuelType: suggestion.fuelType ?? "", transmission: suggestion.transmission ?? "",
+    });
     setReadyForAutoApprove(false); setCriticalFieldsMissing([]); setListingPaste(""); setListingResult(null);
     setPreviewImage(null); setImageChecked(false);
     if (!suggestion.productId) {
@@ -289,6 +316,13 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                   </div>
                 )}
 
+                {s.status === "PENDING" && s.benzerUyarilar.length > 0 && (
+                  <div className="mb-2 px-3 py-2 rounded-xl bg-orange-50 border border-orange-200 text-xs text-orange-800">
+                    <p className="font-semibold mb-0.5">Yazım/benzerlik uyarısı</p>
+                    <ul className="list-disc pl-4 space-y-0.5">{s.benzerUyarilar.map((u, i) => <li key={i}>{u}</li>)}</ul>
+                  </div>
+                )}
+
                 {s.status === "PENDING" && s.dupMatches.length > 0 && (
                   <div className="mb-2 px-3 py-2 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800">
                     <p className="font-semibold mb-1">⚠️ Katalogda benzer araç var — olası kopya</p>
@@ -363,6 +397,55 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
               {modal.suggestion.year ? ` (${modal.suggestion.year})` : ""}
               {" · "}{CAT_LABELS[modal.suggestion.categorySlug] ?? modal.suggestion.categorySlug}
             </p>
+
+            {modal.action === "APPROVED" && modal.suggestion.benzerUyarilar.length > 0 && (
+              <div className="mb-4 px-3 py-2.5 rounded-xl bg-orange-50 border border-orange-200 text-sm text-orange-800">
+                <p className="font-semibold mb-1">Onaylamadan önce kontrol edin</p>
+                <ul className="list-disc pl-4 space-y-0.5 text-xs">
+                  {modal.suggestion.benzerUyarilar.map((u, i) => <li key={i}>{u}</li>)}
+                </ul>
+              </div>
+            )}
+
+            {modal.action === "APPROVED" && duz && (
+              <div className="mb-4 rounded-xl border border-gray-200 p-3 space-y-2">
+                <p className="text-xs font-semibold text-gray-700">
+                  Katalog bilgisi <span className="font-normal text-gray-400">— onaylanınca herkese seçenek olarak çıkar; yazımı burada düzeltin</span>
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  <label className="text-xs text-gray-500">Marka
+                    <input value={duz.brandName} maxLength={80} onChange={(e) => setDuz({ ...duz, brandName: e.target.value })}
+                      className="mt-0.5 w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-900" />
+                  </label>
+                  <label className="text-xs text-gray-500">Model
+                    <input value={duz.modelName} maxLength={100} onChange={(e) => setDuz({ ...duz, modelName: e.target.value })}
+                      className="mt-0.5 w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-900" />
+                  </label>
+                  <label className="text-xs text-gray-500 col-span-2">Versiyon – Donanım Paketi <span className="text-gray-400">(ayırıcı: boşluk + – + boşluk)</span>
+                    <input value={duz.trimName} maxLength={150} onChange={(e) => setDuz({ ...duz, trimName: e.target.value })}
+                      placeholder="örn. 1.6 T-GDI – GT Line" className="mt-0.5 w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-900" />
+                  </label>
+                  <label className="text-xs text-gray-500">Model yılı
+                    <input type="number" min={1900} max={new Date().getFullYear() + 1} value={duz.year} onChange={(e) => setDuz({ ...duz, year: e.target.value })}
+                      className="mt-0.5 w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-900" />
+                  </label>
+                  <label className="text-xs text-gray-500">Yakıt
+                    <select value={duz.fuelType} onChange={(e) => setDuz({ ...duz, fuelType: e.target.value })}
+                      className="mt-0.5 w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-900 bg-white">
+                      <option value="">—</option>
+                      {Object.entries(FUEL_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+                    </select>
+                  </label>
+                  <label className="text-xs text-gray-500">Vites
+                    <select value={duz.transmission} onChange={(e) => setDuz({ ...duz, transmission: e.target.value })}
+                      className="mt-0.5 w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-900 bg-white">
+                      <option value="">—</option>
+                      {VITES_SECENEKLERI.map((v) => <option key={v} value={v}>{v}</option>)}
+                    </select>
+                  </label>
+                </div>
+              </div>
+            )}
 
             {modal.action === "REJECTED" && modal.suggestion.dupMatches.length > 0 && (
               <div className="mb-4 px-3 py-2.5 rounded-xl bg-amber-50 border border-amber-200 text-sm text-amber-800">

@@ -19,7 +19,7 @@ export function modelYillari(model: KatalogModel): number[] {
   for (const n of model.nesiller) {
     if (!n.el) continue;
     // TSB tipi olan modelde eski nesil yalnız TSB öncesi yılları doldurur
-    const son = model.tipler.some((t) => !t.g) ? Math.min(n.bit ?? TSB_ILK_YIL - 1, TSB_ILK_YIL - 1) : (n.bit ?? BUGUN_YIL);
+    const son = model.tipler.some((t) => !t.g && !t.e) ? Math.min(n.bit ?? TSB_ILK_YIL - 1, TSB_ILK_YIL - 1) : (n.bit ?? BUGUN_YIL);
     for (let y = n.bas; y <= son; y++) set.add(y);
   }
   return [...set].sort((a, b) => b - a);
@@ -27,12 +27,13 @@ export function modelYillari(model: KatalogModel): number[] {
 
 /** Seçilen yılda TSB tipleri var mı? Yoksa o yıl eski katalog nesilleriyle sunulur. */
 export function yilTipleri(model: KatalogModel, yil: number): KatalogTip[] {
-  const yilli = model.tipler.filter((t) => !t.g && t.y.includes(yil));
+  const yilli = model.tipler.filter((t) => !t.g && !t.e && t.y.includes(yil));
+  const eklenen = model.tipler.filter((t) => t.e && t.y.includes(yil));
   const genel = model.tipler.filter((t) => t.g && t.y.includes(yil));
-  if (yilli.length) return [...yilli, ...genel];
-  // Resmi listede o yıl yok: eski nesil seçenekleri varsa onlar sunulur (genel kayıtlar zaten onlara da eklidir);
-  // hiçbir nesil de kapsamıyorsa yıl bağımsız kayıtlar tek seçenek olur.
-  return yilNesilleri(model, yil).length ? [] : genel;
+  if (yilli.length) return [...yilli, ...eklenen, ...genel];
+  // Resmi listede o yıl yok: eski nesil seçenekleri varsa onlar sunulur (genel ve kullanıcı eklemeleri zaten
+  // onlara da yazılıdır); hiçbir nesil de kapsamıyorsa eklenenler + yıl bağımsız kayıtlar sunulur.
+  return yilNesilleri(model, yil).length ? [] : [...eklenen, ...genel];
 }
 
 /** TSB tipi olmayan yıllar için o yılı kapsayan eski nesiller. */

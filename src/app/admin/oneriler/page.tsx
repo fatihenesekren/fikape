@@ -2,6 +2,13 @@ import { prisma } from "@/lib/prisma";
 import { OnerilerClient } from "./OnerilerClient";
 import { findExistingVehicles } from "@/lib/existingVehicle";
 import type { Metadata } from "next";
+import katalogIndex from "@/data/katalogIndex.json";
+import type { KatalogIndex } from "@/lib/katalog/tipler";
+import { benzerUyarilar } from "@/lib/katalog/benzerlik";
+import { adAnahtar } from "@/lib/katalog/ek";
+import { slugify } from "@/lib/slugify";
+
+const INDEX = katalogIndex as KatalogIndex;
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -52,7 +59,35 @@ export default async function AdminOnerilerPage() {
       }),
   );
 
+  // Yazım hatası / benzer ad uyarıları: statik katalog + veritabanındaki marka/model/donanım adlarıyla karşılaştırılır
+  const dbMarkalar = await prisma.brand.findMany({ select: { name: true, models: { select: { name: true } } } });
+  const benzerBySuggestionId = new Map<number, string[]>();
+  await Promise.all(
+    suggestions.filter((s) => s.status === "PENDING").map(async (s) => {
+      const kat = (INDEX as Record<string, KatalogIndex["otomobil"] | undefined>)[s.categorySlug] ?? [];
+      const statikMarkalar = kat.map((m) => m.marka).filter((m) => m !== "Diğer / Bulamadım");
+      const markaKey = adAnahtar(s.brandName);
+      const statikModeller = kat.find((m) => adAnahtar(m.marka) === markaKey)?.modeller ?? [];
+      const dbMarka = dbMarkalar.find((b) => adAnahtar(b.name) === markaKey);
+      const trimler = dbMarka
+        ? (await prisma.product.findMany({
+            where: { status: "ACTIVE", brand: { slug: slugify(dbMarka.name) } },
+            select: { trimName: true },
+            take: 500,
+          })).map((p) => p.trimName).filter((t): t is string => !!t)
+        : [];
+      const uyarilar = benzerUyarilar({
+        brand: s.brandName, model: s.modelName, trim: s.trimName,
+        markalar: [...new Set([...statikMarkalar, ...dbMarkalar.map((b) => b.name)])],
+        modeller: [...new Set([...statikModeller, ...(dbMarka?.models.map((m) => m.name) ?? [])])],
+        trimler,
+      });
+      if (uyarilar.length) benzerBySuggestionId.set(s.id, uyarilar);
+    }),
+  );
+
   const serialized = suggestions.map((s) => ({
+    benzerUyarilar: benzerBySuggestionId.get(s.id) ?? [],
     id: s.id,
     brandName: s.brandName,
     modelName: s.modelName,

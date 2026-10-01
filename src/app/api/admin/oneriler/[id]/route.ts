@@ -7,6 +7,20 @@ import { notifyGarageBrandFollowers } from "@/lib/notifications";
 import { normalizeAttributeValues } from "@/lib/vehicleTypes";
 import { findVerifiedVehicleImage } from "@/lib/wikidataImage";
 import { syncAiVehicleSummary } from "@/lib/ai/vehicleSummary";
+import { revalidateTag } from "next/cache";
+import { EK_ETIKET } from "@/lib/katalog/ekSunucu";
+import { ekYilGecerli } from "@/lib/katalog/ek";
+import { findExistingVehicles, birebirAyniArac } from "@/lib/existingVehicle";
+import { fotoUrlGecerli, temizMetin, yilCoz } from "@/lib/katalog/metin";
+
+const GECERLI_YAKIT = ["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"];
+const GECERLI_VITES = ["Manuel", "Otomatik", "CVT", "Yarı Otomatik"];
+
+/** Moderatörün onay öncesi yaptığı düzeltme (yazım, harf, versiyon/paket ayrımı). */
+type Duzeltme = {
+  brandName?: string; modelName?: string; trimName?: string | null;
+  year?: number | null; fuelType?: string | null; transmission?: string | null;
+};
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -28,8 +42,10 @@ export async function POST(
 
   const { id } = await params;
   const suggestionId = Number(id);
-  const body = await req.json();
-  const { action, adminNote, customSlug, attributes: incomingAttrs, imageUrl: previewedImageUrl, specConfidence } = body as {
+  const body = await req.json().catch(() => null);
+  if (!body || typeof body !== "object") return NextResponse.json({ error: "Geçersiz istek" }, { status: 400 });
+  const { action, adminNote, customSlug, attributes: incomingAttrs, imageUrl: previewedImageUrl, specConfidence, duzeltme } = body as {
+    duzeltme?: Duzeltme;
     action: "APPROVED" | "REJECTED";
     adminNote?: string;
     customSlug?: string;
@@ -42,7 +58,7 @@ export async function POST(
     return NextResponse.json({ error: "Geçersiz işlem" }, { status: 400 });
   }
 
-  const suggestion = await prisma.vehicleSuggestion.findUnique({
+  let suggestion = await prisma.vehicleSuggestion.findUnique({
     where: { id: suggestionId },
   });
   if (!suggestion) return NextResponse.json({ error: "Öneri bulunamadı" }, { status: 404 });
@@ -72,6 +88,75 @@ export async function POST(
 
   // ── ONAYLAMA ──
 
+  // Moderatör düzeltmesi: marka/model/donanım/yıl/yakıt/vites onaydan ÖNCE düzeltilebilir. Kalıcı kayıt (ve canlı
+  // katalog) düzeltilmiş değerlerle oluşur; slug değişmez (kullanıcının yorum linki bozulmasın).
+  if (duzeltme && typeof duzeltme === "object") {
+    const temiz = (v: unknown, max: number) => (typeof v === "string" ? (temizMetin(v) ?? "").slice(0, max + 1) : undefined);
+    const brandName = temiz(duzeltme.brandName, 80) ?? suggestion.brandName;
+    const modelName = temiz(duzeltme.modelName, 100) ?? suggestion.modelName;
+    const trimRaw = duzeltme.trimName === undefined ? suggestion.trimName : temiz(duzeltme.trimName ?? "", 150) || null;
+    const yilSonuc = duzeltme.year === undefined ? suggestion.year : yilCoz(duzeltme.year);
+    if (yilSonuc === "gecersiz") return NextResponse.json({ error: "Geçersiz model yılı" }, { status: 422 });
+    const year: number | null = yilSonuc;
+    const fuelType = duzeltme.fuelType === undefined ? suggestion.fuelType : duzeltme.fuelType || null;
+    const transmission = duzeltme.transmission === undefined ? suggestion.transmission : duzeltme.transmission || null;
+    if (!brandName || !modelName || brandName.length > 80 || modelName.length > 100 || (trimRaw && trimRaw.length > 150)) {
+      return NextResponse.json({ error: "Marka/model/donanım boş ya da çok uzun" }, { status: 422 });
+    }
+    if (year !== null && year !== undefined && !ekYilGecerli(Number(year))) {
+      return NextResponse.json({ error: "Geçersiz model yılı" }, { status: 422 });
+    }
+    if (fuelType && !GECERLI_YAKIT.includes(fuelType)) return NextResponse.json({ error: "Geçersiz yakıt tipi" }, { status: 422 });
+    if (transmission && !GECERLI_VITES.includes(transmission)) return NextResponse.json({ error: "Geçersiz vites tipi" }, { status: 422 });
+
+    const degisti =
+      brandName !== suggestion.brandName || modelName !== suggestion.modelName || (trimRaw ?? null) !== (suggestion.trimName ?? null) ||
+      (year ?? null) !== (suggestion.year ?? null) || (fuelType ?? null) !== (suggestion.fuelType ?? null) || (transmission ?? null) !== (suggestion.transmission ?? null);
+
+    if (degisti) {
+      // Düzeltilmiş bilgi başka bir aktif kayıtla BİREBİR aynıysa onaylama (kopya olur)
+      const benzerler = await findExistingVehicles(brandName, modelName, suggestion.categorySlug);
+      const kendiSlug = suggestion.productId
+        ? (await prisma.product.findUnique({ where: { id: suggestion.productId }, select: { slug: true } }))?.slug
+        : undefined;
+      const kopya = benzerler.find((mm) =>
+        mm.slug !== kendiSlug &&
+        birebirAyniArac(mm, { year: year ?? null, trimName: trimRaw ?? null, fuelType: fuelType ?? null, transmission: transmission ?? null }));
+      if (kopya) {
+        return NextResponse.json({ error: `Düzeltilen bilgilerle aynı araç zaten kayıtlı: ${kopya.name} (/araclar/${kopya.slug})` }, { status: 409 });
+      }
+      const brandSlug = slugify(brandName);
+      const modelSlug = slugify(`${brandName}-${modelName}`);
+      if (!brandSlug || !modelSlug) return NextResponse.json({ error: "Marka/model alfasayısal karakter içermiyor" }, { status: 422 });
+      // Moderatör yolunda mevcut kaydın ADI da düzeltilir (ör. büyük/küçük harf, aksan farkı aynı slug'a düşer;
+      // update: {} olsaydı düzeltme sessizce etkisiz kalırdı).
+      const brand = await prisma.brand.upsert({ where: { slug: brandSlug }, update: { name: brandName }, create: { slug: brandSlug, name: brandName } });
+      const model = await prisma.model.upsert({ where: { slug: modelSlug }, update: { name: modelName }, create: { slug: modelSlug, name: modelName, brandId: brand.id } });
+      if (model.brandId !== brand.id) {
+        return NextResponse.json({ error: "Bu model adı başka bir markaya ait görünüyor (slug çakışması); adı farklı yazın" }, { status: 409 });
+      }
+      if (suggestion.productId) {
+        const urun = await prisma.product.findUnique({ where: { id: suggestion.productId }, select: { attributes: true } });
+        const a = { ...((urun?.attributes && typeof urun.attributes === "object" ? urun.attributes : {}) as Record<string, unknown>) };
+        if (fuelType) a.fuel_type = fuelType; else delete a.fuel_type;
+        if (transmission) a.transmission = transmission; else delete a.transmission;
+        await prisma.product.update({
+          where: { id: suggestion.productId },
+          data: {
+            brandId: brand.id, modelId: model.id,
+            name: `${brandName} ${modelName}${trimRaw ? ` ${trimRaw}` : ""}${year ? ` ${year}` : ""}`,
+            year: year ?? null, trimName: trimRaw ?? null,
+            attributes: a as Parameters<typeof prisma.product.update>[0]["data"]["attributes"],
+          },
+        });
+      }
+      suggestion = await prisma.vehicleSuggestion.update({
+        where: { id: suggestionId },
+        data: { brandName, modelName, trimName: trimRaw ?? null, year: year ?? null, fuelType: fuelType ?? null, transmission: transmission ?? null },
+      });
+    }
+  }
+
   // Yeni akış: PENDING ürün zaten oluşturulmuş
   if (suggestion.productId) {
     const existingProduct = await prisma.product.findUnique({
@@ -94,44 +179,56 @@ export async function POST(
         ? previewedImageUrl
         : await findVerifiedVehicleImage(suggestion.brandName, suggestion.modelName, suggestion.year);
 
-    // Kullanıcının önerdiği fotoğrafları ProductPhoto'ya ekle
-    const suggestionPhotos: string[] = Array.isArray(suggestion.photoUrls) ? suggestion.photoUrls : [];
-    if (suggestionPhotos.length > 0) {
-      await prisma.productPhoto.createMany({
-        data: suggestionPhotos.map((url, idx) => ({
-          productId: suggestion.productId!,
-          uploadedByUserId: suggestion.userId ?? null,
-          url, status: "APPROVED" as const, order: idx,
-        })),
-        skipDuplicates: true,
+    // Kullanıcının önerdiği fotoğraflar (yalnız güvenli https/Blob adresleri)
+    const suggestionPhotos: string[] = (Array.isArray(suggestion.photoUrls) ? suggestion.photoUrls : []).filter((u) => fotoUrlGecerli(u));
+    const productId = suggestion.productId;
+
+    // Tüm durum değişiklikleri TEK işlemde ve atomik "talep" ile: aynı anda iki onay (çift tıklama/iki admin) ya da
+    // yarıda kalan bir hata ürünü/öneriyi tutarsız bırakmaz.
+    const talepEdildi = await prisma.$transaction(async (tx) => {
+      const talep = await tx.vehicleSuggestion.updateMany({
+        where: { id: suggestionId, status: "PENDING" },
+        data: {
+          status: "APPROVED", adminNote: adminNote ?? null,
+          reviewedAt: new Date(), reviewedBy: Number(session.user.id),
+          specConfidence: (specConfidence ?? undefined) as Parameters<typeof prisma.vehicleSuggestion.update>[0]["data"]["specConfidence"],
+        },
       });
+      if (talep.count === 0) return false;
+      if (suggestionPhotos.length > 0) {
+        await tx.productPhoto.createMany({
+          data: suggestionPhotos.map((url, idx) => ({
+            productId, uploadedByUserId: suggestion.userId ?? null,
+            url, status: "APPROVED" as const, order: idx,
+          })),
+          skipDuplicates: true,
+        });
+      }
+      await tx.product.update({
+        where: { id: productId },
+        data: {
+          status: "ACTIVE",
+          isActive: true,
+          attributes: mergedAttrs as Parameters<typeof prisma.product.update>[0]["data"]["attributes"],
+          ...(wikiImage ? { imageUrl: wikiImage } : {}),
+        },
+      });
+      // Bekleyen yorumları yayınla
+      await tx.review.updateMany({
+        where: { productId, status: "PENDING" },
+        data: { status: "PUBLISHED", publishedAt: new Date() },
+      });
+      return true;
+    });
+    if (!talepEdildi) {
+      return NextResponse.json({ error: "Bu öneri zaten işleme alındı" }, { status: 409 });
     }
 
-    await prisma.product.update({
-      where: { id: suggestion.productId },
-      data: {
-        status: "ACTIVE",
-        isActive: true,
-        attributes: mergedAttrs as Parameters<typeof prisma.product.update>[0]["data"]["attributes"],
-        ...(wikiImage ? { imageUrl: wikiImage } : {}),
-      },
-    });
-    // Bekleyen yorumları yayınla
-    await prisma.review.updateMany({
-      where: { productId: suggestion.productId, status: "PENDING" },
-      data: { status: "PUBLISHED", publishedAt: new Date() },
-    });
-    await prisma.vehicleSuggestion.update({
-      where: { id: suggestionId },
-      data: {
-        status: "APPROVED", adminNote: adminNote ?? null,
-        reviewedAt: new Date(), reviewedBy: Number(session.user.id),
-        specConfidence: (specConfidence ?? undefined) as Parameters<typeof prisma.vehicleSuggestion.update>[0]["data"]["specConfidence"],
-      },
-    });
-    await notifyGarageBrandFollowers(suggestion.productId);
-    await syncAiVehicleSummary(suggestion.productId).catch((e) => console.error("[ai-vehicle-summary]", e));
-    return NextResponse.json({ ok: true, action: "APPROVED", productId: suggestion.productId });
+    // Araç artık ACTIVE: canlı katalog önbelleğini HEMEN geçersiz kıl (bildirim/AI özeti hata verse de forma düşsün)
+    revalidateTag(EK_ETIKET, { expire: 0 });
+    try { await notifyGarageBrandFollowers(productId); } catch (e) { console.error("[notifyGarageBrandFollowers]", e); }
+    await syncAiVehicleSummary(productId).catch((e) => console.error("[ai-vehicle-summary]", e));
+    return NextResponse.json({ ok: true, action: "APPROVED", productId });
   }
 
   // Legacy akış: productId yok, eski yöntemle ürün oluştur
@@ -241,6 +338,7 @@ export async function POST(
   await notifyGarageBrandFollowers(product.id);
   await syncAiVehicleSummary(product.id).catch((e) => console.error("[ai-vehicle-summary]", e));
 
+  revalidateTag(EK_ETIKET, { expire: 0 });
   return NextResponse.json({ ok: true, action: "APPROVED", productId: product.id, slug: product.slug });
 }
 
