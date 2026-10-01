@@ -19,7 +19,7 @@
   - + Yeni model (ayrı): Torres EVX (2023–) — yıl aralığı "Torres" modelinden alındı
   - + Torres EVX › 4x2 › Standart
   - + XLV › 1.6 D › Limited (yıl bilgisi yok → 1986-2026)
-- kamyonet: zaten vardı 0 · eklendi 21 · belirsiz 1
+- kamyonet: zaten vardı 0 · eklendi 20 · belirsiz 1
   - + Yeni model: Actyon Sports (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
   - + Actyon Sports › 2.0 SXDI 4x2 › Standart
   - + Actyon Sports › 2.0 SXDI 4x4 › Standart
@@ -34,10 +34,9 @@
   - + Musso › 2.2 D › Platinum Plus (yıl bilgisi yok → 1986-2026)
   - + Musso › 2.3 › Standart (yıl bilgisi yok → 1986-2026)
   - + Musso › 3.2 › Standart (yıl bilgisi yok → 1986-2026)
-  - + Yeni model (ayrı): Musso Grand (1986–) — yıl aralığı "Musso" modelinden alındı
-  - + Musso Grand › 2.2 D › Standart
-  - + Musso Grand › 2.2 D › Edition
-  - + Musso Grand › 2.2 D › Platinum
-  - + Musso Grand › 2.2 D › Platinum Plus
+  - + Musso Grand › 2.2 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Musso Grand › 2.2 D › Edition (yıl bilgisi yok → 1986-2026)
+  - + Musso Grand › 2.2 D › Platinum (yıl bilgisi yok → 1986-2026)
+  - + Musso Grand › 2.2 D › Platinum Plus (yıl bilgisi yok → 1986-2026)
   - + Yeni model (ayrı): Musso EV (1986–) — yıl aralığı "Musso" modelinden alındı
   - + Musso EV › Standart › Standart

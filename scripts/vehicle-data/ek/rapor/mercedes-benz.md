@@ -1,5 +1,5 @@
 ### Mercedes-Benz
-- otomobil: zaten vardı 424 · eklendi 228 · belirsiz 19
+- otomobil: zaten vardı 424 · eklendi 233 · belirsiz 19
   - + A Serisi › A 45 S AMG › Final Edition (yıl bilgisi yok → 1986-2026)
   - + A Serisi › A 45 S AMG › Performans (yıl bilgisi yok → 1986-2026)
   - + A Serisi › A 150 › Kesif (yıl bilgisi yok → 1986-2026)
@@ -228,8 +228,7 @@
   - + GLE Coupe › 350 d 4Matic AMG › Standart
   - + GLK › 250 CDI › BlueEfficiency (yıl bilgisi yok → 1986-2026)
   - + GLK › 250 CDI › Sport (yıl bilgisi yok → 1986-2026)
-- kamyonet: zaten vardı 0 · eklendi 5 · belirsiz 0
-  - + Yeni model: X (2017–2020) — en.wikipedia Mercedes-Benz X-Class (Kasım 2017 - Mayıs 2020) — kamyonet
+  - + Yeni model: X (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
   - + X › 220 d Pure › Standart
   - + X › 250 d Power › Standart
   - + X › 250 d Progressive › Standart

@@ -1,10 +1,9 @@
 {
-  "kamyonet": [
-    "X"
-  ],
+  "kamyonet": [],
   "takma": {
     "GLC Coupe": "GLC",
-    "GLE Coupe": "GLE"
+    "GLE Coupe": "GLE",
+    "X": "X Serisi"
   },
   "yeniModel": {
     "CL": {
@@ -26,11 +25,6 @@
       "bas": 2010,
       "bit": 2014,
       "kaynak": "en.wikipedia Mercedes-Benz SLS AMG (2010-2014)"
-    },
-    "X": {
-      "bas": 2017,
-      "bit": 2020,
-      "kaynak": "en.wikipedia Mercedes-Benz X-Class (Kasım 2017 - Mayıs 2020) — kamyonet"
     }
   },
   "atla": {

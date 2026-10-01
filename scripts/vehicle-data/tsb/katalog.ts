@@ -166,6 +166,28 @@ for (const [marka, modeller] of Object.entries(tsbMoto.katalog)) {
   for (const m of Object.values(modeller)) d.modeller.push({ ad: m.model, nesiller: [], tipler: motoTipleriCevir(m.tipler) });
 }
 
+// ─── 1.5) Resmi listede yanlış kategori/model adıyla gelen kayıtlar ─────────────
+// (ör. "KAMYONET HFC 1035K" otomobilde "Kamyonet" modeli, Transit varyantları otomobilde parçalı model).
+const KATEGORI_DUZELTME: { marka: string; model: string; hedef: string; yeniAd?: string; paketiVersiyonaCevir?: boolean }[] = [
+  { marka: "JAC", model: "Kamyonet", hedef: "kamyonet", yeniAd: "HFC 1035K", paketiVersiyonaCevir: true },
+  { marka: "DFM", model: "Panelvan", hedef: "kamyonet" },
+  { marka: "Ford", model: "Tra.Mca", hedef: "kamyonet", yeniAd: "Transit" },
+  { marka: "Ford", model: "Tran.", hedef: "kamyonet", yeniAd: "Transit" },
+  { marka: "Ford", model: "TRANSITKAMYONETCIFTK.470ELD170TRENDKASALIE6.1", hedef: "kamyonet", yeniAd: "Transit" },
+];
+for (const dz of KATEGORI_DUZELTME) {
+  const kaynak = durum.otomobil.get(anahtar(dz.marka));
+  const idx = kaynak?.modeller.findIndex((m) => m.ad === dz.model) ?? -1;
+  if (!kaynak || idx < 0) continue;
+  const [m] = kaynak.modeller.splice(idx, 1);
+  const hedefMarka = markaAl(dz.hedef as KatalogKategori, dz.marka);
+  const ad = dz.yeniAd ?? m.ad;
+  if (dz.paketiVersiyonaCevir) for (const tp of m.tipler) { if (tp.p) tp.v = tp.p; tp.p = null; }
+  const var_ = hedefMarka.modeller.find((x) => x.ad === ad);
+  if (var_) var_.tipler.push(...m.tipler);
+  else hedefMarka.modeller.push({ ...m, ad });
+}
+
 // ─── 2) Eski katalog: nesil olarak bağla, atla ya da tek başına ekle ────────
 const sayac = { nesil: 0, atilan: 0, tek: 0 };
 for (const kat of KATEGORILER) {

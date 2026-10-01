@@ -151,7 +151,7 @@ export const HEAVY_RE =
  */
 export const MULTI_WORD_MODELS: Record<string, string[]> = {
   Fiat: ["500 C", "PUNTO EVO", "GRANDE PUNTO", "GRANDE PANDA", "EGEA CROSS", "500 L", "NEW DOBLO", "DOBLO CARGO", "DOBLO COMBI", "FIORINO COMBI", "FIORINO CARGO", "MY FIORINO"],
-  Ford: ["TRANSIT CONNECT", "TRANSIT CUSTOM", "TRANSIT COURIER", "TOURNEO CONNECT", "TOURNEO CUSTOM", "TOURNEO COURIER", "GRAND TOURNEO", "GRAND C-MAX", "MUSTANG MACH-E", "F 150", "F 550", "E-TRANSIT", "E-TOURNEO"],
+  Ford: ["TRANSIT CONNECT", "TRANSIT CUSTOM", "TRANSIT COURIER", "TOURNEO CONNECT", "TOURNEO CUSTOM", "TOURNEO COURIER", "GRAND TOURNEO", "GRAND C-MAX", "MUSTANG MACH-E", "F 150", "F 550", "E-TRANSIT CUSTOM", "E-TOURNEO CUSTOM", "E-TRANSIT", "E-TOURNEO"],
   Renault: ["GRAND ESPACE", "GRAND SCENIC", "CLIO SPORT TOURER", "MEGANE E-TECH", "SCENIC E-TECH", "GRAND KANGOO", "KANGOO EXPRESS"],
   Suzuki: ["GRAND VITARA", "SX4 S-CROSS"],
   Tesla: ["MODEL S", "MODEL 3", "MODEL X", "MODEL Y"],
@@ -159,14 +159,14 @@ export const MULTI_WORD_MODELS: Record<string, string[]> = {
   Toyota: ["LAND CRUISER", "COROLLA CROSS", "YARIS CROSS", "URBAN CRUISER", "PROACE CITY", "PROACE VERSO"],
   Kia: ["PRO CEED", "PRO_CEED"],
   Hyundai: ["GRAND SANTA FE", "SANTA FE", "IONIQ 5", "IONIQ 6", "IONIQ 9", "GENESIS COUPE"],
-  Citroen: ["C4 PICASSO", "GRAND C4 PICASSO", "C4 SPACETOURER", "GRAND C4 SPACETOURER", "C4 CACTUS", "C4 X", "C5 AIRCROSS", "C5 X", "C3 AIRCROSS", "C3 PICASSO"],
+  Citroen: ["E-C5 AIRCROSS", "GRAND C4", "C4 PICASSO", "GRAND C4 PICASSO", "C4 SPACETOURER", "GRAND C4 SPACETOURER", "C4 CACTUS", "C4 X", "C5 AIRCROSS", "C5 X", "C3 AIRCROSS", "C3 PICASSO"],
   Peugeot: ["PARTNER TEPEE", "BIPPER TEPEE"],
   Opel: ["COMBO LIFE", "COMBO CARGO", "GRANDLAND X", "CROSSLAND X", "MOKKA X", "ZAFIRA LIFE", "VIVARO LIFE", "ZAFIRA TOURER"],
   Volkswagen: ["GOLF SPORTSVAN", "PASSAT VARIANT", "PASSAT CC", "CADDY MAXI", "ID. BUZZ", "ID.BUZZ", "GRAND CALIFORNIA", "CROSS POLO", "CROSS TOURAN", "TIGUAN ALLSPACE"],
   Mitsubishi: ["SPACE STAR", "ECLIPSE CROSS", "PAJERO SPORT", "L 200"],
   Jeep: ["GRAND CHEROKEE", "G. CHEROKEE"],
   Dodge: ["GRAND CARAVAN"],
-  Chrysler: ["GRAND VOYAGER", "300 C"],
+  Chrysler: ["GRAND VOYAGER", "GRAND CHEROKEE", "300 C"],
   Porsche: ["911 CARRERA", "718 CAYMAN", "718 BOXSTER", "718 SPYDER"],
   Skoda: ["OCTAVIA COMBI", "SUPERB COMBI"],
   Dacia: ["SANDERO STEPWAY", "LOGAN MCV"],
@@ -176,7 +176,12 @@ export const MULTI_WORD_MODELS: Record<string, string[]> = {
   Mercedes: [],
   Audi: ["A5 SPORTBACK", "Q5 SPORTBACK", "S E-TRON", "E-TRON GT", "RS Q3", "RS Q8", "RS E-TRON GT", "Q8 E-TRON", "SQ8 E-TRON", "Q4 E-TRON", "Q4 SPORTBACK E-TRON"],
   Bentley: ["FLYING SPUR"], // TSB "FLYING SPUR 4.0 V8": ikinci kelime paket sanılıp model "Flying" çıkıyordu
-  Ferrari: ["SF 90"],
+  Ferrari: ["SF 90", "849 TESTAROSSA"],
+  Ora: ["GOOD CAT", "FUNKY CAT"],
+  Proton: ["GEN 2"],
+  Morgan: ["PLUS FOUR", "PLUS SIX"],
+  DFSK: ["GLORY 580", "MINI MAXI", "MIDI MAXI", "TWIN MAXI"],
+  SsangYong: ["MUSSO GRAND"],
   Jaguar: ["F TYPE"],
   DS: ["DS 3", "DS 4", "DS 5", "DS 7", "DS 9", "DS 7 CROSSBACK"],
   // TSB'de ayrı yazılan farklı araçlar (Seal sedan / Seal U SUV; Song Plus / Song L)
@@ -192,6 +197,7 @@ export const MODEL_ALIASES: Record<string, Record<string, string>> = {
     F150: "F 150",
   },
   Jeep: { "G. CHEROKEE": "GRAND CHEROKEE" },
+  Lucid: { GRAND: "AIR" }, // "GRAND TOURING XR" Lucid Air donanımıdır
   Kia: { PRO_CEED: "PRO CEED" },
   Volkswagen: { "ID.BUZZ": "ID. BUZZ", ID4: "ID.4", "ID-4": "ID.4", CC: "PASSAT CC", "TIGUAN ALLSPACE": "TIGUAN", UP: "UP!" },
   Opel: { "GRANDLAND X": "GRANDLAND", "CROSSLAND X": "CROSSLAND", "MOKKA X": "MOKKA" },
@@ -267,7 +273,7 @@ export const LCV_MODELS: Record<string, string[]> = {
   Hyundai: ["H-1", "H100", "HD", "H350", "STAREX", "STARIA"],
   Kia: ["K2500", "K2700", "BONGO"],
   Karsan: ["JEST", "JEST+", "J10", "ATAK", "JESTRONIC"],
-  SsangYong: ["MUSSO", "ACTYON SPORTS", "KORANDO SPORTS"],
+  SsangYong: ["MUSSO", "MUSSO GRAND", "ACTYON SPORTS", "KORANDO SPORTS"],
   KGM: ["MUSSO"], // marka artık SsangYong altında birleşiyor
   Dodge: ["RAM"],
   Mazda: ["BT-50"],
@@ -279,7 +285,7 @@ export const LCV_MODELS: Record<string, string[]> = {
   Chevrolet: ["SILVERADO", "EXPRESS"],
   GMC: ["SIERRA", "SAVANA", "CANYON"],
   Jeep: ["GLADIATOR"],
-  DFSK: ["C31", "C32", "C35", "EC31", "EC35", "K01", "K01H", "MEGA"],
+  DFSK: ["C31", "C32", "C35", "EC31", "EC35", "K01", "K01H", "MEGA", "MINI MAXI", "MIDI MAXI", "TWIN MAXI"],
   DFM: ["MINI", "MAXIMUS", "CIFT"],
   FAW: ["CA1024", "CA5024"],
 };

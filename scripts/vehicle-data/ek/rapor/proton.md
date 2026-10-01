@@ -1,10 +1,7 @@
 ### Proton
-- otomobil: zaten vardı 2 · eklendi 24 · belirsiz 0
-  - + Yeni model: Gen-2 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
-  - + Gen-2 › 1.6 › Base Line
-  - + Gen-2 › 1.6 › High Line
-  - + Gen-2 › 1.6 › Low Line
-  - + Gen-2 › 1.6 › Medium Line
+- otomobil: zaten vardı 4 · eklendi 21 · belirsiz 0
+  - + Gen 2 › 1.6 › Base Line (yıl bilgisi yok → 1986-2026)
+  - + Gen 2 › 1.6 › High Line (yıl bilgisi yok → 1986-2026)
   - + Saga › 1.6 › Low Line (yıl bilgisi yok → 1986-2026)
   - + Waja › 1.6 › Medium Line (yıl bilgisi yok → 1986-2026)
   - + Waja › 1.6 › Premium (yıl bilgisi yok → 1986-2026)

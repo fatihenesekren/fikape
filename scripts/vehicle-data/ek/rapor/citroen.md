@@ -1,5 +1,5 @@
 ### Citroen
-- otomobil: zaten vardı 195 · eklendi 78 · belirsiz 1
+- otomobil: zaten vardı 197 · eklendi 75 · belirsiz 1
   - + Yeni model: Ami (2020–) — en.wikipedia Citroën Ami (2020-)
   - + Ami › Buggy › Standart
   - + Ami › Electric › Standart
@@ -73,9 +73,6 @@
   - + C5 Aircross › 1.5 BlueHDI › Selection Business (yıl bilgisi yok → 1986-2026)
   - + C5 Aircross › 1.5 BlueHDI › Shine S Edition (yıl bilgisi yok → 1986-2026)
   - + C5 Aircross › 1.6 PureTech › Shine SX Edition (yıl bilgisi yok → 1986-2026)
-  - + Yeni model (ayrı): e-C5 AirCross (1986–) — yıl aralığı "C5 Aircross" modelinden alındı
-  - + e-C5 AirCross › Max › Standart
-  - + e-C5 AirCross › Plus › Standart
   - + Yeni model: C-Crosser (2007–2012) — en.wikipedia Citroën C-Crosser (2007-2012)
   - + C-Crosser › 2.2 › Standart
   - ~ eşleme: "C4 Grand Picasso" → "Grand C4 Picasso"
