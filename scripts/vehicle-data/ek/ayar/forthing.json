@@ -1,1 +1,10 @@
-{ "takma": { "M4 U-Tour": "M4", "T5 Evo": "T5" } }
+{
+  "takma": {
+    "M4 U-Tour": "M4",
+    "T5 Evo": "T5"
+  },
+  "ayriModel": [
+    "M4 U-Tour",
+    "T5 Evo"
+  ]
+}

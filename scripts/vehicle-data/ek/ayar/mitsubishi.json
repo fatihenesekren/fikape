@@ -1,9 +1,30 @@
 {
-  "kamyonet": ["L 200"],
-  "takma": { "L 200": "L200", "Lancer Evolution": "Lancer" },
+  "kamyonet": [
+    "L 200"
+  ],
+  "takma": {
+    "L 200": "L200",
+    "Lancer Evolution": "Lancer"
+  },
   "yeniModel": {
-    "3000GT": { "bas": 1990, "bit": 2000, "kaynak": "en.wikipedia Mitsubishi 3000GT (1990-2000)" },
-    "Diamante": { "bas": 1990, "bit": 2005, "kaynak": "en.wikipedia Mitsubishi Diamante (1990-2005)" },
-    "Eclipse": { "bas": 1990, "bit": 2012, "kaynak": "en.wikipedia Mitsubishi Eclipse (model yılı 1990-2012, dört nesil)" }
-  }
+    "3000GT": {
+      "bas": 1990,
+      "bit": 2000,
+      "kaynak": "en.wikipedia Mitsubishi 3000GT (1990-2000)"
+    },
+    "Diamante": {
+      "bas": 1990,
+      "bit": 2005,
+      "kaynak": "en.wikipedia Mitsubishi Diamante (1990-2005)"
+    },
+    "Eclipse": {
+      "bas": 1990,
+      "bit": 2012,
+      "kaynak": "en.wikipedia Mitsubishi Eclipse (model yılı 1990-2012, dört nesil)"
+    }
+  },
+  "ayriModel": [
+    "L 200",
+    "Lancer Evolution"
+  ]
 }

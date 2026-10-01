@@ -1,1 +1,8 @@
-{ "takma": { "RX L": "RX" } }
+{
+  "takma": {
+    "RX L": "RX"
+  },
+  "ayriModel": [
+    "RX L"
+  ]
+}

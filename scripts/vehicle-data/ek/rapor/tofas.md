@@ -1,5 +1,5 @@
 ### Tofaş
-- otomobil: zaten vardı 8 · eklendi 16 · belirsiz 0
+- otomobil: zaten vardı 8 · eklendi 18 · belirsiz 0
   - + Doğan (1986-2001) › L › Standart
   - + Doğan (1986-2001) › S › Standart
   - + Doğan (1986-2001) › SL › Standart
@@ -11,10 +11,10 @@
   - + Kartal (1981-2002) › SL › Standart
   - + Kartal (1981-2002) › SLX › Standart
   - + Kartal (1981-2002) › SLX ie › Standart
-  - + Murat 124 / Serçe (1971-1977) › 124 › Standart
+  - + Yeni model (ayrı): Murat (1971–1977) — yıl aralığı "Murat 124 / Serçe (1971-1977)" modelinden alındı
+  - + Murat › 124 › Standart
   - + Şahin (1986-2002) › 1.4 › Standart
   - + Şahin (1986-2002) › 1.4 ie › Standart
   - + Şahin (1986-2002) › S › Standart
   - + Şahin (1986-2002) › Şahin 5 vites › Standart
-  - ~ eşleme: "Murat" → "Murat 124 / Serçe (1971-1977)"
-  - ~ eşleme: "Serçe" → "Murat 124 / Serçe (1971-1977)"
+  - + Yeni model (ayrı): Serçe (1971–1977) — yıl aralığı "Murat 124 / Serçe (1971-1977)" modelinden alındı

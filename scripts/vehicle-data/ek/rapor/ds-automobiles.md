@@ -1,9 +1,43 @@
 ### DS Automobiles
-- otomobil: zaten vardı 32 · eklendi 3 · belirsiz 23
+- otomobil: zaten vardı 21 · eklendi 39 · belirsiz 0
+  - + DS 3 › 1.2 PureTech › Start&Stop (yıl bilgisi yok → 1986-2026)
+  - + DS 3 › 1.2 VTi › D-Style (yıl bilgisi yok → 1986-2026)
+  - + DS 3 › 1.6 e-HDi › D-Sport (yıl bilgisi yok → 1986-2026)
+  - + DS 3 › 1.6 e-HDi › D-Style (yıl bilgisi yok → 1986-2026)
+  - + DS 3 › 1.6 THP › Performance (yıl bilgisi yok → 1986-2026)
+  - + DS 4 › 1.6 BlueHDi › Start&Stop (yıl bilgisi yok → 1986-2026)
+  - + DS 4 › 1.6 e-HDi › D-Sport (yıl bilgisi yok → 1986-2026)
+  - + DS 4 › 1.6 e-HDi › D-Style (yıl bilgisi yok → 1986-2026)
   - + DS 5 (2011-2018) › 1.6 BlueHDi › Chic
   - + DS 5 (2011-2018) › 1.6 BlueHDi › So Chic
   - + DS 5 (2011-2018) › 1.6 e-HDi › D-Sport
+  - + DS 9 › 1.6 Puretech › Rivoli+ (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): DS 3 Crossback (1986–) — yıl aralığı "DS 3" modelinden alındı
+  - + DS 3 Crossback › 1.2 PureTech › Performance Line
+  - + DS 3 Crossback › 1.2 PureTech › So Chic
+  - + DS 3 Crossback › 1.5 BlueHDI › So Chic
+  - + Yeni model (ayrı): DS 7 Crossback (2018–) — yıl aralığı "DS 7" modelinden alındı
+  - + DS 7 Crossback › 1.5 BlueHDI › Antoine de Saint Exupery
+  - + DS 7 Crossback › 1.5 BlueHDI › Esprit de Voyage
+  - + DS 7 Crossback › 1.5 BlueHDI › Etoile
+  - + DS 7 Crossback › 1.5 BlueHDI › Opera
+  - + DS 7 Crossback › 1.5 BlueHDI › Performance Line
+  - + DS 7 Crossback › 1.5 BlueHDI › Rivoli
+  - + DS 7 Crossback › 1.5 BlueHDI › So Chic
+  - + DS 7 Crossback › 1.5 BlueHDI › So Chic Opera
+  - + DS 7 Crossback › 1.5 BlueHDI › So Chic Rivoli
+  - + DS 7 Crossback › 1.6 PHEV › Esprit de Voyage
+  - + DS 7 Crossback › 1.6 PHEV › Etoile
+  - + DS 7 Crossback › 1.6 PHEV › Grand Chic Opera
+  - + DS 7 Crossback › 1.6 PHEV › Opera
+  - + DS 7 Crossback › 1.6 PHEV › Rivoli
+  - + DS 7 Crossback › 1.6 Puretech › Grand Chic Opera
+  - + DS 7 Crossback › 1.6 Puretech › Opera
+  - + DS 7 Crossback › 1.6 Puretech › Performance Line
+  - + DS 7 Crossback › 1.6 Puretech › Rivoli
+  - + DS 7 Crossback › 1.6 Puretech › So Chic
+  - + DS 7 Crossback › 1.6 Puretech › So Chic Opera
+  - + DS 7 Crossback › 1.6 Puretech › So Chic Rivoli
+  - + DS 7 Crossback › 2.0 BlueHDI › So Chic Rivoli
   - ~ eşleme: "No4" → "N°4"
-  - ~ eşleme: "DS 3 Crossback" → "DS 3"
-  - ~ eşleme: "DS 7 Crossback" → "DS 7"
   - ~ eşleme: "No8" → "N°8"

@@ -4,4 +4,5 @@
   - + Rodeo › 3.2 › Standart
   - + Yeni model: Trooper (1990–2005) — en.wikipedia Isuzu Trooper (1981-2005; 1990 öncesi kırpıldı)
   - + Trooper › 2.6 › Standart
-- kamyonet: zaten vardı 13 · eklendi 0 · belirsiz 1
+- kamyonet: zaten vardı 13 · eklendi 1 · belirsiz 0
+  - + D-Max › 2.5 › 4x4 LTD (yıl bilgisi yok → 1986-2026)

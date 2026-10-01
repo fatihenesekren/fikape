@@ -1,8 +1,39 @@
 ### Audi
-- otomobil: zaten vardı 265 · eklendi 11 · belirsiz 45
+- otomobil: zaten vardı 260 · eklendi 65 · belirsiz 3
+  - + A1 › 1.4 TFSI › Attraction (yıl bilgisi yok → 1986-2026)
+  - + A1 › 1.6 TDI › Ambition (yıl bilgisi yok → 1986-2026)
+  - + A1 › 1.6 TDI › Attraction (yıl bilgisi yok → 1986-2026)
+  - + A1 › 1.6 TDI › S Line (yıl bilgisi yok → 1986-2026)
+  - + A3 › 35 TFSI › All Street (yıl bilgisi yok → 1986-2026)
+  - + A3 › 1.8 › Ambiente (yıl bilgisi yok → 1986-2026)
+  - + A3 › 1.8 › Attraction (yıl bilgisi yok → 1986-2026)
+  - + A3 › 1.8 T › Ambition (yıl bilgisi yok → 1986-2026)
+  - + A3 › 1.9 TDI › S-Line (yıl bilgisi yok → 1986-2026)
+  - + A3 › 2.0 TDI › Ambition Quattro (yıl bilgisi yok → 1986-2026)
+  - + A3 › 2.0 TDI › Attraction (yıl bilgisi yok → 1986-2026)
+  - + A3 › 1.0 TFSI › Sport Line (yıl bilgisi yok → 1986-2026)
+  - + A3 › 3.2 › Ambition Quattro (yıl bilgisi yok → 1986-2026)
+  - + A4 › 2.8 Quattro › Standart (yıl bilgisi yok → 1986-2026)
+  - + A6 › 1.8 T › Standart (yıl bilgisi yok → 1986-2026)
+  - + A6 › 1.8 T › Advance (yıl bilgisi yok → 1986-2026)
+  - + A6 › 1.8 T › Quattro (yıl bilgisi yok → 1986-2026)
+  - + A6 › 1.8 T › Quattro Advance (yıl bilgisi yok → 1986-2026)
+  - + A6 › 2.4 Quattro › Standart (yıl bilgisi yok → 1986-2026)
+  - + A6 › 2.8 › Quattro (yıl bilgisi yok → 1986-2026)
+  - + A6 › 3.2 FSI Quattro › Standart (yıl bilgisi yok → 1986-2026)
+  - + A6 › 4.2 Quattro › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: A6 e-tron (2024–) — en.wikipedia Audi A6 e-tron (üretim 2024, Avant + Sportback)
   - + A6 e-tron ›  › Performance
   - + A6 e-tron ›  › Quattro
+  - + A8 › 55 TFSI › Quattro Long (yıl bilgisi yok → 1986-2026)
+  - + A8 › 3.7 › Quattro (yıl bilgisi yok → 1986-2026)
+  - + A8 › 4.2 › FSI Quattro Long (yıl bilgisi yok → 1986-2026)
+  - + A8 › 6.0 › Quattro Long (yıl bilgisi yok → 1986-2026)
+  - + e-tron GT › GT Quattro › Standart (yıl bilgisi yok → 1986-2026)
+  - + e-tron GT › GT RS › Standart (yıl bilgisi yok → 1986-2026)
+  - + TT › 1.8 › 1.8 T (yıl bilgisi yok → 1986-2026)
+  - + TT › 1.8 › T Quattro (yıl bilgisi yok → 1986-2026)
+  - + TT › 2.0 › TFSI S Quattro (yıl bilgisi yok → 1986-2026)
   - + 80 › 1.6 D › Standart
   - + 80 › 2.3 › Standart
   - + 80 › 2.8 › Standart
@@ -10,13 +41,29 @@
   - + 100 › 2.8 Quattro › Standart
   - + Yeni model: 200 (1979–1991) — automobile-catalog.com / de.wikipedia Audi 200 (C2 1979-1983, C3 1983-1991)
   - + 200 › 2.2 › Standart
+  - + Yeni model (ayrı): E-Tron Sportback (2019–2023) — yıl aralığı "e-tron" modelinden alındı
+  - + E-Tron Sportback › 55 Quattro › Advanced
+  - + E-Tron Sportback › 55 Quattro › S Line
+  - + Yeni model (ayrı): Q3 Sportback (2011–) — yıl aralığı "Q3" modelinden alındı
+  - + Q3 Sportback › 1.5 TFSI › Standart
+  - + Q3 Sportback › 1.5 TFSI › S Line
+  - + Q3 Sportback › 1.5 TFSI › E-Tron
   - + Q4 e-tron › 40 e-Tron › Standart
+  - + Yeni model (ayrı): Q4 E-tron Sportback (1990–) — yıl aralığı "Q4 e-tron" modelinden alındı
+  - + Q4 E-tron Sportback › 40 e-Tron › Standart
+  - + Yeni model (ayrı): Q5 Sportback (2008–) — yıl aralığı "Q5" modelinden alındı
+  - + Q5 Sportback › 40 TDI › Advanced
+  - + Q5 Sportback › 40 TDI › S Line
+  - + Q5 Sportback › 45 TFSI › S Line
+  - + Q5 Sportback › 2.0 TDI Quattro › Standart
+  - + Yeni model (ayrı): Q6 E-tron (2025–) — yıl aralığı "Q6" modelinden alındı
+  - + Q6 E-tron › 55 Quattro › Standart
+  - + Yeni model (ayrı): Q6 E-tron Sportback (2025–) — yıl aralığı "Q6" modelinden alındı
+  - + Q6 E-tron Sportback › Standart › Standart
+  - + Q8 › 55 TFSI e-Quattro › Standart (yıl bilgisi yok → 1986-2026)
+  - + Q8 › SQ8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Q8 E-tron Sportback (2023–2024) — yıl aralığı "Q8 e-tron" modelinden alındı
+  - + Q8 E-tron Sportback › 55 Quattro › Advanced
+  - + Q8 E-tron Sportback › 55 Quattro › S Line
   - ~ eşleme: "80 Serisi" → "80"
   - ~ eşleme: "100 Serisi" → "100"
-  - ~ eşleme: "E-Tron Sportback" → "e-tron"
-  - ~ eşleme: "Q3 Sportback" → "Q3"
-  - ~ eşleme: "Q4 E-tron Sportback" → "Q4 e-tron"
-  - ~ eşleme: "Q5 Sportback" → "Q5"
-  - ~ eşleme: "Q6 E-tron" → "Q6"
-  - ~ eşleme: "Q6 E-tron Sportback" → "Q6"
-  - ~ eşleme: "Q8 E-tron Sportback" → "Q8 e-tron"

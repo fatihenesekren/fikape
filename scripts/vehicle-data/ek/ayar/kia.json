@@ -1,12 +1,45 @@
 {
-  "takma": { "Niro EV": "Niro" },
+  "takma": {
+    "Niro EV": "Niro"
+  },
   "yeniModel": {
-    "Capital": { "bas": 1990, "bit": 1996, "kaynak": "Kia Capital (1989-1996; 1990 öncesi kırpıldı)" },
-    "Clarus": { "bas": 1996, "bit": 2001, "kaynak": "en.wikipedia Kia Clarus (1996-2001)" },
-    "Opirus": { "bas": 2003, "bit": 2011, "kaynak": "en.wikipedia Kia Opirus (2003-2011)" },
-    "Pride": { "bas": 1990, "bit": 2000, "kaynak": "en.wikipedia Kia Pride (1987-2000; 1990 öncesi kırpıldı)" },
-    "Sephia": { "bas": 1992, "bit": 2003, "kaynak": "en.wikipedia Kia Sephia (1992-2003)" },
-    "Shuma": { "bas": 1997, "bit": 2004, "kaynak": "en.wikipedia Kia Shuma (1997-2004)" },
-    "Retona": { "bas": 1998, "bit": 2003, "kaynak": "Kia Retona (1998-2003)" }
-  }
+    "Capital": {
+      "bas": 1990,
+      "bit": 1996,
+      "kaynak": "Kia Capital (1989-1996; 1990 öncesi kırpıldı)"
+    },
+    "Clarus": {
+      "bas": 1996,
+      "bit": 2001,
+      "kaynak": "en.wikipedia Kia Clarus (1996-2001)"
+    },
+    "Opirus": {
+      "bas": 2003,
+      "bit": 2011,
+      "kaynak": "en.wikipedia Kia Opirus (2003-2011)"
+    },
+    "Pride": {
+      "bas": 1990,
+      "bit": 2000,
+      "kaynak": "en.wikipedia Kia Pride (1987-2000; 1990 öncesi kırpıldı)"
+    },
+    "Sephia": {
+      "bas": 1992,
+      "bit": 2003,
+      "kaynak": "en.wikipedia Kia Sephia (1992-2003)"
+    },
+    "Shuma": {
+      "bas": 1997,
+      "bit": 2004,
+      "kaynak": "en.wikipedia Kia Shuma (1997-2004)"
+    },
+    "Retona": {
+      "bas": 1998,
+      "bit": 2003,
+      "kaynak": "Kia Retona (1998-2003)"
+    }
+  },
+  "ayriModel": [
+    "Niro EV"
+  ]
 }

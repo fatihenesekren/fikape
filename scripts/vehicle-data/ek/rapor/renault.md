@@ -1,5 +1,9 @@
 ### Renault
-- otomobil: zaten vardı 289 · eklendi 98 · belirsiz 160
+- otomobil: zaten vardı 291 · eklendi 274 · belirsiz 2
+  - + Clio › 1.2 › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.2 › Expression (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.2 › Joy Plus (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.2 › Tom Tom Edition (yıl bilgisi yok → 1986-2026)
   - + Clio › 1.4 › Alize
   - + Clio › 1.4 › Dynamique
   - + Clio › 1.4 › Extreme
@@ -9,101 +13,264 @@
   - + Clio › 1.4 › RT
   - + Clio › 1.4 › RTA
   - + Clio › 1.4 › RXT
+  - + Clio › 1.4 Grandtour › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.5 dCi › Alize (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.5 dCi › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.5 dCi › Expression Plus (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.5 dCi › Fidji (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.5 dCi › Tom Tom Edition (yıl bilgisi yok → 1986-2026)
   - + Clio › 1.6 › Dynamique
   - + Clio › 1.6 › Executive
   - + Clio › 1.6 › RT
   - + Clio › 1.6 › RTE
   - + Clio › 1.6 › RXT
-  - + Modus (2004-2012) › 1.4 › Authentique
-  - + Modus (2004-2012) › 1.4 › Dynamique
-  - + Modus (2004-2012) › 1.6 16V 105 › Dynamique
+  - + Clio › 1.6 E-Tech › Techno Esprit Alpine (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.8 › RSi (yıl bilgisi yok → 1986-2026)
+  - + Clio › 1.9 D › RL (yıl bilgisi yok → 1986-2026)
+  - + Clio › 2.0 › Renault Sport (yıl bilgisi yok → 1986-2026)
+  - + Clio › 2.0 › Williams (yıl bilgisi yok → 1986-2026)
+  - + Espace › 1.9 dCi › Expression (yıl bilgisi yok → 1986-2026)
+  - + Espace › 2.0 › RT (yıl bilgisi yok → 1986-2026)
+  - + Espace › 2.0 › RXE (yıl bilgisi yok → 1986-2026)
+  - + Espace › 2.0 T › Expression (yıl bilgisi yok → 1986-2026)
+  - + Espace › 2.0 T › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Espace › 2.2 › DT RXE (yıl bilgisi yok → 1986-2026)
+  - + Espace › 2.2 dCi › Expression (yıl bilgisi yok → 1986-2026)
+  - + Espace › 2.2 dCi › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Espace › 3.0 dCi › Standart (yıl bilgisi yok → 1986-2026)
+  - + Fluence › 1.5 dCi › Expression (yıl bilgisi yok → 1986-2026)
+  - + Fluence › 1.6 › Authentique (yıl bilgisi yok → 1986-2026)
+  - + Fluence › 1.6 › Expression (yıl bilgisi yok → 1986-2026)
+  - + Fluence › 1.6 › Touch Plus (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Fluence Z.E. (1986–) — yıl aralığı "Fluence" modelinden alındı
+  - + Fluence Z.E. › Dynamique › Standart
+  - + Grand Scenic › 1.4 T › Expression (yıl bilgisi yok → 1986-2026)
+  - + Grand Scenic › 1.5 dCi › Authentique (yıl bilgisi yok → 1986-2026)
+  - + Grand Scenic › 1.5 dCi › Extreme (yıl bilgisi yok → 1986-2026)
+  - + Grand Scenic › 1.6 › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Grand Scenic › 1.9 dCi › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Grand Scenic › 1.9 dCi › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Grand Scenic › 2.0 › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Grand Modüs (2004–2012) — yıl aralığı "Modus (2004-2012)" modelinden alındı
+  - + Grand Modüs › 1.4 › Authentique
+  - + Grand Modüs › 1.4 › Dynamique
+  - + Grand Modüs › 1.5 DCI › Authentique
+  - + Grand Modüs › 1.5 DCI › Dynamique
+  - + Grand Modüs › 1.6 › Dynamique
+  - + Laguna › 1.5 dCi › Authentique (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.6 › Authentique (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.6 › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.6 › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.6 › RXE (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.6 › RXT (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.8 › RXE (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.9 dCi › Authentique (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.9 dCi › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.9 dCi › Expression (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.9 dCi › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 1.9 DTi › RXE (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.0 › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.0 › Expression (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.0 › RTI (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.0 › RXE (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.0 › RXT (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.0 dCi › Executive (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.0 T › GT (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.2 dCi › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.2 dCi › Expression (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 2.2 dCi › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 3.0 › Initiale (yıl bilgisi yok → 1986-2026)
+  - + Laguna › 3.0 › Privilege (yıl bilgisi yok → 1986-2026)
   - + Megane › 1.4 › Alize
   - + Megane › 1.4 › Authentique
   - + Megane › 1.4 › Expression
   - + Megane › 1.4 › Extreme
   - + Megane › 1.4 › Premiere
   - + Megane › 1.4 › RTA
+  - + Megane › 1.4 T › Color Edition (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.4 T › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.4 T › Impressor (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.4 T Sport Tourer › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.5 dCi › Exception (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.5 dCi › Expression Plus (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.5 dCi › Legend (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.5 dCi › Sportway (yıl bilgisi yok → 1986-2026)
   - + Megane › 1.6 › Dynamique Wagon
-  - + Megane › 1.6 › Exception
-  - + Megane › 1.6 › Legend
   - + Megane › 1.6 › RNA
   - + Megane › 1.6 › RTE
   - + Megane › 1.6 › RXi
-  - + Megane › 1.6 › Sportway
-  - + Megane › 1.9 dCi › Dynamique
-  - + Megane › 1.9 dCi › Privilege
+  - + Megane › 1.6 Cabrio › Cabrio (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.6 Coupe › RN (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.6 dCi › GT-Line Energy Sport Tourer (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.6 dCi › Privilege Energy (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.8 › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.9 CC › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.9 D › RN (yıl bilgisi yok → 1986-2026)
+  - + Megane › 1.9 dCi Grandtour › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Megane › 2.0 › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Megane › 2.0 › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Megane › 2.0 › RXE (yıl bilgisi yok → 1986-2026)
+  - + Megane › 2.0 › RXT (yıl bilgisi yok → 1986-2026)
+  - + Megane › 2.0 T › Sport (yıl bilgisi yok → 1986-2026)
+  - + Modus (2004-2012) › 1.4 › Authentique
+  - + Modus (2004-2012) › 1.4 › Dynamique
   - + Modus (2004-2012) › 1.6 16V 105 › Authentique
   - + Modus (2004-2012) › 1.6 16V 105 › Dynamique
   - + Safrane (1992-2000) › 2.5 V6 170 › RXT
   - + Safrane (1992-2000) › 3.0 › Initiale
   - + Safrane (1992-2000) › 3.0 › RXE
+  - + Scenic › 1.5 dCi › Authentique (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.5 dCi › Conquest (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.5 dCi › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.5 dCi › Exception (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.5 dCi › Expression (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.5 dCi › Sportway (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › Authentique (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › Exception (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › Expression (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › Extreme (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › RTE (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › RXE (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › RXT (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.6 › Sportway (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.9 dCi › Authentique (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.9 dCi › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.9 dCi › Expression (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.9 dCi › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.9 dCi › RXE (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 1.9 DTi › RXT (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 2.0 › Privilege (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 2.0 › RXi (yıl bilgisi yok → 1986-2026)
+  - + Scenic › 2.0 › RXT (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Scenic EV (2026–) — yıl aralığı "Scenic E-Tech" modelinden alındı
+  - + Scenic EV › Esprit Alpine › Standart
+  - + Symbol › 1.2 › Expression Plus (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.2 › SL Collection (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.4 › Authentique (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.4 › Expression (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.4 › Expression Plus (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.4 › Extreme (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.5 DCI › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.5 DCI › Expression Plus (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.5 DCI › Extreme (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.5 DCI › SL Collection (yıl bilgisi yok → 1986-2026)
+  - + Symbol › 1.5 DCI › Touch Plus (yıl bilgisi yok → 1986-2026)
   - + Twingo (1993-2014) › 1.2 › Alize
   - + Twingo (1993-2014) › 1.2 › Base
   - + Twingo (1993-2014) › 1.2 › Easy
   - + Twingo (1993-2014) › 1.2 › Pack
   - + Twingo (1993-2014) › 1.2 › Wind
   - + Twingo (1993-2014) › 1.3 › Standart
-  - + 9 Broadway (1985-2000) › 1.4 › Fairway
-  - + 9 Broadway (1985-2000) › 1.4 › GT
-  - + 9 Broadway (1985-2000) › 1.4 › GTS
-  - + 9 Broadway (1985-2000) › 1.4 › TX
-  - + 9 Broadway (1985-2000) › 1.4 Broadway › Standart
-  - + 9 Broadway (1985-2000) › 1.4 Broadway › GTE
-  - + 9 Broadway (1985-2000) › 1.4 Broadway › RL
-  - + 9 Broadway (1985-2000) › 1.4 Broadway › RN
-  - + 9 Broadway (1985-2000) › 1.4 Broadway › RNi
-  - + 9 Broadway (1985-2000) › 1.7 › GTX
-  - + 11 Flash (1987-1996) › Flash › Standart
-  - + 11 Flash (1987-1996) › Flash S › Standart
-  - + 11 Flash (1987-1996) › GTL › Standart
-  - + 11 Flash (1987-1996) › GTS › Standart
-  - + 11 Flash (1987-1996) › Rainbow › Standart
-  - + 11 Flash (1987-1996) › TX › Standart
-  - + 12 Toros (1971-2000) › GTS › Standart
-  - + 12 Toros (1971-2000) › TL › Standart
-  - + 12 Toros (1971-2000) › TN › Standart
-  - + 12 Toros (1971-2000) › Toros › Standart
-  - + 12 Toros (1971-2000) › TS › Standart
-  - + 12 Toros (1971-2000) › TSW › Standart
-  - + 12 Toros (1971-2000) › TX › Standart
-  - + 19 Europa (1992-2003) › 1.4 › 1.4i
-  - + 19 Europa (1992-2003) › 1.4 › Beymen Club
-  - + 19 Europa (1992-2003) › 1.4 › RN
-  - + 19 Europa (1992-2003) › 1.4 Europa › RL
-  - + 19 Europa (1992-2003) › 1.4 Europa › RN
-  - + 19 Europa (1992-2003) › 1.4 Europa › RNA
-  - + 19 Europa (1992-2003) › 1.4 Europa › RTE
-  - + 19 Europa (1992-2003) › 1.4 Europa › RTE Alize
-  - + 19 Europa (1992-2003) › 1.6 Europa › iE
-  - + 19 Europa (1992-2003) › 1.6 Europa › RL
-  - + 19 Europa (1992-2003) › 1.6 Europa › RNA
-  - + 19 Europa (1992-2003) › 1.6 Europa › RNE
-  - + 19 Europa (1992-2003) › 1.6 Europa › RNE Alize
-  - + 19 Europa (1992-2003) › 1.6 Europa › RT
-  - + 19 Europa (1992-2003) › 1.6 Europa › RTE
-  - + 19 Europa (1992-2003) › 1.6 Europa › RTE Alize
-  - + 19 Europa (1992-2003) › 1.7 › GTS
-  - + 19 Europa (1992-2003) › 1.8 Europa › Standart
-  - + 19 Europa (1992-2003) › 1.8 Europa › RT
-  - + 19 Europa (1992-2003) › 1.8 Europa › RTi
-  - + 19 Europa (1992-2003) › 1.8 RTi › Standart
-  - + 19 Europa (1992-2003) › 1.9 Europa › RL
-  - + 19 Europa (1992-2003) › 1.9 Europa › RN
-  - + 19 Europa (1992-2003) › 1.9 Europa › RNA
-  - + 19 Europa (1992-2003) › 1.9 Europa › RN TD
-  - + 19 Europa (1992-2003) › 1.9 Europa › RT TD
-  - + 21 Manager (1990-1995) › 1.6 › Optima
-  - + 21 Manager (1990-1995) › 1.7 › GTS Manager
-  - + 21 Manager (1990-1995) › 2.0 › Concorde
-  - + 21 Manager (1990-1995) › 2.0 › GTD
-  - + 21 Manager (1990-1995) › 2.0 › GTX
-  - + 21 Manager (1990-1995) › 2.2 › TXE
-  - ~ eşleme: "Fluence Z.E." → "Fluence"
-  - ~ eşleme: "Grand Modüs" → "Modus (2004-2012)"
-  - ~ eşleme: "Scenic EV" → "Scenic E-Tech"
-  - ~ eşleme: "R5 E-Tech" → "R5"
-  - ~ eşleme: "R 9" → "9 Broadway (1985-2000)"
-  - ~ eşleme: "R 11" → "11 Flash (1987-1996)"
-  - ~ eşleme: "R 12" → "12 Toros (1971-2000)"
-  - ~ eşleme: "R 19" → "19 Europa (1992-2003)"
-  - ~ eşleme: "R 21" → "21 Manager (1990-1995)"
+  - + Yeni model: Twizy (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Twizy › 75 › Standart
+  - + Yeni model: Vel Satis (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Vel Satis › 2.0 T › Expression
+  - + Vel Satis › 2.2 dCi › Standart
+  - + Vel Satis › 3.0 dCi › Privilege
+  - + Vel Satis › 3.5 › Privilege
+  - + Yeni model (ayrı): R5 E-Tech (2025–) — yıl aralığı "R5" modelinden alındı
+  - + R5 E-Tech › EV40 › Techno
+  - + R5 E-Tech › EV52 › Techno
+  - + R5 › 1.1 › Five (yıl bilgisi yok → 1986-2026)
+  - + R5 › 1.4 › Standart (yıl bilgisi yok → 1986-2026)
+  - + R5 › 1.4 › Five (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): R 9 (1985–2000) — yıl aralığı "9 Broadway (1985-2000)" modelinden alındı
+  - + R 9 › 1.4 › Fairway
+  - + R 9 › 1.4 › GT
+  - + R 9 › 1.4 › GTC
+  - + R 9 › 1.4 › GTL
+  - + R 9 › 1.4 › GTS
+  - + R 9 › 1.4 › Spring
+  - + R 9 › 1.4 › TX
+  - + R 9 › 1.4 Broadway › Standart
+  - + R 9 › 1.4 Broadway › GTE
+  - + R 9 › 1.4 Broadway › RL
+  - + R 9 › 1.4 Broadway › RN
+  - + R 9 › 1.4 Broadway › RNi
+  - + R 9 › 1.6 › Broadway
+  - + R 9 › 1.6 › Fairway
+  - + R 9 › 1.6 › GTD
+  - + R 9 › 1.7 › GTX
+  - + Yeni model (ayrı): R 11 (1987–1996) — yıl aralığı "11 Flash (1987-1996)" modelinden alındı
+  - + R 11 › Flash › Standart
+  - + R 11 › Flash S › Standart
+  - + R 11 › GTL › Standart
+  - + R 11 › GTS › Standart
+  - + R 11 › Rainbow › Standart
+  - + R 11 › TX › Standart
+  - + Yeni model (ayrı): R 12 (1971–2000) — yıl aralığı "12 Toros (1971-2000)" modelinden alındı
+  - + R 12 › GTS › Standart
+  - + R 12 › TL › Standart
+  - + R 12 › TN › Standart
+  - + R 12 › Toros › Standart
+  - + R 12 › TS › Standart
+  - + R 12 › TSW › Standart
+  - + R 12 › TX › Standart
+  - + Yeni model (ayrı): R 19 (1992–2003) — yıl aralığı "19 Europa (1992-2003)" modelinden alındı
+  - + R 19 › 1.4 › 1.4i
+  - + R 19 › 1.4 › Beymen Club
+  - + R 19 › 1.4 › RN
+  - + R 19 › 1.4 › RT
+  - + R 19 › 1.4 Europa › RL
+  - + R 19 › 1.4 Europa › RN
+  - + R 19 › 1.4 Europa › RNA
+  - + R 19 › 1.4 Europa › RTE
+  - + R 19 › 1.4 Europa › RTE Alize
+  - + R 19 › 1.6 › Standart
+  - + R 19 › 1.6 Europa › iE
+  - + R 19 › 1.6 Europa › RL
+  - + R 19 › 1.6 Europa › RNA
+  - + R 19 › 1.6 Europa › RNE
+  - + R 19 › 1.6 Europa › RNE Alize
+  - + R 19 › 1.6 Europa › RT
+  - + R 19 › 1.6 Europa › RTE
+  - + R 19 › 1.6 Europa › RTE Alize
+  - + R 19 › 1.7 › GTS
+  - + R 19 › 1.8 Europa › Standart
+  - + R 19 › 1.8 Europa › RT
+  - + R 19 › 1.8 Europa › RTi
+  - + R 19 › 1.8 RTi › Standart
+  - + R 19 › 1.9 › GTD
+  - + R 19 › 1.9 Europa › RL
+  - + R 19 › 1.9 Europa › RN
+  - + R 19 › 1.9 Europa › RNA
+  - + R 19 › 1.9 Europa › RN TD
+  - + R 19 › 1.9 Europa › RT TD
+  - + Yeni model (ayrı): R 21 (1990–1995) — yıl aralığı "21 Manager (1990-1995)" modelinden alındı
+  - + R 21 › 1.6 › Optima
+  - + R 21 › 1.7 › GTS
+  - + R 21 › 1.7 › GTS Manager
+  - + R 21 › 2.0 › Concorde
+  - + R 21 › 2.0 › GTD
+  - + R 21 › 2.0 › GTX
+  - + R 21 › 2.0 › Manager
+  - + R 21 › 2.2 › TXE
+  - + Yeni model: R 25 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + R 25 › 2.2 › TX
+  - + Austral › 1.3 › Esprit Alpine (yıl bilgisi yok → 1986-2026)
+  - + Austral › 1.3 › Techno (yıl bilgisi yok → 1986-2026)
+  - + Austral › 1.3 › Techno Esprit Alpine (yıl bilgisi yok → 1986-2026)
+  - + Boreal › 1.3 TCe › Evolution (yıl bilgisi yok → 1986-2026)
+  - + Boreal › 1.3 TCe › Techno (yıl bilgisi yok → 1986-2026)
+  - + Duster › 1.2 TCe › Evolution Advanced (yıl bilgisi yok → 1986-2026)
+  - + Duster › 1.2 TCe › Techno Advanced (yıl bilgisi yok → 1986-2026)
+  - + Duster › 1.3 TCe › Evolution (yıl bilgisi yok → 1986-2026)
+  - + Duster › 1.3 TCe › Techno (yıl bilgisi yok → 1986-2026)
+  - + Duster › 1.6 e-Tech › Evolution (yıl bilgisi yok → 1986-2026)
+  - + Duster › 1.6 e-Tech › Techno (yıl bilgisi yok → 1986-2026)
+  - + Duster › 1.8 e-Tech › Techno (yıl bilgisi yok → 1986-2026)
+  - + Captur › 0.9 › Icon (yıl bilgisi yok → 1986-2026)
+  - + Koleos › 2.0 dCi › Dynamique (yıl bilgisi yok → 1986-2026)
+  - + Koleos › 2.0 dCi › Initiale Paris (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Scenic RX4 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Scenic RX4 › 1.9 dCi › Expression
+  - + Scenic RX4 › 2.0 › Standart
+  - + Scenic RX4 › 2.0 › Dynamique
+  - + Scenic RX4 › 2.0 › Privilege
+  - + Scenic RX4 › 2.0 › Sportway
+  - + Rafale › 1.2 e-Tech › Esprit Alpine (yıl bilgisi yok → 1986-2026)
+  - + Rafale › 1.2 e-Tech › Esprit Alpine Hyper (yıl bilgisi yok → 1986-2026)

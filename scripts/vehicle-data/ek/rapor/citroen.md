@@ -1,16 +1,45 @@
 ### Citroen
-- otomobil: zaten vardı 185 · eklendi 36 · belirsiz 50
+- otomobil: zaten vardı 195 · eklendi 78 · belirsiz 1
   - + Yeni model: Ami (2020–) — en.wikipedia Citroën Ami (2020-)
   - + Ami › Buggy › Standart
   - + Ami › Electric › Standart
   - + Ami › Peps › Standart
   - + Ami › Pop › Standart
   - + Ami › Tonic › Standart
+  - + C1 › 1.0 › Confort (yıl bilgisi yok → 1986-2026)
+  - + C1 › 1.0 › SX (yıl bilgisi yok → 1986-2026)
+  - + C1 › 1.0 › SX Sensodrive (yıl bilgisi yok → 1986-2026)
+  - + C1 › 1.4 HDi › SX (yıl bilgisi yok → 1986-2026)
   - + C2 (2003-2009) › 1.4 HDi › X Pack
   - + C2 (2003-2009) › 1.6 VTS 110 › GT
   - + C2 (2003-2009) › 1.6 VTS 110 › VTR
+  - + C3 › 1.4 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + C3 › 1.4 › Pluriel (yıl bilgisi yok → 1986-2026)
+  - + C3 › 1.4 › SensoDrive (yıl bilgisi yok → 1986-2026)
+  - + C3 › 1.4 › SX (yıl bilgisi yok → 1986-2026)
+  - + C3 › 1.4 › X Furio (yıl bilgisi yok → 1986-2026)
+  - + C3 › 1.6 › Pluriel (yıl bilgisi yok → 1986-2026)
+  - + C3 › 1.6 › SX (yıl bilgisi yok → 1986-2026)
+  - + C3 Picasso › 1.4 › SX (yıl bilgisi yok → 1986-2026)
   - + C4 › 1.4 › Collection
+  - + C4 › 1.6 › Collection (yıl bilgisi yok → 1986-2026)
+  - + C4 › 1.6 › SX (yıl bilgisi yok → 1986-2026)
+  - + C4 › 1.6 › SX PK (yıl bilgisi yok → 1986-2026)
+  - + C4 › 1.6 › VTR (yıl bilgisi yok → 1986-2026)
+  - + C4 › 1.6 HDi › VTRPK (yıl bilgisi yok → 1986-2026)
   - + C4 › 2.0 › VTS
+  - + Grand C4 Picasso › 1.6 BlueHDi › Intensive (yıl bilgisi yok → 1986-2026)
+  - + Grand C4 Picasso › 1.6 e-HDi › Dynamic (yıl bilgisi yok → 1986-2026)
+  - + C4 Picasso › 1.6 HDi › SX PK (yıl bilgisi yok → 1986-2026)
+  - + C4 Picasso › 1.6 HDi › VTR PK (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): e-C4 X (2022–) — yıl aralığı "C4 X" modelinden alındı
+  - + e-C4 X › Max › Standart
+  - + e-C4 X › Shine Bold › Standart
+  - + C5 › 1.6 HDi › SX (yıl bilgisi yok → 1986-2026)
+  - + C5 › 1.6 HDi › SX PK (yıl bilgisi yok → 1986-2026)
+  - + C5 › 2.0 HDi › Break (yıl bilgisi yok → 1986-2026)
+  - + C5 › 2.7 HDi › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + C5 › 3.0 › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: C6 (2005–2012) — en.wikipedia Citroën C6 (2005-2012)
   - + C6 › 2.7 HDi › Standart
   - + Saxo (1996-2004) › 1.4 › VSX
@@ -34,9 +63,19 @@
   - + ZX (1991-1998) › 1.4 › X
   - + ZX (1991-1998) › 1.8 › Avantage
   - + ZX (1991-1998) › 1.8 › Furio
+  - + Yeni model (ayrı): e-C3 AirCross (2017–) — yıl aralığı "C3 Aircross" modelinden alındı
+  - + e-C3 AirCross › Max Collection Uzun Menzil › Standart
+  - + e-C3 AirCross › Max Standart Menzil › Standart
+  - + C4 Cactus › 1.2 PureTech › Feel Edition (yıl bilgisi yok → 1986-2026)
+  - + C4 Cactus › 1.2 PureTech › Shine Edition (yıl bilgisi yok → 1986-2026)
+  - + C5 Aircross › 1.2 Puretech › Feel Adventure (yıl bilgisi yok → 1986-2026)
+  - + C5 Aircross › 1.5 BlueHDI › Feel S Edition (yıl bilgisi yok → 1986-2026)
+  - + C5 Aircross › 1.5 BlueHDI › Selection Business (yıl bilgisi yok → 1986-2026)
+  - + C5 Aircross › 1.5 BlueHDI › Shine S Edition (yıl bilgisi yok → 1986-2026)
+  - + C5 Aircross › 1.6 PureTech › Shine SX Edition (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): e-C5 AirCross (1986–) — yıl aralığı "C5 Aircross" modelinden alındı
+  - + e-C5 AirCross › Max › Standart
+  - + e-C5 AirCross › Plus › Standart
   - + Yeni model: C-Crosser (2007–2012) — en.wikipedia Citroën C-Crosser (2007-2012)
   - + C-Crosser › 2.2 › Standart
   - ~ eşleme: "C4 Grand Picasso" → "Grand C4 Picasso"
-  - ~ eşleme: "e-C4 X" → "C4 X"
-  - ~ eşleme: "e-C3 AirCross" → "C3 Aircross"
-  - ~ eşleme: "e-C5 AirCross" → "C5 Aircross"

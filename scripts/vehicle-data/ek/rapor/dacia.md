@@ -1,6 +1,28 @@
 ### Dacia
-- otomobil: zaten vardı 92 · eklendi 1 · belirsiz 26
+- otomobil: zaten vardı 96 · eklendi 23 · belirsiz 0
+  - + Jogger › 1.6 › Extreme (yıl bilgisi yok → 1986-2026)
+  - + Logan › 0.9 Tce MCV › Ambiance (yıl bilgisi yok → 1986-2026)
+  - + Logan › 1.0 MCV › Ambiance (yıl bilgisi yok → 1986-2026)
+  - + Logan › 1.4 › Black Line (yıl bilgisi yok → 1986-2026)
+  - + Logan › 1.5 dCi › Black Line (yıl bilgisi yok → 1986-2026)
+  - + Logan › 1.6 MCV › Black Line (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 0.9 ECO-G › Turbo Stepway (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 0.9 TCe › Stepway Ambiance (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 0.9 TCe › Stepway Easy-R (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 0.9 TCe › Stepway Style (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 0.9 TCe › Techroad (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 0.9 TCe › Turbo Stepway Easy-R (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 1.0 TCe › Stepway Comfort (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 1.2 › Black Line (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 1.4 › Black Line (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 1.5 BlueDCI › Stepway (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 1.5 dCi › Black Line (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 1.5 dCi › Stepway Style (yıl bilgisi yok → 1986-2026)
+  - + Sandero › 1.6 › Stepway (yıl bilgisi yok → 1986-2026)
   - + Yeni model: 1310 (1979–2004) — en.wikipedia Dacia 1310 (sedan 1979-2004; pickup 2006'ya kadar)
+  - + Duster › 1.5 BlueDCi › Essential (yıl bilgisi yok → 1986-2026)
+  - + Duster › 1.5 BlueDCi › Journey (yıl bilgisi yok → 1986-2026)
+  - + Duster › 1.6 › Laureate (yıl bilgisi yok → 1986-2026)
 - kamyonet: zaten vardı 0 · eklendi 2 · belirsiz 0
   - + Yeni model: Logan Pickup (2007–2012) — en.wikipedia Dacia Logan (Pick-up 2007-2012; Türkiye 2008)
   - + Logan Pickup › 1.5 DCI › Standart

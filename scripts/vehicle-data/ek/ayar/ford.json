@@ -69,5 +69,8 @@
   },
   "takma": {
     "Ranger Raptor": "Ranger"
-  }
+  },
+  "ayriModel": [
+    "Ranger Raptor"
+  ]
 }

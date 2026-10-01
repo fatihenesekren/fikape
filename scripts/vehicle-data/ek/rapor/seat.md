@@ -1,5 +1,9 @@
 ### Seat
-- otomobil: zaten vardı 121 · eklendi 32 · belirsiz 61
+- otomobil: zaten vardı 130 · eklendi 83 · belirsiz 1
+  - + Altea › 1.6 › Reference (yıl bilgisi yok → 1986-2026)
+  - + Altea › 1.6 › Stylance (yıl bilgisi yok → 1986-2026)
+  - + Altea › 1.9 TDI › Stylance XL (yıl bilgisi yok → 1986-2026)
+  - + Altea › 1.9 TDI › Style (yıl bilgisi yok → 1986-2026)
   - + Cordoba › 1.4 › Basic
   - + Cordoba › 1.4 › Costa
   - + Cordoba › 1.4 › Elegance
@@ -23,12 +27,59 @@
   - + Yeni model: Exeo (2008–2013) — en.wikipedia SEAT Exeo (2008-2013)
   - + Exeo › 1.6 › Reference
   - + Exeo › 1.6 › Style
+  - + Ibiza › 1.0 › Referance (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.0 EcoTSI › Sport Coupe FR (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.2 › Basic (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.2 › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.2 › Selection (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.2 TSI › Reference Plus (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.3 › CLX (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.3 › GLX (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.4 › Basic (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.4 › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.4 › SE (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.4 › Signo (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.4 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.4 › Stella (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.4 › Stylance (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.4 › SXE (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.4 TDI › S-Rider (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.5 EcoTSI › FR 40. Yıl Özel Seri (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.6 › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.6 › Latino (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.6 › SE (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.6 › Signo (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.6 › Stella (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.6 Sport Coupe › Sport (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.8 › GLX (yıl bilgisi yok → 1986-2026)
   - + Ibiza › 1.9 SDi › Stella
+  - + Ibiza › 1.9 TDI › Cupra (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.9 TDI › Signo (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.9 TDI › Sport (yıl bilgisi yok → 1986-2026)
+  - + Ibiza › 1.9 TDI › Stylance (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.4 TSI › Reference (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.4 TSI › Stylance (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.4 EcoTSI › Euroleague Edition (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.6 › Signo (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.6 › Spirit (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.6 › Stella (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.6 › Stylance (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.6 TDI › ST Style (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.8 › Signo (yıl bilgisi yok → 1986-2026)
+  - + Leon › 1.8 T › Cupra (yıl bilgisi yok → 1986-2026)
   - + Leon › 1.9 TDI › Cupra
   - + Leon › 1.9 TDI › Signo
   - + Leon › 1.9 TDI › Stella
   - + Leon › 1.9 TDI › Style
+  - + Leon › 2.0 FSI › Stylance (yıl bilgisi yok → 1986-2026)
+  - + Leon › 2.0 TDI › CR FR (yıl bilgisi yok → 1986-2026)
+  - + Toledo › 1.6 › Magnus (yıl bilgisi yok → 1986-2026)
+  - + Toledo › 1.6 › Signo (yıl bilgisi yok → 1986-2026)
+  - + Toledo › 1.6 › Signo Plus (yıl bilgisi yok → 1986-2026)
+  - + Toledo › 1.6 › Signum (yıl bilgisi yok → 1986-2026)
+  - + Toledo › 1.6 › Stella (yıl bilgisi yok → 1986-2026)
   - + Toledo › 1.8 › GL
-  - + Toledo › 1.8 › Signo
   - + Toledo › 1.8 › Sport
+  - + Toledo › 1.9 TDI › SXE (yıl bilgisi yok → 1986-2026)
+  - + Toledo › 2.0 › GLX (yıl bilgisi yok → 1986-2026)
   - + Toledo › 2.0 TDI › Stylance

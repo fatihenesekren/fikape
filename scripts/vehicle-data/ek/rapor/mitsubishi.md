@@ -1,7 +1,25 @@
 ### Mitsubishi
-- otomobil: zaten vardı 38 · eklendi 17 · belirsiz 29
+- otomobil: zaten vardı 38 · eklendi 47 · belirsiz 0
+  - + Colt › 1.3 › Inform (yıl bilgisi yok → 1986-2026)
+  - + Colt › 1.3 › Instyle (yıl bilgisi yok → 1986-2026)
+  - + Colt › 1.3 › Invite CZ3 AMT (yıl bilgisi yok → 1986-2026)
+  - + Colt › 1.5 › CZT (yıl bilgisi yok → 1986-2026)
+  - + Colt › 1.5 › Instyle (yıl bilgisi yok → 1986-2026)
+  - + Colt › 1.5 › Invite (yıl bilgisi yok → 1986-2026)
+  - + Colt › 1.5 DI-D › Inform (yıl bilgisi yok → 1986-2026)
+  - + Colt › 1.5 DI-D › Insport (yıl bilgisi yok → 1986-2026)
   - + Galant › 2.0 › GTi
   - + Galant › 2.4 GDI › Elegance
+  - + Lancer › 1.3 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Lancer › 1.5 › GLX (yıl bilgisi yok → 1986-2026)
+  - + Lancer › 1.6 › Plus (yıl bilgisi yok → 1986-2026)
+  - + Lancer › 1.8 › GLD (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Lancer Evolution (1986–) — yıl aralığı "Lancer" modelinden alındı
+  - + Lancer Evolution › VI › Standart
+  - + Lancer Evolution › VII › Standart
+  - + Lancer Evolution › VIII › Standart
+  - + Lancer Evolution › IX › Standart
+  - + Lancer Evolution › X › Standart
   - + Yeni model: 3000GT (1990–2000) — en.wikipedia Mitsubishi 3000GT (1990-2000)
   - + Carisma › 1.6 › Avance
   - + Carisma › 1.6 › GL
@@ -17,5 +35,25 @@
   - + Diamante › 3.0 › Standart
   - + Yeni model: Eclipse (1990–2012) — en.wikipedia Mitsubishi Eclipse (model yılı 1990-2012, dört nesil)
   - + Eclipse › 2.0 › Standart
-  - ~ eşleme: "Lancer Evolution" → "Lancer"
-- kamyonet: zaten vardı 13 · eklendi 0 · belirsiz 9
+  - + Space Star › 1.3 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Space Star › 1.6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Space Star › 1.9 DI-D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Outlander › 2.0 › CVT 4X2 (yıl bilgisi yok → 1986-2026)
+  - + Outlander › 2.0 › MT Turbo (yıl bilgisi yok → 1986-2026)
+  - + Outlander › 2.0 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Outlander › 2.4 › Intense (yıl bilgisi yok → 1986-2026)
+  - + Outlander › 2.4 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Pajero › 1.8 GDi Pinin › Standart (yıl bilgisi yok → 1986-2026)
+  - + Pajero › 2.0 GDi Pinin › Standart (yıl bilgisi yok → 1986-2026)
+  - + Pajero › 2.6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Pajero › 2.8 TD › Standart (yıl bilgisi yok → 1986-2026)
+- kamyonet: zaten vardı 13 · eklendi 9 · belirsiz 0
+  - + L200 › 4x2 › Inform (yıl bilgisi yok → 1986-2026)
+  - + L200 › 4x2 › Intense (yıl bilgisi yok → 1986-2026)
+  - + L200 › 4x2 › Magnum (yıl bilgisi yok → 1986-2026)
+  - + L200 › 4x4 › 2.5 D (yıl bilgisi yok → 1986-2026)
+  - + L200 › 4x4 › 2.5 TD (yıl bilgisi yok → 1986-2026)
+  - + L200 › 4x4 › GL (yıl bilgisi yok → 1986-2026)
+  - + L200 › 4x4 › GLS (yıl bilgisi yok → 1986-2026)
+  - + L200 › 4x4 › GLX (yıl bilgisi yok → 1986-2026)
+  - + L200 › 4x4 › Magnum (yıl bilgisi yok → 1986-2026)

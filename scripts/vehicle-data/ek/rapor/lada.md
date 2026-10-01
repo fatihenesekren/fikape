@@ -1,8 +1,11 @@
 ### Lada
-- otomobil: zaten vardı 0 · eklendi 11 · belirsiz 2
+- otomobil: zaten vardı 3 · eklendi 14 · belirsiz 0
+  - + Kalina › 1.6 › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Samara (1990–2013) — en.wikipedia Lada Samara (1984-2013; 1990 öncesi kırpıldı)
   - + Samara › 1.3 › Standart
   - + Samara › 1.5 › Standart
+  - + Yeni model: VAZ (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + VAZ › 2101 › Standart
   - + Yeni model: Vega (1995–2009) — en.wikipedia Lada 110 / Türkiye'de Lada Vega (1995-2009)
   - + Vega › 1.5 › Standart
   - + Vega › 1.6 › Standart

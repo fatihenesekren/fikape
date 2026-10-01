@@ -1,22 +1,142 @@
 ### Opel
-- otomobil: zaten vardı 273 · eklendi 28 · belirsiz 134
+- otomobil: zaten vardı 235 · eklendi 257 · belirsiz 1
   - + Agila (2000-2014) › 1.2 › Club
   - + Agila (2000-2014) › 1.2 › Comfort
   - + Ascona (1981-1988) › 1.3 C LS › Standart
   - + Ascona (1981-1988) › 1.6 › C GLS
   - + Ascona (1981-1988) › 1.6 › C L
   - + Ascona (1981-1988) › 2.0 › C GT
-  - + Astra › 1.7 DTI › Classic
-  - + Astra › 1.7 DTI › GL
+  - + Astra › 1.3 CDTI › EcoFLEX Cosmo (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.3 CDTI › EcoFLEX Enjoy (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.3 CDTI › EcoFLEX Enjoy Plus (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.3 CDTI › EcoFLEX Sport (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.3 CDTI › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.3 CDTI › Enjoy 111.Yıl (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.3 CDTI › Enjoy Elegance (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.3 CDTI › Essentia Konfor (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 › Classic (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 › Classic Twinport (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 › Club (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 › Essentia (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 › GL (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 › GLS (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 › Life (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 › Start (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 T › Sport Elegance (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.4 T › Sport Stil (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › 100.Yıl (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Cabrio (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › CD (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › CDX (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Classic Twinport (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Coupe (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Elegance Twinport (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Enjoy 111. Yıl (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Enjoy Elegance (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Enjoy Twinport (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Essentia Konfor (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Expression (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › G (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › GL (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › GLS (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › GLX (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 › Sportive (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 CDTI › 120.Yıl (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 CDTI › Dynamic Elite (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.6 T › T GTC Sport (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.7 CDTI › Classic (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.7 CDTI › Enjoy (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.7 D › GL (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.7 D › GLS (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.8 › Cosmo (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.8 › Coupe (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.9 CDTI › Cosmo (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.9 CDTI › GTC Sport (yıl bilgisi yok → 1986-2026)
+  - + Astra › 1.9 CDTI › Caravan (yıl bilgisi yok → 1986-2026)
+  - + Astra › 2.0 › GSi (yıl bilgisi yok → 1986-2026)
+  - + Astra › 2.0 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Astra › 2.0 T › Cosmo (yıl bilgisi yok → 1986-2026)
+  - + Astra › 2.0 T › GTC Sport (yıl bilgisi yok → 1986-2026)
+  - + Astra › 2.2 › Coupe (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Calibra (1990–1997) — autoevolution Opel Calibra (1989-1997; 1990 öncesi kırpıldı)
   - + Calibra › 2.0 › Standart
   - + Calibra › 2.0 Turbo › Standart
+  - + Corsa › 1.0 › ECO Club (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.0 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.2 › City (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.2 › Club (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.2 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.2 › Silverline (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.2 › Swing (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.2 Twinport › Active (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.2 Twinport › Enjoy 111 (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.3 CDTI › Black&White (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.3 CDTI › Cosmo (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.3 CDTI › Silverline (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 › 100. Yıl (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 › 120.Yıl (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 › CD (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 › GLS (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 › Swing (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 Twinport › Active (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 Twinport › Enjoy 111 (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.4 Twinport › Silverline (yıl bilgisi yok → 1986-2026)
   - + Corsa › 1.5 TD › ECO
+  - + Corsa › 1.7 DTI Comfort › Standart (yıl bilgisi yok → 1986-2026)
+  - + Corsa › 1.8 GSi › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: GT (2007–2009) — en.wikipedia Opel GT (roadster) (2007-2009)
   - + GT › GT 2.0 Turbo › Standart
-  - + Kadett E (1984-1991) › 1.4 › GL
-  - + Kadett E (1984-1991) › 1.6 D › Standart
-  - + Kadett E (1984-1991) › 1.8 › GT
+  - + Insignia › 1.5 D › Grand Sport Edition (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.5 D › Grand Sport Elegance (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.6 CDTI › Business (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.6 CDTI › Grand Sport T 120.Yıl (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.6 CDTI › Grand Sport T Design (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.6 CDTI › Grand Sport T Elite (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.6 CDTI › Grand Sport T Enjoy (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.6 CDTI › Grand Sport T Excellence (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.6 CDTI › Grand Sport T Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.6 CDTI › Sports Tourer Excellence (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 1.6 D › Sports Tourer Innovation (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 2.0 CDTI › Cosmo Flexride (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 2.0 CDTI › Edition Elegance Active (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 2.0 CDTI › Country Tourer Cosmo (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 2.0 CDTI › Sports Tourer Edition (yıl bilgisi yok → 1986-2026)
+  - + Insignia › 2.0 CDTI › Sports Tourer Sport (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Kadett (1984–1991) — yıl aralığı "Kadett E (1984-1991)" modelinden alındı
+  - + Kadett › 1.3 › GL
+  - + Kadett › 1.4 › GL
+  - + Kadett › 1.6 › GLS
+  - + Kadett › 1.6 D › Standart
+  - + Kadett › 1.8 › GT
+  - + Kadett › 2.0 › GSi
+  - + Yeni model: Manta (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Manta › 2.0 GTE › Standart
+  - + Meriva › 1.6 › Enjoy (yıl bilgisi yok → 1986-2026)
+  - + Meriva › 1.6 › OPC (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Omega (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Omega › 2.0 › Standart
+  - + Omega › 2.0 › CD
+  - + Omega › 2.2 › Standart
+  - + Omega › 2.3 TD › Standart
+  - + Omega › 2.5 › CD
+  - + Omega › 2.5 › Elegance
+  - + Omega › 2.5 › GL
+  - + Omega › 2.5 TD › Standart
+  - + Omega › 2.5 TD › CD
+  - + Omega › 2.5 TD › Edition
+  - + Omega › 2.5 TD › Elegance
+  - + Omega › 2.6 › Elegance
+  - + Omega › 2.6 › GL
+  - + Omega › 3.0 › MV6
+  - + Yeni model: Rekord (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Rekord › 1.7 › Standart
+  - + Rekord › 2.0 › Standart
   - + Yeni model: Signum (2003–2008) — en.wikipedia Opel Signum (2003-2008)
   - + Signum › 1.8 › Standart
   - + Signum › 1.9 CDTI › Sport
@@ -25,10 +145,115 @@
   - + Signum › 3.0 CDTi › Cosmo
   - + Signum › 3.2 › Cosmo
   - + Tigra (1994-2009) › 1.4 TT Sport › Standart
+  - + Yeni model: Vectra (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Vectra › 1.6 › Standart
+  - + Vectra › 1.6 › Comfort
+  - + Vectra › 1.6 › Design Edition
+  - + Vectra › 1.6 › Edition
+  - + Vectra › 1.6 › Elegance
+  - + Vectra › 1.6 › Essentia
+  - + Vectra › 1.6 › GL
+  - + Vectra › 1.6 › GLS
+  - + Vectra › 1.7 TD GLS › Standart
+  - + Vectra › 1.8 › CD
+  - + Vectra › 1.8 › Comfort
+  - + Vectra › 1.8 › Elegance
+  - + Vectra › 1.8 › GL
+  - + Vectra › 1.9 CDTI › Comfort
+  - + Vectra › 1.9 CDTI › Design
+  - + Vectra › 1.9 CDTI › Elegance
+  - + Vectra › 2.0 › 100. Yıl
+  - + Vectra › 2.0 › CD
+  - + Vectra › 2.0 › CDX
+  - + Vectra › 2.0 › Elegance
+  - + Vectra › 2.0 › GL
+  - + Vectra › 2.0 › GLS
+  - + Vectra › 2.0 › GT
+  - + Vectra › 2.0 DTI › CD
+  - + Vectra › 2.0 DTI › Comfort
+  - + Vectra › 2.0 T › Elegance
+  - + Vectra › 2.2 › Comfort
+  - + Vectra › 2.2 › Elegance
+  - + Vectra › 2.2 › GTS
+  - + Vectra › 2.2 DTI › Comfort
+  - + Vectra › 2.2 DTI › Elegance
+  - + Vectra › 2.5 › CDX
+  - + Vectra › 2.5 › Sport
+  - + Vectra › 2.6 Sport › Standart
+  - + Vectra › 3.0 CDTI › Cosmo
+  - + Vectra › 3.0 CDTI › Elegance
+  - + Vectra › 3.2 GTS › Standart
+  - + Zafira › 1.4 › Enjoy (yıl bilgisi yok → 1986-2026)
+  - + Zafira › 1.6 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Zafira › 1.6 › Cosmo (yıl bilgisi yok → 1986-2026)
+  - + Zafira › 1.6 › Edition (yıl bilgisi yok → 1986-2026)
+  - + Zafira › 1.6 › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Zafira › 1.6 › GL (yıl bilgisi yok → 1986-2026)
+  - + Zafira › 1.6 CDTI › Enjoy (yıl bilgisi yok → 1986-2026)
+  - + Zafira › 2.0 T › Cosmo (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Crossland X (2017–2024) — yıl aralığı "Crossland" modelinden alındı
+  - + Crossland X › 1.2 › Enjoy
+  - + Crossland X › 1.2 T › 120.Yıl
+  - + Crossland X › 1.2 T › Edition
+  - + Crossland X › 1.2 T › Enjoy
+  - + Crossland X › 1.2 T › Essentia
+  - + Crossland X › 1.2 T › Excellence
+  - + Crossland X › 1.2 T › Ultimate
+  - + Crossland X › 1.5 T › 120.Yıl
+  - + Crossland X › 1.5 T › Edition
+  - + Crossland X › 1.5 T › Enjoy
+  - + Crossland X › 1.5 T › Excellence
+  - + Crossland X › 1.5 T › Innovation
+  - + Crossland X › 1.6 CDTI › Enjoy
+  - + Crossland X › 1.6 CDTI › Excellence
+  - + Frontera › 1.2 T › Edition (yıl bilgisi yok → 1986-2026)
+  - + Frontera › 1.2 T › GS (yıl bilgisi yok → 1986-2026)
+  - + Frontera › 2.0 Sport › Standart (yıl bilgisi yok → 1986-2026)
+  - + Frontera › 2.2 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Frontera › 2.3 TD › Standart (yıl bilgisi yok → 1986-2026)
+  - + Frontera › 2.5 TDS › Standart (yıl bilgisi yok → 1986-2026)
+  - + Frontera › 3.2 Limited › Standart (yıl bilgisi yok → 1986-2026)
+  - + Frontera-e › GS Standart Menzil › Standart (yıl bilgisi yok → 1986-2026)
+  - + Grandland › 1.6 Hybrid › GSe (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Grandland-e (2024–) — Opel Grandland Electric (yeni nesil, 2024)
   - + Grandland-e › Edition › Standart
   - + Grandland-e › GS › Standart
-  - ~ eşleme: "Kadett" → "Kadett E (1984-1991)"
-  - ~ eşleme: "Crossland X" → "Crossland"
-  - ~ eşleme: "Grandland X" → "Grandland"
-  - ~ eşleme: "Mokka X" → "Mokka"
+  - + Yeni model (ayrı): Grandland X (1986–) — yıl aralığı "Grandland" modelinden alındı
+  - + Grandland X › 1.2 T › Edition
+  - + Grandland X › 1.2 T › Elegance
+  - + Grandland X › 1.2 T › Enjoy
+  - + Grandland X › 1.2 T › Enjoy Black Edition
+  - + Grandland X › 1.2 T › Enjoy Skyline
+  - + Grandland X › 1.2 T › Essentia
+  - + Grandland X › 1.2 T › Essential
+  - + Grandland X › 1.2 T › Excellence
+  - + Grandland X › 1.2 T › Innovation
+  - + Grandland X › 1.2 T › Ultimate
+  - + Grandland X › 1.5 D › 120.Yıl
+  - + Grandland X › 1.5 D › Edition
+  - + Grandland X › 1.5 D › Edition Explorer
+  - + Grandland X › 1.5 D › Edition Özel Seri
+  - + Grandland X › 1.5 D › Elegance
+  - + Grandland X › 1.5 D › Enjoy
+  - + Grandland X › 1.5 D › Enjoy Black Edition
+  - + Grandland X › 1.5 D › Enjoy Explorer
+  - + Grandland X › 1.5 D › Enjoy Özel Seri
+  - + Grandland X › 1.5 D › Enjoy Skyline
+  - + Grandland X › 1.5 D › Essentia Özel Seri
+  - + Grandland X › 1.5 D › Excellence
+  - + Grandland X › 1.5 D › Innovation
+  - + Grandland X › 1.5 D › Ultimate
+  - + Grandland X › 1.6 › Innovation
+  - + Grandland X › 1.6 D › Enjoy
+  - + Grandland X › 1.6 D › Enjoy Sport
+  - + Grandland X › 1.6 D › Excellence
+  - + Grandland X › 1.6 D › Ultimate
+  - + Yeni model (ayrı): Mokka X (2012–) — yıl aralığı "Mokka" modelinden alındı
+  - + Mokka X › 1.4 T › Black Edition
+  - + Mokka X › 1.4 T › Enjoy
+  - + Mokka X › 1.4 T › Excellence
+  - + Mokka X › 1.6 › Enjoy
+  - + Mokka X › 1.6 CDTi › 120.Yıl
+  - + Mokka X › 1.6 CDTi › Color Edition
+  - + Mokka X › 1.6 CDTi › Enjoy
+  - + Mokka X › 1.6 CDTi › Excellence

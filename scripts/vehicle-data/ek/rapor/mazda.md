@@ -1,11 +1,31 @@
 ### Mazda
-- otomobil: zaten vardı 41 · eklendi 30 · belirsiz 22
+- otomobil: zaten vardı 42 · eklendi 54 · belirsiz 1
+  - + Mazda2 › 1.3 › Go (yıl bilgisi yok → 1986-2026)
+  - + Mazda2 › 1.3 › High (yıl bilgisi yok → 1986-2026)
+  - + Mazda2 › 1.5 › Fun (yıl bilgisi yok → 1986-2026)
+  - + Mazda2 › 1.5 › High (yıl bilgisi yok → 1986-2026)
+  - + Mazda3 › 1.6 › 90. Yıl (yıl bilgisi yok → 1986-2026)
+  - + Mazda3 › 1.6 › Base (yıl bilgisi yok → 1986-2026)
+  - + Mazda3 › 1.6 › Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Mazda3 › 1.6 › High (yıl bilgisi yok → 1986-2026)
+  - + Mazda3 › 1.6 › Sport CE (yıl bilgisi yok → 1986-2026)
+  - + Mazda3 › 1.6 › Sport Comfort (yıl bilgisi yok → 1986-2026)
+  - + Mazda3 › 1.6 › Sport Dynamic (yıl bilgisi yok → 1986-2026)
   - + Yeni model: 5 (2005–2018) — autoevolution / en.wikipedia Mazda5 (Premacy; Mazda5 adıyla 2005'ten itibaren)
   - + 5 › 1.6 › Sport
   - + 5 › 1.8 › Standart
   - + 5 › 2.0 CD › CE
   - + 5 › 2.0 D › Standart
+  - + Mazda6 › 2.0 › CD CE (yıl bilgisi yok → 1986-2026)
+  - + Mazda6 › 2.0 › CDH TE (yıl bilgisi yok → 1986-2026)
+  - + Mazda6 › 2.0 › Sky-G Power (yıl bilgisi yok → 1986-2026)
+  - + Mazda6 › 2.3 Sport › Standart (yıl bilgisi yok → 1986-2026)
   - + MPV › 2.3 TE › Standart
+  - + Yeni model: MX (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + MX › MX-3 › 1.6
+  - + MX › MX-5 › 1.5
+  - + MX › MX-5 › 1.6
+  - + MX › MX-5 › 2.0
   - + Yeni model: 121 (1990–2003) — automobile-catalog Mazda 121 (DA 1987-1990'lar, DB 1993-2003; 1990 öncesi kırpıldı)
   - + 121 › 1.3 › Standart
   - + 323 › 1.3 › 1.3i
@@ -30,6 +50,10 @@
   - + Yeni model: Xedos (1992–2002) — en.wikipedia Mazda Xedos 6 (1992-1999) + Xedos 9 (1993-2002)
   - + Xedos › 6 › Standart
   - + Xedos › 9 › Standart
+  - + CX-5 › 2.0i › Power (yıl bilgisi yok → 1986-2026)
+  - + CX-5 › 2.0i › Power Sense (yıl bilgisi yok → 1986-2026)
+  - + CX-5 › 2.0i › Power Sense Plus (yıl bilgisi yok → 1986-2026)
+  - + CX-9 › 3.7L Sport › Standart (yıl bilgisi yok → 1986-2026)
   - ~ eşleme: "2" → "Mazda2"
   - ~ eşleme: "3" → "Mazda3"
   - ~ eşleme: "6" → "Mazda6"

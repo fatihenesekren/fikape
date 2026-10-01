@@ -1,10 +1,19 @@
 {
-  "takma": { "Avenger Electric": "Avenger" },
+  "takma": {
+    "Avenger Electric": "Avenger"
+  },
   "yeniModel": {
-    "Liberty": { "bas": 2002, "bit": 2012, "kaynak": "en.wikipedia Jeep Liberty (model yılı 2002-2012)" }
+    "Liberty": {
+      "bas": 2002,
+      "bit": 2012,
+      "kaynak": "en.wikipedia Jeep Liberty (model yılı 2002-2012)"
+    }
   },
   "atla": {
     "Grand Wagoneer": "Jeep Grand Wagoneer: 2022'den beri (WS) ve eski 1984-1991 nesli var; kaynaktaki '6.4' motor hangisine ait belli değil.",
     "CJ": "Jeep CJ (CJ-5/CJ-6) 1986'ya kadar (1990 öncesi); katalog 1990 öncesini tutmuyor — klasik araç kararı sizde."
-  }
+  },
+  "ayriModel": [
+    "Avenger Electric"
+  ]
 }

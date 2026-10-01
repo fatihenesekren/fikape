@@ -1,5 +1,10 @@
 ### Daewoo
-- otomobil: zaten vardı 0 · eklendi 22 · belirsiz 3
+- otomobil: zaten vardı 0 · eklendi 34 · belirsiz 0
+  - + Yeni model: Nexia (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Nexia › 1.5 › GL
+  - + Nexia › 1.5 › GLE
+  - + Nexia › 1.5 › GLX
+  - + Nexia › 1.5 › GTX
   - + Yeni model: Nubira (1997–2002) — en.wikipedia Daewoo Nubira (1997-2002 G.Kore)
   - + Nubira › 1.6 › S
   - + Nubira › 1.6 › SX
@@ -14,8 +19,15 @@
   - + Yeni model: Leganza (1997–2002) — en.wikipedia Daewoo Leganza (1997-2002)
   - + Leganza › 2.0 › CDX
   - + Leganza › 2.0 › SX
+  - + Yeni model: Matiz (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Matiz › 0.8 › CD
+  - + Matiz › 0.8 › S
+  - + Matiz › 0.8 › SE
+  - + Matiz › 0.8 › Star
   - + Yeni model: Racer (1990–1997) — en.wikipedia Daewoo LeMans / Racer (1986-1997; 1990 öncesi kırpıldı)
   - + Racer › 1.5i › Standart
+  - + Yeni model: Super Saloon (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Super Saloon › 2.0 › Standart
   - + Yeni model: Tico (1991–2000) — en.wikipedia Daewoo Tico (1991-2000)
   - + Tico › 0.8 › SL
   - + Tico › 0.8 › SX

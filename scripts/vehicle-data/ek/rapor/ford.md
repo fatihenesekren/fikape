@@ -1,5 +1,8 @@
 ### Ford
-- otomobil: zaten vardı 181 · eklendi 46 · belirsiz 85
+- otomobil: zaten vardı 200 · eklendi 118 · belirsiz 1
+  - + B-Max › 1.0 › GTDi Titanium (yıl bilgisi yok → 1986-2026)
+  - + B-Max › 1.4 › Titanium (yıl bilgisi yok → 1986-2026)
+  - + B-Max › 1.4 › Trend (yıl bilgisi yok → 1986-2026)
   - + Escort (1993-1999) › 1.3 › CL
   - + Escort (1993-1999) › 1.3 › CLX
   - + Escort (1993-1999) › 1.4 › C
@@ -8,8 +11,61 @@
   - + Escort (1993-1999) › 1.8 › Fun
   - + Escort (1993-1999) › 1.8 › Ghia
   - + Escort (1993-1999) › 1.8 › XR3i
+  - + Fiesta › 1.0 GTDi › Black (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.0 GTDi › Red (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.1 › CLX (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.1 › Fashion (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.25 › Flair (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.25 › Fun (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.25 › Ghia (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.25 › My Fiesta (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.25 › Trend X (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.3 › Flair (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.4 › Collection (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.4 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.4 › Cool (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.4 TDCi › Sport (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.5 EcoBoost › ST (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.6 Ti-VCT › Trend X (yıl bilgisi yok → 1986-2026)
+  - + Fiesta › 1.8 D › C (yıl bilgisi yok → 1986-2026)
+  - + Focus › 1.4 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Focus › 1.6 › Darkline (yıl bilgisi yok → 1986-2026)
+  - + Focus › 1.6 › Ghia (yıl bilgisi yok → 1986-2026)
+  - + Focus › 1.6 › Gold Collection (yıl bilgisi yok → 1986-2026)
+  - + Focus › 1.6 › Titanium CC (yıl bilgisi yok → 1986-2026)
+  - + Focus › 1.6 SCTi › Trend Plus (yıl bilgisi yok → 1986-2026)
   - + Focus › 1.6 TDCi › Sport
+  - + Focus › 1.6 Ti-VCT › ST Line (yıl bilgisi yok → 1986-2026)
+  - + Focus › 1.6 Ti-VCT › Style Plus (yıl bilgisi yok → 1986-2026)
+  - + Focus › 1.8 TDCi › Di Ghia (yıl bilgisi yok → 1986-2026)
+  - + Focus › 2.0 › Ghia (yıl bilgisi yok → 1986-2026)
+  - + Focus › 2.0 › Sport Trend (yıl bilgisi yok → 1986-2026)
+  - + Focus › 2.0 › ST (yıl bilgisi yok → 1986-2026)
+  - + Focus › 2.0 › Titanium CC (yıl bilgisi yok → 1986-2026)
+  - + Focus › 2.5 › ST (yıl bilgisi yok → 1986-2026)
+  - + Fusion › 1.4 TDCi › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Fusion › 1.4 TDCi › Urbanite (yıl bilgisi yok → 1986-2026)
+  - + Fusion › 1.6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Fusion › 1.6 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Fusion › 1.6 › Lux (yıl bilgisi yok → 1986-2026)
+  - + Fusion › 1.6 TDCi › Cool (yıl bilgisi yok → 1986-2026)
+  - + Galaxy › 2.0i › Standart (yıl bilgisi yok → 1986-2026)
+  - + Galaxy › 2.3 16 V › Standart (yıl bilgisi yok → 1986-2026)
+  - + Galaxy › 2.8i VR6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Ka › 1.2 Titanium › Standart (yıl bilgisi yok → 1986-2026)
+  - + Ka › 1.3 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Ka › 1.3 › 1.3 City (yıl bilgisi yok → 1986-2026)
+  - + Ka › 1.3 › 1.3 Collection (yıl bilgisi yok → 1986-2026)
+  - + Ka › 1.3 TDCi › Titanium (yıl bilgisi yok → 1986-2026)
+  - + Ka › 1.6 Street › Standart (yıl bilgisi yok → 1986-2026)
+  - + Mondeo › 1.6 › GLX (yıl bilgisi yok → 1986-2026)
   - + Mondeo › 1.8 › CLX
+  - + Mondeo › 1.8 TDCi › Ghia (yıl bilgisi yok → 1986-2026)
+  - + Mondeo › 2.0 › Ghia X (yıl bilgisi yok → 1986-2026)
+  - + Mondeo › 2.0 › GLX (yıl bilgisi yok → 1986-2026)
+  - + Mondeo › 2.2 TDCi › Ghia (yıl bilgisi yok → 1986-2026)
+  - + S-Max › 2.0i Titanium › Standart (yıl bilgisi yok → 1986-2026)
+  - + S-Max › 2.5 T › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Taurus (1990–2019) — en.wikipedia Ford Taurus (1986-2019; 1990 öncesi kırpıldı)
   - + Taurus › 3.0 V6 GL › Standart
   - + Yeni model: Cougar (1998–2002) — en.wikipedia Ford Cougar (1998-2002 Avrupa)
@@ -21,6 +77,8 @@
   - + Granada › 1.7 › Standart
   - + Granada › 2.0 › Standart
   - + Granada › 2.3 › Standart
+  - + Yeni model: Orion (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Orion › 1.6 CL › Standart
   - + Yeni model: Probe (1990–1997) — en.wikipedia Ford Probe (1988-1997; 1990 öncesi kırpıldı)
   - + Probe › 2.5 › Standart
   - + Yeni model: Scorpio (1990–1999) — en.wikipedia Ford Scorpio (1985-1999; 1990 öncesi kırpıldı)
@@ -44,9 +102,32 @@
   - + Yeni model: Bronco Sport (2021–) — en.wikipedia Ford Bronco Sport (model yılı 2021-)
   - + Bronco Sport › 1.5 EcoBoost › Big Bend
   - + Bronco Sport › 1.5 EcoBoost › Outer Banks
+  - + Ecosport › 1.0 EcoBoost › ST Line (yıl bilgisi yok → 1986-2026)
+  - + Ecosport › 1.0 EcoBoost › Style (yıl bilgisi yok → 1986-2026)
+  - + Expedition › 5.4 V8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Explorer-E (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Explorer-E › Premium › Standart
+  - + Explorer-E › Select › Standart
+  - + Explorer › 4.0 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Explorer › 5.0 Limited › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: F (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + F › 150 › Standart
+  - + Puma › 1.5 EcoBoost › ST (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Puma-E (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Puma-E › Premium › Standart
+  - + Escape › 3.0 › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Excursion (1999–2005) — en.wikipedia Ford Excursion (1999-2005)
   - + Excursion › 6.0 › Standart
-- kamyonet: zaten vardı 11 · eklendi 2 · belirsiz 8
+- kamyonet: zaten vardı 10 · eklendi 12 · belirsiz 0
+  - + Ranger › 2.5 TDCi › Hi-Rider (yıl bilgisi yok → 1986-2026)
+  - + Ranger › 2.5 TDCi › STD (yıl bilgisi yok → 1986-2026)
+  - + Ranger › 2.5 TDCi › Thunder (yıl bilgisi yok → 1986-2026)
+  - + Ranger › 2.5 TDCi › XL (yıl bilgisi yok → 1986-2026)
+  - + Ranger › 2.5 TDCi › XLT (yıl bilgisi yok → 1986-2026)
+  - + Ranger › 3.0 EcoBlue › MS-RT (yıl bilgisi yok → 1986-2026)
+  - + Ranger › 3.0 TDCi › XLT (yıl bilgisi yok → 1986-2026)
+  - + Ranger › 3.2 TDCi › Wild Trak (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Ranger Raptor (1986–) — yıl aralığı "Ranger" modelinden alındı
+  - + Ranger Raptor › 2.0 EcoBlue › 4x4
   - + Yeni model: Maverick (2022–) — en.wikipedia Ford Maverick (2022) — kamyonet
   - + Maverick › 3.0i XLT › Standart
-  - ~ eşleme: "Ranger Raptor" → "Ranger"

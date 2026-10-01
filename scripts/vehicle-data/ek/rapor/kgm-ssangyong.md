@@ -1,6 +1,43 @@
 ### KGM SsangYong
-- otomobil: zaten vardı 24 · eklendi 0 · belirsiz 21
-  - ~ eşleme: "Torres EVX" → "Torres"
-- kamyonet: zaten vardı 0 · eklendi 0 · belirsiz 11
-  - ~ eşleme: "Musso Grand" → "Musso"
-  - ~ eşleme: "Musso EV" → "Musso"
+- otomobil: zaten vardı 27 · eklendi 19 · belirsiz 0
+  - + Korando › 1.5 T › Limited (yıl bilgisi yok → 1986-2026)
+  - + Korando › 1.5 T › Platinum (yıl bilgisi yok → 1986-2026)
+  - + Korando › 1.5 T › Titanium (yıl bilgisi yok → 1986-2026)
+  - + Korando › 1.6 D › Limited (yıl bilgisi yok → 1986-2026)
+  - + Korando › 1.6 D › Platinum (yıl bilgisi yok → 1986-2026)
+  - + Korando › 1.6 D › Titanium (yıl bilgisi yok → 1986-2026)
+  - + Korando › 2.3 i › Standart (yıl bilgisi yok → 1986-2026)
+  - + Korando › 3.2 SELX › Standart (yıl bilgisi yok → 1986-2026)
+  - + Kyron › 2.0 L XDI › Modes 4x2 (yıl bilgisi yok → 1986-2026)
+  - + Kyron › 2.0 XDI › Premium (yıl bilgisi yok → 1986-2026)
+  - + Rexton › 2.7 XDI › DSX (yıl bilgisi yok → 1986-2026)
+  - + Rexton › 2.7 XDI › LX SPR (yıl bilgisi yok → 1986-2026)
+  - + Rexton › 2.7 XDI › RX (yıl bilgisi yok → 1986-2026)
+  - + Tivoli › 1.6 D › Limited (yıl bilgisi yok → 1986-2026)
+  - + Tivoli › 1.6 D › Platinum (yıl bilgisi yok → 1986-2026)
+  - + Tivoli › 1.6 G › Modes (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Torres EVX (2023–) — yıl aralığı "Torres" modelinden alındı
+  - + Torres EVX › 4x2 › Standart
+  - + XLV › 1.6 D › Limited (yıl bilgisi yok → 1986-2026)
+- kamyonet: zaten vardı 0 · eklendi 21 · belirsiz 1
+  - + Yeni model: Actyon Sports (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Actyon Sports › 2.0 SXDI 4x2 › Standart
+  - + Actyon Sports › 2.0 SXDI 4x4 › Standart
+  - + Actyon Sports › 2.0 XDI 4x2 › Standart
+  - + Actyon Sports › 2.0 XDI 4x4 › Standart
+  - + Yeni model: Korando Sports (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Korando Sports › 2.0 e-XDI › Standart
+  - + Korando Sports › 2.0 e-XDI Limited › Standart
+  - + Korando Sports › 2.0 e-XDI Modes › Standart
+  - + Korando Sports › 2.0 e-XDI Special Edition › Standart
+  - + Musso › 2.2 D › Platinum (yıl bilgisi yok → 1986-2026)
+  - + Musso › 2.2 D › Platinum Plus (yıl bilgisi yok → 1986-2026)
+  - + Musso › 2.3 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Musso › 3.2 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Musso Grand (1986–) — yıl aralığı "Musso" modelinden alındı
+  - + Musso Grand › 2.2 D › Standart
+  - + Musso Grand › 2.2 D › Edition
+  - + Musso Grand › 2.2 D › Platinum
+  - + Musso Grand › 2.2 D › Platinum Plus
+  - + Yeni model (ayrı): Musso EV (1986–) — yıl aralığı "Musso" modelinden alındı
+  - + Musso EV › Standart › Standart

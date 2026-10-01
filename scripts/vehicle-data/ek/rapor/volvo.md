@@ -1,12 +1,62 @@
 ### Volvo
-- otomobil: zaten vardı 232 · eklendi 20 · belirsiz 50
+- otomobil: zaten vardı 217 · eklendi 89 · belirsiz 0
+  - + C30 › 1.6 D › Prime (yıl bilgisi yok → 1986-2026)
+  - + S40 › 1.6 › Prime (yıl bilgisi yok → 1986-2026)
+  - + S40 › 1.9 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + S40 › 2.0 D › Premium (yıl bilgisi yok → 1986-2026)
+  - + S40 › 2.5 T5 › Standart (yıl bilgisi yok → 1986-2026)
   - + S60 › 2.0 T › Business
   - + S60 › 2.0 T › Sports
+  - + S60 › 2.3 T5 › Standart (yıl bilgisi yok → 1986-2026)
+  - + S60 › 2.5 R › Standart (yıl bilgisi yok → 1986-2026)
   - + S60 › 2.5 T › Premium
   - + S70/V70 (1996-2000) › 2.0 T › Standart
   - + S70/V70 (1996-2000) › 2.0 T5 › Standart
   - + S70/V70 (1996-2000) › 2.3 T5 › Standart
   - + S80 › 2.4 D › Momentum
+  - + S80 › 2.4 D5 › VIP (yıl bilgisi yok → 1986-2026)
+  - + S80 › 2.5 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + S80 › 2.5 T › VIP (yıl bilgisi yok → 1986-2026)
+  - + S80 › 2.8 T6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + S80 › 2.9 T6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + S80 › 2.9 T6 › Executive (yıl bilgisi yok → 1986-2026)
+  - + S80 › 3.2 › Executive (yıl bilgisi yok → 1986-2026)
+  - + S80 › 4.4 › VIP (yıl bilgisi yok → 1986-2026)
+  - + S90 › 2.0 T8 › Recharge Plus Bright (yıl bilgisi yok → 1986-2026)
+  - + S90 › 3.0 › Standart (yıl bilgisi yok → 1986-2026)
+  - + V40 › 1.8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + V40 › 1.9 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): V40 Cross Country (1986–) — yıl aralığı "V40" modelinden alındı
+  - + V40 Cross Country › 1.5 T3 › Advance
+  - + V40 Cross Country › 1.5 T3 › Premium
+  - + V40 Cross Country › 1.6 D › Standart
+  - + V40 Cross Country › 1.6 D › Advance
+  - + V40 Cross Country › 1.6 D › Premium
+  - + V40 Cross Country › 1.6 T4 › Standart
+  - + V40 Cross Country › 1.6 T4 › Advance
+  - + V40 Cross Country › 1.6 T4 › Premium
+  - + V40 Cross Country › 2.0 T5 › Premium
+  - + V50 › 1.6 D › Prime (yıl bilgisi yok → 1986-2026)
+  - + V50 › 1.8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + V50 › 2.0 D › Dynamic (yıl bilgisi yok → 1986-2026)
+  - + V50 › 2.4 › Standart (yıl bilgisi yok → 1986-2026)
+  - + V50 › 2.5 T5 › Standart (yıl bilgisi yok → 1986-2026)
+  - + V60 › 2.0 B4 › Plus Dark (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): V60 Cross Country (1986–) — yıl aralığı "V60" modelinden alındı
+  - + V60 Cross Country › 2.0 B4 › Standart
+  - + V60 Cross Country › 2.0 B5 › Standart
+  - + V60 Cross Country › 2.0 B5 › Plus Bright
+  - + V60 Cross Country › 2.0 B5 › Ultimate Bright
+  - + V60 Cross Country › 2.0 D4 › Standart
+  - + V70 › 2.3 T-5 › Standart (yıl bilgisi yok → 1986-2026)
+  - + V70 › 2.4 D5 › Momentum (yıl bilgisi yok → 1986-2026)
+  - + V70 › 2.5 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): V90 Cross Country (2016–2024) — yıl aralığı "V90" modelinden alındı
+  - + V90 Cross Country › 2.0 B6 › Ultimate Bright
+  - + V90 Cross Country › 2.0 D B5 › Plus Bright
+  - + V90 Cross Country › 2.0 D B5 › Pro
+  - + V90 Cross Country › 2.0 D B5 › Ultimate Bright
+  - + V90 Cross Country › 2.0 D D5 › Pro
   - + Yeni model: 440 (1990–1996) — en.wikipedia Volvo 440/460 (1988-1996; 1990 öncesi kırpıldı)
   - + 440 › 2.0i › Standart
   - + Yeni model: 480 (1990–1995) — en.wikipedia Volvo 480 (1986-1995; 1990 öncesi kırpıldı)
@@ -20,8 +70,23 @@
   - + Yeni model: 960 (1990–1997) — autoevolution Volvo 960 (1990-1997)
   - + 960 › 2.5 › Standart
   - + 960 › 3.0 › Standart
+  - + EC40 › Extended Range Ultra Black Ed. › Standart (yıl bilgisi yok → 1986-2026)
+  - + EX30 › Performance Ultra › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): EX30 Cross Country (1986–) — yıl aralığı "EX30" modelinden alındı
+  - + EX30 Cross Country › Ultra › Standart
+  - + XC40 › 1.5 T5 Recharge › Inscription Expression (yıl bilgisi yok → 1986-2026)
+  - + XC40 › 1.5 T5 Recharge › R-Design Expression (yıl bilgisi yok → 1986-2026)
+  - + XC60 › 2.0 T8 Recharge › Polestar (yıl bilgisi yok → 1986-2026)
+  - + XC60 › 2.0 T8 Recharge › Polestar Engineered (yıl bilgisi yok → 1986-2026)
+  - + XC60 › 2.0 T8 Recharge › Ultimate Black Edition (yıl bilgisi yok → 1986-2026)
+  - + XC60 › 2.4 D5 › Style (yıl bilgisi yok → 1986-2026)
+  - + XC60 › 3.0 T6 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + XC60 › 3.0 T6 › Style (yıl bilgisi yok → 1986-2026)
+  - + XC70 › 2.5 T › Standart (yıl bilgisi yok → 1986-2026)
+  - + XC90 › 2.0 B5 › Black Edition Plus (yıl bilgisi yok → 1986-2026)
+  - + XC90 › 2.4 D5 › Adventure (yıl bilgisi yok → 1986-2026)
+  - + XC90 › 2.4 D5 › Premium (yıl bilgisi yok → 1986-2026)
+  - + XC90 › 2.5 T5 › Standart (yıl bilgisi yok → 1986-2026)
+  - + XC90 › 2.9 T6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + XC90 › 4.4 › Standart (yıl bilgisi yok → 1986-2026)
   - ~ eşleme: "S70" → "S70/V70 (1996-2000)"
-  - ~ eşleme: "V40 Cross Country" → "V40"
-  - ~ eşleme: "V60 Cross Country" → "V60"
-  - ~ eşleme: "V90 Cross Country" → "V90"
-  - ~ eşleme: "EX30 Cross Country" → "EX30"

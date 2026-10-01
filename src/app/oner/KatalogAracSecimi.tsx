@@ -11,8 +11,8 @@ import katalogIndex from "@/data/katalogIndex.json";
 import type { KatalogIndex, KatalogKategori, KatalogMarkaDosyasi } from "@/lib/katalog/tipler";
 import {
   modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi,
-  versiyonSecenekleri, versiyonaGore, versiyonBilgisiVarMi, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri, BUGUN_YIL,
-  type AlanDurumu,
+  versiyonSecenekleri, versiyonaGore, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri, BUGUN_YIL,
+  PAKET_YOK, VERSIYON_YOK, type AlanDurumu,
 } from "@/lib/katalog/secim";
 import { formatVersionLabel, parseVersion, versionForTrimName } from "@/lib/parseVersion";
 
@@ -154,9 +154,14 @@ export default function KatalogAracSecimi({
   // ─── Eski katalog modu (TSB öncesi yıl ya da TSB'de olmayan model) ──────
   const nesiller = modelObj && yilSayi && !tsbModu ? yilNesilleri(modelObj, yilSayi) : [];
   const nesil = nesiller.length === 1 ? nesiller[0] : nesiller.find((n) => n.ad === nesilAd) ?? null;
-  const elVersiyonlar = nesil?.el?.versiyonlar ?? [];
-  const elPaketler =
-    (versiyon && versiyon !== DIGER ? nesil?.el?.paketlerVersiyona?.[versiyon] : undefined) ?? nesil?.el?.paketler ?? [];
+  // Eski katalog modunda da en az "Standart" + "Listede yok" seçenekleri bulunur.
+  const elVersiyonlar = [VERSIYON_YOK, ...(nesil?.el?.versiyonlar ?? []).filter((v) => v !== DIGER && v !== VERSIYON_YOK), DIGER];
+  const elPaketler = [
+    PAKET_YOK,
+    ...((versiyon && versiyon !== DIGER ? nesil?.el?.paketlerVersiyona?.[versiyon] : undefined) ?? nesil?.el?.paketler ?? [])
+      .filter((p) => p !== DIGER && p !== PAKET_YOK),
+    DIGER,
+  ];
 
   // ─── Yakıt / vites ────────────────────────────────────────────────────
   const tipTamam = tsbModu && t2.length > 0;
@@ -192,7 +197,7 @@ export default function KatalogAracSecimi({
       hp = versiyonListedeYok ? null : ortakBeygir(t3);
     } else {
       const v = versiyon === DIGER ? ozelVersiyon.trim() : versiyon;
-      versiyonMetni = v && versiyon !== DIGER ? versionForTrimName(v, kategori) : v;
+      versiyonMetni = v && versiyon !== DIGER && v !== VERSIYON_YOK ? versionForTrimName(v, kategori) : v;
       paketMetni = paket === DIGER ? ozelPaket.trim() : paket;
       hp = versiyon && versiyon !== DIGER ? parseVersion(versiyon, kategori).hp : null;
     }
@@ -273,10 +278,9 @@ export default function KatalogAracSecimi({
           etmek için yazıyor, bu yüzden ör. Corolla'da "Sedan" hiç seçenek olarak
           çıkmıyordu ve kasa zaten kalıcı veriye (KatalogSecimSonucu) hiç girmiyordu. */}
 
-      {/* Kaynakta bu model için hiçbir motor/beygir bilgisi yoksa (yalnız paketle
-          ayrışıyor) boş "Versiyon belirtilmemiş" alanı göstermenin anlamı yok —
-          adım atlanır, doğrudan Donanım Paketi'ne geçilir. */}
-      {tsbModu && versiyonBilgisiVarMi(t1) && (
+      {/* Kaynakta motor/beygir bilgisi olmasa da Versiyon adımı HER ZAMAN görünür:
+          en kötü iki seçenek "Standart" ve "Listede yok" (kullanıcı geri bildirimi). */}
+      {tsbModu && (
         <Alan label="Versiyon">
           {/* Tek seçenekte de select: önceden seçili gelir, "Listede yok" ile kaçış mümkün */}
           {(
@@ -321,40 +325,28 @@ export default function KatalogAracSecimi({
 
       {!tsbModu && (nesil || digerModel || digerMarka) && yil && (
         <>
-          {elVersiyonlar.length > 0 ? (
-            <Alan label="Versiyon">
-              <select value={versiyon} onChange={(e) => { setVersiyon(e.target.value); altlariTemizle("versiyon"); }} className={selectCls}>
-                <option value="">— Seçin (opsiyonel) —</option>
-                {elVersiyonlar.map((v) => <option key={v} value={v}>{v === DIGER ? v : formatVersionLabel(v, kategori)}</option>)}
-              </select>
-              {versiyon === DIGER && (
-                <input type="text" value={ozelVersiyon} onChange={(e) => setOzelVersiyon(e.target.value)}
-                  placeholder="Versiyon bilgisi yazınız" className={inputCls} autoFocus />
-              )}
-            </Alan>
-          ) : (
-            <Alan label="Versiyon">
-              <input type="text" value={ozelVersiyon} onChange={(e) => { setOzelVersiyon(e.target.value); setVersiyon(DIGER); }}
-                placeholder="Versiyon bilgisi yazınız (opsiyonel)" className={inputCls.replace("mt-2 ", "")} />
-            </Alan>
-          )}
-          {elPaketler.length > 0 ? (
-            <Alan label="Donanım Paketi">
-              <select value={paket} onChange={(e) => { setPaket(e.target.value); setOzelPaket(""); }} className={selectCls}>
-                <option value="">— Seçin (opsiyonel) —</option>
-                {elPaketler.map((p) => <option key={p} value={p}>{p}</option>)}
-              </select>
-              {paket === DIGER && (
-                <input type="text" value={ozelPaket} onChange={(e) => setOzelPaket(e.target.value)}
-                  placeholder="Donanım paketi yazınız" className={inputCls} autoFocus />
-              )}
-            </Alan>
-          ) : (
-            <Alan label="Donanım Paketi">
-              <input type="text" value={ozelPaket} onChange={(e) => { setOzelPaket(e.target.value); setPaket(DIGER); }}
-                placeholder="Donanım paketi yazınız (opsiyonel)" className={inputCls.replace("mt-2 ", "")} />
-            </Alan>
-          )}
+          <Alan label="Versiyon">
+            <select value={versiyon} onChange={(e) => { setVersiyon(e.target.value); altlariTemizle("versiyon"); }} className={selectCls}>
+              <option value="">— Seçin —</option>
+              {elVersiyonlar.map((v) => (
+                <option key={v} value={v}>{v === DIGER ? LISTEDE_YOK : v === VERSIYON_YOK ? v : formatVersionLabel(v, kategori)}</option>
+              ))}
+            </select>
+            {versiyon === DIGER && (
+              <input type="text" value={ozelVersiyon} onChange={(e) => setOzelVersiyon(e.target.value)}
+                placeholder="Versiyon bilgisi yazınız" className={inputCls} autoFocus />
+            )}
+          </Alan>
+          <Alan label="Donanım Paketi">
+            <select value={paket} onChange={(e) => { setPaket(e.target.value); setOzelPaket(""); }} className={selectCls}>
+              <option value="">— Seçin —</option>
+              {elPaketler.map((p) => <option key={p} value={p}>{p === DIGER ? LISTEDE_YOK : p}</option>)}
+            </select>
+            {paket === DIGER && (
+              <input type="text" value={ozelPaket} onChange={(e) => setOzelPaket(e.target.value)}
+                placeholder="Donanım paketi yazınız" className={inputCls} autoFocus />
+            )}
+          </Alan>
         </>
       )}
 

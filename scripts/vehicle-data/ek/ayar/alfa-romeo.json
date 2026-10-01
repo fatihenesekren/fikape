@@ -1,9 +1,14 @@
 {
-  "esanlam": [["TB", "T"]],
+  "esanlam": [
+    [
+      "TB",
+      "T"
+    ]
+  ],
   "takma": {
-    "Giulia Quadrifoglio": "Giulia",
     "145": "145/146 (1994-2001)",
     "146": "145/146 (1994-2001)",
+    "Giulia Quadrifoglio": "Giulia",
     "Junior Elettrica": "Junior",
     "Junior Ibrida": "Junior",
     "Brera": "Brera / Spider (2006-2010)",
@@ -11,6 +16,20 @@
     "GTV": "GTV/Spider (1995-2005)"
   },
   "yeniModel": {
-    "155": { "bas": 1992, "bit": 1998, "kaynak": "en.wikipedia Alfa Romeo 155 (1992-1998)" }
-  }
+    "155": {
+      "bas": 1992,
+      "bit": 1998,
+      "kaynak": "en.wikipedia Alfa Romeo 155 (1992-1998)"
+    }
+  },
+  "ayriModel": [
+    "145",
+    "146",
+    "Giulia Quadrifoglio",
+    "Junior Elettrica",
+    "Junior Ibrida",
+    "Brera",
+    "Spider",
+    "GTV"
+  ]
 }

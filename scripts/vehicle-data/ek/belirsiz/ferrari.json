@@ -34,17 +34,5 @@
     "model": "F8",
     "versiyon": "Spider",
     "neden": "Kasa tipi (versiyon/paket değil) — formda kasa adımı kalktığı için eklenmedi"
-  },
-  {
-    "marka": "Ferrari",
-    "model": "DS 4",
-    "neden": "Katalogda yok ve yeni model için doğrulanmış yıl aralığı tanımlı değil"
-  },
-  {
-    "marka": "Ferrari",
-    "model": "Purosangue",
-    "versiyon": "V12",
-    "paket": "Standart",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
   }
 ]

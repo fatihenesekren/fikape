@@ -1,11 +1,17 @@
 ### Dodge
-- otomobil: zaten vardı 9 · eklendi 8 · belirsiz 4
+- otomobil: zaten vardı 9 · eklendi 12 · belirsiz 0
   - + Avenger (2007-2010) › 2.4 SXT › Standart
+  - + Challenger › GT › Standart (yıl bilgisi yok → 1986-2026)
+  - + Challenger › SE › Standart (yıl bilgisi yok → 1986-2026)
   - + Viper (1992-2017) › RT/10 › Standart
   - + Yeni model: Magnum (2005–2008) — en.wikipedia Dodge Magnum (2005-2008)
   - + Magnum › 5.7 › Standart
+  - + Durango › 5.9L › Standart (yıl bilgisi yok → 1986-2026)
+  - + Journey › 2.0 CRD R/T › Standart (yıl bilgisi yok → 1986-2026)
   - + Caliber (2006-2012) › 2.0 › CRD
   - + Nitro (2007-2012) › 2.8 CRD 177 Dizel 4WD › R/T
   - + Nitro (2007-2012) › 2.8 CRD 177 Dizel 4WD › SE
   - + Nitro (2007-2012) › 2.8 CRD 177 Dizel 4WD › SXT
-- kamyonet: zaten vardı 2 · eklendi 0 · belirsiz 2
+- kamyonet: zaten vardı 2 · eklendi 2 · belirsiz 0
+  - + Ram › 5.2 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Ram › 5.9 › Standart (yıl bilgisi yok → 1986-2026)

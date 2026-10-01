@@ -1,2 +1,26 @@
 ### Proton
-- otomobil: zaten vardı 2 · eklendi 0 · belirsiz 12
+- otomobil: zaten vardı 2 · eklendi 24 · belirsiz 0
+  - + Yeni model: Gen-2 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Gen-2 › 1.6 › Base Line
+  - + Gen-2 › 1.6 › High Line
+  - + Gen-2 › 1.6 › Low Line
+  - + Gen-2 › 1.6 › Medium Line
+  - + Saga › 1.6 › Low Line (yıl bilgisi yok → 1986-2026)
+  - + Waja › 1.6 › Medium Line (yıl bilgisi yok → 1986-2026)
+  - + Waja › 1.6 › Premium (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: 218 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 218 › GLXi › Standart
+  - + Yeni model: 315 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 315 › GLSi › Standart
+  - + Yeni model: 413 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 413 › GLSi › Standart
+  - + Yeni model: 415 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 415 › GLSi › Standart
+  - + Yeni model: 416 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 416 › GLXi › Standart
+  - + Yeni model: 418 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 418 › GLXi › Standart
+  - + Yeni model: 420 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 420 › TD GLS › Standart
+  - + Yeni model: Persona (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Persona › 1.6 › Executive

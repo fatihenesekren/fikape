@@ -6,8 +6,26 @@
     "EX30 Cross Country": "EX30"
   },
   "yeniModel": {
-    "440": { "bas": 1990, "bit": 1996, "kaynak": "en.wikipedia Volvo 440/460 (1988-1996; 1990 öncesi kırpıldı)" },
-    "480": { "bas": 1990, "bit": 1995, "kaynak": "en.wikipedia Volvo 480 (1986-1995; 1990 öncesi kırpıldı)" },
-    "960": { "bas": 1990, "bit": 1997, "kaynak": "autoevolution Volvo 960 (1990-1997)" }
-  }
+    "440": {
+      "bas": 1990,
+      "bit": 1996,
+      "kaynak": "en.wikipedia Volvo 440/460 (1988-1996; 1990 öncesi kırpıldı)"
+    },
+    "480": {
+      "bas": 1990,
+      "bit": 1995,
+      "kaynak": "en.wikipedia Volvo 480 (1986-1995; 1990 öncesi kırpıldı)"
+    },
+    "960": {
+      "bas": 1990,
+      "bit": 1997,
+      "kaynak": "autoevolution Volvo 960 (1990-1997)"
+    }
+  },
+  "ayriModel": [
+    "V40 Cross Country",
+    "V60 Cross Country",
+    "V90 Cross Country",
+    "EX30 Cross Country"
+  ]
 }

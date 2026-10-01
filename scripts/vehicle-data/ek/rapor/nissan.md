@@ -1,5 +1,5 @@
 ### Nissan
-- otomobil: zaten vardı 162 · eklendi 26 · belirsiz 34
+- otomobil: zaten vardı 155 · eklendi 103 · belirsiz 0
   - + Yeni model: 200 SX (1990–1998) — en.wikipedia Nissan 180SX/200SX (1989-1998; 1990 öncesi kırpıldı)
   - + 200 SX › 1.8 Turbo › Standart
   - + 200 SX › 2.0 Turbo › Standart
@@ -8,17 +8,94 @@
   - + Yeni model: 350 Z (2002–2009) — en.wikipedia Nissan 350Z (2002-2009)
   - + 350 Z › 3.5 › Coupe
   - + 350 Z › 3.5 › Roadster
+  - + Almera (1995-2000) + Almera (2000-2006) › 1.5 › Comfort (nesil belli değil → 1986-2026)
+  - + Almera (1995-2000) + Almera (2000-2006) › 1.5 › Luxury (nesil belli değil → 1986-2026)
+  - + Almera (1995-2000) + Almera (2000-2006) › 1.5 › Tekna (nesil belli değil → 1986-2026)
+  - + Almera (1995-2000) + Almera (2000-2006) › 1.5 › Visia (nesil belli değil → 1986-2026)
+  - + Almera (1995-2000) + Almera (2000-2006) › 1.6 › GX (nesil belli değil → 1986-2026)
+  - + Almera (1995-2000) + Almera (2000-2006) › 1.6 › SLX (nesil belli değil → 1986-2026)
+  - + Almera (1995-2000) + Almera (2000-2006) › 1.8 › Luxury (nesil belli değil → 1986-2026)
+  - + Yeni model: Bluebird (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Bluebird › 2.0 › GL
+  - + Bluebird › 2.0 › SSS
   - + Yeni model: Cefiro (1990–2004) — en.wikipedia Nissan Cefiro (1988-2004; 1990 öncesi kırpıldı)
   - + Cefiro › A31 › 2.5
+  - + GT-R › Premium Edition › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Laurel Altima (2019–2019) — yıl aralığı "Altima" modelinden alındı
+  - + Laurel Altima › 2.0 › Standart
+  - + Yeni model: Maxima (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Maxima › 2.0 QX › Standart
+  - + Maxima › 3.5 V6 › Standart
+  - + Micra › 1.2 › Mood (yıl bilgisi yok → 1986-2026)
+  - + Micra › 1.2 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Micra › 1.3 › GX (yıl bilgisi yok → 1986-2026)
+  - + Micra › 1.3 › LX (yıl bilgisi yok → 1986-2026)
+  - + Micra › 1.3 › Magic (yıl bilgisi yok → 1986-2026)
+  - + Micra › 1.3 › SLX (yıl bilgisi yok → 1986-2026)
   - + Micra › 1.4 › Elegance
+  - + Micra › 1.5 dCi › Passion (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: NX Coupe (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + NX Coupe › 1.6 › Standart
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › 1.6 (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › Comfort (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › GX (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › LX (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › Si (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › SLX (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › Special (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › Tekna (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › Traveler (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.6 › Visia (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.8 › Comfort (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.8 › Luxury (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 1.9 dCi › Visia (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 2.0 › Elegance (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 2.0 › GT (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 2.0 › SE (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 2.0 › Tekna (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 2.0 TD › Elegance (nesil belli değil → 1986-2026)
+  - + Primera (1990-1996) + Primera (1996-2002) + Primera (2002-2007) › 2.0 TD › Luxe (nesil belli değil → 1986-2026)
   - + Sunny › 1.6 › EX
   - + Sunny › 1.6 › SLX
   - + Sunny › 2.0 D 65 › GTI
   - + Yeni model: Teana (2003–2020) — en.wikipedia Nissan Teana (2003-2020)
   - + Teana › 2.3 › Standart
+  - + Juke › 1.2 TC › Special Edition (yıl bilgisi yok → 1986-2026)
+  - + Pathfinder › 2.4 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Pathfinder › 3.3 V6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Patrol › 3.0 TDI › Standart (yıl bilgisi yok → 1986-2026)
+  - + Patrol › 4.0 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Qashqai › 1.3 DIG-T › Midnight Edition (yıl bilgisi yok → 1986-2026)
+  - + Qashqai › 1.3 DIG-T › UEFA Şampiyonlar Ligi Edition (yıl bilgisi yok → 1986-2026)
+  - + Qashqai › 1.5 dCi › Tekna Executive (yıl bilgisi yok → 1986-2026)
+  - + Qashqai › 1.5 dCi › Tekna Plus (yıl bilgisi yok → 1986-2026)
+  - + Qashqai › 1.5 dCi › UEFA Şampiyonlar Ligi Edition (yıl bilgisi yok → 1986-2026)
+  - + Qashqai › 1.6 › Tekna Executive (yıl bilgisi yok → 1986-2026)
+  - + Qashqai › 2.0 › Tekna Executive (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Qashqai+2 (1986–) — yıl aralığı "Qashqai" modelinden alındı
+  - + Qashqai+2 › 1.5 dCi › Platinum
+  - + Qashqai+2 › 1.5 dCi › Tekna
+  - + Qashqai+2 › 1.5 dCi › Tekna Pack
+  - + Qashqai+2 › 1.6 › Platinum
+  - + Qashqai+2 › 1.6 › Tekna
+  - + Qashqai+2 › 1.6 › Tekna Pack
+  - + Qashqai+2 › 2.0 › Tekna Pack
+  - + Qashqai+2 › 2.0 dCi › Platinum
+  - + Qashqai+2 › 2.0 dCi › Tekna Pack
+  - + X-Trail › 2.0 › Elegance (yıl bilgisi yok → 1986-2026)
+  - + X-Trail › 2.0 › Luxury (yıl bilgisi yok → 1986-2026)
+  - + X-Trail › 2.0 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Country (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Country › Country 4x2 › Standart
+  - + Country › Country 4x4 › Standart
   - + Yeni model: Murano (2003–) — en.wikipedia Nissan Murano (2003'ten beri)
   - + Murano › 3.5 › LT
   - + Murano › 3.5 › SE
+  - + Yeni model: Rally Raid (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Rally Raid › Rally Raid 4x4 › Standart
+  - + Yeni model: Skystar (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Skystar › Skystar 4x2 › Standart
+  - + Skystar › Skystar 4x4 › Standart
   - + Terrano › 2.4 › S
   - + Terrano › 2.7 TDI › Comfort
   - + Terrano › 2.7 TDI › Elegance
@@ -26,6 +103,5 @@
   - + Terrano › 2.7 TDI › S
   - + Terrano › 2.7 TDI › SE
   - + Terrano › 2.7 TDI › SR
-  - ~ eşleme: "Laurel Altima" → "Altima"
-  - ~ eşleme: "Qashqai+2" → "Qashqai"
-- kamyonet: zaten vardı 6 · eklendi 0 · belirsiz 1
+- kamyonet: zaten vardı 6 · eklendi 1 · belirsiz 0
+  - + Navara › 2.5 TDI › 4x2 LE (yıl bilgisi yok → 1986-2026)

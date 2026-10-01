@@ -2,13 +2,6 @@
   {
     "marka": "Subaru",
     "model": "Impreza",
-    "versiyon": "1.6",
-    "paket": "TS",
-    "neden": "Birden fazla eski nesilde geçiyor (Impreza (1992-2000) / Impreza (2000-2007)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Impreza",
     "versiyon": "2.0",
     "paket": "Active",
     "neden": "Versiyon, mevcut versiyonların kısa yazımı olabilir (2.0 AWD 137 / WRX 2.0 Turbo 218 AWD) — hangisine ait olduğu belli değil"
@@ -40,102 +33,6 @@
     "versiyon": "2.0",
     "paket": "GX",
     "neden": "Versiyon, mevcut versiyonların kısa yazımı olabilir (2.0 AWD 137 / WRX 2.0 Turbo 218 AWD) — hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Impreza",
-    "versiyon": "2.0",
-    "paket": "WRX",
-    "neden": "Birden fazla eski nesilde geçiyor (Impreza (1992-2000) / Impreza (2000-2007)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Impreza",
-    "versiyon": "2.0",
-    "paket": "WRX STi",
-    "neden": "Versiyon, mevcut versiyonların kısa yazımı olabilir (2.0 AWD 137 / WRX 2.0 Turbo 218 AWD) — hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "1.8",
-    "paket": "GL",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "2.0",
-    "paket": "Active",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "2.0",
-    "paket": "GL",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "2.0",
-    "paket": "Limited",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "2.0",
-    "paket": "Sportwagon",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "2.0",
-    "paket": "Trend",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "2.0 TD",
-    "paket": "Premium",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "2.2",
-    "paket": "4WD",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "2.5",
-    "paket": "GT",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Legacy",
-    "versiyon": "3.0",
-    "paket": "Elegance",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Legacy (1989-1994) / Legacy (1994-1998) / Legacy (1998-2003) / Legacy (2003-2009) / Legacy (2009-2014)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Levorg",
-    "versiyon": "1.6",
-    "paket": "GT-S CVT",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Vivio",
-    "neden": "Subaru Vivio (1990'lar kei araç) — bu oturumda yıl aralığı doğrulanamadı."
   },
   {
     "marka": "Subaru",
@@ -178,75 +75,5 @@
     "versiyon": "2.0",
     "paket": "ZL",
     "neden": "Versiyon, mevcut versiyonların kısa yazımı olabilir (2.0 125 AWD / 2.0 Turbo 177 AWD) — hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Outback",
-    "versiyon": "2.0 TD",
-    "paket": "Elegance",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Outback (1996-2009) / Outback (2009-)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Outback",
-    "versiyon": "2.5",
-    "paket": "Standart",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Outback (1996-2009) / Outback (2009-)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Outback",
-    "versiyon": "2.5",
-    "paket": "Premium",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Outback (1996-2009) / Outback (2009-)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Outback",
-    "versiyon": "3.0",
-    "paket": "Standart",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Outback (1996-2009) / Outback (2009-)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Outback",
-    "versiyon": "3.0",
-    "paket": "Premium",
-    "neden": "Eski nesillerin hiçbirinde bu motor yok (Outback (1996-2009) / Outback (2009-)); hangisine ait olduğu belli değil"
-  },
-  {
-    "marka": "Subaru",
-    "model": "XV",
-    "versiyon": "1.6",
-    "paket": "Xclusive",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Subaru",
-    "model": "XV",
-    "versiyon": "1.6",
-    "paket": "Xtreme",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Subaru",
-    "model": "XV",
-    "versiyon": "1.6",
-    "paket": "Xtreme Plus",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Tribeca (B9)",
-    "versiyon": "3.0 Active",
-    "paket": "Standart",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Subaru",
-    "model": "Tribeca (B9)",
-    "versiyon": "3.6 R",
-    "paket": "Standart",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
   }
 ]

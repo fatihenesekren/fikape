@@ -1,8 +1,25 @@
 {
-  "takma": { "GranTurismo E": "GranTurismo", "GranCabrio E": "GranCabrio" },
-  "yeniModel": {
-    "Spyder": { "bas": 2001, "bit": 2007, "kaynak": "autoevolution Maserati Spyder (2001-2007)" },
-    "Cambiocorsa": { "bas": 2002, "bit": 2007, "kaynak": "maserati.com / en.wikipedia Maserati Coupé Cambiocorsa (2002-2007)" }
+  "takma": {
+    "GranTurismo E": "GranTurismo",
+    "GranCabrio E": "GranCabrio"
   },
-  "atla": { "4 Serisi": "'4 Serisi' Maserati model adı olarak doğrulanamadı (4.xx Biturbo/4.18v/4.24v olabilir); yıl aralığı seçilemedi." }
+  "yeniModel": {
+    "Spyder": {
+      "bas": 2001,
+      "bit": 2007,
+      "kaynak": "autoevolution Maserati Spyder (2001-2007)"
+    },
+    "Cambiocorsa": {
+      "bas": 2002,
+      "bit": 2007,
+      "kaynak": "maserati.com / en.wikipedia Maserati Coupé Cambiocorsa (2002-2007)"
+    }
+  },
+  "atla": {
+    "4 Serisi": "'4 Serisi' Maserati model adı olarak doğrulanamadı (4.xx Biturbo/4.18v/4.24v olabilir); yıl aralığı seçilemedi."
+  },
+  "ayriModel": [
+    "GranTurismo E",
+    "GranCabrio E"
+  ]
 }

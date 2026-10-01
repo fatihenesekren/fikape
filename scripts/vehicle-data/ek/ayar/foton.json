@@ -1,4 +1,14 @@
 {
-  "kamyonet": ["Tunland G7", "Tunland V9"],
-  "takma": { "Tunland G7": "Tunland", "Tunland V9": "Tunland" }
+  "kamyonet": [
+    "Tunland G7",
+    "Tunland V9"
+  ],
+  "takma": {
+    "Tunland G7": "Tunland",
+    "Tunland V9": "Tunland"
+  },
+  "ayriModel": [
+    "Tunland G7",
+    "Tunland V9"
+  ]
 }

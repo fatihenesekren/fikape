@@ -1,19 +1,50 @@
 ### Kia
-- otomobil: zaten vardı 178 · eklendi 27 · belirsiz 60
+- otomobil: zaten vardı 188 · eklendi 80 · belirsiz 2
   - + Yeni model: Capital (1990–1996) — Kia Capital (1989-1996; 1990 öncesi kırpıldı)
   - + Capital › 1.5 GLX › Standart
   - + Capital › 1.8 › Standart
   - + Carens (2013-2019) › 2.0 CRDi › CRDi
   - + Carens (2013-2019) › 2.0 CRDi › EX
-  - + Cerato › 2.0 CRDi › EX Comfort
+  - + Carnival / Sedona (1998-2005) + Carnival / Sedona (2006-2014) + Carnival / Sedona (2014-2020) › 2.5 › 2.5 (nesil belli değil → 1986-2026)
+  - + Carnival / Sedona (1998-2005) + Carnival / Sedona (2006-2014) + Carnival / Sedona (2014-2020) › 2.5 › LS (nesil belli değil → 1986-2026)
+  - + Carnival / Sedona (1998-2005) + Carnival / Sedona (2006-2014) + Carnival / Sedona (2014-2020) › 2.9 CRDI › EX (nesil belli değil → 1986-2026)
+  - + Carnival / Sedona (1998-2005) + Carnival / Sedona (2006-2014) + Carnival / Sedona (2014-2020) › 2.9 CRDI › Premium (nesil belli değil → 1986-2026)
+  - + Carnival / Sedona (1998-2005) + Carnival / Sedona (2006-2014) + Carnival / Sedona (2014-2020) › 2.9 TD › STD (nesil belli değil → 1986-2026)
+  - + Ceed › 1.6 CRDi › Comfort SW (yıl bilgisi yok → 1986-2026)
+  - + Ceed › 1.6 CRDi › Concept Plus SW (yıl bilgisi yok → 1986-2026)
+  - + Ceed › 1.6 CRDi › Cool SW (yıl bilgisi yok → 1986-2026)
+  - + Ceed › 1.6 CRDi › Motion SW (yıl bilgisi yok → 1986-2026)
+  - + Ceed › 1.6 CRDi › Premium SW (yıl bilgisi yok → 1986-2026)
+  - + Ceed › 1.6 CRDi › Prestige SW (yıl bilgisi yok → 1986-2026)
+  - + Cerato › 1.5 CRDi › Advance (yıl bilgisi yok → 1986-2026)
+  - + Cerato › 1.5 CRDi › EX (yıl bilgisi yok → 1986-2026)
+  - + Cerato › 1.5 CRDi › EX Comfort (yıl bilgisi yok → 1986-2026)
+  - + Cerato › 1.5 CRDi › LX (yıl bilgisi yok → 1986-2026)
+  - + Cerato › 1.6 EX › Advance (yıl bilgisi yok → 1986-2026)
+  - + Cerato › 1.6 EX › DSL Advance (yıl bilgisi yok → 1986-2026)
+  - + Cerato › 1.6 EX › Premium (yıl bilgisi yok → 1986-2026)
+  - + Cerato › 1.6 LX › Base (yıl bilgisi yok → 1986-2026)
+  - + Cerato › 1.6 LX › Basic (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Clarus (1996–2001) — en.wikipedia Kia Clarus (1996-2001)
   - + Clarus › 2.0 GLX › Standart
   - + Yeni model: Opirus (2003–2011) — en.wikipedia Kia Opirus (2003-2011)
   - + Opirus › 3.5 V6 › Standart
+  - + Optima › 2.0 T-GDI › Standart (yıl bilgisi yok → 1986-2026)
+  - + Picanto › 1.0L Cool › Standart (yıl bilgisi yok → 1986-2026)
+  - + Picanto › 1.1 EX › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Pride (1990–2000) — en.wikipedia Kia Pride (1987-2000; 1990 öncesi kırpıldı)
   - + Pride › 1.3 › Standart
   - + Pride › 1.3 DLX › Standart
   - + Pride › 1.3 GLXi › Standart
+  - + Rio › 1.3 › Base (yıl bilgisi yok → 1986-2026)
+  - + Rio › 1.3 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Rio › 1.3 › Trend (yıl bilgisi yok → 1986-2026)
+  - + Rio › 1.4 EX › Advance (yıl bilgisi yok → 1986-2026)
+  - + Rio › 1.4 GSL › Basic (yıl bilgisi yok → 1986-2026)
+  - + Rio › 1.4L MPI › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Rio › 1.4L MPI › Prestige (yıl bilgisi yok → 1986-2026)
+  - + Rio › 1.5 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Rio › 1.5 › Luxury (yıl bilgisi yok → 1986-2026)
   - + Rio › 1.5 CRDi › EX Advance
   - + Rio › 1.5 CRDi › EX Comfort
   - + Yeni model: Sephia (1992–2003) — en.wikipedia Kia Sephia (1992-2003)
@@ -25,6 +56,27 @@
   - + Yeni model: Shuma (1997–2004) — en.wikipedia Kia Shuma (1997-2004)
   - + Shuma › LS › Standart
   - + Shuma › RS › Standart
+  - + Venga › 1.4 CRDi › EX (yıl bilgisi yok → 1986-2026)
+  - + Venga › 1.6 › Panaroma (yıl bilgisi yok → 1986-2026)
+  - + Venga › 1.6 CRDi › Panaroma Plus (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Niro EV (2017–) — yıl aralığı "Niro" modelinden alındı
+  - + Niro EV › Elegance › Standart
+  - + Niro EV › Prestige › Standart
+  - + Sorento › 2.2 CRDi › XM (yıl bilgisi yok → 1986-2026)
+  - + Sorento › 2.5 CRDi › EX (yıl bilgisi yok → 1986-2026)
+  - + Sorento › 2.5 CRDi › EX Premium (yıl bilgisi yok → 1986-2026)
+  - + Sorento › 2.5 CRDi › LX (yıl bilgisi yok → 1986-2026)
+  - + Sorento › 2.5 CRDi › Prestige (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 › GDI Comfort (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 › GDI Cool (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 › GDI Elegance (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 › GDI Live (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 › GDI Prestige (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 › GSL (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 › GSL Comfort (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 › GSL Plus (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 › SLS Plus (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 1.6 T-GDI › Elegance Konfor Plus (yıl bilgisi yok → 1986-2026)
+  - + Sportage › 2.0 › EX (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Retona (1998–2003) — Kia Retona (1998-2003)
   - + Retona › 2.0 D › Standart
-  - ~ eşleme: "Niro EV" → "Niro"

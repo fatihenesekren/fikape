@@ -1,9 +1,35 @@
 ### Subaru
-- otomobil: zaten vardı 30 · eklendi 7 · belirsiz 36
+- otomobil: zaten vardı 30 · eklendi 33 · belirsiz 11
   - + Impreza › 1.5 › Active
   - + Impreza › 1.5 › Comfort
   - + Impreza › 1.6 › GL
+  - + Impreza › 1.6 › TS (yıl bilgisi yok → 1986-2026)
+  - + Impreza › 2.0 › WRX (yıl bilgisi yok → 1986-2026)
+  - + Impreza › 2.0 › WRX STi (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 1.8 › GL (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 2.0 › Active (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 2.0 › GL (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 2.0 › Limited (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 2.0 › Sportwagon (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 2.0 › Trend (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 2.0 TD › Premium (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 2.2 › 4WD (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 2.5 › GT (yıl bilgisi yok → 1986-2026)
+  - + Legacy › 3.0 › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Levorg › 1.6 › GT-S CVT (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Justy (1990–2010) — en.wikipedia Subaru Justy (1984-2010, 2016'da yeniden; 1990 öncesi kırpıldı)
   - + Justy › 1.2 GLi › Standart
   - + Yeni model: Leone (1990–1994) — en.wikipedia Subaru Leone (1971-1994; 1990 öncesi kırpıldı)
   - + Leone › 1.6 › Standart
+  - + Yeni model: Vivio (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Vivio › 2WD GL › Standart
+  - + Outback › 2.0 TD › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Outback › 2.5 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Outback › 2.5 › Premium (yıl bilgisi yok → 1986-2026)
+  - + Outback › 3.0 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Outback › 3.0 › Premium (yıl bilgisi yok → 1986-2026)
+  - + XV › 1.6 › Xclusive (yıl bilgisi yok → 1986-2026)
+  - + XV › 1.6 › Xtreme (yıl bilgisi yok → 1986-2026)
+  - + XV › 1.6 › Xtreme Plus (yıl bilgisi yok → 1986-2026)
+  - + Tribeca › 3.0 Active › Standart (yıl bilgisi yok → 1986-2026)
+  - + Tribeca › 3.6 R › Standart (yıl bilgisi yok → 1986-2026)

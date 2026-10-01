@@ -1,4 +1,6 @@
 ### SWM
-- otomobil: zaten vardı 6 · eklendi 0 · belirsiz 0
-  - ~ eşleme: "G01 Pro" → "G01"
-  - ~ eşleme: "G05 Pro" → "G05"
+- otomobil: zaten vardı 4 · eklendi 4 · belirsiz 0
+  - + Yeni model (ayrı): G01 Pro (2023–) — yıl aralığı "G01" modelinden alındı
+  - + G01 Pro › 1.5 › Premium
+  - + Yeni model (ayrı): G05 Pro (2024–2024) — yıl aralığı "G05" modelinden alındı
+  - + G05 Pro › 1.5 › Premium

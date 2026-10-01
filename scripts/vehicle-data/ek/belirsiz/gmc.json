@@ -1,16 +1,1 @@
-[
-  {
-    "marka": "GMC",
-    "model": "Yukon",
-    "versiyon": "5.3 V8",
-    "paket": "Standart",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "GMC",
-    "model": "Yukon",
-    "versiyon": "Vortec 5.7 V8",
-    "paket": "Standart",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  }
-]
+[]

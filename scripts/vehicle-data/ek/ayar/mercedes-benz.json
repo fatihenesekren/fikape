@@ -1,15 +1,39 @@
 {
-  "kamyonet": ["X"],
-  "takma": { "GLC Coupe": "GLC", "GLE Coupe": "GLE" },
+  "kamyonet": [
+    "X"
+  ],
+  "takma": {
+    "GLC Coupe": "GLC",
+    "GLE Coupe": "GLE"
+  },
   "yeniModel": {
-    "CL": { "bas": 1992, "bit": 2014, "kaynak": "en.wikipedia Mercedes-Benz CL-Class (1992-2014)" },
-    "CLC": { "bas": 2008, "bit": 2011, "kaynak": "autoevolution / cars-data Mercedes-Benz CLC (2008-2011)" },
-    "CLK": { "bas": 1997, "bit": 2009, "kaynak": "en.wikipedia Mercedes-Benz CLK-Class (1997-2009)" },
-    "SLS AMG": { "bas": 2010, "bit": 2014, "kaynak": "en.wikipedia Mercedes-Benz SLS AMG (2010-2014)" },
-    "X": { "bas": 2017, "bit": 2020, "kaynak": "en.wikipedia Mercedes-Benz X-Class (Kasım 2017 - Mayıs 2020) — kamyonet" }
+    "CL": {
+      "bas": 1992,
+      "bit": 2014,
+      "kaynak": "en.wikipedia Mercedes-Benz CL-Class (1992-2014)"
+    },
+    "CLC": {
+      "bas": 2008,
+      "bit": 2011,
+      "kaynak": "autoevolution / cars-data Mercedes-Benz CLC (2008-2011)"
+    },
+    "CLK": {
+      "bas": 1997,
+      "bit": 2009,
+      "kaynak": "en.wikipedia Mercedes-Benz CLK-Class (1997-2009)"
+    },
+    "SLS AMG": {
+      "bas": 2010,
+      "bit": 2014,
+      "kaynak": "en.wikipedia Mercedes-Benz SLS AMG (2010-2014)"
+    },
+    "X": {
+      "bas": 2017,
+      "bit": 2020,
+      "kaynak": "en.wikipedia Mercedes-Benz X-Class (Kasım 2017 - Mayıs 2020) — kamyonet"
+    }
   },
   "atla": {
-    "Maybach S": "Katalogda ayrı 'Maybach' markası var (Mercedes-Maybach S-Serisi); Mercedes altına eklemek kopya olur — marka kararı sizde.",
     "200": "Yalnızca motor numarası olan eski model adları (W123/W124/W126 …): hangi nesil/gövdeye (E/S Serisi, 190…) bağlanacağı belli değil. Aynı sebep: 230, 240, 250, 260, 280, 300, 320, 380, 420, 500, 560.",
     "230": "Bkz. '200' (motor numarası model adı).",
     "240": "Bkz. '200' (motor numarası model adı).",
@@ -21,6 +45,14 @@
     "380": "Bkz. '200' (motor numarası model adı).",
     "420": "Bkz. '200' (motor numarası model adı).",
     "500": "Bkz. '200' (motor numarası model adı).",
-    "560": "Bkz. '200' (motor numarası model adı)."
-  }
+    "560": "Bkz. '200' (motor numarası model adı).",
+    "Maybach S": "Katalogda ayrı 'Maybach' markası var (Mercedes-Maybach S-Serisi); Mercedes altına eklemek kopya olur — marka kararı sizde."
+  },
+  "ayriModel": [
+    "GLC Coupe",
+    "GLE Coupe"
+  ],
+  "atlaKal": [
+    "Maybach S"
+  ]
 }

@@ -14,5 +14,15 @@
   "atla": {
     "Omoda 5": "Katalogda OMODA markası altında zaten var (Omoda 5: Comfort/Luxury/Excellent). Chery altına eklemek kopya olur; Chery Omoda 5 Türkiye'de 21 Mart 2023'te satışa çıktı (tasimacilar.com).",
     "Omoda 5 Pro": "Katalogda OMODA markası altında zaten var (Omoda 5 › Pro Vision/Intelligent/Exceptional). Chery altına eklemek kopya olur."
-  }
+  },
+  "ayriModel": [
+    "Tiggo 7 Pro",
+    "Tiggo 7 Pro Max",
+    "Tiggo 8 Pro",
+    "Tiggo 8 Pro Max"
+  ],
+  "atlaKal": [
+    "Omoda 5",
+    "Omoda 5 Pro"
+  ]
 }

@@ -1,29 +1,65 @@
 ### Chevrolet
-- otomobil: zaten vardı 52 · eklendi 26 · belirsiz 32
+- otomobil: zaten vardı 52 · eklendi 59 · belirsiz 0
+  - + Aveo › 1.2 › SX (yıl bilgisi yok → 1986-2026)
+  - + Aveo › 1.4 › LS (yıl bilgisi yok → 1986-2026)
+  - + Aveo › 1.4 › S (yıl bilgisi yok → 1986-2026)
+  - + Camaro › SS › Standart (yıl bilgisi yok → 1986-2026)
+  - + Camaro › Z28 › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Caprice (1990–2017) — en.wikipedia Chevrolet Caprice (1965-1996; Avustralya kaynaklı PPV 2017'ye kadar; 1990 öncesi kırpıldı)
   - + Caprice › 3.6 › Standart
   - + Caprice › 4.3 STD › Standart
   - + Yeni model: Celebrity (1990–1990) — en.wikipedia Chevrolet Celebrity (1982-1990 model yılı; 1990 öncesi kırpıldı)
   - + Celebrity › 2.8 › Standart
   - + Celebrity › 3.1 › Standart
+  - + Corvette › C4 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Corvette › C5 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Corvette › C6 › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Evanda (2004–2006) — autoevolution Chevrolet Evanda (2004-2006)
   - + Evanda › 2.0 CDX › Standart
   - + Evanda › 2.0 Platinum › Standart
+  - + Yeni model: Geo Storm (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Geo Storm › 1.6 › Standart
+  - + Impala › 3.8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Impala › 5.7 › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Kalos (2002–2008) — en.wikipedia Chevrolet Aveo (T200) / Kalos (2002-2008; bazı kaynaklar 2011)
   - + Kalos › 1.2 › S
   - + Kalos › 1.2 › SE
   - + Kalos › 1.4 › S
   - + Kalos › 1.4 › SE
   - + Kalos › 1.4 › SX
+  - + Lacetti › 1.4 › CDX (yıl bilgisi yok → 1986-2026)
+  - + Lacetti › 1.4 › SE (yıl bilgisi yok → 1986-2026)
+  - + Lacetti › 1.4 › SX (yıl bilgisi yok → 1986-2026)
+  - + Lacetti › 1.4 › WTCC (yıl bilgisi yok → 1986-2026)
+  - + Lacetti › 1.6 › CDX (yıl bilgisi yok → 1986-2026)
+  - + Lacetti › 1.6 › SE (yıl bilgisi yok → 1986-2026)
+  - + Lacetti › 1.6 › WTCC (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Metro (1990–2001) — en.wikipedia Geo Metro (1989-2001; 1990 öncesi kırpıldı)
   - + Yeni model: Monte Carlo (1995–2007) — en.wikipedia Chevrolet Monte Carlo (1970-2007, 1989-1994 ara; 1995'ten itibaren)
   - + Monte Carlo › 3.1 LS › Standart
   - + Yeni model: Rezzo (2000–2008) — en.wikipedia Daewoo Tacuma / de.wikipedia Chevrolet Rezzo (2000-2008)
   - + Rezzo › 1.6 SX Comfort › Standart
+  - + Spark › 0.8 › S (yıl bilgisi yok → 1986-2026)
+  - + Spark › 0.8 › SE (yıl bilgisi yok → 1986-2026)
+  - + Spark › 1.0 › SE (yıl bilgisi yok → 1986-2026)
+  - + Spark › 1.0 › SX (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Blazer (1990–) — en.wikipedia Chevrolet Blazer (1969-2005, 2019-; 1990 öncesi kırpıldı)
   - + Blazer › 4.2 LT › Standart
   - + Blazer › 4.2 LTZ › Standart
   - + Blazer › 4.3 › Standart
+  - + Captiva › 2.0 D › LT Base (yıl bilgisi yok → 1986-2026)
+  - + Captiva › 2.0 D › LT High (yıl bilgisi yok → 1986-2026)
+  - + Captiva › 2.0 D › LT High Sport (yıl bilgisi yok → 1986-2026)
+  - + Captiva › 2.0 D › LT Medium (yıl bilgisi yok → 1986-2026)
+  - + Captiva › 2.4 › LT (yıl bilgisi yok → 1986-2026)
+  - + Captiva › 3.2 › LTZ (yıl bilgisi yok → 1986-2026)
+  - + Equinox › 3.4 LT › Standart (yıl bilgisi yok → 1986-2026)
+  - + Suburban › 5.7 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Suburban › 7.4 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Tahoe › 5.7 › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: HHR (2005–2011) — en.wikipedia Chevrolet HHR (2005-2011)
   - + HHR › SS › Standart
-- kamyonet: zaten vardı 3 · eklendi 0 · belirsiz 3
+- kamyonet: zaten vardı 3 · eklendi 3 · belirsiz 0
+  - + Silverado › 1.8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Silverado › 5.7 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Silverado › 6.6 Diesel › Standart (yıl bilgisi yok → 1986-2026)

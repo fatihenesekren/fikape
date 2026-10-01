@@ -1,6 +1,25 @@
 ### Chery
-- otomobil: zaten vardı 22 · eklendi 0 · belirsiz 10
-  - ~ eşleme: "Tiggo 7 Pro" → "Tiggo 7"
-  - ~ eşleme: "Tiggo 7 Pro Max" → "Tiggo 7"
-  - ~ eşleme: "Tiggo 8 Pro" → "Tiggo 8"
-  - ~ eşleme: "Tiggo 8 Pro Max" → "Tiggo 8"
+- otomobil: zaten vardı 11 · eklendi 23 · belirsiz 2
+  - + Alia › 1.6 › Acteco Forza (yıl bilgisi yok → 1986-2026)
+  - + Alia › 1.6 › Acteco Lusso (yıl bilgisi yok → 1986-2026)
+  - + Alia › 1.6 › Acteco Norma (yıl bilgisi yok → 1986-2026)
+  - + Tiggo 3 › 1.6 › Acteco Forza (yıl bilgisi yok → 1986-2026)
+  - + Tiggo 3 › 1.6 › Acteco Lusso (yıl bilgisi yok → 1986-2026)
+  - + Tiggo 3 › 1.6 › Lusso Supercharger (yıl bilgisi yok → 1986-2026)
+  - + Tiggo 7 › 1.6 T-GDI › Prestige 4x2 (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Tiggo 7 Pro (1986–) — yıl aralığı "Tiggo 7" modelinden alındı
+  - + Tiggo 7 Pro › 1.6 T-GDI › Avantgarde
+  - + Tiggo 7 Pro › 1.6 T-GDI › Comfort
+  - + Tiggo 7 Pro › 1.6 T-GDI › Excellent
+  - + Tiggo 7 Pro › 1.6 T-GDI › Luxury
+  - + Yeni model (ayrı): Tiggo 7 Pro Max (1986–) — yıl aralığı "Tiggo 7" modelinden alındı
+  - + Tiggo 7 Pro Max › 1.6 T-GDI › Exceptional
+  - + Tiggo 7 Pro Max › 1.6 T-GDI › Exceptional Black Edition
+  - + Tiggo 7 Pro Max › 1.6 T-GDI › Intelligent
+  - + Yeni model (ayrı): Tiggo 8 Pro (2023–) — yıl aralığı "Tiggo 8" modelinden alındı
+  - + Tiggo 8 Pro › 1.6 T-GDI › Avantgarde
+  - + Tiggo 8 Pro › 1.6 T-GDI › Excellent
+  - + Tiggo 8 Pro › 1.6 T-GDI › Luxury
+  - + Yeni model (ayrı): Tiggo 8 Pro Max (2023–) — yıl aralığı "Tiggo 8" modelinden alındı
+  - + Tiggo 8 Pro Max › 1.6 T-GDI › Exceptional
+  - + Tiggo 8 Pro Max › 1.6 T-GDI › Intelligent

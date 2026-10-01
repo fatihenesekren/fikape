@@ -1,3 +1,3 @@
 ### Polestar
-- otomobil: zaten vardı 0 · eklendi 0 · belirsiz 0
-  - ~ eşleme: "Polestar 2 Long Range" → "Polestar 2"
+- otomobil: zaten vardı 0 · eklendi 1 · belirsiz 0
+  - + Yeni model (ayrı): Polestar 2 Long Range (2020–) — yıl aralığı "Polestar 2" modelinden alındı

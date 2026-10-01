@@ -1,5 +1,19 @@
 ### Saab
-- otomobil: zaten vardı 0 · eklendi 7 · belirsiz 21
+- otomobil: zaten vardı 7 · eklendi 21 · belirsiz 0
+  - + 9-3 › 1.8i › Linear (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 1.9 TiD › Linear (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 1.9 TiD › Vector (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 1.9 TiDS › Vector Sport (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 1.9 TTiD › Aero (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 2.0 › Standart (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 2.0 T › Aero (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 2.0 T › Vector (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 2.0 TS › Vector Sport (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 2.2 TiD › Vector (yıl bilgisi yok → 1986-2026)
+  - + 9-3 › 2.8 T › Aero (yıl bilgisi yok → 1986-2026)
+  - + 9-5 › 1.9 TiD › Vector (yıl bilgisi yok → 1986-2026)
+  - + 9-5 › 2.0 LPT › Standart (yıl bilgisi yok → 1986-2026)
+  - + 9-5 › 2.3 T › Aero (yıl bilgisi yok → 1986-2026)
   - + Yeni model: 900 (1990–1998) — en.wikipedia Saab 900 (1978-1998; 1990 öncesi kırpıldı)
   - + 900 › 2.0 SE › Standart
   - + 900 › 2.3 › Standart

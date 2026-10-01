@@ -1,7 +1,19 @@
 {
   "grup": {
-    "RS": { "RS 3": "RS3", "RS 4": "RS4", "RS 5": "RS5", "RS 6": "RS6", "RS 7": "RS7" },
-    "S Serisi": { "S3": "S3", "S4": "S4", "S5": "S5", "S6": "S6", "S8": "S8" }
+    "RS": {
+      "RS 3": "RS3",
+      "RS 4": "RS4",
+      "RS 5": "RS5",
+      "RS 6": "RS6",
+      "RS 7": "RS7"
+    },
+    "S Serisi": {
+      "S3": "S3",
+      "S4": "S4",
+      "S5": "S5",
+      "S6": "S6",
+      "S8": "S8"
+    }
   },
   "takma": {
     "80 Serisi": "80",
@@ -14,9 +26,30 @@
     "Q8 E-tron Sportback": "Q8 e-tron",
     "E-Tron Sportback": "e-tron"
   },
-  "kasaSeviyesi": ["A6 E-Tron"],
+  "kasaSeviyesi": [
+    "A6 E-Tron"
+  ],
   "yeniModel": {
-    "200 Serisi": { "ad": "200", "bas": 1979, "bit": 1991, "kaynak": "automobile-catalog.com / de.wikipedia Audi 200 (C2 1979-1983, C3 1983-1991)" },
-    "A6 E-Tron": { "ad": "A6 e-tron", "bas": 2024, "bit": null, "kaynak": "en.wikipedia Audi A6 e-tron (üretim 2024, Avant + Sportback)" }
-  }
+    "200 Serisi": {
+      "ad": "200",
+      "bas": 1979,
+      "bit": 1991,
+      "kaynak": "automobile-catalog.com / de.wikipedia Audi 200 (C2 1979-1983, C3 1983-1991)"
+    },
+    "A6 E-Tron": {
+      "ad": "A6 e-tron",
+      "bas": 2024,
+      "bit": null,
+      "kaynak": "en.wikipedia Audi A6 e-tron (üretim 2024, Avant + Sportback)"
+    }
+  },
+  "ayriModel": [
+    "Q3 Sportback",
+    "Q5 Sportback",
+    "Q6 E-tron",
+    "Q6 E-tron Sportback",
+    "Q4 E-tron Sportback",
+    "Q8 E-tron Sportback",
+    "E-Tron Sportback"
+  ]
 }

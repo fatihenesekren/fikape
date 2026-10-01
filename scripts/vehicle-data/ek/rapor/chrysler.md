@@ -1,5 +1,9 @@
 ### Chrysler
-- otomobil: zaten vardı 2 · eklendi 20 · belirsiz 6
+- otomobil: zaten vardı 2 · eklendi 30 · belirsiz 0
+  - + 300C › 2.7 › Standart (yıl bilgisi yok → 1986-2026)
+  - + 300C › 3.5 › Standart (yıl bilgisi yok → 1986-2026)
+  - + 300C › 5.7 › Standart (yıl bilgisi yok → 1986-2026)
+  - + 300C › 6.1 SRT › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: 300M (1999–2004) — en.wikipedia Chrysler 300M (model yılı 1999-2004)
   - + 300M › 3.5 › Standart
   - + Yeni model: Concorde (1993–2004) — en.wikipedia Chrysler Concorde (1993-2004)
@@ -20,3 +24,9 @@
   - + Sebring › 2.5 LXI › Standart
   - + Sebring › 2.7 Limited › Standart
   - + Sebring › 2.7 LX › Standart
+  - + Yeni model: Stratus (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Stratus › 2.0 › LE
+  - + Stratus › 2.0 › LX
+  - + Stratus › 2.5 › LE
+  - + Stratus › 2.5 › LX
+  - + Pacifica › 3.5 L › Standart (yıl bilgisi yok → 1986-2026)

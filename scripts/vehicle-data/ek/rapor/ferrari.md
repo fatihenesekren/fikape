@@ -1,5 +1,5 @@
 ### Ferrari
-- otomobil: zaten vardı 17 · eklendi 7 · belirsiz 8
+- otomobil: zaten vardı 17 · eklendi 11 · belirsiz 6
   - + Yeni model: 360 (1999–2004) — en.wikipedia Ferrari 360 (1999-2004)
   - + 360 › Modena F1 › Standart
   - + 360 › Spider F1 › Standart
@@ -7,3 +7,7 @@
   - + 430 › F430 › Standart
   - + 430 › F430 Spider › Standart
   - + Yeni model: F355 (1994–1999) — en.wikipedia Ferrari F355 (1994-1999)
+  - + Yeni model: DS 4 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + DS 4 › 1.6 THP › D-Sport
+  - + DS 4 › 1.6 THP › Sport
+  - + Purosangue › V12 › Standart (yıl bilgisi yok → 1986-2026)

@@ -9,6 +9,7 @@
 //  - Yazım farkı şüphesi (Levenshtein ≤ 1) olan paket adı eklenmez, belirsize yazılır.
 //  - Paketi olmayan satıra "Standart" yazılır.
 import type { KatalogModel, KatalogNesil, KatalogTip, KatalogVites, KatalogYakit } from "../../../src/lib/katalog/tipler";
+const BUGUN_YIL = new Date().getFullYear();
 import { versiyonlariCikar, type EkMarka } from "./parseEk";
 import { fold as foldTr } from "../tsb/rules";
 
@@ -16,6 +17,13 @@ import { fold as foldTr } from "../tsb/rules";
 const fold = (s: string) => foldTr(s.normalize("NFD").replace(/\p{Mn}/gu, ""));
 
 export interface EkAyar {
+  /** atla'da yazılı olup yine de eklenmeyecek modeller (başka markada zaten var gibi). Diğer atla/yılsız modeller 1986-2026 ile eklenir. */
+  atlaKal?: string[];
+  /**
+   * Kullanıcı modeli katalogdaki başka bir modele BAĞLANMAZ; kendi adıyla AYRI model açılır.
+   * Üretim yılları takma'daki hedef modelden alınır (hedefin resmi liste/nesil yıl aralığı).
+   */
+  ayriModel?: string[];
   /** Kullanıcı modeli → { versiyon öneki → katalogdaki model }: "II 2.2 TD4" versiyonları "Freelander 2" modeline taşınır (önek atılır). */
   versiyonOnekModel?: Record<string, Record<string, string>>;
   /** Marka katalog yapısı kararı gerektiriyor: hiçbir satır işlenmez, neden belirsiz listesine yazılır. */
@@ -318,6 +326,18 @@ export function kureselJetonlar(modellerListeleri: KatalogModel[][]): Set<string
   return set;
 }
 
+const YILSIZ_BAS = 1986;
+const YILSIZ_BIT = 2026;
+
+/** Yıl bilgisi olmayan satırı yıl bağımsız (g) kayıt olarak ekler ve modelin tüm eski nesil seçeneklerine de yazar. */
+function yilsizEkle(model: KatalogModel, s: Satir): void {
+  const yillar = Array.from({ length: YILSIZ_BIT - YILSIZ_BAS + 1 }, (_, i) => YILSIZ_BAS + i);
+  const p = s.p === STANDART ? null : s.p;
+  const var_ = model.tipler.find((t) => t.g && t.v === s.v && t.p === p);
+  if (!var_) model.tipler.push({ v: s.v, hp: null, p, k: null, y: yillar, f: yakitKurali(s.v), t: null, g: true });
+  for (const n of model.nesiller) if (n.el && elKarar(n.el, s).durum === "ekle") elEkle(n.el, s);
+}
+
 export function ekUygula(marka: string, ek: EkMarka, ayar: EkAyar, modeller: KatalogModel[], kuresel: Set<string> = new Set()): EkSonuc {
   const sonuc: EkSonuc = { eklenen: [], eslesme: [], zatenVar: 0, belirsiz: [] };
   esanlamHarita = new Map();
@@ -360,18 +380,38 @@ export function ekUygula(marka: string, ek: EkMarka, ayar: EkAyar, modeller: Kat
 
   for (const [kullaniciModel, em] of ekModeller) {
     const b = bel(kullaniciModel);
-    if (ayar.atla?.[kullaniciModel]) { b({ neden: ayar.atla[kullaniciModel] }); continue; }
+    if (ayar.atla?.[kullaniciModel] && ayar.atlaKal?.includes(kullaniciModel)) { b({ neden: ayar.atla[kullaniciModel] }); continue; }
     const hedefAd = ayar.takma?.[kullaniciModel] ?? kullaniciModel;
-    const bulgu = modeliBul(modeller, hedefAd);
+    const ayri = ayar.ayriModel?.includes(kullaniciModel) ?? false;
+    let bulgu: KatalogModel | KatalogModel[] | null;
+    if (ayri) {
+      bulgu = modeller.find((m) => tamAnahtar(m.ad) === tamAnahtar(kullaniciModel)) ?? null;
+      if (!bulgu) {
+        const h = modeliBul(modeller, hedefAd);
+        const hh = h && !Array.isArray(h) ? h : null;
+        const yillar = hh ? [...hh.tipler.flatMap((t) => t.y), ...hh.nesiller.flatMap((n) => [n.bas, n.bit ?? BUGUN_YIL])] : [YILSIZ_BAS, BUGUN_YIL];
+        const bas = Math.min(...yillar), bit = Math.max(...yillar);
+        const yeniAd = kullaniciModel;
+        bulgu = { ad: yeniAd, nesiller: [{ ad: yeniAd, bas, bit: bit >= BUGUN_YIL ? null : bit, el: { versiyonlar: [DIGER], paketler: [STANDART, DIGER] } }], tipler: [] };
+        modeller.push(bulgu);
+        sonuc.eklenen.push(`Yeni model (ayrı): ${yeniAd} (${bas}–${bit >= BUGUN_YIL ? "" : bit}) — yıl aralığı ${hh ? `"${hh.ad}" modelinden alındı` : "hedef bulunamadığı için 1986-2026"}`);
+      }
+    } else bulgu = modeliBul(modeller, hedefAd);
     if (Array.isArray(bulgu)) {
-      b({ neden: `Katalogda aynı adlı birden fazla nesil modeli var (${bulgu.map((m) => m.ad).join(" / ")}); kaynak satırlarında yıl/nesil yok — hangisine ait olduğu belli değil` });
+      // Aynı adlı birden fazla nesil modeli: satırın hangisine ait olduğu bilinmediğinden hepsine yıl bağımsız eklenir.
+      for (const [v, paketler] of em.versiyonlar) {
+        for (const p of paketler.size ? paketler : [STANDART]) {
+          for (const m of bulgu) yilsizEkle(m, { v, p });
+          sonuc.eklenen.push(`${bulgu.map((m) => m.ad).join(" + ")} › ${v} › ${p} (nesil belli değil → 1986-2026)`);
+        }
+      }
       continue;
     }
     let model = bulgu;
-    if (model && modelAnahtar(model.ad) !== modelAnahtar(kullaniciModel) && !(ayar.grup && Object.values(ayar.grup).some((g) => Object.values(g).includes(kullaniciModel)))) {
+    if (!ayri && model && modelAnahtar(model.ad) !== modelAnahtar(kullaniciModel) && !(ayar.grup && Object.values(ayar.grup).some((g) => Object.values(g).includes(kullaniciModel)))) {
       sonuc.eslesme.push(`"${kullaniciModel}" → "${model.ad}"`);
     }
-    const onek = ayar.paketOnek?.[kullaniciModel];
+    const onek = ayri ? undefined : ayar.paketOnek?.[kullaniciModel];
     const rows = satirlar(kullaniciModel, em.versiyonlar, b).map((r) => (onek && r.p !== STANDART ? { ...r, p: `${onek} ${r.p}` } : r)).filter((r) => {
       const uyum = yazimSupheli(r, model, em, kuresel);
       if (uyum) { b({ versiyon: r.v, paket: r.p, neden: uyum }); return false; }
@@ -380,11 +420,12 @@ export function ekUygula(marka: string, ek: EkMarka, ayar: EkAyar, modeller: Kat
 
     if (!model) {
       const yeni = ayar.yeniModel?.[kullaniciModel] ?? ayar.yeniModel?.[hedefAd];
-      if (!yeni) { b({ neden: "Katalogda yok ve yeni model için doğrulanmış yıl aralığı tanımlı değil" }); continue; }
-      const ad = yeni.ad ?? kullaniciModel;
-      model = { ad, nesiller: [{ ad, bas: yeni.bas, bit: yeni.bit, el: { versiyonlar: [DIGER], paketler: [STANDART, DIGER] } }], tipler: [] };
+      // Yıl doğrulanamayan model: kullanıcı kararıyla 1986-2026 arası seçilebilir.
+      const y = yeni ?? { bas: YILSIZ_BAS, bit: null, kaynak: "kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir" };
+      const ad = y.ad ?? kullaniciModel;
+      model = { ad, nesiller: [{ ad, bas: y.bas, bit: y.bit, el: { versiyonlar: [DIGER], paketler: [STANDART, DIGER] } }], tipler: [] };
       modeller.push(model);
-      sonuc.eklenen.push(`Yeni model: ${ad} (${yeni.bas}–${yeni.bit ?? ""}) — ${yeni.kaynak}`);
+      sonuc.eklenen.push(`Yeni model: ${ad} (${y.bas}–${y.bit ?? ""}) — ${y.kaynak}`);
     }
 
     const elNesiller = nesilleriBul(model);
@@ -393,33 +434,25 @@ export function ekUygula(marka: string, ek: EkMarka, ayar: EkAyar, modeller: Kat
       : elNesiller;
     // Resmi listede (2012+) tipi olan modelde, nesil 2012'de bitmiyorsa eski seçenekler yalnız 2012 öncesi yılları
     // doldurur; yıl bilgisi olmayan satırın hangi döneme ait olduğu bilinemez → belirsiz.
-    const yilKesin = (n: KatalogNesil) => !model!.tipler.length || (n.bit !== null && n.bit < 2012);
+    const yilKesin = (n: KatalogNesil) => !model!.tipler.some((t) => !t.g) || (n.bit !== null && n.bit < 2012);
 
     for (const s of rows) {
       if (anahtar(s.v) === anahtar(model.ad) || modelAnahtar(s.v) === modelAnahtar(kullaniciModel)) { sonuc.zatenVar++; continue; }
-      if (model.tipler.length && tipleKapli(s, model.tipler)) { sonuc.zatenVar++; continue; }
+      if (model.tipler.some((t) => !t.g) && tipleKapli(s, model.tipler)) { sonuc.zatenVar++; continue; }
 
       // Birden fazla eski nesil varsa satırın motoru yalnız birinde geçiyorsa o nesil seçilir.
       let nesil: KatalogNesil | null = secili.length === 1 ? secili[0] : null;
-      let neden = "";
       if (!nesil && secili.length > 1) {
         const eslesen = secili.filter((n) => elKarar(n.el!, s).durum !== "ekle" || n.el!.versiyonlar.some((v) => v !== DIGER && versiyonAnahtar(v) === versiyonAnahtar(s.v)));
         const hepsiVar = eslesen.length > 0 && eslesen.every((n) => elKarar(n.el!, s).durum === "var");
         if (hepsiVar) { sonuc.zatenVar++; continue; }
         if (eslesen.length === 1) nesil = eslesen[0];
-        else neden = eslesen.length
-          ? `Birden fazla eski nesilde geçiyor (${eslesen.map((n) => n.ad).join(" / ")}); hangisine ait olduğu belli değil`
-          : `Eski nesillerin hiçbirinde bu motor yok (${secili.map((n) => n.ad).join(" / ")}); hangisine ait olduğu belli değil`;
+        else nesil = null;
       }
       if (!nesil || !yilKesin(nesil)) {
-        b({
-          versiyon: s.v, paket: s.p,
-          neden: neden || (nesil
-            ? "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
-            : model.tipler.length
-              ? "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-              : "Modelde eklenebilecek nesil/yıl bilgisi yok"),
-        });
+        // Kaynakta yıl yok: 1986-2026 arası seçilebilir (yıl bağımsız kayıt).
+        yilsizEkle(model, s);
+        sonuc.eklenen.push(`${model.ad} › ${s.v} › ${s.p} (yıl bilgisi yok → 1986-2026)`);
         continue;
       }
       nesil.el = nesil.el!;

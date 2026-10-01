@@ -1,8 +1,50 @@
 ### Mini
-- otomobil: zaten vardı 74 · eklendi 0 · belirsiz 18
-  - ~ eşleme: "Cooper Clubman" → "Clubman"
-  - ~ eşleme: "Cooper Electric" → "Cooper"
-  - ~ eşleme: "John Cooper" → "Cooper"
-  - ~ eşleme: "One" → "Cooper"
-  - ~ eşleme: "Cooper S" → "Cooper"
-  - ~ eşleme: "Countryman E" → "Countryman"
+- otomobil: zaten vardı 50 · eklendi 48 · belirsiz 0
+  - + Cooper › 1.5 D › Salt Chili (yıl bilgisi yok → 1986-2026)
+  - + Cooper › 1.5 D › Salt Pepper Chili (yıl bilgisi yok → 1986-2026)
+  - + Cooper › 1.6 › Cabrio (yıl bilgisi yok → 1986-2026)
+  - + Cooper › 1.6 › Coupe (yıl bilgisi yok → 1986-2026)
+  - + Cooper › 1.6 › Roadster (yıl bilgisi yok → 1986-2026)
+  - + Cooper › 1.6 › Türkiye Paketi (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Cooper Clubman (2007–) — yıl aralığı "Clubman" modelinden alındı
+  - + Cooper Clubman › 1.5 › Chili
+  - + Cooper Clubman › 1.5 › Final Edition
+  - + Cooper Clubman › 1.5 › Iconic
+  - + Cooper Clubman › 1.5 › Pepper
+  - + Cooper Clubman › 1.5 › Untold Edition
+  - + Cooper Clubman › 1.5 D › One Chili
+  - + Cooper Clubman › 1.5 D › One Iconic
+  - + Cooper Clubman › 1.5 D › One Signature
+  - + Cooper Clubman › 1.5 D › One Türkiye Paketi
+  - + Cooper Clubman › 1.6 › Standart
+  - + Cooper Clubman › 1.6 S › Standart
+  - + Yeni model (ayrı): Cooper Electric (1986–) — yıl aralığı "Cooper" modelinden alındı
+  - + Cooper Electric › SE › Classic
+  - + Cooper Electric › SE › Iconic
+  - + Cooper Electric › SE › Inspired
+  - + Yeni model (ayrı): John Cooper (1986–) — yıl aralığı "Cooper" modelinden alındı
+  - + John Cooper › 1.6 › Works
+  - + John Cooper › 1.6 › Works Clubman
+  - + John Cooper › 2.0 › Works
+  - + Yeni model (ayrı): One (1986–) — yıl aralığı "Cooper" modelinden alındı
+  - + One › 1.4 › Standart
+  - + One › 1.6 › Standart
+  - + Yeni model (ayrı): Cooper S (1986–) — yıl aralığı "Cooper" modelinden alındı
+  - + Cooper S › 1.6 › Standart
+  - + Cooper S › 1.6 › Cabrio
+  - + Cooper S › 1.6 › Coupe
+  - + Cooper S › 1.6 › Roadster
+  - + Cooper S › 2.0 › Standart
+  - + Cooper S › 2.0 › Favoured
+  - + Cooper S › 2.0 › JCW
+  - + Countryman › 1.5 › Uncharted Edition (yıl bilgisi yok → 1986-2026)
+  - + Countryman › 1.6 › Türkiye Paketi (yıl bilgisi yok → 1986-2026)
+  - + Countryman › 2.0 › JCW S (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Countryman E (1986–) — yıl aralığı "Countryman" modelinden alındı
+  - + Countryman E › E › Favoured
+  - + Countryman E › E › Favoured Plus
+  - + Countryman E › E › JCW
+  - + Countryman E › E › Spirit
+  - + Countryman E › SE › JCW
+  - + Paceman › 1.6 › S (yıl bilgisi yok → 1986-2026)
+  - + Paceman › 1.6 › Türkiye Paketi (yıl bilgisi yok → 1986-2026)

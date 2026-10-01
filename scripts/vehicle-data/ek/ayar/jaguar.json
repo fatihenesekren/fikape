@@ -1,10 +1,21 @@
 {
-  "takma": { "XJ6": "XJ", "XJR": "XJ" },
+  "takma": {
+    "XJ6": "XJ",
+    "XJR": "XJ"
+  },
   "yeniModel": {
-    "XJS": { "bas": 1990, "bit": 1996, "kaynak": "en.wikipedia Jaguar XJS (1975-1996; 1990 öncesi kırpıldı)" }
+    "XJS": {
+      "bas": 1990,
+      "bit": 1996,
+      "kaynak": "en.wikipedia Jaguar XJS (1975-1996; 1990 öncesi kırpıldı)"
+    }
   },
   "atla": {
     "Daimler": "Daimler (Super V8/Sovereign) Jaguar XJ tabanlı ayrı marka/donanım adı; katalogda hangi modele bağlanacağı belli değil.",
     "Sovereign": "Jaguar/Daimler Sovereign — XJ donanım adı mı ayrı model mi belli değil; yıl aralığı seçilemedi."
-  }
+  },
+  "ayriModel": [
+    "XJ6",
+    "XJR"
+  ]
 }

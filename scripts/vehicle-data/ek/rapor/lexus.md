@@ -1,3 +1,27 @@
 ### Lexus
-- otomobil: zaten vardı 17 · eklendi 0 · belirsiz 23
-  - ~ eşleme: "RX L" → "RX"
+- otomobil: zaten vardı 16 · eklendi 25 · belirsiz 0
+  - + CT › 200h › Comfort Plus (yıl bilgisi yok → 1986-2026)
+  - + ES › 300h › Business (yıl bilgisi yok → 1986-2026)
+  - + ES › 300h › Business Plus (yıl bilgisi yok → 1986-2026)
+  - + ES › 300h › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + ES › 300h › Executive (yıl bilgisi yok → 1986-2026)
+  - + GS › 300h › Standart (yıl bilgisi yok → 1986-2026)
+  - + GS › 450h › Standart (yıl bilgisi yok → 1986-2026)
+  - + IS › 200t › F Sport (yıl bilgisi yok → 1986-2026)
+  - + LC › 500h › Sport (yıl bilgisi yok → 1986-2026)
+  - + LM › 350h › Standart (yıl bilgisi yok → 1986-2026)
+  - + LS › 500h › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + LS › 600h › Standart (yıl bilgisi yok → 1986-2026)
+  - + LX › 450d › Standart (yıl bilgisi yok → 1986-2026)
+  - + NX › 200t › Business Plus Executive (yıl bilgisi yok → 1986-2026)
+  - + NX › 300h › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + NX › 300h › Executive (yıl bilgisi yok → 1986-2026)
+  - + NX › 350h › Executive (yıl bilgisi yok → 1986-2026)
+  - + RX › 200t › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + RX › 200t › Executive (yıl bilgisi yok → 1986-2026)
+  - + RX › 350h › Executive (yıl bilgisi yok → 1986-2026)
+  - + RX › 350h › F Sport Design (yıl bilgisi yok → 1986-2026)
+  - + RX › 500h › F Sport (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): RX L (1986–) — yıl aralığı "RX" modelinden alındı
+  - + RX L › 450h › Exclusive
+  - + RZ › 450e › Exclusive (yıl bilgisi yok → 1986-2026)

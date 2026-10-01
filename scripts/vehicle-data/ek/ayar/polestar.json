@@ -1,1 +1,8 @@
-{ "takma": { "Polestar 2 Long Range": "Polestar 2" } }
+{
+  "takma": {
+    "Polestar 2 Long Range": "Polestar 2"
+  },
+  "ayriModel": [
+    "Polestar 2 Long Range"
+  ]
+}

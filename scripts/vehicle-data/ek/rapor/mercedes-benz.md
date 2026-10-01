@@ -1,8 +1,78 @@
 ### Mercedes-Benz
-- otomobil: zaten vardı 381 · eklendi 27 · belirsiz 219
+- otomobil: zaten vardı 424 · eklendi 228 · belirsiz 19
+  - + A Serisi › A 45 S AMG › Final Edition (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 45 S AMG › Performans (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 150 › Kesif (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 150 › Polarstar (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 180 › AMG Sport (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 180 › Style Plus (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 180 CDI › BlueEfficiency AMG (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 180 CDI › BlueEfficiency Prime (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 180 CDI › BlueEfficiency Style (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 180 CDI › BlueEfficiency Urban (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 180 d › Urban (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 200 › AMG+ (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 200 › Progressive+ (yıl bilgisi yok → 1986-2026)
+  - + A Serisi › A 250 › BlueEfficiency Sport (yıl bilgisi yok → 1986-2026)
+  - + AMG GT › 43 AMG GT › Standart (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 150 › 150 (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 150 › Prestige (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 150 › Special Edition (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 180 › BlueEfficiency Elite (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 180 › BlueEfficiency Prime (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 180 › BlueEfficiency Style (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 180 › BlueEfficiency Urban (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 180 › Progressive+ (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 180 CDI › BlueEfficiency Sport (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 180 CDI › Boyut (yıl bilgisi yok → 1986-2026)
+  - + B Serisi › B 200 › CDI Special Edition (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 30 CDI AMG › Standart (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 63 S AMG › Standart (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › BlueEfficiency Estate (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › BlueEfficiency Selection Plus (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Esprit (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. Avantgarde (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. BlueEfficiency AMG (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. BlueEfficiency Avantgarde (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. BlueEfficiency Diamond (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. BlueEfficiency Elegance (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. BlueEfficiency Fascination (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. BlueEfficiency Luxury (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. BlueEfficiency Prime (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. BlueEfficiencyStart (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. Classic (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. GP (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. Sport (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. Sportcoupe (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 180 › Komp. Sport Edition (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 › 140th Year Edition (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 › CGI Fascination (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 D › Elegance (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 D › Sport (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 d BlueTEC › AMG (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 d BlueTEC › Avantgarde (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 d BlueTEC › Comfort (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 d BlueTEC › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 d BlueTEC › Fascination (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 200 d BlueTEC › Style (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 220 CDI › BlueEfficiency AMG (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 220 CDI › Enerji (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 220 CDI › Esprit (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 220 CDI › Sport (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 220 CDI › Sportcoupe (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 220 CDI › Sport Edition (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 220 d › Classic (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 220 d › Esprit (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 250 TD › Classic (yıl bilgisi yok → 1986-2026)
+  - + C Serisi › C 250 TD › Elegance (yıl bilgisi yok → 1986-2026)
   - + Yeni model: CL (1992–2014) — en.wikipedia Mercedes-Benz CL-Class (1992-2014)
   - + CL › 63 AMG › Standart
   - + CL › 500 › Standart
+  - + CLA › 45 S › AMG (yıl bilgisi yok → 1986-2026)
+  - + CLA › 45 S › Final Edition (yıl bilgisi yok → 1986-2026)
+  - + CLA › 45 S › Shooting Brake Final Edition (yıl bilgisi yok → 1986-2026)
+  - + CLA › 200 › AMG+ 4Matic (yıl bilgisi yok → 1986-2026)
+  - + CLE › 53 AMG 4Matic › Performance (yıl bilgisi yok → 1986-2026)
   - + Yeni model: CLC (2008–2011) — autoevolution / cars-data Mercedes-Benz CLC (2008-2011)
   - + CLC › CLC 160 › BlueEfficiency
   - + CLC › CLC 160 › Emotion
@@ -21,14 +91,143 @@
   - + CLK › CLK 230 Komp. › Komp. Elegance
   - + CLK › CLK 270 CDI › Avantgarde
   - + CLK › CLK 270 CDI › Elegance
+  - + CLS › 250 CDI › Bluetec 4Matic (yıl bilgisi yok → 1986-2026)
+  - + CLS › 350 CDI › BlueEfficiency (yıl bilgisi yok → 1986-2026)
+  - + CLS › 500 › 500 BlueEfficiency (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 180 › AMG Premium (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 200 › Classic (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 200 › Komp. Avantgarde (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 200 › Komp. Business (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 200 › Komp. Classic (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 200 › Komp. Elegance (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 200 CDI › Classic (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 220 d › Classic (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 220 d › Elegance (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 220 d › Premium (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CDI › Avantgarde (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CDI › BlueEfficiency Avantgarde (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CDI › Edition (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CDI › Elite Avantgarde (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CDI › Prime (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CGI › AMG (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CGI › BlueEfficiency Avantgarde (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CGI › BlueEfficiency Dynamic (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CGI › BlueEfficiency Elegance (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CGI › Elite (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 CGI › Premium AMG (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 250 TD › Elegance (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 280 › 280 (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 290 TD › Avantgarde (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 290 TD › Classic (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 320 › 320 (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 350 CDI › AMG Premium (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 350 CDI › BlueEfficiency Dynamic (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 350 CDI › BlueEfficiency Elegance (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 350 CDI › BlueTEC Elite (yıl bilgisi yok → 1986-2026)
+  - + E Serisi › E 350 CDI › BlueTEC Premium (yıl bilgisi yok → 1986-2026)
+  - + R Serisi › R 320 › 320 CDI (yıl bilgisi yok → 1986-2026)
+  - + R Serisi › R 320 › 320 CDI L (yıl bilgisi yok → 1986-2026)
+  - + R Serisi › R 350 › 350 L (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 300 › 300 Turbo D (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 320 › 320 (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 320 › 320 CDI (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 320 › 320 CDI L (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 350 › 350 CDI (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 350 › 350 CDI L (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 350 › 350 L Business (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 350 › 350 TD (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 350 › BlueTEC AMG (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 400 › 400 CDI (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 400 › 400 L AMG (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 400 › 400 L CDI (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 420 › 420 CDI (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 420 › 420 L (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 420 › 420 L CDI (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 430 › 430 (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 550 › 550 L (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 580 › AMG Line (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 580 › Executive Line (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 580 › Inspiration Plus (yıl bilgisi yok → 1986-2026)
+  - + S Serisi › S 600 › 600 L (yıl bilgisi yok → 1986-2026)
   - + SL › 43 AMG › Standart
   - + SL › 280 › Standart
   - + Yeni model: SLS AMG (2010–2014) — en.wikipedia Mercedes-Benz SLS AMG (2010-2014)
   - + 190 (W201, 1982-1993) › 190 E 2.3-16 185 › 1.8
   - + 190 (W201, 1982-1993) › 190 E 2.3-16 185 › 2.0
   - + 190 (W201, 1982-1993) › 190 E 2.3-16 185 › 2.6
-  - ~ eşleme: "GLC Coupe" → "GLC"
-  - ~ eşleme: "GLE Coupe" → "GLE"
+  - + Yeni model: 200 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 200 › 200 CE › Standart
+  - + 200 › 200 D › Standart
+  - + 200 › 200 E › Standart
+  - + Yeni model: 230 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 230 › 230.4 › Standart
+  - + 230 › 230.6 › Standart
+  - + 230 › 230 CE › Standart
+  - + 230 › 230 E › Standart
+  - + 230 › 230 GE › Standart
+  - + 230 › 230 TE › Standart
+  - + Yeni model: 240 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 240 › 240 D › Standart
+  - + Yeni model: 250 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 250 › 250 D › Standart
+  - + 250 › 250 TD › Standart
+  - + Yeni model: 260 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 260 › 260 E › Standart
+  - + 260 › 260 SE › Standart
+  - + Yeni model: 280 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 280 › 280 E › Standart
+  - + 280 › 280 S › Standart
+  - + 280 › 280 SE › Standart
+  - + 280 › 280 SEL › Standart
+  - + Yeni model: 300 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 300 › 300 CE › Standart
+  - + 300 › 300 D › Standart
+  - + 300 › 300 E › Standart
+  - + 300 › 300 SE › Standart
+  - + 300 › 300 SEL › Standart
+  - + 300 › 300 SL › Standart
+  - + 300 › 300 TD › Standart
+  - + 300 › 300 TE › Standart
+  - + Yeni model: 320 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 320 › 320 E › Standart
+  - + Yeni model: 380 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 380 › 380 SE › Standart
+  - + 380 › 380 SEL › Standart
+  - + Yeni model: 420 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 420 › 420 SE › Standart
+  - + 420 › 420 SEC › Standart
+  - + 420 › 420 SEL › Standart
+  - + Yeni model: 500 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 500 › 500 SE › Standart
+  - + 500 › 500 SEC › Standart
+  - + 500 › 500 SEL › Standart
+  - + 500 › 500 SL › Standart
+  - + Yeni model: 560 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 560 › 560 SEC › Standart
+  - + 560 › 560 SEL › Standart
+  - + G Serisi › 230 GE › Standart (yıl bilgisi yok → 1986-2026)
+  - + G Serisi › 240 GD › Standart (yıl bilgisi yok → 1986-2026)
+  - + G Serisi › 270 CDI › Standart (yıl bilgisi yok → 1986-2026)
+  - + G Serisi › 300 D (GD) › Standart (yıl bilgisi yok → 1986-2026)
+  - + G Serisi › 300 TD › Standart (yıl bilgisi yok → 1986-2026)
+  - + GL › 63 AMG › Standart (yıl bilgisi yok → 1986-2026)
+  - + GLA › 45 AMG S › Standart (yıl bilgisi yok → 1986-2026)
+  - + GLA › 200 › AMG+ (yıl bilgisi yok → 1986-2026)
+  - + GLA › 200 › Progressive+ (yıl bilgisi yok → 1986-2026)
+  - + GLB › 200 AMG+ 4Matic › Standart (yıl bilgisi yok → 1986-2026)
+  - + GLB › 200 Progressive+ 4Matic › Standart (yıl bilgisi yok → 1986-2026)
+  - + GLC › 220d AMG › Standart (yıl bilgisi yok → 1986-2026)
+  - + GLC › 63 S AMG › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): GLC Coupe (1986–) — yıl aralığı "GLC" modelinden alındı
+  - + GLC Coupe › 180 AMG › Standart
+  - + GLC Coupe › 250 d AMG › Standart
+  - + GLC Coupe › 63 S AMG › Standart
+  - + GLE › 350 de 4Matic AMG › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): GLE Coupe (1986–) — yıl aralığı "GLE" modelinden alındı
+  - + GLE Coupe › 63 S 4Matic AMG Plus › Standart
+  - + GLE Coupe › 350 d 4Matic AMG › Standart
+  - + GLK › 250 CDI › BlueEfficiency (yıl bilgisi yok → 1986-2026)
+  - + GLK › 250 CDI › Sport (yıl bilgisi yok → 1986-2026)
 - kamyonet: zaten vardı 0 · eklendi 5 · belirsiz 0
   - + Yeni model: X (2017–2020) — en.wikipedia Mercedes-Benz X-Class (Kasım 2017 - Mayıs 2020) — kamyonet
   - + X › 220 d Pure › Standart

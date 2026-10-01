@@ -1,20 +1,53 @@
 ### Skoda
-- otomobil: zaten vardı 206 · eklendi 11 · belirsiz 54
+- otomobil: zaten vardı 216 · eklendi 46 · belirsiz 11
+  - + Fabia › 1.2 › Ambiente Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Fabia › 1.4 › Ambiente Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Fabia › 1.4 › Choice (yıl bilgisi yok → 1986-2026)
+  - + Fabia › 1.4 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Fabia › 1.4 TDI › Special (yıl bilgisi yok → 1986-2026)
+  - + Fabia › 1.6 TDI › Combi Scout (yıl bilgisi yok → 1986-2026)
   - + Favorit / Felicia (1988-2001) › 1.4 › Sportline
   - + Favorit / Felicia (1988-2001) › 135 › L
   - + Favorit / Felicia (1988-2001) › 135 › LS
   - + Favorit / Felicia (1988-2001) › 135 › LX
   - + Favorit / Felicia (1988-2001) › 1.6 › GLXi
-  - + Favorit / Felicia (1988-2001) › 135 L › Standart
-  - + Favorit / Felicia (1988-2001) › 135 LS › Standart
-  - + Favorit / Felicia (1988-2001) › GLX › Standart
-  - + Favorit / Felicia (1988-2001) › LE › Standart
-  - + Favorit / Felicia (1988-2001) › LX › Standart
-  - + Favorit / Felicia (1988-2001) › Silverline › Standart
+  - + Yeni model (ayrı): Forman (1988–2001) — yıl aralığı "Favorit / Felicia (1988-2001)" modelinden alındı
+  - + Forman › 135 L › Standart
+  - + Forman › 135 LS › Standart
+  - + Forman › GLX › Standart
+  - + Forman › LE › Standart
+  - + Forman › LX › Standart
+  - + Forman › Silverline › Standart
+  - + Octavia › 1.6 › Business (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.6 › Collection Plus (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.6 › GLX (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.6 › Rider (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.6 › Tour (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.6 TDI › Combi Style (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.8 › SLX (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.8 T › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.8 T › L&K (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.9 TDI › Ambiente (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 1.9 TDI › Collection (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 2.0 › Ambiente (yıl bilgisi yok → 1986-2026)
+  - + Octavia › 2.0 › RS TFSI (yıl bilgisi yok → 1986-2026)
+  - + Roomster › 1.2 › Dinamik (yıl bilgisi yok → 1986-2026)
+  - + Roomster › 1.2 › Style (yıl bilgisi yok → 1986-2026)
+  - + Roomster › 1.4 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Roomster › 1.4 › Style (yıl bilgisi yok → 1986-2026)
+  - + Roomster › 1.6 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Superb › 1.5 TSI › Laurin&Klement Crystal (yıl bilgisi yok → 1986-2026)
+  - + Superb › 1.5 TSI › Scout (yıl bilgisi yok → 1986-2026)
+  - + Superb › 1.8 T › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Superb › 2.0 TDI › Laurin & Klement (yıl bilgisi yok → 1986-2026)
+  - + Superb › 2.0 TDI › Laurin & Klement Crystal (yıl bilgisi yok → 1986-2026)
+  - + Superb › 2.5 TDI › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Superb › 2.5 TDI › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Superb › 3.6 FSI › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Enyaq Coupe (2022–) — yıl aralığı "Enyaq" modelinden alındı
+  - + Enyaq Coupe › E-Sportline › Standart
   - ~ eşleme: "Favorit" → "Favorit / Felicia (1988-2001)"
   - ~ eşleme: "Felicia" → "Favorit / Felicia (1988-2001)"
-  - ~ eşleme: "Forman" → "Favorit / Felicia (1988-2001)"
-  - ~ eşleme: "Enyaq Coupe" → "Enyaq"
 - kamyonet: zaten vardı 0 · eklendi 3 · belirsiz 0
   - + Yeni model: Felicia Pickup (1995–2001) — en.wikipedia Škoda Felicia (Pickup seri üretimi Ağustos 1995 - Haziran 2001) — kamyonet
   - + Felicia Pickup › 1.3 › Standart

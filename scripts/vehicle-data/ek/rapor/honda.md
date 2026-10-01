@@ -1,16 +1,91 @@
 ### Honda
-- otomobil: zaten vardı 61 · eklendi 14 · belirsiz 76
+- otomobil: zaten vardı 68 · eklendi 89 · belirsiz 0
+  - + Accord › 1.8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Accord › 1.8 › LS (yıl bilgisi yok → 1986-2026)
+  - + Accord › 2.0 › ES (yıl bilgisi yok → 1986-2026)
+  - + Accord › 2.0 › EX (yıl bilgisi yok → 1986-2026)
+  - + Accord › 2.0 › LS (yıl bilgisi yok → 1986-2026)
+  - + Accord › 2.0 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Accord › 2.2 › CTDi (yıl bilgisi yok → 1986-2026)
+  - + Accord › 2.2 › EX (yıl bilgisi yok → 1986-2026)
+  - + Accord › 2.4 › Executive (yıl bilgisi yok → 1986-2026)
+  - + Accord › 3.0 › Standart (yıl bilgisi yok → 1986-2026)
+  - + City › 1.4 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + City › 1.4 › Elite (yıl bilgisi yok → 1986-2026)
+  - + City › 1.4 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.3 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.4 › 1.4i (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.4 › i S (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.4 › LS (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.4 › S Euro Civic (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.5 › EL (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.5 › EX (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.5 › GL (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.5 › LS (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6 › 1.6i (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6 › ES (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6 › i ES (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6 › i LS (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6 › LS Euro Civic (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6 › LSi (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6 › Si (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6 › VTi (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i DTEC › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i DTEC › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i DTEC › Executive (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i DTEC › Executive Plus (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i DTEC › Premium (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i DTEC › Sport (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i VTEC › Black Edition (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i VTEC › Dream (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i VTEC › Eco Dream (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i VTEC › Eco Elegance (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i VTEC › ES (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i VTEC › Eco Executive (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i VTEC › LS (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6i VTEC › Eco Premium (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.6 VTEC › LS Elegance (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.8 › Executive (yıl bilgisi yok → 1986-2026)
+  - + Civic › 1.8 › Type-S (yıl bilgisi yok → 1986-2026)
+  - + Civic › 2.2i CTDi › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: CRX (1990–1998) — en.wikipedia Honda CR-X (1983-1991) + CR-X del Sol (1992-1998); 1990 öncesi kırpıldı
   - + CRX › 1.6 › 1.6i
   - + CRX › 1.6 › VTi
+  - + E › 154 PS › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Integra (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Integra › 1.6 › Standart
+  - + Integra › 1.8 › Standart
+  - + Jazz › 1.4 › Elite (yıl bilgisi yok → 1986-2026)
+  - + Jazz › 1.4 › Sport (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Legend (1990–2021) — en.wikipedia Honda Legend (1985-2021; 1990 öncesi kırpıldı)
   - + Legend › 3.2 › Standart
   - + Legend › 3.5 › Standart
   - + Yeni model: Logo (1996–2001) — en.wikipedia Honda Logo (1996-2001)
   - + Logo › 1.3i › Standart
+  - + Prelude › 2.0 › 2.0i (yıl bilgisi yok → 1986-2026)
+  - + Prelude › 2.0 › Advance (yıl bilgisi yok → 1986-2026)
+  - + Prelude › 2.0 › EX (yıl bilgisi yok → 1986-2026)
+  - + Prelude › 2.2 VTi › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: S2000 (1999–2009) — en.wikipedia Honda S2000 (1999-2009)
   - + S2000 › 2.0 Vtec › Standart
+  - + Yeni model: Shuttle (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Shuttle › 2.2 › ES
+  - + Shuttle › 2.3 › ES
   - + Yeni model: Stream (2000–2014) — en.wikipedia Honda Stream (2000-2014)
   - + Stream › 2.0 › Si
+  - + CR-V › 1.5 VTEC › Elegance (yıl bilgisi yok → 1986-2026)
+  - + CR-V › 1.5 VTEC › Executive (yıl bilgisi yok → 1986-2026)
+  - + CR-V › 1.5 VTEC › Executive Lifestyle (yıl bilgisi yok → 1986-2026)
+  - + CR-V › 1.5 VTEC › Executive Plus (yıl bilgisi yok → 1986-2026)
+  - + CR-V › 1.6 i-DTEC › Executive + (yıl bilgisi yok → 1986-2026)
+  - + CR-V › 2.0i › ES (yıl bilgisi yok → 1986-2026)
+  - + CR-V › 2.0i › LS (yıl bilgisi yok → 1986-2026)
+  - + CR-V › 2.0 i-MMD › Executive Plus (yıl bilgisi yok → 1986-2026)
+  - + CR-V › 2.0 i-VTEC › ES (yıl bilgisi yok → 1986-2026)
+  - + CR-V › 2.0 i-VTEC › LS (yıl bilgisi yok → 1986-2026)
   - + HR-V › 1.5 › Style Plus
   - + HR-V › 1.5 i-VTEC › Turbo Sport
+  - + Yeni model: Pilot (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Pilot › 3.5 › Standart
+  - + Yeni model: e:NS1 (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + e:NS1 › Standart › Standart

@@ -1,5 +1,16 @@
 ### Infiniti
-- otomobil: zaten vardı 9 · eklendi 3 · belirsiz 11
+- otomobil: zaten vardı 9 · eklendi 14 · belirsiz 0
+  - + G › G35 › Standart (yıl bilgisi yok → 1986-2026)
+  - + G › G37 GT › Standart (yıl bilgisi yok → 1986-2026)
+  - + G › G37 S › Standart (yıl bilgisi yok → 1986-2026)
+  - + G › G37 X › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: I30 (1995–2001) — autoevolution Infiniti I30 (1995-1999) + I30/I35 (1999-2004; I30 adı 2001'e kadar)
   - + I30 › 3.0 › Standart
+  - + M › M30d › Standart (yıl bilgisi yok → 1986-2026)
+  - + M › M30d S › Standart (yıl bilgisi yok → 1986-2026)
+  - + FX › FX30d GT › Standart (yıl bilgisi yok → 1986-2026)
+  - + FX › FX30d S › Standart (yıl bilgisi yok → 1986-2026)
+  - + FX › FX35 › Standart (yıl bilgisi yok → 1986-2026)
+  - + FX › FX45 › Standart (yıl bilgisi yok → 1986-2026)
+  - + EX › EX37 › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: QX4 (1997–2003) — en.wikipedia Infiniti QX4 (1997-2003)

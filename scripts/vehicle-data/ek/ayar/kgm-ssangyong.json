@@ -1,9 +1,24 @@
 {
   "marka": "SsangYong",
-  "kamyonet": ["Musso", "Musso Grand", "Musso EV", "Actyon Sports", "Korando Sports"],
-  "takma": { "Musso Grand": "Musso", "Musso EV": "Musso", "Torres EVX": "Torres" },
+  "kamyonet": [
+    "Musso",
+    "Musso Grand",
+    "Musso EV",
+    "Actyon Sports",
+    "Korando Sports"
+  ],
+  "takma": {
+    "Musso Grand": "Musso",
+    "Musso EV": "Musso",
+    "Torres EVX": "Torres"
+  },
   "atla": {
     "Actyon Sports": "Pickup (kamyonet adayı); katalogda yok, üretim yılı bu oturumda doğrulanmadı.",
     "Korando Sports": "Pickup (kamyonet adayı); katalogda yok, üretim yılı bu oturumda doğrulanmadı."
-  }
+  },
+  "ayriModel": [
+    "Musso Grand",
+    "Musso EV",
+    "Torres EVX"
+  ]
 }

@@ -1,6 +1,48 @@
 ### Porsche
-- otomobil: zaten vardı 51 · eklendi 0 · belirsiz 28
-  - ~ eşleme: "Taycan Elektrik" → "Taycan"
-  - ~ eşleme: "Cayenne Coupe" → "Cayenne"
-  - ~ eşleme: "Cayenne Elektrik" → "Cayenne"
-  - ~ eşleme: "Macan Elektrik" → "Macan"
+- otomobil: zaten vardı 36 · eklendi 46 · belirsiz 1
+  - + 911 › Carrera › Standart (yıl bilgisi yok → 1986-2026)
+  - + 911 › Carrera 4 GTS › Standart (yıl bilgisi yok → 1986-2026)
+  - + 911 › Carrera Targa › Standart (yıl bilgisi yok → 1986-2026)
+  - + 911 › Turbo 50. Yıl › Standart (yıl bilgisi yok → 1986-2026)
+  - + 911 › Turbo S Cabriolet › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera Diesel › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera GTS › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera S › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera 4 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera 4 - 10 Years Edition › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera 4 - 10 Years Edition E-Hybrid › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera 4 Platinum Edition › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera 4 Sport Turismo › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera 4S › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera 4S Diesel › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera 4S E-Hybrid › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera Turbo › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera Turbo E-Hybrid › Standart (yıl bilgisi yok → 1986-2026)
+  - + Panamera › Panamera Turbo S › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Taycan Elektrik (2019–) — yıl aralığı "Taycan" modelinden alındı
+  - + Taycan Elektrik › 4 Black Edition › Standart
+  - + Taycan Elektrik › 4 Cross Turismo › Standart
+  - + Taycan Elektrik › 4S › Standart
+  - + Taycan Elektrik › 4S Cross Turismo › Standart
+  - + Taycan Elektrik › 4S Performance › Standart
+  - + Taycan Elektrik › 4S Performance Plus › Standart
+  - + Taycan Elektrik › 4S Sport Turismo › Standart
+  - + Taycan Elektrik › GTS › Standart
+  - + Taycan Elektrik › Taycan › Standart
+  - + Taycan Elektrik › Turbo › Standart
+  - + Taycan Elektrik › Turbo S › Standart
+  - + Taycan Elektrik › Turbo S Cross Turismo › Standart
+  - + Taycan Elektrik › Turbo Sport Turismo › Standart
+  - + Yeni model (ayrı): Cayenne Coupe (2002–) — yıl aralığı "Cayenne" modelinden alındı
+  - + Cayenne Coupe › 2.9 S › Standart
+  - + Cayenne Coupe › 3.0 › Standart
+  - + Cayenne Coupe › 3.0 E-Hybrid › Standart
+  - + Cayenne Coupe › 4.0 GTS › Standart
+  - + Yeni model (ayrı): Cayenne Elektrik (2002–) — yıl aralığı "Cayenne" modelinden alındı
+  - + Cayenne Elektrik › Standart › Standart
+  - + Macan › Macan S › Standart (yıl bilgisi yok → 1986-2026)
+  - + Macan › Macan S Diesel › Standart (yıl bilgisi yok → 1986-2026)
+  - + Macan › Macan T › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Macan Elektrik (1986–) — yıl aralığı "Macan" modelinden alındı
+  - + Macan Elektrik › 4 › Standart
+  - + Macan Elektrik › Turbo › Standart

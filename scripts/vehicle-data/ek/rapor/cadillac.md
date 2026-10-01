@@ -1,5 +1,7 @@
 ### Cadillac
-- otomobil: zaten vardı 1 · eklendi 15 · belirsiz 2
+- otomobil: zaten vardı 1 · eklendi 17 · belirsiz 0
+  - + CTS › 3.2 › Standart (yıl bilgisi yok → 1986-2026)
+  - + CTS › 6.0 › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: BLS (2006–2010) — en.wikipedia Cadillac BLS / autoevolution (2006-2010)
   - + BLS › 1.9D Elegance › Standart
   - + Yeni model: DeVille (1990–2005) — en.wikipedia Cadillac de Ville series (1959-2005; 1990 öncesi kırpıldı — tüm nesillerin aralığı)

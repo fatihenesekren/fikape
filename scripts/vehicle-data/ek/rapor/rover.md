@@ -1,5 +1,5 @@
 ### Rover
-- otomobil: zaten vardı 2 · eklendi 28 · belirsiz 4
+- otomobil: zaten vardı 0 · eklendi 35 · belirsiz 3
   - + Yeni model: 25 (1999–2005) — en.wikipedia Rover 25 (1999-2005)
   - + 25 › 1.4 › Club
   - + 25 › 1.6 › Club
@@ -13,21 +13,25 @@
   - + 75 › 2.5 › Club
   - + Yeni model: 200 (1990–1999) — en.wikipedia Rover 200 Series (MkII 1989-1995, MkIII 1995-1999; 1990 öncesi kırpıldı). 214/216/220 motor adlı sürümleri bu modele eşlendi.
   - + 200 › Si › Standart
-  - + 200 › i › Standart
-  - + 200 › Turbo › Standart
-  - + Yeni model: 414 (1990–2005) — en.wikipedia Rover 400 Series (1990-2005, 45 dahil). 414/416/420 bu modele eşlendi.
+  - + Yeni model (ayrı): 214 (1990–1999) — yıl aralığı "200" modelinden alındı
+  - + 214 › i › Standart
+  - + 214 › Si › Standart
+  - + Yeni model (ayrı): 216 (1990–1999) — yıl aralığı "200" modelinden alındı
+  - + 216 › Si › Standart
+  - + Yeni model (ayrı): 220 (1990–1999) — yıl aralığı "200" modelinden alındı
+  - + 220 › Turbo › Standart
+  - + Yeni model (ayrı): 414 (1986–) — yıl aralığı hedef bulunamadığı için 1986-2026
   - + 414 › Si › Standart
-  - + Yeni model: 416 (1990–2005) — en.wikipedia Rover 400 Series (1990-2005, 45 dahil). 414/416/420 bu modele eşlendi.
+  - + Yeni model (ayrı): 416 (1986–) — yıl aralığı hedef bulunamadığı için 1986-2026
   - + 416 › Si › Standart
   - + 416 › SLi › Standart
-  - + Yeni model: 420 (1990–2005) — en.wikipedia Rover 400 Series (1990-2005, 45 dahil). 414/416/420 bu modele eşlendi.
+  - + Yeni model (ayrı): 420 (1986–) — yıl aralığı hedef bulunamadığı için 1986-2026
   - + 420 › Si › Standart
-  - + Yeni model: 620 (1993–1999) — en.wikipedia Rover 600 Series (1993-1999). 620 bu modele eşlendi.
+  - + Yeni model (ayrı): 620 (1986–) — yıl aralığı hedef bulunamadığı için 1986-2026
   - + 620 › Si › Standart
-  - + Yeni model: 820 (1990–1999) — en.wikipedia Rover 800 series (1986-1999; 1990 öncesi kırpıldı). 820/825 bu modele eşlendi.
+  - + Yeni model (ayrı): 820 (1986–) — yıl aralığı hedef bulunamadığı için 1986-2026
   - + 820 › Ti › Standart
-  - + Yeni model: 825 (1990–1999) — en.wikipedia Rover 800 series (1986-1999; 1990 öncesi kırpıldı). 820/825 bu modele eşlendi.
+  - + Yeni model (ayrı): 825 (1986–) — yıl aralığı hedef bulunamadığı için 1986-2026
   - + 825 › Si › Standart
-  - ~ eşleme: "214" → "200"
-  - ~ eşleme: "216" → "200"
-  - ~ eşleme: "220" → "200"
+  - + Yeni model: Streetwise (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Streetwise › 1.4 › Standart

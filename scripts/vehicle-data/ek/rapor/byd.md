@@ -1,5 +1,12 @@
 ### BYD
-- otomobil: zaten vardı 7 · eklendi 0 · belirsiz 7
-  - ~ eşleme: "Atto 3 EV" → "Atto 3"
-  - ~ eşleme: "Seal U DM-i" → "Seal U"
-  - ~ eşleme: "Seal U EV" → "Seal U"
+- otomobil: zaten vardı 7 · eklendi 10 · belirsiz 0
+  - + Dolphin › Standart › Standart (yıl bilgisi yok → 1986-2026)
+  - + Han › Executive › Standart (yıl bilgisi yok → 1986-2026)
+  - + Seal › Excellence › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Atto 3 EV (2023–) — yıl aralığı "Atto 3" modelinden alındı
+  - + Atto 3 EV › Design › Standart
+  - + Yeni model (ayrı): Seal U DM-i (2024–) — yıl aralığı "Seal U" modelinden alındı
+  - + Seal U DM-i › 1.5 PHEV › Design
+  - + Yeni model (ayrı): Seal U EV (2024–) — yıl aralığı "Seal U" modelinden alındı
+  - + Seal U EV › Design › Standart
+  - + Tang › Flagship › Standart (yıl bilgisi yok → 1986-2026)

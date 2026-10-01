@@ -1,5 +1,7 @@
 ### Jaguar
-- otomobil: zaten vardı 50 · eklendi 20 · belirsiz 25
+- otomobil: zaten vardı 49 · eklendi 51 · belirsiz 1
+  - + Yeni model: Daimler (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Daimler › 4.0 › Standart
   - + S-Type › 2.5 V6 200 › Sport
   - + S-Type › 2.7 D › Classic
   - + S-Type › 2.7 D › Executive
@@ -8,6 +10,10 @@
   - + S-Type › 3.0 V6 240 › Sport
   - + S-Type › 4.0 › Standart
   - + S-Type › 4.2 R › Standart
+  - + Yeni model: Sovereign (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Sovereign › 3.6 › Standart
+  - + Sovereign › 4.0 › Standart
+  - + Sovereign › 4.0 Long › Standart
   - + X-Type › 2.0 D › Executive
   - + X-Type › 2.0 D › High
   - + X-Type › 2.1 › Executive
@@ -18,7 +24,30 @@
   - + X-Type › 2.5 V6 196 AWD › Sport
   - + X-Type › 3.0 V6 231 AWD › Executive
   - + X-Type › 3.0 V6 231 AWD › Sport
+  - + XE › 2.0 D › Prestige (yıl bilgisi yok → 1986-2026)
+  - + XE › 2.0 D › R-Sport (yıl bilgisi yok → 1986-2026)
+  - + XF › 2.7 D › Luxury (yıl bilgisi yok → 1986-2026)
+  - + XF › 2.7 D › Premium Luxury (yıl bilgisi yok → 1986-2026)
+  - + XJ › 2.0i › Portfolio (yıl bilgisi yok → 1986-2026)
+  - + XJ › 2.0i › Premium Luxury (yıl bilgisi yok → 1986-2026)
+  - + XJ › 2.0i › Premium Luxury Sport Plus (yıl bilgisi yok → 1986-2026)
+  - + XJ › XJ6 › 2.7 D (yıl bilgisi yok → 1986-2026)
+  - + XJ › XJ6 › 3.0 (yıl bilgisi yok → 1986-2026)
+  - + XJ › XJ6 › 3.0 Executive (yıl bilgisi yok → 1986-2026)
+  - + XJ › XJ8 › 3.2 (yıl bilgisi yok → 1986-2026)
+  - + XJ › XJ8 › 3.5 Executive (yıl bilgisi yok → 1986-2026)
+  - + XJ › XJ8 › 4.2 Executive (yıl bilgisi yok → 1986-2026)
+  - + XJ › XJ8 › 4.2 Sovereign (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): XJ6 (1986–) — yıl aralığı "XJ" modelinden alındı
+  - + XJ6 › 4.0 › Standart
+  - + Yeni model (ayrı): XJR (1986–) — yıl aralığı "XJ" modelinden alındı
+  - + XJR › 4.0 › Standart
   - + Yeni model: XJS (1990–1996) — en.wikipedia Jaguar XJS (1975-1996; 1990 öncesi kırpıldı)
   - + XJS › 6.0 › Standart
-  - ~ eşleme: "XJ6" → "XJ"
-  - ~ eşleme: "XJR" → "XJ"
+  - + XK8 › 4.0 › Standart (yıl bilgisi yok → 1986-2026)
+  - + XK8 › 4.2 › Standart (yıl bilgisi yok → 1986-2026)
+  - + F-Pace › 2.0 › R-Sport (yıl bilgisi yok → 1986-2026)
+  - + F-Pace › 2.0 D › Prestige SE (yıl bilgisi yok → 1986-2026)
+  - + F-Pace › 2.0 D › R-Sport Plus (yıl bilgisi yok → 1986-2026)
+  - + F-Pace › 2.0 D › R-Sport SE (yıl bilgisi yok → 1986-2026)
+  - + F-Pace › 2.5 D › R-Sport (yıl bilgisi yok → 1986-2026)

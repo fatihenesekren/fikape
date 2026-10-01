@@ -1,5 +1,18 @@
 {
-  "takma": { "SJ": "Samurai" },
-  "yeniModel": { "X-90": { "bas": 1995, "bit": 1997, "kaynak": "en.wikipedia Suzuki X-90 (1995-1997)" } },
-  "atla": { "Maruti": "Suzuki/Maruti 800 — Türkiye'ye gelen sürümün yıl aralığı bu oturumda doğrulanamadı." }
+  "takma": {
+    "SJ": "Samurai"
+  },
+  "yeniModel": {
+    "X-90": {
+      "bas": 1995,
+      "bit": 1997,
+      "kaynak": "en.wikipedia Suzuki X-90 (1995-1997)"
+    }
+  },
+  "atla": {
+    "Maruti": "Suzuki/Maruti 800 — Türkiye'ye gelen sürümün yıl aralığı bu oturumda doğrulanamadı."
+  },
+  "ayriModel": [
+    "SJ"
+  ]
 }

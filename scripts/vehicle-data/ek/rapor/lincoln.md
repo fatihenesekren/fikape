@@ -1,5 +1,5 @@
 ### Lincoln
-- otomobil: zaten vardı 2 · eklendi 10 · belirsiz 2
+- otomobil: zaten vardı 2 · eklendi 12 · belirsiz 0
   - + Yeni model: MKS (2009–2016) — en.wikipedia Lincoln MKS (model yılı 2009-2016)
   - + MKS › 3.5L EcoBoost V6 › Standart
   - + Yeni model: Continental (1990–2020) — en.wikipedia Lincoln Continental (1988-2002, 2017-2020; 1990 öncesi kırpıldı — tüm nesillerin aralığı)
@@ -10,3 +10,5 @@
   - + Mark › VIII › Standart
   - + Yeni model: Town Car (1990–2011) — en.wikipedia Lincoln Town Car (1981-2011; 1990 öncesi kırpıldı)
   - + Town Car › 4.6 › Standart
+  - + Aviator › 4.6 V8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Nautilus › 2.0 › Standart (yıl bilgisi yok → 1986-2026)

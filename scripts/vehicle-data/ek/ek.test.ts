@@ -62,14 +62,18 @@ describe("ekUygula — kopya üretmez", () => {
     expect(s2.belirsiz[0].neden).toMatch(/aynı motor olabilir/);
   });
 
-  it("2012 sonrasına uzanan ve resmi tipi olan modelde yılsız satır eklenmez", () => {
+  it("2012 sonrasına uzanan ve resmi tipi olan modelde yılsız satır yıl bağımsız (1986-2026) eklenir", () => {
     const m: KatalogModel = {
       ad: "Giulietta", nesiller: [{ ad: "Giulietta (2010-2020)", bas: 2010, bit: 2020, el: { versiyonlar: [], paketler: ["Diğer"] } }],
       tipler: [{ v: "1.4 TB", hp: 120, p: "Distinctive", k: null, y: [2012], f: "GASOLINE", t: null }],
     };
     const s = ekUygula("Alfa Romeo", dosya("Giulietta", "1.6 JTD", "Super TCT (34)"), {}, [m]);
-    expect(s.eklenen).toHaveLength(0);
-    expect(s.belirsiz).toHaveLength(1);
+    expect(s.belirsiz).toHaveLength(0);
+    const g = m.tipler.find((t) => t.g)!;
+    expect(g.p).toBe("Super TCT");
+    expect(g.y[0]).toBe(1986);
+    expect(g.y[g.y.length - 1]).toBe(2026);
+    expect(g.f).toBe("DIESEL");
   });
 
   it("kasa tipi satırı versiyon olarak eklenmez", () => {

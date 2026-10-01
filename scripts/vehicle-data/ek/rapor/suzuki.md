@@ -1,11 +1,32 @@
 ### Suzuki
-- otomobil: zaten vardı 51 · eklendi 8 · belirsiz 21
+- otomobil: zaten vardı 52 · eklendi 30 · belirsiz 0
+  - + Alto › 0.8 GL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Alto › 1.1 › GL (yıl bilgisi yok → 1986-2026)
+  - + Alto › 1.1 › GLX (yıl bilgisi yok → 1986-2026)
+  - + Splash › 1.3 DDIS › Standart (yıl bilgisi yok → 1986-2026)
+  - + Swift › 1.3 › DDiS GL (yıl bilgisi yok → 1986-2026)
+  - + Swift › 1.3 › GLX (yıl bilgisi yok → 1986-2026)
+  - + Swift › 1.3 › GS (yıl bilgisi yok → 1986-2026)
+  - + Swift › 1.3 › Gti (yıl bilgisi yok → 1986-2026)
+  - + Swift › 1.3 › MT 4x2 (yıl bilgisi yok → 1986-2026)
+  - + Swift › 1.3 › MT 4x4 (yıl bilgisi yok → 1986-2026)
+  - + Swift › 1.5 AT › Standart (yıl bilgisi yok → 1986-2026)
+  - + Ignis › 1.3i › Standart (yıl bilgisi yok → 1986-2026)
   - + Liana › 1.6 GLX › Standart
-  - + Samurai › SJ410 › Standart
-  - + Samurai › SJ413 › Standart
+  - + Yeni model: Maruti (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Maruti › 800 › Standart
+  - + Grand Vitara › 2.7 XL-7 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Jimny › 1.5 › Allgrip GLX (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): SJ (1990–) — yıl aralığı "Samurai" modelinden alındı
+  - + SJ › Samurai › Standart
+  - + SJ › SJ410 › Standart
+  - + SJ › SJ413 › Standart
+  - + S-Cross › 1.4 › Allgrip GLX Black Edition (yıl bilgisi yok → 1986-2026)
+  - + S-Cross › 1.6 › GL (yıl bilgisi yok → 1986-2026)
+  - + S-Cross › 1.6 › GL Plus (yıl bilgisi yok → 1986-2026)
+  - + S-Cross › 1.6 › GLX (yıl bilgisi yok → 1986-2026)
   - + Vitara › 1.4 BoosterJet › GL Plus
   - + Vitara › 2.0 HDI › Standart
   - + Vitara › LX › Standart
   - + Vitara › VX › Standart
   - + Yeni model: X-90 (1995–1997) — en.wikipedia Suzuki X-90 (1995-1997)
-  - ~ eşleme: "SJ" → "Samurai"

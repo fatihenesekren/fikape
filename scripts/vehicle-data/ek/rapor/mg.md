@@ -1,11 +1,19 @@
 ### MG
-- otomobil: zaten vardı 8 · eklendi 8 · belirsiz 8
+- otomobil: zaten vardı 8 · eklendi 17 · belirsiz 0
   - + Yeni model: F (1995–2011) — en.wikipedia MG F / MG TF (1995-2011, üç üretici)
   - + F › 1.6 › Standart
   - + F › 1.8 › Standart
+  - + MG7 › 1.5 › Excellence Red Edition (yıl bilgisi yok → 1986-2026)
   - + Yeni model: ZR (2001–2005) — en.wikipedia MG ZR (2001-2005)
   - + ZR › 160 › Standart
+  - + EHS › 1.5 PHEV › Comfort (yıl bilgisi yok → 1986-2026)
+  - + HS › 1.5 PHEV › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Marvel R (2021–) — MG Marvel R Electric (2021'den beri; Türkiye'ye gelişi mg-turkey.com)
   - + Marvel R › Luxury › Standart
   - + Marvel R › Performance › Standart
-  - ~ eşleme: "ZS EV" → "ZS"
+  - + ZS › 1.0 T-GDI › Comfort (yıl bilgisi yok → 1986-2026)
+  - + ZS › 1.0 T-GDI › Luxury (yıl bilgisi yok → 1986-2026)
+  - + ZS › 1.0 T-GDI › Luxury Plus (yıl bilgisi yok → 1986-2026)
+  - + ZS › 1.5 › Luxury (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): ZS EV (1986–) — yıl aralığı "ZS" modelinden alındı
+  - + ZS EV › Luxury › Standart

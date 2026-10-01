@@ -1,10 +1,17 @@
 ### Daihatsu
-- otomobil: zaten vardı 5 · eklendi 23 · belirsiz 5
+- otomobil: zaten vardı 5 · eklendi 33 · belirsiz 0
   - + Yeni model: Cuore (1990–2018) — en.wikipedia Daihatsu Cuore (1980-2018; 1990 öncesi kırpıldı — tüm nesillerin aralığı)
   - + Cuore › 0.9 › GLX
   - + Cuore › 1.0 › High Grade
   - + Cuore › 1.0 › Low Grade
   - + Cuore › 1.0 › Thrifty
+  - + Yeni model: Move (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Move › 1.5 › Gran Move
+  - + Yeni model: Sirion (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Sirion › 1.0 › Standart
+  - + Sirion › 1.3 › Standart
+  - + Sirion › 1.3 › Sporty
+  - + Sirion › 1.3 › Touring
   - + Yeni model: Applause (1990–2000) — en.wikipedia Daihatsu Applause (1989-2000; 1990 öncesi kırpıldı)
   - + Applause › 1.6 › Li
   - + Applause › 1.6 › X
@@ -21,5 +28,8 @@
   - + YRV › 1.3 › Turbo
   - + Yeni model: Feroza (1990–2002) — automobile-catalog Daihatsu Rocky/Feroza/Sportrak (1989-2002; 1990 öncesi kırpıldı)
   - + Feroza › 1.6 › SX
+  - + Terios › 1.3 › DX (yıl bilgisi yok → 1986-2026)
+  - + Terios › 1.3 › SX (yıl bilgisi yok → 1986-2026)
+  - + Terios › 1.5 › Gold (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Rocky (1990–2002) — en.wikipedia Daihatsu Rocky (F300) / Feroza (1989-2002)
   - + Rocky › 1.6 › Standart

@@ -1,3 +1,12 @@
 {
-  "takma": { "Atto 3 EV": "Atto 3", "Seal U DM-i": "Seal U", "Seal U EV": "Seal U" }
+  "takma": {
+    "Atto 3 EV": "Atto 3",
+    "Seal U DM-i": "Seal U",
+    "Seal U EV": "Seal U"
+  },
+  "ayriModel": [
+    "Atto 3 EV",
+    "Seal U DM-i",
+    "Seal U EV"
+  ]
 }

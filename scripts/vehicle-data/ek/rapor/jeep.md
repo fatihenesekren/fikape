@@ -1,9 +1,41 @@
 ### Jeep
-- otomobil: zaten vardı 69 · eklendi 6 · belirsiz 26
+- otomobil: zaten vardı 66 · eklendi 39 · belirsiz 0
+  - + Yeni model (ayrı): Avenger Electric (2023–) — yıl aralığı "Avenger" modelinden alındı
+  - + Avenger Electric › Limited › Standart
+  - + Avenger Electric › Summit › Standart
+  - + Cherokee › 2.1 TD › Limited (yıl bilgisi yok → 1986-2026)
+  - + Cherokee › 2.8 CRD › Renegade (yıl bilgisi yok → 1986-2026)
+  - + Cherokee › 3.7 › Limited (yıl bilgisi yok → 1986-2026)
+  - + Cherokee › 3.7 › Renegade (yıl bilgisi yok → 1986-2026)
   - + Cherokee › 4.0 › Country
   - + Commander › 3.0 CRD › Standart
+  - + Compass › 1.3 GSE › 80. Yıl (yıl bilgisi yok → 1986-2026)
+  - + Compass › 1.3 PHEV › Trailhawk (yıl bilgisi yok → 1986-2026)
+  - + Compass › 1.4 › S Limited (yıl bilgisi yok → 1986-2026)
+  - + Compass › 2.4 CVT › Standart (yıl bilgisi yok → 1986-2026)
   - + Grand Cherokee › 2.7 CRD › Vision
+  - + Grand Cherokee › 3.0 CRD › 75th Anniversary Edition (yıl bilgisi yok → 1986-2026)
+  - + Grand Cherokee › 3.1 TD › Laredo (yıl bilgisi yok → 1986-2026)
+  - + Grand Cherokee › 3.1 TD › Limited (yıl bilgisi yok → 1986-2026)
+  - + Grand Cherokee › 4.7 › Limited (yıl bilgisi yok → 1986-2026)
+  - + Grand Cherokee › 4.7 › Overland (yıl bilgisi yok → 1986-2026)
+  - + Grand Cherokee › 5.2 › Limited (yıl bilgisi yok → 1986-2026)
+  - + Grand Cherokee › 5.7 › Limited (yıl bilgisi yok → 1986-2026)
+  - + Grand Cherokee › 5.9 › Limited (yıl bilgisi yok → 1986-2026)
+  - + Grand Cherokee › 6.1 › SRT (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Grand Wagoneer (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Grand Wagoneer › 6.4 › Standart
   - + Patriot › 2.4 CVT › Standart
+  - + Renegade › 1.3 T › 80. Yıl (yıl bilgisi yok → 1986-2026)
+  - + Renegade › 1.6 Multijet › Night Eagle (yıl bilgisi yok → 1986-2026)
+  - + Wrangler › 2.5 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Wrangler › 4.0 › Base (yıl bilgisi yok → 1986-2026)
+  - + Wrangler › 4.0 › Sahara (yıl bilgisi yok → 1986-2026)
+  - + Wrangler › 4.0 › SE (yıl bilgisi yok → 1986-2026)
+  - + Wrangler › 4.0 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Wrangler › 4.0i › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: CJ (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + CJ › CJ-5 › Standart
+  - + CJ › CJ-6 › Standart
   - + Yeni model: Liberty (2002–2012) — en.wikipedia Jeep Liberty (model yılı 2002-2012)
   - + Liberty › 3.7 › Standart
-  - ~ eşleme: "Avenger Electric" → "Avenger"

@@ -1,12 +1,84 @@
 ### Fiat
-- otomobil: zaten vardı 237 · eklendi 37 · belirsiz 118
+- otomobil: zaten vardı 226 · eklendi 180 · belirsiz 1
   - + Yeni model: 124 Spider (2016–2020) — en.wikipedia Fiat 124 Spider (2016) — üretim 2016-2019, model yılı 2017-2020
   - + 124 Spider › 1.4 T Multiair › Lusso
+  - + Albea › 1.2 › Active (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.2 › Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.2 › EL (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.2 › HL (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.2 › SL (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.2 › Speed (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.3 Multijet › EL (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.3 Multijet › SL (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.6 › Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.6 › EL (yıl bilgisi yok → 1986-2026)
+  - + Albea › 1.6 › HL (yıl bilgisi yok → 1986-2026)
+  - + Bravo › 1.4 Multiair › Sport Style (yıl bilgisi yok → 1986-2026)
+  - + Bravo › 1.4 Turbo › Emotion (yıl bilgisi yok → 1986-2026)
+  - + Bravo › 1.6 › SX (yıl bilgisi yok → 1986-2026)
+  - + Bravo › 1.6 Mjet › Emotion (yıl bilgisi yok → 1986-2026)
+  - + Bravo › 1.6 Mjet › Sport Style (yıl bilgisi yok → 1986-2026)
+  - + Bravo › 2.0 › HGT (yıl bilgisi yok → 1986-2026)
   - + Yeni model: 126 Bis (1990–1991) — en.wikipedia Fiat 126 (BIS 1987-1991; 1990 öncesi kırpıldı)
   - + 126 Bis › 126 › Standart
   - + Yeni model: Coupe (1993–2000) — en.wikipedia Fiat Coupé (1993-2000)
   - + Coupe › 2.0 › Standart
   - + Coupe › 2.0 Turbo › Standart
+  - + Yeni model (ayrı): 500 Ailesi (2007–) — yıl aralığı "500" modelinden alındı
+  - + 500 Ailesi › 500 1.0 › Dolcevita
+  - + 500 Ailesi › 500 1.0 › Sport
+  - + 500 Ailesi › 500 1.2 › 8V RockStar Dualogic
+  - + 500 Ailesi › 500 1.2 › 8V Star Dualogic
+  - + 500 Ailesi › 500 1.2 › Anniversario
+  - + 500 Ailesi › 500 1.2 › Cult
+  - + 500 Ailesi › 500 1.2 › Lounge
+  - + 500 Ailesi › 500 1.2 › Pop
+  - + 500 Ailesi › 500 1.2 › Popstar
+  - + 500 Ailesi › 500 1.2 › Sport
+  - + 500 Ailesi › 500 1.3 Mjet › Pop
+  - + 500 Ailesi › 500 1.4 › Lounge
+  - + 500 Ailesi › 500 1.4 › Sport
+  - + 500 Ailesi › 500 Abarth › 595
+  - + 500 Ailesi › 500 Abarth › 595 Competizione
+  - + 500 Ailesi › 500 Abarth › 595 Turismo
+  - + 500 Ailesi › 500 Abarth › 695 Maserati Edizione
+  - + 500 Ailesi › 500 Abarth › 695 Tributo Ferrari
+  - + 500 Ailesi › 500C 0.9 TwinAir › Turbo GQ
+  - + 500 Ailesi › 500C 1.2 › 8V Star Dualogic
+  - + 500 Ailesi › 500C 1.2 › Anniversario
+  - + 500 Ailesi › 500C 1.2 › Cult
+  - + 500 Ailesi › 500C 1.2 › Dolcevita
+  - + 500 Ailesi › 500C 1.2 › Gucci
+  - + 500 Ailesi › 500C 1.2 › Lounge
+  - + 500 Ailesi › 500C 1.4 › Lounge
+  - + 500 Ailesi › 500E › La Prima
+  - + 500 Ailesi › 500L 1.3 Mjet › Beats Edition
+  - + 500 Ailesi › 500L 1.3 Mjet › Bi-Color
+  - + 500 Ailesi › 500L 1.3 Mjet › Cross Dualogic
+  - + 500 Ailesi › 500L 1.3 Mjet › Cross Plus
+  - + 500 Ailesi › 500L 1.3 Mjet › Lounge
+  - + 500 Ailesi › 500L 1.3 Mjet › Mirror
+  - + 500 Ailesi › 500L 1.3 Mjet › Opening Edition
+  - + 500 Ailesi › 500L 1.3 Mjet › Panoramic Edition
+  - + 500 Ailesi › 500L 1.3 Mjet › Pop
+  - + 500 Ailesi › 500L 1.3 Mjet › PopStar
+  - + 500 Ailesi › 500L 1.3 Mjet › RockStar
+  - + 500 Ailesi › 500L 1.3 Mjet › Wagon
+  - + 500 Ailesi › 500L 1.4 › Bi-Color
+  - + 500 Ailesi › 500L 1.4 › Cross
+  - + 500 Ailesi › 500L 1.4 › Cross Plus
+  - + 500 Ailesi › 500L 1.4 › Mirror
+  - + 500 Ailesi › 500L 1.4 › Panoramic Edition
+  - + 500 Ailesi › 500L 1.4 › Pop
+  - + 500 Ailesi › 500L 1.4 › PopStar
+  - + 500 Ailesi › 500L 1.6 Mjet › Beats Edition
+  - + 500 Ailesi › 500L 1.6 Mjet › Cross Plus
+  - + 500 Ailesi › 500L 1.6 Mjet › Lounge
+  - + 500 Ailesi › 500L 1.6 Mjet › Panoramic Edition
+  - + 500 Ailesi › 500L 1.6 Mjet › PopStar
+  - + 500 Ailesi › 500L 1.6 Mjet › RockStar
+  - + Egea › 1.3 Multijet › Easy Stil (yıl bilgisi yok → 1986-2026)
+  - + Egea › 1.6 Multijet › Easy Stil (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Idea (2003–2016) — autoevolution Fiat Idea (2003-2016)
   - + Idea › 1.3 Multijet › Active
   - + Idea › 1.3 Multijet › Dynamic
@@ -16,6 +88,62 @@
   - + Marea (1996-2002) › 1.6 › Exclusive
   - + Marea (1996-2002) › 1.6 › Liberty
   - + Marea (1996-2002) › 2.0 HLX › Standart
+  - + Yeni model: Mirafiori (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Mirafiori › 2.0 › Standart
+  - + Palio › 1.2 › Active (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › Dynamic Speedgear (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › EL (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › EL Speedgear (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › EL Weekend (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › Feel (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › Go (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › HL (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › HL Speedgear (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › HL Weekend (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › S (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › SL (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.2 › S Weekend (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.3 Multijet › EL (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.3 Multijet › SL (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.4 › EL (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.4 › EL Weekend (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.4 › HL (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.4 › RT (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.6 › HL (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.6 › HL Weekend (yıl bilgisi yok → 1986-2026)
+  - + Palio › 1.6 › Sporting (yıl bilgisi yok → 1986-2026)
+  - + Panda › 0.9 TwinAir › S&S (yıl bilgisi yok → 1986-2026)
+  - + Panda › 1.2 › Climbing 4x4 (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.2 › Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.3 Multijet › Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.3 Multijet › Shine (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.4 › Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.4 › Easy S&S (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.4 › Lounge S&S (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.4 › Mair Easy S&S (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.4 › Mair Lounge S&S (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.4 › Pop S&S (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.4 › Popstar S&S (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.4 › Urban S&S (yıl bilgisi yok → 1986-2026)
+  - + Punto › 1.9 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Punto › EVO 1.2 › Active (yıl bilgisi yok → 1986-2026)
+  - + Punto › EVO 1.3 Multijet › Active (yıl bilgisi yok → 1986-2026)
+  - + Punto › EVO 1.3 Multijet › My Life (yıl bilgisi yok → 1986-2026)
+  - + Punto › EVO 1.4 › Active (yıl bilgisi yok → 1986-2026)
+  - + Punto › EVO 1.4 › Fire Active (yıl bilgisi yok → 1986-2026)
+  - + Punto › EVO 1.4 › Fire Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Punto › EVO 1.4 › Fire My Life (yıl bilgisi yok → 1986-2026)
+  - + Punto › EVO 1.4 › Multiair Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Punto › Grande 1.3 Multijet › Emotion (yıl bilgisi yok → 1986-2026)
+  - + Punto › Grande 1.3 Multijet › Fun (yıl bilgisi yok → 1986-2026)
+  - + Punto › Grande 1.4 › Fire Fun (yıl bilgisi yok → 1986-2026)
+  - + Punto › Grande 1.4 › Fire S&S (yıl bilgisi yok → 1986-2026)
+  - + Punto › Grande 1.4 › Starjet Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Punto › Grande 1.4 › Starjet Emotion (yıl bilgisi yok → 1986-2026)
+  - + Punto › Grande 1.4 › Starjet Fun (yıl bilgisi yok → 1986-2026)
+  - + Punto › Grande 1.4 › T-jet Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Punto › Grande 1.4 › T-jet Sport (yıl bilgisi yok → 1986-2026)
   - + Siena (1997-2007) › 1.2 › S
   - + Siena (1997-2007) › 1.6 › HL
   - + Stilo (2001-2007) › 1.4 › Active
@@ -31,12 +159,26 @@
   - + Tempra (1990-1999) › 2.0 › ie
   - + Tempra (1990-1999) › 2.0 › ie 16v
   - + Tempra (1990-1999) › 2.0 › ie SW
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.4 › ie (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.4 › S (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.4 › SX (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.4 › SX ie (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.6 › DGT (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.6 › ie (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.6 › S (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.6 › SLX (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.6 › SLX ie (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 1.6 › SX (nesil belli değil → 1986-2026)
+  - + Tipo (2015-) + Tipo (1990-1995) › 2.0 › Standart (nesil belli değil → 1986-2026)
+  - + Yeni model: Topolino (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Topolino › Topolino Plus › Standart
   - + Uno (1985-2003) › 1.4 ie 70 S › Standart
   - + Uno (1985-2003) › 1.4 ie Hobby › Standart
   - + Uno (1985-2003) › 1.4 ie SX › Standart
   - + Uno (1985-2003) › 70 SXie › Standart
+  - + Yeni model (ayrı): Grande Panda Electric (2025–) — yıl aralığı "Grande Panda" modelinden alındı
+  - + Grande Panda Electric › La Prima › Standart
   - + Yeni model: Sedici (2006–2014) — en.wikipedia Fiat Sedici (2005-2014)
   - + Sedici › 1.6 › Dynamic
-  - ~ eşleme: "500 Ailesi" → "500"
-  - ~ eşleme: "Grande Panda Electric" → "Grande Panda"
-- kamyonet: zaten vardı 2 · eklendi 0 · belirsiz 1
+- kamyonet: zaten vardı 2 · eklendi 1 · belirsiz 0
+  - + Fullback › 2.4 D › Fullrock (yıl bilgisi yok → 1986-2026)

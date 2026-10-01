@@ -1,4 +1,13 @@
 {
   "marka": "DS",
-  "takma": { "No4": "N°4", "No8": "N°8", "DS 3 Crossback": "DS 3", "DS 7 Crossback": "DS 7" }
+  "takma": {
+    "No4": "N°4",
+    "No8": "N°8",
+    "DS 3 Crossback": "DS 3",
+    "DS 7 Crossback": "DS 7"
+  },
+  "ayriModel": [
+    "DS 3 Crossback",
+    "DS 7 Crossback"
+  ]
 }

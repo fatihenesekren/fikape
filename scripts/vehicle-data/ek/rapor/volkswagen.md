@@ -1,5 +1,13 @@
 ### Volkswagen
-- otomobil: zaten vardı 273 · eklendi 23 · belirsiz 176
+- otomobil: zaten vardı 286 · eklendi 188 · belirsiz 2
+  - + Beetle › 1.3 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Beetle › 1.6 › Highline (yıl bilgisi yok → 1986-2026)
+  - + Beetle › 1.6 › Smile (yıl bilgisi yok → 1986-2026)
+  - + Beetle › 1.9 TDi › Standart (yıl bilgisi yok → 1986-2026)
+  - + Beetle › 2.0 › Diamond (yıl bilgisi yok → 1986-2026)
+  - + Beetle › 2.0 › Highline (yıl bilgisi yok → 1986-2026)
+  - + Beetle › 2.0 › Pearl (yıl bilgisi yok → 1986-2026)
+  - + Beetle › 2.3 › Standart (yıl bilgisi yok → 1986-2026)
   - + Bora (1998-2005) › 1.6 › Basic
   - + Bora (1998-2005) › 1.6 › Pacific
   - + Bora (1998-2005) › 1.6 › Primeline
@@ -7,24 +15,177 @@
   - + Bora (1998-2005) › 1.8 › 4Motion
   - + Bora (1998-2005) › 1.8 T › Highline
   - + Bora (1998-2005) › 2.3 › Highline
-  - + Golf › 1.6 FSI › Goal
-  - + Golf › 1.6 FSI › Sportline
-  - + Golf › 1.6 FSI › Tour
+  - + Eos › 2.0 TFSI Highline › Standart (yıl bilgisi yok → 1986-2026)
+  - + Eos › 1.6 FSi › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Eos › 1.6 FSi › Highline (yıl bilgisi yok → 1986-2026)
+  - + Eos › 2.0 › FSi (yıl bilgisi yok → 1986-2026)
+  - + Eos › 2.0 › TDI Highline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.4 › CL (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.4 › Plus Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.4 TSI › GT (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.4 TSI › Midline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.4 TSI › Tour (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › Basicline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › C (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › CL (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › GL (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › Goal (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › GTD (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › Pacific (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › Primeline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › Primeline Plus (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › Sportline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › Tour (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 › Variant (yıl bilgisi yok → 1986-2026)
   - + Golf › 1.6 FSI › Plus Comfortline
   - + Golf › 1.6 FSI › Plus Goal
-  - + Golf › 1.6 FSI › Plus Primeline
-  - + Golf › 1.8 T › GTI
+  - + Golf › 1.6 TDI › BlueMotion Allstar (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 TDI › BlueMotion Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 TDI › BlueMotion Highline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.6 TDI › BlueMotion Midline Plus (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.8 › 4motion (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.8 › CL (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.8 › GL (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.8 › GTI (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.8 › Highline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.9 › D CL (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.9 TDI › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.9 TDI › Goal (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.9 TDI › Highline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.9 TDI › Midline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.9 TDI › Pacific (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.9 TDI › Tour (yıl bilgisi yok → 1986-2026)
+  - + Golf › 1.9 TDI › Variant (yıl bilgisi yok → 1986-2026)
+  - + Golf › 2.0 › FSi Sportline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 2.0 › Highline (yıl bilgisi yok → 1986-2026)
+  - + Golf › 2.0 TDI › Goal (yıl bilgisi yok → 1986-2026)
+  - + Golf › 2.0 TSI › BlueMotion GTI Performans (yıl bilgisi yok → 1986-2026)
+  - + Golf › 2.0 TSI › R BlueMotion (yıl bilgisi yok → 1986-2026)
+  - + Golf › 2.3 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Golf › 2.5 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Golf › 2.8 V6 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.3 GL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.4 TSI › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.4 TSI › Midline (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.4 TSI › Tour (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.6 › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.6 › FSI Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.6 › FSI Midline (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.6 › GL (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.6 › GTD (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.6 › Tour (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.8 › CL (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.8 › GT (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.9 TDI › Midline (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 1.9 TDI › Primeline (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 2.0 › FSI Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Jetta › 2.0 › TDI Comfortline (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Lupo (1998–2005) — en.wikipedia Volkswagen Lupo (1998-2005)
   - + Lupo › 1.4 › Standart
   - + Lupo › 1.4 › Oxford
+  - + Passat › 1.4 TSI BlueMotion › R Line (yıl bilgisi yok → 1986-2026)
+  - + Passat › 1.6 › CL (yıl bilgisi yok → 1986-2026)
+  - + Passat › 1.6 › GL (yıl bilgisi yok → 1986-2026)
   - + Passat › 1.8 › Basic
   - + Passat › 1.8 › Comfortline
   - + Passat › 1.8 › Highline
   - + Passat › 1.8 › Trendline
-  - + Passat › 1.9 TDI › Exclusive
-  - + Passat › 1.9 TDI › Trendline
-  - ~ eşleme: "Passat Alltrack" → "Passat Variant"
-  - ~ eşleme: "Up Club" → "up!"
-  - ~ eşleme: "VW CC" → "Passat CC"
-  - ~ eşleme: "Tiguan AllSpace" → "Tiguan"
+  - + Passat › 1.8 T › Standart (yıl bilgisi yok → 1986-2026)
+  - + Passat › 1.8 T › Basic (yıl bilgisi yok → 1986-2026)
+  - + Passat › 1.8 T › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Passat › 1.8 T › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Passat › 1.8 T › Highline (yıl bilgisi yok → 1986-2026)
+  - + Passat › 1.8 T › Trendline (yıl bilgisi yok → 1986-2026)
+  - + Passat › 2.0 › GL (yıl bilgisi yok → 1986-2026)
+  - + Passat › 2.0 › GT (yıl bilgisi yok → 1986-2026)
+  - + Passat › 2.0 › Trendline (yıl bilgisi yok → 1986-2026)
+  - + Passat › 2.0 TDI › Sportline (yıl bilgisi yok → 1986-2026)
+  - + Passat › 2.5 TDI › Highline (yıl bilgisi yok → 1986-2026)
+  - + Passat › 2.8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Passat › 2.8 › Highline (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Passat Alltrack (2012–2024) — yıl aralığı "Passat Variant" modelinden alındı
+  - + Passat Alltrack › 2.0 TDI › Alltrack
+  - + Passat Variant › 1.4 TSI › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 1.5 e-TSI › Impression (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 1.5 e-TSI › R Line (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 1.6 FSI › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 1.8 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 1.8 › CL (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 1.8 T › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 1.8 T › Highline (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 1.9 TDI › Standart (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 1.9 TDI › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 2.0 › GT (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 2.0 TDI BlueMotion › Alltrack (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 2.0 TDI BlueMotion › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 2.0 TDI BlueMotion › Sportline (yıl bilgisi yok → 1986-2026)
+  - + Passat Variant › 2.5 TDI › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Phaeton › 5.0 TDI Long › Standart (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.0 TSI › R-Line (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.3 › CL (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.4 › Basicline (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.4 › Comfortline Classic (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.4 › Cross (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.4 › Goal (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.4 › Highline (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.4 › Primeline (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.4 › Sportline (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.4 › Tour (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.6 › Classic (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.6 › Comfortline Classic (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.6 › GTI (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.6 › Sportline Classic (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.6 › Trendline Classic (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.9 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.9 SDI › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.9 TDI › Comfortline Classic (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.9 TDI › Trendline Classic (yıl bilgisi yok → 1986-2026)
+  - + Polo › 1.9 TDI › Trendline Variant (yıl bilgisi yok → 1986-2026)
+  - + Scirocco › 2.0 › TDI Sportline (yıl bilgisi yok → 1986-2026)
+  - + Scirocco › 2.0 › TFSI Sportline (yıl bilgisi yok → 1986-2026)
+  - + Sharan › 1.9 TDI › Standart (yıl bilgisi yok → 1986-2026)
+  - + Touran › 1.4 TSI › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Touran › 1.6 › Function (yıl bilgisi yok → 1986-2026)
+  - + Touran › 1.6 › Trendline (yıl bilgisi yok → 1986-2026)
+  - + Touran › 1.6 FSI › Highline (yıl bilgisi yok → 1986-2026)
+  - + Touran › 1.9 TDI › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Touran › 1.9 TDI › Highline (yıl bilgisi yok → 1986-2026)
+  - + Touran › 2.0 TDI › Highline (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Up Club (2011–) — yıl aralığı "up!" modelinden alındı
+  - + Up Club › E-Up › Standart
+  - + Yeni model (ayrı): VW CC (2012–2017) — yıl aralığı "Passat CC" modelinden alındı
+  - + VW CC › 1.4 TSI › 1.4
+  - + VW CC › 1.4 TSI › Exclusive
+  - + VW CC › 1.4 TSI › R-Line
+  - + VW CC › 1.4 TSI › Sportline
+  - + VW CC › 1.8 TFSI › Standart
+  - + VW CC › 1.8 TSI › Standart
+  - + VW CC › 2.0 TDI › Standart
+  - + VW CC › 2.0 TDI › Exclusive
+  - + ID.6 › XPro › Standart (yıl bilgisi yok → 1986-2026)
+  - + Tiguan › 1.4 TSI › Fun&Function (yıl bilgisi yok → 1986-2026)
+  - + Tiguan › 1.4 TSI › Track&Field (yıl bilgisi yok → 1986-2026)
+  - + Tiguan › 1.6 TDI › R Line (yıl bilgisi yok → 1986-2026)
+  - + Tiguan › 2.0 TDI › Comfortline (yıl bilgisi yok → 1986-2026)
+  - + Tiguan › 2.0 TDI › Fun&Function (yıl bilgisi yok → 1986-2026)
+  - + Tiguan › 2.0 TDI › Track&Field (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Tiguan AllSpace (1986–) — yıl aralığı "Tiguan" modelinden alındı
+  - + Tiguan AllSpace › 1.4 TSI › Comfortline
+  - + Tiguan AllSpace › 1.4 TSI › Highline
+  - + Tiguan AllSpace › 1.5 TSI › Elegance
+  - + Tiguan AllSpace › 1.5 TSI › Highline
+  - + Tiguan AllSpace › 1.5 TSI › Life
+  - + Tiguan AllSpace › 1.5 TSI › R Line
+  - + Touareg › 2.5 TDI › Standart (yıl bilgisi yok → 1986-2026)
+  - + Touareg › 2.5 TDI › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Touareg › 2.5 TDI › Sportive (yıl bilgisi yok → 1986-2026)
+  - + Touareg › 3.0 TDI › Active (yıl bilgisi yok → 1986-2026)
+  - + Touareg › 3.0 TDI › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Touareg › 3.2 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Touareg › 3.6 FSI › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + Touareg › 4.2 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Touareg › 5.0 TDI › Standart (yıl bilgisi yok → 1986-2026)
+  - + Touareg › 5.0 TDI › Exclusive (yıl bilgisi yok → 1986-2026)
 - kamyonet: zaten vardı 15 · eklendi 0 · belirsiz 0

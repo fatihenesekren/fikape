@@ -1,27 +1,6 @@
 [
   {
     "marka": "Chery",
-    "model": "Alia",
-    "versiyon": "1.6",
-    "paket": "Acteco Forza",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Chery",
-    "model": "Alia",
-    "versiyon": "1.6",
-    "paket": "Acteco Lusso",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Chery",
-    "model": "Alia",
-    "versiyon": "1.6",
-    "paket": "Acteco Norma",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Chery",
     "model": "Omoda 5",
     "neden": "Katalogda OMODA markası altında zaten var (Omoda 5: Comfort/Luxury/Excellent). Chery altına eklemek kopya olur; Chery Omoda 5 Türkiye'de 21 Mart 2023'te satışa çıktı (tasimacilar.com)."
   },
@@ -29,40 +8,5 @@
     "marka": "Chery",
     "model": "Omoda 5 Pro",
     "neden": "Katalogda OMODA markası altında zaten var (Omoda 5 › Pro Vision/Intelligent/Exceptional). Chery altına eklemek kopya olur."
-  },
-  {
-    "marka": "Chery",
-    "model": "Tiggo 3",
-    "versiyon": "1.6",
-    "paket": "Acteco Forza",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Chery",
-    "model": "Tiggo 3",
-    "versiyon": "1.6",
-    "paket": "Acteco Lusso",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Chery",
-    "model": "Tiggo 3",
-    "versiyon": "1.6",
-    "paket": "Lusso Supercharger",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Chery",
-    "model": "Tiggo 7",
-    "versiyon": "1.6 T-GDI",
-    "paket": "Prestige 4x2",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
-  },
-  {
-    "marka": "Chery",
-    "model": "Tiggo 7 Pro Max",
-    "versiyon": "1.6 T-GDI",
-    "paket": "Pro Max Exceptional Black Edition",
-    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
   }
 ]

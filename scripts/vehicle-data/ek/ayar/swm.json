@@ -1,1 +1,10 @@
-{ "takma": { "G01 Pro": "G01", "G05 Pro": "G05" } }
+{
+  "takma": {
+    "G01 Pro": "G01",
+    "G05 Pro": "G05"
+  },
+  "ayriModel": [
+    "G01 Pro",
+    "G05 Pro"
+  ]
+}

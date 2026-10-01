@@ -1,7 +1,306 @@
 ### BMW
-- otomobil: zaten vardı 456 · eklendi 5 · belirsiz 241
+- otomobil: zaten vardı 459 · eklendi 304 · belirsiz 3
+  - + 1 Serisi › 116d ED › EfficientDynamics (yıl bilgisi yok → 1986-2026)
+  - + 1 Serisi › 116d ED › Urban Plus (yıl bilgisi yok → 1986-2026)
+  - + 1 Serisi › 116i › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + 1 Serisi › 116i › Technology (yıl bilgisi yok → 1986-2026)
+  - + 1 Serisi › 120i › M Plus (yıl bilgisi yok → 1986-2026)
+  - + 1 Serisi › 135i › Standart (yıl bilgisi yok → 1986-2026)
+  - + 2 Serisi › 216d Gran Coupe › First Edition Sport Line (yıl bilgisi yok → 1986-2026)
+  - + 2 Serisi › 216d Gran Tourer › Luxury Plus (yıl bilgisi yok → 1986-2026)
+  - + 2 Serisi › 218i Active Tourer › Luxury Plus (yıl bilgisi yok → 1986-2026)
+  - + 2 Serisi › 218i Active Tourer › Sport Plus (yıl bilgisi yok → 1986-2026)
+  - + 2 Serisi › 218i Gran Coupe › First Edition Sport Line (yıl bilgisi yok → 1986-2026)
+  - + 2 Serisi › 218i Gran Tourer › Luxury Plus (yıl bilgisi yok → 1986-2026)
+  - + 2 Serisi › 220d › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 316Ci › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 316i › Compact (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 316i › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 316i › Premium (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 316i › Sport Line (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 316i › Technology (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 316i › Techno Plus (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 316ti › Compact (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 318Ci › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 318d › Premium (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 318is › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 318ti › Compact (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320Cd › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320Ci › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d › Edition Comfort (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d › Technology (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d GT › Gran Turismo (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d GT › Luxury (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d GT › Modern Line (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d GT › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d GT › Sport Line (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d xDrive › Edition Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d xDrive › Modern Line (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d xDrive GT › Luxury (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d xDrive GT › Modern Line (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d xDrive GT › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d xDrive GT › Premium (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320d xDrive GT › Sport Line (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i › 50th Year M Edition (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i › Cabrio (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i › Gran Turismo (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i › Premium (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i › Touring (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i ED › 40th Year Edition (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i ED › Luxury Line Plus (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i ED › Luxury M Plus (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i ED › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320i ED › Techno Plus (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320si › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 320td › Compact (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 323Ci › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 323i › Touring (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 323ti › Compact (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 325Ci › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 325e › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 325i › Cabrio (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 325i › Touring (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 325is › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 325i xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 325xi › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 325xi › Touring (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 328Ci › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 328i › Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 328i › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 328i › Sport Line (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 330Ci › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 330xd › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 330xi › Standart (yıl bilgisi yok → 1986-2026)
+  - + 3 Serisi › 340d xDrive › Touring M Sport (yıl bilgisi yok → 1986-2026)
+  - + 4 Serisi › 420d Gran Coupe › Premium (yıl bilgisi yok → 1986-2026)
+  - + 4 Serisi › 420d xDrive Gran Coupe › Modern Line (yıl bilgisi yok → 1986-2026)
+  - + 4 Serisi › 420d xDrive Gran Coupe › Premium (yıl bilgisi yok → 1986-2026)
+  - + 4 Serisi › 428i › Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + 4 Serisi › 428i Gran Coupe › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 4 Serisi › 428i xDrive › Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + 4 Serisi › 428i xDrive Gran Coupe › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 4 Serisi › 428i xDrive Gran Coupe › Sport Line (yıl bilgisi yok → 1986-2026)
+  - + 4 Serisi › 430d Gran Coupe › Luxury (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 520d Gran Turismo › Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 520d Gran Turismo › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 520d xDrive › Special Edition Luxury (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 520d xDrive › Special Edition Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 520i › Comfort (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 520i › Comfort Plus (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 520i › Modern Line (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 520i › Special Edition Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 520i › Touring (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 523i › Touring (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 525d xDrive › Executive Luxury (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 525d xDrive › Modern Line (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 525d xDrive › Premium (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 525i › Touring (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 525ix › Touring (yıl bilgisi yok → 1986-2026)
   - + 5 Serisi › 525tds › Touring
+  - + 5 Serisi › 525 xDrive › Touring Premium (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 528i › Touring (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 528xi › Standart (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 530d › Touring (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 530d xDrive › Prestige (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 530i xDrive › Special Edition Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 530i xDrive › Special Edition M Sport (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 530xd Gran Turismo › Gran Turismo (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 530xd Gran Turismo › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 530xd Gran Turismo › Premium (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 530xi › Standart (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 545i › Standart (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 550d xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 5 Serisi › 550i xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 6 Serisi › 630Ci › Standart (yıl bilgisi yok → 1986-2026)
+  - + 6 Serisi › 630Ci › Cabrio (yıl bilgisi yok → 1986-2026)
   - + 6 Serisi › 630i › Cabrio
+  - + 6 Serisi › 635d › Standart (yıl bilgisi yok → 1986-2026)
+  - + 6 Serisi › 635d › Cabrio (yıl bilgisi yok → 1986-2026)
+  - + 6 Serisi › 640d xDrive › 640d xd (yıl bilgisi yok → 1986-2026)
   - + 6 Serisi › 645Ci › Cabrio
+  - + 6 Serisi › 650Ci › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 725d Long › M Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 725d Long › Pure Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730d Long › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730d Long › Comfort (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730d Long › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730d Long › Exclusive M Sport (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730d Long › Individual Edition (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730d xDrive Long › Executive Lounge (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730d xDrive Long › Luxury (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730d xDrive Long › M Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730d xDrive Long › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730i Long › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730i Long › Executive Lounge (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730i Long › Luxury (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730i Long › M Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730i Long › Pure (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 730i Long › Pure Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 735i Long › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740d xDrive Long › M Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740d xDrive Long › Pure (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740d xDrive Long › Pure Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740e xDrive Long › Executive Lounge (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740e xDrive Long › Luxury (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740e xDrive Long › M Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740e xDrive Long › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740e xDrive Long › Prestige (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740e xDrive Long › Pure Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 740i Long › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 745d › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 745i Long › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 750d xDrive Long › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 750d xDrive Long › M Excellence (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 750d xDrive Long › M Sport (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 750d xDrive Long › Pure (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 750 ial › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 750i Long › Standart (yıl bilgisi yok → 1986-2026)
+  - + 7 Serisi › 760i Long › Standart (yıl bilgisi yok → 1986-2026)
   - + 8 Serisi › 840Ci › Standart
   - + 8 Serisi › 850Ci › Standart
+  - + Yeni model: i Serisi (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + i Serisi › i3 › Standart
+  - + i Serisi › i3 › Edition Electric
+  - + i Serisi › i3 › Lodge
+  - + i Serisi › i3 › Loft
+  - + i Serisi › i3 › Premium Techno
+  - + i Serisi › i3 › S
+  - + i Serisi › i4 › eDrive 30
+  - + i Serisi › i4 › eDrive 40
+  - + i Serisi › i4 › M50
+  - + i Serisi › i5 › eDrive 40
+  - + i Serisi › i5 › M60 xDrive
+  - + i Serisi › i5 › xDrive40
+  - + i Serisi › i7 › M70 xDrive
+  - + i Serisi › i7 › xDrive60 M Excellence
+  - + i Serisi › i7 › xDrive60 Pure Excellence
+  - + i Serisi › i8 › Standart
+  - + i Serisi › i8 › Accaro
+  - + i Serisi › i8 › Premium Techno
+  - + i Serisi › i8 › Pure
+  - + Yeni model: M Serisi (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + M Serisi › M2 › Standart
+  - + M Serisi › M235i xDrive › Standart
+  - + M Serisi › M240i › Standart
+  - + M Serisi › M240i xDrive › Standart
+  - + M Serisi › M2 Competition › Standart
+  - + M Serisi › M3 › Standart
+  - + M Serisi › M3 Cabrio › Standart
+  - + M Serisi › M3 Competition › Standart
+  - + M Serisi › M3 Coupe › Standart
+  - + M Serisi › M3 Touring › Standart
+  - + M Serisi › M4 › Standart
+  - + M Serisi › M440i xDrive › Standart
+  - + M Serisi › M4 Competition › Standart
+  - + M Serisi › M4 CS › Standart
+  - + M Serisi › M5 › Standart
+  - + M Serisi › M5 Competition › Standart
+  - + M Serisi › M5 CS xDrive › Standart
+  - + M Serisi › M5 Touring › Standart
+  - + M Serisi › M6 › Standart
+  - + M Serisi › M6 Cabrio › Standart
+  - + M Serisi › M6 Gran Coupe › Standart
+  - + M Serisi › M760e xDrive › M Excellence
+  - + M Serisi › M850i xDrive › Standart
+  - + M Serisi › M8 Coupe xDrive Competition › Standart
+  - + M Serisi › Z3 M Cabrio › Standart
+  - + M Serisi › Z3 M Coupe › Standart
+  - + Yeni model: Z Serisi (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Z Serisi › 1.8 › Standart
+  - + Z Serisi › 1.9 › Standart
+  - + Z Serisi › 2.8 › Standart
+  - + Z Serisi › 3.0 › Standart
+  - + Z Serisi › 2.0 › Standart
+  - + Z Serisi › 2.2 › Standart
+  - + Z Serisi › 2.5 › Standart
+  - + Z Serisi › 2.5si › Standart
+  - + Z Serisi › 3.0Si › Standart
+  - + Z Serisi › 20i sDrive › Standart
+  - + Z Serisi › 20i sDrive › Luxury
+  - + Z Serisi › 20i sDrive › M Sport
+  - + Z Serisi › 23i sDrive › Standart
+  - + Z Serisi › 28i sDrive › Standart
+  - + Z Serisi › 28i sDrive › Exclusive
+  - + Z Serisi › 28i sDrive › M Sport
+  - + Z Serisi › 28i sDrive › Pure Traction
+  - + Z Serisi › 30i sDrive › Standart
+  - + Z Serisi › 35i sDrive › Standart
+  - + iX1 › xDrive30 › M Sport (yıl bilgisi yok → 1986-2026)
+  - + iX1 › xDrive30 › X Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16d sDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16d sDrive › Premium Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16d sDrive › Sport Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16d sDrive › Ultimate Edition M Sport (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16d sDrive › Ultimate Edition X-Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16i sDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16i sDrive › Comfort (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16i sDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16i sDrive › Sport Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 16i sDrive › X Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 18i sDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X1 › 18i sDrive › Premium Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 18i sDrive › Prestige (yıl bilgisi yok → 1986-2026)
+  - + X1 › 18i sDrive › Sport Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 18i sDrive › Ultimate Edition M Sport (yıl bilgisi yok → 1986-2026)
+  - + X1 › 18i sDrive › Ultimate Edition X-Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 20d xDrive › Comfort (yıl bilgisi yok → 1986-2026)
+  - + X1 › 20d xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X1 › 20d xDrive › Premium (yıl bilgisi yok → 1986-2026)
+  - + X1 › 20d xDrive › X Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 20i sDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X1 › 20i sDrive › X Line (yıl bilgisi yok → 1986-2026)
+  - + X1 › 23d xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X1 › M35i xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X2 › 18i sDrive › Special Edition M Sport (yıl bilgisi yok → 1986-2026)
+  - + X2 › 18i sDrive › Special Edition M Sport X (yıl bilgisi yok → 1986-2026)
+  - + X2 › 20d xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X2 › 20i sDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X2 › M35i xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X3 › 18d sDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20d xDrive › Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20d xDrive › M Plus (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20d xDrive › Prestige (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20d xDrive › X Line (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20i sDrive › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20i sDrive › First Edition M (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20i sDrive › First Edition X (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20i sDrive › Luxury Line (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20i sDrive › M Plus (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20i sDrive › Prestige (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20i sDrive › X Line (yıl bilgisi yok → 1986-2026)
+  - + X3 › 20i sDrive › X Plus (yıl bilgisi yok → 1986-2026)
+  - + X3 › 25i › Standart (yıl bilgisi yok → 1986-2026)
+  - + X3 › 30i xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X3 › 30sd › Standart (yıl bilgisi yok → 1986-2026)
+  - + X4 › 20d xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X4 › 20d xDrive › Exclusive (yıl bilgisi yok → 1986-2026)
+  - + X4 › 20d xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X4 › 20d xDrive › xLine (yıl bilgisi yok → 1986-2026)
+  - + X4 › M40d xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X4 › M40i xDrive › M Competition (yıl bilgisi yok → 1986-2026)
+  - + X5 › 25d xDrive › Excellence (yıl bilgisi yok → 1986-2026)
+  - + X5 › 25d xDrive › M Excellence (yıl bilgisi yok → 1986-2026)
+  - + X5 › 25d xDrive › M Plus (yıl bilgisi yok → 1986-2026)
+  - + X5 › 25d xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X5 › 25d xDrive › Premium (yıl bilgisi yok → 1986-2026)
+  - + X5 › 25d xDrive › Premium Line (yıl bilgisi yok → 1986-2026)
+  - + X5 › 25d xDrive › Prestige (yıl bilgisi yok → 1986-2026)
+  - + X5 › 25d xDrive › Pure (yıl bilgisi yok → 1986-2026)
+  - + X5 › 25d xDrive › Pure Luxury (yıl bilgisi yok → 1986-2026)
+  - + X5 › 30d xDrive › Premium (yıl bilgisi yok → 1986-2026)
+  - + X5 › 30i › Standart (yıl bilgisi yok → 1986-2026)
+  - + X5 › 30sd › Standart (yıl bilgisi yok → 1986-2026)
+  - + X5 › 30si › Standart (yıl bilgisi yok → 1986-2026)
+  - + X5 › 35d xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X5 › 40e xDrive › Premium (yıl bilgisi yok → 1986-2026)
+  - + X5 › 40e xDrive › Pure (yıl bilgisi yok → 1986-2026)
+  - + X5 › M50d xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X6 › 30d xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X6 › 30d xDrive › Pure Luxury (yıl bilgisi yok → 1986-2026)
+  - + X6 › 35i xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X6 › 50d M xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X6 › 50i xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + X6 › 40d xDrive › M Sport (yıl bilgisi yok → 1986-2026)
+  - + X6 › 40d xDrive › Pure Luxury (yıl bilgisi yok → 1986-2026)
+  - + X7 › 40d xDrive › Standart (yıl bilgisi yok → 1986-2026)
+  - + XM › M › Standart (yıl bilgisi yok → 1986-2026)

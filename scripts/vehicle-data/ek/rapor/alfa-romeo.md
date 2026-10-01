@@ -1,10 +1,19 @@
 ### Alfa Romeo
-- otomobil: zaten vardı 50 · eklendi 20 · belirsiz 16
-  - + 145/146 (1994-2001) › 1.4 › TS STD
-  - + 145/146 (1994-2001) › 1.7 › Standart
-  - + 145/146 (1994-2001) › 2.0 TS 155 › QV
-  - + 145/146 (1994-2001) › 1.4 › TS
-  - + 145/146 (1994-2001) › 1.4 › TS Ritmo
+- otomobil: zaten vardı 41 · eklendi 46 · belirsiz 7
+  - + Yeni model (ayrı): Giulia Quadrifoglio (2016–) — yıl aralığı "Giulia" modelinden alındı
+  - + Giulia Quadrifoglio › 2.9 › Standart
+  - + Giulietta › 1.4 TB › MultiAir Super TCT (yıl bilgisi yok → 1986-2026)
+  - + Giulietta › 1.6 JTD › Super TCT (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): 145 (1994–2001) — yıl aralığı "145/146 (1994-2001)" modelinden alındı
+  - + 145 › 1.4 › Standart
+  - + 145 › 1.4 › TS STD
+  - + 145 › 1.6 › Standart
+  - + 145 › 1.7 › Standart
+  - + 145 › 2.0 › TS QV
+  - + Yeni model (ayrı): 146 (1994–2001) — yıl aralığı "145/146 (1994-2001)" modelinden alındı
+  - + 146 › 1.4 › TS
+  - + 146 › 1.4 › TS Ritmo
+  - + 146 › 1.6 › TS
   - + 147 (2000-2010) › 1.6 TS › Black Line
   - + 147 (2000-2010) › 2.0 TS › Selespeed Distinctive
   - + Yeni model: 155 (1992–1998) — en.wikipedia Alfa Romeo 155 (1992-1998)
@@ -17,14 +26,23 @@
   - + 166 (1998-2007) › 3.0 V6 226 › Sportronic
   - + 33 › 1.5 › Giardinetta
   - + 33 › 1.5 › IE
-  - + Brera / Spider (2006-2010) › 2.2 JTS 185 › Sky Window
+  - + Yeni model (ayrı): Brera (2006–2010) — yıl aralığı "Brera / Spider (2006-2010)" modelinden alındı
+  - + Brera › 2.2 › JTS Sky Window
   - + GT (2003-2010) › 1.9 JTD › Q2
   - + GT (2003-2010) › 2.0 JTS › Dis.Selespeed
-  - ~ eşleme: "Giulia Quadrifoglio" → "Giulia"
-  - ~ eşleme: "145" → "145/146 (1994-2001)"
-  - ~ eşleme: "146" → "145/146 (1994-2001)"
-  - ~ eşleme: "Brera" → "Brera / Spider (2006-2010)"
-  - ~ eşleme: "GTV" → "GTV/Spider (1995-2005)"
-  - ~ eşleme: "Spider" → "GTV/Spider (1995-2005)"
-  - ~ eşleme: "Junior Elettrica" → "Junior"
-  - ~ eşleme: "Junior Ibrida" → "Junior"
+  - + Yeni model (ayrı): GTV (1995–2005) — yıl aralığı "GTV/Spider (1995-2005)" modelinden alındı
+  - + GTV › 2.0 › TB
+  - + GTV › 2.0 › TS
+  - + Mito › 1.4 T › MultiAir Quadrifoglio Verde (yıl bilgisi yok → 1986-2026)
+  - + Mito › 1.4 T › MultiAir TCT (yıl bilgisi yok → 1986-2026)
+  - + Mito › 1.4 T › MultiAir TCT Sportivo (yıl bilgisi yok → 1986-2026)
+  - + Mito › 1.4 T › Progression (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Spider (1995–2005) — yıl aralığı "GTV/Spider (1995-2005)" modelinden alındı
+  - + Spider › 2.0 TS › Standart
+  - + Yeni model (ayrı): Junior Elettrica (2024–) — yıl aralığı "Junior" modelinden alındı
+  - + Junior Elettrica › Elletrica › Standart
+  - + Junior Elettrica › Speciale › Standart
+  - + Yeni model (ayrı): Junior Ibrida (2024–) — yıl aralığı "Junior" modelinden alındı
+  - + Junior Ibrida › 1.2 › Standart
+  - + Junior Ibrida › 1.2 › Speciale
+  - + Junior Ibrida › 1.2 › Speciale+

@@ -26,6 +26,8 @@ export interface KatalogTip {
   f: KatalogYakit | null;
   /** Kaynak kesin söylüyorsa vites; değilse null → kullanıcıya sorulur. */
   t: KatalogVites | null;
+  /** Yıl bağımsız kayıt: kaynakta model yılı yok; resmi liste/nesil verisi olmayan yıllarda 1986-2026 arası seçilebilir. */
+  g?: boolean;
 }
 
 /** Eski katalogdan gelen nesil: DB model adı (ör. "Clio 5 (2019-)") ve 2012 öncesi seçenekler. */

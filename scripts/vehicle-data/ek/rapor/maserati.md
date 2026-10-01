@@ -1,9 +1,24 @@
 ### Maserati
-- otomobil: zaten vardı 17 · eklendi 5 · belirsiz 13
+- otomobil: zaten vardı 15 · eklendi 22 · belirsiz 1
   - + Yeni model: Cambiocorsa (2002–2007) — maserati.com / en.wikipedia Maserati Coupé Cambiocorsa (2002-2007)
   - + Cambiocorsa › Spyder › Standart
+  - + Yeni model (ayrı): GranCabrio E (2012–) — yıl aralığı "Gran Cabrio" modelinden alındı
+  - + GranCabrio E › Folgore › Standart
+  - + Gran Turismo › MC-Stradale › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): GranTurismo E (1986–) — yıl aralığı "Gran Turismo" modelinden alındı
+  - + GranTurismo E › Folgore › Standart
   - + Yeni model: Spyder (2001–2007) — autoevolution Maserati Spyder (2001-2007)
   - + Spyder › 2.0 › Standart
   - + Spyder › GT › Standart
-  - ~ eşleme: "GranCabrio E" → "Gran Cabrio"
-  - ~ eşleme: "GranTurismo E" → "Gran Turismo"
+  - + Quattroporte › 3.0 › Q4 Modena (yıl bilgisi yok → 1986-2026)
+  - + Quattroporte › 4.2 › Duoselect (yıl bilgisi yok → 1986-2026)
+  - + Quattroporte › 4.2 › Sport GT (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: 4 Serisi (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + 4 Serisi › 424 › Standart
+  - + Grecale › 2.0 › GT (yıl bilgisi yok → 1986-2026)
+  - + Grecale › 2.0 › Modena (yıl bilgisi yok → 1986-2026)
+  - + Grecale › 3.0 › Trofeo (yıl bilgisi yok → 1986-2026)
+  - + Grecale › Folgore BEV › Standart (yıl bilgisi yok → 1986-2026)
+  - + Levante › 2.0 › GT (yıl bilgisi yok → 1986-2026)
+  - + Levante › 2.0 › GT Ultima (yıl bilgisi yok → 1986-2026)
+  - + Levante › 3.0 D › Gransport (yıl bilgisi yok → 1986-2026)

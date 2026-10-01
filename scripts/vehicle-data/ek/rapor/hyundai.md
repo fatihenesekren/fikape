@@ -1,7 +1,63 @@
 ### Hyundai
-- otomobil: zaten vardı 253 · eklendi 28 · belirsiz 57
+- otomobil: zaten vardı 238 · eklendi 123 · belirsiz 1
+  - + Accent › 1.3 › 1.3i (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.3 › 1.3i L (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.3 › Admire (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.3 › GL Active (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.3 › GLS (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.3 › GLS Active (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.3 › LS (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.3 › LX (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.3 › LX Allegro (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.3 › LX World Cup Special Edition (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.5 › 1.5i GL (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.5 › 1.5i GLS (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.5 › GLX (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.5 › GT (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.5 › LS (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.5 CRDi › Active (yıl bilgisi yok → 1986-2026)
+  - + Accent › 1.5 CRDi › Admire (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Accent Era (1986–) — yıl aralığı "Accent" modelinden alındı
+  - + Accent Era › 1.4 › Eco
+  - + Accent Era › 1.4 › Expo Gold
+  - + Accent Era › 1.4 › Mode
+  - + Accent Era › 1.4 › Prime
+  - + Accent Era › 1.4 › Select
+  - + Accent Era › 1.4 › Select Expo Gold
+  - + Accent Era › 1.4 › Start
+  - + Accent Era › 1.4 › Team
+  - + Accent Era › 1.5 CRDi › Mode
+  - + Accent Era › 1.5 CRDi › Prime
+  - + Accent Era › 1.5 CRDi › Select
+  - + Accent Era › 1.5 CRDi › Start
+  - + Accent Era › 1.5 CRDi › Style
+  - + Accent Era › 1.5 CRDi › Team
+  - + Accent Era › 1.5 CRDi-VGT › Eco
+  - + Accent Era › 1.5 CRDi-VGT › Select
+  - + Accent Era › 1.5 CRDi-VGT › Start
+  - + Accent Era › 1.5 CRDi-VGT › Style
+  - + Accent Era › 1.5 CRDi-VGT › Team
+  - + Accent Era › 1.6 › Expo Platinyum
+  - + Accent Era › 1.6 › Mode
+  - + Accent Era › 1.6 › Prime
+  - + Accent Era › 1.6 › Select
+  - + Accent Era › 1.6 › Style
+  - + Accent Era › 1.6 › Style Sports
+  - + Accent Era › 1.6 › Team
   - + Atos (1998-2007) › 1.0 › GL Prime
   - + Atos (1998-2007) › 1.0 › GLS Prime
+  - + Coupe (1996-2001) + Coupe (2001-2009) › 1.6 › 1.6 (nesil belli değil → 1986-2026)
+  - + Coupe (1996-2001) + Coupe (2001-2009) › 1.6 › FX (nesil belli değil → 1986-2026)
+  - + Coupe (1996-2001) + Coupe (2001-2009) › 2.0 › 2.0 (nesil belli değil → 1986-2026)
+  - + Coupe (1996-2001) + Coupe (2001-2009) › 2.0 › FX (nesil belli değil → 1986-2026)
+  - + Coupe (1996-2001) + Coupe (2001-2009) › 2.0 › GLS (nesil belli değil → 1986-2026)
+  - + Coupe (1996-2001) + Coupe (2001-2009) › 2.7 FX › Standart (nesil belli değil → 1986-2026)
+  - + Elantra › 1.5 › GLS (yıl bilgisi yok → 1986-2026)
+  - + Elantra › 1.6 › Elegance (yıl bilgisi yok → 1986-2026)
+  - + Elantra › 1.6 › GL (yıl bilgisi yok → 1986-2026)
+  - + Elantra › 1.6 › GLS (yıl bilgisi yok → 1986-2026)
+  - + Elantra › 1.8 › GT (yıl bilgisi yok → 1986-2026)
+  - + Genesis › 2.0L TCI › Standart (yıl bilgisi yok → 1986-2026)
   - + Getz › 1.3 › GL Active
   - + Getz › 1.3 › GLS Cool
   - + Getz › 1.3 › GLS Style
@@ -12,23 +68,59 @@
   - + Getz › 1.5 CRDi › Comfort Plus
   - + Getz › 1.5 CRDi › GL Cool
   - + Getz › 1.6 › Cool
+  - + i20 › 1.0 T-GDI › Style Plus (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): i20 Active (1986–) — yıl aralığı "i20" modelinden alındı
+  - + i20 Active › 1.0 T-GDI › Elite
+  - + i20 Active › 1.0 T-GDI › Elite Smart
+  - + i20 Active › 1.4 MPI › Elite
+  - + i20 Active › 1.4 MPI › Elite Smart
   - + Yeni model: i20 N (2021–) — motor1 / hyundai-n.com Hyundai i20 N (2021'den beri)
   - + i20 N › 1.6 T-GDI › Standart
+  - + Yeni model: i20 Troy (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + i20 Troy › 1.2 › Mode
+  - + i20 Troy › 1.2 › Start
+  - + i20 Troy › 1.2 › Team
+  - + i20 Troy › 1.2 DOHC › Mode
+  - + i20 Troy › 1.2 DOHC › Team
+  - + i20 Troy › 1.4 CRDi › ISG
+  - + i20 Troy › 1.4 CRDi › ISG Plus
+  - + i20 Troy › 1.4 CRDi › Mode
+  - + i20 Troy › 1.4 CRDi › Prime
+  - + i20 Troy › 1.4 CRDi › Start
+  - + i20 Troy › 1.4 CRDi › Team
+  - + i20 Troy › 1.4 CVVT › Mode
+  - + i20 Troy › 1.4 CVVT › Prime
+  - + i20 Troy › 1.4 CVVT › Prime Plus
+  - + i20 Troy › 1.4 CVVT › Team
+  - + i30 › 1.4 CVVT › Prime (yıl bilgisi yok → 1986-2026)
+  - + i30 › 1.6 CRDi › Mode Plus (yıl bilgisi yok → 1986-2026)
+  - + i30 › 1.6 CRDi › Select (yıl bilgisi yok → 1986-2026)
+  - + i30 › 1.6 CRDi › Style Design Pack (yıl bilgisi yok → 1986-2026)
+  - + i30 › 1.6 CRDi › Style Plus (yıl bilgisi yok → 1986-2026)
   - + Matrix › 1.6 › Start
   - + Matrix › 1.6 › Style
+  - + Sonata › 2.0 › GLS (yıl bilgisi yok → 1986-2026)
+  - + Sonata › 2.0 SOHC › GL (yıl bilgisi yok → 1986-2026)
+  - + Sonata › 2.5 › GLS (yıl bilgisi yok → 1986-2026)
+  - + Sonata › 2.7 › GLS (yıl bilgisi yok → 1986-2026)
   - + Trajet (1999-2008) › 2.0 CRDi GLS › Standart
+  - + Ioniq 5 › Dynamic Vision Roof › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Ioniq 5 N (2024–) — Hyundai Ioniq 5 N (2024)
   - + Ioniq 5 N › N › Standart
+  - + Galloper (1991-1997) + Galloper (1997-2003) › 2.5 TDI › Standart (nesil belli değil → 1986-2026)
+  - + Galloper (1991-1997) + Galloper (1997-2003) › 3.0 V6 › Standart (nesil belli değil → 1986-2026)
+  - + Kona › 1.6 GDI › 1.6 GDI Hibrit (yıl bilgisi yok → 1986-2026)
+  - + Yeni model (ayrı): Kona Elektrik (1986–) — yıl aralığı "Kona" modelinden alındı
+  - + Kona Elektrik › Advance › Standart
+  - + Kona Elektrik › Progressive › Standart
   - + Santa Fe › 2.0 CRDi › Elegance
   - + Santa Fe › 2.0 CRDi › Premium
   - + Santa Fe › 2.0 CRDi › Style
   - + Santa Fe › 2.0 CRDi › VGT
+  - + Santa Fe › 3.3 V6 › Standart (yıl bilgisi yok → 1986-2026)
   - + Terracan (2001-2007) › 2.9 CRDi GL › Standart
   - + Tucson › 2.0 CRDi › Dynamic
   - + Tucson › 2.0 CRDi › Sport
   - + Tucson › 2.0 CVVT › Active
   - + Tucson › 2.0 CVVT › Dynamic
   - ~ eşleme: "Accent Blue" → "Accent"
-  - ~ eşleme: "Accent Era" → "Accent"
-  - ~ eşleme: "i20 Active" → "i20"
-  - ~ eşleme: "Kona Elektrik" → "Kona"

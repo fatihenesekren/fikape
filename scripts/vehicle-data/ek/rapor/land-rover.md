@@ -1,7 +1,39 @@
 ### Land Rover
-- otomobil: zaten vardı 201 · eklendi 5 · belirsiz 31
+- otomobil: zaten vardı 200 · eklendi 37 · belirsiz 0
+  - + Discovery › 2.0 SD4 › Landmark Edition (yıl bilgisi yok → 1986-2026)
+  - + Discovery › 2.7 › HSE (yıl bilgisi yok → 1986-2026)
+  - + Discovery › 2.7 › XS Plus (yıl bilgisi yok → 1986-2026)
+  - + Discovery › 4.0 › ES (yıl bilgisi yok → 1986-2026)
+  - + Discovery › 4.4 › HSE (yıl bilgisi yok → 1986-2026)
+  - + Discovery Sport › 2.0 TD4 › Edition (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 2.0 PHEV › SvAutobiography (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 2.5 TDI › Standart (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 3.5 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 3.6 TDV8 › HSE (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 3.6 TDV8 › HSE Plus (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 3.6 TDV8 › Vogue (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 3.9 › Vogue (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 4.0 › SE (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 4.2 › Vogue (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 4.4 TDV8 › Vogue SE (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 4.6 › HSE (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 4.6 › Vogue (yıl bilgisi yok → 1986-2026)
+  - + Range Rover › 5.0 › Autobiography Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Range Rover Sport › 2.0 PHEV › Autobiography Dynamic (yıl bilgisi yok → 1986-2026)
+  - + Range Rover Sport › 2.7 TDV6 › SE (yıl bilgisi yok → 1986-2026)
+  - + Range Rover Sport › 2.7 TDV6 › HSE (yıl bilgisi yok → 1986-2026)
+  - + Range Rover Sport › 2.7 TDV6 › Limited Edition (yıl bilgisi yok → 1986-2026)
+  - + Range Rover Sport › 3.0 PHEV › 460 (yıl bilgisi yok → 1986-2026)
+  - + Range Rover Sport › 3.6 TDV8 › HSE (yıl bilgisi yok → 1986-2026)
+  - + Range Rover Sport › 4.2 › Supercharged (yıl bilgisi yok → 1986-2026)
+  - + Range Rover Sport › 4.4 › HSE (yıl bilgisi yok → 1986-2026)
+  - + Range Rover Sport › 4.4 › SV Edition One+ (yıl bilgisi yok → 1986-2026)
   - + Freelander (1997-2006) › 1.8 › 1.8i
   - + Freelander (1997-2006) › 1.8 › HSE
   - + Freelander (1997-2006) › 1.8 › SE
   - + Freelander (1997-2006) › 2.0 di › Standart
   - + Freelander (1997-2006) › 2.0 TD4 › E
+  - + Freelander 2 › 2.2 TD4 › GS Plus (yıl bilgisi yok → 1986-2026)
+  - + Freelander 2 › 2.2 TD4 › Select (yıl bilgisi yok → 1986-2026)
+  - + Freelander 2 › 2.2 TD4 › SE Plus (yıl bilgisi yok → 1986-2026)
+  - + Freelander 2 › 2.2 TD4 › XS Limited (yıl bilgisi yok → 1986-2026)

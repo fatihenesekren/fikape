@@ -1,16 +1,96 @@
 ### Toyota
-- otomobil: zaten vardı 187 · eklendi 12 · belirsiz 87
+- otomobil: zaten vardı 193 · eklendi 92 · belirsiz 3
+  - + Avensis › 1.6 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Avensis › 1.6 › Linea (yıl bilgisi yok → 1986-2026)
+  - + Avensis › 1.8 › Terra (yıl bilgisi yok → 1986-2026)
+  - + Avensis › 2.0 › Base (yıl bilgisi yok → 1986-2026)
+  - + Avensis › 2.0 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Avensis › 2.0 › Executive Comfort (yıl bilgisi yok → 1986-2026)
+  - + Avensis › 2.0 › Executive Elegant (yıl bilgisi yok → 1986-2026)
+  - + Avensis › 2.0 › Liftback (yıl bilgisi yok → 1986-2026)
+  - + Avensis › 2.0 › Sol (yıl bilgisi yok → 1986-2026)
+  - + Avensis › 2.0 › Sol Extra (yıl bilgisi yok → 1986-2026)
   - + Camry › 2.2 GL › Standart
   - + Camry › 2.4 › Standart
   - + Camry › 3.0 GX › Standart
   - + Carina (1970-1996) › 1.6 › XLi
   - + Carina (1970-1996) › 2.0 › GLi
   - + Celica › 2.0 › Standart
+  - + Corolla › 1.3 › Base (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.3 › Comfort (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.3 › ECO (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.3 › L (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.3 › LE (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.3 › Terra (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.3 › XE (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.3 › XL (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.3 › XLi (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.3 › XL SW (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.4 › Linea Sol (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.4 › Linea Terra (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.4 › Luna (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.4 › XLi (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.4 D-4D › Class (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.4 D-4D › Plusline (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.4 D-4D › Sport (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Class (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Elegant Verso (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Family (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › GL (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › GLi (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › GLi Liftback (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › GLi Special (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Linea (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Linea Luna (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Linea Sol (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Linea Terra (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Luna Special (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Plusline (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Premium Verso (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Sol Family (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Sol Special (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › Terra Special (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › VVT-i Plusline (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › VVT-i Sol (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › VVT-i Sport (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › VVT-i Terra (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › XE (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › XEi (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › XEi Special (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › XL (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.6 › XLi (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 1.8 › TS (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 2.0 D-4D › Linea Terra (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 2.0 D-4D › Verso (yıl bilgisi yok → 1986-2026)
+  - + Corolla › 2.2 D-4D › Comfort Verso (yıl bilgisi yok → 1986-2026)
   - + Corona (1970-1994) › 1.6 XL › Standart
   - + Corona (1970-1994) › 2.0 GLi › Standart
   - + Corona (1970-1994) › 2.0 GT › Standart
   - + Corona (1970-1994) › 2.0 XL › Standart
   - + Cressida (1980-1992) › 2.0 GLX › Standart
   - + Starlet (1990-1999) › 1.4 XLi › Standart
+  - + Yaris › 1.0 › Active (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.0 › Sol (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.0 › Terra Plus (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.3 › Blue (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.3 › Luna (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.3 › Sol (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.3 › Sol Special (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.3 › Terra (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.3 › Terra Plus (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.33 › Sport (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.4 D-4D › Sol (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.4 D-4D › Sol Special (yıl bilgisi yok → 1986-2026)
+  - + Yaris › 1.5 › Luna Verso (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: FJ Cruiser (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + FJ Cruiser › FJ40 › Standart
+  - + FJ Cruiser › FJ75 › Standart
+  - + Land Cruiser › BJ 60 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Land Cruiser › HJ 60 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Land Cruiser › LJ 70 › Standart (yıl bilgisi yok → 1986-2026)
+  - + 4Runner › 2.4 › Standart (yıl bilgisi yok → 1986-2026)
+  - + 4Runner › 3.0 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Fortuner › 3.0 D-4D › Standart (yıl bilgisi yok → 1986-2026)
   - ~ eşleme: "Land Cruiser Prado" → "Land Cruiser"
 - kamyonet: zaten vardı 19 · eklendi 0 · belirsiz 0

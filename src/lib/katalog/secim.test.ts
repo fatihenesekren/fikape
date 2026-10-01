@@ -93,6 +93,26 @@ describe("katalog seçimi", () => {
     const t = paketeGore(versiyonaGore(yilTipleri(egea, 2019), "1.4 Fire · 95 HP"), "Urban");
     expect(ortakBeygir(t)).toBe(95);
     expect(trimAdi("1.4 Fire", "Urban")).toBe("1.4 Fire – Urban");
-    expect(trimAdi("1.4 Fire", "Paket adı belirtilmemiş")).toBe("1.4 Fire");
+    expect(trimAdi("1.4 Fire", "Standart")).toBe("1.4 Fire");
+  });
+});
+
+describe("yıl bağımsız (g) kayıtlar", () => {
+  const tip = (p: string, y: number[], g = false): KatalogTip => ({ v: "2.0", hp: null, p, k: null, y, f: null, t: null, ...(g ? { g: true } : {}) });
+  const yillar = Array.from({ length: 41 }, (_, i) => 1986 + i);
+  const model: KatalogModel = {
+    ad: "Test",
+    nesiller: [{ ad: "Test (1996-2003)", bas: 1996, bit: 2003, el: { versiyonlar: ["2.0", "Diğer"], paketler: ["Standart", "Diğer"] } }],
+    tipler: [tip("Resmi", [2015]), tip("Genel", yillar, true)],
+  };
+  it("1986-2026 arası seçilebilir", () => {
+    const y = modelYillari(model);
+    expect(y).toContain(1986);
+    expect(y).toContain(2026);
+  });
+  it("resmi kayıt olan yılda ikisi birlikte, eski nesil yılında nesil modu, kapsayan nesil yoksa yalnız genel", () => {
+    expect(yilTipleri(model, 2015).map((t) => t.p)).toEqual(["Resmi", "Genel"]);
+    expect(yilTipleri(model, 2000)).toEqual([]);
+    expect(yilTipleri(model, 1990).map((t) => t.p)).toEqual(["Genel"]);
   });
 });

@@ -19,7 +19,7 @@ export function modelYillari(model: KatalogModel): number[] {
   for (const n of model.nesiller) {
     if (!n.el) continue;
     // TSB tipi olan modelde eski nesil yalnız TSB öncesi yılları doldurur
-    const son = model.tipler.length ? Math.min(n.bit ?? TSB_ILK_YIL - 1, TSB_ILK_YIL - 1) : (n.bit ?? BUGUN_YIL);
+    const son = model.tipler.some((t) => !t.g) ? Math.min(n.bit ?? TSB_ILK_YIL - 1, TSB_ILK_YIL - 1) : (n.bit ?? BUGUN_YIL);
     for (let y = n.bas; y <= son; y++) set.add(y);
   }
   return [...set].sort((a, b) => b - a);
@@ -27,7 +27,12 @@ export function modelYillari(model: KatalogModel): number[] {
 
 /** Seçilen yılda TSB tipleri var mı? Yoksa o yıl eski katalog nesilleriyle sunulur. */
 export function yilTipleri(model: KatalogModel, yil: number): KatalogTip[] {
-  return model.tipler.filter((t) => t.y.includes(yil));
+  const yilli = model.tipler.filter((t) => !t.g && t.y.includes(yil));
+  const genel = model.tipler.filter((t) => t.g && t.y.includes(yil));
+  if (yilli.length) return [...yilli, ...genel];
+  // Resmi listede o yıl yok: eski nesil seçenekleri varsa onlar sunulur (genel kayıtlar zaten onlara da eklidir);
+  // hiçbir nesil de kapsamıyorsa yıl bağımsız kayıtlar tek seçenek olur.
+  return yilNesilleri(model, yil).length ? [] : genel;
 }
 
 /** TSB tipi olmayan yıllar için o yılı kapsayan eski nesiller. */
@@ -35,7 +40,7 @@ export function yilNesilleri(model: KatalogModel, yil: number): KatalogNesil[] {
   return model.nesiller.filter((n) => n.el && n.bas <= yil && yil <= (n.bit ?? BUGUN_YIL));
 }
 
-export const VERSIYON_YOK = "Versiyon belirtilmemiş";
+export const VERSIYON_YOK = "Standart";
 
 /**
  * Kaynak bazı satırlarda beygiri boş bırakmış olsa da motor aynıdır (ör. Citroën
@@ -74,7 +79,7 @@ export function versiyonEtiketi(t: Pick<KatalogTip, "v" | "hp">, beygirler?: Map
  */
 export const versiyonBilgisiVarMi = (tipler: KatalogTip[]) => tipler.some((t) => t.v || t.hp);
 
-export const PAKET_YOK = "Paket adı belirtilmemiş";
+export const PAKET_YOK = "Standart";
 
 const benzersiz = (liste: string[]) => [...new Set(liste)].sort((a, b) => a.localeCompare(b, "tr", { numeric: true }));
 
