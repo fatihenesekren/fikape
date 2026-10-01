@@ -1,2 +1,6 @@
 ### KGM SsangYong
-- marka atlandı: Katalogda 'KGM' (Actyon, Korando, Rexton, Tivoli, Torres) ve 'SsangYong' (Actyon, Korando, Kyron, Rexton, Rodius, Tivoli, Torres, XLV) iki AYRI marka olarak var ve model adları iki markada tekrarlanıyor (mevcut kopya). Sizin listeniz tek marka ('KGM SsangYong'). Hangi markada birleşeceği karar gerektirdiği için hiçbir satır eklenmedi: Actyon, Actyon Sports, Korando, Korando Sports, Kyron, Musso, Musso Grand, Musso EV, Rexton, Tivoli (Musso/Musso Grand/Actyon Sports/Korando Sports pickup→kamyonet adayı).
+- otomobil: zaten vardı 24 · eklendi 0 · belirsiz 21
+  - ~ eşleme: "Torres EVX" → "Torres"
+- kamyonet: zaten vardı 0 · eklendi 0 · belirsiz 11
+  - ~ eşleme: "Musso Grand" → "Musso"
+  - ~ eşleme: "Musso EV" → "Musso"
