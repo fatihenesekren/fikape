@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
+import { adminOturumu } from "@/lib/adminAuth";
 
 // BlurEditor tuvale (canvas) çizim yapabilmek için görseli piksel bazında okuyor
 // (getImageData). Görsel farklı bir origin'den (Wikimedia Commons, basın kiti vb.)
@@ -8,8 +8,8 @@ import { auth } from "@/auth";
 // kadar takılı kalıyor. Çözüm: görseli sunucu tarafında bu route üzerinden çekip
 // kendi origin'imizden servis etmek (CORS sorunu tamamen ortadan kalkıyor).
 export async function GET(req: Request) {
-  const session = await auth();
-  if (!session || Number(session.user.trustLevel) < 5) {
+  const admin = await adminOturumu();
+  if (!admin) {
     return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
   }
 

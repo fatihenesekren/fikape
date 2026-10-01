@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
+import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
 
@@ -9,8 +9,8 @@ export async function POST(
   req: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const session = await auth();
-  if (!session || Number(session.user.trustLevel) < 5) {
+  const admin = await adminOturumu();
+  if (!admin) {
     return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
   }
 

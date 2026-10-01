@@ -1,3 +1,4 @@
+import { temizYorumFotoUrlleri, fotoyuSinirliIndir } from "@/lib/reviewPhotos";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -65,7 +66,10 @@ export async function PATCH(
     return NextResponse.json({ error: "Bu yorum artık düzenlenemez." }, { status: 409 });
   }
 
-  const newPhotoUrls: string[] = Array.isArray(photoUrls) ? photoUrls.filter((u: unknown) => typeof u === "string") : [];
+  const newPhotoUrls = temizYorumFotoUrlleri(photoUrls, MAX_PHOTOS);
+  if (!newPhotoUrls) {
+    return NextResponse.json({ error: "Geçersiz fotoğraf adresi." }, { status: 400 });
+  }
   const removeIds: number[] = Array.isArray(removePhotoIds) ? removePhotoIds.filter((n: unknown) => typeof n === "number") : [];
   const existingPhotoIds = new Set(review.photos.map((p) => p.id));
   const validRemoveIds = removeIds.filter((rid) => existingPhotoIds.has(rid));
@@ -78,8 +82,7 @@ export async function PATCH(
   const newPhashes = await Promise.all(
     newPhotoUrls.map(async (url) => {
       try {
-        const res = await fetch(url);
-        const buffer = Buffer.from(await res.arrayBuffer());
+        const buffer = await fotoyuSinirliIndir(url);
         return await computePHash(buffer);
       } catch {
         return null;

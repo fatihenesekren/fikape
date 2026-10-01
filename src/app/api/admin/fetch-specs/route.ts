@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
+import { adminOturumu } from "@/lib/adminAuth";
 import { fetchVehicleSpecsWithConfidence } from "@/lib/vehicleSpecs";
 import { findVerifiedVehicleImage } from "@/lib/wikidataImage";
 import { getCriticalFields } from "@/lib/specFields";
@@ -7,8 +7,8 @@ import { getCriticalFields } from "@/lib/specFields";
 export const runtime = "nodejs";
 
 export async function GET(req: Request) {
-  const session = await auth();
-  if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const admin = await adminOturumu();
+  if (!admin) return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
 
   const { searchParams } = new URL(req.url);
   const brand        = searchParams.get("brand") ?? "";

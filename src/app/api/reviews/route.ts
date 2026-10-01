@@ -1,3 +1,4 @@
+import { temizYorumFotoUrlleri, fotoyuSinirliIndir } from "@/lib/reviewPhotos";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -109,12 +110,14 @@ export async function POST(req: Request) {
   const trustScore = calcTrustScore({ trustLevel: user.trustLevel, garajLinked: !!garajEntry });
 
   // pHash hesaplama best-effort — başarısız olursa fotoğraf yine de kaydedilir, sadece tekrar tespiti atlanır
-  const urls: string[] = photoUrls ?? [];
+  const urls = temizYorumFotoUrlleri(photoUrls);
+  if (!urls) {
+    return NextResponse.json({ error: "Geçersiz fotoğraf adresi." }, { status: 400 });
+  }
   const phashes = await Promise.all(
     urls.map(async (url) => {
       try {
-        const res = await fetch(url);
-        const buffer = Buffer.from(await res.arrayBuffer());
+        const buffer = await fotoyuSinirliIndir(url);
         return await computePHash(buffer);
       } catch {
         return null;

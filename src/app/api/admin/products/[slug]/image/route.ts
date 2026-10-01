@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
+import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
 import { resizeImageBuffer, fetchAndResizeImage } from "@/lib/imageResize";
@@ -9,8 +9,8 @@ export async function POST(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const session = await auth();
-    if (!session || Number(session.user.trustLevel) < 5) {
+    const admin = await adminOturumu();
+    if (!admin) {
       return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
     }
 
@@ -85,8 +85,8 @@ export async function PATCH(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const session = await auth();
-    if (!session || Number(session.user.trustLevel) < 5) {
+    const admin = await adminOturumu();
+    if (!admin) {
       return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
     }
 

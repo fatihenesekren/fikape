@@ -1,3 +1,4 @@
+import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
 import { sendWeeklyReport } from "@/lib/reports/send";
 
@@ -19,8 +20,8 @@ export const maxDuration = 60;
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const isProd = !!process.env.VERCEL || process.env.NODE_ENV === "production";
-  const headerOk = req.headers.get("authorization") === `Bearer ${process.env.CRON_SECRET}`;
-  const queryOk = !isProd && url.searchParams.get("secret") === process.env.CRON_SECRET;
+  const headerOk = cronYetkili(req.headers.get("authorization"));
+  const queryOk = !isProd && !!process.env.CRON_SECRET && url.searchParams.get("secret") === process.env.CRON_SECRET;
   if (!headerOk && !queryOk) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

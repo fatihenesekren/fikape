@@ -1,3 +1,4 @@
+import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendReminderEmail, sendUpdateReminderEmail } from "@/lib/email";
@@ -11,7 +12,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? process.env.AUTH_URL ?? "ht
 
 export async function GET(req: Request) {
   const authHeader = req.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!cronYetkili(authHeader)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

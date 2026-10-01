@@ -35,10 +35,10 @@ export async function sendReminderEmail({
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
         ${LOGO}
         <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
-          ${name}, ${vehicleName} nasıl gidiyor?
+          ${eh(name)}, ${eh(vehicleName)} nasıl gidiyor?
         </h1>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 16px">
-          Garajına <strong>${vehicleName}</strong> ekleyeli yaklaşık 3 ay oldu.
+          Garajına <strong>${eh(vehicleName)}</strong> ekleyeli yaklaşık 3 ay oldu.
           Şimdiye kadar edindiklerini paylaşmak ister misin?
         </p>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
@@ -78,7 +78,7 @@ export async function sendUpdateReminderEmail({
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
         ${LOGO}
         <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
-          ${name}, ${vehicleName} hâlâ nasıl?
+          ${eh(name)}, ${eh(vehicleName)} hâlâ nasıl?
         </h1>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 16px">
           Bu aracı kullanmaya devam ettiğini görüyoruz. Yazdığın yorumdan bu yana
@@ -122,10 +122,10 @@ export async function sendReviewPublishedEmail({
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
         ${LOGO}
         <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
-          ${name}, yorumun yayında!
+          ${eh(name)}, yorumun yayında!
         </h1>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 16px">
-          <strong>${vehicleName}</strong> için yazdığın yorum onaylandı ve fikape'de yayınlandı.
+          <strong>${eh(vehicleName)}</strong> için yazdığın yorum onaylandı ve fikape'de yayınlandı.
         </p>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
           Puanlarını içeren bir paylaşım kartı hazırladık — WhatsApp veya Instagram story'nde paylaşabilirsin.
@@ -165,10 +165,10 @@ export async function sendNewQuestionEmail({
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
         ${LOGO}
         <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
-          ${name}, ${vehicleName} sahiplerine bir soru soruldu
+          ${eh(name)}, ${eh(vehicleName)} sahiplerine bir soru soruldu
         </h1>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 16px">
-          "${questionText}"
+          "${eh(questionText)}"
         </p>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
           Bu aracı kullandığın için cevaplayabilecek en doğru kişilerden birisin.
@@ -207,10 +207,10 @@ export async function sendQuestionAnsweredEmail({
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
         ${LOGO}
         <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
-          ${name}, sorun cevaplandı
+          ${eh(name)}, sorun cevaplandı
         </h1>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
-          <strong>${vehicleName}</strong> hakkında sorduğun soruya bir kullanıcı cevap verdi.
+          <strong>${eh(vehicleName)}</strong> hakkında sorduğun soruya bir kullanıcı cevap verdi.
         </p>
         <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
           Cevabı gör →
@@ -246,10 +246,10 @@ export async function sendReviewHelpfulEmail({
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
         ${LOGO}
         <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
-          ${name}, yorumun işe yaradı!
+          ${eh(name)}, yorumun işe yaradı!
         </h1>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
-          <strong>${vehicleName}</strong> için yazdığın yorumu bir kullanıcı "faydalı" olarak işaretledi.
+          <strong>${eh(vehicleName)}</strong> için yazdığın yorumu bir kullanıcı "faydalı" olarak işaretledi.
           Deneyimini paylaşman gerçekten fark yaratıyor.
         </p>
         <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
@@ -287,11 +287,11 @@ export async function sendNewModelInBrandEmail({
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
         ${LOGO}
         <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">
-          ${name}, garajındaki markaya yeni model eklendi
+          ${eh(name)}, garajındaki markaya yeni model eklendi
         </h1>
         <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
-          Garajında ${brandName} olduğu için haber vermek istedik:
-          <strong>${vehicleName}</strong> artık fikape'de.
+          Garajında ${eh(brandName)} olduğu için haber vermek istedik:
+          <strong>${eh(vehicleName)}</strong> artık fikape'de.
         </p>
         <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
           Aracı incele →
@@ -384,12 +384,23 @@ export async function sendAdminAlertEmail({
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
         ${LOGO}
-        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">${title}</h1>
-        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">${message}</p>
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">${eh(title)}</h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">${eh(message)}</p>
         <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
           İncele →
         </a>
       </div>
     `,
   });
+}
+
+// Kullanıcı kaynaklı değerleri (görünen ad, araç adı, soru metni…) HTML e-postaya koymadan önce kaçışla:
+// aksi halde fikape alan adından giden e-postaya saldırgan HTML/bağlantı enjekte edilebilir.
+function eh(v: unknown): string {
+  return String(v ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }

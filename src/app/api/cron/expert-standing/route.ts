@@ -1,3 +1,4 @@
+import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { computeExpertStanding, applyHysteresis } from "@/lib/expertBarem";
@@ -16,7 +17,7 @@ function currentPeriod(d: Date): string {
 // (FORCE_FEATURED/FORCE_PAUSED) formülü ezer ama audit için skor yine hesaplanır.
 export async function GET(req: Request) {
   const authHeader = req.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!cronYetkili(authHeader)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

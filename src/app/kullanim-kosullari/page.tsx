@@ -1,3 +1,4 @@
+import { jsonLdGuvenli } from "@/components/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/baseUrl";
@@ -23,7 +24,7 @@ export default function KullanimKosullariPage() {
     <div className="max-w-3xl mx-auto px-4 py-12">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdGuvenli(webPageJsonLd) }}
       />
       <HashTargetHighlighter />
 
