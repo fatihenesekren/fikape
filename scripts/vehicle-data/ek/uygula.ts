@@ -91,7 +91,8 @@ const modelAnahtar = (s: string) => fold(s).replace(/\([^)]*\)/g, " ").replace(/
 const HP_JETON = /^\d{2,4}$/;
 /** Versiyon anahtarı: beygir sayısı ve HP/CV/PS/BG eki atılır → "1.9 JTD 105" ile "1.9 JTD" aynı motor. */
 const versiyonAnahtar = (s: string) =>
-  jeton(s).filter((j) => !HP_JETON.test(j) && !/^(HP|CV|PS|BG)$/.test(j)).sort().join(" ");
+  // Sıkı modda sayılar atılmaz: "212 D" ile "208 D" farklı versiyonlardır (Minivan & Panelvan kaynağında sayı model kodudur).
+  jeton(s).filter((j) => (sikiKapsama || !HP_JETON.test(j)) && !/^(HP|CV|PS|BG)$/.test(j)).sort().join(" ");
 
 function levenshtein(a: string, b: string): number {
   const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
@@ -454,8 +455,11 @@ export function ekUygula(marka: string, ek: EkMarka, ayar: EkAyar, modeller: Kat
     const yilKesin = (n: KatalogNesil) => !model!.tipler.some((t) => !t.g) || (n.bit !== null && n.bit < 2012);
 
     for (const s of rows) {
-      if (anahtar(s.v) === anahtar(model.ad) || modelAnahtar(s.v) === modelAnahtar(kullaniciModel)) { sonuc.zatenVar++; continue; }
-      if (model.tipler.some((t) => !t.g) && tipleKapli(s, model.tipler)) { sonuc.zatenVar++; continue; }
+      if (!sikiKapsama && (anahtar(s.v) === anahtar(model.ad) || modelAnahtar(s.v) === modelAnahtar(kullaniciModel))) { sonuc.zatenVar++; continue; }
+      // Sıkı modda yalnız resmi kayıtlarla karşılaştırılır: aynı çalıştırmada eklenen yıl-bağımsız (g) kayıtlar
+      // başka bir kaynak satırını "zaten var" diye gizlemesin.
+      const kapsayanTipler = sikiKapsama ? model.tipler.filter((t) => !t.g) : model.tipler;
+      if (model.tipler.some((t) => !t.g) && tipleKapli(s, kapsayanTipler)) { sonuc.zatenVar++; continue; }
 
       // Birden fazla eski nesil varsa satırın motoru yalnız birinde geçiyorsa o nesil seçilir.
       let nesil: KatalogNesil | null = secili.length === 1 ? secili[0] : null;

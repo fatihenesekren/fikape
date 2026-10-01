@@ -1,5 +1,5 @@
 ### Peugeot
-- kamyonet: zaten vardı 17 · eklendi 66 · belirsiz 1
+- kamyonet: zaten vardı 14 · eklendi 69 · belirsiz 1
   - + Bipper › 1.3 HDi Comfort › Standart (yıl bilgisi yok → 1986-2026)
   - + Bipper › 1.3 HDi Comfort Plus › Standart (yıl bilgisi yok → 1986-2026)
   - + Bipper › 1.3 HDi Style › Standart (yıl bilgisi yok → 1986-2026)
@@ -55,11 +55,14 @@
   - + Partner › 1.6 HDi Premium Style P. › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 1.6 HDi Premium Zenith P. › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 1.6 HDi Symbole › Standart (yıl bilgisi yok → 1986-2026)
+  - + Partner › 1.6 HDi Zenith › Standart (yıl bilgisi yok → 1986-2026)
+  - + Partner › 1.6 Symbole › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 1.9 › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 1.9 Comfort › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 1.9 D › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 1.9 D Comfort › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 1.9 D Kombi › Standart (yıl bilgisi yok → 1986-2026)
+  - + Partner › 1.9 Kombi › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 2.0 HDi › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 2.0 HDi Adventure › Standart (yıl bilgisi yok → 1986-2026)
   - + Partner › 2.0 HDi Comfort › Standart (yıl bilgisi yok → 1986-2026)

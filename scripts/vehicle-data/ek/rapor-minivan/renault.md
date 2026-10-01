@@ -1,5 +1,5 @@
 ### Renault
-- kamyonet: zaten vardı 12 · eklendi 75 · belirsiz 0
+- kamyonet: zaten vardı 11 · eklendi 76 · belirsiz 0
   - + Kangoo › 1.4 Pampa › Standart (yıl bilgisi yok → 1986-2026)
   - + Kangoo › 1.4 RL › Standart (yıl bilgisi yok → 1986-2026)
   - + Kangoo › 1.4 RN › Standart (yıl bilgisi yok → 1986-2026)
@@ -58,6 +58,7 @@
   - + Master › 2.5 dCi (10.8 m3) › Standart (yıl bilgisi yok → 1986-2026)
   - + Master › 2.5 dCi (10 m3) › Standart (yıl bilgisi yok → 1986-2026)
   - + Master › 2.5 dCi (12.6 m3) › Standart (yıl bilgisi yok → 1986-2026)
+  - + Master › 2.5 dCi (12 m3) › Standart (yıl bilgisi yok → 1986-2026)
   - + Master › 2.8 DTi (10.8 m3) › Standart (yıl bilgisi yok → 1986-2026)
   - + Trafic › 1.9 dCi Confort › Standart (yıl bilgisi yok → 1986-2026)
   - + Trafic › 1.9 dCi Grand Confort › Standart (yıl bilgisi yok → 1986-2026)

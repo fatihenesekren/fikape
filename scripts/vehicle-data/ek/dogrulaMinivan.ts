@@ -7,7 +7,7 @@ import type { KatalogMarkaDosyasi } from "../../../src/lib/katalog/tipler";
 
 const kok = path.join(process.cwd(), "scripts", "vehicle-data", "ek");
 const anahtar = (s: string) => s.normalize("NFD").replace(/\p{Mn}/gu, "").replace(/³/g, "3").toUpperCase().replace(/[^A-Z0-9]/g, "");
-const jetonlar = (s: string) => new Set(s.normalize("NFD").replace(/\p{Mn}/gu, "").replace(/³/g, "3").toUpperCase().replace(/\+/g, " PLUS ").split(/[^A-Z0-9.]+/).filter((j) => j && !/^\d{2,4}$/.test(j)));
+const jetonlar = (s: string) => new Set(s.normalize("NFD").replace(/\p{Mn}/gu, "").replace(/³/g, "3").toUpperCase().replace(/\+/g, " PLUS ").split(/[^A-Z0-9.]+/).filter((j) => j && !/^(HP|CV|PS|BG)$/.test(j)));
 const kapsar = (buyuk: Set<string>, kucuk: Set<string>) => [...kucuk].every((j) => buyuk.has(j));
 const slug = (s: string) => s.normalize("NFD").replace(/\p{Mn}/gu, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -51,6 +51,7 @@ for (const f of fs.readdirSync(path.join(kok, "kaynak-minivan")).filter((x) => x
         const kapli =
           anahtar(v) === anahtar(mAd) ||
           tipJetonlari.some((t) => kapsar(t, satirJ)) ||
+          modeller.some((mo) => mo.tipler.some((t) => anahtar(`${t.v}${t.p ?? ""}`) === anahtar(`${v}${p}`))) ||
           (elV.some((e) => kapsar(e, vJ)) && (!p || elP.some((e) => kapsar(e, pJ)) || tipJetonlari.some((t) => kapsar(t, pJ))));
         if (kapli) bulundu++;
         else if (bel) belirsizde++;

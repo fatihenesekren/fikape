@@ -1,5 +1,5 @@
 ### Citroen
-- kamyonet: zaten vardı 28 · eklendi 53 · belirsiz 0
+- kamyonet: zaten vardı 26 · eklendi 55 · belirsiz 0
   - + Berlingo › 1.2 PureTech Feel › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.4 Multispace › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.4 X › Standart (yıl bilgisi yok → 1986-2026)
@@ -20,12 +20,14 @@
   - + Berlingo › 1.6 HDi Family › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.6 HDi Multispace › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.6 HDi Selection › Standart (yıl bilgisi yok → 1986-2026)
+  - + Berlingo › 1.6 Multispace › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.8 SX › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.9 D › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.9 D Combi X › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.9 D FG › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.9 D Multispace › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 1.9 D SX › Standart (yıl bilgisi yok → 1986-2026)
+  - + Berlingo › 1.9 D X › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 2.0 HDi › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 2.0 HDi Combi X › Standart (yıl bilgisi yok → 1986-2026)
   - + Berlingo › 2.0 HDi Multispace › Standart (yıl bilgisi yok → 1986-2026)

@@ -1,5 +1,5 @@
 ### Volkswagen
-- kamyonet: zaten vardı 18 · eklendi 67 · belirsiz 0
+- kamyonet: zaten vardı 17 · eklendi 68 · belirsiz 0
   - + Caddy › 1.0 TSI › Standart (yıl bilgisi yok → 1986-2026)
   - + Caddy › 1.4 TSI Comfortline › Standart (yıl bilgisi yok → 1986-2026)
   - + Caddy › 1.6 TDI Comfortline › Standart (yıl bilgisi yok → 1986-2026)
@@ -67,4 +67,5 @@
   - + Transporter › 3.2 Camlı Van Business › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: LT (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
   - + LT › 32 TDI › Standart
+  - + LT › 35 TDI › Standart
 - otomobil: zaten vardı 2 · eklendi 0 · belirsiz 0

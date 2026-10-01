@@ -128,3 +128,18 @@ describe("ekUygula — siki kapsama (Minivan & Panelvan)", () => {
     expect(s.eklenen.some((e) => e.includes("1.6 HDi Combi SX"))).toBe(true);
   });
 });
+
+describe("ekUygula — siki kapsama: sayılar model koduna aittir", () => {
+  const dosya = (...s: string[]) => parseEk(metin(["Minivan & Panelvan", "Mercedes-Benz", ...s, ""]));
+  it("212 D ile 208 D aynı sayılmaz; model adına eşit versiyon da eklenir", () => {
+    const modeller: KatalogModel[] = [{
+      ad: "Sprinter Panel Van", tipler: [],
+      nesiller: [{ ad: "Sprinter Panel Van", bas: 1986, bit: null, el: { versiyonlar: ["208 D", "Diğer"], paketler: ["Standart", "Diğer"] } }],
+    }];
+    const s = ekUygula("Mercedes-Benz", dosya("Sprinter Panel Van", "208 D (4)", "212 D (1)", "Sprinter Panel Van (2)"), { siki: true }, modeller);
+    const v = modeller[0].nesiller[0].el!.versiyonlar;
+    expect(v).toContain("212 D");
+    expect(v).toContain("Sprinter Panel Van");
+    expect(s.zatenVar).toBe(1);
+  });
+});

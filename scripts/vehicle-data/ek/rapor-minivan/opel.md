@@ -1,8 +1,9 @@
 ### Opel
-- kamyonet: zaten vardı 2 · eklendi 57 · belirsiz 0
+- kamyonet: zaten vardı 1 · eklendi 58 · belirsiz 0
   - + Combo › 1.3 CDTi City › Standart (yıl bilgisi yok → 1986-2026)
   - + Combo › 1.3 CDTi City Club › Standart (yıl bilgisi yok → 1986-2026)
   - + Combo › 1.3 CDTi City Plus › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.3 CDTi Club › Standart (yıl bilgisi yok → 1986-2026)
   - + Combo › 1.3 CDTi Comfort › Standart (yıl bilgisi yok → 1986-2026)
   - + Combo › 1.4 › Standart (yıl bilgisi yok → 1986-2026)
   - + Combo › 1.5 CDTi Edition › Standart (yıl bilgisi yok → 1986-2026)

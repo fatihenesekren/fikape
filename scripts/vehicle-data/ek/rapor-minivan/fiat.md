@@ -1,5 +1,5 @@
 ### Fiat
-- kamyonet: zaten vardı 10 · eklendi 219 · belirsiz 0
+- kamyonet: zaten vardı 9 · eklendi 220 · belirsiz 0
   - + Yeni model: Doblo Cargo (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
   - + Doblo Cargo › 1.2 › Standart
   - + Doblo Cargo › 1.2 Actual › Standart
@@ -210,6 +210,7 @@
   - + Scudo › 2.0 Multijet L2H1 › Standart (yıl bilgisi yok → 1986-2026)
   - + Scudo › 2.0 Multijet Maxi Business › Standart (yıl bilgisi yok → 1986-2026)
   - + Scudo › 2.2 Multijet Combi Mix Maxi Lounge › Standart (yıl bilgisi yok → 1986-2026)
+  - + Scudo › 2.2 Multijet Lounge › Standart (yıl bilgisi yok → 1986-2026)
   - + Yeni model: Doblo Combi Mix (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
   - + Doblo Combi Mix › 1.3 Multijet Maxi Active › Standart
   - + Doblo Combi Mix › 1.9 Multijet Maxi Active › Standart
