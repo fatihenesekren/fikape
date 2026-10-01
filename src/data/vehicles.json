@@ -618,7 +618,7 @@
           ],
           "trims": [
             "Pure",
-            "Légende",
+            "Legende",
             "S",
             "GT",
             "Color Edition",
@@ -2703,13 +2703,13 @@
         {
           "name": "2 Serisi",
           "versions": [
-            "218i Gran Coupé",
-            "220i Coupé",
+            "218i Gran Coupe",
+            "220i Coupe",
             "230i",
-            "218d Gran Coupé",
+            "218d Gran Coupe",
             "220d",
             "M240i xDrive",
-            "M2 Coupé",
+            "M2 Coupe",
             "Diğer"
           ],
           "trims": [
@@ -2721,12 +2721,12 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "218i Gran Coupé": [
+            "218i Gran Coupe": [
               "Sport Line",
               "M Sport",
               "Diğer"
             ],
-            "220i Coupé": [
+            "220i Coupe": [
               "Sport Line",
               "M Sport",
               "Diğer"
@@ -2736,7 +2736,7 @@
               "M Sport",
               "Diğer"
             ],
-            "218d Gran Coupé": [
+            "218d Gran Coupe": [
               "Sport Line",
               "M Sport",
               "Diğer"
@@ -2750,7 +2750,7 @@
               "Standart",
               "Diğer"
             ],
-            "M2 Coupé": [
+            "M2 Coupe": [
               "Standart",
               "Diğer"
             ]
@@ -3298,25 +3298,25 @@
           "name": "4 Serisi F32/F33/F36 (2013-2020)",
           "versions": [
             "418i",
-            "418i Gran Coupé",
+            "418i Gran Coupe",
             "418d",
-            "418d Gran Coupé",
+            "418d Gran Coupe",
             "420i",
-            "420i Gran Coupé",
+            "420i Gran Coupe",
             "420d",
-            "420d Gran Coupé",
+            "420d Gran Coupe",
             "420d xDrive",
-            "420d xDrive Gran Coupé",
+            "420d xDrive Gran Coupe",
             "428i",
-            "428i Gran Coupé",
+            "428i Gran Coupe",
             "428i xDrive",
-            "428i xDrive Gran Coupé",
+            "428i xDrive Gran Coupe",
             "430i",
             "430i xDrive",
-            "430i xDrive Gran Coupé",
+            "430i xDrive Gran Coupe",
             "430i Cabrio Edition M Sport",
-            "430i Coupé Edition M Sport",
-            "430d xDrive Gran Coupé",
+            "430i Coupe Edition M Sport",
+            "430d xDrive Gran Coupe",
             "440i xDrive",
             "Diğer"
           ],
@@ -3347,7 +3347,7 @@
               "Ultimate M Sport",
               "Diğer"
             ],
-            "418i Gran Coupé": [
+            "418i Gran Coupe": [
               "Standart",
               "Joy",
               "Luxury Line",
@@ -3362,7 +3362,7 @@
               "M Plus",
               "Diğer"
             ],
-            "418d Gran Coupé": [
+            "418d Gran Coupe": [
               "M Plus",
               "Prestige",
               "Sport Plus",
@@ -3373,7 +3373,7 @@
               "M Sport",
               "Diğer"
             ],
-            "420i Gran Coupé": [
+            "420i Gran Coupe": [
               "50th Year M Edition",
               "Edition M Sport",
               "M Sport",
@@ -3387,7 +3387,7 @@
               "Ultimate M Sport",
               "Diğer"
             ],
-            "420d Gran Coupé": [
+            "420d Gran Coupe": [
               "Standart",
               "Luxury Line",
               "M Sport",
@@ -3401,7 +3401,7 @@
               "Ultimate M Sport",
               "Diğer"
             ],
-            "420d xDrive Gran Coupé": [
+            "420d xDrive Gran Coupe": [
               "Standart",
               "Luxury Line",
               "Modern Line",
@@ -3418,7 +3418,7 @@
               "Sport Line",
               "Diğer"
             ],
-            "428i Gran Coupé": [
+            "428i Gran Coupe": [
               "Standart",
               "M Sport",
               "Diğer"
@@ -3428,7 +3428,7 @@
               "M Sport",
               "Diğer"
             ],
-            "428i xDrive Gran Coupé": [
+            "428i xDrive Gran Coupe": [
               "Standart",
               "Luxury Line",
               "M Sport",
@@ -3444,7 +3444,7 @@
               "Ultimate M Sport",
               "Diğer"
             ],
-            "430i xDrive Gran Coupé": [
+            "430i xDrive Gran Coupe": [
               "M Sport",
               "Diğer"
             ],
@@ -3452,11 +3452,11 @@
               "Standart",
               "Diğer"
             ],
-            "430i Coupé Edition M Sport": [
+            "430i Coupe Edition M Sport": [
               "Standart",
               "Diğer"
             ],
-            "430d xDrive Gran Coupé": [
+            "430d xDrive Gran Coupe": [
               "Standart",
               "Diğer"
             ],
@@ -3470,17 +3470,17 @@
           "name": "4 Serisi G22/G26 (2020-)",
           "versions": [
             "420i",
-            "420i Gran Coupé",
+            "420i Gran Coupe",
             "420d",
-            "420d Gran Coupé",
+            "420d Gran Coupe",
             "430i",
-            "430i Gran Coupé",
+            "430i Gran Coupe",
             "430i xDrive",
             "430d xDrive",
-            "430d xDrive Gran Coupé",
+            "430d xDrive Gran Coupe",
             "M440i xDrive",
-            "M440i xDrive Gran Coupé",
-            "M4 Coupé",
+            "M440i xDrive Gran Coupe",
+            "M4 Coupe",
             "M4 Competition",
             "Diğer"
           ],
@@ -3501,7 +3501,7 @@
               "M Sport",
               "Diğer"
             ],
-            "420i Gran Coupé": [
+            "420i Gran Coupe": [
               "Advantage",
               "Sport Line",
               "M Sport",
@@ -3513,7 +3513,7 @@
               "M Sport",
               "Diğer"
             ],
-            "420d Gran Coupé": [
+            "420d Gran Coupe": [
               "Advantage",
               "Sport Line",
               "M Sport",
@@ -3525,7 +3525,7 @@
               "M Sport",
               "Diğer"
             ],
-            "430i Gran Coupé": [
+            "430i Gran Coupe": [
               "Advantage",
               "Sport Line",
               "M Sport",
@@ -3543,7 +3543,7 @@
               "M Sport",
               "Diğer"
             ],
-            "430d xDrive Gran Coupé": [
+            "430d xDrive Gran Coupe": [
               "Advantage",
               "Sport Line",
               "M Sport",
@@ -3553,11 +3553,11 @@
               "Standart",
               "Diğer"
             ],
-            "M440i xDrive Gran Coupé": [
+            "M440i xDrive Gran Coupe": [
               "Standart",
               "Diğer"
             ],
-            "M4 Coupé": [
+            "M4 Coupe": [
               "Standart",
               "Diğer"
             ],
@@ -5791,7 +5791,7 @@
           ]
         },
         {
-          "name": "C-Elysée (2012-2022)",
+          "name": "C-Elysee (2012-2022)",
           "versions": [
             "1.2 PureTech 82",
             "1.6 VTi 115",
@@ -12002,7 +12002,7 @@
           ]
         },
         {
-          "name": "3200 GT / Coupé-Spyder (1998-2007)",
+          "name": "3200 GT / Coupe-Spyder (1998-2007)",
           "versions": [
             "3.2 V8 Twin-Turbo 370",
             "4200 GT 4.2 V8 390",
@@ -12270,20 +12270,20 @@
         {
           "name": "MC20",
           "versions": [
-            "3.0 Nettuno V6 630 Coupé",
+            "3.0 Nettuno V6 630 Coupe",
             "3.0 Nettuno V6 630 Cielo",
             "Folgore EV AWD 761",
             "Diğer"
           ],
           "trims": [
-            "Coupé",
+            "Coupe",
             "Cielo",
             "Folgore",
             "Diğer"
           ],
           "trimsByVersion": {
-            "3.0 Nettuno V6 630 Coupé": [
-              "Coupé",
+            "3.0 Nettuno V6 630 Coupe": [
+              "Coupe",
               "Diğer"
             ],
             "3.0 Nettuno V6 630 Cielo": [
@@ -32647,7 +32647,7 @@
           ],
           "trims": [
             "Standart",
-            "Café",
+            "Cafe",
             "Diğer"
           ]
         },
@@ -32668,13 +32668,13 @@
           "name": "W800",
           "versions": [
             "800cc 52 CV",
-            "Café",
+            "Cafe",
             "Street",
             "Diğer"
           ],
           "trims": [
             "Standart",
-            "Café",
+            "Cafe",
             "Street",
             "Diğer"
           ],
@@ -32683,8 +32683,8 @@
               "Standart",
               "Diğer"
             ],
-            "Café": [
-              "Café",
+            "Cafe": [
+              "Cafe",
               "Diğer"
             ],
             "Street": [
@@ -34410,7 +34410,7 @@
             "Diğer"
           ],
           "trims": [
-            "SCR (Café Racer)",
+            "SCR (Cafe Racer)",
             "STR (Tracker)",
             "Diğer"
           ]
@@ -48046,7 +48046,7 @@
           "trims": [
             "Standart",
             "Vibe",
-            "Coupé",
+            "Coupe",
             "Diğer"
           ]
         },
@@ -48958,7 +48958,7 @@
       "make": "Rapido",
       "models": [
         {
-          "name": "Série C (Yarı Entegre)",
+          "name": "Serie C (Yarı Entegre)",
           "versions": [
             "2 Kişilik",
             "4 Kişilik",
@@ -48972,7 +48972,7 @@
           ]
         },
         {
-          "name": "Série 6F (Alçak Profil)",
+          "name": "Serie 6F (Alçak Profil)",
           "versions": [
             "4 Kişilik",
             "6 Kişilik",
@@ -48984,7 +48984,7 @@
           ]
         },
         {
-          "name": "Série 8F / 80dF (Tam Entegre)",
+          "name": "Serie 8F / 80dF (Tam Entegre)",
           "versions": [
             "4 Kişilik",
             "6 Kişilik",
