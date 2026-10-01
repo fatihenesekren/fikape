@@ -34,7 +34,7 @@ const HIGHER_IS_BETTER = new Set([
   "Çekme Kap.", "Çekme Ağ.", "Azami Hız", "Maks. Hız", "Maks. Yük",
   "Taze Su Tankı", "Gri/Pis Su Tankı",
 ]);
-const LOWER_IS_BETTER = new Set(["0–100 km/s", "Şarj Süresi"]);
+const LOWER_IS_BETTER = new Set(["0–100 km/s", "Tam Şarj", "Hızlı Şarj (10–80%)"]);
 
 function parseLeadingNumber(value: string): number | null {
   const m = value.replace(",", ".").match(/-?\d+(\.\d+)?/);

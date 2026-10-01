@@ -78,6 +78,7 @@ function FieldInput({
         )}
         {f.label}{f.type === "number" && "unit" in f && f.unit ? <span className="font-normal ml-1 text-gray-400">({f.unit})</span> : ""}
       </label>
+      {f.type === "number" && f.note && <p className="text-[11px] text-gray-400 -mt-0.5 mb-1 leading-snug">{f.note}</p>}
 
       {f.type === "select" && (
         <select

@@ -59,7 +59,8 @@ const SPEC_BADGE_LABELS: { label: string; badgeLabel: string }[] = [
   { label: "Taze Su Tankı", badgeLabel: "En büyük taze su tankı" },
   { label: "Gri/Pis Su Tankı", badgeLabel: "En büyük atık su tankı" },
   { label: "Çekme Ağ.", badgeLabel: "En yüksek çekme ağırlığı" },
-  { label: "Şarj Süresi", badgeLabel: "En kısa şarj süresi" },
+  { label: "Tam Şarj", badgeLabel: "En kısa tam şarj" },
+  { label: "Hızlı Şarj (10–80%)", badgeLabel: "En hızlı şarj (10–80%)" },
 ];
 const MAX_SPEC_BADGES = 3;
 

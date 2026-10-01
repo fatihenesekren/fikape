@@ -81,6 +81,7 @@ const REASONABLE_RANGES: Record<string, [number, number]> = {
   max_load_kg:      [50, 200],
   tire_inch:        [6, 14],
   charge_hours:     [0.5, 24],
+  fast_charge_min:  [5, 180],
   seat_count:       [1, 9],
 };
 
@@ -109,7 +110,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 function describeField(f: FieldDef): string {
-  if (f.type === "number") return `- ${f.key}: sayı${f.unit ? ` (${f.unit})` : ""}, emin değilsen null`;
+  if (f.type === "number") return `- ${f.key}: sayı${f.unit ? ` (${f.unit})` : ""}${f.note ? ` — ${f.note}` : ""}, emin değilsen null`;
   if (f.type === "boolean") return `- ${f.key}: true veya false, emin değilsen null`;
   if (f.type === "select") {
     const opts = f.options.map((o) => o.value).join(", ");

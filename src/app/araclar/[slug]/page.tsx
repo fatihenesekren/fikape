@@ -500,7 +500,7 @@ export default async function VehicleDetailPage({
       attrs.power_hp       ? { label: "Güç",        value: `${attrs.power_hp} HP` }           : null,
       attrs.torque_nm      ? { label: "Tork",       value: `${attrs.torque_nm} Nm` }          : (attrs.max_speed_kmh ? { label: "Azami Hız", value: `${attrs.max_speed_kmh} km/s` } : null),
       attrs.seat_height_mm ? { label: "Sele Yüksekliği", value: `${attrs.seat_height_mm} mm` } : (attrs.battery_kwh ? { label: "Batarya", value: `${attrs.battery_kwh} kWh` } : null),
-      attrs.tank_l         ? { label: "Depo",       value: `${attrs.tank_l} L` }              : (attrs.charge_hours ? { label: "Şarj Süresi", value: `~${attrs.charge_hours} saat` } : null),
+      attrs.tank_l         ? { label: "Depo",       value: `${attrs.tank_l} L` }              : (attrs.charge_hours ? { label: "Tam Şarj", value: `~${attrs.charge_hours} saat` } : null),
     ];
     if (categorySlug === "karavan") return [
       karavanType            ? { label: "Tip",             value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,

@@ -13,7 +13,7 @@ import {
 type ShowIf = (attrs: Record<string, string>) => boolean;
 
 export type FieldDef =
-  | { key: string; label: string; type: "number"; unit?: string; placeholder?: string; showIf?: ShowIf }
+  | { key: string; label: string; type: "number"; unit?: string; placeholder?: string; note?: string; showIf?: ShowIf }
   | { key: string; label: string; type: "select"; options: { value: string; label: string }[]; showIf?: ShowIf }
   | { key: string; label: string; type: "boolean"; showIf?: ShowIf }
   | { key: string; label: string; type: "text"; placeholder?: string; showIf?: ShowIf };
@@ -53,7 +53,8 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "tank_l",       label: "Yakıt Dep.",type: "number", unit: "L", showIf: hasCombustionEngine },
     { key: "battery_kwh",  label: "Batarya",   type: "number", unit: "kWh", showIf: hasElectricRange },
     { key: "ev_range_km",  label: "Menzil",    type: "number", unit: "km (WLTP)", showIf: hasElectricRange },
-    { key: "charge_hours", label: "Şarj Süresi", type: "number", unit: "saat", showIf: hasElectricRange },
+    { key: "charge_hours", label: "Tam Şarj", type: "number", unit: "saat", note: "AC ile %0–%100 tam şarj süresi (saat)", showIf: hasElectricRange },
+    { key: "fast_charge_min", label: "Hızlı Şarj (10–80%)", type: "number", unit: "dk", note: "DC hızlı şarjla %10’dan %80’e süre (dakika); kaynak farklı aralık (ör. %20–80) veriyorsa null", showIf: hasElectricRange },
     { key: "boot_l",       label: "Bagaj",     type: "number", unit: "L" },
     { key: "weight_kg",    label: "Ağırlık",   type: "number", unit: "kg" },
     { key: "seat_count",   label: "Koltuk Sayısı", type: "number", unit: "kişi" },
@@ -72,7 +73,8 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "ev_range_km",  label: "Menzil (EV)", type: "number", unit: "km", showIf: isElectricMoto },
     { key: "battery_kwh",  label: "Batarya",     type: "number", unit: "kWh", showIf: isElectricMoto },
     { key: "motor_watt",   label: "Motor Gücü (EV)", type: "number", unit: "W", showIf: isElectricMoto },
-    { key: "charge_hours", label: "Şarj Süresi", type: "number", unit: "saat", showIf: isElectricMoto },
+    { key: "charge_hours", label: "Tam Şarj", type: "number", unit: "saat", note: "AC ile %0–%100 tam şarj süresi (saat)", showIf: isElectricMoto },
+    { key: "fast_charge_min", label: "Hızlı Şarj (10–80%)", type: "number", unit: "dk", note: "DC hızlı şarjla %10’dan %80’e süre (dakika); kaynak farklı aralık (ör. %20–80) veriyorsa null", showIf: isElectricMoto },
     { key: "max_speed_kmh", label: "Azami Hız",  type: "number", unit: "km/s" },
     { key: "removable_battery", label: "Çıkarılabilir Batarya", type: "boolean", showIf: isElectricMoto },
   ],
@@ -82,7 +84,7 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "max_speed_kmh", label: "Maks. Hız",    type: "number", unit: "km/s" },
     { key: "battery_wh",    label: "Batarya",      type: "number", unit: "Wh" },
     { key: "weight_kg",     label: "Ağırlık",      type: "number", unit: "kg" },
-    { key: "charge_hours",  label: "Şarj Süresi",  type: "number", unit: "saat" },
+    { key: "charge_hours",  label: "Tam Şarj",  type: "number", unit: "saat", note: "%0–%100 tam şarj süresi (saat)" },
     { key: "ip_rating",     label: "Su Ger.",       type: "text", placeholder: "örn. IP54" },
     { key: "max_load_kg",   label: "Maks. Yük",    type: "number", unit: "kg" },
     { key: "tire_inch",     label: "Lastik",       type: "number", unit: "\"" },
@@ -98,7 +100,7 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "range_km",     label: "Menzil",        type: "number", unit: "km" },
     { key: "max_speed_kmh",label: "Maks. Hız",     type: "number", unit: "km/s" },
     { key: "weight_kg",    label: "Ağırlık",       type: "number", unit: "kg" },
-    { key: "charge_hours", label: "Şarj Süresi",   type: "number", unit: "saat" },
+    { key: "charge_hours", label: "Tam Şarj",   type: "number", unit: "saat", note: "%0–%100 tam şarj süresi (saat)" },
     { key: "removable_battery", label: "Çıkarılabilir Batarya", type: "boolean" },
     { key: "gearbox",      label: "Vites Sayısı",  type: "number", unit: "vites", placeholder: "örn. 7" },
   ],
