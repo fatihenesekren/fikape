@@ -98,7 +98,7 @@ export const BRAND_MAP: Record<string, string> = {
   MERCEDES: "Mercedes-Benz",
   "OTOYOL\\IVECO\\FIAT": "Iveco",
   "FORD /USA": "Ford", "DODGE/USA": "Dodge",
-  SSANGYONG: "SsangYong", KGMOBILITY: "KGM",
+  SSANGYONG: "SsangYong", KGMOBILITY: "SsangYong",
   "ALFA ROMEO": "Alfa Romeo", "ASTON MARTIN": "Aston Martin", "ROLLS-ROYCE": "Rolls-Royce",
   "LYNK-CO": "Lynk & Co", "TRUMPCHI/GAC": "GAC", "FARIZON AUTO": "Farizon",
   BMW: "BMW", DS: "DS", MG: "MG", TOGG: "TOGG", GMC: "GMC", BYD: "BYD", DFSK: "DFSK", DFM: "DFM",
@@ -268,7 +268,7 @@ export const LCV_MODELS: Record<string, string[]> = {
   Kia: ["K2500", "K2700", "BONGO"],
   Karsan: ["JEST", "JEST+", "J10", "ATAK", "JESTRONIC"],
   SsangYong: ["MUSSO", "ACTYON SPORTS", "KORANDO SPORTS"],
-  KGM: ["MUSSO"],
+  KGM: ["MUSSO"], // marka artık SsangYong altında birleşiyor
   Dodge: ["RAM"],
   Mazda: ["BT-50"],
   GAZ: ["GAZELLE"],
