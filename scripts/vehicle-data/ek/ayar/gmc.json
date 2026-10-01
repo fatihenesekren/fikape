@@ -1,0 +1,8 @@
+{
+  "kamyonet": ["Canyon", "Sierra"],
+  "yeniModel": {
+    "Envoy": { "bas": 1998, "bit": 2009, "kaynak": "en.wikipedia GMC Envoy (model yılı 1998-2009)" },
+    "Jimmy": { "bas": 1990, "bit": 2001, "kaynak": "en.wikipedia GMC Jimmy (K5 1970-1991, S-15 1983-2001; 1990 öncesi kırpıldı)" },
+    "Typhoon": { "bas": 1992, "bit": 1993, "kaynak": "en.wikipedia GMC Typhoon (1992-1993)" }
+  }
+}

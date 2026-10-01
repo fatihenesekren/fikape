@@ -1,0 +1,1144 @@
+Otomobil
+Hyundai
+Accent (2.247)
+Accent Blue (2.049)
+Accent Era (2.313)
+Atos (72)
+Coupe (40)
+Elantra (1.039)
+Excel (96)
+Genesis (13)
+Getz (1.827)
+Grandeur (2)
+i10 (526)
+i20 (5.409)
+i20 Active (72)
+i20 N (62)
+i20 Troy (188)
+i30 (1.284)
+i40 (3)
+Ioniq (14)
+Ioniq 6 (148)
+iX20 (25)
+Matrix (126)
+Sonata (97)
+Trajet (1)
+
+---------------------
+
+Otomobil
+Hyundai
+Accent
+1.3 (1.006)
+1.5 (612)
+1.5 CRDi (451)
+1.6 (178)
+
+Otomobil
+Hyundai
+Accent
+1.3
+1.3i (3)
+1.3i L (1)
+Admire (330)
+GL Active (3)
+GLS (35)
+GLS Active (4)
+LS (224)
+LX (386)
+LX Allegro (17)
+LX World Cup Special Edition (3)
+
+Otomobil
+Hyundai
+Accent
+1.5
+1.5i GL (34)
+1.5i GLS (120)
+GL (23)
+GLS (406)
+GLX (7)
+GT (8)
+LS (14)
+
+Otomobil
+Hyundai
+Accent
+1.5 CRDi
+Active (2)
+Admire (409)
+GLS (35)
+LS (4)
+
+Otomobil
+Hyundai
+Accent
+1.6
+Admire (178)
+
+---------------------
+
+Otomobil
+Hyundai
+Accent Blue
+1.4 CVVT (179)
+1.4 D-CVVT (282)
+1.6 CRDI (1.588)
+
+Otomobil
+Hyundai
+Accent Blue
+1.4 CVVT
+Biz (9)
+Mode (47)
+Mode Plus (95)
+Prime (28)
+
+Otomobil
+Hyundai
+Accent Blue
+1.4 D-CVVT
+Biz (2)
+Mode (20)
+Mode Plus (256)
+Prime (4)
+
+Otomobil
+Hyundai
+Accent Blue
+1.6 CRDI
+Biz (221)
+Mode (238)
+Mode Plus (1.032)
+Prime (97)
+
+---------------------
+
+Otomobil
+Hyundai
+Accent Era
+1.4 (958)
+1.5 CRDi (368)
+1.5 CRDi-VGT (817)
+1.6 (170)
+
+Otomobil
+Hyundai
+Accent Era
+1.4
+Eco (5)
+Expo Gold (20)
+Mode (43)
+Prime (1)
+Select (112)
+Select Expo Gold (4)
+Start (112)
+Team (661)
+
+Otomobil
+Hyundai
+Accent Era
+1.5 CRDi
+Mode (118)
+Prime (25)
+Select (60)
+Start (59)
+Style (35)
+Team (71)
+
+Otomobil
+Hyundai
+Accent Era
+1.5 CRDi-VGT
+Eco (35)
+Select (150)
+Start (35)
+Style (50)
+Team (547)
+
+Hyundai
+Accent Era
+1.6
+Expo Platinyum (14)
+Mode (4)
+Prime (1)
+Select (64)
+Style (17)
+Style Sports (2)
+Team (68)
+
+---------------------
+
+Otomobil
+Hyundai
+Atos
+1.0 (31)
+1.1 (41)
+
+Otomobil
+Hyundai
+Atos
+1.0
+GL (4)
+GL Prime (2)
+GLS (19)
+GLS Prime (6)
+
+Otomobil
+Hyundai
+Atos
+1.1
+GLS (41)
+
+---------------------
+
+Otomobil
+Hyundai
+Coupe
+1.6 (29)
+2.0 (10)
+2.7 FX (1)
+
+Otomobil
+Hyundai
+Coupe
+1.6
+1.6 (5)
+FX (24)
+
+Otomobil
+Hyundai
+Coupe
+2.0
+2.0 (2)
+FX (5)
+GLS (3)
+
+Otomobil
+Hyundai
+Coupe
+2.7 FX (1)
+
+---------------------
+
+Otomobil
+Hyundai
+Elantra
+1.5 (1)
+1.6 (206)
+1.6 CRDi (275)
+1.6 D-CVVT (316)
+1.6 MPI (216)
+1.8 (19)
+2.0 (5)
+
+Otomobil
+Hyundai
+Elantra
+1.5
+GLS (1)
+
+Otomobil
+Hyundai
+Elantra
+1.6
+Elegance (2)
+GL (3)
+GLS (201)
+
+Otomobil
+Hyundai
+Elantra
+1.6 CRDi
+Elite (108)
+Elite Plus (51)
+Style (45)
+Style Plus (71)
+
+Otomobil
+Hyundai
+Elantra
+1.6 D-CVVT
+Elite (9)
+Mode (31)
+Mode Plus (52)
+Prime (5)
+Prime Plus (19)
+Style (167)
+Style Design Pack (6)
+Tune (27)
+
+Otomobil
+Hyundai
+Elantra
+1.6 MPI
+Elite (20)
+Elite Plus (16)
+Prime (7)
+Smart (23)
+Style (47)
+Style Comfort (86)
+Style Plus (17)
+
+Otomobil
+Hyundai
+Elantra
+1.8
+GLS (7)
+GT (12)
+
+Otomobil
+Hyundai
+Elantra
+2.0
+GLS (5)
+
+---------------------
+
+Otomobil
+Hyundai
+Excel
+1.5
+GLS (63)
+LS (33)
+
+---------------------
+
+Otomobil
+Hyundai
+Genesis
+2.0L TCI (11)
+3.8 (2)
+
+---------------------
+
+Otomobil
+Hyundai
+Getz
+1.3 (420)
+1.4 DOHC (563)
+1.5 CRDi (842)
+1.6 (1)
+
+Otomobil
+Hyundai
+Getz
+1.3
+GL (2)
+GL Active (2)
+GLS (405)
+GLS Cool (5)
+GLS Style (5)
+
+Otomobil
+Hyundai
+Getz
+1.4 DOHC
+1.4 AB AC (191)
+HY KLM (170)
+Start (201)
+
+Otomobil
+Hyundai
+Getz
+1.5 CRDi
+Active (36)
+Classic (19)
+Comfort Plus (12)
+GL Active (11)
+GL Cool (17)
+GLS (119)
+HY KLM (8)
+VGT (417)
+VGT Start (203)
+
+Otomobil
+Hyundai
+Getz
+1.6
+Cool (1)
+
+---------------------
+
+Otomobil
+Hyundai
+Grandeur
+2.2 CRDi (1)
+3.3 (1)
+
+---------------------
+
+Otomobil
+Hyundai
+i10
+1.0 D-CVVT (208)
+1.0 MPI (21)
+1.1 (86)
+1.1 CRDi (4)
+1.2 D-CVVT (84)
+1.2 MPI (123)
+
+Otomobil
+Hyundai
+i10
+1.0 D-CVVT
+Jump (54)
+Style (154)
+
+Otomobil
+Hyundai
+i10
+1.0 MPI
+Jump (21)
+
+Otomobil
+Hyundai
+i10
+1.1
+Plus (7)
+Select (32)
+Team (47)
+
+Otomobil
+Hyundai
+i10
+1.1 CRDi
+Select (1)
+Team (3)
+
+Otomobil
+Hyundai
+i10
+1.2 D-CVVT
+Elite (81)
+Go Special Edition (2)
+Style (1)
+
+Otomobil
+Hyundai
+i10
+1.2 MPI
+Elite (78)
+Jump (10)
+Style (35)
+
+---------------------
+
+Otomobil
+Hyundai
+i20
+1.0 T-GDI (736)
+1.2 D-CVVT (334)
+1.2 MPI (823)
+1.4 CRDi (1.087)
+1.4 CVVT (288)
+1.4 MPI (2.143)
+
+Otomobil
+Hyundai
+i20
+1.0 T-GDI
+Active Elite (1)
+Elite (129)
+Jump (294)
+Style (293)
+Style Plus (19)
+
+Otomobil
+Hyundai
+i20
+1.2 D-CVVT
+Elite (6)
+Go (3)
+Jump (189)
+Sense (136)
+
+Otomobil
+Hyundai
+i20
+1.2 MPI
+Elite (142)
+Elite Smart (11)
+Jump (246)
+Style (333)
+Team (91)
+
+Otomobil
+Hyundai
+i20
+1.4 CRDi
+Elite (51)
+Elite Smart (12)
+Jump (581)
+Select (2)
+Sense (43)
+Style (296)
+Style Plus (1)
+Team (96)
+Tune (4)
+
+Otomobil
+Hyundai
+i20
+1.4 CVVT
+Elite (11)
+Go (4)
+Jump (109)
+Select (12)
+Sense (76)
+Style (10)
+Team (65)
+Tune (1)
+
+Otomobil
+Hyundai
+i20
+1.4 MPI
+Active Elite (2)
+Coupe (3)
+Elite (320)
+Elite Panorama (10)
+Elite Plus (5)
+Elite Smart (126)
+Jump (677)
+Star (2)
+Style (865)
+Style Design (13)
+Style Limited Edition (1)
+Style Plus (119)
+
+---------------------
+
+Otomobil
+Hyundai
+i20 Active
+1.0 T-GDI (12)
+1.4 MPI (60)
+
+Otomobil
+Hyundai
+i20 Active
+1.0 T-GDI
+Elite (8)
+Elite Smart (4)
+
+Otomobil
+Hyundai
+i20 Active
+1.4 MPI
+Elite (50)
+Elite Smart (10)
+
+---------------------
+
+Otomobil
+Hyundai
+i20 N
+1.6 T-GDI (62)
+
+---------------------
+
+Otomobil
+Hyundai
+i20 Troy
+1.2 (21)
+1.2 DOHC (60)
+1.4 CRDi (55)
+1.4 CVVT (52)
+
+Otomobil
+Hyundai
+i20 Troy
+1.2
+Mode (13)
+Start (1)
+Team (7)
+
+Otomobil
+Hyundai
+i20 Troy
+1.2 DOHC
+Mode (41)
+Team (19)
+
+Otomobil
+Hyundai
+i20 Troy
+1.4 CRDi
+ISG (1)
+ISG Plus (1)
+Mode (13)
+Prime (3)
+Start (4)
+Team (33)
+
+Otomobil
+Hyundai
+i20 Troy
+1.4 CVVT
+Mode (15)
+Prime (15)
+Prime Plus (5)
+Team (17)
+
+---------------------
+
+Otomobil
+Hyundai
+i30
+1.4 (5)
+1.4 CVVT (26)
+1.4 MPI (10)
+1.4 T-GDI (2)
+1.5 T-GDI (34)
+1.6 CRDi (973)
+1.6 CVVT (48)
+1.6 DOHC (6)
+1.6 GDi (174)
+1.6 T-GDI (8)
+
+Otomobil
+Hyundai
+i30
+1.4
+Blue Drive (5)
+
+Otomobil
+Hyundai
+i30
+1.4 CVVT
+Prime (1)
+Team (25)
+
+Otomobil
+Hyundai
+i30
+1.4 MPI
+Style (10)
+
+Otomobil
+Hyundai
+i30
+1.4 T-GDI
+Elite (2)
+
+Otomobil
+Hyundai
+i30
+1.5 T-GDI
+Comfort (5)
+Prime (29)
+
+Otomobil
+Hyundai
+i30
+1.6 CRDi
+Blue Drive (14)
+Elite (509)
+Elite Plus (50)
+Elite Plus Smart (4)
+Mode (67)
+Mode Plus (4)
+Prime (11)
+Select (13)
+Sports (1)
+Style (180)
+Style Design Pack (26)
+Style Plus (13)
+Team (81)
+
+Otomobil
+Hyundai
+i30
+1.6 CVVT
+Mode (25)
+Mode Plus (1)
+Prime (5)
+Select (9)
+Style (4)
+Style Plus (3)
+Team (1)
+
+Otomobil
+Hyundai
+i30
+1.6 DOHC
+Mode (5)
+Team (1)
+
+Otomobil
+Hyundai
+i30
+1.6 GDi
+Blue Drive (1)
+Elite (82)
+Style (87)
+Style Design Pack (4)
+
+Otomobil
+Hyundai
+i30
+1.6 T-GDI
+Comfort (4)
+Prime (3)
+Sport (1)
+
+---------------------
+
+Otomobil
+Hyundai
+i40
+1.6 GDI Prime (2)
+1.7 CRDi Executive (1)
+
+---------------------
+
+Otomobil
+Hyundai
+Ioniq
+1.6 GDI
+Elite Plus (13)
+Progressive (1)
+
+---------------------
+
+Otomobil
+Hyundai
+Ioniq 6
+Advance (139)
+Progressive (9)
+
+---------------------
+
+Otomobil
+Hyundai
+iX20
+1.4 (2)
+1.4 CRDi (15)
+1.6 (8)
+
+Otomobil
+Hyundai
+iX20
+1.4
+Mode (2)
+
+Otomobil
+Hyundai
+iX20
+1.4 CRDi
+Mode (1)
+Prime (14)
+
+Otomobil
+Hyundai
+iX20
+1.6
+Prime (8)
+
+---------------------
+
+Otomobil
+Hyundai
+Matrix
+1.5 CRDi (98)
+1.6 (28)
+
+Otomobil
+Hyundai
+Matrix
+1.5 CRDi
+GL (10)
+GLS (22)
+Select (18)
+Start (9)
+Style (8)
+Team (31)
+
+Otomobil
+Hyundai
+Matrix
+1.6
+GL (1)
+GLS (7)
+Select (4)
+Start (1)
+Style (9)
+Team (6)
+
+---------------------
+
+Otomobil
+Hyundai
+Sonata
+2.0 (37)
+2.0 CRDi (38)
+2.0 CVVT (3)
+2.0 SOHC (1)
+2.4 (2)
+2.5 (11)
+2.7 (5)
+
+Otomobil
+Hyundai
+Sonata
+2.0
+GLS (37)
+
+Otomobil
+Hyundai
+Sonata
+2.0 CRDi
+H-Matic (15)
+Select (2)
+Style (21)
+
+Otomobil
+Hyundai
+Sonata
+2.0 CVVT
+H-Matic (2)
+Style (1)
+
+Otomobil
+Hyundai
+Sonata
+2.0 SOHC
+GL (1)
+
+Otomobil
+Hyundai
+Sonata
+2.4
+GLS (2)
+
+Otomobil
+Hyundai
+Sonata
+2.5
+GLS (11)
+
+Otomobil
+Hyundai
+Sonata
+2.7
+GLS (5)
+
+---------------------
+
+Otomobil
+Hyundai
+Trajet
+2.0 CRDi GLS (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Bayon (1.250)
+Ioniq 5 (108)
+Ioniq 5 N (18)
+Ioniq 9 (5)
+Inster (10)
+ix35 (675)
+ix55 (4)
+Galloper (26)
+Kona (386)
+Kona Elektrik (65)
+Santa Fe (228)
+Terracan (8)
+Tucson (4.102)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Bayon
+1.0 T-GDI (510)
+1.2 MPI (7)
+1.4 MPI (733)
+
+Arazi, SUV & Pickup
+Hyundai
+Bayon
+1.0 T-GDI
+Elite (175)
+Jump (114)
+Style (221)
+
+Arazi, SUV & Pickup
+Hyundai
+Bayon
+1.2 MPI
+Jump (7)
+
+Arazi, SUV & Pickup
+Hyundai
+Bayon
+1.4 MPI
+Elite (235)
+Jump (218)
+Style (278)
+Style Design (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Ioniq 5
+Advance (29)
+Dynamic (18)
+Dynamic Vision Roof (49)
+Progressive (12)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Ioniq 5 N
+N (18)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Ioniq 9
+Progressive (5)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Inster
+Advance (8)
+Dynamic (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+ix35
+1.6 GDI (580)
+2.0 R (95)
+
+Arazi, SUV & Pickup
+Hyundai
+ix35
+1.6 GDI
+Design (24)
+Elite (244)
+Style (77)
+Style Plus (235)
+
+Arazi, SUV & Pickup
+Hyundai
+ix35
+2.0 R
+Elite (4)
+Style (10)
+Style Plus (81)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+ix55
+3.0 CRDi (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Galloper
+2.5 TDI (14)
+3.0 V6 (12)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Kona
+1.0 T-GDI (75)
+1.6 CRDI (239)
+1.6 GDI (1)
+1.6 T-GDI (71)
+
+Arazi, SUV & Pickup
+Hyundai
+Kona
+1.0 T-GDI
+Elite (7)
+Style (68)
+
+Arazi, SUV & Pickup
+Hyundai
+Kona
+1.6 CRDI
+Elite (26)
+Elite Smart (116)
+Smart (33)
+Style (64)
+
+Arazi, SUV & Pickup
+Hyundai
+Kona
+1.6 GDI
+1.6 GDI Hibrit (1)
+
+Arazi, SUV & Pickup
+Hyundai
+Kona
+1.6 T-GDI
+Elite (13)
+Elite Smart (24)
+N Line (9)
+Prime (16)
+Smart (9)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Kona Elektrik
+Advance (48)
+Progressive (17)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Santa Fe
+1.6 T-GDI (42)
+2.0 CRDi (79)
+2.0 TCI (6)
+2.2 CRDi (92)
+2.2 R (1)
+2.4 GLS (2)
+2.7 V6 (5)
+3.3 V6 (1)
+
+Arazi, SUV & Pickup
+Hyundai
+Santa Fe
+1.6 T-GDI
+Progressive (42)
+
+Arazi, SUV & Pickup
+Hyundai
+Santa Fe
+2.0 CRDi
+Elegance (17)
+Executive (13)
+GLS (13)
+Premium (4)
+Style (1)
+VGT (31)
+
+Arazi, SUV & Pickup
+Hyundai
+Santa Fe
+2.0 TCI (6)
+
+Arazi, SUV & Pickup
+Hyundai
+Santa Fe
+2.2 CRDi (92)
+
+Arazi, SUV & Pickup
+Hyundai
+Santa Fe
+2.2 R (1)
+
+Arazi, SUV & Pickup
+Hyundai
+Santa Fe
+2.4 GLS (2)
+
+Arazi, SUV & Pickup
+Hyundai
+Santa Fe
+2.7 V6 (5)
+
+Arazi, SUV & Pickup
+Hyundai
+Santa Fe
+3.3 V6 (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Terracan
+2.5 (3)
+2.9 CRDi GL (5)
+
+---------------------
+
+Arazi, SUV & Pickup
+Hyundai
+Tucson
+1.6 CRDI (2.357)
+1.6 GDI (278)
+1.6 T-GDI (1.274)
+2.0 CRDi (191)
+2.0 CVVT (5)
+
+Arazi, SUV & Pickup
+Hyundai
+Tucson
+1.6 CRDI
+Comfort (26)
+Elite (979)
+Elite Plus (643)
+Elite Plus Red Pack (3)
+Elite Red Pack (13)
+N Line (75)
+N Line Plus (56)
+Prime (417)
+Smart (33)
+Style (18)
+Style Plus (96)
+
+Arazi, SUV & Pickup
+Hyundai
+Tucson
+1.6 GDI
+Elite (178)
+Elite Plus (2)
+Style (91)
+Style Plus (7)
+
+Arazi, SUV & Pickup
+Hyundai
+Tucson
+1.6 T-GDI
+Comfort (141)
+Elite (298)
+Elite Plus (350)
+N-Line (45)
+Power Edition (77)
+Prime (95)
+Prime Plus (249)
+Style (19)
+
+Arazi, SUV & Pickup
+Hyundai
+Tucson
+2.0 CRDi
+2.0 CRDi (140)
+Dynamic (3)
+Executive (17)
+Select (3)
+Sport (3)
+Style (24)
+Travel (1)
+
+Arazi, SUV & Pickup
+Hyundai
+Tucson
+2.0 CVVT
+Active (1)
+Dynamic (1)
+Style (3)
+
+---------------------

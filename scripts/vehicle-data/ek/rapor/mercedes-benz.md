@@ -1,0 +1,37 @@
+### Mercedes-Benz
+- otomobil: zaten vardı 381 · eklendi 27 · belirsiz 219
+  - + Yeni model: CL (1992–2014) — en.wikipedia Mercedes-Benz CL-Class (1992-2014)
+  - + CL › 63 AMG › Standart
+  - + CL › 500 › Standart
+  - + Yeni model: CLC (2008–2011) — autoevolution / cars-data Mercedes-Benz CLC (2008-2011)
+  - + CLC › CLC 160 › BlueEfficiency
+  - + CLC › CLC 160 › Emotion
+  - + CLC › CLC 160 › Grand Prix
+  - + CLC › CLC 180 › Kompresor
+  - + CLC › CLC 220 › 220 CDI
+  - + Yeni model: CLK (1997–2009) — en.wikipedia Mercedes-Benz CLK-Class (1997-2009)
+  - + CLK › CLK 55 AMG › Standart
+  - + CLK › CLK 55 AMG › Komp.
+  - + CLK › CLK 55 AMG › Avantgarde
+  - + CLK › CLK 55 AMG › Elegance
+  - + CLK › CLK 55 AMG › Komp. Avantgarde
+  - + CLK › CLK 55 AMG › Komp. Elegance
+  - + CLK › CLK 230 Komp. › 230 Komp.
+  - + CLK › CLK 230 Komp. › Komp. Avantgarde
+  - + CLK › CLK 230 Komp. › Komp. Elegance
+  - + CLK › CLK 270 CDI › Avantgarde
+  - + CLK › CLK 270 CDI › Elegance
+  - + SL › 43 AMG › Standart
+  - + SL › 280 › Standart
+  - + Yeni model: SLS AMG (2010–2014) — en.wikipedia Mercedes-Benz SLS AMG (2010-2014)
+  - + 190 (W201, 1982-1993) › 190 E 2.3-16 185 › 1.8
+  - + 190 (W201, 1982-1993) › 190 E 2.3-16 185 › 2.0
+  - + 190 (W201, 1982-1993) › 190 E 2.3-16 185 › 2.6
+  - ~ eşleme: "GLC Coupe" → "GLC"
+  - ~ eşleme: "GLE Coupe" → "GLE"
+- kamyonet: zaten vardı 0 · eklendi 5 · belirsiz 0
+  - + Yeni model: X (2017–2020) — en.wikipedia Mercedes-Benz X-Class (Kasım 2017 - Mayıs 2020) — kamyonet
+  - + X › 220 d Pure › Standart
+  - + X › 250 d Power › Standart
+  - + X › 250 d Progressive › Standart
+  - + X › 350 d 4Matic Power › Standart

@@ -1,0 +1,20 @@
+{
+  "kamyonet": ["Navara"],
+  "takma": { "Qashqai+2": "Qashqai", "Laurel Altima": "Altima" },
+  "yeniModel": {
+    "Teana": { "bas": 2003, "bit": 2020, "kaynak": "en.wikipedia Nissan Teana (2003-2020)" },
+    "Murano": { "bas": 2003, "bit": null, "kaynak": "en.wikipedia Nissan Murano (2003'ten beri)" },
+    "Cefiro": { "bas": 1990, "bit": 2004, "kaynak": "en.wikipedia Nissan Cefiro (1988-2004; 1990 öncesi kırpıldı)" },
+    "200 SX": { "bas": 1990, "bit": 1998, "kaynak": "en.wikipedia Nissan 180SX/200SX (1989-1998; 1990 öncesi kırpıldı)" },
+    "300 ZX": { "bas": 1990, "bit": 2000, "kaynak": "en.wikipedia Nissan 300ZX (1983-2000; 1990 öncesi kırpıldı)" },
+    "350 Z": { "bas": 2002, "bit": 2009, "kaynak": "en.wikipedia Nissan 350Z (2002-2009)" }
+  },
+  "atla": {
+    "Maxima": "Nissan Maxima: nesiller çok (1989-2023; Teana'nın ihracat adı olarak da geçer) — hangi nesillerin Türkiye'de satıldığı doğrulanamadı.",
+    "Bluebird": "Nissan Bluebird (1986-2001 olabilir) — yıl aralığı bu oturumda doğrulanamadı.",
+    "NX Coupe": "Nissan NX (NX1600/NX2000 coupe) — yıl aralığı doğrulanamadı.",
+    "Country": "Nissan 'Country' (4x2/4x4) pickup/SUV — model adı ve yılları internette doğrulanamadı (Navara/Patrol Country olabilir).",
+    "Rally Raid": "Nissan 'Rally Raid' (4x4) — Nissan Navara Rally Raid özel serisi olabilir; doğrulanamadı.",
+    "Skystar": "Nissan 'Skystar' (4x2/4x4) — model adı internette doğrulanamadı (Navara/NP300 pickup'ı olabilir)."
+  }
+}

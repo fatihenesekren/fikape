@@ -1,0 +1,22 @@
+### Chrysler
+- otomobil: zaten vardı 2 · eklendi 20 · belirsiz 6
+  - + Yeni model: 300M (1999–2004) — en.wikipedia Chrysler 300M (model yılı 1999-2004)
+  - + 300M › 3.5 › Standart
+  - + Yeni model: Concorde (1993–2004) — en.wikipedia Chrysler Concorde (1993-2004)
+  - + Concorde › 3.5 › Standart
+  - + Yeni model: Crossfire (2004–2008) — en.wikipedia Chrysler Crossfire (model yılı 2004-2008)
+  - + Crossfire › Coupe 3.2 › Standart
+  - + Crossfire › Roadster 3.2 › Standart
+  - + Yeni model: LHS (1994–2001) — en.wikipedia Chrysler LHS (1994-2001, 1998 ara)
+  - + LHS › 3.5 › Standart
+  - + Yeni model: PT Cruiser (2001–2010) — en.wikipedia Chrysler PT Cruiser (model yılı 2001-2010)
+  - + PT Cruiser › 1.6 › Classic
+  - + PT Cruiser › 2.0 › Limited
+  - + PT Cruiser › 2.4 › Limited
+  - + Yeni model: Sebring (1995–2010) — en.wikipedia Chrysler Sebring (1995-2010)
+  - + Sebring › 2.0 CRD › Convertible
+  - + Sebring › 2.0 CRD › Limited
+  - + Sebring › 2.4 Limited › Standart
+  - + Sebring › 2.5 LXI › Standart
+  - + Sebring › 2.7 Limited › Standart
+  - + Sebring › 2.7 LX › Standart

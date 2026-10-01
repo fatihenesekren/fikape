@@ -1,0 +1,1434 @@
+Otomobil
+Opel
+Adam (8)
+Agila (6)
+Ascona (7)
+Astra (14.124)
+Astra-e (32)
+Calibra (4)
+Cascada (3)
+Corsa (9.199)
+Corsa-e (50)
+GT (Roadster) (7)
+Insignia (2.488)
+Kadett (17)
+Manta (2)
+Meriva (342)
+Omega (65)
+Rekord (6)
+Signum (10)
+Tigra (41)
+Vectra (2.532)
+Zafira (160)
+
+---------------------
+
+Otomobil
+Opel
+Adam
+1.0 (1)
+1.2 (6)
+1.4 (1)
+
+Otomobil
+Opel
+Adam
+1.0
+Rocks (1)
+
+Otomobil
+Opel
+Adam
+1.2
+Glam (2)
+Jam (4)
+
+Otomobil
+Opel
+Adam
+1.4
+Glam (1)
+
+---------------------
+
+Otomobil
+Opel
+Agila
+1.2
+Club (3)
+Comfort (4)
+
+---------------------
+
+Otomobil
+Opel
+Ascona
+1.3 C LS (1)
+1.6 (5)
+2.0 (1)
+
+Otomobil
+Opel
+Ascona
+1.3 C LS (1)
+
+Otomobil
+Opel
+Ascona
+1.6
+C GLS (1)
+C L (4)
+
+Otomobil
+Opel
+Ascona
+2.0
+C GT (1)
+
+---------------------
+
+Otomobil
+Opel
+Astra
+1.0 T (3)
+1.2 GL (1)
+1.2 T (340)
+1.3 CDTI (3.026)
+1.4 (737)
+1.4 T (1.946)
+1.5 D (173)
+1.6 (5.824)
+1.6 CDTI (1.923)
+1.6 T (62)
+1.7 CDTI (16)
+1.7 D (3)
+1.7 DTI (12)
+1.8 (7)
+1.9 CDTI (6)
+2.0 (27)
+2.0 CDTI (1)
+2.0 DTI Comfort (5)
+2.0 T (13)
+2.2 (3)
+
+Otomobil
+Opel
+Astra
+1.0 T
+Enjoy (3)
+
+Otomobil
+Opel
+Astra
+1.2 GL (1)
+
+Otomobil
+Opel
+Astra
+1.2 T
+Edition (92)
+Elegance (36)
+GS (169)
+GS Line (20)
+Ultimate (24)
+
+Otomobil
+Opel
+Astra
+1.3 CDTI
+Active (7)
+Business (52)
+Classic (16)
+Cosmo (202)
+EcoFLEX Cosmo (24)
+EcoFLEX Enjoy (11)
+EcoFLEX Enjoy Plus (35)
+EcoFLEX Sport (92)
+Edition (197)
+Edition Plus (35)
+Elegance (18)
+Enjoy (771)
+Enjoy 111.Yıl (193)
+Enjoy Active (37)
+Enjoy Elegance (45)
+Enjoy Plus (174)
+Essentia (295)
+Essentia Konfor (409)
+Sport (414)
+
+Otomobil
+Opel
+Astra
+1.4
+Classic (204)
+Classic Twinport (32)
+Club (148)
+Comfort (2)
+Cosmo (2)
+Edition (1)
+Enjoy (46)
+Enjoy Plus (3)
+Essentia (72)
+GL (199)
+GLS (5)
+GS Line (2)
+Life (13)
+Sport (2)
+Start (6)
+
+Otomobil
+Opel
+Astra
+1.4 T
+Black Edition (2)
+Business (9)
+Cosmo (182)
+Cosmo Still (4)
+Design (4)
+Dynamic (201)
+Edition (8)
+Edition Plus (430)
+Elegance (2)
+Enjoy (69)
+Enjoy Active (124)
+Enjoy Plus (75)
+Excellence (23)
+GS Line (23)
+GTC Sport (22)
+Opc Line Sport (4)
+Sport (742)
+Sport Elegance (8)
+Sport Stil (15)
+
+Otomobil
+Opel
+Astra
+1.5 D
+Edition (110)
+Elegance (14)
+GS (33)
+GS Line (16)
+
+Otomobil
+Opel
+Astra
+1.6
+1.6 (37)
+100.Yıl (7)
+Business (37)
+Cabrio (6)
+CD (437)
+CDX (12)
+Classic (84)
+Classic Twinport (64)
+Comfort (257)
+Cosmo (124)
+Coupe (9)
+Edition (916)
+Edition Plus (643)
+Elegance (262)
+Elegance Twinport (98)
+Enjoy (783)
+Enjoy 111. Yıl (168)
+Enjoy Elegance (61)
+Enjoy Plus (218)
+Enjoy Twinport (29)
+Essentia (340)
+Essentia Konfor (310)
+Expression (4)
+G (2)
+GL (491)
+GLS (312)
+GLX (3)
+GTC Sport (31)
+OPC Line Sport (1)
+Sport (71)
+Sportive (6)
+
+Otomobil
+Opel
+Astra
+1.6 CDTI
+120.Yıl (1)
+Black Edition (2)
+Business (80)
+Cosmo (54)
+Design (489)
+Dynamic (333)
+Dynamic Elite (4)
+Edition (57)
+Edition Plus (56)
+Elite (122)
+Enjoy (90)
+Enjoy Active (23)
+Excellence (101)
+OPC Line Sport (9)
+Sport (500)
+
+Otomobil
+Opel
+Astra
+1.6 T
+Cosmo (17)
+Enjoy (12)
+Opc Line Sport (4)
+Sport (18)
+T GTC Sport (11)
+
+Otomobil
+Opel
+Astra
+1.7 CDTI
+Classic (7)
+Enjoy (9)
+
+Otomobil
+Opel
+Astra
+1.7 D
+GL (2)
+GLS (1)
+
+Otomobil
+Opel
+Astra
+1.7 DTI
+Classic (10)
+GL (2)
+
+Otomobil
+Opel
+Astra
+1.8
+Cosmo (1)
+Coupe (6)
+
+Otomobil
+Opel
+Astra
+1.9 CDTI
+Cosmo (2)
+GTC Sport (1)
+Caravan (3)
+Otomobil
+Opel
+Astra
+2.0
+GSi (22)
+Sport (5)
+
+Otomobil
+Opel
+Astra
+2.0 CDTI
+Sport (1)
+
+Otomobil
+Opel
+Astra
+2.0 DTI Comfort (5)
+
+Otomobil
+Opel
+Astra
+2.0 T
+2.0 T (4)
+Cosmo (4)
+GTC OPC (1)
+GTC Sport (2)
+Sport (2)
+
+Otomobil
+Opel
+Astra
+2.2
+Coupe (3)
+
+---------------------
+
+Otomobil
+Opel
+Astra-e
+GS (12)
+Ultimate (20)
+
+---------------------
+
+Otomobil
+Opel
+Calibra
+2.0 (2)
+2.0 Turbo (2)
+
+---------------------
+
+Otomobil
+Opel
+Cascada
+1.6 XHT Cosmo (2)
+2.0 DTH Cosmo (1)
+
+---------------------
+
+Otomobil
+Opel
+Corsa
+1.0 (124)
+1.0 T (1)
+1.2 (738)
+1.2 T (1.883)
+1.2 Twinport (1.223)
+1.3 CDTI (2.362)
+1.4 (1.487)
+1.4 Twinport (1.008)
+1.5 D (61)
+1.5 D Swing (2)
+1.5 TD (17)
+1.6 (39)
+1.7 DTI Comfort (238)
+1.8 GSi (1)
+
+Otomobil
+Opel
+Corsa
+1.0
+Color Edition (5)
+ECO Club (66)
+Enjoy (5)
+Essentia (46)
+Sport (2)
+
+Otomobil
+Opel
+Corsa
+1.0 T
+Sport (1)
+
+Otomobil
+Opel
+Corsa
+1.2
+City (9)
+Club (24)
+Comfort (35)
+Design (1)
+Edition (87)
+Elegance (52)
+Enjoy (95)
+Essentia (198)
+Essential (41)
+Innovation (15)
+Silverline (15)
+Swing (161)
+Ultimate (5)
+
+Otomobil
+Opel
+Corsa
+1.2 T
+Dynamic (7)
+Edition (886)
+Elegance (328)
+GS (375)
+Innovation (12)
+Ultimate (276)
+
+Otomobil
+Opel
+Corsa
+1.2 Twinport
+Active (83)
+Enjoy (280)
+Enjoy 111 (52)
+Essentia (808)
+
+Otomobil
+Opel
+Corsa
+1.3 CDTI
+Active (82)
+Black&White (2)
+Color Edition (31)
+Cosmo (138)
+Design (6)
+Enjoy (742)
+Enjoy 111 (96)
+Essentia (1.176)
+Silverline (38)
+Sport (52)
+
+Otomobil
+Opel
+Corsa
+1.4
+100. Yıl (11)
+120.Yıl (11)
+CD (5)
+Color Edition (41)
+Comfort (141)
+Design (52)
+Elegance (27)
+Enjoy (331)
+Essentia (223)
+GLS (338)
+Sport (20)
+Swing (287)
+
+Otomobil
+Opel
+Corsa
+1.4 Twinport
+Active (119)
+Color Edition (27)
+Cosmo (23)
+Enjoy (541)
+Enjoy 111 (154)
+Essentia (121)
+Silverline (6)
+Sport (17)
+
+Otomobil
+Opel
+Corsa
+1.5 D
+Dynamic (6)
+Edition (42)
+Innovation (13)
+
+Otomobil
+Opel
+Corsa
+1.5 D Swing (2)
+
+Otomobil
+Opel
+Corsa
+1.5 TD
+ECO (17)
+
+Otomobil
+Opel
+Corsa
+1.6
+GSi (34)
+OPC (5)
+
+Otomobil
+Opel
+Corsa
+1.7 DTI Comfort (238)
+
+Otomobil
+Opel
+Corsa
+1.8 GSi (1)
+
+---------------------
+
+Otomobil
+Opel
+Corsa-e
+GS (41)
+Ultimate (10)
+
+---------------------
+
+Otomobil
+Opel
+GT (Roadster)
+GT 2.0 Turbo (7)
+
+---------------------
+
+Otomobil
+Opel
+Insignia
+1.4 T (141)
+1.5 D (104)
+1.5 T (20)
+1.6 (52)
+1.6 CDTI (1.313)
+1.6 D (14)
+1.6 T (428)
+2.0 CDTI (398)
+2.0 T (6)
+2.8 (8)
+
+Otomobil
+Opel
+Insignia
+1.4 T
+Edition (22)
+Edition Elegance (120)
+
+Otomobil
+Opel
+Insignia
+1.5 D
+Edition (22)
+Elegance (13)
+Exclusive (28)
+Grand Sport Edition (19)
+Grand Sport Elegance (7)
+Ultimate (15)
+
+Otomobil
+Opel
+Insignia
+1.5 T
+Grand Sport Design (1)
+Grand Sport Edition (1)
+Grand Sport Elite (1)
+Grand Sport Enjoy (5)
+Grand Sport Excellence (12)
+
+Otomobil
+Opel
+Insignia
+1.6
+Cosmo (14)
+Edition (36)
+Edition Elegance (2)
+
+Otomobil
+Opel
+Insignia
+1.6 CDTI
+Business (23)
+Cosmo (298)
+Country Tourer Cosmo (3)
+Design (74)
+Edition (10)
+Edition Elegance (103)
+Elite (17)
+Grand Sport T 120.Yıl (11)
+Grand Sport T Design (95)
+Grand Sport T Elite (6)
+Grand Sport T Enjoy (200)
+Grand Sport T Excellence (232)
+Grand Sport T Exclusive (45)
+Sport (188)
+Sports Tourer Cosmo (1)
+Sports Tourer Enjoy (2)
+Sports Tourer Excellence (4)
+Sports Tourer Exclusive (2)
+
+Otomobil
+Opel
+Insignia
+1.6 D
+Grand Sport Enjoy (8)
+Grand Sport Excellence (3)
+Sports Tourer Innovation (3)
+
+Otomobil
+Opel
+Insignia
+1.6 T
+Cosmo (232)
+Cosmo Country Tourer (1)
+Edition (51)
+Edition Elegance (128)
+Sport (1)
+Sports Tourer Cosmo (16)
+
+Otomobil
+Opel
+Insignia
+2.0 CDTI
+Cosmo (139)
+Cosmo Active Select (18)
+Cosmo Flexride (4)
+Edition (150)
+Edition Elegance (44)
+Edition Elegance Active (27)
+Country Tourer Cosmo (1)
+Sports Tourer (2)
+Sports Tourer Cosmo (6)
+Sports Tourer Edition (5)
+Sports Tourer Sport (2)
+
+Otomobil
+Opel
+Insignia
+2.0 T
+Cosmo (3)
+Sport (1)
+Grand Sport GSI (1)
+Sports Tourer Cosmo (1)
+
+Otomobil
+Opel
+Insignia
+2.8
+Cosmo (2)
+OPC (6)
+
+---------------------
+
+Otomobil
+Opel
+Kadett
+1.3 (5)
+1.4 (2)
+1.6 (4)
+1.6 D (2)
+1.8 (1)
+2.0 (3)
+
+Otomobil
+Opel
+Kadett
+1.3
+GL (5)
+
+Otomobil
+Opel
+Kadett
+1.4
+GL (2)
+
+Otomobil
+Opel
+Kadett
+1.6
+GLS (4)
+
+Otomobil
+Opel
+Kadett
+1.8
+GT (1)
+
+Otomobil
+Opel
+Kadett
+2.0
+GSi (3)
+
+---------------------
+
+Otomobil
+Opel
+Manta
+2.0 GTE (2)
+
+---------------------
+
+Otomobil
+Opel
+Meriva
+1.3 CDTI (79)
+1.4 (2)
+1.4 T (21)
+1.6 (214)
+1.6 CDTI (6)
+1.7 CDTI (20)
+
+Otomobil
+Opel
+Meriva
+1.3 CDTI
+Cosmo (10)
+Enjoy (42)
+Essentia (27)
+
+Otomobil
+Opel
+Meriva
+1.4
+Enjoy (2)
+
+Otomobil
+Opel
+Meriva
+1.4 T
+Active (1)
+Cosmo (9)
+Enjoy (11)
+
+Otomobil
+Opel
+Meriva
+1.6
+Cosmo (31)
+Enjoy (119)
+Essentia (63)
+OPC (1)
+
+Otomobil
+Opel
+Meriva
+1.6 CDTI
+Active (3)
+Cosmo (3)
+
+Otomobil
+Opel
+Meriva
+1.7 CDTI
+Cosmo (4)
+Enjoy (16)
+
+---------------------
+
+Otomobil
+Opel
+Omega
+2.0 (20)
+2.2 (8)
+2.3 TD (1)
+2.5 (23)
+2.5 TD (4)
+2.6 (4)
+3.0 (5)
+
+Otomobil
+Opel
+Omega
+2.0
+2.0 (2)
+CD (18)
+
+Otomobil
+Opel
+Omega
+2.2
+2.2 (8)
+
+Otomobil
+Opel
+Omega
+2.3 TD (1)
+
+Otomobil
+Opel
+Omega
+2.5
+CD (8)
+Elegance (14)
+GL (1)
+
+Otomobil
+Opel
+Omega
+2.5 TD
+2.5 TD (1)
+CD (1)
+Edition (1)
+Elegance (1)
+
+Otomobil
+Opel
+Omega
+2.6
+Elegance (3)
+GL (1)
+
+Otomobil
+Opel
+Omega
+3.0
+MV6 (5)
+
+---------------------
+
+Otomobil
+Opel
+Rekord
+1.7 (1)
+2.0 (5)
+
+---------------------
+
+Otomobil
+Opel
+Signum
+1.8 (1)
+1.9 CDTI (1)
+2.0 T (1)
+2.2 (5)
+3.0 CDTi (1)
+3.2 (1)
+
+Otomobil
+Opel
+Signum
+1.8
+1.8 (1)
+
+Otomobil
+Opel
+Signum
+1.9 CDTI
+Sport (1)
+
+Otomobil
+Opel
+Signum
+2.0 T
+Cosmo (1)
+
+Otomobil
+Opel
+Signum
+2.2
+Cosmo (5)
+
+Otomobil
+Opel
+Signum
+3.0 CDTi
+Cosmo (1)
+
+Otomobil
+Opel
+Signum
+3.2
+Cosmo (1)
+
+---------------------
+
+Otomobil
+Opel
+Tigra
+1.4 (1)
+1.4 TT Sport (1)
+1.6 (39)
+
+---------------------
+
+Otomobil
+Opel
+Vectra
+1.6 (1.060)
+1.7 TD GLS (1)
+1.8 (147)
+1.9 CDTI (48)
+2.0 (1.156)
+2.0 DTI (59)
+2.0 T (5)
+2.2 (20)
+2.2 DTI (18)
+2.5 (14)
+2.6 Sport (1)
+3.0 CDTI (3)
+3.2 GTS (1)
+
+Otomobil
+Opel
+Vectra
+1.6
+1.6 (17)
+Comfort (632)
+Design Edition (23)
+Edition (7)
+Elegance (136)
+Essentia (4)
+GL (238)
+GLS (3)
+
+Otomobil
+Opel
+Vectra
+1.7 TD GLS (1)
+
+Otomobil
+Opel
+Vectra
+1.8
+CD (7)
+Comfort (8)
+Elegance (12)
+GL (120)
+
+Otomobil
+Opel
+Vectra
+1.9 CDTI
+Comfort (28)
+Design (4)
+Elegance (16)
+
+Otomobil
+Opel
+Vectra
+2.0
+100. Yıl (6)
+CD (424)
+CDX (76)
+Elegance (3)
+GL (89)
+GLS (497)
+GT (61)
+
+Otomobil
+Opel
+Vectra
+2.0 DTI
+CD (19)
+Comfort (40)
+
+Otomobil
+Opel
+Vectra
+2.0 T
+Elegance (5)
+
+Otomobil
+Opel
+Vectra
+2.2
+Comfort (1)
+Elegance (14)
+GTS (5)
+
+Otomobil
+Opel
+Vectra
+2.2 DTI
+Comfort (5)
+Elegance (13)
+
+Otomobil
+Opel
+Vectra
+2.5
+CDX (13)
+Sport (1)
+
+Otomobil
+Opel
+Vectra
+2.6 Sport (1)
+
+Otomobil
+Opel
+Vectra
+3.0 CDTI
+Cosmo (2)
+Elegance (1)
+
+Otomobil
+Opel
+Vectra
+3.2 GTS (1)
+
+---------------------
+
+Otomobil
+Opel
+Zafira
+1.4 (1)
+1.6 (89)
+1.6 CDTI (14)
+1.7 CDTI (2)
+1.8 (21)
+1.9 CDTI (15)
+2.0 DTI (10)
+2.0 T (1)
+2.2 16V (1)
+2.2 DTI (6)
+
+Otomobil
+Opel
+Zafira
+1.4
+Enjoy (1)
+
+Otomobil
+Opel
+Zafira
+1.6
+Comfort (19)
+Cosmo (11)
+Edition (2)
+Elegance (12)
+Enjoy (34)
+GL (11)
+
+Otomobil
+Opel
+Zafira
+1.6 CDTI
+Enjoy (14)
+
+Otomobil
+Opel
+Zafira
+1.7 CDTI (2)
+
+Otomobil
+Opel
+Zafira
+1.8
+Comfort (14)
+Cosmo (2)
+Elegance (5)
+
+Otomobil
+Opel
+Zafira
+1.9 CDTI
+Cosmo (9)
+Enjoy (6)
+
+Otomobil
+Opel
+Zafira
+2.0 DTI
+Comfort (9)
+Elegance (1)
+
+Otomobil
+Opel
+Zafira
+2.0 T
+Cosmo (1)
+
+Otomobil
+Opel
+Zafira
+2.2 16V (1)
+
+Otomobil
+Opel
+Zafira
+2.2 DTI
+Elegance (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Antara (80)
+Crossland (782)
+Crossland X (177)
+Frontera (172)
+Frontera-e (92)
+Grandland (678)
+Grandland-e (49)
+Grandland X (428)
+Mokka (1.282)
+Mokka-e (48)
+Mokka X (167)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Antara
+2.0 CDTI Cosmo (80)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Crossland
+1.2 T (666)
+1.5 T (117)
+
+Arazi, SUV & Pickup
+Opel
+Crossland
+1.2 T
+Edition (93)
+Elegance (73)
+Essential (485)
+GS Line (4)
+Ultimate (10)
+
+Arazi, SUV & Pickup
+Opel
+Crossland
+1.5 T
+Edition (51)
+Elegance (25)
+Essential (40)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Crossland X
+1.2 (3)
+1.2 T (69)
+1.5 T (83)
+1.6 CDTI (22)
+
+Arazi, SUV & Pickup
+Opel
+Crossland X
+1.2
+Enjoy (3)
+
+Arazi, SUV & Pickup
+Opel
+Crossland X
+1.2 T
+120.Yıl (18)
+Edition (2)
+Enjoy (34)
+Essentia (1)
+Excellence (13)
+Ultimate (1)
+
+Arazi, SUV & Pickup
+Opel
+Crossland X
+1.5 T
+120.Yıl (17)
+Edition (3)
+Enjoy (22)
+Excellence (30)
+Innovation (11)
+
+Arazi, SUV & Pickup
+Opel
+Crossland X
+1.6 CDTI
+Enjoy (16)
+Excellence (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Frontera
+1.2 T (113)
+2.0 Sport (17)
+2.2 (19)
+2.3 TD (1)
+2.5 TDS (1)
+3.2 Limited (21)
+
+Arazi, SUV & Pickup
+Opel
+Frontera
+1.2 T
+Edition (39)
+GS (74)
+
+Arazi, SUV & Pickup
+Opel
+Frontera
+2.0 Sport (17)
+
+Arazi, SUV & Pickup
+Opel
+Frontera
+2.2 (19)
+
+Arazi, SUV & Pickup
+Opel
+Frontera
+2.3 TD (1)
+
+Arazi, SUV & Pickup
+Opel
+Frontera
+2.5 TDS (1)
+
+Arazi, SUV & Pickup
+Opel
+Frontera
+3.2 Limited (21)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Frontera-e
+GS Standart Menzil (77)
+GS Uzun Menzil (14)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Grandland
+1.2 T (467)
+1.5 D (210)
+1.6 Hybrid (1)
+
+Arazi, SUV & Pickup
+Opel
+Grandland
+1.2 T
+Edition (96)
+Elegance (41)
+GS (287)
+Ultimate (43)
+
+Arazi, SUV & Pickup
+Opel
+Grandland
+1.5 D
+Elegance (69)
+GS (37)
+Ultimate (104)
+
+Arazi, SUV & Pickup
+Opel
+Grandland
+1.6 Hybrid
+GSe (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Grandland-e
+Edition (7)
+GS (42)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Grandland X
+1.2 T (159)
+1.5 D (179)
+1.6 (1)
+1.6 D (89)
+
+Arazi, SUV & Pickup
+Opel
+Grandland X
+1.2 T
+Edition (22)
+Elegance (14)
+Enjoy (53)
+Enjoy Black Edition (5)
+Enjoy Skyline (43)
+Essentia (13)
+Essential (1)
+Excellence (2)
+Innovation (3)
+Ultimate (3)
+
+Arazi, SUV & Pickup
+Opel
+Grandland X
+1.5 D
+120.Yıl (20)
+Edition (6)
+Edition Explorer (11)
+Edition Özel Seri (1)
+Elegance (4)
+Enjoy (60)
+Enjoy Black Edition (1)
+Enjoy Explorer (17)
+Enjoy Özel Seri (2)
+Enjoy Skyline (22)
+Essentia Özel Seri (2)
+Excellence (21)
+Innovation (3)
+Ultimate (9)
+
+Arazi, SUV & Pickup
+Opel
+Grandland X
+1.6
+Innovation (1)
+
+Arazi, SUV & Pickup
+Opel
+Grandland X
+1.6 D
+Enjoy (42)
+Enjoy Sport (1)
+Excellence (38)
+Ultimate (8)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Mokka
+1.2 T (872)
+1.4 (144)
+1.6 (29)
+1.6 CDTI (234)
+1.7 CDTI (1)
+
+Arazi, SUV & Pickup
+Opel
+Mokka
+1.2 T
+Edition (152)
+Elegance (233)
+GS (310)
+GS Line (70)
+Ultimate (107)
+
+Arazi, SUV & Pickup
+Opel
+Mokka
+1.4
+Business (3)
+Cosmo (50)
+Enjoy (91)
+
+Arazi, SUV & Pickup
+Opel
+Mokka
+1.6
+Cosmo (7)
+Enjoy (22)
+
+Arazi, SUV & Pickup
+Opel
+Mokka
+1.6 CDTI
+Business (16)
+Cosmo (123)
+Enjoy (95)
+
+Arazi, SUV & Pickup
+Opel
+Mokka
+1.7 CDTI
+Cosmo (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Mokka-e
+GS (3)
+Ultimate (45)
+
+---------------------
+
+Arazi, SUV & Pickup
+Opel
+Mokka X
+1.4 T (15)
+1.6 (7)
+1.6 CDTi (145)
+
+Arazi, SUV & Pickup
+Opel
+Mokka X
+1.4 T
+Black Edition (1)
+Enjoy (10)
+Excellence (4)
+
+Arazi, SUV & Pickup
+Opel
+Mokka X
+1.6
+Enjoy (7)
+
+Arazi, SUV & Pickup
+Opel
+Mokka X
+1.6 CDTi
+120.Yıl (5)
+Color Edition (1)
+Enjoy (44)
+Excellence (95)
+
+---------------------

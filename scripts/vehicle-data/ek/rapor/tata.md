@@ -1,0 +1,16 @@
+### Tata
+- otomobil: zaten vardı 10 · eklendi 9 · belirsiz 1
+  - + Yeni model: Indica (1998–2018) — en.wikipedia Tata Indica (1998-2018)
+  - + Indica › 1.4 Basic › Standart
+  - + Indica › 1.4 Comfort › Standart
+  - + Indica › 1.4 DLX › Standart
+  - + Indica › 1.4 TDI Comfort › Standart
+  - + Indica › 1.4 TDI Trend › Standart
+  - + Yeni model: Safari (1998–) — en.wikipedia Tata Safari (1998'den beri)
+  - + Safari › 2.0 EX TDI › Standart
+  - + Safari › 3.0 TDI › Standart
+- kamyonet: zaten vardı 2 · eklendi 4 · belirsiz 0
+  - + Yeni model: Telcoline (1990–) — en.wikipedia Tata Telcoline (1988'den beri; 1990 öncesi kırpıldı) — kamyonet
+  - + Telcoline › 4x2 Çift Kabin › Standart
+  - + Telcoline › 4x2 Tek Kabin › Standart
+  - + Telcoline › 4x4 Çift Kabin › Standart

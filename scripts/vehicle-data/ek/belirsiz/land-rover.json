@@ -1,0 +1,219 @@
+[
+  {
+    "marka": "Land Rover",
+    "model": "Discovery",
+    "versiyon": "2.0 SD4",
+    "paket": "Landmark Edition",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Discovery (1989-1998) / Discovery (1998-2004) / Discovery (2004-2009) / Discovery (2009-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Discovery",
+    "versiyon": "2.7",
+    "paket": "HSE",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Discovery (1989-1998) / Discovery (1998-2004) / Discovery (2004-2009) / Discovery (2009-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Discovery",
+    "versiyon": "2.7",
+    "paket": "XS Plus",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Discovery (1989-1998) / Discovery (1998-2004) / Discovery (2004-2009) / Discovery (2009-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Discovery",
+    "versiyon": "4.0",
+    "paket": "ES",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Discovery (1989-1998) / Discovery (1998-2004) / Discovery (2004-2009) / Discovery (2009-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Discovery",
+    "versiyon": "4.4",
+    "paket": "HSE",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Discovery (1989-1998) / Discovery (1998-2004) / Discovery (2004-2009) / Discovery (2009-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Discovery Sport",
+    "versiyon": "2.0 TD4",
+    "paket": "Edition",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "2.0 PHEV",
+    "paket": "SvAutobiography",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "2.5 TDI",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "3.5",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "3.6 TDV8",
+    "paket": "HSE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "3.6 TDV8",
+    "paket": "HSE Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "3.9",
+    "paket": "Vogue",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "4.0",
+    "paket": "SE",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "4.2",
+    "paket": "Vogue",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "4.4 TDV8",
+    "paket": "Vogue SE",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "4.6",
+    "paket": "HSE",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "4.6",
+    "paket": "Vogue",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover",
+    "versiyon": "5.0",
+    "paket": "Autobiography Dynamic",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Range Rover (1994-2002) / Range Rover (2002-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover Sport",
+    "versiyon": "2.0 PHEV",
+    "paket": "Autobiography Dynamic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover Sport",
+    "versiyon": "2.7 TDV6",
+    "paket": "SE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover Sport",
+    "versiyon": "2.7 TDV6",
+    "paket": "HSE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover Sport",
+    "versiyon": "2.7 TDV6",
+    "paket": "Limited Edition",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover Sport",
+    "versiyon": "3.0 PHEV",
+    "paket": "460",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover Sport",
+    "versiyon": "3.6 TDV8",
+    "paket": "HSE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover Sport",
+    "versiyon": "4.2",
+    "paket": "Supercharged",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover Sport",
+    "versiyon": "4.4",
+    "paket": "HSE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Range Rover Sport",
+    "versiyon": "4.4",
+    "paket": "SV Edition One+",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Freelander 2",
+    "versiyon": "2.2 TD4",
+    "paket": "GS Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Freelander 2",
+    "versiyon": "2.2 TD4",
+    "paket": "Select",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Freelander 2",
+    "versiyon": "2.2 TD4",
+    "paket": "SE Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Land Rover",
+    "model": "Freelander 2",
+    "versiyon": "2.2 TD4",
+    "paket": "XS Limited",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  }
+]

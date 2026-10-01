@@ -1,0 +1,16 @@
+### Toyota
+- otomobil: zaten vardı 187 · eklendi 12 · belirsiz 87
+  - + Camry › 2.2 GL › Standart
+  - + Camry › 2.4 › Standart
+  - + Camry › 3.0 GX › Standart
+  - + Carina (1970-1996) › 1.6 › XLi
+  - + Carina (1970-1996) › 2.0 › GLi
+  - + Celica › 2.0 › Standart
+  - + Corona (1970-1994) › 1.6 XL › Standart
+  - + Corona (1970-1994) › 2.0 GLi › Standart
+  - + Corona (1970-1994) › 2.0 GT › Standart
+  - + Corona (1970-1994) › 2.0 XL › Standart
+  - + Cressida (1980-1992) › 2.0 GLX › Standart
+  - + Starlet (1990-1999) › 1.4 XLi › Standart
+  - ~ eşleme: "Land Cruiser Prado" → "Land Cruiser"
+- kamyonet: zaten vardı 19 · eklendi 0 · belirsiz 0

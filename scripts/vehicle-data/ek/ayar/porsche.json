@@ -1,0 +1,11 @@
+{
+  "takma": {
+    "Taycan Elektrik": "Taycan",
+    "Cayenne Coupe": "Cayenne",
+    "Cayenne Elektrik": "Cayenne",
+    "Macan Elektrik": "Macan"
+  },
+  "atla": {
+    "718": "Katalogda '718 Boxster', '718 Cayman', '718 Spyder' ayrı modeller; sizin listenizde '718' tek model, Boxster/Cayman/Cayman GT4 RS/Style Edition ise versiyon olarak geçiyor — hangisine eşleneceği belli değil (kopya olmasın diye eklenmedi)."
+  }
+}

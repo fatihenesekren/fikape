@@ -1,0 +1,22 @@
+### Audi
+- otomobil: zaten vardı 265 · eklendi 11 · belirsiz 45
+  - + Yeni model: A6 e-tron (2024–) — en.wikipedia Audi A6 e-tron (üretim 2024, Avant + Sportback)
+  - + A6 e-tron ›  › Performance
+  - + A6 e-tron ›  › Quattro
+  - + 80 › 1.6 D › Standart
+  - + 80 › 2.3 › Standart
+  - + 80 › 2.8 › Standart
+  - + 100 › 1.6 › Standart
+  - + 100 › 2.8 Quattro › Standart
+  - + Yeni model: 200 (1979–1991) — automobile-catalog.com / de.wikipedia Audi 200 (C2 1979-1983, C3 1983-1991)
+  - + 200 › 2.2 › Standart
+  - + Q4 e-tron › 40 e-Tron › Standart
+  - ~ eşleme: "80 Serisi" → "80"
+  - ~ eşleme: "100 Serisi" → "100"
+  - ~ eşleme: "E-Tron Sportback" → "e-tron"
+  - ~ eşleme: "Q3 Sportback" → "Q3"
+  - ~ eşleme: "Q4 E-tron Sportback" → "Q4 e-tron"
+  - ~ eşleme: "Q5 Sportback" → "Q5"
+  - ~ eşleme: "Q6 E-tron" → "Q6"
+  - ~ eşleme: "Q6 E-tron Sportback" → "Q6"
+  - ~ eşleme: "Q8 E-tron Sportback" → "Q8 e-tron"

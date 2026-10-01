@@ -1,0 +1,866 @@
+Otomobil
+Skoda
+Citigo (18)
+Fabia (1.179)
+Favorit (195)
+Felicia (239)
+Forman (84)
+Octavia (4.271)
+Rapid (573)
+Roomster (86)
+Scala (905)
+Superb (4.510)
+
+---------------------
+
+Otomobil
+Skoda
+Citigo
+1.0
+Elegance (18)
+
+---------------------
+
+Otomobil
+Skoda
+Fabia
+1.0 (1)
+1.0 GreenTec (122)
+1.0 TSI (178)
+1.2 (186)
+1.2 TSI (113)
+1.4 (332)
+1.4 TDI (164)
+1.4 TSI (4)
+1.5 TSI (32)
+1.6 (3)
+1.6 TDI (42)
+1.9 TDI (2)
+
+Otomobil
+Skoda
+Fabia
+1.0
+Classic (1)
+
+Otomobil
+Skoda
+Fabia
+1.0 GreenTec
+Ambition (38)
+Style (83)
+
+Otomobil
+Skoda
+Fabia
+1.0 TSI
+Elite (28)
+Premium (153)
+Premium Colour Concept (1)
+
+Otomobil
+Skoda
+Fabia
+1.2
+Ambiente (32)
+Ambiente Dynamic (7)
+Ambition (20)
+Classic (115)
+Elegance (4)
+Optimal (11)
+
+Otomobil
+Skoda
+Fabia
+1.2 TSI
+Ambiente (3)
+Ambiente Dynamic (1)
+Ambition (18)
+Style (92)
+
+Otomobil
+Skoda
+Fabia
+1.4
+Ambiente (72)
+Ambiente Dynamic (9)
+Ambition (2)
+Choice (10)
+Classic (44)
+Comfort (122)
+Elegance (33)
+
+Otomobil
+Skoda
+Fabia
+1.4 TDI
+Ambiente (75)
+Classic (52)
+Comfort (7)
+Elegance (4)
+Special (20)
+Style (9)
+
+Otomobil
+Skoda
+Fabia
+1.4 TSI
+RS (3)
+
+Otomobil
+Skoda
+Fabia
+1.5 TSI
+Monte Carlo (30)
+Premium (2)
+
+Otomobil
+Skoda
+Fabia
+1.6
+Ambiente (1)
+Classic (1)
+Elegance (1)
+
+Otomobil
+Skoda
+Fabia
+1.6 TDI
+Ambiente (17)
+Ambiente Dynamic (5)
+Ambition (3)
+Combi Scout (6)
+Elegance (3)
+Optimal (9)
+
+Otomobil
+Skoda
+Fabia
+1.9 TDI
+RS (2)
+
+---------------------
+
+Otomobil
+Skoda
+Favorit
+1.3 (135)
+1.4 (1)
+135 (49)
+136 (11)
+
+Otomobil
+Skoda
+Favorit
+1.3
+Black Line (7)
+GLX (55)
+LX (73)
+
+Otomobil
+Skoda
+Favorit
+1.4
+Sportline (1)
+
+Otomobil
+Skoda
+Favorit
+135
+L (23)
+LS (3)
+LX (23)
+
+Otomobil
+Skoda
+Favorit
+136
+L (11)
+
+---------------------
+
+Otomobil
+Skoda
+Felicia
+1.3 (220)
+1.6 (15)
+1.9 D (2)
+
+Otomobil
+Skoda
+Felicia
+1.3
+1.3 (1)
+GLX (77)
+GLXi (88)
+LX (31)
+LXi (23)
+Magic (1)
+
+Otomobil
+Skoda
+Felicia
+1.6
+GLXi (15)
+
+Otomobil
+Skoda
+Felicia
+1.9 D
+GLX (1)
+LX (1)
+
+---------------------
+
+Otomobil
+Skoda
+Forman
+135 L (25)
+135 LS (5)
+GLX (11)
+LE (2)
+LX (37)
+Silverline (2)
+
+---------------------
+
+Otomobil
+Skoda
+Octavia
+1.0 e-Tec (642)
+1.0 TSI (49)
+1.2 TSI (100)
+1.4 TSI (102)
+1.5 e-Tec (353)
+1.5 TSI (230)
+1.6 (316)
+1.6 FSI (32)
+1.6 TDI (2.383)
+1.8 (2)
+1.8 T (9)
+1.9 TDI (42)
+2.0 (2)
+2.0 TDI (6)
+2.0 TDSI (3)
+2.0 TSI (8)
+
+Otomobil
+Skoda
+Octavia
+1.0 e-Tec
+Elite (483)
+Premium (159)
+
+Otomobil
+Skoda
+Octavia
+1.0 TSI
+Ambition (29)
+Style (20)
+
+Otomobil
+Skoda
+Octavia
+1.2 TSI
+Ambition (55)
+Elegance (12)
+Optimal (21)
+Style (12)
+
+Otomobil
+Skoda
+Octavia
+1.4 TSI
+Ambiente (19)
+Ambition (2)
+Elegance (35)
+Sport (35)
+Style (11)
+
+Otomobil
+Skoda
+Octavia
+1.5 e-Tec
+Elite (102)
+Premium (225)
+Prestige (9)
+Scout (8)
+Sportline (9)
+
+Otomobil
+Skoda
+Octavia
+1.5 TSI
+Premium (110)
+Prestige (6)
+Sport (4)
+Style (2)
+Elite (105)
+Sportline (3)
+
+Otomobil
+Skoda
+Octavia
+1.6
+Active (3)
+Ambiente (88)
+Ambiente Optimal (12)
+Ambition Optimal (2)
+Business (2)
+Classic (31)
+Collection Plus (18)
+Elegance (97)
+GLX (25)
+Rider (2)
+Tour (36)
+
+Otomobil
+Skoda
+Octavia
+1.6 FSI
+Ambiente (4)
+Elegance (28)
+
+Otomobil
+Skoda
+Octavia
+1.6 TDI
+Active (3)
+Ambiente (65)
+Ambition (129)
+Ambition Optimal (13)
+Classic (9)
+Combi Style (14)
+Elegance (105)
+Elegance CR (342)
+Optimal (705)
+Style (465)
+Style CR (533)
+
+Otomobil
+Skoda
+Octavia
+1.8
+SLX (2)
+
+Otomobil
+Skoda
+Octavia
+1.8 T
+Elegance (4)
+L&K (1)
+SLX (4)
+
+Otomobil
+Skoda
+Octavia
+1.9 TDI
+Ambiente (20)
+Collection (2)
+Elegance (14)
+GLX (1)
+SLX (4)
+Tour (1)
+
+Otomobil
+Skoda
+Octavia
+2.0
+Ambiente (1)
+RS TFSI (1)
+
+Otomobil
+Skoda
+Octavia
+2.0 TDI
+Elegance (2)
+RS (4)
+
+Otomobil
+Skoda
+Octavia
+2.0 TDSI
+RS (3)
+
+Otomobil
+Skoda
+Octavia
+2.0 TSI
+RS (8)
+
+---------------------
+
+Otomobil
+Skoda
+Rapid
+1.0 TSI GreenTec (28)
+1.2 (19)
+1.2 TSI (15)
+1.2 TSI GreenTec (70)
+1.4 TDI GreenTec (216)
+1.4 TSI (13)
+1.4 TSI GreenTec (2)
+1.6 CR TDI (206)
+1.6 TDI GreenTec (8)
+
+Otomobil
+Skoda
+Rapid
+1.0 TSI GreenTec
+Ambition (1)
+Spaceback Ambition (2)
+Spaceback Dynamic (8)
+Spaceback Style (6)
+Style (11)
+
+Otomobil
+Skoda
+Rapid
+1.2
+Active (6)
+Ambition (11)
+Spaceback Ambition (2)
+
+Otomobil
+Skoda
+Rapid
+1.2 TSI
+Ambition (7)
+Elegance (1)
+Spaceback Ambition (6)
+Spaceback Elegance (1)
+
+Otomobil
+Skoda
+Rapid
+1.2 TSI GreenTec
+Ambition (3)
+Style (8)
+Spaceback Ambition (14)
+Spaceback Style (45)
+
+Otomobil
+Skoda
+Rapid
+1.4 TDI GreenTec
+Ambition (22)
+Spaceback Ambition (8)
+Spaceback Style (89)
+Style (97)
+
+Otomobil
+Skoda
+Rapid
+1.4 TSI
+Ambition (4)
+Elegance (8)
+Style (1)
+
+Otomobil
+Skoda
+Rapid
+1.4 TSI GreenTec
+Spaceback Style (1)
+Style (1)
+
+Otomobil
+Skoda
+Rapid
+1.6 CR TDI
+Active (5)
+Ambition (22)
+Elegance (90)
+Spaceback Ambition (4)
+Spaceback Elegance (79)
+Style (6)
+
+Otomobil
+Skoda
+Rapid
+1.6 TDI GreenTec
+Spaceback Style (1)
+Style (7)
+
+---------------------
+
+Otomobil
+Skoda
+Roomster
+1.2 (27)
+1.4 (14)
+1.4 TDI (29)
+1.6 (5)
+1.6 CR TDI (13)
+
+Otomobil
+Skoda
+Roomster
+1.2
+1.2 (15)
+Active (4)
+Dinamik (1)
+Panorama (4)
+Style (3)
+
+Otomobil
+Skoda
+Roomster
+1.4
+1.4 (3)
+Comfort (1)
+Panorama (1)
+Style (9)
+
+Otomobil
+Skoda
+Roomster
+1.4 TDI
+1.4 TDI (14)
+Comfort (7)
+Style (8)
+
+Otomobil
+Skoda
+Roomster
+1.6
+Comfort (3)
+Style (2)
+
+Otomobil
+Skoda
+Roomster
+1.6 CR TDI
+Active (4)
+Comfort (4)
+Style (5)
+
+---------------------
+
+Otomobil
+Skoda
+Scala
+1.0 TSI (608)
+1.5 TSI (80)
+1.6 TDI (215)
+
+Otomobil
+Skoda
+Scala
+1.0 TSI
+Comfort (28)
+Elite (182)
+Premium (398)
+
+Otomobil
+Skoda
+Scala
+1.5 TSI
+Monte Carlo (72)
+Premium (8)
+
+Otomobil
+Skoda
+Scala
+1.6 TDI
+Premium (215)
+
+---------------------
+
+Otomobil
+Skoda
+Superb
+1.4 TSI (202)
+1.5 TSI (1.715)
+1.6 TDI (2.376)
+1.8 T (2)
+1.9 TDI (57)
+2.0 TDI (125)
+2.0 TSI (29)
+2.5 TDI (8)
+3.6 FSI (2)
+
+Otomobil
+Skoda
+Superb
+1.4 TSI
+Active (67)
+Ambition (11)
+Comfort (25)
+Elegance (42)
+Prestige (31)
+Style (26)
+
+Otomobil
+Skoda
+Superb
+1.5 TSI
+Active (1)
+Comfort (2)
+Comfort Plus (31)
+Elite (247)
+Laurin&Klement Crystal (114)
+Premium (423)
+Prestige (849)
+Scout (5)
+Sportline (42)
+Style (1)
+
+Otomobil
+Skoda
+Superb
+1.6 TDI
+Active (129)
+Ambition (37)
+Comfort (166)
+Elegance (319)
+Elite (84)
+Premium (152)
+Prestige (1.028)
+Style (461)
+
+Otomobil
+Skoda
+Superb
+1.8 T
+Comfort (1)
+Elegance (1)
+
+Otomobil
+Skoda
+Superb
+1.9 TDI
+Comfort (7)
+Elegance (50)
+
+Otomobil
+Skoda
+Superb
+2.0 TDI
+Ambition (2)
+Crystal (1)
+Elegance (34)
+Laurin & Klement (17)
+Laurin & Klement Crystal (39)
+Prestige (32)
+
+Otomobil
+Skoda
+Superb
+2.0 TSI
+Crystal (3)
+Laurin & Klement Crystal (23)
+Prestige (3)
+
+Otomobil
+Skoda
+Superb
+2.5 TDI
+Comfort (1)
+Elegance (7)
+
+Otomobil
+Skoda
+Superb
+3.6 FSI
+Elegance (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Skoda
+Elroq (26)
+Enyaq (16)
+Enyaq Coupe (24)
+Kamiq (702)
+Karoq (710)
+Kodiaq (928)
+Yeti (256)
+Felicia Pickup (33)
+
+---------------------
+
+Arazi, SUV & Pickup
+Skoda
+Elroq
+e-Prestige 60 (26)
+
+---------------------
+
+Arazi, SUV & Pickup
+Skoda
+Enyaq
+e-Prestige (16)
+
+---------------------
+
+Arazi, SUV & Pickup
+Skoda
+Enyaq Coupe
+E-Sportline (24)
+
+---------------------
+
+Arazi, SUV & Pickup
+Skoda
+Kamiq
+1.0 TSI (527)
+1.5 TSI (122)
+1.6 TDI (53)
+
+Arazi, SUV & Pickup
+Skoda
+Kamiq
+1.0 TSI
+Elite (237)
+Premium (290)
+
+Arazi, SUV & Pickup
+Skoda
+Kamiq
+1.5 TSI
+Monte Carlo (27)
+Premium (95)
+
+Arazi, SUV & Pickup
+Skoda
+Kamiq
+1.5 TSI
+Monte Carlo (27)
+Premium (95)
+
+---------------------
+
+Arazi, SUV & Pickup
+Skoda
+Karoq
+1.0 TSI (31)
+1.5 TSI (422)
+1.6 TDI (257)
+
+Arazi, SUV & Pickup
+Skoda
+Karoq
+1.0 TSI
+Ambition (20)
+Style (11)
+
+Arazi, SUV & Pickup
+Skoda
+Karoq
+1.5 TSI
+Elite (29)
+Premium (80)
+Prestige (178)
+Sportline (124)
+Style (11)
+
+Arazi, SUV & Pickup
+Skoda
+Karoq
+1.6 TDI
+Ambition (6)
+Premium (56)
+Prestige (61)
+Style (135)
+
+---------------------
+
+Arazi, SUV & Pickup
+Skoda
+Kodiaq
+1.4 TSI (123)
+1.5 TSI (780)
+2.0 Bi-TDI (1)
+2.0 TDI (15)
+2.0 TSI (9)
+
+Arazi, SUV & Pickup
+Skoda
+Kodiaq
+1.4 TSI
+Ambition (39)
+Prestige (70)
+Style (14)
+
+Arazi, SUV & Pickup
+Skoda
+Kodiaq
+1.5 TSI
+Ambition (40)
+Elite (77)
+L&K Crystal (11)
+Premium (104)
+Prestige (344)
+Sportline (192)
+Style (12)
+
+Arazi, SUV & Pickup
+Skoda
+Kodiaq
+2.0 Bi-TDI
+RS (1)
+
+Arazi, SUV & Pickup
+Skoda
+Kodiaq
+2.0 TDI
+L&K Crystal (4)
+Prestige (4)
+Sportline (7)
+
+Arazi, SUV & Pickup
+Skoda
+Kodiaq
+2.0 TSI
+RS (9)
+
+---------------------
+
+Arazi, SUV & Pickup
+Skoda
+Yeti
+1.2 TSI (66)
+1.4 TSI (28)
+1.6 TDI (161)
+2.0 TDI (1)
+
+Arazi, SUV & Pickup
+Skoda
+Yeti
+1.2 TSI
+Active (38)
+Ambition (23)
+Elegance (3)
+Experience (2)
+
+Arazi, SUV & Pickup
+Skoda
+Yeti
+1.4 TSI
+Active (3)
+Ambition (24)
+Elegance (1)
+
+Arazi, SUV & Pickup
+Skoda
+Yeti
+1.6 TDI
+Active GreenLine (12)
+Ambition GreenLine (62)
+Elegance GreenLine (87)
+
+Arazi, SUV & Pickup
+Skoda
+Yeti
+2.0 TDI
+Ambition (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Skoda
+Felicia Pickup
+1.3 (31)
+1.9 D (2)
+
+---------------------

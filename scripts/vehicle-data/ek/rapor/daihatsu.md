@@ -1,0 +1,25 @@
+### Daihatsu
+- otomobil: zaten vardı 5 · eklendi 23 · belirsiz 5
+  - + Yeni model: Cuore (1990–2018) — en.wikipedia Daihatsu Cuore (1980-2018; 1990 öncesi kırpıldı — tüm nesillerin aralığı)
+  - + Cuore › 0.9 › GLX
+  - + Cuore › 1.0 › High Grade
+  - + Cuore › 1.0 › Low Grade
+  - + Cuore › 1.0 › Thrifty
+  - + Yeni model: Applause (1990–2000) — en.wikipedia Daihatsu Applause (1989-2000; 1990 öncesi kırpıldı)
+  - + Applause › 1.6 › Li
+  - + Applause › 1.6 › X
+  - + Yeni model: Charade (1990–2000) — en.wikipedia Daihatsu Charade (1988-2000 üçüncü/dördüncü nesil; 1990 öncesi kırpıldı)
+  - + Charade › 1.3 › CX
+  - + Charade › 1.3 › CXF
+  - + Charade › 1.5 › Classic
+  - + Yeni model: Copen (2002–) — en.wikipedia Daihatsu Copen (2002'den beri, tüm nesiller)
+  - + Copen › 1.3 › Sport
+  - + Yeni model: YRV (2000–2005) — en.wikipedia Daihatsu YRV (2000-2005)
+  - + YRV › 1.3 › Standart
+  - + YRV › 1.3 › CX
+  - + YRV › 1.3 › Plus
+  - + YRV › 1.3 › Turbo
+  - + Yeni model: Feroza (1990–2002) — automobile-catalog Daihatsu Rocky/Feroza/Sportrak (1989-2002; 1990 öncesi kırpıldı)
+  - + Feroza › 1.6 › SX
+  - + Yeni model: Rocky (1990–2002) — en.wikipedia Daihatsu Rocky (F300) / Feroza (1989-2002)
+  - + Rocky › 1.6 › Standart

@@ -1,0 +1,463 @@
+Arazi, SUV & Pickup
+Jeep
+Avenger (101)
+Avenger Electric (56)
+Cherokee (273)
+Commander (18)
+Compass (492)
+Grand Cherokee (626)
+Grand Wagoneer (1)
+Patriot (32)
+Renegade (780)
+Wrangler (103)
+CJ (6)
+Liberty (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Avenger
+1.2
+Limited (14)
+Overland (14)
+Summit (73)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Avenger Electric
+Limited (2)
+Summit (54)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+2.0 TD (64)
+2.1 TD (1)
+2.4 (3)
+2.5 (2)
+2.5 CRD (2)
+2.5 TD (1)
+2.8 CRD (104)
+3.7 (54)
+4.0 (41)
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+2.0 TD
+Limited (59)
+Longitude (5)
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+2.1 TD
+Limited (1)
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+2.4
+2.4 (1)
+Sport (2)
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+2.5
+2.5 (1)
+Limited (1)
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+2.5 CRD
+Limited (2)
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+2.5 TD
+2.5 TD (1)
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+2.8 CRD
+2.8 CRD (18)
+Limited (81)
+Renegade (5)
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+3.7
+3.7 (6)
+Limited (38)
+Renegade (10)
+
+Arazi, SUV & Pickup
+Jeep
+Cherokee
+4.0
+4.0 (22)
+Country (2)
+Laredo (1)
+Limited (14)
+Sport (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Commander
+3.0 CRD (18)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+1.2 (28)
+1.3 GSE (140)
+1.3 PHEV (24)
+1.4 (5)
+1.4 Limited (70)
+1.5 (103)
+1.6 Limited (9)
+1.6 MultiJet (2)
+2.0 CRD (15)
+2.0 CVT (3)
+2.0 Limited (83)
+2.0 MultiJet (1)
+2.4 CVT (9)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+1.2
+Limited (15)
+Summit (13)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+1.3 GSE
+80. Yıl (12)
+Limited (50)
+Longitude (27)
+Longitude Sport (1)
+S Limited (50)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+1.3 PHEV
+S Limited (22)
+Trailhawk (2)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+1.4
+S Limited (5)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+1.4 Limited (70)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+1.5
+Limited (69)
+North Star (6)
+S Limited (13)
+Summit (15)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+1.6 Limited (9)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+1.6 MultiJet
+Longitude (2)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+2.0 CRD
+Limited (15)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+2.0 CVT (3)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+2.0 Limited (83)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+2.0 MultiJet
+Limited (1)
+
+Arazi, SUV & Pickup
+Jeep
+Compass
+2.4 CVT (9)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+2.7 CRD (71)
+3.0 CRD (289)
+3.1 TD (21)
+3.6 (1)
+4.0 (12)
+4.7 (85)
+5.2 (124)
+5.7 (2)
+5.9 (17)
+6.1 (2)
+6.4 (2)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+2.7 CRD
+Limited (47)
+Overland (19)
+Vision (5)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+3.0 CRD
+Laredo (10)
+Limited (184)
+Overland (63)
+Summit (31)
+75th Anniversary Edition (1)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+3.1 TD
+Laredo (1)
+Limited (20)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+3.6
+Limited (1)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+4.0
+Laredo (5)
+Limited (7)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+4.7
+Limited (76)
+Overland (9)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+5.2
+Limited (124)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+5.7
+Limited (2)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+5.9
+Limited (17)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+6.1
+SRT (2)
+
+Arazi, SUV & Pickup
+Jeep
+Grand Cherokee
+6.4
+SRT (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Grand Wagoneer
+6.4 (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Patriot
+2.0 CRD (26)
+2.4 CVT (6)
+
+Arazi, SUV & Pickup
+Jeep
+Patriot
+2.0 CRD
+2.0 CRD (4)
+Limited (22)
+
+Arazi, SUV & Pickup
+Jeep
+Patriot
+2.4 CVT (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Renegade
+1.0 T (27)
+1.3 T (113)
+1.4 MultiAir (102)
+1.5 e-Hybrid (49)
+1.6 Multijet (487)
+2.0 Multijet (2)
+
+Arazi, SUV & Pickup
+Jeep
+Renegade
+1.0 T
+Sport (27)
+
+Arazi, SUV & Pickup
+Jeep
+Renegade
+1.3 T
+80. Yıl (7)
+Limited (15)
+Limited Sport (7)
+Longitude (69)
+Longitude Sport (3)
+S Limited (12)
+
+Arazi, SUV & Pickup
+Jeep
+Renegade
+1.4 MultiAir
+Limited (85)
+Longitude (17)
+
+Arazi, SUV & Pickup
+Jeep
+Renegade
+1.5 e-Hybrid
+Limited (26)
+Longitude (22)
+Summit (1)
+
+Arazi, SUV & Pickup
+Jeep
+Renegade
+1.6 Multijet
+Limited (339)
+Longitude (132)
+Night Eagle (16)
+
+Arazi, SUV & Pickup
+Jeep
+Renegade
+2.0 Multijet
+Trailhawk (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Wrangler
+2.0 T (10)
+2.5 (6)
+2.8 CRD (74)
+3.6 (1)
+4.0 (8)
+4.0i (4)
+
+Arazi, SUV & Pickup
+Jeep
+Wrangler
+2.0 T
+Rubicon (10)
+
+Arazi, SUV & Pickup
+Jeep
+Wrangler
+2.5
+2.5 (4)
+Sport (2)
+
+Arazi, SUV & Pickup
+Jeep
+Wrangler
+2.8 CRD (74)
+
+Arazi, SUV & Pickup
+Jeep
+Wrangler
+3.6 (1)
+
+Arazi, SUV & Pickup
+Jeep
+Wrangler
+4.0
+Base (1)
+Sahara (2)
+SE (4)
+Sport (1)
+
+Arazi, SUV & Pickup
+Jeep
+Wrangler
+4.0i (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+CJ
+CJ-5 (5)
+CJ-6 (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Jeep
+Liberty
+3.7 (1)
+
+---------------------

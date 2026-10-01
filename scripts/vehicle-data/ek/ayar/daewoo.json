@@ -1,0 +1,16 @@
+{
+  "yeniModel": {
+    "Nubira": { "bas": 1997, "bit": 2002, "kaynak": "en.wikipedia Daewoo Nubira (1997-2002 G.Kore)" },
+    "Espero": { "bas": 1990, "bit": 1997, "kaynak": "autoevolution / en.wikipedia Daewoo Espero (1990-1997)" },
+    "Lanos": { "bas": 1997, "bit": 2002, "kaynak": "en.wikipedia Daewoo Lanos (1997-2002)" },
+    "Leganza": { "bas": 1997, "bit": 2002, "kaynak": "en.wikipedia Daewoo Leganza (1997-2002)" },
+    "Racer": { "bas": 1990, "bit": 1997, "kaynak": "en.wikipedia Daewoo LeMans / Racer (1986-1997; 1990 öncesi kırpıldı)" },
+    "Tico": { "bas": 1991, "bit": 2000, "kaynak": "en.wikipedia Daewoo Tico (1991-2000)" },
+    "Musso": { "bas": 1993, "bit": 2005, "kaynak": "en.wikipedia SsangYong/Daewoo Musso (1993-2005)" }
+  },
+  "atla": {
+    "Nexia": "Kaynaklar yalnız ilk nesil Cielo/Nexia'yı 1994-1997 veriyor; sonraki Nexia (N100/N150) yılları ve Türkiye'de satılan aralık doğrulanamadı.",
+    "Matiz": "Kaynaklar çelişiyor (1998-2007 / 1998-2009 / Chevrolet ile 2015'e kadar); yıl aralığı seçilemedi.",
+    "Super Saloon": "Model adı ve üretim yılları internette doğrulanamadı (Daewoo Super Salon/Royale Salon olabilir)."
+  }
+}

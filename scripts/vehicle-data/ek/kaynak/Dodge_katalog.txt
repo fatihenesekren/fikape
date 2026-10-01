@@ -1,0 +1,116 @@
+Otomobil
+Dodge
+Avenger (3)
+Challenger (37)
+Viper (1)
+Charger (9)
+Magnum (1)
+
+---------------------
+
+Otomobil
+Dodge
+Avenger
+2.0 CRD (2)
+2.4 SXT (1)
+
+---------------------
+
+Otomobil
+Dodge
+Challenger
+GT (9)
+R/T (8)
+SE (5)
+SRT Hellcat (5)
+SXT Plus (10)
+
+---------------------
+
+Otomobil
+Dodge
+Viper
+RT/10 (1)
+
+---------------------
+
+Otomobil
+Dodge
+Charger
+3.6 (7)
+6.2 (1)
+6.4 (1)
+
+---------------------
+
+Otomobil
+Dodge
+Magnum
+5.7 (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dodge
+Durango (4)
+Journey (13)
+Ram (24)
+Caliber (7)
+Nitro (68)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dodge
+Durango
+5.9L (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dodge
+Journey
+2.0 CRD R/T (13)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dodge
+Ram
+3.0 (4)
+3.0 Diesel (13)
+5.2 (1)
+5.9 (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dodge
+Caliber
+1.8 (1)
+2.0 (6)
+
+Arazi, SUV & Pickup
+Dodge
+Caliber
+1.8
+SXT (1)
+
+Arazi, SUV & Pickup
+Dodge
+Caliber
+2.0
+CRD (4)
+SXT (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dodge
+Nitro
+2.8 CRD
+R/T (1)
+SE (5)
+SXT (62)
+
+---------------------

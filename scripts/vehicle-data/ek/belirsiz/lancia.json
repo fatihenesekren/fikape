@@ -1,0 +1,21 @@
+[
+  {
+    "marka": "Lancia",
+    "model": "Delta",
+    "versiyon": "1.4 T-Jet",
+    "paket": "M-Air Silver",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lancia",
+    "model": "Y (Ypsilon)",
+    "versiyon": "1.4",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lancia",
+    "model": "Phedra",
+    "neden": "Lancia Phedra (2002-2010 olabilir) — yıl aralığı bu oturumda internetten doğrulanamadı."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "marka": "Lada",
+    "model": "Kalina",
+    "versiyon": "1.6",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lada",
+    "model": "VAZ",
+    "neden": "'VAZ' bir model adı değil üretici kodu (VAZ-2101…); katalogda hangi modele denk geldiği belli değil."
+  }
+]

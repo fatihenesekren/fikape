@@ -1,0 +1,2 @@
+### Zlin Motors
+- marka atlandı: Zlin Motors Spark / Spark-H: mikro araç (L-kategori olabilir); katalogda Zlin Motors yok — kategori kararı gerektirir, model doğrulanamadı.

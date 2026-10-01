@@ -1,0 +1,40 @@
+### Mazda
+- otomobil: zaten vardı 41 · eklendi 30 · belirsiz 22
+  - + Yeni model: 5 (2005–2018) — autoevolution / en.wikipedia Mazda5 (Premacy; Mazda5 adıyla 2005'ten itibaren)
+  - + 5 › 1.6 › Sport
+  - + 5 › 1.8 › Standart
+  - + 5 › 2.0 CD › CE
+  - + 5 › 2.0 D › Standart
+  - + MPV › 2.3 TE › Standart
+  - + Yeni model: 121 (1990–2003) — automobile-catalog Mazda 121 (DA 1987-1990'lar, DB 1993-2003; 1990 öncesi kırpıldı)
+  - + 121 › 1.3 › Standart
+  - + 323 › 1.3 › 1.3i
+  - + 323 › 1.5 › 1.5i
+  - + 323 › 1.5 › Familia
+  - + 323 › 1.5 › GL
+  - + 323 › 1.5 › Practica
+  - + 323 › 1.6 › 1.6i
+  - + 323 › 1.6 › F Astina
+  - + 323 › 1.7 › D LX
+  - + 323 › 1.8 › 1.8i
+  - + 323 › 1.8 › GT
+  - + 323 › 1.8 › TE
+  - + 323 › 2.0 TD 90 › GT
+  - + 626 › 1.6 › Standart
+  - + Yeni model: Lantis (1993–1998) — en.wikipedia Mazda Lantis (1993-1998)
+  - + Lantis › 1.6 › Standart
+  - + Lantis › 1.8 › Standart
+  - + Yeni model: RX (1990–2012) — en.wikipedia Mazda RX-7 (1978-2002) + RX-8 (2003-2012); 1990 öncesi kırpıldı
+  - + RX › RX-7 › Standart
+  - + RX › RX-8 › Standart
+  - + Yeni model: Xedos (1992–2002) — en.wikipedia Mazda Xedos 6 (1992-1999) + Xedos 9 (1993-2002)
+  - + Xedos › 6 › Standart
+  - + Xedos › 9 › Standart
+  - ~ eşleme: "2" → "Mazda2"
+  - ~ eşleme: "3" → "Mazda3"
+  - ~ eşleme: "6" → "Mazda6"
+- kamyonet: zaten vardı 0 · eklendi 4 · belirsiz 0
+  - + Yeni model: B Serisi (1990–2006) — en.wikipedia Mazda B series (1961-2006; 1990 öncesi kırpıldı) — kamyonet
+  - + B Serisi › BT 50 2.5 D › Standart
+  - + B Serisi › BT 50 3.0 D › Standart
+  - + B Serisi › B 2500 › Standart

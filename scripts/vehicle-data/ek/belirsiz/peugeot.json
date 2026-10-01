@@ -1,0 +1,614 @@
+[
+  {
+    "marka": "Peugeot",
+    "model": "107",
+    "versiyon": "1.0",
+    "paket": "Urban Move",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "107",
+    "versiyon": "1.4 HDi",
+    "paket": "Trendy",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "Color Line",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "Desire",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "Executive",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "Feline",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "Fever",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "Generation",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "Look",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "Panoramic",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "Pop Art",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "X-Design",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "X-Line",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "XR",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4",
+    "paket": "XT",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Desire",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Feline",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Fever",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Generation",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Look",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Panoramic",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Pop Art",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Premium",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Sporty",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "Trendy",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "X-Design",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "X-Line",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.4 HDi",
+    "paket": "XT",
+    "neden": "Birden fazla eski nesilde geçiyor (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.6",
+    "paket": "1.6 CC",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.6",
+    "paket": "Executive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.6",
+    "paket": "Quiksilver",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.6",
+    "paket": "Sport",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.6 HDi",
+    "paket": "CC",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "1.6 HDi",
+    "paket": "Sport",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "2.0",
+    "paket": "CC",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "2.0",
+    "paket": "GT",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "2.0 HDi",
+    "paket": "2.0 HDi Premium",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206",
+    "versiyon": "2.0 HDi",
+    "paket": "2.0 HDi Sport",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (206 (1998-2012) / 206+ (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206 +",
+    "versiyon": "1.4",
+    "paket": "Sportium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "206 +",
+    "versiyon": "1.4 HDi",
+    "paket": "Sportium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4",
+    "paket": "Envy",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4",
+    "paket": "Millesim",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4",
+    "paket": "Premium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4",
+    "paket": "Sportium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4 HDi",
+    "paket": "Dynamic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4 HDi",
+    "paket": "Envy",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4 HDi",
+    "paket": "Millesim",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4 HDi",
+    "paket": "Premium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4 HDi",
+    "paket": "Sportium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4 VTi",
+    "paket": "Dynamic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4 VTi",
+    "paket": "Limited",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.4 VTi",
+    "paket": "Premium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6",
+    "paket": "Dynamic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 HDi",
+    "paket": "Dynamic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 HDi",
+    "paket": "Dynamic CC",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 HDi",
+    "paket": "Feline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 HDi",
+    "paket": "Trendy",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 THP",
+    "paket": "GT CC",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 THP",
+    "paket": "RC",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 THP",
+    "paket": "RC Le Mans",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 VTi",
+    "paket": "Dynamic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 VTi",
+    "paket": "Feline CC",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 VTi",
+    "paket": "Roland Garros CC",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "207",
+    "versiyon": "1.6 VTi",
+    "paket": "Sportium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "305",
+    "neden": "Peugeot 305 1977-1988/89 (1990 öncesi); katalog 1990 öncesini tutmuyor — klasik araç kararı sizde."
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 e-HDi",
+    "paket": "Active Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 HDi",
+    "paket": "Business Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 HDi",
+    "paket": "Comfort Pack",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 HDi",
+    "paket": "Envy",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 HDi",
+    "paket": "Premium Pack",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 THP",
+    "paket": "Feeline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 THP",
+    "paket": "Feeline Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 THP",
+    "paket": "Premium Pack",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 VTi",
+    "paket": "Confort Pack",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "1.6 VTi",
+    "paket": "Envy",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "308",
+    "versiyon": "2.0 BlueHDI",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "405",
+    "versiyon": "1.9",
+    "paket": "SRi",
+    "neden": "Versiyon, mevcut versiyonların kısa yazımı olabilir (1.9 GR 105 / 1.9 GTXi 130 / 1.9 TD 92) — hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "Pars",
+    "neden": "Peugeot Pars = İran'da Iran Khodro üretimi (Persia/Safir), Türkiye'de satışı/yılları doğrulanamadı."
+  },
+  {
+    "marka": "Peugeot",
+    "model": "RCZ",
+    "versiyon": "1.6 THP",
+    "paket": "Carbon",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "e-2008",
+    "versiyon": "Allure Kısa Menzil",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "e-2008",
+    "versiyon": "Allure Uzun Menzil",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "3008",
+    "versiyon": "1.5 BlueHDi",
+    "paket": "Active Life Prime Edition",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "3008",
+    "versiyon": "1.5 BlueHDi",
+    "paket": "Active Life Sky Pack",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "3008",
+    "versiyon": "1.5 BlueHDi",
+    "paket": "Active Style",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "3008",
+    "versiyon": "1.6 BlueHDi",
+    "paket": "Active Sky Pack",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "3008",
+    "versiyon": "1.6 PureTech",
+    "paket": "Active Drive Prime Edition",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "5008",
+    "versiyon": "1.5 BlueHDI",
+    "paket": "Allure Dynamic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "5008",
+    "versiyon": "1.6 BlueHDi",
+    "paket": "Allure Elegance",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

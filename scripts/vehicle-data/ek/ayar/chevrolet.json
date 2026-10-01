@@ -1,0 +1,18 @@
+{
+  "kamyonet": ["Silverado"],
+  "yeniModel": {
+    "HHR": { "bas": 2005, "bit": 2011, "kaynak": "en.wikipedia Chevrolet HHR (2005-2011)" },
+    "Evanda": { "bas": 2004, "bit": 2006, "kaynak": "autoevolution Chevrolet Evanda (2004-2006)" },
+    "Caprice": { "bas": 1990, "bit": 2017, "kaynak": "en.wikipedia Chevrolet Caprice (1965-1996; Avustralya kaynaklı PPV 2017'ye kadar; 1990 öncesi kırpıldı)" },
+    "Celebrity": { "bas": 1990, "bit": 1990, "kaynak": "en.wikipedia Chevrolet Celebrity (1982-1990 model yılı; 1990 öncesi kırpıldı)" },
+    "Metro": { "bas": 1990, "bit": 2001, "kaynak": "en.wikipedia Geo Metro (1989-2001; 1990 öncesi kırpıldı)" },
+    "Monte Carlo": { "bas": 1995, "bit": 2007, "kaynak": "en.wikipedia Chevrolet Monte Carlo (1970-2007, 1989-1994 ara; 1995'ten itibaren)" },
+    "Blazer": { "bas": 1990, "bit": null, "kaynak": "en.wikipedia Chevrolet Blazer (1969-2005, 2019-; 1990 öncesi kırpıldı)" },
+    "Rezzo": { "bas": 2000, "bit": 2008, "kaynak": "en.wikipedia Daewoo Tacuma / de.wikipedia Chevrolet Rezzo (2000-2008)" },
+    "Kalos": { "bas": 2002, "bit": 2008, "kaynak": "en.wikipedia Chevrolet Aveo (T200) / Kalos (2002-2008; bazı kaynaklar 2011)" },
+    "Silverado": { "bas": 1999, "bit": null, "kaynak": "Chevrolet Silverado (1999 model yılından beri) — kamyonet" }
+  },
+  "atla": {
+    "Geo Storm": "Geo Storm marka olarak Geo; Chevrolet altındaki yeri ve yıl aralığı bu oturumda doğrulanmadı."
+  }
+}

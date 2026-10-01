@@ -1,0 +1,13 @@
+{
+  "yeniModel": {
+    "300 M": { "ad": "300M", "bas": 1999, "bit": 2004, "kaynak": "en.wikipedia Chrysler 300M (model yılı 1999-2004)" },
+    "Crossfire": { "bas": 2004, "bit": 2008, "kaynak": "en.wikipedia Chrysler Crossfire (model yılı 2004-2008)" },
+    "PT Cruiser": { "bas": 2001, "bit": 2010, "kaynak": "en.wikipedia Chrysler PT Cruiser (model yılı 2001-2010)" },
+    "Concorde": { "bas": 1993, "bit": 2004, "kaynak": "en.wikipedia Chrysler Concorde (1993-2004)" },
+    "LHS": { "bas": 1994, "bit": 2001, "kaynak": "en.wikipedia Chrysler LHS (1994-2001, 1998 ara)" },
+    "Sebring": { "bas": 1995, "bit": 2010, "kaynak": "en.wikipedia Chrysler Sebring (1995-2010)" }
+  },
+  "atla": {
+    "Stratus": "Kaynaklar çelişiyor: Chrysler Stratus 1995-2000 (Avrupa/Brezilya/G.Kore), Dodge Stratus 2001-2006 (ABD); Türkiye'de hangisinin satıldığı belli değil."
+  }
+}

@@ -38,7 +38,15 @@ export interface KatalogNesil {
    * 2012 öncesi yıllar için el yapımı seçenekler (TSB 2012'den başlıyor).
    * Yalnızca nesil 2012'den önce başlıyorsa dolu.
    */
-  el?: { versiyonlar: string[]; paketler: string[]; paketlerVersiyona?: Record<string, string[]> };
+  el?: {
+    versiyonlar: string[];
+    paketler: string[];
+    paketlerVersiyona?: Record<string, string[]>;
+    /** Versiyon → yakıt; yalnız motor kodu yakıtı tek anlamlı söylüyorsa (JTD = dizel). Formda öneri olarak gelir. */
+    yakit?: Record<string, KatalogYakit>;
+    /** "versiyon" ya da "versiyon|paket" → vites; yalnız doğrulanmış olanlar. */
+    vites?: Record<string, KatalogVites>;
+  };
 }
 
 export interface KatalogModel {

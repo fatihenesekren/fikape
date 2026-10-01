@@ -1,0 +1,732 @@
+Otomobil
+Seat
+Alhambra (13)
+Altea (117)
+Cordoba (367)
+Exeo (12)
+Ibiza (1.748)
+Leon (4.581)
+Toledo (509)
+
+---------------------
+
+Otomobil
+Seat
+Alhambra
+1.4 TSI (8)
+1.9 TDI (2)
+2.0 TDI (2)
+2.0 TSI (1)
+
+Otomobil
+Seat
+Alhambra
+1.4 TSI
+Reference (1)
+Style (7)
+
+Otomobil
+Seat
+Alhambra
+1.9 TDI
+1.9 TDI (2)
+
+Otomobil
+Seat
+Alhambra
+2.0 TDI
+Style (2)
+
+Otomobil
+Seat
+Alhambra
+2.0 TSI
+Style (1)
+
+---------------------
+
+Otomobil
+Seat
+Altea
+1.4 TSI (21)
+1.6 (28)
+1.6 TDI (62)
+1.9 TDI (6)
+
+Otomobil
+Seat
+Altea
+1.4 TSI
+Style XL (21)
+
+Otomobil
+Seat
+Altea
+1.6
+Reference (10)
+Stylance (17)
+Style (1)
+
+Otomobil
+Seat
+Altea
+1.6 TDI
+I-Tech XL (19)
+Style XL (43)
+
+Otomobil
+Seat
+Altea
+1.9 TDI
+Stylance XL (1)
+Style (5)
+
+---------------------
+
+Otomobil
+Seat
+Cordoba
+1.4 (78)
+1.4 TDI (171)
+1.6 (103)
+1.9 SDi (1)
+1.9 TDI (15)
+
+Otomobil
+Seat
+Cordoba
+1.4
+Basic (8)
+Costa (2)
+Elegance (2)
+Reference (3)
+Signo (25)
+Stella (29)
+Stylance (9)
+
+Otomobil
+Seat
+Cordoba
+1.4 TDI
+Basic (7)
+Elegance (6)
+Reference (2)
+Signo (32)
+S-Rider (18)
+Stella (7)
+Stylance (99)
+
+Otomobil
+Seat
+Cordoba
+1.6
+Latino (1)
+SE (6)
+Signo (35)
+Signo Vario (2)
+Sport (2)
+Stella (30)
+SX (2)
+SXE (24)
+SXE Vario (1)
+
+Otomobil
+Seat
+Cordoba
+1.9 SDi
+Signo (1)
+
+Otomobil
+Seat
+Cordoba
+1.9 TDI
+Signo (10)
+Signo Vario (2)
+Stella (2)
+SXE (1)
+
+---------------------
+
+Otomobil
+Seat
+Exeo
+1.6
+Reference (3)
+Style (9)
+
+---------------------
+
+Otomobil
+Seat
+Ibiza
+1.0 (183)
+1.0 EcoTSI (438)
+1.0 TSI (1)
+1.2 (20)
+1.2 Sport Coupe (1)
+1.2 TDI (5)
+1.2 TDI Sport Tourer (1)
+1.2 TSI (295)
+1.2 TSI Sport Coupe (20)
+1.2 TSI Sport Tourer (32)
+1.3 (4)
+1.4 (424)
+1.4 Sport Coupe (2)
+1.4 Sport Tourer (27)
+1.4 TDI (110)
+1.4 TSI (1)
+1.4 TSI Sport Coupe (48)
+1.5 (5)
+1.5 EcoTSI (17)
+1.6 (60)
+1.6 Sport Coupe (6)
+1.6 TDI (31)
+1.8 (4)
+1.8 TSI Sport Coupe (1)
+1.9 SDi (1)
+1.9 TDI (9)
+
+Otomobil
+Seat
+Ibiza
+1.0
+Referance (46)
+Style (137)
+
+Otomobil
+Seat
+Ibiza
+1.0 EcoTSI
+FR (69)
+Sport Coupe FR (5)
+Style (359)
+Xcellence (5)
+
+Otomobil
+Seat
+Ibiza
+1.0 TSI
+Style Plus (1)
+
+Otomobil
+Seat
+Ibiza
+1.2
+Basic (1)
+Elegance (7)
+Reference (11)
+Selection (1)
+
+Otomobil
+Seat
+Ibiza
+1.2 Sport Coupe
+Elegance (1)
+
+Otomobil
+Seat
+Ibiza
+1.2 TDI
+Reference (5)
+
+Otomobil
+Seat
+Ibiza
+1.2 TDI Sport Tourer
+Copa (1)
+
+Otomobil
+Seat
+Ibiza
+1.2 TSI
+Copa Plus (18)
+Reference (51)
+Reference Plus (1)
+Sport (6)
+Style (219)
+
+Otomobil
+Seat
+Ibiza
+1.2 TSI Sport Coupe
+FR (15)
+Sport (5)
+
+Otomobil
+Seat
+Ibiza
+1.2 TSI Sport Tourer
+Reference (9)
+Style (23)
+
+Otomobil
+Seat
+Ibiza
+1.3
+CLX (1)
+GLX (3)
+
+Otomobil
+Seat
+Ibiza
+1.4
+Basic (4)
+Copa (24)
+Copa Plus (6)
+Elegance (16)
+Reference (191)
+SE (1)
+Signo (38)
+Sport (6)
+Stella (14)
+Stylance (12)
+Style (110)
+SXE (2)
+
+Otomobil
+Seat
+Ibiza
+1.4 Sport Coupe
+Sport (1)
+Style (1)
+
+Otomobil
+Seat
+Ibiza
+1.4 Sport Tourer
+Copa (4)
+Reference (2)
+Style (21)
+
+Otomobil
+Seat
+Ibiza
+1.4 TDI
+Reference (13)
+Signo (24)
+S-Rider (3)
+Stella (6)
+Stylance (28)
+Style (36)
+
+Otomobil
+Seat
+Ibiza
+1.4 TSI
+FR (1)
+
+Otomobil
+Seat
+Ibiza
+1.4 TSI Sport Coupe
+Bocanegra (7)
+Cupra (38)
+FR (3)
+
+Otomobil
+Seat
+Ibiza
+1.5
+GLX (5)
+
+Otomobil
+Seat
+Ibiza
+1.5 EcoTSI
+FR (9)
+FR 40. Yıl Özel Seri (8)
+
+Otomobil
+Seat
+Ibiza
+1.6
+Elegance (2)
+Latino (1)
+Reference (14)
+SE (2)
+Signo (33)
+Stella (8)
+
+Otomobil
+Seat
+Ibiza
+1.6 Sport Coupe
+Sport (6)
+
+Otomobil
+Seat
+Ibiza
+1.6 TDI
+CR Style (5)
+Reference (12)
+Style (14)
+
+Otomobil
+Seat
+Ibiza
+1.8
+GLX (4)
+
+Otomobil
+Seat
+Ibiza
+1.8 TSI Sport Coupe
+Cupra (1)
+
+Otomobil
+Seat
+Ibiza
+1.9 SDi
+Stella (1)
+
+Otomobil
+Seat
+Ibiza
+1.9 TDI
+Cupra (3)
+Signo (3)
+Sport (2)
+Stylance (1)
+
+---------------------
+
+Otomobil
+Seat
+Leon
+1.0 EcoTSI (117)
+1.0 eTSI (92)
+1.0 TSI (15)
+1.2 TSI (602)
+1.4 TSI (634)
+1.4 EcoTSI (356)
+1.5 EcoTSI (354)
+1.5 eHybrid (49)
+1.5 eTSI (81)
+1.5 TSI (28)
+1.6 (254)
+1.6 TDI (1.954)
+1.8 (1)
+1.8 T (3)
+1.9 TDI (15)
+2.0 FSI (1)
+2.0 TDI (6)
+2.0 TSI (4)
+2.0 TFSI (12)
+
+Otomobil
+Seat
+Leon
+1.0 EcoTSI
+Ecomotive Style (102)
+Style Visio (15)
+
+Otomobil
+Seat
+Leon
+1.0 eTSI
+Style (54)
+Style Plus (38)
+
+Otomobil
+Seat
+Leon
+1.0 TSI
+Style (15)
+
+Otomobil
+Seat
+Leon
+1.2 TSI
+Reference (5)
+SC Style (1)
+Style (596)
+
+Otomobil
+Seat
+Leon
+1.4 TSI
+Copa Plus (3)
+FR (476)
+Reference (3)
+SC FR (5)
+Stylance (36)
+Style (107)
+Xcellence (4)
+
+Otomobil
+Seat
+Leon
+1.4 EcoTSI
+Euroleague Edition (1)
+FR (316)
+Xcellence (39)
+
+Otomobil
+Seat
+Leon
+1.5 EcoTSI
+FR (258)
+Style (28)
+Xcellence (68)
+
+Otomobil
+Seat
+Leon
+1.5 eHybrid
+FR (49)
+
+Otomobil
+Seat
+Leon
+1.5 eTSI
+FR (77)
+Style (1)
+Xcellence (3)
+
+Otomobil
+Seat
+Leon
+1.5 TSI
+FR (28)
+
+Otomobil
+Seat
+Leon
+1.6
+Reference (32)
+Signo (29)
+Spirit (8)
+Sport (13)
+Stella (20)
+Stylance (131)
+Style (21)
+
+Otomobil
+Seat
+Leon
+1.6 TDI
+Copa Plus (38)
+CR Style (691)
+FR (84)
+SC Style (7)
+ST Style (64)
+Style (922)
+Xcellence (142)
+X-Perience (6)
+
+Otomobil
+Seat
+Leon
+1.8
+Signo (1)
+
+Otomobil
+Seat
+Leon
+1.8 T
+Cupra (3)
+
+Otomobil
+Seat
+Leon
+1.9 TDI
+Cupra (2)
+Signo (2)
+Sport (3)
+Stella (2)
+Style (6)
+
+Otomobil
+Seat
+Leon
+2.0 FSI
+Stylance (1)
+
+Otomobil
+Seat
+Leon
+2.0 TDI
+CR FR (2)
+Stylance (4)
+
+Otomobil
+Seat
+Leon
+2.0 TSI
+Cupra (4)
+
+Otomobil
+Seat
+Leon
+2.0 TFSI
+Cupra (9)
+FR (3)
+
+---------------------
+
+Otomobil
+Seat
+Toledo
+1.2 TSI (30)
+1.4 TDI (138)
+1.4 TSI (25)
+1.6 (149)
+1.6 TDI (110)
+1.8 (25)
+1.9 TDI (28)
+2.0 (1)
+2.0 TDI (3)
+
+Otomobil
+Seat
+Toledo
+1.2 TSI
+Reference (4)
+Style (26)
+
+Otomobil
+Seat
+Toledo
+1.4 TDI
+Style (138)
+
+Otomobil
+Seat
+Toledo
+1.4 TSI
+Style (25)
+
+Otomobil
+Seat
+Toledo
+1.6
+Magnus (1)
+Reference (7)
+Signo (55)
+Signo Plus (43)
+Signum (5)
+Stella (36)
+Style (2)
+
+Otomobil
+Seat
+Toledo
+1.6 TDI
+Reference (5)
+Style (105)
+
+Otomobil
+Seat
+Toledo
+1.8
+GL (1)
+GLX (1)
+Signo (21)
+Sport (2)
+
+Otomobil
+Seat
+Toledo
+1.9 TDI
+Signo (22)
+Sport (3)
+Stella (1)
+SXE (2)
+
+Otomobil
+Seat
+Toledo
+2.0
+GLX (1)
+
+Otomobil
+Seat
+Toledo
+2.0 TDI
+Stylance (3)
+
+---------------------
+
+Arazi, SUV & Pickup
+Seat
+Tarraco (56)
+Arona (502)
+Ateca (632)
+
+---------------------
+
+Arazi, SUV & Pickup
+Seat
+Tarraco
+1.5 TSI
+FR (33)
+Xcellence (8)
+Xperience (15)
+
+---------------------
+
+Arazi, SUV & Pickup
+Seat
+Arona
+1.0 EcoTSI (442)
+1.5 EcoTSI (7)
+1.6 TDI (53)
+
+Arazi, SUV & Pickup
+Seat
+Arona
+1.0 EcoTSI
+FR (100)
+Style (167)
+Style Plus (35)
+Xcellence (82)
+Xperience (58)
+
+Arazi, SUV & Pickup
+Seat
+Arona
+1.5 EcoTSI
+FR Plus (7)
+
+Arazi, SUV & Pickup
+Seat
+Arona
+1.6 TDI
+Style (16)
+Xcellence (37)
+
+---------------------
+
+Arazi, SUV & Pickup
+Seat
+Ateca
+1.4 EcoTSI (70)
+1.5 EcoTSI (419)
+1.6 TDI (143)
+
+Arazi, SUV & Pickup
+Seat
+Ateca
+1.4 EcoTSI
+FR (14)
+Style (9)
+Xcellence (47)
+
+Arazi, SUV & Pickup
+Seat
+Ateca
+1.5 EcoTSI
+FR (166)
+Style (6)
+Style Plus (9)
+Xcellence (15)
+Xperience (223)
+
+Arazi, SUV & Pickup
+Seat
+Ateca
+1.6 TDI
+Ecomotive Style (7)
+Ecomotive Xcellence (136)
+
+---------------------

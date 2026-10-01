@@ -1,0 +1,173 @@
+[
+  {
+    "marka": "Jaguar",
+    "model": "Daimler",
+    "neden": "Daimler (Super V8/Sovereign) Jaguar XJ tabanlı ayrı marka/donanım adı; katalogda hangi modele bağlanacağı belli değil."
+  },
+  {
+    "marka": "Jaguar",
+    "model": "Sovereign",
+    "neden": "Jaguar/Daimler Sovereign — XJ donanım adı mı ayrı model mi belli değil; yıl aralığı seçilemedi."
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XE",
+    "versiyon": "2.0 D",
+    "paket": "Portfollio",
+    "neden": "\"PORTFOLLIO\" yazımı \"PORTFOLIO\" ile 1 harf farklı — yazım hatası olabilir"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XE",
+    "versiyon": "2.0 D",
+    "paket": "Prestige",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XE",
+    "versiyon": "2.0 D",
+    "paket": "R-Sport",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XF",
+    "versiyon": "2.7 D",
+    "paket": "Luxury",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XF",
+    "versiyon": "2.7 D",
+    "paket": "Premium Luxury",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "2.0i",
+    "paket": "Portfolio",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "2.0i",
+    "paket": "Premium Luxury",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "2.0i",
+    "paket": "Premium Luxury Sport Plus",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "XJ6",
+    "paket": "2.7 D",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "XJ6",
+    "paket": "3.0",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "XJ6",
+    "paket": "3.0 Executive",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "XJ8",
+    "paket": "3.2",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "XJ8",
+    "paket": "3.5 Executive",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "XJ8",
+    "paket": "4.2 Executive",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XJ",
+    "versiyon": "XJ8",
+    "paket": "4.2 Sovereign",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (XJ (1994-2003) / XJ (2003-2009) / XJ (2009-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XK8",
+    "versiyon": "4.0",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "XK8",
+    "versiyon": "4.2",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "F-Pace",
+    "versiyon": "2.0",
+    "paket": "R-Sport",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "F-Pace",
+    "versiyon": "2.0 D",
+    "paket": "Prestige SE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "F-Pace",
+    "versiyon": "2.0 D",
+    "paket": "R-Sport",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "F-Pace",
+    "versiyon": "2.0 D",
+    "paket": "R-Sport Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "F-Pace",
+    "versiyon": "2.0 D",
+    "paket": "R-Sport SE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jaguar",
+    "model": "F-Pace",
+    "versiyon": "2.5 D",
+    "paket": "R-Sport",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

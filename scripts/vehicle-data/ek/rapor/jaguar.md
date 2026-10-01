@@ -1,0 +1,24 @@
+### Jaguar
+- otomobil: zaten vardı 50 · eklendi 20 · belirsiz 25
+  - + S-Type › 2.5 V6 200 › Sport
+  - + S-Type › 2.7 D › Classic
+  - + S-Type › 2.7 D › Executive
+  - + S-Type › 2.7 D › Sport
+  - + S-Type › 3.0 V6 240 › Classic
+  - + S-Type › 3.0 V6 240 › Sport
+  - + S-Type › 4.0 › Standart
+  - + S-Type › 4.2 R › Standart
+  - + X-Type › 2.0 D › Executive
+  - + X-Type › 2.0 D › High
+  - + X-Type › 2.1 › Executive
+  - + X-Type › 2.2 › Executive
+  - + X-Type › 2.2 D › Executive
+  - + X-Type › 2.5 V6 196 AWD › Executive
+  - + X-Type › 2.5 V6 196 AWD › SE High
+  - + X-Type › 2.5 V6 196 AWD › Sport
+  - + X-Type › 3.0 V6 231 AWD › Executive
+  - + X-Type › 3.0 V6 231 AWD › Sport
+  - + Yeni model: XJS (1990–1996) — en.wikipedia Jaguar XJS (1975-1996; 1990 öncesi kırpıldı)
+  - + XJS › 6.0 › Standart
+  - ~ eşleme: "XJ6" → "XJ"
+  - ~ eşleme: "XJR" → "XJ"

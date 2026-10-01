@@ -1,0 +1,2 @@
+### Motolux
+- marka atlandı: Motolux WOW 01: Motolux düşük hızlı elektrikli mikro araç (L-kategori); katalogda Motolux MOTOSİKLET kategorisinde olabilir — otomobil'e eklemek kategori kararı gerektirir.

@@ -1,0 +1,1780 @@
+Otomobil
+Renault
+Clio (18.303)
+Espace (38)
+Fluence (5.257)
+Fluence Z.E. (2)
+Grand Scenic (117)
+Grand Modüs (11)
+Laguna (795)
+Latitude (293)
+Megane (17.958)
+Megane E-Tech (101)
+Modus (93)
+Safrane (21)
+Scenic (594)
+Scenic EV (1)
+Symbol (5.168)
+Taliant (737)
+Talisman (373)
+Twingo (109)
+Twizy (8)
+Vel Satis (7)
+ZOE (47)
+R5 E-Tech (19)
+R 5 (8)
+R 9 (2.126)
+R 11 (177)
+R 12 (1.240)
+R 19 (1.449)
+R 21 (97)
+R 25 (1)
+
+---------------------
+
+Otomobil
+Renault
+Clio
+0.9 TCe (612)
+0.9 TCe Sport Tourer (135)
+1.0 SCe (838)
+1.0 TCe (5.463)
+1.2 (1.355)
+1.2 TCe (368)
+1.2 Grandtour (57)
+1.2 SportTourer (86)
+1.3 TCe (309)
+1.4 (1.976)
+1.4 Grandtour (1)
+1.5 BlueDCI (65)
+1.5 dCi (5.471)
+1.5 dCi Grandtour (236)
+1.5 dCi SportTourer (863)
+1.6 (414)
+1.6 E-Tech (15)
+1.6 Grandtour (20)
+1.8 (7)
+1.9 D (1)
+2.0 (9)
+
+Otomobil
+Renault
+Clio
+0.9 TCe
+Icon (112)
+Joy (322)
+Touch (179)
+
+Otomobil
+Renault
+Clio
+0.9 TCe Sport Tourer
+Icon (24)
+Joy (68)
+Touch (44)
+
+Otomobil
+Renault
+Clio
+1.0 SCe
+Equilibre (23)
+Joy (815)
+
+Otomobil
+Renault
+Clio
+1.0 TCe
+Equilibre (232)
+Evolution (1.872)
+Icon (261)
+Joy (1.215)
+RS Line (15)
+Techno Esprit Alpine (703)
+Touch (1.165)
+
+Otomobil
+Renault
+Clio
+1.2
+Authentique (331)
+Dynamique (14)
+Expression (81)
+Extreme (199)
+GT Line (1)
+Icon (127)
+Joy (506)
+Joy Plus (8)
+Night & Day (14)
+Tom Tom Edition (16)
+Touch (48)
+Touchrome (11)
+
+Otomobil
+Renault
+Clio
+1.2 TCe
+Esprit Alpine (41)
+Evolution Plus (56)
+GT Line (13)
+Icon (171)
+Joy (29)
+Touch (49)
+Touchrome (9)
+
+Otomobil
+Renault
+Clio
+1.2 Grandtour
+Authentique (16)
+Dynamique (4)
+Executive (4)
+Extreme (25)
+Night & Day (8)
+
+Otomobil
+Renault
+Clio
+1.2 SportTourer
+Icon (19)
+Joy (67)
+
+Otomobil
+Renault
+Clio
+1.3 TCe
+Icon (93)
+RS Line (9)
+Touch (207)
+
+Otomobil
+Renault
+Clio
+1.4
+1.4 (152)
+Alize (166)
+Authentique (410)
+Dynamique (86)
+Expression (70)
+Extreme (38)
+Fidji (16)
+Privilege (26)
+RN (115)
+RNA (425)
+RT (72)
+RTA (241)
+RXT (159)
+
+Otomobil
+Renault
+Clio
+1.4 Grandtour
+Dynamique (1)
+
+Otomobil
+Renault
+Clio
+1.5 BlueDCI
+Icon (2)
+Joy (59)
+Touch (4)
+
+Otomobil
+Renault
+Clio
+1.5 dCi
+Alize (377)
+Authentique (557)
+Authentique Edition (24)
+Connect (1)
+Dynamique (97)
+Executive (27)
+Expression (361)
+Expression Plus (2)
+Extreme (188)
+Extreme Edition (45)
+Fidji (13)
+GT Line (36)
+Icon (1.040)
+Joy (1.491)
+Night & Day (28)
+Tom Tom Edition (11)
+Touch (1.173)
+
+Otomobil
+Renault
+Clio
+1.5 dCi Grandtour
+Authentique Edition (88)
+Dynamique (12)
+Executive (22)
+Extreme (96)
+Night & Day (19)
+
+Otomobil
+Renault
+Clio
+1.5 dCi SportTourer
+Icon (187)
+Joy (562)
+Touch (115)
+
+Otomobil
+Renault
+Clio
+1.6
+Dynamique (48)
+Executive (5)
+Expression (1)
+Extreme (12)
+Extreme Edition (9)
+Night & Day (9)
+RS (1)
+RT (9)
+RTE (192)
+RXT (128)
+
+Otomobil
+Renault
+Clio
+1.6 E-Tech
+Techno Esprit Alpine (15)
+
+Otomobil
+Renault
+Clio
+1.6 Grandtour
+Extreme (10)
+Night & Day (10)
+
+Otomobil
+Renault
+Clio
+1.8
+RSi (7)
+
+Otomobil
+Renault
+Clio
+1.9 D
+RL (1)
+
+Otomobil
+Renault
+Clio
+2.0
+Renault Sport (8)
+Williams (1)
+
+---------------------
+
+Otomobil
+Renault
+Espace
+1.6 dCi (3)
+1.9 dCi (5)
+2.0 (3)
+2.0 dCi (2)
+2.0 T (2)
+2.2 (5)
+2.2 dCi (11)
+3.0 dCi (3)
+3.0 dCi Grand (4)
+
+Otomobil
+Renault
+Espace
+1.6 dCi
+1.6 dCi (3)
+
+Otomobil
+Renault
+Espace
+1.9 dCi
+Expression (5)
+
+Otomobil
+Renault
+Espace
+2.0
+RT (1)
+RXE (2)
+
+Otomobil
+Renault
+Espace
+2.0 dCi
+Family (1)
+Initiale (1)
+
+Otomobil
+Renault
+Espace
+2.0 T
+Expression (1)
+Privilege (1)
+
+Otomobil
+Renault
+Espace
+2.2
+DT RXE (5)
+
+Otomobil
+Renault
+Espace
+2.2 dCi
+Expression (2)
+Privilege (9)
+
+Otomobil
+Renault
+Espace
+3.0 dCi (3)
+
+Otomobil
+Renault
+Espace
+3.0 dCi Grand (4)
+
+---------------------
+
+Otomobil
+Renault
+Fluence
+1.5 dCi (4.935)
+1.6 (310)
+1.6 dCi (14)
+
+Otomobil
+Renault
+Fluence
+1.5 dCi
+Authentique (92)
+Bold Edition (6)
+Business (546)
+Dynamique (224)
+Elegance (5)
+Expression (37)
+Extreme (353)
+Extreme Edition (230)
+Icon (986)
+Joy (434)
+Privilege (246)
+Touch (1.299)
+Touch Plus (479)
+
+Otomobil
+Renault
+Fluence
+1.6
+Authentique (6)
+Business (25)
+Dynamique (42)
+Expression (16)
+Extreme (98)
+Icon (21)
+Joy (7)
+Privilege (59)
+Touch (29)
+Touch Plus (7)
+
+Otomobil
+Renault
+Fluence
+1.6 dCi
+Icon (14)
+
+---------------------
+
+Otomobil
+Renault
+Fluence Z.E.
+Dynamique (2)
+
+---------------------
+
+Otomobil
+Renault
+Grand Scenic
+1.4 T (1)
+1.5 dCi (108)
+1.6 (1)
+1.9 dCi (5)
+2.0 (1)
+2.0 dCi (1)
+
+Otomobil
+Renault
+Grand Scenic
+1.4 T
+Expression (1)
+
+Otomobil
+Renault
+Grand Scenic
+1.5 dCi
+Authentique (2)
+Expression (7)
+Extreme (2)
+Icon (4)
+Privilege (93)
+
+Otomobil
+Renault
+Grand Scenic
+1.6
+Privilege (1)
+
+Otomobil
+Renault
+Grand Scenic
+1.9 dCi
+Dynamique (1)
+Privilege (4)
+
+Otomobil
+Renault
+Grand Scenic
+2.0
+Privilege (1)
+
+Otomobil
+Renault
+Grand Scenic
+2.0 dCi
+Privilege (1)
+
+---------------------
+
+Otomobil
+Renault
+Grand Modüs
+1.4 (4)
+1.5 DCI (6)
+1.6 (1)
+
+Otomobil
+Renault
+Grand Modüs
+1.4
+Authentique (1)
+Dynamique (3)
+
+Otomobil
+Renault
+Grand Modüs
+1.5 DCI
+Authentique (1)
+Dynamique (5)
+
+Otomobil
+Renault
+Grand Modüs
+1.6
+Dynamique (1)
+
+---------------------
+
+Otomobil
+Renault
+Laguna
+1.5 dCi (119)
+1.6 (305)
+1.8 (22)
+1.9 dCi (50)
+1.9 DTi (18)
+2.0 (240)
+2.0 dCi (20)
+2.0 T (13)
+2.2 dCi (5)
+3.0 (4)
+
+Otomobil
+Renault
+Laguna
+1.5 dCi
+Authentique (3)
+Dynamique (26)
+Executive (14)
+Expression (19)
+Privilege (57)
+
+Otomobil
+Renault
+Laguna
+1.6
+1.6 (5)
+Authentique (9)
+Dynamique (3)
+Expression (119)
+Privilege (134)
+RXE (34)
+RXT (2)
+
+Otomobil
+Renault
+Laguna
+1.8
+1.8 (5)
+RXE (17)
+
+Otomobil
+Renault
+Laguna
+1.9 dCi
+Authentique (3)
+Dynamique (4)
+Expression (30)
+Privilege (13)
+
+Otomobil
+Renault
+Laguna
+1.9 DTi
+RXE (18)
+
+Otomobil
+Renault
+Laguna
+2.0
+Dynamique (1)
+Expression (2)
+Privilege (36)
+RTI (9)
+RXE (105)
+RXT (87)
+
+Otomobil
+Renault
+Laguna
+2.0 dCi
+Dynamique (3)
+Executive (4)
+Privilege (9)
+Sport Emotion (4)
+
+Otomobil
+Renault
+Laguna
+2.0 T
+Dynamique (1)
+GT (1)
+Privilege (10)
+Sport (1)
+
+Otomobil
+Renault
+Laguna
+2.2 dCi
+Dynamique (1)
+Expression (1)
+Privilege (3)
+
+Otomobil
+Renault
+Laguna
+3.0
+Initiale (3)
+Privilege (1)
+
+---------------------
+
+Otomobil
+Renault
+Latitude
+1.5 dCi (255)
+2.0 dCi (38)
+
+Otomobil
+Renault
+Latitude
+1.5 dCi
+Executive (93)
+Expression (49)
+Privilege (113)
+
+Otomobil
+Renault
+Latitude
+2.0 dCi
+Executive (18)
+Privilege (20)
+
+---------------------
+
+Otomobil
+Renault
+Megane
+1.0 TCe (6)
+1.2 TCe (161)
+1.3 TCe (4.668)
+1.4 (443)
+1.4 T (15)
+1.4 T Sport Tourer (3)
+1.5 Blue DCI (2.316)
+1.5 dCi (6.611)
+1.5 dCi Grandtour (5)
+1.5 dCi Sport Tourer (222)
+1.6 (3.103)
+1.6 Cabrio (11)
+1.6 CC (16)
+1.6 Coupe (70)
+1.6 dCi (47)
+1.6 Grandtour (4)
+1.6 Sport Tourer (2)
+1.8 (1)
+1.9 CC (1)
+1.9 D (1)
+1.9 dCi (13)
+1.9 dCi Grandtour (2)
+1.9 DTi (68)
+2.0 (152)
+2.0 Cabrio (1)
+2.0 CC (1)
+2.0 Coupe (6)
+2.0 T (7)
+
+Otomobil
+Renault
+Megane
+1.0 TCe
+Joy (6)
+
+Otomobil
+Renault
+Megane
+1.2 TCe
+Icon (51)
+Touch (92)
+Touchrome (18)
+
+Otomobil
+Renault
+Megane
+1.3 TCe
+Icon (1.327)
+Joy (1.403)
+Joy Comfort (629)
+Touch (1.308)
+
+Otomobil
+Renault
+Megane
+1.4
+Alize (4)
+Authentique (381)
+Expression (5)
+Extreme (1)
+Premiere (2)
+RTA (50)
+
+Otomobil
+Renault
+Megane
+1.4 T
+Color Edition (2)
+Dynamique (1)
+Impressor (12)
+
+Otomobil
+Renault
+Megane
+1.4 T Sport Tourer
+Privilege (3)
+
+Otomobil
+Renault
+Megane
+1.5 Blue DCI
+Icon (671)
+Joy (477)
+Joy Comfort (130)
+Touch (1.039)
+
+Otomobil
+Renault
+Megane
+1.5 dCi
+Authentique (484)
+Business (13)
+Color Edition (4)
+Dynamique (674)
+Exception (50)
+Expression (513)
+Expression Plus (59)
+Extreme (262)
+GT-Line (59)
+Icon (1.147)
+Impressor (32)
+Joy (397)
+Joy Plus (10)
+Legend (2)
+Play (11)
+Privilege (453)
+Sport Edition (16)
+Sportway (91)
+Touch (1.895)
+Touch Plus (429)
+Touchrome (10)
+
+Otomobil
+Renault
+Megane
+1.5 dCi Grandtour
+Authentique (3)
+Dynamique (1)
+Privilege (1)
+
+Otomobil
+Renault
+Megane
+1.5 dCi Sport Tourer
+Expression (36)
+Extreme (9)
+GT-Line (28)
+Privilege (142)
+Touch (7)
+
+Otomobil
+Renault
+Megane
+1.6
+Alize (39)
+Authentique (279)
+Business (10)
+Dynamique (915)
+Dynamique Wagon (3)
+Exception (23)
+Expression (214)
+Extreme (74)
+GT (1)
+GT Line (4)
+Icon (16)
+Joy (525)
+Legend (1)
+Panorama Edition (1)
+Play (2)
+Privilege (153)
+RNA (23)
+RTA (82)
+RTE (466)
+RXE (35)
+RXi (60)
+RXT (50)
+Sportway (42)
+Touch (50)
+Touch Plus (35)
+
+Otomobil
+Renault
+Megane
+1.6 Cabrio
+Cabrio (11)
+
+Otomobil
+Renault
+Megane
+1.6 CC
+Dynamique (4)
+Privilege (12)
+
+Otomobil
+Renault
+Megane
+1.6 Coupe
+Dynamique (9)
+Expression (11)
+Privilege (21)
+RN (30)
+
+Otomobil
+Renault
+Megane
+1.6 dCi
+GT-Line (12)
+GT-Line Energy (16)
+GT-Line Energy Sport Tourer (2)
+Icon (14)
+Privilege Energy (3)
+
+Otomobil
+Renault
+Megane
+1.6 Grandtour
+Privilege (4)
+
+Otomobil
+Renault
+Megane
+1.6 Sport Tourer
+Expression (2)
+
+Otomobil
+Renault
+Megane
+1.8
+Dynamique (1)
+
+Otomobil
+Renault
+Megane
+1.9 CC
+Dynamique (1)
+
+Otomobil
+Renault
+Megane
+1.9 D
+RN (1)
+
+Otomobil
+Renault
+Megane
+1.9 dCi
+1.9 dCi (1)
+Alize (1)
+Authentique (2)
+Dynamique (4)
+Privilege (5)
+
+Otomobil
+Renault
+Megane
+1.9 dCi Grandtour
+Dynamique (1)
+Privilege (1)
+
+Otomobil
+Renault
+Megane
+1.9 DTi
+Alize (13)
+Expression (17)
+RTA (1)
+RTE (37)
+
+Otomobil
+Renault
+Megane
+2.0
+Dynamique (4)
+Privilege (3)
+RS (1)
+RXE (43)
+RXT (101)
+
+Otomobil
+Renault
+Megane
+2.0 Cabrio
+2.0 Cabrio (1)
+
+Otomobil
+Renault
+Megane
+2.0 CC
+Privilege (1)
+
+Otomobil
+Renault
+Megane
+2.0 Coupe
+2.0 Coupe (5)
+Privilige (1)
+
+Otomobil
+Renault
+Megane
+2.0 T
+RS (1)
+Sport (6)
+
+---------------------
+
+Otomobil
+Renault
+Megane E-Tech
+Esprit Alpine (3)
+Iconic (71)
+Techno (28)
+
+---------------------
+
+Otomobil
+Renault
+Modus
+1.2 (1)
+1.4 (39)
+1.5 dCi (32)
+1.6 (21)
+
+Otomobil
+Renault
+Modus
+1.2 (1)
+
+Otomobil
+Renault
+Modus
+1.4
+Authentique (19)
+Dynamique (20)
+
+Otomobil
+Renault
+Modus
+1.5 dCi
+Authentique (16)
+Dynamique (16)
+
+Otomobil
+Renault
+Modus
+1.6
+Authentique (6)
+Dynamique (15)
+
+---------------------
+
+Otomobil
+Renault
+Safrane
+2.0 (11)
+2.2 (2)
+2.5 (5)
+3.0 (3)
+
+Otomobil
+Renault
+Safrane
+2.0
+2.0 (6)
+RXE (5)
+
+Otomobil
+Renault
+Safrane
+2.2
+RT (2)
+
+Otomobil
+Renault
+Safrane
+2.5
+2.5 (2)
+RXT (3)
+
+Otomobil
+Renault
+Safrane
+3.0
+Initiale (1)
+RXE (2)
+
+---------------------
+
+Otomobil
+Renault
+Scenic
+1.5 dCi (179)
+1.6 (358)
+1.6 dCi (1)
+1.9 dCi (18)
+1.9 DTi (2)
+2.0 (35)
+
+Otomobil
+Renault
+Scenic
+1.5 dCi
+Authentique (4)
+Conquest (5)
+Dynamique (16)
+Exception (3)
+Expression (12)
+Icon (29)
+Privilege (101)
+Sportway (6)
+Touch (3)
+
+Otomobil
+Renault
+Scenic
+1.6
+1.6 (11)
+Authentique (11)
+Dynamique (93)
+Exception (3)
+Expression (7)
+Extreme (2)
+Privilege (99)
+RTE (23)
+RXE (19)
+RXT (88)
+Sportway (2)
+
+Otomobil
+Renault
+Scenic
+1.6 dCi
+Privilege (1)
+
+Otomobil
+Renault
+Scenic
+1.9 dCi
+Authentique (1)
+Dynamique (10)
+Expression (1)
+Privilege (5)
+RXE (1)
+
+Otomobil
+Renault
+Scenic
+1.9 DTi
+RXE (1)
+RXT (1)
+
+Otomobil
+Renault
+Scenic
+2.0
+Privilege (12)
+RXi (5)
+RXT (18)
+
+---------------------
+
+Otomobil
+Renault
+Scenic EV
+Esprit Alpine (1)
+
+---------------------
+
+Otomobil
+Renault
+Symbol
+0.9 TCe (300)
+1.0 SCe (98)
+1.0 TCe (20)
+1.2 (732)
+1.4 (531)
+1.5 BlueDCI (40)
+1.5 DCI (3.443)
+
+Otomobil
+Renault
+Symbol
+0.9 TCe
+Joy (276)
+Turbo Touch (24)
+
+Otomobil
+Renault
+Symbol
+1.0 SCe
+Joy (90)
+Touch (8)
+
+Otomobil
+Renault
+Symbol
+1.0 TCe
+Joy (20)
+
+Otomobil
+Renault
+Symbol
+1.2
+Authentique (191)
+Authentique Edition (50)
+Expression (147)
+Expression Plus (19)
+Joy (276)
+SL Collection (5)
+Touch (44)
+
+Otomobil
+Renault
+Symbol
+1.4
+Authentique (278)
+Expression (170)
+Expression Plus (69)
+Extreme (14)
+
+Otomobil
+Renault
+Symbol
+1.5 BlueDCI
+Joy (40)
+
+Otomobil
+Renault
+Symbol
+1.5 DCI
+Authentique (954)
+Authentique Edition (19)
+Dynamique (50)
+Expression (400)
+Expression Plus (50)
+Extreme (75)
+Joy (1.595)
+SL Collection (12)
+Touch (279)
+Touch Plus (9)
+
+---------------------
+
+Otomobil
+Renault
+Taliant
+1.0 Sce (39)
+1.0 T (701)
+
+Otomobil
+Renault
+Taliant
+1.0 Sce
+Joy (39)
+
+Otomobil
+Renault
+Taliant
+1.0 T
+Joy (616)
+Touch (85)
+
+---------------------
+
+Otomobil
+Renault
+Talisman
+1.3 Tce (37)
+1.5 dCi (13)
+1.6 dCi (322)
+
+Otomobil
+Renault
+Talisman
+1.3 Tce
+Icon (29)
+Touch (8)
+
+Otomobil
+Renault
+Talisman
+1.5 dCi
+Icon (4)
+Touch (9)
+
+Otomobil
+Renault
+Talisman
+1.6 dCi
+Icon (229)
+Touch (94)
+
+---------------------
+
+Otomobil
+Renault
+Twingo
+1.2 (100)
+1.3 (9)
+
+Otomobil
+Renault
+Twingo
+1.2
+Alize (11)
+Base (39)
+Dynamique (1)
+Easy (13)
+Expression (1)
+Pack (32)
+Wind (3)
+
+Otomobil
+Renault
+Twingo
+1.3
+1.3 (9)
+
+---------------------
+
+Otomobil
+Renault
+Twizy
+75 (8)
+
+---------------------
+
+Otomobil
+Renault
+Vel Satis
+2.0 T (2)
+2.2 dCi (1)
+3.0 dCi (1)
+3.5 (3)
+
+Otomobil
+Renault
+Vel Satis
+2.0 T
+Expression (2)
+
+Otomobil
+Renault
+Vel Satis
+2.2 dCi (1)
+
+Otomobil
+Renault
+Vel Satis
+3.0 dCi
+Privilege (1)
+
+Otomobil
+Renault
+Vel Satis
+3.5
+Privilege (3)
+
+---------------------
+
+Otomobil
+Renault
+ZOE
+Intense (24)
+ZOE (24)
+
+---------------------
+
+Otomobil
+Renault
+R5 E-Tech
+EV40 (6)
+EV52 (13)
+
+Otomobil
+Renault
+R5 E-Tech
+EV40
+Techno (6)
+
+Otomobil
+Renault
+R5 E-Tech
+EV52
+Techno (13)
+
+---------------------
+
+Otomobil
+Renault
+R 5
+1.1 (4)
+1.4 (4)
+
+Otomobil
+Renault
+R 5
+1.1
+Five (4)
+
+Otomobil
+Renault
+R 5
+1.4
+1.4 (2)
+Five (2)
+
+---------------------
+
+Otomobil
+Renault
+R 9
+1.4 (350)
+1.4 Broadway (1.696)
+1.6 (75)
+1.7 (1)
+
+Otomobil
+Renault
+R 9
+1.4
+Fairway (1)
+GT (27)
+GTC (15)
+GTL (14)
+GTS (3)
+Spring (288)
+TX (2)
+
+Otomobil
+Renault
+R 9
+1.4 Broadway
+1.4 Broadway (793)
+GTE (265)
+RL (87)
+RN (309)
+RNi (243)
+
+Otomobil
+Renault
+R 9
+1.6
+Broadway (3)
+Fairway (69)
+GTD (3)
+
+Otomobil
+Renault
+R 9
+1.7
+GTX (1)
+
+---------------------
+
+Otomobil
+Renault
+R 11
+Flash (69)
+Flash S (29)
+GTL (3)
+GTS (51)
+Rainbow (23)
+TX (2)
+
+---------------------
+
+Otomobil
+Renault
+R 12
+GTS (10)
+SW (53)
+TL (12)
+TN (3)
+Toros (878)
+TS (52)
+TSW (126)
+TX (105)
+
+---------------------
+
+Otomobil
+Renault
+R 19
+1.4 (91)
+1.4 Europa (388)
+1.6 (5)
+1.6 Europa (890)
+1.7 (1)
+1.8 Europa (27)
+1.8 RTi (4)
+1.9 (2)
+1.9 Europa (42)
+
+Otomobil
+Renault
+R 19
+1.4
+1.4i (23)
+Beymen Club (28)
+RN (18)
+RT (22)
+
+Otomobil
+Renault
+R 19
+1.4 Europa
+RL (169)
+RN (89)
+RNA (124)
+RTE (3)
+RTE Alize (3)
+
+Otomobil
+Renault
+R 19
+1.6
+1.6 (5)
+
+Otomobil
+Renault
+R 19
+1.6 Europa
+iE (264)
+RL (28)
+RNA (37)
+RNE (253)
+RNE Alize (25)
+RT (220)
+RTE (11)
+RTE Alize (52)
+
+Otomobil
+Renault
+R 19
+1.7
+GTS (1)
+
+Otomobil
+Renault
+R 19
+1.8 Europa
+1.8 Europa (15)
+RT (1)
+RTi (11)
+
+Otomobil
+Renault
+R 19
+1.8 RTi (4)
+
+Otomobil
+Renault
+R 19
+1.9
+GTD (2)
+
+Otomobil
+Renault
+R 19
+1.9 Europa
+RL (2)
+RN (31)
+RNA (4)
+RN TD (3)
+RT TD (2)
+
+---------------------
+
+Otomobil
+Renault
+R 21
+1.6 (17)
+1.7 (37)
+2.0 (43)
+2.2 (1)
+
+Otomobil
+Renault
+R 21
+1.6
+Optima (17)
+
+Otomobil
+Renault
+R 21
+1.7
+GTS (4)
+GTS Manager (33)
+
+Otomobil
+Renault
+R 21
+2.0
+Concorde (38)
+GTD (1)
+GTX (1)
+Manager (3)
+
+Otomobil
+Renault
+R 21
+2.2
+TXE (1)
+
+---------------------
+
+Otomobil
+Renault
+R 25
+2.2
+TX (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Renault
+Austral (643)
+Boreal (7)
+Duster (371)
+Captur (962)
+Kadjar (769)
+Koleos (152)
+Scenic RX4 (9)
+Rafale (41)
+
+---------------------
+
+Arazi, SUV & Pickup
+Renault
+Austral
+1.2 E-Tech (64)
+1.3 (579)
+
+Arazi, SUV & Pickup
+Renault
+Austral
+1.2 E-Tech
+Esprit Alpine (12)
+Techno Esprit Alpine (52)
+
+Arazi, SUV & Pickup
+Renault
+Austral
+1.3
+Esprit Alpine (3)
+Evolution (12)
+Techno (131)
+Techno Esprit Alpine (433)
+
+---------------------
+
+Arazi, SUV & Pickup
+Renault
+Boreal
+1.3 TCe
+Evolution (2)
+Techno (5)
+
+---------------------
+
+Arazi, SUV & Pickup
+Renault
+Duster
+1.0 Eco-G (57)
+1.2 Eco-G (3)
+1.2 TCe (35)
+1.3 TCe (177)
+1.6 e-Tech (98)
+1.8 e-Tech (1)
+
+Arazi, SUV & Pickup
+Renault
+Duster
+1.0 Eco-G
+Evolution (57)
+
+Arazi, SUV & Pickup
+Renault
+Duster
+1.2 Eco-G
+Evolution (3)
+
+Arazi, SUV & Pickup
+Renault
+Duster
+1.2 TCe
+Evolution Advanced (18)
+Techno Advanced (17)
+
+Arazi, SUV & Pickup
+Renault
+Duster
+1.3 TCe
+Evolution (52)
+Techno (125)
+
+Arazi, SUV & Pickup
+Renault
+Duster
+1.6 e-Tech
+Evolution (5)
+Techno (93)
+
+Arazi, SUV & Pickup
+Renault
+Duster
+1.8 e-Tech
+Techno (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Renault
+Captur
+0.9 (39)
+1.0 TCe (5)
+1.2 TCe (186)
+1.3 TCe (312)
+1.5 BlueDCi (10)
+1.5 dCi (406)
+1.6 E-Tech (4)
+
+Arazi, SUV & Pickup
+Renault
+Captur
+0.9
+Icon (16)
+Touch (23)
+
+Arazi, SUV & Pickup
+Renault
+Captur
+1.0 TCe
+Joy (5)
+
+Arazi, SUV & Pickup
+Renault
+Captur
+1.2 TCe
+Icon (124)
+Outdoor (7)
+Touch (55)
+
+Arazi, SUV & Pickup
+Renault
+Captur
+1.3 TCe
+Esprit Alpine (42)
+Evolution (6)
+Icon (79)
+Joy (5)
+RS Line (10)
+Techno (34)
+Touch (80)
+Touch Plus (56)
+
+Arazi, SUV & Pickup
+Renault
+Captur
+1.5 BlueDCi
+Icon (1)
+Touch (9)
+
+Arazi, SUV & Pickup
+Renault
+Captur
+1.5 dCi
+Icon (287)
+Outdoor (64)
+Touch (55)
+
+Arazi, SUV & Pickup
+Renault
+Captur
+1.6 E-Tech
+Esprit Alpine (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Renault
+Kadjar
+1.2 TCe (79)
+1.3 TCe (83)
+1.5 BlueDCI (4)
+1.5 dCi (583)
+1.6 dCi (21)
+
+Arazi, SUV & Pickup
+Renault
+Kadjar
+1.2 TCe
+Black Edition (3)
+Icon (21)
+Touch (50)
+Touch Roof (5)
+
+Arazi, SUV & Pickup
+Renault
+Kadjar
+1.3 TCe
+Icon (16)
+Touch (1)
+Touch Roof (66)
+
+Arazi, SUV & Pickup
+Renault
+Kadjar
+1.5 BlueDCI
+Icon (1)
+Touch (1)
+Touch Roof (2)
+
+Arazi, SUV & Pickup
+Renault
+Kadjar
+1.5 dCi
+Black Edition (15)
+Icon (456)
+Touch (71)
+Touch Roof (41)
+
+Arazi, SUV & Pickup
+Renault
+Kadjar
+1.6 dCi
+Icon (21)
+
+---------------------
+
+Arazi, SUV & Pickup
+Renault
+Koleos
+1.3 TCe (42)
+1.6 dCi (68)
+2.0 dCi (42)
+
+Arazi, SUV & Pickup
+Renault
+Koleos
+1.3 TCe
+Icon (42)
+
+Arazi, SUV & Pickup
+Renault
+Koleos
+1.6 dCi
+Icon (56)
+Touch (12)
+
+Arazi, SUV & Pickup
+Renault
+Koleos
+2.0 dCi
+Dynamique (14)
+Icon (1)
+Initiale Paris (1)
+Privilege (26)
+
+---------------------
+
+Arazi, SUV & Pickup
+Renault
+Scenic RX4
+1.9 dCi (1)
+2.0 (8)
+
+Arazi, SUV & Pickup
+Renault
+Scenic RX4
+1.9 dCi
+Expression (1)
+
+Arazi, SUV & Pickup
+Renault
+Scenic RX4
+2.0
+2.0 (2)
+Dynamique (1)
+Privilege (4)
+Sportway (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Renault
+Rafale
+1.2 e-Tech
+Esprit Alpine (39)
+Esprit Alpine Hyper (2)
+
+---------------------

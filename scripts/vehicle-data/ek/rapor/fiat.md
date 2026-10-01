@@ -1,0 +1,42 @@
+### Fiat
+- otomobil: zaten vardı 237 · eklendi 37 · belirsiz 118
+  - + Yeni model: 124 Spider (2016–2020) — en.wikipedia Fiat 124 Spider (2016) — üretim 2016-2019, model yılı 2017-2020
+  - + 124 Spider › 1.4 T Multiair › Lusso
+  - + Yeni model: 126 Bis (1990–1991) — en.wikipedia Fiat 126 (BIS 1987-1991; 1990 öncesi kırpıldı)
+  - + 126 Bis › 126 › Standart
+  - + Yeni model: Coupe (1993–2000) — en.wikipedia Fiat Coupé (1993-2000)
+  - + Coupe › 2.0 › Standart
+  - + Coupe › 2.0 Turbo › Standart
+  - + Yeni model: Idea (2003–2016) — autoevolution Fiat Idea (2003-2016)
+  - + Idea › 1.3 Multijet › Active
+  - + Idea › 1.3 Multijet › Dynamic
+  - + Idea › 1.4 › Active
+  - + Idea › 1.4 › Dynamic
+  - + Idea › 1.4 › Dynamic Plus
+  - + Marea (1996-2002) › 1.6 › Exclusive
+  - + Marea (1996-2002) › 1.6 › Liberty
+  - + Marea (1996-2002) › 2.0 HLX › Standart
+  - + Siena (1997-2007) › 1.2 › S
+  - + Siena (1997-2007) › 1.6 › HL
+  - + Stilo (2001-2007) › 1.4 › Active
+  - + Stilo (2001-2007) › 1.6 › Actual
+  - + Stilo (2001-2007) › 1.6 › Dynamic MultiWagon
+  - + Stilo (2001-2007) › 1.9 JTD › Dynamic MultiWagon
+  - + Tempra (1990-1999) › 1.6 › ie SLX
+  - + Tempra (1990-1999) › 1.6 › ie SLX SW
+  - + Tempra (1990-1999) › 1.6 › SX A
+  - + Tempra (1990-1999) › 1.6 › SX AK
+  - + Tempra (1990-1999) › 1.6 › SX AK SW
+  - + Tempra (1990-1999) › 1.6 › SX SW
+  - + Tempra (1990-1999) › 2.0 › ie
+  - + Tempra (1990-1999) › 2.0 › ie 16v
+  - + Tempra (1990-1999) › 2.0 › ie SW
+  - + Uno (1985-2003) › 1.4 ie 70 S › Standart
+  - + Uno (1985-2003) › 1.4 ie Hobby › Standart
+  - + Uno (1985-2003) › 1.4 ie SX › Standart
+  - + Uno (1985-2003) › 70 SXie › Standart
+  - + Yeni model: Sedici (2006–2014) — en.wikipedia Fiat Sedici (2005-2014)
+  - + Sedici › 1.6 › Dynamic
+  - ~ eşleme: "500 Ailesi" → "500"
+  - ~ eşleme: "Grande Panda Electric" → "Grande Panda"
+- kamyonet: zaten vardı 2 · eklendi 0 · belirsiz 1

@@ -1,0 +1,30 @@
+### Volkswagen
+- otomobil: zaten vardı 273 · eklendi 23 · belirsiz 176
+  - + Bora (1998-2005) › 1.6 › Basic
+  - + Bora (1998-2005) › 1.6 › Pacific
+  - + Bora (1998-2005) › 1.6 › Primeline
+  - + Bora (1998-2005) › 1.6 › Trendline
+  - + Bora (1998-2005) › 1.8 › 4Motion
+  - + Bora (1998-2005) › 1.8 T › Highline
+  - + Bora (1998-2005) › 2.3 › Highline
+  - + Golf › 1.6 FSI › Goal
+  - + Golf › 1.6 FSI › Sportline
+  - + Golf › 1.6 FSI › Tour
+  - + Golf › 1.6 FSI › Plus Comfortline
+  - + Golf › 1.6 FSI › Plus Goal
+  - + Golf › 1.6 FSI › Plus Primeline
+  - + Golf › 1.8 T › GTI
+  - + Yeni model: Lupo (1998–2005) — en.wikipedia Volkswagen Lupo (1998-2005)
+  - + Lupo › 1.4 › Standart
+  - + Lupo › 1.4 › Oxford
+  - + Passat › 1.8 › Basic
+  - + Passat › 1.8 › Comfortline
+  - + Passat › 1.8 › Highline
+  - + Passat › 1.8 › Trendline
+  - + Passat › 1.9 TDI › Exclusive
+  - + Passat › 1.9 TDI › Trendline
+  - ~ eşleme: "Passat Alltrack" → "Passat Variant"
+  - ~ eşleme: "Up Club" → "up!"
+  - ~ eşleme: "VW CC" → "Passat CC"
+  - ~ eşleme: "Tiguan AllSpace" → "Tiguan"
+- kamyonet: zaten vardı 15 · eklendi 0 · belirsiz 0

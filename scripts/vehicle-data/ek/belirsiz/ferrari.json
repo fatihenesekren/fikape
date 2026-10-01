@@ -1,0 +1,50 @@
+[
+  {
+    "marka": "Ferrari",
+    "model": "-",
+    "neden": "Kaynak dosya yapısı: Dosyada farklı marka adı: \"DS Automobiles\" (ilk: \"Ferrari\")"
+  },
+  {
+    "marka": "Ferrari",
+    "model": "458",
+    "versiyon": "Spider",
+    "neden": "Kasa tipi (versiyon/paket değil) — formda kasa adımı kalktığı için eklenmedi"
+  },
+  {
+    "marka": "Ferrari",
+    "model": "488",
+    "versiyon": "Spider",
+    "neden": "Kasa tipi (versiyon/paket değil) — formda kasa adımı kalktığı için eklenmedi"
+  },
+  {
+    "marka": "Ferrari",
+    "model": "F12",
+    "versiyon": "Berlinetta",
+    "paket": "Standart",
+    "neden": "\"BERLINETTA\" yazımı \"BERLINATTA\" ile 1 harf farklı — yazım hatası olabilir"
+  },
+  {
+    "marka": "Ferrari",
+    "model": "F355",
+    "versiyon": "Spider",
+    "neden": "Kasa tipi (versiyon/paket değil) — formda kasa adımı kalktığı için eklenmedi"
+  },
+  {
+    "marka": "Ferrari",
+    "model": "F8",
+    "versiyon": "Spider",
+    "neden": "Kasa tipi (versiyon/paket değil) — formda kasa adımı kalktığı için eklenmedi"
+  },
+  {
+    "marka": "Ferrari",
+    "model": "DS 4",
+    "neden": "Katalogda yok ve yeni model için doğrulanmış yıl aralığı tanımlı değil"
+  },
+  {
+    "marka": "Ferrari",
+    "model": "Purosangue",
+    "versiyon": "V12",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

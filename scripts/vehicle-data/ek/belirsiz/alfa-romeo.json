@@ -1,0 +1,114 @@
+[
+  {
+    "marka": "Alfa Romeo",
+    "model": "Giulietta",
+    "versiyon": "1.4 TB",
+    "paket": "MultiAir Progression Pluse",
+    "neden": "\"PLUSE\" yazımı \"PLUS\" ile 1 harf farklı — yazım hatası olabilir"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "Giulietta",
+    "versiyon": "1.4 TB",
+    "paket": "MultiAir Super TCT",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "Giulietta",
+    "versiyon": "1.6 JTD",
+    "paket": "Super TCT",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "147",
+    "versiyon": "1.9",
+    "paket": "JTD Q2",
+    "neden": "Versiyon, mevcut versiyonların kısa yazımı olabilir (1.9 JTD 100 / 1.9 JTD 115 / 1.9 JTD 120) — hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "159",
+    "versiyon": "1.9 JTD",
+    "paket": "Distinctive",
+    "neden": "Mevcut \"1.9 JTDm 120\" ile aynı motor olabilir (JTD / JTDM yazımı) — ayrı versiyon mu, aynı mı?"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "159",
+    "versiyon": "1.9 JTD",
+    "paket": "Distinctive Plus",
+    "neden": "Mevcut \"1.9 JTDm 120\" ile aynı motor olabilir (JTD / JTDM yazımı) — ayrı versiyon mu, aynı mı?"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "159",
+    "versiyon": "1.9 JTD",
+    "paket": "Progression",
+    "neden": "Mevcut \"1.9 JTDm 120\" ile aynı motor olabilir (JTD / JTDM yazımı) — ayrı versiyon mu, aynı mı?"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "159",
+    "versiyon": "2.4 JTD",
+    "paket": "Distinctive",
+    "neden": "Mevcut \"2.4 JTDm 200\" ile aynı motor olabilir (JTD / JTDM yazımı) — ayrı versiyon mu, aynı mı?"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "166",
+    "versiyon": "2.0",
+    "paket": "TB",
+    "neden": "Paket adı farklı bir motor kodu taşıyor (\"TB\"); mevcut \"2.0 TS 155\" ile aynı motor mu belli değil"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "GTV",
+    "versiyon": "2.0",
+    "paket": "TB",
+    "neden": "Paket adı farklı bir motor kodu taşıyor (\"TB\"); mevcut \"2.0 TS 150\" ile aynı motor mu belli değil"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "MiTo",
+    "versiyon": "1.4 T",
+    "paket": "MultiAir Quadrifoglio Verde",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "MiTo",
+    "versiyon": "1.4 T",
+    "paket": "MultiAir TCT",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "MiTo",
+    "versiyon": "1.4 T",
+    "paket": "MultiAir TCT Sportivo",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "MiTo",
+    "versiyon": "1.4 T",
+    "paket": "Progression",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "Junior Elettrica",
+    "versiyon": "Elletrica",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Alfa Romeo",
+    "model": "Junior Ibrida",
+    "versiyon": "1.2",
+    "paket": "Speciale+",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

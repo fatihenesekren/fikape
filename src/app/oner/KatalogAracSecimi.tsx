@@ -160,8 +160,14 @@ export default function KatalogAracSecimi({
 
   // ─── Yakıt / vites ────────────────────────────────────────────────────
   const tipTamam = tsbModu && t2.length > 0;
-  const yakit: AlanDurumu<string> = tipTamam ? yakitDurumu(t3) : { serbest: true };
-  const vites: AlanDurumu<string> = tipTamam ? vitesDurumu(t3) : { serbest: true };
+  // Eski nesil seçeneklerinde (TSB öncesi yıl / TSB'de olmayan model) yakıt/vites yalnız
+  // katalog kesin biliyorsa (ör. JTD = dizel) öneri olarak gelir.
+  const elYakit = !tsbModu && versiyon && versiyon !== DIGER ? nesil?.el?.yakit?.[versiyon] : undefined;
+  const elVites = !tsbModu && versiyon && versiyon !== DIGER
+    ? nesil?.el?.vites?.[`${versiyon}|${paket}`] ?? nesil?.el?.vites?.[versiyon]
+    : undefined;
+  const yakit: AlanDurumu<string> = tipTamam ? yakitDurumu(t3) : elYakit ? { kilitli: elYakit } : { serbest: true };
+  const vites: AlanDurumu<string> = tipTamam ? vitesDurumu(t3) : elVites ? { kilitli: elVites } : { serbest: true };
   const yakitSecenek = durumSecenekleri(yakit, YAKITLAR[kategori]);
   const vitesSecenek = durumSecenekleri(vites, VITESLER[kategori]);
   // Katalog kesin biliyorsa (kilitli) bunu bir öneri olarak sunar ama alan

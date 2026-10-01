@@ -1,0 +1,9 @@
+{
+  "yeniModel": {
+    "Century": { "bas": 1990, "bit": 2005, "kaynak": "en.wikipedia Buick Century (nameplate 1936-2005; 1990 öncesi kırpıldı — tüm nesillerin aralığı)" },
+    "Le Sabre": { "bas": 1990, "bit": 2005, "kaynak": "en.wikipedia Buick LeSabre (1959-2005; 1990 öncesi kırpıldı — tüm nesillerin aralığı)" },
+    "Park Avenue": { "bas": 1991, "bit": 2005, "kaynak": "en.wikipedia Buick Park Avenue (model yılı 1991-2005)" },
+    "Regal": { "bas": 1990, "bit": 2020, "kaynak": "en.wikipedia Buick Regal (nesiller 1988-96, 1997-2004, 2011-2020; tüm nesillerin aralığı)" },
+    "Riviera": { "bas": 1990, "bit": 1999, "kaynak": "en.wikipedia Buick Riviera (1963-1993, 1995-1999; 1990 öncesi kırpıldı)" }
+  }
+}

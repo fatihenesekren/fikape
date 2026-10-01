@@ -1,0 +1,128 @@
+[
+  {
+    "marka": "Mini",
+    "model": "Cooper",
+    "versiyon": "1.5 D",
+    "paket": "Salt Chili",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper",
+    "versiyon": "1.5 D",
+    "paket": "Salt Pepper Chili",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper",
+    "versiyon": "1.6",
+    "paket": "Cabrio",
+    "neden": "Birden fazla eski nesilde geçiyor (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper",
+    "versiyon": "1.6",
+    "paket": "Coupe",
+    "neden": "Birden fazla eski nesilde geçiyor (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper",
+    "versiyon": "1.6",
+    "paket": "Roadster",
+    "neden": "Birden fazla eski nesilde geçiyor (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper",
+    "versiyon": "1.6",
+    "paket": "Türkiye Paketi",
+    "neden": "Birden fazla eski nesilde geçiyor (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper",
+    "versiyon": "1.6 D",
+    "paket": "Türkiye Paketi",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper Clubman",
+    "versiyon": "1.5",
+    "paket": "Final Edition",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper Clubman",
+    "versiyon": "1.5 D",
+    "paket": "One Signature",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Mini",
+    "model": "John Cooper",
+    "versiyon": "1.6",
+    "paket": "Works Clubman",
+    "neden": "Birden fazla eski nesilde geçiyor (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper S",
+    "versiyon": "1.6",
+    "paket": "Cabrio",
+    "neden": "Birden fazla eski nesilde geçiyor (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper S",
+    "versiyon": "1.6",
+    "paket": "Coupe",
+    "neden": "Birden fazla eski nesilde geçiyor (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Cooper S",
+    "versiyon": "1.6",
+    "paket": "Roadster",
+    "neden": "Birden fazla eski nesilde geçiyor (Cooper (2001-2006) / Cooper (2006-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mini",
+    "model": "Countryman",
+    "versiyon": "1.5",
+    "paket": "Uncharted Edition",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Mini",
+    "model": "Countryman",
+    "versiyon": "1.6",
+    "paket": "Türkiye Paketi",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Mini",
+    "model": "Countryman",
+    "versiyon": "2.0",
+    "paket": "JCW S",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Mini",
+    "model": "Paceman",
+    "versiyon": "1.6",
+    "paket": "S",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Mini",
+    "model": "Paceman",
+    "versiyon": "1.6",
+    "paket": "Türkiye Paketi",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

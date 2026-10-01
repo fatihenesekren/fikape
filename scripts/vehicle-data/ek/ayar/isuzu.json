@@ -1,0 +1,7 @@
+{
+  "kamyonet": ["D-Max"],
+  "yeniModel": {
+    "Rodeo": { "bas": 1990, "bit": 2004, "kaynak": "en.wikipedia Isuzu Rodeo (1988-2004; 1990 öncesi kırpıldı)" },
+    "Trooper": { "bas": 1990, "bit": 2005, "kaynak": "en.wikipedia Isuzu Trooper (1981-2005; 1990 öncesi kırpıldı)" }
+  }
+}

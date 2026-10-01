@@ -1,0 +1,68 @@
+Otomobil
+Lincoln
+MKS (1)
+Continental (2)
+LS (2)
+Mark (1)
+Town Car (5)
+
+---------------------
+
+Otomobil
+Lincoln
+MKS
+3.5L EcoBoost V6 (1)
+
+---------------------
+
+Otomobil
+Lincoln
+Continental
+4.6 (2)
+
+---------------------
+
+Otomobil
+Lincoln
+LS
+3.9 (2)
+
+---------------------
+
+Otomobil
+Lincoln
+Mark
+VIII (1)
+
+---------------------
+
+Otomobil
+Lincoln
+Town Car
+4.6 (5)
+
+---------------------
+
+Arazi, SUV & Pickup
+Lincoln
+Aviator (1)
+Nautilus (1)
+Navigator (48)
+
+Arazi, SUV & Pickup
+Lincoln
+Aviator
+4.6 V8 (1)
+
+Arazi, SUV & Pickup
+Lincoln
+Nautilus
+2.0 (1)
+
+Arazi, SUV & Pickup
+Lincoln
+Navigator
+3.5L V6 EcoBoost (4)
+5.4 4WD (44)
+
+---------------------

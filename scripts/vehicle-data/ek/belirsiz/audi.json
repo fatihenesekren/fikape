@@ -1,0 +1,317 @@
+[
+  {
+    "marka": "Audi",
+    "model": "A1",
+    "versiyon": "1.4 TFSI",
+    "paket": "Attraction",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "A1",
+    "versiyon": "1.6 TDI",
+    "paket": "Ambition",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "A1",
+    "versiyon": "1.6 TDI",
+    "paket": "Attraction",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "A1",
+    "versiyon": "1.6 TDI",
+    "paket": "S Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.2 TFSI",
+    "paket": "Ambiante",
+    "neden": "\"AMBIANTE\" yazımı \"AMBIENTE\" ile 1 harf farklı — yazım hatası olabilir"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.4 TFSI",
+    "paket": "Ambiante",
+    "neden": "\"AMBIANTE\" yazımı \"AMBIENTE\" ile 1 harf farklı — yazım hatası olabilir"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "35 TFSI",
+    "paket": "All Street",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.8",
+    "paket": "Ambiente",
+    "neden": "Birden fazla eski nesilde geçiyor (A3 (1996-2003) / A3 (2003-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.8",
+    "paket": "Attraction",
+    "neden": "Birden fazla eski nesilde geçiyor (A3 (1996-2003) / A3 (2003-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.8 T",
+    "paket": "Ambiente",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A3 (1996-2003) / A3 (2003-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.8 T",
+    "paket": "Ambition",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A3 (1996-2003) / A3 (2003-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.8 T",
+    "paket": "Attraction",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A3 (1996-2003) / A3 (2003-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.9 TDI",
+    "paket": "Attraction",
+    "neden": "Birden fazla eski nesilde geçiyor (A3 (1996-2003) / A3 (2003-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.9 TDI",
+    "paket": "S-Line",
+    "neden": "Birden fazla eski nesilde geçiyor (A3 (1996-2003) / A3 (2003-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "2.0 TDI",
+    "paket": "Ambition Quattro",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "1.0 TFSI",
+    "paket": "Sport Line",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A3 (1996-2003) / A3 (2003-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A3",
+    "versiyon": "3.2",
+    "paket": "Ambition Quattro",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A3 (1996-2003) / A3 (2003-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A4",
+    "versiyon": "2.8 Quattro",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A4 (1994-2001) / A4 (2000-2008) / A4 (2008-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A6",
+    "versiyon": "1.8 T",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A6 (1994-1997) / A6 (1997-2004) / A6 (2004-2011) / A6 (2011-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A6",
+    "versiyon": "1.8 T",
+    "paket": "Advance",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A6 (1994-1997) / A6 (1997-2004) / A6 (2004-2011) / A6 (2011-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A6",
+    "versiyon": "1.8 T",
+    "paket": "Quattro",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A6 (1994-1997) / A6 (1997-2004) / A6 (2004-2011) / A6 (2011-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A6",
+    "versiyon": "1.8 T",
+    "paket": "Quattro Advance",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A6 (1994-1997) / A6 (1997-2004) / A6 (2004-2011) / A6 (2011-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A6",
+    "versiyon": "2.4 Quattro",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A6 (1994-1997) / A6 (1997-2004) / A6 (2004-2011) / A6 (2011-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A6",
+    "versiyon": "2.8",
+    "paket": "Quattro",
+    "neden": "Birden fazla eski nesilde geçiyor (A6 (1994-1997) / A6 (1997-2004) / A6 (2004-2011)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A6",
+    "versiyon": "3.2 FSI Quattro",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A6 (1994-1997) / A6 (1997-2004) / A6 (2004-2011) / A6 (2011-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A6",
+    "versiyon": "4.2 Quattro",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A6 (1994-1997) / A6 (1997-2004) / A6 (2004-2011) / A6 (2011-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A6",
+    "versiyon": "2.8 Quattro",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A6 (1994-1997) / A6 (1997-2004) / A6 (2004-2011) / A6 (2011-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A8",
+    "versiyon": "55 TFSI",
+    "paket": "Quattro Long",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "A8",
+    "versiyon": "60 TFSI",
+    "paket": "Quattro Long",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "A8",
+    "versiyon": "3.7",
+    "paket": "Quattro",
+    "neden": "Birden fazla eski nesilde geçiyor (A8 (1994-2002) / A8 (2002-2010)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A8",
+    "versiyon": "4.2",
+    "paket": "FSI Quattro Long",
+    "neden": "Birden fazla eski nesilde geçiyor (A8 (1994-2002) / A8 (2002-2010) / A8 (2010-2017)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A8",
+    "versiyon": "4.2",
+    "paket": "Quattro Long",
+    "neden": "Birden fazla eski nesilde geçiyor (A8 (1994-2002) / A8 (2002-2010)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "A8",
+    "versiyon": "4.2 TDI",
+    "paket": "Quattro Long",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "A8",
+    "versiyon": "6.0",
+    "paket": "Quattro Long",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (A8 (1994-2002) / A8 (2002-2010) / A8 (2010-2017)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "E-Tron GT",
+    "versiyon": "GT Quattro",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "E-Tron GT",
+    "versiyon": "GT RS",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "TT",
+    "versiyon": "1.8",
+    "paket": "1.8 T",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (TT (1998-2006) / TT (2006-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "TT",
+    "versiyon": "1.8",
+    "paket": "T Quattro",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (TT (1998-2006) / TT (2006-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "TT",
+    "versiyon": "2.0",
+    "paket": "TFSI S Quattro",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "80 Serisi",
+    "versiyon": "1.9",
+    "paket": "Standart",
+    "neden": "Versiyon, mevcut versiyonların kısa yazımı olabilir (1.9 TD 68 / 1.9 TDI 90) — hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Audi",
+    "model": "Q3 Sportback",
+    "versiyon": "45 TFSI",
+    "paket": "E-Tron",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "Q6 E-tron Sportback",
+    "versiyon": "Standart",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "Q8",
+    "versiyon": "55 TFSI e-Quattro",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "Q8",
+    "versiyon": "60 TFSI e-Quattro",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Audi",
+    "model": "Q8",
+    "versiyon": "SQ8",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

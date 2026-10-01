@@ -1,0 +1,245 @@
+[
+  {
+    "marka": "Chevrolet",
+    "model": "Aveo",
+    "versiyon": "1.2",
+    "paket": "SX",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Aveo",
+    "versiyon": "1.4",
+    "paket": "LS",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Aveo",
+    "versiyon": "1.4",
+    "paket": "S",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Camaro",
+    "versiyon": "SS",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Camaro",
+    "versiyon": "Z28",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Corvette",
+    "versiyon": "C4",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Corvette",
+    "versiyon": "C5",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Corvette",
+    "versiyon": "C6",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Geo Storm",
+    "neden": "Geo Storm marka olarak Geo; Chevrolet altındaki yeri ve yıl aralığı bu oturumda doğrulanmadı."
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Impala",
+    "versiyon": "3.8",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Impala",
+    "versiyon": "5.7",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Lacetti",
+    "versiyon": "1.4",
+    "paket": "CDX",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Lacetti",
+    "versiyon": "1.4",
+    "paket": "SE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Lacetti",
+    "versiyon": "1.4",
+    "paket": "SX",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Lacetti",
+    "versiyon": "1.4",
+    "paket": "WTCC",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Lacetti",
+    "versiyon": "1.6",
+    "paket": "CDX",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Lacetti",
+    "versiyon": "1.6",
+    "paket": "SE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Lacetti",
+    "versiyon": "1.6",
+    "paket": "WTCC",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Spark",
+    "versiyon": "0.8",
+    "paket": "S",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Spark",
+    "versiyon": "0.8",
+    "paket": "SE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Spark",
+    "versiyon": "1.0",
+    "paket": "SE",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Spark",
+    "versiyon": "1.0",
+    "paket": "SX",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Captiva",
+    "versiyon": "2.0 D",
+    "paket": "LT Base",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Captiva",
+    "versiyon": "2.0 D",
+    "paket": "LT High",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Captiva",
+    "versiyon": "2.0 D",
+    "paket": "LT High Sport",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Captiva",
+    "versiyon": "2.0 D",
+    "paket": "LT Medium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Captiva",
+    "versiyon": "2.4",
+    "paket": "LT",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Captiva",
+    "versiyon": "3.2",
+    "paket": "LTZ",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Equinox",
+    "versiyon": "3.4 LT",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Suburban",
+    "versiyon": "5.7",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Suburban",
+    "versiyon": "7.4",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Tahoe",
+    "versiyon": "5.7",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Silverado",
+    "versiyon": "1.8",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Silverado",
+    "versiyon": "5.7",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Chevrolet",
+    "model": "Silverado",
+    "versiyon": "6.6 Diesel",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

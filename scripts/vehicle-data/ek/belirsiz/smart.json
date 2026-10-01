@@ -1,0 +1,15 @@
+[
+  {
+    "marka": "Smart",
+    "model": "Fortwo",
+    "versiyon": "EQ",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Fortwo (1998-2007) / Fortwo (2007-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Smart",
+    "model": "Roadster",
+    "versiyon": "Roadster",
+    "neden": "Kasa tipi (versiyon/paket değil) — formda kasa adımı kalktığı için eklenmedi"
+  }
+]

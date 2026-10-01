@@ -1,0 +1,1148 @@
+Otomobil
+Fiat
+124 Spider (7)
+Albea (1.951)
+Brava (290)
+Bravo (277)
+126 Bis (8)
+Coupe (6)
+500 Ailesi (631)
+Egea (15.879)
+Idea (40)
+Linea (5.570)
+Marea (561)
+Mirafiori (2)
+Palio (2.214)
+Panda (182)
+Punto (2.208)
+Siena (505)
+Stilo (110)
+Tempra (907)
+Tipo (831)
+Topolino (36)
+Uno (876)
+
+---------------------
+
+Otomobil
+Fiat
+124 Spider
+1.4 T Multiair
+Lusso (7)
+
+---------------------
+
+Otomobil
+Fiat
+Albea
+1.2 (490)
+1.3 Multijet (524)
+1.4 Fire (84)
+1.6 (37)
+Sole 1.3 Multijet (572)
+Sole 1.4 Fire (245)
+
+Otomobil
+Fiat
+Albea
+1.2
+Active (118)
+Dynamic (87)
+EL (201)
+HL (33)
+SL (41)
+Speed (10)
+
+Otomobil
+Fiat
+Albea
+1.3 Multijet
+Active (266)
+Dynamic (176)
+EL (51)
+SL (31)
+
+Otomobil
+Fiat
+Albea
+1.4 Fire
+Active (57)
+Dynamic (27)
+
+Otomobil
+Fiat
+Albea
+1.6
+Dynamic (17)
+EL (4)
+HL (16)
+
+Otomobil
+Fiat
+Albea
+Sole 1.3 Multijet
+Active (145)
+Active Plus (38)
+Dynamic (212)
+Dynamic Plus (47)
+Premio (86)
+Premio Plus (43)
+
+Otomobil
+Fiat
+Albea
+Sole 1.4 Fire
+Active (74)
+Active Plus (11)
+Dynamic (86)
+Dynamic Plus (10)
+Premio (51)
+Premio Plus (13)
+
+---------------------
+
+Otomobil
+Fiat
+Brava
+1.4 (1)
+1.6 (287)
+1.9 TD (2)
+
+Otomobil
+Fiat
+Brava
+1.4
+SX (1)
+
+Otomobil
+Fiat
+Brava
+1.6
+ELX (112)
+SX (175)
+
+Otomobil
+Fiat
+Brava
+1.9 TD
+1.9 TD (2)
+
+---------------------
+
+Otomobil
+Fiat
+Bravo
+1.4 (17)
+1.4 Multiair (3)
+1.4 T-Jet (12)
+1.4 Turbo (24)
+1.6 (50)
+1.6 Mjet (162)
+2.0 (7)
+
+Otomobil
+Fiat
+Bravo
+1.4
+Active (10)
+Active Plus (6)
+Fire Pop (1)
+
+Otomobil
+Fiat
+Bravo
+1.4 Multiair
+Sport Style (3)
+
+Otomobil
+Fiat
+Bravo
+1.4 T-Jet
+Active Plus (2)
+Dynamic Plus (6)
+Easy (1)
+Sport Style (3)
+
+Otomobil
+Fiat
+Bravo
+1.4 Turbo
+Active (3)
+Dynamic (16)
+Emotion (4)
+Sport (1)
+
+Otomobil
+Fiat
+Bravo
+1.6
+1.6 (2)
+SX (48)
+
+Otomobil
+Fiat
+Bravo
+1.6 Mjet
+Active (5)
+Active Plus (25)
+Dynamic (38)
+Dynamic Plus (40)
+Easy (9)
+Emotion (18)
+Sport Style (27)
+
+Otomobil
+Fiat
+Bravo
+2.0
+HGT (7)
+
+---------------------
+
+Otomobil
+Fiat
+126 Bis
+126 (8)
+
+---------------------
+
+Otomobil
+Fiat
+Coupe
+2.0 (5)
+2.0 Turbo (1)
+
+---------------------
+
+Otomobil
+Fiat
+500 Ailesi
+500 1.0 (19)
+500 1.2 (81)
+500 1.3 Mjet (1)
+500 1.4 (16)
+500 Abarth (8)
+500C 0.9 TwinAir (1)
+500C 1.2 (38)
+500C 1.4 (4)
+500E (42)
+500L 1.3 Mjet (355)
+500L 1.4 (33)
+500L 1.6 Mjet (34)
+
+Otomobil
+Fiat
+500 Ailesi
+500 1.0
+Dolcevita (17)
+Sport (2)
+
+Otomobil
+Fiat
+500 Ailesi
+500 1.2
+8V RockStar Dualogic (1)
+8V Star Dualogic (2)
+Anniversario (1)
+Cult (4)
+Lounge (53)
+Pop (13)
+Popstar (6)
+Sport (1)
+
+Otomobil
+Fiat
+500 Ailesi
+500 1.3 Mjet
+Pop (1)
+
+Otomobil
+Fiat
+500 Ailesi
+500 1.4
+Lounge (10)
+Sport (6)
+
+Otomobil
+Fiat
+500 Ailesi
+500 Abarth
+595 (1)
+595 Competizione (2)
+595 Turismo (2)
+695 Maserati Edizione (2)
+695 Tributo Ferrari (1)
+
+Otomobil
+Fiat
+500 Ailesi
+500C 0.9 TwinAir
+Turbo GQ (1)
+
+Otomobil
+Fiat
+500 Ailesi
+500C 1.2
+8V Star Dualogic (3)
+Anniversario (1)
+Cult (10)
+Dolcevita (1)
+Gucci (1)
+Lounge (22)
+
+Otomobil
+Fiat
+500 Ailesi
+500C 1.4
+Lounge (4)
+
+Otomobil
+Fiat
+500 Ailesi
+500E
+La Prima (43)
+
+Otomobil
+Fiat
+500 Ailesi
+500L 1.3 Mjet
+Beats Edition (2)
+Bi-Color (3)
+Cross Dualogic (5)
+Cross Plus (36)
+Lounge (14)
+Mirror (3)
+Opening Edition (4)
+Panoramic Edition (35)
+Pop (2)
+PopStar (153)
+RockStar (96)
+Wagon (2)
+
+Otomobil
+Fiat
+500 Ailesi
+500L 1.4
+Bi-Color (1)
+Cross (1)
+Cross Plus (8)
+Mirror (1)
+Panoramic Edition (3)
+Pop (1)
+PopStar (19)
+
+Otomobil
+Fiat
+500 Ailesi
+500L 1.6 Mjet
+Beats Edition (3)
+Cross Plus (1)
+Lounge (9)
+Panoramic Edition (1)
+PopStar (3)
+RockStar (17)
+
+---------------------
+
+Otomobil
+Fiat
+Egea
+1.0 Firefly (21)
+1.3 Multijet (6.221)
+1.4 Fire (4.904)
+1.4 T-Jet (3)
+1.5 T4 (66)
+1.6 E-Torq (193)
+1.6 Multijet (4.455)
+
+Otomobil
+Fiat
+Egea
+1.0 Firefly
+Lounge (15)
+Urban (6)
+
+Otomobil
+Fiat
+Egea
+1.3 Multijet
+Easy (4.108)
+Easy Plus (622)
+Easy Stil (131)
+Lounge (18)
+Mirror (27)
+Street (55)
+Urban (805)
+Urban Plus (455)
+
+Otomobil
+Fiat
+Egea
+1.4 Fire
+Easy (1.904)
+Easy Plus (832)
+Easy Stil (123)
+Limited (36)
+Lounge (172)
+Lounge Plus (17)
+Mirror (96)
+Street (133)
+Urban (1.149)
+Urban Plus (441)
+
+Otomobil
+Fiat
+Egea
+1.4 T-Jet
+Lounge Plus (3)
+
+Otomobil
+Fiat
+Egea
+1.5 T4
+Easy (31)
+Lounge (8)
+Urban (27)
+
+Otomobil
+Fiat
+Egea
+1.6 E-Torq
+Easy (26)
+Easy Plus (11)
+Lounge (34)
+Lounge Plus (26)
+Mirror (7)
+S-Design (1)
+Sport (1)
+Street (2)
+Urban (66)
+Urban Plus (19)
+
+Otomobil
+Fiat
+Egea
+1.6 Multijet
+Comfort (249)
+Easy (1.818)
+Easy Plus (136)
+Easy Stil (13)
+Limited (30)
+Lounge (419)
+Lounge Plus (153)
+Mirror (64)
+S-Design (16)
+Sport (1)
+Street (13)
+Urban (1.160)
+Urban Plus (386)
+
+---------------------
+
+Otomobil
+Fiat
+Idea
+1.3 Multijet (18)
+1.4 (21)
+
+Otomobil
+Fiat
+Idea
+1.3 Multijet
+Active (6)
+Dynamic (12)
+
+Otomobil
+Fiat
+Idea
+1.4
+Active (7)
+Dynamic (7)
+Dynamic Plus (7)
+
+---------------------
+
+Otomobil
+Fiat
+Linea
+1.3 Multijet (4.672)
+1.4 Fire (435)
+1.4 Turbo (44)
+1.6 Multijet (418)
+
+Otomobil
+Fiat
+Linea
+1.3 Multijet
+Active (348)
+Active Plus (1.802)
+Actual (53)
+Actual Plus (108)
+Dynamic (94)
+Dynamic Plus (39)
+Easy (289)
+Emotion (82)
+Emotion Plus (129)
+Lounge (51)
+Mood (9)
+Pop (1.245)
+Urban (414)
+VIA (8)
+
+Otomobil
+Fiat
+Linea
+1.4 Fire
+Active (72)
+Active Plus (112)
+Actual (43)
+Actual Plus (20)
+Dynamic (26)
+Easy (21)
+Mood (2)
+Pop (139)
+
+Otomobil
+Fiat
+Linea
+1.4 Turbo
+Active (1)
+Active Plus (5)
+Dynamic (12)
+Dynamic Plus (3)
+Emotion (14)
+Emotion Plus (9)
+
+Otomobil
+Fiat
+Linea
+1.6 Multijet
+Active Plus (82)
+Dynamic (43)
+Dynamic Plus (41)
+Easy (14)
+Emotion (12)
+Emotion Plus (112)
+Lounge (74)
+Urban (39)
+VIA (1)
+
+---------------------
+
+Otomobil
+Fiat
+Marea
+1.6 (537)
+1.9 JTD (4)
+2.0 HLX (20)
+
+Otomobil
+Fiat
+Marea
+1.6
+ELX (138)
+Exclusive (45)
+Liberty (250)
+SX (104)
+
+Otomobil
+Fiat
+Marea
+1.9 JTD (4)
+
+Otomobil
+Fiat
+Marea
+2.0 HLX (20)
+
+---------------------
+
+Otomobil
+Fiat
+Mirafiori
+2.0 (2)
+
+---------------------
+
+Otomobil
+Fiat
+Palio
+1.2 (808)
+1.3 Multijet (460)
+1.4 (575)
+1.4 Fire (109)
+1.6 (259)
+
+Otomobil
+Fiat
+Palio
+1.2
+Active (83)
+Dynamic (19)
+Dynamic Speedgear (15)
+EL (315)
+EL Speedgear (35)
+EL Weekend (23)
+Feel (2)
+Go (31)
+HL (21)
+HL Speedgear (4)
+HL Weekend (2)
+S (99)
+SL (150)
+S Weekend (9)
+
+Otomobil
+Fiat
+Palio
+1.3 Multijet
+Active (168)
+Active Sole (71)
+Dynamic (50)
+Dynamic Sole (39)
+EL (86)
+Premio Sole (17)
+SL (29)
+
+Otomobil
+Fiat
+Palio
+1.4
+EL (464)
+EL Weekend (72)
+HL (18)
+RT (21)
+
+Otomobil
+Fiat
+Palio
+1.4 Fire
+Active (15)
+Active Sole (43)
+Dynamic (8)
+Dynamic Sole (30)
+Premio Sole (13)
+
+Otomobil
+Fiat
+Palio
+1.6
+HL (174)
+HL Weekend (71)
+Sporting (12)
+Weekend (2)
+
+---------------------
+
+Otomobil
+Fiat
+Panda
+0.9 TwinAir (25)
+1.0 (11)
+1.1 Active (2)
+1.2 (132)
+1.2 Fire (8)
+1.3 Multijet (2)
+
+Otomobil
+Fiat
+Panda
+0.9 TwinAir
+Cross (4)
+Joy (8)
+Lounge (3)
+Pop (9)
+S&S (1)
+
+Otomobil
+Fiat
+Panda
+1.0
+City (4)
+Cross (5)
+Urban (2)
+
+Otomobil
+Fiat
+Panda
+1.1 Active (2)
+
+Otomobil
+Fiat
+Panda
+1.2
+1.2 (1)
+Active (26)
+Climbing 4x4 (2)
+Dynamic (83)
+Lounge (3)
+Pop (15)
+Popstar (2)
+
+Otomobil
+Fiat
+Panda
+1.2 Fire
+City Cross (3)
+Cross (2)
+Urban (3)
+
+Otomobil
+Fiat
+Panda
+1.3 Multijet
+Lounge (2)
+
+---------------------
+
+Otomobil
+Fiat
+Punto
+1.2 (97)
+1.3 Multijet (424)
+1.4 (283)
+1.9 D (1)
+EVO 1.2 (1)
+EVO 1.3 Multijet (236)
+EVO 1.4 (210)
+Grande 1.2 S5 (6)
+Grande 1.3 Multijet (544)
+Grande 1.4 (406)
+
+Otomobil
+Fiat
+Punto
+1.2
+1.2 (2)
+Dynamic (13)
+Pop (47)
+PopStar (34)
+
+Otomobil
+Fiat
+Punto
+1.3 Multijet
+Dynamic (109)
+Easy (59)
+Lounge (70)
+Pop (135)
+Popstar (36)
+Shine (13)
+Urban (2)
+
+Otomobil
+Fiat
+Punto
+1.4
+Dynamic (68)
+Easy S&S (66)
+Lounge S&S (32)
+Mair Easy S&S (7)
+Mair Lounge S&S (10)
+Pop S&S (51)
+Popstar S&S (44)
+Urban S&S (5)
+
+Otomobil
+Fiat
+Punto
+1.9 D (1)
+
+Otomobil
+Fiat
+Punto
+EVO 1.2
+Active (1)
+
+Otomobil
+Fiat
+Punto
+EVO 1.3 Multijet
+Active (59)
+Dynamic (159)
+My Life (18)
+
+Otomobil
+Fiat
+Punto
+EVO 1.4
+Active (19)
+Dynamic (104)
+Fire Active (38)
+Fire Dynamic (14)
+Fire My Life (18)
+Multiair Dynamic (17)
+
+Otomobil
+Fiat
+Punto
+Grande 1.2 S5 (6)
+
+Otomobil
+Fiat
+Punto
+Grande 1.3 Multijet
+1.3 Multijet (58)
+Active (255)
+Dynamic (196)
+Emotion (28)
+Fun (7)
+
+Otomobil
+Fiat
+Punto
+Grande 1.4
+Fire Active (211)
+Fire Dynamic (123)
+Fire Fun (12)
+Fire S&S (34)
+Starjet Dynamic (13)
+Starjet Emotion (2)
+Starjet Fun (4)
+T-jet Dynamic (3)
+T-jet Sport (4)
+
+---------------------
+
+Otomobil
+Fiat
+Siena
+1.2 (127)
+1.4 (250)
+1.6 (126)
+
+Otomobil
+Fiat
+Siena
+1.2
+EL (53)
+S (74)
+
+Otomobil
+Fiat
+Siena
+1.4
+EL (250)
+
+Otomobil
+Fiat
+Siena
+1.6
+HL (126)
+
+---------------------
+
+Otomobil
+Fiat
+Stilo
+1.4 (8)
+1.6 (93)
+1.9 JTD (9)
+
+Otomobil
+Fiat
+Stilo
+1.4
+Active (8)
+
+Otomobil
+Fiat
+Stilo
+1.6
+Active (11)
+Actual (15)
+Dynamic (56)
+Dynamic MultiWagon (11)
+
+Otomobil
+Fiat
+Stilo
+1.9 JTD
+Dynamic (8)
+Dynamic MultiWagon (1)
+
+---------------------
+
+Otomobil
+Fiat
+Tempra
+1.6 (874)
+2.0 (32)
+
+Otomobil
+Fiat
+Tempra
+1.6
+ie SLX (66)
+ie SLX SW (14)
+S (63)
+SX (278)
+SX A (264)
+SX AK (132)
+SX AK SW (15)
+SX SW (42)
+
+Otomobil
+Fiat
+Tempra
+2.0
+ie (9)
+ie 16v (19)
+ie SW (4)
+
+---------------------
+
+Otomobil
+Fiat
+Tipo
+1.4 (275)
+1.6 (549)
+2.0 (6)
+
+Otomobil
+Fiat
+Tipo
+1.4
+ie (72)
+S (164)
+SX (7)
+SX ie (32)
+
+Otomobil
+Fiat
+Tipo
+1.6
+DGT (2)
+ie (10)
+S (87)
+SLX (98)
+SLX ie (102)
+SX (250)
+
+Otomobil
+Fiat
+Tipo
+2.0 (6)
+
+---------------------
+
+Otomobil
+Fiat
+Topolino
+Topolino (24)
+Topolino Plus (12)
+
+---------------------
+
+Otomobil
+Fiat
+Uno
+1.4 ie (2)
+1.4 ie 70 S (9)
+1.4 ie Hobby (15)
+1.4 ie SX (145)
+45 S (1)
+60 S (46)
+60 SX (2)
+70 S (438)
+70 SX (214)
+70 SXie (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+Egea Cross (3.182)
+Grande Panda (9)
+Grande Panda Electric (20)
+Freemont (72)
+Fullback (53)
+Sedici (6)
+500 X (188)
+600 (8)
+600e (20)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+Egea Cross
+1.0 Firefly (26)
+1.3 Multijet (36)
+1.4 Fire (1.857)
+1.5 T4 (78)
+1.6 Multijet (1.187)
+
+Arazi, SUV & Pickup
+Fiat
+Egea Cross
+1.0 Firefly
+Lounge (5)
+Street (1)
+Urban (4)
+Wagon Lounge (16)
+
+Arazi, SUV & Pickup
+Fiat
+Egea Cross
+1.3 Multijet
+Street (2)
+Urban (34)
+
+Arazi, SUV & Pickup
+Fiat
+Egea Cross
+1.4 Fire
+Limited (49)
+Lounge (169)
+Street (444)
+Urban (1.169)
+Street Plus (26)
+
+Arazi, SUV & Pickup
+Fiat
+Egea Cross
+1.5 T4
+Limited (3)
+Lounge (25)
+Street (1)
+Urban (28)
+Wagon Lounge (20)
+Wagon Urban (1)
+
+Arazi, SUV & Pickup
+Fiat
+Egea Cross
+1.6 Multijet
+Limited (135)
+Lounge (319)
+Street (112)
+Urban (559)
+Wagon Lounge (28)
+Wagon Urban (34)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+Grande Panda
+1.2
+Icon (2)
+La Prima (7)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+Grande Panda Electric
+La Prima (20)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+Freemont
+2.0 Multijet
+Croos (3)
+Lounge (69)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+Fullback
+2.4 D
+Fullrock (6)
+Hardrock (16)
+Rock (31)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+Sedici
+1.6
+Dynamic (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+500 X
+1.0 (3)
+1.3 (13)
+1.3 Multijet (6)
+1.4 T (51)
+1.5 T4 (3)
+1.6 (8)
+1.6 Mjet (104)
+
+Arazi, SUV & Pickup
+Fiat
+500 X
+1.0
+Urban (3)
+
+Arazi, SUV & Pickup
+Fiat
+500 X
+1.3
+Cross (8)
+Sport (5)
+
+Arazi, SUV & Pickup
+Fiat
+500 X
+1.3 Multijet
+Cross (2)
+Cross Plus (1)
+Pop Plus (3)
+
+Arazi, SUV & Pickup
+Fiat
+500 X
+1.4 T
+Cross (4)
+Cross Plus (22)
+PopStar (25)
+
+Arazi, SUV & Pickup
+Fiat
+500 X
+1.5 T4
+Cross Plus (1)
+Soft Top (2)
+
+Arazi, SUV & Pickup
+Fiat
+500 X
+1.6
+Pop (5)
+Pop Plus (3)
+
+Arazi, SUV & Pickup
+Fiat
+500 X
+1.6 Mjet
+City Cross (11)
+Cross (11)
+Cross Plus (62)
+Popstar (20)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+600
+1.2
+Easy (2)
+Urban (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Fiat
+600e
+La Prima (20)
+
+---------------------

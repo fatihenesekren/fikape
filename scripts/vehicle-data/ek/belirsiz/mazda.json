@@ -1,0 +1,154 @@
+[
+  {
+    "marka": "Mazda",
+    "model": "2",
+    "versiyon": "1.3",
+    "paket": "Go",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Mazda",
+    "model": "2",
+    "versiyon": "1.3",
+    "paket": "High",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Mazda",
+    "model": "2",
+    "versiyon": "1.5",
+    "paket": "Fun",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Mazda",
+    "model": "2",
+    "versiyon": "1.5",
+    "paket": "High",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Mazda",
+    "model": "3",
+    "versiyon": "1.6",
+    "paket": "90. Yıl",
+    "neden": "Birden fazla eski nesilde geçiyor (3 (2003-2009) / 3 (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "3",
+    "versiyon": "1.6",
+    "paket": "Base",
+    "neden": "Birden fazla eski nesilde geçiyor (3 (2003-2009) / 3 (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "3",
+    "versiyon": "1.6",
+    "paket": "Dynamic",
+    "neden": "Birden fazla eski nesilde geçiyor (3 (2003-2009) / 3 (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "3",
+    "versiyon": "1.6",
+    "paket": "High",
+    "neden": "Birden fazla eski nesilde geçiyor (3 (2003-2009) / 3 (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "3",
+    "versiyon": "1.6",
+    "paket": "Sport CE",
+    "neden": "Birden fazla eski nesilde geçiyor (3 (2003-2009) / 3 (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "3",
+    "versiyon": "1.6",
+    "paket": "Sport Comfort",
+    "neden": "Birden fazla eski nesilde geçiyor (3 (2003-2009) / 3 (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "3",
+    "versiyon": "1.6",
+    "paket": "Sport Dynamic",
+    "neden": "Birden fazla eski nesilde geçiyor (3 (2003-2009) / 3 (2009-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "6",
+    "versiyon": "2.0",
+    "paket": "Skyactive-G Power Sense",
+    "neden": "\"SKYACTIVE\" yazımı \"SKYACTIV\" ile 1 harf farklı — yazım hatası olabilir"
+  },
+  {
+    "marka": "Mazda",
+    "model": "6",
+    "versiyon": "2.0",
+    "paket": "CD CE",
+    "neden": "Birden fazla eski nesilde geçiyor (6 (2002-2007) / 6 (2007-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "6",
+    "versiyon": "2.0",
+    "paket": "CDH TE",
+    "neden": "Birden fazla eski nesilde geçiyor (6 (2002-2007) / 6 (2007-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "6",
+    "versiyon": "2.0",
+    "paket": "Sky-G Power",
+    "neden": "Birden fazla eski nesilde geçiyor (6 (2002-2007) / 6 (2007-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "6",
+    "versiyon": "2.0",
+    "paket": "TE",
+    "neden": "Birden fazla eski nesilde geçiyor (6 (2002-2007) / 6 (2007-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "6",
+    "versiyon": "2.3 Sport",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (6 (2002-2007) / 6 (2007-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Mazda",
+    "model": "MX",
+    "neden": "'MX' tek model değil (MX-3, MX-5, MX-6 …); katalogda MX-5 var, hangisi kastedildi belli değil."
+  },
+  {
+    "marka": "Mazda",
+    "model": "CX-5",
+    "versiyon": "2.0i",
+    "paket": "Power",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Mazda",
+    "model": "CX-5",
+    "versiyon": "2.0i",
+    "paket": "Power Sense",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Mazda",
+    "model": "CX-5",
+    "versiyon": "2.0i",
+    "paket": "Power Sense Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Mazda",
+    "model": "CX-9",
+    "versiyon": "3.7L Sport",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

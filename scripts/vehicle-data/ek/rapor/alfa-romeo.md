@@ -1,0 +1,30 @@
+### Alfa Romeo
+- otomobil: zaten vardı 50 · eklendi 20 · belirsiz 16
+  - + 145/146 (1994-2001) › 1.4 › TS STD
+  - + 145/146 (1994-2001) › 1.7 › Standart
+  - + 145/146 (1994-2001) › 2.0 TS 155 › QV
+  - + 145/146 (1994-2001) › 1.4 › TS
+  - + 145/146 (1994-2001) › 1.4 › TS Ritmo
+  - + 147 (2000-2010) › 1.6 TS › Black Line
+  - + 147 (2000-2010) › 2.0 TS › Selespeed Distinctive
+  - + Yeni model: 155 (1992–1998) — en.wikipedia Alfa Romeo 155 (1992-1998)
+  - + 155 › 2.0 › Q4
+  - + 156 (1997-2006) › 2.0 JTS › Distinctive
+  - + 156 (1997-2006) › 2.0 TS › Executive
+  - + 156 (1997-2006) › 2.0 TS › Selespeed
+  - + 156 (1997-2006) › 2.0 TS › Selespeed SR
+  - + 166 (1998-2007) › 2.5 V6 190 › Sportronic
+  - + 166 (1998-2007) › 3.0 V6 226 › Sportronic
+  - + 33 › 1.5 › Giardinetta
+  - + 33 › 1.5 › IE
+  - + Brera / Spider (2006-2010) › 2.2 JTS 185 › Sky Window
+  - + GT (2003-2010) › 1.9 JTD › Q2
+  - + GT (2003-2010) › 2.0 JTS › Dis.Selespeed
+  - ~ eşleme: "Giulia Quadrifoglio" → "Giulia"
+  - ~ eşleme: "145" → "145/146 (1994-2001)"
+  - ~ eşleme: "146" → "145/146 (1994-2001)"
+  - ~ eşleme: "Brera" → "Brera / Spider (2006-2010)"
+  - ~ eşleme: "GTV" → "GTV/Spider (1995-2005)"
+  - ~ eşleme: "Spider" → "GTV/Spider (1995-2005)"
+  - ~ eşleme: "Junior Elettrica" → "Junior"
+  - ~ eşleme: "Junior Ibrida" → "Junior"

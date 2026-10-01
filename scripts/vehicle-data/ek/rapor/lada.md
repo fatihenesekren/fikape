@@ -1,0 +1,13 @@
+### Lada
+- otomobil: zaten vardı 0 · eklendi 11 · belirsiz 2
+  - + Yeni model: Samara (1990–2013) — en.wikipedia Lada Samara (1984-2013; 1990 öncesi kırpıldı)
+  - + Samara › 1.3 › Standart
+  - + Samara › 1.5 › Standart
+  - + Yeni model: Vega (1995–2009) — en.wikipedia Lada 110 / Türkiye'de Lada Vega (1995-2009)
+  - + Vega › 1.5 › Standart
+  - + Vega › 1.6 › Standart
+  - + Yeni model: Niva (1990–) — en.wikipedia Lada Niva (1977'den beri; 1990 öncesi kırpıldı)
+  - + Niva › 1.6 › Standart
+  - + Niva › 1.7 › Standart
+  - + Niva › 1.7i › Standart
+  - + Niva › 1.7i › Urban

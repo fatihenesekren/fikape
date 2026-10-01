@@ -1,0 +1,286 @@
+Arazi, SUV & Pickup
+KGM SsangYong
+Actyon (56)
+Actyon Sports (107)
+Korando (96)
+Korando Sports (127)
+Kyron (123)
+Musso (9)
+Musso Grand (411)
+Musso EV (6)
+Rexton (100)
+Tivoli (50)
+Torres (168)
+Torres EVX (111)
+XLV (12)
+Rodius (23)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Actyon
+1.5 T-GDI (37)
+2.0 XDI (19)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Actyon Sports
+2.0 SXDI 4x2 (58)
+2.0 SXDI 4x4 (20)
+2.0 XDI 4x2 (3)
+2.0 XDI 4x4 (27)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Korando
+1.5 T (42)
+1.6 D (16)
+2.0 E XDI 2.0 (33)
+2.3 i (2)
+3.2 SELX (2)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Korando
+1.5 T
+Limited (15)
+Platinum (22)
+Titanium (5)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Korando
+1.6 D
+4x4 Edition (1)
+Limited (1)
+Platinum (5)
+Titanium (9)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Korando
+2.0 E XDI 2.0 (33)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Korando
+2.3 i (2)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Korando
+3.2 SELX (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Korando Sports
+2.0 e-XDI (90)
+2.0 e-XDI Limited (19)
+2.0 e-XDI Modes (1)
+2.0 e-XDI Special Edition (5)
+2.0 XDI (12)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Kyron
+2.0 L XDI (35)
+2.0 XDI (88)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Kyron
+2.0 L XDI
+Limited 4x4 (32)
+Modes 4x2 (3)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Kyron
+2.0 XDI
+4x2 (14)
+4x4 (45)
+Exclusive 4x4 (6)
+Limited 4x4 (5)
+LX 4x4 (14)
+Modes 4x2 (2)
+Premium (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Musso
+2.2 D (3)
+2.3 (3)
+3.2 (3)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Musso
+2.2 D
+Platinum (1)
+Platinum Plus (2)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Musso
+2.3 (3)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Musso
+3.2 (3)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Musso Grand
+2.2 D
+2.2 D (19)
+Edition (16)
+Platinum (120)
+Platinum Plus (253)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Musso EV
+Standart (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Rexton
+2.0 D (1)
+2.0 e-XDI W (79)
+2.7 XDI (20)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Rexton
+2.0 D
+4x4 (1)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Rexton
+2.0 e-XDI W
+4x2 Modes (4)
+4x2 Platinum (7)
+4x4 Limited (26)
+4X4 Platinum (42)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Rexton
+2.7 XDI
+DSX (1)
+LX SPR (7)
+RX (12)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Tivoli
+1.5 T (9)
+1.6 D (27)
+1.6 G (14)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Tivoli
+1.5 T
+1.5 T (2)
+Deluxe (7)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Tivoli
+1.6 D
+Limited (11)
+Platinum (16)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Tivoli
+1.6 G
+Limited (8)
+Modes (2)
+Platinum (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Torres
+1.5 GDI (168)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Torres EVX
+4x2 (111)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+XLV
+1.5 T (2)
+1.6 D (5)
+1.6 G (5)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+XLV
+1.5 T
+Deluxe (2)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+XLV
+1.6 D
+Limited (5)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+XLV
+1.6 G (5)
+
+---------------------
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Rodius
+2.0 e-XDI (21)
+2.7 XDI (2)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Rodius
+2.0 e-XDI
+4X2 (2)
+4X2 Limited (4)
+4X4 Platinum (15)
+
+Arazi, SUV & Pickup
+KGM SsangYong
+Rodius
+2.7 XDI
+2.7 XDI (2)
+
+---------------------

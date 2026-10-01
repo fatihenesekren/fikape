@@ -25,6 +25,8 @@ import type { KatalogTip as TsbTip } from "./build";
 import type { MotoKatalogTip } from "./motoBuild";
 import { fold } from "./rules";
 import { cekisTekrarsizEkle } from "./cekisTekrarsizEkle";
+import { parseEk } from "../ek/parseEk";
+import { ekUygula, kureselJetonlar, modelleriTekillestir, type Belirsiz, type EkAyar } from "../ek/uygula";
 
 const root = process.cwd();
 const incele = path.join(root, "scripts", "vehicle-data", "_inceleme");
@@ -213,6 +215,51 @@ for (const kat of KATEGORILER) {
   }
 }
 
+// ─── 2.5) Kullanıcı katalogları (scripts/vehicle-data/ek) ──────────────────
+// Marka başına paylaşılan olgun katalog metni; mevcut katalogla kopyasız birleşir.
+// Belirsiz kalanlar ek/belirsiz/<marka>.json + ek/rapor/<marka>.md dosyalarına yazılır.
+const ekKok = path.join(root, "scripts", "vehicle-data", "ek");
+const ekRapor: string[] = [];
+const tekillesenler: string[] = [];
+const kuresel = kureselJetonlar(KATEGORILER.flatMap((k) => [...durum[k].values()].map((d) => d.modeller)));
+if (fs.existsSync(path.join(ekKok, "kaynak"))) {
+  for (const dosya of fs.readdirSync(path.join(ekKok, "kaynak")).filter((f) => f.endsWith(".txt")).sort()) {
+    const ek = parseEk(fs.readFileSync(path.join(ekKok, "kaynak", dosya), "utf8"));
+    if (!ek.marka) continue;
+    const slug = slugify(ek.marka);
+    const ayarYol = path.join(ekKok, "ayar", slug + ".json");
+    const ayar = (fs.existsSync(ayarYol) ? JSON.parse(fs.readFileSync(ayarYol, "utf8")) : {}) as EkAyar;
+    const belirsiz: Belirsiz[] = [];
+    if (ayar.atlaMarka) {
+      fs.mkdirSync(path.join(ekKok, "belirsiz"), { recursive: true });
+      fs.mkdirSync(path.join(ekKok, "rapor"), { recursive: true });
+      fs.writeFileSync(path.join(ekKok, "belirsiz", slug + ".json"), JSON.stringify([{ marka: ek.marka, model: "(tüm marka)", neden: ayar.atlaMarka }], null, 2) + "\n");
+      fs.writeFileSync(path.join(ekKok, "rapor", slug + ".md"), `### ${ek.marka}\n- marka atlandı: ${ayar.atlaMarka}\n`);
+      ekRapor.push(`### ${ek.marka}`, `- marka atlandı: ${ayar.atlaMarka}`);
+      continue;
+    }
+    const satir: string[] = [`### ${ek.marka}`];
+    for (const kat of ["otomobil", "kamyonet"] as const) {
+      const kismi = { ...ek, modeller: new Map([...ek.modeller].filter(([ad, m]) => {
+        const hedef = m.kategori === "Arazi, SUV & Pickup" && ayar.kamyonet?.includes(ad) ? "kamyonet" : "otomobil";
+        return hedef === kat;
+      })) };
+      if (!kismi.modeller.size) continue;
+      const d = markaAl(kat, ayar.marka ?? ek.marka);
+      // Önce birebir aynı adlı kopya modeller ("A 110" / "A110") birleşir; sonra kullanıcı satırları işlenir.
+      tekillesenler.push(...modelleriTekillestir(d.modeller).map((n) => `${ek.marka}: ${n}`));
+      const s = ekUygula(ek.marka, kismi, ayar, d.modeller, kuresel);
+      belirsiz.push(...s.belirsiz);
+      satir.push(`- ${kat}: zaten vardı ${s.zatenVar} · eklendi ${s.eklenen.length} · belirsiz ${s.belirsiz.length}`, ...s.eklenen.map((e) => `  - + ${e}`), ...s.eslesme.map((e) => `  - ~ eşleme: ${e}`));
+    }
+    fs.mkdirSync(path.join(ekKok, "belirsiz"), { recursive: true });
+    fs.mkdirSync(path.join(ekKok, "rapor"), { recursive: true });
+    fs.writeFileSync(path.join(ekKok, "belirsiz", slug + ".json"), JSON.stringify(belirsiz, null, 2) + "\n");
+    fs.writeFileSync(path.join(ekKok, "rapor", slug + ".md"), satir.join("\n") + "\n");
+    ekRapor.push(...satir);
+  }
+}
+
 // ─── 3) Yaz ───────────────────────────────────────────────────────────────
 const rapor: string[] = [
   `# Katalog birleştirme raporu — ${tsb.baslik}`, "",
@@ -245,6 +292,8 @@ for (const kat of KATEGORILER) {
 
 fs.writeFileSync(path.join(root, "src", "data", "katalogIndex.json"), JSON.stringify(index) + "\n");
 fs.writeFileSync(path.join(incele, "birlestirme.md"), rapor.join("\n") + "\n");
+if (ekRapor.length) console.log(ekRapor.join("\n"));
+if (tekillesenler.length) console.log("Tekilleşen modeller:\n" + tekillesenler.join("\n"));
 
 const boyut = (d: string) => fs.readdirSync(d).reduce((s, f) => s + fs.statSync(path.join(d, f)).size, 0);
 console.log(rapor[2]);

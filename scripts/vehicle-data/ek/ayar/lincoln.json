@@ -1,0 +1,9 @@
+{
+  "yeniModel": {
+    "MKS": { "bas": 2009, "bit": 2016, "kaynak": "en.wikipedia Lincoln MKS (model yılı 2009-2016)" },
+    "Continental": { "bas": 1990, "bit": 2020, "kaynak": "en.wikipedia Lincoln Continental (1988-2002, 2017-2020; 1990 öncesi kırpıldı — tüm nesillerin aralığı)" },
+    "LS": { "bas": 2000, "bit": 2006, "kaynak": "en.wikipedia Lincoln LS (üretim 1999-2006)" },
+    "Mark": { "bas": 1993, "bit": 1998, "kaynak": "en.wikipedia Lincoln Mark VIII (1993-1998)" },
+    "Town Car": { "bas": 1990, "bit": 2011, "kaynak": "en.wikipedia Lincoln Town Car (1981-2011; 1990 öncesi kırpıldı)" }
+  }
+}

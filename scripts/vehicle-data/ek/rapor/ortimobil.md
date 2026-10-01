@@ -1,0 +1,2 @@
+### Ortimobil
+- marka atlandı: Ortimobil Alexa / Omobil: Türk üretimi düşük hızlı elektrikli mikro araçlar (L-kategori); katalogda Ortimobil markası yok — kategori (otomobil/motosiklet) kararı gerektirir.

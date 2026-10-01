@@ -1,0 +1,294 @@
+Otomobil
+Mini
+Cooper (853)
+Cooper Clubman (59)
+Cooper Electric (16)
+John Cooper (34)
+One (66)
+Cooper S (179)
+
+---------------------
+
+Otomobil
+Mini
+Cooper
+1.5 (305)
+1.5 D (249)
+1.6 (269)
+1.6 D (20)
+2.0 (10)
+
+Otomobil
+Mini
+Cooper
+1.5
+Chili (51)
+Classic (37)
+Favoured (39)
+Iconic (40)
+JCW (19)
+Pepper (10)
+Premium (2)
+Pure (3)
+Resolute Edition (9)
+Signature (75)
+Türkiye Paketi (20)
+
+Otomobil
+Mini
+Cooper
+1.5 D
+Chili (168)
+Pepper (43)
+Salt (1)
+Salt Chili (1)
+Salt Pepper Chili (12)
+Türkiye Paketi (24)
+
+Otomobil
+Mini
+Cooper
+1.6
+Baker Street (4)
+Bayswater (2)
+Cabrio (13)
+Coupe (16)
+Roadster (1)
+Türkiye Paketi (233)
+
+Otomobil
+Mini
+Cooper
+1.6 D
+Türkiye Paketi (20)
+
+Otomobil
+Mini
+Cooper
+2.0
+Favoured (2)
+JCW (8)
+
+---------------------
+
+Otomobil
+Mini
+Cooper Clubman
+1.5 (26)
+1.5 D (8)
+1.6 (18)
+1.6 S (7)
+
+Otomobil
+Mini
+Cooper Clubman
+1.5
+Chili (11)
+Final Edition (3)
+Iconic (4)
+Pepper (5)
+Untold Edition (3)
+
+Otomobil
+Mini
+Cooper Clubman
+1.5 D
+One Chili (1)
+One Iconic (2)
+One Signature (4)
+One Türkiye Paketi (1)
+
+Otomobil
+Mini
+Cooper Clubman
+1.6 (18)
+
+Otomobil
+Mini
+Cooper Clubman
+1.6 S (7)
+
+---------------------
+
+Otomobil
+Mini
+Cooper Electric
+SE
+Classic (2)
+Iconic (2)
+Inspired (12)
+
+---------------------
+
+Otomobil
+Mini
+John Cooper
+1.6 (27)
+2.0 (7)
+
+Otomobil
+Mini
+John Cooper
+1.6
+Works (26)
+Works Clubman (1)
+
+Otomobil
+Mini
+John Cooper
+2.0
+Works (7)
+
+---------------------
+
+Otomobil
+Mini
+One
+1.4 (27)
+1.6 (39)
+
+---------------------
+
+Otomobil
+Mini
+Cooper S
+1.6 (174)
+2.0 (6)
+
+Otomobil
+Mini
+Cooper S
+1.6
+1.6 (128)
+Cabrio (28)
+Coupe (14)
+Roadster (4)
+
+Otomobil
+Mini
+Cooper S
+2.0
+2.0 (2)
+Favoured (2)
+JCW (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Mini
+Countryman (772)
+Countryman E (591)
+Paceman (12)
+
+---------------------
+
+Arazi, SUV & Pickup
+Mini
+Countryman
+1.5 (243)
+1.5 C (25)
+1.5 D (63)
+1.6 (161)
+1.6 D (41)
+1.6 S (229)
+2.0 (10)
+
+Arazi, SUV & Pickup
+Mini
+Countryman
+1.5
+Chili (16)
+Classic (48)
+Edition Iconic (15)
+Iconic (7)
+JCW Chili (6)
+Luxury (1)
+Pepper (17)
+Salt (17)
+Salt Premium (1)
+Signature (89)
+Türkiye Paketi (23)
+Uncharted Edition (2)
+Untamed (1)
+
+Arazi, SUV & Pickup
+Mini
+Countryman
+1.5 C
+Dark Edition (1)
+Favoured (12)
+JCW (11)
+Trail Edition (1)
+
+Arazi, SUV & Pickup
+Mini
+Countryman
+1.5 D
+One (10)
+One Classic (17)
+One Iconic (4)
+One JCW Chili (4)
+One Luxury (2)
+One Pepper (6)
+One Salt (9)
+One Signature (11)
+
+Arazi, SUV & Pickup
+Mini
+Countryman
+1.6
+JCW (9)
+Türkiye Paketi (152)
+
+Arazi, SUV & Pickup
+Mini
+Countryman
+1.6 D (41)
+
+Arazi, SUV & Pickup
+Mini
+Countryman
+1.6 S (229)
+
+Arazi, SUV & Pickup
+Mini
+Countryman
+2.0
+JCW (4)
+JCW Iconic (3)
+JCW Premium (2)
+JCW S (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Mini
+Countryman E
+E (585)
+SE (6)
+
+Arazi, SUV & Pickup
+Mini
+Countryman E
+E
+Favoured (529)
+Favoured Plus (4)
+JCW (2)
+Spirit (50)
+
+Arazi, SUV & Pickup
+Mini
+Countryman E
+SE
+JCW (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Mini
+Paceman
+1.6
+S (9)
+Türkiye Paketi (3)
+
+---------------------

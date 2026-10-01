@@ -1,0 +1,34 @@
+### Hyundai
+- otomobil: zaten vardı 253 · eklendi 28 · belirsiz 57
+  - + Atos (1998-2007) › 1.0 › GL Prime
+  - + Atos (1998-2007) › 1.0 › GLS Prime
+  - + Getz › 1.3 › GL Active
+  - + Getz › 1.3 › GLS Cool
+  - + Getz › 1.3 › GLS Style
+  - + Getz › 1.4 DOHC › 1.4 AB AC
+  - + Getz › 1.4 DOHC › HY KLM
+  - + Getz › 1.5 CRDi › Active
+  - + Getz › 1.5 CRDi › Classic
+  - + Getz › 1.5 CRDi › Comfort Plus
+  - + Getz › 1.5 CRDi › GL Cool
+  - + Getz › 1.6 › Cool
+  - + Yeni model: i20 N (2021–) — motor1 / hyundai-n.com Hyundai i20 N (2021'den beri)
+  - + i20 N › 1.6 T-GDI › Standart
+  - + Matrix › 1.6 › Start
+  - + Matrix › 1.6 › Style
+  - + Trajet (1999-2008) › 2.0 CRDi GLS › Standart
+  - + Yeni model: Ioniq 5 N (2024–) — Hyundai Ioniq 5 N (2024)
+  - + Ioniq 5 N › N › Standart
+  - + Santa Fe › 2.0 CRDi › Elegance
+  - + Santa Fe › 2.0 CRDi › Premium
+  - + Santa Fe › 2.0 CRDi › Style
+  - + Santa Fe › 2.0 CRDi › VGT
+  - + Terracan (2001-2007) › 2.9 CRDi GL › Standart
+  - + Tucson › 2.0 CRDi › Dynamic
+  - + Tucson › 2.0 CRDi › Sport
+  - + Tucson › 2.0 CVVT › Active
+  - + Tucson › 2.0 CVVT › Dynamic
+  - ~ eşleme: "Accent Blue" → "Accent"
+  - ~ eşleme: "Accent Era" → "Accent"
+  - ~ eşleme: "i20 Active" → "i20"
+  - ~ eşleme: "Kona Elektrik" → "Kona"

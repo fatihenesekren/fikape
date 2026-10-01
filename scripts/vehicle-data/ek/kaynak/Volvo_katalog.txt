@@ -1,0 +1,1202 @@
+Otomobil
+Volvo
+C30 (27)
+C70 (16)
+S40 (589)
+S60 (1.200)
+S70 (24)
+S80 (230)
+S90 (584)
+V40 (335)
+V40 Cross Country (121)
+V50 (40)
+V60 (44)
+V60 Cross Country (52)
+V70 (25)
+V90 (1)
+V90 Cross Country (89)
+440 (1)
+480 (1)
+850 (19)
+940 (7)
+960 (5)
+
+---------------------
+
+Otomobil
+Volvo
+C30
+1.6 (4)
+1.6 D (23)
+
+Otomobil
+Volvo
+C30
+1.6
+1.6 (2)
+Premium (2)
+
+Otomobil
+Volvo
+C30
+1.6 D
+1.6 D (10)
+Advance (2)
+Premium (8)
+Prime (1)
+R-Design (1)
+Sports (1)
+
+---------------------
+
+Otomobil
+Volvo
+C70
+2.0 D (6)
+2.0 T (2)
+2.5 (8)
+
+Otomobil
+Volvo
+C70
+2.0 D
+Premium (6)
+
+Otomobil
+Volvo
+C70
+2.0 T (2)
+
+Otomobil
+Volvo
+C70
+2.5 (8)
+
+---------------------
+
+Otomobil
+Volvo
+S40
+1.6 (149)
+1.6 D (299)
+1.8 (51)
+1.9 D (2)
+1.9 T4 (9)
+2.0 (39)
+2.0 D (5)
+2.0 T (32)
+2.0 T4 (1)
+2.4 (1)
+2.5 T5 (1)
+
+Otomobil
+Volvo
+S40
+1.6
+1.6 (136)
+Dynamic (2)
+Premium (8)
+Prime (2)
+R-Design (1)
+
+Otomobil
+Volvo
+S40
+1.6 D
+1.6 D (129)
+Drive (34)
+Dynamic (84)
+Premium (36)
+Prime (15)
+R-Design (1)
+
+Otomobil
+Volvo
+S40
+1.8 (51)
+
+Otomobil
+Volvo
+S40
+1.9 D (2)
+
+Otomobil
+Volvo
+S40
+1.9 T4 (9)
+
+Otomobil
+Volvo
+S40
+2.0 (39)
+
+Otomobil
+Volvo
+S40
+2.0 D
+2.0 D (3)
+Premium (2)
+
+Otomobil
+Volvo
+S40
+2.0 T (32)
+
+Otomobil
+Volvo
+S40
+2.0 T4 (1)
+
+Otomobil
+Volvo
+S40
+2.4 (1)
+
+Otomobil
+Volvo
+S40
+2.5 T5
+2.5 T5 (1)
+
+---------------------
+
+Otomobil
+Volvo
+S60
+1.5 T3 (176)
+1.6 (59)
+1.6 D (517)
+2.0 B5 (235)
+2.0 D (78)
+2.0 T (88)
+2.3 T5 (6)
+2.4 (3)
+2.4 D (24)
+2.4 T5 (1)
+2.5 R (3)
+2.5 T (8)
+
+Otomobil
+Volvo
+S60
+1.5 T3
+Advance (121)
+Dynamic (1)
+Premium (52)
+R-Design (2)
+
+Otomobil
+Volvo
+S60
+1.6
+1.6 (5)
+Advance (19)
+Premium (30)
+R-Design (5)
+
+Otomobil
+Volvo
+S60
+1.6 D
+1.6 D (38)
+Advance (213)
+Premium (245)
+R-Design (21)
+
+Otomobil
+Volvo
+S60
+2.0 B5
+Inscription (1)
+Inscription Plus (80)
+Plus Bright (51)
+Plus Dark (101)
+Ultimate Bright (1)
+Ultimate Dark (1)
+
+Otomobil
+Volvo
+S60
+2.0 D
+2.0 D (4)
+Advance (61)
+Premium (11)
+R-Design (2)
+
+Otomobil
+Volvo
+S60
+2.0 T
+2.0 T (57)
+Business (1)
+Premium (18)
+R-Design (3)
+Sports (9)
+
+Otomobil
+Volvo
+S60
+2.3 T5 (6)
+
+Otomobil
+Volvo
+S60
+2.4 (3)
+
+Otomobil
+Volvo
+S60
+2.4 D
+2.4 D (17)
+Advance (1)
+Business (1)
+Premium (3)
+R-Design (1)
+Sports (1)
+
+Otomobil
+Volvo
+S60
+2.4 T5
+2.4 T5 (1)
+
+Otomobil
+Volvo
+S60
+2.5 R (3)
+
+Otomobil
+Volvo
+S60
+2.5 T
+2.5 T (7)
+Premium (1)
+
+---------------------
+
+Otomobil
+Volvo
+S70
+2.0 T (10)
+2.0 T5 (13)
+2.3 T5 (1)
+
+---------------------
+
+Otomobil
+Volvo
+S80
+1.6 D (65)
+1.6 T4 (16)
+2.0 D (34)
+2.0 T (38)
+2.0 T5 (1)
+2.4 (1)
+2.4 D (1)
+2.4 D5 (52)
+2.5 D (3)
+2.5 T (3)
+2.8 T6 (4)
+2.9 T6 (9)
+3.2 (1)
+4.4 (2)
+
+Otomobil
+Volvo
+S80
+1.6 D
+1.6 D (7)
+Advance (41)
+Premium (17)
+
+Otomobil
+Volvo
+S80
+1.6 T4
+1.6 T4 (4)
+Advance (2)
+Premium (10)
+
+Otomobil
+Volvo
+S80
+2.0 D
+Advance (24)
+Premium (10)
+
+Otomobil
+Volvo
+S80
+2.0 T (38)
+
+Otomobil
+Volvo
+S80
+2.0 T5
+2.0 T5 (1)
+
+Otomobil
+Volvo
+S80
+2.4
+2.4 (1)
+
+Otomobil
+Volvo
+S80
+2.4 D
+Momentum (1)
+
+Otomobil
+Volvo
+S80
+2.4 D5
+2.4 D5 (18)
+Advance (3)
+Executive (3)
+Premium (18)
+VIP (10)
+
+Otomobil
+Volvo
+S80
+2.5 D (3)
+
+Otomobil
+Volvo
+S80
+2.5 T
+2.5 T (2)
+VIP (1)
+
+Otomobil
+Volvo
+S80
+2.8 T6 (4)
+
+Otomobil
+Volvo
+S80
+2.9 T6
+2.9 T6 (1)
+Executive (8)
+
+Otomobil
+Volvo
+S80
+3.2
+Executive (1)
+
+Otomobil
+Volvo
+S80
+4.4
+VIP (2)
+
+---------------------
+
+Otomobil
+Volvo
+S90
+2.0 D B5 (296)
+2.0 D D4 (47)
+2.0 D D5 (201)
+2.0 T6 (1)
+2.0 T8 (38)
+3.0 (1)
+
+Otomobil
+Volvo
+S90
+2.0 D B5
+Inscription (106)
+Plus Bright (156)
+Plus Dark (30)
+R-Design (2)
+Ultimate Bright (2)
+
+Otomobil
+Volvo
+S90
+2.0 D D4
+Inscription (32)
+Momentum (14)
+R-Design (1)
+
+Otomobil
+Volvo
+S90
+2.0 D D5
+Inscription (63)
+Inscription Plus (135)
+R-Design (3)
+
+Otomobil
+Volvo
+S90
+2.0 T6
+R-Design (1)
+
+Otomobil
+Volvo
+S90
+2.0 T8
+Inscription (1)
+Recharge Plus Bright (1)
+Recharge Plus Dark (34)
+Recharge Ultimate Dark (2)
+
+Otomobil
+Volvo
+S90
+3.0 (1)
+
+---------------------
+
+Otomobil
+Volvo
+V40
+1.5 (132)
+1.6 (7)
+1.6 D (169)
+1.6 T3 (2)
+1.6 T4 (8)
+1.8 (7)
+1.9 D (3)
+1.9 T4 (1)
+1.9 TD (1)
+2.0 (3)
+2.0 T (2)
+
+Otomobil
+Volvo
+V40
+1.5
+Advance (7)
+Inscription (90)
+Momentum (13)
+Premium (4)
+R-Design (18)
+
+Otomobil
+Volvo
+V40
+1.6 (7)
+
+Otomobil
+Volvo
+V40
+1.6 D
+1.6 D (15)
+Advance (46)
+Premium (77)
+R-Design (31)
+
+Otomobil
+Volvo
+V40
+1.6 T3
+1.6 T3 (1)
+Premium (1)
+
+Otomobil
+Volvo
+V40
+1.6 T4
+Advance (1)
+Premium (2)
+R-Design (5)
+
+Otomobil
+Volvo
+V40
+1.8 (7)
+
+Otomobil
+Volvo
+V40
+1.9 D (3)
+
+Otomobil
+Volvo
+V40
+1.9 T4 (1)
+
+Otomobil
+Volvo
+V40
+1.9 TD (1)
+
+Otomobil
+Volvo
+V40
+2.0 (3)
+
+Otomobil
+Volvo
+V40
+2.0 T (2)
+
+---------------------
+
+Otomobil
+Volvo
+V40 Cross Country
+1.5 T3 (44)
+1.6 D (70)
+1.6 T4 (6)
+2.0 T5 (1)
+
+Otomobil
+Volvo
+V40 Cross Country
+1.5 T3
+Advance (43)
+Premium (1)
+
+Otomobil
+Volvo
+V40 Cross Country
+1.6 D
+1.6 D (5)
+Advance (33)
+Premium (32)
+
+Otomobil
+Volvo
+V40 Cross Country
+1.6 T4
+1.6 T4 (1)
+Advance (4)
+Premium (1)
+
+Otomobil
+Volvo
+V40 Cross Country
+2.0 T5
+Premium (1)
+
+---------------------
+
+Otomobil
+Volvo
+V50
+1.6 (2)
+1.6 D (29)
+1.8 (1)
+2.0 D (6)
+2.4 (1)
+2.5 T5 (1)
+
+Otomobil
+Volvo
+V50
+1.6
+1.6 (2)
+
+Otomobil
+Volvo
+V50
+1.6 D
+1.6 D (5)
+Drive (7)
+Dynamic (9)
+Premium (4)
+Prime (4)
+
+Otomobil
+Volvo
+V50
+1.8 (1)
+
+Otomobil
+Volvo
+V50
+2.0 D
+2.0 D (4)
+Dynamic (2)
+
+Otomobil
+Volvo
+V50
+2.4 (1)
+
+Otomobil
+Volvo
+V50
+2.5 T5
+2.5 T5 (1)
+
+---------------------
+
+Otomobil
+Volvo
+V60
+1.6 D (14)
+1.6 T4 (11)
+2.0 B4 (12)
+2.0 D3 (5)
+2.0 D4 (1)
+2.0 T5 (1)
+
+Otomobil
+Volvo
+V60
+1.6 D
+1.6 D (1)
+Advance (8)
+Premium (4)
+R-Design (1)
+
+Otomobil
+Volvo
+V60
+1.6 T4
+Advance (3)
+Premium (1)
+R-Design (5)
+T4 (2)
+
+Otomobil
+Volvo
+V60
+2.0 B4
+Plus Dark (12)
+
+Otomobil
+Volvo
+V60
+2.0 D3
+D3 (5)
+
+Otomobil
+Volvo
+V60
+2.0 D4
+Advance (1)
+
+Otomobil
+Volvo
+V60
+2.0 T5
+R-Design (1)
+
+---------------------
+
+Otomobil
+Volvo
+V60 Cross Country
+2.0 B4 (11)
+2.0 B5 (25)
+2.0 D4 (16)
+
+Otomobil
+Volvo
+V60 Cross Country
+2.0 B4
+2.0 B4 (11)
+
+Otomobil
+Volvo
+V60 Cross Country
+2.0 B5
+2.0 B5 (3)
+Plus Bright (6)
+Ultimate Bright (16)
+
+Otomobil
+Volvo
+V60 Cross Country
+2.0 D4
+2.0 D4 (16)
+
+---------------------
+
+Otomobil
+Volvo
+V70
+2.0 D3 (1)
+2.0 T (9)
+2.0 T5 (1)
+2.3 T-5 (3)
+2.4 (1)
+2.4 D5 (5)
+2.4 T (3)
+2.4 T5 (1)
+2.5 D (1)
+
+Otomobil
+Volvo
+V70
+2.0 D3 (1)
+
+Otomobil
+Volvo
+V70
+2.0 T (9)
+
+Otomobil
+Volvo
+V70
+2.0 T5 (1)
+
+Otomobil
+Volvo
+V70
+2.3 T-5 (3)
+
+Otomobil
+Volvo
+V70
+2.4 (1)
+
+Otomobil
+Volvo
+V70
+2.4 D5
+2.4 D5 (2)
+Momentum (1)
+Premium (2)
+
+Otomobil
+Volvo
+V70
+2.4 T (3)
+
+Otomobil
+Volvo
+V70
+2.4 T5
+2.4 T5 (1)
+
+Otomobil
+Volvo
+V70
+2.5 D (1)
+
+---------------------
+
+Otomobil
+Volvo
+V90
+2.0
+Inscription (1)
+
+---------------------
+
+Otomobil
+Volvo
+V90 Cross Country
+2.0 B6 (3)
+2.0 D B5 (58)
+2.0 D D5 (29)
+
+Otomobil
+Volvo
+V90 Cross Country
+2.0 B6
+Ultimate Bright (3)
+
+Otomobil
+Volvo
+V90 Cross Country
+2.0 D B5
+Plus Bright (13)
+Pro (30)
+Ultimate Bright (15)
+
+Otomobil
+Volvo
+V90 Cross Country
+2.0 D D5
+Pro (29)
+
+---------------------
+
+Otomobil
+Volvo
+440
+2.0i (1)
+
+---------------------
+
+Otomobil
+Volvo
+480
+1.7 Turbo (1)
+
+---------------------
+
+Otomobil
+Volvo
+850
+2.0 GLE (2)
+2.0 T5 (14)
+2.3 T5 (2)
+2.5 GLT (1)
+
+---------------------
+
+Otomobil
+Volvo
+940
+2.0 GL (5)
+2.3 GLE (2)
+
+---------------------
+
+Otomobil
+Volvo
+960
+2.5 (1)
+3.0 (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volvo
+C40
+P6 (8)
+P8 (12)
+
+Arazi, SUV & Pickup
+Volvo
+C40
+P6
+Single Ultimate (8)
+
+Arazi, SUV & Pickup
+Volvo
+C40
+P8
+Single Ultimate (2)
+Twin Ultimate (10)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volvo
+EC40
+Extended Range Ultra (3)
+Extended Range Ultra Black Ed. (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volvo
+EX30
+Extended Range Ultra (15)
+Performance Ultra (2)
+Ultra (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volvo
+EX30 Cross Country
+Ultra (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volvo
+XC40
+1.5 T2 (134)
+1.5 T3 (212)
+1.5 T5 Recharge (28)
+2.0 D3 (31)
+2.0 D4 (4)
+P6 (43)
+P8 (32)
+
+Arazi, SUV & Pickup
+Volvo
+XC40
+1.5 T2
+Plus Bright (75)
+Plus Dark (59)
+
+Arazi, SUV & Pickup
+Volvo
+XC40
+1.5 T3
+Inscription (76)
+Momentum (135)
+R-Design (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC40
+1.5 T5 Recharge
+Inscription Expression (1)
+Plus Dark (18)
+R-Design (3)
+R-Design Expression (6)
+
+Arazi, SUV & Pickup
+Volvo
+XC40
+2.0 D3
+Momentum (31)
+
+Arazi, SUV & Pickup
+Volvo
+XC40
+2.0 D4
+Momentum (4)
+
+Arazi, SUV & Pickup
+Volvo
+XC40
+P6
+Recharge Ultimate (43)
+
+Arazi, SUV & Pickup
+Volvo
+XC40
+P8
+Recharge Pro (7)
+Recharge Ultimate (25)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 B4 (358)
+2.0 B5 (140)
+2.0 B6 (1)
+2.0 D3 (31)
+2.0 D4 (206)
+2.0 T (2)
+2.0 T5 (3)
+2.0 T6 (1)
+2.0 T8 (1)
+2.0 T8 Recharge (78)
+2.4 D5 (20)
+3.0 T6 (2)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 B4
+Inscription (203)
+Plus Bright (67)
+Plus Dark (87)
+Ultimate Dark (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 B5
+Plus Black Edition (14)
+Plus Bright (5)
+Plus Dark (120)
+Ultimate Dark (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 B6
+Plus Bright (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 D3
+2.0 D3 (2)
+Advance (16)
+Premium (13)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 D4
+2.0 D4 (5)
+Advance (115)
+Inscription (52)
+Momentum (7)
+Premium (20)
+R-Design (7)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 T
+2.0 T (1)
+Premium (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 T5
+2.0 T5 (2)
+R-Design (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 T6
+R-Design (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 T8
+R-Design (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.0 T8 Recharge
+Inscription (7)
+Plus Black Edition (2)
+Plus Bright (10)
+Plus Dark (45)
+Polestar (2)
+Polestar Engineered (3)
+Ultimate Black Edition (8)
+Ultra Dark (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+2.4 D5
+2.4 D5 (9)
+Advance (1)
+R-Design (8)
+Style (2)
+
+Arazi, SUV & Pickup
+Volvo
+XC60
+3.0 T6
+Comfort (1)
+Style (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volvo
+XC70
+2.4 D5 (7)
+2.5 T (6)
+
+
+Arazi, SUV & Pickup
+Volvo
+XC70
+2.4 D5
+2.4 D5 (3)
+Advance (1)
+Premium (3)
+
+Arazi, SUV & Pickup
+Volvo
+XC70
+2.5 T (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.0 B5 (209)
+2.0 B6 (21)
+2.0 D5 (218)
+2.0 D B5 (633)
+2.0 T6 (1)
+2.0 T8 (17)
+2.0 T8 Recharge (155)
+2.4 D5 (62)
+2.5 T5 (3)
+2.9 T6 (16)
+4.4 (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.0 B5
+Black Edition Plus (7)
+Plus Bright (190)
+Plus Dark (7)
+Ultimate Bright (3)
+Ultra Bright (2)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.0 B6
+Plus Bright (21)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.0 D5
+Inscription (206)
+Momentum (3)
+R-Design (9)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.0 D B5
+Inscription (348)
+Plus Bright (214)
+Plus Dark (68)
+R-Design (1)
+Ultimate Bright (2)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.0 T6
+Inscription (1)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.0 T8
+Excellence (2)
+Inscription (10)
+Momentum (2)
+R-Design (3)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.0 T8 Recharge
+Inscription (17)
+Plus Bright (43)
+Plus Dark (83)
+R-Design (3)
+Ultimate Dark (3)
+Ultra Bright (4)
+Ultra Dark (2)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.4 D5
+2.4 D5 (39)
+Adventure (6)
+Premium (13)
+R-Design (4)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.5 T5 (3)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+2.9 T6 (16)
+
+Arazi, SUV & Pickup
+Volvo
+XC90
+4.4
+4.4 (1)
+
+---------------------

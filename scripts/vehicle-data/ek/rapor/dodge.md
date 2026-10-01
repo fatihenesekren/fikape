@@ -1,0 +1,11 @@
+### Dodge
+- otomobil: zaten vardı 9 · eklendi 8 · belirsiz 4
+  - + Avenger (2007-2010) › 2.4 SXT › Standart
+  - + Viper (1992-2017) › RT/10 › Standart
+  - + Yeni model: Magnum (2005–2008) — en.wikipedia Dodge Magnum (2005-2008)
+  - + Magnum › 5.7 › Standart
+  - + Caliber (2006-2012) › 2.0 › CRD
+  - + Nitro (2007-2012) › 2.8 CRD 177 Dizel 4WD › R/T
+  - + Nitro (2007-2012) › 2.8 CRD 177 Dizel 4WD › SE
+  - + Nitro (2007-2012) › 2.8 CRD 177 Dizel 4WD › SXT
+- kamyonet: zaten vardı 2 · eklendi 0 · belirsiz 2

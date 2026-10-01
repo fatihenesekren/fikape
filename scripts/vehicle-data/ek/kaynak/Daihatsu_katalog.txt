@@ -1,0 +1,169 @@
+Otomobil
+Daihatsu
+Cuore (17)
+Materia (5)
+Move (3)
+Sirion (38)
+Applause (9)
+Charade (3)
+Copen (9)
+YRV (10)
+
+---------------------
+
+Otomobil
+Daihatsu
+Cuore
+0.9 (3)
+1.0 (14)
+
+Otomobil
+Daihatsu
+Cuore
+0.9
+GLX (3)
+
+Otomobil
+Daihatsu
+Cuore
+1.0
+High Grade (1)
+Low Grade (12)
+Thrifty (1)
+
+---------------------
+
+Otomobil
+Daihatsu
+Materia
+1.5
+Gold (5)
+
+---------------------
+
+Otomobil
+Daihatsu
+Move
+1.5
+Gran Move (3)
+
+---------------------
+
+Otomobil
+Daihatsu
+Sirion
+1.0 (2)
+1.3 (36)
+
+Otomobil
+Daihatsu
+Sirion
+1.0
+1.0 (2)
+
+Otomobil
+Daihatsu
+Sirion
+1.3
+1.3 (14)
+Sporty (11)
+Touring (11)
+
+---------------------
+
+Otomobil
+Daihatsu
+Applause
+1.6
+Li (7)
+X (2)
+
+---------------------
+
+Otomobil
+Daihatsu
+Charade
+1.3 (2)
+1.5 (1)
+
+Otomobil
+Daihatsu
+Charade
+1.3
+CX (1)
+CXF (1)
+
+Otomobil
+Daihatsu
+Charade
+1.5
+Classic (1)
+
+---------------------
+
+Otomobil
+Daihatsu
+Copen
+1.3
+Sport (9)
+
+---------------------
+
+Otomobil
+Daihatsu
+YRV
+1.3
+1.3 (5)
+CX (1)
+Plus (2)
+Turbo (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Daihatsu
+Feroza (6)
+Terios (160)
+Rocky (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Daihatsu
+Feroza
+1.6
+SX (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Daihatsu
+Terios
+1.3 (90)
+1.5 (70)
+
+Arazi, SUV & Pickup
+Daihatsu
+Terios
+1.3
+1.3 (22)
+DX (18)
+SX (50)
+
+Arazi, SUV & Pickup
+Daihatsu
+Terios
+1.5
+Galaxy (1)
+Gold (34)
+Prime (9)
+Silver (26)
+
+---------------------
+
+Arazi, SUV & Pickup
+Daihatsu
+Rocky
+1.6 (1)
+
+---------------------

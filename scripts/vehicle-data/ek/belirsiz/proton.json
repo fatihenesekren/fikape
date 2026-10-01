@@ -1,0 +1,68 @@
+[
+  {
+    "marka": "Proton",
+    "model": "Gen-2",
+    "neden": "Proton Gen-2 (2004-2012 olabilir) — bu oturumda yıl aralığı doğrulanamadı."
+  },
+  {
+    "marka": "Proton",
+    "model": "Saga",
+    "versiyon": "1.6",
+    "paket": "Low Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Proton",
+    "model": "Waja",
+    "versiyon": "1.6",
+    "paket": "Medium Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Proton",
+    "model": "Waja",
+    "versiyon": "1.6",
+    "paket": "Premium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Proton",
+    "model": "218",
+    "neden": "Proton 218/315/413/415/416/418/420 (Wira/Persona/Satria 1990'ların kodlu modelleri): hangi modele/yıla denk geldiği doğrulanamadı. Aynı sebep: 315, 413, 415, 416, 418, 420."
+  },
+  {
+    "marka": "Proton",
+    "model": "315",
+    "neden": "Bkz. '218'."
+  },
+  {
+    "marka": "Proton",
+    "model": "413",
+    "neden": "Bkz. '218'."
+  },
+  {
+    "marka": "Proton",
+    "model": "415",
+    "neden": "Bkz. '218'."
+  },
+  {
+    "marka": "Proton",
+    "model": "416",
+    "neden": "Bkz. '218'."
+  },
+  {
+    "marka": "Proton",
+    "model": "418",
+    "neden": "Bkz. '218'."
+  },
+  {
+    "marka": "Proton",
+    "model": "420",
+    "neden": "Bkz. '218'."
+  },
+  {
+    "marka": "Proton",
+    "model": "Persona",
+    "neden": "Proton Persona iki dönem (1993-2000 Wira ihracat adı, 2007-2016) — hangisi belli değil."
+  }
+]

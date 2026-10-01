@@ -1,0 +1,7 @@
+{
+  "kamyonet": ["Logan Pickup"],
+  "yeniModel": {
+    "1310": { "bas": 1979, "bit": 2004, "kaynak": "en.wikipedia Dacia 1310 (sedan 1979-2004; pickup 2006'ya kadar)" },
+    "Logan Pickup": { "bas": 2007, "bit": 2012, "kaynak": "en.wikipedia Dacia Logan (Pick-up 2007-2012; Türkiye 2008)" }
+  }
+}

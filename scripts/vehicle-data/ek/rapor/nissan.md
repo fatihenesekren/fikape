@@ -1,0 +1,31 @@
+### Nissan
+- otomobil: zaten vardı 162 · eklendi 26 · belirsiz 34
+  - + Yeni model: 200 SX (1990–1998) — en.wikipedia Nissan 180SX/200SX (1989-1998; 1990 öncesi kırpıldı)
+  - + 200 SX › 1.8 Turbo › Standart
+  - + 200 SX › 2.0 Turbo › Standart
+  - + Yeni model: 300 ZX (1990–2000) — en.wikipedia Nissan 300ZX (1983-2000; 1990 öncesi kırpıldı)
+  - + 300 ZX › 3.0 Twin Turbo › Standart
+  - + Yeni model: 350 Z (2002–2009) — en.wikipedia Nissan 350Z (2002-2009)
+  - + 350 Z › 3.5 › Coupe
+  - + 350 Z › 3.5 › Roadster
+  - + Yeni model: Cefiro (1990–2004) — en.wikipedia Nissan Cefiro (1988-2004; 1990 öncesi kırpıldı)
+  - + Cefiro › A31 › 2.5
+  - + Micra › 1.4 › Elegance
+  - + Sunny › 1.6 › EX
+  - + Sunny › 1.6 › SLX
+  - + Sunny › 2.0 D 65 › GTI
+  - + Yeni model: Teana (2003–2020) — en.wikipedia Nissan Teana (2003-2020)
+  - + Teana › 2.3 › Standart
+  - + Yeni model: Murano (2003–) — en.wikipedia Nissan Murano (2003'ten beri)
+  - + Murano › 3.5 › LT
+  - + Murano › 3.5 › SE
+  - + Terrano › 2.4 › S
+  - + Terrano › 2.7 TDI › Comfort
+  - + Terrano › 2.7 TDI › Elegance
+  - + Terrano › 2.7 TDI › Luxury
+  - + Terrano › 2.7 TDI › S
+  - + Terrano › 2.7 TDI › SE
+  - + Terrano › 2.7 TDI › SR
+  - ~ eşleme: "Laurel Altima" → "Altima"
+  - ~ eşleme: "Qashqai+2" → "Qashqai"
+- kamyonet: zaten vardı 6 · eklendi 0 · belirsiz 1

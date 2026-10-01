@@ -1,0 +1,8 @@
+{
+  "kamyonet": ["Telcoline", "Xenon"],
+  "yeniModel": {
+    "Indica": { "bas": 1998, "bit": 2018, "kaynak": "en.wikipedia Tata Indica (1998-2018)" },
+    "Telcoline": { "bas": 1990, "bit": null, "kaynak": "en.wikipedia Tata Telcoline (1988'den beri; 1990 öncesi kırpıldı) — kamyonet" },
+    "Safari": { "bas": 1998, "bit": null, "kaynak": "en.wikipedia Tata Safari (1998'den beri)" }
+  }
+}

@@ -1,0 +1,11 @@
+### Suzuki
+- otomobil: zaten vardı 51 · eklendi 8 · belirsiz 21
+  - + Liana › 1.6 GLX › Standart
+  - + Samurai › SJ410 › Standart
+  - + Samurai › SJ413 › Standart
+  - + Vitara › 1.4 BoosterJet › GL Plus
+  - + Vitara › 2.0 HDI › Standart
+  - + Vitara › LX › Standart
+  - + Vitara › VX › Standart
+  - + Yeni model: X-90 (1995–1997) — en.wikipedia Suzuki X-90 (1995-1997)
+  - ~ eşleme: "SJ" → "Samurai"

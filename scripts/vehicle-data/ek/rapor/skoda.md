@@ -1,0 +1,21 @@
+### Skoda
+- otomobil: zaten vardı 206 · eklendi 11 · belirsiz 54
+  - + Favorit / Felicia (1988-2001) › 1.4 › Sportline
+  - + Favorit / Felicia (1988-2001) › 135 › L
+  - + Favorit / Felicia (1988-2001) › 135 › LS
+  - + Favorit / Felicia (1988-2001) › 135 › LX
+  - + Favorit / Felicia (1988-2001) › 1.6 › GLXi
+  - + Favorit / Felicia (1988-2001) › 135 L › Standart
+  - + Favorit / Felicia (1988-2001) › 135 LS › Standart
+  - + Favorit / Felicia (1988-2001) › GLX › Standart
+  - + Favorit / Felicia (1988-2001) › LE › Standart
+  - + Favorit / Felicia (1988-2001) › LX › Standart
+  - + Favorit / Felicia (1988-2001) › Silverline › Standart
+  - ~ eşleme: "Favorit" → "Favorit / Felicia (1988-2001)"
+  - ~ eşleme: "Felicia" → "Favorit / Felicia (1988-2001)"
+  - ~ eşleme: "Forman" → "Favorit / Felicia (1988-2001)"
+  - ~ eşleme: "Enyaq Coupe" → "Enyaq"
+- kamyonet: zaten vardı 0 · eklendi 3 · belirsiz 0
+  - + Yeni model: Felicia Pickup (1995–2001) — en.wikipedia Škoda Felicia (Pickup seri üretimi Ağustos 1995 - Haziran 2001) — kamyonet
+  - + Felicia Pickup › 1.3 › Standart
+  - + Felicia Pickup › 1.9 D › Standart

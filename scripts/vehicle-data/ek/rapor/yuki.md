@@ -1,0 +1,2 @@
+### Yuki
+- marka atlandı: Yuki Amy / Hector / Hector Pro: düşük hızlı elektrikli mikro araçlar (L-kategori); katalogda Yuki markası yok — kategori kararı gerektirir, model doğrulanamadı.

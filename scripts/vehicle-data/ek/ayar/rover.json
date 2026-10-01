@@ -1,0 +1,13 @@
+{
+  "takma": { "214": "200", "216": "200", "220": "200", "414": "400", "416": "400", "420": "400", "620": "600", "820": "800", "825": "800" },
+  "yeniModel": {
+    "25": { "bas": 1999, "bit": 2005, "kaynak": "en.wikipedia Rover 25 (1999-2005)" },
+    "45": { "bas": 1999, "bit": 2005, "kaynak": "en.wikipedia Rover 400 / 45 (45: 1999-2005)" },
+    "75": { "bas": 1998, "bit": 2005, "kaynak": "en.wikipedia Rover 75 (1998-2005)" },
+    "200": { "bas": 1990, "bit": 1999, "kaynak": "en.wikipedia Rover 200 Series (MkII 1989-1995, MkIII 1995-1999; 1990 öncesi kırpıldı). 214/216/220 motor adlı sürümleri bu modele eşlendi." },
+    "400": { "bas": 1990, "bit": 2005, "kaynak": "en.wikipedia Rover 400 Series (1990-2005, 45 dahil). 414/416/420 bu modele eşlendi." },
+    "600": { "bas": 1993, "bit": 1999, "kaynak": "en.wikipedia Rover 600 Series (1993-1999). 620 bu modele eşlendi." },
+    "800": { "bas": 1990, "bit": 1999, "kaynak": "en.wikipedia Rover 800 series (1986-1999; 1990 öncesi kırpıldı). 820/825 bu modele eşlendi." }
+  },
+  "atla": { "Streetwise": "Rover Streetwise (Rover 25 tabanlı, 2003-2005 olarak bilinir) — bu oturumda internetten doğrulanamadı." }
+}

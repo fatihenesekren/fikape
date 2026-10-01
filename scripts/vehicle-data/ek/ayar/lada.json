@@ -1,0 +1,10 @@
+{
+  "yeniModel": {
+    "Samara": { "bas": 1990, "bit": 2013, "kaynak": "en.wikipedia Lada Samara (1984-2013; 1990 öncesi kırpıldı)" },
+    "Niva": { "bas": 1990, "bit": null, "kaynak": "en.wikipedia Lada Niva (1977'den beri; 1990 öncesi kırpıldı)" },
+    "Vega": { "bas": 1995, "bit": 2009, "kaynak": "en.wikipedia Lada 110 / Türkiye'de Lada Vega (1995-2009)" }
+  },
+  "atla": {
+    "VAZ": "'VAZ' bir model adı değil üretici kodu (VAZ-2101…); katalogda hangi modele denk geldiği belli değil."
+  }
+}

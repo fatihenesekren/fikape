@@ -1,0 +1,34 @@
+### Seat
+- otomobil: zaten vardı 121 · eklendi 32 · belirsiz 61
+  - + Cordoba › 1.4 › Basic
+  - + Cordoba › 1.4 › Costa
+  - + Cordoba › 1.4 › Elegance
+  - + Cordoba › 1.4 › Reference
+  - + Cordoba › 1.4 › Signo
+  - + Cordoba › 1.4 › Stella
+  - + Cordoba › 1.4 › Stylance
+  - + Cordoba › 1.4 TDI › Basic
+  - + Cordoba › 1.4 TDI › Elegance
+  - + Cordoba › 1.4 TDI › Reference
+  - + Cordoba › 1.4 TDI › Signo
+  - + Cordoba › 1.4 TDI › S-Rider
+  - + Cordoba › 1.4 TDI › Stella
+  - + Cordoba › 1.4 TDI › Stylance
+  - + Cordoba › 1.6 › Latino
+  - + Cordoba › 1.6 › SE
+  - + Cordoba › 1.6 › Signo Vario
+  - + Cordoba › 1.6 › Sport
+  - + Cordoba › 1.6 › SX
+  - + Cordoba › 1.6 › SXE Vario
+  - + Yeni model: Exeo (2008–2013) — en.wikipedia SEAT Exeo (2008-2013)
+  - + Exeo › 1.6 › Reference
+  - + Exeo › 1.6 › Style
+  - + Ibiza › 1.9 SDi › Stella
+  - + Leon › 1.9 TDI › Cupra
+  - + Leon › 1.9 TDI › Signo
+  - + Leon › 1.9 TDI › Stella
+  - + Leon › 1.9 TDI › Style
+  - + Toledo › 1.8 › GL
+  - + Toledo › 1.8 › Signo
+  - + Toledo › 1.8 › Sport
+  - + Toledo › 2.0 TDI › Stylance

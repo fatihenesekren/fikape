@@ -1,0 +1,29 @@
+### Chevrolet
+- otomobil: zaten vardı 52 · eklendi 26 · belirsiz 32
+  - + Yeni model: Caprice (1990–2017) — en.wikipedia Chevrolet Caprice (1965-1996; Avustralya kaynaklı PPV 2017'ye kadar; 1990 öncesi kırpıldı)
+  - + Caprice › 3.6 › Standart
+  - + Caprice › 4.3 STD › Standart
+  - + Yeni model: Celebrity (1990–1990) — en.wikipedia Chevrolet Celebrity (1982-1990 model yılı; 1990 öncesi kırpıldı)
+  - + Celebrity › 2.8 › Standart
+  - + Celebrity › 3.1 › Standart
+  - + Yeni model: Evanda (2004–2006) — autoevolution Chevrolet Evanda (2004-2006)
+  - + Evanda › 2.0 CDX › Standart
+  - + Evanda › 2.0 Platinum › Standart
+  - + Yeni model: Kalos (2002–2008) — en.wikipedia Chevrolet Aveo (T200) / Kalos (2002-2008; bazı kaynaklar 2011)
+  - + Kalos › 1.2 › S
+  - + Kalos › 1.2 › SE
+  - + Kalos › 1.4 › S
+  - + Kalos › 1.4 › SE
+  - + Kalos › 1.4 › SX
+  - + Yeni model: Metro (1990–2001) — en.wikipedia Geo Metro (1989-2001; 1990 öncesi kırpıldı)
+  - + Yeni model: Monte Carlo (1995–2007) — en.wikipedia Chevrolet Monte Carlo (1970-2007, 1989-1994 ara; 1995'ten itibaren)
+  - + Monte Carlo › 3.1 LS › Standart
+  - + Yeni model: Rezzo (2000–2008) — en.wikipedia Daewoo Tacuma / de.wikipedia Chevrolet Rezzo (2000-2008)
+  - + Rezzo › 1.6 SX Comfort › Standart
+  - + Yeni model: Blazer (1990–) — en.wikipedia Chevrolet Blazer (1969-2005, 2019-; 1990 öncesi kırpıldı)
+  - + Blazer › 4.2 LT › Standart
+  - + Blazer › 4.2 LTZ › Standart
+  - + Blazer › 4.3 › Standart
+  - + Yeni model: HHR (2005–2011) — en.wikipedia Chevrolet HHR (2005-2011)
+  - + HHR › SS › Standart
+- kamyonet: zaten vardı 3 · eklendi 0 · belirsiz 3

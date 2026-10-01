@@ -1,0 +1,364 @@
+Otomobil
+Mazda
+2 (34)
+3 (363)
+5 (7)
+6 (59)
+MPV (1)
+MX (40)
+Premacy (3)
+121 (2)
+323 (291)
+626 (126)
+Lantis (20)
+RX (27)
+Xedos (5)
+
+---------------------
+
+Otomobil
+Mazda
+2
+1.3 (6)
+1.5 (25)
+1.5 Sky-G (3)
+
+Otomobil
+Mazda
+2
+1.3
+Go (5)
+High (1)
+
+Otomobil
+Mazda
+2
+1.5
+Fun (4)
+Go (12)
+High (3)
+Play (2)
+Sport (4)
+
+Otomobil
+Mazda
+2
+1.5 Sky-G
+Power Sense (2)
+Reflex (1)
+
+---------------------
+
+Otomobil
+Mazda
+3
+1.5 SkyActive-D (38)
+1.5 SkyActive-G (64)
+1.6 (220)
+1.6 D (41)
+
+Otomobil
+Mazda
+3
+1.5 SkyActive-D
+Power (14)
+Power Sense (19)
+Reflex (5)
+
+Otomobil
+Mazda
+3
+1.5 SkyActive-G
+Motion (4)
+Power (26)
+Power Sense (16)
+Reflex (16)
+Soul (2)
+
+Otomobil
+Mazda
+3
+1.6
+90. Yıl (1)
+Base (5)
+Comfort (16)
+Dynamic (52)
+High (1)
+Impressive (81)
+Mirai (1)
+Sport CE (2)
+Sport Comfort (9)
+Sport Dynamic (18)
+Touring (34)
+
+Otomobil
+Mazda
+3
+1.6 D
+Comfort (3)
+Impressive (6)
+Touring (32)
+
+---------------------
+
+Otomobil
+Mazda
+5
+1.6 (3)
+1.8 (1)
+2.0 CD (1)
+2.0 D (2)
+
+Otomobil
+Mazda
+5
+1.6
+Sport (3)
+
+Otomobil
+Mazda
+5
+1.8 (1)
+
+Otomobil
+Mazda
+5
+2.0 CD
+CE (1)
+
+Otomobil
+Mazda
+5
+2.0 D (2)
+
+---------------------
+
+Otomobil
+Mazda
+6
+2.0 (58)
+2.3 Sport (1)
+
+Otomobil
+Mazda
+6
+2.0
+2.0 (4)
+CD CE (2)
+CDH TE (1)
+Comfort (2)
+Dynamic (15)
+Exclusive (6)
+Skyactive-G Power Sense (2)
+Sky-G Power (2)
+Sport (11)
+TE (13)
+
+Otomobil
+Mazda
+6
+2.3 Sport (1)
+
+---------------------
+
+Otomobil
+Mazda
+MPV
+2.3 TE (1)
+
+---------------------
+
+Otomobil
+Mazda
+MX
+MX-3 (2)
+MX-5 (38)
+
+Otomobil
+Mazda
+MX
+MX-3
+1.6 (2)
+
+Otomobil
+Mazda
+MX
+MX-5
+1.5 (30)
+1.6 (3)
+2.0 (5)
+
+---------------------
+
+Otomobil
+Mazda
+Premacy
+1.8 (3)
+
+---------------------
+
+Otomobil
+Mazda
+121
+1.3 (2)
+
+---------------------
+
+Otomobil
+Mazda
+323
+1.3 (3)
+1.5 (105)
+1.6 (148)
+1.7 (1)
+1.8 (32)
+2.0 (1)
+
+Otomobil
+Mazda
+323
+1.3
+1.3i (3)
+
+Otomobil
+Mazda
+323
+1.5
+1.5i (77)
+Familia (18)
+GL (2)
+GLX (4)
+Practica (4)
+
+Otomobil
+Mazda
+323
+1.6
+1.6i (40)
+Familia (12)
+F Astina (1)
+GLX (95)
+
+Otomobil
+Mazda
+323
+1.7
+D LX (1)
+
+Otomobil
+Mazda
+323
+1.8
+1.8i (1)
+Familia (25)
+F Astina (2)
+GLX (1)
+GT (2)
+TE (1)
+
+Otomobil
+Mazda
+323
+2.0
+GT (1)
+
+---------------------
+
+Otomobil
+Mazda
+626
+1.6 (10)
+2.0 (116)
+
+---------------------
+
+Otomobil
+Mazda
+Lantis
+1.6 (2)
+1.8 (18)
+
+---------------------
+
+Otomobil
+Mazda
+RX
+RX-7 (3)
+RX-8 (24)
+
+---------------------
+
+Otomobil
+Mazda
+Xedos
+6 (1)
+9 (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Mazda
+CX-3 (93)
+CX-5 (30)
+CX-9 (6)
+B Serisi (66)
+
+---------------------
+
+Arazi, SUV & Pickup
+Mazda
+CX-3
+1.5 SKY-D
+Motion (6)
+Power (14)
+Power Sense (51)
+Power Sense Plus (9)
+Reflex (13)
+
+---------------------
+
+Arazi, SUV & Pickup
+Mazda
+CX-5
+2.0 (6)
+2.0i (21)
+2.2 (3)
+
+Arazi, SUV & Pickup
+Mazda
+CX-5
+2.0
+Power Sense 100. Yıl (1)
+Power Sense Plus (5)
+
+Arazi, SUV & Pickup
+Mazda
+CX-5
+2.0i
+Power (13)
+Power Sense (7)
+Power Sense Plus (1)
+
+Arazi, SUV & Pickup
+Mazda
+CX-5
+2.2
+Power (3)
+
+---------------------
+
+Arazi, SUV & Pickup
+Mazda
+CX-9
+3.7L Sport (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Mazda
+B Serisi
+BT 50 2.5 D (10)
+BT 50 3.0 D (3)
+B 2500 (53)
+
+---------------------

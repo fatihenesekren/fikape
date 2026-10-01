@@ -1,0 +1,27 @@
+### Volvo
+- otomobil: zaten vardı 232 · eklendi 20 · belirsiz 50
+  - + S60 › 2.0 T › Business
+  - + S60 › 2.0 T › Sports
+  - + S60 › 2.5 T › Premium
+  - + S70/V70 (1996-2000) › 2.0 T › Standart
+  - + S70/V70 (1996-2000) › 2.0 T5 › Standart
+  - + S70/V70 (1996-2000) › 2.3 T5 › Standart
+  - + S80 › 2.4 D › Momentum
+  - + Yeni model: 440 (1990–1996) — en.wikipedia Volvo 440/460 (1988-1996; 1990 öncesi kırpıldı)
+  - + 440 › 2.0i › Standart
+  - + Yeni model: 480 (1990–1995) — en.wikipedia Volvo 480 (1986-1995; 1990 öncesi kırpıldı)
+  - + 480 › 1.7 Turbo › Standart
+  - + 850 › 2.0 GLE › Standart
+  - + 850 › 2.0 T5 › Standart
+  - + 850 › 2.3 T5 › Standart
+  - + 850 › 2.5 GLT › Standart
+  - + 940 › 2.0 GL › Standart
+  - + 940 › 2.3 GLE › Standart
+  - + Yeni model: 960 (1990–1997) — autoevolution Volvo 960 (1990-1997)
+  - + 960 › 2.5 › Standart
+  - + 960 › 3.0 › Standart
+  - ~ eşleme: "S70" → "S70/V70 (1996-2000)"
+  - ~ eşleme: "V40 Cross Country" → "V40"
+  - ~ eşleme: "V60 Cross Country" → "V60"
+  - ~ eşleme: "V90 Cross Country" → "V90"
+  - ~ eşleme: "EX30 Cross Country" → "EX30"

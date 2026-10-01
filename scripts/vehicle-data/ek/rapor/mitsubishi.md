@@ -1,0 +1,21 @@
+### Mitsubishi
+- otomobil: zaten vardı 38 · eklendi 17 · belirsiz 29
+  - + Galant › 2.0 › GTi
+  - + Galant › 2.4 GDI › Elegance
+  - + Yeni model: 3000GT (1990–2000) — en.wikipedia Mitsubishi 3000GT (1990-2000)
+  - + Carisma › 1.6 › Avance
+  - + Carisma › 1.6 › GL
+  - + Carisma › 1.6 › GLX
+  - + Carisma › 1.8 › GLS
+  - + Carisma › 1.8 GDI › Avance
+  - + Carisma › 1.8 GDI › Comfort
+  - + Carisma › 1.8 GDI › Elegance
+  - + Carisma › 1.8 GDI › L
+  - + Carisma › 1.8 GDI › LX
+  - + Carisma › 1.9 DI-D › Classic
+  - + Yeni model: Diamante (1990–2005) — en.wikipedia Mitsubishi Diamante (1990-2005)
+  - + Diamante › 3.0 › Standart
+  - + Yeni model: Eclipse (1990–2012) — en.wikipedia Mitsubishi Eclipse (model yılı 1990-2012, dört nesil)
+  - + Eclipse › 2.0 › Standart
+  - ~ eşleme: "Lancer Evolution" → "Lancer"
+- kamyonet: zaten vardı 13 · eklendi 0 · belirsiz 9

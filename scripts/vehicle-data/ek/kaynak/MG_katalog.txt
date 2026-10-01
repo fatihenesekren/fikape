@@ -1,0 +1,113 @@
+Otomobil
+MG
+F (3)
+MG4 (52)
+MG7 (26)
+ZR (6)
+
+---------------------
+
+Otomobil
+MG
+F
+1.6 (1)
+1.8 (2)
+
+---------------------
+
+Otomobil
+MG
+MG4
+MG4 (2)
+Comfort (24)
+Luxury (23)
+XPower (3)
+
+---------------------
+
+Otomobil
+MG
+MG7
+1.5
+Excellence (16)
+Excellence Red Edition (10)
+
+---------------------
+
+Otomobil
+MG
+ZR
+160 (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+MG
+EHS (13)
+HS (469)
+Marvel R (8)
+ZS (223)
+ZS EV (43)
+
+---------------------
+
+Arazi, SUV & Pickup
+MG
+EHS
+1.5 PHEV
+Comfort (2)
+Luxury (11)
+
+---------------------
+
+Arazi, SUV & Pickup
+MG
+HS
+1.5 PHEV (20)
+1.5 T-GDI (449)
+
+---------------------
+
+Arazi, SUV & Pickup
+MG
+Marvel R
+Luxury (2)
+Performance (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+MG
+ZS
+1.0 T-GDI (168)
+1.5 (19)
+1.5 VTI (36)
+
+Arazi, SUV & Pickup
+MG
+ZS
+1.0 T-GDI
+Comfort (46)
+Luxury (22)
+Luxury Plus (100)
+
+Arazi, SUV & Pickup
+MG
+ZS
+1.5
+Luxury (19)
+
+Arazi, SUV & Pickup
+MG
+ZS
+1.5 VTI
+Comfort (36)
+
+---------------------
+
+Arazi, SUV & Pickup
+MG
+ZS EV
+Luxury (43)
+
+---------------------

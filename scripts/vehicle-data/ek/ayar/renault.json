@@ -1,0 +1,19 @@
+{
+  "takma": {
+    "R5 E-Tech": "R5",
+    "Scenic EV": "Scenic E-Tech",
+    "Fluence Z.E.": "Fluence",
+    "Grand Modüs": "Modus (2004-2012)",
+    "R 9": "9 Broadway (1985-2000)",
+    "R 11": "11 Flash (1987-1996)",
+    "R 12": "12 Toros (1971-2000)",
+    "R 19": "19 Europa (1992-2003)",
+    "R 21": "21 Manager (1990-1995)"
+  },
+  "atla": {
+    "Twizy": "Renault Twizy: L6e dört tekerlekli elektrikli quadricycle (2012-2023) — otomobil/motosiklet kategorisi kararı gerektirir; katalogda yok.",
+    "Vel Satis": "Renault Vel Satis (2002-2009 olarak bilinir) — bu oturumda internetten doğrulanamadığı için eklenmedi.",
+    "R 25": "Renault 25 (1984-1992 olarak bilinir; tek satır '2.2 TX') — bu oturumda internetten doğrulanamadığı için eklenmedi.",
+    "Scenic RX4": "Renault Scenic RX4 (2000-2003 olarak bilinir) — bu oturumda internetten doğrulanamadığı için eklenmedi; Scenic'in alt sürümü de olabilir."
+  }
+}

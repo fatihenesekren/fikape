@@ -1,0 +1,2134 @@
+------------------------
+
+Otomobil
+Audi
+A1 (178)
+A2 (2)
+A3 (6.541)
+A4 (3.780)
+A5 (1.577)
+A6 (3.340)
+A6 E-Tron (29)
+A7 (262)
+A8 (254)
+E-Tron GT (34)
+R8 (9)
+RS (99)
+S Serisi (111)
+TT (64)
+TTS (18)
+80 Serisi (32)
+100 Serisi (8)
+200 Serisi (1)
+
+------------------------
+
+Otomobil
+Audi
+A1
+1.4 TFSI (53)
+1.6 TDI (124)
+
+Otomobil
+Audi
+A1
+1.4 TFSI
+Ambition (36)
+Attraction (17)
+
+Otomobil
+Audi
+A1
+1.6 TDI
+Ambition (40)
+Attraction (55)
+S Line (5)
+Sport (24)
+
+------------------------
+
+Otomobil
+Audi
+A2
+1.4 (2)
+
+------------------------
+
+Otomobil
+Audi
+A3
+A3 Cabrio (84)
+A3 Hatchback (360)
+A3 Sedan (3.173)
+A3 Sportback (2.921)
+
+Otomobil
+Audi
+A3
+A3 Cabrio
+35 TFSI (12)
+1.2 TFSI (2)
+1.4 TFSI (53)
+1.5 TFSI (6)
+1.6 (3)
+1.8 TFSI (8)
+
+Otomobil
+Audi
+A3
+A3 Cabrio
+35 TFSI
+Design (5)
+Sport (7)
+
+Otomobil
+Audi
+A3
+A3 Cabrio
+1.2 TFSI (2)
+
+Otomobil
+Audi
+A3
+A3 Cabrio
+1.4 TFSI
+Ambiente (23)
+Ambition (21)
+Attraction (5)
+Design Line (1)
+Sport Line (3)
+
+Otomobil
+Audi
+A3
+A3 Cabrio
+1.5 TFSI
+Design Line (1)
+Sport Line (5)
+
+Otomobil
+Audi
+A3
+A3 Cabrio
+1.6 (3)
+
+Otomobil
+Audi
+A3
+A3 Cabrio
+1.8 TFSI (8)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+1.4 TFSI (70)
+1.6 (208)
+1.6 FSI (29)
+1.6 TDI (19)
+1.8 (4)
+1.8 T (11)
+1.8 TFSI (2)
+1.9 TDI (8)
+2.0 FSI (2)
+2.0 TDI (7)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+1.4 TFSI
+1.4 TFSI (6)
+Ambiente (14)
+Ambition (31)
+Attraction (16)
+Sport Line (3)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+1.6
+1.6 (18)
+Ambiente (102)
+Ambition (46)
+Attraction (42)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+1.6 FSI
+1.6 FSI (29)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+1.6 TDI
+Ambiente (6)
+Ambition (9)
+Attraction (4)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+1.8
+Ambiente (2)
+Attraction (2)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+1.8 T
+Ambiente (7)
+Ambition (3)
+Attraction (1)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+1.8 TFSI
+Ambition (2)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+1.9 TDI
+Attraction (5)
+S-Line (3)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+2.0 FSI
+Ambition (1)
+Attraction (1)
+
+Otomobil
+Audi
+A3
+A3 Hatchback
+2.0 TDI
+2.0 TDI (1)
+Ambition (6)
+
+Otomobil
+Audi
+A3
+A3 Sedan
+30 TDI (76)
+30 TFSI (57)
+35 TFSI (1.196)
+1.0 TFSI (68)
+1.2 TFSI (3)
+1.4 TFSI (63)
+1.5 TFSI (21)
+1.6 TDI (1.688)
+
+Otomobil
+Audi
+A3
+A3 Sedan
+30 TDI
+Design (55)
+Dynamic (13)
+Sport (8)
+
+Otomobil
+Audi
+A3
+A3 Sedan
+30 TFSI
+Advanced (43)
+Design (1)
+Dynamic (2)
+S Line (10)
+Sport (1)
+
+Otomobil
+Audi
+A3
+A3 Sedan
+35 TFSI
+35 TFSI (3)
+Advanced (627)
+Design (71)
+Dynamic (194)
+S Line (252)
+Sport (49)
+
+Otomobil
+Audi
+A3
+A3 Sedan
+1.0 TFSI
+1.0 TFSI (1)
+Design Line (7)
+Dynamic (53)
+Sport Line (7)
+
+Otomobil
+Audi
+A3
+A3 Sedan
+1.2 TFSI
+Attraction (3)
+
+Otomobil
+Audi
+A3
+A3 Sedan
+1.4 TFSI
+Ambiante (20)
+Ambition (16)
+Attraction (27)
+
+Otomobil
+Audi
+A3
+A3 Sedan
+1.5 TFSI
+Advanced (13)
+Design Line (3)
+S Line (1)
+Sport Line (4)
+
+Otomobil
+Audi
+A3
+A3 Sedan
+1.6 TDI
+1.6 TDI (13)
+Ambiente (323)
+Ambition (237)
+Attraction (361)
+Design Line (323)
+Dynamic (249)
+S Line (41)
+Sport Line (140)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+30 TDI (75)
+30 TFSI (76)
+35 TFSI (628)
+1.0 TFSI (157)
+1.2 TFSI (59)
+1.4 TFSI (266)
+1.5 TFSI (21)
+1.6 (347)
+1.6 FSI (27)
+1.6 TDI (1.237)
+1.8 (1)
+1.8 T (4)
+1.8 TFSI (4)
+1.9 TDI (1)
+2.0 FSI (1)
+2.0 TDI (16)
+2.0 TFSI (1)
+3.2 (1)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+30 TDI
+Design (22)
+Dynamic (23)
+Sport (30)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+30 TFSI
+Advanced (33)
+Design (2)
+Dynamic (31)
+S Line (9)
+Sport (1)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+35 TFSI
+Advanced (293)
+All Street (7)
+Design (35)
+Dynamic (93)
+S Line (148)
+Sport (52)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.0 TFSI
+Design Line (13)
+Dynamic (133)
+Sport Line (11)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.2 TFSI
+Ambiante (7)
+Attraction (52)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.4 TFSI
+1.4 TFSI (7)
+Ambiente (20)
+Ambition (136)
+Attraction (98)
+Sport Line (5)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.5 TFSI
+Advanced (9)
+Dynamic (2)
+S Line (1)
+Sport Line (9)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.6
+1.6 (24)
+Ambiente (46)
+Ambition (111)
+Attraction (166)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.6 FSI (27)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.6 TDI
+Standart (2)
+Ambiente (252)
+Ambition (292)
+Attraction (427)
+Design Line (81)
+Dynamic (69)
+Sport Line (114)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.8
+Ambiente (1)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.8 T
+Ambiente (2)
+Attraction (2)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.8 TFSI
+Attraction (4)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+1.9 TDI
+Attraction (1)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+2.0 FSI
+Ambition (1)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+2.0 TDI
+2.0 TDI (4)
+Ambition (9)
+Ambition Quattro (1)
+Attraction (2)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+2.0 TFSI
+Ambition (1)
+
+Otomobil
+Audi
+A3
+A3 Sportback
+3.2
+Ambition Quattro (1)
+
+------------------------
+
+Otomobil
+Audi
+A4
+A4 Avant (96)
+A4 Cabrio (9)
+A4 Sedan (3.580)
+A4 Allroad Quattro (54)
+
+Otomobil
+Audi
+A4
+A4 Avant
+35 TDI (1)
+40 TDI (2)
+1.4 TFSI (20)
+1.8 (2)
+1.8 T (4)
+1.8 TFSI (8)
+1.9 TDI (7)
+2.0 (2)
+2.0 TDI (24)
+2.0 TDI Advanced (1)
+2.0 TDI Dynamic (1)
+2.0 TDI Quattro (1)
+2.0 TDI Quattro Design (1)
+2.0 TDI Quattro Sport (1)
+2.0 TDI S Line (1)
+2.0 TDI Sport (1)
+2.0 TFSI (1)
+2.0 TFSI Quattro (2)
+2.0 TFSI Quattro Dynamic (1)
+2.5 TDI (5)
+2.5 TDI Quattro (5)
+3.0 Quattro (5)
+
+Otomobil
+Audi
+A4
+A4 Avant
+35 TDI
+S Line (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+40 TDI
+Quattro Advanced (1)
+Quattro S Line (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+1.4 TFSI (20)
+
+Otomobil
+Audi
+A4
+A4 Avant
+1.8 (2)
+
+Otomobil
+Audi
+A4
+A4 Avant
+1.8 T (4)
+
+Otomobil
+Audi
+A4
+A4 Avant
+1.8 TFSI (8)
+
+Otomobil
+Audi
+A4
+A4 Avant
+1.9 TDI (7)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 (2)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TDI (24)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TDI Advanced (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TDI Dynamic (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TDI Quattro (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TDI Quattro Design (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TDI Quattro Sport (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TDI S Line (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TDI Sport (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TFSI (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TFSI Quattro (2)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.0 TFSI Quattro Dynamic (1)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.5 TDI (5)
+
+Otomobil
+Audi
+A4
+A4 Avant
+2.5 TDI Quattro (5)
+
+Otomobil
+Audi
+A4
+A4 Avant
+3.0 Quattro (5)
+
+Otomobil
+Audi
+A4
+A4 Cabrio
+1.8 T (2)
+2.0 TFSI (1)
+2.5 TDI (2)
+3.0 (4)
+
+Otomobil
+Audi
+A4
+A4 Cabrio
+1.8 T (2)
+
+Otomobil
+Audi
+A4
+A4 Cabrio
+2.0 TFSI (1)
+
+Otomobil
+Audi
+A4
+A4 Cabrio
+2.5 TDI (2)
+
+Otomobil
+Audi
+A4
+A4 Cabrio
+3.0 (4)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+40 TDI (697)
+45 TFSI (150)
+1.4 TFSI (9)
+1.4 TFSI Design (303)
+1.4 TFSI Dynamic (188)
+1.4 TFSI Sport (163)
+1.6 (185)
+1.8 (30)
+1.8 T (50)
+1.8 TFSI (214)
+1.8 T Quattro (14)
+1.9 TDI (34)
+1.9 TDI Quattro (2)
+2.0 (30)
+2.0 TDI (940)
+2.0 TDI Design (97)
+2.0 TDI Dynamic (74)
+2.0 TDI S Line (9)
+2.0 TDI Sport (13)
+2.0 TDI Quattro (144)
+2.0 TDI Quattro Design (56)
+2.0 TDI Quattro Dynamic (38)
+2.0 TDI Quattro Sport (33)
+2.0 TFSI (9)
+2.0 TFSI Quattro (66)
+2.0 TFSI Quattro S Line (2)
+2.0 TFSI Quattro Sport (1)
+2.4 (7)
+2.5 TDI (5)
+2.5 TDI Quattro (1)
+2.7 TDI (5)
+2.8 Quattro (2)
+3.0 (1)
+3.0 Quattro (8)
+3.2 FSI (1)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+40 TDI
+Advanced (271)
+Quattro Advanced (341)
+Design (4)
+Dynamic (1)
+Quattro Dynamic (1)
+S Line (25)
+Quattro S Line (56)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+45 TFSI
+Quattro Advanced (23)
+Quattro Design (10)
+Quattro S Line (119)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+1.4 TFSI (9)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+1.4 TFSI Design (303)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+1.4 TFSI Dynamic (189)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+1.4 TFSI Sport (163)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+1.6 (183)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+1.8 (30)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+1.8 T (50)
+
+Otomobil
+Audi
+A4
+A4 Sedan
+1.8 TFSI (215)
+
+Otomobil
+Audi
+A4
+A4 Allroad Quattro
+40 TDI (8)
+45 TFSI (2)
+2.0 TDI (34)
+2.0 TFSI (10)
+
+------------------------
+
+Otomobil
+Audi
+A5
+A5 Avant (1)
+A5 Cabrio (53)
+A5 Coupe (248)
+A5 Sedan (161)
+A5 Sportback (1.121)
+
+Otomobil
+Audi
+A5
+A5 Avant
+2.0 TFSI Quattro (1)
+
+Otomobil
+Audi
+A5
+A5 Cabrio
+40 TDI (5)
+45 TFSI (29)
+1.8 TFSI (4)
+2.0 TDI (2)
+2.0 TFSI (1)
+2.0 TFSI Quattro (12)
+
+Otomobil
+Audi
+A5
+A5 Cabrio
+40 TDI
+Quattro S Line (5)
+
+Otomobil
+Audi
+A5
+A5 Cabrio
+45 TFSI
+Quattro S Line (29)
+
+Otomobil
+Audi
+A5
+A5 Cabrio
+1.8 TFSI (4)
+
+Otomobil
+Audi
+A5
+A5 Cabrio
+2.0 TDI (2)
+
+Otomobil
+Audi
+A5
+A5 Cabrio
+2.0 TFSI (1)
+
+Otomobil
+Audi
+A5
+A5 Cabrio
+2.0 TFSI Quattro (12)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+40 TDI (6)
+45 TFSI (32)
+1.4 TFSI Design (12)
+1.4 TFSI Sport (22)
+1.8 TFSI (62)
+2.0 TDI (13)
+2.0 TDI Quattro (21)
+2.0 TFSI (18)
+2.0 TFSI Quattro (52)
+2.7 TDI (9)
+3.0 TDI Quattro (1)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+40 TDI
+Quattro Advanced (2)
+Quattro Design (1)
+Quattro S Line (3)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+45 TFSI
+Quattro S Line (32)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+1.4 TFSI Design (12)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+1.4 TFSI Sport (22)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+1.8 TFSI (62)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+2.0 TDI (13)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+2.0 TDI Quattro (21)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+2.0 TFSI (18)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+2.0 TFSI Quattro (52)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+2.7 TDI (9)
+
+Otomobil
+Audi
+A5
+A5 Coupe
+3.0 TDI Quattro (1)
+
+Otomobil
+Audi
+A5
+A5 Sedan
+2.0 TDI Quattro (23)
+2.0 TFSI (43)
+2.0 TFSI Quattro (96)
+
+Otomobil
+Audi
+A5
+A5 Sedan
+2.0 TDI Quattro (23)
+
+Otomobil
+Audi
+A5
+A5 Sedan
+2.0 TFSI (43)
+
+Otomobil
+Audi
+A5
+A5 Sedan
+2.0 TFSI Quattro (96)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+40 TDI (267)
+45 TFSI (86)
+1.4 TFSI Design (102)
+1.4 TFSI Dynamic (18)
+1.4 TFSI Sport (143)
+1.8 TFSI (4)
+2.0 TDI (237)
+2.0 TDI Quattro (150)
+2.0 TDI Quattro Design (28)
+2.0 TDI Quattro Sport (37)
+2.0 TFSI (4)
+2.0 TFSI Quattro (39)
+2.0 TFSI Quattro Design (1)
+2.0 TFSI Quattro Sport (1)
+3.0 TDI Quattro (1)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+40 TDI
+Quattro Advanced (127)
+Quattro Design (17)
+Quattro S Line (112)
+Quattro Sport (11)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+45 TFSI
+Quattro Advanced (1)
+Quattro S Line (85)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+1.4 TFSI Design (102)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+1.4 TFSI Dynamic (18)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+1.4 TFSI Sport (143)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+1.8 TFSI (4)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+2.0 TDI (237)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+2.0 TDI Quattro (150)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+2.0 TDI Quattro Design (28)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+2.0 TDI Quattro Sport (37)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+2.0 TFSI (4)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+2.0 TFSI Quattro (39)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+2.0 TFSI Quattro Design (1)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+2.0 TFSI Quattro Sport (1)
+
+Otomobil
+Audi
+A5
+A5 Sportback
+3.0 TDI Quattro (1)
+
+----------------------------
+
+Otomobil
+Audi
+A6
+A6 Sedan (3.232)
+A6 Avant (76)
+A6 Allroad Quattro (41)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+35 TDI (1)
+40 TDI (891)
+45 TFSI (304)
+50 TDI (24)
+55 TFSI (1)
+1.8 T (29)
+1.9 TDI (18)
+2.0 (5)
+2.0 Quattro (3)
+2.0 TDI (1.156)
+2.0 TDI Quattro (394)
+2.0 TFSI (24)
+2.0 TFSI Quattro (102)
+2.4 (19)
+2.4 Quattro (2)
+2.5 TDI (17)
+2.5 TDI Quattro (11)
+2.6 (1)
+2.7 TDI (3)
+2.7 TDI Quattro (2)
+2.7 T Quattro (4)
+2.8 (10)
+3.0 (2)
+3.0 Quattro (3)
+3.0 TDI Quattro (182)
+3.0 TFSI Quattro (4)
+3.2 FSI Quattro (17)
+4.2 Quattro (1)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+35 TDI (1)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+40 TDI
+Quattro Advanced (291)
+Quattro S Line (173)
+Design (30)
+Quattro Design (248)
+Sport (8)
+Quattro Sport (141)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+45 TFSI
+Quattro Advanced (76)
+Quattro Design (42)
+Quattro S Line (121)
+Quattro Sport (67)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+50 TDI
+Quattro Advanced (1)
+Quattro Design (21)
+Quattro Sport (2)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+55 TFSI
+E-Quattro S Line (1)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+1.8 T
+1.8 T (20)
+Advance (6)
+Quattro (1)
+Quattro Advance (2)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+1.9 TDI (18)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.0 (5)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.0 Quattro (3)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.0 TDI (1.155)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.0 TDI Quattro (395)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.0 TFSI (24)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.0 TFSI Quattro (102)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.4 (19)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.4 Quattro (2)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.5 TDI (17)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.5 TDI Quattro (11)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.6 (1)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.7 TDI (3)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.7 TDI Quattro (2)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.7 T Quattro (4)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+2.8
+2.8 (6)
+Quattro (4)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+3.0 (2)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+3.0 Quattro (3)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+3.0 TDI Quattro (182)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+3.0 TFSI Quattro (4)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+3.2 FSI Quattro (17)
+
+Otomobil
+Audi
+A6
+A6 Sedan
+4.2 Quattro (1)
+
+Otomobil
+Audi
+A6
+A6 Avant
+40 TDI (9)
+45 TFSI (8)
+1.8 T (1)
+1.8 TFSI (1)
+1.9 TDI (1)
+2.0 TDI (13)
+2.0 TDI Quattro (23)
+2.4 (1)
+2.5 TDI (6)
+2.5 TDI Quattro (5)
+2.7 TDI (2)
+2.8 (1)
+2.8 Quattro (2)
+3.0 TDI Quattro (3)
+
+Otomobil
+Audi
+A6
+A6 Avant
+40 TDI
+Quattro Advanced (3)
+Quattro Design (3)
+Quattro S Line (2)
+Quattro Sport (1)
+
+Otomobil
+Audi
+A6
+A6 Avant
+45 TFSI
+Quattro S Line (4)
+Quattro Sport (4)
+
+Otomobil
+Audi
+A6
+A6 Avant
+1.8 T (1)
+
+Otomobil
+Audi
+A6
+A6 Avant
+1.8 TFSI (1)
+
+Otomobil
+Audi
+A6
+A6 Avant
+1.9 TDI (1)
+
+Otomobil
+Audi
+A6
+A6 Avant
+2.0 TDI (13)
+
+Otomobil
+Audi
+A6
+A6 Avant
+2.0 TDI Quattro (23)
+
+Otomobil
+Audi
+A6
+A6 Avant
+2.4 (1)
+
+Otomobil
+Audi
+A6
+A6 Avant
+2.5 TDI (6)
+
+Otomobil
+Audi
+A6
+A6 Avant
+2.5 TDI Quattro (5)
+
+Otomobil
+Audi
+A6
+A6 Avant
+2.7 TDI (2)
+
+Otomobil
+Audi
+A6
+A6 Avant
+2.8 (1)
+
+Otomobil
+Audi
+A6
+A6 Avant
+2.8 Quattro (2)
+
+Otomobil
+Audi
+A6
+A6 Avant
+3.0 TDI Quattro (3)
+
+Otomobil
+Audi
+A6
+A6 Allroad Quattro
+40 TDI (17)
+2.5 TDI (3)
+2.7 T (4)
+3.0 TDI (17)
+
+Otomobil
+Audi
+A6
+A6 Allroad Quattro
+40 TDI (17)
+
+Otomobil
+Audi
+A6
+A6 Allroad Quattro
+2.5 TDI (3)
+
+Otomobil
+Audi
+A6
+A6 Allroad Quattro
+2.7 T (4)
+
+Otomobil
+Audi
+A6
+A6 Allroad Quattro
+3.0 TDI (17)
+
+---------------------------
+
+Otomobil
+Audi
+A6 E-Tron
+A6 E-Tron Avant (9)
+A6 E-Tron Sportback (20)
+
+Otomobil
+Audi
+A6 E-Tron
+A6 E-Tron Avant
+Performance (3)
+Standart (6)
+
+Otomobil
+Audi
+A6 E-Tron
+A6 E-Tron Sportback
+Performance (1)
+Quattro (1)
+Standart (18)
+
+------------------------------
+
+Otomobil
+Audi
+A7
+40 TDI (82)
+45 TFSI (33)
+50 TDI (9)
+55 TFSI (3)
+2.0 TFSI (35)
+3.0 TDI (98)
+3.0 TFSI (1)
+
+------------------------------
+
+Otomobil
+Audi
+A8
+50 TDI (51)
+55 TFSI (19)
+60 TFSI (39)
+2.0 TFSI Quattro (5)
+2.5 TDI (1)
+2.5 TDI Quattro (1)
+3.0 TDI (102)
+3.0 TFSI Quattro (1)
+3.3 TDI Quattro (1)
+3.7 (4)
+4.0 TDI Quattro (3)
+4.0 TFSI Quattro (1)
+4.2 (20)
+4.2 TDI (7)
+6.0 (1)
+
+Otomobil
+Audi
+A8
+50 TDI
+Quattro (2)
+Quattro Long (49)
+
+Otomobil
+Audi
+A8
+55 TFSI
+Quattro Long (19)
+
+Otomobil
+Audi
+A8
+60 TFSI
+Quattro Long (39)
+
+Otomobil
+Audi
+A8
+2.0 TFSI Quattro (5)
+
+Otomobil
+Audi
+A8
+2.5 TDI (1)
+
+Otomobil
+Audi
+A8
+2.5 TDI Quattro (1)
+
+Otomobil
+Audi
+A8
+3.0 TDI
+Quattro (23)
+Quattro Long (79)
+
+Otomobil
+Audi
+A8
+3.0 TFSI Quattro (1)
+
+Otomobil
+Audi
+A8
+3.3 TDI Quattro (1)
+
+Otomobil
+Audi
+A8
+3.7
+Quattro (4)
+
+Otomobil
+Audi
+A8
+4.0 TDI Quattro (3)
+
+Otomobil
+Audi
+A8
+4.0 TFSI Quattro (1)
+
+Otomobil
+Audi
+A8
+4.2
+FSI Quattro Long (3)
+Quattro (6)
+Quattro Long (11)
+
+Otomobil
+Audi
+A8
+4.2 TDI
+Quattro (3)
+Quattro Long (4)
+
+Otomobil
+Audi
+A8
+6.0
+Quattro Long (1)
+
+------------------------
+
+Otomobil
+Audi
+E-Tron GT
+GT Quattro (30)
+GT RS (4)
+
+------------------------
+
+Otomobil
+Audi
+R8
+4.2 FSI (6)
+5.2 FSI (3)
+
+Otomobil
+Audi
+R8
+4.2 FSI
+Quattro (2)
+Quattro R-tronic (4)
+
+Otomobil
+Audi
+R8
+5.2 FSI
+Quattro R-tronic (3)
+
+------------------------
+
+Otomobil
+Audi
+RS
+RS 3 (4)
+RS 4 (1)
+RS 5 (3)
+RS 6 (80)
+RS 7 (10)
+
+------------------------
+
+Otomobil
+Audi
+S Serisi
+S3 (67)
+S4 (4)
+S5 (16)
+S6 (3)
+S8 (21)
+
+------------------------
+
+Otomobil
+Audi
+TT
+1.8 (17)
+2.0 (48)
+
+Otomobil
+Audi
+TT
+1.8
+1.8 T (6)
+T Quattro (11)
+
+Otomobil
+Audi
+TT
+2.0
+TFSI (34)
+TFSI Quattro (12)
+TFSI S Quattro (2)
+
+------------------------
+
+Otomobil
+Audi
+TTS
+2.0 TFSI
+2.0 TFSI (4)
+Quattro (14)
+
+------------------------
+
+Otomobil
+Audi
+80 Serisi
+1.6 (4)
+1.6 D (4)
+1.6 TD (4)
+1.8 (5)
+1.8 S (4)
+1.9 (1)
+1.9 TDI (5)
+2.0 (2)
+2.3 (1)
+2.8 (2)
+
+------------------------
+
+Otomobil
+Audi
+100 Serisi
+1.6 (1)
+1.9 (2)
+2.0 (1)
+2.3 (1)
+2.8 Quattro (3)
+
+------------------------
+
+Otomobil
+Audi
+200 Serisi
+2.2 (1)
+
+------------------------
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+E-Tron (25)
+E-Tron Sportback (14)
+Q2 (637)
+Q3 (643)
+Q3 Sportback (239)
+Q4 E-tron (55)
+Q4 E-tron Sportback (18)
+Q5 (505)
+Q5 Sportback (11)
+Q6 E-tron (20)
+Q6 E-tron Sportback (2)
+Q7 (663)
+Q8 (173)
+Q8 E-tron (36)
+Q8 E-tron Sportback (10)
+RS Q8 (29)
+SQ7 (4)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+E-Tron
+55 Quattro (23)
+S Quattro (2)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+E-Tron Sportback
+55 Quattro
+Advanced (5)
+S Line (9)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q2
+30 TDI (145)
+30 TFSI (24)
+35 TFSI (323)
+1.0 TFSI (42)
+1.4 TFSI (17)
+1.6 TDI (86)
+
+Arazi, SUV & Pickup
+Audi
+Q2
+30 TDI
+Design (78)
+Dynamic (1)
+Sport (66)
+
+Arazi, SUV & Pickup
+Audi
+Q2
+30 TFSI
+Design (15)
+Dynamic (1)
+Sport (8)
+
+Arazi, SUV & Pickup
+Audi
+Q2
+35 TFSI
+Advanced (267)
+Design (36)
+Dynamic (2)
+Sport (18)
+
+Arazi, SUV & Pickup
+Audi
+Q2
+1.0 TFSI
+Design (34)
+Dynamic (2)
+Sport (6)
+
+Arazi, SUV & Pickup
+Audi
+Q2
+1.4 TFSI
+Design (9)
+Dynamic (3)
+Sport (5)
+
+Arazi, SUV & Pickup
+Audi
+Q2
+1.6 TDI
+Design (57)
+Dynamic (3)
+Sport (26)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q3
+35 TFSI (407)
+1.4 TFSi (140)
+1.5 TFSi (41)
+2.0 TDI (55)
+
+Arazi, SUV & Pickup
+Audi
+Q3
+35 TFSI
+Advanced (288)
+S Line (119)
+
+Arazi, SUV & Pickup
+Audi
+Q3
+1.4 TFSi (140)
+
+Arazi, SUV & Pickup
+Audi
+Q3
+1.5 TFSi (41)
+
+Arazi, SUV & Pickup
+Audi
+Q3
+2.0 TDI (55)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q3 Sportback
+1.5 TFSI (2)
+35 TFSI (236)
+45 TFSI (1)
+
+Arazi, SUV & Pickup
+Audi
+Q3 Sportback
+1.5 TFSI
+Standart (2)
+
+Arazi, SUV & Pickup
+Audi
+Q3 Sportback
+35 TFSI
+S Line (236)
+
+Arazi, SUV & Pickup
+Audi
+Q3 Sportback
+45 TFSI
+E-Tron (1)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q4 E-tron
+40 e-Tron (24)
+45 e-Tron (9)
+55 e-Tron (22)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q4 E-tron Sportback
+40 e-Tron (8)
+45 e-Tron (3)
+55 e-Tron (8)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q5
+40 TDI (57)
+45 TFSI (15)
+2.0 TDI Quattro (329)
+2.0 TDI Quattro Design (29)
+2.0 TDI Quattro Dynamic (1)
+2.0 TDI Quattro Sport (22)
+2.0 TFSI Quattro (50)
+3.0 TDI Quattro SQ5 (2)
+
+Arazi, SUV & Pickup
+Audi
+Q5
+40 TDI
+Quattro Advanced (14)
+Quattro Design (18)
+Quattro S Line (13)
+Quattro Sport (12)
+
+Arazi, SUV & Pickup
+Audi
+Q5
+45 TFSI
+Quattro Advanced (3)
+Quattro S Line (12)
+
+Arazi, SUV & Pickup
+Audi
+Q5
+2.0 TDI Quattro (329)
+
+Arazi, SUV & Pickup
+Audi
+Q5
+2.0 TDI Quattro Design (29)
+
+Arazi, SUV & Pickup
+Audi
+Q5
+2.0 TDI Quattro Dynamic (1)
+
+Arazi, SUV & Pickup
+Audi
+Q5
+2.0 TDI Quattro Sport (22)
+
+Arazi, SUV & Pickup
+Audi
+Q5
+2.0 TFSI Quattro (50)
+
+Arazi, SUV & Pickup
+Audi
+Q5
+3.0 TDI Quattro SQ5 (2)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q5 Sportback
+40 TDI (4)
+45 TFSI (5)
+2.0 TDI Quattro (2)
+
+Arazi, SUV & Pickup
+Audi
+Q5 Sportback
+40 TDI
+Advanced (3)
+S Line (1)
+
+Arazi, SUV & Pickup
+Audi
+Q5 Sportback
+45 TFSI
+S Line (5)
+
+Arazi, SUV & Pickup
+Audi
+Q5 Sportback
+2.0 TDI Quattro (2)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q6 E-tron
+55 Quattro (20)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q6 E-tron Sportback
+Standart (2)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q7
+45 TFSI (106)
+50 TDI (45)
+55 TFSI (16)
+2.0 TFSI Quattro (54)
+3.0 TDI Quattro (437)
+3.0 TFSI Quattro (2)
+4.2 FSI Quattro (3)
+
+Arazi, SUV & Pickup
+Audi
+Q7
+45 TFSI (106)
+
+Arazi, SUV & Pickup
+Audi
+Q7
+50 TDI
+Quattro (2)
+Quattro S Line (43)
+
+Arazi, SUV & Pickup
+Audi
+Q7
+55 TFSI
+Quattro S Line (16)
+
+Arazi, SUV & Pickup
+Audi
+Q7
+2.0 TFSI Quattro (54)
+
+Arazi, SUV & Pickup
+Audi
+Q7
+3.0 TDI Quattro (437)
+
+Arazi, SUV & Pickup
+Audi
+Q7
+4.2 FSI Quattro (3)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q8
+3.0 TDI Quattro (1)
+45 TFSI Quattro (76)
+50 TDI Quattro (72)
+55 TFSI e-Quattro (2)
+55 TFSI Quattro (11)
+60 TFSI e-Quattro (1)
+SQ8 (10)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q8 E-tron
+50 Quattro (1)
+55 Quattro (35)
+
+Arazi, SUV & Pickup
+Audi
+Q8 E-tron
+50 Quattro
+S-Line (1)
+
+Arazi, SUV & Pickup
+Audi
+Q8 E-tron
+55 Quattro
+Advanced (19)
+S Line (16)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+Q8 E-tron Sportback
+55 Quattro
+Advanced (1)
+S Line (9)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+RS Q8
+4.0 TFSI (29)
+
+------------------------
+
+Arazi, SUV & Pickup
+Audi
+SQ7
+4.0 TDI Quattro (3)
+4.0 TFSI Quattro (1)
+
+------------------------

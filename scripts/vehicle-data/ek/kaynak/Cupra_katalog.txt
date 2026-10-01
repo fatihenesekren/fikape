@@ -1,0 +1,86 @@
+Otomobil
+Cupra
+Born (8)
+Leon (267)
+
+---------------------
+
+Otomobil
+Cupra
+Born
+150 kW (8)
+
+---------------------
+
+Otomobil
+Cupra
+Leon
+1.5 eTSI
+Impulse (1)
+Standart (223)
+Supreme (3)
+VZ Line (40)
+
+---------------------
+
+Arazi, SUV & Pickup
+Cupra
+Ateca (50)
+Formentor (1.067)
+Terramar (116)
+
+---------------------
+
+Arazi, SUV & Pickup
+Cupra
+Ateca
+1.5 TSI (50)
+
+---------------------
+
+Arazi, SUV & Pickup
+Cupra
+Formentor
+1.5 e-TSI (340)
+1.5 PHEV (130)
+1.5 TSI (552)
+2.0 TSI (45)
+
+Arazi, SUV & Pickup
+Cupra
+Formentor
+1.5 e-TSI
+Impulse (77)
+Standart (30)
+Supreme (40)
+VZ Line (193)
+
+Arazi, SUV & Pickup
+Cupra
+Formentor
+1.5 PHEV
+Impulse (27)
+Supreme (100)
+VZ (3)
+
+Arazi, SUV & Pickup
+Cupra
+Formentor
+1.5 TSI (552)
+
+Arazi, SUV & Pickup
+Cupra
+Formentor
+2.0 TSI (45)
+
+---------------------
+
+Arazi, SUV & Pickup
+Cupra
+Terramar
+1.5 e-TSI
+Impulse (14)
+Supreme (62)
+VZ-Line (40)
+
+---------------------

@@ -1,0 +1,67 @@
+Otomobil
+Lada
+Kalina (9)
+Samara (317)
+VAZ (10)
+Vega (304)
+
+---------------------
+
+Otomobil
+Lada
+Kalina
+1.6 (9)
+
+---------------------
+
+Otomobil
+Lada
+Samara
+1.3 (9)
+1.5 (308)
+
+---------------------
+
+Otomobil
+Lada
+VAZ
+2101 (1)
+2104 (5)
+2106 (1)
+2107 (3)
+
+---------------------
+
+Otomobil
+Lada
+Vega
+1.5 (246)
+1.6 (58)
+
+---------------------
+
+Arazi, SUV & Pickup
+Lada
+Niva
+1.6 (51)
+1.7 (29)
+1.7i (45)
+
+Arazi, SUV & Pickup
+Lada
+Niva
+1.6 (51)
+
+Arazi, SUV & Pickup
+Lada
+Niva
+1.7 (29)
+
+Arazi, SUV & Pickup
+Lada
+Niva
+1.7i
+1.7i (34)
+Urban (11)
+
+---------------------

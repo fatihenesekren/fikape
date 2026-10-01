@@ -1,0 +1,30 @@
+### Kia
+- otomobil: zaten vardı 178 · eklendi 27 · belirsiz 60
+  - + Yeni model: Capital (1990–1996) — Kia Capital (1989-1996; 1990 öncesi kırpıldı)
+  - + Capital › 1.5 GLX › Standart
+  - + Capital › 1.8 › Standart
+  - + Carens (2013-2019) › 2.0 CRDi › CRDi
+  - + Carens (2013-2019) › 2.0 CRDi › EX
+  - + Cerato › 2.0 CRDi › EX Comfort
+  - + Yeni model: Clarus (1996–2001) — en.wikipedia Kia Clarus (1996-2001)
+  - + Clarus › 2.0 GLX › Standart
+  - + Yeni model: Opirus (2003–2011) — en.wikipedia Kia Opirus (2003-2011)
+  - + Opirus › 3.5 V6 › Standart
+  - + Yeni model: Pride (1990–2000) — en.wikipedia Kia Pride (1987-2000; 1990 öncesi kırpıldı)
+  - + Pride › 1.3 › Standart
+  - + Pride › 1.3 DLX › Standart
+  - + Pride › 1.3 GLXi › Standart
+  - + Rio › 1.5 CRDi › EX Advance
+  - + Rio › 1.5 CRDi › EX Comfort
+  - + Yeni model: Sephia (1992–2003) — en.wikipedia Kia Sephia (1992-2003)
+  - + Sephia › 1.5 › GTX
+  - + Sephia › 1.5 › LS
+  - + Sephia › 1.6 › GTX
+  - + Sephia › 1.6 › LS
+  - + Sephia › 1.8 › GLX
+  - + Yeni model: Shuma (1997–2004) — en.wikipedia Kia Shuma (1997-2004)
+  - + Shuma › LS › Standart
+  - + Shuma › RS › Standart
+  - + Yeni model: Retona (1998–2003) — Kia Retona (1998-2003)
+  - + Retona › 2.0 D › Standart
+  - ~ eşleme: "Niro EV" → "Niro"

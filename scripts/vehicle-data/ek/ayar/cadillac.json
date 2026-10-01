@@ -1,0 +1,10 @@
+{
+  "yeniModel": {
+    "BLS": { "bas": 2006, "bit": 2010, "kaynak": "en.wikipedia Cadillac BLS / autoevolution (2006-2010)" },
+    "STS": { "bas": 2005, "bit": 2011, "kaynak": "en.wikipedia Cadillac STS (2005-2011 model yılı)" },
+    "Seville": { "bas": 1990, "bit": 2004, "kaynak": "en.wikipedia Cadillac Seville (1976-2004 model yılı; 1990 öncesi kırpıldı)" },
+    "DeVille": { "bas": 1990, "bit": 2005, "kaynak": "en.wikipedia Cadillac de Ville series (1959-2005; 1990 öncesi kırpıldı — tüm nesillerin aralığı)" },
+    "Eldorado": { "bas": 1990, "bit": 2002, "kaynak": "en.wikipedia Cadillac Eldorado (1952-2002; 1990 öncesi kırpıldı)" },
+    "Fleetwood": { "bas": 1990, "bit": 1996, "kaynak": "en.wikipedia Cadillac Fleetwood (1977-1996; 1990 öncesi kırpıldı)" }
+  }
+}

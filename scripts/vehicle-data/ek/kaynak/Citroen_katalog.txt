@@ -1,0 +1,974 @@
+Otomobil
+Citroen
+AMI (138)
+C-Elysee (2.603)
+C1 (104)
+C2 (103)
+C3 (2.247)
+e-C3 (46)
+C3 Picasso (42)
+C4 (1.953)
+C4 Grand Picasso (162)
+C4 Picasso (173)
+C4 X (993)
+e-C4 (30)
+e-C4 X (70)
+C5 (703)
+C6 (5)
+C8 (2)
+Saxo (129)
+Xsara (156)
+AX (1)
+Xantia (6)
+XM (3)
+ZX (6)
+
+---------------------
+
+Otomobil
+Citroen
+AMI
+Buggy (16)
+Electric (21)
+Peps (26)
+Pop (73)
+Tonic (2)
+
+---------------------
+
+Otomobil
+Citroen
+C-Elysee
+1.2 (83)
+1.5 BlueHDI (921)
+1.6 BlueHDI (82)
+1.2 VTi (169)
+1.6 HDi (1.339)
+1.6 VTi (9)
+
+Otomobil
+Citroen
+C-Elysee
+1.2
+Live (83)
+
+Otomobil
+Citroen
+C-Elysee
+1.5 BlueHDI
+Feel (682)
+Feel Bold (113)
+Live (3)
+Shine (123)
+
+Otomobil
+Citroen
+C-Elysee
+1.6 BlueHDI
+Feel (30)
+Live (45)
+Shine (7)
+
+Otomobil
+Citroen
+C-Elysee
+1.2 VTi
+Attraction (49)
+Confort (98)
+Exclusive (22)
+
+Otomobil
+Citroen
+C-Elysee
+1.6 HDi
+Attraction (405)
+Confort (223)
+Exclusive (400)
+Feel (97)
+Live (140)
+Shine (74)
+
+Otomobil
+Citroen
+C-Elysee
+1.6 VTi
+Exclusive (9)
+
+---------------------
+
+Otomobil
+Citroen
+C1
+1.0 (48)
+1.0 VTi (23)
+1.4 HDi (32)
+
+Otomobil
+Citroen
+C1
+1.0
+Confort (7)
+SX (7)
+SX Sensodrive (34)
+
+Otomobil
+Citroen
+C1
+1.0 VTi
+Airscape (2)
+Feel (2)
+Shine (19)
+
+Otomobil
+Citroen
+C1
+1.4 HDi
+SX (32)
+
+---------------------
+
+Otomobil
+Citroen
+C2
+1.1 (1)
+1.4 (19)
+1.4 HDi (59)
+1.6 (22)
+
+Otomobil
+Citroen
+C2
+1.1
+X (1)
+
+Otomobil
+Citroen
+C2
+1.4
+SX (19)
+
+Otomobil
+Citroen
+C2
+1.4 HDi
+SX (55)
+X Pack (4)
+
+Otomobil
+Citroen
+C2
+1.6
+GT (1)
+VTR (17)
+VTS (4)
+
+---------------------
+
+Otomobil
+Citroen
+C3
+1.2 PureTech (1.128)
+1.2 VTi (34)
+1.4 (184)
+1.4 e-HDi (46)
+1.4 HDi (608)
+1.4 VTi (78)
+1.6 (28)
+1.6 BlueHDi (53)
+1.6 HDi (42)
+1.6 VTi (45)
+
+Otomobil
+Citroen
+C3
+1.2 PureTech
+Elle (23)
+Feel (316)
+Feel Adventure (10)
+Feel Bold (331)
+Feel Business (26)
+Feel S Edition (33)
+Live (29)
+Selection (6)
+Shine (315)
+Shine Business (1)
+Shine S Edition (30)
+Shine SX Edition (8)
+
+Otomobil
+Citroen
+C3
+1.2 VTi
+Cool (34)
+
+Otomobil
+Citroen
+C3
+1.4
+Attraction (22)
+Collection (1)
+Comfort (21)
+Pluriel (1)
+SensoDrive (6)
+SX (101)
+X Furio (32)
+
+Otomobil
+Citroen
+C3
+1.4 e-HDi
+Confort (46)
+
+Otomobil
+Citroen
+C3
+1.4 HDi
+Attraction (87)
+Collection (9)
+Confort (74)
+Exclusive (34)
+SX (209)
+X (64)
+X Furio (132)
+
+Otomobil
+Citroen
+C3
+1.4 VTi
+Collection (22)
+Confort (56)
+
+Otomobil
+Citroen
+C3
+1.6
+Pluriel (4)
+SX (24)
+
+Otomobil
+Citroen
+C3
+1.6 BlueHDi
+Feel (33)
+Live (12)
+Shine (8)
+
+Otomobil
+Citroen
+C3
+1.6 HDi
+Exclusive (7)
+SX (35)
+
+Otomobil
+Citroen
+C3
+1.6 VTi
+Confort (12)
+Exclusive (6)
+Feel (25)
+Shine (2)
+
+---------------------
+
+Otomobil
+Citroen
+e-C3
+Max (40)
+Plus (6)
+
+---------------------
+
+Otomobil
+Citroen
+C3 Picasso
+1.4 (1)
+1.6 e-HDi (8)
+1.6 HDi (34)
+
+Otomobil
+Citroen
+C3 Picasso
+1.4
+SX (1)
+
+Otomobil
+Citroen
+C3 Picasso
+1.6 e-HDi
+Confort (8)
+
+Otomobil
+Citroen
+C3 Picasso
+1.6 HDi
+Confort (1)
+SX (32)
+X (1)
+
+---------------------
+
+Otomobil
+Citroen
+C4
+1.2 (30)
+1.2 PureTech (416)
+1.4 (103)
+1.4 VTi (40)
+1.5 BlueHDi (43)
+1.6 (228)
+1.6 BlueHDi (41)
+1.6 e-HDi (401)
+1.6 HDi (648)
+2.0 (5)
+
+Otomobil
+Citroen
+C4
+1.2
+Max (29)
+You (1)
+
+Otomobil
+Citroen
+C4
+1.2 PureTech
+Confort (11)
+Exclusive (2)
+Feel (24)
+Feel Bold (104)
+Max (67)
+Shine (92)
+Shine Bold (79)
+You (36)
+
+Otomobil
+Citroen
+C4
+1.4
+Collection (2)
+SX (101)
+
+Otomobil
+Citroen
+C4
+1.4 VTi
+Attraction (35)
+Easy (5)
+
+Otomobil
+Citroen
+C4
+1.5 BlueHDi
+Feel Bold (31)
+Shine (1)
+Shine Bold (11)
+
+Otomobil
+Citroen
+C4
+1.6
+Collection (1)
+SX (84)
+SX PK (76)
+THP Exclusive (16)
+VTi Confort (40)
+VTR (11)
+
+Otomobil
+Citroen
+C4
+1.6 BlueHDi
+Confort (40)
+Exclusive (1)
+
+Otomobil
+Citroen
+C4
+1.6 e-HDi
+Confort (198)
+Confort Plus (111)
+Exclusive (92)
+
+Otomobil
+Citroen
+C4
+1.6 HDi
+Attraction (57)
+Confort (93)
+Confort Plus (42)
+Easy (18)
+SX (370)
+SX PK (55)
+VTRPK (13)
+
+Otomobil
+Citroen
+C4
+2.0
+VTS (5)
+
+---------------------
+
+Otomobil
+Citroen
+C4 Grand Picasso
+1.6 BlueHDi (19)
+1.6 e-HDi (55)
+1.6 HDi (85)
+1.6 THP (3)
+
+Otomobil
+Citroen
+C4 Grand Picasso
+1.6 BlueHDi
+Feel (4)
+Intensive (9)
+Shine (6)
+
+Otomobil
+Citroen
+C4 Grand Picasso
+1.6 e-HDi
+Dynamic (32)
+Intensive (23)
+
+Otomobil
+Citroen
+C4 Grand Picasso
+1.6 HDi (85)
+
+Otomobil
+Citroen
+C4 Grand Picasso
+1.6 THP (3)
+
+---------------------
+
+Otomobil
+Citroen
+C4 Picasso
+1.6 BlueHDi (31)
+1.6 e-HDi (64)
+1.6 HDi (75)
+1.6 THP (4)
+
+Otomobil
+Citroen
+C4 Picasso
+1.6 BlueHDi
+Feel (9)
+Intensive (20)
+Shine (2)
+
+Otomobil
+Citroen
+C4 Picasso
+1.6 e-HDi
+Dynamique (15)
+Intensive (49)
+
+Otomobil
+Citroen
+C4 Picasso
+1.6 HDi
+Dynamique (11)
+Intensive (2)
+SX PK (46)
+VTR PK (16)
+
+Otomobil
+Citroen
+C4 Picasso
+1.6 THP
+Exclusive (4)
+
+---------------------
+
+Otomobil
+Citroen
+C4 X
+1.2 (19)
+1.2 PureTech (944)
+1.5 BlueHDi (32)
+
+Otomobil
+Citroen
+C4 X
+1.2
+Max (19)
+
+Otomobil
+Citroen
+C4 X
+1.2 PureTech
+Feel (10)
+Feel Bold (197)
+Max (297)
+Shine (225)
+Shine Bold (99)
+You (116)
+
+Otomobil
+Citroen
+C4 X
+1.5 BlueHDi
+Feel Bold (25)
+Shine (4)
+Shine Bold (3)
+
+---------------------
+
+Otomobil
+Citroen
+e-C4
+Max (13)
+Shine Bold (17)
+
+---------------------
+
+Otomobil
+Citroen
+e-C4 X
+Max (32)
+Shine Bold (39)
+
+---------------------
+
+Otomobil
+Citroen
+C5
+1.6 e-HDi (306)
+1.6 HDi (313)
+1.6 THP (14)
+2.0 (9)
+2.0 HDi (55)
+2.2 HDi (2)
+2.7 HDi (2)
+3.0 (1)
+
+Otomobil
+Citroen
+C5
+1.6 e-HDi
+Confort (148)
+Dynamique (88)
+Executive (70)
+
+Otomobil
+Citroen
+C5
+1.6 HDi
+Confort (12)
+Dynamique (36)
+Executive (12)
+SX (119)
+SX PK (134)
+
+Otomobil
+Citroen
+C5
+1.6 THP
+Confort (1)
+Dynamique (9)
+Exclusive (4)
+
+Otomobil
+Citroen
+C5
+2.0
+Exclusive (1)
+SX (7)
+SX PK (1)
+
+Otomobil
+Citroen
+C5
+2.0 HDi
+Break (1)
+Dynamique (1)
+Exclusive (20)
+Hdi (1)
+SX (16)
+SX PK (16)
+
+Otomobil
+Citroen
+C5
+2.2 HDi
+SX (2)
+
+Otomobil
+Citroen
+C5
+2.7 HDi
+Exclusive (2)
+
+Otomobil
+Citroen
+C5
+3.0 (1)
+
+---------------------
+
+Otomobil
+Citroen
+C6
+2.7 HDi (5)
+
+---------------------
+
+Otomobil
+Citroen
+C8
+2.0 HDi Collection (1)
+2.0 HDi SX (1)
+
+---------------------
+
+Otomobil
+Citroen
+Saxo
+1.4 (49)
+1.5D (46)
+1.6 (34)
+
+Otomobil
+Citroen
+Saxo
+1.4
+SX (47)
+VSX (2)
+
+Otomobil
+Citroen
+Saxo
+1.5D
+SX (42)
+X (4)
+
+Otomobil
+Citroen
+Saxo
+1.6
+SX (6)
+VTR (2)
+VTS (26)
+
+---------------------
+
+Otomobil
+Citroen
+Xsara
+1.4 (59)
+1.6 (60)
+1.8 (4)
+1.9 (1)
+2.0 (1)
+Picasso 1.6 (16)
+Picasso 2.0 (13)
+
+Otomobil
+Citroen
+Xsara
+1.4
+HDI (59)
+
+Otomobil
+Citroen
+Xsara
+1.6
+SX (60)
+
+Otomobil
+Citroen
+Xsara
+1.8
+SX (4)
+
+Otomobil
+Citroen
+Xsara
+1.9
+TD SX (1)
+
+Otomobil
+Citroen
+Xsara
+2.0
+VTS (1)
+
+Otomobil
+Citroen
+Xsara
+Picasso 1.6
+1.6 (11)
+Exclusive (1)
+HDI (4)
+
+Otomobil
+Citroen
+Xsara
+Picasso 2.0
+Exclusive (3)
+HDI (10)
+
+---------------------
+
+Otomobil
+Citroen
+AX
+1.1
+First (1)
+
+---------------------
+
+Otomobil
+Citroen
+Xantia
+1.9 (2)
+2.0 (4)
+
+Otomobil
+Citroen
+Xantia
+1.9
+1.9 D (1)
+TD SX (1)
+
+Otomobil
+Citroen
+Xantia
+2.0
+SX (4)
+
+---------------------
+
+Otomobil
+Citroen
+XM
+2.0
+CT VSX (2)
+Presence (1)
+
+---------------------
+
+Otomobil
+Citroen
+ZX
+1.4 (3)
+1.8 (3)
+
+Otomobil
+Citroen
+ZX
+1.4
+SX (1)
+X (2)
+
+Otomobil
+Citroen
+ZX
+1.8
+Avantage (2)
+Furio (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Citroen
+C3 AirCross (849)
+e-C3 AirCross (57)
+C4 Cactus (270)
+C5 AirCross (1.445)
+e-C5 AirCross (17)
+C-Crosser (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Citroen
+C3 AirCross
+1.2 (189)
+1.2 PureTech (504)
+1.5 BlueHDi (147)
+1.6 BlueHDi (9)
+
+Arazi, SUV & Pickup
+Citroen
+C3 AirCross
+1.2
+Max (107)
+Plus (82)
+
+Arazi, SUV & Pickup
+Citroen
+C3 AirCross
+1.2 PureTech
+Exclusive (1)
+Feel (66)
+Feel Bold (172)
+Feel Business (1)
+Feel S Edition (8)
+Live (6)
+Shine (250)
+
+Arazi, SUV & Pickup
+Citroen
+C3 AirCross
+1.5 BlueHDi
+Feel (35)
+Feel Bold (49)
+Shine (63)
+
+Arazi, SUV & Pickup
+Citroen
+C3 AirCross
+1.6 BlueHDi
+Feel (2)
+Shine (7)
+
+---------------------
+
+Arazi, SUV & Pickup
+Citroen
+e-C3 AirCross
+Max Collection Uzun Menzil (2)
+Max Standart Menzil (39)
+Max Uzun Menzil (16)
+
+---------------------
+
+Arazi, SUV & Pickup
+Citroen
+C4 Cactus
+1.2 PureTech (48)
+1.2 VTi (4)
+1.2 e-VTi (48)
+1.5 BlueHDi (11)
+1.6 BlueHDi (8)
+1.6 e-HDi (151)
+
+Arazi, SUV & Pickup
+Citroen
+C4 Cactus
+1.2 PureTech
+Feel (9)
+Feel Edition (7)
+Shine (6)
+Shine Edition (26)
+
+Arazi, SUV & Pickup
+Citroen
+C4 Cactus
+1.2 VTi
+Feel (2)
+Feel Edition (2)
+
+Arazi, SUV & Pickup
+Citroen
+C4 Cactus
+1.2 e-VTi
+Feel (14)
+Shine (34)
+
+Arazi, SUV & Pickup
+Citroen
+C4 Cactus
+1.5 BlueHDi
+Feel (5)
+Shine (6)
+
+Arazi, SUV & Pickup
+Citroen
+C4 Cactus
+1.6 BlueHDi
+Feel (5)
+Shine (3)
+
+Arazi, SUV & Pickup
+Citroen
+C4 Cactus
+1.6 e-HDi
+Feel (28)
+Shine (123)
+
+---------------------
+
+Arazi, SUV & Pickup
+Citroen
+C5 AirCross
+1.2 (149)
+1.2 Puretech (30)
+1.5 BlueHDI (1.165)
+1.6 PHEV (1)
+1.6 PureTech (100)
+
+Arazi, SUV & Pickup
+Citroen
+C5 AirCross
+1.2
+E-Series (12)
+Max (76)
+Plus (61)
+
+Arazi, SUV & Pickup
+Citroen
+C5 AirCross
+1.2 Puretech
+Feel (1)
+Feel Adventure (1)
+Live (25)
+Selection (1)
+Shine Bold (2)
+
+Arazi, SUV & Pickup
+Citroen
+C5 AirCross
+1.5 BlueHDI
+Exclusive (9)
+Feel (17)
+Feel Adventure (142)
+Feel Bold (87)
+Feel S Edition (2)
+Live (6)
+Live Business (1)
+Max (116)
+Selection (24)
+Selection Business (4)
+Shine (347)
+Shine Bold (408)
+Shine S Edition (2)
+
+Arazi, SUV & Pickup
+Citroen
+C5 AirCross
+1.6 PHEV
+Max (1)
+
+Arazi, SUV & Pickup
+Citroen
+C5 AirCross
+1.6 PureTech
+Exclusive (3)
+Feel Adventure (7)
+Shine (41)
+Shine Bold (47)
+Shine SX Edition (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Citroen
+e-C5 AirCross
+Max (5)
+Plus (12)
+
+---------------------
+
+Arazi, SUV & Pickup
+Citroen
+C-Crosser
+2.2 (1)
+
+---------------------

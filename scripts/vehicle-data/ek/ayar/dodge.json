@@ -1,0 +1,7 @@
+{
+  "kamyonet": ["Ram"],
+  "yeniModel": {
+    "Magnum": { "bas": 2005, "bit": 2008, "kaynak": "en.wikipedia Dodge Magnum (2005-2008)" },
+    "Ram": { "bas": 1990, "bit": null, "kaynak": "en.wikipedia Ram pickup (nesiller 1981-93, 1994-2001, 2002-05, 2009-18, 2019-; 1990 öncesi kırpıldı) — kamyonet" }
+  }
+}

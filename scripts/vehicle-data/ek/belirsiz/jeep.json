@@ -1,0 +1,180 @@
+[
+  {
+    "marka": "Jeep",
+    "model": "Cherokee",
+    "versiyon": "2.1 TD",
+    "paket": "Limited",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Cherokee (1984-2001) / Cherokee (2001-2007) / Cherokee (2008-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Cherokee",
+    "versiyon": "2.8 CRD",
+    "paket": "Renegade",
+    "neden": "Birden fazla eski nesilde geçiyor (Cherokee (2001-2007) / Cherokee (2008-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Cherokee",
+    "versiyon": "3.7",
+    "paket": "Limited",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Cherokee (1984-2001) / Cherokee (2001-2007) / Cherokee (2008-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Cherokee",
+    "versiyon": "3.7",
+    "paket": "Renegade",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Cherokee (1984-2001) / Cherokee (2001-2007) / Cherokee (2008-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Compass",
+    "versiyon": "1.3 GSE",
+    "paket": "80. Yıl",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Compass",
+    "versiyon": "1.3 PHEV",
+    "paket": "Trailhawk",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Compass",
+    "versiyon": "1.4",
+    "paket": "S Limited",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Compass",
+    "versiyon": "2.4 CVT",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Cherokee",
+    "versiyon": "3.0 CRD",
+    "paket": "75th Anniversary Edition",
+    "neden": "Birden fazla eski nesilde geçiyor (Grand Cherokee (2005-2010) / Grand Cherokee (2011-2021)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Cherokee",
+    "versiyon": "3.1 TD",
+    "paket": "Laredo",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Grand Cherokee (1993-1998) / Grand Cherokee (1999-2004) / Grand Cherokee (2005-2010) / Grand Cherokee (2011-2021)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Cherokee",
+    "versiyon": "3.1 TD",
+    "paket": "Limited",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Grand Cherokee (1993-1998) / Grand Cherokee (1999-2004) / Grand Cherokee (2005-2010) / Grand Cherokee (2011-2021)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Cherokee",
+    "versiyon": "4.7",
+    "paket": "Limited",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Grand Cherokee (1993-1998) / Grand Cherokee (1999-2004) / Grand Cherokee (2005-2010) / Grand Cherokee (2011-2021)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Cherokee",
+    "versiyon": "4.7",
+    "paket": "Overland",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Grand Cherokee (1993-1998) / Grand Cherokee (1999-2004) / Grand Cherokee (2005-2010) / Grand Cherokee (2011-2021)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Cherokee",
+    "versiyon": "5.2",
+    "paket": "Limited",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Grand Cherokee (1993-1998) / Grand Cherokee (1999-2004) / Grand Cherokee (2005-2010) / Grand Cherokee (2011-2021)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Cherokee",
+    "versiyon": "5.7",
+    "paket": "Limited",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Grand Cherokee (1993-1998) / Grand Cherokee (1999-2004) / Grand Cherokee (2005-2010) / Grand Cherokee (2011-2021)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Cherokee",
+    "versiyon": "5.9",
+    "paket": "Limited",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Grand Cherokee (1993-1998) / Grand Cherokee (1999-2004) / Grand Cherokee (2005-2010) / Grand Cherokee (2011-2021)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Cherokee",
+    "versiyon": "6.1",
+    "paket": "SRT",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Grand Cherokee (1993-1998) / Grand Cherokee (1999-2004) / Grand Cherokee (2005-2010) / Grand Cherokee (2011-2021)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Grand Wagoneer",
+    "neden": "Jeep Grand Wagoneer: 2022'den beri (WS) ve eski 1984-1991 nesli var; kaynaktaki '6.4' motor hangisine ait belli değil."
+  },
+  {
+    "marka": "Jeep",
+    "model": "Renegade",
+    "versiyon": "1.3 T",
+    "paket": "80. Yıl",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Renegade",
+    "versiyon": "1.6 Multijet",
+    "paket": "Night Eagle",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Wrangler",
+    "versiyon": "2.5",
+    "paket": "Sport",
+    "neden": "Birden fazla eski nesilde geçiyor (Wrangler (1987-1995) / Wrangler (1997-2006)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Wrangler",
+    "versiyon": "4.0",
+    "paket": "Base",
+    "neden": "Birden fazla eski nesilde geçiyor (Wrangler (1987-1995) / Wrangler (1997-2006)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Wrangler",
+    "versiyon": "4.0",
+    "paket": "SE",
+    "neden": "Birden fazla eski nesilde geçiyor (Wrangler (1987-1995) / Wrangler (1997-2006)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Wrangler",
+    "versiyon": "4.0",
+    "paket": "Sport",
+    "neden": "Birden fazla eski nesilde geçiyor (Wrangler (1987-1995) / Wrangler (1997-2006)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "Wrangler",
+    "versiyon": "4.0i",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Wrangler (1987-1995) / Wrangler (1997-2006) / Wrangler (2007-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Jeep",
+    "model": "CJ",
+    "neden": "Jeep CJ (CJ-5/CJ-6) 1986'ya kadar (1990 öncesi); katalog 1990 öncesini tutmuyor — klasik araç kararı sizde."
+  }
+]

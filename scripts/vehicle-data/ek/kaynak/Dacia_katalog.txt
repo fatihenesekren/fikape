@@ -1,0 +1,427 @@
+Otomobil
+Dacia
+Jogger (146)
+Lodgy (419)
+Logan (795)
+Sandero (2.282)
+1310 (2)
+Solenza (91)
+
+---------------------
+
+Otomobil
+Dacia
+Jogger
+1.0 ECO-G (68)
+1.0 TCe (69)
+1.2 ECO-G (4)
+1.6 (5)
+
+Otomobil
+Dacia
+Jogger
+1.0 ECO-G
+Essential (9)
+Expression (17)
+Extreme (40)
+Seri Limite Extreme (2)
+
+Otomobil
+Dacia
+Jogger
+1.0 TCe
+Essential (12)
+Expression (25)
+Extreme (31)
+Seri Limite Extreme (1)
+
+Otomobil
+Dacia
+Jogger
+1.2 ECO-G
+Extreme (4)
+
+Otomobil
+Dacia
+Jogger
+1.6
+Extreme (5)
+
+---------------------
+
+Otomobil
+Dacia
+Lodgy
+1.3 TCE (3)
+1.5 BlueDCI (109)
+1.5 dCi (299)
+1.6 ECO-G (4)
+1.6 SCE (4)
+
+Otomobil
+Dacia
+Lodgy
+1.3 TCE
+Ambiance (2)
+Stepway (1)
+
+Otomobil
+Dacia
+Lodgy
+1.5 BlueDCI
+Ambiance (34)
+Laureate (48)
+Stepway (27)
+
+Otomobil
+Dacia
+Lodgy
+1.5 dCi
+Allroad (8)
+Laureate (224)
+Stepway (62)
+Stepway Style (5)
+
+Otomobil
+Dacia
+Lodgy
+1.6 ECO-G
+Ambiance (4)
+
+Otomobil
+Dacia
+Lodgy
+1.6 SCE
+Ambiance (4)
+
+---------------------
+
+Otomobil
+Dacia
+Logan
+0.9 Tce MCV (2)
+1.0 MCV (2)
+1.2 (9)
+1.2 MCV (27)
+1.4 (169)
+1.5 dCi (213)
+1.5 dCi MCV (308)
+1.6 (40)
+1.6 MCV (24)
+
+Otomobil
+Dacia
+Logan
+0.9 Tce MCV
+Ambiance (2)
+
+Otomobil
+Dacia
+Logan
+1.0 MCV
+Ambiance (2)
+
+Otomobil
+Dacia
+Logan
+1.2
+1.2 (2)
+Ambiance (7)
+
+Otomobil
+Dacia
+Logan
+1.2 MCV
+Ambiance (27)
+
+Otomobil
+Dacia
+Logan
+1.4
+1.4 (24)
+Ambiance (105)
+Black Line (1)
+Laureate (39)
+
+Otomobil
+Dacia
+Logan
+1.5 dCi
+Ambiance (167)
+Black Line (23)
+Laureate (23)
+
+Otomobil
+Dacia
+Logan
+1.5 dCi MCV
+Ambiance (281)
+Black Line (21)
+Laureate (6)
+
+Otomobil
+Dacia
+Logan
+1.6
+Ambiance (23)
+Laureate (17)
+
+Otomobil
+Dacia
+Logan
+1.6 MCV
+Ambiance (19)
+Black Line (3)
+Laureate (2)
+
+---------------------
+
+Otomobil
+Dacia
+Sandero
+0.9 ECO-G (3)
+0.9 TCe (334)
+1.0 Sce (85)
+1.0 TCe (242)
+1.0 TCe ECO-G (39)
+1.2 (78)
+1.4 (103)
+1.5 BlueDCI (74)
+1.5 dCi (1.301)
+1.6 (25)
+
+Otomobil
+Dacia
+Sandero
+0.9 ECO-G
+Turbo Stepway (3)
+
+Otomobil
+Dacia
+Sandero
+0.9 TCe
+Stepway (78)
+Stepway Ambiance (28)
+Stepway Easy-R (162)
+Stepway Style (1)
+Techroad (3)
+Turbo Stepway Easy-R (62)
+
+Otomobil
+Dacia
+Sandero
+1.0 Sce
+Ambiance (72)
+Comfort (13)
+
+Otomobil
+Dacia
+Sandero
+1.0 TCe
+Comfort (41)
+Essential (59)
+Expression (65)
+Prestige (72)
+Stepway Comfort (5)
+
+Otomobil
+Dacia
+Sandero
+1.0 TCe ECO-G
+Comfort (7)
+Stepway (32)
+
+Otomobil
+Dacia
+Sandero
+1.2
+Ambiance (77)
+Black Line (1)
+
+Otomobil
+Dacia
+Sandero
+1.4
+Ambiance (71)
+Black Line (9)
+Laureate (23)
+
+Otomobil
+Dacia
+Sandero
+1.5 BlueDCI
+Stepway (74)
+
+Otomobil
+Dacia
+Sandero
+1.5 dCi
+Ambiance (105)
+Black Line (26)
+Laureate (1)
+Stepway (1.127)
+Stepway Style (42)
+
+Otomobil
+Dacia
+Sandero
+1.6
+Stepway (25)
+
+---------------------
+
+Otomobil
+Dacia
+Solenza
+1.4
+Comfort (4)
+Prima (1)
+Rapsodie (60)
+Scala (26)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dacia
+Duster (3.899)
+Logan Pickup (11)
+Sandero Stepway (1.021)
+Spring (26)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dacia
+Duster
+1.0 Tce (155)
+1.0 Tce ECO-G (193)
+1.2 Tce (13)
+1.3 Tce (955)
+1.5 BlueDCi (650)
+1.5 DCi (1.674)
+1.6 (67)
+1.6 Sce ECO-G (192)
+
+Arazi, SUV & Pickup
+Dacia
+Duster
+1.0 Tce
+Comfort (105)
+Essential (47)
+Prestige (3)
+
+Arazi, SUV & Pickup
+Dacia
+Duster
+1.0 Tce ECO-G
+Comfort (70)
+Essential (7)
+Expression (35)
+Prestige (81)
+
+Arazi, SUV & Pickup
+Dacia
+Duster
+1.2 Tce
+Prestige (13)
+
+Arazi, SUV & Pickup
+Dacia
+Duster
+1.3 Tce
+Comfort (362)
+Essential (155)
+Expression (39)
+Extreme (69)
+Journey (150)
+Prestige (104)
+Prestige Plus (74)
+Techroad (1)
+
+Arazi, SUV & Pickup
+Dacia
+Duster
+1.5 BlueDCi
+Comfort (504)
+Essential (95)
+Journey (15)
+Prestige (23)
+Prestige Plus (13)
+
+Arazi, SUV & Pickup
+Dacia
+Duster
+1.5 DCi
+Adventure (2)
+Ambiance (413)
+Blackshadow (55)
+Comfort (92)
+Laureate (951)
+Prestige (161)
+
+Arazi, SUV & Pickup
+Dacia
+Duster
+1.6
+1.6 (1)
+Ambiance (21)
+Comfort (42)
+Laureate (3)
+
+Arazi, SUV & Pickup
+Dacia
+Duster
+1.6 Sce ECO-G
+Comfort (118)
+Prestige (74)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dacia
+Logan Pickup
+1.5 DCI (11)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dacia
+Sandero Stepway
+1.0 Tce (963)
+1.2 ECO-G (25)
+1.0 T ECO-G (33)
+
+Arazi, SUV & Pickup
+Dacia
+Sandero Stepway
+1.0 Tce
+Comfort (24)
+Essential (56)
+Expression (455)
+Extreme (279)
+Prestige (149)
+
+Arazi, SUV & Pickup
+Dacia
+Sandero Stepway
+1.2 ECO-G
+Expression (9)
+Extreme (16)
+
+Arazi, SUV & Pickup
+Dacia
+Sandero Stepway
+1.0 T ECO-G
+Comfort (9)
+Essential (14)
+Expression (6)
+Prestige (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Dacia
+Spring
+Extreme (26)
+
+---------------------

@@ -175,6 +175,7 @@ export const MULTI_WORD_MODELS: Record<string, string[]> = {
   Infiniti: ["M 30D", "M 37", "G 37"],
   Mercedes: [],
   Audi: ["A5 SPORTBACK", "Q5 SPORTBACK", "S E-TRON", "E-TRON GT", "RS Q3", "RS Q8", "RS E-TRON GT", "Q8 E-TRON", "SQ8 E-TRON", "Q4 E-TRON", "Q4 SPORTBACK E-TRON"],
+  Bentley: ["FLYING SPUR"], // TSB "FLYING SPUR 4.0 V8": ikinci kelime paket sanılıp model "Flying" çıkıyordu
   Ferrari: ["SF 90"],
   Jaguar: ["F TYPE"],
   DS: ["DS 3", "DS 4", "DS 5", "DS 7", "DS 9", "DS 7 CROSSBACK"],

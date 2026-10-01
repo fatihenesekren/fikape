@@ -1,0 +1,169 @@
+Otomobil
+Porsche
+718 (42)
+911 (220)
+Boxster (21)
+Cayman (23)
+Panamera (479)
+Taycan Elektrik (327)
+
+---------------------
+
+Otomobil
+Porsche
+718
+718 (2)
+Boxster (12)
+Cayman (22)
+Cayman GT4 RS (4)
+Cayman Style Edition (2)
+
+---------------------
+
+Otomobil
+Porsche
+911
+Carrera (20)
+Carrera 4 (16)
+Carrera 4 GTS (30)
+Carrera 4S (49)
+Carrera GTS (1)
+Carrera S (23)
+Carrera Targa (1)
+GT3 (16)
+GT3 RS (5)
+Targa 4 (1)
+Targa 4 GTS (9)
+Targa 4S (2)
+Turbo (15)
+Turbo 50. Yıl (1)
+Turbo S (23)
+Turbo S Cabriolet (8)
+
+---------------------
+
+Otomobil
+Porsche
+Boxster
+Boxster (17)
+S (3)
+S Black Edition (1)
+
+---------------------
+
+Otomobil
+Porsche
+Cayman
+Cayman (18)
+S (5)
+
+---------------------
+
+Otomobil
+Porsche
+Panamera
+Panamera Diesel (276)
+Panamera GTS (2)
+Panamera S (3)
+Panamera 4 (71)
+Panamera 4 - 10 Years Edition (5)
+Panamera 4 - 10 Years Edition E-Hybrid (1)
+Panamera 4 E-Hybrid (25)
+Panamera 4 Platinum Edition (19)
+Panamera 4 Sport Turismo (5)
+Panamera 4S (40)
+Panamera 4S Diesel (15)
+Panamera 4S E-Hybrid (8)
+Panamera Turbo (6)
+Panamera Turbo E-Hybrid (1)
+Panamera Turbo S (2)
+
+---------------------
+
+Otomobil
+Porsche
+Taycan Elektrik
+4 Black Edition (3)
+4 Cross Turismo (26)
+4S (33)
+4S Cross Turismo (8)
+4S Performance (3)
+4S Performance Plus (148)
+4S Sport Turismo (1)
+GTS (11)
+Taycan (35)
+Turbo (20)
+Turbo S (37)
+Turbo S Cross Turismo (1)
+Turbo Sport Turismo (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Porsche
+Cayenne (875)
+Cayenne Coupe (49)
+Cayenne Elektrik (4)
+Macan (310)
+Macan Elektrik (82)
+
+---------------------
+
+Arazi, SUV & Pickup
+Porsche
+Cayenne
+2.9 S (3)
+3.0 (101)
+3.0 Diesel (617)
+3.0 Hybrid (20)
+3.0 S Hybrid (1)
+3.2 (40)
+3.6 (3)
+3.6 S (24)
+4.0 GTS (2)
+4.0 S (6)
+4.0 Turbo E-Hybrid (1)
+4.1 S Diesel (3)
+4.5 S (24)
+4.5 Turbo (12)
+4.8 GTS (6)
+4.8 S (4)
+4.8 Turbo (6)
+4.8 Turbo S (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Porsche
+Cayenne Coupe
+2.9 S (2)
+3.0 (39)
+3.0 E-Hybrid (7)
+4.0 GTS (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Porsche
+Cayenne Elektrik
+Standart (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Porsche
+Macan
+Macan (262)
+Macan S (1)
+Macan S Diesel (15)
+Macan T (32)
+
+---------------------
+
+Arazi, SUV & Pickup
+Porsche
+Macan Elektrik
+4 (60)
+Turbo (22)
+
+---------------------

@@ -1,0 +1,196 @@
+[
+  {
+    "marka": "Porsche",
+    "model": "718",
+    "neden": "Katalogda '718 Boxster', '718 Cayman', '718 Spyder' ayrı modeller; sizin listenizde '718' tek model, Boxster/Cayman/Cayman GT4 RS/Style Edition ise versiyon olarak geçiyor — hangisine eşleneceği belli değil (kopya olmasın diye eklenmedi)."
+  },
+  {
+    "marka": "Porsche",
+    "model": "911",
+    "versiyon": "Carrera",
+    "paket": "Standart",
+    "neden": "Birden fazla eski nesilde geçiyor (911 (964, 1989-1994) / 911 (993, 1993-1998) / 911 (996, 1997-2005) / 911 (997, 2004-2012) / 911 (991, 2011-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Porsche",
+    "model": "911",
+    "versiyon": "Carrera 4 GTS",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (911 (Klasik, 1965-1989) / 911 (964, 1989-1994) / 911 (993, 1993-1998) / 911 (996, 1997-2005) / 911 (997, 2004-2012) / 911 (991, 2011-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Porsche",
+    "model": "911",
+    "versiyon": "Carrera GTS",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (911 (Klasik, 1965-1989) / 911 (964, 1989-1994) / 911 (993, 1993-1998) / 911 (996, 1997-2005) / 911 (997, 2004-2012) / 911 (991, 2011-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Porsche",
+    "model": "911",
+    "versiyon": "Carrera Targa",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (911 (Klasik, 1965-1989) / 911 (964, 1989-1994) / 911 (993, 1993-1998) / 911 (996, 1997-2005) / 911 (997, 2004-2012) / 911 (991, 2011-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Porsche",
+    "model": "911",
+    "versiyon": "Turbo 50. Yıl",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (911 (Klasik, 1965-1989) / 911 (964, 1989-1994) / 911 (993, 1993-1998) / 911 (996, 1997-2005) / 911 (997, 2004-2012) / 911 (991, 2011-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Porsche",
+    "model": "911",
+    "versiyon": "Turbo S Cabriolet",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (911 (Klasik, 1965-1989) / 911 (964, 1989-1994) / 911 (993, 1993-1998) / 911 (996, 1997-2005) / 911 (997, 2004-2012) / 911 (991, 2011-2019)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera Diesel",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera GTS",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera S",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera 4",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera 4 - 10 Years Edition",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera 4 - 10 Years Edition E-Hybrid",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera 4 E-Hybrid",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera 4 Platinum Edition",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera 4 Sport Turismo",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera 4S",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera 4S Diesel",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera 4S E-Hybrid",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera Turbo",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera Turbo E-Hybrid",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Panamera",
+    "versiyon": "Panamera Turbo S",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Taycan Elektrik",
+    "versiyon": "4S Performance",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Taycan Elektrik",
+    "versiyon": "4S Performance Plus",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Cayenne Elektrik",
+    "versiyon": "Standart",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Cayenne (955/957, 2002-2010) / Cayenne (92A, 2010-2017)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Macan",
+    "versiyon": "Macan S",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Macan",
+    "versiyon": "Macan S Diesel",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Porsche",
+    "model": "Macan",
+    "versiyon": "Macan T",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

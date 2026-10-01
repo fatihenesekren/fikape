@@ -1,0 +1,50 @@
+Arazi, SUV & Pickup
+SWM
+G01 (5)
+G01F (14)
+G01 Pro (26)
+G03F (12)
+G05 Pro (5)
+
+---------------------
+
+Arazi, SUV & Pickup
+SWM
+G01
+1.5
+Comfort (1)
+Elite (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+SWM
+G01F
+1.5
+Premium (14)
+
+---------------------
+
+Arazi, SUV & Pickup
+SWM
+G01 Pro
+1.5
+Premium (26)
+
+---------------------
+
+Arazi, SUV & Pickup
+SWM
+G03F
+1.5
+Deluxe (12)
+
+---------------------
+
+Arazi, SUV & Pickup
+SWM
+G05 Pro
+1.5
+Premium (5)
+
+---------------------

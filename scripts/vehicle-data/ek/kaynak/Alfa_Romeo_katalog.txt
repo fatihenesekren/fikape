@@ -1,0 +1,445 @@
+Otomobil
+Alfa Romeo
+Giulia (12)
+Giulia Quadrifoglio (1)
+Giulietta (346)
+145 (12)
+146 (12)
+147 (93)
+155 (3)
+156 (138)
+159 (62)
+166 (10)
+33 (2)
+4C (1)
+75 (1)
+Brera (1)
+GT (12)
+GTV (5)
+MiTo (27)
+Spider (3)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+Giulia
+2.0 (1)
+2.0 T (11)
+
+Otomobil
+Alfa Romeo
+Giulia
+2.0
+Competizione (1)
+
+Otomobil
+Alfa Romeo
+Giulia
+2.0 T
+Sprint (2)
+Veloce (9)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+Giulia Quadrifoglio
+2.9 (1)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+Giulietta
+1.4 TB (112)
+1.6 JTD (234)
+
+Otomobil
+Alfa Romeo
+Giulietta
+1.4 TB
+Distinctive (4)
+MultiAir Distinctive (89)
+MultiAir Progression Pluse (2)
+MultiAir Super TCT (3)
+Progression Plus (14)
+
+Otomobil
+Alfa Romeo
+Giulietta
+1.6 JTD
+Distinctive (140)
+Giulietta (2)
+Progression (20)
+Progression Plus (32)
+Sprint (6)
+Super TCT (34)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+145
+1.4 (4)
+1.6 (4)
+1.7 (3)
+2.0 (1)
+
+Otomobil
+Alfa Romeo
+145
+1.4
+1.4 (1)
+TS STD (3)
+
+Otomobil
+Alfa Romeo
+145
+1.6
+1.6 (4)
+
+Otomobil
+Alfa Romeo
+145
+1.7 (3)
+
+Otomobil
+Alfa Romeo
+145
+2.0
+TS QV (1)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+146
+1.4 (10)
+1.6 (2)
+
+Otomobil
+Alfa Romeo
+146
+1.4
+TS (8)
+TS Ritmo (2)
+
+Otomobil
+Alfa Romeo
+146
+1.6
+TS (2)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+147
+1.6 TS (85)
+1.9 (1)
+2.0 TS (7)
+
+Otomobil
+Alfa Romeo
+147
+1.6 TS
+Black Line (4)
+Distinctive (68)
+Progression (13)
+
+Otomobil
+Alfa Romeo
+147
+1.9
+JTD Q2 (1)
+
+Otomobil
+Alfa Romeo
+147
+2.0 TS
+Distinctive (3)
+Selespeed Distinctive (4)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+155
+2.0
+Q4 (3)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+156
+1.6 TS (87)
+2.0 JTS (9)
+2.0 TS (40)
+2.5 (2)
+
+Otomobil
+Alfa Romeo
+156
+1.6 TS
+1.6 TS (22)
+Distinctive (57)
+Progression (8)
+
+Otomobil
+Alfa Romeo
+156
+2.0 JTS
+Distinctive (9)
+
+Otomobil
+Alfa Romeo
+156
+2.0 TS
+2.0 TS (23)
+Distinctive (2)
+Executive (6)
+Selespeed (8)
+Selespeed SR (1)
+
+Otomobil
+Alfa Romeo
+156
+2.5
+2.5 (2)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+159
+1.8 TBI (1)
+1.9 JTD (52)
+1.9 JTS (8)
+2.4 JTD (1)
+
+Otomobil
+Alfa Romeo
+159
+1.8 TBI
+Distinctive Plus (1)
+
+Otomobil
+Alfa Romeo
+159
+1.9 JTD
+Distinctive (24)
+Distinctive Plus (26)
+Progression (2)
+
+Otomobil
+Alfa Romeo
+159
+1.9 JTS
+Distinctive (8)
+
+Otomobil
+Alfa Romeo
+159
+2.4 JTD
+Distinctive (1)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+166
+2.0 (7)
+2.5 (1)
+3.0 (2)
+
+Otomobil
+Alfa Romeo
+166
+2.0
+TB (3)
+TS (4)
+
+Otomobil
+Alfa Romeo
+166
+2.5
+Sportronic (1)
+
+Otomobil
+Alfa Romeo
+166
+3.0
+Sportronic (2)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+33
+1.5
+Giardinetta (1)
+IE (1)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+4C
+1.8 TBi (1)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+75
+2.0
+Twin Spark (1)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+Brera
+2.2
+JTS Sky Window (1)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+GT
+1.9 JTD (2)
+2.0 JTS (10)
+
+Otomobil
+Alfa Romeo
+GT
+1.9 JTD
+Q2 (2)
+
+Otomobil
+Alfa Romeo
+GT
+2.0 JTS
+Dis.Selespeed (6)
+Distinctive (4)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+GTV
+2.0
+TB (4)
+TS (1)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+MiTo
+1.3 JTD (12)
+1.4 T (13)
+1.6 JTD (2)
+
+Otomobil
+Alfa Romeo
+MiTo
+1.3 JTD
+City (12)
+
+Otomobil
+Alfa Romeo
+MiTo
+1.4 T
+Distinctive (6)
+MultiAir Quadrifoglio Verde (2)
+MultiAir TCT (1)
+MultiAir TCT Sportivo (2)
+Progression (2)
+
+Otomobil
+Alfa Romeo
+MiTo
+1.6 JTD
+Distinctive (2)
+
+---------------------
+
+Otomobil
+Alfa Romeo
+Spider
+2.0 TS (3)
+
+---------------------
+
+Arazi, SUV & Pickup
+Alfa Romeo
+Junior Elettrica (13)
+Junior Ibrida (58)
+Stelvio (22)
+Tonale (186)
+
+---------------------
+
+Arazi, SUV & Pickup
+Alfa Romeo
+Junior Elettrica
+Elletrica (2)
+Speciale (11)
+
+---------------------
+
+Arazi, SUV & Pickup
+Alfa Romeo
+Junior Ibrida
+1.2
+1.2 (17)
+Speciale (21)
+Speciale+ (20)
+
+---------------------
+
+Arazi, SUV & Pickup
+Alfa Romeo
+Stelvio
+2.0 (11)
+2.0 T (10)
+2.9 (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Alfa Romeo
+Tonale
+1.3 PHEV (6)
+1.5 (73)
+1.6 D (107)
+
+Arazi, SUV & Pickup
+Alfa Romeo
+Tonale
+1.3 PHEV
+Veloce (6)
+
+Arazi, SUV & Pickup
+Alfa Romeo
+Tonale
+1.5
+Edizione Speciale (11)
+Speciale (12)
+Ti (8)
+Tributo (2)
+Veloce (40)
+
+Arazi, SUV & Pickup
+Alfa Romeo
+Tonale
+1.6 D
+Speciale (4)
+Sprint (5)
+Ti (98)
+
+---------------------

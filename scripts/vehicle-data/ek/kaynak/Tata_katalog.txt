@@ -1,0 +1,88 @@
+Otomobil
+Tata
+Indica (64)
+Indigo (73)
+Marina (36)
+Vista (40)
+Manza (4)
+
+---------------------
+
+Otomobil
+Tata
+Indica
+1.4 Basic (15)
+1.4 Comfort (3)
+1.4 DLX (1)
+1.4 TDI Comfort (23)
+1.4 TDI Trend (17)
+1.4 TDI (5)
+
+---------------------
+
+Otomobil
+Tata
+Indigo
+1.4 MPFI Comfort (27)
+1.4 MPFI Trend (3)
+1.4 TDI Comfort (33)
+1.4 TDI Trend (10)
+
+---------------------
+
+Otomobil
+Tata
+Marina
+1.4 TDI Comfort (32)
+1.4 TDI Trend (4)
+
+---------------------
+
+Otomobil
+Tata
+Vista
+1.3 TDI (32)
+1.4 Safire Aura (8)
+
+---------------------
+
+Otomobil
+Tata
+Manza
+Aura 1.4 Safire (2)
+Ignis 1.4 Safire (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Tata
+Telcoline (79)
+Xenon (54)
+Safari (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Tata
+Telcoline
+4x2 Çift Kabin (60)
+4x2 Tek Kabin (5)
+4x4 Çift Kabin (14)
+
+---------------------
+
+Arazi, SUV & Pickup
+Tata
+Xenon
+4x2 (36)
+4x4 (18)
+
+---------------------
+
+Arazi, SUV & Pickup
+Tata
+Safari
+2.0 EX TDI (2)
+3.0 TDI (2)
+
+---------------------

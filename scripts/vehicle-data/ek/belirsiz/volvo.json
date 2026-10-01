@@ -1,0 +1,352 @@
+[
+  {
+    "marka": "Volvo",
+    "model": "C30",
+    "versiyon": "1.6 D",
+    "paket": "Prime",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S40",
+    "versiyon": "1.6",
+    "paket": "Prime",
+    "neden": "Birden fazla eski nesilde geçiyor (S40 (1995-2004) / S40 (2004-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S40",
+    "versiyon": "1.6 D",
+    "paket": "Prime",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S40",
+    "versiyon": "1.9 D",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S40 (1995-2004) / S40 (2004-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S40",
+    "versiyon": "1.9 T4",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S40 (1995-2004) / S40 (2004-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S40",
+    "versiyon": "2.0 D",
+    "paket": "Premium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S40",
+    "versiyon": "2.5 T5",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S40 (1995-2004) / S40 (2004-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S60",
+    "versiyon": "2.3 T5",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S60 (2000-2009) / S60 (2010-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S60",
+    "versiyon": "2.5 R",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S60 (2000-2009) / S60 (2010-2018)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S80",
+    "versiyon": "2.4 D5",
+    "paket": "VIP",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S80",
+    "versiyon": "2.5 D",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S80 (1998-2006) / S80 (2006-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S80",
+    "versiyon": "2.5 T",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S80 (1998-2006) / S80 (2006-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S80",
+    "versiyon": "2.5 T",
+    "paket": "VIP",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S80 (1998-2006) / S80 (2006-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S80",
+    "versiyon": "2.8 T6",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S80 (1998-2006) / S80 (2006-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S80",
+    "versiyon": "2.9 T6",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S80 (1998-2006) / S80 (2006-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S80",
+    "versiyon": "2.9 T6",
+    "paket": "Executive",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S80 (1998-2006) / S80 (2006-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S80",
+    "versiyon": "3.2",
+    "paket": "Executive",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S80 (1998-2006) / S80 (2006-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S80",
+    "versiyon": "4.4",
+    "paket": "VIP",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (S80 (1998-2006) / S80 (2006-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S90",
+    "versiyon": "2.0 T8",
+    "paket": "Recharge Plus Bright",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "S90",
+    "versiyon": "3.0",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V40",
+    "versiyon": "1.8",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V40",
+    "versiyon": "1.9 D",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V40",
+    "versiyon": "1.9 T4",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V40",
+    "versiyon": "1.9 TD",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V50",
+    "versiyon": "1.6 D",
+    "paket": "Prime",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V50",
+    "versiyon": "1.8",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V50",
+    "versiyon": "2.0 D",
+    "paket": "Dynamic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V50",
+    "versiyon": "2.4",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V50",
+    "versiyon": "2.5 T5",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V60",
+    "versiyon": "2.0 B4",
+    "paket": "Plus Dark",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V70",
+    "versiyon": "2.3 T-5",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (V70 (2000-2007) / V70 (2007-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V70",
+    "versiyon": "2.4 D5",
+    "paket": "Momentum",
+    "neden": "Birden fazla eski nesilde geçiyor (V70 (2000-2007) / V70 (2007-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "V70",
+    "versiyon": "2.5 D",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (V70 (2000-2007) / V70 (2007-2016)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volvo",
+    "model": "EC40",
+    "versiyon": "Extended Range Ultra Black Ed.",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "EX30",
+    "versiyon": "Performance Ultra",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC40",
+    "versiyon": "1.5 T5 Recharge",
+    "paket": "Inscription Expression",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC40",
+    "versiyon": "1.5 T5 Recharge",
+    "paket": "R-Design Expression",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC60",
+    "versiyon": "2.0 T8 Recharge",
+    "paket": "Polestar",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC60",
+    "versiyon": "2.0 T8 Recharge",
+    "paket": "Polestar Engineered",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC60",
+    "versiyon": "2.0 T8 Recharge",
+    "paket": "Ultimate Black Edition",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC60",
+    "versiyon": "2.4 D5",
+    "paket": "Style",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC60",
+    "versiyon": "3.0 T6",
+    "paket": "Comfort",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC60",
+    "versiyon": "3.0 T6",
+    "paket": "Style",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC70",
+    "versiyon": "2.5 T",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC90",
+    "versiyon": "2.0 B5",
+    "paket": "Black Edition Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC90",
+    "versiyon": "2.4 D5",
+    "paket": "Adventure",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC90",
+    "versiyon": "2.4 D5",
+    "paket": "Premium",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC90",
+    "versiyon": "2.5 T5",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC90",
+    "versiyon": "2.9 T6",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volvo",
+    "model": "XC90",
+    "versiyon": "4.4",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  }
+]

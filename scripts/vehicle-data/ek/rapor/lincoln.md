@@ -1,0 +1,12 @@
+### Lincoln
+- otomobil: zaten vardı 2 · eklendi 10 · belirsiz 2
+  - + Yeni model: MKS (2009–2016) — en.wikipedia Lincoln MKS (model yılı 2009-2016)
+  - + MKS › 3.5L EcoBoost V6 › Standart
+  - + Yeni model: Continental (1990–2020) — en.wikipedia Lincoln Continental (1988-2002, 2017-2020; 1990 öncesi kırpıldı — tüm nesillerin aralığı)
+  - + Continental › 4.6 › Standart
+  - + Yeni model: LS (2000–2006) — en.wikipedia Lincoln LS (üretim 1999-2006)
+  - + LS › 3.9 › Standart
+  - + Yeni model: Mark (1993–1998) — en.wikipedia Lincoln Mark VIII (1993-1998)
+  - + Mark › VIII › Standart
+  - + Yeni model: Town Car (1990–2011) — en.wikipedia Lincoln Town Car (1981-2011; 1990 öncesi kırpıldı)
+  - + Town Car › 4.6 › Standart

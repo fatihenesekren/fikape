@@ -1,0 +1,34 @@
+### Opel
+- otomobil: zaten vardı 273 · eklendi 28 · belirsiz 134
+  - + Agila (2000-2014) › 1.2 › Club
+  - + Agila (2000-2014) › 1.2 › Comfort
+  - + Ascona (1981-1988) › 1.3 C LS › Standart
+  - + Ascona (1981-1988) › 1.6 › C GLS
+  - + Ascona (1981-1988) › 1.6 › C L
+  - + Ascona (1981-1988) › 2.0 › C GT
+  - + Astra › 1.7 DTI › Classic
+  - + Astra › 1.7 DTI › GL
+  - + Yeni model: Calibra (1990–1997) — autoevolution Opel Calibra (1989-1997; 1990 öncesi kırpıldı)
+  - + Calibra › 2.0 › Standart
+  - + Calibra › 2.0 Turbo › Standart
+  - + Corsa › 1.5 TD › ECO
+  - + Yeni model: GT (2007–2009) — en.wikipedia Opel GT (roadster) (2007-2009)
+  - + GT › GT 2.0 Turbo › Standart
+  - + Kadett E (1984-1991) › 1.4 › GL
+  - + Kadett E (1984-1991) › 1.6 D › Standart
+  - + Kadett E (1984-1991) › 1.8 › GT
+  - + Yeni model: Signum (2003–2008) — en.wikipedia Opel Signum (2003-2008)
+  - + Signum › 1.8 › Standart
+  - + Signum › 1.9 CDTI › Sport
+  - + Signum › 2.0 T › Cosmo
+  - + Signum › 2.2 › Cosmo
+  - + Signum › 3.0 CDTi › Cosmo
+  - + Signum › 3.2 › Cosmo
+  - + Tigra (1994-2009) › 1.4 TT Sport › Standart
+  - + Yeni model: Grandland-e (2024–) — Opel Grandland Electric (yeni nesil, 2024)
+  - + Grandland-e › Edition › Standart
+  - + Grandland-e › GS › Standart
+  - ~ eşleme: "Kadett" → "Kadett E (1984-1991)"
+  - ~ eşleme: "Crossland X" → "Crossland"
+  - ~ eşleme: "Grandland X" → "Grandland"
+  - ~ eşleme: "Mokka X" → "Mokka"

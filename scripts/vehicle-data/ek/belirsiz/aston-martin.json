@@ -1,0 +1,83 @@
+[
+  {
+    "marka": "Aston Martin",
+    "model": "DB11",
+    "versiyon": "Coupe",
+    "neden": "Kasa tipi (versiyon/paket değil) — formda kasa adımı kalktığı için eklenmedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "DB7",
+    "versiyon": "Coupe",
+    "neden": "Kasa tipi (versiyon/paket değil) — formda kasa adımı kalktığı için eklenmedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "DB9",
+    "versiyon": "Coupe",
+    "neden": "Kasa tipi (versiyon/paket değil) — formda kasa adımı kalktığı için eklenmedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "DBS",
+    "versiyon": "DBS Coupe",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "Rapide",
+    "versiyon": "V12 Rapide",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "Rapide",
+    "versiyon": "V12 Rapide S",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "Vantage",
+    "versiyon": "V8 Vantage",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "Vantage",
+    "versiyon": "V8 Vantage F1 Edition",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "Vantage",
+    "versiyon": "V8 Vantage S",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "Vantage",
+    "versiyon": "V12 Vantage",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "DBX",
+    "versiyon": "DBX V8",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Aston Martin",
+    "model": "DBX",
+    "versiyon": "DBX 707",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

@@ -1,0 +1,42 @@
+### Citroen
+- otomobil: zaten vardı 185 · eklendi 36 · belirsiz 50
+  - + Yeni model: Ami (2020–) — en.wikipedia Citroën Ami (2020-)
+  - + Ami › Buggy › Standart
+  - + Ami › Electric › Standart
+  - + Ami › Peps › Standart
+  - + Ami › Pop › Standart
+  - + Ami › Tonic › Standart
+  - + C2 (2003-2009) › 1.4 HDi › X Pack
+  - + C2 (2003-2009) › 1.6 VTS 110 › GT
+  - + C2 (2003-2009) › 1.6 VTS 110 › VTR
+  - + C4 › 1.4 › Collection
+  - + C4 › 2.0 › VTS
+  - + Yeni model: C6 (2005–2012) — en.wikipedia Citroën C6 (2005-2012)
+  - + C6 › 2.7 HDi › Standart
+  - + Saxo (1996-2004) › 1.4 › VSX
+  - + Saxo (1996-2004) › 1.6 VTS 118 › SX
+  - + Saxo (1996-2004) › 1.6 VTS 118 › VTR
+  - + Xsara (1997-2005) › 1.4 › HDI
+  - + Xsara (1997-2005) › 1.9 TD 90 › SX
+  - + Xsara (1997-2005) › Picasso 1.6 › 1.6
+  - + Xsara (1997-2005) › Picasso 1.6 › Exclusive
+  - + Xsara (1997-2005) › Picasso 1.6 › HDI
+  - + Xsara (1997-2005) › Picasso 2.0 › Exclusive
+  - + Xsara (1997-2005) › Picasso 2.0 › HDI
+  - + Yeni model: AX (1986–1998) — en.wikipedia Citroën AX (1986-1998)
+  - + AX › 1.1 › First
+  - + Xantia (1993-2001) › 1.9 TD 90 › D
+  - + Xantia (1993-2001) › 1.9 TD 90 › SX
+  - + Yeni model: XM (1989–2000) — en.wikipedia Citroën XM (1989-2000)
+  - + XM › 2.0 › CT VSX
+  - + XM › 2.0 › Presence
+  - + ZX (1991-1998) › 1.4 › SX
+  - + ZX (1991-1998) › 1.4 › X
+  - + ZX (1991-1998) › 1.8 › Avantage
+  - + ZX (1991-1998) › 1.8 › Furio
+  - + Yeni model: C-Crosser (2007–2012) — en.wikipedia Citroën C-Crosser (2007-2012)
+  - + C-Crosser › 2.2 › Standart
+  - ~ eşleme: "C4 Grand Picasso" → "Grand C4 Picasso"
+  - ~ eşleme: "e-C4 X" → "C4 X"
+  - ~ eşleme: "e-C3 AirCross" → "C3 Aircross"
+  - ~ eşleme: "e-C5 AirCross" → "C5 Aircross"

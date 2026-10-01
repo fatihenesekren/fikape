@@ -1,0 +1,23 @@
+[
+  {
+    "marka": "Lamborghini",
+    "model": "Aventador",
+    "versiyon": "LP 740-S",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lamborghini",
+    "model": "Gallardo",
+    "versiyon": "LP 570-4 Superleggera",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lamborghini",
+    "model": "Huracan",
+    "versiyon": "LP-640-2",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

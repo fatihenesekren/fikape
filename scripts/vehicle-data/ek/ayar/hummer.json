@@ -1,0 +1,7 @@
+{
+  "grup": { "H Serisi": { "H2": "H2", "H3": "H3" } },
+  "yeniModel": {
+    "H2": { "bas": 2003, "bit": 2009, "kaynak": "en.wikipedia Hummer H2 (model yılı 2003-2009)" },
+    "H3": { "bas": 2006, "bit": 2010, "kaynak": "en.wikipedia Hummer H3 (model yılı 2006-2010)" }
+  }
+}

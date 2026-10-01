@@ -1,0 +1,12 @@
+{
+  "kamyonet": ["B Serisi"],
+  "yeniModel": {
+    "5": { "ad": "5", "bas": 2005, "bit": 2018, "kaynak": "autoevolution / en.wikipedia Mazda5 (Premacy; Mazda5 adıyla 2005'ten itibaren)" },
+    "121": { "bas": 1990, "bit": 2003, "kaynak": "automobile-catalog Mazda 121 (DA 1987-1990'lar, DB 1993-2003; 1990 öncesi kırpıldı)" },
+    "Lantis": { "bas": 1993, "bit": 1998, "kaynak": "en.wikipedia Mazda Lantis (1993-1998)" },
+    "Xedos": { "bas": 1992, "bit": 2002, "kaynak": "en.wikipedia Mazda Xedos 6 (1992-1999) + Xedos 9 (1993-2002)" },
+    "RX": { "bas": 1990, "bit": 2012, "kaynak": "en.wikipedia Mazda RX-7 (1978-2002) + RX-8 (2003-2012); 1990 öncesi kırpıldı" },
+    "B Serisi": { "bas": 1990, "bit": 2006, "kaynak": "en.wikipedia Mazda B series (1961-2006; 1990 öncesi kırpıldı) — kamyonet" }
+  },
+  "atla": { "MX": "'MX' tek model değil (MX-3, MX-5, MX-6 …); katalogda MX-5 var, hangisi kastedildi belli değil." }
+}

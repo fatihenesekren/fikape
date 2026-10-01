@@ -1,0 +1,16 @@
+{
+  "yeniModel": {
+    "Cuore": { "bas": 1990, "bit": 2018, "kaynak": "en.wikipedia Daihatsu Cuore (1980-2018; 1990 öncesi kırpıldı — tüm nesillerin aralığı)" },
+    "Materia": { "bas": 2006, "bit": 2012, "kaynak": "en.wikipedia Daihatsu Materia (2006-2012)" },
+    "Applause": { "bas": 1990, "bit": 2000, "kaynak": "en.wikipedia Daihatsu Applause (1989-2000; 1990 öncesi kırpıldı)" },
+    "Charade": { "bas": 1990, "bit": 2000, "kaynak": "en.wikipedia Daihatsu Charade (1988-2000 üçüncü/dördüncü nesil; 1990 öncesi kırpıldı)" },
+    "Copen": { "bas": 2002, "bit": null, "kaynak": "en.wikipedia Daihatsu Copen (2002'den beri, tüm nesiller)" },
+    "YRV": { "bas": 2000, "bit": 2005, "kaynak": "en.wikipedia Daihatsu YRV (2000-2005)" },
+    "Feroza": { "bas": 1990, "bit": 2002, "kaynak": "automobile-catalog Daihatsu Rocky/Feroza/Sportrak (1989-2002; 1990 öncesi kırpıldı)" },
+    "Rocky": { "bas": 1990, "bit": 2002, "kaynak": "en.wikipedia Daihatsu Rocky (F300) / Feroza (1989-2002)" }
+  },
+  "atla": {
+    "Move": "Daihatsu Move 1995'ten beri birçok nesil; Türkiye'de satılan (Gran Move/Move) yıl aralığı doğrulanamadı.",
+    "Sirion": "Nesiller 1998-2004 / 2004-2010 / 2010-2017; kaynaklar nesil bazlı çelişkili — yıl aralığı seçilemedi."
+  }
+}

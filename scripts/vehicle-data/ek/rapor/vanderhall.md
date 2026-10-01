@@ -1,0 +1,2 @@
+### Vanderhall
+- marka atlandı: Vanderhall Carmel GTS / Venice GTS: üç tekerlekli 'autocycle' (L5e/L-kategori); katalogda Vanderhall yok — otomobil/motosiklet kategori kararı gerektirir.

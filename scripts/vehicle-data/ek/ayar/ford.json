@@ -1,0 +1,73 @@
+{
+  "kamyonet": [
+    "Ranger",
+    "Ranger Raptor",
+    "Maverick"
+  ],
+  "yeniModel": {
+    "Taurus": {
+      "bas": 1990,
+      "bit": 2019,
+      "kaynak": "en.wikipedia Ford Taurus (1986-2019; 1990 öncesi kırpıldı)"
+    },
+    "Cougar": {
+      "bas": 1998,
+      "bit": 2002,
+      "kaynak": "en.wikipedia Ford Cougar (1998-2002 Avrupa)"
+    },
+    "Festiva": {
+      "bas": 1990,
+      "bit": 1992,
+      "kaynak": "en.wikipedia Ford Festiva (1988-1992; 1990 öncesi kırpıldı)"
+    },
+    "Granada": {
+      "bas": 1990,
+      "bit": 1994,
+      "kaynak": "en.wikipedia Ford Granada (Avrupa 1972-1994; 1990 öncesi kırpıldı)"
+    },
+    "Probe": {
+      "bas": 1990,
+      "bit": 1997,
+      "kaynak": "en.wikipedia Ford Probe (1988-1997; 1990 öncesi kırpıldı)"
+    },
+    "Scorpio": {
+      "bas": 1990,
+      "bit": 1999,
+      "kaynak": "en.wikipedia Ford Scorpio (1985-1999; 1990 öncesi kırpıldı)"
+    },
+    "Sierra": {
+      "bas": 1990,
+      "bit": 1992,
+      "kaynak": "en.wikipedia Ford Sierra (1982-1992; 1990 öncesi kırpıldı)"
+    },
+    "Thunderbird": {
+      "bas": 1990,
+      "bit": 2005,
+      "kaynak": "en.wikipedia Ford Thunderbird (1955-1997, 2002-2005; 1990 öncesi kırpıldı)"
+    },
+    "Excursion": {
+      "bas": 1999,
+      "bit": 2005,
+      "kaynak": "en.wikipedia Ford Excursion (1999-2005)"
+    },
+    "Bronco Sport": {
+      "bas": 2021,
+      "bit": null,
+      "kaynak": "en.wikipedia Ford Bronco Sport (model yılı 2021-)"
+    },
+    "Maverick": {
+      "bas": 2022,
+      "bit": null,
+      "kaynak": "en.wikipedia Ford Maverick (2022) — kamyonet"
+    }
+  },
+  "atla": {
+    "Orion": "Ford Orion (1983-1993) — bu oturumda internetten doğrulanmadı.",
+    "F": "Kamyonet F serisi (150/250/350 versiyonları); katalogda 'F 150' ve 'F 550' ayrı model — hangi modele eşleneceği belli değil.",
+    "Explorer-E": "Ford Explorer elektrikli (Avrupa 2023/24) — katalogda 'Explorer' var, 'Explorer-E' ayrı model mi aynı mı belli değil.",
+    "Puma-E": "Ford Puma Gen-E (2024) — katalogda 'Puma' var, ayrı model mi aynı mı belli değil."
+  },
+  "takma": {
+    "Ranger Raptor": "Ranger"
+  }
+}

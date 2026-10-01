@@ -1,0 +1,7 @@
+{
+  "grup": { "QX": { "QX4": "QX4", "QX70": "QX70" } },
+  "yeniModel": {
+    "I30": { "bas": 1995, "bit": 2001, "kaynak": "autoevolution Infiniti I30 (1995-1999) + I30/I35 (1999-2004; I30 adı 2001'e kadar)" },
+    "QX4": { "bas": 1997, "bit": 2003, "kaynak": "en.wikipedia Infiniti QX4 (1997-2003)" }
+  }
+}

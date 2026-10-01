@@ -1,0 +1,1157 @@
+Otomobil
+Ford
+B-Max (135)
+C-Max (894)
+Escort (748)
+Fiesta (5.828)
+Focus (13.317)
+Fusion (441)
+Galaxy (31)
+Grand C-Max (66)
+Ka (115)
+Mondeo (1.369)
+Mustang (114)
+S-Max (30)
+Taurus (1)
+Cougar (1)
+Festiva (20)
+Granada (9)
+Orion (1)
+Probe (1)
+Scorpio (11)
+Sierra (13)
+Taunus (155)
+Thunderbird (1)
+
+---------------------
+
+Otomobil
+Ford
+B-Max
+1.0 (5)
+1.4 (14)
+1.5 TDCi (33)
+1.6 (60)
+1.6 TDCi (23)
+
+Otomobil
+Ford
+B-Max
+1.0
+GTDi Titanium (5)
+
+Otomobil
+Ford
+B-Max
+1.4
+Titanium (5)
+Trend (9)
+
+Otomobil
+Ford
+B-Max
+1.5 TDCi
+Titanium (27)
+Trend (6)
+
+Otomobil
+Ford
+B-Max
+1.6
+Titanium (50)
+Trend (10)
+
+Otomobil
+Ford
+B-Max
+1.6 TDCi
+Titanium (18)
+Trend (5)
+
+---------------------
+
+Otomobil
+Ford
+C-Max
+1.0 EcoBoost (1)
+1.5 (3)
+1.5 TDCi (32)
+1.6 (122)
+1.6 EcoBoost (14)
+1.6 TDCi (719)
+1.8 (1)
+2.0 (1)
+2.0 TDCi (2)
+
+Otomobil
+Ford
+C-Max
+1.0 EcoBoost
+Titanium (1)
+
+Otomobil
+Ford
+C-Max
+1.5
+Titanium (3)
+
+Otomobil
+Ford
+C-Max
+1.5 TDCi
+Titanium (19)
+Trend (13)
+
+Otomobil
+Ford
+C-Max
+1.6
+Ghia (11)
+Trend (111)
+
+Otomobil
+Ford
+C-Max
+1.6 EcoBoost
+Titanium (14)
+
+Otomobil
+Ford
+C-Max
+1.6 TDCi
+Ghia (191)
+Titanium (341)
+Trend (186)
+
+Otomobil
+Ford
+C-Max
+1.8
+Trend (1)
+
+Otomobil
+Ford
+C-Max
+2.0
+Titanium (1)
+
+Otomobil
+Ford
+C-Max
+2.0 TDCi
+Titanium (1)
+Trend (1)
+
+---------------------
+
+Otomobil
+Ford
+Escort
+1.3 (12)
+1.4 (15)
+1.6 (649)
+1.8 (72)
+
+Otomobil
+Ford
+Escort
+1.3
+CL (11)
+CLX (1)
+
+Otomobil
+Ford
+Escort
+1.4
+C (1)
+CL (10)
+CLX (4)
+
+Otomobil
+Ford
+Escort
+1.6
+CL (156)
+Classic (21)
+CLX (436)
+Ghia (36)
+
+Otomobil
+Ford
+Escort
+1.8
+CL (1)
+CLX (61)
+Fun (1)
+Ghia (7)
+XR3i (2)
+
+---------------------
+
+Otomobil
+Ford
+Fiesta
+1.0 EcoBoost (82)
+1.0 GTDi (62)
+1.1 (59)
+1.25 (712)
+1.3 (1)
+1.4 (1.045)
+1.4 TDCi (2.555)
+1.5 EcoBoost (4)
+1.5 TDCi (843)
+1.6 (402)
+1.6 TDCi (39)
+1.6 Ti-VCT (21)
+1.8 D (1)
+2.0 (2)
+
+Otomobil
+Ford
+Fiesta
+1.0 EcoBoost
+ST Line (2)
+Style (12)
+Titanium (59)
+Trend (9)
+
+Otomobil
+Ford
+Fiesta
+1.0 GTDi
+Black (5)
+Red (5)
+Titanium (52)
+
+Otomobil
+Ford
+Fiesta
+1.1
+CLX (1)
+Fashion (1)
+Style (29)
+Titanium (2)
+Trend (14)
+Trend X (12)
+
+Otomobil
+Ford
+Fiesta
+1.25
+Flair (144)
+Fun (4)
+Ghia (78)
+My Fiesta (73)
+Trend (247)
+Trend X (165)
+
+Otomobil
+Ford
+Fiesta
+1.3
+Flair (1)
+
+Otomobil
+Ford
+Fiesta
+1.4
+Collection (21)
+Comfort (383)
+Cool (3)
+Fun (37)
+Ghia (10)
+My Fiesta (31)
+Titanium (501)
+Trend (57)
+
+Otomobil
+Ford
+Fiesta
+1.4 TDCi
+Collection (76)
+Comfort (1.097)
+Cool (10)
+My Fiesta (45)
+Sport (53)
+Titanium (656)
+Trend (623)
+
+Otomobil
+Ford
+Fiesta
+1.5 EcoBoost
+ST (4)
+
+Otomobil
+Ford
+Fiesta
+1.5 TDCi
+Titanium (378)
+Trend (307)
+Trend X (155)
+
+Otomobil
+Ford
+Fiesta
+1.6
+Collection (12)
+Comfort (46)
+Cool (1)
+Ghia (13)
+Sport (5)
+Titanium (208)
+Trend (68)
+Trend X (49)
+
+Otomobil
+Ford
+Fiesta
+1.6 TDCi
+Ghia (9)
+Sport (13)
+Titanium (17)
+
+Otomobil
+Ford
+Fiesta
+1.6 Ti-VCT
+Trend X (21)
+
+Otomobil
+Ford
+Fiesta
+1.8 D
+C (1)
+
+Otomobil
+Ford
+Fiesta
+2.0
+ST (2)
+
+---------------------
+
+Otomobil
+Ford
+Focus
+1.0 EcoBoost (222)
+1.4 (7)
+1.5 EcoBlue (1.822)
+1.5 TDCi (2.489)
+1.5 Ti-VCT (354)
+1.6 (2.156)
+1.6 SCTi (19)
+1.6 TDCi (4.783)
+1.6 Ti-VCT (1.334)
+1.8 TDCi (32)
+2.0 (86)
+2.3 (1)
+2.5 (1)
+
+Otomobil
+Ford
+Focus
+1.0 EcoBoost
+Active Stil (8)
+Active X (41)
+ST Line (7)
+Style (11)
+Titanium (27)
+Titanium Stil (49)
+Titanium X (49)
+Trend X (30)
+
+Otomobil
+Ford
+Focus
+1.4
+Comfort (7)
+
+Otomobil
+Ford
+Focus
+1.5 EcoBlue
+Active (20)
+Active Stil (39)
+Active X (99)
+ST Line (3)
+Titanium (214)
+Titanium Stil (448)
+Titanium X (577)
+Trend X (422)
+
+Otomobil
+Ford
+Focus
+1.5 TDCi
+ST Line (19)
+Style (112)
+Titanium (833)
+Trend X (1.527)
+
+Otomobil
+Ford
+Focus
+1.5 Ti-VCT
+Titanium (118)
+Trend X (236)
+
+Otomobil
+Ford
+Focus
+1.6
+Ambiente (344)
+Collection (228)
+Comfort (524)
+Darkline (3)
+Ghia (571)
+Gold Collection (6)
+Titanium (201)
+Titanium CC (2)
+Trend (237)
+Trend X (41)
+
+Otomobil
+Ford
+Focus
+1.6 SCTi
+Titanium (18)
+Trend Plus (1)
+
+Otomobil
+Ford
+Focus
+1.6 TDCi
+Collection (462)
+Comfort (29)
+Ghia (351)
+Sport (4)
+Style (400)
+Titanium (1.030)
+Trend (803)
+Trend X (1.704)
+
+Otomobil
+Ford
+Focus
+1.6 Ti-VCT
+Collection (12)
+Comfort (2)
+ST Line (1)
+Style (264)
+Style Plus (15)
+Titanium (320)
+Trend (61)
+Trend X (658)
+
+Otomobil
+Ford
+Focus
+1.8 TDCi
+Comfort (25)
+Di Ghia (2)
+Ghia (5)
+
+Otomobil
+Ford
+Focus
+2.0
+Ghia (41)
+Sport Trend (41)
+ST (3)
+Titanium CC (1)
+
+Otomobil
+Ford
+Focus
+2.3
+RS (1)
+
+Otomobil
+Ford
+Focus
+2.5
+ST (1)
+
+---------------------
+
+Otomobil
+Ford
+Fusion
+1.4 TDCi (258)
+1.6 (128)
+1.6 TDCi (55)
+
+Otomobil
+Ford
+Fusion
+1.4 TDCi
+Collection (14)
+Comfort (236)
+Urbanite (8)
+
+Otomobil
+Ford
+Fusion
+1.6
+1.6 (33)
+Comfort (14)
+Lux (81)
+
+Otomobil
+Ford
+Fusion
+1.6 TDCi
+Cool (1)
+Lux (54)
+
+---------------------
+
+Otomobil
+Ford
+Galaxy
+1.9 TDi (12)
+2.0i (1)
+2.0 TDCi Ghia (8)
+2.0 TDCi Titanium (4)
+2.3 16 V (5)
+2.8i VR6 (1)
+
+---------------------
+
+Otomobil
+Ford
+Grand C-Max
+1.5 (3)
+1.5 TDCI (7)
+1.6 EcoBoost (9)
+1.6 TDCI (46)
+
+Otomobil
+Ford
+Grand C-Max
+1.5
+Titanium (3)
+
+Otomobil
+Ford
+Grand C-Max
+1.5 TDCI
+Titanium (7)
+
+Otomobil
+Ford
+Grand C-Max
+1.6 EcoBoost
+Titanium (9)
+
+Otomobil
+Ford
+Grand C-Max
+1.6 TDCI
+Titanium (46)
+
+---------------------
+
+Otomobil
+Ford
+Ka
+1.2 Titanium (7)
+1.3 (104)
+1.3 TDCi (1)
+1.6 Street (3)
+
+Otomobil
+Ford
+Ka
+1.2 Titanium (7)
+
+Otomobil
+Ford
+Ka
+1.3
+1.3 (69)
+1.3 City (14)
+1.3 Collection (21)
+
+Otomobil
+Ford
+Ka
+1.3 TDCi
+Titanium (1)
+
+Otomobil
+Ford
+Ka
+1.6 Street (3)
+
+---------------------
+
+Otomobil
+Ford
+Mondeo
+1.5 Ecoboost (215)
+1.5 TDCI (9)
+1.6 (143)
+1.6 Ecoboost (28)
+1.6 TDCi (213)
+1.8 (2)
+1.8 TDCi (4)
+2.0 (291)
+2.0 TDCi (458)
+2.2 TDCi (1)
+2.5 (5)
+
+Otomobil
+Ford
+Mondeo
+1.5 Ecoboost
+Style (36)
+Titanium (179)
+
+Otomobil
+Ford
+Mondeo
+1.5 TDCI
+Style (4)
+Titanium (5)
+
+Otomobil
+Ford
+Mondeo
+1.6
+GLX (1)
+Selective (8)
+Titanium (98)
+Trend (36)
+
+Otomobil
+Ford
+Mondeo
+1.6 Ecoboost
+Selective (10)
+Titanium (16)
+Trend (2)
+
+Otomobil
+Ford
+Mondeo
+1.6 TDCi
+Selective (18)
+Style (27)
+Titanium (133)
+Trend (35)
+
+Otomobil
+Ford
+Mondeo
+1.8
+CLX (1)
+Ghia (1)
+
+Otomobil
+Ford
+Mondeo
+1.8 TDCi
+Ghia (4)
+
+Otomobil
+Ford
+Mondeo
+2.0
+Ghia (143)
+Ghia X (22)
+GLX (76)
+Selective (11)
+Trend (40)
+
+Otomobil
+Ford
+Mondeo
+2.0 TDCi
+Ghia (84)
+Selective (36)
+Style (12)
+Titanium (181)
+Trend (145)
+
+Otomobil
+Ford
+Mondeo
+2.2 TDCi
+Ghia (1)
+
+Otomobil
+Ford
+Mondeo
+2.5
+Ghia (5)
+
+---------------------
+
+Otomobil
+Ford
+Mustang
+2.3 Convertible (9)
+2.3 EcoBoost (44)
+3.7 V6 (5)
+3.8 (8)
+4.0 (4)
+4.0 V6 (12)
+4.6 GT (16)
+5.0 Convertible (2)
+5.0 Fastback (8)
+5.0 GT (5)
+Shelby GT 350 (1)
+
+---------------------
+
+Otomobil
+Ford
+S-Max
+1.6 TDCi Titanium (2)
+1.6 TDCi Trend (1)
+2.0i Titanium (1)
+2.0 TDCi Titanium (25)
+2.5 T (1)
+
+---------------------
+
+Otomobil
+Ford
+Taurus
+3.0 V6 GL (1)
+
+---------------------
+
+Otomobil
+Ford
+Cougar
+2.5i (1)
+
+---------------------
+
+Otomobil
+Ford
+Festiva
+1.3
+GL (18)
+XL (2)
+
+---------------------
+
+Otomobil
+Ford
+Granada
+1.7 (4)
+2.0 (3)
+2.3 (2)
+
+---------------------
+
+Otomobil
+Ford
+Orion
+1.6 CL (1)
+
+---------------------
+
+Otomobil
+Ford
+Probe
+2.5 (1)
+
+---------------------
+
+Otomobil
+Ford
+Scorpio
+2.0 (5)
+2.3 (4)
+2.9 (2)
+
+Otomobil
+Ford
+Scorpio
+2.0
+Ghia (3)
+GLX (2)
+
+Otomobil
+Ford
+Scorpio
+2.3
+CLX (1)
+Ghia (3)
+
+Otomobil
+Ford
+Scorpio
+2.9
+Ghia (2)
+
+---------------------
+
+Otomobil
+Ford
+Sierra
+1.6 (1)
+2.0 (12)
+
+Otomobil
+Ford
+Sierra
+1.6
+CL (1)
+
+Otomobil
+Ford
+Sierra
+2.0
+CL (1)
+CLX (3)
+Ghia (1)
+GL (1)
+GLS (6)
+
+---------------------
+
+Otomobil
+Ford
+Taunus
+1.6 (115)
+2.0 (39)
+
+Otomobil
+Ford
+Taunus
+1.6
+GL (18)
+GT (52)
+GXL (11)
+L (1)
+S (33)
+
+Otomobil
+Ford
+Taunus
+2.0
+GL (1)
+GLS (3)
+GTS (35)
+
+---------------------
+
+Otomobil
+Ford
+Thunderbird
+3.8 (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Bronco Sport (9)
+Capri (8)
+EcoSport (245)
+Edge (6)
+Expedition (5)
+Explorer-E (20)
+Explorer (33)
+F (16)
+Flex (4)
+Kuga (1.787)
+Mustang Mach-E (50)
+Puma (702)
+Puma-E (13)
+Ranger (1.742)
+Ranger Raptor (43)
+Bronco (1)
+Escape (1)
+Excursion (1)
+Maverick (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Bronco Sport
+1.5 EcoBoost
+Big Bend (3)
+Outer Banks (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Capri
+Premium (8)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+EcoSport
+1.0 EcoBoost (231)
+1.5 TDCI (14)
+
+Arazi, SUV & Pickup
+Ford
+EcoSport
+1.0 EcoBoost
+ST Line (52)
+Style (179)
+
+Arazi, SUV & Pickup
+Ford
+EcoSport
+1.5 TDCI
+ST Line (14)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Edge
+2.0 TDCi
+Titanium (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Expedition
+3.5 (1)
+5.4 V8 (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Explorer-E
+Premium (14)
+Select (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Explorer
+3.0 (1)
+3.5 (2)
+4.0 (7)
+4.0 XLT (17)
+5.0 Limited (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+F
+150 (7)
+250 (1)
+350 (8)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Flex
+3.5 (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Kuga
+1.5 TDCI (408)
+1.5 EcoBlue (409)
+1.5 EcoBoost (662)
+1.6 EcoBoost (165)
+2.0 TDCi (144)
+
+Arazi, SUV & Pickup
+Ford
+Kuga
+1.5 TDCI
+ST Line (43)
+Style (81)
+Titanium (282)
+Vignale (2)
+
+Arazi, SUV & Pickup
+Ford
+Kuga
+1.5 EcoBlue
+ST Line (76)
+Style (35)
+Titanium (282)
+Vignale (16)
+
+Arazi, SUV & Pickup
+Ford
+Kuga
+1.5 EcoBoost
+Selective (38)
+ST-Line (90)
+ST-Line Black Package (19)
+ST-Line X (73)
+Style (59)
+Titanium (347)
+Trend X (33)
+Vignale (3)
+
+Arazi, SUV & Pickup
+Ford
+Kuga
+1.6 EcoBoost
+Selective (52)
+Titanium (69)
+Trend X (44)
+
+Arazi, SUV & Pickup
+Ford
+Kuga
+2.0 TDCi
+Selective (42)
+Titanium (101)
+Vignale (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Mustang Mach-E
+Extended Range (12)
+GT (5)
+Premium (14)
+Standart Range (19)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Puma
+1.0 EcoBoost (696)
+1.5 EcoBoost (6)
+
+Arazi, SUV & Pickup
+Ford
+Puma
+1.0 EcoBoost
+ST (4)
+ST-Line (41)
+ST-Line X (56)
+Style (431)
+Titanium (164)
+
+Arazi, SUV & Pickup
+Ford
+Puma
+1.5 EcoBoost
+ST (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Puma-E
+Premium (13)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Ranger
+2.0 EcoBlue (911)
+2.2 TDCi (486)
+2.5 TDCi (235)
+3.0 EcoBlue (19)
+3.0 TDCi (12)
+3.2 TDCi (80)
+
+Arazi, SUV & Pickup
+Ford
+Ranger
+2.0 EcoBlue
+4x2 XLT (28)
+4x4 Stormtrak (12)
+4x4 Wildtrak (640)
+4x4 Wildtrak X (62)
+4x4 Wolftrak (3)
+4x4 XLT (166)
+
+Arazi, SUV & Pickup
+Ford
+Ranger
+2.2 TDCi
+XL (9)
+XLT (477)
+
+Arazi, SUV & Pickup
+Ford
+Ranger
+2.5 TDCi
+Hi-Rider (16)
+STD (27)
+Thunder (4)
+XL (15)
+XLT (174)
+
+Arazi, SUV & Pickup
+Ford
+Ranger
+3.0 EcoBlue
+MS-RT (1)
+Platinum (5)
+Wildtrak (13)
+
+Arazi, SUV & Pickup
+Ford
+Ranger
+3.0 TDCi
+XLT (12)
+
+Arazi, SUV & Pickup
+Ford
+Ranger
+3.2 TDCi
+Wild Trak (80)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Ranger Raptor
+2.0 EcoBlue
+4x4 (43)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Bronco
+2.7 (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Escape
+3.0 (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Excursion
+6.0 (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Ford
+Maverick
+3.0i XLT (1)
+
+---------------------

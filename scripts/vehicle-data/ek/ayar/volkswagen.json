@@ -1,0 +1,5 @@
+{
+  "kamyonet": ["Amarok"],
+  "takma": { "Passat Alltrack": "Passat Variant", "Up Club": "up!", "VW CC": "Passat CC", "Tiguan AllSpace": "Tiguan" },
+  "yeniModel": { "Lupo": { "bas": 1998, "bit": 2005, "kaynak": "en.wikipedia Volkswagen Lupo (1998-2005)" } }
+}

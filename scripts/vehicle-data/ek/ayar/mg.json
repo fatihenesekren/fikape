@@ -1,0 +1,8 @@
+{
+  "takma": { "ZS EV": "ZS" },
+  "yeniModel": {
+    "F": { "bas": 1995, "bit": 2011, "kaynak": "en.wikipedia MG F / MG TF (1995-2011, üç üretici)" },
+    "ZR": { "bas": 2001, "bit": 2005, "kaynak": "en.wikipedia MG ZR (2001-2005)" },
+    "Marvel R": { "bas": 2021, "bit": null, "kaynak": "MG Marvel R Electric (2021'den beri; Türkiye'ye gelişi mg-turkey.com)" }
+  }
+}

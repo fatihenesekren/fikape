@@ -1,0 +1,1234 @@
+[
+  {
+    "marka": "Volkswagen",
+    "model": "Beetle",
+    "versiyon": "1.3",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Beetle",
+    "versiyon": "1.6",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Beetle",
+    "versiyon": "1.6",
+    "paket": "Smile",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Beetle",
+    "versiyon": "1.9 TDi",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Beetle",
+    "versiyon": "2.0",
+    "paket": "Diamond",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Beetle",
+    "versiyon": "2.0",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Beetle",
+    "versiyon": "2.0",
+    "paket": "Pearl",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Beetle",
+    "versiyon": "2.3",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "EOS",
+    "versiyon": "2.0 TFSI Highline",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "EOS",
+    "versiyon": "1.6 FSi",
+    "paket": "Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "EOS",
+    "versiyon": "1.6 FSi",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "EOS",
+    "versiyon": "2.0",
+    "paket": "FSi",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "EOS",
+    "versiyon": "2.0",
+    "paket": "TDI Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.4",
+    "paket": "CL",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.4",
+    "paket": "Plus Comfortline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.4 TSI",
+    "paket": "GT",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.4 TSI",
+    "paket": "Midline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.4 TSI",
+    "paket": "Tour",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "Basicline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "C",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "CL",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "GL",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "Goal",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "GTD",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "Pacific",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "Primeline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "Primeline Plus",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "Sport",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "Sportline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "Tour",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6",
+    "paket": "Variant",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6 TDI",
+    "paket": "BlueMotion Allstar",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6 TDI",
+    "paket": "BlueMotion Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6 TDI",
+    "paket": "BlueMotion Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.6 TDI",
+    "paket": "BlueMotion Midline Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.8",
+    "paket": "Standart",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.8",
+    "paket": "4motion",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.8",
+    "paket": "CL",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.8",
+    "paket": "GL",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.8",
+    "paket": "GTI",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.8",
+    "paket": "Highline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.9",
+    "paket": "D CL",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.9 TDI",
+    "paket": "Comfortline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.9 TDI",
+    "paket": "Goal",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.9 TDI",
+    "paket": "Highline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.9 TDI",
+    "paket": "Midline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.9 TDI",
+    "paket": "Pacific",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.9 TDI",
+    "paket": "Tour",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "1.9 TDI",
+    "paket": "Variant",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "2.0",
+    "paket": "FSi Sportline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "2.0",
+    "paket": "Highline",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "2.0 TDI",
+    "paket": "Goal",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "2.0 TSI",
+    "paket": "BlueMotion GTI Performans",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "2.0 TSI",
+    "paket": "R BlueMotion",
+    "neden": "Birden fazla eski nesilde geçiyor (Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "2.3",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "2.5",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "versiyon": "2.8 V6",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Golf 1 (1974-1983) / Golf 2 (1983-1992) / Golf 3 (1991-1997) / Golf 4 (1997-2004) / Golf 5 (2003-2008) / Golf 6 (2008-2012)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.3 GL",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.4 TSI",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.4 TSI",
+    "paket": "Midline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.4 TSI",
+    "paket": "Tour",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.6",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.6",
+    "paket": "FSI Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.6",
+    "paket": "FSI Midline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.6",
+    "paket": "GL",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.6",
+    "paket": "GTD",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.6",
+    "paket": "Midline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.6",
+    "paket": "Tour",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.6 TDI",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.6 TDI",
+    "paket": "Midline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.8",
+    "paket": "CL",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.8",
+    "paket": "GT",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.9 TDI",
+    "paket": "Midline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "1.9 TDI",
+    "paket": "Primeline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "2.0",
+    "paket": "FSI Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Jetta",
+    "versiyon": "2.0",
+    "paket": "TDI Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.4 TSI BlueMotion",
+    "paket": "R Line",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.6",
+    "paket": "CL",
+    "neden": "Birden fazla eski nesilde geçiyor (Passat (1988-1996) / Passat (1996-2005)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.6",
+    "paket": "GL",
+    "neden": "Birden fazla eski nesilde geçiyor (Passat (1988-1996) / Passat (1996-2005)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.8 T",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.8 T",
+    "paket": "Basic",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.8 T",
+    "paket": "Comfortline",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.8 T",
+    "paket": "Exclusive",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.8 T",
+    "paket": "Highline",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.8 T",
+    "paket": "Trendline",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "1.8 TSI",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "2.0",
+    "paket": "GL",
+    "neden": "Birden fazla eski nesilde geçiyor (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "2.0",
+    "paket": "GT",
+    "neden": "Birden fazla eski nesilde geçiyor (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "2.0",
+    "paket": "Trendline",
+    "neden": "Birden fazla eski nesilde geçiyor (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "2.0 TDI",
+    "paket": "Sportline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "2.5 TDI",
+    "paket": "Highline",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "2.8",
+    "paket": "Standart",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat",
+    "versiyon": "2.8",
+    "paket": "Highline",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (Passat (1988-1996) / Passat (1996-2005) / Passat (2005-2014)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Alltrack",
+    "versiyon": "2.0 TDI",
+    "paket": "Alltrack",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.4 TSI",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.5 e-TSI",
+    "paket": "Impression",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.5 e-TSI",
+    "paket": "R Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.5 PHEV",
+    "paket": "Impression",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.5 PHEV",
+    "paket": "R-Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.5 TSI",
+    "paket": "R-Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.6 FSI",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.8",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.8",
+    "paket": "CL",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.8 T",
+    "paket": "Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.8 T",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.8 TSI",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.9 TDI",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "1.9 TDI",
+    "paket": "Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "2.0",
+    "paket": "GT",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "2.0 TDI BlueMotion",
+    "paket": "Alltrack",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "2.0 TDI BlueMotion",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "2.0 TDI BlueMotion",
+    "paket": "Sportline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Passat Variant",
+    "versiyon": "2.5 TDI",
+    "paket": "Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Phaeton",
+    "versiyon": "5.0 TDI Long",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.0 TSI",
+    "paket": "R-Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.3",
+    "paket": "CL",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4",
+    "paket": "Basicline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4",
+    "paket": "Comfortline Classic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4",
+    "paket": "Cross",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4",
+    "paket": "Goal",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4",
+    "paket": "Primeline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4",
+    "paket": "Sportline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4",
+    "paket": "Tour",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4 TDI",
+    "paket": "Basicline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4 TDI",
+    "paket": "Goal",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4 TDI",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4 TDI",
+    "paket": "Primeline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.4 TDI",
+    "paket": "Tour",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.6",
+    "paket": "Classic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.6",
+    "paket": "Comfortline Classic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.6",
+    "paket": "GTI",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.6",
+    "paket": "Sportline Classic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.6",
+    "paket": "Trendline Classic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.9",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.9 SDI",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.9 SDI",
+    "paket": "Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.9 TDI",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.9 TDI",
+    "paket": "Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.9 TDI",
+    "paket": "Comfortline Classic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.9 TDI",
+    "paket": "Trendline Classic",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "versiyon": "1.9 TDI",
+    "paket": "Trendline Variant",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Scirocco",
+    "versiyon": "2.0",
+    "paket": "TDI Sportline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Scirocco",
+    "versiyon": "2.0",
+    "paket": "TFSI Sportline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Sharan",
+    "versiyon": "1.9 TDI",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Sharan",
+    "versiyon": "1.9 TDI Comfortline",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Sharan",
+    "versiyon": "1.9 TDI Highline",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touran",
+    "versiyon": "1.4 TSI",
+    "paket": "Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touran",
+    "versiyon": "1.6",
+    "paket": "Function",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touran",
+    "versiyon": "1.6",
+    "paket": "Trendline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touran",
+    "versiyon": "1.6 FSI",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touran",
+    "versiyon": "1.6 TDI",
+    "paket": "Trendline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touran",
+    "versiyon": "1.9 TDI",
+    "paket": "Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touran",
+    "versiyon": "1.9 TDI",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touran",
+    "versiyon": "2.0 TDI",
+    "paket": "Highline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Up Club",
+    "versiyon": "E-Up",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "VW CC",
+    "versiyon": "1.4 TSI",
+    "paket": "R-Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Vento",
+    "versiyon": "1.9",
+    "paket": "CL TD",
+    "neden": "Versiyon, mevcut versiyonların kısa yazımı olabilir (1.9 D 64 / 1.9 TDI 90) — hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Vento",
+    "versiyon": "1.9",
+    "paket": "TDI",
+    "neden": "Versiyon, mevcut versiyonların kısa yazımı olabilir (1.9 D 64 / 1.9 TDI 90) — hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "ID.6",
+    "versiyon": "XPro",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Tiguan",
+    "versiyon": "1.4 TSI",
+    "paket": "Fun&Function",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Tiguan",
+    "versiyon": "1.4 TSI",
+    "paket": "Track&Field",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Tiguan",
+    "versiyon": "1.6 TDI",
+    "paket": "R Line",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Tiguan",
+    "versiyon": "2.0 TDI",
+    "paket": "Comfortline",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Tiguan",
+    "versiyon": "2.0 TDI",
+    "paket": "Fun&Function",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Tiguan",
+    "versiyon": "2.0 TDI",
+    "paket": "Track&Field",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "2.5 TDI",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "2.5 TDI",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "2.5 TDI",
+    "paket": "Sportive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "3.0 TDI",
+    "paket": "Active",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "3.0 TDI",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "3.2",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "3.6 FSI",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "4.2",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "5.0 TDI",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Touareg",
+    "versiyon": "5.0 TDI",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

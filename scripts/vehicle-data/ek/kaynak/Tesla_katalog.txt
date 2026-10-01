@@ -1,0 +1,57 @@
+Otomobil
+Tesla
+Model 3 (11)
+Model S (12)
+Model X (12)
+Model Y (495)
+
+---------------------
+
+Otomobil
+Tesla
+Model 3
+Long Range (3)
+Standart (1)
+Standart Plus (7)
+
+---------------------
+
+Otomobil
+Tesla
+Model S
+75 (1)
+75D (2)
+85 (1)
+P85D (1)
+P90D (1)
+Plaid (1)
+Model S (1)
+100D (2)
+P100D (2)
+
+---------------------
+
+Otomobil
+Tesla
+Model X
+75D (4)
+90D (3)
+100D (3)
+P90D (1)
+Plaid (1)
+
+---------------------
+
+Otomobil
+Tesla
+Model Y
+RWD (Juniper) (55)
+RWD (Legacy) (81)
+Standart (Juniper) (18)
+Long Range (Juniper) (1)
+Long Range (Legacy) (93)
+Performance (Juniper) (12)
+Performance (Legacy) (104)
+Premium (Juniper) (131)
+
+---------------------

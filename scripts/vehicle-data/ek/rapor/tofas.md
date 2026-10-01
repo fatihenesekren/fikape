@@ -1,0 +1,20 @@
+### Tofaş
+- otomobil: zaten vardı 8 · eklendi 16 · belirsiz 0
+  - + Doğan (1986-2001) › L › Standart
+  - + Doğan (1986-2001) › S › Standart
+  - + Doğan (1986-2001) › SL › Standart
+  - + Doğan (1986-2001) › SLX › Standart
+  - + Doğan (1986-2001) › SLX ie › Standart
+  - + Kartal (1981-2002) › Kartal 5 Vites › Standart
+  - + Kartal (1981-2002) › L › Standart
+  - + Kartal (1981-2002) › S › Standart
+  - + Kartal (1981-2002) › SL › Standart
+  - + Kartal (1981-2002) › SLX › Standart
+  - + Kartal (1981-2002) › SLX ie › Standart
+  - + Murat 124 / Serçe (1971-1977) › 124 › Standart
+  - + Şahin (1986-2002) › 1.4 › Standart
+  - + Şahin (1986-2002) › 1.4 ie › Standart
+  - + Şahin (1986-2002) › S › Standart
+  - + Şahin (1986-2002) › Şahin 5 vites › Standart
+  - ~ eşleme: "Murat" → "Murat 124 / Serçe (1971-1977)"
+  - ~ eşleme: "Serçe" → "Murat 124 / Serçe (1971-1977)"

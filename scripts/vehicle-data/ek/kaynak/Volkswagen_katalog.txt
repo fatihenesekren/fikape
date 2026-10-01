@@ -1,0 +1,1530 @@
+Otomobil
+Volkswagen
+Arteon (173)
+Beetle (285)
+Bora (1.041)
+EOS (28)
+FOX (1)
+Golf (11.115)
+ID.3 (1)
+ID.7 (16)
+Jetta (6.143)
+Lupo (5)
+Passat (15.914)
+Passat Alltrack (7)
+Passat Variant (762)
+Phaeton (9)
+Polo (10.633)
+Scirocco (670)
+Sharan (13)
+Touran (87)
+Up Club (1)
+VW CC (1.040)
+Vento (18)
+
+---------------------
+
+Otomobil
+Volkswagen
+Arteon
+1.4 TSI (1)
+1.5 TSI (115)
+2.0 TDI (56)
+
+Otomobil
+Volkswagen
+Arteon
+1.4 TSI (1)
+
+Otomobil
+Volkswagen
+Arteon
+1.5 TSI
+Elegance (26)
+R Line (89)
+
+Otomobil
+Volkswagen
+Arteon
+2.0 TDI
+Elegance (32)
+R-Line (24)
+
+---------------------
+
+Otomobil
+Volkswagen
+Beetle
+1.2 TSI (141)
+1.3 (25)
+1.4 TSI (58)
+1.6 (16)
+1.6 TDI Design (37)
+1.9 TDi (1)
+2.0 (7)
+2.3 (1)
+
+Otomobil
+Volkswagen
+Beetle
+1.2 TSI
+Allstar (5)
+Beetle (26)
+Design (103)
+Style (7)
+
+Otomobil
+Volkswagen
+Beetle
+1.3 (25)
+
+Otomobil
+Volkswagen
+Beetle
+1.4 TSI
+Allstar (1)
+Design (57)
+
+Otomobil
+Volkswagen
+Beetle
+1.6
+1.6 (1)
+Highline (4)
+Smile (11)
+
+Otomobil
+Volkswagen
+Beetle
+1.6 TDI Design (37)
+
+Otomobil
+Volkswagen
+Beetle
+1.9 TDi (1)
+
+Otomobil
+Volkswagen
+Beetle
+2.0
+Diamond (5)
+Highline (1)
+Pearl (1)
+
+Otomobil
+Volkswagen
+Beetle
+2.3 (1)
+
+---------------------
+
+Otomobil
+Volkswagen
+Bora
+1.6 (967)
+1.8 (1)
+1.8 T (2)
+1.9 TDI (67)
+2.3 (3)
+
+Otomobil
+Volkswagen
+Bora
+1.6
+1.6 (22)
+Basic (28)
+Comfortline (477)
+Highline (8)
+Pacific (316)
+Primeline (33)
+Trendline (83)
+
+Otomobil
+Volkswagen
+Bora
+1.8
+4Motion (1)
+
+Otomobil
+Volkswagen
+Bora
+1.8 T
+Highline (2)
+
+Otomobil
+Volkswagen
+Bora
+1.9 TDI
+Comfortline (57)
+Pacific (7)
+Trendline (3)
+
+Otomobil
+Volkswagen
+Bora
+2.3
+Highline (3)
+
+---------------------
+
+Otomobil
+Volkswagen
+EOS
+2.0 TFSI Highline (1)
+1.4 TSI (3)
+1.6 FSi (18)
+2.0 (5)
+
+Otomobil
+Volkswagen
+EOS
+2.0 TFSI Highline (1)
+
+Otomobil
+Volkswagen
+EOS
+1.4 TSI
+Comfortline (3)
+
+Otomobil
+Volkswagen
+EOS
+1.6 FSi
+Comfortline (11)
+Highline (7)
+
+Otomobil
+Volkswagen
+EOS
+2.0
+FSi (3)
+TDI Highline (2)
+
+---------------------
+
+Otomobil
+Volkswagen
+FOX
+1.2
+1.2 (1)
+
+---------------------
+
+Otomobil
+Volkswagen
+Golf
+1.0 e-TSI (563)
+1.0 TSI (460)
+1.2 TSI (1.179)
+1.3 (4)
+1.4 (7)
+1.4 CDI (1)
+1.4 TSI (1.996)
+1.5 e-TSI (493)
+1.5 PHEV (4)
+1.5 TSI (240)
+1.6 (1.241)
+1.6 FSI (470)
+1.6 TDI (4.112)
+1.8 (72)
+1.8 T (5)
+1.9 (20)
+1.9 TDI (125)
+2.0 (23)
+2.0 TDI (8)
+2.0 TSI (109)
+2.3 (1)
+2.5 (1)
+2.8 V6 (1)
+
+Otomobil
+Volkswagen
+Golf
+1.0 e-TSI
+Life (346)
+R-Line (86)
+Style (131)
+
+Otomobil
+Volkswagen
+Golf
+1.0 TSI
+Comfortline (183)
+Highline (39)
+Impression (173)
+Midline Plus (65)
+
+Otomobil
+Volkswagen
+Golf
+1.2 TSI
+Allstar (26)
+Comfortline (831)
+Midline Plus (321)
+
+Otomobil
+Volkswagen
+Golf
+1.3 (4)
+
+Otomobil
+Volkswagen
+Golf
+1.4
+CL (6)
+Plus Comfortline (1)
+
+Otomobil
+Volkswagen
+Golf
+1.4 CDI
+Comfortline (1)
+
+Otomobil
+Volkswagen
+Golf
+1.4 TSI
+Allstar (21)
+Comfortline (923)
+Fan Edition (2)
+GT (14)
+Highline (805)
+Midline (51)
+Pulse (8)
+Tour (5)
+Trendline (164)
+
+Otomobil
+Volkswagen
+Golf
+1.5 e-TSI
+Life (211)
+R-Line (116)
+Style (165)
+
+Otomobil
+Volkswagen
+Golf
+1.5 PHEV
+Life (4)
+
+Otomobil
+Volkswagen
+Golf
+1.5 TSI
+Comfortline (132)
+Highline (44)
+Impression (64)
+
+Otomobil
+Volkswagen
+Golf
+1.6
+1.6 (10)
+Basicline (12)
+C (1)
+CL (33)
+Comfortline (568)
+GL (14)
+Goal (6)
+GTD (14)
+Highline (9)
+Midline (78)
+Midline Plus (11)
+Pacific (82)
+Primeline (102)
+Primeline Plus (23)
+Sport (31)
+Sportline (4)
+Tour (6)
+Trendline (235)
+Variant (2)
+
+Otomobil
+Volkswagen
+Golf
+1.6 FSI
+Comfortline (244)
+Goal (35)
+Midline (127)
+Sportline (18)
+Tour (7)
+Plus Comfortline (12)
+Plus Goal (1)
+Plus Midline (19)
+Plus Primeline (7)
+
+Otomobil
+Volkswagen
+Golf
+1.6 TDI
+BlueMotion (17)
+BlueMotion Allstar (13)
+BlueMotion Comfortline (1.687)
+BlueMotion Highline (1.083)
+BlueMotion Midline Plus (353)
+Comfortline (453)
+Highline (285)
+Trendline (221)
+
+Otomobil
+Volkswagen
+Golf
+1.8
+1.8 (4)
+4motion (3)
+CL (25)
+GL (8)
+GTI (4)
+Highline (28)
+
+Otomobil
+Volkswagen
+Golf
+1.8 T
+GTI (5)
+
+Otomobil
+Volkswagen
+Golf
+1.9
+D CL (20)
+
+Otomobil
+Volkswagen
+Golf
+1.9 TDI
+1.9 TDi (36)
+Comfortline (59)
+Goal (7)
+Highline (3)
+Midline (9)
+Pacific (1)
+Tour (2)
+Variant (8)
+
+Otomobil
+Volkswagen
+Golf
+2.0
+FSi Sportline (1)
+GTi (21)
+Highline (1)
+
+Otomobil
+Volkswagen
+Golf
+2.0 TDI
+Comfortline (5)
+Goal (1)
+GTD (2)
+
+Otomobil
+Volkswagen
+Golf
+2.0 TSI
+GTI (17)
+BlueMotion GTI Performans (9)
+R 4Motion (74)
+R BlueMotion (9)
+
+Otomobil
+Volkswagen
+Golf
+2.3 (1)
+
+Otomobil
+Volkswagen
+Golf
+2.5 (1)
+
+Otomobil
+Volkswagen
+Golf
+2.8 V6 (1)
+
+---------------------
+
+Otomobil
+Volkswagen
+ID.3
+Pro (1)
+
+---------------------
+
+Otomobil
+Volkswagen
+ID.7
+Pro S (15)
+
+---------------------
+
+Otomobil
+Volkswagen
+Jetta
+1.2 TSI (629)
+1.2 TSI BlueMotion (444)
+1.3 GL (1)
+1.4 TSI (799)
+1.4 TSI BlueMotion (595)
+1.6 (637)
+1.6 TDI (2.910)
+1.8 (4)
+1.9 TDI (88)
+2.0 (32)
+
+Otomobil
+Volkswagen
+Jetta
+1.2 TSI
+Comfortline (332)
+Highline (54)
+Trendline (243)
+
+Otomobil
+Volkswagen
+Jetta
+1.2 TSI BlueMotion
+Comfortline (281)
+Highline (18)
+Trendline (145)
+
+Otomobil
+Volkswagen
+Jetta
+1.3 GL (1)
+
+Otomobil
+Volkswagen
+Jetta
+1.4 TSI
+Comfortline (487)
+Exclusive (43)
+Highline (119)
+Midline (25)
+Tour (10)
+Trendline (115)
+
+Otomobil
+Volkswagen
+Jetta
+1.4 TSI BlueMotion
+Comfortline (413)
+Highline (134)
+Trendline (48)
+
+Otomobil
+Volkswagen
+Jetta
+1.6
+1.6 (10)
+Comfortline (153)
+Exclusive (2)
+FSI Comfortline (97)
+FSI Midline (59)
+GL (2)
+GTD (2)
+Midline (112)
+Primeline (190)
+Tour (10)
+
+Otomobil
+Volkswagen
+Jetta
+1.6 TDI
+Comfortline (1.671)
+Exclusive (49)
+Highline (446)
+Midline (13)
+Primeline (93)
+Trendline (639)
+
+Otomobil
+Volkswagen
+Jetta
+1.8
+CL (3)
+GT (1)
+
+Otomobil
+Volkswagen
+Jetta
+1.9 TDI
+Midline (60)
+Primeline (28)
+
+Otomobil
+Volkswagen
+Jetta
+2.0
+FSI Comfortline (2)
+TDI Comfortline (30)
+
+---------------------
+
+Otomobil
+Volkswagen
+Lupo
+1.4
+1.4 (4)
+Oxford (1)
+
+---------------------
+
+Otomobil
+Volkswagen
+Passat
+1.4 PHEV (1)
+1.4 TSI (388)
+1.4 TSI BlueMotion (2.062)
+1.5 TSI (2.384)
+1.6 (330)
+1.6 FSI (358)
+1.6 TD GL (4)
+1.6 TDI BlueMotion (8.148)
+1.8 (169)
+1.8 T (303)
+1.8 TSI (34)
+1.9 TDI (392)
+2.0 (21)
+2.0 FSI (63)
+2.0 TDI (473)
+2.0 TDI BlueMotion (742)
+2.0 TFSI (8)
+2.0 TSI (1)
+2.5 TDI (7)
+2.8 (3)
+
+Otomobil
+Volkswagen
+Passat
+1.4 PHEV
+GTE (1)
+
+Otomobil
+Volkswagen
+Passat
+1.4 TSI
+Comfortline (306)
+Exclusive (26)
+Highline (3)
+Trendline (53)
+
+Otomobil
+Volkswagen
+Passat
+1.4 TSI BlueMotion
+Comfortline (1.175)
+Exclusive (19)
+Highline (313)
+R Line (9)
+Trendline (546)
+
+Otomobil
+Volkswagen
+Passat
+1.5 TSI
+Business (1.296)
+Comfortline (1)
+Elegance (554)
+Highline (3)
+Impression (475)
+Trendline (2)
+R Line (53)
+
+Otomobil
+Volkswagen
+Passat
+1.6
+1.6 (22)
+CL (1)
+Comfortline (62)
+Exclusive (46)
+GL (1)
+Trendline (199)
+
+Otomobil
+Volkswagen
+Passat
+1.6 FSI
+Comfortline (316)
+Exclusive (13)
+Trendline (29)
+
+Otomobil
+Volkswagen
+Passat
+1.6 TD GL (4)
+
+Otomobil
+Volkswagen
+Passat
+1.6 TDI BlueMotion
+1.6 TDI BlueMotion (57)
+Business (779)
+Comfortline (4.193)
+Elegance (251)
+Exclusive (72)
+Highline (1.164)
+Impression (828)
+R Line (133)
+Trendline (672)
+
+Otomobil
+Volkswagen
+Passat
+1.8
+1.8 (1)
+Basic (52)
+CL (3)
+Comfortline (92)
+Highline (8)
+Trendline (13)
+
+Otomobil
+Volkswagen
+Passat
+1.8 T
+1.8 T (2)
+Basic (2)
+Comfortline (185)
+Exclusive (8)
+Highline (97)
+Trendline (9)
+
+Otomobil
+Volkswagen
+Passat
+1.8 TSI
+Comfortline (18)
+Exclusive (2)
+Highline (14)
+
+Otomobil
+Volkswagen
+Passat
+1.9 TDI
+1.9 TDI (63)
+Comfortline (200)
+Exclusive (55)
+Highline (59)
+Trendline (15)
+
+Otomobil
+Volkswagen
+Passat
+2.0
+2.0 (1)
+Comfortline (15)
+Exclusive (1)
+GL (2)
+GT (1)
+Trendline (1)
+
+Otomobil
+Volkswagen
+Passat
+2.0 FSI
+Comfortline (42)
+Highline (21)
+
+Otomobil
+Volkswagen
+Passat
+2.0 TDI
+Business (19)
+Comfortline (320)
+Elegance (15)
+Exclusive (16)
+Highline (99)
+Sportline (1)
+Trendline (4)
+
+Otomobil
+Volkswagen
+Passat
+2.0 TDI BlueMotion
+Business (31)
+Comfortline (318)
+Elegance (60)
+Highline (333)
+
+Otomobil
+Volkswagen
+Passat
+2.0 TFSI
+Comfortline (3)
+Highline (5)
+
+Otomobil
+Volkswagen
+Passat
+2.0 TSI
+R Line (1)
+
+Otomobil
+Volkswagen
+Passat
+2.5 TDI
+Highline (7)
+
+Otomobil
+Volkswagen
+Passat
+2.8
+2.8 (1)
+Highline (2)
+
+---------------------
+
+Otomobil
+Volkswagen
+Passat Alltrack
+2.0 TDI
+Alltrack (7)
+
+---------------------
+
+Otomobil
+Volkswagen
+Passat Variant
+1.4 TSI (39)
+1.4 TSI BlueMotion (74)
+1.5 e-TSI (102)
+1.5 PHEV (43)
+1.5 TSI (210)
+1.6 (2)
+1.6 FSI (12)
+1.6 TDI BlueMotion (184)
+1.6 TDi (22)
+1.8 (5)
+1.8 T (5)
+1.8 TSI (1)
+1.9 TDI (20)
+2.0 (1)
+2.0 TDI BlueMotion (39)
+2.5 TDI (1)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.4 TSI
+Comfortline (37)
+Exclusive (1)
+Highline (1)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.4 TSI BlueMotion
+Comfortline (60)
+Highline (14)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.5 e-TSI
+Business (16)
+Elegance (22)
+Impression (33)
+R Line (31)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.5 PHEV
+Elegance (2)
+Impression (39)
+R-Line (2)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.5 TSI
+Business (106)
+Elegance (97)
+R-Line (7)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.6
+1.6 (2)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.6 FSI
+Comfortline (11)
+Exclusive (1)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.6 TDI BlueMotion
+Business (14)
+Comfortline (146)
+Elegance (9)
+Highline (15)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.6 TDi
+Highline (22)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.8
+1.8 (2)
+CL (3)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.8 T
+Comfortline (2)
+Highline (3)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.8 TSI
+Highline (1)
+
+Otomobil
+Volkswagen
+Passat Variant
+1.9 TDI
+1.9 TDI (15)
+Comfortline (5)
+
+Otomobil
+Volkswagen
+Passat Variant
+2.0
+GT (1)
+
+Otomobil
+Volkswagen
+Passat Variant
+2.0 TDI BlueMotion
+Alltrack (1)
+Comfortline (20)
+Elegance (1)
+Exclusive (2)
+Highline (14)
+Sportline (1)
+
+Otomobil
+Volkswagen
+Passat Variant
+2.5 TDI
+Comfortline (1)
+
+---------------------
+
+Otomobil
+Volkswagen
+Phaeton
+3.0 TDI (5)
+5.0 TDI Long (4)
+
+---------------------
+
+Otomobil
+Volkswagen
+Polo
+1.0 (398)
+1.0 TSI (1.713)
+1.2 (189)
+1.2 TDI (805)
+1.2 TSI (993)
+1.3 (1)
+1.4 (2.012)
+1.4 TDI (2.002)
+1.4 TSI (86)
+1.6 (1.147)
+1.6 TDI (1.256)
+1.9 (1)
+1.9 SDI (4)
+1.9 TDI (16)
+
+Otomobil
+Volkswagen
+Polo
+1.0
+1.0 (1)
+Impression (193)
+Trendline (204)
+
+Otomobil
+Volkswagen
+Polo
+1.0 TSI
+Comfortline (594)
+Highline (235)
+Life (849)
+R-Line (1)
+Style (34)
+
+Otomobil
+Volkswagen
+Polo
+1.2
+1.2 (4)
+Trendline (185)
+
+Otomobil
+Volkswagen
+Polo
+1.2 TDI
+BlueMotion (158)
+Trendline (646)
+
+Otomobil
+Volkswagen
+Polo
+1.2 TSI
+Allstar (116)
+Comfortline (691)
+Lounge (185)
+Trendline (2)
+
+Otomobil
+Volkswagen
+Polo
+1.3
+CL (1)
+
+Otomobil
+Volkswagen
+Polo
+1.4
+1.4 (47)
+Basicline (223)
+Chrome Edition (92)
+Comfortline (1.074)
+Comfortline Classic (4)
+Cross (5)
+Fan Edition (4)
+Goal (27)
+Highline (31)
+Primeline (8)
+Pulse (9)
+Sportline (34)
+Tour (8)
+Trendline (446)
+
+Otomobil
+Volkswagen
+Polo
+1.4 TDI
+Basicline (29)
+BlueMotion (39)
+Comfortline (1.453)
+Goal (13)
+Highline (3)
+Primeline (2)
+Tour (11)
+Trendline (452)
+
+Otomobil
+Volkswagen
+Polo
+1.4 TSI
+ACT BlueGT (21)
+GTI (65)
+
+Otomobil
+Volkswagen
+Polo
+1.6
+1.6 (648)
+Classic (366)
+Comfortline (10)
+Comfortline Classic (100)
+GTI (6)
+Highline (5)
+Sportline Classic (5)
+Trendline Classic (7)
+
+Otomobil
+Volkswagen
+Polo
+1.6 TDI
+Comfortline (1.186)
+Highline (17)
+Trendline (53)
+
+Otomobil
+Volkswagen
+Polo
+1.9
+1.9 (1)
+
+Otomobil
+Volkswagen
+Polo
+1.9 SDI
+1.9 SDI (3)
+Comfortline (1)
+
+Otomobil
+Volkswagen
+Polo
+1.9 TDI
+1.9 TDI (5)
+Comfortline (3)
+Comfortline Classic (5)
+Trendline Classic (1)
+Trendline Variant (3)
+
+---------------------
+
+Otomobil
+Volkswagen
+Scirocco
+1.4 TSI (661)
+2.0 (9)
+
+Otomobil
+Volkswagen
+Scirocco
+1.4 TSI
+Allstar (12)
+GTS (16)
+Sportline (610)
+White Edition (23)
+
+Otomobil
+Volkswagen
+Scirocco
+2.0
+TDI Sportline (2)
+TFSI Sportline (5)
+TSI R (2)
+
+---------------------
+
+Otomobil
+Volkswagen
+Sharan
+1.9 TDI (5)
+1.9 TDI Comfortline (2)
+1.9 TDI Highline (2)
+2.0 GL (1)
+2.0 TDI Comfortline (1)
+2.0 TDI Highline (1)
+
+---------------------
+
+Otomobil
+Volkswagen
+Touran
+1.4 TSI (16)
+1.6 (7)
+1.6 FSI (48)
+1.6 TDI (2)
+1.9 TDI (3)
+2.0 TDI (10)
+
+Otomobil
+Volkswagen
+Touran
+1.4 TSI
+Comfortline (14)
+Highline (2)
+
+Otomobil
+Volkswagen
+Touran
+1.6
+Comfortline (2)
+Function (1)
+Trendline (4)
+
+Otomobil
+Volkswagen
+Touran
+1.6 FSI
+Comfortline (30)
+Highline (18)
+
+Otomobil
+Volkswagen
+Touran
+1.6 TDI
+Trendline (2)
+
+Otomobil
+Volkswagen
+Touran
+1.9 TDI
+Comfortline (2)
+Highline (1)
+
+Otomobil
+Volkswagen
+Touran
+2.0 TDI
+Highline (10)
+
+---------------------
+
+Otomobil
+Volkswagen
+Up Club
+E-Up (1)
+
+---------------------
+
+Otomobil
+Volkswagen
+VW CC
+1.4 TSI (829)
+1.8 TFSI (27)
+1.8 TSI (8)
+2.0 TDI (176)
+
+Otomobil
+Volkswagen
+VW CC
+1.4 TSI
+1.4 (91)
+Exclusive (432)
+R-Line (74)
+Sportline (232)
+
+Otomobil
+Volkswagen
+VW CC
+1.8 TFSI (27)
+
+Otomobil
+Volkswagen
+VW CC
+1.8 TSI (8)
+
+Otomobil
+Volkswagen
+VW CC
+2.0 TDI
+2.0 TDI (140)
+Exclusive (36)
+
+---------------------
+
+Otomobil
+Volkswagen
+Vento
+1.6 (9)
+1.8 (2)
+1.9 (6)
+
+Otomobil
+Volkswagen
+Vento
+1.6
+GL (9)
+
+Otomobil
+Volkswagen
+Vento
+1.8
+GL (2)
+
+Otomobil
+Volkswagen
+Vento
+1.9
+CL TD (3)
+TDI (3)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+Amarok (1.789)
+ID.4 (83)
+ID.6 (10)
+T-Cross (461)
+T-Roc (1.682)
+Taigo (1.041)
+Tayron (222)
+Tiguan (4.069)
+Tiguan AllSpace (132)
+Touareg (335)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+Amarok
+2.0 Bi-TDI (631)
+2.0 TDI (421)
+3.0 TDI (737)
+
+Arazi, SUV & Pickup
+Volkswagen
+Amarok
+2.0 Bi-TDI
+Canyon (74)
+Exclusive (37)
+Highline (500)
+Trendline (20)
+
+Arazi, SUV & Pickup
+Volkswagen
+Amarok
+2.0 TDI
+Highline (103)
+Life (4)
+Style (141)
+Style Plus (123)
+Trendline (50)
+
+Arazi, SUV & Pickup
+Volkswagen
+Amarok
+3.0 TDI
+Aventura (466)
+Canyon (46)
+Comfortline (6)
+Highline (132)
+Panamericana (80)
+Style (7)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+ID.4
+Crozz Pro (3)
+Pure (80)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+ID.6
+Crozz Pro (7)
+XPro (3)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+T-Cross
+1.0 TSI
+Life (337)
+R-Line (13)
+Style (111)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+T-Roc
+1.5 eTSI (36)
+1.5 TSI (1.647)
+
+Arazi, SUV & Pickup
+Volkswagen
+T-Roc
+1.5 eTSI
+Life (18)
+R-Line (11)
+Style (7)
+
+Arazi, SUV & Pickup
+Volkswagen
+T-Roc
+1.5 TSI
+Highline (506)
+Life (288)
+R Line (441)
+Style (412)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+Taigo
+1.0 TSI (1.015)
+1.5 TSI (26)
+
+Arazi, SUV & Pickup
+Volkswagen
+Taigo
+1.0 TSI
+Life (744)
+R-Line (74)
+Style (197)
+
+Arazi, SUV & Pickup
+Volkswagen
+Taigo
+1.5 TSI
+R-Line (17)
+Style (9)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+Tayron
+1.5 e-TSI
+Elegance (71)
+Life (65)
+R Line (86)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+Tiguan
+1.4 TSI (1.675)
+1.5 e-TSI (525)
+1.5 TSI (1.284)
+1.6 TDI (266)
+2.0 TDI (319)
+
+Arazi, SUV & Pickup
+Volkswagen
+Tiguan
+1.4 TSI
+Chrome Edition (139)
+Comfortline (295)
+Cup (102)
+Fun&Function (41)
+Highline (169)
+Lounge (49)
+R-Line (53)
+Sport&Style (652)
+Track&Field (4)
+Trend&Fun (59)
+Trendline (66)
+White Night (46)
+
+Arazi, SUV & Pickup
+Volkswagen
+Tiguan
+1.5 e-TSI
+Elegance (195)
+Life (97)
+R Line (233)
+
+Arazi, SUV & Pickup
+Volkswagen
+Tiguan
+1.5 TSI
+Comfortline (136)
+Elegance (207)
+Highline (129)
+Life (498)
+R-Line (314)
+
+Arazi, SUV & Pickup
+Volkswagen
+Tiguan
+1.6 TDI
+Comfortline (144)
+Highline (84)
+R Line (10)
+Trendline (28)
+
+Arazi, SUV & Pickup
+Volkswagen
+Tiguan
+2.0 TDI
+Comfortline (59)
+Elegance (9)
+Fun&Function (11)
+Highline (72)
+R-Line (15)
+Sport&Style (150)
+Track&Field (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+Tiguan AllSpace
+1.4 TSI (28)
+1.5 TSI (104)
+
+Arazi, SUV & Pickup
+Volkswagen
+Tiguan AllSpace
+1.4 TSI
+Comfortline (4)
+Highline (24)
+
+Arazi, SUV & Pickup
+Volkswagen
+Tiguan AllSpace
+1.5 TSI
+Elegance (49)
+Highline (10)
+Life (9)
+R Line (36)
+
+---------------------
+
+Arazi, SUV & Pickup
+Volkswagen
+Touareg
+2.5 TDI (70)
+3.0 TDI (206)
+3.2 (38)
+3.6 FSI (3)
+4.2 (2)
+5.0 TDI (16)
+
+Arazi, SUV & Pickup
+Volkswagen
+Touareg
+2.5 TDI
+2.5 TDI (48)
+Exclusive (21)
+Sportive (1)
+
+Arazi, SUV & Pickup
+Volkswagen
+Touareg
+3.0 TDI
+3.0 TDI (21)
+Active (1)
+BMT (59)
+Elegance (8)
+Exclusive (22)
+Premium (62)
+R Line (33)
+
+Arazi, SUV & Pickup
+Volkswagen
+Touareg
+3.2 (38)
+
+Arazi, SUV & Pickup
+Volkswagen
+Touareg
+3.6 FSI
+Exclusive (3)
+
+Arazi, SUV & Pickup
+Volkswagen
+Touareg
+4.2 (2)
+
+Arazi, SUV & Pickup
+Volkswagen
+Touareg
+5.0 TDI
+5.0 TDI (15)
+Exclusive (1)
+
+---------------------
+

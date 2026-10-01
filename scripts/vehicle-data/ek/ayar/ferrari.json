@@ -1,0 +1,7 @@
+{
+  "yeniModel": {
+    "360": { "bas": 1999, "bit": 2004, "kaynak": "en.wikipedia Ferrari 360 (1999-2004)" },
+    "430": { "bas": 2004, "bit": 2009, "kaynak": "en.wikipedia Ferrari F430 (2004-2009)" },
+    "F355": { "bas": 1994, "bit": 1999, "kaynak": "en.wikipedia Ferrari F355 (1994-1999)" }
+  }
+}

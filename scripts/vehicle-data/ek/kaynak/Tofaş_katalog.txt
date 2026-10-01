@@ -1,0 +1,63 @@
+Otomobil
+Tofaş
+Doğan (3.093)
+Kartal (845)
+Murat (262)
+Şahin (3.932)
+Serçe (174)
+
+---------------------
+
+Otomobil
+Tofaş
+Doğan
+1.6 (30)
+1.6 ie (184)
+L (566)
+S (385)
+SL (255)
+SLX (1.356)
+SLX ie (318)
+
+---------------------
+
+Otomobil
+Tofaş
+Kartal
+1.6 (18)
+1.6 ie (109)
+Kartal 5 Vites (313)
+L (5)
+S (140)
+SL (31)
+SLX (173)
+SLX ie (56)
+
+---------------------
+
+Otomobil
+Tofaş
+Murat
+124 (119)
+131 (141)
+
+---------------------
+
+Otomobil
+Tofaş
+Şahin
+1.4 (231)
+1.4 ie (43)
+1.6 (2.204)
+1.6 ie (408)
+S (1.022)
+Şahin 5 vites (25)
+
+---------------------
+
+Otomobil
+Tofaş
+Serçe
+Serçe (174)
+
+---------------------

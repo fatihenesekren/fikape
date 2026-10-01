@@ -1,0 +1,822 @@
+Otomobil
+Kia
+Cadenza (1)
+Capital (8)
+Carens (13)
+Carnival (24)
+Ceed (768)
+Cerato (581)
+Clarus (1)
+Magentis (11)
+Opirus (5)
+Optima (9)
+Picanto (351)
+Pride (34)
+Pro Ceed (41)
+Rio (1.000)
+Sephia (42)
+Shuma (14)
+Venga (30)
+
+---------------------
+
+Otomobil
+Kia
+Cadenza
+3.5 GDI (1)
+
+---------------------
+
+Otomobil
+Kia
+Capital
+1.5 GLX (6)
+1.8 (2)
+
+---------------------
+
+Otomobil
+Kia
+Carens
+2.0 CRDi
+CRDi (3)
+EX (10)
+
+---------------------
+
+Otomobil
+Kia
+Carnival
+2.5 (2)
+2.9 CRDI (21)
+2.9 TD (1)
+
+Otomobil
+Kia
+Carnival
+2.5
+2.5 (1)
+LS (1)
+
+Otomobil
+Kia
+Carnival
+2.9 CRDI
+EX (5)
+Premium (16)
+
+Otomobil
+Kia
+Carnival
+2.9 TD
+STD (1)
+
+---------------------
+
+Otomobil
+Kia
+Ceed
+1.0 (23)
+1.4 (26)
+1.4 T-GDI (3)
+1.5 (17)
+1.5 T-GDI (19)
+1.6 (4)
+1.6 CRDi (670)
+1.6 Hybrid (6)
+
+Otomobil
+Kia
+Ceed
+1.0
+Cool (15)
+Cool Tekno (8)
+
+Otomobil
+Kia
+Ceed
+1.4
+Cool (12)
+Cool Plus (2)
+Cool Tekno (6)
+GSL (1)
+Live (5)
+
+Otomobil
+Kia
+Ceed
+1.4 T-GDI
+Elegance (3)
+
+Otomobil
+Kia
+Ceed
+1.5
+Cool (4)
+Elegance (11)
+Prestige (2)
+
+Otomobil
+Kia
+Ceed
+1.5 T-GDI
+Elegance (3)
+Elegance Plus (8)
+Prestige (8)
+
+Otomobil
+Kia
+Ceed
+1.6
+Concept (4)
+
+Otomobil
+Kia
+Ceed
+1.6 CRDi
+Comfort (30)
+Comfort SW (3)
+Concept (96)
+Concept Plus (203)
+Concept Plus SW (40)
+Concept SW (34)
+Cool (47)
+Cool SW (6)
+Elegance (14)
+Motion (80)
+Motion SW (12)
+Premium (76)
+Premium SW (21)
+Prestige (2)
+Prestige SW (6)
+
+Otomobil
+Kia
+Ceed
+1.6 Hybrid
+Prestige (6)
+
+---------------------
+
+Otomobil
+Kia
+Cerato
+1.5 CRDi (110)
+1.6 CRDi (315)
+1.6 EX (59)
+1.6 GSL (41)
+1.6 LX (7)
+1.6 MPI (42)
+2.0 CRDi (7)
+
+Otomobil
+Kia
+Cerato
+1.5 CRDi
+Advance (12)
+EX (33)
+EX Comfort (11)
+LX (54)
+
+Otomobil
+Kia
+Cerato
+1.6 CRDi
+Comfort (16)
+Concept (21)
+Concept Plus (165)
+Concept Techno (29)
+EX Comfort (22)
+LX (36)
+Prestige (25)
+
+Otomobil
+Kia
+Cerato
+1.6 EX
+Advance (8)
+Comfort (14)
+DSL Advance (30)
+Premium (7)
+
+Otomobil
+Kia
+Cerato
+1.6 GSL
+Comfort (15)
+Concept (15)
+Cool (2)
+Koup (7)
+Premium (2)
+
+Otomobil
+Kia
+Cerato
+1.6 LX
+Base (1)
+Basic (6)
+
+Otomobil
+Kia
+Cerato
+1.6 MPI
+Comfort (9)
+Concept (1)
+Elegance (29)
+Prestige (3)
+
+Otomobil
+Kia
+Cerato
+2.0 CRDi
+EX Comfort (7)
+
+---------------------
+
+Otomobil
+Kia
+Clarus
+2.0 GLX (1)
+
+---------------------
+
+Otomobil
+Kia
+Magentis
+2.0 CRDi (4)
+2.0 LX (4)
+2.0 SE (3)
+
+---------------------
+
+Otomobil
+Kia
+Opirus
+3.5 V6 (5)
+
+---------------------
+
+Otomobil
+Kia
+Optima
+1.7 CRDi (7)
+2.0 T-GDI (2)
+
+---------------------
+
+Otomobil
+Kia
+Picanto
+1.0L Cool (72)
+1.0L Feel (76)
+1.0 Live (19)
+1.0L Live (15)
+1.1 EX (20)
+1.1 EX Advance (12)
+1.1 EX Comfort (48)
+1.1 Hiper (27)
+1.25 EX (30)
+1.25 MPI Comfort (4)
+1.25 MPI Cool (1)
+1.2 Cool (9)
+1.2 Feel (18)
+
+---------------------
+
+Otomobil
+Kia
+Pride
+1.3 (2)
+1.3 DLX (27)
+1.3 GLXi (5)
+
+---------------------
+
+Otomobil
+Kia
+Pro Ceed
+1.6 (3)
+1.6 CRDi (38)
+
+Otomobil
+Kia
+Pro Ceed
+1.6
+GDI GT (2)
+GSL Concept Plus (1)
+
+Otomobil
+Kia
+Pro Ceed
+1.6 CRDi
+Concept (9)
+Cool (15)
+Cool Plus (8)
+Premium (6)
+
+---------------------
+
+Otomobil
+Kia
+Rio
+1.0 TGDI (25)
+1.25 CVVT (114)
+1.2 MPI (20)
+1.3 (15)
+1.4 CRDi (316)
+1.4 CVVT (186)
+1.4 EX (41)
+1.4 GSL (24)
+1.4L MPI (26)
+1.4 WGT CRDI (13)
+1.5 (76)
+1.5 CRDi (146)
+
+Otomobil
+Kia
+Rio
+1.0 TGDI
+Cool (8)
+Elegance Tekno (9)
+Prestige (8)
+
+Otomobil
+Kia
+Rio
+1.25 CVVT
+Comfort (25)
+Concept (25)
+Cool (12)
+Elegance (3)
+Fancy (31)
+Natty (18)
+
+Otomobil
+Kia
+Rio
+1.2 MPI
+Cool (20)
+
+Otomobil
+Kia
+Rio
+1.3
+Base (4)
+Comfort (7)
+Trend (4)
+
+Otomobil
+Kia
+Rio
+1.4 CRDi
+Comfort (112)
+Concept (48)
+Concept Plus (22)
+Fancy (79)
+Natty (30)
+Sporty (25)
+
+Otomobil
+Kia
+Rio
+1.4 CVVT
+Comfort (18)
+Concept (19)
+Cool (70)
+Elegance (12)
+Elegance Tekno (16)
+Fancy (36)
+Natty (7)
+Sporty (8)
+
+Otomobil
+Kia
+Rio
+1.4 EX
+Advance (4)
+Comfort (28)
+Trend (9)
+
+Otomobil
+Kia
+Rio
+1.4 GSL
+Basic (1)
+Prestige (1)
+Trend (22)
+
+Otomobil
+Kia
+Rio
+1.4L MPI
+Cool Tecno (2)
+Cool Tecno Plus (1)
+Elegance (13)
+Prestige (10)
+
+Otomobil
+Kia
+Rio
+1.4 WGT CRDI
+Concept (2)
+Concept Plus (3)
+Cool (6)
+Elegance (2)
+
+Otomobil
+Kia
+Rio
+1.5
+Comfort (56)
+Luxury (7)
+Trend (13)
+
+Otomobil
+Kia
+Rio
+1.5 CRDi
+EX Advance (25)
+EX Comfort (65)
+Trend (56)
+
+---------------------
+
+Otomobil
+Kia
+Sephia
+1.5 (28)
+1.6 (13)
+1.8 (1)
+
+Otomobil
+Kia
+Sephia
+1.5
+GTX (16)
+LS (12)
+
+Otomobil
+Kia
+Sephia
+1.6
+GTX (11)
+LS (2)
+
+Otomobil
+Kia
+Sephia
+1.8
+GLX (1)
+
+---------------------
+
+Otomobil
+Kia
+Shuma
+LS (10)
+RS (4)
+
+---------------------
+
+Otomobil
+Kia
+Venga
+1.4 CRDi (14)
+1.6 (3)
+1.6 CRDi (13)
+
+Otomobil
+Kia
+Venga
+1.4 CRDi
+Active (11)
+EX (3)
+
+Otomobil
+Kia
+Venga
+1.6
+Panaroma (3)
+
+Otomobil
+Kia
+Venga
+1.6 CRDi
+Panaroma (3)
+Panaroma Plus (10)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+EV3 (41)
+EV6 (77)
+EV9 (21)
+Niro (9)
+Niro EV (18)
+Sorento (676)
+Soul (64)
+Sportage (2.980)
+Stonic (540)
+Retona (1)
+XCeed (158)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+EV3
+Elegance (8)
+Elegance Long (7)
+GT Line Long (14)
+Prestige (10)
+Prestige Long (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+EV6
+Elegance Standart Range (69)
+GT (1)
+GT Line Long Range (7)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+EV9
+GT Line (17)
+Prestige (4)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+Niro
+1.6 GDI
+Concept Plus (3)
+Exclusive (3)
+Prestige (3)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+Niro EV
+Elegance (16)
+Prestige (2)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+Sorento
+1.6 T-GDI (62)
+2.0 CRDi (33)
+2.2 CRDi (32)
+2.5 CRDi (549)
+
+Arazi, SUV & Pickup
+Kia
+Sorento
+1.6 T-GDI
+Prestige (20)
+Prestige Smart (42)
+
+Arazi, SUV & Pickup
+Kia
+Sorento
+2.0 CRDi
+Exclusive (25)
+GT Line (2)
+Prestige (6)
+
+Arazi, SUV & Pickup
+Kia
+Sorento
+2.2 CRDi
+XM (9)
+XM1 (6)
+XM2 (17)
+
+Arazi, SUV & Pickup
+Kia
+Sorento
+2.5 CRDi
+EX (183)
+EX Premium (181)
+LX (1)
+Prestige (184)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+Soul
+1.6 CRDI
+Premium (47)
+X-Pect (6)
+X-Tra (11)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+1.6 (1.309)
+1.6 CRDI (660)
+1.6 PHEV (4)
+1.6 T-GDI (690)
+1.7 CRDI (1)
+2.0 (7)
+2.0 CRDi (278)
+2.0 DSL (25)
+2.0 TD (6)
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+1.6
+GDI (85)
+GDI Comfort (155)
+GDI Concept (13)
+GDI Concept Plus (607)
+GDI Cool (63)
+GDI Elegance (17)
+GDI Live (5)
+GDI Premium (130)
+GDI Prestige (3)
+GSL (39)
+GSL Comfort (7)
+GSL Plus (168)
+SLS Plus (17)
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+1.6 CRDI
+Black Edition (10)
+Cool (70)
+Elegance (191)
+Elegance Konfor (65)
+Elegance Plus (51)
+Elegance Vizyon (33)
+GT Line (2)
+Prestige (213)
+Prestige Design (25)
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+1.6 PHEV
+Prestige Smart (4)
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+1.6 T-GDI
+Anniversary Edition (8)
+Cool (117)
+Cool Plus (26)
+Elegance (21)
+Elegance Konfor (116)
+Elegance Konfor Plus (47)
+GT-Line (16)
+GT-Line Exclusive (28)
+GT-Line Prestige (34)
+Live (34)
+Live Plus (9)
+Premium (16)
+Prestige (187)
+Prestige Plus (27)
+Prestige Smart (4)
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+1.7 CRDI (1)
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+2.0
+2.0 (6)
+EX (1)
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+2.0 CRDi
+2.0 (17)
+EX (205)
+GT-Line Prestige (7)
+Plus (25)
+Premium (24)
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+2.0 DSL
+2.0 DSL (1)
+Plus (24)
+
+Arazi, SUV & Pickup
+Kia
+Sportage
+2.0 TD (6)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+Stonic
+1.0 T-GDI (170)
+1.2 (9)
+1.25 (24)
+1.4 MPI (337)
+
+Arazi, SUV & Pickup
+Kia
+Stonic
+1.0 T-GDI
+Business (9)
+Business Plus (12)
+Cool (58)
+Cool Plus (18)
+Elegance (24)
+Elegance Design (8)
+Elegance Konfor (3)
+Elegance Plus (23)
+Prestige (5)
+Prestige Plus (10)
+
+Arazi, SUV & Pickup
+Kia
+Stonic
+1.2
+Cool (9)
+
+Arazi, SUV & Pickup
+Kia
+Stonic
+1.25
+Cool (24)
+
+Arazi, SUV & Pickup
+Kia
+Stonic
+1.4 MPI
+Business (54)
+Cool (208)
+Elegance (40)
+Elegance Design (5)
+Elegance Konfor (21)
+Prestige (9)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+Retona
+2.0 D (1)
+
+---------------------
+
+Arazi, SUV & Pickup
+Kia
+XCeed
+1.0 T-GDI (14)
+1.5 T-GDI (104)
+1.6 CRDI (33)
+1.6 T-GDI (7)
+
+Arazi, SUV & Pickup
+Kia
+XCeed
+1.0 T-GDI
+Cool (14)
+
+Arazi, SUV & Pickup
+Kia
+XCeed
+1.5 T-GDI
+Cool Plus (3)
+Elegance (66)
+Elegance Plus (15)
+Prestige (19)
+
+Arazi, SUV & Pickup
+Kia
+XCeed
+1.6 CRDI
+Prestige (8)
+Prestige Design (25)
+
+Arazi, SUV & Pickup
+Kia
+XCeed
+1.6 T-GDI
+Elegance (7)
+
+---------------------

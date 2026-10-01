@@ -1,0 +1,12 @@
+### Buick
+- otomobil: zaten vardı 0 · eklendi 10 · belirsiz 0
+  - + Yeni model: Century (1990–2005) — en.wikipedia Buick Century (nameplate 1936-2005; 1990 öncesi kırpıldı — tüm nesillerin aralığı)
+  - + Century › 3.3 › Standart
+  - + Yeni model: Le Sabre (1990–2005) — en.wikipedia Buick LeSabre (1959-2005; 1990 öncesi kırpıldı — tüm nesillerin aralığı)
+  - + Le Sabre › 3.8 › Standart
+  - + Yeni model: Park Avenue (1991–2005) — en.wikipedia Buick Park Avenue (model yılı 1991-2005)
+  - + Park Avenue › 3.8 › Standart
+  - + Yeni model: Regal (1990–2020) — en.wikipedia Buick Regal (nesiller 1988-96, 1997-2004, 2011-2020; tüm nesillerin aralığı)
+  - + Regal › 3.8 › Standart
+  - + Yeni model: Riviera (1990–1999) — en.wikipedia Buick Riviera (1963-1993, 1995-1999; 1990 öncesi kırpıldı)
+  - + Riviera › 3.8 › Standart

@@ -1,0 +1,163 @@
+[
+  {
+    "marka": "Lexus",
+    "model": "CT",
+    "versiyon": "200h",
+    "paket": "Comfort Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "ES",
+    "versiyon": "300h",
+    "paket": "Business",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "ES",
+    "versiyon": "300h",
+    "paket": "Business Plus",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "ES",
+    "versiyon": "300h",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "ES",
+    "versiyon": "300h",
+    "paket": "Executive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "GS",
+    "versiyon": "300h",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "GS",
+    "versiyon": "450h",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "IS",
+    "versiyon": "200t",
+    "paket": "F Sport",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (IS (1999-2005) / IS (2005-2013)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Lexus",
+    "model": "LC",
+    "versiyon": "500h",
+    "paket": "Sport",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "LM",
+    "versiyon": "350h",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "LS",
+    "versiyon": "500h",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "LS",
+    "versiyon": "600h",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok; model 2012 sonrasına da uzanıyor ve kaynakta yıl yok — hangi yıllara ait olduğu bilinemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "LX",
+    "versiyon": "450d",
+    "paket": "Standart",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "NX",
+    "versiyon": "200t",
+    "paket": "Business Plus Executive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "NX",
+    "versiyon": "300h",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "NX",
+    "versiyon": "300h",
+    "paket": "Executive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "NX",
+    "versiyon": "350h",
+    "paket": "Executive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  },
+  {
+    "marka": "Lexus",
+    "model": "RX",
+    "versiyon": "200t",
+    "paket": "Exclusive",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (RX (2003-2009) / RX (2009-2015)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Lexus",
+    "model": "RX",
+    "versiyon": "200t",
+    "paket": "Executive",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (RX (2003-2009) / RX (2009-2015)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Lexus",
+    "model": "RX",
+    "versiyon": "350h",
+    "paket": "Executive",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (RX (2003-2009) / RX (2009-2015)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Lexus",
+    "model": "RX",
+    "versiyon": "350h",
+    "paket": "F Sport Design",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (RX (2003-2009) / RX (2009-2015)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Lexus",
+    "model": "RX",
+    "versiyon": "500h",
+    "paket": "F Sport",
+    "neden": "Eski nesillerin hiçbirinde bu motor yok (RX (2003-2009) / RX (2009-2015)); hangisine ait olduğu belli değil"
+  },
+  {
+    "marka": "Lexus",
+    "model": "RZ",
+    "versiyon": "450e",
+    "paket": "Exclusive",
+    "neden": "Katalogda (resmi listede) bu kombinasyon yok ve model yılları 2012 sonrası — yıl bilgisi olmadan eklenemedi"
+  }
+]

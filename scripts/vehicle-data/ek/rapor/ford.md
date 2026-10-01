@@ -1,0 +1,52 @@
+### Ford
+- otomobil: zaten vardı 181 · eklendi 46 · belirsiz 85
+  - + Escort (1993-1999) › 1.3 › CL
+  - + Escort (1993-1999) › 1.3 › CLX
+  - + Escort (1993-1999) › 1.4 › C
+  - + Escort (1993-1999) › 1.8 › CL
+  - + Escort (1993-1999) › 1.8 › CLX
+  - + Escort (1993-1999) › 1.8 › Fun
+  - + Escort (1993-1999) › 1.8 › Ghia
+  - + Escort (1993-1999) › 1.8 › XR3i
+  - + Focus › 1.6 TDCi › Sport
+  - + Mondeo › 1.8 › CLX
+  - + Yeni model: Taurus (1990–2019) — en.wikipedia Ford Taurus (1986-2019; 1990 öncesi kırpıldı)
+  - + Taurus › 3.0 V6 GL › Standart
+  - + Yeni model: Cougar (1998–2002) — en.wikipedia Ford Cougar (1998-2002 Avrupa)
+  - + Cougar › 2.5i › Standart
+  - + Yeni model: Festiva (1990–1992) — en.wikipedia Ford Festiva (1988-1992; 1990 öncesi kırpıldı)
+  - + Festiva › 1.3 › GL
+  - + Festiva › 1.3 › XL
+  - + Yeni model: Granada (1990–1994) — en.wikipedia Ford Granada (Avrupa 1972-1994; 1990 öncesi kırpıldı)
+  - + Granada › 1.7 › Standart
+  - + Granada › 2.0 › Standart
+  - + Granada › 2.3 › Standart
+  - + Yeni model: Probe (1990–1997) — en.wikipedia Ford Probe (1988-1997; 1990 öncesi kırpıldı)
+  - + Probe › 2.5 › Standart
+  - + Yeni model: Scorpio (1990–1999) — en.wikipedia Ford Scorpio (1985-1999; 1990 öncesi kırpıldı)
+  - + Scorpio › 2.0 › Ghia
+  - + Scorpio › 2.0 › GLX
+  - + Scorpio › 2.3 › CLX
+  - + Scorpio › 2.3 › Ghia
+  - + Scorpio › 2.9 › Ghia
+  - + Yeni model: Sierra (1990–1992) — en.wikipedia Ford Sierra (1982-1992; 1990 öncesi kırpıldı)
+  - + Sierra › 1.6 › CL
+  - + Sierra › 2.0 › CL
+  - + Sierra › 2.0 › CLX
+  - + Sierra › 2.0 › Ghia
+  - + Sierra › 2.0 › GL
+  - + Sierra › 2.0 › GLS
+  - + Taunus (1985-1993) › 1.6 › GXL
+  - + Taunus (1985-1993) › 1.6 › L
+  - + Taunus (1985-1993) › 2.0 › GTS
+  - + Yeni model: Thunderbird (1990–2005) — en.wikipedia Ford Thunderbird (1955-1997, 2002-2005; 1990 öncesi kırpıldı)
+  - + Thunderbird › 3.8 › Standart
+  - + Yeni model: Bronco Sport (2021–) — en.wikipedia Ford Bronco Sport (model yılı 2021-)
+  - + Bronco Sport › 1.5 EcoBoost › Big Bend
+  - + Bronco Sport › 1.5 EcoBoost › Outer Banks
+  - + Yeni model: Excursion (1999–2005) — en.wikipedia Ford Excursion (1999-2005)
+  - + Excursion › 6.0 › Standart
+- kamyonet: zaten vardı 11 · eklendi 2 · belirsiz 8
+  - + Yeni model: Maverick (2022–) — en.wikipedia Ford Maverick (2022) — kamyonet
+  - + Maverick › 3.0i XLT › Standart
+  - ~ eşleme: "Ranger Raptor" → "Ranger"
