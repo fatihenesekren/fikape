@@ -9,9 +9,11 @@
       "bas": 2025,
       "bit": null,
       "kaynak": "log.com.tr Volta EV2 (Türkiye'de Ağustos 2025)"
+    },
+    "V1": {
+      "bas": 2025,
+      "bit": 2026,
+      "kaynak": "Kullanıcı bildirimi: 2025-2026 (internetten doğrulanamadı)"
     }
-  },
-  "atla": {
-    "V1": "Volta V1 — model internette doğrulanamadı (yıl aralığı seçilemedi)."
   }
 }
