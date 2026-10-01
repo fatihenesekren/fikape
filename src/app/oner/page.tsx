@@ -133,7 +133,9 @@ export default function OnerPage() {
   // Katalogda zaten var mı? — marka + model seçilince arka planda kontrol
   // edilir (kullanıcı submit etmeden) ve bilgi amaçlı kart gösterilir. Gerçek
   // engelleme kararı sunucuda veriliyor (bkz. route.ts), bu yalnız UI bilgisi.
-  const [existingMatches, setExistingMatches]   = useState<ExistingVehicleMatch[]>([]);
+  const [existingRaw, setExistingMatches]       = useState<ExistingVehicleMatch[]>([]);
+  // Eşleşmeler hangi marka+model için geldi — marka/model değişince eskisi görünmesin.
+  const [existingKey, setExistingKey]           = useState("");
   const [checkingExisting, setCheckingExisting] = useState(false);
   const existingCardRef = useRef<HTMLDivElement>(null);
 
@@ -171,6 +173,8 @@ export default function OnerPage() {
   // (setState yalnızca .then/.finally içinde — senkron effect-body setState yok.)
   const kontrolMarka = katalogModu ? katalogSecim?.brandName ?? "" : isOtherMake ? "" : selectedMake;
   const kontrolModel = katalogModu ? katalogSecim?.modelName ?? "" : isOtherModel ? "" : selectedModel;
+  const aktifAnahtar = kontrolMarka && kontrolModel ? `${kontrolMarka}|${kontrolModel}` : "";
+  const existingMatches = aktifAnahtar && existingKey === aktifAnahtar ? existingRaw : [];
   useEffect(() => {
     if (!kontrolMarka || !kontrolModel) return;
     let cancelled = false;
@@ -184,7 +188,10 @@ export default function OnerPage() {
       fetch(`/api/oneriler/mevcut-mu?${qs.toString()}`)
         .then((r) => (r.ok ? r.json() : { matches: [] }))
         .then((d) => {
-          if (!cancelled) setExistingMatches(Array.isArray(d.matches) ? d.matches : []);
+          if (!cancelled) {
+            setExistingMatches(Array.isArray(d.matches) ? d.matches : []);
+            setExistingKey(`${brand}|${model}`);
+          }
         })
         .catch(() => { if (!cancelled) setExistingMatches([]); })
         .finally(() => { if (!cancelled) setCheckingExisting(false); });
@@ -282,6 +289,7 @@ export default function OnerPage() {
                 reviewCount: typeof data.reviewCount === "number" ? data.reviewCount : 0,
               }];
         setExistingMatches(fromServer);
+        setExistingKey(aktifAnahtar);
         setSubmitting(false);
         setError(null);
         requestAnimationFrame(() =>
