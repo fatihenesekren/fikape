@@ -1,1 +1,10 @@
-{ "atla": { "2.8 TD": "Kaynak dosyada model adı '2.8 TD' (Santana markası: İspanyol Santana Motor, Land Rover/Suzuki lisanslı) — model adı belli değil; yıl aralığı doğrulanamadı." } }
+{
+  "yeniModel": {
+    "2.8 TD": {
+      "ad": "Santana",
+      "bas": 2003,
+      "bit": null,
+      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2003"
+    }
+  }
+}

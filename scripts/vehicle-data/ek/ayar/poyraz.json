@@ -1,1 +1,13 @@
-{ "atla": { "2.4": "Kaynak dosyada model adı '2.4', versiyon '4x2' (Poyraz markası/pickup modeli belli değil); Poyraz internette doğrulanamadı." } }
+{
+  "yeniModel": {
+    "2.4": {
+      "ad": "Poyraz",
+      "bas": 2004,
+      "bit": null,
+      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2004"
+    }
+  },
+  "kamyonet": [
+    "2.4"
+  ]
+}

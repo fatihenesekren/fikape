@@ -9,9 +9,11 @@
       "bas": 2025,
       "bit": null,
       "kaynak": "relive.com.tr 2025 tavsiye edilen fiyat listesi — en eski doğrulanan kaynak; daha eski çıkış doğrulanamadı"
+    },
+    "N1": {
+      "bas": 2023,
+      "bit": 2026,
+      "kaynak": "Kullanıcı bildirimi (internetten doğrulanamadı): 2023-2026"
     }
-  },
-  "atla": {
-    "N1": "Relive N1 (BAW tabanlı L7e) — Türkiye çıkış yılı doğrulanamadı."
   }
 }

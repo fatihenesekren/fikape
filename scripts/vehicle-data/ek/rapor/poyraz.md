@@ -1,2 +1,4 @@
 ### Poyraz
-- otomobil: zaten vardı 0 · eklendi 0 · belirsiz 1
+- kamyonet: zaten vardı 0 · eklendi 2 · belirsiz 0
+  - + Yeni model: Poyraz (2004–) — Kullanıcı bildirimi (internetten doğrulanamadı): 2004
+  - + Poyraz › 4x2 › Standart

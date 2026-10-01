@@ -1,2 +1,3 @@
 ### I-GO
-- otomobil: zaten vardı 0 · eklendi 0 · belirsiz 1
+- otomobil: zaten vardı 0 · eklendi 1 · belirsiz 0
+  - + Yeni model: J4 (2023–) — Kullanıcı bildirimi (internetten doğrulanamadı): 2023
