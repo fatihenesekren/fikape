@@ -26,7 +26,7 @@ import type { MotoKatalogTip } from "./motoBuild";
 import { fold } from "./rules";
 import { cekisTekrarsizEkle } from "./cekisTekrarsizEkle";
 import { parseEk } from "../ek/parseEk";
-import { ekUygula, kureselJetonlar, modelleriTekillestir, type Belirsiz, type EkAyar } from "../ek/uygula";
+import { ekUygula, kureselJetonlar, modeliBul, modelleriTekillestir, type Belirsiz, type EkAyar } from "../ek/uygula";
 
 const root = process.cwd();
 
@@ -37,7 +37,7 @@ const root = process.cwd();
 const YABANCI: Record<string, string> = {
   é: "e", è: "e", ê: "e", ë: "e", É: "E", È: "E", Ê: "E", Ë: "E", á: "a", à: "a", ä: "a", Á: "A", À: "A", Ä: "A",
   ó: "o", ò: "o", ô: "o", õ: "o", Ó: "O", Ò: "O", Ô: "O", ú: "u", ù: "u", Ú: "U", Ù: "U", í: "i", ì: "i", ï: "i",
-  Í: "I", Ì: "I", Ï: "I", ñ: "n", Ñ: "N", ø: "o", Ø: "O", å: "a", Å: "A", ß: "ss", "°": "", "›": " ", "‹": " ",
+  Í: "I", Ì: "I", Ï: "I", ñ: "n", Ñ: "N", ø: "o", Ø: "O", å: "a", Å: "A", ß: "ss", "°": "", "³": "3", "›": " ", "‹": " ",
 };
 const turkceHarfler = (metin: string) => [...metin].map((c) => YABANCI[c] ?? c).join("");
 const incele = path.join(root, "scripts", "vehicle-data", "_inceleme");
@@ -289,6 +289,56 @@ if (fs.existsSync(path.join(ekKok, "kaynak"))) {
     fs.mkdirSync(path.join(ekKok, "rapor"), { recursive: true });
     fs.writeFileSync(path.join(ekKok, "belirsiz", slug + ".json"), JSON.stringify(belirsiz, null, 2) + "\n");
     fs.writeFileSync(path.join(ekKok, "rapor", slug + ".md"), satir.join("\n") + "\n");
+    ekRapor.push(...satir);
+  }
+}
+
+// ─── 2.6) Minivan & Panelvan katalogları (ek/kaynak-minivan) ─────────────────
+// Kategori "kamyonet"tir. Model katalogda ADIYLA (aksan/boşluk duyarsız) kamyonette varsa oraya, yalnız otomobilde
+// varsa oradaki modele eklenir (aynı aracın iki kategoride kopyası oluşmasın); hiçbirinde yoksa kamyonete YENİ model
+// açılır. Adı benzeyen ama aynı olmayan modeller (ör. "Proace" ↔ "Proace Cargo") birleştirilmez; rapora yazılır.
+const minivanKok = path.join(ekKok, "kaynak-minivan");
+const minivanBenzer: string[] = [];
+if (fs.existsSync(minivanKok)) {
+  const modelAnahtar = (s: string) => s.normalize("NFD").replace(/\p{Mn}/gu, "").toUpperCase().replace(/\([^)]*\)/g, " ").replace(/[^A-Z0-9]/g, "");
+  fs.mkdirSync(path.join(ekKok, "belirsiz-minivan"), { recursive: true });
+  fs.mkdirSync(path.join(ekKok, "rapor-minivan"), { recursive: true });
+  for (const dosya of fs.readdirSync(minivanKok).filter((f) => f.endsWith(".txt")).sort()) {
+    const ek = parseEk(fs.readFileSync(path.join(minivanKok, dosya), "utf8"));
+    if (!ek.marka) continue;
+    const slug = slugify(ek.marka);
+    const ayarYol = path.join(ekKok, "ayar-minivan", slug + ".json");
+    const ayar = (fs.existsSync(ayarYol) ? JSON.parse(fs.readFileSync(ayarYol, "utf8")) : {}) as EkAyar;
+    const markaAdi = ayar.marka ?? ek.marka;
+    const kamD = durum.kamyonet.get(anahtar(markaAdi));
+    const otoD = durum.otomobil.get(anahtar(markaAdi));
+    const hedefKat = (ad: string): "otomobil" | "kamyonet" => {
+      const hedefAd = ayar.takma?.[ad] ?? ad;
+      if (kamD && modeliBul(kamD.modeller, hedefAd)) return "kamyonet";
+      if (otoD && modeliBul(otoD.modeller, hedefAd)) return "otomobil";
+      return "kamyonet";
+    };
+    const belirsiz: Belirsiz[] = [];
+    const satir: string[] = [`### ${ek.marka}`];
+    for (const kat of ["kamyonet", "otomobil"] as const) {
+      const kismi = { ...ek, modeller: new Map([...ek.modeller].filter(([ad]) => hedefKat(ad) === kat)) };
+      if (!kismi.modeller.size) continue;
+      const d = markaAl(kat, markaAdi);
+      const oncekiModeller = new Set(d.modeller.map((m) => m.ad));
+      const s = ekUygula(ek.marka, kismi, { ...ayar, siki: true }, d.modeller, kuresel);
+      belirsiz.push(...s.belirsiz);
+      satir.push(`- ${kat}: zaten vardı ${s.zatenVar} · eklendi ${s.eklenen.length} · belirsiz ${s.belirsiz.length}`, ...s.eklenen.map((e) => `  - + ${e}`), ...s.eslesme.map((e) => `  - ~ eşleme: ${e}`));
+      for (const m of d.modeller.filter((x) => !oncekiModeller.has(x.ad))) {
+        const benzer = [...(kamD?.modeller ?? []), ...(otoD?.modeller ?? [])].filter((x) => {
+          if (!oncekiModeller.has(x.ad)) return false;
+          const a = modelAnahtar(m.ad), b = modelAnahtar(x.ad);
+          return a !== b && a.length >= 3 && b.length >= 3 && (a.startsWith(b) || b.startsWith(a));
+        });
+        if (benzer.length) minivanBenzer.push(`${ek.marka}: yeni "${m.ad}" ayrı model açıldı — katalogda benzer adlı: ${[...new Set(benzer.map((x) => `"${x.ad}"`))].join(", ")}`);
+      }
+    }
+    fs.writeFileSync(path.join(ekKok, "belirsiz-minivan", slug + ".json"), JSON.stringify(belirsiz, null, 2) + "\n");
+    fs.writeFileSync(path.join(ekKok, "rapor-minivan", slug + ".md"), [...satir, ...minivanBenzer.filter((x) => x.startsWith(ek.marka + ":")).map((x) => `  - ~ benzer ad: ${x}`)].join("\n") + "\n");
     ekRapor.push(...satir);
   }
 }

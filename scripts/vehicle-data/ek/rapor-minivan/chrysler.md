@@ -1,0 +1,22 @@
+### Chrysler
+- kamyonet: zaten vardı 0 · eklendi 12 · belirsiz 0
+  - + Yeni model: Town & Country (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Town & Country › 3.8 › Standart
+  - + Yeni model: Voyager (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Voyager › 2.0 Family › Standart
+  - + Voyager › 2.5 CRD LX › Standart
+  - + Voyager › 2.5 TD › Standart
+  - + Voyager › 2.5 TD SE › Standart
+  - + Voyager › 2.8 CRD LX › Standart
+  - + Voyager › 2.8 CRD SE › Standart
+  - + Voyager › 3.0 LE › Standart
+  - + Voyager › 3.3 LE › Standart
+  - + Voyager › 3.3 SE › Standart
+- otomobil: zaten vardı 1 · eklendi 7 · belirsiz 0
+  - + Grand Voyager › 2.8 CRD LX › Standart (yıl bilgisi yok → 1986-2026)
+  - + Grand Voyager › 2.8 CRD SE › Standart (yıl bilgisi yok → 1986-2026)
+  - + Grand Voyager › 3.3 LE › Standart (yıl bilgisi yok → 1986-2026)
+  - + Grand Voyager › 3.3 Limited › Standart (yıl bilgisi yok → 1986-2026)
+  - + Grand Voyager › 3.3 SE › Standart (yıl bilgisi yok → 1986-2026)
+  - + Grand Voyager › 3.8 LE › Standart (yıl bilgisi yok → 1986-2026)
+  - + Grand Voyager › 3.8 LX › Standart (yıl bilgisi yok → 1986-2026)

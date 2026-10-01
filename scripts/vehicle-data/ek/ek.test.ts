@@ -112,3 +112,19 @@ describe("modelleriTekillestir / yakitKurali", () => {
     expect(yakitKurali("1.5")).toBeNull();
   });
 });
+
+describe("ekUygula — siki kapsama (Minivan & Panelvan)", () => {
+  const model = (): KatalogModel => ({
+    ad: "Berlingo",
+    nesiller: [],
+    tipler: [{ v: "1.6 HDi", hp: 75, p: "X", k: "Panelvan", y: [2012, 2013], f: "DIESEL", t: null }],
+  });
+  const dosya = (...s: string[]) => parseEk(metin(["Minivan & Panelvan", "Citroen", ...s, ""]));
+
+  it("tüm sözcükler mevcutta geçiyorsa zaten var; geçmiyorsa eklenir (aynı hacim yetmez)", () => {
+    const modeller = [model()];
+    const s = ekUygula("Citroen", dosya("Berlingo", "1.6 HDi X (3)", "1.6 HDi Combi SX (5)"), { siki: true }, modeller);
+    expect(s.zatenVar).toBe(1);
+    expect(s.eklenen.some((e) => e.includes("1.6 HDi Combi SX"))).toBe(true);
+  });
+});

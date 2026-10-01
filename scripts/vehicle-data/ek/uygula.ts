@@ -17,6 +17,8 @@ import { fold as foldTr } from "../tsb/rules";
 const fold = (s: string) => foldTr(s.normalize("NFD").replace(/\p{Mn}/gu, ""));
 
 export interface EkAyar {
+  /** Versiyon adında paket adı da geçen kaynaklar (Minivan & Panelvan): "zaten var" yalnız tüm jetonlar mevcutta geçiyorsa. */
+  siki?: boolean;
   /** atla'da yazılı olup yine de eklenmeyecek modeller (başka markada zaten var gibi). Diğer atla/yılsız modeller 1986-2026 ile eklenir. */
   atlaKal?: string[];
   /**
@@ -69,6 +71,8 @@ const STANDART = "Standart";
 const DIGER = "Diğer";
 
 let esanlamHarita = new Map<string, string>();
+/** Sıkı kapsama (ayar.siki): satırın TÜM jetonları mevcut kayıtta geçmiyorsa "zaten var" sayılmaz; kısa yazım/aynı hacim tahmini yapılmaz. */
+let sikiKapsama = false;
 const KASA_JETONLARI = new Set(["CABRIO", "CABRIOLET", "COUPE", "HATCHBACK", "SEDAN", "SW", "ESTATE", "TOURING", "WAGON", "SPIDER", "ROADSTER", "CONVERTIBLE", "SUV", "MPV", "VAN"]);
 
 /** Karşılaştırma jetonları: büyük harf, "+" → PLUS, "Twin Spark" → TS, ayardaki eş anlamlılar. */
@@ -146,6 +150,17 @@ function satirlar(model: string, versiyonlar: Map<string, Set<string>>, belirsiz
 /** Satır, modelin mevcut TSB tiplerinden biriyle örtüşüyor mu? */
 function tipleKapli(s: Satir, tipler: KatalogTip[]): boolean {
   const vJ = jeton(s.v);
+  if (sikiKapsama) {
+    const sJ = [...vJ, ...(s.p === STANDART ? [] : jeton(s.p))].filter((j) => !/^(HP|CV|PS|BG)$/.test(j));
+    // Boşluk farkı ("350L" ↔ "350 L") jeton karşılaştırmasını bozar: bitişik yazılmış hâl de aynı sayılır.
+    const bitisik = (x: string[]) => x.join("");
+    const sB = bitisik(vJ.filter((j) => !/^(HP|CV|PS|BG)$/.test(j))) + bitisik(s.p === STANDART ? [] : jeton(s.p));
+    return tipler.some((t) => {
+      const tJ = new Set(jeton(`${t.v} ${t.p ?? ""} ${t.k ?? ""}`));
+      if (sJ.every((j) => tJ.has(j))) return true;
+      return sB.length > 0 && (bitisik(jeton(t.v)) + bitisik(jeton(t.p ?? ""))) === sB;
+    });
+  }
   const hacim = vJ.find((j) => /^\d\.\d/.test(j)) ?? null;
   const pJ = s.p === STANDART ? [] : jeton(s.p);
   return tipler.some((t) => {
@@ -193,6 +208,7 @@ function elKarar(el: El, s: Satir): Karar {
   }
 
   // Kısa yazım: "1.9" ↔ "1.9 JTD 100" — tek aday varsa ona bağlanır, çok aday varsa belirsiz
+  if (sikiKapsama) return { durum: "ekle", satir: s };
   const genis = mevcut.filter((v) => sV.size > 0 && altKume(sV, jetonKumesi(v)));
   if (genis.length === 1) {
     const aday = genis[0];
@@ -267,7 +283,7 @@ const tamAnahtar = (s: string) => fold(s).replace(/\s+/g, "");
  * Kullanıcı model adına karşılık gelen katalog modeli. Aynı adlı birden fazla nesil modeli varsa
  * (ör. "Tipo (1990-1995)" ve "Tipo (2015-)") hangisi olduğu belli olmadığından liste döner.
  */
-function modeliBul(modeller: KatalogModel[], ad: string): KatalogModel | KatalogModel[] | null {
+export function modeliBul(modeller: KatalogModel[], ad: string): KatalogModel | KatalogModel[] | null {
   const a = modelAnahtar(ad);
   const bolumler = (m: string) => m.split("/").map((x) => modelAnahtar(x)).filter(Boolean);
   const adimlar: ((m: KatalogModel) => boolean)[] = [
@@ -333,7 +349,7 @@ const YILSIZ_BIT = 2026;
 function yilsizEkle(model: KatalogModel, s: Satir): void {
   const yillar = Array.from({ length: YILSIZ_BIT - YILSIZ_BAS + 1 }, (_, i) => YILSIZ_BAS + i);
   const p = s.p === STANDART ? null : s.p;
-  const var_ = model.tipler.find((t) => t.g && t.v === s.v && t.p === p);
+  const var_ = model.tipler.find((t) => t.g && anahtar(t.v) === anahtar(s.v) && anahtar(t.p ?? "") === anahtar(p ?? ""));
   if (!var_) model.tipler.push({ v: s.v, hp: null, p, k: null, y: yillar, f: yakitKurali(s.v), t: null, g: true });
   for (const n of model.nesiller) if (n.el && elKarar(n.el, s).durum === "ekle") elEkle(n.el, s);
 }
@@ -341,6 +357,7 @@ function yilsizEkle(model: KatalogModel, s: Satir): void {
 export function ekUygula(marka: string, ek: EkMarka, ayar: EkAyar, modeller: KatalogModel[], kuresel: Set<string> = new Set()): EkSonuc {
   const sonuc: EkSonuc = { eklenen: [], eslesme: [], zatenVar: 0, belirsiz: [] };
   esanlamHarita = new Map();
+  sikiKapsama = ayar.siki === true;
   for (const grup of ayar.esanlam ?? []) for (const j of grup.slice(1)) esanlamHarita.set(fold(j), fold(grup[0]));
   const bel = (model: string) => (b: Omit<Belirsiz, "marka" | "model">) => sonuc.belirsiz.push({ marka, model, ...b });
 

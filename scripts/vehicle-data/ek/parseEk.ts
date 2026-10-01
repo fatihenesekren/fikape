@@ -12,7 +12,8 @@
 //   3 seviye → kasa → versiyon → paket   (ör. Audi: A3 › A3 Sedan › 1.4 TFSI › Ambiente)
 // Kasa adımı formda yok; kasa seviyesi yalnız yapı olarak atlanır.
 
-export type EkKategori = "Otomobil" | "Arazi, SUV & Pickup";
+export type EkKategori = "Otomobil" | "Arazi, SUV & Pickup" | "Minivan & Panelvan";
+const KATEGORI_SATIRLARI: string[] = ["Otomobil", "Arazi, SUV & Pickup", "Minivan & Panelvan"];
 
 export type Dugum = Map<string, Dugum>;
 
@@ -73,7 +74,7 @@ export function parseEk(metin: string): EkMarka {
     if (!s || AYRAC.test(s)) bloklar.push([]);
     else {
       // Kaynakta iki blok arasındaki boş satır düşmüş olabilir: kategori satırı yeni blok başlatır.
-      if ((s === "Otomobil" || s === "Arazi, SUV & Pickup") && bloklar[bloklar.length - 1].length) bloklar.push([]);
+      if (KATEGORI_SATIRLARI.includes(s) && bloklar[bloklar.length - 1].length) bloklar.push([]);
       bloklar[bloklar.length - 1].push(s);
     }
   }
@@ -102,7 +103,7 @@ export function parseEk(metin: string): EkMarka {
       kategori = sonSatirKategori;
       sonuc.uyarilar.push(`Kategori satırı eksik blok (önceki "${sonSatirKategori}" varsayıldı): ${marka} / ${kalan.slice(0, 3).join(" / ")}…`);
     }
-    if (kategori !== "Otomobil" && kategori !== "Arazi, SUV & Pickup") {
+    if (!KATEGORI_SATIRLARI.includes(kategori)) {
       sonuc.uyarilar.push(`Tanınmayan kategori satırı: "${kategori}"`);
       continue;
     }

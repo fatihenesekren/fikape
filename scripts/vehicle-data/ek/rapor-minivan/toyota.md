@@ -1,0 +1,20 @@
+### Toyota
+- kamyonet: zaten vardı 3 · eklendi 15 · belirsiz 0
+  - + Hiace › 95 L › Standart (yıl bilgisi yok → 1986-2026)
+  - + Hiace › 117 L › Standart (yıl bilgisi yok → 1986-2026)
+  - + Hiace › 2.4 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Hiace › 2.4 LD › Standart (yıl bilgisi yok → 1986-2026)
+  - + Hiace › 2.5 D4-D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Proace Cargo (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Proace Cargo › 2.2 D › Flame
+  - + Proace City › 2.0 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Proace City Cargo (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Proace City Cargo › 1.5 D › Dream
+  - + Proace City Cargo › 1.5 D › Vision
+  - + Yeni model: Proace Max (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Proace Max › 2.2 D › 13 m3
+  - + Proace Max › 2.2 D › 15 m3
+  - + Proace Max › 2.2 D › 17 m3
+  - ~ benzer ad: Toyota: yeni "Proace Cargo" ayrı model açıldı — katalogda benzer adlı: "Proace"
+  - ~ benzer ad: Toyota: yeni "Proace City Cargo" ayrı model açıldı — katalogda benzer adlı: "Proace City", "Proace"
+  - ~ benzer ad: Toyota: yeni "Proace Max" ayrı model açıldı — katalogda benzer adlı: "Proace"

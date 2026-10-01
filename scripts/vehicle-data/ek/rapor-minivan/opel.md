@@ -1,0 +1,73 @@
+### Opel
+- kamyonet: zaten vardı 2 · eklendi 57 · belirsiz 0
+  - + Combo › 1.3 CDTi City › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.3 CDTi City Club › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.3 CDTi City Plus › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.3 CDTi Comfort › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.4 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 CDTi Edition › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 CDTi Enjoy › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 CDTi Enjoy Style › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 CDTi Excellence › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 CDTi Ultimate › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 D Edition › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 D Edition Plus › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 D Essential › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 D Ultimate › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.5 D Ultimate XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.6 CDTi City Plus › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.6 Tour Comfort › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.7 CDTi City Plus › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.7 CDTi Comfort › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.7 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.7 DTi › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.7 DTi City › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.7 DTi Club › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.7 DTi Comfort › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo › 1.7 DTi Tour › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Combo Elektrik (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Combo Elektrik › Edition › Standart
+  - + Yeni model: e-Zafira (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + e-Zafira › Business › Standart
+  - + Movano › 2.2 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Movano › 2.5 CDTi › Standart (yıl bilgisi yok → 1986-2026)
+  - + Movano › 2.5 D › Standart (yıl bilgisi yok → 1986-2026)
+  - + Movano › 2.8 DTi › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Sintra (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Sintra › 2.2 DTi GLS › Standart
+  - + Vivaro › 1.5 TD Cargo Ultimate › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 1.5 TD Cargo Ultimate XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 1.9 CDTi City Plus › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 1.9 DTi › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 1.9 DTi Combi › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.0 CDTi › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.0 TD Cargo Edition XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.0 TD Cargo Elegance XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.0 TD Cargo Ultimate › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.0 TD Cargo Ultimate XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.0 TD Cityvan Elegance XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.0 TD Cityvan Ultimate XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.2 TD Cargo Ultimate › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.2 TD Cargo Ultimate XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.2 TD Cityvan Ultimate › Standart (yıl bilgisi yok → 1986-2026)
+  - + Vivaro › 2.2 TD Cityvan Ultimate XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Zafira Life › 2.0 › Ultimate XL (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Astra Van (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Astra Van › 1.7 DTI Comfort › Standart
+  - + Yeni model: Corsa Van (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Corsa Van › 1.3 CDTi › Standart
+  - + Corsa Van › 1.7 DTi › Standart
+- otomobil: zaten vardı 0 · eklendi 11 · belirsiz 0
+  - + Combo Cargo › 1.5 D Edition › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo Cargo › 1.5 D Elegance XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo Cargo › 1.5 D Ultimate XL › Standart (yıl bilgisi yok → 1986-2026)
+  - + Combo Life › 1.5 D › Edition
+  - + Combo Life › 1.5 D › Edition Style
+  - + Combo Life › 1.5 D › Elegance
+  - + Combo Life › 1.5 D › Essential
+  - + Combo Life › 1.5 D › Ultimate
+  - + Zafira › 2.0 D › Edition Plus XL (yıl bilgisi yok → 1986-2026)
+  - + Zafira › 2.0 D › Ultimate XL (yıl bilgisi yok → 1986-2026)
+  - + Zafira › 2.2 D › Edition Plus XL (yıl bilgisi yok → 1986-2026)
+  - ~ benzer ad: Opel: yeni "Combo Elektrik" ayrı model açıldı — katalogda benzer adlı: "Combo"
+  - ~ benzer ad: Opel: yeni "Corsa Van" ayrı model açıldı — katalogda benzer adlı: "Corsa"

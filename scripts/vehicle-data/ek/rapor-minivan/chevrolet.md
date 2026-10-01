@@ -1,0 +1,13 @@
+### Chevrolet
+- kamyonet: zaten vardı 0 · eklendi 11 · belirsiz 0
+  - + Express › 5.3L V8 SFI › Standart (yıl bilgisi yok → 1986-2026)
+  - + Express › 5.7 › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Trans Sport (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Trans Sport › 3.4 › Standart
+  - + Yeni model: G Serisi (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + G Serisi › G20 › Standart
+  - + G Serisi › G30 › Standart
+  - + Yeni model: Lumina (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Lumina › 3.1 › Standart
+  - + Yeni model: Astro Van (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Astro Van › 4.3 › Standart

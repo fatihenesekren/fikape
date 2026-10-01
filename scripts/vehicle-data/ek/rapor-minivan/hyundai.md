@@ -1,0 +1,30 @@
+### Hyundai
+- kamyonet: zaten vardı 9 · eklendi 28 · belirsiz 0
+  - + H100 › 2.5 Camlıvan › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.5 D DLX Camlıvan › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.5 D DLX Panelvan › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.5 D STD Camlıvan › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.5 D STD Panelvan › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.5 Grand Salon › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.5 SPR › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.5 STD PAS PL › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.6 D Grace › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.6 D PL › Standart (yıl bilgisi yok → 1986-2026)
+  - + H100 › 2.6 D STD › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT AJ-Select › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT AJ-Team › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT Crew Select › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT Crew Style › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT Crew Team › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT Harmony Select › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT Panorama Select › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT Workstar › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT Workstar Select › Standart (yıl bilgisi yok → 1986-2026)
+  - + H-1 › 2.5 VGT Workstar Team › Standart (yıl bilgisi yok → 1986-2026)
+  - + Yeni model: Starex (1986–) — kaynakta/internette yıl yok — kullanıcı kararıyla 1986-2026 arası seçilebilir
+  - + Starex › Cargovan › Standart
+  - + Starex › Multiway › Standart
+  - + Starex › Space › Standart
+  - + Starex › Camlı Van › Standart
+  - + Starex › Panelvan › Standart
+  - + Staria › 1.6 T-GDI Elite › Standart (yıl bilgisi yok → 1986-2026)
