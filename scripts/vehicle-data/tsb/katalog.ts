@@ -29,6 +29,17 @@ import { parseEk } from "../ek/parseEk";
 import { ekUygula, kureselJetonlar, modelleriTekillestir, type Belirsiz, type EkAyar } from "../ek/uygula";
 
 const root = process.cwd();
+
+/**
+ * Sitede Türkçe olmayan harf/simge görünmesin: é/ë/ó… → e/o…, "N°4" → "N4", "›" → boşluk.
+ * (Türkçe harfler — ç ğ ı ö ş ü â î û — korunur. Slug zaten aksansız üretilir.)
+ */
+const YABANCI: Record<string, string> = {
+  é: "e", è: "e", ê: "e", ë: "e", É: "E", È: "E", Ê: "E", Ë: "E", á: "a", à: "a", ä: "a", Á: "A", À: "A", Ä: "A",
+  ó: "o", ò: "o", ô: "o", õ: "o", Ó: "O", Ò: "O", Ô: "O", ú: "u", ù: "u", Ú: "U", Ù: "U", í: "i", ì: "i", ï: "i",
+  Í: "I", Ì: "I", Ï: "I", ñ: "n", Ñ: "N", ø: "o", Ø: "O", å: "a", Å: "A", ß: "ss", "°": "", "›": " ", "‹": " ",
+};
+const turkceHarfler = (metin: string) => [...metin].map((c) => YABANCI[c] ?? c).join("");
 const incele = path.join(root, "scripts", "vehicle-data", "_inceleme");
 const tsb = JSON.parse(fs.readFileSync(path.join(incele, "tsb-katalog.json"), "utf8")) as {
   baslik: string;
@@ -278,7 +289,7 @@ for (const kat of KATEGORILER) {
     d.modeller.sort((a, b) => a.ad.localeCompare(b.ad, "tr", { numeric: true }));
     const dosya: KatalogMarkaDosyasi = { marka: d.marka, kategori: kat, kaynak: tsb.baslik, modeller: d.modeller };
     const slug = slugify(d.marka);
-    fs.writeFileSync(path.join(outDir, `${slug}.json`), JSON.stringify(dosya));
+    fs.writeFileSync(path.join(outDir, `${slug}.json`), turkceHarfler(JSON.stringify(dosya)));
     index[kat].push({ marka: d.marka, dosya: `/katalog/${kat}/${slug}.json`, modeller: d.modeller.map((m) => m.ad) });
 
     rapor.push(`### ${d.marka}${d.tsbVar ? "" : " (TSB'de yok — eski katalog)"}`);
@@ -290,7 +301,7 @@ for (const kat of KATEGORILER) {
   index[kat].push({ marka: DIGER_MARKA, dosya: "", modeller: [] });
 }
 
-fs.writeFileSync(path.join(root, "src", "data", "katalogIndex.json"), JSON.stringify(index) + "\n");
+fs.writeFileSync(path.join(root, "src", "data", "katalogIndex.json"), turkceHarfler(JSON.stringify(index)) + "\n");
 fs.writeFileSync(path.join(incele, "birlestirme.md"), rapor.join("\n") + "\n");
 if (ekRapor.length) console.log(ekRapor.join("\n"));
 if (tekillesenler.length) console.log("Tekilleşen modeller:\n" + tekillesenler.join("\n"));
