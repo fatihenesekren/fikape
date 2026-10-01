@@ -1,5 +1,9 @@
 {
-  "atla": {
-    "Qute": "Bajaj Qute RE 60: Türkiye'de 2015'ten beri satılan L7e quadricycle (arabam.com'da MOTOSİKLET kategorisinde, en.wikipedia Bajaj Qute). Katalogda Bajaj yalnızca motosiklet altında var; otomobil'e eklemek kategori kararı gerektirir."
+  "yeniModel": {
+    "Qute": {
+      "bas": 2015,
+      "bit": null,
+      "kaynak": "arabam.com / en.wikipedia Bajaj Qute (Türkiye'de 2015'ten beri; L7e quadricycle)"
+    }
   }
 }

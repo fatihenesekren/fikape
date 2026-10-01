@@ -1,1 +1,9 @@
-{ "atlaMarka": "Micro Microlino: L7e kategorisi elektrikli kabinli mikro araç (2022-); katalogda Micro markası yok, otomobil/motosiklet kategori kararı gerektirir." }
+{
+  "yeniModel": {
+    "Microlino": {
+      "bas": 2022,
+      "bit": null,
+      "kaynak": "en.wikipedia Microlino (seri üretim 2022, L7e)"
+    }
+  }
+}

@@ -1,1 +1,14 @@
-{ "atlaMarka": "Nieve Evzoom / Q-EN: Nieve düşük hızlı elektrikli mikro araç (L-kategori). Nieve, resmi listede de araç kapsamı dışı tutulan markalardan (özel amaçlı/mikro araç); katalogda yok — kategori kararı gerektirir." }
+{
+  "yeniModel": {
+    "Evzoom": {
+      "bas": 2024,
+      "bit": null,
+      "kaynak": "otometre.com Nieve Evzoom (Ocak 2024, Türkiye lansmanı)"
+    },
+    "Q-EN": {
+      "bas": 2026,
+      "bit": null,
+      "kaynak": "otometre.com Nieve Q-EN (Nisan 2026) — L-kategori mini elektrikli"
+    }
+  }
+}

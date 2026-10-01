@@ -1,1 +1,14 @@
-{ "atla": { "Pride 131": "Saipa Pride 131 (İran üretimi Kia Pride) — yıl aralığı doğrulanamadı; katalogda Saipa markası yok.", "Saba": "Saipa Saba (İran üretimi Kia Pride sedan) — yıl aralığı doğrulanamadı." } }
+{
+  "yeniModel": {
+    "Pride 131": {
+      "bas": 2009,
+      "bit": 2020,
+      "kaynak": "en.wikipedia/ru.wikipedia SAIPA Pride 131 (2009-2020)"
+    },
+    "Saba": {
+      "bas": 1993,
+      "bit": 2020,
+      "kaynak": "ru.wikipedia SAIPA Pride/Saba (1993-2020)"
+    }
+  }
+}

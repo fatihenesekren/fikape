@@ -1,1 +1,9 @@
-{ "atlaMarka": "XEV Yoyo: L7e kategorisi elektrikli mikro araç (2020-); katalogda XEV yok — otomobil/motosiklet kategori kararı gerektirir." }
+{
+  "yeniModel": {
+    "Yoyo": {
+      "bas": 2021,
+      "bit": null,
+      "kaynak": "en.wikipedia XEV Yoyo (seri üretim Eylül 2021)"
+    }
+  }
+}

@@ -1,1 +1,10 @@
-{ "atla": { "4.3": "Kaynak dosyada yapı ters: model '4.3', versiyon 'Bravada' yazılmış (Oldsmobile Bravada 4.3 olmalı). Bravada'nın yıl aralığı da doğrulanmadı (1991-2004 olabilir); katalogda Oldsmobile markası yok." } }
+{
+  "yeniModel": {
+    "4.3": {
+      "bas": 1991,
+      "bit": 2004,
+      "kaynak": "en.wikipedia Oldsmobile Bravada (model yılı 1991-1994, 1996-2004). Kaynak dosyada model/versiyon ters yazılmış: model 'Bravada', motor '4.3'",
+      "ad": "Bravada"
+    }
+  }
+}

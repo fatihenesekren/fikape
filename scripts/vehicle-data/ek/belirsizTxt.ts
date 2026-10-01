@@ -42,7 +42,7 @@ yaz(
   "  • 'kasa tipi'    : Cabrio/Coupe/Sportback gibi gövde adı; formda kasa adımı kalktığı için versiyon/paket olarak eklenmedi.",
   "",
   "=".repeat(78),
-  "A) MARKA / KATEGORİ KARARI GEREKENLER (hiçbir satır eklenmedi)",
+  "A) OTOMOBİLE EKLENECEK AMA ÇIKIŞ YILI DOĞRULANAMAYAN MARKALAR (hiçbir satır eklenmedi)",
   "=".repeat(78),
 );
 for (const m of markaAtlanan) yaz("", `• ${m}`, `  ${markaBelirsiz.get(m)![0].neden}`);

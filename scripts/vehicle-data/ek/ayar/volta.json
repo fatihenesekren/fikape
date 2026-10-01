@@ -1,1 +1,17 @@
-{ "atlaMarka": "Volta EV1 / EV2 / V1: düşük hızlı elektrikli mikro araçlar (L-kategori); katalogda Volta markası yok — kategori kararı gerektirir, model doğrulanamadı." }
+{
+  "yeniModel": {
+    "EV1": {
+      "bas": 2022,
+      "bit": null,
+      "kaynak": "dolubatarya.com Volta EV1 (çıkış 2022)"
+    },
+    "EV2": {
+      "bas": 2025,
+      "bit": null,
+      "kaynak": "log.com.tr Volta EV2 (Türkiye'de Ağustos 2025)"
+    }
+  },
+  "atla": {
+    "V1": "Volta V1 — model internette doğrulanamadı (yıl aralığı seçilemedi)."
+  }
+}

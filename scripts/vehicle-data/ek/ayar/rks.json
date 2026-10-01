@@ -1,1 +1,19 @@
-{ "atlaMarka": "RKS A1 / D2 / M5: RKS (Kuba/RKS motosiklet markası) düşük hızlı elektrikli mikro araçları (L-kategori). Katalogda RKS yok; kategori kararı gerektirir." }
+{
+  "yeniModel": {
+    "A1": {
+      "bas": 2023,
+      "bit": null,
+      "kaynak": "sifirarabafiyatlari.net / arabam.com RKS elektrikli mini araç fiyat listesi 2023"
+    },
+    "D2": {
+      "bas": 2023,
+      "bit": null,
+      "kaynak": "RKS D2 (2023 model) — rksmotor.com.tr"
+    },
+    "M5": {
+      "bas": 2023,
+      "bit": null,
+      "kaynak": "RKS M5 (2023-2024 fiyat listeleri) — rksmotor.com.tr"
+    }
+  }
+}

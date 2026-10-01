@@ -1,1 +1,13 @@
-{ "atlaMarka": "Relive Baw1 / EZI / N1: düşük hızlı elektrikli mikro araçlar (L-kategori). Relive, resmi listede de araç kapsamı dışı tutulan markalardan; katalogda yok — kategori kararı gerektirir." }
+{
+  "yeniModel": {
+    "Baw1": {
+      "bas": 2023,
+      "bit": null,
+      "kaynak": "shiftdelete.net Relive BAW01 (3 Eylül 2023 Türkiye lansmanı)"
+    }
+  },
+  "atla": {
+    "EZI": "Relive EZI (6.6 kW, 25 km/s L-kategori) — Türkiye çıkış yılı doğrulanamadı.",
+    "N1": "Relive N1 (BAW tabanlı L7e) — Türkiye çıkış yılı doğrulanamadı."
+  }
+}

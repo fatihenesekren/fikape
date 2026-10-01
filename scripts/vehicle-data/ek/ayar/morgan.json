@@ -1,4 +1,14 @@
-{ "atla": {
-  "Plus Four": "Morgan Plus Four: '2.0 Twin Power' BMW motorlu 2020+ nesil olabilir (eski Plus 4 1950-2000) — yıl aralığı bu oturumda doğrulanamadı.",
-  "Supersport": "Morgan 'Supersport' (3.0) model adı/yılı doğrulanamadı (Plus Six / Super 3 olabilir)."
-} }
+{
+  "yeniModel": {
+    "Plus Four": {
+      "bas": 2020,
+      "bit": null,
+      "kaynak": "autoevolution/en.wikipedia Morgan Plus Four (BMW 2.0 turbo, 2020)"
+    },
+    "Supersport": {
+      "bas": 2025,
+      "bit": null,
+      "kaynak": "bmwblog Morgan Supersport (Mart 2025)"
+    }
+  }
+}

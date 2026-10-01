@@ -1,1 +1,9 @@
-{ "atlaMarka": "Reeder Reev Fancy: düşük hızlı elektrikli mikro araç (L-kategori). Reeder, resmi listede de araç kapsamı dışı tutulan markalardan; katalogda yok — kategori kararı gerektirir." }
+{
+  "yeniModel": {
+    "Reev Fancy": {
+      "bas": 2025,
+      "bit": null,
+      "kaynak": "donanimhaber / cumha: ReeV Fancy teslimatları 2 Ocak 2025 (L-kategori)"
+    }
+  }
+}

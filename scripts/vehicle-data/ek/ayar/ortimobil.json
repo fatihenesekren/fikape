@@ -1,1 +1,14 @@
-{ "atlaMarka": "Ortimobil Alexa / Omobil: Türk üretimi düşük hızlı elektrikli mikro araçlar (L-kategori); katalogda Ortimobil markası yok — kategori (otomobil/motosiklet) kararı gerektirir." }
+{
+  "yeniModel": {
+    "Alexa": {
+      "bas": 2024,
+      "bit": null,
+      "kaynak": "arabalar.com.tr / Ortimobil: Temmuz 2024'te satışa çıktı (L7)"
+    },
+    "Omobil": {
+      "bas": 2024,
+      "bit": null,
+      "kaynak": "Ortimobil: Alexa ile birlikte Temmuz 2024 (L7)"
+    }
+  }
+}

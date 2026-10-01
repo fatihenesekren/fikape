@@ -1,3 +1,19 @@
 {
-  "atlaMarka": "Kuba Chok / City / M5: Kuba Motor'un düşük hızlı elektrikli dört tekerlekli araçları (kubamotor.com.tr 'e-car'; motosiklet/quadricycle sınıfı). Katalogda Kuba markası MOTOSİKLET kategorisinde var; otomobil'e eklemek kategori kararı gerektirir ve kopya riski taşır."
+  "yeniModel": {
+    "Chok": {
+      "bas": 2016,
+      "bit": null,
+      "kaynak": "otometre.com Kuba E-Car (2016); L-kategori elektrikli mini araç"
+    },
+    "City": {
+      "bas": 2016,
+      "bit": null,
+      "kaynak": "Kuba E-Car ailesi (2016'dan beri, kubamotor.com.tr)"
+    },
+    "M5": {
+      "bas": 2016,
+      "bit": null,
+      "kaynak": "Kuba E-Car ailesi (2016'dan beri, kubamotor.com.tr)"
+    }
+  }
 }

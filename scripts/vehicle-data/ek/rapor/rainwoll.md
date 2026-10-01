@@ -1,2 +1,2 @@
 ### Rainwoll
-- marka atlandı: Rainwoll RW 10: düşük hızlı elektrikli mikro araç (L-kategori olabilir); katalogda marka yok — kategori kararı gerektirir, model doğrulanamadı.
+- marka atlandı: Rainwoll RW 10: model ve çıkış yılı internette doğrulanamadı; otomobil kategorisine eklenecek, yıl bekleniyor.

@@ -1,1 +1,9 @@
-{ "atla": { "Laser": "Plymouth Laser (1990-1994 olabilir; Mitsubishi Eclipse ikizi) — yıl aralığı bu oturumda doğrulanamadı; katalogda Plymouth markası yok." } }
+{
+  "yeniModel": {
+    "Laser": {
+      "bas": 1990,
+      "bit": 1994,
+      "kaynak": "en.wikipedia Plymouth Laser (model yılı 1990-1994)"
+    }
+  }
+}

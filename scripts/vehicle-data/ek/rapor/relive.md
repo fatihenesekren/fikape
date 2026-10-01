@@ -1,2 +1,3 @@
 ### Relive
-- marka atlandı: Relive Baw1 / EZI / N1: düşük hızlı elektrikli mikro araçlar (L-kategori). Relive, resmi listede de araç kapsamı dışı tutulan markalardan; katalogda yok — kategori kararı gerektirir.
+- otomobil: zaten vardı 0 · eklendi 1 · belirsiz 2
+  - + Yeni model: Baw1 (2023–) — shiftdelete.net Relive BAW01 (3 Eylül 2023 Türkiye lansmanı)

@@ -1,1 +1,9 @@
-{ "atla": { "EV300": "Luqi EV300: L-kategori elektrikli kabinli scooter/mini araç (en.wikipedia/üretici sitesi). Katalogda Luqi MOTOSİKLET kategorisinde var; otomobil'e eklemek kategori kararı gerektirir." } }
+{
+  "yeniModel": {
+    "EV300": {
+      "bas": 2024,
+      "bit": null,
+      "kaynak": "otomerkezi.net: Türkiye'de 2024 model Luqi EV300 ilanı (daha eski yıl doğrulanamadı)"
+    }
+  }
+}

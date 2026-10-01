@@ -1,3 +1,9 @@
 {
-  "atla": { "Talon": "Eagle Talon (1990-1998) — marka Eagle katalogda hiç yok; yıl aralığı bu oturumda internetten doğrulanmadı." }
+  "yeniModel": {
+    "Talon": {
+      "bas": 1990,
+      "bit": 1998,
+      "kaynak": "en.wikipedia Eagle Talon (model yılı 1990-1998)"
+    }
+  }
 }
