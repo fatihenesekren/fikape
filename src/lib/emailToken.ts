@@ -1,6 +1,7 @@
 import { createHmac, timingSafeEqual } from "crypto";
 
-const SECRET = process.env.AUTH_SECRET!;
+// Amaca özel anahtar tanımlıysa (EMAIL_TOKEN_SECRET) e-posta/şifre sıfırlama token imzası JWT anahtarından ayrılır.
+const SECRET = (process.env.EMAIL_TOKEN_SECRET || process.env.AUTH_SECRET)!;
 
 // Token içindeki imza kullanıcıdan geliyor (base64url decode + split) — uzunluğu
 // garanti değil, bozuk/kısaltılmış bir token gönderilirse timingSafeEqual eşit

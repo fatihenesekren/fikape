@@ -42,7 +42,7 @@ export async function PATCH(
 
     return NextResponse.json({ ok: true, attributes: merged });
   } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    return NextResponse.json({ error: msg }, { status: 500 });
+    console.error("[admin-product]", e);
+    return NextResponse.json({ error: "İşlem tamamlanamadı. Lütfen tekrar deneyin." }, { status: 500 });
   }
 }

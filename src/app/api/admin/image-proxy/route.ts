@@ -1,3 +1,4 @@
+import { guvenliGorselIndir, GorselIndirmeHatasi } from "@/lib/guvenliGorselIndir";
 import { NextResponse } from "next/server";
 import { adminOturumu } from "@/lib/adminAuth";
 
@@ -18,35 +19,21 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "url gerekli." }, { status: 400 });
   }
 
-  let target: URL;
   try {
-    target = new URL(url);
-  } catch {
-    return NextResponse.json({ error: "Geçersiz URL." }, { status: 400 });
-  }
-  if (target.protocol !== "https:" && target.protocol !== "http:") {
-    return NextResponse.json({ error: "Geçersiz protokol." }, { status: 400 });
-  }
-
-  try {
-    const upstream = await fetch(target, {
-      signal: AbortSignal.timeout(10_000),
-      headers: { "User-Agent": "fikape-image-proxy/1.0" },
-    });
-    if (!upstream.ok || !upstream.body) {
-      return NextResponse.json({ error: `Kaynak yanıt vermedi (${upstream.status}).` }, { status: 502 });
-    }
-    const contentType = upstream.headers.get("content-type") ?? "";
-    if (!contentType.startsWith("image/")) {
-      return NextResponse.json({ error: "Kaynak bir görsel değil." }, { status: 415 });
-    }
-    return new NextResponse(upstream.body, {
+    // İç ağ/özel IP engeli, yönlendirme denetimi, boyut sınırı ve yalnız raster görsel türleri (SVG/HTML sunulmaz).
+    const { buffer, contentType } = await guvenliGorselIndir(url, { maxBayt: 15 * 1024 * 1024 });
+    return new NextResponse(new Uint8Array(buffer), {
       headers: {
         "Content-Type": contentType,
         "Cache-Control": "private, max-age=300",
+        "Content-Security-Policy": "default-src 'none'; sandbox",
       },
     });
-  } catch {
+  } catch (e) {
+    if (e instanceof GorselIndirmeHatasi) {
+      const durum = e.kod === "gorsel-degil" ? 415 : e.kod === "gecersiz-adres" || e.kod === "guvensiz-hedef" ? 400 : e.kod === "cok-buyuk" ? 413 : 502;
+      return NextResponse.json({ error: e.message }, { status: durum });
+    }
     return NextResponse.json({ error: "Görsel alınamadı." }, { status: 502 });
   }
 }

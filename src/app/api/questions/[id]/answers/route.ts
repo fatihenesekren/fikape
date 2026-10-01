@@ -19,7 +19,7 @@ export async function POST(
   const questionId = parseInt(id);
   if (isNaN(questionId)) return NextResponse.json({ error: "Geçersiz soru." }, { status: 400 });
 
-  const parsed = answerCreateSchema.safeParse(await req.json());
+  const parsed = answerCreateSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }

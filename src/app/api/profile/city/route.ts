@@ -1,3 +1,4 @@
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -8,6 +9,8 @@ import { userCityUpdateSchema, formatZodError } from "@/lib/schemas";
 // null göndermek = "Türkiye geneli" tercih edildi anlamına gelir.
 export async function PATCH(req: NextRequest) {
   const session = await auth();
+  const limitYaniti = await kullaniciLimiti(session, "profile-city", 30, 60 * 60 * 1000);
+  if (limitYaniti) return limitYaniti;
   if (!session?.user?.id) return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
 
   const parsed = userCityUpdateSchema.safeParse(await req.json().catch(() => null));

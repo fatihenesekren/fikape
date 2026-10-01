@@ -27,7 +27,7 @@ export async function PATCH(
     pros, cons, detailText, wouldBuyAgain, triggerSource,
     scoreFiyat, scoreKalite, scorePerformans,
     extendedData, ownershipMonths, photoUrls, removePhotoIds,
-  } = await req.json();
+  } = (await req.json().catch(() => null)) ?? {};
 
   const prosArr: string[] = Array.isArray(pros) ? pros : [];
   const consArr: string[] = Array.isArray(cons) ? cons : [];

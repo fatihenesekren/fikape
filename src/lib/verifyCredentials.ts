@@ -3,6 +3,9 @@ import { prisma } from "@/lib/prisma";
 import { checkRateLimit, rateLimitByEmail } from "@/lib/rateLimit";
 import { logAccessRaw } from "@/lib/accessLog";
 
+// bcrypt(12) çıktısı biçiminde, hiçbir parolaya karşılık gelmeyen sabit hash (zamanlama eşitleme için).
+const SAHTE_HASH = "$2b$12$CwTycUXWue0Thq9StjUM0uJ8E1q0t0r8mY3rYzQ0x6h8lS9mQ2yQe";
+
 export interface VerifiedUser {
   id: string;
   email: string;
@@ -27,9 +30,11 @@ export async function verifyCredentials(
   if (ip && !(await checkRateLimit(`login:${ip}`, 20, 15 * 60 * 1000))) return null;
 
   const user = await prisma.user.findUnique({ where: { email: normalizedEmail } });
-  if (!user) return null;
-  const valid = await bcrypt.compare(password, user.passwordHash);
-  if (!valid) return null;
+  // Kullanıcı yokken de bcrypt çalıştırılır: yanıt süresi farkından hesap var/yok anlaşılmasın.
+  const valid = await bcrypt.compare(password, user?.passwordHash ?? SAHTE_HASH);
+  if (!user || !valid) return null;
+  // Banlı hesap giriş yapamaz (yorum/soru/öneri/yükleme gibi yazma yolları ban kontrolü yapmıyordu).
+  if (user.isBanned) return null;
 
   // 5651 trafik logu — başarılı giriş (bkz. lib/accessLog.ts)
   await logAccessRaw({ action: "LOGIN", userId: user.id, ip, path: "/api/auth/callback/credentials" });

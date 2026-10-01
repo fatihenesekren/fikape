@@ -103,6 +103,25 @@ const nextConfig: NextConfig = {
           // bir denetim olarak backlog'da. frame-ancestors ise risksiz ve
           // X-Frame-Options ile aynı clickjacking korumasını sağlıyor.
           { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+          // Tam CSP'ye geçiş hazırlığı: yalnız RAPORLAR (hiçbir şeyi engellemez). İhlaller /api/csp-report ile sunucu
+          // günlüğüne düşer; dış kaynak envanteri çıkınca script-src nonce'lu ve zorlayıcı hale getirilecek.
+          {
+            key: "Content-Security-Policy-Report-Only",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "img-src 'self' data: blob: https://upload.wikimedia.org https://thumb.wikimedia.org https://commons.wikimedia.org https://*.public.blob.vercel-storage.com https://api.dicebear.com",
+              "font-src 'self' data: https://fonts.gstatic.com",
+              "connect-src 'self' https://*.public.blob.vercel-storage.com https://vercel.com https://*.sentry.io https://*.ingest.sentry.io",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "report-uri /api/csp-report",
+            ].join("; "),
+          },
+          // Sesli arama/giriş için mikrofon yalnız kendi sitemizde; kamera, konum ve ödeme API'si kapalı.
+          { key: "Permissions-Policy", value: "camera=(), microphone=(self), geolocation=(), payment=(), usb=()" },
         ],
       },
     ];

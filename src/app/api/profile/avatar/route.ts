@@ -1,3 +1,4 @@
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -5,12 +6,14 @@ import { buildAvatarOptions, dicebearUrl } from "@/lib/avatar";
 
 export async function PATCH(req: NextRequest) {
   const session = await auth();
+  const limitYaniti = await kullaniciLimiti(session, "profile-avatar", 30, 60 * 60 * 1000);
+  if (limitYaniti) return limitYaniti;
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
   const userId = Number(session.user.id);
-  const { index } = await req.json();
+  const { index } = (await req.json().catch(() => null)) ?? {};
 
   // index=null: baş harflere dön (avatarUrl temizlenir)
   if (index === null) {

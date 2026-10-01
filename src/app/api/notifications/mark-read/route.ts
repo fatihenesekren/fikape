@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 
   let id: number | undefined;
   try {
-    const body = await req.json();
+    const body = (await req.json().catch(() => null)) ?? {};
     if (typeof body?.id === "number") id = body.id;
   } catch {
     // gövde boş/JSON değil — tümünü işaretle

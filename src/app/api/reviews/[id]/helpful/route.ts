@@ -1,3 +1,4 @@
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { auth } from "@/auth";
@@ -13,13 +14,15 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
+  const limitYaniti = await kullaniciLimiti(session, "helpful", 60, 60 * 60 * 1000);
+  if (limitYaniti) return limitYaniti;
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
   const { id } = await params;
   const reviewId = parseInt(id);
   if (isNaN(reviewId)) return NextResponse.json({ error: "Geçersiz yorum." }, { status: 400 });
 
-  const parsed = bodySchema.safeParse(await req.json());
+  const parsed = bodySchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Geçersiz istek." }, { status: 400 });
   const { isHelpful } = parsed.data;
 

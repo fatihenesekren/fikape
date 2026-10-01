@@ -20,7 +20,7 @@ export async function PATCH(
 
   const { id } = await params;
   const reportId = parseInt(id);
-  const { status } = await req.json();
+  const { status } = (await req.json().catch(() => null)) ?? {};
   if (status !== "RESOLVED" && status !== "REJECTED") {
     return NextResponse.json({ error: "Geçersiz durum." }, { status: 400 });
   }

@@ -1,3 +1,4 @@
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -10,9 +11,11 @@ import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 export async function POST(req: Request) {
   const session = await auth();
+  const limitYaniti = await kullaniciLimiti(session, "questions", 10, 60 * 60 * 1000);
+  if (limitYaniti) return limitYaniti;
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
-  const parsed = questionCreateSchema.safeParse(await req.json());
+  const parsed = questionCreateSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }

@@ -1,3 +1,4 @@
+import { checkRateLimit } from "@/lib/rateLimit";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
@@ -16,7 +17,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Giriş gerekiyor" }, { status: 401 });
   }
 
-  const body = (await req.json()) as HandleUploadBody;
+  const body = (await req.json().catch(() => null)) as HandleUploadBody | null;
+  if (!body) return NextResponse.json({ error: "Geçersiz istek." }, { status: 400 });
+  // Dosya başına token isteği: kullanıcı başına saatlik üst sınır (depolama/fatura suistimaline karşı).
+  if (body.type === "blob.generate-client-token" && !(await checkRateLimit(`upload:${session.user.id}`, 40, 60 * 60 * 1000))) {
+    return NextResponse.json({ error: "Çok fazla yükleme yaptınız. Lütfen daha sonra tekrar deneyin." }, { status: 429 });
+  }
 
   try {
     const jsonResponse = await handleUpload({
@@ -36,9 +42,9 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json(jsonResponse);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Yükleme başarısız" },
+      { error: "Yükleme başarısız." },
       { status: 400 },
     );
   }

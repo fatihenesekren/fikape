@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const parsed = vehicleSuggestSchema.safeParse(await req.json());
+  const parsed = vehicleSuggestSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }

@@ -48,9 +48,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (Date.now() - lastChecked > 5 * 60 * 1000) {
           const dbUser = await prisma.user.findUnique({
             where: { id: Number(token.id) },
-            select: { passwordChangedAt: true },
+            select: { passwordChangedAt: true, isBanned: true },
           });
-          const dbChangedAt = dbUser?.passwordChangedAt?.getTime() ?? null;
+          // Banlanan kullanıcının açık oturumu en geç 5 dakikada düşer (yorum/soru/öneri/yükleme yazma yolları dahil).
+          if (!dbUser || dbUser.isBanned) return null;
+          const dbChangedAt = dbUser.passwordChangedAt?.getTime() ?? null;
           if (dbChangedAt !== ((token.pwdChangedAt as number | null | undefined) ?? null)) {
             return null;
           }

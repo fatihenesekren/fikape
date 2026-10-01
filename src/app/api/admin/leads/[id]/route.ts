@@ -15,7 +15,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   }
 
   const { id } = await params;
-  const { status, kind } = await req.json();
+  const { status, kind } = (await req.json().catch(() => null)) ?? {};
   if (!["NEW", "CONTACTED", "PENDING", "COMPLETED", "NOT_DONE"].includes(status)) {
     return NextResponse.json({ error: "Geçersiz durum." }, { status: 400 });
   }

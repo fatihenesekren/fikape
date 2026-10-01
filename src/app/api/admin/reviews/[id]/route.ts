@@ -26,7 +26,7 @@ export async function PATCH(
   const { id } = await params;
   const reviewId = parseInt(id);
   const moderatorId = parseInt(session.user.id);
-  const { action, reason } = await req.json() as { action: "approve" | "reject"; reason?: string };
+  const { action, reason } = (await req.json().catch(() => null) ?? {}) as { action: "approve" | "reject"; reason?: string };
 
   const existingReview = await prisma.review.findUnique({
     where: { id: reviewId },

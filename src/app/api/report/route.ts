@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
   }
 
-  const { productId, targetType, field, photoId, reviewId, questionId, expertNoteId, workplacePhotoId, note } = await req.json();
+  const { productId, targetType, field, photoId, reviewId, questionId, expertNoteId, workplacePhotoId, note } = (await req.json().catch(() => null)) ?? {};
 
   if (!VALID_TARGET_TYPES.includes(targetType)) {
     return NextResponse.json({ error: "Geçersiz bildirim türü." }, { status: 400 });

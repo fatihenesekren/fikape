@@ -13,6 +13,12 @@ const redis =
     ? new Redis({ url: process.env.UPSTASH_REDIS_REST_URL, token: process.env.UPSTASH_REDIS_REST_TOKEN })
     : null;
 
+// Üretimde Upstash tanımlı değilse sayaçlar sunucusuz fonksiyon örneği başına tutulur: örnekler arası paylaşılmadığı için
+// giriş/kayıt/şifre sıfırlama sınırları gerçekte gevşektir. Eksik yapılandırma sessiz kalmasın diye bir kez uyarılır.
+if (!redis && process.env.NODE_ENV === "production" && process.env.NEXT_PHASE !== "phase-production-build") {
+  console.warn("[rateLimit] UPSTASH_REDIS_REST_URL/TOKEN tanımlı değil — hız sınırları örnek başına bellek içi çalışıyor (yatay ölçekte zayıf).");
+}
+
 const buckets = new Map<string, { count: number; resetAt: number }>();
 
 function sweepExpired(now: number) {

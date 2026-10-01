@@ -1,4 +1,5 @@
 import sharp from "sharp";
+import { guvenliGorselIndir } from "@/lib/guvenliGorselIndir";
 
 // Katalog fotoğrafları için tek kaynak küçültme mantığı — hem admin
 // upload/URL-yapıştırma akışında (DB'ye kaydedilmeden önce) hem de kart.png
@@ -27,10 +28,9 @@ export async function resizeImageBuffer(input: Buffer): Promise<ResizedImage> {
 /** Bir URL'den görsel indirip küçültür. Ağ/format hatalarında null döner (best-effort). */
 export async function fetchAndResizeImage(url: string, timeoutMs = 8000): Promise<ResizedImage | null> {
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) });
-    if (!res.ok) return null;
-    const arrayBuffer = await res.arrayBuffer();
-    return await resizeImageBuffer(Buffer.from(arrayBuffer));
+    // İç ağa istek/SSRF engeli, yönlendirme denetimi, boyut sınırı (bkz. guvenliGorselIndir.ts)
+    const { buffer } = await guvenliGorselIndir(url, { maxBayt: 30 * 1024 * 1024, zamanAsimiMs: timeoutMs });
+    return await resizeImageBuffer(buffer);
   } catch {
     return null;
   }

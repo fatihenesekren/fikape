@@ -1,3 +1,4 @@
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -5,11 +6,13 @@ import { sellVehicleSchema, purchaseInfoSchema, formatZodError } from "@/lib/sch
 
 export async function POST(req: NextRequest) {
   const session = await auth();
+  const limitYaniti = await kullaniciLimiti(session, "garage", 60, 60 * 60 * 1000);
+  if (limitYaniti) return limitYaniti;
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
-  const { productId } = await req.json();
+  const { productId } = (await req.json().catch(() => null)) ?? {};
   if (!productId) {
     return NextResponse.json({ error: "productId gerekli" }, { status: 400 });
   }
@@ -58,11 +61,13 @@ export async function POST(req: NextRequest) {
 
 export async function PATCH(req: NextRequest) {
   const session = await auth();
+  const limitYaniti = await kullaniciLimiti(session, "garage", 60, 60 * 60 * 1000);
+  if (limitYaniti) return limitYaniti;
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
-  const body = await req.json();
+  const body = (await req.json().catch(() => null)) ?? {};
   const { productId, action } = body;
   const userId = Number(session.user.id);
 
@@ -159,11 +164,13 @@ export async function PATCH(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   const session = await auth();
+  const limitYaniti = await kullaniciLimiti(session, "garage", 60, 60 * 60 * 1000);
+  if (limitYaniti) return limitYaniti;
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
-  const { productId } = await req.json();
+  const { productId } = (await req.json().catch(() => null)) ?? {};
   const userId = Number(session.user.id);
 
   const userProduct = await prisma.userProduct.findUnique({
