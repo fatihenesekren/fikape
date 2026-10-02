@@ -2241,3 +2241,59 @@ model AccessLog {
   @@index([userId, createdAt])
   @@map("access_logs")
 }
+
+// ─────────────────────────────────────────────
+// KATALOG YÖNETİMİ (admin) — migration-katalog-yonetimi.sql ile elle uygulandı
+// FK bilinçli olarak yok: denetim izi silinen kayıtlar için de kalır.
+// ─────────────────────────────────────────────
+
+model CatalogAuditLog {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  adminId     Int?
+  adminLabel  String?
+  action      String
+  entityType  String
+  entityId    Int?
+  entityLabel String?
+  before      Json?
+  after       Json?
+  meta        Json?
+
+  @@index([entityType, entityId, createdAt(sort: Desc)], map: "catalog_audit_logs_entity_idx")
+  @@index([createdAt(sort: Desc)], map: "catalog_audit_logs_created_idx")
+  @@index([adminId], map: "catalog_audit_logs_admin_idx")
+  @@map("catalog_audit_logs")
+}
+
+model CatalogSlugAlias {
+  id        Int      @id @default(autoincrement())
+  kind      String
+  oldSlug   String
+  targetId  Int
+  createdAt DateTime @default(now())
+
+  @@unique([kind, oldSlug], map: "catalog_slug_aliases_kind_old_key")
+  @@index([kind, targetId], map: "catalog_slug_aliases_target_idx")
+  @@map("catalog_slug_aliases")
+}
+
+model CatalogOverride {
+  id          Int       @id @default(autoincrement())
+  kategori    String
+  scope       String
+  brandKey    String
+  modelKey    String    @default("")
+  versiyonKey String    @default("")
+  paketKey    String    @default("")
+  labels      Json      @default("{}")
+  note        String?
+  isActive    Boolean   @default(true)
+  orphanedAt  DateTime?
+  createdById Int?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+
+  @@unique([kategori, scope, brandKey, modelKey, versiyonKey, paketKey], map: "catalog_overrides_target_key")
+  @@map("catalog_overrides")
+}

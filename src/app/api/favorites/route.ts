@@ -22,8 +22,10 @@ export async function POST(req: NextRequest) {
   const userId = Number(session.user.id);
 
   // Var olmayan ürün FK hatasıyla 500 vermesin
-  if (!(await prisma.product.findUnique({ where: { id: productId }, select: { id: true } }))) {
-    return NextResponse.json({ error: "Araç bulunamadı" }, { status: 404 });
+  const urun = await prisma.product.findUnique({ where: { id: productId }, select: { id: true, status: true, isActive: true } });
+  if (!urun) return NextResponse.json({ error: "Araç bulunamadı" }, { status: 404 });
+  if (urun.status !== "ACTIVE" || !urun.isActive) {
+    return NextResponse.json({ error: "Bu araç şu an katalogda değil" }, { status: 409 });
   }
 
   await prisma.favorite.upsert({

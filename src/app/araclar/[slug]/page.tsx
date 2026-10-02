@@ -76,6 +76,8 @@ export async function generateMetadata({
     description,
     // Canonical DB'deki gerçek slug'dan üretilir (eski slug yönlendirmeleri, ?yorum=gonderildi gibi parametreler hariç)
     alternates: { canonical: `/araclar/${product.slug}` },
+    // Katalogdan kaldırılmış (pasif) araç sayfası açık kalır (mevcut yorum/garaj bağlantıları çalışsın) ama indekslenmez
+    robots: product.isActive ? undefined : { index: false, follow: false },
     openGraph: {
       title,
       description,
@@ -898,6 +900,18 @@ export default async function VehicleDetailPage({
         </div>
       )}
 
+      {/* ── Katalogdan kaldırıldı (pasif) ── */}
+      {!product.isActive && (
+        <div className="bg-amber-50 border-b border-amber-100">
+          <div className="max-w-5xl mx-auto px-4 py-3">
+            <p className="text-sm font-semibold text-amber-900">Bu araç katalogdan kaldırıldı.</p>
+            <p className="text-xs text-amber-800 mt-0.5">
+              Mevcut yorumlar ve garaj kayıtları korunuyor; yeni yorum, garaj ve favori eklemesi kapalı.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* ── Yorum gönderildi banner ── */}
       {yorum === "gonderildi" && (
         <div className="bg-green-50 border-b border-green-100">
@@ -913,7 +927,8 @@ export default async function VehicleDetailPage({
       {/* ── Ana içerik ── */}
       <div className="w-full max-w-5xl mx-auto px-4 py-8 space-y-4">
 
-        {/* Sahiplik kartı */}
+        {/* Sahiplik kartı — pasif araçta yalnız zaten garajında olanlara (yönetebilsin) gösterilir */}
+        {(product.isActive || inGarage || isSold) && (
         <OwnershipCard
           productId={product.id}
           initialInGarage={inGarage}
@@ -929,6 +944,7 @@ export default async function VehicleDetailPage({
           defaultFullName={currentUser?.displayName ?? ""}
           submittedSaleLeadTypes={submittedSaleLeadTypes}
         />
+        )}
 
         {/* Puan varken: tek yorumda ince özet şeridi, çok yorumda kompakt skor kartı
             (5 personalı değerlendirme, oy çokluğu kararları — barlı kart kaldırıldı) */}

@@ -30,11 +30,12 @@ export async function POST(req: Request) {
   }
 
   const [product, user] = await Promise.all([
-    prisma.product.findUnique({ where: { slug: productSlug }, select: { id: true, name: true } }),
+    prisma.product.findUnique({ where: { slug: productSlug }, select: { id: true, name: true, isActive: true } }),
     prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true, displayName: true } }),
   ]);
 
   if (!product) return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
+  if (!product.isActive) return NextResponse.json({ error: "Bu araç katalogdan kaldırıldı." }, { status: 409 });
   if (!user?.emailVerifiedAt) {
     return NextResponse.json(
       { error: "Soru sormak için e-posta adresinizi doğrulamanız gerekiyor." },
