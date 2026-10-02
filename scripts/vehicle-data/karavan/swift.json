@@ -4,10 +4,10 @@
     {
       "name": "Sprite",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "6 Kişilik",
-        "Fransız Karyola",
+        "Alpine 4",
+        "Alpine 4 DB",
+        "Major 4 SB",
+        "Major 4 EB",
         "Diğer"
       ],
       "trims": [
@@ -19,15 +19,20 @@
     {
       "name": "Challenger",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "6 Kişilik",
-        "Fransız Karyola",
+        "390",
+        "480",
+        "500",
+        "560",
+        "580",
+        "630",
+        "640",
+        "650",
         "Diğer"
       ],
       "trims": [
         "Standart",
         "X",
+        "Grande",
         "Diğer"
       ]
     },
@@ -59,9 +64,11 @@
     {
       "name": "Conqueror",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "Fransız Karyola",
+        "480",
+        "560 L",
+        "580",
+        "645",
+        "650",
         "Diğer"
       ],
       "trims": [
@@ -73,8 +80,10 @@
     {
       "name": "Elegance Grande",
       "versions": [
-        "4 Kişilik",
-        "Fransız Karyola",
+        "835",
+        "845",
+        "850",
+        "860",
         "Diğer"
       ],
       "trims": [

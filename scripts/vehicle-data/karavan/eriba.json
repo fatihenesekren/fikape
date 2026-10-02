@@ -4,8 +4,9 @@
     {
       "name": "Feeling",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
+        "425",
+        "442",
+        "470",
         "Diğer"
       ],
       "trims": [
@@ -17,10 +18,15 @@
     {
       "name": "Touring",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "6 Kişilik",
-        "Fransız Karyola",
+        "310",
+        "420",
+        "430",
+        "530",
+        "540",
+        "542",
+        "620",
+        "630",
+        "642",
         "Diğer"
       ],
       "trims": [
@@ -34,8 +40,12 @@
     {
       "name": "Novaline",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
+        "442",
+        "465",
+        "470",
+        "485",
+        "495",
+        "515",
         "Diğer"
       ],
       "trims": [

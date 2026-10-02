@@ -47816,8 +47816,9 @@
         {
           "name": "Feeling",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
+            "425",
+            "442",
+            "470",
             "Diğer"
           ],
           "trims": [
@@ -47829,10 +47830,15 @@
         {
           "name": "Touring",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
+            "310",
+            "420",
+            "430",
+            "530",
+            "540",
+            "542",
+            "620",
+            "630",
+            "642",
             "Diğer"
           ],
           "trims": [
@@ -47846,8 +47852,12 @@
         {
           "name": "Novaline",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
+            "442",
+            "465",
+            "470",
+            "485",
+            "495",
+            "515",
             "Diğer"
           ],
           "trims": [
@@ -48048,12 +48058,18 @@
         {
           "name": "Apero",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
+            "465 SFB",
+            "465 TG",
+            "495 SFB",
+            "495 SKM",
+            "515 SG",
+            "390 FH",
+            "560 SKM",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Activ",
             "Diğer"
           ]
         },
@@ -48085,10 +48101,23 @@
         {
           "name": "Bianco",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
+            "390 FHS",
+            "445 SFB",
+            "465 SFB",
+            "465 SFH",
+            "465 SGE",
+            "465 TG",
+            "495 SFE",
+            "495 SG",
+            "515 SG",
+            "515 SGD",
+            "515 SGE",
+            "515 SKF",
+            "515 SKM",
+            "550 KMG",
+            "550 SD",
+            "550 SKM",
+            "560 SKM",
             "Diğer"
           ],
           "trims": [
@@ -48101,9 +48130,12 @@
         {
           "name": "Tendenza",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "Fransız Karyola",
+            "465 SFB",
+            "515 SG",
+            "550 SG",
+            "560 SFDW",
+            "560 SG",
+            "650 SFD",
             "Diğer"
           ],
           "trims": [
@@ -48114,9 +48146,12 @@
         {
           "name": "Diamant",
           "versions": [
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
+            "560 FD",
+            "560 SG",
+            "650 GD",
+            "560 DW",
+            "560 SGW",
+            "650 GDW",
             "Diğer"
           ],
           "trims": [
@@ -49389,10 +49424,10 @@
         {
           "name": "Sprite",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
+            "Alpine 4",
+            "Alpine 4 DB",
+            "Major 4 SB",
+            "Major 4 EB",
             "Diğer"
           ],
           "trims": [
@@ -49404,15 +49439,20 @@
         {
           "name": "Challenger",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
+            "390",
+            "480",
+            "500",
+            "560",
+            "580",
+            "630",
+            "640",
+            "650",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "X",
+            "Grande",
             "Diğer"
           ]
         },
@@ -49444,9 +49484,11 @@
         {
           "name": "Conqueror",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "Fransız Karyola",
+            "480",
+            "560 L",
+            "580",
+            "645",
+            "650",
             "Diğer"
           ],
           "trims": [
@@ -49458,8 +49500,10 @@
         {
           "name": "Elegance Grande",
           "versions": [
-            "4 Kişilik",
-            "Fransız Karyola",
+            "835",
+            "845",
+            "850",
+            "860",
             "Diğer"
           ],
           "trims": [
