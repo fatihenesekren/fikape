@@ -1,4 +1,5 @@
 import { Redis } from "@upstash/redis";
+import { createHmac } from "crypto";
 import { getClientIp } from "@/lib/security";
 
 // Kalıcı store (Upstash Redis, serverless-uyumlu REST client) — env değişkenleri
@@ -17,6 +18,15 @@ const redis =
 // giriş/kayıt/şifre sıfırlama sınırları gerçekte gevşektir. Eksik yapılandırma sessiz kalmasın diye bir kez uyarılır.
 if (!redis && process.env.NODE_ENV === "production" && process.env.NEXT_PHASE !== "phase-production-build") {
   console.warn("[rateLimit] UPSTASH_REDIS_REST_URL/TOKEN tanımlı değil — hız sınırları örnek başına bellek içi çalışıyor (yatay ölçekte zayıf).");
+}
+
+// Redis (üçüncü taraf servis) anahtarlarında ham IP/e-posta tutulmaz (KVKK): "önek:değer" anahtarının DEĞER kısmı HMAC ile özetlenir.
+export function redisAnahtari(key: string): string {
+  const i = key.indexOf(":");
+  const onek = i === -1 ? "" : key.slice(0, i);
+  const deger = i === -1 ? key : key.slice(i + 1);
+  const ozet = createHmac("sha256", process.env.AUTH_SECRET ?? "rate-limit").update(deger).digest("hex").slice(0, 32);
+  return `ratelimit:${onek ? onek + ":" : ""}${ozet}`;
 }
 
 const buckets = new Map<string, { count: number; resetAt: number }>();
@@ -54,7 +64,7 @@ function checkRateLimitMemoryDetailed(key: string, limit: number, windowMs: numb
 }
 
 async function checkRateLimitRedisDetailed(key: string, limit: number, windowMs: number): Promise<RateLimitResult> {
-  const redisKey = `ratelimit:${key}`;
+  const redisKey = redisAnahtari(key);
   const count = await redis!.incr(redisKey);
   let resetAt: number;
   if (count === 1) {
