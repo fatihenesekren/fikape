@@ -82,6 +82,36 @@
       ]
     },
     {
+      "name": "GT3 / GT3 Pro / GT3 Max",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "ST3 / ST3 Pro",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "N65i II",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
       "name": "Diğer",
       "versions": [
         "Diğer"

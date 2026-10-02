@@ -78,6 +78,36 @@
       ]
     },
     {
+      "name": "RS Lite",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "RS Jet",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Air",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
       "name": "Diğer",
       "versions": [
         "Diğer"

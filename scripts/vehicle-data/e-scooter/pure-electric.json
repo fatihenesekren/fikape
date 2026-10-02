@@ -64,6 +64,46 @@
       }
     },
     {
+      "name": "Air6 / Air6 Pro+ (Süspansiyonlu)",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Air6 Ultra / Ultra Max",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Escape Pro+",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Pure x McLaren",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
       "name": "Diğer",
       "versions": [
         "Diğer"

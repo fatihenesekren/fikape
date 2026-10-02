@@ -46,6 +46,16 @@
       ]
     },
     {
+      "name": "ES10P",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
       "name": "Diğer",
       "versions": [
         "Diğer"

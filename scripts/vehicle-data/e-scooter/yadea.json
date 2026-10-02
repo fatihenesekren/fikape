@@ -104,6 +104,16 @@
       }
     },
     {
+      "name": "KS5 Pro",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
       "name": "Diğer",
       "versions": [
         "Diğer"
