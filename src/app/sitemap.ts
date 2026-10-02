@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { BASE_URL } from "@/lib/baseUrl";
 
-// Her istekte DB sorgusu yerine saatlik önbellek; statik sayfalarda "şimdi" damgası verilmez (lastmod güvenilirliği).
-export const revalidate = 3600;
+// Build sırasında DB sorgusu çalıştırılmasın (DB erişilemezse deploy düşmesin): istek anında üretilir. Statik sayfalarda "şimdi" damgası verilmez.
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [products, brands] = await Promise.all([
