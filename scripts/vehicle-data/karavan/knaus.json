@@ -4,9 +4,17 @@
     {
       "name": "Sport",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "Fransız Karyola",
+        "400 LK",
+        "400 QD",
+        "420 QD",
+        "450 FU",
+        "460 EU",
+        "500 EU",
+        "500 KD",
+        "500 QDK",
+        "500 UF",
+        "540 FDK",
+        "580 QS",
         "Diğer"
       ],
       "trims": [
@@ -18,15 +26,28 @@
     {
       "name": "Südwind",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "6 Kişilik",
-        "Fransız Karyola",
+        "420 QD",
+        "450 FU",
+        "460 EU",
+        "500 EU",
+        "500 FU",
+        "500 PF",
+        "500 QDK",
+        "500 UF",
+        "540 FDK",
+        "540 UE",
+        "580 QS",
+        "580 UF",
+        "580 UK",
+        "650 PEB",
+        "650 PXB",
+        "650 UDF",
         "Diğer"
       ],
       "trims": [
         "Standart",
         "Edition 60",
+        "Black Selection",
         "Diğer"
       ]
     },
@@ -70,8 +91,8 @@
     {
       "name": "Yaseo",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
+        "340 PX",
+        "500 DK",
         "Diğer"
       ],
       "trims": [
@@ -95,6 +116,19 @@
       "name": "Van Ti (Motokaravan, Kompakt Yarı Entegre)",
       "versions": [
         "Van",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Nordwind",
+      "versions": [
+        "600 UE",
+        "660 PXB",
+        "660 UDF",
         "Diğer"
       ],
       "trims": [
