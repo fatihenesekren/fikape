@@ -50,6 +50,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     { href: "/admin/usta-notlari", label: "Usta Notları", shortLabel: "Usta Notları", icon: "🔧", badge: pendingExpertNotes + pendingExpertAnswers },
     { href: "/admin/usta-itirazlari", label: "Usta İtirazları", shortLabel: "Usta İtiraz", icon: "⚖️", badge: pendingExpertAppeals },
     { href: "/admin/oneriler",  label: "Araç Önerileri", shortLabel: "Öneriler",  icon: "🚗", badge: pendingSuggestions },
+    { href: "/admin/katalog",   label: "Katalog Yönetimi", shortLabel: "Katalog",  icon: "📚", badge: 0 },
     { href: "/admin/araclar",   label: "Görseller",      shortLabel: "Görseller", icon: "🖼️", badge: 0 },
     { href: "/admin/urunler",   label: "Teknik Özellikler", shortLabel: "Özellikler", icon: "🔧", badge: 0 },
     { href: "/admin/leads",     label: "Gelir Talepleri", shortLabel: "Talepler", icon: "🛡️", badge: newInsuranceLeads + newSaleLeads },
