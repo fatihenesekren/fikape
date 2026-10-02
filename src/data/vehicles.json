@@ -46809,6 +46809,34 @@
           ]
         },
         {
+          "name": "B66",
+          "versions": [
+            "465 TS",
+            "480 TK",
+            "485 TS",
+            "490 TL",
+            "535 TL",
+            "560 TK",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "B66 Plus",
+          "versions": [
+            "510 TK",
+            "520 TL",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -49546,10 +49574,14 @@
         {
           "name": "CaraOne",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
+            "390 QD",
+            "400 LK",
+            "420 QD",
+            "450 FU",
+            "480 EU",
+            "480 QDK",
+            "500 FDK",
+            "550 QDK",
             "Diğer"
           ],
           "trims": [
@@ -49612,6 +49644,21 @@
           "versions": [
             "2 Kişilik",
             "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CaraLife",
+          "versions": [
+            "390 QD",
+            "450 FU",
+            "470 EU",
+            "470 QDK",
+            "500 QDK",
             "Diğer"
           ],
           "trims": [

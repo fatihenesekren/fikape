@@ -104,6 +104,34 @@
       ]
     },
     {
+      "name": "B66",
+      "versions": [
+        "465 TS",
+        "480 TK",
+        "485 TS",
+        "490 TL",
+        "535 TL",
+        "560 TK",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "B66 Plus",
+      "versions": [
+        "510 TK",
+        "520 TL",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
       "name": "Diğer",
       "versions": [
         "Diğer"
