@@ -49,3 +49,4 @@ next-env.d.ts
 
 # Karavan üretici katalog PDF kaynakları (büyük, depoya eklenmez)
 scripts/vehicle-data/_kaynak/karavan/*.pdf
+scripts/vehicle-data/_kaynak/motokaravan/*.pdf

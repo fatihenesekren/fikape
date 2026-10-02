@@ -94,8 +94,14 @@
     {
       "name": "Globebus (Kompakt, 2015-)",
       "versions": [
-        "Fransız Karyola",
-        "İkiz Yatak",
+        "I1",
+        "I4",
+        "I6",
+        "T 45",
+        "T 16",
+        "T 46",
+        "T 16 4x4",
+        "T 46 4x4",
         "Diğer"
       ],
       "trims": [
@@ -109,8 +115,13 @@
     {
       "name": "Just Camp (2018-)",
       "versions": [
-        "Fransız Karyola",
-        "İkiz Yatak",
+        "T 6752 DBL",
+        "T 6762",
+        "T 6812 EB",
+        "T 7052 DBL",
+        "T 7052 DBM",
+        "T 7052 EB",
+        "T 7052 EBL",
         "Diğer"
       ],
       "trims": [
@@ -123,8 +134,10 @@
     {
       "name": "Alpa (Yarı Entegre/Entegre, 2018-)",
       "versions": [
-        "2 Kişilik",
-        "Fransız Karyola",
+        "A 6820-2",
+        "A 7820-2",
+        "I 6820-2",
+        "I 7820-2",
         "Diğer"
       ],
       "trims": [
@@ -135,7 +148,10 @@
     {
       "name": "XL Family (2020-)",
       "versions": [
-        "6 Kişilik",
+        "A 6822-2",
+        "A 7822-2",
+        "A 7872-2 Family",
+        "I 7812-2",
         "Diğer"
       ],
       "trims": [
@@ -200,6 +216,77 @@
       ],
       "trims": [
         "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Just Van (Motokaravan, Van)",
+      "versions": [
+        "T1",
+        "T4",
+        "T5",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Just Go (Motokaravan)",
+      "versions": [
+        "T 7055 DBL",
+        "T 7055 EB",
+        "T 7055 EBL",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Trend (Motokaravan)",
+      "versions": [
+        "T 6817 EB",
+        "T 6877",
+        "T 7057 DBL",
+        "T 7057 EB",
+        "T 7057 EBL",
+        "I 6817 EB",
+        "I 6877",
+        "I 7027",
+        "I 7057 DBL",
+        "I 7057 EB",
+        "I 7057 EBL",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Active Plus",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Globetrail (Kampervan)",
+      "versions": [
+        "540 DR",
+        "540 DS",
+        "600 DR",
+        "600 DS",
+        "600 ER",
+        "600 ES",
+        "600 KS",
+        "640 ER",
+        "640 ES",
+        "640 HR",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Active",
+        "Active Plus",
+        "Performance",
         "Diğer"
       ]
     },
