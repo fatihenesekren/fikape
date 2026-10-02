@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
@@ -41,7 +42,8 @@ export async function POST(
   }
 
   const { id } = await params;
-  const suggestionId = Number(id);
+  const suggestionId = pozitifTamsayiId(id);
+  if (suggestionId === null) return NextResponse.json({ error: "Geçersiz kimlik." }, { status: 400 });
   const body = await req.json().catch(() => null);
   if (!body || typeof body !== "object") return NextResponse.json({ error: "Geçersiz istek" }, { status: 400 });
   const { action, adminNote, customSlug, attributes: incomingAttrs, imageUrl: previewedImageUrl, specConfidence, duzeltme } = body as {

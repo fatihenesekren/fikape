@@ -3,6 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sellVehicleSchema, purchaseInfoSchema, formatZodError } from "@/lib/schemas";
+import { pozitifTamsayiId } from "@/lib/validateId";
+
+const GECERSIZ_ID = () => NextResponse.json({ error: "Geçersiz productId" }, { status: 400 });
+const URUN_YOK = () => NextResponse.json({ error: "Araç bulunamadı" }, { status: 404 });
 
 export async function POST(req: NextRequest) {
   const session = await auth();
@@ -12,12 +16,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
-  const { productId } = (await req.json().catch(() => null)) ?? {};
-  if (!productId) {
+  const govde = (await req.json().catch(() => null)) ?? {};
+  if (!govde.productId) {
     return NextResponse.json({ error: "productId gerekli" }, { status: 400 });
   }
+  const productId = pozitifTamsayiId(govde.productId);
+  if (productId === null) return GECERSIZ_ID();
 
   const userId = Number(session.user.id);
+
+  // Var olmayan ürün FK hatasıyla 500 vermesin
+  if (!(await prisma.product.findUnique({ where: { id: productId }, select: { id: true } }))) return URUN_YOK();
 
   const existing = await prisma.userProduct.findUnique({
     where: { userId_productId: { userId, productId } },
@@ -68,7 +77,9 @@ export async function PATCH(req: NextRequest) {
   }
 
   const body = (await req.json().catch(() => null)) ?? {};
-  const { productId, action } = body;
+  const { action } = body;
+  const productId = pozitifTamsayiId(body.productId);
+  if (productId === null) return GECERSIZ_ID();
   const userId = Number(session.user.id);
 
   if (action === "sell") {
@@ -142,6 +153,8 @@ export async function PATCH(req: NextRequest) {
       },
     });
   } else if (action === "reactivate") {
+    const kayit = await prisma.userProduct.findUnique({ where: { userId_productId: { userId, productId } }, select: { id: true } });
+    if (!kayit) return NextResponse.json({ error: "Garajında değil" }, { status: 404 });
     await prisma.userProduct.update({
       where: { userId_productId: { userId, productId } },
       data: {
@@ -170,7 +183,8 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
-  const { productId } = (await req.json().catch(() => null)) ?? {};
+  const productId = pozitifTamsayiId(((await req.json().catch(() => null)) ?? {}).productId);
+  if (productId === null) return GECERSIZ_ID();
   const userId = Number(session.user.id);
 
   const userProduct = await prisma.userProduct.findUnique({

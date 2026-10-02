@@ -1,4 +1,5 @@
 import { temizYorumFotoUrlleri, fotoyuSinirliIndir } from "@/lib/reviewPhotos";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -20,7 +21,8 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const reviewId = parseInt(id);
+  const reviewId = pozitifTamsayiId(id);
+  if (reviewId === null) return NextResponse.json({ error: "Geçersiz kimlik." }, { status: 400 });
   const userId = parseInt(session.user.id);
 
   const {
@@ -184,7 +186,8 @@ export async function DELETE(
   }
 
   const { id } = await params;
-  const reviewId = parseInt(id);
+  const reviewId = pozitifTamsayiId(id);
+  if (reviewId === null) return NextResponse.json({ error: "Geçersiz kimlik." }, { status: 400 });
   const userId = parseInt(session.user.id);
 
   const review = await prisma.review.findUnique({

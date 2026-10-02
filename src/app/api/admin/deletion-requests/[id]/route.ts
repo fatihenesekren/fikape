@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import crypto from "crypto";
 import bcrypt from "bcryptjs";
 import { auth } from "@/auth";
@@ -30,7 +31,8 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const requestId = parseInt(id);
+  const requestId = pozitifTamsayiId(id);
+  if (requestId === null) return NextResponse.json({ error: "Geçersiz kimlik." }, { status: 400 });
   const { action } = await req.json().catch(() => ({ action: null }));
 
   const deletionRequest = await prisma.dataDeletionRequest.findUnique({

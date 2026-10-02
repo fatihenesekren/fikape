@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sendReviewPublishedEmail } from "@/lib/email";
@@ -24,7 +25,8 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const reviewId = parseInt(id);
+  const reviewId = pozitifTamsayiId(id);
+  if (reviewId === null) return NextResponse.json({ error: "Geçersiz kimlik." }, { status: 400 });
   const moderatorId = parseInt(session.user.id);
   const { action, reason } = (await req.json().catch(() => null) ?? {}) as { action: "approve" | "reject"; reason?: string };
 

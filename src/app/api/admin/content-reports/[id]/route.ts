@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -19,7 +20,8 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const reportId = parseInt(id);
+  const reportId = pozitifTamsayiId(id);
+  if (reportId === null) return NextResponse.json({ error: "Geçersiz kimlik." }, { status: 400 });
   const { status } = (await req.json().catch(() => null)) ?? {};
   if (status !== "RESOLVED" && status !== "REJECTED") {
     return NextResponse.json({ error: "Geçersiz durum." }, { status: 400 });

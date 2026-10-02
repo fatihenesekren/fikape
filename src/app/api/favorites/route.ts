@@ -2,6 +2,7 @@ import { kullaniciLimiti } from "@/lib/userRateLimit";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { pozitifTamsayiId } from "@/lib/validateId";
 
 export async function POST(req: NextRequest) {
   const session = await auth();
@@ -11,12 +12,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
-  const { productId } = (await req.json().catch(() => null)) ?? {};
-  if (!productId) {
+  const govde = (await req.json().catch(() => null)) ?? {};
+  if (!govde.productId) {
     return NextResponse.json({ error: "productId gerekli" }, { status: 400 });
   }
+  const productId = pozitifTamsayiId(govde.productId);
+  if (productId === null) return NextResponse.json({ error: "Geçersiz productId" }, { status: 400 });
 
   const userId = Number(session.user.id);
+
+  // Var olmayan ürün FK hatasıyla 500 vermesin
+  if (!(await prisma.product.findUnique({ where: { id: productId }, select: { id: true } }))) {
+    return NextResponse.json({ error: "Araç bulunamadı" }, { status: 404 });
+  }
 
   await prisma.favorite.upsert({
     where: { userId_productId: { userId, productId } },
@@ -35,10 +43,12 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: "Giriş gerekli" }, { status: 401 });
   }
 
-  const { productId } = (await req.json().catch(() => null)) ?? {};
-  if (!productId) {
+  const govde = (await req.json().catch(() => null)) ?? {};
+  if (!govde.productId) {
     return NextResponse.json({ error: "productId gerekli" }, { status: 400 });
   }
+  const productId = pozitifTamsayiId(govde.productId);
+  if (productId === null) return NextResponse.json({ error: "Geçersiz productId" }, { status: 400 });
 
   const userId = Number(session.user.id);
 

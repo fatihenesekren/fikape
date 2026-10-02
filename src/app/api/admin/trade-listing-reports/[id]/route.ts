@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -22,7 +23,8 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const reportId = parseInt(id);
+  const reportId = pozitifTamsayiId(id);
+  if (reportId === null) return NextResponse.json({ error: "Geçersiz kimlik." }, { status: 400 });
   const { action } = await req.json().catch(() => ({ action: null }));
 
   const report = await prisma.tradeListingReport.findUnique({
