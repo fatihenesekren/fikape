@@ -67,11 +67,22 @@ describe("garaj ve favori uç noktaları geçersiz productId'de 400 verir (500 d
 
 describe("pasif / onaysız ürün yeni garaj ve favori kaydı alamaz", () => {
   beforeEach(() => vi.clearAllMocks());
-  it.each([{ status: "ACTIVE", isActive: false }, { status: "PENDING", isActive: true }, { status: "REJECTED", isActive: true }])("%j → 409", async (u) => {
+  it.each([{ status: "ACTIVE", isActive: false }, { status: "REJECTED", isActive: false }])("%j → 409", async (u) => {
     prismaMock.product.findUnique.mockResolvedValue({ id: 12, ...u });
     expect((await garage.POST(istek("POST", { productId: 12 }))).status).toBe(409);
     expect((await favorites.POST(istek("POST", { productId: 12 }))).status).toBe(409);
     expect(prismaMock.userProduct.create).not.toHaveBeenCalled();
     expect(prismaMock.favorite.upsert).not.toHaveBeenCalled();
+  });
+});
+
+describe("öneri akışı: bekleyen (PENDING) ürün garaja/favoriye eklenebilir", () => {
+  beforeEach(() => vi.clearAllMocks());
+  it("PENDING + isActive=false kabul edilir", async () => {
+    prismaMock.product.findUnique.mockResolvedValue({ id: 12, status: "PENDING", isActive: false });
+    prismaMock.userProduct.findUnique.mockResolvedValue(null);
+    prismaMock.userProduct.create.mockResolvedValue({ id: 5 });
+    expect((await garage.POST(istek("POST", { productId: 12 }))).status).toBe(200);
+    expect((await favorites.POST(istek("POST", { productId: 12 }))).status).toBe(200);
   });
 });

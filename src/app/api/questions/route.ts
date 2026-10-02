@@ -1,4 +1,5 @@
 import { kullaniciLimiti } from "@/lib/userRateLimit";
+import { yeniEtkilesimeAcikMi, urunPasifMi } from "@/lib/urunDurumu";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -30,12 +31,12 @@ export async function POST(req: Request) {
   }
 
   const [product, user] = await Promise.all([
-    prisma.product.findUnique({ where: { slug: productSlug }, select: { id: true, name: true, isActive: true } }),
+    prisma.product.findUnique({ where: { slug: productSlug }, select: { id: true, name: true, status: true, isActive: true } }),
     prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true, displayName: true } }),
   ]);
 
   if (!product) return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
-  if (!product.isActive) return NextResponse.json({ error: "Bu araç katalogdan kaldırıldı." }, { status: 409 });
+  if (!yeniEtkilesimeAcikMi(product)) return NextResponse.json({ error: "Bu araç katalogdan kaldırıldı." }, { status: 409 });
   if (!user?.emailVerifiedAt) {
     return NextResponse.json(
       { error: "Soru sormak için e-posta adresinizi doğrulamanız gerekiyor." },

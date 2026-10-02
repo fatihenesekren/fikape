@@ -1,4 +1,5 @@
 import { temizYorumFotoUrlleri, fotoyuSinirliIndir } from "@/lib/reviewPhotos";
+import { yeniEtkilesimeAcikMi, urunPasifMi } from "@/lib/urunDurumu";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -47,7 +48,7 @@ export async function POST(req: Request) {
   }
 
   const [product, user, recentCount, garajEntry] = await Promise.all([
-    prisma.product.findUnique({ where: { slug: productSlug }, select: { id: true, isActive: true } }),
+    prisma.product.findUnique({ where: { slug: productSlug }, select: { id: true, status: true, isActive: true } }),
     prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true, trustLevel: true } }),
     prisma.review.count({
       where: {
@@ -62,7 +63,7 @@ export async function POST(req: Request) {
   ]);
 
   if (!product) return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
-  if (!product.isActive) return NextResponse.json({ error: "Bu araç katalogdan kaldırıldı." }, { status: 409 });
+  if (!yeniEtkilesimeAcikMi(product)) return NextResponse.json({ error: "Bu araç katalogdan kaldırıldı." }, { status: 409 });
 
   if (!user?.emailVerifiedAt) {
     return NextResponse.json(

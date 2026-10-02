@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { yeniEtkilesimeAcikMi, urunPasifMi } from "@/lib/urunDurumu";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -901,7 +902,7 @@ export default async function VehicleDetailPage({
       )}
 
       {/* ── Katalogdan kaldırıldı (pasif) ── */}
-      {!product.isActive && (
+      {urunPasifMi(product) && (
         <div className="bg-amber-50 border-b border-amber-100">
           <div className="max-w-5xl mx-auto px-4 py-3">
             <p className="text-sm font-semibold text-amber-900">Bu araç katalogdan kaldırıldı.</p>
@@ -928,7 +929,7 @@ export default async function VehicleDetailPage({
       <div className="w-full max-w-5xl mx-auto px-4 py-8 space-y-4">
 
         {/* Sahiplik kartı — pasif araçta yalnız zaten garajında olanlara (yönetebilsin) gösterilir */}
-        {(product.isActive || inGarage || isSold) && (
+        {(!urunPasifMi(product) || inGarage || isSold) && (
         <OwnershipCard
           productId={product.id}
           initialInGarage={inGarage}

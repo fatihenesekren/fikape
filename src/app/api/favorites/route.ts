@@ -1,4 +1,5 @@
 import { kullaniciLimiti } from "@/lib/userRateLimit";
+import { yeniEtkilesimeAcikMi, urunPasifMi } from "@/lib/urunDurumu";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -24,7 +25,7 @@ export async function POST(req: NextRequest) {
   // Var olmayan ürün FK hatasıyla 500 vermesin
   const urun = await prisma.product.findUnique({ where: { id: productId }, select: { id: true, status: true, isActive: true } });
   if (!urun) return NextResponse.json({ error: "Araç bulunamadı" }, { status: 404 });
-  if (urun.status !== "ACTIVE" || !urun.isActive) {
+  if (!yeniEtkilesimeAcikMi(urun)) {
     return NextResponse.json({ error: "Bu araç şu an katalogda değil" }, { status: 409 });
   }
 
