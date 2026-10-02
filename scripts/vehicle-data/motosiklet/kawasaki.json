@@ -204,7 +204,7 @@
       ],
       "trims": [
         "Standart",
-        "Café",
+        "Cafe",
         "Diğer"
       ]
     },
@@ -225,13 +225,13 @@
       "name": "W800",
       "versions": [
         "800cc 52 CV",
-        "Café",
+        "Cafe",
         "Street",
         "Diğer"
       ],
       "trims": [
         "Standart",
-        "Café",
+        "Cafe",
         "Street",
         "Diğer"
       ],
@@ -240,8 +240,8 @@
           "Standart",
           "Diğer"
         ],
-        "Café": [
-          "Café",
+        "Cafe": [
+          "Cafe",
           "Diğer"
         ],
         "Street": [

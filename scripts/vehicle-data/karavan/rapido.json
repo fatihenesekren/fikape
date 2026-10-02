@@ -2,7 +2,7 @@
   "make": "Rapido",
   "models": [
     {
-      "name": "Série C (Yarı Entegre)",
+      "name": "Serie C (Yarı Entegre)",
       "versions": [
         "2 Kişilik",
         "4 Kişilik",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "name": "Série 6F (Alçak Profil)",
+      "name": "Serie 6F (Alçak Profil)",
       "versions": [
         "4 Kişilik",
         "6 Kişilik",
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "name": "Série 8F / 80dF (Tam Entegre)",
+      "name": "Serie 8F / 80dF (Tam Entegre)",
       "versions": [
         "4 Kişilik",
         "6 Kişilik",
