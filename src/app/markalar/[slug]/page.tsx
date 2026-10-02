@@ -17,6 +17,7 @@ export async function generateMetadata({
   if (!brand) return {};
 
   return {
+    alternates: { canonical: `/markalar/${slug}` },
     title: `${brand.name} Marka Endeksi`,
     description: `${brand.name} markasının fikape kullanıcı yorumlarına dayalı kategori bazlı güven endeksi — en iyi ve en düşük puanlı modeller.`,
   };

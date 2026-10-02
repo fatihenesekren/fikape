@@ -4,7 +4,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ReviewForm } from "./ReviewForm";
 
-export const metadata = { title: "Yorum Yaz — fikape" };
+export const metadata = { title: "Yorum Yaz", robots: { index: false } };
 
 export default async function YorumYazPage({
   searchParams,

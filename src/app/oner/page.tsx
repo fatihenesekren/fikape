@@ -333,7 +333,12 @@ export default function OnerPage() {
   }
 
   if (status === "loading") {
-    return <div className="py-20 text-center text-sm text-gray-400">Yükleniyor...</div>;
+    return (
+      <div className="py-20 text-center text-sm text-gray-400">
+        <h1 className="sr-only">Araç Öner</h1>
+        Yükleniyor...
+      </div>
+    );
   }
 
   if (!session) {
@@ -452,7 +457,7 @@ export default function OnerPage() {
         )}
 
         {/* Marka */}
-        {!katalogModu && (
+        {categorySlug && !katalogModu && (
         <div>
           <label className="block text-xs font-semibold text-gray-700 mb-1">
             Marka <span className="text-red-500">*</span>
@@ -654,7 +659,7 @@ export default function OnerPage() {
         )}
 
         {/* Yıl & Yakıt & Vites */}
-        {!katalogModu && (
+        {categorySlug && !katalogModu && (
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">Yıl</label>

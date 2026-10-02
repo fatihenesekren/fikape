@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BASE_URL } from "@/lib/baseUrl";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/gizlilik" },
   title: "Gizlilik Politikası",
   description:
     "fikape.com'da hangi kişisel verilerin toplandığı, nasıl kullanıldığı, ne kadar saklandığı, hangi üçüncü taraf hizmetlerle paylaşıldığı ve KVKK kapsamındaki haklarınız.",

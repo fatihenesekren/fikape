@@ -3,7 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ExpertNoteEditForm } from "./ExpertNoteEditForm";
 
-export const metadata = { title: "Notu Düzenle — fikape", robots: { index: false } };
+export const metadata = { title: "Notu Düzenle", robots: { index: false } };
 
 export default async function ExpertNoteEditPage({
   params,

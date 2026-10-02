@@ -3,6 +3,7 @@ import Link from "next/link";
 import { EXPERT_BADGE } from "@/lib/expertNote";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/nasil-calisir" },
   title: "Nasıl Çalışır",
   description:
     "fikape'de neler yapabileceğiniz, FI·KA·PE puanlama metodolojisi, güven seviyeleri (TrustLevel) ve moderasyon kuralları hakkında bilgi.",

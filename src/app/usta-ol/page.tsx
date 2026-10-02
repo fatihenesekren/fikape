@@ -11,13 +11,16 @@ import type { Metadata } from "next";
 // SSS native <details>/<summary> akordiyonu, "Bilmeniz gerekenler" içeriği
 // SSS'e dağıtıldı + CTA'dan hemen önceki caydırıcı konumdan kaldırıldı.
 export const metadata: Metadata = {
-  title: "Araç Tamircisiyseniz Ücretsiz İlan Verin — fikape Usta Profili",
+  alternates: { canonical: "/usta-ol" },
+  title: "Araç Tamircisiyseniz Ücretsiz İlan Verin — Usta Profili",
   description:
     "Araç tamiri/bakımı konusunda deneyimliyseniz fikape'de ücretsiz usta profili oluşturun, teknik bilginizi paylaşın. Sertifika şartı yok.",
   openGraph: {
     title: "Aracı iyi bilen biri misin? fikape'de Usta Ol",
     description:
       "Tamirini, bakımını yıllardır yaptığın araçlar hakkında bildiklerini paylaş; profilin binlerce araç sahibine görünsün. Sertifika gerekmez, ücretsiz.",
+    // openGraph tanımlayınca kökteki opengraph-image miras alınmaz; açıkça verilir
+    images: [{ url: "/opengraph-image" }],
   },
 };
 

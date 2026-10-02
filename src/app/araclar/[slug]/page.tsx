@@ -74,10 +74,13 @@ export async function generateMetadata({
   return {
     title,
     description,
+    // Canonical DB'deki gerçek slug'dan üretilir (eski slug yönlendirmeleri, ?yorum=gonderildi gibi parametreler hariç)
+    alternates: { canonical: `/araclar/${product.slug}` },
     openGraph: {
       title,
       description,
-      images: product.imageUrl ? [{ url: product.imageUrl }] : [],
+      // Boş dizi, dosya tabanlı opengraph-image'ı ezer; görsel yoksa alanı hiç verme
+      images: product.imageUrl ? [{ url: product.imageUrl }] : undefined,
     },
   };
 }
@@ -302,6 +305,11 @@ export default async function VehicleDetailPage({
           scoreOverall:    agg._avg.scoreOverall    ?? 0,
         }
       : null;
+
+  // Kullanıcının bu araç için moderasyon bekleyen yorumu varsa "ilk yorumu sen yaz" çağrısı çelişkili olur.
+  const myPendingReview = userId
+    ? await prisma.review.findFirst({ where: { productId: product.id, userId, status: "PENDING" }, select: { id: true } })
+    : null;
 
   const reviews = !isLoggedIn ? [] : await prisma.review.findMany({
     where: { productId: product.id, status: "PUBLISHED" },
@@ -539,6 +547,12 @@ export default async function VehicleDetailPage({
 
   const reviewsInnerContent = !isLoggedIn ? (
     <GatedContentCard type="reviews" count={reviewCount} callbackUrl={`/araclar/${slug}`} />
+  ) : reviews.length === 0 && myPendingReview ? (
+    <div className="p-10 text-center space-y-2">
+      <div className="text-3xl">⏳</div>
+      <p className="font-semibold text-gray-800">Yorumunuz inceleniyor</p>
+      <p className="text-sm text-gray-400">Moderasyon sonrası yayınlanacak. Teşekkür ederiz.</p>
+    </div>
   ) : reviews.length === 0 ? (
     <div className="p-10 text-center space-y-3">
       <div className="text-3xl">✍️</div>
@@ -871,12 +885,12 @@ export default async function VehicleDetailPage({
           <div className="max-w-5xl mx-auto">
             <div
               className="divide-x divide-gray-100"
-              style={{ display: "grid", gridTemplateColumns: `repeat(${heroSpecs.length}, 1fr)` }}
+              style={{ display: "grid", gridTemplateColumns: `repeat(${heroSpecs.length}, minmax(0, 1fr))` }}
             >
               {heroSpecs.map(({ label, value }) => (
-                <div key={label} className="text-center py-4 px-3">
-                  <div className="text-[9px] text-gray-400 uppercase tracking-widest mb-1.5">{label}</div>
-                  <div className="text-sm font-semibold text-gray-900">{value}</div>
+                <div key={label} className="text-center py-4 px-1.5 sm:px-3 min-w-0">
+                  <div className="text-[9px] text-gray-400 uppercase tracking-widest mb-1.5 break-words">{label}</div>
+                  <div className="text-sm font-semibold text-gray-900 break-words">{value}</div>
                 </div>
               ))}
             </div>

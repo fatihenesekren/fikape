@@ -66,7 +66,7 @@ export async function generateMetadata({
     FACET_KEYS.some((k) => !!params[k]);
 
   return {
-    title: cat ? `${cat.label} Modelleri – fikape` : "Tüm Araçlar – fikape",
+    title: cat ? `${cat.label} Modelleri` : "Tüm Araçlar",
     description: cat
       ? `${cat.label} kategorisindeki tüm modeller, kullanıcı yorumlarına dayalı FI·KA·PE puanlarıyla.`
       : "fikape kataloğundaki tüm araçlar — otomobil, motosiklet, e-scooter, e-bisiklet, karavan, kamyonet.",

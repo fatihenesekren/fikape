@@ -11,7 +11,7 @@ import katalogIndex from "@/data/katalogIndex.json";
 import type { KatalogIndex, KatalogKategori, KatalogMarkaDosyasi } from "@/lib/katalog/tipler";
 import {
   modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi,
-  versiyonSecenekleri, versiyonaGore, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri, BUGUN_YIL,
+  versiyonSecenekleri, versiyonGruplari, versiyonaGore, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri, BUGUN_YIL,
   PAKET_YOK, VERSIYON_YOK, type AlanDurumu,
 } from "@/lib/katalog/secim";
 import { ekYilGecerli, katalogBirlestir, markalariBirlestir } from "@/lib/katalog/ek";
@@ -130,6 +130,13 @@ export default function KatalogAracSecimi({
   const [ozelYil, setOzelYil] = useState("");
   const [nesilAd, setNesilAd] = useState("");
   const [versiyon, setVersiyon] = useState("");
+  // Uzun versiyon listelerinde (ör. Ford Transit: 80+ seçenek) metinle daraltma; seçili değer ve "Listede yok" her zaman kalır.
+  const [versiyonAra, setVersiyonAra] = useState("");
+  const UZUN_LISTE = 12;
+  const versiyonSuz = (liste: string[], secili: string, etiket: (v: string) => string = (v) => v) => {
+    const q = versiyonAra.trim().toLocaleLowerCase("tr");
+    return q ? liste.filter((v) => v === secili || etiket(v).toLocaleLowerCase("tr").includes(q)) : liste;
+  };
   const [ozelVersiyon, setOzelVersiyon] = useState("");
   const [paket, setPaket] = useState("");
   const [ozelPaket, setOzelPaket] = useState("");
@@ -251,7 +258,7 @@ export default function KatalogAracSecimi({
     if (i < 1) { setModel(""); setOzelModel(""); }
     if (i < 2) { setYil(""); setNesilAd(""); }
     if (i < 2) { setYilDiger(false); setOzelYil(""); }
-    if (i < 3) { setVersiyon(""); setOzelVersiyon(""); }
+    if (i < 3) { setVersiyon(""); setOzelVersiyon(""); setVersiyonAra(""); }
     if (i < 4) { setPaket(""); setOzelPaket(""); }
     setYakitSecim(""); setVitesSecim("");
   };
@@ -336,11 +343,31 @@ export default function KatalogAracSecimi({
           en kötü iki seçenek "Standart" ve "Listede yok" (kullanıcı geri bildirimi). */}
       {tsbModu && (
         <Alan label="Versiyon">
+          {versiyonlar.length > UZUN_LISTE && (
+            <input type="search" value={versiyonAra} onChange={(e) => setVersiyonAra(e.target.value)}
+              placeholder={`${versiyonlar.length} versiyon içinde ara (örn. 310 L)`} aria-label="Versiyon ara" className={inputCls} />
+          )}
           {/* Tek seçenekte de select: önceden seçili gelir, "Listede yok" ile kaçış mümkün */}
           {(
             <select value={versiyon || (versiyonlar.length === 1 ? versiyonlar[0] : "")} onChange={(e) => { setVersiyon(e.target.value); altlariTemizle("versiyon"); }} className={selectCls}>
               {versiyonlar.length > 1 && <option value="">— Seçin —</option>}
-              {versiyonlar.map((v) => <option key={v} value={v}>{v}</option>)}
+              {(() => {
+                const g = versiyonGruplari(t1);
+                // Resmi yıl bilgisi olan kayıtlarla yıl bilgisi olmayanlar birlikte varsa ayrı başlıklar altında göster (hiçbiri gizlenmez)
+                if (g.resmi.length > 0 && g.genel.length > 0) {
+                  return (
+                    <>
+                      <optgroup label="Bu yıl için kayıtlı">
+                        {versiyonSuz(g.resmi, versiyon).map((v) => <option key={v} value={v}>{v}</option>)}
+                      </optgroup>
+                      <optgroup label="Yıl bilgisi olmayan kayıtlar">
+                        {versiyonSuz(g.genel, versiyon).map((v) => <option key={v} value={v}>{v}</option>)}
+                      </optgroup>
+                    </>
+                  );
+                }
+                return versiyonSuz(versiyonlar, versiyon).map((v) => <option key={v} value={v}>{v}</option>);
+              })()}
               <option value={LISTEDE_YOK}>{LISTEDE_YOK}</option>
             </select>
           )}
@@ -380,9 +407,13 @@ export default function KatalogAracSecimi({
       {!tsbModu && (nesil || digerModel || digerMarka || modelObj) && yil && (
         <>
           <Alan label="Versiyon">
+            {elVersiyonlar.length > UZUN_LISTE && (
+              <input type="search" value={versiyonAra} onChange={(e) => setVersiyonAra(e.target.value)}
+                placeholder={`${elVersiyonlar.length} versiyon içinde ara`} aria-label="Versiyon ara" className={inputCls} />
+            )}
             <select value={versiyon} onChange={(e) => { setVersiyon(e.target.value); altlariTemizle("versiyon"); }} className={selectCls}>
               <option value="">— Seçin —</option>
-              {elVersiyonlar.map((v) => (
+              {versiyonSuz(elVersiyonlar, versiyon, (v) => (v === DIGER ? LISTEDE_YOK : v === VERSIYON_YOK ? v : formatVersionLabel(v, kategori))).map((v) => (
                 <option key={v} value={v}>{v === DIGER ? LISTEDE_YOK : v === VERSIYON_YOK ? v : formatVersionLabel(v, kategori)}</option>
               ))}
             </select>

@@ -46,7 +46,8 @@ export async function generateMetadata({
   });
   const belowContactThreshold = publishedNoteCount < CONTACT_VISIBILITY_MIN_PUBLISHED_NOTES;
   return {
-    title: `${profile.headline ?? "Usta"} — Usta Profili | fikape`,
+    alternates: { canonical: `/usta/${slug}` },
+    title: `${profile.headline ?? "Usta"} — Usta Profili`,
     description: `${profile.headline ?? "Usta"} — fikape'de usta profili ve teknik katkıları.`,
     robots: profile.cvNoindex || forceNoindex || belowContactThreshold ? { index: false } : undefined,
   };

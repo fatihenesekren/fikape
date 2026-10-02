@@ -23,7 +23,7 @@ import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { DeleteAccountSection } from "./DeleteAccountSection";
 import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 
-export const metadata: Metadata = { title: "Profilim" };
+export const metadata: Metadata = { title: "Profilim", robots: { index: false } };
 
 // Yorum Geçmişi durum rozetleri — önceden her satırda (map() içinde, satır
 // başına yeniden) kendi ham hex renklerini (#27500A/#EAF3DE vb.) tanımlıyordu;
@@ -157,6 +157,8 @@ export default async function ProfilPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 space-y-6">
+
+      <h1 className="sr-only">Profilim</h1>
 
       {/* Kullanıcı kartı */}
       <div className="bg-white border border-gray-100 rounded-2xl p-6">

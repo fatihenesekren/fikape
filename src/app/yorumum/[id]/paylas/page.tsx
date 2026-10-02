@@ -5,7 +5,7 @@ import { ShareCard } from "./ShareCard";
 import { BackLink } from "@/components/BackLink";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
-export const metadata = { title: "Yorumunu Paylaş — fikape" };
+export const metadata = { title: "Yorumunu Paylaş", robots: { index: false } };
 
 export default async function ShareReviewPage({
   params,

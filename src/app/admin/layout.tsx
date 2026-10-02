@@ -1,3 +1,4 @@
+export const metadata = { robots: { index: false, follow: false } };
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";

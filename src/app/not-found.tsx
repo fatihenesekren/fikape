@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Sayfa Bulunamadı — fikape" };
+export const metadata = { title: "Sayfa Bulunamadı" };
 
 export default function NotFound() {
   return (

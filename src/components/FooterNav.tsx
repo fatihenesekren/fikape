@@ -18,7 +18,7 @@ export function FooterNav() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+    <nav aria-label="Alt bilgi" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
       {FOOTER_LINKS.map((link, i) => {
         const isActive = pathname === link.href;
         return (
@@ -37,6 +37,6 @@ export function FooterNav() {
           </Fragment>
         );
       })}
-    </div>
+    </nav>
   );
 }

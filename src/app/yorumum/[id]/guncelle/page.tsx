@@ -5,7 +5,7 @@ import { getChipsForCategory } from "@/lib/chips";
 import { UpdateReviewForm } from "./UpdateReviewForm";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
-export const metadata = { title: "Yorumu Güncelle — fikape" };
+export const metadata = { title: "Yorumu Güncelle", robots: { index: false } };
 
 function monthsSince(date: Date): number {
   return Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24 * 30));

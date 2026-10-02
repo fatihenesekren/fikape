@@ -8,7 +8,7 @@ import { ContactSettingsForm } from "./ContactSettingsForm";
 import { ExpertAppealForm } from "../ExpertAppealForm";
 import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 
-export const metadata = { title: "Profil Ayarları — fikape", robots: { index: false } };
+export const metadata = { title: "Profil Ayarları", robots: { index: false } };
 
 const VISIBILITY_LABEL: Record<string, { label: string; color: string; bg: string }> = {
   HIDDEN: { label: "Henüz görünür değil", ...EXPERT_STATUS_TONES.neutral },

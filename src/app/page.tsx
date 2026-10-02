@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -10,6 +11,8 @@ import { UstaBandi } from "./_components/UstaBandi";
 import { TrendVehicleCard } from "./_components/TrendVehicleCard";
 import { CategoryTabs } from "./_components/CategoryTabs";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 import { ScrollTopLogo } from "./_components/ScrollTopLogo";
 import { decodeQuiz } from "@/lib/quiz";
 

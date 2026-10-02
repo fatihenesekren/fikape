@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { EXPERT_STATUS_TONES } from "@/lib/expertNote";
 import { GearIcon, IdCardIcon, ClipboardIcon, MessageIcon, ShareIcon } from "@/components/icons";
 
-export const metadata: Metadata = { title: "Usta Panelim — fikape", robots: { index: false } };
+export const metadata: Metadata = { title: "Usta Panelim", robots: { index: false } };
 
 // Usta Panelim — aktif ustanın kendi paneli. Önceden /profil sayfasının
 // altında gömülü bir karttı; kullanıcı ekran görüntüsüyle "küçük kalıyor,

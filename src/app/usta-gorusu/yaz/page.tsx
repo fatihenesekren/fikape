@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ExpertNoteForm } from "./ExpertNoteForm";
 
-export const metadata = { title: "Usta Görüşü Yaz — fikape", robots: { index: false } };
+export const metadata = { title: "Usta Görüşü Yaz", robots: { index: false } };
 
 export default async function UstaGorusuYazPage({
   searchParams,

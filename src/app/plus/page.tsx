@@ -6,7 +6,8 @@ import { PlusBoard } from "./PlusBoard";
 import { IdeaBox } from "./IdeaBox";
 
 export const metadata: Metadata = {
-  title: "Fikape Plus",
+  alternates: { canonical: "/plus" },
+  title: "fikape Plus",
   description: "fikape'yi birlikte şekillendiriyoruz — ilgini çeken fikirleri işaretle, önceliğimizi senin seçimlerin belirlesin.",
 };
 

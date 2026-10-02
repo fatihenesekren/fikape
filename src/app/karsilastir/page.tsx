@@ -6,6 +6,7 @@ import { dedupeAndLimitSlugs } from "./loadCompareData";
 import { getMostReviewedProducts } from "@/lib/dataCache";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/karsilastir" },
   title: "Araç Karşılaştır",
   description: "İki veya daha fazla aracı fikape kullanıcı puanlarına göre yan yana karşılaştır.",
 };

@@ -12,11 +12,19 @@ import { TradeToggleCard } from "./TradeToggleCard";
 import type { PartCondition } from "@/lib/carParts";
 import { stripModelGenRange, stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
-export const metadata: Metadata = { title: "Garajım" };
+export const metadata: Metadata = { title: "Garajım", robots: { index: false } };
 
 const BODY_LABELS: Record<string, string> = {
   sedan: "Sedan", suv: "SUV", hatchback: "Hatchback",
   mpv: "MPV", coupe: "Coupe", cabrio: "Cabriolet",
+  pickup: "Pickup", van: "Van", panelvan: "Panelvan", minivan: "Minivan",
+};
+
+// Gövde tipi girilmemiş (ya da gövde tipi alanı olmayan kategorideki) araçlarda otomobile özgü "Sedan" varsayılanı
+// yerine kategori adı gösterilir.
+const CATEGORY_LABELS: Record<string, string> = {
+  otomobil: "Otomobil", motosiklet: "Motosiklet", "e-scooter": "E-Scooter",
+  "e-bisiklet": "E-Bisiklet", karavan: "Karavan", kamyonet: "Kamyonet",
 };
 
 export default async function GarajimPage() {
@@ -135,7 +143,8 @@ export default async function GarajimPage() {
   }) {
     const attrs = product.attributes as Record<string, unknown>;
     const fuelType = String(attrs.fuel_type ?? "");
-    const bodyType = String(attrs.body_type ?? "sedan");
+    const bodyType = attrs.body_type ? String(attrs.body_type) : "";
+    const typeLabel = (bodyType && BODY_LABELS[bodyType]) || CATEGORY_LABELS[product.category?.slug ?? ""] || null;
     const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
     const review = reviews[0] ?? null;
 
@@ -202,9 +211,11 @@ export default async function GarajimPage() {
             )}
           </div>
           <div className="flex flex-wrap gap-1.5 mt-2">
-            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
-              {BODY_LABELS[bodyType] ?? bodyType}
-            </span>
+            {typeLabel && (
+              <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
+                {typeLabel}
+              </span>
+            )}
             {isSold && soldReason && soldReason.length > 0 && (
               <span className="text-xs font-semibold px-2 py-0.5 rounded-full"
                 style={{ background: "#f3f4f6", color: "#6b7280" }}>

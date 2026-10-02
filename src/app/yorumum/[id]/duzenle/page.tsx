@@ -5,7 +5,7 @@ import { getChipsForCategory } from "@/lib/chips";
 import { EditReviewForm } from "./EditReviewForm";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
-export const metadata = { title: "Yorumu Düzenle — fikape" };
+export const metadata = { title: "Yorumu Düzenle", robots: { index: false } };
 
 export default async function EditReviewPage({
   params,

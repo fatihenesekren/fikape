@@ -8,6 +8,7 @@ import { EXAMPLE_SLUG } from "./constants";
 import { HashTargetHighlighter } from "@/components/HashTargetHighlighter";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/gelistiriciler" },
   title: "Araç Güven Skoru API'si — Geliştiriciler",
   description:
     "fikape araç güven skorunu (FI·KA·PE) kendi sitenize gömmek için ücretsiz, anahtarsız API ve gömülebilir rozet. Bayi ve oto blogları için hazır entegrasyon.",

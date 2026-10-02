@@ -4,7 +4,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ExpertApplicationForm } from "./ExpertApplicationForm";
 
-export const metadata = { title: "Usta Başvurusu — fikape", robots: { index: false } };
+export const metadata = { title: "Usta Başvurusu", robots: { index: false } };
 
 function Shell({ children }: { children: React.ReactNode }) {
   return <div className="max-w-lg mx-auto px-4 py-16 text-center space-y-4">{children}</div>;

@@ -126,3 +126,15 @@ export function ortakBeygir(tipler: KatalogTip[]): number | null {
 export function trimAdi(versiyon: string | null, paket: string | null): string {
   return [versiyon, paket].filter((x) => x && x !== PAKET_YOK && x !== VERSIYON_YOK).join(" – ");
 }
+
+/**
+ * Versiyon listesini iki gruba ayırır: yıllı (resmi/onaylı) kayıtlar ve yalnız yıl bağımsız (g) kayıtlarda geçenler.
+ * Hiçbir seçenek gizlenmez; yalnız sunum için gruplanır (resmi yılda eski/yıl bilgisi olmayan satırlar ayrı başlık altında görünür).
+ */
+export const versiyonGruplari = (tipler: KatalogTip[]) => {
+  const beygirler = versiyonBeygirleri(tipler);
+  const resmi = benzersiz(tipler.filter((t) => !t.g).map((t) => versiyonEtiketi(t, beygirler)));
+  const resmiKume = new Set(resmi);
+  const genel = benzersiz(tipler.filter((t) => t.g).map((t) => versiyonEtiketi(t, beygirler))).filter((e) => !resmiKume.has(e));
+  return { resmi, genel };
+};

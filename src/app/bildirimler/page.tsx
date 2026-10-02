@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { BildirimlerClient } from "./BildirimlerClient";
 import { resolveLiveNotificationMessages } from "@/lib/notification";
 
-export const metadata: Metadata = { title: "Bildirimler" };
+export const metadata: Metadata = { title: "Bildirimler", robots: { index: false } };
 
 const PAGE_SIZE = 20;
 

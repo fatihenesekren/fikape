@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 
 // Bildirimlerdeki ürün linkleri artık slug'ı gömmek yerine buraya (id-bazlı,
@@ -29,5 +29,5 @@ export default async function ProductRedirectPage({
   }
   const qs = query.toString();
 
-  redirect(`/araclar/${product.slug}${qs ? `?${qs}` : ""}`);
+  permanentRedirect(`/araclar/${product.slug}${qs ? `?${qs}` : ""}`);
 }

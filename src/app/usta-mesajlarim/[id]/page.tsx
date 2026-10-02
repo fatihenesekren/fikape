@@ -3,7 +3,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { ExpertThreadView } from "./ExpertThreadView";
 
-export const metadata = { title: "Görüşme — fikape", robots: { index: false } };
+export const metadata = { title: "Görüşme", robots: { index: false } };
 
 export default async function ExpertMessageThreadPage({
   params,

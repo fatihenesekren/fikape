@@ -113,7 +113,7 @@ export function SectionCard({ step, title, badge, locked, lockedHint, children }
         </span>
         <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide flex-1">{title}</h2>
         {b && (
-          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+          <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full"
             style={{ background: b.bg, color: b.color }}>
             {b.label}
           </span>

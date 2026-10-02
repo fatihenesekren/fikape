@@ -24,6 +24,7 @@ export async function generateMetadata({
   const slugs = parseComparisonParam(decodeURIComponent(comparison));
   if (slugs.length < 2) {
     return {
+      alternates: { canonical: "/karsilastir" },
       title: "Araç Karşılaştır",
       description: "İki veya daha fazla aracı fikape kullanıcı puanlarına göre yan yana karşılaştır.",
     };
@@ -31,11 +32,16 @@ export async function generateMetadata({
   const names = (await loadCompareMetaNames(slugs)).join(" vs ");
   if (!names) {
     return {
+      alternates: { canonical: "/karsilastir" },
+      robots: { index: false, follow: true },
       title: "Araç Karşılaştır",
       description: "İki veya daha fazla aracı fikape kullanıcı puanlarına göre yan yana karşılaştır.",
     };
   }
+  // a-vs-b ve b-vs-a aynı içeriği gösterir: sıralı slug'larla tek kanonik adres
+  const canon = [...slugs].sort().join("-vs-");
   return {
+    alternates: { canonical: `/karsilastir/${canon}` },
     title: `${names} Karşılaştırma`,
     description: `${names} — fikape kullanıcı yorumlarına dayalı FI·KA·PE skor karşılaştırması.`,
   };

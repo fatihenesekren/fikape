@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { UstaShareCard } from "./UstaShareCard";
 import { BackLink } from "@/components/BackLink";
 
-export const metadata = { title: "Usta Profilini Paylaş — fikape" };
+export const metadata = { title: "Usta Profilini Paylaş", robots: { index: false } };
 
 // Yorumun aksine (sadece sahibi kendi yorumunu paylaşır) bu sayfa herkese
 // açık — amaç bir ziyaretçinin beğendiği bir ustayı arkadaşına önerebilmesi

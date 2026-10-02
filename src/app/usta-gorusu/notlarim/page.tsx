@@ -19,7 +19,7 @@ function ArrowRightIcon({ className = "" }: { className?: string }) {
   );
 }
 
-export const metadata = { title: "Usta Notlarım — fikape", robots: { index: false } };
+export const metadata = { title: "Usta Notlarım", robots: { index: false } };
 
 const STATUS_LABEL: Record<string, { label: string; color: string; bg: string }> = {
   PENDING: { label: "İnceleniyor", ...EXPERT_STATUS_TONES.warning },

@@ -5,6 +5,7 @@ import { BASE_URL } from "@/lib/baseUrl";
 import { HashTargetHighlighter } from "@/components/HashTargetHighlighter";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/kullanim-kosullari" },
   title: "Kullanım Koşulları",
   description:
     "fikape.com'u kullanırken uymanız gereken kurallar: hesap oluşturma, yorum/içerik kuralları, Takas Pazarı ve Usta Görüşleri şartları, hesap askıya alma sebepleri ve sorumluluk sınırları.",

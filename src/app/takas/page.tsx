@@ -43,7 +43,7 @@ export async function generateMetadata({
   const params = await searchParams;
   const isFiltered = Object.values(params).some(Boolean);
   return {
-    title: "Araç Takas İlanları – fikape",
+    title: "Araç Takas İlanları",
     robots: isFiltered ? { index: false, follow: true } : undefined,
     alternates: { canonical: "/takas" },
   };

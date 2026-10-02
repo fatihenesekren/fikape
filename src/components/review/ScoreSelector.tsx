@@ -68,7 +68,7 @@ export function ScoreSelector({ label, short, color, bg, value, initialValue, on
                 ? { background: color, opacity: 0.6 + (n / active) * 0.4 }
                 : { background: "#f0f0f0" }}
             />
-            <span className="text-[10px] font-bold transition-colors"
+            <span className="text-[11px] font-bold transition-colors"
               style={n <= active ? { color } : { color: "#d1d5db" }}>
               {n}
             </span>

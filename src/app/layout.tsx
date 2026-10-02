@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import Link from "next/link";
 import { SessionProvider } from "@/components/SessionProvider";
@@ -17,6 +17,9 @@ import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 
+// Mobil tarayıcı adres çubuğu rengi
+export const viewport: Viewport = { themeColor: "#ffffff" };
+
 export const metadata: Metadata = {
   title: {
     default: "fikape — Gerçek Araç Yorumları",
@@ -30,10 +33,8 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     type: "website",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  // Varsayılan zaten index/follow; açıkça yazmak, sayfa düzeyindeki noindex ile çelişen çift etiket üretiyordu.
+  twitter: { card: "summary_large_image" },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -82,6 +83,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           }}
         />
         <SessionProvider>
+        <a
+          href="#icerik"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-white focus:px-3 focus:py-2 focus:rounded-lg focus:shadow focus:text-sm focus:font-semibold"
+        >
+          İçeriğe atla
+        </a>
         <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 text-xl font-black tracking-tight select-none">
@@ -96,16 +103,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </Link>
 
             <SearchBar />
-            <div className="flex items-center gap-1">
+            <nav aria-label="Ana gezinme" className="flex items-center gap-1">
               <SearchIcon />
               <AuthNav />
-            </div>
+            </nav>
           </div>
         </header>
 
         {unverifiedEmail && <VerificationBanner email={unverifiedEmail} />}
 
-        <main className="flex-1 flex flex-col min-w-0">
+        <main id="icerik" tabIndex={-1} className="flex-1 flex flex-col min-w-0 outline-none">
           <div className="min-w-0">{children}</div>
         </main>
 

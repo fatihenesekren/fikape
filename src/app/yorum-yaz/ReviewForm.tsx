@@ -408,10 +408,10 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
                         </p>
                         <div className="flex items-center gap-1.5 mt-0.5">
                           {p.year && <span className="text-xs text-gray-400">{p.year}</span>}
-                          {fc && <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>{FUEL_ICONS[p.fuelType!]} {FUEL_LABELS[p.fuelType!]}</span>}
+                          {fc && <span className="text-[11px] font-semibold px-1.5 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>{FUEL_ICONS[p.fuelType!]} {FUEL_LABELS[p.fuelType!]}</span>}
                           {p.transmission && (() => {
                             const tr = formatTransmission(p.transmission);
-                            return <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-600">{tr.icon} {tr.label}</span>;
+                            return <span className="text-[11px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-600">{tr.icon} {tr.label}</span>;
                           })()}
                         </div>
                       </div>
@@ -455,20 +455,20 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
                 {selectedProduct.fuelType && FUEL_LABELS[selectedProduct.fuelType] && (() => {
                   const fc = FUEL_COLORS[selectedProduct.fuelType!] ?? { bg: "#e5e7eb", text: "#374151" };
                   return (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>
+                    <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>
                       {FUEL_ICONS[selectedProduct.fuelType!]} {FUEL_LABELS[selectedProduct.fuelType!]}
                     </span>
                   );
                 })()}
                 {selectedProduct.bodyType && BODY_LABELS[selectedProduct.bodyType] && (
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-200 text-gray-600">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-gray-200 text-gray-600">
                     {BODY_LABELS[selectedProduct.bodyType]}
                   </span>
                 )}
                 {selectedProduct.transmission && (() => {
                   const tr = formatTransmission(selectedProduct.transmission);
                   return (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
+                    <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
                       {tr.icon} {tr.label}
                     </span>
                   );

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
-  modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi, versiyonSecenekleri,
+  modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi, versiyonSecenekleri, versiyonGruplari,
   versiyonaGore, versiyonBilgisiVarMi, vitesDurumu, yakitDurumu, yilNesilleri, yilTipleri,
 } from "./secim";
 import type { KatalogModel, KatalogTip } from "./tipler";
@@ -114,5 +114,16 @@ describe("yıl bağımsız (g) kayıtlar", () => {
     expect(yilTipleri(model, 2015).map((t) => t.p)).toEqual(["Resmi", "Genel"]);
     expect(yilTipleri(model, 2000)).toEqual([]);
     expect(yilTipleri(model, 1990).map((t) => t.p)).toEqual(["Genel"]);
+  });
+});
+
+describe("versiyonGruplari", () => {
+  it("yıllı ve yıl bağımsız (g) kayıtları ayırır; hiçbirini düşürmez, tekrarı atar", () => {
+    const resmi = { v: "2.0 TDCi", hp: 170, p: null, k: null, y: [2024], f: "DIESEL", t: null } as KatalogTip;
+    const genelAyni = { v: "2.0 TDCi", hp: 170, p: null, k: null, y: [2023, 2024], f: "DIESEL", t: null, g: true } as KatalogTip;
+    const genelYeni = { v: "310 L", hp: null, p: null, k: null, y: [2024], f: null, t: null, g: true } as KatalogTip;
+    const g = versiyonGruplari([resmi, genelAyni, genelYeni]);
+    expect(g.resmi).toEqual(["2.0 TDCi · 170 HP"]);
+    expect(g.genel).toEqual(["310 L"]);
   });
 });

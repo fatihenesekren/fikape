@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BASE_URL } from "@/lib/baseUrl";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/uyelik-sozlesmesi" },
   title: "Üyelik Sözleşmesi",
   description:
     "fikape.com ile üye arasındaki üyelik ilişkisini düzenleyen bağlayıcı sözleşme: üyelik şartları, yükümlülükler, platformun sorumluluk sınırları ve hesap sonlandırma koşulları.",

@@ -74,6 +74,7 @@ function SliderFrame({ photo, alt, index }: { photo: Photo; alt: string; index: 
         aria-hidden="true"
         fill
         sizes="(max-width: 1024px) 100vw, 1024px"
+        preload={index === 0}
         className="object-cover scale-110 blur-xl opacity-60"
       />
       <div className="absolute inset-0 bg-black/20" />
@@ -83,6 +84,7 @@ function SliderFrame({ photo, alt, index }: { photo: Photo; alt: string; index: 
         alt={index === 0 ? alt : `${alt} fotoğraf ${index + 1}`}
         fill
         sizes="(max-width: 1024px) 100vw, 1024px"
+        preload={index === 0}
         className="object-contain"
       />
       {/* Tıklanınca/dokununca büyütülmüş, zoom'lanabilir görünüm açan görünmez katman */}
@@ -164,6 +166,7 @@ export function PhotoSlider({ photos, alt }: Props) {
                   aria-hidden="true"
                   fill
                   sizes="(max-width: 1024px) 100vw, 1024px"
+                  preload={i === 0}
                   className="object-cover scale-110 blur-xl opacity-60"
                 />
                 <div className="absolute inset-0 bg-black/20" />
@@ -173,6 +176,7 @@ export function PhotoSlider({ photos, alt }: Props) {
                   alt={i === 0 ? alt : `${alt} fotoğraf ${i + 1}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 1024px"
+                  preload={i === 0}
                   className="object-contain"
                 />
                 {/* Tıklanınca/dokununca büyütülmüş, zoom'lanabilir görünüm açan görünmez katman */}

@@ -78,9 +78,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const listing = await getListing(parseInt(id)).catch(() => null);
-  if (!listing) return { title: "İlan bulunamadı – fikape" };
+  if (!listing) return { title: "İlan bulunamadı" };
   // Takas ilanı detayı üye içeriği (bkz. Seçenek B) — her zaman noindex.
-  if (!listing.isActive) return { title: "İlan artık aktif değil – fikape", robots: { index: false } };
+  if (!listing.isActive) return { title: "İlan artık aktif değil", robots: { index: false } };
   const title = `${listing.product.brand.name} ${stripModelGenRange(listing.product.model.name)} Takasa Açık – ${listing.city}`;
   return { title, robots: { index: false, follow: true } };
 }
