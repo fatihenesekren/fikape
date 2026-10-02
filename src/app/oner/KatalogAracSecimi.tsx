@@ -8,6 +8,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import katalogIndex from "@/data/katalogIndex.json";
+import { markaDosyasiSuz, markalariSuz, type GizliKayit } from "@/lib/katalog/override";
 import type { KatalogIndex, KatalogKategori, KatalogMarkaDosyasi } from "@/lib/katalog/tipler";
 import {
   modelYillari, ortakBeygir, paketSecenekleri, paketeGore, trimAdi,
@@ -113,12 +114,24 @@ export default function KatalogAracSecimi({
       .catch(() => {});
     return () => { iptal = true; };
   }, [kategori]);
+  // Yönetici tarafından resmi katalogdan gizlenen marka/model/versiyonlar
+  const [gizli, setGizli] = useState<{ kategori: string; liste: GizliKayit[] } | null>(null);
+  useEffect(() => {
+    let iptal = false;
+    fetch(`/api/katalog/duzeltmeler?kategori=${kategori}`)
+      .then((r) => (r.ok ? r.json() : { gizli: [] }))
+      .then((d) => { if (!iptal) setGizli({ kategori, liste: Array.isArray(d.gizli) ? d.gizli : [] }); })
+      .catch(() => { if (!iptal) setGizli({ kategori, liste: [] }); });
+    return () => { iptal = true; };
+  }, [kategori]);
+  const gizliHazir = gizli?.kategori === kategori;
+  const gizliListe = useMemo(() => (gizliHazir && gizli ? gizli.liste : []), [gizliHazir, gizli]);
   const markalar = useMemo(() => {
-    const statik = INDEX[kategori].filter((m) => m.marka !== DIGER_MARKA);
+    const statik = markalariSuz(INDEX[kategori].filter((m) => m.marka !== DIGER_MARKA), gizliListe);
     const yeni = markalariBirlestir(statik.map((m) => m.marka), ekMarkalar).map((marka) => ({ marka, dosya: "", modeller: [] as string[] }));
     const hepsi = [...statik, ...yeni].sort((a, b) => a.marka.localeCompare(b.marka, "tr"));
     return [...hepsi, ...INDEX[kategori].filter((m) => m.marka === DIGER_MARKA)];
-  }, [kategori, ekMarkalar]);
+  }, [kategori, ekMarkalar, gizliListe]);
 
   const [marka, setMarka] = useState(baslangicMarka);
   const [ozelMarka, setOzelMarka] = useState("");
@@ -148,7 +161,7 @@ export default function KatalogAracSecimi({
   const [dosya, setDosya] = useState<{ anahtar: string; veri: KatalogMarkaDosyasi } | null>(null);
   const [dosyaHata, setDosyaHata] = useState(false);
   useEffect(() => {
-    if (!marka || marka === DIGER_MARKA) return;
+    if (!marka || marka === DIGER_MARKA || !gizliHazir) return;
     let iptal = false;
     const statikYol = markaGirdisi?.dosya || "";
     const statikP = statikYol
@@ -161,11 +174,11 @@ export default function KatalogAracSecimi({
     Promise.all([statikP, ekP]).then(([s, e]) => {
       if (iptal) return;
       if (!s.ok) { setDosyaHata(true); return; }
-      setDosya({ anahtar: marka, veri: katalogBirlestir(s.v, e ?? { marka, modeller: [] }, kategori) });
+      setDosya({ anahtar: marka, veri: katalogBirlestir(markaDosyasiSuz(s.v, gizliListe), e ?? { marka, modeller: [] }, kategori) });
       setDosyaHata(false);
     });
     return () => { iptal = true; };
-  }, [marka, markaGirdisi?.dosya, kategori]);
+  }, [marka, markaGirdisi?.dosya, kategori, gizliHazir, gizliListe]);
   const markaDosyasi = dosya && dosya.anahtar === marka ? dosya.veri : null;
 
   const digerMarka = marka === DIGER_MARKA;

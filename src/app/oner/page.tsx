@@ -10,6 +10,7 @@ import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 import { resolveOnerPrefill, type OnerCategoryKey } from "@/lib/onerPrefill";
 import type { ExistingVehicleMatch } from "@/lib/existingVehicle";
 import { birebirAyniArac } from "@/lib/aracKarsilastir";
+import { legacySuz, type GizliKayit } from "@/lib/katalog/override";
 import { ekYilGecerli, legacyBirlestir, type EkMarkaVeri, type LegacyMake } from "@/lib/katalog/ek";
 import KatalogAracSecimi, { type KatalogSecimSonucu } from "./KatalogAracSecimi";
 
@@ -159,11 +160,22 @@ export default function OnerPage() {
       .catch(() => {});
     return () => { iptal = true; };
   }, [categorySlug, katalogModu]);
+  // Yönetici tarafından resmi listeden gizlenenler
+  const [gizliLegacy, setGizliLegacy] = useState<{ kategori: string; liste: GizliKayit[] }>({ kategori: "", liste: [] });
+  useEffect(() => {
+    if (!categorySlug || katalogModu) return;
+    let iptal = false;
+    fetch(`/api/katalog/duzeltmeler?kategori=${categorySlug}`)
+      .then((r) => (r.ok ? r.json() : { gizli: [] }))
+      .then((d) => { if (!iptal && Array.isArray(d.gizli)) setGizliLegacy({ kategori: categorySlug, liste: d.gizli }); })
+      .catch(() => {});
+    return () => { iptal = true; };
+  }, [categorySlug, katalogModu]);
   const makes = useMemo<LegacyMake[]>(() => {
     if (!categorySlug || katalogModu) return [];
-    const temel = vehiclesData[categorySlug] as unknown as LegacyMake[];
+    const temel = legacySuz(vehiclesData[categorySlug] as unknown as LegacyMake[], gizliLegacy.kategori === categorySlug ? gizliLegacy.liste : []);
     return legacyBirlestir(temel, ekTum.kategori === categorySlug ? ekTum.veri : []);
-  }, [categorySlug, katalogModu, ekTum]);
+  }, [categorySlug, katalogModu, ekTum, gizliLegacy]);
   const makeEntry  = makes.find((m) => m.make === selectedMake);
   const models     = (makeEntry?.models ?? []) as {
     name: string;

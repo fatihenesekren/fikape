@@ -4,6 +4,7 @@ const SEKMELER = [
   { href: "/admin/katalog", etiket: "Araçlar" },
   { href: "/admin/katalog/yeni", etiket: "Yeni araç" },
   { href: "/admin/katalog/marka-model", etiket: "Marka / Model" },
+  { href: "/admin/katalog/resmi", etiket: "Resmi katalog" },
   { href: "/admin/katalog/denetim", etiket: "Denetim kaydı" },
 ];
 
