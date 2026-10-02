@@ -47250,8 +47250,16 @@
         {
           "name": "C1-tourer / C2-tourer (2022-)",
           "versions": [
-            "Fransız Karyola",
-            "İkiz Yatak",
+            "I 141 KB-LE",
+            "I 143 KB-LE",
+            "I 145 RB-LE",
+            "I 146 FF-RB-LE",
+            "I 147 RB-LE",
+            "I 148 RB-QB",
+            "T 143 KB-LE",
+            "T 145 RB-LE",
+            "T 147 RB-LE",
+            "T 148 RB-QB",
             "Diğer"
           ],
           "trims": [
@@ -47483,9 +47491,11 @@
         {
           "name": "Credo (Yarı Entegre, 2000-)",
           "versions": [
-            "Credo 791 RL",
-            "Credo 841 RB",
-            "Credo 791 M",
+            "741 HI",
+            "791 LI",
+            "791 MI",
+            "840 LI",
+            "840 MI",
             "Diğer"
           ],
           "trims": [
@@ -47496,8 +47506,13 @@
         {
           "name": "Carver (Entegre, 2005-)",
           "versions": [
-            "Carver 841 L",
-            "Carver 891 L",
+            "790 LI",
+            "790 RLI",
+            "791 RLI",
+            "850 LI",
+            "890 RLI",
+            "891 RLI",
+            "900 GI",
             "Diğer"
           ],
           "trims": [
@@ -47509,8 +47524,11 @@
         {
           "name": "Charisma (Entegre, Ultra Lüks, 2010-)",
           "versions": [
-            "Fransız Karyola",
-            "İkiz Yatak",
+            "860 LI",
+            "910 LI",
+            "910 LSI",
+            "910 MI",
+            "915 LSI",
             "Diğer"
           ],
           "trims": [
@@ -47521,36 +47539,32 @@
         {
           "name": "Liner (2000-)",
           "versions": [
-            "Liner 1090 G",
-            "Liner 1090 RL",
-            "Liner Plus",
+            "940 LSI",
+            "940 MI",
+            "945 LSI",
+            "945 MI",
+            "990 GI",
+            "990 RLI",
+            "995 GI",
+            "995 RLI",
+            "1090 GI",
+            "1090 GIO",
+            "1095 GI",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Plus",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "Liner 1090 G": [
-              "Standart",
-              "Diğer"
-            ],
-            "Liner 1090 RL": [
-              "Standart",
-              "Diğer"
-            ],
-            "Liner Plus": [
-              "Plus",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
           "name": "Centurion (Ultra Lüks, 2010-)",
           "versions": [
-            "Centurion 1200",
-            "Centurion 1400",
+            "1050 GI",
+            "1100 GI",
+            "1200 GSI",
+            "1205 GSI",
             "Diğer"
           ],
           "trims": [
@@ -47562,8 +47576,13 @@
         {
           "name": "Cruiser (Alkovlu, 2015-)",
           "versions": [
-            "Cruiser Daily",
-            "Cruiser Atego",
+            "790 RLA",
+            "791 RLA",
+            "890 RLA",
+            "891 RLA",
+            "900 LA",
+            "901 LA",
+            "950 LSA",
             "Diğer"
           ],
           "trims": [
@@ -48453,27 +48472,22 @@
         {
           "name": "Now (Yarı Entegre, 2022-)",
           "versions": [
-            "Standart",
+            "Cruiser 7.0 L",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "Standart": [
-              "Standart",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
           "name": "Neo (2020-)",
           "versions": [
-            "Neo 6800 BD",
-            "Neo 7400 QD",
-            "Cruiser",
-            "Liner",
+            "Cruiser 7.0 L",
+            "Cruiser 7.0 B",
+            "Liner 7.0 B",
+            "Liner 7.0 L",
+            "Liner 6.6 H",
             "Diğer"
           ],
           "trims": [
@@ -48484,25 +48498,23 @@
         {
           "name": "Noctra (Yarı Entegre, 2023-)",
           "versions": [
-            "Standart",
+            "Cruiser 7.6 L",
+            "Liner 7.6 L",
+            "Liner 8.3 L",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "Standart": [
-              "Standart",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
           "name": "Together (Entegre, 2023-)",
           "versions": [
-            "Overcab",
-            "Entegre",
+            "I 680 PLUS",
+            "I 740 PLUS",
+            "A 680 PLUS",
+            "A 740 PLUS",
             "Diğer"
           ],
           "trims": [
@@ -48537,6 +48549,22 @@
           "trims": [
             "Standart",
             "Pure",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Final Edition (Entegre)",
+          "versions": [
+            "I 640 SD",
+            "I 740 GD",
+            "I 790 GDW",
+            "I 7900 GD",
+            "I 7400 GD",
+            "I 7400 PLUS",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },

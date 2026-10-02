@@ -31,27 +31,22 @@
     {
       "name": "Now (Yarı Entegre, 2022-)",
       "versions": [
-        "Standart",
+        "Cruiser 7.0 L",
         "Diğer"
       ],
       "trims": [
         "Standart",
         "Diğer"
-      ],
-      "trimsByVersion": {
-        "Standart": [
-          "Standart",
-          "Diğer"
-        ]
-      }
+      ]
     },
     {
       "name": "Neo (2020-)",
       "versions": [
-        "Neo 6800 BD",
-        "Neo 7400 QD",
-        "Cruiser",
-        "Liner",
+        "Cruiser 7.0 L",
+        "Cruiser 7.0 B",
+        "Liner 7.0 B",
+        "Liner 7.0 L",
+        "Liner 6.6 H",
         "Diğer"
       ],
       "trims": [
@@ -62,25 +57,23 @@
     {
       "name": "Noctra (Yarı Entegre, 2023-)",
       "versions": [
-        "Standart",
+        "Cruiser 7.6 L",
+        "Liner 7.6 L",
+        "Liner 8.3 L",
         "Diğer"
       ],
       "trims": [
         "Standart",
         "Diğer"
-      ],
-      "trimsByVersion": {
-        "Standart": [
-          "Standart",
-          "Diğer"
-        ]
-      }
+      ]
     },
     {
       "name": "Together (Entegre, 2023-)",
       "versions": [
-        "Overcab",
-        "Entegre",
+        "I 680 PLUS",
+        "I 740 PLUS",
+        "A 680 PLUS",
+        "A 740 PLUS",
         "Diğer"
       ],
       "trims": [
@@ -115,6 +108,22 @@
       "trims": [
         "Standart",
         "Pure",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Final Edition (Entegre)",
+      "versions": [
+        "I 640 SD",
+        "I 740 GD",
+        "I 790 GDW",
+        "I 7900 GD",
+        "I 7400 GD",
+        "I 7400 PLUS",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
         "Diğer"
       ]
     },
