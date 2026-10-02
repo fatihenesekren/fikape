@@ -46602,9 +46602,9 @@
         {
           "name": "Discovery",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
+            "D4-2",
+            "D4-4L",
+            "D4-4",
             "Diğer"
           ],
           "trims": [
@@ -46615,28 +46615,43 @@
         {
           "name": "Unicorn",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "Fransız Karyola",
+            "Villena",
+            "Lucena",
+            "Cordoba",
+            "Cornella",
+            "Madrid",
+            "Cabrera",
+            "Vigo",
+            "Cadiz",
+            "Seville",
+            "Murcia",
+            "Valencia",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Exclusive",
+            "Grande",
+            "Deluxe",
+            "Lite",
             "Diğer"
           ]
         },
         {
           "name": "Pegasus",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
+            "Turin",
+            "Brindisi",
+            "Portofino",
+            "Bologna",
+            "Messina",
+            "Amalfi",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Grande",
+            "Black Edition",
             "Diğer"
           ]
         },
@@ -46656,9 +46671,11 @@
         {
           "name": "Phoenix",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
+            "420",
+            "440",
+            "640",
+            "642",
+            "644",
             "Diğer"
           ],
           "trims": [
