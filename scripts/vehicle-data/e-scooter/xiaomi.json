@@ -156,6 +156,7 @@
     {
       "name": "Xiaomi 6 Lite (2026-)",
       "versions": [
+        "300W (500W tepe) 216Wh 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -166,6 +167,7 @@
     {
       "name": "Xiaomi 6 Pro (2026-)",
       "versions": [
+        "1000W tepe 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -176,6 +178,7 @@
     {
       "name": "Xiaomi 6 Max (2026-)",
       "versions": [
+        "1100W tepe 468Wh 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -186,6 +189,7 @@
     {
       "name": "Xiaomi 6 Ultra (2026-)",
       "versions": [
+        "1200W tepe 585Wh 25km/h",
         "Diğer"
       ],
       "trims": [

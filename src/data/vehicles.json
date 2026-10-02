@@ -40540,6 +40540,7 @@
         {
           "name": "Go Stellar",
           "versions": [
+            "Çift motor 2000W tepe 48V 13.5Ah 51km/h",
             "Diğer"
           ],
           "trims": [
@@ -40550,6 +40551,7 @@
         {
           "name": "City 2.0",
           "versions": [
+            "1900W 48V 18Ah 51km/h",
             "Diğer"
           ],
           "trims": [
@@ -40560,6 +40562,7 @@
         {
           "name": "City Stellar",
           "versions": [
+            "Çift 1200W 48V 864Wh 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -40580,6 +40583,7 @@
         {
           "name": "Phantom 2.0 Stellar",
           "versions": [
+            "Çift 3350W 60V 30Ah 85km/h",
             "Diğer"
           ],
           "trims": [
@@ -40931,6 +40935,7 @@
         {
           "name": "X Limited",
           "versions": [
+            "Çift 6200W 84V 60Ah",
             "Diğer"
           ],
           "trims": [
@@ -40941,6 +40946,7 @@
         {
           "name": "Sonic Alien",
           "versions": [
+            "72V 40Ah 100km/h",
             "Diğer"
           ],
           "trims": [
@@ -40951,6 +40957,7 @@
         {
           "name": "Thunder 3",
           "versions": [
+            "Çift 5500W 72V 40Ah",
             "Diğer"
           ],
           "trims": [
@@ -40961,6 +40968,7 @@
         {
           "name": "Spider Max",
           "versions": [
+            "Çift 2000W 60V 30Ah",
             "Diğer"
           ],
           "trims": [
@@ -40971,6 +40979,8 @@
         {
           "name": "Victor Luxury+ / Victor Limited",
           "versions": [
+            "Limited Çift 2125W 60V 35Ah",
+            "Luxury+ 2.0 Çift 2125W 60V 31.5Ah",
             "Diğer"
           ],
           "trims": [
@@ -40981,6 +40991,7 @@
         {
           "name": "Rovoron R7 Pro",
           "versions": [
+            "Çift 900W (3300W tepe) 60V 42.4Ah",
             "Diğer"
           ],
           "trims": [
@@ -40991,6 +41002,7 @@
         {
           "name": "Forever 2.0",
           "versions": [
+            "Çift 1500W 60V 18.2Ah",
             "Diğer"
           ],
           "trims": [
@@ -41208,6 +41220,7 @@
         {
           "name": "GMax",
           "versions": [
+            "350W 36V 17.5Ah 32km/h",
             "Diğer"
           ],
           "trims": [
@@ -41218,6 +41231,7 @@
         {
           "name": "GX Zero",
           "versions": [
+            "Çift 500W 36V 16Ah 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -41228,6 +41242,8 @@
         {
           "name": "GX1 / GX2",
           "versions": [
+            "GX1 Çift 600W 720Wh 48km/h",
+            "GX2 Çift 800W 960Wh 56km/h",
             "Diğer"
           ],
           "trims": [
@@ -41238,6 +41254,7 @@
         {
           "name": "Flex",
           "versions": [
+            "350W 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -41248,6 +41265,7 @@
         {
           "name": "G3",
           "versions": [
+            "G3 Plus 300W 29km/h",
             "Diğer"
           ],
           "trims": [
@@ -41449,6 +41467,7 @@
         {
           "name": "RS Lite",
           "versions": [
+            "Çift 1500W 72V 30Ah 90km/h",
             "Diğer"
           ],
           "trims": [
@@ -41459,6 +41478,7 @@
         {
           "name": "RS Jet",
           "versions": [
+            "Çift 1200W 72V 25Ah 80km/h",
             "Diğer"
           ],
           "trims": [
@@ -41748,6 +41768,7 @@
         {
           "name": "Mantis 10 Plus V2",
           "versions": [
+            "Çift 1000W 60V 24.5Ah 70km/h",
             "Diğer"
           ],
           "trims": [
@@ -41758,6 +41779,7 @@
         {
           "name": "Mantis King Pro",
           "versions": [
+            "Çift 1100W 60V 24Ah 69km/h",
             "Diğer"
           ],
           "trims": [
@@ -41768,6 +41790,7 @@
         {
           "name": "Wolf King GT Pro",
           "versions": [
+            "Çift 2000W 72V 35Ah 100km/h",
             "Diğer"
           ],
           "trims": [
@@ -41778,6 +41801,7 @@
         {
           "name": "Wolf King GTR Max",
           "versions": [
+            "Çift 2000W 72V 40Ah 105km/h",
             "Diğer"
           ],
           "trims": [
@@ -41788,6 +41812,7 @@
         {
           "name": "Skywalker 8H",
           "versions": [
+            "500W",
             "Diğer"
           ],
           "trims": [
@@ -41914,6 +41939,7 @@
         {
           "name": "S1 Max",
           "versions": [
+            "350W 30km/h",
             "Diğer"
           ],
           "trims": [
@@ -41924,6 +41950,7 @@
         {
           "name": "S3 Pro",
           "versions": [
+            "350W 36V 7.5Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -41934,6 +41961,7 @@
         {
           "name": "G2 Max",
           "versions": [
+            "1000W 48V 20Ah 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -41944,6 +41972,7 @@
         {
           "name": "G2 Master",
           "versions": [
+            "Çift 1000W 52V 20.8Ah 60km/h",
             "Diğer"
           ],
           "trims": [
@@ -41954,6 +41983,7 @@
         {
           "name": "G3 Pro",
           "versions": [
+            "Çift 1200W 52V 23.4Ah 65km/h",
             "Diğer"
           ],
           "trims": [
@@ -41964,6 +41994,7 @@
         {
           "name": "G2 Ultra",
           "versions": [
+            "Çift 800W 48V 18Ah 50km/h",
             "Diğer"
           ],
           "trims": [
@@ -42032,6 +42063,7 @@
         {
           "name": "ES10P",
           "versions": [
+            "Çift 1000W 52V 23.4Ah 70km/h",
             "Diğer"
           ],
           "trims": [
@@ -42136,6 +42168,9 @@
         {
           "name": "GT3 / GT3 Pro / GT3 Max",
           "versions": [
+            "GT3 700W tepe 358Wh 32km/h",
+            "GT3 Pro 400W (1000W tepe) 477Wh 32km/h",
+            "GT3 Max 400W (1000W tepe) 597Wh 32km/h",
             "Diğer"
           ],
           "trims": [
@@ -42146,6 +42181,7 @@
         {
           "name": "ST3 / ST3 Pro",
           "versions": [
+            "ST3 Pro 600W 48V 12.75Ah",
             "Diğer"
           ],
           "trims": [
@@ -42156,6 +42192,7 @@
         {
           "name": "N65i II",
           "versions": [
+            "1000W 40km/h",
             "Diğer"
           ],
           "trims": [
@@ -42281,6 +42318,9 @@
         {
           "name": "KQi3 Pro / KQi3 Max / KQi3 Sport",
           "versions": [
+            "Sport 300W 365Wh 28km/h",
+            "Pro 350W 487Wh 32km/h",
+            "Max 450W 608Wh 38km/h",
             "Diğer"
           ],
           "trims": [
@@ -42397,6 +42437,7 @@
         {
           "name": "Zippy Pro ES52",
           "versions": [
+            "300W 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42407,6 +42448,7 @@
         {
           "name": "Neon Lite ES10",
           "versions": [
+            "300W 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42493,6 +42535,8 @@
         {
           "name": "Air6 / Air6 Pro+ (Süspansiyonlu)",
           "versions": [
+            "Air6 924W tepe 25km/h",
+            "Air6 Pro+ 1200W tepe 468Wh",
             "Diğer"
           ],
           "trims": [
@@ -42503,6 +42547,8 @@
         {
           "name": "Air6 Ultra / Ultra Max",
           "versions": [
+            "Ultra 500W (1200W tepe) 624Wh",
+            "Ultra Max 1900W tepe",
             "Diğer"
           ],
           "trims": [
@@ -42513,6 +42559,7 @@
         {
           "name": "Escape Pro+",
           "versions": [
+            "924W tepe 36V 12Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42618,6 +42665,7 @@
         {
           "name": "E Prime III",
           "versions": [
+            "250W 36V 29km/h",
             "Diğer"
           ],
           "trims": [
@@ -42628,6 +42676,7 @@
         {
           "name": "EcoSmart Cargo",
           "versions": [
+            "1000W 32km/h",
             "Diğer"
           ],
           "trims": [
@@ -42991,6 +43040,7 @@
         {
           "name": "Ninebot GT3 / GT3 Pro (Performans)",
           "versions": [
+            "GT3 Pro Çift 3500W 72V 2160Wh 80km/h",
             "Diğer"
           ],
           "trims": [
@@ -43247,6 +43297,7 @@
         {
           "name": "Xiaomi 6 Lite (2026-)",
           "versions": [
+            "300W (500W tepe) 216Wh 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43257,6 +43308,7 @@
         {
           "name": "Xiaomi 6 Pro (2026-)",
           "versions": [
+            "1000W tepe 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43267,6 +43319,7 @@
         {
           "name": "Xiaomi 6 Max (2026-)",
           "versions": [
+            "1100W tepe 468Wh 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43277,6 +43330,7 @@
         {
           "name": "Xiaomi 6 Ultra (2026-)",
           "versions": [
+            "1200W tepe 585Wh 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43413,6 +43467,7 @@
         {
           "name": "KS5 Pro",
           "versions": [
+            "700W tepe 36V 15.6Ah 35km/h",
             "Diğer"
           ],
           "trims": [
@@ -43459,6 +43514,7 @@
         {
           "name": "8",
           "versions": [
+            "500W 48V 13Ah 40km/h",
             "Diğer"
           ],
           "trims": [
@@ -43469,6 +43525,7 @@
         {
           "name": "9",
           "versions": [
+            "600W (1200W tepe) 624Wh 46km/h",
             "Diğer"
           ],
           "trims": [
@@ -43479,6 +43536,7 @@
         {
           "name": "10",
           "versions": [
+            "1600W 48km/h",
             "Diğer"
           ],
           "trims": [
@@ -43489,6 +43547,7 @@
         {
           "name": "8X",
           "versions": [
+            "1600W 936Wh 53km/h",
             "Diğer"
           ],
           "trims": [
@@ -43598,6 +43657,7 @@
         {
           "name": "Air 20S (Katlanabilir)",
           "versions": [
+            "250W 36V 9.6Ah",
             "Diğer"
           ],
           "trims": [
@@ -43608,6 +43668,8 @@
         {
           "name": "Air 20 Pro / Ultra (Katlanabilir)",
           "versions": [
+            "Pro 250W 37V 10Ah",
+            "Ultra 250W 37V 10Ah",
             "Diğer"
           ],
           "trims": [
@@ -43618,6 +43680,7 @@
         {
           "name": "Air 28 / Air 28 Pro / Ultra (Şehir)",
           "versions": [
+            "Air 28 250W 36V 9.6Ah",
             "Diğer"
           ],
           "trims": [
@@ -43628,6 +43691,7 @@
         {
           "name": "Air 30 Pro / Ultra (Şehir, Otomatik Vites)",
           "versions": [
+            "37V 10Ah 370Wh",
             "Diğer"
           ],
           "trims": [
@@ -43638,6 +43702,7 @@
         {
           "name": "Air Carbon Pro",
           "versions": [
+            "37V 10Ah 370Wh",
             "Diğer"
           ],
           "trims": [
@@ -43648,6 +43713,7 @@
         {
           "name": "Air One Pro / Ultra",
           "versions": [
+            "370Wh",
             "Diğer"
           ],
           "trims": [
@@ -43814,6 +43880,7 @@
         {
           "name": "Current (Şehir)",
           "versions": [
+            "750W Ultro X 800Wh",
             "Diğer"
           ],
           "trims": [
@@ -44052,6 +44119,8 @@
         {
           "name": "Adventure Neo (Şehir)",
           "versions": [
+            "Allroad EQ 250W Bafang G020 418Wh",
+            "Neo 4 250W Bosch Active Line 400Wh",
             "Diğer"
           ],
           "trims": [
@@ -44062,6 +44131,7 @@
         {
           "name": "Treadwell Neo (Şehir Konfor)",
           "versions": [
+            "250W Hyena 250Wh",
             "Diğer"
           ],
           "trims": [
@@ -44256,6 +44326,7 @@
         {
           "name": "Cowboy Classic (2021-)",
           "versions": [
+            "250W Arka Göbek Motor 360Wh",
             "Diğer"
           ],
           "trims": [
@@ -44585,6 +44656,7 @@
         {
           "name": "M2 (E-MTB)",
           "versions": [
+            "250W 36V 15Ah 540Wh",
             "Diğer"
           ],
           "trims": [
@@ -44719,6 +44791,7 @@
         {
           "name": "L20 (Şehir)",
           "versions": [
+            "250W 48V 13.5Ah 648Wh",
             "Diğer"
           ],
           "trims": [
@@ -44729,6 +44802,7 @@
         {
           "name": "E26",
           "versions": [
+            "250W Orta Motor 48V 15Ah 720Wh",
             "Diğer"
           ],
           "trims": [
@@ -44749,6 +44823,7 @@
         {
           "name": "Engine Pro 3.0 (Fat Tire Katlanabilir)",
           "versions": [
+            "250W 48V 15Ah 720Wh",
             "Diğer"
           ],
           "trims": [
@@ -44759,6 +44834,7 @@
         {
           "name": "EP-2 Boost (Fat Tire Katlanabilir)",
           "versions": [
+            "250W 55Nm",
             "Diğer"
           ],
           "trims": [
@@ -44868,6 +44944,7 @@
         {
           "name": "Voyager (Şehir)",
           "versions": [
+            "250W Bafang 48V 10Ah 480Wh",
             "Diğer"
           ],
           "trims": [
@@ -44878,6 +44955,7 @@
         {
           "name": "Star (Trekking)",
           "versions": [
+            "250W 48V 25Ah",
             "Diğer"
           ],
           "trims": [
@@ -45002,6 +45080,7 @@
         {
           "name": "D3 Pro (Katlanabilir)",
           "versions": [
+            "250W 36V 7.8Ah",
             "Diğer"
           ],
           "trims": [
@@ -45081,6 +45160,7 @@
         {
           "name": "Gotour X (Konfor Trekking)",
           "versions": [
+            "Bosch Performance Line PX 90Nm",
             "Diğer"
           ],
           "trims": [
@@ -45091,6 +45171,7 @@
         {
           "name": "Uproc X (E-MTB All-Mountain)",
           "versions": [
+            "Bosch Performance Line CX Gen5",
             "Diğer"
           ],
           "trims": [
@@ -45687,6 +45768,8 @@
         {
           "name": "Hero",
           "versions": [
+            "750W Orta Motor 48V 18Ah",
+            "1000W Göbek Motor 48V 18Ah",
             "Diğer"
           ],
           "trims": [
@@ -45697,6 +45780,7 @@
         {
           "name": "Horizon (Şehir)",
           "versions": [
+            "750W 48V 14.4Ah 692Wh",
             "Diğer"
           ],
           "trims": [
@@ -45707,6 +45791,7 @@
         {
           "name": "Cityscape",
           "versions": [
+            "350W 36V 10Ah",
             "Diğer"
           ],
           "trims": [
@@ -45727,6 +45812,7 @@
         {
           "name": "Sola",
           "versions": [
+            "500W 48V 12Ah",
             "Diğer"
           ],
           "trims": [
@@ -45796,6 +45882,7 @@
         {
           "name": "C20 (Şehir)",
           "versions": [
+            "250W 36V 10Ah",
             "Diğer"
           ],
           "trims": [
@@ -45806,6 +45893,7 @@
         {
           "name": "ZB20 (Katlanabilir Fat Tire)",
           "versions": [
+            "250W 36V 10Ah",
             "Diğer"
           ],
           "trims": [
@@ -45826,6 +45914,7 @@
         {
           "name": "C30R / C30S (Şehir)",
           "versions": [
+            "250W 36V 10Ah",
             "Diğer"
           ],
           "trims": [
@@ -46005,6 +46094,7 @@
         {
           "name": "Macina Race (Yol/Sport)",
           "versions": [
+            "Bosch Performance SX 400Wh",
             "Diğer"
           ],
           "trims": [
@@ -46215,6 +46305,7 @@
         {
           "name": "XP Trike (Trisiklet)",
           "versions": [
+            "500W 48V 14Ah 672Wh",
             "Diğer"
           ],
           "trims": [
@@ -46225,6 +46316,8 @@
         {
           "name": "XPress (Şehir)",
           "versions": [
+            "500W 10.4Ah",
+            "750W 14Ah",
             "Diğer"
           ],
           "trims": [
@@ -46481,6 +46574,7 @@
         {
           "name": "RadExpand (Katlanabilir)",
           "versions": [
+            "750W 48V 14Ah 672Wh",
             "Diğer"
           ],
           "trims": [
@@ -46491,6 +46585,7 @@
         {
           "name": "RadMini (Katlanabilir)",
           "versions": [
+            "750W 48V 14Ah 672Wh",
             "Diğer"
           ],
           "trims": [
@@ -46501,6 +46596,7 @@
         {
           "name": "RadTrike (Trisiklet)",
           "versions": [
+            "750W 48V 10Ah 480Wh",
             "Diğer"
           ],
           "trims": [
@@ -46643,6 +46739,7 @@
         {
           "name": "Homage (Konfor)",
           "versions": [
+            "Bosch PowerTube 800Wh",
             "Diğer"
           ],
           "trims": [
@@ -46653,6 +46750,7 @@
         {
           "name": "Superdelite (E-MTB Trekking)",
           "versions": [
+            "Bosch CX 1200Wh (800Wh + 400Wh çift akü)",
             "Diğer"
           ],
           "trims": [
@@ -46779,6 +46877,7 @@
         {
           "name": "Lumen eRIDE (Hafif E-MTB)",
           "versions": [
+            "360Wh (+160Wh ek akü)",
             "Diğer"
           ],
           "trims": [
@@ -47154,6 +47253,8 @@
         {
           "name": "CGO600 (Şehir)",
           "versions": [
+            "Classic 252Wh Mivice M070",
+            "Pro 360Wh",
             "Diğer"
           ],
           "trims": [
@@ -47164,6 +47265,7 @@
         {
           "name": "CGO Compact (Şehir)",
           "versions": [
+            "500Wh",
             "Diğer"
           ],
           "trims": [
@@ -47174,6 +47276,7 @@
         {
           "name": "AGO X",
           "versions": [
+            "Bafang M410 504Wh",
             "Diğer"
           ],
           "trims": [
@@ -47184,6 +47287,7 @@
         {
           "name": "AGO Air",
           "versions": [
+            "Tenways Orta Motor 562Wh",
             "Diğer"
           ],
           "trims": [
@@ -47194,6 +47298,7 @@
         {
           "name": "AGO Performance",
           "versions": [
+            "Bosch Performance Line 75Nm 540Wh",
             "Diğer"
           ],
           "trims": [
@@ -47204,6 +47309,7 @@
         {
           "name": "Longtail Duo (Kargo)",
           "versions": [
+            "250W Bafang M410 720Wh",
             "Diğer"
           ],
           "trims": [
@@ -47214,6 +47320,7 @@
         {
           "name": "Cargo One (Kargo)",
           "versions": [
+            "250W Orta Motor 504Wh",
             "Diğer"
           ],
           "trims": [

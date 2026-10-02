@@ -66,6 +66,8 @@
     {
       "name": "Air6 / Air6 Pro+ (Süspansiyonlu)",
       "versions": [
+        "Air6 924W tepe 25km/h",
+        "Air6 Pro+ 1200W tepe 468Wh",
         "Diğer"
       ],
       "trims": [
@@ -76,6 +78,8 @@
     {
       "name": "Air6 Ultra / Ultra Max",
       "versions": [
+        "Ultra 500W (1200W tepe) 624Wh",
+        "Ultra Max 1900W tepe",
         "Diğer"
       ],
       "trims": [
@@ -86,6 +90,7 @@
     {
       "name": "Escape Pro+",
       "versions": [
+        "924W tepe 36V 12Ah 25km/h",
         "Diğer"
       ],
       "trims": [

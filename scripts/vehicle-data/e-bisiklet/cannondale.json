@@ -98,6 +98,8 @@
     {
       "name": "Adventure Neo (Şehir)",
       "versions": [
+        "Allroad EQ 250W Bafang G020 418Wh",
+        "Neo 4 250W Bosch Active Line 400Wh",
         "Diğer"
       ],
       "trims": [
@@ -108,6 +110,7 @@
     {
       "name": "Treadwell Neo (Şehir Konfor)",
       "versions": [
+        "250W Hyena 250Wh",
         "Diğer"
       ],
       "trims": [

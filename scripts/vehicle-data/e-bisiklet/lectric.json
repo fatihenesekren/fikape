@@ -71,6 +71,7 @@
     {
       "name": "XP Trike (Trisiklet)",
       "versions": [
+        "500W 48V 14Ah 672Wh",
         "Diğer"
       ],
       "trims": [
@@ -81,6 +82,8 @@
     {
       "name": "XPress (Şehir)",
       "versions": [
+        "500W 10.4Ah",
+        "750W 14Ah",
         "Diğer"
       ],
       "trims": [

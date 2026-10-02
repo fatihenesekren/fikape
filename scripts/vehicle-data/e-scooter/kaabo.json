@@ -143,6 +143,7 @@
     {
       "name": "Mantis 10 Plus V2",
       "versions": [
+        "Çift 1000W 60V 24.5Ah 70km/h",
         "Diğer"
       ],
       "trims": [
@@ -153,6 +154,7 @@
     {
       "name": "Mantis King Pro",
       "versions": [
+        "Çift 1100W 60V 24Ah 69km/h",
         "Diğer"
       ],
       "trims": [
@@ -163,6 +165,7 @@
     {
       "name": "Wolf King GT Pro",
       "versions": [
+        "Çift 2000W 72V 35Ah 100km/h",
         "Diğer"
       ],
       "trims": [
@@ -173,6 +176,7 @@
     {
       "name": "Wolf King GTR Max",
       "versions": [
+        "Çift 2000W 72V 40Ah 105km/h",
         "Diğer"
       ],
       "trims": [
@@ -183,6 +187,7 @@
     {
       "name": "Skywalker 8H",
       "versions": [
+        "500W",
         "Diğer"
       ],
       "trims": [

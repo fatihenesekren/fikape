@@ -84,6 +84,8 @@
     {
       "name": "Hero",
       "versions": [
+        "750W Orta Motor 48V 18Ah",
+        "1000W Göbek Motor 48V 18Ah",
         "Diğer"
       ],
       "trims": [
@@ -94,6 +96,7 @@
     {
       "name": "Horizon (Şehir)",
       "versions": [
+        "750W 48V 14.4Ah 692Wh",
         "Diğer"
       ],
       "trims": [
@@ -104,6 +107,7 @@
     {
       "name": "Cityscape",
       "versions": [
+        "350W 36V 10Ah",
         "Diğer"
       ],
       "trims": [
@@ -124,6 +128,7 @@
     {
       "name": "Sola",
       "versions": [
+        "500W 48V 12Ah",
         "Diğer"
       ],
       "trims": [

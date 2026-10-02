@@ -317,6 +317,7 @@
     {
       "name": "X Limited",
       "versions": [
+        "Çift 6200W 84V 60Ah",
         "Diğer"
       ],
       "trims": [
@@ -327,6 +328,7 @@
     {
       "name": "Sonic Alien",
       "versions": [
+        "72V 40Ah 100km/h",
         "Diğer"
       ],
       "trims": [
@@ -337,6 +339,7 @@
     {
       "name": "Thunder 3",
       "versions": [
+        "Çift 5500W 72V 40Ah",
         "Diğer"
       ],
       "trims": [
@@ -347,6 +350,7 @@
     {
       "name": "Spider Max",
       "versions": [
+        "Çift 2000W 60V 30Ah",
         "Diğer"
       ],
       "trims": [
@@ -357,6 +361,8 @@
     {
       "name": "Victor Luxury+ / Victor Limited",
       "versions": [
+        "Limited Çift 2125W 60V 35Ah",
+        "Luxury+ 2.0 Çift 2125W 60V 31.5Ah",
         "Diğer"
       ],
       "trims": [
@@ -367,6 +373,7 @@
     {
       "name": "Rovoron R7 Pro",
       "versions": [
+        "Çift 900W (3300W tepe) 60V 42.4Ah",
         "Diğer"
       ],
       "trims": [
@@ -377,6 +384,7 @@
     {
       "name": "Forever 2.0",
       "versions": [
+        "Çift 1500W 60V 18.2Ah",
         "Diğer"
       ],
       "trims": [

@@ -105,6 +105,9 @@
     {
       "name": "KQi3 Pro / KQi3 Max / KQi3 Sport",
       "versions": [
+        "Sport 300W 365Wh 28km/h",
+        "Pro 350W 487Wh 32km/h",
+        "Max 450W 608Wh 38km/h",
         "Diğer"
       ],
       "trims": [

@@ -84,6 +84,9 @@
     {
       "name": "GT3 / GT3 Pro / GT3 Max",
       "versions": [
+        "GT3 700W tepe 358Wh 32km/h",
+        "GT3 Pro 400W (1000W tepe) 477Wh 32km/h",
+        "GT3 Max 400W (1000W tepe) 597Wh 32km/h",
         "Diğer"
       ],
       "trims": [
@@ -94,6 +97,7 @@
     {
       "name": "ST3 / ST3 Pro",
       "versions": [
+        "ST3 Pro 600W 48V 12.75Ah",
         "Diğer"
       ],
       "trims": [
@@ -104,6 +108,7 @@
     {
       "name": "N65i II",
       "versions": [
+        "1000W 40km/h",
         "Diğer"
       ],
       "trims": [

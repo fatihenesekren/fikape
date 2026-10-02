@@ -86,6 +86,7 @@
     {
       "name": "GMax",
       "versions": [
+        "350W 36V 17.5Ah 32km/h",
         "Diğer"
       ],
       "trims": [
@@ -96,6 +97,7 @@
     {
       "name": "GX Zero",
       "versions": [
+        "Çift 500W 36V 16Ah 45km/h",
         "Diğer"
       ],
       "trims": [
@@ -106,6 +108,8 @@
     {
       "name": "GX1 / GX2",
       "versions": [
+        "GX1 Çift 600W 720Wh 48km/h",
+        "GX2 Çift 800W 960Wh 56km/h",
         "Diğer"
       ],
       "trims": [
@@ -116,6 +120,7 @@
     {
       "name": "Flex",
       "versions": [
+        "350W 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -126,6 +131,7 @@
     {
       "name": "G3",
       "versions": [
+        "G3 Plus 300W 29km/h",
         "Diğer"
       ],
       "trims": [

@@ -87,6 +87,7 @@
     {
       "name": "Air 20S (Katlanabilir)",
       "versions": [
+        "250W 36V 9.6Ah",
         "Diğer"
       ],
       "trims": [
@@ -97,6 +98,8 @@
     {
       "name": "Air 20 Pro / Ultra (Katlanabilir)",
       "versions": [
+        "Pro 250W 37V 10Ah",
+        "Ultra 250W 37V 10Ah",
         "Diğer"
       ],
       "trims": [
@@ -107,6 +110,7 @@
     {
       "name": "Air 28 / Air 28 Pro / Ultra (Şehir)",
       "versions": [
+        "Air 28 250W 36V 9.6Ah",
         "Diğer"
       ],
       "trims": [
@@ -117,6 +121,7 @@
     {
       "name": "Air 30 Pro / Ultra (Şehir, Otomatik Vites)",
       "versions": [
+        "37V 10Ah 370Wh",
         "Diğer"
       ],
       "trims": [
@@ -127,6 +132,7 @@
     {
       "name": "Air Carbon Pro",
       "versions": [
+        "37V 10Ah 370Wh",
         "Diğer"
       ],
       "trims": [
@@ -137,6 +143,7 @@
     {
       "name": "Air One Pro / Ultra",
       "versions": [
+        "370Wh",
         "Diğer"
       ],
       "trims": [
