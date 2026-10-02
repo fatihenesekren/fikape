@@ -1,3 +1,4 @@
+import { wikimediaGenislet } from "@/lib/wikimediaThumb";
 // Wikipedia düz metin araması "ilk sonucu kör güvenle al" yaklaşımı yanlış
 // eşleşmeler üretiyordu (ör. Abarth modellerine Fiat fotoğrafı, farklı Alfa
 // Romeo nesillerine aynı/yanlış nesil fotoğrafı, bazı modellere sadece marka
@@ -89,7 +90,7 @@ async function thumbnailForTitle(title: string): Promise<string | null> {
     );
     if (!res.ok) return null;
     const data = (await res.json()) as { thumbnail?: { source: string } };
-    return data.thumbnail?.source ?? null;
+    return wikimediaGenislet(data.thumbnail?.source);
   } catch { return null; }
 }
 

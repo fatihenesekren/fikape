@@ -132,7 +132,7 @@ export default async function GarajimPage() {
   const soldVehicles   = userProducts.filter((up) => up.ownershipStatus === "PAST");
 
   function VehicleCard({
-    product, reviews, soldReason, soldReasonNote, soldAt, isSold, userProductId,
+    product, reviews, soldReason, soldReasonNote, soldAt, isSold, userProductId, oncelikli,
   }: {
     product: (typeof userProducts)[0]["product"];
     reviews: (typeof userProducts)[0]["reviews"];
@@ -141,6 +141,8 @@ export default async function GarajimPage() {
     soldAt?: Date | null;
     isSold?: boolean;
     userProductId: number;
+    /** Sayfanın en üstündeki (ekran içindeki) ilk kart: görsel gecikmeli değil öncelikli yüklenir (LCP). */
+    oncelikli?: boolean;
   }) {
     const attrs = product.attributes as Record<string, unknown>;
     const fuelType = String(attrs.fuel_type ?? "");
@@ -176,13 +178,28 @@ export default async function GarajimPage() {
         >
           {product.imageUrl ? (
             // next/image: boyutlandırılmış/WebP-AVIF çıktı + lazy yükleme (önceden ham <img> orijinal dosyayı indiriyordu)
-            <Image
-              src={product.imageUrl}
-              alt={stripGenRangeAnywhere(product.name)}
-              fill
-              sizes="(max-width: 768px) 100vw, 700px"
-              className="object-cover"
-            />
+            <>
+              {/* Bulanık arka plan (araç detay sayfasındaki PhotoSlider ile aynı yöntem): kare/dikey kaynak fotoğraflar
+                  (e-scooter, motosiklet) 2:1 kutuda object-cover ile yarıya kırpılıyordu. Ön görsel object-contain ile
+                  tam görünür; aynı adres/sizes olduğu için ikinci istek oluşmaz (tarayıcı önbelleği). */}
+              <Image
+                src={product.imageUrl}
+                alt=""
+                aria-hidden="true"
+                fill
+                sizes="(max-width: 768px) 100vw, 736px"
+                preload={oncelikli}
+                className="object-cover scale-110 blur-xl opacity-60"
+              />
+              <Image
+                src={product.imageUrl}
+                alt={stripGenRangeAnywhere(product.name)}
+                fill
+                sizes="(max-width: 768px) 100vw, 736px"
+                preload={oncelikli}
+                className="object-contain"
+              />
+            </>
           ) : (
             <span className="text-5xl opacity-20 select-none">🚗</span>
           )}
@@ -324,8 +341,8 @@ export default async function GarajimPage() {
                   Garajımdaki Araçlar
                 </h2>
               )}
-              {activeVehicles.map(({ id, product, reviews }) => (
-                <VehicleCard key={product.id} product={product} reviews={reviews} userProductId={id} />
+              {activeVehicles.map(({ id, product, reviews }, i) => (
+                <VehicleCard key={product.id} product={product} reviews={reviews} userProductId={id} oncelikli={i === 0} />
               ))}
             </div>
           )}

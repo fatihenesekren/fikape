@@ -1,3 +1,4 @@
+import { wikimediaGenislet } from "@/lib/wikimediaThumb";
 import { stripModelGenRange } from "@/lib/modelDisplay";
 
 // Wikipedia API etiket kuralı: tanımlayıcı bir User-Agent olmadan yapılan
@@ -35,7 +36,7 @@ export async function getVehicleImageUrl(slug: string): Promise<string | null> {
     const data = (await res.json()) as { thumbnail?: { source: string } };
     const src = data.thumbnail?.source;
     if (!src) return null;
-    return src;
+    return wikimediaGenislet(src);
   } catch {
     return null;
   }
@@ -73,7 +74,7 @@ export async function searchWikipediaImage(
     );
     if (!summaryRes.ok) return null;
     const summaryData = await summaryRes.json();
-    return summaryData.thumbnail?.source ?? null;
+    return wikimediaGenislet(summaryData.thumbnail?.source);
   } catch {
     return null;
   }
