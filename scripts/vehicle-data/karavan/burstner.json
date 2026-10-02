@@ -33,8 +33,24 @@
     {
       "name": "Lyseo",
       "versions": [
-        "4 Kişilik",
-        "6 Kişilik",
+        "Time 690 G",
+        "Time 726 G",
+        "Time 732",
+        "TD 594",
+        "TD 644 G",
+        "TD 684 G",
+        "TD 690 G",
+        "TD 727 G",
+        "TD 732",
+        "TD 736",
+        "TD 744",
+        "Gallery TD 649 G",
+        "Gallery TD 689 G",
+        "I 690 G",
+        "I 726 G",
+        "I 727 G",
+        "I 736 G",
+        "I 744",
         "Diğer"
       ],
       "trims": [
@@ -72,7 +88,8 @@
     {
       "name": "Elegance (Motokaravan)",
       "versions": [
-        "Entegre",
+        "I 910 G",
+        "I 920 G",
         "Diğer"
       ],
       "trims": [
@@ -94,8 +111,12 @@
     {
       "name": "Copa / Campeo (Kompakt Kampervan)",
       "versions": [
-        "Van Copa",
-        "Van Campeo",
+        "TD 590",
+        "TD 660",
+        "TD 676 G",
+        "TD 690 G",
+        "TD 691 G",
+        "TD 736",
         "Diğer"
       ],
       "trims": [
@@ -124,6 +145,33 @@
       "versions": [
         "510 TK",
         "520 TL",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Lineo T (Motokaravan)",
+      "versions": [
+        "T 569",
+        "T 590 G",
+        "T 620 G",
+        "T 690 G",
+        "T 700",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Travel Van (Kampervan)",
+      "versions": [
+        "T 590 G",
+        "T 620 G",
         "Diğer"
       ],
       "trims": [
