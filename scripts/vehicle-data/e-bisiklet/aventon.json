@@ -83,6 +83,16 @@
       ]
     },
     {
+      "name": "Current (Şehir)",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
       "name": "Diğer",
       "versions": [
         "Diğer"

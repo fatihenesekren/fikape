@@ -63,6 +63,8 @@
       "name": "AllTrail (E-MTB Hardtail)",
       "versions": [
         "250W Bosch 25 km/h 500Wh",
+        "250W Bosch CX 25 km/h 600Wh",
+        "250W Bosch CX 25 km/h 800Wh",
         "Diğer"
       ],
       "trims": [
@@ -70,6 +72,16 @@
         "3",
         "5",
         "7",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "SDURO (Şehir/Trekking)",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
         "Diğer"
       ]
     },

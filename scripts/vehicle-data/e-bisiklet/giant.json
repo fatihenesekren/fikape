@@ -71,12 +71,23 @@
       "name": "Reign E+ (E-MTB Enduro)",
       "versions": [
         "250W SyncDrive Pro2 25 km/h 800Wh",
+        "250W Giant SyncDrive Pro 25 km/h 800Wh",
         "Diğer"
       ],
       "trims": [
         "0",
         "1",
         "2",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Reign Advanced E+ (E-MTB Enduro, 2026-)",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
         "Diğer"
       ]
     },

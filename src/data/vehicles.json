@@ -43016,6 +43016,66 @@
           ]
         },
         {
+          "name": "Air 20S (Katlanabilir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Air 20 Pro / Ultra (Katlanabilir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Air 28 / Air 28 Pro / Ultra (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Air 30 Pro / Ultra (Şehir, Otomatik Vites)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Air Carbon Pro",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Air One Pro / Ultra",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -43164,6 +43224,16 @@
           "name": "Sinch (Katlanabilir)",
           "versions": [
             "500W 32 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Current (Şehir)",
+          "versions": [
             "Diğer"
           ],
           "trims": [
@@ -43360,6 +43430,96 @@
           ]
         },
         {
+          "name": "Habit Neo (E-MTB Trail)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Trail Neo (E-MTB)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Moterra SL (Hafif E-MTB)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Topstone Neo (Gravel)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Adventure Neo (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Treadwell Neo (Şehir Konfor)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Quick Neo (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Mavaro (Trekking)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cargowagen Neo (Kargo)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -43414,6 +43574,26 @@
           "name": "Speeddrive (Şehir/Hızlı)",
           "versions": [
             "250W Bosch 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E-Fire (Trekking/Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Backfire (E-MTB)",
+          "versions": [
             "Diğer"
           ],
           "trims": [
@@ -43494,6 +43674,16 @@
           ]
         },
         {
+          "name": "Cowboy Classic (2024-)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -43512,6 +43702,7 @@
           "versions": [
             "250W Bosch CX 25 km/h 625Wh",
             "250W Bosch CX 25 km/h 750Wh",
+            "250W Bosch CX 25 km/h 800Wh",
             "Diğer"
           ],
           "trims": [
@@ -43528,6 +43719,7 @@
           "versions": [
             "250W Bosch CX 25 km/h 500Wh",
             "250W Bosch CX 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 800Wh",
             "Diğer"
           ],
           "trims": [
@@ -43542,6 +43734,7 @@
           "versions": [
             "250W Bosch 25 km/h 500Wh",
             "250W Bosch 25 km/h 625Wh",
+            "250W Bosch CX 25 km/h 800Wh",
             "Diğer"
           ],
           "trims": [
@@ -43810,6 +44003,16 @@
           ]
         },
         {
+          "name": "M2 (E-MTB)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -43934,6 +44137,56 @@
           ]
         },
         {
+          "name": "L20 (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E26",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "P26",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Engine Pro 3.0 (Fat Tire Katlanabilir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "EP-2 Boost (Fat Tire Katlanabilir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -44025,6 +44278,26 @@
           "versions": [
             "250W 25 km/h V100",
             "250W 25 km/h V200",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Voyager (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Star (Trekking)",
+          "versions": [
             "Diğer"
           ],
           "trims": [
@@ -44147,6 +44420,16 @@
           ]
         },
         {
+          "name": "D3 Pro (Katlanabilir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -44212,6 +44495,26 @@
             "3",
             "6",
             "7",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Gotour X (Konfor Trekking)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Uproc X (E-MTB All-Mountain)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -44291,6 +44594,26 @@
           "name": "Arroyo (Şehir)",
           "versions": [
             "250W Bosch 25 km/h 400Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cayo (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "HeavyDutyNL (Güçlü Şehir/Kargo)",
+          "versions": [
             "Diğer"
           ],
           "trims": [
@@ -44382,12 +44705,23 @@
           "name": "Reign E+ (E-MTB Enduro)",
           "versions": [
             "250W SyncDrive Pro2 25 km/h 800Wh",
+            "250W Giant SyncDrive Pro 25 km/h 800Wh",
             "Diğer"
           ],
           "trims": [
             "0",
             "1",
             "2",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Reign Advanced E+ (E-MTB Enduro, 2026-)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -44480,6 +44814,16 @@
           "versions": [
             "250W 25 km/h 375Wh CX",
             "250W 25 km/h 375Wh CXi",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "G4i+ (2021-)",
+          "versions": [
             "Diğer"
           ],
           "trims": [
@@ -44644,6 +44988,8 @@
           "name": "AllTrail (E-MTB Hardtail)",
           "versions": [
             "250W Bosch 25 km/h 500Wh",
+            "250W Bosch CX 25 km/h 600Wh",
+            "250W Bosch CX 25 km/h 800Wh",
             "Diğer"
           ],
           "trims": [
@@ -44651,6 +44997,16 @@
             "3",
             "5",
             "7",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "SDURO (Şehir/Trekking)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -44749,6 +45105,56 @@
           ]
         },
         {
+          "name": "Hero",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Horizon (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cityscape",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Race",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sola",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -44800,6 +45206,46 @@
           "name": "Z16 (Katlanabilir, 2022-)",
           "versions": [
             "250W 25 km/h 36V 10Ah",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C20 (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "ZB20 (Katlanabilir Fat Tire)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Z26 (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "C30R / C30S (Şehir)",
+          "versions": [
             "Diğer"
           ],
           "trims": [
@@ -44963,6 +45409,46 @@
             "Gran",
             "Fun",
             "Cross",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Macina Prowler (E-MTB)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Macina Race (Yol/Sport)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Macina Fold (Katlanabilir Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Macina City (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -45147,6 +45633,26 @@
           ]
         },
         {
+          "name": "XP Trike (Trisiklet)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "XPress (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -45165,6 +45671,7 @@
           "versions": [
             "250W Shimano Steps E8000 25 km/h 504Wh",
             "250W Shimano Steps E8000 25 km/h 630Wh",
+            "250W Shimano EP8 25 km/h 630Wh",
             "Diğer"
           ],
           "trims": [
@@ -45244,6 +45751,7 @@
           "versions": [
             "250W Bosch CX 25 km/h 630Wh",
             "250W Bosch CX 25 km/h 750Wh",
+            "250W Bosch CX 25 km/h 600Wh",
             "Diğer"
           ],
           "trims": [
@@ -45296,6 +45804,8 @@
           "name": "Rise (E-MTB Hafif Tam Süspansiyon)",
           "versions": [
             "250W Shimano EP8 RS 25 km/h 360Wh",
+            "250W Shimano EP8 25 km/h 420Wh",
+            "250W Shimano EP8 25 km/h 630Wh",
             "Diğer"
           ],
           "trims": [
@@ -45303,6 +45813,16 @@
             "H20",
             "H30",
             "M10",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Kemen Adv / Kemen Tour (Trekking)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -45375,6 +45895,36 @@
           ],
           "trims": [
             "1",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RadExpand (Katlanabilir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RadMini (Katlanabilir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "RadTrike (Trisiklet)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -45463,6 +46013,86 @@
           "name": "Swing (Hollanda Tipi)",
           "versions": [
             "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Nevo (Şehir/Trekking)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Load (Kargo)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Multicharger (Speed Trekking)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Multitinker (Kompakt Kargo)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Homage (Konfor)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Superdelite (E-MTB Trekking)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Carrie (Kompakt Kargo)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tinker (Katlanabilir)",
+          "versions": [
             "Diğer"
           ],
           "trims": [
@@ -45563,6 +46193,16 @@
             "920",
             "930",
             "ST",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Lumen eRIDE (Hafif E-MTB)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -45669,6 +46309,36 @@
             "3.0",
             "4.0",
             "X",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Turbo Levo SL (Hafif E-MTB)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Turbo Vado SL (Hafif Trekking)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Turbo Kenevo SL (Hafif E-Enduro)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
             "Diğer"
           ]
         },
@@ -45834,6 +46504,16 @@
           }
         },
         {
+          "name": "A-Series (Modüler Batarya, 2026-)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -45884,6 +46564,76 @@
           "name": "Wayfarer (Kruvazör, 2025-)",
           "versions": [
             "500W Bafang 25 km/h",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CGO600 (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CGO Compact (Şehir)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AGO X",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AGO Air",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "AGO Performance",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Longtail Duo (Kargo)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cargo One (Kargo)",
+          "versions": [
             "Diğer"
           ],
           "trims": [
@@ -46007,6 +46757,7 @@
           "versions": [
             "250W Bosch CX 25 km/h 625Wh",
             "250W Bosch CX 25 km/h 750Wh",
+            "250W Bosch CX 25 km/h 800Wh",
             "Diğer"
           ],
           "trims": [
@@ -46176,6 +46927,16 @@
           }
         },
         {
+          "name": "S6 Open (2025-)",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
           "name": "Diğer",
           "versions": [
             "Diğer"
@@ -46241,6 +47002,36 @@
           "name": "Radius (Spor/Fitness Trekking)",
           "versions": [
             "250W Bosch 25 km/h 500Wh",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Tria",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "iRide Pure",
+          "versions": [
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E-Flitzer (Hafif Şehir)",
+          "versions": [
             "Diğer"
           ],
           "trims": [

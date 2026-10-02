@@ -6,6 +6,7 @@
       "versions": [
         "250W Bosch CX 25 km/h 630Wh",
         "250W Bosch CX 25 km/h 750Wh",
+        "250W Bosch CX 25 km/h 600Wh",
         "Diğer"
       ],
       "trims": [
@@ -58,6 +59,8 @@
       "name": "Rise (E-MTB Hafif Tam Süspansiyon)",
       "versions": [
         "250W Shimano EP8 RS 25 km/h 360Wh",
+        "250W Shimano EP8 25 km/h 420Wh",
+        "250W Shimano EP8 25 km/h 630Wh",
         "Diğer"
       ],
       "trims": [
@@ -65,6 +68,16 @@
         "H20",
         "H30",
         "M10",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Kemen Adv / Kemen Tour (Trekking)",
+      "versions": [
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
         "Diğer"
       ]
     },
