@@ -4,9 +4,15 @@
     {
       "name": "Pacific",
       "versions": [
-        "4 Kişilik",
-        "6 Kişilik",
-        "Fransız Karyola",
+        "P690GJ",
+        "P690D",
+        "P720FC",
+        "P720FGJ",
+        "P720U",
+        "P740C",
+        "P740FC",
+        "P740GJ",
+        "P740FGJ",
         "Diğer"
       ],
       "trims": [
@@ -19,13 +25,64 @@
     {
       "name": "Galaxy",
       "versions": [
-        "4 Kişilik",
-        "6 Kişilik",
+        "G690GJ",
+        "G690D",
+        "G720FC",
+        "G720FGJ",
+        "G740C",
+        "G740FC",
+        "G740GJ",
+        "G740FGJ",
+        "G741FC",
+        "G741FGJ",
+        "G781FC",
+        "G781FGJ",
         "Diğer"
       ],
       "trims": [
         "Expression",
         "Evidence",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Atlas (Dar Profilé)",
+      "versions": [
+        "A630G",
+        "A650D",
+        "A690G",
+        "A690GJ",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Fourgon (Kastenwagen)",
+      "versions": [
+        "V540G",
+        "V600G",
+        "V630J",
+        "V630S",
+        "V630B",
+        "V633M",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Van (Renault Trafic)",
+      "versions": [
+        "R907",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
         "Diğer"
       ]
     },

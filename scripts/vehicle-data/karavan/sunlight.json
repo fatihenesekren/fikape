@@ -4,12 +4,14 @@
     {
       "name": "A (Alkoven)",
       "versions": [
-        "4 Kişilik",
-        "6 Kişilik",
+        "A 60",
+        "A 68",
+        "A 70",
         "Diğer"
       ],
       "trims": [
         "Standart",
+        "Root",
         "Diğer"
       ]
     },
@@ -41,14 +43,77 @@
     {
       "name": "Cliff (Kompakt Van)",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "RT (Yükseltilebilir Tavan)",
+        "540",
+        "600",
+        "601",
+        "602",
+        "640",
         "Diğer"
       ],
       "trims": [
         "Standart",
         "Adventure",
+        "Root",
+        "X",
+        "Vanlife",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "T (Low Profile)",
+      "versions": [
+        "T 58",
+        "T 66S",
+        "T 67",
+        "T 68",
+        "T 7003S",
+        "T 7033P",
+        "T 7433S",
+        "T 7433Q",
+        "Diğer"
+      ],
+      "trims": [
+        "Root",
+        "Adventure",
+        "UNLTD",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "I (A Class)",
+      "versions": [
+        "I 67S",
+        "I 68",
+        "Diğer"
+      ],
+      "trims": [
+        "Adventure",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "V (Van)",
+      "versions": [
+        "V 60",
+        "V 66",
+        "V 67S",
+        "Diğer"
+      ],
+      "trims": [
+        "Root",
+        "Adventure",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "IBEX (Kampervan)",
+      "versions": [
+        "603D (Ford)",
+        "604D (VW)",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
         "Diğer"
       ]
     },

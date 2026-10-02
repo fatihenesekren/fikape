@@ -31,19 +31,29 @@
     {
       "name": "B-Klasse",
       "versions": [
-        "SL",
-        "DL",
+        "B-MC T 580",
+        "B-MC T 600",
+        "B-MC T 680",
+        "B-MC I 580",
+        "B-MC I 600",
+        "B-MC I 680",
+        "B-ML T 780",
+        "B-ML I 780",
+        "B-ML I 880",
         "Diğer"
       ],
       "trims": [
         "Standart",
+        "ModernComfort",
+        "MasterLine",
         "Diğer"
       ]
     },
     {
       "name": "ML-T",
       "versions": [
-        "Van",
+        "ML-T 570",
+        "ML-T 580",
         "Diğer"
       ],
       "trims": [
@@ -93,8 +103,8 @@
     {
       "name": "Exsis (Yarı Entegre/Entegre, Fiat Tabanlı)",
       "versions": [
-        "Fransız Karyola",
-        "İkiz Yatak",
+        "Exsis-t 474",
+        "Exsis-t 580",
         "Diğer"
       ],
       "trims": [
@@ -106,6 +116,18 @@
       "name": "DuoCar (Van, Mercedes Sprinter Tabanlı)",
       "versions": [
         "Van",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "GT-S",
+      "versions": [
+        "GT-S 600",
+        "GT-S 685",
         "Diğer"
       ],
       "trims": [
