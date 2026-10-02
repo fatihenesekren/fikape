@@ -2,7 +2,9 @@ import { NextResponse } from "next/server";
 import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
+import { Prisma } from "@/generated/prisma/client";
 import { resizeImageBuffer, fetchAndResizeImage } from "@/lib/imageResize";
+import { commonsDosyaAdi, commonsKredisiGetir } from "@/lib/gorselKredisi";
 
 export async function POST(
   req: Request,
@@ -69,10 +71,10 @@ export async function POST(
 
     await prisma.product.update({
       where: { id: product.id },
-      data: { imageUrl: versionedUrl },
+      data: { imageUrl: versionedUrl, imageCredit: Prisma.DbNull },
     });
 
-    return NextResponse.json({ ok: true, imageUrl: versionedUrl });
+    return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: null });
   } catch (e) {
     console.error("[admin-product]", e);
     return NextResponse.json({ error: "İşlem tamamlanamadı. Lütfen tekrar deneyin." }, { status: 500 });
@@ -118,6 +120,18 @@ export async function PATCH(
     // hep bizim kontrolümüzde oluyor (bkz. 12.8MB'lık katalog fotoğrafı
     // kart.png render'ını çökertmişti) hem de kaynak site erişilemez hale
     // gelse bile görsel canlı kalıyor.
+    // Commons adresiyse atıf bilgisi otomatik alınır; özgür lisanslı olmayan (adil kullanım) dosya reddedilir.
+    // Commons dışı kaynakta (basın kiti vb.) atıf elle girilir (…/image/credit).
+    let otomatikKredi: { yazar: string; lisans: string; lisansUrl?: string | null; kaynakUrl?: string | null } | null = null;
+    const commonsAdi = commonsDosyaAdi(imageUrl);
+    if (commonsAdi) {
+      const k = await commonsKredisiGetir(commonsAdi);
+      if (k && !k.ozgur) {
+        return NextResponse.json({ error: "Bu görsel Commons'ta özgür lisanslı değil (adil kullanım); kullanılamaz." }, { status: 422 });
+      }
+      if (k && k.ozgur) otomatikKredi = { yazar: k.yazar, lisans: k.lisans, lisansUrl: k.lisansUrl, kaynakUrl: k.kaynakUrl };
+    }
+
     const resized = await fetchAndResizeImage(imageUrl);
     if (!resized) {
       return NextResponse.json(
@@ -144,10 +158,10 @@ export async function PATCH(
 
     await prisma.product.update({
       where: { id: product.id },
-      data: { imageUrl: versionedUrl },
+      data: { imageUrl: versionedUrl, imageCredit: otomatikKredi ?? Prisma.DbNull },
     });
 
-    return NextResponse.json({ ok: true, imageUrl: versionedUrl });
+    return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: otomatikKredi });
   } catch (e) {
     console.error("[admin-product]", e);
     return NextResponse.json({ error: "İşlem tamamlanamadı. Lütfen tekrar deneyin." }, { status: 500 });

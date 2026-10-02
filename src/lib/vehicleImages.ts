@@ -1,5 +1,6 @@
 import { wikimediaGenislet } from "@/lib/wikimediaThumb";
 import { stripModelGenRange } from "@/lib/modelDisplay";
+import { commonsDosyaAdi } from "@/lib/gorselKredisi";
 
 // Wikipedia API etiket kuralı: tanımlayıcı bir User-Agent olmadan yapılan
 // istekler ardışık kullanımda hızla rate-limit'e takılıyor ("You are making
@@ -35,7 +36,8 @@ export async function getVehicleImageUrl(slug: string): Promise<string | null> {
     if (!res.ok) return null;
     const data = (await res.json()) as { thumbnail?: { source: string } };
     const src = data.thumbnail?.source;
-    if (!src) return null;
+    // Yalnız Commons (özgür lisanslı); en/tr Wikipedia'ya yerel yüklenen adil kullanım dosyaları kullanılmaz
+    if (!src || !commonsDosyaAdi(src)) return null;
     return wikimediaGenislet(src);
   } catch {
     return null;
@@ -74,7 +76,8 @@ export async function searchWikipediaImage(
     );
     if (!summaryRes.ok) return null;
     const summaryData = await summaryRes.json();
-    return wikimediaGenislet(summaryData.thumbnail?.source);
+    const kaynak = summaryData.thumbnail?.source;
+    return kaynak && commonsDosyaAdi(kaynak) ? wikimediaGenislet(kaynak) : null;
   } catch {
     return null;
   }

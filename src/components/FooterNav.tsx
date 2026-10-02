@@ -9,6 +9,7 @@ const FOOTER_LINKS = [
   { href: "/karsilastir", label: "Karşılaştır" },
   { href: "/plus", label: "Plus" },
   { href: "/gelistiriciler", label: "API" },
+  { href: "/gorsel-kaynaklari", label: "Görsel Kaynakları" },
   { href: "/gizlilik", label: "Gizlilik Politikası" },
   { href: "/kullanim-kosullari", label: "Kullanım Koşulları" },
   { href: "/uyelik-sozlesmesi", label: "Üyelik Sözleşmesi" },

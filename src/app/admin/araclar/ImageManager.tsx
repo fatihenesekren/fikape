@@ -7,6 +7,8 @@ interface Product {
   slug: string;
   name: string;
   imageUrl: string | null;
+  kredi: { yazar: string; lisans: string; lisansUrl?: string | null; kaynakUrl?: string | null } | null;
+  atifOtomatik: boolean;
 }
 
 export function ImageManager({ products, initialOnlyMissing = false }: { products: Product[]; initialOnlyMissing?: boolean }) {
@@ -20,10 +22,16 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
   const [query, setQuery] = useState("");
   const [onlyMissing, setOnlyMissing] = useState(initialOnlyMissing);
   const [blurringSlug, setBlurringSlug] = useState<string | null>(null);
+  const [onlyNoCredit, setOnlyNoCredit] = useState(false);
+  const [krediler, setKrediler] = useState<Record<string, Product["kredi"]>>(Object.fromEntries(products.map((p) => [p.slug, p.kredi])));
+  const [atifAcik, setAtifAcik] = useState<string | null>(null);
+  const [atifForm, setAtifForm] = useState({ yazar: "", lisans: "", lisansUrl: "", kaynakUrl: "" });
+  const [atifMesaj, setAtifMesaj] = useState<string | null>(null);
 
   const q = query.trim().toLocaleLowerCase("tr-TR");
   const filtered = products.filter((p) => {
     if (onlyMissing && states[p.slug]?.url) return false;
+    if (onlyNoCredit && (!states[p.slug]?.url || krediler[p.slug] || p.atifOtomatik)) return false;
     if (q && !p.name.toLocaleLowerCase("tr-TR").includes(q) && !p.slug.includes(q)) return false;
     return true;
   });
@@ -47,9 +55,23 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
       // eklemeye gerek yok, DB'ye kaydedilenle admin'in gördüğü artık aynı URL.
       setStates((s) => ({ ...s, [slug]: { loading: false, url: data.imageUrl, error: null } }));
       setUrlInputs((u) => ({ ...u, [slug]: data.imageUrl }));
+      setKrediler((k) => ({ ...k, [slug]: data.kredi ?? null }));
     } catch (e) {
       setStates((s) => ({ ...s, [slug]: { ...s[slug], loading: false, error: String(e) } }));
     }
+  }
+
+  async function atifKaydet(slug: string, otomatik: boolean) {
+    setAtifMesaj(null);
+    const res = await fetch(`/api/admin/products/${slug}/image/credit`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(otomatik ? { otomatik: true, kaynakUrl: atifForm.kaynakUrl } : atifForm),
+    });
+    const data = await parseJson(res);
+    if (!res.ok) { setAtifMesaj(data.error ?? `HTTP ${res.status}`); return; }
+    setKrediler((k) => ({ ...k, [slug]: data.kredi }));
+    setAtifAcik(null);
   }
 
   async function saveUrl(slug: string) {
@@ -65,6 +87,7 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
       const data = await parseJson(res);
       if (!res.ok) throw new Error(data.error ?? `HTTP ${res.status}`);
       setStates((s) => ({ ...s, [slug]: { loading: false, url: data.imageUrl, error: null } }));
+      setKrediler((k) => ({ ...k, [slug]: data.kredi ?? null }));
     } catch (e) {
       setStates((s) => ({ ...s, [slug]: { ...s[slug], loading: false, error: String(e) } }));
     }
@@ -104,6 +127,10 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
             onChange={(e) => setOnlyMissing(e.target.checked)}
           />
           Sadece görselsizler
+        </label>
+        <label className="flex items-center gap-1.5 text-xs text-gray-600 whitespace-nowrap select-none">
+          <input type="checkbox" checked={onlyNoCredit} onChange={(e) => setOnlyNoCredit(e.target.checked)} />
+          Atıf eksik
         </label>
         <span className="text-xs text-gray-400 whitespace-nowrap">{filtered.length} sonuç</span>
       </div>
@@ -203,6 +230,37 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
                   )}
                   <span className="text-xs text-gray-400 whitespace-nowrap">JPG/PNG/WebP, maks 5MB</span>
                 </div>
+
+                {st.url && (
+                  <div className="text-xs">
+                    {krediler[product.slug] ? (
+                      <p className="text-gray-500 break-words">Atıf: {krediler[product.slug]!.yazar} · {krediler[product.slug]!.lisans}</p>
+                    ) : product.atifOtomatik ? (
+                      <p className="text-gray-400">Atıf: Commons adresinden otomatik gösterilir</p>
+                    ) : (
+                      <p className="text-amber-700">Atıf eksik — yazar/lisans girin</p>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => { setAtifAcik(atifAcik === product.slug ? null : product.slug); setAtifMesaj(null); setAtifForm({ yazar: krediler[product.slug]?.yazar ?? "", lisans: krediler[product.slug]?.lisans ?? "", lisansUrl: krediler[product.slug]?.lisansUrl ?? "", kaynakUrl: krediler[product.slug]?.kaynakUrl ?? "" }); }}
+                      className="underline text-gray-600"
+                    >
+                      {atifAcik === product.slug ? "Kapat" : "Atıf bilgisini düzenle"}
+                    </button>
+                    {atifAcik === product.slug && (
+                      <div className="mt-2 space-y-2 rounded-lg border border-gray-100 bg-gray-50 p-3">
+                        <input value={atifForm.kaynakUrl} onChange={(e) => setAtifForm((f) => ({ ...f, kaynakUrl: e.target.value }))} placeholder="Kaynak adresi (Commons dosya sayfası: …/wiki/File:Ad.jpg)" className="w-full px-3 py-1.5 rounded-lg border border-gray-200" />
+                        <button type="button" onClick={() => void atifKaydet(product.slug, true)} className="px-3 py-1.5 rounded-lg border border-gray-300 font-medium">Commons&apos;tan otomatik çek</button>
+                        <p className="text-gray-400">veya elle girin:</p>
+                        <input value={atifForm.yazar} onChange={(e) => setAtifForm((f) => ({ ...f, yazar: e.target.value }))} placeholder="Yazar / fotoğrafçı / kurum" maxLength={200} className="w-full px-3 py-1.5 rounded-lg border border-gray-200" />
+                        <input value={atifForm.lisans} onChange={(e) => setAtifForm((f) => ({ ...f, lisans: e.target.value }))} placeholder="Lisans (örn. CC BY-SA 4.0, Basın kiti)" maxLength={80} className="w-full px-3 py-1.5 rounded-lg border border-gray-200" />
+                        <input value={atifForm.lisansUrl} onChange={(e) => setAtifForm((f) => ({ ...f, lisansUrl: e.target.value }))} placeholder="Lisans adresi (https, isteğe bağlı)" className="w-full px-3 py-1.5 rounded-lg border border-gray-200" />
+                        <button type="button" onClick={() => void atifKaydet(product.slug, false)} className="px-3 py-1.5 rounded-lg bg-gray-900 text-white font-semibold">Kaydet</button>
+                        {atifMesaj && <p className="text-red-500 break-words">{atifMesaj}</p>}
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {st.error && (
                   <p className="text-xs text-red-500 break-words">{st.error}</p>

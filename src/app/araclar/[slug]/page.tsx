@@ -11,6 +11,8 @@ import { AiSummaryCard } from "@/components/AiSummaryCard";
 import { ScrollToReview } from "./ScrollToReview";
 import { SpecGrid } from "@/components/SpecGrid";
 import { PhotoSlider } from "./PhotoSlider";
+import { GorselKredisiSatiri } from "@/components/GorselKredisiSatiri";
+import { gorselKredisi } from "@/lib/gorselKredisi";
 import { TabView } from "./TabView";
 import { OwnershipCard } from "./OwnershipCard";
 import { calcOverall } from "@/lib/fikape";
@@ -153,6 +155,8 @@ export default async function VehicleDetailPage({
   const attrs = product.attributes as Record<string, unknown>;
   const categorySlug = product.category?.slug ?? "";
   const imageUrl = product.imageUrl ?? await getVehicleImageUrl(slug);
+  // Katalog görselinin yazar/lisans atfı (kayıtlı bilgi ya da Commons adresinden)
+  const gorselAtfi = imageUrl ? await gorselKredisi(imageUrl, product.imageUrl ? product.imageCredit : null) : null;
 
   const sliderPhotos = [
     ...(imageUrl ? [{ url: imageUrl, label: "Katalog" }] : []),
@@ -881,6 +885,7 @@ export default async function VehicleDetailPage({
         photos={sliderPhotos}
         alt={`${product.brand.name} ${stripModelGenRange(product.model.name)}`}
       />
+      {gorselAtfi && <GorselKredisiSatiri kredi={gorselAtfi} />}
 
       {/* ── Spec strip ── */}
       {heroSpecs.length > 0 && (
