@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -174,11 +175,13 @@ export default async function GarajimPage() {
           style={{ background: fuelType === "EV" ? "#0f2027" : "#1a1a2e" }}
         >
           {product.imageUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            // next/image: boyutlandırılmış/WebP-AVIF çıktı + lazy yükleme (önceden ham <img> orijinal dosyayı indiriyordu)
+            <Image
               src={product.imageUrl}
               alt={stripGenRangeAnywhere(product.name)}
-              className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 700px"
+              className="object-cover"
             />
           ) : (
             <span className="text-5xl opacity-20 select-none">🚗</span>
