@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
@@ -31,7 +32,7 @@ export async function POST(
   }
 
   const { id } = await params;
-  const photoId = parseInt(id);
+  const photoId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(photoId)) return NextResponse.json({ error: "Fotoğraf bulunamadı." }, { status: 404 });
 
   const photo = await prisma.expertWorkplacePhoto.findUnique({

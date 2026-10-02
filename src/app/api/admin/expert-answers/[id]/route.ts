@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { createNotification } from "@/lib/notification";
@@ -21,7 +22,7 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const answerId = parseInt(id);
+  const answerId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(answerId)) return NextResponse.json({ error: "Geçersiz cevap." }, { status: 400 });
 
   const { action } = await req.json().catch(() => ({})) as { action?: "approve" | "reject" };

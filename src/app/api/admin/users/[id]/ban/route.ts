@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -21,7 +22,7 @@ export async function POST(
   }
 
   const { id } = await params;
-  const userId = parseInt(id);
+  const userId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(userId)) return NextResponse.json({ error: "Geçersiz kullanıcı." }, { status: 400 });
 
   const { reason } = await req.json().catch(() => ({ reason: null }));

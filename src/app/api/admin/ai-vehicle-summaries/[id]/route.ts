@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { generateSingleCardSummary } from "@/lib/ai/vehicleSummary";
@@ -19,7 +20,7 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const summaryId = parseInt(id);
+  const summaryId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(summaryId)) return NextResponse.json({ error: "Kayıt bulunamadı." }, { status: 404 });
 
   const { action } = (await req.json().catch(() => ({}))) as { action?: "approve" | "reject" | "regenerate" };

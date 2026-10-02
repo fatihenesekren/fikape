@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { tradeListingCloseSchema, formatZodError } from "@/lib/schemas";
@@ -16,7 +17,7 @@ export async function PATCH(
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
   const { id } = await params;
-  const listingId = parseInt(id);
+  const listingId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(listingId)) return NextResponse.json({ error: "Geçersiz ilan." }, { status: 400 });
 
   const userId = Number(session.user.id);

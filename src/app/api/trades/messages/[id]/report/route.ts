@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { messageReportSchema, formatZodError } from "@/lib/schemas";
@@ -20,7 +21,7 @@ export async function POST(
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
   const { id } = await params;
-  const messageId = parseInt(id);
+  const messageId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(messageId)) return NextResponse.json({ error: "Mesaj bulunamadı." }, { status: 404 });
 
   const reporterId = Number(session.user.id);

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -10,7 +11,7 @@ export async function DELETE(
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
   const { id } = await params;
-  const searchId = parseInt(id);
+  const searchId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(searchId)) return NextResponse.json({ error: "Geçersiz kayıt." }, { status: 400 });
 
   const userId = Number(session.user.id);

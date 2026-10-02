@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { checkContent } from "@/lib/reviewValidation";
@@ -16,7 +17,7 @@ export async function POST(
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
   const { id } = await params;
-  const questionId = parseInt(id);
+  const questionId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(questionId)) return NextResponse.json({ error: "Geçersiz soru." }, { status: 400 });
 
   const parsed = answerCreateSchema.safeParse(await req.json().catch(() => null));

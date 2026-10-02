@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { Prisma } from "@/generated/prisma/client";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -25,7 +26,7 @@ export async function POST(
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
   const { id } = await params;
-  const listingId = parseInt(id);
+  const listingId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(listingId)) return NextResponse.json({ error: "İlan bulunamadı." }, { status: 404 });
 
   const userId = Number(session.user.id);

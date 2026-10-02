@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -23,7 +24,7 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const profileId = parseInt(id);
+  const profileId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(profileId)) return NextResponse.json({ error: "Geçersiz profil." }, { status: 400 });
 
   const { action, reasonCode } = await req.json().catch(() => ({})) as {

@@ -1,4 +1,5 @@
 import { kullaniciLimiti } from "@/lib/userRateLimit";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { auth } from "@/auth";
@@ -19,7 +20,7 @@ export async function POST(
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
   const { id } = await params;
-  const reviewId = parseInt(id);
+  const reviewId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(reviewId)) return NextResponse.json({ error: "Geçersiz yorum." }, { status: 400 });
 
   const parsed = bodySchema.safeParse(await req.json().catch(() => null));

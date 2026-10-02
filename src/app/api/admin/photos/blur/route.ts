@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
@@ -19,7 +20,7 @@ export async function POST(req: Request) {
 
   const formData = await req.formData();
   const file = formData.get("file") as File | null;
-  const photoId = parseInt(formData.get("photoId") as string);
+  const photoId = pozitifTamsayiId(formData.get("photoId") as string) ?? NaN;
 
   if (!file || isNaN(photoId)) {
     return NextResponse.json({ error: "Eksik parametre." }, { status: 400 });

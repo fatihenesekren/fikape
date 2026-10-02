@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { createNotification } from "@/lib/notification";
@@ -18,7 +19,7 @@ export async function POST(
   if (!session?.user?.id) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
   const { id } = await params;
-  const threadId = parseInt(id);
+  const threadId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(threadId)) return NextResponse.json({ error: "Görüşme bulunamadı." }, { status: 404 });
 
   const userId = Number(session.user.id);

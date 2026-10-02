@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { checkContent } from "@/lib/reviewValidation";
@@ -20,7 +21,7 @@ export async function PATCH(
   const userId = parseInt(session.user.id);
 
   const { id } = await params;
-  const questionId = parseInt(id);
+  const questionId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(questionId)) return NextResponse.json({ error: "Geçersiz soru." }, { status: 400 });
 
   const parsed = expertNoteQuestionSchema.safeParse(await req.json().catch(() => null));
@@ -57,7 +58,7 @@ export async function DELETE(
   const userId = parseInt(session.user.id);
 
   const { id } = await params;
-  const questionId = parseInt(id);
+  const questionId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(questionId)) return NextResponse.json({ error: "Geçersiz soru." }, { status: 400 });
 
   const question = await prisma.question.findUnique({

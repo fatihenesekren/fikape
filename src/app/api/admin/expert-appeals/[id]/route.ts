@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { createNotification } from "@/lib/notification";
@@ -22,7 +23,7 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const appealId = parseInt(id);
+  const appealId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(appealId)) return NextResponse.json({ error: "Geçersiz itiraz." }, { status: 400 });
 
   const { action, decisionNote } = await req.json().catch(() => ({})) as {

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { expertContactFeedbackSchema, formatZodError } from "@/lib/schemas";
@@ -15,7 +16,7 @@ export async function POST(
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
 
   const { id } = await params;
-  const profileId = parseInt(id);
+  const profileId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(profileId)) return NextResponse.json({ error: "Geçersiz usta." }, { status: 400 });
 
   const parsed = expertContactFeedbackSchema.safeParse(await req.json().catch(() => null));

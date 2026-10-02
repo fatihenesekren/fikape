@@ -1,8 +1,13 @@
 import { z } from "zod";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { SOLD_REASONS } from "@/lib/soldReasons";
+import { pozitifTamsayiId } from "@/lib/validateId";
 
 // Ortak parçalar
+// Kimlik alanları: sayı ya da katı sayısal metin, pozitif int32 (Prisma Int taşması/tip hatası 500 vermesin).
+const idSema = z.union([z.number(), z.string()]).refine((v) => pozitifTamsayiId(v) !== null, "Geçersiz kimlik.");
+// İsteğe bağlı kimlikler: boş seçim ("") geçerli sayılır (rotalar boşu null yapıyor).
+const istegeBagliIdSema = z.union([z.number(), z.string()]).refine((v) => v === "" || pozitifTamsayiId(v) !== null, "Geçersiz kimlik.");
 const score = z.number().min(1, "Puanlar 1-10 arasında olmalıdır.").max(10, "Puanlar 1-10 arasında olmalıdır.");
 
 export const reviewCreateSchema = z.object({
@@ -100,7 +105,7 @@ export const expertApplicationSchema = z.object({
 });
 
 export const expertNoteCreateSchema = z.object({
-  modelId:    z.union([z.number(), z.string()]),
+  modelId:    idSema,
   title:      z.string().trim().min(8, "Başlık en az 8 karakter olmalıdır.").max(140, "Başlık en fazla 140 karakter olabilir."),
   body:       z.string().trim().min(120, "Not en az 120 karakter olmalıdır.").max(4000, "Not en fazla 4000 karakter olabilir."),
   structured: z.record(z.string(), z.string()).optional().nullable(),
@@ -129,7 +134,7 @@ export const expertContactFeedbackSchema = z.object({
 // Usta itirazı — not reddi VEYA görünürlük kararı (biri zorunlu, route'ta kontrol edilir).
 export const expertAppealCreateSchema = z.object({
   subjectType: z.enum(["NOTE_REJECTION", "VISIBILITY_DECISION"]),
-  noteId:      z.union([z.number(), z.string()]).optional().nullable(),
+  noteId:      istegeBagliIdSema.optional().nullable(),
   period:      z.string().regex(/^\d{4}-\d{2}$/).optional().nullable(),
   reason:      z.string().trim().min(20, "En az 20 karakter yazınız.").max(1000, "En fazla 1000 karakter yazabilirsiniz."),
 });
@@ -171,14 +176,14 @@ export const expertWorkplacePhotoUpdateSchema = z.object({
 });
 
 export const insuranceLeadSchema = z.object({
-  productId:    z.union([z.number(), z.string()]),
+  productId:    idSema,
   fullName:     z.string().trim().min(2, "Ad soyad zorunludur.").max(100),
   phone:        z.string().trim().min(10, "Geçerli bir telefon numarası giriniz.").max(20),
   consentGiven: z.literal(true, { error: "Talep göndermek için onay kutusunu işaretlemelisiniz." }),
 });
 
 export const saleLeadSchema = z.object({
-  productId:    z.union([z.number(), z.string()]),
+  productId:    idSema,
   type:         z.enum(["EXPERTISE", "QUICK_OFFER"], { error: "Geçersiz talep türü." }),
   fullName:     z.string().trim().min(2, "Ad soyad zorunludur.").max(100),
   phone:        z.string().trim().min(10, "Geçerli bir telefon numarası giriniz.").max(20),
@@ -254,9 +259,9 @@ const usageAmountRange = z.number().int()
   .max(2_000_000, "Km çok yüksek görünüyor.");
 
 export const tradeListingCreateSchema = z.object({
-  userProductId:  z.union([z.number(), z.string()]),
-  wantCategoryId: z.union([z.number(), z.string()]).optional().nullable(),
-  wantBrandId:    z.union([z.number(), z.string()]).optional().nullable(),
+  userProductId:  idSema,
+  wantCategoryId: istegeBagliIdSema.optional().nullable(),
+  wantBrandId:    istegeBagliIdSema.optional().nullable(),
   wantAnything:   z.boolean().optional(),
   note:           z.string().trim().max(300).optional().nullable(),
   description:    z.string().trim().max(2000).optional().nullable(),
@@ -275,7 +280,7 @@ const salePriceRange = z.number().int()
   .max(50_000_000, "Fiyat çok yüksek görünüyor.");
 
 export const sellVehicleSchema = z.object({
-  productId:           z.union([z.number(), z.string()]),
+  productId:           idSema,
   soldReason:          z.array(z.enum(SOLD_REASONS.map((r) => r.key) as [string, ...string[]]))
                          .min(1, "En az bir satış nedeni seçiniz."),
   soldReasonNote:      z.string().trim().max(200).optional().nullable(),
@@ -287,7 +292,7 @@ export const sellVehicleSchema = z.object({
 });
 
 export const purchaseInfoSchema = z.object({
-  productId:     z.union([z.number(), z.string()]),
+  productId:     idSema,
   purchaseMonth: z.string().regex(/^\d{4}-\d{2}$/, "Geçerli bir ay/yıl seçiniz.").optional().nullable(),
   purchasePrice: salePriceRange.optional().nullable(),
   usageAmount:   usageAmountRange.optional().nullable(),
@@ -299,8 +304,8 @@ export const tradeListingCloseSchema = z.object({
 
 export const tradeListingUpdateSchema = z.object({
   action:         z.enum(["update", "reopen", "renew"]),
-  wantCategoryId: z.union([z.number(), z.string()]).optional().nullable(),
-  wantBrandId:    z.union([z.number(), z.string()]).optional().nullable(),
+  wantCategoryId: istegeBagliIdSema.optional().nullable(),
+  wantBrandId:    istegeBagliIdSema.optional().nullable(),
   wantAnything:   z.boolean().optional(),
   note:           z.string().trim().max(300).optional().nullable(),
   description:    z.string().trim().max(2000).optional().nullable(),
@@ -322,7 +327,7 @@ export const messageCreateSchema = z.object({
 // mesajı atanın "hangi aracımla teklif ediyorum" seçimi (bkz. schema.prisma
 // MessageThread.initiatorListing notu).
 export const threadCreateSchema = messageCreateSchema.extend({
-  initiatorListingId: z.union([z.number(), z.string()]).optional().nullable(),
+  initiatorListingId: istegeBagliIdSema.optional().nullable(),
 });
 
 // Devam eden bir görüşmedeki YANIT mesajları — ilk temas mesajından (1000kk,
@@ -344,8 +349,8 @@ export const deletionRequestSchema = z.object({
 
 export const savedSearchCreateSchema = z.object({
   city:           z.enum(TURKISH_CITIES, { error: "Geçerli bir il seçiniz." }),
-  categoryId:     z.union([z.number(), z.string()]).optional().nullable(),
-  brandId:        z.union([z.number(), z.string()]).optional().nullable(),
+  categoryId:     istegeBagliIdSema.optional().nullable(),
+  brandId:        istegeBagliIdSema.optional().nullable(),
   paymentIntent:  z.enum(["SWAP_ONLY", "PAYS_EXTRA", "WANTS_EXTRA"]).optional().nullable(),
   yearMin:        z.number().int().min(1980).max(2100).optional().nullable(),
   yearMax:        z.number().int().min(1980).max(2100).optional().nullable(),

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { notifyAdmins } from "@/lib/notification";
@@ -37,16 +38,16 @@ export async function POST(req: Request) {
   const type = targetType as TargetType;
   const isProductless = PRODUCTLESS_TARGET_TYPES.includes(type);
 
-  const productIdNum = Number(productId);
-  if (!isProductless && !Number.isInteger(productIdNum)) {
+  const productIdNum = pozitifTamsayiId(productId);
+  if (!isProductless && productIdNum === null) {
     return NextResponse.json({ error: "Geçersiz araç." }, { status: 400 });
   }
 
   // workplacePhotoId — var olmayan/rastgele bir id gönderilirse admin panelinde
   // kırık bir referans oluşmasın diye önceden doğrulanır (5 alanlı review bulgusu).
   if (type === "EXPERT_WORKPLACE_PHOTO") {
-    const workplacePhotoIdNum = Number(workplacePhotoId);
-    if (!Number.isInteger(workplacePhotoIdNum)) {
+    const workplacePhotoIdNum = pozitifTamsayiId(workplacePhotoId);
+    if (workplacePhotoIdNum === null) {
       return NextResponse.json({ error: "Geçersiz fotoğraf." }, { status: 400 });
     }
     const exists = await prisma.expertWorkplacePhoto.findUnique({
@@ -62,11 +63,11 @@ export async function POST(req: Request) {
       reporterId: Number(session.user.id),
       targetType: type,
       field: type === "SPEC" && typeof field === "string" && field ? field : null,
-      photoId: type === "PHOTO" && Number.isInteger(Number(photoId)) ? Number(photoId) : null,
-      reviewId: type === "REVIEW" && Number.isInteger(Number(reviewId)) ? Number(reviewId) : null,
-      questionId: type === "QNA" && Number.isInteger(Number(questionId)) ? Number(questionId) : null,
-      expertNoteId: type === "EXPERT_NOTE" && Number.isInteger(Number(expertNoteId)) ? Number(expertNoteId) : null,
-      workplacePhotoId: type === "EXPERT_WORKPLACE_PHOTO" && Number.isInteger(Number(workplacePhotoId)) ? Number(workplacePhotoId) : null,
+      photoId: type === "PHOTO" ? pozitifTamsayiId(photoId) : null,
+      reviewId: type === "REVIEW" ? pozitifTamsayiId(reviewId) : null,
+      questionId: type === "QNA" ? pozitifTamsayiId(questionId) : null,
+      expertNoteId: type === "EXPERT_NOTE" ? pozitifTamsayiId(expertNoteId) : null,
+      workplacePhotoId: type === "EXPERT_WORKPLACE_PHOTO" ? pozitifTamsayiId(workplacePhotoId) : null,
       note: trimmedNote.slice(0, 500),
     },
   });

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { checkContent } from "@/lib/reviewValidation";
@@ -19,7 +20,7 @@ export async function PATCH(
   const userId = parseInt(session.user.id);
 
   const { id } = await params;
-  const answerId = parseInt(id);
+  const answerId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(answerId)) return NextResponse.json({ error: "Geçersiz cevap." }, { status: 400 });
 
   const parsed = answerCreateSchema.safeParse(await req.json().catch(() => null));
@@ -62,7 +63,7 @@ export async function DELETE(
   const userId = parseInt(session.user.id);
 
   const { id } = await params;
-  const answerId = parseInt(id);
+  const answerId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(answerId)) return NextResponse.json({ error: "Geçersiz cevap." }, { status: 400 });
 
   const answer = await prisma.answer.findUnique({

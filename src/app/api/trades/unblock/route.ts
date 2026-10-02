@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -15,8 +16,8 @@ export async function POST(req: Request) {
 
   const userId = Number(session.user.id);
   const body = await req.json().catch(() => ({}));
-  const blockedId = Number(body?.userId);
-  if (!Number.isInteger(blockedId)) {
+  const blockedId = pozitifTamsayiId(body?.userId);
+  if (blockedId === null) {
     return NextResponse.json({ error: "Geçersiz kullanıcı." }, { status: 400 });
   }
 

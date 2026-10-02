@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { createNotification } from "@/lib/notification";
@@ -24,7 +25,7 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const noteId = parseInt(id);
+  const noteId = pozitifTamsayiId(id) ?? NaN;
   if (isNaN(noteId)) return NextResponse.json({ error: "Geçersiz not." }, { status: 400 });
 
   const body = await req.json().catch(() => null) as
