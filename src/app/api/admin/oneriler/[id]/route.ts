@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
-import { auth } from "@/auth";
+import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
 import { calcTrustScore } from "@/lib/trustScore";
@@ -30,16 +30,8 @@ export async function POST(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const session = await auth();
-  if (!session?.user) return NextResponse.json({ error: "Yetkisiz" }, { status: 401 });
-
-  const adminUser = await prisma.user.findUnique({
-    where: { id: Number(session.user.id) },
-    select: { trustLevel: true },
-  });
-  if (!adminUser || adminUser.trustLevel < 5) {
-    return NextResponse.json({ error: "Yetkisiz" }, { status: 403 });
-  }
+  const admin = await adminOturumu();
+  if (!admin) return NextResponse.json({ error: "Yetkisiz" }, { status: 403 });
 
   const { id } = await params;
   const suggestionId = pozitifTamsayiId(id);
@@ -83,7 +75,7 @@ export async function POST(
     }
     await prisma.vehicleSuggestion.update({
       where: { id: suggestionId },
-      data: { status: "REJECTED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: Number(session.user.id) },
+      data: { status: "REJECTED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: admin.userId },
     });
     return NextResponse.json({ ok: true, action: "REJECTED" });
   }
@@ -130,32 +122,36 @@ export async function POST(
       const brandSlug = slugify(brandName);
       const modelSlug = slugify(`${brandName}-${modelName}`);
       if (!brandSlug || !modelSlug) return NextResponse.json({ error: "Marka/model alfasayısal karakter içermiyor" }, { status: 422 });
-      // Moderatör yolunda mevcut kaydın ADI da düzeltilir (ör. büyük/küçük harf, aksan farkı aynı slug'a düşer;
-      // update: {} olsaydı düzeltme sessizce etkisiz kalırdı).
-      const brand = await prisma.brand.upsert({ where: { slug: brandSlug }, update: { name: brandName }, create: { slug: brandSlug, name: brandName } });
-      const model = await prisma.model.upsert({ where: { slug: modelSlug }, update: { name: modelName }, create: { slug: modelSlug, name: modelName, brandId: brand.id } });
+      // Paylaşılan marka/model kaydının adı burada örtük olarak DEĞİŞTİRİLMEZ (tüm araçları etkilerdi); yeniden adlandırma
+      // Katalog Yönetimi > Marka / Model ekranından, denetim kaydıyla yapılır. Ürün adı kayıtlı (kanonik) adlarla kurulur.
+      const brand = await prisma.brand.upsert({ where: { slug: brandSlug }, update: {}, create: { slug: brandSlug, name: brandName } });
+      const model = await prisma.model.upsert({ where: { slug: modelSlug }, update: {}, create: { slug: modelSlug, name: modelName, brandId: brand.id } });
       if (model.brandId !== brand.id) {
         return NextResponse.json({ error: "Bu model adı başka bir markaya ait görünüyor (slug çakışması); adı farklı yazın" }, { status: 409 });
       }
-      if (suggestion.productId) {
-        const urun = await prisma.product.findUnique({ where: { id: suggestion.productId }, select: { attributes: true } });
+      const oneriId = suggestion.productId;
+      const sonOneri = await prisma.$transaction(async (tx) => {
+      if (oneriId) {
+        const urun = await tx.product.findUnique({ where: { id: oneriId }, select: { attributes: true } });
         const a = { ...((urun?.attributes && typeof urun.attributes === "object" ? urun.attributes : {}) as Record<string, unknown>) };
         if (fuelType) a.fuel_type = fuelType; else delete a.fuel_type;
         if (transmission) a.transmission = transmission; else delete a.transmission;
-        await prisma.product.update({
-          where: { id: suggestion.productId },
+        await tx.product.update({
+          where: { id: oneriId },
           data: {
             brandId: brand.id, modelId: model.id,
-            name: `${brandName} ${modelName}${trimRaw ? ` ${trimRaw}` : ""}${year ? ` ${year}` : ""}`,
+            name: `${brand.name} ${model.name}${trimRaw ? ` ${trimRaw}` : ""}${year ? ` ${year}` : ""}`,
             year: year ?? null, trimName: trimRaw ?? null,
             attributes: a as Parameters<typeof prisma.product.update>[0]["data"]["attributes"],
           },
         });
       }
-      suggestion = await prisma.vehicleSuggestion.update({
+      return tx.vehicleSuggestion.update({
         where: { id: suggestionId },
         data: { brandName, modelName, trimName: trimRaw ?? null, year: year ?? null, fuelType: fuelType ?? null, transmission: transmission ?? null },
       });
+      });
+      suggestion = sonOneri;
     }
   }
 
@@ -192,7 +188,7 @@ export async function POST(
         where: { id: suggestionId, status: "PENDING" },
         data: {
           status: "APPROVED", adminNote: adminNote ?? null,
-          reviewedAt: new Date(), reviewedBy: Number(session.user.id),
+          reviewedAt: new Date(), reviewedBy: admin.userId,
           specConfidence: (specConfidence ?? undefined) as Parameters<typeof prisma.vehicleSuggestion.update>[0]["data"]["specConfidence"],
         },
       });
@@ -332,7 +328,7 @@ export async function POST(
     where: { id: suggestionId },
     data: {
       status: "APPROVED", adminNote: adminNote ?? null,
-      reviewedAt: new Date(), reviewedBy: Number(session.user.id),
+      reviewedAt: new Date(), reviewedBy: admin.userId,
       specConfidence: (specConfidence ?? undefined) as Parameters<typeof prisma.vehicleSuggestion.update>[0]["data"]["specConfidence"],
     },
   });
