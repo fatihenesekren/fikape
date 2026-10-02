@@ -46,6 +46,8 @@ export async function findExistingVehicles(
   brandName: string,
   modelName: string,
   categorySlug?: string,
+  // Transaction içinde (admin ekleme: kopya kontrolü ile create aynı kilit altında) çağrılabilsin
+  db: Pick<typeof prisma, "product"> = prisma,
 ): Promise<ExistingVehicleMatch[]> {
   const b = brandName?.trim();
   const m = modelName?.trim();
@@ -62,7 +64,7 @@ export async function findExistingVehicles(
   ];
   if (slugCandidates.length === 0) return [];
 
-  const products = await prisma.product.findMany({
+  const products = await db.product.findMany({
     where: {
       status: "ACTIVE",
       model: { slug: { in: slugCandidates } },

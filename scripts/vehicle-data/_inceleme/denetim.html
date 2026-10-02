@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Katalog Denetimi</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#1a1a1a;--mute:#6b6b6b;--line:#e4e2dd;--ok:#1f7a4d;--bad:#b3261e;--unk:#8a6d00;--accent:#1e3a8a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141414;--card:#1e1e1e;--ink:#eee;--mute:#a0a0a0;--line:#333;--ok:#4cc38a;--bad:#ff8a80;--unk:#e6c14d;--accent:#93b4ff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:760px;margin:0 auto;padding:24px 16px 140px}
+h1{font-size:22px;margin:0 0 4px}p.alt{color:var(--mute);margin:0 0 20px}
+.nasil{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:20px}
+.nasil li{margin:4px 0}
+.satir{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.satir header{display:flex;gap:10px;align-items:center;margin-bottom:6px}.satir header b{font-size:16px}
+.katman{font-size:12px;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:1px 8px}
+.ham{font-size:13px;color:var(--mute);margin-bottom:8px;overflow-wrap:anywhere}.ham code{color:var(--ink)}
+dl{display:grid;grid-template-columns:130px 1fr;gap:3px 12px;margin:0 0 10px}dt{color:var(--mute);font-size:13px}dd{margin:0;min-width:0;overflow-wrap:anywhere}
+small{color:var(--mute)}.bos{color:var(--unk);font-style:italic}
+.oy{display:flex;gap:8px;flex-wrap:wrap}.oy button{flex:1;min-width:90px;padding:8px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;cursor:pointer}
+.oy button.sec[data-v="D"]{background:var(--ok);border-color:var(--ok);color:#fff}.oy button.sec[data-v="H"]{background:var(--bad);border-color:var(--bad);color:#fff}.oy button.sec[data-v="?"]{background:var(--unk);border-color:var(--unk);color:#fff}
+.not{width:100%;margin-top:8px;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.alt-bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:12px 16px}
+.alt-bar div{max-width:760px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+#kopyala{padding:10px 16px;border-radius:8px;border:0;background:var(--accent);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+</style></head><body><main>
+<h1>Katalog denetimi — 50 satır</h1>
+<p class="alt">Kaynak: TSB Kasko Değer Listesi, Eylül 2026</p>
+<div class="nasil"><b>Nasıl yapılır? (yaklaşık 10 dakika)</b><ul>
+<li>Her kartta üstte TSB'nin ham satırı, altta benim ayırdığım alanlar var.</li>
+<li>Alanlar ham satırla ve bildiğiniz gerçekle <b>çelişmiyorsa</b> "Doğru" deyiniz.</li>
+<li>"<span class="bos">sorulacak</span>" yazan alan hata değildir; formda kullanıcıya sorulacak demektir.</li>
+<li>Paket adının yazımı ("Gt-Line" gibi) önemli değil; yanlış alana düşmüş bilgi önemli.</li>
+<li>Bitince alttaki düğmeyle sonucu kopyalayıp sohbete yapıştırınız.</li></ul></div>
+<article class="satir" data-i="1">
+  <header><b>1</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>Z4 ROADSTAR SDRIVE 28i EXCLUSIVE</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>BMW Z4</dd>
+    <dt>Yıllar</dt><dd>2012–2012</dd>
+    <dt>Versiyon</dt><dd>28i · sDrive</dd>
+    <dt>Donanım paketi</dt><dd>Roadstar Exclusive</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 1 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="2">
+  <header><b>2</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>LEON 1.4 TSI e-HIBRIT 204 (PLUG IN)</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>SEAT Leon</dd>
+    <dt>Yıllar</dt><dd>2020–2020</dd>
+    <dt>Versiyon</dt><dd>1.4 TSI e-Hybrid Plug-in · 204 HP</dd>
+    <dt>Donanım paketi</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Plug-in Hibrit</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 2 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="3">
+  <header><b>3</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>SUPERB 1.6 TDI CR 120 DSG PRESTIGE</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Skoda Superb</dd>
+    <dt>Yıllar</dt><dd>2015–2019</dd>
+    <dt>Versiyon</dt><dd>1.6 TDI CR · 120 HP</dd>
+    <dt>Donanım paketi</dt><dd>Prestige</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 3 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="4">
+  <header><b>4</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>ASTRA SPORTS TOURER 1.6 DIZEL 136</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Opel Astra</dd>
+    <dt>Yıllar</dt><dd>2014–2015</dd>
+    <dt>Versiyon</dt><dd>1.6 Dizel · 136 HP</dd>
+    <dt>Donanım paketi</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Kasa</dt><dd>Sports Tourer</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 4 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="5">
+  <header><b>5</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>NX 300H 4x4 LUXURY E-CVT</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Lexus NX</dd>
+    <dt>Yıllar</dt><dd>2015–2015</dd>
+    <dt>Versiyon</dt><dd>NX300h · 4x4</dd>
+    <dt>Donanım paketi</dt><dd>Luxury</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Hibrit</dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 5 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="6">
+  <header><b>6</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>500X CROSS 1.0 120</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Fiat 500X</dd>
+    <dt>Yıllar</dt><dd>2023–2023</dd>
+    <dt>Versiyon</dt><dd>1.0 · 120 HP</dd>
+    <dt>Donanım paketi</dt><dd>Cross</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 6 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="7">
+  <header><b>7</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>V60 2.0 D4 PREMIUM</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Volvo V60</dd>
+    <dt>Yıllar</dt><dd>2012–2013</dd>
+    <dt>Versiyon</dt><dd>2.0 D4</dd>
+    <dt>Donanım paketi</dt><dd>Premium</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 7 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="8">
+  <header><b>8</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>COROLLA 1.6 PREMIUM 50. YIL MULTIDRIVE S NAVI</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Toyota Corolla</dd>
+    <dt>Yıllar</dt><dd>2017–2018</dd>
+    <dt>Versiyon</dt><dd>1.6</dd>
+    <dt>Donanım paketi</dt><dd>Premium 50. Yil Navi</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 8 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="9">
+  <header><b>9</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>SANDERO STEPWAY 1.6</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Dacia Sandero Stepway</dd>
+    <dt>Yıllar</dt><dd>2012–2012</dd>
+    <dt>Versiyon</dt><dd>1.6</dd>
+    <dt>Donanım paketi</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 9 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="10">
+  <header><b>10</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>COMBO ULTIMATE 1.5 DIZEL AT8 130 FL</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Opel Combo</dd>
+    <dt>Yıllar</dt><dd>2024–2026</dd>
+    <dt>Versiyon</dt><dd>1.5 Dizel · 130 HP</dd>
+    <dt>Donanım paketi</dt><dd>Ultimate</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 10 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="11">
+  <header><b>11</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>A5 COUPE 3.0 TDI QUATTRO TIPTRONIC</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Audi A5</dd>
+    <dt>Yıllar</dt><dd>2012–2012</dd>
+    <dt>Versiyon</dt><dd>3.0 TDI · quattro</dd>
+    <dt>Donanım paketi</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Kasa</dt><dd>Coupe</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 11 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="12">
+  <header><b>12</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>TOURNEO CUSTOM 320S ECOBLUE 130 TREND E6.2</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Ford Tourneo Custom</dd>
+    <dt>Yıllar</dt><dd>2019–2020</dd>
+    <dt>Versiyon</dt><dd>EcoBlue · 130 HP</dd>
+    <dt>Donanım paketi</dt><dd>320S Trend</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 12 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="13">
+  <header><b>13</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>520i SEDAN LUXURY M SPORT</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>BMW 5 Serisi</dd>
+    <dt>Yıllar</dt><dd>2016–2016</dd>
+    <dt>Versiyon</dt><dd>520i</dd>
+    <dt>Donanım paketi</dt><dd>Luxury M Sport</dd>
+    <dt>Kasa</dt><dd>Sedan</dd>
+    <dt>Yakıt</dt><dd>Benzin</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 13 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="14">
+  <header><b>14</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>S65 AMG</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz S Serisi</dd>
+    <dt>Yıllar</dt><dd>2014–2014</dd>
+    <dt>Versiyon</dt><dd>S65</dd>
+    <dt>Donanım paketi</dt><dd>AMG</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 14 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="15">
+  <header><b>15</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>ix35 1.6 GDI 6MT 4X2 STYLE</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Hyundai ix35</dd>
+    <dt>Yıllar</dt><dd>2012–2014</dd>
+    <dt>Versiyon</dt><dd>1.6 GDi · 4x2</dd>
+    <dt>Donanım paketi</dt><dd>Style</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin</dd>
+    <dt>Vites</dt><dd>Manuel</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 15 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="16">
+  <header><b>16</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>QASHQAI 1.5 DCI 115 DCT MIDNIGHT EDITION</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Nissan Qashqai</dd>
+    <dt>Yıllar</dt><dd>2020–2020</dd>
+    <dt>Versiyon</dt><dd>1.5 dCi · 115 HP</dd>
+    <dt>Donanım paketi</dt><dd>Midnight Edition</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 16 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="17">
+  <header><b>17</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>ASTRA HB CLASSIC 1.3 CDTI 90 ESSENTIA COMFORT</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Opel Astra</dd>
+    <dt>Yıllar</dt><dd>2012–2012</dd>
+    <dt>Versiyon</dt><dd>1.3 CDTi · 90 HP</dd>
+    <dt>Donanım paketi</dt><dd>Classic Essentia Comfort</dd>
+    <dt>Kasa</dt><dd>Hatchback</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 17 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="18">
+  <header><b>18</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>GLC 300 d 4 MATIC FL AMG</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz GLC</dd>
+    <dt>Yıllar</dt><dd>2022–2024</dd>
+    <dt>Versiyon</dt><dd>GLC 300 d · 4MATIC</dd>
+    <dt>Donanım paketi</dt><dd>AMG</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 18 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="19">
+  <header><b>19</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>740Le XDRIVE iPERFORMANCE 2.0 326 PURE EXCELL</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>BMW 7 Serisi</dd>
+    <dt>Yıllar</dt><dd>2017–2018</dd>
+    <dt>Versiyon</dt><dd>740Le 2.0 · 326 HP · xDrive</dd>
+    <dt>Donanım paketi</dt><dd>Iperformance Pure Excell</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Plug-in Hibrit</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 19 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="20">
+  <header><b>20</b><span class="katman">Rastgele otomobil</span></header>
+  <div class="ham">TSB: <code>C4 CACTUS 1.2 E-VTI 82 ETG5 FEEL</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Citroen C4 Cactus</dd>
+    <dt>Yıllar</dt><dd>2014–2018</dd>
+    <dt>Versiyon</dt><dd>1.2 e-VTi · 82 HP</dd>
+    <dt>Donanım paketi</dt><dd>Feel</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin</dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 20 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="21">
+  <header><b>21</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>SPRINTER OKUL 16+1 PRO</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz Sprinter</dd>
+    <dt>Yıllar</dt><dd>2024–2026</dd>
+    <dt>Versiyon</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Donanım paketi</dt><dd>Pro</dd>
+    <dt>Kasa</dt><dd>Okul Taşıtı · 16+1</dd>
+    <dt>Yakıt</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 21 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="22">
+  <header><b>22</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>SPRINTER EKSTRA UZUN SERVIS 22+1 516 CDI</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz Sprinter</dd>
+    <dt>Yıllar</dt><dd>2019–2021</dd>
+    <dt>Versiyon</dt><dd>516 CDI</dd>
+    <dt>Donanım paketi</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Kasa</dt><dd>Servis · Ekstra · Uzun · 22+1</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 22 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="23">
+  <header><b>23</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>SPRINTER SERVIS 14+1 COMFORTPLUS 316 CDI UZUN</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz Sprinter</dd>
+    <dt>Yıllar</dt><dd>2016–2019</dd>
+    <dt>Versiyon</dt><dd>316 CDI</dd>
+    <dt>Donanım paketi</dt><dd>Comfort Plus</dd>
+    <dt>Kasa</dt><dd>Servis · 14+1 · Uzun</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 23 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="24">
+  <header><b>24</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>CRAFTER OKUL 16+1 LWB HR 163 COMFORTLINE</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Volkswagen Crafter</dd>
+    <dt>Yıllar</dt><dd>2026–2026</dd>
+    <dt>Versiyon</dt><dd><span class="bos">sorulacak</span> · 163 HP</dd>
+    <dt>Donanım paketi</dt><dd>Comfortline</dd>
+    <dt>Kasa</dt><dd>Okul Taşıtı · 16+1 · LWB · HR</dd>
+    <dt>Yakıt</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 24 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="25">
+  <header><b>25</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>RANGER WILDTRAK 4X4 3.0 (240)</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Ford Ranger</dd>
+    <dt>Yıllar</dt><dd>2023–2023</dd>
+    <dt>Versiyon</dt><dd>3.0 · 240 HP · 4x4</dd>
+    <dt>Donanım paketi</dt><dd>Wildtrak</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 25 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="26">
+  <header><b>26</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>SPRINTER 313 CDI MINIBUS 15+1 SB415AC FL</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz Sprinter</dd>
+    <dt>Yıllar</dt><dd>2015–2016</dd>
+    <dt>Versiyon</dt><dd>313 CDI</dd>
+    <dt>Donanım paketi</dt><dd>SB415AC</dd>
+    <dt>Kasa</dt><dd>Minibüs · 15+1</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 26 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="27">
+  <header><b>27</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>SPRINTER 315 CDI PANELVAN NP35A-E5</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz Sprinter</dd>
+    <dt>Yıllar</dt><dd>2012–2013</dd>
+    <dt>Versiyon</dt><dd>315 CDI</dd>
+    <dt>Donanım paketi</dt><dd>NP35A-E5</dd>
+    <dt>Kasa</dt><dd>Panelvan</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 27 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="28">
+  <header><b>28</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>KANGOO VAN L2 EQUILIBRE 1.5 BLUE DCI 115</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Renault Kangoo</dd>
+    <dt>Yıllar</dt><dd>2024–2026</dd>
+    <dt>Versiyon</dt><dd>1.5 Blue dCi · 115 HP</dd>
+    <dt>Donanım paketi</dt><dd>Equilibre</dd>
+    <dt>Kasa</dt><dd>Van · L2</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 28 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="29">
+  <header><b>29</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>SPRINTER MINIBUS 416 CDI 16+1 SBS416 E6</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz Sprinter</dd>
+    <dt>Yıllar</dt><dd>2016–2019</dd>
+    <dt>Versiyon</dt><dd>416 CDI</dd>
+    <dt>Donanım paketi</dt><dd>SBS416</dd>
+    <dt>Kasa</dt><dd>Minibüs · 16+1</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 29 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="30">
+  <header><b>30</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>TRAN.ICA3 350ED KNET C.K 2.0 165 JUMBO TREND</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Ford Transit</dd>
+    <dt>Yıllar</dt><dd>2024–2026</dd>
+    <dt>Versiyon</dt><dd>350ED 2.0 · 165 HP</dd>
+    <dt>Donanım paketi</dt><dd>C.K Jumbo Trend</dd>
+    <dt>Kasa</dt><dd>Kamyonet</dd>
+    <dt>Yakıt</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 30 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="31">
+  <header><b>31</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>E-TRANSIT MINIBUS 420L 198KW DELUXE</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Ford E-Transit</dd>
+    <dt>Yıllar</dt><dd>2025–2026</dd>
+    <dt>Versiyon</dt><dd>420L · 269 HP</dd>
+    <dt>Donanım paketi</dt><dd>Deluxe</dd>
+    <dt>Kasa</dt><dd>Minibüs</dd>
+    <dt>Yakıt</dt><dd>Elektrik <small>(model tek yakıtlı)</small></dd>
+    <dt>Vites</dt><dd>Otomatik <small>(elektrikli → otomatik)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 31 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="32">
+  <header><b>32</b><span class="katman">Rastgele kamyonet</span></header>
+  <div class="ham">TSB: <code>SPRINTER KAMYONET 2+1 UZUN 516 CDI TEK KABIN</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz Sprinter</dd>
+    <dt>Yıllar</dt><dd>2018–2019</dd>
+    <dt>Versiyon</dt><dd>516 CDI</dd>
+    <dt>Donanım paketi</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Kasa</dt><dd>Kamyonet · 2+1 · Uzun</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 32 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="33">
+  <header><b>33</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>MEGANE HB JOY 1.6 16V 115 CVT</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Renault Megane</dd>
+    <dt>Yıllar</dt><dd>2012–2015</dd>
+    <dt>Versiyon</dt><dd>1.6 16V · 115 HP</dd>
+    <dt>Donanım paketi</dt><dd>Joy</dd>
+    <dt>Kasa</dt><dd>Hatchback</dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 33 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="34">
+  <header><b>34</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>VESTA SEDAN 1.6</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Lada Vesta</dd>
+    <dt>Yıllar</dt><dd>2019–2019</dd>
+    <dt>Versiyon</dt><dd>1.6</dd>
+    <dt>Donanım paketi</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Kasa</dt><dd>Sedan</dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 34 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="35">
+  <header><b>35</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>CEED HB COOL 1.0 120 MHEV DCT</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Kia Ceed</dd>
+    <dt>Yıllar</dt><dd>2021–2023</dd>
+    <dt>Versiyon</dt><dd>1.0 MHEV · 120 HP</dd>
+    <dt>Donanım paketi</dt><dd>Cool</dd>
+    <dt>Kasa</dt><dd>Hatchback</dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 35 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="36">
+  <header><b>36</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>S 63 AMG L</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz S Serisi</dd>
+    <dt>Yıllar</dt><dd>2012–2013</dd>
+    <dt>Versiyon</dt><dd>S 63</dd>
+    <dt>Donanım paketi</dt><dd>AMG L</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 36 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="37">
+  <header><b>37</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>SX4 HB 1.6 GL</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Suzuki SX4</dd>
+    <dt>Yıllar</dt><dd>2012–2013</dd>
+    <dt>Versiyon</dt><dd>1.6</dd>
+    <dt>Donanım paketi</dt><dd>GL</dd>
+    <dt>Kasa</dt><dd>Hatchback</dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 37 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="38">
+  <header><b>38</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>ZAFIRA TOURER 1.4 (140) PRESTIJ OV</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Opel Zafira Tourer</dd>
+    <dt>Yıllar</dt><dd>2012–2013</dd>
+    <dt>Versiyon</dt><dd>1.4 · 140 HP</dd>
+    <dt>Donanım paketi</dt><dd>Prestij</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 38 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="39">
+  <header><b>39</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>CIVIC HB 1.4 SPORT</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Honda Civic</dd>
+    <dt>Yıllar</dt><dd>2013–2014</dd>
+    <dt>Versiyon</dt><dd>1.4</dd>
+    <dt>Donanım paketi</dt><dd>Sport</dd>
+    <dt>Kasa</dt><dd>Hatchback</dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 39 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="40">
+  <header><b>40</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>i20 1.0 T 90 JUMP DCT GSR 2-C</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Hyundai i20</dd>
+    <dt>Yıllar</dt><dd>2026–2026</dd>
+    <dt>Versiyon</dt><dd>1.0 T · 90 HP</dd>
+    <dt>Donanım paketi</dt><dd>Jump Gsr 2-C</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd>Otomatik</dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 40 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="41">
+  <header><b>41</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>PATROL SE PLATINUM 5.6</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Nissan Patrol</dd>
+    <dt>Yıllar</dt><dd>2014–2014</dd>
+    <dt>Versiyon</dt><dd>5.6</dd>
+    <dt>Donanım paketi</dt><dd>SE Platinum</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 41 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="42">
+  <header><b>42</b><span class="katman">Kural: işaretsiz → benzinli</span></header>
+  <div class="ham">TSB: <code>E 250 COUPE 2.0 FL</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz E Serisi</dd>
+    <dt>Yıllar</dt><dd>2013–2015</dd>
+    <dt>Versiyon</dt><dd>E 250 2.0</dd>
+    <dt>Donanım paketi</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Kasa</dt><dd>Coupe</dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd><span class="bos">sorulacak</span></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 42 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="43">
+  <header><b>43</b><span class="katman">Kural: otomatik eşi var → manuel</span></header>
+  <div class="ham">TSB: <code>CADDY ALLTRACK 2.0 TDI 102</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Volkswagen Caddy</dd>
+    <dt>Yıllar</dt><dd>2017–2019</dd>
+    <dt>Versiyon</dt><dd>2.0 TDI · 102 HP</dd>
+    <dt>Donanım paketi</dt><dd>Alltrack</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 43 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="44">
+  <header><b>44</b><span class="katman">Kural: otomatik eşi var → manuel</span></header>
+  <div class="ham">TSB: <code>C 180 COUPE 1.6 AMG</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Mercedes-Benz C Serisi</dd>
+    <dt>Yıllar</dt><dd>2013–2017</dd>
+    <dt>Versiyon</dt><dd>C 180 1.6</dd>
+    <dt>Donanım paketi</dt><dd>AMG</dd>
+    <dt>Kasa</dt><dd>Coupe</dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 44 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="45">
+  <header><b>45</b><span class="katman">Kural: otomatik eşi var → manuel</span></header>
+  <div class="ham">TSB: <code>CLIO TOUCH 1.0 TCE 90</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Renault Clio</dd>
+    <dt>Yıllar</dt><dd>2020–2023</dd>
+    <dt>Versiyon</dt><dd>1.0 TCe · 90 HP</dd>
+    <dt>Donanım paketi</dt><dd>Touch</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin</dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 45 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="46">
+  <header><b>46</b><span class="katman">Kural: otomatik eşi var → manuel</span></header>
+  <div class="ham">TSB: <code>CIVIC SEDAN 1.6 125 EXECUTIVE ECO SMART</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Honda Civic</dd>
+    <dt>Yıllar</dt><dd>2014–2015</dd>
+    <dt>Versiyon</dt><dd>1.6 · 125 HP</dd>
+    <dt>Donanım paketi</dt><dd>Executive Eco Smart</dd>
+    <dt>Kasa</dt><dd>Sedan</dd>
+    <dt>Yakıt</dt><dd>Benzin <small>(işaretsiz → benzinli)</small></dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 46 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="47">
+  <header><b>47</b><span class="katman">Kural: otomatik eşi var → manuel</span></header>
+  <div class="ham">TSB: <code>i30 1.6 CVVT MODE</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Hyundai i30</dd>
+    <dt>Yıllar</dt><dd>2012–2012</dd>
+    <dt>Versiyon</dt><dd>1.6 CVVT</dd>
+    <dt>Donanım paketi</dt><dd>Mode</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Benzin</dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 47 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="48">
+  <header><b>48</b><span class="katman">Kural: otomatik eşi var → manuel</span></header>
+  <div class="ham">TSB: <code>MEGANE HB GT-LINE 1.5 DCI 110 E5</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Renault Megane</dd>
+    <dt>Yıllar</dt><dd>2013–2013</dd>
+    <dt>Versiyon</dt><dd>1.5 dCi · 110 HP</dd>
+    <dt>Donanım paketi</dt><dd>GT-LINE</dd>
+    <dt>Kasa</dt><dd>Hatchback</dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 48 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="49">
+  <header><b>49</b><span class="katman">Kural: otomatik eşi var → manuel</span></header>
+  <div class="ham">TSB: <code>MOKKA X 1.6 DIZEL 136 FWD EXCELLENCE</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Opel Mokka</dd>
+    <dt>Yıllar</dt><dd>2016–2018</dd>
+    <dt>Versiyon</dt><dd>1.6 Dizel · 136 HP · FWD</dd>
+    <dt>Donanım paketi</dt><dd>Excellence</dd>
+    <dt>Kasa</dt><dd><span class="bos">sorulacak</span></dd>
+    <dt>Yakıt</dt><dd>Dizel</dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 49 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+<article class="satir" data-i="50">
+  <header><b>50</b><span class="katman">Kural: otomatik eşi var → manuel</span></header>
+  <div class="ham">TSB: <code>MEGANE HB TOUCH 1.3 TCE 140</code></div>
+  <dl>
+    <dt>Marka / Model</dt><dd>Renault Megane</dd>
+    <dt>Yıllar</dt><dd>2019–2019</dd>
+    <dt>Versiyon</dt><dd>1.3 TCe · 140 HP</dd>
+    <dt>Donanım paketi</dt><dd>Touch</dd>
+    <dt>Kasa</dt><dd>Hatchback</dd>
+    <dt>Yakıt</dt><dd>Benzin</dd>
+    <dt>Vites</dt><dd>Manuel <small>(otomatik eşi var → manuel)</small></dd>
+  </dl>
+  <div class="oy" role="group" aria-label="Satır 50 değerlendirmesi">
+    <button data-v="D">✓ Doğru</button><button data-v="H">✗ Hatalı</button><button data-v="?">Emin değilim</button>
+  </div>
+  <input class="not" placeholder="Hatalıysa hangi alan? (örn. vites otomatik olmalı)" hidden>
+</article>
+</main>
+<div class="alt-bar"><div><span id="sayac">0 / 50 işaretlendi</span><button id="kopyala">Sonucu kopyala</button></div></div>
+<script>
+const oy={};
+document.querySelectorAll('.satir').forEach(s=>{
+  const i=s.dataset.i, not=s.querySelector('.not');
+  s.querySelectorAll('.oy button').forEach(b=>b.addEventListener('click',()=>{
+    s.querySelectorAll('.oy button').forEach(x=>x.classList.remove('sec'));b.classList.add('sec');
+    oy[i]=b.dataset.v; not.hidden=b.dataset.v!=='H'; if(!not.hidden) not.focus();
+    document.getElementById('sayac').textContent=Object.keys(oy).length+' / 50 işaretlendi';
+  }));
+});
+document.getElementById('kopyala').addEventListener('click',async()=>{
+  const d=Object.values(oy).filter(v=>v==='D').length, h=Object.entries(oy).filter(([,v])=>v==='H');
+  const u=Object.entries(oy).filter(([,v])=>v==='?').map(([i])=>i);
+  const txt='DENETİM SONUCU: '+d+' doğru, '+h.length+' hatalı, '+u.length+' emin değil (toplam 50)\n'+
+    h.map(([i])=>'Hatalı #'+i+': '+(document.querySelector('.satir[data-i="'+i+'"] .not').value||'-')).join('\n')+
+    (u.length?'\nEmin değil: '+u.join(', '):'');
+  try{await navigator.clipboard.writeText(txt);document.getElementById('kopyala').textContent='Kopyalandı ✓'}
+  catch{prompt('Bu metni kopyalayınız:',txt)}
+});
+</script></body></html>
