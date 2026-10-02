@@ -18,10 +18,11 @@
     {
       "name": "Acadia",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "6 Kişilik",
-        "Fransız Karyola",
+        "460",
+        "545",
+        "575",
+        "660 Xtra",
+        "675 Xtra",
         "Diğer"
       ],
       "trims": [
@@ -33,8 +34,12 @@
     {
       "name": "Laser",
       "versions": [
-        "4 Kişilik",
-        "Fransız Karyola",
+        "545 Xtra",
+        "575 Xtra",
+        "845 Xtra",
+        "855 Xtra",
+        "865 Xtra",
+        "875 Xtra",
         "Diğer"
       ],
       "trims": [
@@ -57,8 +62,11 @@
     {
       "name": "VIP",
       "versions": [
-        "4 Kişilik",
-        "Fransız Karyola",
+        "460",
+        "520",
+        "565",
+        "575",
+        "675",
         "Diğer"
       ],
       "trims": [
@@ -69,8 +77,9 @@
     {
       "name": "Lusso (2022-)",
       "versions": [
-        "4 Kişilik",
-        "Fransız Karyola",
+        "I",
+        "II",
+        "III",
         "Diğer"
       ],
       "trims": [

@@ -42,9 +42,15 @@
     {
       "name": "Alba (2024-)",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "Fransız Karyola",
+        "325",
+        "350",
+        "390",
+        "400",
+        "426",
+        "460",
+        "466",
+        "472",
+        "496",
         "Diğer"
       ],
       "trims": [
@@ -55,9 +61,12 @@
     {
       "name": "Sport Line (2024-)",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "Fransız Karyola",
+        "410",
+        "420",
+        "476",
+        "480",
+        "486",
+        "492",
         "Diğer"
       ],
       "trims": [
@@ -68,8 +77,11 @@
     {
       "name": "Exclusive Line (2024-)",
       "versions": [
-        "4 Kişilik",
-        "6 Kişilik",
+        "475",
+        "520",
+        "522",
+        "542",
+        "586",
         "Diğer"
       ],
       "trims": [

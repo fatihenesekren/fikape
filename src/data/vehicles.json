@@ -46988,9 +46988,15 @@
         {
           "name": "Alba (2024-)",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "Fransız Karyola",
+            "325",
+            "350",
+            "390",
+            "400",
+            "426",
+            "460",
+            "466",
+            "472",
+            "496",
             "Diğer"
           ],
           "trims": [
@@ -47001,9 +47007,12 @@
         {
           "name": "Sport Line (2024-)",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "Fransız Karyola",
+            "410",
+            "420",
+            "476",
+            "480",
+            "486",
+            "492",
             "Diğer"
           ],
           "trims": [
@@ -47014,8 +47023,11 @@
         {
           "name": "Exclusive Line (2024-)",
           "versions": [
-            "4 Kişilik",
-            "6 Kişilik",
+            "475",
+            "520",
+            "522",
+            "542",
+            "586",
             "Diğer"
           ],
           "trims": [
@@ -47312,10 +47324,11 @@
         {
           "name": "Acadia",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
+            "460",
+            "545",
+            "575",
+            "660 Xtra",
+            "675 Xtra",
             "Diğer"
           ],
           "trims": [
@@ -47327,8 +47340,12 @@
         {
           "name": "Laser",
           "versions": [
-            "4 Kişilik",
-            "Fransız Karyola",
+            "545 Xtra",
+            "575 Xtra",
+            "845 Xtra",
+            "855 Xtra",
+            "865 Xtra",
+            "875 Xtra",
             "Diğer"
           ],
           "trims": [
@@ -47351,8 +47368,11 @@
         {
           "name": "VIP",
           "versions": [
-            "4 Kişilik",
-            "Fransız Karyola",
+            "460",
+            "520",
+            "565",
+            "575",
+            "675",
             "Diğer"
           ],
           "trims": [
@@ -47363,8 +47383,9 @@
         {
           "name": "Lusso (2022-)",
           "versions": [
-            "4 Kişilik",
-            "Fransız Karyola",
+            "I",
+            "II",
+            "III",
             "Diğer"
           ],
           "trims": [
