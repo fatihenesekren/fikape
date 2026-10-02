@@ -30,8 +30,10 @@
     {
       "name": "Vivaldi",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
+        "490 TD 2,3",
+        "550 E 2,3",
+        "590 HE 2,5",
+        "685 DF 2,5",
         "Diğer"
       ],
       "trims": [
@@ -42,13 +44,15 @@
     {
       "name": "Puccini",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "Fransız Karyola",
+        "550 E 2,3",
+        "550 E 2,5",
+        "685 DF 2,5",
+        "750 HTD 2,5",
         "Diğer"
       ],
       "trims": [
         "Standart",
+        "Finest Edition",
         "Diğer"
       ]
     },
@@ -70,6 +74,23 @@
       "versions": [
         "2 Kişilik",
         "4 Kişilik",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Cazadora",
+      "versions": [
+        "460 E 2,3",
+        "490 TD 2,3",
+        "495 HE 2,3",
+        "550 E 2,3",
+        "550 DMK 2,5",
+        "655 MEB 2,5",
+        "700 KD 2,5",
         "Diğer"
       ],
       "trims": [

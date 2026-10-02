@@ -48946,13 +48946,18 @@
         {
           "name": "Style",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "Fransız Karyola",
+            "400 F",
+            "440 D",
+            "450 D",
+            "490 K",
+            "582 K",
+            "500 E",
+            "500 K",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Lift",
             "Diğer"
           ]
         },
@@ -48996,8 +49001,36 @@
         {
           "name": "Videro",
           "versions": [
-            "4 Kişilik",
-            "6 Kişilik",
+            "510 E",
+            "580 D",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "E:Dero",
+          "versions": [
+            "350 D",
+            "400 C",
+            "470 K",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Sassino",
+          "versions": [
+            "390 K",
+            "430 D",
+            "450 D",
+            "460 E",
+            "470 K",
             "Diğer"
           ],
           "trims": [
@@ -49554,8 +49587,10 @@
         {
           "name": "Vivaldi",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
+            "490 TD 2,3",
+            "550 E 2,3",
+            "590 HE 2,5",
+            "685 DF 2,5",
             "Diğer"
           ],
           "trims": [
@@ -49566,13 +49601,15 @@
         {
           "name": "Puccini",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "Fransız Karyola",
+            "550 E 2,3",
+            "550 E 2,5",
+            "685 DF 2,5",
+            "750 HTD 2,5",
             "Diğer"
           ],
           "trims": [
             "Standart",
+            "Finest Edition",
             "Diğer"
           ]
         },
@@ -49594,6 +49631,23 @@
           "versions": [
             "2 Kişilik",
             "4 Kişilik",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Cazadora",
+          "versions": [
+            "460 E 2,3",
+            "490 TD 2,3",
+            "495 HE 2,3",
+            "550 E 2,3",
+            "550 DMK 2,5",
+            "655 MEB 2,5",
+            "700 KD 2,5",
             "Diğer"
           ],
           "trims": [

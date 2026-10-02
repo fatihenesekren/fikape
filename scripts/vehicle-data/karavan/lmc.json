@@ -4,13 +4,18 @@
     {
       "name": "Style",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "Fransız Karyola",
+        "400 F",
+        "440 D",
+        "450 D",
+        "490 K",
+        "582 K",
+        "500 E",
+        "500 K",
         "Diğer"
       ],
       "trims": [
         "Standart",
+        "Lift",
         "Diğer"
       ]
     },
@@ -54,8 +59,36 @@
     {
       "name": "Videro",
       "versions": [
-        "4 Kişilik",
-        "6 Kişilik",
+        "510 E",
+        "580 D",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "E:Dero",
+      "versions": [
+        "350 D",
+        "400 C",
+        "470 K",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Sassino",
+      "versions": [
+        "390 K",
+        "430 D",
+        "450 D",
+        "460 E",
+        "470 K",
         "Diğer"
       ],
       "trims": [
