@@ -4,10 +4,18 @@
     {
       "name": "De Luxe",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "6 Kişilik",
-        "Fransız Karyola",
+        "400 SFe",
+        "460 LU",
+        "460 SFf",
+        "460 SL",
+        "460 UFe",
+        "490 KMF",
+        "495 UL",
+        "495 WFB",
+        "515 UHL",
+        "540 KMFe",
+        "540 UL",
+        "545 KMF",
         "Diğer"
       ],
       "trims": [
@@ -19,9 +27,28 @@
     {
       "name": "Excellent",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
-        "6 Kişilik",
+        "460 SL",
+        "495 WFB",
+        "540 WFU",
+        "560 CFe",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Excellent Edition",
+      "versions": [
+        "460 UFe",
+        "490 KMF",
+        "495 UL",
+        "540 UFf",
+        "540 UL",
+        "540 WLU",
+        "545 KMF",
+        "650 KMFe",
         "Diğer"
       ],
       "trims": [
@@ -32,8 +59,8 @@
     {
       "name": "On Tour",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
+        "390 SF",
+        "460 DL",
         "Diğer"
       ],
       "trims": [
@@ -57,9 +84,15 @@
     {
       "name": "Prestige",
       "versions": [
-        "4 Kişilik",
-        "6 Kişilik",
-        "Fransız Karyola",
+        "560 FC",
+        "560 WFU",
+        "560 WLU",
+        "620 CL",
+        "650 KFU",
+        "660 WFC",
+        "720 KWFU",
+        "720 UKFe",
+        "720 WQC",
         "Diğer"
       ],
       "trims": [
@@ -84,8 +117,8 @@
     {
       "name": "Maxia",
       "versions": [
-        "Van",
-        "4 Kişilik",
+        "595 KML",
+        "660 WQM",
         "Diğer"
       ],
       "trims": [

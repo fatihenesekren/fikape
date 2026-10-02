@@ -46,3 +46,6 @@ next-env.d.ts
 .vercel
 .env*
 .git-commit-msg.txt
+
+# Karavan üretici katalog PDF kaynakları (büyük, depoya eklenmez)
+scripts/vehicle-data/_kaynak/karavan/*.pdf
