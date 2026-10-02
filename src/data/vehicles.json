@@ -46303,11 +46303,16 @@
         {
           "name": "Altea",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
-            "Çift Eksen",
+            "362 LH",
+            "402 PH",
+            "432 PX",
+            "472 PK",
+            "472 PU",
+            "492 LU",
+            "502 UL",
+            "542 PH",
+            "542 PK",
+            "552 PK",
             "Diğer"
           ],
           "trims": [
@@ -46319,10 +46324,15 @@
         {
           "name": "Adora",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
+            "522 UP",
+            "532 UL",
+            "572 UT",
+            "573 PT",
+            "613 HT",
+            "613 PK",
+            "613 UT",
+            "663 UT",
+            "673 PK",
             "Diğer"
           ],
           "trims": [
@@ -46333,8 +46343,13 @@
         {
           "name": "Aviva",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
+            "360 DK",
+            "400 PS",
+            "422 PY",
+            "472 PK",
+            "492 LU",
+            "522 PT",
+            "563 PT",
             "Diğer"
           ],
           "trims": [
@@ -46384,8 +46399,8 @@
         {
           "name": "Action",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
+            "391 LH",
+            "391 PD",
             "Diğer"
           ],
           "trims": [
@@ -46397,10 +46412,12 @@
         {
           "name": "Alpina",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
-            "6 Kişilik",
-            "Fransız Karyola",
+            "583 UL",
+            "663 HT",
+            "663 PT",
+            "663 UK",
+            "763 UK",
+            "903 HT",
             "Diğer"
           ],
           "trims": [
