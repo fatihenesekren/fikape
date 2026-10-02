@@ -71,7 +71,14 @@ const TRANSMISSIONS: Record<string, { value: string; label: string }[]> = {
   ],
 };
 
-const YEARS = Array.from({ length: new Date().getFullYear() - 1990 + 1 }, (_, i) => new Date().getFullYear() - i);
+// Model yılı listesinin alt sınırı (kategori bazlı): elektrikli scooter/bisiklet 1990'larda henüz yok denecek kadar azdı.
+// Daha eski bir yıl gerekirse "Diğer" ile yıl yazılabilir (ekYilGecerli: 1900+).
+const YIL_TABANI: Record<string, number> = { "e-scooter": 2000, "e-bisiklet": 1995 };
+const yilListesi = (kategori: string) => {
+  const bugun = new Date().getFullYear();
+  const taban = YIL_TABANI[kategori] ?? 1990;
+  return Array.from({ length: bugun - taban + 1 }, (_, i) => bugun - i);
+};
 
 // Model adının sonundaki "(2004-2012)" / "(2020-)" gibi nesil aralığını ayıklar
 function getModelYearRange(modelName: string): [number, number] | null {
@@ -417,7 +424,7 @@ export default function OnerPage() {
   const modelYearRange = !isOtherModel ? getModelYearRange(selectedModel) : null;
   const availableYears = modelYearRange
     ? Array.from({ length: modelYearRange[1] - modelYearRange[0] + 1 }, (_, i) => modelYearRange[1] - i)
-    : YEARS;
+    : yilListesi(categorySlug);
 
   return (
     <div className="max-w-[480px] mx-auto px-4 py-10">
