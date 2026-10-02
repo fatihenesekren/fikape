@@ -75,6 +75,9 @@ export function BackToTop() {
     requestAnimationFrame(step);
   }, []);
 
+  // Admin panelinde kendi gezinmesi var; yüzen düğme gerekmez
+  if (pathname.startsWith("/admin")) return null;
+
   return (
     <button
       type="button"

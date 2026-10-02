@@ -28,7 +28,8 @@ export function HomeFab() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (pathname === "/") return null;
+  // Admin panelinde kendi gezinmesi var (alt menü); yüzen ev düğmesi gerekmez
+  if (pathname === "/" || pathname.startsWith("/admin")) return null;
 
   return (
     <Link
