@@ -37,7 +37,9 @@
     {
       "name": "CaraCompact",
       "versions": [
-        "Van",
+        "580 MEG",
+        "600 MEG",
+        "600 MF",
         "Diğer"
       ],
       "trims": [
@@ -49,7 +51,11 @@
     {
       "name": "CaraSuite",
       "versions": [
-        "4 Kişilik",
+        "650 MF",
+        "650 MG",
+        "650 MEG",
+        "700 MEG",
+        "700 DX",
         "Diğer"
       ],
       "trims": [
@@ -60,7 +66,13 @@
     {
       "name": "CaraBus",
       "versions": [
-        "Van",
+        "540 MQ",
+        "600 MQ",
+        "600 DQ",
+        "630 MEG",
+        "600 MQH",
+        "600 ME",
+        "630 ME",
         "Diğer"
       ],
       "trims": [
@@ -89,6 +101,32 @@
         "470 EU",
         "470 QDK",
         "500 QDK",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CaraHome (Motokaravan, Alkoven)",
+      "versions": [
+        "600 DKG",
+        "650 DG",
+        "650 MEG",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "CaraCore (Motokaravan, Entegre)",
+      "versions": [
+        "650 MF",
+        "650 MEG",
+        "700 MEG",
         "Diğer"
       ],
       "trims": [

@@ -67,8 +67,9 @@
     {
       "name": "Sky TI",
       "versions": [
-        "2 Kişilik",
-        "4 Kişilik",
+        "650 MEG",
+        "700 DEG",
+        "700 DX",
         "Diğer"
       ],
       "trims": [
@@ -115,7 +116,9 @@
     {
       "name": "Van Ti (Motokaravan, Kompakt Yarı Entegre)",
       "versions": [
-        "Van",
+        "550 MF",
+        "640 MEG",
+        "650 MEG",
         "Diğer"
       ],
       "trims": [
@@ -129,6 +132,80 @@
         "600 UE",
         "660 PXB",
         "660 UDF",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "L!VE I (Motokaravan, Entegre)",
+      "versions": [
+        "650 MEG",
+        "700 MEG",
+        "900 LEG",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "L!VE TI (Motokaravan, Yarı Entegre)",
+      "versions": [
+        "590 MF",
+        "650 MF",
+        "650 MEG",
+        "700 MEG",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "L!VE Wave (Motokaravan)",
+      "versions": [
+        "650 MEG",
+        "650 MF",
+        "650 MG",
+        "700 DX",
+        "700 MEG",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Platinum Selection",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "BoxLife (Kampervan)",
+      "versions": [
+        "540 MQ",
+        "600 MQ",
+        "600 ME",
+        "600 DQ",
+        "630 ME",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Platinum Selection",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "BoxTime (Kampervan)",
+      "versions": [
+        "540 MQ",
+        "600 MQ",
+        "600 ME",
+        "630 ME",
+        "630 MX",
         "Diğer"
       ],
       "trims": [

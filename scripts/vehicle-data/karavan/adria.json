@@ -73,27 +73,36 @@
     {
       "name": "Sonic",
       "versions": [
-        "Van",
-        "Axess",
-        "Plus",
+        "600 SL",
+        "700 DC",
+        "700 DL",
+        "700 SL",
         "Diğer"
       ],
       "trims": [
         "SL",
         "SLX",
+        "Select",
+        "Supreme",
         "Diğer"
       ]
     },
     {
       "name": "Matrix",
       "versions": [
-        "Van",
+        "650 DL",
+        "650 SL",
+        "670 DC",
+        "670 DL",
+        "670 SL",
         "Diğer"
       ],
       "trims": [
         "Standart",
         "M",
         "Supreme",
+        "Select",
+        "Mercedes-Benz",
         "Diğer"
       ]
     },
@@ -129,31 +138,70 @@
     {
       "name": "Twin (Kampervan, Mercedes Sprinter Tabanlı)",
       "versions": [
-        "Van",
-        "Sports",
-        "Supreme",
+        "540 SPB",
+        "540 SPB PTR",
+        "600 SLB",
+        "600 SPB",
+        "600 SPB PTR",
+        "640 SGX",
+        "640 SGX PTR",
+        "640 SLB",
+        "640 SLB PTR",
+        "640 SPB",
         "Diğer"
       ],
       "trims": [
         "Standart",
         "Sports",
         "Supreme",
+        "Select",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Coral (Motokaravan)",
+      "versions": [
+        "650 DL",
+        "650 SL",
+        "670 DC",
+        "670 DL",
+        "670 SL",
         "Diğer"
       ],
-      "trimsByVersion": {
-        "Van": [
-          "Standart",
-          "Diğer"
-        ],
-        "Sports": [
-          "Sports",
-          "Diğer"
-        ],
-        "Supreme": [
-          "Supreme",
-          "Diğer"
-        ]
-      }
+      "trims": [
+        "Select",
+        "Supreme",
+        "Mercedes-Benz",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Coral XL (Motokaravan)",
+      "versions": [
+        "600 DP",
+        "650 DK",
+        "660 SL",
+        "Diğer"
+      ],
+      "trims": [
+        "Select",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Compact (Motokaravan)",
+      "versions": [
+        "Max DL",
+        "DC",
+        "DL",
+        "SL",
+        "Diğer"
+      ],
+      "trims": [
+        "Select",
+        "Supreme",
+        "Diğer"
+      ]
     },
     {
       "name": "Diğer",

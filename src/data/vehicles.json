@@ -46372,27 +46372,36 @@
         {
           "name": "Sonic",
           "versions": [
-            "Van",
-            "Axess",
-            "Plus",
+            "600 SL",
+            "700 DC",
+            "700 DL",
+            "700 SL",
             "Diğer"
           ],
           "trims": [
             "SL",
             "SLX",
+            "Select",
+            "Supreme",
             "Diğer"
           ]
         },
         {
           "name": "Matrix",
           "versions": [
-            "Van",
+            "650 DL",
+            "650 SL",
+            "670 DC",
+            "670 DL",
+            "670 SL",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "M",
             "Supreme",
+            "Select",
+            "Mercedes-Benz",
             "Diğer"
           ]
         },
@@ -46428,31 +46437,70 @@
         {
           "name": "Twin (Kampervan, Mercedes Sprinter Tabanlı)",
           "versions": [
-            "Van",
-            "Sports",
-            "Supreme",
+            "540 SPB",
+            "540 SPB PTR",
+            "600 SLB",
+            "600 SPB",
+            "600 SPB PTR",
+            "640 SGX",
+            "640 SGX PTR",
+            "640 SLB",
+            "640 SLB PTR",
+            "640 SPB",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Sports",
             "Supreme",
+            "Select",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Coral (Motokaravan)",
+          "versions": [
+            "650 DL",
+            "650 SL",
+            "670 DC",
+            "670 DL",
+            "670 SL",
             "Diğer"
           ],
-          "trimsByVersion": {
-            "Van": [
-              "Standart",
-              "Diğer"
-            ],
-            "Sports": [
-              "Sports",
-              "Diğer"
-            ],
-            "Supreme": [
-              "Supreme",
-              "Diğer"
-            ]
-          }
+          "trims": [
+            "Select",
+            "Supreme",
+            "Mercedes-Benz",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Coral XL (Motokaravan)",
+          "versions": [
+            "600 DP",
+            "650 DK",
+            "660 SL",
+            "Diğer"
+          ],
+          "trims": [
+            "Select",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "Compact (Motokaravan)",
+          "versions": [
+            "Max DL",
+            "DC",
+            "DL",
+            "SL",
+            "Diğer"
+          ],
+          "trims": [
+            "Select",
+            "Supreme",
+            "Diğer"
+          ]
         },
         {
           "name": "Diğer",
@@ -49023,8 +49071,9 @@
         {
           "name": "Sky TI",
           "versions": [
-            "2 Kişilik",
-            "4 Kişilik",
+            "650 MEG",
+            "700 DEG",
+            "700 DX",
             "Diğer"
           ],
           "trims": [
@@ -49071,7 +49120,9 @@
         {
           "name": "Van Ti (Motokaravan, Kompakt Yarı Entegre)",
           "versions": [
-            "Van",
+            "550 MF",
+            "640 MEG",
+            "650 MEG",
             "Diğer"
           ],
           "trims": [
@@ -49085,6 +49136,80 @@
             "600 UE",
             "660 PXB",
             "660 UDF",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "L!VE I (Motokaravan, Entegre)",
+          "versions": [
+            "650 MEG",
+            "700 MEG",
+            "900 LEG",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "L!VE TI (Motokaravan, Yarı Entegre)",
+          "versions": [
+            "590 MF",
+            "650 MF",
+            "650 MEG",
+            "700 MEG",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "L!VE Wave (Motokaravan)",
+          "versions": [
+            "650 MEG",
+            "650 MF",
+            "650 MG",
+            "700 DX",
+            "700 MEG",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Platinum Selection",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "BoxLife (Kampervan)",
+          "versions": [
+            "540 MQ",
+            "600 MQ",
+            "600 ME",
+            "600 DQ",
+            "630 ME",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Platinum Selection",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "BoxTime (Kampervan)",
+          "versions": [
+            "540 MQ",
+            "600 MQ",
+            "600 ME",
+            "630 ME",
+            "630 MX",
             "Diğer"
           ],
           "trims": [
@@ -49921,7 +50046,9 @@
         {
           "name": "CaraCompact",
           "versions": [
-            "Van",
+            "580 MEG",
+            "600 MEG",
+            "600 MF",
             "Diğer"
           ],
           "trims": [
@@ -49933,7 +50060,11 @@
         {
           "name": "CaraSuite",
           "versions": [
-            "4 Kişilik",
+            "650 MF",
+            "650 MG",
+            "650 MEG",
+            "700 MEG",
+            "700 DX",
             "Diğer"
           ],
           "trims": [
@@ -49944,7 +50075,13 @@
         {
           "name": "CaraBus",
           "versions": [
-            "Van",
+            "540 MQ",
+            "600 MQ",
+            "600 DQ",
+            "630 MEG",
+            "600 MQH",
+            "600 ME",
+            "630 ME",
             "Diğer"
           ],
           "trims": [
@@ -49973,6 +50110,32 @@
             "470 EU",
             "470 QDK",
             "500 QDK",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CaraHome (Motokaravan, Alkoven)",
+          "versions": [
+            "600 DKG",
+            "650 DG",
+            "650 MEG",
+            "Diğer"
+          ],
+          "trims": [
+            "Standart",
+            "Diğer"
+          ]
+        },
+        {
+          "name": "CaraCore (Motokaravan, Entegre)",
+          "versions": [
+            "650 MF",
+            "650 MEG",
+            "700 MEG",
             "Diğer"
           ],
           "trims": [
