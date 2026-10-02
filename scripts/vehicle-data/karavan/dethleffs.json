@@ -144,6 +144,66 @@
       ]
     },
     {
+      "name": "c'joy",
+      "versions": [
+        "420 QSH",
+        "460 LE",
+        "480 QLK",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Active",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "c'go",
+      "versions": [
+        "475 EL",
+        "495 FR",
+        "495 QSK",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Active",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "c'go up",
+      "versions": [
+        "525 KR",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "Summer Edition",
+      "versions": [
+        "460 EL",
+        "470 FR",
+        "490 EST",
+        "500 QSK",
+        "510 LE",
+        "530 DR",
+        "530 FSK",
+        "540 QMK",
+        "560 FMK",
+        "650 RQT",
+        "730 FKR",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
       "name": "Diğer",
       "versions": [
         "Diğer"
