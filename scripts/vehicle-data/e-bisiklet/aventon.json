@@ -2,7 +2,7 @@
   "make": "Aventon",
   "models": [
     {
-      "name": "Pace 350 / 500 (Şehir)",
+      "name": "Pace 350 / 500 (Şehir, 2018-)",
       "versions": [
         "350W 32 km/h",
         "500W 32 km/h",
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "name": "Aventure (Fat-Tire)",
+      "name": "Aventure (Fat-Tire, 2021-)",
       "versions": [
         "750W 32 km/h 48V 15Ah",
         "Diğer"
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "name": "Soltera (Yol)",
+      "name": "Soltera (Yol, 2022-)",
       "versions": [
         "250W 32 km/h",
         "Diğer"
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "name": "Ramblas (E-MTB)",
+      "name": "Ramblas (E-MTB, 2023-)",
       "versions": [
         "750W 32 km/h",
         "Diğer"

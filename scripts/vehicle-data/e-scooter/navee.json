@@ -2,7 +2,7 @@
   "make": "Navee",
   "models": [
     {
-      "name": "N40",
+      "name": "N40 (2022-)",
       "versions": [
         "350W 10.4Ah 25km/h",
         "Diğer"
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "name": "N65",
+      "name": "N65 (2022-)",
       "versions": [
         "500W 17.5Ah 35km/h",
         "Diğer"
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "name": "S65",
+      "name": "S65 (2022-)",
       "versions": [
         "500W 17.5Ah 40km/h",
         "Diğer"
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "name": "N65i / N65 Pro",
+      "name": "N65i / N65 Pro (2023-)",
       "versions": [
         "500W 17.5Ah 35km/h N65i",
         "500W 20Ah 35km/h N65 Pro",
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "name": "V50",
+      "name": "V50 (2024-)",
       "versions": [
         "500W 15Ah 32km/h",
         "Diğer"

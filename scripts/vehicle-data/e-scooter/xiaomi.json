@@ -2,7 +2,7 @@
   "make": "Xiaomi",
   "models": [
     {
-      "name": "Mi Electric Scooter Essential",
+      "name": "Mi Electric Scooter Essential (2020-)",
       "versions": [
         "250W 5.1Ah 20km/h",
         "Diğer"
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "name": "Mi 1S",
+      "name": "Mi 1S (2020-)",
       "versions": [
         "300W 7.65Ah 25km/h",
         "Diğer"
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "name": "Mi Pro 2",
+      "name": "Mi Pro 2 (2020-)",
       "versions": [
         "300W 12.4Ah 25km/h",
         "Diğer"
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "name": "Mi 3",
+      "name": "Mi 3 (2021-)",
       "versions": [
         "300W 7.65Ah 25km/h",
         "Diğer"

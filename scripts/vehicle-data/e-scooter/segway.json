@@ -196,7 +196,7 @@
       }
     },
     {
-      "name": "Ninebot Max G30",
+      "name": "Ninebot Max G30 (2019-)",
       "versions": [
         "350W 15.3Ah 30km/h",
         "G30D 25km/h",
@@ -220,7 +220,7 @@
       ]
     },
     {
-      "name": "Ninebot Max G3",
+      "name": "Ninebot Max G3 (2025-)",
       "versions": [
         "2000W 25 km/s",
         "Diğer"

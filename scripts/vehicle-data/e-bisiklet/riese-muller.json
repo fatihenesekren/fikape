@@ -2,7 +2,7 @@
   "make": "Riese & Müller",
   "models": [
     {
-      "name": "Charger (Trekking, 2019-)",
+      "name": "Charger (Trekking, 2014-)",
       "versions": [
         "250W Bosch 25 km/h 625Wh",
         "250W Bosch 25 km/h 1000Wh Çift Bat.",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "name": "Supercharger (Speed Pedelec, 2019-)",
+      "name": "Supercharger (Speed Pedelec, 2018-)",
       "versions": [
         "250W Bosch 45 km/h 500Wh",
         "250W Bosch 45 km/h 1000Wh Çift Bat.",
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "name": "Delite (E-MTB Trekking, 2019-)",
+      "name": "Delite (E-MTB Trekking, 2017-)",
       "versions": [
         "250W Bosch CX 25 km/h 625Wh",
         "250W Bosch CX 25 km/h 1000Wh Çift Bat.",
@@ -43,7 +43,7 @@
       ]
     },
     {
-      "name": "Packster (Kargo, 2019-)",
+      "name": "Packster (Kargo, 2017-)",
       "versions": [
         "250W Bosch 25 km/h 625Wh",
         "Diğer"
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "name": "Roadster (Spor/Hızlı Şehir)",
+      "name": "Roadster (Spor/Hızlı Şehir, 2016-)",
       "versions": [
         "250W Bosch 45 km/h 625Wh",
         "Diğer"
@@ -69,7 +69,7 @@
       ]
     },
     {
-      "name": "Swing (Hollanda Tipi)",
+      "name": "Swing (Hollanda Tipi, 2014-)",
       "versions": [
         "250W Bosch 25 km/h 500Wh",
         "Diğer"

@@ -40447,7 +40447,7 @@
       "make": "Apollo",
       "models": [
         {
-          "name": "Air",
+          "name": "Air (2021-)",
           "versions": [
             "500W 16Ah 25km/h",
             "Diğer"
@@ -41559,7 +41559,7 @@
           }
         },
         {
-          "name": "OX",
+          "name": "OX (2018-)",
           "versions": [
             "1000W Çift 13Ah",
             "Eco 500W",
@@ -41593,7 +41593,7 @@
           ]
         },
         {
-          "name": "Mini",
+          "name": "Mini (2017-)",
           "versions": [
             "250W 5.2Ah 25km/h",
             "Diğer"
@@ -41745,7 +41745,7 @@
           }
         },
         {
-          "name": "Wolf King GTR",
+          "name": "Wolf King GTR (2023-)",
           "versions": [
             "2000W Çift 35Ah 65km/h",
             "Max 2000W",
@@ -42088,7 +42088,7 @@
       "make": "Navee",
       "models": [
         {
-          "name": "N40",
+          "name": "N40 (2022-)",
           "versions": [
             "350W 10.4Ah 25km/h",
             "Diğer"
@@ -42099,7 +42099,7 @@
           ]
         },
         {
-          "name": "N65",
+          "name": "N65 (2022-)",
           "versions": [
             "500W 17.5Ah 35km/h",
             "Diğer"
@@ -42110,7 +42110,7 @@
           ]
         },
         {
-          "name": "S65",
+          "name": "S65 (2022-)",
           "versions": [
             "500W 17.5Ah 40km/h",
             "Diğer"
@@ -42121,7 +42121,7 @@
           ]
         },
         {
-          "name": "N65i / N65 Pro",
+          "name": "N65i / N65 Pro (2023-)",
           "versions": [
             "500W 17.5Ah 35km/h N65i",
             "500W 20Ah 35km/h N65 Pro",
@@ -42157,7 +42157,7 @@
           ]
         },
         {
-          "name": "V50",
+          "name": "V50 (2024-)",
           "versions": [
             "500W 15Ah 32km/h",
             "Diğer"
@@ -42253,7 +42253,7 @@
           ]
         },
         {
-          "name": "UQi",
+          "name": "UQi (2018-)",
           "versions": [
             "1500W 30Ah",
             "GT 2000W",
@@ -42266,7 +42266,7 @@
           ]
         },
         {
-          "name": "MQi",
+          "name": "MQi (2016-)",
           "versions": [
             "1500W 48Ah",
             "GT Pro 3000W",
@@ -42895,7 +42895,7 @@
           }
         },
         {
-          "name": "Ninebot Max G30",
+          "name": "Ninebot Max G30 (2019-)",
           "versions": [
             "350W 15.3Ah 30km/h",
             "G30D 25km/h",
@@ -42919,7 +42919,7 @@
           ]
         },
         {
-          "name": "Ninebot Max G3",
+          "name": "Ninebot Max G3 (2025-)",
           "versions": [
             "2000W 25 km/s",
             "Diğer"
@@ -43065,7 +43065,7 @@
       "make": "Vsett",
       "models": [
         {
-          "name": "8",
+          "name": "8 (2019-)",
           "versions": [
             "500W 13Ah 25km/h",
             "Diğer"
@@ -43145,7 +43145,7 @@
       "make": "Xiaomi",
       "models": [
         {
-          "name": "Mi Electric Scooter Essential",
+          "name": "Mi Electric Scooter Essential (2020-)",
           "versions": [
             "250W 5.1Ah 20km/h",
             "Diğer"
@@ -43156,7 +43156,7 @@
           ]
         },
         {
-          "name": "Mi 1S",
+          "name": "Mi 1S (2020-)",
           "versions": [
             "300W 7.65Ah 25km/h",
             "Diğer"
@@ -43167,7 +43167,7 @@
           ]
         },
         {
-          "name": "Mi Pro 2",
+          "name": "Mi Pro 2 (2020-)",
           "versions": [
             "300W 12.4Ah 25km/h",
             "Diğer"
@@ -43178,7 +43178,7 @@
           ]
         },
         {
-          "name": "Mi 3",
+          "name": "Mi 3 (2021-)",
           "versions": [
             "300W 7.65Ah 25km/h",
             "Diğer"
@@ -43492,7 +43492,7 @@
       "make": "Zero",
       "models": [
         {
-          "name": "10X",
+          "name": "10X (2018-)",
           "versions": [
             "1600W 20Ah 40km/h",
             "Diğer"
@@ -43503,7 +43503,7 @@
           ]
         },
         {
-          "name": "11X",
+          "name": "11X (2019-)",
           "versions": [
             "2800W Çift 35Ah 55km/h",
             "Diğer"
@@ -43799,7 +43799,7 @@
       "make": "Aventon",
       "models": [
         {
-          "name": "Pace 350 / 500 (Şehir)",
+          "name": "Pace 350 / 500 (Şehir, 2018-)",
           "versions": [
             "350W 32 km/h",
             "500W 32 km/h",
@@ -43811,7 +43811,7 @@
           ]
         },
         {
-          "name": "Aventure (Fat-Tire)",
+          "name": "Aventure (Fat-Tire, 2021-)",
           "versions": [
             "750W 32 km/h 48V 15Ah",
             "Diğer"
@@ -43822,7 +43822,7 @@
           ]
         },
         {
-          "name": "Soltera (Yol)",
+          "name": "Soltera (Yol, 2022-)",
           "versions": [
             "250W 32 km/h",
             "Diğer"
@@ -43858,7 +43858,7 @@
           ]
         },
         {
-          "name": "Ramblas (E-MTB)",
+          "name": "Ramblas (E-MTB, 2023-)",
           "versions": [
             "750W 32 km/h",
             "Diğer"
@@ -46294,7 +46294,7 @@
           ]
         },
         {
-          "name": "ONE (Kayış Tahrikli)",
+          "name": "ONE (Kayış Tahrikli, 2024-)",
           "versions": [
             "750W 32 km/h 48V",
             "Diğer"
@@ -46516,7 +46516,7 @@
       "make": "Rad Power Bikes",
       "models": [
         {
-          "name": "RadRover (Fat Tire, 2018-)",
+          "name": "RadRover (Fat Tire, 2015-)",
           "versions": [
             "750W 32 km/h 48V 14Ah",
             "Diğer"
@@ -46563,7 +46563,7 @@
           ]
         },
         {
-          "name": "RadMission (Şehir Hafif, 2021-)",
+          "name": "RadMission (Şehir Hafif, 2020-)",
           "versions": [
             "500W 32 km/h 48V 10.5Ah",
             "Diğer"
@@ -46621,7 +46621,7 @@
       "make": "Riese & Müller",
       "models": [
         {
-          "name": "Charger (Trekking, 2019-)",
+          "name": "Charger (Trekking, 2014-)",
           "versions": [
             "250W Bosch 25 km/h 625Wh",
             "250W Bosch 25 km/h 1000Wh Çift Bat.",
@@ -46635,7 +46635,7 @@
           ]
         },
         {
-          "name": "Supercharger (Speed Pedelec, 2019-)",
+          "name": "Supercharger (Speed Pedelec, 2018-)",
           "versions": [
             "250W Bosch 45 km/h 500Wh",
             "250W Bosch 45 km/h 1000Wh Çift Bat.",
@@ -46648,7 +46648,7 @@
           ]
         },
         {
-          "name": "Delite (E-MTB Trekking, 2019-)",
+          "name": "Delite (E-MTB Trekking, 2017-)",
           "versions": [
             "250W Bosch CX 25 km/h 625Wh",
             "250W Bosch CX 25 km/h 1000Wh Çift Bat.",
@@ -46662,7 +46662,7 @@
           ]
         },
         {
-          "name": "Packster (Kargo, 2019-)",
+          "name": "Packster (Kargo, 2017-)",
           "versions": [
             "250W Bosch 25 km/h 625Wh",
             "Diğer"
@@ -46675,7 +46675,7 @@
           ]
         },
         {
-          "name": "Roadster (Spor/Hızlı Şehir)",
+          "name": "Roadster (Spor/Hızlı Şehir, 2016-)",
           "versions": [
             "250W Bosch 45 km/h 625Wh",
             "Diğer"
@@ -46688,7 +46688,7 @@
           ]
         },
         {
-          "name": "Swing (Hollanda Tipi)",
+          "name": "Swing (Hollanda Tipi, 2014-)",
           "versions": [
             "250W Bosch 25 km/h 500Wh",
             "Diğer"
@@ -46902,7 +46902,7 @@
       "make": "Specialized",
       "models": [
         {
-          "name": "Turbo Levo (E-MTB Full-Sus, 2019-)",
+          "name": "Turbo Levo (E-MTB Full-Sus, 2015-)",
           "versions": [
             "250W Specialized SL 1.1 25 km/h 320Wh",
             "250W Specialized SL 1.2 25 km/h 320Wh",
@@ -46967,7 +46967,7 @@
           ]
         },
         {
-          "name": "Turbo Kenevo (E-MTB Gravity/Enduro)",
+          "name": "Turbo Kenevo (E-MTB Gravity/Enduro, 2017-)",
           "versions": [
             "250W Specialized 2.2 25 km/h 700Wh",
             "SL 25 km/h 320Wh",

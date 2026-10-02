@@ -2,7 +2,7 @@
   "make": "Zero",
   "models": [
     {
-      "name": "10X",
+      "name": "10X (2018-)",
       "versions": [
         "1600W 20Ah 40km/h",
         "Diğer"
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "name": "11X",
+      "name": "11X (2019-)",
       "versions": [
         "2800W Çift 35Ah 55km/h",
         "Diğer"

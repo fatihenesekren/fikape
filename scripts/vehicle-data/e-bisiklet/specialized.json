@@ -2,7 +2,7 @@
   "make": "Specialized",
   "models": [
     {
-      "name": "Turbo Levo (E-MTB Full-Sus, 2019-)",
+      "name": "Turbo Levo (E-MTB Full-Sus, 2015-)",
       "versions": [
         "250W Specialized SL 1.1 25 km/h 320Wh",
         "250W Specialized SL 1.2 25 km/h 320Wh",
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "name": "Turbo Kenevo (E-MTB Gravity/Enduro)",
+      "name": "Turbo Kenevo (E-MTB Gravity/Enduro, 2017-)",
       "versions": [
         "250W Specialized 2.2 25 km/h 700Wh",
         "SL 25 km/h 320Wh",
