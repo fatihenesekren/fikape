@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
@@ -39,7 +39,13 @@ export default async function BrandIndexPage({
 }) {
   const { slug } = await params;
   const brand = await prisma.brand.findUnique({ where: { slug } });
-  if (!brand) notFound();
+  if (!brand) {
+    // Marka yeniden adlandırılmış/birleştirilmişse eski adres yeni adrese yönlenir
+    const takma = await prisma.catalogSlugAlias.findUnique({ where: { kind_oldSlug: { kind: "BRAND", oldSlug: slug } } });
+    const hedef = takma ? await prisma.brand.findUnique({ where: { id: takma.targetId }, select: { slug: true } }) : null;
+    if (hedef) permanentRedirect(`/markalar/${hedef.slug}`);
+    notFound();
+  }
 
   const brandProducts = await prisma.product.findMany({
     where: { brandId: brand.id, isActive: true },
