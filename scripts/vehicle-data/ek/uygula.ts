@@ -489,7 +489,11 @@ export function ekUygula(marka: string, ek: EkMarka, ayar: EkAyar, modeller: Kat
   for (const { model: ad, tip, kaynak } of ayar.ekTipler ?? []) {
     const mb = modeliBul(modeller, ad);
     const m = Array.isArray(mb) ? null : mb;
-    if (!m) { sonuc.belirsiz.push({ marka, model: ad, neden: "ekTipler: model bulunamadı" }); continue; }
+    if (!m) {
+      // Minivan kaynağı kategoriye göre bölünüp iki kez uygulanır: model bu çalıştırmanın kümesinde değilse (başka kategoriye gitti) sessizce geç.
+      if (ek.modeller.has(ad)) sonuc.belirsiz.push({ marka, model: ad, neden: "ekTipler: model bulunamadı" });
+      continue;
+    }
     const key = JSON.stringify([tip.v, tip.hp, tip.p, tip.k, tip.f, tip.t]);
     const var_ = m.tipler.find((x) => JSON.stringify([x.v, x.hp, x.p, x.k, x.f, x.t]) === key);
     if (var_) { var_.y = [...new Set([...var_.y, ...tip.y])].sort((a, b) => a - b); sonuc.zatenVar++; continue; }

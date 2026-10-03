@@ -1,4 +1,9 @@
 {
-  "atla": { "1.1 Van": "Kaynakta 'DFM / Succe (38) / 1.1 Van (4)' tek blok: '1.1 Van' ayrı bir model mi, Succe'nin versiyonu mu belli değil — yorum yapılmadı, eklenmedi." },
-  "atlaKal": ["1.1 Van"]
+  "ekTipler": [
+    {
+      "model": "Succe",
+      "tip": { "v": "1.6", "hp": 105, "p": null, "k": "Camlı Van", "y": [2010, 2011, 2012, 2013, 2014], "f": "GASOLINE", "t": "Manuel" },
+      "kaynak": "sahibinden.com 'DFM / Succe / 1.6' ilanı (kullanıcı paylaştı): teknik özellikler 1587 cc, 105 hp, 140 Nm, manuel, önden çekiş; model üretim yılı 2010 / 2014; 'DFM > Succe > 1.6 (37)' kırılımı"
+    }
+  ]
 }
