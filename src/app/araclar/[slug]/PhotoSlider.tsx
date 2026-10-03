@@ -4,10 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import type { GorselKredisi } from "@/lib/gorselKredisi";
+import { KaynakRozeti } from "./KaynakRozeti";
 
 interface Photo {
   url: string;
   label?: string; // örn. "Kullanıcı fotoğrafı"
+  atif?: GorselKredisi | null; // yalnız katalog karesi: yazar + lisans
 }
 
 interface Props {
@@ -92,11 +95,7 @@ function SliderFrame({ photo, alt, index }: { photo: Photo; alt: string; index: 
         <div className="absolute inset-0 cursor-zoom-in" role="button" aria-label="Fotoğrafı büyüt" />
       </PhotoView>
       {/* Kaynak badge */}
-      {photo.label && (
-        <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-black/50 text-white text-xs font-medium z-10">
-          📸 {photo.label}
-        </div>
-      )}
+      {photo.label && <KaynakRozeti label={photo.label} atif={photo.atif} />}
     </div>
   );
 }
@@ -184,11 +183,7 @@ export function PhotoSlider({ photos, alt }: Props) {
                   <div className="absolute inset-0 cursor-zoom-in" role="button" aria-label="Fotoğrafı büyüt" />
                 </PhotoView>
                 {/* Kaynak badge */}
-                {photo.label && (
-                  <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-black/50 text-white text-xs font-medium z-10">
-                    📸 {photo.label}
-                  </div>
-                )}
+                {photo.label && <KaynakRozeti label={photo.label} atif={photo.atif} />}
               </div>
             ))}
 

@@ -11,7 +11,6 @@ import { AiSummaryCard } from "@/components/AiSummaryCard";
 import { ScrollToReview } from "./ScrollToReview";
 import { SpecGrid } from "@/components/SpecGrid";
 import { PhotoSlider } from "./PhotoSlider";
-import { GorselKredisiSatiri } from "@/components/GorselKredisiSatiri";
 import { gorselKredisi } from "@/lib/gorselKredisi";
 import { TabView } from "./TabView";
 import { OwnershipCard } from "./OwnershipCard";
@@ -159,7 +158,7 @@ export default async function VehicleDetailPage({
   const gorselAtfi = imageUrl ? await gorselKredisi(imageUrl, product.imageUrl ? product.imageCredit : null) : null;
 
   const sliderPhotos = [
-    ...(imageUrl ? [{ url: imageUrl, label: "Katalog" }] : []),
+    ...(imageUrl ? [{ url: imageUrl, label: "Katalog", atif: gorselAtfi }] : []),
     ...product.photos.map((p) => ({
       url: p.url,
       label: p.uploadedBy?.displayName ?? "Kullanıcı fotoğrafı",
@@ -885,7 +884,6 @@ export default async function VehicleDetailPage({
         photos={sliderPhotos}
         alt={`${product.brand.name} ${stripModelGenRange(product.model.name)}`}
       />
-      {gorselAtfi && <GorselKredisiSatiri kredi={gorselAtfi} />}
 
       {/* ── Spec strip ── */}
       {heroSpecs.length > 0 && (
