@@ -148,7 +148,6 @@ export default function OnerPage() {
   const [existingRaw, setExistingMatches]       = useState<ExistingVehicleMatch[]>([]);
   // Eşleşmeler hangi marka+model için geldi — marka/model değişince eskisi görünmesin.
   const [existingKey, setExistingKey]           = useState("");
-  const [checkingExisting, setCheckingExisting] = useState(false);
   const existingCardRef = useRef<HTMLDivElement>(null);
 
   // Otomobil/kamyonet: TSB tabanlı katalog (KatalogAracSecimi). Diğer kategoriler
@@ -211,20 +210,18 @@ export default function OnerPage() {
   // (setState yalnızca .then/.finally içinde — senkron effect-body setState yok.)
   const kontrolMarka = katalogModu ? katalogSecim?.brandName ?? "" : isOtherMake ? "" : selectedMake;
   const kontrolModel = katalogModu ? katalogSecim?.modelName ?? "" : isOtherModel ? "" : selectedModel;
-  const aktifAnahtar = kontrolMarka && kontrolModel ? `${kontrolMarka}|${kontrolModel}` : "";
-  const existingMatches = aktifAnahtar && existingKey === aktifAnahtar ? existingRaw : [];
+  // Kart anahtarı: "Diğer" ile elle yazılan marka/model de dahil (sunucu 409 dönerse kart görünsün).
+  const kartMarka = katalogModu ? katalogSecim?.brandName ?? "" : isOtherMake ? customMake.trim() : selectedMake;
+  const kartModel = katalogModu ? katalogSecim?.modelName ?? "" : isOtherModel ? customModel.trim() : selectedModel;
+  const kartAnahtar = kartMarka && kartModel ? `${kartMarka}|${kartModel}` : "";
+  const existingMatches = kartAnahtar && existingKey === kartAnahtar ? existingRaw : [];
   useEffect(() => {
-    if (!kontrolMarka || !kontrolModel) {
-      // Uçuştaki istek iptal edilince finally çalışmaz; bayrak takılı kalmasın.
-      const t0 = setTimeout(() => setCheckingExisting(false), 0);
-      return () => clearTimeout(t0);
-    }
+    if (!kontrolMarka || !kontrolModel) return;
     let cancelled = false;
     const brand = kontrolMarka;
     const model = kontrolModel;
     const cat   = categorySlug;
     const t = setTimeout(() => {
-      setCheckingExisting(true);
       const qs = new URLSearchParams({ brand, model });
       if (cat) qs.set("category", cat);
       fetch(`/api/oneriler/mevcut-mu?${qs.toString()}`)
@@ -235,8 +232,7 @@ export default function OnerPage() {
             setExistingKey(`${brand}|${model}`);
           }
         })
-        .catch(() => { if (!cancelled) setExistingMatches([]); })
-        .finally(() => { if (!cancelled) setCheckingExisting(false); });
+        .catch(() => { if (!cancelled) setExistingMatches([]); });
     }, 300);
     return () => { cancelled = true; clearTimeout(t); };
   }, [kontrolMarka, kontrolModel, categorySlug]);
@@ -337,7 +333,7 @@ export default function OnerPage() {
                 reviewCount: typeof data.reviewCount === "number" ? data.reviewCount : 0,
               }];
         setExistingMatches(fromServer);
-        setExistingKey(aktifAnahtar);
+        setExistingKey(`${brandName}|${modelName}`);
         setSubmitting(false);
         setError(null);
         requestAnimationFrame(() =>
@@ -533,12 +529,6 @@ export default function OnerPage() {
                 className="mt-2 w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400"
                 autoFocus
               />
-            )}
-            {/* Sabit yükseklik: yazı belirip kaybolunca form aşağı-yukarı sıçramasın */}
-            {aktifAnahtar && (
-              <p className="mt-1.5 text-xs text-gray-400 min-h-4" aria-live="polite">
-                {checkingExisting && existingMatches.length === 0 ? "Katalogda var mı diye bakılıyor…" : ""}
-              </p>
             )}
           </div>
         )}
