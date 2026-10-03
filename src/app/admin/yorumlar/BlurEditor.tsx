@@ -207,6 +207,9 @@ export function BlurEditor({
       setRects(newRects);
       setSelectedIndex(newRects.length - 1);
       redraw(newRects, null, newRects.length - 1);
+    } else {
+      // Çok küçük/boş çizimde kırmızı çizim çerçevesi ekranda kalmasın.
+      redraw(rects, null, selectedIndex);
     }
     setActiveRect(null);
     setStartPos(null);
@@ -275,9 +278,19 @@ export function BlurEditor({
 
   async function save() {
     const canvas = canvasRef.current!;
+    const img = imgRef.current;
+    if (!img) return;
     setSaving(true);
+    // Ekrandaki tuvalde seçim/çizim çerçeveleri (mavi/kırmızı kesikli) de çizili —
+    // kaydedilecek görsel bunlardan arınmış, ayrı bir tuvalde yeniden üretilir.
+    const temiz = document.createElement("canvas");
+    temiz.width = canvas.width;
+    temiz.height = canvas.height;
+    const tctx = temiz.getContext("2d")!;
+    tctx.drawImage(img, 0, 0, temiz.width, temiz.height);
+    for (const r of rects) applyBlur(tctx, temiz, img, r);
     const blob = await new Promise<Blob>((res) =>
-      canvas.toBlob((b) => res(b!), "image/jpeg", 0.92)
+      temiz.toBlob((b) => res(b!), "image/jpeg", 0.92)
     );
     const fd = new FormData();
     fd.append("file", blob, "photo.jpg");
