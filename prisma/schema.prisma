@@ -136,6 +136,8 @@ model Product {
 
   // Fuzzy arama (pg_trgm) — add_pg_trgm_search.sql ile elle uygulandı
   @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, map: "products_name_trgm_idx")
+  // "Bu araç zaten var mı" sorgusu (findExistingVehicles): modelId + status süzgeci — migration-indeks-mevcut-mu.sql ile elle uygulanır
+  @@index([modelId, status], map: "products_model_status_idx")
   @@map("products")
 }
 
@@ -471,6 +473,8 @@ model Review {
   scoreSnapshots ScoreSnapshot[]
   moderationLogs ModerationLog[]
 
+  // Ürün başına yayınlanmış yorum sayımı/listesi — migration-indeks-mevcut-mu.sql ile elle uygulanır
+  @@index([productId, status], map: "reviews_product_status_idx")
   @@map("reviews")
 }
 
