@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useState, type CSSProperties, type RefObject } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
 
 // Header'daki dropdown panelleri (hesap menüsü, mesaj/bildirim önizlemesi)
 // daha önce hep CSS tahminiyle konumlanıyordu (absolute right-0, sonra
@@ -19,6 +19,7 @@ export function useAnchoredPosition(
   triggerRef: RefObject<HTMLElement | null>,
   open: boolean,
   panelWidth: number,
+  onClose?: () => void,
 ): CSSProperties {
   // İlk render'da panelin konumu henüz bilinmiyor. position:fixed OLMADAN yalnız
   // visibility:hidden vermek, paneli ikon kümesinin içinde normal akışta 320px'lik
@@ -72,6 +73,25 @@ export function useAnchoredPosition(
       window.removeEventListener("resize", position);
     };
   }, [open, triggerRef, panelWidth]);
+
+  // Sayfa kaydırılınca panel kapanır (açık kalıp sayfa üstünde asılı kalmasın).
+  // Panelin kendi içindeki kaydırma ([data-anchored-panel]) kapatmaz; birkaç px'lik
+  // titreme de sayılmaz.
+  const kapatRef = useRef(onClose);
+  useEffect(() => { kapatRef.current = onClose; });
+  const kapatVar = !!onClose;
+  useEffect(() => {
+    if (!open || !kapatVar) return;
+    const baslangic = window.scrollY;
+    function onScroll(e: Event) {
+      const hedef = e.target;
+      if (hedef instanceof Element && hedef.closest("[data-anchored-panel]")) return;
+      if (Math.abs(window.scrollY - baslangic) < 8) return;
+      kapatRef.current?.();
+    }
+    window.addEventListener("scroll", onScroll, { passive: true, capture: true });
+    return () => window.removeEventListener("scroll", onScroll, { capture: true });
+  }, [open, kapatVar]);
 
   return style;
 }

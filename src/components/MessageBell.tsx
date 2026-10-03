@@ -44,7 +44,7 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
   const rootRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
-  const panelStyle = useAnchoredPosition(btnRef, open, 320);
+  const panelStyle = useAnchoredPosition(btnRef, open, 320, () => setOpen(false));
 
   useEffect(() => {
     let cancelled = false;
@@ -138,7 +138,7 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
         // tıklanan butondan tamamen başka bir yerde görünüyordu (kullanıcı
         // gösterdi). useAnchoredPosition, mobilde eski (sorunsuz) davranışı
         // koruyup sm ve üstünde paneli GERÇEKTEN bu butona göre konumlandırıyor.
-        <div style={panelStyle} className="bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
+        <div style={panelStyle} data-anchored-panel className="bg-white border border-gray-100 rounded-2xl shadow-lg z-50 overflow-hidden">
           <div className="px-4 py-3 border-b border-gray-50">
             <h3 className="text-sm font-bold text-gray-900">Mesajlarım</h3>
           </div>

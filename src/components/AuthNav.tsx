@@ -99,7 +99,7 @@ export function AuthNav() {
   const menuRef = useRef<HTMLDivElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
-  const menuStyle = useAnchoredPosition(menuBtnRef, menuOpen, 208);
+  const menuStyle = useAnchoredPosition(menuBtnRef, menuOpen, 208, () => setMenuOpen(false));
 
   // Usta durumu JWT'de yok (bkz. src/app/api/me/expert-status/route.ts) —
   // MessageBell'deki gibi hafif bir client fetch, mount'ta bir kez.
@@ -193,7 +193,7 @@ export function AuthNav() {
                altında) görünüyordu (kullanıcı gösterdi). useAnchoredPosition
                artık triggerRef'in getBoundingClientRect()'ini ölçüp paneli
                GERÇEKTEN o butona göre konumlandırıyor. */
-            <div style={menuStyle} className="bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">
+            <div style={menuStyle} data-anchored-panel className="bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50">
               {isAdmin && (
                 <Link href="/admin/yorumlar" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                   <ShieldIcon /> Admin
