@@ -7,10 +7,16 @@ import { useRef, useState, useEffect, useCallback } from "react";
 // bölgeyi eksik kapatır ya da gereğinden fazla alanı bulanıklaştırır.
 interface Rect { x: number; y: number; w: number; h: number; angle: number; }
 
-const BLOCK_SIZE = 14;
+// Piksel bloğu 680px genişlikli tuval için 14px idi; tuval artık görselin kendi çözünürlüğünde (en fazla
+// MAKS_TUVAL_GENISLIK) olduğundan blok boyutu tuval genişliğiyle orantılı büyütülür (bulanıklık görünümü aynı kalır).
+const REF_GENISLIK = 680;
+const REF_BLOCK_SIZE = 14;
+const MAKS_TUVAL_GENISLIK = 1600;
+const blokBoyutu = (tuvalGenislik: number) => Math.max(REF_BLOCK_SIZE, Math.round((REF_BLOCK_SIZE * tuvalGenislik) / REF_GENISLIK));
 
 function pixelateAxisAligned(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number) {
   if (w <= 0 || h <= 0) return;
+  const BLOCK_SIZE = blokBoyutu(ctx.canvas.width);
   const data = ctx.getImageData(x, y, w, h);
   const px = data.data;
   for (let by = 0; by < h; by += BLOCK_SIZE) {
@@ -124,17 +130,19 @@ export function BlurEditor({
       ctx.save();
       ctx.translate(r.x + r.w / 2, r.y + r.h / 2);
       ctx.rotate(r.angle);
+      const olcek = canvas.width / REF_GENISLIK;
       ctx.strokeStyle = "#2563eb";
-      ctx.lineWidth = 2;
-      ctx.setLineDash([6, 3]);
+      ctx.lineWidth = 2 * olcek;
+      ctx.setLineDash([6 * olcek, 3 * olcek]);
       ctx.strokeRect(-r.w / 2, -r.h / 2, r.w, r.h);
       ctx.restore();
       ctx.setLineDash([]);
     }
     if (active && active.w > 0 && active.h > 0) {
+      const olcek = canvas.width / REF_GENISLIK;
       ctx.strokeStyle = "#ef4444";
-      ctx.lineWidth = 2;
-      ctx.setLineDash([6, 3]);
+      ctx.lineWidth = 2 * olcek;
+      ctx.setLineDash([6 * olcek, 3 * olcek]);
       ctx.strokeRect(active.x, active.y, active.w, active.h);
       ctx.fillStyle = "rgba(239,68,68,0.15)";
       ctx.fillRect(active.x, active.y, active.w, active.h);
@@ -149,8 +157,8 @@ export function BlurEditor({
       imgRef.current = img;
       const canvas = canvasRef.current;
       if (!canvas) return;
-      const maxW = 680;
-      const s = img.width > maxW ? maxW / img.width : 1;
+      // Tuval görselin kendi çözünürlüğünde (en fazla MAKS_TUVAL_GENISLIK); ekranda CSS ile küçülür.
+      const s = img.width > MAKS_TUVAL_GENISLIK ? MAKS_TUVAL_GENISLIK / img.width : 1;
       canvas.width = Math.round(img.width * s);
       canvas.height = Math.round(img.height * s);
       redraw([], null);
@@ -355,8 +363,9 @@ export function BlurEditor({
           )}
           <canvas
             ref={canvasRef}
-            className="block max-w-full rounded-xl shadow-sm"
+            className="block max-w-full h-auto rounded-xl shadow-sm"
             style={{
+              height: "auto",
               cursor: "crosshair",
               display: loaded ? "block" : "none",
               touchAction: "none",
