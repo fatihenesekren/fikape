@@ -34,6 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/gizlilik`, changeFrequency: "monthly", priority: 0.3 },
     { url: `${BASE_URL}/kullanim-kosullari`, changeFrequency: "monthly", priority: 0.3 },
     { url: `${BASE_URL}/usta-ol`, changeFrequency: "monthly", priority: 0.4 },
+    { url: `${BASE_URL}/oner`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${BASE_URL}/uyelik-sozlesmesi`, changeFrequency: "monthly", priority: 0.3 },
     // /araclar katalog sayfası + kategori varyantları (filtreli URL'ler noindex).
     { url: `${BASE_URL}/araclar`, changeFrequency: "daily", priority: 0.7 },

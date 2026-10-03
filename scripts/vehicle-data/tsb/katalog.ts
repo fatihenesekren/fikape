@@ -171,6 +171,8 @@ for (const [marka, modeller] of Object.entries(tsbMoto.katalog)) {
 const KATEGORI_DUZELTME: { marka: string; model: string; hedef: string; yeniAd?: string; paketiVersiyonaCevir?: boolean }[] = [
   { marka: "JAC", model: "Kamyonet", hedef: "kamyonet", yeniAd: "HFC 1035K", paketiVersiyonaCevir: true },
   { marka: "DFM", model: "Panelvan", hedef: "kamyonet" },
+  // sahibinden.com: Chrysler › Voyager / Grand Voyager / Town & Country hepsi "Minivan & Panelvan" altında (kullanıcı görselleri) — üçü de kamyonet.
+  { marka: "Chrysler", model: "Grand Voyager", hedef: "kamyonet" },
   { marka: "Ford", model: "Tra.Mca", hedef: "kamyonet", yeniAd: "Transit" },
   { marka: "Ford", model: "Tran.", hedef: "kamyonet", yeniAd: "Transit" },
   { marka: "Ford", model: "TRANSITKAMYONETCIFTK.470ELD170TRENDKASALIE6.1", hedef: "kamyonet", yeniAd: "Transit" },
@@ -342,6 +344,23 @@ if (fs.existsSync(minivanKok)) {
     ekRapor.push(...satir);
   }
 }
+
+// ─── 2.7) Elektrikli modeller: yıl tabanı 2000 (kullanıcı kararı, 2026-10-03) ──────────────────
+// Yılı bilinmeyen modeller 1986/1990'dan başlıyordu; elektrikli bir modelin 2000 öncesi yılı olamaz.
+const EV_TABAN = 2000;
+const EV_AD = /(\be-?tron\b|\bEV\b|elektrik|\bEQ[A-Z]?\b|\bID\.\s?(\d|Buzz)|\be-tech\b|\be-(Berlingo|Partner|Expert|Jumpy|Vito|Crafter|Transit|Doblo|Ducato|Kangoo|Scudo|Rifter|Spacetourer|Boxer|Combo|Golf|Up|Niro|Soul|208|2008|308|C4|C5)\b|\bIoniq\b|\bAriya\b|\bSeagull\b|\bTavascan\b|\bMX-30\b|\bTaycan\b|\bZoe\b|\bLeaf\b|\bBolt\b|\bAtto\b|\bDolphin\b|\bbZ\d|\bEX(30|40|90)\b|#\d)/i;
+const evDuzeltilen: string[] = [];
+for (const kat of KATEGORILER) for (const d of durum[kat].values()) for (const m of d.modeller) {
+  if (!EV_AD.test(m.ad)) continue;
+  let degisti = false;
+  for (const n of m.nesiller) if (n.bas < EV_TABAN && (n.bit === null || n.bit >= EV_TABAN)) { n.bas = EV_TABAN; degisti = true; }
+  for (const t of m.tipler) {
+    const yeni = t.y.filter((y) => y >= EV_TABAN);
+    if (yeni.length && yeni.length !== t.y.length) { t.y = yeni; degisti = true; }
+  }
+  if (degisti) evDuzeltilen.push(`${d.marka} › ${m.ad}`);
+}
+console.log(`Elektrikli model yıl tabanı ${EV_TABAN}: ${evDuzeltilen.length} model düzeltildi`);
 
 // ─── 3) Yaz ───────────────────────────────────────────────────────────────
 const rapor: string[] = [
