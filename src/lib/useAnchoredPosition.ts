@@ -20,7 +20,12 @@ export function useAnchoredPosition(
   open: boolean,
   panelWidth: number,
 ): CSSProperties {
-  const [style, setStyle] = useState<CSSProperties>({ visibility: "hidden" });
+  // İlk render'da panelin konumu henüz bilinmiyor. position:fixed OLMADAN yalnız
+  // visibility:hidden vermek, paneli ikon kümesinin içinde normal akışta 320px'lik
+  // bir blok olarak bırakıyor: ikonları sola/yukarı itiyor ve konum ölçümü bu bozuk
+  // düzende yapılıp yanlış çıkıyordu (panel ~60ms yanlış yerde görünüp doğru yere
+  // atlıyordu). Bu yüzden başlangıçta da akıştan çıkarılmış (fixed) tutuluyor.
+  const [style, setStyle] = useState<CSSProperties>({ position: "fixed", top: 0, left: 0, visibility: "hidden" });
 
   useLayoutEffect(() => {
     if (!open || !triggerRef.current) return;
