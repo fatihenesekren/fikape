@@ -303,14 +303,28 @@ export default function OnerPage() {
       // böyle bir tasarım denenmişti, marka+model eşleştiği an her gönderiyi,
       // birebir kopyalar dahil, atlatıyordu (bkz. kullanıcı geri bildirimi,
       // 2026-09-27).
-      const res = await fetch("/api/oneriler", {
+      const govde = JSON.stringify({
+        brandName, modelName, categorySlug, notes, powerHp,
+        trimName: secilenTrimName, year: secilenYil, fuelType: secilenYakit, transmission: secilenVites,
+      });
+      const gonder = () => fetch("/api/oneriler", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          brandName, modelName, categorySlug, notes, powerHp,
-          trimName: secilenTrimName, year: secilenYil, fuelType: secilenYakit, transmission: secilenVites,
-        }),
+        body: govde,
       });
+      // Geçici ağ kopmasında ("Failed to fetch") bir kez daha dene. Güvenli: sunucu aynı marka/model/yıl/donanım
+      // için kopya üretmez (409 / mevcut PENDING kaydı), günlük limit de ayrıca geçerli.
+      let res: Response;
+      try {
+        res = await gonder();
+      } catch {
+        await new Promise((r) => setTimeout(r, 1000));
+        try {
+          res = await gonder();
+        } catch {
+          throw new Error("Bağlantı kurulamadı. İnternet bağlantınızı kontrol edip tekrar deneyiniz.");
+        }
+      }
       const text = await res.text();
       let data: Record<string, unknown> = {};
       try { data = text ? JSON.parse(text) : {}; } catch { throw new Error("Sunucu geçersiz yanıt döndürdü"); }
