@@ -41,6 +41,16 @@ export default async function GorselKaynaklariPage() {
         ))}
         {satirlar.length === 0 && <li className="px-4 py-8 text-sm text-gray-400 text-center">Henüz listelenecek kayıt yok.</li>}
       </ul>
+
+      <section className="mt-8 rounded-xl border border-gray-100 bg-gray-50 px-4 py-4">
+        <h2 className="text-sm font-bold text-gray-900 mb-1">Hak sahibi bildirimi</h2>
+        <p className="text-sm text-gray-600">
+          Bir görselin hak sahibiyseniz ve görselin kaldırılmasını ya da atıf bilgisinin düzeltilmesini istiyorsanız{" "}
+          <a href="mailto:info@fikape.com?subject=G%C3%B6rsel%20hak%20sahibi%20bildirimi" className="font-semibold underline">info@fikape.com</a>{" "}
+          adresine yazın. Bildiriminizde ilgili aracın adresini ve görselin size ait olduğunu gösteren bilgiyi paylaşmanız, süreci hızlandırır. Bildirimleri
+          inceleyip gerekli görseli kısa sürede kaldırır veya düzeltiriz.
+        </p>
+      </section>
     </main>
   );
 }
