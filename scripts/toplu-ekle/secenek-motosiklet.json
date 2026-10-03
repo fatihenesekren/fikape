@@ -1,0 +1,477 @@
+[
+ {
+  "marka": "Honda",
+  "butce": 3,
+  "modeller": [
+   "PCX 125",
+   "PCX",
+   "Forza 250",
+   "Forza 350",
+   "Activa 125",
+   "Dio 110",
+   "ADV 350",
+   "SH 125",
+   "CB 650R",
+   "Africa Twin",
+   "NC750X",
+   "Transalp",
+   "Rebel 500",
+   "CRF 300L",
+   "X-ADV"
+  ],
+  "skuter": [
+   "PCX 125",
+   "PCX",
+   "Forza 250",
+   "Forza 350",
+   "Activa 125",
+   "Dio 110",
+   "ADV 350",
+   "SH 125"
+  ]
+ },
+ {
+  "marka": "Yamaha",
+  "butce": 3,
+  "modeller": [
+   "NMAX 125",
+   "NMAX",
+   "XMAX 250",
+   "XMAX 300",
+   "MT-09",
+   "MT-07",
+   "Tracer 9 GT",
+   "Tenere 700",
+   "R25",
+   "YZF-R7",
+   "Tricity",
+   "Aerox",
+   "FZ25"
+  ],
+  "skuter": [
+   "NMAX 125",
+   "NMAX",
+   "XMAX 250",
+   "XMAX 300",
+   "Tricity",
+   "Aerox"
+  ]
+ },
+ {
+  "marka": "Kymco",
+  "butce": 3,
+  "modeller": [
+   "Agility",
+   "Downtown",
+   "Xciting",
+   "AK 550",
+   "Like 125",
+   "People S",
+   "X-Town"
+  ],
+  "skuter": [
+   "Agility",
+   "Downtown",
+   "Xciting",
+   "AK 550",
+   "Like 125",
+   "People S",
+   "X-Town"
+  ]
+ },
+ {
+  "marka": "Suzuki",
+  "butce": 3,
+  "modeller": [
+   "Burgman 400",
+   "Burgman 125",
+   "V-Strom 650",
+   "V-Strom 1050",
+   "GSX-8S",
+   "Address 125",
+   "SV650",
+   "Hayabusa"
+  ],
+  "skuter": [
+   "Burgman 400",
+   "Burgman 125",
+   "Address 125"
+  ]
+ },
+ {
+  "marka": "SYM",
+  "butce": 3,
+  "modeller": [
+   "Symphony",
+   "Jet 14",
+   "Joyride",
+   "Maxsym",
+   "Cruisym",
+   "Fiddle",
+   "Orbit"
+  ],
+  "skuter": [
+   "Symphony",
+   "Jet 14",
+   "Joyride",
+   "Maxsym",
+   "Cruisym",
+   "Fiddle",
+   "Orbit"
+  ]
+ },
+ {
+  "marka": "Vespa",
+  "butce": 3,
+  "modeller": [
+   "Primavera",
+   "GTS",
+   "Sprint",
+   "LX",
+   "Elettrica"
+  ],
+  "skuter": [
+   "Primavera",
+   "GTS",
+   "Sprint",
+   "LX",
+   "Elettrica"
+  ]
+ },
+ {
+  "marka": "Piaggio",
+  "butce": 3,
+  "modeller": [
+   "Liberty",
+   "Medley",
+   "Beverly",
+   "MP3",
+   "Zip",
+   "Typhoon"
+  ],
+  "skuter": [
+   "Liberty",
+   "Medley",
+   "Beverly",
+   "MP3",
+   "Zip",
+   "Typhoon"
+  ]
+ },
+ {
+  "marka": "BMW",
+  "butce": 3,
+  "modeller": [
+   "R 1250 GS",
+   "R 1300 GS",
+   "F 850 GS",
+   "F 900 R",
+   "S 1000 RR",
+   "C 400 GT",
+   "G 310 R",
+   "G 310 GS",
+   "R nineT",
+   "CE 04"
+  ],
+  "skuter": [
+   "C 400 GT",
+   "CE 04"
+  ]
+ },
+ {
+  "marka": "Kawasaki",
+  "butce": 3,
+  "modeller": [
+   "Ninja 650",
+   "Z900",
+   "Ninja 400",
+   "Z650",
+   "Versys 650",
+   "Ninja ZX-6R",
+   "Z H2",
+   "Vulcan S"
+  ]
+ },
+ {
+  "marka": "KTM",
+  "butce": 3,
+  "modeller": [
+   "390 Duke",
+   "790 Duke",
+   "890 Duke",
+   "390 Adventure",
+   "1290 Super Adventure",
+   "RC 390",
+   "250 Duke",
+   "125 Duke"
+  ]
+ },
+ {
+  "marka": "Royal Enfield",
+  "butce": 3,
+  "modeller": [
+   "Classic 350",
+   "Himalayan",
+   "Meteor 350",
+   "Hunter 350",
+   "Interceptor 650",
+   "Continental GT 650",
+   "Scram 411",
+   "Bullet 350"
+  ]
+ },
+ {
+  "marka": "CFMoto",
+  "butce": 3,
+  "modeller": [
+   "450SR",
+   "650MT",
+   "800MT",
+   "300SR",
+   "250NK",
+   "700CL-X",
+   "450 MT",
+   "Papio"
+  ]
+ },
+ {
+  "marka": "Benelli",
+  "butce": 3,
+  "modeller": [
+   "TRK 502",
+   "Leoncino 500",
+   "502C",
+   "TNT 600",
+   "Imperiale 400",
+   "TRK 702"
+  ]
+ },
+ {
+  "marka": "Triumph",
+  "butce": 3,
+  "modeller": [
+   "Trident 660",
+   "Tiger 900",
+   "Street Triple",
+   "Speed 400",
+   "Scrambler 400 X",
+   "Bonneville T120",
+   "Tiger 1200"
+  ]
+ },
+ {
+  "marka": "Ducati",
+  "butce": 3,
+  "modeller": [
+   "Monster",
+   "Scrambler",
+   "Multistrada V4",
+   "Panigale V2",
+   "Diavel",
+   "Streetfighter V2",
+   "DesertX"
+  ]
+ },
+ {
+  "marka": "Harley-Davidson",
+  "butce": 3,
+  "modeller": [
+   "Sportster S",
+   "Nightster",
+   "Street Glide",
+   "Fat Boy",
+   "Pan America",
+   "Iron 883"
+  ]
+ },
+ {
+  "marka": "Mondial",
+  "butce": 3,
+  "modeller": [
+   "Wing 50",
+   "UAG 50",
+   "Drift 125",
+   "SFC 50",
+   "Hipster 125",
+   "RX 125",
+   "50 SFC"
+  ]
+ },
+ {
+  "marka": "Kuba",
+  "butce": 3,
+  "modeller": [
+   "CG 50 Pro",
+   "Blueberry 50",
+   "Ranger 125",
+   "Speedlight Pro",
+   "Mini Cub",
+   "Dragon 125"
+  ]
+ },
+ {
+  "marka": "RKS",
+  "butce": 3,
+  "modeller": [
+   "New Light Pro",
+   "Gold Pro",
+   "R1",
+   "Shadow",
+   "Flash",
+   "Rider"
+  ]
+ },
+ {
+  "marka": "TVS",
+  "butce": 3,
+  "modeller": [
+   "Jupiter 125",
+   "Apache RTR 160",
+   "Ntorq 125",
+   "Raider 125",
+   "Apache RR 310"
+  ],
+  "skuter": [
+   "Jupiter 125",
+   "Ntorq 125"
+  ]
+ },
+ {
+  "marka": "Bajaj",
+  "butce": 3,
+  "modeller": [
+   "Pulsar N160",
+   "Dominar 400",
+   "Pulsar NS200",
+   "Avenger 220"
+  ]
+ },
+ {
+  "marka": "Arora",
+  "butce": 2,
+  "modeller": [
+   "Cappucino 50",
+   "Cappucino",
+   "Gelato",
+   "Aksoy",
+   "Cezve"
+  ],
+  "skuter": [
+   "Cappucino 50",
+   "Cappucino",
+   "Gelato",
+   "Aksoy",
+   "Cezve"
+  ]
+ },
+ {
+  "marka": "Aprilia",
+  "butce": 3,
+  "modeller": [
+   "SR GT 200",
+   "RS 660",
+   "Tuono 660",
+   "Tuareg 660",
+   "SXR 160",
+   "RSV4"
+  ],
+  "skuter": [
+   "SR GT 200",
+   "SXR 160"
+  ]
+ },
+ {
+  "marka": "Husqvarna",
+  "butce": 3,
+  "modeller": [
+   "Svartpilen 401",
+   "Vitpilen 401",
+   "Norden 901",
+   "Svartpilen 250"
+  ]
+ },
+ {
+  "marka": "MV Agusta",
+  "butce": 2,
+  "modeller": [
+   "Brutale",
+   "Turismo Veloce",
+   "F3"
+  ]
+ },
+ {
+  "marka": "Zontes",
+  "butce": 3,
+  "modeller": [
+   "125 U",
+   "350 T",
+   "310 T",
+   "350 D"
+  ]
+ },
+ {
+  "marka": "Voge",
+  "butce": 3,
+  "modeller": [
+   "500DS",
+   "300R",
+   "650DS",
+   "525 DSX",
+   "300 Rally"
+  ]
+ },
+ {
+  "marka": "Super Soco",
+  "butce": 2,
+  "modeller": [
+   "CPx",
+   "TC Max",
+   "TS Street Hunter"
+  ],
+  "skuter": [
+   "CPx",
+   "TC Max",
+   "TS Street Hunter"
+  ]
+ },
+ {
+  "marka": "NIU",
+  "butce": 2,
+  "modeller": [
+   "NQi GT",
+   "MQi GT",
+   "UQi GT"
+  ],
+  "skuter": [
+   "NQi GT",
+   "MQi GT",
+   "UQi GT"
+  ]
+ },
+ {
+  "marka": "Zero",
+  "butce": 2,
+  "modeller": [
+   "SR/F",
+   "DSR/X",
+   "FX",
+   "S"
+  ]
+ },
+ {
+  "marka": "Can-Am",
+  "butce": 2,
+  "modeller": [
+   "Spyder F3",
+   "Ryker"
+  ]
+ },
+ {
+  "marka": "Indian",
+  "butce": 2,
+  "modeller": [
+   "Scout",
+   "Chief"
+  ]
+ }
+]

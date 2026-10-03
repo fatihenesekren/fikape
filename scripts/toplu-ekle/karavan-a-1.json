@@ -1,0 +1,79 @@
+[
+ {
+  "dogrudan": true,
+  "marka": "Dethleffs",
+  "model": "XL Family (2020-)",
+  "yil": 2020,
+  "versiyon": "A 6822-2"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Knaus",
+  "model": "Nordwind (2026-)",
+  "yil": 2026,
+  "versiyon": "600 UE"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Airstream",
+  "model": "Trade Wind (2022-)",
+  "yil": 2022,
+  "versiyon": "19 ft"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Airstream",
+  "model": "World Traveler (2026-)",
+  "yil": 2026,
+  "versiyon": "22 ft"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Caravelair",
+  "model": "Alba (2024-)",
+  "yil": 2024,
+  "versiyon": "325"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Caravelair",
+  "model": "Sport Line (2024-)",
+  "yil": 2024,
+  "versiyon": "410"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Caravelair",
+  "model": "Exclusive Line (2024-)",
+  "yil": 2024,
+  "versiyon": "475"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Chausson",
+  "model": "X-Line (2020-)",
+  "yil": 2020,
+  "versiyon": "X 590"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Coachman",
+  "model": "Lusso (2022-)",
+  "yil": 2022,
+  "versiyon": "I"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Frankia",
+  "model": "Neo (2020-)",
+  "yil": 2020,
+  "versiyon": "Cruiser 7.0 L"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Weinsberg",
+  "model": "CaraLife (2026-)",
+  "yil": 2026,
+  "versiyon": "390 QD"
+ }
+]

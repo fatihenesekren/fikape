@@ -1,0 +1,86 @@
+[
+ {
+  "marka": "Ford",
+  "model": "E-Transit"
+ },
+ {
+  "marka": "Fiat",
+  "model": "Scudo"
+ },
+ {
+  "marka": "Fiat",
+  "model": "E-Doblo"
+ },
+ {
+  "marka": "Citroen",
+  "model": "Jumpy"
+ },
+ {
+  "marka": "Citroen",
+  "model": "Jumper"
+ },
+ {
+  "marka": "Peugeot",
+  "model": "Partner"
+ },
+ {
+  "marka": "Peugeot",
+  "model": "Expert"
+ },
+ {
+  "marka": "Peugeot",
+  "model": "Boxer"
+ },
+ {
+  "marka": "Opel",
+  "model": "Vivaro"
+ },
+ {
+  "marka": "Opel",
+  "model": "Zafira Life"
+ },
+ {
+  "marka": "Renault",
+  "model": "Kangoo"
+ },
+ {
+  "marka": "Mercedes-Benz",
+  "model": "eSprinter"
+ },
+ {
+  "marka": "Volkswagen",
+  "model": "Caddy"
+ },
+ {
+  "marka": "Volkswagen",
+  "model": "Transporter"
+ },
+ {
+  "marka": "Toyota",
+  "model": "Proace City"
+ },
+ {
+  "marka": "Toyota",
+  "model": "Proace"
+ },
+ {
+  "marka": "Toyota",
+  "model": "Proace Verso"
+ },
+ {
+  "marka": "Maxus",
+  "model": "eDeliver 9"
+ },
+ {
+  "marka": "Maxus",
+  "model": "eDeliver 3"
+ },
+ {
+  "marka": "Nissan",
+  "model": "Townstar"
+ },
+ {
+  "marka": "Karsan",
+  "model": "Jest"
+ }
+]

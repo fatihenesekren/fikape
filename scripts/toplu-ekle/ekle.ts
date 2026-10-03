@@ -12,6 +12,7 @@ import { aracEkle, IsHatasi } from "@/lib/katalog/urunServis";
 import { aracEkleSema } from "@/lib/katalog/urunDogrula";
 import type { KatalogMarkaDosyasi, KatalogTip } from "@/lib/katalog/tipler";
 import { slugify } from "@/lib/slugify";
+import { stripModelGenRange } from "@/lib/modelDisplay";
 
 const [hedefYol, kategori, bayrak] = process.argv.slice(2);
 if (!hedefYol || !kategori) throw new Error("Kullanım: ekle.ts <hedef.json> <kategori> [--yaz]");
@@ -19,12 +20,13 @@ const YAZ = bayrak === "--yaz";
 /** "Güncel" ölçüsü: yalnız bu yıl ve sonrası satılan resmi tipler (daha eskisi güncel model sayılmaz, atlanır ve raporlanır). */
 const ENAZ_YIL = 2024;
 
-type Hedef = { marka: string; model: string; yil?: number; paket?: string; yakit?: string };
+type Hedef = { marka: string; model: string; yil?: number; paket?: string; yakit?: string; vites?: string; dogrudan?: boolean; versiyon?: string | null };
 
 /** Resmi tipler arasından örnek seç: en güncel yıl; yakıt+vites belli olanlar; beygire göre ortadaki. */
 function tipSec(tipler: KatalogTip[], h: Hedef): { tip: KatalogTip; yil: number } | null {
   // En güncel yıl: yakıt+vites belli (eklenebilir) resmi tipler arasından; güncel yılda eksik veri varsa bir önceki yıla düşer.
-  const uygun = tipler.filter((t) => !t.g && t.f && t.t && (!h.yakit || t.f === h.yakit));
+  // Katalogda vites hiç belli değilse (ör. motosiklet) hedef dosyasındaki açık `vites` kullanılır.
+  const uygun = tipler.filter((t) => !t.g && t.f && (t.t || h.vites) && (!h.yakit || t.f === h.yakit));
   const yillar = uygun.flatMap((t) => t.y).filter((y) => y >= ENAZ_YIL && (!h.yil || y === h.yil));
   if (!yillar.length) return null;
   const yil = Math.max(...yillar);
@@ -45,26 +47,38 @@ async function main() {
   const markaSay = new Map<string, number>();
   const ozet = { eklendi: 0, atlandi: 0 };
   for (const h of hedefler) {
-    const dosya = path.join(process.cwd(), "public", "katalog", kategori, `${slugify(h.marka)}.json`);
-    if (!fs.existsSync(dosya)) { console.log(`✗ ${h.marka} ${h.model}: katalog dosyası yok`); ozet.atlandi++; continue; }
-    const katalog = JSON.parse(fs.readFileSync(dosya, "utf8")) as KatalogMarkaDosyasi;
-    const model = katalog.modeller.find((m) => m.ad.toLowerCase() === h.model.toLowerCase());
-    if (!model) { console.log(`✗ ${h.marka} ${h.model}: katalogda model yok`); ozet.atlandi++; continue; }
-    const secim = tipSec(model.tipler, h);
-    if (!secim) { console.log(`✗ ${h.marka} ${h.model}: yakıt+vites belli resmi tip yok`); ozet.atlandi++; continue; }
-    const { tip, yil } = secim;
-
-    const girdi = {
-      kategori, marka: katalog.marka, model: model.ad, versiyon: tip.v || null, paket: tip.p ?? null, yil,
-      yakit: tip.f, vites: tip.t, beygir: tip.hp ?? null, benzerlikOnayi: false, bildirimGonder: false,
-    };
+    let girdi: Record<string, unknown>;
+    let etiket: string;
+    if (h.dogrudan) {
+      // Eski biçimli kategoriler (e-scooter, e-bisiklet, karavan): alanlar hedef dosyasında hazır (yıl model adından okunmuş).
+      // Kart adı temiz olsun (mevcut eski kategori kartları gibi): model adından '(2026-)' aralığı ve baştaki tekrar eden marka adı atılır.
+      let modelAdi = stripModelGenRange(h.model);
+      if (modelAdi.toLowerCase().startsWith(h.marka.toLowerCase() + " ")) modelAdi = modelAdi.slice(h.marka.length + 1);
+      girdi = { kategori, marka: h.marka, model: modelAdi, versiyon: h.versiyon ?? null, paket: null, yil: h.yil, benzerlikOnayi: false, bildirimGonder: false };
+      etiket = `${h.marka} ${modelAdi} ${h.yil}${h.versiyon ? ` · ${h.versiyon}` : ""}`;
+    } else {
+      const dosya = path.join(process.cwd(), "public", "katalog", kategori, `${slugify(h.marka)}.json`);
+      if (!fs.existsSync(dosya)) { console.log(`✗ ${h.marka} ${h.model}: katalog dosyası yok`); ozet.atlandi++; continue; }
+      const katalog = JSON.parse(fs.readFileSync(dosya, "utf8")) as KatalogMarkaDosyasi;
+      const model = katalog.modeller.find((m) => m.ad.toLowerCase() === h.model.toLowerCase());
+      if (!model) { console.log(`✗ ${h.marka} ${h.model}: katalogda model yok`); ozet.atlandi++; continue; }
+      const secim = tipSec(model.tipler, h);
+      if (!secim) { console.log(`✗ ${h.marka} ${h.model}: yakıt+vites belli resmi tip yok`); ozet.atlandi++; continue; }
+      const { tip, yil } = secim;
+      girdi = {
+        kategori, marka: katalog.marka, model: model.ad, versiyon: tip.v || null, paket: tip.p ?? null, yil,
+        yakit: tip.f, vites: tip.t ?? h.vites ?? null, beygir: tip.hp ?? null, benzerlikOnayi: false, bildirimGonder: false,
+      };
+      etiket = `${katalog.marka} ${model.ad} ${yil} · ${tip.v || "-"}${tip.hp ? ` ${tip.hp}hp` : ""} · ${tip.p ?? "Standart"} · ${tip.f}/${tip.t ?? h.vites}${tip.t ? "" : " (varsayım)"}`;
+    }
     const ok = aracEkleSema.safeParse(girdi);
-    if (!ok.success) { console.log(`✗ ${h.marka} ${h.model}: doğrulama — ${ok.error.issues.map((i) => i.message).join("; ")}`); ozet.atlandi++; continue; }
-    const etiket = `${katalog.marka} ${model.ad} ${yil} · ${tip.v || "-"}${tip.hp ? ` ${tip.hp}hp` : ""} · ${tip.p ?? "Standart"} · ${tip.f}/${tip.t}`;
+    if (!ok.success) { console.log(`✗ ${etiket}: doğrulama — ${ok.error.issues.map((i) => i.message).join("; ")}`); ozet.atlandi++; continue; }
     if (!YAZ) { console.log(`• ${etiket}`); continue; }
     try {
       const r = await aracEkle(kimlik, ok.data);
-      markaSay.set(katalog.marka, (markaSay.get(katalog.marka) ?? 0) + 1);
+      markaSay.set(h.marka, (markaSay.get(h.marka) ?? 0) + 1);
+      // Geri alma kaydı: eklenen her aracın id/slug'ı (aracSil ile toplu geri alınabilsin)
+      fs.appendFileSync(path.join(process.cwd(), "scripts", "toplu-ekle", "eklenenler.jsonl"), JSON.stringify({ id: r.id, slug: r.slug, kategori, tarih: new Date().toISOString() }) + "\n");
       console.log(`✓ ${etiket} → /araclar/${r.slug}`);
       ozet.eklendi++;
     } catch (e) {

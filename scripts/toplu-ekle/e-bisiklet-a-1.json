@@ -1,0 +1,93 @@
+[
+ {
+  "dogrudan": true,
+  "marka": "Brompton Electric",
+  "model": "Electric T Line (2026-)",
+  "yil": 2026,
+  "versiyon": "250W 25 km/h 300Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Brompton Electric",
+  "model": "Electric G Line (2025-)",
+  "yil": 2025,
+  "versiyon": "250W 25 km/h 300Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Brompton Electric",
+  "model": "Electric P Line (2022-)",
+  "yil": 2022,
+  "versiyon": "250W 25 km/h 300Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Cowboy",
+  "model": "Cowboy Cross (2023-)",
+  "yil": 2023,
+  "versiyon": "250W 25 km/h 360Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Cowboy",
+  "model": "Cowboy Cruiser (2022-)",
+  "yil": 2022,
+  "versiyon": "250W 25 km/h 360Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Cowboy",
+  "model": "Cowboy Classic (2021-)",
+  "yil": 2021,
+  "versiyon": "250W Arka Göbek Motor 360Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "GoCycle",
+  "model": "G4i+ (2021-)",
+  "yil": 2021,
+  "versiyon": "250W Ön Göbek Motor 36V 10.4Ah 375Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "GoCycle",
+  "model": "GS (2020-)",
+  "yil": 2020,
+  "versiyon": "250W 25 km/h 300Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Super73",
+  "model": "R Brooklyn (2021-)",
+  "yil": 2021,
+  "versiyon": "750W 45 km/h 960Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Super73",
+  "model": "S2 (2020-)",
+  "yil": 2020,
+  "versiyon": "750W 45 km/h 960Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "VanMoof",
+  "model": "S6 (2025-)",
+  "yil": 2025,
+  "versiyon": "250W 25 km/h 487Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "VanMoof",
+  "model": "S6 Open (2025-)",
+  "yil": 2025,
+  "versiyon": "250W Ön Göbek Motor 68Nm 487Wh"
+ },
+ {
+  "dogrudan": true,
+  "marka": "Xiaomi",
+  "model": "Electric Bicycle 1S (2022-)",
+  "yil": 2022,
+  "versiyon": "250W 25 km/h 36V 7.65Ah"
+ }
+]

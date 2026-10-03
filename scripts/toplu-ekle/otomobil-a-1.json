@@ -1,0 +1,266 @@
+[
+ {
+  "marka": "Renault",
+  "model": "Captur"
+ },
+ {
+  "marka": "Toyota",
+  "model": "Corolla Cross"
+ },
+ {
+  "marka": "Fiat",
+  "model": "Egea Cross"
+ },
+ {
+  "marka": "Fiat",
+  "model": "500e"
+ },
+ {
+  "marka": "Hyundai",
+  "model": "i10"
+ },
+ {
+  "marka": "Volkswagen",
+  "model": "T-Roc"
+ },
+ {
+  "marka": "Volkswagen",
+  "model": "T-Cross"
+ },
+ {
+  "marka": "Peugeot",
+  "model": "208"
+ },
+ {
+  "marka": "Citroen",
+  "model": "C4"
+ },
+ {
+  "marka": "Citroen",
+  "model": "C3 Aircross"
+ },
+ {
+  "marka": "Ford",
+  "model": "Puma"
+ },
+ {
+  "marka": "Ford",
+  "model": "Kuga"
+ },
+ {
+  "marka": "Ford",
+  "model": "Focus"
+ },
+ {
+  "marka": "Kia",
+  "model": "Stonic"
+ },
+ {
+  "marka": "Kia",
+  "model": "Ceed"
+ },
+ {
+  "marka": "Opel",
+  "model": "Mokka"
+ },
+ {
+  "marka": "Opel",
+  "model": "Astra"
+ },
+ {
+  "marka": "Dacia",
+  "model": "Sandero Stepway"
+ },
+ {
+  "marka": "Dacia",
+  "model": "Jogger"
+ },
+ {
+  "marka": "Skoda",
+  "model": "Octavia"
+ },
+ {
+  "marka": "Skoda",
+  "model": "Kamiq"
+ },
+ {
+  "marka": "Skoda",
+  "model": "Kodiaq"
+ },
+ {
+  "marka": "Nissan",
+  "model": "Juke"
+ },
+ {
+  "marka": "Nissan",
+  "model": "X-Trail"
+ },
+ {
+  "marka": "Honda",
+  "model": "Civic"
+ },
+ {
+  "marka": "Honda",
+  "model": "HR-V"
+ },
+ {
+  "marka": "Honda",
+  "model": "CR-V"
+ },
+ {
+  "marka": "Mercedes-Benz",
+  "model": "C Serisi"
+ },
+ {
+  "marka": "Mercedes-Benz",
+  "model": "GLC"
+ },
+ {
+  "marka": "Mercedes-Benz",
+  "model": "CLA"
+ },
+ {
+  "marka": "Audi",
+  "model": "A3"
+ },
+ {
+  "marka": "Audi",
+  "model": "Q3"
+ },
+ {
+  "marka": "Audi",
+  "model": "Q5"
+ },
+ {
+  "marka": "SEAT",
+  "model": "Ibiza"
+ },
+ {
+  "marka": "SEAT",
+  "model": "Arona"
+ },
+ {
+  "marka": "SEAT",
+  "model": "Leon"
+ },
+ {
+  "marka": "Cupra",
+  "model": "Leon"
+ },
+ {
+  "marka": "Cupra",
+  "model": "Born"
+ },
+ {
+  "marka": "Cupra",
+  "model": "Terramar"
+ },
+ {
+  "marka": "BYD",
+  "model": "Dolphin"
+ },
+ {
+  "marka": "BYD",
+  "model": "Seal U"
+ },
+ {
+  "marka": "BYD",
+  "model": "Atto 2"
+ },
+ {
+  "marka": "MG",
+  "model": "ZS"
+ },
+ {
+  "marka": "MG",
+  "model": "HS"
+ },
+ {
+  "marka": "MG",
+  "model": "EHS"
+ },
+ {
+  "marka": "Suzuki",
+  "model": "Vitara"
+ },
+ {
+  "marka": "Suzuki",
+  "model": "S-Cross"
+ },
+ {
+  "marka": "Suzuki",
+  "model": "Swift"
+ },
+ {
+  "marka": "Volvo",
+  "model": "XC40"
+ },
+ {
+  "marka": "Volvo",
+  "model": "EX30"
+ },
+ {
+  "marka": "Volvo",
+  "model": "EX40"
+ },
+ {
+  "marka": "Jeep",
+  "model": "Avenger"
+ },
+ {
+  "marka": "Jeep",
+  "model": "Wrangler"
+ },
+ {
+  "marka": "Lexus",
+  "model": "NX"
+ },
+ {
+  "marka": "Lexus",
+  "model": "ES"
+ },
+ {
+  "marka": "Porsche",
+  "model": "Macan"
+ },
+ {
+  "marka": "Porsche",
+  "model": "Cayenne"
+ },
+ {
+  "marka": "Porsche",
+  "model": "Taycan"
+ },
+ {
+  "marka": "Alfa Romeo",
+  "model": "Tonale"
+ },
+ {
+  "marka": "Alfa Romeo",
+  "model": "Junior"
+ },
+ {
+  "marka": "DS",
+  "model": "DS 4"
+ },
+ {
+  "marka": "DS",
+  "model": "DS 7"
+ },
+ {
+  "marka": "SsangYong",
+  "model": "Torres"
+ },
+ {
+  "marka": "SsangYong",
+  "model": "Korando"
+ },
+ {
+  "marka": "SsangYong",
+  "model": "Tivoli"
+ },
+ {
+  "marka": "Jaecoo",
+  "model": "Jaecoo 7"
+ }
+]

@@ -1,0 +1,222 @@
+[
+ {
+  "marka": "Honda",
+  "model": "Activa 125",
+  "vites": "Otomatik"
+ },
+ {
+  "marka": "Honda",
+  "model": "ADV350",
+  "vites": "Otomatik"
+ },
+ {
+  "marka": "Honda",
+  "model": "CB650R",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Yamaha",
+  "model": "Nmax 125",
+  "vites": "Otomatik"
+ },
+ {
+  "marka": "Yamaha",
+  "model": "Mt 09",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Suzuki",
+  "model": "Burgman 400",
+  "vites": "Otomatik"
+ },
+ {
+  "marka": "Suzuki",
+  "model": "Gsx 8S",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Suzuki",
+  "model": "Address 125",
+  "vites": "Otomatik"
+ },
+ {
+  "marka": "BMW",
+  "model": "R 1300 GS",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "BMW",
+  "model": "F 900 R",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "BMW",
+  "model": "C 400 GT",
+  "vites": "Otomatik"
+ },
+ {
+  "marka": "Kawasaki",
+  "model": "Ninja 650",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Kawasaki",
+  "model": "Z900",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Kawasaki",
+  "model": "Versys 650",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "KTM",
+  "model": "390 Duke",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "KTM",
+  "model": "790 Duke",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "KTM",
+  "model": "390 Adventure",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Royal Enfield",
+  "model": "Classic 350",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Royal Enfield",
+  "model": "Meteor 350",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Royal Enfield",
+  "model": "Interceptor 650",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Benelli",
+  "model": "TRK502",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Benelli",
+  "model": "Leoncino 500",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Benelli",
+  "model": "502 C",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Triumph",
+  "model": "Trident 660",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Triumph",
+  "model": "Speed 400",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Triumph",
+  "model": "Scrambler 400 X",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Ducati",
+  "model": "Multistrada V4",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Ducati",
+  "model": "Panigale V2",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Ducati",
+  "model": "Streetfighter V2",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Harley-Davidson",
+  "model": "Sportster S",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Harley-Davidson",
+  "model": "Nightster",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Harley-Davidson",
+  "model": "Street Glide",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "TVS",
+  "model": "Jupiter 125",
+  "vites": "Otomatik"
+ },
+ {
+  "marka": "TVS",
+  "model": "Ntorq 125",
+  "vites": "Otomatik"
+ },
+ {
+  "marka": "Bajaj",
+  "model": "Pulsar N 160",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Bajaj",
+  "model": "Pulsar NS200",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Aprilia",
+  "model": "SR GT 200",
+  "vites": "Otomatik"
+ },
+ {
+  "marka": "Aprilia",
+  "model": "RS 660",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Aprilia",
+  "model": "Tuono 660",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Husqvarna",
+  "model": "Svartpilen 401",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Husqvarna",
+  "model": "Vitpilen 401",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Husqvarna",
+  "model": "Svartpilen 250",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Zontes",
+  "model": "350d",
+  "vites": "Manuel"
+ },
+ {
+  "marka": "Indian",
+  "model": "Scout",
+  "vites": "Manuel"
+ }
+]
