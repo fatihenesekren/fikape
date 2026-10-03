@@ -214,7 +214,11 @@ export default function OnerPage() {
   const aktifAnahtar = kontrolMarka && kontrolModel ? `${kontrolMarka}|${kontrolModel}` : "";
   const existingMatches = aktifAnahtar && existingKey === aktifAnahtar ? existingRaw : [];
   useEffect(() => {
-    if (!kontrolMarka || !kontrolModel) return;
+    if (!kontrolMarka || !kontrolModel) {
+      // Uçuştaki istek iptal edilince finally çalışmaz; bayrak takılı kalmasın.
+      const t0 = setTimeout(() => setCheckingExisting(false), 0);
+      return () => clearTimeout(t0);
+    }
     let cancelled = false;
     const brand = kontrolMarka;
     const model = kontrolModel;
@@ -530,8 +534,11 @@ export default function OnerPage() {
                 autoFocus
               />
             )}
-            {checkingExisting && existingMatches.length === 0 && (
-              <p className="mt-1.5 text-xs text-gray-400">Katalogda var mı diye bakılıyor…</p>
+            {/* Sabit yükseklik: yazı belirip kaybolunca form aşağı-yukarı sıçramasın */}
+            {aktifAnahtar && (
+              <p className="mt-1.5 text-xs text-gray-400 min-h-4" aria-live="polite">
+                {checkingExisting && existingMatches.length === 0 ? "Katalogda var mı diye bakılıyor…" : ""}
+              </p>
             )}
           </div>
         )}
