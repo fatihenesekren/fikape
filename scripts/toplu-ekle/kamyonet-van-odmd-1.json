@@ -1,0 +1,8 @@
+[
+  { "marka": "Ford", "model": "Tourneo Courier" },
+  { "marka": "Fiat", "model": "Doblo" },
+  { "marka": "Citroen", "model": "Berlingo" },
+  { "marka": "Peugeot", "model": "Rifter" },
+  { "marka": "Opel", "model": "Combo" },
+  { "marka": "Ford", "model": "Transit", "yakit": "DIESEL" }
+]

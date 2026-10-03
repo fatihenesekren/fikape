@@ -3,7 +3,7 @@
 //
 // Kullanım:  npx tsx scripts/toplu-ekle/ekle.ts <hedef.json> <kategori>            → kuru çalıştırma (yazmaz)
 //            npx tsx scripts/toplu-ekle/ekle.ts <hedef.json> <kategori> --yaz       → gerçekten ekler
-// hedef.json: [{ "marka": "Toyota", "model": "Corolla", "yil"?: 2026, "paket"?: "Dream" }]
+// hedef.json: [{ "marka": "Toyota", "model": "Corolla", "yil"?: 2026, "paket"?: "Dream", "yakit"?: "DIESEL" }]
 import "dotenv/config";
 import fs from "fs";
 import path from "path";
@@ -16,16 +16,21 @@ import { slugify } from "@/lib/slugify";
 const [hedefYol, kategori, bayrak] = process.argv.slice(2);
 if (!hedefYol || !kategori) throw new Error("Kullanım: ekle.ts <hedef.json> <kategori> [--yaz]");
 const YAZ = bayrak === "--yaz";
+/** "Güncel" ölçüsü: yalnız bu yıl ve sonrası satılan resmi tipler (daha eskisi güncel model sayılmaz, atlanır ve raporlanır). */
+const ENAZ_YIL = 2024;
 
-type Hedef = { marka: string; model: string; yil?: number; paket?: string };
+type Hedef = { marka: string; model: string; yil?: number; paket?: string; yakit?: string };
 
 /** Resmi tipler arasından örnek seç: en güncel yıl; yakıt+vites belli olanlar; beygire göre ortadaki. */
 function tipSec(tipler: KatalogTip[], h: Hedef): { tip: KatalogTip; yil: number } | null {
-  const yillar = tipler.flatMap((t) => t.y).filter((y) => !h.yil || y === h.yil);
+  // En güncel yıl: yakıt+vites belli (eklenebilir) resmi tipler arasından; güncel yılda eksik veri varsa bir önceki yıla düşer.
+  const uygun = tipler.filter((t) => !t.g && t.f && t.t && (!h.yakit || t.f === h.yakit));
+  const yillar = uygun.flatMap((t) => t.y).filter((y) => y >= ENAZ_YIL && (!h.yil || y === h.yil));
   if (!yillar.length) return null;
   const yil = Math.max(...yillar);
-  let adaylar = tipler.filter((t) => !t.g && t.y.includes(yil) && t.f && t.t);
+  let adaylar = uygun.filter((t) => t.y.includes(yil));
   if (h.paket) adaylar = adaylar.filter((t) => (t.p ?? "").toLowerCase() === h.paket!.toLowerCase());
+  if (h.yakit) adaylar = adaylar.filter((t) => t.f === h.yakit);
   if (!adaylar.length) return null;
   adaylar.sort((a, b) => (a.hp ?? 0) - (b.hp ?? 0));
   return { tip: adaylar[Math.floor((adaylar.length - 1) / 2)], yil };

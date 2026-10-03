@@ -1,0 +1,9 @@
+[
+  { "marka": "Peugeot", "model": "2008" },
+  { "marka": "Peugeot", "model": "3008" },
+  { "marka": "Citroen", "model": "C3" },
+  { "marka": "Volkswagen", "model": "Tiguan" },
+  { "marka": "Kia", "model": "Sportage" },
+  { "marka": "Opel", "model": "Corsa" },
+  { "marka": "Renault", "model": "Boreal" }
+]
