@@ -26,7 +26,7 @@ export async function GET(req: Request) {
     findVerifiedVehicleImage(brand, model, yearNum),
   ]);
 
-  const criticalFields = getCriticalFields(categorySlug, fuelType);
+  const criticalFields = getCriticalFields(categorySlug, fuelType, specResult.specs.body_type?.value ?? null);
   const criticalFieldsMissing = criticalFields.filter(
     (f) => specResult.specs[f]?.confidence !== "high"
   );

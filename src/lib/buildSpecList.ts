@@ -6,7 +6,7 @@
 import { FUEL_LABELS } from "@/lib/fuel";
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KAMYONET_CAB_TYPES,
-  KAMYONET_SIZE_CLASSES, VEHICLE_CLASS_TYPES, KARAVAN_TYPES,
+  KARAVAN_TYPES,
   BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES, HEATING_TYPES, toLabelMap,
 } from "@/lib/vehicleTypes";
 
@@ -20,8 +20,6 @@ const BODY_LABELS: Record<string, string> = {
   ...toLabelMap(KAMYONET_BODY_TYPES),
 };
 const CAB_TYPE_LABELS = toLabelMap(KAMYONET_CAB_TYPES);
-const SIZE_CLASS_LABELS = toLabelMap(KAMYONET_SIZE_CLASSES);
-const VEHICLE_CLASS_LABELS = toLabelMap(VEHICLE_CLASS_TYPES);
 const MOTO_TYPE_LABELS = toLabelMap(MOTO_TYPES);
 const KARAVAN_TYPE_LABELS = toLabelMap(KARAVAN_TYPES);
 const DRIVETRAIN_LABELS = toLabelMap(DRIVETRAIN_TYPES);
@@ -123,13 +121,16 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       fuelType               ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType } : null,
       bodyType               ? { label: "Kasa",        value: BODY_LABELS[bodyType] ?? bodyType } : null,
       attrs.cab_type         ? { label: "Kabin",       value: CAB_TYPE_LABELS[String(attrs.cab_type)] ?? String(attrs.cab_type) } : null,
-      attrs.size_class       ? { label: "Boyut Sınıfı",value: SIZE_CLASS_LABELS[String(attrs.size_class)] ?? String(attrs.size_class) } : null,
-      attrs.vehicle_class    ? { label: "Taşıt Sınıfı",value: VEHICLE_CLASS_LABELS[String(attrs.vehicle_class)] ?? String(attrs.vehicle_class) } : null,
       attrs.transmission     ? { label: "Vites",       value: capitalize(String(attrs.transmission)) }        : null,
       attrs.engine_cc        ? { label: "Motor",       value: `${attrs.engine_cc} cc` }        : null,
       attrs.power_hp         ? { label: "Güç",         value: `${attrs.power_hp} HP` }         : null,
       attrs.torque_nm        ? { label: "Tork",        value: `${attrs.torque_nm} Nm` }        : null,
       attrs.four_wd != null  ? { label: "4×4",         value: attrs.four_wd ? "Var" : "Yok" }  : null,
+      attrs.length_mm        ? { label: "Uzunluk",     value: `${attrs.length_mm} mm` }        : null,
+      attrs.seat_count       ? { label: "Koltuk Sayısı", value: `${attrs.seat_count} kişi` }    : null,
+      attrs.cargo_m3         ? { label: "Kargo Hacmi", value: `${attrs.cargo_m3} m³` }          : null,
+      attrs.boot_l           ? { label: "Bagaj",       value: `${attrs.boot_l} L` }            : null,
+      attrs.sliding_door != null ? { label: "Sürgülü Kapı", value: attrs.sliding_door ? "Var" : "Yok" } : null,
       attrs.payload_kg       ? { label: "Yük Kap.",    value: `${attrs.payload_kg} kg` }       : null,
       attrs.tow_capacity_kg  ? { label: "Çekme Kap.",  value: `${attrs.tow_capacity_kg} kg` }  : null,
       attrs.tank_l           ? { label: "Yakıt Dep.",  value: `${attrs.tank_l} L` }            : null,

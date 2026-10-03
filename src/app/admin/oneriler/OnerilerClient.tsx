@@ -110,7 +110,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
     const nextConfidence = { ...specConfidence };
     for (const key of keys) nextConfidence[key] = { confidence: "high", source: "ilan" };
 
-    const critical = getCriticalFields(modal.suggestion.categorySlug, modal.suggestion.fuelType);
+    const critical = getCriticalFields(modal.suggestion.categorySlug, modal.suggestion.fuelType, parsed.body_type ?? attrs.body_type);
     setAttrs((prev) => ({ ...prev, ...parsed }));
     setSpecConfidence(nextConfidence);
     setReadyForAutoApprove(critical.length > 0 && critical.every((f) => nextConfidence[f]?.confidence === "high"));
@@ -547,7 +547,7 @@ export function OnerilerClient({ initialSuggestions }: { initialSuggestions: Sug
                     elle doldururken kritik alan doluluğunu canlı göster — attrs'a bağlı,
                     otomatik veri kaynağı gerektirmez. */}
                 {!fetchingSpecs && Object.keys(specConfidence).length === 0 && modal.suggestion.categorySlug !== "otomobil" && (() => {
-                  const liveCritical = getCriticalFields(modal.suggestion.categorySlug, modal.suggestion.fuelType);
+                  const liveCritical = getCriticalFields(modal.suggestion.categorySlug, modal.suggestion.fuelType, attrs.body_type);
                   if (liveCritical.length === 0) return null;
                   const liveMissing = liveCritical.filter((f) => !attrs[f]);
                   const liveReady = liveMissing.length === 0;

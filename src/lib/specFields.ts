@@ -1,6 +1,6 @@
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, OTOMOBIL_SEGMENTS, KAMYONET_BODY_TYPES,
-  KAMYONET_CAB_TYPES, KAMYONET_SIZE_CLASSES, VEHICLE_CLASS_TYPES, TRANSMISSION_TYPES,
+  KAMYONET_CAB_TYPES, TRANSMISSION_TYPES,
   KARAVAN_TYPES, BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES,
   HEATING_TYPES,
 } from "@/lib/vehicleTypes";
@@ -35,7 +35,13 @@ const isMotorizedKaravan: ShowIf = (a) => a.karavan_type !== "cekme";
 
 // Kamyonet: kabin konfigürasyonu yalnız pickup kasa tipinde anlamlı —
 // van/panelvan/minivan'da "kaç kapı/kabin" ayrı bir kavram değil.
-const isPickupBody: ShowIf = (a) => a.body_type === "pickup";
+// Kasa henüz seçilmemişse (body_type boş) alanlar gösterilir/Gemini'ye sorulur;
+// seçilince yalnız o kasaya uygun olanlar kalır.
+const kasaBos = (a: Record<string, string>) => !a.body_type;
+const isPickupBody: ShowIf = (a) => kasaBos(a) || a.body_type === "pickup";
+const isVanBody: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan";
+const isMinivanBody: ShowIf = (a) => kasaBos(a) || a.body_type === "minivan";
+const hasSeatCount: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minivan";
 
 // Kategori bazlı teknik özellik form alanları — admin öneri onay formu ve
 // ürün düzenleme formu (/admin/urunler) tarafından ortak kullanılır.
@@ -129,13 +135,16 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
   kamyonet: [
     { key: "body_type",     label: "Kasa",          type: "select", options: KAMYONET_BODY_TYPES },
     { key: "cab_type",      label: "Kabin",         type: "select", options: KAMYONET_CAB_TYPES, showIf: isPickupBody },
-    { key: "size_class",    label: "Boyut Sınıfı",  type: "select", options: KAMYONET_SIZE_CLASSES },
-    { key: "vehicle_class", label: "Taşıt Sınıfı",  type: "select", options: VEHICLE_CLASS_TYPES },
     { key: "transmission",  label: "Vites",         type: "select", options: TRANSMISSION_TYPES },
     { key: "engine_cc",     label: "Motor",         type: "number", unit: "cc" },
     { key: "power_hp",      label: "Güç",           type: "number", unit: "HP" },
     { key: "torque_nm",     label: "Tork",          type: "number", unit: "Nm" },
     { key: "four_wd",       label: "4×4",           type: "boolean" },
+    { key: "length_mm",     label: "Uzunluk",       type: "number", unit: "mm" },
+    { key: "seat_count",    label: "Koltuk Sayısı", type: "number", unit: "kişi", showIf: hasSeatCount },
+    { key: "cargo_m3",      label: "Kargo Hacmi",   type: "number", unit: "m³", placeholder: "örn. 6.5", showIf: isVanBody },
+    { key: "boot_l",        label: "Bagaj",         type: "number", unit: "L", showIf: isMinivanBody },
+    { key: "sliding_door",  label: "Sürgülü Kapı",  type: "boolean", showIf: isMinivanBody },
     { key: "payload_kg",    label: "Yük Kap.",      type: "number", unit: "kg" },
     { key: "tow_capacity_kg",label: "Çekme Kap.",   type: "number", unit: "kg" },
     { key: "tank_l",        label: "Yakıt Dep.",    type: "number", unit: "L" },
@@ -159,8 +168,13 @@ export const CRITICAL_FIELDS: Record<string, string[]> = {
 // Elektrikli araçların motor hacmi (engine_cc) olmaz — bu alanı kritik saymaya
 // devam etmek her EV onayında sahte "gözden geçirilmeli" uyarısı üretir.
 // EV ise engine_cc yerine menzil (ev_range_km) kritik alan olur.
-export function getCriticalFields(categorySlug: string, fuelType?: string | null): string[] {
-  const base = CRITICAL_FIELDS[categorySlug] ?? [];
+export function getCriticalFields(categorySlug: string, fuelType?: string | null, bodyType?: string | null): string[] {
+  let base = CRITICAL_FIELDS[categorySlug] ?? [];
+  // Kamyonet: van/panelvan için kargo hacmi, minivan için koltuk sayısı da beklenir.
+  if (categorySlug === "kamyonet") {
+    if (bodyType === "van" || bodyType === "panelvan") base = [...base, "cargo_m3"];
+    else if (bodyType === "minivan") base = [...base, "seat_count"];
+  }
   if (fuelType !== "EV") return base;
   return base.map((f) => (f === "engine_cc" ? "ev_range_km" : f));
 }
