@@ -82,6 +82,7 @@
     {
       "name": "Nevo (Şehir/Trekking)",
       "versions": [
+        "Bosch Performance Line CX 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -92,6 +93,8 @@
     {
       "name": "Load (Kargo)",
       "versions": [
+        "Bosch Cargo Line 545Wh",
+        "Bosch Cargo Line 725Wh",
         "Diğer"
       ],
       "trims": [
@@ -102,6 +105,7 @@
     {
       "name": "Multicharger (Speed Trekking)",
       "versions": [
+        "Bosch Performance Line CX 750Wh",
         "Diğer"
       ],
       "trims": [
@@ -112,6 +116,7 @@
     {
       "name": "Multitinker (Kompakt Kargo)",
       "versions": [
+        "Bosch Performance Line CX 85Nm 625Wh",
         "Diğer"
       ],
       "trims": [

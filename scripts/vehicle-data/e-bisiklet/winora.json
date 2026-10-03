@@ -63,6 +63,8 @@
     {
       "name": "Tria",
       "versions": [
+        "Bosch Active Plus 50Nm 500Wh",
+        "Bosch Active Plus 50Nm 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -73,6 +75,7 @@
     {
       "name": "iRide Pure",
       "versions": [
+        "Bosch Performance Line SX 55Nm 400Wh",
         "Diğer"
       ],
       "trims": [
@@ -83,6 +86,7 @@
     {
       "name": "E-Flitzer (Hafif Şehir)",
       "versions": [
+        "Mahle X35 40Nm 250Wh",
         "Diğer"
       ],
       "trims": [

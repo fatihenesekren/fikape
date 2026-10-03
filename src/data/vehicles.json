@@ -40573,6 +40573,7 @@
         {
           "name": "Explore Stellar",
           "versions": [
+            "Çift 1500W 52V 18Ah 936Wh 64km/h",
             "Diğer"
           ],
           "trims": [
@@ -41013,6 +41014,7 @@
         {
           "name": "Sonic Nano",
           "versions": [
+            "Çift 350W (500W tepe) 36V 10.2Ah 367Wh 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -41104,6 +41106,7 @@
         {
           "name": "Roadster",
           "versions": [
+            "Çift 4000W (15456W tepe) 84V 40Ah 3360Wh",
             "Diğer"
           ],
           "trims": [
@@ -41491,6 +41494,7 @@
         {
           "name": "Air",
           "versions": [
+            "350W (720W tepe) 36V 270Wh 31km/h",
             "Diğer"
           ],
           "trims": [
@@ -42572,6 +42576,7 @@
         {
           "name": "Pure x McLaren",
           "versions": [
+            "500W (924W tepe) 36V 12Ah 432Wh",
             "Diğer"
           ],
           "trims": [
@@ -43343,6 +43348,7 @@
         {
           "name": "Xiaomi 4 Go",
           "versions": [
+            "250W (450W tepe) 165Wh 20km/h",
             "Diğer"
           ],
           "trims": [
@@ -44101,6 +44107,7 @@
         {
           "name": "Moterra SL (Hafif E-MTB)",
           "versions": [
+            "Shimano EP801 85Nm 601Wh",
             "Diğer"
           ],
           "trims": [
@@ -44164,6 +44171,7 @@
         {
           "name": "Cargowagen Neo (Kargo)",
           "versions": [
+            "545Wh",
             "Diğer"
           ],
           "trims": [
@@ -44246,6 +44254,8 @@
         {
           "name": "Backfire (E-MTB)",
           "versions": [
+            "Bosch Performance Line CX 750Wh",
+            "Bosch Performance Line CX 800Wh",
             "Diğer"
           ],
           "trims": [
@@ -45277,6 +45287,7 @@
         {
           "name": "HeavyDutyNL (Güçlü Şehir/Kargo)",
           "versions": [
+            "Bosch Active Line 500Wh",
             "Diğer"
           ],
           "trims": [
@@ -45381,6 +45392,7 @@
         {
           "name": "Reign Advanced E+ (E-MTB Enduro, 2026-)",
           "versions": [
+            "SyncDrive Pro 3 48V 90Nm 560Wh",
             "Diğer"
           ],
           "trims": [
@@ -45487,6 +45499,7 @@
         {
           "name": "G4i+ (2021-)",
           "versions": [
+            "250W Ön Göbek Motor 36V 10.4Ah 375Wh",
             "Diğer"
           ],
           "trims": [
@@ -46107,6 +46120,7 @@
         {
           "name": "Macina Fold (Katlanabilir Şehir)",
           "versions": [
+            "Bosch Performance PX 85Nm 500Wh",
             "Diğer"
           ],
           "trims": [
@@ -46494,6 +46508,8 @@
         {
           "name": "Kemen Adv / Kemen Tour (Trekking)",
           "versions": [
+            "540Wh",
+            "630Wh",
             "Diğer"
           ],
           "trims": [
@@ -46701,6 +46717,7 @@
         {
           "name": "Nevo (Şehir/Trekking)",
           "versions": [
+            "Bosch Performance Line CX 500Wh",
             "Diğer"
           ],
           "trims": [
@@ -46711,6 +46728,8 @@
         {
           "name": "Load (Kargo)",
           "versions": [
+            "Bosch Cargo Line 545Wh",
+            "Bosch Cargo Line 725Wh",
             "Diğer"
           ],
           "trims": [
@@ -46721,6 +46740,7 @@
         {
           "name": "Multicharger (Speed Trekking)",
           "versions": [
+            "Bosch Performance Line CX 750Wh",
             "Diğer"
           ],
           "trims": [
@@ -46731,6 +46751,7 @@
         {
           "name": "Multitinker (Kompakt Kargo)",
           "versions": [
+            "Bosch Performance Line CX 85Nm 625Wh",
             "Diğer"
           ],
           "trims": [
@@ -46996,6 +47017,8 @@
         {
           "name": "Turbo Levo SL (Hafif E-MTB)",
           "versions": [
+            "SL 1.1 35Nm 320Wh",
+            "SL 1.1 35Nm 480Wh (160Wh ek akülü)",
             "Diğer"
           ],
           "trims": [
@@ -47006,6 +47029,7 @@
         {
           "name": "Turbo Vado SL (Hafif Trekking)",
           "versions": [
+            "SL 1.2 50Nm 520Wh",
             "Diğer"
           ],
           "trims": [
@@ -47016,6 +47040,8 @@
         {
           "name": "Turbo Kenevo SL (Hafif E-Enduro)",
           "versions": [
+            "SL 1.1 35Nm 320Wh",
+            "SL 1.1 35Nm 480Wh (160Wh ek akülü)",
             "Diğer"
           ],
           "trims": [
@@ -47187,6 +47213,7 @@
         {
           "name": "A-Series (Modüler Batarya, 2026-)",
           "versions": [
+            "52V 520Wh modüler akü",
             "Diğer"
           ],
           "trims": [
@@ -47618,6 +47645,7 @@
         {
           "name": "S6 Open (2025-)",
           "versions": [
+            "250W Ön Göbek Motor 68Nm 487Wh",
             "Diğer"
           ],
           "trims": [
@@ -47701,6 +47729,8 @@
         {
           "name": "Tria",
           "versions": [
+            "Bosch Active Plus 50Nm 500Wh",
+            "Bosch Active Plus 50Nm 625Wh",
             "Diğer"
           ],
           "trims": [
@@ -47711,6 +47741,7 @@
         {
           "name": "iRide Pure",
           "versions": [
+            "Bosch Performance Line SX 55Nm 400Wh",
             "Diğer"
           ],
           "trims": [
@@ -47721,6 +47752,7 @@
         {
           "name": "E-Flitzer (Hafif Şehir)",
           "versions": [
+            "Mahle X35 40Nm 250Wh",
             "Diğer"
           ],
           "trims": [
