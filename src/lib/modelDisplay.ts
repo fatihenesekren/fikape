@@ -60,12 +60,31 @@ const TRIM_SPLIT_RE = new RegExp(`^(.+?)\\s${DASH}\\s(.+)$`);
 // katmanı olarak burada da kesiliyor.
 const SPEC_NOISE_RE = /\b\d+(\.\d+)?\s*(cc|cv|hp|kw|ps|bg)\b/i;
 
-export function splitTrimName(trimName: string | null | undefined): { version: string; donanim: string } | null {
+// "versiyon" yarısı yalnız motor ölçüsüyle başlıyorsa (örn. "2.0 TDI", "1.5 Hybrid", "2.2 150 Dizel")
+// tek başına aracı tanıtmaz — başlıkta model adı da gösterilir ("Amarok 2.0 TDI"). "E 220d", "GLC 180"
+// gibi modele özgü kodlar model adı yerine geçtiği için olduğu gibi kalır.
+const MOTOR_OLCUSU_RE = /^\d[.,]\d/;
+
+export function splitTrimName(
+  trimName: string | null | undefined,
+  modelName?: string | null
+): { version: string; donanim: string } | null {
   if (!trimName) return null;
   const m = trimName.match(TRIM_SPLIT_RE);
   if (!m) return null;
   const version = m[1].trim();
   const donanim = m[2].trim();
   if (SPEC_NOISE_RE.test(version)) return null;
+  const model = modelName ? stripModelGenRange(modelName) : "";
+  if (model && MOTOR_OLCUSU_RE.test(version)) return { version: `${model} ${version}`, donanim };
   return { version, donanim };
+}
+
+// Tire içermeyen trimName bazen "250W 25 km/h 487Wh" gibi teknik özellik dizgesi (e-bisiklet/e-scooter);
+// bu bir donanım adı değil, kartta/başlıkta alt satır olarak gösterilmez (özellikler zaten teknik özellikler bölümünde).
+const OZELLIK_DIZGESI_RE = /\b\d+(?:[.,]\d+)?\s*(?:w|wh|ah|kw|km\/[hs])\b/i;
+
+export function gorunenTrimName(trimName: string | null | undefined): string | null {
+  if (!trimName || OZELLIK_DIZGESI_RE.test(trimName)) return null;
+  return trimName;
 }

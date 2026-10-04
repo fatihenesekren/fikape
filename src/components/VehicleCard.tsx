@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
-import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
 import { FavoriteButton } from "@/components/FavoriteButton";
 
@@ -97,7 +97,7 @@ export function VehicleCard({
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
   const cleanModelName = stripModelGenRange(modelName);
   const isDomestic = isDomesticBrand(brandName);
-  const trimSplit = splitTrimName(trimName);
+  const trimSplit = splitTrimName(trimName, modelName);
 
   return (
     <Link
@@ -213,7 +213,7 @@ export function VehicleCard({
               {cleanModelName}
               {year && <span className="text-gray-400 font-normal ml-1.5">{year}</span>}
             </div>
-            {trimName && (
+            {gorunenTrimName(trimName) && (
               <div className="text-sm text-gray-600 font-medium mt-0.5">{trimName}</div>
             )}
           </>

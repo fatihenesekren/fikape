@@ -44,7 +44,7 @@ import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
   BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, toLabelMap,
 } from "@/lib/vehicleTypes";
-import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelDisplay";
 import { buildSpecList } from "@/lib/buildSpecList";
 
 export async function generateMetadata({
@@ -67,7 +67,7 @@ export async function generateMetadata({
   // çelişmesin diye burada da aynı kaynak kullanılıyor (bkz. kullanıcı geri
   // bildirimi: "geçmişe dönük ... herhangi bir yerde soruna sebep olan bir
   // durum varsa düzeltelim").
-  const trimSplit = splitTrimName(product.trimName);
+  const trimSplit = splitTrimName(product.trimName, product.model.name);
   const displayName = trimSplit ? trimSplit.version : stripModelGenRange(product.model.name);
   const name = `${product.brand.name} ${displayName}${product.year ? ` ${product.year}` : ""}`;
   const title = `${name} Kullanıcı Yorumları`;
@@ -172,7 +172,7 @@ export default async function VehicleDetailPage({
   const bikeType = attrs.bike_type ? String(attrs.bike_type) : null;
   const pedelecClass = attrs.pedelec_class ? String(attrs.pedelec_class) : null;
   const fuelColor = FUEL_COLORS[fuelType] ?? FUEL_COLORS.GASOLINE;
-  const trimSplit = splitTrimName(product.trimName);
+  const trimSplit = splitTrimName(product.trimName, product.model.name);
 
   const userId = session?.user?.id ? Number(session.user.id) : null;
   // Yorum / soru-cevap İÇERİĞİ yalnızca giriş yapmış kullanıcıya. Anonimde bu
@@ -812,7 +812,7 @@ export default async function VehicleDetailPage({
                     {stripModelGenRange(product.model.name)}
                     {product.year && <span className="text-gray-400 font-light ml-2">{product.year}</span>}
                   </h1>
-                  {product.trimName && (
+                  {gorunenTrimName(product.trimName) && (
                     <p className="text-sm text-gray-400 mt-1">{product.trimName}</p>
                   )}
                 </>

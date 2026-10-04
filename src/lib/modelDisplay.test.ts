@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { stripModelGenRange, stripGenRangeAnywhere, splitTrimName, baseNameplate } from "./modelDisplay";
+import { stripModelGenRange, stripGenRangeAnywhere, splitTrimName, gorunenTrimName, baseNameplate } from "./modelDisplay";
 
 describe("stripModelGenRange", () => {
   it("sondaki kapalı nesil aralığını temizler", () => {
@@ -101,5 +101,39 @@ describe("splitTrimName", () => {
     expect(splitTrimName("125cc 12.5 CV – Standart")).toBeNull();
     expect(splitTrimName("250cc 23 CV – Standart")).toBeNull();
     expect(splitTrimName("90 HP – Comfort")).toBeNull();
+  });
+});
+
+describe("splitTrimName — motor ölçüsüyle başlayan versiyon + model adı", () => {
+  it("model adı verilirse motor ölçüsüyle başlayan versiyonun önüne eklenir", () => {
+    expect(splitTrimName("2.0 TDI – Style", "Amarok")).toEqual({ version: "Amarok 2.0 TDI", donanim: "Style" });
+    expect(splitTrimName("2.2 150 Dizel – Ultimate XL", "Vivaro")).toEqual({ version: "Vivaro 2.2 150 Dizel", donanim: "Ultimate XL" });
+    expect(splitTrimName("1.3 Hybrid – Techno Mild", "Captur (2019-)")).toEqual({ version: "Captur 1.3 Hybrid", donanim: "Techno Mild" });
+  });
+
+  it("modele özgü kodlar (E 220d, GLC 180) olduğu gibi kalır", () => {
+    expect(splitTrimName("E 220d – Exclusive", "E Serisi W213")).toEqual({ version: "E 220d", donanim: "Exclusive" });
+    expect(splitTrimName("GLC 180 1.5 – AMG", "GLC")).toEqual({ version: "GLC 180 1.5", donanim: "AMG" });
+  });
+
+  it("model adı verilmezse eski davranış", () => {
+    expect(splitTrimName("2.0 TDI – Style")).toEqual({ version: "2.0 TDI", donanim: "Style" });
+  });
+});
+
+describe("gorunenTrimName", () => {
+  it("teknik özellik dizgesini gizler (e-bisiklet/e-scooter)", () => {
+    expect(gorunenTrimName("250W 25 km/h 487Wh")).toBeNull();
+    expect(gorunenTrimName("1100W tepe 468Wh 25km/h")).toBeNull();
+    expect(gorunenTrimName("2000W 25 km/s")).toBeNull();
+    expect(gorunenTrimName("8300W Çift 72Ah")).toBeNull();
+  });
+
+  it("gerçek donanım/varyant adlarını korur", () => {
+    expect(gorunenTrimName("Raptor")).toBe("Raptor");
+    expect(gorunenTrimName("19 ft")).toBe("19 ft");
+    expect(gorunenTrimName("390 QD")).toBe("390 QD");
+    expect(gorunenTrimName("G30P")).toBe("G30P");
+    expect(gorunenTrimName(null)).toBeNull();
   });
 });

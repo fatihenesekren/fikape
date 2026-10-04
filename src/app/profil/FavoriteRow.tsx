@@ -34,7 +34,7 @@ export function FavoriteRow({
   // dikey/dar fotoğraflarda (scooter, motosiklet) aracı neredeyse tamamen
   // kırpıyor — burada motosikleti de "dar araç" grubuna dahil ediyoruz.
   const isNarrowVehicle = categorySlug === "e-scooter" || categorySlug === "e-bisiklet" || categorySlug === "motosiklet";
-  const trimSplit = splitTrimName(product.trimName);
+  const trimSplit = splitTrimName(product.trimName, product.model.name);
 
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-2.5 flex items-center gap-3">

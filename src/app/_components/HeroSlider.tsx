@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
 import { TrFlagIcon } from "@/components/VehicleCard";
-import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
+import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
 
 type TopProduct = {
@@ -103,7 +103,7 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
           const isActive = active === idx + 1;
           const badge = RANK_BADGES[idx];
           const isDomestic = isDomesticBrand(p.brandName);
-          const trimSplit = splitTrimName(p.trimName);
+          const trimSplit = splitTrimName(p.trimName, p.modelName);
           return (
             <div
               key={p.slug}
@@ -169,7 +169,7 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
                         <span className="text-gray-400 font-normal ml-1.5">· {p.year}</span>
                       )}
                     </div>
-                    {p.trimName && (
+                    {gorunenTrimName(p.trimName) && (
                       <div className="text-xs text-gray-400 mt-0.5">{p.trimName}</div>
                     )}
                   </>
