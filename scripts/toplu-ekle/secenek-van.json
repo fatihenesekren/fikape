@@ -1,25 +1,239 @@
 [
-  { "marka": "Ford", "butce": 3, "modeller": ["Transit Connect", "Tourneo Custom", "Transit Courier", "Tourneo Courier", "Transit Custom", "Transit", "Tourneo Connect", "E-Transit"] },
-  { "marka": "Fiat", "butce": 3, "modeller": ["Doblo", "Fiorino", "Scudo", "Ducato", "Doblo Combi", "Doblo Cargo", "E-Doblo", "Ulysse"] },
-  { "marka": "Citroen", "butce": 2, "modeller": ["Jumpy", "Jumper", "SpaceTourer", "Nemo", "E-Berlingo", "Berlingo Van"] },
-  { "marka": "Peugeot", "butce": 3, "modeller": ["Rifter", "Partner", "Expert", "Boxer", "Traveller", "E-Partner", "E-Expert"] },
-  { "marka": "Opel", "butce": 3, "modeller": ["Combo", "Vivaro", "Movano", "Zafira Life", "Combo Cargo", "Combo Life", "Vivaro-e", "Combo-e Life"] },
-  { "marka": "Renault", "butce": 3, "modeller": ["Kangoo", "Trafic", "Master", "Express", "Kangoo Van", "Kangoo E-Tech", "Trafic Combi"] },
-  { "marka": "Mercedes-Benz", "butce": 3, "modeller": ["Vito", "Sprinter", "V Serisi", "Citan", "eVito", "eSprinter", "EQV"] },
-  { "marka": "Volkswagen", "butce": 3, "modeller": ["Caddy", "Transporter", "Crafter", "Caravelle", "Multivan", "ID. Buzz", "Amarok"] },
-  { "marka": "Toyota", "butce": 3, "modeller": ["Proace City", "Proace", "Hiace", "Proace Verso", "Proace City Verso", "Hilux"] },
-  { "marka": "Hyundai", "butce": 2, "modeller": ["H350", "H-1", "Starex", "Staria", "H100"] },
-  { "marka": "Iveco", "butce": 2, "modeller": ["Daily", "Eurocargo"] },
-  { "marka": "Maxus", "butce": 3, "modeller": ["Deliver 9", "eDeliver 9", "eDeliver 3", "Deliver 7", "V80"] },
-  { "marka": "DFSK", "butce": 3, "modeller": ["Glory Van", "EC35 EV", "Mini Maxi", "EC31 EV"] },
-  { "marka": "Kia", "butce": 2, "modeller": ["PV5", "K2500", "Besta"] },
-  { "marka": "Skoda", "butce": 2, "modeller": ["Praktik", "Roomster"] },
-  { "marka": "Dacia", "butce": 2, "modeller": ["Dokker", "Lodgy"] },
-  { "marka": "Nissan", "butce": 3, "modeller": ["Townstar", "Primastar", "Interstar", "NV200", "NV300", "e-NV200"] },
-  { "marka": "Mitsubishi", "butce": 2, "modeller": ["L300", "Fuso Canter"] },
-  { "marka": "Isuzu", "butce": 2, "modeller": ["NPR", "NLR", "NQR"] },
-  { "marka": "Karsan", "butce": 3, "modeller": ["Jest", "e-Jest", "J10", "e-ATA"] },
-  { "marka": "BMC", "butce": 2, "modeller": ["Levend", "Pro 827", "Probus"] },
-  { "marka": "Temsa", "butce": 2, "modeller": ["Prestij", "MD9"] },
-  { "marka": "Otokar", "butce": 2, "modeller": ["Sultan", "Kent"] }
+ {
+  "marka": "Ford",
+  "butce": 3,
+  "modeller": [
+   "Transit Connect",
+   "Tourneo Custom",
+   "Transit Courier",
+   "Tourneo Courier",
+   "Transit Custom",
+   "Transit",
+   "Tourneo Connect",
+   "E-Transit"
+  ]
+ },
+ {
+  "marka": "Fiat",
+  "butce": 3,
+  "modeller": [
+   "Doblo",
+   "Fiorino",
+   "Scudo",
+   "Ducato",
+   "Doblo Combi",
+   "Doblo Cargo",
+   "E-Doblo",
+   "Ulysse"
+  ]
+ },
+ {
+  "marka": "Citroen",
+  "butce": 2,
+  "modeller": [
+   "Jumpy",
+   "Jumper",
+   "SpaceTourer",
+   "Nemo",
+   "E-Berlingo",
+   "Berlingo Van"
+  ]
+ },
+ {
+  "marka": "Peugeot",
+  "butce": 3,
+  "modeller": [
+   "Rifter",
+   "Partner",
+   "Expert",
+   "Boxer",
+   "Traveller",
+   "E-Partner",
+   "E-Expert"
+  ]
+ },
+ {
+  "marka": "Opel",
+  "butce": 3,
+  "modeller": [
+   "Combo",
+   "Vivaro",
+   "Movano",
+   "Zafira Life",
+   "Combo Cargo",
+   "Combo Life",
+   "Vivaro-e",
+   "Combo-e Life"
+  ]
+ },
+ {
+  "marka": "Renault",
+  "butce": 3,
+  "modeller": [
+   "Kangoo",
+   "Trafic",
+   "Master",
+   "Express",
+   "Kangoo Van",
+   "Kangoo E-Tech",
+   "Trafic Combi"
+  ]
+ },
+ {
+  "marka": "Mercedes-Benz",
+  "butce": 3,
+  "modeller": [
+   "Vito",
+   "Sprinter",
+   "V Serisi",
+   "Citan",
+   "eVito",
+   "eSprinter",
+   "EQV"
+  ]
+ },
+ {
+  "marka": "Volkswagen",
+  "butce": 3,
+  "modeller": [
+   "Caddy",
+   "Transporter",
+   "Crafter",
+   "Caravelle",
+   "Multivan",
+   "ID. Buzz",
+   "Amarok"
+  ]
+ },
+ {
+  "marka": "Toyota",
+  "butce": 3,
+  "modeller": [
+   "Proace City",
+   "Proace",
+   "Hiace",
+   "Proace Verso",
+   "Proace City Verso",
+   "Hilux"
+  ]
+ },
+ {
+  "marka": "Hyundai",
+  "butce": 2,
+  "modeller": [
+   "H350",
+   "H-1",
+   "Starex",
+   "Staria",
+   "H100"
+  ]
+ },
+ {
+  "marka": "Iveco",
+  "butce": 2,
+  "modeller": [
+   "Daily",
+   "Eurocargo"
+  ]
+ },
+ {
+  "marka": "Maxus",
+  "butce": 3,
+  "modeller": [
+   "Deliver 9",
+   "eDeliver 9",
+   "eDeliver 3",
+   "Deliver 7",
+   "V80"
+  ]
+ },
+ {
+  "marka": "DFSK",
+  "butce": 3,
+  "modeller": [
+   "Glory Van",
+   "EC35 EV",
+   "Mini Maxi",
+   "EC31 EV"
+  ]
+ },
+ {
+  "marka": "Kia",
+  "butce": 2,
+  "modeller": [
+   "PV5",
+   "K2500",
+   "Besta"
+  ]
+ },
+ {
+  "marka": "Skoda",
+  "butce": 2,
+  "modeller": [
+   "Praktik",
+   "Roomster"
+  ]
+ },
+ {
+  "marka": "Dacia",
+  "butce": 2,
+  "modeller": [
+   "Dokker",
+   "Lodgy"
+  ]
+ },
+ {
+  "marka": "Nissan",
+  "butce": 3,
+  "modeller": [
+   "Townstar",
+   "Primastar",
+   "Interstar",
+   "NV200",
+   "NV300",
+   "e-NV200"
+  ]
+ },
+ {
+  "marka": "Mitsubishi",
+  "butce": 2,
+  "modeller": [
+   "L300",
+   "Fuso Canter"
+  ]
+ },
+ {
+  "marka": "Isuzu",
+  "butce": 2,
+  "modeller": [
+   "NPR",
+   "NLR",
+   "NQR"
+  ]
+ },
+ {
+  "marka": "BMC",
+  "butce": 2,
+  "modeller": [
+   "Levend",
+   "Pro 827",
+   "Probus"
+  ]
+ },
+ {
+  "marka": "Temsa",
+  "butce": 2,
+  "modeller": [
+   "Prestij",
+   "MD9"
+  ]
+ },
+ {
+  "marka": "Otokar",
+  "butce": 2,
+  "modeller": [
+   "Sultan",
+   "Kent"
+  ]
+ }
 ]

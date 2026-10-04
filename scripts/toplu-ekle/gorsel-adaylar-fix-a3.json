@@ -1,0 +1,48 @@
+{
+ "tek": {
+  "ad": "Audi A3 Allstreet",
+  "kat": "x",
+  "adaylar": [
+   {
+    "dosya": "Audi A3 Allstreet DSC 7459.jpg",
+    "w": 3234,
+    "h": 1861,
+    "mime": "image/jpeg",
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Audi A3 Allstreet IMG 3202.jpg",
+    "w": 4982,
+    "h": 2648,
+    "mime": "image/jpeg",
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Audi A3 Allstreet IMG 3194.jpg",
+    "w": 4860,
+    "h": 2768,
+    "mime": "image/jpeg",
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Audi A3 Allstreet DSC 0613.jpg",
+    "w": 4661,
+    "h": 2615,
+    "mime": "image/jpeg",
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Audi A3 AllStreet 40 TFSI e (2025) (54720641424).jpg",
+    "w": 5636,
+    "h": 3711,
+    "mime": "image/jpeg",
+    "lisans": "CC0",
+    "tarih": 2025
+   }
+  ]
+ }
+}

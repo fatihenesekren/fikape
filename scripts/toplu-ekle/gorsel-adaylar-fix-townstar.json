@@ -1,0 +1,32 @@
+{
+ "tek": {
+  "ad": "Nissan Townstar Van",
+  "kat": "x",
+  "adaylar": [
+   {
+    "dosya": "Nissan Townstar Automesse Ludwigsburg 2022 1X7A5881.jpg",
+    "w": 4690,
+    "h": 3129,
+    "mime": "image/jpeg",
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   },
+   {
+    "dosya": "Nissan Townstar Automesse Ludwigsburg 2022 1X7A5882.jpg",
+    "w": 5415,
+    "h": 3100,
+    "mime": "image/jpeg",
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   },
+   {
+    "dosya": "Nissan Townstar EV 1X7A7200.jpg",
+    "w": 5342,
+    "h": 3564,
+    "mime": "image/jpeg",
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ }
+}

@@ -272,7 +272,6 @@ export const LCV_MODELS: Record<string, string[]> = {
   Isuzu: ["D-MAX", "NPR", "NNR", "NLR", "NMR", "NKR", "N-WIDE"],
   Hyundai: ["H-1", "H100", "HD", "H350", "STAREX", "STARIA"],
   Kia: ["K2500", "K2700", "BONGO"],
-  Karsan: ["JEST", "JEST+", "J10", "ATAK", "JESTRONIC"],
   SsangYong: ["MUSSO", "MUSSO GRAND", "ACTYON SPORTS", "KORANDO SPORTS"],
   KGM: ["MUSSO"], // marka artık SsangYong altında birleşiyor
   Dodge: ["RAM"],
