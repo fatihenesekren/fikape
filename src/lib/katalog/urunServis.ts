@@ -93,10 +93,10 @@ export async function aracEkle(admin: AdminKimlik, g: AracEkle) {
     const cakisan = await tx.product.findUnique({ where: { slug }, select: { slug: true, name: true } });
     if (cakisan) throw new IsHatasi(409, { error: "Bu adreste (slug) bir araç zaten var", mevcut: cakisan });
 
-    const attributes: Record<string, string> = {};
+    const attributes: Record<string, string | number> = {};
     if (g.yakit) attributes.fuel_type = g.yakit;
     if (g.vites) attributes.transmission = g.vites;
-    if (g.beygir) attributes.power_hp = String(g.beygir);
+    if (g.beygir) attributes.power_hp = g.beygir;
 
     const urun = await tx.product.create({
       data: {
