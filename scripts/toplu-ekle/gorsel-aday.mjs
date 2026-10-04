@@ -68,7 +68,7 @@ async function ara(sorgu) {
   }
   return [];
 }
-for (const p of r.rows.filter((x) => !process.env.KAT || x.kat === process.env.KAT)) {
+for (const p of r.rows.filter((x) => (!process.env.KAT || x.kat === process.env.KAT) && (!process.env.SLUGS || process.env.SLUGS.split(",").includes(x.slug)))) {
   const modelTemiz = p.model.replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim();
   const sorgu = `${p.brand} ${modelTemiz}`;
   const sayfalar = [];
@@ -81,13 +81,13 @@ for (const p of r.rows.filter((x) => !process.env.KAT || x.kat === process.env.K
   const adaylar = sayfalar
     .filter((x) => x.imageinfo?.[0])
     .map((x) => ({ dosya: x.title.replace(/^File:/, ""), idx: x.index, w: x.imageinfo[0].width, h: x.imageinfo[0].height, mime: x.imageinfo[0].mime, lisans: (x.imageinfo[0].extmetadata?.LicenseShortName?.value ?? "").replace(/<[^>]*>/g, ""), serbestDegil: x.imageinfo[0].extmetadata?.NonFree?.value, tarih: Number(((x.imageinfo[0].extmetadata?.DateTimeOriginal?.value ?? x.imageinfo[0].extmetadata?.DateTime?.value ?? "").match(/(19|20)\d{2}/) ?? [])[0]) || null }))
-    .filter((x) => /jpeg/.test(x.mime) && x.w >= 1400 && x.w / x.h > 1.25 && x.w / x.h < 1.95 && !x.serbestDegil && /^(CC|Public|PD)/i.test(x.lisans))
+    .filter((x) => /jpeg/.test(x.mime) && x.w >= (process.env.RELAX ? 1000 : 1400) && x.w / x.h > (process.env.RELAX ? 1.15 : 1.25) && x.w / x.h < (process.env.RELAX ? 2.3 : 1.95) && !x.serbestDegil && /^(CC|Public|PD)/i.test(x.lisans))
     .filter((x) => !HARIC.test(x.dosya) && !HARIC2.test(x.dosya))
     .filter((x) => { const n = norm(x.dosya); return n.includes(modelN) && (n.includes(marka) || modelN.length >= 6); })
     // Nesil uyumu: fotoğraf tarihi bilinenlerden yeterince yeni olanlar (ürün yılı − 3, en az 2019); bilinmeyenler sona; yeniden eskiye
-    .filter((x) => !x.tarih || x.tarih >= Math.max(2019, (p.year ?? 2024) - 3))
+    .filter((x) => !x.tarih || x.tarih >= (process.env.RELAX ? 2016 : Math.max(2019, (p.year ?? 2024) - 3)))
     .sort((a, b) => (b.tarih ? 1 : 0) - (a.tarih ? 1 : 0) || (b.tarih ?? 0) - (a.tarih ?? 0) || a.idx - b.idx)
-    .slice(0, 8)
+    .slice(0, process.env.RELAX ? 12 : 8)
     .map(({ dosya, w, h, lisans, tarih }) => ({ dosya, w, h, lisans, tarih }));
   const wk = await wikiKapak(p.brand, modelTemiz);
   if (wk) {
