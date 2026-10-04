@@ -1,0 +1,6171 @@
+{
+ "brompton-electric-electric-t-line-250w-25-km-h-300wh-2026": {
+  "ad": "Brompton Electric Electric T Line 250W 25 km/h 300Wh 2026",
+  "kat": "e-bisiklet",
+  "sorgu": "Brompton Electric Electric T Line",
+  "adaylar": []
+ },
+ "cowboy-cross-250w-25-km-h-360wh-2023": {
+  "ad": "Cowboy Cross 250W 25 km/h 360Wh 2023",
+  "kat": "e-bisiklet",
+  "sorgu": "Cowboy Cross",
+  "adaylar": []
+ },
+ "cowboy-cruiser-250w-25-km-h-360wh-2022": {
+  "ad": "Cowboy Cruiser 250W 25 km/h 360Wh 2022",
+  "kat": "e-bisiklet",
+  "sorgu": "Cowboy Cruiser",
+  "adaylar": []
+ },
+ "cowboy-classic-250w-arka-gobek-motor-360wh-2021": {
+  "ad": "Cowboy Classic 250W Arka Göbek Motor 360Wh 2021",
+  "kat": "e-bisiklet",
+  "sorgu": "Cowboy Classic",
+  "adaylar": []
+ },
+ "gocycle-g4i-250w-on-gobek-motor-36v-10-4ah-375wh-2021": {
+  "ad": "GoCycle G4i+ 250W Ön Göbek Motor 36V 10.4Ah 375Wh 2021",
+  "kat": "e-bisiklet",
+  "sorgu": "GoCycle G4i+",
+  "adaylar": []
+ },
+ "gocycle-gs-250w-25-km-h-300wh-2020": {
+  "ad": "GoCycle GS 250W 25 km/h 300Wh 2020",
+  "kat": "e-bisiklet",
+  "sorgu": "GoCycle GS",
+  "adaylar": [
+   {
+    "dosya": "Gocycle GS .jpg",
+    "w": 5760,
+    "h": 3840,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2019
+   }
+  ]
+ },
+ "super73-r-brooklyn-750w-45-km-h-960wh-2021": {
+  "ad": "Super73 R Brooklyn 750W 45 km/h 960Wh 2021",
+  "kat": "e-bisiklet",
+  "sorgu": "Super73 R Brooklyn",
+  "adaylar": []
+ },
+ "super73-s2-750w-45-km-h-960wh-2020": {
+  "ad": "Super73 S2 750W 45 km/h 960Wh 2020",
+  "kat": "e-bisiklet",
+  "sorgu": "Super73 S2",
+  "adaylar": []
+ },
+ "vanmoof-s6-250w-25-km-h-487wh-2025": {
+  "ad": "VanMoof S6 250W 25 km/h 487Wh 2025",
+  "kat": "e-bisiklet",
+  "sorgu": "VanMoof S6",
+  "adaylar": []
+ },
+ "vanmoof-s6-open-250w-on-gobek-motor-68nm-487wh-2025": {
+  "ad": "VanMoof S6 Open 250W Ön Göbek Motor 68Nm 487Wh 2025",
+  "kat": "e-bisiklet",
+  "sorgu": "VanMoof S6 Open",
+  "adaylar": []
+ },
+ "xiaomi-electric-bicycle-1s-250w-25-km-h-36v-7-65ah-2022": {
+  "ad": "Xiaomi Electric Bicycle 1S 250W 25 km/h 36V 7.65Ah 2022",
+  "kat": "e-bisiklet",
+  "sorgu": "Xiaomi Electric Bicycle 1S",
+  "adaylar": []
+ },
+ "xiaomi-6-lite-300w-500w-tepe-216wh-25km-h-2026": {
+  "ad": "Xiaomi 6 Lite 300W (500W tepe) 216Wh 25km/h 2026",
+  "kat": "e-scooter",
+  "sorgu": "Xiaomi 6 Lite",
+  "adaylar": []
+ },
+ "xiaomi-6-max-1100w-tepe-468wh-25km-h-2026": {
+  "ad": "Xiaomi 6 Max 1100W tepe 468Wh 25km/h 2026",
+  "kat": "e-scooter",
+  "sorgu": "Xiaomi 6 Max",
+  "adaylar": []
+ },
+ "xiaomi-6-pro-1000w-tepe-25km-h-2026": {
+  "ad": "Xiaomi 6 Pro 1000W tepe 25km/h 2026",
+  "kat": "e-scooter",
+  "sorgu": "Xiaomi 6 Pro",
+  "adaylar": []
+ },
+ "segway-ninebot-max-g3-2000w-25-km-s-2025": {
+  "ad": "Segway Ninebot Max G3 2000W 25 km/s 2025",
+  "kat": "e-scooter",
+  "sorgu": "Segway Ninebot Max G3",
+  "adaylar": []
+ },
+ "navee-v50-500w-15ah-32km-h-2024": {
+  "ad": "Navee V50 500W 15Ah 32km/h 2024",
+  "kat": "e-scooter",
+  "sorgu": "Navee V50",
+  "adaylar": []
+ },
+ "navee-n40-350w-10-4ah-25km-h-2022": {
+  "ad": "Navee N40 350W 10.4Ah 25km/h 2022",
+  "kat": "e-scooter",
+  "sorgu": "Navee N40",
+  "adaylar": []
+ },
+ "navee-n65-500w-17-5ah-35km-h-2022": {
+  "ad": "Navee N65 500W 17.5Ah 35km/h 2022",
+  "kat": "e-scooter",
+  "sorgu": "Navee N65",
+  "adaylar": []
+ },
+ "dualtron-x2-8300w-cift-72ah-2021": {
+  "ad": "Dualtron X2 8300W Çift 72Ah 2021",
+  "kat": "e-scooter",
+  "sorgu": "Dualtron X2",
+  "adaylar": []
+ },
+ "kaabo-wolf-king-gtr-2000w-cift-35ah-65km-h-2023": {
+  "ad": "Kaabo Wolf King GTR 2000W Çift 35Ah 65km/h 2023",
+  "kat": "e-scooter",
+  "sorgu": "Kaabo Wolf King GTR",
+  "adaylar": []
+ },
+ "apollo-air-500w-16ah-25km-h-2021": {
+  "ad": "Apollo Air 500W 16Ah 25km/h 2021",
+  "kat": "e-scooter",
+  "sorgu": "Apollo Air",
+  "adaylar": []
+ },
+ "inmotion-l9-900w-45-km-s-2021": {
+  "ad": "Inmotion L9 900W 45 km/s 2021",
+  "kat": "e-scooter",
+  "sorgu": "Inmotion L9",
+  "adaylar": []
+ },
+ "citroen-berlingo-1-5-bluehdi-2026": {
+  "ad": "Citroen Berlingo 1.5 BlueHDi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Citroen Berlingo",
+  "adaylar": [
+   {
+    "dosya": "Citroën Berlingo XL BlueHDi 130 EAT8 Shine XTR (III) – f 02012021.jpg",
+    "w": 5654,
+    "h": 3188,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "2024 Citroen e-Berlingo Plus - 52kWh (136PS) Electric - Cumulus Grey - 03-2025, Front.jpg",
+    "w": 4256,
+    "h": 2544,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2021 Citroen Berlingo Multispace Feel PureTech - 1200cc 1.2 (130PS) Petrol - Silver - 11-2024, Front.jpg",
+    "w": 4407,
+    "h": 2501,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Citroën Berlingo M BlueHDi 130 EAT8 Max XTR (III, Facelift) – f 07072024.jpg",
+    "w": 5709,
+    "h": 3219,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2001 Citroen Berlingo Multispace Forte Di - 1868cc 1.9 (68PS) Diesel - Silver - 04-2024, Front.jpg",
+    "w": 3765,
+    "h": 2555,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ford-e-transit-420l-deluxe-2026": {
+  "ad": "Ford E-Transit 420L – Deluxe 2026",
+  "kat": "kamyonet",
+  "sorgu": "Ford E-Transit",
+  "adaylar": []
+ },
+ "fiat-scudo-2-2-multijet-std-business-s4-2026": {
+  "ad": "Fiat Scudo 2.2 Multijet – Std Business S4 2026",
+  "kat": "kamyonet",
+  "sorgu": "Fiat Scudo",
+  "adaylar": [
+   {
+    "dosya": "Fiat Scudo (2024) DSC 8323.jpg",
+    "w": 4494,
+    "h": 3004,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Fiat Scudo, BAS 24, Brussels (P1170400-RR).jpg",
+    "w": 4608,
+    "h": 3072,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Fiat Scudo (2024) IMG 2383.jpg",
+    "w": 4075,
+    "h": 3185,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Fiat Scudo 115 Multijet (2023) (53548521440).jpg",
+    "w": 4896,
+    "h": 3672,
+    "lisans": "CC BY 2.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Freiwillige Feuerwehr Pilisszentiván Fiat Scudo, Hilfspolizei motorcycle, 2023 Stadtwäldchen.jpg",
+    "w": 2272,
+    "h": 1704,
+    "lisans": "CC BY-SA 3.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "fiat-e-doblo-100-kw-2026": {
+  "ad": "Fiat E-Doblo 100 kW 2026",
+  "kat": "kamyonet",
+  "sorgu": "Fiat E-Doblo",
+  "adaylar": [
+   {
+    "dosya": "Fiat E Doblò.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Fiat E-Doblò IMG 0170.jpg",
+    "w": 3719,
+    "h": 2475,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Fiat E-Doblò IMG 0740.jpg",
+    "w": 5219,
+    "h": 3473,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Fiat E-Doblò 1X7A6790.jpg",
+    "w": 3593,
+    "h": 2398,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Fiat E-Doblò 1X7A6788.jpg",
+    "w": 4816,
+    "h": 3214,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Fiat E-Doblò 1X7A6792.jpg",
+    "w": 5164,
+    "h": 3785,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Fiat E-Doblò 1X7A6791.jpg",
+    "w": 3656,
+    "h": 2439,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "citroen-jumpy-1-5-standart-b-hdi-2026": {
+  "ad": "Citroen Jumpy 1.5 – Standart B.Hdi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Citroen Jumpy",
+  "adaylar": [
+   {
+    "dosya": "2016 Citroen Dispatch 1000 BlueHDi X S 1.6 Front.jpg",
+    "w": 4328,
+    "h": 2238,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Citroën Jumpy 2.0 JTD (2006) (54721710245).jpg",
+    "w": 5584,
+    "h": 3539,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Citroën ë-Jumpy Automesse Ludwigsburg 2024 IMG 1391.jpg",
+    "w": 4601,
+    "h": 3062,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Citroen-Jumpy-Caselani-HG-Dinard-Cote-DEmeraude-Tourisme-02-byRundvald.jpg",
+    "w": 3648,
+    "h": 2736,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Citroen-Jumpy-Caselani-HG-Dinard-Cote-DEmeraude-Tourisme-01-byRundvald.jpg",
+    "w": 3432,
+    "h": 2574,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Marcellaz-Albanais - 74150 - 2024.09.24 - Serenity Dom - Citroën Jumpy III © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Citroën ë-Jumpy Automesse Ludwigsburg 2024 IMG 1520.jpg",
+    "w": 5047,
+    "h": 2943,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Citroen-Jumpy-Caselani-TypeHG-JoueClub-byRundvald.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "citroen-jumper-2-2-bluehdi-2026": {
+  "ad": "Citroen Jumper 2.2 BlueHDi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Citroen Jumper",
+  "adaylar": [
+   {
+    "dosya": "Chateau-Saint-Ange-Rome-Polizia-di-Stato-LandRover-Discovery5-Citroen-JumperIII-phase2-byRundvald.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "CitroenJumper-PeugeotBoxer-Fiat-Ducato-Caselani-TypeH-byRundvald-Neo-Retro-cool.jpg",
+    "w": 3264,
+    "h": 2448,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Citroen Jumper habillage Type H IMG 20230321 121732.jpg",
+    "w": 4160,
+    "h": 3120,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "peugeot-partner-1-5-comfort-b-hdi-2026": {
+  "ad": "Peugeot Partner 1.5 – Comfort B.Hdi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Peugeot Partner",
+  "adaylar": [
+   {
+    "dosya": "Peugeot Partner 2003.jpg",
+    "w": 1464,
+    "h": 976,
+    "lisans": "CC0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "peugeot-expert-2-2-bluehdi-2026": {
+  "ad": "Peugeot Expert 2.2 BlueHDi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Peugeot Expert",
+  "adaylar": [
+   {
+    "dosya": "Moscow, Peugeot Expert white van July 2025 03.jpg",
+    "w": 3754,
+    "h": 2692,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Moscow, Peugeot Expert white van July 2025 01.jpg",
+    "w": 4810,
+    "h": 2876,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Alby-sur-Chéran - 74540 - 2025.09.10 - Sibra à la demande - SynerGIHP - Peugeot e-Expert © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Peugeot Expert III IMG 2658.jpg",
+    "w": 4901,
+    "h": 3262,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Peugeot Expert Professional L1 BlueHDi - 1499cc 1.5 (120PS) Diesel - White - 06-2024, Front.jpg",
+    "w": 4232,
+    "h": 2720,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "peugeot-boxer-2-2-bluehdi-2026": {
+  "ad": "Peugeot Boxer 2.2 BlueHDi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Peugeot Boxer",
+  "adaylar": [
+   {
+    "dosya": "Peugeot Boxer 335 L3 TL Blue HDi 160 (2016) (54818539400).jpg",
+    "w": 5855,
+    "h": 3785,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2025-09-21 Moscow marathon, TV1 broadcast camp 09 (Peugeot Boxer 2006).jpg",
+    "w": 3600,
+    "h": 2401,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "CitroenJumper-PeugeotBoxer-Fiat-Ducato-Caselani-TypeH-byRundvald-Neo-Retro-cool.jpg",
+    "w": 3264,
+    "h": 2448,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "opel-vivaro-2-2-150-dizel-ultimate-xl-2026": {
+  "ad": "Opel Vivaro 2.2 150 Dizel – Ultimate XL 2026",
+  "kat": "kamyonet",
+  "sorgu": "Opel Vivaro",
+  "adaylar": [
+   {
+    "dosya": "Opel Vivaro Combi Facelift front.JPG",
+    "w": 2460,
+    "h": 1584,
+    "lisans": "CC BY-SA 3.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Opel Vivaro C (Facelift) IMG 9943.jpg",
+    "w": 4440,
+    "h": 3310,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Opel Vivaro C IMG 8239.jpg",
+    "w": 4770,
+    "h": 2720,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "opel-zafira-life-2-0-180-dizel-elegance-xl-2024": {
+  "ad": "Opel Zafira Life 2.0 180 Dizel – Elegance XL 2024",
+  "kat": "kamyonet",
+  "sorgu": "Opel Zafira Life",
+  "adaylar": [
+   {
+    "dosya": "Opel Zafira Life (Facelift) IMG 9905.jpg",
+    "w": 5253,
+    "h": 2959,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Opel Zafira Life (Facelift) IMG 9900.jpg",
+    "w": 5149,
+    "h": 3427,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Opel Zafira Life 1.jpg",
+    "w": 3610,
+    "h": 2301,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Opel Zafira Life.jpg",
+    "w": 3726,
+    "h": 2731,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "renault-kangoo-1-5-blue-dci-equilibre-2026": {
+  "ad": "Renault Kangoo 1.5 Blue dCi – Equilibre 2026",
+  "kat": "kamyonet",
+  "sorgu": "Renault Kangoo",
+  "adaylar": [
+   {
+    "dosya": "2024 Renault Kangoo in Mineral White, front left, 06-12-2025.jpg",
+    "w": 3288,
+    "h": 1988,
+    "lisans": "CC0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "2002 Renault Kangoo Trikka 4x4 16v.jpg",
+    "w": 12432,
+    "h": 9418,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Renault Kangoo II in Pendik Istanbul.jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Renault Kangoo Advance ML19 E-Tech.jpg",
+    "w": 15542,
+    "h": 11474,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Renault Kangoo III 1X7A1519.jpg",
+    "w": 4722,
+    "h": 2784,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "mercedes-benz-esprinter-pro-420-2026": {
+  "ad": "Mercedes-Benz eSprinter Pro 420 2026",
+  "kat": "kamyonet",
+  "sorgu": "Mercedes-Benz eSprinter",
+  "adaylar": []
+ },
+ "volkswagen-caddy-2-0-tdi-2026": {
+  "ad": "Volkswagen Caddy 2.0 TDI 2026",
+  "kat": "kamyonet",
+  "sorgu": "Volkswagen Caddy",
+  "adaylar": [
+   {
+    "dosya": "Volkswagen Caddy Maxi postfacelift in Deidesheim.jpg",
+    "w": 4019,
+    "h": 2537,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "VOLKSWAGEN CADDY (2K) China (5).jpg",
+    "w": 4716,
+    "h": 3268,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "VOLKSWAGEN CADDY (2K) China (3).jpg",
+    "w": 6677,
+    "h": 3710,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "1989 (F) Volkswagen Caddy.jpg",
+    "w": 1402,
+    "h": 840,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "volkswagen-transporter-2-0-tdi-pikap-ck-2026": {
+  "ad": "Volkswagen Transporter 2.0 TDI – Pikap Ck 2026",
+  "kat": "kamyonet",
+  "sorgu": "Volkswagen Transporter",
+  "adaylar": [
+   {
+    "dosya": "2017 Volkswagen Transporter BlueMotion.jpg",
+    "w": 4135,
+    "h": 2468,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Moscow, VW Transporter Caravelle with rack, Apr 2026 02.jpg",
+    "w": 3600,
+    "h": 2400,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, VW Transporter Caravelle with rack, Apr 2026 01.jpg",
+    "w": 3600,
+    "h": 2400,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, VW Transporter Caravelle with rack, Apr 2026 04.jpg",
+    "w": 3600,
+    "h": 2400,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2024 Volkswagen Transporter T32 TDi Highline.jpg",
+    "w": 3000,
+    "h": 2214,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Volkswagen Transporter T32 TDi Kombi Highline 4Motion ABT Final Edition 1 of 15.jpg",
+    "w": 15610,
+    "h": 10880,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "toyota-proace-city-1-5-d-vision-2026": {
+  "ad": "Toyota Proace City 1.5 d – Vision 2026",
+  "kat": "kamyonet",
+  "sorgu": "Toyota Proace City",
+  "adaylar": [
+   {
+    "dosya": "Toyota Proace City L2 Electric Select IAA Transportation 2024 (DSC04588).jpg",
+    "w": 6478,
+    "h": 3644,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota ProAce City Automesse Ludwigsburg 2024 IMG 1486.jpg",
+    "w": 4926,
+    "h": 2689,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota ProAce City Automesse Ludwigsburg 2024 IMG 1488.jpg",
+    "w": 4406,
+    "h": 2933,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota ProAce City Leonberg 2024 IMG 0975.jpg",
+    "w": 5174,
+    "h": 3290,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota ProAce City Leonberg 2024 IMG 0986.jpg",
+    "w": 4720,
+    "h": 2945,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "toyota-proace-2-2-d-flame-2026": {
+  "ad": "Toyota Proace 2.2 d – Flame 2026",
+  "kat": "kamyonet",
+  "sorgu": "Toyota Proace",
+  "adaylar": [
+   {
+    "dosya": "100% elektrisch - Toyota Proace Max electric (2026).jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Automobil Toyota Proace Verso v Chráněné krajinné oblasti Jeseníky poblíž Annabergu (katastr obce Andělská hora).jpg",
+    "w": 5152,
+    "h": 3864,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Figeac - 46100 - 2024.10.14 - Cars Delbos - Toyota ProAce Verso © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Toyota Proace City L2 Electric Select IAA Transportation 2024 (DSC04588).jpg",
+    "w": 6478,
+    "h": 3644,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota Proace Max Electric - front.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Lieferfahrzeug Toyota ProAce II (2024).jpg",
+    "w": 4147,
+    "h": 3110,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota ProAce City Automesse Ludwigsburg 2024 IMG 1486.jpg",
+    "w": 4926,
+    "h": 2689,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota ProAce City Automesse Ludwigsburg 2024 IMG 1488.jpg",
+    "w": 4406,
+    "h": 2933,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "toyota-proace-verso-2-2-d-passion-2026": {
+  "ad": "Toyota Proace Verso 2.2 d – Passion 2026",
+  "kat": "kamyonet",
+  "sorgu": "Toyota Proace Verso",
+  "adaylar": [
+   {
+    "dosya": "Automobil Toyota Proace Verso v Chráněné krajinné oblasti Jeseníky poblíž Annabergu (katastr obce Andělská hora).jpg",
+    "w": 5152,
+    "h": 3864,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Toyota ProAce Verso 2.0 D-4D (2022) (54715985182).jpg",
+    "w": 5576,
+    "h": 3689,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Toyota Proace Verso Family L1 D-4D (2021) (54818547385).jpg",
+    "w": 5977,
+    "h": 3814,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Toyota Proace Verso Electric Lang Executive Family Plus.jpg",
+    "w": 3447,
+    "h": 2585,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Toyota ProAce Verso DSC 7150.jpg",
+    "w": 4407,
+    "h": 3244,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Toyota ProAce Verso 145339.jpg",
+    "w": 2263,
+    "h": 1800,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Figeac - 46100 - 2024.10.14 - Cars Delbos - Toyota ProAce Verso © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Toyota Proace Verso 1.6 D-4D (2018) (53957379751).jpg",
+    "w": 5730,
+    "h": 3713,
+    "lisans": "CC BY 2.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "maxus-edeliver-9-yt-2024": {
+  "ad": "Maxus eDeliver 9 Yt 2024",
+  "kat": "kamyonet",
+  "sorgu": "Maxus eDeliver 9",
+  "adaylar": [
+   {
+    "dosya": "Maxus eDeliver 9 Nova Poshta van. Blokha.jpg",
+    "w": 3072,
+    "h": 1753,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Maxus eDeliver 9 @ Let's Go Electric, Priory Park, Kingston upon Hull.jpg",
+    "w": 4176,
+    "h": 2784,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Maxus eDeliver 9 (2025) (54842096540).jpg",
+    "w": 5539,
+    "h": 3670,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2021 Maxus eDeliver9.jpg",
+    "w": 2048,
+    "h": 1448,
+    "lisans": "CC BY 2.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Maxus eDeliver 9 Automesse Ludwigsburg 2022 1X7A5954.jpg",
+    "w": 4585,
+    "h": 3582,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "maxus-edeliver-3-2025": {
+  "ad": "Maxus eDeliver 3 2025",
+  "kat": "kamyonet",
+  "sorgu": "Maxus eDeliver 3",
+  "adaylar": [
+   {
+    "dosya": "Maxus eDeliver 3 IMG 8386.jpg",
+    "w": 5383,
+    "h": 3194,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2023 Maxus eDeliver 3, NL.jpg",
+    "w": 2048,
+    "h": 1448,
+    "lisans": "CC BY 2.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Maxus eDeliver 3 1X7A0873.jpg",
+    "w": 4797,
+    "h": 3610,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Maxus eDeliver 3 1X7A1564.jpg",
+    "w": 4617,
+    "h": 2570,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2022 Maxus eDeliver 3 front.jpg",
+    "w": 4030,
+    "h": 2864,
+    "lisans": "CC BY 2.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Maxus eDeliver 3 (2022) (53326981814).jpg",
+    "w": 5237,
+    "h": 3357,
+    "lisans": "CC BY 2.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2022 Maxus eDeliver 3 rear.jpg",
+    "w": 4028,
+    "h": 2845,
+    "lisans": "CC BY 2.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Maxus eDeliver 3, Nufam 2023, Rheinstetten (P1130789).jpg",
+    "w": 4446,
+    "h": 3335,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "nissan-townstar-1-3-dig-t-visia-2026": {
+  "ad": "Nissan Townstar 1.3 DIG-T – Visia 2026",
+  "kat": "kamyonet",
+  "sorgu": "Nissan Townstar",
+  "adaylar": [
+   {
+    "dosya": "Nissan Townstar L2 IMG 2181.jpg",
+    "w": 5040,
+    "h": 3354,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Nissan Townstar 1X7A1796.jpg",
+    "w": 4924,
+    "h": 2944,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Nissan Townstar 1X7A1797.jpg",
+    "w": 5577,
+    "h": 3238,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Nissan Townstar Kombi 1.3 DIG-T 130 Tekna – f 25042024.jpg",
+    "w": 5833,
+    "h": 3319,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Nissan Townstar L2 IMG 2171.jpg",
+    "w": 5177,
+    "h": 3549,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Nissan Townstar Kombi 1.3 DIG-T 130 Tekna – h 25042024.jpg",
+    "w": 5902,
+    "h": 3312,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Nissan Townstar 1X7A6852.jpg",
+    "w": 4835,
+    "h": 3044,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "karsan-jest-ev-2026": {
+  "ad": "Karsan Jest EV 2026",
+  "kat": "kamyonet",
+  "sorgu": "Karsan Jest",
+  "adaylar": [
+   {
+    "dosya": "Figeac - 46100 - 2024.10.14 - Le Bus Figeac - Cars Delbos - Karsan Jest (vue de face) © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Figeac - 46100 - 2024.10.14 - Le Bus Figeac - Cars Delbos - Karsan Jest (vue arrière) © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Figeac - 46100 - 2024.10.14 - Le Bus Figeac - Cars Delbos - Karsan Jest (vue avant) © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Figeac - 46100 - 2024.10.15 - Le Bus Figeac - Cars Delbos - Karsan Jest © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Figeac - 46100 - 2024.10.12 - Le Bus Figeac - Cars Delbos - Karsan Jest © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Argelès-sur-Mer - 66700 - 2024.07.10 - D’Aqui - Keolis Pagès - Karsan E-Jest n°232058 © Anthony Levrot.jpg",
+    "w": 4672,
+    "h": 3115,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Espalion - 12500 - 2024.10.15 - Nav’Olt - LandèsBus - Karsan Jest Electric n°713 (vue avant gauche) © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Espalion - 12500 - 2024.10.15 - Nav’Olt - LandèsBus - Karsan Jest Electric n°713 (vue latérale gauche) © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ford-f-150-2-7-ecoboost-xlt-10-2025": {
+  "ad": "Ford F 150 2.7 EcoBoost – XLT 10 2025",
+  "kat": "kamyonet",
+  "sorgu": "Ford F 150",
+  "adaylar": [
+   {
+    "dosya": "FORD F-150 SVT RAPTOR China (3).jpg",
+    "w": 6986,
+    "h": 3887,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Ford F-150 (P702) Washington DC Metro Area, USA (4).jpg",
+    "w": 1769,
+    "h": 1415,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Ford F-150 Lightning CRI 05 2023 3639.jpg",
+    "w": 2700,
+    "h": 1800,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Tesla Model Y & Ford F-150 Lightning CRI 02 2023 1904.jpg",
+    "w": 3000,
+    "h": 2000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Ford F-150 Lightning CRI 02 2023 1905.jpg",
+    "w": 3000,
+    "h": 2000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2023 Denver Auto Show Ford F-150 Lightning front left quarter.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Ford F-150 Lightning CRI 02 2023 1907.jpg",
+    "w": 3000,
+    "h": 2000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Ford F-150 Lightning CRI 05 2023 3640.jpg",
+    "w": 3000,
+    "h": 2000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "nissan-navara-2-3-dci-4x4-platinum-2025": {
+  "ad": "Nissan Navara 2.3 dCi 4x4 – Platinum 2025",
+  "kat": "kamyonet",
+  "sorgu": "Nissan Navara",
+  "adaylar": [
+   {
+    "dosya": "2021 Nissan Navara facelift (cropped).jpg",
+    "w": 2048,
+    "h": 1197,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Nissan Navara D23 FL 2.5 PRO-4X Fiery Red.jpg",
+    "w": 4230,
+    "h": 2380,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "DONGFENG RICH 7 (NISSAN NAVARA (D23)).jpg",
+    "w": 5612,
+    "h": 4056,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Nissan Navara D23 FL 2.5 VL Calibre 4x2 Lunar Metallic Gray diplomatic.jpg",
+    "w": 4370,
+    "h": 2914,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Nissan Navara D23 FL 2.5 VE Calibre 4x2 Nebula Metallic Red.jpg",
+    "w": 4338,
+    "h": 2892,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Nissan Navara D23 2.5 EL Calibre 4x2 Galaxy Black.jpg",
+    "w": 4554,
+    "h": 3036,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "NISSAN NAVARA D23 China (5).jpg",
+    "w": 7472,
+    "h": 4039,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024.06.12 Black Nissan Navara Rear Wiew 7777 Minsk Belarus.jpg",
+    "w": 4032,
+    "h": 2713,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ssangyong-musso-ev-4x2-2026": {
+  "ad": "SsangYong Musso EV 4x2 2026",
+  "kat": "kamyonet",
+  "sorgu": "SsangYong Musso",
+  "adaylar": [
+   {
+    "dosya": "KGM Musso Grand Style 2.2D & Musso 2.0T 4WD Long Deck M9 Q300 (1).jpg",
+    "w": 3972,
+    "h": 2979,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "SsangYong Musso Grand Q200 2.2L 4WD Indian Red 02.jpg",
+    "w": 4236,
+    "h": 2648,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "SsangYong Musso Grand Q200 2.2L 4WD Indian Red 01.jpg",
+    "w": 4266,
+    "h": 2666,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2023 Ssangyong Musso Saracen Auto (14015).jpg",
+    "w": 3904,
+    "h": 2612,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2023 Ssangyong Musso Saracen Auto.jpg",
+    "w": 2440,
+    "h": 1684,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2023 Ssangyong Musso Saracen Auto (31307).jpg",
+    "w": 2339,
+    "h": 1761,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "SsangYong Musso 230SL FJ FL Brilliant Black (6).jpg",
+    "w": 2998,
+    "h": 2248,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "SsangYong Musso 230SL FJ FL Brilliant Black (7).jpg",
+    "w": 3078,
+    "h": 2309,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "ssangyong-musso-grand-4x2-d2-2-platinum-plus-2026": {
+  "ad": "SsangYong Musso Grand 4x2 – D2.2 Platinum Plus 2026",
+  "kat": "kamyonet",
+  "sorgu": "SsangYong Musso Grand",
+  "adaylar": [
+   {
+    "dosya": "SsangYong Musso Grand Q200 2.2L 4WD Indian Red 02.jpg",
+    "w": 4236,
+    "h": 2648,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "SsangYong Musso Grand Q200 2.2L 4WD Indian Red 01.jpg",
+    "w": 4266,
+    "h": 2666,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "dethleffs-xl-family-a-6822-2-2020": {
+  "ad": "Dethleffs XL Family A 6822-2 2020",
+  "kat": "karavan",
+  "sorgu": "Dethleffs XL Family",
+  "adaylar": []
+ },
+ "knaus-nordwind-600-ue-2026": {
+  "ad": "Knaus Nordwind 600 UE 2026",
+  "kat": "karavan",
+  "sorgu": "Knaus Nordwind",
+  "adaylar": []
+ },
+ "airstream-trade-wind-19-ft-2022": {
+  "ad": "Airstream Trade Wind 19 ft 2022",
+  "kat": "karavan",
+  "sorgu": "Airstream Trade Wind",
+  "adaylar": []
+ },
+ "airstream-world-traveler-22-ft-2026": {
+  "ad": "Airstream World Traveler 22 ft 2026",
+  "kat": "karavan",
+  "sorgu": "Airstream World Traveler",
+  "adaylar": []
+ },
+ "caravelair-alba-325-2024": {
+  "ad": "Caravelair Alba 325 2024",
+  "kat": "karavan",
+  "sorgu": "Caravelair Alba",
+  "adaylar": []
+ },
+ "caravelair-sport-line-410-2024": {
+  "ad": "Caravelair Sport Line 410 2024",
+  "kat": "karavan",
+  "sorgu": "Caravelair Sport Line",
+  "adaylar": []
+ },
+ "caravelair-exclusive-line-475-2024": {
+  "ad": "Caravelair Exclusive Line 475 2024",
+  "kat": "karavan",
+  "sorgu": "Caravelair Exclusive Line",
+  "adaylar": []
+ },
+ "chausson-x-line-x-590-2020": {
+  "ad": "Chausson X-Line X 590 2020",
+  "kat": "karavan",
+  "sorgu": "Chausson X-Line",
+  "adaylar": []
+ },
+ "coachman-lusso-i-2022": {
+  "ad": "Coachman Lusso I 2022",
+  "kat": "karavan",
+  "sorgu": "Coachman Lusso",
+  "adaylar": []
+ },
+ "frankia-neo-cruiser-7-0-l-2020": {
+  "ad": "Frankia Neo Cruiser 7.0 L 2020",
+  "kat": "karavan",
+  "sorgu": "Frankia Neo",
+  "adaylar": []
+ },
+ "weinsberg-caralife-390-qd-2026": {
+  "ad": "Weinsberg CaraLife 390 QD 2026",
+  "kat": "karavan",
+  "sorgu": "Weinsberg CaraLife",
+  "adaylar": []
+ },
+ "honda-activa-125-2025": {
+  "ad": "Honda Activa 125 2025",
+  "kat": "motosiklet",
+  "sorgu": "Honda Activa 125",
+  "adaylar": []
+ },
+ "honda-adv350-2026": {
+  "ad": "Honda ADV350 2026",
+  "kat": "motosiklet",
+  "sorgu": "Honda ADV350",
+  "adaylar": [
+   {
+    "dosya": "Honda ADV 350 2026.jpg",
+    "w": 2048,
+    "h": 1536,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "honda-cb650r-2026": {
+  "ad": "Honda CB650R 2026",
+  "kat": "motosiklet",
+  "sorgu": "Honda CB650R",
+  "adaylar": [
+   {
+    "dosya": "2023 Honda CB650R E-Clutch.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Honda CB650R Motorcycle 2021.jpg",
+    "w": 4128,
+    "h": 3096,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2023 Honda CB650R Standard.jpg",
+    "w": 4608,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "yamaha-nmax-125-2025": {
+  "ad": "Yamaha Nmax 125 2025",
+  "kat": "motosiklet",
+  "sorgu": "Yamaha Nmax 125",
+  "adaylar": []
+ },
+ "yamaha-mt-09-2026": {
+  "ad": "Yamaha Mt 09 2026",
+  "kat": "motosiklet",
+  "sorgu": "Yamaha Mt 09",
+  "adaylar": [
+   {
+    "dosya": "2024 Yamaha MT-09 Y-AMT.jpg",
+    "w": 3986,
+    "h": 2979,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Moscow, Yamaha MT-09 Tracer, May 2026 01.jpg",
+    "w": 3000,
+    "h": 2250,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Yamaha MT-09 Tracer, May 2026 02.jpg",
+    "w": 3000,
+    "h": 2250,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kaloshin Lane X Arbat, Yamaha MT-09, June 2026 05.jpg",
+    "w": 5184,
+    "h": 3456,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Yamaha MT-09 (CV15 PYX) and MT-07 (AY66 VYS) - 25 April 2026.jpg",
+    "w": 4670,
+    "h": 3116,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Yamaha Tracer MT-09, July 2026 02.jpg",
+    "w": 3600,
+    "h": 2401,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kaloshin Lane X Arbat, Yamaha MT-09, June 2026 01.jpg",
+    "w": 5034,
+    "h": 3356,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kaloshin Lane, Yamaha MT-09 and Velobike, Aug 2026 02.jpg",
+    "w": 3600,
+    "h": 2285,
+    "lisans": "CC0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "suzuki-burgman-400-2025": {
+  "ad": "Suzuki Burgman 400 2025",
+  "kat": "motosiklet",
+  "sorgu": "Suzuki Burgman 400",
+  "adaylar": [
+   {
+    "dosya": "Suzuki Burgman 400i.jpg",
+    "w": 3028,
+    "h": 1928,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "suzuki-gsx-8s-2025": {
+  "ad": "Suzuki Gsx 8S 2025",
+  "kat": "motosiklet",
+  "sorgu": "Suzuki Gsx 8S",
+  "adaylar": [
+   {
+    "dosya": "Suzuki GSX-8S, Auto 2024, Zurich (PANA0820).jpg",
+    "w": 5184,
+    "h": 3888,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "suzuki-address-125-2025": {
+  "ad": "Suzuki Address 125 2025",
+  "kat": "motosiklet",
+  "sorgu": "Suzuki Address 125",
+  "adaylar": []
+ },
+ "bmw-r-1300-gs-2026": {
+  "ad": "BMW R 1300 GS 2026",
+  "kat": "motosiklet",
+  "sorgu": "BMW R 1300 GS",
+  "adaylar": [
+   {
+    "dosya": "BMW R1300GS Adventure 2025.jpg",
+    "w": 3639,
+    "h": 2729,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "3 BMW R1300GS 2024-06-07 v2.jpg",
+    "w": 4632,
+    "h": 3302,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "3 BMW R1300GS 2024-06-07.jpg",
+    "w": 5184,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 BMW R1300GS Option 719 Tramuntana mod.jpg",
+    "w": 4240,
+    "h": 3180,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Camshaft-driving-chain Steuerkette BMW R1300-GS.jpg",
+    "w": 5184,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "BMW R1300 GS Trophy.jpg",
+    "w": 2048,
+    "h": 1536,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 BMW R1300GS Option 719 Tramuntana (1).jpg",
+    "w": 4240,
+    "h": 3180,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "bmw-f-900-r-2026": {
+  "ad": "BMW F 900 R 2026",
+  "kat": "motosiklet",
+  "sorgu": "BMW F 900 R",
+  "adaylar": [
+   {
+    "dosya": "BMW F900R Motosalon Brno 2026.jpg",
+    "w": 1776,
+    "h": 1153,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   }
+  ]
+ },
+ "bmw-c-400-gt-2026": {
+  "ad": "BMW C 400 GT 2026",
+  "kat": "motosiklet",
+  "sorgu": "BMW C 400 GT",
+  "adaylar": []
+ },
+ "kawasaki-ninja-650-2025": {
+  "ad": "Kawasaki Ninja 650 2025",
+  "kat": "motosiklet",
+  "sorgu": "Kawasaki Ninja 650",
+  "adaylar": [
+   {
+    "dosya": "Kawasaki Ninja650.jpg",
+    "w": 2560,
+    "h": 1920,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Moscow, Kawasaki Ninja 650 Sept 2026 03.jpg",
+    "w": 3600,
+    "h": 2521,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kawasaki Ninja 650 01.jpg",
+    "w": 3711,
+    "h": 2474,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kawasaki Ninja 650 Sept 2026 01.jpg",
+    "w": 3600,
+    "h": 2620,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Kawasaki Ninja 650 at Children's Park Roundabout 20240427144336.jpg",
+    "w": 4508,
+    "h": 3005,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "kawasaki-z900-2025": {
+  "ad": "Kawasaki Z900 2025",
+  "kat": "motosiklet",
+  "sorgu": "Kawasaki Z900",
+  "adaylar": [
+   {
+    "dosya": "2026 Kawasaki Z900.jpg",
+    "w": 2913,
+    "h": 2174,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Kawasaki Z900 RS 2025 Eicma 2024.jpg",
+    "w": 1761,
+    "h": 1153,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "kawasaki-versys-650-2026": {
+  "ad": "Kawasaki Versys 650 2026",
+  "kat": "motosiklet",
+  "sorgu": "Kawasaki Versys 650",
+  "adaylar": [
+   {
+    "dosya": "Kawasaki Versys 650 Rapid Intervention Motorcycle (RIM) in Malaysia National Day Parade Day Ipoh 2026.jpg",
+    "w": 4080,
+    "h": 3072,
+    "lisans": "CC BY-SA 3.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "ktm-390-duke-2025": {
+  "ad": "KTM 390 Duke 2025",
+  "kat": "motosiklet",
+  "sorgu": "KTM 390 Duke",
+  "adaylar": [
+   {
+    "dosya": "KTM 390 Duke in Athens on 11-1-2023.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "ktm-790-duke-2024": {
+  "ad": "KTM 790 Duke 2024",
+  "kat": "motosiklet",
+  "sorgu": "KTM 790 Duke",
+  "adaylar": [
+   {
+    "dosya": "KTM Duke 790 2018.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "KTM 790 Duke (2).jpg",
+    "w": 3995,
+    "h": 3044,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   },
+   {
+    "dosya": "KTM 790 Duke (3).jpg",
+    "w": 4608,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   },
+   {
+    "dosya": "KTM 790 Duke (1).jpg",
+    "w": 4335,
+    "h": 2680,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "ktm-390-adventure-2024": {
+  "ad": "KTM 390 Adventure 2024",
+  "kat": "motosiklet",
+  "sorgu": "KTM 390 Adventure",
+  "adaylar": []
+ },
+ "royal-enfield-classic-350-2024": {
+  "ad": "Royal Enfield Classic 350 2024",
+  "kat": "motosiklet",
+  "sorgu": "Royal Enfield Classic 350",
+  "adaylar": [
+   {
+    "dosya": "Royal Enfield Classic 350 - Gran Via - Madrid 01.jpg",
+    "w": 7360,
+    "h": 4912,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Royal Enfield Classic 350 - Orcal Astor 125.jpg",
+    "w": 3000,
+    "h": 2250,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "royal-enfield-meteor-350-2024": {
+  "ad": "Royal Enfield Meteor 350 2024",
+  "kat": "motosiklet",
+  "sorgu": "Royal Enfield Meteor 350",
+  "adaylar": [
+   {
+    "dosya": "Royal Enfield méteor 350 \"Classic 350 Signals\".jpg",
+    "w": 2592,
+    "h": 1944,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "royal-enfield-interceptor-650-2026": {
+  "ad": "Royal Enfield Interceptor 650 2026",
+  "kat": "motosiklet",
+  "sorgu": "Royal Enfield Interceptor 650",
+  "adaylar": [
+   {
+    "dosya": "Royal Enfield 650 02.jpeg",
+    "w": 2576,
+    "h": 1932,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Royal Enfield Interceptor 650 Jinonice A.jpg",
+    "w": 4608,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Royal Enfield Interceptor 650 Jinonice B.jpg",
+    "w": 4608,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Wien Royal Enfield Interceptor 650.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "benelli-trk502-2025": {
+  "ad": "Benelli TRK502 2025",
+  "kat": "motosiklet",
+  "sorgu": "Benelli TRK502",
+  "adaylar": []
+ },
+ "benelli-leoncino-500-2025": {
+  "ad": "Benelli Leoncino 500 2025",
+  "kat": "motosiklet",
+  "sorgu": "Benelli Leoncino 500",
+  "adaylar": []
+ },
+ "benelli-502-c-2025": {
+  "ad": "Benelli 502 C 2025",
+  "kat": "motosiklet",
+  "sorgu": "Benelli 502 C",
+  "adaylar": []
+ },
+ "triumph-trident-660-2026": {
+  "ad": "Triumph Trident 660 2026",
+  "kat": "motosiklet",
+  "sorgu": "Triumph Trident 660",
+  "adaylar": []
+ },
+ "triumph-speed-400-2025": {
+  "ad": "Triumph Speed 400 2025",
+  "kat": "motosiklet",
+  "sorgu": "Triumph Speed 400",
+  "adaylar": [
+   {
+    "dosya": "Triumph Speed 400.jpg",
+    "w": 1882,
+    "h": 1429,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "triumph-scrambler-400-x-2025": {
+  "ad": "Triumph Scrambler 400 X 2025",
+  "kat": "motosiklet",
+  "sorgu": "Triumph Scrambler 400 X",
+  "adaylar": [
+   {
+    "dosya": "Triumph Scrambler 400 X, M-M25.jpg",
+    "w": 3772,
+    "h": 2829,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Triumph-Scrambler-400X.jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ducati-multistrada-v4-2024": {
+  "ad": "Ducati Multistrada V4 2024",
+  "kat": "motosiklet",
+  "sorgu": "Ducati Multistrada V4",
+  "adaylar": [
+   {
+    "dosya": "Ducati Multistrada V4 S '25.jpg",
+    "w": 4032,
+    "h": 2268,
+    "lisans": "CC0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "ducati-panigale-v2-2026": {
+  "ad": "Ducati Panigale V2 2026",
+  "kat": "motosiklet",
+  "sorgu": "Ducati Panigale V2",
+  "adaylar": [
+   {
+    "dosya": "Ducati 955 Panigale V2 (IMG 9851).jpg",
+    "w": 4374,
+    "h": 3471,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "ducati-streetfighter-v2-2026": {
+  "ad": "Ducati Streetfighter V2 2026",
+  "kat": "motosiklet",
+  "sorgu": "Ducati Streetfighter V2",
+  "adaylar": [
+   {
+    "dosya": "Ducati Streetfighter V2 955 (1).jpg",
+    "w": 4224,
+    "h": 2580,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Ducati Streetfighter V2, Aug 2025 02.jpg",
+    "w": 4992,
+    "h": 3173,
+    "lisans": "CC0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "harley-davidson-sportster-s-2026": {
+  "ad": "Harley-Davidson Sportster S 2026",
+  "kat": "motosiklet",
+  "sorgu": "Harley-Davidson Sportster S",
+  "adaylar": []
+ },
+ "harley-davidson-nightster-2025": {
+  "ad": "Harley-Davidson Nightster 2025",
+  "kat": "motosiklet",
+  "sorgu": "Harley-Davidson Nightster",
+  "adaylar": [
+   {
+    "dosya": "Harley-Davidson Nightster parked at Hogs for Hospice, Leamington, Ontario, 2025-08-02.jpg",
+    "w": 5412,
+    "h": 3866,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Harley-Davidson Museum May 2024 30 (2024 Nightster).jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "harley-davidson-street-glide-2026": {
+  "ad": "Harley-Davidson Street Glide 2026",
+  "kat": "motosiklet",
+  "sorgu": "Harley-Davidson Street Glide",
+  "adaylar": [
+   {
+    "dosya": "Suliszewo - motocykliści - Harley-Davidson Street Glide - 22.04.2023 13-34-40.2023 13-34-40.jpg",
+    "w": 1531,
+    "h": 1199,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "tvs-jupiter-125-2026": {
+  "ad": "TVS Jupiter 125 2026",
+  "kat": "motosiklet",
+  "sorgu": "TVS Jupiter 125",
+  "adaylar": []
+ },
+ "tvs-ntorq-125-2026": {
+  "ad": "TVS Ntorq 125 2026",
+  "kat": "motosiklet",
+  "sorgu": "TVS Ntorq 125",
+  "adaylar": [
+   {
+    "dosya": "TVS Ntorq 125 Race XP.jpg",
+    "w": 2048,
+    "h": 1536,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "TVS Ntorq 125cc red.jpg",
+    "w": 4096,
+    "h": 3072,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "TVS Ntorq 125 blue.jpg",
+    "w": 4096,
+    "h": 3072,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "TVS Ntorq 125cc bikes.jpg",
+    "w": 4096,
+    "h": 3072,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "bajaj-pulsar-n-160-2026": {
+  "ad": "Bajaj Pulsar N 160 2026",
+  "kat": "motosiklet",
+  "sorgu": "Bajaj Pulsar N 160",
+  "adaylar": []
+ },
+ "bajaj-pulsar-ns200-2025": {
+  "ad": "Bajaj Pulsar NS200 2025",
+  "kat": "motosiklet",
+  "sorgu": "Bajaj Pulsar NS200",
+  "adaylar": [
+   {
+    "dosya": "Bajaj Pulsar 200 NS.jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY-SA 3.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Bj Pulsar NS 200.jpg",
+    "w": 5632,
+    "h": 4224,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "aprilia-sr-gt-200-2024": {
+  "ad": "Aprilia SR GT 200 2024",
+  "kat": "motosiklet",
+  "sorgu": "Aprilia SR GT 200",
+  "adaylar": [
+   {
+    "dosya": "Aprilia SR GT 200 EICMA 2024.jpg",
+    "w": 2048,
+    "h": 1152,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "aprilia-rs-660-2025": {
+  "ad": "Aprilia RS 660 2025",
+  "kat": "motosiklet",
+  "sorgu": "Aprilia RS 660",
+  "adaylar": [
+   {
+    "dosya": "2026 Aprilia RS 660.jpg",
+    "w": 2632,
+    "h": 1843,
+    "lisans": "CC0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Aprilia RS 660 - EICMA 2024.jpg",
+    "w": 3648,
+    "h": 2736,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2022 Aprilia RS 660 in Athens on 10-30-2023.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Aprilia RS 660 (1).jpg",
+    "w": 3522,
+    "h": 2537,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "aprilia-tuono-660-2024": {
+  "ad": "Aprilia Tuono 660 2024",
+  "kat": "motosiklet",
+  "sorgu": "Aprilia Tuono 660",
+  "adaylar": []
+ },
+ "husqvarna-svartpilen-401-2025": {
+  "ad": "Husqvarna Svartpilen 401 2025",
+  "kat": "motosiklet",
+  "sorgu": "Husqvarna Svartpilen 401",
+  "adaylar": []
+ },
+ "husqvarna-vitpilen-401-2024": {
+  "ad": "Husqvarna Vitpilen 401 2024",
+  "kat": "motosiklet",
+  "sorgu": "Husqvarna Vitpilen 401",
+  "adaylar": []
+ },
+ "husqvarna-svartpilen-250-2025": {
+  "ad": "Husqvarna Svartpilen 250 2025",
+  "kat": "motosiklet",
+  "sorgu": "Husqvarna Svartpilen 250",
+  "adaylar": []
+ },
+ "zontes-350d-2025": {
+  "ad": "Zontes 350d 2025",
+  "kat": "motosiklet",
+  "sorgu": "Zontes 350d",
+  "adaylar": []
+ },
+ "indian-scout-2025": {
+  "ad": "Indian Scout 2025",
+  "kat": "motosiklet",
+  "sorgu": "Indian Scout",
+  "adaylar": []
+ },
+ "toyota-corolla-1-5-dream-2026": {
+  "ad": "Toyota Corolla 1.5 – Dream 2026",
+  "kat": "otomobil",
+  "sorgu": "Toyota Corolla",
+  "adaylar": [
+   {
+    "dosya": "Toyota Corolla Hybrid (E210) IMG 4338.jpg",
+    "w": 4359,
+    "h": 2202,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "TOYOTA COROLLA SEDAN HYBRID (E210) DALIAN TAXI (4).jpg",
+    "w": 7101,
+    "h": 3771,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "TOYOTA COROLLA HYBRID E+ (E170) China (18).jpg",
+    "w": 7438,
+    "h": 4026,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "TOYOTA COROLLA (E150) China (17).jpg",
+    "w": 6276,
+    "h": 4078,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "TOYOTA COROLLA E130 China (90).jpg",
+    "w": 5806,
+    "h": 3874,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Toyota Corolla (E150) Washington DC Metro Area, USA.jpg",
+    "w": 2203,
+    "h": 1469,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Toyota Corolla Concept (side view) at Japan Mobility Show Kansai 2025.jpg",
+    "w": 3709,
+    "h": 2731,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Toyota Corolla AE111 1.6 GLi Dark Emerald Green Pearl 02.jpg",
+    "w": 4522,
+    "h": 2684,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "toyota-c-hr-1-8-hybrid-passion-x-sport-2026": {
+  "ad": "Toyota C-HR 1.8 Hybrid – Passion X-Sport 2026",
+  "kat": "otomobil",
+  "sorgu": "Toyota C-HR",
+  "adaylar": [
+   {
+    "dosya": "Toyota C-HR Hybrid (AX20) DSC 7239.jpg",
+    "w": 4550,
+    "h": 2642,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "TOYOTA C-HR China (32).jpg",
+    "w": 5814,
+    "h": 4044,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "TOYOTA C-HR China (28).jpg",
+    "w": 7306,
+    "h": 3806,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Toyota C-HR hybrid, Aug 2025 02.jpg",
+    "w": 3600,
+    "h": 2400,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "TOYOTA C-HR China (26).jpg",
+    "w": 7414,
+    "h": 4664,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "TOYOTA IZOA EV (TOYOTA C-HR EV) China (3).jpg",
+    "w": 7033,
+    "h": 3612,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2021 Toyota C-HR Orange Edition HEV - 1987cc 2.0 (184PS) Hybrid - Scorched Orange - 03-2025, Front.jpg",
+    "w": 4158,
+    "h": 2286,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Moscow, Toyota C-HR, Aug 2025 04.jpg",
+    "w": 4966,
+    "h": 3310,
+    "lisans": "CC0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "hyundai-i20-1-0-t-elite-2026": {
+  "ad": "Hyundai i20 1.0 T – Elite 2026",
+  "kat": "otomobil",
+  "sorgu": "Hyundai i20",
+  "adaylar": [
+   {
+    "dosya": "Hyundai i20 (III, Facelift) – f 11102025.jpg",
+    "w": 4073,
+    "h": 2042,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "4th gen Hyundai i20.jpg",
+    "w": 4096,
+    "h": 3072,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Hyundai i20 Rally1 2025.jpg",
+    "w": 14854,
+    "h": 7978,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Hyundai i20 WRC 2014.jpg",
+    "w": 4402,
+    "h": 3074,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Hyundai i20 Cross Sport 2016 & Porsche Macan 2024.jpg",
+    "w": 3148,
+    "h": 1772,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Hyundai i20 Cross Sport 2016 (1).jpg",
+    "w": 4306,
+    "h": 3230,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Hyundai i20 Cross Sport 2016 (2).jpg",
+    "w": 4858,
+    "h": 3400,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Hyundai i20 Active in Avellino.jpg",
+    "w": 2742,
+    "h": 1489,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "renault-duster-turbo-tce-evolution-2026": {
+  "ad": "Renault Duster Turbo TCe – Evolution 2026",
+  "kat": "otomobil",
+  "sorgu": "Renault Duster",
+  "adaylar": [
+   {
+    "dosya": "2025 Puerto de Santiago Dacia Duster 01.jpg",
+    "w": 4096,
+    "h": 3072,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Dacia Duster 2025 Rear 1 (cropped).jpg",
+    "w": 3207,
+    "h": 2138,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Dacia Duster 2025 Front 1 (cropped).jpg",
+    "w": 3089,
+    "h": 2060,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Dacia Duster 2025 Rear 1.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Dacia Duster 2025 Front 1.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Dacia Duster 2025 Front 1 (cropped 2).jpg",
+    "w": 2729,
+    "h": 1820,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Dacia Duster III IMG 8973.jpg",
+    "w": 5393,
+    "h": 3589,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Dacia Duster, Škoda Octavia, Királystrasse 9, 2024 Újpest.jpg",
+    "w": 2272,
+    "h": 1704,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "peugeot-2008-1-2-hybrid-allure-2026": {
+  "ad": "Peugeot 2008 1.2 Hybrid – Allure 2026",
+  "kat": "otomobil",
+  "sorgu": "Peugeot 2008",
+  "adaylar": [
+   {
+    "dosya": "2023 Peugeot 2008 in Vertigo Blue, front left, 06-08-2025.jpg",
+    "w": 3236,
+    "h": 1852,
+    "lisans": "CC0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Асвестохори, Peugeot 2008 на 25 Марта-Македономахоне.jpg",
+    "w": 3988,
+    "h": 2659,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PEUGEOT 2008 (A94) China (4).jpg",
+    "w": 5936,
+    "h": 4443,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PEUGEOT 2008 (P24) China.jpg",
+    "w": 5982,
+    "h": 4064,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PEUGEOT 2008 (A94) China (5).jpg",
+    "w": 6307,
+    "h": 4993,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PEUGEOT 2008 (A94) China (3).jpg",
+    "w": 4936,
+    "h": 3072,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2022 Peugeot 2008 1.2 Allure in Nexa Black, 06-22-2024.jpg",
+    "w": 6397,
+    "h": 3998,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Peugeot 2008 142225.jpg",
+    "w": 1947,
+    "h": 1534,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "peugeot-3008-1-2-hybrid-gt-2026": {
+  "ad": "Peugeot 3008 1.2 Hybrid – GT 2026",
+  "kat": "otomobil",
+  "sorgu": "Peugeot 3008",
+  "adaylar": [
+   {
+    "dosya": "Peugeot e-3008 Automesse Ludwigsburg 2024 IMG 1537.jpg",
+    "w": 4771,
+    "h": 2927,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "PEUGEOT 3008 (T84) China (16).jpg",
+    "w": 7744,
+    "h": 4538,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PEUGEOT 3008 (T84) China (14).jpg",
+    "w": 5669,
+    "h": 4195,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PEUGEOT 3008 (P84) China (3).jpg",
+    "w": 6689,
+    "h": 4356,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PEUGEOT 3008 (T84) China (11).jpg",
+    "w": 5715,
+    "h": 4407,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PEUGEOT 3008 (T84) China (15).jpg",
+    "w": 7187,
+    "h": 4108,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PEUGEOT 3008 (T84) China (9).jpg",
+    "w": 7195,
+    "h": 3987,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "PEUGEOT 3008 (T84) China (6).jpg",
+    "w": 6555,
+    "h": 3927,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "citroen-c3-1-2-puretech-feel-bold-2024": {
+  "ad": "Citroen C3 1.2 PureTech – Feel Bold 2024",
+  "kat": "otomobil",
+  "sorgu": "Citroen C3",
+  "adaylar": [
+   {
+    "dosya": "Citroën C3 Hybrid 110 ë-DSC6 Max (IV) – f 05042026.jpg",
+    "w": 4009,
+    "h": 2376,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "2020 Citroën C3 (3rd generation) DSC 7374.jpg",
+    "w": 3948,
+    "h": 2639,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Moscow, Citroen C3 blueish-silver, Sept 2025 02.jpg",
+    "w": 3600,
+    "h": 2393,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Moscow, Citroen C3 blueish-silver, Sept 2025 03.jpg",
+    "w": 3600,
+    "h": 2478,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2022 Citroën C3 R5.jpg",
+    "w": 14786,
+    "h": 8534,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Moscow, Citroen C3 blueish-silver, Sept 2025 01.jpg",
+    "w": 3600,
+    "h": 2585,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2019 Citroën C3 R5 1.jpg",
+    "w": 3336,
+    "h": 2502,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2019 Citroën C3 R5.jpg",
+    "w": 15710,
+    "h": 9654,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "volkswagen-tiguan-1-5-etsi-act-r-line-2026": {
+  "ad": "Volkswagen Tiguan 1.5 eTSI ACT – R-LINE 2026",
+  "kat": "otomobil",
+  "sorgu": "Volkswagen Tiguan",
+  "adaylar": [
+   {
+    "dosya": "Volkswagen Tiguan III IMG 8823 (cropped).jpg",
+    "w": 5012,
+    "h": 2975,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "VOLKSWAGEN TIGUAN L TIGUAN ALLSPACE PHEV (18).jpg",
+    "w": 7300,
+    "h": 3907,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "VOLKSWAGEN TIGUAN L PRO China (11).jpg",
+    "w": 7460,
+    "h": 3977,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "VOLKSWAGEN TIGUAN (5N) China.jpg",
+    "w": 7328,
+    "h": 4566,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "VOLKSWAGEN TIGUAN (5N) China (4).jpg",
+    "w": 6999,
+    "h": 4226,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "VOLKSWAGEN TIGUAN L TIGUAN ALLSPACE PHEV (14).jpg",
+    "w": 6635,
+    "h": 3873,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "VOLKSWAGEN TIGUAN L PRO China (9).jpg",
+    "w": 6219,
+    "h": 4188,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "VOLKSWAGEN TIGUAN L TIGUAN ALLSPACE (34).jpg",
+    "w": 6127,
+    "h": 4005,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "kia-sportage-1-6-live-2026": {
+  "ad": "Kia Sportage 1.6 – Live 2026",
+  "kat": "otomobil",
+  "sorgu": "Kia Sportage",
+  "adaylar": [
+   {
+    "dosya": "2025 Kia Sportage S front only.jpg",
+    "w": 4705,
+    "h": 2466,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "KIA SPORTAGE (JE,KM) China (23).jpg",
+    "w": 6266,
+    "h": 3596,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "KIA SPORTAGE (SL) China (26).jpg",
+    "w": 7414,
+    "h": 4292,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Kia Sportage NQ5 PE 1.6T EX HEV Wolf Grey 01.jpg",
+    "w": 4764,
+    "h": 3176,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Kia Sportage NQ5 PE 1.6T SX HEV Heritage Blue 01.jpg",
+    "w": 4508,
+    "h": 3186,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "KIA SPORTAGE (SL) China (29).jpg",
+    "w": 5871,
+    "h": 4676,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "KIA SPORTAGE (KIA KX5) (QL) China (16).jpg",
+    "w": 7076,
+    "h": 4224,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "KIA SPORTAGE (KIA KX5) (QL) China (12).jpg",
+    "w": 6478,
+    "h": 3676,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "opel-corsa-1-2-edition-2025": {
+  "ad": "Opel Corsa 1.2 – Edition 2025",
+  "kat": "otomobil",
+  "sorgu": "Opel Corsa",
+  "adaylar": [
+   {
+    "dosya": "Opel Corsa-e at IAA 2019 IMG 0738.jpg",
+    "w": 4517,
+    "h": 2789,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Opel Corsa F.jpg",
+    "w": 3609,
+    "h": 2073,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Opel Corsa F Rear.jpg",
+    "w": 3609,
+    "h": 2073,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Opel Corsa Voltio.jpg",
+    "w": 2592,
+    "h": 1944,
+    "lisans": "Public domain",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Асвестохори, Opel Corsa D на 25 Марта-Македономахоне.jpg",
+    "w": 3214,
+    "h": 2143,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Opel Corsa A GSi.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "1991 Opel Corsa GSi 2.jpg",
+    "w": 13824,
+    "h": 8926,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "1991 Opel Corsa GSi.jpg",
+    "w": 13150,
+    "h": 8970,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "renault-boreal-turbo-tce-techno-2026": {
+  "ad": "Renault Boreal Turbo TCe – Techno 2026",
+  "kat": "otomobil",
+  "sorgu": "Renault Boreal",
+  "adaylar": []
+ },
+ "renault-captur-1-3-hybrid-techno-mild-2026": {
+  "ad": "Renault Captur 1.3 Hybrid – Techno Mild 2026",
+  "kat": "otomobil",
+  "sorgu": "Renault Captur",
+  "adaylar": [
+   {
+    "dosya": "2024 Renault Captur II Automesse Ludwigsburg 2024 IMG 1506.jpg",
+    "w": 5221,
+    "h": 2951,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "2024 Renault Captur II IMG 9306.jpg",
+    "w": 4769,
+    "h": 3498,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "20241016 185406 Renault Captur.jpg",
+    "w": 3437,
+    "h": 2691,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Reno Captur.jpg",
+    "w": 4128,
+    "h": 3096,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Рено Captur.jpg",
+    "w": 4128,
+    "h": 3096,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "toyota-corolla-cross-1-8-hybrid-passion-2026": {
+  "ad": "Toyota Corolla Cross 1.8 Hybrid – Passion 2026",
+  "kat": "otomobil",
+  "sorgu": "Toyota Corolla Cross",
+  "adaylar": [
+   {
+    "dosya": "2023 Toyota Corolla Cross XLE 4WD in Wind Chill Pearl, front left.jpg",
+    "w": 3616,
+    "h": 2259,
+    "lisans": "CC BY-SA 3.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "TOYOTA FRONTLANDER HYBRID (TOYOTA COROLLA CROSS HYBRID) China (4).jpg",
+    "w": 6818,
+    "h": 3938,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Toyota Corolla Cross ZVG10 FL 1.8 V HEV Cement Gray Metallic 01.jpg",
+    "w": 4476,
+    "h": 2518,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "TOYOTA FRONTLANDER (TOYOTA COROLLA CROSS) China (13).jpg",
+    "w": 5883,
+    "h": 4478,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Toyota Corolla Cross GR Sport in Cape Town.jpg",
+    "w": 2640,
+    "h": 1816,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Toyota Corolla Cross ZVG10 FL 1.8 V HEV Platinum White Pearl Mica 01.jpg",
+    "w": 4557,
+    "h": 2994,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "TOYOTA COROLLA CROSS China (8).jpg",
+    "w": 6512,
+    "h": 4550,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Toyota Corolla Cross FL ZVG10 1.8 G HEV Platinum White Pearl Mica.jpg",
+    "w": 4124,
+    "h": 2426,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "fiat-egea-cross-1-6-multijet-street-gsr-trac-2026": {
+  "ad": "Fiat Egea Cross 1.6 Multijet – Street Gsr Trac 2026",
+  "kat": "otomobil",
+  "sorgu": "Fiat Egea Cross",
+  "adaylar": []
+ },
+ "fiat-500e-42-kwh-la-prima-by-bocelli-2025": {
+  "ad": "Fiat 500e 42 kWh – La Prima By Bocelli 2025",
+  "kat": "otomobil",
+  "sorgu": "Fiat 500e",
+  "adaylar": [
+   {
+    "dosya": "Fiat-500-vorne2.jpg",
+    "w": 2424,
+    "h": 1676,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "2026 Fiat 500e Pop in Tuxedo Black, front left, 2026-07-31.jpg",
+    "w": 5319,
+    "h": 3444,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Fiat 500e Black in Munich.jpg",
+    "w": 8379,
+    "h": 5152,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Fiat 500e.jpg",
+    "w": 3432,
+    "h": 2184,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2023-10-25 Fiat 500e-convertible left.jpg",
+    "w": 4615,
+    "h": 2438,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Fiat 500e Type 332 Onyx Black (21).jpg",
+    "w": 3697,
+    "h": 2773,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Fiat 500E Hatchback (Fully Charged 2022).jpg",
+    "w": 2972,
+    "h": 2208,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   },
+   {
+    "dosya": "Fiat 500e CRI 02 2022 4022.jpg",
+    "w": 2400,
+    "h": 1600,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "hyundai-i10-1-2-mpi-style-2025": {
+  "ad": "Hyundai i10 1.2 MPi – Style 2025",
+  "kat": "otomobil",
+  "sorgu": "Hyundai i10",
+  "adaylar": [
+   {
+    "dosya": "Hyundai i10 1.0 Intro (III) – f 03012021.jpg",
+    "w": 5616,
+    "h": 3216,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Hyundai i10 (III) – h 03092025.jpg",
+    "w": 5846,
+    "h": 3735,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2010 Hyundai i10 Classic.jpg",
+    "w": 6256,
+    "h": 3930,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Hyundai i10 mountain.jpg",
+    "w": 4624,
+    "h": 2604,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Hyundai Grand I10 Sedan.jpg",
+    "w": 3648,
+    "h": 2736,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Hyundai i10 (AC3; 2019).jpg",
+    "w": 3201,
+    "h": 2402,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Hyundai i10 003.jpg",
+    "w": 1448,
+    "h": 1102,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2022 Hyundai i10 SE Connect MPi 1.0 Front.jpg",
+    "w": 3886,
+    "h": 2082,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "volkswagen-t-roc-1-5-etsi-r-line-2026": {
+  "ad": "Volkswagen T-Roc 1.5 eTSI – R-LINE 2026",
+  "kat": "otomobil",
+  "sorgu": "Volkswagen T-Roc",
+  "adaylar": [
+   {
+    "dosya": "VW T-Roc 1.5 eTSI Style (II) – f 05052026.jpg",
+    "w": 4077,
+    "h": 2192,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "VOLKSWAGEN T-ROC R-LINE China (8).jpg",
+    "w": 6896,
+    "h": 4146,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "VOLKSWAGEN T-ROC China (39).jpg",
+    "w": 7280,
+    "h": 3896,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "VOLKSWAGEN T-ROC China (42).jpg",
+    "w": 7367,
+    "h": 4875,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "VOLKSWAGEN T-ROC China (45).jpg",
+    "w": 6674,
+    "h": 4079,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "VOLKSWAGEN T-ROC China (38).jpg",
+    "w": 7263,
+    "h": 4303,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Volkswagen T-Roc II IAA 2025 DSC 2028.jpg",
+    "w": 5246,
+    "h": 2989,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "VOLKSWAGEN T-ROC R-LINE China (6).jpg",
+    "w": 5835,
+    "h": 4252,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "volkswagen-t-cross-1-0-tsi-style-2026": {
+  "ad": "Volkswagen T-Cross 1.0 TSI – Style 2026",
+  "kat": "otomobil",
+  "sorgu": "Volkswagen T-Cross",
+  "adaylar": [
+   {
+    "dosya": "VW T-Cross Style (Facelift) – f 22022025.jpg",
+    "w": 5804,
+    "h": 3301,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "VOLKSWAGEN T-CROSS China (6).jpg",
+    "w": 5409,
+    "h": 3218,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "VOLKSWAGEN T-CROSS China (3).jpg",
+    "w": 6610,
+    "h": 4151,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Volkswagen T-Cross 180 MPI AT SE Pure White.jpg",
+    "w": 4326,
+    "h": 2884,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "VOLKSWAGEN TACQUA (VOLKSWAGEN T-CROSS).jpg",
+    "w": 5178,
+    "h": 3248,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2019 Volkswagen T-Cross R-Line TDi 5.jpg",
+    "w": 5302,
+    "h": 3976,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2019 Volkswagen T-Cross R-Line TDi 1.jpg",
+    "w": 4080,
+    "h": 3072,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2019 Volkswagen T-Cross R-Line TDi.jpg",
+    "w": 4080,
+    "h": 3072,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "peugeot-208-1-2-hybrid-gt-2026": {
+  "ad": "Peugeot 208 1.2 Hybrid – GT 2026",
+  "kat": "otomobil",
+  "sorgu": "Peugeot 208",
+  "adaylar": [
+   {
+    "dosya": "Peugeot 208 (Freiburg i. Br., 2025).jpg",
+    "w": 4800,
+    "h": 3600,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Peugeot 208 002.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Peugeot 208 001.jpg",
+    "w": 3721,
+    "h": 2791,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2021 Peugeot 208 1.2 PureTech 100 Allure (Rear).jpg",
+    "w": 4160,
+    "h": 2340,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Estelle Lambec (Peugeot 208 I) - Lessay 2024.jpg",
+    "w": 4000,
+    "h": 2400,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Césarches - 73200 - 2024.09.21 - Peugeot 208 I (vue avant gauche) © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Césarches - 73200 - 2024.09.21 - Peugeot 208 I (vue avant droite) © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2016 Peugeot 208 Allure PureTech - 1200cc 1.2 (100PS) Petrol - Silver - 07-2024, Front.jpg",
+    "w": 4416,
+    "h": 2269,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "citroen-c4-1-2-mhev-max-2026": {
+  "ad": "Citroen C4 1.2 MHEV – Max 2026",
+  "kat": "otomobil",
+  "sorgu": "Citroen C4",
+  "adaylar": [
+   {
+    "dosya": "Citroen C4 (2020) 1X7A5851.jpg",
+    "w": 5567,
+    "h": 2928,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "CITROEN C-TRIOMPHE (CITROEN C4 SEDAN) China (5).jpg",
+    "w": 6544,
+    "h": 4571,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "CITROEN C-TRIOMPHE (CITROEN C4 SEDAN) China (4).jpg",
+    "w": 6707,
+    "h": 4907,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Citroen C4, Mar 2026 02.jpg",
+    "w": 3600,
+    "h": 2400,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "CITROEN C4 (CHINA).jpg",
+    "w": 5081,
+    "h": 3521,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2025 Citroën C4 Auto Zuerich 2024 DSC 6108.jpg",
+    "w": 4664,
+    "h": 3008,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2008 Citroën C4 WRC.jpg",
+    "w": 3572,
+    "h": 2587,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2016 Dongfeng-Citroën C4L (facelift).jpg",
+    "w": 5034,
+    "h": 2982,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "citroen-c3-aircross-1-2-hybrid-max-2026": {
+  "ad": "Citroen C3 Aircross 1.2 Hybrid – Max 2026",
+  "kat": "otomobil",
+  "sorgu": "Citroen C3 Aircross",
+  "adaylar": [
+   {
+    "dosya": "Citroën ë-C3 Aircross IMG 3525.jpg",
+    "w": 4499,
+    "h": 2749,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Citroën C3 Aircross (2024) DSC 0591.jpg",
+    "w": 4854,
+    "h": 2826,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "ford-puma-hybrid-1-0-ecoboost-st-line-x-2026": {
+  "ad": "Ford Puma Hybrid 1.0 EcoBoost – ST-LINE X 2026",
+  "kat": "otomobil",
+  "sorgu": "Ford Puma",
+  "adaylar": [
+   {
+    "dosya": "2020 Ford Puma Titanium EcoBoost Hybrid 1.0 Front.jpg",
+    "w": 4912,
+    "h": 2732,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "1999 Ford Puma Racing 1.7.jpg",
+    "w": 15648,
+    "h": 9462,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2025 Ford Puma Gen-E 1.jpg",
+    "w": 4269,
+    "h": 3117,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "1997 Ford Puma Racing Puma 1.7 1.jpg",
+    "w": 5020,
+    "h": 3071,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Ford Puma silver.jpg",
+    "w": 10488,
+    "h": 7866,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "1999 (S) Ford Puma.jpg",
+    "w": 1448,
+    "h": 869,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Ford Puma ST-Line EcoBoost - 999cc 1.0 (125PS) Petrol - Cactus Grey - 08-2024, Front.jpg",
+    "w": 4615,
+    "h": 2677,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Ford Puma Rally 1 Munster.jpg",
+    "w": 4571,
+    "h": 2441,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ford-kuga-1-5-ecoboost-st-line-x-2026": {
+  "ad": "Ford Kuga 1.5 EcoBoost – ST-LINE X 2026",
+  "kat": "otomobil",
+  "sorgu": "Ford Kuga",
+  "adaylar": [
+   {
+    "dosya": "2020 Ford Kuga Titanium First Edition EcoBlue 1.5.jpg",
+    "w": 4369,
+    "h": 2386,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "FORD KUGA SECOND GENERATION China (17).jpg",
+    "w": 6601,
+    "h": 3976,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "FORD KUGA SECOND GENERATION China (15).jpg",
+    "w": 6614,
+    "h": 4585,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "FORD KUGA SECOND GENERATION China (13).jpg",
+    "w": 6952,
+    "h": 4607,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "FORD KUGA SECOND GENERATION China (14).jpg",
+    "w": 6186,
+    "h": 4630,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "FORD KUGA, FORD ESCAPE (CX482) China (15).jpg",
+    "w": 7390,
+    "h": 4914,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Ford Kuga in Pendik.jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "FORD KUGA, FORD ESCAPE (CX482) China (13).jpg",
+    "w": 6829,
+    "h": 3594,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "ford-focus-1-5-eb-active-stil-2025": {
+  "ad": "Ford Focus 1.5 EB – Active Stil 2025",
+  "kat": "otomobil",
+  "sorgu": "Ford Focus",
+  "adaylar": [
+   {
+    "dosya": "2018 Ford Focus ST-Line X 1.0.jpg",
+    "w": 4763,
+    "h": 2405,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "FORD FOCUS SEDAN (C307) China (4).jpg",
+    "w": 6930,
+    "h": 3785,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "FORD FOCUS HATCHBACK (C307) China (17).jpg",
+    "w": 5027,
+    "h": 3672,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "FORD FOCUS HATCHBACK ST-LINE (C519) China (4).jpg",
+    "w": 6369,
+    "h": 3801,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "FORD FOCUS SEDAN (C346) China (2).jpg",
+    "w": 5569,
+    "h": 3931,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2009 Ford Focus RS blue 1.jpg",
+    "w": 13890,
+    "h": 8524,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "FORD FOCUS HATCHBACK (C307) China (23).jpg",
+    "w": 6968,
+    "h": 3956,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2009 Ford Focus ST-2.jpg",
+    "w": 2802,
+    "h": 2102,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "kia-stonic-1-0-cool-2026": {
+  "ad": "Kia Stonic 1.0 – Cool 2026",
+  "kat": "otomobil",
+  "sorgu": "Kia Stonic",
+  "adaylar": [
+   {
+    "dosya": "2017 Kia Stonic First Edition 1.0.jpg",
+    "w": 4627,
+    "h": 2347,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "2022 KIA Stonic 2 T-GDi - 998cc 1.0 (100PS) Petrol - Honey Bee - 03-2024, Rear.jpg",
+    "w": 3541,
+    "h": 2486,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Kia Stonic 1.4 LX 2022.jpg",
+    "w": 4128,
+    "h": 3096,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "kia-ceed-1-5-elegance-2025": {
+  "ad": "Kia Ceed 1.5 – Elegance 2025",
+  "kat": "otomobil",
+  "sorgu": "Kia Ceed",
+  "adaylar": [
+   {
+    "dosya": "Auto Kia Cee'd Vladimir Bolshaya Moskovskaya street У137МА197 2026-03 1774786854.JPG",
+    "w": 2560,
+    "h": 1920,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kia Ceed SW white, Mar 2026 04.jpg",
+    "w": 3600,
+    "h": 2400,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2020 Kia XCeed Copper Stone.jpg",
+    "w": 2299,
+    "h": 1355,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2015 Kia Pro cee'd GT.jpg",
+    "w": 1915,
+    "h": 1164,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2014 Kia Ceed GT grey front.jpg",
+    "w": 2072,
+    "h": 1228,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Palubní (přístrojová) deska automobilu Kia Ceed..jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Kia Ceed 1.5 T-GDI DCT GT-line (III, Facelift) – f 19102025.jpg",
+    "w": 4009,
+    "h": 2064,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2023 Kia Ceed Hatchback 1.5 T-GDi GT Line S (Rear).jpg",
+    "w": 4160,
+    "h": 2340,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "opel-mokka-1-2-edition-2026": {
+  "ad": "Opel Mokka 1.2 – Edition 2026",
+  "kat": "otomobil",
+  "sorgu": "Opel Mokka",
+  "adaylar": [
+   {
+    "dosya": "Opel Mokka-e IMG 6111.jpg",
+    "w": 4160,
+    "h": 2429,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Opel Mokka 1.2 Turbo (2023) (54719517656).jpg",
+    "w": 5589,
+    "h": 3887,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Opel Mokka 124633.jpg",
+    "w": 1784,
+    "h": 1425,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Opel Mokka Electric Edition (B, Facelift) – h 12102025.jpg",
+    "w": 4080,
+    "h": 2287,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2025 Opel Mokka B Sindelfingen 2025 DSC 9104.jpg",
+    "w": 3927,
+    "h": 2483,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Opel Mokka 1.2 Turbo (2023) (54712619104).jpg",
+    "w": 5695,
+    "h": 3713,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2025 Opel Mokka-e Auto Zuerich 2024 DSC 6710.jpg",
+    "w": 4106,
+    "h": 2744,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Opel Mokka-e (2023).jpg",
+    "w": 5753,
+    "h": 3835,
+    "lisans": "CC BY 2.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "opel-astra-1-5-dizel-gs-2026": {
+  "ad": "Opel Astra 1.5 Dizel – GS 2026",
+  "kat": "otomobil",
+  "sorgu": "Opel Astra",
+  "adaylar": [
+   {
+    "dosya": "Opel Astra 1.2 Turbo Ultimate (L) – f 13122024.jpg",
+    "w": 5742,
+    "h": 2916,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "OPEL ASTRA H GTC China (3).jpg",
+    "w": 6601,
+    "h": 3555,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "OPEL ASTRA H GTC China (4).jpg",
+    "w": 6585,
+    "h": 3980,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Opel Astra (2012) - Front left side.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Opel Astra F Cabrio.jpg",
+    "w": 2048,
+    "h": 1365,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2012 Opel Astra Turbo brown rear.jpg",
+    "w": 2394,
+    "h": 1319,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "OPEL ASTRA H GTC China (2).jpg",
+    "w": 5427,
+    "h": 2867,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Opel Astra 1.6 Coupé (2002) (53944071627).jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY 2.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "dacia-sandero-stepway-eco-g-expression-2026": {
+  "ad": "Dacia Sandero Stepway ECO-G – Expression 2026",
+  "kat": "otomobil",
+  "sorgu": "Dacia Sandero Stepway",
+  "adaylar": [
+   {
+    "dosya": "2022 Renault Sandero Stepway rear.jpg",
+    "w": 1800,
+    "h": 1184,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2018 Renault Sandero Stepway silver front.jpg",
+    "w": 2416,
+    "h": 1753,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Dacia Sandero Stepway Extreme TCe - 999cc 1.0 (90PS) Petrol - Silver - 02-2025, Front.jpg",
+    "w": 4368,
+    "h": 2790,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Dacia Sandero Stepway 165153.jpg",
+    "w": 2113,
+    "h": 1604,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Dacia Sandero Stepway 114435.jpg",
+    "w": 2372,
+    "h": 1859,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "dacia-jogger-1-2-eco-g-extreme-2026": {
+  "ad": "Dacia Jogger 1.2 ECO-G – Extreme 2026",
+  "kat": "otomobil",
+  "sorgu": "Dacia Jogger",
+  "adaylar": [
+   {
+    "dosya": "2023 Dacia Jogger DSC 7288.jpg",
+    "w": 4278,
+    "h": 2704,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "2026 Dacia Jogger IMG 5083.jpg",
+    "w": 3886,
+    "h": 2762,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2024 Dacia Jogger Hybrid IMG 5904.jpg",
+    "w": 4819,
+    "h": 3207,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2026 Dacia Jogger Hybrid IMG 4393.jpg",
+    "w": 4424,
+    "h": 2996,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2023 Dacia Jogger 1.0 TCe Extreme in Shadow Grey at Dacia Manchester 02.jpg",
+    "w": 4160,
+    "h": 2340,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2023 Dacia Jogger 1.0 TCe Extreme in Shadow Grey at Dacia Manchester 01.jpg",
+    "w": 4160,
+    "h": 2340,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2023 Dacia Jogger DSC 7203.jpg",
+    "w": 5033,
+    "h": 3085,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2023 Dacia Jogger DSC 7205.jpg",
+    "w": 4681,
+    "h": 3129,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "skoda-octavia-1-5-tsi-mhev-prestige-2026": {
+  "ad": "Skoda Octavia 1.5 TSI MHEV – Prestige 2026",
+  "kat": "otomobil",
+  "sorgu": "Skoda Octavia",
+  "adaylar": [
+   {
+    "dosya": "Skoda Octavia IV liftback (cropped).jpg",
+    "w": 2361,
+    "h": 1250,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "ŠKODA OCTAVIA COMBI (5E) China.jpg",
+    "w": 7171,
+    "h": 5198,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "ŠKODA OCTAVIA (Typ 1Z) China (11).jpg",
+    "w": 5251,
+    "h": 3887,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Škoda Octavia IV Combi Facelift IMG 9434.jpg",
+    "w": 4156,
+    "h": 2941,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "ŠKODA OCTAVIA (Typ 1Z) China (8).jpg",
+    "w": 5633,
+    "h": 3061,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2002 Skoda Octavia RS.jpg",
+    "w": 3124,
+    "h": 1976,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "ŠKODA OCTAVIA (5E) China (5).jpg",
+    "w": 6510,
+    "h": 3429,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "ŠKODA OCTAVIA (Typ 1Z) China (10).jpg",
+    "w": 5301,
+    "h": 3026,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "skoda-kamiq-1-0-tsi-elite-2026": {
+  "ad": "Skoda Kamiq 1.0 TSI – Elite 2026",
+  "kat": "otomobil",
+  "sorgu": "Skoda Kamiq",
+  "adaylar": [
+   {
+    "dosya": "Skoda Kamiq (2019) Monte Carlo 1X7A6165.jpg",
+    "w": 4962,
+    "h": 2778,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Skoda Kamiq 1.5 TSI Tour (Facelift) – h 12042026.jpg",
+    "w": 4022,
+    "h": 2219,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Skoda Kamiq 1.0 TSI DSG Scoutline – f 09022025.jpg",
+    "w": 5823,
+    "h": 3355,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Škoda Kamiq Monte Carlo Edition 1.5 TSI (2024) (54722429411).jpg",
+    "w": 5294,
+    "h": 3660,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Skoda Kamiq 1.0 TSI DSG Scoutline – h 09022025.jpg",
+    "w": 5720,
+    "h": 3554,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2025
+   },
+   {
+    "dosya": "ŠKODA KAMIQ (CHINA) (2).jpg",
+    "w": 6011,
+    "h": 3238,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Škoda Kamiq Facelift IMG 8638.jpg",
+    "w": 4905,
+    "h": 3068,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Škoda Kamiq 163443.jpg",
+    "w": 2862,
+    "h": 1841,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "skoda-kodiaq-1-5-tsi-mhev-sportline-2026": {
+  "ad": "Skoda Kodiaq 1.5 TSI MHEV – Sportline 2026",
+  "kat": "otomobil",
+  "sorgu": "Skoda Kodiaq",
+  "adaylar": [
+   {
+    "dosya": "Škoda Kodiaq II IMG 9825.jpg",
+    "w": 4767,
+    "h": 2483,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Škoda Kodiaq in Pendik.jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "ŠKODA KODIAQ FIRST GENERATION China (2).jpg",
+    "w": 7118,
+    "h": 4239,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "ŠKODA KODIAQ FIRST GENERATION China (5).jpg",
+    "w": 5382,
+    "h": 4290,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Škoda Kodiaq II IMG 9433.jpg",
+    "w": 5177,
+    "h": 2952,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "White Škoda Kodiaq three-quarter front view.jpg",
+    "w": 3382,
+    "h": 2178,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "White Škoda Kodiaq three-quarter back view.jpg",
+    "w": 3604,
+    "h": 2328,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2023 Skoda Kodiaq Sportline TDi SCR 4x4.jpg",
+    "w": 2362,
+    "h": 1606,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "nissan-juke-1-0-dig-t-n-design-2026": {
+  "ad": "Nissan Juke 1.0 DIG-T – N-Design 2026",
+  "kat": "otomobil",
+  "sorgu": "Nissan Juke",
+  "adaylar": [
+   {
+    "dosya": "Nissan Juke (F16) IMG 4903.jpg",
+    "w": 4665,
+    "h": 2464,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Moscow, Nissan Juke black, Mar 2026 01.jpg",
+    "w": 3600,
+    "h": 2400,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Nissan Juke white Sept 2026 02.jpg",
+    "w": 3600,
+    "h": 2250,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Nissan Juke (F15) Washington DC Metro Area, USA (3).jpg",
+    "w": 1474,
+    "h": 1179,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Nissan Juke (F15) Washington DC Metro Area, USA (5).jpg",
+    "w": 1818,
+    "h": 1454,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "A yellow Nissan Juke in NTK 1.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Nissan-Juke.jpg",
+    "w": 4128,
+    "h": 3096,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Nissan Juke (Saratov).jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "nissan-x-trail-1-5-dig-t-platinum-2026": {
+  "ad": "Nissan X-Trail 1.5 DIG-T – Platinum 2026",
+  "kat": "otomobil",
+  "sorgu": "Nissan X-Trail",
+  "adaylar": [
+   {
+    "dosya": "Nissan X-Trail (T33) 1X7A7179.jpg",
+    "w": 5693,
+    "h": 3086,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "NISSAN X-TRAIL (T32) China (41).jpg",
+    "w": 6306,
+    "h": 3351,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Nissan X-Trail – front view.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "DONGFENG FENGDU MX6 (NISSAN X-TRAIL (T31)) (3).jpg",
+    "w": 6930,
+    "h": 4247,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Nissan X-Trail T30 FL 2.0L 2WD Black X 02.jpg",
+    "w": 4554,
+    "h": 2562,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "NISSAN X-TRAIL (T32) China (37).jpg",
+    "w": 6598,
+    "h": 4959,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2006 Nissan X-Trail Aventura dCi - 2184cc 2.2 (136PS) Diesel - Silver - 06-2024, Front.jpg",
+    "w": 4430,
+    "h": 2520,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "BMW X1 LWB (F48) & NISSAN X-TRAIL (T31) China.jpg",
+    "w": 5720,
+    "h": 2938,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "honda-civic-1-5-eco-elegance-plus-2025": {
+  "ad": "Honda Civic 1.5 – Eco Elegance Plus 2025",
+  "kat": "otomobil",
+  "sorgu": "Honda Civic",
+  "adaylar": [
+   {
+    "dosya": "Honda Civic e-HEV Sport (XI) – f 30062024.jpg",
+    "w": 5690,
+    "h": 2897,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Honda Civic (FC) Washington DC Metro Area, USA (2).jpg",
+    "w": 1834,
+    "h": 1467,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda Civic (FB) Washington DC Metro Area, USA (3).jpg",
+    "w": 1493,
+    "h": 1194,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda Civic EK4 FL 1.6 VTi (SiR) Taffeta White 02.jpg",
+    "w": 4482,
+    "h": 2988,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "HONDA CIVIC HATCHBACK (FE,FL) China (3).jpg",
+    "w": 6222,
+    "h": 4450,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda Civic Sedan (FE1-4) Washington DC Metro Area, USA (3).jpg",
+    "w": 1594,
+    "h": 1275,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda Civic FD1 FL 2.0 S Polished Metal Metallic 02.jpg",
+    "w": 3333,
+    "h": 2222,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda Civic Coupé (FD) Washington DC Metro Area, USA.jpg",
+    "w": 1554,
+    "h": 1243,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "honda-hr-v-1-5-e-hev-hybrid-advance-2026": {
+  "ad": "Honda HR-V 1.5 e:HEV Hybrid – Advance 2026",
+  "kat": "otomobil",
+  "sorgu": "Honda HR-V",
+  "adaylar": [
+   {
+    "dosya": "2023 Honda HR-V Advance i-MMD CVT 1.5.jpg",
+    "w": 4284,
+    "h": 2459,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "EVERUS VE-1(HONDA VEZEL HR-V (RU)) (6).jpg",
+    "w": 6445,
+    "h": 4022,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "HONDA XR-V (HONDA VEZEL HR-V (RV) ) China (6).jpg",
+    "w": 6637,
+    "h": 3967,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Honda HR-V RV5 FL 1.5 RS e-HEV Crystal Black Pearl 01.jpg",
+    "w": 4716,
+    "h": 2652,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2025 Honda HR-V Hybrid DSC 7908.jpg",
+    "w": 4770,
+    "h": 2811,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda HR-V RV4 1.5 RS e-HEV Sand Khaki Pearl - rear.jpg",
+    "w": 4292,
+    "h": 2862,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda HR-V (RU) Washington DC Metro Area, USA (5).jpg",
+    "w": 1694,
+    "h": 1355,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda HR-V RV4 1.5 S Platinum White Pearl 01.jpg",
+    "w": 3880,
+    "h": 2910,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "honda-cr-v-2-0-e-hev-hybrid-advance-2026": {
+  "ad": "Honda CR-V 2.0 e:HEV Hybrid – Advance 2026",
+  "kat": "otomobil",
+  "sorgu": "Honda CR-V",
+  "adaylar": [
+   {
+    "dosya": "Honda CR-V e-HEV Elegance AWD (VI) – f 14072024.jpg",
+    "w": 5798,
+    "h": 3190,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Honda CR-V RS5 2.0 VX e-HEV Meteoroid Gray Metallic.jpg",
+    "w": 4374,
+    "h": 2460,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Honda CR-V RS5 2.0 VX e-HEV Crystal Black Pearl 02.jpg",
+    "w": 4257,
+    "h": 2838,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Honda CR-V RS3 1.5 V Turbo Canyon River Blue Metallic 01.jpg",
+    "w": 4056,
+    "h": 2704,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda CR-V (RW) Washington DC Metro Area, USA (11).jpg",
+    "w": 1964,
+    "h": 1571,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda CR-V RS4 1.5 VX Turbo AWD Canyon River Blue Metallic 02.jpg",
+    "w": 3984,
+    "h": 2656,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda CR-V (RW) Washington DC Metro Area, USA (19).jpg",
+    "w": 1928,
+    "h": 1542,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Honda CR-V 1.5 Turbo AWD V (VI) – f 13032025.jpg",
+    "w": 5681,
+    "h": 2962,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2025
+   }
+  ]
+ },
+ "mercedes-benz-c-serisi-c-200-1-5-4matic-amg-2026": {
+  "ad": "Mercedes-Benz C Serisi C 200 1.5 4MATIC – AMG 2026",
+  "kat": "otomobil",
+  "sorgu": "Mercedes-Benz C Serisi",
+  "adaylar": []
+ },
+ "mercedes-benz-glc-glc-180-1-5-amg-2026": {
+  "ad": "Mercedes-Benz GLC GLC 180 1.5 – AMG 2026",
+  "kat": "otomobil",
+  "sorgu": "Mercedes-Benz GLC",
+  "adaylar": [
+   {
+    "dosya": "Mercedes-Benz X254 1X7A6343.jpg",
+    "w": 5837,
+    "h": 3177,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "MERCEDES-BENZ GLC (X253) China (43).jpg",
+    "w": 7020,
+    "h": 3875,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "MERCEDES-BENZ GLC (X253) China (41).jpg",
+    "w": 6783,
+    "h": 4236,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "MERCEDES-BENZ GLC (X254) China (9).jpg",
+    "w": 6556,
+    "h": 3419,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "MERCEDES-BENZ GLC (X254) China (12).jpg",
+    "w": 7471,
+    "h": 3909,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "MERCEDES-BENZ GLC COUPE (C254) HONG KONG (2).jpg",
+    "w": 5639,
+    "h": 4344,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MERCEDES-BENZ GLC (X253) China (37).jpg",
+    "w": 7337,
+    "h": 4211,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Mercedes-Benz GLC300 (X253) Washington DC Metro Area, USA (11).jpg",
+    "w": 1598,
+    "h": 1278,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "mercedes-benz-cla-cla-200-1-33-amg-2025": {
+  "ad": "Mercedes-Benz CLA CLA 200 1.33 – AMG 2025",
+  "kat": "otomobil",
+  "sorgu": "Mercedes-Benz CLA",
+  "adaylar": [
+   {
+    "dosya": "Mercedes-Benz CLA250 (C117) Washington DC Metro Area, USA (1).jpg",
+    "w": 1749,
+    "h": 1399,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MERCEDES-BENZ CLA (C117) China (2).jpg",
+    "w": 7060,
+    "h": 4506,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Mercedes-Benz CLA250 (C117) Washington DC Metro Area, USA (2).jpg",
+    "w": 1854,
+    "h": 1483,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Mercedes-Benz Electric CLA 002.jpg",
+    "w": 3854,
+    "h": 2890,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Mercedes-Benz Electric CLA 001.jpg",
+    "w": 3793,
+    "h": 2844,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MERCEDES BENZ CLA (C117) China (6).jpg",
+    "w": 6505,
+    "h": 4494,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Mercedes-Benz CLA250 (C118) Washington DC Metro Area, USA (1).jpg",
+    "w": 1438,
+    "h": 1150,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MERCEDES-BENZ CLA LWB C174 China (2).jpg",
+    "w": 7426,
+    "h": 4202,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "audi-a3-35-tfsi-allstreet-2026": {
+  "ad": "Audi A3 35 TFSI – Allstreet 2026",
+  "kat": "otomobil",
+  "sorgu": "Audi A3",
+  "adaylar": [
+   {
+    "dosya": "Audi A3 8Y Sedan IMG 5936.jpg",
+    "w": 4745,
+    "h": 2581,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "AUDI A3 8PA China (5).jpg",
+    "w": 6138,
+    "h": 4234,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI A3 8PA China (4).jpg",
+    "w": 6591,
+    "h": 4467,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI A3 SPORTBACK (Typ 8Y) China (17).jpg",
+    "w": 5442,
+    "h": 3408,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI A3 SPORTBACK (Typ 8Y) China (10).jpg",
+    "w": 5451,
+    "h": 3610,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "AUDI A3 SEDAN Typ 8V China (10).jpg",
+    "w": 7249,
+    "h": 4020,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "AUDI A3 SPORTBACK (Typ 8Y) China (15).jpg",
+    "w": 6355,
+    "h": 4270,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "AUDI A3 SEDAN (Typ 8Y) China (5).jpg",
+    "w": 7087,
+    "h": 3858,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "audi-q3-tfsi-1-5-2026": {
+  "ad": "Audi Q3 TFSI 1.5 2026",
+  "kat": "otomobil",
+  "sorgu": "Audi Q3",
+  "adaylar": [
+   {
+    "dosya": "Audi Q3 F3 DSC 7494.jpg",
+    "w": 4578,
+    "h": 3060,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "AUDI Q3 F3 China (38).jpg",
+    "w": 7008,
+    "h": 3805,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI Q3 F3 China (39).jpg",
+    "w": 6382,
+    "h": 3654,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI Q3 F3 China (35).jpg",
+    "w": 6885,
+    "h": 4518,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI Q3 F3 China (32).jpg",
+    "w": 6738,
+    "h": 4168,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Audi Q3 FJ IAA 2025 DSC 2505.jpg",
+    "w": 5376,
+    "h": 2945,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "AUDI Q3 (Typ 8U) China (37).jpg",
+    "w": 6566,
+    "h": 4811,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "AUDI Q3 F3 China (25).jpg",
+    "w": 6434,
+    "h": 4350,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "audi-q5-2-0-tdi-quattro-2026": {
+  "ad": "Audi Q5 2.0 TDI quattro 2026",
+  "kat": "otomobil",
+  "sorgu": "Audi Q5",
+  "adaylar": [
+   {
+    "dosya": "Audi Q5 2.0 TDI quattro S line (GU) – f 13102025.jpg",
+    "w": 4073,
+    "h": 2301,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "AUDI Q5L China (70).jpg",
+    "w": 6783,
+    "h": 4135,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI Q5 8R China (83).jpg",
+    "w": 6378,
+    "h": 4236,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI Q5L China (71).jpg",
+    "w": 6385,
+    "h": 3408,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI Q5L (GU) China (3).jpg",
+    "w": 4653,
+    "h": 2912,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI Q5 8R China (69).jpg",
+    "w": 5330,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI Q5L China (81).jpg",
+    "w": 7020,
+    "h": 4130,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "AUDI Q5L China (83).jpg",
+    "w": 6684,
+    "h": 4084,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "seat-ibiza-1-0-tsi-style-plus-2026": {
+  "ad": "SEAT Ibiza 1.0 TSI – Style Plus 2026",
+  "kat": "otomobil",
+  "sorgu": "SEAT Ibiza",
+  "adaylar": []
+ },
+ "seat-arona-1-0-tsi-style-plus-2026": {
+  "ad": "SEAT Arona 1.0 TSI – Style Plus 2026",
+  "kat": "otomobil",
+  "sorgu": "SEAT Arona",
+  "adaylar": []
+ },
+ "seat-leon-1-5-etsi-style-2026": {
+  "ad": "SEAT Leon 1.5 eTSI – Style 2026",
+  "kat": "otomobil",
+  "sorgu": "SEAT Leon",
+  "adaylar": []
+ },
+ "cupra-leon-1-5-mhev-e-tsi-impulse-2026": {
+  "ad": "Cupra Leon 1.5 MHEV – E-TSI Impulse 2026",
+  "kat": "otomobil",
+  "sorgu": "Cupra Leon",
+  "adaylar": [
+   {
+    "dosya": "Circuit de Spa-Francorchamps Cupra Leon Break (KL8) Medical Car (DSC02051).jpg",
+    "w": 5303,
+    "h": 2983,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow car show 2026-08-01 Cupra Leon VZ TCR Lukoil Racing 02.jpg",
+    "w": 3600,
+    "h": 2392,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow car show 2026-08-01 Cupra Leon VZ TCR Lukoil Racing 01.jpg",
+    "w": 3600,
+    "h": 2307,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2021 Cupra Leon VZ1 TSi.jpg",
+    "w": 3324,
+    "h": 2524,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2023 Cupra Leon VZ3 PHEV.jpg",
+    "w": 1794,
+    "h": 1056,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2023 CUPRA León ST 1.4 TSI e-Hybrid VZ2 in Desire Red (Front).jpg",
+    "w": 4160,
+    "h": 2340,
+    "lisans": "CC0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2023 CUPRA León ST 1.4 TSI e-Hybrid VZ2 in Desire Red (Rear 2).jpg",
+    "w": 4160,
+    "h": 2340,
+    "lisans": "CC0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2023 CUPRA León ST 1.4 TSI e-Hybrid VZ2 in Desire Red (Rear 1).jpg",
+    "w": 4160,
+    "h": 2340,
+    "lisans": "CC0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "cupra-born-150-kw-2024": {
+  "ad": "Cupra Born 150 kW 2024",
+  "kat": "otomobil",
+  "sorgu": "Cupra Born",
+  "adaylar": [
+   {
+    "dosya": "Cupra Born – f 03042026.jpg",
+    "w": 4030,
+    "h": 2232,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Cupra Born, LV.jpg",
+    "w": 4624,
+    "h": 3468,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Cupra Born IMG 7750.jpg",
+    "w": 4022,
+    "h": 2677,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Cupra Born IMG 8234.jpg",
+    "w": 4571,
+    "h": 2843,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Cupra Born 1X7A1700.jpg",
+    "w": 4540,
+    "h": 2815,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Cupra Born, Linz (P1130848).jpg",
+    "w": 4215,
+    "h": 2810,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Cupra Born 1X7A6953.jpg",
+    "w": 4723,
+    "h": 2772,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2022 Cupra Born V3 1.jpg",
+    "w": 2037,
+    "h": 1256,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "cupra-terramar-1-5-mhev-e-tsi-vz-line-2026": {
+  "ad": "Cupra Terramar 1.5 MHEV – E-TSI Vz-Line 2026",
+  "kat": "otomobil",
+  "sorgu": "Cupra Terramar",
+  "adaylar": [
+   {
+    "dosya": "Cupra Terramar VZ DSC 8241.jpg",
+    "w": 5174,
+    "h": 3055,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Cupra Terramar 082707244.jpg",
+    "w": 1767,
+    "h": 1402,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Cupra Terramar 1.5 eTSI – f 25012026.jpg",
+    "w": 4067,
+    "h": 2208,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Cupra Terramar no Milladoiro.jpg",
+    "w": 3795,
+    "h": 2530,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Cupra Terramar 1.5 eTSI – h 25012026.jpg",
+    "w": 4068,
+    "h": 2264,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Cupra Terramar VZ DSC 8244.jpg",
+    "w": 5409,
+    "h": 3077,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Cupra Terramar VZ PHEV DSC 9162.jpg",
+    "w": 4041,
+    "h": 2240,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Cupra Terramar 2.0 TSI 4Drive (2025) (54857879207).jpg",
+    "w": 5068,
+    "h": 3602,
+    "lisans": "CC0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "byd-dolphin-150-kw-design-2026": {
+  "ad": "BYD Dolphin 150 kW – Design 2026",
+  "kat": "otomobil",
+  "sorgu": "BYD Dolphin",
+  "adaylar": [
+   {
+    "dosya": "2021 BYD Dolphin EV (front).jpg",
+    "w": 5898,
+    "h": 3932,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "BYD Dolphin facelift 003.jpg",
+    "w": 3924,
+    "h": 2943,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BYD Dolphin MY2025 IMG02.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BYD Dolphin facelift 002.jpg",
+    "w": 3379,
+    "h": 2534,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Moscow, BYD Dolphin blue-grey, Oct 2025 02.jpg",
+    "w": 3600,
+    "h": 2244,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2025 BYD Dolphin Surf Comfort EV.jpg",
+    "w": 1636,
+    "h": 1226,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Moscow, BYD Dolphin blue-grey, Oct 2025 08.jpg",
+    "w": 3600,
+    "h": 2606,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 BYD Dolphin EV in Cream White, rear right, 06-22-2024.jpg",
+    "w": 6153,
+    "h": 4614,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "byd-seal-u-ev-2026": {
+  "ad": "BYD Seal U EV 2026",
+  "kat": "otomobil",
+  "sorgu": "BYD Seal U",
+  "adaylar": [
+   {
+    "dosya": "BYD Seal U IAA 2023 1X7A0045.jpg",
+    "w": 5977,
+    "h": 3179,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "BYD Seal U IAA 2023 1X7A0037.jpg",
+    "w": 5177,
+    "h": 3454,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "byd-atto-2-130-kw-boost-2026": {
+  "ad": "BYD Atto 2 130 kW – Boost 2026",
+  "kat": "otomobil",
+  "sorgu": "BYD Atto 2",
+  "adaylar": [
+   {
+    "dosya": "BYD Atto 2 IAA 2025 DSC 2131.jpg",
+    "w": 4409,
+    "h": 2646,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "BYD Atto 2 MIAS 2026 preview 01.jpg",
+    "w": 4596,
+    "h": 2954,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BYD Atto 2 DM-i Premium Ski White 02.jpg",
+    "w": 4716,
+    "h": 3144,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BYD Atto 2 DM-i Premium Ski White 01.jpg",
+    "w": 4698,
+    "h": 3020,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BYD Atto 2 MIAS 2026 preview 02.jpg",
+    "w": 4668,
+    "h": 3000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "mg-zs-1-5-comfort-2024": {
+  "ad": "MG ZS 1.5 – Comfort 2024",
+  "kat": "otomobil",
+  "sorgu": "MG ZS",
+  "adaylar": [
+   {
+    "dosya": "MG ZS (crossover, second generation) DSC 8542.jpg",
+    "w": 4909,
+    "h": 2886,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "MG ZS 1.5 Hybrid+ Sloan Silver Metallic 01.jpg",
+    "w": 4290,
+    "h": 2758,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MG ZS 1.5 Hybrid+ Black.jpg",
+    "w": 4896,
+    "h": 3264,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MG ZS 1.5 Hybrid+ Sloan Silver Metallic 02.jpg",
+    "w": 4364,
+    "h": 2806,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MG ZS 1.5 Style Marikina City police car.jpg",
+    "w": 4354,
+    "h": 3266,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "MG ZS 1.5 Alpha 2024 (1).jpg",
+    "w": 5847,
+    "h": 4386,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "MG ZS 1.5 Alpha 2024 (2).jpg",
+    "w": 5724,
+    "h": 4293,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 MG ZS Hybrid+ (France) rear view.jpg",
+    "w": 1920,
+    "h": 1281,
+    "lisans": "CC BY 3.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "mg-hs-1-5t-luxury-2026": {
+  "ad": "MG HS 1.5T – Luxury 2026",
+  "kat": "otomobil",
+  "sorgu": "MG HS",
+  "adaylar": [
+   {
+    "dosya": "MG HS Hybrid+ Luxury (II) – f 12032026.jpg",
+    "w": 4032,
+    "h": 2244,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "MG HS Hybrid+ in Yverdon-les-Bains (2026).jpg",
+    "w": 3840,
+    "h": 2880,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "MG HS Hybride+ (Yverdon-les-Bains, 2026).jpg",
+    "w": 3840,
+    "h": 2560,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "MG HS Hybrid+ Pearl White.jpg",
+    "w": 4404,
+    "h": 2936,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MG HS Hybrid+ Champange Silver 02.jpg",
+    "w": 4464,
+    "h": 2976,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MG HS Hybrid+ Black Pearl 02.jpg",
+    "w": 4446,
+    "h": 2964,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MG HS Hybrid+ Lunar Gray 01.jpg",
+    "w": 4554,
+    "h": 3036,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "MG HS Hybrid+ Pearl White 01.jpg",
+    "w": 4494,
+    "h": 2996,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "mg-ehs-phev-1-5t-luxury-2024": {
+  "ad": "MG EHS PHEV 1.5T – Luxury 2024",
+  "kat": "otomobil",
+  "sorgu": "MG EHS",
+  "adaylar": [
+   {
+    "dosya": "MG EHS 211545.jpg",
+    "w": 3456,
+    "h": 2281,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "MG EHS 1X7A0322.jpg",
+    "w": 4009,
+    "h": 2099,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   },
+   {
+    "dosya": "MG EHS 1X7A0402.jpg",
+    "w": 5448,
+    "h": 2919,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   },
+   {
+    "dosya": "MG EHS 1X7A0136.jpg",
+    "w": 5616,
+    "h": 3200,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "suzuki-vitara-hybrid-1-4-4x2-mild-gl-elegance-2026": {
+  "ad": "Suzuki Vitara Hybrid 1.4 4x2 – Mild GL Elegance 2026",
+  "kat": "otomobil",
+  "sorgu": "Suzuki Vitara",
+  "adaylar": [
+   {
+    "dosya": "2018 Suzuki Vitara (LY) S Turbo wagon (2018-11-02) 01.jpg",
+    "w": 3970,
+    "h": 2008,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "SUZUKI VITARA (LY) China (11).jpg",
+    "w": 5749,
+    "h": 3839,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "SUZUKI VITARA (LY) China (8).jpg",
+    "w": 6569,
+    "h": 3582,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SUZUKI VITARA (LY) China (6).jpg",
+    "w": 5876,
+    "h": 3112,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SUZUKI VITARA (LY) China (9).jpg",
+    "w": 7279,
+    "h": 4619,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SUZUKI GRAND VITARA (JT) China (4).jpg",
+    "w": 5491,
+    "h": 3951,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SUZUKI VITARA (LY) China (7).jpg",
+    "w": 5723,
+    "h": 4241,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Suzuki Grand Vitara (JT) Washington DC Metro Area, USA.jpg",
+    "w": 1669,
+    "h": 1335,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "suzuki-s-cross-1-4-mhev-gl-elegance-2026": {
+  "ad": "Suzuki S-Cross 1.4 MHEV – GL Elegance 2026",
+  "kat": "otomobil",
+  "sorgu": "Suzuki S-Cross",
+  "adaylar": [
+   {
+    "dosya": "SUZUKI S-CROSS China (7).jpg",
+    "w": 6066,
+    "h": 3525,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "SUZUKI S-CROSS China (8).jpg",
+    "w": 6148,
+    "h": 3238,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "SUZUKI S-CROSS China (9).jpg",
+    "w": 6139,
+    "h": 3677,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "suzuki-swift-1-2-mhev-life-2025": {
+  "ad": "Suzuki Swift 1.2 MHEV – Life 2025",
+  "kat": "otomobil",
+  "sorgu": "Suzuki Swift",
+  "adaylar": [
+   {
+    "dosya": "Suzuki Swift (2024) hybrid DSC 6076.jpg",
+    "w": 4038,
+    "h": 2610,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "2003 Suzuki Swift sedan silver front.jpg",
+    "w": 2539,
+    "h": 1546,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Асвестохори, Suzuki Swift на 25 Марта-Македономахоне.jpg",
+    "w": 3451,
+    "h": 2301,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SUZUKI SWIFT (RS) China (12).jpg",
+    "w": 5502,
+    "h": 3971,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SUZUKI SWIFT (RS) China (18).jpg",
+    "w": 5589,
+    "h": 4123,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2023 Suzuki Swift SZ-T Dualjet MHEV CVT.jpg",
+    "w": 14190,
+    "h": 8844,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2012 Suzuki Swift Sport (65742).jpg",
+    "w": 5844,
+    "h": 4384,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2017 Suzuki Swift SZ-L (78224).jpg",
+    "w": 7976,
+    "h": 4362,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "volvo-xc40-t2-1-5-plus-dark-2024": {
+  "ad": "Volvo XC40 T2 1.5 – Plus Dark 2024",
+  "kat": "otomobil",
+  "sorgu": "Volvo XC40",
+  "adaylar": [
+   {
+    "dosya": "2019 Volvo XC40 T5 Momentum in Bright Silver Metallic, front left, 2025-09-22.jpg",
+    "w": 3871,
+    "h": 2272,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "VOLVO XC40 China (8).jpg",
+    "w": 6567,
+    "h": 3883,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "VOLVO XC40 China (9).jpg",
+    "w": 6866,
+    "h": 4069,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "VOLVO XC40 China (5).jpg",
+    "w": 6176,
+    "h": 3701,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Volvo XC40 Recharge Facelift IMG 8127.jpg",
+    "w": 5125,
+    "h": 3411,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "VOLVO XC40 China (2).jpg",
+    "w": 5635,
+    "h": 3089,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "VOLVO XC40 China (3).jpg",
+    "w": 7202,
+    "h": 3766,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Volvo XC40 Shishi 01 2022-09-15.jpg",
+    "w": 4032,
+    "h": 2520,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "volvo-ex30-150-kw-p4-long-range-ultra-2026": {
+  "ad": "Volvo EX30 150 kW – P4 Long Range Ultra 2026",
+  "kat": "otomobil",
+  "sorgu": "Volvo EX30",
+  "adaylar": [
+   {
+    "dosya": "Volvo EX30 IMG 8923.jpg",
+    "w": 4902,
+    "h": 2817,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Volvo EX30 EV in Kirstenhof, Cape Town.jpg",
+    "w": 3813,
+    "h": 2292,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Volvo EX30 Gothenburg airport 2026-02-14.jpg",
+    "w": 4032,
+    "h": 2688,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Volvo EX30 Extended Range Cloud Blue rear.jpg",
+    "w": 3332,
+    "h": 2380,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Volvo EX30 Extended Range Cloud Blue - front.jpg",
+    "w": 3164,
+    "h": 2260,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Volvo EX30 Cross Country IAA 2025 DSC 1356.jpg",
+    "w": 4190,
+    "h": 3030,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Volvo EX30 Extended Range Sand Dune Metallic 01.jpg",
+    "w": 4094,
+    "h": 3070,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Volvo EX30 Cross Country 002.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "volvo-ex40-150-kw-s-motor-ext-rng-ult-black-e-ult-2026": {
+  "ad": "Volvo EX40 150 kW – S.Motor Ext.Rng Ult. Black E.Ult 2026",
+  "kat": "otomobil",
+  "sorgu": "Volvo EX40",
+  "adaylar": []
+ },
+ "jeep-avenger-electric-summit-2026": {
+  "ad": "Jeep Avenger Electric – Summit 2026",
+  "kat": "otomobil",
+  "sorgu": "Jeep Avenger",
+  "adaylar": [
+   {
+    "dosya": "Jeep Avenger Elektro Summit – f 18052025.jpg",
+    "w": 5863,
+    "h": 3201,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Jeep Avenger 4xe Hybrid eAWD (2025) (54732689195).jpg",
+    "w": 5518,
+    "h": 4000,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Carabinieri-Jeep-Avenger-electrique-Roma-Via-della-Dataria-byMmeRundvald.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2023 Jeep Avenger First Edition Auto.jpg",
+    "w": 3190,
+    "h": 2044,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Jeep Avenger 4xe The North Face Edition Auto Zuerich 2024 DSC 6154.jpg",
+    "w": 3545,
+    "h": 2369,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Jeep Avenger 1.2 e-Hybrid IMG 8813.jpg",
+    "w": 4330,
+    "h": 3083,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Jeep Avenger 4xe The North Face Edition Auto Zuerich 2024 DSC 6157.jpg",
+    "w": 4344,
+    "h": 2904,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Jeep Avenger 1.2 GSE T3 Longitude – h 25042024.jpg",
+    "w": 5466,
+    "h": 3132,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2024
+   }
+  ]
+ },
+ "jeep-wrangler-2-0-4x4-rubicon-2024": {
+  "ad": "Jeep Wrangler 2.0 4x4 – Rubicon 2024",
+  "kat": "otomobil",
+  "sorgu": "Jeep Wrangler",
+  "adaylar": [
+   {
+    "dosya": "2018 Jeep Wrangler Sahara Unlimited Multijet 2.1 Front.jpg",
+    "w": 3785,
+    "h": 2078,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "JEEP WRANGLER (JL) China (8).jpg",
+    "w": 7010,
+    "h": 4714,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2015 Jeep Wrangler featuring a Jurassic World Velociraptor theme - 01.jpg",
+    "w": 5712,
+    "h": 4284,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2015 Jeep Wrangler featuring a Jurassic World Velociraptor theme - 03.jpg",
+    "w": 5712,
+    "h": 4284,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "JEEP WRANGLER (JL) China (7).jpg",
+    "w": 6402,
+    "h": 4064,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Jeep Wrangler (JL) Washington DC Metro Area, USA (5).jpg",
+    "w": 1849,
+    "h": 1479,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Jeep Wrangler Rubicon - October 2025 - Sarah Stierch.jpg",
+    "w": 5712,
+    "h": 4284,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Jeep Wrangler JL 3.6 Unlimited Sport V6 Firecracker Red.jpg",
+    "w": 4656,
+    "h": 2994,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "lexus-nx-nx350h-4x4-executive-2026": {
+  "ad": "Lexus NX NX350h 4x4 – Executive 2026",
+  "kat": "otomobil",
+  "sorgu": "Lexus NX",
+  "adaylar": [
+   {
+    "dosya": "2023 Lexus NX 450h, front 4.5.23.jpg",
+    "w": 3306,
+    "h": 1705,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "LEXUS NX350h China (21).jpg",
+    "w": 7124,
+    "h": 3990,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "LEXUS NX 200 (AZ20) China (7).jpg",
+    "w": 6637,
+    "h": 4213,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "LEXUS NX 200t China (27).jpg",
+    "w": 7101,
+    "h": 4060,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "LEXUS NX 200 China (51).jpg",
+    "w": 6556,
+    "h": 3770,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "LEXUS NX 300h China (35).jpg",
+    "w": 6851,
+    "h": 4725,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "LEXUS NX 200 (AZ20) China (4).jpg",
+    "w": 6874,
+    "h": 3831,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "LEXUS NX 300h China (36).jpg",
+    "w": 6695,
+    "h": 3863,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "lexus-es-es300h-business-plus-2025": {
+  "ad": "Lexus ES ES300h – Business Plus 2025",
+  "kat": "otomobil",
+  "sorgu": "Lexus ES",
+  "adaylar": [
+   {
+    "dosya": "LEXUS ES 300h (XV60) China (106).jpg",
+    "w": 7388,
+    "h": 3877,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "LEXUS ES 350 (XV40) China (23).jpg",
+    "w": 6032,
+    "h": 3262,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "LEXUS ES 240 (XV40) China (19).jpg",
+    "w": 6688,
+    "h": 3882,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "LEXUS ES 300h(XZ10) China (166).jpg",
+    "w": 6389,
+    "h": 4304,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "LEXUS ES 300h (XV60) China (81).jpg",
+    "w": 6935,
+    "h": 4376,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "LEXUS ES 200 (XZ10) China (153).jpg",
+    "w": 6690,
+    "h": 3437,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "LEXUS ES 200 (XV60) China (78).jpg",
+    "w": 6266,
+    "h": 4135,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "LEXUS ES 250 (XV60) China (31).jpg",
+    "w": 5903,
+    "h": 3680,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "porsche-macan-300-kw-4-2026": {
+  "ad": "Porsche Macan 300 kW – 4 2026",
+  "kat": "otomobil",
+  "sorgu": "Porsche Macan",
+  "adaylar": [
+   {
+    "dosya": "Porsche Macan 4 IMG 2153.jpg",
+    "w": 5171,
+    "h": 3442,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "PORSCHE MACAN (XAB) China.jpg",
+    "w": 6834,
+    "h": 4338,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "PORSCHE MACAN China (73).jpg",
+    "w": 6761,
+    "h": 3695,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "PORSCHE MACAN China (40).jpg",
+    "w": 6193,
+    "h": 4305,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PORSCHE MACAN China (66).jpg",
+    "w": 6717,
+    "h": 4283,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PORSCHE MACAN China (48).jpg",
+    "w": 6718,
+    "h": 4668,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PORSCHE MACAN China (35).jpg",
+    "w": 7317,
+    "h": 4324,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PORSCHE MACAN China (32).jpg",
+    "w": 5189,
+    "h": 2898,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "porsche-cayenne-electric-s-2026": {
+  "ad": "Porsche Cayenne Electric – S 2026",
+  "kat": "otomobil",
+  "sorgu": "Porsche Cayenne",
+  "adaylar": [
+   {
+    "dosya": "Porsche Cayenne (III, Facelift) – f 01012025.jpg",
+    "w": 5797,
+    "h": 3017,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "PORSCHE CAYENNE THIRD GENERATION China (46).jpg",
+    "w": 6806,
+    "h": 3718,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "PORSCHE CAYENNE THIRD GENERATION China (58).jpg",
+    "w": 6558,
+    "h": 4247,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "PORSCHE CAYENNE SECOND GENERATION China (15).jpg",
+    "w": 6247,
+    "h": 4637,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PORSCHE CAYENNE THIRD GENERATION China (32).jpg",
+    "w": 7328,
+    "h": 4454,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PORSCHE CAYENNE THIRD GENERATION China (43).jpg",
+    "w": 6491,
+    "h": 4191,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PORSCHE CAYENNE COUPE China (6).jpg",
+    "w": 6748,
+    "h": 4094,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PORSCHE CAYENNE SECOND GENERATION China (26).jpg",
+    "w": 6980,
+    "h": 4566,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "porsche-taycan-turbo-s-2026": {
+  "ad": "Porsche Taycan Turbo – S 2026",
+  "kat": "otomobil",
+  "sorgu": "Porsche Taycan",
+  "adaylar": [
+   {
+    "dosya": "Porsche Taycan 9J1 II Carrara White Metallic.jpg",
+    "w": 4800,
+    "h": 3086,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Porsche Taycan 9J1 II Carrara White Metallic 02.jpg",
+    "w": 4896,
+    "h": 3148,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Porsche Taycan 9J1 II Carrara White Metallic 01.jpg",
+    "w": 4896,
+    "h": 3148,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "PORSCHE TAYCAN China (11).jpg",
+    "w": 7288,
+    "h": 3747,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "PORSCHE TAYCAN China (12).jpg",
+    "w": 7873,
+    "h": 4144,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Porsche Taycan GTS (Safety Car) at the 2025 Adelaide Grand Final Parade - 08.jpg",
+    "w": 6960,
+    "h": 4640,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Porsche Taycan Dolomite Silver Metallic 01.jpg",
+    "w": 4740,
+    "h": 2666,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Porsche Taycan Washington DC Metro Area, USA (1).jpg",
+    "w": 1674,
+    "h": 1339,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "alfa-romeo-tonale-1-6-dizel-ti-2026": {
+  "ad": "Alfa Romeo Tonale 1.6 Dizel – Ti 2026",
+  "kat": "otomobil",
+  "sorgu": "Alfa Romeo Tonale",
+  "adaylar": [
+   {
+    "dosya": "2023-AR-Tonale-01 (bearb Sp 2).jpg",
+    "w": 4922,
+    "h": 2999,
+    "lisans": "CC BY 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Alfa Romeo Tonale 2026 Front 1 (cropped).jpg",
+    "w": 3782,
+    "h": 2522,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Guardia di Finanza Alfa Romeo Tonale (cropped).jpg",
+    "w": 2717,
+    "h": 1811,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Guardia di Finanza Alfa Romeo Tonale.jpg",
+    "w": 4064,
+    "h": 3056,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Alfa Romeo Tonale IMG 9748.jpg",
+    "w": 4725,
+    "h": 3145,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Alfa Romeo Tonale IMG 9748 (cropped).jpg",
+    "w": 4540,
+    "h": 2563,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2022 Alfa Romeo Tonale Veloce TB MHEV (81449).jpg",
+    "w": 3551,
+    "h": 2605,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Alfa Romeo Tonale Veloce Type 965 Grigio Vesuvio (1).jpg",
+    "w": 3822,
+    "h": 2866,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "alfa-romeo-junior-elettrica-speciale-2026": {
+  "ad": "Alfa Romeo Junior Elettrica – Speciale 2026",
+  "kat": "otomobil",
+  "sorgu": "Alfa Romeo Junior",
+  "adaylar": [
+   {
+    "dosya": "2025 Alfa Romeo Junior Ibrida TB MHEV.jpg",
+    "w": 2830,
+    "h": 2150,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Alfa Romeo Junior Electtrica Speciale 1.jpg",
+    "w": 2638,
+    "h": 1802,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Alfa Romeo Junior Electtrica Speciale.jpg",
+    "w": 3106,
+    "h": 2268,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2025 Alfa Romeo Junior Electtrica.jpg",
+    "w": 2286,
+    "h": 1720,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2025 Alfa Romeo Junior Veloce.jpg",
+    "w": 3376,
+    "h": 2228,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Alfa Romeo Junior Auto Zuerich 2024 DSC 6376.jpg",
+    "w": 5234,
+    "h": 3498,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Alfa Romeo Junior Elettrica Automesse Ludwigsburg 2024 IMG 1573.jpg",
+    "w": 5398,
+    "h": 3021,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Alfa Romeo Junior Leonberg 2024 IMG 1126.jpg",
+    "w": 5923,
+    "h": 3943,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ds-ds-4-bluehdi-pallas-2026": {
+  "ad": "DS DS 4 BlueHDi – Pallas 2026",
+  "kat": "otomobil",
+  "sorgu": "DS DS 4",
+  "adaylar": [
+   {
+    "dosya": "Citroën DS4 SoChic – Frontansicht, 16. März 2014, Düsseldorf.jpg",
+    "w": 3533,
+    "h": 1930,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   }
+  ]
+ },
+ "ds-ds-7-bluehdi-etoile-2026": {
+  "ad": "DS DS 7 BlueHDi – Etoile 2026",
+  "kat": "otomobil",
+  "sorgu": "DS DS 7",
+  "adaylar": []
+ },
+ "ssangyong-torres-1-5-gdi-turbo-4x2-2026": {
+  "ad": "SsangYong Torres 1.5 GDi Turbo 4x2 2026",
+  "kat": "otomobil",
+  "sorgu": "SsangYong Torres",
+  "adaylar": [
+   {
+    "dosya": "Moscow, SsangYong Torres, Mar 2026 03.jpg",
+    "w": 3600,
+    "h": 2246,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, SsangYong Torres, Mar 2026 02.jpg",
+    "w": 3600,
+    "h": 2400,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, SsangYong Torres, Mar 2026 01.jpg",
+    "w": 3000,
+    "h": 2000,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, KGM Torres, Dec 2025 01.jpg",
+    "w": 3000,
+    "h": 2250,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SsangYong Torres Automesse Ludwigsburg 2024 IMG 1442.jpg",
+    "w": 4973,
+    "h": 3310,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 KGM Torres K40 EVX.jpg",
+    "w": 12584,
+    "h": 9090,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 KGM Torres K40 Auto.jpg",
+    "w": 14416,
+    "h": 9482,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "SsangYong Torres Automesse Ludwigsburg 2024 IMG 1445.jpg",
+    "w": 5045,
+    "h": 3358,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ssangyong-korando-1-5t-4x2-platinum-2026": {
+  "ad": "SsangYong Korando 1.5T 4x2 – Platinum 2026",
+  "kat": "otomobil",
+  "sorgu": "SsangYong Korando",
+  "adaylar": [
+   {
+    "dosya": "Ssangyong Korando (4th generation) IMG 3084.jpg",
+    "w": 4338,
+    "h": 2324,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "SSANGYONG KORANDO (C200) China (8).jpg",
+    "w": 5383,
+    "h": 3427,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SSANGYONG KORANDO (C200) China (9).jpg",
+    "w": 6100,
+    "h": 3842,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SsangYong Korando Soft Top 290SR K100 Brilliant Black (1).jpg",
+    "w": 3901,
+    "h": 2926,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SSANGYONG KORANDO (C200) China (2).jpg",
+    "w": 6312,
+    "h": 4458,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "SSANGYONG KORANDO (C200) China (5).jpg",
+    "w": 5448,
+    "h": 3916,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "1997 Ssangyong Korando GLS.jpg",
+    "w": 14256,
+    "h": 10246,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "SSANGYONG KORANDO (C200) China (7).jpg",
+    "w": 4331,
+    "h": 2812,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ssangyong-tivoli-1-5-4x2-deluxe-2026": {
+  "ad": "SsangYong Tivoli 1.5 4x2 – Deluxe 2026",
+  "kat": "otomobil",
+  "sorgu": "SsangYong Tivoli",
+  "adaylar": [
+   {
+    "dosya": "Moscow, KGM Tivoli, May 2026 01.jpg",
+    "w": 3001,
+    "h": 2000,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, KGM Tivoli, May 2026 03.jpg",
+    "w": 3000,
+    "h": 2200,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, KGM Tivoli, May 2026 04.jpg",
+    "w": 3000,
+    "h": 2250,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, KGM Tivoli, May 2026 05.jpg",
+    "w": 2000,
+    "h": 1200,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, KGM Tivoli, May 2026 06.jpg",
+    "w": 3000,
+    "h": 2138,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, KGM Tivoli, May 2026 02.jpg",
+    "w": 2400,
+    "h": 1800,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2024 KGM Tivoli K40 GDi-T - 1497cc 1.5 (163PS) Petrol - Iron Silver - 03-2025, Front.jpg",
+    "w": 4620,
+    "h": 2519,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "SsangYong Tivoli 112959.jpg",
+    "w": 2172,
+    "h": 1224,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "jaecoo-jaecoo-7-1-6-4x4-evolve-2026": {
+  "ad": "Jaecoo Jaecoo 7 1.6 4x4 – Evolve 2026",
+  "kat": "otomobil",
+  "sorgu": "Jaecoo Jaecoo 7",
+  "adaylar": []
+ }
+}

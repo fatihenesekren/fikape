@@ -1,0 +1,770 @@
+{
+ "honda-activa-125-2025": {
+  "ad": "Honda Activa 125 2025",
+  "kat": "motosiklet",
+  "sorgu": "Honda Activa 125",
+  "adaylar": []
+ },
+ "honda-adv350-2026": {
+  "ad": "Honda ADV350 2026",
+  "kat": "motosiklet",
+  "sorgu": "Honda ADV350",
+  "adaylar": [
+   {
+    "dosya": "Honda ADV 350 2026.jpg",
+    "w": 2048,
+    "h": 1536,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "honda-cb650r-2026": {
+  "ad": "Honda CB650R 2026",
+  "kat": "motosiklet",
+  "sorgu": "Honda CB650R",
+  "adaylar": [
+   {
+    "dosya": "2023 Honda CB650R E-Clutch.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Honda CB650R Motorcycle 2021.jpg",
+    "w": 4128,
+    "h": 3096,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "2023 Honda CB650R Standard.jpg",
+    "w": 4608,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "yamaha-nmax-125-2025": {
+  "ad": "Yamaha Nmax 125 2025",
+  "kat": "motosiklet",
+  "sorgu": "Yamaha Nmax 125",
+  "adaylar": []
+ },
+ "yamaha-mt-09-2026": {
+  "ad": "Yamaha Mt 09 2026",
+  "kat": "motosiklet",
+  "sorgu": "Yamaha Mt 09",
+  "adaylar": [
+   {
+    "dosya": "2024 Yamaha MT-09 Y-AMT.jpg",
+    "w": 3986,
+    "h": 2979,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Moscow, Yamaha MT-09 Tracer, May 2026 02.jpg",
+    "w": 3000,
+    "h": 2250,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Yamaha MT-09 Tracer, May 2026 01.jpg",
+    "w": 3000,
+    "h": 2250,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kaloshin Lane X Arbat, Yamaha MT-09, June 2026 05.jpg",
+    "w": 5184,
+    "h": 3456,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Yamaha MT-09 (CV15 PYX) and MT-07 (AY66 VYS) - 25 April 2026.jpg",
+    "w": 4670,
+    "h": 3116,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Yamaha Tracer MT-09, July 2026 02.jpg",
+    "w": 3600,
+    "h": 2401,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kaloshin Lane X Arbat, Yamaha MT-09, June 2026 01.jpg",
+    "w": 5034,
+    "h": 3356,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kaloshin Lane, Yamaha MT-09 and Velobike, Aug 2026 02.jpg",
+    "w": 3600,
+    "h": 2285,
+    "lisans": "CC0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "suzuki-burgman-400-2025": {
+  "ad": "Suzuki Burgman 400 2025",
+  "kat": "motosiklet",
+  "sorgu": "Suzuki Burgman 400",
+  "adaylar": [
+   {
+    "dosya": "Suzuki Burgman 400i.jpg",
+    "w": 3028,
+    "h": 1928,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "suzuki-gsx-8s-2025": {
+  "ad": "Suzuki Gsx 8S 2025",
+  "kat": "motosiklet",
+  "sorgu": "Suzuki Gsx 8S",
+  "adaylar": [
+   {
+    "dosya": "Suzuki GSX-8S, Auto 2024, Zurich (PANA0820).jpg",
+    "w": 5184,
+    "h": 3888,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "suzuki-address-125-2025": {
+  "ad": "Suzuki Address 125 2025",
+  "kat": "motosiklet",
+  "sorgu": "Suzuki Address 125",
+  "adaylar": []
+ },
+ "bmw-r-1300-gs-2026": {
+  "ad": "BMW R 1300 GS 2026",
+  "kat": "motosiklet",
+  "sorgu": "BMW R 1300 GS",
+  "adaylar": [
+   {
+    "dosya": "BMW R1300 GS Triple Black front-side.jpg",
+    "w": 5184,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BMW R1300 GS Triple Black Tank.jpg",
+    "w": 5184,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BMW R1300 GS Triple Black 2026-08.jpg",
+    "w": 4681,
+    "h": 3454,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BMW R1300 GS Triple Black rear-side.jpg",
+    "w": 5184,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BMW R1300GS (GC06 MAR) - 25 April 2026.jpg",
+    "w": 4838,
+    "h": 3229,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BMW R1300GS IMG 6328.jpg",
+    "w": 3997,
+    "h": 2940,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "BMW R1300 GS 2026.jpg",
+    "w": 2048,
+    "h": 1542,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "BMW R1300GS Adventure 2025.jpg",
+    "w": 3639,
+    "h": 2729,
+    "lisans": "CC0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "bmw-f-900-r-2026": {
+  "ad": "BMW F 900 R 2026",
+  "kat": "motosiklet",
+  "sorgu": "BMW F 900 R",
+  "adaylar": [
+   {
+    "dosya": "BMW F900R Motosalon Brno 2026.jpg",
+    "w": 1776,
+    "h": 1153,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "bmw-c-400-gt-2026": {
+  "ad": "BMW C 400 GT 2026",
+  "kat": "motosiklet",
+  "sorgu": "BMW C 400 GT",
+  "adaylar": []
+ },
+ "kawasaki-ninja-650-2025": {
+  "ad": "Kawasaki Ninja 650 2025",
+  "kat": "motosiklet",
+  "sorgu": "Kawasaki Ninja 650",
+  "adaylar": [
+   {
+    "dosya": "Kawasaki Ninja650.jpg",
+    "w": 2560,
+    "h": 1920,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Moscow, Kawasaki Ninja 650 Sept 2026 03.jpg",
+    "w": 3600,
+    "h": 2521,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kawasaki Ninja 650 01.jpg",
+    "w": 3711,
+    "h": 2474,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kawasaki Ninja 650 Sept 2026 01.jpg",
+    "w": 3600,
+    "h": 2620,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Kawasaki Ninja 650 at Children's Park Roundabout 20240427144336.jpg",
+    "w": 4508,
+    "h": 3005,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "kawasaki-z900-2025": {
+  "ad": "Kawasaki Z900 2025",
+  "kat": "motosiklet",
+  "sorgu": "Kawasaki Z900",
+  "adaylar": [
+   {
+    "dosya": "2026 Kawasaki Z900.jpg",
+    "w": 2913,
+    "h": 2174,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Kawasaki Z900 RS 2025 Eicma 2024.jpg",
+    "w": 1761,
+    "h": 1153,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Kawasaki Z 900 RS (2).jpg",
+    "w": 3600,
+    "h": 2700,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "kawasaki-versys-650-2026": {
+  "ad": "Kawasaki Versys 650 2026",
+  "kat": "motosiklet",
+  "sorgu": "Kawasaki Versys 650",
+  "adaylar": [
+   {
+    "dosya": "Kawasaki Versys 650 Rapid Intervention Motorcycle (RIM) in Malaysia National Day Parade Day Ipoh 2026.jpg",
+    "w": 4080,
+    "h": 3072,
+    "lisans": "CC BY-SA 3.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "ktm-390-duke-2025": {
+  "ad": "KTM 390 Duke 2025",
+  "kat": "motosiklet",
+  "sorgu": "KTM 390 Duke",
+  "adaylar": [
+   {
+    "dosya": "KTM 390 Duke in Athens on 11-1-2023.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "ktm-790-duke-2024": {
+  "ad": "KTM 790 Duke 2024",
+  "kat": "motosiklet",
+  "sorgu": "KTM 790 Duke",
+  "adaylar": [
+   {
+    "dosya": "KTM Duke 790 2018.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "KTM 790 Duke (2).jpg",
+    "w": 3995,
+    "h": 3044,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   },
+   {
+    "dosya": "KTM 790 Duke (3).jpg",
+    "w": 4608,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   },
+   {
+    "dosya": "KTM 790 Duke (1).jpg",
+    "w": 4335,
+    "h": 2680,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "ktm-390-adventure-2024": {
+  "ad": "KTM 390 Adventure 2024",
+  "kat": "motosiklet",
+  "sorgu": "KTM 390 Adventure",
+  "adaylar": []
+ },
+ "royal-enfield-classic-350-2024": {
+  "ad": "Royal Enfield Classic 350 2024",
+  "kat": "motosiklet",
+  "sorgu": "Royal Enfield Classic 350",
+  "adaylar": [
+   {
+    "dosya": "Royal Enfield Classic 350 - Gran Via - Madrid 01.jpg",
+    "w": 7360,
+    "h": 4912,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Royal Enfield Classic 350 - Orcal Astor 125.jpg",
+    "w": 3000,
+    "h": 2250,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "royal-enfield-meteor-350-2024": {
+  "ad": "Royal Enfield Meteor 350 2024",
+  "kat": "motosiklet",
+  "sorgu": "Royal Enfield Meteor 350",
+  "adaylar": [
+   {
+    "dosya": "Royal Enfield méteor 350 \"Classic 350 Signals\".jpg",
+    "w": 2592,
+    "h": 1944,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "royal-enfield-interceptor-650-2026": {
+  "ad": "Royal Enfield Interceptor 650 2026",
+  "kat": "motosiklet",
+  "sorgu": "Royal Enfield Interceptor 650",
+  "adaylar": [
+   {
+    "dosya": "Royal Enfield 650 02.jpeg",
+    "w": 2576,
+    "h": 1932,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Royal Enfield Interceptor 650 Jinonice A.jpg",
+    "w": 4608,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Royal Enfield Interceptor 650 Jinonice B.jpg",
+    "w": 4608,
+    "h": 3456,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Wien Royal Enfield Interceptor 650.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "benelli-trk502-2025": {
+  "ad": "Benelli TRK502 2025",
+  "kat": "motosiklet",
+  "sorgu": "Benelli TRK502",
+  "adaylar": [
+   {
+    "dosya": "Benelli TRK 502 EICMA 2024 noBG.jpg",
+    "w": 2100,
+    "h": 1600,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Benelli TRK 502 EICMA 2024.jpg",
+    "w": 2048,
+    "h": 1536,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "benelli-leoncino-500-2025": {
+  "ad": "Benelli Leoncino 500 2025",
+  "kat": "motosiklet",
+  "sorgu": "Benelli Leoncino 500",
+  "adaylar": []
+ },
+ "benelli-502-c-2025": {
+  "ad": "Benelli 502 C 2025",
+  "kat": "motosiklet",
+  "sorgu": "Benelli 502 C",
+  "adaylar": [
+   {
+    "dosya": "Benelli 502C.jpg",
+    "w": 5184,
+    "h": 3888,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "triumph-trident-660-2026": {
+  "ad": "Triumph Trident 660 2026",
+  "kat": "motosiklet",
+  "sorgu": "Triumph Trident 660",
+  "adaylar": []
+ },
+ "triumph-speed-400-2025": {
+  "ad": "Triumph Speed 400 2025",
+  "kat": "motosiklet",
+  "sorgu": "Triumph Speed 400",
+  "adaylar": [
+   {
+    "dosya": "Triumph Speed 400.jpg",
+    "w": 1882,
+    "h": 1429,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "triumph-scrambler-400-x-2025": {
+  "ad": "Triumph Scrambler 400 X 2025",
+  "kat": "motosiklet",
+  "sorgu": "Triumph Scrambler 400 X",
+  "adaylar": [
+   {
+    "dosya": "Triumph Scrambler 400 X, M-M25.jpg",
+    "w": 3772,
+    "h": 2829,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Triumph-Scrambler-400X.jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ducati-multistrada-v4-2024": {
+  "ad": "Ducati Multistrada V4 2024",
+  "kat": "motosiklet",
+  "sorgu": "Ducati Multistrada V4",
+  "adaylar": [
+   {
+    "dosya": "Ducati Multistrada V4 S '25.jpg",
+    "w": 4032,
+    "h": 2268,
+    "lisans": "CC0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "ducati-panigale-v2-2026": {
+  "ad": "Ducati Panigale V2 2026",
+  "kat": "motosiklet",
+  "sorgu": "Ducati Panigale V2",
+  "adaylar": [
+   {
+    "dosya": "Ducati 955 Panigale V2 (IMG 9851).jpg",
+    "w": 4374,
+    "h": 3471,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "ducati-streetfighter-v2-2026": {
+  "ad": "Ducati Streetfighter V2 2026",
+  "kat": "motosiklet",
+  "sorgu": "Ducati Streetfighter V2",
+  "adaylar": [
+   {
+    "dosya": "Ducati Streetfighter V2 955 (1).jpg",
+    "w": 4224,
+    "h": 2580,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Ducati Streetfighter V2, Aug 2025 02.jpg",
+    "w": 4992,
+    "h": 3173,
+    "lisans": "CC0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "harley-davidson-sportster-s-2026": {
+  "ad": "Harley-Davidson Sportster S 2026",
+  "kat": "motosiklet",
+  "sorgu": "Harley-Davidson Sportster S",
+  "adaylar": []
+ },
+ "harley-davidson-nightster-2025": {
+  "ad": "Harley-Davidson Nightster 2025",
+  "kat": "motosiklet",
+  "sorgu": "Harley-Davidson Nightster",
+  "adaylar": [
+   {
+    "dosya": "Harley-Davidson Nightster parked at Hogs for Hospice, Leamington, Ontario, 2025-08-02.jpg",
+    "w": 5412,
+    "h": 3866,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "harley-davidson-street-glide-2026": {
+  "ad": "Harley-Davidson Street Glide 2026",
+  "kat": "motosiklet",
+  "sorgu": "Harley-Davidson Street Glide",
+  "adaylar": [
+   {
+    "dosya": "Suliszewo - motocykliści - Harley-Davidson Street Glide - 22.04.2023 13-34-40.2023 13-34-40.jpg",
+    "w": 1531,
+    "h": 1199,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "tvs-jupiter-125-2026": {
+  "ad": "TVS Jupiter 125 2026",
+  "kat": "motosiklet",
+  "sorgu": "TVS Jupiter 125",
+  "adaylar": []
+ },
+ "tvs-ntorq-125-2026": {
+  "ad": "TVS Ntorq 125 2026",
+  "kat": "motosiklet",
+  "sorgu": "TVS Ntorq 125",
+  "adaylar": [
+   {
+    "dosya": "TVS Ntorq 125 Race XP.jpg",
+    "w": 2048,
+    "h": 1536,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "TVS Ntorq 125cc red.jpg",
+    "w": 4096,
+    "h": 3072,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "TVS Ntorq 125 blue.jpg",
+    "w": 4096,
+    "h": 3072,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "TVS Ntorq 125cc bikes.jpg",
+    "w": 4096,
+    "h": 3072,
+    "lisans": "CC BY 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "bajaj-pulsar-n-160-2026": {
+  "ad": "Bajaj Pulsar N 160 2026",
+  "kat": "motosiklet",
+  "sorgu": "Bajaj Pulsar N 160",
+  "adaylar": []
+ },
+ "bajaj-pulsar-ns200-2025": {
+  "ad": "Bajaj Pulsar NS200 2025",
+  "kat": "motosiklet",
+  "sorgu": "Bajaj Pulsar NS200",
+  "adaylar": [
+   {
+    "dosya": "Bajaj Pulsar 200 NS.jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY-SA 3.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Bj Pulsar NS 200.jpg",
+    "w": 5632,
+    "h": 4224,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "aprilia-sr-gt-200-2024": {
+  "ad": "Aprilia SR GT 200 2024",
+  "kat": "motosiklet",
+  "sorgu": "Aprilia SR GT 200",
+  "adaylar": [
+   {
+    "dosya": "Aprilia SR GT 200 EICMA 2024.jpg",
+    "w": 2048,
+    "h": 1152,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "aprilia-rs-660-2025": {
+  "ad": "Aprilia RS 660 2025",
+  "kat": "motosiklet",
+  "sorgu": "Aprilia RS 660",
+  "adaylar": [
+   {
+    "dosya": "2026 Aprilia RS 660.jpg",
+    "w": 2632,
+    "h": 1843,
+    "lisans": "CC0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "Aprilia RS 660 - EICMA 2024.jpg",
+    "w": 3648,
+    "h": 2736,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2022 Aprilia RS 660 in Athens on 10-30-2023.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "Aprilia RS 660 (1).jpg",
+    "w": 3522,
+    "h": 2537,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "aprilia-tuono-660-2024": {
+  "ad": "Aprilia Tuono 660 2024",
+  "kat": "motosiklet",
+  "sorgu": "Aprilia Tuono 660",
+  "adaylar": []
+ },
+ "husqvarna-svartpilen-401-2025": {
+  "ad": "Husqvarna Svartpilen 401 2025",
+  "kat": "motosiklet",
+  "sorgu": "Husqvarna Svartpilen 401",
+  "adaylar": []
+ },
+ "husqvarna-vitpilen-401-2024": {
+  "ad": "Husqvarna Vitpilen 401 2024",
+  "kat": "motosiklet",
+  "sorgu": "Husqvarna Vitpilen 401",
+  "adaylar": []
+ },
+ "husqvarna-svartpilen-250-2025": {
+  "ad": "Husqvarna Svartpilen 250 2025",
+  "kat": "motosiklet",
+  "sorgu": "Husqvarna Svartpilen 250",
+  "adaylar": []
+ },
+ "zontes-350d-2025": {
+  "ad": "Zontes 350d 2025",
+  "kat": "motosiklet",
+  "sorgu": "Zontes 350d",
+  "adaylar": []
+ },
+ "indian-scout-2025": {
+  "ad": "Indian Scout 2025",
+  "kat": "motosiklet",
+  "sorgu": "Indian Scout",
+  "adaylar": []
+ }
+}

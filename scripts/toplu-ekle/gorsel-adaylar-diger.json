@@ -1,0 +1,914 @@
+{
+ "brompton-electric-electric-t-line-250w-25-km-h-300wh-2026": {
+  "ad": "Brompton Electric Electric T Line 250W 25 km/h 300Wh 2026",
+  "kat": "e-bisiklet",
+  "sorgu": "Brompton Electric Electric T Line",
+  "adaylar": []
+ },
+ "cowboy-cross-250w-25-km-h-360wh-2023": {
+  "ad": "Cowboy Cross 250W 25 km/h 360Wh 2023",
+  "kat": "e-bisiklet",
+  "sorgu": "Cowboy Cross",
+  "adaylar": []
+ },
+ "cowboy-cruiser-250w-25-km-h-360wh-2022": {
+  "ad": "Cowboy Cruiser 250W 25 km/h 360Wh 2022",
+  "kat": "e-bisiklet",
+  "sorgu": "Cowboy Cruiser",
+  "adaylar": []
+ },
+ "cowboy-classic-250w-arka-gobek-motor-360wh-2021": {
+  "ad": "Cowboy Classic 250W Arka Göbek Motor 360Wh 2021",
+  "kat": "e-bisiklet",
+  "sorgu": "Cowboy Classic",
+  "adaylar": []
+ },
+ "gocycle-g4i-250w-on-gobek-motor-36v-10-4ah-375wh-2021": {
+  "ad": "GoCycle G4i+ 250W Ön Göbek Motor 36V 10.4Ah 375Wh 2021",
+  "kat": "e-bisiklet",
+  "sorgu": "GoCycle G4i+",
+  "adaylar": []
+ },
+ "gocycle-gs-250w-25-km-h-300wh-2020": {
+  "ad": "GoCycle GS 250W 25 km/h 300Wh 2020",
+  "kat": "e-bisiklet",
+  "sorgu": "GoCycle GS",
+  "adaylar": [
+   {
+    "dosya": "Gocycle GS .jpg",
+    "w": 5760,
+    "h": 3840,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2019
+   }
+  ]
+ },
+ "super73-r-brooklyn-750w-45-km-h-960wh-2021": {
+  "ad": "Super73 R Brooklyn 750W 45 km/h 960Wh 2021",
+  "kat": "e-bisiklet",
+  "sorgu": "Super73 R Brooklyn",
+  "adaylar": []
+ },
+ "super73-s2-750w-45-km-h-960wh-2020": {
+  "ad": "Super73 S2 750W 45 km/h 960Wh 2020",
+  "kat": "e-bisiklet",
+  "sorgu": "Super73 S2",
+  "adaylar": []
+ },
+ "vanmoof-s6-250w-25-km-h-487wh-2025": {
+  "ad": "VanMoof S6 250W 25 km/h 487Wh 2025",
+  "kat": "e-bisiklet",
+  "sorgu": "VanMoof S6",
+  "adaylar": []
+ },
+ "vanmoof-s6-open-250w-on-gobek-motor-68nm-487wh-2025": {
+  "ad": "VanMoof S6 Open 250W Ön Göbek Motor 68Nm 487Wh 2025",
+  "kat": "e-bisiklet",
+  "sorgu": "VanMoof S6 Open",
+  "adaylar": []
+ },
+ "xiaomi-electric-bicycle-1s-250w-25-km-h-36v-7-65ah-2022": {
+  "ad": "Xiaomi Electric Bicycle 1S 250W 25 km/h 36V 7.65Ah 2022",
+  "kat": "e-bisiklet",
+  "sorgu": "Xiaomi Electric Bicycle 1S",
+  "adaylar": []
+ },
+ "xiaomi-6-lite-300w-500w-tepe-216wh-25km-h-2026": {
+  "ad": "Xiaomi 6 Lite 300W (500W tepe) 216Wh 25km/h 2026",
+  "kat": "e-scooter",
+  "sorgu": "Xiaomi 6 Lite",
+  "adaylar": []
+ },
+ "xiaomi-6-max-1100w-tepe-468wh-25km-h-2026": {
+  "ad": "Xiaomi 6 Max 1100W tepe 468Wh 25km/h 2026",
+  "kat": "e-scooter",
+  "sorgu": "Xiaomi 6 Max",
+  "adaylar": []
+ },
+ "xiaomi-6-pro-1000w-tepe-25km-h-2026": {
+  "ad": "Xiaomi 6 Pro 1000W tepe 25km/h 2026",
+  "kat": "e-scooter",
+  "sorgu": "Xiaomi 6 Pro",
+  "adaylar": []
+ },
+ "segway-ninebot-max-g3-2000w-25-km-s-2025": {
+  "ad": "Segway Ninebot Max G3 2000W 25 km/s 2025",
+  "kat": "e-scooter",
+  "sorgu": "Segway Ninebot Max G3",
+  "adaylar": []
+ },
+ "navee-v50-500w-15ah-32km-h-2024": {
+  "ad": "Navee V50 500W 15Ah 32km/h 2024",
+  "kat": "e-scooter",
+  "sorgu": "Navee V50",
+  "adaylar": []
+ },
+ "navee-n40-350w-10-4ah-25km-h-2022": {
+  "ad": "Navee N40 350W 10.4Ah 25km/h 2022",
+  "kat": "e-scooter",
+  "sorgu": "Navee N40",
+  "adaylar": []
+ },
+ "navee-n65-500w-17-5ah-35km-h-2022": {
+  "ad": "Navee N65 500W 17.5Ah 35km/h 2022",
+  "kat": "e-scooter",
+  "sorgu": "Navee N65",
+  "adaylar": []
+ },
+ "dualtron-x2-8300w-cift-72ah-2021": {
+  "ad": "Dualtron X2 8300W Çift 72Ah 2021",
+  "kat": "e-scooter",
+  "sorgu": "Dualtron X2",
+  "adaylar": []
+ },
+ "kaabo-wolf-king-gtr-2000w-cift-35ah-65km-h-2023": {
+  "ad": "Kaabo Wolf King GTR 2000W Çift 35Ah 65km/h 2023",
+  "kat": "e-scooter",
+  "sorgu": "Kaabo Wolf King GTR",
+  "adaylar": []
+ },
+ "apollo-air-500w-16ah-25km-h-2021": {
+  "ad": "Apollo Air 500W 16Ah 25km/h 2021",
+  "kat": "e-scooter",
+  "sorgu": "Apollo Air",
+  "adaylar": []
+ },
+ "inmotion-l9-900w-45-km-s-2021": {
+  "ad": "Inmotion L9 900W 45 km/s 2021",
+  "kat": "e-scooter",
+  "sorgu": "Inmotion L9",
+  "adaylar": []
+ },
+ "ford-e-transit-420l-deluxe-2026": {
+  "ad": "Ford E-Transit 420L – Deluxe 2026",
+  "kat": "kamyonet",
+  "sorgu": "Ford E-Transit",
+  "adaylar": []
+ },
+ "citroen-jumper-2-2-bluehdi-2026": {
+  "ad": "Citroen Jumper 2.2 BlueHDi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Citroen Jumper",
+  "adaylar": [
+   {
+    "dosya": "CitroenJumper-PeugeotBoxer-Fiat-Ducato-Caselani-TypeH-byRundvald-Neo-Retro-cool.jpg",
+    "w": 3264,
+    "h": 2448,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Citroen Jumper habillage Type H IMG 20230321 121732.jpg",
+    "w": 4160,
+    "h": 3120,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "peugeot-partner-1-5-comfort-b-hdi-2026": {
+  "ad": "Peugeot Partner 1.5 – Comfort B.Hdi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Peugeot Partner",
+  "adaylar": [
+   {
+    "dosya": "Peugeot Partner 2003.jpg",
+    "w": 1464,
+    "h": 976,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Peugeot-Partner(1).jpg",
+    "w": 4128,
+    "h": 3096,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "peugeot-expert-2-2-bluehdi-2026": {
+  "ad": "Peugeot Expert 2.2 BlueHDi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Peugeot Expert",
+  "adaylar": [
+   {
+    "dosya": "Moscow, Peugeot Expert white van July 2025 03.jpg",
+    "w": 3754,
+    "h": 2692,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Moscow, Peugeot Expert white van July 2025 01.jpg",
+    "w": 4810,
+    "h": 2876,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Alby-sur-Chéran - 74540 - 2025.09.10 - Sibra à la demande - SynerGIHP - Peugeot e-Expert © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Peugeot Expert III IMG 2658.jpg",
+    "w": 4901,
+    "h": 3262,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2024 Peugeot Expert Professional L1 BlueHDi - 1499cc 1.5 (120PS) Diesel - White - 06-2024, Front.jpg",
+    "w": 4232,
+    "h": 2720,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "peugeot-boxer-2-2-bluehdi-2026": {
+  "ad": "Peugeot Boxer 2.2 BlueHDi 2026",
+  "kat": "kamyonet",
+  "sorgu": "Peugeot Boxer",
+  "adaylar": [
+   {
+    "dosya": "Peugeot Boxer 335 L3 TL Blue HDi 160 (2016) (54818539400).jpg",
+    "w": 5855,
+    "h": 3785,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2025-09-21 Moscow marathon, TV1 broadcast camp 09 (Peugeot Boxer 2006).jpg",
+    "w": 3600,
+    "h": 2401,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "CitroenJumper-PeugeotBoxer-Fiat-Ducato-Caselani-TypeH-byRundvald-Neo-Retro-cool.jpg",
+    "w": 3264,
+    "h": 2448,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "mercedes-benz-esprinter-pro-420-2026": {
+  "ad": "Mercedes-Benz eSprinter Pro 420 2026",
+  "kat": "kamyonet",
+  "sorgu": "Mercedes-Benz eSprinter",
+  "adaylar": []
+ },
+ "volkswagen-caddy-2-0-tdi-2026": {
+  "ad": "Volkswagen Caddy 2.0 TDI 2026",
+  "kat": "kamyonet",
+  "sorgu": "Volkswagen Caddy",
+  "adaylar": [
+   {
+    "dosya": "Volkswagen Caddy Maxi postfacelift in Deidesheim.jpg",
+    "w": 4019,
+    "h": 2537,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "VOLKSWAGEN CADDY (2K) China (5).jpg",
+    "w": 4716,
+    "h": 3268,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "VOLKSWAGEN CADDY (2K) China (3).jpg",
+    "w": 6677,
+    "h": 3710,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "1989 (F) Volkswagen Caddy.jpg",
+    "w": 1402,
+    "h": 840,
+    "lisans": "CC BY 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "toyota-proace-2-2-d-flame-2026": {
+  "ad": "Toyota Proace 2.2 d – Flame 2026",
+  "kat": "kamyonet",
+  "sorgu": "Toyota Proace",
+  "adaylar": [
+   {
+    "dosya": "100% elektrisch - Toyota Proace Max electric (2026).jpg",
+    "w": 4000,
+    "h": 3000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Automobil Toyota Proace Verso v Chráněné krajinné oblasti Jeseníky poblíž Annabergu (katastr obce Andělská hora).jpg",
+    "w": 5152,
+    "h": 3864,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Figeac - 46100 - 2024.10.14 - Cars Delbos - Toyota ProAce Verso © Anthony Levrot.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Toyota Proace City L2 Electric Select IAA Transportation 2024 (DSC04588).jpg",
+    "w": 6478,
+    "h": 3644,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota Proace Max Electric - front.jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "Lieferfahrzeug Toyota ProAce II (2024).jpg",
+    "w": 4147,
+    "h": 3110,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota ProAce City Automesse Ludwigsburg 2024 IMG 1486.jpg",
+    "w": 4926,
+    "h": 2689,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2024 Toyota ProAce City Automesse Ludwigsburg 2024 IMG 1488.jpg",
+    "w": 4406,
+    "h": 2933,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "ssangyong-musso-ev-4x2-2026": {
+  "ad": "SsangYong Musso EV 4x2 2026",
+  "kat": "kamyonet",
+  "sorgu": "SsangYong Musso",
+  "adaylar": [
+   {
+    "dosya": "KGM Musso Grand Style 2.2D & Musso 2.0T 4WD Long Deck M9 Q300 (1).jpg",
+    "w": 3972,
+    "h": 2979,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "SsangYong Musso Grand Q200 2.2L 4WD Indian Red 02.jpg",
+    "w": 4236,
+    "h": 2648,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "SsangYong Musso Grand Q200 2.2L 4WD Indian Red 01.jpg",
+    "w": 4266,
+    "h": 2666,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2023 Ssangyong Musso Saracen Auto (14015).jpg",
+    "w": 3904,
+    "h": 2612,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2023 Ssangyong Musso Saracen Auto.jpg",
+    "w": 2440,
+    "h": 1684,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "2023 Ssangyong Musso Saracen Auto (31307).jpg",
+    "w": 2339,
+    "h": 1761,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "SsangYong Musso 230SL FJ FL Brilliant Black (6).jpg",
+    "w": 2998,
+    "h": 2248,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   },
+   {
+    "dosya": "SsangYong Musso 230SL FJ FL Brilliant Black (7).jpg",
+    "w": 3078,
+    "h": 2309,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "dethleffs-xl-family-a-6822-2-2020": {
+  "ad": "Dethleffs XL Family A 6822-2 2020",
+  "kat": "karavan",
+  "sorgu": "Dethleffs XL Family",
+  "adaylar": []
+ },
+ "knaus-nordwind-600-ue-2026": {
+  "ad": "Knaus Nordwind 600 UE 2026",
+  "kat": "karavan",
+  "sorgu": "Knaus Nordwind",
+  "adaylar": []
+ },
+ "airstream-trade-wind-19-ft-2022": {
+  "ad": "Airstream Trade Wind 19 ft 2022",
+  "kat": "karavan",
+  "sorgu": "Airstream Trade Wind",
+  "adaylar": []
+ },
+ "airstream-world-traveler-22-ft-2026": {
+  "ad": "Airstream World Traveler 22 ft 2026",
+  "kat": "karavan",
+  "sorgu": "Airstream World Traveler",
+  "adaylar": []
+ },
+ "caravelair-alba-325-2024": {
+  "ad": "Caravelair Alba 325 2024",
+  "kat": "karavan",
+  "sorgu": "Caravelair Alba",
+  "adaylar": []
+ },
+ "caravelair-sport-line-410-2024": {
+  "ad": "Caravelair Sport Line 410 2024",
+  "kat": "karavan",
+  "sorgu": "Caravelair Sport Line",
+  "adaylar": []
+ },
+ "caravelair-exclusive-line-475-2024": {
+  "ad": "Caravelair Exclusive Line 475 2024",
+  "kat": "karavan",
+  "sorgu": "Caravelair Exclusive Line",
+  "adaylar": []
+ },
+ "chausson-x-line-x-590-2020": {
+  "ad": "Chausson X-Line X 590 2020",
+  "kat": "karavan",
+  "sorgu": "Chausson X-Line",
+  "adaylar": []
+ },
+ "coachman-lusso-i-2022": {
+  "ad": "Coachman Lusso I 2022",
+  "kat": "karavan",
+  "sorgu": "Coachman Lusso",
+  "adaylar": []
+ },
+ "frankia-neo-cruiser-7-0-l-2020": {
+  "ad": "Frankia Neo Cruiser 7.0 L 2020",
+  "kat": "karavan",
+  "sorgu": "Frankia Neo",
+  "adaylar": []
+ },
+ "weinsberg-caralife-390-qd-2026": {
+  "ad": "Weinsberg CaraLife 390 QD 2026",
+  "kat": "karavan",
+  "sorgu": "Weinsberg CaraLife",
+  "adaylar": []
+ },
+ "honda-activa-125-2025": {
+  "ad": "Honda Activa 125 2025",
+  "kat": "motosiklet",
+  "sorgu": "Honda Activa 125",
+  "adaylar": []
+ },
+ "yamaha-nmax-125-2025": {
+  "ad": "Yamaha Nmax 125 2025",
+  "kat": "motosiklet",
+  "sorgu": "Yamaha Nmax 125",
+  "adaylar": []
+ },
+ "suzuki-burgman-400-2025": {
+  "ad": "Suzuki Burgman 400 2025",
+  "kat": "motosiklet",
+  "sorgu": "Suzuki Burgman 400",
+  "adaylar": [
+   {
+    "dosya": "Suzuki Burgman 400i.jpg",
+    "w": 3028,
+    "h": 1928,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "suzuki-address-125-2025": {
+  "ad": "Suzuki Address 125 2025",
+  "kat": "motosiklet",
+  "sorgu": "Suzuki Address 125",
+  "adaylar": []
+ },
+ "bmw-c-400-gt-2026": {
+  "ad": "BMW C 400 GT 2026",
+  "kat": "motosiklet",
+  "sorgu": "BMW C 400 GT",
+  "adaylar": []
+ },
+ "kawasaki-versys-650-2026": {
+  "ad": "Kawasaki Versys 650 2026",
+  "kat": "motosiklet",
+  "sorgu": "Kawasaki Versys 650",
+  "adaylar": [
+   {
+    "dosya": "Kawasaki Versys 650 Rapid Intervention Motorcycle (RIM) in Malaysia National Day Parade Day Ipoh 2026.jpg",
+    "w": 4080,
+    "h": 3072,
+    "lisans": "CC BY-SA 3.0",
+    "tarih": 2026
+   }
+  ]
+ },
+ "ktm-390-duke-2025": {
+  "ad": "KTM 390 Duke 2025",
+  "kat": "motosiklet",
+  "sorgu": "KTM 390 Duke",
+  "adaylar": [
+   {
+    "dosya": "KTM 390 Duke in Athens on 11-1-2023.jpg",
+    "w": 6000,
+    "h": 4000,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "ktm-390-adventure-2024": {
+  "ad": "KTM 390 Adventure 2024",
+  "kat": "motosiklet",
+  "sorgu": "KTM 390 Adventure",
+  "adaylar": []
+ },
+ "royal-enfield-classic-350-2024": {
+  "ad": "Royal Enfield Classic 350 2024",
+  "kat": "motosiklet",
+  "sorgu": "Royal Enfield Classic 350",
+  "adaylar": [
+   {
+    "dosya": "Royal Enfield Classic 350 - Gran Via - Madrid 01.jpg",
+    "w": 7360,
+    "h": 4912,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Royal Enfield Classic 350 - Orcal Astor 125.jpg",
+    "w": 3000,
+    "h": 2250,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2022
+   }
+  ]
+ },
+ "royal-enfield-meteor-350-2024": {
+  "ad": "Royal Enfield Meteor 350 2024",
+  "kat": "motosiklet",
+  "sorgu": "Royal Enfield Meteor 350",
+  "adaylar": [
+   {
+    "dosya": "Royal Enfield méteor 350 \"Classic 350 Signals\".jpg",
+    "w": 2592,
+    "h": 1944,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "benelli-leoncino-500-2025": {
+  "ad": "Benelli Leoncino 500 2025",
+  "kat": "motosiklet",
+  "sorgu": "Benelli Leoncino 500",
+  "adaylar": []
+ },
+ "triumph-trident-660-2026": {
+  "ad": "Triumph Trident 660 2026",
+  "kat": "motosiklet",
+  "sorgu": "Triumph Trident 660",
+  "adaylar": []
+ },
+ "harley-davidson-sportster-s-2026": {
+  "ad": "Harley-Davidson Sportster S 2026",
+  "kat": "motosiklet",
+  "sorgu": "Harley-Davidson Sportster S",
+  "adaylar": []
+ },
+ "harley-davidson-nightster-2025": {
+  "ad": "Harley-Davidson Nightster 2025",
+  "kat": "motosiklet",
+  "sorgu": "Harley-Davidson Nightster",
+  "adaylar": [
+   {
+    "dosya": "Harley-Davidson Nightster parked at Hogs for Hospice, Leamington, Ontario, 2025-08-02.jpg",
+    "w": 5412,
+    "h": 3866,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "harley-davidson-street-glide-2026": {
+  "ad": "Harley-Davidson Street Glide 2026",
+  "kat": "motosiklet",
+  "sorgu": "Harley-Davidson Street Glide",
+  "adaylar": [
+   {
+    "dosya": "Suliszewo - motocykliści - Harley-Davidson Street Glide - 22.04.2023 13-34-40.2023 13-34-40.jpg",
+    "w": 1531,
+    "h": 1199,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2023
+   }
+  ]
+ },
+ "tvs-jupiter-125-2026": {
+  "ad": "TVS Jupiter 125 2026",
+  "kat": "motosiklet",
+  "sorgu": "TVS Jupiter 125",
+  "adaylar": []
+ },
+ "bajaj-pulsar-n-160-2026": {
+  "ad": "Bajaj Pulsar N 160 2026",
+  "kat": "motosiklet",
+  "sorgu": "Bajaj Pulsar N 160",
+  "adaylar": []
+ },
+ "aprilia-tuono-660-2024": {
+  "ad": "Aprilia Tuono 660 2024",
+  "kat": "motosiklet",
+  "sorgu": "Aprilia Tuono 660",
+  "adaylar": []
+ },
+ "husqvarna-svartpilen-401-2025": {
+  "ad": "Husqvarna Svartpilen 401 2025",
+  "kat": "motosiklet",
+  "sorgu": "Husqvarna Svartpilen 401",
+  "adaylar": []
+ },
+ "husqvarna-vitpilen-401-2024": {
+  "ad": "Husqvarna Vitpilen 401 2024",
+  "kat": "motosiklet",
+  "sorgu": "Husqvarna Vitpilen 401",
+  "adaylar": []
+ },
+ "husqvarna-svartpilen-250-2025": {
+  "ad": "Husqvarna Svartpilen 250 2025",
+  "kat": "motosiklet",
+  "sorgu": "Husqvarna Svartpilen 250",
+  "adaylar": []
+ },
+ "zontes-350d-2025": {
+  "ad": "Zontes 350d 2025",
+  "kat": "motosiklet",
+  "sorgu": "Zontes 350d",
+  "adaylar": []
+ },
+ "indian-scout-2025": {
+  "ad": "Indian Scout 2025",
+  "kat": "motosiklet",
+  "sorgu": "Indian Scout",
+  "adaylar": []
+ },
+ "kia-sportage-1-6-live-2026": {
+  "ad": "Kia Sportage 1.6 – Live 2026",
+  "kat": "otomobil",
+  "sorgu": "Kia Sportage",
+  "adaylar": [
+   {
+    "dosya": "2025 Kia Sportage S front only.jpg",
+    "w": 4705,
+    "h": 2466,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   },
+   {
+    "dosya": "KIA SPORTAGE (SL) China (26).jpg",
+    "w": 7414,
+    "h": 4292,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Kia Sportage NQ5 PE 1.6T SX HEV Heritage Blue 01.jpg",
+    "w": 4508,
+    "h": 3186,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "KIA SPORTAGE (JE,KM) China (23).jpg",
+    "w": 6266,
+    "h": 3596,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "KIA SPORTAGE (JE,KM) China (25).jpg",
+    "w": 4881,
+    "h": 3142,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "KIA SPORTAGE (JE,KM) China (13).jpg",
+    "w": 7278,
+    "h": 4374,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Kia Sportage (QL) Washington DC Metro Area, USA.jpg",
+    "w": 2268,
+    "h": 1814,
+    "lisans": "CC BY 4.0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "KIA SPORTAGE (JE,KM) China (19).jpg",
+    "w": 6862,
+    "h": 5002,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2025
+   }
+  ]
+ },
+ "renault-boreal-turbo-tce-techno-2026": {
+  "ad": "Renault Boreal Turbo TCe – Techno 2026",
+  "kat": "otomobil",
+  "sorgu": "Renault Boreal",
+  "adaylar": []
+ },
+ "fiat-egea-cross-1-6-multijet-street-gsr-trac-2026": {
+  "ad": "Fiat Egea Cross 1.6 Multijet – Street Gsr Trac 2026",
+  "kat": "otomobil",
+  "sorgu": "Fiat Egea Cross",
+  "adaylar": []
+ },
+ "kia-ceed-1-5-elegance-2025": {
+  "ad": "Kia Ceed 1.5 – Elegance 2025",
+  "kat": "otomobil",
+  "sorgu": "Kia Ceed",
+  "adaylar": [
+   {
+    "dosya": "Auto Kia Cee'd Vladimir Bolshaya Moskovskaya street У137МА197 2026-03 1774786854.JPG",
+    "w": 2560,
+    "h": 1920,
+    "lisans": "CC BY 4.0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "Moscow, Kia Ceed SW white, Mar 2026 04.jpg",
+    "w": 3600,
+    "h": 2400,
+    "lisans": "CC0",
+    "tarih": 2026
+   },
+   {
+    "dosya": "2015 Kia Pro cee'd GT.jpg",
+    "w": 1915,
+    "h": 1164,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2014 Kia Ceed GT grey front.jpg",
+    "w": 2072,
+    "h": 1228,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2020 Kia XCeed Copper Stone.jpg",
+    "w": 2299,
+    "h": 1355,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Palubní (přístrojová) deska automobilu Kia Ceed..jpg",
+    "w": 4032,
+    "h": 3024,
+    "lisans": "CC0",
+    "tarih": 2025
+   },
+   {
+    "dosya": "Kia Ceed 1.5 T-GDI DCT GT-line (III, Facelift) – f 19102025.jpg",
+    "w": 4009,
+    "h": 2064,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": 2025
+   },
+   {
+    "dosya": "2023 Kia Ceed Hatchback 1.5 T-GDi GT Line S (Rear).jpg",
+    "w": 4160,
+    "h": 2340,
+    "lisans": "CC0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "mercedes-benz-c-serisi-c-200-1-5-4matic-amg-2026": {
+  "ad": "Mercedes-Benz C Serisi C 200 1.5 4MATIC – AMG 2026",
+  "kat": "otomobil",
+  "sorgu": "Mercedes-Benz C Serisi",
+  "adaylar": []
+ },
+ "seat-ibiza-1-0-tsi-style-plus-2026": {
+  "ad": "SEAT Ibiza 1.0 TSI – Style Plus 2026",
+  "kat": "otomobil",
+  "sorgu": "SEAT Ibiza",
+  "adaylar": []
+ },
+ "seat-arona-1-0-tsi-style-plus-2026": {
+  "ad": "SEAT Arona 1.0 TSI – Style Plus 2026",
+  "kat": "otomobil",
+  "sorgu": "SEAT Arona",
+  "adaylar": []
+ },
+ "seat-leon-1-5-etsi-style-2026": {
+  "ad": "SEAT Leon 1.5 eTSI – Style 2026",
+  "kat": "otomobil",
+  "sorgu": "SEAT Leon",
+  "adaylar": []
+ },
+ "suzuki-s-cross-1-4-mhev-gl-elegance-2026": {
+  "ad": "Suzuki S-Cross 1.4 MHEV – GL Elegance 2026",
+  "kat": "otomobil",
+  "sorgu": "Suzuki S-Cross",
+  "adaylar": [
+   {
+    "dosya": "SUZUKI S-CROSS China (7).jpg",
+    "w": 6066,
+    "h": 3525,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "SUZUKI S-CROSS China (8).jpg",
+    "w": 6148,
+    "h": 3238,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   },
+   {
+    "dosya": "SUZUKI S-CROSS China (9).jpg",
+    "w": 6139,
+    "h": 3677,
+    "lisans": "CC BY-SA 4.0",
+    "tarih": 2024
+   }
+  ]
+ },
+ "volvo-ex40-150-kw-s-motor-ext-rng-ult-black-e-ult-2026": {
+  "ad": "Volvo EX40 150 kW – S.Motor Ext.Rng Ult. Black E.Ult 2026",
+  "kat": "otomobil",
+  "sorgu": "Volvo EX40",
+  "adaylar": []
+ },
+ "ds-ds-4-bluehdi-pallas-2026": {
+  "ad": "DS DS 4 BlueHDi – Pallas 2026",
+  "kat": "otomobil",
+  "sorgu": "DS DS 4",
+  "adaylar": [
+   {
+    "dosya": "Citroën DS4 SoChic – Frontansicht, 16. März 2014, Düsseldorf.jpg",
+    "w": 3533,
+    "h": 1930,
+    "lisans": "CC BY-SA 3.0 de",
+    "tarih": null,
+    "kaynak": "wikipedia"
+   }
+  ]
+ },
+ "jaecoo-jaecoo-7-1-6-4x4-evolve-2026": {
+  "ad": "Jaecoo Jaecoo 7 1.6 4x4 – Evolve 2026",
+  "kat": "otomobil",
+  "sorgu": "Jaecoo Jaecoo 7",
+  "adaylar": []
+ }
+}
