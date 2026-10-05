@@ -35,6 +35,7 @@ function formatTransmission(t: string): { label: string; icon: string } {
 const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
   mpv: "MPV", pickup: "Pick-up", coupe: "Coupe",
+  van: "Van", panelvan: "Panelvan", minivan: "Minivan", station: "Station Wagon",
 };
 
 interface Product {
