@@ -27,6 +27,37 @@ describe("kamyonet alanları kasaya göre", () => {
       expect(k).toEqual(expect.arrayContaining(["chassis_length", "roof_height", "cargo_length_mm", "cargo_width_mm", "cargo_height_mm", "euro_pallets", "sliding_door", "sliding_door_count"]));
     }
   });
+  it("minibüs: koltuk, şasi, tavan, kapı ve yükleme yüksekliği var; kargo m³ ve pickup alanları yok", () => {
+    const k = gorunur({ body_type: "minibus" });
+    expect(k).toEqual(expect.arrayContaining(["seat_count", "chassis_length", "roof_height", "sliding_door", "sliding_door_width_mm", "rear_door_width_mm", "loading_height_mm"]));
+    expect(k).not.toContain("cargo_m3");
+    expect(k).not.toContain("bed_length_mm");
+    expect(k).not.toContain("boot_l");
+    expect(getCriticalFields("kamyonet", null, "minibus")).toContain("seat_count");
+  });
+  it("minivan: şasi/tavan/yükleme yüksekliği yok", () => {
+    const k = gorunur({ body_type: "minivan" });
+    for (const x of ["chassis_length", "roof_height", "loading_height_mm"]) expect(k).not.toContain(x);
+  });
+  it("elektrik tüketimi yalnız saf EV'de; DC şarj gücü EV/PHEV/HYBRID'de", () => {
+    expect(gorunur({ fuel_type: "EV" })).toEqual(expect.arrayContaining(["ev_consumption_kwh", "dc_charge_kw"]));
+    expect(gorunur({ fuel_type: "PHEV" })).toContain("dc_charge_kw");
+    expect(gorunur({ fuel_type: "PHEV" })).not.toContain("ev_consumption_kwh");
+    expect(gorunur({ fuel_type: "DIESEL" })).not.toContain("dc_charge_kw");
+  });
+  it("Ford E-Transit minibüs örneği spec listesine dökülüyor", () => {
+    const m = Object.fromEntries(buildSpecList("kamyonet", {
+      fuel_type: "EV", body_type: "minibus", seat_count: 15, chassis_length: "uzun", roof_height: "orta",
+      drivetrain: "RWD", battery_kwh: 68, ev_consumption_kwh: 31, dc_charge_kw: 115, charge_hours: 8.2,
+      sliding_door: true, sliding_door_count: 1, sliding_door_width_mm: 1300, loading_height_mm: 720,
+    }).map((i) => [i.label, i.value]));
+    expect(m["Kasa"]).toBe("Minibüs");
+    expect(m["Tavan"]).toBe("Orta Tavan");
+    expect(m["Elektrik Tüketimi"]).toBe("31 kWh/100 km");
+    expect(m["DC Maks. Şarj Gücü"]).toBe("115 kW");
+    expect(m["Sürgülü Kapı"]).toBe("1 adet");
+    expect(m["Koltuk Sayısı"]).toBe("15 kişi");
+  });
   it("pickup: kasa ve arazi alanları var, van alanları yok", () => {
     const k = gorunur({ body_type: "pickup" });
     expect(k).toEqual(expect.arrayContaining(["bed_length_mm", "ground_clearance_mm", "four_wd_type", "diff_lock"]));

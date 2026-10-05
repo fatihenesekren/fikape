@@ -31,13 +31,13 @@ const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
   mpv: "MPV", coupe: "Coupé", cabrio: "Cabrio",
   van: "Van", pickup: "Pickup",
-  station: "Station Wagon", panelvan: "Panelvan", minivan: "Minivan",
+  station: "Station Wagon", panelvan: "Panelvan", minivan: "Minivan", minibus: "Minibüs",
 };
 
 const BODY_ICONS: Record<string, string> = {
   suv: "🚙", sedan: "🚗", hatchback: "🚗", mpv: "🚐",
   coupe: "🏎", cabrio: "🏎", van: "🚐", pickup: "🛻",
-  station: "🚗", panelvan: "🚐", minivan: "🚐",
+  station: "🚗", panelvan: "🚐", minivan: "🚐", minibus: "🚌",
 };
 
 const CATEGORY_LABELS: Record<string, string> = {

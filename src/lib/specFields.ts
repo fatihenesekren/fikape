@@ -42,12 +42,15 @@ const kasaBos = (a: Record<string, string>) => !a.body_type;
 const isPickupBody: ShowIf = (a) => kasaBos(a) || a.body_type === "pickup";
 const isVanBody: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan";
 const isMinivanBody: ShowIf = (a) => kasaBos(a) || a.body_type === "minivan";
-const hasSeatCount: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minivan";
+const hasSeatCount: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minivan" || a.body_type === "minibus";
+// Şasi boyu, tavan ve yükleme yüksekliği: van/panelvan ve minibüste (minivan'da değil).
+const isVanOrMinibus: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minibus";
+const isPureEv: ShowIf = (a) => a.fuel_type === "EV";
 // Pickup 4×4 aktarma tipi yalnız 4×4 olmayanı dışarıda bırakır (4×4 boşsa sorulur).
 const isPickup4wd: ShowIf = (a) => isPickupBody(a) && a.four_wd !== "false";
 
 // Sürgülü kapı: minivan'da olduğu gibi van/panelvan'da da (tek/çift) anlamlı.
-const hasSlidingDoor: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minivan";
+const hasSlidingDoor: ShowIf = hasSeatCount;
 
 // Kategori bazlı teknik özellik form alanları — admin öneri onay formu ve
 // ürün düzenleme formu (/admin/urunler) tarafından ortak kullanılır.
@@ -155,14 +158,16 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "tank_l",        label: "Yakıt Dep.",    type: "number", unit: "L", showIf: hasCombustionEngine },
     { key: "battery_kwh",   label: "Batarya",       type: "number", unit: "kWh", showIf: hasElectricRange },
     { key: "ev_range_km",   label: "Menzil",        type: "number", unit: "km (WLTP)", showIf: hasElectricRange },
+    { key: "ev_consumption_kwh", label: "Elektrik Tüketimi", type: "number", unit: "kWh/100 km", placeholder: "örn. 31", showIf: isPureEv },
     { key: "charge_hours",  label: "Tam Şarj",      type: "number", unit: "saat", note: "AC ile %0–%100 tam şarj süresi (saat)", showIf: hasElectricRange },
+    { key: "dc_charge_kw",  label: "DC Maks. Şarj Gücü", type: "number", unit: "kW", showIf: hasElectricRange },
     { key: "fast_charge_min", label: "Hızlı Şarj (10–80%)", type: "number", unit: "dk", note: "DC hızlı şarjla %10’dan %80’e süre (dakika); kaynak farklı aralık (ör. %20–80) veriyorsa null", showIf: hasElectricRange },
     { key: "length_mm",     label: "Uzunluk",       type: "number", unit: "mm" },
     { key: "width_mm",      label: "Genişlik",      type: "number", unit: "mm", note: "Dış aynalar hariç gövde genişliği" },
     { key: "height_mm",     label: "Yükseklik",     type: "number", unit: "mm" },
     { key: "wheelbase_mm",  label: "Dingil Mesafesi", type: "number", unit: "mm" },
-    { key: "chassis_length",label: "Şasi Boyu",     type: "select", options: KAMYONET_CHASSIS_LENGTHS, showIf: isVanBody },
-    { key: "roof_height",   label: "Tavan",         type: "select", options: KAMYONET_ROOF_HEIGHTS, showIf: isVanBody },
+    { key: "chassis_length",label: "Şasi Boyu",     type: "select", options: KAMYONET_CHASSIS_LENGTHS, showIf: isVanOrMinibus },
+    { key: "roof_height",   label: "Tavan",         type: "select", options: KAMYONET_ROOF_HEIGHTS, showIf: isVanOrMinibus },
     { key: "curb_weight_kg",label: "Boş Ağırlık",   type: "number", unit: "kg" },
     { key: "gvw_kg",        label: "Brüt Ağırlık",  type: "number", unit: "kg", note: "Azami yüklü (GVW) ağırlık" },
     { key: "payload_kg",    label: "Yük Kap.",      type: "number", unit: "kg" },
@@ -175,6 +180,10 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "wheel_arch_width_mm", label: "Tekerlek Arası Genişlik", type: "number", unit: "mm", showIf: isVanBody },
     { key: "euro_pallets",  label: "Euro Palet",    type: "number", unit: "adet", showIf: isVanBody },
     { key: "rear_door",     label: "Arka Kapı",     type: "select", options: KAMYONET_REAR_DOORS, showIf: hasSeatCount },
+    { key: "rear_door_width_mm", label: "Arka Kapı Genişliği", type: "number", unit: "mm", note: "Arka kapı yükleme genişliği", showIf: hasSeatCount },
+    { key: "rear_door_height_mm", label: "Arka Kapı Yüksekliği", type: "number", unit: "mm", showIf: hasSeatCount },
+    { key: "sliding_door_width_mm", label: "Sürgülü Kapı Girişi", type: "number", unit: "mm", note: "Sürgülü kapı giriş genişliği", showIf: hasSlidingDoor },
+    { key: "loading_height_mm", label: "Yükleme Yüksekliği", type: "number", unit: "mm", note: "Zeminden yük zeminine yükseklik", showIf: isVanOrMinibus },
     { key: "boot_l",        label: "Bagaj",         type: "number", unit: "L", showIf: isMinivanBody },
     { key: "sliding_door",  label: "Sürgülü Kapı",  type: "boolean", showIf: hasSlidingDoor },
     { key: "sliding_door_count", label: "Sürgülü Kapı Sayısı", type: "number", unit: "adet", placeholder: "1 veya 2", showIf: hasSlidingDoor },
@@ -207,10 +216,10 @@ export const CRITICAL_FIELDS: Record<string, string[]> = {
 // EV ise engine_cc yerine menzil (ev_range_km) kritik alan olur.
 export function getCriticalFields(categorySlug: string, fuelType?: string | null, bodyType?: string | null): string[] {
   let base = CRITICAL_FIELDS[categorySlug] ?? [];
-  // Kamyonet: van/panelvan için kargo hacmi, minivan için koltuk sayısı da beklenir.
+  // Kamyonet: van/panelvan için kargo hacmi, minivan/minibüs için koltuk sayısı da beklenir.
   if (categorySlug === "kamyonet") {
     if (bodyType === "van" || bodyType === "panelvan") base = [...base, "cargo_m3"];
-    else if (bodyType === "minivan") base = [...base, "seat_count"];
+    else if (bodyType === "minivan" || bodyType === "minibus") base = [...base, "seat_count"];
   }
   if (fuelType !== "EV") return base;
   return base.map((f) => (f === "engine_cc" ? "ev_range_km" : f));
@@ -229,11 +238,11 @@ export const SPEC_GROUPS: Record<string, SpecGroup[]> = {
   // olmayan alan formda HİÇ görünmez; yeni alan eklerken buraya da ekleyin
   // (specFieldsKamyonet.test.ts bunu denetler).
   kamyonet: [
-    { title: "Temel", keys: ["body_type", "cab_type", "chassis_length", "roof_height", "transmission", "gearbox", "drivetrain", "four_wd", "four_wd_type", "seat_count", "rear_door", "sliding_door", "sliding_door_count"], defaultOpen: true },
+    { title: "Temel", keys: ["body_type", "cab_type", "chassis_length", "roof_height", "transmission", "gearbox", "drivetrain", "four_wd", "four_wd_type", "seat_count", "rear_door", "sliding_door", "sliding_door_count", "sliding_door_width_mm"], defaultOpen: true },
     { title: "Motor & Performans", keys: ["engine_cc", "power_hp", "torque_nm", "zero_to_100", "top_speed_kmh", "fuel_consumption_l", "tank_l"], defaultOpen: true },
-    { title: "Elektrikli (EV / Hibrit)", keys: ["battery_kwh", "ev_range_km", "charge_hours", "fast_charge_min"] },
+    { title: "Elektrikli (EV / Hibrit)", keys: ["battery_kwh", "ev_range_km", "ev_consumption_kwh", "charge_hours", "dc_charge_kw", "fast_charge_min"] },
     { title: "Boyutlar & Ağırlık", keys: ["length_mm", "width_mm", "height_mm", "wheelbase_mm", "curb_weight_kg", "gvw_kg", "payload_kg", "tow_capacity_kg", "tire_size"] },
-    { title: "Yük Bölmesi", keys: ["cargo_m3", "cargo_length_mm", "cargo_width_mm", "cargo_height_mm", "wheel_arch_width_mm", "euro_pallets", "boot_l"] },
+    { title: "Yük Bölmesi & Kapılar", keys: ["cargo_m3", "cargo_length_mm", "cargo_width_mm", "cargo_height_mm", "wheel_arch_width_mm", "euro_pallets", "boot_l", "loading_height_mm", "rear_door_width_mm", "rear_door_height_mm"] },
     { title: "Pickup Kasa & Arazi", keys: ["bed_length_mm", "bed_width_mm", "bed_depth_mm", "ground_clearance_mm", "wading_depth_mm", "diff_lock"] },
   ],
   karavan: [

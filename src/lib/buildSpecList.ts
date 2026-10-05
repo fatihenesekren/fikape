@@ -127,13 +127,14 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       const hasBattery = isEv || fuelType === "PHEV" || fuelType === "HYBRID";
       const isPickup = bodyType === "pickup";
       const isVan = bodyType === "van" || bodyType === "panelvan";
+      const isVanOrMinibus = isVan || bodyType === "minibus";
       const label = (map: Record<string, string>, key: string) => map[String(attrs[key])] ?? String(attrs[key]);
       return [
         fuelType               ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType } : null,
         bodyType               ? { label: "Kasa",        value: BODY_LABELS[bodyType] ?? bodyType } : null,
         attrs.cab_type         ? { label: "Kabin",       value: CAB_TYPE_LABELS[String(attrs.cab_type)] ?? String(attrs.cab_type) } : null,
-        isVan && attrs.chassis_length ? { label: "Şasi Boyu", value: label(CHASSIS_LABELS, "chassis_length") } : null,
-        isVan && attrs.roof_height    ? { label: "Tavan",     value: label(ROOF_LABELS, "roof_height") }       : null,
+        isVanOrMinibus && attrs.chassis_length ? { label: "Şasi Boyu", value: label(CHASSIS_LABELS, "chassis_length") } : null,
+        isVanOrMinibus && attrs.roof_height    ? { label: "Tavan",     value: label(ROOF_LABELS, "roof_height") }       : null,
         attrs.transmission     ? { label: "Vites",       value: capitalize(String(attrs.transmission)) }        : null,
         attrs.gearbox          ? { label: "Vites Sayısı", value: `${attrs.gearbox} vites` }      : null,
         attrs.drivetrain       ? { label: "Çekiş",       value: DRIVETRAIN_LABELS[String(attrs.drivetrain)] ?? String(attrs.drivetrain) } : null,
@@ -148,7 +149,9 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
         !isEv && attrs.tank_l  ? { label: "Yakıt Dep.",  value: `${attrs.tank_l} L` }            : null,
         hasBattery && attrs.ev_range_km    ? { label: "Menzil",   value: `${attrs.ev_range_km} km (WLTP)` } : null,
         hasBattery && attrs.battery_kwh    ? { label: "Batarya",  value: `${attrs.battery_kwh} kWh` }       : null,
+        isEv && attrs.ev_consumption_kwh   ? { label: "Elektrik Tüketimi", value: `${attrs.ev_consumption_kwh} kWh/100 km` } : null,
         hasBattery && attrs.charge_hours   ? { label: "Tam Şarj", value: `~${attrs.charge_hours} saat` }    : null,
+        hasBattery && attrs.dc_charge_kw   ? { label: "DC Maks. Şarj Gücü", value: `${attrs.dc_charge_kw} kW` } : null,
         hasBattery && attrs.fast_charge_min ? { label: "Hızlı Şarj (10–80%)", value: `~${attrs.fast_charge_min} dk` } : null,
         attrs.length_mm        ? { label: "Uzunluk",     value: `${attrs.length_mm} mm` }        : null,
         attrs.width_mm         ? { label: "Genişlik",    value: `${attrs.width_mm} mm` }         : null,
@@ -166,6 +169,10 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
         isVan && attrs.wheel_arch_width_mm ? { label: "Tekerlek Arası Genişlik", value: `${attrs.wheel_arch_width_mm} mm` } : null,
         isVan && attrs.euro_pallets       ? { label: "Euro Palet",    value: `${attrs.euro_pallets} adet` }     : null,
         attrs.rear_door        ? { label: "Arka Kapı",   value: label(REAR_DOOR_LABELS, "rear_door") } : null,
+        attrs.rear_door_width_mm  ? { label: "Arka Kapı Genişliği",  value: `${attrs.rear_door_width_mm} mm` }  : null,
+        attrs.rear_door_height_mm ? { label: "Arka Kapı Yüksekliği", value: `${attrs.rear_door_height_mm} mm` } : null,
+        isVanOrMinibus && attrs.loading_height_mm ? { label: "Yükleme Yüksekliği", value: `${attrs.loading_height_mm} mm` } : null,
+        attrs.sliding_door_width_mm ? { label: "Sürgülü Kapı Girişi", value: `${attrs.sliding_door_width_mm} mm` } : null,
         attrs.boot_l           ? { label: "Bagaj",       value: `${attrs.boot_l} L` }            : null,
         attrs.sliding_door != null ? { label: "Sürgülü Kapı", value: attrs.sliding_door ? (attrs.sliding_door_count ? `${attrs.sliding_door_count} adet` : "Var") : "Yok" } : null,
         isPickup && attrs.bed_length_mm        ? { label: "Kasa Boyu",       value: `${attrs.bed_length_mm} mm` }        : null,

@@ -45,6 +45,7 @@ export const KAMYONET_BODY_TYPES: TypeOption[] = [
   { value: "van",      label: "Van" },
   { value: "panelvan", label: "Panelvan" },
   { value: "minivan",  label: "Minivan" },
+  { value: "minibus",  label: "Minibüs" },
 ];
 
 // Kabin konfigürasyonu — yalnız pickup kasa tipinde anlamlı (specFields.ts showIf).
@@ -54,7 +55,7 @@ export const KAMYONET_CAB_TYPES: TypeOption[] = [
   { value: "cift_kabin",  label: "Çift Kabin" },
 ];
 
-// Van/panelvan şasi (dingil mesafesi) boyu ve tavan yüksekliği — aynı modelin
+// Van/panelvan/minibüs şasi (dingil mesafesi) boyu ve tavan yüksekliği — aynı modelin
 // kısa/uzun versiyonları yük hacmini ve fiyatı ciddi değiştirir.
 export const KAMYONET_CHASSIS_LENGTHS: TypeOption[] = [
   { value: "kisa",       label: "Kısa" },
@@ -65,6 +66,7 @@ export const KAMYONET_CHASSIS_LENGTHS: TypeOption[] = [
 
 export const KAMYONET_ROOF_HEIGHTS: TypeOption[] = [
   { value: "normal",       label: "Normal Tavan" },
+  { value: "orta",         label: "Orta Tavan" },
   { value: "yuksek",       label: "Yüksek Tavan" },
   { value: "cok_yuksek",   label: "Çok Yüksek Tavan" },
 ];
