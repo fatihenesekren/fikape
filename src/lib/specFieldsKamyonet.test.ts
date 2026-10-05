@@ -35,6 +35,19 @@ describe("kamyonet alanları kasaya göre", () => {
     expect(k).not.toContain("boot_l");
     expect(getCriticalFields("kamyonet", null, "minibus")).toContain("seat_count");
   });
+  it("camlı van: koltuk, bagaj, şasi, tavan, sürgülü kapı var; kargo m³ ve pickup alanları yok", () => {
+    const k = gorunur({ body_type: "camli_van" });
+    expect(k).toEqual(expect.arrayContaining(["seat_count", "boot_l", "chassis_length", "roof_height", "sliding_door"]));
+    expect(k).not.toContain("cargo_m3");
+    expect(k).not.toContain("bed_length_mm");
+    expect(getCriticalFields("kamyonet", null, "camli_van")).toContain("seat_count");
+  });
+  it("camlı van: kasa etiketi ve spec listesi", () => {
+    const m = Object.fromEntries(buildSpecList("kamyonet", { body_type: "camli_van", fuel_type: "DIESEL", seat_count: 6, boot_l: 3200, chassis_length: "kisa" }).map((i) => [i.label, i.value]));
+    expect(m["Kasa"]).toBe("Camlı Van");
+    expect(m["Şasi Boyu"]).toBe("Kısa");
+    expect(m["Bagaj"]).toBe("3200 L");
+  });
   it("minivan: şasi/tavan/yükleme yüksekliği yok", () => {
     const k = gorunur({ body_type: "minivan" });
     for (const x of ["chassis_length", "roof_height", "loading_height_mm"]) expect(k).not.toContain(x);

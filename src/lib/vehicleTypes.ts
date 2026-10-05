@@ -46,6 +46,8 @@ export const KAMYONET_BODY_TYPES: TypeOption[] = [
   { value: "panelvan", label: "Panelvan" },
   { value: "minivan",  label: "Minivan" },
   { value: "minibus",  label: "Minibüs" },
+  // Yan/arka camlı, yolcu taşıyan van (Combi) — sahibinden/Eurotax "Camlı Van".
+  { value: "camli_van", label: "Camlı Van" },
 ];
 
 // Kabin konfigürasyonu — yalnız pickup kasa tipinde anlamlı (specFields.ts showIf).

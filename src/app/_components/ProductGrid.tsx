@@ -237,6 +237,7 @@ export async function ProductGrid({ quizParam }: Props) {
                 motorType={attrs.motor_type ? String(attrs.motor_type) : null}
                 karavanType={attrs.karavan_type ? String(attrs.karavan_type) : null}
                 motorWatt={attrs.motor_watt != null ? Number(attrs.motor_watt) : null}
+                transmission={attrs.transmission ? String(attrs.transmission) : null}
                 scores={score?.scores ?? null}
                 imageUrl={imageUrl}
                 isLoggedIn={isLoggedIn}

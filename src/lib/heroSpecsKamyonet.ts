@@ -91,6 +91,9 @@ export function buildKamyonetHeroSpecs(attrsInput: unknown): SpecItem[] {
   if (body === "minibus") {
     return pick(a, [seats, chassisRoof, power, consumptionOrRange, payload, slidingDoors]);
   }
+  if (body === "camli_van") {
+    return pick(a, [seats, chassisRoof, power, consumptionOrRange, boot, payload, slidingDoors]);
+  }
   if (body === "minivan") {
     return pick(a, [seats, power, consumptionOrRange, boot, payload, slidingDoors]);
   }

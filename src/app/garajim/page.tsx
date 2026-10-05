@@ -18,7 +18,7 @@ export const metadata: Metadata = { title: "Garajım", robots: { index: false } 
 const BODY_LABELS: Record<string, string> = {
   sedan: "Sedan", suv: "SUV", hatchback: "Hatchback",
   mpv: "MPV", coupe: "Coupe", cabrio: "Cabriolet",
-  pickup: "Pickup", van: "Van", panelvan: "Panelvan", minivan: "Minivan", minibus: "Minibüs",
+  pickup: "Pickup", van: "Van", panelvan: "Panelvan", minivan: "Minivan", minibus: "Minibüs", camli_van: "Camlı Van",
 };
 
 // Gövde tipi girilmemiş (ya da gövde tipi alanı olmayan kategorideki) araçlarda otomobile özgü "Sedan" varsayılanı

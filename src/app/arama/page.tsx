@@ -150,6 +150,7 @@ async function SearchResults({ query }: { query: string }) {
               categorySlug={catSlug}
               fuelType={String(attrs.fuel_type ?? "")}
               bodyType={String(attrs.body_type ?? "")}
+              transmission={attrs.transmission ? String(attrs.transmission) : null}
               scores={score?.scores ?? null}
               imageUrl={imageUrl}
               isLoggedIn={isLoggedIn}

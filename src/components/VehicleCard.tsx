@@ -5,6 +5,7 @@ import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
 import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
+import { vitesEtiketi } from "@/lib/vites";
 import { FavoriteButton } from "@/components/FavoriteButton";
 
 export function TrFlagIcon() {
@@ -31,13 +32,13 @@ const BODY_LABELS: Record<string, string> = {
   suv: "SUV", sedan: "Sedan", hatchback: "Hatchback",
   mpv: "MPV", coupe: "Coupé", cabrio: "Cabrio",
   van: "Van", pickup: "Pickup",
-  station: "Station Wagon", panelvan: "Panelvan", minivan: "Minivan", minibus: "Minibüs",
+  station: "Station Wagon", panelvan: "Panelvan", minivan: "Minivan", minibus: "Minibüs", camli_van: "Camlı Van",
 };
 
 const BODY_ICONS: Record<string, string> = {
   suv: "🚙", sedan: "🚗", hatchback: "🚗", mpv: "🚐",
   coupe: "🏎", cabrio: "🏎", van: "🚐", pickup: "🛻",
-  station: "🚗", panelvan: "🚐", minivan: "🚐", minibus: "🚌",
+  station: "🚗", panelvan: "🚐", minivan: "🚐", minibus: "🚌", camli_van: "🚐",
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -77,6 +78,8 @@ interface Props {
   motorType?: string | null;
   karavanType?: string | null;
   motorWatt?: number | null;
+  /** Product.attributes.transmission — kartta küçük vites etiketi olarak gösterilir. */
+  transmission?: string | null;
   scores: FikapeScores | null;
   imageUrl?: string | null;
   isLoggedIn?: boolean;
@@ -85,7 +88,7 @@ interface Props {
 
 export function VehicleCard({
   id, slug, brandName, modelName, trimName, year,
-  categorySlug, fuelType, bodyType, motorType, karavanType, motorWatt,
+  categorySlug, fuelType, bodyType, motorType, karavanType, motorWatt, transmission,
   scores, imageUrl, isLoggedIn = false, initialFavorited = false,
 }: Props) {
   const bodyLabel = BODY_LABELS[bodyType];
@@ -100,6 +103,7 @@ export function VehicleCard({
   const cleanModelName = stripModelGenRange(modelName);
   const isDomestic = isDomesticBrand(brandName);
   const trimSplit = splitTrimName(trimName, modelName);
+  const vites = vitesEtiketi(transmission);
 
   return (
     <Link
@@ -220,7 +224,14 @@ export function VehicleCard({
             )}
           </>
         )}
-        <div className="text-xs text-gray-400 mt-0.5 mb-3">{typeLabel}</div>
+        <div className="text-xs text-gray-400 mt-0.5 mb-3 flex items-center gap-1.5 flex-wrap">
+          <span>{typeLabel}</span>
+          {vites && (
+            <span className="px-1.5 py-0.5 rounded-md bg-gray-100 text-gray-600 font-medium text-[10px] leading-none">
+              {vites}
+            </span>
+          )}
+        </div>
 
         {scores ? (
           <FikapeScore scores={scores} variant="chips" />

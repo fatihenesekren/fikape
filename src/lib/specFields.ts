@@ -41,10 +41,11 @@ const isMotorizedKaravan: ShowIf = (a) => a.karavan_type !== "cekme";
 const kasaBos = (a: Record<string, string>) => !a.body_type;
 const isPickupBody: ShowIf = (a) => kasaBos(a) || a.body_type === "pickup";
 const isVanBody: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan";
-const isMinivanBody: ShowIf = (a) => kasaBos(a) || a.body_type === "minivan";
-const hasSeatCount: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minivan" || a.body_type === "minibus";
-// Şasi boyu, tavan ve yükleme yüksekliği: van/panelvan ve minibüste (minivan'da değil).
-const isVanOrMinibus: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minibus";
+// Bagaj (L): yolcu odaklı minivan ve camlı vanda (kargo m³ yerine).
+const isMinivanBody: ShowIf = (a) => kasaBos(a) || a.body_type === "minivan" || a.body_type === "camli_van";
+const hasSeatCount: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minivan" || a.body_type === "minibus" || a.body_type === "camli_van";
+// Şasi boyu, tavan ve yükleme yüksekliği: van/panelvan, minibüs ve camlı vanda (minivan'da değil).
+const isVanOrMinibus: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minibus" || a.body_type === "camli_van";
 const isPureEv: ShowIf = (a) => a.fuel_type === "EV";
 // Pickup 4×4 aktarma tipi yalnız 4×4 olmayanı dışarıda bırakır (4×4 boşsa sorulur).
 const isPickup4wd: ShowIf = (a) => isPickupBody(a) && a.four_wd !== "false";
@@ -216,10 +217,10 @@ export const CRITICAL_FIELDS: Record<string, string[]> = {
 // EV ise engine_cc yerine menzil (ev_range_km) kritik alan olur.
 export function getCriticalFields(categorySlug: string, fuelType?: string | null, bodyType?: string | null): string[] {
   let base = CRITICAL_FIELDS[categorySlug] ?? [];
-  // Kamyonet: van/panelvan için kargo hacmi, minivan/minibüs için koltuk sayısı da beklenir.
+  // Kamyonet: van/panelvan için kargo hacmi, minivan/minibüs/camlı van için koltuk sayısı da beklenir.
   if (categorySlug === "kamyonet") {
     if (bodyType === "van" || bodyType === "panelvan") base = [...base, "cargo_m3"];
-    else if (bodyType === "minivan" || bodyType === "minibus") base = [...base, "seat_count"];
+    else if (bodyType === "minivan" || bodyType === "minibus" || bodyType === "camli_van") base = [...base, "seat_count"];
   }
   if (fuelType !== "EV") return base;
   return base.map((f) => (f === "engine_cc" ? "ev_range_km" : f));

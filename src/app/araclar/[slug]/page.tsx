@@ -97,7 +97,7 @@ const BODY_LABELS: Record<string, string> = {
 
 const BODY_ICONS: Record<string, string> = {
   suv: "🚙", sedan: "🚗", hatchback: "🚗", station: "🚗", mpv: "🚐", coupe: "🏎", cabrio: "🏎",
-  pickup: "🛻", van: "🚐", panelvan: "🚐", minivan: "🚐", minibus: "🚌",
+  pickup: "🛻", van: "🚐", panelvan: "🚐", minivan: "🚐", minibus: "🚌", camli_van: "🚐",
 };
 
 const MOTO_TYPE_LABELS = toLabelMap(MOTO_TYPES);

@@ -37,6 +37,10 @@ describe("kamyonet hero şeridi", () => {
     expect(labels(a)).toEqual(["Koltuk Sayısı", "Şasi / Tavan", "Güç", "Batarya", "Yük Kapasitesi"]);
     expect(map(a)["Koltuk Sayısı"]).toBe("15 kişi");
   });
+  it("camlı van: koltuk, şasi, güç, tüketim, bagaj", () => {
+    const a = { body_type: "camli_van", fuel_type: "DIESEL", seat_count: 6, chassis_length: "kisa", power_hp: 150, fuel_consumption_l: 6.6, boot_l: 3200, payload_kg: 1220 };
+    expect(labels(a)).toEqual(["Koltuk Sayısı", "Şasi Boyu", "Güç", "Ort. Tüketim", "Bagaj"]);
+  });
   it("minivan: koltuk, güç, tüketim, bagaj", () => {
     expect(labels({ body_type: "minivan", fuel_type: "DIESEL", seat_count: 7, power_hp: 130, fuel_consumption_l: 5.5, boot_l: 700, chassis_length: "uzun" }))
       .toEqual(["Koltuk Sayısı", "Güç", "Ort. Tüketim", "Bagaj"]);

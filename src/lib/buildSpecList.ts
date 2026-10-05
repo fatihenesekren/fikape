@@ -127,7 +127,7 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       const hasBattery = isEv || fuelType === "PHEV" || fuelType === "HYBRID";
       const isPickup = bodyType === "pickup";
       const isVan = bodyType === "van" || bodyType === "panelvan";
-      const isVanOrMinibus = isVan || bodyType === "minibus";
+      const isVanOrMinibus = isVan || bodyType === "minibus" || bodyType === "camli_van";
       const label = (map: Record<string, string>, key: string) => map[String(attrs[key])] ?? String(attrs[key]);
       return [
         fuelType               ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType } : null,
