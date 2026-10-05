@@ -46,6 +46,7 @@ import {
 } from "@/lib/vehicleTypes";
 import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelDisplay";
 import { buildSpecList } from "@/lib/buildSpecList";
+import { buildKamyonetHeroSpecs } from "@/lib/heroSpecsKamyonet";
 
 export async function generateMetadata({
   params,
@@ -523,13 +524,8 @@ export default async function VehicleDetailPage({
       attrs.height_cm        ? { label: "İç Yükseklik",    value: `${attrs.height_cm} cm` }      : null,
       attrs.total_weight_kg  ? { label: "Azami Yüklü Ağırlık",  value: `${attrs.total_weight_kg} kg` } : null,
     ];
-    if (categorySlug === "kamyonet") return [
-      attrs.power_hp         ? { label: "Güç",              value: `${attrs.power_hp} HP` }        : null,
-      attrs.payload_kg       ? { label: "Yük Kapasitesi",   value: `${attrs.payload_kg} kg` }      : null,
-      attrs.torque_nm        ? { label: "Tork",             value: `${attrs.torque_nm} Nm` }       : null,
-      attrs.tow_capacity_kg  ? { label: "Çekme Kapasitesi", value: `${attrs.tow_capacity_kg} kg` } : null,
-      attrs.four_wd != null  ? { label: "4×4",        value: attrs.four_wd ? "Var" : "Yok" }  : null,
-    ];
+    // Kamyonet: kasa tipine göre (van / pickup / minibüs-minivan) ayrı 5'li şerit.
+    if (categorySlug === "kamyonet") return buildKamyonetHeroSpecs(attrs);
     return [
       attrs.engine_cc    ? { label: "Motor",     value: `${attrs.engine_cc} cc` }             : (attrs.battery_kwh ? { label: "Batarya", value: `${attrs.battery_kwh} kWh` } : null),
       attrs.power_hp     ? { label: "Güç",       value: `${attrs.power_hp} HP` }              : null,
