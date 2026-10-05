@@ -34,6 +34,13 @@ const slidingDoors = (a: Attrs): Candidate =>
 const bedLength = (a: Attrs): Candidate => has(a.bed_length_mm) ? { label: "Kasa Boyu", value: `${a.bed_length_mm} mm` } : null;
 const clearance = (a: Attrs): Candidate => has(a.ground_clearance_mm) ? { label: "Yerden Yükseklik", value: `${a.ground_clearance_mm} mm` } : null;
 
+// Elektrikli yedek adaylar: yalnız EV/PHEV/HYBRID'de batarya, yalnız EV'de şarj gücü ve performans.
+const isElectrified = (a: Attrs) => ["EV", "PHEV", "HYBRID"].includes(String(a.fuel_type ?? ""));
+const battery = (a: Attrs): Candidate => isElectrified(a) && has(a.battery_kwh) ? { label: "Batarya", value: `${a.battery_kwh} kWh` } : null;
+const dcCharge = (a: Attrs): Candidate => a.fuel_type === "EV" && has(a.dc_charge_kw) ? { label: "DC Şarj", value: `${a.dc_charge_kw} kW` } : null;
+const zeroTo100 = (a: Attrs): Candidate => a.fuel_type === "EV" && has(a.zero_to_100) ? { label: "0–100 km/s", value: `${a.zero_to_100} sn` } : null;
+const topSpeed = (a: Attrs): Candidate => a.fuel_type === "EV" && has(a.top_speed_kmh) ? { label: "Azami Hız", value: `${a.top_speed_kmh} km/s` } : null;
+
 // Şasi boyu + tavan tek kutuda: "Uzun · Orta Tavan".
 function chassisRoof(a: Attrs): Candidate {
   const c = has(a.chassis_length) ? (CHASSIS_LABELS[String(a.chassis_length)] ?? String(a.chassis_length)) : null;
@@ -72,7 +79,7 @@ function pick(a: Attrs, candidates: ((a: Attrs) => Candidate)[]): SpecItem[] {
   const out: SpecItem[] = [];
   for (const c of candidates) {
     const item = c(a);
-    if (item) out.push(item);
+    if (item && !out.some((o) => o.label === item.label)) out.push(item);
     if (out.length === MAX_ITEMS) break;
   }
   return out;
@@ -83,7 +90,7 @@ export function buildKamyonetHeroSpecs(attrsInput: unknown): SpecItem[] {
   const body = has(a.body_type) ? String(a.body_type) : null;
 
   if (body === "van" || body === "panelvan") {
-    return pick(a, [cargo, payload, chassisRoof, power, consumptionOrRange, cargoLength, slidingDoors, tow]);
+    return pick(a, [cargo, payload, chassisRoof, power, consumptionOrRange, cargoLength, slidingDoors, tow, battery, dcCharge, zeroTo100, topSpeed]);
   }
   if (body === "pickup") {
     return pick(a, [payload, cab, pickupDrive, tow, power, bedLength, clearance]);

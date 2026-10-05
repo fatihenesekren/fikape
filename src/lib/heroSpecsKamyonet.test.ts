@@ -21,6 +21,14 @@ describe("kamyonet hero şeridi", () => {
     expect(labels({ body_type: "van", fuel_type: "EV", fuel_consumption_l: 5, ev_range_km: 250 })).toEqual(["Menzil"]);
     expect(map({ body_type: "van", fuel_type: "EV", battery_kwh: 68 })["Batarya"]).toBe("68 kWh");
   });
+  it("elektrikli van: eksik veride batarya, DC şarj, 0–100 yedek olarak şeridi doldurur (E-Doblo)", () => {
+    const a = { body_type: "van", fuel_type: "EV", cargo_m3: 3.3, power_hp: 136, ev_range_km: 322, battery_kwh: 50, dc_charge_kw: 100, zero_to_100: 11.2, top_speed_kmh: 135 };
+    expect(labels(a)).toEqual(["Kargo Hacmi", "Güç", "Menzil", "Batarya", "DC Şarj"]);
+  });
+  it("elektrikli yedekler dizelde çıkmaz; batarya iki kez yazılmaz", () => {
+    expect(labels({ body_type: "van", fuel_type: "DIESEL", power_hp: 100, battery_kwh: 50, dc_charge_kw: 100, zero_to_100: 11 })).toEqual(["Güç"]);
+    expect(labels({ body_type: "van", fuel_type: "EV", battery_kwh: 50 })).toEqual(["Batarya"]);
+  });
   it("pickup: yük, kabin, çekiş tipi, çekme, güç", () => {
     const a = { body_type: "pickup", payload_kg: 1100, cab_type: "cift_kabin", four_wd: true, four_wd_type: "part_time", tow_capacity_kg: 3500, power_hp: 204, torque_nm: 500 };
     expect(labels(a)).toEqual(["Yük Kapasitesi", "Kabin", "Çekiş", "Çekme Kapasitesi", "Güç"]);
