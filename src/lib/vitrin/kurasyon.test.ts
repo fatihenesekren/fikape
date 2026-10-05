@@ -23,6 +23,30 @@ describe("vitrineUygun", () => {
   });
 });
 
+describe("vitrin boyutu", () => {
+  it("varsayılan limit 16 ve her kategori temsil edilir", () => {
+    const kategoriler = ["otomobil", "motosiklet", "kamyonet", "karavan", "e-bisiklet", "e-scooter"];
+    // Kritik alan şeması kategoriye göre değiştiği için doluluk eşiğini aşan ortak alanlar kullanılır.
+    const dolu: Record<string, Record<string, unknown>> = {
+      otomobil: OTO_DOLU,
+      motosiklet: { engine_cc: 600, power_hp: 70, moto_type: "naked", fuel_type: "GASOLINE" },
+      kamyonet: { body_type: "van", engine_cc: 1500, power_hp: 130, cargo_m3: 4, fuel_type: "DIESEL" },
+      karavan: { karavan_type: "cekme", berth: 4, total_weight_kg: 1500, length_cm: 600 },
+      "e-bisiklet": { motor_watt: 250, bike_type: "sehir" },
+      "e-scooter": { motor_watt: 500, max_speed_kmh: 25 },
+    };
+    const l: VitrinAday[] = [];
+    for (const k of kategoriler) for (let i = 0; i < 5; i++) l.push(aday({ categorySlug: k, attributes: dolu[k] }));
+    const sonuc = kurasyonYap(l);
+    expect(sonuc).toHaveLength(16);
+    const kat = new Map(l.map((a) => [a.id, a.categorySlug]));
+    const say = new Map<string, number>();
+    for (const s of sonuc) say.set(kat.get(s.id)!, (say.get(kat.get(s.id)!) ?? 0) + 1);
+    expect([...say.keys()].sort()).toEqual([...kategoriler].sort());
+    for (const n of say.values()) expect(n).toBeLessThanOrEqual(4);
+  });
+});
+
 describe("veri doluluğu", () => {
   it("kritik doluluk oranını hesaplar", () => {
     expect(kritikDoluluk("otomobil", OTO_DOLU)).toBe(1);

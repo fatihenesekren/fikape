@@ -6,7 +6,8 @@
 import { getCriticalFields } from "@/lib/specFields";
 import { calcShrunkScore } from "@/lib/brandIndex";
 
-export const VITRIN_LIMITI = 12;
+// 16: geniş (4 sütun) ve küçük (2 sütun) ekranda tam satır; kategori tavanı (3) ile 6 kategori dengeli kalır.
+export const VITRIN_LIMITI = 16;
 export const KATEGORI_TAVANI = 3;
 /** Kritik özelliklerin en az bu oranı dolu olmayan kart vitrine çıkmaz. */
 export const MIN_KRITIK_DOLULUK = 0.5;
