@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { AiSummaryActions } from "./AiSummaryActions";
+import { AiSummaryList } from "./AiSummaryList";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -40,27 +39,18 @@ export default async function AiOzetleriPage() {
       {pending.length === 0 ? (
         <p className="text-sm text-gray-400">Onay bekleyen AI özeti yok.</p>
       ) : (
-        <div className="space-y-3">
-          {pending.map((s) => (
-            <div key={s.id} className="bg-white border border-gray-100 rounded-xl p-4 space-y-3">
-              <div className="flex items-center justify-between gap-2">
-                <Link href={`/araclar/${s.product.slug}`} target="_blank" className="font-semibold text-gray-800 hover:underline">
-                  {s.product.brand.name} {s.product.model.name}
-                </Link>
-                <span className="text-[11px] text-gray-400">{s.modelVersion}</span>
-              </div>
-              <p className="text-sm text-gray-700 leading-relaxed bg-gray-50 rounded-lg p-3">
-                {s.summaryText}
-              </p>
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-400">
-                  {s.generatedAt.toLocaleDateString("tr-TR", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })}
-                </span>
-                <AiSummaryActions summaryId={s.id} />
-              </div>
-            </div>
-          ))}
-        </div>
+        <AiSummaryList
+          items={pending.map((s) => ({
+            id: s.id,
+            slug: s.product.slug,
+            title: `${s.product.brand.name} ${s.product.model.name}`,
+            // Arama: marka + model + ürün adı (versiyon/donanım dahil).
+            searchText: `${s.product.brand.name} ${s.product.model.name} ${s.product.name}`,
+            summaryText: s.summaryText,
+            generatedLabel: s.generatedAt.toLocaleDateString("tr-TR", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" }),
+            modelVersion: s.modelVersion,
+          }))}
+        />
       )}
     </div>
   );
