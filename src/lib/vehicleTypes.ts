@@ -127,7 +127,7 @@ export const DRIVETRAIN_TYPES: TypeOption[] = [
   { value: "FWD", label: "FWD (Önden Çekiş)" },
   { value: "RWD", label: "RWD (Arkadan İtiş)" },
   { value: "AWD", label: "AWD (Dört Çeker)" },
-  { value: "4WD", label: "4WD (Dört Çeker – Manuel Aktarma)" },
+  { value: "4WD", label: "4WD (Seçilebilir Dört Çeker)" },
 ];
 
 export function toLabelMap(options: TypeOption[]): Record<string, string> {
