@@ -103,6 +103,7 @@ const REASONABLE_RANGES: Record<string, [number, number]> = {
   ground_clearance_mm: [120, 400],
   wading_depth_mm:  [300, 1000],
   ev_consumption_kwh: [10, 60],
+  ac_charge_kw:     [1, 50],
   dc_charge_kw:     [20, 400],
   loading_height_mm: [400, 1200],
   sliding_door_width_mm: [500, 1700],

@@ -58,6 +58,12 @@ describe("kamyonet alanları kasaya göre", () => {
     expect(gorunur({ fuel_type: "PHEV" })).not.toContain("ev_consumption_kwh");
     expect(gorunur({ fuel_type: "DIESEL" })).not.toContain("dc_charge_kw");
   });
+  it("AC şarj gücü EV'de görünür, dizelde gizli ve listeye dökülür", () => {
+    expect(gorunur({ fuel_type: "EV" })).toContain("ac_charge_kw");
+    expect(gorunur({ fuel_type: "DIESEL" })).not.toContain("ac_charge_kw");
+    const m = Object.fromEntries(buildSpecList("kamyonet", { fuel_type: "EV", battery_kwh: 50, ac_charge_kw: 11 }).map((i) => [i.label, i.value]));
+    expect(m["AC Maks. Şarj Gücü"]).toBe("11 kW");
+  });
   it("Ford E-Transit minibüs örneği spec listesine dökülüyor", () => {
     const m = Object.fromEntries(buildSpecList("kamyonet", {
       fuel_type: "EV", body_type: "minibus", seat_count: 15, chassis_length: "uzun", roof_height: "orta",

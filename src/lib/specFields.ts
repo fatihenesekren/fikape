@@ -161,6 +161,7 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "ev_range_km",   label: "Menzil",        type: "number", unit: "km (WLTP)", showIf: hasElectricRange },
     { key: "ev_consumption_kwh", label: "Elektrik Tüketimi", type: "number", unit: "kWh/100 km", placeholder: "örn. 31", showIf: isPureEv },
     { key: "charge_hours",  label: "Tam Şarj",      type: "number", unit: "saat", note: "AC ile %0–%100 tam şarj süresi (saat)", showIf: hasElectricRange },
+    { key: "ac_charge_kw",  label: "AC Maks. Şarj Gücü", type: "number", unit: "kW", placeholder: "örn. 11", showIf: hasElectricRange },
     { key: "dc_charge_kw",  label: "DC Maks. Şarj Gücü", type: "number", unit: "kW", showIf: hasElectricRange },
     { key: "fast_charge_min", label: "Hızlı Şarj (10–80%)", type: "number", unit: "dk", note: "DC hızlı şarjla %10’dan %80’e süre (dakika); kaynak farklı aralık (ör. %20–80) veriyorsa null", showIf: hasElectricRange },
     { key: "length_mm",     label: "Uzunluk",       type: "number", unit: "mm" },
@@ -241,7 +242,7 @@ export const SPEC_GROUPS: Record<string, SpecGroup[]> = {
   kamyonet: [
     { title: "Temel", keys: ["body_type", "cab_type", "chassis_length", "roof_height", "transmission", "gearbox", "drivetrain", "four_wd", "four_wd_type", "seat_count", "rear_door", "sliding_door", "sliding_door_count", "sliding_door_width_mm"], defaultOpen: true },
     { title: "Motor & Performans", keys: ["engine_cc", "power_hp", "torque_nm", "zero_to_100", "top_speed_kmh", "fuel_consumption_l", "tank_l"], defaultOpen: true },
-    { title: "Elektrikli (EV / Hibrit)", keys: ["battery_kwh", "ev_range_km", "ev_consumption_kwh", "charge_hours", "dc_charge_kw", "fast_charge_min"] },
+    { title: "Elektrikli (EV / Hibrit)", keys: ["battery_kwh", "ev_range_km", "ev_consumption_kwh", "charge_hours", "ac_charge_kw", "dc_charge_kw", "fast_charge_min"] },
     { title: "Boyutlar & Ağırlık", keys: ["length_mm", "width_mm", "height_mm", "wheelbase_mm", "curb_weight_kg", "gvw_kg", "payload_kg", "tow_capacity_kg", "tire_size"] },
     { title: "Yük Bölmesi & Kapılar", keys: ["cargo_m3", "cargo_length_mm", "cargo_width_mm", "cargo_height_mm", "wheel_arch_width_mm", "euro_pallets", "boot_l", "loading_height_mm", "rear_door_width_mm", "rear_door_height_mm"] },
     { title: "Pickup Kasa & Arazi", keys: ["bed_length_mm", "bed_width_mm", "bed_depth_mm", "ground_clearance_mm", "wading_depth_mm", "diff_lock"] },

@@ -151,6 +151,7 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
         hasBattery && attrs.battery_kwh    ? { label: "Batarya",  value: `${attrs.battery_kwh} kWh` }       : null,
         isEv && attrs.ev_consumption_kwh   ? { label: "Elektrik Tüketimi", value: `${attrs.ev_consumption_kwh} kWh/100 km` } : null,
         hasBattery && attrs.charge_hours   ? { label: "Tam Şarj", value: `~${attrs.charge_hours} saat` }    : null,
+        hasBattery && attrs.ac_charge_kw   ? { label: "AC Maks. Şarj Gücü", value: `${attrs.ac_charge_kw} kW` } : null,
         hasBattery && attrs.dc_charge_kw   ? { label: "DC Maks. Şarj Gücü", value: `${attrs.dc_charge_kw} kW` } : null,
         hasBattery && attrs.fast_charge_min ? { label: "Hızlı Şarj (10–80%)", value: `~${attrs.fast_charge_min} dk` } : null,
         attrs.length_mm        ? { label: "Uzunluk",     value: `${attrs.length_mm} mm` }        : null,
