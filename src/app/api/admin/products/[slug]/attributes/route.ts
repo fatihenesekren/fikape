@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
-import { normalizeAttributeValues } from "@/lib/vehicleTypes";
+import { mergeAttributes } from "@/lib/mergeAttributes";
 
 export async function PATCH(
   req: Request,
@@ -15,7 +15,7 @@ export async function PATCH(
 
     const { slug } = await params;
 
-    let body: { attributes?: Record<string, string> };
+    let body: { attributes?: Record<string, string | null> };
     try {
       body = await req.json();
     } catch {
@@ -33,7 +33,8 @@ export async function PATCH(
     const existing = (typeof product.attributes === "object" && product.attributes !== null
       ? product.attributes as Record<string, unknown>
       : {});
-    const merged = { ...existing, ...normalizeAttributeValues(body.attributes ?? {}) };
+    // null / "" gelen anahtarlar silinir (bkz. mergeAttributes).
+    const merged = mergeAttributes(existing, body.attributes ?? {});
 
     await prisma.product.update({
       where: { slug },

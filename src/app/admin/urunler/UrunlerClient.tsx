@@ -51,10 +51,15 @@ function ProductRow({ product, onSaved }: { product: Product; onSaved: (slug: st
     setSaving(true);
     setError(null);
     try {
+      // Kayıtlı olup formdan boşaltılan alanlar null olarak gönderilir — API bunları siler.
+      const payload: Record<string, string | null> = { ...attrs };
+      for (const [k, v] of Object.entries(product.attributes)) {
+        if (!(k in attrs) && v !== null && v !== undefined && v !== "") payload[k] = null;
+      }
       const res = await fetch(`/api/admin/products/${product.slug}/attributes`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ attributes: attrs }),
+        body: JSON.stringify({ attributes: payload }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Bir hata oluştu");
