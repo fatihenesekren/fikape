@@ -118,6 +118,11 @@ describe("kamyonet alanları kasaya göre", () => {
     expect(m["Boş Ağırlık"]).toBe("1544 kg");
     expect(m["Lastik Ölçüsü"]).toBe("205/60 R16");
   });
+  it("kasa minibüse çevrilince eski kargo m³ listede görünmez", () => {
+    const labels = (b: string) => buildSpecList("kamyonet", { body_type: b, cargo_m3: 11 }).map((i) => i.label);
+    expect(labels("minibus")).not.toContain("Kargo Hacmi");
+    expect(labels("van")).toContain("Kargo Hacmi");
+  });
   it("EV kamyonette motor cc ve depo gösterilmez, batarya gösterilir", () => {
     const m = Object.fromEntries(buildSpecList("kamyonet", { fuel_type: "EV", engine_cc: 1000, tank_l: 40, battery_kwh: 50, ev_range_km: 280 }).map((i) => [i.label, i.value]));
     expect(m["Motor"]).toBeUndefined();

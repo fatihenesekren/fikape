@@ -162,7 +162,9 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
         attrs.payload_kg       ? { label: "Yük Kap.",    value: `${attrs.payload_kg} kg` }       : null,
         attrs.tow_capacity_kg  ? { label: "Çekme Kap.",  value: `${attrs.tow_capacity_kg} kg` }  : null,
         attrs.seat_count       ? { label: "Koltuk Sayısı", value: `${attrs.seat_count} kişi` }    : null,
-        attrs.cargo_m3         ? { label: "Kargo Hacmi", value: `${attrs.cargo_m3} m³` }          : null,
+        // Kasa tipi sonradan değişince (ör. van → minibüs) eski kargo hacmi
+        // DB'de kalabilir (admin formu boş alanı silemez) — gizli alan gösterilmesin.
+        (isVan || !bodyType) && attrs.cargo_m3 ? { label: "Kargo Hacmi", value: `${attrs.cargo_m3} m³` } : null,
         isVan && attrs.cargo_length_mm    ? { label: "Yük Boyu",      value: `${attrs.cargo_length_mm} mm` }    : null,
         isVan && attrs.cargo_width_mm     ? { label: "Yük Genişliği", value: `${attrs.cargo_width_mm} mm` }     : null,
         isVan && attrs.cargo_height_mm    ? { label: "Yük Yüksekliği", value: `${attrs.cargo_height_mm} mm` }   : null,
