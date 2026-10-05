@@ -3,6 +3,7 @@ import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { generateSingleCardSummary } from "@/lib/ai/vehicleSummary";
+import { revalidateTag } from "next/cache";
 
 export async function PATCH(
   req: Request,
@@ -42,6 +43,7 @@ export async function PATCH(
       where: { id: summaryId },
       data: { status: "APPROVED", approvedAt: new Date(), approvedByUserId: Number(session.user.id) },
     });
+    revalidateTag("vitrin", { expire: 0 }); // onaylı özet vitrine uygunluk koşuludur
     return NextResponse.json({ ok: true, status: "APPROVED" });
   }
 

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
@@ -74,6 +75,7 @@ export async function POST(
       data: { imageUrl: versionedUrl, imageCredit: Prisma.DbNull },
     });
 
+    revalidateTag("vitrin", { expire: 0 }); // görsel vitrine uygunluk koşuludur
     return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: null });
   } catch (e) {
     console.error("[admin-product]", e);
@@ -161,6 +163,7 @@ export async function PATCH(
       data: { imageUrl: versionedUrl, imageCredit: otomatikKredi ?? Prisma.DbNull },
     });
 
+    revalidateTag("vitrin", { expire: 0 });
     return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: otomatikKredi });
   } catch (e) {
     console.error("[admin-product]", e);

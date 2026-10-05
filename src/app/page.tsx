@@ -43,7 +43,8 @@ export default async function Home({
   // Trend — sadece quiz modunda değilken, haftalık görüntülemesi olanlar
   const trendProducts = !quizParam
     ? await prisma.product.findMany({
-        where: { isActive: true, weeklyViewCount: { gt: 0 } },
+        // Vitrinle aynı uygunluk: yayında + görselli + onaylı AI özeti (bkz. src/lib/vitrin/kurasyon.ts)
+        where: { isActive: true, status: "ACTIVE", imageUrl: { not: null }, aiSummary: { is: { status: "APPROVED" } }, weeklyViewCount: { gt: 0 } },
         include: { brand: true, model: true, category: true },
         orderBy: { weeklyViewCount: "desc" },
         take: 8,

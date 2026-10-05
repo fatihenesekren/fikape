@@ -123,18 +123,20 @@ export const getTopRatedProducts = unstable_cache(
       },
       _count: { id: true },
       orderBy: { _avg: { scoreOverall: "desc" } },
-      take: 3,
+      take: 12,
     });
 
     if (!topAgg.length) return [];
 
+    // Görseli olmayan / yayında olmayan araç slider'a çıkmaz (en iyi 3 görselli araç alınır)
     const products = await prisma.product.findMany({
-      where: { id: { in: topAgg.map((a) => a.productId) } },
+      where: { id: { in: topAgg.map((a) => a.productId) }, isActive: true, status: "ACTIVE", imageUrl: { not: null } },
       include: { brand: true, model: true },
     });
 
     return topAgg
-      .filter((a) => a._avg.scoreOverall)
+      .filter((a) => a._avg.scoreOverall && products.some((pr) => pr.id === a.productId))
+      .slice(0, 3)
       .map((a) => {
         const p = products.find((pr) => pr.id === a.productId);
         if (!p) return null;

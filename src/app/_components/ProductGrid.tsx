@@ -4,15 +4,16 @@ import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { NiyetKarti } from "./NiyetKarti";
 import { decodeQuiz, calcQuizScore, quizQ4Matches, CAT_TO_SLUG, MOTO_CC_RANGES, EBIKE_WATT_RANGES, type ReviewExtData } from "@/lib/quiz";
-import { calcShrunkScore } from "@/lib/brandIndex";
+import { getVitrin } from "@/lib/vitrin/getVitrin";
 import type { FikapeScores } from "@/lib/fikape";
 
-// Ana sayfa kürasyonu — ham liste /araclar'a taşındı, burada quiz yokken sadece
-// "öne çıkanlar" gösterilir (bkz. backlog_anasayfa_katalog_ayirma).
-const HOMEPAGE_LIMIT = 12;
-const PER_CATEGORY_CAP = 3;
-const CURATION_SHRINKAGE_M = 5;
-const MIN_REVIEWED_FOR_CURATION = 6;
+// Ana sayfa kürasyonu (kural tabanlı) src/lib/vitrin/kurasyon.ts'te; ham liste /araclar'da.
+
+/** Kartı çizmek için gereken asgari ürün şekli (hem vitrin hem quiz yolu bu şekle uyar). */
+type KartUrun = {
+  id: number; slug: string; trimName: string | null; year: number | null; attributes: unknown; imageUrl: string | null;
+  brand: { name: string }; model: { name: string }; category: { slug: string } | null;
+};
 
 const CATEGORY_ICONS: Record<string, string> = {
   otomobil:     "🚗",
@@ -33,7 +34,12 @@ export async function ProductGrid({ quizParam }: Props) {
   // Hard category filter: quiz kategorisi bir slug veriyorsa ona indir
   const effectiveCat = quizAnswers ? CAT_TO_SLUG[quizAnswers.cat] : undefined;
 
-  let products = await prisma.product.findMany({
+  // Ana sayfa vitrini (quiz yokken): kural tabanlı, önbellekli kürasyon — bkz. src/lib/vitrin/kurasyon.ts.
+  // Quiz yolu aşağıda eskisi gibi çalışır.
+  const vitrin = quizAnswers ? null : await getVitrin();
+
+  let products: KartUrun[] = vitrin ?? [];
+  if (quizAnswers) products = await prisma.product.findMany({
     where: {
       isActive: true,
       ...(effectiveCat ? { category: { slug: effectiveCat } } : {}),
@@ -77,7 +83,7 @@ export async function ProductGrid({ quizParam }: Props) {
     );
   }
 
-  const scoreAggs = await prisma.review.groupBy({
+  const scoreAggs = vitrin ? [] : await prisma.review.groupBy({
     by: ["productId"],
     where: { status: "PUBLISHED" },
     _avg: {
@@ -89,7 +95,7 @@ export async function ProductGrid({ quizParam }: Props) {
     _count: { id: true },
   });
 
-  const scoreMap = new Map(
+  const scoreMap = new Map<number, { scores: FikapeScores; count: number }>(
     scoreAggs.map((agg) => [
       agg.productId,
       {
@@ -103,6 +109,7 @@ export async function ProductGrid({ quizParam }: Props) {
       },
     ]),
   );
+  for (const v of vitrin ?? []) if (v.scores) scoreMap.set(v.id, { scores: v.scores, count: v.yorumSayisi });
 
   // Review extendedData — only fetched for otomobil quiz (usage_type, maintenance_cost)
   const extDataMap = new Map<number, ReviewExtData[]>();
@@ -131,96 +138,6 @@ export async function ProductGrid({ quizParam }: Props) {
       const scoreB = calcQuizScore(sb.scores, extDataMap.get(b.id) ?? [], quizAnswers).score;
       return scoreB - scoreA;
     });
-  } else {
-    // ── Ana sayfa kürasyonu — "Öne çıkan araçlar" (~12) ──
-    // 0) Model bazında tekilleştir: aynı marka+modelin farklı yıl-varyantları
-    //    ana sayfada yan yana görünmesin (bkz. kullanıcı geri bildirimi). Her
-    //    modelId'den TEK temsilci: en çok yayınlanmış yorumlu yıl, eşitlikte en
-    //    yeni yıl / en yeni kayıt. Tam katalog (/araclar) tekilleştirilmez.
-    const byModel = new Map<number, (typeof products)[number]>();
-    for (const p of products) {
-      const cur = byModel.get(p.modelId);
-      if (!cur) { byModel.set(p.modelId, p); continue; }
-      const pCount = scoreMap.get(p.id)?.count ?? 0;
-      const cCount = scoreMap.get(cur.id)?.count ?? 0;
-      const better =
-        pCount !== cCount
-          ? pCount > cCount
-          : (p.year ?? 0) !== (cur.year ?? 0)
-            ? (p.year ?? 0) > (cur.year ?? 0)
-            : p.createdAt.getTime() > cur.createdAt.getTime();
-      if (better) byModel.set(p.modelId, p);
-    }
-    const deduped = [...byModel.values()];
-
-    // 1) Aday havuzu: en az 1 yayınlanmış yorumu olanlar.
-    const reviewed = deduped.filter((p) => scoreMap.has(p.id));
-
-    if (reviewed.length < MIN_REVIEWED_FOR_CURATION) {
-      // İnce veri koruması: model başına tek, en yeni. Kategori çeşitliliği:
-      // her kategoriden ilk PER_CATEGORY_CAP, kalan slotlar sıradan — aksi halde
-      // katalog otomobil-ağırlıklı olduğu için grid neredeyse hep otomobil olur.
-      const newest = [...deduped].sort(
-        (a, b) => b.createdAt.getTime() - a.createdAt.getTime(),
-      );
-      const perCat = new Map<string, number>();
-      const primary: typeof newest = [];
-      const overflow: typeof newest = [];
-      for (const p of newest) {
-        const c = p.category?.slug ?? "?";
-        const n = perCat.get(c) ?? 0;
-        if (n < PER_CATEGORY_CAP) { perCat.set(c, n + 1); primary.push(p); }
-        else overflow.push(p);
-      }
-      products = [...primary, ...overflow]
-        .slice(0, HOMEPAGE_LIMIT)
-        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
-    } else {
-      // 2) Bayesçi ağırlıklı ortalama (calcShrunkScore) — tek 10/10'luk yorum
-      //    sıralamayı domine edemesin. C = tüm yorumlanan ürünlerin genel ort.
-      const globalAvg =
-        reviewed.reduce((s, p) => s + (scoreMap.get(p.id)!.scores.scoreOverall || 0), 0) /
-        reviewed.length;
-
-      const scored = reviewed.map((p) => {
-        const sm = scoreMap.get(p.id)!;
-        return {
-          p,
-          w: calcShrunkScore({
-            reviewCount: sm.count,
-            rawAvg: sm.scores.scoreOverall || 0,
-            categoryAvg: globalAvg,
-            m: CURATION_SHRINKAGE_M,
-          }),
-        };
-      });
-      scored.sort(
-        (a, b) =>
-          b.w - a.w ||
-          (b.p.weeklyViewCount ?? 0) - (a.p.weeklyViewCount ?? 0) ||
-          b.p.createdAt.getTime() - a.p.createdAt.getTime(),
-      );
-
-      // 3) Kategori çeşitliliği: her kategoriden ilk PER_CATEGORY_CAP, kalan
-      //    slotlar global sıradan.
-      const perCat = new Map<string, number>();
-      const primary: typeof scored = [];
-      const overflow: typeof scored = [];
-      for (const item of scored) {
-        const c = item.p.category?.slug ?? "?";
-        const n = perCat.get(c) ?? 0;
-        if (n < PER_CATEGORY_CAP) {
-          perCat.set(c, n + 1);
-          primary.push(item);
-        } else {
-          overflow.push(item);
-        }
-      }
-      const finalItems = [...primary, ...overflow]
-        .slice(0, HOMEPAGE_LIMIT)
-        .sort((a, b) => b.w - a.w);
-      products = finalItems.map((x) => x.p);
-    }
   }
 
   // Quiz sonuç barındaki güven metni için: bu kategorideki gerçek yorum sayısı
