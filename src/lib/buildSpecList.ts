@@ -6,6 +6,7 @@
 import { FUEL_LABELS } from "@/lib/fuel";
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KAMYONET_CAB_TYPES,
+  KAMYONET_CHASSIS_LENGTHS, KAMYONET_ROOF_HEIGHTS, KAMYONET_REAR_DOORS, KAMYONET_4WD_TYPES,
   KARAVAN_TYPES,
   BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES, HEATING_TYPES, toLabelMap,
 } from "@/lib/vehicleTypes";
@@ -20,6 +21,10 @@ const BODY_LABELS: Record<string, string> = {
   ...toLabelMap(KAMYONET_BODY_TYPES),
 };
 const CAB_TYPE_LABELS = toLabelMap(KAMYONET_CAB_TYPES);
+const CHASSIS_LABELS = toLabelMap(KAMYONET_CHASSIS_LENGTHS);
+const ROOF_LABELS = toLabelMap(KAMYONET_ROOF_HEIGHTS);
+const REAR_DOOR_LABELS = toLabelMap(KAMYONET_REAR_DOORS);
+const FOURWD_LABELS = toLabelMap(KAMYONET_4WD_TYPES);
 const MOTO_TYPE_LABELS = toLabelMap(MOTO_TYPES);
 const KARAVAN_TYPE_LABELS = toLabelMap(KARAVAN_TYPES);
 const DRIVETRAIN_LABELS = toLabelMap(DRIVETRAIN_TYPES);
@@ -117,24 +122,61 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.has_kitchen  != null ? { label: "Mutfak",        value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
       attrs.has_ac       != null ? { label: "Klima",         value: attrs.has_ac       ? "Var" : "Yok" } : null,
     ];
-    if (categorySlug === "kamyonet") return [
-      fuelType               ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType } : null,
-      bodyType               ? { label: "Kasa",        value: BODY_LABELS[bodyType] ?? bodyType } : null,
-      attrs.cab_type         ? { label: "Kabin",       value: CAB_TYPE_LABELS[String(attrs.cab_type)] ?? String(attrs.cab_type) } : null,
-      attrs.transmission     ? { label: "Vites",       value: capitalize(String(attrs.transmission)) }        : null,
-      attrs.engine_cc        ? { label: "Motor",       value: `${attrs.engine_cc} cc` }        : null,
-      attrs.power_hp         ? { label: "Güç",         value: `${attrs.power_hp} HP` }         : null,
-      attrs.torque_nm        ? { label: "Tork",        value: `${attrs.torque_nm} Nm` }        : null,
-      attrs.four_wd != null  ? { label: "4×4",         value: attrs.four_wd ? "Var" : "Yok" }  : null,
-      attrs.length_mm        ? { label: "Uzunluk",     value: `${attrs.length_mm} mm` }        : null,
-      attrs.seat_count       ? { label: "Koltuk Sayısı", value: `${attrs.seat_count} kişi` }    : null,
-      attrs.cargo_m3         ? { label: "Kargo Hacmi", value: `${attrs.cargo_m3} m³` }          : null,
-      attrs.boot_l           ? { label: "Bagaj",       value: `${attrs.boot_l} L` }            : null,
-      attrs.sliding_door != null ? { label: "Sürgülü Kapı", value: attrs.sliding_door ? "Var" : "Yok" } : null,
-      attrs.payload_kg       ? { label: "Yük Kap.",    value: `${attrs.payload_kg} kg` }       : null,
-      attrs.tow_capacity_kg  ? { label: "Çekme Kap.",  value: `${attrs.tow_capacity_kg} kg` }  : null,
-      attrs.tank_l           ? { label: "Yakıt Dep.",  value: `${attrs.tank_l} L` }            : null,
-    ];
+    if (categorySlug === "kamyonet") {
+      const isEv = fuelType === "EV";
+      const hasBattery = isEv || fuelType === "PHEV" || fuelType === "HYBRID";
+      const isPickup = bodyType === "pickup";
+      const isVan = bodyType === "van" || bodyType === "panelvan";
+      const label = (map: Record<string, string>, key: string) => map[String(attrs[key])] ?? String(attrs[key]);
+      return [
+        fuelType               ? { label: "Yakıt",       value: FUEL_LABELS[fuelType] ?? fuelType } : null,
+        bodyType               ? { label: "Kasa",        value: BODY_LABELS[bodyType] ?? bodyType } : null,
+        attrs.cab_type         ? { label: "Kabin",       value: CAB_TYPE_LABELS[String(attrs.cab_type)] ?? String(attrs.cab_type) } : null,
+        isVan && attrs.chassis_length ? { label: "Şasi Boyu", value: label(CHASSIS_LABELS, "chassis_length") } : null,
+        isVan && attrs.roof_height    ? { label: "Tavan",     value: label(ROOF_LABELS, "roof_height") }       : null,
+        attrs.transmission     ? { label: "Vites",       value: capitalize(String(attrs.transmission)) }        : null,
+        attrs.gearbox          ? { label: "Vites Sayısı", value: `${attrs.gearbox} vites` }      : null,
+        attrs.drivetrain       ? { label: "Çekiş",       value: DRIVETRAIN_LABELS[String(attrs.drivetrain)] ?? String(attrs.drivetrain) } : null,
+        attrs.four_wd != null  ? { label: "4×4",         value: attrs.four_wd ? "Var" : "Yok" }  : null,
+        isPickup && attrs.four_wd && attrs.four_wd_type ? { label: "4×4 Tipi", value: label(FOURWD_LABELS, "four_wd_type") } : null,
+        !isEv && attrs.engine_cc ? { label: "Motor",     value: `${attrs.engine_cc} cc` }        : null,
+        attrs.power_hp         ? { label: "Güç",         value: `${attrs.power_hp} HP` }         : null,
+        attrs.torque_nm        ? { label: "Tork",        value: `${attrs.torque_nm} Nm` }        : null,
+        attrs.zero_to_100      ? { label: "0–100 km/s",  value: `${attrs.zero_to_100} sn` }      : null,
+        attrs.top_speed_kmh    ? { label: "Azami Hız",   value: `${attrs.top_speed_kmh} km/s` }  : null,
+        !isEv && attrs.fuel_consumption_l ? { label: "Ort. Tüketim", value: `${attrs.fuel_consumption_l} L/100 km` } : null,
+        !isEv && attrs.tank_l  ? { label: "Yakıt Dep.",  value: `${attrs.tank_l} L` }            : null,
+        hasBattery && attrs.ev_range_km    ? { label: "Menzil",   value: `${attrs.ev_range_km} km (WLTP)` } : null,
+        hasBattery && attrs.battery_kwh    ? { label: "Batarya",  value: `${attrs.battery_kwh} kWh` }       : null,
+        hasBattery && attrs.charge_hours   ? { label: "Tam Şarj", value: `~${attrs.charge_hours} saat` }    : null,
+        hasBattery && attrs.fast_charge_min ? { label: "Hızlı Şarj (10–80%)", value: `~${attrs.fast_charge_min} dk` } : null,
+        attrs.length_mm        ? { label: "Uzunluk",     value: `${attrs.length_mm} mm` }        : null,
+        attrs.width_mm         ? { label: "Genişlik",    value: `${attrs.width_mm} mm` }         : null,
+        attrs.height_mm        ? { label: "Yükseklik",   value: `${attrs.height_mm} mm` }        : null,
+        attrs.wheelbase_mm     ? { label: "Dingil Mesafesi", value: `${attrs.wheelbase_mm} mm` } : null,
+        attrs.curb_weight_kg   ? { label: "Boş Ağırlık", value: `${attrs.curb_weight_kg} kg` }   : null,
+        attrs.gvw_kg           ? { label: "Brüt Ağırlık", value: `${attrs.gvw_kg} kg` }          : null,
+        attrs.payload_kg       ? { label: "Yük Kap.",    value: `${attrs.payload_kg} kg` }       : null,
+        attrs.tow_capacity_kg  ? { label: "Çekme Kap.",  value: `${attrs.tow_capacity_kg} kg` }  : null,
+        attrs.seat_count       ? { label: "Koltuk Sayısı", value: `${attrs.seat_count} kişi` }    : null,
+        attrs.cargo_m3         ? { label: "Kargo Hacmi", value: `${attrs.cargo_m3} m³` }          : null,
+        isVan && attrs.cargo_length_mm    ? { label: "Yük Boyu",      value: `${attrs.cargo_length_mm} mm` }    : null,
+        isVan && attrs.cargo_width_mm     ? { label: "Yük Genişliği", value: `${attrs.cargo_width_mm} mm` }     : null,
+        isVan && attrs.cargo_height_mm    ? { label: "Yük Yüksekliği", value: `${attrs.cargo_height_mm} mm` }   : null,
+        isVan && attrs.wheel_arch_width_mm ? { label: "Tekerlek Arası Genişlik", value: `${attrs.wheel_arch_width_mm} mm` } : null,
+        isVan && attrs.euro_pallets       ? { label: "Euro Palet",    value: `${attrs.euro_pallets} adet` }     : null,
+        attrs.rear_door        ? { label: "Arka Kapı",   value: label(REAR_DOOR_LABELS, "rear_door") } : null,
+        attrs.boot_l           ? { label: "Bagaj",       value: `${attrs.boot_l} L` }            : null,
+        attrs.sliding_door != null ? { label: "Sürgülü Kapı", value: attrs.sliding_door ? (attrs.sliding_door_count ? `${attrs.sliding_door_count} adet` : "Var") : "Yok" } : null,
+        isPickup && attrs.bed_length_mm        ? { label: "Kasa Boyu",       value: `${attrs.bed_length_mm} mm` }        : null,
+        isPickup && attrs.bed_width_mm         ? { label: "Kasa Genişliği",  value: `${attrs.bed_width_mm} mm` }         : null,
+        isPickup && attrs.bed_depth_mm         ? { label: "Kasa Derinliği",  value: `${attrs.bed_depth_mm} mm` }         : null,
+        isPickup && attrs.ground_clearance_mm  ? { label: "Yerden Yükseklik", value: `${attrs.ground_clearance_mm} mm` } : null,
+        isPickup && attrs.wading_depth_mm      ? { label: "Su Geçiş Derinliği", value: `${attrs.wading_depth_mm} mm` }   : null,
+        isPickup && attrs.diff_lock != null    ? { label: "Diferansiyel Kilidi", value: attrs.diff_lock ? "Var" : "Yok" } : null,
+        attrs.tire_size        ? { label: "Lastik Ölçüsü", value: String(attrs.tire_size) }       : null,
+      ];
+    }
     return [
       fuelType             ? { label: "Yakıt",         value: FUEL_LABELS[fuelType] ?? fuelType } : null,
       bodyType             ? { label: "Kasa",          value: BODY_LABELS[bodyType] ?? bodyType } : null,

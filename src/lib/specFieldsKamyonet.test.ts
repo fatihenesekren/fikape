@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { SPEC_FIELDS, getCriticalFields } from "./specFields";
+import { buildSpecList } from "./buildSpecList";
+import { SPEC_FIELDS, SPEC_GROUPS, getCriticalFields, getCrossFieldWarnings } from "./specFields";
 
 const gorunur = (attrs: Record<string, string>) =>
   (SPEC_FIELDS.kamyonet ?? []).filter((f) => !f.showIf || f.showIf(attrs)).map((f) => f.key);
@@ -22,8 +23,46 @@ describe("kamyonet alanları kasaya göre", () => {
       expect(k).toContain("cargo_m3");
       expect(k).toContain("seat_count");
       expect(k).not.toContain("cab_type");
-      expect(k).not.toContain("sliding_door");
+      expect(k).not.toContain("bed_length_mm");
+      expect(k).toEqual(expect.arrayContaining(["chassis_length", "roof_height", "cargo_length_mm", "cargo_width_mm", "cargo_height_mm", "euro_pallets", "sliding_door", "sliding_door_count"]));
     }
+  });
+  it("pickup: kasa ve arazi alanları var, van alanları yok", () => {
+    const k = gorunur({ body_type: "pickup" });
+    expect(k).toEqual(expect.arrayContaining(["bed_length_mm", "ground_clearance_mm", "four_wd_type", "diff_lock"]));
+    expect(k).not.toContain("chassis_length");
+    expect(k).not.toContain("cargo_length_mm");
+    expect(k).not.toContain("sliding_door");
+  });
+  it("pickup 4×4 yoksa 4×4 tipi ve diferansiyel kilidi gizlenir", () => {
+    const k = gorunur({ body_type: "pickup", four_wd: "false" });
+    expect(k).not.toContain("four_wd_type");
+    expect(k).not.toContain("diff_lock");
+  });
+  it("elektrikli: batarya/menzil görünür, motor cc/depo/tüketim gizli", () => {
+    const k = gorunur({ fuel_type: "EV" });
+    expect(k).toEqual(expect.arrayContaining(["battery_kwh", "ev_range_km", "charge_hours"]));
+    for (const x of ["engine_cc", "tank_l", "fuel_consumption_l"]) expect(k).not.toContain(x);
+    const d = gorunur({ fuel_type: "DIESEL" });
+    expect(d).not.toContain("ev_range_km");
+    expect(d).toEqual(expect.arrayContaining(["engine_cc", "tank_l", "fuel_consumption_l"]));
+  });
+  it("EV kritik alanı ev_range_km ve formda gerçekten var", () => {
+    const crit = getCriticalFields("kamyonet", "EV", "van");
+    expect(crit).toContain("ev_range_km");
+    const keys = (SPEC_FIELDS.kamyonet ?? []).map((f) => f.key);
+    for (const c of crit) expect(keys).toContain(c);
+  });
+  it("her kamyonet alanı bir SPEC_GROUPS grubunda (yoksa formda görünmez)", () => {
+    const grouped = new Set((SPEC_GROUPS.kamyonet ?? []).flatMap((g) => g.keys));
+    for (const f of SPEC_FIELDS.kamyonet ?? []) expect(grouped, f.key).toContain(f.key);
+    for (const k of grouped) expect((SPEC_FIELDS.kamyonet ?? []).map((f) => f.key), k).toContain(k);
+  });
+  it("çapraz uyarılar: brüt<boş ve FWD+4×4", () => {
+    expect(getCrossFieldWarnings("kamyonet", { curb_weight_kg: "2000", gvw_kg: "1500" })).toHaveLength(1);
+    expect(getCrossFieldWarnings("kamyonet", { four_wd: "true", drivetrain: "FWD" })).toHaveLength(1);
+    expect(getCrossFieldWarnings("kamyonet", { four_wd: "false", drivetrain: "AWD" })).toHaveLength(1);
+    expect(getCrossFieldWarnings("kamyonet", { curb_weight_kg: "1544", gvw_kg: "2475", four_wd: "false", drivetrain: "FWD" })).toHaveLength(0);
   });
   it("minivan: koltuk + bagaj + sürgülü kapı, kargo hacmi yok", () => {
     const k = gorunur({ body_type: "minivan" });
@@ -32,7 +71,27 @@ describe("kamyonet alanları kasaya göre", () => {
   });
   it("kasa seçilmemişse hepsi sorulur (Gemini istemi için)", () => {
     const k = gorunur({});
-    expect(k).toEqual(expect.arrayContaining(["cab_type", "cargo_m3", "seat_count", "boot_l", "sliding_door"]));
+    expect(k).toEqual(expect.arrayContaining(["cab_type", "cargo_m3", "seat_count", "boot_l", "sliding_door", "chassis_length", "bed_length_mm"]));
+  });
+  it("Berlingo Van 1.5 BlueHDI örneği spec listesine dökülüyor", () => {
+    const items = buildSpecList("kamyonet", {
+      fuel_type: "DIESEL", body_type: "van", transmission: "Manuel", gearbox: 6, drivetrain: "FWD", four_wd: false,
+      engine_cc: 1499, power_hp: 130, torque_nm: 300, zero_to_100: 11.2, top_speed_kmh: 181, fuel_consumption_l: 5.8,
+      tank_l: 50, length_mm: 4753, width_mm: 1848, height_mm: 1880, curb_weight_kg: 1544, payload_kg: 931,
+      seat_count: 3, cargo_m3: 4.4, chassis_length: "uzun", tire_size: "205/60 R16",
+    });
+    const m = Object.fromEntries(items.map((i) => [i.label, i.value]));
+    expect(m["Şasi Boyu"]).toBe("Uzun");
+    expect(m["Çekiş"]).toBe("FWD (Önden Çekiş)");
+    expect(m["Ort. Tüketim"]).toBe("5.8 L/100 km");
+    expect(m["Boş Ağırlık"]).toBe("1544 kg");
+    expect(m["Lastik Ölçüsü"]).toBe("205/60 R16");
+  });
+  it("EV kamyonette motor cc ve depo gösterilmez, batarya gösterilir", () => {
+    const m = Object.fromEntries(buildSpecList("kamyonet", { fuel_type: "EV", engine_cc: 1000, tank_l: 40, battery_kwh: 50, ev_range_km: 280 }).map((i) => [i.label, i.value]));
+    expect(m["Motor"]).toBeUndefined();
+    expect(m["Yakıt Dep."]).toBeUndefined();
+    expect(m["Batarya"]).toBe("50 kWh");
   });
   it("kritik alanlar kasaya göre", () => {
     expect(getCriticalFields("kamyonet", null, "van")).toContain("cargo_m3");

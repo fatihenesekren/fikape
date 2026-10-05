@@ -85,6 +85,23 @@ const REASONABLE_RANGES: Record<string, [number, number]> = {
   seat_count:       [1, 9],
   length_mm:        [2500, 8000],
   cargo_m3:         [1, 25],
+  width_mm:         [1400, 2600],
+  height_mm:        [1200, 3500],
+  wheelbase_mm:     [1800, 5000],
+  curb_weight_kg:   [700, 4500],
+  gvw_kg:           [1000, 7500],
+  fuel_consumption_l: [2, 25],
+  cargo_length_mm:  [800, 5000],
+  cargo_width_mm:   [800, 2300],
+  cargo_height_mm:  [800, 2500],
+  wheel_arch_width_mm: [800, 1700],
+  euro_pallets:     [1, 8],
+  sliding_door_count: [1, 2],
+  bed_length_mm:    [1000, 2800],
+  bed_width_mm:     [1000, 2000],
+  bed_depth_mm:     [300, 700],
+  ground_clearance_mm: [120, 400],
+  wading_depth_mm:  [300, 1000],
 };
 
 function inReasonableRange(key: string, raw: string): boolean {

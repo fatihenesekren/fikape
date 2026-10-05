@@ -54,6 +54,32 @@ export const KAMYONET_CAB_TYPES: TypeOption[] = [
   { value: "cift_kabin",  label: "Çift Kabin" },
 ];
 
+// Van/panelvan şasi (dingil mesafesi) boyu ve tavan yüksekliği — aynı modelin
+// kısa/uzun versiyonları yük hacmini ve fiyatı ciddi değiştirir.
+export const KAMYONET_CHASSIS_LENGTHS: TypeOption[] = [
+  { value: "kisa",       label: "Kısa" },
+  { value: "orta",       label: "Orta" },
+  { value: "uzun",       label: "Uzun" },
+  { value: "ekstra_uzun", label: "Ekstra Uzun" },
+];
+
+export const KAMYONET_ROOF_HEIGHTS: TypeOption[] = [
+  { value: "normal",       label: "Normal Tavan" },
+  { value: "yuksek",       label: "Yüksek Tavan" },
+  { value: "cok_yuksek",   label: "Çok Yüksek Tavan" },
+];
+
+export const KAMYONET_REAR_DOORS: TypeOption[] = [
+  { value: "kanatli",       label: "Kanatlı (Çift Kapı)" },
+  { value: "bagaj_kapagi",  label: "Yukarı Açılan Bagaj Kapağı" },
+];
+
+// Pickup 4×4 aktarma tipi.
+export const KAMYONET_4WD_TYPES: TypeOption[] = [
+  { value: "part_time", label: "Part-time (Seçilebilir 4×4)" },
+  { value: "full_time", label: "Full-time (Sürekli 4×4)" },
+];
+
 export const TRANSMISSION_TYPES: TypeOption[] = [
   { value: "Manuel",        label: "Manuel" },
   { value: "Otomatik",      label: "Otomatik" },

@@ -1,6 +1,7 @@
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, OTOMOBIL_SEGMENTS, KAMYONET_BODY_TYPES,
-  KAMYONET_CAB_TYPES, TRANSMISSION_TYPES,
+  KAMYONET_CAB_TYPES, KAMYONET_CHASSIS_LENGTHS, KAMYONET_ROOF_HEIGHTS,
+  KAMYONET_REAR_DOORS, KAMYONET_4WD_TYPES, TRANSMISSION_TYPES,
   KARAVAN_TYPES, BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES,
   HEATING_TYPES,
 } from "@/lib/vehicleTypes";
@@ -42,6 +43,11 @@ const isPickupBody: ShowIf = (a) => kasaBos(a) || a.body_type === "pickup";
 const isVanBody: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan";
 const isMinivanBody: ShowIf = (a) => kasaBos(a) || a.body_type === "minivan";
 const hasSeatCount: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minivan";
+// Pickup 4×4 aktarma tipi yalnız 4×4 olmayanı dışarıda bırakır (4×4 boşsa sorulur).
+const isPickup4wd: ShowIf = (a) => isPickupBody(a) && a.four_wd !== "false";
+
+// Sürgülü kapı: minivan'da olduğu gibi van/panelvan'da da (tek/çift) anlamlı.
+const hasSlidingDoor: ShowIf = (a) => kasaBos(a) || a.body_type === "van" || a.body_type === "panelvan" || a.body_type === "minivan";
 
 // Kategori bazlı teknik özellik form alanları — admin öneri onay formu ve
 // ürün düzenleme formu (/admin/urunler) tarafından ortak kullanılır.
@@ -136,18 +142,49 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "body_type",     label: "Kasa",          type: "select", options: KAMYONET_BODY_TYPES },
     { key: "cab_type",      label: "Kabin",         type: "select", options: KAMYONET_CAB_TYPES, showIf: isPickupBody },
     { key: "transmission",  label: "Vites",         type: "select", options: TRANSMISSION_TYPES },
-    { key: "engine_cc",     label: "Motor",         type: "number", unit: "cc" },
+    { key: "gearbox",       label: "Vites Sayısı",  type: "number", unit: "vites", placeholder: "örn. 6" },
+    { key: "drivetrain",    label: "Çekiş",         type: "select", options: DRIVETRAIN_TYPES },
+    { key: "four_wd",       label: "4×4",           type: "boolean" },
+    { key: "four_wd_type",  label: "4×4 Tipi",      type: "select", options: KAMYONET_4WD_TYPES, showIf: isPickup4wd },
+    { key: "engine_cc",     label: "Motor",         type: "number", unit: "cc", showIf: hasCombustionEngine },
     { key: "power_hp",      label: "Güç",           type: "number", unit: "HP" },
     { key: "torque_nm",     label: "Tork",          type: "number", unit: "Nm" },
-    { key: "four_wd",       label: "4×4",           type: "boolean" },
+    { key: "zero_to_100",   label: "0–100",         type: "number", unit: "sn", placeholder: "örn. 11.2" },
+    { key: "top_speed_kmh", label: "Azami Hız",     type: "number", unit: "km/s" },
+    { key: "fuel_consumption_l", label: "Ort. Tüketim", type: "number", unit: "L/100 km", placeholder: "örn. 5.8", showIf: hasCombustionEngine },
+    { key: "tank_l",        label: "Yakıt Dep.",    type: "number", unit: "L", showIf: hasCombustionEngine },
+    { key: "battery_kwh",   label: "Batarya",       type: "number", unit: "kWh", showIf: hasElectricRange },
+    { key: "ev_range_km",   label: "Menzil",        type: "number", unit: "km (WLTP)", showIf: hasElectricRange },
+    { key: "charge_hours",  label: "Tam Şarj",      type: "number", unit: "saat", note: "AC ile %0–%100 tam şarj süresi (saat)", showIf: hasElectricRange },
+    { key: "fast_charge_min", label: "Hızlı Şarj (10–80%)", type: "number", unit: "dk", note: "DC hızlı şarjla %10’dan %80’e süre (dakika); kaynak farklı aralık (ör. %20–80) veriyorsa null", showIf: hasElectricRange },
     { key: "length_mm",     label: "Uzunluk",       type: "number", unit: "mm" },
-    { key: "seat_count",    label: "Koltuk Sayısı", type: "number", unit: "kişi", showIf: hasSeatCount },
-    { key: "cargo_m3",      label: "Kargo Hacmi",   type: "number", unit: "m³", placeholder: "örn. 6.5", showIf: isVanBody },
-    { key: "boot_l",        label: "Bagaj",         type: "number", unit: "L", showIf: isMinivanBody },
-    { key: "sliding_door",  label: "Sürgülü Kapı",  type: "boolean", showIf: isMinivanBody },
+    { key: "width_mm",      label: "Genişlik",      type: "number", unit: "mm", note: "Dış aynalar hariç gövde genişliği" },
+    { key: "height_mm",     label: "Yükseklik",     type: "number", unit: "mm" },
+    { key: "wheelbase_mm",  label: "Dingil Mesafesi", type: "number", unit: "mm" },
+    { key: "chassis_length",label: "Şasi Boyu",     type: "select", options: KAMYONET_CHASSIS_LENGTHS, showIf: isVanBody },
+    { key: "roof_height",   label: "Tavan",         type: "select", options: KAMYONET_ROOF_HEIGHTS, showIf: isVanBody },
+    { key: "curb_weight_kg",label: "Boş Ağırlık",   type: "number", unit: "kg" },
+    { key: "gvw_kg",        label: "Brüt Ağırlık",  type: "number", unit: "kg", note: "Azami yüklü (GVW) ağırlık" },
     { key: "payload_kg",    label: "Yük Kap.",      type: "number", unit: "kg" },
     { key: "tow_capacity_kg",label: "Çekme Kap.",   type: "number", unit: "kg" },
-    { key: "tank_l",        label: "Yakıt Dep.",    type: "number", unit: "L" },
+    { key: "seat_count",    label: "Koltuk Sayısı", type: "number", unit: "kişi", showIf: hasSeatCount },
+    { key: "cargo_m3",      label: "Kargo Hacmi",   type: "number", unit: "m³", placeholder: "örn. 6.5", showIf: isVanBody },
+    { key: "cargo_length_mm", label: "Yük Boyu",    type: "number", unit: "mm", showIf: isVanBody },
+    { key: "cargo_width_mm", label: "Yük Genişliği", type: "number", unit: "mm", note: "Yük bölmesi iç genişliği", showIf: isVanBody },
+    { key: "cargo_height_mm", label: "Yük Yüksekliği", type: "number", unit: "mm", showIf: isVanBody },
+    { key: "wheel_arch_width_mm", label: "Tekerlek Arası Genişlik", type: "number", unit: "mm", showIf: isVanBody },
+    { key: "euro_pallets",  label: "Euro Palet",    type: "number", unit: "adet", showIf: isVanBody },
+    { key: "rear_door",     label: "Arka Kapı",     type: "select", options: KAMYONET_REAR_DOORS, showIf: hasSeatCount },
+    { key: "boot_l",        label: "Bagaj",         type: "number", unit: "L", showIf: isMinivanBody },
+    { key: "sliding_door",  label: "Sürgülü Kapı",  type: "boolean", showIf: hasSlidingDoor },
+    { key: "sliding_door_count", label: "Sürgülü Kapı Sayısı", type: "number", unit: "adet", placeholder: "1 veya 2", showIf: hasSlidingDoor },
+    { key: "bed_length_mm", label: "Kasa Boyu",     type: "number", unit: "mm", showIf: isPickupBody },
+    { key: "bed_width_mm",  label: "Kasa Genişliği", type: "number", unit: "mm", showIf: isPickupBody },
+    { key: "bed_depth_mm",  label: "Kasa Derinliği", type: "number", unit: "mm", showIf: isPickupBody },
+    { key: "ground_clearance_mm", label: "Yerden Yükseklik", type: "number", unit: "mm", showIf: isPickupBody },
+    { key: "wading_depth_mm", label: "Su Geçiş Derinliği", type: "number", unit: "mm", showIf: isPickupBody },
+    { key: "diff_lock",     label: "Diferansiyel Kilidi", type: "boolean", showIf: isPickup4wd },
+    { key: "tire_size",     label: "Lastik Ölçüsü", type: "text", placeholder: "örn. 205/60 R16" },
   ],
 };
 
@@ -188,6 +225,17 @@ export interface SpecGroup {
   defaultOpen?: boolean;
 }
 export const SPEC_GROUPS: Record<string, SpecGroup[]> = {
+  // Kamyonet ~50 alan — gruplara bölünmezse form çok uzar. SPEC_GROUPS'ta
+  // olmayan alan formda HİÇ görünmez; yeni alan eklerken buraya da ekleyin
+  // (specFieldsKamyonet.test.ts bunu denetler).
+  kamyonet: [
+    { title: "Temel", keys: ["body_type", "cab_type", "chassis_length", "roof_height", "transmission", "gearbox", "drivetrain", "four_wd", "four_wd_type", "seat_count", "rear_door", "sliding_door", "sliding_door_count"], defaultOpen: true },
+    { title: "Motor & Performans", keys: ["engine_cc", "power_hp", "torque_nm", "zero_to_100", "top_speed_kmh", "fuel_consumption_l", "tank_l"], defaultOpen: true },
+    { title: "Elektrikli (EV / Hibrit)", keys: ["battery_kwh", "ev_range_km", "charge_hours", "fast_charge_min"] },
+    { title: "Boyutlar & Ağırlık", keys: ["length_mm", "width_mm", "height_mm", "wheelbase_mm", "curb_weight_kg", "gvw_kg", "payload_kg", "tow_capacity_kg", "tire_size"] },
+    { title: "Yük Bölmesi", keys: ["cargo_m3", "cargo_length_mm", "cargo_width_mm", "cargo_height_mm", "wheel_arch_width_mm", "euro_pallets", "boot_l"] },
+    { title: "Pickup Kasa & Arazi", keys: ["bed_length_mm", "bed_width_mm", "bed_depth_mm", "ground_clearance_mm", "wading_depth_mm", "diff_lock"] },
+  ],
   karavan: [
     { title: "Zorunlu", keys: ["karavan_type", "berth", "total_weight_kg", "length_cm"], defaultOpen: true },
     { title: "Ölçü & Ağırlık", keys: ["width_cm", "height_cm", "exterior_height_cm", "empty_weight_kg", "tow_weight_kg", "has_braked_axle"] },
@@ -205,6 +253,23 @@ export interface CrossFieldRule {
   message: string;
 }
 export const CROSS_FIELD_RULES: Record<string, CrossFieldRule[]> = {
+  kamyonet: [
+    {
+      fields: ["curb_weight_kg", "gvw_kg"],
+      check: (a) => !a.curb_weight_kg || !a.gvw_kg || Number(a.gvw_kg) > Number(a.curb_weight_kg),
+      message: "Brüt Ağırlık, Boş Ağırlık'tan büyük olmalı.",
+    },
+    {
+      fields: ["four_wd", "drivetrain"],
+      check: (a) => a.four_wd !== "true" || !a.drivetrain || a.drivetrain === "AWD" || a.drivetrain === "4WD",
+      message: 'Çekiş "FWD/RWD" iken 4×4 "Var" olamaz.',
+    },
+    {
+      fields: ["four_wd", "drivetrain"],
+      check: (a) => a.four_wd !== "false" || a.drivetrain !== "AWD" && a.drivetrain !== "4WD",
+      message: 'Çekiş "AWD/4WD" iken 4×4 "Yok" olamaz.',
+    },
+  ],
   karavan: [
     {
       fields: ["empty_weight_kg", "total_weight_kg"],
