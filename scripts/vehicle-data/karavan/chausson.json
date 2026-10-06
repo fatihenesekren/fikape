@@ -60,8 +60,18 @@
     {
       "name": "X-Line (2020-)",
       "versions": [
-        "X 590",
         "X 640",
+        "Diğer"
+      ],
+      "trims": [
+        "Standart",
+        "Diğer"
+      ]
+    },
+    {
+      "name": "X650 (2024-)",
+      "versions": [
+        "Exclusive Line",
         "Diğer"
       ],
       "trims": [
