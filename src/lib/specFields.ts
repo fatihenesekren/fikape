@@ -194,6 +194,9 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
     { key: "bed_depth_mm",  label: "Kasa Derinliği", type: "number", unit: "mm", showIf: isPickupBody },
     { key: "ground_clearance_mm", label: "Yerden Yükseklik", type: "number", unit: "mm", showIf: isPickupBody },
     { key: "wading_depth_mm", label: "Su Geçiş Derinliği", type: "number", unit: "mm", showIf: isPickupBody },
+    { key: "approach_angle_deg", label: "Yaklaşma Açısı", type: "number", unit: "°", showIf: isPickupBody },
+    { key: "departure_angle_deg", label: "Uzaklaşma Açısı", type: "number", unit: "°", showIf: isPickupBody },
+    { key: "ramp_angle_deg", label: "Rampa Açısı", type: "number", unit: "°", note: "Kırılma (breakover) açısı", showIf: isPickupBody },
     { key: "diff_lock",     label: "Diferansiyel Kilidi", type: "boolean", showIf: isPickup4wd },
     { key: "tire_size",     label: "Lastik Ölçüsü", type: "text", placeholder: "örn. 205/60 R16" },
   ],
@@ -245,7 +248,7 @@ export const SPEC_GROUPS: Record<string, SpecGroup[]> = {
     { title: "Elektrikli (EV / Hibrit)", keys: ["battery_kwh", "ev_range_km", "ev_consumption_kwh", "charge_hours", "ac_charge_kw", "dc_charge_kw", "fast_charge_min"] },
     { title: "Boyutlar & Ağırlık", keys: ["length_mm", "width_mm", "height_mm", "wheelbase_mm", "curb_weight_kg", "gvw_kg", "payload_kg", "tow_capacity_kg", "tire_size"] },
     { title: "Yük Bölmesi & Kapılar", keys: ["cargo_m3", "cargo_length_mm", "cargo_width_mm", "cargo_height_mm", "wheel_arch_width_mm", "euro_pallets", "boot_l", "loading_height_mm", "rear_door_width_mm", "rear_door_height_mm"] },
-    { title: "Pickup Kasa & Arazi", keys: ["bed_length_mm", "bed_width_mm", "bed_depth_mm", "ground_clearance_mm", "wading_depth_mm", "diff_lock"] },
+    { title: "Pickup Kasa & Arazi", keys: ["bed_length_mm", "bed_width_mm", "bed_depth_mm", "ground_clearance_mm", "wading_depth_mm", "approach_angle_deg", "departure_angle_deg", "ramp_angle_deg", "diff_lock"] },
   ],
   karavan: [
     { title: "Zorunlu", keys: ["karavan_type", "berth", "total_weight_kg", "length_cm"], defaultOpen: true },

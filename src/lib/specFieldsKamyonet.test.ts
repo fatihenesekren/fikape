@@ -84,6 +84,15 @@ describe("kamyonet alanları kasaya göre", () => {
     expect(k).not.toContain("cargo_length_mm");
     expect(k).not.toContain("sliding_door");
   });
+  it("pickup: yaklaşma/uzaklaşma/rampa açıları var ve listeye dökülür; van'da yok", () => {
+    const k = gorunur({ body_type: "pickup" });
+    expect(k).toEqual(expect.arrayContaining(["approach_angle_deg", "departure_angle_deg", "ramp_angle_deg"]));
+    expect(gorunur({ body_type: "van" })).not.toContain("approach_angle_deg");
+    const m = Object.fromEntries(buildSpecList("kamyonet", { body_type: "pickup", approach_angle_deg: 30.5, departure_angle_deg: 24.2, ramp_angle_deg: 24 }).map((i) => [i.label, i.value]));
+    expect(m["Yaklaşma Açısı"]).toBe("30.5°");
+    expect(m["Uzaklaşma Açısı"]).toBe("24.2°");
+    expect(m["Rampa Açısı"]).toBe("24°");
+  });
   it("pickup 4×4 yoksa 4×4 tipi ve diferansiyel kilidi gizlenir", () => {
     const k = gorunur({ body_type: "pickup", four_wd: "false" });
     expect(k).not.toContain("four_wd_type");

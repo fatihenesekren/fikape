@@ -183,6 +183,9 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
         isPickup && attrs.bed_depth_mm         ? { label: "Kasa Derinliği",  value: `${attrs.bed_depth_mm} mm` }         : null,
         isPickup && attrs.ground_clearance_mm  ? { label: "Yerden Yükseklik", value: `${attrs.ground_clearance_mm} mm` } : null,
         isPickup && attrs.wading_depth_mm      ? { label: "Su Geçiş Derinliği", value: `${attrs.wading_depth_mm} mm` }   : null,
+        isPickup && attrs.approach_angle_deg   ? { label: "Yaklaşma Açısı", value: `${attrs.approach_angle_deg}°` }     : null,
+        isPickup && attrs.departure_angle_deg  ? { label: "Uzaklaşma Açısı", value: `${attrs.departure_angle_deg}°` }   : null,
+        isPickup && attrs.ramp_angle_deg       ? { label: "Rampa Açısı", value: `${attrs.ramp_angle_deg}°` }           : null,
         isPickup && attrs.diff_lock != null    ? { label: "Diferansiyel Kilidi", value: attrs.diff_lock ? "Var" : "Yok" } : null,
         attrs.tire_size        ? { label: "Lastik Ölçüsü", value: String(attrs.tire_size) }       : null,
       ];
