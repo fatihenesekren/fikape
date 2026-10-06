@@ -300,7 +300,7 @@
 | carado | ✅ Tamamlandı | Türkiye'de resmi distribütör kanıtı bulunamadı (ikinci el pazarı mevcut). Yeni CV Serisi (Camper Van, 2022-, CV600/CV602/CV640/CV590 4x4) eklendi, mevcut T/A/V/I/C Serisi korundu. |
 | caravelair | ✅ Tamamlandı | Önemli bulgu: Marka 2024'te ürün gamını tamamen yeniledi — eski Antares/Armonia/Ventura hatları büyük oranda Alba, Sport Line ve Exclusive Line ile değiştirildi. Eski modeller ikinci el için korundu, yeni 3 hat eklendi. |
 | carthago | ✅ Tamamlandı | Güncel chic c-line (T/I), chic s-plus, C1/C2-tourer nesli eklendi; eski c-tourer/chic e-line/liner-for-two korundu. Türkiye'de resmi distribütör yok, ikinci el/ithal pazar notu düşük güven. |
-| chausson | ✅ Tamamlandı | X-Line (X590/X640) modeli ve Titanium'a "Ultimate" trim'i eklendi; Sweet Line/Sweet Spirit doğrulanamadığı için eklenmedi. |
+| chausson | ✅ Tamamlandı | X-Line (X640) modeli ve Titanium'a "Ultimate" trim'i eklendi; Sweet Line/Sweet Spirit doğrulanamadığı için eklenmedi. (2026-10-06 düzeltme: ilk turda eklenen "X 590" sürümü katalogdan çıkarıldı; X650 (2024-) Exclusive Line eklendi.) |
 | coachman | ✅ Tamamlandı | Lusso (2022 sonrası premium seri) eklendi; Vision/Pastiche eski nesiller olarak korundu. |
 | concorde | ✅ Tamamlandı | Charisma ve Cruiser (Daily/Atego) modelleri eklendi, Carver'a "Select" ve Centurion'a "GSI" trim'i eklendi. |
 | dethleffs | ✅ Tamamlandı | Güncel motokaravan serileri (Advantage, Esprit, Globebus, Just Camp, Alpa, XL Family) eklendi; eski Coco/Camper/Beduin/Nomad karavan hatları korundu. |
