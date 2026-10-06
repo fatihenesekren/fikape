@@ -3,7 +3,8 @@ import {
   KAMYONET_CAB_TYPES, KAMYONET_CHASSIS_LENGTHS, KAMYONET_ROOF_HEIGHTS,
   KAMYONET_REAR_DOORS, KAMYONET_4WD_TYPES, TRANSMISSION_TYPES,
   KARAVAN_TYPES, BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES,
-  HEATING_TYPES,
+  HEATING_TYPES, KARAVAN_ALT_TIPLERI, KARAVAN_ALT_TIP_GRUBU, KARAVAN_TOILET_TYPES,
+  KARAVAN_LICENSE_CLASSES, KARAVAN_BRAKE_SYSTEMS, KARAVAN_FUEL_TYPES,
 } from "@/lib/vehicleTypes";
 
 // showIf: alan sadece diğer alanların (ör. fuel_type) mevcut değerine göre
@@ -33,6 +34,10 @@ const hasCombustionEngine: ShowIf  = (a) => a.fuel_type !== "EV";
 // "Çekme" karavanın kendi motoru yok (bkz. CROSS_FIELD_RULES'daki aynı kural,
 // orada sadece UYARI veriyordu, burada showIf ile alan hiç gösterilmiyor).
 const isMotorizedKaravan: ShowIf = (a) => a.karavan_type !== "cekme";
+// Çekme karavana özel (tip boşsa sorulur): aks, çeki oku yükü, fren, stabilizatör.
+const isCekmeKaravan: ShowIf = (a) => !a.karavan_type || a.karavan_type === "cekme";
+// Yükselen çatı yalnız kamper van'da anlamlı.
+const isKamperVan: ShowIf = (a) => !a.karavan_type || a.karavan_type === "kamper-van";
 
 // Kamyonet: kabin konfigürasyonu yalnız pickup kasa tipinde anlamlı —
 // van/panelvan/minivan'da "kaç kapı/kabin" ayrı bir kavram değil.
@@ -122,25 +127,53 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
   ],
   karavan: [
     { key: "karavan_type", label: "Tip",            type: "select", options: KARAVAN_TYPES },
+    { key: "karavan_alt_tip", label: "Alt Tip",     type: "select", options: KARAVAN_ALT_TIPLERI },
     { key: "berth",          label: "Yatak Kap.",   type: "number", unit: "kişi" },
-    { key: "length_cm",      label: "Uzunluk",      type: "number", unit: "cm" },
+    { key: "bed_layout",     label: "Yatak Düzeni", type: "text", placeholder: "örn. Fransız yatak + ranza" },
+    { key: "license_class",  label: "Ehliyet Sınıfı", type: "select", options: KARAVAN_LICENSE_CLASSES },
+    { key: "chassis_brand",  label: "Şasi / Taban Araç", type: "text", placeholder: "örn. AL-KO ya da Fiat Ducato" },
+    { key: "pop_top",        label: "Yükselen Çatı", type: "boolean", showIf: isKamperVan },
+    { key: "length_cm",      label: "Uzunluk (toplam)", type: "number", unit: "cm", note: "Çekmede çeki oku dahil toplam uzunluk" },
+    { key: "body_length_cm", label: "Gövde Uzunluğu", type: "number", unit: "cm" },
+    { key: "interior_length_cm", label: "İç Uzunluk", type: "number", unit: "cm" },
     { key: "width_cm",       label: "Genişlik",     type: "number", unit: "cm" },
+    { key: "interior_width_cm", label: "İç Genişlik", type: "number", unit: "cm" },
     { key: "height_cm",      label: "İç Yükseklik", type: "number", unit: "cm" },
     { key: "exterior_height_cm", label: "Dış Yükseklik", type: "number", unit: "cm" },
     { key: "empty_weight_kg",label: "Boş Ağırlık",  type: "number", unit: "kg" },
+    { key: "mro_kg",         label: "Yürür Ağırlık (MRO)", type: "number", unit: "kg", note: "Kullanıma hazır ağırlık; boş ağırlıktan büyük, azami ağırlıktan küçük" },
     { key: "total_weight_kg",label: "Azami Yüklü Ağırlık", type: "number", unit: "kg" },
+    { key: "payload_kg",     label: "Yük Kapasitesi", type: "number", unit: "kg" },
     { key: "tow_weight_kg",  label: "Çekme Ağ.",    type: "number", unit: "kg" },
+    { key: "axle_count",     label: "Aks Sayısı",   type: "number", unit: "adet", placeholder: "1 veya 2", showIf: isCekmeKaravan },
+    { key: "nose_weight_kg", label: "Çeki Oku Yükü", type: "number", unit: "kg", showIf: isCekmeKaravan },
+    { key: "brake_system",   label: "Fren Sistemi", type: "select", options: KARAVAN_BRAKE_SYSTEMS, showIf: isCekmeKaravan },
     { key: "has_braked_axle", label: "Frenli Dingil", type: "boolean" },
+    { key: "has_stabilizer", label: "Stabilizatör", type: "boolean", showIf: isCekmeKaravan },
+    { key: "tire_size",      label: "Lastik Ölçüsü", type: "text", placeholder: "örn. 185 R14 C" },
     { key: "water_tank_l",   label: "Taze Su Tankı", type: "number", unit: "L" },
     { key: "waste_water_tank_l", label: "Gri/Pis Su Tankı", type: "number", unit: "L" },
+    { key: "fridge_l",       label: "Buzdolabı",    type: "number", unit: "L" },
+    { key: "stove_burners",  label: "Ocak Göz Sayısı", type: "number", unit: "adet" },
     { key: "heating_type",   label: "Isıtma",       type: "select", options: HEATING_TYPES },
-    { key: "engine_cc",      label: "Motor",        type: "number", unit: "cc", showIf: isMotorizedKaravan },
-    { key: "power_hp",       label: "Güç",          type: "number", unit: "HP", showIf: isMotorizedKaravan },
-    { key: "transmission",   label: "Vites",        type: "select", showIf: isMotorizedKaravan, options: TRANSMISSION_TYPES },
+    { key: "heater_model",   label: "Isıtıcı Modeli", type: "text", placeholder: "örn. Truma S 3004" },
+    { key: "toilet_type",    label: "Tuvalet",      type: "select", options: KARAVAN_TOILET_TYPES },
     { key: "has_bathroom",   label: "Banyo",        type: "boolean" },
     { key: "has_shower",     label: "Duş",          type: "boolean" },
     { key: "has_kitchen",    label: "Mutfak",       type: "boolean" },
     { key: "has_ac",         label: "Klima",        type: "boolean" },
+    { key: "has_awning",     label: "Tente",        type: "boolean" },
+    { key: "solar_w",        label: "Güneş Paneli", type: "number", unit: "W" },
+    { key: "leisure_battery_ah", label: "Servis Aküsü", type: "number", unit: "Ah" },
+    { key: "has_shore_power", label: "220V Şebeke Girişi", type: "boolean" },
+    { key: "fuel_type",      label: "Yakıt",        type: "select", options: KARAVAN_FUEL_TYPES, showIf: isMotorizedKaravan },
+    { key: "engine_cc",      label: "Motor",        type: "number", unit: "cc", showIf: isMotorizedKaravan },
+    { key: "power_hp",       label: "Güç",          type: "number", unit: "HP", showIf: isMotorizedKaravan },
+    { key: "transmission",   label: "Vites",        type: "select", showIf: isMotorizedKaravan, options: TRANSMISSION_TYPES },
+    { key: "drivetrain",     label: "Çekiş",        type: "select", showIf: isMotorizedKaravan, options: DRIVETRAIN_TYPES },
+    { key: "tank_l",         label: "Yakıt Deposu", type: "number", unit: "L", showIf: isMotorizedKaravan },
+    { key: "fuel_consumption_l", label: "Ort. Tüketim", type: "number", unit: "L/100 km", showIf: isMotorizedKaravan },
+    { key: "seat_belts",     label: "Emniyet Kemerli Koltuk", type: "number", unit: "adet", showIf: isMotorizedKaravan },
   ],
   kamyonet: [
     { key: "body_type",     label: "Kasa",          type: "select", options: KAMYONET_BODY_TYPES },
@@ -252,9 +285,12 @@ export const SPEC_GROUPS: Record<string, SpecGroup[]> = {
   ],
   karavan: [
     { title: "Zorunlu", keys: ["karavan_type", "berth", "total_weight_kg", "length_cm"], defaultOpen: true },
-    { title: "Ölçü & Ağırlık", keys: ["width_cm", "height_cm", "exterior_height_cm", "empty_weight_kg", "tow_weight_kg", "has_braked_axle"] },
-    { title: "Yaşam Alanı", keys: ["water_tank_l", "waste_water_tank_l", "heating_type", "has_bathroom", "has_shower", "has_kitchen", "has_ac"] },
-    { title: "Motor & Şanzıman (motorlu/kamper-van)", keys: ["engine_cc", "power_hp", "transmission"] },
+    { title: "Tip & Genel", keys: ["karavan_alt_tip", "bed_layout", "license_class", "chassis_brand", "pop_top"] },
+    { title: "Ölçü & Ağırlık", keys: ["body_length_cm", "interior_length_cm", "width_cm", "interior_width_cm", "height_cm", "exterior_height_cm", "empty_weight_kg", "mro_kg", "payload_kg", "tow_weight_kg", "tire_size"] },
+    { title: "Çekme Karavan (aks, fren)", keys: ["axle_count", "nose_weight_kg", "brake_system", "has_braked_axle", "has_stabilizer"] },
+    { title: "Yaşam Alanı", keys: ["water_tank_l", "waste_water_tank_l", "fridge_l", "stove_burners", "heating_type", "heater_model", "toilet_type", "has_bathroom", "has_shower", "has_kitchen", "has_ac", "has_awning"] },
+    { title: "Elektrik", keys: ["solar_w", "leisure_battery_ah", "has_shore_power"] },
+    { title: "Motor & Şanzıman (motorlu/kamper-van)", keys: ["fuel_type", "engine_cc", "power_hp", "transmission", "drivetrain", "tank_l", "fuel_consumption_l", "seat_belts"] },
   ],
 };
 
@@ -304,6 +340,36 @@ export const CROSS_FIELD_RULES: Record<string, CrossFieldRule[]> = {
       fields: ["karavan_type", "engine_cc"],
       check: (a) => a.karavan_type !== "cekme" || !a.engine_cc,
       message: "Çekme Karavan'da motor bilgisi olmaz — Tip'i kontrol edin.",
+    },
+    {
+      fields: ["karavan_type", "karavan_alt_tip"],
+      check: (a) => !a.karavan_type || !a.karavan_alt_tip || (KARAVAN_ALT_TIP_GRUBU[a.karavan_type] ?? []).includes(a.karavan_alt_tip),
+      message: "Alt Tip, seçili Tip ile uyuşmuyor.",
+    },
+    {
+      fields: ["empty_weight_kg", "mro_kg"],
+      check: (a) => !a.empty_weight_kg || !a.mro_kg || Number(a.mro_kg) >= Number(a.empty_weight_kg),
+      message: "Yürür Ağırlık (MRO), Boş Ağırlık'tan küçük olamaz.",
+    },
+    {
+      fields: ["mro_kg", "total_weight_kg"],
+      check: (a) => !a.mro_kg || !a.total_weight_kg || Number(a.mro_kg) <= Number(a.total_weight_kg),
+      message: "Yürür Ağırlık (MRO), Azami Yüklü Ağırlık'tan büyük olamaz.",
+    },
+    {
+      fields: ["length_cm", "body_length_cm"],
+      check: (a) => !a.length_cm || !a.body_length_cm || Number(a.body_length_cm) <= Number(a.length_cm),
+      message: "Gövde Uzunluğu, toplam Uzunluk'tan büyük olamaz.",
+    },
+    {
+      fields: ["interior_length_cm", "body_length_cm"],
+      check: (a) => !a.interior_length_cm || !a.body_length_cm || Number(a.interior_length_cm) <= Number(a.body_length_cm),
+      message: "İç Uzunluk, Gövde Uzunluğu'ndan büyük olamaz.",
+    },
+    {
+      fields: ["has_stabilizer", "karavan_type"],
+      check: (a) => a.has_stabilizer !== "true" || !a.karavan_type || a.karavan_type === "cekme",
+      message: "Stabilizatör yalnız Çekme Karavan'da olur.",
     },
   ],
 };

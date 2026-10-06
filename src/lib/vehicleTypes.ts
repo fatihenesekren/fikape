@@ -97,6 +97,48 @@ export const KARAVAN_TYPES: TypeOption[] = [
   { value: "kamper-van", label: "Kamper Van" },
 ];
 
+// Karavan alt tipi: tek alan, etiketler kendi kendini açıklar; hangi alt tipin hangi karavan tipine ait olduğu
+// KARAVAN_ALT_TIP_GRUBU'nda (çapraz kontrol: Tip ile alt tip uyuşmalı).
+export const KARAVAN_ALT_TIPLERI: TypeOption[] = [
+  { value: "touring",          label: "Touring" },
+  { value: "offroad",          label: "Off-road" },
+  { value: "katlanir",         label: "Katlanır (pop-up)" },
+  { value: "alkovenli",        label: "Alkovenli" },
+  { value: "yari-entegre",     label: "Yarı entegre" },
+  { value: "tam-entegre",      label: "Tam entegre" },
+  { value: "panelvan-donusum", label: "Panelvan dönüşümlü" },
+  { value: "minibus-donusum",  label: "Minibüs dönüşümlü" },
+];
+export const KARAVAN_ALT_TIP_GRUBU: Record<string, string[]> = {
+  cekme: ["touring", "offroad", "katlanir"],
+  motorlu: ["alkovenli", "yari-entegre", "tam-entegre"],
+  "kamper-van": ["panelvan-donusum", "minibus-donusum"],
+};
+
+export const KARAVAN_TOILET_TYPES: TypeOption[] = [
+  { value: "kaset",       label: "Kaset tipi" },
+  { value: "tasinabilir", label: "Taşınabilir" },
+  { value: "yok",         label: "Yok" },
+];
+
+// Ehliyet: çekmede B/BE (azami ağırlık ve çekici kombinasyonuna göre), motorlu/kamper-van'da B ya da C1 (3500 kg üstü).
+export const KARAVAN_LICENSE_CLASSES: TypeOption[] = [
+  { value: "B",  label: "B" },
+  { value: "BE", label: "BE" },
+  { value: "C1", label: "C1" },
+];
+
+export const KARAVAN_BRAKE_SYSTEMS: TypeOption[] = [
+  { value: "itme-freni", label: "İtme freni (overrun)" },
+  { value: "frensiz",    label: "Frensiz" },
+];
+
+export const KARAVAN_FUEL_TYPES: TypeOption[] = [
+  { value: "DIESEL",   label: "Dizel" },
+  { value: "GASOLINE", label: "Benzin" },
+  { value: "EV",       label: "Elektrikli" },
+];
+
 export const HEATING_TYPES: TypeOption[] = [
   { value: "gazli",              label: "Gazlı (Truma/LPG)" },
   { value: "dizel",               label: "Dizel (Webasto/Eberspächer)" },

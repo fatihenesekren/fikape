@@ -7,7 +7,7 @@ import { FUEL_LABELS } from "@/lib/fuel";
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KAMYONET_CAB_TYPES,
   KAMYONET_CHASSIS_LENGTHS, KAMYONET_ROOF_HEIGHTS, KAMYONET_REAR_DOORS, KAMYONET_4WD_TYPES,
-  KARAVAN_TYPES,
+  KARAVAN_TYPES, KARAVAN_ALT_TIPLERI, KARAVAN_TOILET_TYPES, KARAVAN_BRAKE_SYSTEMS,
   BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, DRIVETRAIN_TYPES, HEATING_TYPES, toLabelMap,
 } from "@/lib/vehicleTypes";
 
@@ -27,6 +27,9 @@ const REAR_DOOR_LABELS = toLabelMap(KAMYONET_REAR_DOORS);
 const FOURWD_LABELS = toLabelMap(KAMYONET_4WD_TYPES);
 const MOTO_TYPE_LABELS = toLabelMap(MOTO_TYPES);
 const KARAVAN_TYPE_LABELS = toLabelMap(KARAVAN_TYPES);
+const KARAVAN_ALT_TIP_LABELS = toLabelMap(KARAVAN_ALT_TIPLERI);
+const TOILET_LABELS = toLabelMap(KARAVAN_TOILET_TYPES);
+const BRAKE_SYSTEM_LABELS = toLabelMap(KARAVAN_BRAKE_SYSTEMS);
 const DRIVETRAIN_LABELS = toLabelMap(DRIVETRAIN_TYPES);
 const HEATING_TYPE_LABELS = toLabelMap(HEATING_TYPES);
 const BIKE_TYPE_LABELS = toLabelMap(BIKE_TYPES);
@@ -97,31 +100,63 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.max_speed_kmh   ? { label: "Azami Hız",    value: `${attrs.max_speed_kmh} km/s` }  : null,
       fuelType === "EV" && attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: attrs.removable_battery ? "Var" : "Yok" } : null,
     ];
-    if (categorySlug === "karavan") return [
-      karavanType                ? { label: "Tip",           value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
-      attrs.berth                ? { label: "Yatak Kap.",    value: `${attrs.berth} kişi` }           : null,
-      attrs.length_cm            ? { label: "Uzunluk",       value: `${attrs.length_cm} cm` }         : null,
-      attrs.width_cm             ? { label: "Genişlik",      value: `${attrs.width_cm} cm` }          : null,
-      attrs.height_cm            ? { label: "İç Yükseklik",  value: `${attrs.height_cm} cm` }         : null,
-      attrs.exterior_height_cm   ? { label: "Dış Yükseklik", value: `${attrs.exterior_height_cm} cm` } : null,
-      attrs.empty_weight_kg      ? { label: "Boş Ağırlık",   value: `${attrs.empty_weight_kg} kg` }   : null,
-      attrs.total_weight_kg      ? { label: "Azami Yüklü Ağırlık", value: `${attrs.total_weight_kg} kg` } : null,
-      attrs.tow_weight_kg        ? { label: "Çekme Ağ.",     value: `${attrs.tow_weight_kg} kg` }     : null,
-      attrs.has_braked_axle != null ? { label: "Frenli Dingil", value: attrs.has_braked_axle ? "Var" : "Yok" } : null,
-      attrs.water_tank_l         ? { label: "Taze Su Tankı", value: `${attrs.water_tank_l} L` }       : null,
-      attrs.waste_water_tank_l   ? { label: "Gri/Pis Su Tankı", value: `${attrs.waste_water_tank_l} L` } : null,
-      attrs.heating_type         ? { label: "Isıtma",        value: HEATING_TYPE_LABELS[String(attrs.heating_type)] ?? capitalize(String(attrs.heating_type)) } : null,
-      // "Çekme" karavanın kendi motoru yok — motor/vites alanları sadece
-      // motorlu/kamper-van tiplerinde anlamlı (bkz. specFields.ts isMotorizedKaravan,
-      // aynı kural CROSS_FIELD_RULES'da da uyarı olarak vardı).
-      karavanType !== "cekme" && attrs.engine_cc    ? { label: "Motor",  value: `${attrs.engine_cc} cc` }        : null,
-      karavanType !== "cekme" && attrs.power_hp     ? { label: "Güç",    value: `${attrs.power_hp} HP` }         : null,
-      karavanType !== "cekme" && attrs.transmission ? { label: "Vites",  value: capitalize(String(attrs.transmission)) } : null,
-      attrs.has_bathroom != null ? { label: "Banyo",         value: attrs.has_bathroom ? "Var" : "Yok" } : null,
-      attrs.has_shower   != null ? { label: "Duş",           value: attrs.has_shower   ? "Var" : "Yok" } : null,
-      attrs.has_kitchen  != null ? { label: "Mutfak",        value: attrs.has_kitchen  ? "Var" : "Yok" } : null,
-      attrs.has_ac       != null ? { label: "Klima",         value: attrs.has_ac       ? "Var" : "Yok" } : null,
-    ];
+    if (categorySlug === "karavan") {
+      const motorlu = karavanType !== "cekme";
+      const cekme = karavanType === "cekme" || !karavanType;
+      const vv = (v: unknown) => (v ? "Var" : "Yok");
+      return [
+        karavanType                ? { label: "Tip",           value: KARAVAN_TYPE_LABELS[karavanType] ?? karavanType } : null,
+        attrs.karavan_alt_tip      ? { label: "Alt Tip",       value: KARAVAN_ALT_TIP_LABELS[String(attrs.karavan_alt_tip)] ?? String(attrs.karavan_alt_tip) } : null,
+        attrs.berth                ? { label: "Yatak Kap.",    value: `${attrs.berth} kişi` }           : null,
+        attrs.bed_layout           ? { label: "Yatak Düzeni",  value: capitalize(String(attrs.bed_layout)) } : null,
+        attrs.license_class        ? { label: "Ehliyet Sınıfı", value: String(attrs.license_class) }     : null,
+        attrs.chassis_brand        ? { label: "Şasi / Taban Araç", value: String(attrs.chassis_brand) } : null,
+        karavanType === "kamper-van" && attrs.pop_top != null ? { label: "Yükselen Çatı", value: vv(attrs.pop_top) } : null,
+        attrs.length_cm            ? { label: "Uzunluk",       value: `${attrs.length_cm} cm` }         : null,
+        attrs.body_length_cm       ? { label: "Gövde Uzunluğu", value: `${attrs.body_length_cm} cm` }   : null,
+        attrs.interior_length_cm   ? { label: "İç Uzunluk",    value: `${attrs.interior_length_cm} cm` } : null,
+        attrs.width_cm             ? { label: "Genişlik",      value: `${attrs.width_cm} cm` }          : null,
+        attrs.interior_width_cm    ? { label: "İç Genişlik",   value: `${attrs.interior_width_cm} cm` } : null,
+        attrs.height_cm            ? { label: "İç Yükseklik",  value: `${attrs.height_cm} cm` }         : null,
+        attrs.exterior_height_cm   ? { label: "Dış Yükseklik", value: `${attrs.exterior_height_cm} cm` } : null,
+        attrs.empty_weight_kg      ? { label: "Boş Ağırlık",   value: `${attrs.empty_weight_kg} kg` }   : null,
+        attrs.mro_kg               ? { label: "Yürür Ağırlık (MRO)", value: `${attrs.mro_kg} kg` }      : null,
+        attrs.total_weight_kg      ? { label: "Azami Yüklü Ağırlık", value: `${attrs.total_weight_kg} kg` } : null,
+        attrs.payload_kg           ? { label: "Yük Kapasitesi", value: `${attrs.payload_kg} kg` }      : null,
+        attrs.tow_weight_kg        ? { label: "Çekme Ağ.",     value: `${attrs.tow_weight_kg} kg` }     : null,
+        cekme && attrs.axle_count      ? { label: "Aks Sayısı",    value: `${attrs.axle_count} aks` }       : null,
+        cekme && attrs.nose_weight_kg  ? { label: "Çeki Oku Yükü", value: `${attrs.nose_weight_kg} kg` }    : null,
+        cekme && attrs.brake_system    ? { label: "Fren Sistemi",  value: BRAKE_SYSTEM_LABELS[String(attrs.brake_system)] ?? String(attrs.brake_system) } : null,
+        attrs.has_braked_axle != null ? { label: "Frenli Dingil", value: vv(attrs.has_braked_axle) } : null,
+        cekme && attrs.has_stabilizer != null ? { label: "Stabilizatör", value: vv(attrs.has_stabilizer) } : null,
+        attrs.tire_size            ? { label: "Lastik Ölçüsü", value: String(attrs.tire_size) }          : null,
+        attrs.water_tank_l         ? { label: "Taze Su Tankı", value: `${attrs.water_tank_l} L` }       : null,
+        attrs.waste_water_tank_l   ? { label: "Gri/Pis Su Tankı", value: `${attrs.waste_water_tank_l} L` } : null,
+        attrs.fridge_l             ? { label: "Buzdolabı",     value: `${attrs.fridge_l} L` }           : null,
+        attrs.stove_burners        ? { label: "Ocak",          value: `${attrs.stove_burners} gözlü` }  : null,
+        attrs.heating_type         ? { label: "Isıtma",        value: HEATING_TYPE_LABELS[String(attrs.heating_type)] ?? capitalize(String(attrs.heating_type)) } : null,
+        attrs.heater_model         ? { label: "Isıtıcı Modeli", value: String(attrs.heater_model) }      : null,
+        attrs.toilet_type          ? { label: "Tuvalet",       value: TOILET_LABELS[String(attrs.toilet_type)] ?? String(attrs.toilet_type) } : null,
+        attrs.has_bathroom != null ? { label: "Banyo",         value: vv(attrs.has_bathroom) } : null,
+        attrs.has_shower   != null ? { label: "Duş",           value: vv(attrs.has_shower) }   : null,
+        attrs.has_kitchen  != null ? { label: "Mutfak",        value: vv(attrs.has_kitchen) }  : null,
+        attrs.has_ac       != null ? { label: "Klima",         value: vv(attrs.has_ac) }       : null,
+        attrs.has_awning   != null ? { label: "Tente",         value: vv(attrs.has_awning) }   : null,
+        attrs.solar_w              ? { label: "Güneş Paneli",  value: `${attrs.solar_w} W` }            : null,
+        attrs.leisure_battery_ah   ? { label: "Servis Aküsü",  value: `${attrs.leisure_battery_ah} Ah` } : null,
+        attrs.has_shore_power != null ? { label: "220V Şebeke Girişi", value: vv(attrs.has_shore_power) } : null,
+        // "Çekme" karavanın kendi motoru yok — motor/yakıt/vites/çekiş/depo/koltuk yalnız motorlu/kamper-van'da
+        // (bkz. specFields.ts isMotorizedKaravan).
+        motorlu && fuelType                  ? { label: "Yakıt",        value: FUEL_LABELS[fuelType] ?? fuelType } : null,
+        motorlu && attrs.engine_cc           ? { label: "Motor",        value: `${attrs.engine_cc} cc` }        : null,
+        motorlu && attrs.power_hp            ? { label: "Güç",          value: `${attrs.power_hp} HP` }         : null,
+        motorlu && attrs.transmission        ? { label: "Vites",        value: capitalize(String(attrs.transmission)) } : null,
+        motorlu && attrs.drivetrain          ? { label: "Çekiş",        value: DRIVETRAIN_LABELS[String(attrs.drivetrain)] ?? String(attrs.drivetrain) } : null,
+        motorlu && attrs.tank_l              ? { label: "Yakıt Deposu", value: `${attrs.tank_l} L` }            : null,
+        motorlu && attrs.fuel_consumption_l  ? { label: "Ort. Tüketim", value: `${attrs.fuel_consumption_l} L/100 km` } : null,
+        motorlu && attrs.seat_belts          ? { label: "Emniyet Kemerli Koltuk", value: `${attrs.seat_belts} adet` } : null,
+      ];
+    }
     if (categorySlug === "kamyonet") {
       const isEv = fuelType === "EV";
       const hasBattery = isEv || fuelType === "PHEV" || fuelType === "HYBRID";
