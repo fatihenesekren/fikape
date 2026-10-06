@@ -35,10 +35,21 @@ describe("kamyonet hero şeridi", () => {
     expect(map(a)["Çekiş"]).toBe("4×4 · Part-time");
     expect(map(a)["Kabin"]).toBe("Çift Kabin");
   });
-  it("pickup: 4×4 değilse 4×2, tork şeritte yok", () => {
+  it("pickup: 4×4 değilse 4×2; tork yalnız yedek aday olarak girer", () => {
     const m = map({ body_type: "pickup", four_wd: false, torque_nm: 400 });
     expect(m["Çekiş"]).toBe("4×2");
-    expect(m["Tork"]).toBeUndefined();
+    expect(m["Tork"]).toBe("400 Nm");
+    // asıl adaylar doluyken tork şeride girmez
+    const dolu = map({ body_type: "pickup", payload_kg: 1000, cab_type: "cift_kabin", four_wd: true, tow_capacity_kg: 3000, power_hp: 150, torque_nm: 400 });
+    expect(dolu["Tork"]).toBeUndefined();
+  });
+  it("pickup: yük/çekme/kasa verisi yoksa yedeklerle 5 kutuya tamamlanır (VW Transporter pikap)", () => {
+    const a = { body_type: "pickup", fuel_type: "DIESEL", cab_type: "cift_kabin", drivetrain: "FWD", four_wd: false, power_hp: 150, torque_nm: 340, fuel_consumption_l: 5.9, zero_to_100: 9.3, top_speed_kmh: 204 };
+    expect(labels(a)).toEqual(["Kabin", "Çekiş", "Güç", "Tork", "Ort. Tüketim"]);
+  });
+  it("elektrikli pickup: tüketim yerine menzil yedeği", () => {
+    const l = labels({ body_type: "pickup", fuel_type: "EV", cab_type: "cift_kabin", drivetrain: "FWD", four_wd: false, power_hp: 207, torque_nm: 339, ev_range_km: 438 });
+    expect(l).toEqual(["Kabin", "Çekiş", "Güç", "Tork", "Menzil"]);
   });
   it("minibüs: koltuk, şasi/tavan, güç, menzil, yük", () => {
     const a = { body_type: "minibus", fuel_type: "EV", seat_count: 15, chassis_length: "uzun", roof_height: "orta", power_hp: 269, battery_kwh: 68, payload_kg: 1636 };

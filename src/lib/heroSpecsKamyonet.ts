@@ -41,6 +41,11 @@ const dcCharge = (a: Attrs): Candidate => a.fuel_type === "EV" && has(a.dc_charg
 const zeroTo100 = (a: Attrs): Candidate => a.fuel_type === "EV" && has(a.zero_to_100) ? { label: "0–100 km/s", value: `${a.zero_to_100} sn` } : null;
 const topSpeed = (a: Attrs): Candidate => a.fuel_type === "EV" && has(a.top_speed_kmh) ? { label: "Azami Hız", value: `${a.top_speed_kmh} km/s` } : null;
 
+// Pickup yedek adayları (yakıt tipinden bağımsız): yük/çekme/kasa verisi eksik pickup'ta şerit 5 kutuya tamamlansın.
+const torque = (a: Attrs): Candidate => has(a.torque_nm) ? { label: "Tork", value: `${a.torque_nm} Nm` } : null;
+const zeroTo100Any = (a: Attrs): Candidate => has(a.zero_to_100) ? { label: "0–100 km/s", value: `${a.zero_to_100} sn` } : null;
+const topSpeedAny = (a: Attrs): Candidate => has(a.top_speed_kmh) ? { label: "Azami Hız", value: `${a.top_speed_kmh} km/s` } : null;
+
 // Şasi boyu + tavan tek kutuda: "Uzun · Orta Tavan".
 function chassisRoof(a: Attrs): Candidate {
   const c = has(a.chassis_length) ? (CHASSIS_LABELS[String(a.chassis_length)] ?? String(a.chassis_length)) : null;
@@ -93,7 +98,7 @@ export function buildKamyonetHeroSpecs(attrsInput: unknown): SpecItem[] {
     return pick(a, [cargo, payload, chassisRoof, power, consumptionOrRange, cargoLength, slidingDoors, tow, battery, dcCharge, zeroTo100, topSpeed]);
   }
   if (body === "pickup") {
-    return pick(a, [payload, cab, pickupDrive, tow, power, bedLength, clearance]);
+    return pick(a, [payload, cab, pickupDrive, tow, power, bedLength, clearance, torque, consumptionOrRange, zeroTo100Any, topSpeedAny]);
   }
   if (body === "minibus") {
     return pick(a, [seats, chassisRoof, power, consumptionOrRange, payload, slidingDoors]);
