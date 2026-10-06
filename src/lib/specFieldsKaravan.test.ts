@@ -97,6 +97,15 @@ describe("karavan teknik özellik listesi", () => {
     expect(m["Aks Sayısı"]).toBeUndefined();
     expect(m["Çeki Oku Yükü"]).toBeUndefined();
   });
+  it("gri ve atık (kara) su tankı ayrı alanlar ve ayrı satırlar (Airstream örneği)", () => {
+    const keys = (SPEC_FIELDS.karavan ?? []).map((f) => f.key);
+    expect(keys).toEqual(expect.arrayContaining(["waste_water_tank_l", "black_water_tank_l"]));
+    const m = Object.fromEntries(buildSpecList("karavan", { karavan_type: "cekme", water_tank_l: 72, waste_water_tank_l: 91, black_water_tank_l: 45 }).map((i) => [i.label, i.value]));
+    expect(m["Taze Su Tankı"]).toBe("72 L");
+    expect(m["Gri Su Tankı"]).toBe("91 L");
+    expect(m["Atık (Kara) Su Tankı"]).toBe("45 L");
+    expect(m["Gri/Pis Su Tankı"]).toBeUndefined();
+  });
   it("yükselen çatı yalnız kamper van'da listelenir", () => {
     const kamper = buildSpecList("karavan", { karavan_type: "kamper-van", pop_top: true }).map((i) => i.label);
     expect(kamper).toContain("Yükselen Çatı");

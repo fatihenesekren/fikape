@@ -87,6 +87,7 @@ const REASONABLE_RANGES: Record<string, [number, number]> = {
   tow_weight_kg:    [500, 5000],
   water_tank_l:     [10, 500],
   waste_water_tank_l: [10, 500],
+  black_water_tank_l: [5, 300],
   payload_kg:       [200, 5000],
   tow_capacity_kg:  [200, 5000],
   max_load_kg:      [50, 200],

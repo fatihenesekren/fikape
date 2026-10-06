@@ -32,7 +32,7 @@ export interface SpecComparisonRow {
 const HIGHER_IS_BETTER = new Set([
   "Güç", "Tork", "Menzil", "Batarya", "Bagaj", "Yatak Kap.", "Yük Kap.",
   "Çekme Kap.", "Çekme Ağ.", "Azami Hız", "Maks. Hız", "Maks. Yük",
-  "Taze Su Tankı", "Gri/Pis Su Tankı",
+  "Taze Su Tankı", "Gri Su Tankı", "Atık (Kara) Su Tankı",
 ]);
 const LOWER_IS_BETTER = new Set(["0–100 km/s", "Tam Şarj", "Hızlı Şarj (10–80%)"]);
 
