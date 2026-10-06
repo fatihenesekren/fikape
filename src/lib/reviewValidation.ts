@@ -1,13 +1,63 @@
-// Türkçe küfür/hakaret listesi
-const PROFANITY = [
+// Türkçe küfür/hakaret listesi — KELİME BAZLI eşleşir (bkz. profanityHit):
+// - PROFANITY_PREFIX: kelime bu kökle BAŞLIYORSA küfür (ek alabilir: "orospular", "götüne").
+// - PROFANITY_EXACT: kısa ve belirsiz kökler yalnız TAM kelime olarak ("oç"; "koç", "poçet" masum).
+// - PROFANITY_PHRASES: çok kelimeli ifadeler; ilk kelime başta, son kelime önek olarak eşleşir.
+// Önceki sürüm alt dize + tüm harfleri birleştirerek arıyordu: "sıkışık"/"sıkık" ("sikiş"/"sikik"),
+// "götürmek" ("göt"), "Koç" ("oç"), "sahip içmek" ("piç") gibi masum metinler reddediliyordu.
+const PROFANITY_PREFIX = [
   "orospu", "orospuçocuğu", "sikiş", "sikik", "götveren", "ibne",
-  "oç", "oğlum oç", "piç", "bok ye", "bok gibi", "kahpe", "fahişe",
-  "amk", "amına", "amcık", "göt", "götvur", "orospu evladı",
+  "piç", "kahpe", "fahişe", "amk", "amına", "amcık", "göt", "götvur",
 ];
+const PROFANITY_EXACT = ["oç"];
+const PROFANITY_PHRASES = ["oğlum oç", "bok ye", "bok gibi", "orospu evladı"];
 // Noktalı/noktasız "i" karışıklığını (klavye/evasion — "ıbne", "amina" gibi
-// çapraz yazımlar) yakalayabilmek için liste de aynı foldTrI ile normalize
-// edilip karşılaştırma bu haliyle yapılıyor (bkz. aşağıdaki foldTrI kullanımı).
-const PROFANITY_NORM = PROFANITY.map((w) => w.replace(/ı/g, "i"));
+// çapraz yazımlar) yakalayabilmek için liste de aynı katlamayla normalize edilir.
+const fold = (w: string) => w.replace(/ı/g, "i");
+const PROFANITY_PREFIX_NORM = PROFANITY_PREFIX.map(fold);
+const PROFANITY_EXACT_NORM = PROFANITY_EXACT.map(fold);
+const PROFANITY_PHRASES_NORM = PROFANITY_PHRASES.map(fold);
+// Katlama noktalı/noktasız i farkını yok ettiği için küfür köküne benzeyen MASUM Türkçe kelimeler
+// (orijinal, katlanmamış yazımıyla) istisna: "sıkış-ık/-mak" ≠ "sikiş", "sıkık" ≠ "sikik", "götür-" ≠ "göt".
+const PROFANITY_LEGIT_PREFIXES = ["sıkış", "sıkık", "götür"];
+
+/** Katlanmış kelimelerden biri küfür mü? (orijinal = aynı sıradaki katlanmamış küçük harf kelime) */
+function profanityHit(words: string[], originals: string[], chunks: string[] = [], chunkOriginals: string[] = []): boolean {
+  const kok = (w: string, orig: string) => {
+    if (PROFANITY_LEGIT_PREFIXES.some((p) => orig.startsWith(p))) return false;
+    return PROFANITY_EXACT_NORM.includes(w) || PROFANITY_PREFIX_NORM.some((p) => w.startsWith(p));
+  };
+  // 1) Tek kelimeler
+  for (let i = 0; i < words.length; i++) {
+    if (kok(words[i], originals[i] ?? words[i])) return true;
+  }
+  // 2) Çok kelimeli ifadeler (aralarında tek boşluk; son kelime önek)
+  const metin = " " + words.join(" ");
+  if (PROFANITY_PHRASES_NORM.some((p) => metin.includes(" " + p))) return true;
+  // 3) Ayraçla atlatma ("a.m.k", "a m k", "o.r.o.s.p.u"): ardışık KISA (≤2 harf) parçalar birleştirilip aranır.
+  //    Kelimelerin tamamını birleştirmek masum metinleri bozuyordu ("sahip içmek" → "piç"), bu yüzden yalnız kısa parça dizileri.
+  let i = 0;
+  while (i < words.length) {
+    if (words[i].length <= 2) {
+      let j = i;
+      while (j < words.length && words[j].length <= 2) j++;
+      if (j - i >= 2) {
+        const birlesik = words.slice(i, j).join("");
+        if (PROFANITY_EXACT_NORM.includes(birlesik) || PROFANITY_PREFIX_NORM.some((p) => birlesik.startsWith(p))) return true;
+      }
+      i = j;
+    } else {
+      i++;
+    }
+  }
+  // 4) Boşluksuz ayraçla atlatma ("or.o.spu", "s*i*k*i*ş", "a-m-k"): BOŞLUKLA ayrılmış her parçada, içinde ayraç varsa harfler birleştirilip aranır.
+  //    Boşluklu masum ifadeler ("sık iş", "sahip içmek") ayrı parça olduğu için etkilenmez.
+  for (let c = 0; c < chunks.length; c++) {
+    if (!/[a-züğışöç][^a-züğışöç]+[a-züğışöç]/i.test(chunks[c])) continue;
+    const harfler = chunks[c].replace(/[^a-züğışöç]/gi, "");
+    if (harfler && kok(harfler, (chunkOriginals[c] ?? chunks[c]).replace(/[^a-züğışöç]/gi, ""))) return true;
+  }
+  return false;
+}
 
 // Spam pattern'ları
 const SPAM_PATTERNS = [
@@ -160,12 +210,17 @@ export function checkContent(t: string, opts: ContentCheckOptions = {}): Validat
   // ç/ğ/ö/ş/ü harfleri de NFD'de temel harf+birleşen işarete ayrışıyor, bu da listedeki
   // aksanlı kelimelerle eşleşmeyi bozar.
   const lowerBase = t.replace(/[İIı]/g, "i").toLowerCase();
-  const lowerSpaced = lowerBase.replace(/[^a-züğışöç\s]/gi, " ");
-  const lowerCollapsed = lowerBase.replace(/[^a-züğışöç]/gi, "");
-  for (const word of PROFANITY_NORM) {
-    if (lowerSpaced.includes(word) || lowerCollapsed.includes(word)) {
-      return err("Hakaret veya uygunsuz ifade tespit edildi.", "PROFANITY");
-    }
+  const tokenla = (x: string) => x.split(/[^a-züğışöç]+/i).filter(Boolean);
+  const words = tokenla(lowerBase);
+  // Orijinal (katlanmamış) küçük harf kelimeler — yalnız masum-kelime istisnası için; "I"→"ı", "İ"→"i" (tr-TR).
+  const originals = tokenla(t.toLocaleLowerCase("tr-TR"));
+  const chunks = lowerBase.split(/\s+/).filter(Boolean);
+  const chunkOriginals = t.toLocaleLowerCase("tr-TR").split(/\s+/).filter(Boolean);
+  if (profanityHit(
+    words, originals.length === words.length ? originals : words,
+    chunks, chunkOriginals.length === chunks.length ? chunkOriginals : chunks,
+  )) {
+    return err("Hakaret veya uygunsuz ifade tespit edildi.", "PROFANITY");
   }
 
   return ok();

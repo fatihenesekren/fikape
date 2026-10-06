@@ -182,3 +182,51 @@ describe("validateDetailShort", () => {
     expect(validateDetailShort("").ok).toBe(true);
   });
 });
+
+describe("checkContent — küfür kontrolü kelime sınırı (yanlış-pozitif düzeltmesi)", () => {
+  const temiz = [
+    "dar ve sıkışık alanlardaki manevralarda sürücüye dikkatli olmayı gerektirir",
+    "sahip iç mekânı geniş bir yaşam alanı sağlıyor",
+    "koltuklar bir süre sonra sıkıştı ve rahatsız etti",
+    "uzun yolda biraz sıkık ve yorucu bir sürüş oldu",
+    "Koç Holding bayisinden aldım gayet memnunum",
+    "aracı servise götürmem gerekti ama randevu bulamadım",
+    "kamyonet çok yük götürüyor ve sağlam duruyor",
+    "poçet ve koçan gibi ekstra parçalar da kutudan çıktı",
+    "Camlı van ve panelvan arasındaki fark ciddi",
+    "sık iş seyahati yaptığım için dizel tercih ettim",
+    "yük-götürme kapasitesi fiyat-performans olarak çok iyi",
+  ];
+  for (const t of temiz) {
+    it(`masum metni reddetmez: "${t.slice(0, 40)}…"`, () => {
+      expect(checkContent(t).ok, t).toBe(true);
+    });
+  }
+
+  const kufur = [
+    "bu araba tam bir amk işi",
+    "bu araba tam bir a.m.k işi oldu",
+    "bu araba tam bir a m k işi oldu",
+    "O.R.O.S.P.U gibi bir satıcı çıktı",
+    "orospu çocuğu satıcı çıktı kesinlikle uzak durun",
+    "bu araç tam bir bok gibi çalışıyor",
+    "İBNE gibi davrandı satıcı",
+    "AMINA koyim bu aracı da",
+    "oğlum oç bu ne perhiz bu ne lahana turşusu",
+    "bu satıcı tam bir oç",
+    "götüne sokayım böyle aracı",
+    "orospular gibi davranıyor satıcılar",
+    "sikişmek isteyen bu satıcıya uzak durun",
+    "sikik bir araç aldım valla",
+    "or.o.spu gibi bir satıcı çıktı",
+    "s*i*k*i*ş bu araç değil",
+    "bu satıcı a-m-k gibi biri",
+  ];
+  for (const t of kufur) {
+    it(`gerçek küfürü hâlâ reddeder: "${t.slice(0, 40)}…"`, () => {
+      const r = checkContent(t);
+      expect(r.ok, t).toBe(false);
+      expect(r.rule).toBe("PROFANITY");
+    });
+  }
+});
