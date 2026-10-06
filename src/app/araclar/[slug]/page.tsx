@@ -761,7 +761,7 @@ export default async function VehicleDetailPage({
 
         <div className="relative max-w-5xl mx-auto px-4 py-10">
           <Link
-            href="/"
+            href="/araclar"
             className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-200 mb-6 transition-colors"
           >
             ← Tüm araçlar
