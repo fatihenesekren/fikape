@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { CacheTemizleButonu, type SonTemizleme } from "./CacheTemizleButonu";
 
 interface NavItem {
   href: string;
@@ -10,16 +11,8 @@ interface NavItem {
   icon: string;
 }
 
-export function AdminNav({ items }: { items: NavItem[] }) {
+export function AdminNav({ items, sonTemizleme }: { items: NavItem[]; sonTemizleme: SonTemizleme | null }) {
   const pathname = usePathname();
-
-  async function handleRevalidate() {
-    await fetch("/api/admin/revalidate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    });
-    alert("Cache temizlendi.");
-  }
 
   return (
     <aside className="hidden md:flex w-56 shrink-0 flex-col min-h-screen bg-white border-r border-gray-100">
@@ -65,13 +58,7 @@ export function AdminNav({ items }: { items: NavItem[] }) {
 
       {/* Alt */}
       <div className="px-3 py-4 border-t border-gray-100 space-y-1">
-        <button
-          onClick={handleRevalidate}
-          className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-colors text-left"
-        >
-          <span>🔄</span>
-          <span>Cache Temizle</span>
-        </button>
+        <CacheTemizleButonu variant="nav" son={sonTemizleme} />
         <Link
           href="/"
           className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-colors"

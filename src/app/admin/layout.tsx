@@ -44,6 +44,17 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     prisma.aiVehicleSummary.count({ where: { status: "PENDING_APPROVAL" } }).catch(() => 0),
   ]);
 
+  const sonTemizlemeKaydi = await prisma.catalogAuditLog
+    .findFirst({
+      where: { action: "CACHE_TEMIZLE" },
+      orderBy: { createdAt: "desc" },
+      select: { createdAt: true, adminLabel: true },
+    })
+    .catch(() => null);
+  const sonTemizleme = sonTemizlemeKaydi
+    ? { zaman: sonTemizlemeKaydi.createdAt.toISOString(), yonetici: sonTemizlemeKaydi.adminLabel }
+    : null;
+
   const navItems = [
     { href: "/admin/yorumlar",  label: "Yorumlar",       shortLabel: "Yorumlar",  icon: "💬", badge: pendingReviews },
     { href: "/admin/usta-basvurulari", label: "Usta Başvuruları", shortLabel: "Usta Başv.", icon: "🧑‍🔧", badge: pendingExpertApplications },
@@ -66,9 +77,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
-      <AdminNav items={navItems} />
+      <AdminNav items={navItems} sonTemizleme={sonTemizleme} />
       <div className="flex-1 flex flex-col min-w-0">
-        <AdminMobileHeader />
+        <AdminMobileHeader sonTemizleme={sonTemizleme} />
         <main className="flex-1 overflow-auto pb-16 md:pb-0">
           {children}
         </main>

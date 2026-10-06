@@ -10,6 +10,7 @@ const EYLEM_ETIKETI: Record<string, string> = {
   BRAND_RENAME: "Marka yeniden adlandırıldı", MODEL_RENAME: "Model yeniden adlandırıldı",
   BRAND_MERGE: "Markalar birleştirildi", MODEL_MERGE: "Modeller birleştirildi",
   OVERRIDE_HIDE: "Resmi katalogdan gizlendi", OVERRIDE_RESTORE: "Gizleme kaldırıldı",
+  CACHE_TEMIZLE: "Önbellek temizlendi",
 };
 
 export default async function DenetimPage() {

@@ -1,6 +1,7 @@
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { formatCompareVehicleName } from "@/lib/compare/formatCompareVehicleName";
+import { VERI_CACHE_ETIKETI } from "@/lib/cacheEtiketleri";
 
 export interface CompareSuggestion {
   slug: string;
@@ -46,7 +47,7 @@ export const getMostReviewedProducts = unstable_cache(
       .filter(Boolean) as CompareSuggestion[];
   },
   ["compare-most-reviewed"],
-  { revalidate: 3600 }
+  { revalidate: 3600, tags: [VERI_CACHE_ETIKETI] }
 );
 
 // İlk araç seçilip kategori kilitlenince /karsilastir'deki öneri şeridi bu
@@ -107,7 +108,7 @@ export const getMostReviewedByCategory = unstable_cache(
       });
   },
   ["compare-most-reviewed-by-category"],
-  { revalidate: 3600 }
+  { revalidate: 3600, tags: [VERI_CACHE_ETIKETI] }
 );
 
 export const getTopRatedProducts = unstable_cache(
@@ -173,5 +174,5 @@ export const getTopRatedProducts = unstable_cache(
       }>;
   },
   ["hero-top-rated"],
-  { revalidate: 3600 }
+  { revalidate: 3600, tags: [VERI_CACHE_ETIKETI] }
 );
