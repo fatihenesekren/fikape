@@ -47,8 +47,9 @@ const SINGLE_CARD_SYSTEM_PROMPT = `Sen bir araç bilgi platformu için tarafsız
 
 Kurallar:
 - Dengeli ve gerçekçi ol — ne abartılı olumlu ne karamsar bir ton kullan. Zayıf yönleri yalnızca verilen teknik özelliklerden çıkarılabilen noktalarla (örn. boyut ve manevra, yük ya da çekme sınırı, yakıt tipi, şarj ve menzil) nazikçe belirt, sadece övgü yazma.
-- TEKNİK YORUM yap: motor ve yakıt tipi, şanzıman tipi ve vites sayısı, çekiş sistemi, güç-tork düzeyi, şasi ve kasa yapısı, yük-çekme kapasitesi, batarya-menzil-şarj gibi verilen özelliklerden çıkarılabilecek 1-2 somut teknik gözlem içersin (örn. tork değerinin yük altında sağladığı avantaj, uzun şasinin yük hacmine etkisi, otomatik şanzımanın kullanım kolaylığı, çekiş tipinin yol tutuşuna etkisi). Jenerik "pratik", "işlevsel" gibi boş sıfatlarla yetinme.
-- Aşağıdaki listede yer alan değerleri (güç, tork, vites sayısı, yük kapasitesi gibi) gerektiğinde AYNEN kullanabilirsin. Listede OLMAYAN hiçbir sayıyı (yakıt tüketimi, menzil, 0-100, ağırlık, fiyat, arıza oranı vb.) UYDURMA ve yazma.
+- TEKNİK YORUM yap ama SAYIYA BOĞMA: metinde EN FAZLA 2 rakam geçsin (örn. güç ya da tork; vites sayısı gibi). Gerisini rakam vermeden, aracın teknik karakterini anlatarak yaz: motor ve şanzıman tipi, çekiş sistemi, kasa/şasi yapısı, kullanım amacına uygunluk. Aynı değeri iki kez yazma. Jenerik "pratik", "işlevsel" gibi boş sıfatlarla yetinme.
+- Yorum aracın gerçek kullanım amacına uygun olsun: şehir içi bir hafif ticari ya da aile aracı için arazi, 4x4 gibi alakasız çıkarımlar YAPMA.
+- Listede OLMAYAN hiçbir sayıyı (yakıt tüketimi, menzil, 0-100, ağırlık, fiyat, arıza oranı vb.) UYDURMA ve yazma.
 - Sürüş konforu, süspansiyon, ses yalıtımı, kabin malzeme kalitesi, dayanıklılık, arıza ya da kullanıcı memnuniyeti hakkında HİÇBİR iddiada bulunma — bunlar doğrulanmış veride yok.
 - Donanım/güvenlik özelliği hakkında HİÇBİR iddiada bulunma — ne spesifik ("ABS yok") ne genel ifadeyle ("modern güvenlik donanımları eksik", "temel donanıma sahip" gibi). Aşağıda verilen doğrulanmış teknik özellikler dışında herhangi bir donanımın var ya da yok olduğuna dair hiçbir şey yazma, bu konuyu hiç açma.
 - Belirli bir web sitesi, forum veya kişi adı ANMA.
@@ -139,10 +140,9 @@ export async function syncAiVehicleSummary(productId: number): Promise<void> {
   }
 }
 
-// Ürün onaylanıp yayına alındığında çağrılır — henüz gerçek yorumu yoksa
-// PENDING_APPROVAL durumunda bir SINGLE_CARD üretir. Admin onaylamadan
-// canlıya çıkmaz (bkz. proje kararı: ilk AI mesajı admin onaylı).
-export async function generateSingleCardSummary(productId: number): Promise<void> {
+// Yalnız metni üretir, DB'ye yazmaz (düzeltme + içerik filtresinden geçmiş).
+// Mevcut onaylı özeti silmeden aday üretmek için (admin toplu yenileme).
+export async function buildSingleCardText(productId: number): Promise<string | null> {
   const product = await prisma.product.findUnique({
     where: { id: productId },
     select: {
@@ -152,13 +152,20 @@ export async function generateSingleCardSummary(productId: number): Promise<void
       category: { select: { slug: true } },
     },
   });
-  if (!product) return;
+  if (!product) return null;
 
   const vehicleName = productDisplayName(product);
   const specsText = specsContextText(product.category?.slug ?? "", product.attributes);
   const specsBlock = specsText ? `\nDoğrulanmış teknik özellikler:\n${specsText}` : "";
   const prompt = SINGLE_CARD_SYSTEM_PROMPT.replace("{VEHICLE}", vehicleName).replace("{SPECS_BLOCK}", specsBlock);
-  const summaryText = await safeGenerate(prompt);
+  return safeGenerate(prompt);
+}
+
+// Ürün onaylanıp yayına alındığında çağrılır — henüz gerçek yorumu yoksa
+// PENDING_APPROVAL durumunda bir SINGLE_CARD üretir. Admin onaylamadan
+// canlıya çıkmaz (bkz. proje kararı: ilk AI mesajı admin onaylı).
+export async function generateSingleCardSummary(productId: number): Promise<void> {
+  const summaryText = await buildSingleCardText(productId);
   if (!summaryText) return;
 
   await prisma.aiVehicleSummary.upsert({
