@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 import { apiIstek, GECIKME_NOTU, KATEGORI_ETIKETI, YAKIT_ETIKETI } from "../istek";
 
 interface Urun {
@@ -23,6 +24,7 @@ export function AracDetayClient({ urun, bag }: { urun: Urun; bag: Record<string,
   const [benzerler, setBenzerler] = useState<string[] | null>(null);
   const [mesaj, setMesaj] = useState<{ tur: "ok" | "hata"; metin: string } | null>(null);
   const [mesgul, setMesgul] = useState(false);
+  const [pasifOnayAcik, setPasifOnayAcik] = useState(false);
   const [silOnay, setSilOnay] = useState("");
   const [neden, setNeden] = useState("");
   const motorlu = MOTORLU.includes(urun.kategori);
@@ -50,8 +52,13 @@ export function AracDetayClient({ urun, bag }: { urun: Urun; bag: Record<string,
     setMesaj({ tur: "hata", metin: r.veri.error ?? "Kaydedilemedi" });
   }
 
-  async function durum(islem: "pasif" | "aktif") {
-    if (islem === "pasif" && !confirm("Araç katalogdan kaldırılsın mı? Sayfa açık kalır; yeni yorum, soru, garaj ve favori kapanır.")) return;
+  // Pasife alma yorum/soru/garaj/favoriyi kapattığı için önce ConfirmDialog ile onay istenir (tarayıcı confirm() kullanılmaz).
+  function durum(islem: "pasif" | "aktif") {
+    if (islem === "pasif") { setPasifOnayAcik(true); return; }
+    void durumUygula(islem);
+  }
+
+  async function durumUygula(islem: "pasif" | "aktif") {
     setMesgul(true); setMesaj(null);
     const r = await apiIstek(`/api/admin/katalog/urunler/${urun.id}/durum`, "POST", { islem, neden: neden || null });
     setMesgul(false);
@@ -124,9 +131,9 @@ export function AracDetayClient({ urun, bag }: { urun: Urun; bag: Record<string,
           <h3 className="font-semibold text-gray-900">Katalog durumu</h3>
           <input className={alan} placeholder="Neden (isteğe bağlı, denetim kaydına yazılır)" value={neden} maxLength={300} onChange={(e) => setNeden(e.target.value)} />
           {yayinda ? (
-            <button disabled={mesgul} onClick={() => void durum("pasif")} className="px-4 py-2 rounded-lg bg-amber-600 text-white text-sm font-medium disabled:opacity-50">Katalogdan kaldır (pasife al)</button>
+            <button disabled={mesgul} onClick={() => durum("pasif")} className="px-4 py-2 rounded-lg bg-amber-600 text-white text-sm font-medium disabled:opacity-50">Katalogdan kaldır (pasife al)</button>
           ) : (
-            <button disabled={mesgul} onClick={() => void durum("aktif")} className="px-4 py-2 rounded-lg bg-green-600 text-white text-sm font-medium disabled:opacity-50">Kataloğa geri al</button>
+            <button disabled={mesgul} onClick={() => durum("aktif")} className="px-4 py-2 rounded-lg bg-green-600 text-white text-sm font-medium disabled:opacity-50">Kataloğa geri al</button>
           )}
         </div>
       )}
@@ -145,6 +152,16 @@ export function AracDetayClient({ urun, bag }: { urun: Urun; bag: Record<string,
           </>
         )}
       </div>
+
+      <ConfirmDialog
+        open={pasifOnayAcik}
+        title="Araç katalogdan kaldırılsın mı?"
+        description="Sayfa açık kalır; yeni yorum, soru, garaj ve favori kapanır. Daha sonra geri alınabilir."
+        confirmLabel="Katalogdan kaldır"
+        loading={mesgul}
+        onConfirm={() => { setPasifOnayAcik(false); void durumUygula("pasif"); }}
+        onCancel={() => setPasifOnayAcik(false)}
+      />
     </div>
   );
 }

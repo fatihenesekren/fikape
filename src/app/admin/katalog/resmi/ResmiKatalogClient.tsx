@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { KatalogMarkaDosyasi } from "@/lib/katalog/tipler";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 import { apiIstek, GECIKME_NOTU, KATEGORI_ETIKETI } from "../istek";
 
 export interface KatalogSecenek { marka: string; dosya: string; modeller: { ad: string; versiyonlar: string[] }[] }
@@ -21,6 +22,7 @@ export function ResmiKatalogClient({ secenekler, kayitlar }: { secenekler: Recor
   const [dosyaVersiyonlari, setDosyaVersiyonlari] = useState<{ model: string; liste: { v: string; p: string[] }[] } | null>(null);
   const [mesaj, setMesaj] = useState<{ tur: "ok" | "hata"; metin: string } | null>(null);
   const [mesgul, setMesgul] = useState(false);
+  const [markaOnayAcik, setMarkaOnayAcik] = useState(false);
 
   const markalar = secenekler[kategori] ?? [];
   const markaSecenek = markalar.find((m) => m.marka === marka);
@@ -55,8 +57,13 @@ export function ResmiKatalogClient({ secenekler, kayitlar }: { secenekler: Recor
     : dosyaVersiyonlari?.model === model ? dosyaVersiyonlari.liste.filter((x) => x.v) : [];
   const paketListesi = versiyonListesi.find((x) => x.v === versiyon)?.p ?? [];
 
-  async function gizle(scope: "BRAND" | "MODEL" | "TRIM") {
-    if (scope === "BRAND" && !confirm(`${marka} markasının tüm resmi modelleri formlardan kalkacak. Devam edilsin mi?`)) return;
+  // Marka gizleme tüm modelleri etkilediği için önce ConfirmDialog ile onay istenir (tarayıcı confirm() kullanılmaz).
+  function gizle(scope: "BRAND" | "MODEL" | "TRIM") {
+    if (scope === "BRAND") { setMarkaOnayAcik(true); return; }
+    void gizleUygula(scope);
+  }
+
+  async function gizleUygula(scope: "BRAND" | "MODEL" | "TRIM") {
     setMesgul(true); setMesaj(null);
     const r = await apiIstek("/api/admin/katalog/override", "POST", {
       kategori, scope, marka,
@@ -122,9 +129,9 @@ export function ResmiKatalogClient({ secenekler, kayitlar }: { secenekler: Recor
           </label>
         )}
         <div className="flex flex-wrap gap-2">
-          <button disabled={mesgul || !marka || !!model} onClick={() => void gizle("BRAND")} className="px-3 py-2 rounded-lg bg-amber-600 text-white text-sm font-medium disabled:opacity-40">Markayı gizle</button>
-          <button disabled={mesgul || !model || !!versiyon} onClick={() => void gizle("MODEL")} className="px-3 py-2 rounded-lg bg-amber-600 text-white text-sm font-medium disabled:opacity-40">Modeli gizle</button>
-          <button disabled={mesgul || !model || !versiyon} onClick={() => void gizle("TRIM")} className="px-3 py-2 rounded-lg bg-amber-600 text-white text-sm font-medium disabled:opacity-40">{paket ? "Donanımı gizle" : "Versiyonu gizle"}</button>
+          <button disabled={mesgul || !marka || !!model} onClick={() => gizle("BRAND")} className="px-3 py-2 rounded-lg bg-amber-600 text-white text-sm font-medium disabled:opacity-40">Markayı gizle</button>
+          <button disabled={mesgul || !model || !!versiyon} onClick={() => gizle("MODEL")} className="px-3 py-2 rounded-lg bg-amber-600 text-white text-sm font-medium disabled:opacity-40">Modeli gizle</button>
+          <button disabled={mesgul || !model || !versiyon} onClick={() => gizle("TRIM")} className="px-3 py-2 rounded-lg bg-amber-600 text-white text-sm font-medium disabled:opacity-40">{paket ? "Donanımı gizle" : "Versiyonu gizle"}</button>
         </div>
       </div>
 
@@ -146,6 +153,16 @@ export function ResmiKatalogClient({ secenekler, kayitlar }: { secenekler: Recor
           {kayitlar.length === 0 && <li className="px-4 py-8 text-sm text-gray-400 text-center">Gizlenen yok.</li>}
         </ul>
       </div>
+
+      <ConfirmDialog
+        open={markaOnayAcik}
+        title="Marka gizlensin mi?"
+        description={`${marka} markasının tüm resmi modelleri formlardan kalkacak. Silinmez, daha sonra geri alınabilir.`}
+        confirmLabel="Markayı gizle"
+        loading={mesgul}
+        onConfirm={() => { setMarkaOnayAcik(false); void gizleUygula("BRAND"); }}
+        onCancel={() => setMarkaOnayAcik(false)}
+      />
     </div>
   );
 }
