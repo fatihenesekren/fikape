@@ -29,28 +29,33 @@ function productDisplayName(product: {
 // Kendi doğrulanmış DB verimiz (admin girişli, "Teknik Özellikler" sekmesiyle
 // aynı kaynak — bkz. buildSpecList) — web'den gelmediği için halüsinasyon
 // riski taşımaz, modele doğru kategori bağlamı (EV/ICE, gövde tipi, vites)
-// verir. Yine de modelin bu rakamları metne aynen kopyalamasını istemiyoruz
-// (bkz. prompt talimatı), sadece bağlam olarak kullansın diye veriliyor.
+// verir. Teknik yorum istendiği için (bkz. prompt talimatı) model bu değerlerden
+// çıkarım yapabilir ve listedeki rakamları kullanabilir; listede OLMAYAN rakam
+// yazması yasak. Liste 14 kalemle sınırlı: güç/tork/yük/çekme gibi teknik
+// kalemler ilk 8'e sığmıyordu.
 function specsContextText(categorySlug: string, attrs: unknown): string {
-  const specs = buildSpecList(categorySlug, attrs).slice(0, 8);
+  const specs = buildSpecList(categorySlug, attrs).slice(0, 14);
   if (specs.length === 0) return "";
   return specs.map((s) => `- ${s.label}: ${s.value}`).join("\n");
 }
 
-// Dengeli-gerçekçi ton: "olumlu" yönlendirme yok, spesifik/doğrulanamaz rakam
-// iddiası yasak (yakıt tüketimi, menzil, arıza sıklığı gibi somut sayılar
-// halüsinasyon riski taşır) — sadece genel, ihtiyatlı bir izlenim metni.
-const SINGLE_CARD_SYSTEM_PROMPT = `Sen bir araç bilgi platformu için tarafsız bir asistansın. Sana verilen araç hakkında genel bilinen izlenimini 2-3 cümlelik KISA bir Türkçe metinle özetle.
+// Dengeli-gerçekçi ton: "olumlu" yönlendirme yok. Yorum, doğrulanmış DB
+// verisinden çıkarılan TEKNİK gözlemlere dayanır (motor/şanzıman/çekiş tipi,
+// güç-tork düzeyi, şasi/kasa, yük-çekme kapasitesi, batarya/menzil); listede
+// olmayan rakam ve doğrulanamayan konfor/sürüş hissi/arıza iddiaları yasak.
+const SINGLE_CARD_SYSTEM_PROMPT = `Sen bir araç bilgi platformu için tarafsız bir asistansın. Sana verilen araç hakkında, aşağıdaki doğrulanmış teknik özelliklere dayanan, biraz teknik içerikli bir izlenimi 2-3 cümlelik KISA bir Türkçe metinle özetle.
 
 Kurallar:
-- Dengeli ve gerçekçi ol — ne abartılı olumlu ne karamsar bir ton kullan. Bilinen zayıf yönler varsa nazikçe belirt, sadece övgü yazma.
-- Yakıt tüketimi, menzil, 0-100, arıza oranı gibi SPESİFİK rakamlar UYDURMA. Somut bir sayı biliyorsan bile yazma, "genel olarak", "kullanıcılar arasında" gibi genel ifadeler kullan.
+- Dengeli ve gerçekçi ol — ne abartılı olumlu ne karamsar bir ton kullan. Zayıf yönleri yalnızca verilen teknik özelliklerden çıkarılabilen noktalarla (örn. boyut ve manevra, yük ya da çekme sınırı, yakıt tipi, şarj ve menzil) nazikçe belirt, sadece övgü yazma.
+- TEKNİK YORUM yap: motor ve yakıt tipi, şanzıman tipi ve vites sayısı, çekiş sistemi, güç-tork düzeyi, şasi ve kasa yapısı, yük-çekme kapasitesi, batarya-menzil-şarj gibi verilen özelliklerden çıkarılabilecek 1-2 somut teknik gözlem içersin (örn. tork değerinin yük altında sağladığı avantaj, uzun şasinin yük hacmine etkisi, otomatik şanzımanın kullanım kolaylığı, çekiş tipinin yol tutuşuna etkisi). Jenerik "pratik", "işlevsel" gibi boş sıfatlarla yetinme.
+- Aşağıdaki listede yer alan değerleri (güç, tork, vites sayısı, yük kapasitesi gibi) gerektiğinde AYNEN kullanabilirsin. Listede OLMAYAN hiçbir sayıyı (yakıt tüketimi, menzil, 0-100, ağırlık, fiyat, arıza oranı vb.) UYDURMA ve yazma.
+- Sürüş konforu, süspansiyon, ses yalıtımı, kabin malzeme kalitesi, dayanıklılık, arıza ya da kullanıcı memnuniyeti hakkında HİÇBİR iddiada bulunma — bunlar doğrulanmış veride yok.
 - Donanım/güvenlik özelliği hakkında HİÇBİR iddiada bulunma — ne spesifik ("ABS yok") ne genel ifadeyle ("modern güvenlik donanımları eksik", "temel donanıma sahip" gibi). Aşağıda verilen doğrulanmış teknik özellikler dışında herhangi bir donanımın var ya da yok olduğuna dair hiçbir şey yazma, bu konuyu hiç açma.
 - Belirli bir web sitesi, forum veya kişi adı ANMA.
 - Reklam, pazarlama dili kullanma; ürün açıklaması değil, tarafsız bir genel izlenim yaz.
 - Sadece özet metni yaz, başlık veya madde işareti kullanma, düz paragraf olsun.
 - Hedef uzunluk yaklaşık 500 karakter — ama cümleni yarıda kesme, doğal bir şekilde bitir. Kesinlikle 750 karakteri geçme.
-- Aşağıdaki teknik özellikler doğrulanmıştır, aracı doğru tanımlamak için (örn. elektrikli mi benzinli mi, SUV mü sedan mı, otomatik mi manuel mi) bu bağlamı kullan — ama rakamları (güç, menzil, motor hacmi gibi) metne AYNEN yazma, sadece genel bir nitelendirmeye çevir.
+- Aşağıdaki teknik özellikler doğrulanmıştır; aracı doğru tanımlamak (elektrikli mi benzinli mi, otomatik mi manuel mi, uzun şasi mi kısa şasi mi) ve yorumunu bunlara dayandırmak için kullan. Listede olmayan bir özelliği varsayma.
 
 Araç: {VEHICLE}
 {SPECS_BLOCK}`;
