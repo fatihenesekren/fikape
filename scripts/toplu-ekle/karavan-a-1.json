@@ -16,23 +16,9 @@
  {
   "dogrudan": true,
   "marka": "Airstream",
-  "model": "Trade Wind (2022-)",
-  "yil": 2022,
-  "versiyon": "19 ft"
- },
- {
-  "dogrudan": true,
-  "marka": "Airstream",
   "model": "World Traveler (2026-)",
   "yil": 2026,
   "versiyon": "22 ft"
- },
- {
-  "dogrudan": true,
-  "marka": "Caravelair",
-  "model": "Alba (2024-)",
-  "yil": 2024,
-  "versiyon": "325"
  },
  {
   "dogrudan": true,

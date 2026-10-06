@@ -294,7 +294,7 @@
 | Marka | Durum | Not |
 |---|---|---|
 | adria | ✅ Tamamlandı | Türkiye'de resmi distribütör var (adriaturkiye.com, NN Grup). Eksik çekme karavan modelleri eklendi: Action (sportif kompakt), Alpina (4 mevsim flagship). Mevcut Altea/Adora/Aviva/Astella/Sonic/Matrix doğrulandı, dokunulmadı. |
-| airstream | ✅ Tamamlandı | Türkiye'de resmi ithalat yok, ikinci el pazarı var. Eksik güncel modeller eklendi: Caravel, Basecamp, Trade Wind. Mevcut Bambi/Flying Cloud/Globetrotter/Classic/Interstate doğrulandı. |
+| airstream | ✅ Tamamlandı | Türkiye'de resmi ithalat yok, ikinci el pazarı var. Eksik güncel modeller eklendi: Caravel, Basecamp, Trade Wind. Mevcut Bambi/Flying Cloud/Globetrotter/Classic/Interstate doğrulandı. (2026-10-06 düzeltme: "Trade Wind" modeli bulunmadığı için katalogdan çıkarıldı; ilgili ürün Bambi 19CB olarak düzeltildi.) |
 | bailey | ✅ Tamamlandı | Türkiye'de resmi satış kanıtı bulunamadı (düşük güven, ikinci el/ithal için geçerli). Eksik model eklendi: Phoenix (GT75/Black Edition). Mevcut Discovery/Unicorn/Pegasus/Alicanto doğrulandı. |
 | burstner | ✅ Tamamlandı | Önemli bulgu: Bürstner 2027 sezonundan itibaren çekme karavan üretimini tamamen durduruyor, sadece motokaravan/camper van üretecek. Mevcut Premio/Averso/Lyseo (çekme karavan) korundu, motokaravan hattı eklendi: Ixeo, Nexxo, Elegance (düşük-orta güven). |
 | carado | ✅ Tamamlandı | Türkiye'de resmi distribütör kanıtı bulunamadı (ikinci el pazarı mevcut). Yeni CV Serisi (Camper Van, 2022-, CV600/CV602/CV640/CV590 4x4) eklendi, mevcut T/A/V/I/C Serisi korundu. |
