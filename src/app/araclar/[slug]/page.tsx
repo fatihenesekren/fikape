@@ -48,6 +48,7 @@ import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelD
 import { buildSpecList } from "@/lib/buildSpecList";
 import { buildKamyonetHeroSpecs } from "@/lib/heroSpecsKamyonet";
 import { buildEbikeHeroSpecs } from "@/lib/heroSpecsEbike";
+import { ImageEdgeFill } from "@/components/ImageEdgeFill";
 
 export async function generateMetadata({
   params,
@@ -771,10 +772,9 @@ export default async function VehicleDetailPage({
                 ? categorySlug === "e-scooter" || categorySlug === "motosiklet" || categorySlug === "e-bisiklet"
                   ? (
                     // Yatay stüdyo fotoğrafı kareye sığdırılınca "kutu içinde kutu" görünümü oluşuyordu:
-                    // aynı fotoğraf arkada bulanık ve kutuyu dolduracak şekilde konur (büyük banner'daki yöntem),
-                    // net fotoğraf üstüne sığdırılır → kutu fotoğrafın kendi zemin rengiyle dolar.
+                    // boşluklar fotoğrafın kenar rengiyle doldurulur (ImageEdgeFill), net fotoğraf üstüne sığdırılır.
                     <>
-                      <Image src={imageUrl} alt="" aria-hidden fill sizes="80px" className="object-cover scale-150 blur-md" />
+                      <ImageEdgeFill src={imageUrl} />
                       <Image src={imageUrl} alt="" fill sizes="80px" className="object-contain" />
                     </>
                   )

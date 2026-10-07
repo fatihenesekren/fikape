@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ImageEdgeFill } from "@/components/ImageEdgeFill";
 import { FikapeScore } from "@/components/FikapeScore";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
@@ -128,17 +129,8 @@ export function VehicleCard({
         {imageUrl ? (
           <>
             {/* E-scooter/e-bisiklet: beyaz/stüdyo zeminli fotoğraf gri kutuda "kutu içinde kutu" gibi duruyordu;
-                aynı fotoğraf arkada bulanık dolgu olur, kutu fotoğrafın kendi zemin rengiyle dolar. */}
-            {isScooter && (
-              <Image
-                src={imageUrl}
-                alt=""
-                aria-hidden
-                fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className="object-cover scale-150 blur-xl"
-              />
-            )}
+                boşluklar fotoğrafın kenar rengiyle doldurulur (ImageEdgeFill). */}
+            {isScooter && <ImageEdgeFill src={imageUrl} />}
             <Image
               src={imageUrl}
               alt={`${brandName} ${cleanModelName}${trimName ? ` ${trimName}` : ""}`}
