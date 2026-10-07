@@ -141,7 +141,7 @@ export const KARAVAN_FUEL_TYPES: TypeOption[] = [
 
 export const HEATING_TYPES: TypeOption[] = [
   { value: "gazli",              label: "Gazlı (Truma/LPG)" },
-  { value: "dizel",               label: "Dizel (Webasto/Eberspächer)" },
+  { value: "dizel",               label: "Dizel" },
   { value: "elektrikli",          label: "Elektrikli" },
   { value: "klima-isi-pompasi",   label: "Klima/Isı Pompası" },
   { value: "yok",                 label: "Yok" },
