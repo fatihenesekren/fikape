@@ -4,7 +4,6 @@
     {
       "name": "Engine Pro (Fat Tire, 2021-)",
       "versions": [
-        "750W 45 km/h 48V 16Ah",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "EP-2 Pro (Fat Tire Katlanabilir, 2021-)",
       "versions": [
-        "750W 45 km/h 48V 13Ah",
         "Diğer"
       ],
       "trims": [
@@ -26,7 +24,6 @@
     {
       "name": "C20 Pro (Katlanabilir Şehir, 2022-)",
       "versions": [
-        "250W 25 km/h 36V 19.2Ah",
         "Diğer"
       ],
       "trims": [
@@ -37,7 +34,6 @@
     {
       "name": "M20 (Katlanabilir, 2022-)",
       "versions": [
-        "250W 25 km/h 48V 13Ah",
         "Diğer"
       ],
       "trims": [
@@ -48,7 +44,6 @@
     {
       "name": "T14 (Katlanabilir Kompakt, 2023-)",
       "versions": [
-        "250W 25 km/h 48V 10Ah",
         "Diğer"
       ],
       "trims": [
@@ -59,9 +54,9 @@
     {
       "name": "P275 (Orta Motor, 2024-)",
       "versions": [
-        "250W Mid-Drive 25 km/h Pro",
-        "250W Mid-Drive 25 km/h ST",
-        "250W Mid-Drive 25 km/h SE",
+        "Pro",
+        "ST",
+        "SE",
         "Diğer"
       ],
       "trims": [
@@ -71,16 +66,16 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "250W Mid-Drive 25 km/h Pro": [
+        "Pro": [
           "Pro",
           "Diğer"
         ],
-        "250W Mid-Drive 25 km/h ST": [
+        "ST": [
           "ST",
           "SE",
           "Diğer"
         ],
-        "250W Mid-Drive 25 km/h SE": [
+        "SE": [
           "ST",
           "SE",
           "Diğer"
@@ -90,9 +85,9 @@
     {
       "name": "X20 / X24 / X26 (Fat Tire Katlanabilir)",
       "versions": [
-        "750W Çift 45 km/h X20",
-        "750W Çift 45 km/h X24",
-        "1000W Çift 45 km/h X26",
+        "X20",
+        "X24",
+        "X26",
         "Diğer"
       ],
       "trims": [
@@ -103,7 +98,6 @@
     {
       "name": "Engine X (Fat Tire Full Süspansiyon)",
       "versions": [
-        "750W Çift 45 km/h",
         "Diğer"
       ],
       "trims": [
@@ -114,7 +108,6 @@
     {
       "name": "L20 (Şehir)",
       "versions": [
-        "250W 48V 13.5Ah 648Wh",
         "Diğer"
       ],
       "trims": [
@@ -125,7 +118,6 @@
     {
       "name": "E26",
       "versions": [
-        "250W Orta Motor 48V 15Ah 720Wh",
         "Diğer"
       ],
       "trims": [
@@ -146,7 +138,6 @@
     {
       "name": "Engine Pro 3.0 (Fat Tire Katlanabilir)",
       "versions": [
-        "250W 48V 15Ah 720Wh",
         "Diğer"
       ],
       "trims": [
@@ -157,7 +148,6 @@
     {
       "name": "EP-2 Boost (Fat Tire Katlanabilir)",
       "versions": [
-        "250W 55Nm",
         "Diğer"
       ],
       "trims": [

@@ -4,7 +4,6 @@
     {
       "name": "Cityrun (Şehir, 2021-)",
       "versions": [
-        "250W 25 km/h 36V 10.4Ah",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "Ranger (Fat Tire, 2021-)",
       "versions": [
-        "500W 32 km/h 48V 12.5Ah",
         "Diğer"
       ],
       "trims": [
@@ -27,7 +25,6 @@
     {
       "name": "Hauler (Kargo, 2022-)",
       "versions": [
-        "750W 32 km/h 48V 15Ah",
         "Diğer"
       ],
       "trims": [
@@ -38,7 +35,6 @@
     {
       "name": "Mars (Fat Tire Katlanabilir, 2022-)",
       "versions": [
-        "500W 32 km/h 48V 12.5Ah",
         "Diğer"
       ],
       "trims": [
@@ -49,8 +45,8 @@
     {
       "name": "Explore / Tyson (Fat Tire)",
       "versions": [
-        "750W 32 km/h Explore",
-        "1000W Çift 32 km/h Tyson",
+        "Explore",
+        "Tyson",
         "Diğer"
       ],
       "trims": [
@@ -61,8 +57,8 @@
     {
       "name": "Brawn / Venus (Şehir)",
       "versions": [
-        "750W 32 km/h Brawn",
-        "500W 32 km/h Venus",
+        "Brawn",
+        "Venus",
         "Diğer"
       ],
       "trims": [
@@ -73,7 +69,6 @@
     {
       "name": "Saturn (Katlanabilir)",
       "versions": [
-        "750W 32 km/h 52V Çift Batarya",
         "Diğer"
       ],
       "trims": [
@@ -84,8 +79,6 @@
     {
       "name": "Hero",
       "versions": [
-        "750W Orta Motor 48V 18Ah",
-        "1000W Göbek Motor 48V 18Ah",
         "Diğer"
       ],
       "trims": [
@@ -96,7 +89,6 @@
     {
       "name": "Horizon (Şehir)",
       "versions": [
-        "750W 48V 14.4Ah 692Wh",
         "Diğer"
       ],
       "trims": [
@@ -107,7 +99,6 @@
     {
       "name": "Cityscape",
       "versions": [
-        "350W 36V 10Ah",
         "Diğer"
       ],
       "trims": [
@@ -128,7 +119,6 @@
     {
       "name": "Sola",
       "versions": [
-        "500W 48V 12Ah",
         "Diğer"
       ],
       "trims": [

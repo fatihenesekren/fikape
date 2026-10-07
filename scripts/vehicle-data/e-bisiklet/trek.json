@@ -4,9 +4,6 @@
     {
       "name": "Rail (E-Enduro, 2020-)",
       "versions": [
-        "250W Bosch CX 25 km/h 625Wh",
-        "250W Bosch CX 25 km/h 750Wh",
-        "250W Bosch CX 25 km/h 800Wh",
         "Diğer"
       ],
       "trims": [
@@ -21,8 +18,6 @@
     {
       "name": "Powerfly (E-MTB Hardtail, 2019-)",
       "versions": [
-        "250W Bosch CX 25 km/h 500Wh",
-        "250W Bosch CX 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -35,8 +30,6 @@
     {
       "name": "Allant+ (Trekking/Şehir, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
-        "250W Bosch 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -52,7 +45,6 @@
     {
       "name": "Domane+ (Yol, 2019-)",
       "versions": [
-        "250W Fazua 25 km/h 250Wh",
         "Diğer"
       ],
       "trims": [
@@ -66,8 +58,6 @@
     {
       "name": "Verve+ (Şehir Konfor, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 400Wh",
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -80,7 +70,6 @@
     {
       "name": "FX+ (Şehir/Fitness)",
       "versions": [
-        "250W Bosch 25 km/h 400Wh",
         "Diğer"
       ],
       "trims": [
@@ -91,7 +80,6 @@
     {
       "name": "Marlin+ (E-MTB Giriş Segment)",
       "versions": [
-        "250W Bosch 25 km/h 400Wh",
         "Diğer"
       ],
       "trims": [
@@ -102,7 +90,6 @@
     {
       "name": "Fuel+ (E-MTB Hafif, TQ Motor)",
       "versions": [
-        "250W TQ HPR50 25 km/h 360Wh",
         "Diğer"
       ],
       "trims": [

@@ -4,8 +4,6 @@
     {
       "name": "Riverside 500E / 900E (Şehir/Trekking)",
       "versions": [
-        "250W 25 km/h 36V 11.6Ah",
-        "250W 25 km/h 36V 14Ah",
         "Diğer"
       ],
       "trims": [
@@ -17,8 +15,6 @@
     {
       "name": "Rockrider E-ST 100 / 900 (E-MTB)",
       "versions": [
-        "250W 25 km/h 36V 10.4Ah",
-        "250W 25 km/h 36V 14Ah",
         "Diğer"
       ],
       "trims": [
@@ -30,7 +26,6 @@
     {
       "name": "Elops Speed 900E (Speed Pedelec)",
       "versions": [
-        "250W 45 km/h 36V 14Ah",
         "Diğer"
       ],
       "trims": [

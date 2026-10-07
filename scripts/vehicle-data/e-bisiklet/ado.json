@@ -4,7 +4,6 @@
     {
       "name": "A20 (Katlanabilir Şehir)",
       "versions": [
-        "250W 25 km/h 36V 10.4Ah",
         "Diğer"
       ],
       "trims": [
@@ -16,7 +15,6 @@
     {
       "name": "A26 (Katlanabilir)",
       "versions": [
-        "250W 25 km/h 36V 12.5Ah",
         "Diğer"
       ],
       "trims": [
@@ -27,7 +25,6 @@
     {
       "name": "D30 (Şehir)",
       "versions": [
-        "250W 25 km/h 36V 14.5Ah",
         "Diğer"
       ],
       "trims": [
@@ -38,10 +35,9 @@
     {
       "name": "Air 20 (Katlanabilir, 2021-)",
       "versions": [
-        "250W 25 km/h 36V 10.4Ah",
-        "Pro 350W",
-        "S 250W",
-        "Ultra 500W",
+        "Pro",
+        "S",
+        "Ultra",
         "Diğer"
       ],
       "trims": [
@@ -52,21 +48,16 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "250W 25 km/h 36V 10.4Ah": [
-          "Standart",
-          "S",
-          "Diğer"
-        ],
-        "Pro 350W": [
+        "Pro": [
           "Pro",
           "Diğer"
         ],
-        "S 250W": [
+        "S": [
           "Standart",
           "S",
           "Diğer"
         ],
-        "Ultra 500W": [
+        "Ultra": [
           "Ultra",
           "Diğer"
         ]
@@ -75,8 +66,8 @@
     {
       "name": "Air Rover / Air Beast (Fat-Tire)",
       "versions": [
-        "250W 25 km/h Air Rover",
-        "750W Çift 32 km/h Air Beast",
+        "Air Rover",
+        "Air Beast",
         "Diğer"
       ],
       "trims": [
@@ -87,7 +78,6 @@
     {
       "name": "Air 20S (Katlanabilir)",
       "versions": [
-        "250W 36V 9.6Ah",
         "Diğer"
       ],
       "trims": [
@@ -98,8 +88,8 @@
     {
       "name": "Air 20 Pro / Ultra (Katlanabilir)",
       "versions": [
-        "Pro 250W 37V 10Ah",
-        "Ultra 250W 37V 10Ah",
+        "Pro",
+        "Ultra",
         "Diğer"
       ],
       "trims": [
@@ -110,7 +100,7 @@
     {
       "name": "Air 28 / Air 28 Pro / Ultra (Şehir)",
       "versions": [
-        "Air 28 250W 36V 9.6Ah",
+        "Air 28",
         "Diğer"
       ],
       "trims": [
@@ -121,7 +111,6 @@
     {
       "name": "Air 30 Pro / Ultra (Şehir, Otomatik Vites)",
       "versions": [
-        "37V 10Ah 370Wh",
         "Diğer"
       ],
       "trims": [
@@ -132,7 +121,6 @@
     {
       "name": "Air Carbon Pro",
       "versions": [
-        "37V 10Ah 370Wh",
         "Diğer"
       ],
       "trims": [
@@ -143,7 +131,6 @@
     {
       "name": "Air One Pro / Ultra",
       "versions": [
-        "370Wh",
         "Diğer"
       ],
       "trims": [

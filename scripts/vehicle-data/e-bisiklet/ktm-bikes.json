@@ -4,8 +4,6 @@
     {
       "name": "Macina Chacana (E-MTB, 2019-)",
       "versions": [
-        "250W Bosch CX 25 km/h 625Wh",
-        "250W Bosch CX 25 km/h 750Wh",
         "Diğer"
       ],
       "trims": [
@@ -18,7 +16,6 @@
     {
       "name": "Macina Kapoho (E-Enduro, 2021-)",
       "versions": [
-        "250W Bosch CX 25 km/h 750Wh",
         "Diğer"
       ],
       "trims": [
@@ -30,8 +27,6 @@
     {
       "name": "Macina Tour (Trekking, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
-        "250W Bosch 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -44,7 +39,6 @@
     {
       "name": "Macina Style (Şehir, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -56,7 +50,6 @@
     {
       "name": "Macina Lycan (E-MTB Hardtail)",
       "versions": [
-        "250W Bosch 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -68,7 +61,6 @@
     {
       "name": "Macina Sport / Gran / Fun / Cross (Trekking)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -92,7 +84,6 @@
     {
       "name": "Macina Race (Yol/Sport)",
       "versions": [
-        "Bosch Performance SX 400Wh",
         "Diğer"
       ],
       "trims": [
@@ -103,7 +94,6 @@
     {
       "name": "Macina Fold (Katlanabilir Şehir)",
       "versions": [
-        "Bosch Performance PX 85Nm 500Wh",
         "Diğer"
       ],
       "trims": [

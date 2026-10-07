@@ -4,7 +4,6 @@
     {
       "name": "S2 (2020-)",
       "versions": [
-        "750W 45 km/h 960Wh",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "R Brooklyn (2021-)",
       "versions": [
-        "750W 45 km/h 960Wh",
         "Diğer"
       ],
       "trims": [
@@ -26,7 +24,6 @@
     {
       "name": "ZX (Giriş Segment, 2021-)",
       "versions": [
-        "500W 32 km/h 614Wh",
         "Diğer"
       ],
       "trims": [
@@ -37,7 +34,6 @@
     {
       "name": "RX (Adventure, 2020-)",
       "versions": [
-        "750W 45 km/h 1008Wh",
         "Diğer"
       ],
       "trims": [
@@ -48,9 +44,9 @@
     {
       "name": "Z Miami (Kompakt)",
       "versions": [
-        "500W 32 km/h Core",
-        "500W 32 km/h SE",
-        "500W 32 km/h Legacy",
+        "Core",
+        "SE",
+        "Legacy",
         "Diğer"
       ],
       "trims": [
@@ -61,16 +57,16 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "500W 32 km/h Core": [
+        "Core": [
           "Core",
           "Diğer"
         ],
-        "500W 32 km/h SE": [
+        "SE": [
           "SE",
           "Limited Edition",
           "Diğer"
         ],
-        "500W 32 km/h Legacy": [
+        "Legacy": [
           "Legacy",
           "Diğer"
         ]
@@ -79,7 +75,6 @@
     {
       "name": "A-Series (Modüler Batarya, 2026-)",
       "versions": [
-        "52V 520Wh modüler akü",
         "Diğer"
       ],
       "trims": [

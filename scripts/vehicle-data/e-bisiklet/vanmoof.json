@@ -4,8 +4,8 @@
     {
       "name": "S5 / A5 (2022-)",
       "versions": [
-        "250W 25 km/h 360Wh S5",
-        "250W 25 km/h 360Wh A5 Step-Through",
+        "S5",
+        "A5 Step-Through",
         "Diğer"
       ],
       "trims": [
@@ -17,8 +17,8 @@
     {
       "name": "S3 / X3 (2020-2022)",
       "versions": [
-        "250W 25 km/h 504Wh S3",
-        "250W 25 km/h 504Wh X3",
+        "S3",
+        "X3",
         "Diğer"
       ],
       "trims": [
@@ -30,8 +30,7 @@
     {
       "name": "S6 (2025-)",
       "versions": [
-        "250W 25 km/h 487Wh",
-        "Open 250W",
+        "Open",
         "Diğer"
       ],
       "trims": [
@@ -40,11 +39,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "250W 25 km/h 487Wh": [
-          "Standart",
-          "Diğer"
-        ],
-        "Open 250W": [
+        "Open": [
           "Open",
           "Diğer"
         ]
@@ -53,7 +48,6 @@
     {
       "name": "S6 Open (2025-)",
       "versions": [
-        "250W Ön Göbek Motor 68Nm 487Wh",
         "Diğer"
       ],
       "trims": [

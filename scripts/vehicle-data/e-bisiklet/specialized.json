@@ -4,8 +4,6 @@
     {
       "name": "Turbo Levo (E-MTB Full-Sus, 2015-)",
       "versions": [
-        "250W Specialized SL 1.1 25 km/h 320Wh",
-        "250W Specialized SL 1.2 25 km/h 320Wh",
         "Diğer"
       ],
       "trims": [
@@ -18,7 +16,6 @@
     {
       "name": "Turbo Levo HT (E-MTB Hardtail, 2020-)",
       "versions": [
-        "250W Specialized SL 25 km/h 320Wh",
         "Diğer"
       ],
       "trims": [
@@ -30,7 +27,6 @@
     {
       "name": "Turbo Vado (Trekking, 2019-)",
       "versions": [
-        "250W Specialized SL 1.1 25 km/h 320Wh",
         "Diğer"
       ],
       "trims": [
@@ -43,7 +39,6 @@
     {
       "name": "Turbo Como (Şehir, 2019-)",
       "versions": [
-        "250W Specialized SL 1.1 25 km/h 320Wh",
         "Diğer"
       ],
       "trims": [
@@ -56,7 +51,6 @@
     {
       "name": "Turbo Creo (Yol, 2019-)",
       "versions": [
-        "250W Specialized SL 1.1 25 km/h 320Wh",
         "Diğer"
       ],
       "trims": [
@@ -69,8 +63,6 @@
     {
       "name": "Turbo Kenevo (E-MTB Gravity/Enduro, 2017-)",
       "versions": [
-        "250W Specialized 2.2 25 km/h 700Wh",
-        "SL 25 km/h 320Wh",
         "Diğer"
       ],
       "trims": [
@@ -83,7 +75,6 @@
     {
       "name": "Turbo Tero (Macera/Adventure)",
       "versions": [
-        "250W Specialized 2.2 25 km/h 710Wh",
         "Diğer"
       ],
       "trims": [
@@ -96,8 +87,6 @@
     {
       "name": "Turbo Levo SL (Hafif E-MTB)",
       "versions": [
-        "SL 1.1 35Nm 320Wh",
-        "SL 1.1 35Nm 480Wh (160Wh ek akülü)",
         "Diğer"
       ],
       "trims": [
@@ -108,7 +97,6 @@
     {
       "name": "Turbo Vado SL (Hafif Trekking)",
       "versions": [
-        "SL 1.2 50Nm 520Wh",
         "Diğer"
       ],
       "trims": [
@@ -119,8 +107,6 @@
     {
       "name": "Turbo Kenevo SL (Hafif E-Enduro)",
       "versions": [
-        "SL 1.1 35Nm 320Wh",
-        "SL 1.1 35Nm 480Wh (160Wh ek akülü)",
         "Diğer"
       ],
       "trims": [

@@ -4,7 +4,6 @@
     {
       "name": "RadRover (Fat Tire, 2015-)",
       "versions": [
-        "750W 32 km/h 48V 14Ah",
         "Diğer"
       ],
       "trims": [
@@ -16,7 +15,6 @@
     {
       "name": "RadRunner (Çok Amaçlı, 2019-)",
       "versions": [
-        "750W 32 km/h 48V 14Ah",
         "Diğer"
       ],
       "trims": [
@@ -28,7 +26,6 @@
     {
       "name": "RadWagon (Kargo, 2018-)",
       "versions": [
-        "750W 32 km/h 48V 14Ah",
         "Diğer"
       ],
       "trims": [
@@ -39,7 +36,6 @@
     {
       "name": "RadCity (Şehir, 2018-)",
       "versions": [
-        "750W 32 km/h 48V 14Ah",
         "Diğer"
       ],
       "trims": [
@@ -51,7 +47,6 @@
     {
       "name": "RadMission (Şehir Hafif, 2020-)",
       "versions": [
-        "500W 32 km/h 48V 10.5Ah",
         "Diğer"
       ],
       "trims": [
@@ -62,7 +57,6 @@
     {
       "name": "RadExpand (Katlanabilir)",
       "versions": [
-        "750W 48V 14Ah 672Wh",
         "Diğer"
       ],
       "trims": [
@@ -73,7 +67,6 @@
     {
       "name": "RadMini (Katlanabilir)",
       "versions": [
-        "750W 48V 14Ah 672Wh",
         "Diğer"
       ],
       "trims": [
@@ -84,7 +77,6 @@
     {
       "name": "RadTrike (Trisiklet)",
       "versions": [
-        "750W 48V 10Ah 480Wh",
         "Diğer"
       ],
       "trims": [

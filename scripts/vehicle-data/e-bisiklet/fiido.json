@@ -4,7 +4,6 @@
     {
       "name": "D11 (Katlanabilir Şehir, 2020-)",
       "versions": [
-        "250W 25 km/h 36V 10.4Ah",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "D21 (Katlanabilir Trekking, 2022-)",
       "versions": [
-        "250W 25 km/h 36V 11.6Ah",
         "Diğer"
       ],
       "trims": [
@@ -26,7 +24,6 @@
     {
       "name": "M1 Pro (Fat Tire MTB, 2021-)",
       "versions": [
-        "500W 40 km/h 48V 12.8Ah",
         "Diğer"
       ],
       "trims": [
@@ -37,7 +34,6 @@
     {
       "name": "Beast (Fat Tire, 2022-)",
       "versions": [
-        "750W 45 km/h 48V 17.5Ah",
         "Diğer"
       ],
       "trims": [
@@ -48,10 +44,10 @@
     {
       "name": "C11 / C21 / C700 (Katlanabilir Şehir)",
       "versions": [
-        "250W 25 km/h C11",
-        "Pro 250W C11 Pro",
-        "250W 25 km/h C21",
-        "250W 25 km/h C700",
+        "C11",
+        "C11 Pro",
+        "C21",
+        "C700",
         "Diğer"
       ],
       "trims": [
@@ -60,19 +56,19 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "250W 25 km/h C11": [
+        "C11": [
           "Standart",
           "Diğer"
         ],
-        "Pro 250W C11 Pro": [
+        "C11 Pro": [
           "Pro",
           "Diğer"
         ],
-        "250W 25 km/h C21": [
+        "C21": [
           "Standart",
           "Diğer"
         ],
-        "250W 25 km/h C700": [
+        "C700": [
           "Standart",
           "Diğer"
         ]
@@ -81,7 +77,7 @@
     {
       "name": "Air (Karbon)",
       "versions": [
-        "250W 25 km/h Karbon",
+        "Karbon",
         "Diğer"
       ],
       "trims": [
@@ -92,8 +88,8 @@
     {
       "name": "Titan / T2 (Kargo)",
       "versions": [
-        "250W 25 km/h Titan",
-        "250W 25 km/h T2",
+        "Titan",
+        "T2",
         "Diğer"
       ],
       "trims": [
@@ -104,7 +100,6 @@
     {
       "name": "D3 Pro (Katlanabilir)",
       "versions": [
-        "250W 36V 7.8Ah",
         "Diğer"
       ],
       "trims": [

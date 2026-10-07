@@ -4,8 +4,6 @@
     {
       "name": "Goroc (E-MTB, 2019-)",
       "versions": [
-        "250W Bosch CX 25 km/h 625Wh",
-        "250W Bosch CX 25 km/h 750Wh",
         "Diğer"
       ],
       "trims": [
@@ -18,8 +16,6 @@
     {
       "name": "Upstreet (Trekking, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
-        "250W Bosch 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -32,7 +28,6 @@
     {
       "name": "Gotour (Şehir, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -45,7 +40,6 @@
     {
       "name": "Uproc (E-MTB Tam Süspansiyonlu)",
       "versions": [
-        "250W Bosch CX 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -59,7 +53,6 @@
     {
       "name": "Gotour X (Konfor Trekking)",
       "versions": [
-        "Bosch Performance Line PX 90Nm",
         "Diğer"
       ],
       "trims": [
@@ -70,7 +63,6 @@
     {
       "name": "Uproc X (E-MTB All-Mountain)",
       "versions": [
-        "Bosch Performance Line CX Gen5",
         "Diğer"
       ],
       "trims": [

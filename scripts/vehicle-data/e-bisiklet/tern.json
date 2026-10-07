@@ -4,8 +4,6 @@
     {
       "name": "GSD (Kargo, 2018-)",
       "versions": [
-        "250W Bosch CX 25 km/h 500Wh",
-        "250W Bosch CX 25 km/h 1000Wh Çift Bat.",
         "Diğer"
       ],
       "trims": [
@@ -18,7 +16,6 @@
     {
       "name": "HSD (Kompakt Kargo, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -30,7 +27,6 @@
     {
       "name": "NBD (Şehir, 2021-)",
       "versions": [
-        "250W Bosch 25 km/h 400Wh",
         "Diğer"
       ],
       "trims": [
@@ -41,7 +37,6 @@
     {
       "name": "Vektron (Katlanabilir)",
       "versions": [
-        "250W Bosch 25 km/h 400Wh",
         "Diğer"
       ],
       "trims": [
@@ -53,8 +48,7 @@
     {
       "name": "Quick Haul (Hafif Kargo)",
       "versions": [
-        "250W Bosch 25 km/h 400Wh",
-        "Long 400Wh",
+        "Long",
         "Diğer"
       ],
       "trims": [
@@ -63,11 +57,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "250W Bosch 25 km/h 400Wh": [
-          "Standart",
-          "Diğer"
-        ],
-        "Long 400Wh": [
+        "Long": [
           "Long",
           "Diğer"
         ]
@@ -76,7 +66,6 @@
     {
       "name": "Orox (Off-Road Macera)",
       "versions": [
-        "250W Bosch CX 25 km/h 800Wh",
         "Diğer"
       ],
       "trims": [

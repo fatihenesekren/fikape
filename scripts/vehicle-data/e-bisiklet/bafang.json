@@ -4,7 +4,6 @@
     {
       "name": "G340 (Şehir, 2020-)",
       "versions": [
-        "250W Mid-Drive 25 km/h",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "G330 (Trekking, 2020-)",
       "versions": [
-        "250W Mid-Drive 25 km/h",
         "Diğer"
       ],
       "trims": [
@@ -26,10 +24,10 @@
     {
       "name": "BBSHD / BBS02 (Motor Kit)",
       "versions": [
-        "750W BBSHD",
-        "500W BBS02B",
-        "250W BBS01B",
-        "BBS03 750W",
+        "BBSHD",
+        "BBS02B",
+        "BBS01B",
+        "BBS03",
         "Diğer"
       ],
       "trims": [
@@ -40,7 +38,6 @@
     {
       "name": "G510 / G521 (Mid-Drive)",
       "versions": [
-        "250W Mid-Drive 25 km/h",
         "Diğer"
       ],
       "trims": [

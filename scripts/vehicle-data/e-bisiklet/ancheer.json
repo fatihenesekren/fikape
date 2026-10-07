@@ -4,8 +4,6 @@
     {
       "name": "Elektrikli Dağ Bisikleti 26\"",
       "versions": [
-        "250W 25 km/h 36V 8Ah",
-        "350W 32 km/h 36V 10Ah",
         "Diğer"
       ],
       "trims": [
@@ -16,7 +14,6 @@
     {
       "name": "Katlanabilir Elektrikli",
       "versions": [
-        "250W 25 km/h 36V 8Ah",
         "Diğer"
       ],
       "trims": [
@@ -27,8 +24,8 @@
     {
       "name": "Sunshine / StreetRider (Şehir)",
       "versions": [
-        "250W 25 km/h Sunshine",
-        "350W 32 km/h StreetRider",
+        "Sunshine",
+        "StreetRider",
         "Diğer"
       ],
       "trims": [
@@ -39,8 +36,8 @@
     {
       "name": "Gladiator / Hummer (Fat-Tire)",
       "versions": [
-        "500W 32 km/h Gladiator",
-        "500W 32 km/h Hummer",
+        "Gladiator",
+        "Hummer",
         "Diğer"
       ],
       "trims": [

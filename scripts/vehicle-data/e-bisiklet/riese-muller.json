@@ -4,8 +4,6 @@
     {
       "name": "Charger (Trekking, 2014-)",
       "versions": [
-        "250W Bosch 25 km/h 625Wh",
-        "250W Bosch 25 km/h 1000Wh Çift Bat.",
         "Diğer"
       ],
       "trims": [
@@ -18,8 +16,6 @@
     {
       "name": "Supercharger (Speed Pedelec, 2018-)",
       "versions": [
-        "250W Bosch 45 km/h 500Wh",
-        "250W Bosch 45 km/h 1000Wh Çift Bat.",
         "Diğer"
       ],
       "trims": [
@@ -31,8 +27,6 @@
     {
       "name": "Delite (E-MTB Trekking, 2017-)",
       "versions": [
-        "250W Bosch CX 25 km/h 625Wh",
-        "250W Bosch CX 25 km/h 1000Wh Çift Bat.",
         "Diğer"
       ],
       "trims": [
@@ -45,7 +39,6 @@
     {
       "name": "Packster (Kargo, 2017-)",
       "versions": [
-        "250W Bosch 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -58,7 +51,6 @@
     {
       "name": "Roadster (Spor/Hızlı Şehir, 2016-)",
       "versions": [
-        "250W Bosch 45 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -71,7 +63,6 @@
     {
       "name": "Swing (Hollanda Tipi, 2014-)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -82,7 +73,6 @@
     {
       "name": "Nevo (Şehir/Trekking)",
       "versions": [
-        "Bosch Performance Line CX 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -93,8 +83,6 @@
     {
       "name": "Load (Kargo)",
       "versions": [
-        "Bosch Cargo Line 545Wh",
-        "Bosch Cargo Line 725Wh",
         "Diğer"
       ],
       "trims": [
@@ -105,7 +93,6 @@
     {
       "name": "Multicharger (Speed Trekking)",
       "versions": [
-        "Bosch Performance Line CX 750Wh",
         "Diğer"
       ],
       "trims": [
@@ -116,7 +103,6 @@
     {
       "name": "Multitinker (Kompakt Kargo)",
       "versions": [
-        "Bosch Performance Line CX 85Nm 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -127,7 +113,6 @@
     {
       "name": "Homage (Konfor)",
       "versions": [
-        "Bosch PowerTube 800Wh",
         "Diğer"
       ],
       "trims": [
@@ -138,7 +123,6 @@
     {
       "name": "Superdelite (E-MTB Trekking)",
       "versions": [
-        "Bosch CX 1200Wh (800Wh + 400Wh çift akü)",
         "Diğer"
       ],
       "trims": [

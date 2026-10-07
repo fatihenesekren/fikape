@@ -4,8 +4,8 @@
     {
       "name": "T1 / T1 Plus (Trekking)",
       "versions": [
-        "250W 25 km/h 36V 12.5Ah T1",
-        "250W 25 km/h 36V 12.5Ah T1 Plus",
+        "T1",
+        "T1 Plus",
         "Diğer"
       ],
       "trims": [
@@ -14,11 +14,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "250W 25 km/h 36V 12.5Ah T1": [
+        "T1": [
           "T1",
           "Diğer"
         ],
-        "250W 25 km/h 36V 12.5Ah T1 Plus": [
+        "T1 Plus": [
           "T1 Plus",
           "Diğer"
         ]
@@ -27,8 +27,8 @@
     {
       "name": "M1 / M1 Plus (E-MTB)",
       "versions": [
-        "250W 25 km/h 36V 7.5Ah M1",
-        "250W 25 km/h 36V 12.5Ah M1 Plus",
+        "M1",
+        "M1 Plus",
         "Diğer"
       ],
       "trims": [
@@ -37,11 +37,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "250W 25 km/h 36V 7.5Ah M1": [
+        "M1": [
           "M1",
           "Diğer"
         ],
-        "250W 25 km/h 36V 12.5Ah M1 Plus": [
+        "M1 Plus": [
           "M1 Plus",
           "Diğer"
         ]
@@ -50,7 +50,6 @@
     {
       "name": "F1 (Fat Tire)",
       "versions": [
-        "250W 25 km/h 36V 12.5Ah",
         "Diğer"
       ],
       "trims": [
@@ -61,7 +60,6 @@
     {
       "name": "Citycrosser (Şehir)",
       "versions": [
-        "250W 25 km/h 36V 10Ah",
         "Diğer"
       ],
       "trims": [
@@ -72,9 +70,9 @@
     {
       "name": "C1 / C2 (Şehir)",
       "versions": [
-        "250W 25 km/h 36V 12.5Ah C1",
-        "36V ST C1 ST",
-        "250W 25 km/h 36V 12.5Ah C2",
+        "C1",
+        "C1 ST",
+        "C2",
         "Diğer"
       ],
       "trims": [
@@ -86,7 +84,6 @@
     {
       "name": "T2 (Trekking)",
       "versions": [
-        "250W 25 km/h 36V 15.6Ah",
         "Diğer"
       ],
       "trims": [
@@ -97,9 +94,9 @@
     {
       "name": "Mopride",
       "versions": [
-        "250W 25 km/h 1",
-        "250W 25 km/h Plus",
-        "250W 25 km/h 3",
+        "Mopride 1",
+        "Mopride Plus",
+        "Mopride 3",
         "Diğer"
       ],
       "trims": [
@@ -112,7 +109,6 @@
     {
       "name": "Tankroll",
       "versions": [
-        "250W 25 km/h",
         "Diğer"
       ],
       "trims": [
@@ -123,7 +119,6 @@
     {
       "name": "M2 (E-MTB)",
       "versions": [
-        "250W 36V 15Ah 540Wh",
         "Diğer"
       ],
       "trims": [

@@ -4,8 +4,6 @@
     {
       "name": "AllMtn (E-MTB Tam Süspansiyonlu, 2019-)",
       "versions": [
-        "250W Yamaha PW-X3 25 km/h 630Wh",
-        "250W Bosch CX 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -20,8 +18,6 @@
     {
       "name": "Nduro (E-Enduro, 2021-)",
       "versions": [
-        "250W Bosch CX 25 km/h 625Wh",
-        "250W Bosch CX 25 km/h 750Wh",
         "Diğer"
       ],
       "trims": [
@@ -34,7 +30,6 @@
     {
       "name": "HardNine / HardSeven (Hardtail, 2019-)",
       "versions": [
-        "250W Yamaha PW-X3 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -47,8 +42,6 @@
     {
       "name": "Trekking (Trekking, 2019-)",
       "versions": [
-        "250W Yamaha PW-TE 25 km/h 500Wh",
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -62,9 +55,6 @@
     {
       "name": "AllTrail (E-MTB Hardtail)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
-        "250W Bosch CX 25 km/h 600Wh",
-        "250W Bosch CX 25 km/h 800Wh",
         "Diğer"
       ],
       "trims": [

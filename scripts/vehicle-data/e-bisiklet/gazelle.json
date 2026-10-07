@@ -4,8 +4,6 @@
     {
       "name": "Ultimate T10 (Trekking, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
-        "250W Bosch 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -16,8 +14,6 @@
     {
       "name": "Medeo T9 (Trekking, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 400Wh",
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -28,7 +24,6 @@
     {
       "name": "Paris (Şehir, 2019-)",
       "versions": [
-        "250W Bosch 25 km/h 400Wh",
         "Diğer"
       ],
       "trims": [
@@ -40,7 +35,6 @@
     {
       "name": "Eclipse (Şehir)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -51,7 +45,6 @@
     {
       "name": "Avignon (Trekking)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
         "Diğer"
       ],
       "trims": [
@@ -62,7 +55,6 @@
     {
       "name": "Arroyo (Şehir)",
       "versions": [
-        "250W Bosch 25 km/h 400Wh",
         "Diğer"
       ],
       "trims": [
@@ -83,7 +75,6 @@
     {
       "name": "HeavyDutyNL (Güçlü Şehir/Kargo)",
       "versions": [
-        "Bosch Active Line 500Wh",
         "Diğer"
       ],
       "trims": [

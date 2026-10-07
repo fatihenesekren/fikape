@@ -4,9 +4,6 @@
     {
       "name": "Wild (E-MTB Full-Sus, 2020-)",
       "versions": [
-        "250W Bosch CX 25 km/h 630Wh",
-        "250W Bosch CX 25 km/h 750Wh",
-        "250W Bosch CX 25 km/h 600Wh",
         "Diğer"
       ],
       "trims": [
@@ -19,7 +16,6 @@
     {
       "name": "Urrun (E-MTB Hardtail, 2022-)",
       "versions": [
-        "250W Bosch CX 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -31,7 +27,6 @@
     {
       "name": "Gain (Yol E-Bisiklet, 2019-)",
       "versions": [
-        "250W Fazua 25 km/h 250Wh",
         "Diğer"
       ],
       "trims": [
@@ -44,8 +39,6 @@
     {
       "name": "Keram (Trekking, 2021-)",
       "versions": [
-        "250W Bosch 25 km/h 500Wh",
-        "250W Bosch 25 km/h 625Wh",
         "Diğer"
       ],
       "trims": [
@@ -58,9 +51,6 @@
     {
       "name": "Rise (E-MTB Hafif Tam Süspansiyon)",
       "versions": [
-        "250W Shimano EP8 RS 25 km/h 360Wh",
-        "250W Shimano EP8 25 km/h 420Wh",
-        "250W Shimano EP8 25 km/h 630Wh",
         "Diğer"
       ],
       "trims": [
@@ -74,8 +64,6 @@
     {
       "name": "Kemen Adv / Kemen Tour (Trekking)",
       "versions": [
-        "540Wh",
-        "630Wh",
         "Diğer"
       ],
       "trims": [

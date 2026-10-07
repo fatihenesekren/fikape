@@ -4,8 +4,6 @@
     {
       "name": "Pace 350 / 500 (Şehir, 2018-)",
       "versions": [
-        "350W 32 km/h",
-        "500W 32 km/h",
         "Diğer"
       ],
       "trims": [
@@ -16,7 +14,6 @@
     {
       "name": "Aventure (Fat-Tire, 2021-)",
       "versions": [
-        "750W 32 km/h 48V 15Ah",
         "Diğer"
       ],
       "trims": [
@@ -27,7 +24,6 @@
     {
       "name": "Soltera (Yol, 2022-)",
       "versions": [
-        "250W 32 km/h",
         "Diğer"
       ],
       "trims": [
@@ -38,7 +34,6 @@
     {
       "name": "Level (Şehir Konfor)",
       "versions": [
-        "500W 32 km/h",
         "Diğer"
       ],
       "trims": [
@@ -50,8 +45,8 @@
     {
       "name": "Abound (Kargo)",
       "versions": [
-        "750W 32 km/h SR",
-        "750W 32 km/h LR",
+        "SR",
+        "LR",
         "Diğer"
       ],
       "trims": [
@@ -63,7 +58,6 @@
     {
       "name": "Ramblas (E-MTB, 2023-)",
       "versions": [
-        "750W 32 km/h",
         "Diğer"
       ],
       "trims": [
@@ -74,7 +68,6 @@
     {
       "name": "Sinch (Katlanabilir)",
       "versions": [
-        "500W 32 km/h",
         "Diğer"
       ],
       "trims": [
@@ -85,7 +78,6 @@
     {
       "name": "Current (Şehir)",
       "versions": [
-        "750W Ultro X 800Wh",
         "Diğer"
       ],
       "trims": [

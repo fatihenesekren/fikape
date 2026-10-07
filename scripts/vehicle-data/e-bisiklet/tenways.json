@@ -4,7 +4,6 @@
     {
       "name": "CGO600 Pro (Şehir, 2022-)",
       "versions": [
-        "250W 25 km/h 360Wh",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "CGO800S (Şehir Premium, 2022-)",
       "versions": [
-        "250W 25 km/h 360Wh Shimano Alfine",
         "Diğer"
       ],
       "trims": [
@@ -26,7 +24,6 @@
     {
       "name": "AGO T (Trekking, 2023-)",
       "versions": [
-        "250W 25 km/h 360Wh",
         "Diğer"
       ],
       "trims": [
@@ -37,7 +34,6 @@
     {
       "name": "Wayfarer (Kruvazör, 2025-)",
       "versions": [
-        "500W Bafang 25 km/h",
         "Diğer"
       ],
       "trims": [
@@ -48,8 +44,8 @@
     {
       "name": "CGO600 (Şehir)",
       "versions": [
-        "Classic 252Wh Mivice M070",
-        "Pro 360Wh",
+        "Classic",
+        "Pro",
         "Diğer"
       ],
       "trims": [
@@ -60,7 +56,6 @@
     {
       "name": "CGO Compact (Şehir)",
       "versions": [
-        "500Wh",
         "Diğer"
       ],
       "trims": [
@@ -71,7 +66,6 @@
     {
       "name": "AGO X",
       "versions": [
-        "Bafang M410 504Wh",
         "Diğer"
       ],
       "trims": [
@@ -82,7 +76,6 @@
     {
       "name": "AGO Air",
       "versions": [
-        "Tenways Orta Motor 562Wh",
         "Diğer"
       ],
       "trims": [
@@ -93,7 +86,6 @@
     {
       "name": "AGO Performance",
       "versions": [
-        "Bosch Performance Line 75Nm 540Wh",
         "Diğer"
       ],
       "trims": [
@@ -104,7 +96,6 @@
     {
       "name": "Longtail Duo (Kargo)",
       "versions": [
-        "250W Bafang M410 720Wh",
         "Diğer"
       ],
       "trims": [
@@ -115,7 +106,6 @@
     {
       "name": "Cargo One (Kargo)",
       "versions": [
-        "250W Orta Motor 504Wh",
         "Diğer"
       ],
       "trims": [
