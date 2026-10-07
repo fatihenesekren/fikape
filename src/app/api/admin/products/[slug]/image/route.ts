@@ -3,6 +3,7 @@ import { revalidateTag } from "next/cache";
 import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
+import { eskiUrunGorseliniSil } from "@/lib/urunGorselTemizlik";
 import { Prisma } from "@/generated/prisma/client";
 import { resizeImageBuffer, fetchAndResizeImage } from "@/lib/imageResize";
 import { commonsDosyaAdi, commonsKredisiGetir } from "@/lib/gorselKredisi";
@@ -21,7 +22,7 @@ export async function POST(
 
     const product = await prisma.product.findUnique({
       where: { slug },
-      select: { id: true },
+      select: { id: true, imageUrl: true },
     });
     if (!product) {
       return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
@@ -75,6 +76,8 @@ export async function POST(
       data: { imageUrl: versionedUrl, imageCredit: Prisma.DbNull },
     });
 
+    await eskiUrunGorseliniSil(product.id, product.imageUrl, versionedUrl);
+
     revalidateTag("vitrin", { expire: 0 }); // görsel vitrine uygunluk koşuludur
     return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: null });
   } catch (e) {
@@ -98,7 +101,7 @@ export async function PATCH(
 
     const product = await prisma.product.findUnique({
       where: { slug },
-      select: { id: true },
+      select: { id: true, imageUrl: true },
     });
     if (!product) {
       return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
@@ -162,6 +165,8 @@ export async function PATCH(
       where: { id: product.id },
       data: { imageUrl: versionedUrl, imageCredit: otomatikKredi ?? Prisma.DbNull },
     });
+
+    await eskiUrunGorseliniSil(product.id, product.imageUrl, versionedUrl);
 
     revalidateTag("vitrin", { expire: 0 });
     return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: otomatikKredi });

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
+import { eskiUrunGorseliniSil } from "@/lib/urunGorselTemizlik";
 
 export const runtime = "nodejs";
 
@@ -18,7 +19,7 @@ export async function POST(
 
   const product = await prisma.product.findUnique({
     where: { slug },
-    select: { id: true },
+    select: { id: true, imageUrl: true },
   });
   if (!product) {
     return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
@@ -38,6 +39,9 @@ export async function POST(
     where: { id: product.id },
     data: { imageUrl: blob.url },
   });
+
+  // Yeni dosya kayıtlıyken eskisi (önceki blur ya da bulanıksız asıl) yetim kalmasın
+  await eskiUrunGorseliniSil(product.id, product.imageUrl, blob.url);
 
   return NextResponse.json({ url: blob.url });
 }
