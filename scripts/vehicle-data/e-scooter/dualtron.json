@@ -4,8 +4,7 @@
     {
       "name": "Mini",
       "versions": [
-        "600W 10.5Ah 25km/h",
-        "Special 600W",
+        "Special",
         "Diğer"
       ],
       "trims": [
@@ -17,7 +16,6 @@
     {
       "name": "Compact",
       "versions": [
-        "1200W Çift 13Ah",
         "Diğer"
       ],
       "trims": [
@@ -28,9 +26,8 @@
     {
       "name": "Eagle",
       "versions": [
-        "1600W Çift 28.9Ah",
-        "Pro 1600W",
-        "Limited 1600W",
+        "Pro",
+        "Limited",
         "Diğer"
       ],
       "trims": [
@@ -40,15 +37,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "1600W Çift 28.9Ah": [
-          "Standart",
-          "Diğer"
-        ],
-        "Pro 1600W": [
+        "Pro": [
           "Pro",
           "Diğer"
         ],
-        "Limited 1600W": [
+        "Limited": [
           "Limited",
           "Diğer"
         ]
@@ -57,9 +50,8 @@
     {
       "name": "Thunder",
       "versions": [
-        "5400W Çift 35Ah",
-        "2 5400W",
-        "3 5400W",
+        "2",
+        "3",
         "Diğer"
       ],
       "trims": [
@@ -72,9 +64,8 @@
     {
       "name": "Storm",
       "versions": [
-        "6640W Çift 48Ah",
-        "X 6640W",
-        "Limited 11500W",
+        "X",
+        "Limited",
         "Diğer"
       ],
       "trims": [
@@ -87,8 +78,7 @@
     {
       "name": "Ultra",
       "versions": [
-        "6720W Çift 100Ah",
-        "2 6720W",
+        "2",
         "Diğer"
       ],
       "trims": [
@@ -100,8 +90,6 @@
     {
       "name": "X2 (2021-)",
       "versions": [
-        "8300W Çift 72Ah",
-        "8300W",
         "Diğer"
       ],
       "trims": [
@@ -113,31 +101,18 @@
     {
       "name": "X",
       "versions": [
-        "13000W Çift 60Ah",
-        "13000W",
         "Diğer"
       ],
       "trims": [
         "Standart",
         "Limited",
         "Diğer"
-      ],
-      "trimsByVersion": {
-        "13000W Çift 60Ah": [
-          "Standart",
-          "Diğer"
-        ],
-        "13000W": [
-          "Limited",
-          "Diğer"
-        ]
-      }
+      ]
     },
     {
       "name": "City",
       "versions": [
-        "4000W Çift 25Ah",
-        "New 4000W",
+        "New",
         "Diğer"
       ],
       "trims": [
@@ -149,9 +124,8 @@
     {
       "name": "Victor",
       "versions": [
-        "4300W Çift 42Ah",
-        "Luxury Plus 4300W",
-        "Limited 4300W",
+        "Luxury Plus",
+        "Limited",
         "Diğer"
       ],
       "trims": [
@@ -161,15 +135,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "4300W Çift 42Ah": [
-          "Standart",
-          "Diğer"
-        ],
-        "Luxury Plus 4300W": [
+        "Luxury Plus": [
           "Luxury Plus",
           "Diğer"
         ],
-        "Limited 4300W": [
+        "Limited": [
           "Limited",
           "Diğer"
         ]
@@ -178,9 +148,8 @@
     {
       "name": "Togo",
       "versions": [
-        "1350W 12Ah 25km/h",
-        "Plus 1000W",
-        "Limited 1350W",
+        "Plus",
+        "Limited",
         "Diğer"
       ],
       "trims": [
@@ -193,8 +162,7 @@
     {
       "name": "Achilleus",
       "versions": [
-        "4648W Çift 60V",
-        "Limited 4648W",
+        "Limited",
         "Diğer"
       ],
       "trims": [
@@ -203,11 +171,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "4648W Çift 60V": [
-          "Standart",
-          "Diğer"
-        ],
-        "Limited 4648W": [
+        "Limited": [
           "Limited",
           "Diğer"
         ]
@@ -216,8 +180,7 @@
     {
       "name": "Raptor",
       "versions": [
-        "3000W Çift Hub Motor",
-        "2 3000W",
+        "2",
         "Diğer"
       ],
       "trims": [
@@ -246,8 +209,8 @@
     {
       "name": "Sonic",
       "versions": [
-        "Model N 700W Çift",
-        "Alien 11800W Çift",
+        "Model N",
+        "Alien",
         "Diğer"
       ],
       "trims": [
@@ -256,11 +219,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "Model N 700W Çift": [
+        "Model N": [
           "Model N",
           "Diğer"
         ],
-        "Alien 11800W Çift": [
+        "Alien": [
           "Alien",
           "Diğer"
         ]
@@ -293,8 +256,7 @@
     {
       "name": "Man",
       "versions": [
-        "2700W",
-        "EX+ 2700W",
+        "EX+",
         "Diğer"
       ],
       "trims": [
@@ -317,7 +279,6 @@
     {
       "name": "X Limited",
       "versions": [
-        "Çift 6200W 84V 60Ah",
         "Diğer"
       ],
       "trims": [
@@ -328,7 +289,6 @@
     {
       "name": "Sonic Alien",
       "versions": [
-        "72V 40Ah 100km/h",
         "Diğer"
       ],
       "trims": [
@@ -339,7 +299,6 @@
     {
       "name": "Thunder 3",
       "versions": [
-        "Çift 5500W 72V 40Ah",
         "Diğer"
       ],
       "trims": [
@@ -350,7 +309,6 @@
     {
       "name": "Spider Max",
       "versions": [
-        "Çift 2000W 60V 30Ah",
         "Diğer"
       ],
       "trims": [
@@ -361,8 +319,8 @@
     {
       "name": "Victor Luxury+ / Victor Limited",
       "versions": [
-        "Limited Çift 2125W 60V 35Ah",
-        "Luxury+ 2.0 Çift 2125W 60V 31.5Ah",
+        "Limited",
+        "Luxury+ 2.0",
         "Diğer"
       ],
       "trims": [
@@ -373,7 +331,6 @@
     {
       "name": "Rovoron R7 Pro",
       "versions": [
-        "Çift 900W (3300W tepe) 60V 42.4Ah",
         "Diğer"
       ],
       "trims": [
@@ -384,7 +341,6 @@
     {
       "name": "Forever 2.0",
       "versions": [
-        "Çift 1500W 60V 18.2Ah",
         "Diğer"
       ],
       "trims": [
@@ -395,7 +351,6 @@
     {
       "name": "Sonic Nano",
       "versions": [
-        "Çift 350W (500W tepe) 36V 10.2Ah 367Wh 25km/h",
         "Diğer"
       ],
       "trims": [

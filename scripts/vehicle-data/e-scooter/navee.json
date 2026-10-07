@@ -4,7 +4,6 @@
     {
       "name": "N40 (2022-)",
       "versions": [
-        "350W 10.4Ah 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "N65 (2022-)",
       "versions": [
-        "500W 17.5Ah 35km/h",
         "Diğer"
       ],
       "trims": [
@@ -26,7 +24,6 @@
     {
       "name": "S65 (2022-)",
       "versions": [
-        "500W 17.5Ah 40km/h",
         "Diğer"
       ],
       "trims": [
@@ -37,8 +34,8 @@
     {
       "name": "N65i / N65 Pro (2023-)",
       "versions": [
-        "500W 17.5Ah 35km/h N65i",
-        "500W 20Ah 35km/h N65 Pro",
+        "N65i",
+        "N65 Pro",
         "Diğer"
       ],
       "trims": [
@@ -47,11 +44,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "500W 17.5Ah 35km/h N65i": [
+        "N65i": [
           "Standart",
           "Diğer"
         ],
-        "500W 20Ah 35km/h N65 Pro": [
+        "N65 Pro": [
           "Pro",
           "Diğer"
         ]
@@ -60,8 +57,8 @@
     {
       "name": "S65C / S65 GT",
       "versions": [
-        "500W 17.5Ah 40km/h S65C",
-        "700W 20Ah 40km/h S65 GT",
+        "S65C",
+        "S65 GT",
         "Diğer"
       ],
       "trims": [
@@ -73,7 +70,6 @@
     {
       "name": "V50 (2024-)",
       "versions": [
-        "500W 15Ah 32km/h",
         "Diğer"
       ],
       "trims": [
@@ -84,9 +80,9 @@
     {
       "name": "GT3 / GT3 Pro / GT3 Max",
       "versions": [
-        "GT3 700W tepe 358Wh 32km/h",
-        "GT3 Pro 400W (1000W tepe) 477Wh 32km/h",
-        "GT3 Max 400W (1000W tepe) 597Wh 32km/h",
+        "GT3",
+        "GT3 Pro",
+        "GT3 Max",
         "Diğer"
       ],
       "trims": [
@@ -97,7 +93,7 @@
     {
       "name": "ST3 / ST3 Pro",
       "versions": [
-        "ST3 Pro 600W 48V 12.75Ah",
+        "ST3 Pro",
         "Diğer"
       ],
       "trims": [
@@ -108,7 +104,6 @@
     {
       "name": "N65i II",
       "versions": [
-        "1000W 40km/h",
         "Diğer"
       ],
       "trims": [

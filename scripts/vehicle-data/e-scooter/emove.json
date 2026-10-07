@@ -4,7 +4,6 @@
     {
       "name": "Cruiser",
       "versions": [
-        "1600W 30Ah 45km/h",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "Touring",
       "versions": [
-        "500W 20Ah 35km/h",
         "Diğer"
       ],
       "trims": [
@@ -26,10 +24,9 @@
     {
       "name": "RoadRunner",
       "versions": [
-        "2000W 35Ah 45km/h",
-        "SE 1000W",
-        "Pro 3000W",
-        "V3 3000W",
+        "SE",
+        "Pro",
+        "V3",
         "Diğer"
       ],
       "trims": [
@@ -41,25 +38,18 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "2000W 35Ah 45km/h": [
+        "SE": [
           "Standart",
           "SE",
           "V2",
           "V3",
           "Diğer"
         ],
-        "SE 1000W": [
-          "Standart",
-          "SE",
-          "V2",
-          "V3",
-          "Diğer"
-        ],
-        "Pro 3000W": [
+        "Pro": [
           "Pro",
           "Diğer"
         ],
-        "V3 3000W": [
+        "V3": [
           "Standart",
           "SE",
           "V2",
@@ -71,7 +61,6 @@
     {
       "name": "Roadster",
       "versions": [
-        "Çift 4000W (15456W tepe) 84V 40Ah 3360Wh",
         "Diğer"
       ],
       "trims": [
@@ -82,8 +71,6 @@
     {
       "name": "RoadRunner Pro V2",
       "versions": [
-        "Çift 2000W 72V 40Ah",
-        "Çift 2000W 72V 60Ah",
         "Diğer"
       ],
       "trims": [

@@ -291,8 +291,8 @@
   "kat": "e-bisiklet",
   "adaylar": []
  },
- "xiaomi-6-lite-300w-500w-tepe-216wh-25km-h-2026": {
-  "ad": "Xiaomi 6 Lite 300W (500W tepe) 216Wh 25km/h 2026",
+ "xiaomi-6-lite-2026": {
+  "ad": "Xiaomi 6 Lite 2026",
   "kat": "e-scooter",
   "adaylar": [
    {
@@ -303,8 +303,8 @@
    }
   ]
  },
- "xiaomi-6-max-1100w-tepe-468wh-25km-h-2026": {
-  "ad": "Xiaomi 6 Max 1100W tepe 468Wh 25km/h 2026",
+ "xiaomi-6-max-2026": {
+  "ad": "Xiaomi 6 Max 2026",
   "kat": "e-scooter",
   "adaylar": [
    {
@@ -315,8 +315,8 @@
    }
   ]
  },
- "xiaomi-6-pro-1000w-tepe-25km-h-2026": {
-  "ad": "Xiaomi 6 Pro 1000W tepe 25km/h 2026",
+ "xiaomi-6-pro-2026": {
+  "ad": "Xiaomi 6 Pro 2026",
   "kat": "e-scooter",
   "adaylar": [
    {
@@ -327,13 +327,13 @@
    }
   ]
  },
- "segway-ninebot-max-g3-2000w-25-km-s-2025": {
-  "ad": "Segway Ninebot Max G3 2000W 25 km/s 2025",
+ "segway-ninebot-max-g3-2025": {
+  "ad": "Segway Ninebot Max G3 2025",
   "kat": "e-scooter",
   "adaylar": []
  },
- "navee-v50-500w-15ah-32km-h-2024": {
-  "ad": "Navee V50 500W 15Ah 32km/h 2024",
+ "navee-v50-2024": {
+  "ad": "Navee V50 2024",
   "kat": "e-scooter",
   "adaylar": [
    {
@@ -344,8 +344,8 @@
    }
   ]
  },
- "navee-n40-350w-10-4ah-25km-h-2022": {
-  "ad": "Navee N40 350W 10.4Ah 25km/h 2022",
+ "navee-n40-2022": {
+  "ad": "Navee N40 2022",
   "kat": "e-scooter",
   "adaylar": [
    {
@@ -356,8 +356,8 @@
    }
   ]
  },
- "navee-n65-500w-17-5ah-35km-h-2022": {
-  "ad": "Navee N65 500W 17.5Ah 35km/h 2022",
+ "navee-n65-2022": {
+  "ad": "Navee N65 2022",
   "kat": "e-scooter",
   "adaylar": [
    {
@@ -368,23 +368,23 @@
    }
   ]
  },
- "dualtron-x2-8300w-cift-72ah-2021": {
-  "ad": "Dualtron X2 8300W Çift 72Ah 2021",
+ "dualtron-x2-2021": {
+  "ad": "Dualtron X2 2021",
   "kat": "e-scooter",
   "adaylar": []
  },
- "kaabo-wolf-king-gtr-2000w-cift-35ah-65km-h-2023": {
-  "ad": "Kaabo Wolf King GTR 2000W Çift 35Ah 65km/h 2023",
+ "kaabo-wolf-king-gtr-2023": {
+  "ad": "Kaabo Wolf King GTR 2023",
   "kat": "e-scooter",
   "adaylar": []
  },
- "apollo-air-500w-16ah-25km-h-2021": {
-  "ad": "Apollo Air 500W 16Ah 25km/h 2021",
+ "apollo-air-2021": {
+  "ad": "Apollo Air 2021",
   "kat": "e-scooter",
   "adaylar": []
  },
- "inmotion-l9-900w-45-km-s-2021": {
-  "ad": "Inmotion L9 900W 45 km/s 2021",
+ "inmotion-l9-2021": {
+  "ad": "Inmotion L9 2021",
   "kat": "e-scooter",
   "adaylar": []
  },

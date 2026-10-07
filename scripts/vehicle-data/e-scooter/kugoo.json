@@ -4,7 +4,6 @@
     {
       "name": "S1",
       "versions": [
-        "350W 7.5Ah 30km/h",
         "Diğer"
       ],
       "trims": [
@@ -16,8 +15,7 @@
     {
       "name": "S3",
       "versions": [
-        "350W 10Ah 35km/h",
-        "Pro 350W",
+        "Pro",
         "Diğer"
       ],
       "trims": [
@@ -26,11 +24,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "350W 10Ah 35km/h": [
-          "Standart",
-          "Diğer"
-        ],
-        "Pro 350W": [
+        "Pro": [
           "Pro",
           "Diğer"
         ]
@@ -39,7 +33,6 @@
     {
       "name": "G-Booster",
       "versions": [
-        "2000W Çift 23Ah 70km/h",
         "Diğer"
       ],
       "trims": [
@@ -50,7 +43,6 @@
     {
       "name": "G2 Pro",
       "versions": [
-        "500W 26Ah 45km/h",
         "Diğer"
       ],
       "trims": [
@@ -61,7 +53,6 @@
     {
       "name": "M4 Pro",
       "versions": [
-        "1200W 24Ah 50km/h",
         "Diğer"
       ],
       "trims": [
@@ -72,8 +63,7 @@
     {
       "name": "G4",
       "versions": [
-        "1600W Çift 23Ah 70km/h",
-        "Max 2000W",
+        "Max",
         "Diğer"
       ],
       "trims": [
@@ -82,11 +72,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "1600W Çift 23Ah 70km/h": [
-          "Standart",
-          "Diğer"
-        ],
-        "Max 2000W": [
+        "Max": [
           "Max",
           "Diğer"
         ]
@@ -95,7 +81,6 @@
     {
       "name": "M4 Max",
       "versions": [
-        "1200W Çift 26Ah 55km/h",
         "Diğer"
       ],
       "trims": [
@@ -106,7 +91,6 @@
     {
       "name": "S1 Max",
       "versions": [
-        "350W 30km/h",
         "Diğer"
       ],
       "trims": [
@@ -117,7 +101,6 @@
     {
       "name": "S3 Pro",
       "versions": [
-        "350W 36V 7.5Ah 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -128,7 +111,6 @@
     {
       "name": "G2 Max",
       "versions": [
-        "1000W 48V 20Ah 55km/h",
         "Diğer"
       ],
       "trims": [
@@ -139,7 +121,6 @@
     {
       "name": "G2 Master",
       "versions": [
-        "Çift 1000W 52V 20.8Ah 60km/h",
         "Diğer"
       ],
       "trims": [
@@ -150,7 +131,6 @@
     {
       "name": "G3 Pro",
       "versions": [
-        "Çift 1200W 52V 23.4Ah 65km/h",
         "Diğer"
       ],
       "trims": [
@@ -161,7 +141,6 @@
     {
       "name": "G2 Ultra",
       "versions": [
-        "Çift 800W 48V 18Ah 50km/h",
         "Diğer"
       ],
       "trims": [

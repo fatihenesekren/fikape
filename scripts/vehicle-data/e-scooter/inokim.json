@@ -4,8 +4,7 @@
     {
       "name": "Light 2",
       "versions": [
-        "350W 7.8Ah 25km/h",
-        "Super 350W",
+        "Super",
         "Diğer"
       ],
       "trims": [
@@ -14,11 +13,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "350W 7.8Ah 25km/h": [
-          "Standart",
-          "Diğer"
-        ],
-        "Super 350W": [
+        "Super": [
           "Super",
           "Diğer"
         ]
@@ -27,8 +22,7 @@
     {
       "name": "Quick 4",
       "versions": [
-        "500W 13Ah 45km/h",
-        "Max 500W",
+        "Max",
         "Diğer"
       ],
       "trims": [
@@ -37,11 +31,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "500W 13Ah 45km/h": [
-          "Standart",
-          "Diğer"
-        ],
-        "Max 500W": [
+        "Max": [
           "Max",
           "Diğer"
         ]
@@ -50,8 +40,7 @@
     {
       "name": "OX (2018-)",
       "versions": [
-        "1000W Çift 13Ah",
-        "Eco 500W",
+        "Eco",
         "Diğer"
       ],
       "trims": [
@@ -60,11 +49,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "1000W Çift 13Ah": [
-          "Standart",
-          "Diğer"
-        ],
-        "Eco 500W": [
+        "Eco": [
           "Eco",
           "Diğer"
         ]
@@ -73,7 +58,6 @@
     {
       "name": "OXO",
       "versions": [
-        "2000W Çift 26Ah",
         "Diğer"
       ],
       "trims": [
@@ -84,7 +68,6 @@
     {
       "name": "Mini (2017-)",
       "versions": [
-        "250W 5.2Ah 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -95,7 +78,6 @@
     {
       "name": "KIX",
       "versions": [
-        "350W 8Ah 25km/h",
         "Diğer"
       ],
       "trims": [

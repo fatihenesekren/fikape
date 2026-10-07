@@ -4,9 +4,9 @@
     {
       "name": "E100 / E200 / E300 (2003-)",
       "versions": [
-        "100W 16 km/s E100",
-        "200W 19 km/s E200",
-        "250W 22 km/s E300",
+        "E100",
+        "E200",
+        "E300",
         "Diğer"
       ],
       "trims": [
@@ -18,8 +18,8 @@
     {
       "name": "Power Core E90 / E100 (2016-)",
       "versions": [
-        "90W 16 km/s E90",
-        "100W 16 km/s E100",
+        "E90",
+        "E100",
         "Diğer"
       ],
       "trims": [
@@ -30,8 +30,8 @@
     {
       "name": "E Prime / E Prime Air (2019-)",
       "versions": [
-        "250W 24 km/s E Prime",
-        "300W 24 km/s E Prime Air",
+        "E Prime",
+        "E Prime Air",
         "Diğer"
       ],
       "trims": [
@@ -40,11 +40,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "250W 24 km/s E Prime": [
+        "E Prime": [
           "Standart",
           "Diğer"
         ],
-        "300W 24 km/s E Prime Air": [
+        "E Prime Air": [
           "Air",
           "Diğer"
         ]
@@ -53,7 +53,6 @@
     {
       "name": "EcoSmart Metro",
       "versions": [
-        "350W 24 km/s",
         "Diğer"
       ],
       "trims": [
@@ -64,7 +63,6 @@
     {
       "name": "E XR",
       "versions": [
-        "300W 29 km/s",
         "Diğer"
       ],
       "trims": [
@@ -75,7 +73,6 @@
     {
       "name": "E Prime III",
       "versions": [
-        "250W 36V 29km/h",
         "Diğer"
       ],
       "trims": [
@@ -86,7 +83,6 @@
     {
       "name": "EcoSmart Cargo",
       "versions": [
-        "1000W 32km/h",
         "Diğer"
       ],
       "trims": [

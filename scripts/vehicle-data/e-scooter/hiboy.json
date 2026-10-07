@@ -4,9 +4,9 @@
     {
       "name": "S2 / S2 Pro / S2 Max (2020-)",
       "versions": [
-        "350W 25 km/s S2",
-        "350W 30 km/s S2 Pro",
-        "500W 35 km/s S2 Max",
+        "S2",
+        "S2 Pro",
+        "S2 Max",
         "Diğer"
       ],
       "trims": [
@@ -16,15 +16,15 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "350W 25 km/s S2": [
+        "S2": [
           "Standart",
           "Diğer"
         ],
-        "350W 30 km/s S2 Pro": [
+        "S2 Pro": [
           "Pro",
           "Diğer"
         ],
-        "500W 35 km/s S2 Max": [
+        "S2 Max": [
           "Max",
           "Diğer"
         ]
@@ -33,8 +33,8 @@
     {
       "name": "KS4 / KS4 Pro (2021-)",
       "versions": [
-        "500W 38 km/s KS4",
-        "500W 42 km/s KS4 Pro",
+        "KS4",
+        "KS4 Pro",
         "Diğer"
       ],
       "trims": [
@@ -43,11 +43,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "500W 38 km/s KS4": [
+        "KS4": [
           "Standart",
           "Diğer"
         ],
-        "500W 42 km/s KS4 Pro": [
+        "KS4 Pro": [
           "Pro",
           "Diğer"
         ]
@@ -56,8 +56,8 @@
     {
       "name": "NEX / MAX Pro (2022-)",
       "versions": [
-        "800W 45 km/s NEX",
-        "800W 48 km/s MAX Pro",
+        "NEX",
+        "MAX Pro",
         "Diğer"
       ],
       "trims": [
@@ -68,8 +68,8 @@
     {
       "name": "Titan / Titan Pro (2023-)",
       "versions": [
-        "1200W 40 km/s Titan",
-        "750W Çift 50 km/s Titan Pro",
+        "Titan",
+        "Titan Pro",
         "Diğer"
       ],
       "trims": [
@@ -78,11 +78,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "1200W 40 km/s Titan": [
+        "Titan": [
           "Standart",
           "Diğer"
         ],
-        "750W Çift 50 km/s Titan Pro": [
+        "Titan Pro": [
           "Pro",
           "Diğer"
         ]

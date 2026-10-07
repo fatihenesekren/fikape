@@ -4,7 +4,6 @@
     {
       "name": "Air Pro",
       "versions": [
-        "500W 14.4Ah 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "Advance",
       "versions": [
-        "500W 10Ah 35km/h",
         "Diğer"
       ],
       "trims": [
@@ -26,7 +24,6 @@
     {
       "name": "Flex",
       "versions": [
-        "500W 14.4Ah 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -37,9 +34,8 @@
     {
       "name": "Escape",
       "versions": [
-        "500W 15Ah 25km/h",
-        "Pro+ 500W",
-        "Ultra Max 800W",
+        "Pro+",
+        "Ultra Max",
         "Diğer"
       ],
       "trims": [
@@ -49,15 +45,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "500W 15Ah 25km/h": [
-          "Standart",
-          "Diğer"
-        ],
-        "Pro+ 500W": [
+        "Pro+": [
           "Pro+",
           "Diğer"
         ],
-        "Ultra Max 800W": [
+        "Ultra Max": [
           "Ultra Max",
           "Diğer"
         ]
@@ -66,8 +58,8 @@
     {
       "name": "Air6 / Air6 Pro+ (Süspansiyonlu)",
       "versions": [
-        "Air6 924W tepe 25km/h",
-        "Air6 Pro+ 1200W tepe 468Wh",
+        "Air6",
+        "Air6 Pro+",
         "Diğer"
       ],
       "trims": [
@@ -78,8 +70,8 @@
     {
       "name": "Air6 Ultra / Ultra Max",
       "versions": [
-        "Ultra 500W (1200W tepe) 624Wh",
-        "Ultra Max 1900W tepe",
+        "Ultra",
+        "Ultra Max",
         "Diğer"
       ],
       "trims": [
@@ -90,7 +82,6 @@
     {
       "name": "Escape Pro+",
       "versions": [
-        "924W tepe 36V 12Ah 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -101,7 +92,6 @@
     {
       "name": "Pure x McLaren",
       "versions": [
-        "500W (924W tepe) 36V 12Ah 432Wh",
         "Diğer"
       ],
       "trims": [

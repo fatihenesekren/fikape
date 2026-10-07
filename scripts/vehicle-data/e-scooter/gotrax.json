@@ -4,7 +4,6 @@
     {
       "name": "GXL V2 (2019-)",
       "versions": [
-        "250W 25 km/s",
         "Diğer"
       ],
       "trims": [
@@ -15,9 +14,9 @@
     {
       "name": "G4 / G5 / G6 (2021-)",
       "versions": [
-        "500W 40 km/s G4",
-        "500W 45 km/s G5",
-        "500W 48 km/s G6",
+        "G4",
+        "G5",
+        "G6",
         "Diğer"
       ],
       "trims": [
@@ -28,8 +27,8 @@
     {
       "name": "Rival / Apex (2022-)",
       "versions": [
-        "350W 32 km/s Rival",
-        "500W 40 km/s Apex",
+        "Rival",
+        "Apex",
         "Diğer"
       ],
       "trims": [
@@ -40,8 +39,8 @@
     {
       "name": "XR Elite / XR Ultra",
       "versions": [
-        "300W 32 km/s XR Elite",
-        "500W 40 km/s XR Ultra",
+        "XR Elite",
+        "XR Ultra",
         "Diğer"
       ],
       "trims": [
@@ -52,7 +51,6 @@
     {
       "name": "GMax Ultra",
       "versions": [
-        "1000W Çift 72km menzil",
         "Diğer"
       ],
       "trims": [
@@ -63,7 +61,6 @@
     {
       "name": "GX3",
       "versions": [
-        "2000W Çift 45km/h",
         "Diğer"
       ],
       "trims": [
@@ -74,8 +71,8 @@
     {
       "name": "G3 / G Pro (3 Tekerlekli)",
       "versions": [
-        "500W 25km/h G3",
-        "500W 25km/h G Pro",
+        "G3",
+        "G Pro",
         "Diğer"
       ],
       "trims": [
@@ -86,7 +83,6 @@
     {
       "name": "GMax",
       "versions": [
-        "350W 36V 17.5Ah 32km/h",
         "Diğer"
       ],
       "trims": [
@@ -97,7 +93,6 @@
     {
       "name": "GX Zero",
       "versions": [
-        "Çift 500W 36V 16Ah 45km/h",
         "Diğer"
       ],
       "trims": [
@@ -108,8 +103,8 @@
     {
       "name": "GX1 / GX2",
       "versions": [
-        "GX1 Çift 600W 720Wh 48km/h",
-        "GX2 Çift 800W 960Wh 56km/h",
+        "GX1",
+        "GX2",
         "Diğer"
       ],
       "trims": [
@@ -120,7 +115,6 @@
     {
       "name": "Flex",
       "versions": [
-        "350W 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -131,7 +125,7 @@
     {
       "name": "G3",
       "versions": [
-        "G3 Plus 300W 29km/h",
+        "G3 Plus",
         "Diğer"
       ],
       "trims": [

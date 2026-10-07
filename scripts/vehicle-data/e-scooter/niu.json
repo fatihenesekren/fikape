@@ -4,7 +4,6 @@
     {
       "name": "KQi1",
       "versions": [
-        "250W 5.1Ah 20km/h",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "KQi2",
       "versions": [
-        "300W 8.68Ah 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -26,8 +24,7 @@
     {
       "name": "KQi3",
       "versions": [
-        "300W 13.4Ah 25km/h",
-        "Pro Max 700W",
+        "Pro Max",
         "Diğer"
       ],
       "trims": [
@@ -40,8 +37,7 @@
     {
       "name": "UQi (2018-)",
       "versions": [
-        "1500W 30Ah",
-        "GT 2000W",
+        "GT",
         "Diğer"
       ],
       "trims": [
@@ -53,8 +49,7 @@
     {
       "name": "MQi (2016-)",
       "versions": [
-        "1500W 48Ah",
-        "GT Pro 3000W",
+        "GT Pro",
         "Diğer"
       ],
       "trims": [
@@ -64,12 +59,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "1500W 48Ah": [
-          "Standart",
-          "GT",
-          "Diğer"
-        ],
-        "GT Pro 3000W": [
+        "GT Pro": [
           "GT Pro",
           "Diğer"
         ]
@@ -78,8 +68,7 @@
     {
       "name": "KQi Air",
       "versions": [
-        "300W 10Ah 25km/h",
-        "X 300W",
+        "X",
         "Diğer"
       ],
       "trims": [
@@ -91,8 +80,8 @@
     {
       "name": "M+ / N1S",
       "versions": [
-        "350W 15Ah 30km/h M+",
-        "500W 30Ah 45km/h N1S",
+        "M+",
+        "N1S",
         "Diğer"
       ],
       "trims": [
@@ -105,9 +94,9 @@
     {
       "name": "KQi3 Pro / KQi3 Max / KQi3 Sport",
       "versions": [
-        "Sport 300W 365Wh 28km/h",
-        "Pro 350W 487Wh 32km/h",
-        "Max 450W 608Wh 38km/h",
+        "Sport",
+        "Pro",
+        "Max",
         "Diğer"
       ],
       "trims": [

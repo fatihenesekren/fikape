@@ -4,7 +4,6 @@
     {
       "name": "Air (2021-)",
       "versions": [
-        "500W 16Ah 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -15,7 +14,6 @@
     {
       "name": "City Pro",
       "versions": [
-        "500W 36Ah 45km/h",
         "Diğer"
       ],
       "trims": [
@@ -26,7 +24,6 @@
     {
       "name": "Ghost",
       "versions": [
-        "1000W Çift 52Ah 55km/h",
         "Diğer"
       ],
       "trims": [
@@ -37,8 +34,7 @@
     {
       "name": "Phantom",
       "versions": [
-        "2400W Çift 52Ah 65km/h",
-        "V3 2400W",
+        "V3",
         "Diğer"
       ],
       "trims": [
@@ -50,7 +46,6 @@
     {
       "name": "Pro",
       "versions": [
-        "1000W 34Ah 45km/h",
         "Diğer"
       ],
       "trims": [
@@ -61,7 +56,6 @@
     {
       "name": "Explore",
       "versions": [
-        "1200W Çift 52Ah 55km/h",
         "Diğer"
       ],
       "trims": [
@@ -72,7 +66,6 @@
     {
       "name": "Dash",
       "versions": [
-        "250W 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -83,7 +76,6 @@
     {
       "name": "Go",
       "versions": [
-        "500W Çift 45km/h",
         "Diğer"
       ],
       "trims": [
@@ -95,7 +87,6 @@
     {
       "name": "Go Stellar",
       "versions": [
-        "Çift motor 2000W tepe 48V 13.5Ah 51km/h",
         "Diğer"
       ],
       "trims": [
@@ -106,7 +97,6 @@
     {
       "name": "City 2.0",
       "versions": [
-        "1900W 48V 18Ah 51km/h",
         "Diğer"
       ],
       "trims": [
@@ -117,7 +107,6 @@
     {
       "name": "City Stellar",
       "versions": [
-        "Çift 1200W 48V 864Wh 55km/h",
         "Diğer"
       ],
       "trims": [
@@ -128,7 +117,6 @@
     {
       "name": "Explore Stellar",
       "versions": [
-        "Çift 1500W 52V 18Ah 936Wh 64km/h",
         "Diğer"
       ],
       "trims": [
@@ -139,7 +127,6 @@
     {
       "name": "Phantom 2.0 Stellar",
       "versions": [
-        "Çift 3350W 60V 30Ah 85km/h",
         "Diğer"
       ],
       "trims": [

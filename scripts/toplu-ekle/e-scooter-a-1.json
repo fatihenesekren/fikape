@@ -4,76 +4,76 @@
   "marka": "Xiaomi",
   "model": "Xiaomi 6 Lite (2026-)",
   "yil": 2026,
-  "versiyon": "300W (500W tepe) 216Wh 25km/h"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Xiaomi",
   "model": "Xiaomi 6 Max (2026-)",
   "yil": 2026,
-  "versiyon": "1100W tepe 468Wh 25km/h"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Xiaomi",
   "model": "Xiaomi 6 Pro (2026-)",
   "yil": 2026,
-  "versiyon": "1000W tepe 25km/h"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Segway",
   "model": "Ninebot Max G3 (2025-)",
   "yil": 2025,
-  "versiyon": "2000W 25 km/s"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Navee",
   "model": "V50 (2024-)",
   "yil": 2024,
-  "versiyon": "500W 15Ah 32km/h"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Navee",
   "model": "N40 (2022-)",
   "yil": 2022,
-  "versiyon": "350W 10.4Ah 25km/h"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Navee",
   "model": "N65 (2022-)",
   "yil": 2022,
-  "versiyon": "500W 17.5Ah 35km/h"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Dualtron",
   "model": "X2 (2021-)",
   "yil": 2021,
-  "versiyon": "8300W Çift 72Ah"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Kaabo",
   "model": "Wolf King GTR (2023-)",
   "yil": 2023,
-  "versiyon": "2000W Çift 35Ah 65km/h"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Apollo",
   "model": "Air (2021-)",
   "yil": 2021,
-  "versiyon": "500W 16Ah 25km/h"
+  "versiyon": null
  },
  {
   "dogrudan": true,
   "marka": "Inmotion",
   "model": "L9 (2021-)",
   "yil": 2021,
-  "versiyon": "900W 45 km/s"
+  "versiyon": null
  }
 ]

@@ -4,7 +4,6 @@
     {
       "name": "Mantis 8",
       "versions": [
-        "800W Çift Motor 25Ah",
         "Diğer"
       ],
       "trims": [
@@ -15,8 +14,7 @@
     {
       "name": "Mantis 10",
       "versions": [
-        "1000W Çift Motor 24Ah",
-        "Pro 2400W",
+        "Pro",
         "Diğer"
       ],
       "trims": [
@@ -25,11 +23,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "1000W Çift Motor 24Ah": [
-          "Standart",
-          "Diğer"
-        ],
-        "Pro 2400W": [
+        "Pro": [
           "Pro",
           "Diğer"
         ]
@@ -38,8 +32,7 @@
     {
       "name": "Wolf King",
       "versions": [
-        "2400W Çift Motor 35Ah",
-        "GT 2400W",
+        "GT",
         "Diğer"
       ],
       "trims": [
@@ -52,8 +45,7 @@
     {
       "name": "Wolf Warrior",
       "versions": [
-        "5400W Çift Motor 60Ah",
-        "11+ 2400W",
+        "11+",
         "Diğer"
       ],
       "trims": [
@@ -62,11 +54,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "5400W Çift Motor 60Ah": [
-          "Standart",
-          "Diğer"
-        ],
-        "11+ 2400W": [
+        "11+": [
           "11+",
           "Diğer"
         ]
@@ -75,7 +63,6 @@
     {
       "name": "Skywalker 10",
       "versions": [
-        "500W 13Ah 25km/h",
         "Diğer"
       ],
       "trims": [
@@ -86,7 +73,6 @@
     {
       "name": "Mantis King GT",
       "versions": [
-        "1400W Çift 30Ah 55km/h",
         "Diğer"
       ],
       "trims": [
@@ -97,8 +83,7 @@
     {
       "name": "Mantis X",
       "versions": [
-        "1000W Çift 21Ah 50km/h",
-        "Plus 1200W",
+        "Plus",
         "Diğer"
       ],
       "trims": [
@@ -107,11 +92,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "1000W Çift 21Ah 50km/h": [
-          "Standart",
-          "Diğer"
-        ],
-        "Plus 1200W": [
+        "Plus": [
           "Plus",
           "Diğer"
         ]
@@ -120,8 +101,7 @@
     {
       "name": "Wolf King GTR (2023-)",
       "versions": [
-        "2000W Çift 35Ah 65km/h",
-        "Max 2000W",
+        "Max",
         "Diğer"
       ],
       "trims": [
@@ -130,11 +110,7 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "2000W Çift 35Ah 65km/h": [
-          "Standart",
-          "Diğer"
-        ],
-        "Max 2000W": [
+        "Max": [
           "Max",
           "Diğer"
         ]
@@ -143,7 +119,6 @@
     {
       "name": "Mantis 10 Plus V2",
       "versions": [
-        "Çift 1000W 60V 24.5Ah 70km/h",
         "Diğer"
       ],
       "trims": [
@@ -154,7 +129,6 @@
     {
       "name": "Mantis King Pro",
       "versions": [
-        "Çift 1100W 60V 24Ah 69km/h",
         "Diğer"
       ],
       "trims": [
@@ -165,7 +139,6 @@
     {
       "name": "Wolf King GT Pro",
       "versions": [
-        "Çift 2000W 72V 35Ah 100km/h",
         "Diğer"
       ],
       "trims": [
@@ -176,7 +149,6 @@
     {
       "name": "Wolf King GTR Max",
       "versions": [
-        "Çift 2000W 72V 40Ah 105km/h",
         "Diğer"
       ],
       "trims": [
@@ -187,7 +159,6 @@
     {
       "name": "Skywalker 8H",
       "versions": [
-        "500W",
         "Diğer"
       ],
       "trims": [

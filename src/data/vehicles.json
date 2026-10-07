@@ -40412,7 +40412,6 @@
         {
           "name": "Air (2021-)",
           "versions": [
-            "500W 16Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -40423,7 +40422,6 @@
         {
           "name": "City Pro",
           "versions": [
-            "500W 36Ah 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -40434,7 +40432,6 @@
         {
           "name": "Ghost",
           "versions": [
-            "1000W Çift 52Ah 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -40445,8 +40442,7 @@
         {
           "name": "Phantom",
           "versions": [
-            "2400W Çift 52Ah 65km/h",
-            "V3 2400W",
+            "V3",
             "Diğer"
           ],
           "trims": [
@@ -40458,7 +40454,6 @@
         {
           "name": "Pro",
           "versions": [
-            "1000W 34Ah 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -40469,7 +40464,6 @@
         {
           "name": "Explore",
           "versions": [
-            "1200W Çift 52Ah 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -40480,7 +40474,6 @@
         {
           "name": "Dash",
           "versions": [
-            "250W 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -40491,7 +40484,6 @@
         {
           "name": "Go",
           "versions": [
-            "500W Çift 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -40503,7 +40495,6 @@
         {
           "name": "Go Stellar",
           "versions": [
-            "Çift motor 2000W tepe 48V 13.5Ah 51km/h",
             "Diğer"
           ],
           "trims": [
@@ -40514,7 +40505,6 @@
         {
           "name": "City 2.0",
           "versions": [
-            "1900W 48V 18Ah 51km/h",
             "Diğer"
           ],
           "trims": [
@@ -40525,7 +40515,6 @@
         {
           "name": "City Stellar",
           "versions": [
-            "Çift 1200W 48V 864Wh 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -40536,7 +40525,6 @@
         {
           "name": "Explore Stellar",
           "versions": [
-            "Çift 1500W 52V 18Ah 936Wh 64km/h",
             "Diğer"
           ],
           "trims": [
@@ -40547,7 +40535,6 @@
         {
           "name": "Phantom 2.0 Stellar",
           "versions": [
-            "Çift 3350W 60V 30Ah 85km/h",
             "Diğer"
           ],
           "trims": [
@@ -40586,8 +40573,7 @@
         {
           "name": "Mini",
           "versions": [
-            "600W 10.5Ah 25km/h",
-            "Special 600W",
+            "Special",
             "Diğer"
           ],
           "trims": [
@@ -40599,7 +40585,6 @@
         {
           "name": "Compact",
           "versions": [
-            "1200W Çift 13Ah",
             "Diğer"
           ],
           "trims": [
@@ -40610,9 +40595,8 @@
         {
           "name": "Eagle",
           "versions": [
-            "1600W Çift 28.9Ah",
-            "Pro 1600W",
-            "Limited 1600W",
+            "Pro",
+            "Limited",
             "Diğer"
           ],
           "trims": [
@@ -40622,15 +40606,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "1600W Çift 28.9Ah": [
-              "Standart",
-              "Diğer"
-            ],
-            "Pro 1600W": [
+            "Pro": [
               "Pro",
               "Diğer"
             ],
-            "Limited 1600W": [
+            "Limited": [
               "Limited",
               "Diğer"
             ]
@@ -40639,9 +40619,8 @@
         {
           "name": "Thunder",
           "versions": [
-            "5400W Çift 35Ah",
-            "2 5400W",
-            "3 5400W",
+            "2",
+            "3",
             "Diğer"
           ],
           "trims": [
@@ -40654,9 +40633,8 @@
         {
           "name": "Storm",
           "versions": [
-            "6640W Çift 48Ah",
-            "X 6640W",
-            "Limited 11500W",
+            "X",
+            "Limited",
             "Diğer"
           ],
           "trims": [
@@ -40669,8 +40647,7 @@
         {
           "name": "Ultra",
           "versions": [
-            "6720W Çift 100Ah",
-            "2 6720W",
+            "2",
             "Diğer"
           ],
           "trims": [
@@ -40682,8 +40659,6 @@
         {
           "name": "X2 (2021-)",
           "versions": [
-            "8300W Çift 72Ah",
-            "8300W",
             "Diğer"
           ],
           "trims": [
@@ -40695,31 +40670,18 @@
         {
           "name": "X",
           "versions": [
-            "13000W Çift 60Ah",
-            "13000W",
             "Diğer"
           ],
           "trims": [
             "Standart",
             "Limited",
             "Diğer"
-          ],
-          "trimsByVersion": {
-            "13000W Çift 60Ah": [
-              "Standart",
-              "Diğer"
-            ],
-            "13000W": [
-              "Limited",
-              "Diğer"
-            ]
-          }
+          ]
         },
         {
           "name": "City",
           "versions": [
-            "4000W Çift 25Ah",
-            "New 4000W",
+            "New",
             "Diğer"
           ],
           "trims": [
@@ -40731,9 +40693,8 @@
         {
           "name": "Victor",
           "versions": [
-            "4300W Çift 42Ah",
-            "Luxury Plus 4300W",
-            "Limited 4300W",
+            "Luxury Plus",
+            "Limited",
             "Diğer"
           ],
           "trims": [
@@ -40743,15 +40704,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "4300W Çift 42Ah": [
-              "Standart",
-              "Diğer"
-            ],
-            "Luxury Plus 4300W": [
+            "Luxury Plus": [
               "Luxury Plus",
               "Diğer"
             ],
-            "Limited 4300W": [
+            "Limited": [
               "Limited",
               "Diğer"
             ]
@@ -40760,9 +40717,8 @@
         {
           "name": "Togo",
           "versions": [
-            "1350W 12Ah 25km/h",
-            "Plus 1000W",
-            "Limited 1350W",
+            "Plus",
+            "Limited",
             "Diğer"
           ],
           "trims": [
@@ -40775,8 +40731,7 @@
         {
           "name": "Achilleus",
           "versions": [
-            "4648W Çift 60V",
-            "Limited 4648W",
+            "Limited",
             "Diğer"
           ],
           "trims": [
@@ -40785,11 +40740,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "4648W Çift 60V": [
-              "Standart",
-              "Diğer"
-            ],
-            "Limited 4648W": [
+            "Limited": [
               "Limited",
               "Diğer"
             ]
@@ -40798,8 +40749,7 @@
         {
           "name": "Raptor",
           "versions": [
-            "3000W Çift Hub Motor",
-            "2 3000W",
+            "2",
             "Diğer"
           ],
           "trims": [
@@ -40828,8 +40778,8 @@
         {
           "name": "Sonic",
           "versions": [
-            "Model N 700W Çift",
-            "Alien 11800W Çift",
+            "Model N",
+            "Alien",
             "Diğer"
           ],
           "trims": [
@@ -40838,11 +40788,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "Model N 700W Çift": [
+            "Model N": [
               "Model N",
               "Diğer"
             ],
-            "Alien 11800W Çift": [
+            "Alien": [
               "Alien",
               "Diğer"
             ]
@@ -40875,8 +40825,7 @@
         {
           "name": "Man",
           "versions": [
-            "2700W",
-            "EX+ 2700W",
+            "EX+",
             "Diğer"
           ],
           "trims": [
@@ -40899,7 +40848,6 @@
         {
           "name": "X Limited",
           "versions": [
-            "Çift 6200W 84V 60Ah",
             "Diğer"
           ],
           "trims": [
@@ -40910,7 +40858,6 @@
         {
           "name": "Sonic Alien",
           "versions": [
-            "72V 40Ah 100km/h",
             "Diğer"
           ],
           "trims": [
@@ -40921,7 +40868,6 @@
         {
           "name": "Thunder 3",
           "versions": [
-            "Çift 5500W 72V 40Ah",
             "Diğer"
           ],
           "trims": [
@@ -40932,7 +40878,6 @@
         {
           "name": "Spider Max",
           "versions": [
-            "Çift 2000W 60V 30Ah",
             "Diğer"
           ],
           "trims": [
@@ -40943,8 +40888,8 @@
         {
           "name": "Victor Luxury+ / Victor Limited",
           "versions": [
-            "Limited Çift 2125W 60V 35Ah",
-            "Luxury+ 2.0 Çift 2125W 60V 31.5Ah",
+            "Limited",
+            "Luxury+ 2.0",
             "Diğer"
           ],
           "trims": [
@@ -40955,7 +40900,6 @@
         {
           "name": "Rovoron R7 Pro",
           "versions": [
-            "Çift 900W (3300W tepe) 60V 42.4Ah",
             "Diğer"
           ],
           "trims": [
@@ -40966,7 +40910,6 @@
         {
           "name": "Forever 2.0",
           "versions": [
-            "Çift 1500W 60V 18.2Ah",
             "Diğer"
           ],
           "trims": [
@@ -40977,7 +40920,6 @@
         {
           "name": "Sonic Nano",
           "versions": [
-            "Çift 350W (500W tepe) 36V 10.2Ah 367Wh 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -41002,7 +40944,6 @@
         {
           "name": "Cruiser",
           "versions": [
-            "1600W 30Ah 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -41013,7 +40954,6 @@
         {
           "name": "Touring",
           "versions": [
-            "500W 20Ah 35km/h",
             "Diğer"
           ],
           "trims": [
@@ -41024,10 +40964,9 @@
         {
           "name": "RoadRunner",
           "versions": [
-            "2000W 35Ah 45km/h",
-            "SE 1000W",
-            "Pro 3000W",
-            "V3 3000W",
+            "SE",
+            "Pro",
+            "V3",
             "Diğer"
           ],
           "trims": [
@@ -41039,25 +40978,18 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "2000W 35Ah 45km/h": [
+            "SE": [
               "Standart",
               "SE",
               "V2",
               "V3",
               "Diğer"
             ],
-            "SE 1000W": [
-              "Standart",
-              "SE",
-              "V2",
-              "V3",
-              "Diğer"
-            ],
-            "Pro 3000W": [
+            "Pro": [
               "Pro",
               "Diğer"
             ],
-            "V3 3000W": [
+            "V3": [
               "Standart",
               "SE",
               "V2",
@@ -41069,7 +41001,6 @@
         {
           "name": "Roadster",
           "versions": [
-            "Çift 4000W (15456W tepe) 84V 40Ah 3360Wh",
             "Diğer"
           ],
           "trims": [
@@ -41080,8 +41011,6 @@
         {
           "name": "RoadRunner Pro V2",
           "versions": [
-            "Çift 2000W 72V 40Ah",
-            "Çift 2000W 72V 60Ah",
             "Diğer"
           ],
           "trims": [
@@ -41106,7 +41035,6 @@
         {
           "name": "GXL V2 (2019-)",
           "versions": [
-            "250W 25 km/s",
             "Diğer"
           ],
           "trims": [
@@ -41117,9 +41045,9 @@
         {
           "name": "G4 / G5 / G6 (2021-)",
           "versions": [
-            "500W 40 km/s G4",
-            "500W 45 km/s G5",
-            "500W 48 km/s G6",
+            "G4",
+            "G5",
+            "G6",
             "Diğer"
           ],
           "trims": [
@@ -41130,8 +41058,8 @@
         {
           "name": "Rival / Apex (2022-)",
           "versions": [
-            "350W 32 km/s Rival",
-            "500W 40 km/s Apex",
+            "Rival",
+            "Apex",
             "Diğer"
           ],
           "trims": [
@@ -41142,8 +41070,8 @@
         {
           "name": "XR Elite / XR Ultra",
           "versions": [
-            "300W 32 km/s XR Elite",
-            "500W 40 km/s XR Ultra",
+            "XR Elite",
+            "XR Ultra",
             "Diğer"
           ],
           "trims": [
@@ -41154,7 +41082,6 @@
         {
           "name": "GMax Ultra",
           "versions": [
-            "1000W Çift 72km menzil",
             "Diğer"
           ],
           "trims": [
@@ -41165,7 +41092,6 @@
         {
           "name": "GX3",
           "versions": [
-            "2000W Çift 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -41176,8 +41102,8 @@
         {
           "name": "G3 / G Pro (3 Tekerlekli)",
           "versions": [
-            "500W 25km/h G3",
-            "500W 25km/h G Pro",
+            "G3",
+            "G Pro",
             "Diğer"
           ],
           "trims": [
@@ -41188,7 +41114,6 @@
         {
           "name": "GMax",
           "versions": [
-            "350W 36V 17.5Ah 32km/h",
             "Diğer"
           ],
           "trims": [
@@ -41199,7 +41124,6 @@
         {
           "name": "GX Zero",
           "versions": [
-            "Çift 500W 36V 16Ah 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -41210,8 +41134,8 @@
         {
           "name": "GX1 / GX2",
           "versions": [
-            "GX1 Çift 600W 720Wh 48km/h",
-            "GX2 Çift 800W 960Wh 56km/h",
+            "GX1",
+            "GX2",
             "Diğer"
           ],
           "trims": [
@@ -41222,7 +41146,6 @@
         {
           "name": "Flex",
           "versions": [
-            "350W 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -41233,7 +41156,7 @@
         {
           "name": "G3",
           "versions": [
-            "G3 Plus 300W 29km/h",
+            "G3 Plus",
             "Diğer"
           ],
           "trims": [
@@ -41258,9 +41181,9 @@
         {
           "name": "S2 / S2 Pro / S2 Max (2020-)",
           "versions": [
-            "350W 25 km/s S2",
-            "350W 30 km/s S2 Pro",
-            "500W 35 km/s S2 Max",
+            "S2",
+            "S2 Pro",
+            "S2 Max",
             "Diğer"
           ],
           "trims": [
@@ -41270,15 +41193,15 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "350W 25 km/s S2": [
+            "S2": [
               "Standart",
               "Diğer"
             ],
-            "350W 30 km/s S2 Pro": [
+            "S2 Pro": [
               "Pro",
               "Diğer"
             ],
-            "500W 35 km/s S2 Max": [
+            "S2 Max": [
               "Max",
               "Diğer"
             ]
@@ -41287,8 +41210,8 @@
         {
           "name": "KS4 / KS4 Pro (2021-)",
           "versions": [
-            "500W 38 km/s KS4",
-            "500W 42 km/s KS4 Pro",
+            "KS4",
+            "KS4 Pro",
             "Diğer"
           ],
           "trims": [
@@ -41297,11 +41220,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "500W 38 km/s KS4": [
+            "KS4": [
               "Standart",
               "Diğer"
             ],
-            "500W 42 km/s KS4 Pro": [
+            "KS4 Pro": [
               "Pro",
               "Diğer"
             ]
@@ -41310,8 +41233,8 @@
         {
           "name": "NEX / MAX Pro (2022-)",
           "versions": [
-            "800W 45 km/s NEX",
-            "800W 48 km/s MAX Pro",
+            "NEX",
+            "MAX Pro",
             "Diğer"
           ],
           "trims": [
@@ -41322,8 +41245,8 @@
         {
           "name": "Titan / Titan Pro (2023-)",
           "versions": [
-            "1200W 40 km/s Titan",
-            "750W Çift 50 km/s Titan Pro",
+            "Titan",
+            "Titan Pro",
             "Diğer"
           ],
           "trims": [
@@ -41332,11 +41255,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "1200W 40 km/s Titan": [
+            "Titan": [
               "Standart",
               "Diğer"
             ],
-            "750W Çift 50 km/s Titan Pro": [
+            "Titan Pro": [
               "Pro",
               "Diğer"
             ]
@@ -41359,8 +41282,8 @@
         {
           "name": "S1 / S1F (2020-)",
           "versions": [
-            "500W 30 km/s S1",
-            "500W 30 km/s S1F Katlanabilir",
+            "S1",
+            "S1F Katlanabilir",
             "Diğer"
           ],
           "trims": [
@@ -41372,7 +41295,6 @@
         {
           "name": "L9 (2021-)",
           "versions": [
-            "900W 45 km/s",
             "Diğer"
           ],
           "trims": [
@@ -41383,8 +41305,8 @@
         {
           "name": "Climber / Air Pro (2023-)",
           "versions": [
-            "500W 35 km/s Air Pro",
-            "800W 40 km/s Climber",
+            "Air Pro",
+            "Climber",
             "Diğer"
           ],
           "trims": [
@@ -41395,9 +41317,8 @@
         {
           "name": "RS",
           "versions": [
-            "8400W Çift 101km/h",
-            "Lite 4000W",
-            "JET 8400W",
+            "Lite",
+            "JET",
             "Diğer"
           ],
           "trims": [
@@ -41407,15 +41328,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "8400W Çift 101km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Lite 4000W": [
+            "Lite": [
               "Lite",
               "Diğer"
             ],
-            "JET 8400W": [
+            "JET": [
               "JET",
               "Diğer"
             ]
@@ -41424,7 +41341,6 @@
         {
           "name": "C10",
           "versions": [
-            "800W Çift 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -41435,7 +41351,6 @@
         {
           "name": "RS Lite",
           "versions": [
-            "Çift 1500W 72V 30Ah 90km/h",
             "Diğer"
           ],
           "trims": [
@@ -41446,7 +41361,6 @@
         {
           "name": "RS Jet",
           "versions": [
-            "Çift 1200W 72V 25Ah 80km/h",
             "Diğer"
           ],
           "trims": [
@@ -41457,7 +41371,6 @@
         {
           "name": "Air",
           "versions": [
-            "350W (720W tepe) 36V 270Wh 31km/h",
             "Diğer"
           ],
           "trims": [
@@ -41482,8 +41395,7 @@
         {
           "name": "Light 2",
           "versions": [
-            "350W 7.8Ah 25km/h",
-            "Super 350W",
+            "Super",
             "Diğer"
           ],
           "trims": [
@@ -41492,11 +41404,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "350W 7.8Ah 25km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Super 350W": [
+            "Super": [
               "Super",
               "Diğer"
             ]
@@ -41505,8 +41413,7 @@
         {
           "name": "Quick 4",
           "versions": [
-            "500W 13Ah 45km/h",
-            "Max 500W",
+            "Max",
             "Diğer"
           ],
           "trims": [
@@ -41515,11 +41422,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "500W 13Ah 45km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Max 500W": [
+            "Max": [
               "Max",
               "Diğer"
             ]
@@ -41528,8 +41431,7 @@
         {
           "name": "OX (2018-)",
           "versions": [
-            "1000W Çift 13Ah",
-            "Eco 500W",
+            "Eco",
             "Diğer"
           ],
           "trims": [
@@ -41538,11 +41440,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "1000W Çift 13Ah": [
-              "Standart",
-              "Diğer"
-            ],
-            "Eco 500W": [
+            "Eco": [
               "Eco",
               "Diğer"
             ]
@@ -41551,7 +41449,6 @@
         {
           "name": "OXO",
           "versions": [
-            "2000W Çift 26Ah",
             "Diğer"
           ],
           "trims": [
@@ -41562,7 +41459,6 @@
         {
           "name": "Mini (2017-)",
           "versions": [
-            "250W 5.2Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -41573,7 +41469,6 @@
         {
           "name": "KIX",
           "versions": [
-            "350W 8Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -41598,7 +41493,6 @@
         {
           "name": "Mantis 8",
           "versions": [
-            "800W Çift Motor 25Ah",
             "Diğer"
           ],
           "trims": [
@@ -41609,8 +41503,7 @@
         {
           "name": "Mantis 10",
           "versions": [
-            "1000W Çift Motor 24Ah",
-            "Pro 2400W",
+            "Pro",
             "Diğer"
           ],
           "trims": [
@@ -41619,11 +41512,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "1000W Çift Motor 24Ah": [
-              "Standart",
-              "Diğer"
-            ],
-            "Pro 2400W": [
+            "Pro": [
               "Pro",
               "Diğer"
             ]
@@ -41632,8 +41521,7 @@
         {
           "name": "Wolf King",
           "versions": [
-            "2400W Çift Motor 35Ah",
-            "GT 2400W",
+            "GT",
             "Diğer"
           ],
           "trims": [
@@ -41646,8 +41534,7 @@
         {
           "name": "Wolf Warrior",
           "versions": [
-            "5400W Çift Motor 60Ah",
-            "11+ 2400W",
+            "11+",
             "Diğer"
           ],
           "trims": [
@@ -41656,11 +41543,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "5400W Çift Motor 60Ah": [
-              "Standart",
-              "Diğer"
-            ],
-            "11+ 2400W": [
+            "11+": [
               "11+",
               "Diğer"
             ]
@@ -41669,7 +41552,6 @@
         {
           "name": "Skywalker 10",
           "versions": [
-            "500W 13Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -41680,7 +41562,6 @@
         {
           "name": "Mantis King GT",
           "versions": [
-            "1400W Çift 30Ah 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -41691,8 +41572,7 @@
         {
           "name": "Mantis X",
           "versions": [
-            "1000W Çift 21Ah 50km/h",
-            "Plus 1200W",
+            "Plus",
             "Diğer"
           ],
           "trims": [
@@ -41701,11 +41581,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "1000W Çift 21Ah 50km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Plus 1200W": [
+            "Plus": [
               "Plus",
               "Diğer"
             ]
@@ -41714,8 +41590,7 @@
         {
           "name": "Wolf King GTR (2023-)",
           "versions": [
-            "2000W Çift 35Ah 65km/h",
-            "Max 2000W",
+            "Max",
             "Diğer"
           ],
           "trims": [
@@ -41724,11 +41599,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "2000W Çift 35Ah 65km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Max 2000W": [
+            "Max": [
               "Max",
               "Diğer"
             ]
@@ -41737,7 +41608,6 @@
         {
           "name": "Mantis 10 Plus V2",
           "versions": [
-            "Çift 1000W 60V 24.5Ah 70km/h",
             "Diğer"
           ],
           "trims": [
@@ -41748,7 +41618,6 @@
         {
           "name": "Mantis King Pro",
           "versions": [
-            "Çift 1100W 60V 24Ah 69km/h",
             "Diğer"
           ],
           "trims": [
@@ -41759,7 +41628,6 @@
         {
           "name": "Wolf King GT Pro",
           "versions": [
-            "Çift 2000W 72V 35Ah 100km/h",
             "Diğer"
           ],
           "trims": [
@@ -41770,7 +41638,6 @@
         {
           "name": "Wolf King GTR Max",
           "versions": [
-            "Çift 2000W 72V 40Ah 105km/h",
             "Diğer"
           ],
           "trims": [
@@ -41781,7 +41648,6 @@
         {
           "name": "Skywalker 8H",
           "versions": [
-            "500W",
             "Diğer"
           ],
           "trims": [
@@ -41806,7 +41672,6 @@
         {
           "name": "S1",
           "versions": [
-            "350W 7.5Ah 30km/h",
             "Diğer"
           ],
           "trims": [
@@ -41818,8 +41683,7 @@
         {
           "name": "S3",
           "versions": [
-            "350W 10Ah 35km/h",
-            "Pro 350W",
+            "Pro",
             "Diğer"
           ],
           "trims": [
@@ -41828,11 +41692,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "350W 10Ah 35km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Pro 350W": [
+            "Pro": [
               "Pro",
               "Diğer"
             ]
@@ -41841,7 +41701,6 @@
         {
           "name": "G-Booster",
           "versions": [
-            "2000W Çift 23Ah 70km/h",
             "Diğer"
           ],
           "trims": [
@@ -41852,7 +41711,6 @@
         {
           "name": "G2 Pro",
           "versions": [
-            "500W 26Ah 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -41863,7 +41721,6 @@
         {
           "name": "M4 Pro",
           "versions": [
-            "1200W 24Ah 50km/h",
             "Diğer"
           ],
           "trims": [
@@ -41874,8 +41731,7 @@
         {
           "name": "G4",
           "versions": [
-            "1600W Çift 23Ah 70km/h",
-            "Max 2000W",
+            "Max",
             "Diğer"
           ],
           "trims": [
@@ -41884,11 +41740,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "1600W Çift 23Ah 70km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Max 2000W": [
+            "Max": [
               "Max",
               "Diğer"
             ]
@@ -41897,7 +41749,6 @@
         {
           "name": "M4 Max",
           "versions": [
-            "1200W Çift 26Ah 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -41908,7 +41759,6 @@
         {
           "name": "S1 Max",
           "versions": [
-            "350W 30km/h",
             "Diğer"
           ],
           "trims": [
@@ -41919,7 +41769,6 @@
         {
           "name": "S3 Pro",
           "versions": [
-            "350W 36V 7.5Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -41930,7 +41779,6 @@
         {
           "name": "G2 Max",
           "versions": [
-            "1000W 48V 20Ah 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -41941,7 +41789,6 @@
         {
           "name": "G2 Master",
           "versions": [
-            "Çift 1000W 52V 20.8Ah 60km/h",
             "Diğer"
           ],
           "trims": [
@@ -41952,7 +41799,6 @@
         {
           "name": "G3 Pro",
           "versions": [
-            "Çift 1200W 52V 23.4Ah 65km/h",
             "Diğer"
           ],
           "trims": [
@@ -41963,7 +41809,6 @@
         {
           "name": "G2 Ultra",
           "versions": [
-            "Çift 800W 48V 18Ah 50km/h",
             "Diğer"
           ],
           "trims": [
@@ -41988,7 +41833,6 @@
         {
           "name": "TI30",
           "versions": [
-            "1200W Çift 30Ah 65km/h",
             "Diğer"
           ],
           "trims": [
@@ -41999,7 +41843,6 @@
         {
           "name": "ES18",
           "versions": [
-            "3200W Çift 35Ah 80km/h",
             "Diğer"
           ],
           "trims": [
@@ -42010,7 +41853,6 @@
         {
           "name": "SC11",
           "versions": [
-            "500W 13Ah 35km/h",
             "Diğer"
           ],
           "trims": [
@@ -42021,7 +41863,6 @@
         {
           "name": "ES19",
           "versions": [
-            "6000W Çift 40Ah 80km/h",
             "Diğer"
           ],
           "trims": [
@@ -42032,7 +41873,6 @@
         {
           "name": "ES10P",
           "versions": [
-            "Çift 1000W 52V 23.4Ah 70km/h",
             "Diğer"
           ],
           "trims": [
@@ -42057,7 +41897,6 @@
         {
           "name": "N40 (2022-)",
           "versions": [
-            "350W 10.4Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42068,7 +41907,6 @@
         {
           "name": "N65 (2022-)",
           "versions": [
-            "500W 17.5Ah 35km/h",
             "Diğer"
           ],
           "trims": [
@@ -42079,7 +41917,6 @@
         {
           "name": "S65 (2022-)",
           "versions": [
-            "500W 17.5Ah 40km/h",
             "Diğer"
           ],
           "trims": [
@@ -42090,8 +41927,8 @@
         {
           "name": "N65i / N65 Pro (2023-)",
           "versions": [
-            "500W 17.5Ah 35km/h N65i",
-            "500W 20Ah 35km/h N65 Pro",
+            "N65i",
+            "N65 Pro",
             "Diğer"
           ],
           "trims": [
@@ -42100,11 +41937,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "500W 17.5Ah 35km/h N65i": [
+            "N65i": [
               "Standart",
               "Diğer"
             ],
-            "500W 20Ah 35km/h N65 Pro": [
+            "N65 Pro": [
               "Pro",
               "Diğer"
             ]
@@ -42113,8 +41950,8 @@
         {
           "name": "S65C / S65 GT",
           "versions": [
-            "500W 17.5Ah 40km/h S65C",
-            "700W 20Ah 40km/h S65 GT",
+            "S65C",
+            "S65 GT",
             "Diğer"
           ],
           "trims": [
@@ -42126,7 +41963,6 @@
         {
           "name": "V50 (2024-)",
           "versions": [
-            "500W 15Ah 32km/h",
             "Diğer"
           ],
           "trims": [
@@ -42137,9 +41973,9 @@
         {
           "name": "GT3 / GT3 Pro / GT3 Max",
           "versions": [
-            "GT3 700W tepe 358Wh 32km/h",
-            "GT3 Pro 400W (1000W tepe) 477Wh 32km/h",
-            "GT3 Max 400W (1000W tepe) 597Wh 32km/h",
+            "GT3",
+            "GT3 Pro",
+            "GT3 Max",
             "Diğer"
           ],
           "trims": [
@@ -42150,7 +41986,7 @@
         {
           "name": "ST3 / ST3 Pro",
           "versions": [
-            "ST3 Pro 600W 48V 12.75Ah",
+            "ST3 Pro",
             "Diğer"
           ],
           "trims": [
@@ -42161,7 +41997,6 @@
         {
           "name": "N65i II",
           "versions": [
-            "1000W 40km/h",
             "Diğer"
           ],
           "trims": [
@@ -42186,7 +42021,6 @@
         {
           "name": "KQi1",
           "versions": [
-            "250W 5.1Ah 20km/h",
             "Diğer"
           ],
           "trims": [
@@ -42197,7 +42031,6 @@
         {
           "name": "KQi2",
           "versions": [
-            "300W 8.68Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42208,8 +42041,7 @@
         {
           "name": "KQi3",
           "versions": [
-            "300W 13.4Ah 25km/h",
-            "Pro Max 700W",
+            "Pro Max",
             "Diğer"
           ],
           "trims": [
@@ -42222,8 +42054,7 @@
         {
           "name": "UQi (2018-)",
           "versions": [
-            "1500W 30Ah",
-            "GT 2000W",
+            "GT",
             "Diğer"
           ],
           "trims": [
@@ -42235,8 +42066,7 @@
         {
           "name": "MQi (2016-)",
           "versions": [
-            "1500W 48Ah",
-            "GT Pro 3000W",
+            "GT Pro",
             "Diğer"
           ],
           "trims": [
@@ -42246,12 +42076,7 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "1500W 48Ah": [
-              "Standart",
-              "GT",
-              "Diğer"
-            ],
-            "GT Pro 3000W": [
+            "GT Pro": [
               "GT Pro",
               "Diğer"
             ]
@@ -42260,8 +42085,7 @@
         {
           "name": "KQi Air",
           "versions": [
-            "300W 10Ah 25km/h",
-            "X 300W",
+            "X",
             "Diğer"
           ],
           "trims": [
@@ -42273,8 +42097,8 @@
         {
           "name": "M+ / N1S",
           "versions": [
-            "350W 15Ah 30km/h M+",
-            "500W 30Ah 45km/h N1S",
+            "M+",
+            "N1S",
             "Diğer"
           ],
           "trims": [
@@ -42287,9 +42111,9 @@
         {
           "name": "KQi3 Pro / KQi3 Max / KQi3 Sport",
           "versions": [
-            "Sport 300W 365Wh 28km/h",
-            "Pro 350W 487Wh 32km/h",
-            "Max 450W 608Wh 38km/h",
+            "Sport",
+            "Pro",
+            "Max",
             "Diğer"
           ],
           "trims": [
@@ -42314,8 +42138,8 @@
         {
           "name": "Neon / Neon Pro (2021-)",
           "versions": [
-            "350W 25 km/s Neon",
-            "500W 30 km/s Neon Pro",
+            "Neon",
+            "Neon Pro",
             "Diğer"
           ],
           "trims": [
@@ -42324,11 +42148,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "350W 25 km/s Neon": [
+            "Neon": [
               "Standart",
               "Diğer"
             ],
-            "500W 30 km/s Neon Pro": [
+            "Neon Pro": [
               "Pro",
               "Diğer"
             ]
@@ -42337,8 +42161,8 @@
         {
           "name": "Spark / Spark Pro (2022-)",
           "versions": [
-            "500W 30 km/s Spark",
-            "700W 35 km/s Spark Pro",
+            "Spark",
+            "Spark Pro",
             "Diğer"
           ],
           "trims": [
@@ -42347,11 +42171,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "500W 30 km/s Spark": [
+            "Spark": [
               "Standart",
               "Diğer"
             ],
-            "700W 35 km/s Spark Pro": [
+            "Spark Pro": [
               "Pro",
               "Diğer"
             ]
@@ -42360,8 +42184,8 @@
         {
           "name": "ES400 / ES400B (Paylaşımlı)",
           "versions": [
-            "500W 25 km/s ES400",
-            "700W 25 km/s ES400B",
+            "ES400",
+            "ES400B",
             "Diğer"
           ],
           "trims": [
@@ -42372,7 +42196,6 @@
         {
           "name": "Panther ES800",
           "versions": [
-            "800W Çift 40 km/s",
             "Diğer"
           ],
           "trims": [
@@ -42383,8 +42206,8 @@
         {
           "name": "Ceetle",
           "versions": [
-            "500W 30 km/s EA10",
-            "Pro 500W EA10C",
+            "EA10",
+            "EA10C",
             "Diğer"
           ],
           "trims": [
@@ -42393,11 +42216,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "500W 30 km/s EA10": [
+            "EA10": [
               "Standart",
               "Diğer"
             ],
-            "Pro 500W EA10C": [
+            "EA10C": [
               "Pro",
               "Diğer"
             ]
@@ -42406,7 +42229,6 @@
         {
           "name": "Zippy Pro ES52",
           "versions": [
-            "300W 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42417,7 +42239,6 @@
         {
           "name": "Neon Lite ES10",
           "versions": [
-            "300W 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42442,7 +42263,6 @@
         {
           "name": "Air Pro",
           "versions": [
-            "500W 14.4Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42453,7 +42273,6 @@
         {
           "name": "Advance",
           "versions": [
-            "500W 10Ah 35km/h",
             "Diğer"
           ],
           "trims": [
@@ -42464,7 +42283,6 @@
         {
           "name": "Flex",
           "versions": [
-            "500W 14.4Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42475,9 +42293,8 @@
         {
           "name": "Escape",
           "versions": [
-            "500W 15Ah 25km/h",
-            "Pro+ 500W",
-            "Ultra Max 800W",
+            "Pro+",
+            "Ultra Max",
             "Diğer"
           ],
           "trims": [
@@ -42487,15 +42304,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "500W 15Ah 25km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Pro+ 500W": [
+            "Pro+": [
               "Pro+",
               "Diğer"
             ],
-            "Ultra Max 800W": [
+            "Ultra Max": [
               "Ultra Max",
               "Diğer"
             ]
@@ -42504,8 +42317,8 @@
         {
           "name": "Air6 / Air6 Pro+ (Süspansiyonlu)",
           "versions": [
-            "Air6 924W tepe 25km/h",
-            "Air6 Pro+ 1200W tepe 468Wh",
+            "Air6",
+            "Air6 Pro+",
             "Diğer"
           ],
           "trims": [
@@ -42516,8 +42329,8 @@
         {
           "name": "Air6 Ultra / Ultra Max",
           "versions": [
-            "Ultra 500W (1200W tepe) 624Wh",
-            "Ultra Max 1900W tepe",
+            "Ultra",
+            "Ultra Max",
             "Diğer"
           ],
           "trims": [
@@ -42528,7 +42341,6 @@
         {
           "name": "Escape Pro+",
           "versions": [
-            "924W tepe 36V 12Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42539,7 +42351,6 @@
         {
           "name": "Pure x McLaren",
           "versions": [
-            "500W (924W tepe) 36V 12Ah 432Wh",
             "Diğer"
           ],
           "trims": [
@@ -42564,9 +42375,9 @@
         {
           "name": "E100 / E200 / E300 (2003-)",
           "versions": [
-            "100W 16 km/s E100",
-            "200W 19 km/s E200",
-            "250W 22 km/s E300",
+            "E100",
+            "E200",
+            "E300",
             "Diğer"
           ],
           "trims": [
@@ -42578,8 +42389,8 @@
         {
           "name": "Power Core E90 / E100 (2016-)",
           "versions": [
-            "90W 16 km/s E90",
-            "100W 16 km/s E100",
+            "E90",
+            "E100",
             "Diğer"
           ],
           "trims": [
@@ -42590,8 +42401,8 @@
         {
           "name": "E Prime / E Prime Air (2019-)",
           "versions": [
-            "250W 24 km/s E Prime",
-            "300W 24 km/s E Prime Air",
+            "E Prime",
+            "E Prime Air",
             "Diğer"
           ],
           "trims": [
@@ -42600,11 +42411,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "250W 24 km/s E Prime": [
+            "E Prime": [
               "Standart",
               "Diğer"
             ],
-            "300W 24 km/s E Prime Air": [
+            "E Prime Air": [
               "Air",
               "Diğer"
             ]
@@ -42613,7 +42424,6 @@
         {
           "name": "EcoSmart Metro",
           "versions": [
-            "350W 24 km/s",
             "Diğer"
           ],
           "trims": [
@@ -42624,7 +42434,6 @@
         {
           "name": "E XR",
           "versions": [
-            "300W 29 km/s",
             "Diğer"
           ],
           "trims": [
@@ -42635,7 +42444,6 @@
         {
           "name": "E Prime III",
           "versions": [
-            "250W 36V 29km/h",
             "Diğer"
           ],
           "trims": [
@@ -42646,7 +42454,6 @@
         {
           "name": "EcoSmart Cargo",
           "versions": [
-            "1000W 32km/h",
             "Diğer"
           ],
           "trims": [
@@ -42671,7 +42478,6 @@
         {
           "name": "Ninebot E22",
           "versions": [
-            "300W 5.2Ah 20km/h",
             "Diğer"
           ],
           "trims": [
@@ -42682,7 +42488,6 @@
         {
           "name": "Ninebot E25",
           "versions": [
-            "300W 7Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42693,7 +42498,6 @@
         {
           "name": "Ninebot E45",
           "versions": [
-            "300W 13.2Ah 45km/h",
             "Diğer"
           ],
           "trims": [
@@ -42704,9 +42508,9 @@
         {
           "name": "Ninebot ES1 / ES2 / ES4 (2018-)",
           "versions": [
-            "250W 20 km/s ES1",
-            "300W 25 km/s ES2",
-            "300W+200W 30 km/s ES4",
+            "ES1",
+            "ES2",
+            "+ ES4",
             "Diğer"
           ],
           "trims": [
@@ -42716,15 +42520,15 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "250W 20 km/s ES1": [
+            "ES1": [
               "ES1",
               "Diğer"
             ],
-            "300W 25 km/s ES2": [
+            "ES2": [
               "ES2",
               "Diğer"
             ],
-            "300W+200W 30 km/s ES4": [
+            "+ ES4": [
               "ES4",
               "Diğer"
             ]
@@ -42733,10 +42537,10 @@
         {
           "name": "Ninebot E2 / E2 Plus (2023-)",
           "versions": [
-            "300W 25 km/s E2",
-            "300W 25 km/s E2 II",
-            "450W 25 km/s E2 Plus",
-            "450W 25 km/s E2 Plus II",
+            "E2",
+            "E2 II",
+            "E2 Plus",
+            "E2 Plus II",
             "Diğer"
           ],
           "trims": [
@@ -42747,19 +42551,19 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "300W 25 km/s E2": [
+            "E2": [
               "E2",
               "Diğer"
             ],
-            "300W 25 km/s E2 II": [
+            "E2 II": [
               "E2 II",
               "Diğer"
             ],
-            "450W 25 km/s E2 Plus": [
+            "E2 Plus": [
               "E2 Plus",
               "Diğer"
             ],
-            "450W 25 km/s E2 Plus II": [
+            "E2 Plus II": [
               "E2 Plus II",
               "Diğer"
             ]
@@ -42768,7 +42572,6 @@
         {
           "name": "Ninebot E3 Pro",
           "versions": [
-            "800W 25 km/s",
             "Diğer"
           ],
           "trims": [
@@ -42779,9 +42582,9 @@
         {
           "name": "Ninebot F2",
           "versions": [
-            "300W 25 km/s F2",
-            "300W 25 km/s F2 Plus",
-            "450W 30 km/s F2 Pro",
+            "F2",
+            "F2 Plus",
+            "F2 Pro",
             "Diğer"
           ],
           "trims": [
@@ -42791,15 +42594,15 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "300W 25 km/s F2": [
+            "F2": [
               "F2",
               "Diğer"
             ],
-            "300W 25 km/s F2 Plus": [
+            "F2 Plus": [
               "F2 Plus",
               "Diğer"
             ],
-            "450W 30 km/s F2 Pro": [
+            "F2 Pro": [
               "F2 Pro",
               "Diğer"
             ]
@@ -42808,8 +42611,8 @@
         {
           "name": "Ninebot F2 II / F2 Pro II (2024-)",
           "versions": [
-            "700W 25 km/s F2 II",
-            "900W 30 km/s F2 Pro II",
+            "F2 II",
+            "F2 Pro II",
             "Diğer"
           ],
           "trims": [
@@ -42818,11 +42621,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "700W 25 km/s F2 II": [
+            "F2 II": [
               "F2 II",
               "Diğer"
             ],
-            "900W 30 km/s F2 Pro II": [
+            "F2 Pro II": [
               "F2 Pro II",
               "Diğer"
             ]
@@ -42831,7 +42634,6 @@
         {
           "name": "Ninebot F40",
           "versions": [
-            "350W 14.4Ah 40km/h",
             "Diğer"
           ],
           "trims": [
@@ -42842,8 +42644,8 @@
         {
           "name": "Ninebot F3 / F3 Pro (2023-)",
           "versions": [
-            "300W 25 km/s F3",
-            "450W 30 km/s F3 Pro",
+            "F3",
+            "F3 Pro",
             "Diğer"
           ],
           "trims": [
@@ -42852,11 +42654,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "300W 25 km/s F3": [
+            "F3": [
               "Standart",
               "Diğer"
             ],
-            "450W 30 km/s F3 Pro": [
+            "F3 Pro": [
               "Pro",
               "Diğer"
             ]
@@ -42865,8 +42667,7 @@
         {
           "name": "Ninebot Max G30 (2019-)",
           "versions": [
-            "350W 15.3Ah 30km/h",
-            "G30D 25km/h",
+            "G30D",
             "Diğer"
           ],
           "trims": [
@@ -42878,7 +42679,6 @@
         {
           "name": "Ninebot Max G2",
           "versions": [
-            "450W 15.3Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -42889,7 +42689,6 @@
         {
           "name": "Ninebot Max G3 (2025-)",
           "versions": [
-            "2000W 25 km/s",
             "Diğer"
           ],
           "trims": [
@@ -42900,7 +42699,6 @@
         {
           "name": "Ninebot Max G65",
           "versions": [
-            "700W 22Ah 65km/h",
             "Diğer"
           ],
           "trims": [
@@ -42911,7 +42709,6 @@
         {
           "name": "Ninebot ZT3 Pro",
           "versions": [
-            "1600W 45 km/s",
             "Diğer"
           ],
           "trims": [
@@ -42922,11 +42719,11 @@
         {
           "name": "GT Serisi",
           "versions": [
-            "3000W Çift 45Ah 70km/h GT1",
-            "3800W Çift 40Ah 70km/h GT2",
-            "3800W Çift 40Ah 70km/h GT2P",
+            "GT1",
+            "GT2",
+            "GT2P",
             "GT3",
-            "7000W Çift GT3 Pro",
+            "GT3 Pro",
             "Diğer"
           ],
           "trims": [
@@ -42938,15 +42735,15 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "3000W Çift 45Ah 70km/h GT1": [
+            "GT1": [
               "GT1",
               "Diğer"
             ],
-            "3800W Çift 40Ah 70km/h GT2": [
+            "GT2": [
               "GT2",
               "Diğer"
             ],
-            "3800W Çift 40Ah 70km/h GT2P": [
+            "GT2P": [
               "GT2P",
               "Diğer"
             ],
@@ -42954,7 +42751,7 @@
               "GT3",
               "Diğer"
             ],
-            "7000W Çift GT3 Pro": [
+            "GT3 Pro": [
               "GT3 Pro",
               "Diğer"
             ]
@@ -42963,9 +42760,9 @@
         {
           "name": "Ninebot D28 / D38 / D40 (2021-)",
           "versions": [
-            "300W 25 km/s D28",
-            "350W 25 km/s D38",
-            "450W 30 km/s D40",
+            "D28",
+            "D38",
+            "D40",
             "Diğer"
           ],
           "trims": [
@@ -42976,8 +42773,8 @@
         {
           "name": "Ninebot C2 / C9 (2022-)",
           "versions": [
-            "150W 15 km/s C2",
-            "250W 20 km/s C9",
+            "C2",
+            "C9",
             "Diğer"
           ],
           "trims": [
@@ -42988,7 +42785,6 @@
         {
           "name": "Ninebot C2 Lite",
           "versions": [
-            "130W 15 km/s",
             "Diğer"
           ],
           "trims": [
@@ -42999,7 +42795,6 @@
         {
           "name": "Ninebot Zing",
           "versions": [
-            "150W 16 km/s",
             "Diğer"
           ],
           "trims": [
@@ -43010,7 +42805,7 @@
         {
           "name": "Ninebot GT3 / GT3 Pro (Performans)",
           "versions": [
-            "GT3 Pro Çift 3500W 72V 2160Wh 80km/h",
+            "GT3 Pro",
             "Diğer"
           ],
           "trims": [
@@ -43035,7 +42830,6 @@
         {
           "name": "8 (2019-)",
           "versions": [
-            "500W 13Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43046,7 +42840,6 @@
         {
           "name": "8+",
           "versions": [
-            "500W 15Ah 32km/h",
             "Diğer"
           ],
           "trims": [
@@ -43057,7 +42850,6 @@
         {
           "name": "9",
           "versions": [
-            "500W 21Ah 40km/h",
             "Diğer"
           ],
           "trims": [
@@ -43068,7 +42860,6 @@
         {
           "name": "9+",
           "versions": [
-            "1000W 21Ah 50km/h",
             "Diğer"
           ],
           "trims": [
@@ -43079,7 +42870,6 @@
         {
           "name": "10+",
           "versions": [
-            "2000W Çift 21Ah 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -43090,7 +42880,6 @@
         {
           "name": "11",
           "versions": [
-            "3200W Çift 35Ah 70km/h",
             "Diğer"
           ],
           "trims": [
@@ -43115,7 +42904,6 @@
         {
           "name": "Mi Electric Scooter Essential (2020-)",
           "versions": [
-            "250W 5.1Ah 20km/h",
             "Diğer"
           ],
           "trims": [
@@ -43126,7 +42914,6 @@
         {
           "name": "Mi 1S (2020-)",
           "versions": [
-            "300W 7.65Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43137,7 +42924,6 @@
         {
           "name": "Mi Pro 2 (2020-)",
           "versions": [
-            "300W 12.4Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43148,7 +42934,6 @@
         {
           "name": "Mi 3 (2021-)",
           "versions": [
-            "300W 7.65Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43159,7 +42944,6 @@
         {
           "name": "Mi 4",
           "versions": [
-            "300W 7.65Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43170,7 +42954,6 @@
         {
           "name": "Mi 4 Lite",
           "versions": [
-            "300W 5.2Ah 20km/h",
             "Diğer"
           ],
           "trims": [
@@ -43181,7 +42964,6 @@
         {
           "name": "Mi 4 Pro",
           "versions": [
-            "300W 11.6Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43192,7 +42974,6 @@
         {
           "name": "Mi 4 Ultra",
           "versions": [
-            "500W 15.3Ah 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43203,9 +42984,8 @@
         {
           "name": "Xiaomi 5",
           "versions": [
-            "300W 7.65Ah 25km/h",
-            "Pro 300W",
-            "Max 700W",
+            "Pro",
+            "Max",
             "Diğer"
           ],
           "trims": [
@@ -43215,15 +42995,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "300W 7.65Ah 25km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Pro 300W": [
+            "Pro": [
               "Pro",
               "Diğer"
             ],
-            "Max 700W": [
+            "Max": [
               "Max",
               "Diğer"
             ]
@@ -43232,10 +43008,9 @@
         {
           "name": "Xiaomi 6",
           "versions": [
-            "300W 7.65Ah 25km/h",
-            "Lite 250W",
-            "Pro 350W",
-            "Max 700W",
+            "Lite",
+            "Pro",
+            "Max",
             "Diğer"
           ],
           "trims": [
@@ -43246,19 +43021,15 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "300W 7.65Ah 25km/h": [
-              "Standart",
-              "Diğer"
-            ],
-            "Lite 250W": [
+            "Lite": [
               "Lite",
               "Diğer"
             ],
-            "Pro 350W": [
+            "Pro": [
               "Pro",
               "Diğer"
             ],
-            "Max 700W": [
+            "Max": [
               "Max",
               "Diğer"
             ]
@@ -43267,7 +43038,6 @@
         {
           "name": "Xiaomi 6 Lite (2026-)",
           "versions": [
-            "300W (500W tepe) 216Wh 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43278,7 +43048,6 @@
         {
           "name": "Xiaomi 6 Pro (2026-)",
           "versions": [
-            "1000W tepe 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43289,7 +43058,6 @@
         {
           "name": "Xiaomi 6 Max (2026-)",
           "versions": [
-            "1100W tepe 468Wh 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43300,7 +43068,6 @@
         {
           "name": "Xiaomi 6 Ultra (2026-)",
           "versions": [
-            "1200W tepe 585Wh 25km/h",
             "Diğer"
           ],
           "trims": [
@@ -43311,7 +43078,6 @@
         {
           "name": "Xiaomi 4 Go",
           "versions": [
-            "250W (450W tepe) 165Wh 20km/h",
             "Diğer"
           ],
           "trims": [
@@ -43336,8 +43102,8 @@
         {
           "name": "C1S / C1 Pro (2021-)",
           "versions": [
-            "500W 35 km/s C1S",
-            "700W 40 km/s C1 Pro",
+            "C1S",
+            "C1 Pro",
             "Diğer"
           ],
           "trims": [
@@ -43346,11 +43112,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "500W 35 km/s C1S": [
+            "C1S": [
               "Standart",
               "Diğer"
             ],
-            "700W 40 km/s C1 Pro": [
+            "C1 Pro": [
               "Pro",
               "Diğer"
             ]
@@ -43359,8 +43125,8 @@
         {
           "name": "G5 Pro / G6 (2022-)",
           "versions": [
-            "500W 35 km/s G5 Pro",
-            "800W 45 km/s G6",
+            "G5 Pro",
+            "G6",
             "Diğer"
           ],
           "trims": [
@@ -43369,11 +43135,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "500W 35 km/s G5 Pro": [
+            "G5 Pro": [
               "G5 Pro",
               "Diğer"
             ],
-            "800W 45 km/s G6": [
+            "G6": [
               "G6",
               "Diğer"
             ]
@@ -43382,8 +43148,8 @@
         {
           "name": "KS6 Pro / KS6 Max (2023-)",
           "versions": [
-            "500W 30 km/s KS6 Pro",
-            "700W 35 km/s KS6 Max",
+            "KS6 Pro",
+            "KS6 Max",
             "Diğer"
           ],
           "trims": [
@@ -43392,11 +43158,11 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "500W 30 km/s KS6 Pro": [
+            "KS6 Pro": [
               "Pro",
               "Diğer"
             ],
-            "700W 35 km/s KS6 Max": [
+            "KS6 Max": [
               "Max",
               "Diğer"
             ]
@@ -43405,10 +43171,10 @@
         {
           "name": "KS2 / KS3 Lite / KS5",
           "versions": [
-            "300W 25 km/s KS2",
-            "350W 25 km/s KS3 Lite",
-            "500W 30 km/s KS5",
-            "Pro 500W KS5 Pro",
+            "KS2",
+            "KS3 Lite",
+            "KS5",
+            "KS5 Pro",
             "Diğer"
           ],
           "trims": [
@@ -43417,19 +43183,19 @@
             "Diğer"
           ],
           "trimsByVersion": {
-            "300W 25 km/s KS2": [
+            "KS2": [
               "Standart",
               "Diğer"
             ],
-            "350W 25 km/s KS3 Lite": [
+            "KS3 Lite": [
               "Standart",
               "Diğer"
             ],
-            "500W 30 km/s KS5": [
+            "KS5": [
               "Standart",
               "Diğer"
             ],
-            "Pro 500W KS5 Pro": [
+            "KS5 Pro": [
               "Pro",
               "Diğer"
             ]
@@ -43438,7 +43204,6 @@
         {
           "name": "KS5 Pro",
           "versions": [
-            "700W tepe 36V 15.6Ah 35km/h",
             "Diğer"
           ],
           "trims": [
@@ -43463,7 +43228,6 @@
         {
           "name": "10X (2018-)",
           "versions": [
-            "1600W 20Ah 40km/h",
             "Diğer"
           ],
           "trims": [
@@ -43474,7 +43238,6 @@
         {
           "name": "11X (2019-)",
           "versions": [
-            "2800W Çift 35Ah 55km/h",
             "Diğer"
           ],
           "trims": [
@@ -43485,7 +43248,6 @@
         {
           "name": "8",
           "versions": [
-            "500W 48V 13Ah 40km/h",
             "Diğer"
           ],
           "trims": [
@@ -43496,7 +43258,6 @@
         {
           "name": "9",
           "versions": [
-            "600W (1200W tepe) 624Wh 46km/h",
             "Diğer"
           ],
           "trims": [
@@ -43507,7 +43268,6 @@
         {
           "name": "10",
           "versions": [
-            "1600W 48km/h",
             "Diğer"
           ],
           "trims": [
@@ -43518,7 +43278,6 @@
         {
           "name": "8X",
           "versions": [
-            "1600W 936Wh 53km/h",
             "Diğer"
           ],
           "trims": [

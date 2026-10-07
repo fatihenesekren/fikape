@@ -4,8 +4,8 @@
     {
       "name": "S1 / S1F (2020-)",
       "versions": [
-        "500W 30 km/s S1",
-        "500W 30 km/s S1F Katlanabilir",
+        "S1",
+        "S1F Katlanabilir",
         "Diğer"
       ],
       "trims": [
@@ -17,7 +17,6 @@
     {
       "name": "L9 (2021-)",
       "versions": [
-        "900W 45 km/s",
         "Diğer"
       ],
       "trims": [
@@ -28,8 +27,8 @@
     {
       "name": "Climber / Air Pro (2023-)",
       "versions": [
-        "500W 35 km/s Air Pro",
-        "800W 40 km/s Climber",
+        "Air Pro",
+        "Climber",
         "Diğer"
       ],
       "trims": [
@@ -40,9 +39,8 @@
     {
       "name": "RS",
       "versions": [
-        "8400W Çift 101km/h",
-        "Lite 4000W",
-        "JET 8400W",
+        "Lite",
+        "JET",
         "Diğer"
       ],
       "trims": [
@@ -52,15 +50,11 @@
         "Diğer"
       ],
       "trimsByVersion": {
-        "8400W Çift 101km/h": [
-          "Standart",
-          "Diğer"
-        ],
-        "Lite 4000W": [
+        "Lite": [
           "Lite",
           "Diğer"
         ],
-        "JET 8400W": [
+        "JET": [
           "JET",
           "Diğer"
         ]
@@ -69,7 +63,6 @@
     {
       "name": "C10",
       "versions": [
-        "800W Çift 45km/h",
         "Diğer"
       ],
       "trims": [
@@ -80,7 +73,6 @@
     {
       "name": "RS Lite",
       "versions": [
-        "Çift 1500W 72V 30Ah 90km/h",
         "Diğer"
       ],
       "trims": [
@@ -91,7 +83,6 @@
     {
       "name": "RS Jet",
       "versions": [
-        "Çift 1200W 72V 25Ah 80km/h",
         "Diğer"
       ],
       "trims": [
@@ -102,7 +93,6 @@
     {
       "name": "Air",
       "versions": [
-        "350W (720W tepe) 36V 270Wh 31km/h",
         "Diğer"
       ],
       "trims": [
