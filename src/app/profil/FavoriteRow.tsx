@@ -3,7 +3,7 @@ import Image from "next/image";
 import { stripModelGenRange, splitTrimName } from "@/lib/modelDisplay";
 import { FUEL_ICONS } from "@/lib/fuel";
 import { isDomesticBrand } from "@/lib/domesticBrands";
-import { TrFlagIcon } from "@/components/VehicleCard";
+import { TrFlagIcon } from "@/components/TrFlagIcon";
 import { FavoriteRemoveButton } from "./FavoriteRemoveButton";
 
 interface FavoriteProduct {

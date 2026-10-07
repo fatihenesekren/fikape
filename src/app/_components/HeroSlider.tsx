@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
-import { TrFlagIcon } from "@/components/VehicleCard";
+import { TrFlagIcon } from "@/components/TrFlagIcon";
 import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
 
