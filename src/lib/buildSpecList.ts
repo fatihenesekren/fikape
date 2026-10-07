@@ -49,19 +49,44 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
   const pedelecClass = attrs.pedelec_class ? String(attrs.pedelec_class) : null;
 
   const specsRaw: (SpecItem | null)[] = (() => {
-    if (categorySlug === "e-bisiklet") return [
-      bikeType              ? { label: "Bisiklet Tipi",  value: BIKE_TYPE_LABELS[bikeType] ?? bikeType }            : null,
-      motorType             ? { label: "Motor Tipi",     value: MOTOR_TYPE_LABELS[motorType] ?? motorType }          : null,
-      pedelecClass          ? { label: "Pedelec Sınıfı", value: PEDELEC_LABELS[pedelecClass] ?? pedelecClass }       : null,
-      attrs.motor_watt      ? { label: "Motor Gücü",     value: `${attrs.motor_watt} W` }                           : null,
-      attrs.battery_wh      ? { label: "Batarya",        value: `${attrs.battery_wh} Wh` }                          : null,
-      attrs.range_km        ? { label: "Menzil",         value: `${attrs.range_km} km` }                            : null,
-      attrs.max_speed_kmh   ? { label: "Maks. Hız",      value: `${attrs.max_speed_kmh} km/s` }                     : null,
-      attrs.weight_kg       ? { label: "Ağırlık",        value: `${attrs.weight_kg} kg` }                           : null,
-      attrs.charge_hours    ? { label: "Tam Şarj",    value: `~${attrs.charge_hours} saat` }                     : null,
-      attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: attrs.removable_battery ? "Var" : "Yok" } : null,
-      attrs.gearbox         ? { label: "Vites Sayısı",   value: `${attrs.gearbox} vites` }                          : null,
-    ];
+    if (categorySlug === "e-bisiklet") {
+      const vv = (v: unknown) => (v ? "Var" : "Yok");
+      return [
+        bikeType              ? { label: "Bisiklet Tipi",  value: BIKE_TYPE_LABELS[bikeType] ?? bikeType }            : null,
+        motorType             ? { label: "Motor Tipi",     value: MOTOR_TYPE_LABELS[motorType] ?? motorType }          : null,
+        attrs.motor_model     ? { label: "Motor Modeli",   value: String(attrs.motor_model) }                         : null,
+        pedelecClass          ? { label: "Pedelec Sınıfı", value: PEDELEC_LABELS[pedelecClass] ?? pedelecClass }       : null,
+        attrs.motor_watt      ? { label: "Motor Gücü",     value: `${attrs.motor_watt} W` }                           : null,
+        attrs.motor_torque_nm ? { label: "Motor Torku",    value: `${attrs.motor_torque_nm} Nm` }                     : null,
+        attrs.max_speed_kmh   ? { label: "Maks. Hız",      value: `${attrs.max_speed_kmh} km/s` }                     : null,
+        attrs.support_levels  ? { label: "Destek Seviyesi", value: `${attrs.support_levels} seviye` }                 : null,
+        attrs.start_assist != null ? { label: "Kalkış Desteği", value: vv(attrs.start_assist) } : null,
+        attrs.walk_assist  != null ? { label: "Yürüme Desteği", value: vv(attrs.walk_assist) }  : null,
+        attrs.battery_wh      ? { label: "Batarya",        value: `${attrs.battery_wh} Wh` }                          : null,
+        attrs.battery_voltage_v ? { label: "Batarya Gerilimi", value: `${attrs.battery_voltage_v} V` }                : null,
+        attrs.range_km        ? { label: "Menzil",         value: `${attrs.range_km} km` }                            : null,
+        attrs.charge_hours    ? { label: "Tam Şarj",    value: `~${attrs.charge_hours} saat` }                     : null,
+        attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: vv(attrs.removable_battery) } : null,
+        attrs.weight_kg       ? { label: "Ağırlık",        value: `${attrs.weight_kg} kg` }                           : null,
+        attrs.weight_no_battery_kg ? { label: "Bataryasız Ağırlık", value: `${attrs.weight_no_battery_kg} kg` }       : null,
+        attrs.max_load_kg     ? { label: "Maks. Yük",      value: `${attrs.max_load_kg} kg` }                         : null,
+        attrs.folded_size     ? { label: "Katlanmış Ölçü", value: String(attrs.folded_size) }                         : null,
+        attrs.frame_material  ? { label: "Kadro Malzemesi", value: capitalize(String(attrs.frame_material)) }          : null,
+        attrs.fork_material   ? { label: "Çatal",          value: capitalize(String(attrs.fork_material)) }            : null,
+        attrs.suspension      ? { label: "Süspansiyon",    value: capitalize(String(attrs.suspension)) }               : null,
+        attrs.gearbox         ? { label: "Vites Sayısı",   value: `${attrs.gearbox} vites` }                          : null,
+        attrs.gear_type       ? { label: "Vites Sistemi",  value: String(attrs.gear_type) }                           : null,
+        attrs.wheel_size      ? { label: "Tekerlek",       value: String(attrs.wheel_size) }                          : null,
+        attrs.tire_size       ? { label: "Lastik Ölçüsü",  value: String(attrs.tire_size) }                           : null,
+        attrs.brake_type      ? { label: "Fren",           value: String(attrs.brake_type) }                          : null,
+        attrs.has_rack      != null ? { label: "Bagaj Taşıyıcı", value: vv(attrs.has_rack) }      : null,
+        attrs.has_mudguards != null ? { label: "Çamurluk",       value: vv(attrs.has_mudguards) } : null,
+        attrs.has_lights    != null ? { label: "Entegre Aydınlatma", value: vv(attrs.has_lights) } : null,
+        attrs.display         ? { label: "Ekran",          value: String(attrs.display) }                             : null,
+        attrs.has_gps       != null ? { label: "GPS / Takip",    value: vv(attrs.has_gps) }       : null,
+        attrs.app_name        ? { label: "Mobil Uygulama", value: String(attrs.app_name) }                            : null,
+      ];
+    }
     if (categorySlug === "e-scooter") return [
       attrs.motor_watt    ? { label: "Motor Gücü",     value: `${attrs.motor_watt} W` }       : null,
       attrs.range_km      ? { label: "Menzil",         value: `${attrs.range_km} km` }         : null,

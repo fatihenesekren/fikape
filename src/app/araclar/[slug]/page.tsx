@@ -42,11 +42,12 @@ function realOwnershipMonths(
 import { getFoundingReviewIds } from "@/lib/foundingReviewer";
 import {
   MOTO_TYPES, OTOMOBIL_BODY_TYPES, KAMYONET_BODY_TYPES, KARAVAN_TYPES,
-  BIKE_TYPES, EBIKE_MOTOR_TYPES, PEDELEC_CLASSES, toLabelMap,
+  BIKE_TYPES, PEDELEC_CLASSES, toLabelMap,
 } from "@/lib/vehicleTypes";
 import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelDisplay";
 import { buildSpecList } from "@/lib/buildSpecList";
 import { buildKamyonetHeroSpecs } from "@/lib/heroSpecsKamyonet";
+import { buildEbikeHeroSpecs } from "@/lib/heroSpecsEbike";
 
 export async function generateMetadata({
   params,
@@ -112,7 +113,6 @@ const CATEGORY_FALLBACK_ICONS: Record<string, string> = {
 
 const BIKE_TYPE_LABELS = toLabelMap(BIKE_TYPES);
 
-const MOTOR_TYPE_LABELS = toLabelMap(EBIKE_MOTOR_TYPES);
 
 const PEDELEC_LABELS = toLabelMap(PEDELEC_CLASSES);
 
@@ -496,13 +496,8 @@ export default async function VehicleDetailPage({
   type SpecItem = { label: string; value: string };
 
   const heroSpecsRaw: (SpecItem | null)[] = (() => {
-    if (categorySlug === "e-bisiklet") return [
-      attrs.motor_type    ? { label: "Motor Tipi",  value: MOTOR_TYPE_LABELS[String(attrs.motor_type)] ?? String(attrs.motor_type) } : null,
-      attrs.motor_watt    ? { label: "Motor Gücü",  value: `${attrs.motor_watt} W` }   : null,
-      attrs.battery_wh    ? { label: "Batarya",     value: `${attrs.battery_wh} Wh` }  : null,
-      attrs.range_km      ? { label: "Menzil",      value: `${attrs.range_km} km` }    : null,
-      attrs.weight_kg     ? { label: "Ağırlık",     value: `${attrs.weight_kg} kg` }   : null,
-    ];
+    // E-bisiklet: tipe göre 5'li şerit (yedek adaylarla tamamlanır).
+    if (categorySlug === "e-bisiklet") return buildEbikeHeroSpecs(attrs);
     if (categorySlug === "e-scooter") return [
       attrs.motor_watt     ? { label: "Motor",      value: `${attrs.motor_watt} W` }         : null,
       attrs.range_km       ? { label: "Menzil",     value: `${attrs.range_km} km` }           : null,
@@ -787,7 +782,7 @@ export default async function VehicleDetailPage({
             <div className="flex-1">
               <Link
                 href={`/markalar/${product.brand.slug}`}
-                className="text-sm font-semibold text-gray-400 mb-1 tracking-wide uppercase hover:text-gray-200 hover:underline transition-colors inline-block"
+                className="text-sm font-semibold text-gray-300 mb-1 hover:text-white hover:underline transition-colors inline-block"
               >
                 {product.brand.name}
               </Link>

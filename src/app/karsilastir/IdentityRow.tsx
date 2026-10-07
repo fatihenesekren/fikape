@@ -26,7 +26,7 @@ export function IdentityRow({ products }: { products: CompareProductView[] }) {
               hücrenin üzerine taşıyordu (SpecRows.tsx'teki "Elektrikli" ile
               AYNI hata sınıfı, ama bu satırda eksik kalmıştı — gerçek
               kullanıcı ekran görüntüsüyle doğrulandı). */}
-          <div className="text-[10px] text-gray-400 uppercase tracking-wide mb-0.5 break-words">{p.brandName}</div>
+          <div className="text-[10px] text-gray-400 mb-0.5 break-words">{p.brandName}</div>
           <Link href={`/araclar/${p.slug}`} className="font-bold text-gray-900 hover:underline text-sm line-clamp-2 break-words">
             {p.displayName}{p.year ? ` ${p.year}` : ""}
           </Link>

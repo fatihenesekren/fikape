@@ -37,6 +37,8 @@ const isMotorizedKaravan: ShowIf = (a) => a.karavan_type !== "cekme";
 // Çekme karavana özel (tip boşsa sorulur): aks, çeki oku yükü, fren, stabilizatör.
 const isCekmeKaravan: ShowIf = (a) => !a.karavan_type || a.karavan_type === "cekme";
 // Yükselen çatı yalnız kamper van'da anlamlı.
+// Katlanır bisiklet (ya da tip henüz seçilmemiş): katlanmış ölçü sorulur.
+const isFoldingBike: ShowIf = (a) => !a.bike_type || a.bike_type === "katlanabilir";
 const isKamperVan: ShowIf = (a) => !a.karavan_type || a.karavan_type === "kamper-van";
 
 // Kamyonet: kabin konfigürasyonu yalnız pickup kasa tipinde anlamlı —
@@ -115,15 +117,37 @@ export const SPEC_FIELDS: Record<string, FieldDef[]> = {
   "e-bisiklet": [
     { key: "bike_type",    label: "Bisiklet Tipi", type: "select", options: BIKE_TYPES },
     { key: "motor_type",   label: "Motor Tipi",    type: "select", options: EBIKE_MOTOR_TYPES },
+    { key: "motor_model",  label: "Motor Modeli",  type: "text", placeholder: "örn. Brompton e-Motiq" },
     { key: "pedelec_class", label: "Pedelec",      type: "select", options: PEDELEC_CLASSES },
     { key: "motor_watt",   label: "Motor Gücü",    type: "number", unit: "W" },
+    { key: "motor_torque_nm", label: "Motor Torku", type: "number", unit: "Nm" },
+    { key: "max_speed_kmh",label: "Maks. Hız",     type: "number", unit: "km/s", note: "Motor desteğinin kesildiği hız" },
+    { key: "support_levels", label: "Destek Seviyesi", type: "number", unit: "adet", placeholder: "örn. 3" },
+    { key: "start_assist", label: "Kalkış Desteği", type: "boolean" },
+    { key: "walk_assist",  label: "Yürüme Desteği", type: "boolean" },
     { key: "battery_wh",   label: "Batarya",       type: "number", unit: "Wh" },
-    { key: "range_km",     label: "Menzil",        type: "number", unit: "km" },
-    { key: "max_speed_kmh",label: "Maks. Hız",     type: "number", unit: "km/s" },
-    { key: "weight_kg",    label: "Ağırlık",       type: "number", unit: "kg" },
+    { key: "battery_voltage_v", label: "Batarya Gerilimi", type: "number", unit: "V" },
+    { key: "range_km",     label: "Menzil",        type: "number", unit: "km", note: "Üreticinin verdiği azami menzil" },
     { key: "charge_hours", label: "Tam Şarj",   type: "number", unit: "saat", note: "%0–%100 tam şarj süresi (saat)" },
     { key: "removable_battery", label: "Çıkarılabilir Batarya", type: "boolean" },
+    { key: "weight_kg",    label: "Ağırlık",       type: "number", unit: "kg", note: "Bataryalı toplam ağırlık; \"den itibaren\" verilmişse en düşük değer" },
+    { key: "weight_no_battery_kg", label: "Bataryasız Ağırlık", type: "number", unit: "kg" },
+    { key: "max_load_kg",  label: "Maks. Yük",     type: "number", unit: "kg", note: "Sürücü + yük toplamı" },
+    { key: "folded_size",  label: "Katlanmış Ölçü", type: "text", placeholder: "örn. 64,5 × 60 × 32 cm", showIf: isFoldingBike },
+    { key: "frame_material", label: "Kadro Malzemesi", type: "text", placeholder: "örn. Alüminyum" },
+    { key: "fork_material", label: "Çatal",        type: "text", placeholder: "örn. Karbon fiber" },
+    { key: "suspension",   label: "Süspansiyon",   type: "text", placeholder: "örn. Ön amortisörlü" },
     { key: "gearbox",      label: "Vites Sayısı",  type: "number", unit: "vites", placeholder: "örn. 7" },
+    { key: "gear_type",    label: "Vites Sistemi", type: "text", placeholder: "örn. Shimano Nexus göbek" },
+    { key: "wheel_size",   label: "Tekerlek",      type: "text", placeholder: "örn. 16\" / ETRTO 349" },
+    { key: "tire_size",    label: "Lastik Ölçüsü", type: "text", placeholder: "örn. 349 × 35C" },
+    { key: "brake_type",   label: "Fren",          type: "text", placeholder: "örn. Hidrolik disk" },
+    { key: "has_rack",     label: "Bagaj Taşıyıcı", type: "boolean" },
+    { key: "has_mudguards", label: "Çamurluk",     type: "boolean" },
+    { key: "has_lights",   label: "Entegre Aydınlatma", type: "boolean" },
+    { key: "display",      label: "Ekran",         type: "text", placeholder: "örn. LCD gösterge" },
+    { key: "has_gps",      label: "GPS / Takip",   type: "boolean" },
+    { key: "app_name",     label: "Mobil Uygulama", type: "text", placeholder: "örn. Brompton Electric App" },
   ],
   karavan: [
     { key: "karavan_type", label: "Tip",            type: "select", options: KARAVAN_TYPES },
@@ -283,6 +307,17 @@ export const SPEC_GROUPS: Record<string, SpecGroup[]> = {
     { title: "Boyutlar & Ağırlık", keys: ["length_mm", "width_mm", "height_mm", "wheelbase_mm", "curb_weight_kg", "gvw_kg", "payload_kg", "tow_capacity_kg", "tire_size"] },
     { title: "Yük Bölmesi & Kapılar", keys: ["cargo_m3", "cargo_length_mm", "cargo_width_mm", "cargo_height_mm", "wheel_arch_width_mm", "euro_pallets", "boot_l", "loading_height_mm", "rear_door_width_mm", "rear_door_height_mm"] },
     { title: "Pickup Kasa & Arazi", keys: ["bed_length_mm", "bed_width_mm", "bed_depth_mm", "ground_clearance_mm", "wading_depth_mm", "approach_angle_deg", "departure_angle_deg", "ramp_angle_deg", "diff_lock"] },
+  ],
+  // E-bisiklet ~34 alan: gruplanmazsa form uzar; SPEC_GROUPS dışındaki alan formda görünmez
+  // (specFieldsEbike.test.ts bunu denetler).
+  "e-bisiklet": [
+    { title: "Temel", keys: ["bike_type", "motor_type", "pedelec_class", "motor_watt", "battery_wh", "range_km", "weight_kg"], defaultOpen: true },
+    { title: "Motor & Destek", keys: ["motor_model", "motor_torque_nm", "max_speed_kmh", "support_levels", "start_assist", "walk_assist"] },
+    { title: "Batarya & Şarj", keys: ["battery_voltage_v", "charge_hours", "removable_battery"] },
+    { title: "Ağırlık & Ölçü", keys: ["weight_no_battery_kg", "max_load_kg", "folded_size"] },
+    { title: "Kadro & Yürüyen Aksam", keys: ["frame_material", "fork_material", "suspension", "gearbox", "gear_type", "wheel_size", "tire_size", "brake_type"] },
+    { title: "Donanım", keys: ["has_rack", "has_mudguards", "has_lights"] },
+    { title: "Elektronik", keys: ["display", "has_gps", "app_name"] },
   ],
   karavan: [
     { title: "Zorunlu", keys: ["karavan_type", "berth", "total_weight_kg", "length_cm"], defaultOpen: true },

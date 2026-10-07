@@ -455,7 +455,7 @@ export default async function TakasDetayPage({
         </div>
 
         <div className="p-6">
-          <div className="text-xs font-semibold text-link uppercase tracking-wide">{listing.product.brand.name}</div>
+          <div className="text-xs font-semibold text-link">{listing.product.brand.name}</div>
           <h1 className="text-xl font-bold text-gray-900 mt-0.5">
             {stripModelGenRange(listing.product.model.name)}
             {listing.product.year && <span className="text-gray-400 font-normal ml-1.5">{listing.product.year}</span>}

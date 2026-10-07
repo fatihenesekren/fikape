@@ -36,7 +36,7 @@ export function MobileVehicleCard({
           <Image src={p.imageUrl} alt={p.altText} fill className="object-contain p-2" sizes="(max-width: 768px) 90vw, 320px" />
         </div>
       )}
-      <div className="text-[10px] text-gray-400 uppercase tracking-wide mb-0.5 break-words">{p.brandName}</div>
+      <div className="text-[10px] text-gray-400 mb-0.5 break-words">{p.brandName}</div>
       <Link href={`/araclar/${p.slug}`} className="font-bold text-gray-900 hover:underline text-base break-words">
         {p.displayName}{p.year ? ` ${p.year}` : ""}
       </Link>

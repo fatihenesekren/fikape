@@ -59,7 +59,7 @@ export function TradeCard({
       )}
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
-          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{listing.product.brand.name}</div>
+          <div className="text-xs font-semibold text-gray-400">{listing.product.brand.name}</div>
           {/* effectiveDate — "İlan Yenile" ile öne alınan sıralamayla tutarlı
               kalması için createdAt yerine bu gösteriliyor (bkz. boşluk raporu). */}
           <span className="text-[10px] text-gray-300 shrink-0">{timeAgoTr(listing.effectiveDate)}</span>

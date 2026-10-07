@@ -124,6 +124,10 @@ const REASONABLE_RANGES: Record<string, [number, number]> = {
   sliding_door_width_mm: [500, 1700],
   rear_door_width_mm: [800, 1800],
   rear_door_height_mm: [800, 2000],
+  motor_torque_nm:  [10, 200],
+  battery_voltage_v: [24, 60],
+  support_levels:   [1, 10],
+  weight_no_battery_kg: [5, 40],
 };
 
 function inReasonableRange(key: string, raw: string): boolean {
