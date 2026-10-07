@@ -1,5 +1,5 @@
 {
-  "make": "Brompton Electric",
+  "make": "Brompton",
   "models": [
     {
       "name": "Electric P Line (2022-)",
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "name": "T Line (2026-)",
+      "name": "Electric T Line (2026-)",
       "versions": [
         "Diğer"
       ],

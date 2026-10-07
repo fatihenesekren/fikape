@@ -1,21 +1,21 @@
 [
  {
   "dogrudan": true,
-  "marka": "Brompton Electric",
-  "model": "T Line (2026-)",
+  "marka": "Brompton",
+  "model": "Electric T Line (2026-)",
   "yil": 2026,
   "versiyon": null
  },
  {
   "dogrudan": true,
-  "marka": "Brompton Electric",
+  "marka": "Brompton",
   "model": "Electric G Line (2025-)",
   "yil": 2025,
   "versiyon": "250W 25 km/h 300Wh"
  },
  {
   "dogrudan": true,
-  "marka": "Brompton Electric",
+  "marka": "Brompton",
   "model": "Electric P Line (2022-)",
   "yil": 2022,
   "versiyon": "250W 25 km/h 300Wh"
