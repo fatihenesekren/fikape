@@ -769,10 +769,7 @@ export default async function VehicleDetailPage({
             >
               {imageUrl
                 ? categorySlug === "e-scooter" || categorySlug === "motosiklet" || categorySlug === "e-bisiklet"
-                  ? slug !== "cowboy-cross-2024"
-                    // GEÇİCİ: bulanık dolgulu yeni görünüm önce yalnız bu kayıtta denenir; onaylanırsa herkese açılır.
-                    ? <Image src={imageUrl} alt="" fill sizes="80px" className="object-contain p-1.5" />
-                    : (
+                  ? (
                     // Yatay stüdyo fotoğrafı kareye sığdırılınca "kutu içinde kutu" görünümü oluşuyordu:
                     // aynı fotoğraf arkada bulanık ve kutuyu dolduracak şekilde konur (büyük banner'daki yöntem),
                     // net fotoğraf üstüne sığdırılır → kutu fotoğrafın kendi zemin rengiyle dolar.
