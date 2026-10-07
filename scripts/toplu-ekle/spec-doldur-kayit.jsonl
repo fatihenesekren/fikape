@@ -150,7 +150,7 @@
 {"id":998,"slug":"inmotion-l9-2021","once":{},"eklenen":{"motor_watt":900,"max_speed_kmh":45},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.450Z"}
 {"id":999,"slug":"brompton-electric-t-line-2026","once":{},"eklenen":{"motor_watt":250,"battery_wh":300,"max_speed_kmh":25},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.523Z"}
 {"id":1000,"slug":"cowboy-cross-2024","once":{},"eklenen":{"motor_watt":250,"battery_wh":360,"max_speed_kmh":25},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.594Z"}
-{"id":1001,"slug":"cowboy-cruiser-2022","once":{},"eklenen":{"motor_watt":250,"battery_wh":360,"max_speed_kmh":25},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.666Z"}
+{"id":1001,"slug":"cowboy-cruiser-2023","once":{},"eklenen":{"motor_watt":250,"battery_wh":360,"max_speed_kmh":25},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.666Z"}
 {"id":1002,"slug":"cowboy-classic-2021","once":{},"eklenen":{"motor_watt":250,"battery_wh":360},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.739Z"}
 {"id":1003,"slug":"gocycle-g4i-2021","once":{},"eklenen":{"motor_watt":250,"battery_wh":375},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.812Z"}
 {"id":1004,"slug":"gocycle-gs-2020","once":{},"eklenen":{"motor_watt":250,"battery_wh":300,"max_speed_kmh":25},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.931Z"}
@@ -220,7 +220,7 @@
 {"id":995,"slug":"dualtron-x2-2021","once":{},"eklenen":{"motor_watt":8300,"range_km":150,"max_speed_kmh":110,"max_load_kg":150,"tire_inch":13,"removable_battery":false,"foldable":true},"tarih":"2026-10-05T07:59:41.683Z"}
 {"id":999,"slug":"brompton-electric-t-line-2026","once":{"battery_wh":300,"motor_watt":250,"max_speed_kmh":25},"eklenen":{"bike_type":"katlanabilir","motor_type":"hub-drive","pedelec_class":"standard-25","removable_battery":true},"tarih":"2026-10-05T08:00:26.639Z"}
 {"id":1000,"slug":"cowboy-cross-2024","once":{"battery_wh":360,"motor_watt":250,"max_speed_kmh":25},"eklenen":{"bike_type":"sehir","motor_type":"hub-drive","pedelec_class":"standard-25","removable_battery":true},"tarih":"2026-10-05T08:00:29.448Z"}
-{"id":1001,"slug":"cowboy-cruiser-2022","once":{"battery_wh":360,"motor_watt":250,"max_speed_kmh":25},"eklenen":{"bike_type":"sehir","motor_type":"hub-drive","pedelec_class":"standard-25","charge_hours":3.5,"removable_battery":true},"tarih":"2026-10-05T08:00:31.909Z"}
+{"id":1001,"slug":"cowboy-cruiser-2023","once":{"battery_wh":360,"motor_watt":250,"max_speed_kmh":25},"eklenen":{"bike_type":"sehir","motor_type":"hub-drive","pedelec_class":"standard-25","charge_hours":3.5,"removable_battery":true},"tarih":"2026-10-05T08:00:31.909Z"}
 {"id":1002,"slug":"cowboy-classic-2021","once":{"battery_wh":360,"motor_watt":250},"eklenen":{"bike_type":"sehir","motor_type":"hub-drive","pedelec_class":"standard-25","range_km":70,"max_speed_kmh":25,"charge_hours":3.5,"removable_battery":true},"tarih":"2026-10-05T08:00:34.333Z"}
 {"id":1003,"slug":"gocycle-g4i-2021","once":{"battery_wh":375,"motor_watt":250},"eklenen":{"bike_type":"katlanabilir","motor_type":"hub-drive","pedelec_class":"standard-25","range_km":80,"max_speed_kmh":25,"charge_hours":3.5,"removable_battery":false,"gearbox":3},"tarih":"2026-10-05T08:00:37.031Z"}
 {"id":1004,"slug":"gocycle-gs-2020","once":{"battery_wh":300,"motor_watt":250,"max_speed_kmh":25},"eklenen":{"bike_type":"katlanabilir","motor_type":"hub-drive","pedelec_class":"standard-25","range_km":65,"charge_hours":7,"removable_battery":false,"gearbox":3},"tarih":"2026-10-05T08:00:39.457Z"}
