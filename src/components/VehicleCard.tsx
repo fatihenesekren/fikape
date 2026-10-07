@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ImageEdgeFill } from "@/components/ImageEdgeFill";
+import { BackdropImage } from "@/components/BackdropImage";
 import { FikapeScore } from "@/components/FikapeScore";
 import type { FikapeScores } from "@/lib/fikape";
 import { FUEL_LABELS, FUEL_ICONS, FUEL_COLORS } from "@/lib/fuel";
@@ -127,20 +127,24 @@ export function VehicleCard({
         style={{ background: placeholderBg }}
       >
         {imageUrl ? (
-          <>
-            {/* E-scooter/e-bisiklet: beyaz/stüdyo zeminli fotoğraf gri kutuda "kutu içinde kutu" gibi duruyordu;
-                boşluklar fotoğrafın kenar rengiyle doldurulur (ImageEdgeFill). */}
-            {isScooter && <ImageEdgeFill src={imageUrl} />}
+          isScooter ? (
+            // E-scooter/e-bisiklet: zemin düzse kutu o renge boyanıp fotoğraf sığdırılır, düz değilse fotoğraf kutuyu doldurur
+            // ("kutu içinde kutu" görünümü olmaz) — bkz. lib/imageBackdrop.ts
+            <BackdropImage
+              src={imageUrl}
+              alt={`${brandName} ${cleanModelName}${trimName ? ` ${trimName}` : ""}`}
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className="group-hover:scale-105 transition-transform duration-300"
+            />
+          ) : (
             <Image
               src={imageUrl}
               alt={`${brandName} ${cleanModelName}${trimName ? ` ${trimName}` : ""}`}
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              className={`group-hover:scale-105 transition-transform duration-300 ${
-                isScooter ? "object-contain p-2" : "object-cover"
-              }`}
+              className="group-hover:scale-105 transition-transform duration-300 object-cover"
             />
-          </>
+          )
         ) : (
           <span className="text-5xl opacity-20 select-none">{placeholderIcon}</span>
         )}

@@ -48,7 +48,7 @@ import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelD
 import { buildSpecList } from "@/lib/buildSpecList";
 import { buildKamyonetHeroSpecs } from "@/lib/heroSpecsKamyonet";
 import { buildEbikeHeroSpecs } from "@/lib/heroSpecsEbike";
-import { ImageEdgeFill } from "@/components/ImageEdgeFill";
+import { BackdropImage } from "@/components/BackdropImage";
 
 export async function generateMetadata({
   params,
@@ -771,12 +771,9 @@ export default async function VehicleDetailPage({
               {imageUrl
                 ? categorySlug === "e-scooter" || categorySlug === "motosiklet" || categorySlug === "e-bisiklet"
                   ? (
-                    // Yatay stüdyo fotoğrafı kareye sığdırılınca "kutu içinde kutu" görünümü oluşuyordu:
-                    // boşluklar fotoğrafın kenar rengiyle doldurulur (ImageEdgeFill), net fotoğraf üstüne sığdırılır.
-                    <>
-                      <ImageEdgeFill src={imageUrl} />
-                      <Image src={imageUrl} alt="" fill sizes="80px" className="object-contain" />
-                    </>
+                    // Zemin düzse kutu o renge boyanıp fotoğraf sığdırılır, düz değilse fotoğraf kutuyu doldurur
+                    // ("kutu içinde kutu" görünümü olmaz) — bkz. lib/imageBackdrop.ts
+                    <BackdropImage src={imageUrl} alt="" sizes="80px" padding="p-1" />
                   )
                   : <Image src={imageUrl} alt="" fill sizes="80px" className="object-cover" />
                 : (bodyType ? BODY_ICONS[bodyType] : null) ?? CATEGORY_FALLBACK_ICONS[categorySlug] ?? "🚗"
