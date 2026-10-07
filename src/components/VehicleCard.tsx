@@ -126,15 +126,29 @@ export function VehicleCard({
         style={{ background: placeholderBg }}
       >
         {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={`${brandName} ${cleanModelName}${trimName ? ` ${trimName}` : ""}`}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className={`group-hover:scale-105 transition-transform duration-300 ${
-              isScooter ? "object-contain p-2" : "object-cover"
-            }`}
-          />
+          <>
+            {/* E-scooter/e-bisiklet: beyaz/stüdyo zeminli fotoğraf gri kutuda "kutu içinde kutu" gibi duruyordu;
+                aynı fotoğraf arkada bulanık dolgu olur, kutu fotoğrafın kendi zemin rengiyle dolar. */}
+            {isScooter && (
+              <Image
+                src={imageUrl}
+                alt=""
+                aria-hidden
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className="object-cover scale-150 blur-xl"
+              />
+            )}
+            <Image
+              src={imageUrl}
+              alt={`${brandName} ${cleanModelName}${trimName ? ` ${trimName}` : ""}`}
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className={`group-hover:scale-105 transition-transform duration-300 ${
+                isScooter ? "object-contain p-2" : "object-cover"
+              }`}
+            />
+          </>
         ) : (
           <span className="text-5xl opacity-20 select-none">{placeholderIcon}</span>
         )}
