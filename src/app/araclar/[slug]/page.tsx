@@ -768,13 +768,17 @@ export default async function VehicleDetailPage({
               style={{ background: categorySlug === "e-scooter" || categorySlug === "e-bisiklet" ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.08)" }}
             >
               {imageUrl
-                ? <Image
-                    src={imageUrl}
-                    alt=""
-                    fill
-                    sizes="80px"
-                    className={categorySlug === "e-scooter" || categorySlug === "motosiklet" || categorySlug === "e-bisiklet" ? "object-contain p-1.5" : "object-cover"}
-                  />
+                ? categorySlug === "e-scooter" || categorySlug === "motosiklet" || categorySlug === "e-bisiklet"
+                  ? (
+                    // Yatay stüdyo fotoğrafı kareye sığdırılınca "kutu içinde kutu" görünümü oluşuyordu:
+                    // aynı fotoğraf arkada bulanık ve kutuyu dolduracak şekilde konur (büyük banner'daki yöntem),
+                    // net fotoğraf üstüne sığdırılır → kutu fotoğrafın kendi zemin rengiyle dolar.
+                    <>
+                      <Image src={imageUrl} alt="" aria-hidden fill sizes="80px" className="object-cover scale-150 blur-md" />
+                      <Image src={imageUrl} alt="" fill sizes="80px" className="object-contain" />
+                    </>
+                  )
+                  : <Image src={imageUrl} alt="" fill sizes="80px" className="object-cover" />
                 : (bodyType ? BODY_ICONS[bodyType] : null) ?? CATEGORY_FALLBACK_ICONS[categorySlug] ?? "🚗"
               }
             </div>
