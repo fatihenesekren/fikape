@@ -154,7 +154,7 @@
 {"id":1002,"slug":"cowboy-classic-2025","once":{},"eklenen":{"motor_watt":250,"battery_wh":360},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.739Z"}
 {"id":1003,"slug":"gocycle-g4i-2021","once":{},"eklenen":{"motor_watt":250,"battery_wh":375},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.812Z"}
 {"id":1004,"slug":"gocycle-gs-2020","once":{},"eklenen":{"motor_watt":250,"battery_wh":300,"max_speed_kmh":25},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:47.931Z"}
-{"id":1005,"slug":"super73-r-brooklyn-2021","once":{},"eklenen":{"motor_watt":750,"battery_wh":960,"max_speed_kmh":45},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:48.002Z"}
+{"id":1005,"slug":"super73-r-brooklyn-2022","once":{},"eklenen":{"motor_watt":750,"battery_wh":960,"max_speed_kmh":45},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:48.002Z"}
 {"id":1006,"slug":"super73-s2-2020","once":{},"eklenen":{"motor_watt":750,"battery_wh":960,"max_speed_kmh":45},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:48.075Z"}
 {"id":1007,"slug":"vanmoof-s6-2025","once":{},"eklenen":{"motor_watt":250,"battery_wh":487,"max_speed_kmh":25},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:48.151Z"}
 {"id":1008,"slug":"vanmoof-s6-open-2025","once":{},"eklenen":{"motor_watt":250,"battery_wh":487},"kaynak":"trim-ayristir","tarih":"2026-10-04T19:22:48.250Z"}
@@ -224,7 +224,7 @@
 {"id":1002,"slug":"cowboy-classic-2025","once":{"battery_wh":360,"motor_watt":250},"eklenen":{"bike_type":"sehir","motor_type":"hub-drive","pedelec_class":"standard-25","range_km":70,"max_speed_kmh":25,"charge_hours":3.5,"removable_battery":true},"tarih":"2026-10-05T08:00:34.333Z"}
 {"id":1003,"slug":"gocycle-g4i-2021","once":{"battery_wh":375,"motor_watt":250},"eklenen":{"bike_type":"katlanabilir","motor_type":"hub-drive","pedelec_class":"standard-25","range_km":80,"max_speed_kmh":25,"charge_hours":3.5,"removable_battery":false,"gearbox":3},"tarih":"2026-10-05T08:00:37.031Z"}
 {"id":1004,"slug":"gocycle-gs-2020","once":{"battery_wh":300,"motor_watt":250,"max_speed_kmh":25},"eklenen":{"bike_type":"katlanabilir","motor_type":"hub-drive","pedelec_class":"standard-25","range_km":65,"charge_hours":7,"removable_battery":false,"gearbox":3},"tarih":"2026-10-05T08:00:39.457Z"}
-{"id":1005,"slug":"super73-r-brooklyn-2021","once":{"battery_wh":960,"motor_watt":750,"max_speed_kmh":45},"eklenen":{"motor_type":"hub-drive","pedelec_class":"speed-45","removable_battery":true},"tarih":"2026-10-05T08:00:43.457Z"}
+{"id":1005,"slug":"super73-r-brooklyn-2022","once":{"battery_wh":960,"motor_watt":750,"max_speed_kmh":45},"eklenen":{"motor_type":"hub-drive","pedelec_class":"speed-45","removable_battery":true},"tarih":"2026-10-05T08:00:43.457Z"}
 {"id":1006,"slug":"super73-s2-2020","once":{"battery_wh":960,"motor_watt":750,"max_speed_kmh":45},"eklenen":{"motor_type":"hub-drive","pedelec_class":"speed-45","range_km":64,"charge_hours":6,"removable_battery":true},"tarih":"2026-10-05T08:00:45.952Z"}
 {"id":1010,"slug":"dethleffs-xl-family-a-6822-2-2026","once":{},"eklenen":{"karavan_type":"motorlu","berth":6,"length_cm":699,"width_cm":233,"exterior_height_cm":305,"empty_weight_kg":3055,"tow_weight_kg":2000,"water_tank_l":115,"waste_water_tank_l":90,"heating_type":"gazli","engine_cc":2287,"power_hp":140,"transmission":"Manuel","has_bathroom":true,"has_shower":true,"has_kitchen":true,"has_ac":false},"tarih":"2026-10-05T08:01:28.318Z"}
 {"id":1011,"slug":"knaus-nordwind-600-ue-2027","once":{},"eklenen":{"karavan_type":"cekme"},"tarih":"2026-10-05T08:01:31.280Z"}
