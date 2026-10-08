@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
+import { GORSEL_KAYNAK_ETIKETI } from "@/lib/cacheEtiketleri";
 import { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { adminIstek } from "@/lib/adminIstek";
@@ -29,6 +31,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ slug: st
     if (!kredi) return NextResponse.json({ error: "Yazar ve lisans zorunlu (https adresleri isteğe bağlı)." }, { status: 422 });
   }
   await prisma.product.update({ where: { id: urun.id }, data: { imageCredit: kredi as unknown as Prisma.InputJsonValue } });
+  revalidateTag(GORSEL_KAYNAK_ETIKETI, { expire: 0 });
   return NextResponse.json({ ok: true, kredi });
 }
 
@@ -38,5 +41,6 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ slug:
   const { slug } = await params;
   const r = await prisma.product.updateMany({ where: { slug }, data: { imageCredit: Prisma.DbNull } });
   if (r.count === 0) return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
+  revalidateTag(GORSEL_KAYNAK_ETIKETI, { expire: 0 });
   return NextResponse.json({ ok: true });
 }

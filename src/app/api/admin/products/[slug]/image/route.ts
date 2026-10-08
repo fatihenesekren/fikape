@@ -4,6 +4,7 @@ import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
 import { eskiUrunGorseliniSil } from "@/lib/urunGorselTemizlik";
+import { GORSEL_KAYNAK_ETIKETI } from "@/lib/cacheEtiketleri";
 import { Prisma } from "@/generated/prisma/client";
 import { resizeImageBuffer, fetchAndResizeImage } from "@/lib/imageResize";
 import { commonsDosyaAdi, commonsKredisiGetir } from "@/lib/gorselKredisi";
@@ -79,6 +80,7 @@ export async function POST(
     await eskiUrunGorseliniSil(product.id, product.imageUrl, versionedUrl);
 
     revalidateTag("vitrin", { expire: 0 }); // görsel vitrine uygunluk koşuludur
+    revalidateTag(GORSEL_KAYNAK_ETIKETI, { expire: 0 });
     return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: null });
   } catch (e) {
     console.error("[admin-product]", e);
@@ -169,6 +171,7 @@ export async function PATCH(
     await eskiUrunGorseliniSil(product.id, product.imageUrl, versionedUrl);
 
     revalidateTag("vitrin", { expire: 0 });
+    revalidateTag(GORSEL_KAYNAK_ETIKETI, { expire: 0 });
     return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: otomatikKredi });
   } catch (e) {
     console.error("[admin-product]", e);

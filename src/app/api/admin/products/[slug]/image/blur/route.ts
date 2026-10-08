@@ -3,6 +3,8 @@ import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
 import { eskiUrunGorseliniSil } from "@/lib/urunGorselTemizlik";
+import { revalidateTag } from "next/cache";
+import { GORSEL_KAYNAK_ETIKETI } from "@/lib/cacheEtiketleri";
 
 export const runtime = "nodejs";
 
@@ -42,6 +44,7 @@ export async function POST(
 
   // Yeni dosya kayıtlıyken eskisi (önceki blur ya da bulanıksız asıl) yetim kalmasın
   await eskiUrunGorseliniSil(product.id, product.imageUrl, blob.url);
+  revalidateTag(GORSEL_KAYNAK_ETIKETI, { expire: 0 }); // atıf listesindeki küçük önizleme yeni dosyayı göstersin
 
   return NextResponse.json({ url: blob.url });
 }

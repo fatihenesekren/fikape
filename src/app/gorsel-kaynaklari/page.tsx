@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { gorselKredisi } from "@/lib/gorselKredisi";
 import { GorselKaynaklariListe } from "./GorselKaynaklariListe";
 import type { KaynakSatir } from "@/lib/gorselKaynak";
+import { GORSEL_KAYNAK_ETIKETI } from "@/lib/cacheEtiketleri";
 
 export const metadata: Metadata = {
   title: "Görsel Kaynakları",
@@ -32,7 +33,8 @@ const satirlariGetir = unstable_cache(
     );
   },
   ["gorsel-kaynaklari-v1"],
-  { revalidate: 600 },
+  // Görsel/atıf değişince (admin yükleme, blur, atıf, ürün durumu) etiketle anında temizlenir; 10 dk yalnız yedek süre.
+  { revalidate: 600, tags: [GORSEL_KAYNAK_ETIKETI] },
 );
 
 export default async function GorselKaynaklariPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

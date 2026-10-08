@@ -1,6 +1,7 @@
 import { revalidateTag } from "next/cache";
 import type { Prisma } from "@/generated/prisma/client";
 import { EK_ETIKET } from "@/lib/katalog/ekSunucu";
+import { GORSEL_KAYNAK_ETIKETI } from "@/lib/cacheEtiketleri";
 import type { AdminKimlik } from "@/lib/adminIstek";
 
 export type Tx = Prisma.TransactionClient;
@@ -43,6 +44,7 @@ export async function denetimYaz(
 /** Form/katalog önbelleğini hemen geçersiz kıl (commit'ten SONRA çağrılmalı). */
 export function katalogOnbellekTemizle() {
   revalidateTag(EK_ETIKET, { expire: 0 });
+  revalidateTag(GORSEL_KAYNAK_ETIKETI, { expire: 0 }); // ürün pasife alma/silme/yeniden adlandırma atıf listesini de etkiler
 }
 
 /** Product.name üretimi (öneri onayı ve /api/oneriler ile aynı biçim). */
