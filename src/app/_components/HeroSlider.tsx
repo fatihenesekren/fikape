@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FikapeScore } from "@/components/FikapeScore";
 import { TrFlagIcon } from "@/components/TrFlagIcon";
+import { markaBuyuk } from "@/lib/markaBuyuk";
 import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelDisplay";
 import { isDomesticBrand } from "@/lib/domesticBrands";
 
@@ -148,8 +149,8 @@ export function HeroSlider({ products }: { products: TopProduct[] }) {
                 </div>
               )}
 
-              <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5 flex items-center gap-1">
-                {p.brandName}
+              <div className="text-xs font-semibold text-gray-400 tracking-wide mb-0.5 flex items-center gap-1">
+                {markaBuyuk(p.brandName, isDomestic)}
                 {isDomestic && <TrFlagIcon />}
               </div>
               <div className="mb-3">

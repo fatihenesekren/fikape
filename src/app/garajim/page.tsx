@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { markaBuyuk } from "@/lib/markaBuyuk";
+import { isDomesticBrand } from "@/lib/domesticBrands";
 import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -221,8 +223,8 @@ export default async function GarajimPage() {
         </div>
 
         <div className="p-4 sm:p-5">
-          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">
-            {product.brand.name}
+          <div className="text-xs font-semibold text-gray-400 tracking-wide">
+            {markaBuyuk(product.brand.name, isDomesticBrand(product.brand.name))}
           </div>
           <div className="font-bold text-gray-900 text-base">
             {stripModelGenRange(product.model.name)}

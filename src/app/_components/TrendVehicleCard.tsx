@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FUEL_ICONS, FUEL_LABELS } from "@/lib/fuel";
+import { markaBuyuk } from "@/lib/markaBuyuk";
+import { isDomesticBrand } from "@/lib/domesticBrands";
 import { stripModelGenRange, splitTrimName, gorunenTrimName } from "@/lib/modelDisplay";
 
 // FI (mavi) · KA (yeşil) · PE (kahve) — sayfanın altındaki FI·KA·PE açıklama
@@ -57,8 +59,8 @@ export function TrendVehicleCard({
           )}
         </div>
         <div className="min-w-0">
-          <div className="text-[10px] font-semibold uppercase tracking-wide truncate" style={{ color: mid }}>
-            {brandName}
+          <div className="text-[10px] font-semibold tracking-wide truncate" style={{ color: mid }}>
+            {markaBuyuk(brandName, isDomesticBrand(brandName))}
           </div>
           <div className="text-sm font-semibold truncate" style={{ color: dark }}>
             {trimSplit ? trimSplit.version : stripModelGenRange(modelName)}

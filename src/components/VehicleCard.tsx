@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BackdropImage } from "@/components/BackdropImage";
+import { markaBuyuk } from "@/lib/markaBuyuk";
 import { TrFlagIcon } from "@/components/TrFlagIcon";
 import { FikapeScore } from "@/components/FikapeScore";
 import type { FikapeScores } from "@/lib/fikape";
@@ -179,9 +180,9 @@ export function VehicleCard({
 
       {/* Kart gövdesi */}
       <div className="px-4 pt-4 pb-4">
-        <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5 flex items-center justify-between gap-1">
+        <div className="text-xs font-semibold text-gray-400 tracking-wide mb-0.5 flex items-center justify-between gap-1">
           <span className="flex items-center gap-1 min-w-0">
-            {brandName}
+            {markaBuyuk(brandName, isDomestic)}
             {isDomestic && <TrFlagIcon />}
           </span>
           {id != null && (
