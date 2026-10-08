@@ -9,7 +9,7 @@ import { parseVersion, formatVersionLabel, versionForTrimName } from "@/lib/pars
 import { MODEL_GEN_RANGE_RE } from "@/lib/modelDisplay";
 import { resolveOnerPrefill, type OnerCategoryKey } from "@/lib/onerPrefill";
 import type { ExistingVehicleMatch } from "@/lib/existingVehicle";
-import { birebirAyniArac } from "@/lib/aracKarsilastir";
+import { birebirAyniArac, YAKIT_VITES_KATEGORILERI } from "@/lib/aracKarsilastir";
 import { legacySuz, type GizliKayit } from "@/lib/katalog/override";
 import { ekYilGecerli, legacyBirlestir, type EkMarkaVeri, type LegacyMake } from "@/lib/katalog/ek";
 import { PAKET_YOK, VERSIYON_YOK } from "@/lib/katalog/secim";
@@ -425,6 +425,8 @@ export default function OnerPage() {
       ].filter(Boolean).join(" – ") || "";
   const secilenYakit = katalogModu ? katalogSecim?.fuelType ?? "" : fuelType;
   const secilenVites = katalogModu ? katalogSecim?.transmission ?? "" : transmission;
+  // Yakıt/vites yalnız motorlu kategorilerde araç kimliğinin parçası (e-bisiklet/e-scooter/karavanda sorulmaz)
+  const yakitVitesKimlikte = (YAKIT_VITES_KATEGORILERI as readonly string[]).includes(categorySlug);
   const birebirAyniKayit = existingMatches.find((mm) =>
     birebirAyniArac(mm, {
       year: secilenYil ? Number(secilenYil) : null,
@@ -559,13 +561,13 @@ export default function OnerPage() {
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-green-900">Bu araç zaten fikape&apos;de</p>
                 <p className="text-xs text-green-700 mt-0.5">
-                  Bu marka ve modelde kayıtlı araçlar bulundu. Yıl, donanım paketi, yakıt türü ve
-                  vites sizinkiyle birebir aynıysa aracınız tekrar eklenemez; bunlardan biri bile
-                  farklıysa yeni bir kayıt olarak eklenir.
+                  {yakitVitesKimlikte
+                    ? "Bu marka ve modelde kayıtlı araçlar bulundu. Yıl, donanım paketi, yakıt türü ve vites sizinkiyle birebir aynıysa aracınız tekrar eklenemez; bunlardan biri bile farklıysa yeni bir kayıt olarak eklenir."
+                    : "Bu marka ve modelde kayıtlı araçlar bulundu. Yıl ve donanım paketi sizinkiyle birebir aynıysa aracınız tekrar eklenemez; biri bile farklıysa yeni bir kayıt olarak eklenir."}
                 </p>
                 {birebirAyniKayit ? (
                   <p className="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-2 py-1.5 mt-1.5 font-medium">
-                    Bu araç (aynı yıl, donanım, yakıt ve vites) zaten kayıtlı — aşağıdan var olan kayda gidip yorum yazabilirsiniz.
+                    Bu araç ({yakitVitesKimlikte ? "aynı yıl, donanım, yakıt ve vites" : "aynı yıl ve donanım"}) zaten kayıtlı — aşağıdan var olan kayda gidip yorum yazabilirsiniz.
                   </p>
                 ) : (
                   !secilenYilEslesiyor && (
