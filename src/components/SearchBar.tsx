@@ -10,13 +10,14 @@ export function SearchBar() {
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef  = useRef<HTMLFormElement>(null);
 
-  // Ana sayfada hero'nun, arama sayfasında sayfanın kendi search kutusu var
-  if (pathname === "/" || pathname === "/arama") return null;
+  // Ana sayfada hero'nun, /arama ve /araclar'da sayfanın kendi search kutusu var (çift kutu olmasın; tam eşitlik: /araclar/[slug] etkilenmez)
+  if (pathname === "/" || pathname === "/arama" || pathname === "/araclar") return null;
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const q = inputRef.current?.value.trim();
-    if (q) router.push(`/arama?q=${encodeURIComponent(q)}`);
+    // Boş gönderim: tam kataloğa git (önceden hiçbir şey olmuyordu)
+    router.push(q ? `/arama?q=${encodeURIComponent(q)}` : "/araclar");
   }
 
   return (
@@ -62,7 +63,7 @@ export function SearchIcon() {
   const router   = useRouter();
   const pathname = usePathname();
 
-  if (pathname === "/" || pathname === "/arama") return null;
+  if (pathname === "/" || pathname === "/arama" || pathname === "/araclar") return null;
 
   return (
     <button

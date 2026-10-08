@@ -1,13 +1,6 @@
 import { getTopRatedProducts } from "@/lib/dataCache";
 import { HeroSlider } from "./HeroSlider";
-
-const POPULAR_SEARCHES = [
-  "Fiat Egea",
-  "Tesla Model Y",
-  "Ford Ranger",
-  "Yamaha MT-07",
-  "Togg T10X",
-];
+import { POPULAR_SEARCHES, populerAramaHref } from "@/lib/popularSearches";
 
 export async function HeroSection() {
   const topRatedProducts = await getTopRatedProducts();
@@ -84,7 +77,7 @@ export async function HeroSection() {
               {POPULAR_SEARCHES.map((q) => (
                 <a
                   key={q}
-                  href={`/arama?q=${encodeURIComponent(q)}`}
+                  href={populerAramaHref(q)}
                   className="text-xs px-3 py-1.5 rounded-full border border-white/10 text-gray-500 hover:border-white/20 hover:text-gray-300 transition-colors"
                 >
                   {q}

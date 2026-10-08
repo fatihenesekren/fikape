@@ -18,6 +18,7 @@ export function VoiceMicButton({
   inputRef,
   formRef,
   rightPx = 6,
+  buyuk = false,
 }: {
   inputRef: React.RefObject<HTMLInputElement | null>;
   formRef?: React.RefObject<HTMLFormElement | null>;
@@ -25,6 +26,8 @@ export function VoiceMicButton({
   // onun soluna denk gelsin diye her çağıran kendi düzenine göre bu offset'i
   // (piksel) veriyor — bkz. çağıran dosyalardaki "Ara" butonunun genişliği.
   rightPx?: number;
+  // Dokunmatik öncelikli arama ekranında (≥40px hedef) büyük düğme
+  buyuk?: boolean;
 }) {
   const { status, interimTranscript, errorMessage, start, stop, abort, supported } = useSpeechToText();
   const [hasValue, setHasValue] = useState(false);
@@ -100,7 +103,7 @@ export function VoiceMicButton({
         }}
         aria-label={listening ? "Sesli aramayı durdur" : hasValue ? "Aramayı temizle" : "Sesli arama başlat"}
         aria-pressed={listening}
-        className="absolute top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center transition-colors z-10"
+        className={`absolute top-1/2 -translate-y-1/2 ${buyuk ? "w-10 h-10" : "w-7 h-7"} rounded-full flex items-center justify-center transition-colors z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900`}
         style={{ right: rightPx, ...(listening ? { color: "#dc2626" } : hasValue ? { color: "#6b7280" } : { color: "#9ca3af" }) }}
       >
         {listening ? (

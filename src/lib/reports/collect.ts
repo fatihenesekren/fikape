@@ -232,11 +232,11 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
 
   sections.push(...await guard("Sıfır-sonuç aramalar", errors, async () => {
     const [totalW, zeroRows] = await Promise.all([
-      prisma.searchQueryLog.count({ where: { createdAt: W } }),
+      prisma.searchQueryLog.count({ where: { createdAt: W, NOT: { source: "cip" } } }),
       prisma.$queryRaw<{ term: string; hits: number; source: string }[]>`
         SELECT term, COUNT(*)::int AS hits, MAX(source) AS source
         FROM search_query_logs
-        WHERE "resultCount" = 0 AND "createdAt" >= ${win.weekStart} AND "createdAt" < ${win.weekEnd}
+        WHERE "resultCount" = 0 AND source <> 'cip' AND "createdAt" >= ${win.weekStart} AND "createdAt" < ${win.weekEnd}
         GROUP BY term
         ORDER BY hits DESC, term ASC
         LIMIT 20`,

@@ -4,7 +4,8 @@ import { prisma } from "@/lib/prisma";
 // için. Kişisel veri YOK: normalize edilmiş terim + sonuç sayısı + kaynak.
 // Fire-and-forget: yanıtı asla bloklamaz / hata fırlatmaz.
 
-export type SearchSource = "arama" | "araclar";
+// "cip": boş arama ekranı / ana sayfadaki hazır "Popüler aramalar" çipi (organik arama istatistiğinden ayrı tutulur)
+export type SearchSource = "arama" | "araclar" | "cip";
 
 const MAX_TERM_LEN = 200;
 

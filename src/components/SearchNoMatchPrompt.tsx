@@ -77,7 +77,7 @@ export function SearchNoMatchPrompt({
         </Link>
       </div>
       <Link
-        href="/arama"
+        href="/araclar"
         className="inline-block mt-4 text-sm font-semibold text-link hover:underline"
       >
         Tüm araçları gör

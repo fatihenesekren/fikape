@@ -7,6 +7,7 @@ import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
+import { aramaTemizle } from "@/lib/aramaDurumu";
 import { logSearch } from "@/lib/searchLog";
 import { CardGridSkeleton } from "@/app/_components/CardGridSkeleton";
 import type { FikapeScores } from "@/lib/fikape";
@@ -83,7 +84,7 @@ export default async function AraclarPage({
   const params = await searchParams;
   const catSlug = params.kategori && CATEGORY_SLUGS.includes(params.kategori) ? params.kategori : undefined;
   const selectedBrand = params.marka || undefined;
-  const q = (params.q ?? "").trim();
+  const q = aramaTemizle(params.q); // dizi (?q=a&q=b) ve kontrol karakterlerine karşı güvenli
   const page = Math.max(1, parseInt(params.sayfa ?? "1") || 1);
   const selectedFacets = parseSelectedFacets(params);
 
