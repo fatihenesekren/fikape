@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { gorselKredisi } from "@/lib/gorselKredisi";
+import { GorselKaynaklariListe } from "./GorselKaynaklariListe";
+import type { KaynakSatir } from "@/lib/gorselKaynak";
 
 export const metadata: Metadata = {
   title: "Görsel Kaynakları",
@@ -10,39 +12,49 @@ export const metadata: Metadata = {
 };
 export const dynamic = "force-dynamic"; // DB okur (DB'siz build'i kırmamak için statik üretilmez)
 
-export default async function GorselKaynaklariPage() {
-  const urunler = await prisma.product.findMany({
-    where: { status: "ACTIVE", isActive: true, imageUrl: { not: null } },
-    select: { slug: true, name: true, imageUrl: true, imageCredit: true },
-    orderBy: { name: "asc" },
-    take: 2000,
-  });
-  const satirlar = (
-    await Promise.all(urunler.map(async (u) => ({ u, kredi: await gorselKredisi(u.imageUrl, u.imageCredit) })))
-  ).filter((x) => x.kredi !== null);
+// Atıf listesi her ziyarette yeniden hesaplanmasın (Commons sorguları dahil): 10 dk önbellek.
+const satirlariGetir = unstable_cache(
+  async (): Promise<KaynakSatir[]> => {
+    const urunler = await prisma.product.findMany({
+      where: { status: "ACTIVE", isActive: true, imageUrl: { not: null } },
+      select: { slug: true, name: true, imageUrl: true, imageCredit: true, category: { select: { slug: true } }, brand: { select: { name: true } } },
+      orderBy: { name: "asc" },
+      take: 2000,
+    });
+    const hepsi = await Promise.all(urunler.map(async (u) => ({ u, kredi: await gorselKredisi(u.imageUrl, u.imageCredit) })));
+    return hepsi.flatMap(({ u, kredi }) =>
+      kredi && u.imageUrl
+        ? [{
+            slug: u.slug, ad: u.name, marka: u.brand.name, kategori: u.category.slug, imageUrl: u.imageUrl,
+            yazar: kredi.yazar, kaynakUrl: kredi.kaynakUrl ?? null, lisans: kredi.lisans, lisansUrl: kredi.lisansUrl ?? null,
+          }]
+        : [],
+    );
+  },
+  ["gorsel-kaynaklari-v1"],
+  { revalidate: 600 },
+);
+
+export default async function GorselKaynaklariPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const sp = await searchParams;
+  const tek = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? "";
+  const satirlar = await satirlariGetir();
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-10">
       <h1 className="text-2xl font-black text-gray-900 mb-2">Görsel Kaynakları</h1>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-gray-500 mb-4">
         Katalogdaki araç fotoğraflarının önemli bir kısmı Wikimedia Commons&apos;taki özgür lisanslı çalışmalardır. Yazarlarına ve lisanslarına
-        aşağıdan ulaşabilirsiniz. Lisans koşulları gereği görseller küçültülmüş veya plaka/yüz bulanıklaştırılmış olabilir.
+        aşağıdan ulaşabilirsiniz. Lisans koşulları gereği görseller küçültülmüş veya plaka/yüz bulanıklaştırılmış olabilir. Bir görselin hak sahibiyseniz{" "}
+        <a href="#hak-sahibi" className="font-semibold underline">bildirim bölümüne</a> bakın.
       </p>
-      <ul className="divide-y divide-gray-100 bg-white border border-gray-100 rounded-xl">
-        {satirlar.map(({ u, kredi }) => (
-          <li key={u.slug} className="px-4 py-3 text-sm">
-            <Link href={`/araclar/${u.slug}`} className="font-medium text-gray-900 hover:underline break-words">{u.name}</Link>
-            <p className="text-xs text-gray-500 break-words">
-              {kredi!.kaynakUrl ? <a href={kredi!.kaynakUrl} target="_blank" rel="noopener noreferrer" className="underline">{kredi!.yazar}</a> : kredi!.yazar}
-              {" · "}
-              {kredi!.lisansUrl ? <a href={kredi!.lisansUrl} target="_blank" rel="noopener noreferrer license" className="underline">{kredi!.lisans}</a> : kredi!.lisans}
-            </p>
-          </li>
-        ))}
-        {satirlar.length === 0 && <li className="px-4 py-8 text-sm text-gray-400 text-center">Henüz listelenecek kayıt yok.</li>}
-      </ul>
 
-      <section className="mt-8 rounded-xl border border-gray-100 bg-gray-50 px-4 py-4">
+      <GorselKaynaklariListe
+        satirlar={satirlar}
+        baslangic={{ q: tek(sp.q).slice(0, 80), kategori: tek(sp.kategori).slice(0, 30), lisans: tek(sp.lisans).slice(0, 40) }}
+      />
+
+      <section id="hak-sahibi" className="mt-8 rounded-xl border border-gray-100 bg-gray-50 px-4 py-4 scroll-mt-4">
         <h2 className="text-sm font-bold text-gray-900 mb-1">Hak sahibi bildirimi</h2>
         <p className="text-sm text-gray-600">
           Bir görselin hak sahibiyseniz ve görselin kaldırılmasını ya da atıf bilgisinin düzeltilmesini istiyorsanız{" "}
