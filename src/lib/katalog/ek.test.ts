@@ -118,6 +118,22 @@ describe("legacyBirlestir (karavan / e-scooter / e-bisiklet)", () => {
     expect(b[0].models[1].trims).toEqual(["Plus", "Diğer"]);
     expect(b.map((m) => m.make)).toEqual(["Segway", "Xiaomi", "Diğer / Bulamadım"]);
   });
+  it("yeni marka Türkçe harf sırasına göre doğru yere eklenir, 'Diğer / Bulamadım' hep sonda kalır", () => {
+    const liste: LegacyMake[] = [
+      { make: "Cowboy", models: [] }, { make: "Rad Power Bikes", models: [] }, { make: "Riese & Müller", models: [] },
+      { make: "Specialized", models: [] }, { make: "Zero", models: [] }, { make: "Diğer / Bulamadım", models: [] },
+    ];
+    const ek = [
+      { marka: "RKS", modeller: [{ ad: "BN5 Pro", tipler: [] }] },
+      { marka: "Aventon", modeller: [{ ad: "Pace", tipler: [] }] },
+      { marka: "Zzz Bikes", modeller: [{ ad: "X", tipler: [] }] },
+    ];
+    expect(legacyBirlestir(liste, ek).map((m) => m.make)).toEqual([
+      "Aventon", "Cowboy", "Rad Power Bikes", "Riese & Müller", "RKS", "Specialized", "Zero", "Zzz Bikes", "Diğer / Bulamadım",
+    ]);
+    // "Diğer / Bulamadım" yoksa da sona eklenir
+    expect(legacyBirlestir([{ make: "Cowboy", models: [] }], [{ marka: "Zero", modeller: [{ ad: "S", tipler: [] }] }]).map((m) => m.make)).toEqual(["Cowboy", "Zero"]);
+  });
 });
 
 describe("benzerlik (admin uyarıları)", () => {

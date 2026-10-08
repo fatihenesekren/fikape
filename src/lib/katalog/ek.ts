@@ -197,7 +197,9 @@ export function legacyBirlestir(makes: LegacyMake[], ek: EkMarkaVeri[]): LegacyM
     let make = kopya.find((m) => adAnahtar(m.make) === adAnahtar(em.marka));
     if (!make) {
       make = { make: em.marka, models: [{ name: DIGER, versions: [DIGER], trims: [DIGER] }] };
-      const i = kopya.findIndex((m) => m.make === DIGER_MARKA);
+      // Resmi liste gibi Türkçe harf sırasına göre doğru konuma eklenir; "Diğer / Bulamadım" her zaman sonda kalır.
+      let i = kopya.findIndex((m) => m.make !== DIGER_MARKA && m.make.localeCompare(em.marka, "tr") > 0);
+      if (i < 0) i = kopya.findIndex((m) => m.make === DIGER_MARKA);
       if (i >= 0) kopya.splice(i, 0, make); else kopya.push(make);
     }
     for (const mod of em.modeller) {

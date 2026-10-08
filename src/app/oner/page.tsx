@@ -12,6 +12,7 @@ import type { ExistingVehicleMatch } from "@/lib/existingVehicle";
 import { birebirAyniArac } from "@/lib/aracKarsilastir";
 import { legacySuz, type GizliKayit } from "@/lib/katalog/override";
 import { ekYilGecerli, legacyBirlestir, type EkMarkaVeri, type LegacyMake } from "@/lib/katalog/ek";
+import { PAKET_YOK, VERSIYON_YOK } from "@/lib/katalog/secim";
 import KatalogAracSecimi, { type KatalogSecimSonucu } from "./KatalogAracSecimi";
 
 const CATEGORIES = [
@@ -419,8 +420,8 @@ export default function OnerPage() {
   const secilenTrimName = katalogModu
     ? katalogSecim?.trimName ?? ""
     : [
-        versionForTrimName(isOtherVersion ? customVersion.trim() : selectedVersion, categorySlug),
-        isOtherTrim ? customTrim.trim() : selectedTrim,
+        versionForTrimName(isOtherVersion ? customVersion.trim() : selectedVersion === VERSIYON_YOK ? "" : selectedVersion, categorySlug),
+        isOtherTrim ? customTrim.trim() : selectedTrim === PAKET_YOK ? "" : selectedTrim,
       ].filter(Boolean).join(" – ") || "";
   const secilenYakit = katalogModu ? katalogSecim?.fuelType ?? "" : fuelType;
   const secilenVites = katalogModu ? katalogSecim?.transmission ?? "" : transmission;
@@ -640,7 +641,9 @@ export default function OnerPage() {
         )}
 
         {/* Versiyon */}
-        {!katalogModu && selectedModel && !isOtherModel && versions.length > 0 && (
+        {/* "Standart": katalogda kayıtlı sürüm yoksa/biliniyorsa seçilebilir, araç adına yazılmaz (secilenTrimName süzer).
+            Böylece sürümü olmayan modellerde (e-bisiklet/e-scooter/karavanın çoğu) Versiyon/Donanım boş kalmaz. */}
+        {!katalogModu && selectedModel && !isOtherModel && (
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">Versiyon</label>
             <select
@@ -658,7 +661,9 @@ export default function OnerPage() {
               className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
             >
               <option value="">— Seçin (opsiyonel) —</option>
-              {versions.map((v) => <option key={v} value={v}>{formatVersionLabel(v, categorySlug)}</option>)}
+              <option value={VERSIYON_YOK}>{VERSIYON_YOK}</option>
+              {versions.filter((v) => v !== "Diğer" && v !== VERSIYON_YOK).map((v) => <option key={v} value={v}>{formatVersionLabel(v, categorySlug)}</option>)}
+              <option value="Diğer">Diğer (listede yok)</option>
             </select>
             {isOtherVersion && (
               <input type="text" value={customVersion} onChange={(e) => setCustomVersion(e.target.value)}
@@ -669,7 +674,7 @@ export default function OnerPage() {
         )}
 
         {/* Donanım */}
-        {!katalogModu && selectedModel && !isOtherModel && trims.length > 0 && (
+        {!katalogModu && selectedModel && !isOtherModel && (
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">Donanım Paketi</label>
             <select
@@ -678,7 +683,9 @@ export default function OnerPage() {
               className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 bg-white"
             >
               <option value="">— Seçin (opsiyonel) —</option>
-              {trims.map((t) => <option key={t} value={t}>{t}</option>)}
+              <option value={PAKET_YOK}>{PAKET_YOK}</option>
+              {trims.filter((t) => t !== "Diğer" && t !== PAKET_YOK).map((t) => <option key={t} value={t}>{t}</option>)}
+              <option value="Diğer">Diğer (listede yok)</option>
             </select>
             {isOtherTrim && (
               <input type="text" value={customTrim} onChange={(e) => setCustomTrim(e.target.value)}
