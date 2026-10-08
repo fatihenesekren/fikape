@@ -431,7 +431,7 @@ export default function OnerPage() {
       trimName: secilenTrimName || null,
       fuelType: secilenYakit || null,
       transmission: secilenVites || null,
-    }),
+    }, categorySlug),
   );
 
   const fuelOptions = FUEL_TYPES[categorySlug] ?? [];

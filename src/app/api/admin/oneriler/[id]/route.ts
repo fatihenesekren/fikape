@@ -109,13 +109,14 @@ export async function POST(
 
     if (degisti) {
       // Düzeltilmiş bilgi başka bir aktif kayıtla BİREBİR aynıysa onaylama (kopya olur)
-      const benzerler = await findExistingVehicles(brandName, modelName, suggestion.categorySlug);
+      const kategoriSlug = suggestion.categorySlug;
+      const benzerler = await findExistingVehicles(brandName, modelName, kategoriSlug);
       const kendiSlug = suggestion.productId
         ? (await prisma.product.findUnique({ where: { id: suggestion.productId }, select: { slug: true } }))?.slug
         : undefined;
       const kopya = benzerler.find((mm) =>
         mm.slug !== kendiSlug &&
-        birebirAyniArac(mm, { year: year ?? null, trimName: trimRaw ?? null, fuelType: fuelType ?? null, transmission: transmission ?? null }));
+        birebirAyniArac(mm, { year: year ?? null, trimName: trimRaw ?? null, fuelType: fuelType ?? null, transmission: transmission ?? null }, kategoriSlug));
       if (kopya) {
         return NextResponse.json({ error: `Düzeltilen bilgilerle aynı araç zaten kayıtlı: ${kopya.name} (/araclar/${kopya.slug})` }, { status: 409 });
       }

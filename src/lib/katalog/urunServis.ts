@@ -72,7 +72,7 @@ export async function aracEkle(admin: AdminKimlik, g: AracEkle) {
 
     const mevcut = await findExistingVehicles(bAdi, mAdi, g.kategori, tx);
     const yeni = { year: g.yil, trimName, fuelType: g.yakit ?? null, transmission: g.vites ?? null };
-    const kopya = mevcut.filter((m) => birebirAyniArac(m, yeni));
+    const kopya = mevcut.filter((m) => birebirAyniArac(m, yeni, g.kategori));
     if (kopya.length) throw new IsHatasi(409, { error: "Bu araç zaten katalogda mevcut", mevcut: kopya[0] });
 
     const kategori = await tx.category.findUnique({ where: { slug: g.kategori }, select: { id: true } });
@@ -162,7 +162,7 @@ export async function aracDuzelt(admin: AdminKimlik, id: number, g: AracDuzelt) 
     const digerleri = await findExistingVehicles(brand.name, model.name, p.category?.slug, tx);
     const cakisan = digerleri.filter((m) => m.slug !== p.slug && birebirAyniArac(m, {
       year: yil, trimName, fuelType: (attrs.fuel_type as string) ?? null, transmission: (attrs.transmission as string) ?? null,
-    }));
+    }, p.category?.slug));
     if (cakisan.length) throw new IsHatasi(409, { error: "Bu değişiklik aracı mevcut başka bir araçla aynı yapıyor", mevcut: cakisan[0] });
 
     const ad = urunAdi(brand.name, model.name, trimName, yil);

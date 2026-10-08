@@ -4,6 +4,7 @@ import { ekYilGecerli } from "@/lib/katalog/ek";
 import { KATEGORILER, VITESLER, YAKITLAR } from "@/lib/katalog/alanlar";
 import { trimAdi } from "@/lib/katalog/secim";
 import { slugify } from "@/lib/slugify";
+import { YAKIT_VITES_KATEGORILERI } from "@/lib/aracKarsilastir";
 
 const adAlani = (max: number) =>
   z.string()
@@ -14,8 +15,8 @@ const adAlani = (max: number) =>
 const istegeBagliMetin = (max: number) =>
   z.string().nullable().optional().transform((v) => (typeof v === "string" ? temizMetin(v) || null : null)).pipe(z.string().max(max, `En fazla ${max} karakter`).nullable());
 
-/** Yakıt/vites yalnız motorlu kategorilerde anlamlı (e-scooter, e-bisiklet, karavan için sorulmaz). */
-export const YAKIT_VITES_KATEGORILERI = ["otomobil", "kamyonet", "motosiklet"] as const;
+// Yakıt/vites yalnız motorlu kategorilerde anlamlı (e-scooter, e-bisiklet, karavan için sorulmaz) — tanım aracKarsilastir.ts'te.
+export { YAKIT_VITES_KATEGORILERI };
 
 export const aracEkleSema = z.object({
   kategori: z.enum(KATEGORILER),

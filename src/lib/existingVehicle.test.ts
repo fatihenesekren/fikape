@@ -36,4 +36,23 @@ describe("birebirAyniArac", () => {
     expect(birebirAyniArac(mevcut, { ...mevcut, fuelType: null })).toBe(false);
     expect(birebirAyniArac({ ...mevcut, trimName: null }, mevcut)).toBe(false);
   });
+
+  it("iki tarafın da donanımı boşsa (donanımsız araç) yıl/yakıt/vites aynıysa kopya sayar", () => {
+    const donanimsiz = { year: 2020, trimName: null, transmission: "Manuel", fuelType: "GASOLINE" };
+    expect(birebirAyniArac(donanimsiz, { ...donanimsiz, trimName: "" })).toBe(true);
+    expect(birebirAyniArac(donanimsiz, { ...donanimsiz, trimName: "Comfort" })).toBe(false);
+  });
+
+  it("e-bisiklet / e-scooter / karavan: yakıt-vites kimlikte yok → yıl + donanım (boş = boş) aynıysa kopya (RKS BN5 Pro örneği)", () => {
+    const rks = { year: 2026, trimName: null, transmission: null, fuelType: null };
+    for (const k of ["e-bisiklet", "e-scooter", "karavan"]) {
+      expect(birebirAyniArac(rks, { ...rks, trimName: "" }, k)).toBe(true);
+      expect(birebirAyniArac(rks, { ...rks, year: 2025 }, k)).toBe(false);
+      expect(birebirAyniArac(rks, { ...rks, trimName: "Pro" }, k)).toBe(false);
+      expect(birebirAyniArac(rks, { ...rks, year: null }, k)).toBe(false);
+    }
+    // kategori verilmezse (eski çağrılar) ya da motorlu kategoride yakıt/vites yine şart
+    expect(birebirAyniArac(rks, rks)).toBe(false);
+    expect(birebirAyniArac(rks, rks, "otomobil")).toBe(false);
+  });
 });

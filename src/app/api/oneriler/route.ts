@@ -102,7 +102,7 @@ export async function POST(req: Request) {
     fuelType: fuelType || null,
     transmission: transmission || null,
   };
-  const blockingMatches = existingMatches.filter((mm) => birebirAyniArac(mm, yeniAracBilgisi));
+  const blockingMatches = existingMatches.filter((mm) => birebirAyniArac(mm, yeniAracBilgisi, categorySlug));
 
   if (blockingMatches.length > 0) {
     const top = blockingMatches[0];
