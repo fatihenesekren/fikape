@@ -67,3 +67,6 @@ Epey'den gelen 11 alan kullanıcı tablosuyla birebir uyumlu çıktı (250 W, 36
 
 ## 6. tur — RKS NERO-M 2026 (kullanıcı tablosu)
 Mevcut 13 alan tabloyla uyumlu (250 W, 48 V, 624 Wh, 25 km/s, 60 km, 7 vites, 20" alaşım). Eklenen 8 alan: ağırlık 28 kg, azami taşıma 120 kg, şarj 6 sa (4–6'nın üstü), XOD hidrolik disk fren, Kenda 20 x 4.5 lastik, kilitlenebilir ön süspansiyon, ön LED aydınlatma, M6 renkli LCD gösterge. Vites yazımı ayrıntılandırıldı. AI özeti yenilendi. Toplam 21 alan. Girilmeyen (alan yok): Samsung batarya markası, krank/zincir/sele/gidon ayrıntıları, EN 15194 sertifikası, 2 yıl garanti.
+
+## 7. tur — RKS RD8 2026 (kullanıcı tablosu)
+Mevcut 13 alan tabloyla uyumlu (250 W, 48 V, 576 Wh, 25 km/s, 70 km, 7 vites, 20" alaşım). Eklenen 8 alan: ağırlık 34 kg, azami taşıma 134 kg, şarj 8 sa (6–8'in üstü), XOD hidrolik disk, CST lastik (ölçü yok), Mozo kilitlenebilir ön süspansiyon, ön LED, M6 renkli LCD. Vites yazımı ayrıntılandırıldı. AI özeti yenilendi. Toplam 21 alan. Not: Epey 2024 "La Rose Ultra RD8" ön+arka süspansiyon diyor; kullanıcı tablosu yalnız ön süspansiyon → tablo esas alındı. Girilmeyen (alan yok): Tianeng batarya markası, krank/zincir/sele/gidon, CE/EN 15194, 2 yıl garanti.
