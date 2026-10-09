@@ -4,15 +4,16 @@ import { useRef } from "react";
 import { VoiceMicButton } from "@/components/VoiceMicButton";
 import { aramaDurumu } from "@/lib/aramaDurumu";
 
-export function AramaSearchBox({ query }: { query: string }) {
+export function AramaSearchBox({ query, ortali = false }: { query: string; ortali?: boolean }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   // Mobilde klavyenin kendiliğinden açılması yalnız arama ekranı boşken istenir (arama simgesinden gelen kullanıcı yazmaya hazırdır)
-  const ipucu = aramaDurumu(query).durum === "kisa";
+  // İpucu yalnız kullanıcı gerçekten 1 karakter yazıp gönderdiyse görünür (boş açılışta hata gibi durmasın).
+  const ipucu = aramaDurumu(query).durum === "kisa" && query.length > 0;
 
   return (
-    <form ref={formRef} action="/arama" method="GET" role="search" className="mb-6">
-      <div className="relative max-w-xl">
+    <form ref={formRef} action="/arama" method="GET" role="search" className={ortali ? "mt-6" : "mb-6"}>
+      <div className={ortali ? "relative max-w-2xl mx-auto" : "relative max-w-xl"}>
         <input
           ref={inputRef}
           name="q"
@@ -26,7 +27,7 @@ export function AramaSearchBox({ query }: { query: string }) {
           autoCapitalize="none"
           spellCheck={false}
           autoFocus={!query}
-          className="voice-mic-input w-full pl-10 pr-36 py-3.5 rounded-2xl border border-gray-300 bg-white text-base sm:text-sm shadow-sm placeholder-gray-500 focus:outline-none focus:border-gray-500 focus-visible:ring-2 focus-visible:ring-gray-900/25 transition-colors"
+          className={`voice-mic-input w-full pl-10 pr-36 rounded-2xl border border-gray-300 bg-white text-base placeholder-gray-500 focus:outline-none focus:border-gray-500 focus-visible:ring-2 focus-visible:ring-gray-900/25 transition-colors ${ortali ? "py-4 shadow-md" : "py-3.5 sm:text-sm shadow-sm"}`}
         />
         <svg
           aria-hidden="true"
@@ -39,7 +40,7 @@ export function AramaSearchBox({ query }: { query: string }) {
         <VoiceMicButton inputRef={inputRef} formRef={formRef} rightPx={84} buyuk />
         <button
           type="submit"
-          className="absolute right-1.5 top-1/2 -translate-y-1/2 h-10 px-5 rounded-xl text-sm font-semibold text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+          className={`absolute right-1.5 top-1/2 -translate-y-1/2 ${ortali ? "h-11" : "h-10"} px-5 rounded-xl text-sm font-semibold text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2`}
           style={{ background: "#111" }}
         >
           Ara

@@ -7,6 +7,7 @@ import { BASE_URL } from "@/lib/baseUrl";
 import { JsonLd } from "@/components/JsonLd";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
+import { KATEGORILER, KATEGORI_SLUGLARI } from "@/lib/kategoriler";
 import { aramaTemizle } from "@/lib/aramaDurumu";
 import { searchProductIds } from "@/lib/searchProducts";
 import { aramaLoglansinMi, aramaSonucDurumu, havuzuMotorSirasinaGore } from "@/lib/aramaKumesi";
@@ -24,15 +25,8 @@ export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 24;
 
-const CATEGORIES = [
-  { slug: "otomobil",    label: "Otomobil",   icon: "🚗" },
-  { slug: "motosiklet",  label: "Motosiklet", icon: "🏍️" },
-  { slug: "e-scooter",   label: "E-Scooter",  icon: "⚡" },
-  { slug: "e-bisiklet",  label: "E-Bisiklet", icon: "🚴" },
-  { slug: "karavan",     label: "Karavan",    icon: "🏕️" },
-  { slug: "kamyonet",    label: "Kamyonet",   icon: "🛻" },
-] as const;
-const CATEGORY_SLUGS = CATEGORIES.map((c) => c.slug) as readonly string[];
+const CATEGORIES = KATEGORILER;
+const CATEGORY_SLUGS = KATEGORI_SLUGLARI;
 
 // Motor (searchProductIds) hata verirse kullanılan yedek: aksan-duyarsız bellek içi arama.
 const DIACRITIC_MARKS_RE = new RegExp("[\\u0300-\\u036f]", "g");

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { KATEGORILER } from "@/lib/kategoriler";
 
 interface Category {
   slug: string;
@@ -12,14 +13,7 @@ interface Category {
 // Ana sayfada kategori seçimi artık sayfa içi grid'i büyütmüyor — her chip
 // /araclar katalog sayfasına götürüyor (bkz. backlog_anasayfa_katalog_ayirma).
 // "Tümü" ana sayfanın kürasyonlu görünümü olduğu için "/"ye bakar.
-const CATEGORIES: Category[] = [
-  { slug: "otomobil",    label: "Otomobil",   icon: "🚗" },
-  { slug: "motosiklet",  label: "Motosiklet", icon: "🏍️" },
-  { slug: "e-scooter",   label: "E-Scooter",  icon: "⚡" },
-  { slug: "e-bisiklet",  label: "E-Bisiklet", icon: "🚴" },
-  { slug: "karavan",     label: "Karavan",    icon: "🏕️" },
-  { slug: "kamyonet",    label: "Kamyonet",   icon: "🛻" },
-];
+const CATEGORIES: readonly Category[] = KATEGORILER;
 
 export function CategoryTabs({
   showQuizChip,

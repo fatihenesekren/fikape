@@ -9,9 +9,9 @@ import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { searchProductIds } from "@/lib/searchProducts";
 import { logSearch } from "@/lib/searchLog";
 import { aramaDurumu, aramaKaynagi } from "@/lib/aramaDurumu";
-import { POPULAR_SEARCHES, populerAramaHref } from "@/lib/popularSearches";
 import type { FikapeScores } from "@/lib/fikape";
 import { AramaSearchBox } from "./AramaSearchBox";
+import { BosArama } from "./BosArama";
 
 export const dynamic = "force-dynamic";
 
@@ -163,47 +163,27 @@ function SearchResultsSkeleton() {
   );
 }
 
-// Boş / tek karakterli arama: kesik "ilk 60 araç" listesi yerine arama ekranı (hazır aramalar + tam kataloğa bağlantı).
-// Veritabanı sorgusu yok. Tam katalog (sayfalama, kategori/marka filtresi) /araclar'da.
-function BosArama() {
-  return (
-    <div className="max-w-xl">
-      <p id="populer-baslik" className="text-xs font-semibold text-gray-600 mb-2.5">Popüler aramalar</p>
-      <ul aria-labelledby="populer-baslik" className="flex flex-wrap gap-2">
-        {POPULAR_SEARCHES.map((q) => (
-          <li key={q}>
-            <Link
-              href={populerAramaHref(q)}
-              className="inline-flex items-center min-h-11 px-4 rounded-full border border-gray-300 bg-white text-sm text-gray-800 hover:border-gray-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
-            >
-              {q}
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-8 border-t border-gray-100 pt-6">
-        <p className="text-sm text-gray-600 mb-3">Ne aradığınızdan emin değil misiniz? Tüm araçlara kategori ve marka filtreleriyle göz atın.</p>
-        <Link
-          href="/araclar"
-          className="flex w-full sm:inline-flex sm:w-auto items-center justify-center gap-2 min-h-12 px-6 rounded-xl text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
-          style={{ background: "#111" }}
-        >
-          Tüm kataloğa göz at <span aria-hidden="true">→</span>
-        </Link>
-      </div>
-    </div>
-  );
-}
-
 export default async function AramaPage({ searchParams }: { searchParams: AramaParams }) {
   const sp = await searchParams;
   const { durum, q } = aramaDurumu(sp.q);
   const kaynak = aramaKaynagi(sp.k);
 
+  // Boş / tek karakterli arama: ortalı arama ekranı (sonuç listesi yok, "← Ana Sayfa" gerekmez — üst menü var).
+  if (durum !== "sonuc") {
+    return (
+      <div className="w-full max-w-7xl mx-auto px-4 pt-8 pb-16 sm:pt-16">
+        <div className="max-w-2xl mx-auto text-center">
+          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-gray-900">Araç Ara</h1>
+          <p className="mt-2 text-base text-gray-600">Marka, model veya araç adıyla katalogda arayın.</p>
+        </div>
+        <AramaSearchBox query={q} ortali />
+        <BosArama />
+      </div>
+    );
+  }
+
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8">
-      {/* Geri dönüş — /araclar ve /takas ile aynı yerleşim/stil */}
       <Link
         href="/"
         className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-600 hover:text-gray-900 mb-4 transition-colors"
@@ -211,25 +191,17 @@ export default async function AramaPage({ searchParams }: { searchParams: AramaP
         ← Ana Sayfa
       </Link>
 
-      {/* Başlık */}
       <div className="mb-6">
-        <h1 className="text-xl font-bold text-gray-900 break-words">
-          {durum === "sonuc" ? <>&ldquo;{q}&rdquo; için sonuçlar</> : "Araç Ara"}
+        <h1 className="text-2xl font-black text-gray-900 break-words">
+          &ldquo;{q}&rdquo; için sonuçlar
         </h1>
-        {durum !== "sonuc" && <p className="text-sm text-gray-600 mt-1">Marka, model veya araç adı yazın.</p>}
       </div>
 
-      {/* Arama kutusu */}
       <AramaSearchBox query={q} />
 
-      {durum === "sonuc" ? (
-        // Sonuçlar — Suspense ile Wikipedia fetch izole
-        <Suspense fallback={<SearchResultsSkeleton />}>
-          <SearchResults query={q} kaynak={kaynak} />
-        </Suspense>
-      ) : (
-        <BosArama />
-      )}
+      <Suspense fallback={<SearchResultsSkeleton />}>
+        <SearchResults query={q} kaynak={kaynak} />
+      </Suspense>
     </div>
   );
 }
