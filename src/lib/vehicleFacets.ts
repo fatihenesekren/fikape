@@ -70,14 +70,24 @@ const CC_GROUP: FacetGroup = {
 const dolu = (v: unknown) => v === false || (v != null && v !== "");
 
 /** Gruba "Belirtilmemiş" seçeneği ekler ve kapsam kapısını kaldırır — veri yarım olsa da hiçbir kayıt sessizce elenmez. */
-function eksikVeriliGrup(g: FacetGroup): FacetGroup {
+function eksikVeriliGrup(g: FacetGroup, naEtiketi = "Belirtilmemiş"): FacetGroup {
   return {
     ...g,
     alwaysShow: true,
     options: [
       ...g.options,
-      { value: "na", label: "Belirtilmemiş", match: (a) => !dolu(a[g.attrKey]) },
+      { value: "na", label: naEtiketi, match: (a) => !dolu(a[g.attrKey]) },
     ],
+  };
+}
+
+/** Sayısal alan için bitişik kovalı grup: [URL değeri, etiket, alt, üst] (sınırlar dahil). */
+function aralikGrubu(key: string, label: string, attrKey: string, kovalar: [string, string, number, number][]): FacetGroup {
+  return {
+    key,
+    label,
+    attrKey,
+    options: kovalar.map(([value, lbl, min, max]) => ({ value, label: lbl, match: (a: Attrs) => inRange(a[attrKey], min, max) })),
   };
 }
 
@@ -263,17 +273,111 @@ const FOUR_WD_GROUP: FacetGroup = {
   attrKey: "four_wd",
   options: [
     { value: "4x4", label: "4×4 var", match: (a) => a.four_wd === true || str(a.four_wd) === "true" },
-    { value: "2wd", label: "4×4 yok", match: (a) => !(a.four_wd === true || str(a.four_wd) === "true") },
+    { value: "2wd", label: "4×4 yok", match: (a) => a.four_wd === false || str(a.four_wd) === "false" },
   ],
 };
 
+// ── Otomobil ──
+const OTO_TRANSMISSION_GROUP: FacetGroup = {
+  key: "vites",
+  label: "Vites",
+  attrKey: "transmission",
+  options: [
+    { value: "otomatik", label: "Otomatik / CVT", match: (a) => ["Otomatik", "CVT", "Yarı Otomatik"].includes(str(a.transmission)) },
+    { value: "manuel",   label: "Manuel",         match: (a) => str(a.transmission) === "Manuel" },
+  ],
+};
+const OTO_DRIVETRAIN_GROUP: FacetGroup = {
+  key: "cekis",
+  label: "Çekiş",
+  attrKey: "drivetrain",
+  options: [
+    { value: "fwd", label: "Önden çekiş (FWD)",    match: (a) => str(a.drivetrain) === "FWD" },
+    { value: "rwd", label: "Arkadan itiş (RWD)",   match: (a) => str(a.drivetrain) === "RWD" },
+    { value: "awd", label: "Dört çeker (AWD/4WD)", match: (a) => ["AWD", "4WD"].includes(str(a.drivetrain)) },
+  ],
+};
+const OTO_POWER_GROUP = aralikGrubu("guc", "Motor Gücü", "power_hp", [
+  ["0-100", "≤ 100 HP", 0, 100], ["101-150", "101–150 HP", 101, 150], ["151-250", "151–250 HP", 151, 250], ["251", "250 HP +", 251, Infinity],
+]);
+const OTO_CC_GROUP = aralikGrubu("cc", "Motor Hacmi", "engine_cc", [
+  ["0-1000", "≤ 1000 cc", 0, 1000], ["1001-1400", "1001–1400 cc", 1001, 1400], ["1401-1600", "1401–1600 cc", 1401, 1600],
+  ["1601-2000", "1601–2000 cc", 1601, 2000], ["2001", "2000 cc +", 2001, Infinity],
+]);
+const OTO_EV_RANGE_GROUP = aralikGrubu("menzil", "Elektrikli Menzil", "ev_range_km", [
+  ["0-300", "≤ 300 km", 0, 300], ["301-450", "301–450 km", 301, 450], ["451", "450 km +", 451, Infinity],
+]);
+const SEAT_GROUP = aralikGrubu("koltuk", "Koltuk", "seat_count", [
+  ["0-4", "≤ 4 koltuk", 0, 4], ["5", "5 koltuk", 5, 5], ["6", "6+ koltuk", 6, Infinity],
+]);
+
+// ── Motosiklet ──
+const MOTO_POWER_GROUP = aralikGrubu("guc", "Motor Gücü", "power_hp", [
+  ["0-48", "≤ 48 HP", 0, 48], ["49-100", "49–100 HP", 49, 100], ["101", "100 HP +", 101, Infinity],
+]);
+const MOTO_TRANSMISSION_GROUP: FacetGroup = {
+  key: "vites",
+  label: "Vites",
+  attrKey: "transmission",
+  options: [
+    { value: "manuel",   label: "Manuel",   match: (a) => str(a.transmission) === "Manuel" },
+    { value: "otomatik", label: "Otomatik", match: (a) => ["Otomatik", "CVT"].includes(str(a.transmission)) },
+  ],
+};
+const MOTO_SEAT_HEIGHT_GROUP = aralikGrubu("sele", "Sele Yüksekliği", "seat_height_mm", [
+  ["0-780", "≤ 780 mm", 0, 780], ["781-820", "781–820 mm", 781, 820], ["821", "820 mm +", 821, Infinity],
+]);
+const MOTO_ABS_GROUP: FacetGroup = {
+  key: "abs",
+  label: "ABS",
+  attrKey: "abs",
+  options: [
+    { value: "var", label: "ABS var", match: (a) => isTrue(a.abs) },
+    { value: "yok", label: "ABS yok", match: (a) => isFalse(a.abs) },
+  ],
+};
+const MOTO_FUEL_GROUP: FacetGroup = {
+  key: "yakit",
+  label: "Yakıt",
+  attrKey: "fuel_type",
+  options: [
+    { value: "benzin",   label: "Benzin",     match: (a) => str(a.fuel_type) === "GASOLINE" },
+    { value: "elektrik", label: FUEL_LABELS.EV, match: (a) => str(a.fuel_type) === "EV" },
+  ],
+};
+
+// ── Kamyonet ──
+const KAM_POWER_GROUP = aralikGrubu("guc", "Motor Gücü", "power_hp", [
+  ["0-130", "≤ 130 HP", 0, 130], ["131-180", "131–180 HP", 131, 180], ["181-250", "181–250 HP", 181, 250], ["251", "250 HP +", 251, Infinity],
+]);
+const KAM_PAYLOAD_GROUP = aralikGrubu("yuk", "Yük Kapasitesi", "payload_kg", [
+  ["0-800", "≤ 800 kg", 0, 800], ["801-1000", "801–1000 kg", 801, 1000], ["1001-1200", "1001–1200 kg", 1001, 1200], ["1201", "1200 kg +", 1201, Infinity],
+]);
+const KAM_TOW_GROUP = aralikGrubu("cekme", "Çekme Kapasitesi", "tow_capacity_kg", [
+  ["0-1500", "≤ 1500 kg", 0, 1500], ["1501-2500", "1501–2500 kg", 1501, 2500], ["2501", "2500 kg +", 2501, Infinity],
+]);
+
 const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
   otomobil: [
-    FUEL_GROUP,
-    enumGroup("govde", "Gövde", "body_type", toLabelMap(OTOMOBIL_BODY_TYPES)),
-    enumGroup("segment", "Segment", "segment", toLabelMap(OTOMOBIL_SEGMENTS)),
+    eksikVeriliGrup(FUEL_GROUP),
+    eksikVeriliGrup(enumGroup("govde", "Gövde", "body_type", toLabelMap(OTOMOBIL_BODY_TYPES))),
+    eksikVeriliGrup(enumGroup("segment", "Segment", "segment", toLabelMap(OTOMOBIL_SEGMENTS))),
+    eksikVeriliGrup(OTO_TRANSMISSION_GROUP),
+    eksikVeriliGrup(OTO_DRIVETRAIN_GROUP),
+    eksikVeriliGrup(OTO_POWER_GROUP),
+    eksikVeriliGrup(OTO_CC_GROUP, "Yok (elektrikli) / belirtilmemiş"),
+    eksikVeriliGrup(OTO_EV_RANGE_GROUP, "Elektrikli değil / belirtilmemiş"),
+    eksikVeriliGrup(SEAT_GROUP),
   ],
-  motosiklet: [MOTO_TYPE_GROUP, CC_GROUP],
+  motosiklet: [
+    eksikVeriliGrup(MOTO_TYPE_GROUP),
+    eksikVeriliGrup(CC_GROUP),
+    eksikVeriliGrup(MOTO_POWER_GROUP),
+    eksikVeriliGrup(MOTO_TRANSMISSION_GROUP),
+    eksikVeriliGrup(MOTO_SEAT_HEIGHT_GROUP),
+    eksikVeriliGrup(MOTO_ABS_GROUP),
+    eksikVeriliGrup(MOTO_FUEL_GROUP),
+  ],
   "e-scooter": [
     eksikVeriliGrup(ESCOOTER_WATT_GROUP),
     eksikVeriliGrup(ESCOOTER_SPEED_GROUP),
@@ -298,11 +402,15 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
   // Gövde ilk sırada — "kamyonet" pickup/panelvan/van/minivan karışımı bir
   // hafif-ticari çatısı; kullanıcının ilk daralttığı boyut kasa tipi.
   kamyonet: [
-    enumGroup("govde", "Gövde", "body_type", toLabelMap(KAMYONET_BODY_TYPES)),
-    FUEL_GROUP,
-    FOUR_WD_GROUP,
-    enumGroup("kabin", "Kabin", "cab_type", toLabelMap(KAMYONET_CAB_TYPES)),
-    enumGroup("vites", "Vites", "transmission", toLabelMap(TRANSMISSION_TYPES)),
+    eksikVeriliGrup(enumGroup("govde", "Gövde", "body_type", toLabelMap(KAMYONET_BODY_TYPES))),
+    eksikVeriliGrup(FUEL_GROUP),
+    eksikVeriliGrup(FOUR_WD_GROUP),
+    eksikVeriliGrup(enumGroup("kabin", "Kabin", "cab_type", toLabelMap(KAMYONET_CAB_TYPES)), "Pickup değil / belirtilmemiş"),
+    eksikVeriliGrup(enumGroup("vites", "Vites", "transmission", toLabelMap(TRANSMISSION_TYPES))),
+    eksikVeriliGrup(KAM_POWER_GROUP),
+    eksikVeriliGrup(KAM_PAYLOAD_GROUP),
+    eksikVeriliGrup(KAM_TOW_GROUP),
+    eksikVeriliGrup(SEAT_GROUP),
   ],
 };
 

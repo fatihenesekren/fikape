@@ -24,10 +24,10 @@ describe("e-bisiklet facet'leri", () => {
   it("grup içi VEYA: seçili iki seçenekten biri yeter", () => {
     expect(productMatchesFacets({ battery_wh: 360 }, groups, { batarya: ["na", "0-400"] })).toBe(true);
   });
-  it("diğer kategorilerin facet'leri değişmedi (otomobil hâlâ kapsam kapılı)", () => {
+  it("diğer kategorilerin facet'leri değişmedi (otomobil artık eksik veriyi Belirtilmemiş altında gösterir)", () => {
     const oto = facetGroupsForCategory("otomobil");
-    expect(oto.map((g) => g.key)).toEqual(["yakit", "govde", "segment"]);
-    expect(oto.every((g) => g.alwaysShow === undefined)).toBe(true);
+    expect(oto.map((g) => g.key).slice(0, 3)).toEqual(["yakit", "govde", "segment"]);
+    expect(oto.every((g) => g.alwaysShow === true)).toBe(true);
   });
 });
 
@@ -75,5 +75,57 @@ describe("e-scooter facet'leri", () => {
     expect(productMatchesFacets({ foldable: false }, groups, { katlan: ["hayir"] })).toBe(true);
     expect(productMatchesFacets({ foldable: false }, groups, { katlan: ["na"] })).toBe(false);
     expect(productMatchesFacets({}, groups, { katlan: ["na"] })).toBe(true);
+  });
+});
+
+describe("otomobil / motosiklet / kamyonet facet'leri", () => {
+  it("anahtarlar ve sıra", () => {
+    expect(facetGroupsForCategory("otomobil").map((g) => g.key)).toEqual(["yakit", "govde", "segment", "vites", "cekis", "guc", "cc", "menzil", "koltuk"]);
+    expect(facetGroupsForCategory("motosiklet").map((g) => g.key)).toEqual(["tip", "cc", "guc", "vites", "sele", "abs", "yakit"]);
+    expect(facetGroupsForCategory("kamyonet").map((g) => g.key)).toEqual(["govde", "yakit", "cekis", "kabin", "vites", "guc", "yuk", "cekme", "koltuk"]);
+  });
+  it("hepsi her zaman görünür ve Belirtilmemiş ile biter", () => {
+    for (const c of ["otomobil", "motosiklet", "kamyonet"]) {
+      for (const g of facetGroupsForCategory(c)) {
+        expect(g.alwaysShow).toBe(true);
+        expect(g.options[g.options.length - 1].value).toBe("na");
+      }
+    }
+  });
+  it("her kayıt bir grupta tam olarak bir kovaya düşer (dolu alan) ya da Belirtilmemiş'e (boş alan)", () => {
+    const ornekler: Record<string, Record<string, unknown>[]> = {
+      otomobil: [
+        { fuel_type: "EV", transmission: "Otomatik", drivetrain: "AWD", power_hp: 250, ev_range_km: 450, seat_count: 5, body_type: "suv", segment: "C" },
+        { fuel_type: "GASOLINE", transmission: "Manuel", drivetrain: "FWD", power_hp: 100, engine_cc: 1000, seat_count: 7, body_type: "hatchback", segment: "B" },
+        {},
+      ],
+      motosiklet: [
+        { fuel_type: "GASOLINE", transmission: "Manuel", power_hp: 48, engine_cc: 650, seat_height_mm: 780, abs: true, moto_type: "naked" },
+        { fuel_type: "EV", transmission: "Otomatik", power_hp: 101, seat_height_mm: 821, abs: false, moto_type: "scooter" },
+        {},
+      ],
+      kamyonet: [
+        { body_type: "pickup", fuel_type: "DIESEL", four_wd: true, cab_type: "cift_kabin", transmission: "Otomatik", power_hp: 130, payload_kg: 1200, tow_capacity_kg: 3500, seat_count: 5 },
+        { body_type: "van", fuel_type: "EV", four_wd: false, transmission: "Manuel", power_hp: 251, payload_kg: 800, tow_capacity_kg: 1500, seat_count: 3 },
+        {},
+      ],
+    };
+    for (const [c, kayitlar] of Object.entries(ornekler)) {
+      for (const g of facetGroupsForCategory(c)) {
+        for (const a of kayitlar) {
+          const eslesen = g.options.filter((o) => o.match(a));
+          const bos = a[g.attrKey] === undefined;
+          expect(eslesen.length, `${c}/${g.key} ${JSON.stringify(a)}`).toBe(1);
+          if (bos) expect(eslesen[0].value).toBe("na");
+        }
+      }
+    }
+  });
+  it("sınırlar: 250 HP otomobil ≤250 kovasında, 251 HP üst kovada", () => {
+    const g = facetGroupsForCategory("otomobil");
+    expect(productMatchesFacets({ power_hp: 250 }, g, { guc: ["151-250"] })).toBe(true);
+    expect(productMatchesFacets({ power_hp: 251 }, g, { guc: ["251"] })).toBe(true);
+    expect(productMatchesFacets({ transmission: "CVT" }, g, { vites: ["otomatik"] })).toBe(true);
+    expect(productMatchesFacets({ drivetrain: "4WD" }, g, { cekis: ["awd"] })).toBe(true);
   });
 });
