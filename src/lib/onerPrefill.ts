@@ -42,19 +42,26 @@ const norm = (s: string) =>
   s.toLowerCase().replace(/ı/g, "i").normalize("NFD").replace(DIACRITIC_MARKS_RE, "").trim();
 
 export function resolveOnerPrefill(search: string): OnerPrefill {
+  const params = new URLSearchParams(search || "");
+  // Kullanıcı kategori içinde arıyorsa (/araclar?kategori=…) o kategori tahmin değil, açık tercihtir.
+  const kRaw = params.get("kategori") ?? "";
+  const kategori = (Object.prototype.hasOwnProperty.call(KAYNAK, kRaw) ? kRaw : "") as OnerCategoryKey | "";
   const base: OnerPrefill = {
-    categorySlug: "",
+    categorySlug: kategori,
     selectedMake: "", customMake: "",
     selectedModel: "", customModel: "", notes: "",
   };
 
-  const params = new URLSearchParams(search || "");
   const raw = (params.get("q") ?? params.get("brandName") ?? "").trim();
   if (!raw) return base;
 
   const q = raw.slice(0, 60);
   const nq = norm(q);
-  const cats = Object.entries(KAYNAK) as [OnerCategoryKey, OnerMarka[]][];
+  const tumKategoriler = Object.entries(KAYNAK) as [OnerCategoryKey, OnerMarka[]][];
+  // Seçili kategori önce taranır; eşleşme yoksa diğer kategorilerde aranmaya devam eder.
+  const cats = kategori
+    ? [...tumKategoriler.filter(([c]) => c === kategori), ...tumKategoriler.filter(([c]) => c !== kategori)]
+    : tumKategoriler;
 
   // 1) Tam marka eşleşmesi (herhangi bir kategoride)
   for (const [cat, makesList] of cats) {

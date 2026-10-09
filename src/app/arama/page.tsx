@@ -104,7 +104,7 @@ async function SearchResults({ query, kaynak }: { query: string; kaynak: "cip" |
   return (
     <>
       {search.fuzzy && (
-        <p className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-4 py-2.5 mb-4">
+        <p role="status" className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-4 py-2.5 mb-4">
           &ldquo;{query}&rdquo; için tam eşleşme bulunamadı — benzer sonuçları gösteriyoruz.
         </p>
       )}

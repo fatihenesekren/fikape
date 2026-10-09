@@ -44,7 +44,21 @@ export function prepareSearchTerms(raw: string): string[] {
   return q.split(/\s+/).filter(Boolean).slice(0, MAX_TERMS);
 }
 
-export async function searchProductIds(rawQuery: string): Promise<ProductSearchResult> {
+export interface ProductSearchOptions {
+  /** Tam eşleşme üst sınırı (varsayılan 60). */
+  limit?: number;
+  /** Kategori filtresi SQL içinde uygulanır (LIMIT'ten ÖNCE), böylece sonuç kategori dışına taşmaz. */
+  categorySlug?: string;
+}
+
+export async function searchProductIds(
+  rawQuery: string,
+  options: ProductSearchOptions = {},
+): Promise<ProductSearchResult> {
+  const exactLimit = options.limit ?? EXACT_LIMIT;
+  const catJoin = options.categorySlug
+    ? Prisma.sql`JOIN "categories" c ON c.id = p."categoryId" AND c.slug = ${options.categorySlug}`
+    : Prisma.empty;
   const terms = prepareSearchTerms(rawQuery);
   if (terms.length === 0) return { ids: [], fuzzy: false };
 
@@ -64,10 +78,11 @@ export async function searchProductIds(rawQuery: string): Promise<ProductSearchR
     FROM "products" p
     JOIN "models" m ON m.id = p."modelId"
     JOIN "brands" b ON b.id = p."brandId"
+    ${catJoin}
     WHERE p."isActive" = true
       AND ${Prisma.join(termClauses, " AND ")}
     ORDER BY b.name ASC, p."year" DESC
-    LIMIT ${EXACT_LIMIT}
+    LIMIT ${exactLimit}
   `;
   if (exact.length > 0) {
     return { ids: exact.map((r) => r.id), fuzzy: false };
@@ -86,6 +101,7 @@ export async function searchProductIds(rawQuery: string): Promise<ProductSearchR
     FROM "products" p
     JOIN "models" m ON m.id = p."modelId"
     JOIN "brands" b ON b.id = p."brandId"
+    ${catJoin}
     WHERE p."isActive" = true AND ${sim} >= ${FUZZY_MIN_SIMILARITY}
     ORDER BY ${sim} DESC
     LIMIT ${FUZZY_LIMIT}

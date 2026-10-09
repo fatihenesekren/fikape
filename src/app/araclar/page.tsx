@@ -8,6 +8,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { aramaTemizle } from "@/lib/aramaDurumu";
+import { searchProductIds } from "@/lib/searchProducts";
+import { aramaLoglansinMi, aramaSonucDurumu, havuzuMotorSirasinaGore } from "@/lib/aramaKumesi";
+import { SearchNoMatchPrompt } from "@/components/SearchNoMatchPrompt";
 import { logSearch } from "@/lib/searchLog";
 import { CardGridSkeleton } from "@/app/_components/CardGridSkeleton";
 import type { FikapeScores } from "@/lib/fikape";
@@ -31,7 +34,7 @@ const CATEGORIES = [
 ] as const;
 const CATEGORY_SLUGS = CATEGORIES.map((c) => c.slug) as readonly string[];
 
-// Aksan-duyarsız arama — /arama ve /takas ile aynı mantık (bkz. o dosyalardaki not).
+// Motor (searchProductIds) hata verirse kullanılan yedek: aksan-duyarsız bellek içi arama.
 const DIACRITIC_MARKS_RE = new RegExp("[\\u0300-\\u036f]", "g");
 function normalize(str: string) {
   return str.toLowerCase().replace(/ı/g, "i").normalize("NFD").replace(DIACRITIC_MARKS_RE, "");
@@ -63,7 +66,7 @@ export async function generateMetadata({
     ? CATEGORIES.find((c) => c.slug === params.kategori)
     : undefined;
   const isNarrowed =
-    !!params.marka || !!params.q || (!!params.sayfa && params.sayfa !== "1") ||
+    !!params.marka || aramaTemizle(params.q).length > 0 || (!!params.sayfa && params.sayfa !== "1") ||
     FACET_KEYS.some((k) => !!params[k]);
 
   return {
@@ -167,19 +170,55 @@ async function AraclarResults({
     orderBy: [{ brand: { name: "asc" } }, { model: { name: "asc" } }, { year: "desc" }],
   });
 
-  // 2) Arama filtresi
-  const nq = normalize(q);
-  const searched = q.length >= 2
-    ? pool.filter((p) =>
+  // 2) Arama — /arama ile aynı motor (kelime-AND + pg_trgm benzerlik); kategori SQL içinde süzülür.
+  const aramaVar = q.length >= 2;
+  let fuzzy = false;
+  let motorSayisi = 0;
+  let searched = pool;
+  if (aramaVar) {
+    let ids: number[] | null = null;
+    try {
+      const r = await searchProductIds(q, { limit: 1000, categorySlug: catSlug });
+      ids = r.ids;
+      fuzzy = r.fuzzy;
+    } catch {
+      ids = null; // motor hatası → yedek filtre
+    }
+    if (ids) {
+      motorSayisi = ids.length;
+      const idSet = new Set(ids);
+      // Tam eşleşmede havuz sırası (marka/model/yıl), benzerde benzerlik sırası.
+      searched = fuzzy ? havuzuMotorSirasinaGore(pool, ids) : pool.filter((p) => idSet.has(p.id));
+    } else {
+      const nq = normalize(q);
+      searched = pool.filter((p) =>
         normalize(p.name).includes(nq) ||
         normalize(p.brand.name).includes(nq) ||
         normalize(p.model.name).includes(nq) ||
         (p.trimName ? normalize(p.trimName).includes(nq) : false),
-      )
-    : pool;
+      );
+      motorSayisi = searched.length;
+    }
+  }
 
-  // Kataloğa aday sinyali — sıfır/az-sonuçlu serbest metin aramaları (fire-and-forget)
-  if (q.length >= 2) logSearch(q, searched.length, "araclar");
+  // Kataloğa aday sinyali — yalnız 1. sayfa ve filtresiz aramada, tekrarsız (fire-and-forget).
+  // Benzer sonuç "bulunamadı" sayılır (0).
+  const facetSecili = Object.values(selectedFacets).some((v) => v.length > 0);
+  if (aramaLoglansinMi({ aramaVar, sayfa: page, markaSecili: !!selectedBrand, facetSecili })) {
+    logSearch(q, fuzzy ? 0 : motorSayisi, "araclar");
+  }
+
+  // Hiç eşleşme yok → filtre/kenar çubuğu göstermeden tam genişlik "öner" daveti.
+  if (aramaVar && motorSayisi === 0) {
+    return (
+      <SearchNoMatchPrompt
+        query={q}
+        variant="empty"
+        kategori={catSlug}
+        secondaryLink={{ href: catSlug ? `/araclar?kategori=${catSlug}` : "/araclar", label: "Aramayı temizle" }}
+      />
+    );
+  }
 
   // 3) Facet grupları — kapsam kapısından geçenler
   const allGroups = facetGroupsForCategory(catSlug);
@@ -290,6 +329,10 @@ async function AraclarResults({
     return s ? `/araclar?${s}` : "/araclar";
   })();
 
+  const durum = aramaSonucDurumu({ aramaVar, motorSayisi, benzer: fuzzy, filtreSonrasi: total });
+  // Arama/filtre/sayfa varyantları dizine girmeyeceği için (noindex) liste verisi yalnız temel listede basılır.
+  const jsonLdGoster = !aramaVar && safePage === 1 && activeFilterCount === 0;
+
   const itemListJson = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -314,7 +357,12 @@ async function AraclarResults({
       />
 
       <div className="min-w-0 flex-1">
-        <p className="text-sm text-gray-400 mb-4">{total} araç</p>
+        {durum === "arama-benzer" && (
+          <p role="status" className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-4 py-2.5 mb-4">
+            &ldquo;{q}&rdquo; için tam eşleşme bulunamadı — benzer sonuçları gösteriyoruz.
+          </p>
+        )}
+        <p className="text-sm text-gray-500 mb-4">{durum === "arama-benzer" ? `${total} benzer sonuç` : `${total} araç`}</p>
 
         {pageItems.length === 0 ? (
           <div className="rounded-2xl border-2 border-dashed border-gray-100 p-12 text-center">
@@ -327,7 +375,7 @@ async function AraclarResults({
           </div>
         ) : (
           <>
-            <JsonLd data={itemListJson} />
+            {jsonLdGoster && <JsonLd data={itemListJson} />}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {pageItems.map((product) => {
                 const attrs = product.attributes as Record<string, unknown>;
@@ -356,6 +404,9 @@ async function AraclarResults({
                   />
                 );
               })}
+              {durum === "arama-benzer" && safePage === totalPages && (
+                <SearchNoMatchPrompt query={q} variant="grid-tail" kategori={catSlug} />
+              )}
             </div>
 
             {totalPages > 1 && (
@@ -369,6 +420,7 @@ async function AraclarResults({
                 ) : <span />}
               </div>
             )}
+            {durum === "arama-var" && <SearchNoMatchPrompt query={q} variant="inline" kategori={catSlug} />}
           </>
         )}
       </div>
