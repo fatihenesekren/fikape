@@ -73,3 +73,6 @@ Mevcut 13 alan tabloyla uyumlu (250 W, 48 V, 576 Wh, 25 km/s, 70 km, 7 vites, 20
 
 ## 8. tur — Skyjet Nitro Pro 2025 (kullanıcı tablosu)
 Mevcut 16 alan tabloyla uyumlu (250 W, 36 V, 360 Wh, 25 km/s, 45 km, 6 sa, 6 vites). Eklenen 5 alan: kadro çelik (Epey 2024 alüminyum/alaşım diyordu; kullanıcı tablosu esas — yıl 2025 doğrulandı), 27 kg, azami taşıma 135 kg, ön LED, LCD gösterge. Güncellenen: fren → "Ön ve arka YX-DB06 çelik disk", süspansiyon → "Ön: çatal süspansiyon", jant → 20" alüminyum. AI özeti yenilendi. Toplam 21 alan. Girilmeyen (alan yok): Hupo batarya markası, krank/zincir/pedal, sele, gidon, 2 yıl garanti.
+
+## 9. tur — Volta VB5 2026 (kullanıcı tablosu)
+Mevcut 13 alan tabloyla uyumlu (250 W, 36 V, **10 Ah / 360 Wh**, 25 km/s, 40 km, çıkarılabilir, 120 kg) → A101'in 13,5 Ah (486 Wh) değeri **çürütüldü**, kayıttaki 10 Ah doğru. Eklenen 6 alan: şarj 5 sa (4–5'in üstü), 5 kademe destek, 24" jant, 24 x 1.95 lastik, dijital gösterge, 34,55 kg. Güncellenen: fren "Ön ve arka disk" → "Ön ve arka mekanik disk". AI özeti yenilendi. Toplam 19 alan. Girilmeyen (alan yok): kadro tipi alçak geçişli, tekerlek sayısı 3, sele, 2 yıl garanti.
