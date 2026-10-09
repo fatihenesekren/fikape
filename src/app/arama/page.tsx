@@ -22,10 +22,10 @@ export async function generateMetadata({ searchParams }: { searchParams: AramaPa
   // Arama sayfası dizine girmez; bağlantıları izlenebilsin (follow). Canonical yok (noindex ile çelişir).
   const robots = { index: false, follow: true };
   if (durum !== "sonuc") {
-    return { title: "Araç Ara — fikape", description: "Marka, model veya araç adıyla katalogda arayın.", robots };
+    return { title: "Araç Ara", description: "Marka, model veya araç adıyla katalogda arayın.", robots };
   }
   const kisa = q.length > 60 ? `${q.slice(0, 57)}…` : q;
-  return { title: `"${kisa}" için arama sonuçları — fikape`, robots };
+  return { title: `"${kisa}" için arama sonuçları`, robots };
 }
 
 async function SearchResults({ query, kaynak }: { query: string; kaynak: "cip" | "arama" }) {

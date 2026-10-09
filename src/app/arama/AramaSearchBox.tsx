@@ -22,6 +22,7 @@ export function AramaSearchBox({ query, ortali = false }: { query: string; ortal
           placeholder="Marka, model veya araç adı ara..."
           aria-label="Araç ara"
           aria-describedby={ipucu ? "arama-ipucu" : undefined}
+          aria-invalid={ipucu || undefined}
           enterKeyHint="search"
           autoComplete="off"
           autoCapitalize="none"
@@ -47,7 +48,17 @@ export function AramaSearchBox({ query, ortali = false }: { query: string; ortal
         </button>
       </div>
       {ipucu && (
-        <p id="arama-ipucu" role="status" className="text-xs text-gray-600 mt-2 pl-1">En az 2 karakter girin.</p>
+        <div className={ortali ? "max-w-2xl mx-auto" : "max-w-xl"}>
+          <p
+            id="arama-ipucu"
+            role="status"
+            className={ortali
+              ? "mt-3 text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-4 py-2 text-center"
+              : "text-xs text-gray-600 mt-2 pl-1"}
+          >
+            Aramak için en az 2 karakter girin.
+          </p>
+        </div>
       )}
     </form>
   );
