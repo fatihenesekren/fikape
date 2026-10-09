@@ -1,0 +1,142 @@
+[
+ {
+  "dogrudan": true,
+  "marka": "Volta",
+  "model": "VB1",
+  "yil": 2021,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Volta",
+  "model": "VB1 Neo",
+  "yil": 2026,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Volta",
+  "model": "VB2",
+  "yil": 2021,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Volta",
+  "model": "VB2 Pro",
+  "yil": 2026,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Volta",
+  "model": "VB3",
+  "yil": 2022,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Volta",
+  "model": "VB5",
+  "yil": 2024,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Volta",
+  "model": "VB7",
+  "yil": 2023,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Kuba",
+  "model": "Speedlight",
+  "yil": 2020,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Kuba",
+  "model": "Speedlight Pro",
+  "yil": 2024,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Skyjet",
+  "model": "Nitro Pro",
+  "yil": 2020,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Skyjet",
+  "model": "XS25",
+  "yil": 2023,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Bisan",
+  "model": "E-Folding F3",
+  "yil": 2026,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Carraro",
+  "model": "E-Flexi Nexus",
+  "yil": 2025,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Carraro",
+  "model": "E-Folding",
+  "yil": 2024,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Corelli",
+  "model": "Voniq Eco",
+  "yil": 2025,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Corelli",
+  "model": "E-City",
+  "yil": 2024,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Ape Ryder",
+  "model": "MD-10 Pro",
+  "yil": 2025,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Salcano",
+  "model": "E-Bike EX1",
+  "yil": 2022,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Roxform",
+  "model": "R-300",
+  "yil": 2023,
+  "versiyon": null
+ },
+ {
+  "dogrudan": true,
+  "marka": "Strada Mobility",
+  "model": "E-City",
+  "yil": 2025,
+  "versiyon": null
+ }
+]

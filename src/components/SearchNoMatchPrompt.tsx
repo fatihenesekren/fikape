@@ -23,8 +23,7 @@ function SearchIcon({ size = 16 }: { size?: number }) {
 const suggestHref = (query: string, kategori?: string) =>
   `/oner?q=${encodeURIComponent(query.slice(0, 60))}${kategori ? `&kategori=${encodeURIComponent(kategori)}` : ""}`;
 
-const FOCUS =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2";
+const FOCUS = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2";
 
 export function SearchNoMatchPrompt({
   query,
