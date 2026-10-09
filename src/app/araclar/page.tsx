@@ -10,6 +10,7 @@ import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { KATEGORILER, KATEGORI_SLUGLARI } from "@/lib/kategoriler";
 import { aramaTemizle } from "@/lib/aramaDurumu";
 import { sayfaListesi } from "@/lib/sayfalama";
+import { listeParametresi, sonucVermeyenSecimleriAyikla } from "@/lib/araclarFiltre";
 import { searchProductIds } from "@/lib/searchProducts";
 import { aramaLoglansinMi, aramaSonucDurumu, havuzuMotorSirasinaGore } from "@/lib/aramaKumesi";
 import { SearchNoMatchPrompt } from "@/components/SearchNoMatchPrompt";
@@ -85,7 +86,7 @@ export default async function AraclarPage({
 }) {
   const params = await searchParams;
   const catSlug = params.kategori && CATEGORY_SLUGS.includes(params.kategori) ? params.kategori : undefined;
-  const selectedBrand = params.marka || undefined;
+  const selectedBrands = listeParametresi(params.marka); // çoklu marka: marka=rks,volta
   const q = aramaTemizle(params.q); // dizi (?q=a&q=b) ve kontrol karakterlerine karşı güvenli
   const page = Math.max(1, parseInt(params.sayfa ?? "1") || 1);
   const selectedFacets = parseSelectedFacets(params);
@@ -134,7 +135,7 @@ export default async function AraclarPage({
       <Suspense fallback={<CardGridSkeleton />}>
         <AraclarResults
           catSlug={catSlug}
-          selectedBrand={selectedBrand}
+          selectedBrands={selectedBrands}
           q={q}
           page={page}
           selectedFacets={selectedFacets}
@@ -146,13 +147,13 @@ export default async function AraclarPage({
 
 async function AraclarResults({
   catSlug,
-  selectedBrand,
+  selectedBrands,
   q,
   page,
-  selectedFacets,
+  selectedFacets: istenenFacets,
 }: {
   catSlug?: string;
-  selectedBrand?: string;
+  selectedBrands: string[];
   q: string;
   page: number;
   selectedFacets: Record<string, string[]>;
@@ -202,8 +203,8 @@ async function AraclarResults({
 
   // Kataloğa aday sinyali — yalnız 1. sayfa ve filtresiz aramada, tekrarsız (fire-and-forget).
   // Benzer sonuç "bulunamadı" sayılır (0).
-  const facetSecili = Object.values(selectedFacets).some((v) => v.length > 0);
-  if (aramaLoglansinMi({ aramaVar, sayfa: page, markaSecili: !!selectedBrand, facetSecili })) {
+  const facetSecili = Object.values(istenenFacets).some((v) => v.length > 0);
+  if (aramaLoglansinMi({ aramaVar, sayfa: page, markaSecili: selectedBrands.length > 0, facetSecili })) {
     logSearch(q, fuzzy ? 0 : motorSayisi, "araclar");
   }
 
@@ -225,6 +226,9 @@ async function AraclarResults({
     (g) => g.alwaysShow || fieldCoverage(searched, g.attrKey) >= FACET_COVERAGE_THRESHOLD,
   );
 
+  // 3b) Seçili özellik değerlerinden mevcut markalar/üst filtrelerle sonuç vermeyenleri ayıkla (ölü sayfa + 0'lı etiket olmasın).
+  const selectedFacets = sonucVermeyenSecimleriAyikla(searched, groups, selectedBrands, istenenFacets);
+
   // 4) Marka listesi — arama + seçili özellik filtreleri uygulanmış havuzdan (marka seçimi HARİÇ):
   //    marka sayıları seçili filtrelerle uyumlu kalır, sonuç vermeyecek markalar listede görünmez.
   //    Seçili marka sonuç vermese bile listede kalır (sayısı 0) — kullanıcı seçimini görüp kaldırabilsin.
@@ -235,16 +239,17 @@ async function AraclarResults({
     cur.count++;
     brandMap.set(p.brand.slug, cur);
   }
-  if (selectedBrand && !brandMap.has(selectedBrand)) {
-    const secili = searched.find((p) => p.brand.slug === selectedBrand);
-    if (secili) brandMap.set(selectedBrand, { name: secili.brand.name, count: 0 });
+  for (const slug of selectedBrands) {
+    if (brandMap.has(slug)) continue;
+    const secili = searched.find((p) => p.brand.slug === slug);
+    if (secili) brandMap.set(slug, { name: secili.brand.name, count: 0 });
   }
   const brands = [...brandMap.entries()]
     .map(([slug, v]) => ({ slug, name: v.name, count: v.count }))
     .sort((a, b) => a.name.localeCompare(b.name, "tr"));
 
   // 5) Facet seçenek sayımları — arama + marka uygulanmış, kendi grubu HARİÇ diğer facet'ler uygulanmış küme üzerinde
-  const brandScoped = selectedBrand ? searched.filter((p) => p.brand.slug === selectedBrand) : searched;
+  const brandScoped = selectedBrands.length ? searched.filter((p) => selectedBrands.includes(p.brand.slug)) : searched;
   const facetGroupViews: FacetGroupView[] = groups.map((g) => {
     const otherFacets = Object.fromEntries(
       Object.entries(selectedFacets).filter(([k]) => k !== g.key),
@@ -310,7 +315,7 @@ async function AraclarResults({
   }
 
   const activeFilterCount =
-    (selectedBrand ? 1 : 0) + Object.values(selectedFacets).reduce((s, v) => s + v.length, 0);
+    selectedBrands.length + Object.values(selectedFacets).reduce((s, v) => s + v.length, 0);
 
   const baseParams: Record<string, string> = {};
   if (q.length >= 2) baseParams.q = q;
@@ -318,7 +323,7 @@ async function AraclarResults({
   function pageHref(target: number): string {
     const qs = new URLSearchParams();
     if (catSlug) qs.set("kategori", catSlug);
-    if (selectedBrand) qs.set("marka", selectedBrand);
+    if (selectedBrands.length) qs.set("marka", selectedBrands.join(","));
     if (q.length >= 2) qs.set("q", q);
     for (const [k, vals] of Object.entries(selectedFacets)) if (vals.length) qs.set(k, vals.join(","));
     if (target > 1) qs.set("sayfa", String(target));
@@ -359,27 +364,30 @@ async function AraclarResults({
     return s ? `/araclar?${s}` : "/araclar";
   })();
 
-  const seciliMarkaAdi = selectedBrand ? brands.find((b) => b.slug === selectedBrand)?.name : undefined;
+  // Öner kartına yalnız tek marka seçiliyse marka taşınır
+  const seciliMarkaAdi = selectedBrands.length === 1 ? brands.find((b) => b.slug === selectedBrands[0])?.name : undefined;
 
   // Seçili filtreler: her biri kaldırılabilir etiket (chip). Sayfa numarası sıfırlanır; kategori ve arama korunur.
-  const listeHref = (marka: string | undefined, facets: Record<string, string[]>): string => {
+  const listeHref = (markalar: string[], facets: Record<string, string[]>): string => {
     const qs = new URLSearchParams();
     if (catSlug) qs.set("kategori", catSlug);
-    if (marka) qs.set("marka", marka);
+    if (markalar.length) qs.set("marka", markalar.join(","));
     if (q.length >= 2) qs.set("q", q);
     for (const [k, vals] of Object.entries(facets)) if (vals.length) qs.set(k, vals.join(","));
     const s = qs.toString();
     return s ? `/araclar?${s}` : "/araclar";
   };
   const aktifFiltreler = [
-    ...(selectedBrand && seciliMarkaAdi
-      ? [{ key: "marka", label: `Marka: ${seciliMarkaAdi}`, href: listeHref(undefined, selectedFacets) }]
-      : []),
+    ...selectedBrands.map((slug) => ({
+      key: `marka:${slug}`,
+      label: `Marka: ${brands.find((b) => b.slug === slug)?.name ?? slug}`,
+      href: listeHref(selectedBrands.filter((x) => x !== slug), selectedFacets),
+    })),
     ...facetGroupViews.flatMap((g) =>
       (selectedFacets[g.key] ?? []).map((v) => ({
         key: `${g.key}:${v}`,
         label: `${g.label}: ${g.options.find((o) => o.value === v)?.label ?? v}`,
-        href: listeHref(selectedBrand, { ...selectedFacets, [g.key]: (selectedFacets[g.key] ?? []).filter((x) => x !== v) }),
+        href: listeHref(selectedBrands, { ...selectedFacets, [g.key]: (selectedFacets[g.key] ?? []).filter((x) => x !== v) }),
       })),
     ),
   ];
@@ -403,7 +411,7 @@ async function AraclarResults({
       <AraclarFilters
         categorySlug={catSlug}
         brands={brands}
-        selectedBrand={selectedBrand}
+        selectedBrands={selectedBrands}
         facetGroups={facetGroupViews}
         selectedFacets={selectedFacets}
         baseParams={baseParams}

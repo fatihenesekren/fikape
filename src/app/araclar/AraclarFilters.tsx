@@ -24,7 +24,7 @@ export interface FacetGroupView {
 interface Props {
   categorySlug?: string;
   brands: BrandItem[];
-  selectedBrand?: string;
+  selectedBrands: string[];
   facetGroups: FacetGroupView[];
   selectedFacets: Record<string, string[]>;
   // kategori/marka/facet dışındaki korunacak paramlar (q gibi)
@@ -47,7 +47,7 @@ function buildHref(params: Record<string, string | undefined>): string {
 export function AraclarFilters({
   categorySlug,
   brands,
-  selectedBrand,
+  selectedBrands,
   facetGroups,
   selectedFacets,
   baseParams,
@@ -82,7 +82,7 @@ export function AraclarFilters({
     const nextFacetParams = { ...facetParams };
     if (next.length) nextFacetParams[groupKey] = next.join(",");
     else delete nextFacetParams[groupKey];
-    return buildHref({ ...common, marka: selectedBrand, ...nextFacetParams });
+    return buildHref({ ...common, marka: selectedBrands.join(","), ...nextFacetParams });
   }
 
   const panel = (
@@ -102,23 +102,32 @@ export function AraclarFilters({
           )}
           <div className="max-h-72 overflow-y-auto [scrollbar-width:thin] -mr-1 pr-1 space-y-0.5">
             {filteredBrands.map((b) => {
-              const isActive = selectedBrand === b.slug;
+              const isActive = selectedBrands.includes(b.slug);
+              // Çoklu seçim: marka listeye eklenir/çıkarılır (marka=rks,volta)
+              const sonraki = isActive ? selectedBrands.filter((x) => x !== b.slug) : [...selectedBrands, b.slug];
               return (
                 <Link
                   key={b.slug}
-                  href={
-                    isActive
-                      ? buildHref({ ...common, ...facetParams })
-                      : buildHref({ ...common, marka: b.slug, ...facetParams })
-                  }
+                  href={buildHref({ ...common, marka: sonraki.join(","), ...facetParams })}
                   scroll={false}
+                  aria-current={isActive || undefined}
                   className={`flex items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 ${
                     isActive
                       ? "bg-gray-900 text-white font-semibold"
                       : "text-gray-600 hover:bg-gray-100"
                   }`}
                 >
-                  <span className="truncate">{b.name}</span>
+                  <span className="flex min-w-0 items-center gap-2">
+                    <span
+                      aria-hidden="true"
+                      className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border text-[10px] leading-none ${
+                        isActive ? "border-white bg-white text-gray-900" : "border-gray-300 bg-white text-transparent"
+                      }`}
+                    >
+                      ✓
+                    </span>
+                    <span className="truncate">{b.name}</span>
+                  </span>
                   <span className={`text-xs shrink-0 ${isActive ? "text-white/70" : "text-gray-500"}`}>
                     {b.count}
                   </span>
