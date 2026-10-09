@@ -416,7 +416,7 @@ async function AraclarResults({
                   />
                 );
               })}
-              {safePage === totalPages && (
+              {(safePage === 1 || safePage === totalPages) && (
                 <SearchNoMatchPrompt query={aramaVar ? q : undefined} variant="grid-tail" kategori={catSlug} marka={seciliMarkaAdi} />
               )}
             </div>
