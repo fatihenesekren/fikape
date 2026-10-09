@@ -32,6 +32,9 @@ interface Props {
   activeFilterCount: number;
 }
 
+// Katlanır gruplardan ilk kaçı varsayılan açık başlar
+const ACIK_BASLANGIC = 3;
+
 function buildHref(params: Record<string, string | undefined>): string {
   const qs = new URLSearchParams();
   for (const [k, v] of Object.entries(params)) {
@@ -52,6 +55,8 @@ export function AraclarFilters({
 }: Props) {
   const [open, setOpen] = useState(false);
   const [brandQuery, setBrandQuery] = useState("");
+  // Katlanır filtre grupları: kullanıcı açıp kapattıysa o geçerli; yoksa ilk ACIK_BASLANGIC grup ve seçili filtresi olan gruplar açık.
+  const [acikGruplar, setAcikGruplar] = useState<Record<string, boolean>>({});
 
   const common: Record<string, string | undefined> = {
     ...baseParams,
@@ -128,10 +133,27 @@ export function AraclarFilters({
       )}
 
       {/* Facet grupları */}
-      {facetGroups.map((g) => (
-        <div key={g.key} className="border-t border-gray-200/70 pt-5">
-          <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">{g.label}</p>
-          <div className="flex flex-wrap gap-1.5">
+      {facetGroups.map((g, gi) => {
+        const secili = (selectedFacets[g.key] ?? []).length;
+        const acik = acikGruplar[g.key] ?? (gi < ACIK_BASLANGIC || secili > 0);
+        return (
+        <div key={g.key} className="border-t border-gray-200/70 pt-3">
+          <button
+            type="button"
+            aria-expanded={acik}
+            onClick={() => setAcikGruplar((m) => ({ ...m, [g.key]: !acik }))}
+            className="w-full flex items-center justify-between gap-2 rounded-md py-1 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+          >
+            <span className="flex items-center gap-2 text-xs font-semibold text-gray-600 uppercase tracking-wide">
+              {g.label}
+              {secili > 0 && (
+                <span className="text-[10px] font-bold bg-link-soft text-link rounded-full px-1.5 py-0.5 normal-case tracking-normal">{secili}</span>
+              )}
+            </span>
+            <span aria-hidden="true" className={`text-gray-400 text-[10px] transition-transform ${acik ? "rotate-180" : ""}`}>▼</span>
+          </button>
+          {acik && (
+          <div className="flex flex-wrap gap-1.5 mt-2 pb-2">
             {g.options.map((o) => {
               const isActive = (selectedFacets[g.key] ?? []).includes(o.value);
               const disabled = o.count === 0 && !isActive;
@@ -154,8 +176,10 @@ export function AraclarFilters({
               );
             })}
           </div>
+          )}
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 
