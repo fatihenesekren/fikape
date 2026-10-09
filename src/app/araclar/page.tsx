@@ -23,7 +23,8 @@ import { AraclarSearchBox } from "./AraclarSearchBox";
 
 export const dynamic = "force-dynamic";
 
-const PAGE_SIZE = 24;
+// 17 araç + 18. hücrede "Araç öner" kartı = 3 sütunda tam 6 satır
+const PAGE_SIZE = 17;
 
 const CATEGORIES = KATEGORILER;
 const CATEGORY_SLUGS = KATEGORI_SLUGLARI;
@@ -461,9 +462,8 @@ async function AraclarResults({
                   />
                 );
               })}
-              {(safePage === 1 || safePage === totalPages) && (
-                <SearchNoMatchPrompt query={aramaVar ? q : undefined} variant="grid-tail" kategori={catSlug} marka={seciliMarkaAdi} />
-              )}
+              {/* Her sayfanın son (18.) hücresi: sayfa dolu değilse listenin hemen sonu */}
+              <SearchNoMatchPrompt query={aramaVar ? q : undefined} variant="grid-tail" kategori={catSlug} marka={seciliMarkaAdi} />
             </div>
 
             {totalPages > 1 && (
