@@ -176,6 +176,49 @@ const ESCOOTER_FOLD_GROUP: FacetGroup = {
   ],
 };
 
+// ── Karavan'a özgü gruplar ──
+const KARAVAN_BERTH_GROUP: FacetGroup = {
+  key: "yatak",
+  label: "Yatak Kapasitesi",
+  attrKey: "berth",
+  options: [
+    { value: "1-2", label: "1–2 kişi", match: (a) => inRange(a.berth, 1, 2) },
+    { value: "3-4", label: "3–4 kişi", match: (a) => inRange(a.berth, 3, 4) },
+    { value: "5",   label: "5 kişi +", match: (a) => inRange(a.berth, 5, Infinity) },
+  ],
+};
+const KARAVAN_LENGTH_GROUP: FacetGroup = {
+  key: "uzunluk",
+  label: "Uzunluk",
+  attrKey: "length_cm",
+  options: [
+    { value: "0-600",   label: "≤ 6 m",  match: (a) => inRange(a.length_cm, 0, 600) },
+    { value: "601-700", label: "6–7 m",  match: (a) => inRange(a.length_cm, 601, 700) },
+    { value: "701-800", label: "7–8 m",  match: (a) => inRange(a.length_cm, 701, 800) },
+    { value: "801",     label: "8 m +",  match: (a) => inRange(a.length_cm, 801, Infinity) },
+  ],
+};
+// 3500 kg: B sınıfı ehliyet sınırı (çekici araç + karavan toplamı ayrıca değerlendirilir; burada yalnız karavanın kendi azami ağırlığı)
+const KARAVAN_WEIGHT_GROUP: FacetGroup = {
+  key: "agirlik",
+  label: "Azami Ağırlık",
+  attrKey: "total_weight_kg",
+  options: [
+    { value: "0-1300",    label: "≤ 1300 kg",     match: (a) => inRange(a.total_weight_kg, 0, 1300) },
+    { value: "1301-3500", label: "1301–3500 kg",  match: (a) => inRange(a.total_weight_kg, 1301, 3500) },
+    { value: "3501",      label: "3500 kg +",     match: (a) => inRange(a.total_weight_kg, 3501, Infinity) },
+  ],
+};
+const KARAVAN_BATH_GROUP: FacetGroup = {
+  key: "banyo",
+  label: "Banyo",
+  attrKey: "has_bathroom",
+  options: [
+    { value: "var", label: "Banyo var", match: (a) => isTrue(a.has_bathroom) },
+    { value: "yok", label: "Banyo yok", match: (a) => isFalse(a.has_bathroom) },
+  ],
+};
+
 // ── Enum tabanlı grup üreteci ──
 function enumGroup(
   key: string,
@@ -245,7 +288,13 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
     eksikVeriliGrup(EBIKE_BATTERY_GROUP),
     eksikVeriliGrup(EBIKE_RANGE_GROUP),
   ],
-  karavan: [enumGroup("tip", "Tip", "karavan_type", toLabelMap(KARAVAN_TYPES))],
+  karavan: [
+    eksikVeriliGrup(enumGroup("tip", "Tip", "karavan_type", toLabelMap(KARAVAN_TYPES))),
+    eksikVeriliGrup(KARAVAN_BERTH_GROUP),
+    eksikVeriliGrup(KARAVAN_LENGTH_GROUP),
+    eksikVeriliGrup(KARAVAN_WEIGHT_GROUP),
+    eksikVeriliGrup(KARAVAN_BATH_GROUP),
+  ],
   // Gövde ilk sırada — "kamyonet" pickup/panelvan/van/minivan karışımı bir
   // hafif-ticari çatısı; kullanıcının ilk daralttığı boyut kasa tipi.
   kamyonet: [

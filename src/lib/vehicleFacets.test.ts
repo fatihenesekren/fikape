@@ -31,6 +31,30 @@ describe("e-bisiklet facet'leri", () => {
   });
 });
 
+describe("karavan facet'leri", () => {
+  const groups = facetGroupsForCategory("karavan");
+  it("5 grup, hepsi her zaman görünür ve Belirtilmemiş taşır", () => {
+    expect(groups.map((g) => g.key)).toEqual(["tip", "yatak", "uzunluk", "agirlik", "banyo"]);
+    for (const g of groups) {
+      expect(g.alwaysShow).toBe(true);
+      expect(g.options[g.options.length - 1].value).toBe("na");
+    }
+  });
+  it("kovalar sınır değerlerde doğru", () => {
+    expect(productMatchesFacets({ berth: 4 }, groups, { yatak: ["3-4"] })).toBe(true);
+    expect(productMatchesFacets({ length_cm: 600 }, groups, { uzunluk: ["0-600"] })).toBe(true);
+    expect(productMatchesFacets({ length_cm: 832.5 }, groups, { uzunluk: ["801"] })).toBe(true);
+    expect(productMatchesFacets({ total_weight_kg: 3500 }, groups, { agirlik: ["1301-3500"] })).toBe(true);
+    expect(productMatchesFacets({ total_weight_kg: 4800 }, groups, { agirlik: ["3501"] })).toBe(true);
+  });
+  it("banyo: var / yok / belirtilmemiş ayrışır", () => {
+    expect(productMatchesFacets({ has_bathroom: true }, groups, { banyo: ["var"] })).toBe(true);
+    expect(productMatchesFacets({ has_bathroom: false }, groups, { banyo: ["yok"] })).toBe(true);
+    expect(productMatchesFacets({}, groups, { banyo: ["na"] })).toBe(true);
+    expect(productMatchesFacets({ has_bathroom: false }, groups, { banyo: ["na"] })).toBe(false);
+  });
+});
+
 describe("e-scooter facet'leri", () => {
   const groups = facetGroupsForCategory("e-scooter");
   it("5 grup, hepsi her zaman görünür ve Belirtilmemiş taşır", () => {
