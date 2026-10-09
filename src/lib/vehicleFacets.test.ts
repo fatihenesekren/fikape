@@ -24,9 +24,32 @@ describe("e-bisiklet facet'leri", () => {
   it("grup içi VEYA: seçili iki seçenekten biri yeter", () => {
     expect(productMatchesFacets({ battery_wh: 360 }, groups, { batarya: ["na", "0-400"] })).toBe(true);
   });
-  it("diğer kategorilerin facet'leri değişmedi (e-scooter hâlâ kapsam kapılı)", () => {
-    const es = facetGroupsForCategory("e-scooter");
-    expect(es.map((g) => g.key)).toEqual(["guc"]);
-    expect(es[0].alwaysShow).toBeUndefined();
+  it("diğer kategorilerin facet'leri değişmedi (otomobil hâlâ kapsam kapılı)", () => {
+    const oto = facetGroupsForCategory("otomobil");
+    expect(oto.map((g) => g.key)).toEqual(["yakit", "govde", "segment"]);
+    expect(oto.every((g) => g.alwaysShow === undefined)).toBe(true);
+  });
+});
+
+describe("e-scooter facet'leri", () => {
+  const groups = facetGroupsForCategory("e-scooter");
+  it("5 grup, hepsi her zaman görünür ve Belirtilmemiş taşır", () => {
+    expect(groups.map((g) => g.key)).toEqual(["guc", "hiz", "menzil", "batarya", "katlan"]);
+    for (const g of groups) {
+      expect(g.alwaysShow).toBe(true);
+      expect(g.options[g.options.length - 1].value).toBe("na");
+    }
+  });
+  it("kovalar: 13 kW'lık güç ve 130 km/s'lik hız en üst kovaya girer", () => {
+    expect(productMatchesFacets({ motor_watt: 13000 }, groups, { guc: ["2001"] })).toBe(true);
+    expect(productMatchesFacets({ motor_watt: 500 }, groups, { guc: ["0-500"] })).toBe(true);
+    expect(productMatchesFacets({ max_speed_kmh: 25 }, groups, { hiz: ["0-25"] })).toBe(true);
+    expect(productMatchesFacets({ max_speed_kmh: 130 }, groups, { hiz: ["46"] })).toBe(true);
+  });
+  it("katlanabilir: evet / hayır / belirtilmemiş birbirinden ayrılır", () => {
+    expect(productMatchesFacets({ foldable: true }, groups, { katlan: ["evet"] })).toBe(true);
+    expect(productMatchesFacets({ foldable: false }, groups, { katlan: ["hayir"] })).toBe(true);
+    expect(productMatchesFacets({ foldable: false }, groups, { katlan: ["na"] })).toBe(false);
+    expect(productMatchesFacets({}, groups, { katlan: ["na"] })).toBe(true);
   });
 });

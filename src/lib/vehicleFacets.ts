@@ -67,18 +67,6 @@ const CC_GROUP: FacetGroup = {
   ],
 };
 
-// ── Motor gücü (e-scooter + e-bisiklet) ──
-const wattGroup = (key = "guc"): FacetGroup => ({
-  key,
-  label: "Motor Gücü",
-  attrKey: "motor_watt",
-  options: [
-    { value: "0-350",   label: "≤ 350 W",   match: (a) => inRange(a.motor_watt, 0, 350) },
-    { value: "351-500", label: "351–500 W", match: (a) => inRange(a.motor_watt, 351, 500) },
-    { value: "501",     label: "500 W+",    match: (a) => inRange(a.motor_watt, 501, Infinity) },
-  ],
-});
-
 const dolu = (v: unknown) => v === false || (v != null && v !== "");
 
 /** Gruba "Belirtilmemiş" seçeneği ekler ve kapsam kapısını kaldırır — veri yarım olsa da hiçbir kayıt sessizce elenmez. */
@@ -131,6 +119,60 @@ const EBIKE_RANGE_GROUP: FacetGroup = {
     { value: "0-40",  label: "≤ 40 km",  match: (a) => inRange(a.range_km, 0, 40) },
     { value: "41-70", label: "41–70 km", match: (a) => inRange(a.range_km, 41, 70) },
     { value: "71",    label: "70 km+",   match: (a) => inRange(a.range_km, 71, Infinity) },
+  ],
+};
+
+// ── E-scooter'a özgü gruplar (veri 250 W'tan 13 kW'a, 25'ten 130 km/s'ye uzanır) ──
+const ESCOOTER_WATT_GROUP: FacetGroup = {
+  key: "guc",
+  label: "Motor Gücü",
+  attrKey: "motor_watt",
+  options: [
+    { value: "0-500",     label: "≤ 500 W",       match: (a) => inRange(a.motor_watt, 0, 500) },
+    { value: "501-1000",  label: "501–1000 W",    match: (a) => inRange(a.motor_watt, 501, 1000) },
+    { value: "1001-2000", label: "1001–2000 W",   match: (a) => inRange(a.motor_watt, 1001, 2000) },
+    { value: "2001",      label: "2000 W+",       match: (a) => inRange(a.motor_watt, 2001, Infinity) },
+  ],
+};
+const ESCOOTER_SPEED_GROUP: FacetGroup = {
+  key: "hiz",
+  label: "Maks. Hız",
+  attrKey: "max_speed_kmh",
+  options: [
+    { value: "0-25",  label: "≤ 25 km/s",    match: (a) => inRange(a.max_speed_kmh, 0, 25) },
+    { value: "26-45", label: "26–45 km/s",   match: (a) => inRange(a.max_speed_kmh, 26, 45) },
+    { value: "46",    label: "45 km/s +",    match: (a) => inRange(a.max_speed_kmh, 46, Infinity) },
+  ],
+};
+const ESCOOTER_RANGE_GROUP: FacetGroup = {
+  key: "menzil",
+  label: "Menzil",
+  attrKey: "range_km",
+  options: [
+    { value: "0-50",   label: "≤ 50 km",    match: (a) => inRange(a.range_km, 0, 50) },
+    { value: "51-100", label: "51–100 km",  match: (a) => inRange(a.range_km, 51, 100) },
+    { value: "101",    label: "100 km+",    match: (a) => inRange(a.range_km, 101, Infinity) },
+  ],
+};
+const ESCOOTER_BATTERY_GROUP: FacetGroup = {
+  key: "batarya",
+  label: "Batarya",
+  attrKey: "battery_wh",
+  options: [
+    { value: "0-500",    label: "≤ 500 Wh",     match: (a) => inRange(a.battery_wh, 0, 500) },
+    { value: "501-1000", label: "501–1000 Wh",  match: (a) => inRange(a.battery_wh, 501, 1000) },
+    { value: "1001",     label: "1000 Wh+",     match: (a) => inRange(a.battery_wh, 1001, Infinity) },
+  ],
+};
+const isTrue = (v: unknown) => v === true || str(v) === "true";
+const isFalse = (v: unknown) => v === false || str(v) === "false";
+const ESCOOTER_FOLD_GROUP: FacetGroup = {
+  key: "katlan",
+  label: "Katlanabilir",
+  attrKey: "foldable",
+  options: [
+    { value: "evet", label: "Katlanabilir", match: (a) => isTrue(a.foldable) },
+    { value: "hayir", label: "Katlanamaz",  match: (a) => isFalse(a.foldable) },
   ],
 };
 
@@ -189,7 +231,13 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
     enumGroup("segment", "Segment", "segment", toLabelMap(OTOMOBIL_SEGMENTS)),
   ],
   motosiklet: [MOTO_TYPE_GROUP, CC_GROUP],
-  "e-scooter": [wattGroup("guc")],
+  "e-scooter": [
+    eksikVeriliGrup(ESCOOTER_WATT_GROUP),
+    eksikVeriliGrup(ESCOOTER_SPEED_GROUP),
+    eksikVeriliGrup(ESCOOTER_RANGE_GROUP),
+    eksikVeriliGrup(ESCOOTER_BATTERY_GROUP),
+    eksikVeriliGrup(ESCOOTER_FOLD_GROUP),
+  ],
   "e-bisiklet": [
     eksikVeriliGrup(enumGroup("tip", "Tip", "bike_type", toLabelMap(BIKE_TYPES))),
     eksikVeriliGrup(EBIKE_MOTOR_GROUP),

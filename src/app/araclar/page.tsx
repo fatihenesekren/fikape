@@ -37,10 +37,10 @@ function normalize(str: string) {
 interface SearchParams {
   kategori?: string; marka?: string; q?: string; sayfa?: string;
   yakit?: string; govde?: string; segment?: string; tip?: string; cc?: string; guc?: string; cekis?: string;
-  motor?: string; batarya?: string; menzil?: string; kabin?: string; vites?: string;
+  motor?: string; batarya?: string; menzil?: string; kabin?: string; vites?: string; hiz?: string; katlan?: string;
 }
 
-const FACET_KEYS = ["yakit", "govde", "segment", "tip", "cc", "guc", "cekis", "motor", "batarya", "menzil", "kabin", "vites"] as const;
+const FACET_KEYS = ["yakit", "govde", "segment", "tip", "cc", "guc", "cekis", "motor", "batarya", "menzil", "kabin", "vites", "hiz", "katlan"] as const;
 
 function parseSelectedFacets(params: SearchParams): Record<string, string[]> {
   const out: Record<string, string[]> = {};
