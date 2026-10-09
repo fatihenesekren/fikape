@@ -369,7 +369,7 @@ async function AraclarResults({
         )}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4">
           <p className="text-sm text-gray-500">{durum === "arama-benzer" ? `${total} benzer sonuç` : `${total} araç`}</p>
-          {activeFilterCount > 0 && (
+          {activeFilterCount > 0 && pageItems.length > 0 && (
             <Link href={clearedHref} className="text-sm font-semibold text-link hover:underline rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2">
               Filtreleri temizle ({activeFilterCount})
             </Link>
