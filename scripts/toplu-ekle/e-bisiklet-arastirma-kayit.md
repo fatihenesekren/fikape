@@ -58,3 +58,6 @@ Erişilemeyen kaynaklar: voltafabrikasi.com (522), bikerks.com, dsmotor.com.tr, 
 
 ## 3. tur — Carraro E-Flexi Nexus → E-Time Easy (aynı gün, kullanıcı kararı)
 Kayıt (id 1051) **Carraro E-Time Easy 2022** olarak yeniden adlandırıldı (kaynak: kullanıcı tablosu "E-Time Easy 28 9-V HD, 2022"). Önceki öznitelikler (E-Flexi 20" verisi) tamamen kaldırıldı; yeni tablodan 20 alan girildi (28" şehir/tur, Shimano STEPS E5000 orta motor, 418 Wh, Alivio 1x9, MT200 hidrolik disk, Suntour NEX E-25 maşa). Menzil 185 km kullanıcı tablosunda "ikincil kaynak" notlu. Eski model adı/alias silindi; yanlış model görseli kaldırıldı (kullanıcı yeni görsel ekleyecek). Bu kayıt artık "sorunlu" listesinde değil.
+
+## 4. tur — Carraro E-Folding → E-Flexi 20 NEX-8 (aynı gün, kullanıcı kararı)
+Kayıt (id 1052) **Carraro E-Flexi 20 NEX-8 2024** olarak yeniden adlandırıldı (kaynak: kullanıcı tablosu). 21 alan girildi (katlanabilir, STEPS E5000 motor, 418 Wh, Nexus 8, MT200, rijit alüminyum maşa, Schwalbe Big Apple 20 x 2.125, ECO'da 130 km üretici beyanı). `motor_type: mid-drive` tabloda yazmıyor; aynı STEPS E5000 motoru E-Time Easy tablosunda "Orta" olarak geçtiği için girildi. Eski model adı/alias silindi; görsel kaldırıldı (kullanıcı ekleyecek). "Model bulunamadı" listesinden çıktı (kalan 4: Corelli E-City, Salcano E-Bike EX1, Skyjet XS25, Strada Mobility E-City).
