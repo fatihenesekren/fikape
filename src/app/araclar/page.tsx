@@ -341,7 +341,7 @@ async function AraclarResults({
       ) : (
         <Link
           key={o}
-          href={pageHref(o)}
+          href={`${pageHref(o)}#sonuclar`}
           aria-label={`Sayfa ${o}`}
           className="inline-flex h-10 min-w-10 items-center justify-center rounded-lg border border-gray-200 bg-white px-3 font-medium text-gray-700 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
         >
@@ -410,7 +410,7 @@ async function AraclarResults({
         activeFilterCount={activeFilterCount}
       />
 
-      <div className="min-w-0 flex-1">
+      <div id="sonuclar" className="min-w-0 flex-1 scroll-mt-28">
         {durum === "arama-benzer" && (
           <p role="status" className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-4 py-2.5 mb-4">
             &ldquo;{q}&rdquo; için tam eşleşme bulunamadı — benzer sonuçları gösteriyoruz.
@@ -495,7 +495,7 @@ async function AraclarResults({
               <nav aria-label="Sayfalama" className="mt-8 flex flex-wrap items-center justify-center gap-1.5 text-sm">
                 {safePage > 1 ? (
                   <Link
-                    href={pageHref(safePage - 1)}
+                    href={`${pageHref(safePage - 1)}#sonuclar`}
                     rel="prev"
                     aria-label="Önceki sayfa"
                     className="inline-flex h-10 min-w-10 items-center justify-center gap-1 rounded-lg border border-gray-200 bg-white px-3 font-semibold text-gray-700 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
@@ -512,7 +512,7 @@ async function AraclarResults({
                 <span className="hidden sm:contents">{sayfaNumaralari(sayfaListesi(safePage, totalPages, 1))}</span>
                 {safePage < totalPages ? (
                   <Link
-                    href={pageHref(safePage + 1)}
+                    href={`${pageHref(safePage + 1)}#sonuclar`}
                     rel="next"
                     aria-label="Sonraki sayfa"
                     className="inline-flex h-10 min-w-10 items-center justify-center gap-1 rounded-lg border border-gray-200 bg-white px-3 font-semibold text-gray-700 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
