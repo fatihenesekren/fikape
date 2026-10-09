@@ -25,13 +25,28 @@ const hex = (m: RGB) => "#" + m.map((v) => Math.round(v).toString(16).padStart(2
  * Boşluk nerede oluşacaksa orası örneklenir: GENİŞ fotoğraf (en/boy ≥ 1.25) kutuya sığınca üstte/altta boşluk kalır →
  * üst köşeler + üst orta; KARE/DİKEY fotoğrafta yanlarda kalır → üst köşeler + yan ortalar (üst yarı).
  * Alt kısım hiç örneklenmez: tekerlek/gölge/zemin çizgisi kenara değer (beyaz zeminli fotoğrafta bile).
+ * KARE/DİKEY fotoğrafta yan kenar sütunlarının (x=0 ve x=N-1, tüm satırlar) en çok %25'i zeminden sapıyorsa
+ * (ör. tekerlek ucunun kenara değmesi) zemin yine düzdür: kırpmak (cover) nesneyi (sele, bagaj) keser, oysa
+ * kutuyu zemin rengine boyayıp sığdırmak (contain) bu küçük teması görünür bir kutu çizgisine dönüştürmez.
  */
+export const YAN_KENAR_SAPMA_ESIGI = 0.25;
 export function siniflandirRaw(data: Buffer, genis: boolean): Backdrop {
   const koseler = [patch(data, 0, 0, 3, 3), patch(data, N - 3, 0, 3, 3)];
   const ort = [0, 1, 2].map((c) => (koseler[0].mean[c] + koseler[1].mean[c]) / 2) as RGB;
   if (koseler.some((k) => k.sd > 14 || fark(k.mean, ort) > 14)) return { kind: "busy" };
-  const kenarlar = genis ? [patch(data, 13, 0, 6, 3)] : [patch(data, 0, 8, 3, 6), patch(data, N - 3, 8, 3, 6)];
-  if (kenarlar.some((k) => k.sd > 14 || fark(k.mean, ort) > 20)) return { kind: "busy" };
+  if (genis) {
+    const ust = patch(data, 13, 0, 6, 3);
+    if (ust.sd > 14 || fark(ust.mean, ort) > 20) return { kind: "busy" };
+    return { kind: "plain", color: hex(ort) };
+  }
+  let sapan = 0;
+  for (let y = 0; y < N; y++) {
+    for (const x of [0, N - 1]) {
+      const px = [0, 1, 2].map((c) => data[(y * N + x) * 3 + c]) as RGB;
+      if (fark(px, ort) > 24) sapan++;
+    }
+  }
+  if (sapan / (2 * N) > YAN_KENAR_SAPMA_ESIGI) return { kind: "busy" };
   return { kind: "plain", color: hex(ort) };
 }
 
@@ -51,7 +66,7 @@ async function hesapla(url: string): Promise<Backdrop> {
 /** Aynı görsel adresi (sürüm parametresiyle birlikte) için sonuç kalıcı önbelleklenir; hata olursa "unknown" döner (önbelleklenmez). */
 export async function getImageBackdrop(url: string): Promise<Backdrop> {
   try {
-    return await unstable_cache(() => hesapla(url), ["image-backdrop-v1", url], { revalidate: 60 * 60 * 24 * 365 })();
+    return await unstable_cache(() => hesapla(url), ["image-backdrop-v2", url], { revalidate: 60 * 60 * 24 * 365 })();
   } catch {
     return { kind: "unknown" };
   }

@@ -26,11 +26,18 @@ describe("görsel zemin sınıflandırma", () => {
     boya(d, 0, 24, 6, 8, 30);     // sol altta tekerlek kenara değiyor
     expect(siniflandirRaw(d, false).kind).toBe("plain");
   });
-  it("kare fotoğrafta yan kenara değen nesne → düz değil", () => {
+  it("kare fotoğrafta yan kenar sütunlarının büyük kısmı doluysa → düz değil", () => {
     const d = duz(255, 255, 255);
-    boya(d, 0, 8, 3, 6, 30);
+    boya(d, 0, 4, 3, 20, 30); // sol kenarın 20/32 satırı dolu → toplam sapma ≈ %31
     expect(siniflandirRaw(d, false).kind).toBe("busy");
     expect(siniflandirRaw(d, true).kind).toBe("plain"); // geniş fotoğrafta yanlarda boşluk oluşmaz
+  });
+  it("kare fotoğrafta tekerlek ucu gibi küçük yan temas (≤ %25) zemini bozmaz", () => {
+    const d = duz(255, 255, 255);
+    boya(d, 0, 8, 3, 10, 30); // sol kenarın 10/32 satırı → toplam ≈ %16
+    expect(siniflandirRaw(d, false)).toEqual({ kind: "plain", color: "#ffffff" });
+    boya(d, N - 3, 8, 3, 12, 30); // sağ kenar da 12 satır → toplam ≈ %34 → artık busy
+    expect(siniflandirRaw(d, false).kind).toBe("busy");
   });
   it("geniş fotoğrafta üst kenara değen nesne → düz değil", () => {
     const d = duz(255, 255, 255);
