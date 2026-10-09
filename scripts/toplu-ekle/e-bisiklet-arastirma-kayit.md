@@ -10,8 +10,8 @@ Yalnızca kaynakta yazan değerler girildi; Wh = V × Ah yalnız V ve Ah kaynakt
 |---|---|---|
 | Ape Ryder MD-10 Pro 2025 | Epey (Model Yılı 2025) | +11 alan; resmi site model sayfası ana sayfaya yönleniyor |
 | Kuba Speedlight Pro 2024 | Epey (Model Yılı 2024) | +12 alan |
-| Corelli Voniq Eco 2025 | corelli.com.tr/…/voniq-eco-203 | +22 alan; resmi sayfa yıl belirtmiyor (Epey: 2024) |
-| Carraro E-Flexi Nexus 2025 | carrarobisiklet.com/…/e-flexi-20-nex-8v-hd | +16 alan; resmi sayfa yıl belirtmiyor (Epey: 2022; 2020 sürümü ayrı sayfa) |
+| Corelli Voniq Eco 2024 (2025→2024, Epey) | corelli.com.tr/…/voniq-eco-203 | +22 alan; resmi sayfa yıl belirtmiyor (Epey: 2024) |
+| Carraro E-Flexi Nexus 2022 (2025→2022, Epey) | carrarobisiklet.com/…/e-flexi-20-nex-8v-hd | +16 alan; resmi sayfa yıl belirtmiyor (Epey: 2022; 2020 sürümü ayrı sayfa) |
 | RKS XS25 2023 | Epey (Model Yılı 2023) + satıcı ilanı | +2 alan; vites 6→7, fren "Disk Fren"→"Mekanik disk" güncellendi |
 | Volta VB1 Neo 2026 | A101 (tedarikçi bilgisi) | +9 alan |
 | Volta VB1 2026 | A101/Trendyol/Hepsiburada ilanları | bike_type şehir→katlanabilir |
