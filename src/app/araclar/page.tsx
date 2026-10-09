@@ -9,6 +9,7 @@ import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { KATEGORILER, KATEGORI_SLUGLARI } from "@/lib/kategoriler";
 import { aramaTemizle } from "@/lib/aramaDurumu";
+import { sayfaListesi } from "@/lib/sayfalama";
 import { searchProductIds } from "@/lib/searchProducts";
 import { aramaLoglansinMi, aramaSonucDurumu, havuzuMotorSirasinaGore } from "@/lib/aramaKumesi";
 import { SearchNoMatchPrompt } from "@/components/SearchNoMatchPrompt";
@@ -325,6 +326,30 @@ async function AraclarResults({
     return s ? `/araclar?${s}` : "/araclar";
   }
 
+  const sayfaNumaralari = (liste: ReturnType<typeof sayfaListesi>) =>
+    liste.map((o, i) =>
+      o === "…" ? (
+        <span key={`n${i}`} aria-hidden="true" className="inline-flex h-10 w-6 items-center justify-center text-gray-400">…</span>
+      ) : o === safePage ? (
+        <span
+          key={o}
+          aria-current="page"
+          className="inline-flex h-10 min-w-10 items-center justify-center rounded-lg bg-gray-900 px-3 font-bold text-white"
+        >
+          {o}
+        </span>
+      ) : (
+        <Link
+          key={o}
+          href={pageHref(o)}
+          aria-label={`Sayfa ${o}`}
+          className="inline-flex h-10 min-w-10 items-center justify-center rounded-lg border border-gray-200 bg-white px-3 font-medium text-gray-700 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+        >
+          {o}
+        </Link>
+      ),
+    );
+
   // Facet + marka temizlenmiş, arama/kategori korunmuş hedef
   const clearedHref = (() => {
     const qs = new URLSearchParams();
@@ -467,15 +492,39 @@ async function AraclarResults({
             </div>
 
             {totalPages > 1 && (
-              <div className="flex items-center justify-between mt-8 text-sm">
+              <nav aria-label="Sayfalama" className="mt-8 flex flex-wrap items-center justify-center gap-1.5 text-sm">
                 {safePage > 1 ? (
-                  <Link href={pageHref(safePage - 1)} className="font-semibold text-link hover:underline">← Önceki</Link>
-                ) : <span />}
-                <span className="text-xs text-gray-400">Sayfa {safePage} / {totalPages}</span>
+                  <Link
+                    href={pageHref(safePage - 1)}
+                    rel="prev"
+                    aria-label="Önceki sayfa"
+                    className="inline-flex h-10 min-w-10 items-center justify-center gap-1 rounded-lg border border-gray-200 bg-white px-3 font-semibold text-gray-700 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+                  >
+                    <span aria-hidden="true">←</span><span className="hidden sm:inline">Önceki</span>
+                  </Link>
+                ) : (
+                  <span aria-hidden="true" className="inline-flex h-10 min-w-10 items-center justify-center gap-1 rounded-lg border border-gray-100 px-3 text-gray-300">
+                    ←<span className="hidden sm:inline">Önceki</span>
+                  </span>
+                )}
+                {/* Dar ekranda kompakt (1 … 4 … 7), geniş ekranda geniş pencere */}
+                <span className="contents sm:hidden">{sayfaNumaralari(sayfaListesi(safePage, totalPages, 0))}</span>
+                <span className="hidden sm:contents">{sayfaNumaralari(sayfaListesi(safePage, totalPages, 1))}</span>
                 {safePage < totalPages ? (
-                  <Link href={pageHref(safePage + 1)} className="font-semibold text-link hover:underline">Sonraki →</Link>
-                ) : <span />}
-              </div>
+                  <Link
+                    href={pageHref(safePage + 1)}
+                    rel="next"
+                    aria-label="Sonraki sayfa"
+                    className="inline-flex h-10 min-w-10 items-center justify-center gap-1 rounded-lg border border-gray-200 bg-white px-3 font-semibold text-gray-700 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+                  >
+                    <span className="hidden sm:inline">Sonraki</span><span aria-hidden="true">→</span>
+                  </Link>
+                ) : (
+                  <span aria-hidden="true" className="inline-flex h-10 min-w-10 items-center justify-center gap-1 rounded-lg border border-gray-100 px-3 text-gray-300">
+                    <span className="hidden sm:inline">Sonraki</span>→
+                  </span>
+                )}
+              </nav>
             )}
           </>
         )}
