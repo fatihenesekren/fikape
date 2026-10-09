@@ -37,9 +37,10 @@ function normalize(str: string) {
 interface SearchParams {
   kategori?: string; marka?: string; q?: string; sayfa?: string;
   yakit?: string; govde?: string; segment?: string; tip?: string; cc?: string; guc?: string; cekis?: string;
+  motor?: string; batarya?: string; menzil?: string; kabin?: string; vites?: string;
 }
 
-const FACET_KEYS = ["yakit", "govde", "segment", "tip", "cc", "guc", "cekis"] as const;
+const FACET_KEYS = ["yakit", "govde", "segment", "tip", "cc", "guc", "cekis", "motor", "batarya", "menzil", "kabin", "vites"] as const;
 
 function parseSelectedFacets(params: SearchParams): Record<string, string[]> {
   const out: Record<string, string[]> = {};
@@ -217,7 +218,7 @@ async function AraclarResults({
   // 3) Facet grupları — kapsam kapısından geçenler
   const allGroups = facetGroupsForCategory(catSlug);
   const groups = allGroups.filter(
-    (g) => fieldCoverage(searched, g.attrKey) >= FACET_COVERAGE_THRESHOLD,
+    (g) => g.alwaysShow || fieldCoverage(searched, g.attrKey) >= FACET_COVERAGE_THRESHOLD,
   );
 
   // 4) Marka listesi — arama sonrası havuzdan, facet/marka seçimi UYGULANMADAN

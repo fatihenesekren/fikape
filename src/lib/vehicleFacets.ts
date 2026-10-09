@@ -27,6 +27,8 @@ export interface FacetGroup {
   label: string;      // "Yakıt"
   attrKey: string;    // kapsam kontrolü için ham attribute anahtarı
   options: FacetOption[];
+  /** true: kapsam kapısı uygulanmaz; eksik veri "Belirtilmemiş" seçeneğiyle görünür kalır. */
+  alwaysShow?: boolean;
 }
 
 const str = (v: unknown) => (v == null ? "" : String(v));
@@ -76,6 +78,61 @@ const wattGroup = (key = "guc"): FacetGroup => ({
     { value: "501",     label: "500 W+",    match: (a) => inRange(a.motor_watt, 501, Infinity) },
   ],
 });
+
+const dolu = (v: unknown) => v === false || (v != null && v !== "");
+
+/** Gruba "Belirtilmemiş" seçeneği ekler ve kapsam kapısını kaldırır — veri yarım olsa da hiçbir kayıt sessizce elenmez. */
+function eksikVeriliGrup(g: FacetGroup): FacetGroup {
+  return {
+    ...g,
+    alwaysShow: true,
+    options: [
+      ...g.options,
+      { value: "na", label: "Belirtilmemiş", match: (a) => !dolu(a[g.attrKey]) },
+    ],
+  };
+}
+
+// ── E-bisiklete özgü gruplar ──
+const EBIKE_MOTOR_GROUP: FacetGroup = {
+  key: "motor",
+  label: "Motor Tipi",
+  attrKey: "motor_type",
+  options: [
+    { value: "mid", label: "Orta motor (Mid-Drive)", match: (a) => str(a.motor_type) === "mid-drive" },
+    { value: "hub", label: "Göbek motoru (Hub-Drive)", match: (a) => str(a.motor_type) === "hub-drive" },
+  ],
+};
+const EBIKE_WATT_GROUP: FacetGroup = {
+  key: "guc",
+  label: "Motor Gücü",
+  attrKey: "motor_watt",
+  options: [
+    { value: "0-250",   label: "≤ 250 W",   match: (a) => inRange(a.motor_watt, 0, 250) },
+    { value: "251-500", label: "251–500 W", match: (a) => inRange(a.motor_watt, 251, 500) },
+    { value: "501",     label: "500 W+",    match: (a) => inRange(a.motor_watt, 501, Infinity) },
+  ],
+};
+const EBIKE_BATTERY_GROUP: FacetGroup = {
+  key: "batarya",
+  label: "Batarya",
+  attrKey: "battery_wh",
+  options: [
+    { value: "0-400",   label: "≤ 400 Wh",   match: (a) => inRange(a.battery_wh, 0, 400) },
+    { value: "401-600", label: "401–600 Wh", match: (a) => inRange(a.battery_wh, 401, 600) },
+    { value: "601",     label: "600 Wh+",    match: (a) => inRange(a.battery_wh, 601, Infinity) },
+  ],
+};
+const EBIKE_RANGE_GROUP: FacetGroup = {
+  key: "menzil",
+  label: "Menzil",
+  attrKey: "range_km",
+  options: [
+    { value: "0-40",  label: "≤ 40 km",  match: (a) => inRange(a.range_km, 0, 40) },
+    { value: "41-70", label: "41–70 km", match: (a) => inRange(a.range_km, 41, 70) },
+    { value: "71",    label: "70 km+",   match: (a) => inRange(a.range_km, 71, Infinity) },
+  ],
+};
 
 // ── Enum tabanlı grup üreteci ──
 function enumGroup(
@@ -134,8 +191,11 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
   motosiklet: [MOTO_TYPE_GROUP, CC_GROUP],
   "e-scooter": [wattGroup("guc")],
   "e-bisiklet": [
-    enumGroup("tip", "Tip", "bike_type", toLabelMap(BIKE_TYPES)),
-    wattGroup("guc"),
+    eksikVeriliGrup(enumGroup("tip", "Tip", "bike_type", toLabelMap(BIKE_TYPES))),
+    eksikVeriliGrup(EBIKE_MOTOR_GROUP),
+    eksikVeriliGrup(EBIKE_WATT_GROUP),
+    eksikVeriliGrup(EBIKE_BATTERY_GROUP),
+    eksikVeriliGrup(EBIKE_RANGE_GROUP),
   ],
   karavan: [enumGroup("tip", "Tip", "karavan_type", toLabelMap(KARAVAN_TYPES))],
   // Gövde ilk sırada — "kamyonet" pickup/panelvan/van/minivan karışımı bir
