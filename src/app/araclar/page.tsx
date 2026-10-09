@@ -223,12 +223,19 @@ async function AraclarResults({
     (g) => g.alwaysShow || fieldCoverage(searched, g.attrKey) >= FACET_COVERAGE_THRESHOLD,
   );
 
-  // 4) Marka listesi — arama sonrası havuzdan, facet/marka seçimi UYGULANMADAN
+  // 4) Marka listesi — arama + seçili özellik filtreleri uygulanmış havuzdan (marka seçimi HARİÇ):
+  //    marka sayıları seçili filtrelerle uyumlu kalır, sonuç vermeyecek markalar listede görünmez.
+  //    Seçili marka sonuç vermese bile listede kalır (sayısı 0) — kullanıcı seçimini görüp kaldırabilsin.
   const brandMap = new Map<string, { name: string; count: number }>();
   for (const p of searched) {
+    if (!productMatchesFacets(p.attributes as Record<string, unknown>, groups, selectedFacets)) continue;
     const cur = brandMap.get(p.brand.slug) ?? { name: p.brand.name, count: 0 };
     cur.count++;
     brandMap.set(p.brand.slug, cur);
+  }
+  if (selectedBrand && !brandMap.has(selectedBrand)) {
+    const secili = searched.find((p) => p.brand.slug === selectedBrand);
+    if (secili) brandMap.set(selectedBrand, { name: secili.brand.name, count: 0 });
   }
   const brands = [...brandMap.entries()]
     .map(([slug, v]) => ({ slug, name: v.name, count: v.count }))
