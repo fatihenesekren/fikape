@@ -46,3 +46,12 @@ Kaynak çelişkisi (kayıt değiştirilmedi):
 - Volta VB3: şarj A101 5–6 sa — kayıt 5
 
 Erişilemeyen kaynaklar: voltafabrikasi.com (522), bikerks.com, dsmotor.com.tr, aperyder.com.tr model sayfası (ana sayfaya yönleniyor), 99spokes.com (bot doğrulaması).
+
+## 2. tur — yıl kararları (aynı gün)
+- Kuba Speedlight 2020 → **2022** (Epey Model Yılı 2022); +11 alan; görsel yeni adrese taşındı.
+- Bisan E-Folding F3 2026 → **2025** (Epey Model Yılı 2025); +2 alan (menzil 60 km, şarj 6 sa).
+- Roxform R-300 2023 — yıl korundu (resmi mağaza sayfası yıl belirtmiyor, çelişen kaynak yok); +16 alan (pil/menzil varyanta bağlı olduğundan girilmedi: 13/15/20 Ah).
+- Skyjet Nitro Pro 2025 — korundu (kayıttaki kullanıcı tablosu "üretici 2025 model" diyor; Epey 2024).
+- RKS RSI-X-PRO / MX25 Pro / XS35 / RD8 / NERO-M 2026 — korundu (kullanıcı tablosu: üretici 2026 ürün gamı; Epey eski nesil/yıl).
+- Volta VB1 2026 — veri girilmedi: Trendyol VB1 adresi VB1 Neo'ya yönleniyor, Hepsiburada listesinde VB1 yok (güncel katalogda düz VB1 görünmüyor olabilir).
+- Model resmi listelerde yok (kayıtlar silinmedi, görselleri var): Salcano E-Bike EX1, Strada Mobility E-City (Strada: E-Lite), Corelli E-City, Carraro E-Folding, Skyjet XS25.
