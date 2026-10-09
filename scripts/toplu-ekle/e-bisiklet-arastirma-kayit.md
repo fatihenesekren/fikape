@@ -61,3 +61,6 @@ Kayıt (id 1051) **Carraro E-Time Easy 2022** olarak yeniden adlandırıldı (ka
 
 ## 4. tur — Carraro E-Folding → E-Flexi 20 NEX-8 (aynı gün, kullanıcı kararı)
 Kayıt (id 1052) **Carraro E-Flexi 20 NEX-8 2024** olarak yeniden adlandırıldı (kaynak: kullanıcı tablosu). 21 alan girildi (katlanabilir, STEPS E5000 motor, 418 Wh, Nexus 8, MT200, rijit alüminyum maşa, Schwalbe Big Apple 20 x 2.125, ECO'da 130 km üretici beyanı). `motor_type: mid-drive` tabloda yazmıyor; aynı STEPS E5000 motoru E-Time Easy tablosunda "Orta" olarak geçtiği için girildi. Eski model adı/alias silindi; görsel kaldırıldı (kullanıcı ekleyecek). "Model bulunamadı" listesinden çıktı (kalan 4: Corelli E-City, Salcano E-Bike EX1, Skyjet XS25, Strada Mobility E-City).
+
+## 5. tur — Kuba Speedlight 2022 (kullanıcı tablosu)
+Epey'den gelen 11 alan kullanıcı tablosuyla birebir uyumlu çıktı (250 W, 36 V, 280,8 Wh, 30 km, 3 sa, 7 vites, 20"). Eklenen: azami taşıma 100 kg, lastik CST (marka; ölçü yok). Güncellenen: fren "Mekanik disk" → "Ön ve arka mekanik disk". AI özeti yenilendi. Toplam 13 alan.
