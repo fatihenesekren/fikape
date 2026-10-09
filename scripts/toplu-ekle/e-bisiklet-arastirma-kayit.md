@@ -55,3 +55,6 @@ Erişilemeyen kaynaklar: voltafabrikasi.com (522), bikerks.com, dsmotor.com.tr, 
 - RKS RSI-X-PRO / MX25 Pro / XS35 / RD8 / NERO-M 2026 — korundu (kullanıcı tablosu: üretici 2026 ürün gamı; Epey eski nesil/yıl).
 - Volta VB1 2026 — veri girilmedi: Trendyol VB1 adresi VB1 Neo'ya yönleniyor, Hepsiburada listesinde VB1 yok (güncel katalogda düz VB1 görünmüyor olabilir).
 - Model resmi listelerde yok (kayıtlar silinmedi, görselleri var): Salcano E-Bike EX1, Strada Mobility E-City (Strada: E-Lite), Corelli E-City, Carraro E-Folding, Skyjet XS25.
+
+## 3. tur — Carraro E-Flexi Nexus → E-Time Easy (aynı gün, kullanıcı kararı)
+Kayıt (id 1051) **Carraro E-Time Easy 2022** olarak yeniden adlandırıldı (kaynak: kullanıcı tablosu "E-Time Easy 28 9-V HD, 2022"). Önceki öznitelikler (E-Flexi 20" verisi) tamamen kaldırıldı; yeni tablodan 20 alan girildi (28" şehir/tur, Shimano STEPS E5000 orta motor, 418 Wh, Alivio 1x9, MT200 hidrolik disk, Suntour NEX E-25 maşa). Menzil 185 km kullanıcı tablosunda "ikincil kaynak" notlu. Eski model adı/alias silindi; yanlış model görseli kaldırıldı (kullanıcı yeni görsel ekleyecek). Bu kayıt artık "sorunlu" listesinde değil.
