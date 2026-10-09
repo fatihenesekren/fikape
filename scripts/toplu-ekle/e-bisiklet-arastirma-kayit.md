@@ -88,3 +88,6 @@ Yeni kayıt (id 1065, `corelli-e-lite-s-2024`) `aracEkle` ile eklendi; 22 alan g
 
 ## 13. tur — Corelli E-Lite-L 2024 (yeni kayıt, kullanıcı tablosu)
 Yeni kayıt (id 1066, `corelli-e-lite-l-2024`) `aracEkle` ile eklendi (E-Lite-S ile ad benzerliği uyarısı çıktı → farklı model olduğu için onaylandı); 20 alan girildi (28" şehir, Bafang M400 orta motor 250 W / 80 Nm, LG hücreli 460,8 Wh, 50–70 km, Shimano Deore 10 vites, Shimano hidrolik disk, Suntour NEX maşa, 24,7 kg). AI özeti yazıldı (onaylı). Girilmeyen: kadro boyu, sele borusu/gidon, orta göbek/zincir/aynakol detayı, taşıyıcı/aydınlatma (tabloda yok).
+
+## 14. tur — Corelli E-City 2024 silindi (kullanıcı kararı)
+Kayıt (id 1054, `corelli-e-city-2024`, özelliksiz; model Corelli'nin resmi listesinde yok) tamamen silindi: ürün (denetim kaydıyla), boşta kalan model (#765 E-City), görsel dosyası (blob). Bağlı yorum/favori/garaj/takas vb. yoktu (0). Aktif e-bisiklet 55. "Model resmi listede yok" grubundan çıktı (kalan: Salcano E-Bike EX1 2022, Skyjet XS25 2023).
