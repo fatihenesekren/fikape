@@ -79,3 +79,6 @@ Mevcut 13 alan tabloyla uyumlu (250 W, 36 V, **10 Ah / 360 Wh**, 25 km/s, 40 km,
 
 ## 10. tur — RKS XS25 2023 (kullanıcı tablosu)
 Kullanıcı tablosu, daha önce girilen Epey 2023 kaydıyla birebir aynı (250 W, 36 V, 10 Ah/360 Wh, 45 km, 6 sa, 7 vites, 20", mekanik disk, ön yaylı süspansiyon, 27 kg) → kayıt zaten tabloyla dolu (26 alan), tutarsızlık yok. Yalnız yazımlar tabloya uyduruldu: kadro "Alüminyum / alaşım", jant "20" (alüminyum / alaşım jant)". Kullanıcı tablosunda olmayan mevcut alanlar korundu (124 kg taşıma, 20x4.0 lastik, yürüme desteği vb.). AI özeti yenilendi.
+
+## 11. tur — Strada Mobility E-City → Strada E-Lite 2025 (kullanıcı kararı)
+Kayıt (id 1058) **Strada E-Lite 2025** olarak yeniden adlandırıldı: marka "Strada Mobility" → "Strada", model "E-City" → "E-Lite" (28" sürümü; kullanıcı model adında "28" istemedi). Sıra: önce model, sonra marka. Marka/model alias'ları silindi (eski adresler 404). 20 alan girildi (28" şehir, arka tekerlek motoru 250 W, 468 Wh çıkarılabilir kadro içi batarya, Shimano Cues 9 vites, Logan hidrolik disk, 63 mm kilitlenebilir maşa, 5 destek kademesi, yürüme modu, entegre bagaj). Girilmeyen: menzil/hız/ağırlık (tabloda yok). Yanlış model görseli kaldırıldı (kullanıcı ekleyecek). "Model bulunamadı" listesinden çıktı (kalan 3: Corelli E-City, Salcano E-Bike EX1, Skyjet XS25).
