@@ -63,8 +63,6 @@ export function AraclarFilters({
     if (vals.length) facetParams[k] = vals.join(",");
   }
 
-  const clearedHref = buildHref(common);
-
   const filteredBrands = useMemo(() => {
     const q = brandQuery.trim().toLocaleLowerCase("tr-TR");
     if (!q) return brands;
@@ -87,17 +85,7 @@ export function AraclarFilters({
       {/* Marka listesi */}
       {brands.length > 0 && (
         <div>
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Marka</p>
-            {selectedBrand && (
-              <Link
-                href={buildHref({ ...common, ...facetParams })}
-                className="text-[11px] font-semibold text-link hover:underline"
-              >
-                Temizle
-              </Link>
-            )}
-          </div>
+          <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Marka</p>
           {brands.length > 12 && (
             <input
               type="text"
@@ -107,7 +95,7 @@ export function AraclarFilters({
               className="w-full text-xs rounded-lg border border-gray-200 px-2.5 py-1.5 mb-2 focus:outline-none focus:border-gray-400"
             />
           )}
-          <div className="max-h-72 overflow-y-auto -mr-1 pr-1 space-y-0.5">
+          <div className="max-h-72 overflow-y-auto [scrollbar-width:thin] -mr-1 pr-1 space-y-0.5">
             {filteredBrands.map((b) => {
               const isActive = selectedBrand === b.slug;
               return (
@@ -119,14 +107,14 @@ export function AraclarFilters({
                       : buildHref({ ...common, marka: b.slug, ...facetParams })
                   }
                   scroll={false}
-                  className={`flex items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 text-sm transition-colors ${
+                  className={`flex items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 ${
                     isActive
                       ? "bg-gray-900 text-white font-semibold"
                       : "text-gray-600 hover:bg-gray-100"
                   }`}
                 >
                   <span className="truncate">{b.name}</span>
-                  <span className={`text-xs shrink-0 ${isActive ? "text-white/60" : "text-gray-400"}`}>
+                  <span className={`text-xs shrink-0 ${isActive ? "text-white/70" : "text-gray-500"}`}>
                     {b.count}
                   </span>
                 </Link>
@@ -141,8 +129,8 @@ export function AraclarFilters({
 
       {/* Facet grupları */}
       {facetGroups.map((g) => (
-        <div key={g.key}>
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">{g.label}</p>
+        <div key={g.key} className="border-t border-gray-200/70 pt-5">
+          <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">{g.label}</p>
           <div className="flex flex-wrap gap-1.5">
             {g.options.map((o) => {
               const isActive = (selectedFacets[g.key] ?? []).includes(o.value);
@@ -153,29 +141,21 @@ export function AraclarFilters({
                   key={o.value}
                   href={facetToggleHref(g.key, o.value)}
                   scroll={false}
-                  className={`text-xs font-medium rounded-full px-2.5 py-1 border transition-colors ${
+                  aria-current={isActive || undefined}
+                  className={`text-xs font-medium rounded-full px-3 py-1.5 border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-1 ${
                     isActive
                       ? "bg-link-deep text-white border-link"
-                      : "bg-white text-gray-600 border-gray-200 hover:border-gray-300"
+                      : "bg-white text-gray-700 border-gray-200 hover:border-gray-400"
                   }`}
                 >
                   {o.label}
-                  <span className={isActive ? "text-white/60 ml-1" : "text-gray-400 ml-1"}>{o.count}</span>
+                  <span className={isActive ? "text-white/70 ml-1" : "text-gray-500 ml-1"}>{o.count}</span>
                 </Link>
               );
             })}
           </div>
         </div>
       ))}
-
-      {activeFilterCount > 0 && (
-        <Link
-          href={clearedHref}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-gray-900 transition-colors"
-        >
-          <span aria-hidden="true">✕</span> Tüm filtreleri temizle
-        </Link>
-      )}
     </div>
   );
 
@@ -186,7 +166,8 @@ export function AraclarFilters({
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="w-full flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700"
+          aria-expanded={open}
+          className="w-full flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
         >
           Filtrele
           {activeFilterCount > 0 && (
@@ -201,7 +182,7 @@ export function AraclarFilters({
 
       {/* Masaüstü — sol sütun */}
       <aside className="hidden lg:block w-56 shrink-0">
-        <div className="sticky top-32">{panel}</div>
+        <div className="sticky top-32 max-h-[calc(100vh-9rem)] overflow-y-auto [scrollbar-width:thin] pr-2 -mr-2 pb-4">{panel}</div>
       </aside>
     </>
   );

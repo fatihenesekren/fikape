@@ -334,6 +334,29 @@ async function AraclarResults({
   })();
 
   const seciliMarkaAdi = selectedBrand ? brands.find((b) => b.slug === selectedBrand)?.name : undefined;
+
+  // Seçili filtreler: her biri kaldırılabilir etiket (chip). Sayfa numarası sıfırlanır; kategori ve arama korunur.
+  const listeHref = (marka: string | undefined, facets: Record<string, string[]>): string => {
+    const qs = new URLSearchParams();
+    if (catSlug) qs.set("kategori", catSlug);
+    if (marka) qs.set("marka", marka);
+    if (q.length >= 2) qs.set("q", q);
+    for (const [k, vals] of Object.entries(facets)) if (vals.length) qs.set(k, vals.join(","));
+    const s = qs.toString();
+    return s ? `/araclar?${s}` : "/araclar";
+  };
+  const aktifFiltreler = [
+    ...(selectedBrand && seciliMarkaAdi
+      ? [{ key: "marka", label: `Marka: ${seciliMarkaAdi}`, href: listeHref(undefined, selectedFacets) }]
+      : []),
+    ...facetGroupViews.flatMap((g) =>
+      (selectedFacets[g.key] ?? []).map((v) => ({
+        key: `${g.key}:${v}`,
+        label: `${g.label}: ${g.options.find((o) => o.value === v)?.label ?? v}`,
+        href: listeHref(selectedBrand, { ...selectedFacets, [g.key]: (selectedFacets[g.key] ?? []).filter((x) => x !== v) }),
+      })),
+    ),
+  ];
   const durum = aramaSonucDurumu({ aramaVar, motorSayisi, benzer: fuzzy, filtreSonrasi: total });
   // Arama/filtre/sayfa varyantları dizine girmeyeceği için (noindex) liste verisi yalnız temel listede basılır.
   const jsonLdGoster = !aramaVar && safePage === 1 && activeFilterCount === 0;
@@ -367,12 +390,34 @@ async function AraclarResults({
             &ldquo;{q}&rdquo; için tam eşleşme bulunamadı — benzer sonuçları gösteriyoruz.
           </p>
         )}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4">
-          <p className="text-sm text-gray-500">{durum === "arama-benzer" ? `${total} benzer sonuç` : `${total} araç`}</p>
-          {activeFilterCount > 0 && pageItems.length > 0 && (
-            <Link href={clearedHref} className="text-sm font-semibold text-link hover:underline rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2">
-              Filtreleri temizle ({activeFilterCount})
-            </Link>
+        <div className="mb-5 space-y-3">
+          <p className="text-sm text-gray-600" aria-live="polite">
+            {durum === "arama-benzer" ? `${total} benzer sonuç` : `${total} araç`}
+          </p>
+          {aktifFiltreler.length > 0 && (
+            <div role="group" aria-label="Seçili filtreler" className="flex flex-wrap items-center gap-2">
+              {aktifFiltreler.map((f) => (
+                <Link
+                  key={f.key}
+                  href={f.href}
+                  scroll={false}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-gray-900 text-white text-xs font-medium pl-3 pr-2.5 py-1.5 hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+                >
+                  {f.label}
+                  <span aria-hidden="true" className="text-white/70">✕</span>
+                  <span className="sr-only">filtresini kaldır</span>
+                </Link>
+              ))}
+              {aktifFiltreler.length > 1 && pageItems.length > 0 && (
+                <Link
+                  href={clearedHref}
+                  scroll={false}
+                  className="text-xs font-semibold text-link hover:underline rounded px-1 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+                >
+                  Tümünü temizle
+                </Link>
+              )}
+            </div>
           )}
         </div>
 
