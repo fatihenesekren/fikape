@@ -70,3 +70,6 @@ Mevcut 13 alan tabloyla uyumlu (250 W, 48 V, 624 Wh, 25 km/s, 60 km, 7 vites, 20
 
 ## 7. tur — RKS RD8 2026 (kullanıcı tablosu)
 Mevcut 13 alan tabloyla uyumlu (250 W, 48 V, 576 Wh, 25 km/s, 70 km, 7 vites, 20" alaşım). Eklenen 8 alan: ağırlık 34 kg, azami taşıma 134 kg, şarj 8 sa (6–8'in üstü), XOD hidrolik disk, CST lastik (ölçü yok), Mozo kilitlenebilir ön süspansiyon, ön LED, M6 renkli LCD. Vites yazımı ayrıntılandırıldı. AI özeti yenilendi. Toplam 21 alan. Not: Epey 2024 "La Rose Ultra RD8" ön+arka süspansiyon diyor; kullanıcı tablosu yalnız ön süspansiyon → tablo esas alındı. Girilmeyen (alan yok): Tianeng batarya markası, krank/zincir/sele/gidon, CE/EN 15194, 2 yıl garanti.
+
+## 8. tur — Skyjet Nitro Pro 2025 (kullanıcı tablosu)
+Mevcut 16 alan tabloyla uyumlu (250 W, 36 V, 360 Wh, 25 km/s, 45 km, 6 sa, 6 vites). Eklenen 5 alan: kadro çelik (Epey 2024 alüminyum/alaşım diyordu; kullanıcı tablosu esas — yıl 2025 doğrulandı), 27 kg, azami taşıma 135 kg, ön LED, LCD gösterge. Güncellenen: fren → "Ön ve arka YX-DB06 çelik disk", süspansiyon → "Ön: çatal süspansiyon", jant → 20" alüminyum. AI özeti yenilendi. Toplam 21 alan. Girilmeyen (alan yok): Hupo batarya markası, krank/zincir/pedal, sele, gidon, 2 yıl garanti.
