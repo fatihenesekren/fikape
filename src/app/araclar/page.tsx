@@ -333,6 +333,7 @@ async function AraclarResults({
     return s ? `/araclar?${s}` : "/araclar";
   })();
 
+  const seciliMarkaAdi = selectedBrand ? brands.find((b) => b.slug === selectedBrand)?.name : undefined;
   const durum = aramaSonucDurumu({ aramaVar, motorSayisi, benzer: fuzzy, filtreSonrasi: total });
   // Arama/filtre/sayfa varyantları dizine girmeyeceği için (noindex) liste verisi yalnız temel listede basılır.
   const jsonLdGoster = !aramaVar && safePage === 1 && activeFilterCount === 0;
@@ -366,7 +367,14 @@ async function AraclarResults({
             &ldquo;{q}&rdquo; için tam eşleşme bulunamadı — benzer sonuçları gösteriyoruz.
           </p>
         )}
-        <p className="text-sm text-gray-500 mb-4">{durum === "arama-benzer" ? `${total} benzer sonuç` : `${total} araç`}</p>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4">
+          <p className="text-sm text-gray-500">{durum === "arama-benzer" ? `${total} benzer sonuç` : `${total} araç`}</p>
+          {activeFilterCount > 0 && (
+            <Link href={clearedHref} className="text-sm font-semibold text-link hover:underline rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2">
+              Filtreleri temizle ({activeFilterCount})
+            </Link>
+          )}
+        </div>
 
         {pageItems.length === 0 ? (
           <div className="rounded-2xl border-2 border-dashed border-gray-100 p-12 text-center">
@@ -408,8 +416,8 @@ async function AraclarResults({
                   />
                 );
               })}
-              {durum === "arama-benzer" && safePage === totalPages && (
-                <SearchNoMatchPrompt query={q} variant="grid-tail" kategori={catSlug} />
+              {safePage === totalPages && (
+                <SearchNoMatchPrompt query={aramaVar ? q : undefined} variant="grid-tail" kategori={catSlug} marka={seciliMarkaAdi} />
               )}
             </div>
 
@@ -424,7 +432,6 @@ async function AraclarResults({
                 ) : <span />}
               </div>
             )}
-            {durum === "arama-var" && <SearchNoMatchPrompt query={q} variant="inline" kategori={catSlug} />}
           </>
         )}
       </div>
