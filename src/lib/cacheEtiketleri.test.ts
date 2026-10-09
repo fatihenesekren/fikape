@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { CACHE_ETIKETLERI, GORSEL_KAYNAK_ETIKETI, KATALOG_EK_ETIKETI, VERI_CACHE_ETIKETI, VITRIN_ETIKETI } from "./cacheEtiketleri";
+import { ARAC_HAVUZU_ETIKETI, CACHE_ETIKETLERI, GORSEL_KAYNAK_ETIKETI, KATALOG_EK_ETIKETI, VERI_CACHE_ETIKETI, VITRIN_ETIKETI } from "./cacheEtiketleri";
 
 describe("cache etiketleri", () => {
   it("dört etiketin hepsi listede", () => {
-    expect([...CACHE_ETIKETLERI]).toEqual([VITRIN_ETIKETI, KATALOG_EK_ETIKETI, VERI_CACHE_ETIKETI, GORSEL_KAYNAK_ETIKETI]);
+    expect([...CACHE_ETIKETLERI]).toEqual([VITRIN_ETIKETI, KATALOG_EK_ETIKETI, VERI_CACHE_ETIKETI, GORSEL_KAYNAK_ETIKETI, ARAC_HAVUZU_ETIKETI]);
   });
   it("etiket adları kod tabanındaki değerlerle aynı", () => {
     expect(VITRIN_ETIKETI).toBe("vitrin");

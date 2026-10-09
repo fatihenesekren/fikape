@@ -9,6 +9,7 @@ import { normalizeAttributeValues } from "@/lib/vehicleTypes";
 import { findVerifiedVehicleImage } from "@/lib/wikidataImage";
 import { syncAiVehicleSummary } from "@/lib/ai/vehicleSummary";
 import { revalidateTag } from "next/cache";
+import { ARAC_HAVUZU_ETIKETI } from "@/lib/cacheEtiketleri";
 import { EK_ETIKET } from "@/lib/katalog/ekSunucu";
 import { ekYilGecerli } from "@/lib/katalog/ek";
 import { findExistingVehicles, birebirAyniArac } from "@/lib/existingVehicle";
@@ -225,6 +226,7 @@ export async function POST(
 
     // Araç artık ACTIVE: canlı katalog önbelleğini HEMEN geçersiz kıl (bildirim/AI özeti hata verse de forma düşsün)
     revalidateTag(EK_ETIKET, { expire: 0 });
+    revalidateTag(ARAC_HAVUZU_ETIKETI, { expire: 0 });
     try { await notifyGarageBrandFollowers(productId); } catch (e) { console.error("[notifyGarageBrandFollowers]", e); }
     await syncAiVehicleSummary(productId).catch((e) => console.error("[ai-vehicle-summary]", e));
     return NextResponse.json({ ok: true, action: "APPROVED", productId });
@@ -338,6 +340,7 @@ export async function POST(
   await syncAiVehicleSummary(product.id).catch((e) => console.error("[ai-vehicle-summary]", e));
 
   revalidateTag(EK_ETIKET, { expire: 0 });
+    revalidateTag(ARAC_HAVUZU_ETIKETI, { expire: 0 });
   return NextResponse.json({ ok: true, action: "APPROVED", productId: product.id, slug: product.slug });
 }
 

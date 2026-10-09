@@ -10,6 +10,7 @@ import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { KATEGORILER, KATEGORI_SLUGLARI } from "@/lib/kategoriler";
 import { aramaTemizle } from "@/lib/aramaDurumu";
 import { sayfaListesi } from "@/lib/sayfalama";
+import { getAracHavuzu, sureOlc, OLCUM_YAVAS_MS, OLCUM_BUYUK_HAVUZ } from "@/lib/aracHavuzu";
 import { listeParametresi, sonucVermeyenSecimleriAyikla } from "@/lib/araclarFiltre";
 import { searchProductIds } from "@/lib/searchProducts";
 import { aramaLoglansinMi, aramaSonucDurumu, havuzuMotorSirasinaGore } from "@/lib/aramaKumesi";
@@ -158,17 +159,12 @@ async function AraclarResults({
   page: number;
   selectedFacets: Record<string, string[]>;
 }) {
-  // 1) Kategori havuzu — marka/facet uygulanmadan (marka listesi + kapsam + sayımlar için)
-  const pool = await prisma.product.findMany({
-    where: { isActive: true, ...(catSlug ? { category: { slug: catSlug } } : {}) },
-    include: {
-      brand: true,
-      model: true,
-      category: true,
-      _count: { select: { reviews: { where: { status: "PUBLISHED" } } } },
-    },
-    orderBy: [{ brand: { name: "asc" } }, { model: { name: "asc" } }, { year: "desc" }],
-  });
+  const gecen = sureOlc();
+
+  // 1) Kategori havuzu — marka/facet uygulanmadan (marka listesi + kapsam + sayımlar için).
+  //    Yalnız gerekli sütunlar, etiketli kısa süreli önbellek (lib/aracHavuzu.ts).
+  const pool = await getAracHavuzu(catSlug);
+  const havuzMs = gecen();
 
   // 2) Arama — /arama ile aynı motor (kelime-AND + pg_trgm benzerlik); kategori SQL içinde süzülür.
   const aramaVar = q.length >= 2;
@@ -312,6 +308,12 @@ async function AraclarResults({
       select: { productId: true },
     });
     favoritedIds = new Set(favs.map((f) => f.productId));
+  }
+
+  // Ölçüm: yavaşlayan ya da büyüyen kategorileri erken görmek için (eşikler: 800 ms toplam, 1500 kayıt havuz)
+  const toplamMs = gecen();
+  if (toplamMs >= OLCUM_YAVAS_MS || pool.length >= OLCUM_BUYUK_HAVUZ) {
+    console.warn(`[araclar-olcum] ${JSON.stringify({ kategori: catSlug ?? "tumu", havuz: pool.length, sonuc: total, havuzMs, toplamMs, arama: aramaVar })}`);
   }
 
   const activeFilterCount =

@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
+import { ARAC_HAVUZU_ETIKETI } from "@/lib/cacheEtiketleri";
 import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { mergeAttributes } from "@/lib/mergeAttributes";
@@ -41,6 +43,7 @@ export async function PATCH(
       data: { attributes: merged as Parameters<typeof prisma.product.update>[0]["data"]["attributes"] },
     });
 
+    revalidateTag(ARAC_HAVUZU_ETIKETI, { expire: 0 }); // /araclar filtre/sayılar yeni özelliği görsün
     return NextResponse.json({ ok: true, attributes: merged });
   } catch (e) {
     console.error("[admin-product]", e);
