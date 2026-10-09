@@ -76,3 +76,6 @@ Mevcut 16 alan tabloyla uyumlu (250 W, 36 V, 360 Wh, 25 km/s, 45 km, 6 sa, 6 vit
 
 ## 9. tur — Volta VB5 2026 (kullanıcı tablosu)
 Mevcut 13 alan tabloyla uyumlu (250 W, 36 V, **10 Ah / 360 Wh**, 25 km/s, 40 km, çıkarılabilir, 120 kg) → A101'in 13,5 Ah (486 Wh) değeri **çürütüldü**, kayıttaki 10 Ah doğru. Eklenen 6 alan: şarj 5 sa (4–5'in üstü), 5 kademe destek, 24" jant, 24 x 1.95 lastik, dijital gösterge, 34,55 kg. Güncellenen: fren "Ön ve arka disk" → "Ön ve arka mekanik disk". AI özeti yenilendi. Toplam 19 alan. Girilmeyen (alan yok): kadro tipi alçak geçişli, tekerlek sayısı 3, sele, 2 yıl garanti.
+
+## 10. tur — RKS XS25 2023 (kullanıcı tablosu)
+Kullanıcı tablosu, daha önce girilen Epey 2023 kaydıyla birebir aynı (250 W, 36 V, 10 Ah/360 Wh, 45 km, 6 sa, 7 vites, 20", mekanik disk, ön yaylı süspansiyon, 27 kg) → kayıt zaten tabloyla dolu (26 alan), tutarsızlık yok. Yalnız yazımlar tabloya uyduruldu: kadro "Alüminyum / alaşım", jant "20" (alüminyum / alaşım jant)". Kullanıcı tablosunda olmayan mevcut alanlar korundu (124 kg taşıma, 20x4.0 lastik, yürüme desteği vb.). AI özeti yenilendi.
