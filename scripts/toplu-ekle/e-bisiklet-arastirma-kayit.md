@@ -85,3 +85,6 @@ Kayıt (id 1058) **Strada E-Lite 2025** olarak yeniden adlandırıldı: marka "S
 
 ## 12. tur — Corelli E-Lite-S 2024 (yeni kayıt, kullanıcı tablosu)
 Yeni kayıt (id 1065, `corelli-e-lite-s-2024`) `aracEkle` ile eklendi; 22 alan girildi (28" şehir, Aikema arka göbek motor 250 W / 45 Nm, LG hücreli 460,8 Wh, 40–60 km, Shimano Altus 8 vites, Shimano hidrolik disk, Suntour NEX maşa, ön-arka taşıyıcı ve aydınlatma, 20,8 kg). AI özeti yazıldı (onaylı). Girilmeyen: kadro boyu, sele borusu/gidon, orta göbek/zincir. Mevcut "Corelli E-City 2024" kaydı (özelliksiz, model resmi listede yok) DOKUNULMADI — kullanıcı "ekleyelim" dedi; E-City'nin kaldırılıp kaldırılmayacağı açık.
+
+## 13. tur — Corelli E-Lite-L 2024 (yeni kayıt, kullanıcı tablosu)
+Yeni kayıt (id 1066, `corelli-e-lite-l-2024`) `aracEkle` ile eklendi (E-Lite-S ile ad benzerliği uyarısı çıktı → farklı model olduğu için onaylandı); 20 alan girildi (28" şehir, Bafang M400 orta motor 250 W / 80 Nm, LG hücreli 460,8 Wh, 50–70 km, Shimano Deore 10 vites, Shimano hidrolik disk, Suntour NEX maşa, 24,7 kg). AI özeti yazıldı (onaylı). Girilmeyen: kadro boyu, sele borusu/gidon, orta göbek/zincir/aynakol detayı, taşıyıcı/aydınlatma (tabloda yok).
