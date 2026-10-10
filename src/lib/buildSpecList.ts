@@ -117,6 +117,17 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.tank_l          ? { label: "Depo",         value: `${attrs.tank_l} L` }            : null,
       attrs.weight_kg       ? { label: "Ağırlık",      value: `${attrs.weight_kg} kg` }        : null,
       attrs.seat_height_mm  ? { label: "Sele Yüks.",   value: `${attrs.seat_height_mm} mm` }   : null,
+      attrs.engine_type     ? { label: "Motor Tipi",   value: String(attrs.engine_type) }      : null,
+      attrs.final_drive     ? { label: "Aktarma",      value: String(attrs.final_drive) }      : null,
+      attrs.front_suspension ? { label: "Ön Süspansiyon", value: String(attrs.front_suspension) } : null,
+      attrs.rear_suspension ? { label: "Arka Süspansiyon", value: String(attrs.rear_suspension) } : null,
+      attrs.brake_type      ? { label: "Fren",         value: String(attrs.brake_type) }       : null,
+      attrs.front_tire      ? { label: "Ön Lastik",    value: String(attrs.front_tire) }       : null,
+      attrs.rear_tire       ? { label: "Arka Lastik",  value: String(attrs.rear_tire) }        : null,
+      attrs.moto_wheelbase_mm ? { label: "Dingil Mesafesi", value: `${attrs.moto_wheelbase_mm} mm` } : null,
+      attrs.ground_clearance_mm ? { label: "Yerden Yükseklik", value: `${attrs.ground_clearance_mm} mm` } : null,
+      attrs.fuel_consumption_l && fuelType !== "EV" ? { label: "Ort. Tüketim", value: `${attrs.fuel_consumption_l} L/100 km` } : null,
+      attrs.emission_standard ? { label: "Emisyon",    value: String(attrs.emission_standard) } : null,
       // EV'ye özel alanlar — benzinli bir motosiklette bu alanların (özellikle
       // "Çıkarılabilir Batarya") gösterilmesi anlamsız; admin formunda showIf
       // ile zaten girilmesi engellendi (specFields.ts), burada da (eski/hatalı
