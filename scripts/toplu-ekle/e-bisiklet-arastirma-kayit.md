@@ -167,3 +167,6 @@ Knaus Nordwind 600 UE 2027 (id 1011) toplam uzunluk 805 → 865 cm yapıldı (ku
 
 ## 33. tur — Karavan: boş yatak düzeni (2026-10-10)
 7 kayıtta bed_layout boştu; 6sı niteliksel metinle dolduruldu (ölçü kaynaklarda bulunamadı, uydurulmadı): Adria Altea 432 PX 2023 (önde Fransız yatak + yatağa dönüşen oturma grubu; satıcı ilanları), Frankia Neo Cruiser 7.0 L 2025 ve Facelift 2026 (boyuna tekli yataklar, birleştirilebilir; üretici sayfası), Hobby Premium 650 UFe 2017 (arkada queen yatak + önde oturma grubu yatağı; Promobil: Prestige 650 UFf planı Premium planını devralıyor, UFe için doğrudan kaynak yok, tahmini güven ~%70), Knaus Nordwind 600 UE 2027 (arkada iki ayrı boyuna tekli yatak, önde yuvarlak oturma grubu; basın), Knaus Südwind 500 EU 2026 (önde ayrı tekli yataklar, arkada yatağa dönüşen yuvarlak oturma grubu; Promobil). Doldurulmayan: Knaus Sky-i 2023 (kayıt adı plan içermiyor; Sky TI/Sky Wave sonuçları karışıyor).
+
+## 34. tur — Kamyonet: pikap koltuk sayısı (2026-10-10)
+12 çift kabinli pikapta seat_count boştu (alan pikap formunda gizli ama araç sayfasındaki özellik listesi gösteriyor); hepsine 5 kişi girildi (çift kabin standart yerleşim). Ford F-150 XLT için 5 (standart tekli koltuklu düzen; bench seçeneğiyle 6 olabilir). Van/camlı van/minivan/minibüs 24 kaydın koltuk sayısı zaten doluydu.
