@@ -105,3 +105,6 @@ Yeni kayıt (id 1067, `salcano-cappadocia-1-2022`) `aracEkle` ile eklendi; 13 al
 
 ## 16. tur — Salcano Cappadocia 2 2022 (yeni kayıt, kullanıcı tablosu)
 Yeni kayıt (id 1068, `salcano-cappadocia-2-2022`) `aracEkle` ile eklendi (Cappadocia 1 ile ad benzerliği → farklı model, onaylandı); 13 alan girildi (27,5" hardtail MTB, Bafang arka göbek motoru 249 W, 36 V 540 Wh kadroya entegre batarya, Altus 8 vites, hidrolik disk MT200, Zoom yaylı mekanik kilitli ön maşa, arka süspansiyon yok, Maxxis Crossmark II 27,5 x 2,25). Batarya çıkarılabilirliği, menzil/hız/ağırlık tabloda yok. AI özeti yazıldı (onaylı); görseli kullanıcı ekleyecek.
+
+## 17. tur — Skyjet XS25 2023 → Skyjet S25 2023 (kullanıcı tablosu)
+Kayıt (id 1049) **Skyjet S25 2023** olarak yeniden adlandırıldı (model "XS25" → "S25", eski model adresi alias; ürün adresi skyjet-xs25-2023 sabit). 19 alan girildi (16" katlanabilir, RKS 250 W motor, 25 km/sa, 36 V 270 Wh, tek vites, mekanik disk, LCD, aydınlatma, 22 kg, 118 kg). Menzil 25–35 km ve şarj 4–6 saat aralık olduğu için üst değerler (35 km, 6 sa) girildi, özet metinde aralık yazıldı. Fotoğraf korundu. "Model resmi listede yok" grubu boşaldı.
