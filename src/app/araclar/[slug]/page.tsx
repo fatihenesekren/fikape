@@ -49,6 +49,7 @@ import { buildSpecList } from "@/lib/buildSpecList";
 import { buildKamyonetHeroSpecs } from "@/lib/heroSpecsKamyonet";
 import { buildEbikeHeroSpecs } from "@/lib/heroSpecsEbike";
 import { BackdropImage } from "@/components/BackdropImage";
+import { getImageBackdrop } from "@/lib/imageBackdrop";
 
 export async function generateMetadata({
   params,
@@ -159,8 +160,9 @@ export default async function VehicleDetailPage({
   // Katalog görselinin yazar/lisans atfı (kayıtlı bilgi ya da Commons adresinden)
   const gorselAtfi = imageUrl ? await gorselKredisi(imageUrl, product.imageUrl ? product.imageCredit : null) : null;
 
+  const katalogZemini = imageUrl ? await getImageBackdrop(imageUrl).catch(() => null) : null;
   const sliderPhotos = [
-    ...(imageUrl ? [{ url: imageUrl, label: "Katalog", atif: gorselAtfi }] : []),
+    ...(imageUrl ? [{ url: imageUrl, label: "Katalog", atif: gorselAtfi, zemin: katalogZemini?.kind === "plain" ? katalogZemini.color : null }] : []),
     ...product.photos.map((p) => ({
       url: p.url,
       label: p.uploadedBy?.displayName ?? "Kullanıcı fotoğrafı",

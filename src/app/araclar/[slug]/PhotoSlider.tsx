@@ -11,6 +11,7 @@ interface Photo {
   url: string;
   label?: string; // örn. "Kullanıcı fotoğrafı"
   atif?: GorselKredisi | null; // yalnız katalog karesi: yazar + lisans
+  zemin?: string | null; // düz (stüdyo) zeminli fotoğrafın köşe rengi; varsa bulanık kopya yerine bu renk kullanılır
 }
 
 interface Props {
@@ -67,20 +68,29 @@ function ZoomToolbar({ scale, onScale }: { scale: number; onScale: (scale: numbe
   );
 }
 
-function SliderFrame({ photo, alt, index }: { photo: Photo; alt: string; index: number }) {
+// Fotoğrafın arkası: düz zeminliyse o renk (kutu içinde kutu görünmez), değilse bulanık kopya.
+function Zemin({ photo, preload }: { photo: Photo; preload: boolean }) {
+  if (photo.zemin) return <div aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: photo.zemin }} />;
   return (
-    <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden">
-      {/* Blur arka plan */}
+    <>
       <Image
         src={photo.url}
         alt=""
         aria-hidden="true"
         fill
         sizes="(max-width: 1024px) 100vw, 1024px"
-        preload={index === 0}
+        preload={preload}
         className="object-cover scale-110 blur-xl opacity-60"
       />
       <div className="absolute inset-0 bg-black/20" />
+    </>
+  );
+}
+
+function SliderFrame({ photo, alt, index }: { photo: Photo; alt: string; index: number }) {
+  return (
+    <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden">
+      <Zemin photo={photo} preload={index === 0} />
       {/* Asıl fotoğraf */}
       <Image
         src={photo.url}
@@ -158,17 +168,7 @@ export function PhotoSlider({ photos, alt }: Props) {
                   i === current ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
               >
-                {/* Blur arka plan */}
-                <Image
-                  src={photo.url}
-                  alt=""
-                  aria-hidden="true"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 1024px"
-                  preload={i === 0}
-                  className="object-cover scale-110 blur-xl opacity-60"
-                />
-                <div className="absolute inset-0 bg-black/20" />
+                <Zemin photo={photo} preload={i === 0} />
                 {/* Asıl fotoğraf */}
                 <Image
                   src={photo.url}

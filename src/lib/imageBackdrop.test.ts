@@ -17,37 +17,35 @@ const boya = (d: Buffer, x0: number, y0: number, w: number, h: number, v: number
 
 describe("görsel zemin sınıflandırma", () => {
   it("beyaz zemin düz sayılır, renk köşelerden gelir", () => {
-    expect(siniflandirRaw(duz(255, 255, 255), false)).toEqual({ kind: "plain", color: "#ffffff" });
-    expect(siniflandirRaw(duz(240, 244, 247), true)).toEqual({ kind: "plain", color: "#f0f4f7" });
+    expect(siniflandirRaw(duz(255, 255, 255))).toEqual({ kind: "plain", color: "#ffffff" });
+    expect(siniflandirRaw(duz(240, 244, 247))).toEqual({ kind: "plain", color: "#f0f4f7" });
   });
-  it("ortadaki nesne zemini bozmaz; alt kısımdaki tekerlek/gölge sayılmaz", () => {
+  it("ortadaki nesne zemini bozmaz; alt kenara değen tekerlek/gölge hiç sayılmaz", () => {
     const d = duz(255, 255, 255);
     boya(d, 8, 10, 16, 14, 20);   // ortada nesne
-    boya(d, 0, 24, 6, 8, 30);     // sol altta tekerlek kenara değiyor
-    expect(siniflandirRaw(d, false).kind).toBe("plain");
+    boya(d, 0, 28, 32, 4, 150);   // alt kenarın tamamı gölge/zemin (%100) → alt kenar örneklenmez
+    expect(siniflandirRaw(d).kind).toBe("plain");
   });
-  it("kare fotoğrafta yan kenar sütunlarının büyük kısmı doluysa → düz değil", () => {
-    const d = duz(255, 255, 255);
-    boya(d, 0, 4, 3, 20, 30); // sol kenarın 20/32 satırı dolu → toplam sapma ≈ %31
-    expect(siniflandirRaw(d, false).kind).toBe("busy");
-    expect(siniflandirRaw(d, true).kind).toBe("plain"); // geniş fotoğrafta yanlarda boşluk oluşmaz
+  it("nesne üst kenarın %30'undan, yan kenarın %40'ından fazlasına değiyorsa → düz değil", () => {
+    const ust = duz(255, 255, 255); boya(ust, 8, 0, 14, 3, 30);   // üst kenar %44
+    expect(siniflandirRaw(ust).kind).toBe("busy");
+    const sol = duz(255, 255, 255); boya(sol, 0, 4, 3, 20, 30);   // sol kenar %63
+    expect(siniflandirRaw(sol).kind).toBe("busy");
+    const sag = duz(255, 255, 255); boya(sag, N - 3, 4, 3, 16, 30); // sağ kenar %50
+    expect(siniflandirRaw(sag).kind).toBe("busy");
   });
-  it("kare fotoğrafta tekerlek ucu gibi küçük yan temas (≤ %25) zemini bozmaz", () => {
+  it("gidon/sele ucu gibi küçük temas (≤ %30) zemini bozmaz (beyaz stüdyo fotoğrafı kırpılmaz)", () => {
     const d = duz(255, 255, 255);
-    boya(d, 0, 8, 3, 10, 30); // sol kenarın 10/32 satırı → toplam ≈ %16
-    expect(siniflandirRaw(d, false)).toEqual({ kind: "plain", color: "#ffffff" });
-    boya(d, N - 3, 8, 3, 12, 30); // sağ kenar da 12 satır → toplam ≈ %34 → artık busy
-    expect(siniflandirRaw(d, false).kind).toBe("busy");
-  });
-  it("geniş fotoğrafta üst kenara değen nesne → düz değil", () => {
-    const d = duz(255, 255, 255);
-    boya(d, 13, 0, 6, 3, 30);
-    expect(siniflandirRaw(d, true).kind).toBe("busy");
+    boya(d, 13, 0, 6, 3, 30);   // üst kenar %19
+    boya(d, 0, 8, 3, 12, 30);   // sol kenar %38 (≤ %40)
+    expect(siniflandirRaw(d)).toEqual({ kind: "plain", color: "#ffffff" });
+    boya(d, N - 3, 8, 3, 12, 30); // sağ kenar da %38 → ayrı ayrı eşik altında, hâlâ düz
+    expect(siniflandirRaw(d).kind).toBe("plain");
   });
   it("köşeler birbirinden çok farklıysa (gradyan/gerçek arka plan) düz değil", () => {
     const d = duz(255, 255, 255);
     boya(d, 0, 0, 3, 3, 90);
-    expect(siniflandirRaw(d, false).kind).toBe("busy");
+    expect(siniflandirRaw(d).kind).toBe("busy");
   });
   it("buffer: şeffaf PNG beyaza düzleştirilir; gürültülü fotoğraf busy", async () => {
     const seffaf = await sharp({ create: { width: 64, height: 64, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } }).png().toBuffer();

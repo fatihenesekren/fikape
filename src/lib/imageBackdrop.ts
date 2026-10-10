@@ -20,41 +20,45 @@ function patch(data: Buffer, x0: number, y0: number, w: number, h: number): { me
 const fark = (a: RGB, b: RGB) => Math.max(Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]), Math.abs(a[2] - b[2]));
 const hex = (m: RGB) => "#" + m.map((v) => Math.round(v).toString(16).padStart(2, "0")).join("");
 
+/** Üst kenar çizgisinin en çok bu oranı zeminden sapabilir (gidon/sele ucu gibi küçük temas). */
+export const UST_KENAR_ESIGI = 0.3;
+/** Sol/sağ kenar çizgisi için eşik (tekerlek uçları fotoğraf kenarına teğet geçebilir). */
+export const YAN_KENAR_ESIGI = 0.4;
+
 /**
  * Saf karar fonksiyonu (test edilebilir): 32×32 RGB ham veriden zemin türü.
- * Boşluk nerede oluşacaksa orası örneklenir: GENİŞ fotoğraf (en/boy ≥ 1.25) kutuya sığınca üstte/altta boşluk kalır →
- * üst köşeler + üst orta; KARE/DİKEY fotoğrafta yanlarda kalır → üst köşeler + yan ortalar (üst yarı).
- * Alt kısım hiç örneklenmez: tekerlek/gölge/zemin çizgisi kenara değer (beyaz zeminli fotoğrafta bile).
- * KARE/DİKEY fotoğrafta yan kenar sütunlarının (x=0 ve x=N-1, tüm satırlar) en çok %25'i zeminden sapıyorsa
- * (ör. tekerlek ucunun kenara değmesi) zemin yine düzdür: kırpmak (cover) nesneyi (sele, bagaj) keser, oysa
- * kutuyu zemin rengine boyayıp sığdırmak (contain) bu küçük teması görünür bir kutu çizgisine dönüştürmez.
+ * 1) Üst iki köşe düz ve birbirine yakın olmalı (gradyan/gerçek arka plan → "busy").
+ * 2) Üst kenar çizgisinde zeminden sapan piksel oranı en çok %30, sol ve sağ kenar çizgilerinde en çok %40 olmalı.
+ *    Boşluk hangi kenarda oluşursa oluşsun (kutunun oranı fotoğraftan farklıdır) görünür bir dikiş yalnızca nesne
+ *    o kenara yaygın biçimde değiyorsa çıkar; tekerlek/gidon ucu gibi küçük temas beyaz zeminde fark edilmez,
+ *    oysa kırpmak (cover) nesneyi (sele, tekerlek altı) keser.
+ * 3) ALT kenar hiç örneklenmez: tekerlek, yer gölgesi ve zemin çizgisi doğal olarak alt kenara değer.
+ * Eski sürüm üstteki kalın bir yamaya (~%9) bakıyordu; beyaz stüdyo fotoğraflarını (gidon ucu yamaya girince) gereksiz kırpıyordu.
  */
-export const YAN_KENAR_SAPMA_ESIGI = 0.25;
-export function siniflandirRaw(data: Buffer, genis: boolean): Backdrop {
+export function siniflandirRaw(data: Buffer): Backdrop {
   const koseler = [patch(data, 0, 0, 3, 3), patch(data, N - 3, 0, 3, 3)];
   const ort = [0, 1, 2].map((c) => (koseler[0].mean[c] + koseler[1].mean[c]) / 2) as RGB;
   if (koseler.some((k) => k.sd > 14 || fark(k.mean, ort) > 14)) return { kind: "busy" };
-  if (genis) {
-    const ust = patch(data, 13, 0, 6, 3);
-    if (ust.sd > 14 || fark(ust.mean, ort) > 20) return { kind: "busy" };
-    return { kind: "plain", color: hex(ort) };
-  }
-  let sapan = 0;
-  for (let y = 0; y < N; y++) {
-    for (const x of [0, N - 1]) {
+  const kenarlar: { cizgi: (i: number) => [number, number]; esik: number }[] = [
+    { cizgi: (i) => [i, 0], esik: UST_KENAR_ESIGI },
+    { cizgi: (i) => [0, i], esik: YAN_KENAR_ESIGI },
+    { cizgi: (i) => [N - 1, i], esik: YAN_KENAR_ESIGI },
+  ];
+  for (const { cizgi, esik } of kenarlar) {
+    let sapan = 0;
+    for (let i = 0; i < N; i++) {
+      const [x, y] = cizgi(i);
       const px = [0, 1, 2].map((c) => data[(y * N + x) * 3 + c]) as RGB;
       if (fark(px, ort) > 24) sapan++;
     }
+    if (sapan / N > esik) return { kind: "busy" };
   }
-  if (sapan / (2 * N) > YAN_KENAR_SAPMA_ESIGI) return { kind: "busy" };
   return { kind: "plain", color: hex(ort) };
 }
 
 export async function siniflandirBuffer(buf: Buffer): Promise<Backdrop> {
-  const meta = await sharp(buf).metadata();
-  const genis = (meta.width ?? 1) / (meta.height ?? 1) >= 1.25;
   const data = await sharp(buf).flatten({ background: "#ffffff" }).resize(N, N, { fit: "fill" }).removeAlpha().raw().toBuffer();
-  return siniflandirRaw(data, genis);
+  return siniflandirRaw(data);
 }
 
 async function hesapla(url: string): Promise<Backdrop> {
@@ -66,7 +70,7 @@ async function hesapla(url: string): Promise<Backdrop> {
 /** Aynı görsel adresi (sürüm parametresiyle birlikte) için sonuç kalıcı önbelleklenir; hata olursa "unknown" döner (önbelleklenmez). */
 export async function getImageBackdrop(url: string): Promise<Backdrop> {
   try {
-    return await unstable_cache(() => hesapla(url), ["image-backdrop-v2", url], { revalidate: 60 * 60 * 24 * 365 })();
+    return await unstable_cache(() => hesapla(url), ["image-backdrop-v3", url], { revalidate: 60 * 60 * 24 * 365 })();
   } catch {
     return { kind: "unknown" };
   }
