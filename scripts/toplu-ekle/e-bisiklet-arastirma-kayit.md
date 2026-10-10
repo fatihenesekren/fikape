@@ -112,3 +112,5 @@ Kayıt (id 1049) **Skyjet S25 2023** olarak yeniden adlandırıldı (model "XS25
 Salcano Wind 1 2022 AI özeti yeniden yazıldı: özellik listesi tonundan çıkarılıp ≤2 rakamlı, kuruluma yorumlayan teknik metne çevrildi (Wh/W/V rakamları kaldırıldı; özellikler tabloda zaten var).
 
 Salcano Cappadocia 1 (1067), Cappadocia 2 (1068) ve Skyjet S25 (1049) AI özetleri aynı tona (az rakamlı, kuruluma yorumlayan teknik metin) yeniden yazıldı.
+
+Temizlik: Salcano Wind 1 (1056) ve Skyjet S25 (1049) ürün adresleri yeni adlarına çekildi (salcano-wind-1-2022, skyjet-s25-2023), görsel dosyaları yeni adla taşındı, eski dosyalar silindi; eski model alias kayıtları (salcano-e-bike-ex1, skyjet-xs25) silindi. E-bisiklette ad–adres uyumsuz kayıt kalmadı; "XS25" yalnız RKS XS25 için geçiyor (doğru).
