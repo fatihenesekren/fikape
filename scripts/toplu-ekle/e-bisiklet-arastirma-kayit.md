@@ -120,3 +120,6 @@ Kayıt (id 1055) 19 alana tamamlandı: fatbike (enumda yok → MTB), Bafang M410
 
 ## 19. tur — RKS MX25 Pro 2026 (kullanıcı tablosu)
 Kayıt (id 1059) 17 alana tamamlandı (katlanır 20", RKS arka hub motor 250 W, 36 V 280,8 Wh, 6 vites Shimano, ön-arka disk, LCD, LED aydınlatma, Kenda lastik). Aralıklı değerlerde üst değerler girildi (menzil 45 km, şarj 6 sa; 35–45 / 4–6 tablo aralığı özette). Motor tipi tabloda "elektrik motoru"; mevcut hub-drive korundu. Tabloda olmayan/doğrulanmamış: süspansiyon, ağırlık, taşıma kapasitesi, lastik ölçüsü, bagaj, çıkarılabilir batarya (girilmedi; sibling MX25 verisi kopyalanmadı). CE/EN 15194 ve 2 yıl garanti için alan yok. AI özeti yeni tonda yazıldı.
+
+## 20. tur — RKS Lesso Pro 2026 (kullanıcı tablosu)
+Kayıt (id 1033) kullanıcı tablosuna göre yeniden girildi (17 alan): bisiklet tipi katlanabilir → şehir (tabloda katlanır yok, alçak girişli kadro), menzil 50 → 40 km (tablo 35–40), şarj 6 sa, 360 Wh, 24 kg, 124 kg, kilitlenebilir ön çatal, S866 LCD, 7 vites Shimano. Tabloda olmayan eski alanlar (bagaj, çıkarılabilir batarya, çamurluk) kaldırıldı. Aralıkta üst değer girildi; alternatif 35–45 km girilmedi. Arka süspansiyon doğrulanmadı. Yolcu selesi/sırtlık, garanti, sertifika, renk için alan yok. AI özeti (PENDING idi) yeni tonda yazıldı ve onaylandı.
