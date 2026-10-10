@@ -160,6 +160,14 @@ export function ImageManager({ products, initialOnlyMissing = false }: { product
                     src={st.url}
                     alt={product.name}
                     loading="lazy"
+                    // Yükleme hemen sonrası Blob CDN'i yeni dosyayı bazen birkaç saniye geç sunar; kırık görsel kalmasın diye bir kez yeniden dene
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      if (img.dataset.yeniden) return;
+                      img.dataset.yeniden = "1";
+                      const kaynak = img.src;
+                      setTimeout(() => { img.src = `${kaynak}${kaynak.includes("?") ? "&" : "?"}r=${Date.now()}`; }, 1500);
+                    }}
                     className="w-full h-full object-cover"
                   />
                 ) : (
