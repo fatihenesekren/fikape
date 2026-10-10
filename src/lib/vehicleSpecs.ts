@@ -62,6 +62,8 @@ const REASONABLE_RANGES: Record<string, [number, number]> = {
   battery_kwh:      [10, 200],
   ev_range_km:      [50, 800],
   motor_watt:       [100, 15000],
+  motor_peak_watt:  [100, 20000],
+  max_slope_pct:    [3, 60],
   range_km:         [5, 500],
   battery_wh:       [100, 3000],
   seat_height_mm:   [600, 950],

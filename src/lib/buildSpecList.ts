@@ -89,6 +89,7 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
     }
     if (categorySlug === "e-scooter") return [
       attrs.motor_watt    ? { label: "Motor Gücü",     value: `${attrs.motor_watt} W` }       : null,
+      attrs.motor_peak_watt ? { label: "Tepe Motor Gücü", value: `${attrs.motor_peak_watt} W` } : null,
       attrs.range_km      ? { label: "Menzil",         value: `${attrs.range_km} km` }         : null,
       attrs.max_speed_kmh ? { label: "Maks. Hız",      value: `${attrs.max_speed_kmh} km/s` } : null,
       attrs.battery_wh    ? { label: "Batarya",        value: `${attrs.battery_wh} Wh` }       : null,
@@ -97,6 +98,10 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.ip_rating     ? { label: "Su Geçirmezlik", value: String(attrs.ip_rating) }        : null,
       attrs.max_load_kg   ? { label: "Maks. Yük",      value: `${attrs.max_load_kg} kg` }      : null,
       attrs.tire_inch     ? { label: "Lastik",         value: `${attrs.tire_inch}"` }           : null,
+      attrs.brake_type    ? { label: "Fren",           value: String(attrs.brake_type) }         : null,
+      attrs.suspension    ? { label: "Süspansiyon",    value: String(attrs.suspension) }         : null,
+      attrs.display       ? { label: "Ekran",          value: String(attrs.display) }            : null,
+      attrs.max_slope_pct ? { label: "Maks. Eğim",     value: `%${attrs.max_slope_pct}` }        : null,
       attrs.removable_battery != null ? { label: "Çıkarılabilir Batarya", value: attrs.removable_battery ? "Var" : "Yok" } : null,
       attrs.foldable != null ? { label: "Katlanabilir", value: attrs.foldable ? "Var" : "Yok" } : null,
     ];
