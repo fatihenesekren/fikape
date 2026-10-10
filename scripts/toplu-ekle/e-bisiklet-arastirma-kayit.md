@@ -170,3 +170,4 @@ Knaus Nordwind 600 UE 2027 (id 1011) toplam uzunluk 805 → 865 cm yapıldı (ku
 
 ## 34. tur — Kamyonet: pikap koltuk sayısı (2026-10-10)
 12 çift kabinli pikapta seat_count boştu (alan pikap formunda gizli ama araç sayfasındaki özellik listesi gösteriyor); hepsine 5 kişi girildi (çift kabin standart yerleşim). Ford F-150 XLT için 5 (standart tekli koltuklu düzen; bench seçeneğiyle 6 olabilir). Van/camlı van/minivan/minibüs 24 kaydın koltuk sayısı zaten doluydu.
+Knaus Sky-i 2023 (id 50) yatak düzeni: kayıttaki 744 cm uzunluk Sky i 700 LEG ile birebir uyuşuyor (bayi arşivi: tekli yataklar + hubbett + L oturma grubu, 744 cm); kayıt "arkada ayrı tekli yataklar + hubbett + L oturma grubu" olarak dolduruldu. Güven yaklaşık %70 (bayi arşivi eski model yılından, plan kodu kayıtta yok); 4 kişilik kayıtla (2 tekli + hubbett) uyumlu.
