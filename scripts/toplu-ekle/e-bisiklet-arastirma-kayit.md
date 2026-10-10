@@ -94,3 +94,6 @@ Kayıt (id 1054, `corelli-e-city-2024`, özelliksiz; model Corelli'nin resmi lis
 
 ## 15. tur — Kuba Speedlight Pro 2024 (kullanıcı tablosu)
 Epey 2024'ten girilen 12 alan kullanıcı tablosuyla birebir uyumlu çıktı (6 vites, mekanik disk, alüminyum/alaşım, 20", süspansiyon yok, 22 kg, 36 V, 280,8 Wh, 250 W, 25 km, 5 sa, katlanabilir) → yıl 2024 ve veriler ikinci kaynakla doğrulandı. Eklenen 11 alan: motor tipi (arka tekerlek elektrik motoru → hub), 25 km/s, standart pedelec sınıfı, Shimano 6 vites, lastik 20 x 1,75, azami taşıma 110 kg, LCD, ön-arka LED aydınlatma, çamurluklar, arka bagaj. Güncellenen: fren → "Ön ve arka mekanik disk". AI özeti yenilendi. Toplam 23 alan.
+
+## 16. tur — Kuba Speedlight 2022 (kullanıcı tablosu, 2. kez)
+Mevcut 13 alanın dokuzu yeni tabloyla uyumlu. **Çelişki:** azami taşıma önceki tabloda 100 kg, bu tabloda 109 kg → kullanıcının son değeri esas alındı (109). Eklenen 13 alan: hub motor, 25 km/s, standart pedelec, 5 destek kademesi, çıkarılabilir batarya, 21 kg, Shimano 7 vites, LCD, ön-arka LED, çamurluk, bagaj, katlanmış ölçü (90 × 40 cm). Lastik "CST 20" şehir tipi". AI özeti yenilendi. Toplam 26 alan. Girilmeyen (alan yok): kadro boyu, katlanabilir pedal/sele/gidon ayarı, korna, telli jant, açık ölçüler, 2 yıl garanti.
