@@ -130,3 +130,6 @@ Kayıt (id 1060) 19 alana tamamlandı: katlanır 20" fat (CST 20 x 4,0), RKS ark
 
 ## 22. tur — RKS MX55 Pro 2026 (kullanıcı tablosu)
 Kayıt (id 1036) tabloya göre yeniden girildi (18 alan): vites 6 → 7, 270 Wh, menzil 35 / şarj 6 sa (üst değer; aralık 25–35, 4–6), S866 LCD, bagaj + çamurluk, 22 kg, 122 kg (satıcılarda 120–125). Tabloda doğrulanmayan/olmayan eski alanlar kaldırıldı: kadro malzemesi (Alüminyum), yürüme desteği, çıkarılabilir batarya. Lastik ölçüsü, süspansiyon doğrulanmadı. Garanti, renk, mevzuat notu için alan yok. AI özeti (PENDING idi) yeni tonda yazıldı ve onaylandı.
+
+## 23. tur — RKS RSI-X-PRO 2026 (kullanıcı tablosu)
+Kayıt (id 1061) 19 alana tamamlandı: kadro "Alüminyum" → "Çelik" (tabloda "bazı katalog kayıtlarında"; kaynaklar çelişkili, özette belirtildi), lastik "Fat tire" → CST 20", 360 Wh, menzil 45 / şarj 6 sa (tablo 35–45, üretici 45–60; üretici aralığı girilmedi), 24 kg (alternatif 27–33), 135 kg (alternatif 127–150), YX-DB06 disk, S866 LCD, plastik çamurluk, Shimano TX50/RD-300D/MF-TZ500 + KMC27 + Prowheel krank vites satırında. Lastik ölçüsü, arka süspansiyon, garanti doğrulanmadı. AI özeti yeni tonda yazıldı.
