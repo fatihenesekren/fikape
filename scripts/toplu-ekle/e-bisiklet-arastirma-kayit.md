@@ -151,3 +151,6 @@ Roxform R-300 2023 AI özeti sadeleştirildi: uyarı yığını tek hız-sınıf
 
 ## 28. tur — RKS RS3 Pro Max 2026 (kullanıcı tablosu)
 Kayıt (id 1032) tabloya göre yeniden girildi (14 alan): menzil 50 → 45 km (tablo 35–45, üst değer), şarj 6 sa, 360 Wh eklendi, CD408 zincir, ön-arka disk, süspansiyonlu çatal, LCD. Tabloda olmayan eski alanlar kaldırıldı: kadro malzemesi, 120 kg taşıma, yürüme desteği, çıkarılabilir batarya, bagaj, çamurluk. Ağırlık/taşıma doğrulanmadı. AI özeti (PENDING idi) yeni tonda yazıldı ve onaylandı.
+
+## 29. tur — Menzili boş 6 e-bisiklet (araştırma, değişiklik yok)
+Menzil alanı boş 6 kayıt arandı: Salcano Wind 1 / Cappadocia 1 / Cappadocia 2 2022 (Salcano resmi sayfaları, bikes4sale, Epey: km yok; Cappadocia 2 sayfasında yalnızca "günlük sürüşler için yeterli menzil"), Cube Kathmandu Hybrid Pro 625 2023 (bikes.de, Cube arşivi yönlendirdi/404: km yok), Trek Allant+ 7 Stagger 2023 (BIKE Magazin, Trek GB/FAQ: km yok), Strada E-Lite 2025 (resmi site bulunamadı, Akakçe 403). Kaynaksız değer yazılmadı; kararla alan boş bırakıldı. Not: Trek FAQ Allant+ 7 serisi için 500 Wh, BIKE Magazin 625 Wh diyor; kayıtta 625 Wh (doğrulanmadı). Açık: Salcano katalog/kullanım kılavuzu dosyaları okunmadı; kullanıcı kaynak verirse girilir.
