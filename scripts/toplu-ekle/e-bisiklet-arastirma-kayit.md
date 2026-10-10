@@ -190,3 +190,6 @@ Arora ZR7 Standart 2026 (id 828) sele yüksekliği 750 mm (kullanıcı kararı; 
 
 ## 38 tur — Motosiklet: %64 doluluktaki 4 kayıt (2026-10-11)
 Husqvarna Svartpilen 401 2025: tork 39 Nm (1000PS 2025 + Norveç ilanı), depo 13 L ve ağırlık 159 kg yakıtsız (Husqvarna AU resmi 2025 sayfası). KTM 390 Duke 2025: tork 39 Nm ve ağırlık 165 kg yakıtlı (KTM resmi 2025 teknik sayfa), depo 15 L (KTM India, Team-BHP, motoplanete; KTM resmi sayfada depo yok, güven ~%85). Triumph Speed 400 2025: tork 37,5 Nm, depo 13 L, ağırlık 170 kg ıslak (Triumph resmi); Scrambler 400 X 2025: tork 37,5 Nm, depo 13 L, ağırlık 179 kg ıslak (Triumph resmi). Ağırlık tanımı üreticiye göre değişiyor (yakıtsız / yakıtlı / ıslak): mevcut katalogdaki karışık uygulama sürdü. Azami hız: hiçbir üretici sayfası vermiyor, 4 kayıtta boş bırakıldı (tahmin yapılmadı).
+
+## 39. tur — Motosiklet: AI özeti olmayan/onaysız 27 kayıt (2026-10-11)
+10u özetsiz, 17si onay bekliyordu; 27sinin özeti yeni tonda (az rakamlı, kayıttaki veriye dayanan teknik yorum, konfor/memnuniyet iddiası yok) yazılıp onaylandı. Motor mimarisi bilgileri (iki silindirli, V-twin, boxer vb.) kayıtta olmayıp modelin bilinen yapısından yazıldı; ayrıntılı rakam kullanılmadı. Motosiklette onaysız/özetsiz kayıt kalmadı.
