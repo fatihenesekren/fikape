@@ -123,3 +123,4 @@ Kayıt (id 1059) 17 alana tamamlandı (katlanır 20", RKS arka hub motor 250 W, 
 
 ## 20. tur — RKS Lesso Pro 2026 (kullanıcı tablosu)
 Kayıt (id 1033) kullanıcı tablosuna göre yeniden girildi (17 alan): bisiklet tipi katlanabilir → şehir (tabloda katlanır yok, alçak girişli kadro), menzil 50 → 40 km (tablo 35–40), şarj 6 sa, 360 Wh, 24 kg, 124 kg, kilitlenebilir ön çatal, S866 LCD, 7 vites Shimano. Tabloda olmayan eski alanlar (bagaj, çıkarılabilir batarya, çamurluk) kaldırıldı. Aralıkta üst değer girildi; alternatif 35–45 km girilmedi. Arka süspansiyon doğrulanmadı. Yolcu selesi/sırtlık, garanti, sertifika, renk için alan yok. AI özeti (PENDING idi) yeni tonda yazıldı ve onaylandı.
+Düzeltme: "Alçak girişli kadro" kadro tipi, malzeme değil; frame_material alanı kaldırıldı (16 alan).
