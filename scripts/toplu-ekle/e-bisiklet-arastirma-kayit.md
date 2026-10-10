@@ -127,3 +127,6 @@ Düzeltme: "Alçak girişli kadro" kadro tipi, malzeme değil; frame_material al
 
 ## 21. tur — RKS XS35 2026 (kullanıcı tablosu)
 Kayıt (id 1060) 19 alana tamamlandı: katlanır 20" fat (CST 20 x 4,0), RKS arka hub motor 250 W, 36 V 360 Wh, menzil 40 / şarj 6 sa (üst değer; aralık 35–40, 4–6), 7 vites Shimano + CD408 zincir, mekanik disk, kilitlenebilir yaylı ön çatal, LCD, arka bagaj, 24 kg, 120 kg. Arka süspansiyon doğrulanmadı. Garanti, sertifika, renk, sele/krank/gidon için alan yok. Motor tipi tabloda "elektrik motoru"; mevcut hub-drive korundu. AI özeti yeni tonda yazıldı.
+
+## 22. tur — RKS MX55 Pro 2026 (kullanıcı tablosu)
+Kayıt (id 1036) tabloya göre yeniden girildi (18 alan): vites 6 → 7, 270 Wh, menzil 35 / şarj 6 sa (üst değer; aralık 25–35, 4–6), S866 LCD, bagaj + çamurluk, 22 kg, 122 kg (satıcılarda 120–125). Tabloda doğrulanmayan/olmayan eski alanlar kaldırıldı: kadro malzemesi (Alüminyum), yürüme desteği, çıkarılabilir batarya. Lastik ölçüsü, süspansiyon doğrulanmadı. Garanti, renk, mevzuat notu için alan yok. AI özeti (PENDING idi) yeni tonda yazıldı ve onaylandı.
