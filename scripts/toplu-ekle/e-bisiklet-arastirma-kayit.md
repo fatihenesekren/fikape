@@ -136,3 +136,6 @@ Kayıt (id 1061) 19 alana tamamlandı: kadro "Alüminyum" → "Çelik" (tabloda 
 
 ## 24. tur — Volta VB1 2026 (kullanıcı tablosu)
 Kayıt (id 1039; VB1 Neo 1040 ayrı kayıt, dokunulmadı) 19 alana tamamlandı: alüminyum katlanabilir 20" (20 x 1,75), BLDC arka göbek motor 250 W, 36 V, aralıklı değerlerde üst değer (316,8 Wh, menzil 42 km, şarj 6 sa; kaynaklar 7,8–8,8 Ah / 27–42 km, alternatif ilan 30–35 km), 22,5 kg, 110 kg, ön mekanik + arka hidrolik disk, Shimano 7 vites, LCD, aydınlatma, bagaj. Arka süspansiyon doğrulanmadı; garanti, renk, standart için alan yok. AI özeti yeni tonda yazıldı.
+
+## 25. tur — Volta VB1 Neo 2026 (kullanıcı tablosu)
+Kayıt (id 1040) 20 alana tamamlandı; eski menzil 55 km yanlıştı → 42 km (tablo 27–42, üst değer). 280,8 Wh, şarj 5 sa (4,5–5), BLDC arka göbek 250 W, 5 destek kademesi, 22,5 kg (bisiklet kütlesi; toplam 24,8 kg girilmedi), 110 kg, ön mekanik + arka hidrolik disk (160 mm), teleskopik ön çatal, arka süspansiyon yok, LCD, ön LED, bagaj. Arka aydınlatma doğrulanmadı. Garanti, renk için alan yok. AI özeti yeni tonda yazıldı.
