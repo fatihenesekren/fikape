@@ -148,3 +148,6 @@ Super73 S2 2020 (id 1006): bisiklet tipi "şehir" girildi (fat/moped tarzı içi
 ## 27. tur — Roxform R-300 2023 (kullanıcı tablosu)
 Kayıt (id 1057) 19 alana tamamlandı: ağırlık (31 kg) kaldırıldı (tablo "sabit değer girilmemeli"), hub-drive motor, 460,8 Wh, aralıkta üst değerler (menzil 60 km, hız 35 km/sa, şarj 6 sa, taşıma 127 kg; ilan aralıkları 45–60 / 30–35 / 4–6 / 120–127), bagaj. Gaz kolu için alan yok (özette). 350 W+ ve 13–20 Ah varyantları girilmedi. AI özeti yeni tonda yazıldı.
 Roxform R-300 2023 AI özeti sadeleştirildi: uyarı yığını tek hız-sınıfı notuna indirildi, "düzensiz zeminlerde avantaj" gibi çıkarım kaldırıldı.
+
+## 28. tur — RKS RS3 Pro Max 2026 (kullanıcı tablosu)
+Kayıt (id 1032) tabloya göre yeniden girildi (14 alan): menzil 50 → 45 km (tablo 35–45, üst değer), şarj 6 sa, 360 Wh eklendi, CD408 zincir, ön-arka disk, süspansiyonlu çatal, LCD. Tabloda olmayan eski alanlar kaldırıldı: kadro malzemesi, 120 kg taşıma, yürüme desteği, çıkarılabilir batarya, bagaj, çamurluk. Ağırlık/taşıma doğrulanmadı. AI özeti (PENDING idi) yeni tonda yazıldı ve onaylandı.
