@@ -139,3 +139,6 @@ Kayıt (id 1039; VB1 Neo 1040 ayrı kayıt, dokunulmadı) 19 alana tamamlandı: 
 
 ## 25. tur — Volta VB1 Neo 2026 (kullanıcı tablosu)
 Kayıt (id 1040) 20 alana tamamlandı; eski menzil 55 km yanlıştı → 42 km (tablo 27–42, üst değer). 280,8 Wh, şarj 5 sa (4,5–5), BLDC arka göbek 250 W, 5 destek kademesi, 22,5 kg (bisiklet kütlesi; toplam 24,8 kg girilmedi), 110 kg, ön mekanik + arka hidrolik disk (160 mm), teleskopik ön çatal, arka süspansiyon yok, LCD, ön LED, bagaj. Arka aydınlatma doğrulanmadı. Garanti, renk için alan yok. AI özeti yeni tonda yazıldı.
+
+## 26. tur — Salcano Cappadocia 1 ve 2 (kullanıcı tabloları)
+Cappadocia 1 (id 1067): lastik Maxxis Crossmark II → Continental Cross King 27,5 x 2,2 (son tablo kazanır); diğer alanlar aynı. Cappadocia 2 (id 1068): azami taşıma kapasitesi 135 kg eklendi; diğer alanlar tabloyla aynı. Kadro boyları, kadro tipi/hız/menzil/ağırlık için alan yok ya da doğrulanmadı. İki AI özeti de güncellendi.
