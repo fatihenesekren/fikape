@@ -42,11 +42,11 @@ interface SearchParams {
   kategori?: string; marka?: string; q?: string; sayfa?: string;
   yakit?: string; govde?: string; segment?: string; tip?: string; cc?: string; guc?: string; cekis?: string;
   motor?: string; batarya?: string; menzil?: string; kabin?: string; vites?: string; hiz?: string; katlan?: string;
-  yatak?: string; uzunluk?: string; agirlik?: string; banyo?: string;
+  yatak?: string; uzunluk?: string; agirlik?: string; su?: string;
   koltuk?: string; sele?: string; abs?: string; yuk?: string; cekme?: string;
 }
 
-const FACET_KEYS = ["yakit", "govde", "segment", "tip", "cc", "guc", "cekis", "motor", "batarya", "menzil", "kabin", "vites", "hiz", "katlan", "yatak", "uzunluk", "agirlik", "banyo", "koltuk", "sele", "abs", "yuk", "cekme"] as const;
+const FACET_KEYS = ["yakit", "govde", "segment", "tip", "cc", "guc", "cekis", "motor", "batarya", "menzil", "kabin", "vites", "hiz", "katlan", "yatak", "uzunluk", "agirlik", "su", "koltuk", "sele", "abs", "yuk", "cekme"] as const;
 
 function parseSelectedFacets(params: SearchParams): Record<string, string[]> {
   const out: Record<string, string[]> = {};

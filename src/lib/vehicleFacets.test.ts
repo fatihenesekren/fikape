@@ -34,7 +34,7 @@ describe("e-bisiklet facet'leri", () => {
 describe("karavan facet'leri", () => {
   const groups = facetGroupsForCategory("karavan");
   it("5 grup, hepsi her zaman görünür ve Belirtilmemiş taşır", () => {
-    expect(groups.map((g) => g.key)).toEqual(["tip", "yatak", "uzunluk", "agirlik", "banyo"]);
+    expect(groups.map((g) => g.key)).toEqual(["tip", "yatak", "uzunluk", "agirlik", "su"]);
     for (const g of groups) {
       expect(g.alwaysShow).toBe(true);
       expect(g.options[g.options.length - 1].value).toBe("na");
@@ -47,11 +47,13 @@ describe("karavan facet'leri", () => {
     expect(productMatchesFacets({ total_weight_kg: 3500 }, groups, { agirlik: ["1301-3500"] })).toBe(true);
     expect(productMatchesFacets({ total_weight_kg: 4800 }, groups, { agirlik: ["3501"] })).toBe(true);
   });
-  it("banyo: var / yok / belirtilmemiş ayrışır", () => {
-    expect(productMatchesFacets({ has_bathroom: true }, groups, { banyo: ["var"] })).toBe(true);
-    expect(productMatchesFacets({ has_bathroom: false }, groups, { banyo: ["yok"] })).toBe(true);
-    expect(productMatchesFacets({}, groups, { banyo: ["na"] })).toBe(true);
-    expect(productMatchesFacets({ has_bathroom: false }, groups, { banyo: ["na"] })).toBe(false);
+  it("taze su tankı: kovalar sınırlarda doğru, belirtilmemiş ayrışır", () => {
+    expect(productMatchesFacets({ water_tank_l: 25 }, groups, { su: ["0-25"] })).toBe(true);
+    expect(productMatchesFacets({ water_tank_l: 26 }, groups, { su: ["26-60"] })).toBe(true);
+    expect(productMatchesFacets({ water_tank_l: 100 }, groups, { su: ["61-100"] })).toBe(true);
+    expect(productMatchesFacets({ water_tank_l: 125 }, groups, { su: ["101"] })).toBe(true);
+    expect(productMatchesFacets({}, groups, { su: ["na"] })).toBe(true);
+    expect(productMatchesFacets({ water_tank_l: 45 }, groups, { su: ["na"] })).toBe(false);
   });
 });
 

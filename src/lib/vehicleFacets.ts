@@ -219,13 +219,16 @@ const KARAVAN_WEIGHT_GROUP: FacetGroup = {
     { value: "3501",      label: "3500 kg +",     match: (a) => inRange(a.total_weight_kg, 3501, Infinity) },
   ],
 };
-const KARAVAN_BATH_GROUP: FacetGroup = {
-  key: "banyo",
-  label: "Banyo",
-  attrKey: "has_bathroom",
+// Banyo filtresi kaldırıldı: katalogdaki tüm karavanlarda banyo var, kimseyi elemiyordu. Yerine şebekeden bağımsız kullanımı belirleyen taze su tankı.
+const KARAVAN_WATER_GROUP: FacetGroup = {
+  key: "su",
+  label: "Taze Su Tankı",
+  attrKey: "water_tank_l",
   options: [
-    { value: "var", label: "Banyo var", match: (a) => isTrue(a.has_bathroom) },
-    { value: "yok", label: "Banyo yok", match: (a) => isFalse(a.has_bathroom) },
+    { value: "0-25",   label: "≤ 25 L",    match: (a) => inRange(a.water_tank_l, 0, 25) },
+    { value: "26-60",  label: "26–60 L",   match: (a) => inRange(a.water_tank_l, 26, 60) },
+    { value: "61-100", label: "61–100 L",  match: (a) => inRange(a.water_tank_l, 61, 100) },
+    { value: "101",    label: "100 L +",   match: (a) => inRange(a.water_tank_l, 101, Infinity) },
   ],
 };
 
@@ -397,7 +400,7 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
     eksikVeriliGrup(KARAVAN_BERTH_GROUP),
     eksikVeriliGrup(KARAVAN_LENGTH_GROUP),
     eksikVeriliGrup(KARAVAN_WEIGHT_GROUP),
-    eksikVeriliGrup(KARAVAN_BATH_GROUP),
+    eksikVeriliGrup(KARAVAN_WATER_GROUP),
   ],
   // Gövde ilk sırada — "kamyonet" pickup/panelvan/van/minivan karışımı bir
   // hafif-ticari çatısı; kullanıcının ilk daralttığı boyut kasa tipi.
