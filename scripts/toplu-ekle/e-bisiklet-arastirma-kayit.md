@@ -91,3 +91,6 @@ Yeni kayıt (id 1066, `corelli-e-lite-l-2024`) `aracEkle` ile eklendi (E-Lite-S 
 
 ## 14. tur — Corelli E-City 2024 silindi (kullanıcı kararı)
 Kayıt (id 1054, `corelli-e-city-2024`, özelliksiz; model Corelli'nin resmi listesinde yok) tamamen silindi: ürün (denetim kaydıyla), boşta kalan model (#765 E-City), görsel dosyası (blob). Bağlı yorum/favori/garaj/takas vb. yoktu (0). Aktif e-bisiklet 55. "Model resmi listede yok" grubundan çıktı (kalan: Salcano E-Bike EX1 2022, Skyjet XS25 2023).
+
+## 15. tur — Kuba Speedlight Pro 2024 (kullanıcı tablosu)
+Epey 2024'ten girilen 12 alan kullanıcı tablosuyla birebir uyumlu çıktı (6 vites, mekanik disk, alüminyum/alaşım, 20", süspansiyon yok, 22 kg, 36 V, 280,8 Wh, 250 W, 25 km, 5 sa, katlanabilir) → yıl 2024 ve veriler ikinci kaynakla doğrulandı. Eklenen 11 alan: motor tipi (arka tekerlek elektrik motoru → hub), 25 km/s, standart pedelec sınıfı, Shimano 6 vites, lastik 20 x 1,75, azami taşıma 110 kg, LCD, ön-arka LED aydınlatma, çamurluklar, arka bagaj. Güncellenen: fren → "Ön ve arka mekanik disk". AI özeti yenilendi. Toplam 23 alan.
