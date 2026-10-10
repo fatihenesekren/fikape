@@ -108,3 +108,5 @@ Yeni kayıt (id 1068, `salcano-cappadocia-2-2022`) `aracEkle` ile eklendi (Cappa
 
 ## 17. tur — Skyjet XS25 2023 → Skyjet S25 2023 (kullanıcı tablosu)
 Kayıt (id 1049) **Skyjet S25 2023** olarak yeniden adlandırıldı (model "XS25" → "S25", eski model adresi alias; ürün adresi skyjet-xs25-2023 sabit). 19 alan girildi (16" katlanabilir, RKS 250 W motor, 25 km/sa, 36 V 270 Wh, tek vites, mekanik disk, LCD, aydınlatma, 22 kg, 118 kg). Menzil 25–35 km ve şarj 4–6 saat aralık olduğu için üst değerler (35 km, 6 sa) girildi, özet metinde aralık yazıldı. Fotoğraf korundu. "Model resmi listede yok" grubu boşaldı.
+
+Salcano Wind 1 2022 AI özeti yeniden yazıldı: özellik listesi tonundan çıkarılıp ≤2 rakamlı, kuruluma yorumlayan teknik metne çevrildi (Wh/W/V rakamları kaldırıldı; özellikler tabloda zaten var).
