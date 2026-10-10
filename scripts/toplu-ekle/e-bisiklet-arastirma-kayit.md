@@ -114,3 +114,6 @@ Salcano Wind 1 2022 AI özeti yeniden yazıldı: özellik listesi tonundan çık
 Salcano Cappadocia 1 (1067), Cappadocia 2 (1068) ve Skyjet S25 (1049) AI özetleri aynı tona (az rakamlı, kuruluma yorumlayan teknik metin) yeniden yazıldı.
 
 Temizlik: Salcano Wind 1 (1056) ve Skyjet S25 (1049) ürün adresleri yeni adlarına çekildi (salcano-wind-1-2022, skyjet-s25-2023), görsel dosyaları yeni adla taşındı, eski dosyalar silindi; eski model alias kayıtları (salcano-e-bike-ex1, skyjet-xs25) silindi. E-bisiklette ad–adres uyumsuz kayıt kalmadı; "XS25" yalnız RKS XS25 için geçiyor (doğru).
+
+## 18. tur — Ape Ryder MD-10 Pro 2025 (kullanıcı tablosu)
+Kayıt (id 1055) 19 alana tamamlandı: fatbike (enumda yok → MTB), Bafang M410 orta motor (250 W / 80 Nm, 25 km/sa), 48 V, Samsung hücre, 20 x 4,5 Kenda, Shimano 7 vites, XOD hidrolik disk, ön-arka süspansiyon, LCD C6. Aralıklı değerlerde üst değerler girildi (720 Wh, 7 sa şarj, menzil 80 km = ilan edilen azami; 55–70 km tablo aralığı girilmedi). Ağırlık kaynaklarda 38–43,2 kg farklı: mevcut 38 kg korundu, özet metinde rakam yazılmadı. M410 orta motor olarak sınıflandırıldı (tabloda yalnız "elektrik motoru"). AI özeti yeni tonda yazıldı. Görsel korundu.
