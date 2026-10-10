@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { facetGroupsForCategory, productMatchesFacets } from "./vehicleFacets";
+import { CC_NA_ETIKETI, facetGroupsForCategory, productMatchesFacets } from "./vehicleFacets";
 
 describe("e-bisiklet facet'leri", () => {
   const groups = facetGroupsForCategory("e-bisiklet");
@@ -28,6 +28,20 @@ describe("e-bisiklet facet'leri", () => {
     const oto = facetGroupsForCategory("otomobil");
     expect(oto.map((g) => g.key).slice(0, 3)).toEqual(["yakit", "govde", "segment"]);
     expect(oto.every((g) => g.alwaysShow === true)).toBe(true);
+  });
+});
+
+describe("motosiklet motor hacmi 'Belirtilmemiş' etiketi", () => {
+  it("boş olanların hepsi elektrikliyse 'Elektrikli (cc yok)'", () => {
+    expect(CC_NA_ETIKETI([{ fuel_type: "EV" }, { fuel_type: "EV" }])).toBe("Elektrikli (cc yok)");
+  });
+  it("benzinli bir kayıt da boşsa ya da hiç boş yoksa 'Belirtilmemiş'", () => {
+    expect(CC_NA_ETIKETI([{ fuel_type: "EV" }, { fuel_type: "GASOLINE" }])).toBe("Belirtilmemiş");
+    expect(CC_NA_ETIKETI([])).toBe("Belirtilmemiş");
+  });
+  it("motosiklet motor hacmi grubuna bağlı", () => {
+    const g = facetGroupsForCategory("motosiklet").find((x) => x.key === "cc");
+    expect(g?.naEtiketi).toBe(CC_NA_ETIKETI);
   });
 });
 

@@ -253,12 +253,15 @@ async function AraclarResults({
     const base = brandScoped.filter((p) =>
       productMatchesFacets(p.attributes as Record<string, unknown>, groups, otherFacets),
     );
+    const eksikAttrs = g.naEtiketi
+      ? searched.map((p) => p.attributes as Record<string, unknown>).filter((a) => a[g.attrKey] == null || a[g.attrKey] === "")
+      : [];
     return {
       key: g.key,
       label: g.label,
       options: g.options.map((o) => ({
         value: o.value,
-        label: o.label,
+        label: o.value === "na" && g.naEtiketi ? g.naEtiketi(eksikAttrs) : o.label,
         count: base.filter((p) => o.match(p.attributes as Record<string, unknown>)).length,
       })),
     };

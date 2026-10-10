@@ -29,7 +29,16 @@ export interface FacetGroup {
   options: FacetOption[];
   /** true: kapsam kapısı uygulanmaz; eksik veri "Belirtilmemiş" seçeneğiyle görünür kalır. */
   alwaysShow?: boolean;
+  /** "Belirtilmemiş" seçeneğinin etiketini kategori havuzundaki eksik kayıtlara bakarak seçer (verilmezse seçeneğin kendi etiketi). */
+  naEtiketi?: (eksikAttrs: Record<string, unknown>[]) => string;
 }
+
+/**
+ * Motor hacmi boş kalanların tamamı elektrikliyse "Belirtilmemiş" yanıltıcıdır (eksik veri değil, kavram yok);
+ * benzinli bir kayıtta hacim boşsa gerçek eksik gizlenmesin diye genel etikete döner.
+ */
+export const CC_NA_ETIKETI = (eksik: Record<string, unknown>[]): string =>
+  eksik.length > 0 && eksik.every((a) => a.fuel_type === "EV") ? "Elektrikli (cc yok)" : "Belirtilmemiş";
 
 const str = (v: unknown) => (v == null ? "" : String(v));
 const num = (v: unknown) => {
@@ -374,7 +383,7 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
   ],
   motosiklet: [
     eksikVeriliGrup(MOTO_TYPE_GROUP),
-    eksikVeriliGrup(CC_GROUP),
+    { ...eksikVeriliGrup(CC_GROUP), naEtiketi: CC_NA_ETIKETI },
     eksikVeriliGrup(MOTO_POWER_GROUP),
     eksikVeriliGrup(MOTO_TRANSMISSION_GROUP),
     eksikVeriliGrup(MOTO_SEAT_HEIGHT_GROUP),
