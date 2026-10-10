@@ -117,3 +117,6 @@ Temizlik: Salcano Wind 1 (1056) ve Skyjet S25 (1049) ürün adresleri yeni adlar
 
 ## 18. tur — Ape Ryder MD-10 Pro 2025 (kullanıcı tablosu)
 Kayıt (id 1055) 19 alana tamamlandı: fatbike (enumda yok → MTB), Bafang M410 orta motor (250 W / 80 Nm, 25 km/sa), 48 V, Samsung hücre, 20 x 4,5 Kenda, Shimano 7 vites, XOD hidrolik disk, ön-arka süspansiyon, LCD C6. Aralıklı değerlerde üst değerler girildi (720 Wh, 7 sa şarj, menzil 80 km = ilan edilen azami; 55–70 km tablo aralığı girilmedi). Ağırlık kaynaklarda 38–43,2 kg farklı: mevcut 38 kg korundu, özet metinde rakam yazılmadı. M410 orta motor olarak sınıflandırıldı (tabloda yalnız "elektrik motoru"). AI özeti yeni tonda yazıldı. Görsel korundu.
+
+## 19. tur — RKS MX25 Pro 2026 (kullanıcı tablosu)
+Kayıt (id 1059) 17 alana tamamlandı (katlanır 20", RKS arka hub motor 250 W, 36 V 280,8 Wh, 6 vites Shimano, ön-arka disk, LCD, LED aydınlatma, Kenda lastik). Aralıklı değerlerde üst değerler girildi (menzil 45 km, şarj 6 sa; 35–45 / 4–6 tablo aralığı özette). Motor tipi tabloda "elektrik motoru"; mevcut hub-drive korundu. Tabloda olmayan/doğrulanmamış: süspansiyon, ağırlık, taşıma kapasitesi, lastik ölçüsü, bagaj, çıkarılabilir batarya (girilmedi; sibling MX25 verisi kopyalanmadı). CE/EN 15194 ve 2 yıl garanti için alan yok. AI özeti yeni tonda yazıldı.
