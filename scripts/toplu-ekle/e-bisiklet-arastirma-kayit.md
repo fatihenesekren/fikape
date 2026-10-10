@@ -144,3 +144,6 @@ Kayıt (id 1040) 20 alana tamamlandı; eski menzil 55 km yanlıştı → 42 km (
 Cappadocia 1 (id 1067): lastik Maxxis Crossmark II → Continental Cross King 27,5 x 2,2 (son tablo kazanır); diğer alanlar aynı. Cappadocia 2 (id 1068): azami taşıma kapasitesi 135 kg eklendi; diğer alanlar tabloyla aynı. Kadro boyları, kadro tipi/hız/menzil/ağırlık için alan yok ya da doğrulanmadı. İki AI özeti de güncellendi.
 
 Super73 S2 2020 (id 1006): bisiklet tipi "şehir" girildi (fat/moped tarzı için enumda karşılık yok; MTB yanıltıcı olurdu, R Brooklyn ile tutarlı). AI özeti yeniden yazıldı (şehir içi + hafif arazi; konfor/ağırlık yorumu çıkarıldı).
+
+## 27. tur — Roxform R-300 2023 (kullanıcı tablosu)
+Kayıt (id 1057) 19 alana tamamlandı: ağırlık (31 kg) kaldırıldı (tablo "sabit değer girilmemeli"), hub-drive motor, 460,8 Wh, aralıkta üst değerler (menzil 60 km, hız 35 km/sa, şarj 6 sa, taşıma 127 kg; ilan aralıkları 45–60 / 30–35 / 4–6 / 120–127), bagaj. Gaz kolu için alan yok (özette). 350 W+ ve 13–20 Ah varyantları girilmedi. AI özeti yeni tonda yazıldı.
