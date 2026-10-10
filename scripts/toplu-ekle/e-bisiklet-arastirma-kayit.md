@@ -133,3 +133,6 @@ Kayıt (id 1036) tabloya göre yeniden girildi (18 alan): vites 6 → 7, 270 Wh,
 
 ## 23. tur — RKS RSI-X-PRO 2026 (kullanıcı tablosu)
 Kayıt (id 1061) 19 alana tamamlandı: kadro "Alüminyum" → "Çelik" (tabloda "bazı katalog kayıtlarında"; kaynaklar çelişkili, özette belirtildi), lastik "Fat tire" → CST 20", 360 Wh, menzil 45 / şarj 6 sa (tablo 35–45, üretici 45–60; üretici aralığı girilmedi), 24 kg (alternatif 27–33), 135 kg (alternatif 127–150), YX-DB06 disk, S866 LCD, plastik çamurluk, Shimano TX50/RD-300D/MF-TZ500 + KMC27 + Prowheel krank vites satırında. Lastik ölçüsü, arka süspansiyon, garanti doğrulanmadı. AI özeti yeni tonda yazıldı.
+
+## 24. tur — Volta VB1 2026 (kullanıcı tablosu)
+Kayıt (id 1039; VB1 Neo 1040 ayrı kayıt, dokunulmadı) 19 alana tamamlandı: alüminyum katlanabilir 20" (20 x 1,75), BLDC arka göbek motor 250 W, 36 V, aralıklı değerlerde üst değer (316,8 Wh, menzil 42 km, şarj 6 sa; kaynaklar 7,8–8,8 Ah / 27–42 km, alternatif ilan 30–35 km), 22,5 kg, 110 kg, ön mekanik + arka hidrolik disk, Shimano 7 vites, LCD, aydınlatma, bagaj. Arka süspansiyon doğrulanmadı; garanti, renk, standart için alan yok. AI özeti yeni tonda yazıldı.
