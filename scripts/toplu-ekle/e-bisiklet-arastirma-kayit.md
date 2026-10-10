@@ -142,3 +142,5 @@ Kayıt (id 1040) 20 alana tamamlandı; eski menzil 55 km yanlıştı → 42 km (
 
 ## 26. tur — Salcano Cappadocia 1 ve 2 (kullanıcı tabloları)
 Cappadocia 1 (id 1067): lastik Maxxis Crossmark II → Continental Cross King 27,5 x 2,2 (son tablo kazanır); diğer alanlar aynı. Cappadocia 2 (id 1068): azami taşıma kapasitesi 135 kg eklendi; diğer alanlar tabloyla aynı. Kadro boyları, kadro tipi/hız/menzil/ağırlık için alan yok ya da doğrulanmadı. İki AI özeti de güncellendi.
+
+Super73 S2 2020 (id 1006): bisiklet tipi "şehir" girildi (fat/moped tarzı için enumda karşılık yok; MTB yanıltıcı olurdu, R Brooklyn ile tutarlı). AI özeti yeniden yazıldı (şehir içi + hafif arazi; konfor/ağırlık yorumu çıkarıldı).
