@@ -102,3 +102,6 @@ Kayıt (id 1056) **Salcano Wind 1 2022** olarak yeniden adlandırıldı (model "
 
 ## 15. tur — Salcano Cappadocia 1 2022 (yeni kayıt, kullanıcı tablosu)
 Yeni kayıt (id 1067, `salcano-cappadocia-1-2022`) `aracEkle` ile eklendi; 13 alan girildi (27,5" MTB, Bafang arka göbek motoru 250 W, 36 V 576 Wh kadroya entegre batarya, Acera 24 vites, hidrolik disk MT200, Zoom yaylı mekanik kilitli maşa, Maxxis Crossmark II 27,5 x 2,25). Batarya çıkarılabilirliği, menzil/hız/ağırlık tabloda yok. AI özeti yazıldı (onaylı); görseli kullanıcı ekleyecek.
+
+## 16. tur — Salcano Cappadocia 2 2022 (yeni kayıt, kullanıcı tablosu)
+Yeni kayıt (id 1068, `salcano-cappadocia-2-2022`) `aracEkle` ile eklendi (Cappadocia 1 ile ad benzerliği → farklı model, onaylandı); 13 alan girildi (27,5" hardtail MTB, Bafang arka göbek motoru 249 W, 36 V 540 Wh kadroya entegre batarya, Altus 8 vites, hidrolik disk MT200, Zoom yaylı mekanik kilitli ön maşa, arka süspansiyon yok, Maxxis Crossmark II 27,5 x 2,25). Batarya çıkarılabilirliği, menzil/hız/ağırlık tabloda yok. AI özeti yazıldı (onaylı); görseli kullanıcı ekleyecek.
