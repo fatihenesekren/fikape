@@ -193,3 +193,6 @@ Husqvarna Svartpilen 401 2025: tork 39 Nm (1000PS 2025 + Norveç ilanı), depo 1
 
 ## 39. tur — Motosiklet: AI özeti olmayan/onaysız 27 kayıt (2026-10-11)
 10u özetsiz, 17si onay bekliyordu; 27sinin özeti yeni tonda (az rakamlı, kayıttaki veriye dayanan teknik yorum, konfor/memnuniyet iddiası yok) yazılıp onaylandı. Motor mimarisi bilgileri (iki silindirli, V-twin, boxer vb.) kayıtta olmayıp modelin bilinen yapısından yazıldı; ayrıntılı rakam kullanılmadı. Motosiklette onaysız/özetsiz kayıt kalmadı.
+
+## 40. tur — Motosiklet: tork boşlukları (2026-10-11)
+4 benzinli kayıtta tork boştu, dolduruldu: KTM 390 Adventure 2024 = 37 Nm (KTM resmi 2024 teknik sayfa); Royal Enfield Classic 350 ve Meteor 350 2024 = 27 Nm (aynı J-serisi motor, 20,2 PS @ 6100 / 27 Nm @ 4000; Team-BHP ve diğer kaynaklar); Bajaj Pulsar NS200 2025 = 18,74 Nm. Pulsar için Bajaj bölge sayfaları iki farklı çift veriyor: teknik tablo 23,5 PS / 18,3 Nm, pazarlama metni ve Meksika/Team-BHP 24,5 PS / 18,74 Nm. Kayıttaki güç 24,5 PS olduğundan onunla eşleşen tork 18,74 girildi (güven ~%80, çift tutarlı ama resmi tablo farklı). Arora ZR7 (EV) tork alanı yok sayıldı. Kalan boşluklar: depo 22, ağırlık 25, azami hız 39 (üreticiler yayımlamıyor).
