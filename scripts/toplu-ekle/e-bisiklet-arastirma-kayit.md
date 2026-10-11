@@ -216,3 +216,6 @@ Boş alanlar araştırıldı; yalnız birden çok kaynakta ya da resmi/ADAC kayn
 
 ## 46. tur — Otomobil: AI özetleri (2026-10-11)
 AI özeti olmayan 15 kayıt ile 22 kayıtlık listedeki özetler (birleşim 34; C-HR zaten onaylıydı, yeni tonda yeniden yazıldı) yeni tonda yazılıp onaylandı: az rakamlı, kayıttaki veriye dayanan teknik yorum, konfor/memnuniyet iddiası yok. Corsa (manuel, 75 PS) ve Mokka (otomatik, 130 PS) özetleri artık güncel veriyle uyumlu. Diğer otomobillerdeki onay bekleyen özetlere dokunulmadı.
+
+## 47. tur — Otomobil: kalan 43 onay bekleyen AI özeti (2026-10-11)
+43 kaydın özeti yeni tonda yazılıp onaylandı; otomobilde onaysız/özetsiz kayıt kalmadı. Dikkat çeken veri şüpheleri (özetlerde bu değerler kullanılmadı, kayıtlar düzeltilmedi): Citroen C3 1.2 PureTech 110 PS için tork 118 Nm (gerçekte ~205 Nm olmalı); Toyota Corolla 1.5 125 PS için tork 113 Nm (şüpheli); Dacia Jogger ve Sandero Stepway "ECO-G" kayıtlarında güç 120 PS ve otomatik vites (ECO-G genellikle 100 PS manuel; 1.2 ve 120 PS tutarsız).
