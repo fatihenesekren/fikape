@@ -243,3 +243,6 @@ Kullanıcı tablosundan: 2000 W nominal / 3000 W tepe, 40 km/s, 72 V 35 Ah = 2,5
 
 ## 55. tur — RKS Valerio 2023 (motosiklet, scooter) eklendi (2026-10-11)
 Kullanıcı tablosundan: 2000 W nominal / 4000 W tepe, 45 km/s, 72 V 20 Ah = 1,44 kWh, menzil 60-100 (üst 100), şarj 2 sa, ıslak ağırlık 116 kg, 1910x710x1075, dingil 1325, ön disk/arka kampana, ABS yok, 90/90-12. Beygir gücü ve maksimum yük (276 kg) için alan yok/boş bırakıldı. Görsel kullanıcı ekleyecek.
+
+## 56. tur — Mondial E-Mon G5 2023 (motosiklet, scooter) eklendi (2026-10-11)
+Kullanıcı tablosundan: 1800 W DC motor, 45 km/s, 72 V 20 Ah kurşun-asit = 1,44 kWh, menzil 70, şarj 6-8 sa (üst 8), 1810x700x1150, dingil 1270, yüksüz 116 kg, ön/arka disk, ABS yok, 100/80-12 ve 90/90-12. Tırmanma açısı, tüketim, taşıma kapasitesi (150 kg) için motosiklet formunda alan yok. Görsel kullanıcı ekleyecek.
