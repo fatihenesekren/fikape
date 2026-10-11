@@ -246,3 +246,6 @@ Kullanıcı tablosundan: 2000 W nominal / 4000 W tepe, 45 km/s, 72 V 20 Ah = 1,4
 
 ## 56. tur — Mondial E-Mon G5 2023 (motosiklet, scooter) eklendi (2026-10-11)
 Kullanıcı tablosundan: 1800 W DC motor, 45 km/s, 72 V 20 Ah kurşun-asit = 1,44 kWh, menzil 70, şarj 6-8 sa (üst 8), 1810x700x1150, dingil 1270, yüksüz 116 kg, ön/arka disk, ABS yok, 100/80-12 ve 90/90-12. Tırmanma açısı, tüketim, taşıma kapasitesi (150 kg) için motosiklet formunda alan yok. Görsel kullanıcı ekleyecek.
+
+## 57. tur — Arora ZR5 2023 (motosiklet, scooter) eklendi (2026-10-11)
+Kullanıcı tablosundan: 2350 W, 55 km/s, 72 V 25 Ah grafen = 1,8 kWh (hesap), menzil 80, şarj 4-6 sa (üst 6), CVT (otomatik), 1940x725x1045, dingil 1405, net ağırlık 71 kg (scooter için düşük, kullanıcı değeri aynen), ön disk/arka kampana, ABS yok, 90/80-12. Taşıma kapasitesi 257 kg için alan yok. Görsel kullanıcı ekleyecek.
