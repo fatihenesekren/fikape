@@ -79,6 +79,8 @@ export function VehicleCard({
     ? (BODY_ICONS[bodyType] ?? "🚗")
     : (CATEGORY_ICONS[categorySlug] ?? "🚗");
   const isScooter = categorySlug === "e-scooter" || categorySlug === "e-bisiklet";
+  // Motosiklet kartı da scooter gibi zemine göre sığdırılır (düz zeminde kırpma/koyu gradyan yok); plaka bulanıklığı dosyada yapılır.
+  const sigdirGorsel = isScooter || categorySlug === "motosiklet";
   const placeholderBg = isScooter ? "#f5f5f5" : fuelType === "EV" ? "#0f2027" : "#1a1a2e";
 
   const typeLabel = bodyLabel ?? CATEGORY_LABELS[categorySlug] ?? categorySlug;
@@ -109,7 +111,7 @@ export function VehicleCard({
         style={{ background: placeholderBg }}
       >
         {imageUrl ? (
-          isScooter ? (
+          sigdirGorsel ? (
             // E-scooter/e-bisiklet: zemin düzse kutu o renge boyanıp fotoğraf sığdırılır, düz değilse fotoğraf kutuyu doldurur
             // ("kutu içinde kutu" görünümü olmaz) — bkz. lib/imageBackdrop.ts
             <BackdropImage
@@ -131,7 +133,7 @@ export function VehicleCard({
           <span className="text-5xl opacity-20 select-none">{placeholderIcon}</span>
         )}
 
-        {!isScooter && (
+        {!sigdirGorsel && (
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
         )}
 
@@ -164,7 +166,7 @@ export function VehicleCard({
         ) : null}
 
         {/* Plaka blur — sadece kara araçlarında (e-scooter'da plaka yok) */}
-        {imageUrl && !isScooter && (
+        {imageUrl && !sigdirGorsel && (
           <div
             className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
             style={{
