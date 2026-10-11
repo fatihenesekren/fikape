@@ -255,3 +255,6 @@ Kullanıcı tablosundan: 2200 W, 45 km/s, 72 V 20 Ah = 1,44 kWh, menzil 50-60 (�
 
 ## 59. tur — Volta VS2 2024 (motosiklet, scooter) eklendi (2026-10-11)
 Kullanıcı tablosundan: 2000 W BLDC hub, 45 km/s, 72 V 22 Ah VRLA jel = 1,584 kWh (kayıtta 1,58), menzil 60, şarj 6-8 sa (üst 8), 1830x710x1085, dingil 1340, 93 kg, ön disk/arka kampana, lastik 3.00-10. ABS doğrulanmadığı için alan boş (Yok yazılmadı). Rejeneratif fren sürüme göre teyitsiz, girilmedi. Tırmanma %14 ve taşıma 150 kg için alan yok. Görsel kullanıcı ekleyecek.
+
+## 60. tur — Yuki Windy 2023 (motosiklet, scooter) eklendi (2026-10-11)
+Kullanıcı tablosundan (model kodu YK-53): 2000 W DC motor, 49,2 Nm, 45 km/s, 72 V 20 Ah jel = 1,44 kWh, şarj 6-8 sa (üst 8), 1870x750x1160, dingil 1340, boş 68 kg, sele 760, ön disk/arka kampana, 90/90-12. Menzil ve ABS doğrulanmadığı için boş. Geri vites, tüketim (43 Wh/km), yükleme 265 kg için alan yok. Volta VS2 AI özeti de aynı turda yeniden yazıldı. Görsel kullanıcı ekleyecek.
