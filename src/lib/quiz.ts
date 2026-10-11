@@ -76,10 +76,10 @@ const BASE_STEPS: Record<QuizCat, QuizStepDef[]> = {
       question: "Aracını ağırlıklı nerede kullanacaksın?",
       stepLabel: "Kullanım",
       opts: [
-        { key: "sehir", icon: "🏙️", label: "Şehir içi",  sub: "Trafik, kısa mesafe" },
-        { key: "yol",   icon: "🛣️", label: "Uzun yol",    sub: "Otoyol, konfor" },
-        { key: "karma", icon: "↔️",  label: "Karma",       sub: "İkisi de" },
-        { key: "zorlu", icon: "🏔️", label: "Zorlu",       sub: "Kış, arazi" },
+        { key: "sehir", icon: "🏙️", label: "Şehir içi",  sub: "Kompakt modeller (A/B segment)" },
+        { key: "yol",   icon: "🛣️", label: "Uzun yol",    sub: "Geniş depo, yüksek menzil" },
+        { key: "karma", icon: "↔️",  label: "Karma",       sub: "İkisi de, filtre yok" },
+        { key: "zorlu", icon: "🏔️", label: "Zorlu",       sub: "4 çeker (AWD / 4WD)" },
       ],
     },
     {
@@ -109,10 +109,10 @@ const BASE_STEPS: Record<QuizCat, QuizStepDef[]> = {
       question: "Motosikleti nasıl kullanacaksın?",
       stepLabel: "Kullanım",
       opts: [
-        { key: "sehir",   icon: "🏙️", label: "Şehir içi", sub: "Komüt, trafik" },
-        { key: "tur",     icon: "🛣️", label: "Tur / Yol", sub: "Uzun mesafe" },
-        { key: "offroad", icon: "🏔️", label: "Off-road",  sub: "Arazi, enduro" },
-        { key: "karma",   icon: "↔️",  label: "Karma",     sub: "Her ikisi de" },
+        { key: "sehir",   icon: "🏙️", label: "Şehir içi", sub: "Hafif, çevik (200 kg'a kadar)" },
+        { key: "tur",     icon: "🛣️", label: "Tur / Yol", sub: "Geniş depo, uzun menzil" },
+        { key: "offroad", icon: "🏔️", label: "Off-road",  sub: "Adventure, enduro, yüksek şasi" },
+        { key: "karma",   icon: "↔️",  label: "Karma",     sub: "Her ikisi de, filtre yok" },
       ],
     },
     {
@@ -152,9 +152,9 @@ const BASE_STEPS: Record<QuizCat, QuizStepDef[]> = {
       question: "Evde şarj imkanın var mı?",
       stepLabel: "Şarj",
       opts: [
-        { key: "rahat", icon: "🏠", label: "Evet, rahatça", sub: "Priz ulaşıyor" },
-        { key: "bazen", icon: "🤔", label: "Bazen",          sub: "Kısıtlı imkan" },
-        { key: "zor",   icon: "😰", label: "Çok kısıtlı",   sub: "Yok gibi" },
+        { key: "rahat", icon: "🏠", label: "Evet, rahatça", sub: "Priz ulaşıyor, filtre yok" },
+        { key: "bazen", icon: "🤔", label: "Bazen",          sub: "Tam şarj 9 saate kadar" },
+        { key: "zor",   icon: "😰", label: "Çok kısıtlı",   sub: "Hızlı şarj (7 saate kadar)" },
       ],
     },
     {
@@ -181,9 +181,9 @@ const BASE_STEPS: Record<QuizCat, QuizStepDef[]> = {
       question: "Banyo ve mutfak şart mı?",
       stepLabel: "Konfor",
       opts: [
-        { key: "tamkonfor", icon: "🛁", label: "Tam konfor",  sub: "Banyo + mutfak şart" },
+        { key: "tamkonfor", icon: "🛁", label: "Tam konfor",  sub: "Banyo, duş ve mutfak şart" },
         { key: "temel",     icon: "🍳", label: "Temel yeter", sub: "Mutfak yeterli" },
-        { key: "minimal",   icon: "🏕️", label: "Minimal",    sub: "Sadece uyku" },
+        { key: "minimal",   icon: "🏕️", label: "Minimal",    sub: "Sadece uyku, filtre yok" },
       ],
     },
     {
@@ -201,10 +201,10 @@ const BASE_STEPS: Record<QuizCat, QuizStepDef[]> = {
       question: "Kamyoneti ne amaçla kullanacaksın?",
       stepLabel: "Amaç",
       opts: [
-        { key: "is",     icon: "🔨", label: "İş / Yük",  sub: "Taşıma, saha" },
-        { key: "aile",   icon: "👨‍👩‍👧", label: "Aile + iş", sub: "Çift kullanım" },
-        { key: "macera", icon: "🏕️", label: "Macera",    sub: "Off-road, kamp" },
-        { key: "karma",  icon: "↔️",  label: "Karma",     sub: "Hepsi biraz" },
+        { key: "is",     icon: "🔨", label: "İş / Yük",  sub: "800 kg ve üstü yük" },
+        { key: "aile",   icon: "👨‍👩‍👧", label: "Aile + iş", sub: "5 ve üstü koltuk" },
+        { key: "macera", icon: "🏕️", label: "Macera",    sub: "4×4 çekiş" },
+        { key: "karma",  icon: "↔️",  label: "Karma",     sub: "Hepsi biraz, filtre yok" },
       ],
     },
     {
@@ -263,10 +263,10 @@ const BASE_STEPS: Record<QuizCat, QuizStepDef[]> = {
       question: "Öncelikli kullanım şeklin?",
       stepLabel: "Kullanım",
       opts: [
-        { key: "sehir",  icon: "🏙️", label: "Şehir içi",  sub: "Günlük komüt" },
-        { key: "yol",    icon: "🛣️", label: "Uzun yol",    sub: "Seyahat, yol" },
-        { key: "is",     icon: "💼", label: "İş amaçlı",  sub: "Yük, taşıma" },
-        { key: "macera", icon: "🏕️", label: "Macera",     sub: "Off-road, kamp" },
+        { key: "sehir",  icon: "🏙️", label: "Şehir içi",  sub: "Kompakt ve hafif araçlar" },
+        { key: "yol",    icon: "🛣️", label: "Uzun yol",    sub: "Otomobil, karavan, tur motoru" },
+        { key: "is",     icon: "💼", label: "İş amaçlı",  sub: "Yük taşıyan kamyonetler" },
+        { key: "macera", icon: "🏕️", label: "Macera",     sub: "Karavan, 4×4, arazi araçları" },
       ],
     },
     {
@@ -589,6 +589,48 @@ const enAzKurali = (map: Record<string, number | null>, deger: (a: Attrs, slug: 
 const menzil = (a: Attrs) => sayi(a.range_km);
 const elektrikliMi = (a: Attrs, slug: string | null) => String(a.fuel_type ?? "") === "EV" || slug === "e-scooter" || slug === "e-bisiklet";
 
+// ── Kullanım / amaç / şarj / konfor adımlarının veri kuralları ──
+// Bu adımlar daha önce yalnız yönlendiriciydi; artık gerçek alanlara bağlı. Alanı boş kayıt somut seçimde elenir
+// ("karma", "rahat", "minimal" gibi kısıtlamayan cevaplar filtre koymaz).
+const OTO_KOMPAKT_SEGMENTLER = ["A", "B"];
+const oto = {
+  // Şehir içi: küçük segmentler (A/B) — park ve trafik için kompakt gövde
+  sehir: ((a) => listede(a.segment, OTO_KOMPAKT_SEGMENTLER)) as Kural,
+  // Uzun yol: yakıtlıda en az 50 L depo, elektrikte en az 400 km menzil
+  yol: ((a) => {
+    const menzilEv = sayi(a.ev_range_km), depo = sayi(a.tank_l);
+    return String(a.fuel_type ?? "") === "EV" ? menzilEv != null && menzilEv >= 400 : depo != null && depo >= 50;
+  }) as Kural,
+  // Zorlu (kış, arazi): dört tekerden çekiş
+  zorlu: ((a) => listede(a.drivetrain, ["AWD", "4WD"])) as Kural,
+};
+const moto = {
+  // Şehir içi: hafif ve çevik (≤ 200 kg)
+  sehir: ((a) => { const w = sayi(a.weight_kg); return w != null && w <= 200; }) as Kural,
+  // Tur: yakıtlıda en az 14 L depo, elektrikte en az 150 km menzil
+  tur: ((a) => {
+    const depo = sayi(a.tank_l), menzilEv = sayi(a.ev_range_km);
+    return String(a.fuel_type ?? "") === "EV" ? menzilEv != null && menzilEv >= 150 : depo != null && depo >= 14;
+  }) as Kural,
+  // Off-road: adventure/enduro/cross tipi ya da en az 190 mm yerden yükseklik
+  offroad: ((a) => listede(a.moto_type, ["adventure", "enduro", "cross"]) || (sayi(a.ground_clearance_mm) ?? 0) >= 190) as Kural,
+};
+const kamyon = {
+  is: ((a) => { const p = sayi(a.payload_kg); return p != null && p >= 800; }) as Kural,
+  aile: ((a) => { const k = sayi(a.seat_count); return k != null && k >= 5; }) as Kural,
+  macera: ((a) => dogruMu(a.four_wd)) as Kural,
+};
+// E-scooter şarj imkânı: kısıtlıysa kısa şarj süresi (ya da çıkarılabilir batarya) gerekir
+const scooterSarj = (enFazlaSaat: number): Kural => (a) => {
+  const h = sayi(a.charge_hours);
+  return dogruMu(a.removable_battery) || (h != null && h <= enFazlaSaat);
+};
+// Karavan konfor: tam konfor = banyo + duş + mutfak, temel = mutfak
+const karavanKonfor: Record<string, Kural> = {
+  tamkonfor: (a) => dogruMu(a.has_bathroom) && dogruMu(a.has_shower) && dogruMu(a.has_kitchen),
+  temel: (a) => dogruMu(a.has_kitchen),
+};
+
 /**
  * Adım kuralları — TEK GERÇEK KAYNAK (sert filtre + çip görünürlüğü).
  *   • tablo  : cevap anahtarı → kural. Tabloda olmayan anahtar ("fark" vb.) filtre koymaz.
@@ -599,31 +641,31 @@ const elektrikliMi = (a: Attrs, slug: string | null) => String(a.fuel_type ?? ""
 type AdimKurali = Record<string, Kural> | "rank" | null;
 export const STEP_RULES: Record<QuizCat, AdimKurali[]> = {
   oto: [
-    null,
+    { sehir: oto.sehir, yol: oto.yol, zorlu: oto.zorlu },
     "rank",
     listeKurali(OTO_FUEL_MAP, "fuel_type"),
     listeKurali(OTO_BODY_MAP, "body_type"),
   ],
   moto: [
-    null,
+    { sehir: moto.sehir, tur: moto.tur, offroad: moto.offroad },
     aralikKurali(MOTO_CC_RANGES, "engine_cc"),
     listeKurali(MOTO_TYPE_MAP, "moto_type"),
     listeKurali(MOTO_GEAR_MAP, "transmission"),
   ],
   scooter: [
     enAzKurali(MESAFE_MIN_MENZIL_KM, menzil),
-    null,
+    { bazen: scooterSarj(9), zor: scooterSarj(7) },
     aralikKurali(SCOOTER_WATT_RANGES, "motor_watt"),
     aralikKurali(SCOOTER_SPEED_RANGES, "max_speed_kmh"),
   ],
   karavan: [
     enAzKurali(KARAVAN_MIN_BERTH, (a) => sayi(a.berth)),
-    null,
+    karavanKonfor,
     listeKurali(KARAVAN_TYPE_MAP, "karavan_type"),
     aralikKurali(KARAVAN_LENGTH_RANGES, "length_cm"),
   ],
   kamyon: [
-    null,
+    { is: kamyon.is, aile: kamyon.aile, macera: kamyon.macera },
     aralikKurali(KAMYON_PAYLOAD_RANGES, "payload_kg"),
     {
       // Kasa tipi: "yuk" = kapalı kasa (van/panelvan), "pickup" = açık kasa.
@@ -643,7 +685,23 @@ export const STEP_RULES: Record<QuizCat, AdimKurali[]> = {
     listeKurali(EBIKE_MOTOR_MAP, "motor_type"),
   ],
   hepsi: [
-    null,
+    {
+      // Kategoriler arası: her kategori kendi kuralıyla değerlendirilir (otomobil/motosiklet/kamyonet yukarıdaki kurallar)
+      sehir: (a, slug) =>
+        slug === "e-scooter" || slug === "e-bisiklet" ||
+        (slug === "motosiklet" && moto.sehir(a, slug)) ||
+        (slug === "otomobil" && oto.sehir(a, slug)),
+      yol: (a, slug) =>
+        slug === "karavan" ||
+        (slug === "otomobil" && oto.yol(a, slug)) ||
+        (slug === "motosiklet" && moto.tur(a, slug)),
+      is: (a, slug) => slug === "kamyonet" && kamyon.is(a, slug),
+      macera: (a, slug) =>
+        slug === "karavan" ||
+        (slug === "kamyonet" && kamyon.macera(a, slug)) ||
+        (slug === "otomobil" && oto.zorlu(a, slug)) ||
+        (slug === "motosiklet" && moto.offroad(a, slug)),
+    },
     enAzKurali(HEPSI_MIN_KISI, kisiKapasitesi),
     {
       elektrik: (a, slug) => elektrikliMi(a, slug),

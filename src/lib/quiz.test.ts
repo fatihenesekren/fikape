@@ -65,7 +65,7 @@ describe("QUIZ_STEPS", () => {
   });
 
   it("filtre adımlarındaki her seçenek ya filtreli ya da bilinçli 'fark/bilmiyorum' (sessizce etkisiz seçenek yok)", () => {
-    const tarafsiz = new Set(["fark", "bilmiyorum", "bir_iki"]);
+    const tarafsiz = new Set(["fark", "bilmiyorum", "bir_iki", "karma", "rahat", "minimal"]);
     for (const cat of Object.keys(QUIZ_STEPS) as QuizCat[]) {
       QUIZ_STEPS[cat].forEach((adim, i) => {
         const kural = STEP_RULES[cat][i];
@@ -262,13 +262,23 @@ describe("answerAffectsResults — sonuç şeridi çip görünürlüğü", () =>
     }
   });
 
-  it("etkisiz adımlar çip üretmez", () => {
-    expect(answerAffectsResults("oto", 1, "sehir")).toBe(false);
-    expect(answerAffectsResults("moto", 1, "tur")).toBe(false);
+  it("kısıtlamayan cevaplar çip üretmez (karma, rahat, minimal)", () => {
+    expect(answerAffectsResults("oto", 1, "karma")).toBe(false);
+    expect(answerAffectsResults("moto", 1, "karma")).toBe(false);
+    expect(answerAffectsResults("kamyon", 1, "karma")).toBe(false);
     expect(answerAffectsResults("scooter", 2, "rahat")).toBe(false);
-    expect(answerAffectsResults("karavan", 2, "tamkonfor")).toBe(false);
-    expect(answerAffectsResults("kamyon", 1, "is")).toBe(false);
-    expect(answerAffectsResults("hepsi", 1, "sehir")).toBe(false);
+    expect(answerAffectsResults("karavan", 2, "minimal")).toBe(false);
+  });
+
+  it("kullanım/amaç/şarj/konfor cevapları artık çip üretir", () => {
+    expect(answerAffectsResults("oto", 1, "sehir")).toBe(true);
+    expect(answerAffectsResults("oto", 1, "zorlu")).toBe(true);
+    expect(answerAffectsResults("moto", 1, "tur")).toBe(true);
+    expect(answerAffectsResults("moto", 1, "offroad")).toBe(true);
+    expect(answerAffectsResults("scooter", 2, "zor")).toBe(true);
+    expect(answerAffectsResults("karavan", 2, "tamkonfor")).toBe(true);
+    expect(answerAffectsResults("kamyon", 1, "aile")).toBe(true);
+    expect(answerAffectsResults("hepsi", 1, "macera")).toBe(true);
   });
 
   it("sonucu etkileyen adımlar çip üretir", () => {
@@ -320,41 +330,41 @@ describe("quizMatches — 5 adımlı sert filtreler (kategori bazında)", () => 
   });
 
   it("oto q5 gövde: suv yalnız suv'u, sedan sedan+station'ı eşler; gövde verisi olmayan elenir", () => {
-    expect(quizMatches(A("oto", "sehir", "bakim", FARK, "suv"), { body_type: "suv" }, "otomobil")).toBe(true);
-    expect(quizMatches(A("oto", "sehir", "bakim", FARK, "suv"), { body_type: "hatchback" }, "otomobil")).toBe(false);
-    expect(quizMatches(A("oto", "sehir", "bakim", FARK, "suv"), {}, "otomobil")).toBe(false);
-    expect(quizMatches(A("oto", "sehir", "bakim", FARK, "sedan"), { body_type: "station" }, "otomobil")).toBe(true);
-    expect(quizMatches(A("oto", "sehir", "bakim", FARK, "hatchback"), { body_type: "hatchback" }, "otomobil")).toBe(true);
+    expect(quizMatches(A("oto", "karma", "bakim", FARK, "suv"), { body_type: "suv" }, "otomobil")).toBe(true);
+    expect(quizMatches(A("oto", "karma", "bakim", FARK, "suv"), { body_type: "hatchback" }, "otomobil")).toBe(false);
+    expect(quizMatches(A("oto", "karma", "bakim", FARK, "suv"), {}, "otomobil")).toBe(false);
+    expect(quizMatches(A("oto", "karma", "bakim", FARK, "sedan"), { body_type: "station" }, "otomobil")).toBe(true);
+    expect(quizMatches(A("oto", "karma", "bakim", FARK, "hatchback"), { body_type: "hatchback" }, "otomobil")).toBe(true);
   });
 
   it("oto q4 yakıt + q5 gövde birlikte (AND)", () => {
-    const dizelSuv = A("oto", "yol", "guven", "dizel", "suv");
+    const dizelSuv = A("oto", "karma", "guven", "dizel", "suv");
     expect(quizMatches(dizelSuv, { fuel_type: "DIESEL", body_type: "suv" }, "otomobil")).toBe(true);
     expect(quizMatches(dizelSuv, { fuel_type: "DIESEL", body_type: "sedan" }, "otomobil")).toBe(false);
     expect(quizMatches(dizelSuv, { fuel_type: "GASOLINE", body_type: "suv" }, "otomobil")).toBe(false);
   });
 
   it("moto q5 vites: otomatik; scooter/CVT/DCT'yi (Yarı Otomatik) kapsar, manueli eler", () => {
-    const oto = A("moto", "sehir", FARK, FARK, "otomatik");
+    const oto = A("moto", "karma", FARK, FARK, "otomatik");
     expect(quizMatches(oto, { transmission: "Otomatik" }, "motosiklet")).toBe(true);
     expect(quizMatches(oto, { transmission: "CVT" }, "motosiklet")).toBe(true);
     expect(quizMatches(oto, { transmission: "Yarı Otomatik" }, "motosiklet")).toBe(true);
     expect(quizMatches(oto, { transmission: "Manuel" }, "motosiklet")).toBe(false);
-    expect(quizMatches(A("moto", "sehir", FARK, FARK, "manuel"), { transmission: "Manuel" }, "motosiklet")).toBe(true);
-    expect(quizMatches(A("moto", "sehir", FARK, FARK, "manuel"), { transmission: "Otomatik" }, "motosiklet")).toBe(false);
+    expect(quizMatches(A("moto", "karma", FARK, FARK, "manuel"), { transmission: "Manuel" }, "motosiklet")).toBe(true);
+    expect(quizMatches(A("moto", "karma", FARK, FARK, "manuel"), { transmission: "Otomatik" }, "motosiklet")).toBe(false);
   });
 
   it("moto q3 motor hacmi + q4 tip + q5 vites birlikte; elektrikli (cc yok) yalnız 'fark etmez' hacimde kalır", () => {
-    const hepsi = A("moto", "tur", "orta", "naked", "manuel");
+    const hepsi = A("moto", "karma", "orta", "naked", "manuel");
     expect(quizMatches(hepsi, { engine_cc: 471, moto_type: "naked", transmission: "Manuel" }, "motosiklet")).toBe(true);
     expect(quizMatches(hepsi, { engine_cc: 649, moto_type: "naked", transmission: "Manuel" }, "motosiklet")).toBe(false);
     const ev = { fuel_type: "EV", moto_type: "scooter", transmission: "Otomatik" };
-    expect(quizMatches(A("moto", "sehir", FARK, "scooter", "otomatik"), ev, "motosiklet")).toBe(true);
-    expect(quizMatches(A("moto", "sehir", "kucuk", "scooter", "otomatik"), ev, "motosiklet")).toBe(false);
+    expect(quizMatches(A("moto", "karma", FARK, "scooter", "otomatik"), ev, "motosiklet")).toBe(true);
+    expect(quizMatches(A("moto", "karma", "kucuk", "scooter", "otomatik"), ev, "motosiklet")).toBe(false);
   });
 
   it("moto q4 scooter, üç tekerlekli scooter türevini de kapsar", () => {
-    expect(quizMatches(A("moto", "sehir", FARK, "scooter", FARK), { moto_type: "uc-tekerlekli" }, "motosiklet")).toBe(true);
+    expect(quizMatches(A("moto", "karma", FARK, "scooter", FARK), { moto_type: "uc-tekerlekli" }, "motosiklet")).toBe(true);
   });
 
   it("scooter q2 günlük mesafe: menzil >= mesafenin ~2 katı; menzil verisi olmayan somut seçimde elenir", () => {
@@ -377,29 +387,29 @@ describe("quizMatches — 5 adımlı sert filtreler (kategori bazında)", () => 
   });
 
   it("karavan q2 kişi sayısı: en az o kadar yatak; q5 boy aralıkları sınırlar dahil", () => {
-    expect(quizMatches(A("karavan", "iki", "temel", FARK, FARK), { berth: 2 }, "karavan")).toBe(true);
-    expect(quizMatches(A("karavan", "dort", "temel", FARK, FARK), { berth: 2 }, "karavan")).toBe(false);
-    expect(quizMatches(A("karavan", "dort", "temel", FARK, FARK), { berth: 3 }, "karavan")).toBe(true);
-    expect(quizMatches(A("karavan", "dort", "temel", FARK, FARK), {}, "karavan")).toBe(false);
-    expect(quizMatches(A("karavan", "iki", "temel", FARK, "kompakt"), { berth: 2, length_cm: 650 }, "karavan")).toBe(true);
-    expect(quizMatches(A("karavan", "iki", "temel", FARK, "kompakt"), { berth: 2, length_cm: 651 }, "karavan")).toBe(false);
-    expect(quizMatches(A("karavan", "iki", "temel", FARK, "orta"), { berth: 2, length_cm: 651 }, "karavan")).toBe(true);
-    expect(quizMatches(A("karavan", "iki", "temel", FARK, "orta"), { berth: 2, length_cm: 750 }, "karavan")).toBe(true);
-    expect(quizMatches(A("karavan", "iki", "temel", FARK, "buyuk"), { berth: 2, length_cm: 832.5 }, "karavan")).toBe(true);
-    expect(quizMatches(A("karavan", "iki", "temel", FARK, "buyuk"), { berth: 2, length_cm: 750 }, "karavan")).toBe(false);
+    expect(quizMatches(A("karavan", "iki", "minimal", FARK, FARK), { berth: 2 }, "karavan")).toBe(true);
+    expect(quizMatches(A("karavan", "dort", "minimal", FARK, FARK), { berth: 2 }, "karavan")).toBe(false);
+    expect(quizMatches(A("karavan", "dort", "minimal", FARK, FARK), { berth: 3 }, "karavan")).toBe(true);
+    expect(quizMatches(A("karavan", "dort", "minimal", FARK, FARK), {}, "karavan")).toBe(false);
+    expect(quizMatches(A("karavan", "iki", "minimal", FARK, "kompakt"), { berth: 2, length_cm: 650 }, "karavan")).toBe(true);
+    expect(quizMatches(A("karavan", "iki", "minimal", FARK, "kompakt"), { berth: 2, length_cm: 651 }, "karavan")).toBe(false);
+    expect(quizMatches(A("karavan", "iki", "minimal", FARK, "orta"), { berth: 2, length_cm: 651 }, "karavan")).toBe(true);
+    expect(quizMatches(A("karavan", "iki", "minimal", FARK, "orta"), { berth: 2, length_cm: 750 }, "karavan")).toBe(true);
+    expect(quizMatches(A("karavan", "iki", "minimal", FARK, "buyuk"), { berth: 2, length_cm: 832.5 }, "karavan")).toBe(true);
+    expect(quizMatches(A("karavan", "iki", "minimal", FARK, "buyuk"), { berth: 2, length_cm: 750 }, "karavan")).toBe(false);
   });
 
   it("kamyon q3 yük kapasitesi kovaları (≤800 / 801–1200 / 1201+); q5 çekiş 4x4 / 2 çeker", () => {
-    expect(quizMatches(A("kamyon", "is", "hafif", FARK, FARK), { payload_kg: 800 }, "kamyonet")).toBe(true);
-    expect(quizMatches(A("kamyon", "is", "hafif", FARK, FARK), { payload_kg: 805 }, "kamyonet")).toBe(false);
-    expect(quizMatches(A("kamyon", "is", "orta", FARK, FARK), { payload_kg: 1200 }, "kamyonet")).toBe(true);
-    expect(quizMatches(A("kamyon", "is", "agir", FARK, FARK), { payload_kg: 1201 }, "kamyonet")).toBe(true);
-    expect(quizMatches(A("kamyon", "is", "agir", FARK, FARK), {}, "kamyonet")).toBe(false);
-    expect(quizMatches(A("kamyon", "is", FARK, FARK, "dortcek"), { four_wd: true }, "kamyonet")).toBe(true);
-    expect(quizMatches(A("kamyon", "is", FARK, FARK, "dortcek"), { four_wd: false }, "kamyonet")).toBe(false);
-    expect(quizMatches(A("kamyon", "is", FARK, FARK, "ikicek"), { four_wd: false }, "kamyonet")).toBe(true);
-    expect(quizMatches(A("kamyon", "is", FARK, FARK, "ikicek"), { four_wd: true }, "kamyonet")).toBe(false);
-    expect(quizMatches(A("kamyon", "is", FARK, FARK, "ikicek"), {}, "kamyonet")).toBe(false);
+    expect(quizMatches(A("kamyon", "karma", "hafif", FARK, FARK), { payload_kg: 800 }, "kamyonet")).toBe(true);
+    expect(quizMatches(A("kamyon", "karma", "hafif", FARK, FARK), { payload_kg: 805 }, "kamyonet")).toBe(false);
+    expect(quizMatches(A("kamyon", "karma", "orta", FARK, FARK), { payload_kg: 1200 }, "kamyonet")).toBe(true);
+    expect(quizMatches(A("kamyon", "karma", "agir", FARK, FARK), { payload_kg: 1201 }, "kamyonet")).toBe(true);
+    expect(quizMatches(A("kamyon", "karma", "agir", FARK, FARK), {}, "kamyonet")).toBe(false);
+    expect(quizMatches(A("kamyon", "karma", FARK, FARK, "dortcek"), { four_wd: true }, "kamyonet")).toBe(true);
+    expect(quizMatches(A("kamyon", "karma", FARK, FARK, "dortcek"), { four_wd: false }, "kamyonet")).toBe(false);
+    expect(quizMatches(A("kamyon", "karma", FARK, FARK, "ikicek"), { four_wd: false }, "kamyonet")).toBe(true);
+    expect(quizMatches(A("kamyon", "karma", FARK, FARK, "ikicek"), { four_wd: true }, "kamyonet")).toBe(false);
+    expect(quizMatches(A("kamyon", "karma", FARK, FARK, "ikicek"), {}, "kamyonet")).toBe(false);
   });
 
   it("ebike q2 mesafe, q5 motor tipi, q3 watt, q4 tip birlikte", () => {
@@ -416,15 +426,15 @@ describe("quizMatches — 5 adımlı sert filtreler (kategori bazında)", () => 
   });
 
   it("hepsi q2 kişi sayısı: otomobil koltuk, karavan yatak, motosiklet 2, scooter/bisiklet 1 kabul edilir", () => {
-    const dort = A("hepsi", "sehir", "dort", FARK, FARK);
+    const dort = A("hepsi", FARK, "dort", FARK, FARK);
     expect(quizMatches(dort, { seat_count: 5 }, "otomobil")).toBe(true);
     expect(quizMatches(dort, { seat_count: 2 }, "kamyonet")).toBe(false);
     expect(quizMatches(dort, { berth: 4 }, "karavan")).toBe(true);
     expect(quizMatches(dort, {}, "motosiklet")).toBe(false);
     expect(quizMatches(dort, {}, "e-scooter")).toBe(false);
-    expect(quizMatches(A("hepsi", "sehir", "bes_alti", FARK, FARK), { seat_count: 7 }, "otomobil")).toBe(true);
-    expect(quizMatches(A("hepsi", "sehir", "bes_alti", FARK, FARK), { seat_count: 4 }, "otomobil")).toBe(false);
-    expect(quizMatches(A("hepsi", "sehir", "bir_iki", FARK, FARK), {}, "e-bisiklet")).toBe(true);
+    expect(quizMatches(A("hepsi", FARK, "bes_alti", FARK, FARK), { seat_count: 7 }, "otomobil")).toBe(true);
+    expect(quizMatches(A("hepsi", FARK, "bes_alti", FARK, FARK), { seat_count: 4 }, "otomobil")).toBe(false);
+    expect(quizMatches(A("hepsi", FARK, "bir_iki", FARK, FARK), {}, "e-bisiklet")).toBe(true);
   });
 
   it("hepsi q5 araç türü: kategoriye göre (4 tekerlek / 2 tekerlek / karavan)", () => {
@@ -447,8 +457,96 @@ describe("quizMatches — 5 adımlı sert filtreler (kategori bazında)", () => 
     expect(quizMatches(sec, { fuel_type: "GASOLINE" }, "motosiklet")).toBe(false);
   });
 
+  it("oto q2 kullanım: şehir = A/B segment, yol = depo >= 50 L veya EV menzil >= 400 km, zorlu = AWD/4WD; karma filtre koymaz", () => {
+    const sehir = A("oto", "sehir", FARK, FARK, FARK), yol = A("oto", "yol", FARK, FARK, FARK), zorlu = A("oto", "zorlu", FARK, FARK, FARK);
+    expect(quizMatches(sehir, { segment: "B" }, "otomobil")).toBe(true);
+    expect(quizMatches(sehir, { segment: "C" }, "otomobil")).toBe(false);
+    expect(quizMatches(sehir, {}, "otomobil")).toBe(false);
+    expect(quizMatches(yol, { fuel_type: "GASOLINE", tank_l: 50 }, "otomobil")).toBe(true);
+    expect(quizMatches(yol, { fuel_type: "GASOLINE", tank_l: 45 }, "otomobil")).toBe(false);
+    expect(quizMatches(yol, { fuel_type: "EV", ev_range_km: 400 }, "otomobil")).toBe(true);
+    expect(quizMatches(yol, { fuel_type: "EV", ev_range_km: 399, tank_l: 80 }, "otomobil")).toBe(false);
+    expect(quizMatches(zorlu, { drivetrain: "AWD" }, "otomobil")).toBe(true);
+    expect(quizMatches(zorlu, { drivetrain: "4WD" }, "otomobil")).toBe(true);
+    expect(quizMatches(zorlu, { drivetrain: "FWD" }, "otomobil")).toBe(false);
+    expect(quizMatches(A("oto", "karma", FARK, FARK, FARK), {}, "otomobil")).toBe(true);
+  });
+
+  it("moto q2 kullanım: şehir <= 200 kg, tur = depo >= 14 L / EV >= 150 km, off-road = adventure/enduro/cross veya >= 190 mm", () => {
+    const sehir = A("moto", "sehir", FARK, FARK, FARK), tur = A("moto", "tur", FARK, FARK, FARK), off = A("moto", "offroad", FARK, FARK, FARK);
+    expect(quizMatches(sehir, { weight_kg: 200 }, "motosiklet")).toBe(true);
+    expect(quizMatches(sehir, { weight_kg: 201 }, "motosiklet")).toBe(false);
+    expect(quizMatches(tur, { fuel_type: "GASOLINE", tank_l: 14 }, "motosiklet")).toBe(true);
+    expect(quizMatches(tur, { fuel_type: "GASOLINE", tank_l: 13 }, "motosiklet")).toBe(false);
+    expect(quizMatches(tur, { fuel_type: "EV", ev_range_km: 259 }, "motosiklet")).toBe(true);
+    expect(quizMatches(tur, { fuel_type: "EV", ev_range_km: 60 }, "motosiklet")).toBe(false);
+    expect(quizMatches(off, { moto_type: "adventure" }, "motosiklet")).toBe(true);
+    expect(quizMatches(off, { moto_type: "naked", ground_clearance_mm: 190 }, "motosiklet")).toBe(true);
+    expect(quizMatches(off, { moto_type: "naked", ground_clearance_mm: 150 }, "motosiklet")).toBe(false);
+    expect(quizMatches(off, { moto_type: "naked" }, "motosiklet")).toBe(false);
+  });
+
+  it("scooter q3 şarj: zor <= 7 sa, bazen <= 9 sa (ya da çıkarılabilir batarya); rahat filtre koymaz", () => {
+    expect(quizMatches(A("scooter", "bilmiyorum", "zor", FARK, FARK), { charge_hours: 7 }, "e-scooter")).toBe(true);
+    expect(quizMatches(A("scooter", "bilmiyorum", "zor", FARK, FARK), { charge_hours: 8 }, "e-scooter")).toBe(false);
+    expect(quizMatches(A("scooter", "bilmiyorum", "zor", FARK, FARK), { charge_hours: 12, removable_battery: true }, "e-scooter")).toBe(true);
+    expect(quizMatches(A("scooter", "bilmiyorum", "zor", FARK, FARK), {}, "e-scooter")).toBe(false);
+    expect(quizMatches(A("scooter", "bilmiyorum", "bazen", FARK, FARK), { charge_hours: 9 }, "e-scooter")).toBe(true);
+    expect(quizMatches(A("scooter", "bilmiyorum", "bazen", FARK, FARK), { charge_hours: 10 }, "e-scooter")).toBe(false);
+    expect(quizMatches(A("scooter", "bilmiyorum", "rahat", FARK, FARK), {}, "e-scooter")).toBe(true);
+  });
+
+  it("karavan q3 konfor: tam konfor = banyo + duş + mutfak, temel = mutfak, minimal filtre koymaz", () => {
+    const tam = A("karavan", "iki", "tamkonfor", FARK, FARK), temel = A("karavan", "iki", "temel", FARK, FARK);
+    const full = { berth: 2, has_bathroom: true, has_shower: true, has_kitchen: true };
+    expect(quizMatches(tam, full, "karavan")).toBe(true);
+    expect(quizMatches(tam, { ...full, has_shower: undefined }, "karavan")).toBe(false);
+    expect(quizMatches(tam, { ...full, has_kitchen: false }, "karavan")).toBe(false);
+    expect(quizMatches(temel, { berth: 2, has_kitchen: true }, "karavan")).toBe(true);
+    expect(quizMatches(temel, { berth: 2 }, "karavan")).toBe(false);
+    expect(quizMatches(A("karavan", "iki", "minimal", FARK, FARK), { berth: 2 }, "karavan")).toBe(true);
+  });
+
+  it("kamyon q2 amaç: iş = yük >= 800 kg, aile = >= 5 koltuk, macera = 4x4; karma filtre koymaz", () => {
+    expect(quizMatches(A("kamyon", "is", FARK, FARK, FARK), { payload_kg: 800 }, "kamyonet")).toBe(true);
+    expect(quizMatches(A("kamyon", "is", FARK, FARK, FARK), { payload_kg: 700 }, "kamyonet")).toBe(false);
+    expect(quizMatches(A("kamyon", "aile", FARK, FARK, FARK), { seat_count: 5 }, "kamyonet")).toBe(true);
+    expect(quizMatches(A("kamyon", "aile", FARK, FARK, FARK), { seat_count: 3 }, "kamyonet")).toBe(false);
+    expect(quizMatches(A("kamyon", "macera", FARK, FARK, FARK), { four_wd: true }, "kamyonet")).toBe(true);
+    expect(quizMatches(A("kamyon", "macera", FARK, FARK, FARK), { four_wd: false }, "kamyonet")).toBe(false);
+    expect(quizMatches(A("kamyon", "karma", FARK, FARK, FARK), {}, "kamyonet")).toBe(true);
+  });
+
+  it("hepsi q2 kullanım: kategoriler arası kurallar (şehir, yol, iş, macera)", () => {
+    const sehir = A("hepsi", "sehir", FARK, FARK, FARK), yol = A("hepsi", "yol", FARK, FARK, FARK);
+    const is = A("hepsi", "is", FARK, FARK, FARK), macera = A("hepsi", "macera", FARK, FARK, FARK);
+    // şehir
+    expect(quizMatches(sehir, {}, "e-scooter")).toBe(true);
+    expect(quizMatches(sehir, {}, "e-bisiklet")).toBe(true);
+    expect(quizMatches(sehir, { weight_kg: 150 }, "motosiklet")).toBe(true);
+    expect(quizMatches(sehir, { weight_kg: 250 }, "motosiklet")).toBe(false);
+    expect(quizMatches(sehir, { segment: "A" }, "otomobil")).toBe(true);
+    expect(quizMatches(sehir, { segment: "D" }, "otomobil")).toBe(false);
+    expect(quizMatches(sehir, {}, "karavan")).toBe(false);
+    expect(quizMatches(sehir, { payload_kg: 1000 }, "kamyonet")).toBe(false);
+    // uzun yol
+    expect(quizMatches(yol, {}, "karavan")).toBe(true);
+    expect(quizMatches(yol, { fuel_type: "GASOLINE", tank_l: 60 }, "otomobil")).toBe(true);
+    expect(quizMatches(yol, { fuel_type: "GASOLINE", tank_l: 14 }, "motosiklet")).toBe(true);
+    expect(quizMatches(yol, {}, "e-scooter")).toBe(false);
+    // iş
+    expect(quizMatches(is, { payload_kg: 900 }, "kamyonet")).toBe(true);
+    expect(quizMatches(is, { payload_kg: 900 }, "otomobil")).toBe(false);
+    // macera
+    expect(quizMatches(macera, {}, "karavan")).toBe(true);
+    expect(quizMatches(macera, { four_wd: true }, "kamyonet")).toBe(true);
+    expect(quizMatches(macera, { drivetrain: "AWD" }, "otomobil")).toBe(true);
+    expect(quizMatches(macera, { moto_type: "enduro" }, "motosiklet")).toBe(true);
+    expect(quizMatches(macera, {}, "e-bisiklet")).toBe(false);
+  });
+
   it("quizQ4Matches yalnız 3. soruyu uygular (q5 görmezden gelinir)", () => {
-    expect(quizQ4Matches(A("oto", "sehir", "bakim", "dizel", "suv"), { fuel_type: "DIESEL", body_type: "hatchback" }, "otomobil")).toBe(true);
+    expect(quizQ4Matches(A("oto", "karma", "bakim", "dizel", "suv"), { fuel_type: "DIESEL", body_type: "hatchback" }, "otomobil")).toBe(true);
   });
 });
 
