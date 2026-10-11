@@ -2,7 +2,7 @@
 //
 // TEK KAYNAK: enum etiketleri @/lib/vehicleTypes ve @/lib/fuel'den gelir;
 // sayısal aralık kovaları (cc / W) burada tanımlıdır. Bu dosya BİLİNÇLİ olarak
-// @/lib/quiz'e HİÇ bağımlı DEĞİL — "4 soruda araç bul" akışının bu işten
+// @/lib/quiz'e HİÇ bağımlı DEĞİL — "5 soruda araç bul" akışının bu işten
 // etkilenmemesi kullanıcı şartı (bkz. backlog_anasayfa_katalog_ayirma memory).
 // Gruplamalar quiz'deki OTO_FUEL_MAP / MOTO_TYPE_MAP / *_WATT_RANGES ile
 // kavramsal olarak aynı tutulur ama ayrı yaşar.

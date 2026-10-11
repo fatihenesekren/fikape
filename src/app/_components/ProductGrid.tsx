@@ -3,7 +3,7 @@ import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { NiyetKarti } from "./NiyetKarti";
-import { decodeQuiz, calcQuizScore, quizQ4Matches, CAT_TO_SLUG, MOTO_CC_RANGES, EBIKE_WATT_RANGES, type ReviewExtData } from "@/lib/quiz";
+import { decodeQuiz, calcQuizScore, quizMatches, CAT_TO_SLUG, type ReviewExtData } from "@/lib/quiz";
 import { getVitrin } from "@/lib/vitrin/getVitrin";
 import type { FikapeScores } from "@/lib/fikape";
 
@@ -53,33 +53,10 @@ export async function ProductGrid({ quizParam }: Props) {
     orderBy: [{ brand: { name: "asc" } }, { model: { name: "asc" } }, { year: "desc" }],
   });
 
-  // Motosiklet "Motor hacmi" sert filtresi — quiz'te seçilen cc aralığının dışındaki
-  // araçlar sonuçtan tamamen çıkarılır (bkz. MOTO_CC_RANGES, "farketmez" filtre koymaz).
-  if (quizAnswers?.cat === "moto") {
-    const ccRange = MOTO_CC_RANGES[quizAnswers.q3];
-    if (ccRange) {
-      products = products.filter((p) => {
-        const cc = Number((p.attributes as Record<string, unknown>).engine_cc);
-        return Number.isFinite(cc) && cc >= ccRange.min && cc <= ccRange.max;
-      });
-    }
-  }
-
-  // E-Bisiklet "Motor gücü" sert filtresi — moto'nun cc filtresiyle aynı ilke (bkz. EBIKE_WATT_RANGES).
-  if (quizAnswers?.cat === "ebike") {
-    const wattRange = EBIKE_WATT_RANGES[quizAnswers.q3];
-    if (wattRange) {
-      products = products.filter((p) => {
-        const watt = Number((p.attributes as Record<string, unknown>).motor_watt);
-        return Number.isFinite(watt) && watt >= wattRange.min && watt <= wattRange.max;
-      });
-    }
-  }
-
-  // 4. soru sert filtresi — kategoriye göre yakıt/tip/güç/çekiş (bkz. quizQ4Matches)
+  // Quiz sert filtreleri (kategoriye göre motor hacmi/güç/tip/vites/menzil/boy/çekiş vb.) — tek kaynak: STEP_RULES (bkz. quizMatches).
   if (quizAnswers) {
     products = products.filter((p) =>
-      quizQ4Matches(quizAnswers, p.attributes as Record<string, unknown>, p.category?.slug ?? null)
+      quizMatches(quizAnswers, p.attributes as Record<string, unknown>, p.category?.slug ?? null)
     );
   }
 

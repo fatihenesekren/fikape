@@ -33,7 +33,7 @@ export default async function Home({
   // Eski ana sayfa kategori filtresi linkleri (?kategori=X) artık katalog
   // sayfasına taşındı — bookmark/dış link kırılmasın (bkz. backlog_anasayfa_katalog_ayirma).
   // ⚠️ quiz akışı da `?kategori=X&quiz=...` ile ana sayfaya döner (NiyetKarti
-  // completeWith) — o durumda YÖNLENDİRME, yoksa "4 soru" sonucu kaybolur.
+  // completeWith) — o durumda YÖNLENDİRME, yoksa "5 soru" sonucu kaybolur.
   if (kategori && kategori !== "hepsi" && !quiz) {
     redirect(`/araclar?kategori=${encodeURIComponent(kategori)}`);
   }

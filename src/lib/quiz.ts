@@ -14,6 +14,8 @@ export interface QuizAnswers {
   q2: string;
   q3: string;
   q4: string;
+  /** 5. adım (kategori + 4 soru). Eski 3/4 parçalı paylaşılan adreslerde "fark" varsayılır. */
+  q5: string;
 }
 
 export interface QuizOption {
@@ -68,7 +70,7 @@ export const ALL_CATS: { key: QuizCat; icon: string; label: string }[] = [
   { key: "hepsi",   icon: "🤔", label: "Kararsızım" },
 ];
 
-export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
+const BASE_STEPS: Record<QuizCat, QuizStepDef[]> = {
   oto: [
     {
       question: "Aracını ağırlıklı nerede kullanacaksın?",
@@ -173,7 +175,6 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
       opts: [
         { key: "iki",  icon: "👫",    label: "2 kişi",   sub: "Çift" },
         { key: "dort", icon: "👨‍👩‍👧",  label: "3–4 kişi", sub: "Küçük aile" },
-        { key: "alti", icon: "👨‍👩‍👧‍👦", label: "5–6 kişi", sub: "Büyük aile" },
       ],
     },
     {
@@ -191,7 +192,6 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
       opts: [
         { key: "cekme",   icon: "🚙", label: "Çekme",      sub: "Araçla çekilir" },
         { key: "motorlu", icon: "🚐", label: "Motorlu",    sub: "Kendi motoru var" },
-        { key: "kamper",  icon: "🚌", label: "Kamper-Van", sub: "Van dönüşüm" },
         { key: "fark",    icon: "—",  label: "Fark etmez",  sub: "" },
       ],
     },
@@ -211,9 +211,9 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
       question: "Yük kapasitesi önemli mi?",
       stepLabel: "Kapasite",
       opts: [
-        { key: "hafif", icon: "📦", label: "Hafif < 1t", sub: "Küçük yük" },
-        { key: "orta",  icon: "📦", label: "Orta 1–2t",  sub: "Orta yük" },
-        { key: "agir",  icon: "📦", label: "Ağır 2t+",   sub: "Ağır yük" },
+        { key: "hafif", icon: "📦", label: "Hafif ≤ 800 kg", sub: "Küçük yük" },
+        { key: "orta",  icon: "📦", label: "Orta 800–1200 kg", sub: "Orta yük" },
+        { key: "agir",  icon: "📦", label: "Ağır 1200 kg+", sub: "Ağır yük" },
         { key: "fark",  icon: "—",  label: "Fark etmez",  sub: "" },
       ],
     },
@@ -242,9 +242,8 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
       question: "Motor gücü beklentin?",
       stepLabel: "Güç",
       opts: [
-        { key: "eco",   icon: "🍃", label: "350W'a kadar", sub: "Hafif, düz yol" },
-        { key: "orta",  icon: "💪", label: "350–500W",     sub: "Dengeli" },
-        { key: "guclu", icon: "🔥", label: "500W+",        sub: "Yokuş, performans" },
+        { key: "eco",   icon: "🍃", label: "250 W'a kadar",  sub: "Standart pedelec" },
+        { key: "guclu", icon: "🔥", label: "250 W üstü",     sub: "Yokuş, performans" },
         { key: "fark",  icon: "—",  label: "Fark etmez",    sub: "" },
       ],
     },
@@ -254,8 +253,6 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
       opts: [
         { key: "sehir",    icon: "🏙️", label: "Şehir",        sub: "Günlük komüt" },
         { key: "mtb",      icon: "⛰️", label: "MTB",           sub: "Dağ, arazi" },
-        { key: "yol",      icon: "🛣️", label: "Yol",          sub: "Hız, spor" },
-        { key: "kargo",    icon: "📦", label: "Kargo",         sub: "Yük taşıma" },
         { key: "katlanir", icon: "🧳", label: "Katlanabilir",  sub: "Taşınabilir" },
         { key: "fark",     icon: "—",  label: "Fark etmez",     sub: "" },
       ],
@@ -293,21 +290,96 @@ export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = {
   ],
 };
 
+// 5. adım (kategori + 4 soru): her kategoride gerçek bir attributes alanına bağlı sert filtre (bkz. STEP_RULES).
+const SON_ADIM: Record<QuizCat, QuizStepDef> = {
+  oto: {
+    question: "Hangi gövde tipini düşünüyorsun?",
+    stepLabel: "Gövde",
+    opts: [
+      { key: "suv",       icon: "🚙", label: "SUV / Crossover",  sub: "Yüksek oturuş" },
+      { key: "hatchback", icon: "🚗", label: "Hatchback",         sub: "Kompakt, pratik" },
+      { key: "sedan",     icon: "🚘", label: "Sedan / Station",   sub: "Klasik, geniş bagaj" },
+      { key: "fark",      icon: "—",  label: "Fark etmez",         sub: "" },
+    ],
+  },
+  moto: {
+    question: "Vites tercihin?",
+    stepLabel: "Vites",
+    opts: [
+      { key: "manuel",   icon: "🦶", label: "Manuel",   sub: "Vitesi ben değiştiririm" },
+      { key: "otomatik", icon: "🛵", label: "Otomatik", sub: "Scooter, DCT, CVT" },
+      { key: "fark",     icon: "—",  label: "Fark etmez", sub: "" },
+    ],
+  },
+  scooter: {
+    question: "Azami hız beklentin?",
+    stepLabel: "Hız",
+    opts: [
+      { key: "dusuk", icon: "🚶", label: "25 km/s'ye kadar", sub: "Yaya yoğun alan, hafif" },
+      { key: "orta",  icon: "🚲", label: "26–45 km/s",       sub: "Şehir içi dengeli" },
+      { key: "hizli", icon: "⚡", label: "45 km/s +",        sub: "Hızlı ve güçlü" },
+      { key: "fark",  icon: "—",  label: "Fark etmez",        sub: "" },
+    ],
+  },
+  karavan: {
+    question: "Karavan boyu ne olsun?",
+    stepLabel: "Uzunluk",
+    opts: [
+      { key: "kompakt", icon: "🚙", label: "Kompakt ≤ 6,5 m", sub: "Kolay çekilir, park" },
+      { key: "orta",    icon: "🚐", label: "Orta 6,5–7,5 m",  sub: "Dengeli" },
+      { key: "buyuk",   icon: "🚌", label: "Büyük 7,5 m +",   sub: "Geniş yaşam alanı" },
+      { key: "fark",    icon: "—",  label: "Fark etmez",       sub: "" },
+    ],
+  },
+  kamyon: {
+    question: "Çekiş sistemi önemli mi?",
+    stepLabel: "Çekiş",
+    opts: [
+      { key: "dortcek", icon: "🏔️", label: "4×4 olsun", sub: "Arazi, kar, çamur" },
+      { key: "ikicek",  icon: "🛣️", label: "2 çeker yeter", sub: "Asfalt, şehir" },
+      { key: "fark",    icon: "—",  label: "Fark etmez", sub: "" },
+    ],
+  },
+  ebike: {
+    question: "Motor tipi tercihin?",
+    stepLabel: "Motor tipi",
+    opts: [
+      { key: "mid",  icon: "⚙️", label: "Orta motor",   sub: "Doğal pedal hissi, yokuş" },
+      { key: "hub",  icon: "🔘", label: "Göbek motoru", sub: "Sade, uygun fiyatlı" },
+      { key: "fark", icon: "—",  label: "Fark etmez",    sub: "" },
+    ],
+  },
+  hepsi: {
+    question: "Hangi tür araca bakalım?",
+    stepLabel: "Araç türü",
+    opts: [
+      { key: "dort_teker", icon: "🚗", label: "4 tekerlekli", sub: "Otomobil, kamyonet" },
+      { key: "iki_teker",  icon: "🏍️", label: "2 tekerlekli", sub: "Motosiklet, scooter, bisiklet" },
+      { key: "yasam",      icon: "🏕️", label: "Karavan",      sub: "Seyahat, konaklama" },
+      { key: "fark",       icon: "—",  label: "Fark etmez",    sub: "" },
+    ],
+  },
+};
+
+export const QUIZ_STEPS: Record<QuizCat, QuizStepDef[]> = Object.fromEntries(
+  (Object.keys(BASE_STEPS) as QuizCat[]).map((cat) => [cat, [...BASE_STEPS[cat], SON_ADIM[cat]]]),
+) as Record<QuizCat, QuizStepDef[]>;
+
 // ─── URL encode / decode ───────────────────────
 
 export function encodeQuiz(answers: QuizAnswers): string {
-  return `${answers.cat},${answers.q2},${answers.q3},${answers.q4}`;
+  return `${answers.cat},${answers.q2},${answers.q3},${answers.q4},${answers.q5}`;
 }
 
 export function decodeQuiz(param: string): QuizAnswers | null {
   const parts = param.split(",");
   if (parts.length < 3) return null;
-  const [cat, q2, q3, q4] = parts;
+  const [cat, q2, q3, q4, q5] = parts;
   const valid: QuizCat[] = ["oto", "moto", "scooter", "ebike", "karavan", "kamyon", "hepsi"];
   if (!valid.includes(cat as QuizCat)) return null;
   if (!q2 || !q3) return null;
-  // Eski (3 parçalı) paylaşılan URL'ler kırılmasın — q4 yoksa "farketmez" varsayılır
-  return { cat: cat as QuizCat, q2, q3, q4: q4 || "fark" };
+  // Eski (3 ve 4 parçalı) paylaşılan adresler kırılmasın — eksik adımlar "fark etmez" sayılır
+  return { cat: cat as QuizCat, q2, q3, q4: q4 || "fark", q5: q5 || "fark" };
 }
 
 // ─── Scoring ──────────────────────────────────
@@ -339,18 +411,17 @@ const USAGE_MAP: Record<string, string> = {
 
 const LOW_MAINTENANCE = new Set(["affordable", "okay"]);
 
-// Motosiklet "Motor hacmi" sorusu — sert filtre (attributes.engine_cc'ye uygulanır).
-// "fark" (farketmez) filtre koymaz, elektrikli motosikletler (engine_cc yok) dahil kalır.
+// ── Sert filtre tabloları ─────────────────────────────
+// Her cevap gerçek bir attributes alanına bağlanır: "fark" (ve "bilmiyorum" gibi bağlanmayan cevaplar) filtre koymaz,
+// somut seçim aralık/liste dışını sonuçtan çıkarır; ilgili alanı boş olan kayıt somut seçimde elenir.
+
+// Motosiklet "Motor hacmi" — elektrikli motosikletler (engine_cc yok) "fark etmez"de dahil kalır.
 export const MOTO_CC_RANGES: Record<string, { min: number; max: number } | null> = {
   kucuk: { min: 125, max: 250 },
   orta:  { min: 400, max: 600 },
   buyuk: { min: 600, max: Infinity },
   fark:  null,
 };
-
-// ── 4. soru sert filtreleri ───────────────────────────
-// Her kategorinin 4. sorusu gerçek bir attributes alanına bağlanır — MOTO_CC_RANGES ile
-// aynı ilke: "fark" filtre koymaz, somut seçim aralık/liste dışını sonuçtan çıkarır.
 
 export const OTO_FUEL_MAP: Record<string, string[] | null> = {
   benzin:   ["GASOLINE", "LPG"],
@@ -360,12 +431,25 @@ export const OTO_FUEL_MAP: Record<string, string[] | null> = {
   fark:     null,
 };
 
+export const OTO_BODY_MAP: Record<string, string[] | null> = {
+  suv:       ["suv"],
+  hatchback: ["hatchback"],
+  sedan:     ["sedan", "station"],
+  fark:      null,
+};
+
 export const MOTO_TYPE_MAP: Record<string, string[] | null> = {
   naked:   ["naked", "retro", "cruiser"],
   sport:   ["sport"],
-  scooter: ["scooter"],
+  scooter: ["scooter", "uc-tekerlekli"],
   tur:     ["adventure", "touring", "enduro", "cross"],
   fark:    null,
+};
+
+export const MOTO_GEAR_MAP: Record<string, string[] | null> = {
+  manuel:   ["Manuel"],
+  otomatik: ["Otomatik", "CVT", "Yarı Otomatik"],
+  fark:     null,
 };
 
 export const SCOOTER_WATT_RANGES: Record<string, { min: number; max: number } | null> = {
@@ -375,15 +459,31 @@ export const SCOOTER_WATT_RANGES: Record<string, { min: number; max: number } | 
   fark:  null,
 };
 
-// E-bisiklet "Motor gücü" sert filtresi — 2. soru (q3), MOTO_CC_RANGES ile aynı ilke.
-export const EBIKE_WATT_RANGES: Record<string, { min: number; max: number } | null> = {
-  eco:   { min: 0,   max: 350 },
-  orta:  { min: 350, max: 500 },
-  guclu: { min: 500, max: Infinity },
+export const SCOOTER_SPEED_RANGES: Record<string, { min: number; max: number } | null> = {
+  dusuk: { min: 0,  max: 25 },
+  orta:  { min: 26, max: 45 },
+  hizli: { min: 46, max: Infinity },
   fark:  null,
 };
 
-// E-bisiklet "Tip" sert filtresi — 3. soru (q4), attrs.bike_type'a uygulanır.
+// E-bisiklet "Motor gücü" sert filtresi.
+// Not: yasal pedelec sınırı 250 W; katalogda 250 W ve 750 W var, 251–500 W arası boş olduğu için "orta" kademe kaldırıldı
+// (eski adreslerdeki q3=orta artık filtre koymaz).
+export const EBIKE_WATT_RANGES: Record<string, { min: number; max: number } | null> = {
+  eco:   { min: 0,   max: 250 },
+  guclu: { min: 251, max: Infinity },
+  fark:  null,
+};
+
+// E-bisiklet/e-scooter "Günlük mesafe": üreticinin verdiği azami menzil gerçek kullanımda çoğunlukla ~yarıya düşer;
+// bu yüzden aracın menzili günlük mesafenin yaklaşık iki katı olmalı (kisa: 15 km menzil yeter, orta: 30, uzun: 60).
+export const MESAFE_MIN_MENZIL_KM: Record<string, number | null> = {
+  kisa: 15,
+  orta: 30,
+  uzun: 60,
+  bilmiyorum: null,
+};
+
 export const BIKE_TYPE_MAP: Record<string, string[] | null> = {
   sehir:    ["sehir"],
   mtb:      ["mtb"],
@@ -393,6 +493,12 @@ export const BIKE_TYPE_MAP: Record<string, string[] | null> = {
   fark:     null,
 };
 
+export const EBIKE_MOTOR_MAP: Record<string, string[] | null> = {
+  mid:  ["mid-drive"],
+  hub:  ["hub-drive"],
+  fark: null,
+};
+
 export const KARAVAN_TYPE_MAP: Record<string, string[] | null> = {
   cekme:   ["cekme"],
   motorlu: ["motorlu"],
@@ -400,73 +506,188 @@ export const KARAVAN_TYPE_MAP: Record<string, string[] | null> = {
   fark:    null,
 };
 
-export function quizQ4Matches(
-  answers: QuizAnswers,
-  attrs: Record<string, unknown>,
-  categorySlug: string | null,
-): boolean {
-  const q4 = answers.q4;
-  if (!q4 || q4 === "fark") return true;
+// Karavan "Kaç kişilik": en az bu kadar yatak (berth).
+export const KARAVAN_MIN_BERTH: Record<string, number | null> = {
+  iki:  2,
+  dort: 3,
+  alti: 5,
+};
 
-  switch (answers.cat) {
-    case "oto": {
-      const allowed = OTO_FUEL_MAP[q4];
-      return !allowed || allowed.includes(String(attrs.fuel_type ?? ""));
-    }
-    case "moto": {
-      const allowed = MOTO_TYPE_MAP[q4];
-      return !allowed || allowed.includes(String(attrs.moto_type ?? ""));
-    }
-    case "scooter": {
-      const range = SCOOTER_WATT_RANGES[q4];
-      if (!range) return true;
-      const watt = Number(attrs.motor_watt);
-      return Number.isFinite(watt) && watt >= range.min && watt <= range.max;
-    }
-    case "ebike": {
-      const allowed = BIKE_TYPE_MAP[q4];
-      return !allowed || allowed.includes(String(attrs.bike_type ?? ""));
-    }
-    case "karavan": {
-      const allowed = KARAVAN_TYPE_MAP[q4];
-      return !allowed || allowed.includes(String(attrs.karavan_type ?? ""));
-    }
-    case "kamyon": {
+// Karavan boyu (length_cm).
+export const KARAVAN_LENGTH_RANGES: Record<string, { min: number; max: number } | null> = {
+  kompakt: { min: 0,   max: 650 },
+  orta:    { min: 651, max: 750 },
+  buyuk:   { min: 751, max: Infinity },
+  fark:    null,
+};
+
+// Kamyonet yük kapasitesi (payload_kg) — /araclar'daki Yük Kapasitesi filtresiyle aynı kovalar.
+export const KAMYON_PAYLOAD_RANGES: Record<string, { min: number; max: number } | null> = {
+  hafif: { min: 0,    max: 800 },
+  orta:  { min: 801,  max: 1200 },
+  agir:  { min: 1201, max: Infinity },
+  fark:  null,
+};
+
+type Attrs = Record<string, unknown>;
+type Kural = (attrs: Attrs, slug: string | null) => boolean;
+
+const sayi = (v: unknown): number | null => {
+  if (v == null || v === "") return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+};
+const aralikta = (v: unknown, r: { min: number; max: number }) => {
+  const n = sayi(v);
+  return n != null && n >= r.min && n <= r.max;
+};
+const listede = (v: unknown, liste: string[]) => liste.includes(String(v ?? ""));
+const dogruMu = (v: unknown) => v === true || String(v) === "true";
+const yanlisMi = (v: unknown) => v === false || String(v) === "false";
+
+/** "Hepsi" 2. adım: aracın taşıyabileceği kişi sayısı. İki tekerleklilerde alan yok: motosiklet 2, e-scooter/e-bisiklet 1 kabul edilir. */
+export function kisiKapasitesi(attrs: Attrs, categorySlug: string | null): number | null {
+  if (categorySlug === "motosiklet") return 2;
+  if (categorySlug === "e-scooter" || categorySlug === "e-bisiklet") return 1;
+  if (categorySlug === "karavan") return sayi(attrs.berth);
+  return sayi(attrs.seat_count);
+}
+export const HEPSI_MIN_KISI: Record<string, number | null> = {
+  bir_iki:  null,
+  dort:     3,
+  bes_alti: 5,
+};
+
+// "Hepsi" son adım: hangi araç türü? (kategori slug'ı üzerinden)
+export const HEPSI_TUR_SLUGLARI: Record<string, string[] | null> = {
+  dort_teker: ["otomobil", "kamyonet"],
+  iki_teker:  ["motosiklet", "e-scooter", "e-bisiklet"],
+  yasam:      ["karavan"],
+  fark:       null,
+};
+
+const listeKurali = (map: Record<string, string[] | null>, attrKey: string): Record<string, Kural> => {
+  const out: Record<string, Kural> = {};
+  for (const [k, v] of Object.entries(map)) if (v) out[k] = (a) => listede(a[attrKey], v);
+  return out;
+};
+const aralikKurali = (map: Record<string, { min: number; max: number } | null>, attrKey: string): Record<string, Kural> => {
+  const out: Record<string, Kural> = {};
+  for (const [k, v] of Object.entries(map)) if (v) out[k] = (a) => aralikta(a[attrKey], v);
+  return out;
+};
+const enAzKurali = (map: Record<string, number | null>, deger: (a: Attrs, slug: string | null) => number | null): Record<string, Kural> => {
+  const out: Record<string, Kural> = {};
+  for (const [k, min] of Object.entries(map)) {
+    if (min != null) out[k] = (a, slug) => {
+      const d = deger(a, slug);
+      return d != null && d >= min;
+    };
+  }
+  return out;
+};
+const menzil = (a: Attrs) => sayi(a.range_km);
+const elektrikliMi = (a: Attrs, slug: string | null) => String(a.fuel_type ?? "") === "EV" || slug === "e-scooter" || slug === "e-bisiklet";
+
+/**
+ * Adım kuralları — TEK GERÇEK KAYNAK (sert filtre + çip görünürlüğü).
+ *   • tablo  : cevap anahtarı → kural. Tabloda olmayan anahtar ("fark" vb.) filtre koymaz.
+ *   • "rank" : filtre değil, sıralama ağırlığı (otomobil önceliği) — sonucu etkiler ama kimseyi elemez.
+ *   • null   : bu adım hiçbir şeyi etkilemez (yalnız kullanıcıyı yönlendirir).
+ * Dizi indeksi = QUIZ_STEPS indeksi: 0 → q2, 1 → q3, 2 → q4, 3 → q5.
+ */
+type AdimKurali = Record<string, Kural> | "rank" | null;
+export const STEP_RULES: Record<QuizCat, AdimKurali[]> = {
+  oto: [
+    null,
+    "rank",
+    listeKurali(OTO_FUEL_MAP, "fuel_type"),
+    listeKurali(OTO_BODY_MAP, "body_type"),
+  ],
+  moto: [
+    null,
+    aralikKurali(MOTO_CC_RANGES, "engine_cc"),
+    listeKurali(MOTO_TYPE_MAP, "moto_type"),
+    listeKurali(MOTO_GEAR_MAP, "transmission"),
+  ],
+  scooter: [
+    enAzKurali(MESAFE_MIN_MENZIL_KM, menzil),
+    null,
+    aralikKurali(SCOOTER_WATT_RANGES, "motor_watt"),
+    aralikKurali(SCOOTER_SPEED_RANGES, "max_speed_kmh"),
+  ],
+  karavan: [
+    enAzKurali(KARAVAN_MIN_BERTH, (a) => sayi(a.berth)),
+    null,
+    listeKurali(KARAVAN_TYPE_MAP, "karavan_type"),
+    aralikKurali(KARAVAN_LENGTH_RANGES, "length_cm"),
+  ],
+  kamyon: [
+    null,
+    aralikKurali(KAMYON_PAYLOAD_RANGES, "payload_kg"),
+    {
       // Kasa tipi: "yuk" = kapalı kasa (van/panelvan), "pickup" = açık kasa.
       // Minivan/insan taşıma ile veri eksiği her ikisinde de elenir; "fark" hepsi.
-      const bt = String(attrs.body_type ?? "").toLowerCase();
-      if (q4 === "yuk")    return bt === "van" || bt === "panelvan";
-      if (q4 === "pickup") return bt === "pickup";
-      return true;
-    }
-    case "hepsi": {
-      const isElectric =
-        String(attrs.fuel_type ?? "") === "EV" ||
-        categorySlug === "e-scooter" ||
-        categorySlug === "e-bisiklet";
-      if (q4 === "elektrik") return isElectric;
-      if (q4 === "yakitli")  return !isElectric;
-      return true;
-    }
-  }
-  return true;
+      yuk:    (a) => listede(String(a.body_type ?? "").toLowerCase(), ["van", "panelvan"]),
+      pickup: (a) => String(a.body_type ?? "").toLowerCase() === "pickup",
+    },
+    {
+      dortcek: (a) => dogruMu(a.four_wd),
+      ikicek:  (a) => yanlisMi(a.four_wd),
+    },
+  ],
+  ebike: [
+    enAzKurali(MESAFE_MIN_MENZIL_KM, menzil),
+    aralikKurali(EBIKE_WATT_RANGES, "motor_watt"),
+    listeKurali(BIKE_TYPE_MAP, "bike_type"),
+    listeKurali(EBIKE_MOTOR_MAP, "motor_type"),
+  ],
+  hepsi: [
+    null,
+    enAzKurali(HEPSI_MIN_KISI, kisiKapasitesi),
+    {
+      elektrik: (a, slug) => elektrikliMi(a, slug),
+      yakitli:  (a, slug) => !elektrikliMi(a, slug),
+    },
+    (() => {
+      const out: Record<string, Kural> = {};
+      for (const [k, v] of Object.entries(HEPSI_TUR_SLUGLARI)) if (v) out[k] = (_a, slug) => !!slug && v.includes(slug);
+      return out;
+    })(),
+  ],
+};
+
+const ADIM_ANAHTARI = ["q2", "q3", "q4", "q5"] as const;
+
+/** Tüm sert filtreler (adım 1–4) birlikte: bir ürün quiz cevaplarının hepsine uyuyor mu? */
+export function quizMatches(answers: QuizAnswers, attrs: Attrs, categorySlug: string | null): boolean {
+  const kurallar = STEP_RULES[answers.cat];
+  return ADIM_ANAHTARI.every((anahtar, i) => {
+    const adim = kurallar[i];
+    if (!adim || adim === "rank") return true;
+    const kural = adim[answers[anahtar]];
+    return !kural || kural(attrs, categorySlug);
+  });
 }
 
-// Bir quiz cevabı ana sayfa sonuç ızgarasını GERÇEKTEN etkiliyor mu? (sert filtre
-// VEYA sıralama ağırlığı). Sonuç şeridinde yalnız bunlar çip olarak gösterilir —
-// "Fark etmez" / "Emin değilim" ya da hiç okunmayan adımlar anlamsız çip üretmesin.
-//   • 1. soru (q2): hiçbir kategoride sonucu etkilemiyor — calcQuizScore yalnız
-//     .score döndürüp ProductGrid onu kullanıyor; matchCount (q2'nin girdiği yer)
-//     hiçbir yerde okunmuyor.
-//   • 2. soru (q3): yalnız oto (weightedScore öncelik ağırlığı) / moto
-//     (MOTO_CC_RANGES) / ebike (EBIKE_WATT_RANGES). scooter/karavan/kamyon/hepsi
-//     q3'ü hiçbir yerde okunmuyor.
-//   • 3. soru (q4): her kategoride sert filtre (quizQ4Matches) — "fark" hariç.
-export function answerAffectsResults(cat: QuizCat, step: 1 | 2 | 3, key: string): boolean {
+/** Yalnız 3. soru (q4) filtresi — geriye uyumluluk ve birim testleri için. */
+export function quizQ4Matches(answers: QuizAnswers, attrs: Attrs, categorySlug: string | null): boolean {
+  const adim = STEP_RULES[answers.cat][2];
+  if (!adim || adim === "rank") return true;
+  const kural = adim[answers.q4];
+  return !kural || kural(attrs, categorySlug);
+}
+
+// Bir quiz cevabı ana sayfa sonuç ızgarasını GERÇEKTEN etkiliyor mu? (sert filtre VEYA sıralama ağırlığı).
+// Sonuç şeridinde yalnız bunlar çip olarak gösterilir — "Fark etmez" / "Emin değilim" ya da hiç okunmayan
+// adımlar anlamsız çip üretmesin. Karar STEP_RULES'tan türer: kural tablosunda olan cevap etkiler.
+//   step: 1 → q2, 2 → q3, 3 → q4, 4 → q5
+export function answerAffectsResults(cat: QuizCat, step: 1 | 2 | 3 | 4, key: string): boolean {
   if (!key || key === "fark") return false;
-  if (step === 1) return false;
-  if (step === 2) return cat === "oto" || cat === "moto" || cat === "ebike";
-  return true; // step 3 / q4
+  const adim = STEP_RULES[cat][step - 1];
+  if (!adim) return false;
+  if (adim === "rank") return true;
+  return key in adim;
 }
 
 function weightedScore(scores: FikapeScores, q3: string): number {

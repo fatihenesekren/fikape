@@ -24,7 +24,7 @@ const TINTS = ["var(--fi-bg)", "var(--ka-bg)", "var(--pe-bg)"];
 
 // Kapalı banner'da dönüşümlü niyet soruları — ilk eleman varsayılan etiket,
 // prefers-reduced-motion açıkken döngü hiç başlamaz ve bu sabit kalır.
-// "4 Soru · 10 Saniye" artık ayrı bir rozet olduğu için burada tekrar edilmiyor;
+// "5 Soru · 15 Saniye" artık ayrı bir rozet olduğu için burada tekrar edilmiyor;
 // eyebrow tamamen "niyet sorusu" cümlelerine ayrıldı.
 const BANNER_PHRASES = [
   "Yeni bir araç mı almayı düşünüyorsun?",
@@ -39,7 +39,7 @@ const AUTO_ADVANCE_MS = 350;
 // Bir adımın seçili cevabının "🏙️ Şehir içi" biçimli etiketi (özet çipleri için).
 // Bilinmeyen key (ör. yeniden adlandırılmış / eski paylaşılan URL) → null:
 // anlamsız ham-key çipi gösterme.
-function answerLabel(cat: QuizCat, stepIdx: 0 | 1 | 2, key: string | null): string | null {
+function answerLabel(cat: QuizCat, stepIdx: 0 | 1 | 2 | 3, key: string | null): string | null {
   if (!key) return null;
   const opt = QUIZ_STEPS[cat]?.[stepIdx]?.opts.find((o) => o.key === key);
   return opt ? `${opt.icon} ${opt.label}` : null;
@@ -96,12 +96,13 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
   const router = useRouter();
 
   const [open,        setOpen]        = useState(false);
-  const [step,        setStep]        = useState<0 | 1 | 2 | 3>(0);
+  const [step,        setStep]        = useState<0 | 1 | 2 | 3 | 4>(0);
   const [direction,   setDirection]   = useState<"fwd" | "back">("fwd");
   const [selectedCat, setSelectedCat] = useState<QuizCat | null>(null);
   const [selectedQ2,  setSelectedQ2]  = useState<string | null>(null);
   const [selectedQ3,  setSelectedQ3]  = useState<string | null>(null);
   const [selectedQ4,  setSelectedQ4]  = useState<string | null>(null);
+  const [selectedQ5,  setSelectedQ5]  = useState<string | null>(null);
 
   // Dönüşümlü banner metni
   const [phraseIdx,     setPhraseIdx]     = useState(0);
@@ -132,23 +133,24 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
   }, [showBanner]);
 
   // Quiz'i aç. Mevcut bir sonuç varsa (Değiştir) TÜM cevaplar yüklenir ve
-  // istenen adıma gidilir — kullanıcı 4 seçimini tikli görüp istediğini
+  // istenen adıma gidilir — kullanıcı 5 seçimini tikli görüp istediğini
   // değiştirebilir, baştan doldurmak zorunda kalmaz.
-  const openQuiz = useCallback((atStep?: 0 | 1 | 2 | 3) => {
+  const openQuiz = useCallback((atStep?: 0 | 1 | 2 | 3 | 4) => {
     setDirection("fwd");
     if (quizAnswers) {
       setSelectedCat(quizAnswers.cat);
       setSelectedQ2(quizAnswers.q2);
       setSelectedQ3(quizAnswers.q3);
       setSelectedQ4(quizAnswers.q4);
+      setSelectedQ5(quizAnswers.q5);
       setStep(atStep ?? 1);
     } else if (preCat) {
       setSelectedCat(preCat);
-      setSelectedQ2(null); setSelectedQ3(null); setSelectedQ4(null);
+      setSelectedQ2(null); setSelectedQ3(null); setSelectedQ4(null); setSelectedQ5(null);
       setStep(atStep ?? 1);
     } else {
       setSelectedCat(null);
-      setSelectedQ2(null); setSelectedQ3(null); setSelectedQ4(null);
+      setSelectedQ2(null); setSelectedQ3(null); setSelectedQ4(null); setSelectedQ5(null);
       setStep(atStep ?? 0);
     }
     setOpen(true);
@@ -164,31 +166,31 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
   const handleBack = useCallback(() => {
     clearAdvanceTimer();
     setDirection("back");
-    setStep((s) => (s > 0 ? ((s - 1) as 0 | 1 | 2 | 3) : 0));
+    setStep((s) => (s > 0 ? ((s - 1) as 0 | 1 | 2 | 3 | 4) : 0));
   }, [clearAdvanceTimer]);
 
   // Herhangi bir adıma atla (özet çipleri).
-  const goToStep = useCallback((n: 0 | 1 | 2 | 3) => {
+  const goToStep = useCallback((n: 0 | 1 | 2 | 3 | 4) => {
     clearAdvanceTimer();
     setDirection(n < step ? "back" : "fwd");
     setStep(n);
   }, [step, clearAdvanceTimer]);
 
-  const completeWith = useCallback((q4: string) => {
-    if (!selectedCat || !selectedQ2 || !selectedQ3) return;
-    const encoded  = encodeQuiz({ cat: selectedCat, q2: selectedQ2, q3: selectedQ3, q4 });
+  const completeWith = useCallback((q5: string) => {
+    if (!selectedCat || !selectedQ2 || !selectedQ3 || !selectedQ4) return;
+    const encoded  = encodeQuiz({ cat: selectedCat, q2: selectedQ2, q3: selectedQ3, q4: selectedQ4, q5 });
     const catSlug  = CAT_TO_SLUG[selectedCat];
     const params   = new URLSearchParams();
     if (catSlug) params.set("kategori", catSlug);
     params.set("quiz", encoded);
     router.push(`/?${params.toString()}`);
     setOpen(false);
-  }, [router, selectedCat, selectedQ2, selectedQ3]);
+  }, [router, selectedCat, selectedQ2, selectedQ3, selectedQ4]);
 
   // Kategori seçimi — DEĞİŞİRSE alt cevaplar geçersizleşir (farklı dal), sıfırlanır.
   const selectCat = useCallback((key: QuizCat) => {
     if (key !== selectedCat) {
-      setSelectedQ2(null); setSelectedQ3(null); setSelectedQ4(null);
+      setSelectedQ2(null); setSelectedQ3(null); setSelectedQ4(null); setSelectedQ5(null);
     }
     setSelectedCat(key);
     clearAdvanceTimer();
@@ -196,13 +198,13 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
   }, [selectedCat, clearAdvanceTimer]);
 
   const selectAnswer = useCallback((key: string) => {
-    const setter = step === 1 ? setSelectedQ2 : step === 2 ? setSelectedQ3 : setSelectedQ4;
+    const setter = step === 1 ? setSelectedQ2 : step === 2 ? setSelectedQ3 : step === 3 ? setSelectedQ4 : setSelectedQ5;
     setter(key);
     clearAdvanceTimer();
     advanceTimer.current = setTimeout(() => {
-      if (step === 3) { completeWith(key); return; }
+      if (step === 4) { completeWith(key); return; }
       setDirection("fwd");
-      setStep((s) => (s + 1) as 1 | 2 | 3);
+      setStep((s) => (s + 1) as 1 | 2 | 3 | 4);
     }, AUTO_ADVANCE_MS);
   }, [step, clearAdvanceTimer, completeWith]);
 
@@ -221,10 +223,11 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
       [quizAnswers.q2, 1, 0],
       [quizAnswers.q3, 2, 1],
       [quizAnswers.q4, 3, 2],
+      [quizAnswers.q5, 4, 3],
     ] as const)
       .filter(([key, step]) => answerAffectsResults(quizAnswers.cat, step, key))
       .map(([key, step, idx]) => ({ label: answerLabel(quizAnswers.cat, idx, key), step }))
-      .filter((c): c is { label: string; step: 1 | 2 | 3 } => !!c.label);
+      .filter((c): c is { label: string; step: 1 | 2 | 3 | 4 } => !!c.label);
 
     return (
       <div className="col-span-full bg-white rounded-2xl border border-gray-200 overflow-hidden animate-niyet-result">
@@ -282,7 +285,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
         <button
           type="button"
           onClick={() => openQuiz()}
-          aria-label="4 soruda sana en uygun aracı bulalım — başla"
+          aria-label="5 soruda sana en uygun aracı bulalım — başla"
           className="relative w-full bg-white rounded-2xl border border-gray-100 p-5 sm:pl-7 sm:pr-7 sm:py-7 flex flex-col sm:flex-row sm:items-center gap-4 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all group text-left animate-niyet-enter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
         >
           <div
@@ -313,7 +316,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
                 </p>
               </div>
               <p className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
-                4 soruda sana en uygun aracı bulalım
+                5 soruda sana en uygun aracı bulalım
               </p>
               <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
                 FI·KA·PE puanı + gerçek yorumlara göre sıralanır
@@ -331,7 +334,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" />
               </svg>
-              4 soru · 10 saniye
+              5 soru · 15 saniye
             </span>
             {/* Kartın kendisi buton olduğu için bu bir <span>, gerçek buton değil */}
             <span className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl bg-gray-900 text-white text-sm font-semibold px-5 py-2.5 group-hover:bg-gray-700 transition-colors">
@@ -359,12 +362,12 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
 
   // ── Quiz open ─────────────────────────────────────────
   const stepDef    = step > 0 ? QUIZ_STEPS[selectedCat!]?.[step - 1] : null;
-  const totalSteps = preCat ? 3 : 4;
+  const totalSteps = preCat ? 4 : 5;
   const curIndex   = preCat ? step - 1 : step;          // 0-based progress index
   const slideClass = direction === "fwd" ? "animate-niyet-slide-right" : "animate-niyet-slide-left";
 
   // Açık quiz içindeki özet çipleri — cevabı olan her adım, mevcut adım hariç.
-  const summaryChips: { label: string; step: 0 | 1 | 2 | 3 }[] = [];
+  const summaryChips: { label: string; step: 0 | 1 | 2 | 3 | 4 }[] = [];
   if (selectedCat && step !== 0 && !preCat) {
     summaryChips.push({ label: CAT_LABELS[selectedCat], step: 0 });
   }
@@ -372,9 +375,11 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
     const l2 = answerLabel(selectedCat, 0, selectedQ2);
     const l3 = answerLabel(selectedCat, 1, selectedQ3);
     const l4 = answerLabel(selectedCat, 2, selectedQ4);
+    const l5 = answerLabel(selectedCat, 3, selectedQ5);
     if (l2 && step !== 1) summaryChips.push({ label: l2, step: 1 });
     if (l3 && step !== 2) summaryChips.push({ label: l3, step: 2 });
     if (l4 && step !== 3) summaryChips.push({ label: l4, step: 3 });
+    if (l5 && step !== 4) summaryChips.push({ label: l5, step: 4 });
   }
 
   return (
@@ -451,11 +456,11 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
             </div>
           )}
 
-          {/* Steps 1-3: branching questions */}
+          {/* Steps 1-4: branching questions */}
           {step > 0 && stepDef && (
             <div className="grid grid-cols-2 gap-3 mb-4">
               {stepDef.opts.map((opt, i) => {
-                const current = step === 1 ? selectedQ2 : step === 2 ? selectedQ3 : selectedQ4;
+                const current = step === 1 ? selectedQ2 : step === 2 ? selectedQ3 : step === 3 ? selectedQ4 : selectedQ5;
                 const isSel   = current === opt.key;
                 return (
                   <button
@@ -490,7 +495,7 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
             {step === 0 ? "İptal" : "← Geri"}
           </button>
           <span className="text-[10px] text-gray-300 select-none">
-            {step === 3 ? "Seçince sonuçlar gelir" : "Seçince otomatik ilerler"}
+            {step === 4 ? "Seçince sonuçlar gelir" : "Seçince otomatik ilerler"}
           </span>
         </div>
       </div>
