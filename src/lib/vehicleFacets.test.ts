@@ -135,11 +135,22 @@ describe("otomobil / motosiklet / kamyonet facet'leri", () => {
     expect(facetGroupsForCategory("motosiklet").map((g) => g.key)).toEqual(["tip", "cc", "guc", "vites", "sele", "abs", "yakit"]);
     expect(facetGroupsForCategory("kamyonet").map((g) => g.key)).toEqual(["govde", "yakit", "cekis", "kabin", "vites", "guc", "yuk", "cekme", "koltuk"]);
   });
+  it("motosiklet gücü: HP yoksa elektrikli kaydın nominal W değeri HP'ye çevrilerek gruplanır; hiçbiri yoksa hiçbir kovaya düşmez", () => {
+    const guc = facetGroupsForCategory("motosiklet").find((g) => g.key === "guc")!;
+    const kova = (a: Record<string, unknown>) => guc.options.filter((o) => o.match(a)).map((o) => o.value);
+    expect(kova({ fuel_type: "EV", motor_watt: 2000 })).toEqual(["0-48"]);
+    expect(kova({ fuel_type: "EV", motor_watt: 40000 })).toEqual(["49-100"]);
+    expect(kova({ fuel_type: "EV", motor_watt: 2000, power_hp: 60 })).toEqual(["49-100"]);
+    expect(kova({ fuel_type: "GASOLINE", motor_watt: 2000 })).toEqual([]);
+    expect(kova({ fuel_type: "EV" })).toEqual([]);
+    expect(guc.options.some((o) => o.value === "na")).toBe(false);
+  });
   it("hepsi her zaman görünür ve Belirtilmemiş ile biter", () => {
     for (const c of ["otomobil", "motosiklet", "kamyonet"]) {
       for (const g of facetGroupsForCategory(c)) {
         expect(g.alwaysShow).toBe(true);
         if (c === "otomobil" && ["cc", "menzil", "tuketim", "enerji", "hizlanma", "hiz", "agirlik"].includes(g.key)) continue; // bu gruplarda bilerek eksik-veri seçeneği yok
+        if (c === "motosiklet" && ["guc", "sele", "abs"].includes(g.key)) continue;
         expect(g.options[g.options.length - 1].value).toBe("na");
       }
     }
@@ -165,6 +176,7 @@ describe("otomobil / motosiklet / kamyonet facet'leri", () => {
     for (const [c, kayitlar] of Object.entries(ornekler)) {
       for (const g of facetGroupsForCategory(c)) {
         if (c === "otomobil" && ["cc", "menzil", "tuketim", "enerji", "hizlanma", "hiz", "agirlik"].includes(g.key)) continue;
+        if (c === "motosiklet" && ["guc", "sele", "abs"].includes(g.key)) continue;
         for (const a of kayitlar) {
           const eslesen = g.options.filter((o) => o.match(a));
           const bos = a[g.attrKey] === undefined;

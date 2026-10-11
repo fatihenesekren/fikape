@@ -343,9 +343,21 @@ const SEAT_GROUP = aralikGrubu("koltuk", "Koltuk", "seat_count", [
 ]);
 
 // ── Motosiklet ──
-const MOTO_POWER_GROUP = aralikGrubu("guc", "Motor Gücü", "power_hp", [
-  ["0-48", "≤ 48 HP", 0, 48], ["49-100", "49–100 HP", 49, 100], ["101", "100 HP +", 101, Infinity],
-]);
+// Elektrikli motosikletlerde HP çoğu zaman yazılmaz; yalnız nominal motor gücü (W) varsa 1 HP = 735,5 W ile HP'ye çevrilerek gruplanır.
+const motoGucuHp = (a: Attrs): number | null => {
+  const hp = num(a.power_hp);
+  if (hp != null) return hp;
+  const w = num(a.motor_watt);
+  return w != null && str(a.fuel_type) === "EV" ? w / 735.5 : null;
+};
+const MOTO_POWER_GROUP: FacetGroup = {
+  key: "guc",
+  label: "Motor Gücü",
+  attrKey: "power_hp",
+  options: ([["0-48", "≤ 48 HP", 0, 48], ["49-100", "49–100 HP", 49, 100], ["101", "100 HP +", 101, Infinity]] as [string, string, number, number][]).map(
+    ([value, label, min, max]) => ({ value, label, match: (a: Attrs) => { const hp = motoGucuHp(a); return hp != null && hp >= min && hp < (max === Infinity ? Infinity : max + 1); } }),
+  ),
+};
 const MOTO_TRANSMISSION_GROUP: FacetGroup = {
   key: "vites",
   label: "Vites",
@@ -411,10 +423,12 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
   motosiklet: [
     eksikVeriliGrup(MOTO_TYPE_GROUP),
     { ...eksikVeriliGrup(CC_GROUP), naEtiketi: CC_NA_ETIKETI },
-    eksikVeriliGrup(MOTO_POWER_GROUP),
+    // Güç (W→HP yedeği), sele yüksekliği ve ABS bazı kayıtlarda kaynaktan doğrulanamıyor; "Belirtilmemiş" karmaşa yaratmasın diye
+    // bu üç grupta eksik-veri seçeneği yok (seçilen aralıkta yalnız verisi olanlar listelenir).
+    { ...MOTO_POWER_GROUP, alwaysShow: true },
     eksikVeriliGrup(MOTO_TRANSMISSION_GROUP),
-    eksikVeriliGrup(MOTO_SEAT_HEIGHT_GROUP),
-    eksikVeriliGrup(MOTO_ABS_GROUP),
+    { ...MOTO_SEAT_HEIGHT_GROUP, alwaysShow: true },
+    { ...MOTO_ABS_GROUP, alwaysShow: true },
     eksikVeriliGrup(MOTO_FUEL_GROUP),
   ],
   "e-scooter": [
