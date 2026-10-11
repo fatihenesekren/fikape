@@ -240,3 +240,6 @@ Kayıt adı E 220 d iken veriler E 200 d benzeri (1597 cc, 160 PS, 360 Nm, 8,8 s
 
 ## 54. tur — RKS Neron X 2024 (motosiklet, scooter) eklendi (2026-10-11)
 Kullanıcı tablosundan: 2000 W nominal / 3000 W tepe, 40 km/s, 72 V 35 Ah = 2,52 kWh, menzil 140-180 (üst 180), şarj 3-4 sa (üst 4), ön disk/arka kampana, ABS yok, 90/70-12. Beygir gücü tabloda yok, boş bırakıldı. Boyutlar (1820x735x1090) ve tepe güç için motosiklet formunda alan yok; tepe güç motor tipi satırına yazıldı. Görsel kullanıcı ekleyecek.
+
+## 55. tur — RKS Valerio 2023 (motosiklet, scooter) eklendi (2026-10-11)
+Kullanıcı tablosundan: 2000 W nominal / 4000 W tepe, 45 km/s, 72 V 20 Ah = 1,44 kWh, menzil 60-100 (üst 100), şarj 2 sa, ıslak ağırlık 116 kg, 1910x710x1075, dingil 1325, ön disk/arka kampana, ABS yok, 90/90-12. Beygir gücü ve maksimum yük (276 kg) için alan yok/boş bırakıldı. Görsel kullanıcı ekleyecek.
