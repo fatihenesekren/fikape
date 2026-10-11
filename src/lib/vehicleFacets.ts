@@ -364,7 +364,7 @@ const MOTO_TRANSMISSION_GROUP: FacetGroup = {
   attrKey: "transmission",
   options: [
     { value: "manuel",   label: "Manuel",   match: (a) => str(a.transmission) === "Manuel" },
-    { value: "otomatik", label: "Otomatik", match: (a) => ["Otomatik", "CVT"].includes(str(a.transmission)) },
+    { value: "otomatik", label: "Otomatik", match: (a) => ["Otomatik", "CVT", "Yarı Otomatik"].includes(str(a.transmission)) },
   ],
 };
 const MOTO_SEAT_HEIGHT_GROUP = aralikGrubu("sele", "Sele Yüksekliği", "seat_height_mm", [

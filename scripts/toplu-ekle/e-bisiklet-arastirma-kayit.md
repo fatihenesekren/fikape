@@ -267,3 +267,6 @@ STMAX Roket 3000 (id 1081), Arora Herkül (1082), Falcon Leo 6800 (1083), Kral M
 
 ## 63. tur — 5 elektrikli motosiklet eklendi (2026-10-11)
 Mondial E-Mon Empre (id 1086), City Coco V2 (1087), Falcon Enjoy Plus (1088), Volta VSX (1089), Volta APM2 (1090, üç tekerlekli; moto_type uc-tekerlekli, Tip filtresinde Scooter kovasına alındı). Vites tablolarda yok (Falcon hariç), elektrikli oldukları için Otomatik girildi. Falcon Enjoy Plus menzili: üretici beyanı 120 km, Reklam Kurulu değerlendirmesi gerçek kullanımda 50-60 km; kayıtta 60 girildi (üst değer), özette fark belirtildi. Volta VSX motor gücü 220 W tabloda böyle, 48 V 22 Ah ile tuhaf görünüyor (yazım hatası olabilir), olduğu gibi girildi. Empre için Ah tabloda yok, batarya kWh boş. Görseller Commons'ta aranmadı/bulunamadı, kullanıcı ekleyecek.
+
+## 64. tur — Honda NC750X DCT 2023 (41), CB500F 2023 (40), CB650R 2026 (946) güncellendi (2026-10-11)
+Kullanıcı tablolarından motor tipi, aktarma, süspansiyon, fren, lastik, ölçüler eklendi; NC750X ağırlık 226 (ıslak), sele 802; CB500F depo 17,1, sele 785, güç 47,6; CB650R ağırlık 207, E-Clutch aktarma satırında. CB500F "Yerden Yükseklik" tabloda bozuk karakter (持), girilmedi. NC750X vitesi "Yarı Otomatik" idi ve Vites filtresinde hiçbir kovaya düşmüyordu; Otomatik kovasına alındı.

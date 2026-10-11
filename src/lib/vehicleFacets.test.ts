@@ -135,6 +135,13 @@ describe("otomobil / motosiklet / kamyonet facet'leri", () => {
     expect(facetGroupsForCategory("motosiklet").map((g) => g.key)).toEqual(["tip", "cc", "guc", "vites", "sele", "abs", "yakit"]);
     expect(facetGroupsForCategory("kamyonet").map((g) => g.key)).toEqual(["govde", "yakit", "cekis", "kabin", "vites", "guc", "yuk", "cekme", "koltuk"]);
   });
+  it("motosiklet vitesi: yarı otomatik (DCT) Otomatik kovasına düşer, hiçbir kayıt kovasız kalmaz", () => {
+    const vites = facetGroupsForCategory("motosiklet").find((g) => g.key === "vites")!;
+    const kova = (a: Record<string, unknown>) => vites.options.filter((o) => o.match(a)).map((o) => o.value);
+    expect(kova({ transmission: "Yarı Otomatik" })).toEqual(["otomatik"]);
+    expect(kova({ transmission: "CVT" })).toEqual(["otomatik"]);
+    expect(kova({ transmission: "Manuel" })).toEqual(["manuel"]);
+  });
   it("motosiklet gücü: HP yoksa elektrikli kaydın nominal W değeri HP'ye çevrilerek gruplanır; hiçbiri yoksa hiçbir kovaya düşmez", () => {
     const guc = facetGroupsForCategory("motosiklet").find((g) => g.key === "guc")!;
     const kova = (a: Record<string, unknown>) => guc.options.filter((o) => o.match(a)).map((o) => o.value);
