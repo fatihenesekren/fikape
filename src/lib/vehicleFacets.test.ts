@@ -31,6 +31,26 @@ describe("e-bisiklet facet'leri", () => {
   });
 });
 
+describe("otomobil: motor hacmi ve menzil grubunda Belirtilmemiş yok, bagaj grubu var", () => {
+  const g = facetGroupsForCategory("otomobil");
+  it("cc ve menzil gruplarında eksik-veri seçeneği yok, diğer gruplarda var", () => {
+    expect(g.find((x) => x.key === "cc")!.options.some((o) => o.value === "na")).toBe(false);
+    expect(g.find((x) => x.key === "menzil")!.options.some((o) => o.value === "na")).toBe(false);
+    expect(g.find((x) => x.key === "segment")!.options.some((o) => o.value === "na")).toBe(true);
+  });
+  it("elektrikli araç cc grubunda hiçbir kovaya düşmez (aralık seçilince elenir)", () => {
+    expect(productMatchesFacets({ fuel_type: "EV" }, g, { cc: ["0-1000"] })).toBe(false);
+    expect(productMatchesFacets({ fuel_type: "GASOLINE", engine_cc: 999 }, g, { cc: ["0-1000"] })).toBe(true);
+  });
+  it("bagaj kovaları sınırlarda doğru", () => {
+    expect(productMatchesFacets({ boot_l: 300 }, g, { bagaj: ["0-300"] })).toBe(true);
+    expect(productMatchesFacets({ boot_l: 301 }, g, { bagaj: ["301-400"] })).toBe(true);
+    expect(productMatchesFacets({ boot_l: 500 }, g, { bagaj: ["401-500"] })).toBe(true);
+    expect(productMatchesFacets({ boot_l: 586 }, g, { bagaj: ["501"] })).toBe(true);
+    expect(productMatchesFacets({}, g, { bagaj: ["na"] })).toBe(true);
+  });
+});
+
 describe("motosiklet motor hacmi 'Belirtilmemiş' etiketi", () => {
   it("boş olanların hepsi elektrikliyse 'Elektrikli (cc yok)'", () => {
     expect(CC_NA_ETIKETI([{ fuel_type: "EV" }, { fuel_type: "EV" }])).toBe("Elektrikli (cc yok)");
@@ -96,7 +116,7 @@ describe("e-scooter facet'leri", () => {
 
 describe("otomobil / motosiklet / kamyonet facet'leri", () => {
   it("anahtarlar ve sıra", () => {
-    expect(facetGroupsForCategory("otomobil").map((g) => g.key)).toEqual(["yakit", "govde", "segment", "vites", "cekis", "guc", "cc", "menzil", "koltuk"]);
+    expect(facetGroupsForCategory("otomobil").map((g) => g.key)).toEqual(["yakit", "govde", "segment", "vites", "cekis", "guc", "cc", "menzil", "bagaj", "koltuk"]);
     expect(facetGroupsForCategory("motosiklet").map((g) => g.key)).toEqual(["tip", "cc", "guc", "vites", "sele", "abs", "yakit"]);
     expect(facetGroupsForCategory("kamyonet").map((g) => g.key)).toEqual(["govde", "yakit", "cekis", "kabin", "vites", "guc", "yuk", "cekme", "koltuk"]);
   });
@@ -104,6 +124,7 @@ describe("otomobil / motosiklet / kamyonet facet'leri", () => {
     for (const c of ["otomobil", "motosiklet", "kamyonet"]) {
       for (const g of facetGroupsForCategory(c)) {
         expect(g.alwaysShow).toBe(true);
+        if (c === "otomobil" && (g.key === "cc" || g.key === "menzil")) continue; // bu iki grupta bilerek eksik-veri seçeneği yok
         expect(g.options[g.options.length - 1].value).toBe("na");
       }
     }
@@ -128,6 +149,7 @@ describe("otomobil / motosiklet / kamyonet facet'leri", () => {
     };
     for (const [c, kayitlar] of Object.entries(ornekler)) {
       for (const g of facetGroupsForCategory(c)) {
+        if (c === "otomobil" && (g.key === "cc" || g.key === "menzil")) continue;
         for (const a of kayitlar) {
           const eslesen = g.options.filter((o) => o.match(a));
           const bos = a[g.attrKey] === undefined;

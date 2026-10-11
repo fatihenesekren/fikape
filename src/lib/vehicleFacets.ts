@@ -319,6 +319,9 @@ const OTO_CC_GROUP = aralikGrubu("cc", "Motor Hacmi", "engine_cc", [
 const OTO_EV_RANGE_GROUP = aralikGrubu("menzil", "Elektrikli Menzil", "ev_range_km", [
   ["0-300", "≤ 300 km", 0, 300], ["301-450", "301–450 km", 301, 450], ["451", "450 km +", 451, Infinity],
 ]);
+const OTO_BOOT_GROUP = aralikGrubu("bagaj", "Bagaj Hacmi", "boot_l", [
+  ["0-300", "≤ 300 L", 0, 300], ["301-400", "301–400 L", 301, 400], ["401-500", "401–500 L", 401, 500], ["501", "500 L +", 501, Infinity],
+]);
 const SEAT_GROUP = aralikGrubu("koltuk", "Koltuk", "seat_count", [
   ["0-4", "≤ 4 koltuk", 0, 4], ["5", "5 koltuk", 5, 5], ["6", "6+ koltuk", 6, Infinity],
 ]);
@@ -377,8 +380,11 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
     eksikVeriliGrup(OTO_TRANSMISSION_GROUP),
     eksikVeriliGrup(OTO_DRIVETRAIN_GROUP),
     eksikVeriliGrup(OTO_POWER_GROUP),
-    eksikVeriliGrup(OTO_CC_GROUP, "Yok (elektrikli) / belirtilmemiş"),
-    eksikVeriliGrup(OTO_EV_RANGE_GROUP, "Elektrikli değil / belirtilmemiş"),
+    // Motor hacmi ve elektrikli menzil bazı araçlarda kavram olarak yoktur (elektrikli / yakıtlı): "Belirtilmemiş" yanıltıcı olurdu,
+    // aralık seçildiğinde ilgisiz araçlar zaten elenir; bu iki grupta eksik-veri seçeneği yok.
+    { ...OTO_CC_GROUP, alwaysShow: true },
+    { ...OTO_EV_RANGE_GROUP, alwaysShow: true },
+    eksikVeriliGrup(OTO_BOOT_GROUP),
     eksikVeriliGrup(SEAT_GROUP),
   ],
   motosiklet: [
