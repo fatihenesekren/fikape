@@ -264,3 +264,6 @@ Motolux Pitton 6000 2025 (id 1076), Apec APS2 2024 (1077), Yuki Boss M 2024 (107
 
 ## 62. tur — 5 elektrikli motosiklet eklendi, 2023 kataloğu (2026-10-11)
 STMAX Roket 3000 (id 1081), Arora Herkül (1082), Falcon Leo 6800 (1083), Kral Motor KR25 AVA 5000 (1084, tip: spor), Kuba GT5 (1085). Batarya kWh V x Ah ile hesaplandı (tabloda yok). Aralıklarda üst değer. KR25 için vites tablosunda yok, EV olduğu için Otomatik girildi (tahmin, ~%85). KR25 motor gücü tabloda yok, boş. ABS yalnız Herkül, KR25, GT5 için tabloda; Roket ve Leo boş. Tırmanma açısı ve elektrik tüketimi için alan yok. Commons'ta görsel yok, kullanıcı ekleyecek.
+
+## 63. tur — 5 elektrikli motosiklet eklendi (2026-10-11)
+Mondial E-Mon Empre (id 1086), City Coco V2 (1087), Falcon Enjoy Plus (1088), Volta VSX (1089), Volta APM2 (1090, üç tekerlekli; moto_type uc-tekerlekli, Tip filtresinde Scooter kovasına alındı). Vites tablolarda yok (Falcon hariç), elektrikli oldukları için Otomatik girildi. Falcon Enjoy Plus menzili: üretici beyanı 120 km, Reklam Kurulu değerlendirmesi gerçek kullanımda 50-60 km; kayıtta 60 girildi (üst değer), özette fark belirtildi. Volta VSX motor gücü 220 W tabloda böyle, 48 V 22 Ah ile tuhaf görünüyor (yazım hatası olabilir), olduğu gibi girildi. Empre için Ah tabloda yok, batarya kWh boş. Görseller Commons'ta aranmadı/bulunamadı, kullanıcı ekleyecek.

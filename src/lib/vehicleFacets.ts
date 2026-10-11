@@ -264,7 +264,7 @@ function enumGroup(
 const MOTO_TYPE_BUCKETS: Record<string, string[]> = {
   naked:   ["naked", "retro", "cruiser"],
   sport:   ["sport"],
-  scooter: ["scooter"],
+  scooter: ["scooter", "uc-tekerlekli"], // üç tekerlekli (kargo/yolcu) scooter türevleri Scooter altında
   tur:     ["adventure", "touring", "enduro", "cross"],
 };
 const MOTO_TYPE_GROUP: FacetGroup = {
