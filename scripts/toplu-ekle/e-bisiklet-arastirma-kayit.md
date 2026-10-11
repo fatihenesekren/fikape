@@ -261,3 +261,6 @@ Kullanıcı tablosundan (model kodu YK-53): 2000 W DC motor, 49,2 Nm, 45 km/s, 7
 
 ## 61. tur — 5 elektrikli scooter eklendi (2026-10-11)
 Motolux Pitton 6000 2025 (id 1076), Apec APS2 2024 (1077), Yuki Boss M 2024 (1078, kod YH-54), Volta VS5 Max 2023 (1079), Motolux ALF Plus Lux 2023 (1080). Kullanıcı tablolarından; aralıklarda üst değer (menzil, şarj). "3 ileri + 1 geri" ve "3 vites" gearbox=3, vites tipi Otomatik girildi (debriyajsız elektrikli). ABS: Pitton, APS2, Boss M, VS5 Max "Yok"; ALF Plus Lux için tabloda yok, boş. Menzil Boss M için tabloda yok, boş. Görseller Commons'ta bulunamadı, kullanıcı ekleyecek.
+
+## 62. tur — 5 elektrikli motosiklet eklendi, 2023 kataloğu (2026-10-11)
+STMAX Roket 3000 (id 1081), Arora Herkül (1082), Falcon Leo 6800 (1083), Kral Motor KR25 AVA 5000 (1084, tip: spor), Kuba GT5 (1085). Batarya kWh V x Ah ile hesaplandı (tabloda yok). Aralıklarda üst değer. KR25 için vites tablosunda yok, EV olduğu için Otomatik girildi (tahmin, ~%85). KR25 motor gücü tabloda yok, boş. ABS yalnız Herkül, KR25, GT5 için tabloda; Roket ve Leo boş. Tırmanma açısı ve elektrik tüketimi için alan yok. Commons'ta görsel yok, kullanıcı ekleyecek.
