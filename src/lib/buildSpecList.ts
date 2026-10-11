@@ -290,6 +290,17 @@ export function buildSpecList(categorySlug: string, attrsInput: unknown): SpecIt
       attrs.boot_l         ? { label: "Bagaj",         value: `${attrs.boot_l} L` }             : null,
       attrs.weight_kg      ? { label: "Ağırlık",       value: `${attrs.weight_kg} kg` }         : null,
       attrs.seat_count     ? { label: "Koltuk Sayısı", value: `${attrs.seat_count} kişi` }      : null,
+      attrs.engine_type    ? { label: "Motor Tipi",    value: String(attrs.engine_type) }       : null,
+      fuelType !== "EV"    && attrs.cylinders ? { label: "Silindir", value: `${attrs.cylinders}` } : null,
+      fuelType !== "EV"    && attrs.fuel_consumption_l ? { label: "Ort. Tüketim", value: `${attrs.fuel_consumption_l} L/100 km` } : null,
+      (fuelType === "EV" || fuelType === "PHEV" || fuelType === "HYBRID") && attrs.ev_consumption_kwh ? { label: "Enerji Tüketimi", value: `${attrs.ev_consumption_kwh} kWh/100 km` } : null,
+      attrs.co2_gkm != null && attrs.co2_gkm !== "" ? { label: "CO₂", value: `${attrs.co2_gkm} g/km` } : null,
+      attrs.length_mm      ? { label: "Uzunluk",       value: `${attrs.length_mm} mm` }        : null,
+      attrs.width_mm       ? { label: "Genişlik",      value: `${attrs.width_mm} mm` }         : null,
+      attrs.height_mm      ? { label: "Yükseklik",     value: `${attrs.height_mm} mm` }        : null,
+      attrs.wheelbase_mm   ? { label: "Dingil Mesafesi", value: `${attrs.wheelbase_mm} mm` }   : null,
+      attrs.ground_clearance_mm ? { label: "Yerden Yükseklik", value: `${attrs.ground_clearance_mm} mm` } : null,
+      attrs.tire_size      ? { label: "Lastik",        value: String(attrs.tire_size) }         : null,
     ];
   })();
 
