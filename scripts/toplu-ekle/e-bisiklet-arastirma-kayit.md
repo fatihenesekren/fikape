@@ -252,3 +252,6 @@ Kullanıcı tablosundan: 2350 W, 55 km/s, 72 V 25 Ah grafen = 1,8 kWh (hesap), m
 
 ## 58. tur — Kuba K4-C 2023 (motosiklet, scooter) eklendi (2026-10-11)
 Kullanıcı tablosundan: 2200 W, 45 km/s, 72 V 20 Ah = 1,44 kWh, menzil 50-60 (üst 60), şarj 6-8 sa (üst 8), otomatik, 1895x720x1085, dingil 1350, net 75 kg, ön disk/arka kampana, ABS yok, 90/70-12. Tırmanma açısı ve taşıma kapasitesi (188 kg) için alan yok. Görsel kullanıcı ekleyecek.
+
+## 59. tur — Volta VS2 2024 (motosiklet, scooter) eklendi (2026-10-11)
+Kullanıcı tablosundan: 2000 W BLDC hub, 45 km/s, 72 V 22 Ah VRLA jel = 1,584 kWh (kayıtta 1,58), menzil 60, şarj 6-8 sa (üst 8), 1830x710x1085, dingil 1340, 93 kg, ön disk/arka kampana, lastik 3.00-10. ABS doğrulanmadığı için alan boş (Yok yazılmadı). Rejeneratif fren sürüme göre teyitsiz, girilmedi. Tırmanma %14 ve taşıma 150 kg için alan yok. Görsel kullanıcı ekleyecek.
