@@ -322,6 +322,22 @@ const OTO_EV_RANGE_GROUP = aralikGrubu("menzil", "Elektrikli Menzil", "ev_range_
 const OTO_BOOT_GROUP = aralikGrubu("bagaj", "Bagaj Hacmi", "boot_l", [
   ["0-300", "≤ 300 L", 0, 300], ["301-400", "301–400 L", 301, 400], ["401-500", "401–500 L", 401, 500], ["501", "500 L +", 501, Infinity],
 ]);
+// Performans / verimlilik: veri bilinmeyen az sayıda araç için "Belirtilmemiş" seçeneği yok (aralık seçilince o araçlar elenir).
+const OTO_FUEL_USE_GROUP = aralikGrubu("tuketim", "Yakıt Tüketimi", "fuel_consumption_l", [
+  ["0-5", "≤ 5 L/100 km", 0, 5], ["5.1-6", "5,1–6 L/100 km", 5.01, 6], ["6.1-7", "6,1–7 L/100 km", 6.01, 7], ["7.1", "7 L/100 km +", 7.01, Infinity],
+]);
+const OTO_EV_USE_GROUP = aralikGrubu("enerji", "Enerji Tüketimi", "ev_consumption_kwh", [
+  ["0-15", "≤ 15 kWh/100 km", 0, 15], ["15.1-17", "15,1–17 kWh/100 km", 15.01, 17], ["17.1", "17 kWh/100 km +", 17.01, Infinity],
+]);
+const OTO_ACCEL_GROUP = aralikGrubu("hizlanma", "0–100 km/s", "zero_to_100", [
+  ["0-8", "≤ 8 sn", 0, 8], ["8.1-10", "8,1–10 sn", 8.01, 10], ["10.1-12", "10,1–12 sn", 10.01, 12], ["12.1", "12 sn +", 12.01, Infinity],
+]);
+const OTO_TOPSPEED_GROUP = aralikGrubu("hiz", "Azami Hız", "top_speed_kmh", [
+  ["0-170", "≤ 170 km/s", 0, 170], ["171-190", "171–190 km/s", 171, 190], ["191-210", "191–210 km/s", 191, 210], ["211", "210 km/s +", 211, Infinity],
+]);
+const OTO_WEIGHT_GROUP = aralikGrubu("agirlik", "Ağırlık", "weight_kg", [
+  ["0-1200", "≤ 1200 kg", 0, 1200], ["1201-1500", "1201–1500 kg", 1201, 1500], ["1501-1800", "1501–1800 kg", 1501, 1800], ["1801", "1800 kg +", 1801, Infinity],
+]);
 const SEAT_GROUP = aralikGrubu("koltuk", "Koltuk", "seat_count", [
   ["0-4", "≤ 4 koltuk", 0, 4], ["5", "5 koltuk", 5, 5], ["6", "6+ koltuk", 6, Infinity],
 ]);
@@ -385,6 +401,11 @@ const CATEGORY_FACETS: Record<string, FacetGroup[]> = {
     { ...OTO_CC_GROUP, alwaysShow: true },
     { ...OTO_EV_RANGE_GROUP, alwaysShow: true },
     eksikVeriliGrup(OTO_BOOT_GROUP),
+    { ...OTO_FUEL_USE_GROUP, alwaysShow: true },
+    { ...OTO_EV_USE_GROUP, alwaysShow: true },
+    { ...OTO_ACCEL_GROUP, alwaysShow: true },
+    { ...OTO_TOPSPEED_GROUP, alwaysShow: true },
+    { ...OTO_WEIGHT_GROUP, alwaysShow: true },
     eksikVeriliGrup(SEAT_GROUP),
   ],
   motosiklet: [

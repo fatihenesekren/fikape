@@ -42,6 +42,21 @@ describe("otomobil: motor hacmi ve menzil grubunda Belirtilmemiş yok, bagaj gru
     expect(productMatchesFacets({ fuel_type: "EV" }, g, { cc: ["0-1000"] })).toBe(false);
     expect(productMatchesFacets({ fuel_type: "GASOLINE", engine_cc: 999 }, g, { cc: ["0-1000"] })).toBe(true);
   });
+  it("performans/verimlilik grupları: kovalar sınırlarda doğru, eksik-veri seçeneği yok", () => {
+    for (const k of ["tuketim", "enerji", "hizlanma", "hiz", "agirlik"]) expect(g.find((x) => x.key === k)!.options.some((o) => o.value === "na")).toBe(false);
+    expect(productMatchesFacets({ fuel_consumption_l: 5 }, g, { tuketim: ["0-5"] })).toBe(true);
+    expect(productMatchesFacets({ fuel_consumption_l: 6.3 }, g, { tuketim: ["6.1-7"] })).toBe(true);
+    expect(productMatchesFacets({ fuel_consumption_l: 7.4 }, g, { tuketim: ["7.1"] })).toBe(true);
+    expect(productMatchesFacets({ ev_consumption_kwh: 15.5 }, g, { enerji: ["15.1-17"] })).toBe(true);
+    expect(productMatchesFacets({ ev_consumption_kwh: 15.5 }, g, { tuketim: ["0-5"] })).toBe(false);
+    expect(productMatchesFacets({ zero_to_100: 8 }, g, { hizlanma: ["0-8"] })).toBe(true);
+    expect(productMatchesFacets({ zero_to_100: 9.6 }, g, { hizlanma: ["8.1-10"] })).toBe(true);
+    expect(productMatchesFacets({ top_speed_kmh: 170 }, g, { hiz: ["0-170"] })).toBe(true);
+    expect(productMatchesFacets({ top_speed_kmh: 211 }, g, { hiz: ["211"] })).toBe(true);
+    expect(productMatchesFacets({ weight_kg: 1500 }, g, { agirlik: ["1201-1500"] })).toBe(true);
+    expect(productMatchesFacets({ weight_kg: 1801 }, g, { agirlik: ["1801"] })).toBe(true);
+    expect(productMatchesFacets({}, g, { agirlik: ["0-1200"] })).toBe(false);
+  });
   it("bagaj kovaları sınırlarda doğru", () => {
     expect(productMatchesFacets({ boot_l: 300 }, g, { bagaj: ["0-300"] })).toBe(true);
     expect(productMatchesFacets({ boot_l: 301 }, g, { bagaj: ["301-400"] })).toBe(true);
@@ -116,7 +131,7 @@ describe("e-scooter facet'leri", () => {
 
 describe("otomobil / motosiklet / kamyonet facet'leri", () => {
   it("anahtarlar ve sıra", () => {
-    expect(facetGroupsForCategory("otomobil").map((g) => g.key)).toEqual(["yakit", "govde", "segment", "vites", "cekis", "guc", "cc", "menzil", "bagaj", "koltuk"]);
+    expect(facetGroupsForCategory("otomobil").map((g) => g.key)).toEqual(["yakit", "govde", "segment", "vites", "cekis", "guc", "cc", "menzil", "bagaj", "tuketim", "enerji", "hizlanma", "hiz", "agirlik", "koltuk"]);
     expect(facetGroupsForCategory("motosiklet").map((g) => g.key)).toEqual(["tip", "cc", "guc", "vites", "sele", "abs", "yakit"]);
     expect(facetGroupsForCategory("kamyonet").map((g) => g.key)).toEqual(["govde", "yakit", "cekis", "kabin", "vites", "guc", "yuk", "cekme", "koltuk"]);
   });
@@ -124,7 +139,7 @@ describe("otomobil / motosiklet / kamyonet facet'leri", () => {
     for (const c of ["otomobil", "motosiklet", "kamyonet"]) {
       for (const g of facetGroupsForCategory(c)) {
         expect(g.alwaysShow).toBe(true);
-        if (c === "otomobil" && (g.key === "cc" || g.key === "menzil")) continue; // bu iki grupta bilerek eksik-veri seçeneği yok
+        if (c === "otomobil" && ["cc", "menzil", "tuketim", "enerji", "hizlanma", "hiz", "agirlik"].includes(g.key)) continue; // bu gruplarda bilerek eksik-veri seçeneği yok
         expect(g.options[g.options.length - 1].value).toBe("na");
       }
     }
@@ -149,7 +164,7 @@ describe("otomobil / motosiklet / kamyonet facet'leri", () => {
     };
     for (const [c, kayitlar] of Object.entries(ornekler)) {
       for (const g of facetGroupsForCategory(c)) {
-        if (c === "otomobil" && (g.key === "cc" || g.key === "menzil")) continue;
+        if (c === "otomobil" && ["cc", "menzil", "tuketim", "enerji", "hizlanma", "hiz", "agirlik"].includes(g.key)) continue;
         for (const a of kayitlar) {
           const eslesen = g.options.filter((o) => o.match(a));
           const bos = a[g.attrKey] === undefined;
