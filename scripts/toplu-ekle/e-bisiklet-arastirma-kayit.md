@@ -249,3 +249,6 @@ Kullanıcı tablosundan: 1800 W DC motor, 45 km/s, 72 V 20 Ah kurşun-asit = 1,4
 
 ## 57. tur — Arora ZR5 2023 (motosiklet, scooter) eklendi (2026-10-11)
 Kullanıcı tablosundan: 2350 W, 55 km/s, 72 V 25 Ah grafen = 1,8 kWh (hesap), menzil 80, şarj 4-6 sa (üst 6), CVT (otomatik), 1940x725x1045, dingil 1405, net ağırlık 71 kg (scooter için düşük, kullanıcı değeri aynen), ön disk/arka kampana, ABS yok, 90/80-12. Taşıma kapasitesi 257 kg için alan yok. Görsel kullanıcı ekleyecek.
+
+## 58. tur — Kuba K4-C 2023 (motosiklet, scooter) eklendi (2026-10-11)
+Kullanıcı tablosundan: 2200 W, 45 km/s, 72 V 20 Ah = 1,44 kWh, menzil 50-60 (üst 60), şarj 6-8 sa (üst 8), otomatik, 1895x720x1085, dingil 1350, net 75 kg, ön disk/arka kampana, ABS yok, 90/70-12. Tırmanma açısı ve taşıma kapasitesi (188 kg) için alan yok. Görsel kullanıcı ekleyecek.
