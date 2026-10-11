@@ -258,3 +258,6 @@ Kullanıcı tablosundan: 2000 W BLDC hub, 45 km/s, 72 V 22 Ah VRLA jel = 1,584 k
 
 ## 60. tur — Yuki Windy 2023 (motosiklet, scooter) eklendi (2026-10-11)
 Kullanıcı tablosundan (model kodu YK-53): 2000 W DC motor, 49,2 Nm, 45 km/s, 72 V 20 Ah jel = 1,44 kWh, şarj 6-8 sa (üst 8), 1870x750x1160, dingil 1340, boş 68 kg, sele 760, ön disk/arka kampana, 90/90-12. Menzil ve ABS doğrulanmadığı için boş. Geri vites, tüketim (43 Wh/km), yükleme 265 kg için alan yok. Volta VS2 AI özeti de aynı turda yeniden yazıldı. Görsel kullanıcı ekleyecek.
+
+## 61. tur — 5 elektrikli scooter eklendi (2026-10-11)
+Motolux Pitton 6000 2025 (id 1076), Apec APS2 2024 (1077), Yuki Boss M 2024 (1078, kod YH-54), Volta VS5 Max 2023 (1079), Motolux ALF Plus Lux 2023 (1080). Kullanıcı tablolarından; aralıklarda üst değer (menzil, şarj). "3 ileri + 1 geri" ve "3 vites" gearbox=3, vites tipi Otomatik girildi (debriyajsız elektrikli). ABS: Pitton, APS2, Boss M, VS5 Max "Yok"; ALF Plus Lux için tabloda yok, boş. Menzil Boss M için tabloda yok, boş. Görseller Commons'ta bulunamadı, kullanıcı ekleyecek.
