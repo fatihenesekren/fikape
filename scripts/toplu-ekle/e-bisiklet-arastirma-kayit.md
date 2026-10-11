@@ -237,3 +237,6 @@ Eklenenler: Toyota Corolla 1.5 Dream 0-100 12,1, hız 190, ağırlık 1265, tük
 
 ## 53. tur — Mercedes-Benz E 220d Exclusive 2022 (id 812) düzeltildi (2026-10-11)
 Kayıt adı E 220 d iken veriler E 200 d benzeri (1597 cc, 160 PS, 360 Nm, 8,8 sn, 222 km/s, 1733 kg) idi. E 220 d verisine çevrildi: 1950 cc (OM 654), 194 PS, 400 Nm, 0-100 7,3 sn, 240 km/s (cars-data), ağırlık 1750 kg (autotijd Berline), tüketim 5,3 L/100 km (cars-data; autotijd aralığı 5,2-6,2, 4MATIC üst uç). Depo 66 L ve bagaj 540 L korundu. Not: 2022 mart sonrası bazı pazarlarda aynı model 1992 cc ve 200 PS mild hibrit (OM 654.820) olarak geçiyor; Türkiye sürümü doğrulanmadı. AI özeti eski tonda ve konfor/malzeme iddialıydı, yeni tonda yazıldı.
+
+## 54. tur — RKS Neron X 2024 (motosiklet, scooter) eklendi (2026-10-11)
+Kullanıcı tablosundan: 2000 W nominal / 3000 W tepe, 40 km/s, 72 V 35 Ah = 2,52 kWh, menzil 140-180 (üst 180), şarj 3-4 sa (üst 4), ön disk/arka kampana, ABS yok, 90/70-12. Beygir gücü tabloda yok, boş bırakıldı. Boyutlar (1820x735x1090) ve tepe güç için motosiklet formunda alan yok; tepe güç motor tipi satırına yazıldı. Görsel kullanıcı ekleyecek.
