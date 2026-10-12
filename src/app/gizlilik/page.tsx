@@ -34,7 +34,7 @@ export default function GizlilikPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Gizlilik Politikası</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Eylül 2026</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ekim 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -60,9 +60,9 @@ export default function GizlilikPage() {
             <li><strong>Yorum ve puanlar:</strong> Paylaştığınız araç yorumları, FI·KA·PE puanları ve detay metinler</li>
             <li><strong>Kullanım verileri:</strong> Sayfa görüntüleme sayıları, oturum bilgileri</li>
             <li><strong>Trafik bilgisi:</strong> 5651 sayılı Kanun kapsamında yer sağlayıcı
-            yükümlülüğü gereği; kayıt olma, giriş yapma, yorum/ilan/mesaj gönderme gibi
-            işlemlerde IP adresiniz, erişim zamanı ve yapılan işlem şifreli olarak
-            kaydedilir; yalnızca yetkili adli/idari merci talebi halinde çözülür</li>
+            yükümlülüğü gereği; kayıt olma, giriş yapma (başarısız giriş denemeleri dahil),
+            yorum/ilan/mesaj gönderme gibi işlemlerde IP adresiniz, erişim zamanı ve yapılan
+            işlem şifreli olarak kaydedilir; yalnızca yetkili adli/idari merci talebi halinde çözülür</li>
             <li><strong>Onay kayıtları:</strong> KVKK kapsamında verdiğiniz açık rızalar</li>
             <li><strong>Plus ilgi oyları:</strong> Fikape Plus sayfasındaki yol haritası fikirlerinden
             hangilerine &quot;ilgileniyorum&quot; işareti koyduğunuz — giriş yapmış üye olarak</li>
@@ -194,6 +194,12 @@ export default function GizlilikPage() {
             Şifreleriniz bcrypt ile tek yönlü hashlenerek saklanmakta; oturumlar HTTPS üzerinden
             şifreli JWT ile yönetilmektedir. E-posta doğrulama linkleri HMAC-SHA256 imzalıdır
             ve 24 saat geçerlidir. Güvenlik ihlali şüphesi durumunda derhal bilgilendirileceksiniz.
+          </p>
+          <p className="mt-3">
+            Hesapların ve sistemin güvenliğini korumak amacıyla başarısız giriş denemeleri
+            toplu olarak (sayı bazında) izlenir; olağandışı bir yığılma tespit edildiğinde platform
+            yöneticilerine otomatik uyarı gönderilir. Bu izleme meşru menfaatimize dayanır ve
+            bireysel IP adresleri yalnızca yukarıda belirtilen yasal talep koşullarında çözülür.
           </p>
         </section>
 
