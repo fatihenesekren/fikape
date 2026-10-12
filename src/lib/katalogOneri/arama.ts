@@ -1,9 +1,10 @@
 // Tavily ile kırılım başına web araması (marketPrice.ts ile aynı sağlayıcı/anahtar).
 import type { AramaSonucu } from "./cikarim";
+import { MEDYA_B } from "./kaynak";
 
 const SONUC_BASINA = 8;
 
-async function tavily(query: string, haber: boolean): Promise<AramaSonucu[]> {
+async function tavily(query: string, haber: boolean, medyaKisitli: boolean): Promise<AramaSonucu[]> {
   const apiKey = process.env.TAVILY_API_KEY;
   if (!apiKey) throw new Error("TAVILY_API_KEY tanımlı değil.");
   const res = await fetch("https://api.tavily.com/search", {
@@ -16,6 +17,8 @@ async function tavily(query: string, haber: boolean): Promise<AramaSonucu[]> {
       max_results: SONUC_BASINA,
       include_answer: false,
       ...(haber ? { topic: "news", days: 75 } : {}),
+      // Yalnız bilinen yayınlarda ara: gürültü (video, sosyal medya) yerine B kademesi kaynak gelir
+      ...(medyaKisitli ? { include_domains: [...MEDYA_B] } : {}),
     }),
     signal: AbortSignal.timeout(15_000),
   });
@@ -27,8 +30,9 @@ async function tavily(query: string, haber: boolean): Promise<AramaSonucu[]> {
 }
 
 /** Sorguları paralel çalıştırır, URL'ye göre tekilleştirir. Biri çökerse diğeri yine kullanılır. */
-export async function kirilimAra(sorgular: string[]): Promise<AramaSonucu[]> {
-  const sonuclar = await Promise.allSettled(sorgular.map((q, i) => tavily(q, i === 0)));
+export async function kirilimAra(sorgular: string[], opts: { medyaKisitli?: boolean } = {}): Promise<AramaSonucu[]> {
+  // İlk sorgu haber araması; kısıtlıysa bilinen yayınlarla sınırlanır, diğer sorgu serbest kalır (resmî marka sayfaları için)
+  const sonuclar = await Promise.allSettled(sorgular.map((q, i) => tavily(q, i === 0, i === 0 && !!opts.medyaKisitli)));
   if (sonuclar.every((s) => s.status === "rejected")) {
     throw (sonuclar[0] as PromiseRejectedResult).reason;
   }

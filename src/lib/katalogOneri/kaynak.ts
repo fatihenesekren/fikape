@@ -9,11 +9,12 @@ export const MEDYA_B: readonly string[] = [
   "aa.com.tr", "dha.com.tr", "iha.com.tr",
   "hurriyet.com.tr", "milliyet.com.tr", "sabah.com.tr", "sozcu.com.tr", "ntv.com.tr", "haberturk.com", "cnnturk.com",
   "arabalar.com.tr", "otomerkezi.com.tr", "otogundem.com.tr", "tr.motor1.com",
-  "donanimhaber.com", "shiftdelete.net", "webtekno.com",
+  "donanimhaber.com", "shiftdelete.net", "webtekno.com", "otoajanda.com",
 ];
 
 /** Hiçbir koşulda kabul edilmeyen kaynak türleri (A kuralındaki marka-alan adı eşleşmesini de keser). */
-const REDDEDILEN = ["forum", "community", "sahibinden.", "arabam.com", "letgo", "facebook.", "instagram.", "youtube.", "reddit.", "eksisozluk", "twitter.", "x.com", "tiktok."];
+const REDDEDILEN = ["forum", "community", "sahibinden.", "arabam.com", "letgo", "facebook.", "instagram.", "youtube.", "reddit.", "eksisozluk", "twitter.", "x.com", "tiktok.",
+  "hepsiburada.", "trendyol.", "n11.", "amazon.", "aliexpress.", "autoline", "mobile.de", "pinterest.", "linkedin."];
 
 function hostVePath(url: string): { host: string; path: string } | null {
   try {
@@ -38,11 +39,19 @@ export function kaynakKademe(url: string, marka: string): Kademe | null {
 
   const markaKey = adAnahtar(marka).toLowerCase();
   const hostKey = p.host.replace(/[^a-z0-9]/g, "");
-  if (markaKey.length >= 3 && hostKey.includes(markaKey) && (p.host.endsWith(".tr") || /^\/(tr|tr-tr)(\/|$)/.test(p.path))) {
+  // Türkiye sitesi: .tr uzantısı, /tr yolu ya da alan adında "turkiye/turkey" (örn. adriaturkiye.com dağıtıcı sitesi)
+  const turkiyeSitesi = p.host.endsWith(".tr") || /^\/(tr|tr-tr)(\/|$)/.test(p.path) || /(turkiye|turkey)/.test(hostKey);
+  if (markaKey.length >= 3 && hostKey.includes(markaKey) && turkiyeSitesi) {
     return "A";
   }
   if (MEDYA_B.some((d) => hostEsles(p.host, d))) return "B";
   return null;
+}
+
+/** Gemini'ye gitmeden önce gürültüyü (video, sosyal medya, pazaryeri, forum) ayıklar. */
+export function kaynakUygunMu(url: string): boolean {
+  const p = hostVePath(url);
+  return !!p && !REDDEDILEN.some((r) => p.host.includes(r));
 }
 
 export function kaynakAdi(url: string): string | null {

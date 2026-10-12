@@ -212,3 +212,40 @@ describe("araç ekleme şeması: aday alanları", () => {
     expect(kirilimOzellikleri("otomobil")).toEqual({});
   });
 });
+
+describe("iyileştirmeler", () => {
+  it("dağıtıcı sitesi (marka + turkiye) A sayılır", () => {
+    expect(kaynakKademe("https://adriaturkiye.com/yeni", "Adria")).toBe("A");
+    expect(kaynakKademe("https://adriaglobal.com/yeni", "Adria")).toBeNull();
+  });
+  it("kaynakUygunMu video/sosyal/pazaryerini ayıklar", async () => {
+    const { kaynakUygunMu } = await import("./kaynak");
+    expect(kaynakUygunMu("https://www.youtube.com/watch?v=1")).toBe(false);
+    expect(kaynakUygunMu("https://www.hepsiburada.com/x")).toBe(false);
+    expect(kaynakUygunMu("https://www.hurriyet.com.tr/x")).toBe(true);
+  });
+  it("yıl kaynakta geçmiyorsa atılır; yıl ve tarih ifadesi yoksa aday elenir", () => {
+    const src: AramaSonucu[] = [{ title: "Renault Rafale", url: "https://www.hurriyet.com.tr/a", content: "Renault Rafale Türkiye'de satışa çıkıyor yakında." }];
+    const girdi = { marka: "Renault", model: "Rafale", versiyon: null, yil: 2031 as number | null, tarihNotu: null, kaynakNo: 0, kanit: "Renault Rafale Türkiye'de satışa çıkıyor" };
+    expect(adaylariDogrula([girdi], src, oto)).toEqual([]);
+    const src2: AramaSonucu[] = [{ ...src[0], content: "Renault Rafale 2026 yılında Türkiye'de satışa çıkıyor." }];
+    const r = adaylariDogrula([{ ...girdi, yil: 2026, kanit: "Renault Rafale 2026 yılında Türkiye'de satışa çıkıyor" }], src2, oto);
+    expect(r[0]).toMatchObject({ yil: 2026, tarihNotu: null });
+  });
+});
+
+describe("yenilik kanıtı", () => {
+  const src = (content: string, title = "Haber"): AramaSonucu[] => [{ title, url: "https://www.hurriyet.com.tr/a", content }];
+  const g = (o: Record<string, unknown>) => ({ marka: "Renault", model: "Rafale", versiyon: null, yil: 2026, tarihNotu: null, kaynakNo: 0, kanit: "Renault Rafale 2026 fiyat listesi Türkiye", ...o });
+  it("yalnız fiyat satırı (yeni ifadesi yok) elenir", () => {
+    expect(adaylariDogrula([g({})], src("Renault Rafale 2026 fiyat listesi Türkiye TL"), oto)).toEqual([]);
+  });
+  it("yeni/lansman ifadesi varsa kabul", () => {
+    const k = "Yeni Renault Rafale 2026 Türkiye'de satışa çıkıyor";
+    expect(adaylariDogrula([g({ kanit: k })], src(k), oto)).toHaveLength(1);
+  });
+  it("'Yeni' tarih sayılmaz", () => {
+    const k = "Yeni Renault Rafale Türkiye'de satışta";
+    expect(adaylariDogrula([g({ yil: null, tarihNotu: "Yeni", kanit: k })], src(k), oto)).toEqual([]);
+  });
+});

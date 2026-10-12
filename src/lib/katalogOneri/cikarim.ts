@@ -4,7 +4,7 @@
 import { z } from "zod";
 import { adAnahtar } from "@/lib/katalog/ek";
 import { generateGeminiJson } from "@/lib/ai/gemini";
-import { kaynakAdi, kaynakKademe, turkiyeKaniti, type Kademe } from "./kaynak";
+import { kaynakAdi, kaynakKademe, kaynakUygunMu, turkiyeKaniti, type Kademe } from "./kaynak";
 import type { Kirilim } from "./kirilimlar";
 
 export interface AramaSonucu {
@@ -47,7 +47,12 @@ const SATIR = z.object({
 });
 const CIKTI = z.array(SATIR).max(10);
 
-const AZAMI_KAYNAK = 10;
+const AZAMI_KAYNAK = 12;
+
+/** Tarih ifadesi sayı, ay adı ya da dönem içermeli ("Yeni", "satışta" tarih değildir). */
+const TARIH_IFADESI = /[0-9]|ocak|subat|mart|nisan|mayis|haziran|temmuz|agustos|eylul|ekim|kasim|aralik|ceyrek|yari|yaz|kis|ilkbahar|sonbahar/;
+/** Aracın YENİ olduğuna dair ifade (kanıt ya da başlıkta): yalnız fiyat listesi satırı yeni sayılmaz. */
+const YENI_IFADESI = /yeni|lansman|satisa (cik|sunul|basla)|tanitil|piyasaya|geliyor|gelecek|facelift|yenilen/;
 const KAYNAK_KARAKTER = 1100;
 
 export function istemHazirla(k: Kirilim, kaynaklar: AramaSonucu[]): string {
@@ -90,13 +95,20 @@ export function adaylariDogrula(ham: unknown, kaynaklar: AramaSonucu[], k: Kiril
     if (!metinAnahtar.includes(norm(s.marka).replace(/ /g, "")) || !metinAnahtar.includes(norm(s.model).replace(/ /g, ""))) continue;
     if (!turkiyeKaniti(kaynak.url, metinNorm)) continue;
 
+    // "Yeni" kanıtı: model yılı kaynakta geçmeli; geçmiyorsa yıl atılır. Yıl da tarih ifadesi de yoksa aday güvenilmez.
+    const yil = s.yil != null && metinNorm.includes(String(s.yil)) ? s.yil : null;
+    const tarihNotu =
+      s.tarihNotu && TARIH_IFADESI.test(norm(s.tarihNotu)) && metinNorm.includes(norm(s.tarihNotu)) ? s.tarihNotu : null;
+    if (yil === null && tarihNotu === null) continue;
+    if (!YENI_IFADESI.test(norm(`${s.kanit} ${kaynak.title}`))) continue;
+
     const kademe = kaynakKademe(kaynak.url, s.marka);
     if (!kademe) continue;
     if (k.sadeceResmi && kademe !== "A") continue;
 
     cikti.push({
-      marka: s.marka, model: s.model, versiyon: s.versiyon || null, yil: s.yil ?? null,
-      tarihNotu: s.tarihNotu || null, kaynakUrl: kaynak.url, kaynakAdi: kaynakAdi(kaynak.url),
+      marka: s.marka, model: s.model, versiyon: s.versiyon || null, yil,
+      tarihNotu, kaynakUrl: kaynak.url, kaynakAdi: kaynakAdi(kaynak.url),
       kademe, kanit: s.kanit,
     });
   }
@@ -105,9 +117,17 @@ export function adaylariDogrula(ham: unknown, kaynaklar: AramaSonucu[], k: Kiril
 
 /** Aramadan aday çıkar. Gemini hatası ya da boş sonuç → [] (çağıran hata sayar). */
 export async function adayCikar(k: Kirilim, kaynaklar: AramaSonucu[]): Promise<AdayHam[]> {
-  const secili = kaynaklar.slice(0, AZAMI_KAYNAK);
+  const secili = kaynaklar.filter((s) => kaynakUygunMu(s.url)).slice(0, AZAMI_KAYNAK);
   if (secili.length === 0) return [];
-  const ham = await generateGeminiJson(istemHazirla(k, secili));
+  // Gemini zaman zaman 503/429 verir: bir kez kısa beklemeyle yeniden dene
+  let ham: unknown;
+  try {
+    ham = await generateGeminiJson(istemHazirla(k, secili));
+  } catch (e) {
+    if (!/\b(503|429)\b/.test(String(e))) throw e;
+    await new Promise((r) => setTimeout(r, 3000));
+    ham = await generateGeminiJson(istemHazirla(k, secili));
+  }
   return adaylariDogrula(ham, secili, k);
 }
 

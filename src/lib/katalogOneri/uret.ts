@@ -29,13 +29,14 @@ export function resmiKataloqdaVar(kategori: string, marka: string, model: string
   });
 }
 
-async function mevcutBilgi(k: Kirilim, a: AdayHam): Promise<MevcutBilgi> {
-  const urunler = await findExistingVehicles(a.marka, a.model, k.kategori);
+// Kategori kısıtı YOK: aynı model başka kategoride (örn. Rifter otomobilde, van adayı) kayıtlıysa da "katalogda var" sayılır
+async function mevcutBilgi(a: AdayHam): Promise<MevcutBilgi> {
+  const urunler = await findExistingVehicles(a.marka, a.model);
   if (urunler.length > 0) {
     const p = await prisma.product.findUnique({ where: { slug: urunler[0].slug }, select: { id: true } });
     return { var: true, urunId: p?.id ?? null };
   }
-  return { var: resmiKataloqdaVar(k.kategori, a.marka, a.model), urunId: null };
+  return { var: Object.keys(INDEX).some((kat) => resmiKataloqdaVar(kat, a.marka, a.model)), urunId: null };
 }
 
 export interface KirilimSonucu {
@@ -51,12 +52,12 @@ async function kirilimUret(k: Kirilim, ay: string, buYil: number): Promise<Kiril
   // Bu ay için zaten üretilmiş: aramaları tekrarlama (Tavily kotası + Vercel CPU)
   if (kayitlar.some((r) => r.ay === ay)) return { kirilim: k.key, yeni: 0, var: 0, atlandi: true };
 
-  const kaynaklar = await kirilimAra(sorguHazirla(k, ay));
+  const kaynaklar = await kirilimAra(sorguHazirla(k, ay), { medyaKisitli: !k.sadeceResmi });
   const ham = adaylariBirlestir(await adayCikar(k, kaynaklar));
 
   // Katalogla karşılaştırma önceden (async) yapılır, etiketleme saf kalır
   const harita = new Map<AdayHam, MevcutBilgi>();
-  await Promise.all(ham.map(async (a) => { harita.set(a, await mevcutBilgi(k, a)); }));
+  await Promise.all(ham.map(async (a) => { harita.set(a, await mevcutBilgi(a)); }));
 
   const secilen = sec(etiketle(ham, new Set(kayitlar.map((r) => r.anahtar)), (a) => harita.get(a) ?? { var: false, urunId: null }, buYil));
   if (secilen.length > 0) {
