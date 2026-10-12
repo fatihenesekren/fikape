@@ -111,6 +111,36 @@ export async function modelYenidenAdlandir(admin: AdminKimlik, id: number, yeniA
   }, OPS);
 }
 
+// ─── Boş modeli silme ────────────────────────────────────────────────────────
+/**
+ * YALNIZ hiçbir kaydı olmayan modeli siler (ürün, usta notu ve usta sponsorluğu kapsamı yoksa). Bağlı kayıt varsa 409:
+ * önce birleştirme kullanılmalı. Modele yönlenen takma adlar da silinir (hedefi kalmayacağı için). Geri alınamaz,
+ * ama model gerektiğinde yeni araç eklenirken (aracEkle) otomatik yeniden oluşur.
+ */
+export async function modelSil(admin: AdminKimlik, id: number, beklenenAd: string) {
+  return prisma.$transaction(async (tx) => {
+    const model = await tx.model.findUnique({ where: { id }, include: { brand: true } });
+    if (!model) throw new IsHatasi(404, { error: "Model bulunamadı" });
+    if (model.name !== beklenenAd) throw new IsHatasi(409, { error: "Model siz düzenlerken değişti. Sayfayı yenileyin." });
+    const [urun, ustaNotu, sponsorluk] = await Promise.all([
+      tx.product.count({ where: { modelId: id } }),
+      tx.expertNote.count({ where: { modelId: id } }),
+      tx.$queryRaw<{ n: bigint }[]>`SELECT count(*)::bigint AS n FROM "expert_sponsorships" WHERE ${id} = ANY("scopeModelIds")`.then((r) => Number(r[0]?.n ?? 0)),
+    ]);
+    const bag = { urun, ustaNotu, sponsorluk };
+    if (urun + ustaNotu + sponsorluk > 0) {
+      throw new IsHatasi(409, { error: "Bu modele bağlı kayıtlar var; yalnız boş model silinebilir. Birleştirmeyi kullanın.", bag });
+    }
+    const alias = await tx.catalogSlugAlias.deleteMany({ where: { kind: "MODEL", targetId: id } });
+    await tx.model.delete({ where: { id } });
+    await denetimYaz(tx, {
+      admin, action: "MODEL_DELETE", entityType: "MODEL", entityId: id, entityLabel: `${model.brand.name} ${model.name}`,
+      before: { id, name: model.name, slug: model.slug, marka: model.brand.name }, meta: { silinenTakmaAd: alias.count },
+    });
+    return { id, name: model.name, slug: model.slug, silinenTakmaAd: alias.count };
+  }, OPS);
+}
+
 // ─── Birleştirme ─────────────────────────────────────────────────────────────
 export interface BirlestirOnizleme {
   tur: "MARKA" | "MODEL";

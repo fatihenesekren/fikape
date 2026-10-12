@@ -71,6 +71,11 @@ export const yenidenAdlandirSema = z.object({
   beklenenEskiAd: z.string().min(1).max(200),
 }).strict();
 
+export const modelSilSema = z.object({
+  /** Silinecek modelin görünen adı (sayfa eskimişse 409) */
+  beklenenAd: z.string().min(1).max(200),
+}).strict();
+
 export const birlestirSema = z.object({
   tur: z.enum(["MARKA", "MODEL"]),
   kaynakId: z.number().int().positive(),

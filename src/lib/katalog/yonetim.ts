@@ -8,7 +8,7 @@ export type Tx = Prisma.TransactionClient;
 
 export type DenetimEylemi =
   | "PRODUCT_CREATE" | "PRODUCT_UPDATE" | "PRODUCT_DEACTIVATE" | "PRODUCT_REACTIVATE" | "PRODUCT_DELETE"
-  | "BRAND_RENAME" | "BRAND_MERGE" | "MODEL_RENAME" | "MODEL_MERGE"
+  | "BRAND_RENAME" | "BRAND_MERGE" | "MODEL_RENAME" | "MODEL_MERGE" | "MODEL_DELETE"
   | "OVERRIDE_HIDE" | "OVERRIDE_RESTORE";
 
 /** Denetim satırı — asıl işlemle AYNI transaction içinde çağrılır (yazılamazsa işlem geri alınır). */

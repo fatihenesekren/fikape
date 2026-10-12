@@ -8,7 +8,7 @@ const EYLEM_ETIKETI: Record<string, string> = {
   PRODUCT_CREATE: "Araç eklendi", PRODUCT_UPDATE: "Araç düzeltildi", PRODUCT_DEACTIVATE: "Araç pasife alındı",
   PRODUCT_REACTIVATE: "Araç geri alındı", PRODUCT_DELETE: "Araç silindi",
   BRAND_RENAME: "Marka yeniden adlandırıldı", MODEL_RENAME: "Model yeniden adlandırıldı",
-  BRAND_MERGE: "Markalar birleştirildi", MODEL_MERGE: "Modeller birleştirildi",
+  BRAND_MERGE: "Markalar birleştirildi", MODEL_MERGE: "Modeller birleştirildi", MODEL_DELETE: "Boş model silindi",
   OVERRIDE_HIDE: "Resmi katalogdan gizlendi", OVERRIDE_RESTORE: "Gizleme kaldırıldı",
   CACHE_TEMIZLE: "Önbellek temizlendi",
 };

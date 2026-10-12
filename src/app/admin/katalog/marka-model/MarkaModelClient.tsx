@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { apiIstek, GECIKME_NOTU } from "../istek";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 interface Model { id: number; ad: string; urunSayisi: number }
 interface Marka { id: number; ad: string; modeller: Model[] }
@@ -16,7 +17,8 @@ const TASIMA_ETIKETI: Record<string, string> = { urun: "araç", model: "model", 
 export function MarkaModelClient({ markalar }: { markalar: Marka[] }) {
   const router = useRouter();
   const [q, setQ] = useState("");
-  const [secili, setSecili] = useState<{ tur: "MARKA" | "MODEL"; id: number; ad: string; markaId: number } | null>(null);
+  const [secili, setSecili] = useState<{ tur: "MARKA" | "MODEL"; id: number; ad: string; markaId: number; urunSayisi?: number } | null>(null);
+  const [silOnay, setSilOnay] = useState(false);
   const [yeniAd, setYeniAd] = useState("");
   const [hedefId, setHedefId] = useState("");
   const [onizleme, setOnizleme] = useState<Onizleme | null>(null);
@@ -38,7 +40,17 @@ export function MarkaModelClient({ markalar }: { markalar: Marka[] }) {
   }, [secili, markalar]);
 
   function sec(s: NonNullable<typeof secili>) {
-    setSecili(s); setYeniAd(s.ad); setHedefId(""); setOnizleme(null); setYazi(""); setMesaj(null);
+    setSecili(s); setYeniAd(s.ad); setHedefId(""); setOnizleme(null); setYazi(""); setMesaj(null); setSilOnay(false);
+  }
+
+  // Yalnız hiçbir kaydı olmayan model silinebilir (sunucu da bağlı kayıt varsa 409 verir)
+  async function bosModeliSil() {
+    if (!secili || secili.tur !== "MODEL") return;
+    setMesgul(true); setMesaj(null);
+    const r = await apiIstek(`/api/admin/katalog/model/${secili.id}`, "DELETE", { beklenenAd: secili.ad });
+    setMesgul(false); setSilOnay(false);
+    if (r.ok) { setMesaj({ tur: "ok", metin: `"${secili.ad}" modeli silindi. ${GECIKME_NOTU}` }); setSecili(null); router.refresh(); return; }
+    setMesaj({ tur: "hata", metin: r.veri.error ?? "Silinemedi" });
   }
 
   async function adlandir() {
@@ -95,6 +107,16 @@ export function MarkaModelClient({ markalar }: { markalar: Marka[] }) {
             </label>
             <button disabled={mesgul || !hedefId} onClick={() => void onizle()} className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium disabled:opacity-40">Önizle</button>
           </div>
+          {secili.tur === "MODEL" && secili.urunSayisi === 0 && (
+            <>
+              <hr className="border-gray-100" />
+              <div className="space-y-2">
+                <p className="text-sm font-medium text-gray-900">Bu modelde hiç araç yok</p>
+                <button disabled={mesgul} onClick={() => setSilOnay(true)} className="px-4 py-2 rounded-lg border border-red-300 text-red-700 text-sm font-medium disabled:opacity-40">Boş modeli sil</button>
+                <p className="text-xs text-gray-400">Yalnız hiçbir kaydı (araç, usta notu, sponsorluk) olmayan model silinir. Gerektiğinde yeni araç eklenirken model kendiliğinden yeniden oluşur.</p>
+              </div>
+            </>
+          )}
           {onizleme && (
             <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-900 space-y-2">
               <p className="font-semibold">{onizleme.kaynak.ad} → {onizleme.hedef.ad}</p>
@@ -117,6 +139,16 @@ export function MarkaModelClient({ markalar }: { markalar: Marka[] }) {
         </div>
       )}
 
+      <ConfirmDialog
+        open={silOnay}
+        title={`"${secili?.ad ?? ""}" modeli silinsin mi?`}
+        description="Bu işlem geri alınamaz. Model boş olduğu için hiçbir araç etkilenmez."
+        confirmLabel="Modeli sil"
+        loading={mesgul}
+        onConfirm={() => void bosModeliSil()}
+        onCancel={() => setSilOnay(false)}
+      />
+
       <ul className="space-y-3">
         {gorunen.map((b) => (
           <li key={b.id} className="bg-white border border-gray-100 rounded-xl p-4">
@@ -124,7 +156,7 @@ export function MarkaModelClient({ markalar }: { markalar: Marka[] }) {
             <span className="text-xs text-gray-400 ml-2">{b.modeller.length} model</span>
             <div className="flex flex-wrap gap-1.5 mt-2">
               {b.modeller.map((m) => (
-                <button key={m.id} onClick={() => sec({ tur: "MODEL", id: m.id, ad: m.ad, markaId: b.id })} className="text-xs px-2 py-1 rounded-md bg-gray-50 border border-gray-200 hover:bg-gray-100">
+                <button key={m.id} onClick={() => sec({ tur: "MODEL", id: m.id, ad: m.ad, markaId: b.id, urunSayisi: m.urunSayisi })} className="text-xs px-2 py-1 rounded-md bg-gray-50 border border-gray-200 hover:bg-gray-100">
                   {m.ad} <span className="text-gray-400">({m.urunSayisi})</span>
                 </button>
               ))}
