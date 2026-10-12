@@ -1,5 +1,6 @@
 import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
+import { cronHataIzle } from "@/lib/sistemUyarisi";
 import { prisma } from "@/lib/prisma";
 
 export const runtime = "nodejs";
@@ -18,7 +19,7 @@ const CAPTIVE_MIN_DISTINCT_NOTES = 5;
 //   (platform çapında genel bir "aynı IP'den çok hesap" analizi değil).
 // - Sinyaller BAĞIMSIZ çarpanlar olarak birleştiriliyor (ağırlıklı bir model
 //   değil) — gerçek veriyle kalibre edilecek, tıpkı barem formülü gibi.
-export async function GET(req: Request) {
+async function calistir(req: Request) {
   const authHeader = req.headers.get("authorization");
   if (!cronYetkili(authHeader)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -152,3 +153,5 @@ export async function GET(req: Request) {
     ranAt: new Date().toISOString(),
   });
 }
+
+export const GET = cronHataIzle("expert-vote-fraud", calistir);

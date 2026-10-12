@@ -1,5 +1,6 @@
 import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
+import { cronHataIzle } from "@/lib/sistemUyarisi";
 import { prisma } from "@/lib/prisma";
 import { sendReminderEmail, sendUpdateReminderEmail } from "@/lib/email";
 import { createNotification } from "@/lib/notification";
@@ -10,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? process.env.AUTH_URL ?? "https://fikape-e4t7.vercel.app";
 
-export async function GET(req: Request) {
+async function calistir(req: Request) {
   const authHeader = req.headers.get("authorization");
   if (!cronYetkili(authHeader)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -117,3 +118,5 @@ export async function GET(req: Request) {
     ranAt: now.toISOString(),
   });
 }
+
+export const GET = cronHataIzle("reminder-emails", calistir);

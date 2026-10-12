@@ -383,6 +383,32 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
     };
   }));
 
+  sections.push(...await guard("Sistem ve güvenlik", errors, async () => {
+    const [failW, failP, okW, okP, alertW, alertP, failedRunW, failedRunP] = await Promise.all([
+      prisma.accessLog.count({ where: { action: "LOGIN_FAILED", createdAt: W } }),
+      prisma.accessLog.count({ where: { action: "LOGIN_FAILED", createdAt: P } }),
+      prisma.accessLog.count({ where: { action: "LOGIN", createdAt: W } }),
+      prisma.accessLog.count({ where: { action: "LOGIN", createdAt: P } }),
+      prisma.reportRun.count({ where: { kind: { startsWith: "alert:" }, startedAt: W } }),
+      prisma.reportRun.count({ where: { kind: { startsWith: "alert:" }, startedAt: P } }),
+      prisma.reportRun.count({ where: { status: "FAILED", startedAt: W } }),
+      prisma.reportRun.count({ where: { status: "FAILED", startedAt: P } }),
+    ]);
+    const failRate = failW + okW ? failW / (failW + okW) : 0;
+    const failRateP = failP + okP ? failP / (failP + okP) : 0;
+    return {
+      title: "Sistem ve güvenlik",
+      head: ["Metrik", "Bu hafta", "Δ"],
+      rows: [
+        [tt("Başarılı giriş"), ...dd(okW, okP)],
+        [tt("Başarısız giriş denemesi"), ...dd(failW, failP, "down")],
+        [tt("Başarısız giriş oranı"), ...rd(failRate, failRateP, "down")],
+        [tt("Gönderilen sistem uyarısı"), ...dd(alertW, alertP, "down")],
+        [tt("Başarısız görev kaydı"), ...dd(failedRunW, failedRunP, "down")],
+      ],
+    };
+  }));
+
   sections.push(...await guard("Gelir sinyalleri", errors, async () => {
     const [
       insByStatus, saleByType, plusW, plusP, plusTotal,

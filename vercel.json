@@ -25,6 +25,10 @@
       "schedule": "30 2 * * *"
     },
     {
+      "path": "/api/cron/sistem-denetimi",
+      "schedule": "30 6 * * *"
+    },
+    {
       "path": "/api/cron/cleanup-access-logs",
       "schedule": "0 6 * * 1"
     },

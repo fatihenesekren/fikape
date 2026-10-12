@@ -17,6 +17,7 @@ import { encryptIp, getClientIp } from "@/lib/security";
 export type AccessLogAction =
   | "REGISTER"
   | "LOGIN"
+  | "LOGIN_FAILED"
   | "REVIEW_CREATE"
   | "TRADE_LISTING_CREATE"
   | "TRADE_MESSAGE_CREATE";

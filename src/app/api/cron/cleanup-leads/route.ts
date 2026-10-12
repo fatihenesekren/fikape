@@ -1,6 +1,7 @@
 import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { cronHatasiBildir } from "@/lib/sistemUyarisi";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -32,7 +33,7 @@ export async function GET(req: Request) {
       cutoff: cutoff.toISOString(),
     });
   } catch (err) {
-    console.error("cleanup-leads failed:", err);
+    await cronHatasiBildir("cleanup-leads", err);
     return NextResponse.json({ error: "Temizlik başarısız oldu." }, { status: 500 });
   }
 }

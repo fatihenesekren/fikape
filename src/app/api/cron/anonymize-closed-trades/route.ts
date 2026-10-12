@@ -1,6 +1,7 @@
 import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { cronHatasiBildir } from "@/lib/sistemUyarisi";
 import { deleteTradePhotoBlobs } from "@/lib/tradeListingPhotos";
 
 export const runtime = "nodejs";
@@ -63,7 +64,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ ok: true, listings: staleListings.length, anonymized: messageResult.count });
   } catch (e) {
-    console.error("[cron/anonymize-closed-trades] başarısız oldu:", e);
+    await cronHatasiBildir("anonymize-closed-trades", e);
     return NextResponse.json({ error: "Anonimleştirme işlemi başarısız oldu." }, { status: 500 });
   }
 }

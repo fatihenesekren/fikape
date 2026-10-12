@@ -2,6 +2,7 @@ import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
 import { sendAdminAlertEmail } from "@/lib/email";
 import { REPORT_FROM } from "./theme";
+import { resolveRecipients } from "./alicilar";
 import { isoWeekWindow } from "./format";
 import { collectWeeklyReport, type WeeklyReportData } from "./collect";
 import { renderWeeklyReportHtml, renderWeeklyReportText, reportSubject } from "./render";
@@ -19,19 +20,6 @@ export interface WeeklyReportResult {
   html?: string;
   text?: string;
   data?: WeeklyReportData;
-}
-
-/** REPORT_RECIPIENTS env verilmişse ona, yoksa trustLevel>=5 kullanıcılara. */
-async function resolveRecipients(): Promise<string[]> {
-  const override = process.env.REPORT_RECIPIENTS?.trim();
-  if (override) {
-    return override.split(",").map((s) => s.trim()).filter((s) => s.includes("@"));
-  }
-  const admins = await prisma.user.findMany({
-    where: { trustLevel: { gte: 5 }, isBanned: false },
-    select: { email: true },
-  });
-  return admins.map((a) => a.email).filter(Boolean);
 }
 
 export async function sendWeeklyReport(opts: { dryRun?: boolean; now?: Date } = {}): Promise<WeeklyReportResult> {

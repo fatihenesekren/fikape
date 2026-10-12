@@ -1,5 +1,6 @@
 import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
+import { cronHataIzle } from "@/lib/sistemUyarisi";
 import { prisma } from "@/lib/prisma";
 import { computeExpertStanding, applyHysteresis } from "@/lib/expertBarem";
 import { createNotification } from "@/lib/notification";
@@ -15,7 +16,7 @@ function currentPeriod(d: Date): string {
 // PAUSED/PROBATION) yeniden hesaplar. SUSPENDED/CLOSED/PENDING_VERIFICATION/
 // WAITLISTED profillere ASLA dokunmaz (bkz. plan §8). Admin override
 // (FORCE_FEATURED/FORCE_PAUSED) formülü ezer ama audit için skor yine hesaplanır.
-export async function GET(req: Request) {
+async function calistir(req: Request) {
   const authHeader = req.headers.get("authorization");
   if (!cronYetkili(authHeader)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -136,3 +137,5 @@ export async function GET(req: Request) {
     ranAt: now.toISOString(),
   });
 }
+
+export const GET = cronHataIzle("expert-standing", calistir);

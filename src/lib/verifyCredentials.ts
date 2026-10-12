@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { checkRateLimit, rateLimitByEmail } from "@/lib/rateLimit";
 import { logAccessRaw } from "@/lib/accessLog";
+import { girisHatasiYiginiKontrol } from "@/lib/sistemUyarisi";
 
 // bcrypt(12) çıktısı biçiminde, hiçbir parolaya karşılık gelmeyen sabit hash (zamanlama eşitleme için).
 const SAHTE_HASH = "$2b$12$CwTycUXWue0Thq9StjUM0uJ8E1q0t0r8mY3rYzQ0x6h8lS9mQ2yQe";
@@ -32,7 +33,12 @@ export async function verifyCredentials(
   const user = await prisma.user.findUnique({ where: { email: normalizedEmail } });
   // Kullanıcı yokken de bcrypt çalıştırılır: yanıt süresi farkından hesap var/yok anlaşılmasın.
   const valid = await bcrypt.compare(password, user?.passwordHash ?? SAHTE_HASH);
-  if (!user || !valid) return null;
+  if (!user || !valid) {
+    // Güvenlik izleme: hatalı parola/bilinmeyen hesap kaydı; yığılma olursa yöneticiye e-posta gider.
+    await logAccessRaw({ action: "LOGIN_FAILED", userId: user?.id ?? null, ip, path: "/api/auth/callback/credentials" });
+    await girisHatasiYiginiKontrol();
+    return null;
+  }
   // Banlı hesap giriş yapamaz (yorum/soru/öneri/yükleme gibi yazma yolları ban kontrolü yapmıyordu).
   if (user.isBanned) return null;
 
