@@ -1,11 +1,12 @@
 import { prisma } from "@/lib/prisma";
 import { delta, pointDelta, fmtInt, fmtPct, type Delta, type WeekWindow } from "./format";
+import { oneriBolumu } from "@/lib/katalogOneri/rapor";
 
 // Haftalık admin raporu için veri toplama. KVKK: yalnızca AGREGAT — sayı, oran,
 // ortalama, Δ. Hiçbir isim / e-posta / userId / telefon / serbest metin yok;
 // kişiye bağlı her şey /admin linkiyle veriliyor (bkz. 5-ajan KVKK değerlendirmesi).
 
-export type Cell = { t: string; align?: "r"; delta?: Delta };
+export type Cell = { t: string; align?: "r"; delta?: Delta; href?: string };
 
 export interface ReportSection {
   title: string;
@@ -76,7 +77,8 @@ async function guard(
   }
 }
 
-export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReportData> {
+/** `oneriAy` doluysa (ayın ilk Pazartesi raporu) "yeni araç adayları" bölümü eklenir. */
+export async function collectWeeklyReport(win: WeekWindow, opts: { oneriAy?: string | null } = {}): Promise<WeeklyReportData> {
   const now = new Date();
   const W = { gte: win.weekStart, lt: win.weekEnd };
   const P = { gte: win.prevStart, lt: win.prevEnd };
@@ -534,6 +536,11 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       },
     ];
   }));
+
+  if (opts.oneriAy) {
+    const ay = opts.oneriAy;
+    sections.push(...await guard("Yeni araç adayları", errors, () => oneriBolumu(ay)));
+  }
 
   // ── Sessiz hafta tespiti (görüntülenme hariç akış KPI'larının hepsi 0) ──
   const quietWeek = headline

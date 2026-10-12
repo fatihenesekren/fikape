@@ -1,6 +1,7 @@
 import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
 import { sendWeeklyReport } from "@/lib/reports/send";
+import { AY_BICIMI } from "@/lib/katalogOneri/zaman";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -14,6 +15,7 @@ export const maxDuration = 60;
  *   ?dry=1              → e-posta göndermeden HTML döndürür
  *   ?dry=1&format=text  → düz metin
  *   ?dry=1&format=json  → ham veri + özet
+ *   ?dry=1&ay=2026-11   → "yeni araç adayları" bölümünü o ay için zorla (yalnız kuru koşu)
  * `dry` yalnızca prod DIŞINDA secret'ı query param olarak kabul eder; prod'da
  * her durumda Authorization header şart.
  */
@@ -29,8 +31,13 @@ export async function GET(req: Request) {
   const dry = url.searchParams.get("dry") === "1";
   const format = url.searchParams.get("format");
 
+  const ay = url.searchParams.get("ay");
+  if (ay !== null && (!dry || !AY_BICIMI.test(ay))) {
+    return NextResponse.json({ error: "ay yalnız ?dry=1 ile ve YYYY-MM biçiminde kullanılır" }, { status: 400 });
+  }
+
   const startedAt = Date.now();
-  const result = await sendWeeklyReport({ dryRun: dry });
+  const result = await sendWeeklyReport({ dryRun: dry, ...(ay ? { oneriAy: ay } : {}) });
 
   console.log(
     `[cron/weekly-report] isoWeek=${result.isoWeek} dry=${dry} recipients=${result.recipients}` +

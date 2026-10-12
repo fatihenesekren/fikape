@@ -5,6 +5,7 @@ import { REPORT_FROM } from "./theme";
 import { resolveRecipients } from "./alicilar";
 import { isoWeekWindow } from "./format";
 import { collectWeeklyReport, type WeeklyReportData } from "./collect";
+import { ilkPazartesiAyi } from "@/lib/katalogOneri/zaman";
 import { renderWeeklyReportHtml, renderWeeklyReportText, reportSubject } from "./render";
 
 const KIND = "weekly-admin";
@@ -22,13 +23,15 @@ export interface WeeklyReportResult {
   data?: WeeklyReportData;
 }
 
-export async function sendWeeklyReport(opts: { dryRun?: boolean; now?: Date } = {}): Promise<WeeklyReportResult> {
+export async function sendWeeklyReport(opts: { dryRun?: boolean; now?: Date; oneriAy?: string | null } = {}): Promise<WeeklyReportResult> {
   const win = isoWeekWindow(opts.now);
+  // Ayın ilk Pazartesi raporu "yeni araç adayları" bölümünü taşır; kuru koşuda ?ay= ile zorlanabilir
+  const oneriAy = opts.oneriAy !== undefined ? opts.oneriAy : ilkPazartesiAyi(opts.now);
   const dryRun = !!opts.dryRun;
 
   // ── Kuru koşu: hiçbir yan etki yok (ReportRun yazılmaz, e-posta gönderilmez) ──
   if (dryRun) {
-    const data = await collectWeeklyReport(win);
+    const data = await collectWeeklyReport(win, { oneriAy });
     const html = renderWeeklyReportHtml(data);
     const text = renderWeeklyReportText(data);
     const recipients = await resolveRecipients();
@@ -61,7 +64,7 @@ export async function sendWeeklyReport(opts: { dryRun?: boolean; now?: Date } = 
   }
 
   try {
-    const data = await collectWeeklyReport(win);
+    const data = await collectWeeklyReport(win, { oneriAy });
     const html = renderWeeklyReportHtml(data);
     const text = renderWeeklyReportText(data);
     const subject = reportSubject(data);

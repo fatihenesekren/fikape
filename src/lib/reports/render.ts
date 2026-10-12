@@ -17,7 +17,12 @@ function deltaSpan(d: NonNullable<Cell["delta"]>): string {
 
 function cellHtml(c: Cell, isHeadCol: boolean): string {
   const align = c.align === "r" || c.delta ? "right" : "left";
-  const inner = c.delta ? deltaSpan(c.delta) : esc(c.t);
+  const link = c.href && /^https?:\/\//i.test(c.href) ? c.href : null;
+  const inner = c.delta
+    ? deltaSpan(c.delta)
+    : link
+      ? `<a href="${esc(link)}" style="color:${FI.blue};text-decoration:none">${esc(c.t)}</a>`
+      : esc(c.t);
   const style = c.delta ? CELL : c.align === "r" ? CELL_NUM : CELL;
   return `<td align="${align}" style="${style}">${isHeadCol ? `<strong>${inner}</strong>` : inner}</td>`;
 }
@@ -180,7 +185,7 @@ export function renderWeeklyReportText(data: WeeklyReportData): string {
     if (s.failed || !s.rows.length) { L.push("  — veri yok"); L.push(""); continue; }
     for (const row of s.rows) {
       const label = row[0]?.t ?? "";
-      const rest = row.slice(1).map((c) => c.delta ? c.delta.text : c.t).join("   ");
+      const rest = row.slice(1).map((c) => c.delta ? c.delta.text : c.href ? `${c.t} <${c.href}>` : c.t).join("   ");
       L.push(`  ${pad(label, 34)} ${rest}`);
     }
     if (s.link) L.push(`  → ${BASE_URL}${s.link.href}`);
