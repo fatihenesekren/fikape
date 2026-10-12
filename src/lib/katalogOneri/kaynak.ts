@@ -10,6 +10,10 @@ export const MEDYA_B: readonly string[] = [
   "hurriyet.com.tr", "milliyet.com.tr", "sabah.com.tr", "sozcu.com.tr", "ntv.com.tr", "haberturk.com", "cnnturk.com",
   "arabalar.com.tr", "otomerkezi.com.tr", "otogundem.com.tr", "tr.motor1.com",
   "donanimhaber.com", "shiftdelete.net", "webtekno.com", "otoajanda.com",
+  // Teknoloji / tüketici yayınları (e-scooter, e-bisiklet, elektrikli motosiklet haberleri buradan çıkıyor)
+  "technopat.net", "pchocasi.com.tr", "tekreferans.com", "otoaktuel.com.tr",
+  // Ulusal gazete ve ekonomi yayınları
+  "cumhuriyet.com.tr", "yenisafak.com", "takvim.com.tr", "dunya.com", "ekonomim.com", "gzt.com", "cnbce.com",
 ];
 
 /** Hiçbir koşulda kabul edilmeyen kaynak türleri (A kuralındaki marka-alan adı eşleşmesini de keser). */
