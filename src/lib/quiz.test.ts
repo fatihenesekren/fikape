@@ -2,7 +2,8 @@ import { describe, it, expect } from "vitest";
 import {
   encodeQuiz, decodeQuiz, calcQuizScore, quizQ4Matches, quizMatches, answerAffectsResults, kisiKapasitesi,
   MOTO_CC_RANGES, EBIKE_WATT_RANGES, QUIZ_STEPS, STEP_RULES,
-  type QuizAnswers, type QuizCat,
+  quizSonucSayisi, adimSecenekSayilari, secenekKisitlarMi, uyumsuzSonrakiCevaplariTemizle, quizAlanlariniKirp, QUIZ_ATTR_KEYS,
+  type QuizAnswers, type QuizCat, type QuizHavuzUrunu,
 } from "./quiz";
 
 describe("MOTO_CC_RANGES", () => {
@@ -560,5 +561,89 @@ describe("kisiKapasitesi", () => {
     expect(kisiKapasitesi({}, "e-scooter")).toBe(1);
     expect(kisiKapasitesi({}, "e-bisiklet")).toBe(1);
     expect(kisiKapasitesi({}, "otomobil")).toBeNull();
+  });
+});
+
+describe("seçenek sayıları ve ölü uç koruması", () => {
+  const havuz: QuizHavuzUrunu[] = [
+    { c: "motosiklet", a: { moto_type: "naked", transmission: "Manuel", engine_cc: 471, weight_kg: 190, tank_l: 17 } },
+    { c: "motosiklet", a: { moto_type: "scooter", transmission: "Otomatik", engine_cc: 250, weight_kg: 180, tank_l: 12 } },
+    { c: "motosiklet", a: { moto_type: "adventure", transmission: "Yarı Otomatik", engine_cc: 745, weight_kg: 226, tank_l: 14 } },
+    { c: "otomobil", a: { fuel_type: "EV", body_type: "suv" } },
+  ];
+
+  it("quizSonucSayisi yalnız seçili kategoriyi sayar; boş cevap 'fark etmez' sayılır", () => {
+    expect(quizSonucSayisi(havuz, "moto", {})).toBe(3);
+    expect(quizSonucSayisi(havuz, "hepsi", {})).toBe(4);
+    expect(quizSonucSayisi(havuz, "moto", { q4: "naked" })).toBe(1);
+    expect(quizSonucSayisi(havuz, "moto", { q4: "naked", q5: "otomatik" })).toBe(0);
+  });
+
+  it("adimSecenekSayilari: yalnız ÖNCEKİ adımların cevaplarını korur; sonraki cevap sayıyı etkilemez", () => {
+    // 3. adımda (tip) sonraki q5=manuel seçili olsa da scooter 1 araç getirir (çakışan q5 seçimden sonra temizlenir)
+    const t3 = adimSecenekSayilari(havuz, "moto", { q5: "manuel" }, 3);
+    expect(t3.scooter).toBe(1);
+    expect(t3.fark).toBe(3);
+    // önceki adım (q3: cc) sayıyı daraltır
+    const t3cc = adimSecenekSayilari(havuz, "moto", { q3: "kucuk" }, 3);
+    expect(t3cc.scooter).toBe(1); expect(t3cc.naked).toBe(0);
+  });
+
+  it("adimSecenekSayilari: son adımda öncekilerin hepsi uygulanır, her seçeneğin sonucunu verir", () => {
+    const s = adimSecenekSayilari(havuz, "moto", { q4: "naked" }, 4);
+    expect(s).toEqual({ manuel: 1, otomatik: 0, fark: 1 });
+    const t = adimSecenekSayilari(havuz, "moto", {}, 3);
+    expect(t.naked).toBe(1); expect(t.scooter).toBe(1); expect(t.tur).toBe(1); expect(t.sport).toBe(0); expect(t.fark).toBe(3);
+  });
+
+  it("secenekKisitlarMi: kural tablosundaki cevap kısıtlar; 'fark', 'karma' ve sıralama adımı kısıtlamaz", () => {
+    expect(secenekKisitlarMi("moto", 3, "naked")).toBe(true);
+    expect(secenekKisitlarMi("moto", 3, "fark")).toBe(false);
+    expect(secenekKisitlarMi("oto", 1, "karma")).toBe(false);
+    expect(secenekKisitlarMi("oto", 2, "bakim")).toBe(false); // rank
+    expect(secenekKisitlarMi("scooter", 2, "rahat")).toBe(false);
+  });
+
+  it("'fark etmez' hiçbir zaman pasif olmaz: kısıtlamayan seçeneğin sayısı sıfır olsa da seçenek kısıtlayıcı değildir", () => {
+    for (const cat of Object.keys(QUIZ_STEPS) as QuizCat[]) {
+      QUIZ_STEPS[cat].forEach((adim, i) => {
+        for (const opt of adim.opts) {
+          if (["fark", "bilmiyorum", "bir_iki", "karma", "rahat", "minimal"].includes(opt.key)) {
+            expect(secenekKisitlarMi(cat, (i + 1) as 1 | 2 | 3 | 4, opt.key), `${cat} ${i + 1} ${opt.key}`).toBe(false);
+          }
+        }
+      });
+    }
+  });
+
+  it("uyumsuzSonrakiCevaplariTemizle: değişen cevap yüzünden boş sonuç üreten sonraki cevap silinir, uyumlu olan kalır", () => {
+    // q4=naked (1 sonuç) + q5=otomatik → 0 sonuç ⇒ q5 temizlenir
+    expect(uyumsuzSonrakiCevaplariTemizle(havuz, "moto", { q4: "naked", q5: "otomatik" }, 3)).toEqual({ q4: "naked" });
+    // uyumlu: q5=manuel kalır
+    expect(uyumsuzSonrakiCevaplariTemizle(havuz, "moto", { q4: "naked", q5: "manuel" }, 3)).toEqual({ q4: "naked", q5: "manuel" });
+    // 'fark' kısıtlamaz, hiç silinmez
+    expect(uyumsuzSonrakiCevaplariTemizle(havuz, "moto", { q4: "sport", q5: "fark" }, 3)).toEqual({ q4: "sport", q5: "fark" });
+    // değişen adımdan ÖNCEKİ cevaplara dokunmaz
+    expect(uyumsuzSonrakiCevaplariTemizle(havuz, "moto", { q3: "kucuk", q4: "naked", q5: "otomatik" }, 4)).toEqual({ q3: "kucuk", q4: "naked", q5: "otomatik" });
+  });
+
+  it("havuz alanları kuralların okuduğu her alanı içerir (QUIZ_ATTR_KEYS tam)", () => {
+    const okunan = new Set<string>();
+    const izleyici = new Proxy({} as Record<string, unknown>, { get(_h, k) { if (typeof k === "string") okunan.add(k); return undefined; } });
+    for (const cat of Object.keys(QUIZ_STEPS) as QuizCat[]) {
+      for (const slug of ["otomobil", "motosiklet", "e-scooter", "e-bisiklet", "karavan", "kamyonet"]) {
+        QUIZ_STEPS[cat].forEach((adim, i) => {
+          for (const opt of adim.opts) {
+            const a = { cat, q2: "fark", q3: "fark", q4: "fark", q5: "fark", [(["q2", "q3", "q4", "q5"] as const)[i]]: opt.key } as QuizAnswers;
+            quizMatches(a, izleyici, slug);
+          }
+        });
+      }
+    }
+    for (const k of okunan) expect(QUIZ_ATTR_KEYS as readonly string[], `okunan alan havuzda yok: ${k}`).toContain(k);
+  });
+
+  it("quizAlanlariniKirp yalnız bilinen alanları ve boş olmayanları alır", () => {
+    expect(quizAlanlariniKirp({ fuel_type: "EV", gereksiz: 1, body_type: "", seat_count: 5, four_wd: false })).toEqual({ fuel_type: "EV", seat_count: 5, four_wd: false });
   });
 });

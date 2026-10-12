@@ -4,6 +4,7 @@ import { VehicleCard } from "@/components/VehicleCard";
 import { getVehicleImageUrls } from "@/lib/vehicleImages";
 import { NiyetKarti } from "./NiyetKarti";
 import { decodeQuiz, calcQuizScore, quizMatches, CAT_TO_SLUG, type ReviewExtData } from "@/lib/quiz";
+import { getQuizHavuzu } from "@/lib/quizHavuzu";
 import { getVitrin } from "@/lib/vitrin/getVitrin";
 import type { FikapeScores } from "@/lib/fikape";
 
@@ -30,6 +31,8 @@ interface Props {
 
 export async function ProductGrid({ quizParam }: Props) {
   const quizAnswers = quizParam ? decodeQuiz(quizParam) : null;
+  // Niyet kartı seçeneklerinin getireceği araç sayısı için hafif havuz (önbellekli)
+  const quizHavuzu = await getQuizHavuzu();
 
   // Hard category filter: quiz kategorisi bir slug veriyorsa ona indir
   const effectiveCat = quizAnswers ? CAT_TO_SLUG[quizAnswers.cat] : undefined;
@@ -152,6 +155,7 @@ export async function ProductGrid({ quizParam }: Props) {
             preCatSlug={null}
             categoryReviewCount={categoryReviewCount}
             showFeaturedHeading={false}
+            havuz={quizHavuzu}
           />
           <div className="col-span-full text-center py-14 px-4">
             <p className="text-sm font-semibold text-gray-700">
@@ -185,6 +189,7 @@ export async function ProductGrid({ quizParam }: Props) {
           preCatSlug={null}
           categoryReviewCount={categoryReviewCount}
           showFeaturedHeading={!quizAnswers}
+          havuz={quizHavuzu}
         />
 
         {products.map((product) => {

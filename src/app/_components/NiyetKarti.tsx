@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import {
   ALL_CATS, QUIZ_STEPS, CAT_LABELS, CAT_TO_SLUG, SLUG_TO_CAT,
   encodeQuiz, answerAffectsResults,
-  type QuizAnswers, type QuizCat,
+  adimSecenekSayilari, secenekKisitlarMi, uyumsuzSonrakiCevaplariTemizle,
+  type QuizAnswers, type QuizCat, type QuizHavuzUrunu, type QuizKismiCevap,
 } from "@/lib/quiz";
 
 interface Props {
@@ -17,6 +18,8 @@ interface Props {
   // yüzden ProductGrid'te ayrı bir <h2> yerine NiyetKarti'nin kendi open
   // state'ine bağlı olarak burada render edilir.
   showFeaturedHeading?: boolean;
+  // Seçeneklerin kaç araç getireceğini hesaplamak için hafif ürün havuzu (yoksa sayı gösterilmez, hiçbir seçenek pasif olmaz)
+  havuz?: QuizHavuzUrunu[];
 }
 
 // Kartların gri değil, marka renklerinden birine hafif çekilmesi için döngüsel ton
@@ -92,7 +95,7 @@ function resultTrustLine(count: number): string {
   return "FI·KA·PE puanına göre sıralandı";
 }
 
-export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, showFeaturedHeading = false }: Props) {
+export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, showFeaturedHeading = false, havuz }: Props) {
   const router = useRouter();
 
   const [open,        setOpen]        = useState(false);
@@ -200,13 +203,22 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
   const selectAnswer = useCallback((key: string) => {
     const setter = step === 1 ? setSelectedQ2 : step === 2 ? setSelectedQ3 : step === 3 ? setSelectedQ4 : setSelectedQ5;
     setter(key);
+    // Geri dönüp bir cevabı değiştirince, artık boş sonuç üretecek DAHA SONRAKİ cevaplar temizlenir (yeniden sorulur)
+    if (havuz && selectedCat && step >= 1 && step <= 4) {
+      const mevcut: QuizKismiCevap = { q2: selectedQ2 ?? undefined, q3: selectedQ3 ?? undefined, q4: selectedQ4 ?? undefined, q5: selectedQ5 ?? undefined };
+      mevcut[(["q2", "q3", "q4", "q5"] as const)[step - 1]] = key;
+      const temiz = uyumsuzSonrakiCevaplariTemizle(havuz, selectedCat, mevcut, step as 1 | 2 | 3 | 4);
+      if (step < 2 && selectedQ3 && !temiz.q3) setSelectedQ3(null);
+      if (step < 3 && selectedQ4 && !temiz.q4) setSelectedQ4(null);
+      if (step < 4 && selectedQ5 && !temiz.q5) setSelectedQ5(null);
+    }
     clearAdvanceTimer();
     advanceTimer.current = setTimeout(() => {
       if (step === 4) { completeWith(key); return; }
       setDirection("fwd");
       setStep((s) => (s + 1) as 1 | 2 | 3 | 4);
     }, AUTO_ADVANCE_MS);
-  }, [step, clearAdvanceTimer, completeWith]);
+  }, [step, clearAdvanceTimer, completeWith, havuz, selectedCat, selectedQ2, selectedQ3, selectedQ4, selectedQ5]);
 
   const handleClearQuiz = useCallback(() => {
     // Quiz'i kapatmak = ana sayfanın kürasyonlu görünümüne dön. Katalog artık
@@ -214,6 +226,12 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
     // varyantı oraya yönlendiği için "kapat" kullanıcıyı ana sayfadan atıyordu.
     router.push("/");
   }, [router]);
+
+  // Açık quiz: her seçeneğin getireceği araç sayısı (diğer adımların mevcut cevapları korunarak)
+  const secenekSayilari = useMemo(() => {
+    if (!havuz || !selectedCat || step < 1 || step > 4) return null;
+    return adimSecenekSayilari(havuz, selectedCat, { q2: selectedQ2 ?? undefined, q3: selectedQ3 ?? undefined, q4: selectedQ4 ?? undefined, q5: selectedQ5 ?? undefined }, step as 1 | 2 | 3 | 4);
+  }, [havuz, selectedCat, step, selectedQ2, selectedQ3, selectedQ4, selectedQ5]);
 
   // ── Result bar ────────────────────────────────────────
   if (quizAnswers && !open) {
@@ -462,14 +480,21 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
               {stepDef.opts.map((opt, i) => {
                 const current = step === 1 ? selectedQ2 : step === 2 ? selectedQ3 : step === 3 ? selectedQ4 : selectedQ5;
                 const isSel   = current === opt.key;
+                const sayi    = secenekSayilari?.[opt.key];
+                // Sonuç vermeyen kısıtlayıcı seçenek pasif; "Fark etmez" gibi kısıtlamayanlar her zaman seçilebilir (çıkış kapısı)
+                const pasif   = !isSel && sayi === 0 && secenekKisitlarMi(selectedCat!, step as 1 | 2 | 3 | 4, opt.key);
                 return (
                   <button
                     key={opt.key}
                     onClick={() => selectAnswer(opt.key)}
+                    disabled={pasif}
+                    aria-disabled={pasif || undefined}
                     className={`relative flex flex-col items-start p-4 rounded-xl border-[1.5px] transition-all active:scale-95 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-1 ${
                       isSel
                         ? "border-gray-900 bg-white shadow-sm"
-                        : "border-transparent hover:border-gray-200"
+                        : pasif
+                          ? "border-transparent opacity-45 cursor-not-allowed active:scale-100"
+                          : "border-transparent hover:border-gray-200"
                     }`}
                     style={!isSel ? { background: TINTS[i % TINTS.length] } : undefined}
                   >
@@ -478,6 +503,11 @@ export function NiyetKarti({ quizAnswers, preCatSlug, categoryReviewCount = 0, s
                     <span className="text-sm font-bold text-gray-900">{opt.label}</span>
                     {opt.sub && (
                       <span className="text-[10px] text-gray-500 mt-0.5">{opt.sub}</span>
+                    )}
+                    {sayi != null && (
+                      <span className={`text-[10px] font-semibold mt-1 ${pasif ? "text-gray-400" : "text-gray-600"}`}>
+                        {pasif ? "Uyan araç yok" : `${sayi} araç`}
+                      </span>
                     )}
                   </button>
                 );

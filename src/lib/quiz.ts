@@ -784,3 +784,80 @@ export function calcQuizScore(
     isRealMatch: matching.length >= 3,
   };
 }
+
+// ─── Seçenek sayıları ("Araç Bul" ölü uçları) ─────────────────────────
+// Tarayıcıda her seçeneğin kaç araç getireceği hesaplanır; sonuç vermeyen seçenek pasif gösterilir.
+// Havuz, kuralların okuduğu alanlarla sınırlandırılmış küçük bir kopyadır (bkz. quizHavuzu.ts, testte alan listesi doğrulanır).
+
+export interface QuizHavuzUrunu {
+  /** kategori slug'ı */
+  c: string;
+  /** yalnız QUIZ_ATTR_KEYS alanları */
+  a: Record<string, unknown>;
+}
+
+export const QUIZ_ATTR_KEYS = [
+  "fuel_type", "segment", "ev_range_km", "tank_l", "drivetrain", "body_type", "engine_cc", "moto_type", "transmission",
+  "weight_kg", "ground_clearance_mm", "range_km", "charge_hours", "removable_battery", "motor_watt", "max_speed_kmh",
+  "berth", "length_cm", "has_bathroom", "has_shower", "has_kitchen", "karavan_type", "payload_kg", "seat_count",
+  "four_wd", "bike_type", "motor_type",
+] as const;
+
+/** Bir ürünün özelliklerinden yalnız kuralların okuduğu alanları (boş olmayanları) alır. */
+export function quizAlanlariniKirp(attrs: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  for (const k of QUIZ_ATTR_KEYS) if (attrs[k] != null && attrs[k] !== "") out[k] = attrs[k];
+  return out;
+}
+
+export type QuizKismiCevap = Partial<Pick<QuizAnswers, "q2" | "q3" | "q4" | "q5">>;
+
+const tamCevap = (cat: QuizCat, c: QuizKismiCevap): QuizAnswers => ({
+  cat, q2: c.q2 || "fark", q3: c.q3 || "fark", q4: c.q4 || "fark", q5: c.q5 || "fark",
+});
+
+/** Verilen cevapların (boş olanlar "fark etmez" sayılır) getireceği araç sayısı. */
+export function quizSonucSayisi(havuz: QuizHavuzUrunu[], cat: QuizCat, cevaplar: QuizKismiCevap): number {
+  const slug = CAT_TO_SLUG[cat];
+  const a = tamCevap(cat, cevaplar);
+  return havuz.filter((p) => (!slug || p.c === slug) && quizMatches(a, p.a, p.c)).length;
+}
+
+/** Bu seçenek sonucu kısıtlar mı? (kural tablosunda olan cevap; "fark/karma/rahat…" kısıtlamaz, sıralama adımı kısıtlamaz) */
+export function secenekKisitlarMi(cat: QuizCat, adim: 1 | 2 | 3 | 4, key: string): boolean {
+  const kural = STEP_RULES[cat][adim - 1];
+  return !!kural && kural !== "rank" && key in kural;
+}
+
+/**
+ * Bir adımdaki her seçenek için, ÖNCEKİ adımların cevapları korunarak o seçeneğin getireceği araç sayısı.
+ * Daha sonraki adımların cevapları sayıya katılmaz: geri dönüp bir adımı değiştiren kullanıcı, yalnızca sonraki
+ * cevabıyla çakıştığı için seçeneği kaybetmesin; çakışan sonraki cevaplar seçimden sonra temizlenir
+ * (bkz. uyumsuzSonrakiCevaplariTemizle).
+ */
+export function adimSecenekSayilari(
+  havuz: QuizHavuzUrunu[], cat: QuizCat, mevcut: QuizKismiCevap, adim: 1 | 2 | 3 | 4,
+): Record<string, number> {
+  const anahtar = ADIM_ANAHTARI[adim - 1];
+  const onceki: QuizKismiCevap = {};
+  for (let j = 0; j < adim - 1; j++) onceki[ADIM_ANAHTARI[j]] = mevcut[ADIM_ANAHTARI[j]];
+  const out: Record<string, number> = {};
+  for (const opt of QUIZ_STEPS[cat][adim - 1].opts) out[opt.key] = quizSonucSayisi(havuz, cat, { ...onceki, [anahtar]: opt.key });
+  return out;
+}
+
+/**
+ * `adim` adımındaki cevap değiştikten sonra, sonuç vermeyen DAHA SONRAKİ adımların cevaplarını temizler
+ * (ör. geri dönüp 2. soruyu değiştirince eski 4. cevap boş sonuç üretecekse boşaltılır; kullanıcı ona yeniden sorulur).
+ */
+export function uyumsuzSonrakiCevaplariTemizle(
+  havuz: QuizHavuzUrunu[], cat: QuizCat, cevaplar: QuizKismiCevap, adim: 1 | 2 | 3 | 4,
+): QuizKismiCevap {
+  const sonuc: QuizKismiCevap = { ...cevaplar };
+  for (let j = adim + 1; j <= 4; j++) {
+    const anahtar = ADIM_ANAHTARI[j - 1];
+    const deger = sonuc[anahtar];
+    if (deger && secenekKisitlarMi(cat, j as 1 | 2 | 3 | 4, deger) && quizSonucSayisi(havuz, cat, sonuc) === 0) delete sonuc[anahtar];
+  }
+  return sonuc;
+}
