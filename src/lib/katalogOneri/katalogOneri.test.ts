@@ -188,3 +188,27 @@ describe("rapor bölümü", () => {
     expect(renderWeeklyReportText(data)).toContain("<https://www.renault.com.tr/rafale>");
   });
 });
+
+import { aracEkleSema } from "@/lib/katalog/urunDogrula";
+import { kirilimOzellikleri } from "./kirilimlar";
+
+describe("araç ekleme şeması: aday alanları", () => {
+  const temel = { kategori: "kamyonet", marka: "Ford", model: "Ranger", yil: 2026, yakit: "DIESEL", vites: "Otomatik" };
+  it("taslak varsayılan false; kırılım kategoriyle uyuşursa geçer", () => {
+    const r = aracEkleSema.safeParse({ ...temel, kirilim: "pickup", adayId: 5 });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.taslak).toBe(false);
+    expect(aracEkleSema.safeParse({ ...temel, taslak: true }).success).toBe(true);
+  });
+  it("kırılım kategoriyle uyuşmazsa reddedilir", () => {
+    expect(aracEkleSema.safeParse({ ...temel, kirilim: "e-scooter" }).success).toBe(false);
+    expect(aracEkleSema.safeParse({ ...temel, kirilim: "yok" }).success).toBe(false);
+  });
+  it("kırılım türü alanını üretir", () => {
+    expect(kirilimOzellikleri("pickup")).toEqual({ body_type: "pickup" });
+    expect(kirilimOzellikleri("van")).toEqual({ body_type: "van" });
+    expect(kirilimOzellikleri("cekme-karavan")).toEqual({ karavan_type: "cekme" });
+    expect(kirilimOzellikleri("motorlu-karavan")).toEqual({ karavan_type: "motorlu" });
+    expect(kirilimOzellikleri("otomobil")).toEqual({});
+  });
+});

@@ -9,6 +9,7 @@ import { trimParcala } from "@/lib/katalog/ek";
 import { benzerUyarilariGetir } from "@/lib/katalog/benzerSunucu";
 import { aliasCoz, bagSayilari, denetimYaz, urunAdi, type Tx } from "@/lib/katalog/yonetim";
 import { urunSlugTabani, type AracDuzelt, type AracEkle } from "@/lib/katalog/urunDogrula";
+import { kirilimOzellikleri } from "@/lib/katalogOneri/kirilimlar";
 
 /** Route'un HTTP yanıtına çevireceği iş hatası (transaction'ı geri alır). */
 export class IsHatasi extends Error {
@@ -93,7 +94,7 @@ export async function aracEkle(admin: AdminKimlik, g: AracEkle) {
     const cakisan = await tx.product.findUnique({ where: { slug }, select: { slug: true, name: true } });
     if (cakisan) throw new IsHatasi(409, { error: "Bu adreste (slug) bir araç zaten var", mevcut: cakisan });
 
-    const attributes: Record<string, string | number> = {};
+    const attributes: Record<string, string | number> = g.kirilim ? { ...kirilimOzellikleri(g.kirilim) } : {};
     if (g.yakit) attributes.fuel_type = g.yakit;
     if (g.vites) attributes.transmission = g.vites;
     if (g.beygir) attributes.power_hp = g.beygir;
@@ -101,14 +102,22 @@ export async function aracEkle(admin: AdminKimlik, g: AracEkle) {
     const urun = await tx.product.create({
       data: {
         slug, name: urunAdi(bAdi, mAdi, trimName, g.yil), year: g.yil, trimName, attributes,
-        categoryId: kategori.id, brandId: brand.id, modelId: model.id, status: "ACTIVE", isActive: true,
+        categoryId: kategori.id, brandId: brand.id, modelId: model.id, status: "ACTIVE", isActive: !g.taslak,
       },
       include: { brand: { select: { name: true } }, model: { select: { name: true } } },
     });
     await denetimYaz(tx, {
       admin, action: "PRODUCT_CREATE", entityType: "PRODUCT", entityId: urun.id, entityLabel: urun.name,
-      after: ozet(urun), meta: { kategori: g.kategori, yeniMarka, bildirimGonder: g.bildirimGonder },
+      after: ozet(urun),
+      meta: { kategori: g.kategori, yeniMarka, bildirimGonder: g.bildirimGonder && !g.taslak, taslak: g.taslak, adayId: g.adayId ?? null },
     });
+    if (g.adayId) {
+      // Yalnız hâlâ karar bekleyen aday güncellenir (başka yönetici arada reddettiyse dokunulmaz)
+      await tx.newVehicleCandidate.updateMany({
+        where: { id: g.adayId, durum: "ONERILDI" },
+        data: { durum: g.taslak ? "TASLAK" : "EKLENDI", urunId: urun.id, kararTarihi: new Date(), kararVerenId: admin.userId },
+      });
+    }
     return { id: urun.id, slug: urun.slug, name: urun.name };
   }, OPS);
 }

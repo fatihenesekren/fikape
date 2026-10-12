@@ -5,6 +5,7 @@ import { KATEGORILER, VITESLER, YAKITLAR } from "@/lib/katalog/alanlar";
 import { trimAdi } from "@/lib/katalog/secim";
 import { slugify } from "@/lib/slugify";
 import { YAKIT_VITES_KATEGORILERI } from "@/lib/aracKarsilastir";
+import { KIRILIM_ANAHTARLARI, kirilimBul } from "@/lib/katalogOneri/kirilimlar";
 
 const adAlani = (max: number) =>
   z.string()
@@ -30,7 +31,16 @@ export const aracEkleSema = z.object({
   beygir: z.number().int().min(40).max(2000).nullable().optional(),
   benzerlikOnayi: z.boolean().default(false),
   bildirimGonder: z.boolean().default(false),
+  /** Taslak: kayıt pasif (yayında değil) oluşur; veri girildikten sonra "Geri al" ile yayınlanır. */
+  taslak: z.boolean().default(false),
+  /** Aylık aday listesinden ekleniyorsa: aday kaydı aynı işlemde EKLENDI/TASLAK olur. */
+  adayId: z.number().int().positive().optional(),
+  /** Aday kırılımı: pick-up/van/karavan türü alanını otomatik yazar. */
+  kirilim: z.enum(KIRILIM_ANAHTARLARI).optional(),
 }).strict().superRefine((v, ctx) => {
+  if (v.kirilim && kirilimBul(v.kirilim)?.kategori !== v.kategori) {
+    ctx.addIssue({ code: "custom", path: ["kirilim"], message: "Kırılım seçilen kategoriyle uyuşmuyor" });
+  }
   if ((YAKIT_VITES_KATEGORILERI as readonly string[]).includes(v.kategori)) {
     if (!v.yakit) ctx.addIssue({ code: "custom", path: ["yakit"], message: "Yakıt zorunlu" });
     if (!v.vites) ctx.addIssue({ code: "custom", path: ["vites"], message: "Vites zorunlu" });

@@ -113,3 +113,14 @@ export const sorguHazirla = (k: Kirilim, ay: string): string[] => {
   const p = ayParcala(ay);
   return k.sorgular.map((s) => s.replace("{ay}", p.ay).replace("{yil}", String(p.yil)));
 };
+
+/** Kırılımdan eklenen araca yazılan tür alanı (pick-up/van gövde filtreleri, karavan tipi). Diğerleri için boş. */
+export function kirilimOzellikleri(key: KirilimAnahtari): Record<string, string> {
+  switch (key) {
+    case "pickup": return { body_type: "pickup" };
+    case "van": return { body_type: "van" };
+    case "motorlu-karavan": return { karavan_type: "motorlu" };
+    case "cekme-karavan": return { karavan_type: "cekme" };
+    default: return {};
+  }
+}

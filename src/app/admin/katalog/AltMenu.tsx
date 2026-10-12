@@ -3,6 +3,7 @@ import Link from "next/link";
 const SEKMELER = [
   { href: "/admin/katalog", etiket: "Araçlar" },
   { href: "/admin/katalog/yeni", etiket: "Yeni araç" },
+  { href: "/admin/katalog/onerilenler", etiket: "Önerilenler" },
   { href: "/admin/katalog/marka-model", etiket: "Marka / Model" },
   { href: "/admin/katalog/resmi", etiket: "Resmi katalog" },
   { href: "/admin/katalog/denetim", etiket: "Denetim kaydı" },

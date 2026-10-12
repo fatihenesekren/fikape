@@ -15,7 +15,8 @@ export async function POST(req: Request) {
   try {
     const sonuc = await aracEkle(k.admin, girdi.data);
     katalogOnbellekTemizle();
-    if (girdi.data.bildirimGonder) {
+    // Taslak yayında değil: garaj takipçilerine bildirim gitmez (yayınlanınca ayrıca değerlendirilir)
+    if (girdi.data.bildirimGonder && !girdi.data.taslak) {
       // İstek süresini bloklamadan, commit'ten sonra
       after(async () => { await notifyGarageBrandFollowers(sonuc.id); });
     }
