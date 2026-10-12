@@ -13,7 +13,9 @@ import { KIRILIMLAR, sorguHazirla, type Kirilim } from "./kirilimlar";
 import { etiketle, sec, type MevcutBilgi } from "./suzgec";
 
 const INDEX = katalogIndex as unknown as Record<string, KatalogIndex["otomobil"] | undefined>;
-const KIRILIM_ZAMAN_ASIMI_MS = 40_000;
+// Cron üst sınırı 60 sn: 2 dalga × 25 sn. Eşzamanlılık Gemini ücretsiz katman hız sınırı (429) için kısıtlı.
+const KIRILIM_ZAMAN_ASIMI_MS = 25_000;
+const ESZAMANLILIK = 5;
 
 /** Resmî (statik) katalogda marka+model var mı? Nesil aralığı/numarası ayrıntısına duyarsız. */
 export function resmiKataloqdaVar(kategori: string, marka: string, model: string): boolean {
@@ -79,10 +81,19 @@ const zamanAsimi = <T,>(p: Promise<T>, ms: number): Promise<T> =>
 
 /** `ay`: 'YYYY-MM'. Hatalar kırılım bazında toplanır; fonksiyon asla fırlatmaz. */
 export async function aylikOnerileriUret(ay: string, buYil = new Date().getUTCFullYear()): Promise<KirilimSonucu[]> {
-  const sonuclar = await Promise.allSettled(KIRILIMLAR.map((k) => zamanAsimi(kirilimUret(k, ay, buYil), KIRILIM_ZAMAN_ASIMI_MS)));
-  return sonuclar.map((s, i) =>
-    s.status === "fulfilled"
-      ? s.value
-      : { kirilim: KIRILIMLAR[i].key, yeni: 0, var: 0, hata: s.reason instanceof Error ? s.reason.message : "bilinmeyen hata" },
-  );
+  const sonuc: KirilimSonucu[] = new Array(KIRILIMLAR.length);
+  let sira = 0;
+  // Küçük işçi havuzu: her işçi sıradaki kırılımı alır; biri çökerse diğerleri etkilenmez
+  const isci = async () => {
+    for (let i = sira++; i < KIRILIMLAR.length; i = sira++) {
+      const k = KIRILIMLAR[i];
+      try {
+        sonuc[i] = await zamanAsimi(kirilimUret(k, ay, buYil), KIRILIM_ZAMAN_ASIMI_MS);
+      } catch (e) {
+        sonuc[i] = { kirilim: k.key, yeni: 0, var: 0, hata: e instanceof Error ? e.message.slice(0, 200) : "bilinmeyen hata" };
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: ESZAMANLILIK }, isci));
+  return sonuc;
 }

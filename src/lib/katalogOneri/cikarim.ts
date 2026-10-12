@@ -125,7 +125,7 @@ export async function adayCikar(k: Kirilim, kaynaklar: AramaSonucu[]): Promise<A
     ham = await generateGeminiJson(istemHazirla(k, secili));
   } catch (e) {
     if (!/\b(503|429)\b/.test(String(e))) throw e;
-    await new Promise((r) => setTimeout(r, 3000));
+    await new Promise((r) => setTimeout(r, 6000));
     ham = await generateGeminiJson(istemHazirla(k, secili));
   }
   return adaylariDogrula(ham, secili, k);
