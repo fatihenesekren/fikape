@@ -7,6 +7,7 @@ import { MAX_COMPARE_ITEMS, MIN_COMPARE_ITEMS } from "@/lib/compare/constants";
 import { FUEL_LABELS } from "@/lib/fuel";
 import { formatCompareVehicleName } from "@/lib/compare/formatCompareVehicleName";
 import { useSpeechToText } from "@/hooks/useSpeechToText";
+import { urunKategoriEtiketi } from "@/lib/kategoriEtiketi";
 
 interface SearchResult {
   slug: string;
@@ -17,6 +18,7 @@ interface SearchResult {
   trimName: string | null;
   categorySlug: string | null;
   categoryName: string | null;
+  bodyType?: string | null;
   imageUrl: string | null;
   fuelType: string | null;
   transmission: string | null;
@@ -362,7 +364,7 @@ export function ComparePicker({ initial, suggestions = [] }: { initial: Selected
                         {r.brandName} {formatCompareVehicleName(r.modelName, r.trimName).fullLabel}{r.year ? ` ${r.year}` : ""}
                       </div>
                       <div className="flex items-center gap-1.5 text-xs text-gray-400 truncate">
-                        {r.categoryName && <span>{r.categoryName}</span>}
+                        {r.categoryName && <span>{urunKategoriEtiketi(r.categorySlug, r.categoryName, r.bodyType)}</span>}
                         {r.categoryName && meta && <span>·</span>}
                         {meta && <span>{meta}</span>}
                       </div>

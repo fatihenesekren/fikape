@@ -15,6 +15,7 @@ import { ScrollFadeRow } from "@/components/ScrollFadeRow";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 import { ScrollTopLogo } from "./_components/ScrollTopLogo";
 import { decodeQuiz } from "@/lib/quiz";
+import { urunKategoriEtiketi } from "@/lib/kategoriEtiketi";
 
 export const dynamic = "force-dynamic";
 
@@ -128,7 +129,7 @@ export default async function Home({
                   year={p.year}
                   imageUrl={p.imageUrl}
                   categoryIcon={CATEGORY_ICONS[p.category?.slug ?? "otomobil"] ?? "🚗"}
-                  categoryLabel={p.category?.name ?? "Araç"}
+                  categoryLabel={urunKategoriEtiketi(p.category?.slug, p.category?.name, attrs.body_type)}
                   fuelType={attrs.fuel_type ? String(attrs.fuel_type) : null}
                   garageCount={trendGarageCountMap.get(p.id) ?? 0}
                   colorIndex={idx}

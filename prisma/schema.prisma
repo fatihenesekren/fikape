@@ -2293,6 +2293,41 @@ model CatalogSlugAlias {
   @@map("catalog_slug_aliases")
 }
 
+// ─────────────────────────────────────────────
+// YENİ ARAÇ ADAYLARI — aylık rapor + admin "Önerilenler" (migration-yeni-arac-adaylari.sql ile elle uygulanır)
+// FK bilinçli olarak yok: karar geçmişi (reddedildi / eklendi) ürün silinse de kalır.
+// ─────────────────────────────────────────────
+
+model NewVehicleCandidate {
+  id           Int       @id @default(autoincrement())
+  ay           String
+  kirilim      String
+  anahtar      String
+  marka        String
+  model        String
+  versiyon     String?
+  yil          Int?
+  tarihNotu    String?
+  kaynakUrl    String
+  kaynakAdi    String?
+  kaynakKademe String
+  kanit        String?
+  skor         Int       @default(0)
+  katalogdaVar Boolean   @default(false)
+  mevcutUrunId Int?
+  durum        String    @default("ONERILDI")
+  urunId       Int?
+  kararTarihi  DateTime?
+  kararVerenId Int?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now()) @updatedAt
+
+  @@unique([kirilim, anahtar], map: "new_vehicle_candidates_kirilim_anahtar_key")
+  @@index([ay, kirilim], map: "new_vehicle_candidates_ay_idx")
+  @@index([durum], map: "new_vehicle_candidates_durum_idx")
+  @@map("new_vehicle_candidates")
+}
+
 model CatalogOverride {
   id          Int       @id @default(autoincrement())
   kategori    String

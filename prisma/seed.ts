@@ -171,7 +171,7 @@ async function main() {
     where: { slug: "kamyonet" },
     update: { attributeSchema: kamyonetSchema },
     create: {
-      slug: "kamyonet", name: "Kamyonet / Pickup",
+      slug: "kamyonet", name: "Kamyonet",
       parentId: catAraclar.id, sortOrder: 5,
       attributeSchema: kamyonetSchema,
       reviewFormSchema: [
