@@ -59,7 +59,11 @@ function GirisForm() {
     setLoading(false);
 
     if (res?.error) {
-      setError("E-posta veya şifre hatalı.");
+      setError(
+        res.code === "pasif_hesap"
+          ? "Hesabınız uzun süre kullanılmadığı için askıya alındı. \"Şifremi unuttum\" ile e-postanızı doğrulayarak yeniden etkinleştirebilirsiniz; verileriniz silinmedi."
+          : "E-posta veya şifre hatalı.",
+      );
     } else {
       router.push(callbackUrl);
       router.refresh();

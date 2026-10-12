@@ -394,6 +394,38 @@ export async function sendAdminAlertEmail({
   });
 }
 
+// Pasif hesap uyarısı (Üyelik Sözleşmesi md.7): sözleşmesel bildirim — bildirim tercihine tabi DEĞİL.
+export async function sendInactiveWarningEmail({ to, displayName }: { to: string; displayName: string | null }) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const url = `${BASE_URL}/giris`;
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: "Hesabınız 30 gün içinde askıya alınabilir",
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
+        ${LOGO}
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:24px 0 8px">${eh(displayName ?? "Merhaba")}, sizi özledik</h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 16px">
+          fikape hesabınızla yaklaşık 23 aydır giriş yapılmadı. Üyelik Sözleşmesi uyarınca 24 ay boyunca hiç giriş yapılmayan
+          hesaplar askıya alınabilir.
+        </p>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
+          Hesabınızı korumak için <strong>önümüzdeki 30 gün içinde bir kez giriş yapmanız yeterli</strong>.
+          Askıya alınırsa verileriniz silinmez; "Şifremi unuttum" bağlantısıyla e-postanızı doğrulayarak istediğiniz zaman yeniden etkinleştirebilirsiniz.
+        </p>
+        <a href="${url}" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
+          Giriş yap →
+        </a>
+        <p style="color:#aaa;font-size:12px;margin-top:32px;line-height:1.6">
+          Bu bir hizmet bildirimidir. Hesabınızı kullanmayı düşünmüyorsanız herhangi bir işlem yapmanız gerekmez.
+          <br>© ${new Date().getFullYear()} fikape.com
+        </p>
+      </div>
+    `,
+  });
+}
+
 // Kullanıcı kaynaklı değerleri (görünen ad, araç adı, soru metni…) HTML e-postaya koymadan önce kaçışla:
 // aksi halde fikape alan adından giden e-postaya saldırgan HTML/bağlantı enjekte edilebilir.
 function eh(v: unknown): string {

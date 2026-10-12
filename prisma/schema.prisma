@@ -195,6 +195,14 @@ model User {
   // KVKK: hesap silme talebi
   deletionRequestedAt DateTime?
 
+  // Pasif hesap (Üyelik Sözleşmesi md.7 / Kullanım Koşulları md.8: 24 ay giriş yok → askıya alma).
+  // lastActiveAt: giriş + oturum yenilenmesi (en fazla günde 1 yazım, bkz. auth.ts); null ise createdAt esas alınır.
+  // inactiveWarnedAt: 30 gün önceden uyarı e-postası; inactiveSuspendedAt: askıya alınma (giriş engellenir,
+  // şifre sıfırlama ile e-posta doğrulanınca kalkar). Etkinlik görülünce ikisi de sıfırlanır. (migration-pasif-hesap.sql)
+  lastActiveAt        DateTime?
+  inactiveWarnedAt    DateTime?
+  inactiveSuspendedAt DateTime?
+
   // Referral/davet sistemi — parasal olmayan statü rozeti
   referralCode     String @unique
   referredByUserId Int?
@@ -249,6 +257,7 @@ model User {
   expertMessagesSent     ExpertMessage[]             @relation("ExpertMessageSender")
   expertContactFeedback  ExpertContactFeedback[]
 
+  @@index([lastActiveAt])
   @@map("users")
 }
 

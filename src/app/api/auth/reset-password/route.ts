@@ -44,7 +44,7 @@ export async function POST(req: Request) {
   const passwordHash = await bcrypt.hash(password, 12);
   // passwordChangedAt: mevcut oturumlardaki JWT'lerin bu andan itibaren geçersiz
   // sayılması için (bkz. auth.ts jwt callback).
-  await prisma.user.update({ where: { id: user.id }, data: { passwordHash, passwordChangedAt: new Date() } });
+  await prisma.user.update({ where: { id: user.id }, data: { passwordHash, passwordChangedAt: new Date(), lastActiveAt: new Date(), inactiveWarnedAt: null, inactiveSuspendedAt: null } });
 
   return NextResponse.json({ ok: true });
 }

@@ -384,7 +384,7 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
   }));
 
   sections.push(...await guard("Sistem ve güvenlik", errors, async () => {
-    const [failW, failP, okW, okP, alertW, alertP, failedRunW, failedRunP] = await Promise.all([
+    const [failW, failP, okW, okP, alertW, alertP, failedRunW, failedRunP, pasifW, pasifP] = await Promise.all([
       prisma.accessLog.count({ where: { action: "LOGIN_FAILED", createdAt: W } }),
       prisma.accessLog.count({ where: { action: "LOGIN_FAILED", createdAt: P } }),
       prisma.accessLog.count({ where: { action: "LOGIN", createdAt: W } }),
@@ -393,6 +393,8 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
       prisma.reportRun.count({ where: { kind: { startsWith: "alert:" }, startedAt: P } }),
       prisma.reportRun.count({ where: { status: "FAILED", startedAt: W } }),
       prisma.reportRun.count({ where: { status: "FAILED", startedAt: P } }),
+      prisma.user.count({ where: { inactiveSuspendedAt: W } }),
+      prisma.user.count({ where: { inactiveSuspendedAt: P } }),
     ]);
     const failRate = failW + okW ? failW / (failW + okW) : 0;
     const failRateP = failP + okP ? failP / (failP + okP) : 0;
@@ -405,6 +407,7 @@ export async function collectWeeklyReport(win: WeekWindow): Promise<WeeklyReport
         [tt("Başarısız giriş oranı"), ...rd(failRate, failRateP, "down")],
         [tt("Gönderilen sistem uyarısı"), ...dd(alertW, alertP, "down")],
         [tt("Başarısız görev kaydı"), ...dd(failedRunW, failedRunP, "down")],
+        [tt("Pasiflik nedeniyle askıya alınan hesap"), ...dd(pasifW, pasifP, "none")],
       ],
     };
   }));

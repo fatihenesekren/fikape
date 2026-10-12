@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { checkRateLimit, rateLimitByEmail } from "@/lib/rateLimit";
 import { logAccessRaw } from "@/lib/accessLog";
 import { girisHatasiYiginiKontrol } from "@/lib/sistemUyarisi";
+import { PasifHesapAskida } from "@/lib/pasifHesap";
 
 // bcrypt(12) çıktısı biçiminde, hiçbir parolaya karşılık gelmeyen sabit hash (zamanlama eşitleme için).
 const SAHTE_HASH = "$2b$12$CwTycUXWue0Thq9StjUM0uJ8E1q0t0r8mY3rYzQ0x6h8lS9mQ2yQe";
@@ -41,9 +42,13 @@ export async function verifyCredentials(
   }
   // Banlı hesap giriş yapamaz (yorum/soru/öneri/yükleme gibi yazma yolları ban kontrolü yapmıyordu).
   if (user.isBanned) return null;
+  // Pasiflik nedeniyle askıdaki hesap: parola doğru olduğu için (hesap var/yok sızmaz) nedeni söylenir; şifre sıfırlama ile açılır.
+  if (user.inactiveSuspendedAt) throw new PasifHesapAskida();
 
   // 5651 trafik logu — başarılı giriş (bkz. lib/accessLog.ts)
   await logAccessRaw({ action: "LOGIN", userId: user.id, ip, path: "/api/auth/callback/credentials" });
+  // Pasif hesap sayacı: giriş etkinlik sayılır, bekleyen uyarı sıfırlanır (bkz. lib/pasifHesap.ts).
+  await prisma.user.update({ where: { id: user.id }, data: { lastActiveAt: new Date(), inactiveWarnedAt: null } }).catch((e) => console.error("[lastActiveAt]", e));
 
   return {
     id: String(user.id),

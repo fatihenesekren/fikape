@@ -1,8 +1,14 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
 import { getClientIp } from "@/lib/security";
 import { verifyCredentials } from "@/lib/verifyCredentials";
+import { PasifHesapAskida, ETKINLIK_YAZIM_ARALIGI_MS } from "@/lib/pasifHesap";
+
+// İstemci signIn() sonucunda res.code olarak görünür (giris/page.tsx) — pasiflik askısı için özel mesaj.
+class PasifHesapGirisHatasi extends CredentialsSignin {
+  code = "pasif_hesap";
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
@@ -14,7 +20,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials, request) {
         if (!credentials?.email || !credentials?.password) return null;
         const ip = getClientIp(request);
-        return verifyCredentials(credentials.email as string, credentials.password as string, ip);
+        try {
+          return await verifyCredentials(credentials.email as string, credentials.password as string, ip);
+        } catch (e) {
+          if (e instanceof PasifHesapAskida) throw new PasifHesapGirisHatasi();
+          throw e;
+        }
       },
     }),
   ],
@@ -48,15 +59,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (Date.now() - lastChecked > 5 * 60 * 1000) {
           const dbUser = await prisma.user.findUnique({
             where: { id: Number(token.id) },
-            select: { passwordChangedAt: true, isBanned: true },
+            select: { passwordChangedAt: true, isBanned: true, inactiveSuspendedAt: true, lastActiveAt: true },
           });
           // Banlanan kullanıcının açık oturumu en geç 5 dakikada düşer (yorum/soru/öneri/yükleme yazma yolları dahil).
-          if (!dbUser || dbUser.isBanned) return null;
+          if (!dbUser || dbUser.isBanned || dbUser.inactiveSuspendedAt) return null;
           const dbChangedAt = dbUser.passwordChangedAt?.getTime() ?? null;
           if (dbChangedAt !== ((token.pwdChangedAt as number | null | undefined) ?? null)) {
             return null;
           }
           token.pwdCheckedAt = Date.now();
+          // Açık oturum etkinlik sayılır (günde en fazla 1 yazım) — aktif kullanıcı pasif sayılmasın.
+          if (!dbUser.lastActiveAt || Date.now() - dbUser.lastActiveAt.getTime() > ETKINLIK_YAZIM_ARALIGI_MS) {
+            await prisma.user.update({ where: { id: Number(token.id) }, data: { lastActiveAt: new Date(), inactiveWarnedAt: null } }).catch(() => {});
+          }
         }
       }
       if (trigger === "update") {

@@ -121,6 +121,9 @@ export default function GizlilikPage() {
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Aktif hesap verileri: Hesabınız açık olduğu sürece</li>
             <li>Yorumlar ve puanlar: Hesap silme talebinize kadar</li>
+            <li>Pasif hesaplar: 24 ay boyunca hiç giriş yapılmayan hesaplar, 30 gün önceden e-postayla
+            bildirilerek askıya alınabilir; verileriniz silinmez, e-posta doğrulamasıyla (şifre sıfırlama)
+            hesabınızı yeniden etkinleştirebilirsiniz</li>
             <li>Oturum verileri: Son girişten itibaren en fazla 14 gün pasif kalırsa oturum sona erer</li>
             <li>Trafik bilgisi (5651 sayılı Kanun): Kayıt tarihinden itibaren 2 yıl,
             sonrasında otomatik olarak silinir</li>

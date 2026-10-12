@@ -25,6 +25,10 @@
       "schedule": "30 2 * * *"
     },
     {
+      "path": "/api/cron/pasif-hesaplar",
+      "schedule": "0 8 * * 1"
+    },
+    {
       "path": "/api/cron/sistem-denetimi",
       "schedule": "30 6 * * *"
     },
