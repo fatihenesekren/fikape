@@ -103,3 +103,12 @@ export function zodMesaji(e: z.ZodError): string {
 export function urunSlugTabani(marka: string, model: string, trimName: string | null, yil: number | null): string {
   return slugify([marka, model, trimName, yil].filter(Boolean).join("-"));
 }
+
+/**
+ * Yeni ürünün slug'ı: kural olarak ad+yıl tabanının kendisidir (bkz. urunSlugTabani). Vites soneki YALNIZ taban adres zaten
+ * doluysa ve vites verilmişse eklenir (aynı ad/yıl/versiyonda farklı vitesli kayıtları ayırmak için); aksi hâlde taban kalır.
+ * Böylece slug ≠ ad+yıl tabanı sapması (ör. "...-otomatik") yeni kayıtlarda oluşmaz.
+ */
+export function urunSlugu(baz: string, vites: string | null | undefined, bazDolu: boolean): string {
+  return bazDolu && vites ? `${baz}-${slugify(vites)}` : baz;
+}

@@ -8,7 +8,7 @@ import { trimAdi } from "@/lib/katalog/secim";
 import { trimParcala } from "@/lib/katalog/ek";
 import { benzerUyarilariGetir } from "@/lib/katalog/benzerSunucu";
 import { aliasCoz, bagSayilari, denetimYaz, urunAdi, type Tx } from "@/lib/katalog/yonetim";
-import { urunSlugTabani, type AracDuzelt, type AracEkle } from "@/lib/katalog/urunDogrula";
+import { urunSlugTabani, urunSlugu, type AracDuzelt, type AracEkle } from "@/lib/katalog/urunDogrula";
 import { kirilimOzellikleri } from "@/lib/katalogOneri/kirilimlar";
 
 /** Route'un HTTP yanıtına çevireceği iş hatası (transaction'ı geri alır). */
@@ -89,7 +89,8 @@ export async function aracEkle(admin: AdminKimlik, g: AracEkle) {
 
     const baz = urunSlugTabani(bAdi, mAdi, trimName, g.yil);
     if (!baz) throw new IsHatasi(422, { error: "Adlar en az bir harf veya rakam içermeli" });
-    const slug = mevcut.length > 0 && g.vites ? `${baz}-${slugify(g.vites)}` : baz;
+    const bazDolu = !!(await tx.product.findUnique({ where: { slug: baz }, select: { id: true } }));
+    const slug = urunSlugu(baz, g.vites, bazDolu);
     // Sessiz zaman-soneki kopya üretme: çakışmayı açıkça bildir
     const cakisan = await tx.product.findUnique({ where: { slug }, select: { slug: true, name: true } });
     if (cakisan) throw new IsHatasi(409, { error: "Bu adreste (slug) bir araç zaten var", mevcut: cakisan });
