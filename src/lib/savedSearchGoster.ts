@@ -1,5 +1,6 @@
 import { FUEL_LABELS } from "@/lib/fuel";
 import { formatRange } from "@/lib/formatRange";
+import { buildSavedSearchCriteriaKey } from "@/lib/savedSearchCriteria";
 
 // Kayıtlı aramanın kullanıcıya gösterimi: özet satırı (aramanın "adı"), /takas bağlantısı, eşleşme bildirimi metni.
 // Önceden SavedSearchPanel içinde gömülüydü; çubuk, liste sayfası ve bildirim aynı metni üretsin diye ortak, saf (sunucu
@@ -20,6 +21,9 @@ export interface SavedSearchRow {
   kmMax: number | null;
   fuelTypes: string[];
   transmissions: string[];
+  /** Kategori/marka numaraları ("zaten kayıtlı mı" karşılaştırması için; veritabanı satırında zaten var). */
+  categoryId?: number | null;
+  brandId?: number | null;
   createdAt?: string | Date;
 }
 
@@ -62,6 +66,39 @@ export function searchParcalari(s: SavedSearchRow): string[] {
 
 export function searchSummary(s: SavedSearchRow): string {
   return searchParcalari(s).join(" · ");
+}
+
+/** Kaydedilmek istenen arama (formdaki/adresteki filtreler). */
+export interface AramaAdayi {
+  city: string;
+  categoryId: number | null;
+  brandId: number | null;
+  paymentIntent: string | null;
+  yearMin: number | null;
+  yearMax: number | null;
+  kmMin: number | null;
+  kmMax: number | null;
+  fuelTypes: string[];
+  transmissions: string[];
+}
+
+/**
+ * Aday arama zaten kayıtlı mı? Sunucunun tekilleştirmede kullandığı kriter anahtarıyla (buildSavedSearchCriteriaKey) aynı
+ * karşılaştırma: böylece kayıtlı bir aramaya bağlantıyla gelen kullanıcıya "Bu aramayı kaydet" düğmesi gösterilip tıklayınca
+ * "zaten kayıtlı" hatası verilmez; durum önceden bilinir.
+ */
+export function aramaKayitliMi(kayitlilar: SavedSearchRow[], aday: AramaAdayi): boolean {
+  const anahtar = buildSavedSearchCriteriaKey(aday);
+  return kayitlilar.some((s) =>
+    buildSavedSearchCriteriaKey({
+      city: s.city,
+      categoryId: s.categoryId ?? null,
+      brandId: s.brandId ?? null,
+      paymentIntent: s.paymentIntent ?? null,
+      yearMin: s.yearMin, yearMax: s.yearMax, kmMin: s.kmMin, kmMax: s.kmMax,
+      fuelTypes: s.fuelTypes, transmissions: s.transmissions,
+    }) === anahtar,
+  );
 }
 
 /** Bir ilan birden çok aramaya uyabilir: kullanıcı başına TEK bildirim (aynı ilan için üç bildirim yağmasın). */

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
-  searchHref, searchSummary, searchParcalari, kullaniciyaGoreGrupla, savedSearchBildirimMesaji,
-  type SavedSearchRow,
+  searchHref, searchSummary, searchParcalari, kullaniciyaGoreGrupla, savedSearchBildirimMesaji, aramaKayitliMi,
+  type SavedSearchRow, type AramaAdayi,
 } from "./savedSearchGoster";
 
 const temel: SavedSearchRow = {
@@ -72,5 +72,38 @@ describe("savedSearchBildirimMesaji", () => {
     const m = savedSearchBildirimMesaji({ aramalar: [temel, { ...temel, id: 2 }], aracAdi: "Fiat Egea", city: "Ankara" });
     expect(m).toContain("2 kayıtlı aramanıza");
     expect(m).toContain("Fiat Egea · Ankara");
+  });
+});
+
+describe("aramaKayitliMi", () => {
+  const kayitli: SavedSearchRow = {
+    ...temel, city: "Yalova", categoryId: 6, brandId: null, paymentIntent: "SWAP_ONLY",
+    yearMin: 2020, fuelTypes: ["EV"], transmissions: [],
+  };
+  const aday = (ek: Partial<AramaAdayi> = {}): AramaAdayi => ({
+    city: "Yalova", categoryId: 6, brandId: null, paymentIntent: "SWAP_ONLY",
+    yearMin: 2020, yearMax: null, kmMin: null, kmMax: null, fuelTypes: ["EV"], transmissions: [], ...ek,
+  });
+
+  it("aynı kriterler kayıtlı sayılır", () => {
+    expect(aramaKayitliMi([kayitli], aday())).toBe(true);
+  });
+
+  it("bir kriter değişince ya da eklenince yeni arama sayılır", () => {
+    expect(aramaKayitliMi([kayitli], aday({ yearMin: 2021 }))).toBe(false);
+    expect(aramaKayitliMi([kayitli], aday({ brandId: 3 }))).toBe(false);
+    expect(aramaKayitliMi([kayitli], aday({ fuelTypes: [] }))).toBe(false);
+    expect(aramaKayitliMi([kayitli], aday({ city: "Bursa" }))).toBe(false);
+  });
+
+  it("boş liste ya da numarası bilinmeyen satır kayıtlı saymaz", () => {
+    expect(aramaKayitliMi([], aday())).toBe(false);
+    const numarasiz = { ...kayitli, categoryId: undefined };
+    expect(aramaKayitliMi([numarasiz], aday())).toBe(false);
+  });
+
+  it("yakıt sırası önemsiz (kanonik anahtar)", () => {
+    const k = { ...kayitli, fuelTypes: ["EV", "HYBRID"] };
+    expect(aramaKayitliMi([k], aday({ fuelTypes: ["HYBRID", "EV"] }))).toBe(true);
   });
 });

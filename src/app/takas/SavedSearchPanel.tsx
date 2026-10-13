@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { searchHref, searchSummary, type SavedSearchRow } from "@/lib/savedSearchGoster";
+import { aramaKayitliMi, searchHref, searchSummary, type SavedSearchRow } from "@/lib/savedSearchGoster";
 
 // /takas'ta "Bu aramayı kaydet" çubuğu + kayıtlı aramalar listesi.
 //
@@ -69,6 +69,25 @@ export function SavedSearchPanel({
   if (!isLoggedIn && !kaydedilebilirFiltre) return null;
   if (isLoggedIn && !kaydedilebilirFiltre && searches.length === 0) return null;
 
+  // Bu filtreler zaten kayıtlı bir aramayla birebir aynıysa (örn. "Kayıtlı aramalarım"daki bağlantıyla gelinmiş ya da az önce
+  // kaydedilmiş) düğme "kaydet" yerine "kayıtlı" durumunu gösterir; kullanıcı tıklayıp "zaten kayıtlı" hatası görmez. Bir
+  // kriter eklenir/çıkarılırsa yeni bir arama olur ve düğme yeniden kaydedilebilir.
+  const zatenKayitli =
+    isLoggedIn &&
+    Boolean(kullanilanIl) &&
+    aramaKayitliMi(searches, {
+      city: kullanilanIl,
+      categoryId: kategoriId,
+      brandId: markaId,
+      paymentIntent: odemeNiyeti || null,
+      yearMin: yilMin,
+      yearMax: yilMax,
+      kmMin,
+      kmMax,
+      fuelTypes: yakit ? [yakit] : [],
+      transmissions: vites ? [vites] : [],
+    });
+
   async function saveSearch() {
     setError(null);
     setBasari(null);
@@ -132,10 +151,26 @@ export function SavedSearchPanel({
     <section id="kayitli-aramalar" aria-label="Kayıtlı aramalar" className="mb-6 scroll-mt-20 space-y-3">
       {kaydedilebilirFiltre && (
         <div className="rounded-2xl border border-link-line bg-link-soft/60 p-4">
-          <p className="text-sm font-semibold text-link-deep">Bu aramayı kaydedin, yeni ilan çıkınca haber verelim</p>
+          <p className="text-sm font-semibold text-link-deep">
+            {zatenKayitli ? (
+              <>
+                <span aria-hidden="true">✓ </span>Bu arama kayıtlı
+              </>
+            ) : (
+              "Bu aramayı kaydedin, yeni ilan çıkınca haber verelim"
+            )}
+          </p>
           <p className="mt-0.5 text-sm text-gray-700 break-words">{[il, ozet].filter(Boolean).join(" · ") || "Seçtiğiniz filtreler"}</p>
 
-          {isLoggedIn ? (
+          {zatenKayitli ? (
+            <p className="mt-2 text-sm text-gray-700">
+              {/* Kayıttan hemen sonra aşağıdaki "Kaydedildi" mesajı aynı bilgiyi veriyor; cümle tekrarlanmasın. */}
+              {!basari && <>Bu kriterlere uyan yeni bir ilan yayınlandığında bildirim zilinde haber alırsınız. </>}
+              <Link href="/takas-panelim/aramalar" className="font-semibold text-link hover:underline whitespace-nowrap">
+                Aramalarımı yönet →
+              </Link>
+            </p>
+          ) : isLoggedIn ? (
             <div className="mt-3 flex flex-col sm:flex-row sm:items-end gap-3">
               {!il && (
                 <div className="sm:w-56">
@@ -180,14 +215,6 @@ export function SavedSearchPanel({
       {/* Önceden DOM'da olan canlı bölgeler: ekran okuyucu sonucu duyurur. */}
       <div role="status" aria-live="polite" className="text-sm text-gray-700 empty:hidden">
         {basari}
-        {basari && (
-          <>
-            {" "}
-            <Link href="/takas-panelim/aramalar" className="font-semibold text-link hover:underline whitespace-nowrap">
-              Aramalarımı yönet →
-            </Link>
-          </>
-        )}
       </div>
       <div role="alert" className="text-sm text-red-700 empty:hidden">
         {error}
