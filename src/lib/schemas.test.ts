@@ -171,7 +171,15 @@ describe("tradeListingCreateSchema", () => {
     expect(tradeListingCreateSchema.safeParse(valid).success).toBe(true);
   });
 
-  it("geçersiz ili reddeder", () => {
+  it("ters yıl ve km aralığı reddedilir, eşit ve tek uçlu kabul edilir", () => {
+    expect(savedSearchCreateSchema.safeParse({ city: "İstanbul", yearMin: 2022, yearMax: 2018 }).success).toBe(false);
+    expect(savedSearchCreateSchema.safeParse({ city: "İstanbul", kmMin: 90000, kmMax: 10000 }).success).toBe(false);
+    expect(savedSearchCreateSchema.safeParse({ city: "İstanbul", yearMin: 2020, yearMax: 2020 }).success).toBe(true);
+    expect(savedSearchCreateSchema.safeParse({ city: "İstanbul", yearMin: 2020 }).success).toBe(true);
+    expect(savedSearchCreateSchema.safeParse({ city: "İstanbul", yearMin: 2020, yearMax: null }).success).toBe(true);
+  });
+
+  it("bilinmeyen il reddedilir", () => {
     expect(tradeListingCreateSchema.safeParse({ ...valid, city: "Atlantis" }).success).toBe(false);
   });
 

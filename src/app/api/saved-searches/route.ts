@@ -4,6 +4,10 @@ import { prisma } from "@/lib/prisma";
 import { savedSearchCreateSchema, formatZodError } from "@/lib/schemas";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { buildSavedSearchCriteriaKey } from "@/lib/savedSearchCriteria";
+import { Prisma } from "@/generated/prisma/client";
+
+// Kullanıcı başına toplam kayıtlı arama sınırı. Günlük hız limiti (20) tek başına birikimi engellemiyordu.
+const MAX_KAYITLI_ARAMA = 20;
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -20,6 +24,16 @@ export async function POST(req: Request) {
   const brandId = parsed.data.brandId != null ? Number(parsed.data.brandId) : null;
   const fuelTypes = parsed.data.fuelTypes ?? [];
   const transmissions = parsed.data.transmissions ?? [];
+
+  // Toplam sınır hız limitinden ÖNCE: sınırdaki kullanıcı boşuna günlük hakkını da yemesin. Sınırı zaten aşmış
+  // kullanıcıların mevcut aramaları silinmez, yalnız yeni kayıt reddedilir.
+  const mevcut = await prisma.savedSearch.count({ where: { userId } });
+  if (mevcut >= MAX_KAYITLI_ARAMA) {
+    return NextResponse.json(
+      { error: `En fazla ${MAX_KAYITLI_ARAMA} kayıtlı aramanız olabilir; birini silip tekrar deneyiniz.` },
+      { status: 409 },
+    );
+  }
 
   if (!(await checkRateLimit(`saved-search-create:${userId}`, 20, 24 * 60 * 60 * 1000))) {
     return NextResponse.json({ error: "Günlük kayıtlı arama sınırına ulaştınız." }, { status: 429 });
@@ -45,8 +59,13 @@ export async function POST(req: Request) {
       },
     });
     return NextResponse.json({ ok: true, id: saved.id }, { status: 201 });
-  } catch {
-    return NextResponse.json({ error: "Bu arama zaten kayıtlı." }, { status: 409 });
+  } catch (e) {
+    // Önceden HER hata "zaten kayıtlı" diyordu (veritabanı kesintisi dahil). Yalnız benzersizlik çakışması 409.
+    if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
+      return NextResponse.json({ error: "Bu arama zaten kayıtlı." }, { status: 409 });
+    }
+    console.error("[saved-searches]", e);
+    return NextResponse.json({ error: "Arama kaydedilemedi, lütfen tekrar deneyiniz." }, { status: 500 });
   }
 }
 

@@ -295,6 +295,7 @@ export async function collectWeeklyReport(win: WeekWindow, opts: { oneriAy?: str
     const [
       activeNow, closedByReason, threadW, threadP,
       tradedW, tradedP, ratingAgg, dupPairRows, uygunIlansizRows, bekleyenFotoRows,
+      kayitliAramaToplam, aramaEslesmeW,
     ] = await Promise.all([
       prisma.tradeListing.count({ where: { isActive: true } }),
       prisma.tradeListing.groupBy({ by: ["closeReason"], where: { closedAt: W }, _count: { _all: true } }),
@@ -335,6 +336,10 @@ export async function collectWeeklyReport(win: WeekWindow, opts: { oneriAy?: str
       prisma.$queryRaw<{ gun: number | null }[]>`
         SELECT (EXTRACT(EPOCH FROM (now() - MIN(p."createdAt"))) / 86400)::float AS gun
         FROM product_photos p WHERE p.status = 'PENDING' AND p."reviewId" IS NOT NULL`.catch(() => null),
+      // Talep tarafı: kayıtlı arama stoku ve bu hafta eşleşme bildirimi gönderilen sayısı (arama kaydı var ama hiç
+      // bildirim gelmiyorsa pazar yeterince ilan üretmiyor demektir).
+      prisma.savedSearch.count().catch(() => null),
+      prisma.notification.count({ where: { type: "SAVED_SEARCH_MATCH", createdAt: W } }).catch(() => null),
     ]);
     const closedMap = new Map(closedByReason.map((r) => [r.closeReason ?? "—", r._count._all]));
     return {
@@ -347,6 +352,8 @@ export async function collectWeeklyReport(win: WeekWindow, opts: { oneriAy?: str
         [tt("Onay bekleyen en eski yorum fotoğrafı (gün)"), { t: bekleyenFotoRows?.[0]?.gun != null ? Math.floor(bekleyenFotoRows[0].gun).toString() : "—", align: "r" }],
         [tt("Kapandı — takas oldu"), ...dd(tradedW, tradedP)],
         [tt("Kapandı — vazgeçildi/başka yerde"), nn((closedMap.get("GAVE_UP") ?? 0) + (closedMap.get("FOUND_ELSEWHERE") ?? 0))],
+        [tt("Kayıtlı arama (toplam)"), kayitliAramaToplam != null ? nn(kayitliAramaToplam) : { t: "—", align: "r" }],
+        [tt("Kayıtlı arama eşleşme bildirimi"), aramaEslesmeW != null ? nn(aramaEslesmeW) : { t: "—", align: "r" }],
         [tt("Yeni mesaj konusu"), ...dd(threadW, threadP)],
         [tt("Karşılıklı mesajlaşan konu"), ...dd(recipW, recipP)],
         [tt("Yeni değerlendirme"), nn(ratingAgg._count._all)],

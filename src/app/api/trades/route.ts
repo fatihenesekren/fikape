@@ -7,6 +7,8 @@ import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeListingEnabled } from "@/lib/features";
 import { takasUygunlukGetir, takasEngelMesaji } from "@/lib/takasUygunluk";
+import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
+import { kullaniciyaGoreGrupla, savedSearchBildirimMesaji } from "@/lib/savedSearchGoster";
 import { hashRequestContext } from "@/lib/security";
 import { createNotification, notifyAdmins } from "@/lib/notification";
 import { logAccess } from "@/lib/accessLog";
@@ -263,13 +265,20 @@ export async function POST(req: Request) {
             : []),
         ],
       },
-      select: { userId: true },
+      select: {
+        id: true, userId: true, city: true, paymentIntent: true,
+        yearMin: true, yearMax: true, kmMin: true, kmMax: true, fuelTypes: true, transmissions: true,
+        category: { select: { name: true, slug: true } },
+        brand: { select: { name: true, slug: true } },
+      },
     });
-    for (const s of matchingSearches) {
+    // Aynı ilan birden çok aramaya uyabilir: kullanıcı başına TEK bildirim, hangi aramaya uyduğunu söyler.
+    const aracAdi = stripGenRangeAnywhere(`${userProduct.product.brand.name} ${userProduct.product.model.name}`);
+    for (const [uid, aramalar] of kullaniciyaGoreGrupla(matchingSearches)) {
       createNotification({
-        userId: s.userId,
+        userId: uid,
         type: "SAVED_SEARCH_MATCH",
-        message: `${city} ilinde kayıtlı aramanızla eşleşen yeni bir takas ilanı var`,
+        message: savedSearchBildirimMesaji({ aramalar, aracAdi, city }),
         link: `/takas/${listing.id}`,
       }).catch(() => {});
     }

@@ -358,7 +358,16 @@ export const savedSearchCreateSchema = z.object({
   kmMax:          z.number().int().min(0).max(2_000_000).optional().nullable(),
   fuelTypes:      z.array(z.enum(["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"])).max(6).optional(),
   transmissions:  z.array(z.string().max(20)).max(4).optional(),
-});
+})
+  // Ters aralık (başlangıç > bitiş) önceden sessizce kaydediliyor ve hiçbir ilanla eşleşmiyordu.
+  .refine((d) => d.yearMin == null || d.yearMax == null || d.yearMin <= d.yearMax, {
+    message: "Başlangıç yılı bitiş yılından büyük olamaz.",
+    path: ["yearMin"],
+  })
+  .refine((d) => d.kmMin == null || d.kmMax == null || d.kmMin <= d.kmMax, {
+    message: "En az km, en çok km değerinden büyük olamaz.",
+    path: ["kmMin"],
+  });
 
 export const messageReportSchema = z.object({
   reason: z.enum(["SPAM", "SCAM_ATTEMPT", "OFFENSIVE", "OTHER"], { error: "Geçersiz rapor sebebi." }),

@@ -8,6 +8,7 @@ import { getTakasFiltreSecenekleri } from "@/lib/takasFiltre";
 import { TradeCard } from "./TradeCard";
 import { TakasFilterForm } from "./TakasFilterForm";
 import { SavedSearchPanel } from "./SavedSearchPanel";
+import { searchParcalari } from "@/lib/savedSearchGoster";
 import { matchesWant, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
 import type { LocationScope, TradeFuelType } from "@/lib/tradeExpectations";
 import type { DamageStatus } from "@/lib/damageStatus";
@@ -223,6 +224,17 @@ export default async function TakasPage({
         vites={vites}
         initialSearches={savedSearches}
         baslangicAcik={params.aramalar === "1"}
+        ozet={searchParcalari({
+          id: 0, city: il,
+          category: selectedCategory ? { name: selectedCategory.name, slug: selectedCategory.slug } : null,
+          brand: selectedBrand ? { name: selectedBrand.name, slug: selectedBrand.slug } : null,
+          paymentIntent: params.odeme || null,
+          yearMin: yilMin ?? null, yearMax: yilMax ?? null, kmMin: kmMin ?? null, kmMax: kmMax ?? null,
+          fuelTypes: yakit ? [yakit] : [], transmissions: vites ? [vites] : [],
+        }).slice(1).join(" · ")}
+        uygunIlanSayisi={total}
+        cities={TURKISH_CITIES}
+        girisHref={`/giris?callbackUrl=${encodeURIComponent(pageHref(1))}`}
       />
 
       {listings.length === 0 ? (
@@ -241,7 +253,7 @@ export default async function TakasPage({
               </p>
               <p className="text-xs text-gray-500">
                 {isLoggedIn
-                  ? "Yukarıdaki kayıtlı aramayla bu kriterlere uyan ilan açıldığında haber alabilirsiniz."
+                  ? "Yukarıdaki \"Bu aramayı kaydet\" düğmesiyle bu kriterlere uyan ilan açıldığında haber alabilirsiniz."
                   : "Giriş yaparak bu kriterler için kayıtlı arama oluşturabilir, ilan açıldığında haber alabilirsiniz."}
               </p>
               <Link
