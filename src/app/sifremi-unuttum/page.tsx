@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export default function SifremiUnuttumPage() {
@@ -8,6 +8,12 @@ export default function SifremiUnuttumPage() {
   const [error, setError]     = useState("");
   const [loading, setLoading] = useState(false);
   const [sent, setSent]       = useState(false);
+  const sonucRef = useRef<HTMLDivElement>(null);
+
+  // Form kaybolup sonuç kartı gelince odak <body>'ye düşmesin; kart okunur ve klavye kullanıcısı yerini bilir.
+  useEffect(() => {
+    if (sent) sonucRef.current?.focus();
+  }, [sent]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -43,16 +49,46 @@ export default function SifremiUnuttumPage() {
             <span className="text-gray-300 font-light">·</span>
             <span className="text-pe">pe</span>
           </Link>
-          <h1 className="text-xl font-bold text-gray-900">Şifreni mi unuttun?</h1>
-          <p className="text-sm text-gray-500 mt-1">E-posta adresini gir, sana şifre sıfırlama linki gönderelim</p>
+          <h1 className="text-xl font-bold text-gray-900">Şifrenizi mi unuttunuz?</h1>
+          <p className="text-sm text-gray-600 mt-1">E-posta adresinizi girin, size şifre sıfırlama linki gönderelim</p>
         </div>
 
         {sent ? (
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 text-center space-y-2">
-            <p className="text-sm text-gray-700 font-medium">E-postanı kontrol et</p>
-            <p className="text-sm text-gray-500">
-              <strong>{email}</strong> adresine bir şifre sıfırlama linki gönderdik. Link 24 saat geçerlidir.
-            </p>
+          <div
+            ref={sonucRef}
+            tabIndex={-1}
+            role="status"
+            className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-4 focus:outline-none"
+          >
+            <div className="flex flex-col items-center text-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-link-soft text-link-deep" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2.5" />
+                  <path d="M3.5 7.5l8.5 6 8.5-6" />
+                </svg>
+              </span>
+              <h2 className="text-lg font-bold text-gray-900">E-postanızı kontrol edin</h2>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Bu adres bir hesaba kayıtlıysa şifre sıfırlama linki gönderildi. Link 24 saat geçerlidir.
+              </p>
+              <p className="max-w-full break-all rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-900">{email}</p>
+            </div>
+
+            <div className="rounded-xl border border-link-line bg-link-soft/60 px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              <p className="font-semibold text-link-deep">E-posta gelmediyse</p>
+              <ul className="mt-1 list-disc space-y-0.5 pl-5">
+                <li>Birkaç dakika bekleyin ve istenmeyen (spam) klasörüne bakın.</li>
+                <li>Adresi doğru yazdığınızdan emin olun.</li>
+              </ul>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => { setSent(false); setError(""); }}
+              className="w-full min-h-11 rounded-xl border border-gray-300 bg-white text-sm font-semibold text-gray-800 hover:bg-gray-50 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link"
+            >
+              Adresi değiştir
+            </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-4">
@@ -63,7 +99,7 @@ export default function SifremiUnuttumPage() {
             )}
 
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-gray-500 tracking-wide">
+              <label className="text-xs font-semibold text-gray-600 tracking-wide">
                 E-posta
               </label>
               <input
@@ -95,8 +131,8 @@ export default function SifremiUnuttumPage() {
           </form>
         )}
 
-        <p className="text-center text-sm text-gray-500 mt-4">
-          Şifreni hatırladın mı?{" "}
+        <p className="text-center text-sm text-gray-600 mt-4">
+          Şifrenizi hatırladınız mı?{" "}
           <Link href="/giris" className="font-semibold text-gray-900 hover:underline">
             Giriş yap
           </Link>
