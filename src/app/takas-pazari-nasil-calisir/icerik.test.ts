@@ -25,9 +25,14 @@ describe("Takas bilgi sayfası metinleri", () => {
   });
 
   it("silme süresi cron davranışıyla uyumlu (6 ay, hasar notu ve tramer kapsam dışı)", () => {
-    const m = icerik.TAKAS_GORUNUR.join(" ");
+    const m = icerik.TAKAS_KAPANIS_METNI;
     expect(m).toMatch(/6 ay/);
-    expect(m).toMatch(/Hasar notları ve tramer kayıtları/);
+    expect(m).toMatch(/Hasar notları ve tramer/);
+  });
+
+  it("güven/ikna çağrışımı ve resmi emir kipi yok", () => {
+    expect(icerik.TAKAS_NEDEN_METNI).not.toMatch(/inandırıcı|güven/i);
+    for (const m of icerik.TAKAS_GUVENLIK) expect(m).not.toMatch(/(yınız|iniz|ınız).*.$/);
   });
 
   it("SSS metinleri düz metin (JSON-LD için HTML yok)", () => {

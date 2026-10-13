@@ -60,7 +60,7 @@ export function TakasSartKarti({
           ))}
         </ul>
         <p className="mt-2 text-xs text-gray-600">
-          Yorumunuzdaki fotoğraf, ilan sayfasında aracınızı daha inandırıcı gösterir ve karşı tarafın size güvenmesini kolaylaştırır.
+          Yorumunuza eklediğiniz fotoğraf, ilan sayfasında aracınızı karşı tarafa gösterir; takas edeceği aracı görebilmesi gerekir.
         </p>
       </details>
     </div>

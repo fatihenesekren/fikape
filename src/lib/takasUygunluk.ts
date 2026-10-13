@@ -92,7 +92,7 @@ export function takasSonrakiAdim(u: TakasUygunluk, productSlug: string): TakasSo
     case "YORUM_YOK":
       return {
         baslik,
-        metin: "Bu araç için fotoğraflı bir yorum yazın. Yorumunuzdaki fotoğraf, ilan sayfasında aracınızı daha inandırıcı gösterir.",
+        metin: "Bu araç için fotoğraflı bir yorum yazın. Yorumunuza eklediğiniz fotoğraf, ilan sayfasında aracınızı karşı tarafa gösterir.",
         buton: { etiket: "Fotoğraflı yorum yazın", href: `/yorum-yaz?arac=${productSlug}&takas=1` },
       };
     case "YORUM_INCELEMEDE":
