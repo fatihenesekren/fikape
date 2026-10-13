@@ -124,6 +124,7 @@ export function TradeToggleCard({
   takasAcik,
   sart,
   baslangicAcik = false,
+  cerceveSiz = false,
 }: {
   userProductId: number;
   canOpenTrade: boolean;
@@ -133,6 +134,11 @@ export function TradeToggleCard({
   sart: { adimlar: { kod: TakasAdimKodu; tamam: boolean }[]; sonraki: TakasSonrakiAdim };
   /** Aktif ilanın özeti (Düzenle/Yenile/Kapat) açık başlasın — Takas Panelim'de ilan işlemleri doğrudan görünsün; Garajım'da kapalı kalır. */
   baslangicAcik?: boolean;
+  /**
+   * Kartın dış mavi/gri çerçevesini kaldırır (üstte ince ayraç çizgisi kalır). Takas Panelim'de araç kartı zaten kendi
+   * çerçevesinin içinde olduğundan "kart içinde kart" oluşmasın diye; Garajım varsayılanı (false) eski görünümü korur.
+   */
+  cerceveSiz?: boolean;
   categories: { id: number; name: string }[];
   brands: { id: number; name: string }[];
   categoryBrandMap: Record<number, number[]>;
@@ -204,6 +210,7 @@ export function TradeToggleCard({
   // tıklanınca genişleyen bir çip (bkz. InsuranceLeadCard'daki aynı desen,
   // kullanıcı geri bildirimi: kart görsel olarak çok yoğun/gürültülüydü).
   const [summaryOpen, setSummaryOpen] = useState(baslangicAcik);
+  const cerceve = (orijinal: string, ek = "") => (cerceveSiz ? `mt-3 border-t border-gray-100 pt-3 ${ek}`.trim() : orijinal);
 
   // Özellik kapalıyken (TAKASA_AC_ILAN_ENABLED) tüm ilan işlemleri API'de 503 döner —
   // formu açtırıp hata göstermek yerine baştan söyleriz.
@@ -245,7 +252,7 @@ export function TradeToggleCard({
   // Kapalı bir ilan varsa: yeniden aç seçeneği sun.
   if (existingListing && !existingListing.isActive) {
     return (
-      <div className="mt-3 border border-gray-100 bg-gray-50 rounded-xl p-3 overflow-hidden">
+      <div className={cerceve("mt-3 border border-gray-100 bg-gray-50 rounded-xl p-3 overflow-hidden", "overflow-hidden")}>
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <p className="text-xs text-gray-500 whitespace-nowrap">Takas ilanınız kapalı.</p>
           <button
@@ -358,7 +365,7 @@ export function TradeToggleCard({
   if (existingListing) {
     if (editOpen) {
       return (
-        <div className="mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 space-y-2.5 overflow-hidden">
+        <div className={cerceve("mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 space-y-2.5 overflow-hidden", "space-y-2.5 overflow-hidden")}>
           <div className="flex items-center justify-between">
             <p className="text-xs font-bold text-link-deep">İlanı Düzenle</p>
             <button onClick={() => setEditOpen(false)} aria-label="Kapat" className="text-link-muted hover:text-link text-xs">✕</button>
@@ -430,7 +437,7 @@ export function TradeToggleCard({
     }
 
     return (
-      <div className="mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 overflow-hidden">
+      <div className={cerceve("mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 overflow-hidden", "overflow-hidden")}>
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <p className="text-sm font-bold text-link-deep whitespace-nowrap"><span aria-hidden="true">✓ </span>Takasa açık</p>
           <div className="flex items-center flex-wrap gap-x-4 gap-y-1">
@@ -551,7 +558,7 @@ export function TradeToggleCard({
   }
 
   return (
-    <div className="mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 space-y-2.5">
+    <div className={cerceve("mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 space-y-2.5", "space-y-2.5")}>
       <div className="flex items-center justify-between">
         <p className="text-xs font-bold text-link-deep">Takasa Aç</p>
         <button onClick={() => setFormOpen(false)} aria-label="Kapat" className="text-link-muted hover:text-link text-xs">✕</button>
