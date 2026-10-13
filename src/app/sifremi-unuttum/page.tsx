@@ -35,7 +35,7 @@ export default function SifremiUnuttumPage() {
     <div className="min-h-[calc(100vh-56px)] flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-sm">
 
-        <div className="text-center mb-8">
+        <div className="text-center mb-5">
           <Link href="/" className="inline-flex items-center gap-0.5 text-2xl font-black tracking-tight select-none mb-4">
             <span className="text-fi">fi</span>
             <span className="text-gray-300 font-light">·</span>
@@ -48,14 +48,14 @@ export default function SifremiUnuttumPage() {
         </div>
 
         {sent ? (
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center space-y-2">
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 text-center space-y-2">
             <p className="text-sm text-gray-700 font-medium">E-postanı kontrol et</p>
             <p className="text-sm text-gray-500">
               <strong>{email}</strong> adresine bir şifre sıfırlama linki gönderdik. Link 24 saat geçerlidir.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
+          <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-4">
             {error && (
               <div className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-2.5">
                 {error}
@@ -90,7 +90,7 @@ export default function SifremiUnuttumPage() {
               className="w-full py-2.5 rounded-xl text-sm font-semibold text-white transition-colors disabled:opacity-60"
               style={{ background: "var(--fi)" }}
             >
-              {loading ? "Gönderiliyor..." : "Sıfırlama linki gönder"}
+              {loading ? "Gönderiliyor..." : "Link gönder"}
             </button>
           </form>
         )}
