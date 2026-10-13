@@ -180,6 +180,14 @@ export function SavedSearchPanel({
       {/* Önceden DOM'da olan canlı bölgeler: ekran okuyucu sonucu duyurur. */}
       <div role="status" aria-live="polite" className="text-sm text-gray-700 empty:hidden">
         {basari}
+        {basari && (
+          <>
+            {" "}
+            <Link href="/takas-panelim/aramalar" className="font-semibold text-link hover:underline whitespace-nowrap">
+              Aramalarımı yönet →
+            </Link>
+          </>
+        )}
       </div>
       <div role="alert" className="text-sm text-red-700 empty:hidden">
         {error}
