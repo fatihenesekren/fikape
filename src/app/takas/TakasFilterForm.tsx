@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Link from "next/link";
 import { VoiceMicButton } from "@/components/VoiceMicButton";
 
 const PAYMENT_OPTIONS = [
@@ -67,10 +66,6 @@ export function TakasFilterForm({
   // döndüğünde ne uygulandığını görsün), yoksa kapalı başlıyor.
   const activeDetailedFields = [il, kategoriSlug, markaSlug, odemeNiyeti, yilMin, yilMax, kmMin, kmMax, yakit, vites].filter(Boolean);
   const hasDetailedFilters = activeDetailedFields.length > 0;
-  // Filtreleri temizleme — önceden hiç yoktu, kullanıcı bir filtre uyguladıktan
-  // sonra geri dönmenin tek yolu URL'yi elle temizlemekti (bkz. kullanıcı geri
-  // bildirimi, ekran görüntüsü).
-  const hasActiveFilters = hasDetailedFilters || !!q;
   // Görsel gruplandırma — önceden 8 alan tek kalabalık grid'de karışıyordu,
   // hangisinin ne için olduğu ayırt edilemiyordu (bkz. 5 uzman ajan
   // değerlendirmesi). Aktif olan alan hafif accent kenarlıkla vurgulanıyor.
@@ -78,7 +73,7 @@ export function TakasFilterForm({
     `text-sm rounded-lg border px-2.5 py-1.5 ${active ? "border-link-line bg-link-soft/40" : "border-gray-200"}`;
 
   return (
-    <form ref={formRef} method="get" className="mb-8">
+    <form ref={formRef} method="get">
       <div className="mb-2">
         <label htmlFor="takas-q" className="block text-xs font-bold text-gray-500 mb-1">
           🔍 Hızlı Arama
@@ -220,24 +215,6 @@ export function TakasFilterForm({
           </button>
         </div>
       </details>
-
-      {/* "1 filtre aktif" rozetinin hemen altında, sağa hizalı — bağlamsal
-          yakınlık (aktif filtre → temizleme aksiyonu burada) korunuyor, ama
-          <summary>'nin native tıklama davranışıyla çakışmasın diye onun
-          İÇİNE değil, DIŞINA/ALTINA konuluyor (bkz. 3 uzman ajan
-          değerlendirmesi — mobil kullanılabilirlik çekincesi). Renk kırmızı
-          değil nötr gri+✕ — "temizle" bir hata/tehlike değil, gereksiz alarm
-          vermesin (bkz. görsel hiyerarşi uzmanı çekincesi). */}
-      {hasActiveFilters && (
-        <div className="flex justify-end mt-1.5">
-          <Link
-            href="/takas"
-            className="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-800"
-          >
-            <span aria-hidden="true">✕</span> Filtreleri Temizle
-          </Link>
-        </div>
-      )}
     </form>
   );
 }

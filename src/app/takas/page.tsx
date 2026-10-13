@@ -8,7 +8,8 @@ import { getTakasFiltreSecenekleri } from "@/lib/takasFiltre";
 import { TradeCard } from "./TradeCard";
 import { TakasFilterForm } from "./TakasFilterForm";
 import { SavedSearchPanel } from "./SavedSearchPanel";
-import { searchParcalari } from "@/lib/savedSearchGoster";
+import { searchParcalari, aramaKayitliMi } from "@/lib/savedSearchGoster";
+import { takasFiltreVarMi, takasIndekslenebilirMi, bosDurumMetni } from "@/lib/takasFiltreKarari";
 import { matchesWant, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
 import type { LocationScope, TradeFuelType } from "@/lib/tradeExpectations";
 import type { DamageStatus } from "@/lib/damageStatus";
@@ -36,8 +37,6 @@ interface TakasSearchParams {
   il?: string; kategori?: string; marka?: string; odeme?: string; sayfa?: string;
   yilMin?: string; yilMax?: string; kmMin?: string; kmMax?: string;
   yakit?: string; vites?: string; q?: string;
-  /** Takas Panelim'den gelinince kayıtlı aramalar listesi açık başlar (?aramalar=1). */
-  aramalar?: string;
 }
 
 export async function generateMetadata({
@@ -46,10 +45,9 @@ export async function generateMetadata({
   searchParams: Promise<TakasSearchParams>;
 }): Promise<Metadata> {
   const params = await searchParams;
-  const isFiltered = Object.values(params).some(Boolean);
   return {
     title: "Araç Takas İlanları",
-    robots: isFiltered ? { index: false, follow: true } : undefined,
+    robots: !takasIndekslenebilirMi(params) ? { index: false, follow: true } : undefined,
     alternates: { canonical: "/takas" },
   };
 }
@@ -71,10 +69,7 @@ export default async function TakasPage({
   const vites = params.vites ?? "";
   const q = (params.q ?? "").trim();
   // Filtre uygulanmış mı (sayfa numarası hariç) — boş sonuç "pazar boş" mu "filtre dar" mı ayrımı için.
-  const filtreVar = Boolean(
-    il || params.kategori || params.marka || params.odeme || params.yilMin || params.yilMax ||
-    params.kmMin || params.kmMax || yakit || vites || q,
-  );
+  const filtreVar = takasFiltreVarMi(params);
 
   // İl seçilmemişse artık tüm Türkiye'deki ilanlar gösteriliyor (önceden boş sayfa gösterip
   // platformun envanterini hiç göstermiyordu — bkz. denetim raporu).
@@ -174,20 +169,40 @@ export default async function TakasPage({
       }).catch(() => [])
     : [];
 
+  const aramaParcalari = searchParcalari({
+    id: 0, city: il,
+    category: selectedCategory ? { name: selectedCategory.name, slug: selectedCategory.slug } : null,
+    brand: selectedBrand ? { name: selectedBrand.name, slug: selectedBrand.slug } : null,
+    paymentIntent: params.odeme || null,
+    yearMin: yilMin ?? null, yearMax: yilMax ?? null, kmMin: kmMin ?? null, kmMax: kmMax ?? null,
+    fuelTypes: yakit ? [yakit] : [], transmissions: vites ? [vites] : [],
+  });
+  // İl seçilmemişse searchParcalari ilk parça olarak boş il döndürür; çipte görünmesin.
+  const cipler = il ? aramaParcalari : aramaParcalari.slice(1);
+  const kaydedilebilirFiltre = Boolean(il || params.kategori || params.marka || params.odeme || yilMin != null || yilMax != null || kmMin != null || kmMax != null || yakit || vites);
+  const zatenKayitli =
+    isLoggedIn && Boolean(il) &&
+    aramaKayitliMi(savedSearches, {
+      city: il, categoryId: selectedCategory?.id ?? null, brandId: selectedBrand?.id ?? null,
+      paymentIntent: params.odeme || null, yearMin: yilMin ?? null, yearMax: yilMax ?? null, kmMin: kmMin ?? null, kmMax: kmMax ?? null,
+      fuelTypes: yakit ? [yakit] : [], transmissions: vites ? [vites] : [],
+    });
+  const bosDurum = bosDurumMetni({ il, isLoggedIn, kaydedilebilirFiltre, zatenKayitli });
+
   return (
-    <div className="max-w-3xl w-full mx-auto px-4 py-10">
+    <div className="max-w-3xl w-full mx-auto px-4 py-10 flex flex-col gap-4">
       {/* Geri/Ana Sayfa dönüşü — önceden hiç yoktu, sayfaya nasıl gelindiyse
           (header logosu hariç) geri dönmenin bir yolu yoktu (bkz. kullanıcı
           geri bildirimi). araçlar/[slug]'daki "← Tüm araçlar" ile aynı
           yerleşim/stil (bkz. site geneli patern). */}
       <Link
         href="/"
-        className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-600 mb-4 transition-colors"
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-600 transition-colors self-start"
       >
         ← Ana Sayfa
       </Link>
 
-      <div className="mb-6">
+      <div>
         <h1 className="text-2xl font-black text-gray-900">Araç Takas İlanları</h1>
         <p className="text-sm text-gray-500 mt-1">Aracını takasa açan kullanıcıları keşfet.</p>
       </div>
@@ -211,6 +226,7 @@ export default async function TakasPage({
       />
 
       <SavedSearchPanel
+        key={pageHref(1)}
         isLoggedIn={isLoggedIn}
         il={il}
         kategoriId={selectedCategory?.id ?? null}
@@ -222,17 +238,9 @@ export default async function TakasPage({
         kmMax={kmMax ?? null}
         yakit={yakit}
         vites={vites}
+        q={q}
         initialSearches={savedSearches}
-        baslangicAcik={params.aramalar === "1"}
-        ozet={searchParcalari({
-          id: 0, city: il,
-          category: selectedCategory ? { name: selectedCategory.name, slug: selectedCategory.slug } : null,
-          brand: selectedBrand ? { name: selectedBrand.name, slug: selectedBrand.slug } : null,
-          paymentIntent: params.odeme || null,
-          yearMin: yilMin ?? null, yearMax: yilMax ?? null, kmMin: kmMin ?? null, kmMax: kmMax ?? null,
-          fuelTypes: yakit ? [yakit] : [], transmissions: vites ? [vites] : [],
-        }).slice(1).join(" · ")}
-        uygunIlanSayisi={total}
+        cipler={cipler}
         cities={TURKISH_CITIES}
         girisHref={`/giris?callbackUrl=${encodeURIComponent(pageHref(1))}`}
       />
@@ -248,20 +256,9 @@ export default async function TakasPage({
             </>
           ) : filtreVar ? (
             <>
-              <p className="text-sm text-gray-600">
-                {il ? `${il} ilinde bu filtrelere uyan ilan yok.` : "Bu filtrelere uyan ilan yok."}
-              </p>
-              <p className="text-xs text-gray-500">
-                {isLoggedIn
-                  ? "Yukarıdaki \"Bu aramayı kaydet\" düğmesiyle bu kriterlere uyan ilan açıldığında haber alabilirsiniz."
-                  : "Giriş yaparak bu kriterler için kayıtlı arama oluşturabilir, ilan açıldığında haber alabilirsiniz."}
-              </p>
-              <Link
-                href="/takas"
-                className="inline-flex items-center justify-center min-h-11 px-4 rounded-xl text-sm font-semibold text-link border-2 border-link-line hover:bg-link-soft/60 transition-colors"
-              >
-                Filtreleri temizle
-              </Link>
+              <p className="text-sm text-gray-800">{bosDurum.baslik}</p>
+              <p className="text-sm text-gray-600">{bosDurum.ipucu}</p>
+              {bosDurum.kayitCumlesi && <p className="text-sm text-gray-600">{bosDurum.kayitCumlesi}</p>}
             </>
           ) : (
             <>
@@ -319,7 +316,7 @@ export default async function TakasPage({
       )}
 
       {totalPages > 1 && (
-        <div className="flex items-center justify-between mt-6 text-sm">
+        <div className="flex items-center justify-between text-sm">
           {page > 1 ? (
             <Link href={pageHref(page - 1)} className="font-semibold text-link hover:underline">
               ← Önceki
