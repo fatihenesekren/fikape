@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { isTradeListingEnabled } from "@/lib/features";
 import { TakasBandiKart } from "./TakasBandiKart";
 
-// Ana sayfa "Takas Pazarı" bandı — Usta Görüşü bandının (UstaBandi) hemen üstünde; page.tsx'te
+// Ana sayfa "Takas Pazarı" bandı — Usta Görüşü bandının (UstaBandi) hemen ALTINDA; page.tsx'te
 // `!quizParam` koşuluyla sarılır (quiz modunda görünmez). Özellik kapalıyken hiç görünmez
 // (tıklanınca çalışmayan bir akışa götürmesin).
 //

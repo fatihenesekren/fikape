@@ -144,16 +144,16 @@ export default async function Home({
       {/* ── Son yorumlar (quiz modunda değilken) ── */}
       {!quizParam && <RecentReviews />}
 
-      {/* ── Takas Pazarı bandı (quiz modunda değilken) ── Usta bandının hemen üstünde;
-          üyeyi Takas Panelim'e, misafiri tanıtım sayfasına götürür, özellik kapalıyken
-          görünmez (bkz. _components/TakasBandi.tsx). */}
-      {!quizParam && <TakasBandi />}
-
       {/* ── Usta Görüşü bandı (quiz modunda değilken — kullanıcı kararı) ──
           Aktif ustaya farklı içerikle (kendi paneline link) gösterilir,
           artık hiç kimseye null dönmüyor — üst boşluk bileşenin KENDİ
           İÇİNDE (UstaBandi.tsx), burada sarmalayıcı div yok. */}
       {!quizParam && <UstaBandi />}
+
+      {/* ── Takas Pazarı bandı (quiz modunda değilken) ── Usta bandının hemen ALTINDA
+          (kullanıcı kararı); garajında aracı olan üyeyi Takas Panelim'e, diğerlerini tanıtım
+          sayfasına götürür, özellik kapalıyken görünmez (bkz. _components/TakasBandi.tsx). */}
+      {!quizParam && <TakasBandi />}
 
       {/* ── Araç kartları — quiz yoksa kürasyonlu "öne çıkanlar" (~12, model
              başına tek), quiz varsa quiz-skorlu sonuçlar. Tüm katalog /araclar'da. ── */}
