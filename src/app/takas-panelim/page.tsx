@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { isTradeListingEnabled } from "@/lib/features";
-import { panelAnaButon } from "@/lib/takasUygunluk";
+import { panelSiradakiIs } from "@/lib/takasUygunluk";
 import { takasPanelKapisi } from "@/lib/takasPanelKapisi";
 import { SwapIcon, SearchLoupeIcon, ClipboardIcon, MessageIcon } from "@/components/icons";
 
@@ -38,7 +38,8 @@ export default async function TakasPanelimPage() {
     })
     .catch(() => 0);
 
-  const buton = panelAnaButon({ ozellikAcik: acik, okunmamis, araclar });
+  const siradaki = panelSiradakiIs({ ozellikAcik: acik, okunmamis, araclar });
+  const buton = siradaki?.buton ?? null;
   const yayindaki = araclar.filter((a) => a.aktifIlanId != null).length;
   const aracVar = araclar.length > 0;
 
@@ -57,9 +58,10 @@ export default async function TakasPanelimPage() {
         <p className="text-sm text-gray-600 mt-1">İlanlarınızı, mesajlarınızı ve kayıtlı aramalarınızı yönetebilirsiniz.</p>
       </div>
 
-      {/* Birincil eylem — şu an yapılacak tek iş */}
+      {/* Birincil eylem — YALNIZCA bir kısayol kartıyla çakışmayan gerçek bir eylem varken siyah buton; aksi halde aynı yerde
+          tek satırlık durum cümlesi (buton ile kutucuk aynı adrese gitmesin, bilgi sayaçta tekrarlanmasın). */}
       {acik ? (
-        buton && (
+        buton ? (
           <div className="mb-8">
             <Link
               href={buton.href}
@@ -71,6 +73,12 @@ export default async function TakasPanelimPage() {
             </Link>
             {buton.altYazi && <p className="text-sm text-gray-600 mt-2">{buton.altYazi}</p>}
           </div>
+        ) : (
+          siradaki?.metin && (
+            <p className="mb-8 text-sm text-gray-700 leading-relaxed bg-white border border-gray-100 rounded-2xl px-5 py-4">
+              {siradaki.metin}
+            </p>
+          )
         )
       ) : (
         <p className="mb-8 text-sm text-gray-700 bg-gray-50 border border-gray-100 rounded-2xl p-5">

@@ -4,7 +4,7 @@ import {
   takasSonrakiAdim,
   takasEngelMesaji,
   enIlerideArac,
-  panelAnaButon,
+  panelSiradakiIs,
   type TakasAracUygunlugu,
   type TakasUygunlukGirdisi,
   type TakasDurum,
@@ -161,67 +161,80 @@ describe("enIlerideArac", () => {
   });
 });
 
-describe("panelAnaButon", () => {
+describe("panelSiradakiIs", () => {
   const arac = (id: number, durum: TakasDurum, aktifIlanId: number | null = null, slug = `arac-${id}`): TakasAracUygunlugu => ({
     userProductId: id,
     uygunluk: { uygun: durum === "UYGUN", durum, adimlar: [], tamamlanan: 1, toplam: 3, duzenlenecekYorumId: 5 },
     productSlug: slug, productName: `Araç ${id}`, aktifIlanId, km: null, categorySlug: "otomobil",
   });
   const g = (araclar: TakasAracUygunlugu[], extra: Partial<{ ozellikAcik: boolean; okunmamis: number }> = {}) =>
-    panelAnaButon({ ozellikAcik: true, okunmamis: 0, araclar, ...extra });
+    panelSiradakiIs({ ozellikAcik: true, okunmamis: 0, araclar, ...extra });
 
-  it("özellik kapalıysa buton yok", () => {
+  it("özellik kapalıysa null", () => {
     expect(g([arac(1, "UYGUN")], { ozellikAcik: false })).toBeNull();
   });
 
-  it("okunmamış mesaj her şeyden önce gelir", () => {
-    const b = g([arac(1, "UYGUN")], { okunmamis: 3 });
-    expect(b?.etiket).toBe("Mesajlarınızı Okuyun");
-    expect(b?.href).toBe("/mesajlar");
-    expect(b?.altYazi).toContain("3");
+  it("okunmamış mesaj: buton yok, cümle var (Takas Mesajlarım kutucuğuyla çakışmaz)", () => {
+    const r = g([arac(1, "UYGUN")], { okunmamis: 3 });
+    expect(r?.buton).toBeNull();
+    expect(r?.metin).toContain("3");
   });
 
-  it("takasa hazır araç: ilanlarım'daki o araca", () => {
-    const b = g([arac(7, "UYGUN")]);
-    expect(b?.etiket).toBe("Aracınızı Takasa Açın");
-    expect(b?.href).toBe("/takas-panelim/ilanlarim#arac-7");
+  it("takasa hazır araç: ilanlarım'daki o araca buton", () => {
+    const r = g([arac(7, "UYGUN")]);
+    expect(r?.buton?.etiket).toBe("Aracınızı Takasa Açın");
+    expect(r?.buton?.href).toBe("/takas-panelim/ilanlarim#arac-7");
+    expect(r?.metin).toBeNull();
   });
 
   it("hazır araç, şartı eksik araçtan ve yayındaki ilandan önce gelir", () => {
-    const b = g([arac(1, "YORUM_YOK", null), arac(2, "UYGUN", null), arac(3, "UYGUN", 99)]);
-    expect(b?.href).toBe("/takas-panelim/ilanlarim#arac-2");
+    const r = g([arac(1, "YORUM_YOK", null), arac(2, "UYGUN", null), arac(3, "UYGUN", 99)]);
+    expect(r?.buton?.href).toBe("/takas-panelim/ilanlarim#arac-2");
   });
 
   it("şartı eksik araç: sıradaki adımın butonu", () => {
-    const b = g([arac(4, "YORUM_YOK", null, "toyota-corolla")]);
-    expect(b?.etiket).toBe("Fotoğraflı yorum yazın");
-    expect(b?.href).toBe("/yorum-yaz?arac=toyota-corolla&takas=1");
+    const r = g([arac(4, "YORUM_YOK", null, "toyota-corolla")]);
+    expect(r?.buton?.etiket).toBe("Fotoğraflı yorum yazın");
+    expect(r?.buton?.href).toBe("/yorum-yaz?arac=toyota-corolla&takas=1");
   });
 
-  it("incelemedeki araç: butonsuz adımda 'Durumu Görün'", () => {
-    const b = g([arac(4, "FOTO_INCELEMEDE", null)]);
-    expect(b?.etiket).toBe("Durumu Görün");
-    expect(b?.href).toBe("/takas-panelim/ilanlarim#arac-4");
+  it("incelemedeki araç: buton yok, durum cümlesi (İlanlarım kutucuğuyla çakışan 'Durumu Görün' butonu kalktı)", () => {
+    const r = g([arac(4, "FOTO_INCELEMEDE", null)]);
+    expect(r?.buton).toBeNull();
+    expect(r?.metin).toContain("inceleniyor");
   });
 
-  it("yalnız yayındaki ilan: İlanlarınızı Yönetin", () => {
-    expect(g([arac(1, "UYGUN", 10)])?.etiket).toBe("İlanlarınızı Yönetin");
-    expect(g([arac(1, "UYGUN", 10)])?.altYazi).toBe("İlanınız yayında.");
-    expect(g([arac(1, "UYGUN", 10), arac(2, "UYGUN", 11)])?.altYazi).toBe("2 ilanınız yayında.");
+  it("yalnız yayındaki ilan: buton yok, cümle var; sayaçtaki bilgiyi sayıyla tekrarlamaz", () => {
+    const tek = g([arac(1, "UYGUN", 10)]);
+    expect(tek?.buton).toBeNull();
+    expect(tek?.metin).toContain("İlanınız yayında.");
+    expect(tek?.metin).toContain("mesaj");
+    expect(g([arac(1, "UYGUN", 10), arac(2, "UYGUN", 11)])?.metin).toContain("2 ilanınız yayında.");
   });
 
-  it("araç yoksa Takas Pazarına göz atın", () => {
-    const b = g([]);
-    expect(b?.etiket).toBe("Takas Pazarına Göz Atın");
-    expect(b?.href).toBe("/takas");
-    expect(b?.altYazi).toBeNull();
+  it("araç yoksa Takas Pazarına göz atın butonu", () => {
+    const r = g([]);
+    expect(r?.buton?.etiket).toBe("Takas Pazarına Göz Atın");
+    expect(r?.buton?.href).toBe("/takas");
+    expect(r?.buton?.altYazi).toBeNull();
   });
 
-  it("buton ve alt yazı metinlerinde iç terim/yasak ifade yok", () => {
+  it("hiçbir durumda buton hedefi bir kısayol kartının hedefiyle birebir aynı değil", () => {
+    // Kısayol hedefleri (sayfadaki sabit kartlar): ilanlarım, mesajlar, aramalar, pazar (yalnız araç varken).
+    const kisayollar = ["/takas-panelim/ilanlarim", "/mesajlar", "/takas-panelim/aramalar", "/takas"];
+    const durumlar = [
+      g([arac(1, "UYGUN")]), g([arac(1, "YORUM_YOK")]), g([arac(1, "FOTO_INCELEMEDE")]), g([arac(1, "UYGUN", 3)]),
+      g([arac(1, "UYGUN")], { okunmamis: 2 }),
+    ];
+    for (const r of durumlar) if (r?.buton) expect(kisayollar).not.toContain(r.buton.href);
+    // Araçsız üyede Takas Pazarı kartı yok; buton /takas olabilir.
+  });
+
+  it("metinlerde iç terim/yasak ifade yok", () => {
     const yasak = /(CURRENT|APPROVED|PUBLISHED|trustLevel|ücretsiz|garanti)/i;
     for (const araclar of [[], [arac(1, "UYGUN")], [arac(1, "YORUM_YOK")], [arac(1, "FOTO_INCELEMEDE")], [arac(1, "UYGUN", 3)]]) {
-      const b = g(araclar);
-      expect(`${b?.etiket} ${b?.altYazi ?? ""}`).not.toMatch(yasak);
+      const r = g(araclar);
+      expect(`${r?.buton?.etiket ?? ""} ${r?.buton?.altYazi ?? ""} ${r?.metin ?? ""}`).not.toMatch(yasak);
     }
   });
 });

@@ -222,42 +222,58 @@ export async function takasUygunlukGetir(userId: number, userProductId: number):
   return k ? kayittanUygunluk(k) : null;
 }
 
-// ── Takas Panelim: tek siyah buton ──────────────────────────────────────────────────────────────
-// Panelin tek birincil eylemi "şu an yapılacak tek iş" olmalı. Öncelik: okunmamış mesaj > takasa hazır araç > şartı eksik
-// araç (sıradaki adım) > yayındaki ilanı yönet > Takas Pazarına göz at. Özellik kapalıysa buton yoktur (null).
-// `araclar` garajdakiler ve hedefe yakınlığa göre sıralı olmalı (takasPanelKapisi böyle verir).
+// ── Takas Panelim: sıradaki iş ──────────────────────────────────────────────────────────────────
+// Panelin siyah butonu YALNIZCA başka hiçbir yerden tek tıkla yapılamayan gerçek bir eylem varken çıkar; buton hedefi bir
+// kısayol kartıyla aynı olmamalı (Usta Panelim'de de buton hiçbir kutucukla çakışmaz). Eylem yoksa (mesaj okumak, yayındaki
+// ilan, inceleme bekleme) aynı yerde tek satırlık durum cümlesi gösterilir; ilgili kısayol kartı zaten sabit durur.
+// Öncelik: okunmamış mesaj (cümle) > takasa hazır araç (buton) > şartı eksik araç (adımın butonu ya da inceleme cümlesi) >
+// yayındaki ilan (cümle) > araç yoksa Takas Pazarına göz at (buton; araçsızda o kısayol kartı yok).
+// Özellik kapalıysa null (sayfa kendi uyarısını gösterir). `araclar` garajdakiler ve hedefe yakınlığa göre sıralı olmalı.
 export interface PanelButon {
   etiket: string; // arayüzde sonuna "→" eklenir
   href: string;
   altYazi: string | null;
 }
 
-export function panelAnaButon(g: { ozellikAcik: boolean; okunmamis: number; araclar: TakasAracUygunlugu[] }): PanelButon | null {
+export interface PanelSiradakiIs {
+  buton: PanelButon | null;
+  /** Buton yoksa butonun yerinde gösterilen tek satırlık durum cümlesi. */
+  metin: string | null;
+}
+
+const MESAJ_BILGISI = "Yeni bir mesaj geldiğinde burada ve bildirimlerinizde görürsünüz.";
+
+export function panelSiradakiIs(g: { ozellikAcik: boolean; okunmamis: number; araclar: TakasAracUygunlugu[] }): PanelSiradakiIs | null {
   if (!g.ozellikAcik) return null;
-  const ilanlarim = (arac?: TakasAracUygunlugu) => `/takas-panelim/ilanlarim${arac ? `#arac-${arac.userProductId}` : ""}`;
   const adi = (a: TakasAracUygunlugu) => stripGenRangeAnywhere(a.productName);
 
   if (g.okunmamis > 0) {
-    return { etiket: "Mesajlarınızı Okuyun", href: "/mesajlar", altYazi: `${g.okunmamis} okunmamış takas mesajınız var.` };
+    return { buton: null, metin: `${g.okunmamis} okunmamış takas mesajınız var.` };
   }
 
   const hazir = g.araclar.find((a) => a.aktifIlanId == null && a.uygunluk.uygun);
   if (hazir) {
-    return { etiket: "Aracınızı Takasa Açın", href: ilanlarim(hazir), altYazi: `${adi(hazir)}: gerekli adımlar tamamlandı.` };
+    return {
+      buton: { etiket: "Aracınızı Takasa Açın", href: `/takas-panelim/ilanlarim#arac-${hazir.userProductId}`, altYazi: `${adi(hazir)}: gerekli adımlar tamamlandı.` },
+      metin: null,
+    };
   }
 
   const eksik = g.araclar.find((a) => a.aktifIlanId == null && !a.uygunluk.uygun);
   if (eksik) {
     const sonraki = takasSonrakiAdim(eksik.uygunluk, eksik.productSlug);
     return sonraki.buton
-      ? { etiket: sonraki.buton.etiket, href: sonraki.buton.href, altYazi: `${adi(eksik)}: ${sonraki.baslik}` }
-      : { etiket: "Durumu Görün", href: ilanlarim(eksik), altYazi: `${adi(eksik)}: ${sonraki.baslik}` };
+      ? { buton: { etiket: sonraki.buton.etiket, href: sonraki.buton.href, altYazi: `${adi(eksik)}: ${sonraki.baslik}` }, metin: null }
+      : { buton: null, metin: `${adi(eksik)}: ${sonraki.metin}` };
   }
 
   const yayinda = g.araclar.filter((a) => a.aktifIlanId != null).length;
   if (yayinda > 0) {
-    return { etiket: "İlanlarınızı Yönetin", href: ilanlarim(), altYazi: yayinda === 1 ? "İlanınız yayında." : `${yayinda} ilanınız yayında.` };
+    return { buton: null, metin: `${yayinda === 1 ? "İlanınız yayında." : `${yayinda} ilanınız yayında.`} ${MESAJ_BILGISI}` };
   }
 
-  return { etiket: "Takas Pazarına Göz Atın", href: "/takas", altYazi: null };
+  if (g.araclar.length === 0) {
+    return { buton: { etiket: "Takas Pazarına Göz Atın", href: "/takas", altYazi: null }, metin: null };
+  }
+  return { buton: null, metin: "Garajınızdaki araçlar şu an takasa uygun değil." };
 }
