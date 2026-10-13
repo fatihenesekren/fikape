@@ -484,6 +484,10 @@ model Review {
 
   // Ürün başına yayınlanmış yorum sayımı/listesi — migration-indeks-mevcut-mu.sql ile elle uygulanır
   @@index([productId, status], map: "reviews_product_status_idx")
+  // Takasa açma uygunluğu (lib/takasUygunluk.ts) kullanıcı / araç bazında filtreler —
+  // prisma/migrations/add_takas_uygunluk_indeksleri.sql ile elle uygulanır
+  @@index([userId, status], map: "reviews_user_status_idx")
+  @@index([userProductId, status], map: "reviews_user_product_status_idx")
   @@map("reviews")
 }
 
@@ -947,6 +951,8 @@ model ProductPhoto {
 
   contentReports ContentReport[]
 
+  // "Yorumda onaylı fotoğraf var mı" (takas uygunluğu) — add_takas_uygunluk_indeksleri.sql
+  @@index([reviewId, status], map: "product_photos_review_status_idx")
   @@map("product_photos")
 }
 
@@ -1225,6 +1231,8 @@ model TradeListing {
   @@index([userProductId, isActive])
   @@index([city, isActive])
   @@index([userId])
+  // /takas listesi: aktif ilanlar, en yeni önce — add_takas_uygunluk_indeksleri.sql
+  @@index([isActive, effectiveDate], map: "trade_listings_active_effective_idx")
   @@map("trade_listings")
 }
 

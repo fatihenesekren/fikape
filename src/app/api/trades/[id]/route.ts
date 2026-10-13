@@ -5,7 +5,10 @@ import { prisma } from "@/lib/prisma";
 import { tradeListingUpdateSchema, formatZodError } from "@/lib/schemas";
 import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
+import { Prisma } from "@/generated/prisma/client";
 import { isTradeListingEnabled } from "@/lib/features";
+import { checkRateLimit } from "@/lib/rateLimit";
+import { takasUygunlukGetir, takasEngelMesaji } from "@/lib/takasUygunluk";
 import { CAR_PARTS } from "@/lib/carParts";
 import { notifyAdmins } from "@/lib/notification";
 import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate, deleteTradePhotoBlobs } from "@/lib/tradeListingPhotos";
@@ -40,6 +43,7 @@ export async function PATCH(
     where: { id: listingId },
     select: {
       id: true, userId: true, userProductId: true, isActive: true, effectiveDate: true, marketPriceEstimatedAt: true,
+      anonymizedAt: true, closeReason: true,
       product: { select: { year: true, trimName: true, brand: { select: { name: true } }, model: { select: { name: true } } } },
     },
   });
@@ -75,6 +79,39 @@ export async function PATCH(
     if (listing.isActive) {
       return NextResponse.json({ error: "İlan zaten aktif." }, { status: 409 });
     }
+    // Yeniden açma da yeni ilan açmayla AYNI şartlara tabi (önceden hiçbir kontrol
+    // yoktu: satılmış araçtaki, banlı kullanıcıdaki ya da yorumu kaldırılmış ilan
+    // da tek istekle yeniden açılabiliyordu).
+    if (listing.anonymizedAt) {
+      return NextResponse.json(
+        { error: "Bu ilan arşivlendiği için yeniden açılamıyor, aracınız için yeni bir ilan oluşturabilirsiniz." },
+        { status: 409 },
+      );
+    }
+    const kullanici = await prisma.user.findUnique({ where: { id: userId }, select: { isBanned: true } });
+    if (!kullanici || kullanici.isBanned) {
+      return NextResponse.json({ error: "Bu işlemi gerçekleştiremezsiniz." }, { status: 403 });
+    }
+    // Yönetici kapatmaları (rapor sonucu, ban) kapatma nedeni yazmıyor; ilan nedensiz
+    // kapanmış ve incelenmiş bir raporu varsa sahibi yeniden açamaz.
+    if (listing.closeReason === null) {
+      const incelenenRapor = await prisma.tradeListingReport.count({
+        where: { tradeListingId: listingId, status: "REVIEWED" },
+      });
+      if (incelenenRapor > 0) {
+        return NextResponse.json(
+          { error: "Bu ilan inceleme sonucunda kapatıldığı için yeniden açılamıyor. Ayrıntı için bizimle iletişime geçebilirsiniz." },
+          { status: 403 },
+        );
+      }
+    }
+    const uygunluk = await takasUygunlukGetir(userId, listing.userProductId);
+    if (!uygunluk?.uygun) {
+      return NextResponse.json({ error: uygunluk ? takasEngelMesaji(uygunluk) : "Bu araç garajınızda değil." }, { status: 403 });
+    }
+    if (!(await checkRateLimit(`trade-reopen:${userId}`, 10, 24 * 60 * 60 * 1000))) {
+      return NextResponse.json({ error: "Bugün çok sayıda yeniden açma denediniz, yarın tekrar deneyiniz." }, { status: 429 });
+    }
     const existingActive = await prisma.tradeListing.findFirst({
       where: { userProductId: listing.userProductId, isActive: true },
       select: { id: true },
@@ -84,10 +121,19 @@ export async function PATCH(
     }
     // Yeniden açılan ilan da fiilen yeni bir ilan gibi listeye dönüyor —
     // effectiveDate now()'a çekilir (createdAt yine dokunulmaz).
-    await prisma.tradeListing.update({
-      where: { id: listingId },
-      data: { isActive: true, closedAt: null, closeReason: null, effectiveDate: new Date() },
-    });
+    try {
+      await prisma.tradeListing.update({
+        where: { id: listingId },
+        data: { isActive: true, closedAt: null, closeReason: null, effectiveDate: new Date() },
+      });
+    } catch (e) {
+      // Kontrol ile güncelleme arasında aynı araca başka bir ilan açıldıysa kısmi benzersiz
+      // indeks (trade_listings_active_user_product_key) çakışır — opak 500 yerine 409.
+      if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
+        return NextResponse.json({ error: "Bu araç için zaten aktif bir takas ilanınız var." }, { status: 409 });
+      }
+      throw e;
+    }
 
     // Fiyat tahmini yalnız 30 günden eskiyse (ya da hiç hesaplanmamışsa) tekrar
     // yapılır — response'u bekletmeden, ilan oluşturmadaki aynı arka plan deseni.

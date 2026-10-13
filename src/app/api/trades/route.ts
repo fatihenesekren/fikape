@@ -6,6 +6,7 @@ import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { isTradeListingEnabled } from "@/lib/features";
+import { takasUygunlukGetir, takasEngelMesaji } from "@/lib/takasUygunluk";
 import { hashRequestContext } from "@/lib/security";
 import { createNotification, notifyAdmins } from "@/lib/notification";
 import { logAccess } from "@/lib/accessLog";
@@ -98,16 +99,11 @@ export async function POST(req: Request) {
   }
 
   // trustLevel genel/kullanıcı-bazlı olduğu için (başka bir araç için yükselmiş olabilir),
-  // bu ARACA özgü fotoğraflı+onaylı bir yorum var mı diye kontrol edilir.
-  const verifiedReview = await prisma.review.findFirst({
-    where: { userProductId, status: "PUBLISHED", photos: { some: { status: "APPROVED" } } },
-    select: { id: true },
-  });
-  if (!verifiedReview) {
-    return NextResponse.json(
-      { error: "Takasa açmak için bu aracın fotoğraflı, onaylanmış bir yorumu olması gerekiyor." },
-      { status: 403 }
-    );
+  // bu ARACA özgü fotoğraflı+onaylı bir yorum var mı diye kontrol edilir. Kural tek
+  // yerde (lib/takasUygunluk.ts): Garajım ve yeniden açma da aynısını kullanır.
+  const uygunluk = await takasUygunlukGetir(userId, userProductId);
+  if (!uygunluk?.uygun) {
+    return NextResponse.json({ error: uygunluk ? takasEngelMesaji(uygunluk) : "Bu araç garajınızda değil." }, { status: 403 });
   }
 
   const existing = await prisma.tradeListing.findFirst({

@@ -12,6 +12,8 @@ import {
   TRADE_FUEL_TYPES, TRANSMISSION_OPTIONS, type TradeFuelType,
 } from "@/lib/tradeExpectations";
 import { FUEL_LABELS } from "@/lib/fuel";
+import type { TakasAdimKodu, TakasSonrakiAdim } from "@/lib/takasUygunluk";
+import { TakasSartKarti } from "./TakasSartKarti";
 import { PartConditionForm } from "./PartConditionForm";
 import { DamageStatusForm, EMPTY_DAMAGE_STATUS, type DamageStatusValue } from "./DamageStatusForm";
 import { PhotoUploader } from "@/components/review/PhotoUploader";
@@ -118,9 +120,15 @@ export function TradeToggleCard({
   currentUsageAmount,
   productSlug,
   categorySlug,
+  takasAcik,
+  sart,
 }: {
   userProductId: number;
   canOpenTrade: boolean;
+  /** TAKASA_AC_ILAN_ENABLED — sunucuda okunup geçirilir (istemci env'e erişemez). */
+  takasAcik: boolean;
+  /** Şart durumu: yeni ilan açma/yeniden açma için sıradaki adım (lib/takasUygunluk.ts). */
+  sart: { adimlar: { kod: TakasAdimKodu; tamam: boolean }[]; sonraki: TakasSonrakiAdim };
   categories: { id: number; name: string }[];
   brands: { id: number; name: string }[];
   categoryBrandMap: Record<number, number[]>;
@@ -193,12 +201,21 @@ export function TradeToggleCard({
   // kullanıcı geri bildirimi: kart görsel olarak çok yoğun/gürültülüydü).
   const [summaryOpen, setSummaryOpen] = useState(false);
 
-  if (!canOpenTrade) {
+  // Özellik kapalıyken (TAKASA_AC_ILAN_ENABLED) tüm ilan işlemleri API'de 503 döner —
+  // formu açtırıp hata göstermek yerine baştan söyleriz.
+  if (!takasAcik) {
     return (
-      <p className="mt-3 text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">
-        Bu aracı takasa açmak için fotoğraflı, onaylanmış bir yorumunuz olması gerekiyor.
+      <p className="mt-3 text-xs text-gray-600 bg-gray-50 rounded-lg px-3 py-2">
+        Takas Pazarı şu anda geçici olarak kullanılamıyor.
       </p>
     );
+  }
+
+  // Şart yoksa YENİ ilan açılamaz (ve kapalı ilan yeniden açılamaz): sıradaki adımı gösteririz.
+  // Aktif ilanı olan kullanıcı ise (yorumu sonradan silinmiş ya da fotoğrafı kaldırılmış olsa
+  // bile) ilanını görmeye/düzenlemeye/kapatmaya devam eder — önceden bu kart tümüyle gizleniyordu.
+  if (!canOpenTrade && !existingListing?.isActive) {
+    return <TakasSartKarti adimlar={sart.adimlar} sonraki={sart.sonraki} />;
   }
 
   async function reopenListing() {
@@ -428,6 +445,11 @@ export function TradeToggleCard({
           </div>
         </div>
         {renewMessage && <p className="mt-1.5 text-[11px] text-link">{renewMessage}</p>}
+        {!canOpenTrade && (
+          <p className="mt-1.5 text-[11px] text-gray-600">
+            İlanınız yayında kalıyor. Yeni ilan vermek için aracınızın yorumunda fotoğraf şartının yeniden sağlanması gerekiyor.
+          </p>
+        )}
         {/* Native <select>, flex satırında varsayılan min-width:auto yüzünden
             küçülmüyor ve taşıyordu (bkz. kullanıcı geri bildirimi, ekran
             görüntüsü) — min-w-0+flex-1 ile küçülebilir yapıldı, mobilde

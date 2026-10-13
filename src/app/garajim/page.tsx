@@ -12,6 +12,10 @@ import { formatSoldReasons } from "@/lib/soldReasons";
 import { GarageAnimation } from "./GarageAnimation";
 import { InsuranceLeadCard } from "./InsuranceLeadCard";
 import { TradeToggleCard } from "./TradeToggleCard";
+import { isTradeListingEnabled } from "@/lib/features";
+import {
+  takasUygunlukToplu, takasUygunlukKararVer, takasSonrakiAdim, type TakasUygunluk,
+} from "@/lib/takasUygunluk";
 import type { PartCondition } from "@/lib/carParts";
 import { stripModelGenRange, stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
@@ -45,18 +49,16 @@ export default async function GarajimPage() {
 
   // Takasa açabilmek için trustLevel (genel/kullanıcı-bazlı) yeterli değil —
   // her ARAÇ için ayrı ayrı, o araca bağlı fotoğraflı+onaylı bir yorum var mı bakılır.
-  const verifiedReviews = await prisma.review.findMany({
-    where: { userId, status: "PUBLISHED", photos: { some: { status: "APPROVED" } } },
-    select: { userProductId: true },
-  }).catch(() => []);
-  const verifiedUserProductIds = new Set(
-    verifiedReviews.map((r) => r.userProductId).filter((id): id is number => id != null)
-  );
-
-  const insuranceLeads = await prisma.insuranceLead.findMany({
-    where: { userId },
-    select: { productId: true },
-  }).catch(() => []); // migration henüz uygulanmadıysa sayfa çökmesin
+  // Kural tek yerde (lib/takasUygunluk.ts): ilan açma/yeniden açma API'si de aynısını kullanır.
+  // Aynı sorgu hangi adımın eksik olduğunu da verir (şart kartı için).
+  const [uygunlukHaritasi, insuranceLeads] = await Promise.all([
+    takasUygunlukToplu(userId).catch(() => new Map<number, { uygunluk: TakasUygunluk; productSlug: string }>()),
+    prisma.insuranceLead.findMany({
+      where: { userId },
+      select: { productId: true },
+    }).catch(() => []), // migration henüz uygulanmadıysa sayfa çökmesin
+  ]);
+  const takasAcik = isTradeListingEnabled();
   const leadProductIds = new Set(insuranceLeads.map((l) => l.productId));
 
   const [tradeListings, tradeCategories, tradeBrands, categoryBrandLinks] = await Promise.all([
@@ -132,6 +134,12 @@ export default async function GarajimPage() {
 
   const activeVehicles = userProducts.filter((up) => up.ownershipStatus === "CURRENT");
   const soldVehicles   = userProducts.filter((up) => up.ownershipStatus === "PAST");
+
+  // Şart kartı için sıradaki adım — harita okunamadıysa (sorgu hatası) en güvenli durum "yorum yok".
+  function sartBilgisi(userProductId: number, productSlug: string) {
+    const u = uygunlukHaritasi.get(userProductId)?.uygunluk ?? takasUygunlukKararVer({ sahiplik: "CURRENT", yorumlar: [] });
+    return { adimlar: u.adimlar, sonraki: takasSonrakiAdim(u, productSlug) };
+  }
 
   function VehicleCard({
     product, reviews, soldReason, soldReasonNote, soldAt, isSold, userProductId, oncelikli,
@@ -281,7 +289,9 @@ export default async function GarajimPage() {
           {!isSold && (
             <TradeToggleCard
               userProductId={userProductId}
-              canOpenTrade={verifiedUserProductIds.has(userProductId)}
+              canOpenTrade={uygunlukHaritasi.get(userProductId)?.uygunluk.uygun ?? false}
+              takasAcik={takasAcik}
+              sart={sartBilgisi(userProductId, product.slug)}
               categories={tradeCategories}
               brands={tradeBrands}
               categoryBrandMap={categoryBrandMap}
@@ -321,16 +331,16 @@ export default async function GarajimPage() {
       {activeVehicles.length === 0 && soldVehicles.length === 0 ? (
         <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-12 text-center space-y-3">
           <div className="text-4xl">🚗</div>
-          <p className="font-semibold text-gray-800">Henüz araç eklemedin</p>
-          <p className="text-sm text-gray-400">
-            Araç sayfasında &quot;Bu araç benim&quot; butonuna tıklayarak garajına ekleyebilirsin.
+          <p className="font-semibold text-gray-800">Henüz aracınız yok</p>
+          <p className="text-sm text-gray-500">
+            Bir araç sayfasında &quot;Bu araç benim&quot; butonuna tıklayarak aracınızı garajınıza ekleyebilirsiniz.
           </p>
           <Link
-            href="/"
+            href="/araclar"
             className="inline-block mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white"
             style={{ background: "#111" }}
           >
-            Araçları gör →
+            Araçlara göz atın →
           </Link>
         </div>
       ) : (
