@@ -53,27 +53,13 @@ describe("panelGorunumu", () => {
 });
 
 describe("bosDurumMetni", () => {
-  const b = (ek: Partial<Parameters<typeof bosDurumMetni>[0]> = {}) =>
-    bosDurumMetni({ il: "Bursa", isLoggedIn: true, kaydedilebilirFiltre: true, zatenKayitli: false, ...ek });
-
-  it("il adı başlıkta, ipucu sabit", () => {
-    expect(b().baslik).toBe("Bursa ilinde bu filtrelere uyan ilan yok.");
-    expect(b({ il: "" }).baslik).toBe("Bu filtrelere uyan ilan yok.");
-  });
-
-  it("kayıt cümlesi duruma göre doğru: kayıtlıyken 'kaydedin' denmez", () => {
-    expect(b({ zatenKayitli: true }).kayitCumlesi).toContain("kayıtlı");
-    expect(b({ zatenKayitli: true }).kayitCumlesi).not.toContain("Yukarıdan");
-    expect(b().kayitCumlesi).toContain("Yukarıdan");
-    expect(b({ isLoggedIn: false }).kayitCumlesi).toContain("Giriş yaparak");
-  });
-
-  it("kaydedilebilir filtre yoksa (yalnız kelime) kayıt cümlesi yok", () => {
-    expect(b({ kaydedilebilirFiltre: false }).kayitCumlesi).toBeNull();
+  it("il adı başlıkta, ipucu sabit; kayıt cümlesi yok (kart söylüyor)", () => {
+    expect(bosDurumMetni({ il: "Bursa" })).toEqual({ baslik: "Bursa ilinde bu filtrelere uyan ilan yok.", ipucu: "Bazı filtreleri kaldırarak yeniden deneyin." });
+    expect(bosDurumMetni({ il: "" }).baslik).toBe("Bu filtrelere uyan ilan yok.");
   });
 
   it("yasak ifade yok", () => {
-    const m = b();
-    expect(`${m.baslik} ${m.ipucu} ${m.kayitCumlesi}`).not.toMatch(/ücretsiz|garanti|doğrulanmış|onaylanmış/i);
+    const m = bosDurumMetni({ il: "Bursa" });
+    expect(`${m.baslik} ${m.ipucu}`).not.toMatch(/ücretsiz|garanti|doğrulanmış|onaylanmış/i);
   });
 });

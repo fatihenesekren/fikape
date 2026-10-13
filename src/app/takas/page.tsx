@@ -8,7 +8,7 @@ import { getTakasFiltreSecenekleri } from "@/lib/takasFiltre";
 import { TradeCard } from "./TradeCard";
 import { TakasFilterForm } from "./TakasFilterForm";
 import { SavedSearchPanel } from "./SavedSearchPanel";
-import { searchParcalari, aramaKayitliMi } from "@/lib/savedSearchGoster";
+import { searchParcalari } from "@/lib/savedSearchGoster";
 import { takasFiltreVarMi, takasIndekslenebilirMi, bosDurumMetni } from "@/lib/takasFiltreKarari";
 import { matchesWant, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
 import type { LocationScope, TradeFuelType } from "@/lib/tradeExpectations";
@@ -179,15 +179,7 @@ export default async function TakasPage({
   });
   // İl seçilmemişse searchParcalari ilk parça olarak boş il döndürür; çipte görünmesin.
   const cipler = il ? aramaParcalari : aramaParcalari.slice(1);
-  const kaydedilebilirFiltre = Boolean(il || params.kategori || params.marka || params.odeme || yilMin != null || yilMax != null || kmMin != null || kmMax != null || yakit || vites);
-  const zatenKayitli =
-    isLoggedIn && Boolean(il) &&
-    aramaKayitliMi(savedSearches, {
-      city: il, categoryId: selectedCategory?.id ?? null, brandId: selectedBrand?.id ?? null,
-      paymentIntent: params.odeme || null, yearMin: yilMin ?? null, yearMax: yilMax ?? null, kmMin: kmMin ?? null, kmMax: kmMax ?? null,
-      fuelTypes: yakit ? [yakit] : [], transmissions: vites ? [vites] : [],
-    });
-  const bosDurum = bosDurumMetni({ il, isLoggedIn, kaydedilebilirFiltre, zatenKayitli });
+  const bosDurum = bosDurumMetni({ il });
 
   return (
     <div className="max-w-3xl w-full mx-auto px-4 py-10 flex flex-col gap-4">
@@ -257,7 +249,6 @@ export default async function TakasPage({
             <>
               <p className="text-sm text-gray-800">{bosDurum.baslik}</p>
               <p className="text-sm text-gray-600">{bosDurum.ipucu}</p>
-              {bosDurum.kayitCumlesi && <p className="text-sm text-gray-600">{bosDurum.kayitCumlesi}</p>}
             </>
           ) : (
             <>

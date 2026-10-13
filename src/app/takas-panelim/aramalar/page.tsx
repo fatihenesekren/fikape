@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Kayıtlı Aramalarım · Takas Panel
 const SINIR = 20; // api/saved-searches/route.ts MAX_KAYITLI_ARAMA ile aynı
 
 // Takas Panelim > Kayıtlı Aramalarım. Yalnız oturum gerekir: aracı olmayan üye de arama kaydedebilmeli (asıl kitle onlar).
-// Aramalar /takas'taki "Bu aramayı kaydet" çubuğundan oluşturulur; burada listelenir ve silinir.
+// Aramalar /takas'taki "Yeni ilan çıkınca haber ver" düğmesinden oluşturulur; burada listelenir ve silinir.
 export default async function AramalarimPage() {
   const { userId } = await takasPanelKapisi("/takas-panelim/aramalar", "aramalar");
 
@@ -62,7 +62,7 @@ export default async function AramalarimPage() {
               <Link href="/takas" className="font-semibold text-link hover:underline">
                 Takas Pazarında
               </Link>{" "}
-              filtreleri seçip “Bu aramayı kaydet” düğmesine basın.
+              filtreleri seçip “Yeni ilan çıkınca haber ver” düğmesine basın.
             </p>
           )}
         </>

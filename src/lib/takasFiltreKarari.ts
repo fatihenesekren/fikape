@@ -43,19 +43,10 @@ export function panelGorunumu(g: {
   return "yok";
 }
 
-/** Filtreye uyan ilan yokken gösterilen kısa metin (düğme yok; "Filtreleri temizle" kartta). */
-export function bosDurumMetni(g: { il: string; isLoggedIn: boolean; kaydedilebilirFiltre: boolean; zatenKayitli: boolean }): {
-  baslik: string;
-  ipucu: string;
-  kayitCumlesi: string | null;
-} {
-  const baslik = g.il ? `${g.il} ilinde bu filtrelere uyan ilan yok.` : "Bu filtrelere uyan ilan yok.";
-  const ipucu = "Bazı filtreleri kaldırarak yeniden deneyin.";
-  let kayitCumlesi: string | null = null;
-  if (g.kaydedilebilirFiltre) {
-    if (!g.isLoggedIn) kayitCumlesi = "Giriş yaparak bu aramayı kaydedebilir, yeni ilan çıkınca haber alabilirsiniz.";
-    else if (g.zatenKayitli) kayitCumlesi = "Bu arama kayıtlı; yeni ilan çıkınca bildirim zilinde haber veririz.";
-    else kayitCumlesi = "Yukarıdan aramayı kaydederseniz yeni ilan çıkınca haber veririz.";
-  }
-  return { baslik, ipucu, kayitCumlesi };
+/** Filtreye uyan ilan yokken gösterilen kısa metin. Kayıt durumu ve "Filtreleri temizle" kartta; burada tekrarlanmaz. */
+export function bosDurumMetni(g: { il: string }): { baslik: string; ipucu: string } {
+  return {
+    baslik: g.il ? `${g.il} ilinde bu filtrelere uyan ilan yok.` : "Bu filtrelere uyan ilan yok.",
+    ipucu: "Bazı filtreleri kaldırarak yeniden deneyin.",
+  };
 }

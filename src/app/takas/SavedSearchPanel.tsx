@@ -165,7 +165,7 @@ function SavedSearchPanelIci({
 
   const odakHalkasi = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link";
   const ikincilDugme =
-    "inline-flex items-center justify-center min-h-11 w-full sm:w-auto px-5 rounded-xl border border-link bg-link-soft text-sm font-semibold text-link-deep hover:bg-link-line/40 transition-colors " +
+    "inline-flex items-center justify-center min-h-11 w-full sm:w-auto px-5 rounded-xl border-2 border-link-deep bg-white text-sm font-bold text-link-deep shadow-sm hover:bg-link-soft transition-colors " +
     odakHalkasi;
 
   return (
@@ -185,13 +185,6 @@ function SavedSearchPanelIci({
               </li>
             )}
           </ul>
-          <Link
-            href="/takas"
-            className={`mt-1 inline-flex items-center gap-1 min-h-11 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline ${odakHalkasi}`}
-          >
-            <span aria-hidden="true">✕</span> Filtreleri temizle
-          </Link>
-
           {q && (
             <p className="text-xs text-gray-600">
               Hızlı aramadaki kelime kayda dahil edilmez.
@@ -230,12 +223,12 @@ function SavedSearchPanelIci({
                     aria-busy={saving}
                     className={`${ikincilDugme} aria-disabled:opacity-60 aria-disabled:cursor-wait`}
                   >
-                    {saving ? "Kaydediliyor..." : "Bu aramayı kaydet"}
+                    {saving ? "Kaydediliyor..." : <><span aria-hidden="true">🔔 </span>Yeni ilan çıkınca haber ver</>}
                   </button>
                 </div>
               ) : (
                 <Link href={girisHref} className={ikincilDugme}>
-                  Giriş yapıp kaydedin
+                  <span aria-hidden="true">🔔 </span>Giriş yapıp haber alın
                 </Link>
               )}
             </div>
@@ -243,7 +236,7 @@ function SavedSearchPanelIci({
 
           {zatenKayitli && !basari && (
             <p className="mt-2 text-sm font-semibold text-link-deep">
-              <span aria-hidden="true">✓ </span>Bu arama kayıtlı
+              <span aria-hidden="true">✓ </span>Yeni ilan çıkınca haber vereceğiz
             </p>
           )}
 
@@ -277,6 +270,12 @@ function SavedSearchPanelIci({
               </p>
             )}
           </div>
+          <Link
+            href="/takas"
+            className={`mt-1 inline-flex items-center gap-1 min-h-11 text-sm text-gray-600 hover:text-gray-900 hover:underline ${odakHalkasi}`}
+          >
+            <span aria-hidden="true">✕</span> Filtreleri temizle
+          </Link>
         </div>
       )}
 

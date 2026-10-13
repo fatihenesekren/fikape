@@ -39,7 +39,7 @@ export function AramaListesi({ baslangic, sinir }: { baslangic: AramaSatiri[]; s
         <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-8 text-center space-y-3">
           <p className="text-sm font-semibold text-gray-800">Henüz kayıtlı aramanız yok</p>
           <p className="text-sm text-gray-600 leading-relaxed">
-            Takas Pazarında il, kategori veya marka seçip aramanızı yapın; ardından “Bu aramayı kaydet” düğmesine basın.
+            Takas Pazarında il, kategori veya marka seçip aramanızı yapın; ardından “Yeni ilan çıkınca haber ver” düğmesine basın.
           </p>
           <Link
             href="/takas"
