@@ -26,6 +26,7 @@ function abone(cb: () => void) {
   };
 }
 
+/** uye: panele giden varyant (garajında aracı olan üye); aksi hâlde tanıtım sayfasına giden varyant. */
 export function TakasBandiKart({ uye, href }: { uye: boolean; href: string }) {
   // Sunucu çıktısında her zaman görünür; depolama okunduktan sonra gizlenir.
   const kayitliGizli = useSyncExternalStore(abone, gizliMi, () => false);
@@ -68,7 +69,7 @@ export function TakasBandiKart({ uye, href }: { uye: boolean; href: string }) {
             style={{ background: "var(--link-soft)" }}
             aria-hidden="true"
           >
-            🔄
+            🤝
           </span>
           <span className="min-w-0">
             {uye ? (
