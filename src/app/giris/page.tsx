@@ -78,8 +78,8 @@ function GirisForm() {
               <span className="text-pe">pe</span>
             </span>
           </Link>
-          <h1 className="text-xl font-bold text-gray-900">Tekrar hoş geldin</h1>
-          <p className="text-sm text-gray-500 mt-1">Hesabına giriş yap 👇</p>
+          <h1 className="text-xl font-bold text-gray-900">Tekrar hoş geldiniz</h1>
+          <p className="text-sm text-gray-500 mt-1">Hesabınıza giriş yapın 👇</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-4">
@@ -140,7 +140,7 @@ function GirisForm() {
             </div>
             <div className="text-right">
               <Link href="/sifremi-unuttum" className="text-xs font-medium text-gray-500 hover:text-gray-800 hover:underline">
-                Şifreni mi unuttun?
+                Şifrenizi mi unuttunuz?
               </Link>
             </div>
           </div>
@@ -156,7 +156,7 @@ function GirisForm() {
         </form>
 
         <p className="text-center text-sm text-gray-500 mt-4">
-          Hesabın yok mu?{" "}
+          Hesabınız yok mu?{" "}
           <Link href="/kayit" className="font-semibold text-gray-900 hover:underline">
             Kayıt ol
           </Link>

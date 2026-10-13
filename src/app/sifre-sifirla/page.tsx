@@ -110,13 +110,13 @@ function SifreSifirlaForm() {
             <span className="text-pe">pe</span>
           </Link>
           <h1 className="text-xl font-bold text-gray-900">Yeni şifre belirle</h1>
-          <p className="text-sm text-gray-500 mt-1">Hesabın için yeni bir şifre oluştur</p>
+          <p className="text-sm text-gray-500 mt-1">Hesabınız için yeni bir şifre oluşturun</p>
         </div>
 
         {done ? (
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 text-center space-y-2">
-            <p className="text-sm text-gray-700 font-medium">Şifren güncellendi</p>
-            <p className="text-sm text-gray-500">Girişe yönlendiriliyorsun...</p>
+            <p className="text-sm text-gray-700 font-medium">Şifreniz güncellendi</p>
+            <p className="text-sm text-gray-500">Girişe yönlendiriliyorsunuz...</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-4">

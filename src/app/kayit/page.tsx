@@ -100,7 +100,7 @@ function KayitForm() {
             </span>
           </Link>
           <h1 className="text-xl font-bold text-gray-900">Hesap oluştur</h1>
-          <p className="text-sm text-gray-500 mt-1">Kayıt ol, deneyimini paylaş</p>
+          <p className="text-sm text-gray-500 mt-1">Kayıt olun, deneyiminizi paylaşın</p>
           {ref && (
             <p className="text-xs text-gray-600 mt-2">Bir arkadaşınızın daveti ile geliyorsunuz 👋</p>
           )}
@@ -267,7 +267,7 @@ function KayitForm() {
         </form>
 
         <p className="text-center text-sm text-gray-500 mt-4">
-          Zaten hesabın var mı?{" "}
+          Zaten hesabınız var mı?{" "}
           <Link href="/giris" className="font-semibold text-gray-900 hover:underline">
             Giriş yap
           </Link>
