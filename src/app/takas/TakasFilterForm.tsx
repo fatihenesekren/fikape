@@ -70,13 +70,13 @@ export function TakasFilterForm({
   // hangisinin ne için olduğu ayırt edilemiyordu (bkz. 5 uzman ajan
   // değerlendirmesi). Aktif olan alan hafif accent kenarlıkla vurgulanıyor.
   const fieldClass = (active: boolean) =>
-    `text-sm rounded-lg border px-2.5 py-1.5 ${active ? "border-link-line bg-link-soft/40" : "border-gray-200"}`;
+    `text-base sm:text-sm min-h-11 sm:min-h-9 rounded-lg border px-2.5 py-1.5 ${active ? "border-link bg-link-soft/40" : "border-gray-400"}`;
 
   return (
     <form ref={formRef} method="get">
       <div className="mb-2">
-        <label htmlFor="takas-q" className="block text-xs font-bold text-gray-500 mb-1">
-          🔍 Hızlı Arama
+        <label htmlFor="takas-q" className="block text-xs font-bold text-gray-600 mb-1">
+          <span aria-hidden="true">🔍</span> Hızlı Arama
         </label>
         <div className="flex gap-2">
           <div className="relative flex-1">
@@ -87,20 +87,19 @@ export function TakasFilterForm({
               name="q"
               defaultValue={q}
               placeholder="Marka, model veya versiyon ara…"
-              aria-label="Serbest metin arama"
-              className="w-full text-sm rounded-lg border border-gray-200 pl-2.5 pr-9 py-1.5"
+              className="w-full text-base sm:text-sm min-h-11 sm:min-h-9 rounded-lg border border-gray-400 pl-2.5 pr-9 py-1.5"
             />
             <VoiceMicButton inputRef={qInputRef} formRef={formRef} />
           </div>
-          <button type="submit" className="text-sm font-semibold text-white rounded-lg px-4 py-1.5 whitespace-nowrap" style={{ background: "#0C447C" }}>
+          <button type="submit" className="text-sm font-semibold text-white rounded-lg px-4 py-1.5 min-h-11 sm:min-h-9 whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link" style={{ background: "#0C447C" }}>
             Ara
           </button>
         </div>
       </div>
 
-      <details className="border border-gray-200 rounded-lg overflow-hidden" open={hasDetailedFilters}>
-        <summary className="cursor-pointer select-none flex items-center justify-between text-xs font-bold text-gray-500 px-3 py-2.5">
-          <span>🎛️ Detaylı Arama</span>
+      <details className="border border-gray-400 rounded-lg overflow-hidden" open={hasDetailedFilters}>
+        <summary className="cursor-pointer select-none flex items-center justify-between min-h-11 text-xs font-bold text-gray-600 px-3 py-2.5">
+          <span><span aria-hidden="true">🎛️</span> Detaylı Arama</span>
           {hasDetailedFilters && (
             <span className="text-[11px] font-semibold text-link bg-link-soft px-2 py-0.5 rounded-full">
               {activeDetailedFields.length} filtre aktif
@@ -109,7 +108,7 @@ export function TakasFilterForm({
         </summary>
         <div className="p-3 pt-1 space-y-3.5">
           <div>
-            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wide mb-1.5">📍 Konum ve Kategori</p>
+            <p className="text-[11px] font-semibold text-gray-600 uppercase tracking-wide mb-1.5"><span aria-hidden="true">📍</span> Konum ve Kategori</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               <select name="il" defaultValue={il} aria-label="İl" className={fieldClass(!!il)}>
                 <option value="">İl seçiniz</option>
@@ -145,7 +144,7 @@ export function TakasFilterForm({
           </div>
 
           <div>
-            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wide mb-1.5">🚗 Araç Kriterleri</p>
+            <p className="text-[11px] font-semibold text-gray-600 uppercase tracking-wide mb-1.5"><span aria-hidden="true">🚗</span> Araç Kriterleri</p>
             <div className="grid grid-cols-2 gap-2">
               <input
                 type="number"
@@ -201,7 +200,7 @@ export function TakasFilterForm({
           </div>
 
           <div>
-            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wide mb-1.5">🤝 Takas Şartları</p>
+            <p className="text-[11px] font-semibold text-gray-600 uppercase tracking-wide mb-1.5"><span aria-hidden="true">🤝</span> Takas Şartları</p>
             <select name="odeme" defaultValue={odemeNiyeti} aria-label="Ödeme niyeti" className={`w-full ${fieldClass(!!odemeNiyeti)}`}>
               <option value="">Ödeme niyeti (tümü)</option>
               {PAYMENT_OPTIONS.map((o) => (
@@ -210,7 +209,7 @@ export function TakasFilterForm({
             </select>
           </div>
 
-          <button type="submit" className="w-full text-sm font-semibold text-white rounded-lg px-3 py-1.5" style={{ background: "#0C447C" }}>
+          <button type="submit" className="w-full text-sm font-semibold text-white rounded-lg px-3 py-1.5 min-h-11 sm:min-h-9 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link" style={{ background: "#0C447C" }}>
             Filtrele
           </button>
         </div>
