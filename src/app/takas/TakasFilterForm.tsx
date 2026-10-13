@@ -21,23 +21,7 @@ const FUEL_OPTIONS = [
 ];
 const TRANSMISSION_OPTIONS = ["Manuel", "Otomatik", "CVT", "Yarı Otomatik"];
 
-export function TakasFilterForm({
-  il,
-  kategoriSlug,
-  markaSlug,
-  odemeNiyeti,
-  yilMin,
-  yilMax,
-  kmMin,
-  kmMax,
-  yakit,
-  vites,
-  q,
-  cities,
-  categories,
-  brands,
-  categoryBrandMap,
-}: {
+type TakasFilterFormProps = {
   il: string;
   kategoriSlug: string;
   markaSlug: string;
@@ -53,7 +37,34 @@ export function TakasFilterForm({
   categories: { id: number; slug: string; name: string }[];
   brands: { id: number; slug: string; name: string }[];
   categoryBrandMap: Record<string, string[]>;
-}) {
+};
+
+// Alanlar defaultValue/ilk-durumla kurulur; kayıtlı aramalar arasında istemci gezintisinde adres değişince form eski
+// seçimi tutuyordu. Adresteki filtre değerleriyle anahtarlanan İÇ bileşen her değişimde sıfırdan kurulur (anahtarı
+// sunucu sayfasına koymak eski formun ekranda kalmasına yol açıyordu).
+export function TakasFilterForm(props: TakasFilterFormProps) {
+  const p = props;
+  const anahtar = [p.il, p.kategoriSlug, p.markaSlug, p.odemeNiyeti, p.yilMin, p.yilMax, p.kmMin, p.kmMax, p.yakit, p.vites, p.q].join("|");
+  return <TakasFilterFormIci key={anahtar} {...props} />;
+}
+
+function TakasFilterFormIci({
+  il,
+  kategoriSlug,
+  markaSlug,
+  odemeNiyeti,
+  yilMin,
+  yilMax,
+  kmMin,
+  kmMax,
+  yakit,
+  vites,
+  q,
+  cities,
+  categories,
+  brands,
+  categoryBrandMap,
+}: TakasFilterFormProps) {
   const [kategori, setKategori] = useState(kategoriSlug);
   const qInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);

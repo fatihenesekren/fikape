@@ -10,24 +10,7 @@ import { panelGorunumu } from "@/lib/takasFiltreKarari";
 // "Kayıtlı aramalarım" listesi. Önceden bilgi beş parçaya dağılmıştı (kutu, yönet bağlantısı, uzun mesaj, başlık, Sil'li
 // liste) ve "Filtreleri temizle" iki yerde geçiyordu (kullanıcı geri bildirimi). Silme yalnız /takas-panelim/aramalar'da;
 // burada yalnız az önce yapılan kayıt "Kaydı geri al" ile geri alınabilir.
-export function SavedSearchPanel({
-  isLoggedIn,
-  il,
-  kategoriId,
-  markaId,
-  odemeNiyeti,
-  yilMin,
-  yilMax,
-  kmMin,
-  kmMax,
-  yakit,
-  vites,
-  q,
-  initialSearches,
-  cipler,
-  cities,
-  girisHref,
-}: {
+type SavedSearchPanelProps = {
   isLoggedIn: boolean;
   il: string;
   kategoriId: number | null;
@@ -47,7 +30,33 @@ export function SavedSearchPanel({
   cities: readonly string[];
   /** Giriş yapmamış kullanıcı için: girişten sonra aynı filtreyle dönülecek adres. */
   girisHref: string;
-}) {
+};
+
+// Adres filtreleri değişince (kayıtlı aramalar arası geçiş) durum sıfırlansın: iç bileşen filtre değerleriyle anahtarlanır.
+export function SavedSearchPanel(props: SavedSearchPanelProps) {
+  const p = props;
+  const anahtar = [p.il, p.kategoriId, p.markaId, p.odemeNiyeti, p.yilMin, p.yilMax, p.kmMin, p.kmMax, p.yakit, p.vites, p.q].join("|");
+  return <SavedSearchPanelIci key={anahtar} {...props} />;
+}
+
+function SavedSearchPanelIci({
+  isLoggedIn,
+  il,
+  kategoriId,
+  markaId,
+  odemeNiyeti,
+  yilMin,
+  yilMax,
+  kmMin,
+  kmMax,
+  yakit,
+  vites,
+  q,
+  initialSearches,
+  cipler,
+  cities,
+  girisHref,
+}: SavedSearchPanelProps) {
   const router = useRouter();
   const [searches, setSearches] = useState(initialSearches);
   const [saving, setSaving] = useState(false);
