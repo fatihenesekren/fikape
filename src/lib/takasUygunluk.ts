@@ -224,10 +224,11 @@ export async function takasUygunlukGetir(userId: number, userProductId: number):
 
 // ── Takas Panelim: sıradaki iş ──────────────────────────────────────────────────────────────────
 // Panelin siyah butonu YALNIZCA başka hiçbir yerden tek tıkla yapılamayan gerçek bir eylem varken çıkar; buton hedefi bir
-// kısayol kartıyla aynı olmamalı (Usta Panelim'de de buton hiçbir kutucukla çakışmaz). Eylem yoksa (mesaj okumak, yayındaki
-// ilan, inceleme bekleme) aynı yerde tek satırlık durum cümlesi gösterilir; ilgili kısayol kartı zaten sabit durur.
-// Öncelik: okunmamış mesaj (cümle) > takasa hazır araç (buton) > şartı eksik araç (adımın butonu ya da inceleme cümlesi) >
-// yayındaki ilan (cümle) > araç yoksa Takas Pazarına göz at (buton; araçsızda o kısayol kartı yok).
+// kısayol kartıyla aynı olmamalı (Usta Panelim'de de buton hiçbir kutucukla çakışmaz). Eylem yoksa buton da cümle de çıkmaz:
+// "ilanınız yayında" ve "N okunmamış mesaj" bilgisini sayaçlar zaten veriyor, ayrıca yazmak tekrar olurdu (kullanıcı geri
+// bildirimi). Cümle yalnızca sayfanın başka hiçbir yerinde olmayan bir bilgi taşıyorsa (inceleme bekleyen araç) gösterilir.
+// Öncelik: takasa hazır araç (buton) > şartı eksik araç (adımın butonu ya da inceleme cümlesi) > araç yoksa Takas Pazarına
+// göz at (buton; araçsızda o kısayol kartı yok). Okunmamış mesaj butonu ELE GEÇİRMEZ: sayaç ve mesaj kartı yeterli.
 // Özellik kapalıysa null (sayfa kendi uyarısını gösterir). `araclar` garajdakiler ve hedefe yakınlığa göre sıralı olmalı.
 export interface PanelButon {
   etiket: string; // arayüzde sonuna "→" eklenir
@@ -237,19 +238,13 @@ export interface PanelButon {
 
 export interface PanelSiradakiIs {
   buton: PanelButon | null;
-  /** Buton yoksa butonun yerinde gösterilen tek satırlık durum cümlesi. */
+  /** Buton yoksa butonun yerinde gösterilen tek satırlık bilgi cümlesi (çoğu durumda yok). */
   metin: string | null;
 }
 
-const MESAJ_BILGISI = "Yeni bir mesaj geldiğinde burada ve bildirimlerinizde görürsünüz.";
-
-export function panelSiradakiIs(g: { ozellikAcik: boolean; okunmamis: number; araclar: TakasAracUygunlugu[] }): PanelSiradakiIs | null {
+export function panelSiradakiIs(g: { ozellikAcik: boolean; araclar: TakasAracUygunlugu[] }): PanelSiradakiIs | null {
   if (!g.ozellikAcik) return null;
   const adi = (a: TakasAracUygunlugu) => stripGenRangeAnywhere(a.productName);
-
-  if (g.okunmamis > 0) {
-    return { buton: null, metin: `${g.okunmamis} okunmamış takas mesajınız var.` };
-  }
 
   const hazir = g.araclar.find((a) => a.aktifIlanId == null && a.uygunluk.uygun);
   if (hazir) {
@@ -267,13 +262,9 @@ export function panelSiradakiIs(g: { ozellikAcik: boolean; okunmamis: number; ar
       : { buton: null, metin: `${adi(eksik)}: ${sonraki.metin}` };
   }
 
-  const yayinda = g.araclar.filter((a) => a.aktifIlanId != null).length;
-  if (yayinda > 0) {
-    return { buton: null, metin: `${yayinda === 1 ? "İlanınız yayında." : `${yayinda} ilanınız yayında.`} ${MESAJ_BILGISI}` };
-  }
-
   if (g.araclar.length === 0) {
     return { buton: { etiket: "Takas Pazarına Göz Atın", href: "/takas", altYazi: null }, metin: null };
   }
-  return { buton: null, metin: "Garajınızdaki araçlar şu an takasa uygun değil." };
+  // Yalnız yayındaki ilanlar kaldı: yapılacak iş yok, sayaçlar ve kısayol kartları durumu zaten gösteriyor.
+  return { buton: null, metin: null };
 }

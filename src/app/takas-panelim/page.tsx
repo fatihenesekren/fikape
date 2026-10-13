@@ -38,7 +38,7 @@ export default async function TakasPanelimPage() {
     })
     .catch(() => 0);
 
-  const siradaki = panelSiradakiIs({ ozellikAcik: acik, okunmamis, araclar });
+  const siradaki = panelSiradakiIs({ ozellikAcik: acik, araclar });
   const buton = siradaki?.buton ?? null;
   const yayindaki = araclar.filter((a) => a.aktifIlanId != null).length;
   const aracVar = araclar.length > 0;
