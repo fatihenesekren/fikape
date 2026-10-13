@@ -172,3 +172,19 @@ html, body {
 @media (prefers-reduced-motion: reduce) {
   .hash-target-flash { animation: none; outline: 2px solid var(--link-line); outline-offset: 2px; }
 }
+
+/* PWA karşılama ekranı (components/WelcomeScreen.tsx). data-welcome: standalone + ilk açılış → hidrasyona kadar sayfa gizli, zemin #111. */
+html[data-welcome] { background: #111; }
+html[data-welcome] body { visibility: hidden; }
+html[data-welcome] #welcome { visibility: visible; }
+@keyframes welcome-ciz { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes welcome-yukari { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.welcome-yay { stroke-dasharray: 1; stroke-dashoffset: 1; animation: welcome-ciz 450ms ease-out forwards; }
+.welcome-yay-1 { animation-delay: 0ms; }
+.welcome-yay-2 { animation-delay: 300ms; }
+.welcome-yay-3 { animation-delay: 600ms; }
+.welcome-yazi { opacity: 0; animation: welcome-yukari 300ms ease-out 900ms forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .welcome-yay { animation: none; stroke-dashoffset: 0; }
+  .welcome-yazi { animation: none; opacity: 1; }
+}

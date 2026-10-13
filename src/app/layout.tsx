@@ -9,6 +9,7 @@ import { FooterNav } from "@/components/FooterNav";
 import { HomeFab } from "@/components/HomeFab";
 import { BackToTop } from "@/components/BackToTop";
 import { LogoMark } from "@/components/LogoMark";
+import { WelcomeScreen, WELCOME_ONYUKLEME } from "@/components/WelcomeScreen";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { JsonLd } from "@/components/JsonLd";
@@ -52,7 +53,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   }
 
   return (
-    <html lang="tr" className={`${geist.variable} h-full antialiased`}>
+    <html lang="tr" className={`${geist.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: WELCOME_ONYUKLEME }} />
+      </head>
       {/* overflow-x-hidden: sayfanın herhangi bir yerinde (örn. /karsilastir'in
           geniş tablosu, kendi overflow-x-auto'su içinde düzgün tutulsa bile)
           görsel bir taşma olursa mobil tarayıcılar (özellikle Android Chrome)
@@ -130,6 +134,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </footer>
         <HomeFab />
         <BackToTop />
+        <WelcomeScreen />
         </SessionProvider>
       </body>
     </html>
