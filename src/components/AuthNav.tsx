@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Avatar } from "@/components/Avatar";
 import { NotificationBell } from "@/components/NotificationBell";
 import { MessageBell } from "@/components/MessageBell";
-import { MessageIcon } from "@/components/icons";
+import { MessageIcon, SwapIcon } from "@/components/icons";
 import { useAnchoredPosition } from "@/lib/useAnchoredPosition";
 
 function ShieldIcon() {
@@ -96,19 +96,24 @@ export function AuthNav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [unreadMessages, setUnreadMessages] = useState(0);
   const [isActiveExpert, setIsActiveExpert] = useState(false);
+  const [hasTakasPanel, setHasTakasPanel] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
   const menuStyle = useAnchoredPosition(menuBtnRef, menuOpen, 208, () => setMenuOpen(false));
 
-  // Usta durumu JWT'de yok (bkz. src/app/api/me/expert-status/route.ts) —
-  // MessageBell'deki gibi hafif bir client fetch, mount'ta bir kez.
+  // Usta ve Takas paneli durumu JWT'de yok (bkz. src/app/api/me/expert-status/route.ts) —
+  // MessageBell'deki gibi hafif bir client fetch, mount'ta bir kez (tek istek ikisini de döndürür).
   useEffect(() => {
     if (!session?.user?.id) return;
     let cancelled = false;
     fetch("/api/me/expert-status")
       .then((res) => (res.ok ? res.json() : null))
-      .then((data) => { if (!cancelled && data) setIsActiveExpert(!!data.isActiveExpert); })
+      .then((data) => {
+        if (cancelled || !data) return;
+        setIsActiveExpert(!!data.isActiveExpert);
+        setHasTakasPanel(!!data.hasTakasPanel);
+      })
       .catch(() => {});
     return () => { cancelled = true; };
   }, [session?.user?.id]);
@@ -205,6 +210,13 @@ export function AuthNav() {
               {isActiveExpert && (
                 <Link href="/usta-gorusu" onClick={() => setMenuOpen(false)} className={menuItemClass}>
                   <WrenchIcon /> Usta Panelim
+                </Link>
+              )}
+              {/* Takas Panelim: yalnız garajında aracı olan üyeye (ana sayfadaki Takas bandıyla aynı kural),
+                  Usta Panelim'in yalnız ustaya görünmesi gibi. */}
+              {hasTakasPanel && (
+                <Link href="/takas-panelim" onClick={() => setMenuOpen(false)} className={menuItemClass}>
+                  <SwapIcon size={16} /> Takas Panelim
                 </Link>
               )}
               {/* "Mesajlarım" hesap menüsündeki ayrı girişi kaldırıldı — MessageBell
