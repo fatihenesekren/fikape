@@ -56,6 +56,7 @@ export const TAKAS_GUVENLIK = [
   "Aracı teslim almadan fark tutarını göndermeyin; aracınızı teslim ederken de tutarın hesabınıza geçtiğinden emin olun.",
   "Yalnızca dekonta ya da ekran görüntüsüne bakarak ödemenin yapıldığını varsaymayın; tutarın hesabınıza geçtiğini kendi bankanızdan kontrol edin.",
   "Mümkünse takas öncesinde ekspertiz yaptırın.",
+  "Araçların devrini noterde yapın; devrin nasıl yapılacağı, harç ve vergiler konusunda noterden bilgi alın.",
   "Buluşmayı halka açık bir yerde yapın.",
   "Plaka veya şasi bilgisini yalnızca takası ciddi olarak sürdürmeye karar verdiğinizde paylaşın.",
 ] as const;

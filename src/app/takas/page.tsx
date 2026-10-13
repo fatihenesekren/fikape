@@ -208,6 +208,7 @@ export default async function TakasPage({
       </div>
 
       <TakasFilterForm
+        key={pageHref(1)}
         il={il}
         kategoriSlug={params.kategori ?? ""}
         markaSlug={params.marka ?? ""}
