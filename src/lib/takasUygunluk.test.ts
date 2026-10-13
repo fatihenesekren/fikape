@@ -133,6 +133,8 @@ describe("enIlerideArac", () => {
     productSlug: `arac-${userProductId}`,
     productName: `Araç ${userProductId}`,
     aktifIlanId,
+    km: null,
+    categorySlug: "otomobil",
   });
 
   it("araç yoksa null", () => {

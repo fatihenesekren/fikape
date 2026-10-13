@@ -14,6 +14,7 @@ import {
 import { FUEL_LABELS } from "@/lib/fuel";
 import type { TakasAdimKodu, TakasSonrakiAdim } from "@/lib/takasUygunluk";
 import { TakasSartKarti } from "./TakasSartKarti";
+import { SwapIcon } from "@/components/icons";
 import { PartConditionForm } from "./PartConditionForm";
 import { DamageStatusForm, EMPTY_DAMAGE_STATUS, type DamageStatusValue } from "./DamageStatusForm";
 import { PhotoUploader } from "@/components/review/PhotoUploader";
@@ -122,6 +123,7 @@ export function TradeToggleCard({
   categorySlug,
   takasAcik,
   sart,
+  baslangicAcik = false,
 }: {
   userProductId: number;
   canOpenTrade: boolean;
@@ -129,6 +131,8 @@ export function TradeToggleCard({
   takasAcik: boolean;
   /** Şart durumu: yeni ilan açma/yeniden açma için sıradaki adım (lib/takasUygunluk.ts). */
   sart: { adimlar: { kod: TakasAdimKodu; tamam: boolean }[]; sonraki: TakasSonrakiAdim };
+  /** Aktif ilanın özeti (Düzenle/Yenile/Kapat) açık başlasın — Takas Panelim'de ilan işlemleri doğrudan görünsün; Garajım'da kapalı kalır. */
+  baslangicAcik?: boolean;
   categories: { id: number; name: string }[];
   brands: { id: number; name: string }[];
   categoryBrandMap: Record<number, number[]>;
@@ -199,7 +203,7 @@ export function TradeToggleCard({
   // Aktif ilan özeti varsayılan kapalı — sürekli açık, renkli bir kutu yerine
   // tıklanınca genişleyen bir çip (bkz. InsuranceLeadCard'daki aynı desen,
   // kullanıcı geri bildirimi: kart görsel olarak çok yoğun/gürültülüydü).
-  const [summaryOpen, setSummaryOpen] = useState(false);
+  const [summaryOpen, setSummaryOpen] = useState(baslangicAcik);
 
   // Özellik kapalıyken (TAKASA_AC_ILAN_ENABLED) tüm ilan işlemleri API'de 503 döner —
   // formu açtırıp hata göstermek yerine baştan söyleriz.
@@ -413,10 +417,14 @@ export function TradeToggleCard({
       return (
         <button
           onClick={() => setSummaryOpen(true)}
-          className="mt-3 w-full flex items-center justify-between gap-2 text-xs font-semibold text-link-deep bg-link-soft hover:bg-link-soft border border-link-line rounded-xl px-3 py-2 transition-colors"
+          aria-expanded={false}
+          className="mt-3 w-full flex items-center justify-between gap-2 min-h-11 text-sm font-semibold text-link-deep bg-link-soft hover:bg-[#D4E6F8] border border-link-line rounded-xl px-3 py-2 transition-colors"
         >
-          <span>🔄 Takasa açık</span>
-          <span className="text-link-muted">›</span>
+          <span className="flex items-center gap-2 min-w-0">
+            <SwapIcon size={16} />
+            <span className="truncate">Takasa açık · İlanı yönet</span>
+          </span>
+          <span aria-hidden="true" className="text-link-muted">›</span>
         </button>
       );
     }
@@ -424,22 +432,22 @@ export function TradeToggleCard({
     return (
       <div className="mt-3 border border-link-line bg-link-soft/60 rounded-xl p-3 overflow-hidden">
         <div className="flex items-center justify-between gap-2 flex-wrap">
-          <p className="text-xs font-bold text-link-deep whitespace-nowrap">✓ Takasa açık</p>
-          <div className="flex items-center gap-3 shrink-0">
-            <Link href={`/takas/${existingListing.id}`} className="text-[11px] font-semibold text-gray-400 hover:underline whitespace-nowrap">
+          <p className="text-sm font-bold text-link-deep whitespace-nowrap"><span aria-hidden="true">✓ </span>Takasa açık</p>
+          <div className="flex items-center flex-wrap gap-x-4 gap-y-1">
+            <Link href={`/takas/${existingListing.id}`} className="inline-flex items-center min-h-8 text-xs font-semibold text-gray-600 hover:underline whitespace-nowrap">
               İlanı görüntüle →
             </Link>
-            <button onClick={() => setEditOpen(true)} className="text-[11px] font-semibold text-link hover:underline whitespace-nowrap">
+            <button onClick={() => setEditOpen(true)} className="inline-flex items-center min-h-8 text-xs font-semibold text-link hover:underline whitespace-nowrap">
               Düzenle
             </button>
             <button
               onClick={renewListing}
               disabled={renewing}
-              className="text-[11px] font-semibold text-link hover:underline whitespace-nowrap disabled:opacity-60"
+              className="inline-flex items-center min-h-8 text-xs font-semibold text-link hover:underline whitespace-nowrap disabled:opacity-60"
             >
-              {renewing ? "Yenileniyor..." : "🔝 İlanı Yenile"}
+              {renewing ? "Yenileniyor..." : <><span aria-hidden="true">🔝 </span>İlanı Yenile</>}
             </button>
-            <button onClick={() => setSummaryOpen(false)} aria-label="Daralt" className="text-link-muted hover:text-link text-xs">
+            <button onClick={() => setSummaryOpen(false)} aria-label="Daralt" aria-expanded={true} className="inline-flex items-center justify-center w-8 h-8 text-link-muted hover:text-link text-xs">
               ✕
             </button>
           </div>
@@ -1067,7 +1075,7 @@ function TradeFormFields({
           <textarea
             value={note}
             onChange={(e) => setNote(e.target.value.slice(0, 300))}
-            placeholder="Opsiyonel not (örn. hangi araçları arıyorsun)"
+            placeholder="Opsiyonel not (örn. hangi araçları arıyorsunuz)"
             maxLength={300}
             rows={2}
             className="w-full text-sm px-2.5 py-1.5 border-0 block focus:outline-none"

@@ -126,7 +126,9 @@ export function takasEngelMesaji(u: TakasUygunluk): string {
 const SECIM = {
   id: true,
   ownershipStatus: true,
-  product: { select: { slug: true, name: true } },
+  usageAmount: true,
+  usageUnit: true,
+  product: { select: { slug: true, name: true, category: { select: { slug: true } } } },
   reviews: { select: { id: true, status: true, photos: { select: { status: true } } } },
   tradeListings: { where: { isActive: true }, select: { id: true }, take: 1 },
 } as const;
@@ -134,7 +136,9 @@ const SECIM = {
 type KayitTipi = {
   id: number;
   ownershipStatus: string;
-  product: { slug: string; name: string };
+  usageAmount: number | null;
+  usageUnit: string | null;
+  product: { slug: string; name: string; category: { slug: string } | null };
   reviews: { id: number; status: string; photos: { status: string }[] }[];
   tradeListings: { id: number }[];
 };
@@ -146,6 +150,9 @@ export interface TakasAracUygunlugu {
   productSlug: string;
   productName: string;
   aktifIlanId: number | null;
+  /** İlan formundaki km alanının ön değeri (Garajım'daki alış bilgisiyle ortak, yalnız km biriminde). */
+  km: number | null;
+  categorySlug: string;
 }
 
 function kayittanUygunluk(k: KayitTipi): TakasUygunluk {
@@ -170,6 +177,8 @@ export async function takasUygunlukToplu(userId: number): Promise<Map<number, Ta
         productSlug: k.product.slug,
         productName: k.product.name,
         aktifIlanId: k.tradeListings[0]?.id ?? null,
+        km: k.usageUnit === "km" ? k.usageAmount : null,
+        categorySlug: k.product.category?.slug ?? "",
       },
     ]),
   );
@@ -187,12 +196,17 @@ const ONCELIK: Record<TakasDurum, number> = {
   GARAJDA_DEGIL: 99,
 };
 
+/** Küçük = hedefe daha yakın (0: aktif ilanı var). Panelde araç listesini ve en ilerideki aracı seçmek için. */
+export function aracOnceligi(a: TakasAracUygunlugu): number {
+  return a.aktifIlanId != null ? 0 : ONCELIK[a.uygunluk.durum];
+}
+
 export function enIlerideArac(araclar: TakasAracUygunlugu[]): TakasAracUygunlugu | null {
   let en: TakasAracUygunlugu | null = null;
   let enSira = Infinity;
   for (const a of araclar) {
     if (a.uygunluk.durum === "GARAJDA_DEGIL") continue;
-    const sira = a.aktifIlanId != null ? 0 : ONCELIK[a.uygunluk.durum];
+    const sira = aracOnceligi(a);
     if (sira < enSira) {
       en = a;
       enSira = sira;

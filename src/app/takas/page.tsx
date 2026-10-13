@@ -35,6 +35,8 @@ interface TakasSearchParams {
   il?: string; kategori?: string; marka?: string; odeme?: string; sayfa?: string;
   yilMin?: string; yilMax?: string; kmMin?: string; kmMax?: string;
   yakit?: string; vites?: string; q?: string;
+  /** Takas Panelim'den gelinince kayıtlı aramalar listesi açık başlar (?aramalar=1). */
+  aramalar?: string;
 }
 
 export async function generateMetadata({
@@ -220,6 +222,7 @@ export default async function TakasPage({
         yakit={yakit}
         vites={vites}
         initialSearches={savedSearches}
+        baslangicAcik={params.aramalar === "1"}
       />
 
       {listings.length === 0 ? (

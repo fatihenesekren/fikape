@@ -71,6 +71,7 @@ export function SavedSearchPanel({
   yakit,
   vites,
   initialSearches,
+  baslangicAcik = false,
 }: {
   isLoggedIn: boolean;
   il: string;
@@ -84,14 +85,19 @@ export function SavedSearchPanel({
   yakit: string;
   vites: string;
   initialSearches: SavedSearchRow[];
+  /** Kayıtlı aramalar listesi açık başlasın (Takas Panelim'den ?aramalar=1 ile gelinince). */
+  baslangicAcik?: boolean;
 }) {
   const router = useRouter();
   const [searches, setSearches] = useState(initialSearches);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(baslangicAcik);
 
-  if (!isLoggedIn || !il) return null;
+  // Şehir seçilmemişse "bu aramayı kaydet" anlamsız ama KAYITLI aramalar yine görünmeli: önceden panel
+  // tümüyle gizleniyordu ve Takas Panelim'deki "Kayıtlı aramalarım" bağlantısı listeye ulaşamıyordu.
+  const kaydedilebilir = Boolean(il);
+  if (!isLoggedIn || (!kaydedilebilir && searches.length === 0)) return null;
 
   async function saveSearch() {
     setSaving(true);
@@ -135,17 +141,23 @@ export function SavedSearchPanel({
   }
 
   return (
-    <div className="mb-6 -mt-4">
-      <div className="flex items-center gap-3">
-        <button
-          onClick={saveSearch}
-          disabled={saving}
-          className="text-xs font-semibold text-link hover:underline disabled:opacity-60"
-        >
-          🔔 {saving ? "Kaydediliyor..." : "Bu aramayı kaydet, yeni ilan gelince haber ver"}
-        </button>
+    <div id="kayitli-aramalar" className="mb-6 -mt-4 scroll-mt-20">
+      <div className="flex items-center gap-3 flex-wrap">
+        {kaydedilebilir && (
+          <button
+            onClick={saveSearch}
+            disabled={saving}
+            className="text-xs font-semibold text-link hover:underline disabled:opacity-60"
+          >
+            <span aria-hidden="true">🔔 </span>{saving ? "Kaydediliyor..." : "Bu aramayı kaydet, yeni ilan gelince haber ver"}
+          </button>
+        )}
         {searches.length > 0 && (
-          <button onClick={() => setExpanded((v) => !v)} className="text-xs text-gray-400 hover:underline">
+          <button
+            onClick={() => setExpanded((v) => !v)}
+            aria-expanded={expanded}
+            className="text-xs font-semibold text-gray-600 hover:underline"
+          >
             Kayıtlı aramalarım ({searches.length})
           </button>
         )}

@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import type { PartCondition } from "@/lib/carParts";
+import { getTakasFiltreSecenekleri } from "@/lib/takasFiltre";
 
 // TradeToggleCard (ilan açma/düzenleme/kapatma/yenileme kartı) için gereken veri — Garajım'da araç kartının
 // içinde, Takas Panelim'de "İlanlarım" bölümünde AYNI kart kullanılır; veri de tek yerden yüklenir
@@ -8,7 +9,8 @@ import type { PartCondition } from "@/lib/carParts";
 // Sadece aktif değil, en son (kapalı dahil) ilan da çekilir — kapalı bir ilanı "yeniden aç" seçeneği
 // sunabilmek için (bkz. denetim raporu Faz 2).
 export async function takasIlanFormVerisi(userId: number) {
-  const [tradeListings, categories, brands, categoryBrandLinks] = await Promise.all([
+  // Katalog kısmı (kategori, marka, hangi kategoride hangi marka) önbellekten; yalnız kullanıcının ilanları canlı.
+  const [tradeListings, secenekler] = await Promise.all([
     prisma.tradeListing.findMany({
       where: { userId },
       select: {
@@ -32,11 +34,14 @@ export async function takasIlanFormVerisi(userId: number) {
       },
       orderBy: { createdAt: "desc" },
     }).catch(() => []),
-    // Sadece yaprak kategoriler (üst kategori "Araçlar" hariç)
-    prisma.category.findMany({ where: { isActive: true, parentId: { not: null } }, select: { id: true, name: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
-    prisma.brand.findMany({ where: { isActive: true }, select: { id: true, name: true }, orderBy: { name: "asc" } }).catch(() => []),
-    prisma.product.findMany({ where: { isActive: true }, select: { categoryId: true, brandId: true }, distinct: ["categoryId", "brandId"] }).catch(() => []),
+    // Sadece yaprak kategoriler (üst kategori "Araçlar" hariç) — bkz. lib/takasFiltre.ts
+    getTakasFiltreSecenekleri().catch(() => ({
+      categories: [] as { id: number; slug: string; name: string }[],
+      brands: [] as { id: number; slug: string; name: string }[],
+      categoryBrandIdMap: {} as Record<number, number[]>,
+    })),
   ]);
+  const { categories, brands, categoryBrandIdMap: categoryBrandMap } = secenekler;
 
   // tradeListings createdAt desc sıralı — her userProductId için İLK karşılaşılan (yani en yeni) kayıt
   // tutulmalı; new Map(array) tam tersini yapıp SON kaydı tutar, bu yüzden manuel olarak sadece henüz
@@ -51,10 +56,5 @@ export async function takasIlanFormVerisi(userId: number) {
       listingByUserProductId.set(t.userProductId, { ...rest, partConditions: partConditionsMap });
     }
   }
-  const categoryBrandMap: Record<number, number[]> = {};
-  for (const link of categoryBrandLinks) {
-    (categoryBrandMap[link.categoryId] ??= []).push(link.brandId);
-  }
-
   return { categories, brands, categoryBrandMap, listingByUserProductId };
 }

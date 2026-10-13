@@ -24,18 +24,21 @@ async function secenekleriGetir() {
     }),
     prisma.product.findMany({
       where: { isActive: true },
-      select: { category: { select: { slug: true } }, brand: { select: { slug: true } } },
+      select: { categoryId: true, brandId: true, category: { select: { slug: true } }, brand: { select: { slug: true } } },
       distinct: ["categoryId", "brandId"],
     }),
   ]);
+  // /takas filtresi slug tabanlı, ilan formu (Garajım, Takas Panelim) id tabanlı harita ister — aynı sorgudan ikisi birden.
   const categoryBrandMap: Record<string, string[]> = {};
+  const categoryBrandIdMap: Record<number, number[]> = {};
   for (const link of categoryBrandLinks) {
     (categoryBrandMap[link.category.slug] ??= []).push(link.brand.slug);
+    (categoryBrandIdMap[link.categoryId] ??= []).push(link.brandId);
   }
-  return { categories, brands, categoryBrandMap };
+  return { categories, brands, categoryBrandMap, categoryBrandIdMap };
 }
 
-export const getTakasFiltreSecenekleri = unstable_cache(secenekleriGetir, ["takas-filtre-v1"], {
+export const getTakasFiltreSecenekleri = unstable_cache(secenekleriGetir, ["takas-filtre-v2"], {
   revalidate: TAKAS_FILTRE_TTL_SN,
   tags: [ARAC_HAVUZU_ETIKETI],
 });
