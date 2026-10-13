@@ -23,6 +23,7 @@ import {
 } from "@/lib/vehicleFacets";
 import { AraclarFilters, type FacetGroupView } from "./AraclarFilters";
 import { AraclarSearchBox } from "./AraclarSearchBox";
+import { ScrollBasaAl } from "./ScrollBasaAl";
 
 export const dynamic = "force-dynamic";
 
@@ -94,6 +95,7 @@ export default async function AraclarPage({
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8">
+      <ScrollBasaAl />
       <Link
         href="/"
         className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-gray-600 mb-4 transition-colors"
