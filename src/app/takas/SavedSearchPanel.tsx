@@ -173,11 +173,11 @@ function SavedSearchPanelIci({
       {gorunum === "kart" && (
         <div className="rounded-2xl border border-link-line bg-link-soft/60 overflow-hidden">
           <div className="p-3 sm:p-4">
-            <div className="flex items-center justify-between gap-3">
-              <p className="text-xs font-semibold text-gray-600">Şu an listelenen</p>
+            <div className="flex items-start justify-between gap-3">
+              <p className="pt-1 text-xs font-semibold text-gray-600">Şu an listelenen:</p>
               <Link
                 href="/takas"
-                className={`inline-flex items-center gap-1 min-h-11 -my-2 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline whitespace-nowrap ${odakHalkasi}`}
+                className={`inline-flex items-center gap-1 min-h-11 -mt-2 -mb-1 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline whitespace-nowrap ${odakHalkasi}`}
               >
                 <span aria-hidden="true">✕</span> Filtreleri temizle
               </Link>
