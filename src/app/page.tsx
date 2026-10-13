@@ -9,6 +9,7 @@ import { CardGridSkeleton } from "./_components/CardGridSkeleton";
 import { RecentReviews } from "./_components/RecentReviews";
 import { UstaBandi } from "./_components/UstaBandi";
 import { TakasBandi } from "./_components/TakasBandi";
+import { TumAraclarCta } from "./_components/TumAraclarCta";
 import { TrendVehicleCard } from "./_components/TrendVehicleCard";
 import { CategoryTabs } from "./_components/CategoryTabs";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
@@ -161,17 +162,8 @@ export default async function Home({
         <ProductGrid quizParam={quizParam} />
       </Suspense>
 
-      {/* ── Tüm kataloğa geçiş ── */}
-      {!quizParam && (
-        <div className="w-full max-w-7xl mx-auto px-4 -mt-2 pb-8">
-          <Link
-            href="/araclar"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-link hover:underline"
-          >
-            Tüm araçlar →
-          </Link>
-        </div>
-      )}
+      {/* ── Tüm kataloğa geçiş (quiz modunda gizli) ── */}
+      {!quizParam && <TumAraclarCta />}
 
       {/* ── FI·KA·PE açıklama ── */}
       <section className="w-full max-w-7xl mx-auto px-4 pb-8">
