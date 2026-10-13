@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma";
 import { isTradeListingEnabled } from "@/lib/features";
 import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 import { takasUygunlukToplu, enIlerideArac, takasSonrakiAdim, type TakasAracUygunlugu } from "@/lib/takasUygunluk";
+import { takasIlanFormVerisi } from "@/lib/takasIlanVerisi";
+import { TradeToggleCard } from "@/app/garajim/TradeToggleCard";
 import { SwapIcon, SearchLoupeIcon, ClipboardIcon, MessageIcon } from "@/components/icons";
 
 export const metadata: Metadata = { title: "Takas Panelim", robots: { index: false } };
@@ -51,12 +53,14 @@ export default async function TakasPanelimPage() {
   if (en) {
     aracAdi = stripGenRangeAnywhere(en.productName);
     const garajHref = `/garajim#arac-${en.userProductId}`;
+    // İlan işlemleri (düzenle/yenile/kapat/aç) bu sayfadaki "İlanlarım" bölümünde; Garajım'a gitmeye gerek yok.
+    const ilanlarimHref = "#ilanlarim";
     if (en.aktifIlanId != null) {
-      metin = "İlanınız yayında. Düzenlemek, yenilemek veya kapatmak için Garajım'a gidin.";
-      buton = { etiket: "İlanınızı yönetin", href: garajHref };
+      metin = "İlanınız yayında. Düzenlemek, yenilemek veya kapatmak için aşağıdaki İlanlarım bölümünü kullanın.";
+      buton = { etiket: "İlanınızı yönetin", href: ilanlarimHref };
     } else if (en.uygunluk.uygun) {
       metin = "Gerekli adımlar tamamlandı. Aracınızı takasa açabilirsiniz.";
-      buton = { etiket: "Aracınızı takasa açın", href: garajHref };
+      buton = { etiket: "Aracınızı takasa açın", href: ilanlarimHref };
     } else {
       const sonraki = takasSonrakiAdim(en.uygunluk, en.productSlug);
       metin = `${sonraki.baslik}. ${sonraki.metin}`;
@@ -64,6 +68,26 @@ export default async function TakasPanelimPage() {
       buton = sonraki.buton ?? { etiket: "Garajım'da durumu görün", href: garajHref };
     }
   }
+
+  // "İlanlarım" bölümü: aktif ilanı olan ya da takasa açmaya hazır araçlar için Garajım'daki AYNI kart
+  // (TradeToggleCard) — ilan işlemleri için Garajım'a gitmek gerekmez. Henüz şartı sağlamayan araçlar
+  // yalnızca yukarıdaki "sıradaki adım"da görünür; araç bazlı şart kartı Garajım'da.
+  const kartAraclari = araclar
+    .filter((a) => a.uygunluk.durum !== "GARAJDA_DEGIL" && (a.aktifIlanId != null || a.uygunluk.uygun))
+    .sort((x, y) => Number(y.aktifIlanId != null) - Number(x.aktifIlanId != null));
+  const kartVerisi = kartAraclari.length > 0 ? await takasIlanFormVerisi(userId) : null;
+  const kartAracDetay = kartAraclari.length > 0
+    ? new Map(
+        (
+          await prisma.userProduct
+            .findMany({
+              where: { userId, id: { in: kartAraclari.map((a) => a.userProductId) } },
+              select: { id: true, usageAmount: true, usageUnit: true, product: { select: { category: { select: { slug: true } } } } },
+            })
+            .catch(() => [])
+        ).map((k) => [k.id, k]),
+      )
+    : new Map<number, { id: number; usageAmount: number | null; usageUnit: string | null; product: { category: { slug: string } | null } }>();
 
   return (
     <div className="max-w-3xl w-full mx-auto px-4 py-10">
@@ -107,9 +131,38 @@ export default async function TakasPanelimPage() {
         </div>
       </div>
 
+      {kartVerisi && (
+        <section id="ilanlarim" className="scroll-mt-20 mb-8" aria-labelledby="ilanlarim-baslik">
+          <h2 id="ilanlarim-baslik" className="text-sm font-bold text-gray-900 mb-3">İlanlarım</h2>
+          <div className="space-y-4">
+            {kartAraclari.map((a) => {
+              const detay = kartAracDetay.get(a.userProductId);
+              return (
+                <div key={a.userProductId} className="bg-white border border-gray-100 rounded-2xl p-4 overflow-hidden">
+                  <p className="text-sm font-semibold text-gray-900 truncate">{stripGenRangeAnywhere(a.productName)}</p>
+                  <TradeToggleCard
+                    userProductId={a.userProductId}
+                    canOpenTrade={a.uygunluk.uygun}
+                    takasAcik={acik}
+                    sart={{ adimlar: a.uygunluk.adimlar, sonraki: takasSonrakiAdim(a.uygunluk, a.productSlug) }}
+                    categories={kartVerisi.categories}
+                    brands={kartVerisi.brands}
+                    categoryBrandMap={kartVerisi.categoryBrandMap}
+                    existingListing={kartVerisi.listingByUserProductId.get(a.userProductId) ?? null}
+                    currentUsageAmount={detay?.usageUnit === "km" ? detay.usageAmount : null}
+                    productSlug={a.productSlug}
+                    categorySlug={detay?.product.category?.slug ?? ""}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
         <Link
-          href="/garajim"
+          href={kartVerisi ? "#ilanlarim" : "/garajim"}
           className="flex items-center justify-center gap-2.5 px-3 py-3.5 rounded-2xl border border-gray-200 bg-white hover:border-[var(--pe)]/40 hover:shadow-sm transition-all text-sm font-semibold text-gray-900"
         >
           <span className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: "var(--pe-bg)" }}>
@@ -150,6 +203,9 @@ export default async function TakasPanelimPage() {
       </div>
 
       <p className="text-xs text-gray-500 flex flex-wrap gap-x-4 gap-y-1">
+        <Link href="/garajim" className="hover:underline hover:text-gray-800">
+          Araçlarım (Garajım)
+        </Link>
         <Link href="/takas-pazari-nasil-calisir" className="hover:underline hover:text-gray-800">
           Takas nasıl çalışır?
         </Link>

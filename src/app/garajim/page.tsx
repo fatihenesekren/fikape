@@ -12,11 +12,11 @@ import { formatSoldReasons } from "@/lib/soldReasons";
 import { GarageAnimation } from "./GarageAnimation";
 import { InsuranceLeadCard } from "./InsuranceLeadCard";
 import { TradeToggleCard } from "./TradeToggleCard";
+import { takasIlanFormVerisi } from "@/lib/takasIlanVerisi";
 import { isTradeListingEnabled } from "@/lib/features";
 import {
   takasUygunlukToplu, takasUygunlukKararVer, takasSonrakiAdim, type TakasAracUygunlugu,
 } from "@/lib/takasUygunluk";
-import type { PartCondition } from "@/lib/carParts";
 import { stripModelGenRange, stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
 export const metadata: Metadata = { title: "Garajım", robots: { index: false } };
@@ -61,54 +61,10 @@ export default async function GarajimPage() {
   const takasAcik = isTradeListingEnabled();
   const leadProductIds = new Set(insuranceLeads.map((l) => l.productId));
 
-  const [tradeListings, tradeCategories, tradeBrands, categoryBrandLinks] = await Promise.all([
-    // Sadece aktif değil, en son (kapalı dahil) ilan da çekiliyor — kapalı bir
-    // ilanı "yeniden aç" seçeneği sunabilmek için (bkz. denetim raporu Faz 2).
-    prisma.tradeListing.findMany({
-      where: { userId },
-      select: {
-        id: true, userProductId: true, isActive: true, city: true,
-        paymentIntent: true, note: true, description: true, wantAnything: true,
-        wantCategoryId: true, wantBrandId: true,
-        wantLocationScope: true, wantDamageStatuses: true,
-        wantYearMin: true, wantYearMax: true, wantKmMin: true, wantKmMax: true,
-        wantFuelTypes: true, wantTransmissions: true,
-        partConditions: { select: { partKey: true, condition: true } },
-        damageStatus: true, damageStatusNote: true,
-        engineCondition: true, engineNote: true,
-        transmissionCondition: true, transmissionNote: true,
-        runningGearCondition: true, runningGearNote: true,
-        tramerRecords: { select: { month: true, year: true, amount: true }, orderBy: [{ year: "desc" }, { month: "desc" }] },
-        photos: {
-          where: { status: { not: "REJECTED" } },
-          select: { id: true, url: true, status: true },
-          orderBy: [{ order: "asc" }, { createdAt: "asc" }],
-        },
-      },
-      orderBy: { createdAt: "desc" },
-    }).catch(() => []),
-    // Sadece yaprak kategoriler (üst kategori "Araçlar" hariç)
-    prisma.category.findMany({ where: { isActive: true, parentId: { not: null } }, select: { id: true, name: true }, orderBy: { sortOrder: "asc" } }).catch(() => []),
-    prisma.brand.findMany({ where: { isActive: true }, select: { id: true, name: true }, orderBy: { name: "asc" } }).catch(() => []),
-    prisma.product.findMany({ where: { isActive: true }, select: { categoryId: true, brandId: true }, distinct: ["categoryId", "brandId"] }).catch(() => []),
-  ]);
-  // tradeListings createdAt desc sıralı — her userProductId için İLK karşılaşılan
-  // (yani en yeni) kayıt tutulmalı; new Map(array) tam tersini yapıp SON kaydı
-  // tutar, bu yüzden manuel olarak sadece henüz map'te olmayan anahtarlar ekleniyor.
-  const tradeListingByUserProductId = new Map<number, Omit<(typeof tradeListings)[number], "partConditions"> & { partConditions: Record<string, PartCondition> }>();
-  for (const t of tradeListings) {
-    if (!tradeListingByUserProductId.has(t.userProductId)) {
-      const { partConditions: rawPartConditions, ...rest } = t;
-      const partConditionsMap: Record<string, PartCondition> = Object.fromEntries(
-        rawPartConditions.map((p) => [p.partKey, p.condition as PartCondition])
-      );
-      tradeListingByUserProductId.set(t.userProductId, { ...rest, partConditions: partConditionsMap });
-    }
-  }
-  const categoryBrandMap: Record<number, number[]> = {};
-  for (const link of categoryBrandLinks) {
-    (categoryBrandMap[link.categoryId] ??= []).push(link.brandId);
-  }
+  // TradeToggleCard için ilan/kategori/marka verisi — Takas Panelim'deki "İlanlarım" ile ortak (lib/takasIlanVerisi.ts).
+  const {
+    categories: tradeCategories, brands: tradeBrands, categoryBrandMap, listingByUserProductId: tradeListingByUserProductId,
+  } = await takasIlanFormVerisi(userId);
 
   const userProducts = await prisma.userProduct.findMany({
     where: { userId },
