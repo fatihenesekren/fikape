@@ -1,6 +1,6 @@
 // PWA ikonlarını (public/icons/*.png) üretir. Elle çalıştırılır: npx tsx scripts/pwa-ikon-uret.tsx
 // - icon-192 / icon-512: Android açılış (splash) ekranında ortada görünen "halka + fi·ka·pe" birleşik görseli
-// - icon-maskable-512: ana ekran ikonu; Android splash'te de bunu seçiyor, bu yüzden aynı lockup, güvenli alanın kenarına kadar (%86 ölçek; dairesel ana ekran maskesinde yazının uçları hafif kırpılabilir, splash büyük görünsün diye bilerek) ve zemin splash ile aynı #111
+// - icon-maskable-512: ana ekran ikonu (Android açılışta da bunu seçiyor): yalnız halka, zemin splash ile aynı #111
 import { ImageResponse } from "next/og";
 import { readFileSync, writeFileSync } from "node:fs";
 import { FIKAPE_SOFT } from "@/lib/fikape";
@@ -28,9 +28,7 @@ const yaylar = (d: number, kalinlik: number) =>
     />
   ));
 
-// olcek: içerik tuvalin ne kadarını kaplasın (maskable için güvenli alana sığması gerekir)
-function lockup(tuval: number, olcek = 1) {
-  const s = tuval * olcek;
+function lockup(s: number) {
   const halka = Math.round(s * 0.3);
   const yazi = Math.round(s * 0.2);
   return (
@@ -38,15 +36,25 @@ function lockup(tuval: number, olcek = 1) {
       <div style={{ display: "flex", position: "relative", width: halka, height: halka }}>{yaylar(halka, Math.round(halka * 0.17))}</div>
       <div style={{ display: "flex", alignItems: "baseline", fontFamily: "Segoe UI Black", fontWeight: 900, fontSize: yazi, lineHeight: 1 }}>
         <span style={{ color: FIKAPE_SOFT.fi }}>fi</span>
-        <span style={{ color: "#6b7280", fontWeight: 900, margin: `0 ${Math.round(yazi * 0.06)}px` }}>·</span>
+        <span style={{ color: "#6b7280", fontWeight: 900, margin: `0 ${Math.round(yazi * 0.12)}px` }}>·</span>
         <span style={{ color: FIKAPE_SOFT.ka }}>ka</span>
-        <span style={{ color: "#6b7280", fontWeight: 900, margin: `0 ${Math.round(yazi * 0.06)}px` }}>·</span>
+        <span style={{ color: "#6b7280", fontWeight: 900, margin: `0 ${Math.round(yazi * 0.12)}px` }}>·</span>
         <span style={{ color: FIKAPE_SOFT.pe }}>pe</span>
       </div>
     </div>
   );
 }
 
+
+// Ana ekran + Android açılış ikonu (Android ikisi için aynı maskable ikonu seçiyor): yalnız halka, güvenli alanın içinde en büyük hâliyle
+function maskable(s: number) {
+  const halka = Math.round(s * 0.6);
+  return (
+    <div style={{ width: "100%", height: "100%", background: "#111", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ display: "flex", position: "relative", width: halka, height: halka }}>{yaylar(halka, Math.round(halka * 0.17))}</div>
+    </div>
+  );
+}
 
 async function yaz(ad: string, el: React.ReactElement, s: number) {
   const buf = Buffer.from(await new ImageResponse(el, { width: s, height: s, fonts: [{ name: "Segoe UI Black", data: FONT, weight: 900, style: "normal" }] }).arrayBuffer());
@@ -57,6 +65,6 @@ async function yaz(ad: string, el: React.ReactElement, s: number) {
 async function main() {
   await yaz("icon-192.png", lockup(192), 192);
   await yaz("icon-512.png", lockup(512), 512);
-  await yaz("icon-maskable-512.png", lockup(512, 0.86), 512);
+  await yaz("icon-maskable-512.png", maskable(512), 512);
 }
 main();
