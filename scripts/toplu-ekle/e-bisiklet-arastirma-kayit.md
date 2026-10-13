@@ -276,3 +276,6 @@ Togg T10F (id 3): 218 HP, 350 Nm, 335 km, 8,0 sn, 505 L (resmi Togg sitesi + Vid
 
 ## 66. tur — 3 elektrikli motosiklet eklendi (2026-10-13)
 Volta VT5 2025 (id 1093, üç tekerlekli, moto_type uc-tekerlekli; 3,5 kW, 16 Nm, 3,24 kWh, 48 km, 45 km/s, 263 kg, 2 kademeli şanzıman + geri vites, vites Manuel), Motolux Fayton FX09 2024 (1094, üç tekerlekli; 1000 W, 1,2 kWh, 60 km, 25 km/s, 93 kg), Motolux E-Vintage 2024 (1095, retro; 2000 W, 1,44 kWh, 55 km, 45 km/s, 63 kg). Tırmanma, tüketim, taşıma kapasitesi ve ABS için alan yok / tabloda yok, girilmedi. Fayton FX09 2024 tablosunda 1000 W; 2025 kataloğunda 640 W — model yılı farkı olarak bırakıldı. Görselleri kullanıcı ekleyecek.
+
+## 67. tur — 5 elektrikli motosiklet eklendi (2026-10-13)
+Motolux Gogo 2024 (id 1096, moped; ABS yok), Arora Navara XLT48A 2025 (1097, üç tekerlekli), Arora ZR2 2025 (1098, scooter; motor gücü ve azami hız tabloda yok, boş), Skyjet Optimus Ultra 2025 (1099, üç tekerlekli; hız 30–50 → 50, ağırlık yok, "12 Tube" denetleyici bilgisi girilmedi), Falcon New Handy 2025 (1100, cub; 800 W "maksimum güç" tepe alanına girildi, sürekli güç boş). Tırmanma, taşıma kapasitesi/azami yüklü kütle ve donanım listeleri için alan yok. Görselleri kullanıcı ekleyecek.
