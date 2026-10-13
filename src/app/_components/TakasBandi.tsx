@@ -31,7 +31,8 @@ export async function TakasBandi() {
       </h2>
       <Link
         href={panelli ? "/takas-panelim" : "/takas-pazari-nasil-calisir"}
-        className="flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 min-h-11 border border-gray-100 bg-white transition-shadow hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+        aria-label={panelli ? "Takas panelinize gidin" : undefined}
+        className="group flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 min-h-11 border border-gray-100 bg-white transition-shadow hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         style={{ outlineColor: "var(--link)" }}
       >
         <div className="flex items-center gap-3 min-w-0">
@@ -60,13 +61,12 @@ export async function TakasBandi() {
             )}
           </span>
         </div>
-        <span
-          className="flex items-center gap-1 text-xs font-semibold rounded-xl px-4 py-2 shrink-0 text-white"
-          style={{ background: "var(--btn-dark)" }}
-        >
-          {panelli ? "Panelim" : "Nasıl çalışır"}
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        {/* İkincil eylem: yumuşak mavi ton (ana eylem NiyetKarti'ndeki siyah buton kalsın; üç bant aynı
+            vurguda yarışmasın). Kart hover'ında koyulaşır, ok mobilde gizli (dar ekranda metne yer açar). */}
+        <span className="flex items-center gap-1 whitespace-nowrap text-xs font-semibold rounded-xl px-3 sm:px-4 py-2 shrink-0 border border-link-line bg-link-soft text-link-deep transition-colors group-hover:bg-[#D4E6F8]">
+          {panelli ? "Takas Panelim" : "Nasıl çalışır"}
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="hidden sm:block">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
       </Link>
