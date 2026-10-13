@@ -9,14 +9,14 @@ export const metadata = { title: "Yorum Yaz", robots: { index: false } };
 export default async function YorumYazPage({
   searchParams,
 }: {
-  searchParams: Promise<{ arac?: string; onay?: string; yeni?: string }>;
+  searchParams: Promise<{ arac?: string; onay?: string; yeni?: string; takas?: string }>;
 }) {
   const session = await auth();
   if (!session) {
     redirect("/giris?callbackUrl=/yorum-yaz");
   }
 
-  const { arac, onay, yeni } = await searchParams;
+  const { arac, onay, yeni, takas } = await searchParams;
 
   if (onay === "bekliyor") {
     return (
@@ -126,6 +126,7 @@ export default async function YorumYazPage({
       defaultSlug={arac}
       justAdded={yeni === "1"}
       reviewedSlugs={reviewedSlugs}
+      takas={takas === "1"}
     />
   );
 }

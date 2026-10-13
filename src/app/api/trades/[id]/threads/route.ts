@@ -40,7 +40,7 @@ export async function POST(
   }
   if (user.trustLevel < 3) {
     return NextResponse.json(
-      { error: "Mesaj göndermek için garajınızda fotoğraflı, onaylanmış bir yorumunuz olması gerekiyor." },
+      { error: "Mesaj göndermek için fotoğraflı bir yorumunuzun yayınlanmış olması gerekiyor." },
       { status: 403 }
     );
   }

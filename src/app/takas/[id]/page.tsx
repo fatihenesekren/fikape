@@ -599,8 +599,11 @@ export default async function TakasDetayPage({
             {cooldownUntil.toLocaleDateString("tr-TR", { day: "numeric", month: "long" })} tarihinden sonra tekrar deneyebilirsiniz.
           </p>
         ) : trustLevel < 3 ? (
-          <p className="mt-5 text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">
-            Mesaj göndermek için garajınızda fotoğraflı, onaylanmış bir yorumunuz olması gerekiyor.
+          <p className="mt-5 text-xs text-gray-600 bg-gray-50 rounded-lg px-3 py-2">
+            Mesaj göndermek için fotoğraflı bir yorumunuzun yayınlanmış olması gerekiyor.{" "}
+            <Link href="/garajim" className="font-semibold text-link hover:underline">
+              Garajım&apos;dan durumu görün →
+            </Link>
           </p>
         ) : !isTradeMessagingEnabled() ? (
           <p className="mt-5 text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">

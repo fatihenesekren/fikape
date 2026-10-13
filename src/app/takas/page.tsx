@@ -4,6 +4,7 @@ import { Prisma } from "@/generated/prisma/client";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
+import { getTakasFiltreSecenekleri } from "@/lib/takasFiltre";
 import { TradeCard } from "./TradeCard";
 import { TakasFilterForm } from "./TakasFilterForm";
 import { SavedSearchPanel } from "./SavedSearchPanel";
@@ -12,6 +13,7 @@ import type { LocationScope, TradeFuelType } from "@/lib/tradeExpectations";
 import type { DamageStatus } from "@/lib/damageStatus";
 
 const PAGE_SIZE = 20;
+const MAX_SAYFA = 50;
 
 // Serbest metin aramada aksan-duyarsızlık — ana site aramasındaki (/arama)
 // normalize() ile aynı mantık (bkz. kullanıcı onayı: "ana site aramasıyla
@@ -56,7 +58,8 @@ export default async function TakasPage({
 }) {
   const params = await searchParams;
   const il = params.il ?? "";
-  const page = Math.max(1, parseInt(params.sayfa ?? "1") || 1);
+  // Üst sınır: botların çok derin offset sorguları çekmesini engeller (20'lik sayfada 1000 ilan).
+  const page = Math.min(MAX_SAYFA, Math.max(1, parseInt(params.sayfa ?? "1") || 1));
   const yilMin = params.yilMin ? parseInt(params.yilMin) : undefined;
   const yilMax = params.yilMax ? parseInt(params.yilMax) : undefined;
   const kmMin = params.kmMin ? parseInt(params.kmMin) : undefined;
@@ -64,6 +67,11 @@ export default async function TakasPage({
   const yakit = params.yakit ?? "";
   const vites = params.vites ?? "";
   const q = (params.q ?? "").trim();
+  // Filtre uygulanmış mı (sayfa numarası hariç) — boş sonuç "pazar boş" mu "filtre dar" mı ayrımı için.
+  const filtreVar = Boolean(
+    il || params.kategori || params.marka || params.odeme || params.yilMin || params.yilMax ||
+    params.kmMin || params.kmMax || yakit || vites || q,
+  );
 
   // İl seçilmemişse artık tüm Türkiye'deki ilanlar gösteriliyor (önceden boş sayfa gösterip
   // platformun envanterini hiç göstermiyordu — bkz. denetim raporu).
@@ -91,25 +99,12 @@ export default async function TakasPage({
     return q ? `/takas?${q}` : "/takas";
   }
 
-  const categories = await prisma.category.findMany({
-    where: { isActive: true, parentId: { not: null } },
-    select: { id: true, slug: true, name: true },
-    orderBy: { sortOrder: "asc" },
-  }).catch(() => []);
-  const brands = await prisma.brand.findMany({
-    where: { isActive: true },
-    select: { id: true, slug: true, name: true },
-    orderBy: { name: "asc" },
-  }).catch(() => []);
-  const categoryBrandLinks = await prisma.product.findMany({
-    where: { isActive: true },
-    select: { category: { select: { slug: true } }, brand: { select: { slug: true } } },
-    distinct: ["categoryId", "brandId"],
-  }).catch(() => []);
-  const categoryBrandMap: Record<string, string[]> = {};
-  for (const link of categoryBrandLinks) {
-    (categoryBrandMap[link.category.slug] ??= []).push(link.brand.slug);
-  }
+  // Kategori/marka seçenekleri nadiren değişir — her istekte üç sorgu yerine önbellekten (lib/takasFiltre.ts).
+  const { categories, brands, categoryBrandMap } = await getTakasFiltreSecenekleri().catch(() => ({
+    categories: [] as { id: number; slug: string; name: string }[],
+    brands: [] as { id: number; slug: string; name: string }[],
+    categoryBrandMap: {} as Record<string, string[]>,
+  }));
 
   const session = await auth();
   const isLoggedIn = !!session?.user?.id;
@@ -228,12 +223,46 @@ export default async function TakasPage({
       />
 
       {listings.length === 0 ? (
-        <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-10 text-center text-gray-400 text-sm">
-          {page > 1
-            ? "Bu sayfada ilan yok."
-            : il
-            ? "Bu ilde henüz ilan yok. Veri birikiyor — ilk sen ol."
-            : "Henüz ilan yok. Veri birikiyor — ilk sen ol."}
+        <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-8 sm:p-10 text-center space-y-3">
+          {page > 1 ? (
+            <>
+              <p className="text-sm text-gray-600">Bu sayfada ilan yok.</p>
+              <Link href={pageHref(1)} className="inline-block text-sm font-semibold text-link hover:underline">
+                İlk sayfaya dönün
+              </Link>
+            </>
+          ) : filtreVar ? (
+            <>
+              <p className="text-sm text-gray-600">
+                {il ? `${il} ilinde bu filtrelere uyan ilan yok.` : "Bu filtrelere uyan ilan yok."}
+              </p>
+              <p className="text-xs text-gray-500">
+                {isLoggedIn
+                  ? "Yukarıdaki kayıtlı aramayla bu kriterlere uyan ilan açıldığında haber alabilirsiniz."
+                  : "Giriş yaparak bu kriterler için kayıtlı arama oluşturabilir, ilan açıldığında haber alabilirsiniz."}
+              </p>
+              <Link
+                href="/takas"
+                className="inline-flex items-center justify-center min-h-11 px-4 rounded-xl text-sm font-semibold text-link border-2 border-link-line hover:bg-link-soft/60 transition-colors"
+              >
+                Filtreleri temizle
+              </Link>
+            </>
+          ) : (
+            <>
+              <p className="text-sm font-semibold text-gray-800">Henüz ilan yok</p>
+              <p className="text-sm text-gray-600">
+                Garajınızdaki aracı takasa açarak ilk ilanlardan birini siz verebilirsiniz.
+              </p>
+              <Link
+                href={isLoggedIn ? "/garajim" : "/giris?callbackUrl=%2Fgarajim"}
+                className="inline-flex items-center justify-center min-h-11 px-5 rounded-xl text-sm font-semibold text-white"
+                style={{ background: "var(--btn-dark)" }}
+              >
+                {isLoggedIn ? "Garajıma gidin" : "Giriş yapın"}
+              </Link>
+            </>
+          )}
         </div>
       ) : (
         <div className="space-y-4">

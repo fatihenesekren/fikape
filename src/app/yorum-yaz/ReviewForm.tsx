@@ -60,9 +60,11 @@ interface Props {
       (araç sayfası, garaj, favori...) `?arac=` taşısa da bu kutuyu göstermez. */
   justAdded?: boolean;
   reviewedSlugs?: string[];
+  /** Takas Pazarı adımından gelindi (?takas=1): Detaylı mod açık başlar, fotoğraf ipucu gösterilir. */
+  takas?: boolean;
 }
 
-export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedSlugs = [] }: Props) {
+export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedSlugs = [], takas = false }: Props) {
   const router = useRouter();
 
   // ── Araç arama ───────────────────────────────────────────────────────────
@@ -161,7 +163,9 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
 
   const [error,   setError]   = useState("");
   const [loading, setLoading] = useState(false);
-  const [mode,    setMode]    = useState<"quick" | "full">("quick");
+  // Fotoğraf yalnızca Detaylı modda var; takasa açmak için fotoğraflı yorum gerektiğinden
+  // Takas adımından gelen kullanıcı Hızlı modda fotoğrafsız yorum bırakıp şartı sağlayamazdı.
+  const [mode,    setMode]    = useState<"quick" | "full">(takas ? "full" : "quick");
   const isQuick = mode === "quick";
 
   // Chip listesini seçili araca göre hesapla
@@ -308,6 +312,14 @@ export function ReviewForm({ products, defaultSlug, justAdded = false, reviewedS
             Şimdi değil, sonra yazarım →
           </Link>
         </div>
+      )}
+
+      {takas && (
+        <p className="px-4 py-3 rounded-xl bg-link-soft/60 border border-link-line text-sm text-link-deep" role="note">
+          {isQuick
+            ? "Aracınızı takasa açmak için Detaylı yorum ve en az 1 fotoğraf gerekir."
+            : "Bu yorumdaki fotoğraf, aracınızı Takas Pazarı'na açmanızı da sağlar. Fotoğraf bölümü aşağıda hazır; en az 1 fotoğraf eklemeniz yeterli."}
+        </p>
       )}
 
       {/* Değerlendirme türü — iki seçenek de içeriğiyle birlikte görünür ki
