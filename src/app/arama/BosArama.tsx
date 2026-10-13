@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { POPULAR_SEARCHES, populerAramaHref } from "@/lib/popularSearches";
 import { KATEGORILER, kategoriHref } from "@/lib/kategoriler";
+import { TumAraclarCta } from "@/app/_components/TumAraclarCta";
 
 const FOCUS =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2";
@@ -43,12 +44,10 @@ export function BosArama() {
         </ul>
       </section>
 
-      <p className="mt-8 text-sm text-gray-600">
-        Ne aradığınızdan emin değil misiniz?{" "}
-        <Link href="/araclar" className={`font-semibold text-link hover:underline rounded ${FOCUS}`}>
-          Tüm kataloğa göz atın <span aria-hidden="true">→</span>
-        </Link>
-      </p>
+      <TumAraclarCta
+        aciklama="Ne aradığınızdan emin değil misiniz? Kataloğun tamamına göz atabilirsiniz."
+        className="w-full mt-10"
+      />
     </div>
   );
 }

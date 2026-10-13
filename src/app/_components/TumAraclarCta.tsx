@@ -11,10 +11,15 @@ import { KATALOG_BASA_AL_ANAHTARI } from "@/app/araclar/ScrollBasaAl";
 // Katalog sayısı BİLEREK gösterilmiyor (3 ajanlı karar): gridin çoğu kartında "Henüz yorum yok" varken "318 araç"
 // katalogu boş gösteriyor, sitenin kendi kuralı da küçük rakamı göstermemek (hero istatistikleri bu yüzden kaldırıldı).
 // Metin, sayı yerine somut bir fayda söylüyor.
-export function TumAraclarCta() {
+//
+// Arama sayfasının boş ekranı da aynı bileşeni kullanır (metin ve dış boşluk prop ile verilir): iki yerde aynı düğme.
+export function TumAraclarCta({
+  aciklama = "Aradığınız araç burada yoksa kataloğun tamamına göz atabilirsiniz.",
+  className = "w-full max-w-7xl mx-auto px-4 pt-2 pb-10",
+}: { aciklama?: string; className?: string } = {}) {
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 pt-2 pb-10 flex flex-col items-center gap-3 text-center">
-      <p className="text-sm text-gray-600">Aradığınız araç burada yoksa kataloğun tamamına göz atabilirsiniz.</p>
+    <div className={`${className} flex flex-col items-center gap-3 text-center`}>
+      <p className="text-sm text-gray-600">{aciklama}</p>
       <Link
         href="/araclar"
         onClick={() => {
