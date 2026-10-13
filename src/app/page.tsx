@@ -8,6 +8,7 @@ import { ProductGrid } from "./_components/ProductGrid";
 import { CardGridSkeleton } from "./_components/CardGridSkeleton";
 import { RecentReviews } from "./_components/RecentReviews";
 import { UstaBandi } from "./_components/UstaBandi";
+import { TakasBandi } from "./_components/TakasBandi";
 import { TrendVehicleCard } from "./_components/TrendVehicleCard";
 import { CategoryTabs } from "./_components/CategoryTabs";
 import { ScrollFadeRow } from "@/components/ScrollFadeRow";
@@ -142,6 +143,11 @@ export default async function Home({
 
       {/* ── Son yorumlar (quiz modunda değilken) ── */}
       {!quizParam && <RecentReviews />}
+
+      {/* ── Takas Pazarı bandı (quiz modunda değilken) ── Usta bandının hemen üstünde;
+          üyeyi Takas Panelim'e, misafiri tanıtım sayfasına götürür, özellik kapalıyken
+          görünmez (bkz. _components/TakasBandi.tsx). */}
+      {!quizParam && <TakasBandi />}
 
       {/* ── Usta Görüşü bandı (quiz modunda değilken — kullanıcı kararı) ──
           Aktif ustaya farklı içerikle (kendi paneline link) gösterilir,

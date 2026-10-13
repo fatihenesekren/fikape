@@ -21,10 +21,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     { url: BASE_URL, changeFrequency: "daily", priority: 1 },
-    // /takas siteden hiçbir sayfaya link almadığı için Google için "yetim
-    // sayfa" durumundaydı (bkz. denetim raporu) — sitemap'e eklenmesi kullanıcı
-    // arayüzünü etkilemiyor, sadece Google'ın sayfayı bulmasını sağlıyor.
+    // /takas başlangıçta siteden hiçbir sayfaya link almıyordu ("yetim sayfa", bkz. denetim
+    // raporu); sitemap Google'ın sayfayı bulmasını sağlıyor. Artık ana sayfa bandı, Garajım,
+    // araç sayfası ve tanıtım sayfası da link veriyor.
     { url: `${BASE_URL}/takas`, changeFrequency: "daily", priority: 0.6 },
+    { url: `${BASE_URL}/takas-pazari-nasil-calisir`, changeFrequency: "monthly", priority: 0.5 },
     // Footer'daki statik bilgi/hukuk sayfaları — hiçbiri sitemap'te değildi
     // (bkz. footer denetim raporu, 2026-09-22).
     { url: `${BASE_URL}/nasil-calisir`, changeFrequency: "monthly", priority: 0.5 },

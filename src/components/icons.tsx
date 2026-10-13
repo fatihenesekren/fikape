@@ -70,3 +70,25 @@ export function MessageIcon({ size = 20, className = "" }: IconProps) {
     </svg>
   );
 }
+
+// Takas Panelim — iki yönlü ok (takas); hedefler: ilanlarım / Takas Pazarı.
+export function SwapIcon({ size = 16, className = "" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M7 4 3 8l4 4" />
+      <path d="M3 8h14" />
+      <path d="m17 20 4-4-4-4" />
+      <path d="M21 16H7" />
+    </svg>
+  );
+}
+
+// Kayıtlı aramalarım — büyüteç.
+export function SearchLoupeIcon({ size = 16, className = "" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </svg>
+  );
+}

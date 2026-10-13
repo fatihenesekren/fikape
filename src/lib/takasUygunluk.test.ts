@@ -3,6 +3,8 @@ import {
   takasUygunlukKararVer,
   takasSonrakiAdim,
   takasEngelMesaji,
+  enIlerideArac,
+  type TakasAracUygunlugu,
   type TakasUygunlukGirdisi,
   type TakasDurum,
 } from "./takasUygunluk";
@@ -121,5 +123,37 @@ describe("takasSonrakiAdim", () => {
 
   it("başlık kalan adım sayısını söyler", () => {
     expect(ornek("YORUM_YOK").baslik).toBe("Takasa 2 adım kaldı");
+  });
+});
+
+describe("enIlerideArac", () => {
+  const arac = (userProductId: number, durum: TakasDurum, aktifIlanId: number | null = null): TakasAracUygunlugu => ({
+    userProductId,
+    uygunluk: { uygun: durum === "UYGUN", durum, adimlar: [], tamamlanan: 1, toplam: 3, duzenlenecekYorumId: null },
+    productSlug: `arac-${userProductId}`,
+    productName: `Araç ${userProductId}`,
+    aktifIlanId,
+  });
+
+  it("araç yoksa null", () => {
+    expect(enIlerideArac([])).toBeNull();
+  });
+
+  it("garajda olmayan araç seçilmez", () => {
+    expect(enIlerideArac([arac(1, "GARAJDA_DEGIL")])).toBeNull();
+  });
+
+  it("aktif ilanı olan araç, hazır olandan önce gelir", () => {
+    expect(enIlerideArac([arac(1, "UYGUN"), arac(2, "YORUM_YOK", 55)])?.userProductId).toBe(2);
+  });
+
+  it("sıra: hazır > foto inceleniyor > foto eksik > yorum inceleniyor > yorum yok", () => {
+    expect(enIlerideArac([arac(1, "YORUM_YOK"), arac(2, "FOTO_YOK"), arac(3, "YORUM_INCELEMEDE")])?.userProductId).toBe(2);
+    expect(enIlerideArac([arac(1, "FOTO_YOK"), arac(2, "FOTO_INCELEMEDE")])?.userProductId).toBe(2);
+    expect(enIlerideArac([arac(1, "FOTO_INCELEMEDE"), arac(2, "UYGUN")])?.userProductId).toBe(2);
+  });
+
+  it("eşitlikte ilk araç korunur", () => {
+    expect(enIlerideArac([arac(7, "YORUM_YOK"), arac(8, "YORUM_YOK")])?.userProductId).toBe(7);
   });
 });

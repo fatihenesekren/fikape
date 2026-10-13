@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const PLATFORM_MAP = [
   { title: "Araç ara, yorum yaz", body: "Binlerce araç arasından ara, kendi deneyimini FI·KA·PE puanıyla paylaş.", href: "/araclar" },
   { title: "Garajına ekle", body: "Sahip olduğun/olduğun araçları garajına ekle, sahiplik geçmişini tut.", href: "/garajim" },
-  { title: "Takasa çıkar", body: "Aracını takasa aç, ilgilenen kullanıcılarla platform içi mesajlaş.", href: "/takas" },
+  { title: "Takasa çıkar", body: "Aracını takasa aç, ilgilenen kullanıcılarla platform içi mesajlaş.", href: "/takas-pazari-nasil-calisir" },
   { title: "Usta görüşü oku", body: "Deneyimli ustaların model bazlı teknik notlarını incele, sen de ustaysan görüşünü paylaş.", href: "/usta-ol" },
   { title: "Karşılaştır", body: "Birden fazla aracı yan yana, puan bazında karşılaştır.", href: "/karsilastir" },
 ] as const;

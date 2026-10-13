@@ -126,16 +126,27 @@ export function takasEngelMesaji(u: TakasUygunluk): string {
 const SECIM = {
   id: true,
   ownershipStatus: true,
-  product: { select: { slug: true } },
+  product: { select: { slug: true, name: true } },
   reviews: { select: { id: true, status: true, photos: { select: { status: true } } } },
+  tradeListings: { where: { isActive: true }, select: { id: true }, take: 1 },
 } as const;
 
 type KayitTipi = {
   id: number;
   ownershipStatus: string;
-  product: { slug: string };
+  product: { slug: string; name: string };
   reviews: { id: number; status: string; photos: { status: string }[] }[];
+  tradeListings: { id: number }[];
 };
+
+/** Bir aracın uygunluğu + panelde göstermek için araç bilgisi ve aktif ilan kimliği. */
+export interface TakasAracUygunlugu {
+  userProductId: number;
+  uygunluk: TakasUygunluk;
+  productSlug: string;
+  productName: string;
+  aktifIlanId: number | null;
+}
 
 function kayittanUygunluk(k: KayitTipi): TakasUygunluk {
   return takasUygunlukKararVer({
@@ -148,9 +159,46 @@ function kayittanUygunluk(k: KayitTipi): TakasUygunluk {
  * Kullanıcının TÜM araçları için tek sorguyla uygunluk (Garajım, panel).
  * userId yalnız oturumdan gelmeli; başkasının araçları buraya girmez.
  */
-export async function takasUygunlukToplu(userId: number): Promise<Map<number, { uygunluk: TakasUygunluk; productSlug: string }>> {
-  const kayitlar = await prisma.userProduct.findMany({ where: { userId }, select: SECIM });
-  return new Map(kayitlar.map((k) => [k.id, { uygunluk: kayittanUygunluk(k), productSlug: k.product.slug }]));
+export async function takasUygunlukToplu(userId: number): Promise<Map<number, TakasAracUygunlugu>> {
+  const kayitlar = await prisma.userProduct.findMany({ where: { userId }, select: SECIM, orderBy: { id: "asc" } });
+  return new Map(
+    kayitlar.map((k) => [
+      k.id,
+      {
+        userProductId: k.id,
+        uygunluk: kayittanUygunluk(k),
+        productSlug: k.product.slug,
+        productName: k.product.name,
+        aktifIlanId: k.tradeListings[0]?.id ?? null,
+      },
+    ]),
+  );
+}
+
+// Panelde tek bir "sıradaki iş" gösterilir: hedefe en yakın araç. Sıra: ilanı olan > hazır > fotoğraf
+// inceleniyor > fotoğraf eksik/reddedildi > yorum inceleniyor > yorum yok. Garajda olmayan araç seçilmez.
+const ONCELIK: Record<TakasDurum, number> = {
+  UYGUN: 1,
+  FOTO_INCELEMEDE: 2,
+  FOTO_REDDEDILDI: 3,
+  FOTO_YOK: 3,
+  YORUM_INCELEMEDE: 4,
+  YORUM_YOK: 5,
+  GARAJDA_DEGIL: 99,
+};
+
+export function enIlerideArac(araclar: TakasAracUygunlugu[]): TakasAracUygunlugu | null {
+  let en: TakasAracUygunlugu | null = null;
+  let enSira = Infinity;
+  for (const a of araclar) {
+    if (a.uygunluk.durum === "GARAJDA_DEGIL") continue;
+    const sira = a.aktifIlanId != null ? 0 : ONCELIK[a.uygunluk.durum];
+    if (sira < enSira) {
+      en = a;
+      enSira = sira;
+    }
+  }
+  return en;
 }
 
 /** Tek araç için uygunluk. Araç kullanıcıya ait değilse null (varlık bilgisi sızdırılmaz). */

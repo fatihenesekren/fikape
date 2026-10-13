@@ -14,7 +14,7 @@ import { InsuranceLeadCard } from "./InsuranceLeadCard";
 import { TradeToggleCard } from "./TradeToggleCard";
 import { isTradeListingEnabled } from "@/lib/features";
 import {
-  takasUygunlukToplu, takasUygunlukKararVer, takasSonrakiAdim, type TakasUygunluk,
+  takasUygunlukToplu, takasUygunlukKararVer, takasSonrakiAdim, type TakasAracUygunlugu,
 } from "@/lib/takasUygunluk";
 import type { PartCondition } from "@/lib/carParts";
 import { stripModelGenRange, stripGenRangeAnywhere } from "@/lib/modelDisplay";
@@ -52,7 +52,7 @@ export default async function GarajimPage() {
   // Kural tek yerde (lib/takasUygunluk.ts): ilan açma/yeniden açma API'si de aynısını kullanır.
   // Aynı sorgu hangi adımın eksik olduğunu da verir (şart kartı için).
   const [uygunlukHaritasi, insuranceLeads] = await Promise.all([
-    takasUygunlukToplu(userId).catch(() => new Map<number, { uygunluk: TakasUygunluk; productSlug: string }>()),
+    takasUygunlukToplu(userId).catch(() => new Map<number, TakasAracUygunlugu>()),
     prisma.insuranceLead.findMany({
       where: { userId },
       select: { productId: true },
@@ -163,7 +163,8 @@ export default async function GarajimPage() {
 
     return (
       <div
-        className="bg-white border border-gray-100 rounded-2xl overflow-hidden"
+        id={`arac-${userProductId}`}
+        className="bg-white border border-gray-100 rounded-2xl overflow-hidden scroll-mt-20"
         style={isSold ? { opacity: 0.75 } : undefined}
       >
         {/* Araç fotoğrafı — sitenin geri kalanındaki VehicleCard'la aynı görsel
