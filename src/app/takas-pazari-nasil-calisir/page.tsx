@@ -88,7 +88,7 @@ export default async function TakasPazariNasilCalisirPage() {
     : !aracKaydi
     ? { etiket: "Aracınızı garajınıza ekleyin", href: "/araclar" }
     : { etiket: "Takas Panelim'e gidin", href: "/takas-panelim" };
-  const ipucu = !userId ? null : !aracKaydi ? "Araç sayfasında “Bu araç benim” butonuna basarak aracınızı garajınıza ekleyin." : "Panelde aracınız için sıradaki adım gösterilir.";
+  const ipucu = !userId ? null : !aracKaydi ? "Araç sayfasında “Bu araç benim” butonuna basarak aracınızı garajınıza ekleyin." : null;
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
