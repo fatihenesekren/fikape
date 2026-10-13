@@ -237,7 +237,7 @@ export default async function TakasPage({
       />
 
       {listings.length === 0 ? (
-        <div className="bg-white border-2 border-dashed border-gray-100 rounded-2xl p-8 sm:p-10 text-center space-y-3">
+        <div className={page === 1 && filtreVar ? "bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 space-y-2" : "bg-white border-2 border-dashed border-gray-100 rounded-2xl p-8 sm:p-10 text-center space-y-3"}>
           {page > 1 ? (
             <>
               <p className="text-sm text-gray-600">Bu sayfada ilan yok.</p>
@@ -247,8 +247,14 @@ export default async function TakasPage({
             </>
           ) : filtreVar ? (
             <>
-              <p className="text-sm text-gray-800">{bosDurum.baslik}</p>
-              <p className="text-sm text-gray-600">{bosDurum.ipucu}</p>
+              <p className="flex items-start gap-2.5 text-sm font-semibold text-gray-900">
+                <span aria-hidden="true" className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-link-deep text-xs font-bold text-white">!</span>
+                <span className="min-w-0 break-words">{bosDurum.baslik}</span>
+              </p>
+              <p className="flex items-start gap-2.5 text-sm text-gray-700">
+                <span aria-hidden="true" className="w-5 shrink-0 text-center">👉</span>
+                <span className="min-w-0 break-words">{bosDurum.ipucu}</span>
+              </p>
             </>
           ) : (
             <>

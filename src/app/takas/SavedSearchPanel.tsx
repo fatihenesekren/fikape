@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { aramaKayitliMi, searchHref, searchSummary, type SavedSearchRow } from "@/lib/savedSearchGoster";
+import { aramaKayitliMi, searchHref, searchParcalari, type SavedSearchRow } from "@/lib/savedSearchGoster";
 import { panelGorunumu } from "@/lib/takasFiltreKarari";
 
 // /takas'ta tek kompakt kart: uygulanan filtre çipleri + TEK "Filtreleri temizle" + kayıt durumu, altında açılır
@@ -171,144 +171,174 @@ function SavedSearchPanelIci({
   return (
     <section id="kayitli-aramalar" aria-label="Filtreler ve kayıtlı arama" className="scroll-mt-20 flex flex-col gap-3">
       {gorunum === "kart" && (
-        <div className="rounded-2xl border border-link-line bg-link-soft/60 p-3 sm:p-4">
-          <p className="text-xs font-semibold text-gray-600">Şu an listelenen</p>
-          <ul role="list" aria-label="Uygulanan filtreler" className="mt-1.5 flex flex-wrap gap-1.5">
-            {cipler.map((c) => (
-              <li key={c} className="max-w-full break-words rounded-full bg-white px-2.5 py-1 text-xs font-medium text-link-deep ring-1 ring-link-line">
-                {c}
-              </li>
-            ))}
-            {q && (
-              <li className="max-w-full break-words rounded-full bg-white px-2.5 py-1 text-xs font-medium text-gray-700 ring-1 ring-gray-300">
-                Arama: “{q}”
-              </li>
-            )}
-          </ul>
-          {q && (
-            <p className="text-xs text-gray-600">
-              Hızlı aramadaki kelime kayda dahil edilmez.
-              {!kaydedilebilirFiltre && " Kaydetmek için il, kategori gibi bir filtre ekleyin."}
-            </p>
-          )}
-
-          {kaydedilebilirFiltre && !zatenKayitli && !basari && (
-            <div className="mt-3">
-              {isLoggedIn ? (
-                <div className="flex flex-col sm:flex-row sm:items-end gap-3">
-                  {!il && (
-                    <div className="sm:w-56">
-                      <label htmlFor="kayit-il" className="block text-xs font-semibold text-gray-700 mb-1">
-                        İl (zorunlu)
-                      </label>
-                      <select
-                        id="kayit-il"
-                        value={secilenIl}
-                        onChange={(e) => setSecilenIl(e.target.value)}
-                        aria-required="true"
-                        aria-invalid={error === "Aramayı kaydetmek için bir il seçiniz." ? true : undefined}
-                        className="w-full min-h-11 rounded-xl border border-gray-400 bg-white px-3 text-base sm:text-sm text-gray-900"
-                      >
-                        <option value="">İl seçiniz</option>
-                        {cities.map((c) => (
-                          <option key={c} value={c}>{c}</option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
-                  <button
-                    type="button"
-                    onClick={saveSearch}
-                    aria-disabled={saving}
-                    aria-busy={saving}
-                    className={`${ikincilDugme} aria-disabled:opacity-60 aria-disabled:cursor-wait`}
-                  >
-                    {saving ? "Kaydediliyor..." : <><span aria-hidden="true">🔔 </span>Yeni ilan çıkınca haber ver</>}
-                  </button>
-                </div>
-              ) : (
-                <Link href={girisHref} className={ikincilDugme}>
-                  <span aria-hidden="true">🔔 </span>Giriş yapıp haber alın
-                </Link>
-              )}
+        <div className="rounded-2xl border border-link-line bg-link-soft/60 overflow-hidden">
+          <div className="p-3 sm:p-4">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-xs font-semibold text-gray-600">Şu an listelenen</p>
+              <Link
+                href="/takas"
+                className={`inline-flex items-center gap-1 min-h-11 -my-2 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline whitespace-nowrap ${odakHalkasi}`}
+              >
+                <span aria-hidden="true">✕</span> Filtreleri temizle
+              </Link>
             </div>
-          )}
+            <ul role="list" aria-label="Uygulanan filtreler" className="flex flex-wrap gap-1.5">
+              {cipler.map((c) => (
+                <li key={c} className="max-w-full break-words rounded-full bg-white px-2.5 py-1 text-xs font-medium text-link-deep ring-1 ring-link-line">
+                  {c}
+                </li>
+              ))}
+              {q && (
+                <li className="max-w-full break-words rounded-full bg-white px-2.5 py-1 text-xs font-medium text-gray-700 ring-1 ring-gray-300">
+                  Arama: “{q}”
+                </li>
+              )}
+            </ul>
+            {q && (
+              <p className="mt-2 text-xs text-gray-600">
+                Hızlı aramadaki kelime kayda dahil edilmez.
+                {!kaydedilebilirFiltre && " Kaydetmek için il, kategori gibi bir filtre ekleyin."}
+              </p>
+            )}
+          </div>
 
-          {zatenKayitli && !basari && (
-            <p className="mt-2 text-sm font-semibold text-link-deep">
-              <span aria-hidden="true">✓ </span>Yeni ilan çıkınca haber vereceğiz
-            </p>
-          )}
-
-          {/* Önceden DOM'da olan canlı bölgeler (ekran okuyucu sonucu duyurur); içerik yokken yer kaplamaz. */}
-          <div ref={durumRef} tabIndex={-1} role="status" aria-live="polite" className="focus:outline-none">
-            {basari && (
-              <p className="mt-2 text-sm text-gray-700">
-                {basari}
-                {sonKayitId != null && (
-                  <>
-                    {" "}
+          {(kaydedilebilirFiltre || basari || error) && (
+            <div className="border-t border-link-line bg-white/80 p-3 sm:p-4">
+              {kaydedilebilirFiltre && !zatenKayitli && !basari && (
+                isLoggedIn ? (
+                  <div className="flex flex-col sm:flex-row sm:items-end gap-3">
+                    {!il && (
+                      <div className="sm:w-56">
+                        <label htmlFor="kayit-il" className="block text-xs font-semibold text-gray-700 mb-1">
+                          İl (zorunlu)
+                        </label>
+                        <select
+                          id="kayit-il"
+                          value={secilenIl}
+                          onChange={(e) => setSecilenIl(e.target.value)}
+                          aria-required="true"
+                          aria-invalid={error === "Aramayı kaydetmek için bir il seçiniz." ? true : undefined}
+                          className="w-full min-h-11 rounded-xl border border-gray-400 bg-white px-3 text-base sm:text-sm text-gray-900"
+                        >
+                          <option value="">İl seçiniz</option>
+                          {cities.map((c) => (
+                            <option key={c} value={c}>{c}</option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
                     <button
                       type="button"
-                      onClick={kaydiGeriAl}
-                      className={`font-semibold text-link hover:underline min-h-11 inline-flex items-center ${odakHalkasi}`}
+                      onClick={saveSearch}
+                      aria-disabled={saving}
+                      aria-busy={saving}
+                      className={`${ikincilDugme} aria-disabled:opacity-60 aria-disabled:cursor-wait`}
                     >
-                      Yanlışsa kaydı geri alın
+                      {saving ? "Kaydediliyor..." : <><span aria-hidden="true">🔔 </span>Yeni ilan çıkınca haber ver</>}
                     </button>
-                  </>
+                  </div>
+                ) : (
+                  <Link href={girisHref} className={ikincilDugme}>
+                    <span aria-hidden="true">🔔 </span>Giriş yapıp haber alın
+                  </Link>
+                )
+              )}
+
+              {zatenKayitli && !basari && (
+                <div className="flex items-center justify-between gap-3">
+                  <p className="min-w-0 text-sm text-gray-800">
+                    <span aria-hidden="true">🔔 </span>Yeni ilan çıkınca haber vereceğiz
+                  </p>
+                  <span className="shrink-0 rounded-full bg-green-100 px-2.5 py-1 text-xs font-bold text-green-800">
+                    <span aria-hidden="true">✓ </span>Kayıtlı
+                  </span>
+                </div>
+              )}
+
+              {/* Önceden DOM'da olan canlı bölgeler (ekran okuyucu sonucu duyurur); içerik yokken yer kaplamaz. */}
+              <div ref={durumRef} tabIndex={-1} role="status" aria-live="polite" className="focus:outline-none">
+                {basari && (
+                  <p className="text-sm text-gray-700">
+                    {basari}
+                    {sonKayitId != null && (
+                      <>
+                        {" "}
+                        <button
+                          type="button"
+                          onClick={kaydiGeriAl}
+                          className={`font-semibold text-link hover:underline min-h-11 inline-flex items-center ${odakHalkasi}`}
+                        >
+                          Yanlışsa kaydı geri alın
+                        </button>
+                      </>
+                    )}
+                  </p>
                 )}
-              </p>
-            )}
-          </div>
-          <div role="alert" className="text-sm text-red-700">
-            {error && (
-              <p className="mt-2">
-                {error}{" "}
-                <Link href="/takas-panelim/aramalar" className="font-semibold text-link hover:underline whitespace-nowrap">
-                  Kayıtlı aramalarım →
-                </Link>
-              </p>
-            )}
-          </div>
-          <Link
-            href="/takas"
-            className={`mt-1 inline-flex items-center gap-1 min-h-11 text-sm text-gray-600 hover:text-gray-900 hover:underline ${odakHalkasi}`}
-          >
-            <span aria-hidden="true">✕</span> Filtreleri temizle
-          </Link>
+              </div>
+              <div role="alert" className="text-sm text-red-700">
+                {error && (
+                  <p className="mt-2">
+                    {error}{" "}
+                    <Link href="/takas-panelim/aramalar" className="font-semibold text-link hover:underline whitespace-nowrap">
+                      Kayıtlı aramalarım →
+                    </Link>
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
       {isLoggedIn && searches.length > 0 && (
-        <div>
+        <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden">
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
             aria-controls="kayitli-arama-listesi"
-            className={`inline-flex items-center gap-1.5 min-h-11 text-sm font-semibold text-link hover:underline ${odakHalkasi}`}
+            className={`flex w-full items-center justify-between gap-2 min-h-11 px-3 sm:px-4 text-sm font-semibold text-gray-900 hover:bg-gray-50 ${odakHalkasi}`}
           >
-            Kayıtlı aramalarım ({searches.length}) <span aria-hidden="true">{expanded ? "▴" : "▾"}</span>
+            <span className="inline-flex items-center gap-2">
+              Kayıtlı aramalarım
+              <span className="rounded-full bg-link-soft px-2 py-0.5 text-xs font-bold text-link-deep">{searches.length}</span>
+            </span>
+            <span aria-hidden="true" className={`text-gray-500 transition-transform ${expanded ? "rotate-180" : ""}`}>▾</span>
           </button>
-          <div id="kayitli-arama-listesi" hidden={!expanded}>
-            <ul className="mt-1 space-y-1.5">
-              {searches.map((s) => (
-                <li key={s.id}>
-                  <Link
-                    href={searchHref(s)}
-                    className={`block min-h-11 rounded-lg bg-gray-50 px-3 py-2.5 text-sm text-gray-700 break-words hover:text-link hover:underline ${odakHalkasi}`}
-                  >
-                    {searchSummary(s)}
-                  </Link>
-                </li>
-              ))}
+          <div id="kayitli-arama-listesi" hidden={!expanded} className="border-t border-gray-100">
+            <ul className="divide-y divide-gray-100">
+              {searches.map((s) => {
+                const parcalar = searchParcalari(s);
+                return (
+                  <li key={s.id}>
+                    <Link
+                      href={searchHref(s)}
+                      className={`flex items-center justify-between gap-3 min-h-11 px-3 sm:px-4 py-2.5 hover:bg-link-soft/50 ${odakHalkasi}`}
+                    >
+                      <span className="min-w-0">
+                        <span className="block text-sm font-semibold text-gray-900 break-words">{parcalar.slice(0, 2).join(" · ")}</span>
+                        {parcalar.length > 2 && (
+                          <span className="mt-1 flex flex-wrap gap-1">
+                            {parcalar.slice(2).map((p) => (
+                              <span key={p} className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700">{p}</span>
+                            ))}
+                          </span>
+                        )}
+                      </span>
+                      <span aria-hidden="true" className="shrink-0 text-lg text-gray-500">›</span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
-            <Link
-              href="/takas-panelim/aramalar"
-              className={`mt-1 inline-flex items-center min-h-11 text-sm font-semibold text-link hover:underline ${odakHalkasi}`}
-            >
-              Tümünü yönet →
-            </Link>
+            <div className="border-t border-gray-100 px-3 sm:px-4 text-right">
+              <Link
+                href="/takas-panelim/aramalar"
+                className={`inline-flex items-center min-h-11 text-sm font-semibold text-link hover:underline ${odakHalkasi}`}
+              >
+                Tümünü yönet →
+              </Link>
+            </div>
           </div>
         </div>
       )}
