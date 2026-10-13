@@ -4,6 +4,7 @@ import {
   takasSonrakiAdim,
   takasEngelMesaji,
   enIlerideArac,
+  panelAnaButon,
   type TakasAracUygunlugu,
   type TakasUygunlukGirdisi,
   type TakasDurum,
@@ -157,5 +158,70 @@ describe("enIlerideArac", () => {
 
   it("eşitlikte ilk araç korunur", () => {
     expect(enIlerideArac([arac(7, "YORUM_YOK"), arac(8, "YORUM_YOK")])?.userProductId).toBe(7);
+  });
+});
+
+describe("panelAnaButon", () => {
+  const arac = (id: number, durum: TakasDurum, aktifIlanId: number | null = null, slug = `arac-${id}`): TakasAracUygunlugu => ({
+    userProductId: id,
+    uygunluk: { uygun: durum === "UYGUN", durum, adimlar: [], tamamlanan: 1, toplam: 3, duzenlenecekYorumId: 5 },
+    productSlug: slug, productName: `Araç ${id}`, aktifIlanId, km: null, categorySlug: "otomobil",
+  });
+  const g = (araclar: TakasAracUygunlugu[], extra: Partial<{ ozellikAcik: boolean; okunmamis: number }> = {}) =>
+    panelAnaButon({ ozellikAcik: true, okunmamis: 0, araclar, ...extra });
+
+  it("özellik kapalıysa buton yok", () => {
+    expect(g([arac(1, "UYGUN")], { ozellikAcik: false })).toBeNull();
+  });
+
+  it("okunmamış mesaj her şeyden önce gelir", () => {
+    const b = g([arac(1, "UYGUN")], { okunmamis: 3 });
+    expect(b?.etiket).toBe("Mesajlarınızı Okuyun");
+    expect(b?.href).toBe("/mesajlar");
+    expect(b?.altYazi).toContain("3");
+  });
+
+  it("takasa hazır araç: ilanlarım'daki o araca", () => {
+    const b = g([arac(7, "UYGUN")]);
+    expect(b?.etiket).toBe("Aracınızı Takasa Açın");
+    expect(b?.href).toBe("/takas-panelim/ilanlarim#arac-7");
+  });
+
+  it("hazır araç, şartı eksik araçtan ve yayındaki ilandan önce gelir", () => {
+    const b = g([arac(1, "YORUM_YOK", null), arac(2, "UYGUN", null), arac(3, "UYGUN", 99)]);
+    expect(b?.href).toBe("/takas-panelim/ilanlarim#arac-2");
+  });
+
+  it("şartı eksik araç: sıradaki adımın butonu", () => {
+    const b = g([arac(4, "YORUM_YOK", null, "toyota-corolla")]);
+    expect(b?.etiket).toBe("Fotoğraflı yorum yazın");
+    expect(b?.href).toBe("/yorum-yaz?arac=toyota-corolla&takas=1");
+  });
+
+  it("incelemedeki araç: butonsuz adımda 'Durumu Görün'", () => {
+    const b = g([arac(4, "FOTO_INCELEMEDE", null)]);
+    expect(b?.etiket).toBe("Durumu Görün");
+    expect(b?.href).toBe("/takas-panelim/ilanlarim#arac-4");
+  });
+
+  it("yalnız yayındaki ilan: İlanlarınızı Yönetin", () => {
+    expect(g([arac(1, "UYGUN", 10)])?.etiket).toBe("İlanlarınızı Yönetin");
+    expect(g([arac(1, "UYGUN", 10)])?.altYazi).toBe("İlanınız yayında.");
+    expect(g([arac(1, "UYGUN", 10), arac(2, "UYGUN", 11)])?.altYazi).toBe("2 ilanınız yayında.");
+  });
+
+  it("araç yoksa Takas Pazarına göz atın", () => {
+    const b = g([]);
+    expect(b?.etiket).toBe("Takas Pazarına Göz Atın");
+    expect(b?.href).toBe("/takas");
+    expect(b?.altYazi).toBeNull();
+  });
+
+  it("buton ve alt yazı metinlerinde iç terim/yasak ifade yok", () => {
+    const yasak = /(CURRENT|APPROVED|PUBLISHED|trustLevel|ücretsiz|garanti)/i;
+    for (const araclar of [[], [arac(1, "UYGUN")], [arac(1, "YORUM_YOK")], [arac(1, "FOTO_INCELEMEDE")], [arac(1, "UYGUN", 3)]]) {
+      const b = g(araclar);
+      expect(`${b?.etiket} ${b?.altYazi ?? ""}`).not.toMatch(yasak);
+    }
   });
 });
