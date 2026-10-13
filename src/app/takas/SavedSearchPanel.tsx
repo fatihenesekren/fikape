@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { aramaKayitliMi, searchHref, searchParcalari, type SavedSearchRow } from "@/lib/savedSearchGoster";
 import { panelGorunumu } from "@/lib/takasFiltreKarari";
 
@@ -64,7 +64,8 @@ function SavedSearchPanelIci({
   const [basari, setBasari] = useState<string | null>(null);
   const [sonKayitId, setSonKayitId] = useState<number | null>(null);
   const [expanded, setExpanded] = useState(false);
-  const [secilenIl, setSecilenIl] = useState("");
+  const aramaParametreleri = useSearchParams();
+  const [ilGeciyor, ilGec] = useTransition();
   const durumRef = useRef<HTMLDivElement>(null);
   const odakIste = useRef(false);
 
@@ -82,7 +83,7 @@ function SavedSearchPanelIci({
   const gorunum = panelGorunumu({ isLoggedIn, kaydedilebilirFiltre, q, kayitliSayisi: searches.length });
   if (gorunum === "yok") return null;
 
-  const kullanilanIl = il || secilenIl;
+  const kullanilanIl = il;
   // Bu filtreler zaten kayıtlı bir aramayla birebir aynıysa düğme yerine "Kayıtlı" rozeti çıkar (tıklayıp "zaten kayıtlı"
   // hatası görülmesin). Bir kriter eklenir/çıkarılırsa yeni bir arama olur ve düğme yeniden görünür.
   const zatenKayitli =
@@ -101,6 +102,15 @@ function SavedSearchPanelIci({
       fuelTypes: yakit ? [yakit] : [],
       transmissions: vites ? [vites] : [],
     });
+
+  // Karttan il seçilince sayfa filtresi de güncellenir (form, liste ve çipler o ille yeniden gelir); kayıt ayrı, bilinçli bir adımdır.
+  function ilUygula(secilen: string) {
+    if (!secilen) return;
+    const qs = new URLSearchParams(aramaParametreleri?.toString() ?? "");
+    qs.set("il", secilen);
+    qs.delete("sayfa");
+    ilGec(() => router.push(`/takas?${qs.toString()}`));
+  }
 
   async function saveSearch() {
     if (saving) return;
@@ -210,12 +220,13 @@ function SavedSearchPanelIci({
                     {!il && (
                       <div className="sm:w-56">
                         <label htmlFor="kayit-il" className="block text-xs font-semibold text-gray-700 mb-1">
-                          İl (zorunlu)
+                          Bildirim için il seçin
                         </label>
                         <select
                           id="kayit-il"
-                          value={secilenIl}
-                          onChange={(e) => setSecilenIl(e.target.value)}
+                          value=""
+                          disabled={ilGeciyor}
+                          onChange={(e) => ilUygula(e.target.value)}
                           aria-required="true"
                           aria-invalid={error === "Aramayı kaydetmek için bir il seçiniz." ? true : undefined}
                           className="w-full min-h-11 rounded-xl border border-gray-400 bg-white px-3 text-base sm:text-sm text-gray-900"
@@ -227,15 +238,17 @@ function SavedSearchPanelIci({
                         </select>
                       </div>
                     )}
-                    <button
-                      type="button"
-                      onClick={saveSearch}
-                      aria-disabled={saving}
-                      aria-busy={saving}
-                      className={`${ikincilDugme} aria-disabled:opacity-60 aria-disabled:cursor-wait`}
-                    >
-                      {saving ? "Kaydediliyor..." : <><span aria-hidden="true">🔔 </span>Yeni ilan çıkınca haber ver</>}
-                    </button>
+                    {il && (
+                      <button
+                        type="button"
+                        onClick={saveSearch}
+                        aria-disabled={saving}
+                        aria-busy={saving}
+                        className={`${ikincilDugme} aria-disabled:opacity-60 aria-disabled:cursor-wait`}
+                      >
+                        {saving ? "Kaydediliyor..." : <><span aria-hidden="true">🔔 </span>Yeni ilan çıkınca haber ver</>}
+                      </button>
+                    )}
                   </div>
                 ) : (
                   <Link href={girisHref} className={ikincilDugme}>
