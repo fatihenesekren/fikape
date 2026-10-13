@@ -47,17 +47,6 @@ function lockup(tuval: number, olcek = 1) {
   );
 }
 
-
-// Ana ekran + Android açılış ikonu (Android ikisi için aynı maskable ikonu seçiyor): yalnız halka, güvenli alanın içinde en büyük hâliyle
-function maskable(s: number) {
-  const halka = Math.round(s * 0.6);
-  return (
-    <div style={{ width: "100%", height: "100%", background: "#111", display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <div style={{ display: "flex", position: "relative", width: halka, height: halka }}>{yaylar(halka, Math.round(halka * 0.17))}</div>
-    </div>
-  );
-}
-
 async function yaz(ad: string, el: React.ReactElement, s: number) {
   const buf = Buffer.from(await new ImageResponse(el, { width: s, height: s, fonts: [{ name: "Segoe UI Black", data: FONT, weight: 900, style: "normal" }] }).arrayBuffer());
   writeFileSync(`public/icons/${ad}`, buf);
