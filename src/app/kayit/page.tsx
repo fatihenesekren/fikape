@@ -88,7 +88,7 @@ function KayitForm() {
     <div className="min-h-[calc(100vh-56px)] flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-sm">
 
-        <div className="text-center mb-8">
+        <div className="text-center mb-5">
           <Link href="/" className="inline-flex flex-col items-center gap-2 select-none mb-4">
             <LogoMark size={34} />
             <span className="flex items-center gap-0.5 text-2xl font-black tracking-tight">
@@ -106,7 +106,7 @@ function KayitForm() {
           )}
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-4">
           {error && (
             <div className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-2.5">
               {error}
