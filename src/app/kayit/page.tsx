@@ -102,7 +102,7 @@ function KayitForm() {
           <h1 className="text-xl font-bold text-gray-900">Hesap oluştur</h1>
           <p className="text-sm text-gray-500 mt-1">Kayıt ol, deneyimini paylaş</p>
           {ref && (
-            <p className="text-xs text-gray-400 mt-2">Bir arkadaşının daveti ile geliyorsun 👋</p>
+            <p className="text-xs text-gray-600 mt-2">Bir arkadaşınızın daveti ile geliyorsunuz 👋</p>
           )}
         </div>
 
@@ -114,7 +114,7 @@ function KayitForm() {
           )}
 
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-gray-500 tracking-wide">
+            <label className="text-xs font-semibold text-gray-600 tracking-wide">
               Görünen ad
             </label>
             <input
@@ -136,16 +136,22 @@ function KayitForm() {
               placeholder="Ahmet K."
               className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gray-400 transition-colors"
             />
-            <div className="flex items-start justify-between gap-2">
-              <p className="text-xs text-gray-400">Yorumlarında görünecek isim, sadece harf içerebilir (en az 3 karakter). İstersen takma ad kullanabilirsin.</p>
-              <span className={`text-[11px] shrink-0 ${displayName.length >= 28 ? "text-orange-400" : "text-gray-400"}`}>
+            <div className="flex items-start justify-between gap-3">
+              <div className="text-xs text-gray-600 leading-relaxed space-y-0.5">
+                <p>Yorumlarınızda bu ad görünür. Gerçek adınız yerine takma ad da kullanabilirsiniz.</p>
+                <p>3–30 karakter; harf, boşluk, nokta ve tire kullanılabilir.</p>
+              </div>
+              <span
+                aria-hidden="true"
+                className={`shrink-0 text-xs tabular-nums ${displayName.length >= 28 ? "font-semibold text-orange-700" : "text-gray-600"}`}
+              >
                 {displayName.length}/30
               </span>
             </div>
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-gray-500 tracking-wide">
+            <label className="text-xs font-semibold text-gray-600 tracking-wide">
               E-posta
             </label>
             <input
@@ -167,7 +173,7 @@ function KayitForm() {
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-gray-500 tracking-wide">
+            <label className="text-xs font-semibold text-gray-600 tracking-wide">
               Şifre
             </label>
             <div className="relative">
@@ -186,7 +192,7 @@ function KayitForm() {
               <button
                 type="button"
                 onClick={() => setShowPassword((v) => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-800"
                 tabIndex={-1}
                 aria-label={showPassword ? "Şifreyi gizle" : "Şifreyi göster"}
               >
@@ -209,7 +215,7 @@ function KayitForm() {
                   {RULES.map((rule) => {
                     const pass = rule.test(password);
                     return (
-                      <li key={rule.label} className={`text-xs flex items-center gap-1.5 ${pass ? "text-green-600" : "text-gray-400"}`}>
+                      <li key={rule.label} className={`text-xs flex items-center gap-1.5 ${pass ? "text-green-700" : "text-gray-600"}`}>
                         <span>{pass ? "✓" : "○"}</span>
                         {rule.label}
                       </li>
