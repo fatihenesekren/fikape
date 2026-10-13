@@ -29,12 +29,13 @@ const yaylar = (d: number, kalinlik: number) =>
   ));
 
 // olcek 1 = yazı tuvalin ~%60'ı; Android açılışta ikonu kareyi tam göstererek çiziyor, büyütmek splash'teki görüntüyü büyütür
-function lockup(tuval: number, olcek = 1) {
+// yaziOrtada: yazıyı tuvalin tam ortasına alır, halka üstte kalır (ana ekran maskesi köşelerde daraldığı için yazı alt kısımda kesiliyordu)
+function lockup(tuval: number, olcek = 1, yaziOrtada = false) {
   const s = tuval * olcek;
-  const halka = Math.round(s * 0.34);
+  const halka = Math.round(s * (yaziOrtada ? 0.27 : 0.34));
   const yazi = Math.round(s * 0.2);
   return (
-    <div style={{ width: "100%", height: "100%", background: "#111", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: Math.round(s * 0.07) }}>
+    <div style={{ width: "100%", height: "100%", background: "#111", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: Math.round(s * 0.07), paddingBottom: yaziOrtada ? Math.round((halka + s * 0.07) * 0.6) : 0 }}>
       <div style={{ display: "flex", position: "relative", width: halka, height: halka }}>{yaylar(halka, Math.round(halka * 0.17))}</div>
       <div style={{ display: "flex", alignItems: "baseline", fontFamily: "Segoe UI Black", fontWeight: 900, fontSize: yazi, lineHeight: 1 }}>
         <span style={{ color: FIKAPE_SOFT.fi }}>fi</span>
@@ -56,6 +57,6 @@ async function yaz(ad: string, el: React.ReactElement, s: number) {
 async function main() {
   await yaz("icon-192.png", lockup(192), 192);
   await yaz("icon-512.png", lockup(512), 512);
-  await yaz("icon-maskable-512.png", lockup(512, 1.12), 512);
+  await yaz("icon-maskable-512.png", lockup(512, 1.04, true), 512);
 }
 main();
