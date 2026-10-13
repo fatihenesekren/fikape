@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sendReviewPublishedEmail } from "@/lib/email";
 import { createNotification } from "@/lib/notification";
+import { takasAcilabilirBildirimiGonder } from "@/lib/takasUygunlukBildirimi";
 import { recordScoreSnapshot, recordModerationLog } from "@/lib/security";
 import { calcTrustScore } from "@/lib/trustScore";
 import { stripModelGenRange } from "@/lib/modelDisplay";
@@ -64,6 +65,8 @@ export async function PATCH(
       ]);
 
       await recordModerationLog({ reviewId, moderatorId, action: "APPROVED", reason: "Sonradan eklenen fotoğraf(lar) onaylandı" });
+      // Fotoğraf onayı aracı takasa açılabilir hâle getirmiş olabilir (uygunluk yardımcıda yeniden hesaplanır).
+      await takasAcilabilirBildirimiGonder(reviewId);
       return NextResponse.json({ ok: true, status: "PUBLISHED" });
     }
 
@@ -152,6 +155,8 @@ export async function PATCH(
         message: `${vehicleName} için yazdığın yorum yayınlandı`,
         link: `/yorumum/${reviewId}/paylas`,
       });
+      // İlk yayınla birlikte onaylanan fotoğraf aracı takasa açılabilir hâle getirmiş olabilir.
+      await takasAcilabilirBildirimiGonder(reviewId);
     }
 
     if (review) {

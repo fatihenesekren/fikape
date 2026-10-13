@@ -298,6 +298,10 @@ enum NotificationType {
   // İlan sahibine — takas fotoğrafı onaylandı/reddedildi.
   TRADE_PHOTO_MODERATED
 
+  // Yorum fotoğrafı onaylanınca: araç artık takasa açılabilir (lib/takasUygunlukBildirimi.ts).
+  // prisma/migrations/add_trade_eligible_notification.sql ile elle eklenir.
+  TRADE_ELIGIBLE
+
   // ── USTA GÖRÜŞLERİ ──
   EXPERT_NOTE_PUBLISHED // ustaya — notu yayınlandı
   EXPERT_NOTE_REJECTED // ustaya — notu reddedildi

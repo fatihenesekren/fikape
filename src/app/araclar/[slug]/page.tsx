@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { yeniEtkilesimeAcikMi, urunPasifMi } from "@/lib/urunDurumu";
 import Link from "next/link";
@@ -14,6 +15,7 @@ import { PhotoSlider } from "./PhotoSlider";
 import { gorselKredisi } from "@/lib/gorselKredisi";
 import { TabView } from "./TabView";
 import { OwnershipCard } from "./OwnershipCard";
+import { TakasKoprusu } from "./TakasKoprusu";
 import { calcOverall } from "@/lib/fikape";
 import { getVehicleImageUrl } from "@/lib/vehicleImages";
 import { FIKAPE } from "@/lib/fikape";
@@ -942,6 +944,13 @@ export default async function VehicleDetailPage({
           defaultFullName={currentUser?.displayName ?? ""}
           submittedSaleLeadTypes={submittedSaleLeadTypes}
         />
+        )}
+
+        {/* Takas köprüsü — yalnız bu aracı garajında tutan üyeye (bkz. TakasKoprusu.tsx) */}
+        {inGarage && userId !== null && (
+          <Suspense fallback={null}>
+            <TakasKoprusu userId={userId} productId={product.id} productSlug={slug} modeldekiIlanSayisi={activeTradeCount} />
+          </Suspense>
         )}
 
         {/* Puan varken: tek yorumda ince özet şeridi, çok yorumda kompakt skor kartı

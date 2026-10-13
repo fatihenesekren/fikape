@@ -16,12 +16,15 @@ const ADIM_ETIKETI: Record<TakasAdimKodu, string> = {
 export function TakasSartKarti({
   adimlar,
   sonraki,
+  className = "mt-3",
 }: {
   adimlar: { kod: TakasAdimKodu; tamam: boolean }[];
   sonraki: TakasSonrakiAdim;
+  /** Dış boşluk (varsayılan: Garajım kartının altı). */
+  className?: string;
 }) {
   return (
-    <div className="mt-3 border border-gray-100 bg-gray-50 rounded-xl p-3 overflow-hidden">
+    <div className={`${className} border border-gray-100 bg-gray-50 rounded-xl p-3 overflow-hidden`}>
       <p className="text-sm font-semibold text-gray-800">
         <span aria-hidden="true">🔄 </span>
         {sonraki.baslik}

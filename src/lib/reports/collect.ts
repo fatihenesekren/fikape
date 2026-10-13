@@ -294,7 +294,7 @@ export async function collectWeeklyReport(win: WeekWindow, opts: { oneriAy?: str
   sections.push(...await guard("Takas pazarı sağlığı", errors, async () => {
     const [
       activeNow, closedByReason, threadW, threadP,
-      tradedW, tradedP, ratingAgg, dupPairRows,
+      tradedW, tradedP, ratingAgg, dupPairRows, uygunIlansizRows, bekleyenFotoRows,
     ] = await Promise.all([
       prisma.tradeListing.count({ where: { isActive: true } }),
       prisma.tradeListing.groupBy({ by: ["closeReason"], where: { closedAt: W }, _count: { _all: true } }),
@@ -318,6 +318,23 @@ export async function collectWeeklyReport(win: WeekWindow, opts: { oneriAy?: str
           GROUP BY LEAST(mt."initiatorId", tl."userId"), GREATEST(mt."initiatorId", tl."userId")
           HAVING COUNT(*) >= 2
         ) d`,
+      // Takasa açılabilir (garajda + yayınlanmış yorumda onaylı fotoğraf) ama aktif ilanı olmayan araç
+      // sayısı — lib/takasUygunluk.ts kuralıyla AYNI; takas keşfi çalışıyorsa zamanla azalmalı.
+      prisma.$queryRaw<{ n: number }[]>`
+        SELECT COUNT(*)::int AS n
+        FROM user_products up
+        JOIN users u ON u.id = up."userId"
+        WHERE up."ownershipStatus" = 'CURRENT' AND u."isBanned" = false
+          AND EXISTS (
+            SELECT 1 FROM reviews r
+            JOIN product_photos p ON p."reviewId" = r.id AND p.status = 'APPROVED'
+            WHERE r."userProductId" = up.id AND r.status = 'PUBLISHED'
+          )
+          AND NOT EXISTS (SELECT 1 FROM trade_listings tl WHERE tl."userProductId" = up.id AND tl."isActive")`.catch(() => null),
+      // Yorum fotoğrafı onay kuyruğunun en eskisi (gün) — takasa açma şartının darboğazı moderasyon olabilir.
+      prisma.$queryRaw<{ gun: number | null }[]>`
+        SELECT (EXTRACT(EPOCH FROM (now() - MIN(p."createdAt"))) / 86400)::float AS gun
+        FROM product_photos p WHERE p.status = 'PENDING' AND p."reviewId" IS NOT NULL`.catch(() => null),
     ]);
     const closedMap = new Map(closedByReason.map((r) => [r.closeReason ?? "—", r._count._all]));
     return {
@@ -326,6 +343,8 @@ export async function collectWeeklyReport(win: WeekWindow, opts: { oneriAy?: str
       rows: [
         [tt("Yeni ilan"), ...dd(listingW, listingP)],
         [tt("Aktif ilan (şu an)"), nn(activeNow)],
+        [tt("Takasa açılabilir ama ilanı olmayan araç"), uygunIlansizRows ? nn(uygunIlansizRows[0]?.n ?? 0) : { t: "—", align: "r" }],
+        [tt("Onay bekleyen en eski yorum fotoğrafı (gün)"), { t: bekleyenFotoRows?.[0]?.gun != null ? Math.floor(bekleyenFotoRows[0].gun).toString() : "—", align: "r" }],
         [tt("Kapandı — takas oldu"), ...dd(tradedW, tradedP)],
         [tt("Kapandı — vazgeçildi/başka yerde"), nn((closedMap.get("GAVE_UP") ?? 0) + (closedMap.get("FOUND_ELSEWHERE") ?? 0))],
         [tt("Yeni mesaj konusu"), ...dd(threadW, threadP)],
