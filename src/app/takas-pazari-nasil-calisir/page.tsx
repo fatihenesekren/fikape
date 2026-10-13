@@ -48,23 +48,25 @@ function CtaBlok({ cta, acik, ilanVar, ust, ipucu }: { cta: Cta; acik: boolean; 
   }
   return (
     <div className={ust ? "" : "text-center"}>
-      <Link
-        href={cta.href}
-        className="inline-flex items-center justify-center min-h-11 px-6 rounded-xl text-sm font-semibold text-white"
-        style={{ background: "var(--btn-dark)" }}
-      >
-        {cta.etiket} <span aria-hidden="true">→</span>
-      </Link>
-      {ipucu && <p className="mt-2 text-sm text-gray-600">{ipucu}</p>}
-      {ilanVar ? (
-        <p className="mt-1">
-          <Link href="/takas" className="inline-flex items-center min-h-11 text-sm font-semibold text-link hover:underline">
+      <div className={`flex flex-wrap items-center gap-3 ${ust ? "" : "justify-center"}`}>
+        <Link
+          href={cta.href}
+          className="inline-flex items-center justify-center gap-1.5 min-h-11 px-6 rounded-xl text-sm font-semibold text-white"
+          style={{ background: "var(--btn-dark)" }}
+        >
+          {cta.etiket} <span aria-hidden="true">→</span>
+        </Link>
+        {ilanVar && (
+          <Link
+            href="/takas"
+            className="inline-flex items-center justify-center min-h-11 px-5 rounded-xl border border-gray-300 bg-white text-sm font-semibold text-gray-800 hover:bg-gray-50 transition-colors"
+          >
             Takas ilanlarına göz atın
           </Link>
-        </p>
-      ) : (
-        !ust && <p className="mt-3 text-sm text-gray-600">Şu anda yayında ilan yok.</p>
-      )}
+        )}
+      </div>
+      {ipucu && <p className="mt-2 text-sm text-gray-600">{ipucu}</p>}
+      {!ilanVar && !ust && <p className="mt-3 text-sm text-gray-600">Şu anda yayında ilan yok.</p>}
     </div>
   );
 }
