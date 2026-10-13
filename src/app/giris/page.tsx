@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
 import { LogoMark } from "@/components/LogoMark";
+import { sanitizeCallbackUrl } from "@/lib/callbackUrl";
 
 function EyeIcon() {
   return (
@@ -24,14 +25,6 @@ function EyeOffIcon() {
       <path d="M1 1l22 22" />
     </svg>
   );
-}
-
-// Sadece site-içi relative path'lere izin verir — mutlak (https://evil.com) veya
-// protocol-relative (//evil.com) URL'ler login sonrası harici bir siteye
-// yönlendirme (open redirect / phishing) için kullanılamasın diye.
-function sanitizeCallbackUrl(url: string | null): string {
-  if (!url || !url.startsWith("/") || url.startsWith("//")) return "/";
-  return url;
 }
 
 function GirisForm() {
