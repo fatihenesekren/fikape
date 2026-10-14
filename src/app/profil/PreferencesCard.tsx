@@ -22,8 +22,8 @@ export function PreferencesCard({ emailEnabled, sharingGranted, sharingChangedLa
   const [sharing, setSharing] = useState<boolean | null>(sharingGranted);
 
   const summary = [
-    `E-posta: ${email ? "Açık" : "Kapalı"}`,
-    `İş ortağı paylaşımı: ${sharing === null ? "Henüz seçim yapılmadı" : sharing ? "Açık" : "Kapalı"}`,
+    { label: "E-posta:", value: email ? "Açık" : "Kapalı" },
+    { label: "İş ortağı paylaşımı:", value: sharing === null ? "Henüz seçim yapılmadı" : sharing ? "Açık" : "Kapalı" },
   ];
 
   return (
@@ -39,7 +39,14 @@ export function PreferencesCard({ emailEnabled, sharingGranted, sharingChangedLa
           <span className="min-w-0">
             <span className="block text-sm font-bold text-gray-900">Bildirim ve gizlilik tercihleri</span>
             <span className="mt-0.5 block text-xs font-normal text-gray-600">
-              {open ? "Bu tercihleri dilediğiniz zaman değiştirebilirsiniz." : summary.join(" · ")}
+              {open
+                ? "Bu tercihleri dilediğiniz zaman değiştirebilirsiniz."
+                : summary.map((x, i) => (
+                    <span key={x.label}>
+                      {i > 0 && " · "}
+                      <span className="font-semibold text-gray-800">{x.label}</span> {x.value}
+                    </span>
+                  ))}
             </span>
           </span>
           <svg
