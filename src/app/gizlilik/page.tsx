@@ -34,7 +34,7 @@ export default function GizlilikPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Gizlilik Politikası</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ekim 2026</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: 14 Ekim 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -97,14 +97,14 @@ export default function GizlilikPage() {
             <li>Hesabınızın oluşturulması ve güvenliğinin sağlanması</li>
             <li>E-posta doğrulama ve &quot;Doğrulanmış Kullanıcı&quot; rozetinin verilmesi</li>
             <li>Yorumlarınızın platform üzerinde yayımlanması</li>
-            <li>Yorum metni ve puanlarınızın, kullanıcı adınız, e-posta adresiniz ve fotoğraflarınız olmadan (anonim olarak) API/entegrasyon yoluyla üçüncü kişi ve kurumlara (iş ortakları) sunulması — yalnızca isteğe bağlı açık rızanız varsa (aşağıya bakınız)</li>
+            <li>Yorum metni ve puanlarınızın, kullanıcı adınız, e-posta adresiniz ve fotoğraflarınız olmadan (adsız olarak) API/entegrasyon yoluyla üçüncü kişi ve kurumlara (iş ortakları) sunulması — yalnızca isteğe bağlı açık rızanız varsa (aşağıya bakınız)</li>
             <li>Spam ve sahte yorum tespiti ile içerik moderasyonu</li>
             <li>Platform kalitesinin iyileştirilmesi ve hataların giderilmesi</li>
             <li>Hizmetin işletilmesi amacıyla toplulaştırılmış (kişi bazında olmayan) kullanım istatistiklerinin oluşturulması ve yetkili personele iç raporlanması</li>
             <li>Yasal yükümlülüklerin yerine getirilmesi</li>
           </ul>
           <p className="mt-3 text-sm bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
-            Kişisel verileriniz (ad, e-posta, kullanıcı adı, fotoğraf vb.) hiçbir koşulda üçüncü taraflara satılmaz veya reklam amaçlı kullanılmaz.
+            Ad, e-posta, kullanıcı adı ve fotoğraf gibi kimlik bilgileriniz hiçbir koşulda üçüncü taraflara satılmaz veya reklam amaçlı kullanılmaz. Yalnızca açık rızanız varsa yorum metniniz ve puanlarınız, kimliğiniz belirtilmeksizin (adsız olarak) iş ortaklarıyla paylaşılabilir.
           </p>
           <div className="mt-3 text-sm space-y-2">
             <p>
@@ -114,9 +114,12 @@ export default function GizlilikPage() {
               gibi arayüzleriyle iş ortaklarına ücretli ya da ücretsiz sunulabilir. Yorum metni sizi
               dolaylı olarak belirlenebilir kılabilecek bilgiler içerebileceğinden, bu paylaşım için ayrıca
               açık rızanız aranır; üyeliğiniz bu rızaya bağlı değildir. Rızanızı profil ayarlarınızdan
-              istediğiniz zaman geri çekebilirsiniz; bu durumda yorumlarınız sonraki paylaşımlardan çıkarılır
-              ve iş ortaklarından kaldırılması istenir. Rıza kaydınız (tarih, metin sürümü) hukuki ispat için
-              saklanır. Toplulaştırılmış, kişiye bağlı olmayan puan istatistikleri bu rızaya tabi değildir.
+              istediğiniz zaman geri çekebilirsiniz. Geri çekme, bundan sonraki paylaşımları durdurur; geri çekmeden
+              önce yapılan paylaşımların hukuka uygunluğunu etkilemez. Daha önce paylaşılmış içeriklerin iş
+              ortaklarından kaldırılmasını talep etmek için info@fikape.com adresine yazabilirsiniz. Rıza ve onay
+              kayıtlarınız (karar, tarih, metin sürümü ve cihaz/bağlantı bilgisinin geri döndürülemeyecek biçimde
+              özetlenmiş değeri) hukuki ispat amacıyla, ispatın gerektirdiği süre boyunca saklanır.
+              Toplulaştırılmış, kişiye bağlı olmayan puan istatistikleri bu rızaya tabi değildir.
             </p>
           </div>
         </section>
@@ -125,10 +128,10 @@ export default function GizlilikPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-3">4. Hukuki Dayanak</h2>
           <p className="mb-2">Kişisel verileriniz KVKK&apos;nın 5. maddesi uyarınca aşağıdaki hukuki dayanaklar çerçevesinde işlenmektedir:</p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li><strong>Sözleşmenin ifası:</strong> Hesap oluşturma ve hizmet sunumu</li>
-            <li><strong>Açık rıza:</strong> E-posta doğrulama ve iletişim için</li>
-            <li><strong>Meşru menfaat:</strong> Platform güvenliği ve sahte içerik önleme</li>
-            <li><strong>Hukuki yükümlülük:</strong> Yasal saklama gereklilikleri</li>
+            <li><strong>Sözleşmenin kurulması veya ifası:</strong> Hesap oluşturma, e-posta doğrulama, yorum ve takas hizmetlerinin sunulması</li>
+            <li><strong>Açık rıza:</strong> Yorumların iş ortaklarıyla adsız paylaşılması, takasta telefon numarası paylaşımı, usta iletişim bilgisi ve çalışma yeri fotoğrafı yayını, sigorta/satış taleplerinde iletişim bilgisinin ilgili kurumlarla paylaşılması (rıza verilmesi isteğe bağlıdır ve geri çekilebilir)</li>
+            <li><strong>Meşru menfaat:</strong> Platform güvenliği, spam ve sahte içerik önleme</li>
+            <li><strong>Kanunlarda öngörülme ve hukuki yükümlülük:</strong> 5651 sayılı Kanun kapsamındaki trafik kaydı ve diğer yasal saklama gereklilikleri</li>
           </ul>
         </section>
 
@@ -136,7 +139,7 @@ export default function GizlilikPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-3">5. Veri Saklama Süreleri</h2>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Aktif hesap verileri: Hesabınız açık olduğu sürece</li>
-            <li>Yorumlar ve puanlar: Hesap silme talebinize kadar</li>
+            <li>Yorumlar ve puanlar: Hesap silme talebiniz onaylanıp işleme alınana kadar</li>
             <li>Pasif hesaplar: 24 ay boyunca hiç giriş yapılmayan hesaplar, 30 gün önceden e-postayla
             bildirilerek askıya alınabilir; verileriniz silinmez, e-posta doğrulamasıyla (şifre sıfırlama)
             hesabınızı yeniden etkinleştirebilirsiniz</li>
@@ -144,7 +147,7 @@ export default function GizlilikPage() {
             <li>Trafik bilgisi (5651 sayılı Kanun): Kayıt tarihinden itibaren 2 yıl,
             sonrasında otomatik olarak silinir</li>
             <li>Takas mesajlaşması: İlan kapandıktan 6 ay sonra mesaj içeriği anonimleştirilir</li>
-            <li>Takasta paylaştığınız telefon numarası: Görüşme kapatıldığında/engellendiğinde hemen, ilan kapandıktan 30 gün sonra otomatik silinir</li>
+            <li>Takasta paylaştığınız telefon numarası: Görüşme kapatıldığında veya engellendiğinde hemen silinir; bunlar olmasa bile ilan kapandıktan 30 gün sonra otomatik silinir. Hesap silme talebiniz onaylandığında da silinir</li>
             <li>Raporlanan içerik (mesaj/ilan): Moderasyon incelemesi sonuçlanana kadar, sonrasında
             genel saklama sürelerine tabidir</li>
             <li>Yasal zorunluluk bulunan kayıtlar: İlgili mevzuatta öngörülen süreler boyunca</li>
@@ -155,13 +158,15 @@ export default function GizlilikPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-3">6. Üçüncü Taraf Hizmetleri</h2>
           <p className="mb-2">Platform, aşağıdaki üçüncü taraf hizmetlerinden yararlanmaktadır:</p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li><strong>Supabase (PostgreSQL):</strong> Veri tabanı altyapısı — AB GDPR uyumlu</li>
-            <li><strong>Vercel:</strong> Uygulama barındırma ve dağıtım — GDPR uyumlu</li>
-            <li><strong>Resend:</strong> Doğrulama e-postaları — GDPR uyumlu</li>
+            <li><strong>Supabase (PostgreSQL):</strong> Veri tabanı altyapısı</li>
+            <li><strong>Vercel (uygulama barındırma ve dosya/görsel depolama):</strong> Uygulamanın çalıştırılması ve yüklenen görsellerin saklanması</li>
+            <li><strong>Resend:</strong> Doğrulama e-postaları</li>
+            <li><strong>Tavily:</strong> Takasa açılan araçlar için piyasa değeri tahmini amacıyla yapılan arama sorguları (araç markası, modeli ve yılı gibi bilgiler; kimlik bilgisi içermez)</li>
           </ul>
           <p className="mt-2 text-sm text-gray-500">
-            Bu hizmet sağlayıcılar yalnızca Platform&apos;un işlevselliği için gerekli minimum veriyi işler
-            ve kendi gizlilik politikaları kapsamında hareket eder.
+            Bu hizmet sağlayıcılar yurt dışında bulunan sunucularda faaliyet gösterebilir; bu nedenle verileriniz
+            yalnızca Platform&apos;un işlevselliği için gerekli ölçüde ve KVKK&apos;nın yurt dışına aktarıma ilişkin
+            hükümleri çerçevesinde yurt dışına aktarılabilir. Sağlayıcılar kendi gizlilik politikaları kapsamında hareket eder.
           </p>
           <p className="mt-3 text-sm text-gray-500">
             <strong>Sesli yorum girişi:</strong> Yorum alanlarında mikrofon ile sesli giriş yaparsanız,
@@ -200,12 +205,15 @@ export default function GizlilikPage() {
             <li>İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme</li>
             <li>Eksik veya yanlış işlenmiş verilerin düzeltilmesini talep etme</li>
             <li>Verilerin silinmesini veya yok edilmesini talep etme</li>
-            <li>İşlemeye itiraz etme ve zararın giderilmesini talep etme</li>
+            <li>Verilerin aktarıldığı yurt içi veya yurt dışındaki üçüncü kişileri öğrenme</li>
+            <li>Düzeltme veya silme işlemlerinin verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme</li>
+            <li>İşlenen verilerin münhasıran otomatik sistemlerle analiz edilmesi sonucu aleyhinize bir sonuç çıkmasına itiraz etme</li>
+            <li>İşlemeye itiraz etme ve kanuna aykırı işlenmesi nedeniyle zarara uğramanız halinde zararın giderilmesini talep etme</li>
           </ul>
           <p className="mt-3">
             Bu haklarınızı kullanmak için{" "}
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>{" "}
-            adresine yazabilir veya profiliniz üzerinden hesabınızı silebilirsiniz.
+            adresine yazabilir veya profiliniz üzerinden hesabınızı silebilirsiniz. Başvurularınız en geç 30 gün içinde yanıtlanır; yanıttan memnun kalmazsanız Kişisel Verileri Koruma Kurulu&apos;na şikayet hakkınız saklıdır.
           </p>
         </section>
 
@@ -214,7 +222,7 @@ export default function GizlilikPage() {
           <p>
             Şifreleriniz bcrypt ile tek yönlü hashlenerek saklanmakta; oturumlar HTTPS üzerinden
             şifreli JWT ile yönetilmektedir. E-posta doğrulama linkleri HMAC-SHA256 imzalıdır
-            ve 24 saat geçerlidir. Güvenlik ihlali şüphesi durumunda derhal bilgilendirileceksiniz.
+            ve 24 saat geçerlidir. Verilerinize yönelik bir güvenlik ihlali olması halinde, mevzuatın öngördüğü şekilde ve en kısa sürede bilgilendirileceksiniz.
           </p>
           <p className="mt-3">
             Hesapların ve sistemin güvenliğini korumak amacıyla başarısız giriş denemeleri
@@ -241,17 +249,23 @@ export default function GizlilikPage() {
           <p className="mb-2">
             <strong>Telefon numarası paylaşımı (isteğe bağlı, açık rıza):</strong> Bir görüşmede &quot;Telefon
             numaramı paylaş&quot; seçeneğini kullanırsanız, girdiğiniz cep telefonu numarası yalnızca o
-            görüşme için işlenir; hesabınıza kaydedilmez. Numara şifreli saklanır ve görüşmedeki karşı taraf
-            da kendi numarasını paylaşmadıkça hiç kimseye gösterilmez; karşı taraf paylaşmadan önce paylaşımı
-            geri çekebilirsiniz. Her iki taraf paylaştığında numaralar karşılıklı olarak görünür; karşı taraf
-            numarayı kendi rehberine kaydedebilir, bu kopya üzerinde fikape&apos;nin denetimi yoktur. Numara,
-            görüşme kapatıldığında veya taraflardan biri engellendiğinde hemen, ilan kapandıktan 30 gün
-            sonra ise otomatik olarak silinir; hesap silme talebinde de silinir. Bu işlemin hukuki sebebi açık
-            rızanızdır; verdiğiniz ve geri çektiğiniz rıza, numarayı içermeyen bir kayıt olarak (tarih, metin
-            sürümü, görüşme numarası) ispat amacıyla saklanır. Numara mesaj içinde yazılamaz. Numaranın
-            doğrulanmadığını, tanımadığınız kişilerle paylaşırken dikkatli olmanız gerektiğini ve araç
-            görmeden ön ödeme yapmamanızı hatırlatırız. Telefon numaranız kural olarak moderasyon ekibi
-            tarafından da görüntülenmez.
+            görüşme için işlenir; profilinize kaydedilmez, yalnızca ilgili görüşmeye bağlı olarak saklanır.
+            Numara şifreli saklanır; şifreli numaraya ek olarak yalnızca size gösterilmek üzere son iki hane ve
+            aynı numaranın çok sayıda hesapta kullanılmasını tespit etmek için geri döndürülemeyen bir özet değeri
+            aynı süre boyunca tutulur. Numara, uygulama arayüzünde yalnızca iki taraf da paylaştığında karşı tarafa
+            gösterilir; yönetim ve moderasyon ekranlarında yer almaz (şifreleme anahtarına yalnızca sistem
+            yöneticilerinin teknik erişimi vardır). Karşı taraf paylaşmadan önce paylaşımı geri
+            çekebilirsiniz; karşı taraf da paylaştıktan sonra geri çekilemez, görüşmeyi kapatarak numaraları
+            gizleyebilirsiniz. Her iki taraf paylaştığında numaralar karşılıklı olarak görünür; karşı taraf numarayı
+            kendi rehberine kaydedebilir veya ekran görüntüsü alabilir, bu kopyalar üzerinde fikape&apos;nin
+            denetimi yoktur. Görüşme kapatıldığında veya taraflardan biri engellendiğinde numaralar hemen,
+            bunlar olmasa bile ilan kapandıktan 30 gün sonra otomatik olarak silinir; hesap silme talebiniz
+            onaylandığında da silinir. Bu işlemin hukuki sebebi açık rızanızdır; verdiğiniz ve geri çektiğiniz
+            rıza, numarayı içermeyen bir kayıt olarak (tarih, metin sürümü, görüşme numarası, cihaz/bağlantı
+            bilgisinin geri döndürülemeyecek biçimde özetlenmiş değeri) ispat amacıyla saklanır. Numara mesaj
+            içinde yazılamaz. Numaranın doğrulanmadığını, tanımadığınız kişilerle paylaşırken dikkatli
+            olmanız gerektiğini ve araç görmeden ön ödeme yapmamanızı hatırlatırız. Telefon görüşmeleri
+            fikape tarafından izlenmez.
           </p>
           <p className="mb-2">
             İlan &quot;Takas oldu&quot; şeklinde kapandıktan sonra, görüşmenin tarafları birbirine 1-5 yıldız
@@ -259,7 +273,7 @@ export default function GizlilikPage() {
             kullanıcılara gösterilir.
           </p>
           <p>
-            Kapanan bir takas ilanının mesajları, kapanmadan 6 ay sonra otomatik olarak anonimleştirilir
+            Kapanan bir takas ilanının mesajları, kapandıktan 6 ay sonra otomatik olarak anonimleştirilir
             (mesaj metni silinir). Adli veya idari bir makamdan gelen resmi bir talep olması halinde,
             ilgili veriler yalnızca talep kapsamıyla sınırlı olarak ve yasal saklama süresi boyunca
             paylaşılabilir/saklanabilir.

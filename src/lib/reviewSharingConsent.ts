@@ -5,7 +5,7 @@ import { hashRequestContext } from "@/lib/security";
 // Üyelik bu rızaya bağlı değildir; kayıtta işaretsiz kutu, profil ayarından sonradan verilir/geri çekilir.
 // ConsentLog append-only: her karar (ver/geri çek) ayrı satır, en güncel olan geçerlidir.
 // Rıza metni (kayıt kutusu + gizlilik sayfası) değişince sürüm artırılmalıdır.
-export const REVIEW_SHARING_CONSENT_VERSION = "v1-2026-10";
+export const REVIEW_SHARING_CONSENT_VERSION = "v2-2026-10";
 
 /** Son karar: granted true/false; hiç sorulmamışsa null. Enum DB'ye henüz eklenmemişse boş durum döner (sayfa kırılmasın). */
 export async function getReviewSharingState(userId: number): Promise<{ granted: boolean | null; changedAt: Date | null }> {

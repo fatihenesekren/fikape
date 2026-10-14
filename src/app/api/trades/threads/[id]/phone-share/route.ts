@@ -67,7 +67,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   const { userId, threadId, thread, counterpartId, user } = ctx;
 
   if (!user.emailVerifiedAt) {
-    return json({ error: "Telefon paylaşabilmek için önce e-posta adresinizi doğrulamanız gerekir." }, 403);
+    return json({ error: "Telefon paylaşabilmek için önce e-posta adresinizi doğrulayınız." }, 403);
   }
   if (thread.blockedByUserId != null || thread.closedByUserId != null) {
     return json({ error: "Bu görüşme kapalı, numara paylaşamazsınız." }, 403);
@@ -105,7 +105,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     return json({ error: "Bugün için numara paylaşım sınırına ulaştınız. Lütfen yarın tekrar deneyiniz." }, 429);
   }
   if (ayniNumara.length >= MAX_USERS_PER_PHONE) {
-    return json({ error: "Bu numara birden fazla hesapta kullanıldığı için paylaşılamıyor. Destek ekibimizle iletişime geçebilirsiniz." }, 409);
+    return json({ error: "Bu numara şu an paylaşılamıyor. Destek ekibimizle iletişime geçebilirsiniz." }, 409);
   }
 
   const mevcut = await prisma.threadPhoneShare.findUnique({

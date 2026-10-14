@@ -227,7 +227,7 @@ function KayitForm() {
             )}
           </div>
 
-          <label className="flex items-start gap-2 text-xs text-gray-500">
+          <label className="flex items-start gap-2 text-xs text-gray-600">
             <input
               type="checkbox"
               checked={kvkkConsent}
@@ -237,11 +237,11 @@ function KayitForm() {
             />
             <span>
               <Link href="/gizlilik" className="underline">KVKK Aydınlatma Metni</Link>
-              {"'ni okudum, kişisel verilerimin belirtilen kapsamda işlenmesini kabul ediyorum."}
+              {"'ni okudum; kişisel verilerimin bu metinde belirtilen kapsamda işlenmesi hakkında bilgilendirildim."}
             </span>
           </label>
 
-          <label className="flex items-start gap-2 text-xs text-gray-500">
+          <label className="flex items-start gap-2 text-xs text-gray-600">
             <input
               type="checkbox"
               checked={termsConsent}
@@ -257,7 +257,7 @@ function KayitForm() {
             </span>
           </label>
 
-          <label className="flex items-start gap-2 text-xs text-gray-500">
+          <label className="flex items-start gap-2 text-xs text-gray-600">
             <input
               type="checkbox"
               checked={reviewShareConsent}
@@ -265,7 +265,7 @@ function KayitForm() {
               className="mt-0.5 shrink-0"
             />
             <span>
-              {"(İsteğe bağlı) Yorum metnimin ve puanlarımın, adım ve fotoğraflarım olmadan fikape iş ortaklarında da gösterilmesine izin veriyorum. Üyeliğim bu seçime bağlı değildir; profil ayarlarımdan istediğim zaman değiştirebilirim. "}
+              {"(İsteğe bağlı) Yorum metnimin ve puanlarımın; adım, e-postam ve fotoğraflarım olmadan, fikape'nin iş ortağı olan kurumların sitelerinde veya uygulamalarında da gösterilmesine izin veriyorum. İzin vermesem de üyeliğim etkilenmez; profil ayarlarımdan dilediğim zaman geri çekebilirim. "}
               <Link href="/gizlilik" className="underline">Ayrıntı</Link>
             </span>
           </label>

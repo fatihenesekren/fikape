@@ -36,7 +36,7 @@ export default function KullanimKosullariPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Kullanım Koşulları</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ekim 2026</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: 14 Ekim 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -123,9 +123,12 @@ export default function KullanimKosullariPage() {
           </p>
           <p className="mt-3">
             <strong>Yorumların iş ortaklarına sunulması:</strong> Yorumlarınızın metni ve puanları,
-            kullanıcı adınız, e-posta adresiniz ve fotoğraflarınız olmaksızın (anonim olarak) API, widget veya
-            benzeri entegrasyonlarla üçüncü kişi ve kurumlara ücretli ya da ücretsiz sunulabilir; ayrıntılar
-            Üyelik Sözleşmesi&apos;nin 6. maddesindedir. Yorum fotoğrafları bu kapsama dahil değildir.
+            adınız, kullanıcı adınız, e-posta adresiniz ve fotoğraflarınız olmaksızın (adsız olarak) API, widget veya
+            benzeri entegrasyonlarla üçüncü kişi ve kurumlara ücretli ya da ücretsiz sunulabilir; bu sunum yalnızca
+            isteğe bağlı açık rızanız bulunduğu sürece yapılır ve rıza vermemeniz üyeliğinizi etkilemez. Ayrıntılar{" "}
+            <Link href="/uyelik-sozlesmesi" className="underline">Üyelik Sözleşmesi</Link>&apos;nin 6. maddesinde ve{" "}
+            <Link href="/gizlilik" className="underline">Gizlilik Politikası</Link>&apos;ndadır. Yorum fotoğrafları bu
+            kapsama dahil değildir.
           </p>
         </section>
 
@@ -168,8 +171,8 @@ export default function KullanimKosullariPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-3">9. Hizmetin Değiştirilmesi</h2>
           <p>
             Platform özelliklerini, fiyatlandırmasını veya kapsam dahil ettiği araç kategorilerini
-            önceden haber vermeksizin değiştirme hakkını saklı tutar. Temel hizmet koşullarında
-            yapılan önemli değişiklikler kayıtlı e-posta adresinize bildirilir.
+            değiştirme hakkını saklı tutar. Temel hizmet koşullarında ve ücretlendirmede yapılacak önemli
+            değişiklikler, yürürlüğe girmeden makul bir süre önce kayıtlı e-posta adresinize bildirilir.
           </p>
         </section>
 
@@ -193,6 +196,12 @@ export default function KullanimKosullariPage() {
             Engellenen kullanıcılar bölümünden kaldırılabilir) ya da &quot;İlgilenmiyorum&quot; ile görüşmeyi
             kapatmadan karşı tarafa sinyal verebilirsiniz. Platform gerekli gördüğü durumlarda hesapları
             kısıtlama hakkını saklı tutar.
+          </p>
+          <p className="mt-2">
+            Dilerseniz görüşme içinde, iki tarafın karşılıklı onayıyla telefon numaranızı yalnızca o görüşmeye
+            özel olarak paylaşabilirsiniz; numara mesaj içinde yazılamaz. Paylaşılan numarayı yalnızca ilgili takas
+            için kullanmayı, başkalarıyla paylaşmamayı ve pazarlama amacıyla kullanmamayı kabul edersiniz. Ayrıntılar{" "}
+            <Link href="/gizlilik" className="underline">Gizlilik Politikası</Link>&apos;ndadır.
           </p>
           <p className="mt-2">
             İlan &quot;Takas oldu&quot; şeklinde kapandıktan sonra görüşmenin tarafları birbirine yıldız puanı
@@ -234,7 +243,8 @@ export default function KullanimKosullariPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-3">12. Uygulanacak Hukuk ve Uyuşmazlık Çözümü</h2>
           <p>
             Bu koşullar Türkiye Cumhuriyeti hukukuna tabidir. Taraflar arasında doğabilecek
-            uyuşmazlıklarda İstanbul Merkez Mahkemeleri ve İcra Daireleri yetkilidir.
+            uyuşmazlıklarda İstanbul Merkez Mahkemeleri ve İcra Daireleri yetkilidir; tüketici sıfatını taşıyan
+            üyeler bakımından 6502 sayılı Kanun&apos;daki yetki ve değer sınırları saklıdır.
             Uyuşmazlıkları öncelikle{" "}
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>{" "}
             adresi üzerinden dostane yollarla çözmeye çalışırız.
@@ -248,7 +258,7 @@ export default function KullanimKosullariPage() {
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>
           </p>
           <p className="mt-2">
-            Taraflar arasındaki hak ve yükümlülükleri düzenleyen bağlayıcı metin için{" "}
+            Üyelik ilişkisinin diğer hükümleri için{" "}
             <Link href="/uyelik-sozlesmesi" className="underline">Üyelik Sözleşmesi</Link>&apos;ni
             inceleyebilirsiniz.
           </p>

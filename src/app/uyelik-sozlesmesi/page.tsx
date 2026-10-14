@@ -34,7 +34,7 @@ export default function UyelikSozlesmesiPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Üyelik Sözleşmesi</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ekim 2026</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: 14 Ekim 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -140,24 +140,29 @@ export default function UyelikSozlesmesiPage() {
             Bunların izinsiz kopyalanması, çoğaltılması veya ticari amaçla kullanılması yasaktır.
           </p>
           <p>
-            Paylaştığınız içeriklerin (yorum, fotoğraf, usta notu vb.) fikri mülkiyeti size aittir.
-            Bununla birlikte, bu içerikleri Platform üzerinde yayımlamak, aramaya dahil etmek,
-            özetlemek ve istatistiksel/tanıtım amaçlı kullanmak için Platform&apos;a dünya genelinde
-            geçerli, ücretsiz, alt lisanslanabilir bir kullanım hakkı vermiş olursunuz. Bu hak,
-            hesabınızı sildiğinizde sona erer.
+            Paylaştığınız içeriklerin (yorum, puan, fotoğraf, usta notu vb.) fikri mülkiyeti size aittir.
+            Bu içerikleri Platform&apos;da yayımlamanız ve Platform&apos;un işletilmesi amacıyla; çoğaltma, yayma,
+            umuma iletim ve işleme (yorumun anlamını değiştirmeyecek şekilde kısaltma, özetleme, biçimlendirme,
+            aranabilir kılma ve istatistiksel değerlendirme ile Platform&apos;un tanıtımı için kullanım) haklarını;
+            dünya genelinde, ücretsiz, münhasır olmayan ve devredilemez biçimde (yalnızca Platform&apos;un işletilmesi
+            için gerekli hizmet sağlayıcılara alt lisans verilmesi hariç), içeriği silene veya hesabınızı kapatana
+            kadar geçerli olmak üzere Platform&apos;a vermiş olursunuz. Bu lisans üyeliğin bir parçasıdır. Manevi
+            haklarınız (içeriğinizin bütünlüğünün korunması dahil) saklıdır; Platform, içeriğinizin anlamını
+            değiştirecek bir işleme yapmaz.
           </p>
-          <p className="mt-3 mb-1 font-semibold text-gray-900">Yorumların iş ortaklarına sunulması</p>
+          <p className="mt-3 mb-1 font-semibold text-gray-900">Yorumların iş ortaklarına sunulması (ücretli olabilir)</p>
           <p>
-            Yorumlarınızın metni ve puanları üzerindeki çoğaltma, yayma, umuma iletim haklarını (yorumun
-            anlamını değiştirmeyen kısaltma ve biçimlendirme dahil), dünya genelinde ve hesabınız silinene
-            kadar geçerli olmak üzere, ücretsiz ve münhasır olmayan biçimde Platform&apos;a vermiş olursunuz.
-            Platform, bu içerikleri kullanıcı adınız, e-posta adresiniz ve fotoğraflarınız olmaksızın (anonim
-            olarak), API, widget veya benzeri teknik arayüzlerle üçüncü kişi ve kurumlara (iş ortakları)
-            ücretli ya da ücretsiz sunabilir ve bu amaçla alt lisans verebilir. Yorum fotoğrafları bu kapsama
-            dahil değildir. Yorumunuzun, kişisel veri niteliğindeki unsurlarıyla birlikte iş ortaklarına
-            sunulması ayrıca isteğe bağlı açık rızanıza tabidir (Gizlilik Politikası); bu rıza üyeliğin
-            şartı değildir. Yorumunuzu veya hesabınızı sildiğinizde, Platform iş ortaklarından ilgili içeriği
-            makul süre içinde kaldırmasını ister. Manevi haklarınız saklıdır.
+            Yorumlarınızın iş ortaklarına sunulması yukarıdaki lisanstan bağımsız olarak yalnızca kayıt sırasında
+            veya profil ayarlarınızdan verdiğiniz isteğe bağlı açık rızanız bulunduğu sürece yapılır; bu rızayı
+            vermemeniz üyeliğinizi ve Platform&apos;daki haklarınızı hiçbir şekilde etkilemez. Rıza vermeniz
+            halinde yorumlarınızın metni ve puanları; adınız, kullanıcı adınız, e-posta adresiniz ve
+            fotoğraflarınız olmaksızın (adsız olarak), API, widget veya benzeri teknik arayüzlerle üçüncü kişi ve
+            kurumlara (iş ortakları) ücretli ya da ücretsiz sunulabilir ve bu amaçla Platform&apos;a alt lisans verme
+            yetkisi tanımış olursunuz. Yorum fotoğrafları bu kapsama dahil değildir. Rızanızı geri çektiğinizde
+            yorumlarınız sonraki paylaşımlardan çıkarılır. Yorumunuzu veya hesabınızı sildiğinizde ilgili içerik
+            için verdiğiniz lisans sona erer; Platform içeriği kendi sistemlerinden kaldırır ve iş ortaklarından
+            makul süre içinde kaldırılmasını ister. Ayrıntılar için{" "}
+            <Link href="/gizlilik" className="underline">Gizlilik Politikası</Link>&apos;na bakınız.
           </p>
         </section>
 
@@ -175,7 +180,7 @@ export default function UyelikSozlesmesiPage() {
             Koşulları</Link>&apos;nın ihlali</li>
             <li>Sahte içerik, sahte araç sahipliği iddiası veya çoklu hesap tespiti</li>
             <li>Platforma, diğer kullanıcılara veya üçüncü kişilere zarar verme girişimi</li>
-            <li>Uzun süreli pasif hesap (24 ay boyunca hiç giriş yapılmaması)</li>
+            <li>Uzun süreli pasif hesap (24 ay boyunca hiç giriş yapılmaması); bu durumda hesabınız askıya alınmadan en az 30 gün önce kayıtlı e-posta adresinize bildirim yapılır</li>
           </ul>
           <p className="mt-2">
             Hesabınızı dilediğiniz zaman kendiniz de kapatabilirsiniz (Profil &rsaquo; Hesabımı Sil).
@@ -205,8 +210,8 @@ export default function UyelikSozlesmesiPage() {
             İşbu Sözleşme Türkiye Cumhuriyeti hukukuna tabidir. Sözleşme&apos;den doğan uyuşmazlıklarda,
             6502 sayılı Tüketicinin Korunması Hakkında Kanun kapsamındaki parasal sınırlar dahilinde
             İl/İlçe Tüketici Hakem Heyetleri, bu sınırları aşan uyuşmazlıklarda ise Tüketici Mahkemeleri
-            (bulunmayan yerlerde yetkili Asliye Hukuk Mahkemeleri) ile İstanbul Merkez (Çağlayan)
-            Mahkemeleri ve İcra Daireleri yetkilidir. Taraflar, uyuşmazlıkları öncelikle{" "}
+            (bulunmayan yerlerde yetkili Asliye Hukuk Mahkemeleri) yetkilidir; tüketici sıfatı
+            taşımayan taraflar bakımından ise İstanbul Merkez (Çağlayan) Mahkemeleri ve İcra Daireleri yetkilidir. Taraflar, uyuşmazlıkları öncelikle{" "}
             <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>{" "}
             adresi üzerinden dostane yollarla çözmeye gayret gösterir.
           </p>
@@ -218,7 +223,11 @@ export default function UyelikSozlesmesiPage() {
             Platform, işbu Sözleşme&apos;yi zaman zaman güncelleme hakkını saklı tutar. Sözleşme&apos;de
             yapılan önemli değişiklikler kayıtlı e-posta adresinize bildirilir ve/veya Platform üzerinde
             duyurulur. Güncel Sözleşme metnine her zaman bu sayfadan ulaşabilirsiniz. Değişiklik sonrası
-            Platform&apos;u kullanmaya devam etmeniz, güncel Sözleşme&apos;yi kabul ettiğiniz anlamına gelir.
+            Yorumlarınızın kullanımına ilişkin lisans kapsamını genişleten veya aleyhinize sonuç doğuran değişiklikler,
+            yürürlüğe girmeden en az 30 gün önce kayıtlı e-posta adresinize bildirilir ve bu değişiklikler için
+            yeniden açık onayınız aranır; onay vermemeniz halinde değişiklik size uygulanmaz, hesabınızı kapatma
+            hakkınız saklıdır. Bunların dışındaki değişiklikler bakımından Platform&apos;u kullanmaya devam etmeniz,
+            güncel Sözleşme&apos;yi kabul ettiğiniz anlamına gelir.
           </p>
         </section>
 
@@ -229,8 +238,8 @@ export default function UyelikSozlesmesiPage() {
             ve Üye hesabını silene veya Platform tarafından sonlandırılana kadar yürürlükte kalır. Bu
             Sözleşme, <Link href="/gizlilik" className="underline">Gizlilik Politikası</Link> ve{" "}
             <Link href="/kullanim-kosullari" className="underline">Kullanım Koşulları</Link> ile birlikte
-            bütün olarak değerlendirilir; aralarında çelişki olması halinde, ilgili konudaki daha
-            spesifik hüküm esas alınır.
+            bütün olarak değerlendirilir; aralarında çelişki olması halinde bu Sözleşme esas alınır;
+            kişisel verilerin işlenmesi konusunda ise Gizlilik Politikası esas alınır.
           </p>
         </section>
 

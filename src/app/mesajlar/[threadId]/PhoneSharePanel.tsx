@@ -107,8 +107,8 @@ export function PhoneSharePanel({ threadId, counterpartName, mine, counterpartSh
                 </button>
               </div>
               <p className="text-[11px] leading-relaxed text-gray-500">
-                Bu numara size yalnızca bu takas için paylaşıldı; başka amaçla kullanmayınız veya üçüncü kişilerle paylaşmayınız.
-                Numaralar görüşme kapatıldığında gizlenir. Numarayı kendi rehberinize kaydetmiş olabileceğinizi unutmayınız.
+                Bu numara size yalnızca bu takas için paylaşıldı; başka amaçla kullanmayınız, başkalarıyla paylaşmayınız.
+                Görüşme kapatıldığında numaralar ekrandan kaldırılır; rehberinize kaydettiyseniz o kopya sizde kalır.
               </p>
               <p className="text-[11px] text-gray-500">Numaranız: {mine}</p>
             </div>
@@ -158,7 +158,7 @@ export function PhoneSharePanel({ threadId, counterpartName, mine, counterpartSh
             <form onSubmit={share} className="space-y-2">
               <p className="text-[11px] leading-relaxed text-amber-800 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2">
                 Tanımadığınız biriyle ilk siz paylaşmak zorunda değilsiniz. Araç görmeden ön ödeme veya IBAN isteyenlere karşı dikkatli olunuz.
-                Numara doğrulanmadığı için karşı tarafın numarasının gerçekten ona ait olduğundan emin olamayabilirsiniz.
+                Numaralar doğrulanmaz; karşı tarafın numarası kendisine ait olmayabilir.
               </p>
               <label className="block text-xs font-medium text-gray-700" htmlFor={`phone-${threadId}`}>
                 Cep telefonu numaranız
@@ -175,19 +175,24 @@ export function PhoneSharePanel({ threadId, counterpartName, mine, counterpartSh
                 className="w-full min-h-[44px] rounded-lg border border-gray-300 px-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-link"
               />
               <p className="text-[11px] leading-relaxed text-gray-600">
-                Numaranız yalnızca bu görüşmedeki karşı tarafla, o da kendi numarasını paylaşırsa görüşme boyunca paylaşılır.
-                Hesabınıza kaydedilmez, şifreli saklanır; görüşme kapatılınca veya ilan kapandıktan 30 gün sonra silinir.
-                Karşı taraf kendi paylaşımını yapmadan numaranız görünmez ve bu aşamada geri çekebilirsiniz.{" "}
+                Numaranız yalnızca bu görüşmedeki kişiye, o da kendi numarasını paylaşırsa gösterilir. Profilinize
+                kaydedilmez, şifreli saklanır; görüşme kapanınca ya da ilan kapandıktan 30 gün sonra silinir. Karşı taraf
+                paylaşana kadar paylaşımı geri çekebilirsiniz; karşı taraf paylaştıktan sonra geri çekemezsiniz, ancak
+                görüşmeyi kapatarak numaraları gizleyebilirsiniz.{" "}
                 <Link href="/gizlilik" className="text-link underline underline-offset-2">Gizlilik Politikası</Link>
+              </p>
+              <p className="text-[11px] leading-relaxed text-gray-600">
+                Karşı taraf numaranızı kaydedebilir veya ekran görüntüsü alabilir. Telefon görüşmeleri fikape tarafından
+                izlenmez; sorun yaşarsanız yazışmayı mesajlaşma üzerinden sürdürmeniz önerilir.
               </p>
               <label className="flex items-start gap-2 text-xs text-gray-700">
                 <input
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
-                  className="mt-0.5 h-4 w-4 shrink-0"
+                  className="mt-0.5 h-5 w-5 shrink-0"
                 />
-                <span>Numaramı bu görüşmeyle sınırlı olarak paylaşmayı onaylıyorum.</span>
+                <span>Numaramı, yalnızca bu görüşmedeki kişiye ve karşılıklı paylaşım olduğunda gösterilmesini onaylıyorum.</span>
               </label>
               <div className="flex flex-wrap gap-2">
                 <button

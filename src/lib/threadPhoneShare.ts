@@ -6,7 +6,7 @@ import { decryptPhone, displayPhone, maskedPhone } from "@/lib/phoneShareCrypto"
 // Numara yalnızca: görüşme açık (kapalı/engelli değil), ilan aktif, çift arasında kullanıcı bloğu yok VE
 // iki taraf da paylaşmışsa karşı tarafa çözülüp döner. Aksi halde alan hiç dönmez.
 
-export const PHONE_SHARE_CONSENT_VERSION = "v1-2026-10";
+export const PHONE_SHARE_CONSENT_VERSION = "v2-2026-10";
 export const DAILY_SHARE_LIMIT = 5;
 export const MAX_USERS_PER_PHONE = 3;
 

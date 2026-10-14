@@ -66,7 +66,7 @@ export function PreferencesCard({ emailEnabled, sharingGranted, sharingChangedLa
           onChange={setEmail}
         />
         <PreferenceSwitch
-          title="Yorumlarım iş ortaklarıyla adsız paylaşılabilsin"
+          title="Yorumlarım iş ortaklarının sitelerinde adsız gösterilebilsin"
           description={
             <>
               İsteğe bağlıdır; vermemeniz hizmeti kullanmanızı etkilemez. Ayrıntılar için{" "}
@@ -79,14 +79,19 @@ export function PreferencesCard({ emailEnabled, sharingGranted, sharingChangedLa
               <>
                 <p><strong className="text-gray-900">Paylaşılır:</strong> yorum metniniz ve puanlarınız.</p>
                 <p><strong className="text-gray-900">Paylaşılmaz:</strong> adınız, e-posta adresiniz ve fotoğraflarınız.</p>
-                <p>İzni dilediğiniz zaman geri çekebilirsiniz; geri çekme sonraki paylaşımlar için geçerlidir.</p>
+                <p>
+                  İzni dilediğiniz zaman geri çekebilirsiniz; bundan sonra yorumlarınız paylaşılmaz. Daha önce
+                  paylaşılmış içeriklerin kaldırılması için{" "}
+                  <a href="mailto:info@fikape.com" className="text-link underline underline-offset-2">info@fikape.com</a>{" "}
+                  adresine yazabilirsiniz.
+                </p>
               </>
             ),
           }}
           endpoint="/api/profile/review-sharing"
           initialEnabled={sharingGranted === true}
           onText="Adsız paylaşılabilir"
-          offText="Paylaşılmıyor"
+          offText={sharing === null ? "Henüz seçilmedi" : "Paylaşılmıyor"}
           footnote={sharingChangedLabel ? `Son değişiklik: ${sharingChangedLabel}` : undefined}
           onChange={setSharing}
         />
