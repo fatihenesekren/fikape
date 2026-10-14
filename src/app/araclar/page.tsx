@@ -31,6 +31,11 @@ export const dynamic = "force-dynamic";
 const PAGE_SIZE = 17;
 
 const CATEGORIES = KATEGORILER;
+
+// Kategori çipleri (min-h-11 = 44 px dokunma hedefi)
+const CIP = "inline-flex items-center justify-center gap-1.5 min-h-11 px-4 rounded-full border text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2";
+const CIP_SECILI = "bg-gray-900 text-white border-gray-900";
+const CIP_NORMAL = "bg-white text-gray-600 border-gray-200 hover:border-gray-300";
 const CATEGORY_SLUGS = KATEGORI_SLUGLARI;
 
 // Motor (searchProductIds) hata verirse kullanılan yedek: aksan-duyarsız bellek içi arama.
@@ -108,13 +113,12 @@ export default async function AraclarPage({
       </h1>
       <p className="text-sm text-gray-500 mb-5">Kullanıcı yorumlarına dayalı FI·KA·PE puanlarıyla tüm katalog.</p>
 
-      {/* Kategori sekmeleri */}
-      <div className="flex gap-2 overflow-x-auto scrollbar-none pb-4 -mx-1 px-1">
+      {/* Kategori sekmeleri: mobilde kaydırmak yerine satırlara sarılır, yedi çipin hepsi görünür (kullanıcı yana kaydırması gerektiğini fark etmiyordu) */}
+      <nav aria-label="Araç kategorileri" className="flex flex-wrap gap-2 mb-4">
         <Link
           href="/araclar"
-          className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors ${
-            !catSlug ? "bg-gray-900 text-white border-gray-900" : "bg-white text-gray-600 border-gray-200 hover:border-gray-300"
-          }`}
+          aria-current={!catSlug ? "page" : undefined}
+          className={`${CIP} ${!catSlug ? CIP_SECILI : CIP_NORMAL}`}
         >
           Tümü
         </Link>
@@ -122,15 +126,14 @@ export default async function AraclarPage({
           <Link
             key={c.slug}
             href={`/araclar?kategori=${c.slug}`}
-            className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors flex items-center gap-1.5 ${
-              catSlug === c.slug ? "bg-gray-900 text-white border-gray-900" : "bg-white text-gray-600 border-gray-200 hover:border-gray-300"
-            }`}
+            aria-current={catSlug === c.slug ? "page" : undefined}
+            className={`${CIP} ${catSlug === c.slug ? CIP_SECILI : CIP_NORMAL}`}
           >
             <span aria-hidden="true">{c.icon}</span>
             {c.label}
           </Link>
         ))}
-      </div>
+      </nav>
 
       {/* Arama */}
       <AraclarSearchBox catSlug={catSlug} q={q} />
