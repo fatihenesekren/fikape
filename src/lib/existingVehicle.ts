@@ -15,6 +15,12 @@ export interface ExistingVehicleMatch {
   reviewCount: number;
 }
 
+// Model adının yazım farklarından arınmış karşılaştırma anahtarı: nesil aralığı ve marka öneki atılır,
+// boşluk/tire/işaret yok sayılır ("Mt 07" ve "MT-07" -> "mt07"; "SR/S (2020-)" -> "srs").
+function modelAdiAnahtari(marka: string, ad: string): string {
+  return slugify(stripModelGenRange(markasizModelAdi(marka, ad))).replace(/-/g, "");
+}
+
 // Katalogda (ACTIVE Product) bu marka+model zaten var mı?
 //
 // Eşleşme anahtarı: Product'ın model.slug'ı. Üç aday slug denenir çünkü mevcut
@@ -68,13 +74,21 @@ export async function findExistingVehicles(
   ];
   if (slugCandidates.length === 0) return [];
 
-  const products = await db.product.findMany({
+  // Yazım farkı toleransı ("Mt 07" / "mt07", "X-Max 250" / "xmax-250", "SR/S"): slug'a ek olarak aynı
+  // markanın ürünleri model adı anahtarıyla (boşluk/tire/işaretsiz) karşılaştırılır.
+  const modelAnahtari = new Set(modelAdlari.map((ad) => modelAdiAnahtari(b, ad)).filter(Boolean));
+
+  const adaylar = await db.product.findMany({
     where: {
       status: "ACTIVE",
-      model: { slug: { in: slugCandidates } },
+      OR: [
+        { model: { slug: { in: slugCandidates } } },
+        { brand: { name: { equals: b, mode: "insensitive" } } },
+      ],
       ...(categorySlug ? { category: { slug: categorySlug } } : {}),
     },
     select: {
+      model: { select: { slug: true, name: true } },
       slug: true,
       name: true,
       year: true,
@@ -83,6 +97,10 @@ export async function findExistingVehicles(
       _count: { select: { reviews: { where: { status: "PUBLISHED" } } } },
     },
   });
+
+  const products = adaylar.filter(
+    (p) => slugCandidates.includes(p.model.slug) || modelAnahtari.has(modelAdiAnahtari(b, p.model.name)),
+  );
 
   return products
     .map((p) => ({
