@@ -81,7 +81,7 @@ export function PhoneSharePanel({ threadId, counterpartName, mine, counterpartSh
   }
 
   return (
-    <section aria-label="Telefon paylaşımı" className="shrink-0 px-4 py-3 border-b border-gray-100">
+    <section aria-label="Telefon paylaşımı" className="shrink-0 max-h-[55vh] overflow-y-auto px-4 py-3 border-b border-gray-100">
       <div className="flex items-start gap-2">
         <span aria-hidden="true" className="text-base leading-6">📞</span>
         <div className="min-w-0 flex-1 space-y-1.5">

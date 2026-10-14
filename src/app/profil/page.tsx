@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { EditName } from "./EditName";
 import { AvatarPicker } from "./AvatarPicker";
-import { PreferenceSwitch } from "@/components/PreferenceSwitch";
+import { PreferencesCard } from "./PreferencesCard";
 import { getReviewSharingState } from "@/lib/reviewSharingConsent";
 import { NotificationsSection } from "./NotificationsSection";
 import { resolveLiveNotificationMessages } from "@/lib/notification";
@@ -250,48 +250,15 @@ export default async function ProfilPage() {
       </div>
 
       {/* Tercihler — kimlik kartından ayrı: "ben kimim" ile "ne izin veriyorum" karışmasın (2 ajanlı tasarım/UX incelemesi) */}
-      <section aria-labelledby="tercihler-baslik" className="overflow-hidden rounded-2xl border border-gray-100 bg-white">
-        <div className="px-5 pt-5 pb-3 sm:px-6">
-          <h2 id="tercihler-baslik" className="text-sm font-bold text-gray-900">Bildirim ve gizlilik tercihleri</h2>
-          <p className="mt-0.5 text-xs text-gray-600">Bu tercihleri dilediğiniz zaman değiştirebilirsiniz.</p>
-        </div>
-        <div className="divide-y divide-gray-100 border-t border-gray-100">
-          <PreferenceSwitch
-            title="E-posta bildirimleri"
-            description="Yorumlarınıza gelen yanıtlar ve hesabınızla ilgili önemli gelişmeler için e-posta alırsınız."
-            endpoint="/api/profile/notifications"
-            initialEnabled={user.emailNotificationsEnabled}
-          />
-          <PreferenceSwitch
-            title="Yorumlarım iş ortaklarıyla adsız paylaşılabilsin"
-            description={
-              <>
-                İsteğe bağlıdır; vermemeniz hizmeti kullanmanızı etkilemez. Ayrıntılar için{" "}
-                <Link href="/gizlilik" className="text-link underline underline-offset-2">Gizlilik Politikası</Link>.
-              </>
-            }
-            details={{
-              summary: "Neler paylaşılır?",
-              body: (
-                <>
-                  <p><strong className="text-gray-900">Paylaşılır:</strong> yorum metniniz ve puanlarınız.</p>
-                  <p><strong className="text-gray-900">Paylaşılmaz:</strong> adınız, e-posta adresiniz ve fotoğraflarınız.</p>
-                  <p>İzni dilediğiniz zaman geri çekebilirsiniz; geri çekme sonraki paylaşımlar için geçerlidir.</p>
-                </>
-              ),
-            }}
-            endpoint="/api/profile/review-sharing"
-            initialEnabled={reviewSharing.granted === true}
-            onText="Adsız paylaşılabilir"
-            offText="Paylaşılmıyor"
-            footnote={
-              reviewSharing.changedAt
-                ? `Son değişiklik: ${reviewSharing.changedAt.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}`
-                : undefined
-            }
-          />
-        </div>
-      </section>
+      <PreferencesCard
+        emailEnabled={user.emailNotificationsEnabled}
+        sharingGranted={reviewSharing.granted}
+        sharingChangedLabel={
+          reviewSharing.changedAt
+            ? reviewSharing.changedAt.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })
+            : null
+        }
+      />
 
       {/* Hızlı linkler */}
       <div className="flex gap-3">

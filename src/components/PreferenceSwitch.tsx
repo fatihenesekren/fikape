@@ -18,6 +18,8 @@ type Props = {
   errorText?: string;
   /** Satır sonu küçük not (ör. son değişiklik tarihi). */
   footnote?: ReactNode;
+  /** Kayıt başarıyla tamamlanınca yeni durumla çağrılır (üst bileşen özet satırını günceller). */
+  onChange?: (enabled: boolean) => void;
 };
 
 type Status = "idle" | "saving" | "saved" | "error";
@@ -28,6 +30,7 @@ export function PreferenceSwitch({
   savedText = "Tercihiniz kaydedildi.",
   errorText = "Tercihiniz kaydedilemedi. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
   footnote,
+  onChange,
 }: Props) {
   const id = useId();
   const [enabled, setEnabled] = useState(initialEnabled);
@@ -50,6 +53,7 @@ export function PreferenceSwitch({
       });
       if (res.ok) {
         setEnabled(next);
+        onChange?.(next);
         setStatus("saved");
         setMessage(savedText);
         if (timer.current) clearTimeout(timer.current);
@@ -109,12 +113,12 @@ export function PreferenceSwitch({
         </details>
       )}
 
-      {/* Her zaman DOM'da: ekran okuyucu ilk mesajı kaçırmasın; min-h zıplamayı önler */}
+      {/* Her zaman DOM'da (boşken yüksekliği yok): ekran okuyucu ilk mesajı kaçırmasın */}
       <p
         id={`${id}-s`}
         role={status === "error" ? "alert" : "status"}
         aria-live={status === "error" ? "assertive" : "polite"}
-        className={`mt-2 min-h-[1rem] text-xs ${status === "error" ? "text-red-700" : "text-gray-600"}`}
+        className={`text-xs ${message ? "mt-2" : ""} ${status === "error" ? "text-red-700" : "text-gray-600"}`}
       >
         {message}
       </p>
