@@ -16,4 +16,6 @@
 
 - [ ] **Anonim yorum API'si (3. şirketlere, ileride ücretli olabilir)** — Yalnız yorum metni + puanlar + araç + tarih; kullanıcı adı/e-posta/kimlik/fotoğraf YOK. Yorum formuna ek not eklenmeyecek. Önce hukuki zemin: Üyelik Sözleşmesi m.6 + Kullanım Koşulları m.6 lisansı API ile sunumu kapsamıyor, Gizlilik Politikası "üçüncü taraflara satılmaz" cümlesi çelişiyor (metinler henüz DEĞİŞTİRİLMEDİ; avukat kontrolü gerekli). Teknik: kimlik alanı yok + yorum için rastgele dış kimlik, yalnız yayındaki yorumlar, silme yansıması (webhook/silinenler listesi), çıktı maskeleme (telefon/e-posta/plaka/URL), plaka kuralı `reviewValidation.ts`'e, API kullanım sözleşmesi, şirket/fatura yapısı. Aşama: önce ücretsiz agrega puan kartı, sonra metinli/ücretli. Ayrıntı: hafızada `backlog_yorum_api_anonim_ucuncu_taraf`.
 
+- [ ] **Takasta karşılıklı onayla telefon paylaşımı** — Takas mesajlarında telefon/e-posta/WhatsApp filtreli (`checkContent` strict) ve ilan sayfasında iletişim butonu yok; anlaşan taraflar numara iletemiyor (filtre dolanılıyor ya da takas yarıda kalıyor). Öneri: görüşmede iki tarafın da "Telefon numaramı paylaş" demesiyle numaraların karşılıklı görünmesi; onay `ConsentLog`'a yazılır (TRADE_LISTING benzeri), mesaj filtresi değişmez. Henüz karar yok, yalnız not.
+
 ## Tamamlandı

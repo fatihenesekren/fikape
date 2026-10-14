@@ -15,7 +15,7 @@ const webPageJsonLd = {
   "@type": "WebPage",
   name: "Gizlilik Politikası",
   url: `${BASE_URL}/gizlilik`,
-  dateModified: "2026-09-01",
+  dateModified: "2026-10-14",
   isPartOf: { "@type": "WebSite", name: "fikape", url: BASE_URL },
 };
 
@@ -95,14 +95,28 @@ export default function GizlilikPage() {
             <li>Hesabınızın oluşturulması ve güvenliğinin sağlanması</li>
             <li>E-posta doğrulama ve &quot;Doğrulanmış Kullanıcı&quot; rozetinin verilmesi</li>
             <li>Yorumlarınızın platform üzerinde yayımlanması</li>
+            <li>Yorum metni ve puanlarınızın, kullanıcı adınız, e-posta adresiniz ve fotoğraflarınız olmadan (anonim olarak) API/entegrasyon yoluyla üçüncü kişi ve kurumlara (iş ortakları) sunulması — yalnızca isteğe bağlı açık rızanız varsa (aşağıya bakınız)</li>
             <li>Spam ve sahte yorum tespiti ile içerik moderasyonu</li>
             <li>Platform kalitesinin iyileştirilmesi ve hataların giderilmesi</li>
             <li>Hizmetin işletilmesi amacıyla toplulaştırılmış (kişi bazında olmayan) kullanım istatistiklerinin oluşturulması ve yetkili personele iç raporlanması</li>
             <li>Yasal yükümlülüklerin yerine getirilmesi</li>
           </ul>
           <p className="mt-3 text-sm bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
-            Verileriniz hiçbir koşulda üçüncü taraflara satılmaz veya reklam amaçlı kullanılmaz.
+            Kişisel verileriniz (ad, e-posta, kullanıcı adı, fotoğraf vb.) hiçbir koşulda üçüncü taraflara satılmaz veya reklam amaçlı kullanılmaz.
           </p>
+          <div className="mt-3 text-sm space-y-2">
+            <p>
+              <strong>Yorumların iş ortaklarına sunulması (isteğe bağlı açık rıza):</strong> Kayıt sırasında
+              veya profil ayarlarınızdan açık rıza verirseniz, yorum metniniz ve puanlarınız; adınız,
+              kullanıcı adınız, e-posta adresiniz ve fotoğraflarınız olmaksızın, fikape&apos;nin API/widget
+              gibi arayüzleriyle iş ortaklarına ücretli ya da ücretsiz sunulabilir. Yorum metni sizi
+              dolaylı olarak belirlenebilir kılabilecek bilgiler içerebileceğinden, bu paylaşım için ayrıca
+              açık rızanız aranır; üyeliğiniz bu rızaya bağlı değildir. Rızanızı profil ayarlarınızdan
+              istediğiniz zaman geri çekebilirsiniz; bu durumda yorumlarınız sonraki paylaşımlardan çıkarılır
+              ve iş ortaklarından kaldırılması istenir. Rıza kaydınız (tarih, metin sürümü) hukuki ispat için
+              saklanır. Toplulaştırılmış, kişiye bağlı olmayan puan istatistikleri bu rızaya tabi değildir.
+            </p>
+          </div>
         </section>
 
         <section>
@@ -156,7 +170,8 @@ export default function GizlilikPage() {
             <strong>Google Gemini AI:</strong> Bazı araçlar için kullanıcı yorumlarının özetlenmesi
             (AI Araç Özeti) ve teknik özelliklerin otomatik doldurulması amacıyla ilgili metin verisi
             Google&apos;ın Gemini API&apos;sine gönderilir; bu servis kendi gizlilik politikası
-            kapsamında hareket eder.
+            kapsamında hareket eder. Bu hizmet yurt dışında bulunan sunucularda çalışabileceğinden,
+            ilgili metin verisi yurt dışına aktarılabilir.
           </p>
         </section>
 

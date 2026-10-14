@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma";
 import { EditName } from "./EditName";
 import { AvatarPicker } from "./AvatarPicker";
 import { NotificationToggle } from "./NotificationToggle";
+import { ReviewSharingToggle } from "./ReviewSharingToggle";
+import { getReviewSharingConsent } from "@/lib/reviewSharingConsent";
 import { NotificationsSection } from "./NotificationsSection";
 import { resolveLiveNotificationMessages } from "@/lib/notification";
 import { BlockedUsersSection } from "./BlockedUsersSection";
@@ -98,7 +100,7 @@ export default async function ProfilPage() {
   const publishedReviews = reviews.filter((r) => r.status === "PUBLISHED");
   const reviewIds = publishedReviews.map((r) => r.id);
 
-  const [garageCount, helpfulCount, foundingIds, notificationsRaw, expertProfile, ustaThreadCount] = await Promise.all([
+  const [garageCount, helpfulCount, foundingIds, notificationsRaw, expertProfile, ustaThreadCount, reviewSharingConsent] = await Promise.all([
     prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } }),
     reviewIds.length
       ? prisma.reviewHelpfulVote.count({ where: { reviewId: { in: reviewIds }, isHelpful: true } })
@@ -116,6 +118,7 @@ export default async function ProfilPage() {
     prisma.expertMessageThread.count({
       where: { OR: [{ initiatorId: userId }, { expertProfile: { userId } }] },
     }),
+    getReviewSharingConsent(userId),
   ]);
 
   const hasMoreNotifications = notificationsRaw.length > 20;
@@ -197,6 +200,7 @@ export default async function ProfilPage() {
               )}
             </div>
             <NotificationToggle initialEnabled={user.emailNotificationsEnabled} />
+            <ReviewSharingToggle initialEnabled={reviewSharingConsent === true} />
           </div>
 
           <div className="text-left sm:text-right sm:shrink-0 space-y-1">

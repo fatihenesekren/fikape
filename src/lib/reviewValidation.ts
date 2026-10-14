@@ -98,7 +98,30 @@ const CONTACT_HANDLE_PATTERN = /(^|\s)@[a-z_][a-z0-9._]{2,29}\b/i;
 const MESSAGING_APP_NAME_PATTERN =
   /\b(whats?app|watsap|wpp|telegram|instagram)/i;
 
+// Türk plakası: il kodu (01-81) + harf grubu + rakam grubu; geçerli kombinasyonlar 1 harf + 4 rakam,
+// 2 harf + 3-4 rakam, 3 harf + 2-3 rakam. Harf grubu plakada kullanılmayan Q/W/X ve Türkçe harfleri içermez.
+// Yalnızca YORUM alanlarında uygulanır (checkReviewContent) — takas mesajı/ilan metninde araç plakası
+// paylaşmak meşru olabilir. Birimle çakışan harf grupları ("35 hp 200 nm", "20 kg 100") plaka sayılmaz.
+const PLATE_PATTERN = /(?<![\d.,])(?:0[1-9]|[1-7]\d|8[01])\s?([ABCDEFGHIJKLMNOPRSTUVYZ]{1,3})\s?(\d{2,4})(?!\d)/gi;
+const PLATE_LETTER_COMBOS: Record<number, [number, number]> = { 1: [4, 4], 2: [3, 4], 3: [2, 3] };
+const PLATE_NOT_UNITS = new Set([
+  "hp", "bg", "ps", "nm", "cc", "kw", "kg", "km", "cm", "mm", "lt", "gb", "mb", "tl", "dk", "sn", "ah", "wh", "ac", "dc",
+  "kwh", "mph", "psi", "bar", "adet", "ay", "gun", "yil", "tur", "mil",
+]);
+
+export function containsPlate(t: string): boolean {
+  for (const m of t.matchAll(PLATE_PATTERN)) {
+    const letters = m[1];
+    const [minD, maxD] = PLATE_LETTER_COMBOS[letters.length];
+    if (m[2].length < minD || m[2].length > maxD) continue;
+    if (PLATE_NOT_UNITS.has(letters.toLowerCase())) continue;
+    return true;
+  }
+  return false;
+}
+
 export type FilterRule =
+  | "PLATE"
   | "IBAN"
   | "PHONE"
   | "EMAIL"
@@ -120,6 +143,15 @@ export interface ContentCheckOptions {
   strict?: boolean;
 }
 
+// Yorum metinleri için içerik kontrolü: genel kurallar + plaka. Takas/soru-cevap gibi diğer
+// yüzeyler doğrudan checkContent'i kullanır (plaka serbest).
+export function checkReviewContent(t: string): ValidationResult {
+  if (containsPlate(t)) {
+    return err("Plaka paylaşımına izin verilmemektedir.", "PLATE");
+  }
+  return checkContent(t);
+}
+
 export function validateSummary(text: string): ValidationResult {
   const t = text.trim();
 
@@ -127,7 +159,7 @@ export function validateSummary(text: string): ValidationResult {
   if (t.length < 20) return err(`En az 20 karakter yazın. (${t.length}/20)`);
   if (t.length > 500) return err("En fazla 500 karakter yazabilirsiniz.");
 
-  return checkContent(t);
+  return checkReviewContent(t);
 }
 
 export function validateDetail(text: string): ValidationResult {
@@ -136,7 +168,7 @@ export function validateDetail(text: string): ValidationResult {
   if (!t) return ok(); // opsiyonel alan
   if (t.length < 50) return err(`Detaylı yorum en az 50 karakter olmalıdır. (${t.length}/50)`);
 
-  return checkContent(t);
+  return checkReviewContent(t);
 }
 
 export function validateDetailShort(text: string): ValidationResult {
@@ -146,7 +178,7 @@ export function validateDetailShort(text: string): ValidationResult {
   if (t.length < 20) return err(`En az 20 karakter yazın. (${t.length}/20)`);
   if (t.length > 500) return err("En fazla 500 karakter yazabilirsiniz.");
 
-  return checkContent(t);
+  return checkReviewContent(t);
 }
 
 export function checkContent(t: string, opts: ContentCheckOptions = {}): ValidationResult {

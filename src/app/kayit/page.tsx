@@ -53,6 +53,7 @@ function KayitForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [kvkkConsent, setKvkkConsent]   = useState(false);
   const [termsConsent, setTermsConsent] = useState(false);
+  const [reviewShareConsent, setReviewShareConsent] = useState(false);
   const [error, setError]             = useState("");
   const [loading, setLoading]         = useState(false);
 
@@ -67,7 +68,7 @@ function KayitForm() {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, displayName, ref, kvkkConsent, termsConsent }),
+      body: JSON.stringify({ email, password, displayName, ref, kvkkConsent, termsConsent, reviewShareConsent }),
     });
 
     const data = await res.json();
@@ -253,6 +254,19 @@ function KayitForm() {
               {"'nı ve "}
               <Link href="/uyelik-sozlesmesi" className="underline">Üyelik Sözleşmesi</Link>
               {"'ni okudum, kabul ediyorum."}
+            </span>
+          </label>
+
+          <label className="flex items-start gap-2 text-xs text-gray-500">
+            <input
+              type="checkbox"
+              checked={reviewShareConsent}
+              onChange={(e) => setReviewShareConsent(e.target.checked)}
+              className="mt-0.5 shrink-0"
+            />
+            <span>
+              {"(İsteğe bağlı) Yorum metnimin ve puanlarımın, adım ve fotoğraflarım olmadan fikape iş ortaklarında da gösterilmesine izin veriyorum. Üyeliğim bu seçime bağlı değildir; profil ayarlarımdan istediğim zaman değiştirebilirim. "}
+              <Link href="/gizlilik" className="underline">Ayrıntı</Link>
             </span>
           </label>
 

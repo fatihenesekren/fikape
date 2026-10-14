@@ -184,6 +184,33 @@ export async function collectWeeklyReport(win: WeekWindow, opts: { oneriAy?: str
     };
   }));
 
+  sections.push(...await guard("Yorum paylaşım rızası", errors, async () => {
+    // Her kullanıcının EN SON kararı (ConsentLog append-only). Kayıt satırı olmayan = hiç sorulmamış (özellikten önceki üyeler).
+    const [latest, totalUsers] = await Promise.all([
+      prisma.$queryRaw<{ isGranted: boolean }[]>`
+        SELECT DISTINCT ON ("userId") "isGranted"
+        FROM consent_logs
+        WHERE "consentType" = 'REVIEW_DATA_SHARING'
+        ORDER BY "userId", "createdAt" DESC`,
+      prisma.user.count(),
+    ]);
+    const granted = latest.filter((r) => r.isGranted).length;
+    const declined = latest.length - granted;
+    const unasked = Math.max(0, totalUsers - latest.length);
+    const rate = latest.length ? granted / latest.length : 0;
+    return {
+      title: "Yorum paylaşım rızası",
+      note: "İsteğe bağlı rıza (kayıt + profil). Oran = karar vermiş üyeler içinde izin verenler; metinli API kararı için veri.",
+      head: ["Metrik", "Toplam"],
+      rows: [
+        [tt("İzin veren"), nn(granted)],
+        [tt("İzin vermeyen / geri çeken"), nn(declined)],
+        [tt("Hiç sorulmamış"), nn(unasked)],
+        [tt("İzin oranı (karar verenler)"), { t: fmtPct(rate), align: "r" }],
+      ],
+    };
+  }));
+
   sections.push(...await guard("İçerik üretimi", errors, async () => {
     const [
       revCreatedW, revCreatedP, revRejW, revRejP,

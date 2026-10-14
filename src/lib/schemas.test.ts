@@ -86,6 +86,14 @@ describe("registerSchema", () => {
     expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ahmet-Can", ...bothConsents }).success).toBe(true);
   });
 
+  it("yorum paylaşım rızası isteğe bağlıdır (verilse de verilmese de kayıt geçerli)", () => {
+    const base = { email: "a@b.com", password: validPassword, displayName: "Ali", ...bothConsents };
+    expect(registerSchema.safeParse(base).success).toBe(true);
+    expect(registerSchema.safeParse({ ...base, reviewShareConsent: false }).success).toBe(true);
+    expect(registerSchema.safeParse({ ...base, reviewShareConsent: true }).success).toBe(true);
+    expect(registerSchema.safeParse({ ...base, reviewShareConsent: "evet" }).success).toBe(false);
+  });
+
   it("KVKK onayı verilmezse reddeder", () => {
     expect(registerSchema.safeParse({ email: "a@b.com", password: validPassword, displayName: "Ali", kvkkConsent: false, termsConsent: true }).success).toBe(false);
   });

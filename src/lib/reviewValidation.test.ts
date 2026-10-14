@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { validateSummary, validateDetail, validateDetailShort, checkContent } from "./reviewValidation";
+import { validateSummary, validateDetail, validateDetailShort, checkContent, checkReviewContent, containsPlate } from "./reviewValidation";
 
 describe("validateSummary", () => {
   it("boş metni reddeder", () => {
@@ -229,4 +229,28 @@ describe("checkContent — küfür kontrolü kelime sınırı (yanlış-pozitif 
       expect(r.rule).toBe("PROFANITY");
     });
   }
+});
+
+describe("plaka engeli (yalnız yorum alanları)", () => {
+  it("Türk plaka biçimlerini yakalar", () => {
+    for (const t of ["34 ABC 123", "34ABC123", "06 AB 1234", "35 abc 12", "07 A 1234", "plakası 34 AB 123 olan araç", "81 TT 999"]) {
+      expect(containsPlate(t), t).toBe(true);
+    }
+  });
+
+  it("birim/sayı ifadelerini plaka saymaz", () => {
+    for (const t of [
+      "35 hp 200 nm tork", "20 kg 100 gr", "34 km 123", "yaklaşık 45 tl 120", "150 bg 250 nm", "2024 model 1.5 dizel",
+      "12 ay 1234 km kullandım", "81 W 1234", "1234 ABC 123", "motor 16 inç 205 lastik", "Qashqai 1.3 DIG-T 160 hp 2023",
+    ]) {
+      expect(containsPlate(t), t).toBe(false);
+    }
+  });
+
+  it("yorum kontrolü plakayı PLATE kuralıyla reddeder, checkContent reddetmez", () => {
+    const text = "Aracımın plakası 34 ABC 123 olup gayet temiz bir araç.";
+    expect(checkReviewContent(text)).toMatchObject({ ok: false, rule: "PLATE" });
+    expect(validateDetailShort(text)).toMatchObject({ ok: false, rule: "PLATE" });
+    expect(checkContent(text).ok).toBe(true);
+  });
 });

@@ -8,6 +8,7 @@ import { rateLimitByIp } from "@/lib/rateLimit";
 import { hashRequestContext } from "@/lib/security";
 import { registerSchema, formatZodError } from "@/lib/schemas";
 import { logAccess } from "@/lib/accessLog";
+import { recordReviewSharingConsent } from "@/lib/reviewSharingConsent";
 
 const RATE_LIMIT_COUNT = 5;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
@@ -53,6 +54,14 @@ export async function POST(req: Request) {
       },
     },
   });
+
+  // İsteğe bağlı yorum paylaşım rızası: "verdi" de "vermedi" de kaydedilir ("hiç sorulmadı" ile "reddetti"
+  // ayrılsın, oran doğru hesaplansın). İsteğe bağlı olduğu için hata kaydı engellemez.
+  try {
+    await recordReviewSharingConsent(user.id, parsed.data.reviewShareConsent === true, req);
+  } catch (err) {
+    console.error("Review sharing consent log failed:", err);
+  }
 
   // E-posta doğrulama linki gönder (hata olsa da kayıt başarılı sayılır)
   try {

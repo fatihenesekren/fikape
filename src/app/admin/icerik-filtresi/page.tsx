@@ -10,6 +10,7 @@ const WINDOW_DAYS = 30;
 const REPEAT_THRESHOLD = 3;
 
 const RULE_LABEL: Record<string, string> = {
+  PLATE: "Araç plakası",
   IBAN: "IBAN / banka hesabı",
   PHONE: "Telefon numarası",
   EMAIL: "E-posta adresi",

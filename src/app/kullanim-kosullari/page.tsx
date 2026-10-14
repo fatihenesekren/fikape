@@ -16,7 +16,7 @@ const webPageJsonLd = {
   "@type": "WebPage",
   name: "Kullanım Koşulları",
   url: `${BASE_URL}/kullanim-kosullari`,
-  dateModified: "2026-08-01",
+  dateModified: "2026-10-14",
   isPartOf: { "@type": "WebSite", name: "fikape", url: BASE_URL },
 };
 
@@ -36,7 +36,7 @@ export default function KullanimKosullariPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Kullanım Koşulları</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ağustos 2026</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ekim 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -120,6 +120,12 @@ export default function KullanimKosullariPage() {
             bu içerikleri Platform üzerinde yayımlamak, aramaya dahil etmek, özetlemek ve
             istatistiksel amaçla kullanmak için bize dünya genelinde, ücretsiz, alt lisanslanabilir
             bir lisans vermiş olursunuz. Bu lisans, hesabınızı silmenizle sona erer.
+          </p>
+          <p className="mt-3">
+            <strong>Yorumların iş ortaklarına sunulması:</strong> Yorumlarınızın metni ve puanları,
+            kullanıcı adınız, e-posta adresiniz ve fotoğraflarınız olmaksızın (anonim olarak) API, widget veya
+            benzeri entegrasyonlarla üçüncü kişi ve kurumlara ücretli ya da ücretsiz sunulabilir; ayrıntılar
+            Üyelik Sözleşmesi&apos;nin 6. maddesindedir. Yorum fotoğrafları bu kapsama dahil değildir.
           </p>
         </section>
 

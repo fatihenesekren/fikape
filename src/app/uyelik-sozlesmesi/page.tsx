@@ -15,7 +15,7 @@ const webPageJsonLd = {
   "@type": "WebPage",
   name: "Üyelik Sözleşmesi",
   url: `${BASE_URL}/uyelik-sozlesmesi`,
-  dateModified: "2026-09-22",
+  dateModified: "2026-10-14",
   isPartOf: { "@type": "WebSite", name: "fikape", url: BASE_URL },
 };
 
@@ -34,7 +34,7 @@ export default function UyelikSozlesmesiPage() {
       </div>
 
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Üyelik Sözleşmesi</h1>
-      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Eylül 2026</p>
+      <p className="text-sm text-gray-400 mb-10">Son güncelleme: Ekim 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -145,6 +145,19 @@ export default function UyelikSozlesmesiPage() {
             özetlemek ve istatistiksel/tanıtım amaçlı kullanmak için Platform&apos;a dünya genelinde
             geçerli, ücretsiz, alt lisanslanabilir bir kullanım hakkı vermiş olursunuz. Bu hak,
             hesabınızı sildiğinizde sona erer.
+          </p>
+          <p className="mt-3 mb-1 font-semibold text-gray-900">Yorumların iş ortaklarına sunulması</p>
+          <p>
+            Yorumlarınızın metni ve puanları üzerindeki çoğaltma, yayma, umuma iletim haklarını (yorumun
+            anlamını değiştirmeyen kısaltma ve biçimlendirme dahil), dünya genelinde ve hesabınız silinene
+            kadar geçerli olmak üzere, ücretsiz ve münhasır olmayan biçimde Platform&apos;a vermiş olursunuz.
+            Platform, bu içerikleri kullanıcı adınız, e-posta adresiniz ve fotoğraflarınız olmaksızın (anonim
+            olarak), API, widget veya benzeri teknik arayüzlerle üçüncü kişi ve kurumlara (iş ortakları)
+            ücretli ya da ücretsiz sunabilir ve bu amaçla alt lisans verebilir. Yorum fotoğrafları bu kapsama
+            dahil değildir. Yorumunuzun, kişisel veri niteliğindeki unsurlarıyla birlikte iş ortaklarına
+            sunulması ayrıca isteğe bağlı açık rızanıza tabidir (Gizlilik Politikası); bu rıza üyeliğin
+            şartı değildir. Yorumunuzu veya hesabınızı sildiğinizde, Platform iş ortaklarından ilgili içeriği
+            makul süre içinde kaldırmasını ister. Manevi haklarınız saklıdır.
           </p>
         </section>
 

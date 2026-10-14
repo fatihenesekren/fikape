@@ -840,6 +840,7 @@ enum ConsentType {
   TRADE_LISTING // Takas ilanı açarken il/iletişim verisinin diğer kullanıcılara gösterilmesine rıza
   INSURANCE_LEAD // Garaj'dan sigorta teklifi talebinde telefonun ileride ortak sigorta şirketiyle paylaşılabilmesine rıza
   SALE_LEAD // "Sattım" formunda ekspertiz/hızlı teklif talebinde telefonun ileride ortak firmayla paylaşılabilmesine rıza
+  REVIEW_DATA_SHARING // İsteğe bağlı: yorum metninin/puanlarının adsız olarak API ile iş ortaklarına sunulması (kayıtta + profil ayarında; geri çekilebilir)
 
   // ── USTA GÖRÜŞLERİ — granüler açık rızalar (birbirinden bağımsız) ──
   EXPERT_DOC_VERIFICATION // (a) belge/vergi levhası doğrulama amacıyla işleme

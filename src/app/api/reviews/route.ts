@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
-import { checkContent, validateDetailShort } from "@/lib/reviewValidation";
+import { checkReviewContent, validateDetailShort } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { hashRequestContext, recordScoreSnapshot } from "@/lib/security";
 import { computePHash, findDuplicatePair } from "@/lib/phash";
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
   // summaryText opsiyonel (Hızlı Puanla akışı boş gönderir) — sadece doluysa
   // içerik filtresinden geçir; uzunluk minimumu dayatma.
   if (summaryText && summaryText.trim()) {
-    const summaryCheck = checkContent(summaryText);
+    const summaryCheck = checkReviewContent(summaryText);
     if (!summaryCheck.ok) {
       logContentFilterHit({ userId, surface: "REVIEW", rule: summaryCheck.rule });
       return NextResponse.json({ error: summaryCheck.error }, { status: 400 });
