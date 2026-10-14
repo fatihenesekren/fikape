@@ -203,7 +203,8 @@ export default async function ThreadPage({
 
   return (
     <div
-      className="max-w-2xl w-full mx-auto flex flex-col"
+      // Telefon paylaşım formu açıkken (data-phone-form-open) sabit yükseklik kalkar: form taşıp alttaki içeriğin üstüne binmesin
+      className="max-w-2xl w-full mx-auto flex flex-col has-[[data-phone-form-open=true]]:!h-auto"
       style={{ height: "calc(100dvh - 3.5rem)" }}
     >
       {/* ── Başlık — sadece kiminle konuştuğun ── */}
