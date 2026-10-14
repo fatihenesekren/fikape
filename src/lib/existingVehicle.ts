@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { slugify } from "@/lib/slugify";
-import { stripModelGenRange, baseNameplate } from "@/lib/modelDisplay";
+import { stripModelGenRange, baseNameplate, markasizModelAdi } from "@/lib/modelDisplay";
 
 export { birebirAyniArac } from "@/lib/aracKarsilastir";
 
@@ -53,13 +53,17 @@ export async function findExistingVehicles(
   const m = modelName?.trim();
   if (!b || !m) return [];
 
+  // Katalogda marka önekli ad ("Jaecoo 7") DB'de öneksiz ("7") tutulur; iki biçim de denenir.
+  const modelAdlari = [...new Set([m, markasizModelAdi(b, m)])];
   const slugCandidates = [
     ...new Set(
-      [
-        slugify(`${b}-${m}`),
-        slugify(`${b}-${stripModelGenRange(m)}`),
-        slugify(`${b}-${baseNameplate(m)}`),
-      ].filter(Boolean),
+      modelAdlari
+        .flatMap((ad) => [
+          slugify(`${b}-${ad}`),
+          slugify(`${b}-${stripModelGenRange(ad)}`),
+          slugify(`${b}-${baseNameplate(ad)}`),
+        ])
+        .filter(Boolean),
     ),
   ];
   if (slugCandidates.length === 0) return [];

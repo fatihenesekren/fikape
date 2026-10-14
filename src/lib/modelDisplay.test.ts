@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { stripModelGenRange, stripGenRangeAnywhere, splitTrimName, gorunenTrimName, baseNameplate } from "./modelDisplay";
+import { stripModelGenRange, stripGenRangeAnywhere, splitTrimName, gorunenTrimName, baseNameplate, markasizModelAdi } from "./modelDisplay";
 
 describe("stripModelGenRange", () => {
   it("sondaki kapalı nesil aralığını temizler", () => {
@@ -147,5 +147,21 @@ describe("gorunenTrimName", () => {
     expect(gorunenTrimName("390 QD")).toBe("390 QD");
     expect(gorunenTrimName("G30P")).toBe("G30P");
     expect(gorunenTrimName(null)).toBeNull();
+  });
+});
+
+describe("markasizModelAdi", () => {
+  it("marka önekini atar", () => {
+    expect(markasizModelAdi("Jaecoo", "Jaecoo 7")).toBe("7");
+    expect(markasizModelAdi("DS", "DS 3 Crossback")).toBe("3 Crossback");
+    expect(markasizModelAdi("Polestar", "Polestar 2 Long Range")).toBe("2 Long Range");
+    expect(markasizModelAdi("jaecoo", "Jaecoo 8 (2024-)")).toBe("8 (2024-)");
+  });
+
+  it("önek yoksa ya da geriye bir şey kalmıyorsa olduğu gibi bırakır", () => {
+    expect(markasizModelAdi("Renault", "Clio 4")).toBe("Clio 4");
+    expect(markasizModelAdi("Jaecoo", "Jaecoo")).toBe("Jaecoo");
+    expect(markasizModelAdi("DS", "DSX 4")).toBe("DSX 4");
+    expect(markasizModelAdi(null, "Jaecoo 7")).toBe("Jaecoo 7");
   });
 });

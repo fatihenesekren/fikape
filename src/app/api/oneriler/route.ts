@@ -5,6 +5,7 @@ import { slugify } from "@/lib/slugify";
 import { findExistingVehicles, birebirAyniArac } from "@/lib/existingVehicle";
 import { ekYilGecerli } from "@/lib/katalog/ek";
 import { fotoUrlGecerli, temizMetin, yilCoz } from "@/lib/katalog/metin";
+import { markasizModelAdi } from "@/lib/modelDisplay";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -36,6 +37,10 @@ export async function POST(req: Request) {
   }
   body.brandName = temizMetin(body.brandName) ?? body.brandName;
   body.modelName = temizMetin(body.modelName) ?? body.modelName;
+  // "Jaecoo 7" -> "7": katalog adı marka önekli olsa da DB'de model öneksiz tutulur (ürün adı "Jaecoo Jaecoo 7" olmasın)
+  if (typeof body.brandName === "string" && typeof body.modelName === "string") {
+    body.modelName = markasizModelAdi(body.brandName, body.modelName);
+  }
   if (typeof body.trimName === "string") body.trimName = temizMetin(body.trimName) ?? "";
   if (typeof body.notes === "string") body.notes = (temizMetin(body.notes) ?? "").slice(0, 500);
   if (Array.isArray(body.photoUrls)) body.photoUrls = body.photoUrls.filter((u: unknown) => fotoUrlGecerli(u)).slice(0, 5);

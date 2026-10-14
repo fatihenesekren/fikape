@@ -98,3 +98,14 @@ export function gorunenTrimName(trimName: string | null | undefined): string | n
   if (!trimName || OZELLIK_DIZGESI_RE.test(trimName)) return null;
   return trimName;
 }
+
+// Katalog dosyalarında bazı modeller marka adıyla başlar ("Jaecoo 7", "DS 4", "Polestar 2");
+// DB'de ise marka öneksiz tutuluyor (model "7", slug "jaecoo-7"). Marka adı modelin başındaysa
+// ve geriye bir şey kalıyorsa öneksiz hâlini döndürür; aksi halde modeli olduğu gibi bırakır.
+export function markasizModelAdi(markaAdi: string | null | undefined, modelAdi: string): string {
+  const marka = markaAdi?.trim();
+  const model = modelAdi.trim();
+  if (!marka || model.length <= marka.length + 1) return model;
+  if (model.slice(0, marka.length).toLowerCase() !== marka.toLowerCase() || !/\s/.test(model[marka.length])) return model;
+  return model.slice(marka.length).trim() || model;
+}
