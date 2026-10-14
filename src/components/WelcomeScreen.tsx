@@ -74,19 +74,23 @@ export function WelcomeScreen() {
         Atla
       </button>
 
+      {/* Açılış sahnesi: Android splash'inde ortada duran halkayla aynı yerden başlar (marka bloğu ekranın ortasında,
+          büyük), yaylar çizilir, yazı belirir; sonra blok yerine çıkar ve içerik gelir. */}
+      <div className="welcome-blok flex flex-col items-center">
       <svg width="72" height="72" viewBox="0 0 100 100" fill="none" strokeWidth={15} strokeLinecap="round" aria-hidden="true">
         <path className="welcome-yay welcome-yay-1" pathLength={1} d="M20 23 A40 40 0 0 1 80 23" stroke={FIKAPE_SOFT.fi} />
         <path className="welcome-yay welcome-yay-2" pathLength={1} d="M88 38 A40 40 0 0 1 58 89" stroke={FIKAPE_SOFT.pe} />
         <path className="welcome-yay welcome-yay-3" pathLength={1} d="M42 89 A40 40 0 0 1 12 38" stroke={FIKAPE_SOFT.ka} />
       </svg>
 
-      <p className="welcome-yazi mt-4 flex items-baseline gap-1 text-4xl font-black tracking-tight" aria-hidden="true">
+      <p className="welcome-marka mt-4 flex items-baseline gap-1 text-4xl font-black tracking-tight" aria-hidden="true">
         <span style={{ color: FIKAPE_SOFT.fi }}>fi</span>
         <span className="font-black text-gray-500">·</span>
         <span style={{ color: FIKAPE_SOFT.ka }}>ka</span>
         <span className="font-black text-gray-500">·</span>
         <span style={{ color: FIKAPE_SOFT.pe }}>pe</span>
       </p>
+      </div>
 
       <h1
         id="welcome-baslik"

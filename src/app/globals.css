@@ -179,12 +179,17 @@ html[data-welcome] body { visibility: hidden; }
 html[data-welcome] #welcome { visibility: visible; }
 @keyframes welcome-ciz { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes welcome-yukari { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.welcome-yay { stroke-dasharray: 1; stroke-dashoffset: 1; animation: welcome-ciz 450ms ease-out forwards; }
+.welcome-yay { stroke-dasharray: 1; stroke-dashoffset: 1; animation: welcome-ciz 400ms ease-out forwards; }
 .welcome-yay-1 { animation-delay: 0ms; }
-.welcome-yay-2 { animation-delay: 300ms; }
-.welcome-yay-3 { animation-delay: 600ms; }
-.welcome-yazi { opacity: 0; animation: welcome-yukari 300ms ease-out 900ms forwards; }
+.welcome-yay-2 { animation-delay: 200ms; }
+.welcome-yay-3 { animation-delay: 400ms; }
+/* Marka bloğu önce ekranın ortasında büyük (splash ile aynı yer), 1300 ms'de yerine çıkar; yazı 600 ms'de belirir, içerik 1600 ms'de gelir. */
+@keyframes welcome-yerlesim { from { transform: translateY(200px) scale(1.5); } to { transform: none; } }
+.welcome-blok { animation: welcome-yerlesim 500ms ease-in-out 1300ms both; }
+.welcome-marka { opacity: 0; animation: welcome-yukari 300ms ease-out 600ms forwards; }
+.welcome-yazi { opacity: 0; animation: welcome-yukari 300ms ease-out 1600ms forwards; }
 @media (prefers-reduced-motion: reduce) {
   .welcome-yay { animation: none; stroke-dashoffset: 0; }
-  .welcome-yazi { animation: none; opacity: 1; }
+  .welcome-marka, .welcome-yazi { animation: none; opacity: 1; }
+  .welcome-blok { animation: none; }
 }
