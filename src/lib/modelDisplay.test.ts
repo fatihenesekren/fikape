@@ -116,6 +116,18 @@ describe("splitTrimName — motor ölçüsüyle başlayan versiyon + model adı"
     expect(splitTrimName("GLC 180 1.5 – AMG", "GLC")).toEqual({ version: "GLC 180 1.5", donanim: "AMG" });
   });
 
+  it("modele özgü olmayan versiyonun önüne model adı eklenir", () => {
+    expect(splitTrimName("Turbo TCe – Techno", "Boreal")).toEqual({ version: "Boreal Turbo TCe", donanim: "Techno" });
+    expect(splitTrimName("Long Range – Advance", "Inster")).toEqual({ version: "Inster Long Range", donanim: "Advance" });
+    expect(splitTrimName("200 1.33 – AMG", "CLA")).toEqual({ version: "CLA 200 1.33", donanim: "AMG" });
+    expect(splitTrimName("DM-i 1.5 – Design", "Seal U")).toEqual({ version: "Seal U DM-i 1.5", donanim: "Design" });
+  });
+
+  it("model kodu zaten versiyonun başındaysa tekrarlanmaz", () => {
+    expect(splitTrimName("ES300h – Business Plus", "ES")).toEqual({ version: "ES300h", donanim: "Business Plus" });
+    expect(splitTrimName("208 1.2 Hybrid – GT", "208")).toEqual({ version: "208 1.2 Hybrid", donanim: "GT" });
+  });
+
   it("model adı verilmezse eski davranış", () => {
     expect(splitTrimName("2.0 TDI – Style")).toEqual({ version: "2.0 TDI", donanim: "Style" });
   });

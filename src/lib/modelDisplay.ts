@@ -65,6 +65,14 @@ const SPEC_NOISE_RE = /\b\d+(\.\d+)?\s*(cc|cv|hp|kw|ps|bg)\b/i;
 // gibi modele özgü kodlar model adı yerine geçtiği için olduğu gibi kalır.
 const MOTOR_OLCUSU_RE = /^\d[.,]\d/;
 
+// Versiyon model adının ilk sözcüğüyle başlıyorsa ("E 220d" / "E Serisi", "ES300h" / "ES") model
+// koduna özgüdür ve model adı yerine geçer. Aksi halde ("Turbo TCe", "Long Range", "BlueHDi")
+// tek başına aracı tanıtmaz; başlıkta model adı da gösterilir.
+function modeleOzgu(version: string, model: string): boolean {
+  const n = (x: string) => x.toLowerCase().replace(/[\s-]/g, "");
+  return n(version).startsWith(n(model.split(/\s+/)[0]));
+}
+
 export function splitTrimName(
   trimName: string | null | undefined,
   modelName?: string | null
@@ -76,7 +84,9 @@ export function splitTrimName(
   const donanim = m[2].trim();
   if (SPEC_NOISE_RE.test(version)) return null;
   const model = modelName ? stripModelGenRange(modelName) : "";
-  if (model && MOTOR_OLCUSU_RE.test(version)) return { version: `${model} ${version}`, donanim };
+  if (model && (MOTOR_OLCUSU_RE.test(version) || !modeleOzgu(version, model))) {
+    return { version: `${model} ${version}`, donanim };
+  }
   return { version, donanim };
 }
 
