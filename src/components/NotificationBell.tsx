@@ -5,14 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { TYPE_ICON, TYPE_LABEL, type NotificationData } from "./NotificationList";
 import { useAnchoredPosition } from "@/lib/useAnchoredPosition";
+import { useThrottledRefresh } from "@/lib/useThrottledRefresh";
+import { applyNotificationsChange, NOTIFICATIONS_CHANGED_EVENT, type NotificationsChange } from "@/lib/notificationSyncCore";
 
 function fmtDate(iso: string) {
   return new Date(iso).toLocaleDateString("tr-TR", { day: "numeric", month: "short" });
 }
 
 export function NotificationBell() {
-  const [unreadCount, setUnreadCount] = useState(0);
-  const [notifications, setNotifications] = useState<NotificationData[]>([]);
+  const [data, setData] = useState<{ unreadCount: number; notifications: NotificationData[] }>({ unreadCount: 0, notifications: [] });
+  const { unreadCount, notifications } = data;
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -20,25 +22,40 @@ export function NotificationBell() {
   const pathname = usePathname();
   const panelStyle = useAnchoredPosition(btnRef, open, 320, () => setOpen(false));
 
+  // Yenileme: mount'ta, 60 sn'de bir (sekme gizliyken yok), sekme odağında ve sayfa değişince (30 sn kısıtlı).
+  const refresh = useThrottledRefresh(
+    async (signal) => {
+      try {
+        const res = await fetch("/api/notifications", { signal });
+        if (!res.ok || signal.aborted) return;
+        const veri = await res.json();
+        if (signal.aborted) return;
+        setData({ unreadCount: veri.unreadCount, notifications: veri.notifications ?? [] });
+      } finally {
+        if (!signal.aborted) setLoaded(true);
+      }
+    },
+    { intervalMs: 60_000, minGapMs: 30_000 },
+  );
+
+  // Başka yerde (örn. /bildirimler, profil listesi) okundu işaretlenince zil HEMEN güncellensin; ardından sunucudan doğrula.
   useEffect(() => {
-    let cancelled = false;
-    const load = () => {
-      fetch("/api/notifications")
-        .then((res) => (res.ok ? res.json() : null))
-        .then((data) => {
-          if (!cancelled && data) {
-            setUnreadCount(data.unreadCount);
-            setNotifications(data.notifications ?? []);
-          }
-        })
-        .catch(() => {})
-        .finally(() => { if (!cancelled) setLoaded(true); });
+    const onChange = (e: Event) => {
+      const degisiklik = (e as CustomEvent<NotificationsChange>).detail ?? {};
+      setData((prev) => applyNotificationsChange(prev, degisiklik));
+      void refresh(true);
     };
-    load();
-    // Hafif polling — başka sekmedeyken gelen bildirim reload'suz görünsün.
-    const iv = setInterval(load, 60_000);
-    return () => { cancelled = true; clearInterval(iv); };
-  }, []);
+    window.addEventListener(NOTIFICATIONS_CHANGED_EVENT, onChange);
+    return () => window.removeEventListener(NOTIFICATIONS_CHANGED_EVENT, onChange);
+  }, [refresh]);
+
+  // Ekran okuyucu: yalnız sayı DEĞİŞTİĞİNDE duyur (her yenilemede değil).
+  const [oncekiSayi, setOncekiSayi] = useState<number | null>(null);
+  const [duyuru, setDuyuru] = useState("");
+  if (oncekiSayi !== unreadCount) {
+    setOncekiSayi(unreadCount);
+    if (oncekiSayi !== null) setDuyuru(unreadCount > 0 ? `${unreadCount} okunmamış bildirim` : "Okunmamış bildirim kalmadı");
+  }
 
   // Sayfa değişince panel her zaman kapansın — sadece dışarı-tıklama algısına
   // güvenmek, bir bildirime tıklayıp client-side navigasyon başladığında bazen
@@ -75,17 +92,17 @@ export function NotificationBell() {
   function handleNotificationClick(n: NotificationData) {
     setOpen(false);
     if (n.isRead) return;
-    setNotifications((prev) => prev.map((x) => (x.id === n.id ? { ...x, isRead: true } : x)));
-    setUnreadCount((c) => Math.max(0, c - 1));
+    setData((prev) => applyNotificationsChange(prev, { ids: [n.id] }));
     fetch("/api/notifications/mark-read", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: n.id }),
+      body: JSON.stringify({ ids: [n.id] }),
     }).catch(() => {});
   }
 
   return (
     <div ref={rootRef} className="relative">
+      <span role="status" aria-live="polite" className="sr-only">{duyuru}</span>
       <button
         ref={btnRef}
         type="button"

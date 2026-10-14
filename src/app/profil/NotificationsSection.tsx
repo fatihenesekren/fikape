@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { NotificationList, type NotificationData } from "@/components/NotificationList";
 import { ScrollFadeBox } from "@/components/ScrollFadeBox";
+import { emitNotificationsChanged } from "@/lib/notificationSyncCore";
 
 export function NotificationsSection({
   notifications,
@@ -26,8 +27,18 @@ export function NotificationsSection({
         if (istendi || !kayitlar.some((k) => k.isIntersecting)) return;
         istendi = true;
         gozlemci.disconnect();
-        fetch("/api/notifications/mark-read", { method: "POST" })
-          .then(() => setMarked(true))
+        // Yalnız bu listede GÖRÜNEN okunmamışlar işaretlenir
+        const ids = notifications.filter((n) => !n.isRead).map((n) => n.id);
+        fetch("/api/notifications/mark-read", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ids }),
+        })
+          .then((res) => {
+            if (!res.ok) throw new Error("mark-read başarısız");
+            setMarked(true);
+            emitNotificationsChanged({ ids }); // zil sayısı hemen düşsün
+          })
           .catch(() => {
             istendi = false;
           });

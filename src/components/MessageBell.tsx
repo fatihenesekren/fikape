@@ -7,6 +7,7 @@ import { Avatar } from "./Avatar";
 import { MessageIcon } from "./AuthNav";
 import type { MessagePreviewItem } from "@/app/api/messages/preview/route";
 import { useAnchoredPosition } from "@/lib/useAnchoredPosition";
+import { useThrottledRefresh } from "@/lib/useThrottledRefresh";
 
 // Bildirim çanındaki (NotificationList.tsx TYPE_ICON) AYNI aile ikonları —
 // Takas 🤝, Usta 🔧 — buraya da taşındı, iki panel arasında görsel bir bağ
@@ -46,27 +47,25 @@ export function MessageBell({ onUnreadCountChange }: { onUnreadCountChange?: (co
   const pathname = usePathname();
   const panelStyle = useAnchoredPosition(btnRef, open, 320, () => setOpen(false));
 
-  useEffect(() => {
-    let cancelled = false;
-    const load = () => {
-      fetch("/api/messages/preview")
-        .then((res) => (res.ok ? res.json() : null))
-        .then((data) => {
-          if (!cancelled && data) {
-            setUnreadCount(data.unreadCount);
-            setHiddenUnreadCount(data.hiddenUnreadCount ?? 0);
-            setThreads(data.threads ?? []);
-            onUnreadCountChange?.(data.unreadCount);
-          }
-        })
-        .catch(() => {})
-        .finally(() => { if (!cancelled) setLoaded(true); });
-    };
-    load();
-    const iv = setInterval(load, 45_000);
-    return () => { cancelled = true; clearInterval(iv); };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // Yenileme: mount'ta, 60 sn'de bir (sekme gizliyken yok), sekme odağında ve sayfa değişince (60 sn kısıtlı —
+  // /api/messages/preview bildirim ucundan ağır). Görüşme sayfası okunduktan sonra gezinti rozeti de yeniler.
+  useThrottledRefresh(
+    async (signal) => {
+      try {
+        const res = await fetch("/api/messages/preview", { signal });
+        if (!res.ok || signal.aborted) return;
+        const data = await res.json();
+        if (signal.aborted) return;
+        setUnreadCount(data.unreadCount);
+        setHiddenUnreadCount(data.hiddenUnreadCount ?? 0);
+        setThreads(data.threads ?? []);
+        onUnreadCountChange?.(data.unreadCount);
+      } finally {
+        if (!signal.aborted) setLoaded(true);
+      }
+    },
+    { intervalMs: 60_000, minGapMs: 60_000 },
+  );
 
   // NotificationBell'deki aynı düzeltme: panel sayfa değişince (bir görüşmeye
   // tıklanınca) her zaman kapansın.
