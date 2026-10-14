@@ -97,6 +97,8 @@ export async function PATCH(
       where: { senderId: deletedUserId, text: { not: "[Bu mesaj silinmiştir]" } },
       data: { text: "[Bu mesaj silinmiştir]" },
     }),
+    // Takas görüşmelerinde paylaştığı telefon numaraları da talep anında silinir
+    prisma.threadPhoneShare.deleteMany({ where: { userId: deletedUserId } }),
     ...(tradePhotos.length > 0
       ? [prisma.tradeListingPhoto.deleteMany({ where: { id: { in: tradePhotos.map((p) => p.id) } } })]
       : []),

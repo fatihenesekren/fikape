@@ -197,7 +197,12 @@ export function checkContent(t: string, opts: ContentCheckOptions = {}): Validat
   // Telefon numarası paylaşımı — kullanıcıları platform dışına (WhatsApp vb.) çekip
   // mesajlaşma korumasını (rapor/blok/moderasyon) atlatmayı önlemek için.
   if (PHONE_PATTERN.test(t)) {
-    return err("Telefon numarası paylaşımına izin verilmemektedir.", "PHONE");
+    return err(
+      opts.strict
+        ? "Telefon numarası mesajla paylaşılamaz. Dilerseniz görüşmenin üstündeki “Telefon numaramı paylaş” bölümünden karşılıklı olarak paylaşabilirsiniz."
+        : "Telefon numarası paylaşımına izin verilmemektedir.",
+      "PHONE",
+    );
   }
 
   // E-posta adresi

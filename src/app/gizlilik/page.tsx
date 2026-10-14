@@ -74,6 +74,8 @@ export default function GizlilikPage() {
             bunlar sizin beyanınızdır, fikape tarafından doğrulanmaz</li>
             <li><strong>Takas mesajlaşma içeriği:</strong> Takas ilanları üzerinden diğer kullanıcılarla
             yaptığınız yazışmalar</li>
+            <li><strong>Telefon numarası (isteğe bağlı):</strong> Yalnızca bir takas görüşmesinde numaranızı
+            paylaşmayı seçerseniz, o görüşmeye özel</li>
             <li><strong>Takas değerlendirmeleri:</strong> Bir takas sonrasında karşı tarafa verdiğiniz
             1-5 yıldız puanı ve opsiyonel yorum</li>
             <li><strong>Usta başvuru ve profil bilgileri:</strong> Usta Görüşleri&apos;ne başvurduğunuzda
@@ -142,6 +144,7 @@ export default function GizlilikPage() {
             <li>Trafik bilgisi (5651 sayılı Kanun): Kayıt tarihinden itibaren 2 yıl,
             sonrasında otomatik olarak silinir</li>
             <li>Takas mesajlaşması: İlan kapandıktan 6 ay sonra mesaj içeriği anonimleştirilir</li>
+            <li>Takasta paylaştığınız telefon numarası: Görüşme kapatıldığında/engellendiğinde hemen, ilan kapandıktan 30 gün sonra otomatik silinir</li>
             <li>Raporlanan içerik (mesaj/ilan): Moderasyon incelemesi sonuçlanana kadar, sonrasında
             genel saklama sürelerine tabidir</li>
             <li>Yasal zorunluluk bulunan kayıtlar: İlgili mevzuatta öngörülen süreler boyunca</li>
@@ -234,6 +237,21 @@ export default function GizlilikPage() {
             Platform, sizin dışınızdaki kullanıcıların (karşı tarafın) verisini de sizin gönderdiğiniz içerik
             aracılığıyla işler. Bir mesaj veya ilan rapor edildiğinde, rapor içeriği ve ilgili taraf bilgileri
             moderasyon ekibi tarafından incelenir.
+          </p>
+          <p className="mb-2">
+            <strong>Telefon numarası paylaşımı (isteğe bağlı, açık rıza):</strong> Bir görüşmede &quot;Telefon
+            numaramı paylaş&quot; seçeneğini kullanırsanız, girdiğiniz cep telefonu numarası yalnızca o
+            görüşme için işlenir; hesabınıza kaydedilmez. Numara şifreli saklanır ve görüşmedeki karşı taraf
+            da kendi numarasını paylaşmadıkça hiç kimseye gösterilmez; karşı taraf paylaşmadan önce paylaşımı
+            geri çekebilirsiniz. Her iki taraf paylaştığında numaralar karşılıklı olarak görünür; karşı taraf
+            numarayı kendi rehberine kaydedebilir, bu kopya üzerinde fikape&apos;nin denetimi yoktur. Numara,
+            görüşme kapatıldığında veya taraflardan biri engellendiğinde hemen, ilan kapandıktan 30 gün
+            sonra ise otomatik olarak silinir; hesap silme talebinde de silinir. Bu işlemin hukuki sebebi açık
+            rızanızdır; verdiğiniz ve geri çektiğiniz rıza, numarayı içermeyen bir kayıt olarak (tarih, metin
+            sürümü, görüşme numarası) ispat amacıyla saklanır. Numara mesaj içinde yazılamaz. Numaranın
+            doğrulanmadığını, tanımadığınız kişilerle paylaşırken dikkatli olmanız gerektiğini ve araç
+            görmeden ön ödeme yapmamanızı hatırlatırız. Telefon numaranız kural olarak moderasyon ekibi
+            tarafından da görüntülenmez.
           </p>
           <p className="mb-2">
             İlan &quot;Takas oldu&quot; şeklinde kapandıktan sonra, görüşmenin tarafları birbirine 1-5 yıldız

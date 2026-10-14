@@ -53,10 +53,14 @@ export async function POST(
 
   const counterpartId = userId === thread.initiatorId ? thread.tradeListing.userId : thread.initiatorId;
 
-  await prisma.messageThread.update({
-    where: { id: threadId },
-    data: { closedByUserId: userId, closedAt: new Date() },
-  });
+  // Görüşme kapanınca paylaşılan numaralar da silinir (yeniden açılırsa yeniden paylaşım gerekir); rıza ispatı ConsentLog'da kalır.
+  await prisma.$transaction([
+    prisma.messageThread.update({
+      where: { id: threadId },
+      data: { closedByUserId: userId, closedAt: new Date() },
+    }),
+    prisma.threadPhoneShare.deleteMany({ where: { threadId } }),
+  ]);
 
   const me = session.user.name?.trim() || "Bir kullanıcı";
   const vehicle = `${thread.tradeListing.product.brand.name} ${thread.tradeListing.product.model.name}`;

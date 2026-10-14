@@ -8,6 +8,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const RETENTION_MS = 183 * 24 * 60 * 60 * 1000; // ~6 ay
+const PHONE_SHARE_RETENTION_MS = 30 * 24 * 60 * 60 * 1000; // 30 gün
 
 export async function GET(req: Request) {
   const authHeader = req.headers.get("authorization");
@@ -21,6 +22,19 @@ export async function GET(req: Request) {
   try {
     const cutoff = new Date(Date.now() - RETENTION_MS);
 
+    // Telefon paylaşımları: ilan kapandıktan 30 gün sonra silinir (mesajlardaki 6 aydan çok daha kısa — iletişim
+    // bilgisi amaç bitince tutulmaz). Görüşme kapanırken/engellenirken zaten anında silinir.
+    const phoneCutoff = new Date(Date.now() - PHONE_SHARE_RETENTION_MS);
+    const phoneResult = await prisma.threadPhoneShare.deleteMany({
+      where: {
+        OR: [
+          { thread: { tradeListing: { isActive: false, closedAt: { lt: phoneCutoff } } } },
+          // savunma katmanı: kapatma/engelleme anında silinmesi gereken numaralar herhangi bir nedenle kalmışsa
+          { thread: { OR: [{ closedByUserId: { not: null } }, { blockedByUserId: { not: null } }] } },
+        ],
+      },
+    });
+
     // anonymizedAt:null ile idempotent hale getirildi — önceden mesaj metnindeki
     // placeholder'a bakarak (implicit) tekrarı önlüyordu, bu artık açık bir alan.
     const staleListings = await prisma.tradeListing.findMany({
@@ -29,7 +43,7 @@ export async function GET(req: Request) {
     });
 
     if (staleListings.length === 0) {
-      return NextResponse.json({ ok: true, anonymized: 0 });
+      return NextResponse.json({ ok: true, anonymized: 0, phoneShares: phoneResult.count });
     }
 
     const listingIds = staleListings.map((l) => l.id);
@@ -62,7 +76,7 @@ export async function GET(req: Request) {
       }),
     ]);
 
-    return NextResponse.json({ ok: true, listings: staleListings.length, anonymized: messageResult.count });
+    return NextResponse.json({ ok: true, listings: staleListings.length, anonymized: messageResult.count, phoneShares: phoneResult.count });
   } catch (e) {
     await cronHatasiBildir("anonymize-closed-trades", e);
     return NextResponse.json({ error: "Anonimleştirme işlemi başarısız oldu." }, { status: 500 });

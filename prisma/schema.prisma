@@ -218,6 +218,7 @@ model User {
   reviewFlags          ReviewFlag[]
   helpfulVotes         ReviewHelpfulVote[]
   consentLogs          ConsentLog[]
+  threadPhoneShares    ThreadPhoneShare[]
   dataDeletionRequests DataDeletionRequest[]
   vehicleSuggestions   VehicleSuggestion[]
   productPhotos        ProductPhoto[]        @relation("UserProductPhotos")
@@ -282,6 +283,7 @@ enum NotificationType {
   TRADE_MUTUAL_MATCH
   TRADE_THREAD_CLOSED
   TRADE_THREAD_REOPENED
+  TRADE_PHONE_SHARED // karşı taraf telefon numarasını paylaştı (numara bildirimde YOK)
 
   // Admin'e özel — trustLevel>=5 kullanıcıya (bkz. admin/layout.tsx) gönderilen
   // "yeni onay bekleyen X var" bildirimleri. Aynı bell'de (NotificationList.tsx)
@@ -826,6 +828,9 @@ model ConsentLog {
   // Onaylanan metnin sürümü — açık rıza ispatı (Usta Görüşleri granüler rızaları için zorunlu)
   consentVersion String?
 
+  // Rızanın bağlamı (örn. "thread:123") — numara silinse de hangi görüşme için rıza verildiği ispatlanabilsin
+  context String? @db.VarChar(40)
+
   createdAt DateTime @default(now())
 
   @@map("consent_logs")
@@ -840,6 +845,7 @@ enum ConsentType {
   TRADE_LISTING // Takas ilanı açarken il/iletişim verisinin diğer kullanıcılara gösterilmesine rıza
   INSURANCE_LEAD // Garaj'dan sigorta teklifi talebinde telefonun ileride ortak sigorta şirketiyle paylaşılabilmesine rıza
   SALE_LEAD // "Sattım" formunda ekspertiz/hızlı teklif talebinde telefonun ileride ortak firmayla paylaşılabilmesine rıza
+  TRADE_PHONE_SHARE // Takas görüşmesinde telefon numarasının (o görüşmeye özel, karşılıklı) paylaşılmasına rıza; her paylaş/geri çek ayrı satır, numara loga YAZILMAZ
   REVIEW_DATA_SHARING // İsteğe bağlı: yorum metninin/puanlarının adsız olarak API ile iş ortaklarına sunulması (kayıtta + profil ayarında; geri çekilebilir)
 
   // ── USTA GÖRÜŞLERİ — granüler açık rızalar (birbirinden bağımsız) ──
@@ -848,6 +854,27 @@ enum ConsentType {
   EXPERT_REGIONAL_PROMO // (c) bölgesel görünürlük
   EXPERT_PERFORMANCE_ANALYTICS // ileride: satış amaçlı performans raporu (özellik kapalı, baştan onay)
   EXPERT_WORKPLACE_PHOTO // (d) çalışma yeri (tabela/iç mekan) fotoğrafının herkese açık paylaşımı — adresten AYRI, görsel daha fazla bağlam (üçüncü kişi vb.) ifşa edebileceği için kendi rızası var
+}
+
+// Takas görüşmesinde, o görüşmeye ÖZEL ve KARŞILIKLI telefon paylaşımı. Numara hesapta tutulmaz; AES-256-GCM ile
+// şifreli (lib/phoneShareCrypto.ts, AAD = threadId:userId). Karşı taraf da paylaşmadıkça kimseye gösterilmez.
+// Görüşme kapatılınca/engellenince, hesap silinince ve ilan kapandıktan 30 gün sonra silinir. Geri çekme = satır silme
+// (rıza ispatı ConsentLog'da kalır, numara orada YOKTUR).
+model ThreadPhoneShare {
+  id         Int           @id @default(autoincrement())
+  threadId   Int
+  thread     MessageThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  userId     Int
+  user       User          @relation(fields: [userId], references: [id])
+  phoneEnc   String
+  phoneLast2 String        @db.VarChar(2) // yalnız paylaşanın KENDİ ekranında maskeli gösterim için
+  phoneHash  String        @db.VarChar(64) // HMAC — aynı numaranın çok hesapta kullanımını çözmeden saymak için
+  createdAt  DateTime      @default(now())
+
+  @@unique([threadId, userId])
+  @@index([userId])
+  @@index([phoneHash])
+  @@map("thread_phone_shares")
 }
 
 // "Verilerimi sil" talepleri
@@ -1363,6 +1390,7 @@ model MessageThread {
   interestLostAt       DateTime?
 
   messages Message[]
+  phoneShares ThreadPhoneShare[]
   ratings  TradeRating[]
 
   @@unique([tradeListingId, initiatorId])

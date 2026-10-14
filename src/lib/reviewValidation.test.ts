@@ -254,3 +254,15 @@ describe("plaka engeli (yalnız yorum alanları)", () => {
     expect(checkContent(text).ok).toBe(true);
   });
 });
+
+describe("takas mesajı (strict) telefon yönlendirmesi", () => {
+  it("strict modda hata metni telefon paylaş bölümüne yönlendirir, kural PHONE kalır", () => {
+    const r = checkContent("numaram 0532 123 45 67", { strict: true });
+    expect(r).toMatchObject({ ok: false, rule: "PHONE" });
+    expect(r.error).toContain("Telefon numaramı paylaş");
+  });
+
+  it("strict olmayan modda eski kısa metin", () => {
+    expect(checkContent("numaram 0532 123 45 67").error).toBe("Telefon numarası paylaşımına izin verilmemektedir.");
+  });
+});

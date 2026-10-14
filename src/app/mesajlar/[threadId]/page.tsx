@@ -5,8 +5,10 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { Avatar } from "@/components/Avatar";
 import { stripModelGenRange } from "@/lib/modelDisplay";
-import { isTradeMessagingEnabled } from "@/lib/features";
+import { isPhoneShareEnabled, isTradeMessagingEnabled } from "@/lib/features";
+import { getPhoneShareView, pairBlocked } from "@/lib/threadPhoneShare";
 import { MessageThread } from "./MessageThread";
+import { PhoneSharePanel } from "./PhoneSharePanel";
 import { ThreadActions } from "./ThreadActions";
 import { ReopenButton } from "./ReopenButton";
 import { TradeRatingForm } from "./TradeRatingForm";
@@ -129,6 +131,12 @@ export default async function ThreadPage({
         },
       });
 
+  // Telefon paylaşımı paneli: yalnız görüşme açıkken (kapalı/engelli/ilan kapalı değil), çift arasında kullanıcı bloğu yokken.
+  // Karşı tarafın numarası SUNUCUDA, yalnız iki taraf da paylaştıysa çözülür; istemciye başka hali gitmez.
+  const phoneShareActive = canMessage && isPhoneShareEnabled() && !(await pairBlocked(userId, counterpartId));
+  // Yardımcı bir panel: sorgu hata verirse (ör. tablo henüz oluşturulmamış) görüşme sayfası yine açılır.
+  const phoneView = phoneShareActive ? await getPhoneShareView(threadId, userId, true).catch(() => null) : null;
+
   // Takas görüşmesinde iki araç var: benim tarafım + karşı tarafın aracı.
   // Rol'e göre eşleşir — ilan sahibiysem ilanım tradeListing, karşı tarafın
   // teklifi initiatorListing; mesajı ben başlattıysam tersi. Karşı taraf hiç
@@ -246,6 +254,16 @@ export default async function ThreadPage({
           <SideRow label={`${counterpartName} — aracı`} listing={theirSide} />
         </div>
       </div>
+
+      {phoneView && (
+        <PhoneSharePanel
+          threadId={thread.id}
+          counterpartName={counterpartName}
+          mine={phoneView.mine}
+          counterpartShared={phoneView.counterpartShared}
+          counterpartPhone={phoneView.counterpartPhone}
+        />
+      )}
 
       {interestLostByMe && (
         <p className="shrink-0 px-4 py-2 text-xs text-center text-gray-400 bg-gray-50 border-b border-gray-100">

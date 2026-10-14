@@ -56,6 +56,8 @@ export async function POST(
       where: { ...pairFilter, closedByUserId: null },
       data: { closedByUserId: userId, closedAt: now },
     }),
+    // Çiftin tüm görüşmelerindeki paylaşılmış numaralar silinir
+    prisma.threadPhoneShare.deleteMany({ where: { thread: pairFilter } }),
     prisma.blockedUser.upsert({
       where: { blockerId_blockedId: { blockerId: userId, blockedId: counterpartId } },
       create: { blockerId: userId, blockedId: counterpartId, source: "TAKAS" },
