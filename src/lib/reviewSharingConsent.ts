@@ -7,17 +7,17 @@ import { hashRequestContext } from "@/lib/security";
 // Rıza metni (kayıt kutusu + gizlilik sayfası) değişince sürüm artırılmalıdır.
 export const REVIEW_SHARING_CONSENT_VERSION = "v1-2026-10";
 
-/** Son karar: true/false; hiç sorulmamışsa null. Enum DB'ye henüz eklenmemişse null döner (sayfa kırılmasın). */
-export async function getReviewSharingConsent(userId: number): Promise<boolean | null> {
+/** Son karar: granted true/false; hiç sorulmamışsa null. Enum DB'ye henüz eklenmemişse boş durum döner (sayfa kırılmasın). */
+export async function getReviewSharingState(userId: number): Promise<{ granted: boolean | null; changedAt: Date | null }> {
   try {
     const last = await prisma.consentLog.findFirst({
       where: { userId, consentType: "REVIEW_DATA_SHARING" },
       orderBy: { createdAt: "desc" },
-      select: { isGranted: true },
+      select: { isGranted: true, createdAt: true },
     });
-    return last?.isGranted ?? null;
+    return { granted: last?.isGranted ?? null, changedAt: last?.createdAt ?? null };
   } catch {
-    return null;
+    return { granted: null, changedAt: null };
   }
 }
 

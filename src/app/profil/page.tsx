@@ -5,9 +5,8 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { EditName } from "./EditName";
 import { AvatarPicker } from "./AvatarPicker";
-import { NotificationToggle } from "./NotificationToggle";
-import { ReviewSharingToggle } from "./ReviewSharingToggle";
-import { getReviewSharingConsent } from "@/lib/reviewSharingConsent";
+import { PreferenceSwitch } from "@/components/PreferenceSwitch";
+import { getReviewSharingState } from "@/lib/reviewSharingConsent";
 import { NotificationsSection } from "./NotificationsSection";
 import { resolveLiveNotificationMessages } from "@/lib/notification";
 import { BlockedUsersSection } from "./BlockedUsersSection";
@@ -100,7 +99,7 @@ export default async function ProfilPage() {
   const publishedReviews = reviews.filter((r) => r.status === "PUBLISHED");
   const reviewIds = publishedReviews.map((r) => r.id);
 
-  const [garageCount, helpfulCount, foundingIds, notificationsRaw, expertProfile, ustaThreadCount, reviewSharingConsent] = await Promise.all([
+  const [garageCount, helpfulCount, foundingIds, notificationsRaw, expertProfile, ustaThreadCount, reviewSharing] = await Promise.all([
     prisma.userProduct.count({ where: { userId, ownershipStatus: "CURRENT" } }),
     reviewIds.length
       ? prisma.reviewHelpfulVote.count({ where: { reviewId: { in: reviewIds }, isHelpful: true } })
@@ -118,7 +117,7 @@ export default async function ProfilPage() {
     prisma.expertMessageThread.count({
       where: { OR: [{ initiatorId: userId }, { expertProfile: { userId } }] },
     }),
-    getReviewSharingConsent(userId),
+    getReviewSharingState(userId),
   ]);
 
   const hasMoreNotifications = notificationsRaw.length > 20;
@@ -199,8 +198,6 @@ export default async function ProfilPage() {
                 </span>
               )}
             </div>
-            <NotificationToggle initialEnabled={user.emailNotificationsEnabled} />
-            <ReviewSharingToggle initialEnabled={reviewSharingConsent === true} />
           </div>
 
           <div className="text-left sm:text-right sm:shrink-0 space-y-1">
@@ -251,6 +248,50 @@ export default async function ProfilPage() {
           </div>
         )}
       </div>
+
+      {/* Tercihler — kimlik kartından ayrı: "ben kimim" ile "ne izin veriyorum" karışmasın (2 ajanlı tasarım/UX incelemesi) */}
+      <section aria-labelledby="tercihler-baslik" className="overflow-hidden rounded-2xl border border-gray-100 bg-white">
+        <div className="px-5 pt-5 pb-3 sm:px-6">
+          <h2 id="tercihler-baslik" className="text-sm font-bold text-gray-900">Bildirim ve gizlilik tercihleri</h2>
+          <p className="mt-0.5 text-xs text-gray-600">Bu tercihleri dilediğiniz zaman değiştirebilirsiniz.</p>
+        </div>
+        <div className="divide-y divide-gray-100 border-t border-gray-100">
+          <PreferenceSwitch
+            title="E-posta bildirimleri"
+            description="Yorumlarınıza gelen yanıtlar ve hesabınızla ilgili önemli gelişmeler için e-posta alırsınız."
+            endpoint="/api/profile/notifications"
+            initialEnabled={user.emailNotificationsEnabled}
+          />
+          <PreferenceSwitch
+            title="Yorumlarım iş ortaklarıyla adsız paylaşılabilsin"
+            description={
+              <>
+                İsteğe bağlıdır; vermemeniz hizmeti kullanmanızı etkilemez. Ayrıntılar için{" "}
+                <Link href="/gizlilik" className="text-link underline underline-offset-2">Gizlilik Politikası</Link>.
+              </>
+            }
+            details={{
+              summary: "Neler paylaşılır?",
+              body: (
+                <>
+                  <p><strong className="text-gray-900">Paylaşılır:</strong> yorum metniniz ve puanlarınız.</p>
+                  <p><strong className="text-gray-900">Paylaşılmaz:</strong> adınız, e-posta adresiniz ve fotoğraflarınız.</p>
+                  <p>İzni dilediğiniz zaman geri çekebilirsiniz; geri çekme sonraki paylaşımlar için geçerlidir.</p>
+                </>
+              ),
+            }}
+            endpoint="/api/profile/review-sharing"
+            initialEnabled={reviewSharing.granted === true}
+            onText="Adsız paylaşılabilir"
+            offText="Paylaşılmıyor"
+            footnote={
+              reviewSharing.changedAt
+                ? `Son değişiklik: ${reviewSharing.changedAt.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}`
+                : undefined
+            }
+          />
+        </div>
+      </section>
 
       {/* Hızlı linkler */}
       <div className="flex gap-3">
