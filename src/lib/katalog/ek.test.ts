@@ -71,6 +71,35 @@ describe("urunlerdenEk / katalogBirlestir", () => {
     expect(s.modeller[0].tipler).toHaveLength(1);
   });
 
+  it("katalogda marka önekli model ('Jaecoo 7') ile veritabanındaki öneksiz model ('7') tek model olarak birleşir", () => {
+    const dosya: KatalogMarkaDosyasi = {
+      marka: "Jaecoo", kategori: "otomobil", kaynak: "x",
+      modeller: [
+        { ad: "Jaecoo 7", nesiller: [{ ad: "Jaecoo 7 (2023-)", bas: 2023, bit: null }], tipler: [{ v: "1.6", hp: 145, p: "Revive", k: null, y: [2025], f: "GASOLINE", t: "Otomatik" }] },
+        { ad: "Jaecoo 8 (2024-)", nesiller: [{ ad: "Jaecoo 8 (2024-)", bas: 2024, bit: null }], tipler: [] },
+      ],
+    };
+    const ek = urunlerdenEk("Jaecoo", [{ modelAd: "7", year: 2026, trimName: "1.6 4x4 – Evolve", fuelType: "GASOLINE", transmission: "Otomatik", powerHp: 145 }]);
+    const b = katalogBirlestir(dosya, ek, "otomobil");
+    expect(b.modeller.map((m) => m.ad)).toEqual(["Jaecoo 7", "Jaecoo 8 (2024-)"]);
+    expect(b.modeller[0].tipler).toHaveLength(2);
+  });
+
+  it("marka öneki farkı, farklı modelleri ('Polestar 2' / 'Polestar 2 Long Range') birleştirmez", () => {
+    const dosya: KatalogMarkaDosyasi = {
+      marka: "Polestar", kategori: "otomobil", kaynak: "x",
+      modeller: [
+        { ad: "Polestar 2", nesiller: [], tipler: [] },
+        { ad: "Polestar 2 Long Range", nesiller: [], tipler: [] },
+      ],
+    };
+    const ek = urunlerdenEk("Polestar", [{ modelAd: "2", year: 2024, trimName: "Plus", fuelType: "EV", transmission: "Otomatik", powerHp: null }]);
+    const b = katalogBirlestir(dosya, ek, "otomobil");
+    expect(b.modeller.map((m) => m.ad)).toEqual(["Polestar 2", "Polestar 2 Long Range"]);
+    expect(b.modeller[0].tipler).toHaveLength(1);
+    expect(b.modeller[1].tipler).toHaveLength(0);
+  });
+
   it("statikte hiç olmayan marka (dosya yok) sıfırdan kurulur", () => {
     const ek = urunlerdenEk("Yeni Marka", [{ modelAd: "X1", year: 2024, trimName: "Plus", fuelType: "EV", transmission: "Otomatik", powerHp: null }]);
     const b = katalogBirlestir(null, ek, "otomobil");

@@ -5,7 +5,7 @@
 import type {
   KatalogKategori, KatalogMarkaDosyasi, KatalogModel, KatalogNesil, KatalogTip, KatalogVites, KatalogYakit,
 } from "./tipler";
-import { baseNameplate, stripModelGenRange } from "../modelDisplay";
+import { baseNameplate, markasizModelAdi, stripModelGenRange } from "../modelDisplay";
 
 export const EK_YIL_MIN = 1900;
 export const ekYilGecerli = (y: number, bugun = new Date().getFullYear()) =>
@@ -100,12 +100,15 @@ export function urunlerdenEk(marka: string, urunler: EkUrun[]): EkMarkaVeri {
   return { marka, modeller: [...modeller.values()] };
 }
 
-function modelEslestir(modeller: KatalogModel[], ad: string): KatalogModel | null {
+function modelEslestir(modeller: KatalogModel[], ad: string, marka = ""): KatalogModel | null {
   const tam = adAnahtar(ad);
+  // Katalogda marka önekli ("Jaecoo 7"), veritabanında öneksiz ("7") tutulan modeller aynı model sayılır.
+  const markasiz = (x: string) => adAnahtar(markasizModelAdi(marka, stripModelGenRange(x)));
   const adaylar: ((m: KatalogModel) => boolean)[] = [
     (m) => adAnahtar(m.ad) === tam,
     (m) => m.nesiller.some((n) => adAnahtar(n.ad) === tam),
     (m) => adAnahtar(stripModelGenRange(m.ad)) === adAnahtar(stripModelGenRange(ad)),
+    (m) => marka !== "" && markasiz(m.ad) === markasiz(ad),
     // Yalnız nesil bilgisi olan modellerde ("Clio 4" ↔ "Clio"): aksi halde "Sealion 6" gibi ayrı bir model,
     // sondaki rakam atıldığı için "Sealion 7"ye yanlış yazılırdı.
     (m) => m.nesiller.length > 0 && adAnahtar(baseNameplate(m.ad)) === adAnahtar(baseNameplate(ad)),
@@ -142,7 +145,7 @@ export function katalogBirlestir(
     ? (JSON.parse(JSON.stringify(dosya)) as KatalogMarkaDosyasi)
     : { marka: ek.marka, kategori, kaynak: "Kullanıcı eklemesi", modeller: [] };
   for (const em of ek.modeller) {
-    let model = modelEslestir(kopya.modeller, em.ad);
+    let model = modelEslestir(kopya.modeller, em.ad, ek.marka);
     if (!model) {
       model = { ad: em.ad, nesiller: [], tipler: [] };
       kopya.modeller.push(model);

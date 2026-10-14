@@ -79,7 +79,8 @@ export function PreferenceSwitch({
           <div id={`${id}-d`} className="mt-0.5 text-xs leading-relaxed text-gray-600">{description}</div>
         </div>
         <div className="flex shrink-0 items-center gap-2.5 pt-0.5">
-          <span className="text-xs font-medium text-gray-600" aria-hidden="true">{enabled ? onText : offText}</span>
+          {/* Mobilde gizli: başlığa genişlik kalsın; durum anahtarın konumu + onay işareti + aria-checked ile de anlaşılır */}
+          <span className="hidden text-xs font-medium text-gray-600 sm:inline" aria-hidden="true">{enabled ? onText : offText}</span>
           <button
             type="button"
             role="switch"
