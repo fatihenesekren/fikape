@@ -14,4 +14,6 @@
 
 - [ ] **Çok dilli destek (TR/EN)** — Site TR + EN olarak erişilebilir olsun. Statik arayüz metinleri (next-intl, `/tr` `/en` routing) + sabit içerik (chip etiketleri, marka/model adları) önceden çevrilir. Kullanıcı yorumları (serbest metin) için on-demand makine çevirisi (DeepL/Google Translate API) + DB cache (`ReviewTranslation` tablosu) + "Makine çevirisi" rozeti/uyarısı (kullanıcının sözünü yanlış temsil etmeme). Efor: ~1-2 hafta solo. Henüz kesin karar yok, ileride tekrar değerlendirilecek.
 
+- [ ] **Anonim yorum API'si (3. şirketlere, ileride ücretli olabilir)** — Yalnız yorum metni + puanlar + araç + tarih; kullanıcı adı/e-posta/kimlik/fotoğraf YOK. Yorum formuna ek not eklenmeyecek. Önce hukuki zemin: Üyelik Sözleşmesi m.6 + Kullanım Koşulları m.6 lisansı API ile sunumu kapsamıyor, Gizlilik Politikası "üçüncü taraflara satılmaz" cümlesi çelişiyor (metinler henüz DEĞİŞTİRİLMEDİ; avukat kontrolü gerekli). Teknik: kimlik alanı yok + yorum için rastgele dış kimlik, yalnız yayındaki yorumlar, silme yansıması (webhook/silinenler listesi), çıktı maskeleme (telefon/e-posta/plaka/URL), plaka kuralı `reviewValidation.ts`'e, API kullanım sözleşmesi, şirket/fatura yapısı. Aşama: önce ücretsiz agrega puan kartı, sonra metinli/ücretli. Ayrıntı: hafızada `backlog_yorum_api_anonim_ucuncu_taraf`.
+
 ## Tamamlandı
