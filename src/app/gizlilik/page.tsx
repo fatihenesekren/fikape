@@ -44,7 +44,8 @@ export default function GizlilikPage() {
             Bu Gizlilik Politikası, <strong>fikape.com</strong> (&quot;Platform&quot;, &quot;biz&quot;) tarafından sunulan
             hizmetler kapsamında toplanan kişisel verilerin nasıl işlendiğini açıklamaktadır.
             Platform, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu
-            sıfatıyla hareket etmektedir.
+            sıfatıyla hareket etmektedir. Veri sorumlusu, fikape.com&apos;u işleten gerçek kişidir; başvurularınızı
+            aşağıdaki iletişim adresine iletebilirsiniz.
           </p>
           <p className="mt-2">
             İletişim: <a href="mailto:info@fikape.com" className="underline text-gray-900">info@fikape.com</a>
@@ -116,9 +117,11 @@ export default function GizlilikPage() {
               açık rızanız aranır; üyeliğiniz bu rızaya bağlı değildir. Rızanızı profil ayarlarınızdan
               istediğiniz zaman geri çekebilirsiniz. Geri çekme, bundan sonraki paylaşımları durdurur; geri çekmeden
               önce yapılan paylaşımların hukuka uygunluğunu etkilemez. Daha önce paylaşılmış içeriklerin iş
-              ortaklarından kaldırılmasını talep etmek için info@fikape.com adresine yazabilirsiniz. Rıza ve onay
-              kayıtlarınız (karar, tarih, metin sürümü ve cihaz/bağlantı bilgisinin geri döndürülemeyecek biçimde
-              özetlenmiş değeri) hukuki ispat amacıyla, ispatın gerektirdiği süre boyunca saklanır.
+              ortaklarından kaldırılmasını talep etmek için info@fikape.com adresine yazabilirsiniz. Şu anda iş
+              ortaklarıyla paylaşım yapılmamaktadır; paylaşım başlamadan önce iş ortaklarının türü ve amacı bu metne
+              eklenecek ve gerektiğinde yeniden açık rızanız istenecektir. Rıza ve onay kayıtlarınız (karar, tarih, metin
+              sürümü ve cihaz/bağlantı bilgisinin geri döndürülemeyecek biçimde özetlenmiş değeri) hukuki ispat
+              amacıyla, hesap silme talebinizin işleme alınmasından sonra 2 yıl süreyle saklanır.
               Toplulaştırılmış, kişiye bağlı olmayan puan istatistikleri bu rızaya tabi değildir.
             </p>
           </div>
@@ -144,6 +147,8 @@ export default function GizlilikPage() {
             bildirilerek askıya alınabilir; verileriniz silinmez, e-posta doğrulamasıyla (şifre sıfırlama)
             hesabınızı yeniden etkinleştirebilirsiniz</li>
             <li>Oturum verileri: Son girişten itibaren en fazla 14 gün pasif kalırsa oturum sona erer</li>
+            <li>Rıza ve onay kayıtları: Hesap silme talebiniz işleme alındıktan sonra 2 yıl (hukuki ispat amacıyla)</li>
+            <li>Sigorta ve satış teklifi talepleri (iletişim bilgisi içerir): Talep tarihinden itibaren 2 yıl, sonrasında otomatik olarak silinir</li>
             <li>Trafik bilgisi (5651 sayılı Kanun): Kayıt tarihinden itibaren 2 yıl,
             sonrasında otomatik olarak silinir</li>
             <li>Takas mesajlaşması: İlan kapandıktan 6 ay sonra mesaj içeriği anonimleştirilir</li>
@@ -158,7 +163,7 @@ export default function GizlilikPage() {
           <h2 className="text-lg font-semibold text-gray-900 mb-3">6. Üçüncü Taraf Hizmetleri</h2>
           <p className="mb-2">Platform, aşağıdaki üçüncü taraf hizmetlerinden yararlanmaktadır:</p>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li><strong>Supabase (PostgreSQL):</strong> Veri tabanı altyapısı</li>
+            <li><strong>Supabase (PostgreSQL):</strong> Veri tabanı altyapısı (Avrupa Birliği bölgesinde, İrlanda&apos;da barındırılır)</li>
             <li><strong>Vercel (uygulama barındırma ve dosya/görsel depolama):</strong> Uygulamanın çalıştırılması ve yüklenen görsellerin saklanması</li>
             <li><strong>Resend:</strong> Doğrulama e-postaları</li>
             <li><strong>Tavily:</strong> Takasa açılan araçlar için piyasa değeri tahmini amacıyla yapılan arama sorguları (araç markası, modeli ve yılı gibi bilgiler; kimlik bilgisi içermez)</li>
@@ -262,7 +267,8 @@ export default function GizlilikPage() {
             bunlar olmasa bile ilan kapandıktan 30 gün sonra otomatik olarak silinir; hesap silme talebiniz
             onaylandığında da silinir. Bu işlemin hukuki sebebi açık rızanızdır; verdiğiniz ve geri çektiğiniz
             rıza, numarayı içermeyen bir kayıt olarak (tarih, metin sürümü, görüşme numarası, cihaz/bağlantı
-            bilgisinin geri döndürülemeyecek biçimde özetlenmiş değeri) ispat amacıyla saklanır. Numara mesaj
+            bilgisinin geri döndürülemeyecek biçimde özetlenmiş değeri) ispat amacıyla, hesap silme talebinizin işleme
+            alınmasından sonra 2 yıl süreyle saklanır. Numara mesaj
             içinde yazılamaz. Numaranın doğrulanmadığını, tanımadığınız kişilerle paylaşırken dikkatli
             olmanız gerektiğini ve araç görmeden ön ödeme yapmamanızı hatırlatırız. Telefon görüşmeleri
             fikape tarafından izlenmez.

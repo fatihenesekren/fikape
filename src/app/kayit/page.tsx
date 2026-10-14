@@ -265,7 +265,7 @@ function KayitForm() {
               className="mt-0.5 shrink-0"
             />
             <span>
-              {"(İsteğe bağlı) Yorum metnimin ve puanlarımın; adım, e-postam ve fotoğraflarım olmadan, fikape'nin iş ortağı olan kurumların sitelerinde veya uygulamalarında da gösterilmesine izin veriyorum. İzin vermesem de üyeliğim etkilenmez; profil ayarlarımdan dilediğim zaman geri çekebilirim. "}
+              {"(İsteğe bağlı) Yorum metnimin ve puanlarımın; adım, e-postam ve fotoğraflarım olmadan, fikape'nin ileride iş ortağı olacağı kurumların sitelerinde veya uygulamalarında da gösterilmesine izin veriyorum (şu an paylaşım yapılmıyor; başlamadan önce bilgilendirileceğim). İzin vermesem de üyeliğim etkilenmez; profil ayarlarımdan dilediğim zaman geri çekebilirim. "}
               <Link href="/gizlilik" className="underline">Ayrıntı</Link>
             </span>
           </label>

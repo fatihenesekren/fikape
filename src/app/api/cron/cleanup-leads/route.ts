@@ -11,6 +11,8 @@ export const dynamic = "force-dynamic";
 // (bkz. InsuranceLeadCard/SaleLeadCard metinleri) 2 yıl, 5651 trafik logu
 // için kullanılan üst sınırla tutarlı, konservatif bir varsayılan.
 const RETENTION_MS = 2 * 365 * 24 * 60 * 60 * 1000; // 2 yıl
+// Rıza/onay kayıtları (ConsentLog) hukuki ispat için hesap silme tamamlandıktan sonra aynı süre tutulur (bkz. Gizlilik Politikası m.3/m.5).
+const CONSENT_RETENTION_MS = RETENTION_MS;
 
 export async function GET(req: Request) {
   const authHeader = req.headers.get("authorization");
@@ -26,10 +28,19 @@ export async function GET(req: Request) {
       prisma.saleLead.deleteMany({ where: { createdAt: { lt: cutoff } } }),
     ]);
 
+    const silinenKullanicilar = await prisma.dataDeletionRequest.findMany({
+      where: { status: "COMPLETED", completedAt: { lt: new Date(Date.now() - CONSENT_RETENTION_MS) } },
+      select: { userId: true },
+    });
+    const consentResult = silinenKullanicilar.length
+      ? await prisma.consentLog.deleteMany({ where: { userId: { in: silinenKullanicilar.map((r) => r.userId) } } })
+      : { count: 0 };
+
     return NextResponse.json({
       ok: true,
       deletedInsuranceLeads: insuranceResult.count,
       deletedSaleLeads: saleResult.count,
+      deletedConsentLogs: consentResult.count,
       cutoff: cutoff.toISOString(),
     });
   } catch (err) {

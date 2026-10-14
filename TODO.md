@@ -18,4 +18,6 @@
 
 - [x] **Takasta karşılıklı onayla telefon paylaşımı** — YAPILDI (2026-10-14): görüşmede karşılıklı paylaşım, şifreli ThreadPhoneShare, rıza ConsentLog TRADE_PHONE_SHARE (context thread:ID), kapat/engelle/hesap silme anında, cron 30 gün. SQL: prisma/migrations/add_thread_phone_share.sql. Açık: PHONE_SHARE_KEY env (yoksa AUTH_SECRET türevi), SMS doğrulaması yok (bilinçli), metinler avukat kontrolü.
 
+- [ ] **Ticari kazanç başlamadan önce yapılacaklar (hukuki/şirket)** — şirket yok, ticari gelir yok (2026-10-14 kararı: hepsi ticari başlangıçtan önce). Sıra: (1) şirket kurulumu (şahıs/limited, mali müşavir, vergi/fatura); (2) Gizlilik m.1 veri sorumlusu kimliği: unvan/ad-soyad, adres, KEP, MERSİS — şu an yalnız "fikape.com'u işleten gerçek kişi" + info@ (kullanıcı adını yazmak istemedi); VERBİS muafiyeti teyidi; (3) yurt dışı aktarım dayanağı: sağlayıcı DPA'ları (Supabase AB/İrlanda eu-west-1, Vercel, Resend, Google, Tavily), standart sözleşme + Kurul bildirimi; (4) iş ortağı türü/amacı metne + kayıt kutusuna, rıza yenileme (şu an metinler "şu an paylaşım yapılmıyor, başlamadan önce bilgilendirilecek" diyor); (5) API kullanım sözleşmesi (silme süresi: örn. 7 gün talep / 30 gün uygulama, yeniden satış-kazıma yasağı); (6) tüm metinler için avukat teyidi. Ayrıntı: hafızada `backlog_yorum_api_anonim_ucuncu_taraf`.
+
 ## Tamamlandı

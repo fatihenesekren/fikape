@@ -158,7 +158,9 @@ export default function UyelikSozlesmesiPage() {
             halinde yorumlarınızın metni ve puanları; adınız, kullanıcı adınız, e-posta adresiniz ve
             fotoğraflarınız olmaksızın (adsız olarak), API, widget veya benzeri teknik arayüzlerle üçüncü kişi ve
             kurumlara (iş ortakları) ücretli ya da ücretsiz sunulabilir ve bu amaçla Platform&apos;a alt lisans verme
-            yetkisi tanımış olursunuz. Yorum fotoğrafları bu kapsama dahil değildir. Rızanızı geri çektiğinizde
+            yetkisi tanımış olursunuz. Yorum fotoğrafları bu kapsama dahil değildir. Şu anda iş ortaklarıyla paylaşım yapılmamaktadır; paylaşım
+            başlamadan önce iş ortaklarının türü ve amacı Gizlilik Politikası&apos;na eklenecek ve gerektiğinde yeniden
+            açık rızanız istenecektir. Rızanızı geri çektiğinizde
             yorumlarınız sonraki paylaşımlardan çıkarılır. Yorumunuzu veya hesabınızı sildiğinizde ilgili içerik
             için verdiğiniz lisans sona erer; Platform içeriği kendi sistemlerinden kaldırır ve iş ortaklarından
             makul süre içinde kaldırılmasını ister. Ayrıntılar için{" "}

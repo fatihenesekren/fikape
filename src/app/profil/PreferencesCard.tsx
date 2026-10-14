@@ -79,6 +79,7 @@ export function PreferencesCard({ emailEnabled, sharingGranted, sharingChangedLa
               <>
                 <p><strong className="text-gray-900">Paylaşılır:</strong> yorum metniniz ve puanlarınız.</p>
                 <p><strong className="text-gray-900">Paylaşılmaz:</strong> adınız, e-posta adresiniz ve fotoğraflarınız.</p>
+                <p>Şu an iş ortaklarıyla paylaşım yapılmıyor; başlamadan önce sizi bilgilendireceğiz ve gerekirse yeniden izninizi isteyeceğiz.</p>
                 <p>
                   İzni dilediğiniz zaman geri çekebilirsiniz; bundan sonra yorumlarınız paylaşılmaz. Daha önce
                   paylaşılmış içeriklerin kaldırılması için{" "}
