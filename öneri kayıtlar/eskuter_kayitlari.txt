@@ -1,0 +1,2242 @@
+E-SCOOTER KAYITLARI (yıl: üretici/basın kaynağı, teknik özellik: Epey Türkiye kataloğu)
+Her kayıt: Marka Model Yıl, yıl kaynağı (tarihli üretici duyurusu/basın bülteni/haber), Türkiye kaynağı, fotoğraf ve teknik özellikler. Yılı tarihli kaynakla doğrulanamayan modeller listeye alınmadı. Katalogdaki mevcut e-scooter kartlarıyla eşleşenler çıkarıldı. Kayıtlar eskiden yeniye sıralıdır.
+
+Inokim Quick 3 2016
+Yıl: 2016 — Globes: Inokim launched Quick 3, October 2016
+Yıl kaynağı: https://en.globes.co.il/en/article-israeli-co-inokim-unveils-cutting-edge-electric-scooter-1001157274
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/inokim-quick-3.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/611897/z_inokim-quick-3-1.jpg
+
+Motor Gücü (En Fazla): 450 W
+Menzil (En Fazla): 45 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Diğer Özellikler: Li-ion Batarya / LCD Ekran
+Ön Fren: Kampana
+Arka Fren: Disk
+Batarya Voltajı: 48 V
+Batarya Akımı: 13 Ah
+Şarj Süresi: 7 saat
+Eğim: 36 %
+Tırmanma Açısı: 20 °
+Güvenli Sürüş: Fren Lambası
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 115 cm
+Yükseklik (En Az): 37 cm
+Genişlik: 47 cm
+Derinlik: 108 cm
+Ağırlık: 17.2 kg
+
+Xiaomi Mijia M365 2016
+Yıl: 2016 — Mijia M365 came out in December 2016
+Yıl kaynağı: https://en.wikipedia.org/wiki/Xiaomi_M365
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-mijia-m365.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/608499/z_xiaomi-mijia-m365-4.jpg
+
+Motor Gücü (Nominal): 250 W
+Menzil (En Fazla): 30 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Sürüş İstatistiği / Bluetooth
+Diğer Özellikler: Li-ion Batarya
+Ön Fren: Rejeneratif
+Arka Fren: Disk
+Batarya Akımı: 18.65 Ah
+Şarj Süresi: 5 saat
+Eğim: 25 %
+Tırmanma Açısı: 14 °
+Sürüş Modları: Eco
+Güvenli Sürüş: E-ABS / Fren Lambası / Ön Far / Zil/Korna
+Koruma: IP54 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 114 cm
+Yükseklik (En Az): 49 cm
+Genişlik: 43 cm
+Derinlik: 108 cm
+Ağırlık: 12.2 kg
+
+Segway Ninebot KickScooter ES1 2017
+Yıl: 2017 — ES1 and ES2 unveiled as first Ninebot by Segway KickScooters at IFA 2017
+Yıl kaynağı: https://www.pocket-lint.com/pt-br/gadgets/noticias/141896-segway-kickscooter-lanca-scooters-eletricas-ninebot-para-deslocamento-rapido
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-es1.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/612363/z_ninebot-kickscooter-es1-2.jpg
+
+Motor Gücü (En Fazla): 500 W
+Motor Gücü (Nominal): 250 W
+Menzil (En Fazla): 25 km
+Hız (Kapasite): 20 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Dolgu
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 7.5 inç / 8 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Li-ion Batarya / Ön ve Arka Amortisör / LED Ekran / Opsiyonel İkinci Pil
+Ön Fren: Elektronik / Rejeneratif
+Arka Fren: Ayak/Çamurluk
+Batarya Voltajı: 36 V
+Batarya Akımı: 5.2 Ah
+Şarj Süresi: 3.5 saat
+Eğim: 10 %
+Tırmanma Açısı: 6 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Ön Far
+Koruma: IP54 Koruma
+Yükseklik (En Fazla): 113 cm
+Yükseklik (En Az): 40 cm
+Genişlik: 43 cm
+Derinlik: 102 cm
+Ağırlık: 11.3 kg
+
+Segway Ninebot KickScooter ES2 2017
+Yıl: 2017 — ES1 and ES2 unveiled as first Ninebot by Segway KickScooters at IFA 2017
+Yıl kaynağı: https://www.pocket-lint.com/pt-br/gadgets/noticias/141896-segway-kickscooter-lanca-scooters-eletricas-ninebot-para-deslocamento-rapido
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-es2.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/612361/z_ninebot-kickscooter-es2-2.jpg
+
+Motor Gücü (En Fazla): 700 W
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 25 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Dolgu
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 7.5 inç / 8 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Li-ion Batarya / Hız Sabitleyici / Ön ve Arka Amortisör / LED Ekran / Opsiyonel İkinci Pil / Özelleştirilebilir Aydınlatma
+Ön Fren: Elektronik / Rejeneratif
+Arka Fren: Ayak/Çamurluk
+Batarya Voltajı: 36 V
+Batarya Akımı: 5.2 Ah
+Şarj Süresi: 3.5 saat
+Eğim: 10 %
+Tırmanma Açısı: 6 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / LED Aydınlatma / Reflektör
+Koruma: IP54 Koruma
+Yükseklik (En Fazla): 113 cm
+Yükseklik (En Az): 40 cm
+Genişlik: 43 cm
+Derinlik: 102 cm
+Ağırlık: 12.5 kg
+
+Seat EXS KickScooter 2018
+Yıl: 2018 — SEAT eXS unveiled at Smart City Expo World Congress, Nov 13-15 2018
+Yıl kaynağı: https://wardsauto.com/seat/seat-segway-team-up-for-electric-scooter
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/seat-exs-kickscooter.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/608457/z_seat-exs-kickscooter-1.jpg
+
+Motor Gücü (En Fazla): 700 W
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 25 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Dolgu
+Lastik Ebatı: 7.5 inç / 8 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Hız Sabitleyici / Ön ve Arka Amortisör / Dijital Ekran
+Şarj Süresi: 3.5 saat
+Eğim: 18 %
+Tırmanma Açısı: 10 °
+Sürüş Modları: Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far
+Koruma: IP54 Koruma
+Yükseklik (En Fazla): 113 cm
+Yükseklik (En Az): 40 cm
+Genişlik: 43 cm
+Derinlik: 102 cm
+Ağırlık: 12.5 kg
+
+Bird Rides Bird One 2019
+Yıl: 2019 — Bird unveiled Bird One in May 2019 at $1,299
+Yıl kaynağı: https://venturebeat.com/mobile/birds-1299-bird-one-scooter-can-travel-30-miles-on-a-charge
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/bird-rides-bird-one.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/801708/z_bird-rides-bird-one-1.jpg
+
+Menzil (En Fazla): 40 km
+Hız (Kapasite): 29 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 9 inç
+Katlanabilme: Yok
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Dahili GPS Teknolojisi / Dijital Motor Kilidi
+Ön Fren: Rejeneratif
+Arka Fren: Kampana
+Batarya Voltajı: 36 V
+Batarya Akımı: 12.8 Ah
+Şarj Süresi: 12 saat
+Eğim: 27 %
+Tırmanma Açısı: 15 °
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IP34 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 119 cm
+Genişlik: 46 cm
+Derinlik: 110 cm
+Ağırlık: 17.5 kg
+
+Segway Ninebot KickScooter MAX G30 2019
+Yıl: 2019 — MAX G30 presented at IFA 2019 Berlin, 6-11 Sept 2019
+Yıl kaynağı: https://www.macitynet.it/segway-ninebot-max-g30/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-max-g30.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/612190/z_ninebot-kickscooter-max-g30-4.jpg
+
+Motor Gücü (En Fazla): 350 W
+Menzil (En Fazla): 65 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Li-ion Batarya / LCD Ekran
+Ön Fren: Kampana
+Arka Fren: Elektronik / Rejeneratif
+Batarya Voltajı: 36 V
+Batarya Akımı: 15.3 Ah
+Şarj Süresi: 6 saat
+Eğim: 36 %
+Tırmanma Açısı: 20 °
+Sürüş Modları: Eco / Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Reflektör / Zil/Korna
+Koruma: IPX5 Koruma
+Yükseklik (En Fazla): 120.3 cm
+Yükseklik (En Az): 53.4 cm
+Genişlik: 47.2 cm
+Derinlik: 116.7 cm
+Ağırlık: 19.1 kg
+
+Xiaomi Mi Pro 2019
+Yıl: 2019 — Announced Feb 15, 2019 in China, Europe June 2019
+Yıl kaynağı: https://www.gizchina.com/2019/02/15/xiaomi-launched-the-new-mijia-electric-scooter-pro-at-2799-yuan-413
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-mi-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/609513/z_xiaomi-mi-pro-4.jpg
+
+Motor Gücü (En Fazla): 600 W
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 45 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Akıllı Kilit Açma / Seyir Kontrolü / Sürüş İstatistiği / Bluetooth / Firmware Güncelleme
+Diğer Özellikler: Li-ion Batarya / Dijital Ekran / Akıllı Telefon ile Kontrol / Çok İşlevli Panel / KERS
+Ön Fren: Rejeneratif
+Arka Fren: Disk
+Batarya Voltajı: 29 V
+Batarya Akımı: 12.8 Ah
+Şarj Süresi: 9 saat
+Eğim: 21 %
+Tırmanma Açısı: 12 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: E-ABS / Fren Lambası / Ön Far / Reflektör / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IP54 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 118 cm
+Yükseklik (En Az): 49 cm
+Genişlik: 43 cm
+Derinlik: 113 cm
+Ağırlık: 14.2 kg
+
+Aprilia eSR1 2020
+Yıl: 2020 — Official debut Dec 2020; available from December in selected Piaggio dealers, retail from 20 Jan 2021
+Yıl kaynağı: https://visordown.com/news/new-bikes/aprilia-esr1-electric-scooter-makes-its-official-debut
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/aprilia-esr1.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/862682/z_aprilia-esr1-1.jpg
+
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 25 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Diğer Özellikler: LED Ekran
+Ön Fren: Elektronik
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 7.8 Ah
+Eğim: 40 %
+Tırmanma Açısı: 22 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Gövde Malzemesi: Magnezyum Alaşım
+Yükseklik (En Fazla): 115 cm
+Yükseklik (En Az): 49 cm
+Genişlik: 47 cm
+Derinlik: 108.5 cm
+Ağırlık: 15.6 kg
+
+Dualtron Eagle Pro 2020
+Yıl: 2020 — Released in January 2020 by MiniMotors
+Yıl kaynağı: https://scooter.guide/dualtron-eagle-pro-electric-scooter-review/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/dualtron-eagle-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/835862/z_dualtron-eagle-pro-1.jpg
+
+Motor Gücü (En Fazla): 3600 W
+Menzil (En Fazla): 80 km
+Hız (Kapasite): 75 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Diğer Özellikler: Ön ve Arka Amortisör
+Ön Fren: Elektronik / Disk
+Arka Fren: Disk
+Batarya Voltajı: 60 V
+Batarya Akımı: 22.4 Ah
+Şarj Süresi: 12.8 saat
+Eğim: 47 %
+Tırmanma Açısı: 25 °
+Güvenli Sürüş: Zil/Korna
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 120 cm
+Yükseklik (En Az): 50 cm
+Genişlik: 60 cm
+Derinlik: 118 cm
+Ağırlık: 29.5 kg
+
+Ducati Cross-E 2020
+Yıl: 2020 — Cross-E and Pro II launch 20 June and 6 July, 2020 (announced May 2020)
+Yıl kaynağı: https://www.motopinas.com/motorcycle-news/ducati-launches-folding-electric-scooters.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/ducati-cross-e.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/611578/z_ducati-cross-e-1.jpg
+
+Motor Gücü (En Fazla): 500 W
+Menzil (En Fazla): 35 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 6.5 inç
+Katlanabilme: Var
+Diğer Özellikler: LCD Ekran
+Ön Fren: Disk
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 10.4 Ah
+Şarj Süresi: 6 saat
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far
+Koruma: IPX4 Koruma
+Gövde Malzemesi: Çelik
+Yükseklik (En Fazla): 121 cm
+Yükseklik (En Az): 51 cm
+Genişlik: 47.3 cm
+Derinlik: 118 cm
+Ağırlık: 24.4 kg
+
+Gotrax G3 2020
+Yıl: 2020 — Gotrax blog announces the G3 as a new model for 2020
+Yıl kaynağı: https://gotrax.com/blogs/news/new-gotrax-g3-electric-scooter-announced
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/gotrax-g3.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/884371/z_gotrax-g3-1.jpg
+
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 30 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Diğer Özellikler: LED Ekran / Entegre Kilit
+Ön Fren: Elektronik
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 7.8 Ah
+Şarj Süresi: 5 saat
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IPX4 Koruma
+Gövde Malzemesi: Alüminyum
+Ağırlık: 14 kg
+
+Volta VT1 2020
+Yıl: 2020 — Volta VT1 sold at BIM on 29 July (2020); review dated 13 Aug 2020
+Yıl kaynağı: https://webrazzi.com/2020/08/13/uygun-fiyatli-elektrikli-scooter-volta-vt1-incelemesi
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/volta-vt1.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/608753/z_volta-vt1-2.jpg
+
+Motor Gücü (En Fazla): 550 W
+Motor Gücü (Nominal): 250 W
+Menzil (En Fazla): 20 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Dolgu
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Diğer Özellikler: Li-ion Batarya / Hız Sabitleyici / Patlamaz Lastik
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 5 Ah
+Şarj Süresi: 3 saat
+Eğim: 11 %
+Tırmanma Açısı: 6 °
+Sürüş Modları: Spor / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IP54 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 114 cm
+Yükseklik (En Az): 48 cm
+Genişlik: 42 cm
+Derinlik: 106 cm
+Ağırlık: 12.5 kg
+
+Xiaomi Mi 1S 2020
+Yıl: 2020 — 1S launched alongside Pro 2 in 2020 (China sale from 8 May 2020)
+Yıl kaynağı: https://www.mobiflip.de/shortnews/xiaomi-mi-electric-scooter-1s-pro-2-deutschland/amp/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-mi-1s.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/609312/z_xiaomi-1s-3.jpg
+
+Motor Gücü (En Fazla): 500 W
+Motor Gücü (Nominal): 250 W
+Menzil (En Fazla): 30 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Seyir Kontrolü / Sürüş İstatistiği / Bluetooth / Enerji Geri Kazanımı / Firmware Güncelleme
+Diğer Özellikler: Li-ion Batarya / Dijital Ekran / Çok İşlevli Panel / KERS / TPR Tutma Yeri
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 7.65 Ah
+Şarj Süresi: 5 saat
+Eğim: 25 %
+Tırmanma Açısı: 14 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: E-ABS / Fren Lambası / Ön Far / Reflektör
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IP54 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 114 cm
+Yükseklik (En Az): 49 cm
+Genişlik: 43 cm
+Derinlik: 108 cm
+Ağırlık: 12.5 kg
+
+Xiaomi Mi Essential 2020
+Yıl: 2020 — Pro 2, 1S and Essential added to range, reported July 16, 2020
+Yıl kaynağı: https://leclaireur.fnac.com/article/18323-mi-electric-scooter-pro-2-1s-et-essential-xiaomi-multiplie-les-trottinettes/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-mi-essential.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/608758/z_xiaomi-mi-essential-2.jpg
+
+Motor Gücü (En Fazla): 500 W
+Motor Gücü (Nominal): 250 W
+Menzil (En Fazla): 20 km
+Hız (Kapasite): 20 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Seyir Kontrolü / Sürüş İstatistiği / Bluetooth / Firmware Güncelleme
+Diğer Özellikler: Li-ion Batarya / Dijital Ekran / Akıllı Telefon ile Kontrol / Çok İşlevli Panel / KERS / Köpük Tutma Yerleri
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 5.1 Ah
+Şarj Süresi: 3.5 saat
+Eğim: 10 %
+Tırmanma Açısı: 6 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: E-ABS / Fren Lambası / Ön Far / Reflektör / Zil/Korna / El Gazı
+Koruma: IP54 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 114 cm
+Yükseklik (En Az): 49 cm
+Genişlik: 43 cm
+Derinlik: 108 cm
+Ağırlık: 12 kg
+
+Xiaomi Mi Pro 2 2020
+Yıl: 2020 — Unveiled with Mi Electric Scooter 1S at July 2020 ecosystem event
+Yıl kaynağı: https://www.notebookcheck.net/Xiaomi-unveils-two-new-electric-scooters-starting-at-EUR399-and-a-Mercedes-AMG-Petronas-F1-Team-special-edition-model.481485.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-mi-pro-2.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/608691/z_xiaomi-mi-pro-2-4.jpg
+
+Motor Gücü (En Fazla): 600 W
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 45 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Seyir Kontrolü / Sürüş İstatistiği / Bluetooth / Enerji Geri Kazanımı / Firmware Güncelleme
+Diğer Özellikler: Li-ion Batarya / Dijital Ekran / Akıllı Telefon ile Kontrol / Çok İşlevli Panel / KERS
+Ön Fren: Rejeneratif
+Arka Fren: Disk
+Batarya Voltajı: 37 V
+Batarya Akımı: 12.4 Ah
+Şarj Süresi: 9 saat
+Eğim: 20 %
+Tırmanma Açısı: 11 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: E-ABS / Fren Lambası / Ön Far / Reflektör / Zil/Korna / El Gazı
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IP54 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 118 cm
+Yükseklik (En Az): 49 cm
+Genişlik: 43 cm
+Derinlik: 113 cm
+Ağırlık: 14.2 kg
+
+Xiaomi Mijia Essential Lite 2020
+Yıl: 2020 — Xiaomi officially unveiled Mi Electric Scooter Essential Lite in 2020 alongside 1S and Pro 2
+Yıl kaynağı: https://www.svetandroida.cz/xiaomi-mi-electric-scooter-essential-lite-predstavena-co-od-ni-cekat/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-mijia-essential-lite.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/613287/z_xiaomi-mijia-essential-lite-1.jpg
+
+Motor Gücü (En Fazla): 250 W
+Menzil (En Fazla): 20 km
+Hız (Kapasite): 20 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Li-ion Batarya
+Ön Fren: Rejeneratif
+Arka Fren: Disk
+Batarya Akımı: 5.1 Ah
+Şarj Süresi: 5 saat
+Eğim: 18 %
+Tırmanma Açısı: 10 °
+Güvenli Sürüş: E-ABS / Fren Lambası / Zil/Korna
+Koruma: IP54 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 114 cm
+Yükseklik (En Az): 49 cm
+Genişlik: 43 cm
+Derinlik: 108 cm
+Ağırlık: 12 kg
+
+Aprilia eSR2 2021
+Yıl: 2021 — Piaggio Group press release 25 Aug 2021 introducing eSR2
+Yıl kaynağı: https://press.piaggiogroup.com/en_EN/post/show/218817/monopattino-aprilia-esr2.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/aprilia-esr2.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/800099/z_aprilia-esr2-1.jpg
+
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 25 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Ön Amorsitör / LED Ekran
+Arka Fren: Elektronik
+Batarya Voltajı: 36 V
+Batarya Akımı: 8 Ah
+Şarj Süresi: 5 saat
+Eğim: 42 %
+Tırmanma Açısı: 23 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IPX4 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 118 cm
+Yükseklik (En Az): 55 cm
+Genişlik: 45 cm
+Derinlik: 121 cm
+Ağırlık: 16.5 kg
+
+Ducati Pro-I Evo 2021
+Yıl: 2021 — Available in Europe from February 1, 2021
+Yıl kaynağı: https://www.ducati.com/ww/en/news/ducati-mt-distribution-pro1evo-scooter
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/ducati-pro-i-evo.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/787053/z_ducati-pro-i-evo-2.jpg
+
+Motor Gücü (En Fazla): 350 W
+Menzil (En Fazla): 30 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Diğer Özellikler: LED Ekran
+Ön Fren: Elektronik
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 7.8 Ah
+Şarj Süresi: 4 saat
+Eğim: 27 %
+Tırmanma Açısı: 15 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Ön Far
+Koruma: IP54 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 113 cm
+Yükseklik (En Az): 49 cm
+Genişlik: 51 cm
+Derinlik: 109 cm
+Ağırlık: 12 kg
+
+Gotrax G Pro 2021
+Yıl: 2021 — Article 'GOTRAX presenta el G Pro' published 14/08/2021
+Yıl kaynağı: https://www.hibridosyelectricos.com/patinetes/gotrax-g-pro-primer-patinete-electrico-ruedas_48051_102.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/gotrax-g-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/884344/z_gotrax-g-pro-1.jpg
+
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 30 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 3 Tekerlekli
+Lastik Ebatı: 8.5 inç / 10 inç
+Katlanabilme: Var
+Diğer Özellikler: Hız Sabitleyici / LED Ekran / Arka Amortisör
+Ön Fren: Elektronik / Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 10.4 Ah
+Şarj Süresi: 4 saat
+Eğim: 25 %
+Tırmanma Açısı: 14 °
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Gövde Malzemesi: Alüminyum
+Ağırlık: 23.5 kg
+
+Lamborghini AL1 2021
+Yıl: 2021 — Article dated 2021-02-23 on Lamborghini's first e-scooter AL1
+Yıl kaynağı: https://www.tecnoandroid.it/2021/02/23/lamborghini-ecco-il-suo-primo-monopattino-elettrico-877703
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/lamborghini-al1.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/955706/z_lamborghini-al1-1.jpg
+
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 30 km
+Hız (Kapasite): 25 km/s
+Tekerlek Tipi: Petekli Dolgu
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8 inç
+Katlanabilme: Var
+Diğer Özellikler: Ön Amorsitör
+Batarya Voltajı: 36 V
+Batarya Akımı: 7.8 Ah
+Şarj Süresi: 4 saat
+Eğim: 12 %
+Tırmanma Açısı: 7 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IPX5 Koruma
+Ağırlık: 13 kg
+
+Okai Neon ES20 2021
+Yıl: 2021 — OKAI announced Neon on October 26, 2021
+Yıl kaynağı: https://lanoc.org/news/hardware-news/okai-launches-the-beetle-and-neon-electric-scooters-for-the-north-american-market
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/okai-neon-es20.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/930404/z_okai-neon-es20-4.jpg
+
+Motor Gücü (En Fazla): 600 W
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 40 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Seyir Kontrolü / Sürüş İstatistiği / Bluetooth
+Diğer Özellikler: Li-ion Batarya / LCD Ekran / Akıllı Telefon ile Kontrol / Arka Amortisör / Neon Işık / NFC Kart Okuma Teknolojisi / Özelleştirilebilir Aydınlatma
+Ön Fren: Elektronik
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 9.8 Ah
+Eğim: 20 %
+Tırmanma Açısı: 11 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Reflektör / Zil/Korna
+Koruma: Yüksek Akım Koruması / Düşük Voltaj Koruması / Sıcaklık Koruması / IPX5 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 113 cm
+Yükseklik (En Az): 40 cm
+Genişlik: 45 cm
+Derinlik: 114.5 cm
+Ağırlık: 17.5 kg
+
+Segway Ninebot KickScooter F25E 2021
+Yıl: 2021 — F25E/F30E/F40E presented at Emoving Days Milan 4-5 Sept 2021
+Yıl kaynağı: https://www.tuttotech.net/news/2021/09/01/segway-ninebot-monopattini-serie-f-caratteristiche-prezzi.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-f25e.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/960194/z_segway-ninebot-kickscooter-f25e-2.jpg
+
+Motor Gücü (Nominal): 250 W
+Menzil (En Fazla): 25 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Seyir Kontrolü / Bluetooth
+Diğer Özellikler: LED Ekran / KERS
+Ön Fren: Elektronik
+Arka Fren: Disk
+Batarya Akımı: 7.65 Ah
+Şarj Süresi: 5 saat
+Eğim: 10 %
+Tırmanma Açısı: 6 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Reflektör / Zil/Korna
+Koruma: IPX5 Koruma
+Yükseklik (En Fazla): 116 cm
+Yükseklik (En Az): 49.5 cm
+Genişlik: 48 cm
+Derinlik: 114.3 cm
+Ağırlık: 15.3 kg
+
+Segway Ninebot KickScooter F40E 2021
+Yıl: 2021 — F25E/F30E/F40E presented at Emoving Days Milan 4-5 Sept 2021
+Yıl kaynağı: https://www.tuttotech.net/news/2021/09/01/segway-ninebot-monopattini-serie-f-caratteristiche-prezzi.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-f40e.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1060679/z_segway-ninebot-kickscooter-f40e-1.jpg
+
+Motor Gücü (En Fazla): 700 W
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 40 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: LED Ekran
+Ön Fren: Elektronik
+Arka Fren: Disk
+Şarj Süresi: 6.5 saat
+Eğim: 20 %
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Reflektör / Zil/Korna
+Koruma: IPX5 Koruma
+Gövde Malzemesi: Karbon Çelik
+
+Xiaomi Mi 3 2021
+Yıl: 2021 — Mi Electric Scooter 3 first announced July 26, 2021
+Yıl kaynağı: https://www.t3.com/reviews/xiaomi-mi-electric-scooter-3-review
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-mi-3.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/787058/z_xiaomi-mi-electric-scooter-3-1.jpg
+
+Motor Gücü (En Fazla): 600 W
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 30 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Seyir Kontrolü / Sürüş İstatistiği / Bluetooth / Firmware Güncelleme
+Ön Fren: Elektronik
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 7.65 Ah
+Şarj Süresi: 5.5 saat
+Eğim: 9 %
+Tırmanma Açısı: 16 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Reflektör
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IP54 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Ağırlık: 13.2 kg
+
+Xiaomi Pro 2 Mercedes AMG Petronas F1 Team Edition 2021
+Yıl: 2021 — Xiaomi unveiled the Mercedes-AMG Petronas F1 Team Edition Feb 9, 2021
+Yıl kaynağı: https://www.malaymail.com/news/drive/2021/02/09/xiaomi-unveils-mercedes-amg-petronas-f1-team-edition-of-its-mi-electric-sco/1948242
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-pro-2-mercedes-amg-petronas-f1-team-edition.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/890998/z_xiomi-pro-2-mercedes-amg-petronas-f1-team-edition-1.jpg
+
+Motor Gücü (En Fazla): 600 W
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 45 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Diğer Özellikler: Dijital Ekran
+Ön Fren: Elektronik
+Arka Fren: Disk
+Batarya Akımı: 12.4 Ah
+Şarj Süresi: 9 saat
+Eğim: 20 %
+Tırmanma Açısı: 11 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IP54 Koruma
+Yükseklik (En Fazla): 114 cm
+Yükseklik (En Az): 49 cm
+Genişlik: 43 cm
+Derinlik: 108 cm
+Ağırlık: 14.2 kg
+
+Inmotion Climber 2022
+Yıl: 2022 — INMOTION press release Aug 12, 2022 unveiled Climber
+Yıl kaynağı: https://technode.global/prnasia/inmotion-unveiled-lightning-fast-new-euc-and-the-best-waterproof-e-scooter
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/inmotion-climber.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/891903/z_inmotion-climber-1.jpg
+
+Motor Gücü (En Fazla): 900 W
+Menzil (En Fazla): 56 km
+Hız (Kapasite): 35 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 140 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Ön Fren: Elektronik
+Arka Fren: Disk
+Şarj Süresi: 9 saat
+Eğim: 36 %
+Tırmanma Açısı: 20 °
+Güvenli Sürüş: Fren Lambası / Ön Far
+Koruma: IP56 Koruma
+Yükseklik (En Fazla): 118 cm
+Genişlik: 47 cm
+Derinlik: 116 cm
+Ağırlık: 20.8 kg
+
+Navee S65 2022
+Yıl: 2022 — S65 launched on Indiegogo, June 2022 press release
+Yıl kaynağı: https://www.businesswire.com/news/home/20220919005898/en/NAVEE-TECH-Launches-the-Electric-Scooter-S65N65N40-in-the-Spanish-Market
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/navee-s65-1000-watt.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/799527/z_navee-s65-1000-watt-2.jpg
+
+Motor Gücü (En Fazla): 1000 W
+Motor Gücü (Nominal): 500 W
+Menzil (En Fazla): 65 km
+Hız (Kapasite): 32 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Seyir Kontrolü / Bluetooth / Firmware Güncelleme / Hata Uyarısı / Kalan Kilometre
+Diğer Özellikler: Hız Sabitleyici / Ön ve Arka Amortisör / LED Ekran / TPE Tutma Yeri
+Arka Fren: Disk
+Batarya Voltajı: 48 V
+Batarya Akımı: 12.5 Ah
+Eğim: 46 %
+Tırmanma Açısı: 25 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IP54 Koruma
+Yükseklik (En Fazla): 126 cm
+Genişlik: 55 cm
+Derinlik: 122 cm
+Ağırlık: 24.3 kg
+
+Pure Electric Advance Flex 2022
+Yıl: 2022 — Unveiled 5 October 2022 at launch event in Paris, alongside Advance and Advance Plus
+Yıl kaynağı: https://www.moveelectric.com/e-scooters/pure-electric-launches-two-new-machines-reinvent-e-scooter
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/pure-electric-advance-flex.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1072221/z_pure-electric-advance-flex-1.jpg
+
+Motor Gücü (En Fazla): 924 W
+Motor Gücü (Nominal): 500 W
+Menzil (En Fazla): 52 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth
+Diğer Özellikler: Hız Sabitleyici / Katlanır Gidon / KERS
+Ön Fren: Kampana
+Batarya Voltajı: 36 V
+Batarya Akımı: 9.5 Ah
+Şarj Süresi: 5.5 saat
+Eğim: 19 %
+Tırmanma Açısı: 11 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Reflektör
+Koruma: IP65 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 108 cm
+Yükseklik (En Az): 57 cm
+Genişlik: 60 cm
+Derinlik: 104 cm
+Ağırlık: 16.2 kg
+
+Segway Ninebot KickScooter D18E 2022
+Yıl: 2022 — D Series launched at Segway-Ninebot press conference, March 2, 2022
+Yıl kaynağı: https://lecafedugeek.fr/ninebot-lance-les-trottinettes-electriques-kickscooter-d18e-d28e-et-d38e/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-d18e.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/873228/z_ninebot-d18e-1.jpg
+
+Menzil (En Fazla): 18 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Batarya Akımı: 5.1 Ah
+Şarj Süresi: 3.5 saat
+Eğim: 18 %
+Tırmanma Açısı: 10 °
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IPX5 Koruma
+Ağırlık: 14.8 kg
+
+Segway Ninebot KickScooter D28E 2022
+Yıl: 2022 — D Series launched at Segway-Ninebot press conference, March 2, 2022
+Yıl kaynağı: https://lecafedugeek.fr/ninebot-lance-les-trottinettes-electriques-kickscooter-d18e-d28e-et-d38e/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-d28e.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/817962/z_ninebot-kickscooter-d28e-1.jpg
+
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 28 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Diğer Özellikler: Dijital Ekran
+Ön Fren: Elektronik
+Arka Fren: Kampana
+Şarj Süresi: 5 saat
+Sürüş Modları: Eco / Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Reflektör / Zil/Korna
+Koruma: IPX5 Koruma
+Ağırlık: 15.3 kg
+
+Segway Ninebot KickScooter D38E 2022
+Yıl: 2022 — D Series launched at Segway-Ninebot press conference, March 2, 2022
+Yıl kaynağı: https://lecafedugeek.fr/ninebot-lance-les-trottinettes-electriques-kickscooter-d18e-d28e-et-d38e/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-d38e.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/832902/z_ninebot-kickscooter-d38e-1.jpg
+
+Motor Gücü (En Fazla): 500 W
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 38 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Ön Fren: Elektronik
+Arka Fren: Kampana
+Batarya Akımı: 7.65 Ah
+Şarj Süresi: 6.5 saat
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IPX5 Koruma
+Yükseklik (En Fazla): 116 cm
+Yükseklik (En Az): 50 cm
+Genişlik: 48 cm
+Derinlik: 114 cm
+Ağırlık: 15.3 kg
+
+Segway Ninebot KickScooter GT1E 2022
+Yıl: 2022 — GT1E and GT2P unveiled at March 2022 press conference; sales from 2022
+Yıl kaynağı: https://www.hibridosyelectricos.com/patinetes/patinetes-electricos-gt-segway-tecnologia-servicio-altas-prestaciones_60644_102.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-gt1e.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/875759/z_segway-kickscooter-gt1e-2.jpg
+
+Motor Gücü (En Fazla): 1500 W
+Motor Gücü (Nominal): 500 W
+Menzil (En Fazla): 70 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 150 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 11 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Ön ve Arka Amortisör / LED Ekran
+Ön Fren: Disk
+Arka Fren: Disk
+Batarya Akımı: 20 Ah
+Şarj Süresi: 12 saat
+Eğim: 23 %
+Tırmanma Açısı: 13 °
+Sürüş Modları: Eco / Spor / Standart / Yaya Modu
+Güvenli Sürüş: Ön Far / Sinyal / Reflektör / Zil/Korna
+Koruma: IPX4 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 130 cm
+Yükseklik (En Az): 86 cm
+Genişlik: 65 cm
+Derinlik: 148 cm
+Ağırlık: 47.6 kg
+
+Segway Ninebot KickScooter GT2P 2022
+Yıl: 2022 — GT1E and GT2P unveiled at March 2022 press conference; sales from 2022
+Yıl kaynağı: https://www.hibridosyelectricos.com/patinetes/patinetes-electricos-gt-segway-tecnologia-servicio-altas-prestaciones_60644_102.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-gt2p.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/875782/z_segway-kickscooter-gt2p-1.jpg
+
+Motor Gücü (En Fazla): 6000 W
+Motor Gücü (Nominal): 3000 W
+Menzil (En Fazla): 90 km
+Hız (Kapasite): 70 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 150 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 11 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Ön ve Arka Amortisör / Dijital Ekran
+Ön Fren: Disk
+Arka Fren: Disk
+Batarya Akımı: 30 Ah
+Şarj Süresi: 16 saat
+Eğim: 30 %
+Tırmanma Açısı: 17 °
+Sürüş Modları: Eco / Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 130 cm
+Yükseklik (En Az): 86 cm
+Genişlik: 65 cm
+Derinlik: 148 cm
+Ağırlık: 52.6 kg
+
+Xiaomi 3 Lite 2022
+Yıl: 2022 — Mijia Electric Scooter 3 Lite (Youth Edition) launched in China March 2022
+Yıl kaynağı: https://www.notebookcheck.net/Xiaomi-launches-the-Mijia-Electric-Scooter-3-Youth-Edition.610852.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-3-lite.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/836827/z_xiaomi-3-lite-1.jpg
+
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 20 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth / Hata Uyarısı / Tahmini Kilometre
+Diğer Özellikler: LED Ekran / KERS
+Ön Fren: Elektronik
+Arka Fren: Kampana
+Batarya Voltajı: 42 V
+Batarya Akımı: 5.3 Ah
+Şarj Süresi: 4.5 saat
+Eğim: 25 %
+Tırmanma Açısı: 14 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IPX4 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 113 cm
+Yükseklik (En Az): 48 cm
+Genişlik: 43 cm
+Derinlik: 110 cm
+Ağırlık: 13 kg
+
+Xiaomi 4 Pro 2022
+Yıl: 2022 — Presented June 2022, on sale Germany 17 Aug 2022
+Yıl kaynağı: https://insideevs.com/news/606586/xiaomi-electric-scooter4-pro-introduced/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-4-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/873219/z_xiaomi-4-pro-1.jpg
+
+Motor Gücü (En Fazla): 700 W
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 55 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: LED Ekran / Dijital Motor Kilidi / KERS
+Ön Fren: Elektronik
+Arka Fren: Disk
+Batarya Akımı: 12.4 Ah
+Şarj Süresi: 9 saat
+Eğim: 20 %
+Tırmanma Açısı: 11 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IPX4 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 124 cm
+Yükseklik (En Az): 51 cm
+Genişlik: 48 cm
+Derinlik: 119 cm
+Ağırlık: 17 kg
+
+Gotrax G5 2023
+Yıl: 2023 — Release Year 2023; Gotrax page: Best E-Scooter of 2023
+Yıl kaynağı: https://eridehero.com/products/gotrax-g5
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/gotrax-g5.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/884922/z_gotrax-g5-2.jpg
+
+Motor Gücü (Nominal): 500 W
+Menzil (En Fazla): 45 km
+Hız (Kapasite): 32 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Diğer Özellikler: Li-ion Batarya / Hız Sabitleyici / Dijital Ekran / Ön Süspansiyon
+Ön Fren: Elektronik / Disk
+Arka Fren: Disk
+Batarya Voltajı: 48 V
+Batarya Akımı: 9.6 Ah
+Şarj Süresi: 6 saat
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IP54 Koruma
+Gövde Malzemesi: Alüminyum
+Ağırlık: 19.9 kg
+
+Inmotion Air Pro 2023
+Yıl: 2023 — INMOTION press release dated May 22, 2023 unveiling Air Pro
+Yıl kaynağı: https://www.inmotionworld.com/product-release/inmotion-unveiled-air-pro-electric-scooter.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/inmotion-air-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/873292/z_inmotion-air-pro-1.jpg
+
+Motor Gücü (En Fazla): 750 W
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 48 km
+Hız (Kapasite): 35 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: LED Ekran
+Şarj Süresi: 8.5 saat
+Eğim: 20 %
+Tırmanma Açısı: 11 °
+Sürüş Modları: Eco / Spor
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IP55 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 120 cm
+Yükseklik (En Az): 52 cm
+Genişlik: 44 cm
+Derinlik: 112 cm
+Ağırlık: 17.7 kg
+
+Segway Ninebot KickScooter F2 2023
+Yıl: 2023 — PB Tech article dated 16 June 2023: new F2 series has landed
+Yıl kaynağı: https://hardwired.pbtech.co.nz/article/2347/The-new-Segway-Ninebot-KickScooter-F2-Series-E2-Plus-and-MAX-G2-has-landed
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-f2.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/875611/z_ninebot-f2-2.jpg
+
+Motor Gücü (En Fazla): 700 W
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 40 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Firmware Güncelleme / Kalan Pil
+Diğer Özellikler: Otomatik Uyku Modu / LED Ekran / Kayma Önleyici Çekiş Kontrol Sistemi
+Ön Fren: Disk
+Arka Fren: Elektronik
+Şarj Süresi: 6.5 saat
+Eğim: 18 %
+Tırmanma Açısı: 10 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Reflektör / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IPX5 Koruma / Özelleştirilebilir Şarj Limiti
+Yükseklik (En Fazla): 121 cm
+Yükseklik (En Az): 48 cm
+Genişlik: 57 cm
+Derinlik: 114 cm
+Ağırlık: 17.5 kg
+
+Segway Ninebot KickScooter F2 Plus 2023
+Yıl: 2023 — F2 series (F2, F2 Plus, F2 Pro) in Segway-Ninebot 2023 portfolio
+Yıl kaynağı: https://www.smartworld.it/news/segway-ninebot-portfolio-2023.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-f2-plus.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/873223/z_ninebot-f2-plus-2.jpg
+
+Motor Gücü (En Fazla): 800 W
+Motor Gücü (Nominal): 400 W
+Menzil (En Fazla): 55 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Firmware Güncelleme / Kalan Pil
+Diğer Özellikler: Otomatik Uyku Modu / LED Ekran / Kayma Önleyici Çekiş Kontrol Sistemi
+Ön Fren: Disk
+Arka Fren: Elektronik
+Şarj Süresi: 8 saat
+Eğim: 20 %
+Tırmanma Açısı: 11 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Reflektör / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IPX5 Koruma / Özelleştirilebilir Şarj Limiti
+Yükseklik (En Fazla): 121 cm
+Yükseklik (En Az): 48 cm
+Genişlik: 57 cm
+Derinlik: 114 cm
+Ağırlık: 17.7 kg
+
+Segway Ninebot KickScooter MAX G2 2023
+Yıl: 2023 — MAX G2 announced at Mobile World Congress 2023 (Feb 2023)
+Yıl kaynağı: https://www.xataka.com/movilidad/ninebot-kickscooter-max-g2-caracteristicas-precio-ficha-tecnica
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-max-g2.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/875694/z_ninebot-kickscooter-max-g2-1.jpg
+
+Motor Gücü (En Fazla): 900 W
+Motor Gücü (Nominal): 450 W
+Menzil (En Fazla): 70 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Firmware Güncelleme / Kalan Pil
+Diğer Özellikler: Ön ve Arka Amortisör / Otomatik Uyku Modu / LED Ekran / Hırsızlığa Karşı Uyarı Alarmı / Kayma Önleyici Çekiş Kontrol Sistemi
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Batarya Voltajı: 36 V
+Batarya Akımı: 15.3 Ah
+Şarj Süresi: 6 saat
+Eğim: 22 %
+Tırmanma Açısı: 12 °
+Sürüş Modları: Eco / Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Reflektör / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IPX5 Koruma / Özelleştirilebilir Şarj Limiti
+Yükseklik (En Fazla): 126 cm
+Yükseklik (En Az): 60 cm
+Genişlik: 57 cm
+Derinlik: 121 cm
+Ağırlık: 24.3 kg
+
+Segway Ninebot Kickscooter E2 2023
+Yıl: 2023 — Segway-Ninebot unveiled E2 and E2 Plus at MWC 2023
+Yıl kaynağı: https://www.notebookcheck.com/Segway-Ninebot-KickScooter-Max-G2-C2-E2-und-F2-E-Tretroller-vorgestellt.697594.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kickscooter-e2.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/873229/z_segway-ninebot-kickscooter-e2-1.jpg
+
+Motor Gücü (En Fazla): 300 W
+Menzil (En Fazla): 25 km
+Hız (Kapasite): 20 km/s
+Taşıma Kapasitesi: 90 kg
+Tekerlek Tipi: Dolgu
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.1 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: LED Ekran
+Ön Fren: Elektronik
+Arka Fren: Kampana
+Şarj Süresi: 7.5 saat
+Tırmanma Açısı: 25 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Reflektör / Zil/Korna
+Koruma: Aşırı Şarj Koruması / IPX4 Koruma / IPX6 Pil Koruması
+Gövde Malzemesi: Çelik
+Yükseklik (En Fazla): 114 cm
+Yükseklik (En Az): 50.4 cm
+Genişlik: 44.5 cm
+Derinlik: 107 cm
+Ağırlık: 15 kg
+
+Vsett 11 Plus 2023
+Yıl: 2023 — Freshly Charged lists model year 2023, review Jan 2024
+Yıl kaynağı: https://freshlycharged.com/products/46/vsett-11
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/vsett-11-plus.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/799840/z_vsett-11-plus-1.jpg
+
+Motor Gücü (En Fazla): 6000 W
+Menzil (En Fazla): 160 km
+Hız (Kapasite): 80 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 150 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 11 inç
+Katlanabilme: Var
+Diğer Özellikler: Ön ve Arka Amortisör / LED Ekran / NFC Kilit Sistemi
+Ön Fren: Elektronik
+Arka Fren: Disk
+Batarya Voltajı: 60 V
+Batarya Akımı: 31.2 Ah
+Şarj Süresi: 16 saat
+Tırmanma Açısı: 45 °
+Güvenli Sürüş: Ön Far / Zil/Korna
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 127 cm
+Yükseklik (En Az): 68 cm
+Genişlik: 69 cm
+Derinlik: 134 cm
+Ağırlık: 58 kg
+
+Xiaomi 4 Go 2023
+Yıl: 2023 — Officially revealed on Xiaomi global site 25 July 2023
+Yıl kaynağı: https://www.notebookcheck.net/Xiaomi-officially-unveils-new-Electric-Scooter-4-Go.736383.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-4-go.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/890990/z_xiaomi-4-go-1.jpg
+
+Motor Gücü (En Fazla): 450 W
+Motor Gücü (Nominal): 250 W
+Menzil (En Fazla): 18 km
+Hız (Kapasite): 20 km/s
+Taşıma Kapasitesi: 90 kg
+Tekerlek Tipi: Radyal İçi Boş
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.1 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Firmware Güncelleme / Kalan Kilometre / Kalan Pil
+Diğer Özellikler: LCD Ekran / KERS / TPE Tutma Yeri
+Ön Fren: Elektronik
+Arka Fren: Kampana
+Şarj Süresi: 6 saat
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Reflektör / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / IPX4 Koruma
+Gövde Malzemesi: Çelik
+Yükseklik (En Fazla): 117 cm
+Genişlik: 42 cm
+Derinlik: 108 cm
+Ağırlık: 13.7 kg
+
+Xiaomi 4 Lite 2023
+Yıl: 2023 — Predecessor launched in May 2023
+Yıl kaynağı: https://www.notebookcheck.net/Xiaomi-launches-new-folding-Electric-Scooter-4-Lite-2nd-Gen.831500.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-4-lite.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/890992/z_xiaomi-4-lite-1.jpg
+
+Motor Gücü (En Fazla): 600 W
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 20 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 8.5 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Sürüş İstatistiği / Hata Uyarısı / Kalan Kilometre
+Diğer Özellikler: Dijital Ekran
+Ön Fren: Elektronik
+Arka Fren: Kampana
+Şarj Süresi: 4.5 saat
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IP54 Koruma
+Gövde Malzemesi: Havacılık Sınıfı Alüminyum
+Yükseklik (En Fazla): 114 cm
+Yükseklik (En Az): 49.5 cm
+Genişlik: 44 cm
+Derinlik: 110 cm
+Ağırlık: 15.6 kg
+
+Xiaomi 4 Ultra 2023
+Yıl: 2023 — Unveiled at MWC 2023 in late Feb 2023
+Yıl kaynağı: https://insideevs.com/news/655892/xiaomi-electric-scooter-4ultra-unveiled/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-4-ultra.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/890993/z_xiaomi-4-ultra-1.jpg
+
+Motor Gücü (En Fazla): 940 W
+Motor Gücü (Nominal): 500 W
+Menzil (En Fazla): 70 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Xiaomi DuraGel
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Sürüş İstatistiği / Hata Uyarısı / Kalan Kilometre
+Diğer Özellikler: Ön ve Arka Amortisör
+Ön Fren: Elektronik
+Arka Fren: Kampana
+Şarj Süresi: 6.5 saat
+Eğim: 25 %
+Tırmanma Açısı: 14 °
+Sürüş Modları: S+ / Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IP55 Koruma
+Yükseklik (En Fazla): 126 cm
+Yükseklik (En Az): 53.5 cm
+Genişlik: 54.5 cm
+Derinlik: 120 cm
+Ağırlık: 24.5 kg
+
+Yadea ElitePrime 2023
+Yıl: 2023 — Yadea ElitePrime Indiegogo campaign launched April 2023
+Yıl kaynağı: https://www.aap.com.au/aapreleases/cision20230412ae68440
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/yadea-eliteprime.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/956445/z_yadea-eliteprime-1.jpg
+
+Motor Gücü (En Fazla): 1500 W
+Motor Gücü (Nominal): 800 W
+Menzil (En Fazla): 64 km
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Seyir Kontrolü / Bluetooth
+Diğer Özellikler: KERS
+Ön Fren: Elektronik / Kampana
+Arka Fren: Disk
+Batarya Voltajı: 46.8 V
+Batarya Akımı: 14.5 Ah
+Şarj Süresi: 8 saat
+Eğim: 30 %
+Tırmanma Açısı: 17 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: IPX5 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 134 cm
+Yükseklik (En Az): 55 cm
+Genişlik: 58 cm
+Derinlik: 124 cm
+Ağırlık: 29 kg
+
+Yadea KS6 Pro 2023
+Yıl: 2023 — Yadea launches KS6 Pro on DTC website, PR May 11, 2023
+Yıl kaynağı: https://www.webull.com/news/8656928265496576
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/yadea-ks6-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/956419/z_yadea-ks6-pro-1.jpg
+
+Motor Gücü (En Fazla): 800 W
+Motor Gücü (Nominal): 500 W
+Menzil (En Fazla): 54 km
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 110 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth
+Ön Fren: Elektronik / Kampana
+Arka Fren: Disk
+Batarya Voltajı: 36 V
+Batarya Akımı: 15.3 Ah
+Şarj Süresi: 8 saat
+Eğim: 20 %
+Tırmanma Açısı: 11 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Zil/Korna
+Koruma: IPX4 Koruma
+Yükseklik (En Fazla): 125 cm
+Yükseklik (En Az): 60.4 cm
+Genişlik: 52 cm
+Derinlik: 119 cm
+Ağırlık: 22 kg
+
+Navee S40 2024
+Yıl: 2024 — Navee timeline: S40 and S60 officially launched January 2024
+Yıl kaynağı: https://eu.naveetech.com/pages/milestone
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/navee-s40.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1032636/z_navee-s40-1.jpg
+
+Motor Gücü (En Fazla): 700 W
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 40 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Apple Find My / Enerji Geri Kazanımı / Saldırı Kayıtları
+Diğer Özellikler: Arka Süspansiyon / KERS / Otomatik Far
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Batarya Voltajı: 36 V
+Batarya Akımı: 7.65 Ah
+Şarj Süresi: 6 saat
+Eğim: 18 %
+Tırmanma Açısı: 10 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / Aşırı Akım Koruması / Aşırı Deşarj Koruması / IPX5 Koruma
+Yükseklik (En Fazla): 128 cm
+Yükseklik (En Az): 56 cm
+Genişlik: 61 cm
+Derinlik: 119.5 cm
+Ağırlık: 22.2 kg
+
+Navee S60 2024
+Yıl: 2024 — Navee timeline: S40 and S60 officially launched January 2024
+Yıl kaynağı: https://eu.naveetech.com/pages/milestone
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/navee-s60.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1016920/z_navee-s60-1.jpg
+
+Motor Gücü (En Fazla): 1000 W
+Motor Gücü (Nominal): 500 W
+Menzil (En Fazla): 60 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Apple Find My
+Diğer Özellikler: LED Ekran / KERS / Otomatik Far / Ön ve Arka Süspansiyon
+Ön Fren: Kampana
+Arka Fren: Elektronik / Kampana
+Batarya Voltajı: 48 V
+Batarya Akımı: 10.2 Ah
+Şarj Süresi: 8 saat
+Eğim: 24 %
+Tırmanma Açısı: 10 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / Aşırı Akım Koruması / Aşırı Deşarj Koruması / IPX5 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 128 cm
+Yükseklik (En Az): 56 cm
+Genişlik: 61 cm
+Derinlik: 119.5 cm
+Ağırlık: 24.6 kg
+
+Segway Ninebot Kid eKickScooter C2 Lite 2024
+Yıl: 2024 — Press release 16 Oct 2024: Segway-Ninebot rolls out new C2 Lite
+Yıl kaynağı: https://www.aap.com.au/aapreleases/cision20241016ae32286
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ninebot-kid-ekickscooter-c2-lite.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1017435/z_segway-ninebot-kid-ekickscooter-c2-lite-1.jpg
+
+Motor Gücü (Nominal): 130 W
+Hız (Kapasite): 16 km/s
+Taşıma Kapasitesi: 50 kg
+Tekerlek Tipi: Dolgu
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 7 inç
+Arka Fren: Tambur
+Şarj Süresi: 5.5 saat
+Eğim: 5 %
+Sürüş Modları: Güç Destekli Mod / Spor / Standart
+Güvenli Sürüş: Reflektör / RGB Aydınlatma
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / Aşırı Akım Koruması / Aşırı Deşarj Koruması / IPX4 Koruma
+Yükseklik (En Fazla): 95 cm
+Genişlik: 40 cm
+Derinlik: 85.6 cm
+Ağırlık: 7.8 kg
+
+Segway eKickScooter ZT3 Pro 2024
+Yıl: 2024 — Press release Sept 5, 2024 introducing ZT3 Pro
+Yıl kaynağı: https://www.segway.com/explore/news/list-press-release/2024/9/segway-introduces-zt3-pro-all-terrain-electric-scooter.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ekickscooter-zt3-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1010614/z_segway-ekickscooter-zt3-pro-1.jpg
+
+Motor Gücü (En Fazla): 1600 W
+Menzil (En Fazla): 70 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 11 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Apple Find My
+Diğer Özellikler: Denge Güçlendirme Sistemi / Kayma Önleyici Çekiş Kontrol Sistemi / Ön Çift Teleskopik Süspansiyon
+Ön Fren: Disk
+Arka Fren: Disk
+Batarya Voltajı: 46.8 V
+Şarj Süresi: 4 saat
+Eğim: 25 %
+Tırmanma Açısı: 14 °
+Güvenli Sürüş: Fren Lambası / Sinyal / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Kısa Devre Koruması / IPX5 Koruma
+Yükseklik (En Fazla): 134 cm
+Yükseklik (En Az): 64.5 cm
+Genişlik: 63.8 cm
+Derinlik: 124.5 cm
+Ağırlık: 29.5 kg
+
+Xiaomi 4 Lite 2nd Gen 2024
+Yıl: 2024 — Unveiled March 2024; German launch 13 May 2024
+Yıl kaynağı: https://www.notebookcheck.net/Xiaomi-launches-new-folding-Electric-Scooter-4-Lite-2nd-Gen.831500.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-4-lite-2nd-gen.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/956649/z_xiaomi-4-lite-2nd-gen-2.jpg
+
+Motor Gücü (En Fazla): 390 W
+Motor Gücü (Nominal): 300 W
+Menzil (En Fazla): 25 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Enerji Geri Kazanımı / Kalan Kilometre / Kalan Pil
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Batarya Voltajı: 25.2 V
+Batarya Akımı: 9.6 Ah
+Şarj Süresi: 8 saat
+Eğim: 15 %
+Tırmanma Açısı: 9 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: E-ABS / Fren Lambası / Ön Far / Reflektör / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / Aşırı Akım Koruması / IPX4 Koruma
+Gövde Malzemesi: Karbon Çelik
+Yükseklik (En Fazla): 121.9 cm
+Yükseklik (En Az): 53 cm
+Genişlik: 44 cm
+Derinlik: 114 cm
+Ağırlık: 16.2 kg
+
+Xiaomi 4 Pro 2nd Gen 2024
+Yıl: 2024 — Listed on Xiaomi global site March 2024; Europe sale May 2024
+Yıl kaynağı: https://www.notebookcheck.net/Xiaomi-reveals-new-powerful-Electric-Scooter-4-Pro-2nd-Gen.811381.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-4-pro-2nd-gen.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/939216/z_xiaomi-4-pro-2nd-gen-3.jpg
+
+Motor Gücü (En Fazla): 1000 W
+Motor Gücü (Nominal): 400 W
+Menzil (En Fazla): 60 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: LED Ekran / KERS
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Batarya Voltajı: 48 V
+Batarya Akımı: 10 Ah
+Şarj Süresi: 9 saat
+Eğim: 22 %
+Tırmanma Açısı: 12 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Yüksek Akım Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IPX4 Koruma
+Gövde Malzemesi: Karbon Çelik
+Yükseklik (En Fazla): 121 cm
+Yükseklik (En Az): 50.6 cm
+Genişlik: 57 cm
+Derinlik: 115 cm
+Ağırlık: 19 kg
+
+Yadea Artist 2024
+Yıl: 2024 — Yadea launched Artist on April 15, 2024 (CES 2024 debut)
+Yıl kaynağı: https://electrek.co/2024/04/15/yadea-artist-launched-as-impressive-499-full-suspension-electric-scooter/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/yadea-artist.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/962890/z_yadea-artist-1.jpg
+
+Motor Gücü (En Fazla): 600 W
+Motor Gücü (Nominal): 350 W
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 110 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 9 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Akıllı Kilit Açma / Seyir Kontrolü / Sürüş İstatistiği
+Diğer Özellikler: Ön ve Arka Amortisör
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Batarya Akımı: 7.65 Ah
+Şarj Süresi: 5.5 saat
+Eğim: 25 %
+Tırmanma Açısı: 14 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IPX5 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 121 cm
+Yükseklik (En Az): 53 cm
+Genişlik: 57.5 cm
+Derinlik: 118 cm
+Ağırlık: 18.6 kg
+
+Yadea EliteMax 2024
+Yıl: 2024 — Yadea launched EliteMax April 15, 2024 (CES 2024 debut)
+Yıl kaynağı: https://technode.global/prnasia/yadea-unveils-the-latest-e-kickscooters-yadea-artist-and-yadea-elitemax
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/yadea-elitemax.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/962863/z_yadea-elitemax-1.jpg
+
+Motor Gücü (En Fazla): 1000 W
+Motor Gücü (Nominal): 500 W
+Menzil (En Fazla): 55 km
+Hız (Kapasite): 32 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Seyir Kontrolü / Bluetooth
+Diğer Özellikler: Hız Sabitleyici / LED Ekran / KERS / Ön ve Arka Süspansiyon
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Batarya Akımı: 10 Ah
+Şarj Süresi: 8 saat
+Eğim: 25 %
+Tırmanma Açısı: 14 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / IPX5 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 128 cm
+Yükseklik (En Az): 59.5 cm
+Genişlik: 63.8 cm
+Derinlik: 119.5 cm
+Ağırlık: 23.4 kg
+
+Kingsong N12 Pro 2025
+Yıl: 2025 — Kingsong official press release (Dec 1, 2025) unveiling N12 Pro
+Yıl kaynağı: https://kingsong.com/blogs/kingsong-blogs/kingsong-unveils-next-generation-eucs-and-scooters
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/kingsong-n12-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/893993/z_kingsong-n12-pro-1.jpg
+
+Motor Gücü (En Fazla): 1400 W
+Motor Gücü (Nominal): 1000 W
+Menzil (En Fazla): 80 km
+Hız (Kapasite): 50 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Petekli Dolgu / Şişme (Pnömatik)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Diğer Özellikler: Ön ve Arka Amortisör / LCD Ekran / Dijital Ekran
+Ön Fren: Kampana
+Arka Fren: Elektronik / Disk
+Batarya Voltajı: 67.2 V
+Batarya Akımı: 14.5 Ah
+Şarj Süresi: 8 saat
+Eğim: 47 %
+Tırmanma Açısı: 25 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / RGB Aydınlatma
+Yükseklik (En Fazla): 127 cm
+Yükseklik (En Az): 61 cm
+Genişlik: 64.5 cm
+Derinlik: 129.5 cm
+Ağırlık: 29.3 kg
+
+Navee GT3 2025
+Yıl: 2025 — NAVEE Unveils ST3 and GT3 Series, press release March 17, 2025
+Yıl kaynağı: https://www.globenewswire.com/news-release/2025/03/17/3043386/0/en/NAVEE-Unveils-ST3-and-GT3-Series-Elevating-Urban-Mobility-with-Cutting-Edge-Performance.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/navee-gt3.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1011471/z_navee-gt3-2.jpg
+
+Motor Gücü (En Fazla): 700 W
+Motor Gücü (Nominal): 350 W
+Menzil (En Fazla): 50 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 110 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Apple Find My
+Diğer Özellikler: Arka Süspansiyon / HD Ekran / Kayma Önleyici Çekiş Kontrol Sistemi / KERS / Otomatik Far / Ön Süspansiyon
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Batarya Voltajı: 48 V
+Batarya Akımı: 7.65 Ah
+Şarj Süresi: 8 saat
+Eğim: 18 %
+Tırmanma Açısı: 10 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: IPX5 Koruma
+Yükseklik (En Fazla): 126 cm
+Yükseklik (En Az): 54 cm
+Genişlik: 59 cm
+Derinlik: 119 cm
+Ağırlık: 23 kg
+
+Navee GT3 Pro 2025
+Yıl: 2025 — NAVEE launches ST3 Pro and GT3 Pro at CES 2025
+Yıl kaynağı: https://naveetech.us/blogs/news/navee-launches-st3-pro-and-gt3-pro-at-ces-2025-receives-ul-and-tuv-rheinland-certifications
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/navee-gt3-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1016928/z_navee-gt3-pro-1.jpg
+
+Motor Gücü (En Fazla): 1000 W
+Motor Gücü (Nominal): 400 W
+Menzil (En Fazla): 60 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Apple Find My
+Diğer Özellikler: HD Ekran / KERS / Otomatik Far / TCS Sistemi
+Ön Fren: Tambur
+Arka Fren: Elektronik
+Batarya Voltajı: 48 V
+Batarya Akımı: 10.2 Ah
+Şarj Süresi: 8 saat
+Eğim: 22 %
+Tırmanma Açısı: 12 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: IPX5 Koruma
+Gövde Malzemesi: Alüminyum
+Yükseklik (En Fazla): 126 cm
+Yükseklik (En Az): 54 cm
+Genişlik: 59 cm
+Derinlik: 118 cm
+Ağırlık: 22 kg
+
+Navee ST3 2025
+Yıl: 2025 — NAVEE Unveils ST3 and GT3 Series, press release March 17, 2025
+Yıl kaynağı: https://www.globenewswire.com/news-release/2025/03/17/3043386/0/en/NAVEE-Unveils-ST3-and-GT3-Series-Elevating-Urban-Mobility-with-Cutting-Edge-Performance.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/navee-st3.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1011485/z_navee-st3-1.jpg
+
+Motor Gücü (En Fazla): 1000 W
+Motor Gücü (Nominal): 500 W
+Menzil (En Fazla): 60 km
+Hız (Kapasite): 40 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth / Apple Find My
+Diğer Özellikler: LED Ekran
+Ön Fren: Tambur
+Arka Fren: Elektronik / Disk
+Batarya Voltajı: 48 V
+Batarya Akımı: 10.2 Ah
+Şarj Süresi: 8 saat
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: IPX5 Koruma
+Yükseklik (En Fazla): 130 cm
+Yükseklik (En Az): 60 cm
+Genişlik: 120 cm
+Ağırlık: 24.8 kg
+
+Navee ST3 Pro 2025
+Yıl: 2025 — NAVEE launches ST3 Pro and GT3 Pro at CES 2025
+Yıl kaynağı: https://naveetech.us/blogs/news/navee-launches-st3-pro-and-gt3-pro-at-ces-2025-receives-ul-and-tuv-rheinland-certifications
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/navee-st3-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1016912/z_navee-st3-pro-1.jpg
+
+Motor Gücü (En Fazla): 1350 W
+Motor Gücü (Nominal): 600 W
+Menzil (En Fazla): 75 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Apple Find My
+Diğer Özellikler: Ön ve Arka Amortisör / LED Ekran / KERS / Otomatik Far / Özelleştirilebilir Aydınlatma / Sönümleme Kolu Sistemi / TCS Sistemi
+Ön Fren: Kampana
+Arka Fren: Elektronik / Disk
+Batarya Voltajı: 48 V
+Batarya Akımı: 12.7 Ah
+Şarj Süresi: 10 saat
+Eğim: 28 %
+Tırmanma Açısı: 16 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Reflektör / Zil/Korna
+Koruma: IPX5 Koruma
+Gövde Malzemesi: Çelik
+Yükseklik (En Fazla): 130 cm
+Yükseklik (En Az): 59.6 cm
+Genişlik: 60 cm
+Derinlik: 120 cm
+Ağırlık: 25.3 kg
+
+Segway KickScooter F3 2025
+Yıl: 2025 — Segway press release March 7, 2025 unveiling F3 Pro and F3
+Yıl kaynağı: https://www.aap.com.au/aapreleases/cision20250307ae35130/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-kickscooter-f3.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1014427/z_segway-kickscooter-f3-1.jpg
+
+Motor Gücü (En Fazla): 1000 W
+Motor Gücü (Nominal): 450 W
+Menzil (En Fazla): 70 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Apple Find My
+Diğer Özellikler: Denge Güçlendirme Sistemi / Gelen Arama Bildirimi / Hidrolik Süspansiyonlar / Navigasyon / Opsiyonel İkinci Pil / Otomatik Far / Şarj Süresi Takibi / TCS Sistemi / TFT Ekran
+Ön Fren: Disk
+Arka Fren: Elektronik
+Batarya Voltajı: 46.8 V
+Şarj Süresi: 8 saat
+Eğim: 20 %
+Tırmanma Açısı: 11 °
+Sürüş Modları: Eco / Spor
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / Aşırı Akım Koruması / IPX6 Koruma
+Gövde Malzemesi: Magnezyum Alaşım
+Yükseklik (En Fazla): 126 cm
+Yükseklik (En Az): 61 cm
+Genişlik: 59 cm
+Derinlik: 115 cm
+Ağırlık: 18.6 kg
+
+Segway KickScooter F3 Pro 2025
+Yıl: 2025 — Segway press release March 7, 2025 unveiling F3 Pro and F3
+Yıl kaynağı: https://www.aap.com.au/aapreleases/cision20250307ae35130/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-kickscooter-f3-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1014217/z_segway-kickscooter-f3-pro-1.jpg
+
+Motor Gücü (En Fazla): 1200 W
+Motor Gücü (Nominal): 550 W
+Menzil (En Fazla): 70 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Apple Find My / Kalan Pil
+Diğer Özellikler: Denge Güçlendirme Sistemi / Hidrolik Süspansiyonlar / Opsiyonel İkinci Pil / Özelleştirilebilir Şarj Sınırı / Şarj Süresi Takibi / TCS Sistemi / TFT Ekran
+Ön Fren: Disk
+Arka Fren: Disk
+Batarya Voltajı: 46.8 V
+Şarj Süresi: 8 saat
+Eğim: 24 %
+Tırmanma Açısı: 13.5 °
+Sürüş Modları: Eco / Spor
+Güvenli Sürüş: Fren Lambası / Sinyal / Reflektör / Zil/Korna / Otomatik Far
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Kısa Devre Koruması / Aşırı Akım Koruması / Aşırı Deşarj Koruması / IPX6 Koruma / IPX7 Pil Koruması / Özelleştirilebilir Şarj Limiti
+Gövde Malzemesi: Magnezyum Alaşım
+Yükseklik (En Fazla): 126 cm
+Yükseklik (En Az): 61 cm
+Genişlik: 59 cm
+Derinlik: 115 cm
+Ağırlık: 19.3 kg
+
+Segway SuperScooter GT3 2025
+Yıl: 2025 — GT3 unveiled 7 March 2025 in Sydney
+Yıl kaynağı: https://www.aap.com.au/aapreleases/cision20250307ae35130/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-superscooter-gt3.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1010310/z_segway-superscooter-gt3-1.jpg
+
+Motor Gücü (En Fazla): 2400 W
+Menzil (En Fazla): 95 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 150 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 11 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Apple Find My / Firmware Güncelleme
+Diğer Özellikler: Denge Güçlendirme Sistemi / Gelen Arama Bildirimi / Gerçek Zamanlı Sürüş Verisi / Hızlı Şarj / Hidrolik Arka Salıncak Amortisörü / Hidrolik Ön Çift Amortisörler / Kayma Önleyici Çekiş Kontrol Sistemi / Navigasyon / Opsiyonel İkinci Pil / TFT Ekran
+Ön Fren: Disk
+Arka Fren: Disk
+Batarya Voltajı: 46.8 V
+Şarj Süresi: 5.5 saat
+Eğim: 30 %
+Tırmanma Açısı: 17 °
+Güvenli Sürüş: Fren Lambası / Sinyal / Zil/Korna / Uzak/Yakın Ön Far
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / Aşırı Akım Koruması / Aşırı Deşarj Koruması / IPX6 Koruma / IPX7 Pil Koruması / Özelleştirilebilir Şarj Limiti
+Yükseklik (En Fazla): 138.8 cm
+Yükseklik (En Az): 70.5 cm
+Genişlik: 66.6 cm
+Derinlik: 136 cm
+Ağırlık: 39.5 kg
+
+Segway SuperScooter GT3 Pro 2025
+Yıl: 2025 — GT3 Pro shown CES 2025, launched Aug 2025
+Yıl kaynağı: https://electrek.co/2025/08/06/segway-just-launched-a-50-mph-electric-scooter-and-its-an-absolute-beast/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-superscooter-gt3-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1014228/z_segway-superscooter-gt3-pro-1.jpg
+
+Motor Gücü (En Fazla): 7000 W
+Menzil (En Fazla): 138 km
+Hız (Kapasite): 80 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 150 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 11 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Uzaktan Kilitleme / Bluetooth / Apple Find My
+Diğer Özellikler: Denge Güçlendirme Sistemi / Gelen Arama Bildirimi / Gerçek Zamanlı Sürüş Verisi / Hızlı Şarj / Hidrolik Arka Salıncak Amortisörü / Hidrolik Süspansiyonlar / Navigasyon / TCS Sistemi / TFT Ekran
+Ön Fren: Disk / Hidrolik
+Arka Fren: Disk
+Batarya Voltajı: 72 V
+Şarj Süresi: 7.5 saat
+Eğim: 38 %
+Tırmanma Açısı: 21 °
+Sürüş Modları: Eco / Spor / Yarış Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / Aşırı Akım Koruması / Aşırı Deşarj Koruması / IPX6 Koruma / IPX7 Pil Koruması / Özelleştirilebilir Şarj Limiti
+Gövde Malzemesi: Çelik
+Yükseklik (En Fazla): 137 cm
+Yükseklik (En Az): 70 cm
+Genişlik: 66 cm
+Derinlik: 136 cm
+Ağırlık: 53 kg
+
+Segway eKickScooter Ninebot E3 2025
+Yıl: 2025 — E3 and E3 Pro unveiled at CES 2025 (Jan 2025)
+Yıl kaynağı: https://newmobility.news/en/2025/01/23/segway-ninebot-launches-seven-new-ekickscooters/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ekickscooter-ninebot-e3.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1058070/z_segway-ekickscooter-ninebot-e3-1.jpg
+
+Motor Gücü (En Fazla): 800 W
+Menzil (En Fazla): 45 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Sürüş İstatistiği / Bluetooth / Apple Find My / Firmware Güncelleme
+Diğer Özellikler: LCD Ekran / Kayma Önleyici Çekiş Kontrol Sistemi / Ön ve Arka Süspansiyon / Stabilite Artırma Sistemi / TCS Sistemi
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Şarj Süresi: 5.5 saat
+Eğim: 18 %
+Tırmanma Açısı: 10 °
+Sürüş Modları: Eco / Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Reflektör / Zil/Korna
+Koruma: IPX5 Koruma / IPX7 Pil Koruması
+Gövde Malzemesi: Magnezyum Alaşım
+Yükseklik (En Fazla): 123.5 cm
+Yükseklik (En Az): 44.5 cm
+Genişlik: 56.4 cm
+Derinlik: 116.5 cm
+Ağırlık: 17.5 kg
+
+Segway eKickScooter Ninebot E3 Pro 2025
+Yıl: 2025 — E3 and E3 Pro unveiled at CES 2025 (Jan 2025)
+Yıl kaynağı: https://newmobility.news/en/2025/01/23/segway-ninebot-launches-seven-new-ekickscooters/
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/segway-ekickscooter-ninebot-e3-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1058082/z_segway-ekickscooter-ninebot-e3-pro-4.jpg
+
+Motor Gücü (En Fazla): 800 W
+Menzil (En Fazla): 55 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 100 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Sürüş İstatistiği / Bluetooth / Apple Find My / Firmware Güncelleme
+Diğer Özellikler: LCD Ekran / Kayma Önleyici Çekiş Kontrol Sistemi / Ön ve Arka Süspansiyon / Stabilite Artırma Sistemi / TCS Sistemi
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Şarj Süresi: 7 saat
+Eğim: 18 %
+Tırmanma Açısı: 10 °
+Sürüş Modları: Eco / Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Reflektör / Zil/Korna
+Koruma: IPX5 Koruma / IPX7 Pil Koruması
+Gövde Malzemesi: Magnezyum Alaşım
+Yükseklik (En Fazla): 123.5 cm
+Yükseklik (En Az): 44.5 cm
+Genişlik: 56.4 cm
+Derinlik: 116.5 cm
+Ağırlık: 17.9 kg
+
+Xiaomi 5 Max 2025
+Yıl: 2025 — Unveiled at MWC 2025, March 2025
+Yıl kaynağı: https://www.notebookcheck.net/Xiaomi-Electric-Scooter-5-Max-Xiaomi-s-new-e-scooter-launches-with-1000-W-motor-and-60-km-range.970578.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-5-max.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1009905/z_xiaomi-5-max-1.jpg
+
+Motor Gücü (En Fazla): 1000 W
+Motor Gücü (Nominal): 400 W
+Menzil (En Fazla): 60 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Arka Süspansiyon / KERS / Önde Çift Hidrolik Yay / 3 Saatte Hızlı Şarj
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Şarj Süresi: 9 saat
+Eğim: 22 %
+Tırmanma Açısı: 12 °
+Sürüş Modları: Spor / Standart / Yaya Modu
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Reflektör / Zil/Korna / Çekiş Kontrol Sistemi
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / Aşırı Akım Koruması / Aşırı Deşarj Koruması / IPX5 Koruma / İletişim Desteği
+Gövde Malzemesi: Karbon Çelik
+Yükseklik (En Fazla): 127 cm
+Yükseklik (En Az): 58 cm
+Genişlik: 56.5 cm
+Derinlik: 119.4 cm
+Ağırlık: 22.3 kg
+
+Xiaomi 5 Pro 2025
+Yıl: 2025 — Officially announced on Xiaomi global site, early 2025
+Yıl kaynağı: https://www.notebookcheck.net/Xiaomi-Electric-Scooter-5-Pro-Powerful-new-model-officially-announced.948285.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/xiaomi-5-pro.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1053712/z_xiaomi-5-pro-1.jpg
+
+Motor Gücü (En Fazla): 1000 W
+Motor Gücü (Nominal): 400 W
+Menzil (En Fazla): 60 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 120 kg
+Tekerlek Tipi: Şişme (Tubeless)
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Bluetooth
+Diğer Özellikler: Dijital Ekran / Kayma Önleyici Çekiş Kontrol Sistemi / KERS / Ön ve Arka Süspansiyon
+Ön Fren: Kampana
+Arka Fren: Elektronik
+Şarj Süresi: 9 saat
+Eğim: 22 %
+Tırmanma Açısı: 12.4 °
+Sürüş Modları: Eco / Spor / Standart
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Reflektör / Zil/Korna
+Koruma: Aşırı Şarj Koruması / Düşük Voltaj Koruması / Deşarj Koruması / Kısa Devre Koruması / Sıcaklık Koruması / Aşırı Akım Koruması / IPX5 Koruma
+Gövde Malzemesi: Karbon Çelik
+Yükseklik (En Fazla): 127 cm
+Yükseklik (En Az): 58.4 cm
+Genişlik: 56.5 cm
+Derinlik: 119 cm
+Ağırlık: 22.4 kg
+
+Navee UT5 Max 2026
+Yıl: 2026 — Navee unveils UT5 Max, UT5 Ultra X at CES 2026
+Yıl kaynağı: https://www.notebookcheck.net/Navee-unveils-UT5-Max-UT5-Ultra-X-and-NT5-Ultra-X-e-scooters-at-CES-2026.1196611.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/navee-ut5-max.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1070056/z_navee-ut5-max-1.jpg
+
+Motor Gücü (En Fazla): 2400 W
+Motor Gücü (Nominal): 700 W
+Menzil (En Fazla): 100 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 150 kg
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 12 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Akıllı Kilit Açma / Bluetooth / Apple Find My
+Diğer Özellikler: LED Ekran / Ayarlanabilir Süspansiyon / Çift Hidrolik Süspansiyon / Hızlı Şarj / Metal Güvenlik Halkası / TCS Sistemi
+Ön Fren: Elektronik / Disk
+Arka Fren: Disk
+Batarya Voltajı: 46.8 V
+Şarj Süresi: 7 saat
+Eğim: 39 %
+Tırmanma Açısı: 21 °
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal
+Koruma: IPX6 Koruma
+Gövde Malzemesi: Çelik
+Yükseklik (En Fazla): 136 cm
+Yükseklik (En Az): 64 cm
+Genişlik: 62 cm
+Derinlik: 125 cm
+Ağırlık: 34 kg
+
+Navee UT5 Ultra X 2026
+Yıl: 2026 — Navee unveils UT5 Max, UT5 Ultra X at CES 2026
+Yıl kaynağı: https://www.notebookcheck.net/Navee-unveils-UT5-Max-UT5-Ultra-X-and-NT5-Ultra-X-e-scooters-at-CES-2026.1196611.0.html
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/navee-ut5-ultra-x.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1070059/z_navee-ut5-ultra-x-1.jpg
+
+Motor Gücü (En Fazla): 4800 W
+Motor Gücü (Nominal): 1000 W
+Menzil (En Fazla): 120 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 150 kg
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 12 inç
+Katlanabilme: Var
+Mobil Uygulama Özellikleri: Akıllı Kilit Açma / Bluetooth / Apple Find My
+Diğer Özellikler: LED Ekran / Çift Motor / Metal Güvenlik Halkası / TCS Sistemi / 3 Saatte Hızlı Şarj
+Ön Fren: Elektronik / Disk
+Arka Fren: Disk
+Batarya Voltajı: 57.6 V
+Şarj Süresi: 6 saat
+Eğim: 46 %
+Tırmanma Açısı: 25 °
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal
+Koruma: IPX6 Koruma
+Yükseklik (En Fazla): 139 cm
+Yükseklik (En Az): 64.5 cm
+Genişlik: 62 cm
+Derinlik: 125 cm
+Ağırlık: 41 kg
+
+Onvo OV-012 X Plus 2026 2026
+Yıl: 2026 — Ürün adında model yılı yazıyor
+Yıl kaynağı: Epey ürün adı
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/onvo-ov-012-x-plus-2026.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/861005/z_onvo-ov-012-x-plus-2026-2.jpg
+
+Motor Gücü (En Fazla): 1600 W
+Menzil (En Fazla): 55 km
+Hız (Kapasite): 50 km/s
+Hız (Yasal Sınır): 25 km/s
+Taşıma Kapasitesi: 150 kg
+Tekerlek Tipi: Jel Dolgu
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Diğer Özellikler: Ön ve Arka Amortisör / LED Ekran / Anahtar ile Çalışma / Çanta / Çift Motor / Kumanda
+Ön Fren: Disk
+Arka Fren: Disk
+Batarya Voltajı: 49.4 V
+Batarya Akımı: 15.6 Ah
+Tırmanma Açısı: 30 °
+Sürüş Modları: Çift Motor / Eco / Spor / Tek Motor
+Güvenli Sürüş: Ön Far / Sinyal / Zil/Korna
+Koruma: IPX4 Koruma
+Yükseklik (En Fazla): 132 cm
+Yükseklik (En Az): 44 cm
+Genişlik: 60 cm
+Derinlik: 125 cm
+Ağırlık: 27.8 kg
+
+Onvo RX-04 2026 2026
+Yıl: 2026 — Ürün adında model yılı yazıyor
+Yıl kaynağı: Epey ürün adı
+Türkiye kaynağı (Epey, Türkiye ürün ve fiyat kataloğu): https://www.epey.com/elektrikli-scooter/onvo-rx-04-2026.html
+Fotoğraf (Epey ürün görseli): https://resim.epey.com/1069068/z_onvo-rx-04-2026-4.jpg
+
+Motor Gücü (En Fazla): 2400 W
+Menzil (En Fazla): 60 km
+Hız (Kapasite): 25 km/s
+Taşıma Kapasitesi: 150 kg
+Tekerlek Tipi: Jel Dolgu
+Tekerlek Sayısı: 2 Tekerlekli
+Lastik Ebatı: 10 inç
+Katlanabilme: Var
+Diğer Özellikler: Ön ve Arka Amortisör / LCD Ekran / Çanta
+Ön Fren: Hidrolik
+Batarya Voltajı: 52 V
+Batarya Akımı: 21 Ah
+Şarj Süresi: 8 saat
+Tırmanma Açısı: 30 °
+Güvenli Sürüş: Fren Lambası / Ön Far / Sinyal / Zil/Korna
+Koruma: IPX4 Koruma
+Gövde Malzemesi: Alüminyum
