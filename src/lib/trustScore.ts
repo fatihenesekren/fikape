@@ -1,9 +1,7 @@
 // Yorumcu güven çarpanı — TrustLevel + Garaj tutarlılığına göre 0.7x-1.2x
 // arasında bir çarpan üretir, bu çarpan trustScore (0-100) alanına eşlenir.
-// Kapsam kararı: şu an sadece Review.trustScore'u besliyor (ScoreSnapshot'a
-// yazılıyor, admin'de görülebilir) — ürün sayfasındaki gösterilen ortalama
-// puan (agg._avg.scoreOverall) hâlâ düz aritmetik ortalama, ağırlıklı
-// ortalamaya geçiş ayrı bir karar turu.
+// Review.trustScore'u besler; sitede gösterilen araç puanı bu skoru ağırlık olarak kullanır ve az yorumda
+// sönümlenir (bkz. urunPuani.ts).
 
 export const TRUST_MULTIPLIER_MIN = 0.7;
 export const TRUST_MULTIPLIER_MAX = 1.2;

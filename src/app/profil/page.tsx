@@ -1,3 +1,4 @@
+import { urunPuanlari } from "@/lib/urunPuani";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -81,12 +82,7 @@ export default async function ProfilPage() {
   const favoriteProductIds = favorites.map((f) => f.productId);
   const [favoriteScoreAggs, favoriteWikiUrls] = await Promise.all([
     favoriteProductIds.length
-      ? prisma.review.groupBy({
-          by: ["productId"],
-          where: { status: "PUBLISHED", productId: { in: favoriteProductIds } },
-          _avg: { scoreOverall: true },
-          _count: { id: true },
-        })
+      ? urunPuanlari(favoriteProductIds)
       : Promise.resolve([]),
     getVehicleImageUrls(
       favorites.filter((f) => !f.product.imageUrl).map((f) => f.product.slug)

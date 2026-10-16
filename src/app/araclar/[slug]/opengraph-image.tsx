@@ -1,3 +1,4 @@
+import { tekUrunPuani } from "@/lib/urunPuani";
 import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/prisma";
 import { stripModelGenRange } from "@/lib/modelDisplay";
@@ -81,16 +82,7 @@ export default async function Image({
     );
   }
 
-  const agg = await prisma.review.aggregate({
-    where: { productId: product.id, status: "PUBLISHED" },
-    _avg: {
-      scoreFiyat: true,
-      scoreKalite: true,
-      scorePerformans: true,
-      scoreOverall: true,
-    },
-    _count: { id: true },
-  });
+  const agg = await tekUrunPuani(product.id);
 
   const hasScores = agg._count.id > 0;
   const fi = agg._avg.scoreFiyat ?? 0;

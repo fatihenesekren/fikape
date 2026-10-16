@@ -1,3 +1,4 @@
+import { urunPuanlari } from "@/lib/urunPuani";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { formatCompareVehicleName } from "@/lib/compare/formatCompareVehicleName";
@@ -113,19 +114,8 @@ export const getMostReviewedByCategory = unstable_cache(
 
 export const getTopRatedProducts = unstable_cache(
   async () => {
-    const topAgg = await prisma.review.groupBy({
-      by: ["productId"],
-      where: { status: "PUBLISHED" },
-      _avg: {
-        scoreOverall: true,
-        scoreFiyat: true,
-        scoreKalite: true,
-        scorePerformans: true,
-      },
-      _count: { id: true },
-      orderBy: { _avg: { scoreOverall: "desc" } },
-      take: 12,
-    });
+    // Sönümlü + güven ağırlıklı puana göre sıralanır (az yorumlu araç tek bir uç puanla zirveye çıkamaz).
+    const topAgg = (await urunPuanlari()).sort((x, y) => y._avg.scoreOverall - x._avg.scoreOverall).slice(0, 12);
 
     if (!topAgg.length) return [];
 

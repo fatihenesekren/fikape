@@ -1,3 +1,4 @@
+import { urunPuanlari } from "@/lib/urunPuani";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -58,17 +59,7 @@ async function SearchResults({ query, kaynak }: { query: string; kaynak: "cip" |
   // Puan ortalamaları
   const productIds = products.map((p) => p.id);
   const scoreAggs = productIds.length
-    ? await prisma.review.groupBy({
-        by: ["productId"],
-        where: { status: "PUBLISHED", productId: { in: productIds } },
-        _avg: {
-          scoreFiyat: true,
-          scoreKalite: true,
-          scorePerformans: true,
-          scoreOverall: true,
-        },
-        _count: { id: true },
-      })
+    ? await urunPuanlari(productIds)
     : [];
 
   const scoreMap = new Map(

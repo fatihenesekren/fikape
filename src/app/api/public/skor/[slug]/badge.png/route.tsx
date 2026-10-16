@@ -1,3 +1,4 @@
+import { tekUrunPuani } from "@/lib/urunPuani";
 import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/prisma";
 import { rateLimitByIp } from "@/lib/rateLimit";
@@ -24,11 +25,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
   });
 
   const agg = product
-    ? await prisma.review.aggregate({
-        where: { productId: product.id, status: "PUBLISHED" },
-        _avg: { scoreOverall: true },
-        _count: { id: true },
-      })
+    ? await tekUrunPuani(product.id)
     : null;
 
   const reviewCount = agg?._count.id ?? 0;
