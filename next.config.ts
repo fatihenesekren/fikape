@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
 import { ownBlobHost } from "./src/lib/blobUrl";
+import { cspOlustur } from "./src/lib/csp";
 
 // TSB katalog geçişi (2026-09): model adlarından nesil etiketi ("(2016-)",
 // "W213", "Golf 6") ve slug'a sızmış beygir sayıları kaldırıldı. Yayındaki
@@ -47,34 +48,17 @@ const KATALOG_SLUG_DEGISIKLIKLERI: [string, string][] = [
 ];
 
 // ─── İçerik Güvenlik Politikası (CSP) ───────────────────────────────────────
-// Aşama 1 (ZORLANIR): script dışındaki her şey allowlist'te — enjekte edilmiş kodun dışarı veri sızdırması, uzak script
-// yüklemesi, yabancı iframe/form kullanması engellenir. script-src bilerek 'unsafe-inline' içerir (Next.js hidratasyon
-// satır içi scriptleri; nonce her sayfayı dinamik yapar ve Vercel CPU kotasını zorlar) — sıkılaştırma ayrı bir karar.
-// 'unsafe-eval' yalnız geliştirmede (React hata ayıklama) açık, üretimde YOK.
-// Aşama 2 (YALNIZ RAPOR): zorlanan politikaya ek olarak satır içi olay işleyicileri (onclick="…") yasaklanmış hâli
-// denenir; ihlal gelmezse zorlanır. Raporlar /api/csp-report ile [csp-report] satırı olarak günlüğe düşer.
-const CSP_URETIM = process.env.NODE_ENV === "production";
-const CSP_ONIZLEME = process.env.VERCEL_ENV === "preview"; // Vercel önizleme araç çubuğu (yalnız preview dağıtımlarında)
+// Zorlanan politika burada (script-src 'unsafe-inline'); nonce'lu sıkı aday politika proxy.ts'te sayfa başına üretilir ve şimdilik
+// YALNIZ RAPOR olarak gönderilir (Content-Security-Policy-Report-Only). Ayrıntı: src/lib/csp.ts. İhlaller /api/csp-report ile
+// [csp-report] satırı olarak günlüğe düşer; temizse zorlamaya geçilir.
 // Blob mağaza hostu (BLOB_STORE_HOST veya BLOB_READ_WRITE_TOKEN'dan); başkasının mağazasından görsel/bağlantı yüklenmesin diye
 // joker yerine tam host. Bilinmiyorsa (yerel geliştirme, env yok) eski joker.
 const BLOB_HOST = ownBlobHost() ?? "*.public.blob.vercel-storage.com";
-const CSP_TEMEL = [
-  "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${CSP_URETIM ? "" : " 'unsafe-eval'"}${CSP_ONIZLEME ? " https://vercel.live" : ""}`,
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  `img-src 'self' data: blob: https://upload.wikimedia.org https://thumb.wikimedia.org https://commons.wikimedia.org https://${BLOB_HOST} https://api.dicebear.com`,
-  "font-src 'self' data: https://fonts.gstatic.com",
-  `connect-src 'self' https://${BLOB_HOST} https://vercel.com https://*.sentry.io https://*.ingest.sentry.io${CSP_ONIZLEME ? " https://vercel.live wss://ws-us3.pusher.com" : ""}`,
-  // Usta profilindeki OpenStreetMap haritası iframe ile geliyor (usta/[slug]/page.tsx).
-  `frame-src https://www.openstreetmap.org${CSP_ONIZLEME ? " https://vercel.live" : ""}`,
-  "frame-ancestors 'self'",
-  "object-src 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "report-uri /api/csp-report",
-];
-const CSP_ZORLANAN = CSP_TEMEL.join("; ");
-const CSP_ADAY_RAPOR = [...CSP_TEMEL, "script-src-attr 'none'"].join("; ");
+const CSP_ZORLANAN = cspOlustur({
+  uretim: process.env.NODE_ENV === "production",
+  onizleme: process.env.VERCEL_ENV === "preview", // Vercel önizleme araç çubuğu (yalnız preview dağıtımlarında)
+  blobHost: BLOB_HOST,
+});
 
 const nextConfig: NextConfig = {
   images: {
@@ -129,9 +113,8 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
-          // CSP: zorlanan politika (Aşama 1) + yalnız raporlanan bir sonraki adım (Aşama 2). Ayrıntı: yukarıda CSP_* sabitleri.
+          // CSP: zorlanan politika; nonce'lu rapor-only aday sayfa isteklerinde proxy.ts'ten eklenir.
           { key: "Content-Security-Policy", value: CSP_ZORLANAN },
-          { key: "Content-Security-Policy-Report-Only", value: CSP_ADAY_RAPOR },
           // Sesli arama/giriş için mikrofon yalnız kendi sitemizde; kamera, konum ve ödeme API'si kapalı.
           { key: "Permissions-Policy", value: "camera=(), microphone=(self), geolocation=(), payment=(), usb=()" },
         ],

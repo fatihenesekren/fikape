@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { SessionProvider } from "@/components/SessionProvider";
 import { AuthNav } from "@/components/AuthNav";
 import { VerificationBanner } from "@/components/VerificationBanner";
@@ -40,6 +41,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
+  const nonce = (await headers()).get("x-nonce") ?? undefined; // proxy.ts üretir (nonce'lu CSP)
   let unverifiedEmail: string | null = null;
 
   if (session?.user?.id) {
@@ -55,7 +57,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="tr" className={`${geist.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: WELCOME_ONYUKLEME }} />
+        <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: WELCOME_ONYUKLEME }} />
       </head>
       {/* overflow-x-hidden: sayfanın herhangi bir yerinde (örn. /karsilastir'in
           geniş tablosu, kendi overflow-x-auto'su içinde düzgün tutulsa bile)
