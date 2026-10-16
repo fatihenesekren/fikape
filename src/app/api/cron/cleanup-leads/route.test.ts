@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const prismaMock = vi.hoisted(() => ({
-  insuranceLead: { deleteMany: vi.fn() },
-  saleLead: { deleteMany: vi.fn() },
+  insuranceLead: { deleteMany: vi.fn(), findMany: vi.fn(), update: vi.fn() },
+  saleLead: { deleteMany: vi.fn(), findMany: vi.fn(), update: vi.fn() },
   dataDeletionRequest: { findMany: vi.fn() },
   consentLog: { deleteMany: vi.fn() },
   plusWaitlistEntry: { deleteMany: vi.fn() },
@@ -71,5 +71,34 @@ describe("cleanup-leads: bekleme listesi ve kaldırma talebi saklama süresi", (
     expect(talep.where.appealStatus).toEqual({ not: "PENDING" });
     expect(talep.where.status.in).not.toContain("UNDER_REVIEW");
     expect(talep.data).toMatchObject({ claimantOrg: null, claimantPhone: null, claimantUserId: null });
+  });
+});
+
+describe("cleanup-leads: eski düz telefonların şifrelenmesi", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    for (const m of [prismaMock.insuranceLead, prismaMock.saleLead]) m.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.plusWaitlistEntry.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.searchQueryLog.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.expertNoteTakedownRequest.updateMany.mockResolvedValue({ count: 0 });
+    prismaMock.dataDeletionRequest.findMany.mockResolvedValue([]);
+    process.env.PHONE_SHARE_KEY = "test-key";
+  });
+
+  it("LEAD_PHONE_ENCRYPTION=1 iken düz telefonlar l1: önekiyle güncellenir", async () => {
+    process.env.LEAD_PHONE_ENCRYPTION = "1";
+    prismaMock.insuranceLead.findMany.mockResolvedValue([{ id: 1, phone: "05067995520" }]);
+    prismaMock.saleLead.findMany.mockResolvedValue([]);
+    const body = await (await GET(new Request("http://x"))).json();
+    expect(body.encryptedLeadPhones).toBe(1);
+    expect(prismaMock.insuranceLead.update.mock.calls[0][0].data.phone).toMatch(/^l1:/);
+    delete process.env.LEAD_PHONE_ENCRYPTION;
+  });
+
+  it("şifreleme kapalıyken hiçbir kayıt değiştirilmez", async () => {
+    delete process.env.LEAD_PHONE_ENCRYPTION;
+    const body = await (await GET(new Request("http://x"))).json();
+    expect(body.encryptedLeadPhones).toBe(0);
+    expect(prismaMock.insuranceLead.findMany).not.toHaveBeenCalled();
   });
 });

@@ -2,6 +2,7 @@ import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { cronHatasiBildir } from "@/lib/sistemUyarisi";
+import { leadTelefonuSifrele } from "@/lib/leadPhoneCrypto";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -57,8 +58,26 @@ export async function GET(req: Request) {
       data: { claimantName: ANONIM, claimantOrg: null, claimantEmail: ANONIM, claimantPhone: null, claimantUserId: null },
     });
 
+    // Şifreleme açıkken, öncesinden kalan düz metin telefonları günlük partilerle şifrele (idempotent; "l1:" önekliler atlanır).
+    let sifrelenenLead = 0;
+    if (process.env.LEAD_PHONE_ENCRYPTION === "1") {
+      const duz = { NOT: { phone: { startsWith: "l1:" } } };
+      const [sigorta, satis] = await Promise.all([
+        prisma.insuranceLead.findMany({ where: duz, select: { id: true, phone: true }, take: 200 }),
+        prisma.saleLead.findMany({ where: duz, select: { id: true, phone: true }, take: 200 }),
+      ]);
+      for (const l of sigorta) {
+        await prisma.insuranceLead.update({ where: { id: l.id }, data: { phone: leadTelefonuSifrele(l.phone) } });
+      }
+      for (const l of satis) {
+        await prisma.saleLead.update({ where: { id: l.id }, data: { phone: leadTelefonuSifrele(l.phone) } });
+      }
+      sifrelenenLead = sigorta.length + satis.length;
+    }
+
     return NextResponse.json({
       ok: true,
+      encryptedLeadPhones: sifrelenenLead,
       deletedWaitlistEntries: bekleme.count,
       deletedSearchLogs: aramaLogu.count,
       anonymizedTakedownRequests: takedown.count,
