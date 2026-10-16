@@ -45,7 +45,7 @@ describe("reviewCreateSchema", () => {
 });
 
 describe("registerSchema", () => {
-  const validPassword = "Sifre1234!";
+  const validPassword = "Zeytin#Bahce47";
 
   const bothConsents = { kvkkConsent: true as const, termsConsent: true as const };
 

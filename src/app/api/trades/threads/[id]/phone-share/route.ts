@@ -5,7 +5,7 @@ import { pozitifTamsayiId } from "@/lib/validateId";
 import { createNotification } from "@/lib/notification";
 import { isPhoneShareEnabled, isTradeMessagingEnabled } from "@/lib/features";
 import { kullaniciLimiti } from "@/lib/userRateLimit";
-import { encryptPhone, normalizeTrMobile, phoneHash } from "@/lib/phoneShareCrypto";
+import { encryptPhone, normalizeTrMobile, phoneHash, phoneHashAdaylari } from "@/lib/phoneShareCrypto";
 import {
   DAILY_SHARE_LIMIT,
   MAX_USERS_PER_PHONE,
@@ -96,7 +96,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       where: { userId, consentType: "TRADE_PHONE_SHARE", isGranted: true, createdAt: { gte: since } },
     }),
     prisma.threadPhoneShare.findMany({
-      where: { phoneHash: phoneHash(phone.e164), userId: { not: userId } },
+      where: { phoneHash: { in: phoneHashAdaylari(phone.e164) }, userId: { not: userId } },
       select: { userId: true },
       distinct: ["userId"],
     }),

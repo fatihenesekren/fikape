@@ -50,3 +50,22 @@ describe("phoneHash", () => {
     expect(phoneHash("+905321234567")).not.toBe(phoneHash("+905321234568"));
   });
 });
+
+describe("phoneHash anahtar ayrımı", () => {
+  it("PHONE_SHARE_KEY varken özet AUTH_SECRET'tan farklıdır ve eski kayıtlar da aday listesinde aranır", async () => {
+    const m = await import("./phoneShareCrypto");
+    const eskiAuth = process.env.AUTH_SECRET;
+    const eskiKey = process.env.PHONE_SHARE_KEY;
+    process.env.AUTH_SECRET = "auth-secret-auth-secret-auth-secret";
+    delete process.env.PHONE_SHARE_KEY;
+    const eski = m.phoneHash("+905321234567");
+    expect(m.phoneHashAdaylari("+905321234567")).toEqual([eski]);
+    process.env.PHONE_SHARE_KEY = "phone-key-phone-key-phone-key-12345";
+    const yeni = m.phoneHash("+905321234567");
+    expect(yeni).not.toBe(eski);
+    expect(yeni).toHaveLength(64);
+    expect(m.phoneHashAdaylari("+905321234567")).toEqual([yeni, eski]);
+    if (eskiAuth === undefined) delete process.env.AUTH_SECRET; else process.env.AUTH_SECRET = eskiAuth;
+    if (eskiKey === undefined) delete process.env.PHONE_SHARE_KEY; else process.env.PHONE_SHARE_KEY = eskiKey;
+  });
+});
