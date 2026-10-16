@@ -48,16 +48,28 @@ export async function POST(req: Request) {
   });
 
   try {
-    const saved = await prisma.savedSearch.create({
-      data: {
-        userId, city, categoryId, brandId,
-        paymentIntent: paymentIntent ?? null,
-        yearMin: yearMin ?? null, yearMax: yearMax ?? null,
-        kmMin: kmMin ?? null, kmMax: kmMax ?? null,
-        fuelTypes, transmissions,
-        criteriaKey,
-      },
+    // Yarış koruması: sayım ile create atomik değildi; paralel istekler 20 sınırını aşabilirdi. Kullanıcı başına advisory kilit
+    // (anahtar 1) altında sınır yeniden denetlenir.
+    const saved = await prisma.$transaction(async (tx) => {
+      await tx.$executeRaw`SELECT pg_advisory_xact_lock(${userId}::int, 1)`;
+      if ((await tx.savedSearch.count({ where: { userId } })) >= MAX_KAYITLI_ARAMA) return null;
+      return tx.savedSearch.create({
+        data: {
+          userId, city, categoryId, brandId,
+          paymentIntent: paymentIntent ?? null,
+          yearMin: yearMin ?? null, yearMax: yearMax ?? null,
+          kmMin: kmMin ?? null, kmMax: kmMax ?? null,
+          fuelTypes, transmissions,
+          criteriaKey,
+        },
+      });
     });
+    if (!saved) {
+      return NextResponse.json(
+        { error: `En fazla ${MAX_KAYITLI_ARAMA} kayıtlı aramanız olabilir; birini silip tekrar deneyiniz.` },
+        { status: 409 },
+      );
+    }
     return NextResponse.json({ ok: true, id: saved.id }, { status: 201 });
   } catch (e) {
     // Önceden HER hata "zaten kayıtlı" diyordu (veritabanı kesintisi dahil). Yalnız benzersizlik çakışması 409.
