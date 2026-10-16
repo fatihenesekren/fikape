@@ -51,7 +51,7 @@ export const config = {
     "/api/:path*",
     // Sayfa istekleri: statik dosyalar/görseller ve Next prefetch istekleri hariç (prefetch'te nonce gereksiz).
     {
-      source: "/((?!api|_next/static|_next/image|favicon.ico|.*\\\\..*).*)",
+      source: "/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)",
       missing: [
         { type: "header", key: "next-router-prefetch" },
         { type: "header", key: "purpose", value: "prefetch" },

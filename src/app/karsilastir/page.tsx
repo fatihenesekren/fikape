@@ -16,7 +16,8 @@ export default async function CompareEntryPage({
 }: {
   searchParams: Promise<{ urunler?: string }>;
 }) {
-  const { urunler } = await searchParams;
+  const { urunler: urunlerHam } = await searchParams;
+  const urunler = Array.isArray(urunlerHam) ? urunlerHam[0] : urunlerHam; // ?urunler=a&urunler=b dizi gelebilir
 
   // Eski `?urunler=slug1,slug2` query-string şeması artık SEO/paylaşım için daha
   // güçlü olan path-based `/karsilastir/slug1-vs-slug2`'ye kalıcı (308) yönlendiriliyor

@@ -1,7 +1,7 @@
 // Sentry'ye giden olaylardan kişisel/gizli veriyi ayıklar: sıfırlama/doğrulama token'ı taşıyan URL sorguları, kimlik başlıkları,
 // çerezler, istek gövdesi ve kullanıcı e-postası/IP'si. sendDefaultPii kapalıdır; bu ek bir güvenlik ağıdır.
 
-const GIZLI_BASLIKLAR = ["authorization", "cookie", "set-cookie", "x-forwarded-for", "x-real-ip", "x-vercel-forwarded-for"];
+const GIZLI_BASLIKLAR = ["authorization", "cookie", "set-cookie", "x-forwarded-for", "x-real-ip", "x-vercel-forwarded-for", "referer"];
 const GIZLI_SORGU = /([?&](?:token|code|key|secret|password|email)=)[^&#]*/gi;
 
 export function urlTemizle(url: string | undefined): string | undefined {
@@ -31,7 +31,9 @@ export function sentryOlayTemizle<T>(girdi: T): T {
     delete olay.user.username;
   }
   for (const b of olay.breadcrumbs ?? []) {
-    if (b.data && typeof b.data.url === "string") b.data.url = urlTemizle(b.data.url);
+    if (!b.data) continue;
+    // Tarayıcı gezinti breadcrumb'ları from/to, fetch/xhr url kullanır.
+    for (const k of ["url", "from", "to"]) if (typeof b.data[k] === "string") b.data[k] = urlTemizle(b.data[k] as string);
   }
   return girdi;
 }

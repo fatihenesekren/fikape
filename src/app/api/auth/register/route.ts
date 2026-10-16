@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { createVerificationToken } from "@/lib/emailToken";
 import { sendVerificationEmail, sendAccountExistsEmail } from "@/lib/email";
 import { arkaPlandaCalistir } from "@/lib/arkaPlan";
-import { rateLimitByIp } from "@/lib/rateLimit";
+import { rateLimitByIp, rateLimitByEmail } from "@/lib/rateLimit";
 import { hashRequestContext } from "@/lib/security";
 import { registerSchema, formatZodError } from "@/lib/schemas";
 import { logAccess } from "@/lib/accessLog";
@@ -30,7 +30,10 @@ export async function POST(req: Request) {
     // E-posta numaralandırmayı önlemek için kayıtlı e-postaya da başarılı kayıtla AYNI yanıt döner (201); hesabın gerçek sahibine
     // "zaten hesabınız var" e-postası gider. Yeni kayıt yolundaki bcrypt maliyeti kadar bekleyerek yanıt süresi de eşitlenir.
     await bcrypt.hash(password, 12);
-    arkaPlandaCalistir(() => sendAccountExistsEmail(email));
+    // Aynı adrese "hesabın var" e-postası yağdırılamasın (dağıtık IP ile e-posta bombalama): adres başına saatte 2; gövde aynı kalır.
+    if (await rateLimitByEmail(email, "register-exists", 2, 60 * 60 * 1000)) {
+      arkaPlandaCalistir(() => sendAccountExistsEmail(email));
+    }
     return NextResponse.json({ ok: true }, { status: 201 });
   }
 
@@ -69,15 +72,18 @@ export async function POST(req: Request) {
   }
 
   // E-posta doğrulama linki gönder (hata olsa da kayıt başarılı sayılır)
-  try {
-    const token = createVerificationToken(user.id);
-    await sendVerificationEmail(email, token);
-  } catch (err) {
-    console.error("Verification email failed:", err);
-  }
+  // Yanıt süresi, kayıtlı e-posta yolundakiyle (bcrypt + arka plan e-postası) aynı kalsın diye gönderim ve günlük arka planda.
+  arkaPlandaCalistir(async () => {
+    try {
+      const token = createVerificationToken(user.id);
+      await sendVerificationEmail(email, token);
+    } catch (err) {
+      console.error("Verification email failed:", err);
+    }
+  });
 
   // 5651 trafik logu — kayıt işlemi (bkz. lib/accessLog.ts)
-  await logAccess(req, { action: "REGISTER", userId: user.id });
+  arkaPlandaCalistir(() => logAccess(req, { action: "REGISTER", userId: user.id }));
 
   return NextResponse.json({ ok: true }, { status: 201 });
 }

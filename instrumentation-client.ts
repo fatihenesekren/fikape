@@ -6,6 +6,7 @@ Sentry.init({
   tracesSampleRate: 0.1,
   sendDefaultPii: false,
   beforeSend: (olay) => sentryOlayTemizle(olay),
+  beforeSendTransaction: (olay) => sentryOlayTemizle(olay),
 });
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;

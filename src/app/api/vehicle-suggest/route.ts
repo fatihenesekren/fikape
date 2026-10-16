@@ -46,7 +46,7 @@ export async function POST(req: Request) {
   // Marka/model/donanım adı herkese açık listelere girebilir: telefon/IBAN/URL gibi içerik filtresinden geçer
   for (const ad of [brandName, modelName, trimName ?? ""]) {
     if (!ad) continue;
-    const c = checkContent(ad);
+    const c = checkContent(ad, { harfOraniAtla: true });
     if (!c.ok) {
       logContentFilterHit({ userId, surface: "VEHICLE_SUGGEST", rule: c.rule });
       return NextResponse.json({ error: c.error }, { status: 400 });
