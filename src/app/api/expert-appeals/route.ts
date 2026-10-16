@@ -79,17 +79,26 @@ export async function POST(req: Request) {
     if (existing) return NextResponse.json({ error: "Bu dönem için zaten bir itiraz var." }, { status: 409 });
   }
 
-  const appeal = await prisma.expertAppeal.create({
-    data: {
-      profileId: profile.id,
-      subjectType,
-      noteId,
-      period,
-      reason,
-      reviewDueAt: new Date(Date.now() + APPEAL_REVIEW_DUE_DAYS * 24 * 60 * 60 * 1000),
-    },
-    select: { id: true },
+  // Yarış koruması: 30 günlük limit kontrolü ile create atomik değildi; paralel istekler limiti aşabilirdi. Kullanıcı başına
+  // advisory kilit altında limit yeniden denetlenir (kilit anahtarı 2: yorum=0, kayıtlı arama=1).
+  const appeal = await prisma.$transaction(async (tx) => {
+    await tx.$executeRaw`SELECT pg_advisory_xact_lock(${userId}::int, 2)`;
+    if (!(await canFileNewAppeal(profile.id, tx))) return null;
+    return tx.expertAppeal.create({
+      data: {
+        profileId: profile.id,
+        subjectType,
+        noteId,
+        period,
+        reason,
+        reviewDueAt: new Date(Date.now() + APPEAL_REVIEW_DUE_DAYS * 24 * 60 * 60 * 1000),
+      },
+      select: { id: true },
+    });
   });
+  if (!appeal) {
+    return NextResponse.json({ error: "Son 30 günde en fazla 2 itiraz yapabilirsiniz." }, { status: 429 });
+  }
 
   notifyAdmins({
     type: "ADMIN_NEW_EXPERT_APPEAL",

@@ -20,9 +20,9 @@ export const APPEAL_REVIEW_DUE_DAYS = 14;
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-export async function canFileNewAppeal(profileId: number): Promise<boolean> {
+export async function canFileNewAppeal(profileId: number, db: Pick<typeof prisma, "expertAppeal"> = prisma): Promise<boolean> {
   const windowStart = new Date(Date.now() - APPEAL_WINDOW_DAYS * DAY_MS);
-  const count = await prisma.expertAppeal.count({
+  const count = await db.expertAppeal.count({
     where: { profileId, createdAt: { gte: windowStart } },
   });
   return count < MAX_APPEALS_PER_WINDOW;
