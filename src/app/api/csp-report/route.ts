@@ -11,8 +11,14 @@ const GORULEN_ES = 500;
 
 type Rapor = Record<string, unknown>;
 
-function yolOnlu(adres: unknown): string {
-  if (typeof adres !== "string" || !adres) return "-";
+/** Log satırı sahteciliğini önler: kontrol karakterleri (satır sonları dahil) atılır, uzunluk kırpılır. */
+function temiz(deger: unknown, max = 80): string {
+  return String(deger ?? "").replace(/[\u0000-\u001f\u007f\u2028\u2029]/g, " ").slice(0, max);
+}
+
+function yolOnlu(girdi: unknown): string {
+  if (typeof girdi !== "string" || !girdi) return "-";
+  const adres = temiz(girdi, 500);
   if (!/^[a-z][a-z0-9+.-]*:/i.test(adres)) return adres.slice(0, 80); // "inline", "eval", "data"…
   try {
     const u = new URL(adres);
@@ -42,18 +48,20 @@ function duzlestir(govde: unknown): Rapor[] {
 export async function POST(req: Request) {
   if (!(await rateLimitByIp(req, "csp-report", 60, 60 * 60 * 1000))) return new NextResponse(null, { status: 204 });
   try {
+    // Gövdeyi okumadan önce boyut sınırı (büyük gövdeyle belleği/CPU'yu meşgul etmeyi önler)
+    if (Number(req.headers.get("content-length") ?? 0) > 20_000) return new NextResponse(null, { status: 204 });
     const metin = (await req.text()).slice(0, 8000);
     for (const r of duzlestir(JSON.parse(metin))) {
       const engellenen = String(r["blocked-uri"] ?? "");
       const kaynak = String(r["source-file"] ?? "");
       if (EKLENTI.test(engellenen) || EKLENTI.test(kaynak)) continue;
-      const yonerge = String(r["effective-directive"] ?? r["violated-directive"] ?? "?").split(" ")[0];
+      const yonerge = temiz(String(r["effective-directive"] ?? r["violated-directive"] ?? "?").split(" ")[0], 40);
       const mod = r.disposition === "report" ? "rapor" : "zorla";
       const satir = `${mod} ${yonerge} → ${yolOnlu(engellenen || "inline")} @ ${yolOnlu(r["document-uri"])}`;
       if (GORULEN.has(satir)) continue;
       if (GORULEN.size >= GORULEN_ES) GORULEN.clear();
       GORULEN.add(satir);
-      console.warn("[csp-report]", satir, kaynak && !EKLENTI.test(kaynak) ? `(kaynak ${yolOnlu(kaynak)}:${String(r["line-number"] ?? "")})` : "");
+      console.warn("[csp-report]", satir, kaynak && !EKLENTI.test(kaynak) ? `(kaynak ${yolOnlu(kaynak)}:${temiz(r["line-number"], 10)})` : "");
     }
   } catch {
     /* geçersiz gövde önemsiz */

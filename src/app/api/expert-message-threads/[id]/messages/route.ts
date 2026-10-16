@@ -6,6 +6,7 @@ import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { messageReplySchema, formatZodError } from "@/lib/schemas";
 import { createNotification } from "@/lib/notification";
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 
 // Var olan thread'e yanıt — iki taraftan da (mesajı başlatan kullanıcı veya usta) gelebilir.
 export async function POST(
@@ -14,6 +15,8 @@ export async function POST(
 ) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
+  const limit = await kullaniciLimiti(session, "expert-message-reply", 60, 60 * 60 * 1000);
+  if (limit) return limit;
 
   const { id } = await params;
   const threadId = pozitifTamsayiId(id) ?? NaN;

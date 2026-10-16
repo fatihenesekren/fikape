@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import type { ConsentType } from "@/generated/prisma/client";
+import { hashRequestContext } from "@/lib/security";
 
 // Usta iletişim/bölgesel rızaları için sürüm — gerçek hukuki metin (bkz.
 // docs/usta-gorusleri-hukuki-metinler.md, avukat onayı bekliyor) yürürlüğe
@@ -24,8 +25,11 @@ export async function recordConsent(params: {
   isGranted: boolean;
   req?: Request;
 }): Promise<void> {
-  const ipAddress = params.req?.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
-  const userAgent = params.req?.headers.get("user-agent") ?? null;
+  // KVKK: ham IP/User-Agent saklanmaz (diğer rıza/değerlendirme kayıtlarıyla aynı HMAC özeti); IP için platform başlığı önceliği
+  // (x-vercel-forwarded-for) getClientIp içinde — istemci X-Forwarded-For ile sahteleyemez.
+  const ctx = params.req ? hashRequestContext(params.req) : null;
+  const ipAddress = ctx?.ipHash ?? null;
+  const userAgent = ctx?.userAgentHash ?? null;
   await prisma.consentLog.create({
     data: {
       userId: params.userId,

@@ -6,6 +6,7 @@ import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { messageCreateSchema, formatZodError } from "@/lib/schemas";
 import { createNotification } from "@/lib/notification";
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 
 // Usta'ya site-içi (maskeli) mesaj başlatma — "kullanıcı" tarafı. Bir
 // (usta, başlatan kullanıcı) çifti için TEK thread; ikinci mesaj da bu
@@ -16,6 +17,9 @@ export async function POST(
 ) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
+  // Takas mesajlarındaki saatlik sınırın eşi: mesaj ve bildirim seli / toplu spam'e karşı
+  const limit = await kullaniciLimiti(session, "expert-message", 30, 60 * 60 * 1000);
+  if (limit) return limit;
 
   const { id } = await params;
   const expertProfileId = pozitifTamsayiId(id) ?? NaN;
@@ -32,13 +36,16 @@ export async function POST(
       where: { id: expertProfileId },
       select: { id: true, userId: true, status: true, messagingEnabled: true },
     }),
-    prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true } }),
+    prisma.user.findUnique({ where: { id: userId }, select: { emailVerifiedAt: true, isBanned: true } }),
   ]);
   if (!profile || profile.status !== "ACTIVE") {
     return NextResponse.json({ error: "Usta bulunamadı." }, { status: 404 });
   }
   if (profile.userId === userId) {
     return NextResponse.json({ error: "Kendinize mesaj gönderemezsiniz." }, { status: 403 });
+  }
+  if (user?.isBanned) {
+    return NextResponse.json({ error: "Bu işlem şu an yapılamıyor." }, { status: 403 });
   }
   if (!user?.emailVerifiedAt) {
     return NextResponse.json({ error: "Mesaj göndermek için e-posta adresinizi doğrulamanız gerekiyor." }, { status: 403 });
