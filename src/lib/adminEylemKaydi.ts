@@ -7,7 +7,8 @@ export type AdminEylemi =
   | "DELETION_APPROVE" | "DELETION_REJECT"
   | "EXPERT_PROFILE_CREATE" | "EXPERT_PROFILE_DECISION" | "EXPERT_PROFILE_OVERRIDE"
   | "SUGGESTION_APPROVE" | "SUGGESTION_REJECT"
-  | "PRODUCT_IMAGE_CHANGE" | "PRODUCT_ATTRIBUTES_CHANGE" | "PHOTO_BLUR" | "REPORT_ACTION";
+  | "PRODUCT_IMAGE_CHANGE" | "PRODUCT_ATTRIBUTES_CHANGE" | "PHOTO_BLUR" | "REPORT_ACTION"
+  | "LEAD_PHONE_REVEAL";
 
 export const ADMIN_EYLEM_ETIKETI: Record<AdminEylemi, string> = {
   USER_BAN: "Kullanıcı banlandı", USER_UNBAN: "Kullanıcı banı kaldırıldı", USER_BAN_FROM_REPORT: "Kullanıcı rapor üzerinden banlandı",
@@ -17,6 +18,7 @@ export const ADMIN_EYLEM_ETIKETI: Record<AdminEylemi, string> = {
   SUGGESTION_APPROVE: "Araç önerisi onaylandı", SUGGESTION_REJECT: "Araç önerisi reddedildi",
   PRODUCT_IMAGE_CHANGE: "Araç görseli değiştirildi", PRODUCT_ATTRIBUTES_CHANGE: "Araç özellikleri değiştirildi",
   PHOTO_BLUR: "Fotoğraf bulanıklaştırıldı", REPORT_ACTION: "Rapor işlendi",
+  LEAD_PHONE_REVEAL: "Lead telefonu görüntülendi",
 };
 
 const json = (v: unknown) => (v === undefined || v === null ? undefined : (JSON.parse(JSON.stringify(v)) as Prisma.InputJsonValue));
@@ -28,7 +30,7 @@ const json = (v: unknown) => (v === undefined || v === null ? undefined : (JSON.
 export async function adminEylemiKaydet(g: {
   adminId: number;
   action: AdminEylemi;
-  entityType: "USER" | "DELETION_REQUEST" | "EXPERT_PROFILE" | "SUGGESTION" | "PRODUCT" | "PHOTO" | "REPORT";
+  entityType: "USER" | "DELETION_REQUEST" | "EXPERT_PROFILE" | "SUGGESTION" | "PRODUCT" | "PHOTO" | "REPORT" | "LEAD";
   entityId?: number | null;
   entityLabel?: string | null;
   meta?: unknown;
