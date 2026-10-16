@@ -98,3 +98,29 @@ export async function getImageOran(url: string): Promise<number | null> {
     return null;
   }
 }
+
+/** Fotoğrafın sol ve sağ kenar şeridinin dikey renk dizisi (üstten alta). Boşluk bu renklerle doldurulunca fotoğraf kenarı zemine dikişsiz karışır. */
+export type KenarRenkleri = { sol: string[]; sag: string[] };
+const KENAR_ADIM = 7;
+
+async function kenarHesapla(url: string): Promise<KenarRenkleri> {
+  const { buffer } = await guvenliGorselIndir(url, { zamanAsimiMs: 8000 });
+  const img = sharp(buffer).flatten({ background: "#ffffff" });
+  const m = await img.metadata();
+  const w = m.width ?? 0, h = m.height ?? 0;
+  if (!w || !h) throw new Error("boyut yok");
+  const serit = Math.max(2, Math.round(w * 0.03));
+  const renkler = async (left: number) => {
+    const raw = await sharp(buffer).flatten({ background: "#ffffff" }).extract({ left, top: 0, width: serit, height: h }).resize(1, KENAR_ADIM, { fit: "fill" }).removeAlpha().raw().toBuffer();
+    return Array.from({ length: KENAR_ADIM }, (_, i) => hex([raw[i * 3], raw[i * 3 + 1], raw[i * 3 + 2]] as RGB));
+  };
+  return { sol: await renkler(0), sag: await renkler(w - serit) };
+}
+
+export async function getImageKenarRenkleri(url: string): Promise<KenarRenkleri | null> {
+  try {
+    return await unstable_cache(() => kenarHesapla(url), ["image-kenar-v1", url], { revalidate: 60 * 60 * 24 * 365 })();
+  } catch {
+    return null;
+  }
+}
