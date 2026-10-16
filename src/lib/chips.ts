@@ -62,3 +62,8 @@ export function getChipsForCategory(categorySlug: string | null): Chip[] {
 export const CHIP_LABEL: Record<string, string> = Object.fromEntries(
   [...COMMON_CHIPS, ...Object.values(CATEGORY_CHIPS).flat()].map((c) => [c.key, c.label])
 );
+
+/** Artı/eksi etiket anahtarı gerçekten tanımlı bir çip mi (keyfi nesne/metin kabul edilmez)? */
+export function gecerliCipAnahtariMi(v: unknown): v is string {
+  return typeof v === "string" && Object.prototype.hasOwnProperty.call(CHIP_LABEL, v);
+}

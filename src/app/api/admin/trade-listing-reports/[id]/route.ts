@@ -29,7 +29,7 @@ export async function PATCH(
 
   const report = await prisma.tradeListingReport.findUnique({
     where: { id: reportId },
-    select: { id: true, reason: true, tradeListingId: true, tradeListing: { select: { userId: true } } },
+    select: { id: true, status: true, reason: true, tradeListingId: true, tradeListing: { select: { userId: true } } },
   });
   if (!report) return NextResponse.json({ error: "Rapor bulunamadı." }, { status: 404 });
 
@@ -49,10 +49,14 @@ export async function PATCH(
 
   if (action === "ban") {
     const bannedUserId = report.tradeListing.userId;
+    // Zaten işlenmiş rapor yeniden ban kararına dönüştürülemez; yönetici hesabı rapor yoluyla banlanamaz
+    if (report.status !== "PENDING") return NextResponse.json({ error: "Bu rapor zaten işleme alınmış." }, { status: 409 });
+    const hedef = await prisma.user.findUnique({ where: { id: bannedUserId }, select: { trustLevel: true } });
+    if (hedef && hedef.trustLevel >= 5) return NextResponse.json({ error: "Yönetici hesabı banlanamaz." }, { status: 409 });
     await prisma.$transaction([
       prisma.user.update({
         where: { id: bannedUserId },
-        data: { isBanned: true, banReason: `İlan raporu: ${report.reason}`, bannedAt: new Date() },
+        data: { isBanned: true, banReason: `İlan raporu: ${String(report.reason).slice(0, 200)}`, bannedAt: new Date() },
       }),
       prisma.tradeListing.updateMany({
         where: { userId: bannedUserId, isActive: true },

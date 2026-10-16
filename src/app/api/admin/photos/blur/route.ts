@@ -3,6 +3,7 @@ import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
+import { yuklenenGorseliDogrula } from "@/lib/yuklenenGorsel";
 
 export const runtime = "nodejs";
 
@@ -26,8 +27,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Eksik parametre." }, { status: 400 });
   }
 
+  const foto = await prisma.productPhoto.findUnique({ where: { id: photoId }, select: { id: true } });
+  if (!foto) return NextResponse.json({ error: "Fotoğraf bulunamadı." }, { status: 404 });
+
+  const dogrulanan = await yuklenenGorseliDogrula(file);
+  if (!dogrulanan.ok) return NextResponse.json({ error: dogrulanan.error }, { status: dogrulanan.status });
+
   const filename = `reviews/blurred/${Date.now()}.jpg`;
-  const blob = await put(filename, file, { access: "public" });
+  const blob = await put(filename, dogrulanan.buffer, { access: "public", contentType: "image/jpeg" });
 
   await prisma.productPhoto.update({
     where: { id: photoId },

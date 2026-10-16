@@ -1,3 +1,4 @@
+import { gecerliCipAnahtariMi } from "@/lib/chips";
 import { z } from "zod";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { SOLD_REASONS } from "@/lib/soldReasons";
@@ -20,8 +21,8 @@ export const reviewCreateSchema = z.object({
   wouldBuyAgain:  z.boolean().optional().nullable(),
   ownershipMonths: z.union([z.number(), z.string()]).optional().nullable(),
   extendedData:   z.record(z.string(), z.unknown()).optional().nullable(),
-  pros:           z.array(z.string()).max(3, "En fazla 3 artı seçebilirsiniz.").optional(),
-  cons:           z.array(z.string()).max(3, "En fazla 3 eksi seçebilirsiniz.").optional(),
+  pros:           z.array(z.string().refine(gecerliCipAnahtariMi, "Geçersiz artı seçimi.")).max(3, "En fazla 3 artı seçebilirsiniz.").optional(),
+  cons:           z.array(z.string().refine(gecerliCipAnahtariMi, "Geçersiz eksi seçimi.")).max(3, "En fazla 3 eksi seçebilirsiniz.").optional(),
   photoUrls:      z.array(z.string().url()).max(5).optional(),
 });
 

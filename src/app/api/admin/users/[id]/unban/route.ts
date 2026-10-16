@@ -22,6 +22,9 @@ export async function POST(
   const userId = pozitifTamsayiId(id);
   if (userId === null) return NextResponse.json({ error: "Geçersiz kimlik." }, { status: 400 });
 
+  const var_ = await prisma.user.findUnique({ where: { id: userId }, select: { id: true } });
+  if (!var_) return NextResponse.json({ error: "Kullanıcı bulunamadı." }, { status: 404 });
+
   await prisma.user.update({
     where: { id: userId },
     data: { isBanned: false, banReason: null, bannedAt: null },

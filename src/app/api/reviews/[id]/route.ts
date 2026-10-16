@@ -1,3 +1,4 @@
+import { gecerliCipAnahtariMi } from "@/lib/chips";
 import { temizYorumFotoUrlleri, fotoyuSinirliIndir } from "@/lib/reviewPhotos";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import { NextResponse } from "next/server";
@@ -31,8 +32,9 @@ export async function PATCH(
     extendedData, ownershipMonths, photoUrls, removePhotoIds,
   } = (await req.json().catch(() => null)) ?? {};
 
-  const prosArr: string[] = Array.isArray(pros) ? pros : [];
-  const consArr: string[] = Array.isArray(cons) ? cons : [];
+  // Yalnız tanımlı çip anahtarları (keyfi nesne/metin sayfayı çökertir ve içerik filtresini atlatır)
+  const prosArr: string[] = Array.isArray(pros) && pros.every(gecerliCipAnahtariMi) ? pros : [];
+  const consArr: string[] = Array.isArray(cons) && cons.every(gecerliCipAnahtariMi) ? cons : [];
   if (prosArr.length < 1 || prosArr.length > 3) {
     return NextResponse.json({ error: "En az 1, en fazla 3 artı seçiniz." }, { status: 400 });
   }
@@ -101,7 +103,11 @@ export async function PATCH(
     );
   }
 
-  const incomingExtended = (extendedData && typeof extendedData === "object") ? extendedData as Record<string, unknown> : {};
+  // extendedData: yalnız düz nesne, makul boyut; pros/cons/quickReview istemciden gelen değerle ezilemez
+  const incomingExtended: Record<string, unknown> =
+    extendedData && typeof extendedData === "object" && !Array.isArray(extendedData) && JSON.stringify(extendedData).length <= 4000
+      ? Object.fromEntries(Object.entries(extendedData as Record<string, unknown>).filter(([k]) => k !== "pros" && k !== "cons" && k !== "quickReview" && k !== "__proto__"))
+      : {};
   const existing = (review.extendedData as Record<string, unknown>) ?? {};
   const updatedExtended = { ...existing, ...incomingExtended, pros: prosArr, cons: consArr };
   const newVersion = review.editCount + 1;
