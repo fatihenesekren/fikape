@@ -22,8 +22,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Yetkisiz." }, { status: 403 });
   }
 
-  const { email } = await req.json().catch(() => ({})) as { email?: string };
-  const trimmedEmail = email?.trim().toLowerCase();
+  const { email } = await req.json().catch(() => ({})) as { email?: unknown };
+  const trimmedEmail = typeof email === "string" ? email.trim().toLowerCase().slice(0, 254) : "";
   if (!trimmedEmail) return NextResponse.json({ error: "E-posta zorunludur." }, { status: 400 });
 
   const user = await prisma.user.findUnique({

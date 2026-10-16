@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { generateSingleCardSummary } from "@/lib/ai/vehicleSummary";
 import { revalidateTag } from "next/cache";
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 
 export async function PATCH(
   req: Request,
@@ -57,7 +58,14 @@ export async function PATCH(
 
   // regenerate — mevcut PENDING_APPROVAL kaydı silip yeniden üretir (aynı üründe
   // tekil satır kısıtı olduğu için upsert değil, önce sil).
+  // Maliyetli (LLM çağrısı) olduğu için yönetici başına saatlik sınır.
+  const limitYaniti = await kullaniciLimiti(session, "ai-ozet-yenile", 20, 60 * 60 * 1000);
+  if (limitYaniti) return limitYaniti;
   await prisma.aiVehicleSummary.delete({ where: { id: summaryId } });
-  await generateSingleCardSummary(summary.productId);
+  try {
+    await generateSingleCardSummary(summary.productId);
+  } catch {
+    return NextResponse.json({ error: "Özet yeniden üretilemedi; eski kayıt silindi, tekrar üretmeyi deneyin." }, { status: 502 });
+  }
   return NextResponse.json({ ok: true, status: "REGENERATED" });
 }
