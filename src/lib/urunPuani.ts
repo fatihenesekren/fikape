@@ -1,12 +1,11 @@
 import { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 
-// Araç puanı = güvene göre ağırlıklı + az yorumda sönümlenmiş (Bayes) ortalama.
-//  - Ağırlık: yorumun güven skoru (Review.trustScore 0-100, bkz. trustScore.ts) → 0,7×–1,2× çarpan. Doğrulanmış/garajlı
-//    yorumcu daha çok, yeni/garajsız üye daha az sayılır.
-//  - Sönümleme: ürün, sitenin genel ortalamasına SANAL_YORUM kadar ağırlıkla çekilir. Böylece az yorumlu araçta birkaç sahte/uç
-//    puan ortalamayı uçuramaz; yorum arttıkça gerçek ortalamaya yaklaşır.
-//  - Puan her zaman gösterilir (eşik yok). _count gerçek yorum sayısıdır.
+// Gösterilen araç puanı = yorumlardaki düz ortalama (sayfada görünen yorum puanlarıyla birebir uyumlu, kullanıcıya açıklama gerektirmez).
+// SIRALAMA (ana sayfa "en yüksek puanlı" slider'ı) için ayrıca `siralamaPuani` hesaplanır: güvene göre ağırlıklı ve az yorumda
+// sitenin genel ortalamasına çekilmiş (Bayes) puan. Kullanıcı görmez; az yorumlu aracın tek bir uç/sahte puanla zirveye çıkmasını önler.
+//  - Ağırlık: yorumun güven skoru (Review.trustScore 0-100, bkz. trustScore.ts) → 0,7×–1,2×.
+//  - Sönümleme: SANAL_YORUM kadar sanal yorum, genel ortalamada.
 export const SANAL_YORUM = 3;
 const AGIRLIK_MIN = 0.7;
 const AGIRLIK_ARALIK = 0.5; // 0,7 + trustScore/100 × 0,5  →  0,7 … 1,2
@@ -16,10 +15,13 @@ export type Puanlar = Record<"scoreFiyat" | "scoreKalite" | "scorePerformans" | 
 export interface UrunPuaniSatiri {
   productId: number;
   _count: { id: number };
+  /** Gösterilen puan: düz ortalama. */
   _avg: Puanlar;
+  /** Yalnız sıralama için: güven ağırlıklı + sönümlü genel puan. */
+  siralamaPuani: number;
 }
 
-interface HamToplam { n: number; sw: number; swFiyat: number; swKalite: number; swPerformans: number; swOverall: number }
+interface HamToplam { n: number; aFiyat: number; aKalite: number; aPerformans: number; aOverall: number; sw: number; swFiyat: number; swKalite: number; swPerformans: number; swOverall: number }
 
 /** Saf hesap: ham ağırlıklı toplamlar + genel ortalama → sönümlenmiş puanlar. */
 export function puanHesapla(t: Pick<HamToplam, "sw" | "swFiyat" | "swKalite" | "swPerformans" | "swOverall">, oncel: Puanlar): Puanlar {
@@ -35,6 +37,10 @@ export function puanHesapla(t: Pick<HamToplam, "sw" | "swFiyat" | "swKalite" | "
 const AGIRLIK_SQL = Prisma.raw(`(${AGIRLIK_MIN} + COALESCE("trustScore", 35) / 100.0 * ${AGIRLIK_ARALIK})`);
 const TOPLAM_SQL = Prisma.sql`
   COUNT(*)::int AS n,
+  COALESCE(AVG("scoreFiyat"), 0)::float8 AS "aFiyat",
+  COALESCE(AVG("scoreKalite"), 0)::float8 AS "aKalite",
+  COALESCE(AVG("scorePerformans"), 0)::float8 AS "aPerformans",
+  COALESCE(AVG("scoreOverall"), 0)::float8 AS "aOverall",
   COALESCE(SUM(${AGIRLIK_SQL}), 0)::float8 AS sw,
   COALESCE(SUM(${AGIRLIK_SQL} * "scoreFiyat"), 0)::float8 AS "swFiyat",
   COALESCE(SUM(${AGIRLIK_SQL} * "scoreKalite"), 0)::float8 AS "swKalite",
@@ -62,11 +68,16 @@ export async function urunPuanlari(productIds?: number[]): Promise<UrunPuaniSati
     ),
     genelOncel(),
   ]);
-  return satirlar.map((s) => ({ productId: s.productId, _count: { id: s.n }, _avg: puanHesapla(s, oncel) }));
+  return satirlar.map((s) => ({
+    productId: s.productId,
+    _count: { id: s.n },
+    _avg: { scoreFiyat: s.aFiyat, scoreKalite: s.aKalite, scorePerformans: s.aPerformans, scoreOverall: s.aOverall },
+    siralamaPuani: puanHesapla(s, oncel).scoreOverall,
+  }));
 }
 
 /** `review.aggregate({ where:{productId, status:"PUBLISHED"}, _avg, _count })` yerine (tek ürün). */
-export async function tekUrunPuani(productId: number): Promise<{ _count: { id: number }; _avg: Puanlar }> {
+export async function tekUrunPuani(productId: number): Promise<Pick<UrunPuaniSatiri, "_count" | "_avg">> {
   const [satir] = await urunPuanlari([productId]);
   return satir ?? { _count: { id: 0 }, _avg: { scoreFiyat: 0, scoreKalite: 0, scorePerformans: 0, scoreOverall: 0 } };
 }

@@ -114,8 +114,8 @@ export const getMostReviewedByCategory = unstable_cache(
 
 export const getTopRatedProducts = unstable_cache(
   async () => {
-    // Sönümlü + güven ağırlıklı puana göre sıralanır (az yorumlu araç tek bir uç puanla zirveye çıkamaz).
-    const topAgg = (await urunPuanlari()).sort((x, y) => y._avg.scoreOverall - x._avg.scoreOverall).slice(0, 12);
+    // Sıralama sönümlü + güven ağırlıklı puanla (az yorumlu araç tek bir uç puanla zirveye çıkamaz); gösterilen puan düz ortalama.
+    const topAgg = (await urunPuanlari()).sort((x, y) => y.siralamaPuani - x.siralamaPuani).slice(0, 12);
 
     if (!topAgg.length) return [];
 
