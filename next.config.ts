@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
+import { ownBlobHost } from "./src/lib/blobUrl";
 
 // TSB katalog geçişi (2026-09): model adlarından nesil etiketi ("(2016-)",
 // "W213", "Golf 6") ve slug'a sızmış beygir sayıları kaldırıldı. Yayındaki
@@ -54,13 +55,16 @@ const KATALOG_SLUG_DEGISIKLIKLERI: [string, string][] = [
 // denenir; ihlal gelmezse zorlanır. Raporlar /api/csp-report ile [csp-report] satırı olarak günlüğe düşer.
 const CSP_URETIM = process.env.NODE_ENV === "production";
 const CSP_ONIZLEME = process.env.VERCEL_ENV === "preview"; // Vercel önizleme araç çubuğu (yalnız preview dağıtımlarında)
+// Blob mağaza hostu (BLOB_STORE_HOST veya BLOB_READ_WRITE_TOKEN'dan); başkasının mağazasından görsel/bağlantı yüklenmesin diye
+// joker yerine tam host. Bilinmiyorsa (yerel geliştirme, env yok) eski joker.
+const BLOB_HOST = ownBlobHost() ?? "*.public.blob.vercel-storage.com";
 const CSP_TEMEL = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${CSP_URETIM ? "" : " 'unsafe-eval'"}${CSP_ONIZLEME ? " https://vercel.live" : ""}`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "img-src 'self' data: blob: https://upload.wikimedia.org https://thumb.wikimedia.org https://commons.wikimedia.org https://*.public.blob.vercel-storage.com https://api.dicebear.com",
+  `img-src 'self' data: blob: https://upload.wikimedia.org https://thumb.wikimedia.org https://commons.wikimedia.org https://${BLOB_HOST} https://api.dicebear.com`,
   "font-src 'self' data: https://fonts.gstatic.com",
-  `connect-src 'self' https://*.public.blob.vercel-storage.com https://vercel.com https://*.sentry.io https://*.ingest.sentry.io${CSP_ONIZLEME ? " https://vercel.live wss://ws-us3.pusher.com" : ""}`,
+  `connect-src 'self' https://${BLOB_HOST} https://vercel.com https://*.sentry.io https://*.ingest.sentry.io${CSP_ONIZLEME ? " https://vercel.live wss://ws-us3.pusher.com" : ""}`,
   // Usta profilindeki OpenStreetMap haritası iframe ile geliyor (usta/[slug]/page.tsx).
   `frame-src https://www.openstreetmap.org${CSP_ONIZLEME ? " https://vercel.live" : ""}`,
   "frame-ancestors 'self'",
@@ -78,7 +82,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "upload.wikimedia.org" },
       { protocol: "https", hostname: "thumb.wikimedia.org" },
       { protocol: "https", hostname: "commons.wikimedia.org" },
-      { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
+      { protocol: "https", hostname: BLOB_HOST },
     ],
   },
   // Katalog verisinde motor bilgisi sızmış slug'lar temizlendi — eski URL'ler
