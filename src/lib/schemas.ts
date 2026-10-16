@@ -1,3 +1,4 @@
+import { gecerliCipAnahtariMi } from "@/lib/chips";
 import { z } from "zod";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { SOLD_REASONS } from "@/lib/soldReasons";
@@ -20,8 +21,8 @@ export const reviewCreateSchema = z.object({
   wouldBuyAgain:  z.boolean().optional().nullable(),
   ownershipMonths: z.union([z.number(), z.string()]).optional().nullable(),
   extendedData:   z.record(z.string(), z.unknown()).optional().nullable(),
-  pros:           z.array(z.string()).max(3, "En fazla 3 artı seçebilirsiniz.").optional(),
-  cons:           z.array(z.string()).max(3, "En fazla 3 eksi seçebilirsiniz.").optional(),
+  pros:           z.array(z.string().refine(gecerliCipAnahtariMi, "Geçersiz artı seçimi.")).max(3, "En fazla 3 artı seçebilirsiniz.").optional(),
+  cons:           z.array(z.string().refine(gecerliCipAnahtariMi, "Geçersiz eksi seçimi.")).max(3, "En fazla 3 eksi seçebilirsiniz.").optional(),
   photoUrls:      z.array(z.string().url()).max(5).optional(),
 });
 
@@ -61,10 +62,10 @@ export const resetPasswordSchema = z.object({
 });
 
 export const vehicleSuggestSchema = z.object({
-  brandName:    z.string().trim().min(1, "Marka ve model zorunludur."),
-  modelName:    z.string().trim().min(1, "Marka ve model zorunludur."),
+  brandName:    z.string().trim().min(1, "Marka ve model zorunludur.").max(60, "Marka adı çok uzun."),
+  modelName:    z.string().trim().min(1, "Marka ve model zorunludur.").max(80, "Model adı çok uzun."),
   year:         z.union([z.number(), z.string()]).optional().nullable(),
-  trimName:     z.string().trim().optional().nullable(),
+  trimName:     z.string().trim().max(100, "Donanım adı çok uzun.").optional().nullable(),
   fuelType:     z.enum(["GASOLINE", "DIESEL", "EV", "PHEV", "HYBRID", "LPG"], { error: "Geçersiz yakıt tipi." }).optional().nullable(),
   categorySlug: z.enum(["otomobil", "motosiklet", "e-scooter", "e-bisiklet", "karavan", "kamyonet"], { error: "Geçersiz kategori." }),
   scoreFiyat:      score,
@@ -74,7 +75,8 @@ export const vehicleSuggestSchema = z.object({
   detailText:     z.string().optional().nullable(),
   wouldBuyAgain:  z.boolean().optional().nullable(),
   ownershipMonths: z.union([z.number(), z.string()]).optional().nullable(),
-  extendedData:   z.record(z.string(), z.unknown()).optional().nullable(),
+  extendedData:   z.record(z.string(), z.unknown()).optional().nullable()
+    .refine((v) => v == null || JSON.stringify(v).length <= 4000, "Ek veri çok büyük."),
 });
 
 export const questionCreateSchema = z.object({

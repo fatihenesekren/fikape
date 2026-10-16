@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { finalizeExpiredAppeals } from "@/lib/expertAppeal";
 import { ExpertAppealActions } from "./ExpertAppealActions";
@@ -11,6 +12,7 @@ function isDueSoon(dueAt: Date): boolean {
 }
 
 export default async function ExpertAppealsPage() {
+  await adminSayfaKorumasi();
   await finalizeExpiredAppeals();
 
   const appeals = await prisma.expertAppeal.findMany({

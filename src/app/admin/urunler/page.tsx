@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { UrunlerClient } from "./UrunlerClient";
 
@@ -5,6 +6,7 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "Teknik Özellikler — Admin", robots: { index: false } };
 
 export default async function AdminUrunlerPage() {
+  await adminSayfaKorumasi();
   const products = await prisma.product.findMany({
     where: { status: "ACTIVE" },
     include: { brand: true, model: true, category: true },

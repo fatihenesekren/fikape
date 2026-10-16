@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { DeletionRequestActions } from "./DeletionRequestActions";
@@ -10,6 +11,7 @@ function daysUntil(date: Date): number {
 }
 
 export default async function DeletionRequestsPage() {
+  await adminSayfaKorumasi();
   const requests = await prisma.dataDeletionRequest.findMany({
     where: { status: "PENDING" },
     include: { user: { select: { displayName: true, email: true } } },

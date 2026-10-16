@@ -6,7 +6,7 @@ import { expertWorkplacePhotoUpdateSchema, formatZodError } from "@/lib/schemas"
 import {
   MAX_STOREFRONT_PHOTOS, MAX_INTERIOR_PHOTOS,
   isExpertWorkplacePhotoUrl, computePhashes, hasDuplicate,
-  deleteExpertWorkplacePhotoBlobs,
+  deleteExpertWorkplacePhotoBlobs, kullanimdaCalismaYeriFotoUrlleri,
 } from "@/lib/expertWorkplacePhotos";
 
 // Usta çalışma yeri fotoğrafı ekleme/kaldırma — TradeListingPhoto akışıyla
@@ -45,6 +45,10 @@ export async function PATCH(req: Request) {
 
   // ── Yeni yüklenenler — whitelist + tür bazlı sayım ──────────────────
   const validNew = newPhotos.filter((p) => isExpertWorkplacePhotoUrl(p.url));
+  // Başka bir profile bağlı fotoğraf adresi eklenemez (sahiplik devri / kurban blob'unu sildirme)
+  if ((await kullanimdaCalismaYeriFotoUrlleri(validNew.map((p) => p.url), profile.id)).size > 0) {
+    return NextResponse.json({ error: "Fotoğraflardan biri geçersiz. Lütfen fotoğrafları yeniden yükleyin." }, { status: 400 });
+  }
   const newStorefront = validNew.filter((p) => p.kind === "STOREFRONT");
   const newInterior = validNew.filter((p) => p.kind === "INTERIOR");
 

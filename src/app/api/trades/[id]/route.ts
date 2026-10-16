@@ -11,7 +11,7 @@ import { checkRateLimit } from "@/lib/rateLimit";
 import { takasUygunlukGetir, takasEngelMesaji } from "@/lib/takasUygunluk";
 import { CAR_PARTS } from "@/lib/carParts";
 import { notifyAdmins } from "@/lib/notification";
-import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate, deleteTradePhotoBlobs } from "@/lib/tradeListingPhotos";
+import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate, deleteTradePhotoBlobs, kullanimdaTradeFotoUrlleri } from "@/lib/tradeListingPhotos";
 import { scheduleMarketPriceUpdate } from "@/lib/marketPrice";
 
 // Yeniden açmada fiyat tahmini yalnız bu süreden eskiyse tekrar hesaplanır —
@@ -190,6 +190,9 @@ export async function PATCH(
     });
     if (kept + newPhotoUrls.length > MAX_TRADE_PHOTOS) {
       return NextResponse.json({ error: `En fazla ${MAX_TRADE_PHOTOS} fotoğraf ekleyebilirsiniz.` }, { status: 400 });
+    }
+    if ((await kullanimdaTradeFotoUrlleri(newPhotoUrls, listingId)).size > 0) {
+      return NextResponse.json({ error: "Fotoğraflardan biri geçersiz. Lütfen fotoğrafları yeniden yükleyin." }, { status: 400 });
     }
     newPhotoPhashes = await computePhashes(newPhotoUrls);
     if (hasDuplicate(newPhotoPhashes)) {

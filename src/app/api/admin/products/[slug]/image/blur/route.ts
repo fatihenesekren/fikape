@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
+import { yuklenenGorseliDogrula } from "@/lib/yuklenenGorsel";
 import { eskiUrunGorseliniSil } from "@/lib/urunGorselTemizlik";
 import { revalidateTag } from "next/cache";
 import { ARAC_HAVUZU_ETIKETI, GORSEL_KAYNAK_ETIKETI } from "@/lib/cacheEtiketleri";
@@ -29,12 +30,14 @@ export async function POST(
 
   const formData = await req.formData();
   const file = formData.get("file") as File | null;
-  if (!file) {
-    return NextResponse.json({ error: "Dosya gerekli." }, { status: 400 });
+  const dogrulanan = await yuklenenGorseliDogrula(file);
+  if (!dogrulanan.ok) {
+    return NextResponse.json({ error: dogrulanan.error }, { status: dogrulanan.status });
   }
 
-  const blob = await put(`product-images/${slug}-blurred-${Date.now()}.jpg`, file, {
+  const blob = await put(`product-images/${slug}-blurred-${Date.now()}.jpg`, dogrulanan.buffer, {
     access: "public",
+    contentType: "image/jpeg",
   });
 
   await prisma.product.update({

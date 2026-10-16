@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { urunPasifMi } from "@/lib/urunDurumu";
@@ -14,6 +15,7 @@ export default async function KatalogListePage({
 }: {
   searchParams: Promise<{ q?: string; durum?: string; s?: string }>;
 }) {
+  await adminSayfaKorumasi();
   const { q = "", durum = "tum", s } = await searchParams;
   const sayfa = Math.max(1, Number.parseInt(s ?? "1", 10) || 1);
   const arama = q.trim().slice(0, 80);

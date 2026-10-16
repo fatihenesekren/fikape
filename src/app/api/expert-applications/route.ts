@@ -10,7 +10,7 @@ import { isApplicationWindowOpen } from "@/lib/expertApplication";
 import { recordConsent } from "@/lib/consent";
 import {
   MAX_STOREFRONT_PHOTOS, MAX_INTERIOR_PHOTOS,
-  isExpertWorkplacePhotoUrl, computePhashes, hasDuplicate,
+  isExpertWorkplacePhotoUrl, computePhashes, hasDuplicate, kullanimdaCalismaYeriFotoUrlleri,
 } from "@/lib/expertWorkplacePhotos";
 
 // Usta başvurusu — herkese açık, admin onayı zorunlu (pilot yok — §5). Başvuru
@@ -70,6 +70,9 @@ export async function POST(req: Request) {
   }
   if (interiorCount > MAX_INTERIOR_PHOTOS) {
     return NextResponse.json({ error: `İç mekan fotoğrafı en fazla ${MAX_INTERIOR_PHOTOS} tane olabilir.` }, { status: 400 });
+  }
+  if ((await kullanimdaCalismaYeriFotoUrlleri(validNewPhotos.map((p) => p.url))).size > 0) {
+    return NextResponse.json({ error: "Fotoğraflardan biri geçersiz. Lütfen fotoğrafları yeniden yükleyin." }, { status: 400 });
   }
   let photoPhashes: (string | null)[] = [];
   if (validNewPhotos.length > 0) {

@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { notifyAdmins } from "@/lib/notification";
 import { checkContent } from "@/lib/reviewValidation";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
+import { checkRateLimit } from "@/lib/rateLimit";
 
 const VALID_TARGET_TYPES = ["SPEC", "PHOTO", "REVIEW", "QNA", "EXPERT_NOTE", "EXPERT_WORKPLACE_PHOTO", "OTHER"] as const;
 type TargetType = (typeof VALID_TARGET_TYPES)[number];
@@ -18,6 +19,14 @@ export async function POST(req: Request) {
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
   }
+
+  // Kötüye kullanım: kullanıcı başına saatlik rapor sınırı (admin kuyruğu/bildirim seli) + banlı hesap kontrolü
+  const reporterId = Number(session.user.id);
+  if (!(await checkRateLimit(`report:${reporterId}`, 20, 60 * 60 * 1000))) {
+    return NextResponse.json({ error: "Çok fazla bildirim gönderdiniz. Lütfen daha sonra tekrar deneyin." }, { status: 429 });
+  }
+  const reporter = await prisma.user.findUnique({ where: { id: reporterId }, select: { isBanned: true } });
+  if (!reporter || reporter.isBanned) return NextResponse.json({ error: "Bu işlem şu an yapılamıyor." }, { status: 403 });
 
   const { productId, targetType, field, photoId, reviewId, questionId, expertNoteId, workplacePhotoId, note } = (await req.json().catch(() => null)) ?? {};
 
@@ -43,6 +52,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Geçersiz araç." }, { status: 400 });
   }
 
+  if (!isProductless && productIdNum !== null) {
+    const urun = await prisma.product.findUnique({ where: { id: productIdNum }, select: { id: true } });
+    if (!urun) return NextResponse.json({ error: "Araç bulunamadı." }, { status: 404 });
+  }
+
   // workplacePhotoId — var olmayan/rastgele bir id gönderilirse admin panelinde
   // kırık bir referans oluşmasın diye önceden doğrulanır (5 alanlı review bulgusu).
   if (type === "EXPERT_WORKPLACE_PHOTO") {
@@ -62,7 +76,7 @@ export async function POST(req: Request) {
       productId: isProductless ? null : productIdNum,
       reporterId: Number(session.user.id),
       targetType: type,
-      field: type === "SPEC" && typeof field === "string" && field ? field : null,
+      field: type === "SPEC" && typeof field === "string" && field ? field.slice(0, 100) : null,
       photoId: type === "PHOTO" ? pozitifTamsayiId(photoId) : null,
       reviewId: type === "REVIEW" ? pozitifTamsayiId(reviewId) : null,
       questionId: type === "QNA" ? pozitifTamsayiId(questionId) : null,

@@ -1,3 +1,4 @@
+import { guvenliGorselIndir } from "@/lib/guvenliGorselIndir";
 import sharp from "sharp";
 import { unstable_cache } from "next/cache";
 
@@ -62,9 +63,9 @@ export async function siniflandirBuffer(buf: Buffer): Promise<Backdrop> {
 }
 
 async function hesapla(url: string): Promise<Backdrop> {
-  const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
-  if (!res.ok) throw new Error(`görsel indirilemedi: ${res.status}`);
-  return siniflandirBuffer(Buffer.from(await res.arrayBuffer()));
+  // Ürün görsel adresi iç ağa/metadata'ya işaret edemez; yönlendirme, tür ve boyut sınırı uygulanır.
+  const { buffer } = await guvenliGorselIndir(url, { zamanAsimiMs: 8000 });
+  return siniflandirBuffer(buffer);
 }
 
 /** Aynı görsel adresi (sürüm parametresiyle birlikte) için sonuç kalıcı önbelleklenir; hata olursa "unknown" döner (önbelleklenmez). */

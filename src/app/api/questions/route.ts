@@ -10,6 +10,8 @@ import { sendNewQuestionEmail } from "@/lib/email";
 import { createNotification } from "@/lib/notification";
 import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
 
+const MAX_ALICI_KAYNAK_BASINA = 50;
+
 export async function POST(req: Request) {
   const session = await auth();
   const limitYaniti = await kullaniciLimiti(session, "questions", 10, 60 * 60 * 1000);
@@ -54,11 +56,13 @@ export async function POST(req: Request) {
       where: { productId: product.id, status: "PUBLISHED", userId: { not: userId } },
       select: { user: { select: { id: true, email: true, displayName: true } } },
       distinct: ["userId"],
+      take: MAX_ALICI_KAYNAK_BASINA, // e-posta/bildirim seli ve gönderici itibarı için üst sınır
     }),
     prisma.userProduct.findMany({
       where: { productId: product.id, ownershipStatus: "CURRENT", userId: { not: userId } },
       select: { user: { select: { id: true, email: true, displayName: true } } },
       distinct: ["userId"],
+      take: MAX_ALICI_KAYNAK_BASINA,
     }),
   ]);
   const recipients = new Map<number, { email: string; displayName: string | null }>();

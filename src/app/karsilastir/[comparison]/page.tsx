@@ -15,13 +15,18 @@ function parseComparisonParam(comparison: string): string[] {
   return dedupeAndLimitSlugs(comparison.split("-vs-"));
 }
 
+/** Bozuk yüzde dizilerinde (%E0%A4%A) decodeURIComponent URIError atar → sayfa 500 olurdu; ham değere düşülür. */
+function guvenliDecode(v: string): string {
+  try { return decodeURIComponent(v); } catch { return v; }
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ comparison: string }>;
 }): Promise<Metadata> {
   const { comparison } = await params;
-  const slugs = parseComparisonParam(decodeURIComponent(comparison));
+  const slugs = parseComparisonParam(guvenliDecode(comparison));
   if (slugs.length < 2) {
     return {
       alternates: { canonical: "/karsilastir" },
@@ -53,7 +58,7 @@ export default async function ComparePage({
   params: Promise<{ comparison: string }>;
 }) {
   const { comparison } = await params;
-  const slugs = parseComparisonParam(decodeURIComponent(comparison));
+  const slugs = parseComparisonParam(guvenliDecode(comparison));
   const { droppedCount, productViews, specRows, comparisonSchema, pickerInitial } = await loadCompareData(slugs);
 
   return (

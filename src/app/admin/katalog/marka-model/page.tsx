@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { AltMenu } from "../AltMenu";
 import { MarkaModelClient } from "./MarkaModelClient";
@@ -6,6 +7,7 @@ export const metadata = { title: "Marka / Model — Katalog Yönetimi" };
 export const dynamic = "force-dynamic";
 
 export default async function MarkaModelPage() {
+  await adminSayfaKorumasi();
   const markalar = await prisma.brand.findMany({
     orderBy: { name: "asc" },
     select: { id: true, name: true, models: { orderBy: { name: "asc" }, select: { id: true, name: true, _count: { select: { products: true } } } } },

@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ImageManager } from "./ImageManager";
@@ -10,6 +11,7 @@ export default async function AdminAraclarPage({
 }: {
   searchParams: Promise<{ eksik?: string }>;
 }) {
+  await adminSayfaKorumasi();
   const { eksik } = await searchParams;
 
   const products = await prisma.product.findMany({

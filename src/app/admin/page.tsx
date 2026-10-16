@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
@@ -5,6 +6,7 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "Admin — fikape", robots: { index: false } };
 
 export default async function AdminPage() {
+  await adminSayfaKorumasi();
   const [pendingReviews, pendingSuggestions, totalProducts, totalReviews] = await Promise.all([
     prisma.review.count({ where: { status: "PENDING" } }),
     prisma.vehicleSuggestion.count({ where: { status: "PENDING" } }),

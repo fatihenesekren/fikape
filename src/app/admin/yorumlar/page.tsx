@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { ModerationClient } from "./ModerationClient";
 import { hammingDistance, PHASH_DUPLICATE_THRESHOLD } from "@/lib/phash";
@@ -9,6 +10,7 @@ function hoursAgo(hours: number): Date {
 }
 
 export default async function ModerationPage() {
+  await adminSayfaKorumasi();
   const reviews = await prisma.review.findMany({
     // PENDING: yeni yorum. PUBLISHED + en az 1 PENDING foto: zaten yayınlanmış
     // bir yorum düzenlenirken sonradan eklenen fotoğraf(lar) — bunlar da

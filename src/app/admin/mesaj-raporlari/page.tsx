@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { BanButton, UnbanButton } from "./ReportActions";
@@ -13,6 +14,7 @@ const REASON_LABEL: Record<string, string> = {
 };
 
 export default async function MesajRaporlariPage() {
+  await adminSayfaKorumasi();
   const [reports, listingReports, bannedUsers, activeListingCount, tradedCount, threadCount, reciprocalThreadCount] = await Promise.all([
     prisma.messageReport.findMany({
       where: { status: "PENDING" },

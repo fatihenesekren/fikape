@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { OnerilerClient } from "./OnerilerClient";
 import { findExistingVehicles } from "@/lib/existingVehicle";
@@ -22,6 +23,7 @@ function catalogPowerHp(attributes: unknown): string | null {
 }
 
 export default async function AdminOnerilerPage() {
+  await adminSayfaKorumasi();
 
   const suggestions = await prisma.vehicleSuggestion.findMany({
     orderBy: { createdAt: "desc" },

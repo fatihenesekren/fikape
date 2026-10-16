@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { calcOverall } from "@/lib/fikape";
-import { validateSummary, validateDetail } from "@/lib/reviewValidation";
+import { validateSummary, validateDetail, checkContent } from "@/lib/reviewValidation";
+import { checkRateLimit } from "@/lib/rateLimit";
 import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { vehicleSuggestSchema, formatZodError } from "@/lib/schemas";
 import { notifyAdmins } from "@/lib/notification";
@@ -17,13 +18,19 @@ export async function POST(req: Request) {
 
   const user = await prisma.user.findUnique({
     where: { id: userId },
-    select: { emailVerifiedAt: true },
+    select: { emailVerifiedAt: true, isBanned: true },
   });
+  if (user?.isBanned) return NextResponse.json({ error: "Bu işlem şu an yapılamıyor." }, { status: 403 });
   if (!user?.emailVerifiedAt) {
     return NextResponse.json(
       { error: "Yorum yazmak için e-posta adresinizi doğrulamanız gerekiyor." },
       { status: 403 }
     );
+  }
+
+  // Kardeş uç oneriler/route.ts ile aynı mantık: kullanıcı başına günlük sınır (Marka/Model/Ürün satırı üretimi)
+  if (!(await checkRateLimit(`vehicle-suggest:${userId}`, 10, 24 * 60 * 60 * 1000))) {
+    return NextResponse.json({ error: "Günlük öneri sınırına ulaştınız. Lütfen yarın tekrar deneyin." }, { status: 429 });
   }
 
   const parsed = vehicleSuggestSchema.safeParse(await req.json().catch(() => null));
@@ -35,6 +42,16 @@ export async function POST(req: Request) {
     scoreFiyat, scoreKalite, scorePerformans,
     summaryText, detailText, wouldBuyAgain, ownershipMonths, extendedData,
   } = parsed.data;
+
+  // Marka/model/donanım adı herkese açık listelere girebilir: telefon/IBAN/URL gibi içerik filtresinden geçer
+  for (const ad of [brandName, modelName, trimName ?? ""]) {
+    if (!ad) continue;
+    const c = checkContent(ad);
+    if (!c.ok) {
+      logContentFilterHit({ userId, surface: "VEHICLE_SUGGEST", rule: c.rule });
+      return NextResponse.json({ error: c.error }, { status: 400 });
+    }
+  }
 
   const summaryCheck = validateSummary(summaryText ?? "");
   if (!summaryCheck.ok) {

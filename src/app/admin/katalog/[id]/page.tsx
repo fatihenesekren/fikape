@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
@@ -11,6 +12,7 @@ export const metadata = { title: "Araç — Katalog Yönetimi" };
 export const dynamic = "force-dynamic";
 
 export default async function AracDetayPage({ params }: { params: Promise<{ id: string }> }) {
+  await adminSayfaKorumasi();
   const id = pozitifTamsayiId((await params).id);
   if (id === null) notFound();
   const p = await prisma.product.findUnique({

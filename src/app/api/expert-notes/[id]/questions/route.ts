@@ -7,6 +7,7 @@ import { logContentFilterHit } from "@/lib/contentFilterLog";
 import { expertNoteQuestionSchema, formatZodError } from "@/lib/schemas";
 import { createNotification } from "@/lib/notification";
 import { stripGenRangeAnywhere } from "@/lib/modelDisplay";
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 
 // Usta notu altında soru — "B modeli": soruyu herkes sorar (sahiplik şartı
 // yok), cevabı yalnız notu yazan usta veya diğer doğrulanmış ustalar verir
@@ -18,6 +19,9 @@ export async function POST(
 ) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
+  // Her soru ustaya bildirim üretir: kullanıcı başına saatlik sınır
+  const limit = await kullaniciLimiti(session, "expert-note-question", 10, 60 * 60 * 1000);
+  if (limit) return limit;
 
   const { id } = await params;
   const noteId = pozitifTamsayiId(id) ?? NaN;

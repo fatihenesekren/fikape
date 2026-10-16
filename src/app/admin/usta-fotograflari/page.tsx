@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
@@ -16,6 +17,7 @@ const KIND_LABEL: Record<string, string> = {
 };
 
 export default async function UstaFotograflariPage() {
+  await adminSayfaKorumasi();
   const pending = await prisma.expertWorkplacePhoto.findMany({
     where: { status: "PENDING" },
     orderBy: { createdAt: "asc" },

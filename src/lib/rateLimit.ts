@@ -72,8 +72,13 @@ async function checkRateLimitRedisDetailed(key: string, limit: number, windowMs:
     await redis!.pexpire(redisKey, windowMs);
     resetAt = Date.now() + windowMs;
   } else {
-    const ttl = await redis!.pttl(redisKey);
-    resetAt = Date.now() + (ttl > 0 ? ttl : windowMs);
+    let ttl = await redis!.pttl(redisKey);
+    if (ttl < 0) {
+      // TTL'siz kalmış anahtar (ilk istekteki pexpire başarısız olduysa) süresiz engel yaratmasın: pencereyi yeniden başlat.
+      await redis!.pexpire(redisKey, windowMs);
+      ttl = windowMs;
+    }
+    resetAt = Date.now() + ttl;
   }
   return { allowed: count <= limit, remaining: Math.max(0, limit - count), resetAt };
 }

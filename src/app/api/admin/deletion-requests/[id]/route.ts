@@ -57,6 +57,11 @@ export async function PATCH(
   }
 
   const deletedUserId = deletionRequest.userId;
+  // Yönetici hesabı bu akışla anonimleştirilip kilitlenemez (ban akışındaki koruma ile aynı ilke)
+  const hedef = await prisma.user.findUnique({ where: { id: deletedUserId }, select: { trustLevel: true } });
+  if (hedef && hedef.trustLevel >= 5) {
+    return NextResponse.json({ error: "Yönetici hesabının silme talebi bu ekrandan onaylanamaz." }, { status: 409 });
+  }
   const anonEmail = `silinmis-kullanici-${deletedUserId}-${Date.now()}@fikape.deleted`;
   // Rastgele, kimsenin bilemeyeceği bir şifre hash'i — hesabı fiilen kilitler.
   const lockPasswordHash = await bcrypt.hash(crypto.randomBytes(32).toString("hex"), 10);
@@ -78,6 +83,8 @@ export async function PATCH(
         email: anonEmail,
         avatarUrl: null,
         passwordHash: lockPasswordHash,
+        // Açık oturumlar en geç ~5 dakikada düşsün (auth.ts jwt callback'i passwordChangedAt farkını kontrol eder)
+        passwordChangedAt: new Date(),
         emailVerifiedAt: null,
       },
     }),

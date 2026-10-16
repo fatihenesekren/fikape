@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import katalogIndex from "@/data/katalogIndex.json";
 import vehiclesData from "@/data/vehicles.json";
@@ -15,6 +16,7 @@ const LEGACY_KATEGORILER = ["e-scooter", "e-bisiklet", "karavan"] as const;
 const DIGER = "Diğer";
 
 export default async function ResmiKatalogPage() {
+  await adminSayfaKorumasi();
   const secenekler: Record<string, KatalogSecenek[]> = {};
   for (const kat of ["otomobil", "kamyonet", "motosiklet"] as const) {
     secenekler[kat] = INDEX[kat]

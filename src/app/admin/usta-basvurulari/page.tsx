@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import type { ExpertStatus } from "@/generated/prisma/client";
 import { ExpertApplicationActions } from "./ExpertApplicationActions";
@@ -6,6 +7,7 @@ import { EXPERT_MONTHLY_QUOTA_DEFAULT } from "@/lib/expertApplication";
 export const metadata = { title: "Usta Başvuruları — fikape admin" };
 
 export default async function ExpertApplicationsPage() {
+  await adminSayfaKorumasi();
   const monthStart = new Date();
   monthStart.setDate(1);
   monthStart.setHours(0, 0, 0, 0);

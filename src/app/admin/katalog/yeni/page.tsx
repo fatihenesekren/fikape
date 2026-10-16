@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { kirilimBul } from "@/lib/katalogOneri/kirilimlar";
 import { AltMenu } from "../AltMenu";
@@ -7,6 +8,7 @@ export const metadata = { title: "Yeni Araç — Katalog Yönetimi" };
 export const dynamic = "force-dynamic";
 
 export default async function YeniAracPage({ searchParams }: { searchParams: Promise<{ aday?: string }> }) {
+  await adminSayfaKorumasi();
   const { aday: adayParam } = await searchParams;
   const adayId = /^\d{1,9}$/.test(adayParam ?? "") ? Number(adayParam) : null;
 

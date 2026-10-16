@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { daysAgo } from "@/lib/timeAgo";
@@ -39,6 +40,7 @@ function fmt(d: Date | null): string {
 }
 
 export default async function IcerikFiltresiPage() {
+  await adminSayfaKorumasi();
   const since = daysAgo(WINDOW_DAYS);
 
   const [total, byRule, bySurface, recent, repeatGroups] = await Promise.all([

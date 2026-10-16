@@ -2,22 +2,14 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { adminOturumu } from "@/lib/adminAuth";
 import { checkRateLimit } from "@/lib/rateLimit";
+import { ayniKaynakMi } from "@/lib/ayniKaynak";
+
+export { ayniKaynakMi };
 
 export interface AdminKimlik { userId: number; label: string }
 type Sonuc = { admin: AdminKimlik } | { hata: NextResponse };
 
 const hata = (mesaj: string, status: number): { hata: NextResponse } => ({ hata: NextResponse.json({ error: mesaj }, { status }) });
-
-/** İstek aynı siteden mi (CSRF'e karşı Sec-Fetch-Site / Origin)? */
-export function ayniKaynakMi(req: Request): boolean {
-  const site = req.headers.get("sec-fetch-site");
-  if (site && site !== "same-origin" && site !== "none") return false;
-  const origin = req.headers.get("origin");
-  if (origin) {
-    try { return new URL(origin).host === new URL(req.url).host; } catch { return false; }
-  }
-  return true;
-}
 
 /**
  * Katalog yönetimi uç noktaları için ortak kapı: DB'den yönetici yetkisi (banlı hariç), yazma isteklerinde aynı-kaynak ve JSON

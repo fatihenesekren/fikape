@@ -21,9 +21,22 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Geçersiz kullanıcı." }, { status: 400 });
   }
 
-  await prisma.blockedUser.deleteMany({
-    where: { blockerId: userId, blockedId },
-  });
+  // Çiftin görüşmelerindeki "engellendi" işareti de kalkmalı: engel koyarken blockedByUserId/blockedAt görüşmelere yazılır
+  // (api/trades/threads/[id]/block). Yalnız BlockedUser silinirse görüşme sonsuza dek "Engellendi" görünür ve listeden
+  // kaldıracak bir kayıt kalmaz. Kapalı görüşmeler yine OTOMATİK açılmaz ("Görüşmeyi kapattın" + Yeniden aç düğmesi görünür).
+  await prisma.$transaction([
+    prisma.blockedUser.deleteMany({ where: { blockerId: userId, blockedId } }),
+    prisma.messageThread.updateMany({
+      where: {
+        blockedByUserId: userId,
+        OR: [
+          { initiatorId: userId, tradeListing: { userId: blockedId } },
+          { initiatorId: blockedId, tradeListing: { userId } },
+        ],
+      },
+      data: { blockedByUserId: null, blockedAt: null },
+    }),
+  ]);
 
   return NextResponse.json({ ok: true });
 }
