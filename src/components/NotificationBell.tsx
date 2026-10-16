@@ -1,5 +1,6 @@
 "use client";
 
+import { bildirimLinkiGuvenli } from "@/lib/bildirimLinki";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -142,7 +143,7 @@ export function NotificationBell() {
               {notifications.map((n) => (
                 <Link
                   key={n.id}
-                  href={n.link}
+                  href={bildirimLinkiGuvenli(n.link)}
                   onClick={() => handleNotificationClick(n)}
                   className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                   style={{ background: !n.isRead ? "#F0F7FF" : undefined }}
