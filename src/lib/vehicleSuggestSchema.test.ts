@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { vehicleSuggestSchema } from "./schemas";
+import { CHIP_LABEL } from "./chips";
 
 const temel = {
   brandName: "Togg", modelName: "T10F", year: 2024, fuelType: "EV", categorySlug: "otomobil",
@@ -9,9 +10,14 @@ const temel = {
 describe("vehicleSuggestSchema.extendedData", () => {
   const dene = (extendedData: unknown) => vehicleSuggestSchema.safeParse({ ...temel, extendedData }).success;
 
-  it.each([{ pros: 5 }, { pros: "hızlı" }, { cons: { a: 1 } }, { pros: [1] }, { pros: ["yok-boyle-bir-chip"] }, { pros: ["a", "b", "c", "d"] }])(
+  it.each([{ pros: 5 }, { pros: "hızlı" }, { cons: { a: 1 } }, { pros: [1] }, { pros: ["yok-boyle-bir-chip"] } ])(
     "bozuk pros/cons reddedilir: %j", (v) => expect(dene(v)).toBe(false),
   );
+  it("en fazla 3 geçerli chip kabul edilir, 4. reddedilir (uzunluk kuralı, geçersiz anahtardan bağımsız)", () => {
+    const anahtarlar = Object.keys(CHIP_LABEL);
+    expect(dene({ pros: anahtarlar.slice(0, 3) })).toBe(true);
+    expect(dene({ pros: anahtarlar.slice(0, 4) })).toBe(false);
+  });
   it("pros/cons içermeyen veya boş dizi olan ek veri geçer", () => {
     expect(dene({})).toBe(true);
     expect(dene({ pros: [], cons: [] })).toBe(true);

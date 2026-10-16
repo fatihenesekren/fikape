@@ -19,4 +19,24 @@ describe("sentryTemizle", () => {
     expect(o.user).toEqual({ id: "5" });
     expect(o.breadcrumbs?.[0].data?.url).toBe("https://x.com/b?code=[gizlendi]");
   });
+
+  it("gezinti breadcrumb from/to ve Referer başlığını maskeler", () => {
+    const o = sentryOlayTemizle({
+      request: { headers: { Referer: "https://x.com/a?token=1", referer: "https://x.com/b", "User-Agent": "ua" } },
+      breadcrumbs: [{ data: { from: "/a?token=1", to: "/b?email=x@y.com" } }],
+    });
+    expect(o.request?.headers).toEqual({ "User-Agent": "ua" });
+    expect(o.breadcrumbs?.[0].data).toEqual({ from: "/a?token=[gizlendi]", to: "/b?email=[gizlendi]" });
+  });
+
+  it("transaction olayında span ve trace özniteliklerindeki token ve istemci IP'sini temizler", () => {
+    const o = sentryOlayTemizle({
+      type: "transaction",
+      contexts: { trace: { data: { "http.url": "https://x.com/api/auth/verify-email?token=SECRET", "http.client_ip": "1.2.3.4", "http.status_code": 200 } } },
+      spans: [{ description: "GET https://x.com/api?code=77", data: { "http.query": "?token=SECRET", "http.request.header.cookie": "a=b", "client.address": "1.2.3.4", "db.system": "pg" } }],
+    });
+    expect(o.contexts?.trace?.data).toEqual({ "http.url": "https://x.com/api/auth/verify-email?token=[gizlendi]", "http.status_code": 200 });
+    expect(o.spans?.[0].description).toBe("GET https://x.com/api?code=[gizlendi]");
+    expect(o.spans?.[0].data).toEqual({ "http.query": "?token=[gizlendi]", "db.system": "pg" });
+  });
 });

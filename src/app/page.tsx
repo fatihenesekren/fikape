@@ -31,8 +31,10 @@ export default async function Home({
 }: {
   searchParams: Promise<{ kategori?: string; dogrulama?: string; quiz?: string }>;
 }) {
-  const { kategori, dogrulama, quiz: quizHam } = await searchParams;
-  const quiz = Array.isArray(quizHam) ? quizHam[0] : quizHam; // ?quiz=a&quiz=b dizi gelebilir
+  const { kategori: kategoriHam, dogrulama, quiz: quizHam } = await searchParams;
+  // ?kategori=a&kategori=b / ?quiz=a&quiz=b dizi gelebilir: ilk değer alınır
+  const kategori = Array.isArray(kategoriHam) ? kategoriHam[0] : kategoriHam;
+  const quiz = Array.isArray(quizHam) ? quizHam[0] : quizHam;
 
   // Eski ana sayfa kategori filtresi linkleri (?kategori=X) artık katalog
   // sayfasına taşındı — bookmark/dış link kırılmasın (bkz. backlog_anasayfa_katalog_ayirma).

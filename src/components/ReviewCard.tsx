@@ -78,8 +78,9 @@ export function ReviewCard({
   const overall = calcOverall(scores);
   const badge = TRUST_BADGES[trustLevel] ?? null;
 
-  const pros = (extendedData?.pros as string[] | undefined) ?? [];
-  const cons = (extendedData?.cons as string[] | undefined) ?? [];
+  // Şema doğrulamasından önce kaydedilmiş bozuk veri kartı çökertmesin.
+  const pros = Array.isArray(extendedData?.pros) ? (extendedData.pros as string[]) : [];
+  const cons = Array.isArray(extendedData?.cons) ? (extendedData.cons as string[]) : [];
   const hasChips = pros.length > 0 || cons.length > 0;
 
   // Skor trend: en az 2 versiyonu olan, scoreOverall dolu versiyonlar

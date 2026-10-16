@@ -89,6 +89,7 @@ describe("kayıt: e-posta numaralandırma koruması", () => {
     expect(prismaMock.user.create).not.toHaveBeenCalled();
     await new Promise((r) => setTimeout(r, 0)); // arka plana bırakılan gönderim
     expect(sendAccountExistsEmail).toHaveBeenCalledWith("yeni@example.com");
+    expect(rateLimitMock.rateLimitByEmail).toHaveBeenCalledWith("yeni@example.com", "register-exists", 2, 60 * 60 * 1000);
   });
 
   it("adres başına limit aşılınca yine 201 döner ama e-posta gönderilmez (e-posta bombalama koruması)", async () => {
