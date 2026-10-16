@@ -1,4 +1,6 @@
 import { leadTelefonuCoz } from "@/lib/leadPhoneCrypto";
+import { telefonMaskele } from "@/lib/telefonMaskele";
+import { TelefonGoster } from "./TelefonGoster";
 import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
@@ -55,7 +57,7 @@ export default async function AdminLeadsPage() {
               >
                 <div className="min-w-0">
                   <div className="font-semibold text-gray-900 text-sm">
-                    {lead.fullName} · <span className="font-normal text-gray-500">{leadTelefonuCoz(lead.phone)}</span>
+                    {lead.fullName} · <TelefonGoster id={lead.id} kind="insurance" maskeli={telefonMaskele(leadTelefonuCoz(lead.phone))} />
                   </div>
                   <div className="text-xs text-gray-400 mt-0.5">
                     {lead.product.brand.name} {lead.product.model.name} — {lead.user.displayName ?? lead.user.email}
@@ -88,7 +90,7 @@ export default async function AdminLeadsPage() {
               >
                 <div className="min-w-0">
                   <div className="font-semibold text-gray-900 text-sm">
-                    {lead.fullName} · <span className="font-normal text-gray-500">{leadTelefonuCoz(lead.phone)}</span>
+                    {lead.fullName} · <TelefonGoster id={lead.id} kind="sale" maskeli={telefonMaskele(leadTelefonuCoz(lead.phone))} />
                     <span className="ml-2 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700">
                       {SALE_TYPE_LABEL[lead.type] ?? lead.type}
                     </span>
