@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
@@ -41,5 +42,6 @@ export async function POST(req: Request) {
     data: { url: blob.url },
   });
 
+  await adminEylemiKaydet({ adminId: Number(session.user.id), action: "PHOTO_BLUR", entityType: "PHOTO", entityId: photoId });
   return NextResponse.json({ url: blob.url });
 }

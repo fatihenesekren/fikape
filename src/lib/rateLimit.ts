@@ -3,12 +3,8 @@ import { createHmac } from "crypto";
 import { getClientIp } from "@/lib/security";
 
 // Kalıcı store (Upstash Redis, serverless-uyumlu REST client) — env değişkenleri
-// tanımlıysa kullanılır. Tanımlı değilse (bu projede şu an durum bu) davranış
-// öncekiyle birebir aynı: bellek-içi, tek-instance limitleyici. Redis'e geçiş
-// UYGULAMA KODU tarafında hazır; canlıya almak için sadece Upstash hesabı açıp
-// UPSTASH_REDIS_REST_URL/UPSTASH_REDIS_REST_TOKEN env değişkenlerini eklemek yeterli
-// (bkz. denetim raporu — "rate limiter bellek-içi/tek-instance, instance'lar arası
-// paylaşılmıyor" maddesi).
+// tanımlıysa kullanılır (canlıda tanımlı). Tanımlı değilse (yerel geliştirme) bellek-içi,
+// tek-instance limitleyiciye düşülür.
 const redis =
   process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
     ? new Redis({ url: process.env.UPSTASH_REDIS_REST_URL, token: process.env.UPSTASH_REDIS_REST_TOKEN })
@@ -113,4 +109,21 @@ export async function rateLimitByIpDetailed(req: Request, prefix: string, limit:
 
 export async function rateLimitByEmail(email: string, prefix: string, limit: number, windowMs: number): Promise<boolean> {
   return checkRateLimit(`${prefix}:${email.toLowerCase()}`, limit, windowMs);
+}
+
+/**
+ * Sayacı ARTIRMADAN okur (örn. yalnız başarısız denemeleri sayan limitler için önce bak, başarısızlıkta artır).
+ * Pencere dolmuşsa ya da anahtar yoksa 0 döner.
+ */
+export async function rateLimitSayac(key: string): Promise<number> {
+  if (redis) {
+    try {
+      const v = await redis.get<number | string>(redisAnahtari(key));
+      return Number(v ?? 0) || 0;
+    } catch (e) {
+      console.error("[rateLimit] sayaç okunamadı:", e);
+    }
+  }
+  const bucket = buckets.get(key);
+  return bucket && Date.now() <= bucket.resetAt ? bucket.count : 0;
 }

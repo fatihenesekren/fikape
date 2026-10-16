@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { createPasswordResetToken } from "@/lib/emailToken";
 import { sendPasswordResetEmail } from "@/lib/email";
+import { arkaPlandaCalistir } from "@/lib/arkaPlan";
 import { rateLimitByIp, rateLimitByEmail } from "@/lib/rateLimit";
 import { forgotPasswordSchema, formatZodError } from "@/lib/schemas";
 
@@ -30,12 +31,9 @@ export async function POST(req: Request) {
 
   // Kullanıcı bulunamasa bile aynı yanıtı dön (email enumeration önleme)
   if (user) {
-    try {
-      const token = createPasswordResetToken(user.id, user.passwordHash);
-      await sendPasswordResetEmail(email, token);
-    } catch (err) {
-      console.error("Password reset email failed:", err);
-    }
+    // E-posta gönderimi yanıttan sonra yapılır: gönderim süresi "bu hesap var" bilgisini zamanlamayla ele vermesin.
+    const token = createPasswordResetToken(user.id, user.passwordHash);
+    arkaPlandaCalistir(() => sendPasswordResetEmail(email, token));
   }
 
   return NextResponse.json({ ok: true });

@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
@@ -64,6 +65,7 @@ export async function PATCH(
       }),
       prisma.tradeListingReport.update({ where: { id: reportId }, data: { status: "REVIEWED" } }),
     ]);
+    await adminEylemiKaydet({ adminId: Number(session.user.id), action: "USER_BAN_FROM_REPORT", entityType: "USER", entityId: bannedUserId, meta: { source: "TRADE_LISTING_REPORT", reportId } });
     return NextResponse.json({ ok: true });
   }
 

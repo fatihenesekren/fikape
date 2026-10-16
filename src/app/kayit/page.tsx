@@ -79,8 +79,14 @@ function KayitForm() {
       return;
     }
 
-    // Kayıt başarılı — otomatik giriş yap
-    await signIn("credentials", { email, password, redirect: false });
+    // Kayıt başarılı — otomatik giriş yap. Bu e-posta zaten kayıtlıysa sunucu (hesap varlığını sızdırmamak için) aynı başarılı
+    // yanıtı verir; o durumda parola uyuşmadığı için giriş başarısız olur ve kullanıcı bilgilendirilir.
+    const girisSonucu = await signIn("credentials", { email, password, redirect: false });
+    if (girisSonucu?.error) {
+      setError("Kayıt isteğiniz alındı. Bu e-posta adresine bir bilgilendirme gönderdik. Hesabınız varsa giriş yapabilir veya şifrenizi sıfırlayabilirsiniz.");
+      setLoading(false);
+      return;
+    }
     router.push("/");
     router.refresh();
   }

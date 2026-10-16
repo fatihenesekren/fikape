@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { adminOturumu } from "@/lib/adminAuth";
@@ -82,6 +83,7 @@ export async function POST(
     revalidateTag("vitrin", { expire: 0 }); // görsel vitrine uygunluk koşuludur
     revalidateTag(GORSEL_KAYNAK_ETIKETI, { expire: 0 });
     revalidateTag(ARAC_HAVUZU_ETIKETI, { expire: 0 });
+    await adminEylemiKaydet({ adminId: admin.userId, action: "PRODUCT_IMAGE_CHANGE", entityType: "PRODUCT", entityLabel: slug, meta: { yontem: "yukleme" } });
     return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: null });
   } catch (e) {
     console.error("[admin-product]", e);
@@ -174,6 +176,7 @@ export async function PATCH(
     revalidateTag("vitrin", { expire: 0 });
     revalidateTag(GORSEL_KAYNAK_ETIKETI, { expire: 0 });
     revalidateTag(ARAC_HAVUZU_ETIKETI, { expire: 0 });
+    await adminEylemiKaydet({ adminId: admin.userId, action: "PRODUCT_IMAGE_CHANGE", entityType: "PRODUCT", entityLabel: slug, meta: { yontem: "url" } });
     return NextResponse.json({ ok: true, imageUrl: versionedUrl, kredi: otomatikKredi });
   } catch (e) {
     console.error("[admin-product]", e);

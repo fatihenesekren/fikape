@@ -1,6 +1,7 @@
 import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { AltMenu } from "../AltMenu";
+import { ADMIN_EYLEM_ETIKETI } from "@/lib/adminEylemKaydi";
 
 export const metadata = { title: "Denetim Kaydı — Katalog Yönetimi" };
 export const dynamic = "force-dynamic";
@@ -12,6 +13,7 @@ const EYLEM_ETIKETI: Record<string, string> = {
   BRAND_MERGE: "Markalar birleştirildi", MODEL_MERGE: "Modeller birleştirildi", MODEL_DELETE: "Boş model silindi",
   OVERRIDE_HIDE: "Resmi katalogdan gizlendi", OVERRIDE_RESTORE: "Gizleme kaldırıldı",
   CACHE_TEMIZLE: "Önbellek temizlendi",
+  ...ADMIN_EYLEM_ETIKETI,
 };
 
 export default async function DenetimPage() {

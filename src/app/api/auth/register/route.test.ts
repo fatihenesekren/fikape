@@ -7,7 +7,7 @@ const prismaMock = vi.hoisted(() => ({
 vi.mock("@/lib/prisma", () => ({ prisma: prismaMock }));
 vi.mock("@/lib/rateLimit", () => ({ rateLimitByIp: vi.fn(async () => true) }));
 vi.mock("@/lib/emailToken", () => ({ createVerificationToken: vi.fn(() => "tok") }));
-vi.mock("@/lib/email", () => ({ sendVerificationEmail: vi.fn(async () => {}) }));
+vi.mock("@/lib/email", () => ({ sendVerificationEmail: vi.fn(async () => {}), sendAccountExistsEmail: vi.fn(async () => {}) }));
 vi.mock("@/lib/accessLog", () => ({ logAccess: vi.fn(async () => {}) }));
 vi.mock("bcryptjs", () => ({ default: { hash: vi.fn(async () => "hash") } }));
 
@@ -70,5 +70,23 @@ describe("kayıt: isteğe bağlı yorum paylaşım rızası", () => {
     expect(res.status).toBe(400);
     expect(prismaMock.user.create).not.toHaveBeenCalled();
     expect(prismaMock.consentLog.create).not.toHaveBeenCalled();
+  });
+});
+
+describe("kayıt: e-posta numaralandırma koruması", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    process.env.AUTH_SECRET = "test-secret-test-secret-test-secret";
+  });
+
+  it("kayıtlı e-posta için de 201 döner, yeni hesap oluşturmaz ve sahibine bilgi e-postası gönderir", async () => {
+    prismaMock.user.findUnique.mockResolvedValue({ id: 7, email: "yeni@example.com" });
+    const { sendAccountExistsEmail } = await import("@/lib/email");
+    const res = await POST(istek(govde()));
+    expect(res.status).toBe(201);
+    expect(await res.json()).toEqual({ ok: true });
+    expect(prismaMock.user.create).not.toHaveBeenCalled();
+    await new Promise((r) => setTimeout(r, 0)); // arka plana bırakılan gönderim
+    expect(sendAccountExistsEmail).toHaveBeenCalledWith("yeni@example.com");
   });
 });

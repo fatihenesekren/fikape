@@ -1,10 +1,11 @@
 import { Resend } from "resend";
+import { BASE_URL as SITE_BASE_URL } from "@/lib/baseUrl";
 import { prisma } from "@/lib/prisma";
 
 const LOGO = `<span style="font-size:22px;font-weight:900;letter-spacing:-1px"><span style="color:#185FA5">fi</span><span style="color:#ccc">·</span><span style="color:#3B6D11">ka</span><span style="color:#ccc">·</span><span style="color:#993C1D">pe</span></span>`;
 
 const FROM = process.env.EMAIL_FROM ?? "fikape <onboarding@resend.dev>";
-const BASE_URL = process.env.NEXTAUTH_URL ?? process.env.AUTH_URL ?? "https://fikape-e4t7.vercel.app";
+const BASE_URL = SITE_BASE_URL;
 
 // Auth e-postaları (doğrulama, şifre sıfırlama) bu kontrole tabi değil —
 // sadece "bildirim" niteliğindeki e-postalar (yorum/soru/faydalı vb.) için.
@@ -435,4 +436,30 @@ function eh(v: unknown): string {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+/** Zaten hesabı olan bir e-postayla kayıt denendiğinde sahibine giden bilgi — kayıt ekranı hesap varlığını sızdırmasın diye yanıt herkese aynıdır. */
+export async function sendAccountExistsEmail(email: string) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: "fikape — Bu e-posta ile zaten bir hesabınız var",
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
+        <h1 style="font-size:20px;font-weight:700;color:#111;margin:0 0 8px">Zaten bir hesabınız var</h1>
+        <p style="color:#555;font-size:15px;line-height:1.6;margin:0 0 24px">
+          Bu e-posta adresiyle fikape'te yeni bir hesap oluşturulmak istendi, ancak bu adrese ait bir hesap zaten var.
+          Giriş yapabilir ya da şifrenizi unuttuysanız sıfırlayabilirsiniz.
+        </p>
+        <a href="${BASE_URL}/giris" style="display:inline-block;background:#111;color:#fff;font-weight:600;font-size:15px;padding:12px 28px;border-radius:10px;text-decoration:none">
+          Giriş yap →
+        </a>
+        <p style="color:#555;font-size:14px;margin:16px 0 0"><a href="${BASE_URL}/sifremi-unuttum" style="color:#185FA5">Şifremi unuttum</a></p>
+        <p style="color:#aaa;font-size:12px;margin-top:32px">
+          Bu isteği siz yapmadıysanız hiçbir işlem yapmanız gerekmez; hesabınız güvendedir.
+        </p>
+      </div>
+    `,
+  });
 }

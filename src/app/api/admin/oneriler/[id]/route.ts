@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import { adminOturumu } from "@/lib/adminAuth";
@@ -78,6 +79,7 @@ export async function POST(
       where: { id: suggestionId },
       data: { status: "REJECTED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: admin.userId },
     });
+    await adminEylemiKaydet({ adminId: admin.userId, action: "SUGGESTION_REJECT", entityType: "SUGGESTION", entityId: suggestionId });
     return NextResponse.json({ ok: true, action: "REJECTED" });
   }
 
@@ -229,6 +231,7 @@ export async function POST(
     revalidateTag(ARAC_HAVUZU_ETIKETI, { expire: 0 });
     try { await notifyGarageBrandFollowers(productId); } catch (e) { console.error("[notifyGarageBrandFollowers]", e); }
     await syncAiVehicleSummary(productId).catch((e) => console.error("[ai-vehicle-summary]", e));
+    await adminEylemiKaydet({ adminId: admin.userId, action: "SUGGESTION_APPROVE", entityType: "SUGGESTION", entityId: suggestionId, meta: { productId } });
     return NextResponse.json({ ok: true, action: "APPROVED", productId });
   }
 

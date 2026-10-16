@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
@@ -50,5 +51,6 @@ export async function POST(
   revalidateTag(ARAC_HAVUZU_ETIKETI, { expire: 0 });
   revalidateTag(GORSEL_KAYNAK_ETIKETI, { expire: 0 }); // atıf listesindeki küçük önizleme yeni dosyayı göstersin
 
+  await adminEylemiKaydet({ adminId: admin.userId, action: "PHOTO_BLUR", entityType: "PRODUCT", entityId: product.id, entityLabel: slug });
   return NextResponse.json({ url: blob.url });
 }

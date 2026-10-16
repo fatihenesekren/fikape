@@ -29,3 +29,15 @@ describe("checkRateLimit", () => {
     expect(await checkRateLimit(keyB, 1, 60_000)).toBe(true);
   });
 });
+
+describe("rateLimitSayac", () => {
+  it("sayacı artırmadan okur", async () => {
+    const { rateLimitSayac } = await import("./rateLimit");
+    const key = `sayac-${Math.random()}`;
+    expect(await rateLimitSayac(key)).toBe(0);
+    await checkRateLimit(key, 100, 60_000);
+    await checkRateLimit(key, 100, 60_000);
+    expect(await rateLimitSayac(key)).toBe(2);
+    expect(await rateLimitSayac(key)).toBe(2);
+  });
+});

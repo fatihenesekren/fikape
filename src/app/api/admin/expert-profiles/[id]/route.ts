@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
@@ -53,6 +54,7 @@ export async function PATCH(
       message: "Usta başvurunuz onaylandı — artık Usta Görüşü yazabilirsiniz",
       link: "/usta-gorusu/yaz",
     });
+    await adminEylemiKaydet({ adminId, action: "EXPERT_PROFILE_DECISION", entityType: "EXPERT_PROFILE", entityId: profileId, entityLabel: profile.slug, meta: { karar: "approve" } });
     return NextResponse.json({ ok: true, status: "ACTIVE", slug: profile.slug });
   }
 
@@ -61,6 +63,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Yalnızca bekleme listesindeki başvurular öne alınabilir." }, { status: 409 });
     }
     await prisma.expertProfile.update({ where: { id: profileId }, data: { status: "PENDING_VERIFICATION" } });
+    await adminEylemiKaydet({ adminId, action: "EXPERT_PROFILE_DECISION", entityType: "EXPERT_PROFILE", entityId: profileId, entityLabel: profile.slug, meta: { karar: "promote" } });
     return NextResponse.json({ ok: true, status: "PENDING_VERIFICATION" });
   }
 
@@ -72,6 +75,7 @@ export async function PATCH(
       message: "Usta başvurunuz bu aşamada onaylanmadı",
       link: "/usta-basvuru",
     });
+    await adminEylemiKaydet({ adminId, action: "EXPERT_PROFILE_DECISION", entityType: "EXPERT_PROFILE", entityId: profileId, entityLabel: profile.slug, meta: { karar: "reject" } });
     return NextResponse.json({ ok: true, status: "DELETED" });
   }
 

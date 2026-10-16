@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
-import { checkRateLimit, rateLimitByEmail } from "@/lib/rateLimit";
+import { checkRateLimit, rateLimitByEmail, rateLimitSayac } from "@/lib/rateLimit";
 import { logAccessRaw } from "@/lib/accessLog";
 import { girisHatasiYiginiKontrol } from "@/lib/sistemUyarisi";
 import { PasifHesapAskida } from "@/lib/pasifHesap";
@@ -27,14 +27,20 @@ export async function verifyCredentials(
 ): Promise<VerifiedUser | null> {
   const normalizedEmail = email.toLowerCase();
 
-  // Brute-force koruması: hem e-posta hem IP bazlı (biri atlatılsa diğeri tutar)
-  if (!(await rateLimitByEmail(normalizedEmail, "login", 5, 15 * 60 * 1000))) return null;
+  // Brute-force koruması — üç katman:
+  // 1) (e-posta, IP) çifti başına 5/15 dk: bir saldırgan kendi IP'siyle kurbanın e-postasını kilitleyemez (kurban kendi IP'sinden girebilir).
+  // 2) IP başına 20/15 dk: tek kaynaktan çok sayıda hesabı deneme.
+  // 3) E-posta başına yalnız BAŞARISIZ denemeler 40/saat: çok sayıda IP'den dağıtık saldırıyı durdurur; doğru parola harcamaz.
+  if (!(await rateLimitByEmail(`${normalizedEmail}|${ip ?? "-"}`, "login", 5, 15 * 60 * 1000))) return null;
   if (ip && !(await checkRateLimit(`login:${ip}`, 20, 15 * 60 * 1000))) return null;
+  if ((await rateLimitSayac(`login-fail:${normalizedEmail}`)) >= 40) return null;
 
   const user = await prisma.user.findUnique({ where: { email: normalizedEmail } });
   // Kullanıcı yokken de bcrypt çalıştırılır: yanıt süresi farkından hesap var/yok anlaşılmasın.
   const valid = await bcrypt.compare(password, user?.passwordHash ?? SAHTE_HASH);
   if (!user || !valid) {
+    // Yalnız başarısız denemeler e-posta başına toplam sayaca işlenir (limit=çok yüksek: yalnız artırır)
+    await checkRateLimit(`login-fail:${normalizedEmail}`, 1_000_000, 60 * 60 * 1000);
     // Güvenlik izleme: hatalı parola/bilinmeyen hesap kaydı; yığılma olursa yöneticiye e-posta gider.
     await logAccessRaw({ action: "LOGIN_FAILED", userId: user?.id ?? null, ip, path: "/api/auth/callback/credentials" });
     await girisHatasiYiginiKontrol();

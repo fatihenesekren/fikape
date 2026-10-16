@@ -3,7 +3,8 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { createVerificationToken } from "@/lib/emailToken";
-import { sendVerificationEmail } from "@/lib/email";
+import { sendVerificationEmail, sendAccountExistsEmail } from "@/lib/email";
+import { arkaPlandaCalistir } from "@/lib/arkaPlan";
 import { rateLimitByIp } from "@/lib/rateLimit";
 import { hashRequestContext } from "@/lib/security";
 import { registerSchema, formatZodError } from "@/lib/schemas";
@@ -26,7 +27,11 @@ export async function POST(req: Request) {
 
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
-    return NextResponse.json({ error: "Bu e-posta zaten kayıtlı." }, { status: 409 });
+    // E-posta numaralandırmayı önlemek için kayıtlı e-postaya da başarılı kayıtla AYNI yanıt döner (201); hesabın gerçek sahibine
+    // "zaten hesabınız var" e-postası gider. Yeni kayıt yolundaki bcrypt maliyeti kadar bekleyerek yanıt süresi de eşitlenir.
+    await bcrypt.hash(password, 12);
+    arkaPlandaCalistir(() => sendAccountExistsEmail(email));
+    return NextResponse.json({ ok: true }, { status: 201 });
   }
 
   const referrer = ref
