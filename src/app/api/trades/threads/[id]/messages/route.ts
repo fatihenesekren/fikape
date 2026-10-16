@@ -43,9 +43,12 @@ export async function POST(
     return NextResponse.json({ error: "Görüşme bulunamadı." }, { status: 404 });
   }
 
-  const user = await prisma.user.findUnique({ where: { id: userId }, select: { isBanned: true } });
+  const user = await prisma.user.findUnique({ where: { id: userId }, select: { isBanned: true, emailVerifiedAt: true } });
   if (!user || user.isBanned) {
     return NextResponse.json({ error: "Bu işlemi gerçekleştiremezsiniz." }, { status: 403 });
+  }
+  if (!user.emailVerifiedAt) {
+    return NextResponse.json({ error: "Bu işlem için e-posta adresinizi doğrulamanız gerekiyor. Gelen kutunuzdaki doğrulama bağlantısına tıklayın." }, { status: 403 });
   }
 
   const counterpartId = userId === thread.initiatorId ? thread.tradeListing.userId : thread.initiatorId;

@@ -33,10 +33,13 @@ export async function POST(req: Request) {
 
   const user = await prisma.user.findUnique({
     where: { id: userId },
-    select: { isBanned: true },
+    select: { isBanned: true, emailVerifiedAt: true },
   });
   if (!user || user.isBanned) {
     return NextResponse.json({ error: "Bu işlemi gerçekleştiremezsiniz." }, { status: 403 });
+  }
+  if (!user.emailVerifiedAt) {
+    return NextResponse.json({ error: "Bu işlem için e-posta adresinizi doğrulamanız gerekiyor. Gelen kutunuzdaki doğrulama bağlantısına tıklayın." }, { status: 403 });
   }
 
   const parsed = tradeListingCreateSchema.safeParse(await req.json().catch(() => ({})));
