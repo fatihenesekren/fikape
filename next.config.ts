@@ -48,9 +48,9 @@ const KATALOG_SLUG_DEGISIKLIKLERI: [string, string][] = [
 ];
 
 // ─── İçerik Güvenlik Politikası (CSP) ───────────────────────────────────────
-// Zorlanan politika burada (script-src 'unsafe-inline'); nonce'lu sıkı aday politika proxy.ts'te sayfa başına üretilir ve şimdilik
-// YALNIZ RAPOR olarak gönderilir (Content-Security-Policy-Report-Only). Ayrıntı: src/lib/csp.ts. İhlaller /api/csp-report ile
-// [csp-report] satırı olarak günlüğe düşer; temizse zorlamaya geçilir.
+// Zorlanan politika burada (script-src 'unsafe-inline'). Nonce'lu sıkı aday (src/lib/csp.ts, nonce seçeneği) yerelde çalışıyor
+// ama Vercel'de Next'in kendi scriptlerine nonce uygulanmadığı için canlıya alınmadı (rapor modu denendi ve kaldırıldı); zorlamadan
+// önce preview'da farklı yöntem araştırılmalı. İhlaller /api/csp-report ile [csp-report] satırı olarak günlüğe düşer.
 // Blob mağaza hostu (BLOB_STORE_HOST veya BLOB_READ_WRITE_TOKEN'dan); başkasının mağazasından görsel/bağlantı yüklenmesin diye
 // joker yerine tam host. Bilinmiyorsa (yerel geliştirme, env yok) eski joker.
 const BLOB_HOST = ownBlobHost() ?? "*.public.blob.vercel-storage.com";

@@ -2,7 +2,9 @@
 //
 // Zorlanan politika (nonce YOK): script-src 'unsafe-inline' içerir (Next.js hidratasyon satır içi scriptleri için).
 // Aday politika (nonce VAR): script-src 'self' 'nonce-…' 'strict-dynamic' — 'unsafe-inline' yok, satır içi olay işleyicileri yasak.
-// Kök layout her istekte auth() çağırdığı için siteler zaten dinamik; nonce ek bir statik-önbellek kaybı yaratmaz.
+// Aday şu an KULLANILMIYOR: yerelde (next start) çalışıyor, ama Vercel'de Next'in kendi <script src> etiketleri nonce almıyordu
+// (proxy.ts'ten istek başlığıyla verilen nonce yalnız layout'un kendi okuduğu x-nonce olarak ulaşıyor). Kök layout her istekte
+// auth() çağırdığı için siteler zaten dinamik; nonce'un maliyeti statik önbellek kaybı değil, yalnız bu uyumsuzluk.
 
 export interface CspSecenekleri {
   nonce?: string;
