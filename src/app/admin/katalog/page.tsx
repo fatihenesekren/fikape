@@ -24,6 +24,7 @@ export default async function KatalogListePage({
     ...(durum === "pasif" ? { status: "ACTIVE" as const, isActive: false } : {}),
     ...(durum === "aktif" ? { status: "ACTIVE" as const, isActive: true } : {}),
     ...(durum === "bekleyen" ? { status: "PENDING" as const } : {}),
+    ...(durum === "reddedilen" ? { status: "REJECTED" as const } : {}),
     ...(arama
       ? {
           OR: [
@@ -34,7 +35,7 @@ export default async function KatalogListePage({
       : {}),
   };
 
-  const [urunler, toplam] = await Promise.all([
+  const [urunler, toplam, durumSayilari] = await Promise.all([
     prisma.product.findMany({
       where,
       select: { id: true, name: true, slug: true, status: true, isActive: true, category: { select: { slug: true } } },
@@ -43,9 +44,27 @@ export default async function KatalogListePage({
       take: SAYFA,
     }),
     prisma.product.count({ where }),
+    // Durumlar birbirini dışlar ve toplamı verir: yayında + pasif + bekleyen + reddedilen = tüm kayıtlar (aramadan bağımsız).
+    prisma.product.groupBy({ by: ["status", "isActive"], _count: { _all: true } }),
   ]);
+  const say = (f: (g: { status: string; isActive: boolean }) => boolean) =>
+    durumSayilari.filter(f).reduce((t, g) => t + g._count._all, 0);
+  const sayilar = {
+    aktif: say((g) => g.status === "ACTIVE" && g.isActive),
+    pasif: say((g) => g.status === "ACTIVE" && !g.isActive),
+    bekleyen: say((g) => g.status === "PENDING"),
+    reddedilen: say((g) => g.status === "REJECTED"),
+  };
+  const tumKayit = sayilar.aktif + sayilar.pasif + sayilar.bekleyen + sayilar.reddedilen;
+  const DURUMLAR = [
+    { anahtar: "tum", etiket: "Tümü", adet: tumKayit },
+    { anahtar: "aktif", etiket: "Yayında", adet: sayilar.aktif },
+    { anahtar: "pasif", etiket: "Pasif", adet: sayilar.pasif },
+    { anahtar: "bekleyen", etiket: "Bekleyen", adet: sayilar.bekleyen },
+    { anahtar: "reddedilen", etiket: "Reddedilen", adet: sayilar.reddedilen },
+  ];
   const sayfaSayisi = Math.max(1, Math.ceil(toplam / SAYFA));
-  const link = (p: number) => `/admin/katalog?q=${encodeURIComponent(arama)}&durum=${durum}&s=${p}`;
+  const link = (p: number, d = durum) => `/admin/katalog?q=${encodeURIComponent(arama)}&durum=${d}&s=${p}`;
 
   return (
     <div className="px-4 sm:px-8 py-10 max-w-4xl">
@@ -61,11 +80,26 @@ export default async function KatalogListePage({
           <option value="aktif">Yayında</option>
           <option value="pasif">Pasif (katalogdan kaldırılmış)</option>
           <option value="bekleyen">Bekleyen öneri</option>
+          <option value="reddedilen">Reddedilen öneri</option>
         </select>
         <button className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium">Ara</button>
       </form>
 
-      <p className="text-xs text-gray-400 mb-3">{toplam} kayıt</p>
+      <div className="flex flex-wrap gap-2 mb-3">
+        {DURUMLAR.map((d) => (
+          <Link
+            key={d.anahtar}
+            href={link(1, d.anahtar)}
+            className={`px-3 py-1 rounded-full text-xs font-medium border ${
+              durum === d.anahtar ? "bg-gray-900 text-white border-gray-900" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
+            }`}
+          >
+            {d.etiket} <span className={durum === d.anahtar ? "text-gray-300" : "text-gray-400"}>{d.adet.toLocaleString("tr-TR")}</span>
+          </Link>
+        ))}
+      </div>
+
+      <p className="text-xs text-gray-400 mb-3">{toplam.toLocaleString("tr-TR")} kayıt{arama ? ` ("${arama}" araması)` : ""}</p>
       <ul className="divide-y divide-gray-100 bg-white border border-gray-100 rounded-xl">
         {urunler.map((u) => (
           <li key={u.id}>
