@@ -5,7 +5,7 @@ import { BUSY_SIGDIR_ESIGI, getImageBackdrop, getImageOran } from "@/lib/imageBa
  * Küçük ürün görseli (relative + overflow-hidden bir kabın içinde): zemin düzse kap o renge boyanır ve fotoğraf
  * sığdırılır, zemin düz değilse fotoğraf kabı doldurur (bkz. imageBackdrop.ts). Zemin düz değil ama fotoğraf kareye
  * yakınsa (oran < BUSY_SIGDIR_ESIGI) doldurmak aracı keser; bu durumda fotoğraf kendi bulanık kopyasının üzerine
- * sığdırılır (yalnız dikeyNesne=true: e-scooter gibi boyu uzun araçlar; motosiklet kartları cover kalır). Sunucu bileşeni.
+ * sığdırılır (dikeyNesne=true: kartlarda e-scooter, e-bisiklet ve motosiklet). Sunucu bileşeni.
  */
 export async function BackdropImage({
   src, alt, sizes, className = "", padding = "p-2", dikeyNesne = false,
