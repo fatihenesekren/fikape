@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Geçersiz veya süresi dolmuş bağlantı." }, { status: 400 });
   }
 
-  const user = await prisma.user.findUnique({ where: { id: userId }, select: { id: true, passwordHash: true } });
+  const user = await prisma.user.findUnique({ where: { id: userId }, select: { id: true, passwordHash: true, emailVerifiedAt: true, trustLevel: true } });
   if (!user) {
     return NextResponse.json({ error: "Geçersiz veya süresi dolmuş bağlantı." }, { status: 400 });
   }
@@ -44,7 +44,15 @@ export async function POST(req: Request) {
   const passwordHash = await bcrypt.hash(password, 12);
   // passwordChangedAt: mevcut oturumlardaki JWT'lerin bu andan itibaren geçersiz
   // sayılması için (bkz. auth.ts jwt callback).
-  await prisma.user.update({ where: { id: user.id }, data: { passwordHash, passwordChangedAt: new Date(), lastActiveAt: new Date(), inactiveWarnedAt: null, inactiveSuspendedAt: null } });
+  // Sıfırlama bağlantısı e-posta kutusunun gerçek sahibine ulaşır; kullanılması sahipliği kanıtlar. Hesap henüz doğrulanmamışsa
+  // (ör. e-postayı başkası önceden kaydettiyse) burada doğrulanır — parola ve oturumlar bu işlemle zaten sıfırlanır.
+  await prisma.user.update({
+    where: { id: user.id },
+    data: {
+      passwordHash, passwordChangedAt: new Date(), lastActiveAt: new Date(), inactiveWarnedAt: null, inactiveSuspendedAt: null,
+      ...(user.emailVerifiedAt ? {} : { emailVerifiedAt: new Date(), trustLevel: Math.max(user.trustLevel, 2) }),
+    },
+  });
 
   return NextResponse.json({ ok: true });
 }

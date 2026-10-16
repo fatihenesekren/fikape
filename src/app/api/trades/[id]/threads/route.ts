@@ -33,10 +33,13 @@ export async function POST(
 
   const user = await prisma.user.findUnique({
     where: { id: userId },
-    select: { trustLevel: true, isBanned: true },
+    select: { trustLevel: true, isBanned: true, emailVerifiedAt: true },
   });
   if (!user || user.isBanned) {
     return NextResponse.json({ error: "Bu işlemi gerçekleştiremezsiniz." }, { status: 403 });
+  }
+  if (!user.emailVerifiedAt) {
+    return NextResponse.json({ error: "Bu işlem için e-posta adresinizi doğrulamanız gerekiyor. Gelen kutunuzdaki doğrulama bağlantısına tıklayın." }, { status: 403 });
   }
   if (user.trustLevel < 3) {
     return NextResponse.json(
