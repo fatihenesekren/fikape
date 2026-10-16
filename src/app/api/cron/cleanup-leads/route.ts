@@ -2,6 +2,7 @@ import { cronYetkili } from "@/lib/cronAuth";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { cronHatasiBildir } from "@/lib/sistemUyarisi";
+import { hashDeger } from "@/lib/security";
 import { leadTelefonuSifrele } from "@/lib/leadPhoneCrypto";
 
 export const runtime = "nodejs";
@@ -75,8 +76,31 @@ export async function GET(req: Request) {
       sifrelenenLead = sigorta.length + satis.length;
     }
 
+    // KVKK: eski ConsentLog kayıtlarındaki ham IP/UA, yeni kayıtlarla aynı HMAC hash'ine çevrilir (geri döndürülemez; yalnız
+    // CONSENT_LOG_HASH_MIGRATION=1 iken, yedek alındıktan sonra açılır). Idempotent: 64 karakterlik hex olanlar atlanır.
+    let hashlenenConsent = 0;
+    if (process.env.CONSENT_LOG_HASH_MIGRATION === "1") {
+      const ham = await prisma.$queryRaw<{ id: number; ipAddress: string | null; userAgent: string | null }[]>`
+        SELECT id, "ipAddress", "userAgent" FROM consent_logs
+        WHERE ("ipAddress" IS NOT NULL AND "ipAddress" !~ '^[0-9a-f]{64}$')
+           OR ("userAgent" IS NOT NULL AND "userAgent" !~ '^[0-9a-f]{64}$')
+        ORDER BY id LIMIT 500`;
+      const HEX64 = /^[0-9a-f]{64}$/;
+      for (const k of ham) {
+        await prisma.consentLog.update({
+          where: { id: k.id },
+          data: {
+            ipAddress: k.ipAddress && !HEX64.test(k.ipAddress) ? hashDeger(k.ipAddress) : k.ipAddress,
+            userAgent: k.userAgent && !HEX64.test(k.userAgent) ? hashDeger(k.userAgent) : k.userAgent,
+          },
+        });
+      }
+      hashlenenConsent = ham.length;
+    }
+
     return NextResponse.json({
       ok: true,
+      hashedConsentLogs: hashlenenConsent,
       encryptedLeadPhones: sifrelenenLead,
       deletedWaitlistEntries: bekleme.count,
       deletedSearchLogs: aramaLogu.count,

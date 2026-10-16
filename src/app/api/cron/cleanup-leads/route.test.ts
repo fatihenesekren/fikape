@@ -4,7 +4,8 @@ const prismaMock = vi.hoisted(() => ({
   insuranceLead: { deleteMany: vi.fn(), findMany: vi.fn(), update: vi.fn() },
   saleLead: { deleteMany: vi.fn(), findMany: vi.fn(), update: vi.fn() },
   dataDeletionRequest: { findMany: vi.fn() },
-  consentLog: { deleteMany: vi.fn() },
+  consentLog: { deleteMany: vi.fn(), update: vi.fn() },
+  $queryRaw: vi.fn(),
   plusWaitlistEntry: { deleteMany: vi.fn() },
   searchQueryLog: { deleteMany: vi.fn() },
   expertNoteTakedownRequest: { updateMany: vi.fn() },
@@ -100,5 +101,47 @@ describe("cleanup-leads: eski düz telefonların şifrelenmesi", () => {
     const body = await (await GET(new Request("http://x"))).json();
     expect(body.encryptedLeadPhones).toBe(0);
     expect(prismaMock.insuranceLead.findMany).not.toHaveBeenCalled();
+  });
+});
+
+describe("cleanup-leads: eski ConsentLog kayıtlarını hash'e çevirme", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    for (const m of [prismaMock.insuranceLead, prismaMock.saleLead]) m.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.plusWaitlistEntry.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.searchQueryLog.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.expertNoteTakedownRequest.updateMany.mockResolvedValue({ count: 0 });
+    prismaMock.dataDeletionRequest.findMany.mockResolvedValue([]);
+    prismaMock.consentLog.update.mockResolvedValue({});
+    process.env.AUTH_SECRET = process.env.AUTH_SECRET ?? "test-secret-test-secret-test-secret";
+  });
+
+  it("bayrak kapalıyken hiçbir kayıt okunmaz veya değiştirilmez", async () => {
+    delete process.env.CONSENT_LOG_HASH_MIGRATION;
+    const body = await (await GET(new Request("http://x"))).json();
+    expect(body.hashedConsentLogs).toBe(0);
+    expect(prismaMock.$queryRaw).not.toHaveBeenCalled();
+    expect(prismaMock.consentLog.update).not.toHaveBeenCalled();
+  });
+
+  it("bayrak açıkken ham IP/UA hash'e çevrilir, zaten hash olan alan değişmez", async () => {
+    process.env.CONSENT_LOG_HASH_MIGRATION = "1";
+    const zatenHash = "a".repeat(64);
+    prismaMock.$queryRaw.mockResolvedValue([
+      { id: 1, ipAddress: "203.0.113.7", userAgent: "Mozilla/5.0 Test" },
+      { id: 2, ipAddress: zatenHash, userAgent: "Ham UA" },
+      { id: 3, ipAddress: null, userAgent: "Ham UA 2" },
+    ]);
+    const body = await (await GET(new Request("http://x"))).json();
+    delete process.env.CONSENT_LOG_HASH_MIGRATION;
+    expect(body.hashedConsentLogs).toBe(3);
+    const veri = prismaMock.consentLog.update.mock.calls.map((c) => c[0].data);
+    expect(veri[0].ipAddress).toMatch(/^[0-9a-f]{64}$/);
+    expect(veri[0].userAgent).toMatch(/^[0-9a-f]{64}$/);
+    expect(veri[1].ipAddress).toBe(zatenHash);
+    expect(veri[1].userAgent).toMatch(/^[0-9a-f]{64}$/);
+    expect(veri[2].ipAddress).toBeNull();
+    expect(veri[2].userAgent).toMatch(/^[0-9a-f]{64}$/);
+    expect(veri[0].ipAddress).not.toBe("203.0.113.7");
   });
 });

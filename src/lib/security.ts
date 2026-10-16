@@ -8,6 +8,9 @@ function hash(value: string): string {
   return createHmac("sha256", SECRET).update(value).digest("hex");
 }
 
+/** Dışarıya açılan tek yönlü HMAC (ConsentLog eski kayıtlarını hash'e çevirmek için; hashRequestContext ile aynı çıktı). */
+export const hashDeger = hash;
+
 // 5651 m.5 trafik bilgisi yükümlülüğü, yetkili merci talebinde IP'nin ÇÖZÜLEBİLİR
 // olmasını gerektirir — hash() (yukarıda) tek yönlü olduğu için bu amaca uymaz.
 // AES-256-GCM ile şifreliyoruz: anahtar DB'nin dışında (env) tutulduğu için tek
