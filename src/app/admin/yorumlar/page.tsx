@@ -64,8 +64,8 @@ export default async function ModerationPage() {
   // kısa sürede tekrarlanırsa (kopyala-yapıştır yorum bombardımanı sinyali).
   function comboKey(productId: number, extendedData: unknown): string {
     const ext = extendedData as Record<string, unknown> | null | undefined;
-    const pros = ((ext?.pros as string[] | undefined) ?? []).slice().sort();
-    const cons = ((ext?.cons as string[] | undefined) ?? []).slice().sort();
+    const pros = (Array.isArray(ext?.pros) ? (ext.pros as string[]) : []).slice().sort();
+    const cons = (Array.isArray(ext?.cons) ? (ext.cons as string[]) : []).slice().sort();
     return `${productId}:${pros.join(",")}|${cons.join(",")}`;
   }
 

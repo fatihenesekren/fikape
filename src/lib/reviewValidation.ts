@@ -141,6 +141,8 @@ export interface ValidationResult {
 export interface ContentCheckOptions {
   /** Takas mesajlaşması gibi 1-1 kapalı bağlamlarda ek kurallar (uygulama adı anımı). */
   strict?: boolean;
+  /** Marka/model/donanım adı gibi kısa teknik adlarda ("Golf (2012-2019)") harf oranı kuralı uygulanmaz. */
+  harfOraniAtla?: boolean;
 }
 
 // Yorum metinleri için içerik kontrolü: genel kurallar + plaka. Takas/soru-cevap gibi diğer
@@ -230,9 +232,15 @@ export function checkContent(t: string, opts: ContentCheckOptions = {}): Validat
     }
   }
 
+  // Ad alanlarında harf oranı kuralı atlanırken ("Golf (2012-2019)"), ayraçla gizlenmiş telefon ("0532/123/45/67") yine yakalansın:
+  // yıl benzeri 4 haneli gruplar (19xx/20xx) sayılmadan kalan rakam sayısı 7 veya fazlaysa reddedilir.
+  if (opts.harfOraniAtla && (t.replace(/\b(?:19|20)\d{2}\b/g, "").match(/\d/g) ?? []).length >= 7) {
+    return err("Lütfen anlamlı bir metin yazınız.", "GIBBERISH");
+  }
+
   // Harf oranı — metnin en az %40'ı harf olmalı
   const letters = (t.match(/[a-züğışöçA-ZÜĞİŞÖÇ]/g) ?? []).length;
-  if (t.length > 15 && letters / t.length < 0.4) {
+  if (!opts.harfOraniAtla && t.length > 15 && letters / t.length < 0.4) {
     return err("Lütfen anlamlı bir metin yazınız.", "GIBBERISH");
   }
 

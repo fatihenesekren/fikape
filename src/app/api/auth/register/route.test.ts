@@ -5,7 +5,8 @@ const prismaMock = vi.hoisted(() => ({
   consentLog: { create: vi.fn() },
 }));
 vi.mock("@/lib/prisma", () => ({ prisma: prismaMock }));
-vi.mock("@/lib/rateLimit", () => ({ rateLimitByIp: vi.fn(async () => true) }));
+const rateLimitMock = vi.hoisted(() => ({ rateLimitByIp: vi.fn(async () => true), rateLimitByEmail: vi.fn(async () => true) }));
+vi.mock("@/lib/rateLimit", () => rateLimitMock);
 vi.mock("@/lib/emailToken", () => ({ createVerificationToken: vi.fn(() => "tok") }));
 vi.mock("@/lib/email", () => ({ sendVerificationEmail: vi.fn(async () => {}), sendAccountExistsEmail: vi.fn(async () => {}) }));
 vi.mock("@/lib/accessLog", () => ({ logAccess: vi.fn(async () => {}) }));
@@ -88,5 +89,18 @@ describe("kayıt: e-posta numaralandırma koruması", () => {
     expect(prismaMock.user.create).not.toHaveBeenCalled();
     await new Promise((r) => setTimeout(r, 0)); // arka plana bırakılan gönderim
     expect(sendAccountExistsEmail).toHaveBeenCalledWith("yeni@example.com");
+    expect(rateLimitMock.rateLimitByEmail).toHaveBeenCalledWith("yeni@example.com", "register-exists", 2, 60 * 60 * 1000);
+  });
+
+  it("adres başına limit aşılınca yine 201 döner ama e-posta gönderilmez (e-posta bombalama koruması)", async () => {
+    prismaMock.user.findUnique.mockResolvedValue({ id: 7, email: "yeni@example.com" });
+    rateLimitMock.rateLimitByEmail.mockResolvedValueOnce(false);
+    const { sendAccountExistsEmail } = await import("@/lib/email");
+    vi.mocked(sendAccountExistsEmail).mockClear();
+    const res = await POST(istek(govde()));
+    expect(res.status).toBe(201);
+    expect(await res.json()).toEqual({ ok: true });
+    await new Promise((r) => setTimeout(r, 0));
+    expect(sendAccountExistsEmail).not.toHaveBeenCalled();
   });
 });

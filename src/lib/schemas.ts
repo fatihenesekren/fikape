@@ -80,7 +80,15 @@ export const vehicleSuggestSchema = z.object({
   wouldBuyAgain:  z.boolean().optional().nullable(),
   ownershipMonths: z.union([z.number(), z.string()]).optional().nullable(),
   extendedData:   z.record(z.string(), z.unknown()).optional().nullable()
-    .refine((v) => v == null || JSON.stringify(v).length <= 4000, "Ek veri çok büyük."),
+    .refine((v) => v == null || JSON.stringify(v).length <= 4000, "Ek veri çok büyük.")
+    // pros/cons yorum kartları ve admin moderasyonu tarafından dizi olarak okunur; doğrulanmamış değer bu sayfaları çökertebilir.
+    .refine((v) => {
+      if (v == null) return true;
+      return (["pros", "cons"] as const).every((k) => {
+        const x = v[k];
+        return x === undefined || (Array.isArray(x) && x.length <= 3 && x.every((c) => typeof c === "string" && gecerliCipAnahtariMi(c)));
+      });
+    }, "Geçersiz artı/eksi seçimi."),
 });
 
 export const questionCreateSchema = z.object({
