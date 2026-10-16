@@ -2,7 +2,7 @@ import { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 
 // Gösterilen araç puanı = yorumlardaki düz ortalama (sayfada görünen yorum puanlarıyla birebir uyumlu, kullanıcıya açıklama gerektirmez).
-// SIRALAMA (ana sayfa "en yüksek puanlı", vitrin seçimi) için ayrıca `siralamaPuani` hesaplanır: güvene göre ağırlıklı ve az yorumda
+// SIRALAMA (ana sayfa "en yüksek puanlı" slider'ı) için ayrıca `siralamaPuani` hesaplanır: güvene göre ağırlıklı ve az yorumda
 // sitenin genel ortalamasına çekilmiş (Bayes) puan. Kullanıcı görmez; az yorumlu aracın tek bir uç/sahte puanla zirveye çıkmasını önler.
 //  - Ağırlık: yorumun güven skoru (Review.trustScore 0-100, bkz. trustScore.ts) → 0,7×–1,2×.
 //  - Sönümleme: SANAL_YORUM kadar sanal yorum, genel ortalamada.

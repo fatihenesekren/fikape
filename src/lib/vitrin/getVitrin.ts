@@ -39,7 +39,7 @@ export async function vitrinHesapla(): Promise<VitrinKart[]> {
   ]);
   const yorumMap = new Map(yorumlar.map((y) => [y.productId, y]));
   const anlikMap = new Map(anlik.map((s) => [s.productId, s._sum.weeklyViews ?? 0]));
-  const ortalamalar = yorumlar.map((y) => y.siralamaPuani).filter((x) => x > 0);
+  const ortalamalar = yorumlar.map((y) => y._avg.scoreOverall).filter((x) => x > 0);
   const globalOrtalama = ortalamalar.length ? ortalamalar.reduce((a, b) => a + b, 0) / ortalamalar.length : 0;
 
   const adaylar: VitrinAday[] = urunler.map((u) => {
@@ -48,7 +48,7 @@ export async function vitrinHesapla(): Promise<VitrinKart[]> {
       id: u.id, modelId: u.modelId, categorySlug: u.category?.slug ?? "?",
       attributes: (u.attributes ?? {}) as Record<string, unknown>, year: u.year, yayinda: true, imageUrl: u.imageUrl,
       atifVar: u.imageCredit != null, aiOzetOnayli: true,
-      yorumSayisi: y?._count.id ?? 0, yorumOrtalamasi: y?.siralamaPuani ?? 0,
+      yorumSayisi: y?._count.id ?? 0, yorumOrtalamasi: y?._avg.scoreOverall ?? 0, // kürasyon kendi Bayes küçültmesini uygular (çift sönümleme olmasın)
       goruntulenme: (anlikMap.get(u.id) ?? 0) + (u.weeklyViewCount ?? 0),
     };
   });
