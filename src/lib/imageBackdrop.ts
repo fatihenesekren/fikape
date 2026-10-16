@@ -76,3 +76,25 @@ export async function getImageBackdrop(url: string): Promise<Backdrop> {
     return { kind: "unknown" };
   }
 }
+
+/**
+ * Zemini düz olmayan (busy) fotoğraf kutuyu doldururken (cover) dikey/kareye yakın bir fotoğrafta aracı üstten-alttan
+ * keser (örn. gidonu/dikme boyu uzun scooter: kart ~1,8:1, fotoğraf ~1,25:1). Oranı bu değerin altındaki busy
+ * fotoğraflar kırpılmaz; kendi bulanık kopyası üzerine sığdırılır (BackdropImage).
+ */
+export const BUSY_SIGDIR_ESIGI = 1.45;
+
+async function oranHesapla(url: string): Promise<number | null> {
+  const { buffer } = await guvenliGorselIndir(url, { zamanAsimiMs: 8000 });
+  const m = await sharp(buffer).metadata();
+  return m.width && m.height ? m.width / m.height : null;
+}
+
+/** Fotoğrafın en/boy oranı (kalıcı önbellekli); okunamazsa null. */
+export async function getImageOran(url: string): Promise<number | null> {
+  try {
+    return await unstable_cache(() => oranHesapla(url), ["image-oran-v1", url], { revalidate: 60 * 60 * 24 * 365 })();
+  } catch {
+    return null;
+  }
+}
