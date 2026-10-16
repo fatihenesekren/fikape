@@ -18,6 +18,10 @@ function nonceliSonraki(req: NextRequest): NextResponse {
   const istekBasliklari = new Headers(req.headers);
   istekBasliklari.set("x-nonce", nonce);
   istekBasliklari.set("content-security-policy-report-only", politika);
+  // Next nonce'u istek başlığındaki politikadan okur. Canlıda (Vercel) report-only adlı istek başlığı Next'e ulaşmıyor, yalnız
+  // x-nonce ulaşıyordu (Next'in kendi scriptleri nonce'suz çıkıyordu). Aynı politika iç istek başlığı olarak `content-security-policy`
+  // adıyla da verilir; bu başlık tarayıcıya GİTMEZ (yanıttaki zorlanan politika next.config.ts'te, değişmedi).
+  istekBasliklari.set("content-security-policy", politika);
   const res = NextResponse.next({ request: { headers: istekBasliklari } });
   res.headers.set("Content-Security-Policy-Report-Only", politika);
   return res;
