@@ -1,3 +1,4 @@
+import { temizSearchParams, guvenliTamsayi } from "@/lib/searchParamsTemiz";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Prisma } from "@/generated/prisma/client";
@@ -57,14 +58,14 @@ export default async function TakasPage({
 }: {
   searchParams: Promise<TakasSearchParams>;
 }) {
-  const params = await searchParams;
+  const params = temizSearchParams(await searchParams);
   const il = params.il ?? "";
   // Üst sınır: botların çok derin offset sorguları çekmesini engeller (20'lik sayfada 1000 ilan).
   const page = Math.min(MAX_SAYFA, Math.max(1, parseInt(params.sayfa ?? "1") || 1));
-  const yilMin = params.yilMin ? parseInt(params.yilMin) : undefined;
-  const yilMax = params.yilMax ? parseInt(params.yilMax) : undefined;
-  const kmMin = params.kmMin ? parseInt(params.kmMin) : undefined;
-  const kmMax = params.kmMax ? parseInt(params.kmMax) : undefined;
+  const yilMin = guvenliTamsayi(params.yilMin, 1900, 2100);
+  const yilMax = guvenliTamsayi(params.yilMax, 1900, 2100);
+  const kmMin = guvenliTamsayi(params.kmMin);
+  const kmMax = guvenliTamsayi(params.kmMax);
   const yakit = params.yakit ?? "";
   const vites = params.vites ?? "";
   const q = (params.q ?? "").trim();

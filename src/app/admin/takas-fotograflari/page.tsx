@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function TakasFotograflariPage() {
+  await adminSayfaKorumasi();
   const pending = await prisma.tradeListingPhoto.findMany({
     where: { status: "PENDING", tradeListing: { isActive: true } },
     orderBy: { createdAt: "asc" },

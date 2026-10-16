@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 
@@ -16,6 +17,7 @@ const PAYMENT_LABEL: Record<string, string> = {
 // Bu ilk adım: admin-içi bir görünüm. Dışa açık/ücretli bir API-as-a-Product'a
 // dönüştürmek ayrı bir ürün kararı gerektirir, kapsam dışı bırakıldı.
 export default async function TakasTalepRaporuPage() {
+  await adminSayfaKorumasi();
   const [byCity, byPaymentIntent, byWantCategory, activeCount, totalCount] = await Promise.all([
     prisma.tradeListing.groupBy({
       by: ["city"],

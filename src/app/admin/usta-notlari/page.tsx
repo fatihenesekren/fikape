@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { ExpertNoteActions } from "./ExpertNoteActions";
 import { ExpertAnswerActions } from "./ExpertAnswerActions";
@@ -15,6 +16,7 @@ const VISIBILITY_LABEL: Record<string, string> = {
 };
 
 export default async function ExpertNotesModerationPage() {
+  await adminSayfaKorumasi();
   const [notes, activeProfiles, pendingAnswers] = await Promise.all([
     prisma.expertNote.findMany({
       where: { status: "PENDING" },

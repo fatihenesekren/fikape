@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { LeadStatusSelect } from "./LeadStatusSelect";
@@ -14,6 +15,7 @@ const SALE_TYPE_LABEL: Record<string, string> = {
 };
 
 export default async function AdminLeadsPage() {
+  await adminSayfaKorumasi();
   const [insuranceLeads, saleLeads, plusWaitlist] = await Promise.all([
     prisma.insuranceLead.findMany({
       orderBy: { createdAt: "desc" },

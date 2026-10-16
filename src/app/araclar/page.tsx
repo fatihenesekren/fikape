@@ -57,7 +57,8 @@ const FACET_KEYS = ["yakit", "govde", "segment", "tip", "cc", "guc", "cekis", "m
 function parseSelectedFacets(params: SearchParams): Record<string, string[]> {
   const out: Record<string, string[]> = {};
   for (const k of FACET_KEYS) {
-    const raw = params[k];
+    const ham = params[k] as unknown;
+    const raw = typeof (Array.isArray(ham) ? ham[0] : ham) === "string" ? String(Array.isArray(ham) ? ham[0] : ham).slice(0, 300) : undefined;
     if (raw) out[k] = raw.split(",").map((s) => s.trim()).filter(Boolean);
   }
   return out;

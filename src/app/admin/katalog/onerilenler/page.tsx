@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { KIRILIMLAR } from "@/lib/katalogOneri/kirilimlar";
 import { AltMenu } from "../AltMenu";
@@ -13,6 +14,7 @@ const SECIM = {
 } as const;
 
 export default async function OnerilenlerPage() {
+  await adminSayfaKorumasi();
   const [bekleyen, karar] = await Promise.all([
     prisma.newVehicleCandidate.findMany({ where: { durum: "ONERILDI" }, select: SECIM, orderBy: [{ ay: "desc" }, { skor: "desc" }] }),
     prisma.newVehicleCandidate.findMany({ where: { durum: { not: "ONERILDI" } }, select: SECIM, orderBy: { kararTarihi: "desc" }, take: 30 }),

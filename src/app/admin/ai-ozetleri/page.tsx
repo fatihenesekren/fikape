@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { AiSummaryList } from "./AiSummaryList";
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AiOzetleriPage() {
+  await adminSayfaKorumasi();
   const pending = await prisma.aiVehicleSummary.findMany({
     where: { status: "PENDING_APPROVAL" },
     orderBy: { generatedAt: "asc" },

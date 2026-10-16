@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
@@ -27,6 +28,7 @@ const FIX_LINKS: Record<string, { href: string; label: string }> = {
 };
 
 export default async function IcerikBildirimleriPage() {
+  await adminSayfaKorumasi();
   const reports = await prisma.contentReport.findMany({
     where: { status: "PENDING" },
     include: {

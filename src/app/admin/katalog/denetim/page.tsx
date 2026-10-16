@@ -1,3 +1,4 @@
+import { adminSayfaKorumasi } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { AltMenu } from "../AltMenu";
 
@@ -14,6 +15,7 @@ const EYLEM_ETIKETI: Record<string, string> = {
 };
 
 export default async function DenetimPage() {
+  await adminSayfaKorumasi();
   const kayitlar = await prisma.catalogAuditLog.findMany({ orderBy: { id: "desc" }, take: 100 });
   return (
     <div className="px-4 sm:px-8 py-10 max-w-3xl">
