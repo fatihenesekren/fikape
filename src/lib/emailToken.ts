@@ -3,6 +3,14 @@ import { createHmac, timingSafeEqual } from "crypto";
 // Amaca özel anahtar tanımlıysa (EMAIL_TOKEN_SECRET) e-posta/şifre sıfırlama token imzası JWT anahtarından ayrılır.
 const SECRET = (process.env.EMAIL_TOKEN_SECRET || process.env.AUTH_SECRET)!;
 
+// Alan ayrımı: doğrulama ve sıfırlama token'ları aynı anahtarla imzalanır; imzaya amaç öneki katılır ki biri diğerinin yerine
+// kullanılamasın (ayrıştırma biçimindeki parça sayısı farkına güvenilmez).
+const ALAN_DOGRULAMA = "email-verify-v2";
+const ALAN_SIFIRLAMA = "password-reset-v2";
+function imzala(alan: string, veri: string): string {
+  return createHmac("sha256", SECRET).update(`${alan}|${veri}`).digest("hex");
+}
+
 // Token içindeki imza kullanıcıdan geliyor (base64url decode + split) — uzunluğu
 // garanti değil, bozuk/kısaltılmış bir token gönderilirse timingSafeEqual eşit
 // olmayan buffer'larda exception fırlatır. Önce uzunluk kontrolü yapılıyor.
@@ -17,7 +25,7 @@ function safeEqual(a: string | undefined, b: string): boolean {
 export function createVerificationToken(userId: number): string {
   const expiry = Date.now() + 24 * 60 * 60 * 1000; // 24 saat
   const payload = `${userId}:${expiry}`;
-  const sig = createHmac("sha256", SECRET).update(payload).digest("hex");
+  const sig = imzala(ALAN_DOGRULAMA, payload);
   return Buffer.from(`${payload}:${sig}`).toString("base64url");
 }
 
@@ -27,7 +35,7 @@ export function verifyEmailToken(token: string): { userId: number } | null {
     const [userIdStr, expiryStr, sig] = decoded.split(":");
     if (!userIdStr || !expiryStr || !sig) return null;
     const payload = `${userIdStr}:${expiryStr}`;
-    const expected = createHmac("sha256", SECRET).update(payload).digest("hex");
+    const expected = imzala(ALAN_DOGRULAMA, payload);
     if (!safeEqual(sig, expected)) return null;
     if (Date.now() > Number(expiryStr)) return null;
     return { userId: Number(userIdStr) };
@@ -41,9 +49,9 @@ export function verifyEmailToken(token: string): { userId: number } | null {
 // ayrı bir DB alanı (resetToken/expiry) veya migration gerekmez.
 export function createPasswordResetToken(userId: number, currentPasswordHash: string): string {
   const expiry = Date.now() + 60 * 60 * 1000; // 1 saat
-  const hashFingerprint = createHmac("sha256", SECRET).update(currentPasswordHash).digest("hex").slice(0, 16);
+  const hashFingerprint = imzala(ALAN_SIFIRLAMA + "-fp", currentPasswordHash).slice(0, 16);
   const payload = `${userId}:${expiry}:${hashFingerprint}`;
-  const sig = createHmac("sha256", SECRET).update(payload).digest("hex");
+  const sig = imzala(ALAN_SIFIRLAMA, payload);
   return Buffer.from(`${payload}:${sig}`).toString("base64url");
 }
 
@@ -53,10 +61,10 @@ export function verifyPasswordResetToken(token: string, currentPasswordHash: str
     const [userIdStr, expiryStr, hashFingerprint, sig] = decoded.split(":");
     if (!userIdStr || !expiryStr || !hashFingerprint || !sig) return null;
     const payload = `${userIdStr}:${expiryStr}:${hashFingerprint}`;
-    const expected = createHmac("sha256", SECRET).update(payload).digest("hex");
+    const expected = imzala(ALAN_SIFIRLAMA, payload);
     if (!safeEqual(sig, expected)) return null;
     if (Date.now() > Number(expiryStr)) return null;
-    const expectedFingerprint = createHmac("sha256", SECRET).update(currentPasswordHash).digest("hex").slice(0, 16);
+    const expectedFingerprint = imzala(ALAN_SIFIRLAMA + "-fp", currentPasswordHash).slice(0, 16);
     if (!safeEqual(hashFingerprint, expectedFingerprint)) return null; // şifre zaten değişmiş
     return { userId: Number(userIdStr) };
   } catch {

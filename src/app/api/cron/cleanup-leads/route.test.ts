@@ -6,6 +6,7 @@ const prismaMock = vi.hoisted(() => ({
   dataDeletionRequest: { findMany: vi.fn() },
   consentLog: { deleteMany: vi.fn() },
   plusWaitlistEntry: { deleteMany: vi.fn() },
+  searchQueryLog: { deleteMany: vi.fn() },
   expertNoteTakedownRequest: { updateMany: vi.fn() },
 }));
 vi.mock("@/lib/prisma", () => ({ prisma: prismaMock }));
@@ -22,6 +23,7 @@ describe("cleanup-leads: rıza kaydı temizliği (hesap silme tamamlandıktan 2 
     prismaMock.insuranceLead.deleteMany.mockResolvedValue({ count: 0 });
     prismaMock.saleLead.deleteMany.mockResolvedValue({ count: 0 });
     prismaMock.plusWaitlistEntry.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.searchQueryLog.deleteMany.mockResolvedValue({ count: 0 });
     prismaMock.expertNoteTakedownRequest.updateMany.mockResolvedValue({ count: 0 });
   });
 
@@ -56,6 +58,7 @@ describe("cleanup-leads: bekleme listesi ve kaldırma talebi saklama süresi", (
     prismaMock.saleLead.deleteMany.mockResolvedValue({ count: 0 });
     prismaMock.dataDeletionRequest.findMany.mockResolvedValue([]);
     prismaMock.plusWaitlistEntry.deleteMany.mockResolvedValue({ count: 4 });
+    prismaMock.searchQueryLog.deleteMany.mockResolvedValue({ count: 9 });
     prismaMock.expertNoteTakedownRequest.updateMany.mockResolvedValue({ count: 2 });
   });
 

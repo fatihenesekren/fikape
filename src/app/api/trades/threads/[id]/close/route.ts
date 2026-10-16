@@ -1,3 +1,4 @@
+import { kullaniciLimiti } from "@/lib/userRateLimit";
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
@@ -19,6 +20,9 @@ export async function POST(
 
   const session = await auth();
   if (!session?.user?.id) return NextResponse.json({ error: "Giriş gerekli." }, { status: 401 });
+  // Her adım karşı tarafa bildirim üretir: aç/kapat ve ilgi döngüleriyle bildirim selini önlemek için saatlik sınır
+  const limit = await kullaniciLimiti(session, "thread-close", 20, 60 * 60 * 1000);
+  if (limit) return limit;
 
   const { id } = await params;
   const threadId = pozitifTamsayiId(id) ?? NaN;

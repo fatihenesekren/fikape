@@ -58,7 +58,8 @@ export default async function YorumYazPage({
       OR: [
         { isActive: true },
         // PENDING ürün: öneri akışından gelen slug ile doğrudan yorum yazılabilir
-        ...(arac ? [{ slug: arac, status: "PENDING" as const }] : []),
+        // Yalnız öneriyi yapan kullanıcıya açık (başka kullanıcının moderasyon bekleyen önerisi slug ile görülemesin)
+        ...(arac ? [{ slug: arac, status: "PENDING" as const, suggestions: { some: { userId } } }] : []),
       ],
     },
     select: {

@@ -83,6 +83,12 @@ export async function POST(
     return NextResponse.json({ ok: true, action: "REJECTED" });
   }
 
+  // Önizlenen görsel adresi istemciden gelir ve doğrudan Product.imageUrl'e yazılır: yalnız https ve izinli sunucular
+  // (Wikimedia, kendi Blob deposu); aksi hâlde sunucu tarafı görsel çekme (imageBackdrop) ve içerik enjeksiyonu riski doğar.
+  if (typeof previewedImageUrl === "string" && !fotoUrlGecerli(previewedImageUrl, [".wikimedia.org", ".public.blob.vercel-storage.com"])) {
+    return NextResponse.json({ error: "Geçersiz görsel adresi." }, { status: 422 });
+  }
+
   // ── ONAYLAMA ──
 
   // Moderatör düzeltmesi: marka/model/donanım/yıl/yakıt/vites onaydan ÖNCE düzeltilebilir. Kalıcı kayıt (ve canlı

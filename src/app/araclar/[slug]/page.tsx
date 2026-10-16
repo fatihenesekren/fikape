@@ -1,3 +1,5 @@
+import { headers } from "next/headers";
+import { botIstegiMi } from "@/lib/botIstegi";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { yeniEtkilesimeAcikMi, urunPasifMi } from "@/lib/urunDurumu";
@@ -145,10 +147,13 @@ export default async function VehicleDetailPage({
       },
     }),
     auth(),
-    prisma.product.updateMany({
-      where: { slug },
-      data: { viewCount: { increment: 1 }, weeklyViewCount: { increment: 1 } },
-    }).catch(() => {}),
+    // Görüntülenme sayacı vitrin sıralamasına girer: botlar ve yayında olmayan (PENDING/REJECTED/pasif) araçlar sayılmaz
+    botIstegiMi((await headers()).get("user-agent"))
+      ? Promise.resolve()
+      : prisma.product.updateMany({
+          where: { slug, isActive: true, status: "ACTIVE" },
+          data: { viewCount: { increment: 1 }, weeklyViewCount: { increment: 1 } },
+        }).catch(() => {}),
   ]);
 
   if (!product) notFound();

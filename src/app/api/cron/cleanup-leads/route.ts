@@ -44,6 +44,9 @@ export async function GET(req: Request) {
 
     const bekleme = await prisma.plusWaitlistEntry.deleteMany({ where: { createdAt: { lt: new Date(Date.now() - WAITLIST_RETENTION_MS) } } });
 
+    // Arama günlüğü analiz amaçlıdır; 180 günden eskisi silinir (tablo herkese açık isteklerle büyür).
+    const aramaLogu = await prisma.searchQueryLog.deleteMany({ where: { createdAt: { lt: new Date(Date.now() - 180 * 24 * 60 * 60 * 1000) } } });
+
     const takedown = await prisma.expertNoteTakedownRequest.updateMany({
       where: {
         status: { in: ["RESOLVED_REMOVED", "RESOLVED_CORRECTED", "RESOLVED_REJECTED", "RESOLVED_REPLY_GRANTED", "WITHDRAWN"] },
@@ -57,6 +60,7 @@ export async function GET(req: Request) {
     return NextResponse.json({
       ok: true,
       deletedWaitlistEntries: bekleme.count,
+      deletedSearchLogs: aramaLogu.count,
       anonymizedTakedownRequests: takedown.count,
       deletedInsuranceLeads: insuranceResult.count,
       deletedSaleLeads: saleResult.count,
