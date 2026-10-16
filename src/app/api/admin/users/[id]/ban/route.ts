@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
@@ -52,5 +53,6 @@ export async function POST(
     }),
   ]);
 
+  await adminEylemiKaydet({ adminId: Number(session.user.id), action: "USER_BAN", entityType: "USER", entityId: userId, meta: { reason: typeof reason === "string" ? reason.trim().slice(0, 300) : null } });
   return NextResponse.json({ ok: true });
 }

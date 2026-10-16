@@ -99,7 +99,7 @@ export async function PATCH(
       data: {
         status: "REJECTED",
         rejectedAt: new Date(),
-        rejectionReason: body.reason?.slice(0, 300) || null,
+        rejectionReason: typeof body.reason === "string" ? body.reason.slice(0, 300) || null : null,
       },
     });
     if (count === 0) {

@@ -1,3 +1,4 @@
+import { yuklemeYetkisiYoksaYanit } from "@/lib/yuklemeYetkisi";
 import { checkRateLimit } from "@/lib/rateLimit";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
@@ -17,6 +18,8 @@ export async function POST(req: Request) {
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Giriş gerekiyor" }, { status: 401 });
   }
+  const yetkiHatasi = await yuklemeYetkisiYoksaYanit(Number(session.user.id));
+  if (yetkiHatasi) return yetkiHatasi;
 
   const body = (await req.json().catch(() => null)) as HandleUploadBody | null;
   if (!body) return NextResponse.json({ error: "Geçersiz istek." }, { status: 400 });

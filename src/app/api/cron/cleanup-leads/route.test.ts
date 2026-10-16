@@ -5,6 +5,9 @@ const prismaMock = vi.hoisted(() => ({
   saleLead: { deleteMany: vi.fn() },
   dataDeletionRequest: { findMany: vi.fn() },
   consentLog: { deleteMany: vi.fn() },
+  plusWaitlistEntry: { deleteMany: vi.fn() },
+  searchQueryLog: { deleteMany: vi.fn() },
+  expertNoteTakedownRequest: { updateMany: vi.fn() },
 }));
 vi.mock("@/lib/prisma", () => ({ prisma: prismaMock }));
 vi.mock("@/lib/cronAuth", () => ({ cronYetkili: vi.fn(() => true) }));
@@ -19,6 +22,9 @@ describe("cleanup-leads: rıza kaydı temizliği (hesap silme tamamlandıktan 2 
     vi.clearAllMocks();
     prismaMock.insuranceLead.deleteMany.mockResolvedValue({ count: 0 });
     prismaMock.saleLead.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.plusWaitlistEntry.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.searchQueryLog.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.expertNoteTakedownRequest.updateMany.mockResolvedValue({ count: 0 });
   });
 
   it("2 yıldan eski tamamlanmış silme talebi olan kullanıcıların rıza kayıtları silinir", async () => {
@@ -42,5 +48,28 @@ describe("cleanup-leads: rıza kaydı temizliği (hesap silme tamamlandıktan 2 
     const govde = await (await GET(new Request("http://x/api/cron/cleanup-leads"))).json();
     expect(prismaMock.consentLog.deleteMany).not.toHaveBeenCalled();
     expect(govde.deletedConsentLogs).toBe(0);
+  });
+});
+
+describe("cleanup-leads: bekleme listesi ve kaldırma talebi saklama süresi", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    prismaMock.insuranceLead.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.saleLead.deleteMany.mockResolvedValue({ count: 0 });
+    prismaMock.dataDeletionRequest.findMany.mockResolvedValue([]);
+    prismaMock.plusWaitlistEntry.deleteMany.mockResolvedValue({ count: 4 });
+    prismaMock.searchQueryLog.deleteMany.mockResolvedValue({ count: 9 });
+    prismaMock.expertNoteTakedownRequest.updateMany.mockResolvedValue({ count: 2 });
+  });
+
+  it("2 yıldan eski bekleme listesi kayıtlarını siler, kapanmış kaldırma taleplerinin kişisel verisini anonimleştirir", async () => {
+    const govde = await (await GET(new Request("http://x/api/cron/cleanup-leads"))).json();
+    expect(govde).toMatchObject({ ok: true, deletedWaitlistEntries: 4, anonymizedTakedownRequests: 2 });
+    const bekleme = prismaMock.plusWaitlistEntry.deleteMany.mock.calls[0][0].where.createdAt.lt as Date;
+    expect(Date.now() - bekleme.getTime()).toBeGreaterThan(729 * DAY);
+    const talep = prismaMock.expertNoteTakedownRequest.updateMany.mock.calls[0][0];
+    expect(talep.where.appealStatus).toEqual({ not: "PENDING" });
+    expect(talep.where.status.in).not.toContain("UNDER_REVIEW");
+    expect(talep.data).toMatchObject({ claimantOrg: null, claimantPhone: null, claimantUserId: null });
   });
 });

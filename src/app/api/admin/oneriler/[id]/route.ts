@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import { adminOturumu } from "@/lib/adminAuth";
@@ -78,7 +79,14 @@ export async function POST(
       where: { id: suggestionId },
       data: { status: "REJECTED", adminNote: adminNote ?? null, reviewedAt: new Date(), reviewedBy: admin.userId },
     });
+    await adminEylemiKaydet({ adminId: admin.userId, action: "SUGGESTION_REJECT", entityType: "SUGGESTION", entityId: suggestionId });
     return NextResponse.json({ ok: true, action: "REJECTED" });
+  }
+
+  // Önizlenen görsel adresi istemciden gelir ve doğrudan Product.imageUrl'e yazılır: yalnız https ve izinli sunucular
+  // (Wikimedia, kendi Blob deposu); aksi hâlde sunucu tarafı görsel çekme (imageBackdrop) ve içerik enjeksiyonu riski doğar.
+  if (typeof previewedImageUrl === "string" && !fotoUrlGecerli(previewedImageUrl, [".wikimedia.org", ".public.blob.vercel-storage.com"])) {
+    return NextResponse.json({ error: "Geçersiz görsel adresi." }, { status: 422 });
   }
 
   // ── ONAYLAMA ──
@@ -229,6 +237,7 @@ export async function POST(
     revalidateTag(ARAC_HAVUZU_ETIKETI, { expire: 0 });
     try { await notifyGarageBrandFollowers(productId); } catch (e) { console.error("[notifyGarageBrandFollowers]", e); }
     await syncAiVehicleSummary(productId).catch((e) => console.error("[ai-vehicle-summary]", e));
+    await adminEylemiKaydet({ adminId: admin.userId, action: "SUGGESTION_APPROVE", entityType: "SUGGESTION", entityId: suggestionId, meta: { productId } });
     return NextResponse.json({ ok: true, action: "APPROVED", productId });
   }
 

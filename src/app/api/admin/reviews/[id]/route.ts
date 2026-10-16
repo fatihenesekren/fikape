@@ -29,7 +29,9 @@ export async function PATCH(
   const reviewId = pozitifTamsayiId(id);
   if (reviewId === null) return NextResponse.json({ error: "Geçersiz kimlik." }, { status: 400 });
   const moderatorId = parseInt(session.user.id);
-  const { action, reason } = (await req.json().catch(() => null) ?? {}) as { action: "approve" | "reject"; reason?: string };
+  const { action, reason: hamNeden } = (await req.json().catch(() => null) ?? {}) as { action: "approve" | "reject"; reason?: unknown };
+  // Ret nedeni yalnız metin ve makul uzunlukta (tip kontrolsüz değer Prisma hatasına/500'e yol açıyordu)
+  const reason: string | undefined = typeof hamNeden === "string" ? hamNeden.slice(0, 500) : undefined;
 
   const existingReview = await prisma.review.findUnique({
     where: { id: reviewId },

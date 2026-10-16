@@ -1,4 +1,5 @@
 import { gecerliCipAnahtariMi } from "@/lib/chips";
+import { yayginSifreMi } from "@/lib/yayginSifreler";
 import { z } from "zod";
 import { TURKISH_CITIES } from "@/lib/turkishCities";
 import { SOLD_REASONS } from "@/lib/soldReasons";
@@ -29,11 +30,14 @@ export const reviewCreateSchema = z.object({
 export const passwordSchema = z.string()
   .min(8, "Şifre en az 8 karakter olmalıdır.")
   .max(72, "Şifre en fazla 72 karakter olabilir.")
+  // bcrypt yalnız ilk 72 BAYTI kullanır; Türkçe karakterler 2 bayt olduğundan karakter sınırı yetmez
+  .refine((v) => new TextEncoder().encode(v).length <= 72, "Şifre en fazla 72 bayt olabilir (Türkçe karakterler 2 bayt sayılır).")
   .regex(/[A-ZÇĞİÖŞÜ]/, "Şifre en az 1 büyük harf içermelidir.")
   .regex(/[a-zçğıöşü]/, "Şifre en az 1 küçük harf içermelidir.")
   .regex(/[0-9]/, "Şifre en az 1 rakam içermelidir.")
   .regex(/[!@#$%^&*(),.?":{}|<>_\-+=[\]/\\;'`~]/, "Şifre en az 1 özel karakter içermelidir.")
-  .regex(/^\S*$/, "Şifre boşluk karakteri içeremez.");
+  .regex(/^\S*$/, "Şifre boşluk karakteri içeremez.")
+  .refine((v) => !yayginSifreMi(v), "Bu şifre çok tahmin edilebilir; lütfen daha özgün bir şifre seçin.");
 
 export const displayNameSchema = z.string().trim()
   .min(3, "Görünen ad en az 3 karakter olmalıdır.")

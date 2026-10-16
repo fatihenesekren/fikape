@@ -133,26 +133,45 @@ export async function POST(req: Request) {
     );
   }
 
-  const review = await prisma.review.create({
-    data: {
-      userId,
-      productId:   product.id,
-      userProductId: garajEntry?.id ?? null,
-      scoreFiyat,
-      scoreKalite,
-      scorePerformans,
-      scoreOverall,
-      summaryText:             summaryText?.trim() ?? "",
-      detailText:              detailText?.trim() || null,
-      wouldBuyAgain:           wouldBuyAgain ?? null,
-      ownershipMonthsAtReview: ownershipMonths ? Number(ownershipMonths) : null,
-      extendedData:            mergedExtended,
-      status:                  "PENDING",
-      ipHash,
-      userAgentHash,
-      trustScore,
-    },
+  // Yarış koruması: kullanıcı başına advisory kilit + kontrollerin işlem içinde yeniden yapılması. Aksi hâlde aynı anda gönderilen
+  // paralel istekler hem "araç başına tek yorum" hem günlük limiti aşabilirdi (kontrol ile create atomik değildi).
+  const sonuc = await prisma.$transaction(async (tx) => {
+    await tx.$executeRaw`SELECT pg_advisory_xact_lock(${userId}::int, 0)`;
+    const cakisan = await tx.review.findFirst({
+      where: { userId, productId: product.id, status: { in: ["PENDING", "PUBLISHED"] } },
+      select: { id: true },
+    });
+    if (cakisan) return { hata: "VAR" as const };
+    const sayi = await tx.review.count({ where: { userId, createdAt: { gte: new Date(Date.now() - RATE_LIMIT_WINDOW_MS) } } });
+    if (sayi >= RATE_LIMIT_COUNT) return { hata: "LIMIT" as const };
+    const r = await tx.review.create({
+      data: {
+        userId,
+        productId:   product.id,
+        userProductId: garajEntry?.id ?? null,
+        scoreFiyat,
+        scoreKalite,
+        scorePerformans,
+        scoreOverall,
+        summaryText:             summaryText?.trim() ?? "",
+        detailText:              detailText?.trim() || null,
+        wouldBuyAgain:           wouldBuyAgain ?? null,
+        ownershipMonthsAtReview: ownershipMonths ? Number(ownershipMonths) : null,
+        extendedData:            mergedExtended,
+        status:                  "PENDING",
+        ipHash,
+        userAgentHash,
+        trustScore,
+      },
+    });
+    return { review: r };
   });
+  if ("hata" in sonuc) {
+    return sonuc.hata === "VAR"
+      ? NextResponse.json({ error: "Bu araç için zaten bir yorumun var. Her araç için tek yorum yazılabilir." }, { status: 409 })
+      : NextResponse.json({ error: "Günlük yorum limitine ulaştınız. 24 saat sonra tekrar deneyebilirsiniz." }, { status: 429 });
+  }
+  const review = sonuc.review;
 
   await recordScoreSnapshot({
     reviewId: review.id,

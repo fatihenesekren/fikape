@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import crypto from "crypto";
@@ -49,6 +50,7 @@ export async function PATCH(
       where: { id: requestId },
       data: { status: "REJECTED", completedAt: new Date(), completedBy: Number(session.user.id) },
     });
+    await adminEylemiKaydet({ adminId: Number(session.user.id), action: "DELETION_REJECT", entityType: "DELETION_REQUEST", entityId: requestId, meta: { userId: deletionRequest.userId } });
     return NextResponse.json({ ok: true, status: "REJECTED" });
   }
 
@@ -119,5 +121,6 @@ export async function PATCH(
     await deleteTradePhotoBlobs(tradePhotos.map((p) => p.url)).catch(() => {});
   }
 
+  await adminEylemiKaydet({ adminId: Number(session.user.id), action: "DELETION_APPROVE", entityType: "DELETION_REQUEST", entityId: requestId, meta: { userId: deletedUserId } });
   return NextResponse.json({ ok: true, status: "COMPLETED" });
 }

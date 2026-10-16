@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { pozitifTamsayiId } from "@/lib/validateId";
 import { auth } from "@/auth";
@@ -30,5 +31,6 @@ export async function POST(
     data: { isBanned: false, banReason: null, bannedAt: null },
   });
 
+  await adminEylemiKaydet({ adminId: Number(session.user.id), action: "USER_UNBAN", entityType: "USER", entityId: userId });
   return NextResponse.json({ ok: true });
 }

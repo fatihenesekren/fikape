@@ -40,11 +40,28 @@ export function decryptPhone(payload: string, aad: string): string {
   return Buffer.concat([decipher.update(buf.subarray(28)), decipher.final()]).toString("utf8");
 }
 
-/** Aynı numaranın çok hesapta kullanımını numarayı çözmeden saymak için anahtarlı özet (GCM her seferinde farklı çıktı verir). */
+/**
+ * Aynı numaranın çok hesapta kullanımını numarayı çözmeden saymak için anahtarlı özet (GCM her seferinde farklı çıktı verir).
+ * PHONE_SHARE_KEY tanımlıysa özet o anahtarla (oturum imzasından AYRI) üretilir; tanımsızsa AUTH_SECRET (eski davranış).
+ */
 export function phoneHash(e164: string): string {
+  const k = process.env.PHONE_SHARE_KEY;
+  if (k) return createHmac("sha256", scryptSync(k, "fikape-thread-phone-hash-v1", 32)).update("thread-phone:" + e164).digest("hex");
+  return legacyPhoneHash(e164);
+}
+
+/** PHONE_SHARE_KEY öncesi kayıtların özeti (AUTH_SECRET ile). Sayım sorgularında yeni özetle birlikte aranır. */
+export function legacyPhoneHash(e164: string): string {
   const s = process.env.AUTH_SECRET;
   if (!s) throw new Error("AUTH_SECRET tanımlı değil");
   return createHmac("sha256", s).update("thread-phone:" + e164).digest("hex");
+}
+
+/** Sayım sorgusu için aranacak özetler: güncel + (farklıysa) eski anahtarla üretilmiş kayıtlar. */
+export function phoneHashAdaylari(e164: string): string[] {
+  const guncel = phoneHash(e164);
+  const eski = legacyPhoneHash(e164);
+  return guncel === eski ? [guncel] : [guncel, eski];
 }
 
 export type NormalizedPhone = { e164: string; last2: string };

@@ -1,3 +1,4 @@
+import { leadTelefonuYaz } from "@/lib/leadPhoneCrypto";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -32,7 +33,7 @@ export async function POST(req: Request) {
   }
 
   const lead = await prisma.saleLead.create({
-    data: { userId, productId, type, fullName, phone },
+    data: { userId, productId, type, fullName, phone: leadTelefonuYaz(phone) },
   });
 
   // KVKK açık rıza kaydı — telefonun ileride ortak ekspertiz/alım firmasıyla

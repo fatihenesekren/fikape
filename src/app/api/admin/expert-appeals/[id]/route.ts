@@ -43,6 +43,10 @@ export async function PATCH(
     return NextResponse.json({ error: "Bu itiraz bu işlem için uygun durumda değil." }, { status: 409 });
   }
 
+  if (action !== "overturn" && action !== "uphold") {
+    return NextResponse.json({ error: "Geçersiz işlem." }, { status: 400 });
+  }
+
   if (action === "overturn") {
     if (appeal.subjectType === "NOTE_REJECTION" && appeal.noteId) {
       // Not, itiraz PENDING'te beklerken (kullanıcı düzenleyip yeniden
@@ -75,7 +79,7 @@ export async function PATCH(
       status: action === "overturn" ? "OVERTURNED" : "UPHELD",
       decidedBy: adminId,
       decidedAt: new Date(),
-      decisionNote: decisionNote?.slice(0, 600) || null,
+      decisionNote: typeof decisionNote === "string" ? decisionNote.slice(0, 600) || null : null,
     },
   });
 

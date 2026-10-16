@@ -1,3 +1,4 @@
+import { adminEylemiKaydet } from "@/lib/adminEylemKaydi";
 import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { ARAC_HAVUZU_ETIKETI } from "@/lib/cacheEtiketleri";
@@ -44,6 +45,7 @@ export async function PATCH(
     });
 
     revalidateTag(ARAC_HAVUZU_ETIKETI, { expire: 0 }); // /araclar filtre/sayılar yeni özelliği görsün
+    await adminEylemiKaydet({ adminId: admin.userId, action: "PRODUCT_ATTRIBUTES_CHANGE", entityType: "PRODUCT", entityLabel: slug, meta: { anahtarlar: Object.keys(body.attributes ?? {}).slice(0, 40) } });
     return NextResponse.json({ ok: true, attributes: merged });
   } catch (e) {
     console.error("[admin-product]", e);

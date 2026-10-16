@@ -1064,7 +1064,7 @@ model InsuranceLead {
   product   Product @relation(fields: [productId], references: [id])
 
   fullName String @db.VarChar(100)
-  phone    String @db.VarChar(20)
+  phone    String @db.VarChar(255) // AES-GCM şifreli ("l1:") ya da eski düz metin; bkz. lib/leadPhoneCrypto.ts
 
   status LeadStatus @default(NEW)
 
@@ -1099,7 +1099,7 @@ model SaleLead {
 
   type     SaleLeadType
   fullName String       @db.VarChar(100)
-  phone    String       @db.VarChar(20)
+  phone    String       @db.VarChar(255) // AES-GCM şifreli ("l1:") ya da eski düz metin; bkz. lib/leadPhoneCrypto.ts
 
   status LeadStatus @default(NEW)
 
