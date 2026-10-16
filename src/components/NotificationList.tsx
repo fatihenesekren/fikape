@@ -1,5 +1,6 @@
 "use client";
 
+import { bildirimLinkiGuvenli } from "@/lib/bildirimLinki";
 import Link from "next/link";
 
 export interface NotificationData {
@@ -111,7 +112,7 @@ export function NotificationList({ notifications, dimUnread }: { notifications: 
       {notifications.map((n) => (
         <Link
           key={n.id}
-          href={n.link}
+          href={bildirimLinkiGuvenli(n.link)}
           className="flex items-start gap-3 bg-white border border-gray-100 rounded-2xl p-4 hover:border-gray-200 transition-colors"
           style={{ background: !n.isRead && dimUnread ? "#F0F7FF" : undefined }}
         >

@@ -158,8 +158,15 @@ export async function PATCH(req: NextRequest) {
       },
     });
   } else if (action === "reactivate") {
-    const kayit = await prisma.userProduct.findUnique({ where: { userId_productId: { userId, productId } }, select: { id: true } });
+    const kayit = await prisma.userProduct.findUnique({
+      where: { userId_productId: { userId, productId } },
+      select: { id: true, ownershipStatus: true, product: { select: { status: true, isActive: true } } },
+    });
     if (!kayit) return NextResponse.json({ error: "Garajında değil" }, { status: 404 });
+    if (kayit.ownershipStatus !== "PAST") return NextResponse.json({ error: "Araç zaten garajında aktif" }, { status: 409 });
+    if (!yeniEtkilesimeAcikMi(kayit.product)) {
+      return NextResponse.json({ error: "Bu araç şu an katalogda değil" }, { status: 409 });
+    }
     await prisma.userProduct.update({
       where: { userId_productId: { userId, productId } },
       data: {
