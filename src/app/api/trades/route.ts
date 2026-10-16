@@ -13,7 +13,7 @@ import { hashRequestContext } from "@/lib/security";
 import { createNotification, notifyAdmins } from "@/lib/notification";
 import { logAccess } from "@/lib/accessLog";
 import { CAR_PARTS } from "@/lib/carParts";
-import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate } from "@/lib/tradeListingPhotos";
+import { MAX_TRADE_PHOTOS, isTradePhotoUrl, computePhashes, hasDuplicate, kullanimdaTradeFotoUrlleri } from "@/lib/tradeListingPhotos";
 import { isMutualMatch, fuelTransmissionFromAttributes, type WantCriteria, type VehicleFacts } from "@/lib/tradeMatching";
 import { scheduleMarketPriceUpdate } from "@/lib/marketPrice";
 import type { LocationScope, TradeFuelType } from "@/lib/tradeExpectations";
@@ -58,6 +58,10 @@ export async function POST(req: Request) {
   // Takas fotoğrafları — sadece kendi blob yolumuzdaki URL'ler kabul edilir,
   // aynı fotoğrafın tekrarı reddedilir. Kayıtlar PENDING oluşturulur (moderasyon).
   const photoUrls = (parsed.data.photoUrls ?? []).filter(isTradePhotoUrl).slice(0, MAX_TRADE_PHOTOS);
+  // Başka bir ilana ait (herkese açık) fotoğraf adresi bu ilana eklenemez — sahiplik devri ve kurban blob'unu sildirme yolunu kapatır.
+  if ((await kullanimdaTradeFotoUrlleri(photoUrls)).size > 0) {
+    return NextResponse.json({ error: "Fotoğraflardan biri geçersiz. Lütfen fotoğrafları yeniden yükleyin." }, { status: 400 });
+  }
   const photoPhashes = photoUrls.length > 0 ? await computePhashes(photoUrls) : [];
   if (hasDuplicate(photoPhashes)) {
     return NextResponse.json(

@@ -1,3 +1,4 @@
+import { isOwnBlobHost } from "@/lib/blobUrl";
 // Kullanıcı/moderatör girdisi (marka, model, donanım) için ortak temizleyici ve doğrulayıcılar.
 // Prisma'ya bağımlı değil; hem API'lerde hem testlerde kullanılır.
 
@@ -24,7 +25,10 @@ export function fotoUrlGecerli(u: unknown, izinliSonekler: string[] = [".public.
   if (typeof u !== "string" || u.length > 500) return false;
   try {
     const url = new URL(u);
-    return url.protocol === "https:" && izinliSonekler.some((s) => url.hostname.endsWith(s));
+    if (url.protocol !== "https:" || !izinliSonekler.some((s) => url.hostname.endsWith(s))) return false;
+    // Vercel Blob adresi başka bir mağazaya ait olamaz (yalnız bu uygulamanın deposu)
+    if (url.hostname.endsWith(".public.blob.vercel-storage.com") && !isOwnBlobHost(url.hostname)) return false;
+    return true;
   } catch {
     return false;
   }

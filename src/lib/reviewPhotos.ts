@@ -1,5 +1,5 @@
 export const MAX_REVIEW_PHOTOS = 5;
-const IZINLI_SONEK = ".public.blob.vercel-storage.com";
+import { isOwnBlobHost } from "./blobUrl";
 
 /**
  * Yorum fotoğrafı adresi gerçekten bizim Blob yolumuzda mı (uploads/review-photo yalnız "reviews/" öneki üretir).
@@ -9,7 +9,7 @@ export function isReviewPhotoUrl(url: unknown): url is string {
   if (typeof url !== "string" || url.length > 500) return false;
   try {
     const u = new URL(url);
-    return u.protocol === "https:" && u.hostname.endsWith(IZINLI_SONEK) && u.pathname.startsWith("/reviews/");
+    return u.protocol === "https:" && isOwnBlobHost(u.hostname) && u.pathname.startsWith("/reviews/");
   } catch {
     return false;
   }

@@ -1,5 +1,7 @@
 import { del } from "@vercel/blob";
 import { prisma } from "@/lib/prisma";
+import { isOwnBlobHost } from "./blobUrl";
+import { fotoyuSinirliIndir } from "./reviewPhotos";
 import { computePHash, findDuplicatePair, hammingDistance, PHASH_DUPLICATE_THRESHOLD } from "./phash";
 
 // Usta profili "çalışma yeri" fotoğrafları — tabelaId/işletme girişi (STOREFRONT,
@@ -16,7 +18,8 @@ export function isExpertWorkplacePhotoUrl(url: string): boolean {
   try {
     const u = new URL(url);
     return (
-      u.hostname.endsWith(".public.blob.vercel-storage.com") &&
+      u.protocol === "https:" &&
+      isOwnBlobHost(u.hostname) &&
       u.pathname.startsWith("/expert-workplace/")
     );
   } catch {
@@ -28,14 +31,22 @@ export async function computePhashes(urls: string[]): Promise<(string | null)[]>
   return Promise.all(
     urls.map(async (url) => {
       try {
-        const res = await fetch(url);
-        const buffer = Buffer.from(await res.arrayBuffer());
-        return await computePHash(buffer);
+        return await computePHash(await fotoyuSinirliIndir(url));
       } catch {
         return null;
       }
     }),
   );
+}
+
+/** Bu adreslerden hangileri DB'de başka bir profile (haricProfilId hariç) zaten bağlı? */
+export async function kullanimdaCalismaYeriFotoUrlleri(urls: string[], haricProfilId?: number): Promise<Set<string>> {
+  if (urls.length === 0) return new Set();
+  const rows = await prisma.expertWorkplacePhoto.findMany({
+    where: { url: { in: urls }, ...(haricProfilId != null ? { profileId: { not: haricProfilId } } : {}) },
+    select: { url: true },
+  });
+  return new Set(rows.map((r) => r.url));
 }
 
 export function hasDuplicate(phashes: (string | null)[]): boolean {
@@ -71,5 +82,8 @@ export async function findGlobalDuplicateProfileId(
 // akışlarında kullanılır. Prisma transaction'ı DIŞINDA çağrılmalı (harici ağ).
 export async function deleteExpertWorkplacePhotoBlobs(urls: string[]) {
   if (urls.length === 0) return;
-  await Promise.allSettled(urls.map((u) => del(u)));
+  // Hâlâ bir kayda bağlı olan blob silinmez (başkasının fotoğrafını kendi kaydına ekleyip silme saldırısına karşı)
+  const kullanimda = await prisma.expertWorkplacePhoto.findMany({ where: { url: { in: urls } }, select: { url: true } });
+  const tutulacak = new Set(kullanimda.map((r) => r.url));
+  await Promise.allSettled(urls.filter((u) => !tutulacak.has(u)).map((u) => del(u)));
 }
