@@ -149,6 +149,8 @@ describe("otomobil / motosiklet / kamyonet facet'leri", () => {
     expect(kova({ fuel_type: "EV", motor_watt: 40000 })).toEqual(["49-100"]);
     expect(kova({ fuel_type: "EV", motor_watt: 2000, power_hp: 60 })).toEqual(["49-100"]);
     expect(kova({ fuel_type: "GASOLINE", motor_watt: 2000 })).toEqual([]);
+    // yalnız tepe güç biliniyorsa o kullanılır
+    expect(kova({ fuel_type: "EV", motor_peak_watt: 800 })).toEqual(["0-48"]);
     expect(kova({ fuel_type: "EV" })).toEqual([]);
     expect(guc.options.some((o) => o.value === "na")).toBe(false);
   });

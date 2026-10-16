@@ -344,10 +344,11 @@ const SEAT_GROUP = aralikGrubu("koltuk", "Koltuk", "seat_count", [
 
 // ── Motosiklet ──
 // Elektrikli motosikletlerde HP çoğu zaman yazılmaz; yalnız nominal motor gücü (W) varsa 1 HP = 735,5 W ile HP'ye çevrilerek gruplanır.
+// Nominal güç kaynaklarda yoksa ve yalnız azami (tepe) güç biliniyorsa o kullanılır (kaynakta olmayan bir değer uydurmak yerine).
 const motoGucuHp = (a: Attrs): number | null => {
   const hp = num(a.power_hp);
   if (hp != null) return hp;
-  const w = num(a.motor_watt);
+  const w = num(a.motor_watt) ?? num(a.motor_peak_watt);
   return w != null && str(a.fuel_type) === "EV" ? w / 735.5 : null;
 };
 const MOTO_POWER_GROUP: FacetGroup = {
