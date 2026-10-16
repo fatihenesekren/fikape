@@ -1,3 +1,4 @@
+import { tekUrunPuani } from "@/lib/urunPuani";
 import { headers } from "next/headers";
 import { botIstegiMi } from "@/lib/botIstegi";
 import { Suspense } from "react";
@@ -238,16 +239,7 @@ export default async function VehicleDetailPage({
   const isSold   = userGarageEntry?.ownershipStatus === "PAST";
   const submittedSaleLeadTypes = existingSaleLeads.map((l) => l.type);
 
-  const agg = await prisma.review.aggregate({
-    where: { productId: product.id, status: "PUBLISHED" },
-    _avg: {
-      scoreFiyat: true,
-      scoreKalite: true,
-      scorePerformans: true,
-      scoreOverall: true,
-    },
-    _count: { id: true },
-  });
+  const agg = await tekUrunPuani(product.id);
 
   // Çoklu seçim olduğu için groupBy kullanılamıyor (array kolonunda exact-match
   // gruplar) — her satırın nedenleri JS'de tek tek sayılıyor. Yüzdeler bu yüzden

@@ -1,3 +1,4 @@
+import { urunPuanlari } from "@/lib/urunPuani";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -286,12 +287,7 @@ async function AraclarResults({
   // 7) Puanlar + görseller + favoriler — sadece sayfadaki ürünler
   const pageIds = pageItems.map((p) => p.id);
   const scoreAggs = pageIds.length
-    ? await prisma.review.groupBy({
-        by: ["productId"],
-        where: { status: "PUBLISHED", productId: { in: pageIds } },
-        _avg: { scoreFiyat: true, scoreKalite: true, scorePerformans: true, scoreOverall: true },
-        _count: { id: true },
-      })
+    ? await urunPuanlari(pageIds)
     : [];
   const scoreMap = new Map(
     scoreAggs.map((a) => [

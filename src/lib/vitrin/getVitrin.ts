@@ -1,3 +1,4 @@
+import { urunPuanlari } from "@/lib/urunPuani";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { kurasyonYap, type VitrinAday } from "./kurasyon";
@@ -31,10 +32,7 @@ export async function vitrinHesapla(): Promise<VitrinKart[]> {
   const idler = urunler.map((u) => u.id);
 
   const [yorumlar, anlik] = await Promise.all([
-    prisma.review.groupBy({
-      by: ["productId"], where: { status: "PUBLISHED", productId: { in: idler } },
-      _avg: { scoreFiyat: true, scoreKalite: true, scorePerformans: true, scoreOverall: true }, _count: { id: true },
-    }),
+    urunPuanlari(idler),
     prisma.weeklyViewSnapshot.groupBy({
       by: ["productId"], where: { productId: { in: idler }, weekStart: { gte: new Date(Date.now() - GUN28) } }, _sum: { weeklyViews: true },
     }),

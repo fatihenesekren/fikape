@@ -1,3 +1,4 @@
+import { urunPuanlari } from "@/lib/urunPuani";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { VehicleCard } from "@/components/VehicleCard";
@@ -63,17 +64,7 @@ export async function ProductGrid({ quizParam }: Props) {
     );
   }
 
-  const scoreAggs = vitrin ? [] : await prisma.review.groupBy({
-    by: ["productId"],
-    where: { status: "PUBLISHED" },
-    _avg: {
-      scoreFiyat:      true,
-      scoreKalite:     true,
-      scorePerformans: true,
-      scoreOverall:    true,
-    },
-    _count: { id: true },
-  });
+  const scoreAggs = vitrin ? [] : await urunPuanlari();
 
   const scoreMap = new Map<number, { scores: FikapeScores; count: number }>(
     scoreAggs.map((agg) => [

@@ -1,3 +1,4 @@
+import { tekUrunPuani } from "@/lib/urunPuani";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { rateLimitByIpDetailed } from "@/lib/rateLimit";
@@ -56,11 +57,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
       return withRateLimitHeaders(res, rateLimit.remaining, rateLimit.resetAt);
     }
 
-    const agg = await prisma.review.aggregate({
-      where: { productId: product.id, status: "PUBLISHED" },
-      _avg: { scoreOverall: true },
-      _count: { id: true },
-    });
+    const agg = await tekUrunPuani(product.id);
 
     const reviewCount = agg._count.id;
     const score = reviewCount > 0 ? Math.round((agg._avg.scoreOverall ?? 0) * 10) / 10 : null;

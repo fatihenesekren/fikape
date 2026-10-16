@@ -1,3 +1,4 @@
+import { urunPuanlari } from "@/lib/urunPuani";
 import { prisma } from "@/lib/prisma";
 import { BASE_URL } from "@/lib/baseUrl";
 import { stripModelGenRange } from "@/lib/modelDisplay";
@@ -74,12 +75,7 @@ export async function loadCompareData(slugs: string[]): Promise<CompareData> {
 
   const aggByProductId = new Map<number, { avg: number; count: number; fi: number; ka: number; pe: number }>();
   if (products.length) {
-    const groups = await prisma.review.groupBy({
-      by: ["productId"],
-      where: { productId: { in: products.map((p) => p.id) }, status: "PUBLISHED" },
-      _avg: { scoreOverall: true, scoreFiyat: true, scoreKalite: true, scorePerformans: true },
-      _count: { id: true },
-    });
+    const groups = await urunPuanlari(products.map((p) => p.id));
     groups.forEach((g) => {
       aggByProductId.set(g.productId, {
         avg: g._avg.scoreOverall ?? 0,
