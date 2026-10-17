@@ -312,3 +312,6 @@ Aynı Commons dosyasını paylaşan 6 grup: görsel (blob dahil) yalnız sahibin
 
 ## 78. tur — BMW K 1600 GT TR Package silindi (2026-10-17)
 "TR Package" için BMW kaynaklarında dayanak yok (yalnız Epey sayfası, fiyat/açıklama yok). K 1600 GT TR Package (id 1216) ile Sport Edition (1215) teknik değerleri birebir aynıydı (332 kg, 160 HP, 175 Nm, 24 L, 830 mm) → tekrar sayılıp aracSil ile silindi (denetim kaydı: PRODUCT_DELETE, görsel zaten kaldırılmıştı). K 1600 GTL TR Package (1218, 348 kg; Exclusive 360 kg) ve S 1000 RR TR Package satırları korundu; BMW Türkiye listesi gelirse netleşir. Aktif motosiklet: 311.
+
+## 79. tur — Tüm "TR Package" kayıtları silindi (2026-10-17)
+Kullanıcı kararı: kalan 7 "TR Package" kaydı aracSil ile silindi: BMW K 1300 R (1210), K 1600 GTL (1218), R 1200 GS Adventure (1255), S 1000 RR ×4 (1293–1296); görselli olanların blob'u da silindi (K 1300 R, GS Adventure, S 1000 RR TR Package). Yan etki: bu üç modelin başka kaydı olmadığı için boş kalan modeller silindi (K 1300 R, R 1200 GS Adventure, S 1000 RR) → katalogda bu modeller artık yok. Aktif motosiklet 304. Kalan silme adayları (onay bekliyor): GSR 750A (1222), S 1000 XR Design Wheels/Low Suspension (1297, 1298), R 1200 GS 9 paket-kombinasyonu (1256, 1258–1265), R 1200 RS (1287, 1289, 1290), R 1200 RT Quick Shifter (1291), Z800 Sugomi ABS'siz (1341), Burgman 200 ABS'siz (1319).
