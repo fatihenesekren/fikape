@@ -309,3 +309,6 @@ Kullanıcı listesindeki 16 model-grubu (BMW R 1200 GS/RS/RT, S 1000 RR/XR, Vulc
 
 ## 77. tur — Liste dışı aynı-foto grupları temizlendi (2026-10-17)
 Aynı Commons dosyasını paylaşan 6 grup: görsel (blob dahil) yalnız sahibinde bırakıldı: K 1600 GT → Sport Edition (1215), K 1600 GTL → Exclusive (1217), W800 → standart (1232), Z800 2012 → standart (1250), Z800E → standart (1252), ZX-6R 636 → standart (1254). Görseli kaldırılan 6 kart: 1216, 1218, 1233, 1249, 1251, 1253 (ABS/TR Package/Special Edition sürümleri). K 1600 GT/GTL'de düz sürüm olmadığı için ilk listelenen sürüm sahip seçildi. Ninebot D18E/D28E farklı dosya, dokunulmadı. Görsel durumu: 63 görselli / 164 görselsiz (liste dosyası güncellendi).
+
+## 78. tur — BMW K 1600 GT TR Package silindi (2026-10-17)
+"TR Package" için BMW kaynaklarında dayanak yok (yalnız Epey sayfası, fiyat/açıklama yok). K 1600 GT TR Package (id 1216) ile Sport Edition (1215) teknik değerleri birebir aynıydı (332 kg, 160 HP, 175 Nm, 24 L, 830 mm) → tekrar sayılıp aracSil ile silindi (denetim kaydı: PRODUCT_DELETE, görsel zaten kaldırılmıştı). K 1600 GTL TR Package (1218, 348 kg; Exclusive 360 kg) ve S 1000 RR TR Package satırları korundu; BMW Türkiye listesi gelirse netleşir. Aktif motosiklet: 311.
