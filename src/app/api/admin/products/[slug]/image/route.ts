@@ -4,7 +4,7 @@ import { revalidateTag } from "next/cache";
 import { adminOturumu } from "@/lib/adminAuth";
 import { prisma } from "@/lib/prisma";
 import { put } from "@vercel/blob";
-import { eskiUrunGorseliniSil } from "@/lib/urunGorselTemizlik";
+import { eskiUrunGorseliniSil, urunGorselYolu } from "@/lib/urunGorselTemizlik";
 import { ARAC_HAVUZU_ETIKETI, GORSEL_KAYNAK_ETIKETI } from "@/lib/cacheEtiketleri";
 import { Prisma } from "@/generated/prisma/client";
 import { resizeImageBuffer, fetchAndResizeImage } from "@/lib/imageResize";
@@ -57,20 +57,15 @@ export async function POST(
       return NextResponse.json({ error: "Görsel işlenemedi — dosya bozuk olabilir." }, { status: 400 });
     }
 
-    const blob = await put(`product-images/${slug}.jpg`, resized.buffer, {
+    const blob = await put(urunGorselYolu(slug), resized.buffer, {
       access: "public",
       contentType: resized.contentType,
       addRandomSuffix: false,
-      allowOverwrite: true,
     });
 
-    // Blob dosya adı sabit (allowOverwrite) olduğu için aynı URL'yi CDN/tarayıcı
-    // önbellekleri (Cache-Control: public, max-age=30 gün) eski baytlarla
-    // tutmaya devam ediyordu — bir görsel değiştirildiğinde katalogdaki bazı
-    // sayfalar yeni fotoğrafı, bazıları hâlâ eskisini gösteriyordu (bkz.
-    // kullanıcı geri bildirimi: "Yamaha XMAX 250'de 2 farklı resim gözüküyor").
-    // ?v= sürüm parametresi DB'ye kaydedilen URL'yi HER yüklemede tekilleştirir,
-    // böylece önbellekler asla eski görseli sunmaz — "son yüklenen" garanti olur.
+    // Dosya yolu her yüklemede benzersiz (zaman damgalı): aynı yolun yeniden kullanılması CDN/tarayıcı önbelleklerinin
+    // (Cache-Control: public, max-age=30 gün) eski ya da silinmiş baytları sunmasına yol açıyordu (bkz. "Yamaha XMAX
+    // 250'de 2 farklı resim" ve silinmiş yola yeniden yüklemeden sonra bozuk görsel). ?v= parametresi ek güvence.
     const versionedUrl = `${blob.url}?v=${Date.now()}`;
 
     await prisma.product.update({
@@ -150,20 +145,13 @@ export async function PATCH(
       );
     }
 
-    const blob = await put(`product-images/${slug}.jpg`, resized.buffer, {
+    const blob = await put(urunGorselYolu(slug), resized.buffer, {
       access: "public",
       contentType: resized.contentType,
       addRandomSuffix: false,
-      allowOverwrite: true,
     });
 
-    // Blob dosya adı sabit (allowOverwrite) olduğu için aynı URL'yi CDN/tarayıcı
-    // önbellekleri (Cache-Control: public, max-age=30 gün) eski baytlarla
-    // tutmaya devam ediyordu — bir görsel değiştirildiğinde katalogdaki bazı
-    // sayfalar yeni fotoğrafı, bazıları hâlâ eskisini gösteriyordu (bkz.
-    // kullanıcı geri bildirimi: "Yamaha XMAX 250'de 2 farklı resim gözüküyor").
-    // ?v= sürüm parametresi DB'ye kaydedilen URL'yi HER yüklemede tekilleştirir,
-    // böylece önbellekler asla eski görseli sunmaz — "son yüklenen" garanti olur.
+    // Dosya yolu her yüklemede benzersiz (zaman damgalı); gerekçe için yukarıdaki yükleme (POST) yorumuna bakın.
     const versionedUrl = `${blob.url}?v=${Date.now()}`;
 
     await prisma.product.update({

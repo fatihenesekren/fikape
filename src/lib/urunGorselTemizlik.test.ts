@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from "vitest";
 vi.mock("@/lib/prisma", () => ({ prisma: {} }));
 vi.mock("@vercel/blob", () => ({ del: vi.fn() }));
 
-import { silinecekEskiGorsel } from "./urunGorselTemizlik";
+import { silinecekEskiGorsel, urunGorselYolu } from "./urunGorselTemizlik";
 
 const H = "https://abc123.public.blob.vercel-storage.com";
 
@@ -28,5 +28,15 @@ describe("silinecekEskiGorsel", () => {
   it("eski adres yoksa ya da bozuksa null", () => {
     expect(silinecekEskiGorsel(null, `${H}/product-images/a.jpg`)).toBeNull();
     expect(silinecekEskiGorsel("bozuk", `${H}/product-images/a.jpg`)).toBeNull();
+  });
+});
+
+describe("urunGorselYolu", () => {
+  it("slug ve zaman damgasıyla benzersiz yol üretir", () => {
+    expect(urunGorselYolu("kawasaki-w800-2011", 123)).toBe("product-images/kawasaki-w800-2011-123.jpg");
+    expect(urunGorselYolu("a", 1)).not.toBe(urunGorselYolu("a", 2));
+  });
+  it("eski sabit yoldan yeni zaman damgalı yola geçince eski dosya silinir", () => {
+    expect(silinecekEskiGorsel(`${H}/product-images/a.jpg?v=5`, `${H}/${urunGorselYolu("a", 9)}?v=9`)).toBe(`${H}/product-images/a.jpg`);
   });
 });

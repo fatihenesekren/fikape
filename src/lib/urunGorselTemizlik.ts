@@ -4,6 +4,15 @@ import { prisma } from "@/lib/prisma";
 const BLOB_HOST_SONEKI = ".public.blob.vercel-storage.com";
 const ONEK = "/product-images/";
 
+/**
+ * Yüklenen ürün görselinin Blob yolu. Yola zaman damgası eklenir: aynı yol (<slug>.jpg) yeniden kullanılınca (özellikle önce silinmiş
+ * bir yola tekrar yüklenince) Blob CDN eski/silinmiş durumu bir süre sunuyor ve yeni görsel bozuk görünüyordu. Her yükleme benzersiz yol
+ * alır; eski dosya eskiUrunGorseliniSil ile temizlenir (başka ürün kullanmıyorsa).
+ */
+export function urunGorselYolu(slug: string, zaman: number = Date.now()): string {
+  return `product-images/${slug}-${zaman}.jpg`;
+}
+
 function yol(url: string): { origin: string; pathname: string } | null {
   try {
     const u = new URL(url);
@@ -17,7 +26,7 @@ function yol(url: string): { origin: string; pathname: string } | null {
 /**
  * Yeni görsel kaydedilince eski dosyanın silinip silinmeyeceğine karar verir.
  * Yalnız kendi Blob deposundaki `product-images/` dosyaları silinir; dış adreslere (hotlink) ve
- * yeni dosyayla aynı yola (üzerine yazılan `<slug>.jpg`) dokunulmaz. Silinecek adresi, yoksa null döner.
+ * yeni dosyayla aynı yola dokunulmaz (eski kayıtlarda üzerine yazılan `<slug>.jpg` olabilir). Silinecek adresi, yoksa null döner.
  */
 export function silinecekEskiGorsel(eskiUrl: string | null | undefined, yeniUrl: string): string | null {
   if (!eskiUrl) return null;
