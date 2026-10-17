@@ -27,6 +27,9 @@ const KATALOG_SLUG_DEGISIKLIKLERI: [string, string][] = [
   ["honda-forza-250-standart-2025", "honda-forza-250-2025"],
   ["arora-zr7-standart-2026", "arora-zr7-2026"],
   ["yamaha-xmax-250-standart-2023", "yamaha-xmax-250-2023"],
+  // Aprilia RSV4 RF/RR Racepack: EICMA Kasım 2014 tanıtım, 2015 model yılı (2026-10-17)
+  ["aprilia-rsv4-rf-1000-2014", "aprilia-rsv4-rf-1000-2015"],
+  ["aprilia-rsv4-rr-1000-racepack-2014", "aprilia-rsv4-rr-1000-racepack-2015"],
   ["zero-sr-s-2024", "zero-motorcycles-sr-s-premium-2024"],
   ["xiaomi-mi-4-pro-2023", "xiaomi-mi-electric-scooter-4-pro-2023"],
   ["ford-ranger-2023", "ford-ranger-wildtrak-2023"],
