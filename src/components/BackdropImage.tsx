@@ -2,11 +2,10 @@ import Image from "next/image";
 import { BUSY_SIGDIR_ESIGI, getImageBackdrop, getImageKenarRenkleri, getImageOran } from "@/lib/imageBackdrop";
 
 // Fotoğrafın kenarlarını yumuşatan maske: kutu içinde belirgin bir dikdörtgen ("foto içinde foto") görünmez,
-// fotoğraf arkadaki bulanık kopyasına karışır. İki doğrusal gradyanın kesişimi: yanlarda belirgin, üst-altta (kart kenarına
-// dayandığı için) hafif solma.
+// fotoğraf arkadaki bulanık kopyasına karışır. Yalnız yanlarda çok dar bir geçiş (üst-alt kart kenarına dayandığı için maske yok);
+// asıl yumuşaklığı fotoğrafın kenar renklerinden oluşan zemin gradyanı sağlar.
 const KENAR_MASKESI = [
-  "linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%)",
-  "linear-gradient(to bottom, transparent 0, #000 5%, #000 95%, transparent 100%)",
+  "linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%)",
 ].join(", ");
 // Sol kenar renklerinden sağ kenar renklerine yumuşak yatay geçiş (ortada dikiş çizgisi oluşmaz).
 const YATAY_GECIS = "linear-gradient(to right, transparent 20%, #000 80%)";
@@ -44,7 +43,7 @@ export async function BackdropImage({
               />
             </>
           ) : (
-            <Image src={src} alt="" aria-hidden fill sizes={sizes} className="object-cover scale-110 blur-2xl" />
+            <Image src={src} alt="" aria-hidden fill sizes={sizes} className="object-cover scale-110 blur-lg" />
           )}
           <div className={`absolute inset-0 flex items-center justify-center ${padding}`}>
             {/* Fotoğrafın kendi en/boy oranında kutu: maske yalnız görünen fotoğrafın kenarlarına uygulanır */}
