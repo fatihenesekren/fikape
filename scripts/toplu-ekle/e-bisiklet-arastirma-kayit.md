@@ -321,3 +321,6 @@ Kullanıcı onayı: Suzuki GSR 750A (1222; "A"=ABS, GSR 750 (ABS) ile aynı), BM
 
 ## 81. tur — Orta aday 2 motosiklet kaydı silindi (2026-10-17)
 Kullanıcı onayı: Kawasaki Z800 (Sugomi) 2016 ABS'siz (1341) ve Suzuki Burgman 200 2014 ABS'siz (1319) aracSil ile silindi. Korunan: Z800 (Sugomi ABS) 1340, Burgman 200 (ABS) 1318. Aktif motosiklet 286.
+
+## 82. tur — ABS alanı düzeltmesi (2026-10-17)
+"(ABS)" ekli sürümlerde abs=true, düz kardeşlerinde abs=false olacak şekilde 4 kayıt düzeltildi: Ninja 250SL (ABS) 1312 false→true; Z800 düz 1250, Z250SL düz 1315 true→false; Z300 düz 1317 boş→false (ABS bu üç modelde opsiyonel). Diğer tüm çiftler zaten tutarlıydı. Z800 ağırlıkları (ABS 214 kg, düz 231 kg; kaynaklarda düz 229 kg, ABS sürüm kg doğrulanamadı) kaynaksız olduğu için DEĞİŞTİRİLMEDİ; Epey ağırlıkları ters/hatalı olabilir.
