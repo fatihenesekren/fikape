@@ -318,3 +318,6 @@ Kullanıcı kararı: kalan 7 "TR Package" kaydı aracSil ile silindi: BMW K 1300
 
 ## 80. tur — "Güçlü aday" 16 motosiklet kaydı silindi (2026-10-17)
 Kullanıcı onayı: Suzuki GSR 750A (1222; "A"=ABS, GSR 750 (ABS) ile aynı), BMW S 1000 XR Design Wheels/Low Suspension (1297, 1298), R 1200 GS 9 paket-kombinasyonu (1256, 1258–1265), R 1200 RS Quick Shifter / Dynamic Style ×3 (1287, 1289, 1290), R 1200 RT Quick Shifter (1291) aracSil ile silindi (görselleri zaten kaldırılmıştı; denetim PRODUCT_DELETE). Korunan: GSR 750 (ABS) 1221, R 1200 GS Comfort Package Spoke Wheels 1257, R 1200 RS Dynamic Package 1288, R 1200 RT Dynamic Package 1292, S 1000 XR Dynamic Package 1299. Aktif motosiklet 288. Kalan orta adaylar (silinmedi): Z800 Sugomi ABS'siz (1341), Burgman 200 ABS'siz (1319).
+
+## 81. tur — Orta aday 2 motosiklet kaydı silindi (2026-10-17)
+Kullanıcı onayı: Kawasaki Z800 (Sugomi) 2016 ABS'siz (1341) ve Suzuki Burgman 200 2014 ABS'siz (1319) aracSil ile silindi. Korunan: Z800 (Sugomi ABS) 1340, Burgman 200 (ABS) 1318. Aktif motosiklet 286.
