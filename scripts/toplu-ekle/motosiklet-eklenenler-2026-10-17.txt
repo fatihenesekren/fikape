@@ -1,0 +1,227 @@
+1. Honda CBR 600RR 2003
+2. Yamaha FZ6 Fazer 2003
+3. Hero Pleasure 2006
+4. Aprilia Shiver 750 2007
+5. Kawasaki 1400GTR 2007
+6. Aprilia Mana GT 850 2008
+7. BMW K 1300 R (TR Package) 2008
+8. BMW K 1300 S (Special Model) 2008
+9. Harley-Davidson Tri Glide Ultra 2009
+10. KTM 1190 RC8 R 2009
+11. Aprilia Dorsoduro 1200 2010
+12. BMW K 1600 GT (Sport Edition) 2010
+13. BMW K 1600 GT (TR Package) 2010
+14. BMW K 1600 GTL (Exclusive) 2010
+15. BMW K 1600 GTL (TR Package) 2010
+16. Harley-Davidson Fat Boy (Special) 2010
+17. Honda VFR1200F 2010
+18. Suzuki GSR 750 (ABS) 2010
+19. Suzuki GSR 750A 2010
+20. Suzuki GSX 1250F (ABS) 2010
+21. Suzuki GSX-R600 2010
+22. Suzuki GSX-R750 2010
+23. Yamaha Fazer 8 (ABS) 2010
+24. Yamaha Fazer 8 2010
+25. Aprilia RS4 125 2011
+26. Aprilia SR MAX 300 2011
+27. Aprilia SRV 850 2011
+28. Haojue HJ150-9 2011
+29. Kawasaki W800 2011
+30. Kawasaki W800 (Special Edition) 2011
+31. Piaggio Beverly Sport Touring 350 2011
+32. Piaggio X10 350 2011
+33. Aprilia Caponord 1200 2012
+34. Bajaj Discover 125 ST 2012
+35. Bajaj Pulsar NS 200 2012
+36. Harley-Davidson Softail Slim 2012
+37. Harley-Davidson Switchback 2012
+38. Honda CB 500F 2012
+39. Honda CBR 500R 2012
+40. Honda VFR1200X Crosstourer (DCT) 2012
+41. KTM 1190 Adventure 2012
+42. KTM 1190 Adventure R 2012
+43. KTM 200 Duke 2012
+44. KTM Freeride 350 2012
+45. Kawasaki KLZ1000 (Versys) 2012
+46. Kawasaki Z800 (ABS) 2012
+47. Kawasaki Z800 2012
+48. Kawasaki Z800E (ABS) 2012
+49. Kawasaki Z800E 2012
+50. Kawasaki ZX-6R 636 (ABS) 2012
+51. Kawasaki ZX-6R 636 2012
+52. BMW R 1200 GS Adventure (TR Package) 2013
+53. BMW R 1200 GS (Comfort Package Alum. Wheels) 2013
+54. BMW R 1200 GS (Comfort Package Spoke Wheels) 2013
+55. BMW R 1200 GS (Dynamic Package Alum. Wheels) 2013
+56. BMW R 1200 GS (Dynamic Package Alum. Wheels Low Suspension) 2013
+57. BMW R 1200 GS (Dynamic Package Spoke Wheels) 2013
+58. BMW R 1200 GS (Dynamic Package Spoke Wheels Low Suspension) 2013
+59. BMW R 1200 GS (Touring Package Alum. Wheels) 2013
+60. BMW R 1200 GS (Touring Package Alum. Wheels Low Suspension) 2013
+61. BMW R 1200 GS (Touring Package Spoke Wheels) 2013
+62. BMW R 1200 GS (Touring Package Spoke Wheels Low Suspension) 2013
+63. BMW R Nine T (Special Edition) 2013
+64. BMW S 1000 R (Dynamic Package) 2013
+65. BMW S 1000 R (Sport Package) 2013
+66. Harley-Davidson Breakout 2013
+67. Harley-Davidson Street 750 2013
+68. Honda CB 650F 2013
+69. Honda CBR 650F 2013
+70. Honda Gold Wing F6B 2013
+71. Honda MSX 125 2013
+72. Honda NSS300 Forza 2013
+73. Honda NSS300A Forza (ABS) 2013
+74. KTM 125 RC 2013
+75. Yamaha FJR1300AE 2013
+76. Aprilia RSV4 RF 1000 2014
+77. Aprilia RSV4 RR 1000 (Racepack) 2014
+78. Aprilia RSV4 RR 1000 2014
+79. Aprilia Tuono V4 1100 2014
+80. Aprilia Tuono V4 1100 (Factory) 2014
+81. BMW F 800 R (Dynamic Package) 2014
+82. BMW R 1200 R (Dynamic Package) 2014
+83. BMW R 1200 R (Style Package) 2014
+84. BMW R 1200 RS (Dynamic Package Quick Shifter) 2014
+85. BMW R 1200 RS (Dynamic Package) 2014
+86. BMW R 1200 RS (Dynamic Style Package Quick Shifter) 2014
+87. BMW R 1200 RS (Dynamic Style Package) 2014
+88. BMW R 1200 RT (Dynamic Package Quick Shifter) 2014
+89. BMW R 1200 RT (Dynamic Package) 2014
+90. BMW S 1000 RR (TR Package Design Wheels) 2014
+91. BMW S 1000 RR (TR Package) 2014
+92. BMW S 1000 RR (TR Package Triple Color Design Wheels) 2014
+93. BMW S 1000 RR (TR Package Triple Color) 2014
+94. BMW S 1000 XR (Dynamic Package Design Wheels) 2014
+95. BMW S 1000 XR (Dynamic Package Low Suspension) 2014
+96. BMW S 1000 XR (Dynamic Package) 2014
+97. Bajaj Discover 150 F 2014
+98. Bajaj Discover 150 S 2014
+99. CFMOTO 150 NK 2014
+100. Harley-Davidson SuperLow 1200T 2014
+101. Hero Dash 110 2014
+102. Honda NC 750S (DCT) 2014
+103. Honda NC 750S 2014
+104. Honda NC 750X (DCT) 2014
+105. Honda NC 750X 2014
+106. Indian Scout 2014
+107. KTM 1050 Adventure 2014
+108. KTM 1290 Super Adventure 2014
+109. Kawasaki Ninja 250SL (ABS) 2014
+110. Kawasaki Ninja 250SL 2014
+111. Kawasaki Z250SL (ABS) 2014
+112. Kawasaki Z250SL 2014
+113. Kawasaki Z300 (ABS) 2014
+114. Kawasaki Z300 2014
+115. Suzuki Burgman 200 (ABS) 2014
+116. Suzuki Burgman 200 2014
+117. Aprilia Caponord 1200 Rally 2015
+118. Bajaj Avenger 150 Street 2015
+119. Bajaj Pulsar AS 150 2015
+120. Bajaj Pulsar RS 200 2015
+121. Harley-Davidson CVO Road Glide Ultra 2015
+122. Hero Duet 110İ 2015
+123. KTM 1290 Super Duke GT 2015
+124. Kawasaki Vulcan S (ABS) 2015
+125. Kawasaki Vulcan S (Cafe) 2015
+126. Kawasaki Vulcan S 2015
+127. Triumph Tiger 800 XCx 2015
+128. Triumph Tiger 800 XRt 2015
+129. Triumph Tiger 800 XRx 2015
+130. Yamaha MT-25 2015
+131. Bajaj Dominar 400 2016
+132. Bajaj V15 2016
+133. CFMOTO 400 NK 2016
+134. Honda X-ADV 2016
+135. Kawasaki VERSYS-X 300 2016
+136. Kawasaki Z1000 (Sugomi) 2016
+137. Kawasaki Z800 (Sugomi ABS) 2016
+138. Kawasaki Z800 (Sugomi) 2016
+139. Suzuki Burgman 400ZA 2016
+140. Suzuki GSX-R 125 2016
+141. Suzuki GSX-R1000 2016
+142. Suzuki GSX-R1000R 2016
+143. Suzuki GSX-S125 2016
+144. Suzuki GSX-S750 2016
+145. Triumph Bonneville T120 2016
+146. Yamaha MT-10 (SP ABS) 2016
+147. Bajaj Pulsar NS 160 2017
+148. Ducati Panigale V4 S 2017
+149. Husqvarna TE 250i 2017
+150. Husqvarna TE 300i 2017
+151. Kawasaki Ninja H2 (Carbon) 2017
+152. Kawasaki Z1000R 2017
+153. Triumph Bonneville Bobber 2017
+154. Triumph Bonneville Speedmaster 2017
+155. Triumph Bonneville T100 2017
+156. Triumph Scrambler 900 2017
+157. CFMOTO 250 NK 2018
+158. Hero Duet 125İ 2018
+159. Honda CBR650R 2018
+160. Honda Monkey 2018
+161. Honda Super Cub C125 2018
+162. Jawa Forty Two 2018
+163. Jawa Perak 2018
+164. Kawasaki Z400 2018
+165. Moto Guzzi V85 TT 2018
+166. Super Soco Cux 2018
+167. Super Soco TC Max 2018
+168. Triumph Scrambler 1200 2018
+169. Bajaj Dominar 400 UG 2019
+170. CFMOTO 700 CL-X Heritage 2019
+171. CFMOTO 700CL-X Sport 2019
+172. Honda CBR 1000 RR-R Fireblade (SP) 2019
+173. Husqvarna TE 150i 2019
+174. KTM 250 Duke (ABS) 2019
+175. KTM 890 Duke R 2019
+176. Triumph Rocket 3 GT 2019
+177. Triumph Rocket 3 R 2019
+178. Triumph Speed Twin 1200 2019
+179. Triumph Thruxton RS 2019
+180. Yamaha MT-125 2019
+181. KTM 250 Adventure 2020
+182. KTM 890 Adventure R 2020
+183. Kymco DT X360 2020
+184. Triumph Tiger 900 GT (Range) 2020
+185. Triumph Tiger 900 Rally (Range) 2020
+186. Bajaj Pulsar F 250 2021
+187. Bajaj Pulsar N 250 2021
+188. Bajaj Pulsar NS 125 2021
+189. CFMOTO 800 MT 2021
+190. Ducati DesertX 2021
+191. Ducati Streetfighter V4 (SP) 2021
+192. Hero X Pulse 200 4V 2021
+193. Honda ADV 350 2021
+194. Honda NT1100 2021
+195. Jawa RVM 500 Scrambler 2021
+196. Moto Morini Seiemmezzo SCR 2021
+197. Moto Morini Seiemmezzo STR 2021
+198. Moto Morini X-Cape 2021
+199. Suzuki GSX S1000GT 2021
+200. Triumph Speed Triple 1200 RR 2021
+201. Triumph Speed Triple 1200 RS 2021
+202. Triumph Tiger Sport 660 2021
+203. CFMOTO 450 SR 2022
+204. Ducati Diavel V4 2022
+205. Ducati XDiavel (Nera) 2022
+206. Honda Hornet 750 2022
+207. Honda XL750L Transalp 2022
+208. Jawa 42 Bobber 2022
+209. Kymco Agility S 125i 2022
+210. QJ SRT 800 X 2022
+211. QJ SRV 550 ST 2022
+212. Suzuki Address 2022
+213. Suzuki Avenis 2022
+214. Triumph Street Triple 765 (Moto2™ Edition) 2022
+215. CFMOTO 450NK 2023
+216. Honda CL250 2023
+217. Honda NX500 2023
+218. Kawasaki Ninja ZX-4R 2023
+219. Kawasaki Ninja ZX-4RR 2023
+220. Kove 450 Rally 2023
+221. Kove 510X 2023
+222. Kymco KRV 200 TCS 2023
+223. QJ SRK 700 2023
+224. Bajaj Pulsar NS400Z 2024
+225. CFMOTO 675SR-R 2024
+226. Kawasaki Ninja 500 2024
+227. Kawasaki Ninja ZX-10R (Winter Test Edition) 2024
