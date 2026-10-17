@@ -22,6 +22,11 @@ const KATALOG_SLUG_DEGISIKLIKLERI: [string, string][] = [
   ["dacia-duster-2024", "dacia-duster-extreme-2024"],
   ["honda-nc750x-2023", "honda-nc750x-dct-2023"],
   ["yamaha-mt07-2023", "yamaha-mt-07-2023"],
+  // Versiyon olmayan araçlarda gereksiz "Standart" versiyonu kaldırıldı (2026-10-17)
+  ["honda-pcx-125-standart-2025", "honda-pcx-125-2025"],
+  ["honda-forza-250-standart-2025", "honda-forza-250-2025"],
+  ["arora-zr7-standart-2026", "arora-zr7-2026"],
+  ["yamaha-xmax-250-standart-2023", "yamaha-xmax-250-2023"],
   ["zero-sr-s-2024", "zero-motorcycles-sr-s-premium-2024"],
   ["xiaomi-mi-4-pro-2023", "xiaomi-mi-electric-scooter-4-pro-2023"],
   ["ford-ranger-2023", "ford-ranger-wildtrak-2023"],
@@ -76,17 +81,17 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/araclar/honda-pcx-125-125cc-12-5-cv-standart-2025",
-        destination: "/araclar/honda-pcx-125-standart-2025",
+        destination: "/araclar/honda-pcx-125-2025",
         permanent: true,
       },
       {
         source: "/araclar/honda-forza-250-250cc-23-cv-standart-2025",
-        destination: "/araclar/honda-forza-250-standart-2025",
+        destination: "/araclar/honda-forza-250-2025",
         permanent: true,
       },
       {
         source: "/araclar/yamaha-xmax-250-250cc-23-cv-standart-2023",
-        destination: "/araclar/yamaha-xmax-250-standart-2023",
+        destination: "/araclar/yamaha-xmax-250-2023",
         permanent: true,
       },
       // "Citroën" markası eski hatalı slugify ile "citro-n" slug'lı ölü bir
